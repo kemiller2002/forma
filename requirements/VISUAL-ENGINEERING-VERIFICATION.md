@@ -79,3 +79,21 @@ The following Forma patterns operationalize this contract:
 Generated component documentation also includes content stress, text-spacing, grayscale cue-dropout, and reduced-effective-contrast screens for every canonical pattern.
 
 These patterns are presentation contracts. None may infer authoritative state, completeness, freshness, legality, or available actions.
+
+
+## Visual competition and emphasis budgets
+
+Consequential compositions may declare an explicit visual competition budget with `data-emphasis-budget="one-primary"`.
+
+Within each independently scoped budget:
+- exactly one direct region claims `data-emphasis="primary"`;
+- zero or more regions may claim `secondary` or `supporting`;
+- nested independent budgets are allowed and are evaluated separately;
+- application/domain state determines which content deserves emphasis;
+- Forma must not infer urgency, severity, authority, legality, or importance from the emphasis attribute;
+- primary emphasis must remain identifiable when hue, surface tint, nonessential border treatment, or motion is removed;
+- visual emphasis does not replace headings, semantic structure, state labels, source order, or keyboard order.
+
+A one-primary budget is an engineering constraint against uncontrolled visual competition. It is not evidence that one-primary composition is universally optimal for human attention, nor is it a rule that an entire application page may contain only one primary task.
+
+Canonical pattern: `emphasis-budget`.
