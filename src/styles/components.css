@@ -3081,4 +3081,16 @@
     }
   }
 
+  /* Attention-path extreme text-spacing resilience */
+  .ef-attention-path .ef-status-lozenge {
+    min-inline-size:0;
+    max-inline-size:100%;
+  }
+  @media (max-width:30rem) {
+    .ef-attention-path .ef-status-lozenge {
+      white-space:normal;
+      inline-size:fit-content;
+    }
+  }
+
 }
