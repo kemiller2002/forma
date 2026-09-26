@@ -5,7 +5,7 @@ import path from "node:path";
 const root = process.cwd();
 const css = fs.readFileSync(path.join(root, "dist", "all.css"), "utf8");
 const pattern = fs.readFileSync(path.join(root, "patterns", "emphasis-budget.html"), "utf8");
-const doc = (body, extra = "") => `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>${css}</style><style>html,body{margin:0}body{padding:1rem}${extra}</style></head><body>${body}</body></html>`;
+const doc = (body, extra = "") => `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Emphasis budget conformance</title><style>${css}</style><style>html,body{margin:0}body{padding:1rem}${extra}</style></head><body>${body}</body></html>`;
 
 function validateBudgets(source) {
   const host = document.createElement("div");
@@ -50,9 +50,8 @@ for (const width of [1280, 390, 320]) {
 
 test("emphasis labels survive visual-channel dropout", async ({ page }) => {
   await page.setContent(doc(`<div class="dropout">${pattern}</div>`, `.dropout{filter:grayscale(1)}.dropout *{background:transparent!important;border-color:transparent!important;box-shadow:none!important}`));
-  await expect(page.getByText("Primary", { exact: true })).toBeVisible();
-  await expect(page.getByText("Secondary", { exact: true })).toBeVisible();
-  await expect(page.getByText("Supporting", { exact: true }).first()).toBeVisible();
+  const labels = await page.locator("[data-emphasis]").evaluateAll(elements => elements.map(el => getComputedStyle(el, "::before").content.replace(/[\\\"\\s]/g, "")));
+  expect(labels).toEqual(["Primary", "Secondary", "Supporting", "Supporting", "Supporting"]);
   await expect(page.getByText("Unknown consumer outcome")).toBeVisible();
 });
 
