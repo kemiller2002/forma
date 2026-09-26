@@ -169,6 +169,8 @@ Before claiming consequential UI complete, apply `requirements/VISUAL-ENGINEERIN
 - Preserve unknown, partial, stale, reconciling, unavailable, and other application states without strengthening them.
 - Exercise semantic-channel dropout, content stress, text spacing, grayscale/CVD screening, low-brightness/glare screening, zoom/reflow, forced colors, and reduced motion as applicable.
 - Treat these as engineering screens, not proof of universal human performance.
+- For consequential screens with competing regions, declare the intended attention path with `attention-path` and use `emphasis-budget` when one independently scoped decision region should have a single primary claimant.
+- A `one-primary` budget applies to its own direct region only. Nested independent budgets are permitted. Do not interpret visual emphasis as severity, authority, permission, or transition legality.
 
 ## Verification
 
