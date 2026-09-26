@@ -3145,4 +3145,30 @@
     }
   }
 
+  /* Emphasis-budget extreme text resilience */
+  .ef-emphasis-budget,
+  .ef-emphasis-budget > *,
+  .ef-emphasis-budget__support,
+  .ef-emphasis-budget__support > * {
+    min-inline-size:0;
+    max-inline-size:100%;
+  }
+  .ef-emphasis-budget .ef-status-lozenge {
+    min-inline-size:0;
+    max-inline-size:100%;
+  }
+  @media (max-width:30rem) {
+    .ef-emphasis-budget .ef-status-lozenge {
+      white-space:normal;
+      inline-size:fit-content;
+    }
+    .ef-emphasis-budget [data-emphasis="primary"] > button {
+      min-inline-size:0;
+      max-inline-size:100%;
+      white-space:normal;
+      block-size:auto;
+      min-block-size:2.75rem;
+    }
+  }
+
 }
