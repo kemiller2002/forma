@@ -2,6 +2,7 @@
 // Kept separate from the site renderer so catalog growth does not turn
 // tools/build-site.mjs into a structural monolith.
 export const componentMeta = {
+  "emphasis-budget": ["Emphasis budget", "Layout & composition", "Application content", "Declares bounded primary, secondary, and supporting emphasis so competing regions cannot all claim the strongest visual priority."],
   "attention-path": ["Attention path", "Layout & composition", "Application content", "Declares an intended first-glance priority path while preserving semantic source order and explicit text when visual emphasis channels are removed."],
   "comparison-pairs": ["Comparison pairs", "Data & productivity", "Application content", "Before/after or peer comparison that repeats labels and preserves the comparison task when columns collapse on narrow screens."],
   "overview-disclosure": ["Overview disclosure", "Content & utility", "Application content", "Keeps consequential state, scope, uncertainty, and unresolved work visible while secondary evidence uses native disclosure."],
