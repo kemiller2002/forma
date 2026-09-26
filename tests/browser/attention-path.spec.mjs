@@ -55,7 +55,7 @@ test("attention path remains intelligible in forced colors and reduced motion", 
   await page.setContent(doc(source));
   expect((await snapshot(page)).steps).toEqual(["1", "2", "3", "4"]);
   const priority = await page.locator('[data-attention-step="1"]').evaluate(el => getComputedStyle(el, "::before").content);
-  expect(priority).toContain("Priority 1");
+  expect(priority.replace(/[\\"\s]/g, "")).toContain("Priority1");
 });
 
 test("keyboard reaches consequential actions before supporting interactive content", async ({ page }) => {
