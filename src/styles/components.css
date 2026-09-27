@@ -3518,6 +3518,58 @@
   }
 
   /*
+   * SequentialReveal presentation (Visual Engineering CN-VE-TCG-2026-F9F1).
+   * Visual only: a clip mask over text that is already in the DOM. Static is
+   * the default; data-ef-reveal="sequential" opts a grid in and
+   * data-ef-reveal-run opts a protected text run in. Timing derives from
+   * the run's position, so reveal order is row-major order. Starting,
+   * interrupting (data-ef-reveal="complete"), and replaying are
+   * application/Limen behavior.
+   */
+  .ef-character-grid {
+    --ef-reveal-char-ms: 12;
+    --ef-reveal-line-ms: 40;
+    --ef-reveal-max-ms: 1500;
+  }
+
+  .ef-character-grid[data-ef-reveal="sequential"] {
+    --ef-reveal-row-ms: calc(var(--ef-grid-columns) * var(--ef-reveal-char-ms) + var(--ef-reveal-line-ms));
+    --ef-reveal-total-ms: calc(var(--ef-reveal-rows, var(--ef-grid-rows)) * var(--ef-reveal-row-ms));
+    --ef-reveal-scale: min(1, calc(var(--ef-reveal-max-ms) / var(--ef-reveal-total-ms)));
+  }
+
+  .ef-character-grid[data-ef-reveal="sequential"] :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__text[data-ef-reveal-run] {
+    animation-name: ef-character-grid-reveal;
+    animation-duration: calc(var(--ef-len) * var(--ef-reveal-char-ms) * var(--ef-reveal-scale) * 1ms);
+    animation-delay: calc(((var(--ef-row) - 1) * var(--ef-reveal-row-ms) + (var(--ef-col) - 1) * var(--ef-reveal-char-ms)) * var(--ef-reveal-scale) * 1ms);
+    animation-timing-function: steps(var(--ef-len), jump-start);
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+  }
+
+  .ef-character-grid[data-ef-reveal="sequential"] :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__text[data-ef-reveal-run]:dir(rtl) {
+    animation-name: ef-character-grid-reveal-rtl;
+  }
+
+  @keyframes ef-character-grid-reveal {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  @keyframes ef-character-grid-reveal-rtl {
+    from { clip-path: inset(0 0 0 100%); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  /* Reduced motion and print are always static. */
+  @media (prefers-reduced-motion: reduce), print {
+    .ef-character-grid[data-ef-reveal="sequential"] :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__text[data-ef-reveal-run] {
+      animation: none;
+      clip-path: none;
+    }
+  }
+
+  /*
    * Touch pitch: on narrow or coarse-pointer screens rows grow to a 44px
    * minimum so fields and keys remain usable targets. Columns stay 1ch.
    */
@@ -3788,6 +3840,56 @@
   .ef-character-grid[data-ef-columns="130"] { --ef-grid-columns: 130; }
   .ef-character-grid[data-ef-columns="131"] { --ef-grid-columns: 131; }
   .ef-character-grid[data-ef-columns="132"] { --ef-grid-columns: 132; }
+  .ef-character-grid[data-ef-reveal-rows="1"] { --ef-reveal-rows: 1; }
+  .ef-character-grid[data-ef-reveal-rows="2"] { --ef-reveal-rows: 2; }
+  .ef-character-grid[data-ef-reveal-rows="3"] { --ef-reveal-rows: 3; }
+  .ef-character-grid[data-ef-reveal-rows="4"] { --ef-reveal-rows: 4; }
+  .ef-character-grid[data-ef-reveal-rows="5"] { --ef-reveal-rows: 5; }
+  .ef-character-grid[data-ef-reveal-rows="6"] { --ef-reveal-rows: 6; }
+  .ef-character-grid[data-ef-reveal-rows="7"] { --ef-reveal-rows: 7; }
+  .ef-character-grid[data-ef-reveal-rows="8"] { --ef-reveal-rows: 8; }
+  .ef-character-grid[data-ef-reveal-rows="9"] { --ef-reveal-rows: 9; }
+  .ef-character-grid[data-ef-reveal-rows="10"] { --ef-reveal-rows: 10; }
+  .ef-character-grid[data-ef-reveal-rows="11"] { --ef-reveal-rows: 11; }
+  .ef-character-grid[data-ef-reveal-rows="12"] { --ef-reveal-rows: 12; }
+  .ef-character-grid[data-ef-reveal-rows="13"] { --ef-reveal-rows: 13; }
+  .ef-character-grid[data-ef-reveal-rows="14"] { --ef-reveal-rows: 14; }
+  .ef-character-grid[data-ef-reveal-rows="15"] { --ef-reveal-rows: 15; }
+  .ef-character-grid[data-ef-reveal-rows="16"] { --ef-reveal-rows: 16; }
+  .ef-character-grid[data-ef-reveal-rows="17"] { --ef-reveal-rows: 17; }
+  .ef-character-grid[data-ef-reveal-rows="18"] { --ef-reveal-rows: 18; }
+  .ef-character-grid[data-ef-reveal-rows="19"] { --ef-reveal-rows: 19; }
+  .ef-character-grid[data-ef-reveal-rows="20"] { --ef-reveal-rows: 20; }
+  .ef-character-grid[data-ef-reveal-rows="21"] { --ef-reveal-rows: 21; }
+  .ef-character-grid[data-ef-reveal-rows="22"] { --ef-reveal-rows: 22; }
+  .ef-character-grid[data-ef-reveal-rows="23"] { --ef-reveal-rows: 23; }
+  .ef-character-grid[data-ef-reveal-rows="24"] { --ef-reveal-rows: 24; }
+  .ef-character-grid[data-ef-reveal-rows="25"] { --ef-reveal-rows: 25; }
+  .ef-character-grid[data-ef-reveal-rows="26"] { --ef-reveal-rows: 26; }
+  .ef-character-grid[data-ef-reveal-rows="27"] { --ef-reveal-rows: 27; }
+  .ef-character-grid[data-ef-reveal-rows="28"] { --ef-reveal-rows: 28; }
+  .ef-character-grid[data-ef-reveal-rows="29"] { --ef-reveal-rows: 29; }
+  .ef-character-grid[data-ef-reveal-rows="30"] { --ef-reveal-rows: 30; }
+  .ef-character-grid[data-ef-reveal-rows="31"] { --ef-reveal-rows: 31; }
+  .ef-character-grid[data-ef-reveal-rows="32"] { --ef-reveal-rows: 32; }
+  .ef-character-grid[data-ef-reveal-rows="33"] { --ef-reveal-rows: 33; }
+  .ef-character-grid[data-ef-reveal-rows="34"] { --ef-reveal-rows: 34; }
+  .ef-character-grid[data-ef-reveal-rows="35"] { --ef-reveal-rows: 35; }
+  .ef-character-grid[data-ef-reveal-rows="36"] { --ef-reveal-rows: 36; }
+  .ef-character-grid[data-ef-reveal-rows="37"] { --ef-reveal-rows: 37; }
+  .ef-character-grid[data-ef-reveal-rows="38"] { --ef-reveal-rows: 38; }
+  .ef-character-grid[data-ef-reveal-rows="39"] { --ef-reveal-rows: 39; }
+  .ef-character-grid[data-ef-reveal-rows="40"] { --ef-reveal-rows: 40; }
+  .ef-character-grid[data-ef-reveal-rows="41"] { --ef-reveal-rows: 41; }
+  .ef-character-grid[data-ef-reveal-rows="42"] { --ef-reveal-rows: 42; }
+  .ef-character-grid[data-ef-reveal-rows="43"] { --ef-reveal-rows: 43; }
+  .ef-character-grid[data-ef-reveal-rows="44"] { --ef-reveal-rows: 44; }
+  .ef-character-grid[data-ef-reveal-rows="45"] { --ef-reveal-rows: 45; }
+  .ef-character-grid[data-ef-reveal-rows="46"] { --ef-reveal-rows: 46; }
+  .ef-character-grid[data-ef-reveal-rows="47"] { --ef-reveal-rows: 47; }
+  .ef-character-grid[data-ef-reveal-rows="48"] { --ef-reveal-rows: 48; }
+  .ef-character-grid[data-ef-reveal-rows="49"] { --ef-reveal-rows: 49; }
+  .ef-character-grid[data-ef-reveal-rows="50"] { --ef-reveal-rows: 50; }
   :where(.ef-character-grid) [data-ef-row="1"] { --ef-row: 1; }
   :where(.ef-character-grid) [data-ef-row="2"] { --ef-row: 2; }
   :where(.ef-character-grid) [data-ef-row="3"] { --ef-row: 3; }

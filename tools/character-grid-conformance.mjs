@@ -1,5 +1,5 @@
 // Static conformance checks for CharacterGrid markup
-// (requirements/CHARACTER-GRID.md, rules CG-1 to CG-15).
+// (requirements/CHARACTER-GRID.md, rules CG-1 to CG-16).
 //
 // These rules cannot be enforced by CSS: a collision or an out-of-bounds run
 // renders, it is simply wrong. They are therefore checked on the canonical
@@ -60,6 +60,7 @@ export const splitGrids = (html) => {
     const end = starts[index + 1]?.index ?? Infinity;
     const members = elements.filter((element) => element.index > grid.index && element.index < end);
     return {
+      attributes: grid.attributes,
       rows: integer(grid.attributes["data-ef-rows"]),
       columns: integer(grid.attributes["data-ef-columns"]),
       narrow: grid.attributes["data-ef-narrow"] ?? "contained",
@@ -267,6 +268,26 @@ export const messageErrors = (grid) => [
     .map((run) => `CG-15 ${run.id} system status needs role status`)
 ];
 
+// CG-16 SequentialReveal is opt-in, bounded, and only stages protected text.
+export const REVEAL_STATES = Object.freeze(["sequential", "complete", "static"]);
+export const revealErrors = (grid) => {
+  const state = grid.attributes?.["data-ef-reveal"];
+  const rows = grid.attributes?.["data-ef-reveal-rows"];
+  const staged = grid.runs.filter((run) => run.attributes["data-ef-reveal-run"] !== undefined);
+  return [
+    ...(state === undefined || REVEAL_STATES.includes(state)
+      ? []
+      : [`CG-16 data-ef-reveal must be one of ${REVEAL_STATES.join(", ")}`]),
+    ...(rows === undefined || (Number.isInteger(Number(rows)) && Number(rows) >= 1 && Number(rows) <= grid.rows)
+      ? []
+      : [`CG-16 data-ef-reveal-rows must be an integer 1..${grid.rows}`]),
+    ...staged
+      .filter((run) => !run.classes.includes("ef-character-grid__text"))
+      .map((run) => `CG-16 ${run.id} may not be staged: only protected text runs can reveal`),
+    ...(staged.length > 0 && state === undefined ? ["CG-16 staged runs need data-ef-reveal on the grid"] : [])
+  ];
+};
+
 export const gridErrors = (grid) => [
   ...geometryErrors(grid),
   ...boundsErrors(grid),
@@ -278,7 +299,8 @@ export const gridErrors = (grid) => [
   ...tableErrors(grid),
   ...touchErrors(grid),
   ...keyErrors(grid),
-  ...messageErrors(grid)
+  ...messageErrors(grid),
+  ...revealErrors(grid)
 ];
 
 export const checkHtml = (html) =>

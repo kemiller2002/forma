@@ -125,5 +125,6 @@ export const componentMeta = {
   "character-grid-field": ["Character grid field", "Input", "Native HTML", "Protected text and native editable fields placed on a character grid with explicit capacity, preceding labels, and shape-based required, invalid, disabled, and read-only cues."],
   "character-grid-keys": ["Character grid keys", "Navigation & commands", "Application / Limen", "Enter, Clear, Reset, PF1-PF24, and named action affordances as native buttons with visible key names; the application owns what each key does."],
   "character-grid-status": ["Character grid status", "State & feedback", "Application state", "Message and system-status live regions on a character grid with a visible severity word and shape cues that survive forced colors."],
+  "character-grid-reveal": ["Character grid reveal", "Motion & presentation", "Application / Limen", "Optional SequentialReveal presentation: a row-major clip mask over protected text already in the DOM, static by default and under reduced motion; orchestration stays in the application."],
   "work-queue": ["Work queue", "State & feedback", "Ordo / application", "Attention-first list of unresolved work with reason, context, and application-supplied legal actions."]
 };

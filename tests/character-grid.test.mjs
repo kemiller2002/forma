@@ -154,3 +154,18 @@ test("CG-15 messages need a live role, a known severity, and a visible severity 
   assert.ok(hasRule(errorsFor(message('role="alert" data-ef-severity="error"', "Failed")), "CG-15"));
   assert.ok(hasRule(errorsFor('<p class="ef-character-grid__status" data-ef-row="6" data-ef-col="1" data-ef-len="5">READY</p>'), "CG-15"));
 });
+
+test("CG-16 reveal is opt-in, bounded, and stages protected text only", () => {
+  const staged = '<p class="ef-character-grid__text" data-ef-reveal-run data-ef-row="2" data-ef-col="1" data-ef-len="5">HELLO</p>';
+  const sequential = 'data-ef-rows="6" data-ef-columns="20" data-ef-reveal="sequential" data-ef-reveal-rows="2"';
+  assert.deepEqual(errorsFor(staged, sequential), []);
+  assert.ok(hasRule(errorsFor(staged), "CG-16"), "staged runs need an opted-in grid");
+  assert.ok(hasRule(errorsFor(staged, 'data-ef-rows="6" data-ef-columns="20" data-ef-reveal="typewriter"'), "CG-16"));
+  assert.ok(hasRule(errorsFor(staged, 'data-ef-rows="6" data-ef-columns="20" data-ef-reveal="sequential" data-ef-reveal-rows="9"'), "CG-16"));
+  for (const run of [
+    '<span class="ef-character-grid__value" data-ef-reveal-run data-ef-row="2" data-ef-col="1" data-ef-len="5">1,204</span>',
+    '<p class="ef-character-grid__message" role="status" data-ef-severity="information" data-ef-reveal-run data-ef-row="2" data-ef-col="1" data-ef-len="20"><span class="ef-character-grid__severity"><span>INFO</span></span> Ready</p>'
+  ]) {
+    assert.ok(hasRule(errorsFor(run, sequential), "CG-16"), run);
+  }
+});

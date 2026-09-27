@@ -253,9 +253,43 @@ Forma **presents** action affordances. It does not implement them.
 | Runtime length | Reserve rows with `data-ef-height` when messages may be long; Forma wraps within the run and never clips (GAP-TCG-09). |
 | System status | `.ef-character-grid__status` with `role="status"`; `.ef-character-grid__indicator` shows states such as input inhibited. Whether input is actually inhibited (for example, disabling fields while waiting) is application behavior. |
 
+## SequentialReveal presentation
+
+Implements the presentation part of Visual Engineering `CN-VE-TCG-2026-F9F1`.
+SequentialReveal is a **new Echelon behavior**, not authentic IBM 3270
+behavior, and it is never required.
+
+```html
+<div class="ef-character-grid" data-ef-rows="8" data-ef-columns="60"
+     data-ef-reveal="sequential" data-ef-reveal-rows="3">
+  …
+  <h2 class="ef-character-grid__text" data-ef-reveal-run data-ef-row="1" data-ef-col="23" data-ef-len="15">ECHELON FOUNDRY</h2>
+```
+
+| Concern | Contract |
+| --- | --- |
+| Default | Static. Nothing animates unless the grid has `data-ef-reveal="sequential"` **and** a run has `data-ef-reveal-run`. |
+| What may reveal | Only `.ef-character-grid__text` runs (CG-16). Values, fields, keys, messages, status, and tables are never staged; the CSS selector cannot match them. |
+| Mechanism | A stepped `clip-path` mask over text already in the DOM (`steps(len)`, one step per character). The text is in the accessibility tree and in source order from time zero; staged text is not a live region. |
+| Order | Delay derives from the run's position: `((row − 1) × (columns × char + line) + (col − 1) × char) × scale`. Reveal order is therefore row-major order: left to right, then top to bottom. |
+| Timing tokens | `--ef-reveal-char-ms` (12), `--ef-reveal-line-ms` (40), `--ef-reveal-max-ms` (1500) on `.ef-character-grid`. `data-ef-reveal-rows` limits the timing window to the first N rows. |
+| Cap | `scale = min(1, max ÷ (rows × (columns × char + line)))`: delays and durations are compressed proportionally so the whole reveal ends within the cap, well under WCAG 2.2.2's five seconds. |
+| Reduced motion | `prefers-reduced-motion: reduce` (and print) removes the animation and the mask: immediate, static presentation. |
+| Interruption | The application/Limen sets `data-ef-reveal="complete"` on the grid on any key, pointer, or focus input (without consuming that input). `complete` is a static state. |
+| Replay / restart | The application/Limen removes and re-adds `data-ef-reveal="sequential"` (or renders a new screen). Forma never loops. The application must not replay on re-render of unchanged content. |
+| Why interruption is not CSS | A CSS-only interruption (for example `:focus-within { animation: none }`) is not sticky: when focus leaves, the animation is re-applied and replays or re-hides text, which violates the behavior's "never rewind, never repeat" rules. |
+
+**Relationship to the reference model.** Visual Engineering's
+`scripts/sequential-reveal.mjs` is the normative model. Forma's CSS is
+equivalent to that model with `skipBlank: false` (timing is derived from cell
+position, so blank cells cost time) and exclusions expressed structurally.
+Per-character blank skipping requires computing cumulative timing from
+content, which is runtime work: an application that needs it sets
+`animation-delay`/`animation-duration` from the model through the CSSOM.
+
 ## Conformance checking
 
-`tools/character-grid-conformance.mjs` checks CG-1 to CG-15 on any HTML file:
+`tools/character-grid-conformance.mjs` checks CG-1 to CG-16 on any HTML file:
 
 ```bash
 node tools/character-grid-conformance.mjs patterns/character-grid.html
@@ -276,6 +310,7 @@ declared coordinates at 1280, 390, and 320 CSS px and at 200 % text size.
 | GAP-TCG-02 field width tied to maximum length | Closed: `maxlength` = `data-ef-len` = rendered cells. |
 | GAP-TCG-08 field referencing hint and message | Closed: `aria-describedby` with several IDs. |
 | GAP-TCG-03 named keyboard actions presented separately from behavior | Closed by `.ef-character-grid__key`. |
+| GAP-TCG-04 staged text reveal with a static fallback | Closed for presentation by `data-ef-reveal`; orchestration remains application/Limen. |
 | GAP-TCG-09 runtime message length | Partially closed: multi-row message runs wrap and never clip; the length policy remains application content. |
 | GAP-TCG-06 wide-glyph (two-cell) and right-to-left grids | Open. Forma does not assign two cells to wide glyphs. |
 | GAP-TCG-11 text-spacing overrides vs fixed cells | New; open (see above). |

@@ -32,6 +32,7 @@ export const generateCoordinateRules = () => [
   BEGIN,
   ...geometry("rows", "grid-rows", range(1, LIMITS.rows)),
   ...geometry("columns", "grid-columns", range(1, LIMITS.columns)),
+  ...geometry("reveal-rows", "reveal-rows", range(1, LIMITS.rows)),
   ...mapping("row", "row", range(1, LIMITS.rows)),
   ...mapping("col", "col", range(1, LIMITS.columns)),
   ...mapping("len", "len", range(1, LIMITS.columns)),
