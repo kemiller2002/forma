@@ -82,13 +82,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "accent-neutral",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-DARK-TECHNICAL",
@@ -368,13 +373,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "muted-professional",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-HIGH-CONTRAST",
@@ -404,13 +414,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "high-contrast",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-DARK-RESTRAINED",
@@ -584,13 +599,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "operations-salience",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     }
   ]
 }
