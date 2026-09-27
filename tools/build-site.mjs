@@ -400,6 +400,9 @@ const agentBody = `<main id="main" class="content-section agent-page">
     <li>Reduced-motion and forced-colors behavior still applies on mobile.</li>
   </ul>
 
+  <h2>Character grids</h2>
+  <p>For terminal-style, keyboard-first screens use the CharacterGrid family (<code>patterns/character-grid*.html</code>). Declare cell coordinates, write runs in row-major order, keep fields native, and leave key mapping, Enter/Clear/Reset/PF processing, transitions, and reveal orchestration to Limen/application code. See <code>docs/CHARACTER-GRID-AUTHORING.md</code>.</p>
+
   <h2>Build and verify</h2>
   <pre><code>npm install
 npm run build

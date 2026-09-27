@@ -245,3 +245,16 @@ test("every GH-44 requirement maps to an existing test", () => {
     }
   }
 });
+
+test("the authoring guide documents every required example and integration boundary", () => {
+  const guide = fs.readFileSync(path.join(root, "docs", "CHARACTER-GRID-AUTHORING.md"), "utf8");
+  for (const topic of [
+    "## 1. The grid", "## 2. Protected text", "## 3. Editable fields", "## 4. Status and messages",
+    "## 5. Action keys", "## 6. Deterministic focus order", "## 7. The 3270 profile", "## 8. SequentialReveal",
+    "### Physical keys", "### Enter, PF keys, and Clear", "**Reset**", "### Screen transitions", "### Reveal orchestration",
+    "IBM 3270", "IBM 5250", "DOS / text mode", "BBS-style", "Modern character grid"
+  ]) {
+    assert.ok(guide.includes(topic), `authoring guide is missing: ${topic}`);
+  }
+  assert.match(guide, /application code[^]*not\s+part of Forma/i);
+});

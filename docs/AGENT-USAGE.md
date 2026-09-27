@@ -206,6 +206,31 @@ When adding a pattern:
    the public design-system contract.
 
 
+## Character grids (terminal-style screens)
+
+When a screen is keyboard-first and its information model depends on fixed
+character positions (IBM 3270/5250-style, text-mode, TUI, or modern
+character-grid tools), use the CharacterGrid family instead of inventing a
+terminal component:
+
+1. read `requirements/CHARACTER-GRID.md` and `docs/CHARACTER-GRID-AUTHORING.md`;
+2. start from `patterns/character-grid*.html`; the three-screen reference is
+   `patterns/character-grid-workflow.html`;
+3. declare geometry and `data-ef-row/col/len` per run, and write runs in
+   row-major order — never use positive `tabindex` or inline `style`;
+4. fields are native inputs with `maxlength` = `data-ef-len` and a preceding
+   `<label for>`; protected values are text, never `readonly` inputs;
+5. keys are native buttons (`data-ef-action`, `<kbd>`), Enter first, Reset
+   `type="button"`, never `type="reset"`;
+6. key mapping, Enter/Clear/Reset/PF processing, transitions, input
+   inhibition, and reveal orchestration are Limen/application behavior;
+   legality is Ordo;
+7. profiles (`data-ef-profile="ibm-3270"`) change presentation only;
+   SequentialReveal is optional, protected-text-only, and static under
+   reduced motion;
+8. run `node tools/character-grid-conformance.mjs` on your markup, plus
+   `npm run test:character-grid`.
+
 ## Aegis fault presentation
 
 When presenting a fault produced by Aegis:

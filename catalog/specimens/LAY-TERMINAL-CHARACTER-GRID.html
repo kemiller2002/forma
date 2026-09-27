@@ -1,0 +1,40 @@
+<main class="ef-stack" data-layout-id="LAY-TERMINAL-CHARACTER-GRID">
+<div class="ef-character-grid" data-ef-profile="ibm-3270" data-ef-rows="24" data-ef-columns="80" data-ef-narrow="contained" data-ef-reveal="sequential" data-ef-reveal-rows="1">
+  <div class="ef-character-grid__viewport" role="region" aria-labelledby="lay-tcg-cinq-title" tabindex="0">
+    <form class="ef-character-grid__surface">
+      <span class="ef-character-grid__text" data-ef-row="1" data-ef-col="2" data-ef-len="4">CINQ</span>
+      <h1 class="ef-character-grid__text" id="lay-tcg-cinq-title" data-ef-reveal-run data-ef-emphasis="intensified" data-ef-row="1" data-ef-col="33" data-ef-len="16">CUSTOMER INQUIRY</h1>
+      <span class="ef-character-grid__text" data-ef-row="1" data-ef-col="64" data-ef-len="5">Date:</span>
+      <span class="ef-character-grid__value" data-ef-row="1" data-ef-col="70" data-ef-len="10">2026-09-27</span>
+      <span class="ef-character-grid__text" data-ef-row="2" data-ef-col="2" data-ef-len="7">System:</span>
+      <span class="ef-character-grid__value" data-ef-row="2" data-ef-col="10" data-ef-len="8">ECHT01</span>
+      <span class="ef-character-grid__text" data-ef-row="2" data-ef-col="60" data-ef-len="9">Operator:</span>
+      <span class="ef-character-grid__value" data-ef-row="2" data-ef-col="70" data-ef-len="8">OP0142</span>
+      <p class="ef-character-grid__text" data-ef-row="4" data-ef-col="2" data-ef-len="52">Enter one or more search criteria, then press Enter.</p>
+      <label class="ef-character-grid__label" for="lay-tcg-cinq-custno" data-ef-row="6" data-ef-col="2" data-ef-len="23">Customer number<span class="ef-character-grid__leader" aria-hidden="true"> . . . .</span></label>
+      <input class="ef-character-grid__field" id="lay-tcg-cinq-custno" name="custno" type="text" maxlength="10" autocomplete="off" inputmode="numeric" data-ef-row="6" data-ef-col="26" data-ef-len="10">
+      <label class="ef-character-grid__label" for="lay-tcg-cinq-last" data-ef-row="7" data-ef-col="2" data-ef-len="23">Last name<span class="ef-character-grid__leader" aria-hidden="true"> . . . . . . .</span></label>
+      <input class="ef-character-grid__field" id="lay-tcg-cinq-last" name="last" type="text" maxlength="20" autocomplete="off" data-ef-row="7" data-ef-col="26" data-ef-len="20">
+      <label class="ef-character-grid__label" for="lay-tcg-cinq-first" data-ef-row="8" data-ef-col="2" data-ef-len="23">First name<span class="ef-character-grid__leader" aria-hidden="true">  . . . . . .</span></label>
+      <input class="ef-character-grid__field" id="lay-tcg-cinq-first" name="first" type="text" maxlength="15" autocomplete="off" data-ef-row="8" data-ef-col="26" data-ef-len="15">
+      <label class="ef-character-grid__label" for="lay-tcg-cinq-dob" data-ef-row="9" data-ef-col="2" data-ef-len="23">Date of birth<span class="ef-character-grid__leader" aria-hidden="true"> . . . . .</span></label>
+      <input class="ef-character-grid__field" id="lay-tcg-cinq-dob" name="dob" type="text" maxlength="10" autocomplete="off" aria-describedby="lay-tcg-cinq-dob-hint" data-ef-row="9" data-ef-col="26" data-ef-len="10">
+      <span class="ef-character-grid__text" id="lay-tcg-cinq-dob-hint" data-ef-emphasis="muted" data-ef-row="9" data-ef-col="38" data-ef-len="12">(YYYY-MM-DD)</span>
+      <label class="ef-character-grid__label" for="lay-tcg-cinq-postal" data-ef-row="10" data-ef-col="2" data-ef-len="23">Postal code<span class="ef-character-grid__leader" aria-hidden="true"> . . . . . .</span></label>
+      <input class="ef-character-grid__field" id="lay-tcg-cinq-postal" name="postal" type="text" maxlength="10" autocomplete="off" data-ef-row="10" data-ef-col="26" data-ef-len="10">
+      <label class="ef-character-grid__label" for="lay-tcg-cinq-acct" data-ef-row="11" data-ef-col="2" data-ef-len="23">Account number<span class="ef-character-grid__leader" aria-hidden="true">  . . . .</span></label>
+      <input class="ef-character-grid__field" id="lay-tcg-cinq-acct" name="acct" type="text" maxlength="14" autocomplete="off" data-ef-row="11" data-ef-col="26" data-ef-len="14">
+      <p class="ef-character-grid__text" data-ef-row="13" data-ef-col="2" data-ef-len="75">At least one criterion is required. Last names match from the first letter.</p>
+      <p class="ef-character-grid__message" id="lay-tcg-cinq-message" role="status" data-ef-severity="information" data-ef-row="21" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__severity"><span>INFO</span></span> CINQ000I Type search criteria and press Enter.</p>
+      <div class="ef-character-grid__group" role="group" aria-label="Function keys">
+        <button class="ef-character-grid__key" type="submit" name="action" value="enter" data-ef-action="enter" data-ef-row="22" data-ef-col="2" data-ef-len="12"><kbd>Enter</kbd>=Search</button>
+        <button class="ef-character-grid__key" type="submit" name="action" value="clear" formnovalidate data-ef-action="clear" data-ef-row="22" data-ef-col="16" data-ef-len="11"><kbd>Clear</kbd>=Erase</button>
+        <button class="ef-character-grid__key" type="button" data-ef-action="reset" data-ef-row="22" data-ef-col="29" data-ef-len="12"><kbd>Reset</kbd>=Unlock</button>
+        <button class="ef-character-grid__key" type="submit" name="action" value="pf1" formnovalidate data-ef-action="pf1" data-ef-row="22" data-ef-col="43" data-ef-len="8"><kbd>PF1</kbd>=Help</button>
+        <button class="ef-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-ef-action="pf3" data-ef-row="22" data-ef-col="53" data-ef-len="8"><kbd>PF3</kbd>=Exit</button>
+      </div>
+      <p class="ef-character-grid__status" role="status" data-ef-row="24" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__indicator"><span>READY</span></span></p>
+    </form>
+  </div>
+</div>
+</main>
