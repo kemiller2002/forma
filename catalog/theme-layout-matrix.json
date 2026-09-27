@@ -54,5 +54,13 @@
     "keyboard focus",
     "automated WCAG A/AA"
   ],
-  "status": "supported"
+  "status": "supported",
+  "findings": [
+    {
+      "id": "TL-001",
+      "status": "fixed",
+      "summary": "Inline Canvas/CanvasText in spatial, triage, and live-operation specimens overrode dark-theme tokens and created contrast failures.",
+      "resolution": "Removed specimen-level system colors; forced-color authority remains in Forma CSS media rules."
+    }
+  ]
 }
