@@ -1,0 +1,596 @@
+{
+  "version": "1.0",
+  "source": "Visual Engineering color research",
+  "supportStates": [
+    "observed",
+    "partial",
+    "supported",
+    "verified"
+  ],
+  "evidencePolicy": {
+    "principle": "Color meaning is relational and context-dependent. Theme names describe composition intent, not universal emotional effects.",
+    "requirements": [
+      "text and consequential state must not rely on color alone",
+      "contrast must be tested in rendered context",
+      "forced-colors must preserve semantics",
+      "CVD survivability is required when hue distinguishes categories or states",
+      "cultural and domain associations require explicit evidence before being treated as meaning"
+    ]
+  },
+  "families": [
+    {
+      "id": "THEME-NEUTRAL-EDITORIAL",
+      "name": "Neutral editorial",
+      "palette": "light neutral surfaces, dark text, restrained accent",
+      "tasks": [
+        "reading",
+        "review",
+        "long-form"
+      ],
+      "perceptualIntent": "reduces chromatic competition so typography and structure carry hierarchy",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-ACCENT-NEUTRAL",
+      "name": "High-chroma accent on neutral",
+      "palette": "neutral field with one controlled high-chroma accent",
+      "tasks": [
+        "action emphasis",
+        "navigation",
+        "status focus"
+      ],
+      "perceptualIntent": "creates relative salience through chroma contrast; accent budget must remain bounded",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-DARK-TECHNICAL",
+      "name": "Dark technical",
+      "palette": "low-luminance surfaces with restrained luminous accents",
+      "tasks": [
+        "monitoring",
+        "technical work",
+        "low-light contexts"
+      ],
+      "perceptualIntent": "supports strong luminance separation when contrast and glare are controlled",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-WARM-EARTH",
+      "name": "Warm earth",
+      "palette": "warm neutrals with ochre, umber, clay, or muted green relationships",
+      "tasks": [
+        "editorial",
+        "culinary",
+        "craft contexts"
+      ],
+      "perceptualIntent": "uses low-to-moderate chroma and warm relationships; associations are context and culture dependent",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-COOL-INSTITUTIONAL",
+      "name": "Cool institutional",
+      "palette": "cool neutrals with restrained blue/cyan family accents",
+      "tasks": [
+        "administrative",
+        "information",
+        "structured workflows"
+      ],
+      "perceptualIntent": "supports clear figure-ground and conventional informational signaling without assuming inherent trust",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-MONO-SEMANTIC",
+      "name": "Monochrome plus semantic accents",
+      "palette": "near-monochrome base with color reserved for explicit semantic state",
+      "tasks": [
+        "dense operations",
+        "evidence review",
+        "expert tools"
+      ],
+      "perceptualIntent": "maximizes separation between structural styling and semantic color",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-COMPLEMENTARY-ENERGY",
+      "name": "Complementary high-separation",
+      "palette": "opposing hue families with controlled chroma and luminance",
+      "tasks": [
+        "comparison",
+        "campaign/editorial emphasis"
+      ],
+      "perceptualIntent": "creates strong hue separation but requires careful hierarchy and CVD checks",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-ANALOGOUS-COHESIVE",
+      "name": "Analogous restrained",
+      "palette": "neighboring hue families with luminance-driven hierarchy",
+      "tasks": [
+        "narrative",
+        "calm information spaces",
+        "brand expression"
+      ],
+      "perceptualIntent": "keeps hue transitions close, making luminance and structure responsible for critical distinctions",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-SPLIT-COMPLEMENTARY",
+      "name": "Split complementary",
+      "palette": "base hue plus two separated counter-hues",
+      "tasks": [
+        "multi-category emphasis",
+        "editorial systems"
+      ],
+      "perceptualIntent": "permits multiple accent roles with less direct opposition than a strict complementary pair",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-MUTED-PROFESSIONAL",
+      "name": "Muted/desaturated",
+      "palette": "low-chroma surfaces and accents with explicit luminance hierarchy",
+      "tasks": [
+        "business applications",
+        "dense information",
+        "review"
+      ],
+      "perceptualIntent": "reduces chromatic salience; must not let muted state colors lose functional contrast",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-HIGH-CONTRAST",
+      "name": "Black/white high contrast",
+      "palette": "extreme luminance separation with minimal decorative color",
+      "tasks": [
+        "accessibility-sensitive",
+        "verification",
+        "content-first"
+      ],
+      "perceptualIntent": "makes luminance the dominant separation mechanism and minimizes color dependence",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-DARK-RESTRAINED",
+      "name": "Dark restrained accent",
+      "palette": "dark neutral field with one low-area accent family",
+      "tasks": [
+        "focused work",
+        "preview",
+        "monitoring"
+      ],
+      "perceptualIntent": "uses area and luminance contrast to prevent accent saturation from flattening hierarchy",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-PAPER-INK",
+      "name": "Paper and ink",
+      "palette": "warm light surface, near-black text, print-derived restrained accents",
+      "tasks": [
+        "archival",
+        "reports",
+        "editorial"
+      ],
+      "perceptualIntent": "emphasizes text/surface contrast and material-like relationships without claiming physical equivalence",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-NATURE-DERIVED",
+      "name": "Nature-derived",
+      "palette": "earth neutrals with green/blue botanical or landscape relationships",
+      "tasks": [
+        "environmental",
+        "culinary",
+        "wellness-adjacent"
+      ],
+      "perceptualIntent": "uses familiar natural palettes while treating any emotional association as contextual",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-CLINICAL-LIGHT",
+      "name": "Clinical light",
+      "palette": "high-luminance neutral field with cool restrained semantic accents",
+      "tasks": [
+        "health information",
+        "laboratory",
+        "precision workflows"
+      ],
+      "perceptualIntent": "prioritizes legibility and explicit state separation; visual cleanliness must not imply certainty",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    },
+    {
+      "id": "THEME-OPERATIONS-SALIENCE",
+      "name": "Operations salience",
+      "palette": "neutral operational field with tightly budgeted warning/status accents",
+      "tasks": [
+        "monitoring",
+        "incident response",
+        "triage"
+      ],
+      "perceptualIntent": "reserves strongest chroma/luminance contrast for exceptions while preserving unknown vs failure distinctions",
+      "meaningCaveat": "Do not infer user emotion, credibility, safety, or trust from palette alone.",
+      "requiredChecks": [
+        "WCAG text/non-text contrast",
+        "color-independent state",
+        "forced colors",
+        "grayscale screening",
+        "CVD screening when hue carries category/state",
+        "light/dark context where applicable"
+      ],
+      "tokenMapping": [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "semantic state tokens"
+      ],
+      "status": "observed",
+      "evidence": [
+        "Visual Engineering Itten color contrasts",
+        "Project Atlas color vocabulary and mechanism taxonomy",
+        "Project Atlas perceptual color genome",
+        "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
+      ]
+    }
+  ]
+}
