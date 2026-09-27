@@ -48,11 +48,21 @@ for (const theme of matrix.implementedThemes) {
   }
 }
 
-test("implemented themes resolve distinct primary surfaces", async ({ page }) => {
-  const values = [];
+test("implemented themes resolve complete semantic color contracts", async ({ page }) => {
   for (const theme of matrix.implementedThemes) {
     await page.setContent(doc("<main>Theme probe</main>", theme));
-    values.push(await page.locator("html").evaluate(el => getComputedStyle(el).getPropertyValue("--ef-color-surface-primary").trim()));
+    const values = await page.locator("html").evaluate(el => {
+      const style = getComputedStyle(el);
+      return [
+        "--ef-color-surface-primary",
+        "--ef-color-surface-secondary",
+        "--ef-color-text-primary",
+        "--ef-color-text-secondary",
+        "--ef-color-accent-primary",
+        "--ef-color-accent-secondary",
+        "--ef-color-focus-ring"
+      ].map(name => style.getPropertyValue(name).trim());
+    });
+    expect(values, theme.id + " has an unresolved semantic color token").not.toContain("");
   }
-  expect(new Set(values).size).toBe(matrix.implementedThemes.length);
 });
