@@ -123,5 +123,7 @@ export const componentMeta = {
   "wizard": ["Wizard", "Navigation & commands", "Limen / Ordo", "Step-by-step workflow shell with current-step state, progress, validation hooks, resume, and mobile reduction."],
   "character-grid": ["Character grid", "Layout & workspace", "Application / Limen", "Fixed rows-by-columns grid of equal-width cells where every run declares its cell coordinates and source order is row-major order; contained horizontal scroll by default."],
   "character-grid-field": ["Character grid field", "Input", "Native HTML", "Protected text and native editable fields placed on a character grid with explicit capacity, preceding labels, and shape-based required, invalid, disabled, and read-only cues."],
+  "character-grid-keys": ["Character grid keys", "Navigation & commands", "Application / Limen", "Enter, Clear, Reset, PF1-PF24, and named action affordances as native buttons with visible key names; the application owns what each key does."],
+  "character-grid-status": ["Character grid status", "State & feedback", "Application state", "Message and system-status live regions on a character grid with a visible severity word and shape cues that survive forced colors."],
   "work-queue": ["Work queue", "State & feedback", "Ordo / application", "Attention-first list of unresolved work with reason, context, and application-supplied legal actions."]
 };

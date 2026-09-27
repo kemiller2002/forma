@@ -208,9 +208,54 @@ are rendered in `CanvasText`/`GrayText` (browser-tested).
   therefore `max(1.25em, 1.5rem)`: never below 24px. This is a deliberate
   accessibility cost to terminal density and applies to every profile.
 
+## Action keys
+
+```html
+<div class="ef-character-grid__group" role="group" aria-label="Function keys">
+  <button class="ef-character-grid__key" type="submit" name="action" value="enter" data-ef-action="enter"
+          data-ef-row="22" data-ef-col="2" data-ef-len="12"><kbd>Enter</kbd>=Search</button>
+  <button class="ef-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-ef-action="pf3"
+          data-ef-row="22" data-ef-col="53" data-ef-len="8"><kbd>PF3</kbd>=Exit</button>
+  <button class="ef-character-grid__key" type="button" data-ef-action="reset"
+          data-ef-row="23" data-ef-col="2" data-ef-len="12"><kbd>Reset</kbd>=Unlock</button>
+</div>
+```
+
+Forma **presents** action affordances. It does not implement them.
+
+| Concern | Contract |
+| --- | --- |
+| Element | Native `<button class="ef-character-grid__key">` with an explicit `type` (CG-14). Never a styled `span`. |
+| Identity | `data-ef-action` names the action. The vocabulary is open: `enter`, `clear`, `reset`, `pf1`…`pf24`, `pa1`…`pa3`, `help`, `roll-up`, `field-exit`, or any application name such as `export`. |
+| Visible key and label | `<kbd>` holds the key name; the separator and label are ordinary text. The accessible name is exactly the visible text ("PF3=Exit"). A modern profile may use a space instead of `=`. |
+| Enter | `type="submit"` and the **first** submit key in the form, so pressing Enter in any field submits through it (native implicit submission uses the form's first submit button) (CG-14). |
+| PF / PA / named keys | `type="submit"` with `name`/`value`, so the application reads `SubmitEvent.submitter` or the form data. Add `formnovalidate` where native validation must not block the action (Exit, Cancel, Help, paging). |
+| Clear | Presented as a submit key (`value="clear"`, `formnovalidate`). In the 3270, Clear erases locally *and* notifies the host; whether an application erases, notifies, or both is its behavior. |
+| Reset | `type="button"`. In the 3270 architecture Reset is a local keyboard function, not an attention identifier; it is application/Limen behavior (for example, unlocking input after an error). |
+| `type="reset"` | **Prohibited.** HTML form reset restores initial values; it is neither terminal Reset nor Clear. |
+| Unavailable | Native `disabled`; cue: strike-through plus muted text (GrayText in forced colors). Prefer omitting keys that are never available on a screen. |
+| Physical keys | Mapping F1–F24, Pause, Escape, etc. to these buttons is application/Limen behavior. When implemented, the application may add `aria-keyshortcuts` to the button. Do not bind bare printable characters (WCAG 2.1.4). Forma patterns do not declare shortcuts they cannot honor. |
+
+## Messages and system status
+
+```html
+<p class="ef-character-grid__message" role="alert" data-ef-severity="error"
+   data-ef-row="21" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__severity"><span>ERROR</span></span> BTX009E Transfer service did not respond.</p>
+<p class="ef-character-grid__status" role="status" data-ef-row="24" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__indicator" data-ef-state="inhibited"><span>X SYSTEM</span></span>  Input inhibited</p>
+```
+
+| Concern | Contract |
+| --- | --- |
+| Severities | `data-ef-severity`: `information`, `success`, `warning`, `validation`, `error` (CG-15). |
+| Live region | `role="status"` for information, success, and warning; `role="alert"` for validation and error that need immediate attention. The element must exist before its text changes; the application updates its content. |
+| Non-color cue | A visible severity word in `.ef-character-grid__severity` is required (CG-15). Shape cues add to it: underline (warning), double underline (validation), reverse video with an outline (error). In forced colors the reverse video becomes an outlined box. |
+| Field association | Fields reference the message with `aria-describedby` (and `aria-invalid="true"` when invalid). |
+| Runtime length | Reserve rows with `data-ef-height` when messages may be long; Forma wraps within the run and never clips (GAP-TCG-09). |
+| System status | `.ef-character-grid__status` with `role="status"`; `.ef-character-grid__indicator` shows states such as input inhibited. Whether input is actually inhibited (for example, disabling fields while waiting) is application behavior. |
+
 ## Conformance checking
 
-`tools/character-grid-conformance.mjs` checks CG-1 to CG-13 on any HTML file:
+`tools/character-grid-conformance.mjs` checks CG-1 to CG-15 on any HTML file:
 
 ```bash
 node tools/character-grid-conformance.mjs patterns/character-grid.html
@@ -230,5 +275,7 @@ declared coordinates at 1280, 390, and 320 CSS px and at 200 % text size.
 | GAP-TCG-07 positioned repeated-row table | Closed by `.ef-character-grid__table`. |
 | GAP-TCG-02 field width tied to maximum length | Closed: `maxlength` = `data-ef-len` = rendered cells. |
 | GAP-TCG-08 field referencing hint and message | Closed: `aria-describedby` with several IDs. |
+| GAP-TCG-03 named keyboard actions presented separately from behavior | Closed by `.ef-character-grid__key`. |
+| GAP-TCG-09 runtime message length | Partially closed: multi-row message runs wrap and never clip; the length policy remains application content. |
 | GAP-TCG-06 wide-glyph (two-cell) and right-to-left grids | Open. Forma does not assign two cells to wide glyphs. |
 | GAP-TCG-11 text-spacing overrides vs fixed cells | New; open (see above). |

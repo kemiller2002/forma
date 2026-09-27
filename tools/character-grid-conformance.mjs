@@ -1,5 +1,5 @@
 // Static conformance checks for CharacterGrid markup
-// (requirements/CHARACTER-GRID.md, rules CG-1 to CG-13).
+// (requirements/CHARACTER-GRID.md, rules CG-1 to CG-15).
 //
 // These rules cannot be enforced by CSS: a collision or an out-of-bounds run
 // renders, it is simply wrong. They are therefore checked on the canonical
@@ -47,6 +47,12 @@ export const parseElements = (html) =>
 
 const integer = (value) => (value === undefined ? undefined : Number(value));
 
+// Markup of an element up to its first matching close tag.
+const innerMarkup = (html, element) => {
+  const close = html.indexOf(`</${element.tag}>`, element.index);
+  return close === -1 ? "" : html.slice(element.index, close);
+};
+
 export const splitGrids = (html) => {
   const elements = parseElements(html);
   const starts = elements.filter((element) => element.classes.includes("ef-character-grid"));
@@ -63,6 +69,8 @@ export const splitGrids = (html) => {
         .filter((element) => element.attributes["data-ef-row"] !== undefined)
         .map((element) => ({
           ...element,
+          hasKbd: innerMarkup(html, element).includes("<kbd"),
+          hasSeverityWord: innerMarkup(html, element).includes("ef-character-grid__severity"),
           id: element.attributes.id ?? `${element.tag}@${element.index}`,
           row: integer(element.attributes["data-ef-row"]),
           col: integer(element.attributes["data-ef-col"]),
@@ -217,6 +225,48 @@ export const touchErrors = (grid) => {
     });
 };
 
+// CG-14 action keys are native buttons that present, not implement, actions.
+export const keyErrors = (grid) => {
+  const keys = grid.runs.filter((run) => run.classes.includes("ef-character-grid__key"));
+  const submits = keys.filter((key) => key.attributes.type === "submit");
+  const enter = keys.find((key) => key.attributes["data-ef-action"] === "enter");
+  return [
+    ...keys
+      .filter((key) => key.tag !== "button")
+      .map((key) => `CG-14 ${key.id} must be a native <button>`),
+    ...keys
+      .filter((key) => !["submit", "button"].includes(key.attributes.type))
+      .map((key) => `CG-14 ${key.id} needs an explicit type of submit or button (never reset)`),
+    ...keys
+      .filter((key) => !key.attributes["data-ef-action"])
+      .map((key) => `CG-14 ${key.id} needs data-ef-action naming the action`),
+    ...keys
+      .filter((key) => !key.hasKbd)
+      .map((key) => `CG-14 ${key.id} must show its key name in <kbd>`),
+    ...(enter && enter.attributes.type === "submit" && submits[0] !== enter
+      ? ["CG-14 the Enter key must be the first submit key so implicit submission uses it"]
+      : [])
+  ];
+};
+
+// CG-15 messages and status are live regions with a visible severity word.
+export const SEVERITIES = Object.freeze(["information", "success", "warning", "validation", "error"]);
+export const messageErrors = (grid) => [
+  ...grid.runs
+    .filter((run) => run.classes.includes("ef-character-grid__message"))
+    .flatMap((run) => [
+      ...(["status", "alert"].includes(run.attributes.role) ? [] : [`CG-15 ${run.id} needs role status or alert`]),
+      ...(SEVERITIES.includes(run.attributes["data-ef-severity"])
+        ? []
+        : [`CG-15 ${run.id} data-ef-severity must be one of ${SEVERITIES.join(", ")}`]),
+      ...(run.hasSeverityWord ? [] : [`CG-15 ${run.id} needs a visible .ef-character-grid__severity word`])
+    ]),
+  ...grid.runs
+    .filter((run) => run.classes.includes("ef-character-grid__status"))
+    .filter((run) => run.attributes.role !== "status")
+    .map((run) => `CG-15 ${run.id} system status needs role status`)
+];
+
 export const gridErrors = (grid) => [
   ...geometryErrors(grid),
   ...boundsErrors(grid),
@@ -226,7 +276,9 @@ export const gridErrors = (grid) => [
   ...fieldErrors(grid),
   ...semanticErrors(grid),
   ...tableErrors(grid),
-  ...touchErrors(grid)
+  ...touchErrors(grid),
+  ...keyErrors(grid),
+  ...messageErrors(grid)
 ];
 
 export const checkHtml = (html) =>

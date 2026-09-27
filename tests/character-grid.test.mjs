@@ -125,3 +125,32 @@ test("CG-13 short fields need trailing blank cells for the touch minimum", () =>
   const crowded = errorsFor(label + field + '<p class="ef-character-grid__text" data-ef-row="2" data-ef-col="8" data-ef-len="1">X</p>');
   assert.ok(hasRule(crowded, "CG-13"));
 });
+
+test("CG-14 keys are explicit native buttons with an action name and a visible key", () => {
+  const key = (attributes, content = "<kbd>PF3</kbd>=Exit") =>
+    `<button class="ef-character-grid__key" ${attributes} data-ef-row="3" data-ef-col="1" data-ef-len="8">${content}</button>`;
+  assert.deepEqual(errorsFor(key('type="submit" data-ef-action="pf3"')), []);
+  assert.ok(hasRule(errorsFor(key('type="reset" data-ef-action="reset"')), "CG-14"));
+  assert.ok(hasRule(errorsFor(key('data-ef-action="pf3"')), "CG-14"));
+  assert.ok(hasRule(errorsFor(key('type="submit"')), "CG-14"));
+  assert.ok(hasRule(errorsFor(key('type="submit" data-ef-action="pf3"', "PF3=Exit")), "CG-14"));
+  assert.ok(hasRule(errorsFor(`<span class="ef-character-grid__key" data-ef-action="pf3" data-ef-row="3" data-ef-col="1" data-ef-len="8"><kbd>PF3</kbd>=Exit</span>`), "CG-14"));
+});
+
+test("CG-14 Enter must be the first submit key so implicit submission uses it", () => {
+  const errors = errorsFor(`
+    <button class="ef-character-grid__key" type="submit" data-ef-action="pf3" data-ef-row="3" data-ef-col="1" data-ef-len="8"><kbd>PF3</kbd>=Exit</button>
+    <button class="ef-character-grid__key" type="submit" data-ef-action="enter" data-ef-row="3" data-ef-col="10" data-ef-len="8"><kbd>Enter</kbd>=Go</button>`);
+  assert.ok(errors.some(error => error.includes("first submit key")));
+});
+
+test("CG-15 messages need a live role, a known severity, and a visible severity word", () => {
+  const message = (attributes, content) =>
+    `<p class="ef-character-grid__message" ${attributes} data-ef-row="5" data-ef-col="1" data-ef-len="20">${content}</p>`;
+  const word = '<span class="ef-character-grid__severity"><span>ERROR</span></span> Failed';
+  assert.deepEqual(errorsFor(message('role="alert" data-ef-severity="error"', word)), []);
+  assert.ok(hasRule(errorsFor(message('data-ef-severity="error"', word)), "CG-15"));
+  assert.ok(hasRule(errorsFor(message('role="alert" data-ef-severity="red"', word)), "CG-15"));
+  assert.ok(hasRule(errorsFor(message('role="alert" data-ef-severity="error"', "Failed")), "CG-15"));
+  assert.ok(hasRule(errorsFor('<p class="ef-character-grid__status" data-ef-row="6" data-ef-col="1" data-ef-len="5">READY</p>'), "CG-15"));
+});

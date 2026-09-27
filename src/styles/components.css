@@ -3423,6 +3423,101 @@
   }
 
   /*
+   * Action keys: native buttons presenting a key name and a label. Forma
+   * presents them; the application/Limen owns what they do.
+   */
+  .ef-character-grid__key {
+    appearance: none;
+    box-sizing: border-box;
+    inline-size: 100%;
+    block-size: var(--ef-grid-row-pitch);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--ef-grid-protected);
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: 0;
+    text-align: start;
+    white-space: pre;
+    cursor: pointer;
+  }
+
+  .ef-character-grid__key kbd {
+    font: inherit;
+    font-weight: 700;
+    color: var(--ef-grid-emphasis);
+  }
+
+  .ef-character-grid__key:hover {
+    text-decoration: underline;
+  }
+
+  .ef-character-grid__key:focus-visible {
+    outline: 2px solid var(--ef-grid-focus);
+    outline-offset: 1px;
+  }
+
+  .ef-character-grid__key:disabled {
+    color: var(--ef-grid-muted);
+    text-decoration: line-through;
+    cursor: not-allowed;
+  }
+
+  .ef-character-grid__key:disabled kbd {
+    color: inherit;
+  }
+
+  /* Messages and system status: live regions with a visible severity word. */
+  .ef-character-grid__message {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    color: var(--ef-grid-information);
+  }
+
+  .ef-character-grid__severity {
+    font-weight: 700;
+  }
+
+  .ef-character-grid__message[data-ef-severity="success"] { color: var(--ef-grid-success); }
+  .ef-character-grid__message[data-ef-severity="warning"] { color: var(--ef-grid-warning); }
+  .ef-character-grid__message[data-ef-severity="validation"] { color: var(--ef-grid-validation); }
+  .ef-character-grid__message[data-ef-severity="error"] { color: var(--ef-grid-error); }
+
+  /* Shape cues in addition to the severity word. */
+  .ef-character-grid__message[data-ef-severity="warning"] .ef-character-grid__severity {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .ef-character-grid__message[data-ef-severity="validation"] .ef-character-grid__severity {
+    text-decoration: underline double;
+  }
+
+  .ef-character-grid__message[data-ef-severity="error"] .ef-character-grid__severity,
+  .ef-character-grid__indicator[data-ef-state="inhibited"] {
+    background: currentColor;
+    outline: 1px solid currentColor;
+  }
+
+  .ef-character-grid__message[data-ef-severity="error"] .ef-character-grid__severity > span,
+  .ef-character-grid__indicator[data-ef-state="inhibited"] > span {
+    color: var(--ef-grid-background);
+  }
+
+  .ef-character-grid__status {
+    color: var(--ef-grid-muted);
+    white-space: pre;
+  }
+
+  .ef-character-grid__indicator {
+    color: var(--ef-grid-emphasis);
+    font-weight: 700;
+  }
+
+  /*
    * Touch pitch: on narrow or coarse-pointer screens rows grow to a 44px
    * minimum so fields and keys remain usable targets. Columns stay 1ch.
    */
@@ -3432,7 +3527,8 @@
     }
 
     /* A field shorter than five cells must be followed by blank cells (CG-13). */
-    .ef-character-grid__field {
+    .ef-character-grid__field,
+    .ef-character-grid__key {
       min-inline-size: 2.75rem;
     }
   }
@@ -3487,8 +3583,25 @@
       color: GrayText;
     }
 
-    .ef-character-grid__field:focus-visible {
+    .ef-character-grid__field:focus-visible,
+    .ef-character-grid__key:focus-visible {
       outline-color: Highlight;
+    }
+
+    .ef-character-grid__key:disabled {
+      color: GrayText;
+    }
+
+    /* Reverse video is lost in forced colors; keep a visible box instead. */
+    .ef-character-grid__message[data-ef-severity="error"] .ef-character-grid__severity,
+    .ef-character-grid__indicator[data-ef-state="inhibited"] {
+      background: Canvas;
+      outline: 2px solid CanvasText;
+    }
+
+    .ef-character-grid__message[data-ef-severity="error"] .ef-character-grid__severity > span,
+    .ef-character-grid__indicator[data-ef-state="inhibited"] > span {
+      color: CanvasText;
     }
   }
 
