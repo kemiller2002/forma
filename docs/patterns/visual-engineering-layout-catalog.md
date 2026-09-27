@@ -244,3 +244,18 @@ Validation boundary:
 - claims about actual human attention require Visual Engineering measurement or human-subject evidence.
 
 Reference specimen: `catalog/specimens/LAY-ATTENTION-COMPETITION.html`.
+
+### 16. Terminal / character grid (`LAY-TERMINAL-CHARACTER-GRID`)
+
+A fixed rows × columns grid of equal-width cells for keyboard-first work where
+positions carry meaning. Relationships come from Visual Engineering
+(`LAY-TERMINAL-CHARACTER-GRID`, `CN-VE-TCG-2026-6CA0`); Forma implements them
+with the CharacterGrid family.
+
+Primitive contract:
+- declared geometry and per-run cell coordinates; source order = row-major order;
+- protected text vs native editable fields; action keys and live status regions;
+- contained, named, keyboard-reachable horizontal scroll by default, opt-in reflow, never page-level overflow;
+- profiles change presentation only.
+
+Specimen: `catalog/specimens/LAY-TERMINAL-CHARACTER-GRID.html` (status `supported`). See `requirements/CHARACTER-GRID.md`.

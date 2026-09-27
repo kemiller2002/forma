@@ -1,0 +1,33 @@
+{
+  "description": "GH-44 regression coverage matrix for CharacterGrid. Each requirement names test files and a substring of a test title that must exist in that file.",
+  "requirements": {
+    "coordinate placement": [["tests/browser/character-grid.spec.mjs", "runs land on their declared cells"]],
+    "grid bounds": [["tests/character-grid.test.mjs", "CG-3 and CG-4 reject out-of-bounds runs and row wrap"]],
+    "collision policy": [["tests/character-grid.test.mjs", "CG-5 rejects collisions"], ["tests/browser/character-grid-verification.spec.mjs", "collisions are not resolved by CSS"]],
+    "overflow": [["tests/character-grid.test.mjs", "CG-7 treats protected overflow as an authoring error"], ["tests/browser/character-grid-verification.spec.mjs", "runtime overflow is never clipped"]],
+    "field lengths": [["tests/browser/character-grid-field.spec.mjs", "field capacity equals its declared length"], ["tests/character-grid.test.mjs", "CG-8 requires native fields"]],
+    "protected fields": [["tests/browser/character-grid-field.spec.mjs", "protected values are text, not controls"], ["tests/character-grid.test.mjs", "CG-9 to CG-11"]],
+    "editable fields": [["tests/browser/character-grid-field.spec.mjs", "required, invalid, disabled, and read-only states"]],
+    "source order": [["tests/character-grid.test.mjs", "CG-6 rejects source order"], ["tests/browser/character-grid.spec.mjs", "reflow is opt-in and linearizes runs in source order"]],
+    "focus order": [["tests/browser/character-grid-keys-status.spec.mjs", "Tab reaches the field, then keys in row-major order"], ["tests/browser/character-grid-workflow.spec.mjs", "Customer Inquiry: deterministic Tab"]],
+    "Tab order": [["tests/browser/character-grid-field.spec.mjs", "Tab and Shift+Tab follow row-major order"]],
+    "Shift+Tab": [["tests/browser/character-grid-field.spec.mjs", "Tab and Shift+Tab follow row-major order"], ["tests/browser/character-grid-workflow.spec.mjs", "deterministic Tab and Shift+Tab"]],
+    "accessible names": [["tests/browser/character-grid-field.spec.mjs", "names that exclude decorative leaders"], ["tests/browser/character-grid-keys-status.spec.mjs", "accessible names are their visible text"]],
+    "semantic relationships": [["tests/browser/character-grid.spec.mjs", "the dl group keeps description-list semantics"], ["tests/browser/character-grid-workflow.spec.mjs", "dense rows keep header association"], ["tests/browser/character-grid-workflow.spec.mjs", "described by its hint and the message"]],
+    "24x80 integrity": [["tests/browser/character-grid-3270.spec.mjs", "24x80 integrity"]],
+    "32x80 integrity": [["tests/browser/character-grid-3270.spec.mjs", "32x80 integrity"], ["tests/character-grid.test.mjs", "the 3270 profile conforms at 24x80 and at 32x80"]],
+    "320px containment": [["tests/browser/character-grid.spec.mjs", "runs land on their declared cells"], ["tests/browser/character-grid-workflow.spec.mjs", "all three screens stay contained"], ["tests/browser/mobile.spec.mjs", "all canonical patterns reflow"]],
+    "390px containment": [["tests/browser/character-grid-3270.spec.mjs", "the 24x80 profile stays contained"], ["tests/browser/mobile.spec.mjs", "all canonical patterns reflow"]],
+    "page-level overflow": [["tests/browser/character-grid.spec.mjs", "the page never overflows"], ["tests/site-browser/mobile.spec.mjs", "generated site remains contained"]],
+    "200% text scaling": [["tests/browser/character-grid.spec.mjs", "at 200% text size"], ["tests/browser/character-grid-workflow.spec.mjs", "at 200% text size"]],
+    "text spacing": [["tests/browser/character-grid-verification.spec.mjs", "text-spacing overrides (GAP-TCG-11)"], ["tests/browser/character-grid-verification.spec.mjs", "text-spacing overrides: reflow"]],
+    "forced colors": [["tests/browser/character-grid-field.spec.mjs", "survive forced colors"], ["tests/browser/character-grid-keys-status.spec.mjs", "survive forced colors"], ["tests/browser/character-grid-3270.spec.mjs", "forced colors replace the profile palette"]],
+    "reduced motion": [["tests/browser/character-grid-reveal.spec.mjs", "prefers-reduced-motion presents everything immediately"]],
+    "SequentialReveal static fallback": [["tests/browser/character-grid-reveal.spec.mjs", "static is the default"], ["tests/browser/character-grid-reveal.spec.mjs", "data-ef-reveal=complete"]],
+    "focus not obscured": [["tests/browser/character-grid-verification.spec.mjs", "focus is never hidden by the contained scroller"]],
+    "target size": [["tests/browser/character-grid-field.spec.mjs", "meet the 44px target guideline"], ["tests/browser/character-grid-keys-status.spec.mjs", "keys meet the 44px target guideline"]],
+    "three-screen reference regression": [["tests/browser/character-grid-workflow.spec.mjs", "three distinct 24x80 screens"], ["tests/character-grid.test.mjs", "the three-screen reference workflow conforms in every rendered state"]],
+    "automated accessibility": [["tests/browser/character-grid-workflow.spec.mjs", "has no automatically detectable accessibility violations"]],
+    "zero runtime / no 3270 logic in primitives": [["tests/zero-runtime.test.mjs", "canonical HTML patterns contain no executable script"], ["tests/character-grid.test.mjs", "contain no 3270-specific logic"]]
+  }
+}

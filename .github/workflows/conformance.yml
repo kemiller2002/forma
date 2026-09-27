@@ -40,5 +40,8 @@ jobs:
       - name: Build Forma
         run: npm run build
 
+      - name: Check character-grid conformance
+        run: npm run test:character-grid
+
       - name: Run browser conformance
         run: npm run test:browser

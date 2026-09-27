@@ -1855,6 +1855,58 @@
           ]
         }
       }
+    },
+    {
+      "id": "LAY-TERMINAL-CHARACTER-GRID",
+      "name": "Terminal / character grid",
+      "tasks": [
+        "high-frequency keyboard data entry",
+        "record inquiry by key",
+        "verification of dense protected values",
+        "scanning dense repeated rows"
+      ],
+      "recognitionPath": [
+        "screen identity",
+        "record context",
+        "message row",
+        "fields or rows",
+        "action keys"
+      ],
+      "verificationRegions": [
+        "protected context values",
+        "field values before Enter",
+        "validation messages",
+        "amounts, dates, and statuses in rows",
+        "consequential keys"
+      ],
+      "composition": [
+        "character-grid",
+        "character-grid-field",
+        "character-grid-keys",
+        "character-grid-status",
+        "stack"
+      ],
+      "preservedRelationships": [
+        "row-major order = source order = focus order",
+        "label precedes and names its field",
+        "field capacity equals declared cells",
+        "no collisions and no row wrap",
+        "reserved message, key, and status rows",
+        "header-to-cell association in repeated rows"
+      ],
+      "narrowRecomposition": "contained, named, keyboard-reachable horizontal scroll preserving the grid; opt-in reflow to source order when positions carry no meaning; never page-level overflow",
+      "status": "supported",
+      "evidence": [
+        "Visual Engineering LAY-TERMINAL-CHARACTER-GRID",
+        "CN-VE-TCG-2026-6CA0",
+        "EX-VE-TCG-2026-5437",
+        "requirements/CHARACTER-GRID.md"
+      ],
+      "gaps": [
+        "GAP-TCG-06 wide-glyph and right-to-left grids",
+        "GAP-TCG-10 per-row selection fields",
+        "GAP-TCG-11 text-spacing overrides vs fixed cells"
+      ]
     }
   ],
   "verificationBaseline": {

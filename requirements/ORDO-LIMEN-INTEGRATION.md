@@ -228,3 +228,19 @@ Forma supplies a native-dialog visual/semantic contract. Limen/application code 
 If an application offers fault details, it creates an explicitly sanitized audience-specific view model before rendering. Raw technical fields never become a default Forma binding surface.
 
 See `requirements/AEGIS-FAULT-PRESENTATION.md` and `docs/AEGIS-INTEGRATION.md`.
+
+## CharacterGrid integration
+
+### GRID-LIMEN-001 Action keys
+Forma presents `.ef-character-grid__key` buttons with `data-ef-action`. Limen may map physical keys (F1–F24, Escape, …) to those buttons and add `aria-keyshortcuts` for mappings it installs. Submitting keys report their action through the native `SubmitEvent.submitter`.
+
+### GRID-LIMEN-002 Enter, Clear, Reset
+Enter, PF, PA, and named keys are application requests. Clear's local erase and/or host notification is application behavior. Reset is local recovery (`type="button"`) and sends nothing. Forma never uses `type="reset"` for either.
+
+### GRID-LIMEN-003 Transitions and inhibition
+Screen transitions, initial focus, input inhibition, and optional wraparound Tab are Limen/application behavior. Whether a transition is legal is Ordo/application-domain state.
+
+### GRID-LIMEN-004 SequentialReveal
+Limen starts a reveal only for new content, completes it (`data-ef-reveal="complete"`) on any input without consuming that input, and replays it only on explicit request. Reduced motion is enforced by Forma CSS and must not be overridden.
+
+See `requirements/CHARACTER-GRID.md` and `docs/CHARACTER-GRID-AUTHORING.md`.

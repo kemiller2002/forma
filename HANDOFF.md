@@ -49,3 +49,37 @@ Completed on `feature/aegis-fault-presentation`:
 - added requirement, catalog, cross-application, motion, accessibility, declarative-capability, and agent integration documentation.
 
 Validation note: this execution environment has repository write access through the GitHub connector but no networked repository checkout, so local `npm run check`, `npm run site:check`, and `./ros validate` cannot be truthfully claimed. A pull request should be used to run the repository's existing PR validation workflows before merge.
+
+## Terminal / CharacterGrid family — 2026-09-27
+
+Objective: GitHub #37 (#38–#45). A reusable, zero-runtime character-grid
+presentation family with IBM 3270 as the first reference profile.
+
+Completed on `claude/terminal-character-grid-ui-zz0q4q` (PR #46), one ROS work
+item and commit per issue (`GH-38` … `GH-45`):
+
+- patterns: `character-grid`, `character-grid-field`, `character-grid-keys`,
+  `character-grid-status`, `character-grid-reveal`, `character-grid-3270`,
+  `character-grid-workflow`;
+- CSS in `src/styles/components.css` (registered coordinate properties, a
+  generated coordinate block from `tools/character-grid-css.mjs`, profile
+  tokens, reveal);
+- `tools/character-grid-conformance.mjs` (rules CG-1…CG-16);
+- contract `requirements/CHARACTER-GRID.md`, guide
+  `docs/CHARACTER-GRID-AUTHORING.md`, catalog entries, agent usage;
+- tests: `tests/character-grid.test.mjs` (in the conformance workflow), seven
+  `tests/browser/character-grid*.spec.mjs` files, coverage matrix
+  `tests/character-grid-coverage.json`.
+
+Validation in the implementing session was Chromium only (Firefox/WebKit
+unavailable; CI runs them). Literal `npm run site:check` could not launch its
+pinned Chromium revision in that sandbox; the equivalent run with the local
+Chromium passed. See PR #46 for exact results.
+
+Open: GAP-TCG-06 (wide glyphs/RTL), GAP-TCG-10 (per-row selection fields),
+GAP-TCG-11 (text-spacing overrides vs fixed cells), layout family status is
+`supported` until a CI conformance run is recorded as `verified`; user
+testing of HY-VE-TCG-2026-9151/-8750 in Visual Engineering.
+
+Next action: confirm cross-engine CI, then record the catalog conformance run
+and promote `LAY-TERMINAL-CHARACTER-GRID` to `verified`.

@@ -15,6 +15,11 @@ const pages = [
   )
 ];
 
+// These tests visit every generated page in one test, so their budget must
+// grow with the catalog instead of relying on the 30s default.
+const perPageBudget = 1_500;
+const loopTimeout = pageCount => Math.max(30_000, pageCount * perPageBudget);
+
 const viewports = [
   { name: "compact phone", width: 320, height: 568 },
   { name: "modern phone", width: 390, height: 844 }
@@ -22,6 +27,7 @@ const viewports = [
 
 for (const viewport of viewports) {
   test(`generated site remains contained on ${viewport.name} (${viewport.width}px)`, async ({ page }) => {
+    test.setTimeout(loopTimeout(pages.length));
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
 
     for (const url of pages) {
@@ -89,6 +95,7 @@ for (const viewport of viewports) {
 
 
 test("generated Visual Engineering stress specimens remain contained on phones", async ({ page }) => {
+  test.setTimeout(loopTimeout(manifest.components.length * 2));
   for (const width of [320, 390]) {
     await page.setViewportSize({ width, height: 900 });
     for (const component of manifest.components) {

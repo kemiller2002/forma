@@ -1,3 +1,13 @@
+/*
+ * CharacterGrid coordinates (requirements/CHARACTER-GRID.md). Registered so
+ * that a run's coordinates never leak to its descendants.
+ */
+@property --ef-row { syntax: "<integer>"; inherits: false; initial-value: 1; }
+@property --ef-col { syntax: "<integer>"; inherits: false; initial-value: 1; }
+@property --ef-len { syntax: "<integer>"; inherits: false; initial-value: 1; }
+@property --ef-height { syntax: "<integer>"; inherits: false; initial-value: 1; }
+@property --ef-gutter { syntax: "<integer>"; inherits: true; initial-value: 1; }
+
 @layer echelon.components {
   /*
    * Public ef-* authoring tags are inert wrappers, not registered Custom
@@ -3171,4 +3181,1131 @@
     }
   }
 
+}
+
+
+@layer echelon.components {
+  /* CharacterGrid ------------------------------------------------------- */
+  /*
+   * A fixed rows x columns grid of equal-width cells. Every run declares its
+   * own (row, col, len[, height]) with data-ef-* attributes; source order is
+   * row-major order, so reading, focus, and visual order agree without
+   * tabindex. See requirements/CHARACTER-GRID.md.
+   */
+  .ef-character-grid {
+    --ef-grid-rows: 24;
+    --ef-grid-columns: 80;
+    --ef-grid-font-size: 1rem;
+    --ef-grid-line-height: 1.25;
+    /* 1.5rem floor: WCAG 2.2 SC 2.5.8 needs 24px targets in adjacent rows. */
+    --ef-grid-row-pitch: max(calc(var(--ef-grid-line-height) * 1em), 1.5rem);
+    --ef-grid-inset: 1ch;
+    --ef-grid-background: var(--ef-color-surface-primary, #f2efe7);
+    --ef-grid-foreground: var(--ef-color-text-primary, #171a18);
+    --ef-grid-protected: var(--ef-color-text-primary, #171a18);
+    --ef-grid-emphasis: var(--ef-color-text-heading, #202421);
+    --ef-grid-muted: var(--ef-color-text-secondary, #686d68);
+    --ef-grid-field: var(--ef-color-text-primary, #171a18);
+    --ef-grid-field-surface: var(--ef-color-surface-secondary, #e3e0d7);
+    --ef-grid-boundary: var(--ef-color-border-functional, #3a403c);
+    --ef-grid-focus: var(--ef-color-focus-ring, #171a18);
+    --ef-grid-information: var(--ef-color-text-primary, #171a18);
+    --ef-grid-success: var(--ef-color-text-primary, #171a18);
+    --ef-grid-warning: var(--ef-color-text-primary, #171a18);
+    --ef-grid-validation: var(--ef-color-text-primary, #171a18);
+    --ef-grid-error: var(--ef-color-text-primary, #171a18);
+    container: ef-character-grid / inline-size;
+    display: block;
+    max-inline-size: 100%;
+    min-inline-size: 0;
+    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    font-size: var(--ef-grid-font-size);
+  }
+
+  .ef-character-grid__viewport {
+    max-inline-size: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    background: var(--ef-grid-background);
+    color: var(--ef-grid-foreground);
+    border: 1px solid var(--ef-color-border-functional, #3a403c);
+  }
+
+  .ef-character-grid__viewport:focus-visible {
+    outline: 2px solid var(--ef-color-focus-ring, #171a18);
+    outline-offset: 2px;
+  }
+
+  .ef-character-grid__surface {
+    display: grid;
+    grid-template-columns: repeat(var(--ef-grid-columns), 1ch);
+    grid-template-rows: repeat(var(--ef-grid-rows), var(--ef-grid-row-pitch));
+    inline-size: max-content;
+    margin: 0;
+    padding: var(--ef-grid-inset);
+    font: inherit;
+    line-height: var(--ef-grid-row-pitch);
+    font-variant-ligatures: none;
+    font-kerning: none;
+    font-synthesis: none;
+    color: var(--ef-grid-protected);
+  }
+
+  /* Every direct child of the surface or of a group is a positioned run. */
+  :is(.ef-character-grid__surface, .ef-character-grid__group) > * {
+    grid-row: var(--ef-row) / span var(--ef-height);
+    grid-column: var(--ef-col) / span var(--ef-len);
+    min-inline-size: 0;
+    /* Runs ignore foundation measure and color rules for p, h*, label, etc. */
+    max-inline-size: none;
+    color: inherit;
+    overflow-wrap: normal;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: pre;
+    /* Overflow is an authoring error; it stays visible rather than hidden. */
+    overflow: visible;
+  }
+
+  /*
+   * A group is a semantic container (dl, role=group, section, ...) that spans
+   * the whole grid as a subgrid, so its children keep absolute coordinates.
+   */
+  :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__group {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    pointer-events: none;
+  }
+
+  .ef-character-grid__group > * {
+    pointer-events: auto;
+  }
+
+  .ef-character-grid__text[data-ef-emphasis="intensified"] {
+    color: var(--ef-grid-emphasis);
+    font-weight: 700;
+  }
+
+  .ef-character-grid__text[data-ef-emphasis="muted"] {
+    color: var(--ef-grid-muted);
+  }
+
+  .ef-character-grid__value {
+    color: var(--ef-grid-emphasis);
+  }
+
+  :is(.ef-character-grid__text, .ef-character-grid__value)[data-ef-align="end"] {
+    text-align: end;
+  }
+
+  .ef-character-grid__value[data-ef-state="missing"] {
+    font-style: italic;
+  }
+
+  /* Positioned repeated rows (a table placed as one run). */
+  .ef-character-grid__table > table {
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    inline-size: max-content;
+    font: inherit;
+    line-height: inherit;
+    color: inherit;
+  }
+
+  .ef-character-grid__table caption {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .ef-character-grid__table :is(th, td) {
+    block-size: var(--ef-grid-row-pitch);
+    padding: 0;
+    border: 0;
+    font: inherit;
+    line-height: inherit;
+    text-align: start;
+    vertical-align: top;
+    white-space: pre;
+    overflow: visible;
+  }
+
+  .ef-character-grid__table th[data-ef-len] {
+    inline-size: calc(var(--ef-len) * 1ch);
+  }
+
+  .ef-character-grid__table :is(th, td) + :is(th, td) {
+    padding-inline-start: calc(var(--ef-gutter) * 1ch);
+  }
+
+  .ef-character-grid__table th {
+    color: var(--ef-grid-emphasis);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .ef-character-grid__table td {
+    color: var(--ef-grid-emphasis);
+  }
+
+  .ef-character-grid__table [data-ef-align="end"] {
+    text-align: end;
+  }
+
+  .ef-character-grid__table td[colspan] {
+    white-space: normal;
+  }
+
+  /* Protected labels and editable fields (requirements/CHARACTER-GRID.md). */
+  .ef-character-grid__label {
+    color: var(--ef-grid-protected);
+    cursor: default;
+  }
+
+  /* Leader characters (". . . :") are decorative and hidden from the name. */
+  .ef-character-grid__leader {
+    color: var(--ef-grid-muted);
+  }
+
+  .ef-character-grid__field {
+    appearance: none;
+    box-sizing: border-box;
+    inline-size: 100%;
+    block-size: var(--ef-grid-row-pitch);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-block-end: 2px solid var(--ef-grid-boundary);
+    border-radius: 0;
+    background: var(--ef-grid-field-surface);
+    color: var(--ef-grid-field);
+    caret-color: currentColor;
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: 0;
+  }
+
+  .ef-character-grid__field:focus-visible {
+    outline: 2px solid var(--ef-grid-focus);
+    outline-offset: 1px;
+  }
+
+  /* State cues differ in shape, not only color. */
+  .ef-character-grid__field:required {
+    border-block-end-style: double;
+    border-block-end-width: 4px;
+  }
+
+  .ef-character-grid__field[aria-invalid="true"] {
+    border: 2px dashed var(--ef-grid-validation);
+  }
+
+  .ef-character-grid__field:disabled {
+    border-block-end-style: dotted;
+    background: transparent;
+    color: var(--ef-grid-muted);
+    cursor: not-allowed;
+  }
+
+  .ef-character-grid__field:read-only:not(:disabled) {
+    border-block-end-width: 1px;
+    background: transparent;
+  }
+
+  /*
+   * Action keys: native buttons presenting a key name and a label. Forma
+   * presents them; the application/Limen owns what they do.
+   */
+  .ef-character-grid__key {
+    appearance: none;
+    box-sizing: border-box;
+    inline-size: 100%;
+    block-size: var(--ef-grid-row-pitch);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--ef-grid-protected);
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: 0;
+    text-align: start;
+    white-space: pre;
+    cursor: pointer;
+  }
+
+  .ef-character-grid__key kbd {
+    font: inherit;
+    font-weight: 700;
+    color: var(--ef-grid-emphasis);
+  }
+
+  .ef-character-grid__key:hover {
+    text-decoration: underline;
+  }
+
+  .ef-character-grid__key:focus-visible {
+    outline: 2px solid var(--ef-grid-focus);
+    outline-offset: 1px;
+  }
+
+  .ef-character-grid__key:disabled {
+    color: var(--ef-grid-muted);
+    text-decoration: line-through;
+    cursor: not-allowed;
+  }
+
+  .ef-character-grid__key:disabled kbd {
+    color: inherit;
+  }
+
+  /* Messages and system status: live regions with a visible severity word. */
+  .ef-character-grid__message {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    color: var(--ef-grid-information);
+  }
+
+  .ef-character-grid__severity {
+    font-weight: 700;
+  }
+
+  .ef-character-grid__message[data-ef-severity="success"] { color: var(--ef-grid-success); }
+  .ef-character-grid__message[data-ef-severity="warning"] { color: var(--ef-grid-warning); }
+  .ef-character-grid__message[data-ef-severity="validation"] { color: var(--ef-grid-validation); }
+  .ef-character-grid__message[data-ef-severity="error"] { color: var(--ef-grid-error); }
+
+  /* Shape cues in addition to the severity word. */
+  .ef-character-grid__message[data-ef-severity="warning"] .ef-character-grid__severity {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .ef-character-grid__message[data-ef-severity="validation"] .ef-character-grid__severity {
+    text-decoration: underline double;
+  }
+
+  .ef-character-grid__message[data-ef-severity="error"] .ef-character-grid__severity,
+  .ef-character-grid__indicator[data-ef-state="inhibited"] {
+    background: currentColor;
+    outline: 1px solid currentColor;
+  }
+
+  .ef-character-grid__message[data-ef-severity="error"] .ef-character-grid__severity > span,
+  .ef-character-grid__indicator[data-ef-state="inhibited"] > span {
+    color: var(--ef-grid-background);
+  }
+
+  .ef-character-grid__status {
+    color: var(--ef-grid-muted);
+    white-space: pre;
+  }
+
+  .ef-character-grid__indicator {
+    color: var(--ef-grid-emphasis);
+    font-weight: 700;
+  }
+
+  /*
+   * SequentialReveal presentation (Visual Engineering CN-VE-TCG-2026-F9F1).
+   * Visual only: a clip mask over text that is already in the DOM. Static is
+   * the default; data-ef-reveal="sequential" opts a grid in and
+   * data-ef-reveal-run opts a protected text run in. Timing derives from
+   * the run's position, so reveal order is row-major order. Starting,
+   * interrupting (data-ef-reveal="complete"), and replaying are
+   * application/Limen behavior.
+   */
+  .ef-character-grid {
+    --ef-reveal-char-ms: 12;
+    --ef-reveal-line-ms: 40;
+    --ef-reveal-max-ms: 1500;
+  }
+
+  .ef-character-grid[data-ef-reveal="sequential"] {
+    --ef-reveal-row-ms: calc(var(--ef-grid-columns) * var(--ef-reveal-char-ms) + var(--ef-reveal-line-ms));
+    --ef-reveal-total-ms: calc(var(--ef-reveal-rows, var(--ef-grid-rows)) * var(--ef-reveal-row-ms));
+    --ef-reveal-scale: min(1, calc(var(--ef-reveal-max-ms) / var(--ef-reveal-total-ms)));
+  }
+
+  .ef-character-grid[data-ef-reveal="sequential"] :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__text[data-ef-reveal-run] {
+    animation-name: ef-character-grid-reveal;
+    animation-duration: calc(var(--ef-len) * var(--ef-reveal-char-ms) * var(--ef-reveal-scale) * 1ms);
+    animation-delay: calc(((var(--ef-row) - 1) * var(--ef-reveal-row-ms) + (var(--ef-col) - 1) * var(--ef-reveal-char-ms)) * var(--ef-reveal-scale) * 1ms);
+    animation-timing-function: steps(var(--ef-len), jump-start);
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+  }
+
+  .ef-character-grid[data-ef-reveal="sequential"] :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__text[data-ef-reveal-run]:dir(rtl) {
+    animation-name: ef-character-grid-reveal-rtl;
+  }
+
+  @keyframes ef-character-grid-reveal {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  @keyframes ef-character-grid-reveal-rtl {
+    from { clip-path: inset(0 0 0 100%); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  /* Reduced motion and print are always static. */
+  @media (prefers-reduced-motion: reduce), print {
+    .ef-character-grid[data-ef-reveal="sequential"] :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__text[data-ef-reveal-run] {
+      animation: none;
+      clip-path: none;
+    }
+  }
+
+  /*
+   * Profiles set presentation tokens only. They never change geometry,
+   * placement, order, or semantics (Visual Engineering boundary rule B-8).
+   *
+   * ibm-3270: first reference profile. Colors evoke the 3279 base palette
+   * (protected blue/white, unprotected green); this is a stylistic choice,
+   * not an emulation.
+   */
+  .ef-character-grid[data-ef-profile="ibm-3270"] {
+    --ef-grid-background: #000000;
+    --ef-grid-foreground: #7aa7ff;
+    --ef-grid-protected: #7aa7ff;
+    --ef-grid-emphasis: #f2f2f2;
+    --ef-grid-muted: #9fb8e8;
+    --ef-grid-field: #5ee08f;
+    --ef-grid-field-surface: #0b1f12;
+    --ef-grid-boundary: #5ee08f;
+    --ef-grid-focus: #4fe3d6;
+    --ef-grid-information: #f2f2f2;
+    --ef-grid-success: #5ee08f;
+    --ef-grid-warning: #ffe066;
+    --ef-grid-validation: #ff9ad5;
+    --ef-grid-error: #ff7a7a;
+  }
+
+  .ef-character-grid[data-ef-profile="ibm-3270"] .ef-character-grid__viewport {
+    border-color: #3a3a3a;
+    box-shadow: inset 0 0 0 1px #111111;
+  }
+
+  /* The block cursor is a stylistic cue layered on the standard focus outline. */
+  .ef-character-grid[data-ef-profile="ibm-3270"] .ef-character-grid__field {
+    caret-color: var(--ef-grid-focus);
+    caret-shape: block;
+  }
+
+  .ef-character-grid[data-ef-profile="ibm-3270"] .ef-character-grid__field:focus-visible {
+    background: #10301c;
+  }
+
+  .ef-character-grid[data-ef-profile="ibm-3270"] .ef-character-grid__key:focus-visible {
+    background: #10223f;
+  }
+
+  /*
+   * Touch pitch: on narrow or coarse-pointer screens rows grow to a 44px
+   * minimum so fields and keys remain usable targets. Columns stay 1ch.
+   */
+  @media (max-width: 40rem), (pointer: coarse) {
+    .ef-character-grid {
+      --ef-grid-row-pitch: max(calc(var(--ef-grid-line-height) * 1em), 2.75rem);
+    }
+
+    /* A field shorter than five cells must be followed by blank cells (CG-13). */
+    .ef-character-grid__field,
+    .ef-character-grid__key {
+      min-inline-size: 2.75rem;
+    }
+  }
+
+  /*
+   * Reflow is opt-in (data-ef-narrow="reflow") for screens whose positions
+   * carry no meaning. It linearizes runs in source order. The default,
+   * "contained", keeps the grid inside the scrollable viewport.
+   */
+  @container ef-character-grid (inline-size < 82ch) {
+    .ef-character-grid[data-ef-narrow="reflow"] :is(.ef-character-grid__surface, .ef-character-grid__group) {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      inline-size: auto;
+      max-inline-size: 100%;
+      pointer-events: auto;
+    }
+
+    .ef-character-grid[data-ef-narrow="reflow"] :is(.ef-character-grid__surface, .ef-character-grid__group) > * {
+      max-inline-size: 100%;
+      min-block-size: var(--ef-grid-row-pitch);
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .ef-character-grid[data-ef-narrow="reflow"] .ef-character-grid__table {
+      overflow-x: auto;
+      inline-size: 100%;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .ef-character-grid__viewport {
+      border-color: CanvasText;
+    }
+
+    .ef-character-grid__table th {
+      text-decoration-color: CanvasText;
+    }
+
+    .ef-character-grid__field {
+      border-block-end-color: CanvasText;
+    }
+
+    .ef-character-grid__field[aria-invalid="true"] {
+      border-color: CanvasText;
+    }
+
+    .ef-character-grid__field:disabled {
+      border-block-end-color: GrayText;
+      color: GrayText;
+    }
+
+    .ef-character-grid__field:focus-visible,
+    .ef-character-grid__key:focus-visible {
+      outline-color: Highlight;
+    }
+
+    .ef-character-grid__key:disabled {
+      color: GrayText;
+    }
+
+    /* Reverse video is lost in forced colors; keep a visible box instead. */
+    .ef-character-grid__message[data-ef-severity="error"] .ef-character-grid__severity,
+    .ef-character-grid__indicator[data-ef-state="inhibited"] {
+      background: Canvas;
+      outline: 2px solid CanvasText;
+    }
+
+    .ef-character-grid__message[data-ef-severity="error"] .ef-character-grid__severity > span,
+    .ef-character-grid__indicator[data-ef-state="inhibited"] > span {
+      color: CanvasText;
+    }
+  }
+
+  /* BEGIN generated: character-grid coordinates (tools/character-grid-css.mjs) */
+  .ef-character-grid[data-ef-rows="1"] { --ef-grid-rows: 1; }
+  .ef-character-grid[data-ef-rows="2"] { --ef-grid-rows: 2; }
+  .ef-character-grid[data-ef-rows="3"] { --ef-grid-rows: 3; }
+  .ef-character-grid[data-ef-rows="4"] { --ef-grid-rows: 4; }
+  .ef-character-grid[data-ef-rows="5"] { --ef-grid-rows: 5; }
+  .ef-character-grid[data-ef-rows="6"] { --ef-grid-rows: 6; }
+  .ef-character-grid[data-ef-rows="7"] { --ef-grid-rows: 7; }
+  .ef-character-grid[data-ef-rows="8"] { --ef-grid-rows: 8; }
+  .ef-character-grid[data-ef-rows="9"] { --ef-grid-rows: 9; }
+  .ef-character-grid[data-ef-rows="10"] { --ef-grid-rows: 10; }
+  .ef-character-grid[data-ef-rows="11"] { --ef-grid-rows: 11; }
+  .ef-character-grid[data-ef-rows="12"] { --ef-grid-rows: 12; }
+  .ef-character-grid[data-ef-rows="13"] { --ef-grid-rows: 13; }
+  .ef-character-grid[data-ef-rows="14"] { --ef-grid-rows: 14; }
+  .ef-character-grid[data-ef-rows="15"] { --ef-grid-rows: 15; }
+  .ef-character-grid[data-ef-rows="16"] { --ef-grid-rows: 16; }
+  .ef-character-grid[data-ef-rows="17"] { --ef-grid-rows: 17; }
+  .ef-character-grid[data-ef-rows="18"] { --ef-grid-rows: 18; }
+  .ef-character-grid[data-ef-rows="19"] { --ef-grid-rows: 19; }
+  .ef-character-grid[data-ef-rows="20"] { --ef-grid-rows: 20; }
+  .ef-character-grid[data-ef-rows="21"] { --ef-grid-rows: 21; }
+  .ef-character-grid[data-ef-rows="22"] { --ef-grid-rows: 22; }
+  .ef-character-grid[data-ef-rows="23"] { --ef-grid-rows: 23; }
+  .ef-character-grid[data-ef-rows="24"] { --ef-grid-rows: 24; }
+  .ef-character-grid[data-ef-rows="25"] { --ef-grid-rows: 25; }
+  .ef-character-grid[data-ef-rows="26"] { --ef-grid-rows: 26; }
+  .ef-character-grid[data-ef-rows="27"] { --ef-grid-rows: 27; }
+  .ef-character-grid[data-ef-rows="28"] { --ef-grid-rows: 28; }
+  .ef-character-grid[data-ef-rows="29"] { --ef-grid-rows: 29; }
+  .ef-character-grid[data-ef-rows="30"] { --ef-grid-rows: 30; }
+  .ef-character-grid[data-ef-rows="31"] { --ef-grid-rows: 31; }
+  .ef-character-grid[data-ef-rows="32"] { --ef-grid-rows: 32; }
+  .ef-character-grid[data-ef-rows="33"] { --ef-grid-rows: 33; }
+  .ef-character-grid[data-ef-rows="34"] { --ef-grid-rows: 34; }
+  .ef-character-grid[data-ef-rows="35"] { --ef-grid-rows: 35; }
+  .ef-character-grid[data-ef-rows="36"] { --ef-grid-rows: 36; }
+  .ef-character-grid[data-ef-rows="37"] { --ef-grid-rows: 37; }
+  .ef-character-grid[data-ef-rows="38"] { --ef-grid-rows: 38; }
+  .ef-character-grid[data-ef-rows="39"] { --ef-grid-rows: 39; }
+  .ef-character-grid[data-ef-rows="40"] { --ef-grid-rows: 40; }
+  .ef-character-grid[data-ef-rows="41"] { --ef-grid-rows: 41; }
+  .ef-character-grid[data-ef-rows="42"] { --ef-grid-rows: 42; }
+  .ef-character-grid[data-ef-rows="43"] { --ef-grid-rows: 43; }
+  .ef-character-grid[data-ef-rows="44"] { --ef-grid-rows: 44; }
+  .ef-character-grid[data-ef-rows="45"] { --ef-grid-rows: 45; }
+  .ef-character-grid[data-ef-rows="46"] { --ef-grid-rows: 46; }
+  .ef-character-grid[data-ef-rows="47"] { --ef-grid-rows: 47; }
+  .ef-character-grid[data-ef-rows="48"] { --ef-grid-rows: 48; }
+  .ef-character-grid[data-ef-rows="49"] { --ef-grid-rows: 49; }
+  .ef-character-grid[data-ef-rows="50"] { --ef-grid-rows: 50; }
+  .ef-character-grid[data-ef-columns="1"] { --ef-grid-columns: 1; }
+  .ef-character-grid[data-ef-columns="2"] { --ef-grid-columns: 2; }
+  .ef-character-grid[data-ef-columns="3"] { --ef-grid-columns: 3; }
+  .ef-character-grid[data-ef-columns="4"] { --ef-grid-columns: 4; }
+  .ef-character-grid[data-ef-columns="5"] { --ef-grid-columns: 5; }
+  .ef-character-grid[data-ef-columns="6"] { --ef-grid-columns: 6; }
+  .ef-character-grid[data-ef-columns="7"] { --ef-grid-columns: 7; }
+  .ef-character-grid[data-ef-columns="8"] { --ef-grid-columns: 8; }
+  .ef-character-grid[data-ef-columns="9"] { --ef-grid-columns: 9; }
+  .ef-character-grid[data-ef-columns="10"] { --ef-grid-columns: 10; }
+  .ef-character-grid[data-ef-columns="11"] { --ef-grid-columns: 11; }
+  .ef-character-grid[data-ef-columns="12"] { --ef-grid-columns: 12; }
+  .ef-character-grid[data-ef-columns="13"] { --ef-grid-columns: 13; }
+  .ef-character-grid[data-ef-columns="14"] { --ef-grid-columns: 14; }
+  .ef-character-grid[data-ef-columns="15"] { --ef-grid-columns: 15; }
+  .ef-character-grid[data-ef-columns="16"] { --ef-grid-columns: 16; }
+  .ef-character-grid[data-ef-columns="17"] { --ef-grid-columns: 17; }
+  .ef-character-grid[data-ef-columns="18"] { --ef-grid-columns: 18; }
+  .ef-character-grid[data-ef-columns="19"] { --ef-grid-columns: 19; }
+  .ef-character-grid[data-ef-columns="20"] { --ef-grid-columns: 20; }
+  .ef-character-grid[data-ef-columns="21"] { --ef-grid-columns: 21; }
+  .ef-character-grid[data-ef-columns="22"] { --ef-grid-columns: 22; }
+  .ef-character-grid[data-ef-columns="23"] { --ef-grid-columns: 23; }
+  .ef-character-grid[data-ef-columns="24"] { --ef-grid-columns: 24; }
+  .ef-character-grid[data-ef-columns="25"] { --ef-grid-columns: 25; }
+  .ef-character-grid[data-ef-columns="26"] { --ef-grid-columns: 26; }
+  .ef-character-grid[data-ef-columns="27"] { --ef-grid-columns: 27; }
+  .ef-character-grid[data-ef-columns="28"] { --ef-grid-columns: 28; }
+  .ef-character-grid[data-ef-columns="29"] { --ef-grid-columns: 29; }
+  .ef-character-grid[data-ef-columns="30"] { --ef-grid-columns: 30; }
+  .ef-character-grid[data-ef-columns="31"] { --ef-grid-columns: 31; }
+  .ef-character-grid[data-ef-columns="32"] { --ef-grid-columns: 32; }
+  .ef-character-grid[data-ef-columns="33"] { --ef-grid-columns: 33; }
+  .ef-character-grid[data-ef-columns="34"] { --ef-grid-columns: 34; }
+  .ef-character-grid[data-ef-columns="35"] { --ef-grid-columns: 35; }
+  .ef-character-grid[data-ef-columns="36"] { --ef-grid-columns: 36; }
+  .ef-character-grid[data-ef-columns="37"] { --ef-grid-columns: 37; }
+  .ef-character-grid[data-ef-columns="38"] { --ef-grid-columns: 38; }
+  .ef-character-grid[data-ef-columns="39"] { --ef-grid-columns: 39; }
+  .ef-character-grid[data-ef-columns="40"] { --ef-grid-columns: 40; }
+  .ef-character-grid[data-ef-columns="41"] { --ef-grid-columns: 41; }
+  .ef-character-grid[data-ef-columns="42"] { --ef-grid-columns: 42; }
+  .ef-character-grid[data-ef-columns="43"] { --ef-grid-columns: 43; }
+  .ef-character-grid[data-ef-columns="44"] { --ef-grid-columns: 44; }
+  .ef-character-grid[data-ef-columns="45"] { --ef-grid-columns: 45; }
+  .ef-character-grid[data-ef-columns="46"] { --ef-grid-columns: 46; }
+  .ef-character-grid[data-ef-columns="47"] { --ef-grid-columns: 47; }
+  .ef-character-grid[data-ef-columns="48"] { --ef-grid-columns: 48; }
+  .ef-character-grid[data-ef-columns="49"] { --ef-grid-columns: 49; }
+  .ef-character-grid[data-ef-columns="50"] { --ef-grid-columns: 50; }
+  .ef-character-grid[data-ef-columns="51"] { --ef-grid-columns: 51; }
+  .ef-character-grid[data-ef-columns="52"] { --ef-grid-columns: 52; }
+  .ef-character-grid[data-ef-columns="53"] { --ef-grid-columns: 53; }
+  .ef-character-grid[data-ef-columns="54"] { --ef-grid-columns: 54; }
+  .ef-character-grid[data-ef-columns="55"] { --ef-grid-columns: 55; }
+  .ef-character-grid[data-ef-columns="56"] { --ef-grid-columns: 56; }
+  .ef-character-grid[data-ef-columns="57"] { --ef-grid-columns: 57; }
+  .ef-character-grid[data-ef-columns="58"] { --ef-grid-columns: 58; }
+  .ef-character-grid[data-ef-columns="59"] { --ef-grid-columns: 59; }
+  .ef-character-grid[data-ef-columns="60"] { --ef-grid-columns: 60; }
+  .ef-character-grid[data-ef-columns="61"] { --ef-grid-columns: 61; }
+  .ef-character-grid[data-ef-columns="62"] { --ef-grid-columns: 62; }
+  .ef-character-grid[data-ef-columns="63"] { --ef-grid-columns: 63; }
+  .ef-character-grid[data-ef-columns="64"] { --ef-grid-columns: 64; }
+  .ef-character-grid[data-ef-columns="65"] { --ef-grid-columns: 65; }
+  .ef-character-grid[data-ef-columns="66"] { --ef-grid-columns: 66; }
+  .ef-character-grid[data-ef-columns="67"] { --ef-grid-columns: 67; }
+  .ef-character-grid[data-ef-columns="68"] { --ef-grid-columns: 68; }
+  .ef-character-grid[data-ef-columns="69"] { --ef-grid-columns: 69; }
+  .ef-character-grid[data-ef-columns="70"] { --ef-grid-columns: 70; }
+  .ef-character-grid[data-ef-columns="71"] { --ef-grid-columns: 71; }
+  .ef-character-grid[data-ef-columns="72"] { --ef-grid-columns: 72; }
+  .ef-character-grid[data-ef-columns="73"] { --ef-grid-columns: 73; }
+  .ef-character-grid[data-ef-columns="74"] { --ef-grid-columns: 74; }
+  .ef-character-grid[data-ef-columns="75"] { --ef-grid-columns: 75; }
+  .ef-character-grid[data-ef-columns="76"] { --ef-grid-columns: 76; }
+  .ef-character-grid[data-ef-columns="77"] { --ef-grid-columns: 77; }
+  .ef-character-grid[data-ef-columns="78"] { --ef-grid-columns: 78; }
+  .ef-character-grid[data-ef-columns="79"] { --ef-grid-columns: 79; }
+  .ef-character-grid[data-ef-columns="80"] { --ef-grid-columns: 80; }
+  .ef-character-grid[data-ef-columns="81"] { --ef-grid-columns: 81; }
+  .ef-character-grid[data-ef-columns="82"] { --ef-grid-columns: 82; }
+  .ef-character-grid[data-ef-columns="83"] { --ef-grid-columns: 83; }
+  .ef-character-grid[data-ef-columns="84"] { --ef-grid-columns: 84; }
+  .ef-character-grid[data-ef-columns="85"] { --ef-grid-columns: 85; }
+  .ef-character-grid[data-ef-columns="86"] { --ef-grid-columns: 86; }
+  .ef-character-grid[data-ef-columns="87"] { --ef-grid-columns: 87; }
+  .ef-character-grid[data-ef-columns="88"] { --ef-grid-columns: 88; }
+  .ef-character-grid[data-ef-columns="89"] { --ef-grid-columns: 89; }
+  .ef-character-grid[data-ef-columns="90"] { --ef-grid-columns: 90; }
+  .ef-character-grid[data-ef-columns="91"] { --ef-grid-columns: 91; }
+  .ef-character-grid[data-ef-columns="92"] { --ef-grid-columns: 92; }
+  .ef-character-grid[data-ef-columns="93"] { --ef-grid-columns: 93; }
+  .ef-character-grid[data-ef-columns="94"] { --ef-grid-columns: 94; }
+  .ef-character-grid[data-ef-columns="95"] { --ef-grid-columns: 95; }
+  .ef-character-grid[data-ef-columns="96"] { --ef-grid-columns: 96; }
+  .ef-character-grid[data-ef-columns="97"] { --ef-grid-columns: 97; }
+  .ef-character-grid[data-ef-columns="98"] { --ef-grid-columns: 98; }
+  .ef-character-grid[data-ef-columns="99"] { --ef-grid-columns: 99; }
+  .ef-character-grid[data-ef-columns="100"] { --ef-grid-columns: 100; }
+  .ef-character-grid[data-ef-columns="101"] { --ef-grid-columns: 101; }
+  .ef-character-grid[data-ef-columns="102"] { --ef-grid-columns: 102; }
+  .ef-character-grid[data-ef-columns="103"] { --ef-grid-columns: 103; }
+  .ef-character-grid[data-ef-columns="104"] { --ef-grid-columns: 104; }
+  .ef-character-grid[data-ef-columns="105"] { --ef-grid-columns: 105; }
+  .ef-character-grid[data-ef-columns="106"] { --ef-grid-columns: 106; }
+  .ef-character-grid[data-ef-columns="107"] { --ef-grid-columns: 107; }
+  .ef-character-grid[data-ef-columns="108"] { --ef-grid-columns: 108; }
+  .ef-character-grid[data-ef-columns="109"] { --ef-grid-columns: 109; }
+  .ef-character-grid[data-ef-columns="110"] { --ef-grid-columns: 110; }
+  .ef-character-grid[data-ef-columns="111"] { --ef-grid-columns: 111; }
+  .ef-character-grid[data-ef-columns="112"] { --ef-grid-columns: 112; }
+  .ef-character-grid[data-ef-columns="113"] { --ef-grid-columns: 113; }
+  .ef-character-grid[data-ef-columns="114"] { --ef-grid-columns: 114; }
+  .ef-character-grid[data-ef-columns="115"] { --ef-grid-columns: 115; }
+  .ef-character-grid[data-ef-columns="116"] { --ef-grid-columns: 116; }
+  .ef-character-grid[data-ef-columns="117"] { --ef-grid-columns: 117; }
+  .ef-character-grid[data-ef-columns="118"] { --ef-grid-columns: 118; }
+  .ef-character-grid[data-ef-columns="119"] { --ef-grid-columns: 119; }
+  .ef-character-grid[data-ef-columns="120"] { --ef-grid-columns: 120; }
+  .ef-character-grid[data-ef-columns="121"] { --ef-grid-columns: 121; }
+  .ef-character-grid[data-ef-columns="122"] { --ef-grid-columns: 122; }
+  .ef-character-grid[data-ef-columns="123"] { --ef-grid-columns: 123; }
+  .ef-character-grid[data-ef-columns="124"] { --ef-grid-columns: 124; }
+  .ef-character-grid[data-ef-columns="125"] { --ef-grid-columns: 125; }
+  .ef-character-grid[data-ef-columns="126"] { --ef-grid-columns: 126; }
+  .ef-character-grid[data-ef-columns="127"] { --ef-grid-columns: 127; }
+  .ef-character-grid[data-ef-columns="128"] { --ef-grid-columns: 128; }
+  .ef-character-grid[data-ef-columns="129"] { --ef-grid-columns: 129; }
+  .ef-character-grid[data-ef-columns="130"] { --ef-grid-columns: 130; }
+  .ef-character-grid[data-ef-columns="131"] { --ef-grid-columns: 131; }
+  .ef-character-grid[data-ef-columns="132"] { --ef-grid-columns: 132; }
+  .ef-character-grid[data-ef-reveal-rows="1"] { --ef-reveal-rows: 1; }
+  .ef-character-grid[data-ef-reveal-rows="2"] { --ef-reveal-rows: 2; }
+  .ef-character-grid[data-ef-reveal-rows="3"] { --ef-reveal-rows: 3; }
+  .ef-character-grid[data-ef-reveal-rows="4"] { --ef-reveal-rows: 4; }
+  .ef-character-grid[data-ef-reveal-rows="5"] { --ef-reveal-rows: 5; }
+  .ef-character-grid[data-ef-reveal-rows="6"] { --ef-reveal-rows: 6; }
+  .ef-character-grid[data-ef-reveal-rows="7"] { --ef-reveal-rows: 7; }
+  .ef-character-grid[data-ef-reveal-rows="8"] { --ef-reveal-rows: 8; }
+  .ef-character-grid[data-ef-reveal-rows="9"] { --ef-reveal-rows: 9; }
+  .ef-character-grid[data-ef-reveal-rows="10"] { --ef-reveal-rows: 10; }
+  .ef-character-grid[data-ef-reveal-rows="11"] { --ef-reveal-rows: 11; }
+  .ef-character-grid[data-ef-reveal-rows="12"] { --ef-reveal-rows: 12; }
+  .ef-character-grid[data-ef-reveal-rows="13"] { --ef-reveal-rows: 13; }
+  .ef-character-grid[data-ef-reveal-rows="14"] { --ef-reveal-rows: 14; }
+  .ef-character-grid[data-ef-reveal-rows="15"] { --ef-reveal-rows: 15; }
+  .ef-character-grid[data-ef-reveal-rows="16"] { --ef-reveal-rows: 16; }
+  .ef-character-grid[data-ef-reveal-rows="17"] { --ef-reveal-rows: 17; }
+  .ef-character-grid[data-ef-reveal-rows="18"] { --ef-reveal-rows: 18; }
+  .ef-character-grid[data-ef-reveal-rows="19"] { --ef-reveal-rows: 19; }
+  .ef-character-grid[data-ef-reveal-rows="20"] { --ef-reveal-rows: 20; }
+  .ef-character-grid[data-ef-reveal-rows="21"] { --ef-reveal-rows: 21; }
+  .ef-character-grid[data-ef-reveal-rows="22"] { --ef-reveal-rows: 22; }
+  .ef-character-grid[data-ef-reveal-rows="23"] { --ef-reveal-rows: 23; }
+  .ef-character-grid[data-ef-reveal-rows="24"] { --ef-reveal-rows: 24; }
+  .ef-character-grid[data-ef-reveal-rows="25"] { --ef-reveal-rows: 25; }
+  .ef-character-grid[data-ef-reveal-rows="26"] { --ef-reveal-rows: 26; }
+  .ef-character-grid[data-ef-reveal-rows="27"] { --ef-reveal-rows: 27; }
+  .ef-character-grid[data-ef-reveal-rows="28"] { --ef-reveal-rows: 28; }
+  .ef-character-grid[data-ef-reveal-rows="29"] { --ef-reveal-rows: 29; }
+  .ef-character-grid[data-ef-reveal-rows="30"] { --ef-reveal-rows: 30; }
+  .ef-character-grid[data-ef-reveal-rows="31"] { --ef-reveal-rows: 31; }
+  .ef-character-grid[data-ef-reveal-rows="32"] { --ef-reveal-rows: 32; }
+  .ef-character-grid[data-ef-reveal-rows="33"] { --ef-reveal-rows: 33; }
+  .ef-character-grid[data-ef-reveal-rows="34"] { --ef-reveal-rows: 34; }
+  .ef-character-grid[data-ef-reveal-rows="35"] { --ef-reveal-rows: 35; }
+  .ef-character-grid[data-ef-reveal-rows="36"] { --ef-reveal-rows: 36; }
+  .ef-character-grid[data-ef-reveal-rows="37"] { --ef-reveal-rows: 37; }
+  .ef-character-grid[data-ef-reveal-rows="38"] { --ef-reveal-rows: 38; }
+  .ef-character-grid[data-ef-reveal-rows="39"] { --ef-reveal-rows: 39; }
+  .ef-character-grid[data-ef-reveal-rows="40"] { --ef-reveal-rows: 40; }
+  .ef-character-grid[data-ef-reveal-rows="41"] { --ef-reveal-rows: 41; }
+  .ef-character-grid[data-ef-reveal-rows="42"] { --ef-reveal-rows: 42; }
+  .ef-character-grid[data-ef-reveal-rows="43"] { --ef-reveal-rows: 43; }
+  .ef-character-grid[data-ef-reveal-rows="44"] { --ef-reveal-rows: 44; }
+  .ef-character-grid[data-ef-reveal-rows="45"] { --ef-reveal-rows: 45; }
+  .ef-character-grid[data-ef-reveal-rows="46"] { --ef-reveal-rows: 46; }
+  .ef-character-grid[data-ef-reveal-rows="47"] { --ef-reveal-rows: 47; }
+  .ef-character-grid[data-ef-reveal-rows="48"] { --ef-reveal-rows: 48; }
+  .ef-character-grid[data-ef-reveal-rows="49"] { --ef-reveal-rows: 49; }
+  .ef-character-grid[data-ef-reveal-rows="50"] { --ef-reveal-rows: 50; }
+  :where(.ef-character-grid) [data-ef-row="1"] { --ef-row: 1; }
+  :where(.ef-character-grid) [data-ef-row="2"] { --ef-row: 2; }
+  :where(.ef-character-grid) [data-ef-row="3"] { --ef-row: 3; }
+  :where(.ef-character-grid) [data-ef-row="4"] { --ef-row: 4; }
+  :where(.ef-character-grid) [data-ef-row="5"] { --ef-row: 5; }
+  :where(.ef-character-grid) [data-ef-row="6"] { --ef-row: 6; }
+  :where(.ef-character-grid) [data-ef-row="7"] { --ef-row: 7; }
+  :where(.ef-character-grid) [data-ef-row="8"] { --ef-row: 8; }
+  :where(.ef-character-grid) [data-ef-row="9"] { --ef-row: 9; }
+  :where(.ef-character-grid) [data-ef-row="10"] { --ef-row: 10; }
+  :where(.ef-character-grid) [data-ef-row="11"] { --ef-row: 11; }
+  :where(.ef-character-grid) [data-ef-row="12"] { --ef-row: 12; }
+  :where(.ef-character-grid) [data-ef-row="13"] { --ef-row: 13; }
+  :where(.ef-character-grid) [data-ef-row="14"] { --ef-row: 14; }
+  :where(.ef-character-grid) [data-ef-row="15"] { --ef-row: 15; }
+  :where(.ef-character-grid) [data-ef-row="16"] { --ef-row: 16; }
+  :where(.ef-character-grid) [data-ef-row="17"] { --ef-row: 17; }
+  :where(.ef-character-grid) [data-ef-row="18"] { --ef-row: 18; }
+  :where(.ef-character-grid) [data-ef-row="19"] { --ef-row: 19; }
+  :where(.ef-character-grid) [data-ef-row="20"] { --ef-row: 20; }
+  :where(.ef-character-grid) [data-ef-row="21"] { --ef-row: 21; }
+  :where(.ef-character-grid) [data-ef-row="22"] { --ef-row: 22; }
+  :where(.ef-character-grid) [data-ef-row="23"] { --ef-row: 23; }
+  :where(.ef-character-grid) [data-ef-row="24"] { --ef-row: 24; }
+  :where(.ef-character-grid) [data-ef-row="25"] { --ef-row: 25; }
+  :where(.ef-character-grid) [data-ef-row="26"] { --ef-row: 26; }
+  :where(.ef-character-grid) [data-ef-row="27"] { --ef-row: 27; }
+  :where(.ef-character-grid) [data-ef-row="28"] { --ef-row: 28; }
+  :where(.ef-character-grid) [data-ef-row="29"] { --ef-row: 29; }
+  :where(.ef-character-grid) [data-ef-row="30"] { --ef-row: 30; }
+  :where(.ef-character-grid) [data-ef-row="31"] { --ef-row: 31; }
+  :where(.ef-character-grid) [data-ef-row="32"] { --ef-row: 32; }
+  :where(.ef-character-grid) [data-ef-row="33"] { --ef-row: 33; }
+  :where(.ef-character-grid) [data-ef-row="34"] { --ef-row: 34; }
+  :where(.ef-character-grid) [data-ef-row="35"] { --ef-row: 35; }
+  :where(.ef-character-grid) [data-ef-row="36"] { --ef-row: 36; }
+  :where(.ef-character-grid) [data-ef-row="37"] { --ef-row: 37; }
+  :where(.ef-character-grid) [data-ef-row="38"] { --ef-row: 38; }
+  :where(.ef-character-grid) [data-ef-row="39"] { --ef-row: 39; }
+  :where(.ef-character-grid) [data-ef-row="40"] { --ef-row: 40; }
+  :where(.ef-character-grid) [data-ef-row="41"] { --ef-row: 41; }
+  :where(.ef-character-grid) [data-ef-row="42"] { --ef-row: 42; }
+  :where(.ef-character-grid) [data-ef-row="43"] { --ef-row: 43; }
+  :where(.ef-character-grid) [data-ef-row="44"] { --ef-row: 44; }
+  :where(.ef-character-grid) [data-ef-row="45"] { --ef-row: 45; }
+  :where(.ef-character-grid) [data-ef-row="46"] { --ef-row: 46; }
+  :where(.ef-character-grid) [data-ef-row="47"] { --ef-row: 47; }
+  :where(.ef-character-grid) [data-ef-row="48"] { --ef-row: 48; }
+  :where(.ef-character-grid) [data-ef-row="49"] { --ef-row: 49; }
+  :where(.ef-character-grid) [data-ef-row="50"] { --ef-row: 50; }
+  :where(.ef-character-grid) [data-ef-col="1"] { --ef-col: 1; }
+  :where(.ef-character-grid) [data-ef-col="2"] { --ef-col: 2; }
+  :where(.ef-character-grid) [data-ef-col="3"] { --ef-col: 3; }
+  :where(.ef-character-grid) [data-ef-col="4"] { --ef-col: 4; }
+  :where(.ef-character-grid) [data-ef-col="5"] { --ef-col: 5; }
+  :where(.ef-character-grid) [data-ef-col="6"] { --ef-col: 6; }
+  :where(.ef-character-grid) [data-ef-col="7"] { --ef-col: 7; }
+  :where(.ef-character-grid) [data-ef-col="8"] { --ef-col: 8; }
+  :where(.ef-character-grid) [data-ef-col="9"] { --ef-col: 9; }
+  :where(.ef-character-grid) [data-ef-col="10"] { --ef-col: 10; }
+  :where(.ef-character-grid) [data-ef-col="11"] { --ef-col: 11; }
+  :where(.ef-character-grid) [data-ef-col="12"] { --ef-col: 12; }
+  :where(.ef-character-grid) [data-ef-col="13"] { --ef-col: 13; }
+  :where(.ef-character-grid) [data-ef-col="14"] { --ef-col: 14; }
+  :where(.ef-character-grid) [data-ef-col="15"] { --ef-col: 15; }
+  :where(.ef-character-grid) [data-ef-col="16"] { --ef-col: 16; }
+  :where(.ef-character-grid) [data-ef-col="17"] { --ef-col: 17; }
+  :where(.ef-character-grid) [data-ef-col="18"] { --ef-col: 18; }
+  :where(.ef-character-grid) [data-ef-col="19"] { --ef-col: 19; }
+  :where(.ef-character-grid) [data-ef-col="20"] { --ef-col: 20; }
+  :where(.ef-character-grid) [data-ef-col="21"] { --ef-col: 21; }
+  :where(.ef-character-grid) [data-ef-col="22"] { --ef-col: 22; }
+  :where(.ef-character-grid) [data-ef-col="23"] { --ef-col: 23; }
+  :where(.ef-character-grid) [data-ef-col="24"] { --ef-col: 24; }
+  :where(.ef-character-grid) [data-ef-col="25"] { --ef-col: 25; }
+  :where(.ef-character-grid) [data-ef-col="26"] { --ef-col: 26; }
+  :where(.ef-character-grid) [data-ef-col="27"] { --ef-col: 27; }
+  :where(.ef-character-grid) [data-ef-col="28"] { --ef-col: 28; }
+  :where(.ef-character-grid) [data-ef-col="29"] { --ef-col: 29; }
+  :where(.ef-character-grid) [data-ef-col="30"] { --ef-col: 30; }
+  :where(.ef-character-grid) [data-ef-col="31"] { --ef-col: 31; }
+  :where(.ef-character-grid) [data-ef-col="32"] { --ef-col: 32; }
+  :where(.ef-character-grid) [data-ef-col="33"] { --ef-col: 33; }
+  :where(.ef-character-grid) [data-ef-col="34"] { --ef-col: 34; }
+  :where(.ef-character-grid) [data-ef-col="35"] { --ef-col: 35; }
+  :where(.ef-character-grid) [data-ef-col="36"] { --ef-col: 36; }
+  :where(.ef-character-grid) [data-ef-col="37"] { --ef-col: 37; }
+  :where(.ef-character-grid) [data-ef-col="38"] { --ef-col: 38; }
+  :where(.ef-character-grid) [data-ef-col="39"] { --ef-col: 39; }
+  :where(.ef-character-grid) [data-ef-col="40"] { --ef-col: 40; }
+  :where(.ef-character-grid) [data-ef-col="41"] { --ef-col: 41; }
+  :where(.ef-character-grid) [data-ef-col="42"] { --ef-col: 42; }
+  :where(.ef-character-grid) [data-ef-col="43"] { --ef-col: 43; }
+  :where(.ef-character-grid) [data-ef-col="44"] { --ef-col: 44; }
+  :where(.ef-character-grid) [data-ef-col="45"] { --ef-col: 45; }
+  :where(.ef-character-grid) [data-ef-col="46"] { --ef-col: 46; }
+  :where(.ef-character-grid) [data-ef-col="47"] { --ef-col: 47; }
+  :where(.ef-character-grid) [data-ef-col="48"] { --ef-col: 48; }
+  :where(.ef-character-grid) [data-ef-col="49"] { --ef-col: 49; }
+  :where(.ef-character-grid) [data-ef-col="50"] { --ef-col: 50; }
+  :where(.ef-character-grid) [data-ef-col="51"] { --ef-col: 51; }
+  :where(.ef-character-grid) [data-ef-col="52"] { --ef-col: 52; }
+  :where(.ef-character-grid) [data-ef-col="53"] { --ef-col: 53; }
+  :where(.ef-character-grid) [data-ef-col="54"] { --ef-col: 54; }
+  :where(.ef-character-grid) [data-ef-col="55"] { --ef-col: 55; }
+  :where(.ef-character-grid) [data-ef-col="56"] { --ef-col: 56; }
+  :where(.ef-character-grid) [data-ef-col="57"] { --ef-col: 57; }
+  :where(.ef-character-grid) [data-ef-col="58"] { --ef-col: 58; }
+  :where(.ef-character-grid) [data-ef-col="59"] { --ef-col: 59; }
+  :where(.ef-character-grid) [data-ef-col="60"] { --ef-col: 60; }
+  :where(.ef-character-grid) [data-ef-col="61"] { --ef-col: 61; }
+  :where(.ef-character-grid) [data-ef-col="62"] { --ef-col: 62; }
+  :where(.ef-character-grid) [data-ef-col="63"] { --ef-col: 63; }
+  :where(.ef-character-grid) [data-ef-col="64"] { --ef-col: 64; }
+  :where(.ef-character-grid) [data-ef-col="65"] { --ef-col: 65; }
+  :where(.ef-character-grid) [data-ef-col="66"] { --ef-col: 66; }
+  :where(.ef-character-grid) [data-ef-col="67"] { --ef-col: 67; }
+  :where(.ef-character-grid) [data-ef-col="68"] { --ef-col: 68; }
+  :where(.ef-character-grid) [data-ef-col="69"] { --ef-col: 69; }
+  :where(.ef-character-grid) [data-ef-col="70"] { --ef-col: 70; }
+  :where(.ef-character-grid) [data-ef-col="71"] { --ef-col: 71; }
+  :where(.ef-character-grid) [data-ef-col="72"] { --ef-col: 72; }
+  :where(.ef-character-grid) [data-ef-col="73"] { --ef-col: 73; }
+  :where(.ef-character-grid) [data-ef-col="74"] { --ef-col: 74; }
+  :where(.ef-character-grid) [data-ef-col="75"] { --ef-col: 75; }
+  :where(.ef-character-grid) [data-ef-col="76"] { --ef-col: 76; }
+  :where(.ef-character-grid) [data-ef-col="77"] { --ef-col: 77; }
+  :where(.ef-character-grid) [data-ef-col="78"] { --ef-col: 78; }
+  :where(.ef-character-grid) [data-ef-col="79"] { --ef-col: 79; }
+  :where(.ef-character-grid) [data-ef-col="80"] { --ef-col: 80; }
+  :where(.ef-character-grid) [data-ef-col="81"] { --ef-col: 81; }
+  :where(.ef-character-grid) [data-ef-col="82"] { --ef-col: 82; }
+  :where(.ef-character-grid) [data-ef-col="83"] { --ef-col: 83; }
+  :where(.ef-character-grid) [data-ef-col="84"] { --ef-col: 84; }
+  :where(.ef-character-grid) [data-ef-col="85"] { --ef-col: 85; }
+  :where(.ef-character-grid) [data-ef-col="86"] { --ef-col: 86; }
+  :where(.ef-character-grid) [data-ef-col="87"] { --ef-col: 87; }
+  :where(.ef-character-grid) [data-ef-col="88"] { --ef-col: 88; }
+  :where(.ef-character-grid) [data-ef-col="89"] { --ef-col: 89; }
+  :where(.ef-character-grid) [data-ef-col="90"] { --ef-col: 90; }
+  :where(.ef-character-grid) [data-ef-col="91"] { --ef-col: 91; }
+  :where(.ef-character-grid) [data-ef-col="92"] { --ef-col: 92; }
+  :where(.ef-character-grid) [data-ef-col="93"] { --ef-col: 93; }
+  :where(.ef-character-grid) [data-ef-col="94"] { --ef-col: 94; }
+  :where(.ef-character-grid) [data-ef-col="95"] { --ef-col: 95; }
+  :where(.ef-character-grid) [data-ef-col="96"] { --ef-col: 96; }
+  :where(.ef-character-grid) [data-ef-col="97"] { --ef-col: 97; }
+  :where(.ef-character-grid) [data-ef-col="98"] { --ef-col: 98; }
+  :where(.ef-character-grid) [data-ef-col="99"] { --ef-col: 99; }
+  :where(.ef-character-grid) [data-ef-col="100"] { --ef-col: 100; }
+  :where(.ef-character-grid) [data-ef-col="101"] { --ef-col: 101; }
+  :where(.ef-character-grid) [data-ef-col="102"] { --ef-col: 102; }
+  :where(.ef-character-grid) [data-ef-col="103"] { --ef-col: 103; }
+  :where(.ef-character-grid) [data-ef-col="104"] { --ef-col: 104; }
+  :where(.ef-character-grid) [data-ef-col="105"] { --ef-col: 105; }
+  :where(.ef-character-grid) [data-ef-col="106"] { --ef-col: 106; }
+  :where(.ef-character-grid) [data-ef-col="107"] { --ef-col: 107; }
+  :where(.ef-character-grid) [data-ef-col="108"] { --ef-col: 108; }
+  :where(.ef-character-grid) [data-ef-col="109"] { --ef-col: 109; }
+  :where(.ef-character-grid) [data-ef-col="110"] { --ef-col: 110; }
+  :where(.ef-character-grid) [data-ef-col="111"] { --ef-col: 111; }
+  :where(.ef-character-grid) [data-ef-col="112"] { --ef-col: 112; }
+  :where(.ef-character-grid) [data-ef-col="113"] { --ef-col: 113; }
+  :where(.ef-character-grid) [data-ef-col="114"] { --ef-col: 114; }
+  :where(.ef-character-grid) [data-ef-col="115"] { --ef-col: 115; }
+  :where(.ef-character-grid) [data-ef-col="116"] { --ef-col: 116; }
+  :where(.ef-character-grid) [data-ef-col="117"] { --ef-col: 117; }
+  :where(.ef-character-grid) [data-ef-col="118"] { --ef-col: 118; }
+  :where(.ef-character-grid) [data-ef-col="119"] { --ef-col: 119; }
+  :where(.ef-character-grid) [data-ef-col="120"] { --ef-col: 120; }
+  :where(.ef-character-grid) [data-ef-col="121"] { --ef-col: 121; }
+  :where(.ef-character-grid) [data-ef-col="122"] { --ef-col: 122; }
+  :where(.ef-character-grid) [data-ef-col="123"] { --ef-col: 123; }
+  :where(.ef-character-grid) [data-ef-col="124"] { --ef-col: 124; }
+  :where(.ef-character-grid) [data-ef-col="125"] { --ef-col: 125; }
+  :where(.ef-character-grid) [data-ef-col="126"] { --ef-col: 126; }
+  :where(.ef-character-grid) [data-ef-col="127"] { --ef-col: 127; }
+  :where(.ef-character-grid) [data-ef-col="128"] { --ef-col: 128; }
+  :where(.ef-character-grid) [data-ef-col="129"] { --ef-col: 129; }
+  :where(.ef-character-grid) [data-ef-col="130"] { --ef-col: 130; }
+  :where(.ef-character-grid) [data-ef-col="131"] { --ef-col: 131; }
+  :where(.ef-character-grid) [data-ef-col="132"] { --ef-col: 132; }
+  :where(.ef-character-grid) [data-ef-len="1"] { --ef-len: 1; }
+  :where(.ef-character-grid) [data-ef-len="2"] { --ef-len: 2; }
+  :where(.ef-character-grid) [data-ef-len="3"] { --ef-len: 3; }
+  :where(.ef-character-grid) [data-ef-len="4"] { --ef-len: 4; }
+  :where(.ef-character-grid) [data-ef-len="5"] { --ef-len: 5; }
+  :where(.ef-character-grid) [data-ef-len="6"] { --ef-len: 6; }
+  :where(.ef-character-grid) [data-ef-len="7"] { --ef-len: 7; }
+  :where(.ef-character-grid) [data-ef-len="8"] { --ef-len: 8; }
+  :where(.ef-character-grid) [data-ef-len="9"] { --ef-len: 9; }
+  :where(.ef-character-grid) [data-ef-len="10"] { --ef-len: 10; }
+  :where(.ef-character-grid) [data-ef-len="11"] { --ef-len: 11; }
+  :where(.ef-character-grid) [data-ef-len="12"] { --ef-len: 12; }
+  :where(.ef-character-grid) [data-ef-len="13"] { --ef-len: 13; }
+  :where(.ef-character-grid) [data-ef-len="14"] { --ef-len: 14; }
+  :where(.ef-character-grid) [data-ef-len="15"] { --ef-len: 15; }
+  :where(.ef-character-grid) [data-ef-len="16"] { --ef-len: 16; }
+  :where(.ef-character-grid) [data-ef-len="17"] { --ef-len: 17; }
+  :where(.ef-character-grid) [data-ef-len="18"] { --ef-len: 18; }
+  :where(.ef-character-grid) [data-ef-len="19"] { --ef-len: 19; }
+  :where(.ef-character-grid) [data-ef-len="20"] { --ef-len: 20; }
+  :where(.ef-character-grid) [data-ef-len="21"] { --ef-len: 21; }
+  :where(.ef-character-grid) [data-ef-len="22"] { --ef-len: 22; }
+  :where(.ef-character-grid) [data-ef-len="23"] { --ef-len: 23; }
+  :where(.ef-character-grid) [data-ef-len="24"] { --ef-len: 24; }
+  :where(.ef-character-grid) [data-ef-len="25"] { --ef-len: 25; }
+  :where(.ef-character-grid) [data-ef-len="26"] { --ef-len: 26; }
+  :where(.ef-character-grid) [data-ef-len="27"] { --ef-len: 27; }
+  :where(.ef-character-grid) [data-ef-len="28"] { --ef-len: 28; }
+  :where(.ef-character-grid) [data-ef-len="29"] { --ef-len: 29; }
+  :where(.ef-character-grid) [data-ef-len="30"] { --ef-len: 30; }
+  :where(.ef-character-grid) [data-ef-len="31"] { --ef-len: 31; }
+  :where(.ef-character-grid) [data-ef-len="32"] { --ef-len: 32; }
+  :where(.ef-character-grid) [data-ef-len="33"] { --ef-len: 33; }
+  :where(.ef-character-grid) [data-ef-len="34"] { --ef-len: 34; }
+  :where(.ef-character-grid) [data-ef-len="35"] { --ef-len: 35; }
+  :where(.ef-character-grid) [data-ef-len="36"] { --ef-len: 36; }
+  :where(.ef-character-grid) [data-ef-len="37"] { --ef-len: 37; }
+  :where(.ef-character-grid) [data-ef-len="38"] { --ef-len: 38; }
+  :where(.ef-character-grid) [data-ef-len="39"] { --ef-len: 39; }
+  :where(.ef-character-grid) [data-ef-len="40"] { --ef-len: 40; }
+  :where(.ef-character-grid) [data-ef-len="41"] { --ef-len: 41; }
+  :where(.ef-character-grid) [data-ef-len="42"] { --ef-len: 42; }
+  :where(.ef-character-grid) [data-ef-len="43"] { --ef-len: 43; }
+  :where(.ef-character-grid) [data-ef-len="44"] { --ef-len: 44; }
+  :where(.ef-character-grid) [data-ef-len="45"] { --ef-len: 45; }
+  :where(.ef-character-grid) [data-ef-len="46"] { --ef-len: 46; }
+  :where(.ef-character-grid) [data-ef-len="47"] { --ef-len: 47; }
+  :where(.ef-character-grid) [data-ef-len="48"] { --ef-len: 48; }
+  :where(.ef-character-grid) [data-ef-len="49"] { --ef-len: 49; }
+  :where(.ef-character-grid) [data-ef-len="50"] { --ef-len: 50; }
+  :where(.ef-character-grid) [data-ef-len="51"] { --ef-len: 51; }
+  :where(.ef-character-grid) [data-ef-len="52"] { --ef-len: 52; }
+  :where(.ef-character-grid) [data-ef-len="53"] { --ef-len: 53; }
+  :where(.ef-character-grid) [data-ef-len="54"] { --ef-len: 54; }
+  :where(.ef-character-grid) [data-ef-len="55"] { --ef-len: 55; }
+  :where(.ef-character-grid) [data-ef-len="56"] { --ef-len: 56; }
+  :where(.ef-character-grid) [data-ef-len="57"] { --ef-len: 57; }
+  :where(.ef-character-grid) [data-ef-len="58"] { --ef-len: 58; }
+  :where(.ef-character-grid) [data-ef-len="59"] { --ef-len: 59; }
+  :where(.ef-character-grid) [data-ef-len="60"] { --ef-len: 60; }
+  :where(.ef-character-grid) [data-ef-len="61"] { --ef-len: 61; }
+  :where(.ef-character-grid) [data-ef-len="62"] { --ef-len: 62; }
+  :where(.ef-character-grid) [data-ef-len="63"] { --ef-len: 63; }
+  :where(.ef-character-grid) [data-ef-len="64"] { --ef-len: 64; }
+  :where(.ef-character-grid) [data-ef-len="65"] { --ef-len: 65; }
+  :where(.ef-character-grid) [data-ef-len="66"] { --ef-len: 66; }
+  :where(.ef-character-grid) [data-ef-len="67"] { --ef-len: 67; }
+  :where(.ef-character-grid) [data-ef-len="68"] { --ef-len: 68; }
+  :where(.ef-character-grid) [data-ef-len="69"] { --ef-len: 69; }
+  :where(.ef-character-grid) [data-ef-len="70"] { --ef-len: 70; }
+  :where(.ef-character-grid) [data-ef-len="71"] { --ef-len: 71; }
+  :where(.ef-character-grid) [data-ef-len="72"] { --ef-len: 72; }
+  :where(.ef-character-grid) [data-ef-len="73"] { --ef-len: 73; }
+  :where(.ef-character-grid) [data-ef-len="74"] { --ef-len: 74; }
+  :where(.ef-character-grid) [data-ef-len="75"] { --ef-len: 75; }
+  :where(.ef-character-grid) [data-ef-len="76"] { --ef-len: 76; }
+  :where(.ef-character-grid) [data-ef-len="77"] { --ef-len: 77; }
+  :where(.ef-character-grid) [data-ef-len="78"] { --ef-len: 78; }
+  :where(.ef-character-grid) [data-ef-len="79"] { --ef-len: 79; }
+  :where(.ef-character-grid) [data-ef-len="80"] { --ef-len: 80; }
+  :where(.ef-character-grid) [data-ef-len="81"] { --ef-len: 81; }
+  :where(.ef-character-grid) [data-ef-len="82"] { --ef-len: 82; }
+  :where(.ef-character-grid) [data-ef-len="83"] { --ef-len: 83; }
+  :where(.ef-character-grid) [data-ef-len="84"] { --ef-len: 84; }
+  :where(.ef-character-grid) [data-ef-len="85"] { --ef-len: 85; }
+  :where(.ef-character-grid) [data-ef-len="86"] { --ef-len: 86; }
+  :where(.ef-character-grid) [data-ef-len="87"] { --ef-len: 87; }
+  :where(.ef-character-grid) [data-ef-len="88"] { --ef-len: 88; }
+  :where(.ef-character-grid) [data-ef-len="89"] { --ef-len: 89; }
+  :where(.ef-character-grid) [data-ef-len="90"] { --ef-len: 90; }
+  :where(.ef-character-grid) [data-ef-len="91"] { --ef-len: 91; }
+  :where(.ef-character-grid) [data-ef-len="92"] { --ef-len: 92; }
+  :where(.ef-character-grid) [data-ef-len="93"] { --ef-len: 93; }
+  :where(.ef-character-grid) [data-ef-len="94"] { --ef-len: 94; }
+  :where(.ef-character-grid) [data-ef-len="95"] { --ef-len: 95; }
+  :where(.ef-character-grid) [data-ef-len="96"] { --ef-len: 96; }
+  :where(.ef-character-grid) [data-ef-len="97"] { --ef-len: 97; }
+  :where(.ef-character-grid) [data-ef-len="98"] { --ef-len: 98; }
+  :where(.ef-character-grid) [data-ef-len="99"] { --ef-len: 99; }
+  :where(.ef-character-grid) [data-ef-len="100"] { --ef-len: 100; }
+  :where(.ef-character-grid) [data-ef-len="101"] { --ef-len: 101; }
+  :where(.ef-character-grid) [data-ef-len="102"] { --ef-len: 102; }
+  :where(.ef-character-grid) [data-ef-len="103"] { --ef-len: 103; }
+  :where(.ef-character-grid) [data-ef-len="104"] { --ef-len: 104; }
+  :where(.ef-character-grid) [data-ef-len="105"] { --ef-len: 105; }
+  :where(.ef-character-grid) [data-ef-len="106"] { --ef-len: 106; }
+  :where(.ef-character-grid) [data-ef-len="107"] { --ef-len: 107; }
+  :where(.ef-character-grid) [data-ef-len="108"] { --ef-len: 108; }
+  :where(.ef-character-grid) [data-ef-len="109"] { --ef-len: 109; }
+  :where(.ef-character-grid) [data-ef-len="110"] { --ef-len: 110; }
+  :where(.ef-character-grid) [data-ef-len="111"] { --ef-len: 111; }
+  :where(.ef-character-grid) [data-ef-len="112"] { --ef-len: 112; }
+  :where(.ef-character-grid) [data-ef-len="113"] { --ef-len: 113; }
+  :where(.ef-character-grid) [data-ef-len="114"] { --ef-len: 114; }
+  :where(.ef-character-grid) [data-ef-len="115"] { --ef-len: 115; }
+  :where(.ef-character-grid) [data-ef-len="116"] { --ef-len: 116; }
+  :where(.ef-character-grid) [data-ef-len="117"] { --ef-len: 117; }
+  :where(.ef-character-grid) [data-ef-len="118"] { --ef-len: 118; }
+  :where(.ef-character-grid) [data-ef-len="119"] { --ef-len: 119; }
+  :where(.ef-character-grid) [data-ef-len="120"] { --ef-len: 120; }
+  :where(.ef-character-grid) [data-ef-len="121"] { --ef-len: 121; }
+  :where(.ef-character-grid) [data-ef-len="122"] { --ef-len: 122; }
+  :where(.ef-character-grid) [data-ef-len="123"] { --ef-len: 123; }
+  :where(.ef-character-grid) [data-ef-len="124"] { --ef-len: 124; }
+  :where(.ef-character-grid) [data-ef-len="125"] { --ef-len: 125; }
+  :where(.ef-character-grid) [data-ef-len="126"] { --ef-len: 126; }
+  :where(.ef-character-grid) [data-ef-len="127"] { --ef-len: 127; }
+  :where(.ef-character-grid) [data-ef-len="128"] { --ef-len: 128; }
+  :where(.ef-character-grid) [data-ef-len="129"] { --ef-len: 129; }
+  :where(.ef-character-grid) [data-ef-len="130"] { --ef-len: 130; }
+  :where(.ef-character-grid) [data-ef-len="131"] { --ef-len: 131; }
+  :where(.ef-character-grid) [data-ef-len="132"] { --ef-len: 132; }
+  :where(.ef-character-grid) [data-ef-height="1"] { --ef-height: 1; }
+  :where(.ef-character-grid) [data-ef-height="2"] { --ef-height: 2; }
+  :where(.ef-character-grid) [data-ef-height="3"] { --ef-height: 3; }
+  :where(.ef-character-grid) [data-ef-height="4"] { --ef-height: 4; }
+  :where(.ef-character-grid) [data-ef-height="5"] { --ef-height: 5; }
+  :where(.ef-character-grid) [data-ef-height="6"] { --ef-height: 6; }
+  :where(.ef-character-grid) [data-ef-height="7"] { --ef-height: 7; }
+  :where(.ef-character-grid) [data-ef-height="8"] { --ef-height: 8; }
+  :where(.ef-character-grid) [data-ef-height="9"] { --ef-height: 9; }
+  :where(.ef-character-grid) [data-ef-height="10"] { --ef-height: 10; }
+  :where(.ef-character-grid) [data-ef-height="11"] { --ef-height: 11; }
+  :where(.ef-character-grid) [data-ef-height="12"] { --ef-height: 12; }
+  :where(.ef-character-grid) [data-ef-height="13"] { --ef-height: 13; }
+  :where(.ef-character-grid) [data-ef-height="14"] { --ef-height: 14; }
+  :where(.ef-character-grid) [data-ef-height="15"] { --ef-height: 15; }
+  :where(.ef-character-grid) [data-ef-height="16"] { --ef-height: 16; }
+  :where(.ef-character-grid) [data-ef-height="17"] { --ef-height: 17; }
+  :where(.ef-character-grid) [data-ef-height="18"] { --ef-height: 18; }
+  :where(.ef-character-grid) [data-ef-height="19"] { --ef-height: 19; }
+  :where(.ef-character-grid) [data-ef-height="20"] { --ef-height: 20; }
+  :where(.ef-character-grid) [data-ef-height="21"] { --ef-height: 21; }
+  :where(.ef-character-grid) [data-ef-height="22"] { --ef-height: 22; }
+  :where(.ef-character-grid) [data-ef-height="23"] { --ef-height: 23; }
+  :where(.ef-character-grid) [data-ef-height="24"] { --ef-height: 24; }
+  :where(.ef-character-grid) [data-ef-height="25"] { --ef-height: 25; }
+  :where(.ef-character-grid) [data-ef-height="26"] { --ef-height: 26; }
+  :where(.ef-character-grid) [data-ef-height="27"] { --ef-height: 27; }
+  :where(.ef-character-grid) [data-ef-height="28"] { --ef-height: 28; }
+  :where(.ef-character-grid) [data-ef-height="29"] { --ef-height: 29; }
+  :where(.ef-character-grid) [data-ef-height="30"] { --ef-height: 30; }
+  :where(.ef-character-grid) [data-ef-height="31"] { --ef-height: 31; }
+  :where(.ef-character-grid) [data-ef-height="32"] { --ef-height: 32; }
+  :where(.ef-character-grid) [data-ef-height="33"] { --ef-height: 33; }
+  :where(.ef-character-grid) [data-ef-height="34"] { --ef-height: 34; }
+  :where(.ef-character-grid) [data-ef-height="35"] { --ef-height: 35; }
+  :where(.ef-character-grid) [data-ef-height="36"] { --ef-height: 36; }
+  :where(.ef-character-grid) [data-ef-height="37"] { --ef-height: 37; }
+  :where(.ef-character-grid) [data-ef-height="38"] { --ef-height: 38; }
+  :where(.ef-character-grid) [data-ef-height="39"] { --ef-height: 39; }
+  :where(.ef-character-grid) [data-ef-height="40"] { --ef-height: 40; }
+  :where(.ef-character-grid) [data-ef-height="41"] { --ef-height: 41; }
+  :where(.ef-character-grid) [data-ef-height="42"] { --ef-height: 42; }
+  :where(.ef-character-grid) [data-ef-height="43"] { --ef-height: 43; }
+  :where(.ef-character-grid) [data-ef-height="44"] { --ef-height: 44; }
+  :where(.ef-character-grid) [data-ef-height="45"] { --ef-height: 45; }
+  :where(.ef-character-grid) [data-ef-height="46"] { --ef-height: 46; }
+  :where(.ef-character-grid) [data-ef-height="47"] { --ef-height: 47; }
+  :where(.ef-character-grid) [data-ef-height="48"] { --ef-height: 48; }
+  :where(.ef-character-grid) [data-ef-height="49"] { --ef-height: 49; }
+  :where(.ef-character-grid) [data-ef-height="50"] { --ef-height: 50; }
+  :where(.ef-character-grid) [data-ef-gutter="0"] { --ef-gutter: 0; }
+  :where(.ef-character-grid) [data-ef-gutter="1"] { --ef-gutter: 1; }
+  :where(.ef-character-grid) [data-ef-gutter="2"] { --ef-gutter: 2; }
+  :where(.ef-character-grid) [data-ef-gutter="3"] { --ef-gutter: 3; }
+  :where(.ef-character-grid) [data-ef-gutter="4"] { --ef-gutter: 4; }
+  /* END generated: character-grid coordinates */
 }
