@@ -49,6 +49,24 @@
       "selector": "operations-salience",
       "source": "tokens/echelon.tokens.json semantic.operations-salience",
       "status": "partial"
+    },
+    {
+      "id": "THEME-PAPER-INK",
+      "selector": "paper-ink",
+      "source": "tokens/echelon.tokens.json semantic.paper-ink",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-CLINICAL-LIGHT",
+      "selector": "clinical-light",
+      "source": "tokens/echelon.tokens.json semantic.clinical-light",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-DARK-RESTRAINED",
+      "selector": "dark-restrained",
+      "source": "tokens/echelon.tokens.json semantic.dark-restrained",
+      "status": "partial"
     }
   ],
   "highRiskLayouts": [
