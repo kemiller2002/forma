@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "purpose": "Risk-based executable conformance matrix for implemented Forma theme profiles crossed with layout families.",
+  "policy": {
+    "exhaustiveResearchCrossProduct": false,
+    "rationale": "Research theme families remain hypotheses until token profiles exist. Executable conformance tests only implemented themes, with representative low-risk layouts and adversarial high-risk layouts.",
+    "failureCriteria": [
+      "page-level overflow",
+      "automated WCAG A/AA violation",
+      "loss of explicit state text",
+      "loss of visible keyboard focus",
+      "theme token not applied",
+      "semantic/source-order mutation"
+    ]
+  },
+  "implementedThemes": [
+    {
+      "id": "FORMA-LIGHT",
+      "selector": null,
+      "source": "tokens/echelon.tokens.json semantic.light",
+      "status": "supported"
+    },
+    {
+      "id": "FORMA-DARK",
+      "selector": "dark",
+      "source": "tokens/echelon.tokens.json semantic.dark",
+      "status": "supported"
+    }
+  ],
+  "highRiskLayouts": [
+    "LAY-DENSE-OPERATIONS",
+    "LAY-COMPARISON",
+    "LAY-SPATIAL-CANVAS",
+    "LAY-KNOWLEDGE-GRAPH",
+    "LAY-EVIDENCE-PATH",
+    "LAY-MULTI-HIERARCHY-TRIAGE",
+    "LAY-LIVE-OPERATIONS",
+    "LAY-BIDIRECTIONAL-COMPARISON",
+    "LAY-HUMAN-AGENT-HANDOFF"
+  ],
+  "representativeLayouts": [
+    "LAY-FORM-SECTIONED",
+    "LAY-EDITORIAL-NARRATIVE",
+    "LAY-MASTER-DETAIL",
+    "LAY-SEARCH-RESULTS",
+    "LAY-FOCAL-OVERLAY"
+  ],
+  "checks": [
+    "1280px",
+    "390px",
+    "320px",
+    "200% text on high-risk layouts",
+    "forced colors on high-risk layouts",
+    "keyboard focus",
+    "automated WCAG A/AA"
+  ],
+  "status": "supported"
+}
