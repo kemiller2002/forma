@@ -34,7 +34,7 @@
     "test:browser": "playwright test",
     "test:a11y": "playwright test tests/browser/accessibility.spec.mjs",
     "test:runtime": "node --test tests/zero-runtime.test.mjs",
-    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:package && npm run test:browser",
+    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:character-grid && npm run test:package && npm run test:browser",
     "site:build": "npm run build && node tools/build-site.mjs",
     "site:test": "node --test tests/site-build.test.mjs",
     "site:check": "npm run site:build && npm run site:test && npm run site:mobile",
@@ -42,7 +42,8 @@
     "pack:verify": "npm run build && npm pack --dry-run",
     "test:package": "node --test tests/package-contract.test.mjs",
     "brands:build": "dotnet run --project tools/BrandCompiler/BrandCompiler.fsproj -- brands dist/brands",
-    "test:brands": "node --test tests/brand-compiler.test.mjs"
+    "test:brands": "node --test tests/brand-compiler.test.mjs",
+    "test:character-grid": "node --test tests/character-grid.test.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

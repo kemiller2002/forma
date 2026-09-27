@@ -121,5 +121,6 @@ export const componentMeta = {
   "timeline": ["Timeline", "Data & productivity", "Application content", "Chronological or ordered activity with timestamps, state changes, provenance, and single-column mobile flow."],
   "understanding": ["Understanding review", "Assisted interaction", "Ordo / application", "Review proposed understanding, unknowns, conflicts, and source actions before consequential transitions."],
   "wizard": ["Wizard", "Navigation & commands", "Limen / Ordo", "Step-by-step workflow shell with current-step state, progress, validation hooks, resume, and mobile reduction."],
+  "character-grid": ["Character grid", "Layout & workspace", "Application / Limen", "Fixed rows-by-columns grid of equal-width cells where every run declares its cell coordinates and source order is row-major order; contained horizontal scroll by default."],
   "work-queue": ["Work queue", "State & feedback", "Ordo / application", "Attention-first list of unresolved work with reason, context, and application-supplied legal actions."]
 };
