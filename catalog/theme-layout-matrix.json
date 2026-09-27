@@ -67,6 +67,30 @@
       "selector": "dark-restrained",
       "source": "tokens/echelon.tokens.json semantic.dark-restrained",
       "status": "partial"
+    },
+    {
+      "id": "THEME-COMPLEMENTARY-ENERGY",
+      "selector": "complementary-energy",
+      "source": "tokens/echelon.tokens.json semantic.complementary-energy",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-ANALOGOUS-COHESIVE",
+      "selector": "analogous-cohesive",
+      "source": "tokens/echelon.tokens.json semantic.analogous-cohesive",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-SPLIT-COMPLEMENTARY",
+      "selector": "split-complementary",
+      "source": "tokens/echelon.tokens.json semantic.split-complementary",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-MONO-SEMANTIC",
+      "selector": "mono-semantic",
+      "source": "tokens/echelon.tokens.json semantic.mono-semantic",
+      "status": "partial"
     }
   ],
   "highRiskLayouts": [
