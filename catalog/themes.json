@@ -46,13 +46,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "neutral-editorial",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-ACCENT-NEUTRAL",
@@ -123,13 +128,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "dark-technical",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-WARM-EARTH",
@@ -159,13 +169,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "warm-earth",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-COOL-INSTITUTIONAL",
@@ -195,13 +210,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "cool-institutional",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-MONO-SEMANTIC",
@@ -557,13 +577,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "nature-derived",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-CLINICAL-LIGHT",
