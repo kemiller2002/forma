@@ -455,13 +455,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "dark-restrained",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-PAPER-INK",
@@ -491,13 +496,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "paper-ink",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-NATURE-DERIVED",
@@ -563,13 +573,18 @@
         "--ef-color-accent-secondary",
         "semantic state tokens"
       ],
-      "status": "observed",
+      "status": "partial",
       "evidence": [
         "Visual Engineering Itten color contrasts",
         "Project Atlas color vocabulary and mechanism taxonomy",
         "Project Atlas perceptual color genome",
         "Perceptual Envelope EX-VE-COL-006 CVD minimax palette and semantic survivability"
-      ]
+      ],
+      "implementation": {
+        "selector": "clinical-light",
+        "source": "tokens/echelon.tokens.json",
+        "claim": "Token profile implemented; layout cross-product verification pending."
+      }
     },
     {
       "id": "THEME-OPERATIONS-SALIENCE",
