@@ -3396,6 +3396,22 @@
     color: var(--ef-grid-emphasis);
   }
 
+  /* A row header names its record; it reads as data, not as a column head. */
+  .ef-character-grid__table th[scope="row"] {
+    color: var(--ef-grid-emphasis);
+    text-decoration: none;
+  }
+
+  /*
+   * Per-row selection field (GAP-TCG-10): a native field in a table cell is
+   * exactly data-ef-len cells wide, like a positioned field; its column may
+   * be wider.
+   */
+  .ef-character-grid__table .ef-character-grid__field {
+    display: block;
+    inline-size: calc(var(--ef-len) * 1ch);
+  }
+
   .ef-character-grid__table [data-ef-align="end"] {
     text-align: end;
   }
@@ -3424,6 +3440,8 @@
     border: 0;
     border-block-end: 2px solid var(--ef-grid-boundary);
     border-radius: 0;
+    /* Also outside runs (table cells): the row pitch, not the foundation minimum. */
+    min-block-size: 0;
     background: var(--ef-grid-field-surface);
     color: var(--ef-grid-field);
     caret-color: currentColor;
@@ -3445,6 +3463,11 @@
       inline-size: auto;
       min-inline-size: 100%;
     }
+
+    .ef-character-grid__table .ef-character-grid__field {
+      inline-size: auto;
+      min-inline-size: calc(var(--ef-len) * 1ch);
+    }
   }
 
   .ef-character-grid__field:focus-visible {
@@ -3458,8 +3481,12 @@
     border-block-end-width: 4px;
   }
 
+  /*
+   * Dashed rules above and below: a shape cue that adds no inline width, so
+   * an invalid field stays exactly its cells in every state.
+   */
   .ef-character-grid__field[aria-invalid="true"] {
-    border: 2px dashed var(--ef-grid-validation);
+    border-block: 2px dashed var(--ef-grid-validation);
   }
 
   .ef-character-grid__field:disabled {
@@ -3682,6 +3709,11 @@
     .ef-character-grid__key {
       min-inline-size: max(100%, 2.75rem);
       margin-inline-end: min(calc(var(--ef-len) * -0.01ch - 0.5px), calc(var(--ef-len) * 1ch - 2.75rem - 0.5px));
+    }
+
+    /* In a table the touch minimum extends into the gutter (CG-17). */
+    .ef-character-grid__table .ef-character-grid__field {
+      min-inline-size: max(calc(var(--ef-len) * 1ch), 2.75rem);
     }
   }
 

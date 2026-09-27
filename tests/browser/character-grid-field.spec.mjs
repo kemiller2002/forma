@@ -76,12 +76,13 @@ test("state cues differ by shape, not only by color, and survive forced colors",
   const cues = () => page.evaluate(() => Object.fromEntries(
     ["account", "reference", "amount", "branch", "session"].map(key => {
       const style = getComputedStyle(document.getElementById(`character-grid-field-${key}`));
-      return [key, { bottom: style.borderBottomStyle, width: style.borderBottomWidth, left: style.borderLeftStyle }];
+      return [key, { bottom: style.borderBottomStyle, width: style.borderBottomWidth, top: style.borderTopStyle, left: style.borderLeftStyle }];
     })));
   const normal = await cues();
   expect(normal.reference.bottom).toBe("solid");
   expect(normal.account.bottom).toBe("double");
-  expect(normal.amount.left).toBe("dashed");
+  expect([normal.amount.top, normal.amount.bottom]).toEqual(["dashed", "dashed"]);
+  expect(normal.amount.left, "no inline border: the field stays exactly its cells").toBe("none");
   expect(normal.branch.bottom).toBe("dotted");
   expect(normal.session.width).toBe("1px");
   await page.emulateMedia({ forcedColors: "active" });

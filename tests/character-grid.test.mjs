@@ -118,6 +118,34 @@ test("CG-8 rejects a label that follows its field", () => {
   assert.ok(errors.some(error => error.includes("label must precede")));
 });
 
+const selectionTable = ({ field = "", optLen = 3, gutter = 2, rowHeader = true } = {}) => `
+    <div class="ef-character-grid__table" data-ef-row="2" data-ef-col="1" data-ef-len="20" data-ef-height="2">
+      <table data-ef-gutter="${gutter}">
+        <thead><tr><th scope="col" id="opt" data-ef-len="${optLen}">Opt</th><th scope="col" data-ef-len="8">Key</th></tr></thead>
+        <tbody><tr><td>${field}</td>${rowHeader ? '<th scope="row" id="r1">A-1</th>' : "<td>A-1</td>"}</tr></tbody>
+      </table>
+    </div>`;
+const selectionField = (attributes = "") =>
+  `<input class="ef-character-grid__field" id="o1" type="text" maxlength="1" data-ef-len="1" aria-labelledby="opt r1" ${attributes}>`;
+const selectionErrorsFor = options => errorsFor(selectionTable(options)).filter(error => error.includes("CG-17"));
+
+test("CG-17 accepts a per-row selection field named by its column and row headers", () => {
+  assert.deepEqual(selectionErrorsFor({ field: selectionField() }), []);
+});
+
+test("CG-17 rejects selection fields that are not native, unnamed, over capacity, or too narrow for touch", () => {
+  assert.ok(selectionErrorsFor({ field: '<span class="ef-character-grid__field" id="o1" data-ef-len="1" aria-labelledby="opt r1">_</span>' }).length === 0,
+    "a span is not a control and is not checked as one");
+  assert.ok(hasRule(selectionErrorsFor({ field: '<button class="ef-character-grid__field" id="o1" type="button" data-ef-len="1" aria-labelledby="opt r1">_</button>' }), "native text input"));
+  assert.ok(hasRule(selectionErrorsFor({ field: selectionField().replace('maxlength="1"', 'maxlength="2"') }), "maxlength"));
+  assert.ok(hasRule(selectionErrorsFor({ field: selectionField().replace('aria-labelledby="opt r1"', 'aria-labelledby="r1"') }), "th[scope=col]"));
+  assert.ok(hasRule(selectionErrorsFor({ field: selectionField(), rowHeader: false }), "th[scope=row]"));
+  assert.ok(hasRule(selectionErrorsFor({ field: selectionField().replace(/data-ef-len="1"/, 'data-ef-len="4"').replace('maxlength="1"', 'maxlength="4"'), optLen: 3 }), "its column is 3"));
+  assert.ok(hasRule(selectionErrorsFor({ field: selectionField(), optLen: 2, gutter: 1 }), "touch minimum"));
+  assert.ok(hasRule(selectionErrorsFor({ field: selectionField('aria-invalid="true"') }), "invalid but not described"));
+  assert.ok(hasRule(selectionErrorsFor({ field: selectionField('aria-describedby="missing"') }), "describedby missing"));
+});
+
 test("CG-13 short fields need trailing blank cells for the touch minimum", () => {
   const label = '<label class="ef-character-grid__label" for="s" data-ef-row="2" data-ef-col="1" data-ef-len="3">Qty</label>';
   const field = '<input class="ef-character-grid__field" id="s" type="text" maxlength="2" data-ef-row="2" data-ef-col="5" data-ef-len="2">';

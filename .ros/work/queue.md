@@ -25,5 +25,5 @@
 | WI-0004 | Signal assessment and Ordo design-system patterns | complete |  | high |
 | WI-0005 | Signal selector completeness design-system patterns | complete |  | high |
 | WI-0006 | CharacterGrid GAP-TCG-11: keep WCAG 1.4.12 text-spacing overrides from overlapping runs in contained grids | complete |  | medium |
-| WI-0007 | CharacterGrid GAP-TCG-10: per-row selection fields in positioned repeated rows | blocked |  | medium |
+| WI-0007 | CharacterGrid GAP-TCG-10: per-row selection fields in positioned repeated rows | complete |  | medium |
 | WI-0008 | CharacterGrid GAP-TCG-11 follow-up: table cells under text-spacing overrides overlap neighboring columns | complete |  | medium |

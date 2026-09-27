@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "ChatGPT",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-09-27T20:16:47.000Z",
+  "updatedAt": "2026-09-27T20:28:54.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -588,14 +588,36 @@
     {
       "id": "WI-0007",
       "type": "task",
-      "state": "blocked",
-      "semanticState": "blocked",
-      "evidence": [],
-      "updatedAt": "2026-09-27T20:15:10.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "patterns/character-grid-selection.html"
+        },
+        {
+          "type": "implementation",
+          "path": "tools/character-grid-conformance.mjs"
+        },
+        {
+          "type": "implementation",
+          "path": "requirements/CHARACTER-GRID.md"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/character-grid-selection.spec.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/character-grid.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-09-27T20:28:54.000Z",
       "telemetryExecutionIds": [
         "EXE-20260927T201433128Z-edeaadd5"
       ],
-      "blockReason": "Selection fields live in table columns; WI-0008 must first make table columns grow under text-spacing overrides"
+      "blockReason": "Selection fields live in table columns; WI-0008 must first make table columns grow under text-spacing overrides",
+      "completedAt": "2026-09-27T20:28:54.000Z"
     },
     {
       "id": "WI-0008",

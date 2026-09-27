@@ -29,6 +29,7 @@
     "SequentialReveal static fallback": [["tests/browser/character-grid-reveal.spec.mjs", "static is the default"], ["tests/browser/character-grid-reveal.spec.mjs", "data-ef-reveal=complete"]],
     "focus not obscured": [["tests/browser/character-grid-verification.spec.mjs", "focus is never hidden by the contained scroller"]],
     "target size": [["tests/browser/character-grid-field.spec.mjs", "meet the 44px target guideline"], ["tests/browser/character-grid-keys-status.spec.mjs", "keys meet the 44px target guideline"]],
+    "per-row selection fields": [["tests/character-grid.test.mjs", "CG-17 rejects selection fields"], ["tests/browser/character-grid-selection.spec.mjs", "named by its column and row headers"], ["tests/browser/character-grid-selection.spec.mjs", "visit selection fields row by row"]],
     "three-screen reference regression": [["tests/browser/character-grid-workflow.spec.mjs", "three distinct 24x80 screens"], ["tests/character-grid.test.mjs", "the three-screen reference workflow conforms in every rendered state"]],
     "automated accessibility": [["tests/browser/character-grid-workflow.spec.mjs", "has no automatically detectable accessibility violations"]],
     "zero runtime / no 3270 logic in primitives": [["tests/zero-runtime.test.mjs", "canonical HTML patterns contain no executable script"], ["tests/character-grid.test.mjs", "contain no 3270-specific logic"]]

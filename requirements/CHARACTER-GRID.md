@@ -208,14 +208,14 @@ colors.
 | Label | A preceding `<label for>` run (CG-8). Leader characters are wrapped in `.ef-character-grid__leader` with `aria-hidden="true"` so the accessible name is "Account", not "Account dot dot dot colon". |
 | Hint / error | `aria-describedby` lists one or more IDs (hint and error together). An `aria-invalid="true"` field must reference its message (CG-8). |
 | Required | Native `required`; cue: double underline. State the requirement in the label or hint text as well. |
-| Invalid | `aria-invalid="true"` set by the application; cue: dashed box. Forma does not use `:invalid`, because validity policy is the application's. |
+| Invalid | `aria-invalid="true"` set by the application; cue: dashed rules above and below (no inline border, so the field stays exactly its cells). Forma does not use `:invalid`, because validity policy is the application's. |
 | Disabled | Native `disabled`; cue: dotted underline, muted text; removed from the Tab sequence natively. |
 | Read-only | Native `readonly` **only** for genuine read-only form values the application reads back; cue: thin underline, no field surface. Otherwise use protected text. |
 | Protected | `.ef-character-grid__text` / `.ef-character-grid__value` elements; never controls (CG-9); never focusable. |
 | Focus | `:focus-visible` outline in `--ef-grid-focus`; `Highlight` in forced colors. Profiles may add a cursor treatment but may not remove the outline. |
 | Initial focus | Which field receives focus when a screen appears (the 3270 "insert cursor") is application/Limen behavior; native `autofocus` is the only markup Forma needs. |
 
-State cues differ in **shape** (solid, double, dashed box, dotted, thin), so
+State cues differ in **shape** (solid, double, dashed above and below, dotted, thin), so
 they survive grayscale, color-vision deficiency, and forced colors, where they
 are rendered in `CanvasText`/`GrayText` (browser-tested).
 
@@ -229,6 +229,46 @@ are rendered in `CanvasText`/`GrayText` (browser-tested).
   Target Size (Minimum) violations for fields in adjacent rows. The pitch is
   therefore `max(1.25em, 1.5rem)`: never below 24px. This is a deliberate
   accessibility cost to terminal density and applies to every profile.
+
+### Per-row selection fields (GAP-TCG-10)
+
+A list screen may give each repeated row an editable selection field (the
+5250 "Opt" column: *Type options, press Enter.* followed by a legend such as
+`2=Change  4=Close  5=Display`). The field lives in a cell of a positioned
+table and keeps native semantics:
+
+```html
+<p class="ef-character-grid__text" id="legend" data-ef-row="4" data-ef-col="4" data-ef-len="28">2=Change  4=Close  5=Display</p>
+<div class="ef-character-grid__table" data-ef-row="6" data-ef-col="2" data-ef-len="77" data-ef-height="6">
+  <table data-ef-gutter="2">
+    <caption>Accounts, with a selection option per row</caption>
+    <thead><tr><th scope="col" id="opt" data-ef-len="3">Opt</th><th scope="col" data-ef-len="14">Account</th>...</tr></thead>
+    <tbody>
+      <tr><td><input class="ef-character-grid__field" id="opt-1" name="opt-00417-2231-09" type="text" maxlength="1" data-ef-len="1"
+                     aria-labelledby="opt row-1" aria-describedby="legend"></td>
+          <th scope="row" id="row-1">00417-2231-09</th>...</tr>
+    </tbody>
+  </table>
+</div>
+```
+
+- **CG-17.** A control in a table run is a native text
+  `input.ef-character-grid__field`; `maxlength` equals its `data-ef-len`,
+  which fits its column's `th[data-ef-len]`; `aria-labelledby` names its
+  `th[scope=col]` and its row's `th[scope=row]` (so the name is, for
+  example, "Opt 00417-2231-09"); a field shorter than five cells has a
+  column plus gutter of at least five cells, so the touch minimum stays in
+  its own column; an invalid field is described by a message.
+- The field is exactly `data-ef-len` cells wide and one row pitch tall; the
+  column may be wider (the heading "Opt" is three cells for a one-cell field).
+- Focus order is row-major because rows are in source order; disabled rows
+  are skipped natively.
+- The option legend describes every field (`aria-describedby`). Which
+  options are valid (`pattern` may express it natively) and what each does
+  is application behavior; the application reads the changed rows on Enter
+  (the 5250 `READC` idiom) and sets `aria-invalid` and the message.
+- Canonical pattern: `character-grid-selection`, a generic "Work with" list
+  with no profile.
 
 ## Action keys
 
@@ -404,11 +444,12 @@ be displayed) is Ordo/application-domain state.
 
 No product-specific concept was needed. One generic defect was found and
 fixed at the primitive level while building the screens (the foundation `p`
-leak, see Profiles). The row-selection idiom (GAP-TCG-10) was not exercised.
+leak, see Profiles). The reference workflow navigates by PF keys; the
+row-selection idiom (GAP-TCG-10) is exercised by `character-grid-selection`.
 
 ## Conformance checking
 
-`tools/character-grid-conformance.mjs` checks CG-1 to CG-16 on any HTML file:
+`tools/character-grid-conformance.mjs` checks CG-1 to CG-17 on any HTML file:
 
 ```bash
 node tools/character-grid-conformance.mjs patterns/character-grid.html
@@ -426,13 +467,14 @@ tests; `tests/character-grid.test.mjs` fails if a referenced test disappears.
 
 | Area | Where |
 | --- | --- |
-| Static rules CG-1…CG-16, generated CSS sync, no 3270 logic, workflow states, coverage matrix | `tests/character-grid.test.mjs` (`npm run test:character-grid`, run in *Forma conformance* CI) |
+| Static rules CG-1…CG-17, generated CSS sync, no 3270 logic, workflow states, coverage matrix | `tests/character-grid.test.mjs` (`npm run test:character-grid`, run in *Forma conformance* CI) |
 | Rendered geometry, 1280/390/320 px, 200 % text, contained region, reflow, `dl` semantics | `tests/browser/character-grid.spec.mjs` |
 | Fields: names, states, Tab/Shift+Tab, capacity, forced colors, target size | `tests/browser/character-grid-field.spec.mjs` |
 | Keys and status: native submitters, validation bypass, local Reset, live regions, severity cues | `tests/browser/character-grid-keys-status.spec.mjs` |
 | SequentialReveal: row-major timing, cap, tokens, exclusions, time-zero availability, reduced motion, complete | `tests/browser/character-grid-reveal.spec.mjs` |
 | 3270 profile: 24 × 80, 32 × 80, profile-only geometry, contrast, block caret, forced colors | `tests/browser/character-grid-3270.spec.mjs` |
 | Reference workflow: three screens, states, Tab order, dense rows, containment, axe | `tests/browser/character-grid-workflow.spec.mjs` |
+| Per-row selection fields: names, legend description, row-major Tab order, cell width, touch target in column, forced colors, axe | `tests/browser/character-grid-selection.spec.mjs` |
 | Runtime overflow, text spacing, one-cell track integrity, row-pitch controls, table containment, focus not obscured, CSS collision behavior | `tests/browser/character-grid-verification.spec.mjs` |
 | Every pattern at 320/390 px (containment, 44px targets) and the generated site | existing `tests/browser/mobile.spec.mjs`, `tests/site-build.test.mjs`, `tests/site-browser/mobile.spec.mjs` |
 
@@ -452,5 +494,6 @@ request for exact local results).
 | GAP-TCG-03 named keyboard actions presented separately from behavior | Closed by `.ef-character-grid__key`. |
 | GAP-TCG-04 staged text reveal with a static fallback | Closed for presentation by `data-ef-reveal`; orchestration remains application/Limen. |
 | GAP-TCG-09 runtime message length | Partially closed: multi-row message runs wrap and never clip; the length policy remains application content. |
+| GAP-TCG-10 per-row selection fields | Closed by CG-17 and `character-grid-selection`: native fields in table cells named by column and row headers. |
 | GAP-TCG-06 wide-glyph (two-cell) and right-to-left grids | Open. Forma does not assign two cells to wide glyphs. |
 | GAP-TCG-11 text-spacing overrides vs fixed cells | Closed: intrinsic tracks grow under an override (see Zoom and text scaling); regression-tested for no overlap, shared-column alignment, full field values, and no page overflow. |

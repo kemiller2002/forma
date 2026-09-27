@@ -68,7 +68,7 @@ test("runtime overflow is never clipped: an over-length value widens its columns
   expect(misaligned(runs)).toEqual([]);
 });
 
-const spacedPatterns = ["character-grid", "character-grid-field", "character-grid-keys", "character-grid-status", "character-grid-3270", "character-grid-workflow"];
+const spacedPatterns = ["character-grid", "character-grid-field", "character-grid-keys", "character-grid-status", "character-grid-selection", "character-grid-3270", "character-grid-workflow"];
 
 for (const name of spacedPatterns) {
   test(`text-spacing overrides (GAP-TCG-11): ${name} keeps every run readable, aligned, and unoverlapped`, async ({ page }) => {

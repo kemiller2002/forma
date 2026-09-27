@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="BrandCompiler">
+    <resource name="FSharpSignatureData.BrandCompiler" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedData.BrandCompiler" action="remove"></resource>
+    <resource name="FSharpSignatureDataB.BrandCompiler" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedDataB.BrandCompiler" action="remove"></resource>
+    <resource name="FSharpOptimizationData.BrandCompiler" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedData.BrandCompiler" action="remove"></resource>
+    <resource name="FSharpOptimizationDataB.BrandCompiler" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedDataB.BrandCompiler" action="remove"></resource>
+    <resource name="FSharpOptimizationInfo.BrandCompiler" action="remove"></resource>
+    <resource name="FSharpSignatureInfo.BrandCompiler" action="remove"></resource>
+  </assembly>
+</linker>
