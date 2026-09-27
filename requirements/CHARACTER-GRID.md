@@ -338,6 +338,52 @@ message run to 72 cells and recoloring paragraphs. The fix is in the
 primitive (runs reset `max-inline-size` and inherit color), with a regression
 test.
 
+## Reference application: Customer Inquiry → Account Detail → Transaction History
+
+`patterns/character-grid-workflow.html` implements the Visual Engineering
+reference workflow (`EX-VE-TCG-2026-5437`) with the `ibm-3270` profile at
+24 × 80, using **only** public contracts: `ef-character-grid*` classes and
+`ef-stack` (enforced by a Node test; no inline style, no product CSS).
+
+| Screen | Exercises |
+| --- | --- |
+| `CINQ` Customer Inquiry | Six labelled editable fields (one with a format hint), Enter/Clear/Reset/PF1/PF3, information message, SequentialReveal on the title only. |
+| `ACCD` Account Detail | Protected data only, grouping headings, end-aligned amounts, explicit missing value, Enter/PF3/PF5/PF12/PF1. |
+| `TRNH` Transaction History | Two required date fields, a positioned 12-row table (Date, Description, Amount, Balance, Status) with a 2-cell gutter, paging position, PF7/PF8 navigation, Reset. |
+
+Application-rendered states (`tests/character-grid-workflow-states.mjs`):
+inquiry validation (invalid field described by hint and message), inquiry
+no-criteria error, history empty (explicit empty-state row), and history error
+(service failure message plus `X SYSTEM` indicator). Every state passes the
+conformance checks and axe.
+
+### Transitions are not Forma's
+
+The screens are three independent grids on one page. Moving between them is
+application/Limen behavior driven by the native submitter value:
+
+| From | Submitter | To (application decides) |
+| --- | --- | --- |
+| CINQ | `enter` | ACCD when exactly one customer matches; otherwise CINQ with a message |
+| CINQ | `clear` | CINQ, fields erased |
+| CINQ | `reset` (button) | CINQ, local unlock only |
+| CINQ | `pf3` | leave the application |
+| ACCD | `pf5` | TRNH |
+| ACCD | `pf3`, `pf12` | CINQ |
+| TRNH | `enter` | TRNH with the new date range |
+| TRNH | `pf7`, `pf8` | TRNH previous/next page |
+| TRNH | `pf3` | ACCD |
+| TRNH | `pf12` | CINQ |
+
+Whether a transition is legal (for example, whether a restricted account may
+be displayed) is Ordo/application-domain state.
+
+### Sufficiency
+
+No product-specific concept was needed. One generic defect was found and
+fixed at the primitive level while building the screens (the foundation `p`
+leak, see Profiles). The row-selection idiom (GAP-TCG-10) was not exercised.
+
 ## Conformance checking
 
 `tools/character-grid-conformance.mjs` checks CG-1 to CG-16 on any HTML file:

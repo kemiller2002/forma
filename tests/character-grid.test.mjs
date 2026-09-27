@@ -207,3 +207,28 @@ test("generic CharacterGrid tooling and primitives contain no 3270-specific logi
     .filter(line => /3270/.test(line) && !/data-ef-profile="ibm-3270"|ibm-3270: first reference profile|3279 base palette/.test(line));
   assert.deepEqual(primitiveRules, []);
 });
+
+test("the three-screen reference workflow conforms in every rendered state", async () => {
+  const { render, states } = await import("./character-grid-workflow-states.mjs");
+  const names = ["default", ...Object.keys(states)];
+  assert.ok(names.length >= 5);
+  for (const name of names) {
+    const html = render(name);
+    assert.deepEqual(checkHtml(html), [], name);
+    if (name !== "default") assert.notEqual(html, render("default"), `${name} changes the screen`);
+  }
+  const grids = splitGrids(render("default"));
+  assert.equal(grids.length, 3);
+  assert.ok(grids.every(grid => grid.rows === 24 && grid.columns === 80));
+});
+
+test("the reference workflow uses only public Forma contracts (no product-specific CSS)", () => {
+  const html = fs.readFileSync(path.join(root, "patterns", "character-grid-workflow.html"), "utf8");
+  const classes = [...html.matchAll(/class="([^"]+)"/g)].flatMap(match => match[1].split(/\s+/));
+  const unknown = [...new Set(classes)].filter(name => !/^ef-character-grid(__[a-z]+)?$/.test(name) && name !== "ef-stack");
+  assert.deepEqual(unknown, []);
+  assert.doesNotMatch(html, /\sstyle=|<style|<script/);
+  for (const name of new Set(classes)) {
+    if (name.startsWith("ef-")) assert.ok(css.includes(`.${name}`), `${name} is a published class`);
+  }
+});

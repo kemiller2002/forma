@@ -127,5 +127,6 @@ export const componentMeta = {
   "character-grid-status": ["Character grid status", "State & feedback", "Application state", "Message and system-status live regions on a character grid with a visible severity word and shape cues that survive forced colors."],
   "character-grid-reveal": ["Character grid reveal", "Motion & presentation", "Application / Limen", "Optional SequentialReveal presentation: a row-major clip mask over protected text already in the DOM, static by default and under reduced motion; orchestration stays in the application."],
   "character-grid-3270": ["Character grid 3270 profile", "Layout & workspace", "Application / Limen", "IBM 3270-inspired reference profile built only from public CharacterGrid contracts: a 24x80 operations menu with 3279-style palette tokens and block caret, verified at 32x80."],
+  "character-grid-workflow": ["Character grid workflow", "Layout & workspace", "Application / Limen / Ordo", "Customer Inquiry, Account Detail, and Transaction History built only from public CharacterGrid contracts; transitions stay in the application."],
   "work-queue": ["Work queue", "State & feedback", "Ordo / application", "Attention-first list of unresolved work with reason, context, and application-supplied legal actions."]
 };
