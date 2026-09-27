@@ -27,3 +27,4 @@
 | WI-0006 | CharacterGrid GAP-TCG-11: keep WCAG 1.4.12 text-spacing overrides from overlapping runs in contained grids | complete |  | medium |
 | WI-0007 | CharacterGrid GAP-TCG-10: per-row selection fields in positioned repeated rows | complete |  | medium |
 | WI-0008 | CharacterGrid GAP-TCG-11 follow-up: table cells under text-spacing overrides overlap neighboring columns | complete |  | medium |
+| WI-0009 | CharacterGrid GAP-TCG-09: implement and verify VE DF-VE-TCG-2026-DD05 runtime message overflow policy | complete |  | medium |

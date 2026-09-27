@@ -108,10 +108,13 @@ leaks to its descendants.
   tracks, so it stays readable and visibly wrong (later columns shift for
   every row) rather than being silently truncated or painted over its
   neighbor.
-- Message regions whose text is produced at runtime (GAP-TCG-09) may reserve
-  more than one row with `data-ef-height`; Forma wraps them within the run and
-  never clips them. Whether to shorten a message is the application's content
-  decision.
+- Message regions whose text is produced at runtime (GAP-TCG-09) follow
+  Visual Engineering DF-VE-TCG-2026-DD05: a message is never truncated,
+  clipped, or scrolled; its region reserves one or more rows with
+  `data-ef-height` (two where message length varies) and wraps within its
+  width; if a message exceeds its reserved rows, the intrinsic row tracks
+  grow and later rows move down instead of being painted over. Keeping
+  messages within the reserved rows is the application's content decision.
 
 ### Order
 
@@ -312,7 +315,7 @@ Forma **presents** action affordances. It does not implement them.
 | Live region | `role="status"` for information, success, and warning; `role="alert"` for validation and error that need immediate attention. The element must exist before its text changes; the application updates its content. |
 | Non-color cue | A visible severity word in `.ef-character-grid__severity` is required (CG-15). Shape cues add to it: underline (warning), double underline (validation), reverse video with an outline (error). In forced colors the reverse video becomes an outlined box. |
 | Field association | Fields reference the message with `aria-describedby` (and `aria-invalid="true"` when invalid). |
-| Runtime length | Reserve rows with `data-ef-height` when messages may be long; Forma wraps within the run and never clips (GAP-TCG-09). |
+| Runtime length | Reserve rows with `data-ef-height` when messages may be long; Forma wraps within the run, never clips, and grows the rows if a message still does not fit (GAP-TCG-09, DF-VE-TCG-2026-DD05). |
 | System status | `.ef-character-grid__status` with `role="status"`; `.ef-character-grid__indicator` shows states such as input inhibited. Whether input is actually inhibited (for example, disabling fields while waiting) is application behavior. |
 
 ## SequentialReveal presentation
@@ -493,7 +496,7 @@ request for exact local results).
 | GAP-TCG-08 field referencing hint and message | Closed: `aria-describedby` with several IDs. |
 | GAP-TCG-03 named keyboard actions presented separately from behavior | Closed by `.ef-character-grid__key`. |
 | GAP-TCG-04 staged text reveal with a static fallback | Closed for presentation by `data-ef-reveal`; orchestration remains application/Limen. |
-| GAP-TCG-09 runtime message length | Partially closed: multi-row message runs wrap and never clip; the length policy remains application content. |
+| GAP-TCG-09 runtime message length | Closed by DF-VE-TCG-2026-DD05: messages wrap, never clip or truncate, and grow their region instead of overlapping (regression-tested). |
 | GAP-TCG-10 per-row selection fields | Closed by CG-17 and `character-grid-selection`: native fields in table cells named by column and row headers. |
 | GAP-TCG-06 wide-glyph (two-cell) and right-to-left grids | Open. Forma does not assign two cells to wide glyphs. |
 | GAP-TCG-11 text-spacing overrides vs fixed cells | Closed: intrinsic tracks grow under an override (see Zoom and text scaling); regression-tested for no overlap, shared-column alignment, full field values, and no page overflow. |

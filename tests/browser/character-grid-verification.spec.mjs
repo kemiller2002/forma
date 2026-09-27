@@ -120,6 +120,34 @@ test("text-spacing overrides: a full-length field value stays visible, or scroll
   }
 });
 
+test("a runtime message longer than its reserved rows grows its region instead of overlapping (DF-VE-TCG-2026-DD05)", async ({ page }) => {
+  const long = "Long runtime message text that the application produced without knowing the width of the region. ".repeat(3);
+  await page.setContent(gridDocument(pattern("character-grid-workflow").replace("TRNH000I 37 transactions from 2026-08-01 to 2026-09-27.", `TRNH000I ${long}`)));
+  const result = await page.evaluate(() => {
+    const message = document.getElementById("character-grid-workflow-trnh-message");
+    const surface = message.closest(".ef-character-grid__surface");
+    const range = document.createRange();
+    range.selectNodeContents(message);
+    const text = range.getBoundingClientRect();
+    const row = Number(message.dataset.efRow) + Number(message.dataset.efHeight ?? 1);
+    const below = [...surface.querySelectorAll("[data-ef-row]")].filter(run => Number(run.dataset.efRow) >= row);
+    return {
+      overflow: getComputedStyle(message).overflow,
+      clip: getComputedStyle(message).clipPath,
+      textBottom: text.bottom,
+      runBottom: message.getBoundingClientRect().bottom,
+      belowTop: Math.min(...below.map(run => run.getBoundingClientRect().top)),
+      pitch: Number.parseFloat(getComputedStyle(surface).gridTemplateRows),
+      height: message.getBoundingClientRect().height
+    };
+  });
+  expect(result.overflow).toBe("visible");
+  expect(result.clip).toBe("none");
+  expect(result.height, "the region grew past its one reserved row").toBeGreaterThan(result.pitch * 2);
+  expect(result.textBottom, "all text is inside the grown region").toBeLessThanOrEqual(result.runBottom + 0.5);
+  expect(result.textBottom, "nothing paints over the rows below").toBeLessThanOrEqual(result.belowTop + 0.5);
+});
+
 test("without overrides every column and row track is exactly one cell", async ({ page }) => {
   for (const [width, rootFontSize] of [[1280, "100%"], [1280, "200%"], [390, "100%"], [320, "100%"], [320, "200%"]]) {
     await page.setViewportSize({ width, height: 900 });
