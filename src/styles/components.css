@@ -3339,10 +3339,16 @@
     white-space: normal;
   }
 
+  /*
+   * Automatic table layout: th[data-ef-len] widths act as minimums, so a
+   * text-spacing override widens a column instead of pushing its text into
+   * the next one (GAP-TCG-11). Without an override every column is exactly
+   * its declared cells.
+   */
   .ef-character-grid__table > table {
     border-collapse: separate;
     border-spacing: 0;
-    table-layout: fixed;
+    table-layout: auto;
     inline-size: max-content;
     font: inherit;
     line-height: inherit;

@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "ChatGPT",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-09-27T20:14:10.000Z",
+  "updatedAt": "2026-09-27T20:16:47.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -584,6 +584,47 @@
         "EXE-20260927T195353500Z-ac3a40c5"
       ],
       "completedAt": "2026-09-27T20:14:10.000Z"
+    },
+    {
+      "id": "WI-0007",
+      "type": "task",
+      "state": "blocked",
+      "semanticState": "blocked",
+      "evidence": [],
+      "updatedAt": "2026-09-27T20:15:10.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20260927T201433128Z-edeaadd5"
+      ],
+      "blockReason": "Selection fields live in table columns; WI-0008 must first make table columns grow under text-spacing overrides"
+    },
+    {
+      "id": "WI-0008",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/styles/components.css"
+        },
+        {
+          "type": "implementation",
+          "path": "requirements/CHARACTER-GRID.md"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/character-grid-verification.spec.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/character-grid-coverage.json"
+        }
+      ],
+      "updatedAt": "2026-09-27T20:16:47.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20260927T201510791Z-b3f69bd1"
+      ],
+      "completedAt": "2026-09-27T20:16:47.000Z"
     }
   ]
 }

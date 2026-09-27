@@ -168,8 +168,10 @@ leaks to its descendants.
   another. The grid gets wider and the contained viewport scrolls; the page
   still never does. Where `field-sizing: content` is supported, a field
   widens to show its whole spaced value (never narrower than its cells);
-  elsewhere the value scrolls natively inside the field. Reflow remains
-  available and also conforms.
+  elsewhere the value scrolls natively inside the field. Table runs use
+  automatic table layout, so `th[data-ef-len]` widths are minimums and a
+  column widens rather than letting its text run into the next column.
+  Reflow remains available and also conforms.
 - **Track integrity.** Two rules keep tracks exactly one cell without an
   override. Each run's inline-end margin is
   `calc(len × −0.01ch − 0.5px)`, which absorbs glyph-advance rounding (an

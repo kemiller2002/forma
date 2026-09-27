@@ -80,6 +80,28 @@ for (const name of spacedPatterns) {
   });
 }
 
+test("text-spacing overrides: table columns grow so cells never overlap and stay aligned", async ({ page }) => {
+  await page.setContent(gridDocument(pattern("character-grid-workflow"), { extraCss: textSpacing }));
+  const tables = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__table table")].map(table =>
+    [...table.rows].map(row => [...row.cells].map(cell => {
+      const range = document.createRange();
+      range.selectNodeContents(cell);
+      const text = range.getBoundingClientRect();
+      const box = cell.getBoundingClientRect();
+      return { left: box.left, right: box.right, textLeft: text.left, textRight: text.right, empty: text.width < 0.5 };
+    }))));
+  expect(tables.length).toBeGreaterThan(0);
+  for (const rows of tables) {
+    for (const cell of rows.flat().filter(cell => !cell.empty)) {
+      expect(cell.textLeft, "text starts inside its cell").toBeGreaterThanOrEqual(cell.left - 0.5);
+      expect(cell.textRight, "text ends inside its cell, so it cannot reach the next column").toBeLessThanOrEqual(cell.right + 0.5);
+    }
+    const width = Math.max(...rows.map(cells => cells.length));
+    const columns = Array.from({ length: width }, (_, column) => rows.filter(cells => cells.length === width).map(cells => cells[column].left));
+    columns.forEach(lefts => expect(Math.max(...lefts) - Math.min(...lefts), "a column starts at one x in every row").toBeLessThanOrEqual(1));
+  }
+});
+
 test("text-spacing overrides: a full-length field value stays visible, or scrolls natively where field sizing is unsupported", async ({ page }) => {
   await page.setContent(gridDocument(pattern("character-grid-workflow"), { extraCss: textSpacing }));
   const fields = await page.evaluate(() => ({

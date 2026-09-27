@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 8,
+  "nextSeq": 9,
   "items": [
     {
       "id": "WI-0001",
@@ -209,6 +209,20 @@
       "attachments": [],
       "createdAt": "2026-09-27T19:53:45.567Z",
       "updatedAt": "2026-09-27T19:53:52.000Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0008",
+      "title": "CharacterGrid GAP-TCG-11 follow-up: table cells under text-spacing overrides overlap neighboring columns",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-09-27T20:15:09.987Z",
+      "updatedAt": "2026-09-27T20:16:47.000Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null
