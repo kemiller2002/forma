@@ -91,6 +91,36 @@
       "selector": "mono-semantic",
       "source": "tokens/echelon.tokens.json semantic.mono-semantic",
       "status": "partial"
+    },
+    {
+      "id": "THEME-NEUTRAL-EDITORIAL",
+      "selector": "neutral-editorial",
+      "source": "tokens/echelon.tokens.json semantic.neutral-editorial",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-WARM-EARTH",
+      "selector": "warm-earth",
+      "source": "tokens/echelon.tokens.json semantic.warm-earth",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-COOL-INSTITUTIONAL",
+      "selector": "cool-institutional",
+      "source": "tokens/echelon.tokens.json semantic.cool-institutional",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-NATURE-DERIVED",
+      "selector": "nature-derived",
+      "source": "tokens/echelon.tokens.json semantic.nature-derived",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-DARK-TECHNICAL",
+      "selector": "dark-technical",
+      "source": "tokens/echelon.tokens.json semantic.dark-technical",
+      "status": "partial"
     }
   ],
   "highRiskLayouts": [
