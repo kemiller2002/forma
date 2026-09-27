@@ -25,6 +25,30 @@
       "selector": "dark",
       "source": "tokens/echelon.tokens.json semantic.dark",
       "status": "supported"
+    },
+    {
+      "id": "THEME-HIGH-CONTRAST",
+      "selector": "high-contrast",
+      "source": "tokens/echelon.tokens.json semantic.high-contrast",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-MUTED-PROFESSIONAL",
+      "selector": "muted-professional",
+      "source": "tokens/echelon.tokens.json semantic.muted-professional",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-ACCENT-NEUTRAL",
+      "selector": "accent-neutral",
+      "source": "tokens/echelon.tokens.json semantic.accent-neutral",
+      "status": "partial"
+    },
+    {
+      "id": "THEME-OPERATIONS-SALIENCE",
+      "selector": "operations-salience",
+      "source": "tokens/echelon.tokens.json semantic.operations-salience",
+      "status": "partial"
     }
   ],
   "highRiskLayouts": [
