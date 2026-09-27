@@ -232,3 +232,16 @@ test("the reference workflow uses only public Forma contracts (no product-specif
     if (name.startsWith("ef-")) assert.ok(css.includes(`.${name}`), `${name} is a published class`);
   }
 });
+
+test("every GH-44 requirement maps to an existing test", () => {
+  const matrix = JSON.parse(fs.readFileSync(path.join(root, "tests", "character-grid-coverage.json"), "utf8"));
+  const entries = Object.entries(matrix.requirements);
+  assert.ok(entries.length >= 25);
+  for (const [requirement, references] of entries) {
+    assert.ok(references.length > 0, requirement);
+    for (const [file, title] of references) {
+      const source = fs.readFileSync(path.join(root, file), "utf8");
+      assert.ok(source.includes(title), `${requirement}: "${title}" not found in ${file}`);
+    }
+  }
+});

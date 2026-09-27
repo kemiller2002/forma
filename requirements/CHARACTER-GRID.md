@@ -397,6 +397,27 @@ contains a grid and proves each rule fails closed on a counterexample.
 `tests/browser/character-grid.spec.mjs` verifies rendered geometry against
 declared coordinates at 1280, 390, and 320 CSS px and at 200 % text size.
 
+## Verification matrix
+
+`tests/character-grid-coverage.json` maps every GH-44 requirement to named
+tests; `tests/character-grid.test.mjs` fails if a referenced test disappears.
+
+| Area | Where |
+| --- | --- |
+| Static rules CG-1…CG-16, generated CSS sync, no 3270 logic, workflow states, coverage matrix | `tests/character-grid.test.mjs` (`npm run test:character-grid`, run in *Forma conformance* CI) |
+| Rendered geometry, 1280/390/320 px, 200 % text, contained region, reflow, `dl` semantics | `tests/browser/character-grid.spec.mjs` |
+| Fields: names, states, Tab/Shift+Tab, capacity, forced colors, target size | `tests/browser/character-grid-field.spec.mjs` |
+| Keys and status: native submitters, validation bypass, local Reset, live regions, severity cues | `tests/browser/character-grid-keys-status.spec.mjs` |
+| SequentialReveal: row-major timing, cap, tokens, exclusions, time-zero availability, reduced motion, complete | `tests/browser/character-grid-reveal.spec.mjs` |
+| 3270 profile: 24 × 80, 32 × 80, profile-only geometry, contrast, block caret, forced colors | `tests/browser/character-grid-3270.spec.mjs` |
+| Reference workflow: three screens, states, Tab order, dense rows, containment, axe | `tests/browser/character-grid-workflow.spec.mjs` |
+| Runtime overflow, text spacing, focus not obscured, CSS collision behavior | `tests/browser/character-grid-verification.spec.mjs` |
+| Every pattern at 320/390 px (containment, 44px targets) and the generated site | existing `tests/browser/mobile.spec.mjs`, `tests/site-build.test.mjs`, `tests/site-browser/mobile.spec.mjs` |
+
+Browser tests run on Chromium, Firefox, and WebKit in the *Forma conformance*
+workflow. The implementing session could run Chromium only (see the pull
+request for exact local results).
+
 ## Capability gaps
 
 | Gap (from Visual Engineering) | Status in Forma |
@@ -410,4 +431,4 @@ declared coordinates at 1280, 390, and 320 CSS px and at 200 % text size.
 | GAP-TCG-04 staged text reveal with a static fallback | Closed for presentation by `data-ef-reveal`; orchestration remains application/Limen. |
 | GAP-TCG-09 runtime message length | Partially closed: multi-row message runs wrap and never clip; the length policy remains application content. |
 | GAP-TCG-06 wide-glyph (two-cell) and right-to-left grids | Open. Forma does not assign two cells to wide glyphs. |
-| GAP-TCG-11 text-spacing overrides vs fixed cells | New; open (see above). |
+| GAP-TCG-11 text-spacing overrides vs fixed cells | New; open (see above). Behavior is regression-tested: contained runs overflow visibly and never clip; reflow has no overlap. |
