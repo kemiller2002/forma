@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 1,
+  "nextSeq": 8,
   "items": [
     {
       "id": "WI-0001",
@@ -184,6 +184,34 @@
       "createdBy": "agent:chatgpt",
       "source": "github-issue",
       "sourceReference": "https://github.com/kemiller2002/forma/issues/33"
+    },
+    {
+      "id": "WI-0006",
+      "title": "CharacterGrid GAP-TCG-11: keep WCAG 1.4.12 text-spacing overrides from overlapping runs in contained grids",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-09-27T19:53:37.829Z",
+      "updatedAt": "2026-09-27T20:14:10.000Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0007",
+      "title": "CharacterGrid GAP-TCG-10: per-row selection fields in positioned repeated rows",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-27T19:53:45.567Z",
+      "updatedAt": "2026-09-27T19:53:52.000Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
     }
   ]
 }

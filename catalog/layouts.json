@@ -1904,8 +1904,7 @@
       ],
       "gaps": [
         "GAP-TCG-06 wide-glyph and right-to-left grids",
-        "GAP-TCG-10 per-row selection fields",
-        "GAP-TCG-11 text-spacing overrides vs fixed cells"
+        "GAP-TCG-10 per-row selection fields"
       ]
     }
   ],

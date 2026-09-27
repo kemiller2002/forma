@@ -248,5 +248,6 @@ profile claims to reproduce them.
 - The viewport is named and focusable; the page never scrolls horizontally.
 - Rows are at least 24px (1.5rem); 44px on narrow and coarse-pointer screens.
 - Test at 320 and 390 CSS px, 200 % text, forced colors, and reduced motion.
-- For screens that must support WCAG 1.4.12 text-spacing overrides, use
-  `data-ef-narrow="reflow"` (GAP-TCG-11).
+- WCAG 1.4.12 text-spacing overrides widen the grid's columns instead of
+  overlapping runs (GAP-TCG-11), so contained grids support them; keep the
+  viewport contained and do not fix run widths in application CSS.
