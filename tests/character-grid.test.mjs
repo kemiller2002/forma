@@ -110,3 +110,18 @@ test("CG-12 table columns must fit their run", () => {
     </div>`);
   assert.ok(hasRule(errors, "CG-12"));
 });
+
+test("CG-8 rejects a label that follows its field", () => {
+  const errors = errorsFor(`
+    <input class="ef-character-grid__field" id="late" type="text" maxlength="8" data-ef-row="2" data-ef-col="1" data-ef-len="8">
+    <label class="ef-character-grid__label" for="late" data-ef-row="2" data-ef-col="10" data-ef-len="4">Name</label>`);
+  assert.ok(errors.some(error => error.includes("label must precede")));
+});
+
+test("CG-13 short fields need trailing blank cells for the touch minimum", () => {
+  const label = '<label class="ef-character-grid__label" for="s" data-ef-row="2" data-ef-col="1" data-ef-len="3">Qty</label>';
+  const field = '<input class="ef-character-grid__field" id="s" type="text" maxlength="2" data-ef-row="2" data-ef-col="5" data-ef-len="2">';
+  assert.deepEqual(errorsFor(label + field), []);
+  const crowded = errorsFor(label + field + '<p class="ef-character-grid__text" data-ef-row="2" data-ef-col="8" data-ef-len="1">X</p>');
+  assert.ok(hasRule(crowded, "CG-13"));
+});

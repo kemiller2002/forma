@@ -3197,7 +3197,8 @@
     --ef-grid-columns: 80;
     --ef-grid-font-size: 1rem;
     --ef-grid-line-height: 1.25;
-    --ef-grid-row-pitch: calc(var(--ef-grid-line-height) * 1em);
+    /* 1.5rem floor: WCAG 2.2 SC 2.5.8 needs 24px targets in adjacent rows. */
+    --ef-grid-row-pitch: max(calc(var(--ef-grid-line-height) * 1em), 1.5rem);
     --ef-grid-inset: 1ch;
     --ef-grid-background: var(--ef-color-surface-primary, #f2efe7);
     --ef-grid-foreground: var(--ef-color-text-primary, #171a18);
@@ -3365,6 +3366,62 @@
     white-space: normal;
   }
 
+  /* Protected labels and editable fields (requirements/CHARACTER-GRID.md). */
+  .ef-character-grid__label {
+    color: var(--ef-grid-protected);
+    cursor: default;
+  }
+
+  /* Leader characters (". . . :") are decorative and hidden from the name. */
+  .ef-character-grid__leader {
+    color: var(--ef-grid-muted);
+  }
+
+  .ef-character-grid__field {
+    appearance: none;
+    box-sizing: border-box;
+    inline-size: 100%;
+    block-size: var(--ef-grid-row-pitch);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-block-end: 2px solid var(--ef-grid-boundary);
+    border-radius: 0;
+    background: var(--ef-grid-field-surface);
+    color: var(--ef-grid-field);
+    caret-color: currentColor;
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: 0;
+  }
+
+  .ef-character-grid__field:focus-visible {
+    outline: 2px solid var(--ef-grid-focus);
+    outline-offset: 1px;
+  }
+
+  /* State cues differ in shape, not only color. */
+  .ef-character-grid__field:required {
+    border-block-end-style: double;
+    border-block-end-width: 4px;
+  }
+
+  .ef-character-grid__field[aria-invalid="true"] {
+    border: 2px dashed var(--ef-grid-validation);
+  }
+
+  .ef-character-grid__field:disabled {
+    border-block-end-style: dotted;
+    background: transparent;
+    color: var(--ef-grid-muted);
+    cursor: not-allowed;
+  }
+
+  .ef-character-grid__field:read-only:not(:disabled) {
+    border-block-end-width: 1px;
+    background: transparent;
+  }
+
   /*
    * Touch pitch: on narrow or coarse-pointer screens rows grow to a 44px
    * minimum so fields and keys remain usable targets. Columns stay 1ch.
@@ -3372,6 +3429,11 @@
   @media (max-width: 40rem), (pointer: coarse) {
     .ef-character-grid {
       --ef-grid-row-pitch: max(calc(var(--ef-grid-line-height) * 1em), 2.75rem);
+    }
+
+    /* A field shorter than five cells must be followed by blank cells (CG-13). */
+    .ef-character-grid__field {
+      min-inline-size: 2.75rem;
     }
   }
 
@@ -3410,6 +3472,23 @@
 
     .ef-character-grid__table th {
       text-decoration-color: CanvasText;
+    }
+
+    .ef-character-grid__field {
+      border-block-end-color: CanvasText;
+    }
+
+    .ef-character-grid__field[aria-invalid="true"] {
+      border-color: CanvasText;
+    }
+
+    .ef-character-grid__field:disabled {
+      border-block-end-color: GrayText;
+      color: GrayText;
+    }
+
+    .ef-character-grid__field:focus-visible {
+      outline-color: Highlight;
     }
   }
 

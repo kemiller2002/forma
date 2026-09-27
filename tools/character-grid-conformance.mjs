@@ -1,5 +1,5 @@
 // Static conformance checks for CharacterGrid markup
-// (requirements/CHARACTER-GRID.md, rules CG-1 to CG-12).
+// (requirements/CHARACTER-GRID.md, rules CG-1 to CG-13).
 //
 // These rules cannot be enforced by CSS: a collision or an out-of-bounds run
 // renders, it is simply wrong. They are therefore checked on the canonical
@@ -154,8 +154,9 @@ export const fieldErrors = (grid) => {
         : []),
       ...(run.attributes.id && labelFor.includes(run.attributes.id) ? [] : [`CG-8 ${run.id} has no <label for>`]),
       ...(run.attributes.id &&
-      grid.elements.findIndex((element) => element.tag === "label" && element.attributes.for === run.attributes.id) >
-        grid.elements.indexOf(run)
+      grid.elements.some(
+        (element) => element.tag === "label" && element.attributes.for === run.attributes.id && element.index > run.index
+      )
         ? [`CG-8 ${run.id} label must precede the field`]
         : []),
       ...(run.attributes["aria-invalid"] === "true" && !run.attributes["aria-describedby"]
@@ -201,6 +202,21 @@ export const tableErrors = (grid) =>
       ];
     });
 
+// CG-13 a field shorter than five cells needs blank cells after it so the
+// 2.75rem touch minimum cannot overlap the next run.
+export const TOUCH_MIN_CELLS = 5;
+export const touchErrors = (grid) => {
+  const occupied = new Set(grid.runs.flatMap(cellsOf));
+  return grid.runs
+    .filter((run) => ["input", "select"].includes(run.tag) && run.len < TOUCH_MIN_CELLS)
+    .flatMap((run) => {
+      const trailing = Array.from({ length: TOUCH_MIN_CELLS - run.len }, (_, offset) => run.col + run.len + offset);
+      return trailing.some((col) => col > grid.columns || occupied.has(`${run.row}:${col}`))
+        ? [`CG-13 ${run.id} is shorter than ${TOUCH_MIN_CELLS} cells and needs blank cells after it`]
+        : [];
+    });
+};
+
 export const gridErrors = (grid) => [
   ...geometryErrors(grid),
   ...boundsErrors(grid),
@@ -209,7 +225,8 @@ export const gridErrors = (grid) => [
   ...overflowErrors(grid),
   ...fieldErrors(grid),
   ...semanticErrors(grid),
-  ...tableErrors(grid)
+  ...tableErrors(grid),
+  ...touchErrors(grid)
 ];
 
 export const checkHtml = (html) =>

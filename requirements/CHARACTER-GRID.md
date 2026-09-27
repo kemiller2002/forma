@@ -169,9 +169,48 @@ The viewport border, table header underline, field boundaries, and focus
 indicators use `CanvasText`/system colors so the structure survives forced
 colors.
 
+## Protected text and editable fields
+
+```html
+<label class="ef-character-grid__label" for="acct" data-ef-row="3" data-ef-col="2" data-ef-len="16">Account<span class="ef-character-grid__leader" aria-hidden="true">  . . . :</span></label>
+<input class="ef-character-grid__field" id="acct" name="account" type="text" inputmode="numeric"
+       maxlength="12" required aria-describedby="acct-hint" data-ef-row="3" data-ef-col="20" data-ef-len="12">
+<span class="ef-character-grid__text" id="acct-hint" data-ef-row="3" data-ef-col="34" data-ef-len="21">(required, 12 digits)</span>
+<span class="ef-character-grid__value" data-ef-row="7" data-ef-col="20" data-ef-len="10">2014-03-11</span>
+```
+
+| Concern | Contract |
+| --- | --- |
+| Editable field | Native `<input class="ef-character-grid__field">` (or `select`), never a styled `div`. Tab/Shift+Tab, typing, selection, and form submission are native. |
+| Capacity | `maxlength` equals `data-ef-len` (CG-8); the rendered width equals the declared cells. |
+| Label | A preceding `<label for>` run (CG-8). Leader characters are wrapped in `.ef-character-grid__leader` with `aria-hidden="true"` so the accessible name is "Account", not "Account dot dot dot colon". |
+| Hint / error | `aria-describedby` lists one or more IDs (hint and error together). An `aria-invalid="true"` field must reference its message (CG-8). |
+| Required | Native `required`; cue: double underline. State the requirement in the label or hint text as well. |
+| Invalid | `aria-invalid="true"` set by the application; cue: dashed box. Forma does not use `:invalid`, because validity policy is the application's. |
+| Disabled | Native `disabled`; cue: dotted underline, muted text; removed from the Tab sequence natively. |
+| Read-only | Native `readonly` **only** for genuine read-only form values the application reads back; cue: thin underline, no field surface. Otherwise use protected text. |
+| Protected | `.ef-character-grid__text` / `.ef-character-grid__value` elements; never controls (CG-9); never focusable. |
+| Focus | `:focus-visible` outline in `--ef-grid-focus`; `Highlight` in forced colors. Profiles may add a cursor treatment but may not remove the outline. |
+| Initial focus | Which field receives focus when a screen appears (the 3270 "insert cursor") is application/Limen behavior; native `autofocus` is the only markup Forma needs. |
+
+State cues differ in **shape** (solid, double, dashed box, dotted, thin), so
+they survive grayscale, color-vision deficiency, and forced colors, where they
+are rendered in `CanvasText`/`GrayText` (browser-tested).
+
+### Target size
+
+- **CG-13.** At the touch pitch fields are at least 2.75rem wide. A field
+  shorter than five cells must therefore be followed by enough blank cells
+  that the widened field cannot overlap the next run.
+- **Row-pitch floor (finding).** The first implementation used a 1.25em row
+  pitch (20px at 16px text). Automated axe checks reported WCAG 2.2 SC 2.5.8
+  Target Size (Minimum) violations for fields in adjacent rows. The pitch is
+  therefore `max(1.25em, 1.5rem)`: never below 24px. This is a deliberate
+  accessibility cost to terminal density and applies to every profile.
+
 ## Conformance checking
 
-`tools/character-grid-conformance.mjs` checks CG-1 to CG-12 on any HTML file:
+`tools/character-grid-conformance.mjs` checks CG-1 to CG-13 on any HTML file:
 
 ```bash
 node tools/character-grid-conformance.mjs patterns/character-grid.html
@@ -189,5 +228,7 @@ declared coordinates at 1280, 390, and 320 CSS px and at 200 % text size.
 | GAP-TCG-01 character-cell positioning | Closed by this contract. |
 | GAP-TCG-05 named, focusable contained viewport | Closed by `.ef-character-grid__viewport`. |
 | GAP-TCG-07 positioned repeated-row table | Closed by `.ef-character-grid__table`. |
+| GAP-TCG-02 field width tied to maximum length | Closed: `maxlength` = `data-ef-len` = rendered cells. |
+| GAP-TCG-08 field referencing hint and message | Closed: `aria-describedby` with several IDs. |
 | GAP-TCG-06 wide-glyph (two-cell) and right-to-left grids | Open. Forma does not assign two cells to wide glyphs. |
 | GAP-TCG-11 text-spacing overrides vs fixed cells | New; open (see above). |
