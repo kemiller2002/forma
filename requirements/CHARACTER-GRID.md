@@ -287,6 +287,57 @@ Per-character blank skipping requires computing cumulative timing from
 content, which is runtime work: an application that needs it sets
 `animation-delay`/`animation-duration` from the model through the CSSOM.
 
+## Profiles
+
+A profile sets **presentation tokens only** on the grid:
+`data-ef-profile="<name>"`. It may change palette, border and shadow color,
+caret treatment, and focus background. It may not change geometry, placement,
+display, order, or semantics (Visual Engineering rule B-8). A Node test
+enforces the allowed property list and that the generic tooling contains no
+profile-specific logic.
+
+| Token | Purpose |
+| --- | --- |
+| `--ef-grid-background`, `--ef-grid-foreground` | Screen |
+| `--ef-grid-protected`, `--ef-grid-emphasis`, `--ef-grid-muted` | Protected text, values/intensified text, secondary text |
+| `--ef-grid-field`, `--ef-grid-field-surface`, `--ef-grid-boundary` | Editable fields |
+| `--ef-grid-focus` | Focus outline |
+| `--ef-grid-information`, `-success`, `-warning`, `-validation`, `-error` | Message text |
+| `--ef-grid-font-size`, `--ef-grid-line-height`, `--ef-grid-inset` | Scale (geometry is unchanged: cells stay 1ch; pitch never drops below 1.5rem) |
+
+The default (no profile) uses Forma's semantic color tokens and therefore
+follows the application's light or dark scheme.
+
+### `ibm-3270` reference profile
+
+`patterns/character-grid-3270.html` is a 24 × 80 operations menu using the
+profile. The palette evokes the 3279 base colors — protected text blue,
+intensified white, unprotected fields green, on black — plus a block caret
+(`caret-shape: block`, progressive enhancement) layered on the standard focus
+outline. This is a stylistic choice (category 3 in `CN-VE-TCG-2026-6CA0`), not
+an emulation: no 3270 data stream, attribute byte, autoskip, wraparound Tab,
+or uppercase transformation is reproduced.
+
+- **24 × 80:** canonical pattern; every run verified on its declared cell.
+- **32 × 80:** verified by a browser test that renders the same screen with
+  `data-ef-rows="32"` and the reserved rows moved to 29–32, and by a Node test
+  that the transformed markup conforms.
+- **Contrast:** all profile colors pass axe's WCAG AA color-contrast rule on
+  the black screen; forced colors replace the palette while boundaries and
+  focus remain.
+
+Other terminal styles (5250, DOS/TUI, BBS, modern) use the same markup with a
+different geometry, key vocabulary, and, where wanted, a profile. Forma ships
+no 5250/DOS/BBS profile because no visual evidence for one was gathered; see
+`docs/CHARACTER-GRID-AUTHORING.md`.
+
+**Finding.** Building this profile exposed a real defect in the generic
+primitive, not in the profile: Forma's foundation rules for `p` (72ch measure,
+secondary text color) and headings leaked into grid runs, shrinking a 78-cell
+message run to 72 cells and recoloring paragraphs. The fix is in the
+primitive (runs reset `max-inline-size` and inherit color), with a regression
+test.
+
 ## Conformance checking
 
 `tools/character-grid-conformance.mjs` checks CG-1 to CG-16 on any HTML file:

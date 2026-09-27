@@ -169,3 +169,41 @@ test("CG-16 reveal is opt-in, bounded, and stages protected text only", () => {
     assert.ok(hasRule(errorsFor(run, sequential), "CG-16"), run);
   }
 });
+
+// Moves the reserved bottom rows (21-24) of a 24x80 screen to rows 29-32.
+export const to32x80 = html => html
+  .replace('data-ef-rows="24"', 'data-ef-rows="32"')
+  .replace(/data-ef-row="(\d+)"/g, (match, row) => (Number(row) >= 21 ? `data-ef-row="${Number(row) + 8}"` : match));
+
+test("the 3270 profile conforms at 24x80 and at 32x80", () => {
+  const html = fs.readFileSync(path.join(root, "patterns", "character-grid-3270.html"), "utf8");
+  const [grid24] = splitGrids(html);
+  assert.deepEqual([grid24.rows, grid24.columns], [24, 80]);
+  const tall = to32x80(html);
+  const [grid32] = splitGrids(tall);
+  assert.deepEqual([grid32.rows, grid32.columns], [32, 80]);
+  assert.deepEqual(checkHtml(tall), []);
+  assert.ok(grid32.runs.some(run => run.row === 32), "status occupies row 32");
+});
+
+test("profiles declare presentation only: no geometry, placement, or display changes", () => {
+  const rules = [...css.matchAll(/([^{}]*\[data-ef-profile="[^"]+"\][^{}]*)\{([^{}]*)\}/g)];
+  assert.ok(rules.length > 0);
+  const allowed = /^(--ef-grid-[a-z-]+|color|background|background-color|border-color|box-shadow|caret-color|caret-shape|outline-color|text-decoration-color)$/;
+  for (const [, selector, body] of rules) {
+    const properties = body.split(";").map(part => part.split(":")[0].trim()).filter(Boolean);
+    for (const property of properties) {
+      assert.match(property, allowed, `${selector.trim()} declares ${property}`);
+    }
+  }
+});
+
+test("generic CharacterGrid tooling and primitives contain no 3270-specific logic", () => {
+  for (const file of ["tools/character-grid-css.mjs", "tools/character-grid-conformance.mjs"]) {
+    assert.doesNotMatch(fs.readFileSync(path.join(root, file), "utf8"), /3270/, file);
+  }
+  const primitiveRules = css.slice(css.indexOf("/* CharacterGrid ----"))
+    .split("\n")
+    .filter(line => /3270/.test(line) && !/data-ef-profile="ibm-3270"|ibm-3270: first reference profile|3279 base palette/.test(line));
+  assert.deepEqual(primitiveRules, []);
+});
