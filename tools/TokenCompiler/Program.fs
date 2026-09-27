@@ -167,39 +167,46 @@ let main argv =
                 | _ -> None)
             |> List.sortBy fst
 
-        let light = semantic "light"
-        let dark = semantic "dark"
+        let themes =
+            tokens
+            |> List.choose (fun token ->
+                match token.Path with
+                | "semantic" :: theme :: _ -> Some theme
+                | _ -> None)
+            |> Set.ofList
+            |> Set.toList
+            |> List.sort
 
-        let lightNames = light |> List.map fst |> Set.ofList
-        let darkNames = dark |> List.map fst |> Set.ofList
-        if lightNames <> darkNames then
-            let missingDark = Set.difference lightNames darkNames |> String.concat ", "
-            let missingLight = Set.difference darkNames lightNames |> String.concat ", "
-            fail $"theme variable mismatch; missing dark=[{missingDark}] missing light=[{missingLight}]"
+        if not (themes |> List.contains "light") || not (themes |> List.contains "dark") then
+            fail "semantic themes must include light and dark"
+
+        let themeValues = themes |> List.map (fun theme -> theme, semantic theme)
+        let baselineNames = semantic "light" |> List.map fst |> Set.ofList
+        for theme, values in themeValues do
+            let names = values |> List.map fst |> Set.ofList
+            if names <> baselineNames then
+                let missing = Set.difference baselineNames names |> String.concat ", "
+                let extra = Set.difference names baselineNames |> String.concat ", "
+                fail $"theme variable mismatch for '{theme}'; missing=[{missing}] extra=[{extra}]"
 
         let resolved key =
             match byPath.TryGetValue key with
             | true, token -> resolveCss [] token
             | _ -> fail $"missing required token '{key}'"
 
-        let contrastChecks =
-            [ "light primary text", "semantic.light.color.text.primary", "semantic.light.color.surface.primary", 4.5
-              "light secondary text", "semantic.light.color.text.secondary", "semantic.light.color.surface.primary", 4.5
-              "light secondary-surface text", "semantic.light.color.text.on-secondary-surface", "semantic.light.color.surface.secondary", 4.5
-              "light primary accent", "semantic.light.color.accent.primary", "semantic.light.color.surface.primary", 4.5
-              "light secondary accent", "semantic.light.color.accent.secondary", "semantic.light.color.surface.primary", 4.5
-              "dark primary text", "semantic.dark.color.text.primary", "semantic.dark.color.surface.primary", 4.5
-              "dark secondary text", "semantic.dark.color.text.secondary", "semantic.dark.color.surface.primary", 4.5
-              "dark secondary-surface text", "semantic.dark.color.text.on-secondary-surface", "semantic.dark.color.surface.secondary", 4.5
-              "dark primary accent", "semantic.dark.color.accent.primary", "semantic.dark.color.surface.primary", 4.5
-              "dark secondary accent", "semantic.dark.color.accent.secondary", "semantic.dark.color.surface.primary", 4.5
-              "light focus ring", "semantic.light.color.focus.ring", "semantic.light.color.surface.primary", 3.0
-              "dark focus ring", "semantic.dark.color.focus.ring", "semantic.dark.color.surface.primary", 3.0 ]
-
-        for name, foreground, background, minimum in contrastChecks do
-            let ratio = contrast (resolved foreground) (resolved background)
-            if ratio + 0.0001 < minimum then
-                fail $"{name} contrast {ratio:F2}:1 is below required {minimum:F1}:1"
+        for theme in themes do
+            let key suffix = $"semantic.{theme}.color.{suffix}"
+            let checks =
+                [ "primary text", key "text.primary", key "surface.primary", 4.5
+                  "secondary text", key "text.secondary", key "surface.primary", 4.5
+                  "secondary-surface text", key "text.on-secondary-surface", key "surface.secondary", 4.5
+                  "primary accent", key "accent.primary", key "surface.primary", 4.5
+                  "secondary accent", key "accent.secondary", key "surface.primary", 4.5
+                  "focus ring", key "focus.ring", key "surface.primary", 3.0 ]
+            for name, foreground, background, minimum in checks do
+                let ratio = contrast (resolved foreground) (resolved background)
+                if ratio + 0.0001 < minimum then
+                    fail $"{theme} {name} contrast {ratio:F2}:1 is below required {minimum:F1}:1"
 
         let neutral =
             tokens
@@ -219,17 +226,19 @@ let main argv =
         css.AppendLine("/* Generated from tokens/echelon.tokens.json. Do not edit directly. */") |> ignore
         css.AppendLine("@layer echelon.tokens {") |> ignore
         writeBlock css "  :root" neutral
-        writeBlock css "  :root, [data-ef-theme=\"light\"]" light
+        writeBlock css "  :root, [data-ef-theme=\"light\"]" (semantic "light")
         css.AppendLine("  @media (prefers-color-scheme: dark) {") |> ignore
-        writeBlock css "    :root:not([data-ef-theme])" dark
+        writeBlock css "    :root:not([data-ef-theme])" (semantic "dark")
         css.AppendLine("  }") |> ignore
-        writeBlock css "  [data-ef-theme=\"dark\"]" dark
+        for theme, values in themeValues do
+            if theme <> "light" then
+                writeBlock css $"  [data-ef-theme=\"{theme}\"]" values
         css.AppendLine("}") |> ignore
 
         Directory.CreateDirectory(Path.GetDirectoryName outputPath) |> ignore
         File.WriteAllText(outputPath, css.ToString().Replace("\r\n", "\n"))
 
-        printfn "token compilation passed: %d tokens, %d semantic variables per theme" tokens.Length light.Length
+        printfn "token compilation passed: %d tokens, %d semantic variables across %d themes" tokens.Length baselineNames.Count themes.Length
         0
     with ex ->
         if Environment.ExitCode = 0 then eprintfn "ERROR %s" ex.Message
