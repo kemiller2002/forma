@@ -39,13 +39,33 @@
         "primary-secondary action hierarchy"
       ],
       "narrowRecomposition": "single column, source order unchanged",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Project Atlas Applied Case Study 001",
         "LAW-COMP-004",
         "LAW-COMP-005"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-ANALYTICAL-DASHBOARD",
@@ -78,13 +98,33 @@
         "exception salience"
       ],
       "narrowRecomposition": "grid reduces columns while preserving metric sequence and grouping",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Externalized Cognition Hypothesis",
         "LAW-COMP-004",
         "LAW-COMP-006"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-MASTER-DETAIL",
@@ -116,13 +156,33 @@
         "record state"
       ],
       "narrowRecomposition": "master precedes detail; selection context remains visible",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "LAW-COMP-002",
         "LAW-COMP-005",
         "LAW-COMP-007"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-EDITORIAL-NARRATIVE",
@@ -155,12 +215,32 @@
         "evidence proximity"
       ],
       "narrowRecomposition": "same narrative order with media contained to available measure",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "EX-COMP-012",
         "LAW-COMP-005"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-COMMAND-WORKSPACE",
@@ -195,13 +275,33 @@
         "persistent orientation"
       ],
       "narrowRecomposition": "navigation/status region precedes active work; commands remain adjacent to their target",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "LAW-COMP-002",
         "LAW-COMP-005",
         "LAW-COMP-007"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-INSPECTOR-WORKSPACE",
@@ -235,13 +335,33 @@
         "preview-target identity"
       ],
       "narrowRecomposition": "preview remains primary; inspector moves after or into explicit disclosure without changing semantic ownership",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "LAW-COMP-005",
         "LAW-COMP-007",
         "EX-COMP-012"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-COMPARISON",
@@ -274,13 +394,33 @@
         "shared scale"
       ],
       "narrowRecomposition": "must preserve cross-item comparability rather than blindly stack independent cards",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "LAW-COMP-004",
         "LAW-COMP-005",
         "EX-COMP-012"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-DENSE-OPERATIONS",
@@ -314,14 +454,34 @@
         "selection-command context"
       ],
       "narrowRecomposition": "retain bounded horizontal continuum where necessary; move secondary detail outside the table rather than destroy associations",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Perceptual Separation Envelope",
         "LAW-COMP-006",
         "LAW-COMP-005",
         "Forma layout density contract"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-PROGRESSIVE-DISCLOSURE",
@@ -353,12 +513,32 @@
         "progress visibility"
       ],
       "narrowRecomposition": "single flow with progress and current context kept visible",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "LAW-COMP-005",
         "LAW-COMP-007"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-COMMAND-RIBBON",
@@ -394,13 +574,33 @@
         "stable command location"
       ],
       "narrowRecomposition": "reduce exposed commands by explicit priority while retaining group labels and access to hidden commands; do not merely shrink targets",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Project Atlas Ribbon Comparative Study",
         "Recognition Exposure Tradeoff",
         "Contextual Disclosure"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-ASYMMETRIC-EDITORIAL",
@@ -432,12 +632,32 @@
         "narrative order"
       ],
       "narrowRecomposition": "linearize supporting material adjacent to its owning narrative section while preserving source order",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Architecture Genome: asymmetry",
         "EX-COMP-012"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-MULTI-REGION-WORKSPACE",
@@ -471,12 +691,32 @@
         "status visibility"
       ],
       "narrowRecomposition": "preserve primary work and convert secondary regions into explicit, labeled access points without duplicating authoritative content",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Architecture Genome: scale and navigation",
         "Externalized Cognition Hypothesis"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-ADAPTIVE-NAVIGATION",
@@ -505,13 +745,33 @@
         "navigation hierarchy"
       ],
       "narrowRecomposition": "replace persistent spatial navigation with an explicit compact access point while preserving labels, hierarchy, and current-location feedback",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Decision-Point Landmark Law",
         "Strategic Visibility Law",
         "Externalized Memory Law"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-SPATIAL-CANVAS",
@@ -543,13 +803,47 @@
         "control-canvas ownership"
       ],
       "narrowRecomposition": "retain a bounded pan/zoom surface and expose orientation plus non-spatial access to consequential objects",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "RP-COMP-005 active sampling",
         "Architecture Genome: movement, scale, landmarks",
         "Forma spatial canvas with orientation and non-spatial index"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        },
+        "stressConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "checks": [
+            "320px",
+            "200% text",
+            "forced colors",
+            "reduced motion",
+            "long content",
+            "keyboard traversal",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-TIMELINE-SEQUENCE",
@@ -580,13 +874,33 @@
         "event-detail ownership"
       ],
       "narrowRecomposition": "linearize without changing chronological or causal order; keep current-position cue visible",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Architecture Genome: movement and sequential progression",
         "Externalized Memory Law",
         "Forma timeline sequence rail"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-BOARD",
@@ -617,13 +931,47 @@
         "item identity"
       ],
       "narrowRecomposition": "convert lanes to labeled sequential groups or bounded horizontal model without duplicating items",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "relative separation and grouping",
         "task-relative hierarchy",
         "Forma lane board"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        },
+        "stressConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "checks": [
+            "320px",
+            "200% text",
+            "forced colors",
+            "reduced motion",
+            "long content",
+            "keyboard traversal",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-SEARCH-RESULTS",
@@ -660,7 +1008,7 @@
         "empty/loading/error distinctions"
       ],
       "narrowRecomposition": "place query and active refinements before results; collapse optional filter controls without hiding active scope",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Strategic Visibility Law",
         "recognition over recall",
@@ -668,7 +1016,41 @@
         "Forma search contract",
         "Forma active filter summary"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        },
+        "stressConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "checks": [
+            "320px",
+            "200% text",
+            "forced colors",
+            "reduced motion",
+            "long content",
+            "keyboard traversal",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-INBOX-FEED",
@@ -702,14 +1084,34 @@
         "item-action ownership"
       ],
       "narrowRecomposition": "retain scan order and visible state labels while moving secondary metadata below the primary identifier",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "attention priority",
         "controlled density",
         "first-glance vs verification",
         "Forma feed item"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-STICKY-ACTION-FRAME",
@@ -740,13 +1142,33 @@
         "reading order"
       ],
       "narrowRecomposition": "keep actions reachable without obscuring content or virtual keyboard; do not detach validation from owning fields",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Strategic Visibility Law",
         "action consequence visibility",
         "Forma mobile action bar"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-FOCAL-OVERLAY",
@@ -776,13 +1198,33 @@
         "dismissal semantics"
       ],
       "narrowRecomposition": "fit dynamic viewport and preserve accessible dialog semantics; use full-height composition when necessary",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "common region and containment",
         "strategic visibility",
         "Forma native dialog and flyout contracts"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-IMMERSIVE-PREVIEW",
@@ -815,14 +1257,34 @@
         "preview status"
       ],
       "narrowRecomposition": "switch between explicitly labeled authoring and preview views while preserving shared document identity",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "active sampling",
         "comparison preservation",
         "first-glance vs verification",
         "Forma focus stage and native tabs"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-KNOWLEDGE-GRAPH",
@@ -860,13 +1322,47 @@
         "provenance"
       ],
       "narrowRecomposition": "retain bounded graph exploration but provide an equivalent semantic relationship list and path summary",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Visual Engineering knowledge graph",
         "DF-COMP-002 evidence continuity",
         "Forma relationship index and path summary"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        },
+        "stressConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "checks": [
+            "320px",
+            "200% text",
+            "forced colors",
+            "reduced motion",
+            "long content",
+            "keyboard traversal",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-SEMANTIC-ZOOM",
@@ -899,13 +1395,47 @@
         "orientation"
       ],
       "narrowRecomposition": "replace simultaneous spatial scale cues with explicit scope trail and level controls",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "RP-COMP-005 active sampling",
         "Architecture Genome scale",
         "Forma semantic zoom composition contract"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        },
+        "stressConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "checks": [
+            "320px",
+            "200% text",
+            "forced colors",
+            "reduced motion",
+            "long content",
+            "keyboard traversal",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-EVIDENCE-PATH",
@@ -940,12 +1470,32 @@
         "uncertainty scope"
       ],
       "narrowRecomposition": "linearize the path while retaining explicit relationship labels and scope at every step",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "DF-COMP-002 Perceptual Evidence Path Review",
         "Human-Agent Communication roadmap"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-MULTI-HIERARCHY-TRIAGE",
@@ -981,12 +1531,32 @@
         "legal-action scope"
       ],
       "narrowRecomposition": "do not collapse competing hierarchies into one score; expose each decision dimension explicitly",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Visual Engineering multiple task-relative hierarchies rival",
         "domain-safety roadmap"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-RECURSIVE-OUTLINE",
@@ -1020,13 +1590,47 @@
         "selection"
       ],
       "narrowRecomposition": "preserve semantic nesting while limiting visual indentation and exposing ancestry explicitly",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "hierarchical grouping",
         "recognition over recall",
         "Forma hierarchy tree"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        },
+        "stressConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "checks": [
+            "320px",
+            "200% text",
+            "forced colors",
+            "reduced motion",
+            "long content",
+            "keyboard traversal",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-LIVE-OPERATIONS",
@@ -1063,13 +1667,47 @@
         "system-to-incident relationship"
       ],
       "narrowRecomposition": "prioritize exceptions and freshness without silently dropping monitored systems; provide explicit remaining-system access",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "semantic projection",
         "Strategic Visibility Law",
         "domain-safety roadmap"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        },
+        "stressConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "checks": [
+            "320px",
+            "200% text",
+            "forced colors",
+            "reduced motion",
+            "long content",
+            "keyboard traversal",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-BIDIRECTIONAL-COMPARISON",
@@ -1098,13 +1736,47 @@
         "cell semantics"
       ],
       "narrowRecomposition": "prefer contained two-dimensional navigation; any linear alternative must repeat both scopes for each relationship",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "comparison preservation",
         "relational legibility",
         "Forma matrix navigation contract"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        },
+        "stressConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "checks": [
+            "320px",
+            "200% text",
+            "forced colors",
+            "reduced motion",
+            "long content",
+            "keyboard traversal",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     },
     {
       "id": "LAY-HUMAN-AGENT-HANDOFF",
@@ -1143,12 +1815,53 @@
         "uncertainty scope"
       ],
       "narrowRecomposition": "keep agent identity, proposed consequence, evidence, and human authority visible before consequential action",
-      "status": "supported",
+      "status": "verified",
       "evidence": [
         "Human-Agent Communication roadmap",
         "domain-safety roadmap"
       ],
-      "gaps": []
+      "gaps": [],
+      "verification": {
+        "catalogConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "engines": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ],
+          "checks": [
+            "canonical specimen",
+            "1280px containment",
+            "390px containment",
+            "320px containment",
+            "semantic/source order",
+            "automated WCAG A/AA"
+          ]
+        },
+        "stressConformance": {
+          "status": "passed",
+          "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+          "runId": "36268942143",
+          "checks": [
+            "320px",
+            "200% text",
+            "forced colors",
+            "reduced motion",
+            "long content",
+            "keyboard traversal",
+            "automated WCAG A/AA"
+          ]
+        }
+      }
     }
-  ]
+  ],
+  "verificationBaseline": {
+    "commit": "ab619019e9b3d40d570051ff154cf105823a02e7",
+    "runId": "36268942143",
+    "workflow": "Forma conformance",
+    "result": "passed",
+    "verifiedAt": "2026-09-26"
+  }
 }
