@@ -293,5 +293,54 @@
       "summary"
     ],
     "title": "details and summary provide native disclosure behavior"
+  },
+  {
+    "confidence": "high",
+    "contradicts": [],
+    "created_by_agent": "claude-code",
+    "evidence_type": "primary",
+    "id": "EV-DESIGN-2026-0014",
+    "path": "research/evidence/EV-DESIGN-2026-0014--echelon-foundry-marketing-reference-analysis.md",
+    "related_theories": [],
+    "research_area": "design-system",
+    "retrieved": "2026-09-28",
+    "source_author": "Echelon Foundry",
+    "source_date": "2026-09-24",
+    "source_title": "kemiller2002/echelon-foundry assets/css/style.css and src/templates",
+    "source_uri": "https://github.com/kemiller2002/echelon-foundry/blob/cb638dc0309302f52d2a8c9ab6ed617a171bf2b3/assets/css/style.css",
+    "supports": [],
+    "tags": [
+      "marketing",
+      "reference-implementation",
+      "tokens",
+      "layout",
+      "GH-49"
+    ],
+    "title": "Echelon Foundry marketing site as the reference visual language"
+  },
+  {
+    "confidence": "medium",
+    "contradicts": [],
+    "created_by_agent": "claude-code",
+    "evidence_type": "secondary",
+    "id": "EV-DESIGN-2026-0015",
+    "path": "research/evidence/EV-DESIGN-2026-0015--visual-engineering-marketing-presentation.md",
+    "related_theories": [],
+    "research_area": "design-system",
+    "retrieved": "2026-09-28",
+    "source_author": "Echelon Foundry Visual Engineering",
+    "source_date": "2026-09-28",
+    "source_title": "kemiller2002/visual-engineering agent context and composition research",
+    "source_uri": "https://github.com/kemiller2002/visual-engineering/tree/007cbf0573f53e4ecd978d217a269d75f712af88",
+    "supports": [],
+    "tags": [
+      "visual-engineering",
+      "marketing",
+      "composition",
+      "typography",
+      "color",
+      "GH-49"
+    ],
+    "title": "Visual Engineering principles applicable to marketing-site presentation"
   }
 ]

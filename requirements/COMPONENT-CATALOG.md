@@ -951,3 +951,27 @@ Requirements:
 - 320/390 px, 200 % text, forced colors, reduced motion, and automated WCAG A/AA verified.
 
 See `requirements/CHARACTER-GRID.md` and `docs/CHARACTER-GRID-AUTHORING.md`.
+
+
+## Marketing presentation family (GH-49)
+
+Implemented patterns for Echelon marketing and public sites:
+
+- `marketing-shell`: the MarketingShell frame (skip link, identity header, primary navigation, main, footer);
+- `site-header`, `site-footer`;
+- `hero`, `section-heading`, `cta`;
+- `card-grid`, `facts`, `entry-index`, `steps`, `badge`;
+- `prose`, `code-sample`;
+- `documentation-layout`.
+
+Requirements:
+
+- generic and brand-neutral; the Echelon look comes from the Echelon Marketing Theme's tokens;
+- marketing foundations apply only inside `.ef-site`;
+- surface tones (`data-ef-tone`) carry contrast-safe text, link, label, and rule colors;
+- one primary action per hero, section, or CTA;
+- the navigation wraps instead of hiding destinations;
+- 44 px targets; no CSS reordering;
+- verified at 320/390 px, 200 % text, text spacing, forced colors, reduced motion, print, and WCAG 2.2 A/AA.
+
+See `requirements/MARKETING-PRESENTATION.md` and `docs/MARKETING-SITES.md`.

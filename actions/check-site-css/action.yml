@@ -1,0 +1,31 @@
+name: Check site CSS against the Forma local-CSS policy
+description: >-
+  Fails when a marketing site's local stylesheets restyle Forma components,
+  redefine global element presentation, override Forma tokens outside the
+  identity allowlist, or copy Forma palette values. Rules annotated with
+  "/* forma-exception: <reason> */" are reported as documented exceptions.
+inputs:
+  files:
+    description: Space-separated site stylesheet paths (no Forma files).
+    required: true
+  forma:
+    description: Installed Forma stylesheet used to detect copied palette values.
+    default: assets/forma/forma-echelon-marketing.css
+  working-directory:
+    description: Directory the paths are relative to.
+    default: .
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: "10.0.x"
+    - name: Check local CSS policy
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        SITE_CSS: ${{ inputs.files }}
+        FORMA_CSS: ${{ inputs.forma }}
+      run: |
+        read -r -a files <<< "$SITE_CSS"
+        dotnet run --project "$GITHUB_ACTION_PATH/../../tools/SiteCssPolicy/SiteCssPolicy.fsproj" -- --forma "$FORMA_CSS" "${files[@]}"

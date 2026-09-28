@@ -71,6 +71,19 @@ clean consumer, and attaches the tarball to the GitHub release. npm publishing
 may be enabled through Trusted Publishing without changing the application
 contract.
 
+## Marketing sites
+
+Forma is the shared presentation system for every Echelon marketing website.
+The Echelon Foundry site is the visual reference, and each site consumes the
+same pinned artifacts:
+
+- the MarketingShell;
+- the brand-neutral marketing components and layouts;
+- the Echelon Marketing Theme.
+
+Start with `docs/MARKETING-SITES.md` and the reference fixture in
+`examples/echelon-marketing-site`.
+
 ## Branding and skins
 
 Forma supports versioned, scoped white-label presentation through Brand

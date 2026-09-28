@@ -248,3 +248,21 @@ When presenting a fault produced by Aegis:
 9. let Limen/application behavior own notification lifetime, copy actions, blocking-dialog policy, focus transitions, and recovery execution.
 
 Read `docs/AEGIS-INTEGRATION.md` and `requirements/AEGIS-FAULT-PRESENTATION.md` before creating a new fault presentation.
+
+
+## Marketing and public sites
+
+For an Echelon marketing, product, or documentation website, follow
+`docs/MARKETING-SITES.md`. That page covers new sites; for an existing site,
+follow `docs/marketing/MIGRATION-CONTRACT.md`.
+
+- Consume a pinned release through `forma.lock` and
+  `actions/install-presentation`. Never copy Forma CSS.
+- Start from `patterns/marketing-shell.html`. Compose pages from the marketing
+  patterns. Write content, not CSS.
+- Site-local CSS is limited to identity imagery, content unique to the site,
+  and allowlisted identity-token retargets. `tools/SiteCssPolicy` enforces
+  this.
+- A presentation need that other sites could share is a Forma capability gap
+  (`requirements/MARKETING-PRESENTATION.md`, MKT-LOCAL-4). Do not build a
+  local look-alike.

@@ -6,6 +6,8 @@ on:
     paths:
       - "patterns/**"
       - "src/styles/**"
+      - "src/marketing/**"
+      - "themes/**"
       - "tokens/**"
       - "site/**"
       - "tools/build-site.mjs"

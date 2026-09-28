@@ -93,7 +93,8 @@
                 "heading": { "$ref": "#/$defs/hex" },
                 "secondary": { "$ref": "#/$defs/hex" },
                 "on-secondary-surface": { "$ref": "#/$defs/hex" },
-                "inverse": { "$ref": "#/$defs/hex" }
+                "inverse": { "$ref": "#/$defs/hex" },
+                "muted": { "$ref": "#/$defs/hex" }
               }
             },
             "surface": {
@@ -104,7 +105,8 @@
                 "primary": { "$ref": "#/$defs/hex" },
                 "secondary": { "$ref": "#/$defs/hex" },
                 "inverse": { "$ref": "#/$defs/hex" },
-                "inverse-secondary": { "$ref": "#/$defs/hex" }
+                "inverse-secondary": { "$ref": "#/$defs/hex" },
+                "elevated": { "$ref": "#/$defs/hex" }
               }
             },
             "accent": {
@@ -113,7 +115,19 @@
               "required": ["primary", "secondary"],
               "properties": {
                 "primary": { "$ref": "#/$defs/hex" },
-                "secondary": { "$ref": "#/$defs/hex" }
+                "secondary": { "$ref": "#/$defs/hex" },
+                "hover": { "$ref": "#/$defs/hex" }
+              }
+            },
+            "status": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Optional marketing status roles; each must reach 4.5:1 on the primary surface and always accompany text.",
+              "properties": {
+                "success": { "$ref": "#/$defs/hex" },
+                "warning": { "$ref": "#/$defs/hex" },
+                "danger": { "$ref": "#/$defs/hex" },
+                "info": { "$ref": "#/$defs/hex" }
               }
             },
             "border": {

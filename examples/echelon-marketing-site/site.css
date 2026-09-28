@@ -1,0 +1,22 @@
+/*
+  Site-local CSS for the Echelon marketing reference fixture.
+
+  Everything shared (tokens, typography, header, navigation, hero, sections,
+  cards, buttons, CTA, footer, responsive and accessibility behavior) comes
+  from Forma. Local CSS is limited to identity or content that is unique to
+  this site. This file is checked by tools/SiteCssPolicy in Forma's tests.
+*/
+
+/* Unique content: the founder's signature line on the About page. */
+.site-signature {
+  font-family: var(--ef-type-family-display);
+  font-size: var(--ef-type-size-lead);
+  font-style: italic;
+}
+
+/* Product identity: product pages retarget the accent to the validated
+   verdigris role. Identity tokens may only reference other Forma tokens. */
+[data-ef-layout="product"] {
+  --ef-color-accent-primary: var(--ef-color-accent-secondary);
+  --ef-color-accent-hover: var(--ef-color-text-primary);
+}

@@ -1,0 +1,23 @@
+/*
+  Echelon Marketing Theme: brand decisions that are not scalar tokens.
+
+  Color, type, layout, shape, and effect values come from the compiled
+  marketing.tokens.json. This file only fills generic Forma hooks with
+  Echelon's composition choices, and derives every color from tokens so the
+  choices hold in light and dark schemes.
+*/
+@layer echelon.theme {
+  /* Foundry drafting grid. Kept at a very low effective alpha (6% at 18%
+     opacity) so it never changes text contrast (VE REP-VE-COL-001). */
+  .ef-site {
+    --ef-site-backdrop:
+      linear-gradient(color-mix(in srgb, var(--ef-color-text-primary) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--ef-color-text-primary) 6%, transparent) 1px, transparent 1px);
+    --ef-site-backdrop-size: 48px 48px;
+    --ef-site-backdrop-opacity: 0.18;
+  }
+
+  @media (forced-colors: active) {
+    .ef-site { --ef-site-backdrop: none; }
+  }
+}

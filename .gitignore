@@ -43,3 +43,14 @@ logs/*
 # Generated build output
 dist/
 site-dist/
+
+# F# tool build output (never tracked: stale binaries can be mistaken for up to date)
+tools/**/bin/
+tools/**/obj/
+build/
+
+# Reference example installs Forma assets as a consumer would
+examples/*/assets/forma/
+
+# Playwright run output
+test-results/

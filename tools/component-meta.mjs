@@ -2,6 +2,20 @@
 // Kept separate from the site renderer so catalog growth does not turn
 // tools/build-site.mjs into a structural monolith.
 export const componentMeta = {
+  "marketing-shell": ["Marketing shell", "Marketing presentation", "Site content", "Reusable marketing-site frame: skip link, identity header with wrapping navigation, main content, and footer. Sites own content; the shell owns structure, focus, and responsive behavior."],
+  "site-header": ["Site header", "Marketing presentation", "Site content", "Identity and primary navigation that wraps instead of hiding links, keeps 44px targets, and marks the current page with a non-color rule."],
+  "hero": ["Hero", "Marketing presentation", "Site content", "A page's first region: one promise, one primary action, and optional supporting context that stacks below it in source order."],
+  "section-heading": ["Section heading", "Marketing presentation", "Site content", "Labels a page section with an eyebrow, heading, framing sentence, and optional aside that wraps on narrow screens."],
+  "card-grid": ["Card grid", "Marketing presentation", "Site content", "Ruled grid of cards with a column cap and content-driven column dropping; card links stretch without making the whole card the accessible name."],
+  "facts": ["Facts", "Marketing presentation", "Site content", "Short claims with supporting detail as a description list in a ruled, auto-fitting grid."],
+  "entry-index": ["Entry index", "Marketing presentation", "Site content", "Ordered linked entries (research areas, products) that regroup from four columns to one by container width."],
+  "steps": ["Steps", "Marketing presentation", "Site content", "Numbered method or process using CSS counters on a native ordered list."],
+  "badge": ["Badge", "Marketing presentation", "Site content", "Compact labels and metadata; status badges carry meaning in text with a redundant colored edge."],
+  "cta": ["Call to action", "Marketing presentation", "Site content", "Closing call to action with one primary action, optionally on an inverse surface tone."],
+  "code-sample": ["Code sample", "Marketing presentation", "Site content", "Technical sample in a captioned, keyboard-scrollable region that never widens the page."],
+  "prose": ["Prose", "Marketing presentation", "Site content", "Long-form content constrained to the reading measure with underlined links and consistent heading rhythm."],
+  "site-footer": ["Site footer", "Marketing presentation", "Site content", "Closing identity, actions, secondary navigation, and legal note on a surface tone."],
+  "documentation-layout": ["Documentation layout", "Marketing presentation", "Site content", "Documentation page: navigation rail, prose article, and optional outline; navigation compacts to a wrapping list in narrow containers."],
   "active-filter-summary": ["Active filter summary","Data & productivity","Application content","Keeps active query refinements and scope visible while filter controls recompose."],
   "cluster": ["Cluster","Layout & composition","Native CSS","Wraps related inline items while preserving semantic source order."],
   "command-group": ["Command group","Navigation & commands","Application content","Groups related commands under an explicit task label without owning command authority."],

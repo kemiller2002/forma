@@ -111,6 +111,14 @@ jobs:
             package/dist/brands/echelon.css
             package/dist/brands/example-harbor.css
             package/dist/brands/index.json
+            package/dist/marketing.css
+            package/dist/marketing/forma-marketing.css
+            package/dist/marketing/forma-marketing-theme-echelon.css
+            package/dist/marketing/forma-echelon-marketing.css
+            package/dist/marketing/forma-all.css
+            package/dist/marketing/forma-marketing.manifest.json
+            package/dist/marketing/forma-marketing.sha256
+            package/docs/MARKETING-SITES.md
             package/schemas/brand-manifest.schema.json
             package/docs/BRANDING.md
             package/patterns/search.html
@@ -140,17 +148,31 @@ jobs:
           test -f node_modules/@echelon-foundry/design-system/schemas/brand-manifest.schema.json
           test -f node_modules/@echelon-foundry/design-system/patterns/data-grid.html
 
+      - name: Exercise marketing assets as a no-Node consumer
+        shell: bash
+        run: |
+          (cd dist/marketing && sha256sum -c forma-marketing.sha256)
+          site="$(mktemp -d)"
+          printf 'forma %s\ndestination assets/forma\nasset forma-echelon-marketing.css\n' "${RELEASE_TAG#v}" > "$site/forma.lock"
+          (cd "$site" && "$GITHUB_WORKSPACE/actions/install-presentation/install.sh" --source "$GITHUB_WORKSPACE/dist/marketing" --update)
+          (cd "$site" && "$GITHUB_WORKSPACE/actions/install-presentation/install.sh" --source "$GITHUB_WORKSPACE/dist/marketing")
+          test -s "$site/assets/forma/forma-echelon-marketing.css"
+
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
+          # Marketing assets are flat, individually downloadable files so a
+          # site can pin them without npm (see docs/MARKETING-SITES.md). The
+          # tag check above keeps a released version's contents immutable.
+          marketing=(dist/marketing/*.css dist/marketing/forma-marketing.manifest.json dist/marketing/forma-marketing.sha256)
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" "$ARCHIVE" --clobber
+            gh release upload "$RELEASE_TAG" "$ARCHIVE" "${marketing[@]}" --clobber
           else
-            gh release create "$RELEASE_TAG" "$ARCHIVE" --target "$GITHUB_SHA" \
+            gh release create "$RELEASE_TAG" "$ARCHIVE" "${marketing[@]}" --target "$GITHUB_SHA" \
               --title "$RELEASE_TAG" \
-              --notes "Forma ${RELEASE_TAG#v}: zero-runtime Echelon Foundry design system."
+              --notes "Forma ${RELEASE_TAG#v}: zero-runtime Echelon Foundry design system. Marketing sites pin forma-echelon-marketing.css through forma.lock; see docs/MARKETING-SITES.md."
           fi
 
       - name: Publish to npm when trusted publishing is enabled

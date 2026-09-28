@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "ChatGPT",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-09-28T01:29:14.000Z",
+  "updatedAt": "2026-09-28T17:24:05.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -713,6 +713,51 @@
         "EXE-20260928T011034204Z-a551fb03"
       ],
       "completedAt": "2026-09-28T01:29:14.000Z"
+    },
+    {
+      "id": "GH-49",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/marketing/components.css"
+        },
+        {
+          "type": "implementation",
+          "path": "themes/echelon/marketing.tokens.json"
+        },
+        {
+          "type": "implementation",
+          "path": "tools/PresentationBundler/Program.fs"
+        },
+        {
+          "type": "implementation",
+          "path": "tools/SiteCssPolicy/Program.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/marketing-distribution.test.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/marketing.spec.mjs"
+        },
+        {
+          "type": "research-record",
+          "path": "research/evidence/EV-DESIGN-2026-0014--echelon-foundry-marketing-reference-analysis.md"
+        },
+        {
+          "type": "decision",
+          "path": "docs/decisions/ADR-0003-marketing-presentation-distribution.md"
+        }
+      ],
+      "updatedAt": "2026-09-28T17:24:05.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20260928T160615860Z-958af0e0"
+      ],
+      "completedAt": "2026-09-28T17:24:05.000Z"
     }
   ]
 }

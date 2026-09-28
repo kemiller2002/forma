@@ -1908,6 +1908,147 @@
       "gaps": [
         "GAP-TCG-06 wide-glyph and right-to-left grids"
       ]
+    },
+    {
+      "id": "LAY-MARKETING-PAGE",
+      "name": "Marketing page",
+      "tasks": [
+        "recognize an offer",
+        "orient",
+        "decide to act"
+      ],
+      "recognitionPath": [
+        "identity and navigation",
+        "hero promise",
+        "primary action",
+        "section sequence",
+        "closing call to action"
+      ],
+      "verificationRegions": [
+        "facts and outcomes",
+        "casework and evidence",
+        "contact details"
+      ],
+      "composition": [
+        "marketing-shell",
+        "site-header",
+        "hero",
+        "section-heading",
+        "card-grid",
+        "facts",
+        "entry-index",
+        "cta",
+        "site-footer"
+      ],
+      "preservedRelationships": [
+        "one primary action per region",
+        "promise-before-proof source order",
+        "section heading ownership of its content",
+        "current-page indication"
+      ],
+      "narrowRecomposition": "hero aside stacks after the promise; card and fact grids drop columns by minimum size; navigation wraps and never hides destinations",
+      "status": "supported",
+      "evidence": [
+        "LAW-COMP-001",
+        "LAW-COMP-002",
+        "LAW-COMP-004",
+        "LAW-COMP-005",
+        "LAW-COMP-006",
+        "HY-BEAUTY-002",
+        "examples/echelon-marketing-site/index.html",
+        "tests/browser/marketing.spec.mjs"
+      ],
+      "gaps": [
+        "GAP-MKT-03 contrast over hero imagery is not verifiable by token pairs",
+        "GAP-MKT-04 first-glance hierarchy requires human or screenshot evaluation"
+      ]
+    },
+    {
+      "id": "LAY-PRODUCT-PAGE",
+      "name": "Product page",
+      "tasks": [
+        "recognize a product",
+        "check fit and status",
+        "install or adopt"
+      ],
+      "recognitionPath": [
+        "product name and promise",
+        "release status",
+        "primary install action",
+        "capabilities",
+        "technical sample"
+      ],
+      "verificationRegions": [
+        "release facts",
+        "version and status badges",
+        "install commands"
+      ],
+      "composition": [
+        "marketing-shell",
+        "hero",
+        "badge",
+        "facts",
+        "card-grid",
+        "steps",
+        "code-sample",
+        "cta"
+      ],
+      "preservedRelationships": [
+        "status carried by text, not color alone",
+        "install steps before the sample in source order",
+        "code sample bounded without page overflow"
+      ],
+      "narrowRecomposition": "release facts stack below the promise; install steps precede the code sample; code scrolls inside its focusable region",
+      "status": "supported",
+      "evidence": [
+        "LAW-COMP-001",
+        "LAW-COMP-002",
+        "LAW-COMP-004",
+        "LAW-COMP-005",
+        "LAW-COMP-006",
+        "HY-BEAUTY-002",
+        "examples/echelon-marketing-site/product.html"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "LAY-DOCUMENTATION-PAGE",
+      "name": "Documentation page",
+      "tasks": [
+        "find a topic",
+        "read",
+        "copy a command"
+      ],
+      "recognitionPath": [
+        "documentation navigation",
+        "article title",
+        "section headings",
+        "page outline"
+      ],
+      "verificationRegions": [
+        "commands and configuration",
+        "current location"
+      ],
+      "composition": [
+        "marketing-shell",
+        "documentation-layout",
+        "prose",
+        "code-sample"
+      ],
+      "preservedRelationships": [
+        "navigation-article-outline source order",
+        "current location in navigation",
+        "reading measure"
+      ],
+      "narrowRecomposition": "navigation becomes a wrapping list above the article; the outline follows the article; no region is hidden",
+      "status": "supported",
+      "evidence": [
+        "LAW-COMP-002",
+        "LAW-COMP-005",
+        "LAW-COMP-007",
+        "examples/echelon-marketing-site/docs.html"
+      ],
+      "gaps": []
     }
   ],
   "verificationBaseline": {
