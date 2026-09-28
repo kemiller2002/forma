@@ -96,8 +96,16 @@ rejects. See `patterns/character-grid-selection.html` and rule CG-17.
 ```html
 <p class="ef-character-grid__message" id="cinq-message" role="status" data-ef-severity="information"
    data-ef-row="21" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__severity"><span>INFO</span></span> CINQ000I Type search criteria and press Enter.</p>
-<p class="ef-character-grid__status" role="status" data-ef-row="24" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__indicator"><span>READY</span></span></p>
+<!-- the grid declares data-ef-rows="24" data-ef-status-rows="1" -->
+<p class="ef-character-grid__status" role="status" data-ef-row="25" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__indicator"><span>READY</span></span></p>
 ```
+
+`data-ef-rows` counts only the rows your application writes. If the
+terminal you model has a device status line outside those rows, such as the
+3270 Operator Information Area, add `data-ef-status-rows="1"` to the grid
+and put the status on row `rows + 1`. Only status may go there (CG-18). If
+your application draws its own status, as DOS and most TUI programs do,
+omit the attribute and put the status on one of your own bottom rows.
 
 Keep the message element in the DOM and replace its content, so assistive
 technology announces changes. Use `role="alert"` for validation and error.
@@ -134,7 +142,8 @@ Add `data-ef-profile="ibm-3270"` to the grid. Nothing else changes: the same
 markup renders in Forma's default presentation without the attribute. See
 `patterns/character-grid-3270.html` (24 × 80) and
 `patterns/character-grid-workflow.html` (three screens). For 32 × 80 set
-`data-ef-rows="32"` and place the reserved rows at 29–32.
+`data-ef-rows="32"`, place the reserved application rows at 29–32, and move
+the status to row 33.
 
 ## 8. SequentialReveal
 
@@ -247,13 +256,13 @@ export const orchestrateReveal = grid => {
 The markup, rules, and tests are the same for every style; only geometry, key
 vocabulary, content, and (optionally) a profile change.
 
-| Style | Geometry | Keys (data-ef-action) | Profile | Notes |
-| --- | --- | --- | --- | --- |
-| IBM 3270 | 24 × 80, 32 × 80, 43 × 80, 27 × 132 | `enter`, `clear`, `reset`, `pf1`–`pf24`, `pa1`–`pa3` | `ibm-3270` | Reference profile. |
-| IBM 5250 | 24 × 80, 27 × 132 | `enter`, `f1`–`f24`, `help`, `roll-up`, `roll-down`, `field-exit`, `reset` | default, or a custom token set | `<kbd>F3</kbd>=Exit`, `<kbd>F12</kbd>=Cancel`. Field Exit is a named action; its behavior is application-owned. "Work with" lists use per-row selection fields (`character-grid-selection`). |
-| DOS / text mode, TUI | e.g. 25 × 80 | `f1`–`f10`, named actions | default or custom tokens | Menus are `dl`/`role="group"` groups; the F-key bar is the key group on the last row. |
-| BBS-style | e.g. 24 × 80 | named actions | default or custom tokens | Single-letter commands must be buttons or a command field, not global letter shortcuts (WCAG 2.1.4). |
-| Modern character grid | any R × C ≤ 50 × 132 | named actions, e.g. `<kbd>Ctrl+S</kbd> Save` | default (follows light/dark) | Use `data-ef-narrow="reflow"` when positions carry no meaning. |
+| Style | Geometry | Status rows | Keys (data-ef-action) | Profile | Notes |
+| --- | --- | --- | --- | --- | --- |
+| IBM 3270 | 24 × 80, 32 × 80, 43 × 80, 27 × 132 | `1` (OIA; x3270 evidence) | `enter`, `clear`, `reset`, `pf1`–`pf24`, `pa1`–`pa3` | `ibm-3270` | Reference profile. |
+| IBM 5250 | 24 × 80, 27 × 132 | not verified; author's choice | `enter`, `f1`–`f24`, `help`, `roll-up`, `roll-down`, `field-exit`, `reset` | default, or a custom token set | `<kbd>F3</kbd>=Exit`, `<kbd>F12</kbd>=Cancel`. Field Exit is a named action; its behavior is application-owned. "Work with" lists use per-row selection fields (`character-grid-selection`). |
+| DOS / text mode, TUI | e.g. 25 × 80 | none (the application draws status) | `f1`–`f10`, named actions | default or custom tokens | Menus are `dl`/`role="group"` groups; the F-key bar is the key group on the last row. |
+| BBS-style | e.g. 24 × 80 | not verified; author's choice | named actions | default or custom tokens | Single-letter commands must be buttons or a command field, not global letter shortcuts (WCAG 2.1.4). |
+| Modern character grid | any R × C ≤ 50 × 132 | usually none | named actions, e.g. `<kbd>Ctrl+S</kbd> Save` | default (follows light/dark) | Use `data-ef-narrow="reflow"` when positions carry no meaning. |
 
 Forma ships only the `ibm-3270` profile. 5250, DOS, and BBS characteristics
 beyond geometry and keys were not verified by Visual Engineering, so no

@@ -11,10 +11,15 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
+// statusRows: device status rows after the application rows
+// (Visual Engineering DF-VE-TCG-2026-1320). Evidence supports one (an
+// operator information area); the limit leaves room for a second without
+// inviting a region.
 export const LIMITS = Object.freeze({
   rows: 50,
   columns: 132,
-  gutter: 4
+  gutter: 4,
+  statusRows: 2
 });
 
 export const BEGIN = "/* BEGIN generated: character-grid coordinates (tools/character-grid-css.mjs) */";
@@ -32,8 +37,9 @@ export const generateCoordinateRules = () => [
   BEGIN,
   ...geometry("rows", "grid-rows", range(1, LIMITS.rows)),
   ...geometry("columns", "grid-columns", range(1, LIMITS.columns)),
+  ...geometry("status-rows", "grid-status-rows", range(1, LIMITS.statusRows)),
   ...geometry("reveal-rows", "reveal-rows", range(1, LIMITS.rows)),
-  ...mapping("row", "row", range(1, LIMITS.rows)),
+  ...mapping("row", "row", range(1, LIMITS.rows + LIMITS.statusRows)),
   ...mapping("col", "col", range(1, LIMITS.columns)),
   ...mapping("len", "len", range(1, LIMITS.columns)),
   ...mapping("height", "height", range(1, LIMITS.rows)),

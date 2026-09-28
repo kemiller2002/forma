@@ -83,3 +83,40 @@ testing of HY-VE-TCG-2026-9151/-8750 in Visual Engineering.
 
 Next action: confirm cross-engine CI, then record the catalog conformance run
 and promote `LAY-TERMINAL-CHARACTER-GRID` to `verified`.
+
+## Terminal / CharacterGrid follow-up — 2026-09-28 (third session)
+
+Objective: implement Visual Engineering DF-VE-TCG-2026-1320 (GAP-TCG-12).
+The 3270 status line (OIA) lies outside the application's rows, but the
+reference screens drew status on application row 24.
+
+Completed on `claude/terminal-character-grid-ui-kg0kec` under ROS work item
+WI-0010:
+
+- Generic `data-ef-status-rows` (1–2). The rows follow `data-ef-rows` in the
+  same column tracks and are reserved at full pitch even when status is
+  empty, so there is no layout shift. The generator emits
+  `--ef-grid-status-rows` and row mappings up to 52.
+- Conformance rule CG-18: only `.ef-character-grid__status` may occupy status
+  rows, and a grid that declares them keeps its status there. CG-1 validates
+  the attribute. CG-3 bounds status runs to `rows + status-rows` and all
+  other runs to `rows`. No 3270 logic was added to generic tooling; the
+  existing test enforces this.
+- The `ibm-3270` profile may rule a muted line over the status row (a
+  `box-shadow`, allowed profile property; stylistic).
+- `character-grid-3270`, `character-grid-workflow`, and the catalog
+  specimen use `data-ef-status-rows="1"` with status on row 25 (33 at
+  32 × 80).
+- Contract, authoring guide (a status-rows column per terminal style), agent
+  usage, component catalog, layout catalog, and coverage matrix updated.
+
+Validation: see the pull request for exact results. .NET 10 came from the
+Ubuntu archive (`dotnet-sdk-10.0`), because `builds.dotnet.microsoft.com`
+is blocked. Browser tests ran on Chromium 1194 through a scratch config (the
+pinned Playwright wants revision 1243). CI runs all three engines.
+
+Open: GAP-TCG-06 (wide glyphs/RTL). The family `verified` promotion waits
+on a green cross-engine *Forma conformance* run on main.
+
+Next action: after merge, record the conformance run in
+`catalog/layouts.json` and promote `LAY-TERMINAL-CHARACTER-GRID`.

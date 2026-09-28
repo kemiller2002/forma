@@ -1893,6 +1893,7 @@
         "field capacity equals declared cells",
         "no collisions and no row wrap",
         "reserved message, key, and status rows",
+        "device status rows after the application rows hold system status only",
         "header-to-cell association in repeated rows"
       ],
       "narrowRecomposition": "contained, named, keyboard-reachable horizontal scroll preserving the grid; opt-in reflow to source order when positions carry no meaning; never page-level overflow",
@@ -1901,6 +1902,7 @@
         "Visual Engineering LAY-TERMINAL-CHARACTER-GRID",
         "CN-VE-TCG-2026-6CA0",
         "EX-VE-TCG-2026-5437",
+        "DF-VE-TCG-2026-1320",
         "requirements/CHARACTER-GRID.md"
       ],
       "gaps": [

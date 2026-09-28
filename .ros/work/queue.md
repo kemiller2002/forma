@@ -28,3 +28,4 @@
 | WI-0007 | CharacterGrid GAP-TCG-10: per-row selection fields in positioned repeated rows | complete |  | medium |
 | WI-0008 | CharacterGrid GAP-TCG-11 follow-up: table cells under text-spacing overrides overlap neighboring columns | complete |  | medium |
 | WI-0009 | CharacterGrid GAP-TCG-09: implement and verify VE DF-VE-TCG-2026-DD05 runtime message overflow policy | complete |  | medium |
+| WI-0010 | CharacterGrid: device status rows after the application rows (GAP-TCG-12, VE DF-VE-TCG-2026-1320) | complete |  | medium |

@@ -3,6 +3,7 @@
   "requirements": {
     "coordinate placement": [["tests/browser/character-grid.spec.mjs", "runs land on their declared cells"]],
     "grid bounds": [["tests/character-grid.test.mjs", "CG-3 and CG-4 reject out-of-bounds runs and row wrap"]],
+    "device status rows": [["tests/character-grid.test.mjs", "CG-18 device status rows follow the application rows"], ["tests/browser/character-grid-3270.spec.mjs", "the OIA status row renders after the application rows"], ["tests/browser/character-grid-3270.spec.mjs", "the device status row is reserved"]],
     "collision policy": [["tests/character-grid.test.mjs", "CG-5 rejects collisions"], ["tests/browser/character-grid-verification.spec.mjs", "collisions are not resolved by CSS"]],
     "overflow": [["tests/character-grid.test.mjs", "CG-7 treats protected overflow as an authoring error"], ["tests/browser/character-grid-verification.spec.mjs", "runtime overflow is never clipped"]],
     "field lengths": [["tests/browser/character-grid-field.spec.mjs", "field capacity equals its declared length"], ["tests/character-grid.test.mjs", "CG-8 requires native fields"]],

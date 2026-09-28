@@ -23,19 +23,56 @@ test("24x80 integrity: every run on its declared cell", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.setContent(gridDocument(source));
   const [grid] = await measureGrid(page);
-  expect([grid.rowCount, grid.columnCount]).toEqual([24, 80]);
+  // 24 application rows plus one device status row (the OIA).
+  expect([grid.applicationRows, grid.statusRows, grid.rowCount, grid.columnCount]).toEqual([24, 1, 25, 80]);
   expectAligned(grid);
 });
 
-test("32x80 integrity: the same screen with reserved rows at 29-32", async ({ page }) => {
+test("32x80 integrity: the same screen with reserved rows at 29-32 and status at 33", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 1100 });
   await page.setContent(gridDocument(to32x80(source)));
   const [grid] = await measureGrid(page);
-  expect([grid.rowCount, grid.columnCount]).toEqual([32, 80]);
+  expect([grid.applicationRows, grid.statusRows, grid.rowCount, grid.columnCount]).toEqual([32, 1, 33, 80]);
   expectAligned(grid);
   const status = await page.getByRole("status").filter({ hasText: "READY" }).boundingBox();
   const surface = await page.locator(".ef-character-grid__surface").boundingBox();
   expect(status.y + status.height).toBeGreaterThan(surface.y + surface.height * 0.9);
+});
+
+test("the OIA status row renders after the application rows, aligned to the same columns", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.setContent(gridDocument(source));
+  const [grid] = await measureGrid(page);
+  const status = page.getByRole("status").filter({ hasText: "READY" });
+  const statusBox = await status.boundingBox();
+  const lastKeyBox = await page.locator('.ef-character-grid__key[data-ef-row="23"]').boundingBox();
+  expect(statusBox.y).toBeGreaterThanOrEqual(lastKeyBox.y + grid.rowPitch - 1);
+  const statusRun = grid.runs.find(run => run.id === "p:25:2");
+  expect(Math.abs(statusRun.dx), "status starts on column 2 of the shared tracks").toBeLessThanOrEqual(1);
+  expect(Math.abs(statusRun.dy), "status sits on row 25").toBeLessThanOrEqual(1);
+  // Device status is presentation of state, never a focus stop.
+  await page.locator("#character-grid-3270-option").focus();
+  const stops = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__status, .ef-character-grid__status *")]
+    .filter(element => element.tabIndex >= 0).length);
+  expect(stops).toBe(0);
+  // The profile's rule over the row is a cue added to the visible READY word.
+  expect(await status.evaluate(element => getComputedStyle(element).boxShadow)).not.toBe("none");
+  await page.setContent(gridDocument(source.replace(' data-ef-profile="ibm-3270"', "")));
+  expect(await page.getByRole("status").filter({ hasText: "READY" }).evaluate(element => getComputedStyle(element).boxShadow)).toBe("none");
+});
+
+test("the device status row is reserved: no layout shift while status is empty or not yet rendered", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  const surfaceHeight = async html => {
+    await page.setContent(gridDocument(html));
+    return page.locator(".ef-character-grid__surface").evaluate(element => element.getBoundingClientRect().height);
+  };
+  const statusRun = /<p class="ef-character-grid__status"[^>]*>.*?<\/p>/s;
+  const withStatus = await surfaceHeight(source);
+  const emptyStatus = await surfaceHeight(source.replace(statusRun, match => match.replace(/>.*<\/p>$/s, "></p>")));
+  const noStatus = await surfaceHeight(source.replace(statusRun, ""));
+  expect(Math.abs(emptyStatus - withStatus)).toBeLessThanOrEqual(0.5);
+  expect(Math.abs(noStatus - withStatus)).toBeLessThanOrEqual(0.5);
 });
 
 test("the profile changes presentation only: geometry is identical with and without it", async ({ page }) => {

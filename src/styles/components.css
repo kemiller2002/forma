@@ -3258,6 +3258,20 @@
     color: var(--ef-grid-protected);
   }
 
+  /*
+   * Device status rows (Visual Engineering DF-VE-TCG-2026-1320, GAP-TCG-12).
+   * data-ef-rows is the application's presentation space; data-ef-status-rows
+   * adds rows after it, in the same tracks so columns stay aligned, for
+   * system status only (CG-18). A screen modeling a terminal whose device
+   * draws a status line outside the application's rows opts in; a screen
+   * whose application draws its own status (DOS, most TUIs) does not.
+   */
+  .ef-character-grid[data-ef-status-rows] .ef-character-grid__surface {
+    grid-template-rows:
+      repeat(var(--ef-grid-rows), minmax(var(--ef-grid-row-pitch), min-content))
+      repeat(var(--ef-grid-status-rows, 1), minmax(var(--ef-grid-row-pitch), min-content));
+  }
+
   /* Every direct child of the surface or of a group is a positioned run. */
   :is(.ef-character-grid__surface, .ef-character-grid__group) > * {
     grid-row: var(--ef-row) / span var(--ef-height);
@@ -3672,6 +3686,11 @@
     --ef-grid-error: #ff7a7a;
   }
 
+  /* A rule over the status row (EV-VE-TCG-2026-1EB5): stylistic, never the only cue. */
+  .ef-character-grid[data-ef-profile="ibm-3270"][data-ef-status-rows] .ef-character-grid__status {
+    box-shadow: 0 -1px 0 0 var(--ef-grid-muted);
+  }
+
   .ef-character-grid[data-ef-profile="ibm-3270"] .ef-character-grid__viewport {
     border-color: #3a3a3a;
     box-shadow: inset 0 0 0 1px #111111;
@@ -3972,6 +3991,8 @@
   .ef-character-grid[data-ef-columns="130"] { --ef-grid-columns: 130; }
   .ef-character-grid[data-ef-columns="131"] { --ef-grid-columns: 131; }
   .ef-character-grid[data-ef-columns="132"] { --ef-grid-columns: 132; }
+  .ef-character-grid[data-ef-status-rows="1"] { --ef-grid-status-rows: 1; }
+  .ef-character-grid[data-ef-status-rows="2"] { --ef-grid-status-rows: 2; }
   .ef-character-grid[data-ef-reveal-rows="1"] { --ef-reveal-rows: 1; }
   .ef-character-grid[data-ef-reveal-rows="2"] { --ef-reveal-rows: 2; }
   .ef-character-grid[data-ef-reveal-rows="3"] { --ef-reveal-rows: 3; }
@@ -4072,6 +4093,8 @@
   :where(.ef-character-grid) [data-ef-row="48"] { --ef-row: 48; }
   :where(.ef-character-grid) [data-ef-row="49"] { --ef-row: 49; }
   :where(.ef-character-grid) [data-ef-row="50"] { --ef-row: 50; }
+  :where(.ef-character-grid) [data-ef-row="51"] { --ef-row: 51; }
+  :where(.ef-character-grid) [data-ef-row="52"] { --ef-row: 52; }
   :where(.ef-character-grid) [data-ef-col="1"] { --ef-col: 1; }
   :where(.ef-character-grid) [data-ef-col="2"] { --ef-col: 2; }
   :where(.ef-character-grid) [data-ef-col="3"] { --ef-col: 3; }

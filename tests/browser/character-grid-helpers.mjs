@@ -47,6 +47,8 @@ export const measureGrid = page => page.evaluate(() => {
     return {
       columnCount: columns.length,
       rowCount: rows.length,
+      applicationRows: Number(grid.dataset.efRows),
+      statusRows: Number(grid.dataset.efStatusRows ?? 0),
       columnWidth: columns[0],
       rowPitch: rows[0],
       uniformColumns: columns.every(width => Math.abs(width - columns[0]) < 0.01),

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 10,
+  "nextSeq": 11,
   "items": [
     {
       "id": "WI-0001",
@@ -237,6 +237,20 @@
       "attachments": [],
       "createdAt": "2026-09-27T20:36:16.291Z",
       "updatedAt": "2026-09-27T20:36:44.000Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0010",
+      "title": "CharacterGrid: device status rows after the application rows (GAP-TCG-12, VE DF-VE-TCG-2026-1320)",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-09-28T01:10:33.331Z",
+      "updatedAt": "2026-09-28T01:29:14.000Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null

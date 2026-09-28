@@ -1,5 +1,5 @@
 // Static conformance checks for CharacterGrid markup
-// (requirements/CHARACTER-GRID.md, rules CG-1 to CG-17).
+// (requirements/CHARACTER-GRID.md, rules CG-1 to CG-18).
 //
 // These rules cannot be enforced by CSS: a collision or an out-of-bounds run
 // renders, it is simply wrong. They are therefore checked on the canonical
@@ -65,6 +65,7 @@ export const splitGrids = (html) => {
       attributes: grid.attributes,
       rows: integer(grid.attributes["data-ef-rows"]),
       columns: integer(grid.attributes["data-ef-columns"]),
+      statusRows: integer(grid.attributes["data-ef-status-rows"] ?? "0"),
       narrow: grid.attributes["data-ef-narrow"] ?? "contained",
       label: members.find((element) => element.classes.includes("ef-character-grid__viewport"))?.attributes["aria-labelledby"] ?? "",
       elements: members,
@@ -108,9 +109,18 @@ export const geometryErrors = (grid) => [
   ...(Number.isInteger(grid.columns) && grid.columns >= 1 && grid.columns <= LIMITS.columns
     ? []
     : [`CG-1 data-ef-columns must be an integer 1..${LIMITS.columns}`]),
+  ...(Number.isInteger(grid.statusRows) && grid.statusRows >= 0 && grid.statusRows <= LIMITS.statusRows &&
+  grid.attributes?.["data-ef-status-rows"] !== "0"
+    ? []
+    : [`CG-1 data-ef-status-rows must be an integer 1..${LIMITS.statusRows} (omit it for none)`]),
   ...(["contained", "reflow"].includes(grid.narrow) ? [] : ["CG-1 data-ef-narrow must be contained or reflow"]),
   ...(grid.label ? [] : ["CG-1 the viewport must be named with aria-labelledby"])
 ];
+
+const isStatus = (run) => run.classes.includes("ef-character-grid__status");
+
+// Status runs may also use the device status rows (CG-18).
+const lastRowFor = (grid, run) => (isStatus(run) ? grid.rows + (grid.statusRows || 0) : grid.rows);
 
 // CG-2 coordinates are complete integers; CG-3 bounds; CG-4 no row wrap
 export const boundsErrors = (grid) =>
@@ -118,7 +128,9 @@ export const boundsErrors = (grid) =>
     ...([run.row, run.col, run.len, run.height].every(Number.isInteger)
       ? []
       : [`CG-2 ${run.id} needs integer data-ef-row, data-ef-col, and data-ef-len`]),
-    ...(run.row >= 1 && run.row + run.height - 1 <= grid.rows ? [] : [`CG-3 ${run.id} is outside rows 1..${grid.rows}`]),
+    ...(run.row >= 1 && run.row + run.height - 1 <= lastRowFor(grid, run)
+      ? []
+      : [`CG-3 ${run.id} is outside rows 1..${lastRowFor(grid, run)}${isStatus(run) ? "" : grid.statusRows ? " (rows after them are device status rows, CG-18)" : ""}`]),
     ...(run.col >= 1 ? [] : [`CG-3 ${run.id} starts before column 1`]),
     ...(run.col + run.len - 1 <= grid.columns ? [] : [`CG-4 ${run.id} crosses column ${grid.columns} (no row wrap)`])
   ]);
@@ -336,6 +348,18 @@ export const selectionErrors = (grid) =>
         });
     });
 
+// CG-18 device status rows (Visual Engineering DF-VE-TCG-2026-1320): rows
+// after the application rows hold system status only, and a grid that
+// declares them keeps its system status there rather than on an
+// application row. Other runs are kept out of them by CG-3.
+export const statusRowErrors = (grid) =>
+  grid.statusRows > 0
+    ? grid.runs
+        .filter(isStatus)
+        .filter((run) => run.row <= grid.rows)
+        .map((run) => `CG-18 ${run.id} is system status on application row ${run.row}; this grid declares device status rows ${grid.rows + 1}..${grid.rows + grid.statusRows}`)
+    : [];
+
 export const gridErrors = (grid) => [
   ...geometryErrors(grid),
   ...boundsErrors(grid),
@@ -349,7 +373,8 @@ export const gridErrors = (grid) => [
   ...touchErrors(grid),
   ...keyErrors(grid),
   ...messageErrors(grid),
-  ...revealErrors(grid)
+  ...revealErrors(grid),
+  ...statusRowErrors(grid)
 ];
 
 export const checkHtml = (html) =>
