@@ -38,6 +38,9 @@ for (const file of pages) {
     }
     await open(page, file, widths.wide);
     await page.evaluate(() => document.documentElement.setAttribute("data-ef-theme", "dark"));
+    // Buttons transition color; measure contrast on settled colors, not a
+    // mid-transition frame (WebKit sampled one in CI).
+    await page.evaluate(() => Promise.all(document.getAnimations().map(animation => animation.finished)));
     const dark = await new AxeBuilder({ page }).withTags(wcag).analyze();
     expect(dark.violations, JSON.stringify(dark.violations, null, 2)).toEqual([]);
   });
