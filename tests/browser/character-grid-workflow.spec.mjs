@@ -36,7 +36,7 @@ test("three distinct 24x80 screens, every run on its declared cell", async ({ pa
   const grids = await measureGrid(page);
   expect(grids.length).toBe(3);
   for (const grid of grids) {
-    expect([grid.rowCount, grid.columnCount]).toEqual([24, 80]);
+    expect([grid.applicationRows, grid.statusRows, grid.rowCount, grid.columnCount]).toEqual([24, 1, 25, 80]);
     for (const run of grid.runs) {
       expect(Math.abs(run.dx), run.id).toBeLessThanOrEqual(1);
       expect(Math.abs(run.dy), run.id).toBeLessThanOrEqual(1);

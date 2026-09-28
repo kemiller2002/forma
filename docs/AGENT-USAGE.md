@@ -218,6 +218,8 @@ terminal component:
    `patterns/character-grid-workflow.html`;
 3. declare geometry and `data-ef-row/col/len` per run, and write runs in
    row-major order — never use positive `tabindex` or inline `style`;
+   `data-ef-rows` is the application's rows; a device status line outside
+   them (the 3270 OIA) is `data-ef-status-rows="1"` and holds status only;
 4. fields are native inputs with `maxlength` = `data-ef-len` and a preceding
    `<label for>`; protected values are text, never `readonly` inputs;
 5. keys are native buttons (`data-ef-action`, `<kbd>`), Enter first, Reset

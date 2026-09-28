@@ -20,7 +20,9 @@ This contract implements relationships recorded by Visual Engineering (branch
 - `LAY-TERMINAL-CHARACTER-GRID` — layout catalog entry (content/layouts);
 - `CN-VE-TCG-2026-F9F1` — SequentialReveal behavior;
 - `EX-VE-TCG-2026-5437` — three-screen reference workflow validation and
-  capability gaps GAP-TCG-01…10.
+  capability gaps GAP-TCG-01…10;
+- `DF-VE-TCG-2026-1320` — device status rows after the application rows
+  (GAP-TCG-12; branch `claude/terminal-character-grid-ui-kg0kec`).
 
 The installed `.visual-engineering` context (1.0.0, source commit `0be73c8`)
 predates these records; they were read from the Visual Engineering branch.
@@ -54,7 +56,8 @@ no hidden behavior for this family.
 | Element / attribute | Meaning |
 | --- | --- |
 | `.ef-character-grid` | Grid scope and container-query container. |
-| `data-ef-rows`, `data-ef-columns` | Geometry, integers. Supported up to 50 rows and 132 columns. |
+| `data-ef-rows`, `data-ef-columns` | Geometry of the application's presentation space, integers. Supported up to 50 rows and 132 columns. |
+| `data-ef-status-rows` | Optional device status rows (1 or 2) after the application rows, for `.ef-character-grid__status` only (CG-18). Omit it when the application draws its own status. |
 | `data-ef-narrow` | `contained` (default) or `reflow`. |
 | `.ef-character-grid__viewport` | The contained scroller. Required: `role="region"`, an accessible name (`aria-labelledby` the screen title), `tabindex="0"`. |
 | `.ef-character-grid__surface` | The cell grid. Use `<form>` when the screen has editable fields, otherwise `<div>`. |
@@ -95,6 +98,15 @@ leaks to its descendants.
 - **CG-3 In bounds.** `1 ≤ row` and `row + height − 1 ≤ rows`; `col ≥ 1`.
 - **CG-4 No row wrap.** `col + len − 1 ≤ columns`. Multi-line content is
   multiple runs, or one run with `data-ef-height`.
+- **CG-18 Device status rows.** `data-ef-status-rows`, when present, is an
+  integer 1…2. Rows `rows + 1 … rows + status-rows` follow the application
+  rows in the same column tracks and hold `.ef-character-grid__status` runs
+  only (CG-3 bounds every other run to the application rows). A grid that
+  declares them keeps its system status there, not on an application row.
+  Because the rows come last, row-major order, source order, and focus order
+  are unchanged. Visual Engineering `DF-VE-TCG-2026-1320` records the
+  evidence: x3270 draws the 3270 OIA outside the model's rows, and DOS text
+  mode has no device status line.
 
 ### Collisions, clipping, and overflow
 
@@ -306,7 +318,8 @@ Forma **presents** action affordances. It does not implement them.
 ```html
 <p class="ef-character-grid__message" role="alert" data-ef-severity="error"
    data-ef-row="21" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__severity"><span>ERROR</span></span> BTX009E Transfer service did not respond.</p>
-<p class="ef-character-grid__status" role="status" data-ef-row="24" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__indicator" data-ef-state="inhibited"><span>X SYSTEM</span></span>  Input inhibited</p>
+<!-- on a grid with data-ef-rows="24" data-ef-status-rows="1" -->
+<p class="ef-character-grid__status" role="status" data-ef-row="25" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__indicator" data-ef-state="inhibited"><span>X SYSTEM</span></span>  Input inhibited</p>
 ```
 
 | Concern | Contract |
@@ -317,6 +330,7 @@ Forma **presents** action affordances. It does not implement them.
 | Field association | Fields reference the message with `aria-describedby` (and `aria-invalid="true"` when invalid). |
 | Runtime length | Reserve rows with `data-ef-height` when messages may be long; Forma wraps within the run, never clips, and grows the rows if a message still does not fit (GAP-TCG-09, DF-VE-TCG-2026-DD05). |
 | System status | `.ef-character-grid__status` with `role="status"`; `.ef-character-grid__indicator` shows states such as input inhibited. Whether input is actually inhibited (for example, disabling fields while waiting) is application behavior. |
+| Placement | On a device status row (`data-ef-status-rows`, CG-18) when the screen models a terminal with one, such as the 3270 OIA; otherwise on an application row the screen reserves for it. |
 
 ## SequentialReveal presentation
 
@@ -376,7 +390,11 @@ follows the application's light or dark scheme.
 ### `ibm-3270` reference profile
 
 `patterns/character-grid-3270.html` is a 24 × 80 operations menu using the
-profile. The palette evokes the 3279 base colors — protected text blue,
+profile, plus one device status row (`data-ef-status-rows="1"`, row 25) for
+the Operator Information Area, as x3270 draws it outside the model's rows.
+The profile may rule a line over that row (a muted `box-shadow`, stylistic,
+as x3270 offers it); the row is still a `role="status"` region with a
+visible indicator word. The palette evokes the 3279 base colors — protected text blue,
 intensified white, unprotected fields green, on black — plus a block caret
 (`caret-shape: block`, progressive enhancement) layered on the standard focus
 outline. This is a stylistic choice (category 3 in `CN-VE-TCG-2026-6CA0`), not
@@ -385,8 +403,8 @@ or uppercase transformation is reproduced.
 
 - **24 × 80:** canonical pattern; every run verified on its declared cell.
 - **32 × 80:** verified by a browser test that renders the same screen with
-  `data-ef-rows="32"` and the reserved rows moved to 29–32, and by a Node test
-  that the transformed markup conforms.
+  `data-ef-rows="32"`, the reserved application rows moved to 29–32 and the
+  status row to 33, and by a Node test that the transformed markup conforms.
 - **Contrast:** all profile colors pass axe's WCAG AA color-contrast rule on
   the black screen; forced colors replace the palette while boundaries and
   focus remain.
@@ -452,7 +470,7 @@ row-selection idiom (GAP-TCG-10) is exercised by `character-grid-selection`.
 
 ## Conformance checking
 
-`tools/character-grid-conformance.mjs` checks CG-1 to CG-17 on any HTML file:
+`tools/character-grid-conformance.mjs` checks CG-1 to CG-18 on any HTML file:
 
 ```bash
 node tools/character-grid-conformance.mjs patterns/character-grid.html
@@ -470,7 +488,7 @@ tests; `tests/character-grid.test.mjs` fails if a referenced test disappears.
 
 | Area | Where |
 | --- | --- |
-| Static rules CG-1…CG-17, generated CSS sync, no 3270 logic, workflow states, coverage matrix | `tests/character-grid.test.mjs` (`npm run test:character-grid`, run in *Forma conformance* CI) |
+| Static rules CG-1…CG-18, generated CSS sync, no 3270 logic, workflow states, coverage matrix | `tests/character-grid.test.mjs` (`npm run test:character-grid`, run in *Forma conformance* CI) |
 | Rendered geometry, 1280/390/320 px, 200 % text, contained region, reflow, `dl` semantics | `tests/browser/character-grid.spec.mjs` |
 | Fields: names, states, Tab/Shift+Tab, capacity, forced colors, target size | `tests/browser/character-grid-field.spec.mjs` |
 | Keys and status: native submitters, validation bypass, local Reset, live regions, severity cues | `tests/browser/character-grid-keys-status.spec.mjs` |
@@ -499,4 +517,5 @@ request for exact local results).
 | GAP-TCG-09 runtime message length | Closed by DF-VE-TCG-2026-DD05: messages wrap, never clip or truncate, and grow their region instead of overlapping (regression-tested). |
 | GAP-TCG-10 per-row selection fields | Closed by CG-17 and `character-grid-selection`: native fields in table cells named by column and row headers. |
 | GAP-TCG-06 wide-glyph (two-cell) and right-to-left grids | Open. Forma does not assign two cells to wide glyphs. |
+| GAP-TCG-12 3270 status line on an application row | Closed by DF-VE-TCG-2026-1320 and CG-18: `data-ef-status-rows` adds device status rows after the application rows; the 3270 pattern, workflow, and catalog specimen use one. |
 | GAP-TCG-11 text-spacing overrides vs fixed cells | Closed: intrinsic tracks grow under an override (see Zoom and text scaling); regression-tested for no overlap, shared-column alignment, full field values, and no page overflow. |

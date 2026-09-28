@@ -42,7 +42,9 @@ test("coordinate rules cover the documented limits, including 132 columns", () =
   assert.match(css, new RegExp(`data-ef-rows="${LIMITS.rows}"`));
   assert.match(css, new RegExp(`data-ef-columns="${LIMITS.columns}"`));
   assert.match(css, new RegExp(`data-ef-len="${LIMITS.columns}"`));
-  assert.doesNotMatch(css, new RegExp(`data-ef-row="${LIMITS.rows + 1}"`));
+  assert.match(css, new RegExp(`data-ef-status-rows="${LIMITS.statusRows}"`));
+  assert.match(css, new RegExp(`data-ef-row="${LIMITS.rows + LIMITS.statusRows}"`), "status rows follow the largest grid");
+  assert.doesNotMatch(css, new RegExp(`data-ef-row="${LIMITS.rows + LIMITS.statusRows + 1}"`));
 });
 
 test("every canonical character-grid pattern conforms", () => {
@@ -67,6 +69,23 @@ test("CG-3 and CG-4 reject out-of-bounds runs and row wrap", () => {
   assert.ok(hasRule(errorsFor('<p class="ef-character-grid__text" data-ef-row="7" data-ef-col="1" data-ef-len="2">AB</p>'), "CG-3"));
   assert.ok(hasRule(errorsFor('<p class="ef-character-grid__text" data-ef-row="2" data-ef-col="18" data-ef-len="5">ABCDE</p>'), "CG-4"));
   assert.ok(hasRule(errorsFor('<div class="ef-character-grid__table" data-ef-row="5" data-ef-col="1" data-ef-len="4" data-ef-height="3"></div>'), "CG-3"));
+});
+
+test("CG-18 device status rows follow the application rows and hold status only", () => {
+  const withStatusRow = 'data-ef-rows="6" data-ef-status-rows="1" data-ef-columns="20"';
+  const status = (row) => `<p class="ef-character-grid__status" role="status" data-ef-row="${row}" data-ef-col="1" data-ef-len="5">READY</p>`;
+  assert.deepEqual(errorsFor(status(7), withStatusRow), []);
+  assert.ok(hasRule(errorsFor(status(7)), "CG-3"), "row 7 is out of bounds without declared status rows");
+  assert.ok(hasRule(errorsFor(status(8), withStatusRow), "CG-3"), "status stays within the declared status rows");
+  assert.ok(
+    hasRule(errorsFor(`<p class="ef-character-grid__text" data-ef-row="7" data-ef-col="1" data-ef-len="2">AB</p>${status(7)}`, withStatusRow), "CG-3"),
+    "application runs may not occupy a status row"
+  );
+  assert.ok(hasRule(errorsFor(status(6), withStatusRow), "CG-18"), "a grid with status rows keeps its status there");
+  assert.deepEqual(errorsFor(status(6)), [], "without status rows, status on an application row is legal");
+  for (const value of ["0", "3", "one"]) {
+    assert.ok(hasRule(errorsFor("", `data-ef-rows="6" data-ef-status-rows="${value}" data-ef-columns="20"`), "CG-1"), value);
+  }
 });
 
 test("CG-5 rejects collisions instead of letting the later run win", () => {
@@ -198,7 +217,8 @@ test("CG-16 reveal is opt-in, bounded, and stages protected text only", () => {
   }
 });
 
-// Moves the reserved bottom rows (21-24) of a 24x80 screen to rows 29-32.
+// Moves the reserved bottom rows (21-24) of a 24x80 screen to rows 29-32 and
+// its device status row (25) to 33.
 export const to32x80 = html => html
   .replace('data-ef-rows="24"', 'data-ef-rows="32"')
   .replace(/data-ef-row="(\d+)"/g, (match, row) => (Number(row) >= 21 ? `data-ef-row="${Number(row) + 8}"` : match));
@@ -211,7 +231,13 @@ test("the 3270 profile conforms at 24x80 and at 32x80", () => {
   const [grid32] = splitGrids(tall);
   assert.deepEqual([grid32.rows, grid32.columns], [32, 80]);
   assert.deepEqual(checkHtml(tall), []);
-  assert.ok(grid32.runs.some(run => run.row === 32), "status occupies row 32");
+  assert.deepEqual([grid24.statusRows, grid32.statusRows], [1, 1]);
+  assert.deepEqual(
+    [grid24, grid32].map(({ runs }) => runs.filter(run => run.classes.includes("ef-character-grid__status")).map(run => run.row)),
+    [[25], [33]],
+    "the OIA status row follows the application rows"
+  );
+  assert.ok(grid32.runs.some(run => run.row === 29), "reserved application rows move to 29-32");
 });
 
 test("profiles declare presentation only: no geometry, placement, or display changes", () => {
