@@ -1,0 +1,93 @@
+/*
+  Forma marketing role contract: brand-neutral defaults.
+
+  Marketing foundations, components, and layouts consume only these role
+  tokens and Forma's core semantic tokens. A theme (for example the compiled
+  Echelon Marketing Theme) restates the roles at :root with higher
+  specificity, so these :where() defaults apply only when no theme does.
+
+  Defaults are declared on every theme/brand scope as well as :root so that
+  derived values recompute inside a nested data-ef-theme or data-ef-brand
+  subtree instead of inheriting the root's resolved value.
+*/
+@layer echelon.tokens {
+  :where(:root, [data-ef-theme], [data-ef-brand]) {
+    /* Extended color roles, derived from core semantics. */
+    --ef-color-surface-elevated: var(--ef-color-surface-primary);
+    --ef-color-text-muted: var(--ef-color-text-secondary);
+    --ef-color-accent-hover: var(--ef-color-accent-primary);
+    /* Status defaults are deliberately hue-free: meaning is carried by text. */
+    --ef-color-status-success: var(--ef-color-text-primary);
+    --ef-color-status-warning: var(--ef-color-text-primary);
+    --ef-color-status-danger: var(--ef-color-text-primary);
+    --ef-color-status-info: var(--ef-color-text-primary);
+  }
+
+  :where(:root) {
+    /* Relational spacing scale (rem). Component gaps and padding use only
+       these steps; section and block rhythm use the fluid layout roles. */
+    --ef-space-1: var(--ef-primitive-space-1);
+    --ef-space-2: var(--ef-primitive-space-2);
+    --ef-space-3: var(--ef-primitive-space-3);
+    --ef-space-4: var(--ef-primitive-space-4);
+    --ef-space-5: var(--ef-primitive-space-5);
+    --ef-space-6: var(--ef-primitive-space-6);
+    --ef-space-7: var(--ef-primitive-space-7);
+    --ef-space-8: var(--ef-primitive-space-8);
+
+    --ef-type-family-body: var(--ef-primitive-font-family-sans);
+    --ef-type-family-display: var(--ef-primitive-font-family-display);
+    --ef-type-family-mono: var(--ef-primitive-font-family-mono);
+    --ef-type-size-label: var(--ef-primitive-font-size-xs);
+    --ef-type-size-small: var(--ef-primitive-font-size-sm);
+    --ef-type-size-body: var(--ef-primitive-font-size-md);
+    --ef-type-size-lead: var(--ef-primitive-font-size-fluid-lead);
+    --ef-type-size-h1: var(--ef-primitive-font-size-fluid-display-1);
+    --ef-type-size-h2: var(--ef-primitive-font-size-fluid-display-2);
+    --ef-type-size-h3: var(--ef-primitive-font-size-lg);
+    --ef-type-size-h4: var(--ef-primitive-font-size-md);
+    --ef-type-size-statement: var(--ef-primitive-font-size-fluid-display-3);
+    --ef-type-leading-body: var(--ef-primitive-line-height-normal);
+    --ef-type-leading-lead: var(--ef-primitive-line-height-normal);
+    --ef-type-leading-heading: var(--ef-primitive-line-height-snug);
+    --ef-type-leading-snug: var(--ef-primitive-line-height-snug);
+    --ef-type-weight-body: var(--ef-primitive-font-weight-regular);
+    --ef-type-weight-strong: var(--ef-primitive-font-weight-bold);
+    --ef-type-weight-heading: var(--ef-primitive-font-weight-semibold);
+    --ef-type-weight-label: var(--ef-primitive-font-weight-medium);
+    --ef-type-weight-nav: var(--ef-primitive-font-weight-semibold);
+    --ef-type-tracking-display: var(--ef-primitive-letter-spacing-normal);
+    --ef-type-tracking-label: var(--ef-primitive-letter-spacing-wide);
+    --ef-type-tracking-body: var(--ef-primitive-letter-spacing-normal);
+
+    --ef-layout-measure: var(--ef-primitive-size-measure);
+    --ef-layout-measure-narrow: var(--ef-primitive-size-measure-narrow);
+    --ef-layout-width-narrow: var(--ef-primitive-size-container-narrow);
+    --ef-layout-width-standard: var(--ef-primitive-size-container-standard);
+    --ef-layout-width-wide: var(--ef-primitive-size-container-wide);
+    --ef-layout-width-max: var(--ef-primitive-size-container-max);
+    --ef-layout-gutter: var(--ef-primitive-size-fluid-gutter);
+    --ef-layout-section-space: var(--ef-primitive-size-fluid-section-space);
+    --ef-layout-block-space: var(--ef-primitive-size-fluid-block-space);
+    --ef-layout-grid-gap: var(--ef-primitive-space-6);
+    --ef-layout-stack-space: var(--ef-primitive-space-6);
+    --ef-layout-target-min: var(--ef-primitive-size-target-min);
+    /* Clearance kept below a sticky header for anchors and sticky rails. */
+    --ef-layout-header-offset: 6rem;
+    /* Card and fact minimums decide when grids drop a column (content-driven). */
+    --ef-layout-card-min: 15rem;
+    --ef-layout-fact-min: 11rem;
+
+    --ef-shape-radius: var(--ef-primitive-radius-small);
+    --ef-shape-border-width: var(--ef-primitive-border-width-thin);
+    --ef-shape-border-width-accent: var(--ef-primitive-border-width-accent);
+
+    --ef-effect-shadow-raised: var(--ef-primitive-shadow-raised);
+    --ef-effect-transition-duration: var(--ef-primitive-motion-duration-standard);
+    --ef-effect-transition-easing: var(--ef-primitive-motion-easing-standard);
+
+    --ef-focus-ring-width: var(--ef-primitive-focus-ring-width);
+    --ef-focus-ring-offset: var(--ef-primitive-focus-ring-offset);
+    --ef-focus-halo-width: var(--ef-primitive-focus-halo-width);
+  }
+}

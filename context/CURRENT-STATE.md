@@ -108,3 +108,23 @@ Signal SCS-009 through SCS-018 added a broader closed-ended selector catalog. Th
 Behavior that HTML cannot safely own remains a Limen/application concern, notably graphical dual-thumb range interaction, cross-control best/worst exclusion, multi-choice cardinality enforcement, matrix global constraints, and hierarchy cascade semantics.
 
 ROS attribution is complete as WI-0005 for the selector-completeness extension. Final cross-browser/accessibility validation remains the merge gate.
+
+
+## Marketing presentation system (GH-49)
+
+Forma now owns the shared presentation for Echelon marketing sites:
+
+- a brand-neutral marketing layer (`src/marketing`), included in `all.css`
+  and scoped to `.ef-site`;
+- the Echelon Marketing Theme (`themes/echelon`, compiled and contrast-gated
+  by the F# TokenCompiler);
+- the MarketingShell and 14 marketing patterns;
+- Marketing, Product, and Documentation layout families.
+
+Sites consume Forma 0.3.0 release assets pinned in `forma.lock`
+(ADR-0003). They keep local CSS within the MKT-LOCAL policy, enforced by
+`tools/SiteCssPolicy`.
+
+The reference fixture is `examples/echelon-marketing-site`. Migrations
+proceed site by site under `docs/marketing/MIGRATION-CONTRACT.md`, with
+Dokimos first.

@@ -69,3 +69,25 @@ test("unsafe font-family injection is rejected", () => {
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /unsafe font-family/i);
 });
+
+test("optional extended marketing roles are emitted and contrast-gated", () => {
+  const source = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-src-"));
+  const output = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-out-"));
+  const data = JSON.parse(fs.readFileSync("brands/echelon.brand.json", "utf8"));
+  data.id = "product-identity";
+  Object.assign(data.themes.light.color.accent, { primary: "#47756b", hover: "#3a403c" });
+  data.themes.light.color.status = { success: "#2e6a45", warning: "#86560f", danger: "#a13a2c", info: "#2d5f86" };
+  fs.writeFileSync(path.join(source, "product-identity.brand.json"), JSON.stringify(data, null, 2));
+
+  const ok = runCompiler(source, output);
+  assert.equal(ok.status, 0, ok.stderr);
+  const css = fs.readFileSync(path.join(output, "product-identity.css"), "utf8");
+  assert.match(css, /--ef-color-accent-hover: #3a403c/);
+  assert.match(css, /--ef-color-status-danger: #a13a2c/);
+
+  data.themes.light.color.status.warning = "#ddb266";
+  fs.writeFileSync(path.join(source, "product-identity.brand.json"), JSON.stringify(data, null, 2));
+  const unsafe = runCompiler(source, output);
+  assert.notEqual(unsafe.status, 0);
+  assert.match(unsafe.stderr, /light warning status contrast/i);
+});

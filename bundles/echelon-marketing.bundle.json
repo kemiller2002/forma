@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "name": "echelon-marketing",
+  "description": "Forma presentation artifacts for Echelon marketing sites. Every artifact is a single self-contained CSS file with no imports or relative URLs.",
+  "outputDirectory": "dist/marketing",
+  "artifacts": [
+    {
+      "file": "forma-marketing.css",
+      "description": "Brand-neutral marketing layer: core tokens, role defaults, Forma foundations, marketing foundations, components, and layouts.",
+      "sources": [
+        "dist/tokens.css",
+        "src/marketing/roles.css",
+        "dist/foundations.css",
+        "src/marketing/foundations.css",
+        "src/marketing/components.css",
+        "src/marketing/layouts.css"
+      ]
+    },
+    {
+      "file": "forma-marketing-theme-echelon.css",
+      "description": "Echelon Marketing Theme: compiled theme tokens and theme hooks. Load after forma-marketing.css.",
+      "sources": [
+        "build/marketing/echelon-marketing.tokens.css",
+        "themes/echelon/marketing.css"
+      ]
+    },
+    {
+      "file": "forma-echelon-marketing.css",
+      "description": "Single-file Echelon marketing presentation: forma-marketing.css followed by the Echelon theme. Most sites load only this file.",
+      "sources": [
+        "artifact:forma-marketing.css",
+        "artifact:forma-marketing-theme-echelon.css"
+      ]
+    },
+    {
+      "file": "forma-all.css",
+      "description": "Complete Forma surface (application components, assessment, and marketing layers) for sites that also present Forma application patterns such as data grids or status lozenges.",
+      "sources": [
+        "dist/all.css"
+      ]
+    }
+  ]
+}

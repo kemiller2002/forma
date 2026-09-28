@@ -1,12 +1,14 @@
 {
   "name": "@echelon-foundry/design-system",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "type": "module",
   "description": "Zero-runtime HTML and CSS design system for Echelon Foundry applications.",
   "sideEffects": [
     "./dist/*.css",
-    "./dist/brands/*.css"
+    "./dist/brands/*.css",
+    "./dist/marketing.css",
+    "./dist/marketing/*.css"
   ],
   "exports": {
     "./tokens.css": "./dist/tokens.css",
@@ -17,24 +19,27 @@
     "./assessment.css": "./dist/assessment.css",
     "./skins.css": "./dist/skins.css",
     "./brands/*": "./dist/brands/*",
-    "./brand-manifest.schema.json": "./schemas/brand-manifest.schema.json"
+    "./brand-manifest.schema.json": "./schemas/brand-manifest.schema.json",
+    "./marketing.css": "./dist/marketing.css",
+    "./marketing/*": "./dist/marketing/*"
   },
   "files": [
     "dist",
     "patterns",
     "schemas/brand-manifest.schema.json",
-    "docs/BRANDING.md"
+    "docs/BRANDING.md",
+    "docs/MARKETING-SITES.md"
   ],
   "scripts": {
     "clean": "node tools/clean.mjs",
     "tokens:build": "dotnet run --project tools/TokenCompiler/TokenCompiler.fsproj -- tokens/echelon.tokens.json dist/tokens.css",
     "assets:build": "node tools/build-assets.mjs",
-    "build": "npm run clean && npm run tokens:build && npm run brands:build && npm run assets:build",
+    "build": "npm run clean && npm run tokens:build && npm run brands:build && npm run marketing:theme && npm run assets:build && npm run marketing:build && npm run example:install",
     "test:tokens": "node --test tests/token-compiler.test.mjs",
     "test:browser": "playwright test",
     "test:a11y": "playwright test tests/browser/accessibility.spec.mjs",
     "test:runtime": "node --test tests/zero-runtime.test.mjs",
-    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:character-grid && npm run test:package && npm run test:browser",
+    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:marketing && npm run test:character-grid && npm run test:package && npm run test:browser",
     "site:build": "npm run build && node tools/build-site.mjs",
     "site:test": "node --test tests/site-build.test.mjs",
     "site:check": "npm run site:build && npm run site:test && npm run site:mobile",
@@ -43,7 +48,12 @@
     "test:package": "node --test tests/package-contract.test.mjs",
     "brands:build": "dotnet run --project tools/BrandCompiler/BrandCompiler.fsproj -- brands dist/brands",
     "test:brands": "node --test tests/brand-compiler.test.mjs",
-    "test:character-grid": "node --test tests/character-grid.test.mjs"
+    "test:character-grid": "node --test tests/character-grid.test.mjs",
+    "marketing:theme": "dotnet run --project tools/TokenCompiler/TokenCompiler.fsproj -- themes/echelon/marketing.tokens.json build/marketing/echelon-marketing.tokens.css --reference tokens/echelon.tokens.json",
+    "marketing:build": "dotnet run --project tools/PresentationBundler/PresentationBundler.fsproj -- bundles/echelon-marketing.bundle.json package.json",
+    "test:marketing": "node --test tests/marketing-tokens.test.mjs tests/marketing-distribution.test.mjs tests/marketing-structure.test.mjs tests/site-css-policy.test.mjs",
+    "example:install": "mkdir -p build/example && cp examples/echelon-marketing-site/forma.lock build/example/forma.lock && bash actions/install-presentation/install.sh --lock build/example/forma.lock --source dist/marketing --update --output examples/echelon-marketing-site/assets/forma",
+    "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

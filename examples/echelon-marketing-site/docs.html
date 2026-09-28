@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" data-ef-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation | Echelon Foundry reference fixture</title>
+  <meta name="description" content="Forma-owned reference fixture reproducing the Echelon Foundry marketing composition from shared Forma assets.">
+  <link rel="stylesheet" href="assets/forma/forma-echelon-marketing.css">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body class="ef-site" data-ef-layout="documentation">
+  <a class="ef-skip-link" href="#main-content">Skip to main content</a>
+  <header class="ef-site-header">
+    <div class="ef-site-header__inner">
+      <div class="ef-site-header__identity">
+        <a class="ef-site-header__brand" href="index.html"><span class="ef-site-header__mark" aria-hidden="true">EF</span><span class="ef-site-header__name">Echelon / Foundry</span></a>
+        <p class="ef-site-header__tagline">Systems architecture &amp; applied research</p>
+      </div>
+      <nav class="ef-site-nav" aria-label="Primary">
+        <ul class="ef-site-nav__list">
+          <li><a class="ef-site-nav__link" href="index.html">Home</a></li>
+          <li><a class="ef-site-nav__link" href="product.html">Products</a></li>
+          <li><a class="ef-site-nav__link" href="docs.html" aria-current="page">Documentation</a></li>
+          <li><a class="ef-site-nav__link" href="#research">Research</a></li>
+          <li><a class="ef-site-nav__link" data-ef-variant="action" href="#start">Let's talk</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="ef-site__main" id="main-content" tabindex="-1">
+    <div class="ef-doc">
+      <nav class="ef-doc__nav" aria-label="Documentation">
+        <p class="ef-eyebrow ef-doc__heading">Guides</p>
+        <ul>
+          <li><a href="docs.html" aria-current="page">Consume Forma</a></li>
+          <li><a href="#theme">Select the theme</a></li>
+          <li><a href="#upgrade">Upgrade</a></li>
+          <li><a href="#local-css">Local CSS</a></li>
+        </ul>
+      </nav>
+      <article class="ef-doc__content ef-prose" aria-labelledby="doc-title">
+        <p class="ef-eyebrow">Documentation</p>
+        <h1 id="doc-title">Consume Forma from a marketing site</h1>
+        <p>Documentation pages use the same shell. The article stays inside the reading measure, links remain underlined, and the navigation compacts on narrow screens without a script.</p>
+        <h2 id="theme">Select the theme</h2>
+        <p>Load <code>forma-echelon-marketing.css</code>, which is the brand-neutral marketing layer followed by the Echelon Marketing Theme.</p>
+        <figure class="ef-code-figure">
+          <figcaption id="lock-caption">forma.lock</figcaption>
+          <pre class="ef-code" tabindex="0" aria-labelledby="lock-caption"><code>forma 0.3.0
+repository kemiller2002/forma
+destination assets/forma
+asset forma-echelon-marketing.css sha256:&lt;digest&gt;</code></pre>
+        </figure>
+        <h2 id="upgrade">Upgrade deliberately</h2>
+        <p>Change the pinned version, run the installer with <code>--update</code>, review the release notes, and run the site checks before committing.</p>
+        <h2 id="local-css">Keep local CSS local</h2>
+        <p>Local CSS is for identity imagery and content unique to the site. Anything generally useful becomes a Forma capability.</p>
+      </article>
+      <nav class="ef-doc__aside" aria-label="On this page">
+        <p class="ef-eyebrow ef-doc__heading">On this page</p>
+        <ul><li><a href="#theme">Select the theme</a></li><li><a href="#upgrade">Upgrade</a></li><li><a href="#local-css">Local CSS</a></li></ul>
+      </nav>
+    </div>
+  </main>
+  <footer class="ef-site-footer" data-ef-tone="inverse">
+    <div class="ef-site-footer__inner">
+      <div class="ef-site-footer__main">
+        <div>
+          <p class="ef-eyebrow">Echelon / Foundry</p>
+          <p>Strategy, architecture, and delivery for consequential systems.</p>
+          <p class="site-signature">Engineering what surrounds the intelligence.</p>
+        </div>
+        <div class="ef-actions">
+          <a class="ef-button" href="#start">Schedule a working session</a>
+          <a href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+      </div>
+      <p class="ef-site-footer__note"><span>&copy; 2026 Echelon Foundry</span><span>Indianapolis, Indiana</span></p>
+    </div>
+  </footer>
+</body>
+</html>

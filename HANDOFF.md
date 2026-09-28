@@ -120,3 +120,111 @@ on a green cross-engine *Forma conformance* run on main.
 
 Next action: after merge, record the conformance run in
 `catalog/layouts.json` and promote `LAY-TERMINAL-CHARACTER-GRID`.
+
+## Echelon marketing presentation system, 2026-09-28 (GH-49)
+
+### Objective
+
+Make Forma the one shared presentation and layout system for all Echelon
+marketing sites. The Echelon Foundry site is the visual reference and becomes
+a consumer.
+
+### Completed
+
+Completed on `claude/forma-marketing-system-odvybu` under ROS work item
+GH-49 (GitHub #49).
+
+- **Analysis.** EV-DESIGN-2026-0014 analyses the reference site (catalog,
+  owner classification, 10 defects). EV-DESIGN-2026-0015 traces the work to
+  Visual Engineering (VE commit `007cbf0`).
+- **Tokens.** Core primitive scales in `tokens/echelon.tokens.json`:
+  - font-size (static and fluid), line-height, weight, letter-spacing;
+  - size (static and fluid);
+  - rem space scale, spacing 9–10;
+  - border width, focus, shadow;
+  - Echelon palette extensions.
+
+  TokenCompiler changes:
+  - new `fluidDimension` and `shadow` types;
+  - alpha colors;
+  - `--reference` sources;
+  - optional extended-role contrast gates;
+  - per-source header.
+- **Brand-neutral marketing layer** in `src/marketing/`:
+  - `roles.css` (the role contract);
+  - `foundations.css` (scoped to `.ef-site`, with contrast-safe `data-ef-tone` surfaces);
+  - `components.css`;
+  - `layouts.css`.
+
+  It is included in `all.css` and `dist/marketing.css`.
+- **Patterns.** 14 marketing patterns: `marketing-shell`, `site-header`,
+  `hero`, `section-heading`, `card-grid`, `facts`, `entry-index`, `steps`,
+  `badge`, `cta`, `code-sample`, `prose`, `site-footer`,
+  `documentation-layout`. Each has documentation metadata.
+- **Echelon Marketing Theme.** `themes/echelon/marketing.tokens.json` (aliases
+  only, validated light and dark) and `themes/echelon/marketing.css`
+  (backdrop hook).
+- **Layout catalog.** `LAY-MARKETING-PAGE`, `LAY-PRODUCT-PAGE`, and
+  `LAY-DOCUMENTATION-PAGE` families with specimens, all `supported`. The
+  marketing page was added to the theme×layout matrix.
+- **Distribution (ADR-0003):**
+  - the F# `tools/PresentationBundler` builds deterministic, self-contained
+    `dist/marketing/*` artifacts with a manifest and sha256;
+  - the release workflow uploads them as flat release assets;
+  - `actions/install-presentation` (bash) installs a pinned `forma.lock`.
+
+  Version bumped to 0.3.0.
+- **Local-CSS policy.** The F# `tools/SiteCssPolicy` with composite action
+  `actions/check-site-css`, allowing an identity-token allowlist and
+  `forma-exception` annotations.
+- **Product identity.** The BrandCompiler and schema accept optional extended
+  roles (elevated, muted, hover, status), each contrast-gated.
+- **Reference fixture.** `examples/echelon-marketing-site` (home, product,
+  docs) consumes the installed bundle through the real installer.
+- **Documentation:**
+  - `requirements/MARKETING-PRESENTATION.md`;
+  - `docs/MARKETING-SITES.md` (the ten consumer questions and a minimal site);
+  - `docs/marketing/MIGRATION-INVENTORY.md`;
+  - `docs/marketing/MIGRATION-CONTRACT.md` (Dokimos first, with its
+    requirement revisions);
+  - updates to CONSUMING-FORMA, AGENT-USAGE, COMPONENT-CATALOG, and README.
+- **Hygiene.** F# `bin/obj` outputs are no longer tracked (gitignored). Stale
+  committed binaries could be treated as up to date after a fresh checkout.
+
+### Validation in this session
+
+.NET 10.0.112 came from the Ubuntu archive. Browsers ran on Chromium 1194 via
+a local config, because the pinned Playwright expects 1243. CI runs
+Chromium, Firefox, and WebKit.
+
+- `npm run build`: passed from a clean F# state.
+- Node suites, all passing:
+  - tokens: 3
+  - brands: 4
+  - runtime: 4
+  - marketing: 35
+  - character-grid: 29
+  - package: 2
+- Site build test: 14 passed. Site mobile spec: 3 passed.
+- Browser suite: 907 passed, 33 failed. Baseline `main`, in a separate
+  worktree with the same environment, fails the identical 33 tests: dark,
+  forced-colors, and live-operations contrast cases in existing specimens. No
+  new failures. All 27 marketing browser tests pass, including axe WCAG 2.2
+  A/AA in light, dark, desktop, and phone.
+- `npx @echelon-foundry/visual-engineering verify` was not run. Executing the
+  external package was not permitted in this session (GAP-MKT-13).
+
+### Open
+
+GAP-MKT-01 is partially closed. GAP-MKT-02 to GAP-MKT-14 remain open (see the
+requirement). Layout families stay `supported` until a green cross-engine CI
+conformance run is recorded. Three new palette values are flagged for brand
+review in `themes/echelon/manifest.md`.
+
+### Next action
+
+1. After merge and the v0.3.0 release, migrate Dokimos under
+   `docs/marketing/MIGRATION-CONTRACT.md`.
+2. Migrate the Echelon Foundry main site.
+3. Open a Forma work item for making the Forma documentation site its own
+   consumer.

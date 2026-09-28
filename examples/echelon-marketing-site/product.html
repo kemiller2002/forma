@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" data-ef-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product | Echelon Foundry reference fixture</title>
+  <meta name="description" content="Forma-owned reference fixture reproducing the Echelon Foundry marketing composition from shared Forma assets.">
+  <link rel="stylesheet" href="assets/forma/forma-echelon-marketing.css">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body class="ef-site" data-ef-layout="product">
+  <a class="ef-skip-link" href="#main-content">Skip to main content</a>
+  <header class="ef-site-header">
+    <div class="ef-site-header__inner">
+      <div class="ef-site-header__identity">
+        <a class="ef-site-header__brand" href="index.html"><span class="ef-site-header__mark" aria-hidden="true">EF</span><span class="ef-site-header__name">Echelon / Foundry</span></a>
+        <p class="ef-site-header__tagline">Systems architecture &amp; applied research</p>
+      </div>
+      <nav class="ef-site-nav" aria-label="Primary">
+        <ul class="ef-site-nav__list">
+          <li><a class="ef-site-nav__link" href="index.html">Home</a></li>
+          <li><a class="ef-site-nav__link" href="product.html" aria-current="page">Products</a></li>
+          <li><a class="ef-site-nav__link" href="docs.html">Documentation</a></li>
+          <li><a class="ef-site-nav__link" href="#research">Research</a></li>
+          <li><a class="ef-site-nav__link" data-ef-variant="action" href="#start">Let's talk</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="ef-site__main" id="main-content" tabindex="-1">
+    <section class="ef-hero" aria-labelledby="hero-title">
+      <div class="ef-hero__content">
+        <p class="ef-eyebrow">Product / Quality evidence</p>
+        <h1 class="ef-hero__title" id="hero-title">Measure code health across every change</h1>
+        <p class="ef-lead">A product page uses the same shell and components as the home page. Product identity comes from content, badges, and an allowed accent retarget, not from a separate stylesheet.</p>
+        <ul class="ef-badge-list" aria-label="Release facts">
+          <li><span class="ef-badge" data-ef-status="success">Stable</span></li>
+          <li><span class="ef-badge">F#</span></li>
+          <li><span class="ef-badge">Version 1.4.0</span></li>
+        </ul>
+        <div class="ef-actions">
+          <a class="ef-button" data-ef-variant="primary" href="#install">Install</a>
+          <a class="ef-button" href="docs.html">Read the documentation</a>
+        </div>
+      </div>
+      <div class="ef-hero__aside">
+        <dl class="ef-facts" aria-label="Product facts">
+          <div class="ef-facts__item"><dt>Longitudinal</dt><dd>Evidence across commits, not a single snapshot</dd></div>
+          <div class="ef-facts__item"><dt>Deterministic</dt><dd>Same inputs produce the same report</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="ef-section" aria-labelledby="features-title">
+      <header class="ef-section-heading">
+        <div class="ef-section-heading__text">
+          <p class="ef-eyebrow">Capabilities</p>
+          <h2 id="features-title">What the product does</h2>
+        </div>
+      </header>
+      <ul class="ef-card-grid" data-ef-columns="3" aria-label="Capabilities">
+        <li><article class="ef-card"><h3 class="ef-card__title">Record quality over time</h3><p>Each change adds evidence instead of replacing it.</p></article></li>
+        <li><article class="ef-card"><h3 class="ef-card__title">Explain regressions</h3><p>Every movement links to the change that caused it.</p></article></li>
+        <li><article class="ef-card" data-ef-tone="elevated"><h3 class="ef-card__title">Keep unknowns visible</h3><p>Missing measurements stay unknown instead of reading as good.</p></article></li>
+      </ul>
+    </section>
+
+    <section class="ef-section" id="install" aria-labelledby="install-title">
+      <div class="ef-split">
+        <div>
+          <p class="ef-eyebrow">Install</p>
+          <h2 id="install-title">Three steps to a first report</h2>
+          <ol class="ef-steps" role="list" aria-label="Installation">
+            <li>Add the package to the repository.</li>
+            <li>Run the baseline collection.</li>
+            <li>Publish the report in CI.</li>
+          </ol>
+        </div>
+        <figure class="ef-code-figure">
+          <figcaption id="install-code">Collect a baseline</figcaption>
+          <pre class="ef-code" tabindex="0" aria-labelledby="install-code"><code>dotnet tool install --global example-quality
+example-quality collect --baseline --output reports/</code></pre>
+        </figure>
+      </div>
+    </section>
+
+    <section class="ef-section" aria-labelledby="cta-title">
+      <div class="ef-cta" data-ef-tone="inverse">
+        <div class="ef-cta__text">
+          <h2 id="cta-title">Start with the evidence you already have</h2>
+          <p>One primary action; the rest stay visibly secondary.</p>
+        </div>
+        <div class="ef-actions">
+          <a class="ef-button" data-ef-variant="primary" href="#install">Install</a>
+          <a class="ef-button" href="index.html">Back to Echelon Foundry</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="ef-site-footer" data-ef-tone="inverse">
+    <div class="ef-site-footer__inner">
+      <div class="ef-site-footer__main">
+        <div>
+          <p class="ef-eyebrow">Echelon / Foundry</p>
+          <p>Strategy, architecture, and delivery for consequential systems.</p>
+          <p class="site-signature">Engineering what surrounds the intelligence.</p>
+        </div>
+        <div class="ef-actions">
+          <a class="ef-button" href="#start">Schedule a working session</a>
+          <a href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+      </div>
+      <p class="ef-site-footer__note"><span>&copy; 2026 Echelon Foundry</span><span>Indianapolis, Indiana</span></p>
+    </div>
+  </footer>
+</body>
+</html>

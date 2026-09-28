@@ -15,7 +15,7 @@ let fail message =
     Environment.ExitCode <- 1
     raise (InvalidOperationException message)
 
-let invariant (value: float) = value.ToString("0.###", CultureInfo.InvariantCulture)
+let invariant (value: float) = value.ToString("0.####", CultureInfo.InvariantCulture)
 
 let rec collectTokens (inheritedType: string option) (path: string list) (node: JsonNode) : Token list =
     match node with
@@ -66,23 +66,61 @@ let quoteFont (value: string) =
     elif value.Contains(" ") then $"\"{value}\""
     else value
 
-let renderLiteral tokenType (value: JsonNode) =
-    match tokenType with
-    | "color" ->
-        let obj = value.AsObject()
+let renderDimension (node: JsonNode) =
+    let obj = node.AsObject()
+    (obj["value"].GetValue<float>() |> invariant) + obj["unit"].GetValue<string>()
+
+let renderColor (node: JsonNode) =
+    let obj = node.AsObject()
+    let toByte c = Math.Clamp(int (Math.Round(c * 255.0)), 0, 255)
+    let alpha =
+        match obj["alpha"] with
+        | null -> 1.0
+        | a -> a.GetValue<float>()
+    let channels () =
+        let components = obj["components"].AsArray() |> Seq.map (fun n -> n.GetValue<float>()) |> Seq.toArray
+        if components.Length <> 3 then fail "color token requires three sRGB components"
+        components |> Array.map toByte
+    if alpha < 1.0 then
+        let c = channels ()
+        $"rgb({c[0]} {c[1]} {c[2]} / {invariant alpha})"
+    else
         match obj["hex"] with
         | null ->
-            let components = obj["components"].AsArray() |> Seq.map (fun n -> n.GetValue<float>()) |> Seq.toArray
-            if components.Length <> 3 then fail "color token requires three sRGB components"
-            let toByte c = Math.Clamp(int (Math.Round(c * 255.0)), 0, 255)
-            $"#{toByte components[0]:x2}{toByte components[1]:x2}{toByte components[2]:x2}"
+            let c = channels ()
+            $"#{c[0]:x2}{c[1]:x2}{c[2]:x2}"
         | hex -> hex.GetValue<string>().ToLowerInvariant()
+
+let renderLiteral tokenType (value: JsonNode) =
+    match tokenType with
+    | "color" -> renderColor value
     | "dimension"
-    | "duration" ->
+    | "duration" -> renderDimension value
+    | "fluidDimension" ->
+        // Fluid sizes keep a rem term in the preferred value so text still
+        // scales with browser zoom and user font-size preferences (WCAG 1.4.4).
         let obj = value.AsObject()
-        let number = obj["value"].GetValue<float>() |> invariant
-        let unitName = obj["unit"].GetValue<string>()
-        number + unitName
+        let preferred =
+            obj["preferred"].AsArray()
+            |> Seq.map renderDimension
+            |> String.concat " + "
+        let bound (key: string) = renderDimension obj[key]
+        let lower, upper = bound "min", bound "max"
+        $"clamp({lower}, {preferred}, {upper})"
+    | "shadow" ->
+        let layer (node: JsonNode) =
+            let obj = node.AsObject()
+            let inset =
+                match obj["inset"] with
+                | null -> ""
+                | flag when flag.GetValue<bool>() -> "inset "
+                | _ -> ""
+            [ "offsetX"; "offsetY"; "blur"; "spread" ]
+            |> List.map (fun key -> renderDimension obj[key])
+            |> fun parts -> inset + String.concat " " (parts @ [ renderColor obj["color"] ])
+        match value with
+        | :? JsonArray as layers -> layers |> Seq.map layer |> String.concat ", "
+        | single -> layer single
     | "cubicBezier" ->
         let values = value.AsArray() |> Seq.map (fun n -> n.GetValue<float>() |> invariant)
         let joined = String.concat ", " values
@@ -119,22 +157,43 @@ let contrast a b =
 [<EntryPoint>]
 let main argv =
     try
-        if argv.Length <> 2 then
-            fail "usage: TokenCompiler <tokens.json> <output.css>"
+        // usage: TokenCompiler <tokens.json> <output.css> [--reference <tokens.json>]...
+        // Reference sources resolve aliases (for example a theme aliasing core
+        // primitives) but are never emitted, so a theme cannot silently
+        // redefine the core scale it builds on.
+        let positional, references =
+            let rec parse args positional references =
+                match args with
+                | [] -> List.rev positional, List.rev references
+                | "--reference" :: path :: rest -> parse rest positional (path :: references)
+                | "--reference" :: [] -> fail "--reference requires a path"
+                | value :: rest -> parse rest (value :: positional) references
+            parse (List.ofArray argv) [] []
 
-        let sourcePath = Path.GetFullPath argv[0]
-        let outputPath = Path.GetFullPath argv[1]
-        let root = JsonNode.Parse(File.ReadAllText sourcePath)
-        if isNull root then fail "token source is empty"
+        if positional.Length <> 2 then
+            fail "usage: TokenCompiler <tokens.json> <output.css> [--reference <tokens.json>]..."
 
-        let tokens = collectTokens None [] root
+        let sourcePath = Path.GetFullPath positional[0]
+        let outputPath = Path.GetFullPath positional[1]
+        let load path =
+            match JsonNode.Parse(File.ReadAllText path) with
+            | null -> fail $"token source '{Path.GetFileName(path: string)}' is empty"
+            | root -> collectTokens None [] root
+
+        let tokens = load sourcePath
         if tokens.IsEmpty then fail "token source contains no tokens"
+        let referenceTokens = references |> List.collect (Path.GetFullPath >> load)
 
         let byPath = Dictionary<string, Token>(StringComparer.Ordinal)
         for token in tokens do
             let key = pathText token.Path
             if byPath.ContainsKey key then fail $"duplicate token path '{key}'"
             byPath[key] <- token
+
+        // The emitted source shadows its references: a theme may restate a
+        // semantic role that the reference also defines.
+        for token in referenceTokens do
+            byPath.TryAdd(pathText token.Path, token) |> ignore
 
         let rec resolveType stack (token: Token) =
             match token.DeclaredType with
@@ -203,7 +262,20 @@ let main argv =
                   "primary accent", key "accent.primary", key "surface.primary", 4.5
                   "secondary accent", key "accent.secondary", key "surface.primary", 4.5
                   "focus ring", key "focus.ring", key "surface.primary", 3.0 ]
-            for name, foreground, background, minimum in checks do
+            // Extended semantic roles are optional so existing application
+            // themes stay valid; any theme that declares them is gated too.
+            let optionalChecks =
+                [ "muted text", key "text.muted", key "surface.primary", 4.5
+                  "accent hover", key "accent.hover", key "surface.primary", 4.5
+                  "elevated-surface text", key "text.primary", key "surface.elevated", 4.5
+                  "success status", key "status.success", key "surface.primary", 4.5
+                  "warning status", key "status.warning", key "surface.primary", 4.5
+                  "danger status", key "status.danger", key "surface.primary", 4.5
+                  "info status", key "status.info", key "surface.primary", 4.5
+                  "inverse text", key "text.inverse", key "surface.inverse", 4.5 ]
+                |> List.filter (fun (_, foreground, background, _) ->
+                    byPath.ContainsKey foreground && byPath.ContainsKey background)
+            for name, foreground, background, minimum in checks @ optionalChecks do
                 let ratio = contrast (resolved foreground) (resolved background)
                 if ratio + 0.0001 < minimum then
                     fail $"{theme} {name} contrast {ratio:F2}:1 is below required {minimum:F1}:1"
@@ -223,7 +295,7 @@ let main argv =
             builder.AppendLine("}") |> ignore
 
         let css = StringBuilder()
-        css.AppendLine("/* Generated from tokens/echelon.tokens.json. Do not edit directly. */") |> ignore
+        css.AppendLine($"/* Generated from {Path.GetFileName sourcePath}. Do not edit directly. */") |> ignore
         css.AppendLine("@layer echelon.tokens {") |> ignore
         writeBlock css "  :root" neutral
         writeBlock css "  :root, [data-ef-theme=\"light\"]" (semantic "light")

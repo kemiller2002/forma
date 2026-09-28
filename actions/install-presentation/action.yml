@@ -1,0 +1,21 @@
+name: Install Forma presentation assets
+description: >-
+  Installs the Forma release assets pinned in a site's forma.lock and
+  verifies each file against the lock's sha256 and the release checksums.
+  Needs no Node, npm, or .NET.
+inputs:
+  lock:
+    description: Path to the site's lock file.
+    default: forma.lock
+  working-directory:
+    description: Directory the lock's destination is relative to.
+    default: .
+runs:
+  using: composite
+  steps:
+    - name: Install pinned Forma assets
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        FORMA_LOCK: ${{ inputs.lock }}
+      run: '"$GITHUB_ACTION_PATH/install.sh" --lock "$FORMA_LOCK"'

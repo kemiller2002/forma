@@ -124,11 +124,32 @@ let semanticPaths =
       "color.control.thumb", [ "color"; "control"; "thumb" ]
       "color.control.active", [ "color"; "control"; "active" ] ]
 
+// Extended marketing roles (requirements/MARKETING-PRESENTATION.md). Optional,
+// so existing manifests stay valid; each one present is contrast-gated.
+let optionalSemanticPaths =
+    [ "color.surface.elevated", [ "color"; "surface"; "elevated" ]
+      "color.text.muted", [ "color"; "text"; "muted" ]
+      "color.accent.hover", [ "color"; "accent"; "hover" ]
+      "color.status.success", [ "color"; "status"; "success" ]
+      "color.status.warning", [ "color"; "status"; "warning" ]
+      "color.status.danger", [ "color"; "status"; "danger" ]
+      "color.status.info", [ "color"; "status"; "info" ] ]
+
 let cssName (path: string) = "--ef-" + path.Replace(".", "-")
+
+let hasPath (root: JsonObject) (segments: string list) =
+    segments
+    |> List.fold
+        (fun (node: JsonNode option) segment ->
+            match node with
+            | Some(:? JsonObject as obj) when not (isNull obj[segment]) -> Some obj[segment]
+            | _ -> None)
+        (Some(root :> JsonNode))
+    |> Option.isSome
 
 let readTheme (themes: JsonObject) (themeName: string) : (string * string) list =
     let theme = requireObject themes themeName
-    semanticPaths
+    semanticPaths @ (optionalSemanticPaths |> List.filter (snd >> hasPath theme))
     |> List.map (fun (name, path) ->
         let value = getStringPath theme path
         parseHex value |> ignore
@@ -149,6 +170,17 @@ let validateTheme (themeName: string) (values: (string * string) list) =
     ensureContrast $"{themeName} secondary accent" (value "--ef-color-accent-secondary") surface 4.5
     ensureContrast $"{themeName} inverse text" (value "--ef-color-text-inverse") (value "--ef-color-surface-inverse") 4.5
     ensureContrast $"{themeName} focus ring" (value "--ef-color-focus-ring") surface 3.0
+    [ "muted text", "--ef-color-text-muted", "--ef-color-surface-primary"
+      "accent hover", "--ef-color-accent-hover", "--ef-color-surface-primary"
+      "elevated-surface text", "--ef-color-text-primary", "--ef-color-surface-elevated"
+      "success status", "--ef-color-status-success", "--ef-color-surface-primary"
+      "warning status", "--ef-color-status-warning", "--ef-color-surface-primary"
+      "danger status", "--ef-color-status-danger", "--ef-color-surface-primary"
+      "info status", "--ef-color-status-info", "--ef-color-surface-primary" ]
+    |> List.filter (fun (_, foreground, background) ->
+        [ foreground; background ] |> List.forall (fun n -> values |> List.exists (fst >> (=) n)))
+    |> List.iter (fun (name, foreground, background) ->
+        ensureContrast $"{themeName} {name}" (value foreground) (value background) 4.5)
 
 let optionalPresentation (root: JsonObject) =
     match tryObject root "presentation" with

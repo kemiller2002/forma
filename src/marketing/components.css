@@ -1,0 +1,644 @@
+/*
+  Forma marketing components.
+
+  Small, composable presentation primitives for public/marketing pages. Each
+  component reads role tokens and the surrounding surface tone (--ef-tone-*);
+  none embeds a brand value, a product name, or page-specific placement.
+  Components own their intrinsic layout only. Where they sit on a page is
+  owned by layouts.css or the consuming page composition.
+
+  Responsive behavior is content-driven: wrapping flex rows and auto-fit grids
+  with minimum sizes. The two container queries below exist because a row's
+  column structure cannot be expressed as a minimum item size.
+*/
+@layer echelon.marketing.components {
+  /* Skip link --------------------------------------------------------- */
+  .ef-skip-link {
+    position: fixed;
+    inset-block-start: var(--ef-space-2);
+    inset-inline-start: var(--ef-space-2);
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--ef-layout-target-min);
+    padding-inline: var(--ef-space-4);
+    background: var(--ef-color-surface-primary);
+    color: var(--ef-color-text-primary);
+    font-weight: var(--ef-type-weight-strong);
+    transform: translateY(-200%);
+  }
+
+  .ef-skip-link:focus,
+  .ef-skip-link:focus-visible {
+    transform: none;
+  }
+
+  /* Site header and navigation ---------------------------------------- */
+  .ef-site-header {
+    container: ef-site-header / inline-size;
+    position: relative;
+    z-index: 20;
+    border-block-end: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
+    background: color-mix(in srgb, var(--ef-color-surface-primary) 94%, transparent);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+
+  .ef-site-header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ef-space-2) var(--ef-space-7);
+    inline-size: min(100%, var(--ef-layout-width-max));
+    margin-inline: auto;
+    padding: var(--ef-space-3) var(--ef-layout-gutter);
+  }
+
+  .ef-site-header__identity {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ef-space-1) var(--ef-space-3);
+    min-inline-size: 0;
+  }
+
+  .ef-site-header__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ef-space-3);
+    min-block-size: var(--ef-layout-target-min);
+    color: var(--ef-tone-text);
+    font-weight: var(--ef-type-weight-strong);
+    text-decoration: none;
+  }
+
+  .ef-site-header__brand:hover { color: var(--ef-tone-text); text-decoration: underline; }
+
+  /* The brand name stays visible at every width; it wraps rather than hides,
+     because the mark alone is decorative (aria-hidden). */
+  .ef-site-header__name { min-inline-size: 0; overflow-wrap: anywhere; }
+
+  .ef-site-header__mark {
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: 2.35rem;
+    aspect-ratio: 1;
+    border-radius: var(--ef-shape-radius);
+    background: var(--ef-color-surface-inverse);
+    color: var(--ef-color-text-inverse);
+    font-family: var(--ef-type-family-mono);
+    font-size: var(--ef-type-size-label);
+  }
+
+  .ef-site-header__tagline {
+    margin: 0;
+    max-inline-size: 24ch;
+    color: var(--ef-tone-muted);
+    font-family: var(--ef-type-family-mono);
+    font-size: var(--ef-type-size-label);
+    line-height: var(--ef-type-leading-snug);
+  }
+
+  /* The tagline repeats identity context; below this width it would push the
+     navigation onto a third line, so it yields. The brand name never hides. */
+  @container ef-site-header (inline-size < 56rem) {
+    .ef-site-header__tagline { display: none; }
+  }
+
+  .ef-site-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--ef-space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ef-site-nav__list > li { margin: 0; }
+
+  .ef-site-nav__link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--ef-layout-target-min);
+    padding-inline: var(--ef-space-3);
+    border-block-end: calc(var(--ef-shape-border-width) * 2) solid transparent;
+    color: var(--ef-tone-text);
+    font-size: var(--ef-type-size-small);
+    font-weight: var(--ef-type-weight-nav);
+    text-decoration: none;
+  }
+
+  .ef-site-nav__link:hover {
+    color: var(--ef-tone-text);
+    border-block-end-color: var(--ef-color-accent-primary);
+  }
+
+  /* Current location uses a persistent rule plus aria-current, not hue alone. */
+  .ef-site-nav__link[aria-current="page"],
+  .ef-site-nav__link[aria-current="true"] {
+    border-block-end-color: var(--ef-tone-rule-strong);
+  }
+
+  .ef-site-nav__link[data-ef-variant="action"] {
+    margin-inline-start: var(--ef-space-2);
+    border-radius: var(--ef-shape-radius);
+    background: var(--ef-tone-action-background);
+    color: var(--ef-tone-action-text);
+  }
+
+  .ef-site-nav__link[data-ef-variant="action"]:hover {
+    background: var(--ef-tone-action-hover);
+    color: var(--ef-tone-action-text);
+    border-block-end-color: var(--ef-tone-action-text);
+  }
+
+  /* Text roles --------------------------------------------------------- */
+  .ef-eyebrow {
+    margin-block: 0 var(--ef-space-3);
+    color: var(--ef-tone-label);
+    font-family: var(--ef-type-family-mono);
+    font-size: var(--ef-type-size-label);
+    font-weight: var(--ef-type-weight-label);
+    letter-spacing: var(--ef-type-tracking-label);
+    line-height: var(--ef-type-leading-snug);
+    text-transform: uppercase;
+  }
+
+  .ef-lead {
+    max-inline-size: var(--ef-layout-measure-narrow);
+    color: var(--ef-tone-text);
+    font-size: var(--ef-type-size-lead);
+    line-height: var(--ef-type-leading-lead);
+  }
+
+  .ef-statement {
+    margin: 0;
+    padding: var(--ef-space-5) 0 0;
+    border-inline-start: 0;
+    border-block-start: var(--ef-shape-border-width-accent) solid var(--ef-color-accent-primary);
+    color: var(--ef-tone-text);
+    font-family: var(--ef-type-family-display);
+    font-size: var(--ef-type-size-statement);
+    line-height: var(--ef-type-leading-snug);
+  }
+
+  .ef-statement :where(p) { color: inherit; max-inline-size: none; }
+
+  /* Actions and buttons ------------------------------------------------ */
+  .ef-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ef-space-3);
+  }
+
+  .ef-site .ef-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ef-space-3);
+    min-block-size: calc(var(--ef-layout-target-min) + var(--ef-space-2));
+    padding: var(--ef-space-3) var(--ef-space-5);
+    border: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
+    border-radius: var(--ef-shape-radius);
+    background: transparent;
+    color: var(--ef-tone-text);
+    font: inherit;
+    font-size: var(--ef-type-size-small);
+    font-weight: var(--ef-type-weight-strong);
+    line-height: var(--ef-type-leading-snug);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color var(--ef-effect-transition-duration) var(--ef-effect-transition-easing),
+      color var(--ef-effect-transition-duration) var(--ef-effect-transition-easing),
+      transform var(--ef-effect-transition-duration) var(--ef-effect-transition-easing);
+  }
+
+  .ef-site .ef-button:hover { background: var(--ef-tone-hover); color: var(--ef-tone-text); }
+
+  .ef-site .ef-button[data-ef-variant="primary"] {
+    border-color: var(--ef-tone-action-background);
+    background: var(--ef-tone-action-background);
+    color: var(--ef-tone-action-text);
+  }
+
+  .ef-site .ef-button[data-ef-variant="primary"]:hover {
+    background: var(--ef-tone-action-hover);
+    color: var(--ef-tone-action-text);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ef-site .ef-button:not(:disabled, [aria-disabled="true"]):hover { transform: translateY(-2px); }
+    .ef-site .ef-button:active { transform: none; }
+  }
+
+  .ef-site .ef-button:is(:disabled, [aria-disabled="true"]) {
+    border-style: dashed;
+    background: var(--ef-color-surface-secondary);
+    color: var(--ef-color-text-primary);
+    cursor: not-allowed;
+  }
+
+  /* Badges ------------------------------------------------------------- */
+  .ef-badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ef-space-2);
+    margin: var(--ef-space-4) 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ef-badge-list > li { margin: 0; }
+
+  .ef-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ef-space-1);
+    padding: var(--ef-space-1) var(--ef-space-2);
+    border: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    border-radius: var(--ef-shape-radius);
+    color: var(--ef-tone-text);
+    font-family: var(--ef-type-family-mono);
+    font-size: var(--ef-type-size-label);
+    line-height: var(--ef-type-leading-snug);
+    text-decoration: none;
+  }
+
+  a.ef-badge { min-block-size: 1.5rem; }
+  a.ef-badge:hover { border-color: var(--ef-tone-rule-strong); color: var(--ef-tone-text); }
+
+  /* Status is carried by the badge text; the colored edge is redundant. */
+  .ef-badge[data-ef-status] { border-inline-start-width: var(--ef-shape-border-width-accent); }
+  .ef-badge[data-ef-status="success"] { border-inline-start-color: var(--ef-color-status-success); }
+  .ef-badge[data-ef-status="warning"] { border-inline-start-color: var(--ef-color-status-warning); }
+  .ef-badge[data-ef-status="danger"] { border-inline-start-color: var(--ef-color-status-danger); }
+  .ef-badge[data-ef-status="info"] { border-inline-start-color: var(--ef-color-status-info); }
+
+  /* Cards and card grids ----------------------------------------------- */
+  .ef-card-grid {
+    --ef-card-columns: 12;
+    --ef-card-rule: var(--ef-tone-rule);
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, max(var(--ef-layout-card-min), 100% / var(--ef-card-columns))), 1fr)
+    );
+    margin: 0;
+    padding: 0;
+    border-block-start: var(--ef-shape-border-width) solid var(--ef-card-rule);
+    border-inline-start: var(--ef-shape-border-width) solid var(--ef-card-rule);
+    list-style: none;
+  }
+
+  /* data-ef-columns caps columns; the minimum card size decides when to drop. */
+  .ef-card-grid[data-ef-columns="2"] { --ef-card-columns: 2; }
+  .ef-card-grid[data-ef-columns="3"] { --ef-card-columns: 3; }
+  .ef-card-grid[data-ef-columns="4"] { --ef-card-columns: 4; }
+  .ef-card-grid[data-ef-columns="5"] { --ef-card-columns: 5; --ef-layout-card-min: 12rem; }
+
+  .ef-card-grid + .ef-card-grid { border-block-start: 0; }
+  .ef-card-grid > li { margin: 0; }
+
+  .ef-card {
+    position: relative;
+    min-inline-size: 0;
+    padding: var(--ef-layout-block-space);
+    border: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    border-radius: var(--ef-shape-radius);
+  }
+
+  /* Inside a grid, cards share hairline rules instead of doubling borders. */
+  .ef-card-grid > .ef-card,
+  .ef-card-grid > li > .ef-card {
+    block-size: 100%;
+    border-width: 0 var(--ef-shape-border-width) var(--ef-shape-border-width) 0;
+    border-color: var(--ef-card-rule);
+    border-radius: 0;
+  }
+
+  .ef-card[data-ef-tone="elevated"] { box-shadow: var(--ef-effect-shadow-raised); }
+
+  /* Card titles size by role, not heading level, so the document outline can
+     use whatever level the page needs (VE LAW-COMP-004 hierarchy alignment). */
+  .ef-card__title {
+    max-inline-size: 24ch;
+    margin-block-end: var(--ef-space-3);
+    font-family: var(--ef-type-family-body);
+    font-size: var(--ef-type-size-h3);
+    font-weight: var(--ef-type-weight-strong);
+    letter-spacing: var(--ef-type-tracking-body);
+    line-height: var(--ef-type-leading-snug);
+  }
+
+  /* A card link stretches over the card so the whole card is a target while
+     the accessible name stays the title, not the card's full text. */
+  .ef-card__link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ef-card__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .ef-card:has(.ef-card__link) { transition: background-color var(--ef-effect-transition-duration) var(--ef-effect-transition-easing); }
+  .ef-card:has(.ef-card__link:hover) { background: var(--ef-tone-hover); }
+  .ef-card__link:hover { color: inherit; text-decoration: underline; }
+  .ef-card__link:focus-visible { box-shadow: none; outline: none; }
+
+  .ef-card:has(.ef-card__link:focus-visible) {
+    outline: var(--ef-focus-ring-width) solid var(--ef-color-focus-gap);
+    outline-offset: calc(var(--ef-focus-ring-offset) * -1 - var(--ef-focus-ring-width));
+    box-shadow: inset 0 0 0 var(--ef-focus-halo-width) var(--ef-color-focus-ring);
+  }
+
+  .ef-card__footer {
+    margin-block-start: var(--ef-space-6);
+    padding-block-start: var(--ef-space-4);
+    border-block-start: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
+    color: var(--ef-tone-text);
+    font-size: var(--ef-type-size-small);
+    font-weight: var(--ef-type-weight-strong);
+  }
+
+  /* Facts: short claims with supporting detail, as a description list. */
+  .ef-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ef-layout-fact-min)), 1fr));
+    margin: var(--ef-layout-block-space) 0 0;
+    border-block-start: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    border-inline-start: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+  }
+
+  .ef-facts__item {
+    min-inline-size: 0;
+    padding: var(--ef-space-4);
+    border-inline-end: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    border-block-end: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+  }
+
+  .ef-facts__item > dt { color: var(--ef-tone-text); font-weight: var(--ef-type-weight-strong); }
+
+  .ef-facts__item > dd {
+    margin: var(--ef-space-1) 0 0;
+    color: var(--ef-tone-muted);
+    font-size: var(--ef-type-size-small);
+  }
+
+  /* Section heading ---------------------------------------------------- */
+  .ef-section-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--ef-space-6) var(--ef-layout-grid-gap);
+    margin-block-end: calc(var(--ef-layout-block-space) * 1.25);
+    padding-block-end: var(--ef-space-6);
+    border-block-end: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
+  }
+
+  .ef-section-heading__text { flex: 999 1 32rem; min-inline-size: min(100%, 20rem); }
+  .ef-section-heading__text > :where(h2) { margin-block-end: var(--ef-space-4); }
+  .ef-section-heading__aside { flex: 1 1 14rem; max-inline-size: 28rem; }
+
+  .ef-section-heading__note {
+    color: var(--ef-tone-muted);
+    font-family: var(--ef-type-family-mono);
+    font-size: var(--ef-type-size-label);
+  }
+
+  /* Index: an ordered set of linked entries (research areas, products). */
+  .ef-index {
+    container: ef-index / inline-size;
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 0.65fr) minmax(0, 1fr) minmax(0, auto);
+    column-gap: var(--ef-layout-block-space);
+    margin: 0;
+    padding: 0;
+    border-block-start: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
+    list-style: none;
+  }
+
+  /* Rows share the list's columns (subgrid) so entries align down the page. */
+  .ef-index__item {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    row-gap: var(--ef-space-2);
+    align-items: start;
+    margin: 0;
+    padding-block: var(--ef-space-7);
+    border-block-end: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+  }
+
+  .ef-index__marker {
+    margin: 0;
+    color: var(--ef-tone-text);
+    font-family: var(--ef-type-family-mono);
+    font-size: var(--ef-type-size-label);
+  }
+
+  .ef-index__title {
+    margin-block-start: var(--ef-space-1);
+    font-family: var(--ef-type-family-display);
+    font-size: var(--ef-type-size-statement);
+    font-weight: var(--ef-type-weight-heading);
+  }
+
+  .ef-index__heading > .ef-eyebrow { margin: 0; }
+  .ef-index__summary { margin: 0; }
+
+  .ef-index__link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 1.5rem;
+    font-size: var(--ef-type-size-small);
+    font-weight: var(--ef-type-weight-strong);
+    white-space: nowrap;
+  }
+
+  /* Four disparate columns cannot degrade by a minimum item size, so the
+     row regroups by container width: marker + content, then single column. */
+  @container ef-index (inline-size < 56rem) {
+    .ef-index__item { grid-template-columns: 3.5rem minmax(0, 1fr); column-gap: var(--ef-space-4); }
+    .ef-index__item > :not(.ef-index__marker) { grid-column: 2; }
+  }
+
+  @container ef-index (inline-size < 28rem) {
+    .ef-index__item { grid-template-columns: minmax(0, 1fr); }
+    .ef-index__item > :not(.ef-index__marker) { grid-column: 1; }
+  }
+
+  /* Steps: a numbered method or process. */
+  .ef-steps {
+    counter-reset: ef-step;
+    margin: 0;
+    padding: 0;
+    border-block-start: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    list-style: none;
+  }
+
+  .ef-steps > li {
+    counter-increment: ef-step;
+    display: flex;
+    gap: var(--ef-space-4);
+    margin: 0;
+    padding-block: var(--ef-space-4);
+    border-block-end: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    color: var(--ef-tone-text);
+  }
+
+  .ef-steps > li::before {
+    content: counter(ef-step, decimal-leading-zero);
+    flex: none;
+    min-inline-size: 2ch;
+    font-family: var(--ef-type-family-mono);
+    font-weight: var(--ef-type-weight-strong);
+  }
+
+  /* Call to action ----------------------------------------------------- */
+  .ef-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--ef-space-6) var(--ef-layout-grid-gap);
+    padding-block-start: calc(var(--ef-layout-block-space) * 1.25);
+    border-block-start: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
+  }
+
+  .ef-cta__text { flex: 999 1 32rem; min-inline-size: min(100%, 20rem); }
+  .ef-cta__text > :where(h2) { margin-block-end: var(--ef-space-4); }
+  .ef-cta > .ef-actions { flex: 1 1 auto; justify-content: flex-start; }
+
+  .ef-cta[data-ef-tone]:not([data-ef-tone="page"]) {
+    padding: calc(var(--ef-layout-block-space) * 2);
+    border-block-start: 0;
+  }
+
+  /* Prose: long-form content inside the reading measure. */
+  .ef-prose {
+    --ef-type-size-h2: var(--ef-type-size-statement);
+    max-inline-size: var(--ef-layout-measure);
+  }
+
+  .ef-prose > :where(h1) { margin-block-end: var(--ef-space-6); max-inline-size: none; }
+  .ef-prose > :where(h2) { margin-block: var(--ef-space-8) var(--ef-space-5); max-inline-size: none; }
+  .ef-prose > :where(h3) { margin-block: var(--ef-space-7) var(--ef-space-3); }
+  .ef-prose > :where(h2, h3):first-child { margin-block-start: 0; }
+  .ef-prose :where(p, li) { color: var(--ef-tone-text); }
+  .ef-prose > :where(figure, pre, .ef-code) { margin-block: var(--ef-layout-block-space); }
+
+  /* Code: technical samples in a bounded, keyboard-scrollable region. */
+  .ef-code {
+    margin: 0;
+    max-inline-size: 100%;
+    overflow: auto;
+    padding: var(--ef-layout-block-space);
+    border-radius: var(--ef-shape-radius);
+    background: var(--ef-color-surface-inverse);
+    color: var(--ef-color-text-inverse);
+    font-family: var(--ef-type-family-mono);
+    font-size: var(--ef-type-size-small);
+    line-height: var(--ef-type-leading-lead);
+    tab-size: 2;
+  }
+
+  .ef-code :where(code) { padding: 0; background: none; color: inherit; font-size: inherit; overflow-wrap: normal; }
+
+  .ef-code-figure { margin: 0; }
+
+  .ef-code-figure > figcaption {
+    margin-block-end: var(--ef-space-2);
+    color: var(--ef-tone-muted);
+    font-family: var(--ef-type-family-mono);
+    font-size: var(--ef-type-size-label);
+  }
+
+  /* Site footer -------------------------------------------------------- */
+  .ef-site-footer {
+    margin-block-start: auto;
+  }
+
+  .ef-site-footer__inner {
+    inline-size: min(100%, var(--ef-layout-width-max));
+    margin-inline: auto;
+    padding: calc(var(--ef-layout-block-space) * 2) var(--ef-layout-gutter);
+  }
+
+  .ef-site-footer__main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--ef-layout-grid-gap);
+  }
+
+  .ef-site-footer__main > * { flex: 1 1 18rem; }
+  .ef-site-footer__main > .ef-actions { flex-grow: 0; }
+
+  .ef-site-footer__nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ef-space-1) var(--ef-space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ef-site-footer__nav li { margin: 0; }
+  .ef-site-footer__nav a { display: inline-flex; align-items: center; min-block-size: 1.5rem; }
+
+  .ef-site-footer__note {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--ef-space-2) var(--ef-space-7);
+    max-inline-size: none;
+    margin: calc(var(--ef-layout-block-space) * 1.5) 0 0;
+    padding-block-start: var(--ef-space-4);
+    border-block-start: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    color: var(--ef-tone-muted);
+    font-family: var(--ef-type-family-mono);
+    font-size: var(--ef-type-size-label);
+  }
+
+  /* Accessibility and output modes ------------------------------------ */
+  @media (prefers-reduced-motion: reduce) {
+    .ef-site :where(*, *::before, *::after) {
+      scroll-behavior: auto !important;
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .ef-site-header__mark,
+    .ef-site [data-ef-tone]:not([data-ef-tone="page"]),
+    .ef-code { border: 1px solid CanvasText; }
+    .ef-site .ef-button,
+    .ef-badge,
+    .ef-site-nav__link[data-ef-variant="action"] { border: 1px solid ButtonText; }
+    .ef-site-nav__link[aria-current] { border-block-end-color: Highlight; }
+    .ef-statement { border-block-start-color: CanvasText; }
+  }
+
+  @media print {
+    .ef-site::before,
+    .ef-skip-link,
+    .ef-site-nav,
+    .ef-site-footer .ef-actions { display: none; }
+    .ef-site-header { position: static; backdrop-filter: none; background: none; }
+    .ef-site [data-ef-tone] { background: none; color: CanvasText; }
+    .ef-site :where(h1, h2, h3, h4, p, li, dt, dd, a) { color: CanvasText; }
+    .ef-prose a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+    .ef-card, .ef-index__item, .ef-code { break-inside: avoid; }
+  }
+}

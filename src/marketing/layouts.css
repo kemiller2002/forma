@@ -1,0 +1,180 @@
+/*
+  Forma marketing layouts.
+
+  Page-level structure for public/marketing sites. The MarketingShell
+  (.ef-site) owns the frame: skip link, header, main, footer, and common
+  behavior. Page layouts (Marketing, Product, Documentation) are compositions
+  of the same components inside that frame; only the documentation layout
+  needs structure of its own.
+
+  Breakpoints, and why each exists:
+  - Sticky header needs min-width 40rem and min-height 36rem. A sticky header
+    on a short or narrow viewport (or at 200-400% zoom) permanently consumes
+    reading space and can obscure focused content (WCAG 2.4.11).
+  - The documentation layout regroups at 48rem and 72rem of main-region
+    width (container queries): three regions with different roles cannot
+    share one minimum item size. Below 48rem the navigation list also wraps
+    like a cluster, so a tall vertical nav never pushes the article below
+    the fold.
+  All other recomposition is content-driven (flex-wrap / auto-fit minimums).
+*/
+@layer echelon.marketing.layouts {
+  @media (min-width: 40rem) and (min-height: 36rem) {
+    .ef-site-header { position: sticky; inset-block-start: 0; }
+  }
+
+  .ef-site__main {
+    flex: 1 0 auto;
+    inline-size: min(100%, var(--ef-layout-width-max));
+    margin-inline: auto;
+    padding-inline: var(--ef-layout-gutter);
+    padding-block-end: var(--ef-layout-section-space);
+  }
+
+  .ef-site__main:focus { outline: none; }
+
+  /* Containers constrain a region inside the page width. */
+  .ef-container {
+    inline-size: min(100%, var(--ef-container-width, var(--ef-layout-width-standard)));
+    margin-inline: auto;
+  }
+
+  .ef-container[data-ef-width="narrow"] { --ef-container-width: var(--ef-layout-width-narrow); }
+  .ef-container[data-ef-width="wide"] { --ef-container-width: var(--ef-layout-width-wide); }
+  .ef-container[data-ef-width="max"] { --ef-container-width: var(--ef-layout-width-max); }
+
+  /* Sections: consistent vertical rhythm between page regions. */
+  .ef-site .ef-section {
+    padding-block: calc(var(--ef-layout-section-space) / 2);
+  }
+
+  .ef-site .ef-section[data-ef-tone]:not([data-ef-tone="page"]) {
+    margin-block: calc(var(--ef-layout-section-space) / 2);
+    padding: calc(var(--ef-layout-block-space) * 2);
+  }
+
+  .ef-section > * + * { margin-block-start: var(--ef-layout-stack-space); }
+  .ef-section > .ef-section-heading + * { margin-block-start: 0; }
+
+  /* Split: primary content with a supporting column that wraps below it. */
+  .ef-split {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: calc(var(--ef-layout-section-space) / 2);
+  }
+
+  .ef-split > :first-child { flex: 999 1 0; min-inline-size: min(100%, 55%); }
+  .ef-split > :last-child:not(:first-child) { flex: 1 1 clamp(18rem, 32%, 30rem); min-inline-size: 0; }
+
+  /* Hero: the page's first region and its one primary recognition path. */
+  .ef-hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: calc(var(--ef-layout-section-space) / 2);
+    padding-block: var(--ef-layout-section-space) calc(var(--ef-layout-block-space) * 2);
+    border-block-end: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
+  }
+
+  .ef-hero__content { flex: 999 1 0; min-inline-size: min(100%, 55%); }
+  .ef-hero__aside { flex: 1 1 clamp(18rem, 32%, 30rem); min-inline-size: 0; }
+  .ef-hero__content > * + *,
+  .ef-hero__aside > * + * { margin-block-start: var(--ef-layout-stack-space); }
+  .ef-hero__title { margin-block: var(--ef-space-2) var(--ef-space-6); }
+  .ef-hero__content > .ef-eyebrow + .ef-hero__title { margin-block-start: 0; }
+
+  /* Documentation page: navigation, article, optional page outline.
+     Three regions with different roles cannot share one minimum size, so
+     the grid regroups by the width of the main region (a container):
+     one column, then navigation + article (outline follows the article),
+     then all three. Source order and reading order never change. */
+  .ef-site__main { container: ef-main / inline-size; }
+
+  .ef-doc {
+    container: ef-doc / inline-size;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--ef-layout-block-space) calc(var(--ef-layout-section-space) / 2);
+    align-items: start;
+    padding-block: calc(var(--ef-layout-section-space) / 2);
+  }
+
+  .ef-doc__nav,
+  .ef-doc__content,
+  .ef-doc__aside { min-inline-size: 0; }
+
+  .ef-doc__content { --ef-type-size-h1: var(--ef-type-size-h2); }
+
+  @container ef-main (inline-size >= 48rem) {
+    .ef-doc { grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr); }
+    .ef-doc__aside { grid-column: 2; }
+  }
+
+  @container ef-main (inline-size >= 72rem) {
+    .ef-doc { grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr) minmax(10rem, 14rem); }
+    .ef-doc__aside { grid-column: 3; }
+  }
+
+  .ef-doc__nav :where(ul),
+  .ef-doc__aside :where(ul) {
+    margin: 0;
+    padding: 0;
+    border-inline-start: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    list-style: none;
+  }
+
+  .ef-doc__nav :where(li + li),
+  .ef-doc__aside :where(li + li) { margin-block-start: 0; }
+
+  .ef-doc__nav :where(a),
+  .ef-doc__aside :where(a) {
+    display: flex;
+    align-items: center;
+    min-block-size: var(--ef-layout-target-min);
+    margin-inline-start: calc(var(--ef-shape-border-width) * -1);
+    padding-inline: var(--ef-space-4);
+    border-inline-start: calc(var(--ef-shape-border-width) * 2) solid transparent;
+    color: var(--ef-tone-text);
+    font-size: var(--ef-type-size-small);
+    text-decoration: none;
+  }
+
+  .ef-doc__nav :where(a:hover),
+  .ef-doc__aside :where(a:hover) { border-inline-start-color: var(--ef-color-accent-primary); }
+
+  .ef-doc__nav :where(a[aria-current]) {
+    border-inline-start-color: var(--ef-tone-rule-strong);
+    font-weight: var(--ef-type-weight-strong);
+  }
+
+  .ef-doc__heading { margin-block-end: var(--ef-space-2); }
+
+  @media (min-width: 64rem) and (min-height: 36rem) {
+    .ef-doc__nav,
+    .ef-doc__aside {
+      position: sticky;
+      inset-block-start: var(--ef-layout-header-offset);
+      max-block-size: calc(100vh - var(--ef-layout-header-offset) - 1rem);
+      overflow: auto;
+    }
+  }
+
+  @container ef-doc (inline-size < 48rem) {
+    .ef-doc__nav :where(ul) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 var(--ef-space-1);
+      border-inline-start: 0;
+      border-block-end: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    }
+
+    .ef-doc__nav :where(a) {
+      margin-inline-start: 0;
+      border-inline-start: 0;
+      border-block-end: calc(var(--ef-shape-border-width) * 2) solid transparent;
+    }
+
+    .ef-doc__nav :where(a[aria-current]) { border-block-end-color: var(--ef-tone-rule-strong); }
+  }
+}
