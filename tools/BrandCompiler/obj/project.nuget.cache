@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "S5iddSTAvZ0=",
+  "success": true,
+  "projectFilePath": "/home/user/forma/tools/BrandCompiler/BrandCompiler.fsproj",
+  "expectedPackageFiles": [
+    "/root/.nuget/packages/fsharp.core/10.0.112/fsharp.core.10.0.112.nupkg.sha512"
+  ],
+  "logs": []
+}

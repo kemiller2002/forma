@@ -935,6 +935,7 @@ Canonical patterns:
 - `character-grid-field`: protected text and native editable fields;
 - `character-grid-keys`: Enter, Clear, Reset, PF1–PF24, and named action affordances;
 - `character-grid-status`: message and system-status live regions;
+- `character-grid-selection`: per-row selection fields in positioned repeated rows (5250-style option column);
 - `character-grid-reveal`: optional SequentialReveal presentation;
 - `character-grid-3270`: IBM 3270 reference profile (24 × 80, verified at 32 × 80);
 - `character-grid-workflow`: Customer Inquiry → Account Detail → Transaction History reference application.
@@ -943,7 +944,7 @@ Requirements:
 
 - not a 3270 component: geometry, key vocabulary, and profile are parameters; profiles change presentation only;
 - source order is row-major order; no positive `tabindex`, no inline `style`;
-- conformance rules CG-1…CG-16 are enforced by `tools/character-grid-conformance.mjs`;
+- conformance rules CG-1…CG-17 are enforced by `tools/character-grid-conformance.mjs`;
 - Forma presents actions and status; key mapping, Enter/Clear/Reset/PF processing, transitions, input inhibition, and reveal orchestration belong to Limen/application code; legality belongs to Ordo;
 - contained horizontal scrolling only inside a named, focusable viewport; never page-level overflow; opt-in reflow;
 - rows ≥ 24px (WCAG 2.5.8) and ≥ 44px on narrow/coarse-pointer screens;

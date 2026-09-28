@@ -27,22 +27,164 @@ const runBoxes = page => page.evaluate(() =>
 
 const intersects = (a, b) => a.left < b.right - 0.5 && b.left < a.right - 0.5 && a.top < b.bottom - 0.5 && b.top < a.bottom - 0.5;
 
-test("runtime overflow is never clipped: an over-length value stays readable past its run", async ({ page }) => {
+// Painted boxes of every leaf run: its text (a visually hidden caption is
+// excluded) and any native control it is or contains.
+const inkBoxes = page => page.evaluate(() =>
+  [...document.querySelectorAll(".ef-character-grid__surface [data-ef-row]")]
+    .filter(run => !run.classList.contains("ef-character-grid__group"))
+    .map(run => {
+      const range = document.createRange();
+      range.selectNodeContents(run);
+      const caption = run.querySelector("caption");
+      if (caption) range.setStartAfter(caption);
+      const controls = [...(run.matches("input, button") ? [run] : []), ...run.querySelectorAll("input, button")];
+      const rects = [...range.getClientRects(), ...controls.map(control => control.getBoundingClientRect())]
+        .filter(rect => rect.width > 0.5 && rect.height > 0.5)
+        .map(({ left, right, top, bottom }) => ({ left, right, top, bottom }));
+      const grids = [...document.querySelectorAll(".ef-character-grid__surface")];
+      const grid = grids.indexOf(run.closest(".ef-character-grid__surface"));
+      return { id: run.id || run.textContent.trim().slice(0, 16), grid, col: Number(run.dataset.efCol), left: run.getBoundingClientRect().left, rects };
+    }));
+
+const overlaps = runs => runs.flatMap((a, i) => runs.slice(i + 1)
+  .filter(b => a.rects.some(x => b.rects.some(y => intersects(x, y))))
+  .map(b => `${a.id} ~ ${b.id}`));
+
+// Runs that start in the same column of one grid start at the same x in every row.
+const misaligned = runs => Object.values(Object.groupBy(runs, run => `${run.grid}:${run.col}`))
+  .filter(column => Math.max(...column.map(run => run.left)) - Math.min(...column.map(run => run.left)) > 1)
+  .map(column => `col ${column[0].col}: ${column.map(run => run.id).join(", ")}`);
+
+const pageOverflow = page => page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+
+test("runtime overflow is never clipped: an over-length value widens its columns without overlapping", async ({ page }) => {
   const overLength = pattern("character-grid").replace(">NORTH-EAST<", ">NORTH-EAST-REGION-7<");
   await page.setContent(gridDocument(overLength));
   const [value] = (await runBoxes(page)).filter(run => run.id.startsWith("NORTH-EAST-REG"));
   expect(value.overflowX).toBe("visible");
-  expect(value.textRight, "text extends beyond the 10-cell run instead of being cut").toBeGreaterThan(value.box.right + 1);
+  expect(value.clip).toBe("none");
+  const runs = await inkBoxes(page);
+  expect(overlaps(runs)).toEqual([]);
+  expect(misaligned(runs)).toEqual([]);
 });
 
-test("text-spacing overrides (GAP-TCG-11): contained grids overflow cells visibly rather than clipping", async ({ page }) => {
-  await page.setContent(gridDocument(pattern("character-grid-3270"), { extraCss: textSpacing }));
-  const runs = await runBoxes(page);
-  const title = runs.find(run => run.id === "character-grid-3270-title");
-  expect(title.overflowX).toBe("visible");
-  expect(title.textRight, "letter-spacing widens text beyond its 1ch cells").toBeGreaterThan(title.box.right);
-  const pageWidth = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-  expect(pageWidth, "still no page-level overflow").toBeLessThanOrEqual(1);
+const spacedPatterns = ["character-grid", "character-grid-field", "character-grid-keys", "character-grid-status", "character-grid-selection", "character-grid-3270", "character-grid-workflow"];
+
+for (const name of spacedPatterns) {
+  test(`text-spacing overrides (GAP-TCG-11): ${name} keeps every run readable, aligned, and unoverlapped`, async ({ page }) => {
+    await page.setContent(gridDocument(pattern(name), { extraCss: textSpacing }));
+    const runs = await inkBoxes(page);
+    expect(overlaps(runs), "no run paints over another").toEqual([]);
+    expect(misaligned(runs), "shared columns stay aligned across rows").toEqual([]);
+    expect(await pageOverflow(page), "still no page-level overflow").toBeLessThanOrEqual(1);
+  });
+}
+
+test("text-spacing overrides: table columns grow so cells never overlap and stay aligned", async ({ page }) => {
+  await page.setContent(gridDocument(pattern("character-grid-workflow"), { extraCss: textSpacing }));
+  const tables = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__table table")].map(table =>
+    [...table.rows].map(row => [...row.cells].map(cell => {
+      const range = document.createRange();
+      range.selectNodeContents(cell);
+      const text = range.getBoundingClientRect();
+      const box = cell.getBoundingClientRect();
+      return { left: box.left, right: box.right, textLeft: text.left, textRight: text.right, empty: text.width < 0.5 };
+    }))));
+  expect(tables.length).toBeGreaterThan(0);
+  for (const rows of tables) {
+    for (const cell of rows.flat().filter(cell => !cell.empty)) {
+      expect(cell.textLeft, "text starts inside its cell").toBeGreaterThanOrEqual(cell.left - 0.5);
+      expect(cell.textRight, "text ends inside its cell, so it cannot reach the next column").toBeLessThanOrEqual(cell.right + 0.5);
+    }
+    const width = Math.max(...rows.map(cells => cells.length));
+    const columns = Array.from({ length: width }, (_, column) => rows.filter(cells => cells.length === width).map(cells => cells[column].left));
+    columns.forEach(lefts => expect(Math.max(...lefts) - Math.min(...lefts), "a column starts at one x in every row").toBeLessThanOrEqual(1));
+  }
+});
+
+test("text-spacing overrides: a full-length field value stays visible, or scrolls natively where field sizing is unsupported", async ({ page }) => {
+  await page.setContent(gridDocument(pattern("character-grid-workflow"), { extraCss: textSpacing }));
+  const fields = await page.evaluate(() => ({
+    fieldSizing: CSS.supports("field-sizing", "content"),
+    full: [...document.querySelectorAll(".ef-character-grid__field")]
+      .filter(field => field.value.length === field.maxLength)
+      .map(field => ({ id: field.id, hidden: field.scrollWidth - field.clientWidth, width: field.getBoundingClientRect().width, cells: field.getBoundingClientRect().width / Number(field.dataset.efLen) }))
+  }));
+  expect(fields.full.length, "the workflow has full-length values").toBeGreaterThan(0);
+  for (const field of fields.full) {
+    if (fields.fieldSizing) {
+      expect(field.hidden, `${field.id} shows its whole value`).toBeLessThanOrEqual(1);
+    } else {
+      expect(field.width, `${field.id} keeps its declared box`).toBeGreaterThan(0);
+    }
+  }
+});
+
+test("a runtime message longer than its reserved rows grows its region instead of overlapping (DF-VE-TCG-2026-DD05)", async ({ page }) => {
+  const long = "Long runtime message text that the application produced without knowing the width of the region. ".repeat(3);
+  await page.setContent(gridDocument(pattern("character-grid-workflow").replace("TRNH000I 37 transactions from 2026-08-01 to 2026-09-27.", `TRNH000I ${long}`)));
+  const result = await page.evaluate(() => {
+    const message = document.getElementById("character-grid-workflow-trnh-message");
+    const surface = message.closest(".ef-character-grid__surface");
+    const range = document.createRange();
+    range.selectNodeContents(message);
+    const text = range.getBoundingClientRect();
+    const row = Number(message.dataset.efRow) + Number(message.dataset.efHeight ?? 1);
+    const below = [...surface.querySelectorAll("[data-ef-row]")].filter(run => Number(run.dataset.efRow) >= row);
+    return {
+      overflow: getComputedStyle(message).overflow,
+      clip: getComputedStyle(message).clipPath,
+      textBottom: text.bottom,
+      runBottom: message.getBoundingClientRect().bottom,
+      belowTop: Math.min(...below.map(run => run.getBoundingClientRect().top)),
+      pitch: Number.parseFloat(getComputedStyle(surface).gridTemplateRows),
+      height: message.getBoundingClientRect().height
+    };
+  });
+  expect(result.overflow).toBe("visible");
+  expect(result.clip).toBe("none");
+  expect(result.height, "the region grew past its one reserved row").toBeGreaterThan(result.pitch * 2);
+  expect(result.textBottom, "all text is inside the grown region").toBeLessThanOrEqual(result.runBottom + 0.5);
+  expect(result.textBottom, "nothing paints over the rows below").toBeLessThanOrEqual(result.belowTop + 0.5);
+});
+
+test("without overrides every column and row track is exactly one cell", async ({ page }) => {
+  for (const [width, rootFontSize] of [[1280, "100%"], [1280, "200%"], [390, "100%"], [320, "100%"], [320, "200%"]]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.setContent(gridDocument(spacedPatterns.map(pattern).join(""), { rootFontSize }));
+    const uneven = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__surface")].flatMap((surface, index) => {
+      const style = getComputedStyle(surface);
+      return [style.gridTemplateColumns, style.gridTemplateRows]
+        .map(tracks => tracks.split(" "))
+        .filter(tracks => tracks.some(track => track !== tracks[0]))
+        .map(tracks => `grid ${index}: ${tracks.join(" ")}`);
+    }));
+    expect(uneven, `${width}px at ${rootFontSize}`).toEqual([]);
+  }
+});
+
+test("fields and keys fill exactly one row pitch: foundation target minimums do not leak into runs", async ({ page }) => {
+  await page.setContent(gridDocument(["character-grid-field", "character-grid-keys", "character-grid-workflow"].map(pattern).join("")));
+  const heights = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__surface > :is(input, button), .ef-character-grid__group > :is(input, button)")].map(control => {
+    const pitch = Number.parseFloat(getComputedStyle(control.closest(".ef-character-grid__surface")).gridTemplateRows);
+    return { id: control.id || control.dataset.efAction, delta: control.getBoundingClientRect().height - pitch };
+  }));
+  expect(heights.length).toBeGreaterThan(0);
+  for (const { id, delta } of heights) expect(Math.abs(delta), `${id} height`).toBeLessThanOrEqual(1);
+});
+
+test("a table run stays inside its declared rows", async ({ page }) => {
+  await page.setContent(gridDocument(pattern("character-grid-workflow")));
+  const tables = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__table")].map(run => {
+    const outer = run.getBoundingClientRect();
+    const table = run.querySelector("table").getBoundingClientRect();
+    return { top: table.top - outer.top, bottom: table.bottom - outer.bottom };
+  }));
+  expect(tables.length).toBeGreaterThan(0);
+  for (const { top, bottom } of tables) {
+    expect(Math.abs(top), "table starts on the run's first row").toBeLessThanOrEqual(1);
+    expect(bottom, "table ends within the run's last row").toBeLessThanOrEqual(1);
+  }
 });
 
 test("text-spacing overrides: reflow keeps every run readable without overlap or horizontal scrolling", async ({ page }) => {

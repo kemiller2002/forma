@@ -72,6 +72,25 @@ missing data as explicit words, never as blanks.
 - Use native `required`, `disabled`, and `readonly`; also say "required" in the
   label or hint.
 
+### Per-row selection fields
+
+For a list where each row takes an option (5250 "Work with" screens), put a
+native field in a table cell and name it by its column and row headers:
+
+```html
+<p class="ef-character-grid__text" id="legend" data-ef-row="4" data-ef-col="4" data-ef-len="28">2=Change  4=Close  5=Display</p>
+...
+<th scope="col" id="opt" data-ef-len="3">Opt</th>
+...
+<tr><td><input class="ef-character-grid__field" id="opt-1" name="opt-00417-2231-09" type="text" maxlength="1" data-ef-len="1"
+               aria-labelledby="opt row-1" aria-describedby="legend"></td>
+    <th scope="row" id="row-1">00417-2231-09</th>...</tr>
+```
+
+On Enter the application reads the rows whose option changed, validates
+them, and sets `aria-invalid="true"` plus the message ID on any row it
+rejects. See `patterns/character-grid-selection.html` and rule CG-17.
+
 ## 4. Status and messages
 
 ```html
@@ -231,7 +250,7 @@ vocabulary, content, and (optionally) a profile change.
 | Style | Geometry | Keys (data-ef-action) | Profile | Notes |
 | --- | --- | --- | --- | --- |
 | IBM 3270 | 24 × 80, 32 × 80, 43 × 80, 27 × 132 | `enter`, `clear`, `reset`, `pf1`–`pf24`, `pa1`–`pa3` | `ibm-3270` | Reference profile. |
-| IBM 5250 | 24 × 80, 27 × 132 | `enter`, `f1`–`f24`, `help`, `roll-up`, `roll-down`, `field-exit`, `reset` | default, or a custom token set | `<kbd>F3</kbd>=Exit`, `<kbd>F12</kbd>=Cancel`. Field Exit is a named action; its behavior is application-owned. |
+| IBM 5250 | 24 × 80, 27 × 132 | `enter`, `f1`–`f24`, `help`, `roll-up`, `roll-down`, `field-exit`, `reset` | default, or a custom token set | `<kbd>F3</kbd>=Exit`, `<kbd>F12</kbd>=Cancel`. Field Exit is a named action; its behavior is application-owned. "Work with" lists use per-row selection fields (`character-grid-selection`). |
 | DOS / text mode, TUI | e.g. 25 × 80 | `f1`–`f10`, named actions | default or custom tokens | Menus are `dl`/`role="group"` groups; the F-key bar is the key group on the last row. |
 | BBS-style | e.g. 24 × 80 | named actions | default or custom tokens | Single-letter commands must be buttons or a command field, not global letter shortcuts (WCAG 2.1.4). |
 | Modern character grid | any R × C ≤ 50 × 132 | named actions, e.g. `<kbd>Ctrl+S</kbd> Save` | default (follows light/dark) | Use `data-ef-narrow="reflow"` when positions carry no meaning. |
@@ -248,5 +267,6 @@ profile claims to reproduce them.
 - The viewport is named and focusable; the page never scrolls horizontally.
 - Rows are at least 24px (1.5rem); 44px on narrow and coarse-pointer screens.
 - Test at 320 and 390 CSS px, 200 % text, forced colors, and reduced motion.
-- For screens that must support WCAG 1.4.12 text-spacing overrides, use
-  `data-ef-narrow="reflow"` (GAP-TCG-11).
+- WCAG 1.4.12 text-spacing overrides widen the grid's columns instead of
+  overlapping runs (GAP-TCG-11), so contained grids support them; keep the
+  viewport contained and do not fix run widths in application CSS.

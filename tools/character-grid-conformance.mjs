@@ -1,5 +1,5 @@
 // Static conformance checks for CharacterGrid markup
-// (requirements/CHARACTER-GRID.md, rules CG-1 to CG-16).
+// (requirements/CHARACTER-GRID.md, rules CG-1 to CG-17).
 //
 // These rules cannot be enforced by CSS: a collision or an out-of-bounds run
 // renders, it is simply wrong. They are therefore checked on the canonical
@@ -41,7 +41,9 @@ export const parseElements = (html) =>
       index: match.index,
       attributes,
       classes: classesOf(attributes),
-      text: innerText(html, match[1].toLowerCase(), match.index + match[0].length)
+      text: innerText(html, match[1].toLowerCase(), match.index + match[0].length),
+      // First matching close tag: exact for elements that do not nest (table, th, td).
+      end: html.indexOf(`</${match[1].toLowerCase()}>`, match.index)
     };
   });
 
@@ -288,6 +290,52 @@ export const revealErrors = (grid) => {
   ];
 };
 
+// CG-17 per-row selection fields in a table run (GAP-TCG-10): native text
+// inputs whose capacity fits their column, named by their column header and
+// their row header, and short enough that the touch minimum stays in the
+// column plus its gutter.
+export const selectionErrors = (grid) =>
+  grid.runs
+    .filter((run) => run.classes.includes("ef-character-grid__table"))
+    .flatMap((run) => {
+      const table = grid.elements.find((element) => element.tag === "table" && element.index > run.index);
+      const inside = table ? grid.elements.filter((element) => element.index > table.index && element.index < table.end) : [];
+      const gutter = integer(table?.attributes["data-ef-gutter"] ?? "1");
+      const ids = grid.elements.map((element) => element.attributes.id).filter(Boolean);
+      const header = (scope) => (id) => inside.find((element) => element.tag === "th" && element.attributes.scope === scope && element.attributes.id === id);
+      return inside
+        .filter((element) => ["input", "select", "textarea", "button"].includes(element.tag))
+        .flatMap((field) => {
+          const id = field.attributes.id ?? `${field.tag}@${field.index}`;
+          const len = integer(field.attributes["data-ef-len"]);
+          const names = (field.attributes["aria-labelledby"] ?? "").split(/\s+/).filter(Boolean);
+          const column = names.map(header("col")).find(Boolean);
+          const columnLen = integer(column?.attributes["data-ef-len"]);
+          return [
+            ...(field.tag === "input" && field.classes.includes("ef-character-grid__field") && ["text", undefined].includes(field.attributes.type)
+              ? []
+              : [`CG-17 ${id} in a table must be a native text input.ef-character-grid__field`]),
+            ...(Number.isInteger(len) && field.attributes.maxlength === String(len)
+              ? []
+              : [`CG-17 ${id} needs data-ef-len equal to maxlength`]),
+            ...(column ? [] : [`CG-17 ${id} must be named by its th[scope=col] through aria-labelledby`]),
+            ...(names.some(header("row")) ? [] : [`CG-17 ${id} must be named by its row's th[scope=row] through aria-labelledby`]),
+            ...(column && !(len <= columnLen) ? [`CG-17 ${id} is ${len} cells but its column is ${columnLen}`] : []),
+            ...(column && len < TOUCH_MIN_CELLS && columnLen + gutter < TOUCH_MIN_CELLS
+              ? [`CG-17 ${id} column plus gutter must be at least ${TOUCH_MIN_CELLS} cells for the touch minimum`]
+              : []),
+            ...(field.attributes["aria-invalid"] === "true" && !field.attributes["aria-describedby"]
+              ? [`CG-17 ${id} is invalid but not described by a message`]
+              : []),
+            ...(field.attributes["aria-describedby"] ?? "")
+              .split(/\s+/)
+              .filter(Boolean)
+              .filter((ref) => !ids.includes(ref))
+              .map((ref) => `CG-17 ${id} describedby ${ref} does not exist`)
+          ];
+        });
+    });
+
 export const gridErrors = (grid) => [
   ...geometryErrors(grid),
   ...boundsErrors(grid),
@@ -297,6 +345,7 @@ export const gridErrors = (grid) => [
   ...fieldErrors(grid),
   ...semanticErrors(grid),
   ...tableErrors(grid),
+  ...selectionErrors(grid),
   ...touchErrors(grid),
   ...keyErrors(grid),
   ...messageErrors(grid),

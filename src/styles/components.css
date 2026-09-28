@@ -3238,8 +3238,15 @@
 
   .ef-character-grid__surface {
     display: grid;
-    grid-template-columns: repeat(var(--ef-grid-columns), 1ch);
-    grid-template-rows: repeat(var(--ef-grid-rows), var(--ef-grid-row-pitch));
+    /*
+     * Tracks are one cell at rest but intrinsic above it (GAP-TCG-11): when a
+     * user's text-spacing override widens glyphs past 1ch, the shared column
+     * and row tracks grow, so every row stays aligned and no run overlaps
+     * the next. Without an override every track resolves to exactly 1ch and
+     * one row pitch.
+     */
+    grid-template-columns: repeat(var(--ef-grid-columns), minmax(1ch, min-content));
+    grid-template-rows: repeat(var(--ef-grid-rows), minmax(var(--ef-grid-row-pitch), min-content));
     inline-size: max-content;
     margin: 0;
     padding: var(--ef-grid-inset);
@@ -3255,12 +3262,24 @@
   :is(.ef-character-grid__surface, .ef-character-grid__group) > * {
     grid-row: var(--ef-row) / span var(--ef-height);
     grid-column: var(--ef-col) / span var(--ef-len);
+    /* Exactly the run's cells; the absorbing end margin never widens the box. */
+    inline-size: 100%;
     min-inline-size: 0;
+    /* Runs ignore foundation target-size minimums; rows set the pitch. */
+    min-block-size: 0;
     /* Runs ignore foundation measure and color rules for p, h*, label, etc. */
     max-inline-size: none;
     color: inherit;
     overflow-wrap: normal;
+    /*
+     * The negative end margin absorbs glyph-advance rounding (a glyph can
+     * advance a fraction of a pixel more than the computed 1ch, and the error
+     * grows with run length) so rounding never grows an intrinsic track. A
+     * real text-spacing override adds about 0.2ch per cell, twenty times this
+     * allowance, and still does.
+     */
     margin: 0;
+    margin-inline-end: calc(var(--ef-len) * -0.01ch - 0.5px);
     padding: 0;
     border: 0;
     font: inherit;
@@ -3311,10 +3330,25 @@
   }
 
   /* Positioned repeated rows (a table placed as one run). */
+  /*
+   * Whitespace collapses in a table run: preserved source indentation around
+   * the table would otherwise render as blank lines and push its rows past
+   * the run's declared height. Cells restore white-space: pre below.
+   */
+  :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__table {
+    white-space: normal;
+  }
+
+  /*
+   * Automatic table layout: th[data-ef-len] widths act as minimums, so a
+   * text-spacing override widens a column instead of pushing its text into
+   * the next one (GAP-TCG-11). Without an override every column is exactly
+   * its declared cells.
+   */
   .ef-character-grid__table > table {
     border-collapse: separate;
     border-spacing: 0;
-    table-layout: fixed;
+    table-layout: auto;
     inline-size: max-content;
     font: inherit;
     line-height: inherit;
@@ -3362,6 +3396,22 @@
     color: var(--ef-grid-emphasis);
   }
 
+  /* A row header names its record; it reads as data, not as a column head. */
+  .ef-character-grid__table th[scope="row"] {
+    color: var(--ef-grid-emphasis);
+    text-decoration: none;
+  }
+
+  /*
+   * Per-row selection field (GAP-TCG-10): a native field in a table cell is
+   * exactly data-ef-len cells wide, like a positioned field; its column may
+   * be wider.
+   */
+  .ef-character-grid__table .ef-character-grid__field {
+    display: block;
+    inline-size: calc(var(--ef-len) * 1ch);
+  }
+
   .ef-character-grid__table [data-ef-align="end"] {
     text-align: end;
   }
@@ -3386,17 +3436,38 @@
     box-sizing: border-box;
     inline-size: 100%;
     block-size: var(--ef-grid-row-pitch);
-    margin: 0;
     padding: 0;
     border: 0;
     border-block-end: 2px solid var(--ef-grid-boundary);
     border-radius: 0;
+    /* Also outside runs (table cells): the row pitch, not the foundation minimum. */
+    min-block-size: 0;
     background: var(--ef-grid-field-surface);
     color: var(--ef-grid-field);
     caret-color: currentColor;
     font: inherit;
     line-height: inherit;
     letter-spacing: 0;
+  }
+
+  /*
+   * Where supported, a field sizes to its value but never below its declared
+   * cells, so a text-spacing override widens the field (and its shared
+   * column tracks) instead of scrolling part of the value out of view
+   * (GAP-TCG-11). Without support the value scrolls natively in the field.
+   */
+  @supports (field-sizing: content) {
+    .ef-character-grid__field {
+      field-sizing: content;
+      justify-self: start;
+      inline-size: auto;
+      min-inline-size: 100%;
+    }
+
+    .ef-character-grid__table .ef-character-grid__field {
+      inline-size: auto;
+      min-inline-size: calc(var(--ef-len) * 1ch);
+    }
   }
 
   .ef-character-grid__field:focus-visible {
@@ -3410,8 +3481,12 @@
     border-block-end-width: 4px;
   }
 
+  /*
+   * Dashed rules above and below: a shape cue that adds no inline width, so
+   * an invalid field stays exactly its cells in every state.
+   */
   .ef-character-grid__field[aria-invalid="true"] {
-    border: 2px dashed var(--ef-grid-validation);
+    border-block: 2px dashed var(--ef-grid-validation);
   }
 
   .ef-character-grid__field:disabled {
@@ -3435,7 +3510,6 @@
     box-sizing: border-box;
     inline-size: 100%;
     block-size: var(--ef-grid-row-pitch);
-    margin: 0;
     padding: 0;
     border: 0;
     border-radius: 0;
@@ -3626,10 +3700,20 @@
       --ef-grid-row-pitch: max(calc(var(--ef-grid-line-height) * 1em), 2.75rem);
     }
 
-    /* A field shorter than five cells must be followed by blank cells (CG-13). */
+    /*
+     * A field shorter than five cells must be followed by blank cells (CG-13).
+     * The negative end margin cancels the extra target width in track sizing,
+     * so a short target paints into those blank cells without widening them.
+     */
     .ef-character-grid__field,
     .ef-character-grid__key {
-      min-inline-size: 2.75rem;
+      min-inline-size: max(100%, 2.75rem);
+      margin-inline-end: min(calc(var(--ef-len) * -0.01ch - 0.5px), calc(var(--ef-len) * 1ch - 2.75rem - 0.5px));
+    }
+
+    /* In a table the touch minimum extends into the gutter (CG-17). */
+    .ef-character-grid__table .ef-character-grid__field {
+      min-inline-size: max(calc(var(--ef-len) * 1ch), 2.75rem);
     }
   }
 
