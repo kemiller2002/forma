@@ -170,7 +170,8 @@ test("marketing buttons and cards use perceptual interpolation without spatial h
   await button.scrollIntoViewIfNeeded();
   const before = await button.boundingBox();
   await button.hover();
-  await button.evaluate(el => Promise.all(el.getAnimations().map(animation => animation.finished)));
+  // A transition replaced mid-flight rejects `finished` with AbortError; only settling matters.
+  await button.evaluate(el => Promise.all(el.getAnimations().map(animation => animation.finished.catch(() => null))));
   const after = await button.boundingBox();
   expect(after.y).toBeCloseTo(before.y, 1);
   expect(await button.evaluate(el => getComputedStyle(el).transform)).toBe("none");
