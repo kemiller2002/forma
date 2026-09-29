@@ -57,6 +57,7 @@
       "phenomenon": "Continuous or repeated activity, or a bounded discrete sequence, whose primary parameter is a named period, velocity or cadence.",
       "durationTokens": [
         "--ef-motion-cadence-period",
+        "--ef-motion-cadence-rotation-period",
         "--ef-reveal-char-ms",
         "--ef-reveal-row-ms",
         "--ef-reveal-scale",

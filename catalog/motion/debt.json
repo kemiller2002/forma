@@ -115,10 +115,6 @@
       "issue": "GH-66"
     },
     {
-      "key": "unexplained-duration|src/styles/components.css|.ef-skeleton__line|animation:ef-skeleton-shift|1.6s",
-      "issue": "GH-62"
-    },
-    {
       "key": "unexplained-easing|src/styles/components.css|.ef-command-palette|opacity|linear",
       "issue": "GH-68"
     },

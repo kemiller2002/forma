@@ -297,20 +297,6 @@
     },
     {
       "source": "src/styles/components.css",
-      "family": "skeleton",
-      "selector": ".ef-skeleton__line",
-      "tracks": {
-        "animation:ef-skeleton-shift": "cadence"
-      },
-      "reducedMotion": {
-        "strategy": "global",
-        "source": "src/styles/foundations.css",
-        "animations": true
-      },
-      "note": "Indeterminate loading shimmer: constant-velocity cadence (MOT-016)."
-    },
-    {
-      "source": "src/styles/components.css",
       "family": "command-palette",
       "selector": ".ef-command-palette",
       "tracks": {
@@ -447,6 +433,30 @@
         "strategy": "explicit"
       },
       "note": "Light inertial press on the marker only; the option (hit target) never moves or shrinks (MOT-014)."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "skeleton",
+      "selector": ".ef-skeleton[aria-busy=\"true\"] .ef-skeleton__line",
+      "tracks": {
+        "animation:ef-skeleton-shift": "cadence"
+      },
+      "reducedMotion": {
+        "strategy": "stop"
+      },
+      "note": "Indeterminate loading shimmer: constant-velocity cadence with the shared named period; runs only while aria-busy reports the activity (MOT-016)."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "spinner",
+      "selector": ".ef-spinner:not([data-ef-state=\"idle\"]) .ef-spinner__indicator",
+      "tracks": {
+        "animation:ef-spinner-rotate": "cadence"
+      },
+      "reducedMotion": {
+        "strategy": "stop"
+      },
+      "note": "Indeterminate spinner: constant angular velocity (one turn per --ef-motion-cadence-rotation-period); stops when the application marks the activity idle; the visible label is the primary activity cue (MOT-016)."
     }
   ]
 }

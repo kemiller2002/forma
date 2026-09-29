@@ -56,6 +56,7 @@
     /* Constant-velocity cadence: repeated activity is parameterized by a
        named period and constant velocity, never by spring settling (MOT-016). */
     --ef-motion-cadence-period: 1600ms;
+    --ef-motion-cadence-rotation-period: 1000ms;
     --ef-motion-cadence-easing: linear;
 
     /* Direct manipulation / authoritative-value tracking: the visual is a
@@ -1429,6 +1430,7 @@
     border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
   }
 
+  /* Shimmer runs only while the application reports the activity. */
   .ef-skeleton__line {
     block-size: 0.9rem;
     inline-size: 100%;
@@ -1437,7 +1439,10 @@
       color-mix(in srgb, var(--ef-color-surface-secondary, #e3e0d7) 55%, var(--ef-color-surface-primary, #f2efe7)),
       var(--ef-color-surface-secondary, #e3e0d7));
     background-size: 200% 100%;
-    animation: ef-skeleton-shift 1.6s linear infinite;
+  }
+
+  .ef-skeleton[aria-busy="true"] .ef-skeleton__line {
+    animation: ef-skeleton-shift var(--ef-motion-cadence-period) var(--ef-motion-cadence-easing) infinite;
   }
 
   .ef-skeleton__line--title { inline-size: 55%; block-size: 1.4rem; }
@@ -1445,6 +1450,92 @@
 
   @keyframes ef-skeleton-shift {
     to { background-position: -200% 0; }
+  }
+
+  /* Loading, activity and progress (MOT-016, MOT-017) -------------------- */
+  /*
+   * Indeterminate activity is constant-velocity cadence: a named period and
+   * linear velocity, never spring settling. Cadence never encodes expected
+   * completion time or importance. Motion runs only while the application
+   * reports the activity (aria-busy="true" on a skeleton, an active spinner),
+   * so it stops when the activity stops. Reduced motion shows a static
+   * equivalent while visible text and busy semantics continue to identify
+   * the activity.
+   *
+   * Keep the same element in place while an activity continues: re-inserting
+   * it restarts the cycle, which can read as new work. CSS cannot preserve a
+   * cycle phase across re-insertion; that continuity is an application duty.
+   */
+  .ef-spinner {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ef-primitive-spacing-2, 0.5rem);
+    margin: 0;
+    color: var(--ef-color-text-primary, #171a18);
+  }
+
+  .ef-spinner__indicator {
+    flex: 0 0 auto;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    border: 2px solid currentColor;
+    border-block-start-color: transparent;
+    border-radius: 50%;
+  }
+
+  .ef-spinner:not([data-ef-state="idle"]) .ef-spinner__indicator {
+    animation: ef-spinner-rotate var(--ef-motion-cadence-rotation-period) var(--ef-motion-cadence-easing) infinite;
+  }
+
+  .ef-spinner[data-ef-state="idle"] .ef-spinner__indicator {
+    border-block-start-color: currentColor;
+  }
+
+  @keyframes ef-spinner-rotate {
+    to { rotate: 1turn; }
+  }
+
+  /*
+   * Determinate progress is a direct projection of the authoritative value
+   * (MOT-017). The native progress element renders its value without
+   * interpolation, so it can never show more than the application reports.
+   * No transition is declared: an interpolation could lag or, with spring
+   * easing, overshoot. The indeterminate native bar (no value) is
+   * browser-owned activity presentation.
+   */
+  .ef-progress {
+    display: grid;
+    gap: var(--ef-primitive-spacing-2, 0.5rem);
+  }
+
+  .ef-progress__header {
+    min-inline-size: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: baseline;
+  }
+
+  .ef-progress__label { font-weight: 700; }
+
+  .ef-progress__value {
+    color: var(--ef-color-text-secondary, #686d68);
+    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    font-size: 0.75rem;
+  }
+
+  .ef-progress__bar {
+    inline-size: 100%;
+    block-size: 0.65rem;
+    accent-color: var(--ef-color-accent-primary, #905831);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ef-skeleton[aria-busy="true"] .ef-skeleton__line,
+    .ef-spinner:not([data-ef-state="idle"]) .ef-spinner__indicator {
+      animation: none;
+    }
   }
 
   /* Wizard and checklist ------------------------------------------------ */
