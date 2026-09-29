@@ -5,6 +5,11 @@ on:
     branches: [main]
     paths:
       - "package.json"
+      - "bundles/**"
+      - "src/marketing/**"
+      - "themes/echelon/**"
+      - "tools/PresentationBundler/**"
+      - "actions/install-presentation/**"
       - ".github/workflows/release-forma.yml"
   workflow_dispatch:
 
