@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forma core control motion fixture</title>
+  <link rel="stylesheet" href="/dist/tokens.css">
+  <link rel="stylesheet" href="/dist/foundations.css">
+  <link rel="stylesheet" href="/dist/components.css">
+  <style>
+    main { max-inline-size: 48rem; margin: 2rem auto; padding: 0 1rem; display: grid; gap: 1.5rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Core control motion</h1>
+
+    <form id="controls" class="ef-stack">
+      <fieldset class="ef-field">
+        <legend class="ef-field__label">Density</legend>
+        <div class="ef-segmented" data-testid="density">
+          <label class="ef-segment"><input type="radio" name="density" value="comfortable" checked><span>Comfortable</span></label>
+          <label class="ef-segment"><input type="radio" name="density" value="compact"><span>Compact</span></label>
+          <label class="ef-segment"><input type="radio" name="density" value="dense"><span>Dense</span></label>
+          <label class="ef-segment"><input type="radio" name="density" value="auto"><span>Automatic spacing</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="ef-field">
+        <legend class="ef-field__label">View</legend>
+        <div class="ef-segmented" data-testid="view">
+          <label class="ef-segment"><input type="radio" name="view" value="list"><span>List</span></label>
+          <label class="ef-segment"><input type="radio" name="view" value="board" checked><span>Board</span></label>
+          <label class="ef-segment"><input type="radio" name="view" value="timeline"><span>Timeline</span></label>
+        </div>
+      </fieldset>
+
+      <label class="ef-switch">
+        <input class="ef-switch__input" type="checkbox" role="switch" name="alerts" value="on">
+        <span class="ef-switch__track" aria-hidden="true"></span>
+        <span class="ef-switch__text"><span class="ef-switch__label">Deployment alerts</span></span>
+      </label>
+
+      <label class="ef-checkbox">
+        <input class="ef-checkbox__input" type="checkbox" name="audit" value="on">
+        <span class="ef-checkbox__box" aria-hidden="true"></span>
+        <span class="ef-checkbox__text"><span class="ef-checkbox__label">Keep audit trail</span></span>
+      </label>
+
+      <div class="ef-slider">
+        <div class="ef-slider__header"><label class="ef-slider__label" for="threshold">Threshold</label></div>
+        <input class="ef-slider__input" id="threshold" name="threshold" type="range" min="0" max="100" step="1" value="40">
+      </div>
+
+      <div class="ef-cluster">
+        <button type="button" data-testid="save">Save view</button>
+        <button type="button" disabled>Unavailable</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

@@ -64,10 +64,29 @@
     background: var(--ef-color-surface-primary, #f2efe7);
     color: var(--ef-color-text-primary, #171a18);
     font-weight: 700;
+    /*
+     * Hover and press feedback is perceptual interpolation (MOT-014, MOT-026):
+     * it changes the surface, never the hit target's position or size. The
+     * fallbacks restate the shared vocabulary for pages that load
+     * foundations.css without components.css.
+     */
+    transition:
+      background-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
+      border-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
   }
 
   :where(button, .ef-button):where(:not(:disabled)):hover {
     background: var(--ef-color-surface-secondary, #e3e0d7);
+  }
+
+  /*
+   * Press onset is a direct projection of pointer/key down: it begins
+   * immediately and never delays activation. Release returns through the
+   * perceptual interpolation above.
+   */
+  :where(button, .ef-button):where(:not(:disabled)):active {
+    background: color-mix(in srgb, var(--ef-color-surface-secondary, #e3e0d7) 82%, var(--ef-color-text-primary, #171a18));
+    transition-duration: var(--ef-motion-direct-duration, 0ms);
   }
 
   :where(input:not([type="checkbox"], [type="radio"], [type="range"]), textarea, select) {
