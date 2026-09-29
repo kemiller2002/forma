@@ -550,6 +550,8 @@
   .ef-segment input {
     z-index: 1;
     position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     inline-size: 1px;
     block-size: 1px;
     opacity: 0;
@@ -2054,7 +2056,7 @@
     .ef-switch__track::after { background: Canvas; border-color: CanvasText; box-shadow: none; }
     .ef-switch__input:checked + .ef-switch__track { background: Highlight; }
     .ef-switch__input:checked + .ef-switch__track::after { background: HighlightText; }
-    .ef-segment:has(input:checked) { background: Highlight; color: HighlightText; }
+    .ef-segment:has(input:checked) { forced-color-adjust: none; background: Highlight; color: HighlightText; }
     .ef-segmented::before { display: none; }
   }
 
