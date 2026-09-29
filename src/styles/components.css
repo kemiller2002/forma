@@ -3127,9 +3127,8 @@
     padding-block: var(--ef-primitive-spacing-2, 0.5rem);
     border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
   }
-  .ef-emphasis-budget [data-emphasis]::before {
-    display: block;
-    margin-block-end: 0.3rem;
+  .ef-emphasis-label {
+    margin: 0 0 0.3rem;
     color: var(--ef-color-text-secondary, #686d68);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
@@ -3137,9 +3136,6 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
-  .ef-emphasis-budget [data-emphasis="primary"]::before { content: "Primary"; }
-  .ef-emphasis-budget [data-emphasis="secondary"]::before { content: "Secondary"; }
-  .ef-emphasis-budget [data-emphasis="supporting"]::before { content: "Supporting"; }
   .ef-emphasis-budget__support {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
