@@ -2112,7 +2112,6 @@
     .ef-slider__input,
     .ef-segment,
     .ef-segment > :not(input),
-    .ef-segmented::before,
     .ef-disclosure > summary::after,
     .ef-disclosure__content,
     .ef-popover,
@@ -2130,6 +2129,10 @@
 
     /* Remove spatial press compression; selection stays immediate. */
     .ef-segment:has(input:active:not(:disabled)) > :not(input) { scale: none; }
+
+    /* No indicator travel at all: transition: none rather than a near-zero
+       duration, which WebKit can settle at stale anchor() insets. */
+    .ef-segmented::before { transition: none; }
   }
 
   @media (forced-colors: active) {
