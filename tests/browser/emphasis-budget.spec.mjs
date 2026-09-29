@@ -50,8 +50,20 @@ for (const width of [1280, 390, 320]) {
 
 test("emphasis labels survive visual-channel dropout", async ({ page }) => {
   await page.setContent(doc(`<div class="dropout">${pattern}</div>`, `.dropout{filter:grayscale(1)}.dropout *{background:transparent!important;border-color:transparent!important;box-shadow:none!important}`));
-  const labels = await page.locator("[data-emphasis]").evaluateAll(elements => elements.map(el => getComputedStyle(el, "::before").content.replace(/[\\\"\\s]/g, "")));
-  expect(labels).toEqual(["Primary", "Secondary", "Supporting", "Supporting", "Supporting"]);
+  const pairs = await page.locator("[data-emphasis]").evaluateAll(elements => elements.map(el => ({
+    emphasis: el.getAttribute("data-emphasis"),
+    label: el.querySelector(":scope > .ef-emphasis-label")?.textContent?.trim().toLowerCase()
+  })));
+  expect(pairs).toEqual([
+    { emphasis: "primary", label: "primary" },
+    { emphasis: "secondary", label: "secondary" },
+    { emphasis: "supporting", label: "supporting" },
+    { emphasis: "supporting", label: "supporting" },
+    { emphasis: "supporting", label: "supporting" }
+  ]);
+  await expect(page.getByText("Primary", { exact: true })).toBeVisible();
+  await expect(page.getByText("Secondary", { exact: true })).toBeVisible();
+  await expect(page.getByText("Supporting", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("Unknown consumer outcome")).toBeVisible();
 });
 
