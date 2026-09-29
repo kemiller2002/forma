@@ -95,7 +95,7 @@ export const componentMeta = {
   "range-entry": ["Range entry", "Input", "Native HTML", "Direct lower/upper endpoint entry; graphical dual-thumb behavior is an optional application enhancement."],
   "ranking": ["Ranking", "Assessment & decision", "Application / Limen", "Ordered-choice presentation with non-drag movement controls and visible positions."],
   "rule-builder": ["Rule builder", "Advanced input", "Application / Limen", "Field/operator/value clauses for typed rule editing while the application owns expression semantics."],
-  "segmented-control": ["Segmented control", "Selection", "Native HTML", "Radio-backed compact selection with visible selected and focus states."],
+  "segmented-control": ["Segmented control", "Selection", "Native HTML", "Radio-backed compact selection with visible selected and focus states; where supported, one light-inertial selection indicator travels between segments without delaying native selection."],
   "semantic-differential": ["Semantic differential", "Assessment & decision", "Native HTML", "A bipolar textual scale that keeps the ordered response radio-backed and explicit."],
   "slider": ["Slider", "Input", "Native HTML", "Single-value range input with accessible bounds and direct keyboard/pointer control."],
   "special-choice": ["Special choice", "Assessment & decision", "Native HTML", "Unknown, not-applicable, and other non-scale answers visually separated from the primary continuum."],

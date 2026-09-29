@@ -274,10 +274,20 @@ const references = (definitions) => {
 // The reference value a fallback must restate: the design-token value for a
 // generic primitive, or the first non-reduced literal definition of a model
 // variable.
-const referenceValue = (name, definitionsOf, primitives) =>
-  primitives[name] ??
-  (definitionsOf(name).find((definition) => !definition.reduced && !definition.value.includes("var(") && !definition.value.includes("calc(")) ?? {}).value ??
-  null;
+const referenceValue = (name, definitionsOf, primitives, seen = new Set()) => {
+  if (primitives[name]) return primitives[name];
+  if (seen.has(name)) return null;
+  const staticValue = (value) => {
+    const trimmed = value.trim();
+    const match = trimmed.match(/^var\(\s*(--[\w-]+)\s*(?:,\s*([\s\S]*))?\)$/);
+    if (!match) return /var\(|calc\(|clamp\(/.test(trimmed) ? null : trimmed;
+    return referenceValue(match[1], definitionsOf, primitives, new Set([...seen, name])) ?? (match[2] ? staticValue(match[2]) : null);
+  };
+  return definitionsOf(name)
+    .filter((definition) => !definition.reduced)
+    .map((definition) => staticValue(definition.value))
+    .find((value) => value !== null) ?? null;
+};
 
 const sameValue = (left, right) =>
   left !== null && right !== null &&

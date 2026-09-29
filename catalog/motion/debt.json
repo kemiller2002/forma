@@ -75,46 +75,6 @@
       "issue": "GH-60"
     },
     {
-      "key": "generic-token|src/styles/components.css|.ef-segment|background|--ef-primitive-motion-duration-fast",
-      "issue": "GH-59"
-    },
-    {
-      "key": "generic-token|src/styles/components.css|.ef-segment|background|--ef-primitive-motion-easing-standard",
-      "issue": "GH-59"
-    },
-    {
-      "key": "generic-token|src/styles/components.css|.ef-segment|color|--ef-primitive-motion-duration-fast",
-      "issue": "GH-59"
-    },
-    {
-      "key": "generic-token|src/styles/components.css|.ef-segment|color|--ef-primitive-motion-easing-standard",
-      "issue": "GH-59"
-    },
-    {
-      "key": "generic-token|src/styles/components.css|.ef-segment|transform|--ef-primitive-motion-duration-fast",
-      "issue": "GH-59"
-    },
-    {
-      "key": "generic-token|src/styles/components.css|.ef-segment|transform|--ef-primitive-motion-easing-standard",
-      "issue": "GH-59"
-    },
-    {
-      "key": "generic-token|src/styles/components.css|.ef-slider__input|filter|--ef-primitive-motion-duration-fast",
-      "issue": "GH-59"
-    },
-    {
-      "key": "generic-token|src/styles/components.css|.ef-slider__input|filter|--ef-primitive-motion-easing-standard",
-      "issue": "GH-59"
-    },
-    {
-      "key": "generic-token|src/styles/components.css|.ef-slider__input|opacity|--ef-primitive-motion-duration-fast",
-      "issue": "GH-59"
-    },
-    {
-      "key": "generic-token|src/styles/components.css|.ef-slider__input|opacity|--ef-primitive-motion-easing-standard",
-      "issue": "GH-59"
-    },
-    {
       "key": "implicit-easing|site/site.css|.ef-button|background|ease",
       "issue": "GH-66"
     },
@@ -127,24 +87,8 @@
       "issue": "GH-66"
     },
     {
-      "key": "legacy-token|src/styles/components.css|.ef-checkbox__box::after|opacity|--ef-motion-state-duration",
-      "issue": "GH-59"
-    },
-    {
-      "key": "legacy-token|src/styles/components.css|.ef-checkbox__box|background|--ef-motion-state-duration",
-      "issue": "GH-59"
-    },
-    {
-      "key": "legacy-token|src/styles/components.css|.ef-checkbox__box|border-color|--ef-motion-state-duration",
-      "issue": "GH-59"
-    },
-    {
       "key": "legacy-token|src/styles/components.css|.ef-command-palette[open]|transition-duration|--ef-motion-state-duration",
       "issue": "GH-68"
-    },
-    {
-      "key": "legacy-token|src/styles/components.css|.ef-disclosure__content|opacity|--ef-motion-state-duration",
-      "issue": "GH-59"
     },
     {
       "key": "legacy-token|src/styles/components.css|.ef-fault-banner[data-ef-motion-entry]|opacity|--ef-motion-state-duration",
@@ -157,34 +101,6 @@
     {
       "key": "legacy-token|src/styles/components.css|.ef-popover:popover-open, .ef-menu:popover-open|transition-duration|--ef-motion-state-duration",
       "issue": "GH-68"
-    },
-    {
-      "key": "legacy-token|src/styles/components.css|.ef-select__input|background|--ef-motion-state-duration",
-      "issue": "GH-59"
-    },
-    {
-      "key": "legacy-token|src/styles/components.css|.ef-select__input|border-color|--ef-motion-state-duration",
-      "issue": "GH-59"
-    },
-    {
-      "key": "legacy-token|src/styles/components.css|.ef-switch__track::after|border-color|--ef-motion-state-duration",
-      "issue": "GH-59"
-    },
-    {
-      "key": "legacy-token|src/styles/components.css|.ef-switch__track|background|--ef-motion-state-duration",
-      "issue": "GH-59"
-    },
-    {
-      "key": "legacy-token|src/styles/components.css|.ef-switch__track|border-color|--ef-motion-state-duration",
-      "issue": "GH-59"
-    },
-    {
-      "key": "legacy-token|src/styles/components.css|.ef-tabs__list [role=\"tab\"]|background|--ef-motion-state-duration",
-      "issue": "GH-59"
-    },
-    {
-      "key": "legacy-token|src/styles/components.css|.ef-tabs__panel[data-ef-motion-entry]|opacity|--ef-motion-state-duration",
-      "issue": "GH-59"
     },
     {
       "key": "legacy-token|src/styles/components.css|.ef-toast:popover-open|transition-duration|--ef-motion-state-duration",
@@ -211,26 +127,6 @@
       "issue": "GH-60"
     },
     {
-      "key": "mismatched-fallback|src/styles/components.css|.ef-segment|background|--ef-primitive-motion-easing-standard, ease",
-      "issue": "GH-59"
-    },
-    {
-      "key": "mismatched-fallback|src/styles/components.css|.ef-segment|color|--ef-primitive-motion-easing-standard, ease",
-      "issue": "GH-59"
-    },
-    {
-      "key": "mismatched-fallback|src/styles/components.css|.ef-segment|transform|--ef-primitive-motion-easing-standard, ease",
-      "issue": "GH-59"
-    },
-    {
-      "key": "mismatched-fallback|src/styles/components.css|.ef-slider__input|filter|--ef-primitive-motion-easing-standard, ease",
-      "issue": "GH-59"
-    },
-    {
-      "key": "mismatched-fallback|src/styles/components.css|.ef-slider__input|opacity|--ef-primitive-motion-easing-standard, ease",
-      "issue": "GH-59"
-    },
-    {
       "key": "model-token-mismatch|src/styles/components.css|:where(.ef-dialog, .ef-flyout)::backdrop|backdrop-filter|--ef-motion-damped-easing",
       "issue": "GH-68"
     },
@@ -255,44 +151,12 @@
       "issue": "GH-68"
     },
     {
-      "key": "model-token-mismatch|src/styles/components.css|.ef-checkbox__box|background|--ef-motion-damped-easing",
-      "issue": "GH-59"
-    },
-    {
-      "key": "model-token-mismatch|src/styles/components.css|.ef-checkbox__box|border-color|--ef-motion-damped-easing",
-      "issue": "GH-59"
-    },
-    {
       "key": "model-token-mismatch|src/styles/components.css|.ef-command-palette|opacity|--ef-motion-exit-duration",
       "issue": "GH-68"
     },
     {
       "key": "model-token-mismatch|src/styles/components.css|.ef-popover, .ef-menu|opacity|--ef-motion-exit-duration",
       "issue": "GH-68"
-    },
-    {
-      "key": "model-token-mismatch|src/styles/components.css|.ef-select__input|background|--ef-motion-damped-easing",
-      "issue": "GH-59"
-    },
-    {
-      "key": "model-token-mismatch|src/styles/components.css|.ef-select__input|border-color|--ef-motion-damped-easing",
-      "issue": "GH-59"
-    },
-    {
-      "key": "model-token-mismatch|src/styles/components.css|.ef-switch__track::after|border-color|--ef-motion-damped-easing",
-      "issue": "GH-59"
-    },
-    {
-      "key": "model-token-mismatch|src/styles/components.css|.ef-switch__track|background|--ef-motion-damped-easing",
-      "issue": "GH-59"
-    },
-    {
-      "key": "model-token-mismatch|src/styles/components.css|.ef-switch__track|border-color|--ef-motion-damped-easing",
-      "issue": "GH-59"
-    },
-    {
-      "key": "model-token-mismatch|src/styles/components.css|.ef-tabs__list [role=\"tab\"]|background|--ef-motion-damped-easing",
-      "issue": "GH-59"
     },
     {
       "key": "model-token-mismatch|src/styles/components.css|.ef-toast|opacity|--ef-motion-exit-duration",
@@ -315,16 +179,8 @@
       "issue": "GH-62"
     },
     {
-      "key": "unexplained-easing|src/styles/components.css|.ef-checkbox__box::after|opacity|linear",
-      "issue": "GH-59"
-    },
-    {
       "key": "unexplained-easing|src/styles/components.css|.ef-command-palette|opacity|linear",
       "issue": "GH-68"
-    },
-    {
-      "key": "unexplained-easing|src/styles/components.css|.ef-disclosure__content|opacity|linear",
-      "issue": "GH-59"
     },
     {
       "key": "unexplained-easing|src/styles/components.css|.ef-fault-banner[data-ef-motion-entry]|opacity|linear",
@@ -337,10 +193,6 @@
     {
       "key": "unexplained-easing|src/styles/components.css|.ef-popover, .ef-menu|opacity|linear",
       "issue": "GH-68"
-    },
-    {
-      "key": "unexplained-easing|src/styles/components.css|.ef-tabs__panel[data-ef-motion-entry]|opacity|linear",
-      "issue": "GH-59"
     },
     {
       "key": "unexplained-easing|src/styles/components.css|.ef-toast|opacity|linear",
