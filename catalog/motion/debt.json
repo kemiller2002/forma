@@ -35,46 +35,6 @@
       "issue": "GH-65"
     },
     {
-      "key": "generic-token|src/styles/assessment.css|.ef-choice|background|--ef-primitive-motion-duration-fast",
-      "issue": "GH-60"
-    },
-    {
-      "key": "generic-token|src/styles/assessment.css|.ef-choice|background|--ef-primitive-motion-easing-standard",
-      "issue": "GH-60"
-    },
-    {
-      "key": "generic-token|src/styles/assessment.css|.ef-choice|border-color|--ef-primitive-motion-duration-fast",
-      "issue": "GH-60"
-    },
-    {
-      "key": "generic-token|src/styles/assessment.css|.ef-choice|border-color|--ef-primitive-motion-easing-standard",
-      "issue": "GH-60"
-    },
-    {
-      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|background|--ef-primitive-motion-duration-fast",
-      "issue": "GH-60"
-    },
-    {
-      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|background|--ef-primitive-motion-easing-standard",
-      "issue": "GH-60"
-    },
-    {
-      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|color|--ef-primitive-motion-duration-fast",
-      "issue": "GH-60"
-    },
-    {
-      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|color|--ef-primitive-motion-easing-standard",
-      "issue": "GH-60"
-    },
-    {
-      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|transform|--ef-primitive-motion-duration-fast",
-      "issue": "GH-60"
-    },
-    {
-      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|transform|--ef-primitive-motion-easing-standard",
-      "issue": "GH-60"
-    },
-    {
       "key": "implicit-easing|site/site.css|.ef-button|background|ease",
       "issue": "GH-66"
     },
@@ -105,26 +65,6 @@
     {
       "key": "legacy-token|src/styles/components.css|.ef-toast:popover-open|transition-duration|--ef-motion-state-duration",
       "issue": "GH-68"
-    },
-    {
-      "key": "mismatched-fallback|src/styles/assessment.css|.ef-choice|background|--ef-primitive-motion-easing-standard, ease",
-      "issue": "GH-60"
-    },
-    {
-      "key": "mismatched-fallback|src/styles/assessment.css|.ef-choice|border-color|--ef-primitive-motion-easing-standard, ease",
-      "issue": "GH-60"
-    },
-    {
-      "key": "mismatched-fallback|src/styles/assessment.css|.ef-ordinal-option|background|--ef-primitive-motion-easing-standard, ease",
-      "issue": "GH-60"
-    },
-    {
-      "key": "mismatched-fallback|src/styles/assessment.css|.ef-ordinal-option|color|--ef-primitive-motion-easing-standard, ease",
-      "issue": "GH-60"
-    },
-    {
-      "key": "mismatched-fallback|src/styles/assessment.css|.ef-ordinal-option|transform|--ef-primitive-motion-easing-standard, ease",
-      "issue": "GH-60"
     },
     {
       "key": "model-token-mismatch|src/styles/components.css|:where(.ef-dialog, .ef-flyout)::backdrop|backdrop-filter|--ef-motion-damped-easing",

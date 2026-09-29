@@ -383,31 +383,6 @@
       "note": "Right-to-left variant; the base selector's reduced-motion rule also matches these runs."
     },
     {
-      "source": "src/styles/assessment.css",
-      "family": "ordinal-option",
-      "selector": ".ef-ordinal-option",
-      "tracks": {
-        "background": "perceptual",
-        "color": "perceptual",
-        "transform": "inertial"
-      },
-      "reducedMotion": {
-        "strategy": "explicit"
-      }
-    },
-    {
-      "source": "src/styles/assessment.css",
-      "family": "choice",
-      "selector": ".ef-choice",
-      "tracks": {
-        "background": "perceptual",
-        "border-color": "perceptual"
-      },
-      "reducedMotion": {
-        "strategy": "brief"
-      }
-    },
-    {
       "source": "src/marketing/components.css",
       "family": "marketing-button",
       "selector": ".ef-site .ef-button",
@@ -443,6 +418,35 @@
       "reducedMotion": {
         "strategy": "global"
       }
+    },
+    {
+      "source": "src/styles/assessment.css",
+      "family": "assessment-selection",
+      "selector": ":where(.ef-ordinal-option, .ef-choice, .ef-special-choice, .ef-binary-option, .ef-symbol-rating__option, .ef-semantic-differential__scale label)",
+      "tracks": {
+        "background-color": "perceptual",
+        "border-color": "perceptual",
+        "color": "perceptual"
+      },
+      "reducedMotion": {
+        "strategy": "brief"
+      },
+      "note": "One shared perceptual selection response for every assessment option family and every value, so motion never encodes score, preference strength, correctness, quality or severity (MOT-015)."
+    },
+    {
+      "source": "src/styles/assessment.css",
+      "family": "ordinal-option",
+      "selector": ".ef-ordinal-option__marker",
+      "tracks": {
+        "scale": "inertial",
+        "background-color": "perceptual",
+        "border-color": "perceptual",
+        "color": "perceptual"
+      },
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "note": "Light inertial press on the marker only; the option (hit target) never moves or shrinks (MOT-014)."
     }
   ]
 }
