@@ -27,6 +27,7 @@ When an agent creates or changes UI:
 7. Keep transition legality, obligations, scoring, permissions, and domain
    invariants in Ordo/application state, never in Forma.
 8. Validate the result with repository and accessibility tests.
+9. For Figma/library work, read `docs/FIGMA.md` and use `figma/component-contracts.json`; never invent Figma node URLs or a second token source.
 
 ## How to consume Forma
 
@@ -194,6 +195,19 @@ Before claiming consequential UI complete, apply `requirements/VISUAL-ENGINEERIN
 - Treat these as engineering screens, not proof of universal human performance.
 - For consequential screens with competing regions, declare the intended attention path with `attention-path` and use `emphasis-budget` when one independently scoped decision region should have a single primary claimant.
 - A `one-primary` budget applies to its own direct region only. Nested independent budgets are permitted. Do not interpret visual emphasis as severity, authority, permission, or transition legality.
+
+## Figma contract
+
+Figma mirrors Forma; it does not own Forma. For Figma-facing changes:
+
+- keep `tokens/echelon.tokens.json` authoritative for token values;
+- keep `patterns/*.html` authoritative for semantic anatomy;
+- preserve the shared Figma property vocabulary in `figma/component-contracts.json`;
+- use real published library node URLs before adding Code Connect templates;
+- use the current template-file Code Connect workflow rather than legacy framework parsers;
+- run `npm run test:figma` before claiming coverage complete.
+
+A complete local Figma contract does not imply that the external Figma library or Code Connect publication has been verified.
 
 ## Verification
 
