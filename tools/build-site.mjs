@@ -12,7 +12,7 @@ const escapeHtml = value => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;
 function namespaceSnippet(source, prefix) {
   let html = source;
   html = html.replace(/\bid="([^"]+)"/g, (_, v) => `id="${prefix}${v}"`);
-  html = html.replace(/\b(for|popovertarget|commandfor)="([^"]+)"/g, (_, a, v) => `${a}="${prefix}${v}"`);
+  html = html.replace(/\b(for|popovertarget|commandfor|interestfor)="([^"]+)"/g, (_, a, v) => `${a}="${prefix}${v}"`);
   html = html.replace(/\b(aria-labelledby|aria-describedby|aria-controls)="([^"]+)"/g, (_, a, v) =>
     `${a}="${v.split(/\s+/).map(token => prefix + token).join(" ")}"`);
   html = html.replace(/\bhref="#([^"]+)"/g, (_, v) => `href="#${prefix}${v}"`);

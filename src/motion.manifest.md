@@ -46,6 +46,13 @@ Weight is presentation only. It never encodes severity, risk, permission or doma
 - Determinate progress: the native `progress` element with no transition, a direct projection that cannot overshoot and shows a reconciliation decrease truthfully.
 - Reduced motion: repeated activity stops; visible text and busy semantics remain.
 
+## Tooltip / contextual hint (FORMA-MOT-004)
+
+- `.ef-tooltip` is in the light perceived-weight scope. The surface enters with a 0.25rem origin-related displacement over the light inertial duration and exits over the shorter derived exit duration; opacity is perceptual interpolation in both directions.
+- Native popover state is authoritative. The surface is display:none once closed, so there is no invisible interactive state.
+- Placement uses spanning `position-area` options with `position-try-order: most-inline-size`, and the hint never grows beyond its area, so it stays inside the viewport even at 320px. Without anchor positioning, the top-layer fallback stays readable.
+- Reduced motion removes the displacement; forced colors uses system colors.
+
 ## Machine-readable catalog
 
 - `catalog/motion/models.json`: taxonomy, the variables each model may use, legacy and generic tokens, spatial properties, audited sources and bundles.

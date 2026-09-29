@@ -457,6 +457,22 @@
         "strategy": "stop"
       },
       "note": "Indeterminate spinner: constant angular velocity (one turn per --ef-motion-cadence-rotation-period); stops when the application marks the activity idle; the visible label is the primary activity cue (MOT-016)."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "tooltip",
+      "selector": ".ef-tooltip__surface",
+      "tracks": {
+        "opacity": "perceptual",
+        "translate": "inertial"
+      },
+      "entrySelectors": [
+        ".ef-tooltip__surface:popover-open"
+      ],
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "note": "Tooltip/contextual hint (MOT-018): light perceived weight, tiny origin-related displacement, perceptual opacity, shorter derived exit; reduced motion removes the displacement."
     }
   ]
 }
