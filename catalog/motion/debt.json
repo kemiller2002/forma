@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "description": "Motion findings that exist in shipped CSS and are owned by an open migration issue. The audit fails on any finding not listed here and on any entry here that no longer occurs, so this ledger can only shrink. FORMA-MOT-010 (#67) requires it to be empty. Never add entries to make new motion pass.",
+  "entries": [
+    {
+      "key": "generic-token|src/marketing/components.css|.ef-card:has(.ef-card__link)|background-color|--ef-primitive-motion-duration-standard",
+      "issue": "GH-65"
+    },
+    {
+      "key": "generic-token|src/marketing/components.css|.ef-card:has(.ef-card__link)|background-color|--ef-primitive-motion-easing-standard",
+      "issue": "GH-65"
+    },
+    {
+      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|background-color|--ef-primitive-motion-duration-standard",
+      "issue": "GH-65"
+    },
+    {
+      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|background-color|--ef-primitive-motion-easing-standard",
+      "issue": "GH-65"
+    },
+    {
+      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|color|--ef-primitive-motion-duration-standard",
+      "issue": "GH-65"
+    },
+    {
+      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|color|--ef-primitive-motion-easing-standard",
+      "issue": "GH-65"
+    },
+    {
+      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|transform|--ef-primitive-motion-duration-standard",
+      "issue": "GH-65"
+    },
+    {
+      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|transform|--ef-primitive-motion-easing-standard",
+      "issue": "GH-65"
+    },
+    {
+      "key": "generic-token|src/styles/assessment.css|.ef-choice|background|--ef-primitive-motion-duration-fast",
+      "issue": "GH-60"
+    },
+    {
+      "key": "generic-token|src/styles/assessment.css|.ef-choice|background|--ef-primitive-motion-easing-standard",
+      "issue": "GH-60"
+    },
+    {
+      "key": "generic-token|src/styles/assessment.css|.ef-choice|border-color|--ef-primitive-motion-duration-fast",
+      "issue": "GH-60"
+    },
+    {
+      "key": "generic-token|src/styles/assessment.css|.ef-choice|border-color|--ef-primitive-motion-easing-standard",
+      "issue": "GH-60"
+    },
+    {
+      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|background|--ef-primitive-motion-duration-fast",
+      "issue": "GH-60"
+    },
+    {
+      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|background|--ef-primitive-motion-easing-standard",
+      "issue": "GH-60"
+    },
+    {
+      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|color|--ef-primitive-motion-duration-fast",
+      "issue": "GH-60"
+    },
+    {
+      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|color|--ef-primitive-motion-easing-standard",
+      "issue": "GH-60"
+    },
+    {
+      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|transform|--ef-primitive-motion-duration-fast",
+      "issue": "GH-60"
+    },
+    {
+      "key": "generic-token|src/styles/assessment.css|.ef-ordinal-option|transform|--ef-primitive-motion-easing-standard",
+      "issue": "GH-60"
+    },
+    {
+      "key": "generic-token|src/styles/components.css|.ef-segment|background|--ef-primitive-motion-duration-fast",
+      "issue": "GH-59"
+    },
+    {
+      "key": "generic-token|src/styles/components.css|.ef-segment|background|--ef-primitive-motion-easing-standard",
+      "issue": "GH-59"
+    },
+    {
+      "key": "generic-token|src/styles/components.css|.ef-segment|color|--ef-primitive-motion-duration-fast",
+      "issue": "GH-59"
+    },
+    {
+      "key": "generic-token|src/styles/components.css|.ef-segment|color|--ef-primitive-motion-easing-standard",
+      "issue": "GH-59"
+    },
+    {
+      "key": "generic-token|src/styles/components.css|.ef-segment|transform|--ef-primitive-motion-duration-fast",
+      "issue": "GH-59"
+    },
+    {
+      "key": "generic-token|src/styles/components.css|.ef-segment|transform|--ef-primitive-motion-easing-standard",
+      "issue": "GH-59"
+    },
+    {
+      "key": "generic-token|src/styles/components.css|.ef-slider__input|filter|--ef-primitive-motion-duration-fast",
+      "issue": "GH-59"
+    },
+    {
+      "key": "generic-token|src/styles/components.css|.ef-slider__input|filter|--ef-primitive-motion-easing-standard",
+      "issue": "GH-59"
+    },
+    {
+      "key": "generic-token|src/styles/components.css|.ef-slider__input|opacity|--ef-primitive-motion-duration-fast",
+      "issue": "GH-59"
+    },
+    {
+      "key": "generic-token|src/styles/components.css|.ef-slider__input|opacity|--ef-primitive-motion-easing-standard",
+      "issue": "GH-59"
+    },
+    {
+      "key": "implicit-easing|site/site.css|.ef-button|background|ease",
+      "issue": "GH-66"
+    },
+    {
+      "key": "implicit-easing|site/site.css|.ef-button|color|ease",
+      "issue": "GH-66"
+    },
+    {
+      "key": "implicit-easing|site/site.css|.ef-button|transform|ease",
+      "issue": "GH-66"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-checkbox__box::after|opacity|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-checkbox__box|background|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-checkbox__box|border-color|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-command-palette[open]|transition-duration|--ef-motion-state-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-disclosure__content|opacity|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-fault-banner[data-ef-motion-entry]|opacity|--ef-motion-state-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-fault-notification[data-ef-motion-entry]|opacity|--ef-motion-state-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-popover:popover-open, .ef-menu:popover-open|transition-duration|--ef-motion-state-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-select__input|background|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-select__input|border-color|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-switch__track::after|border-color|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-switch__track|background|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-switch__track|border-color|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-tabs__list [role=\"tab\"]|background|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-tabs__panel[data-ef-motion-entry]|opacity|--ef-motion-state-duration",
+      "issue": "GH-59"
+    },
+    {
+      "key": "legacy-token|src/styles/components.css|.ef-toast:popover-open|transition-duration|--ef-motion-state-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "mismatched-fallback|src/styles/assessment.css|.ef-choice|background|--ef-primitive-motion-easing-standard, ease",
+      "issue": "GH-60"
+    },
+    {
+      "key": "mismatched-fallback|src/styles/assessment.css|.ef-choice|border-color|--ef-primitive-motion-easing-standard, ease",
+      "issue": "GH-60"
+    },
+    {
+      "key": "mismatched-fallback|src/styles/assessment.css|.ef-ordinal-option|background|--ef-primitive-motion-easing-standard, ease",
+      "issue": "GH-60"
+    },
+    {
+      "key": "mismatched-fallback|src/styles/assessment.css|.ef-ordinal-option|color|--ef-primitive-motion-easing-standard, ease",
+      "issue": "GH-60"
+    },
+    {
+      "key": "mismatched-fallback|src/styles/assessment.css|.ef-ordinal-option|transform|--ef-primitive-motion-easing-standard, ease",
+      "issue": "GH-60"
+    },
+    {
+      "key": "mismatched-fallback|src/styles/components.css|.ef-segment|background|--ef-primitive-motion-easing-standard, ease",
+      "issue": "GH-59"
+    },
+    {
+      "key": "mismatched-fallback|src/styles/components.css|.ef-segment|color|--ef-primitive-motion-easing-standard, ease",
+      "issue": "GH-59"
+    },
+    {
+      "key": "mismatched-fallback|src/styles/components.css|.ef-segment|transform|--ef-primitive-motion-easing-standard, ease",
+      "issue": "GH-59"
+    },
+    {
+      "key": "mismatched-fallback|src/styles/components.css|.ef-slider__input|filter|--ef-primitive-motion-easing-standard, ease",
+      "issue": "GH-59"
+    },
+    {
+      "key": "mismatched-fallback|src/styles/components.css|.ef-slider__input|opacity|--ef-primitive-motion-easing-standard, ease",
+      "issue": "GH-59"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|:where(.ef-dialog, .ef-flyout)::backdrop|backdrop-filter|--ef-motion-damped-easing",
+      "issue": "GH-68"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|:where(.ef-dialog, .ef-flyout)::backdrop|backdrop-filter|--ef-motion-exit-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|:where(.ef-dialog, .ef-flyout)::backdrop|backdrop-filter|--ef-motion-inertia-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|:where(.ef-dialog, .ef-flyout)::backdrop|background|--ef-motion-damped-easing",
+      "issue": "GH-68"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|:where(.ef-dialog, .ef-flyout)::backdrop|background|--ef-motion-exit-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|:where(.ef-dialog, .ef-flyout)::backdrop|background|--ef-motion-inertia-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-checkbox__box|background|--ef-motion-damped-easing",
+      "issue": "GH-59"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-checkbox__box|border-color|--ef-motion-damped-easing",
+      "issue": "GH-59"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-command-palette|opacity|--ef-motion-exit-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-popover, .ef-menu|opacity|--ef-motion-exit-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-select__input|background|--ef-motion-damped-easing",
+      "issue": "GH-59"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-select__input|border-color|--ef-motion-damped-easing",
+      "issue": "GH-59"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-switch__track::after|border-color|--ef-motion-damped-easing",
+      "issue": "GH-59"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-switch__track|background|--ef-motion-damped-easing",
+      "issue": "GH-59"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-switch__track|border-color|--ef-motion-damped-easing",
+      "issue": "GH-59"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-tabs__list [role=\"tab\"]|background|--ef-motion-damped-easing",
+      "issue": "GH-59"
+    },
+    {
+      "key": "model-token-mismatch|src/styles/components.css|.ef-toast|opacity|--ef-motion-exit-duration",
+      "issue": "GH-68"
+    },
+    {
+      "key": "unexplained-duration|site/site.css|.ef-button|background|.18s",
+      "issue": "GH-66"
+    },
+    {
+      "key": "unexplained-duration|site/site.css|.ef-button|color|.18s",
+      "issue": "GH-66"
+    },
+    {
+      "key": "unexplained-duration|site/site.css|.ef-button|transform|.18s",
+      "issue": "GH-66"
+    },
+    {
+      "key": "unexplained-duration|src/styles/components.css|.ef-skeleton__line|animation:ef-skeleton-shift|1.6s",
+      "issue": "GH-62"
+    },
+    {
+      "key": "unexplained-easing|src/styles/components.css|.ef-checkbox__box::after|opacity|linear",
+      "issue": "GH-59"
+    },
+    {
+      "key": "unexplained-easing|src/styles/components.css|.ef-command-palette|opacity|linear",
+      "issue": "GH-68"
+    },
+    {
+      "key": "unexplained-easing|src/styles/components.css|.ef-disclosure__content|opacity|linear",
+      "issue": "GH-59"
+    },
+    {
+      "key": "unexplained-easing|src/styles/components.css|.ef-fault-banner[data-ef-motion-entry]|opacity|linear",
+      "issue": "GH-68"
+    },
+    {
+      "key": "unexplained-easing|src/styles/components.css|.ef-fault-notification[data-ef-motion-entry]|opacity|linear",
+      "issue": "GH-68"
+    },
+    {
+      "key": "unexplained-easing|src/styles/components.css|.ef-popover, .ef-menu|opacity|linear",
+      "issue": "GH-68"
+    },
+    {
+      "key": "unexplained-easing|src/styles/components.css|.ef-tabs__panel[data-ef-motion-entry]|opacity|linear",
+      "issue": "GH-59"
+    },
+    {
+      "key": "unexplained-easing|src/styles/components.css|.ef-toast|opacity|linear",
+      "issue": "GH-68"
+    }
+  ]
+}

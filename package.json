@@ -39,7 +39,9 @@
     "test:browser": "playwright test",
     "test:a11y": "playwright test tests/browser/accessibility.spec.mjs",
     "test:runtime": "node --test tests/zero-runtime.test.mjs",
-    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:marketing && npm run test:character-grid && npm run test:package && npm run test:browser",
+    "motion:audit": "node tools/motion-audit.mjs",
+    "test:motion": "node --test tests/motion-audit.test.mjs && node tools/motion-audit.mjs",
+    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:package && npm run test:browser",
     "site:build": "npm run build && node tools/build-site.mjs",
     "site:test": "node --test tests/site-build.test.mjs",
     "site:check": "npm run site:build && npm run site:test && npm run site:mobile",
@@ -54,7 +56,7 @@
     "test:marketing": "node --test tests/marketing-tokens.test.mjs tests/marketing-distribution.test.mjs tests/marketing-structure.test.mjs tests/site-css-policy.test.mjs",
     "example:install": "mkdir -p build/example && cp examples/echelon-marketing-site/forma.lock build/example/forma.lock && bash actions/install-presentation/install.sh --lock build/example/forma.lock --source dist/marketing --update --output examples/echelon-marketing-site/assets/forma",
     "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --",
-    "release:check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:marketing && npm run test:character-grid && npm run test:package && playwright test tests/browser/marketing.spec.mjs && npm run site:check"
+    "release:check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:package && playwright test tests/browser/marketing.spec.mjs && npm run site:check"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

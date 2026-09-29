@@ -36,6 +36,34 @@
     line-height: 1.4;
   }
 
+  /* Motion model vocabulary --------------------------------------------- */
+  /*
+   * Every animation selects one of five canonical models before it selects
+   * timing (requirements/MOTION-AND-INTERACTION.md MOT-010/MOT-011; the
+   * machine-readable taxonomy is catalog/motion/models.json). Variables that
+   * do not depend on perceived mass live on the root so components,
+   * assessment surfaces and consuming pages share one vocabulary. Inertial
+   * and gravity variables are derived per component scope below because they
+   * depend on that scope's perceived-mass preset.
+   */
+  :where(:root) {
+    /* Perceptual interpolation: opacity, color, backdrop and other
+       non-spatial change. Deliberately independent of mass (MOT-026). */
+    --ef-motion-perceptual-duration: var(--ef-primitive-motion-duration-fast, 120ms);
+    --ef-motion-perceptual-emphasis-duration: var(--ef-primitive-motion-duration-standard, 180ms);
+    --ef-motion-perceptual-easing: var(--ef-primitive-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+
+    /* Constant-velocity cadence: repeated activity is parameterized by a
+       named period and constant velocity, never by spring settling (MOT-016). */
+    --ef-motion-cadence-period: 1600ms;
+    --ef-motion-cadence-easing: linear;
+
+    /* Direct manipulation / authoritative-value tracking: the visual is a
+       projection of the pointer, scroll or application value (MOT-002). */
+    --ef-motion-direct-duration: 0ms;
+    --ef-motion-direct-easing: linear;
+  }
+
   /* Physics-derived motion ---------------------------------------------- */
   :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
     /*
@@ -53,7 +81,7 @@
     --ef-motion-gravity-duration: 255ms;
     --ef-motion-state-duration: 154ms;
     --ef-motion-press-duration: 107ms;
-    --ef-motion-exit-duration: 150ms;
+    --ef-motion-exit-duration: 146ms;
     --ef-motion-spring-easing: linear(0, 0.42 24%, 0.82 48%, 1.055 70%, 0.988 88%, 1);
     --ef-motion-damped-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
   }
@@ -82,7 +110,12 @@
     --ef-motion-damping: 0.94;
   }
 
-  :where(.ef-dialog, .ef-flyout, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking):not([data-ef-motion-weight]) {
+  /*
+   * Heavy default: modal surfaces with greater spatial and attentional
+   * commitment (MOT-009, section 13). Alert, toast, fault notification and
+   * fault banner keep the standard scope default above.
+   */
+  :where(.ef-dialog, .ef-flyout, .ef-command-palette, .ef-fault-blocking):not([data-ef-motion-weight]) {
     --ef-motion-mass: 1.8;
     --ef-motion-stiffness: 0.92;
     --ef-motion-damping: 0.76;
@@ -2134,18 +2167,11 @@
 
 
 @layer echelon.components {
-  /* Aegis notification/banner default perceived weight ----------------- */
-  :where(.ef-fault-notification, .ef-fault-banner):not([data-ef-motion-weight]) {
-    --ef-motion-mass: 1;
-    --ef-motion-stiffness: 1;
-    --ef-motion-damping: 0.84;
-  }
-
-  :where(.ef-fault-blocking):not([data-ef-motion-weight]) {
-    --ef-motion-mass: 1.8;
-    --ef-motion-stiffness: 0.92;
-    --ef-motion-damping: 0.76;
-  }
+  /*
+   * Aegis perceived-weight defaults live with the shared physics scope:
+   * notification and banner use the standard scope default, blocking faults
+   * the heavy modal default (requirements/MOTION-AND-INTERACTION.md, 13).
+   */
 
   /* Aegis fault presentation -------------------------------------------- */
   .ef-fault,
