@@ -166,11 +166,12 @@ test("forced colors keeps assessment selection distinguishable", async ({ page }
   await page.emulateMedia({ forcedColors: "active" });
   const option = page.locator(".ef-ordinal-option").nth(1);
   await option.locator("input").check({ force: true });
-  const [selected, other] = await page.locator(".ef-ordinal-option").evaluateAll((options) => {
+  // Selection colors change by perceptual interpolation, so the settled
+  // presentation is polled rather than read at the first frame.
+  await expect.poll(() => page.locator(".ef-ordinal-option").evaluateAll((options) => {
     const pick = options.find((element) => element.querySelector("input:checked"));
     const peer = options.find((element) => !element.querySelector("input:checked"));
     const describe = (element) => ["background-color", "color", "outline-style", "border-top-color"].map((name) => getComputedStyle(element).getPropertyValue(name)).join("|");
-    return [describe(pick), describe(peer)];
-  });
-  expect(selected).not.toBe(other);
+    return describe(pick) !== describe(peer) ? "distinct" : `${describe(pick)} equals ${describe(peer)}`;
+  }), { timeout: 2000 }).toBe("distinct");
 });
