@@ -86,6 +86,12 @@ Patterns: `patterns/disclosure.html`, `patterns/scroll-progress.html`. View Tran
 - The former `translateY(-2px)` hover lift is removed: hover is emphasis, not a physical event, and moving the hit target under the pointer violates MOT-014. No marketing effect uses spatial motion.
 - Smooth scrolling stays browser-controlled, enabled only under `prefers-reduced-motion: no-preference`; reduced motion removes marketing transitions and smooth scrolling entirely.
 
+## Documentation site (FORMA-MOT-009)
+
+- `site/site.css` is a reference implementation of this standard: site buttons use `--ef-motion-perceptual-duration` and `--ef-motion-perceptual-easing` for background and color, with no site-local durations or easing.
+- The former `.18s` transitions and `translateY(-2px)` hover lift are removed (the lift moved the hit target under the pointer, MOT-014).
+- Smooth scrolling is enabled only under `prefers-reduced-motion: no-preference`; reduced motion removes site transitions entirely.
+
 ## Machine-readable catalog
 
 - `catalog/motion/models.json`: taxonomy, the variables each model may use, legacy and generic tokens, spatial properties, audited sources and bundles.

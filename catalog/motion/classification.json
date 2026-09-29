@@ -398,12 +398,12 @@
       "selector": ".ef-button",
       "tracks": {
         "background": "perceptual",
-        "color": "perceptual",
-        "transform": "inertial"
+        "color": "perceptual"
       },
       "reducedMotion": {
         "strategy": "global"
-      }
+      },
+      "notes": "Documentation site buttons follow the library grammar: perceptual surface emphasis; the former translateY hover lift moved the hit target under the pointer (MOT-014)."
     },
     {
       "source": "src/styles/assessment.css",
