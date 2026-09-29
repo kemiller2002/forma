@@ -35,7 +35,7 @@ Weight is presentation only. It never encodes severity, risk, permission or doma
 - Switch, checkbox, select, slider, tab and segment color/background/opacity/filter changes use perceptual interpolation.
 - Spatial responses keep the inertial or gravity model: switch thumb travel, checkbox glyph, select indicator rotation and gravity cue, disclosure glyph, tab indicator.
 - Buttons (`button`, `.ef-button` in foundations.css): hover and press change the surface only. Press onset uses the direct response (0ms) so activation is never delayed. Release returns by perceptual interpolation.
-- Segmented control: native radios own selection, and the checked segment is styled immediately. Where anchor positioning and `anchor-scope` are supported, one `::before` selection indicator travels between segments with the light inertial duration and damped easing. It has no overshoot, so it never implies a neighbouring option, and rapid input retargets it. Without support, or in forced colors, the checked segment's own background carries the selection. Press compression applies to the label text layer, never the hit target.
+- Segmented control: native radios own selection, and the checked segment is styled immediately. Where anchor positioning and `anchor-scope` are supported, one `::before` selection indicator travels between segments with the light inertial duration and damped easing. It has no overshoot, so it never implies a neighbouring option, and rapid input retargets it. Without support, in forced colors, or under reduced motion (where the indicator would not travel), the checked segment's own background carries the selection. Press compression applies to the label text layer, never the hit target.
 - Slider: the native value is never transitioned; only hover/active emphasis is.
 
 ## Loading and progress (FORMA-MOT-005)
@@ -114,7 +114,7 @@ Patterns: `patterns/disclosure.html`, `patterns/scroll-progress.html`. View Tran
 ## Tests and verification
 
 - `tests/motion-audit.test.mjs`: model derivation, CSS reader, audit behavior on fixtures, repository coverage and debt ratchet
-- `tests/browser/core-controls-motion.spec.mjs`: segmented indicator placement, retargeting, keyboard/pointer equivalence, hit-target stability, button press, slider directness, perceptual timing, reduced motion, anchor fallback, forced colors
+- `tests/browser/core-controls-motion.spec.mjs`: segmented indicator placement (verified on rendered pixels, including after pointer selection), retargeting, keyboard/pointer equivalence, hit-target stability, button press, slider directness, perceptual timing, reduced motion, anchor fallback, forced colors
 - `tests/browser/motion-foundation.spec.mjs`: resolved vocabulary, perceived-weight defaults (including the Aegis defaults), mass-independent gravity, reduced-motion collapse
 - `tests/browser/physics-motion.spec.mjs`, `tests/browser/surface-physics.spec.mjs`, `tests/browser/overlay-motion.spec.mjs`
 
