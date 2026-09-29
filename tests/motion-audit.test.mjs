@@ -294,6 +294,13 @@ test("model-independent variables must have one definition everywhere", () => {
   assert.deepEqual(codes(result).map((item) => item.code), ["canonical-definition-conflict"]);
 });
 
+test("animated transform shorthand is reported so concurrent effects compose", () => {
+  const css = `.x { transition: transform var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing), translate var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing); }
+    @media (prefers-reduced-motion: reduce) { .x { transition-duration: 0.01ms; } }`;
+  const result = audit(css, [{ selector: ".x", tracks: { transform: "inertial", translate: "inertial" }, reducedMotion: { strategy: "explicit" } }]);
+  assert.deepEqual(codes(result).map((item) => `${item.code}:${item.property}`), ["transform-shorthand-motion:transform"]);
+});
+
 test("stale classifications are reported so the catalog stays truthful", () => {
   const result = audit(".x { color: red; }", [{ selector: ".x", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } }]);
   assert.deepEqual(codes(result).map((item) => item.code), ["stale-classification", "stale-classification"]);

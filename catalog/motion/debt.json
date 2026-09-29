@@ -103,6 +103,16 @@
       "issue": "GH-68"
     },
     {
+      "key": "transform-shorthand-motion|site/site.css|.ef-button|transform|",
+      "issue": "GH-66",
+      "detectedBy": "GH-64 composition rule (MOT-024); pre-existing CSS"
+    },
+    {
+      "key": "transform-shorthand-motion|src/marketing/components.css|.ef-site .ef-button|transform|",
+      "issue": "GH-65",
+      "detectedBy": "GH-64 composition rule (MOT-024); pre-existing CSS"
+    },
+    {
       "key": "unexplained-duration|site/site.css|.ef-button|background|.18s",
       "issue": "GH-66"
     },

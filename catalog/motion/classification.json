@@ -497,6 +497,68 @@
         "strategy": "explicit"
       },
       "note": "Resize settling after release or a keyboard step: damped inertial, retargets, clamped to legal bounds; resizing uses the direct duration (MOT-020)."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "disclosure",
+      "selector": ".ef-disclosure",
+      "tracks": {
+        "interpolate-size": "inertial"
+      },
+      "reducedMotion": {
+        "strategy": "explicit",
+        "selector": ".ef-disclosure::details-content"
+      },
+      "note": "Enables intrinsic-size interpolation for the disclosure panel below (MOT-021); progressive enhancement only."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "disclosure",
+      "selector": ".ef-disclosure::details-content",
+      "tracks": {
+        "block-size": "inertial"
+      },
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "note": "Intrinsic-size expand/collapse where interpolate-size and ::details-content are supported; native details stays authoritative and is instant elsewhere (MOT-021)."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "view-transition",
+      "selector": ":root[data-ef-view-transitions]::view-transition-old(*), :root[data-ef-view-transitions]::view-transition-new(*)",
+      "tracks": {
+        "::view-transition": "perceptual"
+      },
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "note": "Opt-in View Transition crossfade: perceptual interpolation; application-orchestrated, never a routing dependency (MOT-022)."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "view-transition",
+      "selector": ":root[data-ef-view-transitions]::view-transition-group(*)",
+      "tracks": {
+        "::view-transition": "inertial"
+      },
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "note": "Shared-element geometry for elements whose identity is genuinely continuous: light inertial settling (MOT-022)."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "scroll-progress",
+      "selector": ".ef-scroll-progress",
+      "tracks": {
+        "animation:ef-scroll-progress": "direct",
+        "animation-timeline": "direct"
+      },
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "note": "Scroll-linked reading progress: a direct projection of scroll position with no added lag; hidden where unsupported or under reduced motion (MOT-023)."
     }
   ]
 }

@@ -476,6 +476,15 @@ const entryFindings = (entry, entryTracks, env) => {
   return [...strategyFindings, ...stale];
 };
 
+// MOT-024: independent effects must not compete for one property. The
+// transform shorthand makes press, hover, selection and entry effects clobber
+// each other; animated tracks use the independent translate/scale/rotate
+// properties (or separate nested layers) instead.
+const compositionFindings = (tracks) =>
+  tracks
+    .filter((track) => track.kind === "transition" && !track.reduced && track.property === "transform")
+    .map((track) => finding("transform-shorthand-motion", track, { detail: "animate translate/scale/rotate independently so concurrent effects compose (MOT-024)" }));
+
 // Static fallbacks and presets authored in components.css must equal the model.
 const physicsFindings = (parsed) => {
   const components = parsed.find((source) => source.file === "src/styles/components.css");
@@ -595,7 +604,7 @@ export const auditSources = ({ models, classification, sources, primitives = {} 
   });
   const motionTracks = tracks.filter((track) => track.kind !== "override");
   const unclassified = motionTracks
-    .filter((track) => !track.model && !env.vocabulary.carriers.has(track.property) && !(track.reduced && track.kind !== "progressive"))
+    .filter((track) => !track.model && !env.vocabulary.carriers.has(track.property) && !track.reduced)
     .map((track) => finding("unclassified-track", track, { detail: "animated selector/property has no motion-model classification" }));
   const timing = tracks
     .filter((track) => track.kind !== "progressive")
@@ -617,6 +626,7 @@ export const auditSources = ({ models, classification, sources, primitives = {} 
     ...keyframeFindings(parsed, motionTracks, classifiedNames),
     ...startingStyleFindings(parsed, index),
     ...scrollBehaviorFindings(parsed, env),
+    ...compositionFindings(motionTracks),
     ...definitionFindings(tracks, definitions, env)
   ];
   const unique = [...new Map(findings.map((item) => [findingKey(item), item])).values()];
