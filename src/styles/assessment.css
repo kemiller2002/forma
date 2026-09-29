@@ -44,6 +44,21 @@
 
   .ef-question__body { min-inline-size: 0; }
 
+  /*
+   * Shared assessment selection response (MOT-015, FORMA-MOT-003). Native
+   * inputs own selection and it changes immediately. Every selectable option
+   * family uses the same perceptual interpolation for its surface and the
+   * same timing for every value, so motion never encodes score, preference
+   * strength, correctness, quality or severity. Fallbacks restate the shared
+   * vocabulary for pages that load assessment.css without components.css.
+   */
+  :where(.ef-ordinal-option, .ef-choice, .ef-special-choice, .ef-binary-option, .ef-symbol-rating__option, .ef-semantic-differential__scale label) {
+    transition:
+      background-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
+      border-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
+      color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
+  }
+
   /* Ordinal / Likert scale --------------------------------------------- */
   .ef-ordinal-scale,
   .ef-choice-group,
@@ -94,19 +109,18 @@
     color: var(--ef-color-text-primary, #171a18);
     text-align: center;
     cursor: pointer;
-    transition:
-      background var(--ef-primitive-motion-duration-fast, 120ms) var(--ef-primitive-motion-easing-standard, ease),
-      color var(--ef-primitive-motion-duration-fast, 120ms) var(--ef-primitive-motion-easing-standard, ease),
-      transform var(--ef-primitive-motion-duration-fast, 120ms) var(--ef-primitive-motion-easing-standard, ease);
   }
 
   .ef-ordinal-option + .ef-ordinal-option {
     border-inline-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
   }
 
+  /* Native inputs stay topmost for direct and assistive hit-testing, including
+     while a marker is press-compressed. */
   .ef-ordinal-option input,
   .ef-choice input,
   .ef-special-choice input {
+    z-index: 1;
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
@@ -125,6 +139,12 @@
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
     font-weight: 700;
+    scale: none;
+    transition:
+      scale var(--ef-motion-press-duration, 107ms) var(--ef-motion-damped-easing, cubic-bezier(0.2, 0.8, 0.2, 1)),
+      background-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
+      border-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
+      color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
   }
 
   .ef-ordinal-option__label {
@@ -135,7 +155,9 @@
   }
 
   .ef-ordinal-option:hover { background: var(--ef-color-surface-secondary, #e3e0d7); }
-  .ef-ordinal-option:has(input:active) { transform: scale(0.985); }
+  /* Light inertial press on the marker only; the option (hit target) never
+     moves or shrinks (MOT-014). */
+  .ef-ordinal-option:has(input:active:not(:disabled)) .ef-ordinal-option__marker { scale: 0.92; }
 
   .ef-ordinal-option:has(input:checked) {
     background: var(--ef-color-surface-inverse, #202421);
@@ -199,9 +221,6 @@
     border: 1px solid var(--ef-color-border-functional, #3a403c);
     background: var(--ef-color-surface-primary, #f2efe7);
     cursor: pointer;
-    transition:
-      background var(--ef-primitive-motion-duration-fast, 120ms) var(--ef-primitive-motion-easing-standard, ease),
-      border-color var(--ef-primitive-motion-duration-fast, 120ms) var(--ef-primitive-motion-easing-standard, ease);
   }
 
   .ef-choice::before {
@@ -1072,12 +1091,12 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ef-ordinal-option,
-    .ef-choice,
-    .ef-binary-option,
-    .ef-symbol-rating__option {
+    .ef-ordinal-option__marker {
       transition-duration: 0.01ms;
     }
+
+    /* Remove spatial press compression; selection styling is unchanged. */
+    .ef-ordinal-option:has(input:active:not(:disabled)) .ef-ordinal-option__marker { scale: none; }
   }
 
   @media (forced-colors: active) {

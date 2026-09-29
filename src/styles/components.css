@@ -65,7 +65,7 @@
   }
 
   /* Physics-derived motion ---------------------------------------------- */
-  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
+  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
     /*
      * CSS cannot run a continuous rigid-body simulation. Forma therefore uses
      * a physics-derived response model. The fallback values remain usable in
@@ -86,25 +86,25 @@
     --ef-motion-damped-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="light"] {
+  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="light"] {
     --ef-motion-mass: 0.65;
     --ef-motion-stiffness: 1.15;
     --ef-motion-damping: 0.94;
   }
 
-  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="standard"] {
+  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="standard"] {
     --ef-motion-mass: 1;
     --ef-motion-stiffness: 1;
     --ef-motion-damping: 0.84;
   }
 
-  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="heavy"] {
+  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="heavy"] {
     --ef-motion-mass: 1.8;
     --ef-motion-stiffness: 0.92;
     --ef-motion-damping: 0.76;
   }
 
-  :where(.ef-disclosure, .ef-popover, .ef-menu, .ef-tabs, .ef-segmented):not([data-ef-motion-weight]) {
+  :where(.ef-disclosure, .ef-popover, .ef-menu, .ef-tabs, .ef-segmented, .ef-ordinal-scale):not([data-ef-motion-weight]) {
     --ef-motion-mass: 0.65;
     --ef-motion-stiffness: 1.15;
     --ef-motion-damping: 0.94;
@@ -122,7 +122,7 @@
   }
 
   @supports (width: calc(1px * sqrt(1))) {
-    :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
+    :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
       /*
        * Response time follows sqrt(mass / stiffness), then is lengthened as
        * damping decreases. Vertical gravity time follows sqrt(2s / g) and is
@@ -394,7 +394,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
+    :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
       --ef-motion-inertia-duration: 0.01ms;
       --ef-motion-gravity-duration: 0.01ms;
       --ef-motion-state-duration: 0.01ms;
