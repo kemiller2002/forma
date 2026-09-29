@@ -67,5 +67,11 @@
     "type": "git",
     "url": "git+https://github.com/kemiller2002/forma.git"
   },
-  "homepage": "https://forma.echelonfoundry.com/"
+  "homepage": "https://forma.echelonfoundry.com/",
+  "keywords": [
+    "design-system",
+    "zero-runtime",
+    "marketing-presentation",
+    "accessibility"
+  ]
 }
