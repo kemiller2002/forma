@@ -40,7 +40,7 @@
     "test:a11y": "playwright test tests/browser/accessibility.spec.mjs",
     "test:runtime": "node --test tests/zero-runtime.test.mjs",
     "motion:audit": "node tools/motion-audit.mjs",
-    "test:motion": "node --test tests/motion-audit.test.mjs && node tools/motion-audit.mjs",
+    "test:motion": "node --test tests/motion-audit.test.mjs tests/motion-gate.test.mjs && node tools/motion-audit.mjs --strict",
     "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:package && npm run test:browser",
     "site:build": "npm run build && node tools/build-site.mjs",
     "site:test": "node --test tests/site-build.test.mjs",
