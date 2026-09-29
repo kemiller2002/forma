@@ -36,12 +36,14 @@ const anchorSupported = (page) => page.evaluate(() => CSS.supports("anchor-name:
 
 // Without anchor positioning the checked segment's own background is the
 // complete selection presentation (progressive enhancement).
+// The background change is a perceptual transition, so the settled colors are
+// polled rather than read at an arbitrary frame of the interpolation.
 const expectFallbackSelection = async (control) => {
-  const checked = control.locator(".ef-segment:has(input:checked)");
-  const unchecked = control.locator(".ef-segment:not(:has(input:checked))").first();
-  const [a, b] = await Promise.all([checked, unchecked].map((segment) => segment.evaluate((element) => getComputedStyle(element).backgroundColor)));
-  expect(a).not.toBe(b);
-  expect(a).not.toBe("rgba(0, 0, 0, 0)");
+  await expect.poll(() => control.evaluate((element) => {
+    const [a, b] = [".ef-segment:has(input:checked)", ".ef-segment:not(:has(input:checked))"]
+      .map((selector) => getComputedStyle(element.querySelector(selector)).backgroundColor);
+    return a !== b && a !== "rgba(0, 0, 0, 0)" ? "distinct" : `${a} vs ${b}`;
+  }), { timeout: 2000 }).toBe("distinct");
 };
 
 const expectIndicatorOnChecked = async (page, control) => {
@@ -208,6 +210,8 @@ test("reduced motion removes indicator travel and press compression but keeps se
   await page.mouse.down();
   const scale = await segment.locator("span").evaluate((element) => getComputedStyle(element).scale);
   await page.mouse.up();
+  // Leave the control so hover and pressed state cannot affect the geometry read.
+  await page.mouse.move(0, 0);
   expect(scale === "1" || scale === "none").toBe(true);
   await expect(control.locator("input:checked")).toHaveValue("compact");
   await expectIndicatorOnChecked(page, control);
