@@ -47,11 +47,16 @@ const expectFallbackSelection = async (control) => {
 const expectIndicatorOnChecked = async (page, control) => {
   if (!(await anchorSupported(page))) return expectFallbackSelection(control);
   await settle(control);
-  const state = await indicatorState(control);
-  expect(state.display).not.toBe("none");
-  expect(Math.abs(state.left - state.targetLeft)).toBeLessThan(1);
-  expect(Math.abs(state.top - state.targetTop)).toBeLessThan(1);
-  expect(Math.abs(state.width - state.targetWidth)).toBeLessThan(1);
+  // Not every engine lists pseudo-element transitions in getAnimations(), so
+  // the settled geometry is polled rather than read once.
+  await expect.poll(async () => {
+    const state = await indicatorState(control);
+    const aligned = state.display !== "none"
+      && Math.abs(state.left - state.targetLeft) < 1
+      && Math.abs(state.top - state.targetTop) < 1
+      && Math.abs(state.width - state.targetWidth) < 1;
+    return aligned ? "aligned" : JSON.stringify({ ...state, running: undefined });
+  }, { timeout: 2000 }).toBe("aligned");
 };
 
 const settle = (locator) => locator.evaluate((element) => Promise.all(element.getAnimations({ subtree: true }).map((animation) => animation.finished.catch(() => null))));
@@ -71,8 +76,11 @@ test("rapid keyboard selection retargets the indicator instead of queueing and s
   const radios = control.getByRole("radio");
   await radios.first().focus();
 
-  for (const expected of ["compact", "dense", "auto", "comfortable", "compact"]) {
-    await page.keyboard.press("ArrowRight");
+  // Engines differ on wrapping at the ends of a radio group, so the sequence
+  // reverses direction instead of wrapping.
+  const steps = [["ArrowRight", "compact"], ["ArrowRight", "dense"], ["ArrowRight", "auto"], ["ArrowLeft", "dense"], ["ArrowLeft", "compact"]];
+  for (const [key, expected] of steps) {
+    await page.keyboard.press(key);
     // Native selection is authoritative and immediate, not gated by motion.
     await expect(control.locator("input:checked")).toHaveValue(expected);
     const { running } = (await anchorSupported(page)) ? await indicatorState(control) : { running: [] };
