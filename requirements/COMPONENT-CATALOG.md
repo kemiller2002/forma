@@ -599,6 +599,12 @@ Tours shall never block access to the underlying feature merely because onboardi
 
 Requirements include semantic live-region policy, duplicate-announcement prevention, determinate/indeterminate distinction, pause/dismiss policy, and unknown outcome support.
 
+Implemented loading/progress contracts (FORMA-MOT-005, MOT-016/MOT-017):
+
+- `.ef-spinner` (`patterns/spinner.html`): a visible label in a `role="status"` region plus a decorative indicator rotating at the named cadence `--ef-motion-cadence-rotation-period`; `data-ef-state="idle"` stops it; static under reduced motion.
+- `.ef-progress` (`patterns/progress-bar.html`): native `progress` projected directly from the authoritative value with no transition, so it never shows more than the application reports; the indeterminate variant keeps explicit text.
+- `.ef-skeleton` shimmers at `--ef-motion-cadence-period` only while `aria-busy="true"`.
+
 Alert and toast motion requirements:
 
 - `.ef-alert[data-ef-motion-entry]` may use a standard-weight entry cue when newly inserted;

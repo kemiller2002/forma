@@ -38,6 +38,14 @@ Weight is presentation only. It never encodes severity, risk, permission or doma
 - Segmented control: native radios own selection, and the checked segment is styled immediately. Where anchor positioning and `anchor-scope` are supported, one `::before` selection indicator travels between segments with the light inertial duration and damped easing. It has no overshoot, so it never implies a neighbouring option, and rapid input retargets it. Without support, or in forced colors, the checked segment's own background carries the selection. Press compression applies to the label text layer, never the hit target.
 - Slider: the native value is never transitioned; only hover/active emphasis is.
 
+## Loading and progress (FORMA-MOT-005)
+
+- Skeleton shimmer: cadence at `--ef-motion-cadence-period` (1600ms), linear, runs only while `aria-busy="true"`.
+- Spinner: one turn per `--ef-motion-cadence-rotation-period` (1000ms), linear; `data-ef-state="idle"` stops it while the label reports the outcome.
+- Neither period encodes importance or expected completion time. Changing the label or other attributes does not restart the cycle. Re-inserting the element does restart it, so applications keep the same element in place while an activity continues.
+- Determinate progress: the native `progress` element with no transition, a direct projection that cannot overshoot and shows a reconciliation decrease truthfully.
+- Reduced motion: repeated activity stops; visible text and busy semantics remain.
+
 ## Machine-readable catalog
 
 - `catalog/motion/models.json`: taxonomy, the variables each model may use, legacy and generic tokens, spatial properties, audited sources and bundles.
