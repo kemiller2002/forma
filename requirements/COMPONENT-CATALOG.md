@@ -975,3 +975,23 @@ Requirements:
 - verified at 320/390 px, 200 % text, text spacing, forced colors, reduced motion, print, and WCAG 2.2 A/AA.
 
 See `requirements/MARKETING-PRESENTATION.md` and `docs/MARKETING-SITES.md`.
+
+
+## Motion-driven catalog addition: tooltip / contextual hint
+
+### P1: Tooltip / contextual hint
+
+Visual contract: `.ef-tooltip` or the final canonical slug selected during implementation. Native/application behavior is required unless the chosen browser primitive supplies the complete interaction contract.
+
+Requirements:
+
+- ordinary visible help text remains preferred when the information is important enough to keep on screen;
+- transient content must have a non-hover-only access path;
+- keyboard focus and pointer access must expose equivalent information;
+- the tooltip/hint may not contain a critical action that disappears with the surface;
+- placement must remain within the dynamic viewport and adapt when the preferred side cannot fit;
+- presentation must preserve an explicit relationship to its invoker;
+- motion follows MOT-018 in `requirements/MOTION-AND-INTERACTION.md`;
+- reduced motion removes spatial travel;
+- content, open/close behavior, dismissal policy, delay policy, accessible description relationships, and focus behavior remain native/application responsibilities;
+- the surface must not become semantic authority or imply validation, severity, confidence, or permission.
