@@ -53,19 +53,63 @@ const expectFallbackSelection = async (control) => {
   }), { timeout: 2000 }).toBe("distinct");
 };
 
+// The rendered indicator, found in a screenshot of the control, must cover
+// exactly the checked segment's box (within 1.5 CSS px on every edge). This
+// checks what is painted rather than engine-specific geometry APIs. The scan
+// runs 4px inside the segment's edges, clear of the centred label text;
+// focus decoration is hidden for the capture only.
+const renderedIndicatorEdges = async (control) => {
+  // Focus decoration (outline plus dark ring) is hidden for the capture only.
+  const image = (await control.screenshot({ style: ".ef-segment { outline: none !important; box-shadow: none !important; }" })).toString("base64");
+  return control.evaluate(async (element, png) => {
+    const box = element.getBoundingClientRect();
+    const target = element.querySelector(".ef-segment:has(input:checked)").getBoundingClientRect();
+    const picture = new Image();
+    picture.src = `data:image/png;base64,${png}`;
+    await picture.decode();
+    const scale = picture.naturalWidth / box.width;
+    const canvas = document.createElement("canvas");
+    canvas.width = picture.naturalWidth;
+    canvas.height = picture.naturalHeight;
+    const context = canvas.getContext("2d");
+    context.drawImage(picture, 0, 0);
+    const luminance = (x, y) => {
+      const [r, g, b] = context.getImageData(Math.round(x * scale), Math.round(y * scale), 1, 1).data;
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    };
+    const [indicatorLuma, surfaceLuma] = [luminance(target.left - box.left + 4, target.top - box.top + 4), luminance(1.5, box.height / 2)];
+    const isIndicator = (x, y) => Math.abs(luminance(x, y) - indicatorLuma) < Math.abs(luminance(x, y) - surfaceLuma);
+    // Walk outwards from inside the segment until the indicator colour ends.
+    const run = (from, step, probe) => {
+      let edge = from;
+      while (edge + step >= 0 && edge + step <= Math.max(box.width, box.height) && probe(edge + step)) edge += step;
+      return edge;
+    };
+    const quarter = 1 / scale;
+    const [top, left] = [target.top - box.top + 4, target.left - box.left + 4];
+    return {
+      contrast: Math.abs(indicatorLuma - surfaceLuma),
+      left: run(left, -quarter, (x) => isIndicator(x, top)),
+      right: run(left, quarter, (x) => isIndicator(x, top)) + quarter,
+      top: run(top, -quarter, (y) => isIndicator(left, y)),
+      bottom: run(top, quarter, (y) => isIndicator(left, y)) + quarter,
+      expected: { left: target.left - box.left, right: target.right - box.left, top: target.top - box.top, bottom: target.bottom - box.top }
+    };
+  }, image);
+};
+
 const expectIndicatorOnChecked = async (page, control) => {
   if (!(await anchorSupported(page))) return expectFallbackSelection(control);
   await settle(control);
   // Not every engine lists pseudo-element transitions in getAnimations(), so
-  // the settled geometry is polled rather than read once.
+  // the settled rendering is polled rather than read once.
   await expect.poll(async () => {
-    const state = await indicatorState(control);
+    const [state, painted] = [await indicatorState(control), await renderedIndicatorEdges(control)];
     const aligned = state.display !== "none"
-      && Math.abs(state.left - state.targetLeft) < 1
-      && Math.abs(state.top - state.targetTop) < 1
-      && Math.abs(state.width - state.targetWidth) < 1;
-    return aligned ? "aligned" : JSON.stringify({ ...state, running: undefined });
-  }, { timeout: 2000 }).toBe("aligned");
+      && painted.contrast > 40
+      && ["left", "right", "top", "bottom"].every((edge) => Math.abs(painted[edge] - painted.expected[edge]) <= 1.5);
+    return aligned ? "aligned" : JSON.stringify({ painted, computed: { ...state, running: undefined } });
+  }, { timeout: 3000 }).toBe("aligned");
 };
 
 const settle = (locator) => locator.evaluate((element) => Promise.all(element.getAnimations({ subtree: true }).map((animation) => animation.finished.catch(() => null))));
