@@ -41,11 +41,17 @@ jobs:
       - name: Enforce zero-runtime boundary
         run: npm run test:runtime
 
+      - name: Enforce motion model conformance
+        run: npm run test:motion
+
       - name: Test build-time compilers and package contract
         run: |
           npm run test:tokens
           npm run test:brands
           npm run test:package
+
+      - name: Validate Figma contract
+        run: npm run test:figma
 
       - name: Show artifact metrics
         run: cat dist/build-metrics.json

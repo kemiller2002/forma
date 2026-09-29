@@ -113,3 +113,16 @@ Objects may carry consumer-supplied metadata such as identifiers, descriptions, 
 Workflow/diagram items may also carry authored fill, border/stroke, accent, connector, and safe foreground colors. Color is presentation only. Semantic workflow type/status never derives from color, and meaningful distinctions must survive forced colors, grayscale, and backgrounds-disabled output.
 
 See `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md`.
+
+## Figma
+
+Forma treats Figma as a design and developer-consumption surface, not as a
+second source of truth. Canonical tokens remain in
+`tokens/echelon.tokens.json`, canonical component anatomy remains in
+`patterns/*.html`, and `figma/component-contracts.json` provides complete,
+machine-readable coverage for the Figma library.
+
+See [docs/FIGMA.md](docs/FIGMA.md) for the variable, component, and Code Connect
+workflow. The public package also exposes `./tokens.json` and
+`./figma/components.json` for design tooling.
+

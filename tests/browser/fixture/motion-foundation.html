@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forma motion model foundation fixture</title>
+  <link rel="stylesheet" href="/dist/tokens.css">
+  <link rel="stylesheet" href="/dist/foundations.css">
+  <link rel="stylesheet" href="/dist/components.css">
+  <style>
+    main { max-inline-size: 48rem; margin: 2rem auto; padding: 0 1rem; display: grid; gap: 1rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Motion model foundation</h1>
+    <p>Static surfaces that expose the shared motion variables of each perceived-weight scope. They are not opened; the fixture only inspects derived timing.</p>
+
+    <div class="ef-alert" data-testid="alert" role="note"><p>Standard-weight alert scope.</p></div>
+    <div class="ef-toast" data-testid="toast" popover="manual"><p>Standard-weight toast scope.</p></div>
+    <section class="ef-fault-notification" data-testid="fault-notification" aria-label="Fault notification scope"><p>Fault notification scope.</p></section>
+    <section class="ef-fault-banner" data-testid="fault-banner" aria-label="Fault banner scope"><p>Fault banner scope.</p></section>
+    <div class="ef-fault-blocking" data-testid="fault-blocking"><p>Blocking fault scope.</p></div>
+    <div class="ef-dialog" data-testid="dialog"><p>Modal dialog scope.</p></div>
+    <div class="ef-popover" data-testid="popover" popover="manual"><p>Popover scope.</p></div>
+
+    <div class="ef-toast" data-testid="weight-light" data-ef-motion-weight="light" popover="manual"><p>Light override.</p></div>
+    <div class="ef-toast" data-testid="weight-standard" data-ef-motion-weight="standard" popover="manual"><p>Standard override.</p></div>
+    <div class="ef-toast" data-testid="weight-heavy" data-ef-motion-weight="heavy" popover="manual"><p>Heavy override.</p></div>
+  </main>
+</body>
+</html>

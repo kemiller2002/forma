@@ -21,14 +21,18 @@
     "./brands/*": "./dist/brands/*",
     "./brand-manifest.schema.json": "./schemas/brand-manifest.schema.json",
     "./marketing.css": "./dist/marketing.css",
-    "./marketing/*": "./dist/marketing/*"
+    "./marketing/*": "./dist/marketing/*",
+    "./tokens.json": "./tokens/echelon.tokens.json",
+    "./figma/components.json": "./figma/component-contracts.json"
   },
   "files": [
     "dist",
     "patterns",
     "schemas/brand-manifest.schema.json",
     "docs/BRANDING.md",
-    "docs/MARKETING-SITES.md"
+    "docs/MARKETING-SITES.md",
+    "tokens/echelon.tokens.json",
+    "figma/component-contracts.json"
   ],
   "scripts": {
     "clean": "node tools/clean.mjs",
@@ -39,7 +43,9 @@
     "test:browser": "playwright test",
     "test:a11y": "playwright test tests/browser/accessibility.spec.mjs",
     "test:runtime": "node --test tests/zero-runtime.test.mjs",
-    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:marketing && npm run test:character-grid && npm run test:package && npm run test:browser",
+    "motion:audit": "node tools/motion-audit.mjs",
+    "test:motion": "node --test tests/motion-audit.test.mjs tests/motion-gate.test.mjs && node tools/motion-audit.mjs --strict",
+    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:figma && npm run test:package && npm run test:browser",
     "site:build": "npm run build && node tools/build-site.mjs",
     "site:test": "node --test tests/site-build.test.mjs",
     "site:check": "npm run site:build && npm run site:test && npm run site:mobile",
@@ -53,7 +59,9 @@
     "marketing:build": "dotnet run --project tools/PresentationBundler/PresentationBundler.fsproj -- bundles/echelon-marketing.bundle.json package.json",
     "test:marketing": "node --test tests/marketing-tokens.test.mjs tests/marketing-distribution.test.mjs tests/marketing-structure.test.mjs tests/site-css-policy.test.mjs",
     "example:install": "mkdir -p build/example && cp examples/echelon-marketing-site/forma.lock build/example/forma.lock && bash actions/install-presentation/install.sh --lock build/example/forma.lock --source dist/marketing --update --output examples/echelon-marketing-site/assets/forma",
-    "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --"
+    "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --",
+    "release:check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:package && playwright test tests/browser/marketing.spec.mjs && npm run site:check",
+    "test:figma": "node --test tests/figma-contract.test.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
@@ -67,5 +75,11 @@
     "type": "git",
     "url": "git+https://github.com/kemiller2002/forma.git"
   },
-  "homepage": "https://forma.echelonfoundry.com/"
+  "homepage": "https://forma.echelonfoundry.com/",
+  "keywords": [
+    "design-system",
+    "zero-runtime",
+    "marketing-presentation",
+    "accessibility"
+  ]
 }

@@ -535,6 +535,14 @@ Tooltips are supplemental only. Required information and essential actions shall
 
 Support hover and keyboard focus, delayed open/close, pointer-safe hover travel, and reduced motion.
 
+Implemented as `.ef-tooltip` (`patterns/tooltip.html`, FORMA-MOT-004):
+
+- **Opening.** The native button opens the `popover` surface with `popovertarget`, by click, tap, Enter or Space. Escape and outside presses close it. No path depends on hover.
+- **Hover and focus.** Where interest invokers exist, `interestfor` on the same button also opens it on hover or focus. The browser owns the delay and pointer-safe hover travel.
+- **Placement.** Anchor positioning with `flip-block`/`flip-inline` fallbacks keeps it in the viewport. Without support, the browser's top-layer placement remains readable.
+- **Motion.** Light weight, tiny origin displacement, perceptual opacity, and a shorter exit. Reduced motion removes the displacement.
+- **Boundaries.** Focus, dismissal, timeout and accessible-description policy beyond the native popover remain application/Limen concerns.
+
 ### P0: Menu and menu button
 Pattern: `.ef-menu` for ordinary action lists using native Popover HTML; full ARIA menu behavior remains a Limen visual/behavior contract.
 
@@ -598,6 +606,12 @@ Tours shall never block access to the underlying feature merely because onboardi
 - ef-error-summary
 
 Requirements include semantic live-region policy, duplicate-announcement prevention, determinate/indeterminate distinction, pause/dismiss policy, and unknown outcome support.
+
+Implemented loading/progress contracts (FORMA-MOT-005, MOT-016/MOT-017):
+
+- `.ef-spinner` (`patterns/spinner.html`): a visible label in a `role="status"` region plus a decorative indicator rotating at the named cadence `--ef-motion-cadence-rotation-period`; `data-ef-state="idle"` stops it; static under reduced motion.
+- `.ef-progress` (`patterns/progress-bar.html`): native `progress` projected directly from the authoritative value with no transition, so it never shows more than the application reports; the indeterminate variant keeps explicit text.
+- `.ef-skeleton` shimmers at `--ef-motion-cadence-period` only while `aria-busy="true"`.
 
 Alert and toast motion requirements:
 
@@ -705,6 +719,13 @@ Support text/structured differences, additions/removals/changes, keyboard naviga
 ### P1: Resizable split pane
 Visual contract: `.ef-split-pane` (Limen behavior required)
 
+Implemented presentation (FORMA-MOT-006):
+
+- `patterns/resizable-split-pane.html`: `data-ef-resizable`, an application-supplied `--ef-split-size` clamped to legal bounds in CSS, a focusable `role="separator"` with value semantics, and direct tracking while `data-ef-manipulation="resizing"`.
+- Damped settling on release or keyboard step; `data-ef-collapsed`.
+- Stacked without the separator at narrow widths.
+- Pointer and keyboard behavior remain Limen/application code.
+
 Requirements:
 
 - pointer drag;
@@ -732,9 +753,10 @@ Only if multiple applications demonstrate need. Docking must not become a genera
 - icon;
 - icon button pattern;
 - card/tile;
-- accordion/disclosure;
+- accordion/disclosure (FORMA-MOT-007: intrinsic-height settling via `interpolate-size` and `::details-content` where supported, instant elsewhere);
+- scroll progress: `.ef-scroll-progress` (FORMA-MOT-007), a decorative direct projection of the scroll timeline;
 - key-value list;
-- stat/metric;
+- stat/metric (FORMA-MOT-011: `data-ef-value-change` marks an application-published update with a neutral perceptual tint; values are never counted through);
 - code block with copy action;
 - keyboard shortcut display;
 - separator.
@@ -1051,3 +1073,22 @@ Metadata MAY be projected into badges, labels, icons, markers, bars, or similar 
 
 The underlying metadata remains authoritative. Forma decorations are projections only and must have textual/structural equivalents when meaningful.
 
+
+## Motion-driven catalog addition: tooltip / contextual hint
+
+### P1: Tooltip / contextual hint
+
+Visual contract: `.ef-tooltip` or the final canonical slug selected during implementation. Native/application behavior is required unless the chosen browser primitive supplies the complete interaction contract.
+
+Requirements:
+
+- ordinary visible help text remains preferred when the information is important enough to keep on screen;
+- transient content must have a non-hover-only access path;
+- keyboard focus and pointer access must expose equivalent information;
+- the tooltip/hint may not contain a critical action that disappears with the surface;
+- placement must remain within the dynamic viewport and adapt when the preferred side cannot fit;
+- presentation must preserve an explicit relationship to its invoker;
+- motion follows MOT-018 in `requirements/MOTION-AND-INTERACTION.md`;
+- reduced motion removes spatial travel;
+- content, open/close behavior, dismissal policy, delay policy, accessible description relationships, and focus behavior remain native/application responsibilities;
+- the surface must not become semantic authority or imply validation, severity, confidence, or permission.

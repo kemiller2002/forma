@@ -5,6 +5,11 @@ on:
     branches: [main]
     paths:
       - "package.json"
+      - "bundles/**"
+      - "src/marketing/**"
+      - "themes/echelon/**"
+      - "tools/PresentationBundler/**"
+      - "actions/install-presentation/**"
       - ".github/workflows/release-forma.yml"
   workflow_dispatch:
 
@@ -84,10 +89,8 @@ jobs:
           git worktree remove --force "$legacy_workspace"
           rm -rf "$legacy_parent"
 
-      - name: Validate package and site
-        run: |
-          npm run check
-          npm run site:check
+      - name: Validate release contract
+        run: npm run release:check
 
       - name: Pack release
         shell: bash

@@ -62,6 +62,18 @@ test("Echelon Marketing Theme supplies every typography, layout, shape, and effe
   }
 });
 
+// FORMA-MOT-008: marketing state changes are perceptual interpolation, so the
+// theme and the generic defaults must agree with Forma's perceptual timing
+// (--ef-motion-perceptual-duration derives from the fast primitive).
+test("marketing transition roles use the perceptual timing, not generic standard timing", () => {
+  const primitive = (name) => fs.readFileSync("dist/tokens.css", "utf8").match(new RegExp(`${name}: ([^;]+);`))[1];
+  const neutral = block(themeCss, "  :root");
+  assert.match(neutral, new RegExp(`--ef-effect-transition-duration: ${primitive("--ef-primitive-motion-duration-fast")};`));
+  assert.match(neutral, new RegExp(`--ef-effect-transition-easing: ${primitive("--ef-primitive-motion-easing-standard").replace(/[()]/g, "\\$&")};`));
+  assert.match(roles, /--ef-effect-transition-duration: var\(--ef-motion-perceptual-duration, 120ms\);/);
+  assert.match(roles, /--ef-effect-transition-easing: var\(--ef-motion-perceptual-easing, cubic-bezier\(0\.2, 0, 0, 1\)\);/);
+});
+
 test("generic role defaults cover every role so the marketing layer works without a theme", () => {
   for (const token of [...roleTokens, "--ef-color-surface-elevated", "--ef-color-text-muted", "--ef-color-accent-hover",
     "--ef-color-status-success", "--ef-color-status-warning", "--ef-color-status-danger", "--ef-color-status-info"]) {

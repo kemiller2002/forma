@@ -14,8 +14,8 @@ Provide one deterministic CSS-only motion grammar for controls and transient sur
 ## Surface defaults
 
 - light: disclosure, popover, ordinary action menu, tab indicator
-- standard: alert and toast notification
-- heavy: modal dialog, flyout / modal drawer baseline, command palette
+- standard: alert, toast notification, Aegis fault notification, Aegis fault banner
+- heavy: modal dialog, flyout / modal drawer baseline, command palette, Aegis blocking fault
 
 These defaults describe visual inertia only.
 
@@ -25,6 +25,7 @@ These defaults describe visual inertia only.
 - gravity cue: `sqrt(2 * distance / gravity)`
 - exit: `0.68 * inertial entry`, clamped to the supported UI range
 - reduced motion: effectively immediate spatial change with final visual state preserved
+- model vocabulary, classification and audit: see `src/motion.manifest.md`
 
 ## Native authority
 
@@ -39,9 +40,11 @@ CSS must never create a parallel semantic state machine.
 
 - `tests/browser/surface-physics.spec.mjs`
 - `tests/browser/overlay-motion.spec.mjs`
+- `tests/browser/motion-foundation.spec.mjs`
+- `tests/motion-audit.test.mjs`
 - repository-wide mobile, accessibility, zero-runtime, package and cross-browser checks
 
 ## Maintenance
 
 - Owner: Echelon Foundry design system
-- Last checked against implementation: 2026-09-23
+- Last checked against implementation: 2026-09-29
