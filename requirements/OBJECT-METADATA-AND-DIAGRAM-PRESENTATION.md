@@ -284,3 +284,12 @@ Forma SHOULD provide a public property vocabulary that allows consuming products
 - **FMD-PAINT-003** Gradients, blend modes, filters, and arbitrary SVG paint servers are not required for the initial diagram/workflow presentation family.
 - **FMD-PAINT-004 MUST** provide a safe fallback for any future advanced paint treatment.
 - **FMD-PAINT-005 MUST** keep advanced paint treatment from becoming the sole carrier of semantic meaning.
+
+
+## 23. Metadata-derived disclosure
+
+- **FMD-DISCLOSE-001 MUST** treat an appearance derived from metadata as disclosure of information about that metadata.
+- **FMD-DISCLOSE-002 MUST NOT** encourage consumers to map source-only/sensitive metadata into visible color, icon, badge, marker, pattern, legend category, or text unless the consuming policy explicitly authorizes that derived disclosure.
+- **FMD-DISCLOSE-003 MUST** keep mapping inputs and rendered outputs conceptually separate so consumers can validate disclosure before handing resolved presentation to Forma.
+- **FMD-DISCLOSE-004 MUST NOT** assume a coarse color/category is safe merely because the raw metadata value is hidden.
+- **FMD-DISCLOSE-005 SHOULD** document that metadata-to-presentation mappings require privacy review when the source field is restricted.
