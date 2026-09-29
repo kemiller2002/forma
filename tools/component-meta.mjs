@@ -118,6 +118,7 @@ export const componentMeta = {
   "empty-state": ["Empty state", "State & feedback", "Application content", "Explain an empty result and provide a useful recovery action without treating absence as failure."],
   "file-upload": ["File upload queue", "Input", "Native HTML / Limen", "Native file selection plus a reusable upload queue for progress, success, cancellation, failure, and unknown outcomes."],
   "master-detail": ["Master/detail workspace", "Layout & workspace", "Application / Limen", "List-and-detail composition that collapses cleanly from multi-pane desktop to mobile navigation."],
+  "metric-value-change": ["Metric value change", "Content & utility", "Application state", "A metric whose authoritative value updates immediately; a neutral perceptual tint marks the update without counting through invented numbers or implying direction."],
   "metric-card": ["Metric card", "Content & utility", "Application content", "A compact labeled value with context and optional action, without inventing metric meaning."],
   "mobile-action-bar": ["Mobile action bar", "Navigation & commands", "Application / Limen", "Safe-area-aware mobile action region for critical contextual actions."],
   "operation-status": ["Operation status", "State & feedback", "Ordo / application", "Present pending, confirmed, failed, conflict, unknown, reconciling, stale, blocked, unavailable, or insufficient states."],

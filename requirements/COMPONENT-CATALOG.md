@@ -756,7 +756,7 @@ Only if multiple applications demonstrate need. Docking must not become a genera
 - accordion/disclosure (FORMA-MOT-007: intrinsic-height settling via `interpolate-size` and `::details-content` where supported, instant elsewhere);
 - scroll progress: `.ef-scroll-progress` (FORMA-MOT-007), a decorative direct projection of the scroll timeline;
 - key-value list;
-- stat/metric;
+- stat/metric (FORMA-MOT-011: `data-ef-value-change` marks an application-published update with a neutral perceptual tint; values are never counted through);
 - code block with copy action;
 - keyboard shortcut display;
 - separator.

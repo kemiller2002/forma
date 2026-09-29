@@ -92,6 +92,15 @@ Patterns: `patterns/disclosure.html`, `patterns/scroll-progress.html`. View Tran
 - The former `.18s` transitions and `translateY(-2px)` hover lift are removed (the lift moved the hit target under the pointer, MOT-014).
 - Smooth scrolling is enabled only under `prefers-reduced-motion: no-preference`; reduced motion removes site transitions entirely.
 
+## Changing values and non-spatial state (FORMA-MOT-011)
+
+- **Values are authoritative immediately.** The application writes the new value; Forma never counts through invented intermediate numbers (odometer or count-through behavior requires a demonstrated task benefit and is not provided). To mark an update, insert the new value element with `data-ef-value-change` (not on first render). The text is fully legible from the first frame; a neutral surface tint fades over `--ef-motion-perceptual-emphasis-duration` with perceptual easing. The treatment is identical for increases, decreases and unchanged values, so motion implies no improvement, decline, success, failure or severity. Announce the change in the application's live region. Pattern: `patterns/metric-value-change.html`.
+- **Status** changes are immediate: the status lozenge glyph and text change with the state, so color is never the only cue.
+- **Overlay opacity** (popover, menu, toast, command palette, fault notification and banner) and **backdrop dimming** (`background`, `backdrop-filter`) are perceptual interpolation, not mass-derived or linear timing. Spatial entry and exit keep the inertial model; the discrete `display`/`overlay` carriers keep the exit duration.
+- **Theme changes** introduce no spatial motion; only existing perceptual color interpolation may run.
+- Reduced motion and forced colors show new values immediately with no emphasis motion.
+- The debt ledger is empty: `node tools/motion-audit.mjs --strict` passes.
+
 ## Machine-readable catalog
 
 - `catalog/motion/models.json`: taxonomy, the variables each model may use, legacy and generic tokens, spatial properties, audited sources and bundles.

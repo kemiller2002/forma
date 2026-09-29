@@ -559,6 +559,21 @@
         "strategy": "explicit"
       },
       "note": "Scroll-linked reading progress: a direct projection of scroll position with no added lag; hidden where unsupported or under reduced motion (MOT-023)."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "value-change",
+      "selector": ":where([data-ef-value-change])",
+      "tracks": {
+        "background-color": "perceptual"
+      },
+      "entrySelectors": [
+        ":where([data-ef-value-change])"
+      ],
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "notes": "Changing-value emphasis (FORMA-MOT-011): the new authoritative value is legible from the first frame; a neutral surface tint fades by perceptual interpolation, identical for every direction of change. No count-through."
     }
   ]
 }
