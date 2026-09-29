@@ -3,18 +3,6 @@
   "description": "Motion findings that exist in shipped CSS and are owned by an open migration issue. The audit fails on any finding not listed here and on any entry here that no longer occurs, so this ledger can only shrink. FORMA-MOT-010 (#67) requires it to be empty. Never add entries to make new motion pass.",
   "entries": [
     {
-      "key": "implicit-easing|site/site.css|.ef-button|background|ease",
-      "issue": "GH-66"
-    },
-    {
-      "key": "implicit-easing|site/site.css|.ef-button|color|ease",
-      "issue": "GH-66"
-    },
-    {
-      "key": "implicit-easing|site/site.css|.ef-button|transform|ease",
-      "issue": "GH-66"
-    },
-    {
       "key": "legacy-token|src/styles/components.css|.ef-command-palette[open]|transition-duration|--ef-motion-state-duration",
       "issue": "GH-68"
     },
@@ -69,23 +57,6 @@
     {
       "key": "model-token-mismatch|src/styles/components.css|.ef-toast|opacity|--ef-motion-exit-duration",
       "issue": "GH-68"
-    },
-    {
-      "key": "transform-shorthand-motion|site/site.css|.ef-button|transform|",
-      "issue": "GH-66",
-      "detectedBy": "GH-64 composition rule (MOT-024); pre-existing CSS"
-    },
-    {
-      "key": "unexplained-duration|site/site.css|.ef-button|background|.18s",
-      "issue": "GH-66"
-    },
-    {
-      "key": "unexplained-duration|site/site.css|.ef-button|color|.18s",
-      "issue": "GH-66"
-    },
-    {
-      "key": "unexplained-duration|site/site.css|.ef-button|transform|.18s",
-      "issue": "GH-66"
     },
     {
       "key": "unexplained-easing|src/styles/components.css|.ef-command-palette|opacity|linear",
