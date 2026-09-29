@@ -2130,9 +2130,11 @@
     /* Remove spatial press compression; selection stays immediate. */
     .ef-segment:has(input:active:not(:disabled)) > :not(input) { scale: none; }
 
-    /* No indicator travel at all: transition: none rather than a near-zero
-       duration, which WebKit can settle at stale anchor() insets. */
-    .ef-segmented::before { transition: none; }
+    /* Without travel the indicator adds nothing, so reduced motion uses the
+       static presentation (as in the fallback and forced colors): the checked
+       segment carries its own inverse surface and the indicator is removed. */
+    .ef-segmented::before { display: none; transition: none; }
+    .ef-segment:has(input:checked) { background: var(--ef-color-surface-inverse, #202421); }
   }
 
   @media (forced-colors: active) {
