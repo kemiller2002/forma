@@ -794,6 +794,94 @@
     }
   }
 
+  /* Progressive motion enhancements (MOT-021 to MOT-024) ----------------- */
+  /*
+   * Every enhancement below is gated behind a feature query or an explicit
+   * opt-in. The unenhanced presentation is the complete, correct baseline;
+   * no semantic state, routing, focus or consequential action depends on
+   * any of these animations.
+   */
+
+  /* Intrinsic-size disclosure (MOT-021): native details owns open/closed. */
+  @supports (interpolate-size: allow-keywords) and selector(::details-content) {
+    .ef-disclosure { interpolate-size: allow-keywords; }
+
+    .ef-disclosure::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition:
+        block-size var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing),
+        content-visibility var(--ef-motion-inertia-duration) allow-discrete;
+    }
+
+    .ef-disclosure[open]::details-content { block-size: auto; }
+  }
+
+  /*
+   * View Transitions (MOT-022). Opt in with data-ef-view-transitions on the
+   * root element. The application orchestrates document.startViewTransition()
+   * and must update state directly when the API is absent; snapshots are
+   * never semantic authority. Crossfades are perceptual interpolation;
+   * shared-element geometry is light inertial settling.
+   */
+  :root[data-ef-view-transitions]::view-transition-old(*),
+  :root[data-ef-view-transitions]::view-transition-new(*) {
+    animation-duration: var(--ef-motion-perceptual-emphasis-duration);
+    animation-timing-function: var(--ef-motion-perceptual-easing);
+  }
+
+  :root[data-ef-view-transitions]::view-transition-group(*) {
+    animation-duration: var(--ef-motion-inertia-duration, 214ms);
+    animation-timing-function: var(--ef-motion-damped-easing, cubic-bezier(0.2, 0.8, 0.2, 1));
+  }
+
+  /*
+   * Scroll-linked reading progress (MOT-023): a direct projection of the
+   * scroll position with no additional lag. Decorative only; the scrollbar and
+   * content remain authoritative, and nothing may be triggered from its
+   * visual state. Hidden where scroll timelines are unsupported, because a
+   * static bar could not be truthful.
+   */
+  .ef-scroll-progress {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 2;
+    display: none;
+    block-size: 0.1875rem;
+    background: var(--ef-color-accent-primary, #905831);
+    pointer-events: none;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .ef-scroll-progress {
+      display: block;
+      transform-origin: 0 50%;
+      scale: 0 1;
+      animation: ef-scroll-progress var(--ef-motion-direct-easing, linear) both;
+      animation-timeline: scroll(root block);
+    }
+
+    .ef-scroll-progress:dir(rtl) { transform-origin: 100% 50%; }
+  }
+
+  @keyframes ef-scroll-progress {
+    to { scale: 1 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    /* transition: none (not a near-zero duration): the discrete
+       content-visibility step would otherwise delay the content by frames. */
+    .ef-disclosure::details-content { transition: none; }
+
+    :root[data-ef-view-transitions]::view-transition-group(*),
+    :root[data-ef-view-transitions]::view-transition-old(*),
+    :root[data-ef-view-transitions]::view-transition-new(*) {
+      animation: none;
+    }
+
+    .ef-scroll-progress { display: none; }
+  }
+
   /* Dialog and flyout ---------------------------------------------------- */
   :where(.ef-dialog, .ef-flyout) {
     --ef-overlay-motion-duration: var(--ef-motion-exit-duration);
