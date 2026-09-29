@@ -103,6 +103,17 @@ Applications should map Aegis through the safe presentation model rather than bi
 
 See [docs/AEGIS-INTEGRATION.md](docs/AEGIS-INTEGRATION.md) and [requirements/AEGIS-FAULT-PRESENTATION.md](requirements/AEGIS-FAULT-PRESENTATION.md).
 
+
+## Object metadata and diagram/workflow presentation
+
+Forma now explicitly treats descriptive object metadata and diagram/workflow presentation as reusable cross-cutting capabilities.
+
+Objects may carry consumer-supplied metadata such as identifiers, descriptions, tags, owner/role, phase/category, status text, provenance/source references, and custom namespaced fields. Forma may present selected metadata, but the consuming application/profile remains the authority for values and meaning.
+
+Workflow/diagram items may also carry authored fill, border/stroke, accent, connector, and safe foreground colors. Color is presentation only. Semantic workflow type/status never derives from color, and meaningful distinctions must survive forced colors, grayscale, and backgrounds-disabled output.
+
+See `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md`.
+
 ## Figma
 
 Forma treats Figma as a design and developer-consumption surface, not as a

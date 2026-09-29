@@ -27,7 +27,9 @@ When an agent creates or changes UI:
 7. Keep transition legality, obligations, scoring, permissions, and domain
    invariants in Ordo/application state, never in Forma.
 8. Validate the result with repository and accessibility tests.
-9. For Figma/library work, read `docs/FIGMA.md` and use `figma/component-contracts.json`; never invent Figma node URLs or a second token source.
+9. When an object has metadata, keep the metadata in the consuming model and render only the safe fields required by the UI; do not use CSS classes or color as the metadata store.
+10. Workflow/diagram objects may use authored colors, but keep color independent from semantic type/status and always preserve a non-color cue.
+11. For Figma/library work, read `docs/FIGMA.md` and use `figma/component-contracts.json`; never invent Figma node URLs or a second token source.
 
 ## How to consume Forma
 
@@ -303,3 +305,18 @@ follow `docs/marketing/MIGRATION-CONTRACT.md`.
 - A presentation need that other sites could share is a Forma capability gap
   (`requirements/MARKETING-PRESENTATION.md`, MKT-LOCAL-4). Do not build a
   local look-alike.
+
+
+## Object metadata and diagram/workflow color
+
+Read `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md` before adding metadata-rich or diagram/workflow presentation.
+
+- Object identity, metadata, type/status, and color are separate concepts.
+- Forma may render metadata but does not own or calculate it.
+- Use semantic metadata presentation rather than burying important values in `data-*` attributes.
+- Do not put secrets or suppressed values in attributes, CSS content, hidden text, or diagnostics.
+- Workflow/diagram items may have authored fill, stroke, accent, connector, and when safe foreground colors.
+- Prefer Forma tokens/palette slots; explicit consumer literals are allowed only when the consuming product contract permits them.
+- Never infer workflow meaning from color. A metadata-to-color rule must be explicit application/profile data.
+- Verify dark/light, forced colors, grayscale, and backgrounds-disabled output when diagram color matters.
+- Graph topology, routing, drag/drop, commands, workflow execution, and legal transitions remain outside Forma.
