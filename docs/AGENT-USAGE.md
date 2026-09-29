@@ -163,8 +163,9 @@ Every animation represents one of five phenomena (MOT-010). Choose the model fir
 1. Pick the model from the table above. Do not invent a sixth model in CSS; record the gap through ROS first (MOT-030).
 2. Use only that model's variables. Literal durations/easings are allowed only as a var() fallback that restates the token value, as a canonical-variable definition, or as a literal justified on the classification entry with a requirement reference (MOT-012).
 3. Classify every animated selector/property in `catalog/motion/classification.json` and declare its reduced-motion strategy (MOT-027): `explicit`, `scope-tokens`, `global`, `stop` (repeated/sequenced), `brief` (non-spatial only) or `preserve` (direct manipulation only).
-4. Run `npm run test:motion`. It fails on any new unclassified track, unexplained literal, generic-token timing, model/token mismatch, missing or unverified reduced-motion substitution, repeated motion that does not stop, unclassified keyframes or starting styles, and on any stale classification.
-5. Never add entries to `catalog/motion/debt.json` to make new motion pass. That ledger only records pre-existing findings owned by an open migration issue, and it may only shrink.
+4. Add or extend a browser test for the behavior (not just the timing) and list it under the matching requirement in `catalog/motion/conformance.json`; the gate verifies that every listed test exists.
+5. Run `npm run test:motion` (part of `npm run check`, `release:check` and CI). It runs `node tools/motion-audit.mjs --strict` and fails on any new unclassified track, unexplained literal, generic-token timing, model/token mismatch, missing or unverified reduced-motion substitution, repeated motion that does not stop, the animated `transform` shorthand, unclassified keyframes or starting styles, and any stale classification.
+6. The debt ledger `catalog/motion/debt.json` is closed and must stay empty: strict mode fails while it has any entry. Fix the finding; never record it.
 
 ## Mobile contract
 

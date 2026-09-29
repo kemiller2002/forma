@@ -101,11 +101,20 @@ Patterns: `patterns/disclosure.html`, `patterns/scroll-progress.html`. View Tran
 - Reduced motion and forced colors show new values immediately with no emphasis motion.
 - The debt ledger is empty: `node tools/motion-audit.mjs --strict` passes.
 
+## Conformance gate (FORMA-MOT-010)
+
+- `npm run test:motion` runs the audit unit tests, the gate tests (`tests/motion-gate.test.mjs`) and `node tools/motion-audit.mjs --strict`. It is part of `npm run check`, `npm run release:check`, `conformance.yml` and `design-system-pilot-validation.yml`.
+- Strict mode fails on any finding and on any debt entry: the ledger that tracked the pre-existing findings during migration (#58-#66, #68) is empty and closed.
+- The gate tests copy the shipped motion surface into a temporary tree and prove that each illegal change fails: an unclassified animated selector (core, assessment, marketing or site CSS), an unexplained literal or implicit easing, a token from the wrong model, spatial motion without a verified reduced-motion substitution, repeated motion that never stops, the animated `transform` shorthand, and re-opening the ledger.
+- `catalog/motion/conformance.json` maps every required behavior (classification coverage, literal timing, light < standard < heavy, gravity mass independence, cadence period, reduced motion by model, retargeting, no semantic delay, progress non-overshoot, direct-manipulation no-lag, rejected drop/resize boundaries, concurrent composition, progressive fallback, non-spatial perceptual change) to the tests that prove it; the gate fails if a referenced test disappears.
+- Component examples for each family ship as patterns on the documentation site (segmented control, spinner, progress bar, tooltip, reorder states, resizable split pane, scroll progress, disclosure, metric value change) and are exercised by the browser suites.
+
 ## Machine-readable catalog
 
 - `catalog/motion/models.json`: taxonomy, the variables each model may use, legacy and generic tokens, spatial properties, audited sources and bundles.
 - `catalog/motion/classification.json`: maps every shipped animated selector/property to a model and a reduced-motion strategy.
-- `catalog/motion/debt.json`: pre-existing findings, each owned by an open migration issue. It may only shrink; FORMA-MOT-010 empties it.
+- `catalog/motion/debt.json`: the migration ledger. It is empty, and strict mode keeps it that way (FORMA-MOT-010).
+- `catalog/motion/conformance.json`: required behaviors mapped to the tests that prove them.
 
 ## Audit
 
