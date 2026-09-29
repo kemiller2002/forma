@@ -196,3 +196,73 @@ The first implementation SHOULD remain smaller than the complete architecture.
 - **FMD-M1-004 MUST** prove the same workflow remains understandable in grayscale and backgrounds-disabled output.
 - **FMD-M1-005 MUST** preserve Forma's zero-runtime contract.
 - **FMD-M1-006 MUST** leave graph behavior, routing, commands, and workflow semantics in Forma Studio/application code.
+
+
+## 14. Metadata schema presentation contract
+
+- **FMD-SCHEMA-001 MUST** support stable metadata field keys independently from localized/display labels.
+- **FMD-SCHEMA-002 MAY** allow consuming profile/application schemas to declare required/optional status, type, cardinality, default, allowed values, range, pattern/length, and reference constraints.
+- **FMD-SCHEMA-003 MUST** keep schema validation authority in the consuming application/profile; Forma presents validation/help but does not invent domain constraints.
+- **FMD-SCHEMA-004 SHOULD** provide presentation for field description/help text and allowed-value guidance where supplied.
+- **FMD-SCHEMA-005 MUST** support enum/token values whose stable value ID is separate from localized display text.
+- **FMD-SCHEMA-006 MUST** distinguish explicit value, defaulted value, derived value, source-bound value, unknown, unavailable, and invalid where the consuming UI needs those distinctions.
+- **FMD-SCHEMA-007 MUST** NOT visually present a missing required field as though a default/derived value had been explicitly authored unless the consumer says so.
+- **FMD-SCHEMA-008 SHOULD** support mixed/indeterminate metadata values for multi-selection inspector presentation.
+- **FMD-SCHEMA-009 MUST** preserve readable labels/value association at 320px, text zoom, RTL/bidirectional text, and localization.
+
+## 15. Reusable diagram appearance styles
+
+Forma SHOULD provide a public property vocabulary that allows consuming products to define reusable named appearance styles without forking Forma CSS.
+
+- **FMD-STYLE-001 MUST** expose stable supported appearance properties independently from a consumer's named style ID.
+- **FMD-STYLE-002 SHOULD** support fill, stroke/border, accent, foreground, stroke width, dash/line style, marker treatment, shape/presentation variant, icon treatment, pattern/hatch, and typography emphasis where each property is supported by the public diagram contract.
+- **FMD-STYLE-003 MUST** allow these properties to be driven by Forma tokens and documented CSS custom properties/presentation hooks rather than requiring a separate hard-coded class per consumer style.
+- **FMD-STYLE-004 MUST** keep project-level named styles, style inheritance, style versioning, and override semantics outside Forma; those belong to the consuming application/Studio.
+- **FMD-STYLE-005 MUST** support an explicit resolved appearance plus safe fallback when an optional property is unavailable.
+- **FMD-STYLE-006 MUST NOT** infer semantic type/status from a chosen shape, icon, line style, fill, or named consumer style.
+- **FMD-STYLE-007 MUST** preserve focus, selection, validation, disabled, forced-colors, and non-color semantic cues regardless of consumer appearance overrides.
+- **FMD-STYLE-008 SHOULD** provide documented reset/default token values for each supported diagram appearance property.
+
+## 16. Shape and icon presentation
+
+- **FMD-SHAPE-001 SHOULD** provide a small reusable general-purpose shape presentation vocabulary sufficient for common diagramming without becoming a freeform vector editor.
+- **FMD-SHAPE-002 SHOULD** cover at least rectangle/rounded-rectangle, ellipse/circle, diamond, pill/capsule, and a small set of additional shapes justified by Workflow/State/Architecture examples.
+- **FMD-SHAPE-003 MUST** keep the Forma shape/presentation identifier separate from application semantic node kind.
+- **FMD-SHAPE-004 MUST** allow a consumer to change a legal shape/presentation without changing underlying application identity.
+- **FMD-SHAPE-005 MUST** support node labels/content and optional icon placement without making icon/shape the sole semantic cue.
+- **FMD-SHAPE-006 SHOULD** support public Forma icons and consumer project assets through explicit slots/contracts rather than arbitrary CSS background-image semantics.
+- **FMD-SHAPE-007 MUST NOT** add arbitrary path/Bezier authoring or a vector illustration runtime to Forma.
+- **FMD-SHAPE-008 MUST** ensure shape boundaries remain visible in forced-colors and backgrounds-disabled print fallbacks where applicable.
+
+## 17. Pattern, line-style, and non-color differentiation
+
+- **FMD-NONCOLOR-001 SHOULD** support line dash/style and start/end marker variants as non-color relationship cues.
+- **FMD-NONCOLOR-002 MAY** support pattern/hatch fills where they improve grayscale/print/CVD differentiation without making text illegible.
+- **FMD-NONCOLOR-003 MUST** keep pattern/line/marker choice as presentation unless the consuming profile explicitly maps it to semantic relationship/type data.
+- **FMD-NONCOLOR-004 MUST** preserve labels or equivalent textual cues when patterns/markers are meaningful.
+- **FMD-NONCOLOR-005 MUST** test non-color differentiation under grayscale, forced colors, and backgrounds-disabled output.
+
+## 18. Metadata-driven presentation maps
+
+- **FMD-MAP-001 MAY** support consumer/profile mappings from metadata to a complete appearance result, not only a color.
+- **FMD-MAP-002 MAY** project metadata into fill, stroke, icon, marker, line style, pattern, badge, label, or other supported presentation properties.
+- **FMD-MAP-003 MUST** keep mapping rules outside Forma runtime and receive only the resolved/application-supplied presentation state.
+- **FMD-MAP-004 MUST** keep the source metadata and semantic type/status accessible independently from the visual mapping.
+- **FMD-MAP-005 MUST** permit a legend/key to explain mappings textually and structurally.
+- **FMD-MAP-006 MUST** avoid a design where removal of color alone destroys the mapping's meaning.
+
+## 19. Color editing interoperability
+
+- **FMD-EDIT-001** Consumer editors SHOULD expose both swatch/picker interaction and text/value entry for color.
+- **FMD-EDIT-002** Forma MUST publish the accepted presentation/token hooks needed for a consumer editor to browse tokens, palette slots, and reset/default states.
+- **FMD-EDIT-003** Forma MUST NOT require an eyedropper, 2D color plane, hover, or pointer-only interaction.
+- **FMD-EDIT-004** Literal color normalization/serialization remains the consumer/editor's project-format responsibility, while Forma defines what CSS color values its public contract can render.
+- **FMD-EDIT-005** Automatic contrast assistance MAY be presented by consumers, but Forma MUST NOT silently change a fixed consumer-authored color.
+
+## 20. Security for vector and metadata presentation
+
+- **FMD-SEC-001 MUST** treat consumer-supplied labels, metadata, URLs, icons/assets, and SVG/vector content as untrusted inputs at the applicable consuming/rendering boundary.
+- **FMD-SEC-002 MUST NOT** require unsanitized HTML metadata values.
+- **FMD-SEC-003 MUST NOT** require executable SVG/script/event-handler content in public diagram contracts.
+- **FMD-SEC-004 MUST** support safe text/attribute/style hooks that can be populated without `innerHTML` from untrusted metadata.
+- **FMD-SEC-005 MUST** keep source-only/secret metadata out of generated CSS content and visually hidden convenience markup unless explicitly authorized.
