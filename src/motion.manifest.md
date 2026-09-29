@@ -53,6 +53,20 @@ Weight is presentation only. It never encodes severity, risk, permission or doma
 - Placement uses spanning `position-area` options with `position-try-order: most-inline-size`, and the hint never grows beyond its area, so it stays inside the viewport even at 320px. Without anchor positioning, the top-layer fallback stays readable.
 - Reduced motion removes the displacement; forced colors uses system colors.
 
+## Direct manipulation and settling (FORMA-MOT-006)
+
+Forma exposes presentation hooks only. The application or Limen owns pointer capture, velocity, routing, auto-scroll, legal drop validation, resize state and domain transitions.
+
+| Hook | Meaning | Motion |
+| --- | --- | --- |
+| `data-ef-manipulation="dragging"` + `--ef-drag-x/-y` | direct phase | direct: 0ms, the visual is the application offset |
+| `data-ef-manipulation="settling"` / `"displaced"` | post-release, sibling preview | inertial, damped easing, no overshoot |
+| `data-ef-drop="candidate" / "accepted" / "rejected"` | drop presentation | dashed / solid / dashed + surface cue, non-color |
+| `.ef-split-pane[data-ef-resizable]` + `--ef-split-size` | resizable split pane | clamped to `--ef-split-min`/`--ef-split-max` in CSS; `resizing` is direct, release and keyboard steps settle |
+| `data-ef-collapsed` | collapsed pane | settles to the minimum |
+
+A rejected drop returns to its authoritative position, and the text explanation belongs in the application's live region. Keyboard reorder and resize write the same hooks and end in the same state. Reduced motion places items directly at their final position. Patterns: `patterns/reorder-states.html`, `patterns/resizable-split-pane.html`.
+
 ## Machine-readable catalog
 
 - `catalog/motion/models.json`: taxonomy, the variables each model may use, legacy and generic tokens, spatial properties, audited sources and bundles.

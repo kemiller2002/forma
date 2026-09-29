@@ -473,6 +473,30 @@
         "strategy": "explicit"
       },
       "note": "Tooltip/contextual hint (MOT-018): light perceived weight, tiny origin-related displacement, perceptual opacity, shorter derived exit; reduced motion removes the displacement."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "reorder",
+      "selector": "[data-ef-manipulation]",
+      "tracks": {
+        "translate": "inertial"
+      },
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "note": "Post-release settling and sibling displacement: damped inertial, no overshoot. The direct phase (dragging/resizing) overrides the duration with --ef-motion-direct-duration, so the visual tracks the application-supplied offset without lag (MOT-019)."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "split-pane",
+      "selector": ".ef-split-pane[data-ef-resizable]",
+      "tracks": {
+        "grid-template-columns": "inertial"
+      },
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "note": "Resize settling after release or a keyboard step: damped inertial, retargets, clamped to legal bounds; resizing uses the direct duration (MOT-020)."
     }
   ]
 }
