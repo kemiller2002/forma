@@ -9,22 +9,29 @@ const seconds = (value) => value.split(",").map((part) => {
   return trimmed.endsWith("ms") ? Number.parseFloat(trimmed) / 1000 : Number.parseFloat(trimmed);
 });
 
-// Indicator geometry relative to its control, and the checked segment's box.
+// Indicator geometry against the checked segment's layout box. Anchor
+// positioning resolves against layout boxes (offset geometry, untransformed,
+// relative to the control's padding box), so both sides are measured that way.
 const indicatorState = (control) =>
   control.evaluate((element) => {
     const style = getComputedStyle(element, "::before");
     const checked = element.querySelector(".ef-segment:has(input:checked)");
-    const box = element.getBoundingClientRect();
-    const target = checked.getBoundingClientRect();
-    const border = Number.parseFloat(getComputedStyle(element).borderLeftWidth);
+    const segment = getComputedStyle(checked);
     return {
       display: style.display,
       left: Number.parseFloat(style.left),
       top: Number.parseFloat(style.top),
-      width: element.clientWidth - Number.parseFloat(style.left) - Number.parseFloat(style.right),
-      targetLeft: target.left - box.left - border,
-      targetTop: target.top - box.top - border,
-      targetWidth: target.width,
+      width: Number.parseFloat(style.width),
+      targetLeft: checked.offsetLeft,
+      targetTop: checked.offsetTop,
+      targetWidth: checked.offsetWidth,
+      // Diagnostics only: reported when alignment fails.
+      diagnostics: {
+        right: style.right,
+        clientWidth: element.clientWidth,
+        segmentTransform: [segment.transform, segment.translate, segment.scale].join(" | "),
+        controlBorder: getComputedStyle(element).borderWidth
+      },
       running: element
         .getAnimations({ subtree: true })
         .filter((animation) => animation.playState === "running" && animation.effect?.pseudoElement === "::before" && animation.effect?.target === element)
