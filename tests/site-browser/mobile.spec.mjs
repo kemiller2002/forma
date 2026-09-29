@@ -131,7 +131,8 @@ test("site buttons use the shared perceptual motion and never move on hover", as
   style.durations.split(", ").forEach((duration) => expect(duration).toBe(style.perceptual));
   const before = await button.boundingBox();
   await button.hover();
-  await button.evaluate((element) => Promise.all(element.getAnimations().map((animation) => animation.finished)));
+  // A transition replaced mid-flight rejects `finished` with AbortError; only settling matters.
+  await button.evaluate((element) => Promise.all(element.getAnimations().map((animation) => animation.finished.catch(() => null))));
   const after = await button.boundingBox();
   expect(after.y).toBeCloseTo(before.y, 1);
   expect(await button.evaluate((element) => getComputedStyle(element).transform)).toBe("none");
