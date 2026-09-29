@@ -50,6 +50,9 @@ jobs:
           npm run test:brands
           npm run test:package
 
+      - name: Validate Figma contract
+        run: npm run test:figma
+
       - name: Show artifact metrics
         run: cat dist/build-metrics.json
 
