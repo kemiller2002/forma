@@ -67,6 +67,19 @@ Forma exposes presentation hooks only. The application or Limen owns pointer cap
 
 A rejected drop returns to its authoritative position, and the text explanation belongs in the application's live region. Keyboard reorder and resize write the same hooks and end in the same state. Reduced motion places items directly at their final position. Patterns: `patterns/reorder-states.html`, `patterns/resizable-split-pane.html`.
 
+## Progressive motion (FORMA-MOT-007)
+
+Every enhancement below degrades to a correct static presentation, and none of them gates state.
+
+| Feature | Contract | Model | Fallback / reduced motion |
+| --- | --- | --- | --- |
+| `.ef-disclosure::details-content` with `interpolate-size: allow-keywords` | the native `open` state is immediate; the panel height settles to `auto`, collapsed content stays unfocusable (`content-visibility`) | inertial, damped easing | opens instantly and fully; reduced motion sets `transition: none` |
+| `:root[data-ef-view-transitions]` | opt-in crossfade for application-initiated `document.startViewTransition()`; the DOM update happens before snapshots animate | perceptual emphasis | without the API the application updates state directly; reduced motion removes the animation |
+| `.ef-scroll-progress` | `scale` is a direct projection of `animation-timeline: scroll()`; no spring, smoothing or lag | direct | hidden without scroll timelines and under reduced motion; decorative (`aria-hidden`) |
+| Concurrent composition | press uses `scale`, selection uses `translate`/insets, colors use perceptual properties, so concurrent layers never clobber each other; the `transform` shorthand is reported as `transform-shorthand-motion` | per layer | each layer degrades independently |
+
+Patterns: `patterns/disclosure.html`, `patterns/scroll-progress.html`. View Transitions are opt-in on the root element because Forma never starts them.
+
 ## Machine-readable catalog
 
 - `catalog/motion/models.json`: taxonomy, the variables each model may use, legacy and generic tokens, spatial properties, audited sources and bundles.

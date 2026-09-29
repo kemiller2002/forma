@@ -753,7 +753,8 @@ Only if multiple applications demonstrate need. Docking must not become a genera
 - icon;
 - icon button pattern;
 - card/tile;
-- accordion/disclosure;
+- accordion/disclosure (FORMA-MOT-007: intrinsic-height settling via `interpolate-size` and `::details-content` where supported, instant elsewhere);
+- scroll progress: `.ef-scroll-progress` (FORMA-MOT-007), a decorative direct projection of the scroll timeline;
 - key-value list;
 - stat/metric;
 - code block with copy action;
