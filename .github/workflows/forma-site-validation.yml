@@ -37,10 +37,17 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: forma-site-validation-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for commit batch
+        if: github.event_name != 'workflow_dispatch'
+        run: sleep 600
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v5
         with:
