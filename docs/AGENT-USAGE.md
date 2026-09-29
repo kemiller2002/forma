@@ -144,6 +144,28 @@ Forma's controls and transient surfaces share one physics-derived CSS motion voc
 - Modal flyouts are Forma's canonical left/right modal drawer baseline and use native dialog behavior; swipe/drag/resizing, bottom sheets, and persistent nonmodal drawers belong to Limen/application code.
 - Read `requirements/MOTION-AND-INTERACTION.md` before adding a new animated pattern.
 
+### Choosing the motion model before the timing
+
+Every animation represents one of five phenomena (MOT-010). Choose the model first, then use only that model's variables:
+
+| Model | Use for | Timing variables |
+| --- | --- | --- |
+| inertial / spring | an object with perceived mass settling after activation or release (switch thumb, selection indicator, surface entry, press) | `--ef-motion-inertia-duration`, `--ef-motion-exit-duration`, `--ef-motion-press-duration`; `--ef-motion-spring-easing`, `--ef-motion-damped-easing` |
+| gravity-derived | a small vertical directional cue; timing ignores mass | `--ef-motion-gravity-duration`; `--ef-motion-damped-easing` |
+| constant-velocity / cadence | repeated activity or a bounded discrete sequence | `--ef-motion-cadence-period`; `--ef-motion-cadence-easing` (`linear`) |
+| direct manipulation / authoritative value | drag, resize, scroll-linked, native range and determinate progress | `--ef-motion-direct-duration` (`0ms`); `--ef-motion-direct-easing` |
+| perceptual interpolation | opacity, color, background, border, shadow, backdrop; never assigned mass | `--ef-motion-perceptual-duration`, `--ef-motion-perceptual-emphasis-duration`; `--ef-motion-perceptual-easing` |
+
+`--ef-motion-state-duration` is a legacy compatibility variable: it derives from inertial mass, so shipped selectors must not use it for non-spatial change.
+
+### Adding or changing an animation legally
+
+1. Pick the model from the table above. Do not invent a sixth model in CSS; record the gap through ROS first (MOT-030).
+2. Use only that model's variables. Literal durations/easings are allowed only as a var() fallback that restates the token value, as a canonical-variable definition, or as a literal justified on the classification entry with a requirement reference (MOT-012).
+3. Classify every animated selector/property in `catalog/motion/classification.json` and declare its reduced-motion strategy (MOT-027): `explicit`, `scope-tokens`, `global`, `stop` (repeated/sequenced), `brief` (non-spatial only) or `preserve` (direct manipulation only).
+4. Run `npm run test:motion`. It fails on any new unclassified track, unexplained literal, generic-token timing, model/token mismatch, missing or unverified reduced-motion substitution, repeated motion that does not stop, unclassified keyframes or starting styles, and on any stale classification.
+5. Never add entries to `catalog/motion/debt.json` to make new motion pass. That ledger only records pre-existing findings owned by an open migration issue, and it may only shrink.
+
 ## Mobile contract
 
 Every Forma component must have a usable 320 CSS px presentation. Agents must:

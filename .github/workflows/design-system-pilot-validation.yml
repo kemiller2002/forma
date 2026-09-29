@@ -41,6 +41,9 @@ jobs:
       - name: Enforce zero-runtime boundary
         run: npm run test:runtime
 
+      - name: Enforce motion model conformance
+        run: npm run test:motion
+
       - name: Test build-time compilers and package contract
         run: |
           npm run test:tokens

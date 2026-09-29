@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "requirement": "requirements/MOTION-AND-INTERACTION.md",
+  "description": "Canonical Forma motion taxonomy (MOT-010) and the shared variable vocabulary each model may use (MOT-012). The motion audit (tools/motion-audit.mjs) reads this file; it is the single machine-readable source for model selection.",
+  "sources": {
+    "core": [
+      "src/styles/foundations.css",
+      "src/styles/components.css",
+      "src/styles/skins.css"
+    ],
+    "assessment": [
+      "src/styles/assessment.css"
+    ],
+    "marketing": [
+      "src/marketing/roles.css",
+      "src/marketing/foundations.css",
+      "src/marketing/components.css",
+      "src/marketing/layouts.css"
+    ],
+    "site": [
+      "site/site.css"
+    ]
+  },
+  "models": {
+    "inertial": {
+      "label": "Inertial / spring response",
+      "requirement": "MOT-010 (1), MOT-008",
+      "phenomenon": "An object with perceived mass settling toward a stable state after activation or release.",
+      "durationTokens": [
+        "--ef-motion-inertia-duration",
+        "--ef-motion-exit-duration",
+        "--ef-motion-press-duration"
+      ],
+      "easingTokens": [
+        "--ef-motion-spring-easing",
+        "--ef-motion-damped-easing"
+      ],
+      "literalEasings": [],
+      "reducedMotion": "Remove travel, overshoot, bounce and spatial compression; place the final state immediately or nearly immediately."
+    },
+    "gravity": {
+      "label": "Gravity-derived directional response",
+      "requirement": "MOT-010 (2), MOT-008",
+      "phenomenon": "A small directional cue evoking vertical travel under uniform acceleration. Timing is independent of mass.",
+      "durationTokens": [
+        "--ef-motion-gravity-duration"
+      ],
+      "easingTokens": [
+        "--ef-motion-damped-easing"
+      ],
+      "literalEasings": [],
+      "reducedMotion": "Remove spatial travel."
+    },
+    "cadence": {
+      "label": "Constant-velocity / cadence motion",
+      "requirement": "MOT-010 (3), MOT-016",
+      "phenomenon": "Continuous or repeated activity, or a bounded discrete sequence, whose primary parameter is a named period, velocity or cadence.",
+      "durationTokens": [
+        "--ef-motion-cadence-period",
+        "--ef-reveal-char-ms",
+        "--ef-reveal-row-ms",
+        "--ef-reveal-scale",
+        "--ef-len",
+        "--ef-row",
+        "--ef-col"
+      ],
+      "easingTokens": [
+        "--ef-motion-cadence-easing"
+      ],
+      "literalEasings": [
+        "linear",
+        "steps()"
+      ],
+      "reducedMotion": "Stop repeated motion; retain a static activity or status indication."
+    },
+    "direct": {
+      "label": "Direct-manipulation / authoritative-value tracking",
+      "requirement": "MOT-010 (4), MOT-002, MOT-017, MOT-023",
+      "phenomenon": "The pointer, scroll position, native control value or application value is authoritative; the visual is a projection of it.",
+      "durationTokens": [
+        "--ef-motion-direct-duration"
+      ],
+      "easingTokens": [
+        "--ef-motion-direct-easing"
+      ],
+      "literalEasings": [
+        "linear"
+      ],
+      "reducedMotion": "Preserve the direct mapping; add no smoothing or lag."
+    },
+    "perceptual": {
+      "label": "Perceptual interpolation",
+      "requirement": "MOT-010 (5), MOT-026",
+      "phenomenon": "Opacity, color, backdrop tint, blur and other non-spatial presentation changes. Never assigned fake mass, gravity or spring semantics.",
+      "durationTokens": [
+        "--ef-motion-perceptual-duration",
+        "--ef-motion-perceptual-emphasis-duration"
+      ],
+      "easingTokens": [
+        "--ef-motion-perceptual-easing"
+      ],
+      "literalEasings": [],
+      "reducedMotion": "May retain a brief non-spatial transition when it materially improves comprehension."
+    }
+  },
+  "parameters": {
+    "--ef-motion-mass": "inertial mass m (preset input; never domain semantics)",
+    "--ef-motion-stiffness": "restoring stiffness k (preset input)",
+    "--ef-motion-damping": "damping ratio ζ (preset input)",
+    "--ef-motion-distance": "normalized gravity travel distance s",
+    "--ef-motion-gravity": "normalized gravitational acceleration g",
+    "--ef-motion-base-duration": "dimensional scale that maps the normalized model to UI time"
+  },
+  "legacyTokens": {
+    "--ef-motion-state-duration": {
+      "replacement": "--ef-motion-perceptual-duration",
+      "reason": "Derived from inertial duration (0.72 x T_inertia), so it assigns mass to non-spatial change, which MOT-010 (5) forbids. Retained as a compatibility variable for consumers; shipped Forma selectors migrate to the perceptual tokens."
+    }
+  },
+  "genericTokens": [
+    "--ef-primitive-motion-duration-instant",
+    "--ef-primitive-motion-duration-fast",
+    "--ef-primitive-motion-duration-standard",
+    "--ef-primitive-motion-duration-slow",
+    "--ef-primitive-motion-easing-standard",
+    "--ef-primitive-motion-easing-enter",
+    "--ef-primitive-motion-easing-exit"
+  ],
+  "spatialProperties": [
+    "translate",
+    "scale",
+    "rotate",
+    "transform",
+    "offset",
+    "offset-distance",
+    "offset-path",
+    "top",
+    "right",
+    "bottom",
+    "left",
+    "inset",
+    "inset-block",
+    "inset-inline",
+    "inset-block-start",
+    "inset-block-end",
+    "inset-inline-start",
+    "inset-inline-end",
+    "width",
+    "height",
+    "inline-size",
+    "block-size",
+    "min-inline-size",
+    "max-inline-size",
+    "min-block-size",
+    "max-block-size",
+    "min-width",
+    "max-width",
+    "min-height",
+    "max-height",
+    "margin",
+    "margin-block",
+    "margin-inline",
+    "padding",
+    "padding-block",
+    "padding-inline",
+    "grid-template-rows",
+    "grid-template-columns",
+    "background-position",
+    "clip-path",
+    "all"
+  ],
+  "discreteCarriers": [
+    "display",
+    "overlay",
+    "content-visibility"
+  ],
+  "reducedMotionCollapse": [
+    "0s",
+    "0ms",
+    "0.01ms"
+  ],
+  "bundles": {
+    "_description": "Groups whose definitions a track in each group may rely on at runtime. Marketing ships as a standalone bundle, so it must define every canonical variable it uses.",
+    "core": [
+      "core"
+    ],
+    "assessment": [
+      "core",
+      "assessment"
+    ],
+    "marketing": [
+      "marketing"
+    ],
+    "site": [
+      "core",
+      "assessment",
+      "marketing",
+      "site"
+    ]
+  }
+}
