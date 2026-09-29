@@ -266,3 +266,21 @@ Forma SHOULD provide a public property vocabulary that allows consuming products
 - **FMD-SEC-003 MUST NOT** require executable SVG/script/event-handler content in public diagram contracts.
 - **FMD-SEC-004 MUST** support safe text/attribute/style hooks that can be populated without `innerHTML` from untrusted metadata.
 - **FMD-SEC-005 MUST** keep source-only/secret metadata out of generated CSS content and visually hidden convenience markup unless explicitly authorized.
+
+
+## 21. Resolved appearance and precedence boundary
+
+- **FMD-RESOLVE-001 MUST** expose Forma base/default diagram presentation independently from consumer project/profile style resolution.
+- **FMD-RESOLVE-002 MUST** accept the consumer-resolved legal presentation state without requiring Forma to own project named-style inheritance, metadata-mapping precedence, or per-object override rules.
+- **FMD-RESOLVE-003 MUST** keep focus, selection, validation, disabled, and forced-colors state visually distinguishable from authored fill/stroke/accent.
+- **FMD-RESOLVE-004 MUST** document which CSS custom properties/attributes/classes are authored-presentation inputs versus transient/editor/application state hooks.
+- **FMD-RESOLVE-005 MUST NOT** require consumers to duplicate resolved color into semantic status/type attributes.
+- **FMD-RESOLVE-006 SHOULD** allow consumers to reset a property to Forma default by removing the authored override rather than copying a resolved value.
+
+## 22. Initial color complexity boundary
+
+- **FMD-PAINT-001 MUST** support solid color fills/strokes/accents for the initial public diagram color contract.
+- **FMD-PAINT-002 MAY** support alpha/transparency later only with explicit contrast, overlap, forced-colors, grayscale, backgrounds-disabled, and print/vector fallback requirements.
+- **FMD-PAINT-003** Gradients, blend modes, filters, and arbitrary SVG paint servers are not required for the initial diagram/workflow presentation family.
+- **FMD-PAINT-004 MUST** provide a safe fallback for any future advanced paint treatment.
+- **FMD-PAINT-005 MUST** keep advanced paint treatment from becoming the sole carrier of semantic meaning.
