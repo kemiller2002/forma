@@ -535,6 +535,14 @@ Tooltips are supplemental only. Required information and essential actions shall
 
 Support hover and keyboard focus, delayed open/close, pointer-safe hover travel, and reduced motion.
 
+Implemented as `.ef-tooltip` (`patterns/tooltip.html`, FORMA-MOT-004):
+
+- **Opening.** The native button opens the `popover` surface with `popovertarget`, by click, tap, Enter or Space. Escape and outside presses close it. No path depends on hover.
+- **Hover and focus.** Where interest invokers exist, `interestfor` on the same button also opens it on hover or focus. The browser owns the delay and pointer-safe hover travel.
+- **Placement.** Anchor positioning with `flip-block`/`flip-inline` fallbacks keeps it in the viewport. Without support, the browser's top-layer placement remains readable.
+- **Motion.** Light weight, tiny origin displacement, perceptual opacity, and a shorter exit. Reduced motion removes the displacement.
+- **Boundaries.** Focus, dismissal, timeout and accessible-description policy beyond the native popover remain application/Limen concerns.
+
 ### P0: Menu and menu button
 Pattern: `.ef-menu` for ordinary action lists using native Popover HTML; full ARIA menu behavior remains a Limen visual/behavior contract.
 

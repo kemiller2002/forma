@@ -1,0 +1,48 @@
+<div class="ef-stack">
+  <p class="ef-tooltip-context">
+    Retention period: 90 days
+    <span class="ef-tooltip">
+      <button class="ef-tooltip__trigger" type="button" popovertarget="tooltip-retention" interestfor="tooltip-retention">
+        <span aria-hidden="true">?</span>
+        <span class="ef-visually-hidden">About the retention period</span>
+      </button>
+      <span class="ef-tooltip__surface" id="tooltip-retention" popover>Events older than the retention period are deleted automatically. Export them first if you need a longer record.</span>
+    </span>
+  </p>
+
+  <div class="ef-field">
+    <div class="ef-cluster">
+      <label class="ef-field__label" for="tooltip-window">Maintenance window</label>
+      <span class="ef-tooltip">
+        <button class="ef-tooltip__trigger" type="button" popovertarget="tooltip-window-hint" interestfor="tooltip-window-hint">
+          <span aria-hidden="true">?</span>
+          <span class="ef-visually-hidden">How maintenance windows are applied</span>
+        </button>
+        <span class="ef-tooltip__surface" id="tooltip-window-hint" popover>Times use the service region's local time zone.</span>
+      </span>
+    </div>
+    <p class="ef-field__description" id="tooltip-window-description">Required. Changes are scheduled, never applied immediately.</p>
+    <input id="tooltip-window" name="window" type="text" aria-describedby="tooltip-window-description" placeholder="Sun 02:00–04:00">
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Service</th>
+        <th scope="col">
+          Error budget
+          <span class="ef-tooltip">
+            <button class="ef-tooltip__trigger" type="button" popovertarget="tooltip-budget" interestfor="tooltip-budget">
+              <span aria-hidden="true">?</span>
+              <span class="ef-visually-hidden">About error budget</span>
+            </button>
+            <span class="ef-tooltip__surface" id="tooltip-budget" popover>Share of allowed unavailability left in the current 30-day window.</span>
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Checkout</td><td>42% remaining</td></tr>
+    </tbody>
+  </table>
+</div>
