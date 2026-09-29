@@ -975,3 +975,79 @@ Requirements:
 - verified at 320/390 px, 200 % text, text spacing, forced colors, reduced motion, print, and WCAG 2.2 A/AA.
 
 See `requirements/MARKETING-PRESENTATION.md` and `docs/MARKETING-SITES.md`.
+
+
+## 18. Object metadata and diagram/workflow presentation
+
+See `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md`.
+
+### P0/P1: Metadata presentation
+
+Forma SHOULD support a reusable metadata presentation recipe for consumer-supplied descriptive fields such as identifiers, descriptions, tags, owners/roles, phases, status text, source/provenance references, versions, dates, links, and namespaced custom values.
+
+Requirements:
+
+- metadata remains application/profile supplied;
+- metadata is not authorization, workflow legality, scoring, or domain truth;
+- object identity is independent of labels, geometry, and color;
+- compact and expanded metadata presentation should reuse semantic HTML such as description lists, lists, links, and time;
+- applications choose which metadata fields are safe to render;
+- hidden DOM attributes are not the canonical metadata store;
+- secrets/suppressed values must not be placed in presentation attributes;
+- long/localized/RTL metadata must reflow and remain readable.
+
+### P1: Diagram/workflow object presentation
+
+Candidate patterns/visual contracts:
+
+- `.ef-diagram`;
+- `.ef-diagram-node`;
+- `.ef-diagram-connector`;
+- `.ef-diagram-connector-label`;
+- `.ef-diagram-group` / boundary;
+- `.ef-diagram-lane`;
+- `.ef-diagram-phase`;
+- `.ef-diagram-legend`;
+- `.ef-diagram-metadata`.
+
+These names are architecture candidates until the first implementation slice proves the smallest stable public surface.
+
+Requirements:
+
+- Forma owns only reusable presentation;
+- Studio/application owns graph topology, geometry, routing, hit testing, drag/drop, selection, commands/history, profile semantics, workflow execution, and validation;
+- editor-only adorners are not part of exported production presentation;
+- presentation works with HTML/SVG composition and does not introduce Forma runtime JavaScript;
+- one visual pattern may represent multiple semantic kinds when the consumer explicitly maps them.
+
+### P1: Authored workflow/diagram color
+
+Eligible workflow/diagram objects MUST be colorable.
+
+Forma presentation MUST support:
+
+- fill/background treatment;
+- border/stroke treatment;
+- accent treatment;
+- connector stroke/accent treatment;
+- optional foreground treatment when contrast is valid;
+- Forma token defaults;
+- project/brand palette slots;
+- explicit consumer-authored color overrides where the consuming product permits them.
+
+Color is presentation, not semantic authority.
+
+- a red object is not automatically an error;
+- a green object is not automatically approved;
+- semantic status/type and color remain independent;
+- explicit metadata-to-color mapping belongs to the consumer/profile;
+- meaningful distinctions require text/icon/shape/line-style/pattern/marker cues in addition to color;
+- forced colors, grayscale, dark/light themes, and backgrounds-disabled print must remain understandable;
+- authored color must never erase focus-visible, selected, validation, or disabled cues.
+
+### P1: Metadata-driven decorations
+
+Metadata MAY be projected into badges, labels, icons, markers, bars, or similar decorations when the consumer supplies an explicit mapping.
+
+The underlying metadata remains authoritative. Forma decorations are projections only and must have textual/structural equivalents when meaningful.
+
