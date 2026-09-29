@@ -345,3 +345,354 @@ Aegis presentation intent determines the surface family; motion does not determi
 - `data-ef-motion-weight` remains a presentation override only and may not encode Diagnostic/Warning/Error/Critical.
 - Aegis lifecycle state changes immediately. Animation never delays acknowledgement, recovery, resolution, focus, or application state.
 - Reduced motion removes notification/banner travel and modal scale/travel while preserving the final visible state.
+
+
+## 14. Motion model taxonomy
+
+### MOT-010 Every animation selects an explicit model
+
+Every Forma animation SHALL use the motion model that matches the phenomenon being represented. The allowed canonical models are:
+
+1. **Inertial / spring response**
+   - Use for an object that is perceived as having mass and is moving toward a stable state after activation or release.
+   - Examples: switch thumb, selection indicator, dialog or flyout entry, post-drop settling, post-snap pane settling.
+   - Use the canonical mass, stiffness, damping, and derived inertia duration variables.
+   - Overshoot MAY be used only when it cannot imply a false semantic value, exceed a constrained boundary, or reduce control.
+
+2. **Gravity-derived directional response**
+   - Use for a small directional cue whose timing is intended to evoke vertical travel under uniform acceleration.
+   - Use the canonical distance and gravity variables.
+   - Mass SHALL NOT influence gravity-derived timing.
+   - Gravity-derived motion SHALL NOT be used merely as a synonym for "move vertically."
+
+3. **Constant-velocity / cadence motion**
+   - Use for continuous or repeated activity where the visual represents ongoing work rather than a body settling at rest.
+   - Examples: spinner rotation, skeleton shimmer, marquee-like activity only when independently justified.
+   - Period, angular velocity, linear velocity, or cadence SHALL be the primary parameters.
+   - Spring easing, bounce, and inertial settling SHALL NOT be applied to a continuous cycle.
+
+4. **Direct-manipulation / authoritative-value tracking**
+   - Use when the pointer, scroll position, native control value, or application value is the authoritative input during the interaction.
+   - Examples: drag, resize, range input, scrubber, scroll-linked effect, determinate progress.
+   - The controlled visual SHALL track the authoritative value without decorative lag.
+   - The model SHALL NOT overshoot the authoritative value.
+   - After release, a separate inertial model MAY be used for snapping or settling if semantics do not change.
+
+5. **Perceptual interpolation**
+   - Use for presentation changes that do not meaningfully represent a physical object moving through space.
+   - Examples: opacity, color, backdrop tint, subtle blur, non-spatial crossfade, theme interpolation.
+   - Perceptual interpolation SHALL use shared state-transition tokens.
+   - It SHALL NOT be assigned fake mass, gravity, momentum, or spring semantics solely to make the animation feel "physical."
+
+### MOT-011 Model selection is required before timing selection
+
+A component SHALL choose its motion model before choosing duration or easing.
+
+The following are defects unless explicitly justified and documented:
+
+- choosing `ease`, `ease-in-out`, a cubic Bézier, or a duration by visual preference alone;
+- using spring motion for every state change regardless of phenomenon;
+- applying multiple incompatible motion models to the same visual degree of freedom;
+- varying motion behavior between equivalent components without a visual-mass or interaction reason;
+- using motion to imply urgency, severity, privilege, permission, correctness, confidence, or domain importance.
+
+## 15. Motion parameter governance
+
+### MOT-012 No unexplained component-local timing constants
+
+New component, assessment, marketing, and documentation-site animations SHALL use canonical motion variables or a documented derivative of them.
+
+A literal duration or easing MAY exist only when at least one of the following is true:
+
+- it is the documented static fallback for a canonical motion variable;
+- it is part of a bounded cadence model with an explicitly named period or velocity;
+- it is required for compatibility and is linked to the canonical behavior it approximates;
+- a requirement records why the shared model cannot represent the behavior.
+
+Unexplained values such as `180ms ease`, `0.2s ease-in-out`, or a one-off cubic Bézier SHALL NOT be introduced.
+
+### MOT-013 Motion cannot gate semantic completion
+
+No animation duration, delay, iteration, or transition event SHALL be required before:
+
+- checked, selected, expanded, open, closed, disabled, or validity state becomes true;
+- a legal application transition completes;
+- focus moves or is restored;
+- an operation is acknowledged;
+- a user can continue after the application has already reached the next legal state.
+
+Animation represents state. It does not authorize or complete state.
+
+## 16. Press, release, and selection motion
+
+### MOT-014 Press response
+
+Buttons, selectable surfaces, switch thumbs, checkbox marks, segments, ordinal choices, and similar controls MAY use a restrained press response.
+
+Requirements:
+
+- press feedback SHALL begin immediately;
+- press feedback SHALL NOT move or shrink the interactive hit target;
+- press feedback SHALL NOT delay activation;
+- spatial press feedback SHALL use the light inertial family unless a documented visual-mass reason requires another preset;
+- release MAY use a damped return response;
+- rapid press/release SHALL retarget the current response instead of queueing animations;
+- reduced motion SHALL remove spatial compression or elevation.
+
+### MOT-015 Selection indicators
+
+Where a selected option has a moving or resizing indicator, including segmented controls and tab-like selectors:
+
+- semantic selection SHALL update immediately;
+- the indicator SHALL use the light inertial model;
+- the indicator MAY interpolate position and size but SHALL NOT drag option text with it solely for decoration;
+- rapid keyboard or pointer changes SHALL retarget the indicator without queue buildup;
+- the indicator SHALL end exactly on the selected option;
+- reduced motion SHALL place the indicator immediately or use a short non-spatial perceptual interpolation.
+
+Choice cards, ordinal options, symbol ratings, and similar assessment selectors SHALL use the same press and state-response vocabulary rather than inventing independent timing curves.
+
+## 17. Loading, activity, and progress
+
+### MOT-016 Indeterminate activity uses cadence, not spring physics
+
+Indeterminate spinners, skeletons, and other repeated activity indicators SHALL use the constant-velocity / cadence model.
+
+Requirements:
+
+- repeated motion SHALL have an explicitly named period, velocity, or cadence;
+- continuous activity SHALL NOT bounce or spring on every cycle;
+- animation speed SHALL NOT encode operation importance or expected completion time unless the application has a truthful mapping;
+- repeated motion SHALL stop when the represented activity stops;
+- persistent rerendering SHALL NOT restart the motion in a way that suggests new work;
+- reduced motion SHALL provide a static or minimally changing equivalent while visible text or semantics continue to identify the activity.
+
+Skeleton shimmer SHALL use a shared cadence variable rather than a component-local hardcoded duration.
+
+### MOT-017 Determinate progress is monotonic and non-overshooting
+
+A determinate progress visualization SHALL be a direct projection of the authoritative progress value.
+
+Requirements:
+
+- the visual SHALL never show progress beyond the known value;
+- spring overshoot and bounce are prohibited for the progress dimension;
+- interpolation between received values MAY be used only if it cannot overtake the authoritative value;
+- a decrease caused by reconciliation SHALL be represented truthfully rather than hidden;
+- completion animation SHALL NOT run before the application reports completion;
+- reduced motion SHALL permit immediate value placement.
+
+## 18. Tooltip and hint motion
+
+### MOT-018 Tooltip / hint surface
+
+Forma SHALL define a tooltip or contextual-hint visual contract when product requirements need transient explanatory content that cannot be represented adequately by ordinary visible help text.
+
+The motion contract is:
+
+- light perceived weight by default;
+- opacity plus a very small origin-related displacement MAY be used;
+- entry SHALL visually relate the surface to its invoker without large travel;
+- exit SHALL be shorter and more damped than entry;
+- motion SHALL NOT be the only indication that the surface appeared;
+- the content SHALL NOT require hover as its only access path;
+- focus, dismissal, timeout, and accessible-description behavior remain native/application responsibilities according to the chosen semantic pattern;
+- reduced motion SHALL remove displacement and may retain a short fade.
+
+## 19. Reorder, drag, and drop settling
+
+### MOT-019 Direct drag and post-drop settling
+
+During direct drag:
+
+- the dragged representation SHALL track the pointer without decorative latency;
+- the candidate drop position SHALL remain unambiguous;
+- sibling movement MAY preview placement but SHALL not obscure the target position;
+- auto-scroll SHALL remain controlled and shall not add a second inertial simulation.
+
+After release:
+
+- displaced items MAY settle with the light or standard inertial model;
+- the dropped item MAY settle only after the semantic drop result is known;
+- a rejected drop SHALL visibly return to the authoritative position without implying success;
+- cancel/revert SHALL have an immediate keyboard-accessible path;
+- keyboard reorder SHALL produce an equivalent final visual state and MAY use the same settling response;
+- reduced motion SHALL place items directly at the final position.
+
+## 20. Resize, split panes, and snapping
+
+### MOT-020 Resize tracks input; snapping may settle after release
+
+Pointer-driven resizing SHALL track pointer position directly.
+
+Keyboard resizing SHALL update promptly and SHALL NOT accumulate animated lag.
+
+Snap points, collapse targets, or release-time settling MAY use a damped inertial response only after the direct manipulation ends.
+
+Requirements:
+
+- no overshoot beyond minimum, maximum, or legal size constraints;
+- focus and keyboard access SHALL survive collapse/expand;
+- the semantic collapsed/expanded state SHALL not wait for motion;
+- reduced motion SHALL place the pane directly at its final size.
+
+## 21. Intrinsic-size transitions
+
+### MOT-021 Intrinsic-size animation is progressive enhancement
+
+Expansion and collapse of content whose final size is intrinsic MAY use browser capabilities such as intrinsic-size interpolation when supported.
+
+Requirements:
+
+- the non-animated layout SHALL remain correct when intrinsic-size animation is unsupported;
+- content SHALL NOT become inaccessible because an intermediate clip hides the only focus target or required information;
+- layout animation SHALL not produce page-level overflow or strand focused content;
+- no script SHALL be added to Forma solely to measure `auto` dimensions;
+- reduced motion SHALL use immediate size change or a non-spatial substitution;
+- use of `interpolate-size`, `calc-size()`, or a similar feature SHALL be progressive enhancement, not a component dependency.
+
+## 22. View-transition motion
+
+### MOT-022 View Transitions are optional continuity enhancement
+
+View Transitions MAY be used for navigation or major application-state changes when they preserve useful continuity.
+
+Requirements:
+
+- routing and semantic state SHALL complete without View Transitions support;
+- a snapshot SHALL never become semantic authority;
+- stale snapshots SHALL not remain interactive;
+- focus placement, announcements, history, and deep-link behavior SHALL be correct without relying on animation;
+- shared-element transitions SHALL be limited to elements whose identity is genuinely continuous across states;
+- unrelated elements SHALL not morph into each other merely because geometry is convenient;
+- reduced motion SHALL skip or simplify spatial transitions;
+- the consuming application owns transition orchestration. Forma may provide visual contracts and named presentation tokens only.
+
+## 23. Scroll-linked motion
+
+### MOT-023 Scroll position is authoritative
+
+A scroll-linked animation SHALL use the direct-manipulation / authoritative-value model.
+
+Requirements:
+
+- visual progress SHALL be a deterministic function of scroll progress or an explicitly defined timeline;
+- no additional spring lag SHALL be layered on top of the user's scroll position during direct scrolling;
+- the effect SHALL not trigger a consequential operation solely because an animation crossed a visual threshold;
+- content readability and control usability SHALL not depend on the animation running;
+- reduced motion SHALL use a static state or a non-spatial mapping;
+- scroll-driven CSS features SHALL be progressive enhancement.
+
+## 24. Concurrent and additive motion
+
+### MOT-024 Independent effects shall not clobber one another
+
+When one element needs more than one simultaneous motion effect, the implementation SHALL define how those effects compose.
+
+Preferred approaches include:
+
+- independent transform properties such as `translate`, `scale`, and `rotate`;
+- explicitly additive animation composition when browser support and the interaction justify it;
+- separate nested presentation elements when effects represent independent physical layers.
+
+Two animations SHALL NOT silently compete for the same transform or property such that one cancels, resets, or corrupts the other.
+
+Press feedback, state movement, and entry/exit response SHALL remain independently interruptible.
+
+## 25. Metric and value-change motion
+
+### MOT-025 Changing values remain truthful during animation
+
+Metric cards, counters, totals, timestamps, status values, and dashboard numbers MAY use a restrained change cue.
+
+Requirements:
+
+- the semantic value SHALL update immediately;
+- the default treatment SHOULD be a short perceptual interpolation or emphasis cue rather than rolling every intermediate number;
+- slot-machine, odometer, or count-through animation SHALL require a demonstrated task benefit;
+- an animated intermediate value SHALL NOT be exposed as though it were authoritative data;
+- sign, units, and magnitude SHALL remain legible throughout the transition;
+- motion SHALL NOT imply improvement, decline, success, or severity unless the underlying semantic state explicitly supports that meaning;
+- reduced motion SHALL show the new value immediately.
+
+## 26. Theme, color, and non-spatial state changes
+
+### MOT-026 Non-spatial visual changes use perceptual interpolation
+
+Color, background, border, shadow, opacity, backdrop tint, and similar state changes that do not represent physical travel SHALL use the perceptual interpolation model.
+
+Requirements:
+
+- color transition SHALL never be the sole state cue;
+- theme switching SHALL not introduce large spatial motion;
+- forced-colors mode SHALL preserve state without depending on interpolated color;
+- reduced motion MAY keep a brief non-spatial transition when it improves comprehension, but SHALL remove unnecessary repeated or spatial effects;
+- shared semantic state-duration/easing tokens SHALL be used instead of component-local timing.
+
+## 27. Reduced-motion substitutions by model
+
+### MOT-027 Reduced motion is model-aware
+
+Reduced-motion behavior SHALL be defined by motion model:
+
+| Model | Reduced-motion behavior |
+| --- | --- |
+| inertial / spring | remove travel, overshoot, bounce, and spatial compression; place final state immediately or nearly immediately |
+| gravity-derived | remove spatial travel |
+| constant-velocity / cadence | stop repeated motion; retain static activity/status indication |
+| direct manipulation / authoritative value | preserve direct mapping; do not add smoothing or lag |
+| perceptual interpolation | retain only a brief non-spatial transition when it materially improves comprehension |
+
+Reduced motion SHALL never remove the final state cue, text, focus indication, progress value, or activity semantics.
+
+## 28. Motion coverage and conformance
+
+### MOT-028 Every animated selector belongs to the motion system
+
+Every shipped selector that uses `transition`, `animation`, `@keyframes`, View Transition styling, scroll timelines, or motion-related transforms SHALL be classifiable under this document.
+
+Forma SHALL maintain deterministic coverage capable of detecting:
+
+- new animated selectors that are not mapped to a canonical motion model;
+- unexplained literal durations/easings;
+- repeated motion without reduced-motion substitution;
+- spatial motion that survives reduced-motion mode without explicit justification;
+- progress or direct-manipulation motion that uses overshoot;
+- animation used as semantic authority.
+
+This coverage applies to:
+
+- core component CSS;
+- assessment CSS;
+- marketing presentation CSS;
+- Forma's own documentation/example site CSS.
+
+### MOT-029 Family-specific tests
+
+In addition to the common tests in section 12, deterministic tests SHALL verify as applicable:
+
+- inertial ordering remains `light < standard < heavy`;
+- gravity timing remains mass-independent;
+- cadence animations use the declared shared period/velocity;
+- direct-manipulation visuals do not lag the authoritative input;
+- determinate progress never visually exceeds its authoritative value;
+- selection indicators retarget rather than queue under rapid input;
+- drop/resize settling obeys legal boundaries;
+- reduced motion applies the model-specific substitution;
+- concurrent animations compose without property clobbering;
+- unsupported progressive-enhancement features fall back to correct static behavior.
+
+### MOT-030 New motion models require an explicit requirement
+
+An agent SHALL NOT invent a sixth motion model in component CSS.
+
+When a real interaction cannot be represented by the five canonical models, the work SHALL first record:
+
+- the phenomenon being represented;
+- why the existing models are insufficient;
+- semantic and accessibility invariants;
+- interruption and reduced-motion behavior;
+- parameters and testable relationships;
+- expected implementation boundary between Forma and application/Limen.
+
+Only then may the canonical motion vocabulary be extended.
