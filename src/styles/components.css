@@ -629,7 +629,7 @@
     translate: 0 -0.35rem;
     scale: 0.985;
     transition:
-      opacity var(--ef-motion-exit-duration) linear,
+      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
       translate var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
       scale var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
       display var(--ef-motion-exit-duration) allow-discrete,
@@ -642,7 +642,7 @@
     translate: 0 0;
     scale: 1;
     transition-duration:
-      var(--ef-motion-state-duration),
+      var(--ef-motion-perceptual-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration),
@@ -903,9 +903,10 @@
   :where(.ef-dialog, .ef-flyout)::backdrop {
     background: rgb(23 26 24 / 0);
     backdrop-filter: blur(0);
+    /* Dimming is non-spatial: perceptual interpolation, without mass. */
     transition:
-      background var(--ef-overlay-motion-duration) var(--ef-motion-damped-easing),
-      backdrop-filter var(--ef-overlay-motion-duration) var(--ef-motion-damped-easing),
+      background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
+      backdrop-filter var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
       display var(--ef-overlay-motion-duration) allow-discrete,
       overlay var(--ef-overlay-motion-duration) allow-discrete;
   }
@@ -1474,6 +1475,30 @@
     line-height: 1;
   }
 
+  /*
+   * Changing values (FORMA-MOT-011). The application writes
+   * the new, authoritative value immediately; Forma never counts through
+   * intermediate numbers. To mark an update, the application inserts the
+   * new value element with data-ef-value-change (not on first render). The
+   * text is fully legible from the first frame; only a neutral surface tint
+   * fades by perceptual interpolation, identical for increases, decreases
+   * and status changes, so motion implies no direction, success or severity.
+   */
+  :where([data-ef-value-change]) {
+    background-color: transparent;
+    transition: background-color var(--ef-motion-perceptual-emphasis-duration) var(--ef-motion-perceptual-easing);
+  }
+
+  @starting-style {
+    :where([data-ef-value-change]) {
+      background-color: var(--ef-color-surface-secondary, #e3e0d7);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce), (forced-colors: active) {
+    :where([data-ef-value-change]) { transition: none; }
+  }
+
   .ef-dashboard-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1553,7 +1578,7 @@
     translate: 0 0.65rem;
     scale: 0.99;
     transition:
-      opacity var(--ef-motion-exit-duration) linear,
+      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
       translate var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
       scale var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
       display var(--ef-motion-exit-duration) allow-discrete,
@@ -1565,7 +1590,7 @@
     translate: 0 0;
     scale: 1;
     transition-duration:
-      var(--ef-motion-state-duration),
+      var(--ef-motion-perceptual-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration),
@@ -1822,7 +1847,7 @@
     translate: 0 0.75rem;
     scale: 0.985;
     transition:
-      opacity var(--ef-motion-exit-duration) linear,
+      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
       translate var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
       scale var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
       display var(--ef-motion-exit-duration) allow-discrete,
@@ -1834,7 +1859,7 @@
     translate: 0 0;
     scale: 1;
     transition-duration:
-      var(--ef-motion-state-duration),
+      var(--ef-motion-perceptual-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration),
@@ -2660,7 +2685,7 @@
     opacity: 1;
     translate: 0 0;
     transition:
-      opacity var(--ef-motion-state-duration) linear,
+      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
       translate var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing);
   }
 
@@ -2695,7 +2720,7 @@
     opacity: 1;
     translate: 0 0;
     transition:
-      opacity var(--ef-motion-state-duration) linear,
+      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
       translate var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing);
   }
 
