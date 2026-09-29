@@ -53,7 +53,8 @@
     "marketing:build": "dotnet run --project tools/PresentationBundler/PresentationBundler.fsproj -- bundles/echelon-marketing.bundle.json package.json",
     "test:marketing": "node --test tests/marketing-tokens.test.mjs tests/marketing-distribution.test.mjs tests/marketing-structure.test.mjs tests/site-css-policy.test.mjs",
     "example:install": "mkdir -p build/example && cp examples/echelon-marketing-site/forma.lock build/example/forma.lock && bash actions/install-presentation/install.sh --lock build/example/forma.lock --source dist/marketing --update --output examples/echelon-marketing-site/assets/forma",
-    "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --"
+    "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --",
+    "release:check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:marketing && npm run test:character-grid && npm run test:package && playwright test tests/browser/marketing.spec.mjs && npm run site:check"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
