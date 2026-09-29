@@ -265,6 +265,18 @@ test("reduced motion removes indicator travel and press compression but keeps se
   await page.mouse.move(0, 0);
   expect(scale === "1" || scale === "none").toBe(true);
   await expect(control.locator("input:checked")).toHaveValue("compact");
+  // With no travel, the checked segment itself carries the selection.
+  expect(await control.evaluate((element) => getComputedStyle(element, "::before").display)).toBe("none");
+  await expectFallbackSelection(control);
+});
+
+test("pointer selection places the indicator exactly on the chosen option", async ({ page }) => {
+  const control = page.getByTestId("density");
+  const segment = control.locator(".ef-segment").nth(2);
+  const box = await segment.boundingBox();
+  await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+  await page.mouse.move(0, 0);
+  await expect(control.locator("input:checked")).toHaveValue("dense");
   await expectIndicatorOnChecked(page, control);
 });
 
