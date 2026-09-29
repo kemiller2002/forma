@@ -66,7 +66,7 @@
   }
 
   /* Physics-derived motion ---------------------------------------------- */
-  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
+  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-ranking, .ef-lane-board, .ef-split-pane, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
     /*
      * CSS cannot run a continuous rigid-body simulation. Forma therefore uses
      * a physics-derived response model. The fallback values remain usable in
@@ -87,19 +87,19 @@
     --ef-motion-damped-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="light"] {
+  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-ranking, .ef-lane-board, .ef-split-pane, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="light"] {
     --ef-motion-mass: 0.65;
     --ef-motion-stiffness: 1.15;
     --ef-motion-damping: 0.94;
   }
 
-  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="standard"] {
+  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-ranking, .ef-lane-board, .ef-split-pane, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="standard"] {
     --ef-motion-mass: 1;
     --ef-motion-stiffness: 1;
     --ef-motion-damping: 0.84;
   }
 
-  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="heavy"] {
+  :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-ranking, .ef-lane-board, .ef-split-pane, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking)[data-ef-motion-weight="heavy"] {
     --ef-motion-mass: 1.8;
     --ef-motion-stiffness: 0.92;
     --ef-motion-damping: 0.76;
@@ -123,7 +123,7 @@
   }
 
   @supports (width: calc(1px * sqrt(1))) {
-    :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
+    :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-ranking, .ef-lane-board, .ef-split-pane, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
       /*
        * Response time follows sqrt(mass / stiffness), then is lengthened as
        * damping decreases. Vertical gravity time follows sqrt(2s / g) and is
@@ -395,7 +395,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
+    :where(.ef-switch, .ef-checkbox, .ef-select, .ef-disclosure, .ef-popover, .ef-menu, .ef-dialog, .ef-flyout, .ef-tabs, .ef-segmented, .ef-ordinal-scale, .ef-tooltip, .ef-ranking, .ef-lane-board, .ef-split-pane, .ef-alert, .ef-toast, .ef-command-palette, .ef-fault-notification, .ef-fault-banner, .ef-fault-blocking) {
       --ef-motion-inertia-duration: 0.01ms;
       --ef-motion-gravity-duration: 0.01ms;
       --ef-motion-state-duration: 0.01ms;
@@ -2952,6 +2952,127 @@
     align-items: start;
   }
   .ef-split-pane > * { min-inline-size: 0; }
+
+  /* Direct manipulation and post-release settling (MOT-019, MOT-020) ------ */
+  /*
+   * Presentation hooks only. The application or Limen owns pointer capture,
+   * velocity, routing, auto-scroll, legal drop validation, resize state and
+   * domain transitions, and writes the hooks below. Forma adds no lag to the
+   * direct phase and never overshoots on release.
+   *
+   *   data-ef-manipulation="dragging" | "resizing"  direct phase: the visual
+   *                                                  tracks --ef-drag-x/-y or
+   *                                                  --ef-split-size at once
+   *   data-ef-manipulation="settling" | "displaced" post-release or sibling
+   *                                                  movement: damped inertial
+   *                                                  settling, no overshoot
+   *   data-ef-drop="candidate" | "accepted" | "rejected"  drop presentation
+   *
+   * A rejected drop returns to its authoritative position (the application
+   * resets the offset) and is marked with a dashed, non-color cue; its text
+   * explanation belongs in the application's live region. Keyboard reorder
+   * and resize write the same hooks and end in the same final state.
+   */
+  [data-ef-manipulation] {
+    translate: var(--ef-drag-x, 0px) var(--ef-drag-y, 0px);
+    transition: translate var(--ef-motion-inertia-duration, 214ms) var(--ef-motion-damped-easing, cubic-bezier(0.2, 0.8, 0.2, 1));
+  }
+
+  [data-ef-manipulation="dragging"],
+  [data-ef-manipulation="resizing"] {
+    position: relative;
+    z-index: 1;
+    transition-duration: var(--ef-motion-direct-duration, 0ms);
+    box-shadow: 0 0.6rem 1.6rem rgb(0 0 0 / 0.2);
+    cursor: grabbing;
+  }
+
+  [data-ef-drop="candidate"] {
+    outline: 2px dashed var(--ef-color-accent-primary, #905831);
+    outline-offset: 2px;
+  }
+
+  [data-ef-drop="accepted"] {
+    outline: 2px solid var(--ef-color-accent-primary, #905831);
+    outline-offset: 2px;
+  }
+
+  [data-ef-drop="rejected"] {
+    outline: 2px dashed var(--ef-color-border-functional, #3a403c);
+    outline-offset: 2px;
+    background: var(--ef-color-surface-secondary, #e3e0d7);
+  }
+
+  /*
+   * Resizable split pane. --ef-split-size is the application's authoritative
+   * primary size; clamp() applies the legal bounds in CSS, so neither the
+   * direct phase nor settling can ever show an illegal size.
+   */
+  .ef-split-pane[data-ef-resizable] {
+    --ef-split-size: 60%;
+    --ef-split-min: 16rem;
+    --ef-split-max: calc(100% - 16rem);
+    grid-template-columns: clamp(var(--ef-split-min), var(--ef-split-size), var(--ef-split-max)) auto minmax(0, 1fr);
+    column-gap: 0;
+    transition: grid-template-columns var(--ef-motion-inertia-duration, 214ms) var(--ef-motion-damped-easing, cubic-bezier(0.2, 0.8, 0.2, 1));
+  }
+
+  .ef-split-pane[data-ef-resizable][data-ef-manipulation] {
+    translate: none;
+  }
+
+  .ef-split-pane[data-ef-resizable][data-ef-manipulation="resizing"] {
+    box-shadow: none;
+    transition-duration: var(--ef-motion-direct-duration, 0ms);
+    cursor: col-resize;
+  }
+
+  /* Collapse overrides the track list itself so it wins over an inline
+     application-supplied size. */
+  .ef-split-pane[data-ef-resizable][data-ef-collapsed] {
+    grid-template-columns: var(--ef-split-min) auto minmax(0, 1fr);
+  }
+
+  .ef-split-pane__separator {
+    align-self: stretch;
+    inline-size: 2.75rem;
+    min-block-size: 2.75rem;
+    display: grid;
+    place-items: center;
+    cursor: col-resize;
+    touch-action: none;
+  }
+
+  .ef-split-pane__separator::before {
+    content: "";
+    inline-size: 2px;
+    block-size: 100%;
+    min-block-size: 2rem;
+    background: var(--ef-color-border-functional, #3a403c);
+  }
+
+  .ef-split-pane__separator:focus-visible {
+    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline-offset: -3px;
+    box-shadow: inset 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+  }
+
+  @media (max-width: 48rem) {
+    .ef-split-pane[data-ef-resizable] { grid-template-columns: minmax(0, 1fr); }
+    .ef-split-pane__separator { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-ef-manipulation],
+    .ef-split-pane[data-ef-resizable] {
+      transition-duration: 0.01ms;
+    }
+  }
+
+  @media (forced-colors: active) {
+    [data-ef-drop] { outline-color: CanvasText; }
+    .ef-split-pane__separator::before { background: CanvasText; }
+  }
 
   .ef-comparison-grid {
     max-inline-size: 100%;

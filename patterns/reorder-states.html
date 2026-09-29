@@ -1,0 +1,31 @@
+<fieldset class="ef-ranking">
+  <legend class="ef-ranking__legend">Reorder presentation states</legend>
+  <p class="ef-field__description">Static illustration of the hooks an application sets while reordering. The move buttons remain the non-drag path.</p>
+  <ol class="ef-ranking__list">
+    <li class="ef-ranking__item" data-ef-rank="1" data-ef-manipulation="dragging" style="--ef-drag-y: 0.75rem">
+      <span class="ef-ranking__position" aria-hidden="true">1</span>
+      <span class="ef-ranking__label">Reliability (dragging: tracks the pointer directly)</span>
+      <span class="ef-ranking__actions">
+        <button type="button" disabled aria-label="Move Reliability up">↑</button>
+        <button type="button" aria-label="Move Reliability down">↓</button>
+      </span>
+    </li>
+    <li class="ef-ranking__item" data-ef-rank="2" data-ef-drop="candidate" data-ef-manipulation="displaced">
+      <span class="ef-ranking__position" aria-hidden="true">2</span>
+      <span class="ef-ranking__label">Delivery speed (drop candidate)</span>
+      <span class="ef-ranking__actions">
+        <button type="button" aria-label="Move Delivery speed up">↑</button>
+        <button type="button" aria-label="Move Delivery speed down">↓</button>
+      </span>
+    </li>
+    <li class="ef-ranking__item" data-ef-rank="3" data-ef-drop="rejected" data-ef-manipulation="settling">
+      <span class="ef-ranking__position" aria-hidden="true">3</span>
+      <span class="ef-ranking__label">Cost efficiency (rejected: settles back)</span>
+      <span class="ef-ranking__actions">
+        <button type="button" aria-label="Move Cost efficiency up">↑</button>
+        <button type="button" disabled aria-label="Move Cost efficiency down">↓</button>
+      </span>
+    </li>
+  </ol>
+  <p class="ef-ranking__announcement" aria-live="polite" aria-atomic="true">Cost efficiency cannot move above Delivery speed. Order unchanged.</p>
+</fieldset>

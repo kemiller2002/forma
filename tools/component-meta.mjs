@@ -129,6 +129,8 @@ export const componentMeta = {
   "search": ["Search", "Input", "Application / Limen", "Search entry, clearing, and result-count feedback with asynchronous behavior owned by the application."],
   "select": ["Select", "Input", "Native HTML", "An ordinary native select with platform picker behavior and physics-derived CSS affordance motion."],
   "skeleton": ["Skeleton", "State & feedback", "Application state", "Low-information loading placeholder with explicit busy semantics; its shimmer is a named cadence that runs only while aria-busy is true and stops for reduced motion."],
+  "resizable-split-pane": ["Resizable split pane", "Layout", "Application / Limen", "Split pane whose application-supplied size tracks drag or keys directly, settles without overshoot, and is clamped to legal bounds in CSS."],
+  "reorder-states": ["Reorder states", "Data & productivity", "Application / Limen", "Presentation hooks for dragging, displaced siblings, drop candidates, accepted/rejected drops and post-release settling."],
   "tooltip": ["Tooltip / contextual hint", "Overlay", "Native HTML", "Supplemental hint on a native button: opens by click, tap or keyboard (popovertarget) and, where supported, on hover or focus (interestfor); light motion with a static reduced-motion substitute."],
   "spinner": ["Spinner", "State & feedback", "Application state", "Indeterminate activity with a visible label: constant-velocity cadence that stops when the application marks the activity idle, static under reduced motion."],
   "progress-bar": ["Progress bar", "State & feedback", "Native HTML", "Native determinate progress projected directly from the authoritative value (never overshoots), plus a browser-owned indeterminate variant with explicit text."],

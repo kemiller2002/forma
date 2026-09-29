@@ -719,6 +719,13 @@ Support text/structured differences, additions/removals/changes, keyboard naviga
 ### P1: Resizable split pane
 Visual contract: `.ef-split-pane` (Limen behavior required)
 
+Implemented presentation (FORMA-MOT-006):
+
+- `patterns/resizable-split-pane.html`: `data-ef-resizable`, an application-supplied `--ef-split-size` clamped to legal bounds in CSS, a focusable `role="separator"` with value semantics, and direct tracking while `data-ef-manipulation="resizing"`.
+- Damped settling on release or keyboard step; `data-ef-collapsed`.
+- Stacked without the separator at narrow widths.
+- Pointer and keyboard behavior remain Limen/application code.
+
 Requirements:
 
 - pointer drag;
