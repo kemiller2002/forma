@@ -3,38 +3,6 @@
   "description": "Motion findings that exist in shipped CSS and are owned by an open migration issue. The audit fails on any finding not listed here and on any entry here that no longer occurs, so this ledger can only shrink. FORMA-MOT-010 (#67) requires it to be empty. Never add entries to make new motion pass.",
   "entries": [
     {
-      "key": "generic-token|src/marketing/components.css|.ef-card:has(.ef-card__link)|background-color|--ef-primitive-motion-duration-standard",
-      "issue": "GH-65"
-    },
-    {
-      "key": "generic-token|src/marketing/components.css|.ef-card:has(.ef-card__link)|background-color|--ef-primitive-motion-easing-standard",
-      "issue": "GH-65"
-    },
-    {
-      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|background-color|--ef-primitive-motion-duration-standard",
-      "issue": "GH-65"
-    },
-    {
-      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|background-color|--ef-primitive-motion-easing-standard",
-      "issue": "GH-65"
-    },
-    {
-      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|color|--ef-primitive-motion-duration-standard",
-      "issue": "GH-65"
-    },
-    {
-      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|color|--ef-primitive-motion-easing-standard",
-      "issue": "GH-65"
-    },
-    {
-      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|transform|--ef-primitive-motion-duration-standard",
-      "issue": "GH-65"
-    },
-    {
-      "key": "generic-token|src/marketing/components.css|.ef-site .ef-button|transform|--ef-primitive-motion-easing-standard",
-      "issue": "GH-65"
-    },
-    {
       "key": "implicit-easing|site/site.css|.ef-button|background|ease",
       "issue": "GH-66"
     },
@@ -105,11 +73,6 @@
     {
       "key": "transform-shorthand-motion|site/site.css|.ef-button|transform|",
       "issue": "GH-66",
-      "detectedBy": "GH-64 composition rule (MOT-024); pre-existing CSS"
-    },
-    {
-      "key": "transform-shorthand-motion|src/marketing/components.css|.ef-site .ef-button|transform|",
-      "issue": "GH-65",
       "detectedBy": "GH-64 composition rule (MOT-024); pre-existing CSS"
     },
     {

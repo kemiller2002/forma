@@ -374,12 +374,12 @@
       "selector": ".ef-site .ef-button",
       "tracks": {
         "background-color": "perceptual",
-        "color": "perceptual",
-        "transform": "inertial"
+        "color": "perceptual"
       },
       "reducedMotion": {
         "strategy": "global"
-      }
+      },
+      "notes": "Hover and press are perceptual surface emphasis; the former translateY hover lift was removed because it moved the hit target under the pointer (MOT-014)."
     },
     {
       "source": "src/marketing/components.css",
