@@ -1125,11 +1125,35 @@
     .ef-semantic-differential__scale label:has(input:checked),
     .ef-matrix__choices label:has(input:checked),
     .ef-pairwise__option:has(input:checked) {
+      /* Firefox otherwise forces Highlight back to Canvas; system colors
+         keep the selection legible in every contrast theme. */
+      forced-color-adjust: none;
+      border-color: HighlightText;
       background: Highlight;
       color: HighlightText;
     }
 
+    /* forced-color-adjust is inherited, so every author color painted
+       inside a selected option is restated as a system color. */
+    :is(.ef-ordinal-option, .ef-special-choice, .ef-choice, .ef-binary-option, .ef-symbol-rating__option, .ef-semantic-differential__scale label, .ef-matrix__choices label, .ef-pairwise__option):has(input:checked):has(input:focus-visible) {
+      outline-color: CanvasText;
+      box-shadow: none;
+    }
+
+    .ef-choice:has(input:checked) .ef-choice__content > span { color: inherit; }
+
+    .ef-choice:has(input:checked)::before {
+      background: radial-gradient(circle, HighlightText 0 42%, transparent 44%);
+      border-color: HighlightText;
+    }
+
+    .ef-choice:has(input[type="checkbox"]:checked)::before {
+      background: HighlightText;
+      box-shadow: inset 0 0 0 3px Highlight;
+    }
+
     .ef-ordinal-option:has(input:checked) .ef-ordinal-option__marker {
+      forced-color-adjust: none;
       background: Highlight;
       color: HighlightText;
       border-color: HighlightText;
