@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "agent:claude-code",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-09-29T16:42:04.000Z",
+  "updatedAt": "2026-09-29T17:00:27.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1009,6 +1009,43 @@
         "EXE-20260929T145052032Z-dd29ec42"
       ],
       "completedAt": "2026-09-29T16:42:04.000Z"
+    },
+    {
+      "id": "GH-65",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/marketing/components.css"
+        },
+        {
+          "type": "implementation",
+          "path": "src/marketing/roles.css"
+        },
+        {
+          "type": "implementation",
+          "path": "themes/echelon/marketing.tokens.json"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/marketing.spec.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/marketing-tokens.test.mjs"
+        },
+        {
+          "type": "documentation",
+          "path": "src/motion.manifest.md"
+        }
+      ],
+      "updatedAt": "2026-09-29T17:00:27.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20260929T164248712Z-08119d19"
+      ],
+      "completedAt": "2026-09-29T17:00:27.000Z"
     }
   ]
 }

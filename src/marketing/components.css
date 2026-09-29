@@ -213,10 +213,11 @@
     text-align: center;
     text-decoration: none;
     cursor: pointer;
+    /* Hover and press are perceptual emphasis on the surface only: the hit
+       target never moves under the pointer (MOT-014). */
     transition:
       background-color var(--ef-effect-transition-duration) var(--ef-effect-transition-easing),
-      color var(--ef-effect-transition-duration) var(--ef-effect-transition-easing),
-      transform var(--ef-effect-transition-duration) var(--ef-effect-transition-easing);
+      color var(--ef-effect-transition-duration) var(--ef-effect-transition-easing);
   }
 
   .ef-site .ef-button:hover { background: var(--ef-tone-hover); color: var(--ef-tone-text); }
@@ -230,11 +231,6 @@
   .ef-site .ef-button[data-ef-variant="primary"]:hover {
     background: var(--ef-tone-action-hover);
     color: var(--ef-tone-action-text);
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .ef-site .ef-button:not(:disabled, [aria-disabled="true"]):hover { transform: translateY(-2px); }
-    .ef-site .ef-button:active { transform: none; }
   }
 
   .ef-site .ef-button:is(:disabled, [aria-disabled="true"]) {

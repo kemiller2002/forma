@@ -83,8 +83,11 @@
     --ef-shape-border-width-accent: var(--ef-primitive-border-width-accent);
 
     --ef-effect-shadow-raised: var(--ef-primitive-shadow-raised);
-    --ef-effect-transition-duration: var(--ef-primitive-motion-duration-standard);
-    --ef-effect-transition-easing: var(--ef-primitive-motion-easing-standard);
+    /* Marketing state changes are perceptual interpolation (non-spatial).
+       The fallbacks restate Forma's shared perceptual vocabulary for pages
+       that load the marketing bundle without components.css. */
+    --ef-effect-transition-duration: var(--ef-motion-perceptual-duration, 120ms);
+    --ef-effect-transition-easing: var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
 
     --ef-focus-ring-width: var(--ef-primitive-focus-ring-width);
     --ef-focus-ring-offset: var(--ef-primitive-focus-ring-offset);

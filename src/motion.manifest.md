@@ -80,6 +80,12 @@ Every enhancement below degrades to a correct static presentation, and none of t
 
 Patterns: `patterns/disclosure.html`, `patterns/scroll-progress.html`. View Transitions are opt-in on the root element because Forma never starts them.
 
+## Marketing presentation (FORMA-MOT-008)
+
+- Marketing buttons and interactive cards change color and background by perceptual interpolation. The role tokens `--ef-effect-transition-duration` and `--ef-effect-transition-easing` keep their names; their defaults restate `--ef-motion-perceptual-duration` and `--ef-motion-perceptual-easing`, and the Echelon Marketing Theme aliases the same fast primitive, so a theme cannot silently reintroduce generic standard timing.
+- The former `translateY(-2px)` hover lift is removed: hover is emphasis, not a physical event, and moving the hit target under the pointer violates MOT-014. No marketing effect uses spatial motion.
+- Smooth scrolling stays browser-controlled, enabled only under `prefers-reduced-motion: no-preference`; reduced motion removes marketing transitions and smooth scrolling entirely.
+
 ## Machine-readable catalog
 
 - `catalog/motion/models.json`: taxonomy, the variables each model may use, legacy and generic tokens, spatial properties, audited sources and bundles.
