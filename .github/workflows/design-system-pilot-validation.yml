@@ -10,11 +10,17 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: design-system-pilot-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate-design-system:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Wait for commit batch
+        run: sleep 600
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
