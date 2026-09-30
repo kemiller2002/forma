@@ -51,7 +51,7 @@ export const nasaSpaceflights = Object.freeze([
     launchDate: "1969-07-16",
     returnDate: "1969-07-24",
     crewed: true,
-    crew: ["Neil Armstrong", "Edwin E. \"Buzz\" Aldrin Jr.", "Michael Collins"],
+    crew: ["Neil Armstrong", "Edwin E. “Buzz” Aldrin Jr.", "Michael Collins"],
     spacecraft: "Columbia and Eagle",
     launchVehicle: "Saturn V",
     destination: "Sea of Tranquility, Moon",
