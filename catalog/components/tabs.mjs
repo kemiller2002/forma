@@ -1,3 +1,8 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const sts31 = missionById("sts-31");
+
 export default {
   name: "Tabs",
   category: "navigation",
@@ -26,81 +31,78 @@ export default {
   examples: [
     {
       id: "history-selected",
-      title: "Second tab selected with roving focus",
-      description: "History is selected. The application has applied roving tabindex (only the selected tab is in the tab order), hidden the other panels, and marked the visible panel with data-ef-motion-entry so it fades in when shown.",
+      title: "Mission history selected",
+      description: "The History tab is selected for Apollo 11. The application applies roving tabindex, hides the other panels and marks the visible panel for entry motion; Forma only presents that state.",
       html: `<ef-tabs class="ef-component-tag">
   <section class="ef-tabs" data-ef-motion-weight="light" aria-labelledby="tabs-history-heading">
-    <h2 id="tabs-history-heading">Invoice 1042</h2>
-    <div class="ef-tabs__list" role="tablist" aria-label="Invoice sections">
+    <h2 id="tabs-history-heading">${apollo11.name}</h2>
+    <div class="ef-tabs__list" role="tablist" aria-label="${apollo11.name} sections">
       <button type="button" role="tab" id="tabs-history-tab-overview" aria-selected="false" aria-controls="tabs-history-panel-overview" tabindex="-1">Overview</button>
       <button type="button" role="tab" id="tabs-history-tab-history" aria-selected="true" aria-controls="tabs-history-panel-history">History</button>
-      <button type="button" role="tab" id="tabs-history-tab-payments" aria-selected="false" aria-controls="tabs-history-panel-payments" tabindex="-1">Payments</button>
+      <button type="button" role="tab" id="tabs-history-tab-crew" aria-selected="false" aria-controls="tabs-history-panel-crew" tabindex="-1">Crew</button>
     </div>
     <section class="ef-tabs__panel" id="tabs-history-panel-overview" role="tabpanel" aria-labelledby="tabs-history-tab-overview" hidden>
-      <h3>Overview</h3>
-      <p>Issued 3 June to Northwind Ltd. Due 3 July.</p>
+      <h3>Overview</h3><p>${apollo11.highlight}.</p>
     </section>
     <section class="ef-tabs__panel" id="tabs-history-panel-history" role="tabpanel" aria-labelledby="tabs-history-tab-history" data-ef-motion-entry>
-      <h3>History</h3>
-      <p>Sent 3 June, viewed 4 June, reminder sent 1 July.</p>
+      <h3>History</h3><p>Launch ${apollo11.launchDate}. Return ${apollo11.returnDate}. Destination: ${apollo11.destination}.</p>
     </section>
-    <section class="ef-tabs__panel" id="tabs-history-panel-payments" role="tabpanel" aria-labelledby="tabs-history-tab-payments" hidden>
-      <h3>Payments</h3>
-      <p>No payments recorded.</p>
+    <section class="ef-tabs__panel" id="tabs-history-panel-crew" role="tabpanel" aria-labelledby="tabs-history-tab-crew" hidden>
+      <h3>Crew</h3><p>${apollo11.crew.join(", ")}.</p>
     </section>
   </section>
 </ef-tabs>`
     },
     {
       id: "overflowing-tabs",
-      title: "Many tabs overflowing the list",
-      description: "Seven tabs in a narrow container. The list scrolls horizontally inside its own bounds with a thin scrollbar rather than wrapping; the page itself does not scroll sideways.",
+      title: "Many mission-detail tabs overflowing the list",
+      description: "Seven mission-detail tabs in a narrow container scroll horizontally inside their own bounds rather than wrapping. The page itself does not scroll sideways.",
       html: `<ef-tabs class="ef-component-tag">
   <section class="ef-tabs" style="max-inline-size: 24rem;">
-    <div class="ef-tabs__list" role="tablist" aria-label="Service details">
+    <div class="ef-tabs__list" role="tablist" aria-label="${sts31.name} details">
       <button type="button" role="tab" id="tabs-overflow-tab-summary" aria-selected="true" aria-controls="tabs-overflow-panel-summary">Summary</button>
-      <button type="button" role="tab" id="tabs-overflow-tab-deployments" aria-selected="false" aria-controls="tabs-overflow-panel-deployments" tabindex="-1">Deployments</button>
-      <button type="button" role="tab" id="tabs-overflow-tab-alerts" aria-selected="false" aria-controls="tabs-overflow-panel-alerts" tabindex="-1">Alerts</button>
-      <button type="button" role="tab" id="tabs-overflow-tab-dependencies" aria-selected="false" aria-controls="tabs-overflow-panel-dependencies" tabindex="-1">Dependencies</button>
-      <button type="button" role="tab" id="tabs-overflow-tab-owners" aria-selected="false" aria-controls="tabs-overflow-panel-owners" tabindex="-1">Owners</button>
-      <button type="button" role="tab" id="tabs-overflow-tab-costs" aria-selected="false" aria-controls="tabs-overflow-panel-costs" tabindex="-1">Costs</button>
-      <button type="button" role="tab" id="tabs-overflow-tab-audit" aria-selected="false" aria-controls="tabs-overflow-panel-audit" tabindex="-1">Audit log</button>
+      <button type="button" role="tab" id="tabs-overflow-tab-crew" aria-selected="false" aria-controls="tabs-overflow-panel-crew" tabindex="-1">Crew</button>
+      <button type="button" role="tab" id="tabs-overflow-tab-vehicle" aria-selected="false" aria-controls="tabs-overflow-panel-vehicle" tabindex="-1">Vehicle</button>
+      <button type="button" role="tab" id="tabs-overflow-tab-spacecraft" aria-selected="false" aria-controls="tabs-overflow-panel-spacecraft" tabindex="-1">Spacecraft</button>
+      <button type="button" role="tab" id="tabs-overflow-tab-destination" aria-selected="false" aria-controls="tabs-overflow-panel-destination" tabindex="-1">Destination</button>
+      <button type="button" role="tab" id="tabs-overflow-tab-dates" aria-selected="false" aria-controls="tabs-overflow-panel-dates" tabindex="-1">Dates</button>
+      <button type="button" role="tab" id="tabs-overflow-tab-source" aria-selected="false" aria-controls="tabs-overflow-panel-source" tabindex="-1">NASA source</button>
     </div>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-summary" role="tabpanel" aria-labelledby="tabs-overflow-tab-summary"><p>Checkout service, tier 1, healthy.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-deployments" role="tabpanel" aria-labelledby="tabs-overflow-tab-deployments" hidden><p>Last deployed 2 hours ago.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-alerts" role="tabpanel" aria-labelledby="tabs-overflow-tab-alerts" hidden><p>No open alerts.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-dependencies" role="tabpanel" aria-labelledby="tabs-overflow-tab-dependencies" hidden><p>Depends on payments and inventory.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-owners" role="tabpanel" aria-labelledby="tabs-overflow-tab-owners" hidden><p>Owned by the Commerce team.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-costs" role="tabpanel" aria-labelledby="tabs-overflow-tab-costs" hidden><p>Within budget this month.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-audit" role="tabpanel" aria-labelledby="tabs-overflow-tab-audit" hidden><p>14 changes this week.</p></section>
+    <section class="ef-tabs__panel" id="tabs-overflow-panel-summary" role="tabpanel" aria-labelledby="tabs-overflow-tab-summary"><p>${sts31.highlight}.</p></section>
+    <section class="ef-tabs__panel" id="tabs-overflow-panel-crew" role="tabpanel" aria-labelledby="tabs-overflow-tab-crew" hidden><p>${sts31.crew.join(", ")}.</p></section>
+    <section class="ef-tabs__panel" id="tabs-overflow-panel-vehicle" role="tabpanel" aria-labelledby="tabs-overflow-tab-vehicle" hidden><p>${sts31.launchVehicle}.</p></section>
+    <section class="ef-tabs__panel" id="tabs-overflow-panel-spacecraft" role="tabpanel" aria-labelledby="tabs-overflow-tab-spacecraft" hidden><p>${sts31.spacecraft}.</p></section>
+    <section class="ef-tabs__panel" id="tabs-overflow-panel-destination" role="tabpanel" aria-labelledby="tabs-overflow-tab-destination" hidden><p>${sts31.destination}.</p></section>
+    <section class="ef-tabs__panel" id="tabs-overflow-panel-dates" role="tabpanel" aria-labelledby="tabs-overflow-tab-dates" hidden><p>${sts31.launchDate} to ${sts31.returnDate}.</p></section>
+    <section class="ef-tabs__panel" id="tabs-overflow-panel-source" role="tabpanel" aria-labelledby="tabs-overflow-tab-source" hidden><p><a href="${sts31.source.url}">${sts31.source.title}</a></p></section>
   </section>
 </ef-tabs>`
     },
     {
       id: "mobile-scrolling-list",
-      title: "Tabs on a phone",
-      description: "Four tabs at phone width. The list becomes horizontally scrollable when the labels no longer fit; each tab keeps its full label and 44px height.",
+      title: "Mission tabs on a phone",
+      description: "Four mission-detail tabs at phone width. The list scrolls horizontally when the labels no longer fit, while every tab keeps its full label and touch height.",
       mobile: {
         height: 300,
         notes: [
-          "Tabs never wrap onto a second row; `.ef-tabs__list` scrolls horizontally inside its own bounds when they overflow.",
-          "Tabs keep their natural width (`flex: 0 0 auto`), so labels are never truncated or squeezed.",
-          "Each tab is at least 44px tall; swipe scrolls the list and a tap selects.",
-          "The application should scroll the selected tab into view on load and after keyboard navigation so it is not hidden off-edge."
+          "Tabs never wrap; the list scrolls horizontally inside its own bounds.",
+          "Each tab keeps its natural width and full label.",
+          "Every tab remains at least 44px tall.",
+          "Applications should scroll the selected tab into view after state changes."
         ]
       },
       html: `<ef-tabs class="ef-component-tag">
   <section class="ef-tabs">
-    <div class="ef-tabs__list" role="tablist" aria-label="Order sections">
-      <button type="button" role="tab" id="tabs-mobile-tab-items" aria-selected="true" aria-controls="tabs-mobile-panel-items">Items</button>
-      <button type="button" role="tab" id="tabs-mobile-tab-shipping" aria-selected="false" aria-controls="tabs-mobile-panel-shipping" tabindex="-1">Shipping</button>
-      <button type="button" role="tab" id="tabs-mobile-tab-returns" aria-selected="false" aria-controls="tabs-mobile-panel-returns" tabindex="-1">Returns</button>
-      <button type="button" role="tab" id="tabs-mobile-tab-messages" aria-selected="false" aria-controls="tabs-mobile-panel-messages" tabindex="-1">Customer messages</button>
+    <div class="ef-tabs__list" role="tablist" aria-label="${apollo11.name} details">
+      <button type="button" role="tab" id="tabs-mobile-tab-overview" aria-selected="true" aria-controls="tabs-mobile-panel-overview">Overview</button>
+      <button type="button" role="tab" id="tabs-mobile-tab-crew" aria-selected="false" aria-controls="tabs-mobile-panel-crew" tabindex="-1">Crew</button>
+      <button type="button" role="tab" id="tabs-mobile-tab-spacecraft" aria-selected="false" aria-controls="tabs-mobile-panel-spacecraft" tabindex="-1">Spacecraft</button>
+      <button type="button" role="tab" id="tabs-mobile-tab-destination" aria-selected="false" aria-controls="tabs-mobile-panel-destination" tabindex="-1">Destination</button>
     </div>
-    <section class="ef-tabs__panel" id="tabs-mobile-panel-items" role="tabpanel" aria-labelledby="tabs-mobile-tab-items"><p>3 items, total 84.00.</p></section>
-    <section class="ef-tabs__panel" id="tabs-mobile-panel-shipping" role="tabpanel" aria-labelledby="tabs-mobile-tab-shipping" hidden><p>Ships from the Leeds warehouse.</p></section>
-    <section class="ef-tabs__panel" id="tabs-mobile-panel-returns" role="tabpanel" aria-labelledby="tabs-mobile-tab-returns" hidden><p>No returns requested.</p></section>
-    <section class="ef-tabs__panel" id="tabs-mobile-panel-messages" role="tabpanel" aria-labelledby="tabs-mobile-tab-messages" hidden><p>No messages.</p></section>
+    <section class="ef-tabs__panel" id="tabs-mobile-panel-overview" role="tabpanel" aria-labelledby="tabs-mobile-tab-overview"><p>${apollo11.highlight}.</p></section>
+    <section class="ef-tabs__panel" id="tabs-mobile-panel-crew" role="tabpanel" aria-labelledby="tabs-mobile-tab-crew" hidden><p>${apollo11.crew.join(", ")}.</p></section>
+    <section class="ef-tabs__panel" id="tabs-mobile-panel-spacecraft" role="tabpanel" aria-labelledby="tabs-mobile-tab-spacecraft" hidden><p>${apollo11.spacecraft}.</p></section>
+    <section class="ef-tabs__panel" id="tabs-mobile-panel-destination" role="tabpanel" aria-labelledby="tabs-mobile-tab-destination" hidden><p>${apollo11.destination}.</p></section>
   </section>
 </ef-tabs>`
     }
