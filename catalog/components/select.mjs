@@ -1,3 +1,11 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo8 = missionById("apollo-8");
+const apollo11 = missionById("apollo-11");
+const apollo13 = missionById("apollo-13");
+const sts31 = missionById("sts-31");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Select",
   category: "forms",
@@ -26,60 +34,63 @@ export default {
   examples: [
     {
       id: "grouped-required",
-      title: "Required choice with grouped options",
-      description: "Time zones grouped with optgroup. An empty first option makes the unselected state explicit so the native required constraint can catch a missing choice.",
+      title: "Required mission with grouped programs",
+      description: "NASA missions from the shared reference collection are grouped by program. An empty first option makes the unselected state explicit so the native required constraint can catch a missing choice.",
       html: `<ef-select class="ef-component-tag">
   <label class="ef-select-field">
-    <span class="ef-field__label">Reporting time zone (required)</span>
+    <span class="ef-field__label">Reference mission (required)</span>
     <span class="ef-select" data-ef-motion-weight="standard">
-      <select class="ef-select__input" name="report-timezone" required aria-describedby="select-grouped-timezone-description">
-        <option value="">Choose a time zone</option>
-        <optgroup label="Americas">
-          <option value="America/New_York">New York (UTC−05:00)</option>
-          <option value="America/Los_Angeles">Los Angeles (UTC−08:00)</option>
+      <select class="ef-select__input" name="reference-mission" required aria-describedby="select-grouped-mission-description">
+        <option value="">Choose a mission</option>
+        <optgroup label="Apollo">
+          <option value="${apollo8.id}">${apollo8.name} — ${apollo8.destination}</option>
+          <option value="${apollo11.id}">${apollo11.name} — ${apollo11.destination}</option>
+          <option value="${apollo13.id}">${apollo13.name} — ${apollo13.destination}</option>
         </optgroup>
-        <optgroup label="Europe">
-          <option value="Europe/London">London (UTC+00:00)</option>
-          <option value="Europe/Berlin">Berlin (UTC+01:00)</option>
+        <optgroup label="Space Shuttle">
+          <option value="${sts31.id}">${sts31.name} — ${sts31.spacecraft}</option>
+        </optgroup>
+        <optgroup label="Artemis">
+          <option value="${artemisI.id}">${artemisI.name} — ${artemisI.spacecraft}</option>
         </optgroup>
       </select>
       <span class="ef-select__indicator" aria-hidden="true"></span>
     </span>
-    <span class="ef-field__description" id="select-grouped-timezone-description">Daily reports close at midnight in this time zone.</span>
+    <span class="ef-field__description" id="select-grouped-mission-description">Use one completed mission as the reference record for this example.</span>
   </label>
 </ef-select>`
     },
     {
-      id: "locked-by-plan",
-      title: "Locked by plan",
-      description: "A retention period the current plan does not allow changing. The select is natively disabled and dimmed; the description explains why.",
+      id: "locked-by-mission",
+      title: "Launch vehicle fixed by mission",
+      description: "Apollo 11 is the selected reference mission, so its launch vehicle is shown as a disabled native select. The description explains why the value is unavailable rather than making the disabled state mysterious.",
       html: `<ef-select class="ef-component-tag">
   <label class="ef-select-field">
-    <span class="ef-field__label">Log retention</span>
+    <span class="ef-field__label">Launch vehicle</span>
     <span class="ef-select">
-      <select class="ef-select__input" name="log-retention" disabled aria-describedby="select-locked-retention-description">
-        <option value="30" selected>30 days</option>
-        <option value="90">90 days</option>
-        <option value="365">1 year</option>
+      <select class="ef-select__input" name="launch-vehicle" disabled aria-describedby="select-locked-launch-vehicle-description">
+        <option value="saturn-v" selected>${apollo11.launchVehicle}</option>
+        <option value="space-shuttle">Space Shuttle</option>
+        <option value="sls">Space Launch System</option>
       </select>
       <span class="ef-select__indicator" aria-hidden="true"></span>
     </span>
-    <span class="ef-field__description" id="select-locked-retention-description">Longer retention is available on the Business plan.</span>
+    <span class="ef-field__description" id="select-locked-launch-vehicle-description">Fixed by the selected ${apollo11.name} mission record.</span>
   </label>
 </ef-select>`
     },
     {
       id: "heavy-weight-long-options",
-      title: "Heavy indicator weight with long option text",
-      description: "A heavy presentation weight gives the indicator a slower, more settled rotation. Long option labels are truncated by the platform in the closed control but shown in full in the picker.",
+      title: "Mission highlights with long option text",
+      description: "A heavy presentation weight gives the indicator a slower, more settled rotation. Real mission highlights stress the closed control with longer option labels while the platform picker can show them in full.",
       html: `<ef-select class="ef-component-tag">
   <label class="ef-select-field">
-    <span class="ef-field__label">Escalation policy</span>
+    <span class="ef-field__label">Mission highlight</span>
     <span class="ef-select" data-ef-motion-weight="heavy">
-      <select class="ef-select__input" name="escalation-policy">
-        <option value="primary">Page the primary on-call engineer, then the secondary after 10 minutes</option>
-        <option value="team">Notify the whole platform team channel immediately</option>
-        <option value="manager">Page the primary on-call engineer and the duty manager at the same time</option>
+      <select class="ef-select__input" name="mission-highlight">
+        <option value="${apollo11.id}">${apollo11.name} — ${apollo11.highlight}</option>
+        <option value="${apollo13.id}">${apollo13.name} — ${apollo13.highlight}</option>
+        <option value="${sts31.id}">${sts31.name} — ${sts31.highlight}</option>
       </select>
       <span class="ef-select__indicator" aria-hidden="true"></span>
     </span>
@@ -87,31 +98,31 @@ export default {
 </ef-select>`
     },
     {
-      id: "mobile-country",
-      title: "Mobile country picker",
-      description: "A country select at phone width. The control fills the width and the platform picker takes over on tap.",
+      id: "mobile-mission",
+      title: "Mobile mission picker",
+      description: "A mission select at phone width. The control fills the width and the platform picker takes over on tap.",
       mobile: {
         height: 260,
         notes: [
           "The select fills the available width and keeps a 44px minimum height; the indicator stays pinned 1rem from the inline end.",
-          "Tapping opens the operating system's picker (a wheel or bottom sheet on most phones), which Forma does not style.",
+          "Tapping opens the operating system's picker, which Forma does not style.",
           "The closed control truncates a long selected option on one line; the description wraps below it.",
           "Orientation changes only change the width."
         ]
       },
       html: `<ef-select class="ef-component-tag">
   <label class="ef-select-field">
-    <span class="ef-field__label">Country or region</span>
+    <span class="ef-field__label">Mission</span>
     <span class="ef-select">
-      <select class="ef-select__input" name="country" autocomplete="country" aria-describedby="select-mobile-country-description">
-        <option value="GB">United Kingdom</option>
-        <option value="IE">Ireland</option>
-        <option value="US">United States</option>
-        <option value="AE">United Arab Emirates</option>
+      <select class="ef-select__input" name="mission" autocomplete="off" aria-describedby="select-mobile-mission-description">
+        <option value="${apollo8.id}">${apollo8.name}</option>
+        <option value="${apollo11.id}">${apollo11.name}</option>
+        <option value="${sts31.id}">${sts31.name}</option>
+        <option value="${artemisI.id}">${artemisI.name}</option>
       </select>
       <span class="ef-select__indicator" aria-hidden="true"></span>
     </span>
-    <span class="ef-field__description" id="select-mobile-country-description">Used for tax calculation on invoices.</span>
+    <span class="ef-field__description" id="select-mobile-mission-description">Completed NASA missions from the Forma reference collection.</span>
   </label>
 </ef-select>`
     }
