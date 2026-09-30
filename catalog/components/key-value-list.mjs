@@ -1,3 +1,9 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const apollo13 = missionById("apollo-13");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Key-value list",
   category: "data",
@@ -26,54 +32,54 @@ export default {
   examples: [
     {
       id: "record-details",
-      title: "Record details with status and links",
-      description: "A deployment's properties. Values mix plain text, an [[identifier]], a link, a machine-readable time and a [[status-lozenge]]; the list itself stays a plain description list.",
+      title: "Mission details with status and source",
+      description: "Apollo 11 properties mix plain text, an identifier, an official source link, machine-readable dates and a status lozenge while the structure remains an ordinary description list.",
       html: `<ef-key-value-list class="ef-component-tag">
   <section aria-labelledby="key-value-list-record-details-title">
-    <h3 id="key-value-list-record-details-title">Deployment details</h3>
+    <h3 id="key-value-list-record-details-title">${apollo11.name} details</h3>
     <dl class="ef-key-value-list">
-      <div><dt>Release</dt><dd><span class="ef-identifier">rel-2026.09.29-3f8c21</span></dd></div>
-      <div><dt>Environment</dt><dd>Production, EU West</dd></div>
-      <div><dt>Status</dt><dd><span class="ef-status-lozenge" data-state="ok">Healthy</span></dd></div>
-      <div><dt>Started</dt><dd><time datetime="2026-09-29T07:42:00Z">29 Sep 2026, 07:42 UTC</time></dd></div>
-      <div><dt>Owner</dt><dd><a href="#key-value-list-record-details-owner">Platform team</a></dd></div>
+      <div><dt>Mission</dt><dd><span class="ef-identifier">${apollo11.id}</span></dd></div>
+      <div><dt>Program</dt><dd>${apollo11.program}</dd></div>
+      <div><dt>Status</dt><dd><span class="ef-status-lozenge" data-state="ok">${apollo11.status}</span></dd></div>
+      <div><dt>Launch</dt><dd><time datetime="${apollo11.launchDate}">${apollo11.launchDate}</time></dd></div>
+      <div><dt>NASA source</dt><dd><a href="${apollo11.source.url}">${apollo11.source.title}</a></dd></div>
     </dl>
   </section>
 </ef-key-value-list>`
     },
     {
       id: "long-labels-missing-values",
-      title: "Long labels and missing values",
-      description: "German labels (marked with `lang=\"de\"`) that are longer than the 7rem minimum label column wrap within it, and values that are not set are written out rather than left blank so an empty `dd` is never mistaken for a loading value.",
+      title: "Long labels and an explicitly unavailable value",
+      description: "Apollo 13 supplies naturally long labels and values. A field not represented by the compact reference collection is written as unavailable rather than left blank, so absence cannot be mistaken for loading.",
       html: `<ef-key-value-list class="ef-component-tag">
-  <dl class="ef-key-value-list" lang="de">
-    <div><dt>Verantwortliche Abteilung für Rechnungsprüfung</dt><dd>Finanzbuchhaltung Mitteleuropa</dd></div>
-    <div><dt>Kostenstelle</dt><dd>Nicht festgelegt</dd></div>
-    <div><dt>Umsatzsteuer-Identifikationsnummer</dt><dd><span class="ef-identifier">DE 812 345 678</span></dd></div>
-    <div><dt>Letzte Prüfung</dt><dd>Unbekannt: Prüfprotokoll nicht verfügbar</dd></div>
+  <dl class="ef-key-value-list">
+    <div><dt>Mission classification and purpose</dt><dd>${apollo13.missionType}</dd></div>
+    <div><dt>Command and lunar module spacecraft</dt><dd>${apollo13.spacecraft}</dd></div>
+    <div><dt>Crew represented in the reference collection</dt><dd>${apollo13.crew.join(", ")}</dd></div>
+    <div><dt>Launch-pad identifier</dt><dd>Not included in this compact reference record</dd></div>
   </dl>
 </ef-key-value-list>`
     },
     {
-      id: "mobile-account-summary",
-      title: "Mobile account summary",
-      description: "An account summary at phone width. Each row stacks its label above its value so neither is squeezed into a narrow column.",
+      id: "mobile-mission-summary",
+      title: "Mobile mission summary",
+      description: "An Artemis I summary at phone width. Each row stacks its label above its value so the SLS/Orion and destination text is not squeezed into a narrow column.",
       mobile: {
-        height: 360,
+        height: 400,
         notes: [
-          "At 30rem (480px) and below each row switches to `grid-template-columns: 1fr` with a 0.25rem gap: the label sits directly above its value.",
-          "The row rule stays, so pairs remain grouped even when a value wraps across several lines.",
-          "Long unbroken values should use [[identifier]] (which allows breaking anywhere) so they wrap at 320px instead of overflowing.",
-          "Links inside values are ordinary inline links; give them enough text to be comfortable tap targets or place them on their own line.",
-          "Orientation changes only switch between the stacked and two-column rows at the 30rem breakpoint."
+          "At 30rem and below each row becomes one column with the label directly above its value.",
+          "The row rule stays, so mission-property pairs remain grouped even when a value wraps.",
+          "Long unbroken ids should use identifier styling so they can break safely at 320px.",
+          "Links inside values remain ordinary links and should have descriptive text."
         ]
       },
       html: `<ef-key-value-list class="ef-component-tag">
   <dl class="ef-key-value-list">
-    <div><dt>Account</dt><dd>Northwind Logistics International</dd></div>
-    <div><dt>Plan</dt><dd>Business, billed monthly</dd></div>
-    <div><dt>Seats</dt><dd>48 of 50 in use</dd></div>
-    <div><dt>Billing contact</dt><dd><a href="#key-value-list-mobile-account-summary-contact">accounts-payable@northwind.example</a></dd></div>
+    <div><dt>Mission</dt><dd>${artemisI.name}</dd></div>
+    <div><dt>Spacecraft</dt><dd>${artemisI.spacecraft}</dd></div>
+    <div><dt>Launch vehicle</dt><dd>${artemisI.launchVehicle}</dd></div>
+    <div><dt>Destination</dt><dd>${artemisI.destination}</dd></div>
+    <div><dt>Crew</dt><dd>Uncrewed</dd></div>
   </dl>
 </ef-key-value-list>`
     }
