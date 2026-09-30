@@ -116,6 +116,8 @@ test("the viewport switcher resizes the real mobile frame", async ({ page }) => 
   const demo = page.locator("#example-mobile-settings-list .viewport-demo");
   const frame = demo.locator("iframe.example-mobile-frame");
   await frame.scrollIntoViewIfNeeded();
+  // The frame is lazy-loaded; measure only after its document has loaded.
+  await expect.poll(() => frame.evaluate(element => element.contentDocument?.readyState ?? "loading")).toBe("complete");
   expect(Math.round((await frame.boundingBox()).width)).toBe(320);
   for (const width of [390, 430, 768]) {
     await demo.locator(`input[value="${width}"]`).check({ force: true });
@@ -191,6 +193,7 @@ chunks.forEach((chunk, index) => {
         .disableRules(["landmark-unique"])
         .exclude(".example-canvas")
         .exclude(".catalog-card__preview")
+        .exclude("iframe")
         .options({ iframes: false })
         .analyze();
       const examples = await page.locator(".example-canvas").count()
@@ -199,7 +202,8 @@ chunks.forEach((chunk, index) => {
           .include(".example-canvas")
           .exclude(".ve-stress-grid")
           .disableRules(["landmark-unique"])
-          .options({ iframes: false })
+          .exclude("iframe")
+        .options({ iframes: false })
           .analyze()
         : { violations: [] };
       const pagePath = url.replace("/site-dist/", "").replace(/index\.html$/, "");
@@ -213,6 +217,41 @@ chunks.forEach((chunk, index) => {
     const known = item => baseline.some(entry => entry.page === item.page && entry.rule === item.rule);
     const unexpected = found.filter(item => !known(item)).map(item => `${item.page}: ${item.rule} ${item.target}`);
     const chunkPages = new Set(chunk.map(url => url.replace("/site-dist/", "").replace(/index\.html$/, "")));
+    const stale = baseline
+      .filter(entry => chunkPages.has(entry.page))
+      .filter(entry => !found.some(item => item.page === entry.page && item.rule === entry.rule))
+      .map(entry => `${entry.page}: ${entry.rule} (baseline entry no longer reproduces; remove it)`);
+    expect([...unexpected, ...stale]).toEqual([]);
+  });
+});
+
+// Frame documents (mobile examples and page-level Basic examples) hold one
+// component fragment, not a page, so page-structure rules do not apply; every
+// other rule does. Checked directly so lazy loading cannot make it flaky.
+const frameDocs = [
+  ...mobileFrames,
+  ...manifest.components.map(item => `/site-dist/components/${item.slug}/basic.html`)
+    .filter(url => fs.existsSync(path.join(root, url)))
+];
+const frameChunks = Array.from({ length: Math.ceil(frameDocs.length / 40) }, (_, index) => frameDocs.slice(index * 40, (index + 1) * 40));
+
+frameChunks.forEach((chunk, index) => {
+  test(`mobile and page-level example frames have no automatically detectable WCAG A/AA violations (${index + 1}/${frameChunks.length})`, async ({ page }) => {
+    test.setTimeout(Math.max(60_000, chunk.length * 8_000));
+    const found = [];
+    for (const url of chunk) {
+      await page.goto(url);
+      const results = await new AxeBuilder({ page })
+        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+        .analyze();
+      const pagePath = url.replace("/site-dist/", "");
+      results.violations
+        .filter(violation => !["page-has-heading-one", "landmark-one-main", "region", "landmark-unique"].includes(violation.id))
+        .forEach(violation => found.push({ page: pagePath, rule: violation.id, target: violation.nodes[0]?.target.join(" ") ?? "" }));
+    }
+    const known = item => baseline.some(entry => entry.page === item.page && entry.rule === item.rule);
+    const unexpected = found.filter(item => !known(item)).map(item => `${item.page}: ${item.rule} ${item.target}`);
+    const chunkPages = new Set(chunk.map(url => url.replace("/site-dist/", "")));
     const stale = baseline
       .filter(entry => chunkPages.has(entry.page))
       .filter(entry => !found.some(item => item.page === entry.page && item.rule === entry.rule))
