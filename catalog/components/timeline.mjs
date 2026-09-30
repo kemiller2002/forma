@@ -1,3 +1,9 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const sts31 = missionById("sts-31");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Timeline",
   category: "data",
@@ -25,35 +31,35 @@ export default {
   },
   examples: [
     {
-      id: "unknown-outcome",
-      title: "History with an unknown outcome",
-      description: "A payment's history, newest first. The latest event's outcome is not yet known, and the timeline says so with an Unknown status instead of implying failure or success.",
+      id: "apollo-11-history",
+      title: "Apollo 11 mission history",
+      description: "Three historical events, newest first, use the canonical Apollo 11 record and factual dates. Outcome text is explicit instead of relying on marker color.",
       html: `<ef-timeline class="ef-component-tag">
-  <ol class="ef-timeline" aria-label="Payment PAY-88122 history">
+  <ol class="ef-timeline" aria-label="${apollo11.name} mission history, newest first">
     <li class="ef-timeline__item">
       <div class="ef-timeline__marker" aria-hidden="true"></div>
       <div class="ef-timeline__content">
-        <div class="ef-timeline__meta"><time datetime="2026-09-29T08:20:00Z">Sep 29 · 08:20</time><span class="ef-status-lozenge" data-state="unknown">Outcome unknown</span></div>
-        <h3>Settlement requested</h3>
-        <p>The bank accepted the request but has not confirmed settlement.</p>
-        <small>Source: bank connector</small>
+        <div class="ef-timeline__meta"><time datetime="${apollo11.returnDate}">${apollo11.returnDate}</time><span class="ef-status-lozenge" data-state="ok">Returned</span></div>
+        <h3>${apollo11.name} returned to Earth</h3>
+        <p>Columbia splashed down in the Pacific Ocean after the first crewed lunar landing mission.</p>
+        <small>Source: NASA mission record</small>
       </div>
     </li>
     <li class="ef-timeline__item">
       <div class="ef-timeline__marker" aria-hidden="true"></div>
       <div class="ef-timeline__content">
-        <div class="ef-timeline__meta"><time datetime="2026-09-29T08:02:00Z">Sep 29 · 08:02</time><span class="ef-status-lozenge" data-state="ok">Approved</span></div>
-        <h3>Payment approved</h3>
-        <p>Approved by J. Lindqvist under the finance approval policy.</p>
-        <small>Source: approvals</small>
+        <div class="ef-timeline__meta"><time datetime="1969-07-20">1969-07-20</time><span class="ef-status-lozenge" data-state="ok">Landed</span></div>
+        <h3>First crewed lunar landing</h3>
+        <p>${apollo11.highlight} in the ${apollo11.destination}.</p>
+        <small>Source: NASA mission record</small>
       </div>
     </li>
     <li class="ef-timeline__item">
       <div class="ef-timeline__marker" aria-hidden="true"></div>
       <div class="ef-timeline__content">
-        <div class="ef-timeline__meta"><time datetime="2026-09-28T16:45:00Z">Sep 28 · 16:45</time><span class="ef-status-lozenge">Created</span></div>
-        <h3>Payment created</h3>
-        <p>Created from invoice INV-1042.</p>
+        <div class="ef-timeline__meta"><time datetime="${apollo11.launchDate}">${apollo11.launchDate}</time><span class="ef-status-lozenge">Launch</span></div>
+        <h3>${apollo11.name} launched</h3>
+        <p>${apollo11.launchVehicle} carried ${apollo11.crew.join(", ")} toward the Moon.</p>
       </div>
     </li>
   </ol>
@@ -61,20 +67,20 @@ export default {
     },
     {
       id: "expandable-detail",
-      title: "Event with expandable detail",
-      description: "A configuration change whose full diff is optional reading. The detail sits in a native [[disclosure]] inside the event's content, so the timeline stays scannable and the browser owns open and closed state.",
+      title: "Mission event with expandable detail",
+      description: "STS-31 demonstrates optional detail inside a native disclosure. The main event stays scannable while spacecraft, destination and crew facts remain available without script.",
       html: `<ef-timeline class="ef-component-tag">
-  <ol class="ef-timeline" aria-label="Workspace settings history">
+  <ol class="ef-timeline" aria-label="${sts31.name} mission record">
     <li class="ef-timeline__item">
       <div class="ef-timeline__marker" aria-hidden="true"></div>
       <div class="ef-timeline__content">
-        <div class="ef-timeline__meta"><time datetime="2026-09-27T11:05:00Z">Sep 27 · 11:05</time><span>by m.okafor</span></div>
-        <h3>Retention policy changed</h3>
-        <p>Evidence retention changed from 30 days to unlimited.</p>
+        <div class="ef-timeline__meta"><time datetime="${sts31.returnDate}">${sts31.returnDate}</time><span class="ef-status-lozenge" data-state="ok">${sts31.status}</span></div>
+        <h3>${sts31.name} completed</h3>
+        <p>${sts31.highlight}.</p>
         <details class="ef-disclosure" data-ef-motion-weight="light">
-          <summary>Show changed fields</summary>
+          <summary>Show mission details</summary>
           <div class="ef-disclosure__content">
-            <p>Retention: 30 days → Unlimited. Export: Manual → Automated after approval.</p>
+            <p>Spacecraft: ${sts31.spacecraft}. Destination: ${sts31.destination}. Crew: ${sts31.crew.join(", ")}.</p>
           </div>
         </details>
       </div>
@@ -82,8 +88,8 @@ export default {
     <li class="ef-timeline__item">
       <div class="ef-timeline__marker" aria-hidden="true"></div>
       <div class="ef-timeline__content">
-        <div class="ef-timeline__meta"><time datetime="2026-09-20T09:30:00Z">Sep 20 · 09:30</time><span>by system</span></div>
-        <h3>Workspace created</h3>
+        <div class="ef-timeline__meta"><time datetime="${sts31.launchDate}">${sts31.launchDate}</time><span>NASA</span></div>
+        <h3>${sts31.name} launched aboard ${sts31.spacecraft}</h3>
       </div>
     </li>
   </ol>
@@ -91,33 +97,33 @@ export default {
     },
     {
       id: "mobile-activity",
-      title: "Mobile activity history",
-      description: "The same structure at phone width. The marker column stays fixed at 1.25rem and the content column takes the rest.",
+      title: "Mobile Artemis I history",
+      description: "The same timeline structure at phone width uses the uncrewed Artemis I flight as a compact two-event mission history.",
       mobile: {
         height: 440,
         notes: [
-          "The timeline is already single-column: a fixed 1.25rem marker column beside a `minmax(0, 1fr)` content column, so it needs no breakpoint.",
-          "The meta line wraps: at 320px a long status moves below the timestamp instead of overflowing.",
-          "Headings and descriptions wrap inside the bordered content block; long identifiers should use [[identifier]] so they break safely.",
-          "The timeline has no interactive parts of its own; links or disclosures inside events keep their own touch targets."
+          "The timeline is already single-column: a fixed marker column beside a flexible content column, so it needs no breakpoint.",
+          "The meta line wraps at 320px instead of overflowing.",
+          "Mission headings and descriptions wrap inside the bordered content block.",
+          "The timeline has no interactive behavior of its own."
         ]
       },
       html: `<ef-timeline class="ef-component-tag">
-  <ol class="ef-timeline" aria-label="Ticket SUP-3120 activity">
+  <ol class="ef-timeline" aria-label="${artemisI.name} mission history">
     <li class="ef-timeline__item">
       <div class="ef-timeline__marker" aria-hidden="true"></div>
       <div class="ef-timeline__content">
-        <div class="ef-timeline__meta"><time datetime="2026-09-29T09:12:00Z">09:12</time><span class="ef-status-lozenge" data-state="attention">Awaiting customer reply</span></div>
-        <h3>Support replied</h3>
-        <p>Asked for the export settings used when the CSV failed.</p>
+        <div class="ef-timeline__meta"><time datetime="${artemisI.returnDate}">${artemisI.returnDate}</time><span class="ef-status-lozenge" data-state="ok">Splashdown</span></div>
+        <h3>${artemisI.name} completed</h3>
+        <p>${artemisI.highlight}.</p>
       </div>
     </li>
     <li class="ef-timeline__item">
       <div class="ef-timeline__marker" aria-hidden="true"></div>
       <div class="ef-timeline__content">
-        <div class="ef-timeline__meta"><time datetime="2026-09-29T07:55:00Z">07:55</time><span class="ef-status-lozenge">New</span></div>
-        <h3>Ticket opened</h3>
-        <p>Cannot export the quarterly usage report as CSV.</p>
+        <div class="ef-timeline__meta"><time datetime="${artemisI.launchDate}">${artemisI.launchDate}</time><span class="ef-status-lozenge">Launch</span></div>
+        <h3>${artemisI.spacecraft} launched on ${artemisI.launchVehicle}</h3>
+        <p>Destination: ${artemisI.destination}. Crew status: uncrewed.</p>
       </div>
     </li>
   </ol>
