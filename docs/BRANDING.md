@@ -133,7 +133,12 @@ A failed brand does not get a best-effort output. Fix the manifest and compile
 again.
 
 Forced-colors behavior and non-color state cues remain part of Forma's existing
-component accessibility contract.
+component accessibility contract. Under `forced-colors: active`, Forma projects
+every semantic color token to a system color for every theme, brand and skin
+scope (foreground, accent, border and status roles become `CanvasText`;
+surfaces become `Canvas`). Brands and themes cannot opt out: the user's
+forced-colors choice always wins. Selection and state presentation that needs
+`Highlight` keeps its explicit component rules (FORMA-A11Y-001).
 
 ## White-labeling rules for applications
 

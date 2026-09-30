@@ -108,6 +108,7 @@ Before changing application CSS for customer identity or presentation, read
 - Runtime brand/theme/skin selection, persistence, remote loading, and interactive preview behavior belong to the consuming application, normally through Limen.
 - Brand terminology and asset references are application/build inputs; they are not hidden CSS content.
 - Brand or skin changes must never alter legal actions, permissions, validation, scoring, obligations, or domain transitions.
+- Do not restate semantic colors under `@media (forced-colors: active)` in a theme, brand or skin: Forma projects every `--ef-color-*` token to system colors there, and component state rules own `Highlight` usage.
 
 ## Public component tags
 
