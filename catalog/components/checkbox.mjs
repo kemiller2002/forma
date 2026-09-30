@@ -1,3 +1,8 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const sts31 = missionById("sts-31");
+
 export default {
   name: "Checkbox",
   category: "forms",
@@ -24,46 +29,46 @@ export default {
   },
   examples: [
     {
-      id: "terms-consent",
-      title: "Required consent",
-      description: "A required agreement before creating an account. The native required constraint blocks submission while unchecked; the label names what is being agreed to and links the document.",
+      id: "record-confirmation",
+      title: "Required mission-record confirmation",
+      description: "A required acknowledgement before exporting a historical mission record. The native required constraint blocks submission while unchecked, and the label identifies exactly which NASA record is being confirmed.",
       html: `<ef-checkbox class="ef-component-tag">
-  <form class="ef-stack" action="/signup" method="post">
+  <form class="ef-stack" action="/missions/export" method="post">
     <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="accept-terms" value="yes" required aria-describedby="checkbox-terms-consent-description">
+      <input class="ef-checkbox__input" type="checkbox" name="confirm-mission" value="${apollo11.id}" required aria-describedby="checkbox-record-confirmation-description">
       <span class="ef-checkbox__box" aria-hidden="true"></span>
       <span class="ef-checkbox__text">
-        <span class="ef-checkbox__label">I agree to the data processing terms (required)</span>
-        <span class="ef-checkbox__description" id="checkbox-terms-consent-description">You can read the terms at example.com/dpa before continuing.</span>
+        <span class="ef-checkbox__label">I confirm that ${apollo11.name} is the mission record to export (required)</span>
+        <span class="ef-checkbox__description" id="checkbox-record-confirmation-description">Launch: ${apollo11.launchDate}. Return: ${apollo11.returnDate}.</span>
       </span>
     </label>
-    <button type="submit">Create account</button>
+    <button type="submit">Export mission record</button>
   </form>
 </ef-checkbox>`
     },
     {
-      id: "export-options",
-      title: "Export options",
-      description: "Independent options grouped in a fieldset with a legend. One starts checked, and one is disabled with the reason in its description.",
+      id: "brief-options",
+      title: "Mission brief options",
+      description: "Independent export options use the same mission context. One starts checked, and one is disabled with a reason so unavailable content is not implied to be selectable.",
       html: `<ef-checkbox class="ef-component-tag">
   <fieldset class="ef-stack" data-density="compact">
-    <legend>Include in export</legend>
+    <legend>Include in ${sts31.name} mission brief</legend>
     <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="export-include" value="comments" checked>
+      <input class="ef-checkbox__input" type="checkbox" name="brief-include" value="crew" checked>
       <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Comments</span></span>
+      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Crew roster</span></span>
     </label>
     <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="export-include" value="attachments">
+      <input class="ef-checkbox__input" type="checkbox" name="brief-include" value="vehicle">
       <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Attachments</span></span>
+      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Spacecraft and launch vehicle</span></span>
     </label>
     <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="export-include" value="audit" disabled aria-describedby="checkbox-export-audit-description">
+      <input class="ef-checkbox__input" type="checkbox" name="brief-include" value="engineering-telemetry" disabled aria-describedby="checkbox-brief-telemetry-description">
       <span class="ef-checkbox__box" aria-hidden="true"></span>
       <span class="ef-checkbox__text">
-        <span class="ef-checkbox__label">Audit history</span>
-        <span class="ef-checkbox__description" id="checkbox-export-audit-description">Only workspace owners can export audit history.</span>
+        <span class="ef-checkbox__label">Engineering telemetry archive</span>
+        <span class="ef-checkbox__description" id="checkbox-brief-telemetry-description">Unavailable in this public reference collection.</span>
       </span>
     </label>
   </fieldset>
@@ -71,22 +76,22 @@ export default {
     },
     {
       id: "light-weight-long-label",
-      title: "Light motion weight with a long label",
-      description: "A light presentation weight gives the check mark a quicker settle. The long translated label wraps beside the box; the box stays aligned to the row.",
+      title: "Light motion weight with a long mission label",
+      description: "A light presentation weight gives the check mark a quicker settle. The real Hubble deployment description wraps beside the box; the box stays aligned to the row.",
       html: `<ef-checkbox class="ef-component-tag">
   <label class="ef-checkbox" data-ef-motion-weight="light">
-    <input class="ef-checkbox__input" type="checkbox" name="notify-subscribers" value="yes">
+    <input class="ef-checkbox__input" type="checkbox" name="include-highlight" value="${sts31.id}">
     <span class="ef-checkbox__box" aria-hidden="true"></span>
     <span class="ef-checkbox__text">
-      <span class="ef-checkbox__label">Benachrichtigen Sie alle Abonnenten dieses Projekts per E-Mail, wenn sich der Veröffentlichungsstatus ändert</span>
+      <span class="ef-checkbox__label">Include ${sts31.name}: ${sts31.highlight} in the selected mission highlights</span>
     </span>
   </label>
 </ef-checkbox>`
     },
     {
-      id: "mobile-filter-list",
-      title: "Mobile filter list",
-      description: "Status filters in a narrow panel. Every row is a full-width touch target and labels wrap instead of truncating.",
+      id: "mobile-program-filter",
+      title: "Mobile NASA program filter",
+      description: "Program filters in a narrow panel. Every row is a full-width touch target and labels wrap instead of truncating.",
       mobile: {
         height: 340,
         notes: [
@@ -98,21 +103,21 @@ export default {
       },
       html: `<ef-checkbox class="ef-component-tag">
   <fieldset class="ef-stack" data-density="compact">
-    <legend>Status</legend>
+    <legend>NASA program</legend>
     <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="mobile-status" value="open" checked>
+      <input class="ef-checkbox__input" type="checkbox" name="mobile-program" value="apollo" checked>
       <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Open</span></span>
+      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Apollo</span></span>
     </label>
     <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="mobile-status" value="waiting">
+      <input class="ef-checkbox__input" type="checkbox" name="mobile-program" value="space-shuttle">
       <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Waiting on customer response</span></span>
+      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Space Shuttle</span></span>
     </label>
     <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="mobile-status" value="resolved">
+      <input class="ef-checkbox__input" type="checkbox" name="mobile-program" value="artemis">
       <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Resolved in the last 7 days</span></span>
+      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Artemis</span></span>
     </label>
   </fieldset>
 </ef-checkbox>`
