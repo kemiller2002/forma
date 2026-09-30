@@ -90,9 +90,9 @@ export default {
       html: `<ef-card-grid class="ef-component-tag">
   <div class="ef-site">
     <ul class="ef-card-grid" data-ef-columns="3" aria-label="NASA mission highlights">
-      <li><article class="ef-card"><p class="ef-eyebrow">${apollo8.program}</p><h3 class="ef-card__title"><a class="ef-card__link" href="#card-grid-mobile-apollo-8">${apollo8.name}</a></h3><p>${apollo8.highlight}.</p></article></li>
+      <li><article class="ef-card" id="card-grid-mobile-apollo-8"><p class="ef-eyebrow">${apollo8.program}</p><h3 class="ef-card__title"><a class="ef-card__link" href="#card-grid-mobile-apollo-8">${apollo8.name}</a></h3><p>${apollo8.highlight}.</p></article></li>
       <li><article class="ef-card"><p class="ef-eyebrow">${sts31.program}</p><h3 class="ef-card__title">${sts31.name}</h3><p>${sts31.highlight}.</p></article></li>
-      <li><article class="ef-card" data-ef-tone="inverse" id="card-grid-mobile-apollo-8"><p class="ef-eyebrow">${artemisI.program}</p><h3 class="ef-card__title">${artemisI.name}</h3><p>${artemisI.highlight}.</p></article></li>
+      <li><article class="ef-card" data-ef-tone="inverse"><p class="ef-eyebrow">${artemisI.program}</p><h3 class="ef-card__title">${artemisI.name}</h3><p>${artemisI.highlight}.</p></article></li>
     </ul>
   </div>
 </ef-card-grid>`
