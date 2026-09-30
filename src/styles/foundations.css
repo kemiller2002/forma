@@ -109,7 +109,8 @@
   .ef-cluster { display: flex; flex-wrap: wrap; gap: var(--ef-cluster-gap, var(--ef-primitive-spacing-3, 0.75rem)); align-items: center; }
   .ef-grid { display: grid; gap: var(--ef-grid-gap, var(--ef-primitive-spacing-4, 1rem)); grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ef-grid-min, 16rem)), 1fr)); }
   .ef-section { padding-block: var(--ef-section-space, var(--ef-primitive-spacing-7, 3rem)); }
-  .ef-surface { min-inline-size: 0; padding: var(--ef-surface-space, var(--ef-primitive-spacing-5, 1.5rem)); background: var(--ef-color-surface-secondary, #e3e0d7); color: var(--ef-color-text-on-secondary-surface, #3a403c); border: 1px solid var(--ef-color-border-subtle, #e3e0d7); }\n  .ef-surface :where(h1, h2, h3, h4, h5, h6, p) { color: inherit; }
+  .ef-surface { min-inline-size: 0; padding: var(--ef-surface-space, var(--ef-primitive-spacing-5, 1.5rem)); background: var(--ef-color-surface-secondary, #e3e0d7); color: var(--ef-color-text-on-secondary-surface, #3a403c); border: 1px solid var(--ef-color-border-subtle, #e3e0d7); }
+  .ef-surface :where(h1, h2, h3, h4, h5, h6, p) { color: inherit; }
 
   :where(h1, h2, h3, h4, h5, h6, p, a, label, legend, td, th) {
     overflow-wrap: anywhere;
@@ -125,6 +126,48 @@
   }
 
   @media (forced-colors: active) {
+    /*
+     * Forced-colors token projection (FORMA-A11Y-001). Every semantic color
+     * token resolves to a system color, so author colors agree with what the
+     * user agent forces: foreground roles become CanvasText and surfaces
+     * become Canvas, for every theme, brand and skin scope. Without this,
+     * theme text colors survive where engines do not force them (for example
+     * -webkit-text-fill-color, which resolves currentcolor before forcing, and
+     * engines that only emulate the media query), producing light theme text
+     * on a forced Canvas. !important in this early layer outranks later theme
+     * and brand layers: the user's forced-colors choice wins. Selection and
+     * state rules that need Highlight keep their explicit forced-colors rules.
+     */
+    :root, [data-ef-theme], [data-ef-brand], [data-ef-skin] {
+      --ef-color-text-primary: CanvasText !important;
+      --ef-color-text-heading: CanvasText !important;
+      --ef-color-text-secondary: CanvasText !important;
+      --ef-color-text-muted: CanvasText !important;
+      --ef-color-text-on-secondary-surface: CanvasText !important;
+      --ef-color-text-inverse: CanvasText !important;
+      --ef-color-accent-primary: CanvasText !important;
+      --ef-color-accent-secondary: CanvasText !important;
+      --ef-color-accent-hover: CanvasText !important;
+      --ef-color-border-functional: CanvasText !important;
+      --ef-color-border-subtle: CanvasText !important;
+      --ef-color-status-danger: CanvasText !important;
+      --ef-color-status-warning: CanvasText !important;
+      --ef-color-status-success: CanvasText !important;
+      --ef-color-status-info: CanvasText !important;
+      --ef-color-control-active: CanvasText !important;
+      --ef-color-control-thumb: Canvas !important;
+      --ef-color-control-track: CanvasText !important;
+      --ef-color-focus-ring: CanvasText !important;
+      --ef-color-focus-gap: Canvas !important;
+      --ef-color-surface-primary: Canvas !important;
+      --ef-color-surface-secondary: Canvas !important;
+      --ef-color-surface-elevated: Canvas !important;
+      --ef-color-surface-inverse: Canvas !important;
+      --ef-color-surface-inverse-secondary: Canvas !important;
+      color: CanvasText;
+      background-color: Canvas;
+    }
+
     :where(button, .ef-button, input, textarea, select, .ef-surface) {
       border-color: CanvasText;
     }
