@@ -66,7 +66,8 @@ test("standardized data-bearing components consume the shared NASA module", () =
     "empty-state",
     "metric-card",
     "dashboard-grid",
-    "work-queue"
+    "work-queue",
+    "collection-toolbar"
   ];
 
   for (const slug of standardized) {
