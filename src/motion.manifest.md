@@ -118,7 +118,7 @@ Patterns: `patterns/disclosure.html`, `patterns/scroll-progress.html`. View Tran
 
 ## Audit
 
-`tools/motion-audit.mjs` (library and CLI) reads core, assessment, marketing and documentation-site CSS. It enumerates every transition, animation, `@keyframes`, `@starting-style`, View Transition and scroll-timeline declaration. It then categorises each duration and easing:
+`tools/motion-audit.mjs` (library and CLI; value parsing and classification live in `tools/motion-values.mjs`) reads core, assessment, marketing and documentation-site CSS. It enumerates every transition, animation, `@keyframes`, `@starting-style`, View Transition and scroll-timeline declaration. It then categorises each duration and easing:
 
 - canonical model variable;
 - canonical definition;
