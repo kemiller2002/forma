@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 11,
+  "nextSeq": 17,
   "items": [
     {
       "id": "WI-0001",
@@ -251,6 +251,102 @@
       "attachments": [],
       "createdAt": "2026-09-28T01:10:33.331Z",
       "updatedAt": "2026-09-28T01:29:14.000Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0011",
+      "title": "Upgrade Forma documentation site into a complete component catalog (inventory, taxonomy, per-component reference pages, composed examples, coverage enforcement)",
+      "description": null,
+      "tags": [
+        "forma,documentation,catalog,mobile,accessibility"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-09-30T11:59:08.075Z",
+      "updatedAt": "2026-09-30T14:01:26.000Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0012",
+      "title": "Fix systemic contrast: text-secondary and accent-primary on surface-secondary are below 4.5:1 (catalog/known-issues.json, tests/site-browser/axe-baseline.json)",
+      "description": null,
+      "tags": [
+        "forma,accessibility,tokens"
+      ],
+      "priority": "high",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-09-30T13:49:47.447Z",
+      "updatedAt": "2026-09-30T13:49:47.447Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0013",
+      "title": "Resolve documentation-discovered component defects in catalog/known-issues.json (aside role=status, disclosure markers, popover anchoring, stack spacing, field disabled/invalid styling, pattern ARIA naming)",
+      "description": null,
+      "tags": [
+        "forma,catalog,defects"
+      ],
+      "priority": "high",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-09-30T13:49:48.009Z",
+      "updatedAt": "2026-09-30T13:49:48.009Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0014",
+      "title": "Implement P0 requirement-defined components listed in catalog/planned.json (breadcrumbs, table styling, chip, icon button, button variants, kbd, separator, inline message, progress circle)",
+      "description": null,
+      "tags": [
+        "forma,catalog,requirements"
+      ],
+      "priority": "medium",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-09-30T13:49:48.505Z",
+      "updatedAt": "2026-09-30T13:49:48.505Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0015",
+      "title": "Decide whether the documentation site may carry a progressive-enhancement script for a clipboard Copy button and search (currently forbidden by ADR-0002 scope and tests/site-build.test.mjs)",
+      "description": null,
+      "tags": [
+        "forma,documentation,decision"
+      ],
+      "priority": "low",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-09-30T13:49:49.060Z",
+      "updatedAt": "2026-09-30T13:49:49.060Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0016",
+      "title": "Evaluate a reusable settings-list row primitive (evidence: catalog/compositions/mobile-settings.mjs)",
+      "description": null,
+      "tags": [
+        "forma,catalog,candidate"
+      ],
+      "priority": "low",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-09-30T13:49:49.582Z",
+      "updatedAt": "2026-09-30T13:49:49.582Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null

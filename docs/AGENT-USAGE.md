@@ -31,6 +31,17 @@ When an agent creates or changes UI:
 10. Workflow/diagram objects may use authored colors, but keep color independent from semantic type/status and always preserve a non-color cue.
 11. For Figma/library work, read `docs/FIGMA.md` and use `figma/component-contracts.json`; never invent Figma node URLs or a second token source.
 
+## Finding the right component
+
+The documentation site (`npm run site:build`, output `site-dist/`) has one page
+per public component with the same sections everywhere. The **Basic example**
+on each page is the smallest correct markup, taken verbatim from
+`patterns/<slug>.html`. `site-dist/site-manifest.json` lists every component's
+tag, family, summary, documented attributes, CSS hooks, keyboard behavior,
+related components and docs URL for tooling. Requirement-defined components
+that are not implemented yet are listed in `docs/COMPONENT-INVENTORY.md`; do
+not invent markup for them.
+
 ## How to consume Forma
 
 The package is currently private/alpha. Do not invent a public npm installation

@@ -314,7 +314,7 @@ Keep the `@v<version>` of the Forma actions equal to the version in
 3. Add it in Forma:
    - pattern HTML;
    - CSS in `src/marketing/` using role tokens only;
-   - metadata in `tools/component-meta.mjs`;
+   - a catalog entry in `catalog/components/<slug>.mjs` (see `docs/CATALOG-AUTHORING.md`);
    - tests (structure, browser, axe, 320 px);
    - a gap entry closed in `requirements/MARKETING-PRESENTATION.md`.
 4. Release it. The sites then upgrade (question 7) and remove any local

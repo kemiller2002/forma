@@ -1,0 +1,26 @@
+{
+  "$comment": "Forma component families. Order is navigation order. Each component declares exactly one category in catalog/components/<slug>.mjs; category ids are also URL segments under /components/ and must never collide with a component slug.",
+  "categories": [
+    { "id": "actions", "name": "Actions", "summary": "Buttons and grouped commands that start work. Forma styles the native control; the application decides what an action does and whether it is currently legal." },
+    { "id": "forms", "name": "Form inputs", "summary": "Native text, date, numeric, range, file and toggle inputs with delegated labels, help text and form participation left to the browser." },
+    { "id": "selection", "name": "Selection and choice", "summary": "Radio- and checkbox-backed choice structures: segmented controls, choice cards, multi-select guidance and hierarchical selection." },
+    { "id": "assessment", "name": "Assessment and survey", "summary": "Question shells and response scales that keep Unanswered distinct, keep radio semantics per row, and never compute scores." },
+    { "id": "navigation", "name": "Navigation", "summary": "Where am I and where can I go: shells, tabs, pagination, scope trails, trees, wizards and skip links." },
+    { "id": "feedback", "name": "Feedback and status", "summary": "Alerts, notifications, validation, loading and progress, and explicit operation states that never collapse unknown into failure." },
+    { "id": "faults", "name": "Faults and recovery", "summary": "The Aegis fault presentation family: safe inline, notification, banner and blocking faults with application-authorized recovery." },
+    { "id": "overlays", "name": "Overlays and disclosure", "summary": "Native dialog, Popover API and details/summary surfaces: modal dialogs, edge flyouts, popovers, tooltips, menus and disclosure." },
+    { "id": "layout", "name": "Layout primitives", "summary": "Intrinsic, container-aware composition primitives that recompose by available space without reordering source." },
+    { "id": "workspaces", "name": "Workspaces and shells", "summary": "Multi-region application compositions: workspace shells, master/detail, split panes, dashboards and record headers." },
+    { "id": "data", "name": "Data display", "summary": "Tables, ledgers, key-value lists, metrics, timelines, diffs, collections and relationship displays." },
+    { "id": "workflow", "name": "Workflow and diagrams", "summary": "Presentation-only building blocks for boards, diagrams and spatial canvases; geometry, routing and editing stay in the application." },
+    { "id": "keyboard", "name": "Command and keyboard-first", "summary": "Command palette and the CharacterGrid terminal family for keyboard-driven, fixed-cell interfaces." },
+    { "id": "assisted", "name": "Human–agent interaction", "summary": "Composer, conversation, understanding review and handoff surfaces that keep agent proposals inspectable and human authority explicit." },
+    { "id": "verification", "name": "Attention and verification", "summary": "Visual Engineering contracts for first-glance priority, bounded emphasis, and recognize-verify-act flows." },
+    { "id": "security", "name": "Security posture", "summary": "Security results, evidence, exceptions and unknowns presented with explicit text state rather than color-only pass/fail." },
+    { "id": "site", "name": "Site and editorial", "summary": "The brand-neutral marketing and documentation presentation family: shell, header, hero, sections, cards, prose and footer." },
+    { "id": "utilities", "name": "Utilities", "summary": "Small structural helpers: visually hidden text, text roles and other composition aids." }
+  ],
+  "unownedRoots": {
+    "ef-component-tag": "The inert <ef-*> authoring wrapper class. It appears on every component page and is described in the site's 'Reading a component page' guide."
+  }
+}

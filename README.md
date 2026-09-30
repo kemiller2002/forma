@@ -37,6 +37,15 @@ npm run site:check
 ```
 
 The generated GitHub Pages artifact is written to `site-dist/`.
+The site is generated from the component catalog: canonical markup in
+`patterns/`, one documentation entry per component in `catalog/components/`,
+and CSS hooks derived from the built stylesheet. Every component page has the
+same sections (purpose, live examples with copyable HTML, a mobile example in a
+real narrow viewport, API, states, accessibility, responsive behavior, motion,
+usage guidance and related components). See
+[docs/CATALOG-AUTHORING.md](docs/CATALOG-AUTHORING.md) to document a component
+and [docs/COMPONENT-INVENTORY.md](docs/COMPONENT-INVENTORY.md) for the full
+inventory, planned components and known issues.
 Agent usage rules are in [docs/AGENT-USAGE.md](docs/AGENT-USAGE.md).
 
 
