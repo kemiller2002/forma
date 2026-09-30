@@ -24,7 +24,7 @@ becomes one consumer among the others.
 | Layer | Owns | Source | Must not contain |
 |---|---|---|---|
 | Forma foundations | Reset, box sizing, typography mechanics, link and focus treatment, surface tones, reduced motion, forced colors | `src/styles/foundations.css`, `src/marketing/foundations.css` | Brand values, product names |
-| Forma components | Skip link, site header and navigation, eyebrow/lead/statement, buttons, badges, cards and card grids, facts, section heading, entry index, steps, CTA, prose, code, site footer | `src/marketing/components.css`, `patterns/*.html` | Page placement, site names, arbitrary style switches |
+| Forma components | Skip link, site header and navigation, eyebrow/lead/statement, buttons, badges, cards and card grids, facts, section heading, entry index, steps, CTA, prose, callout, code, site footer | `src/marketing/components.css`, `patterns/*.html` | Page placement, site names, arbitrary style switches |
 | Forma layouts | MarketingShell frame, containers, section rhythm, split, hero, documentation layout | `src/marketing/layouts.css` | Content |
 | Role contract | Brand-neutral defaults for every role token | `src/marketing/roles.css` | Literal colors |
 | Echelon Marketing Theme | Echelon values for every role (light and dark), backdrop hook | `themes/echelon/marketing.tokens.json`, `themes/echelon/marketing.css` | Component rules, raw hex (aliases only) |

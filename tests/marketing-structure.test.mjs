@@ -11,7 +11,7 @@ const siteCss = fs.readFileSync(path.join(example, "site.css"), "utf8");
 const html = file => fs.readFileSync(path.join(example, file), "utf8");
 const marketingPatterns = [
   "marketing-shell", "site-header", "hero", "section-heading", "card-grid", "facts", "entry-index",
-  "steps", "badge", "cta", "code-sample", "prose", "site-footer", "documentation-layout"
+  "steps", "badge", "cta", "code-sample", "prose", "callout", "site-footer", "documentation-layout"
 ];
 const pattern = slug => fs.readFileSync(path.join("patterns", `${slug}.html`), "utf8");
 

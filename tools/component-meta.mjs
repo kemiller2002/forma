@@ -13,6 +13,7 @@ export const componentMeta = {
   "badge": ["Badge", "Marketing presentation", "Site content", "Compact labels and metadata; status badges carry meaning in text with a redundant colored edge."],
   "cta": ["Call to action", "Marketing presentation", "Site content", "Closing call to action with one primary action, optionally on an inverse surface tone."],
   "code-sample": ["Code sample", "Marketing presentation", "Site content", "Technical sample in a captioned, keyboard-scrollable region that never widens the page."],
+  "callout": ["Callout", "Marketing presentation", "Site content", "Labelled note, caution, evidence, or decision inside prose; a visible label and rule pattern carry the kind without relying on color."],
   "prose": ["Prose", "Marketing presentation", "Site content", "Long-form content constrained to the reading measure with underlined links and consistent heading rhythm."],
   "site-footer": ["Site footer", "Marketing presentation", "Site content", "Closing identity, actions, secondary navigation, and legal note on a surface tone."],
   "documentation-layout": ["Documentation layout", "Marketing presentation", "Site content", "Documentation page: navigation rail, prose article, and optional outline; navigation compacts to a wrapping list in narrow containers."],

@@ -101,6 +101,16 @@
       }
     },
     {
+      "id": "callout",
+      "figmaName": "Forma / Callout",
+      "source": "patterns/callout.html",
+      "codeConnect": {
+        "id": "Forma/callout",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "card-grid",
       "figmaName": "Forma / Card Grid",
       "source": "patterns/card-grid.html",
