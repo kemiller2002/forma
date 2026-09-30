@@ -9,7 +9,7 @@ export const nasaSpaceflights = Object.freeze([
     id: "gemini-iv",
     name: "Gemini IV",
     program: "Gemini",
-    missionType: "Earth-orbit flight test",
+    missionType: "Human Spaceflight",
     launchDate: "1965-06-03",
     returnDate: "1965-06-07",
     crewed: true,
@@ -28,7 +28,7 @@ export const nasaSpaceflights = Object.freeze([
     id: "apollo-8",
     name: "Apollo 8",
     program: "Apollo",
-    missionType: "Crewed lunar-orbit mission",
+    missionType: "Lunar Landing Preparation",
     launchDate: "1968-12-21",
     returnDate: "1968-12-27",
     crewed: true,
@@ -47,7 +47,7 @@ export const nasaSpaceflights = Object.freeze([
     id: "apollo-11",
     name: "Apollo 11",
     program: "Apollo",
-    missionType: "Crewed lunar-landing mission",
+    missionType: "Lunar Landing",
     launchDate: "1969-07-16",
     returnDate: "1969-07-24",
     crewed: true,
@@ -59,14 +59,14 @@ export const nasaSpaceflights = Object.freeze([
     highlight: "First crewed lunar landing",
     source: {
       title: "Apollo 11 Mission Overview",
-      url: "https://www.nasa.gov/history/apollo-11-mission-overview/"
+      url: "https://www.nasa.gov/mission/apollo-11/"
     }
   }),
   freezeMission({
     id: "apollo-13",
     name: "Apollo 13",
     program: "Apollo",
-    missionType: "Crewed lunar mission",
+    missionType: "Lunar Landing",
     launchDate: "1970-04-11",
     returnDate: "1970-04-17",
     crewed: true,
@@ -78,7 +78,7 @@ export const nasaSpaceflights = Object.freeze([
     highlight: "Crew safely returned after an in-flight oxygen tank failure",
     source: {
       title: "Apollo 13 Mission Details",
-      url: "https://www.nasa.gov/missions/apollo/apollo-13-mission-details/"
+      url: "https://www.nasa.gov/mission/apollo-13/"
     }
   }),
   freezeMission({
