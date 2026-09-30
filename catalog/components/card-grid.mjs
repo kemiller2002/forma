@@ -1,3 +1,13 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const geminiIV = missionById("gemini-iv");
+const apollo8 = missionById("apollo-8");
+const apollo11 = missionById("apollo-11");
+const apollo13 = missionById("apollo-13");
+const sts1 = missionById("sts-1");
+const sts31 = missionById("sts-31");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Card grid",
   category: "site",
@@ -26,67 +36,63 @@ export default {
   },
   examples: [
     {
-      id: "linked-services",
-      title: "Two-column linked services",
-      description: "Two linked service cards with footers stating the outcome. Each whole card is a target, but each link's accessible name is only its title. `data-ef-columns=\"2\"` stops the grid at two columns even on very wide screens.",
+      id: "linked-missions",
+      title: "Two-column linked missions",
+      description: "Two mission cards share one canonical source collection. Each whole card is a target, but each link's accessible name is only its mission title. data-ef-columns=\"2\" caps the wide layout at two columns.",
       html: `<ef-card-grid class="ef-component-tag">
   <div class="ef-site">
-    <ul class="ef-card-grid" data-ef-columns="2" aria-label="Services">
-      <li>
-        <article class="ef-card">
-          <p class="ef-eyebrow">Diagnostic</p>
-          <h3 class="ef-card__title"><a class="ef-card__link" href="#card-grid-linked-services-diagnostic">Find the cause of a recurring failure</a></h3>
-          <p>A two-week engagement that separates observations from explanations.</p>
-          <p class="ef-card__footer" id="card-grid-linked-services-diagnostic">Outcome: a defensible root cause</p>
-        </article>
-      </li>
-      <li>
-        <article class="ef-card">
-          <p class="ef-eyebrow">Architecture</p>
-          <h3 class="ef-card__title"><a class="ef-card__link" href="#card-grid-linked-services-architecture">Model the rules your system must keep</a></h3>
-          <p>Domain state and legal transitions become explicit and testable.</p>
-          <p class="ef-card__footer" id="card-grid-linked-services-architecture">Outcome: executable constraints</p>
-        </article>
-      </li>
+    <ul class="ef-card-grid" data-ef-columns="2" aria-label="Featured NASA missions">
+      <li><article class="ef-card">
+        <p class="ef-eyebrow">${apollo11.program}</p>
+        <h3 class="ef-card__title"><a class="ef-card__link" href="#card-grid-linked-missions-apollo-11">${apollo11.name}</a></h3>
+        <p>${apollo11.highlight}.</p>
+        <p class="ef-card__footer" id="card-grid-linked-missions-apollo-11">${apollo11.spacecraft} · ${apollo11.launchDate}</p>
+      </article></li>
+      <li><article class="ef-card">
+        <p class="ef-eyebrow">${sts31.program}</p>
+        <h3 class="ef-card__title"><a class="ef-card__link" href="#card-grid-linked-missions-sts-31">${sts31.name}</a></h3>
+        <p>${sts31.highlight}.</p>
+        <p class="ef-card__footer" id="card-grid-linked-missions-sts-31">${sts31.spacecraft} · ${sts31.launchDate}</p>
+      </article></li>
     </ul>
   </div>
 </ef-card-grid>`
     },
     {
-      id: "product-family",
-      title: "Five-column product family",
-      description: "Five short, unlinked product cards. `data-ef-columns=\"5\"` also lowers the card minimum to 12rem so five columns fit on wide screens; they drop to fewer columns as the container narrows. One card uses the elevated tone and gains a raised shadow.",
+      id: "mission-family",
+      title: "Five-column mission family",
+      description: "Five short mission cards show the same grid at maximum density. data-ef-columns=\"5\" lowers the card minimum on wide screens; columns fall away naturally as the container narrows. Artemis I uses the elevated tone.",
       html: `<ef-card-grid class="ef-component-tag">
   <div class="ef-site">
-    <ul class="ef-card-grid" data-ef-columns="5" aria-label="Products">
-      <li><article class="ef-card"><h3 class="ef-card__title">Ordo</h3><p>Domain state and legal transitions.</p></article></li>
-      <li><article class="ef-card"><h3 class="ef-card__title">Limen</h3><p>Interface behavior at the boundary.</p></article></li>
-      <li><article class="ef-card"><h3 class="ef-card__title">Dokimos</h3><p>Longitudinal quality evidence.</p></article></li>
-      <li><article class="ef-card"><h3 class="ef-card__title">Vigila</h3><p>Operational monitoring.</p></article></li>
-      <li><article class="ef-card" data-ef-tone="elevated"><h3 class="ef-card__title">Forma</h3><p>Presentation and layout.</p></article></li>
+    <ul class="ef-card-grid" data-ef-columns="5" aria-label="NASA reference missions">
+      <li><article class="ef-card"><h3 class="ef-card__title">${geminiIV.name}</h3><p>${geminiIV.highlight}.</p></article></li>
+      <li><article class="ef-card"><h3 class="ef-card__title">${apollo8.name}</h3><p>${apollo8.highlight}.</p></article></li>
+      <li><article class="ef-card"><h3 class="ef-card__title">${apollo13.name}</h3><p>${apollo13.highlight}.</p></article></li>
+      <li><article class="ef-card"><h3 class="ef-card__title">${sts1.name}</h3><p>${sts1.highlight}.</p></article></li>
+      <li><article class="ef-card" data-ef-tone="elevated"><h3 class="ef-card__title">${artemisI.name}</h3><p>${artemisI.highlight}.</p></article></li>
     </ul>
   </div>
 </ef-card-grid>`
     },
     {
       id: "mobile-single-column",
-      title: "Phone single column",
-      description: "Three capability cards at phone width, one linked and one on the inverse tone. The grid collapses to a single column and each card spans the full width.",
+      title: "Phone mission cards",
+      description: "Three mission cards at phone width, one linked and one on the inverse tone. The grid collapses to a single column and each card spans the full width.",
       mobile: {
         height: 560,
         notes: [
-          "Columns drop by content: below about two 15rem cards the grid is one column, whatever `data-ef-columns` says.",
+          "Columns drop by content until the mission cards form one column.",
           "Shared hairline rules remain, so stacked cards read as one ruled list without doubled borders.",
-          "The stretched card link makes the whole card a large touch target; the title text is still the link's accessible name.",
-          "Long titles wrap within a 24ch measure and card padding shrinks with the fluid block-space token, so nothing overflows at 320px."
+          "The stretched mission link makes the whole card a large touch target while the mission name remains its accessible name.",
+          "Long mission highlights wrap within the card, so nothing overflows at 320px."
         ]
       },
       html: `<ef-card-grid class="ef-component-tag">
   <div class="ef-site">
-    <ul class="ef-card-grid" data-ef-columns="3" aria-label="Capabilities">
-      <li><article class="ef-card"><p class="ef-eyebrow">Diagnose</p><h3 class="ef-card__title"><a class="ef-card__link" href="#card-grid-mobile-single-column-verify">Prove what is wrong before changing it</a></h3><p>Evidence removes the alternatives.</p></article></li>
-      <li><article class="ef-card"><p class="ef-eyebrow">Constrain</p><h3 class="ef-card__title">Make valid work explicit</h3><p>Legal transitions are modeled, not implied.</p></article></li>
-      <li><article class="ef-card" data-ef-tone="inverse" id="card-grid-mobile-single-column-verify"><h3 class="ef-card__title">Verify what people receive</h3><p>Accessibility and meaning are executable contracts.</p></article></li>
+    <ul class="ef-card-grid" data-ef-columns="3" aria-label="NASA mission highlights">
+      <li><article class="ef-card"><p class="ef-eyebrow">${apollo8.program}</p><h3 class="ef-card__title"><a class="ef-card__link" href="#card-grid-mobile-apollo-8">${apollo8.name}</a></h3><p>${apollo8.highlight}.</p></article></li>
+      <li><article class="ef-card"><p class="ef-eyebrow">${sts31.program}</p><h3 class="ef-card__title">${sts31.name}</h3><p>${sts31.highlight}.</p></article></li>
+      <li><article class="ef-card" data-ef-tone="inverse" id="card-grid-mobile-apollo-8"><p class="ef-eyebrow">${artemisI.program}</p><h3 class="ef-card__title">${artemisI.name}</h3><p>${artemisI.highlight}.</p></article></li>
     </ul>
   </div>
 </ef-card-grid>`
