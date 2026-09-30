@@ -85,3 +85,33 @@ the correction. Do not silently fork mission facts inside component files.
 New missions should be added only when they improve example coverage. Favor
 well-documented, completed missions with materially different data shapes, such
 as crewed versus uncrewed, different programs, or different mission purposes.
+
+
+## Standardized catalog coverage
+
+The first standardization pass deliberately covers the reusable application-data
+surfaces where unrelated placeholder domains were creating the most drift:
+
+- selection and form controls: select, checkbox, choice group, segmented
+  control, combobox, search and date range;
+- collection controls: collection toolbar, active filter summary and pagination;
+- data and record presentation: data grid, card grid, key-value list, record
+  header, timeline and master/detail;
+- state presentation: status lozenge, empty state, metric card, dashboard grid
+  and work queue;
+- generic navigation/overlay surfaces: tabs, dialog and flyout.
+
+These components are protected by `tests/nasa-example-domain.test.mjs`; removing
+their shared-domain import is a test failure.
+
+This is a domain standard, not a theme requirement. Do not rewrite examples
+whose vocabulary is itself part of the contract being demonstrated. In
+particular, Aegis fault/recovery examples, security-posture examples,
+assessment/psychometric questions, CharacterGrid terminal emulation,
+human-agent authority examples and Visual Engineering verification examples may
+retain their specialized domain. Layout-only primitives also do not need NASA
+nouns merely to satisfy a quota.
+
+When a new generic business/application example would otherwise invent a
+customer, invoice, order, ticket, vendor, project or deployment solely to
+provide realistic data, use the NASA reference collection instead.
