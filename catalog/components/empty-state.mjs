@@ -1,3 +1,7 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Empty state",
   category: "feedback",
@@ -24,26 +28,26 @@ export default {
   examples: [
     {
       id: "first-use",
-      title: "First use",
-      description: "A collection that has never had records. The heading names the object, the text says what it is for, and the primary action creates the first one.",
+      title: "Empty mission comparison",
+      description: "A comparison set that has never had records. The heading names the object, the text says what it is for, and the primary action adds the first NASA reference mission.",
       html: `<ef-empty-state class="ef-component-tag">
   <section class="ef-empty-state" aria-labelledby="empty-state-first-use-title">
     <div class="ef-empty-state__symbol" aria-hidden="true">+</div>
-    <h3 id="empty-state-first-use-title">No vendors yet</h3>
-    <p>Vendors you add here can be selected on purchase orders and invoices.</p>
-    <button type="button">Add vendor</button>
+    <h3 id="empty-state-first-use-title">No missions in this comparison yet</h3>
+    <p>Add completed NASA missions to compare program, spacecraft, crew and destination.</p>
+    <button type="button">Add mission</button>
   </section>
 </ef-empty-state>`
     },
     {
       id: "search-no-matches",
-      title: "Search with no matches",
-      description: "A search that returned nothing. The query is repeated so the user can spot a typo, and two recovery actions are grouped in a [[cluster]]: clear the search or open help.",
+      title: "Mission search with no matches",
+      description: "A search that returned nothing in the stable reference collection. The query is repeated so the user can spot the problem, with clear recovery actions.",
       html: `<ef-empty-state class="ef-component-tag">
   <section class="ef-empty-state" aria-labelledby="empty-state-search-no-matches-title">
     <div class="ef-empty-state__symbol" aria-hidden="true">?</div>
-    <h3 id="empty-state-search-no-matches-title">No records match "reconcilation"</h3>
-    <p>Check the spelling, or search by record number instead.</p>
+    <h3 id="empty-state-search-no-matches-title">No reference missions match "Apollo 99"</h3>
+    <p>Search by a mission in the standard collection, such as Apollo 11, STS-31 or Artemis I.</p>
     <div class="ef-cluster">
       <button type="button">Clear search</button>
       <a class="ef-button" href="#empty-state-search-no-matches-title">Search tips</a>
@@ -53,37 +57,37 @@ export default {
     },
     {
       id: "queue-complete",
-      title: "Work queue cleared",
-      description: "An empty queue that is a good outcome. There is no action to take, so the empty state has only a heading and text; it must not look or read like an error.",
+      title: "Mission review queue cleared",
+      description: "An empty local review queue is a good outcome. There is no action to take, so the empty state must not look or read like an error.",
       html: `<ef-empty-state class="ef-component-tag">
   <section class="ef-empty-state" aria-labelledby="empty-state-queue-complete-title">
     <div class="ef-empty-state__symbol" aria-hidden="true">✓</div>
-    <h3 id="empty-state-queue-complete-title">Nothing waiting for review</h3>
-    <p>New items assigned to you will appear here.</p>
+    <h3 id="empty-state-queue-complete-title">No mission records waiting for review</h3>
+    <p>Records will appear here only when their local documentation needs attention.</p>
   </section>
 </ef-empty-state>`
     },
     {
       id: "mobile-filtered-list",
-      title: "Mobile filtered list",
-      description: "A filtered list with no results at phone width, with a long heading and two actions.",
+      title: "Mobile filtered mission list",
+      description: "A filter with no results at phone width uses a real domain distinction: the Apollo records in this collection are crewed, while Artemis I is uncrewed.",
       mobile: {
         height: 400,
         notes: [
-          "Vertical padding scales with `clamp(2rem, 8vw, 5rem)`, so the block is compact on phones and roomier on desktops.",
-          "The heading and text are centered and wrap; very long headings stay inside the dashed border.",
-          "Actions in a [[cluster]] wrap onto separate lines when they do not fit side by side, and keep native 44px-tall touch targets.",
-          "Nothing scrolls horizontally at 320px in either orientation."
+          "Vertical padding scales down on phones while preserving the empty-state hierarchy.",
+          "The heading and explanation wrap inside the dashed border.",
+          "Recovery actions wrap when they do not fit side by side and keep native touch targets.",
+          "Nothing scrolls horizontally at 320px."
         ]
       },
       html: `<ef-empty-state class="ef-component-tag">
   <section class="ef-empty-state" aria-labelledby="empty-state-mobile-filtered-list-title">
     <div class="ef-empty-state__symbol" aria-hidden="true">□</div>
-    <h3 id="empty-state-mobile-filtered-list-title">No open invoices from Northwind Traders in the last 30 days</h3>
-    <p>Change the date range or remove the vendor filter.</p>
+    <h3 id="empty-state-mobile-filtered-list-title">No uncrewed Apollo missions in the reference collection</h3>
+    <p>Remove the Apollo filter or view the uncrewed ${artemisI.name} record instead.</p>
     <div class="ef-cluster">
-      <button type="button">Clear filters</button>
-      <button type="button">Last 90 days</button>
+      <button type="button">Clear program filter</button>
+      <button type="button">Show ${artemisI.name}</button>
     </div>
   </section>
 </ef-empty-state>`
