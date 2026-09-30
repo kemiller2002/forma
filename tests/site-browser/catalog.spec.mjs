@@ -152,18 +152,39 @@ test("code blocks are selectable in one action and scroll inside themselves", as
   await expect(page.locator("#example-notification-preferences .code-viewer__raw")).toHaveAccessibleName(/Raw HTML for HTML · Notification preferences/);
 });
 
-test("generated documentation pages have no automatically detectable WCAG A/AA violations", async ({ page }) => {
-  test.setTimeout(budget(docPages.length * 3));
-  const failures = [];
-  for (const url of docPages) {
-    await page.goto(url);
-    const results = await new AxeBuilder({ page })
-      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
-      .options({ iframes: false })
-      .analyze();
-    for (const violation of results.violations) {
-      failures.push(`${url}: ${violation.id} (${violation.nodes.length}) ${violation.nodes[0]?.target.join(" ")}`);
+// Known pre-existing component defects (catalog/known-issues.json) are listed
+// in axe-baseline.json as page + rule pairs. Anything new fails, and a
+// baseline entry that no longer reproduces also fails so the list shrinks.
+const baseline = JSON.parse(fs.readFileSync(path.join(root, "tests", "site-browser", "axe-baseline.json"), "utf8")).entries;
+const chunkSize = 25;
+const chunks = Array.from({ length: Math.ceil(docPages.length / chunkSize) }, (_, index) => docPages.slice(index * chunkSize, (index + 1) * chunkSize));
+
+chunks.forEach((chunk, index) => {
+  test(`generated documentation pages have no automatically detectable WCAG A/AA violations (${index + 1}/${chunks.length})`, async ({ page }) => {
+    test.setTimeout(budget(chunk.length * 3));
+    const found = [];
+    for (const url of chunk) {
+      await page.goto(url);
+      // Stress specimens and category previews are inert, aria-hidden visual
+      // screens (one deliberately lowers contrast), so they are excluded.
+      const results = await new AxeBuilder({ page })
+        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+        .exclude(".ve-stress-grid")
+        .exclude(".catalog-card__preview")
+        .options({ iframes: false })
+        .analyze();
+      const pagePath = url.replace("/site-dist/", "").replace(/index\.html$/, "");
+      for (const violation of results.violations) {
+        found.push({ page: pagePath, rule: violation.id, target: violation.nodes[0]?.target.join(" ") ?? "" });
+      }
     }
-  }
-  expect(failures).toEqual([]);
+    const known = item => baseline.some(entry => entry.page === item.page && entry.rule === item.rule);
+    const unexpected = found.filter(item => !known(item)).map(item => `${item.page}: ${item.rule} ${item.target}`);
+    const chunkPages = new Set(chunk.map(url => url.replace("/site-dist/", "").replace(/index\.html$/, "")));
+    const stale = baseline
+      .filter(entry => chunkPages.has(entry.page))
+      .filter(entry => !found.some(item => item.page === entry.page && item.rule === entry.rule))
+      .map(entry => `${entry.page}: ${entry.rule} (baseline entry no longer reproduces; remove it)`);
+    expect([...unexpected, ...stale]).toEqual([]);
+  });
 });

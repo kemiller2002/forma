@@ -829,8 +829,8 @@
 
   .guidance {
     padding: 0 1.25rem 1rem;
+    border: 1px solid var(--ef-stone);
     border-block-start: 3px solid var(--ef-verdigris);
-    background: var(--ef-stone);
   }
 
   .guidance--avoid {
@@ -971,6 +971,14 @@
     margin: 0 0 .75rem;
     padding: 0;
     border: 0;
+  }
+
+  .example-page-frame {
+    display: block;
+    inline-size: 100%;
+    block-size: 36rem;
+    border: 1px solid var(--ef-stone);
+    background: var(--ef-parchment);
   }
 
   .example-mobile-frame {
@@ -1270,8 +1278,7 @@
   .family-card {
     min-inline-size: 0;
     padding: 1.25rem 1.5rem;
-    border: 1px solid var(--ef-stone);
-    background: var(--ef-stone);
+    border: 1px solid var(--ef-forged-iron);
   }
 
   .family-card h3,
@@ -1299,7 +1306,7 @@
   .family-card p { color: var(--ef-carbon); font-size: .9rem; }
 
   .family-card__members {
-    color: var(--ef-graphite) !important;
+    color: var(--ef-forged-iron) !important;
     font-size: .8rem !important;
   }
 
@@ -1392,7 +1399,7 @@
     }
 
     .docs-shell {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .component-nav {

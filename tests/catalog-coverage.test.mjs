@@ -103,7 +103,7 @@ test("generated pages have unique ids", () => {
 });
 
 test("documentation chrome headings never skip a level", () => {
-  const docPages = pages.filter(file => !/mobile(-[a-z0-9-]+)?\.html$|frame\.html$/.test(file));
+  const docPages = pages.filter(file => !/mobile(-[a-z0-9-]+)?\.html$|frame\.html$|basic\.html$/.test(file));
   for (const file of docPages) {
     // Examples and specimens are component markup; their headings belong to the example.
     const chrome = stripLive(stripSource(read(file)));
@@ -122,7 +122,7 @@ test("all internal links and resources resolve, including fragments", () => {
     if (!idsOf.has(file)) idsOf.set(file, new Set([...read(file).matchAll(/\sid="([^"]+)"/g)].map(match => match[1])));
     return idsOf.get(file);
   };
-  const docPages = pages.filter(file => !/mobile(-[a-z0-9-]+)?\.html$|frame\.html$/.test(file));
+  const docPages = pages.filter(file => !/mobile(-[a-z0-9-]+)?\.html$|frame\.html$|basic\.html$/.test(file));
   const broken = pages.flatMap(file => {
     const source = stripSource(read(file));
     const chromeUrls = new Set([...stripLive(source).matchAll(/\s(?:href|src)="([^"]+)"/g)].map(match => match[1]));

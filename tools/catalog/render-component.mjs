@@ -70,7 +70,9 @@ const stressSource = (source, id) => id !== "content-stress"
       `${open}${value.trim()} · Extended localized content for verification and layout resilience${close}`)
     .replace(/(<(?:section|article|div)\b[^>]*>)/i, `$1<p class="ef-identifier">${LONG_IDENTIFIER}</p>`);
 
-const stressSpecimens = component => `<div class="ve-stress-grid" data-ve-verification="${component.slug}">
+// Stress specimens are visual engineering screens (one deliberately lowers
+// contrast), so they are inert and hidden from assistive technology.
+const stressSpecimens = component => `<div class="ve-stress-grid" data-ve-verification="${component.slug}" inert aria-hidden="true">
   ${join(STRESS_CASES, item => `<article class="${item.className}" data-ve-stress="${item.id}">
     <div class="motion-weight-label"><strong>${item.title}</strong><span>engineering screen</span></div>
     <div class="ve-stress__demo">${namespaceSnippet(wrapTag(component.slug, closeDialogsWithInvoker(stressSource(component.pattern, item.id), `${item.title.toLowerCase()} specimen`)), `ve-${component.slug}-${item.id}-`)}</div>
@@ -178,6 +180,14 @@ const pager = (context, component) => {
 export const rawPath = exampleId => `${exampleId}.txt`;
 export const framePath = exampleId => `mobile-${exampleId}.html`;
 
+// Page-level patterns (those that contain their own <main>) cannot be nested
+// inside the documentation page's main landmark, so they render in a frame.
+export const isPageLevel = component => /<main\b/.test(component.pattern ?? "");
+
+const basicLive = (component, source) => isPageLevel(component)
+  ? `<iframe class="example-page-frame" title="${escapeHtml(component.name)} rendered as its own page" src="basic.html" loading="lazy"></iframe>`
+  : source;
+
 export const renderComponentPage = (context, component) => {
   const scenarios = component.examples.filter(example => !example.mobile);
   const mobiles = component.examples.filter(example => example.mobile);
@@ -191,8 +201,8 @@ export const renderComponentPage = (context, component) => {
 
     <section class="doc-section" id="basic" aria-labelledby="section-basic-title">
       <h2 id="section-basic-title">Basic example</h2>
-      <p>The smallest correct markup: the canonical pattern from <code>patterns/${component.slug}.html</code> inside its public tag. Copy this first, then adapt labels, names and state.</p>
-      ${exampleBlock({ id: "example-basic", kicker: "Canonical", title: `Minimal ${component.name.toLowerCase()}`, description: "Rendered live from the canonical pattern file.", live: basicSource, source: basicSource, rawHref: rawPath("basic"), context })}
+      <p>The smallest correct markup: the canonical pattern from <code>patterns/${component.slug}.html</code> inside its public tag. Copy this first, then adapt labels, names and state.${isPageLevel(component) ? " This component owns a page's <code>main</code> landmark, so it renders in its own document below." : ""}</p>
+      ${exampleBlock({ id: "example-basic", kicker: "Canonical", title: `Minimal ${component.name.toLowerCase()}`, description: "Rendered live from the canonical pattern file.", live: basicLive(component, basicSource), source: basicSource, rawHref: rawPath("basic"), context })}
     </section>
 
     <section class="doc-section" id="examples" aria-labelledby="section-examples-title">
@@ -236,7 +246,7 @@ export const renderComponentPage = (context, component) => {
     <section class="doc-section" id="motion" aria-labelledby="section-motion-title">
       <h2 id="section-motion-title">Motion</h2>
       ${list(component.motion, context)}
-      ${when(weightRoot, () => `<h3>Motion weights</h3><p>Forma motion is physics-derived: perceived mass changes how a surface accelerates and settles, never what state it is in. Compare the three presentation weights of the same markup:</p>
+      ${when(weightRoot && !isPageLevel(component), () => `<h3>Motion weights</h3><p>Forma motion is physics-derived: perceived mass changes how a surface accelerates and settles, never what state it is in. Compare the three presentation weights of the same markup:</p>
       <div class="example-block" data-example="motion-weights"><div class="example-canvas"><!--live-->${motionWeightSpecimens(component, weightRoot)}<!--/live--></div></div>`)}
     </section>
 

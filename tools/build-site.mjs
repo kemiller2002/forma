@@ -6,7 +6,7 @@ import path from "node:path";
 import { loadCatalog, ownedHooks } from "./catalog/load.mjs";
 import { validateCatalog } from "./catalog/validate.mjs";
 import { frameDocument } from "./catalog/render-layout.mjs";
-import { componentRawFiles, framePath, renderComponentPage } from "./catalog/render-component.mjs";
+import { componentRawFiles, framePath, isPageLevel, renderComponentPage } from "./catalog/render-component.mjs";
 import {
   exampleCount,
   renderAccessibility,
@@ -74,6 +74,9 @@ catalog.components.forEach(component => {
   write(`${dir}/mobile.html`, frameDocument({ title: `${component.name} at 320px`, rootPath: "../../", source: wrapTag(component.slug, component.pattern) }));
   component.examples.filter(example => example.mobile).forEach(example =>
     write(`${dir}/${framePath(example.id)}`, frameDocument({ title: `${component.name}: ${example.title}`, rootPath: "../../", source: example.html })));
+  if (isPageLevel(component)) {
+    write(`${dir}/basic.html`, frameDocument({ title: `${component.name} basic example`, rootPath: "../../", source: wrapTag(component.slug, component.pattern) }));
+  }
   componentRawFiles(component).forEach(raw => write(`${dir}/${raw.file}`, raw.content));
 });
 
