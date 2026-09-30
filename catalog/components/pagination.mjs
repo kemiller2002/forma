@@ -1,3 +1,7 @@
+import { nasaSpaceflights } from "../example-data/nasa-spaceflight.mjs";
+
+const missionPageCount = Math.ceil(nasaSpaceflights.length / 3);
+
 export default {
   name: "Pagination",
   category: "navigation",
@@ -25,78 +29,72 @@ export default {
   examples: [
     {
       id: "first-page",
-      title: "First page of results",
-      description: "On page 1 there is nowhere to go back to, so the application omits Previous rather than rendering a dead control.",
+      title: "First page of mission results",
+      description: "The eight canonical missions are shown three at a time. On page 1 there is nowhere to go back to, so the application omits Previous rather than rendering a dead control.",
       html: `<ef-pagination class="ef-component-tag">
-  <nav class="ef-pagination" aria-label="Audit log pages">
+  <nav class="ef-pagination" aria-label="NASA mission pages">
     <ol class="ef-pagination__pages">
       <li><a href="?page=1" aria-current="page">1</a></li>
       <li><a href="?page=2">2</a></li>
       <li><a href="?page=3">3</a></li>
     </ol>
     <a href="?page=2" rel="next">Next</a>
-    <span class="ef-pagination__summary">Page 1 of 3</span>
+    <span class="ef-pagination__summary">Page 1 of ${missionPageCount} · ${nasaSpaceflights.length} missions</span>
   </nav>
 </ef-pagination>`
     },
     {
       id: "gapped-range",
-      title: "Long result set with gaps",
-      description: "Forty pages with the current page in the middle. The application shows the first and last pages and a window around the current one; the gaps are plain list items with an ellipsis.",
+      title: "Long mission-evidence archive with gaps",
+      description: "A larger evidence archive for the same mission domain has forty pages. The application shows the first and last pages and a window around the current one; gaps remain plain ellipsis items.",
       html: `<ef-pagination class="ef-component-tag">
-  <nav class="ef-pagination" aria-label="Search result pages">
+  <nav class="ef-pagination" aria-label="Mission evidence pages">
     <a href="?page=17" rel="prev">Previous</a>
     <ol class="ef-pagination__pages">
-      <li><a href="?page=1">1</a></li>
-      <li aria-hidden="true">…</li>
-      <li><a href="?page=17">17</a></li>
-      <li><a href="?page=18" aria-current="page">18</a></li>
-      <li><a href="?page=19">19</a></li>
-      <li aria-hidden="true">…</li>
-      <li><a href="?page=40">40</a></li>
+      <li><a href="?page=1">1</a></li><li aria-hidden="true">…</li>
+      <li><a href="?page=17">17</a></li><li><a href="?page=18" aria-current="page">18</a></li><li><a href="?page=19">19</a></li>
+      <li aria-hidden="true">…</li><li><a href="?page=40">40</a></li>
     </ol>
     <a href="?page=19" rel="next">Next</a>
-    <span class="ef-pagination__summary">Page 18 of 40 · 1,984 results</span>
+    <span class="ef-pagination__summary">Page 18 of 40 · mission evidence archive</span>
   </nav>
 </ef-pagination>`
     },
     {
       id: "cursor-unknown-total",
-      title: "Cursor-based paging with an unknown total",
-      description: "The API returns cursors, not page numbers, and does not know the total. Only Previous and Next are rendered and the summary describes the visible range.",
+      title: "Cursor-based mission events with unknown total",
+      description: "An event stream returns cursors rather than page numbers and does not know the total. Only Previous and Next are rendered while the summary describes the visible range.",
       html: `<ef-pagination class="ef-component-tag">
-  <nav class="ef-pagination" aria-label="Event pages">
+  <nav class="ef-pagination" aria-label="Mission event pages">
     <a href="?before=evt_5120" rel="prev">Newer events</a>
     <a href="?after=evt_5071" rel="next">Older events</a>
-    <span class="ef-pagination__summary">Showing 50 events</span>
+    <span class="ef-pagination__summary">Showing 50 mission events</span>
   </nav>
 </ef-pagination>`
     },
     {
       id: "mobile-compact",
-      title: "Compact pagination on a phone",
-      description: "Below 40rem the page list collapses to the current page, Previous and Next sit at the edges and the summary moves to its own centred line.",
+      title: "Compact mission pagination on a phone",
+      description: "Below 40rem the mission page list collapses to the current page, Previous and Next sit at the edges, and the summary moves to its own centred line.",
       mobile: {
         height: 200,
         notes: [
-          "Page links other than the current one are hidden below 40rem; the current page stays as the anchor between Previous and Next.",
-          "The row uses space-between, so Previous and Next land at opposite edges with large 44px targets.",
-          "The summary is reordered to the end, takes the full width and is centred, so position is still stated in text.",
-          "Hidden page numbers are removed from the accessibility tree too; the summary and Previous/Next remain the navigation path."
+          "Page links other than the current one are hidden below 40rem.",
+          "Previous and Next remain large touch targets at opposite edges.",
+          "The summary takes the full width and states position in text.",
+          "Hidden page numbers are removed from the accessibility tree too."
         ]
       },
       html: `<ef-pagination class="ef-component-tag">
-  <nav class="ef-pagination" aria-label="Invoice pages">
-    <a href="?page=4" rel="prev">Previous</a>
+  <nav class="ef-pagination" aria-label="NASA mission pages">
+    <a href="?page=1" rel="prev">Previous</a>
     <ol class="ef-pagination__pages">
+      <li><a href="?page=1">1</a></li>
+      <li><a href="?page=2" aria-current="page">2</a></li>
       <li><a href="?page=3">3</a></li>
-      <li><a href="?page=4">4</a></li>
-      <li><a href="?page=5" aria-current="page">5</a></li>
-      <li><a href="?page=6">6</a></li>
-      <li><a href="?page=7">7</a></li>
     </ol>
-    <a href="?page=6" rel="next">Next</a>
-    <span class="ef-pagination__summary">Page 5 of 9</span>
+    <a href="?page=3" rel="next">Next</a>
+    <span class="ef-pagination__summary">Page 2 of ${missionPageCount} · ${nasaSpaceflights.length} missions</span>
   </nav>
 </ef-pagination>`
     }
