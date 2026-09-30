@@ -4330,6 +4330,118 @@
     }
   }
 
+  /*
+   * Diagram presentation (requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md,
+   * FMD-M1; docs/decisions/ADR-0004-diagram-presentation-boundary.md).
+   * Presentation only. The consumer supplies geometry (--ef-diagram-x, -y, -w
+   * in canvas px, and SVG path data), semantics, and any metadata-to-appearance
+   * mapping. Authored appearance inputs, each falling back to a Forma token
+   * when removed:
+   *   node:      --ef-diagram-fill, --ef-diagram-stroke, --ef-diagram-accent,
+   *              --ef-diagram-foreground
+   *   connector: --ef-diagram-connector-stroke, --ef-diagram-connector-width
+   * Non-color cues: the visible node kind text, data-ef-shape, data-ef-line and
+   * the textual relationship list. Focus never reads authored color.
+   */
+  .ef-diagram { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ef-primitive-spacing-4, 1rem); min-inline-size: 0; margin: 0; }
+  .ef-diagram > figcaption { font-weight: 700; }
+  .ef-diagram__viewport {
+    max-inline-size: 100%;
+    overflow: auto;
+    overscroll-behavior: contain;
+    border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    background: var(--ef-color-surface-primary, #f2efe7);
+  }
+  .ef-diagram__canvas {
+    position: relative;
+    inline-size: var(--ef-diagram-canvas-w, 720px);
+    block-size: var(--ef-diagram-canvas-h, 320px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  /* Canvas coordinates are physical, like SVG: they do not mirror in RTL. */
+  .ef-diagram__wires { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; overflow: visible; pointer-events: none; }
+
+  .ef-diagram-node {
+    --ef-diagram-node-fill: var(--ef-diagram-fill, var(--ef-color-surface-primary, #f2efe7));
+    --ef-diagram-node-stroke: var(--ef-diagram-stroke, var(--ef-color-border-functional, #3a403c));
+    --ef-diagram-node-accent: var(--ef-diagram-accent, var(--ef-diagram-node-stroke));
+    --ef-diagram-node-foreground: var(--ef-diagram-foreground, var(--ef-color-text-primary, #171a18));
+    position: absolute;
+    left: var(--ef-diagram-x, 0);
+    top: var(--ef-diagram-y, 0);
+    inline-size: var(--ef-diagram-w, 12rem);
+    display: grid;
+    gap: var(--ef-primitive-spacing-1, 0.25rem);
+    padding: var(--ef-primitive-spacing-3, 0.75rem);
+    border: 2px solid var(--ef-diagram-node-stroke);
+    border-inline-start: 6px solid var(--ef-diagram-node-accent);
+    border-radius: 0;
+    background: var(--ef-diagram-node-fill);
+    color: var(--ef-diagram-node-foreground);
+    overflow-wrap: anywhere;
+  }
+  .ef-diagram-node[data-ef-shape="rounded"] { border-radius: var(--ef-primitive-spacing-3, 0.75rem); }
+  .ef-diagram-node[data-ef-shape="pill"] { border-radius: 999px; padding-inline: var(--ef-primitive-spacing-5, 1.5rem); }
+  .ef-diagram-node :where(h3, p, dl, dd) { margin: 0; color: inherit; max-inline-size: none; }
+  .ef-diagram-node__label { font-size: 1rem; line-height: 1.25; }
+  .ef-diagram-node a { color: inherit; }
+  .ef-diagram-node__kind { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  .ef-diagram-node__meta { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 var(--ef-primitive-spacing-2, 0.5rem); font-size: 0.875rem; }
+  .ef-diagram-node__meta dt { font-weight: 700; }
+
+  .ef-diagram-connector {
+    fill: none;
+    stroke: var(--ef-diagram-connector-stroke, var(--ef-color-border-functional, #3a403c));
+    stroke-width: var(--ef-diagram-connector-width, 2);
+  }
+  .ef-diagram-connector[data-ef-line="dashed"] { stroke-dasharray: 8 6; }
+  .ef-diagram-connector[data-ef-line="dotted"] { stroke-dasharray: 2 5; stroke-linecap: round; }
+  .ef-diagram-marker { fill: var(--ef-color-border-functional, #3a403c); stroke: none; }
+  .ef-diagram-connector__label {
+    position: absolute;
+    left: var(--ef-diagram-x, 0);
+    top: var(--ef-diagram-y, 0);
+    padding: 0 var(--ef-primitive-spacing-1, 0.25rem);
+    background: var(--ef-color-surface-primary, #f2efe7);
+    color: var(--ef-color-text-primary, #171a18);
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  /* The text equivalent: every relationship in reading order. */
+  .ef-diagram__relations { margin: 0; padding-inline-start: 1.25rem; }
+  .ef-diagram__relations :where(li) { color: var(--ef-color-text-primary, #171a18); }
+
+  .ef-diagram-legend { display: flex; flex-wrap: wrap; gap: var(--ef-primitive-spacing-2, 0.5rem) var(--ef-primitive-spacing-5, 1.5rem); margin: 0; }
+  .ef-diagram-legend > div { display: flex; align-items: center; gap: var(--ef-primitive-spacing-2, 0.5rem); }
+  .ef-diagram-legend :where(dt, dd) { margin: 0; min-inline-size: 0; overflow-wrap: anywhere; }
+  .ef-diagram-legend__swatch {
+    display: inline-block;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    border: 2px solid var(--ef-diagram-stroke, var(--ef-color-border-functional, #3a403c));
+    border-inline-start-width: 6px;
+    border-inline-start-color: var(--ef-diagram-accent, var(--ef-diagram-stroke, var(--ef-color-border-functional, #3a403c)));
+    background: var(--ef-diagram-fill, var(--ef-color-surface-primary, #f2efe7));
+    vertical-align: middle;
+  }
+
+  @media (forced-colors: active) {
+    .ef-diagram-node, .ef-diagram-legend__swatch { border-color: CanvasText; background: Canvas; color: CanvasText; }
+    .ef-diagram-connector { stroke: CanvasText; }
+    .ef-diagram-marker { fill: CanvasText; }
+    .ef-diagram-connector__label { background: Canvas; color: CanvasText; }
+  }
+
+  /* Backgrounds-off and grayscale print: boundaries, kinds and line styles remain. */
+  @media print {
+    .ef-diagram__viewport { overflow: visible; border-color: #000; }
+    .ef-diagram-node { break-inside: avoid; border-color: #000; }
+    .ef-diagram { break-inside: avoid; }
+  }
+
   /* BEGIN generated: character-grid coordinates (tools/character-grid-css.mjs) */
   .ef-character-grid[data-ef-rows="1"] { --ef-grid-rows: 1; }
   .ef-character-grid[data-ef-rows="2"] { --ef-grid-rows: 2; }

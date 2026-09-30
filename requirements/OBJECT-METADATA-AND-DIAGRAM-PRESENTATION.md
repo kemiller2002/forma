@@ -190,6 +190,8 @@ Workflow and diagram objects MUST be colorable.
 
 The first implementation SHOULD remain smaller than the complete architecture.
 
+Status: implemented for GH-52 in `src/styles/components.css` (`.ef-diagram*`), `patterns/diagram.html` and `tests/browser/diagram.spec.mjs`. The ownership boundary and deferred capability gaps (additional shapes, groups, swimlanes, phase dividers, ports, pattern fills) are recorded in [ADR-0004](../docs/decisions/ADR-0004-diagram-presentation-boundary.md).
+
 - **FMD-M1-001 MUST** first define stable node/object, connector, metadata-summary, and color presentation contracts.
 - **FMD-M1-002 MUST** prove token/palette color plus an explicit authored override.
 - **FMD-M1-003 MUST** prove a node with structured metadata where only a selected subset is visibly rendered.
