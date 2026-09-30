@@ -44,7 +44,7 @@
 | WI-0008 | CharacterGrid GAP-TCG-11 follow-up: table cells under text-spacing overrides overlap neighboring columns | complete |  | medium |
 | WI-0009 | CharacterGrid GAP-TCG-09: implement and verify VE DF-VE-TCG-2026-DD05 runtime message overflow policy | complete |  | medium |
 | WI-0010 | CharacterGrid: device status rows after the application rows (GAP-TCG-12, VE DF-VE-TCG-2026-1320) | complete |  | medium |
-| WI-0011 | Upgrade Forma documentation site into a complete component catalog (inventory, taxonomy, per-component reference pages, composed examples, coverage enforcement) | active | forma,documentation,catalog,mobile,accessibility | high |
+| WI-0011 | Upgrade Forma documentation site into a complete component catalog (inventory, taxonomy, per-component reference pages, composed examples, coverage enforcement) | complete | forma,documentation,catalog,mobile,accessibility | high |
 | WI-0012 | Fix systemic contrast: text-secondary and accent-primary on surface-secondary are below 4.5:1 (catalog/known-issues.json, tests/site-browser/axe-baseline.json) | captured | forma,accessibility,tokens | high |
 | WI-0013 | Resolve documentation-discovered component defects in catalog/known-issues.json (aside role=status, disclosure markers, popover anchoring, stack spacing, field disabled/invalid styling, pattern ARIA naming) | captured | forma,catalog,defects | high |
 | WI-0014 | Implement P0 requirement-defined components listed in catalog/planned.json (breadcrumbs, table styling, chip, icon button, button variants, kbd, separator, inline message, progress circle) | captured | forma,catalog,requirements | medium |
