@@ -88,8 +88,8 @@ editor chrome stays in Studio (FMD-DIA-007).
 
 ## Negative and deferred
 
-- There are three shapes. Ellipse, diamond, and other FMD-SHAPE-002 shapes,
-  plus groups, swimlanes, phase dividers, ports, and pattern fills, are
+- M1 shipped three shapes. The M2 addendum below adds ellipse, diamond,
+  groups, lanes and phases. Ports and pattern fills remain
   **deferred capability gaps**. Each needs its own issue, fixture and tests
   before Studio relies on it.
 - On narrow screens the canvas scrolls inside its own region rather than
@@ -106,3 +106,26 @@ connector; authored override and reset; kind, state and line style survive
 forced colors; focus unchanged by authored fill; print boundaries and line
 styles; 320px bounded scrolling; 200% text and text spacing; physical geometry
 under RTL; axe in light, dark and forced colors.
+
+# Addendum: M2 (forma#88, 2026-09-30)
+
+The Forma Studio workflow slice and the Folio print projection needed the
+first deferred gaps. M2 adds, with the same ownership rules:
+
+| Visual | Contract |
+|---|---|
+| Ellipse and diamond nodes | `data-ef-shape="ellipse"`, `"diamond"`. The diamond is a square box whose `::before` is the rotated boundary; content sits in the inscribed area. Both keep a real border, so boundaries survive backgrounds-off print. |
+| Group, lane, phase | `.ef-diagram-group` with `__header`, `__kind`, `__label`; `data-ef-group="lane"` or `"phase"`; `data-ef-line` for the boundary style; the same authored color properties as a node plus `--ef-diagram-h`. It is painted first. Membership stays consumer data. |
+| Metadata value state | `.ef-diagram-value-state` text tag with `data-ef-value-state` (`default`, `derived`, `source-bound`, `unknown`, `unavailable`, `invalid`). The text carries the meaning; the border style is secondary. |
+| Capability manifest | `contracts/diagram-presentation.json`, exported by the package. `tests/diagram-contract.test.mjs` fails if it drifts from the CSS. |
+
+The print rule changed: M1 forced every node border to black in print, which
+discarded authored strokes (FMD-FOLIO-001, EPC-COLOR-002). Print now keeps an
+authored stroke and accent and prints black only when no stroke is authored.
+Borders print even with backgrounds disabled, so boundaries stay visible. The
+consumer is still responsible for choosing a stroke that is visible on white.
+
+Validation: `tests/browser/diagram-m2.spec.mjs` covers the shapes (including
+text staying inside the diamond), group paint order, color override and reset,
+value-state cues in forced colors, print strokes, grayscale, 320px, 200% text,
+and axe in light and dark.

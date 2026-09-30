@@ -23,7 +23,8 @@
     "./marketing.css": "./dist/marketing.css",
     "./marketing/*": "./dist/marketing/*",
     "./tokens.json": "./tokens/echelon.tokens.json",
-    "./figma/components.json": "./figma/component-contracts.json"
+    "./figma/components.json": "./figma/component-contracts.json",
+    "./contracts/diagram-presentation.json": "./contracts/diagram-presentation.json"
   },
   "files": [
     "dist",
@@ -32,7 +33,8 @@
     "docs/BRANDING.md",
     "docs/MARKETING-SITES.md",
     "tokens/echelon.tokens.json",
-    "figma/component-contracts.json"
+    "figma/component-contracts.json",
+    "contracts/diagram-presentation.json"
   ],
   "scripts": {
     "clean": "node tools/clean.mjs",
@@ -52,7 +54,7 @@
     "site:mobile": "playwright test --config=playwright.site.config.mjs",
     "pack:verify": "npm run build && npm pack --dry-run",
     "test:package": "node --test tests/package-contract.test.mjs",
-    "test:css": "node --test tests/css-source.test.mjs",
+    "test:css": "node --test tests/css-source.test.mjs tests/diagram-contract.test.mjs",
     "brands:build": "dotnet run --project tools/BrandCompiler/BrandCompiler.fsproj -- brands dist/brands",
     "test:brands": "node --test tests/brand-compiler.test.mjs",
     "test:character-grid": "node --test tests/character-grid.test.mjs",

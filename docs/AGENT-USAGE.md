@@ -334,3 +334,6 @@ Read `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md` before adding me
 - Graph topology, routing, drag/drop, commands, workflow execution, and legal transitions remain outside Forma.
 - Render diagrams with the public `.ef-diagram*` family (`patterns/diagram.html`); pass resolved geometry and colors only through the documented custom properties. [ADR-0004](decisions/ADR-0004-diagram-presentation-boundary.md) lists what Forma owns, what stays Studio editor chrome, and the deferred gaps. Report a missing visual as a Forma issue instead of adding private diagram CSS.
 - Give every connector a matching item in `.ef-diagram__relations`, and give every node visible kind text.
+- Read `contracts/diagram-presentation.json` (package export `./contracts/diagram-presentation.json`) for the machine-readable list of shapes, group variants, line styles, value states, appearance and geometry custom properties, token references, and fallbacks. Do not scrape the CSS.
+- Put `.ef-diagram-group` boundaries (group, lane, phase) first in the canvas and state membership in text; overlap never implies membership.
+- Mark metadata values the author did not write with `.ef-diagram-value-state` text (default, derived, source-bound, unknown, unavailable, invalid).

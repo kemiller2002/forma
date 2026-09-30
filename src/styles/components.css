@@ -4340,6 +4340,8 @@
    *   node:      --ef-diagram-fill, --ef-diagram-stroke, --ef-diagram-accent,
    *              --ef-diagram-foreground
    *   connector: --ef-diagram-connector-stroke, --ef-diagram-connector-width
+   *   group:     the node properties plus --ef-diagram-h (M2, forma#88)
+   * The machine-readable contract is contracts/diagram-presentation.json.
    * Non-color cues: the visible node kind text, data-ef-shape, data-ef-line and
    * the textual relationship list. Focus never reads authored color.
    */
@@ -4384,6 +4386,46 @@
   }
   .ef-diagram-node[data-ef-shape="rounded"] { border-radius: var(--ef-primitive-spacing-3, 0.75rem); }
   .ef-diagram-node[data-ef-shape="pill"] { border-radius: 999px; padding-inline: var(--ef-primitive-spacing-5, 1.5rem); }
+  /*
+   * FMD-M2 (forma#88). Ellipse and diamond keep a real border (never a
+   * background-only shape) so the boundary survives backgrounds-off print and
+   * forced colors. --ef-diagram-h is an optional minimum height.
+   */
+  .ef-diagram-node { min-block-size: var(--ef-diagram-h, auto); }
+  .ef-diagram-node[data-ef-shape="ellipse"] {
+    border-radius: 50%;
+    border-inline-start-width: 2px;
+    border-block-end: 6px solid var(--ef-diagram-node-accent);
+    padding: var(--ef-primitive-spacing-4, 1rem) calc(var(--ef-diagram-w, 12rem) * 0.14);
+    place-content: center;
+    text-align: center;
+  }
+  .ef-diagram-node[data-ef-shape="ellipse"] .ef-diagram-node__meta,
+  .ef-diagram-node[data-ef-shape="diamond"] .ef-diagram-node__meta { grid-template-columns: auto auto; justify-content: center; text-align: start; }
+  /*
+   * A square box whose ::before is the diamond; the content sits in the
+   * inscribed square. Padding is derived from --ef-diagram-w because percentage
+   * padding would resolve against the canvas, not the node.
+   */
+  .ef-diagram-node[data-ef-shape="diamond"] {
+    aspect-ratio: 1;
+    padding: calc(var(--ef-diagram-w, 12rem) * 0.2);
+    border: 0;
+    background: transparent;
+    place-content: center;
+    text-align: center;
+    isolation: isolate;
+  }
+  .ef-diagram-node[data-ef-shape="diamond"]::before {
+    content: "";
+    position: absolute;
+    inset: 14.645%;
+    z-index: -1;
+    transform: rotate(45deg);
+    border: 2px solid var(--ef-diagram-node-stroke);
+    border-left: 6px solid var(--ef-diagram-node-accent);
+    background: var(--ef-diagram-node-fill);
+  }
   .ef-diagram-node :where(h3, p, dl, dd) { margin: 0; color: inherit; max-inline-size: none; }
   .ef-diagram-node__label { font-size: 1rem; line-height: 1.25; }
   .ef-diagram-node a { color: inherit; }
@@ -4428,17 +4470,88 @@
     vertical-align: middle;
   }
 
+  /*
+   * Groups, lanes and phases (FMD-M2). A boundary with a visible text label,
+   * painted beneath connectors and nodes (place it first in the canvas).
+   * Membership is consumer data: overlap on the canvas never implies it, so the
+   * consumer states membership in text (node metadata or the relationship list).
+   * Kind is text in __kind; data-ef-group only selects the presentation.
+   */
+  .ef-diagram-group {
+    --ef-diagram-group-fill: var(--ef-diagram-fill, transparent);
+    --ef-diagram-group-stroke: var(--ef-diagram-stroke, var(--ef-color-border-functional, #3a403c));
+    --ef-diagram-group-accent: var(--ef-diagram-accent, var(--ef-diagram-group-stroke));
+    --ef-diagram-group-foreground: var(--ef-diagram-foreground, var(--ef-color-text-primary, #171a18));
+    position: absolute;
+    left: var(--ef-diagram-x, 0);
+    top: var(--ef-diagram-y, 0);
+    inline-size: var(--ef-diagram-w, 20rem);
+    block-size: var(--ef-diagram-h, 10rem);
+    box-sizing: border-box;
+    margin: 0;
+    border: 2px solid var(--ef-diagram-group-stroke);
+    border-block-start: 6px solid var(--ef-diagram-group-accent);
+    background: var(--ef-diagram-group-fill);
+    color: var(--ef-diagram-group-foreground);
+  }
+  .ef-diagram-group[data-ef-line="dashed"] { border-style: dashed; border-block-start-style: solid; }
+  .ef-diagram-group[data-ef-line="dotted"] { border-style: dotted; border-block-start-style: solid; }
+  .ef-diagram-group[data-ef-group="lane"] { border-block-start-width: 2px; border-inline-start-width: 6px; border-inline-start-color: var(--ef-diagram-group-accent); border-inline-start-style: solid; }
+  .ef-diagram-group__header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--ef-primitive-spacing-2, 0.5rem);
+    align-items: baseline;
+    margin: 0;
+    padding: var(--ef-primitive-spacing-1, 0.25rem) var(--ef-primitive-spacing-2, 0.5rem);
+    color: inherit;
+    font-size: 0.875rem;
+    overflow-wrap: anywhere;
+  }
+  .ef-diagram-group__kind { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  .ef-diagram-group__label { font-weight: 700; }
+
+  /*
+   * Metadata value state (FMD-SCHEMA-006/007). The state is text; the border
+   * style is a secondary cue. Explicit values carry no tag.
+   */
+  .ef-diagram-value-state {
+    display: inline-block;
+    margin-inline-start: var(--ef-primitive-spacing-1, 0.25rem);
+    padding: 0 var(--ef-primitive-spacing-1, 0.25rem);
+    border: 1px dashed currentColor;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    text-transform: none;
+    letter-spacing: normal;
+    vertical-align: baseline;
+  }
+  .ef-diagram-value-state[data-ef-value-state="unknown"],
+  .ef-diagram-value-state[data-ef-value-state="unavailable"] { border-style: dotted; }
+  .ef-diagram-value-state[data-ef-value-state="invalid"] { border-style: solid; border-width: 2px; font-weight: 700; }
+  .ef-diagram-value-state[data-ef-value-state="source-bound"] { border-style: double; border-width: 3px; }
+
   @media (forced-colors: active) {
-    .ef-diagram-node, .ef-diagram-legend__swatch { border-color: CanvasText; background: Canvas; color: CanvasText; }
+    .ef-diagram-node, .ef-diagram-legend__swatch, .ef-diagram-group { border-color: CanvasText; background: Canvas; color: CanvasText; }
+    .ef-diagram-node[data-ef-shape="diamond"] { background: transparent; }
+    .ef-diagram-node[data-ef-shape="diamond"]::before { border-color: CanvasText; background: Canvas; }
     .ef-diagram-connector { stroke: CanvasText; }
     .ef-diagram-marker { fill: CanvasText; }
     .ef-diagram-connector__label { background: Canvas; color: CanvasText; }
   }
 
-  /* Backgrounds-off and grayscale print: boundaries, kinds and line styles remain. */
+  /*
+   * Print (color, grayscale and backgrounds-off). Authored strokes and accents
+   * stay, since borders print even when backgrounds are disabled. Without an
+   * authored stroke, boundaries print black. Kinds, labels, line styles and
+   * the relationship list carry meaning when fills disappear.
+   */
   @media print {
     .ef-diagram__viewport { overflow: visible; border-color: #000; }
-    .ef-diagram-node { break-inside: avoid; border-color: #000; }
+    .ef-diagram-node { break-inside: avoid; --ef-diagram-node-stroke: var(--ef-diagram-stroke, #000); }
+    .ef-diagram-group { --ef-diagram-group-stroke: var(--ef-diagram-stroke, #000); }
     .ef-diagram { break-inside: avoid; }
   }
 

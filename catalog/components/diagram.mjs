@@ -3,7 +3,7 @@ export default {
   category: "workflow",
   behavior: "Application content",
   summary: "Presentation-only diagram nodes, connectors, metadata and key; the consumer owns geometry, routing, semantics and color mapping.",
-  owns: ["ef-diagram","ef-diagram-connector","ef-diagram-legend","ef-diagram-marker","ef-diagram-node"],
+  owns: ["ef-diagram","ef-diagram-connector","ef-diagram-group","ef-diagram-legend","ef-diagram-marker","ef-diagram-node","ef-diagram-value-state"],
   purpose: {
     description: "The diagram family renders a workflow or relationship diagram that has already been laid out by the consumer. A `figure.ef-diagram` holds a caption, a scrollable canvas, a text list of every relationship and an optional key. Nodes are HTML articles placed with `--ef-diagram-x`, `--ef-diagram-y` and `--ef-diagram-w`; connectors are SVG paths whose geometry is supplied by the consumer. Forma paints boxes, shapes, line styles, arrowheads, labels and authored colors. It never lays out, routes, selects, drags or validates anything, and it never infers meaning from color: each node states its kind and state as text, and the relationship list carries every connection without the drawing.",
     useWhen: [
@@ -112,6 +112,106 @@ export default {
 </ef-diagram>`
     },
     {
+      id: "workflow-lanes-and-decision",
+      title: "Budget approval across two lanes",
+      description: "A Workflow profile export with lanes, an ellipse start and end, a diamond decision with labelled outcomes, and two kinds of authored color: an amber fill that the consumer maps from the status field, and a purple fill a person chose by hand. The key keeps the two apart, and every node states its kind, owner and status in text.",
+      html: `<ef-diagram class="ef-component-tag">
+  <figure class="ef-diagram" aria-labelledby="diagram-lanes-title">
+    <figcaption id="diagram-lanes-title">Budget approval</figcaption>
+    <p>Amber fill comes from the status mapping (Needs input). Purple is a highlight the author chose; it carries no status. Owners come from the lane.</p>
+    <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Budget approval canvas, scroll to see all items">
+      <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 780px; --ef-diagram-canvas-h: 400px;">
+        <div class="ef-diagram-group" data-ef-group="lane" style="--ef-diagram-x: 0px; --ef-diagram-y: 0px; --ef-diagram-w: 780px; --ef-diagram-h: 190px;">
+          <p class="ef-diagram-group__header"><span class="ef-diagram-group__kind">Lane</span> <span class="ef-diagram-group__label">Requester</span></p>
+        </div>
+        <div class="ef-diagram-group" data-ef-group="lane" style="--ef-diagram-x: 0px; --ef-diagram-y: 196px; --ef-diagram-w: 780px; --ef-diagram-h: 204px; --ef-diagram-accent: #6b3fa0;">
+          <p class="ef-diagram-group__header"><span class="ef-diagram-group__kind">Lane</span> <span class="ef-diagram-group__label">Finance</span></p>
+        </div>
+        <svg class="ef-diagram__wires" viewBox="0 0 780 400" aria-hidden="true" focusable="false">
+          <defs>
+            <marker id="diagram-lanes-arrow" class="ef-diagram-marker" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+          </defs>
+          <path class="ef-diagram-connector" d="M184 110 H214" marker-end="url(#diagram-lanes-arrow)"/>
+          <path class="ef-diagram-connector" d="M320 164 V222" marker-end="url(#diagram-lanes-arrow)"/>
+          <path class="ef-diagram-connector" d="M395 297 H468" marker-end="url(#diagram-lanes-arrow)"/>
+          <path class="ef-diagram-connector" data-ef-line="dashed" d="M245 297 H200 V150 H214" marker-end="url(#diagram-lanes-arrow)"/>
+          <path class="ef-diagram-connector" d="M558 240 V110 H638" marker-end="url(#diagram-lanes-arrow)"/>
+        </svg>
+        <article class="ef-diagram-node" data-ef-shape="ellipse" aria-labelledby="diagram-lanes-submit" style="--ef-diagram-x: 24px; --ef-diagram-y: 64px; --ef-diagram-w: 160px; --ef-diagram-h: 92px;">
+          <p class="ef-diagram-node__kind">Start</p>
+          <h3 class="ef-diagram-node__label" id="diagram-lanes-submit">Submit request</h3>
+        </article>
+        <article class="ef-diagram-node" data-ef-shape="rounded" aria-labelledby="diagram-lanes-prepare" style="--ef-diagram-x: 216px; --ef-diagram-y: 40px; --ef-diagram-w: 210px; --ef-diagram-fill: #fff1d6; --ef-diagram-accent: #8a5300; --ef-diagram-foreground: #1d1d1b;">
+          <p class="ef-diagram-node__kind">Activity</p>
+          <h3 class="ef-diagram-node__label" id="diagram-lanes-prepare">Prepare budget</h3>
+          <dl class="ef-diagram-node__meta"><dt>Status</dt><dd>Needs input</dd><dt>Owner</dt><dd>Requester <span class="ef-diagram-value-state" data-ef-value-state="derived">from lane</span></dd></dl>
+        </article>
+        <article class="ef-diagram-node" data-ef-shape="diamond" aria-labelledby="diagram-lanes-decide" style="--ef-diagram-x: 245px; --ef-diagram-y: 222px; --ef-diagram-w: 150px;">
+          <p class="ef-diagram-node__kind">Decision</p>
+          <h3 class="ef-diagram-node__label" id="diagram-lanes-decide">Within budget?</h3>
+        </article>
+        <article class="ef-diagram-node" aria-labelledby="diagram-lanes-approve" style="--ef-diagram-x: 470px; --ef-diagram-y: 240px; --ef-diagram-w: 180px; --ef-diagram-fill: #efe6fb; --ef-diagram-accent: #6b3fa0; --ef-diagram-foreground: #1d1d1b;">
+          <p class="ef-diagram-node__kind">Activity</p>
+          <h3 class="ef-diagram-node__label" id="diagram-lanes-approve">Approve spend</h3>
+          <dl class="ef-diagram-node__meta"><dt>Status</dt><dd>Waiting</dd><dt>Owner</dt><dd>Finance <span class="ef-diagram-value-state" data-ef-value-state="derived">from lane</span></dd></dl>
+        </article>
+        <article class="ef-diagram-node" data-ef-shape="ellipse" aria-labelledby="diagram-lanes-closed" style="--ef-diagram-x: 640px; --ef-diagram-y: 64px; --ef-diagram-w: 124px; --ef-diagram-h: 92px;">
+          <p class="ef-diagram-node__kind">End</p>
+          <h3 class="ef-diagram-node__label" id="diagram-lanes-closed">Closed</h3>
+        </article>
+        <span class="ef-diagram-connector__label" style="--ef-diagram-x: 404px; --ef-diagram-y: 272px;">yes</span>
+        <span class="ef-diagram-connector__label" style="--ef-diagram-x: 150px; --ef-diagram-y: 300px;">no, revise</span>
+      </div>
+    </div>
+    <ol class="ef-diagram__relations" aria-label="Relationships">
+      <li>Submit request leads to Prepare budget (solid line).</li>
+      <li>Prepare budget leads to Within budget? (solid line, moves from the Requester lane to the Finance lane).</li>
+      <li>Within budget? leads to Approve spend when the answer is yes (solid line).</li>
+      <li>Within budget? returns to Prepare budget when the answer is no, revise (dashed line).</li>
+      <li>Approve spend leads to Closed (solid line).</li>
+    </ol>
+    <dl class="ef-diagram-legend" aria-label="Key: what fill color means in this diagram">
+      <div><dt><span class="ef-diagram-legend__swatch" style="--ef-diagram-fill: #fff1d6; --ef-diagram-accent: #8a5300;"></span> Status is Needs input</dt><dd>amber fill, from the status mapping</dd></div>
+      <div><dt><span class="ef-diagram-legend__swatch" style="--ef-diagram-fill: #efe6fb; --ef-diagram-accent: #6b3fa0;"></span> Author highlight</dt><dd>purple fill, chosen by hand, no status meaning</dd></div>
+      <div><dt><span class="ef-diagram-legend__swatch"></span> No mapping or highlight</dt><dd>Forma default</dd></div>
+    </dl>
+  </figure>
+</ef-diagram>`
+    },
+    {
+      id: "metadata-value-states",
+      title: "Metadata with default, derived and missing values",
+      description: "One node inside a dashed phase boundary shows how the consumer marks values it did not receive from the author. Each tag is text (default, derived, from source, unknown, unavailable, invalid), so the distinction survives grayscale, forced colors and screen readers; explicit values carry no tag.",
+      html: `<ef-diagram class="ef-component-tag">
+  <figure class="ef-diagram" aria-labelledby="diagram-states-title">
+    <figcaption id="diagram-states-title">Vendor onboarding, discovery phase</figcaption>
+    <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Vendor onboarding canvas, scroll to see all items">
+      <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 460px; --ef-diagram-canvas-h: 330px;">
+        <div class="ef-diagram-group" data-ef-group="phase" data-ef-line="dashed" style="--ef-diagram-x: 0px; --ef-diagram-y: 0px; --ef-diagram-w: 460px; --ef-diagram-h: 330px;">
+          <p class="ef-diagram-group__header"><span class="ef-diagram-group__kind">Phase</span> <span class="ef-diagram-group__label">Discovery</span></p>
+        </div>
+        <article class="ef-diagram-node" data-ef-shape="rounded" aria-labelledby="diagram-states-vendor" style="--ef-diagram-x: 24px; --ef-diagram-y: 44px; --ef-diagram-w: 410px;">
+          <p class="ef-diagram-node__kind">Activity</p>
+          <h3 class="ef-diagram-node__label" id="diagram-states-vendor">Collect vendor details</h3>
+          <dl class="ef-diagram-node__meta">
+            <dt>Status</dt><dd>In review</dd>
+            <dt>Priority</dt><dd>Normal <span class="ef-diagram-value-state" data-ef-value-state="default">default</span></dd>
+            <dt>Phase</dt><dd>Discovery <span class="ef-diagram-value-state" data-ef-value-state="derived">derived from phase</span></dd>
+            <dt>Risk tier</dt><dd>Tier 2 <span class="ef-diagram-value-state" data-ef-value-state="source-bound">from vendor registry</span></dd>
+            <dt>Due</dt><dd><span class="ef-diagram-value-state" data-ef-value-state="unknown">unknown</span></dd>
+            <dt>Contract</dt><dd><span class="ef-diagram-value-state" data-ef-value-state="unavailable">unavailable, registry offline</span></dd>
+            <dt>Cost center</dt><dd>12-A <span class="ef-diagram-value-state" data-ef-value-state="invalid">invalid, not a listed cost center</span></dd>
+          </dl>
+        </article>
+      </div>
+    </div>
+    <ol class="ef-diagram__relations" aria-label="Relationships">
+      <li>Collect vendor details belongs to the Discovery phase; it has no connections yet.</li>
+    </ol>
+  </figure>
+</ef-diagram>`
+    },
+    {
       id: "mobile-scrolling-canvas",
       title: "Mobile scrolling canvas",
       description: "On a phone the fixed-size canvas scrolls inside its own focusable viewport, while the caption and the relationship list reflow to the screen width.",
@@ -167,7 +267,7 @@ export default {
       { name: "aria-hidden", on: "svg.ef-diagram__wires", values: "true", default: "—", description: "Hides the drawn connectors; the relationship list is their text equivalent." },
       { name: "focusable", on: "svg.ef-diagram__wires", values: "false", default: "—", description: "Keeps legacy browsers from putting the SVG in the tab order." },
       { name: "marker-end", on: "path.ef-diagram-connector", values: "url(#marker-id)", default: "—", description: "Attaches the arrowhead. Marker ids must be unique in the document." },
-      { name: "style", on: "canvas, node, connector, label, swatch", values: "custom property declarations", default: "—", description: "Where the consumer writes resolved geometry and authored color values." }
+      { name: "style", on: "canvas, node, group, connector, label, swatch", values: "custom property declarations", default: "—", description: "Where the consumer writes resolved geometry and authored color values." }
     ],
     hooks: {
       "ef-diagram": "The `figure` root: a single-column grid of caption, optional description, viewport, relationship list and key.",
@@ -179,13 +279,25 @@ export default {
       "ef-diagram-node__kind": "Visible kind text (Task, Decision, End), small uppercase. The primary non-color cue.",
       "ef-diagram-node__label": "The node's label, normally an `h3` that also names the node.",
       "ef-diagram-node__meta": "A `dl` of metadata the consumer chose to show, laid out as a two-column grid.",
-      "data-ef-shape": "Node shape: absent for a rectangle, `rounded` for rounded corners, `pill` for fully rounded ends. Presentation only.",
+      "data-ef-shape": "Node shape: absent for a rectangle, `rounded` for rounded corners, `pill` for fully rounded ends, `ellipse`, or `diamond` (a square box whose content sits inside the diamond; give it enough width for the label). Presentation only: the kind text, not the shape, says what the node is.",
       "ef-diagram-connector": "An SVG `path` connector; stroke comes from authored or token values.",
       "ef-diagram-connector__label": "A text label placed on the canvas with `--ef-diagram-x`/`-y`, on a surface-colored background.",
       "data-ef-line": "Connector line style: absent for solid, `dashed` or `dotted`. Presentation only; state the meaning in the relationship list.",
       "ef-diagram-marker": "An SVG `marker` for arrowheads, filled with the functional border color.",
       "ef-diagram-legend": "A `dl` key that explains any authored color mapping; wraps as a flex row.",
       "ef-diagram-legend__swatch": "A small sample box that reads the same color properties as a node.",
+      "ef-diagram-group": "A group, lane or phase boundary placed with `--ef-diagram-x`, `-y`, `-w` and `-h`. Put it first in the canvas so it paints beneath connectors and nodes. Overlap never implies membership: state membership in text.",
+      "ef-diagram-group__header": "The boundary's visible heading row, holding the kind and label text.",
+      "ef-diagram-group__kind": "Visible kind text (Lane, Phase, Group), small uppercase.",
+      "ef-diagram-group__label": "The group's name, for example the actor that owns a lane.",
+      "data-ef-group": "Group presentation: absent or `group` for a boxed region, `lane` for a band with an inline-start accent, `phase` for a band with a top accent. Presentation only; the kind is the text in `__kind`.",
+      "ef-diagram-value-state": "A small text tag after a metadata value that says how the consumer obtained it. Explicit values carry no tag.",
+      "data-ef-value-state": "Secondary border cue on the value-state tag: `default` or `derived` (dashed), `source-bound` (double), `unknown` or `unavailable` (dotted), `invalid` (solid, bold). The tag text carries the meaning.",
+      "--ef-diagram-h": "Minimum node height, or the group height. Nodes grow taller when content needs it.",
+      "--ef-diagram-group-fill": "Internal resolved group fill; read-only. Set `--ef-diagram-fill` instead. Transparent by default.",
+      "--ef-diagram-group-stroke": "Internal resolved group border; read-only. Set `--ef-diagram-stroke` instead.",
+      "--ef-diagram-group-accent": "Internal resolved group accent; read-only. Set `--ef-diagram-accent` instead.",
+      "--ef-diagram-group-foreground": "Internal resolved group text color; read-only. Set `--ef-diagram-foreground` instead.",
       "--ef-diagram-canvas-w": "Canvas width in px, supplied by the consumer. Default 720px.",
       "--ef-diagram-canvas-h": "Canvas height in px, supplied by the consumer. Default 320px.",
       "--ef-diagram-x": "Horizontal position of a node or connector label from the canvas's left edge (physical, not mirrored in RTL).",
@@ -213,11 +325,13 @@ export default {
   states: [
     { name: "Default appearance", how: "no authored custom properties", description: "Nodes and connectors use Forma surface, border and text tokens." },
     { name: "Authored color", how: "--ef-diagram-fill / -stroke / -accent / -foreground, --ef-diagram-connector-stroke / -width", description: "Consumer-resolved colors; removing one restores the token default." },
-    { name: "Shape", how: "data-ef-shape=\"rounded\" | \"pill\"", description: "Rounded corners or pill ends; rectangle when absent." },
+    { name: "Shape", how: "data-ef-shape=\"rounded\" | \"pill\" | \"ellipse\" | \"diamond\"", description: "Rounded corners, pill ends, ellipse or diamond; rectangle when absent. Every shape keeps a real border for backgrounds-off print." },
+    { name: "Group, lane or phase", how: "div.ef-diagram-group with data-ef-group=\"lane\" | \"phase\" and optional data-ef-line", description: "A labelled boundary beneath nodes; accepts the same authored color properties as a node." },
+    { name: "Metadata value state", how: "span.ef-diagram-value-state with data-ef-value-state", description: "Text tag marking default, derived, source-bound, unknown, unavailable or invalid values." },
     { name: "Line style", how: "data-ef-line=\"dashed\" | \"dotted\"", description: "Dash pattern on a connector; solid when absent." },
     { name: "Viewport focus", how: ":focus-visible on .ef-diagram__viewport", description: "Foundation focus ring, independent of authored color." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Nodes, swatches and labels become Canvas/CanvasText; connectors and markers use CanvasText. Kind text, shape and line style remain." },
-    { name: "Print", how: "@media print", description: "Viewport stops scrolling, borders turn black and nodes avoid page breaks." }
+    { name: "Print", how: "@media print", description: "Viewport stops scrolling and nodes avoid page breaks. Authored strokes and accents print; boundaries without an authored stroke print black, so they stay visible with backgrounds disabled." }
   ],
   accessibility: {
     forma: [
