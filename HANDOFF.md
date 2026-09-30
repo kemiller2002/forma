@@ -228,3 +228,43 @@ review in `themes/echelon/manifest.md`.
 2. Migrate the Echelon Foundry main site.
 3. Open a Forma work item for making the Forma documentation site its own
    consumer.
+
+## Component catalog site, 2026-09-30 (WI-0011, PR #87)
+
+Objective: make the documentation site a complete, standardized reference for
+every public Forma component (purpose, examples, mobile, HTML, API, states,
+accessibility, responsive, motion, guidance, related) with coverage enforced
+in CI.
+
+Work completed:
+
+- Catalog pipeline (ADR-0005): `patterns/<slug>.html` + `catalog/components/<slug>.mjs`
+  + CSS hooks derived from `dist/all.css` (`tools/catalog/`) generate every
+  page, 18 category pages, the A–Z index, a mobile reference, an accessibility
+  statement, five compositions and `site-manifest.json`. `tools/component-meta.mjs`
+  and `tools/site-examples.mjs` were removed.
+- 165 components documented (151 existing patterns + 14 new canonical patterns
+  for styled primitives that had no page); 710 live examples; every component
+  has ≥2 scenario examples + a mobile example rendered in a real narrow viewport.
+- Enforcement: `npm run catalog:check` (validator + generated inventory check),
+  `tests/catalog-coverage.test.mjs`, `tests/site-browser/catalog.spec.mjs`
+  (overflow at 320–1280px, landscape, 200% zoom and text, mobile frames,
+  navigation, switcher, filter, focus, two-pass axe with an explicit baseline).
+- `docs/COMPONENT-INVENTORY.md` (generated), `catalog/planned.json` (29 required
+  but unimplemented), `catalog/known-issues.json` (component defects found while
+  documenting), `docs/CATALOG-AUTHORING.md`, AGENTS.md rule 9.
+
+Decisions and constraints: the site stays zero-runtime (copy = select-all +
+raw `.txt`; filters/switchers are CSS `:has()` on Forma segmented controls);
+site.css rules are scoped away from live examples because its cascade layer
+outranks Forma; page-level patterns (containing `<main>`) render their Basic
+example in a frame.
+
+Validation run: catalog check, coverage/site-build node tests (28), Figma,
+runtime, CSS, package, character-grid, motion and marketing node tests,
+pattern mobile/accessibility/marketing browser specs (Chromium), full
+`tests/site-browser` suite (Chromium). Firefox/WebKit were not run locally.
+
+Follow-ups: WI-0012 token contrast on secondary surfaces; WI-0013 known
+component defects; WI-0014 P0 planned components; WI-0015 docs-site script
+decision (clipboard/search); WI-0016 settings-row primitive candidate.
