@@ -1,3 +1,10 @@
+import { missionById, nasaPrograms, nasaSpaceflights } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const crewedCount = nasaSpaceflights.filter(mission => mission.crewed).length;
+const uncrewedCount = nasaSpaceflights.length - crewedCount;
+const apolloCount = nasaSpaceflights.filter(mission => mission.program === "Apollo").length;
+
 export default {
   name: "Metric card",
   category: "data",
@@ -26,69 +33,68 @@ export default {
   examples: [
     {
       id: "unknown-value",
-      title: "Value not available",
-      description: "The metric source is unavailable. The card shows the word Unknown instead of zero or a dash, and a sentence says why, so a missing number is never read as a real one.",
+      title: "Source check not available",
+      description: "A hypothetical live source check is unavailable. The card says Unknown rather than zero or a dash; that local monitoring state is separate from the stable NASA facts already stored in the reference collection.",
       html: `<ef-metric-card class="ef-component-tag">
   <article class="ef-metric-card" aria-labelledby="metric-card-unknown-value-label">
-    <div class="ef-metric-card__label" id="metric-card-unknown-value-label">Failed payments today</div>
+    <div class="ef-metric-card__label" id="metric-card-unknown-value-label">Current NASA source check for ${apollo11.name}</div>
     <div class="ef-metric-card__value">Unknown</div>
-    <p><span class="ef-status-lozenge" data-state="unknown">Source unavailable</span></p>
-    <p>The payment processor feed has not reported since 06:00 UTC.</p>
+    <p><span class="ef-status-lozenge" data-state="unknown">Source check unavailable</span></p>
+    <p>The canonical mission record remains usable; only the optional live verification result is unknown.</p>
   </article>
 </ef-metric-card>`
     },
     {
       id: "stale-with-freshness",
-      title: "Value with freshness and period",
-      description: "The value is stated with its period and a [[freshness]] line, so users can tell how current it is. A trend is written as words (\"down 4 from last week\"), not as a green or red arrow.",
+      title: "Collection count with freshness",
+      description: "The value is stated with its scope and a freshness line so a consumer can distinguish the stable collection count from an overdue external source recheck.",
       html: `<ef-metric-card class="ef-component-tag">
   <article class="ef-metric-card" aria-labelledby="metric-card-stale-with-freshness-label">
-    <div class="ef-metric-card__label" id="metric-card-stale-with-freshness-label">Open incidents, last 7 days</div>
-    <div class="ef-metric-card__value">12</div>
-    <p>Down 4 from the previous 7 days.</p>
-    <p class="ef-freshness"><span class="ef-freshness__label">Last updated</span> <time datetime="2026-09-29T05:00:00Z">05:00 UTC</time> <span>Stale: refresh overdue by 2 hours</span></p>
-    <a href="#metric-card-stale-with-freshness-incidents">View incidents</a>
+    <div class="ef-metric-card__label" id="metric-card-stale-with-freshness-label">Completed missions in the Forma reference collection</div>
+    <div class="ef-metric-card__value">${nasaSpaceflights.length}</div>
+    <p>${nasaPrograms.length} NASA programs represented.</p>
+    <p class="ef-freshness"><span class="ef-freshness__label">Source review</span> <time datetime="2026-09-29T05:00:00Z">29 Sep 2026</time> <span>Example: recheck overdue</span></p>
+    <a href="#metric-card-stale-with-freshness-missions">View mission records</a>
   </article>
 </ef-metric-card>`
     },
     {
       id: "dashboard-row",
-      title: "Dashboard row with long labels",
-      description: "Three cards in a [[dashboard-grid]]. Labels of different lengths wrap inside their cards; the value scale stays the same across cards, so no value looks more important than another.",
+      title: "Mission collection metrics",
+      description: "Three cards in a dashboard grid derive their values from the same canonical array, so counts cannot drift between examples.",
       html: `<ef-metric-card class="ef-component-tag">
-  <section class="ef-dashboard-grid" aria-label="Receivables overview">
-    <article class="ef-metric-card"><div class="ef-metric-card__label">Outstanding receivables across all subsidiaries</div><div class="ef-metric-card__value">$1,204,500</div><p>As of 29 Sep 2026.</p></article>
-    <article class="ef-metric-card"><div class="ef-metric-card__label">Overdue</div><div class="ef-metric-card__value">$212,040</div><p>31 invoices past due.</p></article>
-    <article class="ef-metric-card"><div class="ef-metric-card__label">Disputed</div><div class="ef-metric-card__value">0</div><p>No open disputes.</p></article>
+  <section class="ef-dashboard-grid" aria-label="NASA reference collection overview">
+    <article class="ef-metric-card"><div class="ef-metric-card__label">Completed reference missions</div><div class="ef-metric-card__value">${nasaSpaceflights.length}</div><p>Across ${nasaPrograms.length} programs.</p></article>
+    <article class="ef-metric-card"><div class="ef-metric-card__label">Crewed missions</div><div class="ef-metric-card__value">${crewedCount}</div><p>Mission records with crew manifests.</p></article>
+    <article class="ef-metric-card"><div class="ef-metric-card__label">Uncrewed missions</div><div class="ef-metric-card__value">${uncrewedCount}</div><p>Includes Artemis I.</p></article>
   </section>
 </ef-metric-card>`
     },
     {
       id: "mobile-metric-stack",
-      title: "Mobile metric stack",
-      description: "Two cards at phone width. The value shrinks toward its 2rem minimum and each card keeps its label, context and link in reading order.",
+      title: "Mobile mission metrics",
+      description: "Two derived collection metrics at phone width keep their labels and context in reading order.",
       mobile: {
         height: 420,
         notes: [
-          "The value size follows `clamp(2rem, 8vw, 3.5rem)`: about 2rem at 320px and 390px, reaching 3.5rem only at wide viewports.",
-          "Inside [[dashboard-grid]] the cards collapse to one column at 40rem and below, keeping the application's order.",
-          "Long labels and context text wrap; the card has `min-inline-size: 0` so it never forces horizontal scrolling.",
-          "The trailing link is an ordinary inline link; keep its text descriptive so it is a usable tap target on its own line.",
-          "Rotation only changes the value's viewport-relative size between the clamp bounds."
+          "The value size follows the same fluid clamp and remains readable at phone widths.",
+          "Inside dashboard-grid the cards collapse to one column without changing source order.",
+          "Long labels and context text wrap without forcing horizontal scrolling.",
+          "Links remain ordinary descriptive links."
         ]
       },
       html: `<ef-metric-card class="ef-component-tag">
   <div class="ef-stack" data-density="compact">
     <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Needs attention</div>
-      <div class="ef-metric-card__value">7</div>
-      <p><span class="ef-status-lozenge" data-state="attention">3 overdue</span></p>
-      <a href="#metric-card-mobile-metric-stack-attention">Open attention queue</a>
+      <div class="ef-metric-card__label">Apollo missions in the reference collection</div>
+      <div class="ef-metric-card__value">${apolloCount}</div>
+      <p><span class="ef-status-lozenge" data-state="ok">All completed</span></p>
+      <a href="#metric-card-mobile-metric-stack-apollo">Open Apollo missions</a>
     </article>
     <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Completed this month</div>
-      <div class="ef-metric-card__value">42</div>
-      <p>Through 29 September.</p>
+      <div class="ef-metric-card__label">NASA programs represented</div>
+      <div class="ef-metric-card__value">${nasaPrograms.length}</div>
+      <p>${nasaPrograms.join(", ")}.</p>
     </article>
   </div>
 </ef-metric-card>`

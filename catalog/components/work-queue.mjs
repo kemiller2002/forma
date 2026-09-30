@@ -1,3 +1,9 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const sts31 = missionById("sts-31");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Work queue",
   category: "data",
@@ -26,26 +32,26 @@ export default {
   examples: [
     {
       id: "mixed-states",
-      title: "Overdue, unknown and blocked work",
-      description: "Three items with different application states, each written as text with a [[status-lozenge]]. The unknown write outcome asks for reconciliation rather than a retry, and the blocked item's action is to view the blocker because nothing else is legal.",
+      title: "Mission-documentation work in mixed states",
+      description: "The mission facts are canonical; the attention, unknown and blocked labels describe a hypothetical local documentation workflow. Unknown external-write outcome requires reconciliation rather than blind retry.",
       html: `<ef-work-queue class="ef-component-tag">
   <section class="ef-work-queue" aria-labelledby="work-queue-mixed-states-title">
     <header class="ef-work-queue__header">
-      <div><span class="ef-component-kicker">Finance operations</span><h3 id="work-queue-mixed-states-title">Needs your attention</h3></div>
+      <div><span class="ef-component-kicker">Mission documentation</span><h3 id="work-queue-mixed-states-title">Needs your attention</h3></div>
       <span class="ef-status-lozenge">3 items</span>
     </header>
     <ol class="ef-work-queue__list">
       <li class="ef-work-queue__item">
-        <div><strong>Invoice INV-1042 is 32 days overdue</strong><p><span class="ef-status-lozenge" data-state="attention">Overdue</span> Due 28 Aug · Customer follow-up is available.</p></div>
-        <button type="button" aria-label="Review INV-1042">Review</button>
+        <div><strong>${apollo11.name} citation review is due</strong><p><span class="ef-status-lozenge" data-state="attention">Review</span> Recheck the official source attribution before the next catalog release.</p></div>
+        <button type="button" aria-label="Review ${apollo11.name} citation">Review</button>
       </li>
       <li class="ef-work-queue__item">
-        <div><strong>Payment PAY-88122 outcome is unknown</strong><p><span class="ef-status-lozenge" data-state="unknown">Unknown</span> The bank accepted the request but has not confirmed. Reconcile before retrying.</p></div>
-        <button type="button" aria-label="Reconcile PAY-88122">Reconcile</button>
+        <div><strong>${sts31.name} source-update outcome is unknown</strong><p><span class="ef-status-lozenge" data-state="unknown">Unknown</span> The write may have completed. Reconcile the local record before retrying.</p></div>
+        <button type="button" aria-label="Reconcile ${sts31.name} source update">Reconcile</button>
       </li>
       <li class="ef-work-queue__item">
-        <div><strong>Quarter close cannot start</strong><p><span class="ef-status-lozenge" data-state="blocked">Blocked</span> Waiting on 2 unreconciled accounts owned by Treasury.</p></div>
-        <button type="button" aria-label="View blockers for quarter close">View blockers</button>
+        <div><strong>${artemisI.name} local edit is blocked</strong><p><span class="ef-status-lozenge" data-state="blocked">Blocked</span> Waiting for the source-review obligation to be resolved.</p></div>
+        <button type="button" aria-label="View blocker for ${artemisI.name}">View blocker</button>
       </li>
     </ol>
   </section>
@@ -53,49 +59,47 @@ export default {
     },
     {
       id: "empty-queue",
-      title: "Queue cleared",
-      description: "Nothing needs attention. The section stays in place with a 0 count and an explanation, instead of disappearing, so users can tell an empty queue from one that failed to load.",
+      title: "Mission review queue cleared",
+      description: "Nothing needs attention. The section stays with a zero count and explanation so an empty review queue cannot be confused with one that failed to load.",
       html: `<ef-work-queue class="ef-component-tag">
   <section class="ef-work-queue" aria-labelledby="work-queue-empty-queue-title">
     <header class="ef-work-queue__header">
-      <div><h3 id="work-queue-empty-queue-title">Needs your attention</h3></div>
+      <div><h3 id="work-queue-empty-queue-title">Mission records needing review</h3></div>
       <span class="ef-status-lozenge" data-state="ok">0 items</span>
     </header>
     <ol class="ef-work-queue__list">
-      <li class="ef-work-queue__item">
-        <div><strong>Nothing needs your attention</strong><p>Checked at 09:40 UTC. New items appear here when they are assigned to you.</p></div>
-      </li>
+      <li class="ef-work-queue__item"><div><strong>Nothing needs your attention</strong><p>New local documentation obligations appear here when they are created.</p></div></li>
     </ol>
   </section>
 </ef-work-queue>`
     },
     {
       id: "mobile-queue",
-      title: "Mobile work queue",
-      description: "Two items at phone width. Each item stacks its reason above a full-width action, and the header stacks the count under the title.",
+      title: "Mobile mission review queue",
+      description: "Two mission-record tasks at phone width. Each item stacks its reason above a full-width action, and the header stacks the count under the title.",
       mobile: {
         height: 460,
         notes: [
-          "At 40rem (640px) and below each item becomes a single column and its button stretches to 100% width, giving a full-width touch target.",
-          "At 30rem (480px) and below the header becomes a grid, so the count sits under the title instead of competing for width.",
-          "The application's order is kept exactly; nothing is reordered for mobile.",
-          "Long reasons and context wrap within the item; nothing scrolls horizontally at 320px."
+          "At 40rem and below each item becomes one column and its button stretches to the full width.",
+          "At 30rem and below the header becomes a grid, so the count sits under the title.",
+          "The application's work order is preserved exactly.",
+          "Long mission names and reasons wrap without horizontal scrolling."
         ]
       },
       html: `<ef-work-queue class="ef-component-tag">
   <section class="ef-work-queue" aria-labelledby="work-queue-mobile-queue-title">
     <header class="ef-work-queue__header">
-      <div><span class="ef-component-kicker">Releases</span><h3 id="work-queue-mobile-queue-title">Awaiting your review</h3></div>
+      <div><span class="ef-component-kicker">NASA reference data</span><h3 id="work-queue-mobile-queue-title">Awaiting review</h3></div>
       <span class="ef-status-lozenge">2 items</span>
     </header>
     <ol class="ef-work-queue__list">
       <li class="ef-work-queue__item">
-        <div><strong>rel-2026.09.29 needs production approval</strong><p>Requested 3 hours ago by the release manager.</p></div>
-        <button type="button" aria-label="Review rel-2026.09.29">Review</button>
+        <div><strong>${apollo11.name} source attribution</strong><p>Confirm the official NASA source still supports the stored mission facts.</p></div>
+        <button type="button" aria-label="Review ${apollo11.name} source attribution">Review</button>
       </li>
       <li class="ef-work-queue__item">
-        <div><strong>Publication validation has warnings</strong><p>2 warnings must be acknowledged before publishing.</p></div>
-        <button type="button" aria-label="Inspect publication warnings">Inspect</button>
+        <div><strong>${sts31.name} crew projection</strong><p>Verify the mobile example still fits all ${sts31.crew.length} crew names.</p></div>
+        <button type="button" aria-label="Inspect ${sts31.name} crew projection">Inspect</button>
       </li>
     </ol>
   </section>

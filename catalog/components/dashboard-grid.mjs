@@ -1,3 +1,9 @@
+import { nasaPrograms, nasaSpaceflights } from "../example-data/nasa-spaceflight.mjs";
+
+const crewedCount = nasaSpaceflights.filter(mission => mission.crewed).length;
+const uncrewedCount = nasaSpaceflights.length - crewedCount;
+const lunarCount = nasaSpaceflights.filter(mission => mission.destination.toLowerCase().includes("lunar") || mission.destination.includes("Moon")).length;
+
 export default {
   name: "Dashboard grid",
   category: "workspaces",
@@ -24,84 +30,73 @@ export default {
   },
   examples: [
     {
-      id: "attention-first",
-      title: "Attention-first operations overview",
-      description: "The blocks that need action come first in source order and carry text status with a symbol, not only color. A full-width summary spans the grid with `ef-span-full`.",
+      id: "collection-overview",
+      title: "NASA collection overview",
+      description: "The full-width heading and metric blocks derive from the canonical mission collection. The counts are data, while source-review state remains explicit text rather than color alone.",
       html: `<ef-dashboard-grid class="ef-component-tag">
-  <section class="ef-dashboard-grid" aria-labelledby="dashboard-grid-attention-first-title">
-    <h2 class="ef-span-full" id="dashboard-grid-attention-first-title">Accounts receivable · October</h2>
-    <article class="ef-metric-card" aria-labelledby="dashboard-grid-attention-first-overdue">
-      <div class="ef-metric-card__label" id="dashboard-grid-attention-first-overdue">Overdue invoices</div>
-      <div class="ef-metric-card__value">12</div>
-      <p><span class="ef-status-lozenge" data-state="attention">Needs action</span></p>
-      <a href="#dashboard-grid-attention-first-overdue-list">Review overdue invoices</a>
+  <section class="ef-dashboard-grid" aria-labelledby="dashboard-grid-collection-overview-title">
+    <h2 class="ef-span-full" id="dashboard-grid-collection-overview-title">NASA spaceflight reference collection</h2>
+    <article class="ef-metric-card" aria-labelledby="dashboard-grid-collection-overview-total">
+      <div class="ef-metric-card__label" id="dashboard-grid-collection-overview-total">Missions</div>
+      <div class="ef-metric-card__value">${nasaSpaceflights.length}</div>
+      <p><span class="ef-status-lozenge" data-state="ok">Stable fixtures</span></p>
+      <a href="#dashboard-grid-collection-overview-list">View missions</a>
     </article>
-    <article class="ef-metric-card" aria-labelledby="dashboard-grid-attention-first-disputed">
-      <div class="ef-metric-card__label" id="dashboard-grid-attention-first-disputed">Disputed</div>
-      <div class="ef-metric-card__value">3</div>
-      <p><span class="ef-status-lozenge" data-state="blocked">Awaiting customer</span></p>
-      <a href="#dashboard-grid-attention-first-disputed-list">Open disputes</a>
+    <article class="ef-metric-card" aria-labelledby="dashboard-grid-collection-overview-crewed">
+      <div class="ef-metric-card__label" id="dashboard-grid-collection-overview-crewed">Crewed missions</div>
+      <div class="ef-metric-card__value">${crewedCount}</div>
+      <p>Each carries an explicit crew manifest.</p>
     </article>
-    <article class="ef-metric-card" aria-labelledby="dashboard-grid-attention-first-collected">
-      <div class="ef-metric-card__label" id="dashboard-grid-attention-first-collected">Collected this month</div>
-      <div class="ef-metric-card__value">$184,200</div>
-      <p><span class="ef-status-lozenge" data-state="ok">On track</span></p>
+    <article class="ef-metric-card" aria-labelledby="dashboard-grid-collection-overview-lunar">
+      <div class="ef-metric-card__label" id="dashboard-grid-collection-overview-lunar">Lunar missions represented</div>
+      <div class="ef-metric-card__value">${lunarCount}</div>
+      <p>Derived from mission destinations.</p>
     </article>
   </section>
 </ef-dashboard-grid>`
     },
     {
       id: "unknown-and-stale",
-      title: "Unavailable and stale values",
-      description: "When a source is unavailable the block keeps its place and says so, instead of showing zero. A wider block uses `ef-span-2` for a short explanation of the stale data.",
+      title: "Unavailable source checks without losing canonical data",
+      description: "When optional live verification is unavailable, the block keeps its place and says so instead of rewriting a stable mission fact as zero. A wider block uses ef-span-2 for the explanation.",
       html: `<ef-dashboard-grid class="ef-component-tag">
-  <section class="ef-dashboard-grid" aria-label="Warehouse status">
+  <section class="ef-dashboard-grid" aria-label="Mission source verification">
     <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Orders picked today</div>
-      <div class="ef-metric-card__value">1,284</div>
-      <p>Updated 2 minutes ago.</p>
+      <div class="ef-metric-card__label">Canonical mission records</div>
+      <div class="ef-metric-card__value">${nasaSpaceflights.length}</div>
+      <p>Available offline.</p>
     </article>
     <article class="ef-metric-card ef-span-2">
-      <div class="ef-metric-card__label">Inventory on hand</div>
+      <div class="ef-metric-card__label">Live NASA source recheck</div>
       <div class="ef-metric-card__value">—</div>
-      <p><span class="ef-status-lozenge" data-state="unknown">Unavailable</span> The inventory service has not responded since 09:40. Figures will return when it reconnects.</p>
+      <p><span class="ef-status-lozenge" data-state="unknown">Unavailable</span> The example keeps the source-attributed local records rather than treating a network failure as missing mission data.</p>
     </article>
     <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Late shipments</div>
-      <div class="ef-metric-card__value">7</div>
-      <p><span class="ef-status-lozenge" data-state="unknown">Stale</span> Last refreshed 3 hours ago.</p>
+      <div class="ef-metric-card__label">Programs represented</div>
+      <div class="ef-metric-card__value">${nasaPrograms.length}</div>
+      <p>${nasaPrograms.join(", ")}.</p>
     </article>
   </section>
 </ef-dashboard-grid>`
     },
     {
       id: "mobile-single-column",
-      title: "Mobile single column",
-      description: "At phone width every block takes the full width in source order, so the attention block written first is also seen first.",
+      title: "Mobile mission metrics",
+      description: "At phone width every derived metric takes the full width in source order.",
       mobile: {
         height: 600,
         notes: [
-          "At 40rem and below the grid is one `1fr` column; `ef-span-2` and `ef-span-full` children simply fill that column.",
-          "Order is the source order. Nothing is reordered by importance, so write attention blocks first.",
-          "Large values such as currency amounts wrap rather than overflow because every block can shrink to the viewport.",
-          "Links inside metric cards are ordinary inline links; give them a comfortable touch height in application CSS or make the whole label a single, clearly named link."
+          "At 40rem and below the grid is one column; span helpers simply fill that column.",
+          "Order remains source order; Forma never reorders by importance.",
+          "Large numeric values can shrink with their cards without causing page overflow.",
+          "Links inside metric cards remain normal links with explicit names."
         ]
       },
       html: `<ef-dashboard-grid class="ef-component-tag">
-  <section class="ef-dashboard-grid" aria-label="On-call summary">
-    <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Open incidents</div>
-      <div class="ef-metric-card__value">2</div>
-      <p><span class="ef-status-lozenge" data-state="attention">1 unacknowledged</span></p>
-    </article>
-    <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Pages this week</div>
-      <div class="ef-metric-card__value">9</div>
-    </article>
-    <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Mean time to acknowledge</div>
-      <div class="ef-metric-card__value">4 min</div>
-    </article>
+  <section class="ef-dashboard-grid" aria-label="NASA reference summary">
+    <article class="ef-metric-card"><div class="ef-metric-card__label">Crewed missions</div><div class="ef-metric-card__value">${crewedCount}</div><p><span class="ef-status-lozenge" data-state="ok">Crew data present</span></p></article>
+    <article class="ef-metric-card"><div class="ef-metric-card__label">Uncrewed missions</div><div class="ef-metric-card__value">${uncrewedCount}</div></article>
+    <article class="ef-metric-card"><div class="ef-metric-card__label">Programs</div><div class="ef-metric-card__value">${nasaPrograms.length}</div></article>
   </section>
 </ef-dashboard-grid>`
     }

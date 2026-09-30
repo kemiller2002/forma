@@ -1,3 +1,9 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const sts31 = missionById("sts-31");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Status lozenge",
   category: "feedback",
@@ -24,49 +30,49 @@ export default {
   },
   examples: [
     {
-      id: "environment-table",
-      title: "Deployment environments",
-      description: "Lozenges inside a [[key-value-list]] describing three environments. Each state is named in words; the glyphs repeat the distinction in shape.",
+      id: "mission-record-states",
+      title: "Mission-record workflow states",
+      description: "The NASA facts come from canonical records; the lozenges describe a hypothetical local documentation workflow around those records. Each state is named in words and the glyph repeats the distinction in shape.",
       html: `<ef-status-lozenge class="ef-component-tag">
   <dl class="ef-key-value-list">
-    <div><dt>Production</dt><dd><span class="ef-status-lozenge" data-state="ok">Healthy</span></dd></div>
-    <div><dt>Staging</dt><dd><span class="ef-status-lozenge" data-state="attention">Deploy pending approval</span></dd></div>
-    <div><dt>Disaster recovery</dt><dd><span class="ef-status-lozenge" data-state="unknown">Not reporting</span></dd></div>
+    <div><dt>${apollo11.name}</dt><dd><span class="ef-status-lozenge" data-state="ok">Source verified</span></dd></div>
+    <div><dt>${sts31.name}</dt><dd><span class="ef-status-lozenge" data-state="attention">Citation review due</span></dd></div>
+    <div><dt>${artemisI.name}</dt><dd><span class="ef-status-lozenge" data-state="unknown">Source check unavailable</span></dd></div>
   </dl>
 </ef-status-lozenge>`
     },
     {
       id: "neutral-states",
-      title: "Neutral workflow states",
-      description: "States that are neither good nor bad, such as Draft or Scheduled, omit `data-state` and get the neutral bullet. The set is a labelled group so its purpose is announced.",
+      title: "Neutral record states",
+      description: "States that are neither good nor bad omit data-state and get the neutral bullet. The values describe local catalog work, not the historical outcome of the NASA mission.",
       html: `<ef-status-lozenge class="ef-component-tag">
-  <div class="ef-status-lozenge-set" role="group" aria-label="Invoice workflow states">
-    <span class="ef-status-lozenge">Draft</span>
-    <span class="ef-status-lozenge">Scheduled</span>
-    <span class="ef-status-lozenge" data-state="ok">Paid</span>
-    <span class="ef-status-lozenge" data-state="blocked">Voided</span>
+  <div class="ef-status-lozenge-set" role="group" aria-label="${apollo11.name} catalog states">
+    <span class="ef-status-lozenge">Indexed</span>
+    <span class="ef-status-lozenge">Selected</span>
+    <span class="ef-status-lozenge" data-state="ok">Source verified</span>
+    <span class="ef-status-lozenge" data-state="blocked">Local edit blocked</span>
   </div>
 </ef-status-lozenge>`
     },
     {
       id: "mobile-status-set",
-      title: "Mobile status set",
-      description: "A lozenge set at phone width.",
+      title: "Mobile mission-record status set",
+      description: "A local status set for mission documentation at phone width.",
       mobile: {
         height: 260,
         notes: [
-          "Below 30rem each lozenge in a set takes the full row and its content is centered, so the set becomes a vertical list.",
-          "Lozenge text does not wrap; a very long label can overflow a narrow screen, so keep labels to a few words.",
-          "Lozenges are not interactive and have no touch target; if a state needs an action, place a button next to it.",
-          "Orientation changes let the set return to a wrapping row once the width exceeds 30rem."
+          "Below 30rem each lozenge takes the full row and its content is centered.",
+          "Lozenge text does not wrap, so labels stay intentionally short.",
+          "Lozenges are not interactive; actions belong beside them, not inside them.",
+          "Wider orientation lets the set return to a wrapping row."
         ]
       },
       html: `<ef-status-lozenge class="ef-component-tag">
-  <div class="ef-status-lozenge-set" role="group" aria-label="Payment run status">
-    <span class="ef-status-lozenge" data-state="ok">112 sent</span>
-    <span class="ef-status-lozenge" data-state="attention">6 held</span>
-    <span class="ef-status-lozenge" data-state="unknown">2 unconfirmed</span>
-    <span class="ef-status-lozenge" data-state="blocked">1 rejected</span>
+  <div class="ef-status-lozenge-set" role="group" aria-label="Mission documentation status">
+    <span class="ef-status-lozenge" data-state="ok">5 verified</span>
+    <span class="ef-status-lozenge" data-state="attention">1 review</span>
+    <span class="ef-status-lozenge" data-state="unknown">1 unchecked</span>
+    <span class="ef-status-lozenge" data-state="blocked">1 blocked</span>
   </div>
 </ef-status-lozenge>`
     }

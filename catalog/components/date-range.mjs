@@ -1,3 +1,8 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Date range",
   category: "forms",
@@ -25,70 +30,70 @@ export default {
   examples: [
     {
       id: "bounded-report",
-      title: "Report period with limits",
-      description: "A billing report limited to the last year of retained data. Both dates are required and bounded with min and max; the description states the limit. Presets are grouped with role=group so their accessible name is exposed.",
+      title: "Mission launch period with collection bounds",
+      description: "The filter is bounded by the earliest and latest years represented in this compact NASA collection. Both dates are required, and presets remain ordinary application controls.",
       html: `<ef-date-range class="ef-component-tag">
   <fieldset class="ef-date-range" aria-describedby="date-range-bounded-description">
-    <legend>Billing period</legend>
-    <p class="ef-field__description" id="date-range-bounded-description">Data is kept for 12 months: 1 October 2025 to 30 September 2026.</p>
+    <legend>Mission launch period</legend>
+    <p class="ef-field__description" id="date-range-bounded-description">The reference collection spans 1965 through 2022.</p>
     <div class="ef-date-range__fields">
-      <label>From <input type="date" name="billing-from" min="2025-10-01" max="2026-09-30" value="2026-09-01" required></label>
+      <label>From <input type="date" name="mission-from" min="1965-01-01" max="${artemisI.launchDate}" value="1969-01-01" required></label>
       <span class="ef-date-range__separator" aria-hidden="true">→</span>
-      <label>To <input type="date" name="billing-to" min="2025-10-01" max="2026-09-30" value="2026-09-30" required></label>
+      <label>To <input type="date" name="mission-to" min="1965-01-01" max="${artemisI.launchDate}" value="1970-12-31" required></label>
     </div>
-    <div class="ef-date-range__presets" role="group" aria-label="Billing period presets">
-      <button type="button">Last month</button>
-      <button type="button">Last quarter</button>
-      <button type="button">Last 12 months</button>
+    <div class="ef-date-range__presets" role="group" aria-label="Mission period presets">
+      <button type="button">Apollo era</button>
+      <button type="button">Shuttle era</button>
+      <button type="button">All missions</button>
     </div>
   </fieldset>
 </ef-date-range>`
     },
     {
       id: "end-before-start",
-      title: "End date before start date",
-      description: "The application found the To date earlier than From. The To input is marked invalid and linked to a validation message that states the fix; both typed dates are kept.",
+      title: "Mission period end before start",
+      description: "The application found the To date earlier than From. The To input is marked invalid and linked to a validation message; both entered dates remain visible for correction.",
       html: `<ef-date-range class="ef-component-tag">
   <fieldset class="ef-date-range">
-    <legend>Leave dates</legend>
+    <legend>Mission launch period</legend>
     <div class="ef-date-range__fields">
-      <label>First day <input type="date" name="leave-from" value="2026-12-21"></label>
+      <label>From <input type="date" name="launch-from" value="${artemisI.launchDate}"></label>
       <span class="ef-date-range__separator" aria-hidden="true">→</span>
-      <label>Last day <input type="date" name="leave-to" value="2026-12-12" aria-invalid="true" aria-describedby="date-range-end-before-start-error"></label>
+      <label>To <input type="date" name="launch-to" value="${apollo11.launchDate}" aria-invalid="true" aria-describedby="date-range-end-before-start-error"></label>
     </div>
     <p class="ef-validation-message" id="date-range-end-before-start-error">
       <span class="ef-validation-message__mark" aria-hidden="true">!</span>
-      The last day must be on or after 21 December 2026.
+      The end of the launch-date range must be on or after ${artemisI.launchDate}.
     </p>
   </fieldset>
 </ef-date-range>`
     },
     {
       id: "mobile-activity-filter",
-      title: "Mobile activity filter",
-      description: "An activity-log filter at phone width. The dates stack and the presets wrap into rows of full-size buttons.",
+      title: "Mobile mission-date filter",
+      description: "A mission launch-date filter at phone width. The dates stack and the presets wrap into rows of full-size buttons.",
       mobile: {
         height: 400,
         notes: [
-          "At 40rem (640px) and below the fields grid becomes one column and the → separator is hidden, so each date input gets the full width.",
-          "Preset buttons wrap onto as many rows as needed and keep their 44px minimum height.",
-          "Tapping a date opens the platform picker; typed entry remains available where the platform supports it.",
-          "In landscape on larger phones the dates may return to side by side if the width exceeds 40rem."
+          "At 40rem and below the fields become one column and the arrow separator is hidden.",
+          "Preset buttons wrap while keeping their minimum touch height.",
+          "Tapping a date opens the platform date picker.",
+          "Landscape can return the dates to side by side on sufficiently wide devices."
         ]
       },
       html: `<ef-date-range class="ef-component-tag">
   <fieldset class="ef-date-range">
-    <legend>Activity between</legend>
+    <legend>Mission launches between</legend>
     <div class="ef-date-range__fields">
-      <label>From <input type="date" name="activity-from" value="2026-09-01"></label>
+      <label>From <input type="date" name="mission-mobile-from" value="${apollo11.launchDate}"></label>
       <span class="ef-date-range__separator" aria-hidden="true">→</span>
-      <label>To <input type="date" name="activity-to" value="2026-09-30"></label>
+      <label>To <input type="date" name="mission-mobile-to" value="${artemisI.launchDate}"></label>
     </div>
-    <div class="ef-date-range__presets" role="group" aria-label="Activity period presets">
-      <button type="button">Today</button>
-      <button type="button">Last 7 days</button>
-      <button type="button">Last 30 days</button>
-      <button type="button">This year</button>
+    <div class="ef-date-range__presets" role="group" aria-label="Mission launch presets">
+      <button type="button">Apollo</button>
+      <button type="button">Shuttle</button>
+      <button type="button">Artemis</button>
+      <button type="button">All</button>
     </div>
   </fieldset>
 </ef-date-range>`

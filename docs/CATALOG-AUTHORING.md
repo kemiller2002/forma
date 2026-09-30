@@ -65,6 +65,8 @@ consequences; skip filler and restating the name.
 ### Examples
 
 - The Basic example is `patterns/<slug>.html`. Do not repeat it.
+- When an example needs application/domain data, prefer the shared NASA spaceflight reference collection in `catalog/example-data/nasa-spaceflight.mjs`; see `docs/EXAMPLE-DOMAIN.md`. Do not invent a parallel customer/invoice/project dataset when the mission collection can demonstrate the same component behavior.
+- The NASA collection is build-time documentation data only. Do not add runtime fetches, scripts, custom-element behavior, Limen state, or Ordo transition authority to a catalog component.
 - Provide **at least two scenario examples** and **at least one mobile example**
   (`mobile: { notes: [...] }`). Scenario titles name a realistic situation
   ("Validation error", "Compact toolbar", "Long labels"), never "Example 2".

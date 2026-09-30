@@ -1,3 +1,10 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const apollo13 = missionById("apollo-13");
+const sts31 = missionById("sts-31");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Record header",
   category: "workspaces",
@@ -25,49 +32,47 @@ export default {
   },
   examples: [
     {
-      id: "blocked-case",
-      title: "Blocked case with restricted actions",
-      description: "A case that is blocked on another team. Status is text with a symbol, the context line explains why, and the application renders only the actions that are legal now; there is no More menu because there are no secondary actions.",
+      id: "mission-record",
+      title: "Completed mission with focused actions",
+      description: "Apollo 13 is presented as a mission record with its factual completion status and mission context. The application exposes only the actions relevant to this view; Forma does not infer permissions or mission state.",
       html: `<ef-record-header class="ef-component-tag">
   <header class="ef-record-header">
     <div class="ef-record-header__main">
-      <nav aria-label="Case breadcrumb"><a href="#record-header-blocked-case-home">Support</a> <span aria-hidden="true">/</span> <a href="#record-header-blocked-case-cases">Cases</a></nav>
+      <nav aria-label="Mission breadcrumb"><a href="#record-header-mission-record-home">NASA</a> <span aria-hidden="true">/</span> <a href="#record-header-mission-record-apollo">Apollo</a></nav>
       <div class="ef-record-header__title">
-        <div><span class="ef-record-header__type">Case</span><h2>CASE-4407</h2></div>
-        <span class="ef-status-lozenge" data-state="blocked">Blocked</span>
+        <div><span class="ef-record-header__type">Mission</span><h2>${apollo13.name}</h2></div>
+        <span class="ef-status-lozenge" data-state="ok">${apollo13.status}</span>
       </div>
-      <p>Refund not received · Waiting on Payments team since 28 September</p>
+      <p>${apollo13.launchDate} to ${apollo13.returnDate} · ${apollo13.destination} · ${apollo13.launchVehicle}</p>
     </div>
-    <div class="ef-record-header__actions">
-      <button type="button">Add note</button>
-    </div>
+    <div class="ef-record-header__actions"><button type="button">Open crew manifest</button></div>
   </header>
 </ef-record-header>`
     },
     {
       id: "long-identity",
-      title: "Long identifier and several secondary actions",
-      description: "Content stress: a long supplier name and a long reference number wrap in the identity column while the action column keeps its natural width. Four secondary actions are collapsed into the More disclosure.",
+      title: "Long mission context and secondary actions",
+      description: "Artemis I supplies longer mission-type, vehicle and destination text while the action column keeps its natural width. Secondary record actions collapse into the native More disclosure.",
       html: `<ef-record-header class="ef-component-tag">
   <header class="ef-record-header">
     <div class="ef-record-header__main">
-      <nav aria-label="Purchase order breadcrumb"><a href="#record-header-long-identity-home">Procurement</a> <span aria-hidden="true">/</span> <a href="#record-header-long-identity-orders">Purchase orders</a></nav>
+      <nav aria-label="Mission breadcrumb"><a href="#record-header-long-identity-home">NASA</a> <span aria-hidden="true">/</span> <a href="#record-header-long-identity-artemis">Artemis</a></nav>
       <div class="ef-record-header__title">
-        <div><span class="ef-record-header__type">Purchase order</span><h2 style="overflow-wrap: anywhere">PO-2026-EMEA-00041872-REV3</h2></div>
-        <span class="ef-status-lozenge" data-state="attention">Awaiting approval</span>
+        <div><span class="ef-record-header__type">${artemisI.missionType}</span><h2 style="overflow-wrap: anywhere">${artemisI.name} · ${artemisI.spacecraft} / ${artemisI.launchVehicle}</h2></div>
+        <span class="ef-status-lozenge" data-state="ok">${artemisI.status}</span>
       </div>
-      <p>Hanseatische Maschinenbau- und Anlagentechnik GmbH · €48,200.00 · Requested by Lena Vogt</p>
+      <p>${artemisI.destination} · ${artemisI.launchDate} to ${artemisI.returnDate} · Uncrewed</p>
     </div>
     <div class="ef-record-header__actions">
-      <button type="button">Approve</button>
-      <button type="button">Request changes</button>
+      <button type="button">View mission</button>
+      <button type="button">View source</button>
       <details>
         <summary>More</summary>
         <div class="ef-record-header__menu">
-          <button type="button">Duplicate</button>
-          <button type="button">Export PDF</button>
-          <button type="button">View history</button>
-          <button type="button">Cancel order</button>
+          <button type="button">Copy citation</button>
+          <button type="button">Export record</button>
+          <button type="button">Compare mission</button>
+          <button type="button">Open timeline</button>
         </div>
       </details>
     </div>
@@ -76,33 +81,30 @@ export default {
     },
     {
       id: "mobile-actions",
-      title: "Mobile record with collapsed actions",
-      description: "At phone width identity comes first, then the primary action and the More disclosure as full-width rows.",
+      title: "Mobile mission record",
+      description: "At phone width STS-31 identity comes first, then the primary action and More disclosure as full-width rows.",
       mobile: {
         height: 520,
         notes: [
-          "At 40rem and below the header is one column: breadcrumbs, type, identifier, status and context first, then actions.",
-          "Every direct child of the actions area, including the More `details`, becomes full width, so each button and the summary are at least 2.75rem tall full-width touch targets.",
-          "The secondary action panel opens below the summary and is still absolutely positioned; place the header where the panel will not be clipped by an overflow container.",
-          "Breadcrumbs wrap at 0.75rem; keep them short or show only the parent on phones."
+          "At 40rem and below the header is one column: mission breadcrumb, type, mission name, status and context first, then actions.",
+          "Every action and the More disclosure becomes full width with a comfortable touch target.",
+          "The secondary action panel opens below the summary; avoid placing the header in a clipping overflow container.",
+          "Breadcrumbs wrap; keep the mobile trail short."
         ]
       },
       html: `<ef-record-header class="ef-component-tag">
   <header class="ef-record-header">
     <div class="ef-record-header__main">
-      <nav aria-label="Visit breadcrumb"><a href="#record-header-mobile-visits">Visits</a></nav>
+      <nav aria-label="Mission breadcrumb"><a href="#record-header-mobile-missions">Missions</a></nav>
       <div class="ef-record-header__title">
-        <div><span class="ef-record-header__type">Inspection</span><h2>Visit 12</h2></div>
-        <span class="ef-status-lozenge" data-state="ok">Complete</span>
+        <div><span class="ef-record-header__type">${sts31.program}</span><h2>${sts31.name}</h2></div>
+        <span class="ef-status-lozenge" data-state="ok">${sts31.status}</span>
       </div>
-      <p>Pump station 4 · 2 October</p>
+      <p>${sts31.highlight} · ${sts31.spacecraft}</p>
     </div>
     <div class="ef-record-header__actions">
-      <button type="button">Share report</button>
-      <details>
-        <summary>More</summary>
-        <div class="ef-record-header__menu"><button type="button">Reopen</button><button type="button">Download photos</button></div>
-      </details>
+      <button type="button">View mission</button>
+      <details><summary>More</summary><div class="ef-record-header__menu"><button type="button">Crew</button><button type="button">Source</button></div></details>
     </div>
   </header>
 </ef-record-header>`

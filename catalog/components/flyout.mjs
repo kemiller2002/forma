@@ -1,3 +1,8 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const sts31 = missionById("sts-31");
+
 export default {
   name: "Flyout",
   category: "overlays",
@@ -26,77 +31,51 @@ export default {
   examples: [
     {
       id: "filters-with-pinned-actions",
-      title: "Filters with a long, scrolling body",
-      description: "A left flyout holding more filters than fit on screen. The body scrolls on its own while the header (title and close) and the footer (Clear and Show results) stay pinned. The form uses `method=\"dialog\"` so either footer button closes the flyout and the application reads which one was used.",
+      title: "Mission filters with a long scrolling body",
+      description: "A left flyout holds mission filters while header and footer stay pinned. The body scrolls independently and method=\"dialog\" reports whether filters were cleared or applied.",
       html: `<ef-flyout class="ef-component-tag">
-  <button type="button" commandfor="flyout-filters-with-pinned-actions" command="show-modal">Filters</button>
+  <button type="button" commandfor="flyout-filters-with-pinned-actions" command="show-modal">Mission filters</button>
   <dialog class="ef-flyout" id="flyout-filters-with-pinned-actions" data-ef-side="left" aria-labelledby="flyout-filters-with-pinned-actions-title">
     <form class="ef-flyout__surface" method="dialog">
       <header class="ef-flyout__header">
-        <h2 id="flyout-filters-with-pinned-actions-title">Filter work items</h2>
-        <button class="ef-flyout__close" type="button" commandfor="flyout-filters-with-pinned-actions" command="close" aria-label="Close filters">Close</button>
+        <h2 id="flyout-filters-with-pinned-actions-title">Filter NASA missions</h2>
+        <button class="ef-flyout__close" type="button" commandfor="flyout-filters-with-pinned-actions" command="close" aria-label="Close mission filters">Close</button>
       </header>
       <div class="ef-flyout__body ef-stack">
         <fieldset class="ef-stack" data-density="compact">
-          <legend>Status</legend>
-          <label class="ef-checkbox">
-            <input class="ef-checkbox__input" type="checkbox" name="flyout-filters-status" value="open" checked>
-            <span class="ef-checkbox__box" aria-hidden="true"></span>
-            <span class="ef-checkbox__text"><span class="ef-checkbox__label">Open</span></span>
-          </label>
-          <label class="ef-checkbox">
-            <input class="ef-checkbox__input" type="checkbox" name="flyout-filters-status" value="blocked">
-            <span class="ef-checkbox__box" aria-hidden="true"></span>
-            <span class="ef-checkbox__text"><span class="ef-checkbox__label">Blocked</span></span>
-          </label>
-          <label class="ef-checkbox">
-            <input class="ef-checkbox__input" type="checkbox" name="flyout-filters-status" value="done">
-            <span class="ef-checkbox__box" aria-hidden="true"></span>
-            <span class="ef-checkbox__text"><span class="ef-checkbox__label">Done</span></span>
-          </label>
+          <legend>Program</legend>
+          <label class="ef-checkbox"><input class="ef-checkbox__input" type="checkbox" name="flyout-program" value="apollo" checked><span class="ef-checkbox__box" aria-hidden="true"></span><span class="ef-checkbox__text"><span class="ef-checkbox__label">Apollo</span></span></label>
+          <label class="ef-checkbox"><input class="ef-checkbox__input" type="checkbox" name="flyout-program" value="space-shuttle"><span class="ef-checkbox__box" aria-hidden="true"></span><span class="ef-checkbox__text"><span class="ef-checkbox__label">Space Shuttle</span></span></label>
+          <label class="ef-checkbox"><input class="ef-checkbox__input" type="checkbox" name="flyout-program" value="artemis"><span class="ef-checkbox__box" aria-hidden="true"></span><span class="ef-checkbox__text"><span class="ef-checkbox__label">Artemis</span></span></label>
         </fieldset>
-        <div class="ef-field">
-          <label class="ef-field__label" for="flyout-filters-with-pinned-actions-owner">Owner</label>
-          <input id="flyout-filters-with-pinned-actions-owner" name="owner" type="text" autocomplete="off">
-        </div>
-        <div class="ef-field">
-          <label class="ef-field__label" for="flyout-filters-with-pinned-actions-updated">Updated after</label>
-          <input id="flyout-filters-with-pinned-actions-updated" name="updated-after" type="date">
-        </div>
-        <div class="ef-field">
-          <label class="ef-field__label" for="flyout-filters-with-pinned-actions-text">Contains text</label>
-          <textarea id="flyout-filters-with-pinned-actions-text" name="text" rows="4"></textarea>
-        </div>
+        <div class="ef-field"><label class="ef-field__label" for="flyout-filters-with-pinned-actions-crew">Crew member</label><input id="flyout-filters-with-pinned-actions-crew" name="crew" type="text" value="${apollo11.crew[0]}" autocomplete="off"></div>
+        <div class="ef-field"><label class="ef-field__label" for="flyout-filters-with-pinned-actions-launch">Launched after</label><input id="flyout-filters-with-pinned-actions-launch" name="launched-after" type="date" value="1969-01-01"></div>
+        <div class="ef-field"><label class="ef-field__label" for="flyout-filters-with-pinned-actions-text">Contains text</label><textarea id="flyout-filters-with-pinned-actions-text" name="text" rows="4">${sts31.highlight}</textarea></div>
       </div>
-      <footer class="ef-flyout__actions">
-        <button type="submit" value="clear">Clear all</button>
-        <button type="submit" value="apply">Show results</button>
-      </footer>
+      <footer class="ef-flyout__actions"><button type="submit" value="clear">Clear all</button><button type="submit" value="apply">Show missions</button></footer>
     </form>
   </dialog>
 </ef-flyout>`
     },
     {
       id: "quick-view-light-dismiss",
-      title: "Quick view that closes on outside click",
-      description: "A right flyout for glancing at recent activity. `closedby=\"any\"` lets a click on the visible strip of page (the backdrop) close it where supported, and the standard motion weight makes it feel lighter than the heavy default. It has no footer, so the body fills the remaining height.",
+      title: "Mission quick view that closes on outside click",
+      description: "A right flyout for glancing at Apollo 11 details. closedby=\"any\" allows outside-click dismissal where supported, and the standard motion weight keeps the panel lighter than the heavy default.",
       html: `<ef-flyout class="ef-component-tag">
-  <button type="button" commandfor="flyout-quick-view-light-dismiss" command="show-modal">Recent activity</button>
+  <button type="button" commandfor="flyout-quick-view-light-dismiss" command="show-modal">Quick view ${apollo11.name}</button>
   <dialog class="ef-flyout" id="flyout-quick-view-light-dismiss" data-ef-side="right" data-ef-motion-weight="standard" closedby="any" aria-labelledby="flyout-quick-view-light-dismiss-title">
     <div class="ef-flyout__surface">
       <header class="ef-flyout__header">
-        <div>
-          <p class="ef-component-kicker">Last 24 hours</p>
-          <h2 id="flyout-quick-view-light-dismiss-title">Recent activity</h2>
-        </div>
-        <button class="ef-flyout__close" type="button" commandfor="flyout-quick-view-light-dismiss" command="close" aria-label="Close recent activity">Close</button>
+        <div><p class="ef-component-kicker">${apollo11.program}</p><h2 id="flyout-quick-view-light-dismiss-title">${apollo11.name}</h2></div>
+        <button class="ef-flyout__close" type="button" commandfor="flyout-quick-view-light-dismiss" command="close" aria-label="Close ${apollo11.name} quick view">Close</button>
       </header>
       <div class="ef-flyout__body">
-        <ul>
-          <li>Dana moved “Invoice export” to Done.</li>
-          <li>Sam commented on “Rate limit alerts”.</li>
-          <li>Build 1842 finished with 2 warnings.</li>
-        </ul>
+        <dl class="ef-key-value-list">
+          <div><dt>Mission</dt><dd>${apollo11.highlight}</dd></div>
+          <div><dt>Crew</dt><dd>${apollo11.crew.join(", ")}</dd></div>
+          <div><dt>Spacecraft</dt><dd>${apollo11.spacecraft}</dd></div>
+          <div><dt>Destination</dt><dd>${apollo11.destination}</dd></div>
+        </dl>
       </div>
     </div>
   </dialog>
@@ -104,38 +83,36 @@ export default {
     },
     {
       id: "mobile-record-detail",
-      title: "Record detail on a phone",
-      description: "A right flyout with record details at phone width. It covers 90% of the width, leaving a strip of the page visible as context.",
+      title: "Mission detail on a phone",
+      description: "A right flyout with STS-31 details at phone width covers 90% of the width while leaving a narrow strip of the page visible for context.",
       mobile: {
         height: 520,
         notes: [
-          "Width is `min(28rem, 90vw)`: at 320px the panel is 288px wide and a 32px strip of the dimmed page stays visible on the opposite side.",
-          "Height is `100dvh`, so the panel follows the dynamic viewport as mobile browser toolbars show and hide.",
-          "The header pads its top by `env(safe-area-inset-top)` and the footer its bottom by `env(safe-area-inset-bottom)`, clearing notches and home indicators in either orientation.",
-          "Only the body scrolls; the Close button (44px square minimum) and footer actions stay reachable. Footer actions wrap onto new lines when labels are long.",
-          "There is no swipe-to-close; Close, Escape and the footer actions are the close paths."
+          "At 320px the panel is 90vw wide, preserving a narrow contextual strip.",
+          "Height follows the dynamic viewport.",
+          "Safe-area padding clears notches and home indicators.",
+          "Only the body scrolls; Close and footer actions stay reachable.",
+          "There is no swipe-to-close dependency."
         ]
       },
       html: `<ef-flyout class="ef-component-tag">
-  <button type="button" commandfor="flyout-mobile-record-detail" command="show-modal">View order 58213</button>
+  <button type="button" commandfor="flyout-mobile-record-detail" command="show-modal">View ${sts31.name}</button>
   <dialog class="ef-flyout" id="flyout-mobile-record-detail" data-ef-side="right" aria-labelledby="flyout-mobile-record-detail-title" aria-describedby="flyout-mobile-record-detail-summary">
     <div class="ef-flyout__surface">
       <header class="ef-flyout__header">
-        <h2 id="flyout-mobile-record-detail-title">Order 58213</h2>
-        <button class="ef-flyout__close" type="button" commandfor="flyout-mobile-record-detail" command="close" aria-label="Close order 58213">Close</button>
+        <h2 id="flyout-mobile-record-detail-title">${sts31.name}</h2>
+        <button class="ef-flyout__close" type="button" commandfor="flyout-mobile-record-detail" command="close" aria-label="Close ${sts31.name}">Close</button>
       </header>
       <div class="ef-flyout__body ef-stack">
-        <p id="flyout-mobile-record-detail-summary">Shipped on 28 September. Delivery expected by 2 October.</p>
+        <p id="flyout-mobile-record-detail-summary">${sts31.highlight}.</p>
         <dl class="ef-key-value-list">
-          <div><dt>Customer</dt><dd>Harbour Street Cafe</dd></div>
-          <div><dt>Items</dt><dd>6</dd></div>
-          <div><dt>Total</dt><dd>€418.20</dd></div>
-          <div><dt>Carrier</dt><dd>Parcelnet, tracking 00340434161094042557</dd></div>
+          <div><dt>Spacecraft</dt><dd>${sts31.spacecraft}</dd></div>
+          <div><dt>Launch</dt><dd>${sts31.launchDate}</dd></div>
+          <div><dt>Return</dt><dd>${sts31.returnDate}</dd></div>
+          <div><dt>Crew</dt><dd>${sts31.crew.length}</dd></div>
         </dl>
       </div>
-      <footer class="ef-flyout__actions">
-        <button type="button" commandfor="flyout-mobile-record-detail" command="close">Done</button>
-      </footer>
+      <footer class="ef-flyout__actions"><button type="button" commandfor="flyout-mobile-record-detail" command="close">Done</button></footer>
     </div>
   </dialog>
 </ef-flyout>`

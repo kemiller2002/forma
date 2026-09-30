@@ -1,3 +1,8 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo13 = missionById("apollo-13");
+const sts31 = missionById("sts-31");
+
 export default {
   name: "Dialog",
   category: "overlays",
@@ -27,19 +32,19 @@ export default {
   examples: [
     {
       id: "destructive-confirmation",
-      title: "Destructive confirmation",
-      description: "Deleting a project. The dialog's form uses `method=\"dialog\"`, so either button closes the dialog and sets its return value to the button's value for the application to act on. `autofocus` puts initial focus on the safe choice. Forma has no destructive button variant; the title and the button label carry the consequence.",
+      title: "Remove a mission from a local comparison",
+      description: "The destructive action removes Apollo 13 only from a hypothetical local comparison set, never from the canonical NASA fixture. method=\"dialog\" lets the application inspect which choice closed the dialog.",
       html: `<ef-dialog class="ef-component-tag">
-  <button type="button" commandfor="dialog-destructive-confirmation" command="show-modal">Delete project…</button>
+  <button type="button" commandfor="dialog-destructive-confirmation" command="show-modal">Remove ${apollo13.name}…</button>
   <dialog class="ef-dialog" id="dialog-destructive-confirmation" aria-labelledby="dialog-destructive-confirmation-title" aria-describedby="dialog-destructive-confirmation-description">
     <form method="dialog">
       <div class="ef-dialog__body">
-        <h2 id="dialog-destructive-confirmation-title">Delete “Atlas migration”?</h2>
-        <p id="dialog-destructive-confirmation-description">All 214 work items and their history will be permanently deleted. This cannot be undone.</p>
+        <h2 id="dialog-destructive-confirmation-title">Remove ${apollo13.name} from this comparison?</h2>
+        <p id="dialog-destructive-confirmation-description">The NASA reference record remains unchanged. Only this local comparison selection will be removed.</p>
       </div>
       <div class="ef-dialog__actions">
-        <button type="submit" value="cancel" autofocus>Keep project</button>
-        <button type="submit" value="delete">Delete project</button>
+        <button type="submit" value="cancel" autofocus>Keep mission</button>
+        <button type="submit" value="remove">Remove from comparison</button>
       </div>
     </form>
   </dialog>
@@ -47,21 +52,17 @@ export default {
     },
     {
       id: "light-dismiss-long-content",
-      title: "Long release notes with light dismiss",
-      description: "Read-only content that does not need a decision. `closedby=\"any\"` lets a click on the backdrop close the dialog in browsers that support it; Escape and the Close button work everywhere. The content is longer than a phone screen, so the dialog scrolls within its viewport-capped height. The standard motion weight makes entry a little quicker than the heavy default.",
+      title: "Long mission detail with light dismiss",
+      description: "Read-only STS-31 content does not need a decision. closedby=\"any\" allows backdrop dismissal where supported while Escape and Close remain available everywhere.",
       html: `<ef-dialog class="ef-component-tag">
-  <button type="button" commandfor="dialog-light-dismiss-long-content" command="show-modal">What's new in 4.2</button>
+  <button type="button" commandfor="dialog-light-dismiss-long-content" command="show-modal">About ${sts31.name}</button>
   <dialog class="ef-dialog" id="dialog-light-dismiss-long-content" closedby="any" data-ef-motion-weight="standard" aria-labelledby="dialog-light-dismiss-long-content-title">
     <div class="ef-dialog__body">
-      <h2 id="dialog-light-dismiss-long-content-title">What's new in 4.2</h2>
-      <h3>Scheduled exports</h3>
-      <p>Exports can now run daily or weekly and are delivered to a shared folder. Existing manual exports are unchanged.</p>
-      <h3>Faster search</h3>
-      <p>Search results for large workspaces return in about half the time. Saved searches keep their filters.</p>
-      <h3>Audit log retention</h3>
-      <p>Administrators can extend audit log retention from 90 to 365 days. Longer retention applies from the date it is enabled.</p>
-      <h3>Deprecations</h3>
-      <p>The legacy CSV importer will be removed in 5.0. Use the new importer, which supports column mapping and previews.</p>
+      <h2 id="dialog-light-dismiss-long-content-title">${sts31.name}</h2>
+      <h3>Mission</h3><p>${sts31.highlight}.</p>
+      <h3>Spacecraft</h3><p>${sts31.spacecraft}, launched on ${sts31.launchVehicle}.</p>
+      <h3>Crew</h3><p>${sts31.crew.join(", ")}.</p>
+      <h3>Dates</h3><p>${sts31.launchDate} to ${sts31.returnDate}.</p>
     </div>
     <div class="ef-dialog__actions">
       <button type="button" commandfor="dialog-light-dismiss-long-content" command="close">Close</button>
@@ -71,31 +72,31 @@ export default {
     },
     {
       id: "mobile-short-form",
-      title: "Short form on a phone",
-      description: "A one-field rename dialog at phone width. The dialog fills the width minus a small margin and its actions stretch to full-width rows.",
+      title: "Mission-note form on a phone",
+      description: "A one-field local note dialog at phone width. The dialog fills the width minus a small margin and its actions stretch to full-width rows.",
       mobile: {
         height: 420,
         notes: [
-          "At 44rem and below the dialog is `100vw - 1rem` wide and at most `100dvh - 1rem` tall, so it fits phones in portrait and landscape and follows the dynamic viewport as browser toolbars appear.",
-          "Body padding reduces to 1rem and each action button becomes a full-width row, keeping 44px targets and room for long labels.",
-          "Content taller than the viewport scrolls inside the dialog with `overscroll-behavior: contain`, so the page behind does not scroll.",
-          "The on-screen keyboard may cover the lower part of the dialog; keep fields near the top and actions immediately after them."
+          "The dialog is constrained to the dynamic mobile viewport.",
+          "Body padding reduces and each action becomes a full-width touch row.",
+          "Content taller than the viewport scrolls inside the dialog.",
+          "Keep fields near the top so the on-screen keyboard does not hide context."
         ]
       },
       html: `<ef-dialog class="ef-component-tag">
-  <button type="button" commandfor="dialog-mobile-short-form" command="show-modal">Rename board</button>
+  <button type="button" commandfor="dialog-mobile-short-form" command="show-modal">Add note to ${apollo13.name}</button>
   <dialog class="ef-dialog" id="dialog-mobile-short-form" aria-labelledby="dialog-mobile-short-form-title">
     <form method="dialog">
       <div class="ef-dialog__body">
-        <h2 id="dialog-mobile-short-form-title">Rename board</h2>
+        <h2 id="dialog-mobile-short-form-title">Add local note to ${apollo13.name}</h2>
         <div class="ef-field">
-          <label class="ef-field__label" for="dialog-mobile-short-form-name">Board name</label>
-          <input id="dialog-mobile-short-form-name" name="board-name" type="text" value="Quarterly planning" required>
+          <label class="ef-field__label" for="dialog-mobile-short-form-note">Note</label>
+          <input id="dialog-mobile-short-form-note" name="mission-note" type="text" value="Compare crew and mission outcome" required>
         </div>
       </div>
       <div class="ef-dialog__actions">
         <button type="submit" value="cancel" formnovalidate>Cancel</button>
-        <button type="submit" value="save">Save name</button>
+        <button type="submit" value="save">Save note</button>
       </div>
     </form>
   </dialog>

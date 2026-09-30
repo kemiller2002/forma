@@ -1,3 +1,12 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo8 = missionById("apollo-8");
+const apollo11 = missionById("apollo-11");
+const apollo13 = missionById("apollo-13");
+const sts31 = missionById("sts-31");
+const sts95 = missionById("sts-95");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Master/detail workspace",
   category: "workspaces",
@@ -25,72 +34,73 @@ export default {
   examples: [
     {
       id: "nothing-selected",
-      title: "No record selected",
-      description: "The first visit to the list before any record is chosen. No row carries aria-current, and the detail region says what to do instead of showing stale data from a previous record.",
+      title: "No mission selected",
+      description: "The first visit before any reference mission is chosen. No row carries aria-current, and the detail region says what to do instead of showing stale mission data.",
       html: `<ef-master-detail class="ef-component-tag">
-  <section class="ef-master-detail" aria-label="Open support cases">
-    <nav class="ef-master-detail__master" aria-label="Cases">
-      <a href="#master-detail-nothing-selected-4410"><strong>CASE-4410</strong><span>Login loop after SSO change</span></a>
-      <a href="#master-detail-nothing-selected-4407"><strong>CASE-4407</strong><span>Refund not received</span></a>
-      <a href="#master-detail-nothing-selected-4399"><strong>CASE-4399</strong><span>Export missing columns</span></a>
+  <section class="ef-master-detail" aria-label="NASA reference missions">
+    <nav class="ef-master-detail__master" aria-label="Missions">
+      <a href="#master-detail-nothing-selected-apollo-8"><strong>${apollo8.name}</strong><span>${apollo8.highlight}</span></a>
+      <a href="#master-detail-nothing-selected-apollo-11"><strong>${apollo11.name}</strong><span>${apollo11.highlight}</span></a>
+      <a href="#master-detail-nothing-selected-sts-31"><strong>${sts31.name}</strong><span>${sts31.highlight}</span></a>
     </nav>
     <section class="ef-master-detail__detail" aria-labelledby="master-detail-nothing-selected-title">
-      <h3 id="master-detail-nothing-selected-title">No case selected</h3>
-      <p>Choose a case from the list to see the customer, history and next steps.</p>
+      <h3 id="master-detail-nothing-selected-title">No mission selected</h3>
+      <p>Choose a mission to see its program, spacecraft, crew and destination.</p>
     </section>
   </section>
 </ef-master-detail>`
     },
     {
-      id: "blocked-record",
-      title: "Blocked record with long names",
-      description: "A selected record in a blocked state, with long customer names wrapping inside the list rows. Status is a text lozenge with a symbol, and the only legal action shown is the one the application allows.",
+      id: "selected-mission",
+      title: "Selected mission with factual detail",
+      description: "Apollo 13 is selected from a list of completed mission records. Long crew and destination values wrap inside the detail region while status remains explicit text.",
       html: `<ef-master-detail class="ef-component-tag">
-  <section class="ef-master-detail" aria-label="Purchase orders">
-    <nav class="ef-master-detail__master" aria-label="Purchase orders list">
-      <a href="#master-detail-blocked-record-7781"><strong>PO-7781</strong><span>Consolidated Freight &amp; Warehousing Partners (EMEA)</span></a>
-      <a href="#master-detail-blocked-record-7782" aria-current="page"><strong>PO-7782</strong><span>Hanseatische Maschinenbau- und Anlagentechnik GmbH</span></a>
-      <a href="#master-detail-blocked-record-7790"><strong>PO-7790</strong><span>Blue Harbor Co.</span></a>
+  <section class="ef-master-detail" aria-label="Apollo reference missions">
+    <nav class="ef-master-detail__master" aria-label="Apollo mission list">
+      <a href="#master-detail-selected-apollo-8"><strong>${apollo8.name}</strong><span>${apollo8.destination}</span></a>
+      <a href="#master-detail-selected-apollo-11"><strong>${apollo11.name}</strong><span>${apollo11.destination}</span></a>
+      <a href="#master-detail-selected-apollo-13" aria-current="page"><strong>${apollo13.name}</strong><span>${apollo13.destination}</span></a>
     </nav>
-    <article class="ef-master-detail__detail" id="master-detail-blocked-record-7782" aria-labelledby="master-detail-blocked-record-title">
-      <span class="ef-status-lozenge" data-state="blocked">Blocked</span>
-      <h3 id="master-detail-blocked-record-title">PO-7782</h3>
+    <article class="ef-master-detail__detail" id="master-detail-selected-apollo-13" aria-labelledby="master-detail-selected-title">
+      <span class="ef-status-lozenge" data-state="ok">${apollo13.status}</span>
+      <h3 id="master-detail-selected-title">${apollo13.name}</h3>
       <dl class="ef-key-value-list">
-        <div><dt>Supplier</dt><dd>Hanseatische Maschinenbau- und Anlagentechnik GmbH</dd></div>
-        <div><dt>Blocked by</dt><dd>Missing tax certificate</dd></div>
-        <div><dt>Amount</dt><dd>€48,200.00</dd></div>
+        <div><dt>Mission type</dt><dd>${apollo13.missionType}</dd></div>
+        <div><dt>Crew</dt><dd>${apollo13.crew.join(", ")}</dd></div>
+        <div><dt>Spacecraft</dt><dd>${apollo13.spacecraft}</dd></div>
+        <div><dt>Destination</dt><dd>${apollo13.destination}</dd></div>
       </dl>
-      <p><button type="button">Request certificate</button></p>
+      <p><button type="button">Open NASA source</button></p>
     </article>
   </section>
 </ef-master-detail>`
     },
     {
       id: "mobile-record-switcher",
-      title: "Mobile record switcher",
-      description: "At phone width the list becomes a horizontal switcher above the detail, and the selected record's detail follows directly underneath.",
+      title: "Mobile mission switcher",
+      description: "At phone width the mission list becomes a horizontal switcher above the selected detail. The selected STS-31 record follows directly underneath.",
       mobile: {
         height: 560,
         notes: [
-          "At 40rem and below the grid becomes one column; the list turns into a horizontal row of 12rem-wide links that scrolls inside itself, so the page never scrolls sideways at 320px.",
-          "Rows keep their 3.5rem minimum block size, which exceeds the 44px touch target, and the selected row keeps its thick bar.",
-          "Only part of the list is visible at once; the application should scroll the selected link into view and keep the URL as the source of truth so rotation or reload restores the same record.",
-          "Long lists are awkward to scroll horizontally. For more than a handful of records, navigate to a separate list page on phones and use Back to return."
+          "At 40rem and below the grid becomes one column; the mission list turns into a horizontal row of links that scrolls inside itself.",
+          "Rows keep their touch-target height and the selected mission keeps its visual current marker.",
+          "The application should keep the selected mission in the URL so rotation or reload restores the same record.",
+          "For much larger result sets, use a separate list page on phones rather than an excessively long horizontal switcher."
         ]
       },
       html: `<ef-master-detail class="ef-component-tag">
-  <section class="ef-master-detail" aria-label="Field visits">
-    <nav class="ef-master-detail__master" aria-label="Visits">
-      <a href="#master-detail-mobile-v12" aria-current="page"><strong>Visit 12</strong><span>Pump station 4</span></a>
-      <a href="#master-detail-mobile-v13"><strong>Visit 13</strong><span>North reservoir</span></a>
-      <a href="#master-detail-mobile-v14"><strong>Visit 14</strong><span>Valve house B</span></a>
+  <section class="ef-master-detail" aria-label="Space Shuttle reference missions">
+    <nav class="ef-master-detail__master" aria-label="Missions">
+      <a href="#master-detail-mobile-sts-31" aria-current="page"><strong>${sts31.name}</strong><span>${sts31.spacecraft}</span></a>
+      <a href="#master-detail-mobile-sts-95"><strong>${sts95.name}</strong><span>${sts95.spacecraft}</span></a>
+      <a href="#master-detail-mobile-artemis-i"><strong>${artemisI.name}</strong><span>${artemisI.spacecraft}</span></a>
     </nav>
-    <article class="ef-master-detail__detail" id="master-detail-mobile-v12" aria-labelledby="master-detail-mobile-title">
-      <span class="ef-status-lozenge" data-state="ok">Complete</span>
-      <h3 id="master-detail-mobile-title">Visit 12</h3>
+    <article class="ef-master-detail__detail" id="master-detail-mobile-sts-31" aria-labelledby="master-detail-mobile-title">
+      <span class="ef-status-lozenge" data-state="ok">${sts31.status}</span>
+      <h3 id="master-detail-mobile-title">${sts31.name}</h3>
       <dl class="ef-key-value-list">
-        <div><dt>Site</dt><dd>Pump station 4</dd></div>
-        <div><dt>Inspector</dt><dd>Daniel Okafor</dd></div>
+        <div><dt>Spacecraft</dt><dd>${sts31.spacecraft}</dd></div>
+        <div><dt>Highlight</dt><dd>${sts31.highlight}</dd></div>
       </dl>
     </article>
   </section>
