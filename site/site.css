@@ -1346,6 +1346,8 @@
     /* A wrapped two-row header would cover a third of a phone screen if it
        stayed sticky; on phones it scrolls away with the page. */
     .site-header { position: static; }
+    .breadcrumbs { margin-block-end: 1.5rem; }
+    .component-main { padding-block-start: 1.5rem; }
     .catalog-row { grid-template-columns: 1fr; }
     .pager { grid-template-columns: 1fr; }
     .doc-table { overflow: visible; }

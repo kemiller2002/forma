@@ -55,11 +55,10 @@ export default {
       <h2 id="focus-stage-narrow-support-title">Site photo 14 · north fence line</h2>
       <p>Photo shows a 2 m gap in the perimeter fence beside gate 3, with fresh tyre tracks on the inside.</p>
     </article>
-    <aside class="ef-focus-stage__support" aria-label="Photo properties">
-      <dl class="ef-key-value-list">
-        <div><dt>Taken</dt><dd>2 Oct, 10:14</dd></div>
-        <div><dt>By</dt><dd>M. Chen</dd></div>
-      </dl>
+    <aside class="ef-focus-stage__support ef-stack" aria-labelledby="focus-stage-narrow-support-props">
+      <h3 id="focus-stage-narrow-support-props">Photo details</h3>
+      <p>Taken 2 Oct, 10:14 by M. Chen.</p>
+      <button type="button">Flag for repair</button>
     </aside>
   </section>
 </ef-focus-stage>`
