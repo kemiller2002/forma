@@ -1,3 +1,8 @@
+import { missionById, nasaSpaceflights } from "../example-data/nasa-spaceflight.mjs";
+
+const sts31 = missionById("sts-31");
+const discoveryCount = nasaSpaceflights.filter(mission => mission.spacecraft === "Discovery").length;
+
 export default {
   name: "Search",
   category: "forms",
@@ -24,28 +29,28 @@ export default {
   examples: [
     {
       id: "no-results",
-      title: "No matching records",
-      description: "A query that matched nothing. The status line announces zero results and says what to try next; the query stays in the field so it can be corrected.",
+      title: "No matching mission",
+      description: "A query that matched nothing in the fixed reference collection. The status line announces zero results and keeps the query in the field so it can be corrected.",
       html: `<ef-search class="ef-component-tag">
-  <form class="ef-search" role="search" aria-label="Customers" action="/customers" method="get">
-    <label class="ef-search__label" for="search-no-results-query">Search customers</label>
+  <form class="ef-search" role="search" aria-label="NASA missions" action="/missions" method="get">
+    <label class="ef-search__label" for="search-no-results-query">Search missions</label>
     <div class="ef-search__control">
-      <input id="search-no-results-query" name="q" type="search" value="acme holdngs" autocomplete="off">
+      <input id="search-no-results-query" name="q" type="search" value="Apollo 99" autocomplete="off">
       <button type="button" class="ef-search__clear">Clear</button>
     </div>
-    <p class="ef-search__status" role="status">No customers match "acme holdngs". Check the spelling or search by account number.</p>
+    <p class="ef-search__status" role="status">No reference missions match "Apollo 99". Search by mission name, program, spacecraft, or crew member.</p>
   </form>
 </ef-search>`
     },
     {
       id: "pending-search",
-      title: "Search in progress",
-      description: "The application is waiting for results. The status line says so in text, and the previous count is not shown as if it were current.",
+      title: "Mission search in progress",
+      description: "The application is waiting for results. The status line says so in text, and an old count is not shown as if it were current.",
       html: `<ef-search class="ef-component-tag">
-  <form class="ef-search" role="search" aria-label="Incidents" action="/incidents" method="get">
-    <label class="ef-search__label" for="search-pending-query">Search incidents</label>
+  <form class="ef-search" role="search" aria-label="NASA missions" action="/missions" method="get">
+    <label class="ef-search__label" for="search-pending-query">Search missions</label>
     <div class="ef-search__control">
-      <input id="search-pending-query" name="q" type="search" value="database failover" autocomplete="off" placeholder="Title, ID or service">
+      <input id="search-pending-query" name="q" type="search" value="Hubble" autocomplete="off" placeholder="Mission, crew member or spacecraft">
       <button type="button" class="ef-search__clear">Clear</button>
     </div>
     <p class="ef-search__status" role="status">Searching…</p>
@@ -53,26 +58,26 @@ export default {
 </ef-search>`
     },
     {
-      id: "mobile-library-search",
-      title: "Mobile document search",
-      description: "Document search at phone width. The Clear button moves below the input so the query field keeps the full width.",
+      id: "mobile-spacecraft-search",
+      title: "Mobile spacecraft search",
+      description: "Searching for Discovery at phone width returns the two Discovery missions in the standard collection, including STS-31.",
       mobile: {
         height: 260,
         notes: [
-          "At 30rem (480px) and below the control becomes one column: the input takes the full width and the Clear button sits beneath it.",
+          "At 30rem and below the control becomes one column: the input takes the full width and the Clear button sits beneath it.",
           "The input and button each keep a 44px minimum height for touch.",
           "type=search shows the search keyboard, whose action key submits the form.",
           "Long result-count messages wrap under the control; nothing scrolls horizontally."
         ]
       },
       html: `<ef-search class="ef-component-tag">
-  <form class="ef-search" role="search" aria-label="Documents" action="/documents" method="get">
-    <label class="ef-search__label" for="search-mobile-query">Search documents</label>
+  <form class="ef-search" role="search" aria-label="NASA missions" action="/missions" method="get">
+    <label class="ef-search__label" for="search-mobile-query">Search missions</label>
     <div class="ef-search__control">
-      <input id="search-mobile-query" name="q" type="search" value="retention policy" autocomplete="off">
+      <input id="search-mobile-query" name="q" type="search" value="${sts31.spacecraft}" autocomplete="off">
       <button type="button" class="ef-search__clear">Clear</button>
     </div>
-    <p class="ef-search__status" role="status">7 documents</p>
+    <p class="ef-search__status" role="status">${discoveryCount} missions in the reference collection use ${sts31.spacecraft}.</p>
   </form>
 </ef-search>`
     }
