@@ -641,9 +641,12 @@
     font-size: 2.4rem;
   }
 
-  .agent-page code,
   .agent-page p,
   .agent-page li { overflow-wrap: anywhere; }
+
+  /* Documentation prose and inline code wrap at large text sizes. */
+  :where(.component-main, .content-section) :where(p, li, dd, dt, th, td, h2, h3, h4):not(.example-canvas *, .catalog-card__preview *) { overflow-wrap: anywhere; }
+  :where(p, li, dd, td):not(.example-canvas *, .catalog-card__preview *) > code { overflow-wrap: anywhere; }
 
   .agent-page p,
   .agent-page li {
