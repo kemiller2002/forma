@@ -395,7 +395,7 @@
     {
       "source": "site/site.css",
       "family": "site-button",
-      "selector": ".ef-button",
+      "selector": ".ef-button:not(.example-canvas *, .catalog-card__preview *)",
       "tracks": {
         "background": "perceptual",
         "color": "perceptual"
@@ -403,7 +403,7 @@
       "reducedMotion": {
         "strategy": "global"
       },
-      "notes": "Documentation site buttons follow the library grammar: perceptual surface emphasis; the former translateY hover lift moved the hit target under the pointer (MOT-014)."
+      "notes": "Documentation site buttons follow the library grammar: perceptual surface emphasis; the former translateY hover lift moved the hit target under the pointer (MOT-014). Scoped away from live examples so the documented Forma buttons render exactly as shipped (WI-0011)."
     },
     {
       "source": "src/styles/assessment.css",
