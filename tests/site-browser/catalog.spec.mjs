@@ -203,7 +203,10 @@ chunks.forEach((chunk, index) => {
           .analyze()
         : { violations: [] };
       const pagePath = url.replace("/site-dist/", "").replace(/index\.html$/, "");
-      for (const violation of [...chrome.violations, ...examples.violations]) {
+      // landmark-unique is filtered here as well because axe applies it across
+      // the whole document (including examples and frames) even when disabled
+      // with withTags; chrome landmark names are asserted by the test above.
+      for (const violation of [...chrome.violations, ...examples.violations].filter(item => item.id !== "landmark-unique")) {
         found.push({ page: pagePath, rule: violation.id, target: violation.nodes[0]?.target.join(" ") ?? "" });
       }
     }
