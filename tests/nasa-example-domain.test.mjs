@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
@@ -42,4 +44,46 @@ test("the reference collection spans the intended NASA programs and data shapes"
 
 test("mission lookup fails loudly instead of inventing example data", () => {
   assert.throws(() => missionById("apollo-99"), /Unknown NASA example mission/);
+});
+
+
+test("standardized data-bearing components consume the shared NASA module", () => {
+  const standardized = [
+    "select",
+    "checkbox",
+    "choice-group",
+    "segmented-control",
+    "combobox",
+    "search",
+    "data-grid",
+    "card-grid",
+    "record-header",
+    "timeline",
+    "master-detail",
+    "pagination",
+    "key-value-list",
+    "status-lozenge",
+    "empty-state",
+    "metric-card",
+    "dashboard-grid",
+    "work-queue"
+  ];
+
+  for (const slug of standardized) {
+    const source = fs.readFileSync(path.join(process.cwd(), "catalog", "components", `${slug}.mjs`), "utf8");
+    assert.match(
+      source,
+      /\.\.\/example-data\/nasa-spaceflight\.mjs/,
+      `${slug} drifted away from the shared NASA example domain`
+    );
+  }
+});
+
+test("the canonical NASA collection stays build-time and offline", () => {
+  const source = fs.readFileSync(
+    path.join(process.cwd(), "catalog", "example-data", "nasa-spaceflight.mjs"),
+    "utf8"
+  );
+  assert.doesNotMatch(source, /\bfetch\s*\(/, "reference data must not require a live NASA request");
+  assert.doesNotMatch(source, /<script\b/i);
 });
