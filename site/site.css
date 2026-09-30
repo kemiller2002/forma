@@ -68,30 +68,33 @@
     background-size: 48px 48px;
   }
 
-  :where(a) {
+  /* Site element defaults never reach live examples: site.css is a later
+     cascade layer than Forma, so unscoped rules would restyle the components
+     being documented. */
+  :where(a:not(.example-canvas *, .catalog-card__preview *)) {
     color: var(--ef-oxide-bronze);
     text-decoration-thickness: .08em;
     text-underline-offset: .2em;
   }
 
-  :where(p) {
+  :where(p:not(.example-canvas *, .catalog-card__preview *)) {
     color: var(--ef-graphite);
   }
 
-  :where(h1, h2, h3) {
+  :where(h1:not(.example-canvas *, .catalog-card__preview *), h2:not(.example-canvas *, .catalog-card__preview *), h3:not(.example-canvas *, .catalog-card__preview *)) {
     color: var(--ef-foundry-charcoal);
     margin-block-start: 0;
     overflow-wrap: anywhere;
   }
 
-  :where(h1, h2) {
+  :where(h1:not(.example-canvas *, .catalog-card__preview *), h2:not(.example-canvas *, .catalog-card__preview *)) {
     font-family: var(--display);
     font-weight: 500;
     letter-spacing: -.035em;
     line-height: .98;
   }
 
-  :where(h3) {
+  :where(h3:not(.example-canvas *, .catalog-card__preview *)) {
     font-size: 1.2rem;
     line-height: 1.25;
   }
@@ -315,6 +318,9 @@
     margin-block: .35rem .7rem;
   }
 
+  .principle .category-label { color: var(--ef-forged-iron); }
+  .principle a { color: var(--ef-carbon); }
+
   .principle p,
   .component-card p {
     color: var(--ef-carbon);
@@ -346,7 +352,9 @@
     margin-block-start: 4rem;
   }
 
-  .ef-button {
+  /* The site's own action links reuse the .ef-button name; keep the site
+     treatment off the Forma buttons inside live examples. */
+  .ef-button:not(.example-canvas *, .catalog-card__preview *) {
     display: inline-flex;
     min-block-size: 3.2rem;
     align-items: center;
@@ -367,7 +375,7 @@
       color var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing);
   }
 
-  .ef-button:hover {
+  .ef-button:not(.example-canvas *, .catalog-card__preview *):hover {
     background: var(--ef-stone);
   }
 
@@ -801,13 +809,13 @@
     font-size: clamp(1.9rem, 3.4vw, 2.8rem);
   }
 
-  .doc-section h3 {
+  .doc-section h3:not(.example-canvas *, .catalog-card__preview *) {
     margin-block: 1.5rem .5rem;
     font-size: 1.05rem;
   }
 
-  .doc-section p,
-  .doc-section li {
+  .doc-section p:not(.example-canvas *, .catalog-card__preview *),
+  .doc-section li:not(.example-canvas *, .catalog-card__preview *) {
     max-inline-size: 72ch;
     color: var(--ef-carbon);
   }
@@ -891,8 +899,8 @@
   }
 
   .doc-table code,
-  .doc-section code,
-  .doc-section kbd {
+  .doc-section code:not(.example-canvas *, .catalog-card__preview *),
+  .doc-section kbd:not(.example-canvas *, .catalog-card__preview *) {
     font-family: var(--mono);
     font-size: .85em;
   }
@@ -958,6 +966,7 @@
     -webkit-user-select: all;
   }
 
+  .doc-section .code-viewer .code-viewer__hint,
   .code-viewer .code-viewer__hint {
     margin: 0;
     padding: .5rem 1rem;

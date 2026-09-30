@@ -161,7 +161,7 @@ const header = (context, component) => {
     <div class="contract-item"><dt class="metric-label">Behavior owner</dt><dd>${escapeHtml(component.behavior)}</dd></div>
     <div class="contract-item"><dt class="metric-label">Canonical source</dt><dd><code>patterns/${component.slug}.html</code></dd></div>
   </dl>
-  <nav class="page-toc" aria-label="On this page"><ul>
+  <nav class="page-toc" aria-label="Sections of this component page"><ul>
     ${join(SECTIONS.filter(([id]) => id !== "verification" || component.pattern), ([id, label]) => `<li><a href="#${id}">${label}</a></li>`)}
   </ul></nav>
 </header>`;

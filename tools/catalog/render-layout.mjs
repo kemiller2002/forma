@@ -19,7 +19,7 @@ const siteHeader = rootPath => `<header class="site-header">
       </a>
       <span class="brand-subtitle">Forma / Interface system</span>
     </div>
-    <nav class="site-nav" aria-label="Primary">
+    <nav class="site-nav" aria-label="Forma documentation">
       <a href="${rootPath}">Overview</a>
       <a href="${rootPath}components/">Components</a>
       <a href="${rootPath}compositions/">Compositions</a>
@@ -87,7 +87,7 @@ export const frameDocument = ({ title, rootPath, source }) => `<!doctype html>
   </style>
 </head>
 <body>
-  <main>${source}</main>
+  ${/<main\b/.test(source) ? source : `<main>${source}</main>`}
 </body>
 </html>`;
 
@@ -179,6 +179,6 @@ export const table = ({ caption, headers, rows, label }) => rows.length ? `<div 
   </table>
 </div>` : "";
 
-export const breadcrumbs = (rootPath, trail) => `<nav class="breadcrumbs" aria-label="Breadcrumb"><ol>
+export const breadcrumbs = (rootPath, trail) => `<nav class="breadcrumbs" aria-label="Documentation breadcrumb"><ol>
   ${join(trail, (item, index) => `<li>${item.href && index < trail.length - 1 ? `<a href="${item.href}">${escapeHtml(item.label)}</a>` : `<span aria-current="page">${escapeHtml(item.label)}</span>`}</li>`)}
 </ol></nav>`;
