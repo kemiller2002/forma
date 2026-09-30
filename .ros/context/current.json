@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "agent:claude-code",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-09-30T06:21:00.000Z",
+  "updatedAt": "2026-09-30T07:34:32.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1170,6 +1170,35 @@
         "EXE-20260930T055842926Z-9ab6dc32"
       ],
       "completedAt": "2026-09-30T06:21:00.000Z"
+    },
+    {
+      "id": "GH-82",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/marketing/components.css"
+        },
+        {
+          "type": "implementation",
+          "path": "patterns/callout.html"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/callout.spec.mjs"
+        },
+        {
+          "type": "documentation",
+          "path": "docs/MARKETING-SITES.md"
+        }
+      ],
+      "updatedAt": "2026-09-30T07:34:32.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20260930T072415248Z-5430d7b8"
+      ],
+      "completedAt": "2026-09-30T07:34:32.000Z"
     }
   ]
 }

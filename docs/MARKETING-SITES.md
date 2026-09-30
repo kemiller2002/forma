@@ -23,6 +23,7 @@ the main Echelon Foundry site.
    - badges;
    - CTA;
    - prose;
+   - callout;
    - code sample;
    - documentation layout.
 4. Write content, not CSS. Add `site.css` only for what question 5 allows.
@@ -95,6 +96,19 @@ asset forma-echelon-marketing.css sha256:<filled in by install.sh --update>
 </body>
 </html>
 ```
+
+### Callouts in long-form content
+
+Most prose needs no callout. Use `.ef-callout` (`patterns/callout.html`) only when a reader must notice one of four kinds of supporting material:
+
+| `data-ef-callout` | Use for | Element |
+|---|---|---|
+| `note` | Context the reader can skip without losing the argument | `aside` |
+| `caution` | A consequence to weigh before acting on the surrounding text | `aside` |
+| `evidence` | Quoted or cited source material, with its source | `figure` holding a `blockquote` and a `figcaption` |
+| `decision` | A settled outcome that later sections refer to | `aside` |
+
+Every callout starts with a visible `.ef-callout__label` naming its kind, and the container is named by that label (`aria-labelledby`). The label is the primary cue. Each kind also has its own rule pattern, so kinds stay distinct in grayscale, forced colors and print. Do not use a callout for decoration, pull quotes or ordinary emphasis: use `<strong>`, a `blockquote` or a heading instead. Callouts have no runtime and no state. Static Markdown pipelines can emit the markup directly.
 
 ## 2. How do I consume Forma?
 

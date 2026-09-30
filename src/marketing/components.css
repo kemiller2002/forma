@@ -533,6 +533,71 @@
   .ef-prose :where(p, li) { color: var(--ef-tone-text); }
   .ef-prose > :where(figure, pre, .ef-code) { margin-block: var(--ef-layout-block-space); }
 
+  /* Callout: emphasized supporting material inside prose (FORMA-CONTENT-001).
+     A visible text label names the kind; the rule pattern repeats it as a
+     second, non-color cue. Presentation only: no state and no runtime. */
+  .ef-callout {
+    --ef-callout-rule: var(--ef-tone-rule-strong);
+    margin: var(--ef-layout-block-space) 0;
+    padding: var(--ef-space-4) var(--ef-space-5);
+    max-inline-size: var(--ef-layout-measure);
+    border: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    border-inline-start: var(--ef-shape-border-width-accent) solid var(--ef-callout-rule);
+    color: var(--ef-tone-text);
+  }
+
+  .ef-callout > :first-child { margin-block-start: 0; }
+  .ef-callout > :last-child { margin-block-end: 0; }
+  .ef-callout :where(p, li) { color: var(--ef-tone-text); max-inline-size: none; }
+
+  .ef-callout__label {
+    margin-block: 0 var(--ef-space-2);
+    color: var(--ef-tone-label);
+    font-family: var(--ef-type-family-mono);
+    font-size: var(--ef-type-size-label);
+    font-weight: var(--ef-type-weight-strong);
+    letter-spacing: var(--ef-type-tracking-label);
+    text-transform: uppercase;
+  }
+
+  /* Quoted evidence reads as body text; the callout already marks it. */
+  .ef-callout :where(blockquote) {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .ef-callout :where(figcaption) {
+    margin-block-start: var(--ef-space-3);
+    color: var(--ef-tone-muted);
+    font-size: var(--ef-type-size-small);
+  }
+
+  /* Caution: a heavy block-start rule and a full-strength frame. */
+  .ef-callout[data-ef-callout="caution"] {
+    --ef-callout-rule: var(--ef-color-status-warning);
+    border-color: var(--ef-tone-rule-strong);
+    border-block-start-width: var(--ef-shape-border-width-accent);
+    border-inline-start-color: var(--ef-callout-rule);
+  }
+
+  /* Evidence: a dashed frame marks quoted or cited source material. */
+  .ef-callout[data-ef-callout="evidence"] {
+    --ef-callout-rule: var(--ef-color-status-info);
+    border-style: dashed;
+    border-inline-start-style: solid;
+  }
+
+  /* Decision: a double rule marks a settled outcome. */
+  .ef-callout[data-ef-callout="decision"] {
+    --ef-callout-rule: var(--ef-color-accent-primary);
+    border-inline-start-style: double;
+    border-inline-start-width: calc(var(--ef-shape-border-width-accent) * 2);
+  }
+
   /* Code: technical samples in a bounded, keyboard-scrollable region. */
   .ef-code {
     margin: 0;
@@ -624,6 +689,7 @@
     .ef-site-nav__link[data-ef-variant="action"] { border: 1px solid ButtonText; }
     .ef-site-nav__link[aria-current] { border-block-end-color: Highlight; }
     .ef-statement { border-block-start-color: CanvasText; }
+    .ef-callout { border-color: CanvasText; }
   }
 
   @media print {
@@ -635,6 +701,7 @@
     .ef-site [data-ef-tone] { background: none; color: CanvasText; }
     .ef-site :where(h1, h2, h3, h4, p, li, dt, dd, a) { color: CanvasText; }
     .ef-prose a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
-    .ef-card, .ef-index__item, .ef-code { break-inside: avoid; }
+    .ef-card, .ef-index__item, .ef-code, .ef-callout { break-inside: avoid; }
+    .ef-callout { border-color: CanvasText; }
   }
 }
