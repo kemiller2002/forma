@@ -1,3 +1,11 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const geminiIV = missionById("gemini-iv");
+const apollo11 = missionById("apollo-11");
+const sts1 = missionById("sts-1");
+const sts31 = missionById("sts-31");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Segmented control",
   category: "selection",
@@ -27,58 +35,58 @@ export default {
   },
   examples: [
     {
-      id: "calendar-range",
-      title: "Calendar range picker",
-      description: "Four short options with Week preselected. The fieldset legend names the choice, so screen readers announce \"Show, radio group\" and each option as \"Week, radio button, 2 of 4, checked\".",
+      id: "program-filter",
+      title: "NASA program filter",
+      description: "Four short program choices with Apollo preselected. The fieldset legend names the choice while the underlying native radios keep selection semantics and keyboard behavior.",
       html: `<ef-segmented-control class="ef-component-tag">
   <fieldset class="ef-field">
-    <legend class="ef-field__label">Show</legend>
+    <legend class="ef-field__label">Program</legend>
     <div class="ef-segmented">
-      <label class="ef-segment"><input type="radio" name="segmented-control-calendar-range" value="day"><span>Day</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-calendar-range" value="week" checked><span>Week</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-calendar-range" value="month"><span>Month</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-calendar-range" value="year"><span>Year</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-program-filter" value="gemini"><span>Gemini</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-program-filter" value="apollo" checked><span>Apollo</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-program-filter" value="space-shuttle"><span>Shuttle</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-program-filter" value="artemis"><span>Artemis</span></label>
     </div>
   </fieldset>
 </ef-segmented-control>`
     },
     {
       id: "no-default-heavy",
-      title: "No default selection, heavier indicator",
-      description: "A required choice with nothing preselected, so the user must decide. With no checked radio there is no indicator and no filled segment. `data-ef-motion-weight=\"heavy\"` gives the indicator a slower, more settled travel once a choice is made; weight is presentation only and says nothing about the options.",
+      title: "Crewed or uncrewed with no default",
+      description: "A required filter with nothing preselected, so the user must decide. A heavy motion weight changes only the indicator's presentation after a choice is made; it does not change the domain meaning.",
       html: `<ef-segmented-control class="ef-component-tag">
   <fieldset class="ef-field">
-    <legend class="ef-field__label">Billing cycle</legend>
-    <p class="ef-field__description" id="segmented-control-no-default-heavy-help">Required. You can change this before your first invoice.</p>
+    <legend class="ef-field__label">Crew status</legend>
+    <p class="ef-field__description" id="segmented-control-no-default-heavy-help">Required. The reference collection contains both crewed missions and ${artemisI.name}, which was uncrewed.</p>
     <div class="ef-segmented" data-ef-motion-weight="heavy">
-      <label class="ef-segment"><input type="radio" name="segmented-control-no-default-heavy" value="monthly" required aria-describedby="segmented-control-no-default-heavy-help"><span>Monthly</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-no-default-heavy" value="annual" aria-describedby="segmented-control-no-default-heavy-help"><span>Annual</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-no-default-heavy" value="crewed" required aria-describedby="segmented-control-no-default-heavy-help"><span>Crewed</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-no-default-heavy" value="uncrewed" aria-describedby="segmented-control-no-default-heavy-help"><span>Uncrewed</span></label>
     </div>
   </fieldset>
 </ef-segmented-control>`
     },
     {
       id: "mobile-wrapping-segments",
-      title: "Wrapping segments on a phone",
-      description: "Five options, one with a long label, at phone width. The control stretches to the full width and segments that do not fit move to a second row rather than shrinking below a usable size.",
+      title: "Mission shortcuts on a phone",
+      description: "Five reference missions at phone width. The control stretches to the full width and mission labels that do not fit move to additional rows rather than shrinking below a usable size.",
       mobile: {
-        height: 260,
+        height: 320,
         notes: [
-          "At 44rem and below `ef-segmented` takes the full inline size and each segment flexes from a `min(10rem, 100%)` basis, so segments share the width evenly.",
-          "When the options do not fit on one row they wrap to further rows; nothing scrolls horizontally at 320px.",
-          "Every segment keeps its 44px minimum height, and the whole segment label is the tap target.",
-          "Wrapping changes only the visual rows. Arrow-key order and the radio group's order stay in source order."
+          "At 44rem and below the segmented control takes the full inline size and segments share the available width.",
+          "When mission names do not fit on one row they wrap to further rows; nothing scrolls horizontally at 320px.",
+          "Every segment keeps its 44px minimum height, and the whole label is the tap target.",
+          "Wrapping changes only visual rows; radio order stays in source order."
         ]
       },
       html: `<ef-segmented-control class="ef-component-tag">
   <fieldset class="ef-field">
-    <legend class="ef-field__label">Distance unit</legend>
+    <legend class="ef-field__label">Mission</legend>
     <div class="ef-segmented">
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="m" checked><span>Metres</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="km"><span>Kilometres</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="ft"><span>Feet</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="mi"><span>Miles</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="nmi"><span>Nautical miles</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="${geminiIV.id}" checked><span>${geminiIV.name}</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="${apollo11.id}"><span>${apollo11.name}</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="${sts1.id}"><span>${sts1.name}</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="${sts31.id}"><span>${sts31.name}</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="${artemisI.id}"><span>${artemisI.name}</span></label>
     </div>
   </fieldset>
 </ef-segmented-control>`
