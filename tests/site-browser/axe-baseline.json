@@ -1,1 +1,150 @@
-{ "entries": [] }
+{
+  "$comment": "Known pre-existing component defects that the generated-site axe sweep reproduces. Each maps to catalog/known-issues.json. New violations fail tests/site-browser/catalog.spec.mjs; an entry that no longer reproduces also fails and must be removed.",
+  "entries": [
+    {
+      "page": "components/alert/",
+      "rule": "aria-allowed-role",
+      "reason": "aside with role status/alert (known issue)"
+    },
+    {
+      "page": "components/attention-path/",
+      "rule": "page-has-heading-one",
+      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+    },
+    {
+      "page": "components/choice-group/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "components/conversation/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "components/emphasis-budget/",
+      "rule": "page-has-heading-one",
+      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+    },
+    {
+      "page": "components/fault-banner/",
+      "rule": "aria-allowed-role",
+      "reason": "aside with role status/alert (known issue)"
+    },
+    {
+      "page": "components/fault-details/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "components/fault-inline/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "components/fault-notification/",
+      "rule": "aria-allowed-role",
+      "reason": "aside with role status/alert (known issue)"
+    },
+    {
+      "page": "components/file-upload/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "components/focus-stage/",
+      "rule": "landmark-main-is-top-level",
+      "reason": "canonical pattern places main inside section (known issue)"
+    },
+    {
+      "page": "components/focus-stage/",
+      "rule": "page-has-heading-one",
+      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+    },
+    {
+      "page": "components/image-choice/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "components/lane-board/",
+      "rule": "scrollable-region-focusable",
+      "reason": "lane-board pattern has no tabindex (known issue)"
+    },
+    {
+      "page": "components/master-detail/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "components/multi-choice/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "components/priority-stack/",
+      "rule": "landmark-main-is-top-level",
+      "reason": "canonical pattern places main inside section (known issue)"
+    },
+    {
+      "page": "components/priority-stack/",
+      "rule": "page-has-heading-one",
+      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+    },
+    {
+      "page": "components/rail/",
+      "rule": "landmark-main-is-top-level",
+      "reason": "canonical pattern places main inside section (known issue)"
+    },
+    {
+      "page": "components/rail/",
+      "rule": "page-has-heading-one",
+      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+    },
+    {
+      "page": "components/recovery-actions/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "components/security-evidence-age/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "components/sidebar/",
+      "rule": "landmark-main-is-top-level",
+      "reason": "canonical pattern places main inside section (known issue)"
+    },
+    {
+      "page": "components/sidebar/",
+      "rule": "page-has-heading-one",
+      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+    },
+    {
+      "page": "components/split-pane/",
+      "rule": "landmark-main-is-top-level",
+      "reason": "canonical pattern places main inside section (known issue)"
+    },
+    {
+      "page": "components/split-pane/",
+      "rule": "page-has-heading-one",
+      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+    },
+    {
+      "page": "compositions/dashboard/",
+      "rule": "aria-allowed-role",
+      "reason": "aside with role status/alert (known issue)"
+    },
+    {
+      "page": "compositions/form-validation/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
+      "page": "compositions/mobile-settings/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    }
+  ]
+}

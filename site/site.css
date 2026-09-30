@@ -641,7 +641,9 @@
     font-size: 2.4rem;
   }
 
-  .agent-page code { overflow-wrap: anywhere; }
+  .agent-page code,
+  .agent-page p,
+  .agent-page li { overflow-wrap: anywhere; }
 
   .agent-page p,
   .agent-page li {

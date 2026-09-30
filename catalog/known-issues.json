@@ -2,6 +2,16 @@
   "$comment": "Implementation issues found while documenting every component (WI-0011). They are reported, not silently fixed: each changes shipped CSS or canonical markup and belongs in its own work item. Remove an entry when it is fixed. Rendered into docs/COMPONENT-INVENTORY.md.",
   "issues": [
     {
+      "component": "tokens (choice cards, fault, file-upload, conversation, master-detail, surface, security-evidence-age)",
+      "issue": "--ef-color-text-secondary (#686d68) on --ef-color-surface-secondary (#e3e0d7) is 4.0:1 and --ef-color-accent-primary (#905831) on the same surface is 4.38:1, both below WCAG AA 4.5:1. Components that put secondary text or links on the secondary surface inherit the failure. Reproduced with dist/all.css alone.",
+      "location": "tokens/echelon.tokens.json; src/styles/components.css; src/styles/assessment.css"
+    },
+    {
+      "component": "alert, fault-banner, fault-notification, toast",
+      "issue": "aside elements carry role=\"status\" or role=\"alert\", which ARIA in HTML does not allow on aside (axe aria-allowed-role).",
+      "location": "patterns/alert.html, patterns/fault-banner.html, patterns/fault-notification.html, patterns/toast.html"
+    },
+    {
       "component": "text-field, textarea, date-time-field, select",
       "issue": "Native inputs have no Forma styling for :disabled, :read-only, [aria-invalid] or :user-invalid; author colors also override the browser's disabled look, so a disabled field looks enabled.",
       "location": "src/styles/foundations.css (input/textarea/select rule)"

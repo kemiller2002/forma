@@ -152,6 +152,20 @@ test("code blocks are selectable in one action and scroll inside themselves", as
   await expect(page.locator("#example-notification-preferences .code-viewer__raw")).toHaveAccessibleName(/Raw HTML for HTML · Notification preferences/);
 });
 
+// axe reports duplicate landmark names across the whole page even when
+// examples are excluded, so chrome landmark uniqueness is asserted directly.
+test("documentation chrome landmarks have unique accessible names", async ({ page }) => {
+  test.setTimeout(budget(docPages.length));
+  for (const url of docPages) {
+    await page.goto(url);
+    const names = await page.evaluate(() => [...document.querySelectorAll("nav, aside, header, footer, main, section[aria-label], section[aria-labelledby]")]
+      .filter(element => !element.closest(".example-canvas, .catalog-card__preview") && element.getClientRects().length)
+      .map(element => `${element.tagName.toLowerCase()}:${element.getAttribute("aria-label") ?? document.getElementById(element.getAttribute("aria-labelledby") ?? "")?.textContent.trim() ?? ""}`));
+    const duplicates = names.filter((name, index) => names.indexOf(name) !== index && !name.endsWith(":"));
+    expect(duplicates, url).toEqual([]);
+  }
+});
+
 // Known pre-existing component defects (catalog/known-issues.json) are listed
 // in axe-baseline.json as page + rule pairs. Anything new fails, and a
 // baseline entry that no longer reproduces also fails so the list shrinks.
@@ -174,6 +188,7 @@ chunks.forEach((chunk, index) => {
       const tags = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
       const chrome = await new AxeBuilder({ page })
         .withTags(tags)
+        .disableRules(["landmark-unique"])
         .exclude(".example-canvas")
         .exclude(".catalog-card__preview")
         .options({ iframes: false })
