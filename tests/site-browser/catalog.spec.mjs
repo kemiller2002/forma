@@ -230,9 +230,9 @@ chunks.forEach((chunk, index) => {
 // other rule does. Checked directly so lazy loading cannot make it flaky.
 const frameDocs = [
   ...mobileFrames,
-  ...manifest.components.map(item => `/site-dist/components/${item.slug}/basic.html`)
-    .filter(url => fs.existsSync(path.join(root, url)))
-];
+  ...manifest.components.map(item => `/site-dist/components/${item.slug}/basic.html`),
+  ...manifest.compositions.map(item => `/site-dist/compositions/${item.slug}/frame.html`)
+].filter(url => fs.existsSync(path.join(root, url)));
 const frameChunks = Array.from({ length: Math.ceil(frameDocs.length / 40) }, (_, index) => frameDocs.slice(index * 40, (index + 1) * 40));
 
 frameChunks.forEach((chunk, index) => {

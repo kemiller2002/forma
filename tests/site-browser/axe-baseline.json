@@ -7,11 +7,6 @@
       "reason": "aside with role status/alert (known issue)"
     },
     {
-      "page": "components/attention-path/",
-      "rule": "page-has-heading-one",
-      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
-    },
-    {
       "page": "components/choice-group/",
       "rule": "color-contrast",
       "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
@@ -22,9 +17,9 @@
       "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
-      "page": "components/emphasis-budget/",
-      "rule": "page-has-heading-one",
-      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+      "page": "components/conversation/mobile-mobile-history.html",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
       "page": "components/fault-banner/",
@@ -42,6 +37,11 @@
       "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
+      "page": "components/fault-inline/mobile-mobile-upload.html",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+    },
+    {
       "page": "components/fault-notification/",
       "rule": "aria-allowed-role",
       "reason": "aside with role status/alert (known issue)"
@@ -52,14 +52,9 @@
       "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
-      "page": "components/focus-stage/",
-      "rule": "landmark-main-is-top-level",
-      "reason": "canonical pattern places main inside section (known issue)"
-    },
-    {
-      "page": "components/focus-stage/",
-      "rule": "page-has-heading-one",
-      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+      "page": "components/file-upload/mobile-mobile-evidence.html",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
       "page": "components/image-choice/",
@@ -77,29 +72,14 @@
       "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
-      "page": "components/multi-choice/",
+      "page": "components/master-detail/mobile-mobile-record-switcher.html",
       "rule": "color-contrast",
       "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
-      "page": "components/priority-stack/",
-      "rule": "landmark-main-is-top-level",
-      "reason": "canonical pattern places main inside section (known issue)"
-    },
-    {
-      "page": "components/priority-stack/",
-      "rule": "page-has-heading-one",
-      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
-    },
-    {
-      "page": "components/rail/",
-      "rule": "landmark-main-is-top-level",
-      "reason": "canonical pattern places main inside section (known issue)"
-    },
-    {
-      "page": "components/rail/",
-      "rule": "page-has-heading-one",
-      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+      "page": "components/multi-choice/",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
       "page": "components/recovery-actions/",
@@ -112,24 +92,9 @@
       "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
-      "page": "components/sidebar/",
-      "rule": "landmark-main-is-top-level",
-      "reason": "canonical pattern places main inside section (known issue)"
-    },
-    {
-      "page": "components/sidebar/",
-      "rule": "page-has-heading-one",
-      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
-    },
-    {
-      "page": "components/split-pane/",
-      "rule": "landmark-main-is-top-level",
-      "reason": "canonical pattern places main inside section (known issue)"
-    },
-    {
-      "page": "components/split-pane/",
-      "rule": "page-has-heading-one",
-      "reason": "page-level pattern rendered standalone in a frame has no h1 of its own"
+      "page": "components/security-evidence-age/mobile-mobile.html",
+      "rule": "color-contrast",
+      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
       "page": "compositions/dashboard/",
@@ -142,9 +107,9 @@
       "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
     },
     {
-      "page": "compositions/mobile-settings/",
+      "page": "compositions/mobile-settings/frame.html",
       "rule": "color-contrast",
-      "reason": "text-secondary or accent on surface-secondary below 4.5:1 (known issue)"
+      "reason": "links inside ef-surface: accent on surface-secondary below 4.5:1 (known issue)"
     }
   ]
 }
