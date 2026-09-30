@@ -1,3 +1,11 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo8 = missionById("apollo-8");
+const apollo11 = missionById("apollo-11");
+const sts31 = missionById("sts-31");
+const sts95 = missionById("sts-95");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Combobox",
   category: "forms",
@@ -25,76 +33,77 @@ export default {
   examples: [
     {
       id: "free-entry-labels",
-      title: "Label with new values allowed",
-      description: "Existing labels are suggested, but a new label can be typed and submitted as is. The help text says so and is linked with aria-describedby.",
+      title: "Mission keyword with new values allowed",
+      description: "Existing mission keywords are suggested, but a new keyword can be typed and submitted as is. This demonstrates the datalist/free-entry distinction without inventing a separate product taxonomy.",
       html: `<ef-combobox class="ef-component-tag">
   <div class="ef-combobox">
-    <label for="combobox-free-entry-label">Label</label>
+    <label for="combobox-free-entry-label">Mission keyword</label>
     <div class="ef-combobox__control">
-      <input id="combobox-free-entry-label" name="label" list="combobox-free-entry-options" autocomplete="off" aria-describedby="combobox-free-entry-help">
+      <input id="combobox-free-entry-label" name="keyword" list="combobox-free-entry-options" autocomplete="off" aria-describedby="combobox-free-entry-help">
       <span class="ef-combobox__indicator" aria-hidden="true">⌄</span>
     </div>
     <datalist id="combobox-free-entry-options">
-      <option value="bug"></option>
-      <option value="customer-reported"></option>
-      <option value="needs-design"></option>
-      <option value="performance"></option>
+      <option value="lunar"></option>
+      <option value="flight-test"></option>
+      <option value="hubble"></option>
+      <option value="research"></option>
     </datalist>
-    <p class="ef-combobox__help" id="combobox-free-entry-help">Choose an existing label or type a new one.</p>
+    <p class="ef-combobox__help" id="combobox-free-entry-help">Choose a common keyword or type a new one for this mission view.</p>
   </div>
 </ef-combobox>`
     },
     {
       id: "unrecognized-value",
-      title: "Unrecognized value",
-      description: "Only listed cost centers are accepted. The application checked the typed value on submit, marked the input with aria-invalid and linked a validation message after the help text; the typed text is kept for correction.",
+      title: "Mission outside the reference collection",
+      description: "Only missions in Forma's stable NASA reference collection are accepted here. The application kept the typed value, marked it invalid, and showed the allowed mission names for correction.",
       html: `<ef-combobox class="ef-component-tag">
   <div class="ef-combobox">
-    <label for="combobox-unrecognized-cost-center">Cost center</label>
+    <label for="combobox-unrecognized-mission">Reference mission</label>
     <div class="ef-combobox__control">
-      <input id="combobox-unrecognized-cost-center" name="cost-center" list="combobox-unrecognized-options" autocomplete="off" value="Marketting" required aria-invalid="true" aria-describedby="combobox-unrecognized-help combobox-unrecognized-error">
+      <input id="combobox-unrecognized-mission" name="mission" list="combobox-unrecognized-options" autocomplete="off" value="Apollo Eleven" required aria-invalid="true" aria-describedby="combobox-unrecognized-help combobox-unrecognized-error">
       <span class="ef-combobox__indicator" aria-hidden="true">⌄</span>
     </div>
     <datalist id="combobox-unrecognized-options">
-      <option value="Engineering"></option>
-      <option value="Finance"></option>
-      <option value="Marketing"></option>
-      <option value="Operations"></option>
+      <option value="${apollo8.name}"></option>
+      <option value="${apollo11.name}"></option>
+      <option value="${sts31.name}"></option>
+      <option value="${artemisI.name}"></option>
     </datalist>
-    <p class="ef-combobox__help" id="combobox-unrecognized-help">Type to filter cost centers.</p>
+    <p class="ef-combobox__help" id="combobox-unrecognized-help">Type to filter completed reference missions.</p>
     <p class="ef-validation-message" id="combobox-unrecognized-error">
       <span class="ef-validation-message__mark" aria-hidden="true">!</span>
-      No cost center called "Marketting". Choose one from the list.
+      "Apollo Eleven" is not a reference-collection value. Choose the canonical ${apollo11.name} name from the list.
     </p>
   </div>
 </ef-combobox>`
     },
     {
-      id: "mobile-assignee",
-      title: "Mobile assignee field",
-      description: "An assignee combobox at phone width. The input fills the width and the platform shows suggestions in its own UI.",
+      id: "mobile-crew-member",
+      title: "Mobile crew-member field",
+      description: "A crew-member combobox at phone width. Suggestions come from crew already present in the shared NASA records while the browser owns the datalist presentation.",
       mobile: {
         height: 240,
         notes: [
           "The label, control and help stack in one column and the input fills the width with a 44px minimum height.",
-          "On touch devices suggestions usually appear in the keyboard's suggestion strip or a platform list above the keyboard; this is browser-owned and varies.",
-          "The indicator is absolutely positioned at the inline end and does not take width; very long typed values can run beneath it.",
+          "On touch devices suggestions usually appear in browser or operating-system UI, which Forma does not style.",
+          "The indicator is absolutely positioned at the inline end and does not take width.",
           "Help text wraps below the control; nothing scrolls horizontally."
         ]
       },
       html: `<ef-combobox class="ef-component-tag">
   <div class="ef-combobox">
-    <label for="combobox-mobile-assignee">Assign to</label>
+    <label for="combobox-mobile-crew-member">Crew member</label>
     <div class="ef-combobox__control">
-      <input id="combobox-mobile-assignee" name="assignee" list="combobox-mobile-assignee-options" autocomplete="off" aria-describedby="combobox-mobile-assignee-help">
+      <input id="combobox-mobile-crew-member" name="crew-member" list="combobox-mobile-crew-member-options" autocomplete="off" aria-describedby="combobox-mobile-crew-member-help">
       <span class="ef-combobox__indicator" aria-hidden="true">⌄</span>
     </div>
-    <datalist id="combobox-mobile-assignee-options">
-      <option value="Amara Okafor"></option>
-      <option value="Jonas Lindqvist"></option>
-      <option value="Priya Raman"></option>
+    <datalist id="combobox-mobile-crew-member-options">
+      <option value="${apollo11.crew[0]}"></option>
+      <option value="${apollo11.crew[1]}"></option>
+      <option value="${sts31.crew[3]}"></option>
+      <option value="${sts95.crew[6]}"></option>
     </datalist>
-    <p class="ef-combobox__help" id="combobox-mobile-assignee-help">Type a name. Leave empty to keep the item unassigned.</p>
+    <p class="ef-combobox__help" id="combobox-mobile-crew-member-help">Type a crew member from the reference missions.</p>
   </div>
 </ef-combobox>`
     }
