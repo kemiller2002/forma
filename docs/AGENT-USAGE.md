@@ -321,3 +321,5 @@ Read `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md` before adding me
 - Never infer workflow meaning from color. A metadata-to-color rule must be explicit application/profile data.
 - Verify dark/light, forced colors, grayscale, and backgrounds-disabled output when diagram color matters.
 - Graph topology, routing, drag/drop, commands, workflow execution, and legal transitions remain outside Forma.
+- Render diagrams with the public `.ef-diagram*` family (`patterns/diagram.html`); pass resolved geometry and colors only through the documented custom properties. [ADR-0004](decisions/ADR-0004-diagram-presentation-boundary.md) lists what Forma owns, what stays Studio editor chrome, and the deferred gaps. Report a missing visual as a Forma issue instead of adding private diagram CSS.
+- Give every connector a matching item in `.ef-diagram__relations`, and give every node visible kind text.

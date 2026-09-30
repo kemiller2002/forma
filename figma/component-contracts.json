@@ -391,6 +391,16 @@
       }
     },
     {
+      "id": "diagram",
+      "figmaName": "Forma / Diagram",
+      "source": "patterns/diagram.html",
+      "codeConnect": {
+        "id": "Forma/diagram",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "dialog",
       "figmaName": "Forma / Dialog",
       "source": "patterns/dialog.html",

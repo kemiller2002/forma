@@ -18,6 +18,7 @@ export const componentMeta = {
   "site-footer": ["Site footer", "Marketing presentation", "Site content", "Closing identity, actions, secondary navigation, and legal note on a surface tone."],
   "documentation-layout": ["Documentation layout", "Marketing presentation", "Site content", "Documentation page: navigation rail, prose article, and optional outline; navigation compacts to a wrapping list in narrow containers."],
   "active-filter-summary": ["Active filter summary","Data & productivity","Application content","Keeps active query refinements and scope visible while filter controls recompose."],
+  "diagram": ["Diagram","Data & productivity","Application content","Presentation-only diagram nodes, connectors, metadata and key; the consumer owns geometry, routing, semantics and color mapping."],
   "cluster": ["Cluster","Layout & composition","Native CSS","Wraps related inline items while preserving semantic source order."],
   "command-group": ["Command group","Navigation & commands","Application content","Groups related commands under an explicit task label without owning command authority."],
   "comparison-grid": ["Comparison grid","Layout & composition","Application content","Preserves cross-item comparison relationships in a bounded two-dimensional surface."],
