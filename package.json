@@ -47,8 +47,8 @@
     "test:motion": "node --test tests/motion-audit.test.mjs tests/motion-gate.test.mjs && node tools/motion-audit.mjs --strict",
     "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:figma && npm run test:css && npm run test:package && npm run test:browser",
     "site:build": "npm run build && node tools/build-site.mjs",
-    "site:test": "node --test tests/site-build.test.mjs",
-    "site:check": "npm run site:build && npm run site:test && npm run site:mobile",
+    "site:test": "node --test tests/site-build.test.mjs tests/catalog-coverage.test.mjs",
+    "site:check": "npm run site:build && npm run catalog:check && npm run site:test && npm run site:mobile",
     "site:mobile": "playwright test --config=playwright.site.config.mjs",
     "pack:verify": "npm run build && npm pack --dry-run",
     "test:package": "node --test tests/package-contract.test.mjs",
@@ -62,7 +62,8 @@
     "example:install": "mkdir -p build/example && cp examples/echelon-marketing-site/forma.lock build/example/forma.lock && bash actions/install-presentation/install.sh --lock build/example/forma.lock --source dist/marketing --update --output examples/echelon-marketing-site/assets/forma",
     "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --",
     "release:check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:css && npm run test:package && playwright test tests/browser/marketing.spec.mjs && npm run site:check",
-    "test:figma": "node --test tests/figma-contract.test.mjs"
+    "test:figma": "node --test tests/figma-contract.test.mjs",
+    "catalog:check": "node tools/catalog/validate.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

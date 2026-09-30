@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 11,
+  "nextSeq": 12,
   "items": [
     {
       "id": "WI-0001",
@@ -251,6 +251,22 @@
       "attachments": [],
       "createdAt": "2026-09-28T01:10:33.331Z",
       "updatedAt": "2026-09-28T01:29:14.000Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0011",
+      "title": "Upgrade Forma documentation site into a complete component catalog (inventory, taxonomy, per-component reference pages, composed examples, coverage enforcement)",
+      "description": null,
+      "tags": [
+        "forma,documentation,catalog,mobile,accessibility"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-30T11:59:08.075Z",
+      "updatedAt": "2026-09-30T11:59:30.000Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null

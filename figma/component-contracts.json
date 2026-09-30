@@ -101,6 +101,26 @@
       }
     },
     {
+      "id": "bounded-overflow",
+      "figmaName": "Forma / Bounded Overflow",
+      "source": "patterns/bounded-overflow.html",
+      "codeConnect": {
+        "id": "Forma/bounded-overflow",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "button",
+      "figmaName": "Forma / Button",
+      "source": "patterns/button.html",
+      "codeConnect": {
+        "id": "Forma/button",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "callout",
       "figmaName": "Forma / Callout",
       "source": "patterns/callout.html",
@@ -321,6 +341,16 @@
       }
     },
     {
+      "id": "container",
+      "figmaName": "Forma / Container",
+      "source": "patterns/container.html",
+      "codeConnect": {
+        "id": "Forma/container",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "conversation",
       "figmaName": "Forma / Conversation",
       "source": "patterns/conversation.html",
@@ -366,6 +396,16 @@
       "source": "patterns/date-range.html",
       "codeConnect": {
         "id": "Forma/date-range",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "date-time-field",
+      "figmaName": "Forma / Date Time Field",
+      "source": "patterns/date-time-field.html",
+      "codeConnect": {
+        "id": "Forma/date-time-field",
         "nodeUrl": null,
         "status": "requires-published-figma-component"
       }
@@ -631,6 +671,16 @@
       }
     },
     {
+      "id": "grid",
+      "figmaName": "Forma / Grid",
+      "source": "patterns/grid.html",
+      "codeConnect": {
+        "id": "Forma/grid",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "handoff-summary",
       "figmaName": "Forma / Handoff Summary",
       "source": "patterns/handoff-summary.html",
@@ -696,6 +746,16 @@
       "source": "patterns/image-choice.html",
       "codeConnect": {
         "id": "Forma/image-choice",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "key-value-list",
+      "figmaName": "Forma / Key Value List",
+      "source": "patterns/key-value-list.html",
+      "codeConnect": {
+        "id": "Forma/key-value-list",
         "nodeUrl": null,
         "status": "requires-published-figma-component"
       }
@@ -1131,6 +1191,16 @@
       }
     },
     {
+      "id": "section",
+      "figmaName": "Forma / Section",
+      "source": "patterns/section.html",
+      "codeConnect": {
+        "id": "Forma/section",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "section-heading",
       "figmaName": "Forma / Section Heading",
       "source": "patterns/section-heading.html",
@@ -1301,6 +1371,16 @@
       }
     },
     {
+      "id": "skip-link",
+      "figmaName": "Forma / Skip Link",
+      "source": "patterns/skip-link.html",
+      "codeConnect": {
+        "id": "Forma/skip-link",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "slider",
       "figmaName": "Forma / Slider",
       "source": "patterns/slider.html",
@@ -1336,6 +1416,16 @@
       "source": "patterns/spinner.html",
       "codeConnect": {
         "id": "Forma/spinner",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "split",
+      "figmaName": "Forma / Split",
+      "source": "patterns/split.html",
+      "codeConnect": {
+        "id": "Forma/split",
         "nodeUrl": null,
         "status": "requires-published-figma-component"
       }
@@ -1391,6 +1481,16 @@
       }
     },
     {
+      "id": "surface",
+      "figmaName": "Forma / Surface",
+      "source": "patterns/surface.html",
+      "codeConnect": {
+        "id": "Forma/surface",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "survey-progress",
       "figmaName": "Forma / Survey Progress",
       "source": "patterns/survey-progress.html",
@@ -1436,6 +1536,36 @@
       "source": "patterns/tabs.html",
       "codeConnect": {
         "id": "Forma/tabs",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "text-field",
+      "figmaName": "Forma / Text Field",
+      "source": "patterns/text-field.html",
+      "codeConnect": {
+        "id": "Forma/text-field",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "text-roles",
+      "figmaName": "Forma / Text Roles",
+      "source": "patterns/text-roles.html",
+      "codeConnect": {
+        "id": "Forma/text-roles",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "textarea",
+      "figmaName": "Forma / Textarea",
+      "source": "patterns/textarea.html",
+      "codeConnect": {
+        "id": "Forma/textarea",
         "nodeUrl": null,
         "status": "requires-published-figma-component"
       }
@@ -1506,6 +1636,16 @@
       "source": "patterns/verification-frame.html",
       "codeConnect": {
         "id": "Forma/verification-frame",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "visually-hidden",
+      "figmaName": "Forma / Visually Hidden",
+      "source": "patterns/visually-hidden.html",
+      "codeConnect": {
+        "id": "Forma/visually-hidden",
         "nodeUrl": null,
         "status": "requires-published-figma-component"
       }

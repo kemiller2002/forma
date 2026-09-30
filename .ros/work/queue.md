@@ -17,6 +17,21 @@
 | GH-44 | GH-44 | complete |  |  |
 | GH-45 | GH-45 | complete |  |  |
 | GH-46 | GH-46 | complete |  |  |
+| GH-49 | GH-49 | complete |  |  |
+| GH-52 | GH-52 | complete |  |  |
+| GH-55 | GH-55 | complete |  |  |
+| GH-58 | GH-58 | complete |  |  |
+| GH-59 | GH-59 | complete |  |  |
+| GH-60 | GH-60 | complete |  |  |
+| GH-61 | GH-61 | complete |  |  |
+| GH-62 | GH-62 | complete |  |  |
+| GH-63 | GH-63 | complete |  |  |
+| GH-64 | GH-64 | complete |  |  |
+| GH-65 | GH-65 | complete |  |  |
+| GH-66 | GH-66 | complete |  |  |
+| GH-67 | GH-67 | complete |  |  |
+| GH-68 | GH-68 | complete |  |  |
+| GH-82 | GH-82 | complete |  |  |
 | GH-9 | Build Forma component documentation site | complete | forma,documentation,github-pages | high |
 | ROS-INSTALL-3-1-4 | ROS-INSTALL-3-1-4 | complete |  |  |
 | WI-0001 | Install Echelon engineering capabilities | complete |  | high |
@@ -29,3 +44,4 @@
 | WI-0008 | CharacterGrid GAP-TCG-11 follow-up: table cells under text-spacing overrides overlap neighboring columns | complete |  | medium |
 | WI-0009 | CharacterGrid GAP-TCG-09: implement and verify VE DF-VE-TCG-2026-DD05 runtime message overflow policy | complete |  | medium |
 | WI-0010 | CharacterGrid: device status rows after the application rows (GAP-TCG-12, VE DF-VE-TCG-2026-1320) | complete |  | medium |
+| WI-0011 | Upgrade Forma documentation site into a complete component catalog (inventory, taxonomy, per-component reference pages, composed examples, coverage enforcement) | ready | forma,documentation,catalog,mobile,accessibility | high |
