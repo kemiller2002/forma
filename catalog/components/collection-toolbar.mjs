@@ -1,3 +1,9 @@
+import { missionById, nasaSpaceflights } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo11 = missionById("apollo-11");
+const artemisI = missionById("artemis-i");
+const crewedCount = nasaSpaceflights.filter(mission => mission.crewed).length;
+
 export default {
   name: "Collection toolbar",
   category: "data",
@@ -26,83 +32,83 @@ export default {
   examples: [
     {
       id: "active-filters",
-      title: "Search term with active filters",
-      description: "A search term and two applied filters. The filter panel is closed, but its summary text states \"2 active\", so the state stays visible. On wide screens the panel, when opened, is positioned over the content below the toolbar.",
+      title: "Mission search with active filters",
+      description: "A mission search and two applied filters. The closed filter panel still states that two filters are active, so application state stays visible without requiring the panel to remain open.",
       html: `<ef-collection-toolbar class="ef-component-tag">
-  <section class="ef-collection-toolbar" aria-label="Invoice list controls">
+  <section class="ef-collection-toolbar" aria-label="NASA mission list controls">
     <form class="ef-search ef-collection-toolbar__search" role="search">
-      <label class="ef-search__label" for="collection-toolbar-active-filters-search">Search invoices</label>
-      <input id="collection-toolbar-active-filters-search" name="q" type="search" value="acme">
+      <label class="ef-search__label" for="collection-toolbar-active-filters-search">Search missions</label>
+      <input id="collection-toolbar-active-filters-search" name="q" type="search" value="${apollo11.program}">
     </form>
     <div class="ef-collection-toolbar__controls">
       <details class="ef-collection-toolbar__filters">
         <summary>Filters <span class="ef-status-lozenge">2 active</span></summary>
         <div class="ef-collection-toolbar__filter-panel">
-          <label>Status <select name="status"><option>Any status</option><option selected>Overdue</option><option>Paid</option></select></label>
-          <label>Owner <select name="owner"><option>Anyone</option><option selected>Me</option></select></label>
+          <label>Program <select name="program"><option>Any program</option><option selected>Apollo</option><option>Space Shuttle</option><option>Artemis</option></select></label>
+          <label>Crew <select name="crew"><option>Any crew status</option><option selected>Crewed</option><option>Uncrewed</option></select></label>
           <button type="button">Clear filters</button>
         </div>
       </details>
-      <label>Sort <select name="sort"><option>Due date, soonest</option><option>Amount, highest</option></select></label>
+      <label>Sort <select name="sort"><option>Launch date, newest</option><option>Launch date, oldest</option><option>Mission name</option></select></label>
     </div>
-    <p class="ef-collection-toolbar__count" role="status">3 invoices</p>
+    <p class="ef-collection-toolbar__count" role="status">3 Apollo missions</p>
   </section>
 </ef-collection-toolbar>`
     },
     {
       id: "no-results",
-      title: "Search with no results",
-      description: "A search that matches nothing. The count states 0 results in the status region; the filters summary shows none are active, so the user knows the search term alone caused the empty result.",
+      title: "Mission search with no results",
+      description: "The search term alone matches nothing in the stable reference collection. The filter summary says none are active, making the reason for the zero count clear.",
       html: `<ef-collection-toolbar class="ef-component-tag">
-  <section class="ef-collection-toolbar" aria-label="Customer list controls">
+  <section class="ef-collection-toolbar" aria-label="NASA mission list controls">
     <form class="ef-search ef-collection-toolbar__search" role="search">
-      <label class="ef-search__label" for="collection-toolbar-no-results-search">Search customers</label>
-      <input id="collection-toolbar-no-results-search" name="q" type="search" value="northwnd">
+      <label class="ef-search__label" for="collection-toolbar-no-results-search">Search missions</label>
+      <input id="collection-toolbar-no-results-search" name="q" type="search" value="Apollo 99">
     </form>
     <div class="ef-collection-toolbar__controls">
       <details class="ef-collection-toolbar__filters">
         <summary>Filters <span class="ef-status-lozenge">None active</span></summary>
         <div class="ef-collection-toolbar__filter-panel">
-          <label>Region <select name="region"><option>All regions</option><option>Europe</option><option>North America</option></select></label>
+          <label>Program <select name="program"><option>All programs</option><option>Apollo</option><option>Space Shuttle</option><option>Artemis</option></select></label>
         </div>
       </details>
-      <label>Saved view <select name="view"><option>All customers</option><option>Key accounts</option></select></label>
+      <label>View <select name="view"><option>All missions</option><option>Lunar missions</option></select></label>
     </div>
-    <p class="ef-collection-toolbar__count" role="status">0 customers</p>
+    <p class="ef-collection-toolbar__count" role="status">0 missions</p>
   </section>
 </ef-collection-toolbar>`
     },
     {
       id: "mobile-toolbar",
-      title: "Mobile collection toolbar",
-      description: "The full toolbar at phone width. Search spans the row, the controls wrap below it, and the filter panel opens inline instead of floating over the list.",
+      title: "Mobile mission toolbar",
+      description: "The mission toolbar at phone width. Search spans the row, program and crew controls wrap below it, and the filter panel opens inline instead of floating over the mission list.",
       mobile: {
         height: 560,
         notes: [
-          "At 40rem (640px) and below the grid becomes `1fr auto`: search and the controls each span the full width, and the count sits beside the remaining space.",
-          "Each control flexes at `1 1 9rem`, so sort and saved view share a row when they fit and wrap one per row at 320px.",
-          "The filter panel switches from absolute positioning to static, full width, with no shadow, so it pushes the list down instead of covering it.",
-          "The filter summary is at least 2.75rem tall, giving a comfortable touch target; the native selects open the platform picker on phones.",
-          "Search stays first and the count stays visible at every width; no control is hover-only."
+          "At 40rem and below search and controls span the full width while the count remains visible.",
+          "Controls flex and wrap to one per row when needed at 320px.",
+          "The filter panel becomes static and pushes the mission list down instead of covering it.",
+          "Native selects open the platform picker on phones.",
+          "Search stays first and no control is hover-only."
         ]
       },
       html: `<ef-collection-toolbar class="ef-component-tag">
-  <section class="ef-collection-toolbar" aria-label="Ticket list controls">
+  <section class="ef-collection-toolbar" aria-label="NASA mission list controls">
     <form class="ef-search ef-collection-toolbar__search" role="search">
-      <label class="ef-search__label" for="collection-toolbar-mobile-toolbar-search">Search tickets</label>
-      <input id="collection-toolbar-mobile-toolbar-search" name="q" type="search" placeholder="Subject or ticket number">
+      <label class="ef-search__label" for="collection-toolbar-mobile-toolbar-search">Search missions</label>
+      <input id="collection-toolbar-mobile-toolbar-search" name="q" type="search" placeholder="Mission, crew member or spacecraft">
     </form>
     <div class="ef-collection-toolbar__controls">
       <details class="ef-collection-toolbar__filters" open>
         <summary>Filters <span class="ef-status-lozenge">1 active</span></summary>
         <div class="ef-collection-toolbar__filter-panel">
-          <label>Status <select name="ticket-status"><option>Any status</option><option selected>Awaiting reply</option></select></label>
+          <label>Crew <select name="crew-status"><option>Any crew status</option><option selected>Crewed</option><option>Uncrewed</option></select></label>
         </div>
       </details>
-      <label>Sort <select name="ticket-sort"><option>Newest</option><option>Oldest</option></select></label>
-      <label>Saved view <select name="ticket-view"><option>My tickets</option><option>Team queue</option></select></label>
+      <label>Sort <select name="mission-sort"><option>Newest launch</option><option>Oldest launch</option></select></label>
+      <label>View <select name="mission-view"><option>All programs</option><option>Lunar missions</option></select></label>
     </div>
-    <p class="ef-collection-toolbar__count" role="status">12 tickets</p>
+    <p class="ef-collection-toolbar__count" role="status">${crewedCount} crewed missions</p>
   </section>
 </ef-collection-toolbar>`
     }
