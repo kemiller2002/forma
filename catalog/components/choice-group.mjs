@@ -1,3 +1,10 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const apollo8 = missionById("apollo-8");
+const apollo11 = missionById("apollo-11");
+const sts31 = missionById("sts-31");
+const artemisI = missionById("artemis-i");
+
 export default {
   name: "Choice group",
   category: "selection",
@@ -28,75 +35,75 @@ export default {
   examples: [
     {
       id: "validation-error",
-      title: "Validation error",
-      description: "The user tried to continue without answering. The application renders a [[validation-message]] after the options and links it to the fieldset with aria-describedby, so it is announced with the group. Forma does not detect the error; the native required constraint and the application's message do.",
+      title: "Mission selection validation",
+      description: "The user tried to continue without choosing a mission. The application renders a validation message after the options and links it to the fieldset with aria-describedby; the native required constraint still owns the missing selection.",
       html: `<ef-choice-group class="ef-component-tag">
   <fieldset class="ef-choice-group" aria-describedby="choice-group-validation-error-message">
-    <legend class="ef-choice-group__legend">How should we contact you about this order?</legend>
+    <legend class="ef-choice-group__legend">Which NASA mission should be the reference record?</legend>
     <label class="ef-choice">
-      <input type="radio" name="choice-group-validation-error-contact" value="email" required>
-      <span class="ef-choice__content"><strong>Email</strong><span>Order updates to the address on your account.</span></span>
+      <input type="radio" name="choice-group-validation-error-mission" value="${apollo11.id}" required>
+      <span class="ef-choice__content"><strong>${apollo11.name}</strong><span>${apollo11.highlight}.</span></span>
     </label>
     <label class="ef-choice">
-      <input type="radio" name="choice-group-validation-error-contact" value="sms">
-      <span class="ef-choice__content"><strong>Text message</strong><span>Delivery-day updates only. Carrier rates may apply.</span></span>
+      <input type="radio" name="choice-group-validation-error-mission" value="${sts31.id}">
+      <span class="ef-choice__content"><strong>${sts31.name}</strong><span>${sts31.highlight}.</span></span>
     </label>
     <label class="ef-choice">
-      <input type="radio" name="choice-group-validation-error-contact" value="none">
-      <span class="ef-choice__content"><strong>No updates</strong><span>Check the order page yourself.</span></span>
+      <input type="radio" name="choice-group-validation-error-mission" value="${artemisI.id}">
+      <span class="ef-choice__content"><strong>${artemisI.name}</strong><span>${artemisI.highlight}.</span></span>
     </label>
     <p class="ef-validation-message" id="choice-group-validation-error-message">
       <span class="ef-validation-message__mark" aria-hidden="true">!</span>
-      Choose how we should contact you before continuing.
+      Choose a reference mission before continuing.
     </p>
   </fieldset>
 </ef-choice-group>`
     },
     {
       id: "unavailable-option",
-      title: "Selected plan with an unavailable option",
-      description: "The current plan is preselected, and one option is natively disabled because the application has decided it is not available for this account. The card dims and shows a not-allowed cursor, and its description says why.",
+      title: "Crew comparison with an unavailable mission",
+      description: "Apollo 11 is preselected. Artemis I is natively disabled because this particular comparison requires a crewed mission; the description gives the domain reason rather than leaving the disabled card unexplained.",
       html: `<ef-choice-group class="ef-component-tag">
   <fieldset class="ef-choice-group">
-    <legend class="ef-choice-group__legend">Support plan</legend>
+    <legend class="ef-choice-group__legend">Crew manifest to compare</legend>
     <label class="ef-choice">
-      <input type="radio" name="choice-group-unavailable-option-plan" value="standard" checked>
-      <span class="ef-choice__content"><strong>Standard</strong><span>Business-hours response within one working day.</span></span>
+      <input type="radio" name="choice-group-unavailable-option-mission" value="${apollo11.id}" checked>
+      <span class="ef-choice__content"><strong>${apollo11.name}</strong><span>${apollo11.crew.length} crew · ${apollo11.destination}</span></span>
     </label>
     <label class="ef-choice">
-      <input type="radio" name="choice-group-unavailable-option-plan" value="priority">
-      <span class="ef-choice__content"><strong>Priority</strong><span>Response within four hours, every day.</span></span>
+      <input type="radio" name="choice-group-unavailable-option-mission" value="${apollo8.id}">
+      <span class="ef-choice__content"><strong>${apollo8.name}</strong><span>${apollo8.crew.length} crew · ${apollo8.destination}</span></span>
     </label>
     <label class="ef-choice">
-      <input type="radio" name="choice-group-unavailable-option-plan" value="dedicated" disabled>
-      <span class="ef-choice__content"><strong>Dedicated engineer</strong><span>Unavailable: requires an Enterprise contract.</span></span>
+      <input type="radio" name="choice-group-unavailable-option-mission" value="${artemisI.id}" disabled>
+      <span class="ef-choice__content"><strong>${artemisI.name}</strong><span>Unavailable for crew comparison: this reference mission was uncrewed.</span></span>
     </label>
   </fieldset>
 </ef-choice-group>`
     },
     {
       id: "mobile-long-options",
-      title: "Long options on a phone",
-      description: "A consent-style question with long primary labels and descriptions at phone width. Every card spans the width and grows taller as its text wraps.",
+      title: "Mission highlights on a phone",
+      description: "Real mission names and longer distinguishing facts stress the choice cards at phone width. Every card spans the width and grows taller as its text wraps.",
       mobile: {
         height: 440,
         notes: [
-          "Cards are full-width grid rows; text wraps inside the card and the card grows in height, so nothing overflows at 320px.",
+          "Cards are full-width grid rows; mission highlights wrap inside the card and the card grows in height, so nothing overflows at 320px.",
           "The indicator stays vertically centred at the inline start of each card, beside the wrapped text.",
-          "Each card is a large touch target (at least 3.25rem tall, full width); tapping anywhere on it selects the option.",
-          "There are no breakpoints: the vertical list is already the narrow layout, and portrait or landscape only changes line lengths."
+          "Each card is a large touch target, and tapping anywhere on it selects the mission.",
+          "There are no breakpoints: portrait or landscape only changes line lengths."
         ]
       },
       html: `<ef-choice-group class="ef-component-tag">
   <fieldset class="ef-choice-group">
-    <legend class="ef-choice-group__legend">What should happen to your shared files when you leave the workspace?</legend>
+    <legend class="ef-choice-group__legend">Mission highlight to feature</legend>
     <label class="ef-choice">
-      <input type="radio" name="choice-group-mobile-long-options-files" value="transfer">
-      <span class="ef-choice__content"><strong>Transfer ownership to the workspace administrator</strong><span>Collaborators keep access. You lose access on your last day.</span></span>
+      <input type="radio" name="choice-group-mobile-long-options-highlight" value="${apollo11.id}">
+      <span class="ef-choice__content"><strong>${apollo11.name}</strong><span>${apollo11.highlight}; launched ${apollo11.launchDate} aboard ${apollo11.launchVehicle}.</span></span>
     </label>
     <label class="ef-choice">
-      <input type="radio" name="choice-group-mobile-long-options-files" value="export">
-      <span class="ef-choice__content"><strong>Export a copy to my personal account, then delete</strong><span>Collaborators lose access after 30 days.</span></span>
+      <input type="radio" name="choice-group-mobile-long-options-highlight" value="${sts31.id}">
+      <span class="ef-choice__content"><strong>${sts31.name}</strong><span>${sts31.highlight}; flew on ${sts31.spacecraft}.</span></span>
     </label>
   </fieldset>
 </ef-choice-group>`
