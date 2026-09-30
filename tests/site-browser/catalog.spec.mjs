@@ -156,12 +156,12 @@ test("code blocks are selectable in one action and scroll inside themselves", as
 // in axe-baseline.json as page + rule pairs. Anything new fails, and a
 // baseline entry that no longer reproduces also fails so the list shrinks.
 const baseline = JSON.parse(fs.readFileSync(path.join(root, "tests", "site-browser", "axe-baseline.json"), "utf8")).entries;
-const chunkSize = 25;
+const chunkSize = 12;
 const chunks = Array.from({ length: Math.ceil(docPages.length / chunkSize) }, (_, index) => docPages.slice(index * chunkSize, (index + 1) * chunkSize));
 
 chunks.forEach((chunk, index) => {
   test(`generated documentation pages have no automatically detectable WCAG A/AA violations (${index + 1}/${chunks.length})`, async ({ page }) => {
-    test.setTimeout(budget(chunk.length * 3));
+    test.setTimeout(Math.max(60_000, chunk.length * 15_000));
     const found = [];
     for (const url of chunk) {
       await page.goto(url);

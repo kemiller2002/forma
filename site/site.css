@@ -641,6 +641,8 @@
     font-size: 2.4rem;
   }
 
+  .agent-page code { overflow-wrap: anywhere; }
+
   .agent-page p,
   .agent-page li {
     max-inline-size: 72ch;
