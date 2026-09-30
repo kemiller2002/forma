@@ -96,11 +96,10 @@ test("scrollable technical regions are keyboard reachable and named", () => {
 });
 
 test("marketing patterns are documented, self-describing, and use only public Forma classes", () => {
-  const meta = fs.readFileSync("tools/component-meta.mjs", "utf8");
   const forma = definedIn(fs.readFileSync("dist/marketing/forma-marketing.css", "utf8"));
   for (const slug of marketingPatterns) {
     const source = pattern(slug);
-    assert.ok(meta.includes(`"${slug}": [`), `${slug} has no documentation metadata`);
+    assert.ok(fs.existsSync(`catalog/components/${slug}.mjs`), `${slug} has no catalog entry`);
     assert.match(source, /class="ef-site"/, `${slug} must be shown inside the MarketingShell context`);
     for (const name of classesIn(source)) assert.ok(forma.has(name), `${slug} uses undefined class .${name}`);
     assert.doesNotMatch(source, /echelon/i, `${slug} embeds a brand name in a generic pattern`);

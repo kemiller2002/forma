@@ -113,7 +113,7 @@ test("published Forma documentation has no runtime script elements", () => {
 });
 
 test("index and agent documentation are complete", () => {
-  const index = fs.readFileSync(path.join(output, "index.html"), "utf8");
+  const index = fs.readFileSync(path.join(output, "components", "index.html"), "utf8");
   for (const slug of patterns) {
     assert.match(index, new RegExp(`components/${slug}/`));
   }
@@ -232,7 +232,7 @@ test("Visual Engineering stress screens remain zero-runtime and preserve custom 
   for (const slug of patterns) {
     const html = fs.readFileSync(path.join(output, "components", slug, "index.html"), "utf8");
     assert.equal(/<script\b/i.test(html), false);
-    const stress = html.match(new RegExp(`<div class="ve-stress-grid"[\\s\\S]*?<\\/div>\\s*<\\/div>\\s*<details>`))?.[0] ?? "";
+    const stress = html.split('<div class="ve-stress-grid"')[1]?.split('<nav class="pager"')[0] ?? "";
     assert.match(stress, new RegExp(`<ef-${slug}\\b`), `${slug} stress specimens lost the public authoring tag`);
   }
 });

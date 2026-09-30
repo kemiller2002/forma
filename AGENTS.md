@@ -76,6 +76,11 @@ presentation vocabulary.
    semantic forks.
 8. Run `npm run site:check` whenever canonical patterns or component styling
    change; it includes generated-site mobile regression coverage.
+9. Every public component has a catalog entry in
+   `catalog/components/<slug>.mjs` that generates its documentation page.
+   Adding or changing a pattern or a public `.ef-*` block means updating that
+   entry; follow `docs/CATALOG-AUTHORING.md`. `npm run catalog:check` fails
+   until coverage is complete.
 
 ## Handoff
 

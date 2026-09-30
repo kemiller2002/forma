@@ -78,6 +78,17 @@ const customPropertyRecords = css =>
   [...stripComments(css).matchAll(/(--ef-[a-z0-9-]+)\s*:\s*([^;{}]+);/g)]
     .map(match => ({ name: match[1], value: match[2].trim() }));
 
+// Custom properties mentioned (declared or consumed) inside rules for each root.
+const propertiesByRoot = css =>
+  [...stripComments(css).matchAll(/([^{};]+)\{([^{}]*)\}/g)]
+    .filter(match => !match[1].trim().startsWith("@"))
+    .reduce((index, match) => {
+      const roots = [...new Set(classesIn(match[1]).map(rootOf))];
+      const properties = [...match[2].matchAll(/(--ef-[a-z0-9-]+)/g)].map(item => item[1]);
+      roots.forEach(root => index.set(root, new Set([...(index.get(root) ?? []), ...properties])));
+      return index;
+    }, new Map());
+
 const consumedCustomProperties = css =>
   [...new Set([...stripComments(css).matchAll(/var\(\s*(--ef-[a-z0-9-]+)/g)].map(match => match[1]))];
 
@@ -96,6 +107,7 @@ export const buildHookIndex = css => {
   const roots = sortedUnique(records.filter(record => record.kind === "class").map(record => record.root));
   const byRoot = groupBy(records, record => record.root);
   const propertyNames = sortedUnique([...declared.map(item => item.name), ...consumed]);
+  const mentioned = propertiesByRoot(css);
 
   const entries = roots.map(root => {
     const rootRecords = byRoot.get(root) ?? [];
@@ -104,8 +116,10 @@ export const buildHookIndex = css => {
       .map(([name, items]) => ({ name, values: sortedUnique(items.map(item => item.value).filter(value => value !== null)) }))
       .sort((a, b) => a.name.localeCompare(b.name));
     const prefix = `--${root}-`;
+    // A property belongs to a root when it carries the root's name and the
+    // root's own rules use it (so --ef-split-pane-* never lands on ef-split).
     const customProperties = propertyNames
-      .filter(name => name.startsWith(prefix))
+      .filter(name => name.startsWith(prefix) && (mentioned.get(root)?.has(name) ?? false))
       .map(name => ({ name, default: declared.find(item => item.name === name)?.value ?? null }));
     return [root, Object.freeze({
       root,

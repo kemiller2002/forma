@@ -38,6 +38,18 @@ const proseOf = component => [
   component.api?.form
 ].filter(Boolean);
 
+// Classes that canonical patterns use but the stylesheet does not style are
+// structural hooks of the published contract (see patternOnlyClasses).
+export const patternOnlyClasses = catalog =>
+  [...new Set(catalog.components.flatMap(item => (item.pattern ? markupClasses(item.pattern) : [])))]
+    .filter(name => !catalog.hookIndex.classes.has(name))
+    .sort();
+
+const knownClassIn = catalog => {
+  const patternClasses = new Set(patternOnlyClasses(catalog));
+  return name => catalog.hookIndex.classes.has(name) || patternClasses.has(name);
+};
+
 const unsafeMarkup = html =>
   [/<script\b/i, /\son[a-z]+\s*=/i, /javascript\s*:/i, /<iframe\b/i].filter(pattern => pattern.test(html));
 
@@ -83,6 +95,7 @@ const exampleRules = (catalog, component) => {
   const ids = examples.map(example => example.id);
   const slugs = new Set(catalog.components.map(item => item.slug));
   const patternAttributes = new Set(catalog.components.flatMap(item => (item.pattern ? markupAttributes(item.pattern) : [])));
+  const knownClass = knownClassIn(catalog);
   const counts = [
     [scenario.length < MIN_SCENARIO_EXAMPLES, `needs at least ${MIN_SCENARIO_EXAMPLES} scenario examples besides Basic (has ${scenario.length})`],
     [mobile.length < MIN_MOBILE_EXAMPLES, "needs at least one explicit mobile example (mobile: { notes: [...] })"],
@@ -95,6 +108,7 @@ const exampleRules = (catalog, component) => {
     const tags = markupTags(html);
     return [
       [!isKebab(example.id ?? ""), `${where}: id must be kebab-case`],
+      [["basic", "mobile-baseline"].includes(example.id), `${where}: id is reserved for a generated example`],
       [!nonEmptyText(example.title), `${where}: title is required`],
       [/^(example|demo|sample)\s*\d*$/i.test(example.title ?? ""), `${where}: use a scenario title, not "${example.title}"`],
       [!nonEmptyText(example.description), `${where}: description is required`],
@@ -102,8 +116,8 @@ const exampleRules = (catalog, component) => {
       [!new RegExp(`<ef-${slug}\\s+class="ef-component-tag"`).test(html), `${where}: must render the real component inside <ef-${slug} class="ef-component-tag">`],
       ...unsafeMarkup(html).map(pattern => [true, `${where}: forbidden executable markup ${pattern}`]),
       ...tags.filter(tag => !slugs.has(tag.slice(3))).map(tag => [true, `${where}: <${tag}> is not a catalog component`]),
-      ...markupClasses(html).filter(name => !catalog.hookIndex.classes.has(name))
-        .map(name => [true, `${where}: class "${name}" does not exist in Forma CSS`]),
+      ...markupClasses(html).filter(name => !knownClass(name))
+        .map(name => [true, `${where}: class "${name}" is neither in Forma CSS nor in a canonical pattern`]),
       ...markupAttributes(html).filter(name => name.startsWith("data-ef-") && !catalog.hookIndex.attributeNames.has(name) && !patternAttributes.has(name))
         .map(name => [true, `${where}: attribute "${name}" is neither styled by Forma CSS nor used by a canonical pattern`]),
       [Boolean(example.mobile) && !nonEmptyList(example.mobile.notes), `${where}: mobile.notes must explain what changes at narrow widths`]
@@ -187,7 +201,7 @@ const compositionRules = catalog => {
       tags.length < 3 && "a composition should combine at least three catalog components",
       ...unsafeMarkup(html).map(pattern => `forbidden executable markup ${pattern}`),
       ...tags.filter(tag => !slugs.has(tag.slice(3))).map(tag => `<${tag}> is not a catalog component`),
-      ...markupClasses(html).filter(name => !catalog.hookIndex.classes.has(name)).map(name => `class "${name}" does not exist in Forma CSS`)
+      ...markupClasses(html).filter(name => !knownClassIn(catalog)(name)).map(name => `class "${name}" is neither in Forma CSS nor in a canonical pattern`)
     ].filter(Boolean).map(message => problem(`composition:${composition.slug}`, message));
   });
 };
@@ -209,7 +223,7 @@ export const validateCatalog = (catalog, only = []) => {
   ];
 };
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const only = process.argv.slice(2);
   const catalog = await loadCatalog();
   const problems = validateCatalog(catalog, only);

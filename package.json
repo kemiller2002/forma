@@ -63,7 +63,8 @@
     "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --",
     "release:check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:css && npm run test:package && playwright test tests/browser/marketing.spec.mjs && npm run site:check",
     "test:figma": "node --test tests/figma-contract.test.mjs",
-    "catalog:check": "node tools/catalog/validate.mjs"
+    "catalog:check": "node tools/catalog/validate.mjs && node tools/catalog/inventory.mjs --check",
+    "catalog:inventory": "node tools/catalog/inventory.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
