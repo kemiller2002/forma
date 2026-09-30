@@ -165,16 +165,30 @@ chunks.forEach((chunk, index) => {
     const found = [];
     for (const url of chunk) {
       await page.goto(url);
-      // Stress specimens and category previews are inert, aria-hidden visual
-      // screens (one deliberately lowers contrast), so they are excluded.
-      const results = await new AxeBuilder({ page })
-        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
-        .exclude(".ve-stress-grid")
+      // Pass 1: documentation chrome, every rule. Pass 2: live examples.
+      // A catalog page deliberately shows several instances of one component,
+      // so identical landmark names inside examples (landmark-unique) are
+      // expected there and only there. Stress specimens and category previews
+      // are inert, aria-hidden visual screens (one deliberately lowers
+      // contrast), so both passes exclude them.
+      const tags = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
+      const chrome = await new AxeBuilder({ page })
+        .withTags(tags)
+        .exclude(".example-canvas")
         .exclude(".catalog-card__preview")
         .options({ iframes: false })
         .analyze();
+      const examples = await page.locator(".example-canvas").count()
+        ? await new AxeBuilder({ page })
+          .withTags(tags)
+          .include(".example-canvas")
+          .exclude(".ve-stress-grid")
+          .disableRules(["landmark-unique"])
+          .options({ iframes: false })
+          .analyze()
+        : { violations: [] };
       const pagePath = url.replace("/site-dist/", "").replace(/index\.html$/, "");
-      for (const violation of results.violations) {
+      for (const violation of [...chrome.violations, ...examples.violations]) {
         found.push({ page: pagePath, rule: violation.id, target: violation.nodes[0]?.target.join(" ") ?? "" });
       }
     }
