@@ -17,6 +17,10 @@ jobs:
   conformance:
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for commit batch
+        if: github.event_name != 'workflow_dispatch'
+        run: sleep 600
+
       - name: Check out repository
         uses: actions/checkout@v6
 

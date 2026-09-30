@@ -9,10 +9,16 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: validate-forma-feature-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate-forma:
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for commit batch
+        run: sleep 600
       - uses: actions/checkout@v4
         with:
           ref: feature/component-showcase-site

@@ -22,7 +22,19 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  debounce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    concurrency:
+      group: forma-release-debounce-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: Wait for commit batch
+        if: github.event_name == 'push'
+        run: sleep 600
+
   release:
+    needs: debounce
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
