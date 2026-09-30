@@ -99,7 +99,7 @@ export default {
     </div>
     <datalist id="combobox-mobile-crew-member-options">
       <option value="${apollo11.crew[0]}"></option>
-      <option value="${apollo11.crew[1]}"></option>
+      <option value="${apollo11.crew[2]}"></option>
       <option value="${sts31.crew[3]}"></option>
       <option value="${sts95.crew[6]}"></option>
     </datalist>
