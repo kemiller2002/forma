@@ -1,3 +1,11 @@
+import { missionById } from "../example-data/nasa-spaceflight.mjs";
+
+const artemisI = missionById("artemis-i");
+const sts95 = missionById("sts-95");
+const sts31 = missionById("sts-31");
+const apollo13 = missionById("apollo-13");
+const apollo11 = missionById("apollo-11");
+
 export default {
   name: "Data grid",
   category: "data",
@@ -28,42 +36,37 @@ export default {
   examples: [
     {
       id: "descending-sort",
-      title: "Sorted by due date, newest first",
-      description: "The application has sorted by Due in descending order, so only that header carries `aria-sort=\"descending\"` and shows a down arrow. Row actions name their record so a list of Open buttons is not ambiguous out of context.",
+      title: "Sorted by launch date, newest first",
+      description: "The application has sorted completed NASA missions by launch date in descending order, so only that header carries aria-sort=\"descending\". Row actions name their mission so repeated Open buttons stay unambiguous.",
       html: `<ef-data-grid class="ef-component-tag">
-  <div class="ef-data-grid" role="region" tabindex="0" aria-label="Invoices by due date">
+  <div class="ef-data-grid" role="region" tabindex="0" aria-label="NASA missions by launch date">
     <table>
-      <caption class="ef-visually-hidden">Invoices sorted by due date, newest first</caption>
-      <thead>
-        <tr>
-          <th scope="col"><button type="button">Invoice</button></th>
-          <th scope="col"><button type="button">Customer</button></th>
-          <th scope="col" aria-sort="descending"><button type="button">Due</button></th>
-          <th scope="col"><button type="button">Status</button></th>
-          <th scope="col"><span class="ef-visually-hidden">Actions</span></th>
-        </tr>
-      </thead>
+      <caption class="ef-visually-hidden">Reference missions sorted by launch date, newest first</caption>
+      <thead><tr>
+        <th scope="col"><button type="button">Mission</button></th>
+        <th scope="col"><button type="button">Program</button></th>
+        <th scope="col" aria-sort="descending"><button type="button">Launch</button></th>
+        <th scope="col"><button type="button">Spacecraft</button></th>
+        <th scope="col"><span class="ef-visually-hidden">Actions</span></th>
+      </tr></thead>
       <tbody>
         <tr>
-          <td data-label="Invoice">INV-1051</td>
-          <td data-label="Customer">Harbor Freight Partners</td>
-          <td data-label="Due"><time datetime="2026-11-02">Nov 2, 2026</time></td>
-          <td data-label="Status"><span class="ef-status-lozenge">Draft</span></td>
-          <td data-label="Actions"><button type="button" aria-label="Open INV-1051">Open</button></td>
+          <td data-label="Mission">${artemisI.name}</td><td data-label="Program">${artemisI.program}</td>
+          <td data-label="Launch"><time datetime="${artemisI.launchDate}">${artemisI.launchDate}</time></td>
+          <td data-label="Spacecraft">${artemisI.spacecraft}</td>
+          <td data-label="Actions"><button type="button" aria-label="Open ${artemisI.name}">Open</button></td>
         </tr>
         <tr>
-          <td data-label="Invoice">INV-1047</td>
-          <td data-label="Customer">Northstar Labs</td>
-          <td data-label="Due"><time datetime="2026-10-18">Oct 18, 2026</time></td>
-          <td data-label="Status"><span class="ef-status-lozenge" data-state="unknown">Payment unconfirmed</span></td>
-          <td data-label="Actions"><button type="button" aria-label="Open INV-1047">Open</button></td>
+          <td data-label="Mission">${sts95.name}</td><td data-label="Program">${sts95.program}</td>
+          <td data-label="Launch"><time datetime="${sts95.launchDate}">${sts95.launchDate}</time></td>
+          <td data-label="Spacecraft">${sts95.spacecraft}</td>
+          <td data-label="Actions"><button type="button" aria-label="Open ${sts95.name}">Open</button></td>
         </tr>
         <tr>
-          <td data-label="Invoice">INV-1042</td>
-          <td data-label="Customer">Acme Manufacturing</td>
-          <td data-label="Due"><time datetime="2026-10-04">Oct 4, 2026</time></td>
-          <td data-label="Status"><span class="ef-status-lozenge" data-state="attention">Overdue</span></td>
-          <td data-label="Actions"><button type="button" aria-label="Open INV-1042">Open</button></td>
+          <td data-label="Mission">${sts31.name}</td><td data-label="Program">${sts31.program}</td>
+          <td data-label="Launch"><time datetime="${sts31.launchDate}">${sts31.launchDate}</time></td>
+          <td data-label="Spacecraft">${sts31.spacecraft}</td>
+          <td data-label="Actions"><button type="button" aria-label="Open ${sts31.name}">Open</button></td>
         </tr>
       </tbody>
     </table>
@@ -72,70 +75,62 @@ export default {
     },
     {
       id: "empty-result",
-      title: "Empty result",
-      description: "The query returned no records. The header row stays so the columns still explain what would appear, and an [[empty-state]] after the region says why the table is empty and how to recover. Forma does not decide between empty, loading and failed; the application renders the right one.",
+      title: "Empty mission filter",
+      description: "The filter asks for an uncrewed Apollo mission, which the reference collection does not contain. The header row remains to explain the shape while an empty state says why the result is empty and how to recover.",
       html: `<ef-data-grid class="ef-component-tag">
   <div class="ef-stack" data-density="compact">
-    <div class="ef-data-grid" role="region" tabindex="0" aria-label="Overdue invoices">
+    <div class="ef-data-grid" role="region" tabindex="0" aria-label="Uncrewed Apollo missions">
       <table>
-        <caption class="ef-visually-hidden">Overdue invoices</caption>
-        <thead>
-          <tr>
-            <th scope="col"><button type="button">Invoice</button></th>
-            <th scope="col"><button type="button">Customer</button></th>
-            <th scope="col" aria-sort="ascending"><button type="button">Due</button></th>
-            <th scope="col"><button type="button">Status</button></th>
-          </tr>
-        </thead>
+        <caption class="ef-visually-hidden">Uncrewed Apollo missions</caption>
+        <thead><tr>
+          <th scope="col"><button type="button">Mission</button></th>
+          <th scope="col"><button type="button">Program</button></th>
+          <th scope="col" aria-sort="ascending"><button type="button">Launch</button></th>
+          <th scope="col"><button type="button">Crew status</button></th>
+        </tr></thead>
         <tbody></tbody>
       </table>
     </div>
     <section class="ef-empty-state" aria-labelledby="data-grid-empty-result-title">
       <div class="ef-empty-state__symbol" aria-hidden="true">□</div>
-      <h3 id="data-grid-empty-result-title">No overdue invoices</h3>
-      <p>Every invoice due before today has been paid or written off.</p>
-      <button type="button">Show all invoices</button>
+      <h3 id="data-grid-empty-result-title">No uncrewed Apollo missions in this collection</h3>
+      <p>Remove the crew-status filter or choose Artemis to see the uncrewed ${artemisI.name} reference record.</p>
+      <button type="button">Clear crew filter</button>
     </section>
   </div>
 </ef-data-grid>`
     },
     {
       id: "wide-record-set",
-      title: "Many columns and long values",
-      description: "Seven columns exceed a tablet-width container, so the table scrolls inside the labelled region rather than widening the page. The region is focusable, so keyboard users can scroll it with the arrow keys. Long customer names wrap inside their cells.",
+      title: "Wide mission records",
+      description: "Seven factual columns exceed a tablet-width container, so the table scrolls inside the labelled region rather than widening the page. Real crew and destination values provide natural content stress.",
       html: `<ef-data-grid class="ef-component-tag">
-  <div class="ef-data-grid" role="region" tabindex="0" aria-label="Shipment records">
+  <div class="ef-data-grid" role="region" tabindex="0" aria-label="NASA mission records">
     <table>
-      <caption class="ef-visually-hidden">Shipment records</caption>
-      <thead>
-        <tr>
-          <th scope="col" aria-sort="ascending"><button type="button">Shipment</button></th>
-          <th scope="col"><button type="button">Consignee</button></th>
-          <th scope="col"><button type="button">Origin</button></th>
-          <th scope="col"><button type="button">Destination</button></th>
-          <th scope="col"><button type="button">Weight</button></th>
-          <th scope="col"><button type="button">Status</button></th>
-          <th scope="col"><span class="ef-visually-hidden">Actions</span></th>
-        </tr>
-      </thead>
+      <caption class="ef-visually-hidden">NASA mission records</caption>
+      <thead><tr>
+        <th scope="col" aria-sort="ascending"><button type="button">Mission</button></th>
+        <th scope="col"><button type="button">Program</button></th>
+        <th scope="col"><button type="button">Spacecraft</button></th>
+        <th scope="col"><button type="button">Launch vehicle</button></th>
+        <th scope="col"><button type="button">Destination</button></th>
+        <th scope="col"><button type="button">Crew</button></th>
+        <th scope="col"><span class="ef-visually-hidden">Actions</span></th>
+      </tr></thead>
       <tbody>
         <tr>
-          <td data-label="Shipment"><span class="ef-identifier">SHP-2026-000418</span></td>
-          <td data-label="Consignee">Rheinland Präzisionswerkzeuge und Industriebedarf GmbH</td>
-          <td data-label="Origin">Rotterdam, NL</td>
-          <td data-label="Destination">Duisburg, DE</td>
-          <td data-label="Weight">12,480 kg</td>
-          <td data-label="Status"><span class="ef-status-lozenge" data-state="ok">Delivered</span></td>
-          <td data-label="Actions"><button type="button" aria-label="Open SHP-2026-000418">Open</button></td>
+          <td data-label="Mission"><span class="ef-identifier">${apollo13.name}</span></td>
+          <td data-label="Program">${apollo13.program}</td><td data-label="Spacecraft">${apollo13.spacecraft}</td>
+          <td data-label="Launch vehicle">${apollo13.launchVehicle}</td><td data-label="Destination">${apollo13.destination}</td>
+          <td data-label="Crew">${apollo13.crew.join(", ")}</td>
+          <td data-label="Actions"><button type="button" aria-label="Open ${apollo13.name}">Open</button></td>
         </tr>
         <tr>
-          <td data-label="Shipment"><span class="ef-identifier">SHP-2026-000419</span></td>
-          <td data-label="Consignee">Coastal Grain Cooperative</td>
-          <td data-label="Origin">Antwerp, BE</td>
-          <td data-label="Destination">Lyon, FR</td>
-          <td data-label="Weight">—</td>
-          <td data-label="Status"><span class="ef-status-lozenge" data-state="blocked">Held at customs</span></td>
-          <td data-label="Actions"><button type="button" aria-label="Open SHP-2026-000419">Open</button></td>
+          <td data-label="Mission"><span class="ef-identifier">${artemisI.name}</span></td>
+          <td data-label="Program">${artemisI.program}</td><td data-label="Spacecraft">${artemisI.spacecraft}</td>
+          <td data-label="Launch vehicle">${artemisI.launchVehicle}</td><td data-label="Destination">${artemisI.destination}</td>
+          <td data-label="Crew">Uncrewed</td>
+          <td data-label="Actions"><button type="button" aria-label="Open ${artemisI.name}">Open</button></td>
         </tr>
       </tbody>
     </table>
@@ -144,42 +139,37 @@ export default {
     },
     {
       id: "mobile-record-projection",
-      title: "Mobile record projection",
-      description: "At phone width the header row disappears and each row becomes a bordered record whose cells print their `data-label`. The row action stretches to the full record width.",
+      title: "Mobile mission projection",
+      description: "At phone width the header row disappears and each mission becomes a bordered record whose cells print their data-label. The row action stretches to the full record width.",
       mobile: {
         height: 560,
         notes: [
-          "At 30rem (480px) and below the table, rows and cells switch to block display; `thead` is hidden and every `td` shows its `data-label` in a 6.5rem label column beside the value.",
-          "The region drops its border and horizontal scrolling; each record gets its own border and bottom margin instead, so nothing scrolls sideways at 320px.",
-          "Children of the `td[data-label=\"Actions\"]` cell stretch to 100% width, giving a full-width touch target per record.",
-          "Header sort buttons are hidden with `thead`, so sorting is not reachable on phones from the grid itself. Offer sort in a [[collection-toolbar]] or equivalent control.",
-          "Rotating to landscape above 30rem restores the table layout inside the scrolling region."
+          "At 30rem and below rows and cells switch to block display; thead is hidden and every data cell prints its data-label beside the value.",
+          "The region drops horizontal scrolling and each mission gets its own bordered record, so nothing scrolls sideways at 320px.",
+          "The action cell stretches its button to 100% width for a full-width touch target.",
+          "Header sort buttons are hidden on phones; offer sorting through a collection toolbar when mobile sorting is required."
         ]
       },
       html: `<ef-data-grid class="ef-component-tag">
-  <div class="ef-data-grid" role="region" tabindex="0" aria-label="Open support tickets">
+  <div class="ef-data-grid" role="region" tabindex="0" aria-label="Apollo reference missions">
     <table>
-      <caption class="ef-visually-hidden">Open support tickets</caption>
-      <thead>
-        <tr>
-          <th scope="col" aria-sort="ascending"><button type="button">Ticket</button></th>
-          <th scope="col"><button type="button">Subject</button></th>
-          <th scope="col"><button type="button">Status</button></th>
-          <th scope="col"><span class="ef-visually-hidden">Actions</span></th>
-        </tr>
-      </thead>
+      <caption class="ef-visually-hidden">Apollo reference missions</caption>
+      <thead><tr>
+        <th scope="col" aria-sort="ascending"><button type="button">Mission</button></th>
+        <th scope="col"><button type="button">Destination</button></th>
+        <th scope="col"><button type="button">Status</button></th>
+        <th scope="col"><span class="ef-visually-hidden">Actions</span></th>
+      </tr></thead>
       <tbody>
         <tr>
-          <td data-label="Ticket">SUP-3120</td>
-          <td data-label="Subject">Cannot export the quarterly usage report as CSV</td>
-          <td data-label="Status"><span class="ef-status-lozenge" data-state="attention">Awaiting reply</span></td>
-          <td data-label="Actions"><button type="button" aria-label="Open SUP-3120">Open</button></td>
+          <td data-label="Mission">${apollo11.name}</td><td data-label="Destination">${apollo11.destination}</td>
+          <td data-label="Status"><span class="ef-status-lozenge" data-state="ok">${apollo11.status}</span></td>
+          <td data-label="Actions"><button type="button" aria-label="Open ${apollo11.name}">Open</button></td>
         </tr>
         <tr>
-          <td data-label="Ticket">SUP-3124</td>
-          <td data-label="Subject">Single sign-on loop after password change</td>
-          <td data-label="Status"><span class="ef-status-lozenge">New</span></td>
-          <td data-label="Actions"><button type="button" aria-label="Open SUP-3124">Open</button></td>
+          <td data-label="Mission">${apollo13.name}</td><td data-label="Destination">${apollo13.destination}</td>
+          <td data-label="Status"><span class="ef-status-lozenge" data-state="ok">${apollo13.status}</span></td>
+          <td data-label="Actions"><button type="button" aria-label="Open ${apollo13.name}">Open</button></td>
         </tr>
       </tbody>
     </table>
