@@ -27,6 +27,9 @@ When an agent creates or changes UI:
 7. Keep transition legality, obligations, scoring, permissions, and domain
    invariants in Ordo/application state, never in Forma.
 8. Validate the result with repository and accessibility tests.
+9. When an object has metadata, keep the metadata in the consuming model and render only the safe fields required by the UI; do not use CSS classes or color as the metadata store.
+10. Workflow/diagram objects may use authored colors, but keep color independent from semantic type/status and always preserve a non-color cue.
+11. For Figma/library work, read `docs/FIGMA.md` and use `figma/component-contracts.json`; never invent Figma node URLs or a second token source.
 
 ## How to consume Forma
 
@@ -105,6 +108,7 @@ Before changing application CSS for customer identity or presentation, read
 - Runtime brand/theme/skin selection, persistence, remote loading, and interactive preview behavior belong to the consuming application, normally through Limen.
 - Brand terminology and asset references are application/build inputs; they are not hidden CSS content.
 - Brand or skin changes must never alter legal actions, permissions, validation, scoring, obligations, or domain transitions.
+- Do not restate semantic colors under `@media (forced-colors: active)` in a theme, brand or skin: Forma projects every `--ef-color-*` token to system colors there, and component state rules own `Highlight` usage.
 
 ## Public component tags
 
@@ -144,6 +148,29 @@ Forma's controls and transient surfaces share one physics-derived CSS motion voc
 - Modal flyouts are Forma's canonical left/right modal drawer baseline and use native dialog behavior; swipe/drag/resizing, bottom sheets, and persistent nonmodal drawers belong to Limen/application code.
 - Read `requirements/MOTION-AND-INTERACTION.md` before adding a new animated pattern.
 
+### Choosing the motion model before the timing
+
+Every animation represents one of five phenomena (MOT-010). Choose the model first, then use only that model's variables:
+
+| Model | Use for | Timing variables |
+| --- | --- | --- |
+| inertial / spring | an object with perceived mass settling after activation or release (switch thumb, selection indicator, surface entry, press) | `--ef-motion-inertia-duration`, `--ef-motion-exit-duration`, `--ef-motion-press-duration`; `--ef-motion-spring-easing`, `--ef-motion-damped-easing` |
+| gravity-derived | a small vertical directional cue; timing ignores mass | `--ef-motion-gravity-duration`; `--ef-motion-damped-easing` |
+| constant-velocity / cadence | repeated activity or a bounded discrete sequence | `--ef-motion-cadence-period`; `--ef-motion-cadence-easing` (`linear`) |
+| direct manipulation / authoritative value | drag, resize, scroll-linked, native range and determinate progress | `--ef-motion-direct-duration` (`0ms`); `--ef-motion-direct-easing` |
+| perceptual interpolation | opacity, color, background, border, shadow, backdrop; never assigned mass | `--ef-motion-perceptual-duration`, `--ef-motion-perceptual-emphasis-duration`; `--ef-motion-perceptual-easing` |
+
+`--ef-motion-state-duration` is a legacy compatibility variable: it derives from inertial mass, so shipped selectors must not use it for non-spatial change.
+
+### Adding or changing an animation legally
+
+1. Pick the model from the table above. Do not invent a sixth model in CSS; record the gap through ROS first (MOT-030).
+2. Use only that model's variables. Literal durations/easings are allowed only as a var() fallback that restates the token value, as a canonical-variable definition, or as a literal justified on the classification entry with a requirement reference (MOT-012).
+3. Classify every animated selector/property in `catalog/motion/classification.json` and declare its reduced-motion strategy (MOT-027): `explicit`, `scope-tokens`, `global`, `stop` (repeated/sequenced), `brief` (non-spatial only) or `preserve` (direct manipulation only).
+4. Add or extend a browser test for the behavior (not just the timing) and list it under the matching requirement in `catalog/motion/conformance.json`; the gate verifies that every listed test exists.
+5. Run `npm run test:motion` (part of `npm run check`, `release:check` and CI). It runs `node tools/motion-audit.mjs --strict` and fails on any new unclassified track, unexplained literal, generic-token timing, model/token mismatch, missing or unverified reduced-motion substitution, repeated motion that does not stop, the animated `transform` shorthand, unclassified keyframes or starting styles, and any stale classification.
+6. The debt ledger `catalog/motion/debt.json` is closed and must stay empty: strict mode fails while it has any entry. Fix the finding; never record it.
+
 ## Mobile contract
 
 Every Forma component must have a usable 320 CSS px presentation. Agents must:
@@ -171,6 +198,19 @@ Before claiming consequential UI complete, apply `requirements/VISUAL-ENGINEERIN
 - Treat these as engineering screens, not proof of universal human performance.
 - For consequential screens with competing regions, declare the intended attention path with `attention-path` and use `emphasis-budget` when one independently scoped decision region should have a single primary claimant.
 - A `one-primary` budget applies to its own direct region only. Nested independent budgets are permitted. Do not interpret visual emphasis as severity, authority, permission, or transition legality.
+
+## Figma contract
+
+Figma mirrors Forma; it does not own Forma. For Figma-facing changes:
+
+- keep `tokens/echelon.tokens.json` authoritative for token values;
+- keep `patterns/*.html` authoritative for semantic anatomy;
+- preserve the shared Figma property vocabulary in `figma/component-contracts.json`;
+- use real published library node URLs before adding Code Connect templates;
+- use the current template-file Code Connect workflow rather than legacy framework parsers;
+- run `npm run test:figma` before claiming coverage complete.
+
+A complete local Figma contract does not imply that the external Figma library or Code Connect publication has been verified.
 
 ## Verification
 
@@ -266,3 +306,20 @@ follow `docs/marketing/MIGRATION-CONTRACT.md`.
 - A presentation need that other sites could share is a Forma capability gap
   (`requirements/MARKETING-PRESENTATION.md`, MKT-LOCAL-4). Do not build a
   local look-alike.
+
+
+## Object metadata and diagram/workflow color
+
+Read `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md` before adding metadata-rich or diagram/workflow presentation.
+
+- Object identity, metadata, type/status, and color are separate concepts.
+- Forma may render metadata but does not own or calculate it.
+- Use semantic metadata presentation rather than burying important values in `data-*` attributes.
+- Do not put secrets or suppressed values in attributes, CSS content, hidden text, or diagnostics.
+- Workflow/diagram items may have authored fill, stroke, accent, connector, and when safe foreground colors.
+- Prefer Forma tokens/palette slots; explicit consumer literals are allowed only when the consuming product contract permits them.
+- Never infer workflow meaning from color. A metadata-to-color rule must be explicit application/profile data.
+- Verify dark/light, forced colors, grayscale, and backgrounds-disabled output when diagram color matters.
+- Graph topology, routing, drag/drop, commands, workflow execution, and legal transitions remain outside Forma.
+- Render diagrams with the public `.ef-diagram*` family (`patterns/diagram.html`); pass resolved geometry and colors only through the documented custom properties. [ADR-0004](decisions/ADR-0004-diagram-presentation-boundary.md) lists what Forma owns, what stays Studio editor chrome, and the deferred gaps. Report a missing visual as a Forma issue instead of adding private diagram CSS.
+- Give every connector a matching item in `.ef-diagram__relations`, and give every node visible kind text.

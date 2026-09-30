@@ -111,3 +111,40 @@ test("generated Visual Engineering stress specimens remain contained on phones",
     }
   }
 });
+
+// FORMA-MOT-009: the documentation site demonstrates the library's motion
+// grammar instead of site-local timing.
+test("site buttons use the shared perceptual motion and never move on hover", async ({ page }) => {
+  await page.goto("/site-dist/index.html");
+  const button = page.locator("a.ef-button").first();
+  await button.scrollIntoViewIfNeeded();
+  const style = await button.evaluate((element) => {
+    const probe = document.createElement("span");
+    probe.style.animationDelay = "var(--ef-motion-perceptual-duration)";
+    document.body.append(probe);
+    const perceptual = getComputedStyle(probe).animationDelay;
+    probe.remove();
+    const computed = getComputedStyle(element);
+    return { perceptual, properties: computed.transitionProperty, durations: computed.transitionDuration };
+  });
+  expect(style.properties).toBe("background, color");
+  style.durations.split(", ").forEach((duration) => expect(duration).toBe(style.perceptual));
+  const before = await button.boundingBox();
+  await button.hover();
+  // A transition replaced mid-flight rejects `finished` with AbortError; only settling matters.
+  await button.evaluate((element) => Promise.all(element.getAnimations().map((animation) => animation.finished.catch(() => null))));
+  const after = await button.boundingBox();
+  expect(after.y).toBeCloseTo(before.y, 1);
+  expect(await button.evaluate((element) => getComputedStyle(element).transform)).toBe("none");
+});
+
+test("reduced motion removes site transitions and smooth scrolling", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/site-dist/index.html");
+  const state = await page.evaluate(() => ({
+    scroll: getComputedStyle(document.documentElement).scrollBehavior,
+    transition: getComputedStyle(document.querySelector("a.ef-button")).transitionProperty
+  }));
+  expect(state.scroll).toBe("auto");
+  expect(state.transition).toBe("none");
+});

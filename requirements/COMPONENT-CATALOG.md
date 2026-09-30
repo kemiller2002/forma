@@ -535,6 +535,14 @@ Tooltips are supplemental only. Required information and essential actions shall
 
 Support hover and keyboard focus, delayed open/close, pointer-safe hover travel, and reduced motion.
 
+Implemented as `.ef-tooltip` (`patterns/tooltip.html`, FORMA-MOT-004):
+
+- **Opening.** The native button opens the `popover` surface with `popovertarget`, by click, tap, Enter or Space. Escape and outside presses close it. No path depends on hover.
+- **Hover and focus.** Where interest invokers exist, `interestfor` on the same button also opens it on hover or focus. The browser owns the delay and pointer-safe hover travel.
+- **Placement.** Anchor positioning with `flip-block`/`flip-inline` fallbacks keeps it in the viewport. Without support, the browser's top-layer placement remains readable.
+- **Motion.** Light weight, tiny origin displacement, perceptual opacity, and a shorter exit. Reduced motion removes the displacement.
+- **Boundaries.** Focus, dismissal, timeout and accessible-description policy beyond the native popover remain application/Limen concerns.
+
 ### P0: Menu and menu button
 Pattern: `.ef-menu` for ordinary action lists using native Popover HTML; full ARIA menu behavior remains a Limen visual/behavior contract.
 
@@ -598,6 +606,12 @@ Tours shall never block access to the underlying feature merely because onboardi
 - ef-error-summary
 
 Requirements include semantic live-region policy, duplicate-announcement prevention, determinate/indeterminate distinction, pause/dismiss policy, and unknown outcome support.
+
+Implemented loading/progress contracts (FORMA-MOT-005, MOT-016/MOT-017):
+
+- `.ef-spinner` (`patterns/spinner.html`): a visible label in a `role="status"` region plus a decorative indicator rotating at the named cadence `--ef-motion-cadence-rotation-period`; `data-ef-state="idle"` stops it; static under reduced motion.
+- `.ef-progress` (`patterns/progress-bar.html`): native `progress` projected directly from the authoritative value with no transition, so it never shows more than the application reports; the indeterminate variant keeps explicit text.
+- `.ef-skeleton` shimmers at `--ef-motion-cadence-period` only while `aria-busy="true"`.
 
 Alert and toast motion requirements:
 
@@ -705,6 +719,13 @@ Support text/structured differences, additions/removals/changes, keyboard naviga
 ### P1: Resizable split pane
 Visual contract: `.ef-split-pane` (Limen behavior required)
 
+Implemented presentation (FORMA-MOT-006):
+
+- `patterns/resizable-split-pane.html`: `data-ef-resizable`, an application-supplied `--ef-split-size` clamped to legal bounds in CSS, a focusable `role="separator"` with value semantics, and direct tracking while `data-ef-manipulation="resizing"`.
+- Damped settling on release or keyboard step; `data-ef-collapsed`.
+- Stacked without the separator at narrow widths.
+- Pointer and keyboard behavior remain Limen/application code.
+
 Requirements:
 
 - pointer drag;
@@ -732,9 +753,10 @@ Only if multiple applications demonstrate need. Docking must not become a genera
 - icon;
 - icon button pattern;
 - card/tile;
-- accordion/disclosure;
+- accordion/disclosure (FORMA-MOT-007: intrinsic-height settling via `interpolate-size` and `::details-content` where supported, instant elsewhere);
+- scroll progress: `.ef-scroll-progress` (FORMA-MOT-007), a decorative direct projection of the scroll timeline;
 - key-value list;
-- stat/metric;
+- stat/metric (FORMA-MOT-011: `data-ef-value-change` marks an application-published update with a neutral perceptual tint; values are never counted through);
 - code block with copy action;
 - keyboard shortcut display;
 - separator.
@@ -975,6 +997,81 @@ Requirements:
 - verified at 320/390 px, 200 % text, text spacing, forced colors, reduced motion, print, and WCAG 2.2 A/AA.
 
 See `requirements/MARKETING-PRESENTATION.md` and `docs/MARKETING-SITES.md`.
+
+
+## 18. Object metadata and diagram/workflow presentation
+
+See `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md`.
+
+### P0/P1: Metadata presentation
+
+Forma SHOULD support a reusable metadata presentation recipe for consumer-supplied descriptive fields such as identifiers, descriptions, tags, owners/roles, phases, status text, source/provenance references, versions, dates, links, and namespaced custom values.
+
+Requirements:
+
+- metadata remains application/profile supplied;
+- metadata is not authorization, workflow legality, scoring, or domain truth;
+- object identity is independent of labels, geometry, and color;
+- compact and expanded metadata presentation should reuse semantic HTML such as description lists, lists, links, and time;
+- applications choose which metadata fields are safe to render;
+- hidden DOM attributes are not the canonical metadata store;
+- secrets/suppressed values must not be placed in presentation attributes;
+- long/localized/RTL metadata must reflow and remain readable.
+
+### P1: Diagram/workflow object presentation
+
+Candidate patterns/visual contracts:
+
+- `.ef-diagram`;
+- `.ef-diagram-node`;
+- `.ef-diagram-connector`;
+- `.ef-diagram-connector-label`;
+- `.ef-diagram-group` / boundary;
+- `.ef-diagram-lane`;
+- `.ef-diagram-phase`;
+- `.ef-diagram-legend`;
+- `.ef-diagram-metadata`.
+
+These names are architecture candidates until the first implementation slice proves the smallest stable public surface.
+
+Requirements:
+
+- Forma owns only reusable presentation;
+- Studio/application owns graph topology, geometry, routing, hit testing, drag/drop, selection, commands/history, profile semantics, workflow execution, and validation;
+- editor-only adorners are not part of exported production presentation;
+- presentation works with HTML/SVG composition and does not introduce Forma runtime JavaScript;
+- one visual pattern may represent multiple semantic kinds when the consumer explicitly maps them.
+
+### P1: Authored workflow/diagram color
+
+Eligible workflow/diagram objects MUST be colorable.
+
+Forma presentation MUST support:
+
+- fill/background treatment;
+- border/stroke treatment;
+- accent treatment;
+- connector stroke/accent treatment;
+- optional foreground treatment when contrast is valid;
+- Forma token defaults;
+- project/brand palette slots;
+- explicit consumer-authored color overrides where the consuming product permits them.
+
+Color is presentation, not semantic authority.
+
+- a red object is not automatically an error;
+- a green object is not automatically approved;
+- semantic status/type and color remain independent;
+- explicit metadata-to-color mapping belongs to the consumer/profile;
+- meaningful distinctions require text/icon/shape/line-style/pattern/marker cues in addition to color;
+- forced colors, grayscale, dark/light themes, and backgrounds-disabled print must remain understandable;
+- authored color must never erase focus-visible, selected, validation, or disabled cues.
+
+### P1: Metadata-driven decorations
+
+Metadata MAY be projected into badges, labels, icons, markers, bars, or similar decorations when the consumer supplies an explicit mapping.
+
+The underlying metadata remains authoritative. Forma decorations are projections only and must have textual/structural equivalents when meaningful.
 
 
 ## Motion-driven catalog addition: tooltip / contextual hint

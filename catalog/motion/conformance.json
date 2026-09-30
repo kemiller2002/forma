@@ -1,0 +1,62 @@
+{
+  "$comment": "FORMA-MOT-010 conformance matrix: each required behavior and the deterministic or browser tests that prove it. tests/motion-gate.test.mjs verifies every referenced test title exists, so this matrix cannot silently rot.",
+  "requirements": [
+    { "id": "classification-coverage", "behavior": "Every shipped animated selector is classified under one of the five models; new unclassified animation fails the gate.", "tests": [
+      { "file": "tests/motion-audit.test.mjs", "title": "every shipped animated track is classified under one of the five models" },
+      { "file": "tests/motion-gate.test.mjs", "title": "a new animated selector without a model classification fails" },
+      { "file": "tests/motion-gate.test.mjs", "title": "assessment, marketing and documentation-site CSS are gated too" } ] },
+    { "id": "literal-timing", "behavior": "Unexplained literal durations, easings and implicit easing are rejected; timing comes from the model's tokens.", "tests": [
+      { "file": "tests/motion-audit.test.mjs", "title": "unexplained literal durations, easings and implicit easing are reported" },
+      { "file": "tests/motion-gate.test.mjs", "title": "an unexplained literal duration or implicit easing fails even when classified" },
+      { "file": "tests/motion-gate.test.mjs", "title": "a token from the wrong model fails (no mass on non-spatial change)" } ] },
+    { "id": "inertial-ordering", "behavior": "Inertial settling orders light < standard < heavy.", "tests": [
+      { "file": "tests/motion-audit.test.mjs", "title": "inertial settling orders light < standard < heavy" },
+      { "file": "tests/browser/motion-foundation.spec.mjs", "title": "weight overrides order inertial timing while gravity timing stays mass independent" } ] },
+    { "id": "gravity-mass-independence", "behavior": "Gravity timing depends on distance and gravity, never mass.", "tests": [
+      { "file": "tests/motion-audit.test.mjs", "title": "gravity timing follows sqrt(2s / g) and ignores mass" },
+      { "file": "tests/browser/motion-foundation.spec.mjs", "title": "weight overrides order inertial timing while gravity timing stays mass independent" } ] },
+    { "id": "cadence-period", "behavior": "Repeated activity uses a named cadence period, linear, and stops with the activity.", "tests": [
+      { "file": "tests/browser/loading-progress.spec.mjs", "title": "indeterminate activity uses the declared cadence: named period, linear, infinite" },
+      { "file": "tests/browser/loading-progress.spec.mjs", "title": "cadence stops when the represented activity stops" },
+      { "file": "tests/motion-gate.test.mjs", "title": "repeated cadence motion that never stops under reduced motion fails" } ] },
+    { "id": "reduced-motion-by-model", "behavior": "Reduced motion substitutes per model: spatial motion collapses, repeated motion stops, direct manipulation is preserved, brief perceptual change may remain.", "tests": [
+      { "file": "tests/browser/motion-foundation.spec.mjs", "title": "reduced motion collapses inertial and gravity timing for every weight scope" },
+      { "file": "tests/browser/core-controls-motion.spec.mjs", "title": "reduced motion removes indicator travel and press compression but keeps selection" },
+      { "file": "tests/browser/loading-progress.spec.mjs", "title": "reduced motion stops repeated activity while text and busy semantics remain" },
+      { "file": "tests/browser/direct-manipulation.spec.mjs", "title": "reduced motion places items and panes directly at their final position" },
+      { "file": "tests/motion-gate.test.mjs", "title": "spatial motion without a reduced-motion substitution fails" },
+      { "file": "tests/motion-gate.test.mjs", "title": "a declared reduced-motion substitution must exist in the stylesheet" } ] },
+    { "id": "retargeting", "behavior": "Rapid repeated activation retargets motion instead of queueing it.", "tests": [
+      { "file": "tests/browser/core-controls-motion.spec.mjs", "title": "rapid keyboard selection retargets the indicator instead of queueing and semantics are immediate" },
+      { "file": "tests/browser/assessment-motion.spec.mjs", "title": "rapid keyboard selection is immediate and does not queue motion" } ] },
+    { "id": "no-semantic-delay", "behavior": "Semantic state is authoritative immediately; motion never gates it.", "tests": [
+      { "file": "tests/browser/core-controls-motion.spec.mjs", "title": "button press state is immediate and non-spatial" },
+      { "file": "tests/browser/tooltip.spec.mjs", "title": "pointer and touch-equivalent activation open the hint; state is immediate" },
+      { "file": "tests/browser/progressive-motion.spec.mjs", "title": "opt-in View Transitions use perceptual crossfades and never gate the state update" },
+      { "file": "tests/browser/value-change-motion.spec.mjs", "title": "a published value is authoritative and legible from the first frame; no count-through" } ] },
+    { "id": "progress-non-overshoot", "behavior": "Determinate progress is a direct projection that cannot overshoot.", "tests": [
+      { "file": "tests/browser/loading-progress.spec.mjs", "title": "determinate progress is a direct projection that cannot overshoot" },
+      { "file": "tests/browser/progressive-motion.spec.mjs", "title": "scroll-linked progress is a direct projection of scroll position" } ] },
+    { "id": "direct-manipulation-no-lag", "behavior": "Direct manipulation tracks the authoritative value with no lag.", "tests": [
+      { "file": "tests/browser/direct-manipulation.spec.mjs", "title": "the dragged item tracks the application-supplied offset with no lag" },
+      { "file": "tests/browser/core-controls-motion.spec.mjs", "title": "slider keeps native direct manipulation: only hover emphasis is transitioned" } ] },
+    { "id": "rejected-boundaries", "behavior": "Rejected drops return to the authoritative position; resizing never leaves legal bounds.", "tests": [
+      { "file": "tests/browser/direct-manipulation.spec.mjs", "title": "a rejected drop returns to its authoritative position with a non-color cue and no success" },
+      { "file": "tests/browser/direct-manipulation.spec.mjs", "title": "split-pane resizing tracks directly and never leaves legal bounds, even when settling" },
+      { "file": "tests/browser/direct-manipulation.spec.mjs", "title": "post-release settling is damped and never overshoots the authoritative position" } ] },
+    { "id": "concurrent-composition", "behavior": "Concurrent effects compose on independent properties and never clobber each other.", "tests": [
+      { "file": "tests/browser/progressive-motion.spec.mjs", "title": "concurrent press and selection motion compose without clobbering" },
+      { "file": "tests/motion-gate.test.mjs", "title": "the transform shorthand is rejected because it clobbers concurrent effects" } ] },
+    { "id": "progressive-fallback", "behavior": "Every progressive enhancement degrades to a correct static presentation.", "tests": [
+      { "file": "tests/browser/core-controls-motion.spec.mjs", "title": "without anchor positioning the checked segment itself carries the selection" },
+      { "file": "tests/browser/tooltip.spec.mjs", "title": "unsupported anchor positioning falls back to a correct static presentation" },
+      { "file": "tests/browser/progressive-motion.spec.mjs", "title": "without intrinsic-size support the disclosure opens instantly and fully" },
+      { "file": "tests/browser/progressive-motion.spec.mjs", "title": "scroll progress is absent without scroll timelines and under reduced motion" } ] },
+    { "id": "non-spatial-perceptual", "behavior": "Color, opacity and dimming change by perceptual interpolation across core, assessment, marketing and site CSS.", "tests": [
+      { "file": "tests/browser/core-controls-motion.spec.mjs", "title": "color and background changes use the shared perceptual timing" },
+      { "file": "tests/browser/assessment-motion.spec.mjs", "title": "every assessment option family shares one perceptual selection response" },
+      { "file": "tests/browser/marketing.spec.mjs", "title": "marketing buttons and cards use perceptual interpolation without spatial hover" },
+      { "file": "tests/site-browser/mobile.spec.mjs", "title": "site buttons use the shared perceptual motion and never move on hover" },
+      { "file": "tests/browser/value-change-motion.spec.mjs", "title": "overlay opacity and backdrop dimming use perceptual interpolation, not mass-derived timing" } ] }
+  ]
+}

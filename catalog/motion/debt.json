@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "description": "Motion findings that exist in shipped CSS and are owned by an open migration issue. The audit fails on any finding not listed here and on any entry here that no longer occurs, so this ledger can only shrink. FORMA-MOT-010 (#67) requires it to be empty. Never add entries to make new motion pass.",
+  "entries": []
+}

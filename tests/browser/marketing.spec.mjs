@@ -150,6 +150,33 @@ test("reduced motion removes transitions and hover movement", async ({ page }) =
   expect(style.transform).toBe("none");
 });
 
+// FORMA-MOT-008: marketing hover and press are perceptual emphasis on the
+// surface; the hit target never moves under the pointer.
+test("marketing buttons and cards use perceptual interpolation without spatial hover", async ({ page }) => {
+  await open(page, "index.html", widths.wide);
+  const perceptual = await page.evaluate(() => {
+    const probe = document.createElement("span");
+    probe.style.animationDelay = "var(--ef-effect-transition-duration)";
+    document.querySelector(".ef-site").append(probe);
+    const value = getComputedStyle(probe).animationDelay;
+    probe.remove();
+    return value;
+  });
+  expect(Number.parseFloat(perceptual) * (perceptual.endsWith("ms") ? 1 : 1000)).toBeCloseTo(120, 0);
+  const button = page.locator('.ef-hero .ef-button[data-ef-variant="primary"]');
+  const timing = await button.evaluate(el => ({ properties: getComputedStyle(el).transitionProperty, easing: getComputedStyle(el).transitionTimingFunction }));
+  expect(timing.properties).toBe("background-color, color");
+  expect(timing.easing).toBe("cubic-bezier(0.2, 0, 0, 1), cubic-bezier(0.2, 0, 0, 1)");
+  await button.scrollIntoViewIfNeeded();
+  const before = await button.boundingBox();
+  await button.hover();
+  // A transition replaced mid-flight rejects `finished` with AbortError; only settling matters.
+  await button.evaluate(el => Promise.all(el.getAnimations().map(animation => animation.finished.catch(() => null))));
+  const after = await button.boundingBox();
+  expect(after.y).toBeCloseTo(before.y, 1);
+  expect(await button.evaluate(el => getComputedStyle(el).transform)).toBe("none");
+});
+
 test("text resized to 200% and WCAG 1.4.12 text spacing do not cause horizontal scrolling", async ({ page }) => {
   for (const file of pages) {
     await open(page, file, widths.wide);

@@ -41,7 +41,9 @@
 
   *, *::before, *::after { box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
 
   body {
     min-inline-size: 320px;
@@ -357,16 +359,16 @@
     font-size: .84rem;
     font-weight: 700;
     text-decoration: none;
-    transition: background .18s, color .18s, transform .18s;
+    /* The documentation site follows the library's own grammar: hover and
+       press are perceptual surface emphasis, and the hit target never moves
+       under the pointer (MOT-014). */
+    transition:
+      background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
+      color var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing);
   }
 
   .ef-button:hover {
     background: var(--ef-stone);
-    transform: translateY(-2px);
-  }
-
-  .ef-button:active {
-    transform: translateY(0);
   }
 
   .docs-shell {

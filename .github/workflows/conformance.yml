@@ -47,5 +47,8 @@ jobs:
       - name: Check character-grid conformance
         run: npm run test:character-grid
 
+      - name: Check motion model conformance
+        run: npm run test:motion
+
       - name: Run browser conformance
         run: npm run test:browser

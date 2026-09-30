@@ -1,0 +1,49 @@
+<figure class="ef-diagram" aria-labelledby="diagram-title">
+  <figcaption id="diagram-title">Publication workflow</figcaption>
+  <p>Fill colors show the owning team through a consumer-defined mapping (see the key). They say nothing about state: each item states its kind and state in text.</p>
+  <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Publication workflow canvas, scroll to see all items">
+    <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 720px; --ef-diagram-canvas-h: 330px;">
+      <svg class="ef-diagram__wires" viewBox="0 0 720 330" aria-hidden="true" focusable="false">
+        <defs>
+          <marker id="diagram-arrow" class="ef-diagram-marker" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+        </defs>
+        <path class="ef-diagram-connector" d="M216 70 H258" marker-end="url(#diagram-arrow)"/>
+        <path class="ef-diagram-connector" d="M460 70 H502" marker-end="url(#diagram-arrow)"/>
+        <path class="ef-diagram-connector" data-ef-line="dashed" d="M360 150 V198" marker-end="url(#diagram-arrow)"/>
+        <path class="ef-diagram-connector" data-ef-line="dotted" d="M260 260 H116 V152" marker-end="url(#diagram-arrow)"/>
+      </svg>
+      <article class="ef-diagram-node" data-ef-shape="rounded" aria-labelledby="node-draft" style="--ef-diagram-x: 16px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-fill: #e8f0ff; --ef-diagram-accent: #2f5fb3; --ef-diagram-foreground: #1d1d1b;">
+        <p class="ef-diagram-node__kind">Task</p>
+        <h3 class="ef-diagram-node__label" id="node-draft">Draft article</h3>
+        <dl class="ef-diagram-node__meta"><dt>State</dt><dd>Done</dd><dt>Team</dt><dd>Editorial</dd></dl>
+      </article>
+      <article class="ef-diagram-node" aria-labelledby="node-review" style="--ef-diagram-x: 260px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-fill: #fff1d6; --ef-diagram-accent: #8a5300; --ef-diagram-foreground: #1d1d1b;">
+        <p class="ef-diagram-node__kind">Decision</p>
+        <h3 class="ef-diagram-node__label" id="node-review">Legal review</h3>
+        <dl class="ef-diagram-node__meta"><dt>State</dt><dd>Active</dd><dt>Team</dt><dd>Legal</dd></dl>
+      </article>
+      <article class="ef-diagram-node" data-ef-shape="pill" aria-labelledby="node-publish" style="--ef-diagram-x: 504px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-fill: #e8f0ff; --ef-diagram-accent: #2f5fb3; --ef-diagram-foreground: #1d1d1b;">
+        <p class="ef-diagram-node__kind">End</p>
+        <h3 class="ef-diagram-node__label" id="node-publish"><a href="#diagram-title">Publish</a></h3>
+        <dl class="ef-diagram-node__meta"><dt>State</dt><dd>Waiting</dd><dt>Team</dt><dd>Editorial</dd></dl>
+      </article>
+      <article class="ef-diagram-node" data-ef-shape="rounded" aria-labelledby="node-rework" style="--ef-diagram-x: 260px; --ef-diagram-y: 200px; --ef-diagram-w: 200px;">
+        <p class="ef-diagram-node__kind">Task</p>
+        <h3 class="ef-diagram-node__label" id="node-rework">Rework</h3>
+        <dl class="ef-diagram-node__meta"><dt>State</dt><dd>Not started</dd></dl>
+      </article>
+      <span class="ef-diagram-connector__label" style="--ef-diagram-x: 372px; --ef-diagram-y: 164px;">changes requested</span>
+    </div>
+  </div>
+  <ol class="ef-diagram__relations" aria-label="Relationships">
+    <li>Draft article leads to Legal review (solid line).</li>
+    <li>Legal review leads to Publish when approved (solid line).</li>
+    <li>Legal review leads to Rework when changes are requested (dashed line).</li>
+    <li>Rework returns to Draft article (dotted line).</li>
+  </ol>
+  <dl class="ef-diagram-legend" aria-label="Key: fill color by owning team">
+    <div><dt><span class="ef-diagram-legend__swatch" style="--ef-diagram-fill: #e8f0ff; --ef-diagram-accent: #2f5fb3;"></span> Editorial</dt><dd>blue fill</dd></div>
+    <div><dt><span class="ef-diagram-legend__swatch" style="--ef-diagram-fill: #fff1d6; --ef-diagram-accent: #8a5300;"></span> Legal</dt><dd>amber fill</dd></div>
+    <div><dt><span class="ef-diagram-legend__swatch"></span> Unassigned</dt><dd>Forma default</dd></div>
+  </dl>
+</figure>

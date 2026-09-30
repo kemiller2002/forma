@@ -36,6 +36,8 @@ The system exists to make Echelon applications look, communicate, and behave con
 - MOBILE-COMPONENT-CONTRACT.md
 - WHITE-LABEL-AND-SKINNING.md
 - MARKETING-PRESENTATION.md
+- OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md
+- FIGMA-INTEGRATION.md
 
 ## External standards baseline
 

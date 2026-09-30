@@ -326,7 +326,7 @@
       "$value": "{primitive.shadow.raised}"
     },
     "transition-duration": {
-      "$value": "{primitive.motion-duration.standard}"
+      "$value": "{primitive.motion-duration.fast}"
     },
     "transition-easing": {
       "$value": "{primitive.motion-easing.standard}"

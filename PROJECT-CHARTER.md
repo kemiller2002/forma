@@ -25,6 +25,8 @@ Consistency includes:
 - CSS motion and microinteraction;
 - accessibility contracts;
 - communication patterns;
+- descriptive object-metadata presentation;
+- diagram/workflow presentation contracts and authored color treatment;
 - theming;
 - Ordo/Limen integration boundaries;
 - packaging, documentation, and verification.

@@ -34,7 +34,9 @@ test("Forma is a versioned public-consumer package", () => {
     "patterns/menu.html",
     "patterns/toast.html",
     "patterns/data-grid.html",
-    "patterns/work-queue.html"
+    "patterns/work-queue.html",
+    "tokens/echelon.tokens.json",
+    "figma/component-contracts.json"
   ]) {
     assert.ok(fs.existsSync(path), `missing consumer artifact ${path}`);
   }
@@ -69,7 +71,9 @@ test("npm package contract contains the expected consumer surface", () => {
     "patterns/menu.html",
     "patterns/toast.html",
     "patterns/data-grid.html",
-    "patterns/work-queue.html"
+    "patterns/work-queue.html",
+    "tokens/echelon.tokens.json",
+    "figma/component-contracts.json"
   ]) {
     assert.ok(files.has(path), `release package omits ${path}`);
   }
