@@ -1,3 +1,5 @@
+import { nasaSpaceflights } from "../example-data/nasa-spaceflight.mjs";
+
 export default {
   name: "Active filter summary",
   category: "data",
@@ -25,46 +27,46 @@ export default {
   examples: [
     {
       id: "fixed-scope",
-      title: "Fixed scope with removable filters",
-      description: "The workspace scope is shown but has no remove button because it is set by the page, not by the user's query. The date range and status filters can be removed individually.",
+      title: "Fixed NASA scope with removable filters",
+      description: "The reference collection is fixed by the page and therefore has no remove button. Program and crew-status filters can be removed independently.",
       html: `<ef-active-filter-summary class="ef-component-tag">
   <section class="ef-active-filter-summary" aria-labelledby="active-filter-summary-fixed-scope-title">
     <div class="ef-active-filter-summary__heading">
-      <h2 id="active-filter-summary-fixed-scope-title">Showing invoices matching</h2>
+      <h2 id="active-filter-summary-fixed-scope-title">Showing missions matching</h2>
       <button type="button">Clear filters</button>
     </div>
     <ul class="ef-active-filter-summary__items">
-      <li><span>Workspace: Finance EU (fixed)</span></li>
-      <li><span>Due: 1–30 Sep 2026</span><button type="button" aria-label="Remove Due: 1–30 Sep 2026 filter">Remove</button></li>
-      <li><span>Status: Overdue</span><button type="button" aria-label="Remove Status: Overdue filter">Remove</button></li>
+      <li><span>Collection: ${nasaSpaceflights.length} NASA reference missions (fixed)</span></li>
+      <li><span>Program: Apollo</span><button type="button" aria-label="Remove Program: Apollo filter">Remove</button></li>
+      <li><span>Crew status: Crewed</span><button type="button" aria-label="Remove Crew status: Crewed filter">Remove</button></li>
     </ul>
   </section>
 </ef-active-filter-summary>`
     },
     {
       id: "no-active-filters",
-      title: "No filters applied",
-      description: "After Clear all, the summary stays in place and says that no filters are applied, rather than disappearing and shifting the results up. The Clear all button is not rendered because there is nothing to clear.",
+      title: "No mission filters applied",
+      description: "After Clear all, the summary stays in place rather than disappearing and shifting the mission results. The clear button is omitted because there is nothing left to remove.",
       html: `<ef-active-filter-summary class="ef-component-tag">
   <section class="ef-active-filter-summary" aria-labelledby="active-filter-summary-no-active-filters-title">
     <div class="ef-active-filter-summary__heading">
       <h2 id="active-filter-summary-no-active-filters-title">Active filters</h2>
     </div>
-    <p>No filters applied. Showing all 1,284 records.</p>
+    <p>No filters applied. Showing all ${nasaSpaceflights.length} reference missions.</p>
   </section>
 </ef-active-filter-summary>`
     },
     {
       id: "mobile-many-filters",
-      title: "Mobile summary with many filters",
-      description: "Five filters on a phone. Filters wrap onto several rows and a long value wraps within its own item, next to its remove button.",
+      title: "Mobile mission summary with many filters",
+      description: "Five mission filters on a phone. Filters wrap onto several rows and the long destination value wraps within its own item beside its remove button.",
       mobile: {
         height: 420,
         notes: [
-          "Filters wrap onto as many rows as needed; the list never scrolls horizontally at 320px.",
-          "At 30rem (480px) and below each item may wrap its own text and remove button, so a long value moves the button onto the next line instead of overflowing.",
-          "The heading row wraps: Clear all moves below the heading when both do not fit.",
-          "Remove buttons keep Forma's base button sizing (at least 2.75rem tall with 1rem inline padding), so each is a comfortable touch target."
+          "Filters wrap onto as many rows as needed without horizontal page scrolling.",
+          "Long values can wrap their remove button onto the next line.",
+          "The heading row wraps so Clear all can move below the heading.",
+          "Remove buttons retain comfortable touch sizing."
         ]
       },
       html: `<ef-active-filter-summary class="ef-component-tag">
@@ -74,11 +76,11 @@ export default {
       <button type="button">Clear all</button>
     </div>
     <ul class="ef-active-filter-summary__items">
-      <li><span>Status: Awaiting reply</span><button type="button" aria-label="Remove Status: Awaiting reply filter">Remove</button></li>
-      <li><span>Owner: Me</span><button type="button" aria-label="Remove Owner: Me filter">Remove</button></li>
-      <li><span>Product: Reporting and analytics exports</span><button type="button" aria-label="Remove Product: Reporting and analytics exports filter">Remove</button></li>
-      <li><span>Priority: High</span><button type="button" aria-label="Remove Priority: High filter">Remove</button></li>
-      <li><span>Updated: Last 7 days</span><button type="button" aria-label="Remove Updated: Last 7 days filter">Remove</button></li>
+      <li><span>Program: Apollo</span><button type="button" aria-label="Remove Program: Apollo filter">Remove</button></li>
+      <li><span>Crew status: Crewed</span><button type="button" aria-label="Remove Crew status: Crewed filter">Remove</button></li>
+      <li><span>Destination: Sea of Tranquility, Moon</span><button type="button" aria-label="Remove destination filter">Remove</button></li>
+      <li><span>Vehicle: Saturn V</span><button type="button" aria-label="Remove Vehicle: Saturn V filter">Remove</button></li>
+      <li><span>Launch: before 1971</span><button type="button" aria-label="Remove launch date filter">Remove</button></li>
     </ul>
   </section>
 </ef-active-filter-summary>`
