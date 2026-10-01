@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 17,
+  "nextSeq": 18,
   "items": [
     {
       "id": "WI-0001",
@@ -347,6 +347,22 @@
       "attachments": [],
       "createdAt": "2026-09-30T13:49:49.582Z",
       "updatedAt": "2026-09-30T13:49:49.582Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0017",
+      "title": "Site axe checks sample the settled state, not entry-motion frames",
+      "description": null,
+      "tags": [
+        "site,accessibility,flaky"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-10-01T15:57:13.184Z",
+      "updatedAt": "2026-10-01T15:57:13.000Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null

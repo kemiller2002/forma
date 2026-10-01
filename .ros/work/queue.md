@@ -2,6 +2,9 @@
 
 | ID | Work | Status | Tags | Priority |
 |---|---|---|---|---|
+| FORMA-GH-88 | FORMA-GH-88 | complete |  |  |
+| FORMA-GH-93 | FORMA-GH-93 | complete |  |  |
+| FORMA-GH-94 | FORMA-GH-94 | complete |  |  |
 | GH-12 | Align Forma documentation site with Echelon Foundry CSS | complete | forma,css,visual-engineering | high |
 | GH-14 | Build cross-application mobile Forma component wave | complete | forma,mobile,cross-application | high |
 | GH-18 | Prepare Forma for application consumption | active | readiness,bootstrap | high |
@@ -50,3 +53,4 @@
 | WI-0014 | Implement P0 requirement-defined components listed in catalog/planned.json (breadcrumbs, table styling, chip, icon button, button variants, kbd, separator, inline message, progress circle) | captured | forma,catalog,requirements | medium |
 | WI-0015 | Decide whether the documentation site may carry a progressive-enhancement script for a clipboard Copy button and search (currently forbidden by ADR-0002 scope and tests/site-build.test.mjs) | captured | forma,documentation,decision | low |
 | WI-0016 | Evaluate a reusable settings-list row primitive (evidence: catalog/compositions/mobile-settings.mjs) | captured | forma,catalog,candidate | low |
+| WI-0017 | Site axe checks sample the settled state, not entry-motion frames | ready | site,accessibility,flaky | high |

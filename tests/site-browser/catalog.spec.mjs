@@ -171,6 +171,15 @@ test("documentation chrome landmarks have unique accessible names", async ({ pag
 // Known pre-existing component defects (catalog/known-issues.json) are listed
 // in axe-baseline.json as page + rule pairs. Anything new fails, and a
 // baseline entry that no longer reproduces also fails so the list shrinks.
+// Entry motion (for example data-ef-motion-entry) fades content in from
+// opacity 0, so axe must sample the settled state, not a mid-transition frame.
+// Infinite animations (spinners, progress) never finish and are left running.
+const settled = page => page.evaluate(() => Promise.all(
+  document.getAnimations()
+    .filter(animation => animation.effect?.getTiming().iterations !== Infinity)
+    .map(animation => animation.finished.catch(() => undefined))
+));
+
 const baseline = JSON.parse(fs.readFileSync(path.join(root, "tests", "site-browser", "axe-baseline.json"), "utf8")).entries;
 const chunkSize = 12;
 const chunks = Array.from({ length: Math.ceil(docPages.length / chunkSize) }, (_, index) => docPages.slice(index * chunkSize, (index + 1) * chunkSize));
@@ -181,6 +190,7 @@ chunks.forEach((chunk, index) => {
     const found = [];
     for (const url of chunk) {
       await page.goto(url);
+      await settled(page);
       // Pass 1: documentation chrome, every rule. Pass 2: live examples.
       // A catalog page deliberately shows several instances of one component,
       // so identical landmark names inside examples (landmark-unique) are
@@ -241,6 +251,7 @@ frameChunks.forEach((chunk, index) => {
     const found = [];
     for (const url of chunk) {
       await page.goto(url);
+      await settled(page);
       const results = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
         .analyze();
