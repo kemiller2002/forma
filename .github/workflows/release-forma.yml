@@ -10,12 +10,14 @@ on:
       - "themes/echelon/**"
       - "tools/PresentationBundler/**"
       - "actions/install-presentation/**"
+      - "release/**"
       - ".github/workflows/release-forma.yml"
   workflow_dispatch:
 
 permissions:
   contents: write
   id-token: write
+  attestations: write
 
 concurrency:
   group: forma-release
@@ -58,6 +60,7 @@ jobs:
         run: npx playwright install --with-deps chromium firefox webkit
 
       - name: Resolve release identity
+        id: release-identity
         shell: bash
         run: |
           package_version="$(node -p "require('./package.json').version")"
@@ -73,6 +76,8 @@ jobs:
           fi
 
           echo "RELEASE_TAG=$release_tag" >> "$GITHUB_ENV"
+          echo "version=$package_version" >> "$GITHUB_OUTPUT"
+          echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
 
       - name: Repair legacy v0.1.0 release asset
         env:
@@ -173,19 +178,61 @@ jobs:
           (cd "$site" && "$GITHUB_WORKSPACE/actions/install-presentation/install.sh" --source "$GITHUB_WORKSPACE/dist/marketing")
           test -s "$site/assets/forma/forma-echelon-marketing.css"
 
-      - name: Create GitHub release
+      - name: Create immutable release checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          marketing=(dist/marketing/*.css dist/marketing/forma-marketing.manifest.json dist/marketing/forma-marketing.sha256)
+          {
+            sha256sum "$ARCHIVE"
+            sha256sum "${marketing[@]}"
+          } | sed 's#  .*/#  #' | sort -k2 > release/checksums.txt
+          cat release/checksums.txt
+
+      - name: Generate shared Echelon release manifest
+        uses: kemiller2002/echelon-registry/actions/release-contract@d615f2d0a3dee428aa072c92a5a2de8062b373ed
+        with:
+          release-input: release/echelon.release-input.json
+          artifact-dir: release
+          output: release/echelon-release.json
+          version: ${{ steps.release-identity.outputs.version }}
+          tag: ${{ steps.release-identity.outputs.tag }}
+          commit: ${{ github.sha }}
+          release-stage: stable
+
+      - name: Attest package and release metadata
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: |
+            release/*.tgz
+            release/checksums.txt
+            release/echelon-release.json
+            dist/marketing/*.css
+            dist/marketing/forma-marketing.manifest.json
+            dist/marketing/forma-marketing.sha256
+
+      - name: Create immutable GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          # Marketing assets are flat, individually downloadable files so a
-          # site can pin them without npm (see docs/MARKETING-SITES.md). The
-          # tag check above keeps a released version's contents immutable.
+          set -euo pipefail
           marketing=(dist/marketing/*.css dist/marketing/forma-marketing.manifest.json dist/marketing/forma-marketing.sha256)
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" "$ARCHIVE" "${marketing[@]}" --clobber
+            tmp="$(mktemp -d)"
+            if ! gh release download "$RELEASE_TAG" --pattern checksums.txt --dir "$tmp" >/dev/null 2>&1; then
+              echo "::error title=Immutable release metadata missing::$RELEASE_TAG already exists without checksums.txt. Bump package.json rather than overwriting published assets."
+              exit 1
+            fi
+            cmp "$tmp/checksums.txt" release/checksums.txt
+            echo "$RELEASE_TAG already exists with identical release bytes."
           else
-            gh release create "$RELEASE_TAG" "$ARCHIVE" "${marketing[@]}" --target "$GITHUB_SHA" \
+            gh release create "$RELEASE_TAG" \
+              "$ARCHIVE" \
+              "${marketing[@]}" \
+              release/checksums.txt \
+              release/echelon-release.json \
+              --target "$GITHUB_SHA" \
               --title "$RELEASE_TAG" \
               --notes "Forma ${RELEASE_TAG#v}: zero-runtime Echelon Foundry design system. Marketing sites pin forma-echelon-marketing.css through forma.lock; see docs/MARKETING-SITES.md."
           fi
