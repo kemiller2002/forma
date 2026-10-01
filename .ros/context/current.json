@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "agent:claude-code",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-01T11:08:21.000Z",
+  "updatedAt": "2026-10-01T12:45:04.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1314,24 +1314,80 @@
     {
       "id": "FORMA-GH-93",
       "type": "task",
-      "state": "active",
-      "semanticState": "active",
-      "evidence": [],
-      "updatedAt": "2026-10-01T11:08:21.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/workflow/Forma.Workflow/Validation.fs"
+        },
+        {
+          "type": "implementation",
+          "path": "schemas/workflow/1.0/forma-workflow.schema.json"
+        },
+        {
+          "type": "implementation",
+          "path": "src/workflow/Forma.Workflow/Render.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/workflow/Forma.Workflow.Tests/CoreTests.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/workflow/Forma.Workflow.Tests/AdversarialTests.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/workflow-static.spec.mjs"
+        },
+        {
+          "type": "decision",
+          "path": "docs/decisions/ADR-0006-portable-workflow-capability.md"
+        },
+        {
+          "type": "documentation",
+          "path": "docs/workflow/FORMAT.md"
+        }
+      ],
+      "updatedAt": "2026-10-01T12:45:03.000Z",
       "telemetryExecutionIds": [
         "EXE-20261001T110821798Z-9f40c1fd"
-      ]
+      ],
+      "completedAt": "2026-10-01T12:45:03.000Z"
     },
     {
       "id": "FORMA-GH-94",
       "type": "task",
-      "state": "active",
-      "semanticState": "active",
-      "evidence": [],
-      "updatedAt": "2026-10-01T11:08:21.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/workflow/Forma.Workflow/Embed.fs"
+        },
+        {
+          "type": "implementation",
+          "path": "packages/workflow/src/forma-workflow.js"
+        },
+        {
+          "type": "tests",
+          "path": "tests/workflow/Forma.Workflow.Tests/EditorTests.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/workflow-embed.spec.mjs"
+        },
+        {
+          "type": "documentation",
+          "path": "docs/workflow/EMBEDDING.md"
+        }
+      ],
+      "updatedAt": "2026-10-01T12:45:04.000Z",
       "telemetryExecutionIds": [
         "EXE-20261001T110821959Z-e74ba418"
-      ]
+      ],
+      "completedAt": "2026-10-01T12:45:04.000Z"
     }
   ]
 }

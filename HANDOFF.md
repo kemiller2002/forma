@@ -268,3 +268,49 @@ pattern mobile/accessibility/marketing browser specs (Chromium), full
 Follow-ups: WI-0012 token contrast on secondary surfaces; WI-0013 known
 component defects; WI-0014 P0 planned components; WI-0015 docs-site script
 decision (clipboard/search); WI-0016 settings-row primitive candidate.
+
+## Portable workflow standard, 2026-10-01 (FORMA-GH-93, FORMA-GH-94)
+
+**Objective.** Implement `requirements/PORTABLE-WORKFLOW-INTERCHANGE.md`. Forma
+owns the `.forma-workflow.json` standard, independent validation, layout, HTML
+rendering and the embeddable renderer and editor.
+
+**Completed** on `claude/forma-workflow-interchange-wo5aq3` (PR #95):
+
+- **Schema.** `schemas/workflow/1.0/forma-workflow.schema.json`, plus
+  `contracts/workflow-capabilities.json`.
+- **`src/workflow/Forma.Workflow` (F#, no package dependencies).**
+  - JSON layer and a schema validator over the published file.
+  - Model and lossless codec.
+  - Validation with the six compatibility classes.
+  - Deterministic layout using nested bands.
+  - Static HTML fragment and document rendering.
+  - Editor core and `Embed`/`EmbedView`/`EmbedProtocol` (`forma-workflow-host/1`).
+- **CLI:** `src/workflow/Forma.Workflow.Cli` (`forma-workflow`).
+- **`packages/workflow`** (`@echelon-foundry/forma-workflow`): the
+  `<forma-workflow>` element, editor CSS, an iframe bridge, and the trimmed
+  .NET WebAssembly engine (`npm run workflow:build`).
+- **Diagram contract 2.1.0:** ports, status cues, descriptions and membership.
+- **Foundation fixes:** `.ef-actions` is now styled in the application layer,
+  and field descriptions have AA contrast on surfaces.
+- **Examples:**
+  - `examples/workflows`: 19 fixtures and golden exports;
+  - `examples/workflow-embedding`: a host application outside Studio;
+  - `examples/external-producer`.
+- **Docs:** `docs/workflow/*` and ADR-0006. The package version is 0.4.0.
+- **CI:** `.github/workflows/workflow-validation.yml`; the publish job publishes
+  the workflow package.
+
+**Validation (local, Chromium 1194).**
+
+- `npm run workflow:test`: 58 passed.
+- Package, external, CSS, runtime, contract, marketing and token suites: pass.
+- Workflow static and embed browser specs: 25 passed.
+- Existing diagram, accessibility and mobile specs: pass.
+- Site check: pass when run without concurrent Playwright sessions. Concurrent
+  runs produced artifact ENOENT and contrast-timing failures that did not
+  reproduce alone.
+- Firefox and WebKit were not available locally; CI runs them.
+
+**Next action.** Confirm cross-engine CI on PR #95, then merge. After the npm
+publish, forma-studio#17 replaces its vendored copy with the released artifacts.
