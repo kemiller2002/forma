@@ -65,6 +65,10 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox webkit
 
+      - name: Build the workflow package (embedding tests need it)
+
+        run: npm run workflow:build
+
       - name: Cross-browser and accessibility tests
         run: npm run test:browser
 

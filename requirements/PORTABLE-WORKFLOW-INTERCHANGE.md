@@ -1,6 +1,6 @@
 # Portable Workflow Interchange and Embedding
 
-Status: **Required**
+Status: **Required**. Implemented by forma#93 and forma#94; see "Implementation" at the end.
 
 ## Ownership
 
@@ -111,3 +111,21 @@ external producer
 ```
 
 Stable identifiers, semantic fields, connections, metadata, and unknown namespaced extensions MUST survive the round trip.
+
+
+## Implementation
+
+| Requirement | Implementation | Evidence |
+|---|---|---|
+| Canonical format, suffix, layout, top-level model | `schemas/workflow/1.0/forma-workflow.schema.json`, `docs/workflow/FORMAT.md` | `tests/workflow` CoreTests |
+| Stable identifiers | `Forma.Workflow` Model and Validation (`ID-*`) | CoreTests and AdversarialTests |
+| Nodes, connections, metadata, extensions | Model and Codec (lossless) | round-trip, metadata and extension tests |
+| Semantics versus layout | `Layout.resolve` and `Layout.apply` (writes only layout fields) | layout-invariance tests |
+| Embeddable capability, host modes, versioned host boundary | `Embed`, `EmbedView`, `EmbedProtocol`; `@echelon-foundry/forma-workflow` (`packages/workflow`) | EditorTests; `tests/browser/workflow-embed.spec.mjs` |
+| No iframe for same-application embedding; optional isolated mode | `<forma-workflow>`; `frame.html` with `forma-workflow-host/1` | browser tests; `examples/workflow-embedding` |
+| Declarative and safe | Typed `Interaction`; escaping `Markup`; `Validation.isSafeUrl` | adversarial and rendering tests |
+| Published schema; independent validation; compatibility classes | `Validation`, `forma-workflow validate` CLI | CoreTests; `tests/workflow-external.test.mjs` |
+| HTML output | `Render` and `WorkflowDocument` | RenderTests (golden output); `tests/browser/workflow-static.spec.mjs` |
+| Round-trip fixtures and lifecycle | `examples/workflows`, `examples/external-producer` | `tests/workflow-external.test.mjs`; forma-studio `npm run proof:external` |
+
+Decision: `docs/decisions/ADR-0006-portable-workflow-capability.md`.

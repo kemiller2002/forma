@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mission operations console</title>
+  <!-- An ordinary host application. It knows Forma and the public workflow
+       package; it knows nothing about Forma Studio. -->
+  <link rel="stylesheet" href="../../dist/tokens.css">
+  <link rel="stylesheet" href="../../dist/foundations.css">
+  <link rel="stylesheet" href="../../dist/components.css">
+  <link rel="stylesheet" href="../../dist/brands/example-harbor.css">
+  <link rel="stylesheet" href="../../packages/workflow/dist/forma-workflow.css">
+  <link rel="stylesheet" href="./console.css">
+  <script type="module" src="../../packages/workflow/dist/forma-workflow.js"></script>
+  <script type="module" src="./console.js"></script>
+</head>
+<body>
+  <a class="ef-skip-link" href="#main">Skip to content</a>
+  <header class="console-header">
+    <h1>Mission operations console</h1>
+    <p>Workflows are portable <code>.forma-workflow.json</code> files. This application hosts the Forma workflow component directly in its own page.</p>
+  </header>
+  <main id="main" class="ef-stack">
+    <section aria-labelledby="live-title" class="ef-stack">
+      <h2 id="live-title">Live mission status</h2>
+      <p>Read-only runtime view. The console projects its own telemetry onto the workflow; the workflow file is not changed.</p>
+      <div class="ef-cluster">
+        <button type="button" id="advance">Advance mission</button>
+        <button type="button" id="reset">Reset</button>
+      </div>
+      <forma-workflow id="live" mode="runtime"></forma-workflow>
+    </section>
+
+    <section aria-labelledby="design-title" class="ef-stack" data-ef-brand="example-harbor">
+      <h2 id="design-title">Experiment proposal (partner brand)</h2>
+      <label class="ef-select-field" for="mode">
+        <span class="ef-field__label">Component mode</span>
+        <span class="ef-select">
+          <select class="ef-select__input" id="mode">
+            <option value="view">View</option>
+            <option value="inspect">Inspect</option>
+            <option value="edit" selected>Edit</option>
+            <option value="pick">Pick</option>
+            <option value="runtime">Runtime</option>
+          </select>
+          <span class="ef-select__indicator" aria-hidden="true"></span>
+        </span>
+      </label>
+      <forma-workflow id="designer" mode="edit"></forma-workflow>
+      <section aria-labelledby="host-title" class="ef-surface console-host">
+        <h3 id="host-title">Host application</h3>
+        <p id="host-status" role="status">Waiting for the workflow.</p>
+        <dl id="host-selection" class="ef-key-value-list"></dl>
+        <p id="host-intent"></p>
+        <details class="ef-disclosure">
+          <summary>Saved document (.forma-workflow.json)</summary>
+          <div class="ef-disclosure__content"><pre id="host-document"></pre></div>
+        </details>
+      </section>
+    </section>
+
+    <section aria-labelledby="isolated-title" class="ef-stack">
+      <h2 id="isolated-title">Isolated mode</h2>
+      <p>The same component in an iframe, driven only through the versioned message contract.</p>
+      <iframe id="isolated" title="Isolated workflow" class="console-frame"></iframe>
+      <p id="isolated-status" role="status"></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -337,3 +337,14 @@ Read `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md` before adding me
 - Read `contracts/diagram-presentation.json` (package export `./contracts/diagram-presentation.json`) for the machine-readable list of shapes, group variants, line styles, value states, appearance and geometry custom properties, token references, and fallbacks. Do not scrape the CSS.
 - Put `.ef-diagram-group` boundaries (group, lane, phase) first in the canvas and state membership in text; overlap never implies membership.
 - Mark metadata values the author did not write with `.ef-diagram-value-state` text (default, derived, source-bound, unknown, unavailable, invalid).
+
+
+## Portable workflows
+
+To produce or change a workflow, write a `.forma-workflow.json` file at
+`forma/workflows/<id>.forma-workflow.json` that follows
+`docs/workflow/FORMAT.md`. Do not hand-place diagram markup. Leave out
+coordinates unless they are intended. Validate with
+`forma-workflow validate --json` and render with `forma-workflow render`.
+Never put interoperable meaning only in `extensions`. Never add executable
+content: interactions are intents.

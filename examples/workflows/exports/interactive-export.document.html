@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interactive export reference</title>
+    <meta name="generator" content="Forma workflow renderer 1.0.0">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/tokens.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/foundations.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/components.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/forma-workflow/dist/forma-workflow.css">
+    <script type="module" src="node_modules/@echelon-foundry/forma-workflow/dist/forma-workflow.js"></script>
+  </head>
+  <body>
+    <main>
+      <forma-workflow mode="view" workflow="interactive-export">
+        <script type="application/json" class="forma-workflow-source">{"$schema":"https://forma.echelonfoundry.com/schemas/workflow/1.0/forma-workflow.schema.json","format":"forma-workflow","formatVersion":"1.0.0","id":"interactive-export","title":"Interactive export reference","forma":{"version":"0.4.0"},"nodes":[{"id":"a","kind":"start","label":"Request","interaction":{"action":"inspect"}},{"id":"b","kind":"task","label":"Review","interaction":{"action":"command","command":"com.example.host:approve","label":"Approve"}},{"id":"c","kind":"end","label":"Done","interaction":{"action":"navigate","target":{"url":"https://example.org/done"},"label":"Open record"}}],"edges":[{"id":"i1","source":{"node":"a"},"target":{"node":"b"}},{"id":"i2","source":{"node":"b"},"target":{"node":"c"}}]}</script>
+        <figure class="ef-diagram" id="wf-interactive-export" aria-labelledby="wf-interactive-export-title">
+          <figcaption id="wf-interactive-export-title">Interactive export reference</figcaption>
+          <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Interactive export reference diagram, scroll to see all items">
+            <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 840px; --ef-diagram-canvas-h: 176px;">
+              <svg class="ef-diagram__wires" viewBox="0 0 840 176" aria-hidden="true" focusable="false">
+                <defs>
+                  <marker id="wf-interactive-export-arrow" class="ef-diagram-marker" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                    <path d="M0 0 L10 5 L0 10 z" />
+                  </marker>
+                </defs>
+                <path class="ef-diagram-connector" id="wf-interactive-export-e-i1" d="M224 60 L272 60 L272 88 L320 88" marker-end="url(#wf-interactive-export-arrow)" />
+                <path class="ef-diagram-connector" id="wf-interactive-export-e-i2" d="M520 88 L568 88 L568 60 L616 60" marker-end="url(#wf-interactive-export-arrow)" />
+              </svg>
+              <article class="ef-diagram-node" id="wf-interactive-export-n-a" data-ef-shape="pill" aria-labelledby="wf-interactive-export-n-a-label" style="--ef-diagram-x: 24px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 72px;">
+                <p class="ef-diagram-node__kind">Start</p>
+                <h3 class="ef-diagram-node__label" id="wf-interactive-export-n-a-label">Request</h3>
+              </article>
+              <article class="ef-diagram-node" id="wf-interactive-export-n-b" data-ef-shape="rounded" aria-labelledby="wf-interactive-export-n-b-label" style="--ef-diagram-x: 320px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 128px;">
+                <p class="ef-diagram-node__kind">Task</p>
+                <h3 class="ef-diagram-node__label" id="wf-interactive-export-n-b-label">Review</h3>
+              </article>
+              <article class="ef-diagram-node" id="wf-interactive-export-n-c" data-ef-shape="pill" aria-labelledby="wf-interactive-export-n-c-label" style="--ef-diagram-x: 616px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 72px;">
+                <p class="ef-diagram-node__kind">End</p>
+                <h3 class="ef-diagram-node__label" id="wf-interactive-export-n-c-label"><a href="https://example.org/done">Done</a></h3>
+              </article>
+            </div>
+          </div>
+          <ol class="ef-diagram__relations" aria-label="Relationships">
+            <li>Request leads to Review.</li>
+            <li>Review leads to Done.</li>
+          </ol>
+        </figure>
+      </forma-workflow>
+    </main>
+  </body>
+</html>

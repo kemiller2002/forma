@@ -1,0 +1,6 @@
+/* Host page layout only. Workflow presentation comes from Forma. */
+body { margin: 0; padding: var(--ef-primitive-spacing-4, 1rem); }
+.console-header { margin-block-end: var(--ef-primitive-spacing-5, 1.5rem); }
+.console-host { padding: var(--ef-primitive-spacing-4, 1rem); }
+.console-host pre { max-block-size: 20rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.console-frame { inline-size: 100%; block-size: 34rem; border: 1px solid var(--ef-color-border-subtle, #c9c3b6); }

@@ -8,7 +8,7 @@ checker (`npm run catalog:check`) fails when a canonical pattern or a public
 `.ef-*` block class is missing from this list.
 
 - Public components: **165** in **18** families
-- Live examples on the documentation site: **712** (each component: canonical Basic + scenario examples + mobile examples)
+- Live examples on the documentation site: **713** (each component: canonical Basic + scenario examples + mobile examples)
 - Compositions: **5** (Operations dashboard, Form with validation, Keyboard and focus, Mobile settings, Overlay interaction)
 - Requirement-defined components not yet implemented: **29**
 
@@ -104,7 +104,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Bounded overflow | `<ef-bounded-overflow>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | dense-ledger, comparison-grid, data-grid, code-sample |
 | Cluster | `<ef-cluster>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | stack, command-group, status-lozenge, switcher |
 | Container | `<ef-container>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | measure, section, marketing-shell, prose |
-| Frame | `<ef-frame>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | grid, diagram, image-choice |
+| Frame | `<ef-frame>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | workflow-package.test.mjs | grid, diagram, image-choice |
 | Grid | `<ef-grid>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | responsive-grid, mosaic, dashboard-grid, card-grid, character-grid |
 | Landmark region | `<ef-landmark-region>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | workspace-shell, navigation-shell, site-header, alert |
 | Measure | `<ef-measure>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | prose, container, stack |
@@ -145,7 +145,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Reorder states | `<ef-reorder-states>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | direct-manipulation.spec.mjs | ranking, lane-board, resizable-split-pane, allocation |
 | Timeline | `<ef-timeline>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | feed-item, provenance-trail, steps, diff-viewer |
 | Work queue | `<ef-work-queue>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | feed-item, obligation-panel, readiness-checklist, operation-status |
-| Diagram | `<ef-diagram>` | Workflow and diagrams | implemented | complete | 5 | 1 | yes | yes | yes | diagram-m2.spec.mjs, diagram.spec.mjs | lane-board, spatial-canvas, provenance-trail, relationship-index |
+| Diagram | `<ef-diagram>` | Workflow and diagrams | implemented | complete | 6 | 1 | yes | yes | yes | diagram-m2.spec.mjs, diagram.spec.mjs, workflow-embed.spec.mjs, workflow-static.spec.mjs | lane-board, spatial-canvas, provenance-trail, relationship-index |
 | Lane board | `<ef-lane-board>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | generic only | work-queue, ranking, reorder-states, diagram |
 | Spatial canvas | `<ef-spatial-canvas>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diagram, scope-trail, relationship-index, bounded-overflow |
 | Character grid | `<ef-character-grid>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | character-grid-3270.spec.mjs, character-grid-field.spec.mjs, character-grid-helpers.mjs, character-grid-keys-status.spec.mjs, character-grid-reveal.spec.mjs, character-grid-selection.spec.mjs, character-grid-verification.spec.mjs, character-grid-workflow.spec.mjs, character-grid.spec.mjs | character-grid-field, character-grid-keys, character-grid-status, character-grid-3270, data-grid |

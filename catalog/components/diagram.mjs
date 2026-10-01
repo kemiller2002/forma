@@ -3,7 +3,7 @@ export default {
   category: "workflow",
   behavior: "Application content",
   summary: "Presentation-only diagram nodes, connectors, metadata and key; the consumer owns geometry, routing, semantics and color mapping.",
-  owns: ["ef-diagram","ef-diagram-connector","ef-diagram-group","ef-diagram-legend","ef-diagram-marker","ef-diagram-node","ef-diagram-value-state"],
+  owns: ["ef-diagram","ef-diagram-connector","ef-diagram-group","ef-diagram-legend","ef-diagram-marker","ef-diagram-node","ef-diagram-port","ef-diagram-value-state"],
   purpose: {
     description: "The diagram family renders a workflow or relationship diagram that has already been laid out by the consumer. A `figure.ef-diagram` holds a caption, a scrollable canvas, a text list of every relationship and an optional key. Nodes are HTML articles placed with `--ef-diagram-x`, `--ef-diagram-y` and `--ef-diagram-w`; connectors are SVG paths whose geometry is supplied by the consumer. Forma paints boxes, shapes, line styles, arrowheads, labels and authored colors. It never lays out, routes, selects, drags or validates anything, and it never infers meaning from color: each node states its kind and state as text, and the relationship list carries every connection without the drawing.",
     useWhen: [
@@ -15,7 +15,7 @@ export default {
       "The relationships are a simple sequence: use [[steps]] or [[provenance-trail]], which reflow without a canvas.",
       "Items move between columns by status: use [[lane-board]].",
       "Users explore a large spatial surface with an index and orientation: use [[spatial-canvas]].",
-      "The consumer cannot supply geometry: Forma has no automatic layout, so use a list such as [[relationship-index]] instead."
+      "Hand-placing a workflow: write a portable `.forma-workflow.json` and let Forma.Workflow lay it out and render this markup (docs/workflow/RENDERING.md)."
     ],
     characteristics: [
       "Geometry is physical, like SVG: `left`/`top` placement does not mirror in right-to-left documents, so nodes stay attached to their connectors.",
@@ -25,6 +25,75 @@ export default {
     ]
   },
   examples: [
+    {
+      id: "portable-workflow",
+      title: "Generated from a portable workflow, with ports and status",
+      description: "This markup is the unedited output of `forma-workflow render` for examples/workflows/forma/workflows/runtime-ports.forma-workflow.json (diagram contract 2.1.0). Ports are markers placed on a side with `data-ef-side` and `--ef-diagram-port-offset`; their shape shows direction. Status is text in the node metadata; `data-ef-status` adds a secondary outline or border cue. The relationship list names the ports each connector uses.",
+      html: `<ef-diagram class="ef-component-tag">
+  <figure class="ef-diagram" id="diagram-portable-workflow" aria-labelledby="diagram-portable-workflow-title">
+    <figcaption id="diagram-portable-workflow-title">Propellant loading</figcaption>
+    <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Propellant loading diagram, scroll to see all items">
+      <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 840px; --ef-diagram-canvas-h: 272px;">
+        <svg class="ef-diagram__wires" viewBox="0 0 840 272" aria-hidden="true" focusable="false">
+          <defs>
+            <marker id="diagram-portable-workflow-arrow" class="ef-diagram-marker" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" />
+            </marker>
+          </defs>
+          <path class="ef-diagram-connector" id="diagram-portable-workflow-e-r1" d="M224 72 L320 72" marker-end="url(#diagram-portable-workflow-arrow)" />
+          <path class="ef-diagram-connector" id="diagram-portable-workflow-e-r2" d="M520 72 L616 72" marker-end="url(#diagram-portable-workflow-arrow)" />
+          <path class="ef-diagram-connector" id="diagram-portable-workflow-e-r3" data-ef-line="dotted" d="M420 24 L420 12 L604 12 L604 200 L616 200" marker-end="url(#diagram-portable-workflow-arrow)" />
+        </svg>
+        <article class="ef-diagram-node" id="diagram-portable-workflow-n-supply" data-ef-status="complete" aria-labelledby="diagram-portable-workflow-n-supply-label" style="--ef-diagram-x: 24px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 96px;">
+          <p class="ef-diagram-node__kind">External</p>
+          <h3 class="ef-diagram-node__label" id="diagram-portable-workflow-n-supply-label">Ground supply</h3>
+          <dl class="ef-diagram-node__meta">
+            <dt>Status</dt>
+            <dd>Connected</dd>
+          </dl>
+          <span class="ef-diagram-port" data-ef-side="right" data-ef-direction="out" style="--ef-diagram-port-offset: 50%;" aria-hidden="true"></span>
+        </article>
+        <article class="ef-diagram-node" id="diagram-portable-workflow-n-tank" data-ef-status="active" aria-labelledby="diagram-portable-workflow-n-tank-label" style="--ef-diagram-x: 320px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 96px;">
+          <p class="ef-diagram-node__kind">Data</p>
+          <h3 class="ef-diagram-node__label" id="diagram-portable-workflow-n-tank-label">Propellant tank</h3>
+          <dl class="ef-diagram-node__meta">
+            <dt>Status</dt>
+            <dd>Filling</dd>
+          </dl>
+          <span class="ef-diagram-port" data-ef-side="left" data-ef-direction="in" style="--ef-diagram-port-offset: 50%;" aria-hidden="true"></span>
+          <span class="ef-diagram-port" data-ef-side="top" data-ef-direction="out" style="--ef-diagram-port-offset: 50%;" aria-hidden="true"></span>
+          <span class="ef-diagram-port" data-ef-side="right" data-ef-direction="out" style="--ef-diagram-port-offset: 50%;" aria-hidden="true"></span>
+        </article>
+        <article class="ef-diagram-node" id="diagram-portable-workflow-n-engine" data-ef-shape="rounded" data-ef-status="blocked" aria-labelledby="diagram-portable-workflow-n-engine-label" style="--ef-diagram-x: 616px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 96px;">
+          <p class="ef-diagram-node__kind">Task</p>
+          <h3 class="ef-diagram-node__label" id="diagram-portable-workflow-n-engine-label">Engine chill-down</h3>
+          <dl class="ef-diagram-node__meta">
+            <dt>Status</dt>
+            <dd>Waiting for temperature</dd>
+          </dl>
+          <span class="ef-diagram-port" data-ef-side="left" data-ef-direction="in" style="--ef-diagram-port-offset: 50%;" aria-hidden="true"></span>
+        </article>
+        <article class="ef-diagram-node" id="diagram-portable-workflow-n-vent" data-ef-shape="rounded" aria-labelledby="diagram-portable-workflow-n-vent-label" style="--ef-diagram-x: 616px; --ef-diagram-y: 152px; --ef-diagram-w: 200px; --ef-diagram-h: 96px;">
+          <p class="ef-diagram-node__kind">Task</p>
+          <h3 class="ef-diagram-node__label" id="diagram-portable-workflow-n-vent-label">Boil-off vent</h3>
+          <dl class="ef-diagram-node__meta">
+            <dt>Status</dt>
+            <dd>Monitoring</dd>
+          </dl>
+        </article>
+        <span class="ef-diagram-connector__label" aria-hidden="true" style="--ef-diagram-x: 272px; --ef-diagram-y: 72px;">LOX fill</span>
+        <span class="ef-diagram-connector__label" aria-hidden="true" style="--ef-diagram-x: 568px; --ef-diagram-y: 72px;">Feed</span>
+        <span class="ef-diagram-connector__label" aria-hidden="true" style="--ef-diagram-x: 604px; --ef-diagram-y: 106px;">Vent</span>
+      </div>
+    </div>
+    <ol class="ef-diagram__relations" aria-label="Relationships">
+      <li>Ground supply leads to Propellant tank: “LOX fill”; from port out to port fill.</li>
+      <li>Propellant tank leads to Engine chill-down: “Feed”; from port feed to port in.</li>
+      <li>Propellant tank leads to Boil-off vent: “Vent”; from port vent; dotted line.</li>
+    </ol>
+  </figure>
+</ef-diagram>`
+    },
     {
       id: "default-appearance",
       title: "Approval chain with default styling",
@@ -270,6 +339,13 @@ export default {
       { name: "style", on: "canvas, node, group, connector, label, swatch", values: "custom property declarations", default: "—", description: "Where the consumer writes resolved geometry and authored color values." }
     ],
     hooks: {
+      "data-ef-status": "On a node or group: the core status (pending, waiting, active, blocked, failed, skipped, cancelled) for a secondary outline or border cue. The status itself is text in the node metadata.",
+      "data-ef-side": "On `.ef-diagram-port`: the node side the port sits on (top, right, bottom, left).",
+      "data-ef-direction": "On `.ef-diagram-port`: in (square), out (circle) or inout (diamond).",
+      "--ef-diagram-port-offset": "On `.ef-diagram-port`: position along its side as a percentage (default 50%).",
+      "ef-diagram-port": "A connection-point marker inside a node; `.ef-diagram-port__label` names it.",
+      "ef-diagram-node__description": "Optional description text inside a node.",
+      "ef-diagram__membership": "Description list naming each group, lane or phase and its members in reading order.",
       "ef-diagram": "The `figure` root: a single-column grid of caption, optional description, viewport, relationship list and key.",
       "ef-diagram__viewport": "Bordered region that scrolls the canvas in both directions and contains overscroll.",
       "ef-diagram__canvas": "Positioning context sized by `--ef-diagram-canvas-w` and `--ef-diagram-canvas-h`.",

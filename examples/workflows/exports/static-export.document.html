@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Static export reference</title>
+    <meta name="generator" content="Forma workflow renderer 1.0.0">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/tokens.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/foundations.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/components.css">
+  </head>
+  <body>
+    <main>
+      <figure class="ef-diagram" id="wf-static-export" aria-labelledby="wf-static-export-title">
+        <figcaption id="wf-static-export-title">Static export reference</figcaption>
+        <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Static export reference diagram, scroll to see all items">
+          <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 840px; --ef-diagram-canvas-h: 144px;">
+            <svg class="ef-diagram__wires" viewBox="0 0 840 144" aria-hidden="true" focusable="false">
+              <defs>
+                <marker id="wf-static-export-arrow" class="ef-diagram-marker" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 z" />
+                </marker>
+              </defs>
+              <path class="ef-diagram-connector" id="wf-static-export-e-s1" d="M224 60 L272 60 L272 72 L320 72" marker-end="url(#wf-static-export-arrow)" />
+              <path class="ef-diagram-connector" id="wf-static-export-e-s2" d="M520 72 L568 72 L568 60 L616 60" marker-end="url(#wf-static-export-arrow)" />
+            </svg>
+            <article class="ef-diagram-node" id="wf-static-export-n-a" data-ef-shape="pill" aria-labelledby="wf-static-export-n-a-label" style="--ef-diagram-x: 24px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 72px;">
+              <p class="ef-diagram-node__kind">Start</p>
+              <h3 class="ef-diagram-node__label" id="wf-static-export-n-a-label">Request</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-static-export-n-b" data-ef-shape="rounded" data-ef-status="active" aria-labelledby="wf-static-export-n-b-label" style="--ef-diagram-x: 320px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 96px;">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-static-export-n-b-label">Review</h3>
+              <dl class="ef-diagram-node__meta">
+                <dt>Status</dt>
+                <dd>Active</dd>
+              </dl>
+            </article>
+            <article class="ef-diagram-node" id="wf-static-export-n-c" data-ef-shape="pill" aria-labelledby="wf-static-export-n-c-label" style="--ef-diagram-x: 616px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 72px;">
+              <p class="ef-diagram-node__kind">End</p>
+              <h3 class="ef-diagram-node__label" id="wf-static-export-n-c-label">Done</h3>
+            </article>
+            <span class="ef-diagram-connector__label" aria-hidden="true" style="--ef-diagram-x: 544px; --ef-diagram-y: 72px;">Approved</span>
+          </div>
+        </div>
+        <ol class="ef-diagram__relations" aria-label="Relationships">
+          <li>Request leads to Review.</li>
+          <li>Review leads to Done: “Approved”.</li>
+        </ol>
+      </figure>
+    </main>
+  </body>
+</html>

@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0.0",
   "contract": "forma.diagram-presentation",
-  "contractVersion": "2.0.0",
+  "contractVersion": "2.1.0",
   "stylesheet": "components.css",
   "decision": "docs/decisions/ADR-0004-diagram-presentation-boundary.md",
   "requirements": "requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md",
   "ownership": {
-    "forma": ["surface", "node", "group", "connector", "connectorLabel", "marker", "relations", "legend", "valueState"],
-    "consumer": ["geometry", "routing", "semanticKind", "metadataValues", "metadataVisibility", "namedStyles", "paletteSlots", "metadataMappings", "appearancePrecedence", "membership"],
+    "forma": ["surface", "node", "group", "connector", "connectorLabel", "marker", "relations", "legend", "valueState", "port", "status", "description", "membership"],
+    "consumer": ["geometry", "routing", "semanticKind", "metadataValues", "metadataVisibility", "namedStyles", "paletteSlots", "metadataMappings", "appearancePrecedence", "membership", "portPlacement", "statusValues"],
     "editorOnly": ["selection", "handles", "guides", "routePreview", "marquee", "dragTargets", "connectionTargets", "minimap", "validationOverlay"],
     "editorOnlyRule": "Editor-only adorners never use ef-diagram* classes and never appear in exported output."
   },
@@ -16,7 +16,10 @@
     "node": {
       "element": "article",
       "class": "ef-diagram-node",
-      "regions": { "kind": "ef-diagram-node__kind", "label": "ef-diagram-node__label", "metadata": "ef-diagram-node__meta" },
+      "regions": { "kind": "ef-diagram-node__kind", "label": "ef-diagram-node__label", "description": "ef-diagram-node__description", "metadata": "ef-diagram-node__meta" },
+      "statusAttribute": "data-ef-status",
+      "statusCues": { "active": "outer ring", "blocked": "double border", "failed": "double border", "skipped": "dashed border", "cancelled": "dashed border", "pending": "dotted border", "waiting": "dotted border" },
+      "statusRule": "Status is text in the node metadata (dt Status, dd label). data-ef-status selects only a secondary non-colour cue; other values render no cue.",
       "shapeAttribute": "data-ef-shape",
       "shapes": ["rectangle", "rounded", "pill", "ellipse", "diamond"],
       "defaultShape": "rectangle",
@@ -47,6 +50,8 @@
       "markers": { "class": "ef-diagram-marker", "kinds": ["arrow"], "attachment": ["marker-start", "marker-end"] },
       "appearance": ["connectorStroke", "connectorWidth"]
     },
+    "port": { "element": "span", "class": "ef-diagram-port", "parent": "ef-diagram-node", "label": "ef-diagram-port__label", "sideAttribute": "data-ef-side", "sides": ["top", "right", "bottom", "left"], "directionAttribute": "data-ef-direction", "directions": ["in", "out", "inout"], "directionCue": "in: square, out: circle, inout: diamond", "offset": "--ef-diagram-port-offset", "rule": "A port is a marker. The relationship list names the port in text when a connector uses it." },
+    "membership": { "element": "dl", "class": "ef-diagram__membership", "rule": "One dt per group, lane or phase; its dd lists members in reading order. Canvas overlap never implies membership." },
     "connectorLabel": { "element": "span", "class": "ef-diagram-connector__label", "geometry": ["x", "y"] },
     "relations": { "element": "ol", "class": "ef-diagram__relations", "rule": "One text item per connector, in reading order." },
     "legend": { "element": "dl", "class": "ef-diagram-legend", "swatch": "ef-diagram-legend__swatch", "appearance": ["fill", "stroke", "accent"] },
@@ -74,6 +79,7 @@
     "h": "--ef-diagram-h",
     "canvasWidth": "--ef-diagram-canvas-w",
     "canvasHeight": "--ef-diagram-canvas-h",
+    "portOffset": "--ef-diagram-port-offset",
     "unit": "px",
     "axes": "physical (does not mirror in right-to-left documents)"
   },

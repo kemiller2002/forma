@@ -90,6 +90,18 @@ Do not copy or fork Forma CSS for customer branding. See
 `docs/BRANDING.md` for the manifest, scoping, theme, accessibility, and Limen
 boundary contracts.
 
+## Workflows
+
+Forma 0.4.0 adds the portable workflow format. The JSON Schema and capability
+contract are package files:
+
+- `@echelon-foundry/design-system/workflow/forma-workflow.schema.json`
+- `@echelon-foundry/design-system/contracts/workflow-capabilities.json`
+
+Static workflow HTML needs only `tokens.css`, `foundations.css` and
+`components.css`. An interactive viewer or editor needs the separate opt-in
+package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
+
 ## Ownership boundary
 
 Forma owns semantic HTML contracts, CSS, design tokens, responsive

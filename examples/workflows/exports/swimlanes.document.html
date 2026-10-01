@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anomaly response</title>
+    <meta name="generator" content="Forma workflow renderer 1.0.0">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/tokens.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/foundations.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/components.css">
+  </head>
+  <body>
+    <main>
+      <figure class="ef-diagram" id="wf-swimlanes" aria-labelledby="wf-swimlanes-title">
+        <figcaption id="wf-swimlanes-title">Anomaly response</figcaption>
+        <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Anomaly response diagram, scroll to see all items">
+          <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 1464px; --ef-diagram-canvas-h: 648px;">
+            <div class="ef-diagram-group" id="wf-swimlanes-g-flight" data-ef-group="lane" style="--ef-diagram-x: 24px; --ef-diagram-y: 24px; --ef-diagram-w: 1416px; --ef-diagram-h: 264px;">
+              <p class="ef-diagram-group__header"><span class="ef-diagram-group__kind">Lane</span> <span class="ef-diagram-group__label" id="wf-swimlanes-g-flight-label">Flight control</span></p>
+            </div>
+            <div class="ef-diagram-group" id="wf-swimlanes-g-spacecraft" data-ef-group="lane" style="--ef-diagram-x: 24px; --ef-diagram-y: 320px; --ef-diagram-w: 1416px; --ef-diagram-h: 136px;">
+              <p class="ef-diagram-group__header"><span class="ef-diagram-group__kind">Lane</span> <span class="ef-diagram-group__label" id="wf-swimlanes-g-spacecraft-label">Spacecraft</span></p>
+            </div>
+            <div class="ef-diagram-group" id="wf-swimlanes-g-engineering" data-ef-group="lane" style="--ef-diagram-x: 24px; --ef-diagram-y: 488px; --ef-diagram-w: 1416px; --ef-diagram-h: 136px;">
+              <p class="ef-diagram-group__header"><span class="ef-diagram-group__kind">Lane</span> <span class="ef-diagram-group__label" id="wf-swimlanes-g-engineering-label">Engineering</span></p>
+            </div>
+            <div class="ef-diagram-group" id="wf-swimlanes-g-response" data-ef-group="phase" style="--ef-diagram-x: 320px; --ef-diagram-y: 24px; --ef-diagram-w: 824px; --ef-diagram-h: 432px;">
+              <p class="ef-diagram-group__header"><span class="ef-diagram-group__kind">Phase</span> <span class="ef-diagram-group__label" id="wf-swimlanes-g-response-label">Response phase</span></p>
+            </div>
+            <svg class="ef-diagram__wires" viewBox="0 0 1464 648" aria-hidden="true" focusable="false">
+              <defs>
+                <marker id="wf-swimlanes-arrow" class="ef-diagram-marker" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 z" />
+                </marker>
+              </defs>
+              <path class="ef-diagram-connector" id="wf-swimlanes-e-s1" d="M240 120 L288 120 L288 108 L336 108" marker-end="url(#wf-swimlanes-arrow)" />
+              <path class="ef-diagram-connector" id="wf-swimlanes-e-s2" d="M536 108 L584 108 L584 172 L632 172" marker-end="url(#wf-swimlanes-arrow)" />
+              <path class="ef-diagram-connector" id="wf-swimlanes-e-s3" d="M832 172 L880 172 L880 120 L928 120" marker-end="url(#wf-swimlanes-arrow)" />
+              <path class="ef-diagram-connector" id="wf-swimlanes-e-s4" d="M832 172 L880 172 L880 404 L928 404" marker-end="url(#wf-swimlanes-arrow)" />
+              <path class="ef-diagram-connector" id="wf-swimlanes-e-s5" d="M1128 404 L1176 404 L1176 572 L1224 572" marker-end="url(#wf-swimlanes-arrow)" />
+            </svg>
+            <article class="ef-diagram-node" id="wf-swimlanes-n-detect" data-ef-shape="ellipse" aria-labelledby="wf-swimlanes-n-detect-label" style="--ef-diagram-x: 40px; --ef-diagram-y: 72px; --ef-diagram-w: 200px; --ef-diagram-h: 96px;">
+              <p class="ef-diagram-node__kind">Event</p>
+              <h3 class="ef-diagram-node__label" id="wf-swimlanes-n-detect-label">Telemetry anomaly</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-swimlanes-n-triage" data-ef-shape="rounded" aria-labelledby="wf-swimlanes-n-triage-label" style="--ef-diagram-x: 336px; --ef-diagram-y: 72px; --ef-diagram-w: 200px; --ef-diagram-h: 72px;">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-swimlanes-n-triage-label">Triage the anomaly</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-swimlanes-n-decide" data-ef-shape="diamond" aria-labelledby="wf-swimlanes-n-decide-label" style="--ef-diagram-x: 632px; --ef-diagram-y: 72px; --ef-diagram-w: 200px; --ef-diagram-h: 200px;">
+              <p class="ef-diagram-node__kind">Decision</p>
+              <h3 class="ef-diagram-node__label" id="wf-swimlanes-n-decide-label">Safe to continue?</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-swimlanes-n-continue" data-ef-shape="pill" aria-labelledby="wf-swimlanes-n-continue-label" style="--ef-diagram-x: 928px; --ef-diagram-y: 72px; --ef-diagram-w: 200px; --ef-diagram-h: 96px;">
+              <p class="ef-diagram-node__kind">End</p>
+              <h3 class="ef-diagram-node__label" id="wf-swimlanes-n-continue-label">Resume nominal operations</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-swimlanes-n-safe" data-ef-shape="rounded" aria-labelledby="wf-swimlanes-n-safe-label" style="--ef-diagram-x: 928px; --ef-diagram-y: 368px; --ef-diagram-w: 200px; --ef-diagram-h: 72px;">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-swimlanes-n-safe-label">Command safe mode</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-swimlanes-n-review" data-ef-shape="rounded" aria-labelledby="wf-swimlanes-n-review-label" style="--ef-diagram-x: 1224px; --ef-diagram-y: 536px; --ef-diagram-w: 200px; --ef-diagram-h: 72px;">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-swimlanes-n-review-label">Engineering review</h3>
+            </article>
+            <span class="ef-diagram-connector__label" aria-hidden="true" style="--ef-diagram-x: 880px; --ef-diagram-y: 146px;">Yes</span>
+            <span class="ef-diagram-connector__label" aria-hidden="true" style="--ef-diagram-x: 880px; --ef-diagram-y: 288px;">No</span>
+          </div>
+        </div>
+        <ol class="ef-diagram__relations" aria-label="Relationships">
+          <li>Telemetry anomaly leads to Triage the anomaly.</li>
+          <li>Triage the anomaly leads to Safe to continue?</li>
+          <li>Safe to continue? leads to Resume nominal operations: “Yes”.</li>
+          <li>Safe to continue? leads to Command safe mode: “No”.</li>
+          <li>Command safe mode leads to Engineering review.</li>
+        </ol>
+        <dl class="ef-diagram__membership" aria-label="Groups and lanes">
+          <dt>Lane: Flight control</dt>
+          <dd>Telemetry anomaly, Triage the anomaly, Safe to continue?, Resume nominal operations</dd>
+          <dt>Lane: Spacecraft</dt>
+          <dd>Command safe mode</dd>
+          <dt>Lane: Engineering</dt>
+          <dd>Engineering review</dd>
+          <dt>Phase: Response phase</dt>
+          <dd>Triage the anomaly, Safe to continue?, Command safe mode</dd>
+        </dl>
+      </figure>
+    </main>
+  </body>
+</html>

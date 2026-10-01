@@ -1,0 +1,14 @@
+{
+  "structuralReview": {
+    "excludePaths": [
+      "src/workflow/Forma.Workflow/bin",
+      "src/workflow/Forma.Workflow/obj",
+      "src/workflow/Forma.Workflow.Cli/bin",
+      "src/workflow/Forma.Workflow.Cli/obj",
+      "src/workflow/Forma.Workflow.Wasm/bin",
+      "src/workflow/Forma.Workflow.Wasm/obj",
+      "tests/workflow/Forma.Workflow.Tests/bin",
+      "tests/workflow/Forma.Workflow.Tests/obj"
+    ]
+  }
+}

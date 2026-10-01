@@ -1,0 +1,27 @@
+{
+  "name": "@echelon-foundry/forma-workflow",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "description": "Embeddable Forma workflow renderer and editor (<forma-workflow>), built on the Forma portable workflow format. Optional runtime companion to the zero-runtime @echelon-foundry/design-system.",
+  "license": "MIT",
+  "exports": {
+    ".": "./dist/forma-workflow.js",
+    "./forma-workflow.js": "./dist/forma-workflow.js",
+    "./forma-workflow.css": "./dist/forma-workflow.css",
+    "./frame.html": "./dist/frame.html",
+    "./frame.js": "./dist/frame.js",
+    "./schema.json": "./dist/forma-workflow.schema.json",
+    "./capabilities.json": "./dist/workflow-capabilities.json",
+    "./engine/*": "./dist/engine/*"
+  },
+  "files": ["dist", "README.md"],
+  "sideEffects": ["./dist/forma-workflow.js", "./dist/frame.js", "./dist/*.css"],
+  "peerDependencies": {
+    "@echelon-foundry/design-system": ">=0.4.0"
+  },
+  "publishConfig": { "access": "public", "provenance": true },
+  "repository": { "type": "git", "url": "git+https://github.com/kemiller2002/forma.git", "directory": "packages/workflow" },
+  "homepage": "https://forma.echelonfoundry.com/workflow/",
+  "keywords": ["forma", "workflow", "diagram", "editor", "embeddable", "accessibility"]
+}

@@ -54,3 +54,10 @@ examples/*/assets/forma/
 
 # Playwright run output
 test-results/
+
+# Workflow F# build output
+src/workflow/**/bin/
+src/workflow/**/obj/
+tests/workflow/**/bin/
+tests/workflow/**/obj/
+packages/workflow/dist/
