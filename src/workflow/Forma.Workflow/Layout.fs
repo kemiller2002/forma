@@ -68,7 +68,13 @@ module Layout =
             | Some d -> Math.Ceiling(float d.Length / (charsPerLine * 1.15)) * 19.0
             | None -> 0.0
         let ports = if n.Ports |> List.exists (fun p -> p.Label.IsSome) then 12.0 else 0.0
-        Math.Ceiling((28.0 + 20.0 + label + description + status + refs + ports) / 8.0) * 8.0
+        // Room for the action button an interactive host shows for command and open intents.
+        let action =
+            match n.Interaction with
+            | Some(Command _) | Some(Open _) -> 52.0
+            | Some(Navigate(t, _)) -> (match t with ToUrl _ -> 0.0 | _ -> 52.0)
+            | _ -> 0.0
+        Math.Ceiling((28.0 + 20.0 + label + description + status + refs + ports + action) / 8.0) * 8.0
 
     let shapeOf (n: Node) =
         match n.Variant with

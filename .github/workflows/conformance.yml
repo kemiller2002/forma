@@ -50,5 +50,9 @@ jobs:
       - name: Check motion model conformance
         run: npm run test:motion
 
+      - name: Build the workflow package (embedding tests need it)
+
+        run: npm run workflow:build
+
       - name: Run browser conformance
         run: npm run test:browser

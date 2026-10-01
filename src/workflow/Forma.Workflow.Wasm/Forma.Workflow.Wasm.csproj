@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+  <!--
+    .NET WebAssembly host for the embeddable workflow engine
+    (@echelon-foundry/forma-workflow). Interop.cs only marshals JSON between the
+    browser element and Forma.Workflow.EmbedHost; every decision is in F#.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>partial</TrimMode>
+    <WasmEnableWebcil>true</WasmEnableWebcil>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <!-- FSharp.Core ships trim substitutions for resources it no longer embeds (IL2040) and reflection-based printf (IL2104). The engine avoids printf; browser tests exercise the trimmed bundle. -->
+    <NoWarn>$(NoWarn);IL2040;IL2104</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Forma.Workflow/Forma.Workflow.fsproj" />
+  </ItemGroup>
+</Project>

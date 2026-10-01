@@ -31,5 +31,9 @@
     <Compile Include="Layout.fs" />
     <Compile Include="Markup.fs" />
     <Compile Include="Render.fs" />
+    <Compile Include="Editor.fs" />
+    <Compile Include="Embed.fs" />
+    <Compile Include="EmbedView.fs" />
+    <Compile Include="EmbedProtocol.fs" />
   </ItemGroup>
 </Project>

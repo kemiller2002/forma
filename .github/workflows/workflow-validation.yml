@@ -1,0 +1,65 @@
+name: Forma workflow capability
+
+# Portable workflow format, validation, layout, HTML rendering and the embeddable
+# component (requirements/PORTABLE-WORKFLOW-INTERCHANGE.md, ADR-0006).
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: forma-workflow-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for commit batch
+        if: github.event_name != 'workflow_dispatch'
+        run: sleep 600
+
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts=false
+
+      - name: Build Forma
+        run: npm run build
+
+      - name: Schema, round-trip, layout, adversarial, rendering and editor-engine tests
+        run: npm run workflow:test
+
+      - name: Validate every compatibility fixture with the public CLI
+        run: npm run workflow:validate
+
+      - name: External producer to Forma validation to external consumer
+        run: node --test tests/workflow-external.test.mjs
+
+      - name: Build @echelon-foundry/forma-workflow
+        run: npm run workflow:build
+
+      - name: Package surface and zero-runtime boundary
+        run: |
+          npm run test:workflow-package
+          npm run test:runtime
+          node --test tests/diagram-contract.test.mjs tests/package-contract.test.mjs
+
+      - name: Install browsers
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Static export and embedding in real browsers
+        run: npm run test:workflow-browser

@@ -1,6 +1,6 @@
 {
   "name": "@echelon-foundry/design-system",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": false,
   "type": "module",
   "description": "Zero-runtime HTML and CSS design system for Echelon Foundry applications.",
@@ -24,7 +24,10 @@
     "./marketing/*": "./dist/marketing/*",
     "./tokens.json": "./tokens/echelon.tokens.json",
     "./figma/components.json": "./figma/component-contracts.json",
-    "./contracts/diagram-presentation.json": "./contracts/diagram-presentation.json"
+    "./contracts/diagram-presentation.json": "./contracts/diagram-presentation.json",
+    "./workflow/forma-workflow.schema.json": "./schemas/workflow/1.0/forma-workflow.schema.json",
+    "./contracts/workflow-capabilities.json": "./contracts/workflow-capabilities.json",
+    "./workflow/examples/*": "./examples/workflows/forma/workflows/*"
   },
   "files": [
     "dist",
@@ -34,7 +37,12 @@
     "docs/MARKETING-SITES.md",
     "tokens/echelon.tokens.json",
     "figma/component-contracts.json",
-    "contracts/diagram-presentation.json"
+    "contracts/diagram-presentation.json",
+    "schemas/workflow/1.0/forma-workflow.schema.json",
+    "contracts/workflow-capabilities.json",
+    "examples/workflows/forma/workflows",
+    "examples/workflows/fixtures.json",
+    "docs/workflow"
   ],
   "scripts": {
     "clean": "node tools/clean.mjs",
@@ -47,7 +55,7 @@
     "test:runtime": "node --test tests/zero-runtime.test.mjs",
     "motion:audit": "node tools/motion-audit.mjs",
     "test:motion": "node --test tests/motion-audit.test.mjs tests/motion-gate.test.mjs && node tools/motion-audit.mjs --strict",
-    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:figma && npm run test:css && npm run test:package && npm run test:browser",
+    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:figma && npm run test:css && npm run test:package && npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:browser",
     "site:build": "npm run build && node tools/build-site.mjs",
     "site:test": "node --test tests/site-build.test.mjs tests/catalog-coverage.test.mjs",
     "site:check": "npm run site:build && npm run catalog:check && npm run site:test && npm run site:mobile",
@@ -66,7 +74,13 @@
     "release:check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:css && npm run test:package && playwright test tests/browser/marketing.spec.mjs && npm run site:check",
     "test:figma": "node --test tests/figma-contract.test.mjs",
     "catalog:check": "node tools/catalog/validate.mjs && node tools/catalog/inventory.mjs --check",
-    "catalog:inventory": "node tools/catalog/inventory.mjs"
+    "catalog:inventory": "node tools/catalog/inventory.mjs",
+    "workflow:test": "dotnet run --project tests/workflow/Forma.Workflow.Tests -c Release",
+    "workflow:build": "node tools/build-workflow-package.mjs",
+    "workflow:validate": "dotnet run --project src/workflow/Forma.Workflow.Cli -c Release -- validate examples/workflows/forma/workflows/*.forma-workflow.json",
+    "test:workflow-package": "node --test tests/workflow-package.test.mjs",
+    "test:workflow-browser": "playwright test tests/browser/workflow-static.spec.mjs tests/browser/workflow-embed.spec.mjs",
+    "workflow:check": "npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:workflow-browser"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
@@ -85,6 +99,7 @@
     "design-system",
     "zero-runtime",
     "marketing-presentation",
-    "accessibility"
+    "accessibility",
+    "workflow"
   ]
 }

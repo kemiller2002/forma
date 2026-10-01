@@ -90,6 +90,21 @@ jobs:
             echo "Published ${package_name}@${package_version} with the latest dist-tag."
           fi
 
+      - name: Publish the workflow package version when it is new
+        shell: bash
+        working-directory: packages/workflow
+        run: |
+          set -euo pipefail
+          test -f dist/forma-workflow.js
+          name="$(node -p "require('./package.json').name")"
+          version="$(node -p "require('./package.json').version")"
+          if npm view "${name}@${version}" version >/dev/null 2>&1; then
+            echo "${name}@${version} is already published."
+          else
+            npm publish --access public --provenance
+            echo "Published ${name}@${version}."
+          fi
+
       - name: Publish this main commit
         shell: bash
         run: |

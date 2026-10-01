@@ -123,6 +123,26 @@ Workflow/diagram items may also carry authored fill, border/stroke, accent, conn
 
 See `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md`.
 
+## Portable workflows
+
+Forma owns the portable workflow standard (`.forma-workflow.json`): a versioned
+JSON Schema, independent validation, deterministic layout, static HTML
+rendering, and the embeddable `<forma-workflow>` renderer and editor. None of it
+needs Forma Studio.
+
+| Need | Use |
+|---|---|
+| The format | [`docs/workflow/FORMAT.md`](docs/workflow/FORMAT.md), schema [`schemas/workflow/1.0/forma-workflow.schema.json`](schemas/workflow/1.0/forma-workflow.schema.json) |
+| Validate in CI or from an agent | `forma-workflow validate --json` ([`docs/workflow/VALIDATION.md`](docs/workflow/VALIDATION.md)) |
+| Static or complete-document HTML | `forma-workflow render` ([`docs/workflow/RENDERING.md`](docs/workflow/RENDERING.md)) |
+| Embed a viewer or editor | `@echelon-foundry/forma-workflow` ([`docs/workflow/EMBEDDING.md`](docs/workflow/EMBEDDING.md), [`examples/workflow-embedding`](examples/workflow-embedding)) |
+| Produce workflows elsewhere | [`docs/workflow/EXTERNAL-PRODUCERS.md`](docs/workflow/EXTERNAL-PRODUCERS.md) |
+| Reference fixtures | [`examples/workflows/`](examples/workflows/) |
+
+The design-system package stays zero-runtime. The editor ships separately; see
+[ADR-0006](docs/decisions/ADR-0006-portable-workflow-capability.md). Run
+`npm run workflow:check` for the full workflow test suite.
+
 ## Figma
 
 Forma treats Figma as a design and developer-consumption surface, not as a
