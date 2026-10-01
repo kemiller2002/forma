@@ -359,10 +359,10 @@
         "site,accessibility,flaky"
       ],
       "priority": "high",
-      "status": "ready",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-01T15:57:13.184Z",
-      "updatedAt": "2026-10-01T15:57:13.000Z",
+      "updatedAt": "2026-10-01T16:18:06.000Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null

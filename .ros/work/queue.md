@@ -53,4 +53,4 @@
 | WI-0014 | Implement P0 requirement-defined components listed in catalog/planned.json (breadcrumbs, table styling, chip, icon button, button variants, kbd, separator, inline message, progress circle) | captured | forma,catalog,requirements | medium |
 | WI-0015 | Decide whether the documentation site may carry a progressive-enhancement script for a clipboard Copy button and search (currently forbidden by ADR-0002 scope and tests/site-build.test.mjs) | captured | forma,documentation,decision | low |
 | WI-0016 | Evaluate a reusable settings-list row primitive (evidence: catalog/compositions/mobile-settings.mjs) | captured | forma,catalog,candidate | low |
-| WI-0017 | Site axe checks sample the settled state, not entry-motion frames | ready | site,accessibility,flaky | high |
+| WI-0017 | Site axe checks sample the settled state, not entry-motion frames | complete | site,accessibility,flaky | high |
