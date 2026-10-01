@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Countdown checklist</title>
+    <meta name="description" content="A narrow, top-to-bottom workflow intended for phone screens.">
+    <meta name="generator" content="Forma workflow renderer 1.0.0">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/tokens.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/foundations.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/components.css">
+  </head>
+  <body>
+    <main>
+      <figure class="ef-diagram" id="wf-mobile" aria-labelledby="wf-mobile-title">
+        <figcaption id="wf-mobile-title">Countdown checklist</figcaption>
+        <p>A narrow, top-to-bottom workflow intended for phone screens.</p>
+        <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Countdown checklist diagram, scroll to see all items">
+          <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 208px; --ef-diagram-canvas-h: 696px;">
+            <svg class="ef-diagram__wires" viewBox="0 0 208 696" aria-hidden="true" focusable="false">
+              <defs>
+                <marker id="wf-mobile-arrow" class="ef-diagram-marker" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 z" />
+                </marker>
+              </defs>
+              <path class="ef-diagram-connector" id="wf-mobile-e-t1" d="M104 120 L104 216" marker-end="url(#wf-mobile-arrow)" />
+              <path class="ef-diagram-connector" id="wf-mobile-e-t2" d="M104 312 L104 408" marker-end="url(#wf-mobile-arrow)" />
+              <path class="ef-diagram-connector" id="wf-mobile-e-t3" d="M104 504 L104 600" marker-end="url(#wf-mobile-arrow)" />
+            </svg>
+            <article class="ef-diagram-node" id="wf-mobile-n-t60" data-ef-shape="rounded" aria-labelledby="wf-mobile-n-t60-label" style="--ef-diagram-x: 24px; --ef-diagram-y: 24px; --ef-diagram-w: 160px; --ef-diagram-h: 96px;">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-mobile-n-t60-label">T-60 minutes: crew strapped in</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-mobile-n-t30" data-ef-shape="rounded" aria-labelledby="wf-mobile-n-t30-label" style="--ef-diagram-x: 24px; --ef-diagram-y: 216px; --ef-diagram-w: 160px; --ef-diagram-h: 96px;">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-mobile-n-t30-label">T-30 minutes: hatch closed</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-mobile-n-t10" data-ef-shape="rounded" aria-labelledby="wf-mobile-n-t10-label" style="--ef-diagram-x: 24px; --ef-diagram-y: 408px; --ef-diagram-w: 160px; --ef-diagram-h: 96px;">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-mobile-n-t10-label">T-10 minutes: terminal count</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-mobile-n-t0" data-ef-shape="pill" aria-labelledby="wf-mobile-n-t0-label" style="--ef-diagram-x: 24px; --ef-diagram-y: 600px; --ef-diagram-w: 160px; --ef-diagram-h: 72px;">
+              <p class="ef-diagram-node__kind">End</p>
+              <h3 class="ef-diagram-node__label" id="wf-mobile-n-t0-label">Liftoff</h3>
+            </article>
+          </div>
+        </div>
+        <ol class="ef-diagram__relations" aria-label="Relationships">
+          <li>T-60 minutes: crew strapped in leads to T-30 minutes: hatch closed.</li>
+          <li>T-30 minutes: hatch closed leads to T-10 minutes: terminal count.</li>
+          <li>T-10 minutes: terminal count leads to Liftoff.</li>
+        </ol>
+      </figure>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+{
+  "description": "Executable compatibility fixtures for the Forma portable workflow format. Each entry names the file, the compatibility class Forma validation must report, and what it proves. tests/workflow runs every entry.",
+  "formatVersion": "1.0.0",
+  "fixtures": [
+    {
+      "id": "minimal",
+      "class": "fully-supported",
+      "proves": "The smallest valid workflow: one node, no layout."
+    },
+    {
+      "id": "multi-step",
+      "class": "fully-supported",
+      "proves": "A linear multi-step workflow with provenance."
+    },
+    {
+      "id": "branching",
+      "class": "fully-supported",
+      "proves": "A decision with labelled conditional branches and a loop back."
+    },
+    {
+      "id": "groups",
+      "class": "fully-supported",
+      "proves": "Groups and containers with explicit membership and nesting."
+    },
+    {
+      "id": "swimlanes",
+      "class": "fully-supported",
+      "proves": "Swimlanes and a phase that crosses lanes."
+    },
+    {
+      "id": "colored",
+      "class": "fully-supported",
+      "proves": "Literal, token and palette colours unrelated to status, with a legend (FMD-TEST-007)."
+    },
+    {
+      "id": "node-metadata",
+      "class": "fully-supported",
+      "proves": "Arbitrary node and workflow metadata, plus typed domain references."
+    },
+    {
+      "id": "edge-metadata",
+      "class": "fully-supported",
+      "proves": "Edge metadata, semantic edge kinds and edge status."
+    },
+    {
+      "id": "extensions",
+      "class": "supported-with-preserved-extensions",
+      "proves": "Namespaced extension data at workflow, node and edge level survives unchanged."
+    },
+    {
+      "id": "no-layout",
+      "class": "fully-supported",
+      "proves": "A workflow with no coordinates; the deterministic default layout places it."
+    },
+    {
+      "id": "accessible",
+      "class": "fully-supported",
+      "proves": "Accessible names and descriptions, and labelled branches."
+    },
+    {
+      "id": "mobile",
+      "class": "fully-supported",
+      "proves": "A top-to-bottom compact workflow for narrow screens."
+    },
+    {
+      "id": "branded",
+      "class": "fully-supported",
+      "proves": "Token-backed palette slots that a Forma brand restyles."
+    },
+    {
+      "id": "embedded-view",
+      "class": "fully-supported",
+      "proves": "Runtime status projected onto a read-only embedded workflow."
+    },
+    {
+      "id": "embedded-edit",
+      "class": "supported-with-preserved-extensions",
+      "proves": "Ports, interaction intents and host extension data in an editable embedded workflow."
+    },
+    {
+      "id": "static-export",
+      "class": "fully-supported",
+      "proves": "Authored geometry; the reference for static HTML export (exports/static-export.*.html)."
+    },
+    {
+      "id": "interactive-export",
+      "class": "fully-supported",
+      "proves": "Declarative interaction intents; the reference for interactive HTML export (exports/interactive-export.document.html)."
+    },
+    {
+      "id": "runtime-ports",
+      "class": "fully-supported",
+      "proves": "Ports with direction and cardinality, core and namespaced status states."
+    },
+    {
+      "id": "color-mapping",
+      "class": "supported-with-preserved-extensions",
+      "proves": "An explicit producer metadata-to-colour mapping with a legend (FMD-TEST-008)."
+    }
+  ]
+}

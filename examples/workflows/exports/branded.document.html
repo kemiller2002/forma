@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" data-ef-brand="example-harbor">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Partner mission review</title>
+    <meta name="description" content="Uses only token-backed palette slots, so a Forma brand restyles it without editing the workflow.">
+    <meta name="generator" content="Forma workflow renderer 1.0.0">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/tokens.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/foundations.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/components.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/brands/example-harbor.css">
+  </head>
+  <body>
+    <main>
+      <figure class="ef-diagram" id="wf-branded" aria-labelledby="wf-branded-title" style="--ef-workflow-palette-primary: var(--ef-color-surface-secondary); --ef-workflow-palette-accent: var(--ef-color-accent-primary);">
+        <figcaption id="wf-branded-title">Partner mission review</figcaption>
+        <p>Uses only token-backed palette slots, so a Forma brand restyles it without editing the workflow.</p>
+        <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Partner mission review diagram, scroll to see all items">
+          <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 840px; --ef-diagram-canvas-h: 120px;">
+            <svg class="ef-diagram__wires" viewBox="0 0 840 120" aria-hidden="true" focusable="false">
+              <defs>
+                <marker id="wf-branded-arrow" class="ef-diagram-marker" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 z" />
+                </marker>
+              </defs>
+              <path class="ef-diagram-connector" id="wf-branded-e-b1" d="M224 60 L320 60" marker-end="url(#wf-branded-arrow)" />
+              <path class="ef-diagram-connector" id="wf-branded-e-b2" d="M520 60 L616 60" marker-end="url(#wf-branded-arrow)" style="--ef-diagram-connector-stroke: var(--ef-workflow-palette-accent);" />
+            </svg>
+            <article class="ef-diagram-node" id="wf-branded-n-brief" data-ef-shape="rounded" aria-labelledby="wf-branded-n-brief-label" style="--ef-diagram-x: 24px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 72px; --ef-diagram-fill: var(--ef-workflow-palette-primary); --ef-diagram-foreground: var(--ef-color-text-primary);">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-branded-n-brief-label">Partner briefing</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-branded-n-review" data-ef-shape="rounded" aria-labelledby="wf-branded-n-review-label" style="--ef-diagram-x: 320px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 72px; --ef-diagram-accent: var(--ef-workflow-palette-accent);">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-branded-n-review-label">Joint review</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-branded-n-signoff" data-ef-shape="pill" aria-labelledby="wf-branded-n-signoff-label" style="--ef-diagram-x: 616px; --ef-diagram-y: 24px; --ef-diagram-w: 200px; --ef-diagram-h: 72px; --ef-diagram-stroke: var(--ef-workflow-palette-accent);">
+              <p class="ef-diagram-node__kind">End</p>
+              <h3 class="ef-diagram-node__label" id="wf-branded-n-signoff-label">Joint sign-off</h3>
+            </article>
+          </div>
+        </div>
+        <ol class="ef-diagram__relations" aria-label="Relationships">
+          <li>Partner briefing leads to Joint review.</li>
+          <li>Joint review leads to Joint sign-off.</li>
+        </ol>
+        <dl class="ef-diagram-legend" aria-label="Key">
+          <div>
+            <dt><span class="ef-diagram-legend__swatch" style="--ef-diagram-fill: var(--ef-workflow-palette-primary);"></span> Partner-owned step</dt>
+            <dd>brand surface fill</dd>
+          </div>
+          <div>
+            <dt><span class="ef-diagram-legend__swatch" style="--ef-diagram-accent: var(--ef-workflow-palette-accent);"></span> Joint step</dt>
+            <dd>brand accent</dd>
+          </div>
+        </dl>
+      </figure>
+    </main>
+  </body>
+</html>
