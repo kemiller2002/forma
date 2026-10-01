@@ -35,6 +35,8 @@
     font-size: 0.8125rem;
     line-height: 1.4;
   }
+  /* On a secondary surface, text-secondary falls below 4.5:1; use the surface's own text colour (forma#93). */
+  .ef-surface .ef-field__description { color: var(--ef-color-text-on-secondary-surface, #3a403c); }
 
   /* Motion model vocabulary --------------------------------------------- */
   /*
