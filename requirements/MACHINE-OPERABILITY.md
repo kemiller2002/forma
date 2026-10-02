@@ -134,3 +134,7 @@ For each supported interaction, a reviewer or automation agent must be able to a
 6. How do I know the action succeeded, failed, or was rejected?
 
 If one of those questions cannot be answered through the public interaction contract, the interaction is not complete.
+
+## 6. CI gate
+
+Machine-operability conformance MUST run as part of normal browser and release validation. A regression in an established machine identity, semantic action path, or observable completion contract blocks merge/release unless the public contract is intentionally versioned with migration guidance.
