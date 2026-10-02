@@ -82,6 +82,20 @@ Agents must not:
 - introduce an advanced behavioral control without naming the application/Limen
   behavior contract it depends on.
 
+## Machine operability
+
+Read `requirements/MACHINE-OPERABILITY.md` before adding or changing an interaction.
+
+- Every human-operable action must have a deterministic semantic machine path to the same authoritative application state.
+- Prefer role plus accessible name, then native stable identity such as label, `id`, `name`/value or URL target. Do not make CSS classes, DOM position, pixel coordinates or generated test IDs the canonical action interface.
+- Direct-manipulation features such as drag, resize, pan, connect and reorder must keep a non-coordinate semantic path for meaningful state changes.
+- State and completion must be observable through native state, valid ARIA, text/status output or documented public application state. Never require a fixed sleep to guess that an action finished.
+- Animation is presentation only. Reduced motion and zero-duration rendering must reach the same final state.
+- Machine actors do not bypass Limen/application behavior or Ordo/domain legality. They request the same actions under the same rules.
+- Playwright is the reference conformance tool, not a production dependency or private automation API.
+
+The package publishes the tool-neutral contract at `contracts/machine-operability.json`. Reference browser coverage lives in `tests/browser/machine-operability.spec.mjs` and can be run with `npm run test:machine`.
+
 ## State ownership
 
 | Concern | Owner |
