@@ -120,8 +120,13 @@ test("the viewport switcher resizes the real mobile frame", async ({ page }) => 
   await expect.poll(() => frame.evaluate(element => element.contentDocument?.readyState ?? "loading")).toBe("complete");
   expect(Math.round((await frame.boundingBox()).width)).toBe(320);
   for (const width of [390, 430, 768]) {
-    await demo.locator(`input[value="${width}"]`).check({ force: true });
-    expect(Math.round((await frame.boundingBox()).width)).toBe(width);
+    // Choose a width the way a person does: through the visible segment. The
+    // radio itself is a 1px hidden input that the sliding selection indicator
+    // can cover, so a forced click at its coordinates is not reliable.
+    const option = demo.locator(`input[value="${width}"]`);
+    await demo.locator("label.ef-segment").filter({ has: page.locator(`input[value="${width}"]`) }).click();
+    await expect(option).toBeChecked();
+    await expect.poll(async () => Math.round((await frame.boundingBox()).width)).toBe(width);
     const inner = await frame.evaluate(element => element.contentDocument.documentElement.clientWidth);
     expect(inner).toBeLessThanOrEqual(width);
   }

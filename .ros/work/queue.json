@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 18,
+  "nextSeq": 20,
   "items": [
     {
       "id": "WI-0001",
@@ -363,6 +363,38 @@
       "attachments": [],
       "createdAt": "2026-10-01T15:57:13.184Z",
       "updatedAt": "2026-10-01T16:18:06.000Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0018",
+      "title": "Viewport switcher site test selects widths through the visible segment",
+      "description": null,
+      "tags": [
+        "site,flaky"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-10-02T14:42:07.217Z",
+      "updatedAt": "2026-10-02T14:42:16.000Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0019",
+      "title": "Callout reduced-motion test ignores the reset's 0.01ms transitions",
+      "description": null,
+      "tags": [
+        "browser,flaky"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-10-02T15:18:43.250Z",
+      "updatedAt": "2026-10-02T15:18:44.000Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null
