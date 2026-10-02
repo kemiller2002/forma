@@ -2,13 +2,19 @@
 id: DF-FORMA-2026-0001
 title: Adopt semantic machine operability as a public interaction contract
 status: accepted
-date: 2026-10-02
-work_item: FORMA-GH-98
-related:
+type: decision-record
+created: 2026-10-02
+updated: 2026-10-02
+tags: [architecture, machine-operability, automation, playwright, accessibility, public-api]
+supersedes: []
+superseded_by: []
+related_documents:
   - requirements/MACHINE-OPERABILITY.md
   - contracts/machine-operability.json
   - docs/AGENT-USAGE.md
+  - tests/browser/machine-operability.spec.mjs
 ---
+
 
 # Context
 
