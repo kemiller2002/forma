@@ -55,3 +55,4 @@
 | WI-0016 | Evaluate a reusable settings-list row primitive (evidence: catalog/compositions/mobile-settings.mjs) | captured | forma,catalog,candidate | low |
 | WI-0017 | Site axe checks sample the settled state, not entry-motion frames | complete | site,accessibility,flaky | high |
 | WI-0018 | Viewport switcher site test selects widths through the visible segment | complete | site,flaky | high |
+| WI-0019 | Callout reduced-motion test ignores the reset's 0.01ms transitions | complete | browser,flaky | high |

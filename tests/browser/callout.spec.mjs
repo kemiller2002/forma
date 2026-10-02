@@ -110,5 +110,13 @@ test("reduced motion: the callout is static and declares no motion", async ({ pa
       return [style.animationName, style.transitionProperty === "all" && style.transitionDuration !== "0s" ? style.transitionDuration : "none"];
     }).filter((value) => value !== "none"));
   expect(motion).toEqual([]);
-  expect(await page.evaluate(() => document.getAnimations().length)).toBe(0);
+  // The reduced-motion reset leaves 0.01ms transitions on surrounding elements;
+  // a style change can start one for a single frame. That is not motion, so
+  // only animations long enough to perceive (over 1ms, or infinite) count.
+  const perceptible = await page.evaluate(() =>
+    document.getAnimations().filter((animation) => {
+      const duration = animation.effect?.getComputedTiming().duration;
+      return typeof duration !== "number" || duration > 1;
+    }).length);
+  expect(perceptible).toBe(0);
 });
