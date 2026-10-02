@@ -46,6 +46,8 @@ test("spatial objects are reachable by semantic controls and stable native targe
   await expect(page.getByRole("button", { name: "Zoom in" })).toBeVisible();
 
   const billing = page.getByRole("link", { name: "Billing" });
+  await page.getByText("Objects in this view", { exact: true }).click();
+  await expect(billing).toBeVisible();
   await billing.click();
   await expect(page.locator("#billing")).toBeVisible();
   expect(new URL(page.url()).hash).toBe("#billing");
