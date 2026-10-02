@@ -1,0 +1,48 @@
+{
+  "name": "forma-machine-operability",
+  "version": "1.0.0",
+  "referenceAutomation": "Playwright",
+  "toolNeutral": true,
+  "principle": "Every human-operable action has a deterministic semantically discoverable machine-operable path to the same authoritative application state.",
+  "locatorPriority": [
+    "role-and-accessible-name",
+    "native-label-id-name-value-or-url-target",
+    "documented-application-owned-stable-object-identity",
+    "documented-public-state-hook-for-inspection"
+  ],
+  "completionSignals": [
+    "native-state-change",
+    "documented-public-state-change",
+    "navigation-or-url-change",
+    "live-or-status-output",
+    "authoritative-application-state-rendered-into-the-dom"
+  ],
+  "directManipulation": {
+    "coordinateGestureMayBeConvenience": true,
+    "semanticEquivalentRequiredForMeaningfulStateChanges": true,
+    "examples": [
+      "move-buttons",
+      "named-commands",
+      "keyboard-actions",
+      "form-controls",
+      "application-or-limen-command-surface"
+    ]
+  },
+  "forbiddenAsOnlyPublicPath": [
+    "hard-coded-screen-coordinates",
+    "image-recognition",
+    "hover-only-actions",
+    "pointer-only-actions",
+    "generated-css-class-locators",
+    "dom-position-or-nth-child-locators",
+    "fixed-sleep-completion",
+    "color-only-state",
+    "animation-only-state",
+    "closed-shadow-dom-hiding-required-interaction"
+  ],
+  "authority": {
+    "forma": "semantic markup, accessible naming, public structure and presentation-state hooks",
+    "applicationOrLimen": "behavior beyond native HTML and application state synchronization",
+    "ordoOrDomain": "legality, capabilities, obligations, permissions and consequential transitions"
+  }
+}
