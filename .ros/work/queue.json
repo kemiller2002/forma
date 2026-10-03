@@ -430,6 +430,22 @@
       "createdBy": "agent:openai-chatgpt",
       "source": "github-issue",
       "sourceReference": "https://github.com/kemiller2002/forma/issues/100"
+    },
+    {
+      "id": "FORMA-MO-TABS",
+      "title": "Retrofit canonical Tabs and high-risk machine-operability evidence",
+      "description": null,
+      "tags": [
+        "forma,machine-operability,tabs,parity"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-10-03T09:42:56.792Z",
+      "updatedAt": "2026-10-03T09:42:57.000Z",
+      "createdBy": "agent:openai-chatgpt",
+      "source": "github-issue",
+      "sourceReference": "https://github.com/kemiller2002/forma/issues/100"
     }
   ]
 }

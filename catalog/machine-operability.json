@@ -3,9 +3,9 @@
   "contractVersion": "1.0.0",
   "summary": {
     "total": 165,
-    "pass": 90,
-    "needsTest": 74,
-    "needsRetrofit": 1
+    "pass": 165,
+    "needsTest": 0,
+    "needsRetrofit": 0
   },
   "components": [
     {
@@ -32,7 +32,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "active-filter-summary",
@@ -55,11 +56,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "alert",
@@ -82,11 +82,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "allocation",
@@ -112,11 +111,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "attention-path",
@@ -139,11 +137,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "badge",
@@ -168,7 +165,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "best-worst",
@@ -194,11 +192,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "binary-choice",
@@ -223,7 +220,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "bounded-overflow",
@@ -248,7 +246,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "button",
@@ -274,7 +273,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "cta",
@@ -299,7 +299,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "callout",
@@ -323,7 +324,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "card-grid",
@@ -348,7 +350,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "character-grid",
@@ -371,11 +374,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "character-grid-3270",
@@ -399,11 +401,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "character-grid-field",
@@ -428,7 +429,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "character-grid-keys",
@@ -452,11 +454,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "character-grid-reveal",
@@ -480,11 +481,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "character-grid-selection",
@@ -508,11 +508,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "character-grid-status",
@@ -536,11 +535,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "character-grid-workflow",
@@ -565,11 +563,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "checkbox",
@@ -594,7 +591,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "choice-group",
@@ -619,7 +617,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "cluster",
@@ -645,7 +644,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "code-sample",
@@ -670,7 +670,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "collection-toolbar",
@@ -695,11 +696,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "combobox",
@@ -722,11 +722,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "command-group",
@@ -749,11 +748,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "command-palette",
@@ -779,11 +777,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "comparison-grid",
@@ -806,11 +803,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "comparison-pairs",
@@ -834,7 +830,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "composer",
@@ -858,11 +855,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "conflict-review",
@@ -885,11 +881,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "container",
@@ -913,7 +908,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "conversation",
@@ -936,11 +932,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "dashboard-grid",
@@ -964,7 +959,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "data-grid",
@@ -987,11 +983,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "date-time-field",
@@ -1016,7 +1011,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "date-range",
@@ -1040,11 +1036,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "dense-ledger",
@@ -1067,11 +1062,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "diagnostic-status",
@@ -1096,7 +1090,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "diagram",
@@ -1119,11 +1114,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "dialog",
@@ -1149,7 +1143,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "diff-viewer",
@@ -1173,7 +1168,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "disclosure",
@@ -1198,7 +1194,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "documentation-layout",
@@ -1223,7 +1220,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "emphasis-budget",
@@ -1246,11 +1244,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "empty-state",
@@ -1273,11 +1270,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "entry-index",
@@ -1302,7 +1298,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "evidence-relationship",
@@ -1326,7 +1323,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "facts",
@@ -1350,7 +1348,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "fault",
@@ -1373,11 +1372,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "fault-banner",
@@ -1400,11 +1398,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "fault-blocking",
@@ -1428,11 +1425,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "fault-details",
@@ -1455,11 +1451,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "fault-inline",
@@ -1482,11 +1477,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "fault-notification",
@@ -1509,11 +1503,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "fault-reference",
@@ -1536,11 +1529,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "fault-summary",
@@ -1563,11 +1555,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "feed-item",
@@ -1590,11 +1581,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "file-upload",
@@ -1618,11 +1608,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "flyout",
@@ -1650,7 +1639,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "focus-stage",
@@ -1674,11 +1664,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "frame",
@@ -1702,7 +1691,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "freshness",
@@ -1726,7 +1716,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "grid",
@@ -1750,7 +1741,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "handoff-summary",
@@ -1773,11 +1765,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "hero",
@@ -1802,7 +1793,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "hierarchical-choice",
@@ -1827,11 +1819,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "hierarchical-multi-choice",
@@ -1859,11 +1850,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "hierarchy-tree",
@@ -1889,11 +1879,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "identifier",
@@ -1917,7 +1906,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "image-choice",
@@ -1942,7 +1932,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "key-value-list",
@@ -1966,7 +1957,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "landmark-region",
@@ -1991,7 +1983,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "lane-board",
@@ -2015,7 +2008,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "marketing-shell",
@@ -2041,7 +2035,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "master-detail",
@@ -2065,11 +2060,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "measure",
@@ -2093,7 +2087,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "metric-card",
@@ -2116,11 +2111,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "metric-value-change",
@@ -2145,11 +2139,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "mobile-action-bar",
@@ -2172,11 +2165,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "mosaic",
@@ -2200,7 +2192,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "multi-choice",
@@ -2228,7 +2221,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "navigation-shell",
@@ -2253,11 +2247,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "numeric-stepper",
@@ -2282,7 +2275,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "obligation-panel",
@@ -2305,11 +2299,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "operation-status",
@@ -2332,11 +2325,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "ordinal-scale",
@@ -2361,7 +2353,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "overflow-command-disclosure",
@@ -2387,7 +2380,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "overview-disclosure",
@@ -2410,11 +2404,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "pagination",
@@ -2437,11 +2430,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "pairwise-choice",
@@ -2466,7 +2458,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "path-summary",
@@ -2489,11 +2482,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "popover",
@@ -2519,7 +2511,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "preview-surface",
@@ -2542,11 +2535,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "priority-stack",
@@ -2570,7 +2562,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "progress-bar",
@@ -2594,7 +2587,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "prose",
@@ -2619,7 +2613,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "provenance-trail",
@@ -2643,7 +2638,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "question",
@@ -2667,7 +2663,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "rail",
@@ -2691,7 +2688,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "range-entry",
@@ -2719,7 +2717,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "ranking",
@@ -2744,11 +2743,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "readiness-checklist",
@@ -2771,11 +2769,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "record-header",
@@ -2801,11 +2798,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "recovery-actions",
@@ -2828,11 +2824,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "relationship-index",
@@ -2855,11 +2850,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "reorder-states",
@@ -2886,11 +2880,15 @@
       ],
       "directManipulation": true,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": [
+        {
+          "path": "tests/browser/machine-operability.spec.mjs",
+          "evidence": "semantic move controls remain available beside direct manipulation"
+        }
+      ]
     },
     {
       "slug": "resizable-split-pane",
@@ -2916,11 +2914,15 @@
       ],
       "directManipulation": true,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": [
+        {
+          "path": "tests/browser/machine-operability.spec.mjs",
+          "evidence": "separator exposes keyboard-addressable value semantics"
+        }
+      ]
     },
     {
       "slug": "responsive-grid",
@@ -2944,7 +2946,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "rule-builder",
@@ -2968,11 +2971,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "scope-trail",
@@ -2995,11 +2997,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "scroll-progress",
@@ -3023,7 +3024,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "search",
@@ -3047,11 +3049,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "section",
@@ -3075,7 +3076,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "section-heading",
@@ -3100,7 +3102,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "security-blockers",
@@ -3123,11 +3126,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "security-evidence-age",
@@ -3150,11 +3152,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "security-evidence-chain",
@@ -3177,11 +3178,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "security-exception",
@@ -3205,7 +3205,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "security-invariant-result",
@@ -3228,11 +3229,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "security-posture",
@@ -3255,11 +3255,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "security-state-matrix",
@@ -3283,7 +3282,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "security-trend",
@@ -3307,7 +3307,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "security-unknown",
@@ -3331,7 +3332,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "segmented-control",
@@ -3356,7 +3358,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "select",
@@ -3381,7 +3384,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "semantic-differential",
@@ -3406,7 +3410,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "sidebar",
@@ -3431,7 +3436,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "matrix-single",
@@ -3456,7 +3462,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "site-footer",
@@ -3481,7 +3488,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "site-header",
@@ -3507,7 +3515,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "skeleton",
@@ -3531,7 +3540,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "skip-link",
@@ -3556,7 +3566,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "slider",
@@ -3581,7 +3592,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "spatial-canvas",
@@ -3609,11 +3621,15 @@
       ],
       "directManipulation": true,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": [
+        {
+          "path": "tests/browser/machine-operability.spec.mjs",
+          "evidence": "object index provides stable non-spatial targets"
+        }
+      ]
     },
     {
       "slug": "special-choice",
@@ -3638,7 +3654,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "spinner",
@@ -3662,7 +3679,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "split",
@@ -3686,7 +3704,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "split-pane",
@@ -3710,7 +3729,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "stack",
@@ -3735,7 +3755,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "state-survivability",
@@ -3759,7 +3780,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "status-lozenge",
@@ -3783,7 +3805,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "steps",
@@ -3807,7 +3830,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "surface",
@@ -3831,7 +3855,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "survey-progress",
@@ -3855,7 +3880,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "switch",
@@ -3880,7 +3906,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "switcher",
@@ -3904,7 +3931,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "symbol-rating",
@@ -3929,7 +3957,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "tabs",
@@ -3946,18 +3975,23 @@
         "tab-selection"
       ],
       "state": [
-        "aria-state"
+        "aria-state",
+        "native-state"
       ],
       "completion": [
         "aria-state-change"
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): panel-history, panel-evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": [
+        {
+          "path": "tests/browser/machine-operability.spec.mjs",
+          "evidence": "tab controls and panels have complete bidirectional semantic relationships"
+        }
+      ]
     },
     {
       "slug": "text-field",
@@ -3982,7 +4016,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "text-roles",
@@ -4006,7 +4041,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "textarea",
@@ -4031,7 +4067,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "timeline",
@@ -4055,7 +4092,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "toast",
@@ -4081,7 +4119,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "tooltip",
@@ -4109,7 +4148,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "understanding",
@@ -4132,11 +4172,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "validation-message",
@@ -4160,7 +4199,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "validation-summary",
@@ -4183,11 +4223,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "verification-frame",
@@ -4210,11 +4249,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "visually-hidden",
@@ -4239,7 +4277,8 @@
       "semanticAlternative": true,
       "status": "pass",
       "reasons": [],
-      "metadataProblems": []
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "wizard",
@@ -4263,11 +4302,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "work-queue",
@@ -4290,11 +4328,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     },
     {
       "slug": "workspace-shell",
@@ -4317,11 +4354,10 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-test",
-      "reasons": [
-        "application-owned interaction needs executable parity evidence"
-      ],
-      "metadataProblems": []
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
     }
   ]
 }
