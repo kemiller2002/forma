@@ -62,3 +62,32 @@ test("the published contract rejects brittle automation as the only interaction 
   expect(contract.forbiddenAsOnlyPublicPath).toContain("fixed-sleep-completion");
   expect(contract.forbiddenAsOnlyPublicPath).toContain("dom-position-or-nth-child-locators");
 });
+
+
+test("resizable split pane exposes a semantic non-pointer contract", async ({ page }) => {
+  await page.setContent(`<!doctype html><html lang="en"><body>${read("patterns/resizable-split-pane.html")}</body></html>`);
+  const separator = page.getByRole("separator", { name: "Resize working surface" });
+  await expect(separator).toHaveAttribute("tabindex", "0");
+  await expect(separator).toHaveAttribute("aria-valuemin", "30");
+  await expect(separator).toHaveAttribute("aria-valuemax", "80");
+  await expect(separator).toHaveAttribute("aria-valuenow", "62");
+  await separator.focus();
+  await expect(separator).toBeFocused();
+});
+
+test("tabs expose complete stable control-panel relationships", async ({ page }) => {
+  await page.setContent(`<!doctype html><html lang="en"><body>${read("patterns/tabs.html")}</body></html>`);
+  const tabs = page.getByRole("tab");
+  await expect(tabs).toHaveCount(3);
+  for (let index = 0; index < await tabs.count(); index += 1) {
+    const tab = tabs.nth(index);
+    const tabId = await tab.getAttribute("id");
+    const panelId = await tab.getAttribute("aria-controls");
+    expect(tabId).toBeTruthy();
+    expect(panelId).toBeTruthy();
+    const panel = page.locator(`#${panelId}`);
+    await expect(panel).toHaveCount(1);
+    await expect(panel).toHaveAttribute("role", "tabpanel");
+    await expect(panel).toHaveAttribute("aria-labelledby", tabId);
+  }
+});
