@@ -446,6 +446,22 @@
       "createdBy": "agent:openai-chatgpt",
       "source": "github-issue",
       "sourceReference": "https://github.com/kemiller2002/forma/issues/100"
+    },
+    {
+      "id": "FORMA-GH-100-INVENTORY",
+      "title": "Refresh Forma inventory after machine-operability retrofit",
+      "description": null,
+      "tags": [
+        "forma,catalog,machine-operability"
+      ],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-10-03T09:56:32.688Z",
+      "updatedAt": "2026-10-03T09:56:33.000Z",
+      "createdBy": "agent:openai-chatgpt",
+      "source": "github-issue",
+      "sourceReference": "https://github.com/kemiller2002/forma/issues/100"
     }
   ]
 }

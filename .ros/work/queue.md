@@ -4,6 +4,7 @@
 |---|---|---|---|---|
 | FORMA-GH-100 | Establish Forma machine-operability retrofit audit | complete | forma,machine-operability,audit | high |
 | FORMA-GH-100-AUDIT-REFINE | Refine Forma machine-operability retrofit audit | complete | forma,machine-operability,audit | medium |
+| FORMA-GH-100-INVENTORY | Refresh Forma inventory after machine-operability retrofit | complete | forma,catalog,machine-operability | medium |
 | FORMA-GH-88 | FORMA-GH-88 | complete |  |  |
 | FORMA-GH-93 | FORMA-GH-93 | complete |  |  |
 | FORMA-GH-94 | FORMA-GH-94 | complete |  |  |
