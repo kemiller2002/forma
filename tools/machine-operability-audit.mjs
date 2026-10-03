@@ -9,6 +9,8 @@ const write = args.has("--write");
 const check = args.has("--check");
 
 const catalog = await loadCatalog(root);
+const evidencePath = path.join(root, "catalog", "machine-operability-evidence.json");
+const evidenceRegistry = fs.existsSync(evidencePath) ? JSON.parse(fs.readFileSync(evidencePath, "utf8")) : { components: {} };
 const entries = catalog.components.map(component => ({
   slug: component.slug,
   name: component.name,
@@ -16,11 +18,20 @@ const entries = catalog.components.map(component => ({
   behavior: component.behavior,
   ...component.machine,
   metadataProblems: auditMachineContract(component)
-})).map(entry => ({
-  ...entry,
-  status: entry.metadataProblems.length ? "needs-retrofit" : entry.status,
-  reasons: entry.metadataProblems.length ? [...entry.reasons, ...entry.metadataProblems] : entry.reasons
-}));
+})).map(entry => {
+  const evidence = evidenceRegistry.components?.[entry.slug] ?? [];
+  const missingEvidence = evidence.filter(item => !fs.existsSync(path.join(root, item.path)));
+  let status = entry.metadataProblems.length ? "needs-retrofit" : entry.status;
+  const reasons = entry.metadataProblems.length ? [...entry.reasons, ...entry.metadataProblems] : [...entry.reasons];
+  if (status === "needs-test" && evidence.length > 0 && missingEvidence.length === 0) {
+    status = "pass";
+    reasons.length = 0;
+  }
+  if (status === "needs-test" && missingEvidence.length > 0) {
+    reasons.push(...missingEvidence.map(item => `registered evidence missing: ${item.path}`));
+  }
+  return { ...entry, evidence, status, reasons };
+});
 
 const summary = {
   total: entries.length,
