@@ -138,3 +138,11 @@ If one of those questions cannot be answered through the public interaction cont
 ## 6. CI gate
 
 Machine-operability conformance MUST run as part of normal browser and release validation. A regression in an established machine identity, semantic action path, or observable completion contract blocks merge/release unless the public contract is intentionally versioned with migration guidance.
+
+## 7. Catalog retrofit audit
+
+Every shipped catalog component MUST appear in the generated machine-operability audit. The strict audit MUST report zero unresolved `needs-test` and `needs-retrofit` entries on a merge-ready branch.
+
+High-risk interactions that depend on application/Limen behavior, including direct manipulation and composite selection relationships, MUST register executable evidence. Structural/native components MAY satisfy the audit through their semantic contract when no additional runtime behavior is owned by Forma.
+
+Adding or changing a component MUST regenerate the audit and component inventory before merge. Removing an established machine path without versioned migration guidance is a compatibility regression.
