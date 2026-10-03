@@ -34,3 +34,14 @@ test("broken semantic references require retrofit", () => {
   const result = deriveMachineContract(component("dialog"), '<button commandfor="missing">Open</button>');
   assert.equal(result.status, "needs-retrofit");
 });
+
+
+test("consumer hash navigation may target an application-owned destination", () => {
+  const result = deriveMachineContract(component("cta"), '<a href="#contact">Contact</a>');
+  assert.equal(result.status, "pass");
+});
+
+test("spatial canvas index targets must resolve inside the public surface", () => {
+  const result = deriveMachineContract(component("spatial-canvas", "Application / Limen"), '<div class="ef-spatial-canvas"><details><a href="#missing">Node</a></details></div>');
+  assert.equal(result.status, "needs-retrofit");
+});
