@@ -1,0 +1,59 @@
+name: Regenerate machine-operability retrofit audit
+
+on:
+  push:
+    branches: [feature/machine-operability-retrofit]
+    paths:
+      - ".github/workflows/regenerate-machine-operability-retrofit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Regenerate audit and ROS evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE_SHA="$(git merge-base origin/main HEAD)"
+          npm install
+          npm run build
+          npm run test:machine:audit
+          npm run machine:audit
+
+          ./ros add "Refine Forma machine-operability retrofit audit" --id "FORMA-GH-100-AUDIT-REFINE" --tag forma,machine-operability,audit --priority medium --source github-issue --source-reference "https://github.com/kemiller2002/forma/issues/100" --actor "agent:openai-chatgpt"
+          NOW="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          ./ros work backlog-transition --action ready --id "FORMA-GH-100-AUDIT-REFINE" --occurred-at "$NOW"
+          NOW="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          ./ros work start --id "FORMA-GH-100-AUDIT-REFINE" --occurred-at "$NOW" --type mechanical
+          git rm .github/workflows/regenerate-machine-operability-retrofit.yml
+          NOW="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          ROS_BASE_REF="$BASE_SHA" ./ros work complete --id "FORMA-GH-100-AUDIT-REFINE" --occurred-at "$NOW" --evidence implementation=tools/catalog/machine-operability.mjs --evidence tests=tests/machine-operability-audit.test.mjs --evidence documentation=docs/MACHINE-OPERABILITY-AUDIT.md --evidence implementation=catalog/machine-operability.json
+          ./ros registry build
+          ROS_BASE_REF="$BASE_SHA" ./ros validate
+
+      - name: Commit regenerated audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if [ -d .ros/telemetry ]; then git add -f .ros/telemetry; fi
+          git commit -m "FORMA-GH-100 refine machine-operability retrofit audit"
+          git pull --rebase origin feature/machine-operability-retrofit
+          git push origin HEAD:feature/machine-operability-retrofit
