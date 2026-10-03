@@ -398,6 +398,22 @@
       "createdBy": "agent:openai-chatgpt",
       "source": "github-issue",
       "sourceReference": "https://github.com/kemiller2002/forma/issues/98"
+    },
+    {
+      "id": "FORMA-GH-100",
+      "title": "Establish Forma machine-operability retrofit audit",
+      "description": null,
+      "tags": [
+        "forma,machine-operability,audit"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-10-03T09:34:51.283Z",
+      "updatedAt": "2026-10-03T09:34:52.000Z",
+      "createdBy": "agent:openai-chatgpt",
+      "source": "github-issue",
+      "sourceReference": "https://github.com/kemiller2002/forma/issues/100"
     }
   ]
 }

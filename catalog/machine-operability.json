@@ -1,0 +1,4355 @@
+{
+  "contract": "forma-machine-operability",
+  "contractVersion": "1.0.0",
+  "summary": {
+    "total": 165,
+    "pass": 76,
+    "needsTest": 56,
+    "needsRetrofit": 33
+  },
+  "components": [
+    {
+      "slug": "menu",
+      "name": "Action menu",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-popover"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "active-filter-summary",
+      "name": "Active filter summary",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "alert",
+      "name": "Alert",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "allocation",
+      "name": "Allocation",
+      "category": "assessment",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "attention-path",
+      "name": "Attention path",
+      "category": "verification",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "badge",
+      "name": "Badge",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): changelog"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "best-worst",
+      "name": "Best–Worst",
+      "category": "assessment",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "binary-choice",
+      "name": "Binary choice",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "bounded-overflow",
+      "name": "Bounded overflow",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "button",
+      "name": "Button",
+      "category": "actions",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): button-help"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "cta",
+      "name": "Call to action",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): contact, about"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "callout",
+      "name": "Callout",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "card-grid",
+      "name": "Card grid",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): diagnose"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "character-grid",
+      "name": "Character grid",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "character-grid-3270",
+      "name": "Character grid 3270 profile",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "character-grid-field",
+      "name": "Character grid field",
+      "category": "keyboard",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "character-grid-keys",
+      "name": "Character grid keys",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "character-grid-reveal",
+      "name": "Character grid reveal",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "character-grid-selection",
+      "name": "Character grid selection",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "character-grid-status",
+      "name": "Character grid status",
+      "category": "keyboard",
+      "behavior": "Application state",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "character-grid-workflow",
+      "name": "Character grid workflow",
+      "category": "keyboard",
+      "behavior": "Application / Limen / Ordo",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "checkbox",
+      "name": "Checkbox",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "choice-group",
+      "name": "Choice group",
+      "category": "selection",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "cluster",
+      "name": "Cluster",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): details"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "code-sample",
+      "name": "Code sample",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "collection-toolbar",
+      "name": "Collection toolbar",
+      "category": "data",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control",
+        "native-disclosure"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "combobox",
+      "name": "Combobox",
+      "category": "forms",
+      "behavior": "Native baseline / Limen enhancement",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "command-group",
+      "name": "Command group",
+      "category": "actions",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "command-palette",
+      "name": "Command palette",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control",
+        "native-dialog"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "comparison-grid",
+      "name": "Comparison grid",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "comparison-pairs",
+      "name": "Comparison pairs",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "composer",
+      "name": "Composer",
+      "category": "assisted",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "conflict-review",
+      "name": "Conflict review",
+      "category": "feedback",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "container",
+      "name": "Container",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "conversation",
+      "name": "Conversation",
+      "category": "assisted",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "dashboard-grid",
+      "name": "Dashboard grid",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "data-grid",
+      "name": "Data grid",
+      "category": "data",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "date-time-field",
+      "name": "Date and time field",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "date-range",
+      "name": "Date range",
+      "category": "forms",
+      "behavior": "Native HTML / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "dense-ledger",
+      "name": "Dense ledger",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "diagnostic-status",
+      "name": "Diagnostic status",
+      "category": "faults",
+      "behavior": "Aegis / Application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "diagram",
+      "name": "Diagram",
+      "category": "workflow",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "dialog",
+      "name": "Dialog",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-dialog"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "diff-viewer",
+      "name": "Diff viewer",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "disclosure",
+      "name": "Disclosure",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-disclosure"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "documentation-layout",
+      "name": "Documentation layout",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): configure, upgrade"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "emphasis-budget",
+      "name": "Emphasis budget",
+      "category": "verification",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "empty-state",
+      "name": "Empty state",
+      "category": "feedback",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "entry-index",
+      "name": "Entry index",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): ai, visual"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "evidence-relationship",
+      "name": "Evidence relationship",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "facts",
+      "name": "Facts",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "fault",
+      "name": "Fault",
+      "category": "faults",
+      "behavior": "Aegis / Ordo / Application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "fault-banner",
+      "name": "Fault banner",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "fault-blocking",
+      "name": "Fault blocking",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-dialog"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "fault-details",
+      "name": "Fault details",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-disclosure"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "fault-inline",
+      "name": "Fault inline",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "fault-notification",
+      "name": "Fault notification",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "fault-reference",
+      "name": "Fault reference",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "fault-summary",
+      "name": "Fault summary",
+      "category": "faults",
+      "behavior": "Aegis / Application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): customer-name, sync-status"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "feed-item",
+      "name": "Feed item",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "file-upload",
+      "name": "File upload queue",
+      "category": "forms",
+      "behavior": "Native HTML / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "flyout",
+      "name": "Flyout",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control",
+        "native-dialog"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "focus-stage",
+      "name": "Focus stage",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "frame",
+      "name": "Frame",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "freshness",
+      "name": "Freshness",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "grid",
+      "name": "Grid",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "handoff-summary",
+      "name": "Handoff summary",
+      "category": "assisted",
+      "behavior": "Application / Ordo",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "hero",
+      "name": "Hero",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): start, work"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "hierarchical-choice",
+      "name": "Hierarchical choice",
+      "category": "selection",
+      "behavior": "Native baseline / application semantics",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control",
+        "native-disclosure"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "hierarchical-multi-choice",
+      "name": "Hierarchical multi-choice",
+      "category": "selection",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control",
+        "native-disclosure"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "hierarchy-tree",
+      "name": "Hierarchy tree",
+      "category": "navigation",
+      "behavior": "Native HTML / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation",
+        "native-disclosure"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): invoices, customers, runs"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "identifier",
+      "name": "Identifier & critical value",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "image-choice",
+      "name": "Image choice",
+      "category": "selection",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "key-value-list",
+      "name": "Key-value list",
+      "category": "data",
+      "behavior": "Native HTML",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "landmark-region",
+      "name": "Landmark region",
+      "category": "layout",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): overview, activity"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "lane-board",
+      "name": "Lane board",
+      "category": "workflow",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "marketing-shell",
+      "name": "Marketing shell",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "master-detail",
+      "name": "Master/detail workspace",
+      "category": "workspaces",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): record-2, record-3"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "measure",
+      "name": "Measure",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "metric-card",
+      "name": "Metric card",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): details"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "metric-value-change",
+      "name": "Metric value change",
+      "category": "data",
+      "behavior": "Application state",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state",
+        "live-status"
+      ],
+      "completion": [
+        "url-or-target-change",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): details"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "mobile-action-bar",
+      "name": "Mobile action bar",
+      "category": "actions",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "mosaic",
+      "name": "Mosaic",
+      "category": "layout",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "multi-choice",
+      "name": "Multi-choice",
+      "category": "selection",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "navigation-shell",
+      "name": "Navigation shell",
+      "category": "navigation",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation",
+        "native-disclosure"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): activity, settings"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "numeric-stepper",
+      "name": "Numeric stepper",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "obligation-panel",
+      "name": "Obligation panel",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): reconcile-storage, aggregate-health, publication-evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "operation-status",
+      "name": "Operation status",
+      "category": "feedback",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "ordinal-scale",
+      "name": "Ordinal scale",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "overflow-command-disclosure",
+      "name": "Overflow command disclosure",
+      "category": "actions",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-disclosure"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "overview-disclosure",
+      "name": "Overview disclosure",
+      "category": "overlays",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-disclosure"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "pagination",
+      "name": "Pagination",
+      "category": "navigation",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "pairwise-choice",
+      "name": "Pairwise choice",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "path-summary",
+      "name": "Path summary",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): chrona, billing, summa"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "popover",
+      "name": "Popover",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-popover"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "preview-surface",
+      "name": "Preview surface",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "priority-stack",
+      "name": "Priority stack",
+      "category": "layout",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "progress-bar",
+      "name": "Progress bar",
+      "category": "feedback",
+      "behavior": "Native HTML",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "prose",
+      "name": "Prose",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): measure"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "provenance-trail",
+      "name": "Provenance trail",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "question",
+      "name": "Question shell",
+      "category": "assessment",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "rail",
+      "name": "Rail",
+      "category": "layout",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "range-entry",
+      "name": "Range entry",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "ranking",
+      "name": "Ranking",
+      "category": "assessment",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "readiness-checklist",
+      "name": "Readiness checklist",
+      "category": "feedback",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "record-header",
+      "name": "Record header",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "link-navigation",
+        "native-disclosure"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): home, records"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "recovery-actions",
+      "name": "Recovery actions",
+      "category": "faults",
+      "behavior": "Aegis / Ordo / Application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "relationship-index",
+      "name": "Relationship index",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): chrona, summa, finance"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "reorder-states",
+      "name": "Reorder states",
+      "category": "data",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "direct-manipulation-plus-semantic-equivalent"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "live-status",
+        "authoritative-application-rerender"
+      ],
+      "directManipulation": true,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "resizable-split-pane",
+      "name": "Resizable split pane",
+      "category": "workspaces",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "separator-adjustment",
+        "direct-manipulation-plus-semantic-equivalent"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "aria-state-change",
+        "authoritative-application-rerender"
+      ],
+      "directManipulation": true,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "responsive-grid",
+      "name": "Responsive grid",
+      "category": "layout",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "rule-builder",
+      "name": "Rule builder",
+      "category": "forms",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "scope-trail",
+      "name": "Scope trail",
+      "category": "navigation",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): system, billing"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "scroll-progress",
+      "name": "Scroll progress",
+      "category": "feedback",
+      "behavior": "Native HTML",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "search",
+      "name": "Search",
+      "category": "forms",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "section",
+      "name": "Section",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "section-heading",
+      "name": "Section heading",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): services"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "security-blockers",
+      "name": "Security blockers",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): SEC-INV-014, SEC-UNK-003"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "security-evidence-age",
+      "name": "Security evidence age",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): SEC-EVD-042, SEC-EVD-031"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "security-evidence-chain",
+      "name": "Security evidence chain",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): SEC-EVD-042, SEC-INV-014"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "security-exception",
+      "name": "Security exception",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "security-invariant-result",
+      "name": "Security invariant result",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): SEC-THR-004, SEC-EVD-042"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "security-posture",
+      "name": "Security posture",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): SEC-INV-002, SEC-UNK-001"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "security-state-matrix",
+      "name": "Security state matrix",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "security-trend",
+      "name": "Security trend",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "security-unknown",
+      "name": "Security unknown",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "segmented-control",
+      "name": "Segmented control",
+      "category": "selection",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "select",
+      "name": "Select",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "semantic-differential",
+      "name": "Semantic differential",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "sidebar",
+      "name": "Sidebar",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "matrix-single",
+      "name": "Single-choice matrix",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "site-footer",
+      "name": "Site footer",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): contact, privacy, source"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "site-header",
+      "name": "Site header",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): top, research, docs, contact"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "skeleton",
+      "name": "Skeleton",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "skip-link",
+      "name": "Skip link",
+      "category": "navigation",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "slider",
+      "name": "Slider",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "spatial-canvas",
+      "name": "Spatial canvas",
+      "category": "workflow",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "link-navigation",
+        "native-disclosure",
+        "direct-manipulation-plus-semantic-equivalent"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change",
+        "native-open-state",
+        "authoritative-application-rerender"
+      ],
+      "directManipulation": true,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "special-choice",
+      "name": "Special choice",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "spinner",
+      "name": "Spinner",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "split",
+      "name": "Split",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "split-pane",
+      "name": "Split pane",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "stack",
+      "name": "Stack",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "state-survivability",
+      "name": "State survivability",
+      "category": "feedback",
+      "behavior": "Ordo / application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "status-lozenge",
+      "name": "Status lozenge",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "steps",
+      "name": "Steps",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "surface",
+      "name": "Surface",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "survey-progress",
+      "name": "Survey progress",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "switch",
+      "name": "Switch",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "switcher",
+      "name": "Switcher",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "symbol-rating",
+      "name": "Symbol rating",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "tabs",
+      "name": "Tabs",
+      "category": "navigation",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "tab-selection"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "aria-state-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): panel-history, panel-evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "text-field",
+      "name": "Text field",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "text-roles",
+      "name": "Text roles",
+      "category": "utilities",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "textarea",
+      "name": "Textarea",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "timeline",
+      "name": "Timeline",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "toast",
+      "name": "Toast",
+      "category": "feedback",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-popover"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "tooltip",
+      "name": "Tooltip / contextual hint",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control",
+        "native-popover"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "understanding",
+      "name": "Understanding review",
+      "category": "assisted",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "validation-message",
+      "name": "Validation message",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "validation-summary",
+      "name": "Validation summary",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): question-security, question-allocation"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "verification-frame",
+      "name": "Verification frame",
+      "category": "verification",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "visually-hidden",
+      "name": "Visually hidden",
+      "category": "utilities",
+      "behavior": "Native CSS",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": []
+    },
+    {
+      "slug": "wizard",
+      "name": "Wizard",
+      "category": "navigation",
+      "behavior": "Limen / Ordo",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "work-queue",
+      "name": "Work queue",
+      "category": "data",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-test",
+      "reasons": [
+        "application-owned interaction needs executable parity evidence"
+      ],
+      "metadataProblems": []
+    },
+    {
+      "slug": "workspace-shell",
+      "name": "Workspace shell",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "needs-retrofit",
+      "reasons": [
+        "broken semantic target(s): history"
+      ],
+      "metadataProblems": []
+    }
+  ]
+}

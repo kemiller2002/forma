@@ -2,6 +2,7 @@
 
 | ID | Work | Status | Tags | Priority |
 |---|---|---|---|---|
+| FORMA-GH-100 | Establish Forma machine-operability retrofit audit | complete | forma,machine-operability,audit | high |
 | FORMA-GH-88 | FORMA-GH-88 | complete |  |  |
 | FORMA-GH-93 | FORMA-GH-93 | complete |  |  |
 | FORMA-GH-94 | FORMA-GH-94 | complete |  |  |
