@@ -75,7 +75,7 @@
     "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --",
     "release:check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:css && npm run test:package && npm run test:machine:audit && npm run test:machine && playwright test tests/browser/marketing.spec.mjs && npm run site:check",
     "test:figma": "node --test tests/figma-contract.test.mjs",
-    "catalog:check": "node tools/catalog/validate.mjs && node tools/machine-operability-audit.mjs --check && node tools/catalog/inventory.mjs --check",
+    "catalog:check": "node tools/catalog/validate.mjs && npm run machine:audit:check && node tools/catalog/inventory.mjs --check",
     "catalog:inventory": "node tools/catalog/inventory.mjs",
     "workflow:test": "dotnet run --project tests/workflow/Forma.Workflow.Tests -c Release",
     "workflow:build": "node tools/build-workflow-package.mjs",
@@ -85,7 +85,7 @@
     "workflow:check": "npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:workflow-browser",
     "test:machine": "playwright test tests/browser/machine-operability.spec.mjs",
     "machine:audit": "node tools/machine-operability-audit.mjs --write",
-    "machine:audit:check": "node tools/machine-operability-audit.mjs --check",
+    "machine:audit:check": "node tools/machine-operability-audit.mjs --check --strict",
     "test:machine:audit": "node --test tests/machine-operability-audit.test.mjs"
   },
   "devDependencies": {
