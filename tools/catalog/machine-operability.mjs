@@ -17,8 +17,7 @@ const brokenReferences = markup => {
     ...refs(markup, "aria-labelledby"),
     ...refs(markup, "aria-describedby"),
     ...refs(markup, "commandfor"),
-    ...refs(markup, "popovertarget"),
-    ...hashTargets(markup)
+    ...refs(markup, "popovertarget")
   ];
   return [...new Set(references.filter(reference => !known.has(reference)))];
 };
@@ -43,8 +42,11 @@ const semanticAlternative = (slug, markup) => {
       && has(markup, /aria-valuenow=/i);
   }
   if (slug === "spatial-canvas") {
+    const known = ids(markup);
+    const targets = hashTargets(markup);
     return has(markup, /<details\b/i)
-      && has(markup, /href=["']#[^"']+["']/i);
+      && targets.length > 0
+      && targets.every(target => known.has(target));
   }
   return true;
 };
