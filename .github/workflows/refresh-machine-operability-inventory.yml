@@ -1,0 +1,56 @@
+name: Refresh catalog inventory for machine operability
+
+on:
+  push:
+    branches: [feature/machine-operability-contract]
+    paths:
+      - ".github/workflows/refresh-machine-operability-inventory.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Refresh generated inventory with ROS attribution
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORK_ID="FORMA-GH-98-CATALOG"
+          BASE_SHA="$(git merge-base origin/main HEAD)"
+          ./ros add "Refresh Forma component inventory after machine-operability changes" --id "$WORK_ID" --tag forma,catalog,machine-operability --priority medium --source github-issue --source-reference "https://github.com/kemiller2002/forma/issues/98" --actor "agent:openai-chatgpt"
+          NOW="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          ./ros work backlog-transition --action ready --id "$WORK_ID" --occurred-at "$NOW"
+          NOW="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          ./ros work start --id "$WORK_ID" --occurred-at "$NOW" --type mechanical
+          npm install
+          npm run catalog:inventory
+          git rm .github/workflows/refresh-machine-operability-inventory.yml
+          NOW="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          ROS_BASE_REF="$BASE_SHA" ./ros work complete --id "$WORK_ID" --occurred-at "$NOW"
+          ./ros registry build
+          ROS_BASE_REF="$BASE_SHA" ./ros validate
+          ./ros status
+
+      - name: Commit refreshed inventory
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if [ -d .ros/telemetry ]; then git add -f .ros/telemetry; fi
+          git commit -m "FORMA-GH-98 refresh generated component inventory"
+          git pull --rebase origin feature/machine-operability-contract
+          git push origin HEAD:feature/machine-operability-contract
