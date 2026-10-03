@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { deriveMachineContract } from "../tools/catalog/machine-operability.mjs";
@@ -44,4 +46,13 @@ test("consumer hash navigation may target an application-owned destination", () 
 test("spatial canvas index targets must resolve inside the public surface", () => {
   const result = deriveMachineContract(component("spatial-canvas", "Application / Limen"), '<div class="ef-spatial-canvas"><details><a href="#missing">Node</a></details></div>');
   assert.equal(result.status, "needs-retrofit");
+});
+
+
+test("machine evidence registry points to committed tests", () => {
+  const registry = JSON.parse(fs.readFileSync("catalog/machine-operability-evidence.json", "utf8"));
+  for (const [slug, evidence] of Object.entries(registry.components)) {
+    assert.ok(evidence.length > 0, `${slug} has evidence`);
+    for (const item of evidence) assert.ok(fs.existsSync(path.resolve(item.path)), `${slug}: ${item.path} exists`);
+  }
 });
