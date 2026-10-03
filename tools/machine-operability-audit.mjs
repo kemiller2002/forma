@@ -7,6 +7,7 @@ const root = process.cwd();
 const args = new Set(process.argv.slice(2));
 const write = args.has("--write");
 const check = args.has("--check");
+const strict = args.has("--strict");
 
 const catalog = await loadCatalog(root);
 const evidencePath = path.join(root, "catalog", "machine-operability-evidence.json");
@@ -97,6 +98,11 @@ if (check) {
     console.error(`Machine-operability audit is stale: ${stale.join(", ")}. Run npm run machine:audit.`);
     process.exitCode = 1;
   }
+}
+
+if (strict && (summary.needsTest > 0 || summary.needsRetrofit > 0)) {
+  console.error(`Machine-operability strict audit failed: ${summary.needsTest} need test evidence; ${summary.needsRetrofit} need retrofit.`);
+  process.exitCode = 1;
 }
 
 console.log(JSON.stringify(summary));
