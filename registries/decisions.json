@@ -1,1 +1,27 @@
-[]
+[
+  {
+    "created": "2026-10-02",
+    "id": "DF-FORMA-2026-0001",
+    "path": "research/decisions/DF-FORMA-2026-0001--adopt-semantic-machine-operability-as-a-public-interaction-contract.md",
+    "related_documents": [
+      "requirements/MACHINE-OPERABILITY.md",
+      "contracts/machine-operability.json",
+      "docs/AGENT-USAGE.md",
+      "tests/browser/machine-operability.spec.mjs"
+    ],
+    "status": "accepted",
+    "superseded_by": [],
+    "supersedes": [],
+    "tags": [
+      "architecture",
+      "machine-operability",
+      "automation",
+      "playwright",
+      "accessibility",
+      "public-api"
+    ],
+    "title": "Adopt semantic machine operability as a public interaction contract",
+    "type": "decision-record",
+    "updated": "2026-10-02"
+  }
+]

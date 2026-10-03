@@ -19,6 +19,7 @@ The system exists to make Echelon applications look, communicate, and behave con
 9. **Progressive enhancement.** Prefer declarative browser capabilities such as popover, details/summary, dialog commands, modern selectors, and CSS transitions.
 10. **Zero browser runtime.** Published design-system artifacts shall contain no JavaScript or WebAssembly runtime.
 11. **Mobile is part of correctness.** Every implemented pattern must define and verify a 320px recomposition without changing semantic meaning or domain authority.
+12. **Human actions are machine-operable.** Every interaction must expose a deterministic semantic path for Playwright-class automation without coordinate-only input, implementation selectors, or fixed timing guesses.
 
 ## Requirement documents
 
@@ -39,6 +40,7 @@ The system exists to make Echelon applications look, communicate, and behave con
 - OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md
 - FIGMA-INTEGRATION.md
 - PORTABLE-WORKFLOW-INTERCHANGE.md
+- MACHINE-OPERABILITY.md
 
 ## External standards baseline
 
