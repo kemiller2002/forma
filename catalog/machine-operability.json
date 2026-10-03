@@ -3,9 +3,9 @@
   "contractVersion": "1.0.0",
   "summary": {
     "total": 165,
-    "pass": 76,
-    "needsTest": 56,
-    "needsRetrofit": 33
+    "pass": 90,
+    "needsTest": 74,
+    "needsRetrofit": 1
   },
   "components": [
     {
@@ -166,10 +166,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): changelog"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -274,10 +272,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): button-help"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -301,10 +297,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): contact, about"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -352,10 +346,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): diagnose"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -651,10 +643,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): details"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -1231,10 +1221,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): configure, upgrade"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -1312,10 +1300,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): ai, visual"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -1577,9 +1563,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): customer-name, sync-status"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -1814,10 +1800,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): start, work"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -1905,9 +1889,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): invoices, customers, runs"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -2005,10 +1989,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): overview, activity"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -2083,9 +2065,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): record-2, record-3"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -2134,9 +2116,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): details"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -2163,9 +2145,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): details"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -2271,9 +2253,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): activity, settings"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -2323,9 +2305,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): reconcile-storage, aggregate-health, publication-evidence"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -2507,9 +2489,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): chrona, billing, summa"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -2635,10 +2617,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): measure"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -2821,9 +2801,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): home, records"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -2875,9 +2855,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): chrona, summa, finance"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -3015,9 +2995,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): system, billing"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -3118,10 +3098,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): services"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -3145,9 +3123,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): SEC-INV-014, SEC-UNK-003"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -3172,9 +3150,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): SEC-EVD-042, SEC-EVD-031"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -3199,9 +3177,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): SEC-EVD-042, SEC-INV-014"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -3250,9 +3228,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): SEC-THR-004, SEC-EVD-042"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -3277,9 +3255,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): SEC-INV-002, SEC-UNK-001"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -3451,10 +3429,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): evidence"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -3503,10 +3479,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): contact, privacy, source"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -3531,10 +3505,8 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
-      "reasons": [
-        "broken semantic target(s): top, research, docs, contact"
-      ],
+      "status": "pass",
+      "reasons": [],
       "metadataProblems": []
     },
     {
@@ -4211,9 +4183,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): question-security, question-allocation"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     },
@@ -4345,9 +4317,9 @@
       ],
       "directManipulation": false,
       "semanticAlternative": true,
-      "status": "needs-retrofit",
+      "status": "needs-test",
       "reasons": [
-        "broken semantic target(s): history"
+        "application-owned interaction needs executable parity evidence"
       ],
       "metadataProblems": []
     }
