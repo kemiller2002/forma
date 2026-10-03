@@ -114,9 +114,12 @@ export const deriveMachineContract = (component, pattern) => {
     status = "needs-retrofit";
     reasons.push("direct manipulation has no detected semantic non-coordinate equivalent");
   }
-  if (status === "pass" && interactive && applicationOwned) {
+  const paritySensitive = direct
+    || has(markup, /role=["']tab["']/i)
+    || has(markup, /role=["']separator["']/i);
+  if (status === "pass" && interactive && applicationOwned && paritySensitive) {
     status = "needs-test";
-    reasons.push("application-owned interaction needs executable parity evidence");
+    reasons.push("high-risk application-owned interaction needs reference parity evidence");
   }
 
   const baseline = {
