@@ -6,6 +6,7 @@
 //   node tools/catalog/validate.mjs switch     # one or more slugs
 import { pathToFileURL } from "node:url";
 import { loadCatalog, markupAttributes, markupClasses, markupTags, ownedHooks } from "./load.mjs";
+import { auditMachineContract } from "./machine-operability.mjs";
 
 export const MIN_SCENARIO_EXAMPLES = 2; // plus the canonical Basic example = three
 export const MIN_MOBILE_EXAMPLES = 1;
@@ -80,6 +81,9 @@ const structureRules = (catalog, component) => {
     [!component.api || typeof component.api !== "object", "api is required"]
   ].filter(([failed]) => failed).map(([, message]) => problem(slug, message));
 };
+
+const machineRules = component =>
+  auditMachineContract(component).map(message => problem(component.slug, message));
 
 const stateRules = component =>
   (component.states ?? []).flatMap((state, index) =>
@@ -209,6 +213,7 @@ const compositionRules = catalog => {
 export const validateComponent = (catalog, component) => [
   ...structureRules(catalog, component),
   ...stateRules(component),
+    ...machineRules(component),
   ...exampleRules(catalog, component),
   ...apiRules(catalog, component),
   ...referenceRules(catalog, component)

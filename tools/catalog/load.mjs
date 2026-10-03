@@ -6,6 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { buildHookIndex } from "./css-hooks.mjs";
+import { deriveMachineContract } from "./machine-operability.mjs";
 
 export const catalogPaths = root => ({
   categories: path.join(root, "catalog", "categories.json"),
@@ -43,13 +44,17 @@ export const loadCatalog = async (root = process.cwd()) => {
   const taxonomy = JSON.parse(fs.readFileSync(paths.categories, "utf8"));
   const hookIndex = buildHookIndex(fs.readFileSync(paths.css, "utf8"));
   const docs = await loadModules(paths.components);
-  const components = docs.map(doc => Object.freeze({
-    ...doc,
-    tag: tagName(doc.slug),
-    pattern: readPattern(paths.patterns, doc.slug),
-    owns: resolveOwns(doc, hookIndex),
-    examples: doc.examples ?? []
-  }));
+  const components = docs.map(doc => {
+    const pattern = readPattern(paths.patterns, doc.slug);
+    return Object.freeze({
+      ...doc,
+      tag: tagName(doc.slug),
+      pattern,
+      owns: resolveOwns(doc, hookIndex),
+      examples: doc.examples ?? [],
+      machine: deriveMachineContract(doc, pattern)
+    });
+  });
   const categories = taxonomy.categories.map(category => Object.freeze({
     ...category,
     components: components.filter(component => component.category === category.id).sort(byName)

@@ -2,11 +2,15 @@
 
 | ID | Work | Status | Tags | Priority |
 |---|---|---|---|---|
+| FORMA-GH-100 | Establish Forma machine-operability retrofit audit | complete | forma,machine-operability,audit | high |
+| FORMA-GH-100-AUDIT-REFINE | Refine Forma machine-operability retrofit audit | complete | forma,machine-operability,audit | medium |
+| FORMA-GH-100-INVENTORY | Refresh Forma inventory after machine-operability retrofit | complete | forma,catalog,machine-operability | medium |
 | FORMA-GH-88 | FORMA-GH-88 | complete |  |  |
 | FORMA-GH-93 | FORMA-GH-93 | complete |  |  |
 | FORMA-GH-94 | FORMA-GH-94 | complete |  |  |
 | FORMA-GH-98 | Make all Forma interactions machine-operable | complete | forma,machine-operability,automation | high |
 | FORMA-GH-98-CATALOG | Refresh Forma component inventory after machine-operability changes | complete | forma,catalog,machine-operability | medium |
+| FORMA-MO-TABS | Retrofit canonical Tabs and high-risk machine-operability evidence | complete | forma,machine-operability,tabs,parity | high |
 | GH-12 | Align Forma documentation site with Echelon Foundry CSS | complete | forma,css,visual-engineering | high |
 | GH-14 | Build cross-application mobile Forma component wave | complete | forma,mobile,cross-application | high |
 | GH-18 | Prepare Forma for application consumption | active | readiness,bootstrap | high |

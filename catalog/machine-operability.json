@@ -1,0 +1,4363 @@
+{
+  "contract": "forma-machine-operability",
+  "contractVersion": "1.0.0",
+  "summary": {
+    "total": 165,
+    "pass": 165,
+    "needsTest": 0,
+    "needsRetrofit": 0
+  },
+  "components": [
+    {
+      "slug": "menu",
+      "name": "Action menu",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-popover"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "active-filter-summary",
+      "name": "Active filter summary",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "alert",
+      "name": "Alert",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "allocation",
+      "name": "Allocation",
+      "category": "assessment",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "attention-path",
+      "name": "Attention path",
+      "category": "verification",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "badge",
+      "name": "Badge",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "best-worst",
+      "name": "Best–Worst",
+      "category": "assessment",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "binary-choice",
+      "name": "Binary choice",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "bounded-overflow",
+      "name": "Bounded overflow",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "button",
+      "name": "Button",
+      "category": "actions",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "cta",
+      "name": "Call to action",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "callout",
+      "name": "Callout",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "card-grid",
+      "name": "Card grid",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "character-grid",
+      "name": "Character grid",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "character-grid-3270",
+      "name": "Character grid 3270 profile",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "character-grid-field",
+      "name": "Character grid field",
+      "category": "keyboard",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "character-grid-keys",
+      "name": "Character grid keys",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "character-grid-reveal",
+      "name": "Character grid reveal",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "character-grid-selection",
+      "name": "Character grid selection",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "character-grid-status",
+      "name": "Character grid status",
+      "category": "keyboard",
+      "behavior": "Application state",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "character-grid-workflow",
+      "name": "Character grid workflow",
+      "category": "keyboard",
+      "behavior": "Application / Limen / Ordo",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "checkbox",
+      "name": "Checkbox",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "choice-group",
+      "name": "Choice group",
+      "category": "selection",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "cluster",
+      "name": "Cluster",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "code-sample",
+      "name": "Code sample",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "collection-toolbar",
+      "name": "Collection toolbar",
+      "category": "data",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control",
+        "native-disclosure"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "combobox",
+      "name": "Combobox",
+      "category": "forms",
+      "behavior": "Native baseline / Limen enhancement",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "command-group",
+      "name": "Command group",
+      "category": "actions",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "command-palette",
+      "name": "Command palette",
+      "category": "keyboard",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control",
+        "native-dialog"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "comparison-grid",
+      "name": "Comparison grid",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "comparison-pairs",
+      "name": "Comparison pairs",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "composer",
+      "name": "Composer",
+      "category": "assisted",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "conflict-review",
+      "name": "Conflict review",
+      "category": "feedback",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "container",
+      "name": "Container",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "conversation",
+      "name": "Conversation",
+      "category": "assisted",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "dashboard-grid",
+      "name": "Dashboard grid",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "data-grid",
+      "name": "Data grid",
+      "category": "data",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "date-time-field",
+      "name": "Date and time field",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "date-range",
+      "name": "Date range",
+      "category": "forms",
+      "behavior": "Native HTML / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "dense-ledger",
+      "name": "Dense ledger",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "diagnostic-status",
+      "name": "Diagnostic status",
+      "category": "faults",
+      "behavior": "Aegis / Application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "diagram",
+      "name": "Diagram",
+      "category": "workflow",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "dialog",
+      "name": "Dialog",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-dialog"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "diff-viewer",
+      "name": "Diff viewer",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "disclosure",
+      "name": "Disclosure",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-disclosure"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "documentation-layout",
+      "name": "Documentation layout",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "emphasis-budget",
+      "name": "Emphasis budget",
+      "category": "verification",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "empty-state",
+      "name": "Empty state",
+      "category": "feedback",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "entry-index",
+      "name": "Entry index",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "evidence-relationship",
+      "name": "Evidence relationship",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "facts",
+      "name": "Facts",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "fault",
+      "name": "Fault",
+      "category": "faults",
+      "behavior": "Aegis / Ordo / Application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "fault-banner",
+      "name": "Fault banner",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "fault-blocking",
+      "name": "Fault blocking",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-dialog"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "fault-details",
+      "name": "Fault details",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-disclosure"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "fault-inline",
+      "name": "Fault inline",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "fault-notification",
+      "name": "Fault notification",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "fault-reference",
+      "name": "Fault reference",
+      "category": "faults",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "fault-summary",
+      "name": "Fault summary",
+      "category": "faults",
+      "behavior": "Aegis / Application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "feed-item",
+      "name": "Feed item",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "file-upload",
+      "name": "File upload queue",
+      "category": "forms",
+      "behavior": "Native HTML / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "flyout",
+      "name": "Flyout",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control",
+        "native-dialog"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "focus-stage",
+      "name": "Focus stage",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "frame",
+      "name": "Frame",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "freshness",
+      "name": "Freshness",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "grid",
+      "name": "Grid",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "handoff-summary",
+      "name": "Handoff summary",
+      "category": "assisted",
+      "behavior": "Application / Ordo",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "hero",
+      "name": "Hero",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "hierarchical-choice",
+      "name": "Hierarchical choice",
+      "category": "selection",
+      "behavior": "Native baseline / application semantics",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control",
+        "native-disclosure"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "hierarchical-multi-choice",
+      "name": "Hierarchical multi-choice",
+      "category": "selection",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control",
+        "native-disclosure"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "hierarchy-tree",
+      "name": "Hierarchy tree",
+      "category": "navigation",
+      "behavior": "Native HTML / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation",
+        "native-disclosure"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "identifier",
+      "name": "Identifier & critical value",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "image-choice",
+      "name": "Image choice",
+      "category": "selection",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "key-value-list",
+      "name": "Key-value list",
+      "category": "data",
+      "behavior": "Native HTML",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "landmark-region",
+      "name": "Landmark region",
+      "category": "layout",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "lane-board",
+      "name": "Lane board",
+      "category": "workflow",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "marketing-shell",
+      "name": "Marketing shell",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "master-detail",
+      "name": "Master/detail workspace",
+      "category": "workspaces",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "measure",
+      "name": "Measure",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "metric-card",
+      "name": "Metric card",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "metric-value-change",
+      "name": "Metric value change",
+      "category": "data",
+      "behavior": "Application state",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state",
+        "live-status"
+      ],
+      "completion": [
+        "url-or-target-change",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "mobile-action-bar",
+      "name": "Mobile action bar",
+      "category": "actions",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "mosaic",
+      "name": "Mosaic",
+      "category": "layout",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "multi-choice",
+      "name": "Multi-choice",
+      "category": "selection",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "navigation-shell",
+      "name": "Navigation shell",
+      "category": "navigation",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation",
+        "native-disclosure"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "numeric-stepper",
+      "name": "Numeric stepper",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "obligation-panel",
+      "name": "Obligation panel",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "operation-status",
+      "name": "Operation status",
+      "category": "feedback",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "ordinal-scale",
+      "name": "Ordinal scale",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "overflow-command-disclosure",
+      "name": "Overflow command disclosure",
+      "category": "actions",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-disclosure"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "overview-disclosure",
+      "name": "Overview disclosure",
+      "category": "overlays",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-disclosure"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "pagination",
+      "name": "Pagination",
+      "category": "navigation",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "pairwise-choice",
+      "name": "Pairwise choice",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "path-summary",
+      "name": "Path summary",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "popover",
+      "name": "Popover",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-popover"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "preview-surface",
+      "name": "Preview surface",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "priority-stack",
+      "name": "Priority stack",
+      "category": "layout",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "progress-bar",
+      "name": "Progress bar",
+      "category": "feedback",
+      "behavior": "Native HTML",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "prose",
+      "name": "Prose",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "provenance-trail",
+      "name": "Provenance trail",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "question",
+      "name": "Question shell",
+      "category": "assessment",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "rail",
+      "name": "Rail",
+      "category": "layout",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "range-entry",
+      "name": "Range entry",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "ranking",
+      "name": "Ranking",
+      "category": "assessment",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "live-status"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "readiness-checklist",
+      "name": "Readiness checklist",
+      "category": "feedback",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "record-header",
+      "name": "Record header",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "link-navigation",
+        "native-disclosure"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "recovery-actions",
+      "name": "Recovery actions",
+      "category": "faults",
+      "behavior": "Aegis / Ordo / Application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "relationship-index",
+      "name": "Relationship index",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "reorder-states",
+      "name": "Reorder states",
+      "category": "data",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "direct-manipulation-plus-semantic-equivalent"
+      ],
+      "state": [
+        "native-state",
+        "live-status",
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "live-status",
+        "authoritative-application-rerender"
+      ],
+      "directManipulation": true,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": [
+        {
+          "path": "tests/browser/machine-operability.spec.mjs",
+          "evidence": "semantic move controls remain available beside direct manipulation"
+        }
+      ]
+    },
+    {
+      "slug": "resizable-split-pane",
+      "name": "Resizable split pane",
+      "category": "workspaces",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "separator-adjustment",
+        "direct-manipulation-plus-semantic-equivalent"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "aria-state-change",
+        "authoritative-application-rerender"
+      ],
+      "directManipulation": true,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": [
+        {
+          "path": "tests/browser/machine-operability.spec.mjs",
+          "evidence": "separator exposes keyboard-addressable value semantics"
+        }
+      ]
+    },
+    {
+      "slug": "responsive-grid",
+      "name": "Responsive grid",
+      "category": "layout",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "rule-builder",
+      "name": "Rule builder",
+      "category": "forms",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "scope-trail",
+      "name": "Scope trail",
+      "category": "navigation",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "scroll-progress",
+      "name": "Scroll progress",
+      "category": "feedback",
+      "behavior": "Native HTML",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "search",
+      "name": "Search",
+      "category": "forms",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "section",
+      "name": "Section",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "section-heading",
+      "name": "Section heading",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "security-blockers",
+      "name": "Security blockers",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "security-evidence-age",
+      "name": "Security evidence age",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "security-evidence-chain",
+      "name": "Security evidence chain",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "security-exception",
+      "name": "Security exception",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "security-invariant-result",
+      "name": "Security invariant result",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "security-posture",
+      "name": "Security posture",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "security-state-matrix",
+      "name": "Security state matrix",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "security-trend",
+      "name": "Security trend",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "security-unknown",
+      "name": "Security unknown",
+      "category": "security",
+      "behavior": "Aegis / application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "segmented-control",
+      "name": "Segmented control",
+      "category": "selection",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "select",
+      "name": "Select",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "semantic-differential",
+      "name": "Semantic differential",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "sidebar",
+      "name": "Sidebar",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "matrix-single",
+      "name": "Single-choice matrix",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "site-footer",
+      "name": "Site footer",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "site-header",
+      "name": "Site header",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "skeleton",
+      "name": "Skeleton",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "skip-link",
+      "name": "Skip link",
+      "category": "navigation",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "slider",
+      "name": "Slider",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "spatial-canvas",
+      "name": "Spatial canvas",
+      "category": "workflow",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "link-navigation",
+        "native-disclosure",
+        "direct-manipulation-plus-semantic-equivalent"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "url-or-target-change",
+        "native-open-state",
+        "authoritative-application-rerender"
+      ],
+      "directManipulation": true,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": [
+        {
+          "path": "tests/browser/machine-operability.spec.mjs",
+          "evidence": "object index provides stable non-spatial targets"
+        }
+      ]
+    },
+    {
+      "slug": "special-choice",
+      "name": "Special choice",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "spinner",
+      "name": "Spinner",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "split",
+      "name": "Split",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "split-pane",
+      "name": "Split pane",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "stack",
+      "name": "Stack",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "state-survivability",
+      "name": "State survivability",
+      "category": "feedback",
+      "behavior": "Ordo / application",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "status-lozenge",
+      "name": "Status lozenge",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "steps",
+      "name": "Steps",
+      "category": "site",
+      "behavior": "Site content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "surface",
+      "name": "Surface",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "survey-progress",
+      "name": "Survey progress",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "switch",
+      "name": "Switch",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "switcher",
+      "name": "Switcher",
+      "category": "layout",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "symbol-rating",
+      "name": "Symbol rating",
+      "category": "assessment",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "tabs",
+      "name": "Tabs",
+      "category": "navigation",
+      "behavior": "Application / Limen",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "tab-selection"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "aria-state-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": [
+        {
+          "path": "tests/browser/machine-operability.spec.mjs",
+          "evidence": "tab controls and panels have complete bidirectional semantic relationships"
+        }
+      ]
+    },
+    {
+      "slug": "text-field",
+      "name": "Text field",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "text-roles",
+      "name": "Text roles",
+      "category": "utilities",
+      "behavior": "Native CSS",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "textarea",
+      "name": "Textarea",
+      "category": "forms",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "native-form-control"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-control-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "timeline",
+      "name": "Timeline",
+      "category": "data",
+      "behavior": "Application content",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "toast",
+      "name": "Toast",
+      "category": "feedback",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-popover"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "tooltip",
+      "name": "Tooltip / contextual hint",
+      "category": "overlays",
+      "behavior": "Native HTML",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation",
+        "native-form-control",
+        "native-popover"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "native-control-state",
+        "native-open-state"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "understanding",
+      "name": "Understanding review",
+      "category": "assisted",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "documented-presentation-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "validation-message",
+      "name": "Validation message",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "static",
+      "identity": [
+        "semantic-document-structure"
+      ],
+      "actions": [
+        "inspect"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "validation-summary",
+      "name": "Validation summary",
+      "category": "feedback",
+      "behavior": "Application state",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "verification-frame",
+      "name": "Verification frame",
+      "category": "verification",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "visually-hidden",
+      "name": "Visually hidden",
+      "category": "utilities",
+      "behavior": "Native CSS",
+      "interaction": "native",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "wizard",
+      "name": "Wizard",
+      "category": "navigation",
+      "behavior": "Limen / Ordo",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "aria-state",
+        "native-state"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "work-queue",
+      "name": "Work queue",
+      "category": "data",
+      "behavior": "Ordo / application",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "button-activation"
+      ],
+      "state": [
+        "semantic-content"
+      ],
+      "completion": [
+        "semantic-dom-observation"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    },
+    {
+      "slug": "workspace-shell",
+      "name": "Workspace shell",
+      "category": "workspaces",
+      "behavior": "Application content",
+      "interaction": "application",
+      "identity": [
+        "semantic-role-and-accessible-name",
+        "native-id-name-value-or-target"
+      ],
+      "actions": [
+        "link-navigation"
+      ],
+      "state": [
+        "aria-state"
+      ],
+      "completion": [
+        "url-or-target-change"
+      ],
+      "directManipulation": false,
+      "semanticAlternative": true,
+      "status": "pass",
+      "reasons": [],
+      "metadataProblems": [],
+      "evidence": []
+    }
+  ]
+}

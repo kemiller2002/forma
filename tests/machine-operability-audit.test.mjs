@@ -1,0 +1,58 @@
+import fs from "node:fs";
+import path from "node:path";
+import test from "node:test";
+import assert from "node:assert/strict";
+import { deriveMachineContract } from "../tools/catalog/machine-operability.mjs";
+
+const component = (slug, behavior = "HTML / CSS") => ({ slug, behavior });
+
+test("static semantic content passes", () => {
+  const result = deriveMachineContract(component("prose"), "<article><h2>Summary</h2><p>Text</p></article>");
+  assert.equal(result.interaction, "static");
+  assert.equal(result.status, "pass");
+});
+
+test("native controls expose semantic machine actions", () => {
+  const result = deriveMachineContract(component("switch"), '<label for="n">Notifications</label><input id="n" type="checkbox" role="switch">');
+  assert.equal(result.interaction, "native");
+  assert.ok(result.actions.includes("native-form-control"));
+  assert.equal(result.status, "pass");
+});
+
+test("application-owned interactive components require executable parity evidence", () => {
+  const result = deriveMachineContract(component("tabs", "Application / Limen"), '<button type="button" role="tab" id="t" aria-controls="p" aria-selected="true">Overview</button><section id="p" role="tabpanel" aria-labelledby="t"></section>');
+  assert.equal(result.status, "needs-test");
+});
+
+test("reorder direct manipulation requires move controls", () => {
+  const good = deriveMachineContract(component("reorder-states", "Application / Limen"), '<li data-ef-manipulation="dragging"><button aria-label="Move Reliability up">Up</button><button aria-label="Move Reliability down">Down</button></li>');
+  assert.notEqual(good.status, "needs-retrofit");
+
+  const bad = deriveMachineContract(component("reorder-states", "Application / Limen"), '<li data-ef-manipulation="dragging">Reliability</li>');
+  assert.equal(bad.status, "needs-retrofit");
+});
+
+test("broken semantic references require retrofit", () => {
+  const result = deriveMachineContract(component("dialog"), '<button commandfor="missing">Open</button>');
+  assert.equal(result.status, "needs-retrofit");
+});
+
+
+test("consumer hash navigation may target an application-owned destination", () => {
+  const result = deriveMachineContract(component("cta"), '<a href="#contact">Contact</a>');
+  assert.equal(result.status, "pass");
+});
+
+test("spatial canvas index targets must resolve inside the public surface", () => {
+  const result = deriveMachineContract(component("spatial-canvas", "Application / Limen"), '<div class="ef-spatial-canvas"><details><a href="#missing">Node</a></details></div>');
+  assert.equal(result.status, "needs-retrofit");
+});
+
+
+test("machine evidence registry points to committed tests", () => {
+  const registry = JSON.parse(fs.readFileSync("catalog/machine-operability-evidence.json", "utf8"));
+  for (const [slug, evidence] of Object.entries(registry.components)) {
+    assert.ok(evidence.length > 0, `${slug} has evidence`);
+    for (const item of evidence) assert.ok(fs.existsSync(path.resolve(item.path)), `${slug}: ${item.path} exists`);
+  }
+});

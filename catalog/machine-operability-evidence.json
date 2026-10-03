@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "components": {
+    "reorder-states": [
+      {
+        "path": "tests/browser/machine-operability.spec.mjs",
+        "evidence": "semantic move controls remain available beside direct manipulation"
+      }
+    ],
+    "resizable-split-pane": [
+      {
+        "path": "tests/browser/machine-operability.spec.mjs",
+        "evidence": "separator exposes keyboard-addressable value semantics"
+      }
+    ],
+    "spatial-canvas": [
+      {
+        "path": "tests/browser/machine-operability.spec.mjs",
+        "evidence": "object index provides stable non-spatial targets"
+      }
+    ],
+    "tabs": [
+      {
+        "path": "tests/browser/machine-operability.spec.mjs",
+        "evidence": "tab controls and panels have complete bidirectional semantic relationships"
+      }
+    ]
+  }
+}
