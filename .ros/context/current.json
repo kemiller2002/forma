@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "anthropic/claude-code",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-06T13:05:26.000Z",
+  "updatedAt": "2026-10-06T16:25:51.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1586,6 +1586,51 @@
         }
       },
       "completedAt": "2026-10-06T13:05:26.000Z"
+    },
+    {
+      "id": "WI-0020",
+      "type": "mechanical",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": ".echelon/toolchain.json"
+        },
+        {
+          "type": "implementation",
+          "path": "conditor.json"
+        },
+        {
+          "type": "implementation",
+          "path": ".conditor/lock.json"
+        }
+      ],
+      "updatedAt": "2026-10-06T16:25:51.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261006T162456571Z-7fc939be"
+      ],
+      "latestCheckpoint": {
+        "id": "dec37d385341387cc06d95c6",
+        "recordedAt": "2026-10-06T16:25:50.000Z",
+        "executionId": "EXE-20261006T162456571Z-7fc939be",
+        "repository": "echelon-design-system",
+        "branch": "final-sweep-372",
+        "commit": "66e8a308c57e2ecce0ff05bb71aa222e555e13cb",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "final-sweep-372",
+        "remoteCommit": "66e8a308c57e2ecce0ff05bb71aa222e555e13cb",
+        "summary": "upgrades applied, Conditor adopted, verified, pushed",
+        "nextAction": "complete, PR",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-06T16:25:51.000Z"
     }
   ]
 }
