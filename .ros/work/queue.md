@@ -2,11 +2,13 @@
 
 | ID | Work | Status | Tags | Priority |
 |---|---|---|---|---|
+| FORMA-A11Y-002 | FORMA-A11Y-002 | complete |  |  |
 | FORMA-GH-88 | FORMA-GH-88 | complete |  |  |
 | FORMA-GH-93 | FORMA-GH-93 | complete |  |  |
 | FORMA-GH-94 | FORMA-GH-94 | complete |  |  |
 | FORMA-GH-98 | Make all Forma interactions machine-operable | complete | forma,machine-operability,automation | high |
 | FORMA-GH-98-CATALOG | Refresh Forma component inventory after machine-operability changes | complete | forma,catalog,machine-operability | medium |
+| FORMA-RELEASE-041 | FORMA-RELEASE-041 | complete |  |  |
 | GH-12 | Align Forma documentation site with Echelon Foundry CSS | complete | forma,css,visual-engineering | high |
 | GH-14 | Build cross-application mobile Forma component wave | complete | forma,mobile,cross-application | high |
 | GH-18 | Prepare Forma for application consumption | active | readiness,bootstrap | high |
@@ -56,3 +58,4 @@
 | WI-0015 | Decide whether the documentation site may carry a progressive-enhancement script for a clipboard Copy button and search (currently forbidden by ADR-0002 scope and tests/site-build.test.mjs) | captured | forma,documentation,decision | low |
 | WI-0016 | Evaluate a reusable settings-list row primitive (evidence: catalog/compositions/mobile-settings.mjs) | captured | forma,catalog,candidate | low |
 | WI-0017 | Site axe checks sample the settled state, not entry-motion frames | complete | site,accessibility,flaky | high |
+| WI-0018 | Move forma to Praxis 3.7.1 (ROS -> Praxis rename) and Ordo 1.4.0 | ready | praxis, ordo, toolchain | medium |
