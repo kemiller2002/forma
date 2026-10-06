@@ -59,3 +59,4 @@
 | WI-0016 | Evaluate a reusable settings-list row primitive (evidence: catalog/compositions/mobile-settings.mjs) | captured | forma,catalog,candidate | low |
 | WI-0017 | Site axe checks sample the settled state, not entry-motion frames | complete | site,accessibility,flaky | high |
 | WI-0018 | Move forma to Praxis 3.7.1 (ROS -> Praxis rename) and Ordo 1.4.0 | complete | praxis, ordo, toolchain | medium |
+| WI-0019 | Move forma to Ordo 1.4.1 | complete | ordo, toolchain | medium |
