@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "anthropic/claude-code",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-06T12:19:37.000Z",
+  "updatedAt": "2026-10-06T12:20:51.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1500,13 +1500,47 @@
     {
       "id": "WI-0018",
       "type": "mechanical",
-      "state": "active",
-      "semanticState": "active",
-      "evidence": [],
-      "updatedAt": "2026-10-06T12:19:37.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": ".echelon/ros.json"
+        },
+        {
+          "type": "implementation",
+          "path": ".echelon/sde.json"
+        },
+        {
+          "type": "documentation",
+          "path": "AGENTS.md"
+        }
+      ],
+      "updatedAt": "2026-10-06T12:20:51.000Z",
       "telemetryExecutionIds": [
         "EXE-20261006T121938004Z-1909665b"
-      ]
+      ],
+      "latestCheckpoint": {
+        "id": "c6d1b6e58c9be1ea11bb4d87",
+        "recordedAt": "2026-10-06T12:20:47.000Z",
+        "executionId": "EXE-20261006T121938004Z-1909665b",
+        "repository": "echelon-design-system",
+        "branch": "chore/praxis-3.7.1",
+        "commit": "80ddfe9f4ff84032d3abe793a655300472ba3ac9",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "chore/praxis-3.7.1",
+        "remoteCommit": "80ddfe9f4ff84032d3abe793a655300472ba3ac9",
+        "summary": "upgrade applied, verified, pushed",
+        "nextAction": "complete, PR",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-06T12:20:51.000Z"
     }
   ]
 }

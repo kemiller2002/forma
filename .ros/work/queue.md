@@ -58,4 +58,4 @@
 | WI-0015 | Decide whether the documentation site may carry a progressive-enhancement script for a clipboard Copy button and search (currently forbidden by ADR-0002 scope and tests/site-build.test.mjs) | captured | forma,documentation,decision | low |
 | WI-0016 | Evaluate a reusable settings-list row primitive (evidence: catalog/compositions/mobile-settings.mjs) | captured | forma,catalog,candidate | low |
 | WI-0017 | Site axe checks sample the settled state, not entry-motion frames | complete | site,accessibility,flaky | high |
-| WI-0018 | Move forma to Praxis 3.7.1 (ROS -> Praxis rename) and Ordo 1.4.0 | ready | praxis, ordo, toolchain | medium |
+| WI-0018 | Move forma to Praxis 3.7.1 (ROS -> Praxis rename) and Ordo 1.4.0 | complete | praxis, ordo, toolchain | medium |
