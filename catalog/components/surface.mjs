@@ -94,7 +94,8 @@ export default {
     ],
     hooks: {
       "ef-surface": "Panel with secondary surface background, on-secondary text color, subtle 1px border and padding. Headings and paragraphs inside inherit its color.",
-      "--ef-surface-space": "Padding on all sides. Default `--ef-primitive-spacing-5` (1.5rem)."
+      "--ef-surface-space": "Padding on all sides. Default `--ef-primitive-spacing-5` (1.5rem).",
+      "--ef-surface-accent-text-color": "Color of links and accent labels inside a secondary surface. Every rule that paints the secondary surface sets it to `--ef-color-text-primary` and rebinds secondary and muted text to `--ef-color-text-on-secondary-surface`, because accent and secondary text are not AA-validated on that surface. Outside one, they use their accent role."
     },
     keyboard: [],
     events: [],

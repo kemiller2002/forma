@@ -197,11 +197,6 @@
       "location": "requirements/MARKETING-PRESENTATION.md"
     },
     {
-      "component": "master-detail, conversation, text-roles",
-      "issue": "Contrast below 4.5:1 on the secondary surface: selected master row secondary text and assistant .ef-turn__speaker (#686d68 on #e3e0d7, about 4.0:1); .ef-component-kicker (#47756b) on secondary surfaces about 3.95:1.",
-      "location": "src/styles/components.css (.ef-master-detail__master, .ef-turn__speaker, .ef-component-kicker)"
-    },
-    {
       "component": "workspace-shell",
       "issue": "The inspector column and its gap are always reserved, leaving an empty column when a shell has no inspector.",
       "location": "src/styles/components.css (.ef-workspace-shell)"

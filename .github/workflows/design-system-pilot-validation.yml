@@ -59,6 +59,9 @@ jobs:
       - name: Validate Figma contract
         run: npm run test:figma
 
+      - name: Validate CSS sources, built CSS and contrast pairs
+        run: npm run test:css
+
       - name: Show artifact metrics
         run: cat dist/build-metrics.json
 

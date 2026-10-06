@@ -314,3 +314,61 @@ rendering and the embeddable renderer and editor.
 
 **Next action.** Confirm cross-engine CI on PR #95, then merge. After the npm
 publish, forma-studio#17 replaces its vendored copy with the released artifacts.
+
+## Contrast pairing and built-CSS guard, 2026-10-06 (FORMA-A11Y-002)
+
+**Objective.** Fix two defects reported while Vigila upgraded to Forma 0.3.0,
+and add checks that stop both classes of defect recurring.
+
+**Root causes.**
+
+- *Contrast.* The token compilers validate `text-secondary`, `text-muted` and
+  the accent roles against `surface-primary` only. Twenty-one rules paint
+  `surface-secondary` (for example `.ef-fault--inline`, assistant turns, file
+  drop zones, master-detail current row, evidence-age rows) while their
+  paragraphs and hints keep `text-secondary` from `:where(p)` and links keep
+  `accent-primary`. Graphite `#686d68` on stone `#e3e0d7` is 4.0:1. Accent on
+  the secondary surface is 3.8 to 4.4:1 in light, dark, paper-ink and
+  warm-earth. Separately, in forced colors Chromium paints text with
+  `-webkit-text-fill-color`, which keeps the author colour. The ibm-3270
+  character-grid profile uses literal palette colours that the forced-colors
+  token projection does not reach, so its text was 1.1 to 2.4:1 on a forced
+  white Canvas.
+- *Build.* Commit 9fd29f0 wrote a literal `\n` into
+  `src/styles/foundations.css`. `tools/build-assets.mjs` copies that file
+  verbatim, and Forma 0.3.0 shipped it. The selector became
+  `n .ef-surface :where(...)`. aeb4f17 fixed the source before 0.4.0 and added
+  a source-only check. No check covered the built output.
+
+**Fixes.**
+
+- Every rule that paints the secondary surface (21 rules across
+  foundations, components and assessment) now rebinds `--ef-color-text-secondary`
+  and `--ef-color-text-muted` to `text-on-secondary-surface`. It also sets
+  `--ef-surface-accent-text-color` to `text-primary`. Links and the three
+  accent-coloured text rules read that hook. This is the same pattern as the
+  marketing `[data-ef-tone="surface"]`.
+- Character-grid profile tokens project to Canvas, CanvasText or Highlight
+  under `forced-colors: active`.
+
+**New checks.**
+
+- `tests/browser/pattern-contrast.spec.mjs` runs axe color-contrast on every
+  pattern plus three surface compositions. It covers all 18 token themes, OS dark, each
+  brand in light and dark, and forced colors. Against main it fails 12 of 27
+  contexts.
+- `tests/contrast-pairs.test.mjs` checks the pairing lint, accent-text routing
+  and the documented token pairs across every compiled theme and brand. Against main the pairing
+  tests fail.
+- `tests/dist-css.test.mjs` checks every `dist/**/*.css` file for stray
+  escapes, unbalanced blocks, nonexistent element selectors, and selectors
+  that match their sources. It passes on main, because the source was already
+  fixed. It fails on a v0.3.0 build (run with `FORMA_DIST_ROOT=<worktree>`).
+- `test:css` now runs in the PR workflow (`design-system-pilot-validation.yml`).
+- 17 `color-contrast` entries in `tests/site-browser/axe-baseline.json` and the
+  matching `catalog/known-issues.json` entry no longer reproduce, so they were
+  removed.
+
+**Next action.** Merge the release PR (0.4.1) only when ready to release.
+Merging it triggers `release-forma.yml`, which creates the `v0.4.1` tag and
+GitHub release with the tarball, and `publish.yml`, which publishes to npm.

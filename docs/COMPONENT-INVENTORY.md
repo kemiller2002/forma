@@ -41,7 +41,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Select | `<ef-select>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | physics-motion.spec.mjs | combobox, choice-group, segmented-control, multi-choice |
 | Slider | `<ef-slider>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | core-controls-motion.spec.mjs | numeric-stepper, range-entry, ordinal-scale, allocation |
 | Switch | `<ef-switch>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, physics-motion.spec.mjs, progressive-motion.spec.mjs, switch.spec.mjs, value-change-motion.spec.mjs | checkbox, binary-choice, segmented-control, multi-choice |
-| Text field | `<ef-text-field>` | Form inputs | implemented | complete | 5 | 1 | yes | yes | yes | generic only | textarea, date-time-field, numeric-stepper, search, validation-message |
+| Text field | `<ef-text-field>` | Form inputs | implemented | complete | 5 | 1 | yes | yes | yes | pattern-contrast.spec.mjs | textarea, date-time-field, numeric-stepper, search, validation-message |
 | Textarea | `<ef-textarea>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | text-field, composer, validation-message |
 | Choice group | `<ef-choice-group>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs | multi-choice, image-choice, segmented-control, ordinal-scale, binary-choice |
 | Hierarchical choice | `<ef-hierarchical-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchical-multi-choice, hierarchy-tree, choice-group, disclosure |
@@ -89,7 +89,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Fault banner | `<ef-fault-banner>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, fault-notification, fault-blocking, diagnostic-status |
 | Fault blocking | `<ef-fault-blocking>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | dialog, fault-banner, recovery-actions, fault-details |
 | Fault details | `<ef-fault-details>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | disclosure, key-value-list, fault-reference |
-| Fault inline | `<ef-fault-inline>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | generic only | fault, validation-message, fault-summary, fault-notification |
+| Fault inline | `<ef-fault-inline>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | pattern-contrast.spec.mjs | fault, validation-message, fault-summary, fault-notification |
 | Fault notification | `<ef-fault-notification>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | aegis-faults.spec.mjs | toast, fault-banner, fault-inline, fault |
 | Fault reference | `<ef-fault-reference>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | identifier, fault-details, fault |
 | Fault summary | `<ef-fault-summary>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | aegis-faults.spec.mjs | validation-summary, fault-inline, fault |
@@ -116,7 +116,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Sidebar | `<ef-sidebar>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | composition.spec.mjs | rail, switcher, split-pane, workspace-shell |
 | Split | `<ef-split>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | switcher, hero, split-pane, container |
 | Stack | `<ef-stack>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | cluster, grid, surface, prose |
-| Surface | `<ef-surface>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | css-source.test.mjs, forced-colors-projection.spec.mjs | card-grid, callout, preview-surface, stack |
+| Surface | `<ef-surface>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | css-source.test.mjs, dist-css.test.mjs, forced-colors-projection.spec.mjs, pattern-contrast.spec.mjs | card-grid, callout, preview-surface, stack |
 | Switcher | `<ef-switcher>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | sidebar, rail, split, cluster |
 | Dashboard grid | `<ef-dashboard-grid>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | metric-card, responsive-grid, mosaic, work-queue |
 | Focus stage | `<ef-focus-stage>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | split-pane, rail, workspace-shell, preview-surface |
@@ -311,7 +311,6 @@ Recorded from reading every pattern and its CSS during the catalog upgrade (WI-0
 | security-evidence-chain, security-posture | Default figure margin is not reset (about 40px inset at 320px); the posture blockers list has a border but no padding. | src/styles/components.css |
 | security family | requirements/TUTELA-SECURITY-RESULTS.md names classes that do not exist (ef-unknown-result, ef-exception-status, ef-evidence-chain, ef-boundary-map). | requirements/TUTELA-SECURITY-RESULTS.md |
 | marketing family | requirements/MARKETING-PRESENTATION.md mentions a hover lift that the CSS does not implement (the text looks stale). | requirements/MARKETING-PRESENTATION.md |
-| master-detail, conversation, text-roles | Contrast below 4.5:1 on the secondary surface: selected master row secondary text and assistant .ef-turn__speaker (#686d68 on #e3e0d7, about 4.0:1); .ef-component-kicker (#47756b) on secondary surfaces about 3.95:1. | src/styles/components.css (.ef-master-detail__master, .ef-turn__speaker, .ef-component-kicker) |
 | workspace-shell | The inspector column and its gap are always reserved, leaving an empty column when a shell has no inspector. | src/styles/components.css (.ef-workspace-shell) |
 | lane-board | The board scrolls sideways and has a :focus-visible style, but the canonical pattern has no tabindex, so keyboard users cannot focus it to scroll. | patterns/lane-board.html |
 | key-value-list | Reflows only at a viewport breakpoint, so in a narrow column on a wide screen it can overflow by a few pixels. | src/styles/components.css (.ef-key-value-list) |
