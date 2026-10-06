@@ -162,7 +162,8 @@ export default {
       "Provides visible severity text and a non-color border style for every severity.",
       "Keeps recovery actions as native buttons with the shared focus ring and 44px minimum height.",
       "Adds no live region and no focus movement, matching the Inline intent.",
-      "Keeps the border, marker and text visible in forced-colors mode."
+      "Keeps the border, marker and text visible in forced-colors mode.",
+      "On its secondary-surface background, severity, message and reference text use text.on-secondary-surface and links use text.primary, so every theme and brand meets WCAG AA 4.5:1 (FORMA-A11Y-002)."
     ],
     consumer: [
       "Place the fault next to the affected region in source order and reference it from that control or region with aria-describedby.",

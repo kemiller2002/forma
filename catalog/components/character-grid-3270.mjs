@@ -174,7 +174,7 @@ export default {
     { name: "Field focus", how: ":focus-visible on a field", description: "Standard outline plus a dark green field background and a block caret where `caret-shape` is supported." },
     { name: "Key focus", how: ":focus-visible on a key", description: "Standard outline plus a dark blue key background." },
     { name: "Device status row", how: "data-ef-status-rows on the grid", description: "A muted rule over the status row; the row is still a `role=\"status\"` run with an indicator word." },
-    { name: "Forced colors", how: "forced-colors: active", description: "System colors replace the palette; boundaries, focus and severity shapes remain." }
+    { name: "Forced colors", how: "forced-colors: active", description: "Every profile token is projected to Canvas, CanvasText or Highlight, so no 3279 color survives on the forced Canvas; boundaries, focus and severity shapes remain." }
   ],
   accessibility: {
     forma: [

@@ -135,6 +135,34 @@ Before changing application CSS for customer identity or presentation, read
 - Brand or skin changes must never alter legal actions, permissions, validation, scoring, obligations, or domain transitions.
 - Do not restate semantic colors under `@media (forced-colors: active)` in a theme, brand or skin: Forma projects every `--ef-color-*` token to system colors there, and component state rules own `Highlight` usage.
 
+### Color pairs
+
+Every theme and brand guarantees WCAG AA (4.5:1 text, 3:1 focus ring) only
+for these foreground/surface token pairs, which `tests/contrast-pairs.test.mjs`
+checks against every compiled theme and brand:
+
+| Surface | Foreground roles |
+| --- | --- |
+| `surface-primary` | `text-primary`, `text-heading`, `text-secondary`, `text-on-secondary-surface`, `accent-primary`, `accent-secondary`, and `text-muted`, `accent-hover`, `status-*` where declared |
+| `surface-secondary` | `text-primary`, `text-heading`, `text-on-secondary-surface` |
+| `surface-elevated` | `text-primary` |
+| `surface-inverse` | `text-inverse` |
+
+`text-secondary`, `text-muted` and the accent roles are **not** validated on
+`surface-secondary` (graphite on stone is 4.0:1). Forma therefore re-pairs
+them in every rule that paints `--ef-color-surface-secondary`
+(`.ef-surface`, `.ef-fault--inline`, assistant turns, drop zones, table
+headers and the rest): secondary and muted text resolve to
+`text-on-secondary-surface`, and `--ef-surface-accent-text-color` makes links
+and accent labels (kickers, record types) `text-primary`. Accent-colored text
+must read `var(--ef-surface-accent-text-color, var(--ef-color-accent-*))`.
+A new rule that paints the secondary surface must declare the
+same three properties; the test fails until it does. Do not work
+around the pairing with consumer CSS such as `p { color: inherit }`.
+`tests/browser/pattern-contrast.spec.mjs` runs axe's color-contrast rule over
+every `patterns/*.html` file in every theme, every brand (light and dark) and
+forced colors.
+
 ## Public component tags
 
 Use Forma's public inert authoring tag around the canonical semantic pattern:

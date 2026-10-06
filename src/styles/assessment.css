@@ -154,7 +154,7 @@
     overflow-wrap: anywhere;
   }
 
-  .ef-ordinal-option:hover { background: var(--ef-color-surface-secondary, #e3e0d7); }
+  .ef-ordinal-option:hover { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); background: var(--ef-color-surface-secondary, #e3e0d7); }
   /* Light inertial press on the marker only; the option (hit target) never
      moves or shrinks (MOT-014). */
   .ef-ordinal-option:has(input:active:not(:disabled)) .ef-ordinal-option__marker { scale: 0.92; }
@@ -239,6 +239,9 @@
   .ef-choice:has(input[type="checkbox"])::before { border-radius: 0.2rem; }
 
   .ef-choice:has(input:checked) {
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
     border-color: var(--ef-color-accent-primary, #905831);
     background: var(--ef-color-surface-secondary, #e3e0d7);
   }
@@ -296,6 +299,9 @@
   }
 
   .ef-validation-summary {
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     gap: var(--ef-primitive-spacing-3, 0.75rem);
@@ -455,7 +461,7 @@
 
   .ef-allocation__total[data-ef-state="invalid"] {
     border-block-start-width: 2px;
-    color: var(--ef-color-accent-primary, #905831);
+    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-primary, #905831));
   }
 
   /* Rule builder visual contract --------------------------------------- */
@@ -521,6 +527,9 @@
   }
 
   .ef-rule-builder__summary {
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
     margin: 0;
     padding: var(--ef-primitive-spacing-3, 0.75rem) var(--ef-primitive-spacing-4, 1rem);
     border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
@@ -811,6 +820,9 @@
   .ef-choice--media::before { display: none; }
 
   .ef-choice__media {
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
     display: grid;
     place-items: center;
     overflow: hidden;
