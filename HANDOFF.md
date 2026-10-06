@@ -372,3 +372,25 @@ and add checks that stop both classes of defect recurring.
 **Next action.** Merge the release PR (0.4.1) only when ready to release.
 Merging it triggers `release-forma.yml`, which creates the `v0.4.1` tag and
 GitHub release with the tarball, and `publish.yml`, which publishes to npm.
+
+## Release 0.4.1, 2026-10-06 (FORMA-RELEASE-041)
+
+This release bumps the version to 0.4.1 and adds `CHANGELOG.md` (shipped in
+the package) and a 0.4.1 note in `docs/CONSUMING-FORMA.md`. It also updates
+the example marketing `forma.lock` and the package-contract version.
+
+Merging the release PR to main is the release. `release-forma.yml` runs on
+push to main when `package.json` changes. After a 10-minute debounce it runs
+`release:check`, packs the package, and creates the GitHub release `v0.4.1`
+with `gh release create --target <merge sha>`. That command creates the tag
+and uploads `echelon-foundry-design-system-0.4.1.tgz`. `publish.yml`
+publishes `@echelon-foundry/design-system@0.4.1` to npm on the same push. No
+workflow triggers on tag push. A manually pushed `v0.4.1` tag would make the
+release job fail its identity check unless it points at the same merge
+commit.
+
+0.3.1 was requested for Vigila, but it was not cut from main. Main has been
+0.4.0 since v0.4.0 (052cb1d), so a 0.3.1 release from main would ship 0.4.x
+contents under a lower version and move npm `latest` backwards. A true 0.3.1
+needs a `release/0.3.x` branch from v0.3.0 with these fixes backported. It
+would also need a `workflow_dispatch` of `release-forma.yml` on that branch.

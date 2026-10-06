@@ -102,6 +102,14 @@ Static workflow HTML needs only `tokens.css`, `foundations.css` and
 `components.css`. An interactive viewer or editor needs the separate opt-in
 package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
 
+## 0.4.1
+
+Forma 0.4.1 is a patch release. Text on the secondary surface now meets WCAG
+AA in every theme and brand, including inline faults, `.ef-surface` hints and
+links. Character-grid profiles respect forced colors. See `CHANGELOG.md`.
+There are no markup or token changes. Remove local contrast workarounds such
+as `p { color: inherit }` inside Forma faults.
+
 ## Ownership boundary
 
 Forma owns semantic HTML contracts, CSS, design tokens, responsive

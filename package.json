@@ -1,6 +1,6 @@
 {
   "name": "@echelon-foundry/design-system",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": false,
   "type": "module",
   "description": "Zero-runtime HTML and CSS design system for Echelon Foundry applications.",
@@ -44,7 +44,8 @@
     "examples/workflows/forma/workflows",
     "examples/workflows/fixtures.json",
     "docs/workflow",
-    "contracts/machine-operability.json"
+    "contracts/machine-operability.json",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "clean": "node tools/clean.mjs",
