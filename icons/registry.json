@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "grid": 24,
+  "strokeWidth": 1.8,
+  "linecap": "round",
+  "linejoin": "round",
+  "icons": [
+    {
+      "name": "search",
+      "category": "actions",
+      "label": "Search",
+      "keywords": [
+        "find",
+        "filter"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "circle",
+          "cx": 10.3,
+          "cy": 10.3,
+          "r": 6.2
+        },
+        {
+          "element": "path",
+          "d": "M15 15L20.5 20.5"
+        }
+      ]
+    },
+    {
+      "name": "close",
+      "category": "actions",
+      "label": "Close",
+      "keywords": [
+        "dismiss",
+        "cancel"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M6.5 6.5L17.5 17.5M17.5 6.5L6.5 17.5"
+        }
+      ]
+    },
+    {
+      "name": "add",
+      "category": "actions",
+      "label": "Add",
+      "keywords": [
+        "new",
+        "create"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M12 5V19M5 12H19"
+        }
+      ]
+    },
+    {
+      "name": "edit",
+      "category": "actions",
+      "label": "Edit",
+      "keywords": [
+        "modify",
+        "pencil"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M4.5 19.5L9.2 18.5L19 8.7L15.3 5L5.5 14.8L4.5 19.5Z"
+        },
+        {
+          "element": "path",
+          "d": "M13.8 6.5L17.5 10.2"
+        }
+      ]
+    },
+    {
+      "name": "success",
+      "category": "status",
+      "label": "Success",
+      "keywords": [
+        "complete",
+        "check"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 12,
+          "r": 9
+        },
+        {
+          "element": "path",
+          "d": "M7.7 12.1L10.7 15.1L16.5 9.3"
+        }
+      ]
+    },
+    {
+      "name": "warning",
+      "category": "status",
+      "label": "Warning",
+      "keywords": [
+        "caution",
+        "attention"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M10.1 4.8Q12 1.9 13.9 4.8L21 17.6Q22.5 20 19.6 20H4.4Q1.5 20 3 17.6Z"
+        },
+        {
+          "element": "path",
+          "d": "M12 9V13.7"
+        },
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 17,
+          "r": 0.65
+        }
+      ]
+    },
+    {
+      "name": "workflow",
+      "category": "workflow",
+      "label": "Workflow",
+      "keywords": [
+        "diagram",
+        "process"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "rect",
+          "x": 3,
+          "y": 4,
+          "width": 7,
+          "height": 6,
+          "rx": 1
+        },
+        {
+          "element": "rect",
+          "x": 14,
+          "y": 14,
+          "width": 7,
+          "height": 6,
+          "rx": 1
+        },
+        {
+          "element": "path",
+          "d": "M10 7H15Q17 7 17 9V14M14.6 11.8L17 14.2L19.4 11.8"
+        }
+      ]
+    },
+    {
+      "name": "agent",
+      "category": "agents",
+      "label": "Agent",
+      "keywords": [
+        "automation",
+        "assistant"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "rect",
+          "x": 4,
+          "y": 8,
+          "width": 16,
+          "height": 11,
+          "rx": 3
+        },
+        {
+          "element": "path",
+          "d": "M12 8V5M9.8 5H14.2"
+        },
+        {
+          "element": "circle",
+          "cx": 9,
+          "cy": 13,
+          "r": 0.8
+        },
+        {
+          "element": "circle",
+          "cx": 15,
+          "cy": 13,
+          "r": 0.8
+        },
+        {
+          "element": "path",
+          "d": "M9 16.3H15"
+        }
+      ]
+    }
+  ]
+}
