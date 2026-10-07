@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { buildIcons } from "./icons/build.mjs";
 
 fs.mkdirSync("dist/patterns", { recursive: true });
 
@@ -12,6 +13,10 @@ for (const file of fs.readdirSync("patterns")) {
     fs.copyFileSync(path.join("patterns", file), path.join("dist/patterns", file));
   }
 }
+
+// Static icon presentation is part of the existing components.css consumer surface.
+fs.appendFileSync("dist/components.css", "\n" + fs.readFileSync("src/styles/icons.css", "utf8"));
+buildIcons();
 
 const tokens = fs.readFileSync("dist/tokens.css", "utf8");
 const foundations = fs.readFileSync("dist/foundations.css", "utf8");
