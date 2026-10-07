@@ -92,7 +92,7 @@ export function compileIcons(registry) {
   for (const icon of icons) {
     files.set(`${icon.name}.svg`, renderSvg(icon, registry) + "\n");
     files.set(`html/${icon.name}.html`,
-      `<ef-icon class="ef-icon" data-ef-icon="${icon.name}">${renderSvg(icon, registry, true)}</ef-icon>\n`);
+      `<ef-icon class="ef-component-tag"><span class="ef-icon" data-ef-icon="${icon.name}">${renderSvg(icon, registry, true)}</span></ef-icon>\n`);
     metadata.push({
       name: icon.name, category: icon.category, label: icon.label,
       keywords: [...icon.keywords], origin: icon.origin,
