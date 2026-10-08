@@ -1,6 +1,6 @@
 # Forma icons (foundation preview)
 
-The icon registry is in `icons/registry.json`, validated by `schemas/icon-registry.schema.json` and compiled by `tools/icons/build.mjs`. It now contains forty first-party outline icons, including the eight foundation icons: add, agent, close, edit, search, success, warning and workflow. The compiler and public catalog are implemented, but Forma Studio/Folio consumer integration and independent visual review remain open.
+The icon registry is in `icons/registry.json`, validated by `schemas/icon-registry.schema.json` and compiled by `tools/icons/build.mjs`. It now contains eighty first-party outline icons, including email, opened email, inbox, send, reply, reply-all, forward and attachment, plus the original eight foundation icons: add, agent, close, edit, search, success, warning and workflow. The compiler and public catalog are implemented, but Forma Studio/Folio consumer integration and independent visual review remain open.
 
 ## Build and validate
 
@@ -49,3 +49,10 @@ Default size is `1.25em`. Set `--ef-icon-size: 1rem` or `2rem` on an icon's pres
 7. Never edit the generated `dist/icons` files, add scripts/filters/external hrefs, or make icons interactive themselves.
 
 See `requirements/ICON-SYSTEM.md` and `docs/decisions/ADR-2026-10-07-icon-foundation.md`. Additional work items own production catalog integration, comprehensive browser visual/a11y tests, Forma Studio and Folio consumers, and the next icon batch.
+
+
+## Email and application symbols (0.6.0)
+
+Forty new symbols cover communication, common actions, documents and media, location/navigation, and system status. Each has an individual generated documentation page. Use `email` for mail messages, `email-open` for opened mail, `inbox` for incoming messages, `send` for sending newly composed messages, `reply` and `reply-all` for different recipient scope, `forward` for an existing message, and `attachment` for attached files. The consuming application still supplies labelled controls, actual recipient lists, state and status text.
+
+Applications pinned to 0.5.0 retain that release until an explicit upgrade to the published 0.6.0 package. No CDN, runtime registration or icon font is required.

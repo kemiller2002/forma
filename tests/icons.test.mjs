@@ -14,9 +14,9 @@ const reject = (mutate, description) => {
   assert.throws(() => validateRegistry(registry), /Icon registry:/, description);
 };
 
-test("forty original icons retain the eight required reference identifiers", () => {
+test("eighty original icons retain the original foundation identifiers", () => {
   validateRegistry(source);
-  assert.equal(source.icons.length, 40);
+  assert.equal(source.icons.length, 80);
   for (const name of ["add", "agent", "close", "edit", "search", "success", "warning", "workflow"]) {
     assert.ok(source.icons.some(icon => icon.name === name), `missing foundation icon: ${name}`);
   }
@@ -69,7 +69,7 @@ test("build writes only the expected deterministic static assets", () => {
     assert.deepEqual([...repeat], [...files]);
     assert.deepEqual(first, [...repeat]);
     assert.deepEqual(fs.readdirSync(path.join(root, "dist/icons")).filter(name => name.endsWith(".js")), []);
-    assert.equal(JSON.parse(fs.readFileSync(path.join(root, "dist/icons/registry.json"))).icons.length, 40);
+    assert.equal(JSON.parse(fs.readFileSync(path.join(root, "dist/icons/registry.json"))).icons.length, 80);
   } finally {
     fs.rmSync(root, {recursive: true, force: true});
   }
@@ -116,4 +116,77 @@ test("compiled registry pins the producing Forma version and each icon's SVG dig
 test("compiling without a release version omits the version stamp rather than inventing one", () => {
   const registry = JSON.parse(compileIcons(source).get("registry.json"));
   assert.equal(Object.hasOwn(registry, "formaVersion"), false);
+});
+
+
+const newNames = Object.freeze([
+  "email","email-open","inbox","send","reply","reply-all","forward","attachment",
+  "message","chat","phone","video-call","archive","bookmark","link","unlink",
+  "share","star","eye","eye-off","minus","more-vertical","maximize","minimize",
+  "file-text","image","camera","video","microphone","clipboard",
+  "chevron-left","chevron-right","map-pin","globe","compass",
+  "info","error","help-circle","pending","wifi-off"
+]);
+
+test("the forty application icons extend, rather than replace, the original public collection", () => {
+  assert.equal(newNames.length, 40);
+  assert.equal(new Set(newNames).size, 40);
+  const names = new Set(source.icons.map(icon => icon.name));
+  const originalNames = [
+    "add","agent","arrow-left","arrow-right","bell","bug","calendar","chart",
+    "chevron-down","chevron-up","clock","close","code","copy","database","download",
+    "edit","external-link","file","filter","folder","home","lock","menu",
+    "more-horizontal","print","refresh","save","search","server","settings",
+    "shield","sort","success","trash","upload","user","users","warning","workflow"
+  ];
+  assert.equal(originalNames.length, 40);
+  for (const name of [...originalNames, ...newNames]) assert.ok(names.has(name), "missing registered icon: " + name);
+  assert.deepEqual([...names].sort(), [...newNames, ...originalNames].sort());
+});
+
+test("mail, reply, reply all and forward have distinct static geometries and appropriate metadata", () => {
+  const compiled = compileIcons(source);
+  const names = ["email","email-open","inbox","send","reply","reply-all","forward","attachment"];
+  const map = new Map(source.icons.map(icon => [icon.name, icon]));
+  const geometry = new Set();
+  for (const name of names) {
+    const item = map.get(name);
+    assert.ok(item, name + " missing");
+    assert.equal(item.origin, "original");
+    assert.ok(item.keywords.length >= 2, name + " lacks useful search keywords");
+    const signature = JSON.stringify(item.shapes);
+    assert.ok(!geometry.has(signature), name + " duplicates a related icon");
+    geometry.add(signature);
+    assert.match(compiled.get(name + ".svg"), /stroke="currentColor"/);
+    assert.match(compiled.get("html/" + name + ".html"), /aria-hidden="true" focusable="false"/);
+  }
+});
+
+test("new geometry is restricted to the original static SVG grammar and 24-unit design grid", () => {
+  const icons = new Map(source.icons.map(icon => [icon.name, icon]));
+  const outputs = compileIcons(source);
+  for (const name of newNames) {
+    const icon = icons.get(name);
+    for (const shape of icon.shapes) {
+      const nums = shape.element === "path"
+        ? (shape.d.match(/(?:\d+\.?\d*|\.\d+)/g) ?? []).map(Number)
+        : Object.entries(shape).filter(([key]) => key !== "element").map(([, value]) => value);
+      assert.ok(nums.length > 0, name + " lacks geometry");
+      assert.ok(nums.every(num => Number.isFinite(num) && num >= 0 && num <= 24), name + " exceeds the 24-unit grid");
+      assert.ok(["path", "circle", "rect"].includes(shape.element), name + " uses forbidden SVG");
+    }
+    const svg = outputs.get(name + ".svg").replace("http://www.w3.org/2000/svg", "");
+    assert.doesNotMatch(svg, /https?:\/\/|<script|<foreignObject|<image|\sonload=|javascript:/i, name);
+    assert.match(svg, /viewBox="0 0 24 24"/);
+    assert.match(svg, /stroke-width="1.8"/);
+  }
+});
+
+test("status symbols do not reuse action semantics", () => {
+  const byName = new Map(source.icons.map(icon => [icon.name, icon]));
+  for (const name of ["info","error","help-circle","pending","wifi-off"]) {
+    assert.equal(byName.get(name)?.category, "status", name + " should be documented as status");
+  }
+  assert.notDeepEqual(byName.get("error")?.shapes, byName.get("close")?.shapes);
+  assert.notDeepEqual(byName.get("pending")?.shapes, byName.get("clock")?.shapes);
 });

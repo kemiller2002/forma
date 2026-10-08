@@ -122,6 +122,14 @@ IDs that a consumer does not recognize should be preserved as inert data, not
 rendered or rejected. There are no markup or token changes for existing
 components. See `docs/ICONS.md`.
 
+## 0.6.0
+
+Forma 0.6.0 extends the static icon registry from 40 to 80 first-party glyphs. Existing icon names and their geometry remain unchanged; no prior component, class, token or runtime contract changes. Additions include `email`, `email-open`, `inbox`, `send`, `reply`, `reply-all`, `forward`, `attachment`, `message`, `chat`, `phone`, `video-call`, common media controls, navigation, and additional status indicators.
+
+When 0.6.0 is published, consumers may explicitly upgrade the exact Forma package pin. Take the icon SVG and inline HTML only from that version's `dist/icons/` assets and verify `formaVersion` plus the SHA-256 digest in `icons/registry.json`. Existing 0.5.0 consumers need no migration unless they opt into new names.
+
+Icons never operate or label controls on their own. Native buttons and links retain semantic names and state; consequences and statuses must also be written in text. Static Folio exports must embed the pinned artwork without remote requests; Forma Studio must preserve unknown future icon names as inert data. See `docs/ICONS.md`.
+
 ## Ownership boundary
 
 Forma owns semantic HTML contracts, CSS, design tokens, responsive
