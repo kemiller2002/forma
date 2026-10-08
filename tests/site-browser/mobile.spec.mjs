@@ -12,7 +12,9 @@ const pages = [
   "/site-dist/agents/index.html",
   ...manifest.components.map(component =>
     `/site-dist/components/${component.slug}/index.html`
-  )
+  ),
+  "/site-dist/icons/index.html",
+  ...manifest.icons.map(icon => `/site-dist/${icon.docsUrl}index.html`)
 ];
 
 // These tests visit every generated page in one test, so their budget must

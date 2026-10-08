@@ -6,7 +6,7 @@ import path from "node:path";
 import { loadCatalog, ownedHooks } from "./catalog/load.mjs";
 import { validateCatalog } from "./catalog/validate.mjs";
 import { frameDocument } from "./catalog/render-layout.mjs";
-import { renderIconGallery } from "./catalog/render-icons.mjs";
+import { iconRawFiles, loadIconCatalog, renderIconGallery, renderIconPage } from "./catalog/render-icons.mjs";
 import { componentRawFiles, framePath, isPageLevel, renderComponentPage } from "./catalog/render-component.mjs";
 import {
   exampleCount,
@@ -59,7 +59,14 @@ fs.cpSync(path.join(root, "dist", "brands"), path.join(output, "assets", "brands
 fs.writeFileSync(path.join(output, ".nojekyll"), "");
 
 write("index.html", renderHome(contextAt("./")));
-write("icons/index.html", renderIconGallery("../"));
+const iconCatalog = loadIconCatalog();
+write("icons/index.html", renderIconGallery("../", iconCatalog));
+iconCatalog.icons.forEach(icon => {
+  const dir = `icons/${icon.name}`;
+  write(`${dir}/index.html`, renderIconPage(iconCatalog, icon, "../../"));
+  write(`${dir}/${icon.name}.svg`, icon.svgSource);
+  iconRawFiles(icon).forEach(raw => write(`${dir}/${raw.file}`, raw.content));
+});
 write("components/index.html", renderAllComponents(contextAt("../")));
 write("mobile/index.html", renderMobileIndex(contextAt("../")));
 write("accessibility/index.html", renderAccessibility(contextAt("../")));
@@ -98,6 +105,7 @@ const manifest = {
   product: "Forma",
   componentCount: catalog.components.length,
   iconGalleryUrl: "icons/",
+  icons: iconCatalog.icons.map(icon => ({ name: icon.name, label: icon.label, category: icon.category, docsUrl: `icons/${icon.name}/` })),
   categoryCount: catalog.categories.length,
   exampleCount: exampleCount(catalog),
   exampleMinimum: 3,

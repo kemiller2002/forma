@@ -9,6 +9,7 @@
 | FORMA-GH-98 | Make all Forma interactions machine-operable | complete | forma,machine-operability,automation | high |
 | FORMA-GH-98-CATALOG | Refresh Forma component inventory after machine-operability changes | complete | forma,catalog,machine-operability | medium |
 | FORMA-RELEASE-041 | FORMA-RELEASE-041 | complete |  |  |
+| GH-110 | GH-110 | complete |  |  |
 | GH-12 | Align Forma documentation site with Echelon Foundry CSS | complete | forma,css,visual-engineering | high |
 | GH-14 | Build cross-application mobile Forma component wave | complete | forma,mobile,cross-application | high |
 | GH-18 | Prepare Forma for application consumption | active | readiness,bootstrap | high |
@@ -63,3 +64,4 @@
 | WI-0020 | Move forma to Praxis 3.7.2, Ordo 1.4.2, Visual Engineering 1.0.1 and adopt Conditor | complete | praxis, ordo, toolchain | medium |
 | WI-0021 | Move forma to Ordo 1.5.0 via echelon-current 1.2.0 (conditor upgrade --current) | complete |  | medium |
 | WI-0022 | Extend Forma's public contract for seven presentation gaps Chrona found (application sidebar and tab bar, large surface radius, display title scale, inverse hero surface, time-column timeline, filled primary action and control radius, skip link without marketing tokens) | captured | forma, contract, chrona | medium |
+| WI-0023 | Generate a documentation page for every Forma icon: appearance, meaning, sizes, colour and contrast modes, usage configurations and copyable markup | ready |  | medium |

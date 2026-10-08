@@ -10,7 +10,7 @@ npm run build
 npm pack --dry-run
 ```
 
-The documentation site also publishes a complete categorized, copyable gallery at `/icons/`. The normal Forma build generates:
+The documentation site also publishes a complete categorized, copyable gallery at `/icons/` and one page per icon at `/icons/<name>/`. Each icon page shows the construction on the 24-unit grid, the meaning and when to use or avoid it, the reviewed sizes (16, 20, 24, 32 and 48px), the icon in every colour role including the inverse surface, forced-colour and print behaviour, seven copyable configurations (button with text, icon-only button, inline text, custom size, custom colour, meaningful image, decorative image), the package paths, the downloadable SVG, the release version and digest, an accessibility checklist and related icons. Page guidance lives in `catalog/icons.mjs`; geometry always comes from the compiled registry. The normal Forma build generates:
 
 - `dist/icons/<name>.svg`: static SVG for `<img>`, CSS or print use
 - `dist/icons/html/<name>.html`: pre-rendered decorative inline SVG with inert `<ef-icon>` authoring tag and `.ef-icon` presentation span
@@ -41,10 +41,11 @@ Default size is `1.25em`. Set `--ef-icon-size: 1rem` or `2rem` on an icon's pres
 ## Contribution rules
 
 1. Choose a stable lower-kebab-case ID and an appropriate semantic category.
-2. Submit new source geometry in the registry (24-unit grid, 1.8-unit strokes, round caps and joins).
-3. Mark original art as `origin: original`. Third-party assets are currently disallowed by the compiler until provenance/source/license extension and review are implemented.
-4. Run `npm run icons:check`, `npm run build`, and `npm run release:check`.
-5. Review at 16, 20, 24, 32 CSS px; light/dark/brand; forced colors; 320px layout; and print.
-6. Never edit the generated `dist/icons` files, add scripts/filters/external hrefs, or make icons interactive themselves.
+2. Add the icon's guidance (meaning, use for, avoid, example accessible name, related icons) to `catalog/icons.mjs`. The site build fails if any registry icon has no guidance or a related icon does not exist.
+3. Submit new source geometry in the registry (24-unit grid, 1.8-unit strokes, round caps and joins).
+4. Mark original art as `origin: original`. Third-party assets are currently disallowed by the compiler until provenance/source/license extension and review are implemented.
+5. Run `npm run icons:check`, `npm run build`, `npm run site:check` and `npm run release:check`.
+6. Review at 16, 20, 24, 32 CSS px; light/dark/brand; forced colors; 320px layout; and print.
+7. Never edit the generated `dist/icons` files, add scripts/filters/external hrefs, or make icons interactive themselves.
 
 See `requirements/ICON-SYSTEM.md` and `docs/decisions/ADR-2026-10-07-icon-foundation.md`. Additional work items own production catalog integration, comprehensive browser visual/a11y tests, Forma Studio and Folio consumers, and the next icon batch.
