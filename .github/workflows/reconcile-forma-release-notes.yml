@@ -32,5 +32,5 @@ jobs:
           git add .ros/work .ros/events .ros/telemetry registries
           if ! git diff --cached --quiet; then
             git commit -m "praxis: attribute release notes to Forma GH-116"
-            git push origin HEAD:review/forma-icons-80-verified
+            git push origin HEAD:review/forma-icons-0-6-release-ready
           fi
