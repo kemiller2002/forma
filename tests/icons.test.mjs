@@ -14,9 +14,9 @@ const reject = (mutate, description) => {
   assert.throws(() => validateRegistry(registry), /Icon registry:/, description);
 };
 
-test("forty original icons retain the eight required reference identifiers", () => {
+test("eighty original icons retain the original foundation identifiers", () => {
   validateRegistry(source);
-  assert.equal(source.icons.length, 40);
+  assert.equal(source.icons.length, 80);
   for (const name of ["add", "agent", "close", "edit", "search", "success", "warning", "workflow"]) {
     assert.ok(source.icons.some(icon => icon.name === name), `missing foundation icon: ${name}`);
   }
@@ -69,7 +69,7 @@ test("build writes only the expected deterministic static assets", () => {
     assert.deepEqual([...repeat], [...files]);
     assert.deepEqual(first, [...repeat]);
     assert.deepEqual(fs.readdirSync(path.join(root, "dist/icons")).filter(name => name.endsWith(".js")), []);
-    assert.equal(JSON.parse(fs.readFileSync(path.join(root, "dist/icons/registry.json"))).icons.length, 40);
+    assert.equal(JSON.parse(fs.readFileSync(path.join(root, "dist/icons/registry.json"))).icons.length, 80);
   } finally {
     fs.rmSync(root, {recursive: true, force: true});
   }
