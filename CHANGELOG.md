@@ -7,7 +7,7 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
-## 0.6.0 (pending release)
+## 0.6.0
 
 Additive icon-library expansion: **80 icons in total**, up from 40, with no changes to existing icon identifiers or their geometry.
 
