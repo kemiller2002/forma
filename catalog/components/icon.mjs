@@ -26,7 +26,7 @@ export default {
       "The content is a large illustration or brand logo rather than a standard visual affordance."
     ],
     characteristics: [
-      "The initial library supplies eight original 24×24, round-stroke outline icons.",
+      "The library supplies forty original 24×24, round-stroke outline icons across navigation, actions, documents, diagnostics, and agents.",
       "Color inherits currentColor; size uses --ef-icon-size, default 1.25em.",
       "Compiled inline SVG needs no runtime JavaScript, external sprites, fonts or CDN."
     ]
