@@ -22,6 +22,7 @@ const siteHeader = rootPath => `<header class="site-header">
     <nav class="site-nav" aria-label="Forma documentation">
       <a href="${rootPath}">Overview</a>
       <a href="${rootPath}components/">Components</a>
+      <a href="${rootPath}icons/">Icons</a>
       <a href="${rootPath}compositions/">Compositions</a>
       <a href="${rootPath}accessibility/">Accessibility</a>
       <a class="pill-link" href="${rootPath}agents/">Agent use</a>
