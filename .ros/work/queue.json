@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 21,
+  "nextSeq": 22,
   "items": [
     {
       "id": "WI-0001",
@@ -468,6 +468,27 @@
         "id": "anthropic/claude-code",
         "provider": "anthropic",
         "model": "claude-opus-5-5",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0021",
+      "title": "Move forma to Ordo 1.5.0 via echelon-current 1.2.0 (conditor upgrade --current)",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-10-08T07:18:14.926Z",
+      "updatedAt": "2026-10-08T07:19:19.358Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
         "runtime": "claude-code"
       },
       "source": "manual",
