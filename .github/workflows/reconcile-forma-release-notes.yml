@@ -1,8 +1,8 @@
 name: Reconcile Forma 0.6 release notes
 on:
   push:
-    branches: [review/forma-icons-80-verified]
-    paths: [.github/workflows/reconcile-forma-release-notes.yml]
+    branches: [review/forma-icons-0-6-release-ready]
+    paths: [.github/workflows/reconcile-forma-release-notes.yml, icons/registry.json]
 permissions:
   contents: write
 jobs:
