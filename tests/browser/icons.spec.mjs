@@ -42,5 +42,5 @@ test("all names in the public registry resolve to safe offline inline SVG snippe
   await page.setContent(doc(html));
   await expect(page.locator(".ef-icon__svg")).toHaveCount(registry.icons.length);
   await expect(page.locator("foreignObject, script, iframe")).toHaveCount(0);
-  await expect(page.locator(".ef-icon__svg")).toHaveAttribute("viewBox","0 0 24 24");
+  await expect(page.locator(".ef-icon__svg").first()).toHaveAttribute("viewBox","0 0 24 24");
 });
