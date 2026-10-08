@@ -7,6 +7,26 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.6.0 (pending release)
+
+Additive icon-library expansion: **80 icons in total**, up from 40, with no changes to existing icon identifiers or their geometry.
+
+### Added
+- Email and collaboration: `email`, `email-open`, `inbox`, `send`, `reply`, `reply-all`, `forward`, `attachment`, `message`, `chat`, `phone`, `video-call`.
+- Common actions: `archive`, `bookmark`, `link`, `unlink`, `share`, `star`, `eye`, `eye-off`, `minus`, `more-vertical`, `maximize`, `minimize`.
+- Documents and media: `file-text`, `image`, `camera`, `video`, `microphone`, `clipboard`.
+- Navigation and places: `chevron-left`, `chevron-right`, `map-pin`, `globe`, `compass`.
+- Status and assistance: `info`, `error`, `help-circle`, `pending`, `wifi-off`.
+
+Each new icon includes a canonical source geometry definition, search metadata, standalone and inert inline SVG build outputs, dedicated usage guidance, accessible action examples, and a generated individual documentation page. Icons remain static, offline, brand-neutral, `currentColor`-based, and safe for print.
+
+### Validation
+- Extended source-contract tests protect the previous 40 IDs, new icon names, distinct messaging glyphs and safe geometry.
+- Expanded browser coverage checks labelled native message controls at 320px and static embedding of the complete registry.
+- Source/documentation parity remains mandatory for every icon.
+
+Consumer migration is opt-in. Apps pinned to 0.5.0 will not automatically acquire the new artwork. Publish 0.6.0 only after Praxis, package, site, accessibility and browser CI pass.
+
 ## 0.5.0
 
 Additive minor release: Forma's static icon system. Forma core remains
