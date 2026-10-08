@@ -246,6 +246,6 @@ test("gallery exposes every registry icon as static, named, copyable HTML", () =
     assert.ok(html.includes(`data-ef-icon="${icon.name}"`), `missing preview for ${icon.name}`);
     assert.ok(html.includes(`<code>${icon.name}</code>`), `missing named documentation for ${icon.name}`);
   }
-  assert.doesNotMatch(html, /<script\\b/i);
+  assert.equal(html.includes("<script"), false);
   assert.ok(fs.readFileSync(path.join(output, "site-manifest.json"), "utf8").includes('"iconGalleryUrl": "icons/"'));
 });
