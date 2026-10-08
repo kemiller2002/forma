@@ -14,8 +14,7 @@ for (const file of fs.readdirSync("patterns")) {
   }
 }
 
-// Static icon presentation is part of the existing components.css consumer surface.
-fs.appendFileSync("dist/components.css", "\n" + fs.readFileSync("src/styles/icons.css", "utf8"));
+// Icons are compiled as static SVG and HTML assets; CSS is authored in components.css.
 buildIcons();
 
 const tokens = fs.readFileSync("dist/tokens.css", "utf8");
