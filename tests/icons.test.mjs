@@ -70,3 +70,19 @@ test("build writes only the expected deterministic static assets", () => {
     fs.rmSync(root, {recursive: true, force: true});
   }
 });
+
+
+test("canonical public pattern is exactly the compiled decorative search icon", () => {
+  const html = compileIcons(source).get("html/search.html");
+  assert.equal(fs.readFileSync(new URL("../patterns/icon.html", import.meta.url), "utf8"), html);
+});
+
+test("source registry is strictly schema-compatible and cannot contain external media or code", () => {
+  const schema = JSON.parse(fs.readFileSync(new URL("../schemas/icon-registry.schema.json", import.meta.url), "utf8"));
+  assert.equal(schema.properties.grid.const, 24);
+  assert.equal(schema.properties.schemaVersion.const, 1);
+  assert.equal(schema.$defs.icon.properties.origin.const, "original");
+  reject(r => {r.icons[0].shapes[0].href = "https://example.com/a.svg";}, "no external href");
+  reject(r => {r.icons[0].shapes.push({element:"image",href:"data:image/png;base64,AA=="});}, "no external image");
+  reject(r => {r.icons[0].shapes.push({element:"path",d:"M0 0;alert(1)"});}, "no JS geometry");
+});
