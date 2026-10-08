@@ -18,7 +18,9 @@ const docPages = [
   "/site-dist/compositions/index.html",
   ...manifest.compositions.map(item => `/site-dist/compositions/${item.slug}/index.html`),
   ...manifest.categories.map(item => `/site-dist/components/${item.id}/index.html`),
-  ...manifest.components.map(item => `/site-dist/components/${item.slug}/index.html`)
+  ...manifest.components.map(item => `/site-dist/components/${item.slug}/index.html`),
+  "/site-dist/icons/index.html",
+  ...manifest.icons.map(item => `/site-dist/${item.docsUrl}index.html`)
 ];
 
 const mobileFrames = manifest.components.flatMap(component =>
@@ -273,4 +275,31 @@ frameChunks.forEach((chunk, index) => {
       .map(entry => `${entry.page}: ${entry.rule} (baseline entry no longer reproduces; remove it)`);
     expect([...unexpected, ...stale]).toEqual([]);
   });
+});
+
+// WI-0023: per-icon pages expose working, correctly named configurations.
+test("icon pages expose named controls, a named image and visible glyphs in forced colours", async ({ page }) => {
+  test.setTimeout(budget(manifest.icons.length * 2));
+  for (const icon of manifest.icons) {
+    await page.goto(`/site-dist/${icon.docsUrl}index.html`);
+    const iconOnly = page.locator('[data-example="icon-only"] .example-canvas button');
+    const name = await iconOnly.getAttribute("aria-label");
+    expect(name, `${icon.name}: icon-only button has no accessible name`).toBeTruthy();
+    await expect(page.locator('[data-example="icon-only"] .example-canvas').getByRole("button", { name, exact: true })).toBeVisible();
+    const box = await iconOnly.boundingBox();
+    expect(box.width, `${icon.name}: icon-only target width`).toBeGreaterThanOrEqual(43.5);
+    expect(box.height, `${icon.name}: icon-only target height`).toBeGreaterThanOrEqual(43.5);
+    await expect(page.locator('[data-example="with-text"] .example-canvas').getByRole("button", { name, exact: true })).toBeVisible();
+    await expect(page.locator('[data-example="meaningful-image"] .example-canvas').getByRole("img", { name: icon.label, exact: true })).toBeVisible();
+    const decorative = page.locator('[data-example="decorative-image"] .example-canvas img');
+    await expect(decorative).toHaveAttribute("alt", "");
+    expect(await decorative.evaluate(img => img.naturalWidth), `${icon.name}: downloadable SVG did not load`).toBeGreaterThan(0);
+    await iconOnly.focus();
+    await expect(iconOnly).toBeFocused();
+  }
+  await page.emulateMedia({ forcedColors: "active" });
+  await page.goto(`/site-dist/${manifest.icons[0].docsUrl}index.html`);
+  const strokes = await page.locator("#sizes .ef-icon__svg").evaluateAll(nodes => nodes.map(node => getComputedStyle(node).stroke));
+  expect(strokes.length).toBe(5);
+  for (const stroke of strokes) expect(stroke).not.toBe("none");
 });

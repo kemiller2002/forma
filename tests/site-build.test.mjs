@@ -249,3 +249,22 @@ test("gallery exposes every registry icon as static, named, copyable HTML", () =
   assert.equal(html.includes("<script"), false);
   assert.ok(fs.readFileSync(path.join(output, "site-manifest.json"), "utf8").includes('"iconGalleryUrl": "icons/"'));
 });
+
+test("every registry icon has a generated page, downloadable SVG and raw configuration sources", () => {
+  const registry = JSON.parse(fs.readFileSync("icons/registry.json", "utf8"));
+  const manifest = JSON.parse(fs.readFileSync(path.join(output, "site-manifest.json"), "utf8"));
+  assert.deepEqual(manifest.icons.map(icon => icon.name), registry.icons.map(icon => icon.name).sort());
+  for (const icon of manifest.icons) {
+    const dir = path.join(output, "icons", icon.name);
+    assert.equal(icon.docsUrl, `icons/${icon.name}/`);
+    const html = fs.readFileSync(path.join(dir, "index.html"), "utf8");
+    assert.ok(html.includes(`data-icon="${icon.name}"`), `${icon.name}: page is not the icon page`);
+    assert.equal(html.includes("<script"), false, `${icon.name}: page contains script`);
+    // The download is byte-identical to the packaged release asset.
+    assert.deepEqual(fs.readFileSync(path.join(dir, `${icon.name}.svg`)), fs.readFileSync(path.join("dist/icons", `${icon.name}.svg`)));
+    assert.equal(fs.readFileSync(path.join(dir, "decorative.txt"), "utf8"), fs.readFileSync(path.join("dist/icons/html", `${icon.name}.html`), "utf8"));
+    for (const raw of [...html.matchAll(/href="([a-z-]+\.txt)"/g)].map(match => match[1])) {
+      assert.ok(fs.existsSync(path.join(dir, raw)), `${icon.name}: linked raw source ${raw} was not generated`);
+    }
+  }
+});
