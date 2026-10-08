@@ -7,8 +7,8 @@ the component catalog (`catalog/components/*.mjs`), the canonical patterns
 checker (`npm run catalog:check`) fails when a canonical pattern or a public
 `.ef-*` block class is missing from this list.
 
-- Public components: **165** in **18** families
-- Live examples on the documentation site: **713** (each component: canonical Basic + scenario examples + mobile examples)
+- Public components: **166** in **18** families
+- Live examples on the documentation site: **717** (each component: canonical Basic + scenario examples + mobile examples)
 - Compositions: **5** (Operations dashboard, Form with validation, Keyboard and focus, Mobile settings, Overlay interaction)
 - Requirement-defined components not yet implemented: **29**
 
@@ -188,6 +188,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Site footer | `<ef-site-footer>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | site-header, marketing-shell, cta |
 | Site header | `<ef-site-header>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | marketing-shell, site-footer, navigation-shell, skip-link |
 | Steps | `<ef-steps>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | wizard, timeline, entry-index, code-sample |
+| Icon | `<ef-icon>` | Utilities | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, status-lozenge, visually-hidden |
 | Text roles | `<ef-text-roles>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | section-heading, hero, prose, callout |
 | Visually hidden | `<ef-visually-hidden>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skip-link, tooltip, text-roles |
 
@@ -210,7 +211,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 - **Attention and verification** (`/components/verification/`, 3): Visual Engineering contracts for first-glance priority, bounded emphasis, and recognize-verify-act flows.
 - **Security posture** (`/components/security/`, 9): Security results, evidence, exceptions and unknowns presented with explicit text state rather than color-only pass/fail.
 - **Site and editorial** (`/components/site/`, 15): The brand-neutral marketing and documentation presentation family: shell, header, hero, sections, cards, prose and footer.
-- **Utilities** (`/components/utilities/`, 2): Small structural helpers: visually hidden text, text roles and other composition aids.
+- **Utilities** (`/components/utilities/`, 3): Small structural helpers: visually hidden text, text roles and other composition aids.
 
 ## Required but not implemented
 
