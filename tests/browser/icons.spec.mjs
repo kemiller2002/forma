@@ -102,3 +102,37 @@ test("icons survive a real A4 PDF render with backgrounds disabled", async ({ pa
   expect(pdf.toString("latin1")).toMatch(/\/MediaBox\s*\[\s*0\s+0\s+595\.9\d*\s+842\.8\d*\s*\]/);
   expect(pdf.toString("latin1")).not.toMatch(/\/Subtype\s*\/Image/);
 });
+
+
+test("communication icons are accessible through native named actions on a 320px viewport", async ({page}) => {
+  await page.setViewportSize({width: 320, height: 640});
+  await page.setContent(doc(
+    '<div role="group" aria-label="Message actions">' +
+    '<button type="button" aria-label="Send email">' + snippet("email") + '</button>' +
+    '<button type="button" aria-label="Reply to sender">' + snippet("reply") + '</button>' +
+    '<button type="button" aria-label="Forward email">' + snippet("forward") + '</button>' +
+    '<p>' + snippet("error") + ' Delivery failed. Try again.</p></div>'
+  ));
+  for (const label of ["Send email", "Reply to sender", "Forward email"]) {
+    const button = page.getByRole("button", {name: label});
+    await expect(button).toBeVisible();
+    await expect(button.locator("svg")).toHaveAttribute("aria-hidden", "true");
+    await button.focus();
+    await expect(button).toBeFocused();
+  }
+  await expect(page.getByRole("img")).toHaveCount(0);
+  await expect(page.getByText("Delivery failed. Try again.")).toBeVisible();
+  expect(await page.locator("[data-ef-icon]").evaluateAll(items => items.map(item => item.getAttribute("data-ef-icon")))).toEqual(
+    ["email","reply","forward","error"]
+  );
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1)).toBe(true);
+});
+
+test("all eighty static icons can be embedded in offline content without executable elements", async ({page}) => {
+  expect(registry.icons).toHaveLength(80);
+  const html = registry.icons.map(icon => snippet(icon.name)).join("");
+  await page.setContent(doc(html));
+  await expect(page.locator(".ef-icon__svg")).toHaveCount(80);
+  await expect(page.locator("script, foreignObject, iframe, object, embed")).toHaveCount(0);
+  await expect(page.getByRole("img")).toHaveCount(0);
+});
