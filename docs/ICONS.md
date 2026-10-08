@@ -1,6 +1,6 @@
 # Forma icons (foundation preview)
 
-The icon registry is in `icons/registry.json`, validated by `schemas/icon-registry.schema.json` and compiled by `tools/icons/build.mjs`. It contains eight first-party reference outline icons: add, agent, close, edit, search, success, warning and workflow. This is an initial usable compiler slice, not a claim that Forma Studio/Folio or the complete Forma catalog are integrated.
+The icon registry is in `icons/registry.json`, validated by `schemas/icon-registry.schema.json` and compiled by `tools/icons/build.mjs`. It now contains forty first-party outline icons, including the eight foundation icons: add, agent, close, edit, search, success, warning and workflow. The compiler and public catalog are implemented, but Forma Studio/Folio consumer integration and independent visual review remain open.
 
 ## Build and validate
 
