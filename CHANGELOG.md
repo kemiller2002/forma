@@ -7,6 +7,12 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.5.0 (pending release)
+
+Additive minor release of Forma's static icon system. New `ef-icon` catalog pattern, a 40-icon brand-neutral SVG registry and deterministic build-time compiler, package assets under `./icons/*`, generated searchable documentation gallery, and tests for static/offline, accessibility, mobile and security expectations. Forma core remains zero-runtime.
+
+Consumers using 0.4.1 do not change automatically. Studio and Folio integrations must pin 0.5.0 only **after** npm publication and end-to-end verification. No existing HTML class/token contracts were renamed.
+
 ## 0.4.1
 
 Patch release. There are no markup, class, or token-name changes, so no
