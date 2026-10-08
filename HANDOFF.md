@@ -394,3 +394,32 @@ commit.
 contents under a lower version and move npm `latest` backwards. A true 0.3.1
 needs a `release/0.3.x` branch from v0.3.0 with these fixes backported. It
 would also need a `workflow_dispatch` of `release-forma.yml` on that branch.
+
+## Release 0.5.0 (prepared), 2026-10-08 (GH-110, PR #114)
+
+PR #114 continues #109 (`feature/forma-icon-foundation`) with `main` merged in.
+It prepares the additive 0.5.0 icon release: a 40-icon registry, the `ef-icon`
+pattern, `icons/*` package exports, and a generated `/icons/` gallery.
+
+- `package.json`/`package-lock.json` are 0.5.0. The `CHANGELOG.md` entry is
+  final and `docs/CONSUMING-FORMA.md` has a 0.5.0 note. The marketing example
+  `forma.lock` pins 0.5.0.
+- The package-contract test no longer hard-codes a version. It requires the
+  newest CHANGELOG entry to match `package.json`, to not be marked pending, and
+  to be newer than every earlier entry. It also requires a consumer note.
+- The compiled `dist/icons/registry.json` records `formaVersion` and a
+  per-icon `svgSha256`. Studio and Folio verify bundled geometry against it.
+- `release-forma.yml` checks that the tarball contains the icon assets. It
+  also resolves every icon through the public export map as a consumer.
+- Optical review: all 40 icons were reviewed at 16/20/24/32px, in forced
+  colors, and in grayscale A4 print. No clipping, and stroke ink does not
+  depend on backgrounds. `tests/browser/icons.spec.mjs` now guards the 1-unit
+  stroked safe area, the minimum live area, and real Chromium PDF output.
+  Close (11 units) is the smallest live area and bell (12 x 15.5) the
+  narrowest outline. Both pass and are kept as drawn. A human visual review
+  remains open on #110.
+
+**Next action.** After review, merge #114 to main. That merge is the release:
+`release-forma.yml` creates `v0.5.0` and the tarball, and `publish.yml`
+publishes to npm. After that, pin 0.5.0 in Studio and Folio through Conditor
+and close their draft PRs' pin gates.
