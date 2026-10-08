@@ -36,7 +36,7 @@ test("canonical geometry survives brand-independent coloring, forced colors, and
 });
 
 test("all names in the public registry resolve to safe offline inline SVG snippets", async ({ page }) => {
-  expect(registry.icons).toHaveLength(40);
+  expect(registry.icons).toHaveLength(80);
   await page.route("**/*", async route => route.abort("failed"));
   const html = registry.icons.map(icon => snippet(icon.name)).join("");
   await page.setContent(doc(html));
