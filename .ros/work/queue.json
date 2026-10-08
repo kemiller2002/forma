@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 22,
+  "nextSeq": 23,
   "items": [
     {
       "id": "WI-0001",
@@ -493,6 +493,31 @@
       },
       "source": "manual",
       "sourceReference": null
+    },
+    {
+      "id": "WI-0022",
+      "title": "Extend Forma's public contract for seven presentation gaps Chrona found (application sidebar and tab bar, large surface radius, display title scale, inverse hero surface, time-column timeline, filled primary action and control radius, skip link without marketing tokens)",
+      "description": "From Chrona's legacy look-and-feel inventory (kemiller2002/chrona docs/legacy/look-and-feel-inventory.md section 7, WI-0042). Forma 0.4.1 cannot express these through its Brand Manifest or components, so Chrona composes chrona-* classes on --ef-* tokens in web/chrona.css until Forma extends its contract deliberately. G1 a dark persistent application sidebar and a mobile bottom tab bar with marks; G2 a large surface radius token (legacy 1.35rem); G3 a display title scale for page titles (up to 4.4rem); G4 an inverse hero surface for a running timer with light-on-dark actions; G5 a time-column timeline (times, marker, rule) for ledgers; G6 a filled primary action and a control radius token for buttons and inputs (buttons and inputs are radius-none today); G7 .ef-skip-link positions itself with marketing spacing tokens (--ef-space-2) that an application page does not load, so on such a page it renders in flow instead of off-screen.",
+      "tags": [
+        "forma",
+        "contract",
+        "chrona"
+      ],
+      "priority": "medium",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-10-08T10:39:33.192Z",
+      "updatedAt": "2026-10-08T10:39:33.192Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "chrona",
+      "sourceReference": "kemiller2002/chrona WI-0042; docs/legacy/look-and-feel-inventory.md section 7"
     }
   ]
 }

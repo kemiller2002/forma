@@ -62,3 +62,4 @@
 | WI-0019 | Move forma to Ordo 1.4.1 | complete | ordo, toolchain | medium |
 | WI-0020 | Move forma to Praxis 3.7.2, Ordo 1.4.2, Visual Engineering 1.0.1 and adopt Conditor | complete | praxis, ordo, toolchain | medium |
 | WI-0021 | Move forma to Ordo 1.5.0 via echelon-current 1.2.0 (conditor upgrade --current) | complete |  | medium |
+| WI-0022 | Extend Forma's public contract for seven presentation gaps Chrona found (application sidebar and tab bar, large surface radius, display title scale, inverse hero surface, time-column timeline, filled primary action and control radius, skip link without marketing tokens) | captured | forma, contract, chrona | medium |
