@@ -1,6 +1,6 @@
 {
   "name": "@echelon-foundry/design-system",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "private": false,
   "type": "module",
   "description": "Zero-runtime HTML and CSS design system for Echelon Foundry applications.",
@@ -28,7 +28,9 @@
     "./workflow/forma-workflow.schema.json": "./schemas/workflow/1.0/forma-workflow.schema.json",
     "./contracts/workflow-capabilities.json": "./contracts/workflow-capabilities.json",
     "./workflow/examples/*": "./examples/workflows/forma/workflows/*",
-    "./contracts/machine-operability.json": "./contracts/machine-operability.json"
+    "./contracts/machine-operability.json": "./contracts/machine-operability.json",
+    "./icons/registry.schema.json": "./schemas/icon-registry.schema.json",
+    "./icons/*": "./dist/icons/*"
   },
   "files": [
     "dist",
@@ -45,7 +47,9 @@
     "examples/workflows/fixtures.json",
     "docs/workflow",
     "contracts/machine-operability.json",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "schemas/icon-registry.schema.json",
+    "docs/ICONS.md"
   ],
   "scripts": {
     "clean": "node tools/clean.mjs",
@@ -58,7 +62,7 @@
     "test:runtime": "node --test tests/zero-runtime.test.mjs",
     "motion:audit": "node tools/motion-audit.mjs",
     "test:motion": "node --test tests/motion-audit.test.mjs tests/motion-gate.test.mjs && node tools/motion-audit.mjs --strict",
-    "check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:figma && npm run test:css && npm run test:package && npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:browser",
+    "check": "npm run build && npm run icons:check && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:figma && npm run test:css && npm run test:package && npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:browser",
     "site:build": "npm run build && node tools/build-site.mjs",
     "site:test": "node --test tests/site-build.test.mjs tests/catalog-coverage.test.mjs",
     "site:check": "npm run site:build && npm run catalog:check && npm run site:test && npm run site:mobile",
@@ -75,7 +79,7 @@
     "test:marketing": "node --test tests/marketing-tokens.test.mjs tests/marketing-distribution.test.mjs tests/marketing-structure.test.mjs tests/site-css-policy.test.mjs",
     "example:install": "mkdir -p build/example && cp examples/echelon-marketing-site/forma.lock build/example/forma.lock && bash actions/install-presentation/install.sh --lock build/example/forma.lock --source dist/marketing --update --output examples/echelon-marketing-site/assets/forma",
     "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --",
-    "release:check": "npm run build && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:css && npm run test:package && npm run test:machine && playwright test tests/browser/marketing.spec.mjs && npm run site:check",
+    "release:check": "npm run build && npm run icons:check && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:css && npm run test:package && npm run test:machine && playwright test tests/browser/marketing.spec.mjs && npm run site:check",
     "test:figma": "node --test tests/figma-contract.test.mjs",
     "catalog:check": "node tools/catalog/validate.mjs && node tools/catalog/inventory.mjs --check",
     "catalog:inventory": "node tools/catalog/inventory.mjs",
@@ -85,7 +89,8 @@
     "test:workflow-package": "node --test tests/workflow-package.test.mjs",
     "test:workflow-browser": "playwright test tests/browser/workflow-static.spec.mjs tests/browser/workflow-embed.spec.mjs",
     "workflow:check": "npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:workflow-browser",
-    "test:machine": "playwright test tests/browser/machine-operability.spec.mjs"
+    "test:machine": "playwright test tests/browser/machine-operability.spec.mjs",
+    "icons:check": "node --test tests/icons.test.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

@@ -6,6 +6,7 @@ import path from "node:path";
 import { loadCatalog, ownedHooks } from "./catalog/load.mjs";
 import { validateCatalog } from "./catalog/validate.mjs";
 import { frameDocument } from "./catalog/render-layout.mjs";
+import { renderIconGallery } from "./catalog/render-icons.mjs";
 import { componentRawFiles, framePath, isPageLevel, renderComponentPage } from "./catalog/render-component.mjs";
 import {
   exampleCount,
@@ -58,6 +59,7 @@ fs.cpSync(path.join(root, "dist", "brands"), path.join(output, "assets", "brands
 fs.writeFileSync(path.join(output, ".nojekyll"), "");
 
 write("index.html", renderHome(contextAt("./")));
+write("icons/index.html", renderIconGallery("../"));
 write("components/index.html", renderAllComponents(contextAt("../")));
 write("mobile/index.html", renderMobileIndex(contextAt("../")));
 write("accessibility/index.html", renderAccessibility(contextAt("../")));
@@ -95,6 +97,7 @@ const manifest = {
   generatedAt: new Date().toISOString(),
   product: "Forma",
   componentCount: catalog.components.length,
+  iconGalleryUrl: "icons/",
   categoryCount: catalog.categories.length,
   exampleCount: exampleCount(catalog),
   exampleMinimum: 3,

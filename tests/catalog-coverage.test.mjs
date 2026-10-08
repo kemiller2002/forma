@@ -8,6 +8,7 @@ import test from "node:test";
 import { loadCatalog } from "../tools/catalog/load.mjs";
 import { validateCatalog } from "../tools/catalog/validate.mjs";
 import { SECTIONS } from "../tools/catalog/render-component.mjs";
+import { dedicatedTests } from "../tools/catalog/inventory.mjs";
 
 const root = process.cwd();
 const output = path.join(root, "site-dist");
@@ -195,4 +196,18 @@ test("the documentation site stays zero-runtime", () => {
     assert.doesNotMatch(html, /<script\b/i, path.relative(root, file));
     assert.doesNotMatch(html, /\son[a-z]+=/i, path.relative(root, file));
   }
+});
+
+test("inventory attributes dedicated tests by pattern reference, not by same-named compiled icon assets", () => {
+  const search = { slug: "search", owns: ["ef-search"] };
+  const source = (file, text) => ({ file: `tests/${file}`, text });
+  // A compiled icon asset path shares the component's slug but is not its pattern.
+  assert.deepEqual(dedicatedTests([source("icons.test.mjs", 'compileIcons(source).get("html/search.html")')], search), []);
+  assert.deepEqual(dedicatedTests([source("icons.test.mjs", "dist/icons/html/search.html")], search), []);
+  // Real references to the pattern or its owned block still count.
+  assert.deepEqual(dedicatedTests([source("a.spec.mjs", "page.goto('/patterns/search.html')")], search), ["a.spec.mjs"]);
+  assert.deepEqual(dedicatedTests([source("b.spec.mjs", "page.goto('/components/search.html')")], search), ["b.spec.mjs"]);
+  assert.deepEqual(dedicatedTests([source("c.spec.mjs", "page.locator('.ef-search input')")], search), ["c.spec.mjs"]);
+  // Generic suites are never listed as dedicated coverage.
+  assert.deepEqual(dedicatedTests([source("package-contract.test.mjs", "patterns/search.html")], search), []);
 });

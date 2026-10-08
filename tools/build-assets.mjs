@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { buildIcons } from "./icons/build.mjs";
 
 fs.mkdirSync("dist/patterns", { recursive: true });
 
@@ -12,6 +13,9 @@ for (const file of fs.readdirSync("patterns")) {
     fs.copyFileSync(path.join("patterns", file), path.join("dist/patterns", file));
   }
 }
+
+// Icons are compiled as static SVG and HTML assets; CSS is authored in components.css.
+buildIcons();
 
 const tokens = fs.readFileSync("dist/tokens.css", "utf8");
 const foundations = fs.readFileSync("dist/foundations.css", "utf8");

@@ -110,6 +110,18 @@ links. Character-grid profiles respect forced colors. See `CHANGELOG.md`.
 There are no markup or token changes. Remove local contrast workarounds such
 as `p { color: inherit }` inside Forma faults.
 
+## 0.5.0
+
+Forma 0.5.0 adds static icons. Install or pin 0.5.0, then copy the generated
+assets you need from `@echelon-foundry/design-system/icons/*`; do not
+hand-copy path geometry. Inline `icons/html/<name>.html` snippets are
+decorative (`aria-hidden`), so the surrounding control or text must carry the
+accessible name and any status meaning. `icons/registry.json` records
+`formaVersion` and each icon's `svgSha256` for offline verification. Icon
+IDs that a consumer does not recognize should be preserved as inert data, not
+rendered or rejected. There are no markup or token changes for existing
+components. See `docs/ICONS.md`.
+
 ## Ownership boundary
 
 Forma owns semantic HTML contracts, CSS, design tokens, responsive

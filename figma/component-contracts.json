@@ -731,6 +731,16 @@
       }
     },
     {
+      "id": "icon",
+      "figmaName": "Forma / Icon",
+      "source": "patterns/icon.html",
+      "codeConnect": {
+        "id": "Forma/icon",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "identifier",
       "figmaName": "Forma / Identifier",
       "source": "patterns/identifier.html",
