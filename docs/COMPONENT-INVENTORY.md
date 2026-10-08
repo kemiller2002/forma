@@ -188,7 +188,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Site footer | `<ef-site-footer>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | site-header, marketing-shell, cta |
 | Site header | `<ef-site-header>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | marketing-shell, site-footer, navigation-shell, skip-link |
 | Steps | `<ef-steps>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | wizard, timeline, entry-index, code-sample |
-| Icon | `<ef-icon>` | Utilities | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, status-lozenge, visually-hidden |
+| Icon | `<ef-icon>` | Utilities | implemented | complete | 3 | 1 | yes | yes | yes | icons.spec.mjs | button, status-lozenge, visually-hidden |
 | Text roles | `<ef-text-roles>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | section-heading, hero, prose, callout |
 | Visually hidden | `<ef-visually-hidden>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skip-link, tooltip, text-roles |
 
