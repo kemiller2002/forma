@@ -10,7 +10,7 @@ npm run build
 npm pack --dry-run
 ```
 
-The normal Forma build now generates:
+The documentation site also publishes a complete categorized, copyable gallery at `/icons/`. The normal Forma build generates:
 
 - `dist/icons/<name>.svg`: static SVG for `<img>`, CSS or print use
 - `dist/icons/html/<name>.html`: pre-rendered decorative inline SVG with inert `<ef-icon>` authoring tag and `.ef-icon` presentation span
