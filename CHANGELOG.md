@@ -7,11 +7,33 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
-## 0.5.0 (pending release)
+## 0.5.0
 
-Additive minor release of Forma's static icon system. New `ef-icon` catalog pattern, a 40-icon brand-neutral SVG registry and deterministic build-time compiler, package assets under `./icons/*`, generated searchable documentation gallery, and tests for static/offline, accessibility, mobile and security expectations. Forma core remains zero-runtime.
+Additive minor release: Forma's static icon system. Forma core remains
+zero-runtime; no existing HTML class or token contract was renamed, so no
+consumer migration is required.
 
-Consumers using 0.4.1 do not change automatically. Studio and Folio integrations must pin 0.5.0 only **after** npm publication and end-to-end verification. No existing HTML class/token contracts were renamed.
+### Added
+
+- **`ef-icon` catalog pattern** (`patterns/icon.html`): decorative inline SVG
+  inside a natively named control. The SVG is `aria-hidden` and never names,
+  operates or signals state on its own.
+- **40 original, brand-neutral outline icons** in `icons/registry.json`
+  (24-unit grid, 1.8 stroke, round caps and joins), validated by
+  `schemas/icon-registry.schema.json` and compiled at build time by
+  `tools/icons/build.mjs`. Third-party geometry, scripts, external `href`s and
+  embedded media are rejected.
+- **Package assets** under `@echelon-foundry/design-system/icons/*`:
+  `icons/<name>.svg`, decorative `icons/html/<name>.html` snippets, and
+  `icons/registry.json`. The compiled registry records `formaVersion` (the
+  producing release) and each icon's `svgSha256`, so consumers can pin and
+  verify bundled release geometry offline.
+- **Generated icon gallery** at `/icons/` on the documentation site.
+- Tests for deterministic compilation, offline/static output, SVG security,
+  accessibility, forced colors, and 320px layout.
+
+Studio and Folio pin 0.5.0 only after this version is published and their own
+end-to-end verification passes.
 
 ## 0.4.1
 

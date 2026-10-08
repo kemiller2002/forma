@@ -14,7 +14,7 @@ The documentation site also publishes a complete categorized, copyable gallery a
 
 - `dist/icons/<name>.svg`: static SVG for `<img>`, CSS or print use
 - `dist/icons/html/<name>.html`: pre-rendered decorative inline SVG with inert `<ef-icon>` authoring tag and `.ef-icon` presentation span
-- `dist/icons/registry.json`: metadata for static galleries, consumers and tools
+- `dist/icons/registry.json`: metadata for static galleries, consumers and tools, stamped with `formaVersion` (the producing package release) and each icon's `svgSha256` so a consumer can verify that bundled geometry matches its pinned release
 
 The icon assets are part of the versioned `@echelon-foundry/design-system` tarball; the wildcard export path is `@echelon-foundry/design-system/icons/<name>.svg` and `.../icons/html/<name>.html`. Nothing fetches a CDN and no runtime JavaScript is required.
 

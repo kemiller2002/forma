@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { createHash } from "node:crypto";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -61,6 +62,7 @@ test("build writes only the expected deterministic static assets", () => {
   try {
     fs.mkdirSync(path.join(root, "icons"), {recursive: true});
     fs.writeFileSync(path.join(root, "icons/registry.json"), JSON.stringify(source));
+    fs.writeFileSync(path.join(root, "package.json"), JSON.stringify({version: "9.8.7"}));
     const files = buildIcons({root});
     const first = [...files].map(([name]) => [name, fs.readFileSync(path.join(root, "dist/icons", name), "utf8")]);
     const repeat = buildIcons({root});
@@ -87,4 +89,31 @@ test("source registry is strictly schema-compatible and cannot contain external 
   reject(r => {r.icons[0].shapes[0].href = "https://example.com/a.svg";}, "no external href");
   reject(r => {r.icons[0].shapes.push({element:"image",href:"data:image/png;base64,AA=="});}, "no external image");
   reject(r => {r.icons[0].shapes.push({element:"path",d:"M0 0;alert(1)"});}, "no JS geometry");
+});
+
+test("compiled registry pins the producing Forma version and each icon's SVG digest", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "forma-icons-"));
+  try {
+    fs.mkdirSync(path.join(root, "icons"), {recursive: true});
+    fs.writeFileSync(path.join(root, "icons/registry.json"), JSON.stringify(source));
+    fs.writeFileSync(path.join(root, "package.json"), JSON.stringify({version: "9.8.7"}));
+    buildIcons({root});
+    const compiled = JSON.parse(fs.readFileSync(path.join(root, "dist/icons/registry.json"), "utf8"));
+    assert.equal(compiled.formaVersion, "9.8.7");
+    for (const icon of compiled.icons) {
+      const svg = fs.readFileSync(path.join(root, "dist", icon.svg));
+      assert.equal(icon.svgSha256, createHash("sha256").update(svg).digest("hex"), `${icon.name} digest`);
+    }
+    // A consumer comparing digests detects altered geometry.
+    const tampered = Buffer.from(fs.readFileSync(path.join(root, "dist/icons/search.svg"), "utf8").replace("6.2", "6.3"));
+    const search = compiled.icons.find(icon => icon.name === "search");
+    assert.notEqual(createHash("sha256").update(tampered).digest("hex"), search.svgSha256);
+  } finally {
+    fs.rmSync(root, {recursive: true, force: true});
+  }
+});
+
+test("compiling without a release version omits the version stamp rather than inventing one", () => {
+  const registry = JSON.parse(compileIcons(source).get("registry.json"));
+  assert.equal(Object.hasOwn(registry, "formaVersion"), false);
 });

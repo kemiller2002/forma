@@ -19,12 +19,14 @@ const testSources = root => [
 ].map(file => ({ file, text: fs.readFileSync(path.join(root, file), "utf8") }));
 
 // Tests that name the component's pattern, slug or owned CSS block.
-const dedicatedTests = (sources, component) =>
+export const dedicatedTests = (sources, component) =>
   sources
     .filter(({ file, text }) => !/catalog-coverage|site-build|figma-contract|zero-runtime|package-contract/.test(file))
     .filter(({ text }) =>
       text.includes(`patterns/${component.slug}.html`) ||
-      text.includes(`/${component.slug}.html`) ||
+      // `(?<!html)` keeps compiled icon assets such as `icons/html/search.html`
+      // from being read as a reference to the same-named component pattern.
+      new RegExp(`(?<!html)/${component.slug}\\.html`).test(text) ||
       component.owns.some(root => new RegExp(`\\.${root}(?![a-z0-9-])`).test(text)))
     .map(({ file }) => path.basename(file));
 

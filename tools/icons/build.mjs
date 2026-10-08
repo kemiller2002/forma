@@ -1,5 +1,6 @@
 // Forma icon compiler: build-time only; no runtime JavaScript is published.
 import fs from "node:fs";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -84,28 +85,40 @@ export function renderSvg(icon, grammar, decorative = false) {
   return `<svg ${attrs.join(" ")}>${icon.shapes.map(drawShape).join("")}</svg>`;
 }
 
-export function compileIcons(registry) {
+const sha256 = content => createHash("sha256").update(content).digest("hex");
+
+// `formaVersion` stamps the compiled registry with the package release that
+// produced it, so consumers can pin and verify bundled release geometry.
+export function compileIcons(registry, {formaVersion} = {}) {
   validateRegistry(registry);
   const files = new Map();
   const metadata = [];
   const icons = [...registry.icons].sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
   for (const icon of icons) {
-    files.set(`${icon.name}.svg`, renderSvg(icon, registry) + "\n");
+    const svg = renderSvg(icon, registry) + "\n";
+    files.set(`${icon.name}.svg`, svg);
     files.set(`html/${icon.name}.html`,
       `<ef-icon class="ef-component-tag"><span class="ef-icon" data-ef-icon="${icon.name}">${renderSvg(icon, registry, true)}</span></ef-icon>\n`);
     metadata.push({
       name: icon.name, category: icon.category, label: icon.label,
       keywords: [...icon.keywords], origin: icon.origin,
-      svg: `icons/${icon.name}.svg`, html: `icons/html/${icon.name}.html`
+      svg: `icons/${icon.name}.svg`, html: `icons/html/${icon.name}.html`,
+      svgSha256: sha256(svg)
     });
   }
-  files.set("registry.json", JSON.stringify({schemaVersion: 1, grid: registry.grid, icons: metadata}, null, 2) + "\n");
+  files.set("registry.json", JSON.stringify({
+    schemaVersion: 1,
+    ...(formaVersion ? {formaVersion} : {}),
+    grid: registry.grid,
+    icons: metadata
+  }, null, 2) + "\n");
   return files;
 }
 
 export function buildIcons({root = process.cwd(), outDir = path.join(root, "dist/icons")} = {}) {
   const registry = JSON.parse(fs.readFileSync(path.join(root, "icons/registry.json"), "utf8"));
-  const generated = compileIcons(registry); // validate before touching output
+  const {version: formaVersion} = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+  const generated = compileIcons(registry, {formaVersion}); // validate before touching output
   fs.rmSync(outDir, {recursive: true, force: true});
   for (const [name, content] of generated) {
     const output = path.join(outDir, name);

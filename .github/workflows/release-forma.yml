@@ -139,6 +139,12 @@ jobs:
             package/patterns/search.html
             package/patterns/data-grid.html
             package/patterns/work-queue.html
+            package/patterns/icon.html
+            package/dist/icons/registry.json
+            package/dist/icons/search.svg
+            package/dist/icons/html/search.html
+            package/schemas/icon-registry.schema.json
+            package/docs/ICONS.md
           )
 
           for required in "${required_files[@]}"; do
@@ -162,6 +168,15 @@ jobs:
           test -f node_modules/@echelon-foundry/design-system/dist/brands/index.json
           test -f node_modules/@echelon-foundry/design-system/schemas/brand-manifest.schema.json
           test -f node_modules/@echelon-foundry/design-system/patterns/data-grid.html
+          # Icons resolve through the public export map and carry this release's version.
+          node --input-type=module -e '
+            import { createRequire } from "node:module";
+            import fs from "node:fs";
+            const require = createRequire(process.cwd() + "/");
+            const registry = JSON.parse(fs.readFileSync(require.resolve("@echelon-foundry/design-system/icons/registry.json"), "utf8"));
+            if (registry.formaVersion !== process.env.RELEASE_TAG.slice(1)) throw new Error(`icon registry formaVersion ${registry.formaVersion} != ${process.env.RELEASE_TAG}`);
+            for (const icon of registry.icons) fs.accessSync(require.resolve(`@echelon-foundry/design-system/${icon.svg}`));
+          '
 
       - name: Exercise marketing assets as a no-Node consumer
         shell: bash
