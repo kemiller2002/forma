@@ -6,7 +6,7 @@ import path from "node:path";
 import { loadCatalog, ownedHooks } from "./catalog/load.mjs";
 import { validateCatalog } from "./catalog/validate.mjs";
 import { frameDocument } from "./catalog/render-layout.mjs";
-import { iconRawFiles, loadIconCatalog, renderIconGallery, renderIconPage } from "./catalog/render-icons.mjs";
+import { iconRawFiles, loadIconCatalog, renderIconGallery, renderIconPage, renderNewIconIndex, NEW_ICON_RELEASE } from "./catalog/render-icons.mjs";
 import { componentRawFiles, framePath, isPageLevel, renderComponentPage } from "./catalog/render-component.mjs";
 import {
   exampleCount,
@@ -61,6 +61,7 @@ fs.writeFileSync(path.join(output, ".nojekyll"), "");
 write("index.html", renderHome(contextAt("./")));
 const iconCatalog = loadIconCatalog();
 write("icons/index.html", renderIconGallery("../", iconCatalog));
+write("icons/new/index.html", renderNewIconIndex("../../", iconCatalog));
 iconCatalog.icons.forEach(icon => {
   const dir = `icons/${icon.name}`;
   write(`${dir}/index.html`, renderIconPage(iconCatalog, icon, "../../"));
@@ -105,7 +106,9 @@ const manifest = {
   product: "Forma",
   componentCount: catalog.components.length,
   iconGalleryUrl: "icons/",
-  icons: iconCatalog.icons.map(icon => ({ name: icon.name, label: icon.label, category: icon.category, docsUrl: `icons/${icon.name}/` })),
+  newIconGalleryUrl: "icons/new/",
+  iconRelease: NEW_ICON_RELEASE,
+  icons: iconCatalog.icons.map(icon => ({ name: icon.name, label: icon.label, category: icon.category, introducedIn: icon.introducedIn, docsUrl: `icons/${icon.name}/` })),
   categoryCount: catalog.categories.length,
   exampleCount: exampleCount(catalog),
   exampleMinimum: 3,
