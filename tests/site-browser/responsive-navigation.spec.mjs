@@ -100,3 +100,32 @@ test("large text does not split primary navigation words or obscure the native d
   expect(result.documentWidth).toBeLessThanOrEqual(result.viewport + 1);
   expect(result.inputRight).toBeLessThanOrEqual(result.fieldRight + 1);
 });
+
+
+test("long breadcrumb phrases and section navigation remain unbroken at 200% text on 320px", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 640 });
+  await page.goto("/site-dist/components/menu/index.html");
+  await page.addStyleTag({ content: "html { font-size: 200% !important; }" });
+
+  const layout = await page.evaluate(() => {
+    const breadcrumb = document.querySelector(".breadcrumbs");
+    const toc = document.querySelector(".page-toc ul");
+    return {
+      documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
+      viewport: document.documentElement.clientWidth,
+      breadcrumbScroll: getComputedStyle(breadcrumb).overflowX,
+      breadcrumbBounds: breadcrumb.getBoundingClientRect().toJSON(),
+      breadcrumbPhraseUnbroken: [...breadcrumb.querySelectorAll("a")].every(a => getComputedStyle(a).whiteSpace === "nowrap"),
+      tocScroll: getComputedStyle(toc).overflowX,
+      tocBounds: toc.getBoundingClientRect().toJSON(),
+      tocPhraseUnbroken: [...toc.querySelectorAll("a")].every(a => getComputedStyle(a).whiteSpace === "nowrap")
+    };
+  });
+  expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewport + 1);
+  expect(layout.breadcrumbScroll).toBe("auto");
+  expect(layout.breadcrumbBounds.right).toBeLessThanOrEqual(layout.viewport + 1);
+  expect(layout.breadcrumbPhraseUnbroken).toBe(true);
+  expect(layout.tocScroll).toBe("auto");
+  expect(layout.tocBounds.right).toBeLessThanOrEqual(layout.viewport + 1);
+  expect(layout.tocPhraseUnbroken).toBe(true);
+});
