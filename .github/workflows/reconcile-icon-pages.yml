@@ -37,5 +37,9 @@ jobs:
           git add .ros/work .ros/events .ros/telemetry registries
           if ! git diff --cached --quiet; then
             git commit -m "praxis: reconcile Forma 0.6.0 icon page update GH-122"
+            git fetch origin feature/forma-0-6-new-icon-pages
+            git rebase origin/feature/forma-0-6-new-icon-pages
+            ./praxis registry check
+            ./praxis validate
             git push origin HEAD:feature/forma-0-6-new-icon-pages
           fi
