@@ -4,12 +4,36 @@ on:
   push:
     branches: [main]
     paths:
+      # The release contains library assets and icon source, not only marketing CSS.
+      # Any change to a versioned release surface must go through the same
+      # package/version validation and immutable vX.Y.Z tag guard below.
       - "package.json"
+      - "package-lock.json"
       - "bundles/**"
       - "src/marketing/**"
+      - "src/styles/**"
+      - "tokens/**"
+      - "brands/**"
       - "themes/echelon/**"
+      - "patterns/**"
+      - "schemas/**"
+      - "contracts/**"
+      - "icons/**"
+      - "catalog/icons.mjs"
+      - "catalog/icons/**"
+      - "tools/icons/**"
+      - "tools/catalog/render-icons.mjs"
+      - "tools/build-assets.mjs"
+      - "tools/build-site.mjs"
       - "tools/PresentationBundler/**"
       - "actions/install-presentation/**"
+      - "examples/echelon-marketing-site/forma.lock"
+      - "docs/ICONS.md"
+      - "docs/CONSUMING-FORMA.md"
+      - "tests/icons.test.mjs"
+      - "tests/icon-docs.test.mjs"
+      - "tests/site-build.test.mjs"
+      - "tests/package-contract.test.mjs"
       - ".github/workflows/release-forma.yml"
   workflow_dispatch:
 
@@ -198,7 +222,9 @@ jobs:
           # tag check above keeps a released version's contents immutable.
           marketing=(dist/marketing/*.css dist/marketing/forma-marketing.manifest.json dist/marketing/forma-marketing.sha256)
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" "$ARCHIVE" "${marketing[@]}" --clobber
+            # Stable release assets are immutable. The git tag/head identity was
+            # checked above; an existing release must never be overwritten.
+            echo "GitHub release $RELEASE_TAG already exists at this commit; not modifying its assets."
           else
             gh release create "$RELEASE_TAG" "$ARCHIVE" "${marketing[@]}" --target "$GITHUB_SHA" \
               --title "$RELEASE_TAG" \

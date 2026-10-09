@@ -132,3 +132,29 @@ test("icon consumer surface is exported and matches the compiled registry", () =
     assert.ok(fs.existsSync(`dist/${html}`), `registry icon ${name} has no compiled decorative HTML`);
   }
 });
+
+
+test("release workflow watches versioned icon and site assets without weakening immutable tags", () => {
+  const workflow = fs.readFileSync(".github/workflows/release-forma.yml", "utf8");
+  const onPush = workflow.split("on:\n")[1]?.split("  workflow_dispatch:")[0] ?? "";
+  assert.ok(onPush.includes("branches: [main]"), "release must run from main");
+  const watched = onPush.split("\n").map(line => line.trim())
+    .filter(line => line.startsWith('- "') && line.endsWith('"'))
+    .map(line => line.slice(3, -1));
+  for (const path of [
+    "package.json", "package-lock.json",
+    "icons/**", "catalog/icons.mjs", "catalog/icons/**",
+    "tools/icons/**", "tools/catalog/render-icons.mjs", "tools/build-site.mjs",
+    "examples/echelon-marketing-site/forma.lock",
+    "docs/ICONS.md", "tests/icon-docs.test.mjs",
+    ".github/workflows/release-forma.yml"
+  ]) {
+    assert.ok(watched.includes(path), "release trigger dropped " + path);
+  }
+  assert.ok(workflow.includes('git show-ref --verify --quiet "refs/tags/$release_tag"'),
+    "a stable tag must be checked before publishing");
+  assert.ok(workflow.includes('if [[ "$tag_commit" != "$GITHUB_SHA" ]]'),
+    "releasing different contents at one version must fail");
+  assert.ok(!workflow.includes('gh release upload "$RELEASE_TAG" "$ARCHIVE"'),
+    "a published stable release must never be overwritten");
+});
