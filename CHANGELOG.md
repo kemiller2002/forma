@@ -7,6 +7,16 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.6.1
+
+Patch release: responsive navigation and native date/time field containment.
+- Site navigation labels no longer break mid-word or overlap the header at tablet sizes, mobile widths, or larger text scales. Navigation reflows into its own bounded, keyboard-accessible horizontal scroll region.
+- Shared native date, time, and datetime-local fields constrain their intrinsic width within grid columns, including Safari, without replacing the browser picker.
+- Documentation example previews and code snippets scroll within their own containers instead of widening the page.
+- Adds generated-page and WebKit responsive tests at eight widths, including the reported date-time-field examples and enlarged text.
+
+No public icon identifiers, assets, or component semantics were renamed.
+
 ## 0.6.0
 
 Additive icon-library expansion: **80 icons in total**, up from 40, with no changes to existing icon identifiers or their geometry.
