@@ -27,7 +27,7 @@ Status: accepted for reference implementation (2026-10-07). Follow-on integratio
 
 Eight original outline icons: `search`, `close`, `add`, `edit`, `success`, `warning`, `workflow`, `agent`. Source lives in `icons/registry.json`; geometry and metadata validate against `schemas/icon-registry.schema.json`. The compiler emits `dist/icons/<name>.svg`, `dist/icons/html/<name>.html` (inert `<ef-icon>` wrapper), and `dist/icons/registry.json`. Static CSS is part of Forma's component stylesheet. No runtime JS is published.
 
-The reference slice must pass deterministic compilation and negative security tests before the icon component is advertised as production complete. The collection has now expanded to forty icons and the public catalog entry/browser checks have been added. Comprehensive optical review, package evidence, a complete gallery, and downstream Studio/Folio integrations remain gated work items.
+The reference slice must pass deterministic compilation and negative security tests before the icon component is advertised as production complete. The collection now contains eighty icons, including dedicated email/communication symbols, and the public catalog entry/browser checks have been added. Comprehensive optical review, package evidence and downstream Studio/Folio integrations remain gated work items; the gallery and individual icon pages are generated from the registry.
 
 ## Acceptance gates
 

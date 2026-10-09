@@ -62,6 +62,27 @@
       ]
     },
     {
+      "name": "archive",
+      "category": "actions",
+      "label": "Archive",
+      "keywords": [
+        "store",
+        "mail",
+        "archive record"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M3 5H21V10H3Z"
+        },
+        {
+          "element": "path",
+          "d": "M5 10V20H19V10M10 14H14"
+        }
+      ]
+    },
+    {
       "name": "arrow-left",
       "category": "navigation",
       "label": "Back",
@@ -94,6 +115,23 @@
       ]
     },
     {
+      "name": "attachment",
+      "category": "actions",
+      "label": "Attachment",
+      "keywords": [
+        "paperclip",
+        "file",
+        "enclose"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M9 11L15 5Q17 3 19 5Q21 7 19 9L11 18Q8 21 5 18Q2 15 5 12L12 5"
+        }
+      ]
+    },
+    {
       "name": "bell",
       "category": "status",
       "label": "Notifications",
@@ -106,6 +144,23 @@
         {
           "element": "path",
           "d": "M6 17H18L16.5 14V10A4.5 4.5 0 0 0 7.5 10V14ZM10 20Q12 22 14 20"
+        }
+      ]
+    },
+    {
+      "name": "bookmark",
+      "category": "actions",
+      "label": "Bookmark",
+      "keywords": [
+        "save for later",
+        "mark",
+        "reading"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M6 3H18V21L12 17L6 21Z"
         }
       ]
     },
@@ -150,6 +205,29 @@
       ]
     },
     {
+      "name": "camera",
+      "category": "documents",
+      "label": "Camera",
+      "keywords": [
+        "capture",
+        "photo",
+        "snapshot"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M3 8H7L9 5H15L17 8H21V20H3Z"
+        },
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 14,
+          "r": 3
+        }
+      ]
+    },
+    {
       "name": "chart",
       "category": "documents",
       "label": "Chart",
@@ -162,6 +240,27 @@
         {
           "element": "path",
           "d": "M4 4V20H21M7 16L12 11L15 13L20 7"
+        }
+      ]
+    },
+    {
+      "name": "chat",
+      "category": "documents",
+      "label": "Chat",
+      "keywords": [
+        "conversation",
+        "discussion",
+        "messages"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M12 4H17Q21 4 21 9V12Q21 15 18 16L20 20L15 17H11Q8 17 8 14V9Q8 4 12 4Z"
+        },
+        {
+          "element": "path",
+          "d": "M8 8H7Q3 8 3 12V14Q3 17 6 18L4 21L9 18H12"
         }
       ]
     },
@@ -182,6 +281,40 @@
       ]
     },
     {
+      "name": "chevron-left",
+      "category": "navigation",
+      "label": "Chevron left",
+      "keywords": [
+        "previous",
+        "collapse side",
+        "back"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M15 5L8 12L15 19"
+        }
+      ]
+    },
+    {
+      "name": "chevron-right",
+      "category": "navigation",
+      "label": "Chevron right",
+      "keywords": [
+        "next",
+        "expand side",
+        "forward"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M9 5L16 12L9 19"
+        }
+      ]
+    },
+    {
       "name": "chevron-up",
       "category": "navigation",
       "label": "Expand upward",
@@ -194,6 +327,39 @@
         {
           "element": "path",
           "d": "M5 15L12 8L19 15"
+        }
+      ]
+    },
+    {
+      "name": "clipboard",
+      "category": "documents",
+      "label": "Clipboard",
+      "keywords": [
+        "paste",
+        "copy text",
+        "checklist"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "rect",
+          "x": 5,
+          "y": 5,
+          "width": 14,
+          "height": 16,
+          "rx": 2
+        },
+        {
+          "element": "rect",
+          "x": 9,
+          "y": 3,
+          "width": 6,
+          "height": 4,
+          "rx": 1
+        },
+        {
+          "element": "path",
+          "d": "M8 11H16M8 15H16M8 19H14"
         }
       ]
     },
@@ -248,6 +414,29 @@
         {
           "element": "path",
           "d": "M8.5 6L3 12L8.5 18M15.5 6L21 12L15.5 18M14 4L10 20"
+        }
+      ]
+    },
+    {
+      "name": "compass",
+      "category": "navigation",
+      "label": "Compass",
+      "keywords": [
+        "discover",
+        "direction",
+        "explore"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 12,
+          "r": 9
+        },
+        {
+          "element": "path",
+          "d": "M10 10L17 7L14 14L7 17Z"
         }
       ]
     },
@@ -328,6 +517,75 @@
       ]
     },
     {
+      "name": "email",
+      "category": "documents",
+      "label": "Email",
+      "keywords": [
+        "mail",
+        "envelope",
+        "message"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "rect",
+          "x": 3,
+          "y": 5,
+          "width": 18,
+          "height": 14,
+          "rx": 2
+        },
+        {
+          "element": "path",
+          "d": "M4 7L12 13L20 7"
+        }
+      ]
+    },
+    {
+      "name": "email-open",
+      "category": "documents",
+      "label": "Opened email",
+      "keywords": [
+        "mail",
+        "read",
+        "envelope"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M3 10L12 3L21 10V20H3Z"
+        },
+        {
+          "element": "path",
+          "d": "M3 10L12 16L21 10"
+        }
+      ]
+    },
+    {
+      "name": "error",
+      "category": "status",
+      "label": "Error",
+      "keywords": [
+        "failure",
+        "blocked",
+        "invalid"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 12,
+          "r": 9
+        },
+        {
+          "element": "path",
+          "d": "M8 8L16 16M16 8L8 16"
+        }
+      ]
+    },
+    {
       "name": "external-link",
       "category": "navigation",
       "label": "Open external link",
@@ -344,6 +602,54 @@
       ]
     },
     {
+      "name": "eye",
+      "category": "actions",
+      "label": "Show",
+      "keywords": [
+        "visible",
+        "preview",
+        "view"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M2.5 12Q12 2 21.5 12Q12 22 2.5 12Z"
+        },
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 12,
+          "r": 3.1
+        }
+      ]
+    },
+    {
+      "name": "eye-off",
+      "category": "actions",
+      "label": "Hide",
+      "keywords": [
+        "visibility off",
+        "private",
+        "conceal"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M4 9Q7 6 12 6Q18 6 21 12Q19 15 17 16M12 18Q6 18 3 12"
+        },
+        {
+          "element": "path",
+          "d": "M4 4L20 20"
+        },
+        {
+          "element": "path",
+          "d": "M10 10Q14 8 15 13"
+        }
+      ]
+    },
+    {
       "name": "file",
       "category": "documents",
       "label": "Document",
@@ -356,6 +662,27 @@
         {
           "element": "path",
           "d": "M6 3H14L19 8V21H6Z M14 3V8H19M9 12H16M9 16H16"
+        }
+      ]
+    },
+    {
+      "name": "file-text",
+      "category": "documents",
+      "label": "Text document",
+      "keywords": [
+        "document",
+        "notes",
+        "text file"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M6 3H14L19 8V21H6Z"
+        },
+        {
+          "element": "path",
+          "d": "M14 3V8H19M9 12H16M9 16H16M9 19H14"
         }
       ]
     },
@@ -392,6 +719,75 @@
       ]
     },
     {
+      "name": "forward",
+      "category": "actions",
+      "label": "Forward message",
+      "keywords": [
+        "redirect",
+        "pass along",
+        "mail"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M15 6L20 11L15 16M20 11H10Q4 11 4 19"
+        }
+      ]
+    },
+    {
+      "name": "globe",
+      "category": "navigation",
+      "label": "Globe",
+      "keywords": [
+        "language",
+        "international",
+        "world"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 12,
+          "r": 9
+        },
+        {
+          "element": "path",
+          "d": "M3 12H21M12 3Q5 12 12 21M12 3Q19 12 12 21M6 7H18M6 17H18"
+        }
+      ]
+    },
+    {
+      "name": "help-circle",
+      "category": "status",
+      "label": "Help",
+      "keywords": [
+        "question",
+        "guidance",
+        "support"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 12,
+          "r": 9
+        },
+        {
+          "element": "path",
+          "d": "M9 9Q9 6 12 6Q16 6 16 9Q16 11 12 13V15"
+        },
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 18,
+          "r": 0.75
+        }
+      ]
+    },
+    {
       "name": "home",
       "category": "navigation",
       "label": "Home",
@@ -404,6 +800,104 @@
         {
           "element": "path",
           "d": "M3 11L12 4L21 11M6 10V20H18V10M10 20V14H14V20"
+        }
+      ]
+    },
+    {
+      "name": "image",
+      "category": "documents",
+      "label": "Image",
+      "keywords": [
+        "photo",
+        "picture",
+        "graphic"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "rect",
+          "x": 3,
+          "y": 4,
+          "width": 18,
+          "height": 16,
+          "rx": 2
+        },
+        {
+          "element": "circle",
+          "cx": 8,
+          "cy": 9,
+          "r": 1.5
+        },
+        {
+          "element": "path",
+          "d": "M4 17L9 12L13 16L16 13L20 17"
+        }
+      ]
+    },
+    {
+      "name": "inbox",
+      "category": "documents",
+      "label": "Inbox",
+      "keywords": [
+        "mailbox",
+        "incoming",
+        "received"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M4 5H20L22 15V20H2V15Z"
+        },
+        {
+          "element": "path",
+          "d": "M2 15H8L10 18H14L16 15H22"
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "category": "status",
+      "label": "Information",
+      "keywords": [
+        "details",
+        "about",
+        "notice"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 12,
+          "r": 9
+        },
+        {
+          "element": "path",
+          "d": "M12 11V17"
+        },
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 7,
+          "r": 0.8
+        }
+      ]
+    },
+    {
+      "name": "link",
+      "category": "actions",
+      "label": "Link",
+      "keywords": [
+        "connect",
+        "url",
+        "hyperlink"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M10 8H8Q4 8 4 12Q4 16 8 16H10M14 8H16Q20 8 20 12Q20 16 16 16H14M8.5 12H15.5"
         }
       ]
     },
@@ -432,6 +926,46 @@
       ]
     },
     {
+      "name": "map-pin",
+      "category": "navigation",
+      "label": "Location",
+      "keywords": [
+        "place",
+        "address",
+        "map"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M12 21Q4 14 4 10A8 8 0 0 1 20 10Q20 14 12 21Z"
+        },
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 10,
+          "r": 2.5
+        }
+      ]
+    },
+    {
+      "name": "maximize",
+      "category": "actions",
+      "label": "Maximize",
+      "keywords": [
+        "expand",
+        "fullscreen",
+        "larger"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M9 4H4V9M15 4H20V9M4 15V20H9M20 15V20H15"
+        }
+      ]
+    },
+    {
       "name": "menu",
       "category": "navigation",
       "label": "Menu",
@@ -444,6 +978,86 @@
         {
           "element": "path",
           "d": "M4 6H20M4 12H20M4 18H20"
+        }
+      ]
+    },
+    {
+      "name": "message",
+      "category": "documents",
+      "label": "Message",
+      "keywords": [
+        "conversation",
+        "note",
+        "speech bubble"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M5 4H19Q21 4 21 6V16Q21 18 19 18H10L5 21V18Q3 18 3 16V6Q3 4 5 4Z"
+        },
+        {
+          "element": "path",
+          "d": "M7 10H17M7 13H14"
+        }
+      ]
+    },
+    {
+      "name": "microphone",
+      "category": "documents",
+      "label": "Microphone",
+      "keywords": [
+        "audio",
+        "record",
+        "voice"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "rect",
+          "x": 9,
+          "y": 3,
+          "width": 6,
+          "height": 12,
+          "rx": 3
+        },
+        {
+          "element": "path",
+          "d": "M5 12A7 7 0 0 0 19 12M12 19V22M8 22H16"
+        }
+      ]
+    },
+    {
+      "name": "minimize",
+      "category": "actions",
+      "label": "Minimize",
+      "keywords": [
+        "shrink",
+        "exit fullscreen",
+        "smaller"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M4 9H9V4M20 9H15V4M4 15H9V20M20 15H15V20"
+        }
+      ]
+    },
+    {
+      "name": "minus",
+      "category": "actions",
+      "label": "Remove",
+      "keywords": [
+        "decrease",
+        "subtract",
+        "collapse"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M5 12H19"
         }
       ]
     },
@@ -474,6 +1088,71 @@
           "cx": 19,
           "cy": 12,
           "r": 1.1
+        }
+      ]
+    },
+    {
+      "name": "more-vertical",
+      "category": "actions",
+      "label": "More options vertical",
+      "keywords": [
+        "ellipsis",
+        "overflow",
+        "menu"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 5,
+          "r": 1.15
+        },
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 12,
+          "r": 1.15
+        },
+        {
+          "element": "circle",
+          "cx": 12,
+          "cy": 19,
+          "r": 1.15
+        }
+      ]
+    },
+    {
+      "name": "pending",
+      "category": "status",
+      "label": "Pending",
+      "keywords": [
+        "hourglass",
+        "waiting",
+        "queued"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M6 3H18M6 21H18M8 3V7Q8 10 12 12Q16 10 16 7V3M8 21V17Q8 14 12 12Q16 14 16 17V21"
+        }
+      ]
+    },
+    {
+      "name": "phone",
+      "category": "documents",
+      "label": "Phone",
+      "keywords": [
+        "call",
+        "handset",
+        "contact"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M7 3L10 7L8 10Q11 15 14 16L17 14L21 17L18 21Q16 22 13 20Q6 16 3 9Q2 6 3 5Z"
         }
       ]
     },
@@ -512,6 +1191,44 @@
         {
           "element": "path",
           "d": "M20 7V12H15M4 17V12H9M5.7 10A7 7 0 0 1 18 7L20 12M4 12L6 17A7 7 0 0 0 18.3 14"
+        }
+      ]
+    },
+    {
+      "name": "reply",
+      "category": "actions",
+      "label": "Reply",
+      "keywords": [
+        "respond",
+        "answer",
+        "mail"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M9 6L4 11L9 16M4 11H14Q20 11 20 19"
+        }
+      ]
+    },
+    {
+      "name": "reply-all",
+      "category": "actions",
+      "label": "Reply all",
+      "keywords": [
+        "respond",
+        "everyone",
+        "mail"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M11 5L6 10L11 15M6 10H15Q21 10 21 18"
+        },
+        {
+          "element": "path",
+          "d": "M7.5 5L2.5 10L7.5 15"
         }
       ]
     },
@@ -558,6 +1275,27 @@
         {
           "element": "path",
           "d": "M15 15L20.5 20.5"
+        }
+      ]
+    },
+    {
+      "name": "send",
+      "category": "actions",
+      "label": "Send",
+      "keywords": [
+        "paper plane",
+        "submit",
+        "outgoing"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M3 11L21 3L15 21L11 13Z"
+        },
+        {
+          "element": "path",
+          "d": "M11 13L21 3"
         }
       ]
     },
@@ -628,6 +1366,41 @@
       ]
     },
     {
+      "name": "share",
+      "category": "actions",
+      "label": "Share",
+      "keywords": [
+        "send to",
+        "distribute",
+        "collaborate"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "circle",
+          "cx": 5,
+          "cy": 12,
+          "r": 2
+        },
+        {
+          "element": "circle",
+          "cx": 19,
+          "cy": 5,
+          "r": 2
+        },
+        {
+          "element": "circle",
+          "cx": 19,
+          "cy": 19,
+          "r": 2
+        },
+        {
+          "element": "path",
+          "d": "M7 11L17 6M7 13L17 18"
+        }
+      ]
+    },
+    {
       "name": "shield",
       "category": "status",
       "label": "Security",
@@ -656,6 +1429,23 @@
         {
           "element": "path",
           "d": "M8 20V4M4.5 7.5L8 4L11.5 7.5M16 4V20M12.5 16.5L16 20L19.5 16.5"
+        }
+      ]
+    },
+    {
+      "name": "star",
+      "category": "actions",
+      "label": "Favorite",
+      "keywords": [
+        "featured",
+        "rating",
+        "important"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M12 3L14.8 9.2L21.5 9.8L16.5 14.3L17.9 21L12 17.5L6.1 21L7.5 14.3L2.5 9.8L9.2 9.2Z"
         }
       ]
     },
@@ -694,6 +1484,23 @@
         {
           "element": "path",
           "d": "M5 7H19M9 7V4H15V7M7 7L8 20H16L17 7M10 10V17M14 10V17"
+        }
+      ]
+    },
+    {
+      "name": "unlink",
+      "category": "actions",
+      "label": "Unlink",
+      "keywords": [
+        "disconnect",
+        "break link",
+        "remove association"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M9 8H8Q4 8 4 12Q4 16 8 16H10M15 8H16Q20 8 20 12Q20 16 16 16H14M11 9L13 15M8 5L7 3M16 19L17 21"
         }
       ]
     },
@@ -758,6 +1565,56 @@
       ]
     },
     {
+      "name": "video",
+      "category": "documents",
+      "label": "Video",
+      "keywords": [
+        "movie",
+        "clip",
+        "play"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "rect",
+          "x": 3,
+          "y": 4,
+          "width": 18,
+          "height": 16,
+          "rx": 2
+        },
+        {
+          "element": "path",
+          "d": "M10 8L16 12L10 16Z"
+        }
+      ]
+    },
+    {
+      "name": "video-call",
+      "category": "documents",
+      "label": "Video call",
+      "keywords": [
+        "meeting",
+        "conference",
+        "camera"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "rect",
+          "x": 3,
+          "y": 6,
+          "width": 12,
+          "height": 12,
+          "rx": 2
+        },
+        {
+          "element": "path",
+          "d": "M15 10L21 7V17L15 14M9 9V15M6 12H12"
+        }
+      ]
+    },
+    {
       "name": "warning",
       "category": "status",
       "label": "Warning",
@@ -780,6 +1637,23 @@
           "cx": 12,
           "cy": 17,
           "r": 0.65
+        }
+      ]
+    },
+    {
+      "name": "wifi-off",
+      "category": "status",
+      "label": "Offline",
+      "keywords": [
+        "no connection",
+        "network unavailable",
+        "disconnected"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M4 9Q12 3 20 9M7 12Q12 8 17 12M10 15Q12 14 14 15M12 19V19.2M3 3L21 21"
         }
       ]
     },

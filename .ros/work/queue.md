@@ -10,6 +10,7 @@
 | FORMA-GH-98-CATALOG | Refresh Forma component inventory after machine-operability changes | complete | forma,catalog,machine-operability | medium |
 | FORMA-RELEASE-041 | FORMA-RELEASE-041 | complete |  |  |
 | GH-110 | GH-110 | complete |  |  |
+| GH-116 | Expand Forma icon library from 40 to 80, prioritizing email and communications | captured |  | high |
 | GH-12 | Align Forma documentation site with Echelon Foundry CSS | complete | forma,css,visual-engineering | high |
 | GH-14 | Build cross-application mobile Forma component wave | complete | forma,mobile,cross-application | high |
 | GH-18 | Prepare Forma for application consumption | active | readiness,bootstrap | high |
