@@ -26,6 +26,12 @@ jobs:
           npm install --ignore-scripts=false
           npm run site:build
           node --test tests/site-build.test.mjs tests/package-contract.test.mjs
+          # Run the exact zoom regression without the repository's 10-minute
+          # batch delay or the full accessibility crawl; keep the latter as
+          # an independent required pull-request/deployment gate.
+          npx playwright install --with-deps chromium webkit
+          npx playwright test --config=playwright.site.config.mjs tests/site-browser/catalog.spec.mjs -g "documentation pages reflow with 200% text size at 320px"
+          npx playwright test --config=playwright.site.webkit.config.mjs
           ./praxis registry check
           if ! ./praxis work show GH-128 >/dev/null 2>&1; then
             ./praxis add "Prevent responsive nav wrapping and native date overflows" --id GH-128 --source github-issue --source-reference "https://github.com/kemiller2002/forma/issues/128" --priority high
