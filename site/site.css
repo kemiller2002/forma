@@ -149,6 +149,7 @@
   }
 
   .brand-mark {
+    flex: none;
     display: grid;
     place-items: center;
     inline-size: 2.35rem;
@@ -168,7 +169,14 @@
   }
 
   .site-nav {
+    /* Do not squeeze link text into single-word columns. When a reader zooms
+       the font, allow this one navigation region to scroll, not the page. */
     display: flex;
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
     align-items: center;
     gap: .2rem;
     font-size: .8rem;
@@ -176,6 +184,11 @@
   }
 
   .site-nav a {
+    flex: 0 0 auto;
+    min-inline-size: max-content;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
     min-block-size: 2.75rem;
     display: inline-flex;
     align-items: center;
@@ -534,6 +547,9 @@
     max-inline-size: 100%;
     min-block-size: 12rem;
     display: grid;
+    /* A native picker must not make the example's implicit grid track wider
+       than its bordered container (notably Safari date/datetime controls). */
+    grid-template-columns: minmax(0, 1fr);
     align-content: center;
     padding: clamp(1.25rem, 3vw, 2.5rem);
     border: 1px solid var(--ef-forged-iron);
@@ -776,6 +792,8 @@
   }
 
   .breadcrumbs a {
+    white-space: nowrap;
+    overflow-wrap: normal;
     display: inline-flex;
     align-items: center;
     min-block-size: 2.75rem;
@@ -791,6 +809,8 @@
   }
 
   .page-toc a {
+    white-space: nowrap;
+    overflow-wrap: normal;
     display: inline-flex;
     align-items: center;
     min-block-size: 2.75rem;
@@ -961,6 +981,10 @@
   }
 
   .code-viewer__code {
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
     max-block-size: 32rem;
     margin: 0;
     border-block-start: 1px solid var(--ef-forged-iron);
@@ -1402,6 +1426,21 @@
     .catalog-card__preview::after { display: none; }
   }
 
+  /* The brand and six full-length labels cannot reliably share one row at
+     tablet widths or high text zoom; give each region a bounded row. */
+  @media (max-width: 1200px) {
+    .site-header { position: static; }
+    .nav-shell {
+      flex-direction: column;
+      align-items: stretch;
+      gap: .35rem;
+    }
+    .site-nav {
+      inline-size: 100%;
+      flex: none;
+    }
+  }
+
   @media (max-width: 960px) {
     .brand-subtitle { display: none; }
 
@@ -1468,18 +1507,16 @@
     }
 
     .site-nav {
+      /* A single scrollable row preserves complete phrases on small phones. */
       inline-size: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
       gap: .25rem;
     }
 
     .site-nav a {
-      min-inline-size: 0;
-      padding: .5rem .35rem;
-      font-size: .7rem;
+      padding: .5rem .65rem;
+      font-size: .75rem;
       text-align: center;
-      overflow-wrap: anywhere;
     }
 
     .site-nav .pill-link {
