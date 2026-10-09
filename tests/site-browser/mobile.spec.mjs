@@ -14,6 +14,7 @@ const pages = [
     `/site-dist/components/${component.slug}/index.html`
   ),
   "/site-dist/icons/index.html",
+  "/site-dist/icons/new/index.html",
   ...manifest.icons.map(icon => `/site-dist/${icon.docsUrl}index.html`)
 ];
 
