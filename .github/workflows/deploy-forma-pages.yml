@@ -16,6 +16,7 @@ on:
       - "tests/catalog-coverage.test.mjs"
       - "tests/site-browser/**"
       - "playwright.site.config.mjs"
+      - "playwright.site.webkit.config.mjs"
       - "docs/COMPONENT-INVENTORY.md"
       - "tools/build-assets.mjs"
       - "tests/site-build.test.mjs"
@@ -60,10 +61,13 @@ jobs:
         run: dotnet restore tools/TokenCompiler/TokenCompiler.fsproj
 
       - name: Install mobile validation browser
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Build and verify Forma documentation
         run: npm run site:check
+
+      - name: Verify responsive navigation and native dates in WebKit
+        run: npx playwright test --config=playwright.site.webkit.config.mjs
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
