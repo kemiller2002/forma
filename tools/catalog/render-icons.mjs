@@ -5,6 +5,7 @@
 import fs from "node:fs";
 import { compileIcons } from "../icons/build.mjs";
 import { iconDocs } from "../../catalog/icons.mjs";
+import { applicationIconDocs } from "../../catalog/icons/applications.mjs";
 import { breadcrumbs, codeViewer, page, table } from "./render-layout.mjs";
 import { escapeHtml, join } from "./html.mjs";
 
@@ -12,6 +13,8 @@ const readJson = relative => JSON.parse(fs.readFileSync(new URL(relative, import
 
 // Sizes documented on every page. 16px is the smallest supported size.
 export const ICON_SIZES = Object.freeze([16, 20, 24, 32, 48]);
+export const NEW_ICON_RELEASE = "0.6.0";
+const introducedIn06 = new Set(Object.keys(applicationIconDocs));
 
 // Colour contexts use Forma roles only. The icon follows currentColor, so the
 // role on the parent decides the ink; the label text stays a text role so it
@@ -60,6 +63,7 @@ export const loadIconCatalog = ({ registry = readJson("../../icons/registry.json
       ...icon,
       ...metadata.get(icon.name),
       docs: docs[icon.name],
+      introducedIn: introducedIn06.has(icon.name) ? NEW_ICON_RELEASE : "0.5.0",
       svgSource: compiled.get(`${icon.name}.svg`),
       htmlSource: compiled.get(`html/${icon.name}.html`)
     }));
@@ -253,10 +257,12 @@ export const renderIconPage = (catalog, icon, rootPath = "../../") => {
     <div>
       <p class="eyebrow">Forma icon · ${escapeHtml(titleCase(icon.category))}</p>
       <h1>${escapeHtml(icon.label)}</h1>
+      ${icon.introducedIn === NEW_ICON_RELEASE ? `<p><a href="${rootPath}icons/new/">Introduced in Forma ${NEW_ICON_RELEASE} · Browse all 40 new icons</a></p>` : ""}
       <p class="doc-lead">${escapeHtml(icon.docs.meaning)}</p>
       <dl class="icon-facts">
         <div><dt>Name</dt><dd><code>${escapeHtml(icon.name)}</code></dd></div>
         <div><dt>Category</dt><dd>${escapeHtml(titleCase(icon.category))}</dd></div>
+        <div><dt>Introduced</dt><dd>Forma ${escapeHtml(icon.introducedIn)}</dd></div>
         <div><dt>Keywords</dt><dd>${escapeHtml(icon.keywords.join(", "))}</dd></div>
         <div><dt>Grid</dt><dd>${catalog.grid} × ${catalog.grid}, ${catalog.strokeWidth} stroke, round caps and joins</dd></div>
         <div><dt>Origin</dt><dd>${escapeHtml(titleCase(icon.origin))} Forma artwork</dd></div>
@@ -320,8 +326,37 @@ export function renderIconGallery(rootPath = "../", catalog = loadIconCatalog())
       <p class="eyebrow">Forma visual language</p>
       <h1>Icon gallery</h1>
       <p>All ${catalog.icons.length} icons use a ${catalog.grid}×${catalog.grid} grid, ${catalog.strokeWidth} stroke width and currentColor. The geometry is compiled from Forma's original registry, not copied from an external library. Open any icon for its meaning, sizes, colour and contrast modes, and copyable configurations. These previews are decorative; icon-only controls must provide their own accessible names.</p>
-      <p><a href="${rootPath}components/icon/">Icon usage and accessible examples</a> · <a href="${rootPath}components/">Full component catalog</a></p>
+      <p><a href="${rootPath}icons/new/">New in Forma 0.6.0: all 40 added icons</a> · <a href="${rootPath}components/icon/">Icon usage and accessible examples</a> · <a href="${rootPath}components/">Full component catalog</a></p>
       ${cards}
+    </main>`
+  });
+}
+
+/** A release-specific entrypoint built from the same canonical source as the icon pages. */
+export function renderNewIconIndex(rootPath = "../../", catalog = loadIconCatalog()) {
+  const latest = catalog.icons.filter(icon => icon.introducedIn === NEW_ICON_RELEASE);
+  if (latest.length !== introducedIn06.size) throw new Error("The 0.6.0 icon cohort and registry disagree");
+  const categories = [...new Set(latest.map(icon => icon.category))].sort();
+  return page({
+    title: "New icons in Forma 0.6.0",
+    rootPath,
+    description: "Forty first-party email, communication, document, navigation and status SVG icons introduced in Forma 0.6.0.",
+    head: ICON_STYLES,
+    body: `<main id="main" class="icon-gallery" data-icon-release="${NEW_ICON_RELEASE}">
+      ${breadcrumbs(rootPath, [{ label: "Icons", href: `${rootPath}icons/` }, { label: "New in ${NEW_ICON_RELEASE}" }])}
+      <p class="eyebrow">Forma 0.6.0 · Added vocabulary</p>
+      <h1>40 new icons</h1>
+      <p>Every icon below has its own static reference page with a grid preview, size and colour guidance, accessible native-control examples, copyable source, and a downloadable release-versioned SVG. The first 40 icons remain supported.</p>
+      <p><a href="${rootPath}icons/">Browse all ${catalog.icons.length} Forma icons</a></p>
+      ${join(categories, category => `<section class="icon-gallery__section" aria-labelledby="recent-${category}">
+        <h2 id="recent-${category}">${escapeHtml(titleCase(category))}</h2>
+        <ul class="icon-gallery__grid">${join(latest.filter(icon => icon.category === category), icon => `<li class="icon-gallery__card" data-new-icon="${icon.name}">
+          <div class="icon-gallery__preview" style="--ef-icon-size:32px">${icon.htmlSource.trim()}</div>
+          <h3><a href="${iconHref(rootPath, icon.name)}">${escapeHtml(icon.label)}</a></h3>
+          <p><code>${escapeHtml(icon.name)}</code></p>
+          <p>${escapeHtml(icon.docs.meaning)}</p>
+        </li>`, "\n")}</ul>
+      </section>`, "\n")}
     </main>`
   });
 }

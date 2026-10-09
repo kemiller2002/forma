@@ -268,3 +268,44 @@ test("every registry icon has a generated page, downloadable SVG and raw configu
     }
   }
 });
+
+
+test("Forma 0.6.0 publishes a dedicated, complete and machine-navigable page for each of the forty new icons", async () => {
+  const { applicationIconDocs } = await import("../catalog/icons/applications.mjs");
+  const names = Object.keys(applicationIconDocs).sort();
+  const source = JSON.parse(fs.readFileSync(path.join(root, "icons", "registry.json"), "utf8"));
+  const manifest = JSON.parse(fs.readFileSync(path.join(output, "site-manifest.json"), "utf8"));
+  const gallery = fs.readFileSync(path.join(output, "icons", "index.html"), "utf8");
+  const recent = fs.readFileSync(path.join(output, "icons", "new", "index.html"), "utf8");
+  assert.equal(names.length, 40, "the 0.6.0 additions should contain exactly 40 named glyphs");
+  assert.equal(source.icons.length, 80, "legacy icons must be retained");
+  assert.equal(manifest.newIconGalleryUrl, "icons/new/");
+  assert.equal(manifest.iconRelease, "0.6.0");
+  assert.ok(gallery.includes('href="../icons/new/"'), "main gallery must link to the new collection");
+  assert.equal((recent.match(/class="icon-gallery__card" data-new-icon=/g) ?? []).length, 40);
+  assert.equal(/<script\b|\son[a-z]+\s*=/i.test(recent), false, "new-icons index must remain static and safe");
+
+  for (const name of names) {
+    const record = manifest.icons.find(icon => icon.name === name);
+    assert.equal(record?.introducedIn, "0.6.0", name + ": missing release metadata");
+    assert.equal(record.docsUrl, `icons/${name}/`, name + ": link changed");
+    assert.ok(recent.includes(`href="../../icons/${name}/"`), name + ": missing new-icons navigation link");
+    const dir = path.join(output, "icons", name);
+    const page = fs.readFileSync(path.join(dir, "index.html"), "utf8");
+    assert.ok(page.includes('href="../../icons/new/"'), name + ": no release-backlink");
+    assert.ok(page.includes("Introduced in Forma 0.6.0"), name + ": introduction note missing");
+    assert.ok(page.includes('id="section-configurations-title"'), name + ": configurations missing");
+    assert.ok(page.includes('id="section-accessibility-title"'), name + ": accessibility guidance missing");
+    assert.deepEqual(
+      fs.readFileSync(path.join(dir, name + ".svg")),
+      fs.readFileSync(path.join(root, "dist", "icons", name + ".svg")),
+      name + ": site SVG differs from package"
+    );
+    for (const raw of ["decorative", "with-text", "icon-only", "inline-text", "custom-size", "custom-colour", "meaningful-image", "decorative-image"]) {
+      assert.ok(fs.existsSync(path.join(dir, raw + ".txt")), name + ": " + raw + " copyable source missing");
+    }
+  }
+  const legacy = manifest.icons.filter(icon => !names.includes(icon.name));
+  assert.equal(legacy.length, 40, "original forty were changed or lost");
+  assert.ok(legacy.every(icon => icon.introducedIn === "0.5.0"), "original icons keep correct version provenance");
+});

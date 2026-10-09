@@ -1,0 +1,46 @@
+name: Reconcile Forma 0.6 icon site work
+on:
+  push:
+    branches: [feature/forma-0-6-new-icon-pages]
+    paths: [.github/workflows/reconcile-icon-pages.yml, examples/echelon-marketing-site/forma.lock]
+permissions:
+  contents: write
+jobs:
+  reconcile:
+    if: github.repository == 'kemiller2002/forma'
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0, persist-credentials: true}
+      - name: Verify icon contract and reconcile real Git evidence to #122
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags
+          chmod +x ./praxis
+          grep -qx 'forma 0.6.0' examples/echelon-marketing-site/forma.lock
+          node tools/icons/build.mjs
+          node --test tests/icons.test.mjs
+          ./praxis registry check
+          if ! ./praxis work show GH-122 >/dev/null 2>&1; then
+            ./praxis add "Publish navigable pages for 40 new Forma 0.6.0 icons" --id GH-122 --source github-issue --source-reference "https://github.com/kemiller2002/forma/issues/122" --priority high
+          fi
+          base="$(git merge-base HEAD origin/main)"
+          now="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          reason="GitHub connector authored icon-site projections and marketing example lock alignment; post-hoc attribute only genuine committed site/release changes"
+          ./praxis work reconcile --id GH-122 --reason "$reason" --range "$base..HEAD" --occurred-at "$now" --dry-run
+          ./praxis work reconcile --id GH-122 --reason "$reason" --range "$base..HEAD" --occurred-at "$now"
+          ./praxis registry build
+          ./praxis validate
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .ros/work .ros/events .ros/telemetry registries
+          if ! git diff --cached --quiet; then
+            git commit -m "praxis: reconcile Forma 0.6.0 icon page update GH-122"
+            git fetch origin feature/forma-0-6-new-icon-pages
+            git rebase origin/feature/forma-0-6-new-icon-pages
+            ./praxis registry check
+            ./praxis validate
+            git push origin HEAD:feature/forma-0-6-new-icon-pages
+          fi
