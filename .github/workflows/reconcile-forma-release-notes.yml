@@ -19,6 +19,7 @@ jobs:
           set -euo pipefail
           git fetch origin main --no-tags
           chmod +x ./praxis
+          node tools/icons/build.mjs
           node --test tests/icon-docs.test.mjs tests/icons.test.mjs
           npx --yes @echelon-foundry/sde@1.3.0 verify --strict
           ./praxis registry check
