@@ -581,6 +581,27 @@
       },
       "source": "github-issue",
       "sourceReference": "https://github.com/kemiller2002/forma/issues/122"
+    },
+    {
+      "id": "GH-128",
+      "title": "Prevent responsive nav wrapping and native date overflows",
+      "description": null,
+      "tags": [],
+      "priority": "high",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-10-09T21:51:12.472Z",
+      "updatedAt": "2026-10-09T21:51:12.472Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "automation",
+        "id": "github/github-actions",
+        "provider": "github",
+        "model": "unknown",
+        "runtime": "github-actions"
+      },
+      "source": "github-issue",
+      "sourceReference": "https://github.com/kemiller2002/forma/issues/128"
     }
   ]
 }
