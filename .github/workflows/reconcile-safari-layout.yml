@@ -2,7 +2,7 @@ name: Reconcile Safari layout regression
 on:
   push:
     branches: [fix/forma-site-nav-and-native-date-overflow]
-    paths: [.github/workflows/reconcile-safari-layout.yml]
+    paths: [.github/workflows/reconcile-safari-layout.yml, site/site.css, tests/site-browser/responsive-navigation.spec.mjs]
 permissions:
   contents: write
 jobs:
