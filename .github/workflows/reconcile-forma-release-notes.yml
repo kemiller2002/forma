@@ -1,8 +1,8 @@
 name: Reconcile Forma 0.6 release notes
 on:
   push:
-    branches: [review/forma-icons-0-6-release-ready]
-    paths: [.github/workflows/reconcile-forma-release-notes.yml, icons/registry.json]
+    branches: [review/forma-0-6-0-final-icon-geometry]
+    paths: [.github/workflows/reconcile-forma-release-notes.yml, icons/registry.json, catalog/icons.mjs, catalog/icons/**]
 permissions:
   contents: write
 jobs:
@@ -13,16 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 0, persist-credentials: true}
-      - name: Verify release notes and reconcile actual Git changes
+      - name: Validate bounded icon documentation and reconcile actual Git changes
         shell: bash
         run: |
           set -euo pipefail
           git fetch origin main --no-tags
           chmod +x ./praxis
+          node --test tests/icon-docs.test.mjs tests/icons.test.mjs
+          npx --yes @echelon-foundry/sde@1.3.0 verify --strict
           ./praxis registry check
           base="$(git merge-base HEAD origin/main)"
           now="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
-          reason="Post-hoc GitHub editor attribution for 0.6.0 release-note and consumer-migration changes under GH-116"
+          reason="Post-hoc GitHub editor attribution of bounded icon guidance refactor and 0.6.0 release changes for GH-116"
           ./praxis work reconcile --id GH-116 --reason "$reason" --range "$base..HEAD" --occurred-at "$now" --dry-run
           ./praxis work reconcile --id GH-116 --reason "$reason" --range "$base..HEAD" --occurred-at "$now"
           ./praxis registry build
@@ -32,5 +34,5 @@ jobs:
           git add .ros/work .ros/events .ros/telemetry registries
           if ! git diff --cached --quiet; then
             git commit -m "praxis: attribute release notes to Forma GH-116"
-            git push origin HEAD:review/forma-icons-0-6-release-ready
+            git push origin HEAD:review/forma-0-6-0-final-icon-geometry
           fi
