@@ -2,7 +2,7 @@ name: Reconcile Forma release-trigger correction
 on:
   push:
     branches: [fix/forma-release-icon-site-triggers]
-    paths: [.github/workflows/reconcile-release-triggers.yml]
+    paths: [.github/workflows/reconcile-release-triggers.yml, tests/package-contract.test.mjs, .github/workflows/release-forma.yml]
 permissions:
   contents: write
 jobs:
