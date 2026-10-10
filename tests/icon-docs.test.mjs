@@ -12,6 +12,7 @@ import {
   iconRawFiles,
   loadIconCatalog,
   renderIconGallery,
+  renderNewIconIndex,
   renderIconPage,
   validateIconDocs
 } from "../tools/catalog/render-icons.mjs";
@@ -99,4 +100,29 @@ test("pages are static and link into one navigable set", () => {
   }
   assert.equal(catalog.icons[0].previous, undefined);
   assert.equal(catalog.icons.at(-1).next, undefined);
+});
+
+
+test("icon gallery and all 80 icon pages use American English in visible content", () => {
+  const htmlPages = [
+    ["icon gallery", renderIconGallery("../", catalog)],
+    ["new icons", renderNewIconIndex("../../", catalog)],
+    ...catalog.icons.map(icon => [icon.name, pages.get(icon.name)])
+  ];
+  for (const [name, html] of htmlPages) {
+    // Ignore programmatic identifiers, filenames, markup and copyable source:
+    // published URLs /custom-colour.txt and data-colour-context are maintained
+    // for backwards compatibility; they are not reader-facing descriptions.
+    const text = html
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+      .replace(/<pre\b[^>]*>[\s\S]*?<\/pre>/gi, " ")
+      .replace(/<code\b[^>]*>[\s\S]*?<\/code>/gi, " ")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&[^;\s]+;/g, " ");
+    assert.doesNotMatch(
+      text,
+      /\b(colour|colours|coloured|colourful|behaviour|behaviours|labelled|labelling|neighbour|neighbours|centred|grey|catalogue)\b/i,
+      name + ": displayed copy must use US English"
+    );
+  }
 });
