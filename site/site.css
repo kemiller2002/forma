@@ -203,13 +203,15 @@
     border-color: var(--ef-oxide-bronze);
   }
 
-  .site-nav .pill-link {
-    margin-inline-start: .4rem;
+  /* All navigation links are neutral until their owning section is active.
+     Semantics and presentation agree for both landing and detail pages. */
+  .site-nav a[aria-current] {
     background: var(--ef-foundry-charcoal);
+    border-color: var(--ef-foundry-charcoal);
     color: var(--ef-parchment);
   }
 
-  .site-nav .pill-link:hover {
+  .site-nav a[aria-current]:hover {
     border-color: var(--ef-parchment);
     color: var(--ef-parchment);
   }
@@ -1538,10 +1540,6 @@
       padding: .5rem .65rem;
       font-size: .75rem;
       text-align: center;
-    }
-
-    .site-nav .pill-link {
-      margin-inline-start: 0;
     }
 
     .hero-stats,
