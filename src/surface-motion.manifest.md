@@ -23,7 +23,7 @@ These defaults describe visual inertia only.
 
 - inertial entry: `sqrt(mass / stiffness) / damping`
 - gravity cue: `sqrt(2 * distance / gravity)`
-- exit: `0.68 * inertial entry`, clamped to the supported UI range
+- exit: identical to inertial entry, with the same easing and clamp bounds
 - reduced motion: effectively immediate spatial change with final visual state preserved
 - model vocabulary, classification and audit: see `src/motion.manifest.md`
 

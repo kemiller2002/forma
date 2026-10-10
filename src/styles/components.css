@@ -96,7 +96,7 @@
     --ef-motion-gravity-duration: 255ms;
     --ef-motion-state-duration: 154ms;
     --ef-motion-press-duration: 107ms;
-    --ef-motion-exit-duration: 146ms;
+    --ef-motion-exit-duration: 214ms;
     --ef-motion-spring-easing: linear(0, 0.42 24%, 0.82 48%, 1.055 70%, 0.988 88%, 1);
     --ef-motion-damped-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
   }
@@ -170,11 +170,8 @@
         calc(var(--ef-motion-inertia-duration) * 0.5),
         160ms
       );
-      --ef-motion-exit-duration: clamp(
-        80ms,
-        calc(var(--ef-motion-inertia-duration) * 0.68),
-        220ms
-      );
+      /* Compatibility token: reciprocal motion has one response time. */
+      --ef-motion-exit-duration: var(--ef-motion-inertia-duration);
     }
   }
 
@@ -767,8 +764,7 @@
   .ef-tooltip__surface:popover-open {
     opacity: 1;
     translate: 0 0;
-    /* Entry settles over the light inertial duration; exit (above) uses the
-       shorter derived exit duration. Opacity stays perceptual both ways. */
+    /* Spatial response and perceptual opacity are identical both ways. */
     transition-duration:
       var(--ef-motion-perceptual-duration),
       var(--ef-motion-inertia-duration),
@@ -906,8 +902,8 @@
 
   /* Dialog and flyout ---------------------------------------------------- */
   :where(.ef-dialog, .ef-flyout) {
-    --ef-overlay-motion-duration: var(--ef-motion-exit-duration);
-    --ef-overlay-spatial-easing: var(--ef-motion-damped-easing);
+    --ef-overlay-motion-duration: var(--ef-motion-inertia-duration);
+    --ef-overlay-spatial-easing: var(--ef-motion-spring-easing);
     padding: 0;
     border: 1px solid var(--ef-color-border-functional, #3a403c);
     background: var(--ef-color-surface-primary, #f2efe7);

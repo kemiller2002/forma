@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 24,
+  "nextSeq": 25,
   "items": [
     {
       "id": "WI-0001",
@@ -623,6 +623,27 @@
       },
       "source": "github-issue",
       "sourceReference": "https://github.com/kemiller2002/forma/issues/132"
+    },
+    {
+      "id": "WI-0024",
+      "title": "Enforce reciprocal CSS physics for reversible interactions",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-10-10T13:35:26.148Z",
+      "updatedAt": "2026-10-10T13:36:10Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "manual",
+      "sourceReference": null
     }
   ]
 }

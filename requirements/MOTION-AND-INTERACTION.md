@@ -68,7 +68,7 @@ The canonical normalized variables are:
 - `--ef-motion-distance` (`s`): normalized travel distance for gravity-derived movement;
 - `--ef-motion-gravity` (`g`): normalized gravitational acceleration;
 - `--ef-motion-base-duration`: the dimensional scale factor that maps the normalized model to UI time;
-- `--ef-motion-exit-duration`: a derived dismissal duration, normally shorter than inertial entry.
+- `--ef-motion-exit-duration`: a compatibility dismissal token equal to inertial entry.
 
 For spring/inertial settling, Forma uses the second-order-system scaling relationship:
 
@@ -99,7 +99,7 @@ Rules:
 - CSS math support may be progressively enhanced; unsupported browsers must retain a usable static/fallback timing;
 - motion must remain interruptible;
 - tests must verify the expected ordering `light < standard < heavy` for inertial duration and verify mass independence for gravity timing;
-- transient-surface exit duration derives from inertial duration and is shorter than entry; the canonical factor is 0.68 before clamping;
+- transient-surface exit duration equals inertial duration, including the same clamp bounds;
 - reduced motion collapses spatial travel and overshoot while retaining clear final state.
 
 ### MOT-009 Surface mass grammar
@@ -238,7 +238,7 @@ Centered modal dialogs shall use a restrained vertical/scale response. Modal fly
 Dialog, flyout, popover, and menu spatial entry shall use the shared physics-derived inertia model. `data-ef-motion-weight="light|standard|heavy"` may tune perceived mass, but it must never imply domain importance, severity, permission, risk, or destructive intent.
 
 ### Exit
-Exit is shorter than entry and uses a damped response rather than spring overshoot. Forma derives transient-surface exit from the same inertial duration using the canonical 0.68 factor, subject to clamping.
+Entry and exit use the same duration and easing. Direction comes from the target position, including mirrored left/right origins.
 
 Focus restoration shall not wait on decorative animation. Native dialog and Popover state changes immediately; animation only represents that state.
 
@@ -301,7 +301,7 @@ Short success confirmation may use check/glyph transition. It shall not create a
 ### Alert and toast notification
 A newly inserted alert may opt into a standard-weight entry cue with a short spatial movement. Persistent alerts shall not repeatedly animate merely because a page rerenders.
 
-Toast notifications use a standard perceived weight by default. When implemented with the Popover API, show/hide state remains browser authoritative and dismissal uses the shorter derived exit duration.
+Toast notifications use a standard perceived weight by default. When implemented with the Popover API, show/hide state remains browser authoritative and dismissal uses the same inertial duration as entry.
 
 Notification motion never substitutes for live-region semantics, visible text, dismissal policy, or durable confirmation.
 
@@ -493,7 +493,7 @@ The motion contract is:
 - light perceived weight by default;
 - opacity plus a very small origin-related displacement MAY be used;
 - entry SHALL visually relate the surface to its invoker without large travel;
-- exit SHALL be shorter and more damped than entry;
+- exit SHALL share entry duration and easing;
 - motion SHALL NOT be the only indication that the surface appeared;
 - the content SHALL NOT require hover as its only access path;
 - focus, dismissal, timeout, and accessible-description behavior remain native/application responsibilities according to the chosen semantic pattern;
@@ -696,3 +696,11 @@ When a real interaction cannot be represented by the five canonical models, the 
 - expected implementation boundary between Forma and application/Limen.
 
 Only then may the canonical motion vocabulary be extended.
+
+## MOT-030 — Reciprocal interactions
+
+Every reversible interaction SHALL share its motion model, mass, stiffness, damping, duration calculation, clamp bounds and easing in both directions. Only the target state and appropriate direction change. Left/right flyouts SHALL mirror their spatial origins. The exit token remains a compatibility name for inertial duration. Perceptual opacity and backdrop tracks retain their own shared perceptual model. Reduced motion SHALL remain immediate.
+
+Rapid changes SHALL retarget browser transitions from the current rendered position without an application animation queue. CSS does not guarantee continuous physical velocity, and native top-layer display/overlay behavior remains browser-owned. A consuming application requiring strict velocity continuity must supply its motion controller through Limen; Forma does not introduce a runtime simulator.
+
+Supersedes the shorter-exit guidance in MOT-008, MOT-009 and MOT-020. Verify preset equality at clamp boundaries, paired browser durations/easings, mirrored flyout origins and interrupted reversal.

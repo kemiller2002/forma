@@ -137,7 +137,7 @@ export default {
     "No anchor placement, collision handling or bottom-sheet presentation is provided."
   ],
   motion: [
-    "Same as [[popover]]: opacity fades by perceptual interpolation while the surface settles from 0.35rem above and 98.5% scale over the light inertial duration; exit uses the shorter derived exit duration and holds display until done.",
+    "Same as [[popover]]: opacity fades by perceptual interpolation while the surface settles from 0.35rem above and 98.5% scale over the light inertial duration; exit uses the same inertial duration as entry and holds display until done.",
     "Item hover is an instant background change (no transition).",
     "`data-ef-motion-weight` changes perceived mass; light is the default. The native open state is authoritative.",
     "Under `prefers-reduced-motion: reduce` the transitions are effectively instant."

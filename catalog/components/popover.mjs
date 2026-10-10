@@ -20,7 +20,7 @@ export default {
       "Non-modal: the page stays interactive; `popover=\"auto\"` closes on outside click or Escape, `popover=\"manual\"` closes only when told to.",
       "At most `min(30rem, 100vw - 2rem)` wide and `min(80dvh, 100dvh - 2rem)` tall; longer content scrolls inside with contained overscroll.",
       "Placement is not managed by Forma: the surface sits at the viewport's block-start, inline-start corner unless the application positions it.",
-      "Light perceived weight by default: a small downward settle and fade on entry, a shorter exit."
+      "Light perceived weight by default: a small downward settle and fade on entry, an exit with the same duration and easing."
     ]
   },
   examples: [
@@ -142,7 +142,7 @@ export default {
   ],
   motion: [
     "Entry: opacity fades in by perceptual interpolation while the surface settles from 0.35rem above and 98.5% scale over the light inertial duration with damped easing.",
-    "Exit: the reverse over the shorter derived exit duration; `display` and `overlay` are held until the exit finishes so it is visible.",
+    "Exit: the reverse over the same inertial duration as entry; `display` and `overlay` are held until the exit finishes so it is visible.",
     "`data-ef-motion-weight` changes perceived mass (light by default). The native `:popover-open` state is authoritative and is never delayed.",
     "Under `prefers-reduced-motion: reduce` the transitions are effectively instant."
   ],

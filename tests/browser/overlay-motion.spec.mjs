@@ -45,24 +45,23 @@ test("left and right flyouts preserve opposite physical origins", async ({ page 
   ]);
 });
 
-test("modal and flyout entry use a longer physics-derived duration than exit", async ({ page }) => {
+test("modal and flyout entry and exit share duration and easing", async ({ page }) => {
   for (const [buttonName, selector] of [
     ["Open modal", "#test-modal"],
     ["Open left flyout", "#test-left-flyout"],
     ["Open right flyout", "#test-right-flyout"]
   ]) {
     const surface = page.locator(selector);
-    const exitDuration = await surface.evaluate(element =>
-      getComputedStyle(element).transitionDuration.split(",")[0].trim()
-    );
+    const response = element => {
+      const style = getComputedStyle(element);
+      return { duration: style.transitionDuration, easing: style.transitionTimingFunction };
+    };
+    const exitResponse = await surface.evaluate(response);
 
     await page.getByRole("button", { name: buttonName }).click();
 
-    const entryDuration = await surface.evaluate(element =>
-      getComputedStyle(element).transitionDuration.split(",")[0].trim()
-    );
-
-    expect(seconds(entryDuration)).toBeGreaterThan(seconds(exitDuration));
+    const entryResponse = await surface.evaluate(response);
+    expect(entryResponse).toEqual(exitResponse);
     await page.keyboard.press("Escape");
   }
 });
@@ -104,4 +103,31 @@ test("flyouts remain contained at 320 CSS pixels", async ({ page }) => {
   expect(box).not.toBeNull();
   expect(box.x).toBeGreaterThanOrEqual(0);
   expect(box.height).toBeLessThanOrEqual(700.5);
+});
+
+// Test harness only: Forma ships no runtime motion code. Freeze a browser
+// transition halfway through to measure reversal without wall-clock races.
+test("interrupted flyout reversal starts at the current rendered position", async ({ page }) => {
+  for (const selector of ["#test-left-flyout", "#test-right-flyout"]) {
+    const surface = page.locator(selector);
+    await surface.evaluate(element => element.showModal());
+    await expect.poll(() => surface.evaluate(element => element.getAnimations().some(animation => animation.transitionProperty === "translate"))).toBe(true);
+    const sample = await surface.evaluate(element => {
+      const animation = element.getAnimations().find(animation => animation.transitionProperty === "translate");
+      animation.pause();
+      animation.currentTime = animation.effect.getTiming().duration * 0.35;
+      const before = getComputedStyle(element).translate;
+      element.close();
+      const after = getComputedStyle(element).translate;
+      return { before, after, open: element.open };
+    });
+    expect(sample.open).toBe(false);
+    expect(sample.after).toBe(sample.before);
+    await expect(surface).toBeHidden();
+    await surface.evaluate(element => element.showModal());
+    await expect(surface).toHaveJSProperty("open", true);
+    await expect.poll(() => surface.evaluate(element => parseFloat(getComputedStyle(element).translate))).toBe(0);
+    await surface.evaluate(element => element.close());
+    await expect(surface).toBeHidden();
+  }
 });

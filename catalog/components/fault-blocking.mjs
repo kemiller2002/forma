@@ -181,7 +181,7 @@ export default {
   ],
   motion: [
     "Opening uses the shared dialog transition: the surface settles from a 0.75rem offset and 0.985 scale while the backdrop dims and blurs with a mass-independent perceptual fade.",
-    "The default perceived weight is heavy because of surface size and commitment, not severity; exit uses the shorter, more damped exit duration.",
+    "The default perceived weight is heavy because of surface size and commitment, not severity; exit uses the same duration and easing as entry.",
     "Motion never delays focus, the modal state, or recovery actions; the native open state is authoritative.",
     "Under `prefers-reduced-motion: reduce` translate and scale are removed, the backdrop blur is dropped and durations collapse to 0.01ms."
   ],

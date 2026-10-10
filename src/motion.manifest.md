@@ -18,9 +18,9 @@ Perceptual, cadence and direct variables are defined once on `:where(:root)`. Th
 
 - `T_inertia = clamp(110ms, base × sqrt(m / k) / ζ, 420ms)`
 - `T_gravity = clamp(100ms, base × sqrt(2s / g), 420ms)`; mass is not an input
-- exit `0.68 × T_inertia`, press `0.5 × T_inertia`, legacy state `0.72 × T_inertia`, each clamped
+- exit `T_inertia`, press `0.5 × T_inertia`, legacy state `0.72 × T_inertia`, each clamped
 
-Static fallbacks for browsers without typed CSS math are the standard preset rounded to whole milliseconds: 214ms inertia, 255ms gravity, 154ms state, 107ms press, 146ms exit. `tools/motion-model.mjs` mirrors these derivations, and the tests check the CSS against it.
+Static fallbacks for browsers without typed CSS math are the standard preset rounded to whole milliseconds: 214ms inertia, 255ms gravity, 154ms state, 107ms press, 214ms exit. `tools/motion-model.mjs` mirrors these derivations, and the tests check the CSS against it.
 
 ## Perceived-weight defaults
 

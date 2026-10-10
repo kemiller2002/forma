@@ -38,19 +38,19 @@ test("surface mass produces coherent light standard heavy inertial ordering", as
   expect(standard).toBeLessThan(heavy);
 });
 
-test("popover and toast exits are derived shorter than entries", async ({ page }) => {
+test("popover and toast exits share their entry response", async ({ page }) => {
   const popover = page.locator("#physics-popover");
   const popoverExit = seconds((await durations(popover))[1]);
   await page.locator("#physics-popover-open").click();
   const popoverEntry = seconds((await durations(popover))[1]);
-  expect(popoverExit).toBeLessThan(popoverEntry);
+  expect(popoverExit).toBeCloseTo(popoverEntry, 5);
   await page.locator("#physics-popover-close").click();
 
   const toast = page.locator("#physics-toast");
   const toastExit = seconds((await durations(toast))[1]);
   await page.locator("#physics-toast-open").click();
   const toastEntry = seconds((await durations(toast))[1]);
-  expect(toastExit).toBeLessThan(toastEntry);
+  expect(toastExit).toBeCloseTo(toastEntry, 5);
   await page.locator("#physics-toast-close").click();
 });
 

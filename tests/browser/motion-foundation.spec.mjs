@@ -59,7 +59,7 @@ test("weight overrides order inertial timing while gravity timing stays mass ind
 
   expect(inertia[0]).toBeLessThan(inertia[1]);
   expect(inertia[1]).toBeLessThan(inertia[2]);
-  exit.forEach((value, index) => expect(value).toBeLessThan(inertia[index]));
+  exit.forEach((value, index) => expect(value).toBeCloseTo(inertia[index], 5));
   expect(Math.max(...gravity) - Math.min(...gravity)).toBeLessThan(0.5);
 });
 

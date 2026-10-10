@@ -20,7 +20,7 @@ export default {
       "The trigger is a 44 by 44px round native button, so the hint is reachable by keyboard, touch and switch access.",
       "The surface is at most `min(20rem, 100vw - 2rem)` wide and wraps long words; inverse colors distinguish it from the page.",
       "Anchor placement above the button (flipping below or to the other side when there is no room) where supported. Without anchor positioning the surface has `margin: 0`, so it opens at the block-start, inline-start corner of the viewport, readable but away from its button.",
-      "Light perceived weight: a small upward settle and fade on entry, a shorter exit, and no displacement under reduced motion."
+      "Light perceived weight: a small upward settle and fade on entry, an exit with the same duration and easing, and no displacement under reduced motion."
     ]
   },
   examples: [
@@ -145,7 +145,7 @@ export default {
   ],
   motion: [
     "Entry: opacity fades by perceptual interpolation while the surface settles from `--ef-tooltip-offset` below its resting position over the light inertial duration with damped easing.",
-    "Exit: the reverse over the shorter derived exit duration; `display` and `overlay` are held until it finishes.",
+    "Exit: the reverse over the same inertial duration as entry; `display` and `overlay` are held until it finishes.",
     "`data-ef-motion-weight` on `.ef-tooltip` changes perceived mass; light is the default.",
     "Under `prefers-reduced-motion: reduce` the displacement is removed (the hint only fades) and durations become effectively instant."
   ],
