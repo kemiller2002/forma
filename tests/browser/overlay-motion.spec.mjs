@@ -107,7 +107,7 @@ test("flyouts remain contained at 320 CSS pixels", async ({ page }) => {
 
 // Test harness only: Forma ships no runtime motion code. Freeze a browser
 // transition halfway through to measure reversal without wall-clock races.
-test("interrupted flyout reversal starts at the current rendered position", async ({ page }) => {
+test("interrupted flyout reversal preserves position or uses native static fallback", async ({ page, browserName }) => {
   for (const selector of ["#test-left-flyout", "#test-right-flyout"]) {
     const surface = page.locator(selector);
     await surface.evaluate(element => element.showModal());
@@ -119,10 +119,23 @@ test("interrupted flyout reversal starts at the current rendered position", asyn
       const before = getComputedStyle(element).translate;
       element.close();
       const after = getComputedStyle(element).translate;
-      return { before, after, open: element.open };
+      return { before, after, open: element.open, display: getComputedStyle(element).display,
+        closedX: getComputedStyle(element).getPropertyValue("--ef-flyout-closed-x").trim(),
+        translateTransitions: element.getAnimations().filter(animation => animation.transitionProperty === "translate").length };
     });
     expect(sample.open).toBe(false);
-    expect(sample.after).toBe(sample.before);
+    // Chromium's retained-exit path is verified by the initial CI run; do
+    // not let an accidental loss of that enhancement pass as a fallback.
+    if (browserName === "chromium") expect(sample.display).not.toBe("none");
+    if (sample.display === "none") {
+      // Engines without dialog exit retention remove it immediately. Preserve
+      // their native authority and verify the correct static closed endpoint.
+      expect(sample.after).toBe(sample.closedX);
+      expect(sample.translateTransitions).toBe(0);
+    } else {
+      expect(sample.after).toBe(sample.before);
+      expect(sample.translateTransitions).toBeLessThanOrEqual(1);
+    }
     await expect(surface).toBeHidden();
     await surface.evaluate(element => element.showModal());
     await expect(surface).toHaveJSProperty("open", true);

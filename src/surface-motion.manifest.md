@@ -48,3 +48,7 @@ CSS must never create a parallel semantic state machine.
 
 - Owner: Echelon Foundry design system
 - Last checked against implementation: 2026-09-29
+
+## Native exit fallback
+
+Browser support for retaining native dialog display/overlay during closing varies. Retained CSS transitions reverse from the rendered position; engines that immediately hide the dialog use the correct static closed endpoint. Forma preserves native semantics in both cases and adds no runtime workaround.

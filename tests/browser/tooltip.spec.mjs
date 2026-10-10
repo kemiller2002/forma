@@ -57,12 +57,12 @@ test("closed hint leaves no invisible interactive state", async ({ page }) => {
   expect(state).toEqual({ open: false, display: "none" });
 });
 
-test("light weight motion: tiny origin displacement, perceptual opacity, shorter exit", async ({ page }) => {
+test("light weight motion: tiny origin displacement, perceptual opacity, reciprocal response", async ({ page }) => {
   const timing = await page.evaluate(() => {
     const element = document.getElementById("tooltip-retention");
     const read = () => {
       const style = getComputedStyle(element);
-      return { properties: style.transitionProperty, durations: style.transitionDuration.split(",").map((value) => Number.parseFloat(value) * (value.trim().endsWith("ms") ? 1 : 1000)) };
+      return { properties: style.transitionProperty, easing: style.transitionTimingFunction, durations: style.transitionDuration.split(",").map((value) => Number.parseFloat(value) * (value.trim().endsWith("ms") ? 1 : 1000)) };
     };
     const closed = read();
     element.showPopover();
@@ -74,8 +74,9 @@ test("light weight motion: tiny origin displacement, perceptual opacity, shorter
   });
   expect(timing.mass).toBe("0.65");
   expect(timing.closed.properties).toBe("opacity, translate, display, overlay");
-  // Spatial exit (index 1) is shorter than spatial entry.
-  expect(timing.closed.durations[1]).toBeLessThan(timing.open.durations[1]);
+  // Spatial response is identical in both directions.
+  expect(timing.closed.durations).toEqual(timing.open.durations);
+  expect(timing.closed.easing).toBe(timing.open.easing);
   // Opacity is perceptual interpolation in both directions.
   expect(timing.closed.durations[0]).toBe(timing.open.durations[0]);
   const offset = await surface(page).evaluate((element) => Number.parseFloat(getComputedStyle(element).getPropertyValue("--ef-tooltip-offset")));

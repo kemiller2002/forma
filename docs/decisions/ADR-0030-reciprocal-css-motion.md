@@ -18,3 +18,7 @@ Validation: motion-model tests, strict audit, native overlay browser regressions
 - Work WI-0024 is active pending CI. Initial edits preceded work begin while the native Praxis bootstrap failed on tar ownership; bootstrap then succeeded with --no-same-owner. Provider usage metrics are unavailable.
 
 Next action: inspect PR conformance results, resolve any browser regressions, then integrate and release through the existing workflows.
+
+## CI follow-up
+
+Initial CI passed site/mobile, workflow and Praxis checks. The design-system browser run passed 3,355 tests, skipped 59 and reported one flaky unrelated callout test. Five failures identified three stale shorter-exit tooltip assertions and native dialog exit retention differences in Firefox/WebKit. The tooltip now checks equal duration and easing. Interrupted reversal now checks position continuity when the browser retains the surface, otherwise immediate native disappearance at the closed endpoint with no retained translate transition. No runtime layer was added. These revisions require another CI run.
