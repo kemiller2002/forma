@@ -121,3 +121,9 @@ npm run catalog:check         # whole-catalog coverage and integrity
 node tools/catalog/validate.mjs switch select   # check specific entries
 npm run site:check            # build site, structural tests, mobile/a11y browser tests
 ```
+
+## Public copy language
+
+Use American English in all UI labels, headings, summaries, documentation, examples, help and accessibility copy. Write **color**, **behavior**, **center**, **labeled**, and **neighbor**. Correct new wording at its canonical catalog source, not by post-processing generated HTML.
+
+Avoid changing established code, CSS class names, element IDs, data attributes, package paths, or versioned raw-sample URLs merely to correct spelling. Existing machine-facing identifiers remain stable until a separately versioned compatibility migration explicitly handles them. US-English visible content and unchanged machine contracts are independent requirements.

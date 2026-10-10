@@ -122,6 +122,10 @@ IDs that a consumer does not recognize should be preserved as inert data, not
 rendered or rejected. There are no markup or token changes for existing
 components. See `docs/ICONS.md`.
 
+## 0.6.2
+
+The documentation site and icon guidance adopt US English spelling. Publicly visible headings and descriptions use `color`, `behavior`, `labeled`, and related spellings; previously published technical identifiers, CSS classes and example file names remain unchanged for compatibility. Use the immutable 0.6.2 package when published, not the moving main branch.
+
 ## 0.6.1
 
 Patch upgrade from 0.6.0. The new version constrains native date/time input width inside responsive `.ef-field` grids while keeping native browser pickers, labels, values, and events unchanged. The Forma documentation site also presents unbroken navigation labels and internally scrollable code examples on narrow screens. Consumers must pin the actual immutable 0.6.1 release once available; do not assume a Git commit alone establishes publication.

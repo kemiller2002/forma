@@ -1,6 +1,6 @@
 // Per-icon documentation pages (WI-0023): guidance covers the registry
 // exactly, and every generated page shows the real compiled geometry, every
-// documented size, colour context and configuration, with correct
+// documented size, color context and configuration, with correct
 // accessibility wiring and no script.
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -12,6 +12,7 @@ import {
   iconRawFiles,
   loadIconCatalog,
   renderIconGallery,
+  renderNewIconIndex,
   renderIconPage,
   validateIconDocs
 } from "../tools/catalog/render-icons.mjs";
@@ -52,13 +53,13 @@ test("each page shows the real compiled geometry, version and digest", () => {
   }
 });
 
-test("each page documents meaning, sizes, colour contexts and every configuration", () => {
+test("each page documents meaning, sizes, color contexts and every configuration", () => {
   for (const icon of catalog.icons) {
     const html = pages.get(icon.name);
     for (const id of SECTIONS) assert.ok(html.includes(`id="section-${id}-title"`), `${icon.name}: section ${id} missing`);
     for (const size of ICON_SIZES) assert.ok(html.includes(`--ef-icon-size:${size}px`), `${icon.name}: ${size}px preview missing`);
     for (const context of ["primary", "secondary", "accent", "secondary-surface", "inverse"]) {
-      assert.ok(html.includes(`data-colour-context="${context}"`), `${icon.name}: ${context} colour context missing`);
+      assert.ok(html.includes(`data-colour-context="${context}"`), `${icon.name}: ${context} color context missing`);
     }
     for (const config of iconConfigurations(icon)) {
       assert.ok(html.includes(`data-example="${config.id}"`), `${icon.name}: configuration ${config.id} missing`);
@@ -91,12 +92,37 @@ test("pages are static and link into one navigable set", () => {
     const html = pages.get(icon.name);
     assert.equal(/<script\b|\son[a-z]+=/i.test(html), false, `${icon.name}: page contains script`);
     assert.ok(gallery.includes(`href="../icons/${icon.name}/"`), `${icon.name}: gallery does not link to the page`);
-    for (const neighbour of [icon.previous, icon.next].filter(Boolean)) {
-      assert.ok(html.includes(`href="../../icons/${neighbour}/"`), `${icon.name}: pager link to ${neighbour} missing`);
+    for (const neighbor of [icon.previous, icon.next].filter(Boolean)) {
+      assert.ok(html.includes(`href="../../icons/${neighbor}/"`), `${icon.name}: pager link to ${neighbor} missing`);
     }
     for (const other of icon.docs.related) assert.ok(html.includes(`href="../../icons/${other}/"`), `${icon.name}: related link to ${other} missing`);
     assert.deepEqual(iconRawFiles(icon).map(file => file.file), ["decorative.txt", ...iconConfigurations(icon).map(config => `${config.id}.txt`)]);
   }
   assert.equal(catalog.icons[0].previous, undefined);
   assert.equal(catalog.icons.at(-1).next, undefined);
+});
+
+
+test("icon gallery and all 80 icon pages use American English in visible content", () => {
+  const htmlPages = [
+    ["icon gallery", renderIconGallery("../", catalog)],
+    ["new icons", renderNewIconIndex("../../", catalog)],
+    ...catalog.icons.map(icon => [icon.name, pages.get(icon.name)])
+  ];
+  for (const [name, html] of htmlPages) {
+    // Ignore programmatic identifiers, filenames, markup and copyable source:
+    // published URLs /custom-colour.txt and data-colour-context are maintained
+    // for backwards compatibility; they are not reader-facing descriptions.
+    const text = html
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+      .replace(/<pre\b[^>]*>[\s\S]*?<\/pre>/gi, " ")
+      .replace(/<code\b[^>]*>[\s\S]*?<\/code>/gi, " ")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&[^;\s]+;/g, " ");
+    assert.doesNotMatch(
+      text,
+      /\b(colour|colours|coloured|colourful|behaviour|behaviours|labelled|labelling|neighbour|neighbours|centred|grey|catalogue)\b/i,
+      name + ": displayed copy must use US English"
+    );
+  }
 });
