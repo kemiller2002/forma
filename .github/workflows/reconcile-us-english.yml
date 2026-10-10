@@ -1,0 +1,47 @@
+name: Validate and reconcile US English Forma docs
+on:
+  push:
+    branches: [fix/forma-us-english-color-docs]
+    paths: [.github/workflows/reconcile-us-english.yml]
+permissions:
+  contents: write
+jobs:
+  reconcile:
+    if: github.repository == 'kemiller2002/forma'
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0, persist-credentials: true}
+      - uses: actions/setup-dotnet@v5
+        with: {dotnet-version: '10.0.x'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Generate site and verify US terminology and publication contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags
+          chmod +x ./praxis
+          npm install --ignore-scripts=false
+          npm run build
+          npm run site:build
+          node --test tests/site-build.test.mjs tests/icon-docs.test.mjs tests/package-contract.test.mjs
+          ./praxis registry check
+          if ! ./praxis work show GH-135 >/dev/null 2>&1; then
+            ./praxis add "Use American English in Forma icon reference and docs" --id GH-135 --source github-issue --source-reference "https://github.com/kemiller2002/forma/issues/135" --priority medium
+          fi
+          base="$(git merge-base HEAD origin/main)"
+          now="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          reason="GitHub connector authored focused American English documentation changes; attribute only real commit history"
+          ./praxis work reconcile --id GH-135 --reason "$reason" --range "$base..HEAD" --occurred-at "$now" --dry-run
+          ./praxis work reconcile --id GH-135 --reason "$reason" --range "$base..HEAD" --occurred-at "$now"
+          ./praxis registry build
+          ./praxis validate
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .ros/work .ros/events .ros/telemetry registries
+          if ! git diff --cached --quiet; then
+            git commit -m "praxis: attribute US English docs GH-135"
+            git push origin HEAD:fix/forma-us-english-color-docs
+          fi
