@@ -57,6 +57,7 @@
       { "file": "tests/browser/assessment-motion.spec.mjs", "title": "every assessment option family shares one perceptual selection response" },
       { "file": "tests/browser/marketing.spec.mjs", "title": "marketing buttons and cards use perceptual interpolation without spatial hover" },
       { "file": "tests/site-browser/mobile.spec.mjs", "title": "site buttons use the shared perceptual motion and never move on hover" },
-      { "file": "tests/browser/value-change-motion.spec.mjs", "title": "overlay opacity and backdrop dimming use perceptual interpolation, not mass-derived timing" } ] }
+      { "file": "tests/browser/value-change-motion.spec.mjs", "title": "overlay opacity and backdrop dimming use perceptual interpolation, not mass-derived timing" } ] },
+    {"id": "reciprocal-interactions", "behavior": "Reversible interactions share duration and easing, mirror origins and retarget from the rendered position (MOT-030).", "tests": [{"file": "tests/motion-audit.test.mjs", "title": "reciprocal motion shares the inertia calculation including clamp boundaries"}, {"file": "tests/browser/overlay-motion.spec.mjs", "title": "modal and flyout entry and exit share duration and easing"}, {"file": "tests/browser/overlay-motion.spec.mjs", "title": "left and right flyouts preserve opposite physical origins"}, {"file": "tests/browser/overlay-motion.spec.mjs", "title": "interrupted flyout reversal preserves position or uses native static fallback"}, {"file": "tests/browser/surface-physics.spec.mjs", "title": "popover and toast exits share their entry response"}]}
   ]
 }

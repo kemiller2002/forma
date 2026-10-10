@@ -2,7 +2,7 @@ export default {
   name: "Flyout",
   category: "overlays",
   behavior: "Native HTML",
-  summary: "Left/right edge modal surface built on native dialog semantics with physics-derived motion.",
+  summary: "Left/right edge modal surface built on native dialog semantics with reciprocal physics-derived motion.",
   purpose: {
     description: "A flyout is a full-height modal panel attached to the left or right edge of the viewport, for filters, navigation, record detail or a bounded task that relates to the page underneath. It is a native `dialog` with `class=\"ef-flyout\"` and `data-ef-side=\"left|right\"`, opened with an invoker button (`commandfor` plus `command=\"show-modal\"`). The browser owns the modal behavior: top layer, inert page, focus placement, Escape and focus return. Forma lays out a pinned header with a title and close button, a scrolling body, and a pinned action footer, respects safe-area insets, and slides the panel in from its edge with heavy perceived weight. Swipe-to-close, drag, resizing, bottom sheets and persistent non-modal drawers are application or Limen behavior.",
     useWhen: [
@@ -205,7 +205,7 @@ export default {
   ],
   motion: [
     "Entry: the panel slides from its edge (`--ef-flyout-closed-x`) to rest over the heavy inertial duration with spring easing. The backdrop dims and blurs by perceptual interpolation, independent of mass.",
-    "Exit: the panel slides back over the shorter derived exit duration with damped easing (no overshoot); display and overlay are held until it finishes.",
+    "Exit: the panel slides back over the same inertial duration and spring easing as entry; display and overlay are held until it finishes.",
     "`data-ef-motion-weight` changes perceived mass; heavy is the default. The native open state is authoritative and focus moves immediately.",
     "Under `prefers-reduced-motion: reduce` the edge translation is removed, the backdrop blur is dropped, and the state change is effectively instant."
   ],

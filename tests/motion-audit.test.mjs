@@ -42,14 +42,10 @@ test("gravity timing follows sqrt(2s / g) and ignores mass", () => {
   assert.ok(gravityDuration({ distance: 0.3 }) < gravityDuration({ distance: 0.45 }), "shorter travel falls faster");
 });
 
-test("exit derives from inertia with the canonical 0.68 factor and is always shorter than entry", () => {
-  presetOrder.forEach((weight) => {
-    const preset = PRESETS[weight];
-    assert.ok(exitDuration(preset) < inertiaDuration(preset), `${weight} exit shorter than entry`);
-    assert.ok(Math.abs(exitDuration(preset) - inertiaDuration(preset) * 0.68) < 1e-9 || exitDuration(preset) === 80 || exitDuration(preset) === 220);
-    assert.ok(pressDuration(preset) < inertiaDuration(preset));
-    assert.ok(stateDuration(preset) < inertiaDuration(preset));
-  });
+test("reciprocal motion shares the inertia calculation including clamp boundaries", () => {
+  for (const preset of [...Object.values(PRESETS), { mass: 0.01, stiffness: 10, damping: 1 }, { mass: 100, stiffness: 0.1, damping: 0.1 }]) {
+    assert.equal(exitDuration(preset), inertiaDuration(preset));
+  }
 });
 
 test("static CSS fallbacks equal the standard preset derivation", () => {
@@ -58,7 +54,7 @@ test("static CSS fallbacks equal the standard preset derivation", () => {
     "--ef-motion-gravity-duration": 255,
     "--ef-motion-state-duration": 154,
     "--ef-motion-press-duration": 107,
-    "--ef-motion-exit-duration": 146
+    "--ef-motion-exit-duration": 214
   });
 });
 

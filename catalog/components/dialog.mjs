@@ -21,7 +21,7 @@ export default {
       "Native modal behavior: top layer, inert background, focus containment, Escape and focus return.",
       "Opened and closed declaratively by invoker buttons; no script is needed for the baseline.",
       "Width `min(38rem, 100vw - 2rem)` and height capped to the dynamic viewport; long content scrolls inside the dialog.",
-      "Heavy perceived weight by default: a short upward settle on entry and a shorter, damped exit."
+      "Heavy perceived weight by default: a short upward settle on entry and a reciprocal exit with the same duration and easing."
     ]
   },
   examples: [
@@ -117,7 +117,7 @@ export default {
       "ef-dialog": "The dialog surface: border, primary surface, shadow, width `min(38rem, 100vw - 2rem)`, viewport-capped height and contained overscroll. Also styles the backdrop.",
       "ef-dialog__body": "Padded content region (1.5rem, 1rem at 44rem and below).",
       "ef-dialog__actions": "Wrapping action row aligned to the inline end with a top rule; at 44rem and below its buttons stretch to full width.",
-      "open": "Native open state, set by the browser. `[open]` switches the surface to its resting position and the backdrop to its dimmed, blurred state, and selects the entry (spring) timing.",
+      "open": "Native open state, set by the browser. `[open]` switches the surface to its resting position and the backdrop to its dimmed, blurred state, while preserving the shared spring timing in both directions.",
       "data-ef-motion-weight": "Presentation-only perceived mass: heavy (default for dialogs), standard or light. Never encodes severity or destructiveness."
     },
     keyboard: [
@@ -161,7 +161,7 @@ export default {
   ],
   motion: [
     "Entry: the surface rises from 0.75rem below and scales from 98.5% to rest over the heavy inertial duration with spring easing; the backdrop dims and blurs by perceptual interpolation, independent of mass.",
-    "Exit: the same path reversed over the shorter derived exit duration with damped easing, and the backdrop fades; `display` and `overlay` are held until the exit finishes.",
+    "Exit: the same path reversed over the same inertial duration and easing as entry, and the backdrop fades; `display` and `overlay` are held until the exit finishes.",
     "`data-ef-motion-weight` changes perceived mass (heavy is the default). The native open state is always authoritative; motion never delays focus or inertness.",
     "Under `prefers-reduced-motion: reduce` the travel and scale are removed, the backdrop blur is dropped, and remaining transitions are effectively instant."
   ],

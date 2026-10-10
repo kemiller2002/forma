@@ -184,7 +184,7 @@ export default {
   motion: [
     "Opening fades in (perceptual duration) while the surface rises 0.75rem and scales from 0.985 to 1 with the inertial duration, starting from `@starting-style`.",
     "The default heavy mass makes the entry slower and more settled than a menu, matching the palette's larger attentional commitment; `data-ef-motion-weight` can lighten it.",
-    "Closing uses the shorter, more damped exit duration, and `display` and `overlay` transition discretely so the exit is visible before the dialog leaves the top layer.",
+    "Closing uses the same duration and easing as entry, and `display` and `overlay` transition discretely so the exit is visible before the dialog leaves the top layer.",
     "The native open state is authoritative; interrupting mid-transition simply retargets.",
     "Under `prefers-reduced-motion: reduce` the transition duration is 0.01ms, so the palette appears and disappears immediately."
   ],

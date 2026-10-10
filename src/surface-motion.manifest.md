@@ -23,7 +23,7 @@ These defaults describe visual inertia only.
 
 - inertial entry: `sqrt(mass / stiffness) / damping`
 - gravity cue: `sqrt(2 * distance / gravity)`
-- exit: `0.68 * inertial entry`, clamped to the supported UI range
+- exit: identical to inertial entry, with the same easing and clamp bounds
 - reduced motion: effectively immediate spatial change with final visual state preserved
 - model vocabulary, classification and audit: see `src/motion.manifest.md`
 
@@ -48,3 +48,7 @@ CSS must never create a parallel semantic state machine.
 
 - Owner: Echelon Foundry design system
 - Last checked against implementation: 2026-09-29
+
+## Native exit fallback
+
+Browser support for retaining native dialog display/overlay during closing varies. Retained CSS transitions reverse from the rendered position; engines that immediately hide the dialog use the correct static closed endpoint. Forma preserves native semantics in both cases and adds no runtime workaround.
