@@ -309,3 +309,31 @@ test("Forma 0.6.0 publishes a dedicated, complete and machine-navigable page for
   assert.equal(legacy.length, 40, "original forty were changed or lost");
   assert.ok(legacy.every(icon => icon.introducedIn === "0.5.0"), "original icons keep correct version provenance");
 });
+
+
+test("top navigation selects only the owning section, never permanent Agent use", () => {
+  const cases = [
+    ["index.html", "Overview", "page"],
+    ["components/index.html", "Components", "page"],
+    ["components/date-time-field/index.html", "Components", "location"],
+    ["icons/index.html", "Icons", "page"],
+    ["icons/new/index.html", "Icons", "location"],
+    ["icons/email/index.html", "Icons", "location"],
+    ["compositions/index.html", "Compositions", "page"],
+    ["accessibility/index.html", "Accessibility", "page"],
+    ["agents/index.html", "Agent use", "page"]
+  ];
+  for (const [file, active, expectedCurrent] of cases) {
+    const source = fs.readFileSync(path.join(output, file), "utf8");
+    const nav = source.match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
+    assert.ok(nav, file + ": missing primary navigation");
+    const selected = [...nav.matchAll(/<a\b([^>]*)>([^<]+)<\/a>/g)]
+      .filter(([, attrs]) => attrs.includes("aria-current"))
+      .map(([, attrs, text]) => ({
+        name: text.trim(),
+        current: attrs.match(/aria-current="([^"]+)"/)?.[1] ?? ""
+      }));
+    assert.deepEqual(selected, [{ name: active, current: expectedCurrent }], file + ": navigation active state incorrect");
+    assert.ok(!nav.includes("pill-link"), file + ": permanent Agent use highlight returned");
+  }
+});
