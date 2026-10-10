@@ -79,7 +79,7 @@ export const page = ({ title, rootPath, body, description = "Forma, the zero-run
 </body>
 </html>`;
 
-// Tables stack into labelled rows on phones (see site.css). Explicit table
+// Tables stack into labeled rows on phones (see site.css). Explicit table
 // roles keep the semantics when the display value changes.
 // A narrow-viewport document that renders one snippet with Forma CSS only.
 export const frameDocument = ({ title, rootPath, source }) => `<!doctype html>

@@ -173,7 +173,7 @@ export const renderMobileIndex = context => {
     <section class="doc-section" aria-labelledby="mobile-contract-title">
       <h2 id="mobile-contract-title">The mobile contract</h2>
       <ul>
-        <li>No page-level horizontal scrolling at 320 CSS pixels and wider; wide data scrolls inside a labelled, keyboard-reachable region.</li>
+        <li>No page-level horizontal scrolling at 320 CSS pixels and wider; wide data scrolls inside a labeled, keyboard-reachable region.</li>
         <li>Standalone touch targets are approximately 44 by 44 CSS pixels where practical.</li>
         <li>Layouts stack, wrap or collapse without changing semantic order or meaning.</li>
         <li>No hover-only, drag-only or pointer-only interaction.</li>
