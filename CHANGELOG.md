@@ -7,6 +7,12 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.6.2
+
+Documentation and generated-site copy update: use American English in public-facing headings, descriptions, examples and icon usage guidance, including `color`, `behavior` and `labeled`. Keep published icon IDs, `custom-colour.txt` example paths, `#colour` anchors and `data-colour-context` attributes stable to avoid breaking existing links or machine-driven tests.
+
+Generated icon pages now have a regression test protecting their visible American-English copy. No icon geometry, component interaction, or semantic behavior changed.
+
 ## 0.6.1
 
 Patch release: responsive navigation and native date/time field containment.
