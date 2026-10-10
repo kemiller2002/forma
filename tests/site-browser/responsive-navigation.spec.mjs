@@ -129,3 +129,35 @@ test("long breadcrumb phrases and section navigation remain unbroken at 200% tex
   expect(layout.tocBounds.right).toBeLessThanOrEqual(layout.viewport + 1);
   expect(layout.tocPhraseUnbroken).toBe(true);
 });
+
+
+test("only the current section receives selected navigation treatment on iPhone", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const [url, selected, current] of [
+    ["/site-dist/accessibility/index.html", "Accessibility", "page"],
+    ["/site-dist/agents/index.html", "Agent use", "page"],
+    ["/site-dist/components/date-time-field/index.html", "Components", "location"]
+  ]) {
+    await page.goto(url);
+    const links = await page.locator(".site-nav a").evaluateAll(elements =>
+      elements.map(link => ({
+        text: link.textContent.trim(),
+        ariaCurrent: link.getAttribute("aria-current"),
+        background: getComputedStyle(link).backgroundColor
+      }))
+    );
+    expect(links).toHaveLength(6);
+    const active = links.filter(link => link.ariaCurrent !== null);
+    expect(active, url + ": wrong selected link").toHaveLength(1);
+    expect(active[0].text).toBe(selected);
+    expect(active[0].ariaCurrent).toBe(current);
+    for (const item of links.filter(link => itemNotSelected(link, selected))) {
+      expect(item.background, url + ": inactive link " + item.text + " is still highlighted")
+        .not.toBe(active[0].background);
+    }
+  }
+});
+
+function itemNotSelected(link, selected) {
+  return link.text !== selected;
+}
