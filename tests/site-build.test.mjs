@@ -337,3 +337,25 @@ test("top navigation selects only the owning section, never permanent Agent use"
     assert.ok(!nav.includes("pill-link"), file + ": permanent Agent use highlight returned");
   }
 });
+
+
+test("icon pages use US English for user-facing color terminology without breaking stable automation links", () => {
+  const gallery = fs.readFileSync(path.join(output, "icons", "index.html"), "utf8");
+  const newer = fs.readFileSync(path.join(output, "icons", "new", "index.html"), "utf8");
+  assert.match(gallery, /sizes, color and contrast modes/);
+  assert.match(newer, /size and color guidance/);
+  for (const name of ["add", "email", "attachment"]) {
+    const dir = path.join(output, "icons", name);
+    const html = fs.readFileSync(path.join(dir, "index.html"), "utf8");
+    for (const heading of ["Color and contrast modes", "Forced colors and high contrast", "Custom color"]) {
+      assert.ok(html.includes(heading), name + ": missing US-English heading " + heading);
+    }
+    assert.doesNotMatch(html, /Colour|recolour|forced-colour modes|parent’s colour role/);
+    // These IDs and source links predate the copy edit and remain valid for
+    // agents and bookmarks even though their visible descriptions say "color".
+    assert.ok(html.includes('id="colour"'), name + ": existing section anchor changed");
+    assert.ok(html.includes('data-colour-context="primary"'), name + ": selector changed");
+    assert.ok(fs.existsSync(path.join(dir, "custom-colour.txt")),
+      name + ": backwards-compatible example source path changed");
+  }
+});

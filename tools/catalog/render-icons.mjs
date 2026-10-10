@@ -16,7 +16,7 @@ export const ICON_SIZES = Object.freeze([16, 20, 24, 32, 48]);
 export const NEW_ICON_RELEASE = "0.6.0";
 const introducedIn06 = new Set(Object.keys(applicationIconDocs));
 
-// Colour contexts use Forma roles only. The icon follows currentColor, so the
+// Color contexts use Forma roles only. The icon follows currentColor, so the
 // role on the parent decides the ink; the label text stays a text role so it
 // keeps its contrast in every context.
 const COLOUR_CONTEXTS = Object.freeze([
@@ -50,7 +50,7 @@ export const validateIconDocs = (registryIcons, docs) => {
 };
 
 // The compiled documentation model: registry order (alphabetical), compiled
-// assets and guidance for each icon, plus its neighbours for the pager.
+// assets and guidance for each icon, plus its neighbors for the pager.
 export const loadIconCatalog = ({ registry = readJson("../../icons/registry.json"), docs = iconDocs } = {}) => {
   const problems = validateIconDocs(registry.icons, docs);
   if (problems.length) throw new Error(`Icon documentation is incomplete:\n${problems.join("\n")}`);
@@ -140,8 +140,8 @@ export const iconConfigurations = icon => {
     },
     {
       id: "custom-colour",
-      title: "Custom colour",
-      description: "The stroke is currentColor, so the parent’s colour role decides the ink. Never rewrite the SVG geometry or stroke to recolour it.",
+      title: "Custom color",
+      description: "The stroke is currentColor, so the parent’s color role decides the ink. Never rewrite the SVG geometry or stroke to recolor it.",
       live: `<p style="color:var(--ef-color-accent-primary)">${snippet} <span style="color:var(--ef-color-text-primary)">Accent ink, primary text</span></p>`
     },
     {
@@ -163,7 +163,7 @@ const sizeSection = icon => section("sizes", "Sizes", `<p>The default size is <c
   <ul class="icon-sizes">${join(ICON_SIZES, size => `<li class="icon-sizes__item"><span class="icon-sizes__glyph">${sized(icon, size)}</span><span class="icon-sizes__label">${size}px</span></li>`)}</ul>
   ${codeViewer({ id: "sizes-code", label: "HTML · Set a size", source: sized(icon, 32) })}`);
 
-const colourSection = icon => section("colour", "Colour and contrast modes", `<p>The icon has no colour of its own: its stroke is <code>currentColor</code>. These swatches set only the parent’s colour role. Brands and themes change the ink through the same roles.</p>
+const colourSection = icon => section("colour", "Color and contrast modes", `<p>The icon has no color of its own: its stroke is <code>currentColor</code>. These swatches set only the parent’s color role. Brands and themes change the ink through the same roles.</p>
   <ul class="icon-colours">${join(COLOUR_CONTEXTS, context => `<li class="icon-colours__item" data-colour-context="${context.id}" style="background:${context.surface};color:${context.text}">
     <span class="icon-colours__glyph" style="color:${context.ink}">${sized(icon, 32)}</span>
     <span class="icon-colours__name">${escapeHtml(context.name)}</span>
@@ -171,8 +171,8 @@ const colourSection = icon => section("colour", "Colour and contrast modes", `<p
   </li>`)}</ul>
   <div class="doc-columns">
     <div>
-      <h3>Forced colours and high contrast</h3>
-      <p>In Windows high-contrast and other forced-colour modes the icon is drawn in the system text colour (<code>CanvasText</code>), or the button text colour inside buttons. Meaning must therefore never depend on the icon’s colour.</p>
+      <h3>Forced colors and high contrast</h3>
+      <p>In Windows high-contrast and other forced-color modes the icon is drawn in the system text color (<code>CanvasText</code>), or the button text color inside buttons. Meaning must therefore never depend on the icon’s color.</p>
     </div>
     <div>
       <h3>Grayscale and print</h3>
@@ -204,7 +204,7 @@ const accessibilitySection = icon => section("accessibility", "Accessibility che
   `An icon-only control needs its own accessible name, for example aria-label="${icon.docs.actionLabel}".`,
   "A standalone meaningful image uses alt text; a decorative image uses alt=\"\".",
   "Icon names such as “" + icon.name + "” are identifiers, not translated labels. Write the accessible name in the interface language.",
-  "State and outcome are always written in text. Colour and the glyph only repeat it.",
+  "State and outcome are always written in text. Color and the glyph only repeat it.",
   "Interactive parents keep a touch target of about 44 by 44 CSS pixels."
 ]));
 
@@ -274,7 +274,7 @@ export const renderIconPage = (catalog, icon, rootPath = "../../") => {
     </figure>
   </header>
   <nav class="page-toc" aria-label="Sections of this icon page"><ul>
-    ${join([["meaning", "Meaning"], ["sizes", "Sizes"], ["colour", "Colour and contrast"], ["configurations", "Configurations"], ["source", "Files"], ["accessibility", "Accessibility"], ["related", "Related icons"]], ([id, label]) => `<li><a href="#${id}">${label}</a></li>`)}
+    ${join([["meaning", "Meaning"], ["sizes", "Sizes"], ["colour", "Color and contrast"], ["configurations", "Configurations"], ["source", "Files"], ["accessibility", "Accessibility"], ["related", "Related icons"]], ([id, label]) => `<li><a href="#${id}">${label}</a></li>`)}
   </ul></nav>
   ${section("meaning", "Meaning and when to use it", `<p class="doc-lead">${escapeHtml(icon.docs.meaning)}</p>
     <div class="doc-columns">
@@ -326,7 +326,7 @@ export function renderIconGallery(rootPath = "../", catalog = loadIconCatalog())
     body: `<main id="main" class="icon-gallery">
       <p class="eyebrow">Forma visual language</p>
       <h1>Icon gallery</h1>
-      <p>All ${catalog.icons.length} icons use a ${catalog.grid}×${catalog.grid} grid, ${catalog.strokeWidth} stroke width and currentColor. The geometry is compiled from Forma's original registry, not copied from an external library. Open any icon for its meaning, sizes, colour and contrast modes, and copyable configurations. These previews are decorative; icon-only controls must provide their own accessible names.</p>
+      <p>All ${catalog.icons.length} icons use a ${catalog.grid}×${catalog.grid} grid, ${catalog.strokeWidth} stroke width and currentColor. The geometry is compiled from Forma's original registry, not copied from an external library. Open any icon for its meaning, sizes, color and contrast modes, and copyable configurations. These previews are decorative; icon-only controls must provide their own accessible names.</p>
       <p><a href="${rootPath}icons/new/">New in Forma 0.6.0: all 40 added icons</a> · <a href="${rootPath}components/icon/">Icon usage and accessible examples</a> · <a href="${rootPath}components/">Full component catalog</a></p>
       ${cards}
     </main>`
@@ -349,7 +349,7 @@ export function renderNewIconIndex(rootPath = "../../", catalog = loadIconCatalo
       ${breadcrumbs(rootPath, [{ label: "Icons", href: `${rootPath}icons/` }, { label: "New in ${NEW_ICON_RELEASE}" }])}
       <p class="eyebrow">Forma 0.6.0 · Added vocabulary</p>
       <h1>40 new icons</h1>
-      <p>Every icon below has its own static reference page with a grid preview, size and colour guidance, accessible native-control examples, copyable source, and a downloadable release-versioned SVG. The first 40 icons remain supported.</p>
+      <p>Every icon below has its own static reference page with a grid preview, size and color guidance, accessible native-control examples, copyable source, and a downloadable release-versioned SVG. The first 40 icons remain supported.</p>
       <p><a href="${rootPath}icons/">Browse all ${catalog.icons.length} Forma icons</a></p>
       ${join(categories, category => `<section class="icon-gallery__section" aria-labelledby="recent-${category}">
         <h2 id="recent-${category}">${escapeHtml(titleCase(category))}</h2>
