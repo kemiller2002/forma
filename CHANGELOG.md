@@ -13,6 +13,7 @@ Patch release: responsive navigation and native date/time field containment.
 - Site navigation labels no longer break mid-word or overlap the header at tablet sizes, mobile widths, or larger text scales. Navigation reflows into its own bounded, keyboard-accessible horizontal scroll region.
 - Shared native date, time, and datetime-local fields constrain their intrinsic width within grid columns, including Safari, without replacing the browser picker.
 - Documentation example previews and code snippets scroll within their own containers instead of widening the page.
+- Documentation navigation now highlights only the current section, with `aria-current="page"` on section index pages and `aria-current="location"` on descendants; the Agent use link is not a permanently highlighted call-to-action.
 - Adds generated-page and WebKit responsive tests at eight widths, including the reported date-time-field examples and enlarged text.
 
 No public icon identifiers, assets, or component semantics were renamed.
