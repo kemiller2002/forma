@@ -623,6 +623,27 @@
       },
       "source": "github-issue",
       "sourceReference": "https://github.com/kemiller2002/forma/issues/132"
+    },
+    {
+      "id": "GH-135",
+      "title": "Use American English in Forma icon reference and docs",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-10-10T01:16:32.834Z",
+      "updatedAt": "2026-10-10T01:16:32.834Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "automation",
+        "id": "github/github-actions",
+        "provider": "github",
+        "model": "unknown",
+        "runtime": "github-actions"
+      },
+      "source": "github-issue",
+      "sourceReference": "https://github.com/kemiller2002/forma/issues/135"
     }
   ]
 }
