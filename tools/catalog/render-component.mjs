@@ -277,7 +277,7 @@ export const renderComponentPage = (context, component) => {
     ${pager(context, component)}
   </main>
 </div>`;
-  return page({ title: component.name, rootPath: context.rootPath, body, description: `${component.name} (<${component.tag}>): ${component.summary}` });
+  return page({ title: component.name, rootPath: context.rootPath, body, navSection: "components", navSubpage: true, description: `${component.name} (<${component.tag}>): ${component.summary}` });
 };
 
 export const componentRawFiles = component => [
