@@ -10,7 +10,20 @@ export const VIEWPORTS = [
   { width: 768, label: "Tablet 768" }
 ];
 
-const siteHeader = rootPath => `<header class="site-header">
+// Top-level navigation state is projected from each page's owning section.
+// Only a matching section gets a selected style and aria-current. Detail pages
+// describe their position as "location" rather than claiming the hub URL is
+// the actual current page.
+const primaryLinks = Object.freeze([
+  ["overview", "Overview", ""],
+  ["components", "Components", "components/"],
+  ["icons", "Icons", "icons/"],
+  ["compositions", "Compositions", "compositions/"],
+  ["accessibility", "Accessibility", "accessibility/"],
+  ["agents", "Agent use", "agents/"]
+]);
+
+const siteHeader = (rootPath, navSection, navSubpage = false) => `<header class="site-header">
   <div class="nav-shell">
     <div class="brand">
       <a class="brand-link" href="${rootPath}">
@@ -20,12 +33,7 @@ const siteHeader = rootPath => `<header class="site-header">
       <span class="brand-subtitle">Forma / Interface system</span>
     </div>
     <nav class="site-nav" aria-label="Forma documentation">
-      <a href="${rootPath}">Overview</a>
-      <a href="${rootPath}components/">Components</a>
-      <a href="${rootPath}icons/">Icons</a>
-      <a href="${rootPath}compositions/">Compositions</a>
-      <a href="${rootPath}accessibility/">Accessibility</a>
-      <a class="pill-link" href="${rootPath}agents/">Agent use</a>
+      ${join(primaryLinks, ([section, label, suffix]) => `<a href="${rootPath}${suffix}"${navSection === section ? ` aria-current="${navSubpage ? "location" : "page"}"` : ""}>${label}</a>`, "\n      ")}
     </nav>
   </div>
 </header>`;
@@ -47,7 +55,7 @@ const siteFooter = rootPath => `<footer class="site-footer">
   <p class="footer-note">Forma design system <span>Generated from canonical patterns, catalog entries and the built stylesheet.</span></p>
 </footer>`;
 
-export const page = ({ title, rootPath, body, description = "Forma, the zero-runtime Echelon Foundry design system.", head = "" }) => `<!doctype html>
+export const page = ({ title, rootPath, body, description = "Forma, the zero-runtime Echelon Foundry design system.", head = "", navSection = null, navSubpage = false }) => `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -65,7 +73,7 @@ export const page = ({ title, rootPath, body, description = "Forma, the zero-run
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  ${siteHeader(rootPath)}
+  ${siteHeader(rootPath, navSection, navSubpage)}
   ${body}
   ${siteFooter(rootPath)}
 </body>

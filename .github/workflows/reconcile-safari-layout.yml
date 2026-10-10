@@ -1,0 +1,52 @@
+name: Reconcile Safari layout regression
+on:
+  push:
+    branches: [fix/forma-site-nav-and-native-date-overflow]
+    paths: [.github/workflows/reconcile-safari-layout.yml, site/site.css, tests/site-browser/responsive-navigation.spec.mjs]
+permissions:
+  contents: write
+jobs:
+  reconcile:
+    if: github.repository == 'kemiller2002/forma'
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0, persist-credentials: true}
+      - uses: actions/setup-dotnet@v5
+        with: {dotnet-version: '10.0.x'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Build, verify responsive contracts and reconcile genuine Git changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags
+          chmod +x ./praxis
+          npm install --ignore-scripts=false
+          npm run site:build
+          node --test tests/site-build.test.mjs tests/package-contract.test.mjs
+          # Run the exact zoom regression without the repository's 10-minute
+          # batch delay or the full accessibility crawl; keep the latter as
+          # an independent required pull-request/deployment gate.
+          npx playwright install --with-deps chromium webkit
+          npx playwright test --config=playwright.site.config.mjs tests/site-browser/catalog.spec.mjs -g "documentation pages reflow with 200% text size at 320px"
+          npx playwright test --config=playwright.site.webkit.config.mjs
+          ./praxis registry check
+          if ! ./praxis work show GH-128 >/dev/null 2>&1; then
+            ./praxis add "Prevent responsive nav wrapping and native date overflows" --id GH-128 --source github-issue --source-reference "https://github.com/kemiller2002/forma/issues/128" --priority high
+          fi
+          base="$(git merge-base HEAD origin/main)"
+          now="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          reason="GitHub connector authored source and regression tests for Safari UI bug; post-hoc evidence uses unchanged committed git history"
+          ./praxis work reconcile --id GH-128 --reason "$reason" --range "$base..HEAD" --occurred-at "$now" --dry-run
+          ./praxis work reconcile --id GH-128 --reason "$reason" --range "$base..HEAD" --occurred-at "$now"
+          ./praxis registry build
+          ./praxis validate
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .ros/work .ros/events .ros/telemetry registries
+          if ! git diff --cached --quiet; then
+            git commit -m "praxis: attribute responsive Safari layout repair GH-128"
+            git push origin HEAD:fix/forma-site-nav-and-native-date-overflow
+          fi

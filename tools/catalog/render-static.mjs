@@ -130,5 +130,5 @@ npm run site:check
   
     <p>The repository source of truth for this contract is <code>docs/AGENT-USAGE.md</code>.</p>
   </main>`;
-  return page({ title: "Agent use", rootPath: "../", body: agentBody });
+  return page({ title: "Agent use", rootPath: "../", body: agentBody, navSection: "agents" });
 };

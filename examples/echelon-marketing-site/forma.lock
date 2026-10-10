@@ -4,7 +4,7 @@
 # artifacts (npm run example:install copies this lock, records the current
 # build's sha256, and installs into assets/forma). A real site commits the
 # sha256 printed by install.sh --update against the published release.
-forma 0.6.0
+forma 0.6.1
 repository kemiller2002/forma
 destination assets/forma
 asset forma-echelon-marketing.css sha256:recorded-at-install

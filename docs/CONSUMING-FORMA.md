@@ -122,6 +122,10 @@ IDs that a consumer does not recognize should be preserved as inert data, not
 rendered or rejected. There are no markup or token changes for existing
 components. See `docs/ICONS.md`.
 
+## 0.6.1
+
+Patch upgrade from 0.6.0. The new version constrains native date/time input width inside responsive `.ef-field` grids while keeping native browser pickers, labels, values, and events unchanged. The Forma documentation site also presents unbroken navigation labels and internally scrollable code examples on narrow screens. Consumers must pin the actual immutable 0.6.1 release once available; do not assume a Git commit alone establishes publication.
+
 ## 0.6.0
 
 Forma 0.6.0 extends the static icon registry from 40 to 80 first-party glyphs. Existing icon names and their geometry remain unchanged; no prior component, class, token or runtime contract changes. Additions include `email`, `email-open`, `inbox`, `send`, `reply`, `reply-all`, `forward`, `attachment`, `message`, `chat`, `phone`, `video-call`, common media controls, navigation, and additional status indicators.

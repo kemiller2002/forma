@@ -17,6 +17,7 @@ on:
       - "tests/site-build.test.mjs"
       - "tests/site-browser/**"
       - "playwright.site.config.mjs"
+      - "playwright.site.webkit.config.mjs"
       - "package.json"
       - "docs/AGENT-USAGE.md"
       - "AGENTS.md"
@@ -67,5 +68,7 @@ jobs:
           node-version: "24"
       - run: npm install --ignore-scripts=false
       - run: dotnet restore tools/TokenCompiler/TokenCompiler.fsproj
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium webkit
       - run: npm run site:check
+      - name: Verify responsive navigation and native dates in WebKit
+        run: npx playwright test --config=playwright.site.webkit.config.mjs

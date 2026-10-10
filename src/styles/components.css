@@ -19,8 +19,20 @@
   }
 
   .ef-field {
+    /* A native date/time picker can have a larger intrinsic minimum than its
+       form column in WebKit. Keep the field's track shrinkable instead of
+       letting it widen the containing card or example frame. */
     display: grid;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--ef-primitive-spacing-2, 0.5rem);
+  }
+
+  .ef-field > :is(input[type="date"], input[type="time"], input[type="datetime-local"]) {
+    min-inline-size: 0;
+    inline-size: 100%;
+    max-inline-size: 100%;
   }
 
   .ef-field__label {

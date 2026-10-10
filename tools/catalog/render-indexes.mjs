@@ -93,7 +93,7 @@ export const renderHome = context => {
   </div>
 </section>
 </main>`;
-  return page({ title: "Overview", rootPath: context.rootPath, body });
+  return page({ title: "Overview", rootPath: context.rootPath, body, navSection: "overview" });
 };
 
 export const renderCategoryPage = (context, category) => {
@@ -112,7 +112,7 @@ export const renderCategoryPage = (context, category) => {
     <p class="doc-note">Previews are static renderings of each canonical pattern. Open a component to interact with it.</p>
   </main>
 </div>`;
-  return page({ title: category.name, rootPath: context.rootPath, body, description: `${category.name}: ${category.summary}` });
+  return page({ title: category.name, rootPath: context.rootPath, body, navSection: "components", navSubpage: true, description: `${category.name}: ${category.summary}` });
 };
 
 const initialOf = name => (/^[a-z]/i.test(name) ? name[0].toUpperCase() : "#");
@@ -157,7 +157,7 @@ export const renderAllComponents = context => {
     </section>`)}
   </main>
 </div>`;
-  return page({ title: "All components", rootPath: context.rootPath, body, head: filterStyles(catalog), description: `All ${catalog.components.length} Forma components, alphabetically.` });
+  return page({ title: "All components", rootPath: context.rootPath, body, navSection: "components", head: filterStyles(catalog), description: `All ${catalog.components.length} Forma components, alphabetically.` });
 };
 
 export const renderMobileIndex = context => {
@@ -215,7 +215,7 @@ export const renderCompositionsIndex = context => {
     </li>`)}
   </ul>
 </main>`;
-  return page({ title: "Compositions", rootPath: context.rootPath, body });
+  return page({ title: "Compositions", rootPath: context.rootPath, body, navSection: "compositions" });
 };
 
 export const renderCompositionPage = (context, composition) => {
@@ -241,7 +241,7 @@ export const renderCompositionPage = (context, composition) => {
     <ul class="related-list">${join(used, component => `<li><a href="${componentHref(context.rootPath, component.slug)}">${escapeHtml(component.name)}</a> <code>&lt;${component.tag}&gt;</code><p>${inline(component.summary, context)}</p></li>`)}</ul>
   </section>
 </main>`;
-  return page({ title: composition.title, rootPath: context.rootPath, body });
+  return page({ title: composition.title, rootPath: context.rootPath, body, navSection: "compositions", navSubpage: true });
 };
 
 export const renderAccessibility = context => {
@@ -283,5 +283,5 @@ export const renderAccessibility = context => {
     <li>Category previews are inert static renderings; interactive behavior is on each component page.</li>
   </ul>
 </main>`;
-  return page({ title: "Accessibility", rootPath: context.rootPath, body });
+  return page({ title: "Accessibility", rootPath: context.rootPath, body, navSection: "accessibility" });
 };

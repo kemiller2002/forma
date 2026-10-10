@@ -294,7 +294,7 @@ export const renderIconPage = (catalog, icon, rootPath = "../../") => {
     </li>`)}</ul>`)}
   ${pager(catalog, icon, rootPath)}
 </main>`;
-  return page({ title: `${icon.label} icon`, rootPath, body, head: ICON_STYLES, description: `Forma ${icon.label} icon (${icon.name}): ${icon.docs.meaning}` });
+  return page({ title: `${icon.label} icon`, rootPath, body, navSection: "icons", navSubpage: true, head: ICON_STYLES, description: `Forma ${icon.label} icon (${icon.name}): ${icon.docs.meaning}` });
 };
 
 // Plain-text files served next to each page, one per configuration plus the
@@ -320,6 +320,7 @@ export function renderIconGallery(rootPath = "../", catalog = loadIconCatalog())
   return page({
     title: "Icon gallery",
     rootPath,
+    navSection: "icons",
     description: "Complete static gallery of Forma's versioned, accessible original SVG icons.",
     head: ICON_STYLES,
     body: `<main id="main" class="icon-gallery">
@@ -340,6 +341,8 @@ export function renderNewIconIndex(rootPath = "../../", catalog = loadIconCatalo
   return page({
     title: "New icons in Forma 0.6.0",
     rootPath,
+    navSection: "icons",
+    navSubpage: true,
     description: "Forty first-party email, communication, document, navigation and status SVG icons introduced in Forma 0.6.0.",
     head: ICON_STYLES,
     body: `<main id="main" class="icon-gallery" data-icon-release="${NEW_ICON_RELEASE}">
