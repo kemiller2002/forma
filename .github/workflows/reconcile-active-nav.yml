@@ -1,0 +1,50 @@
+name: Validate and reconcile active Forma nav
+on:
+  push:
+    branches: [feature/forma-nav-active-section-safari]
+    paths: [.github/workflows/reconcile-active-nav.yml, site/site.css, tools/catalog/render-layout.mjs, tools/catalog/render-indexes.mjs, tools/catalog/render-static.mjs, tools/catalog/render-component.mjs, tools/catalog/render-icons.mjs, tests/site-build.test.mjs, tests/site-browser/responsive-navigation.spec.mjs]
+permissions:
+  contents: write
+jobs:
+  validate:
+    if: github.repository == 'kemiller2002/forma'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0, persist-credentials: true}
+      - uses: actions/setup-dotnet@v5
+        with: {dotnet-version: '10.0.x'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Validate pages and WebKit selected-link regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags
+          chmod +x ./praxis
+          npm install --ignore-scripts=false
+          npm run build
+          npm run site:build
+          node --test tests/site-build.test.mjs tests/package-contract.test.mjs
+          npx playwright install --with-deps webkit
+          npx playwright test --config=playwright.site.webkit.config.mjs -g 'only the current section'
+          ./praxis registry check
+          if ! ./praxis work show GH-132 >/dev/null 2>&1; then
+            ./praxis add "Highlight only the active Forma documentation section" --id GH-132 --source github-issue --source-reference "https://github.com/kemiller2002/forma/issues/132" --priority high
+          fi
+          anchor="5708867f93880547b81814b3bf38f20d1bb26df2"
+          git cat-file -e "$anchor^{commit}"
+          now="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          reason="GitHub connector authored active nav fix on verified Safari layout base; reconcile only the new committed delta against GH-132"
+          ./praxis work reconcile --id GH-132 --reason "$reason" --range "$anchor..HEAD" --occurred-at "$now" --dry-run
+          ./praxis work reconcile --id GH-132 --reason "$reason" --range "$anchor..HEAD" --occurred-at "$now"
+          ./praxis registry build
+          ./praxis validate
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .ros/work .ros/events .ros/telemetry registries
+          if ! git diff --cached --quiet; then
+            git commit -m "praxis: attribute active Forma nav semantics GH-132"
+            git push origin HEAD:feature/forma-nav-active-section-safari
+          fi
