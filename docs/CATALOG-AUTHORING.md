@@ -14,6 +14,21 @@ alphabetical index, navigation, the home-page counts and the machine-readable
 
 Composed, multi-component showcases live in `catalog/compositions/<slug>.mjs`.
 
+## Language and terminology
+
+All user-facing Forma documentation, site navigation, headings, labels, examples,
+accessible descriptions, and agent-generated help use **American English**.
+Write **color**, **behavior**, **center**, **labeled**, **gray**, **neighbor**
+and **customize**. Review new or edited catalog entries for these spellings
+before generating the site.
+
+Existing machine-consumed identifiers are separate compatibility contracts.
+Do not silently rename a published file path, CSS selector, HTML id, serialized
+field, icon name, test fixture, or stable agent selector merely to change its
+spelling. For example, the previous icon reference uses `#colour`,
+`data-colour-context` and `custom-colour.txt`; keep those functioning
+until a separately designed versioned migration, but label them **Color**.
+
 ## Adding a new public component
 
 1. Implement the CSS in `src/styles` (or `src/marketing`) and add

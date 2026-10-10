@@ -82,7 +82,7 @@ export default {
         height: 440,
         notes: [
           "Cards are full-width grid rows; text wraps inside the card and the card grows in height, so nothing overflows at 320px.",
-          "The indicator stays vertically centred at the inline start of each card, beside the wrapped text.",
+          "The indicator stays vertically centered at the inline start of each card, beside the wrapped text.",
           "Each card is a large touch target (at least 3.25rem tall, full width); tapping anywhere on it selects the option.",
           "There are no breakpoints: the vertical list is already the narrow layout, and portrait or landscape only changes line lengths."
         ]

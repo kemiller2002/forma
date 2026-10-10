@@ -105,7 +105,7 @@ export default {
       { name: "for", on: "label.ef-field__label", values: "id of the input", default: "—", description: "Associates the visible label." },
       { name: "name", on: "input", values: "string", default: "—", description: "Form field name; the submitted value is always in ISO form." },
       { name: "value", on: "input", values: "ISO date/time string", default: "empty", description: "Initial value in the machine format for the type, not a localized string." },
-      { name: "min", on: "input", values: "ISO date/time string", default: "—", description: "Earliest allowed value. Pickers typically grey out earlier values; typed earlier values fail validation." },
+      { name: "min", on: "input", values: "ISO date/time string", default: "—", description: "Earliest allowed value. Pickers typically gray out earlier values; typed earlier values fail validation." },
       { name: "max", on: "input", values: "ISO date/time string", default: "—", description: "Latest allowed value." },
       { name: "step", on: "input", values: "seconds (time, datetime-local) or days (date)", default: "60 for time, 1 for date", description: "Allowed increment; 900 means 15-minute slots. Values off the step fail validation." },
       { name: "required", on: "input", values: "boolean", default: "absent", description: "Native constraint: the form will not submit while empty." },

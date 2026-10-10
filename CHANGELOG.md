@@ -7,6 +7,10 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.6.2
+
+Documentation terminology patch: use **American English** throughout the icon reference and public guidance. Visible headings, instructions and examples use `color`, `behavior`, `labeled`, `centered` and `gray` instead of British alternatives. Retain the existing `custom-colour.txt`, `#colour`, `data-colour-context`, and related selectors as compatibility identifiers; their visible labels now use `color`. The icon glyphs, registry and CSS runtime behavior are unchanged.
+
 ## 0.6.1
 
 Patch release: responsive navigation and native date/time field containment.
