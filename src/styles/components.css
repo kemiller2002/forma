@@ -922,9 +922,7 @@
     /* Dimming is non-spatial: perceptual interpolation, without mass. */
     transition:
       background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      backdrop-filter var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      display var(--ef-overlay-motion-duration) allow-discrete,
-      overlay var(--ef-overlay-motion-duration) allow-discrete;
+      backdrop-filter var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing);
   }
 
   :where(.ef-dialog, .ef-flyout)[open]::backdrop {
@@ -941,9 +939,7 @@
     scale: 0.985;
     transition:
       translate var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing),
-      scale var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing),
-      display var(--ef-overlay-motion-duration) allow-discrete,
-      overlay var(--ef-overlay-motion-duration) allow-discrete;
+      scale var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing);
   }
 
   .ef-dialog[open] {
@@ -976,9 +972,34 @@
     box-shadow: 0 0 3rem rgb(0 0 0 / 0.24);
     translate: var(--ef-flyout-closed-x) 0;
     transition:
-      translate var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing),
-      display var(--ef-overlay-motion-duration) allow-discrete,
-      overlay var(--ef-overlay-motion-duration) allow-discrete;
+      translate var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing);
+  }
+
+  /* Retain display only when overlay can retain viewport/top-layer geometry.
+     Otherwise a closed dialog can animate inside a containing ancestor. */
+  @supports (overlay: auto) {
+    :where(.ef-dialog, .ef-flyout)::backdrop {
+      transition:
+        background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
+        backdrop-filter var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
+        display var(--ef-overlay-motion-duration) allow-discrete,
+        overlay var(--ef-overlay-motion-duration) allow-discrete;
+    }
+
+    .ef-dialog {
+      transition:
+        translate var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing),
+        scale var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing),
+        display var(--ef-overlay-motion-duration) allow-discrete,
+        overlay var(--ef-overlay-motion-duration) allow-discrete;
+    }
+
+    .ef-flyout {
+      transition:
+        translate var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing),
+        display var(--ef-overlay-motion-duration) allow-discrete,
+        overlay var(--ef-overlay-motion-duration) allow-discrete;
+    }
   }
 
   .ef-flyout[data-ef-side="left"] {
@@ -1000,9 +1021,11 @@
   .ef-flyout[open] { translate: 0 0; }
 
   .ef-flyout__surface {
+    min-inline-size: 0;
     min-block-size: 0;
     block-size: 100%;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto minmax(0, 1fr) auto;
   }
 
@@ -1032,6 +1055,7 @@
   }
 
   .ef-flyout__body {
+    min-inline-size: 0;
     min-block-size: 0;
     overflow: auto;
     overscroll-behavior: contain;

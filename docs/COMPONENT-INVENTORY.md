@@ -29,7 +29,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Command group | `<ef-command-group>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, overflow-command-disclosure, menu, collection-toolbar, command-palette |
 | Mobile action bar | `<ef-mobile-action-bar>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, command-group, overflow-command-disclosure, flyout |
 | Overflow command disclosure | `<ef-overflow-command-disclosure>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | command-group, menu, disclosure, mobile-action-bar |
-| Checkbox | `<ef-checkbox>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, physics-motion.spec.mjs | switch, multi-choice, binary-choice, choice-group |
+| Checkbox | `<ef-checkbox>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, physics-motion.spec.mjs, selection-alignment.spec.mjs | switch, multi-choice, binary-choice, choice-group |
 | Combobox | `<ef-combobox>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | select, search, text-field, command-palette |
 | Date and time field | `<ef-date-time-field>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | date-range, text-field, numeric-stepper |
 | Date range | `<ef-date-range>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | mobile.spec.mjs | date-time-field, range-entry, segmented-control |
@@ -38,12 +38,12 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Range entry | `<ef-range-entry>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | date-range, numeric-stepper, slider |
 | Rule builder | `<ef-rule-builder>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, active-filter-summary, select, validation-message |
 | Search | `<ef-search>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, combobox, command-palette, active-filter-summary |
-| Select | `<ef-select>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | physics-motion.spec.mjs | combobox, choice-group, segmented-control, multi-choice |
+| Select | `<ef-select>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | physics-motion.spec.mjs, selection-alignment.spec.mjs | combobox, choice-group, segmented-control, multi-choice |
 | Slider | `<ef-slider>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | core-controls-motion.spec.mjs | numeric-stepper, range-entry, ordinal-scale, allocation |
-| Switch | `<ef-switch>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, physics-motion.spec.mjs, progressive-motion.spec.mjs, switch.spec.mjs, value-change-motion.spec.mjs | checkbox, binary-choice, segmented-control, multi-choice |
+| Switch | `<ef-switch>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, physics-motion.spec.mjs, progressive-motion.spec.mjs, selection-alignment.spec.mjs, switch.spec.mjs, value-change-motion.spec.mjs | checkbox, binary-choice, segmented-control, multi-choice |
 | Text field | `<ef-text-field>` | Form inputs | implemented | complete | 5 | 1 | yes | yes | yes | pattern-contrast.spec.mjs | textarea, date-time-field, numeric-stepper, search, validation-message |
 | Textarea | `<ef-textarea>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | text-field, composer, validation-message |
-| Choice group | `<ef-choice-group>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs | multi-choice, image-choice, segmented-control, ordinal-scale, binary-choice |
+| Choice group | `<ef-choice-group>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs, selection-alignment.spec.mjs | multi-choice, image-choice, segmented-control, ordinal-scale, binary-choice |
 | Hierarchical choice | `<ef-hierarchical-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchical-multi-choice, hierarchy-tree, choice-group, disclosure |
 | Hierarchical multi-choice | `<ef-hierarchical-multi-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchical-choice, multi-choice, checkbox, hierarchy-tree |
 | Image choice | `<ef-image-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | choice-group, multi-choice, segmented-control, select |
@@ -52,7 +52,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Allocation | `<ef-allocation>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment.spec.mjs | ranking, numeric-stepper, validation-message |
 | Best–Worst | `<ef-best-worst>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | selector-completeness.spec.mjs | pairwise-choice, ranking, matrix-single |
 | Binary choice | `<ef-binary-choice>` | Assessment and survey | implemented | complete | 4 | 1 | yes | yes | yes | assessment-motion.spec.mjs | switch, special-choice, ordinal-scale, pairwise-choice |
-| Ordinal scale | `<ef-ordinal-scale>` | Assessment and survey | implemented | complete | 4 | 1 | yes | yes | yes | assessment-motion.spec.mjs, assessment.spec.mjs | special-choice, semantic-differential, matrix-single, symbol-rating, slider |
+| Ordinal scale | `<ef-ordinal-scale>` | Assessment and survey | implemented | complete | 4 | 1 | yes | yes | yes | css-source.test.mjs, assessment-motion.spec.mjs, assessment.spec.mjs, selection-alignment.spec.mjs | special-choice, semantic-differential, matrix-single, symbol-rating, slider |
 | Pairwise choice | `<ef-pairwise-choice>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | generic only | binary-choice, best-worst, choice-group |
 | Question shell | `<ef-question>` | Assessment and survey | implemented | complete | 4 | 1 | yes | yes | yes | generic only | ordinal-scale, validation-message, survey-progress, text-field |
 | Ranking | `<ef-ranking>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment.spec.mjs, direct-manipulation.spec.mjs | reorder-states, best-worst, allocation |
@@ -95,9 +95,9 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Fault summary | `<ef-fault-summary>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | aegis-faults.spec.mjs | validation-summary, fault-inline, fault |
 | Recovery actions | `<ef-recovery-actions>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, command-group, fault, fault-blocking |
 | Action menu | `<ef-menu>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | generic only | popover, overflow-command-disclosure, command-group, command-palette, select |
-| Dialog | `<ef-dialog>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | overlay-motion.spec.mjs | flyout, popover, fault-blocking, button, toast |
+| Dialog | `<ef-dialog>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | css-source.test.mjs, overlay-motion.spec.mjs | flyout, popover, fault-blocking, button, toast |
 | Disclosure | `<ef-disclosure>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | progressive-motion.spec.mjs | overview-disclosure, overflow-command-disclosure, tabs, popover |
-| Flyout | `<ef-flyout>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | overlay-motion.spec.mjs | dialog, sidebar, split-pane, popover, mobile-action-bar |
+| Flyout | `<ef-flyout>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | css-source.test.mjs, flyout-containment.spec.mjs, overlay-motion.spec.mjs | dialog, sidebar, split-pane, popover, mobile-action-bar |
 | Overview disclosure | `<ef-overview-disclosure>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | generic only | disclosure, verification-frame, state-survivability, status-lozenge, freshness |
 | Popover | `<ef-popover>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | generic only | tooltip, menu, dialog, disclosure |
 | Tooltip / contextual hint | `<ef-tooltip>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | tooltip.spec.mjs | popover, text-field, visually-hidden, callout |

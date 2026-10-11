@@ -22,6 +22,7 @@ export default {
       "Cardinality modifiers (`--3`, `--4`, `--5`, `--6`, `--7`, `--10`, `--11`) set the column count; the default is five.",
       "Special answers live in `.ef-special-choices` below a dashed rule and may share the radio name.",
       "Options become a vertical list of full-width rows below 44rem, so labels never have to shrink to fit.",
+      "In the narrow layout, each label block is vertically centered beside its numbered marker, including wrapped labels.",
       "Even-point scales have no implied midpoint; visual order does not imply score."
     ]
   },

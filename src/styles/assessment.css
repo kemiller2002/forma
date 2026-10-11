@@ -1021,6 +1021,10 @@
       padding-inline: 0.75rem;
     }
 
+    /* Desktop labels align at the top of their own row. In the horizontal
+       mobile layout that override must not defeat marker/text centering. */
+    .ef-ordinal-option__label { align-self: center; }
+
     .ef-ordinal-option + .ef-ordinal-option {
       border-inline-start: 0;
       border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);

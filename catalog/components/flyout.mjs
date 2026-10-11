@@ -205,7 +205,7 @@ export default {
   ],
   motion: [
     "Entry: the panel slides from its edge (`--ef-flyout-closed-x`) to rest over the heavy inertial duration with spring easing. The backdrop dims and blurs by perceptual interpolation, independent of mass.",
-    "Exit: the panel slides back over the same inertial duration and spring easing as entry; display and overlay are held until it finishes.",
+    "Exit: where overlay retention is supported, the panel slides back over the same inertial duration and spring easing as entry without changing its viewport geometry. Otherwise native closing is immediate, avoiding retraction into a containing example or application element.",
     "`data-ef-motion-weight` changes perceived mass; heavy is the default. The native open state is authoritative and focus moves immediately.",
     "Under `prefers-reduced-motion: reduce` the edge translation is removed, the backdrop blur is dropped, and the state change is effectively instant."
   ],
