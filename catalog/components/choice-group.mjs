@@ -22,7 +22,7 @@ export default {
       "Each card is the whole hit target and is at least 3.25rem tall.",
       "Selection is shown by a filled dot in the indicator plus an accent border and surface change, not by color alone.",
       "The native radio stays in the card, topmost for hit-testing, and carries focus, name and state.",
-      "Cards stack vertically at every width; long text wraps inside the card."
+      "Cards stack vertically at every width; long text wraps inside the card. Cards grow with wrapped text after resizing or text enlargement, keeping the marker centered beside the whole content block."
     ]
   },
   examples: [

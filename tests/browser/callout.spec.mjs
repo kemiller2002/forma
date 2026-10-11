@@ -110,5 +110,9 @@ test("reduced motion: the callout is static and declares no motion", async ({ pa
       return [style.animationName, style.transitionProperty === "all" && style.transitionDuration !== "0s" ? style.transitionDuration : "none"];
     }).filter((value) => value !== "none"));
   expect(motion).toEqual([]);
-  expect(await page.evaluate(() => document.getAnimations().length)).toBe(0);
+  // The fixture loads other controls before replacing its content. Their
+  // outgoing transitions are not motion owned by the static callout.
+  expect(await page.locator(".ef-callout").evaluateAll(elements =>
+    elements.reduce((count, element) => count + element.getAnimations({ subtree: true }).length, 0)
+  )).toBe(0);
 });

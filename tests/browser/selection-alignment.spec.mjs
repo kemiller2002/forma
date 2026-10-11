@@ -55,9 +55,18 @@ for (const width of [320, 390, 1280]) {
         const marker = getComputedStyle(element, "::before");
         const shift = new DOMMatrixReadOnly(marker.transform).m42;
         const markerCenter = box.y + parseFloat(style.borderTopWidth) + parseFloat(marker.top) + shift + parseFloat(marker.height) / 2;
-        return Math.abs(markerCenter - content.y - content.height / 2);
+        return {
+          difference: Math.abs(markerCenter - content.y - content.height / 2),
+          text: element.textContent.trim(),
+          topClearance: content.top - box.top - parseFloat(style.borderTopWidth) - parseFloat(style.paddingTop),
+          bottomClearance: box.bottom - content.bottom - parseFloat(style.borderBottomWidth) - parseFloat(style.paddingBottom)
+        };
       }));
-      centers.forEach(difference => expect(difference).toBeLessThanOrEqual(1));
+      for (const { difference, text, topClearance, bottomClearance } of centers) {
+        expect(difference, `${text}: marker center at ${fontSize}`).toBeLessThanOrEqual(1);
+        expect(topClearance, `${text}: text fits top padding at ${fontSize}`).toBeGreaterThanOrEqual(-1);
+        expect(bottomClearance, `${text}: text fits bottom padding at ${fontSize}`).toBeGreaterThanOrEqual(-1);
+      }
       for (const [container, marker, text] of [
         [".ef-checkbox", ".ef-checkbox__box", ".ef-checkbox__text"],
         [".ef-switch", ".ef-switch__track", ".ef-switch__text"],

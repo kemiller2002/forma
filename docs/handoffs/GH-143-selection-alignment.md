@@ -1,5 +1,34 @@
 # GH-143: selection alignment audit
 
+## PR #144 CI repair, October 11
+
+Both failed CI workflows on `ac7648d` identified the same persistent WebKit
+320px failure. Reproduced locally with WebKit 26.6: narrowing a grid fieldset
+from 1280px to 320px left choice cards at 76.375px while their wrapped content
+needed 97.171875px including padding. The marker was 10.3984375px above the
+content center. Waiting for two animation frames did not repair the geometry.
+
+Use a column flex layout for `.ef-choice-group`, retaining its gap, native
+fieldset/legend semantics and full-width cards. The cards now size from their
+wrapped content. Keep the one-pixel alignment tolerance and additionally test
+that text fits both top and bottom padding at 100% and 200% text size.
+
+Also scope the callout reduced-motion animation assertion to the callout and
+its descendants. The fixture initially loads other controls before replacing
+its document; counting all document animations intermittently included those
+unrelated outgoing transitions. The callout must still declare no motion and
+have zero animations in its own subtree.
+
+Verification: full package build passed using .NET 10.0.401; the 19 targeted
+WebKit alignment, callout and flyout-containment tests passed. Motion checks,
+strict audit, 44 CSS tests, four zero-runtime tests and catalog checks passed.
+Visual Engineering 1.0.1 verification passed, source commit
+`b648cdef291d39c443ccb10215529ad69afe8b32`. Principles applied: responsive reflow,
+text enlargement, content containment and model-specific reduced motion.
+Chromium/Firefox, full CI and physical iPhone verification are pending at this
+checkpoint. The earlier local-only publication notes below are historical;
+the original fixes were published on PR #144 with explicit user authorization.
+
 ## Confirmed defect and repair
 
 The desktop ordinal label declares `align-self: start`. The below-44rem layout

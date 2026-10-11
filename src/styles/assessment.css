@@ -208,7 +208,10 @@
 
   /* Choice cards -------------------------------------------------------- */
   .ef-choice-group {
-    display: grid;
+    /* A column flex layout lets wrapped cards determine their own height.
+       WebKit can retain stale grid row heights on fieldset viewport reflow. */
+    display: flex;
+    flex-direction: column;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
   }
 
