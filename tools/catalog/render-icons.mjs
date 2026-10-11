@@ -274,7 +274,7 @@ export const renderIconPage = (catalog, icon, rootPath = "../../") => {
     </figure>
   </header>
   <nav class="page-toc" aria-label="Sections of this icon page"><ul>
-    ${join([["meaning", "Meaning"], ["sizes", "Sizes"], ["colour", "Colour and contrast"], ["configurations", "Configurations"], ["source", "Files"], ["accessibility", "Accessibility"], ["related", "Related icons"]], ([id, label]) => `<li><a href="#${id}">${label}</a></li>`)}
+    ${join([["meaning", "Meaning"], ["sizes", "Sizes"], ["colour", "Color and contrast"], ["configurations", "Configurations"], ["source", "Files"], ["accessibility", "Accessibility"], ["related", "Related icons"]], ([id, label]) => `<li><a href="#${id}">${label}</a></li>`)}
   </ul></nav>
   ${section("meaning", "Meaning and when to use it", `<p class="doc-lead">${escapeHtml(icon.docs.meaning)}</p>
     <div class="doc-columns">
