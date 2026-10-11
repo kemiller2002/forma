@@ -148,7 +148,10 @@ test("overlay opacity and backdrop dimming use perceptual interpolation, not mas
   for (const [name, entry] of [["popover", timings.popoverOpen.opacity], ["toast", timings.toastOpen.opacity], ["backdrop", timings.backdrop["background-color"] ?? timings.backdrop.background], ["backdrop filter", timings.backdrop["backdrop-filter"]]]) {
     expect(entry, name).toBeDefined();
     expect(entry.duration, name).toBeCloseTo(perceptual, 0);
-    expect(entry.easing, name).toBe("cubic-bezier(0.2, 0, 0, 1)");
+    // Surface fades use MOT-031; toast and backdrop retain their shared
+    // perceptual interpolation. All remain independent of perceived mass.
+    const easing = name === "popover" ? "cubic-bezier(0.65, 0, 0.35, 1)" : "cubic-bezier(0.2, 0, 0, 1)";
+    expect(entry.easing, name).toBe(easing);
   }
 });
 
