@@ -91,6 +91,9 @@ for (const [slug, selector] of [["popover", ".ef-popover"], ["menu", ".ef-menu"]
       const id = await target.getAttribute("id");
       // Invoke through native HTML so tooltip's implicit anchor is exercised.
       await page.locator(`[popovertarget="${id}"]`).first().click();
+      // Isolate explicit dismissal from native interest hover/focus reopening.
+      await page.mouse.move(0, 0);
+      await page.evaluate(() => document.activeElement?.blur());
       await target.evaluate(element => Promise.all(element.getAnimations().map(animation => animation.finished.catch(() => {}))));
       const result = await target.evaluate(element => {
         const box = () => {
@@ -133,6 +136,9 @@ for (const [slug, selector] of [["popover", ".ef-popover"], ["menu", ".ef-menu"]
       expect(result.finalDisplay).toBe("none");
       // Reopen in the same native relationship, including after interrupted entry.
       await page.locator(`[popovertarget="${id}"]`).first().click();
+      // Isolate explicit dismissal from native interest hover/focus reopening.
+      await page.mouse.move(0, 0);
+      await page.evaluate(() => document.activeElement?.blur());
       await target.evaluate(element => {
         getComputedStyle(element).opacity;
         element.hidePopover();
