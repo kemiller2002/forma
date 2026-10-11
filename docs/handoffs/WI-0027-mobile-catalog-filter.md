@@ -31,3 +31,19 @@ verified successfully. Provider usage metrics are unavailable.
 This branch is stacked on fix/stationary-surface-dismissal (PR 149). Next:
 inspect exact-head CI and retarget to main after the parent merges; merge and
 website deployment remain pending authorization and repository gates.
+
+## CI follow-up: tooltip endpoint synchronization
+
+Exact-head CI at c5de7e491a040319fc8a59aba68b27d3260e4855 passed Praxis and
+workflow validation but failed WebKit's tooltip reopening endpoint assertion:
+opacity was 0.998604 rather than 1 after an animation snapshot had resolved.
+The animation snapshot did not establish that the rendered endpoint was ready.
+Changed the stationary-dismissal test to poll for exact computed opacity 1
+before measuring dismissal and after interrupted reopening. The assertion still
+requires full opacity, and the real exit animation, fixed geometry, immediate
+native closed state and eventual removal checks remain intact. No production
+CSS, animation duration or numerical tolerance was changed.
+
+Validation after the test fix: 19 targeted WebKit fade/containment tests passed;
+both tooltip widths repeated 20 times each passed (40/40, four workers).
+Syntax and diff checks passed. Full CI must rerun on the new branch head.
