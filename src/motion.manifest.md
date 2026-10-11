@@ -48,7 +48,7 @@ Weight is presentation only. It never encodes severity, risk, permission or doma
 
 ## Tooltip / contextual hint (FORMA-MOT-004)
 
-- `.ef-tooltip` is in the light perceived-weight scope. The surface enters with a 0.25rem origin-related displacement over the light inertial duration and exits over the shorter derived exit duration; opacity is perceptual interpolation in both directions.
+- `.ef-tooltip__surface`, `.ef-popover` and `.ef-menu` use stationary reciprocal perceptual fades (MOT-031, MOT-032). Display and overlay retention match the opacity duration; no visible translation or scale accompanies dismissal.
 - Native popover state is authoritative. The surface is display:none once closed, so there is no invisible interactive state.
 - Placement uses spanning `position-area` options with `position-try-order: most-inline-size`, and the hint never grows beyond its area, so it stays inside the viewport even at 320px. Without anchor positioning, the top-layer fallback stays readable.
 - Reduced motion removes the displacement; forced colors uses system colors.

@@ -644,35 +644,19 @@
     overflow: auto;
     overscroll-behavior: contain;
     opacity: 0;
-    translate: 0 -0.35rem;
-    scale: 0.985;
-    transition:
-      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-fade-easing),
-      translate var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
-      scale var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
-      display var(--ef-motion-exit-duration) allow-discrete,
-      overlay var(--ef-motion-exit-duration) allow-discrete;
+    /* Fade at the resting geometry. Never translate or scale a visible exit. */
+    transition: opacity var(--ef-motion-perceptual-duration) var(--ef-motion-fade-easing);
   }
 
   .ef-popover:popover-open,
   .ef-menu:popover-open {
     opacity: 1;
-    translate: 0 0;
-    scale: 1;
-    transition-duration:
-      var(--ef-motion-perceptual-duration),
-      var(--ef-motion-inertia-duration),
-      var(--ef-motion-inertia-duration),
-      var(--ef-motion-inertia-duration),
-      var(--ef-motion-inertia-duration);
   }
 
   @starting-style {
     .ef-popover:popover-open,
     .ef-menu:popover-open {
       opacity: 0;
-      translate: 0 -0.35rem;
-      scale: 0.985;
     }
   }
 
@@ -724,9 +708,9 @@
    * the hint stays inside the viewport; otherwise the browser's centered
    * top-layer popover placement remains readable and in view.
    *
-   * Motion: light perceived weight. Opacity is perceptual interpolation and
-   * a tiny origin-related displacement is light inertial; exit uses the
-   * same derived duration in both directions. Reduced motion removes the displacement.
+   * Motion: reciprocal perceptual fades at unchanged resting geometry. The
+   * top layer is removed only after opacity reaches zero where supported.
+   * Reduced motion reaches the endpoint immediately.
    */
   .ef-tooltip {
     --ef-motion-distance: 0.2;
@@ -745,7 +729,6 @@
   }
 
   .ef-tooltip__surface {
-    --ef-tooltip-offset: 0.25rem;
     inline-size: max-content;
     max-inline-size: min(20rem, calc(100vw - 2rem));
     margin: 0;
@@ -757,29 +740,30 @@
     line-height: 1.4;
     overflow-wrap: anywhere;
     opacity: 0;
-    translate: 0 var(--ef-tooltip-offset);
-    transition:
-      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-fade-easing),
-      translate var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
-      display var(--ef-motion-exit-duration) allow-discrete,
-      overlay var(--ef-motion-exit-duration) allow-discrete;
+    transition: opacity var(--ef-motion-perceptual-duration) var(--ef-motion-fade-easing);
   }
 
   .ef-tooltip__surface:popover-open {
     opacity: 1;
-    translate: 0 0;
-    /* Spatial response and perceptual opacity are identical both ways. */
-    transition-duration:
-      var(--ef-motion-perceptual-duration),
-      var(--ef-motion-inertia-duration),
-      var(--ef-motion-inertia-duration),
-      var(--ef-motion-inertia-duration);
   }
 
   @starting-style {
     .ef-tooltip__surface:popover-open {
       opacity: 0;
-      translate: 0 var(--ef-tooltip-offset);
+    }
+  }
+
+  /* Keep the top-layer placement and implicit anchor through the entire fade.
+     Display retention alone can expose a relocated, translucent surface in
+     engines without overlay retention. Those engines dismiss immediately. */
+  @supports (overlay: auto) {
+    .ef-popover,
+    .ef-menu,
+    .ef-tooltip__surface {
+      transition:
+        opacity var(--ef-motion-perceptual-duration) var(--ef-motion-fade-easing),
+        display var(--ef-motion-perceptual-duration) allow-discrete,
+        overlay var(--ef-motion-perceptual-duration) allow-discrete;
     }
   }
 
@@ -802,9 +786,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ef-tooltip__surface,
-    .ef-tooltip__surface:popover-open {
-      translate: 0 0;
+    .ef-tooltip__surface {
+      transition-duration: 0.01ms;
     }
   }
 

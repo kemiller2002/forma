@@ -72,4 +72,5 @@
 | WI-0022 | Extend Forma's public contract for seven presentation gaps Chrona found (application sidebar and tab bar, large surface radius, display title scale, inverse hero surface, time-column timeline, filled primary action and control radius, skip link without marketing tokens) | captured | forma, contract, chrona | medium |
 | WI-0023 | Generate a documentation page for every Forma icon: appearance, meaning, sizes, colour and contrast modes, usage configurations and copyable markup | complete |  | medium |
 | WI-0024 | Enforce reciprocal CSS physics for reversible interactions | active |  | medium |
-| WI-0025 | Add quick reciprocal slow-fast-slow fades to transient surfaces | ready |  | medium |
+| WI-0025 | Add quick reciprocal slow-fast-slow fades to transient surfaces | blocked |  | medium |
+| WI-0026 | Keep popover menu and tooltip dismissal stationary until opacity is zero | ready |  | medium |

@@ -24,6 +24,7 @@ These defaults describe visual inertia only.
 - inertial entry: `sqrt(mass / stiffness) / damping`
 - gravity cue: `sqrt(2 * distance / gravity)`
 - exit: identical to inertial entry, with the same easing and clamp bounds
+- popover, menu and tooltip: stationary reciprocal perceptual fades; retain top-layer geometry until opacity is zero (MOT-032)
 - reduced motion: effectively immediate spatial change with final visual state preserved
 - model vocabulary, classification and audit: see `src/motion.manifest.md`
 

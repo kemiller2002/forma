@@ -57,7 +57,7 @@ test("closed hint leaves no invisible interactive state", async ({ page }) => {
   expect(state).toEqual({ open: false, display: "none" });
 });
 
-test("light weight motion: tiny origin displacement, perceptual opacity, reciprocal response", async ({ page }) => {
+test("stationary tooltip fade uses perceptual opacity and reciprocal response", async ({ page }) => {
   const timing = await page.evaluate(() => {
     const element = document.getElementById("tooltip-retention");
     const read = () => {
@@ -73,14 +73,13 @@ test("light weight motion: tiny origin displacement, perceptual opacity, recipro
     return { closed, open, translate, mass };
   });
   expect(timing.mass).toBe("0.65");
-  expect(timing.closed.properties).toBe("opacity, translate, display, overlay");
-  // Spatial response is identical in both directions.
+  expect(["opacity", "opacity, display, overlay"]).toContain(timing.closed.properties);
+  // Perceptual response is identical in both directions.
   expect(timing.closed.durations).toEqual(timing.open.durations);
   expect(timing.closed.easing).toBe(timing.open.easing);
   // Opacity is perceptual interpolation in both directions.
   expect(timing.closed.durations[0]).toBe(timing.open.durations[0]);
-  const offset = await surface(page).evaluate((element) => Number.parseFloat(getComputedStyle(element).getPropertyValue("--ef-tooltip-offset")));
-  expect(offset).toBeLessThanOrEqual(0.25);
+  expect(["none", "0px", "0px 0px"]).toContain(timing.translate);
 });
 
 test("the hint stays inside a 320px viewport", async ({ page }) => {

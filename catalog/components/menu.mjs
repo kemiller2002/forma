@@ -111,7 +111,7 @@ export default {
     form: "The menu does not participate in forms. Item buttons should be `type=\"button\"`."
   },
   states: [
-    { name: "Closed", how: "not :popover-open", description: "Hidden; while closing it fades and lifts slightly before display is removed." },
+    { name: "Closed", how: "not :popover-open", description: "Hidden; while closing it fades in place before display and top-layer removal." },
     { name: "Open", how: ":popover-open", description: "Shown in the top layer over the page, which stays interactive." },
     { name: "Item hover", how: ":hover on an item", description: "Secondary surface behind the row." },
     { name: "Item focus", how: ":focus-visible on an item", description: "Shared two-tone focus ring." },
@@ -138,10 +138,11 @@ export default {
     "No anchor placement, collision handling or bottom-sheet presentation is provided."
   ],
   motion: [
-    "Same as [[popover]]: opacity fades by perceptual interpolation while the surface settles from 0.35rem above and 98.5% scale over the light inertial duration; exit uses the same inertial duration as entry and holds display until done.",
+    "Entry and exit: opacity alone follows the shared 120ms slow-fast-slow curve, at unchanged position and size.",
+    "Display and top-layer placement remain until opacity is zero where retention is supported; otherwise dismissal is immediate.",
     "Item hover is an instant background change (no transition).",
-    "`data-ef-motion-weight` changes perceived mass; light is the default. The native open state is authoritative.",
-    "Under `prefers-reduced-motion: reduce` the transitions are effectively instant."
+    "`data-ef-motion-weight` remains available for other spatial tracks; it does not affect these perceptual fades. The native open state is authoritative.",
+    "Under `prefers-reduced-motion: reduce` the stationary fade reaches its endpoint effectively immediately.",
   ],
   guidance: {
     do: [
