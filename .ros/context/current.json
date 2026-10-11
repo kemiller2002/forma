@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-11T06:59:23.000Z",
+  "updatedAt": "2026-10-11T07:05:50.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1814,15 +1814,35 @@
     {
       "id": "GH-143",
       "type": "task",
-      "state": "active",
-      "semanticState": "active",
+      "state": "blocked",
+      "semanticState": "blocked",
       "evidence": [],
-      "updatedAt": "2026-10-11T06:59:23.000Z",
+      "updatedAt": "2026-10-11T07:05:50.000Z",
       "telemetryExecutionIds": [
         "EXE-20261010T191327299Z-705de261",
         "EXE-20261011T065924096Z-0dcaac60"
       ],
-      "blockReason": "Local ordinal repair and selection audit ready; browser execution and authorized publication pending"
+      "blockReason": "WebKit repair pushed and locally verified; full cross-browser CI pending before merge",
+      "latestCheckpoint": {
+        "id": "a8097d23a82a591e201de80e",
+        "recordedAt": "2026-10-11T07:05:47.000Z",
+        "executionId": "EXE-20261011T065924096Z-0dcaac60",
+        "repository": "echelon-design-system",
+        "branch": "fix/pr144-webkit-verified",
+        "commit": "cb31113c386b229b69b4b855ec942462d5470de7",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "fix/date-flyout-containment",
+        "remoteCommit": "cb31113c386b229b69b4b855ec942462d5470de7",
+        "summary": "WebKit reflow fix published on PR 144; full CI pending",
+        "nextAction": "Merge PR 144 after all five workflows pass its current head",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      }
     }
   ]
 }
