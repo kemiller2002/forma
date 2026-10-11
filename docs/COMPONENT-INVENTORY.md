@@ -94,13 +94,13 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Fault reference | `<ef-fault-reference>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | identifier, fault-details, fault |
 | Fault summary | `<ef-fault-summary>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | aegis-faults.spec.mjs | validation-summary, fault-inline, fault |
 | Recovery actions | `<ef-recovery-actions>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, command-group, fault, fault-blocking |
-| Action menu | `<ef-menu>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | generic only | popover, overflow-command-disclosure, command-group, command-palette, select |
+| Action menu | `<ef-menu>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | surface-fade.spec.mjs | popover, overflow-command-disclosure, command-group, command-palette, select |
 | Dialog | `<ef-dialog>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | css-source.test.mjs, overlay-motion.spec.mjs | flyout, popover, fault-blocking, button, toast |
 | Disclosure | `<ef-disclosure>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | progressive-motion.spec.mjs | overview-disclosure, overflow-command-disclosure, tabs, popover |
 | Flyout | `<ef-flyout>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | css-source.test.mjs, flyout-containment.spec.mjs, overlay-motion.spec.mjs | dialog, sidebar, split-pane, popover, mobile-action-bar |
 | Overview disclosure | `<ef-overview-disclosure>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | generic only | disclosure, verification-frame, state-survivability, status-lozenge, freshness |
-| Popover | `<ef-popover>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | generic only | tooltip, menu, dialog, disclosure |
-| Tooltip / contextual hint | `<ef-tooltip>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | tooltip.spec.mjs | popover, text-field, visually-hidden, callout |
+| Popover | `<ef-popover>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | surface-fade.spec.mjs | tooltip, menu, dialog, disclosure |
+| Tooltip / contextual hint | `<ef-tooltip>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | surface-fade.spec.mjs, tooltip.spec.mjs | popover, text-field, visually-hidden, callout |
 | Bounded overflow | `<ef-bounded-overflow>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | dense-ledger, comparison-grid, data-grid, code-sample |
 | Cluster | `<ef-cluster>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | stack, command-group, status-lozenge, switcher |
 | Container | `<ef-container>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | measure, section, marketing-shell, prose |

@@ -17,6 +17,7 @@ export default {
       "The message reports a result or error: use [[validation-message]], [[alert]] or [[toast]]."
     ],
     characteristics: [
+      "Opacity fades in and out over the shared fast duration (120ms by default), gently starting, accelerating through the middle, then settling. CSS-only; reduced motion is immediate.",
       "The trigger is a 44 by 44px round native button, so the hint is reachable by keyboard, touch and switch access.",
       "The surface is at most `min(20rem, 100vw - 2rem)` wide and wraps long words; inverse colors distinguish it from the page.",
       "Anchor placement above the button (flipping below or to the other side when there is no room) where supported. Without anchor positioning the surface has `margin: 0`, so it opens at the block-start, inline-start corner of the viewport, readable but away from its button.",

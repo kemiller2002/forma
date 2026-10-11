@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-11T07:05:50.000Z",
+  "updatedAt": "2026-10-11T08:37:08.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1843,6 +1843,18 @@
           "mechanism": "git-remote-observation"
         }
       }
+    },
+    {
+      "id": "WI-0025",
+      "type": "task",
+      "state": "blocked",
+      "semanticState": "blocked",
+      "evidence": [],
+      "updatedAt": "2026-10-11T08:37:08.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261011T082910009Z-caf60bb5"
+      ],
+      "blockReason": "Publication authorized; implementation locally validated; full cross-browser CI required before merge"
     }
   ]
 }

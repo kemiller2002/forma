@@ -704,3 +704,8 @@ Every reversible interaction SHALL share its motion model, mass, stiffness, damp
 Rapid changes SHALL retarget retained browser transitions from the current rendered position without an application animation queue. When the browser does not retain a closing native dialog in the rendered/top layer, immediate disappearance at its closed endpoint is the supported progressive fallback; semantic state, focus return and subsequent reopening must remain correct. CSS does not guarantee continuous physical velocity, and native top-layer display/overlay behavior remains browser-owned. A consuming application requiring strict velocity continuity must supply its motion controller through Limen; Forma does not introduce a runtime simulator.
 
 Supersedes the shorter-exit guidance in MOT-008, MOT-009 and MOT-020. Verify preset equality at clamp boundaries, paired browser durations/easings, mirrored flyout origins and interrupted reversal.
+
+
+## MOT-031 — Quick surface fades
+
+Popover, action-menu and tooltip opacity SHALL use the shared perceptual fast duration (120ms default) and `--ef-motion-fade-easing` (`cubic-bezier(0.65, 0, 0.35, 1)`). The monotonic, symmetric curve starts gently, accelerates through the middle and settles gently without overshoot. Entry and exit SHALL use the same curve and duration. Native state and input eligibility change immediately, independently of the fade. Retain existing spatial models, CSS-only starting styles and discrete top-layer exit handling; browsers without exit retention may dismiss immediately. Reduced motion SHALL remain immediate. This is a perceptual interpolation profile, not a combustion simulation or a new physical motion model.

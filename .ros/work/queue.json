@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 25,
+  "nextSeq": 26,
   "items": [
     {
       "id": "WI-0001",
@@ -634,6 +634,27 @@
       "attachments": [],
       "createdAt": "2026-10-10T13:35:26.148Z",
       "updatedAt": "2026-10-10T13:36:10Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0025",
+      "title": "Add quick reciprocal slow-fast-slow fades to transient surfaces",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-10-11T08:27:51.308Z",
+      "updatedAt": "2026-10-11T08:29:09.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",

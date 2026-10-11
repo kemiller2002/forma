@@ -17,6 +17,7 @@ export default {
       "The content is essential to complete the task: show it in the page, for example with [[disclosure]] or [[callout]]."
     ],
     characteristics: [
+      "Opacity fades in and out over the shared fast duration (120ms by default), gently starting, accelerating through the middle, then settling. CSS-only; reduced motion is immediate.",
       "Non-modal: the page stays interactive; `popover=\"auto\"` closes on outside click or Escape, `popover=\"manual\"` closes only when told to.",
       "At most `min(30rem, 100vw - 2rem)` wide and `min(80dvh, 100dvh - 2rem)` tall; longer content scrolls inside with contained overscroll.",
       "Placement is not managed by Forma: the surface sits at the viewport's block-start, inline-start corner unless the application positions it.",
