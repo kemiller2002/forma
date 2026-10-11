@@ -98,7 +98,8 @@
         "--ef-motion-perceptual-emphasis-duration"
       ],
       "easingTokens": [
-        "--ef-motion-perceptual-easing"
+        "--ef-motion-perceptual-easing",
+        "--ef-motion-fade-easing"
       ],
       "literalEasings": [],
       "reducedMotion": "May retain a brief non-spatial transition when it materially improves comprehension."
@@ -107,7 +108,7 @@
   "parameters": {
     "--ef-motion-mass": "inertial mass m (preset input; never domain semantics)",
     "--ef-motion-stiffness": "restoring stiffness k (preset input)",
-    "--ef-motion-damping": "damping ratio ζ (preset input)",
+    "--ef-motion-damping": "damping ratio \u03b6 (preset input)",
     "--ef-motion-distance": "normalized gravity travel distance s",
     "--ef-motion-gravity": "normalized gravitational acceleration g",
     "--ef-motion-base-duration": "dimensional scale that maps the normalized model to UI time"

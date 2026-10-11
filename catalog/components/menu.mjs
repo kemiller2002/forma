@@ -18,6 +18,7 @@ export default {
       "Users search many commands by name: use [[command-palette]]."
     ],
     characteristics: [
+      "Opacity fades in and out over the shared fast duration (120ms by default), gently starting, accelerating through the middle, then settling. CSS-only; reduced motion is immediate.",
       "Items are native buttons and links in a list; each fills the menu width and is at least 44px tall.",
       "Minimum width `min(14rem, 100vw - 2rem)`, maximum `min(30rem, 100vw - 2rem)`; long lists scroll inside.",
       "Opening the menu does not move focus; Tab from the trigger enters the list.",

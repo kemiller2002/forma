@@ -67,6 +67,10 @@
     --ef-motion-perceptual-emphasis-duration: var(--ef-primitive-motion-duration-standard, 180ms);
     --ef-motion-perceptual-easing: var(--ef-primitive-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 
+    /* Brief surface fade: gentle ignition, fast middle, gentle settling.
+       Monotonic and symmetric: no opacity overshoot or delayed activation. */
+    --ef-motion-fade-easing: cubic-bezier(0.65, 0, 0.35, 1);
+
     /* Constant-velocity cadence: repeated activity is parameterized by a
        named period and constant velocity, never by spring settling (MOT-016). */
     --ef-motion-cadence-period: 1600ms;
@@ -643,7 +647,7 @@
     translate: 0 -0.35rem;
     scale: 0.985;
     transition:
-      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
+      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-fade-easing),
       translate var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
       scale var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
       display var(--ef-motion-exit-duration) allow-discrete,
@@ -722,7 +726,7 @@
    *
    * Motion: light perceived weight. Opacity is perceptual interpolation and
    * a tiny origin-related displacement is light inertial; exit uses the
-   * shorter derived exit duration. Reduced motion removes the displacement.
+   * same derived duration in both directions. Reduced motion removes the displacement.
    */
   .ef-tooltip {
     --ef-motion-distance: 0.2;
@@ -755,7 +759,7 @@
     opacity: 0;
     translate: 0 var(--ef-tooltip-offset);
     transition:
-      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
+      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-fade-easing),
       translate var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
       display var(--ef-motion-exit-duration) allow-discrete,
       overlay var(--ef-motion-exit-duration) allow-discrete;
