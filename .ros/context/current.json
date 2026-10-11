@@ -2,9 +2,9 @@
   "schemaVersion": "1.0.0",
   "protocolVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "actor": "anthropic/claude-code",
+  "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-10T13:36:11Z",
+  "updatedAt": "2026-10-10T19:14:30Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1798,6 +1798,30 @@
       "telemetryExecutionIds": [
         "EXE-20261010T133611298Z-0f5ec75b"
       ]
+    },
+    {
+      "id": "GH-142",
+      "type": "task",
+      "state": "blocked",
+      "semanticState": "blocked",
+      "evidence": [],
+      "updatedAt": "2026-10-10T19:12:25Z",
+      "telemetryExecutionIds": [
+        "EXE-20261010T190944784Z-2fc6a411"
+      ],
+      "blockReason": "Local implementation ready for CI; publishing branch requires explicit approval after automated review rejection"
+    },
+    {
+      "id": "GH-143",
+      "type": "task",
+      "state": "blocked",
+      "semanticState": "blocked",
+      "evidence": [],
+      "updatedAt": "2026-10-10T19:14:30Z",
+      "telemetryExecutionIds": [
+        "EXE-20261010T191327299Z-705de261"
+      ],
+      "blockReason": "Local ordinal repair and selection audit ready; browser execution and authorized publication pending"
     }
   ]
 }
