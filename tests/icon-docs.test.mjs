@@ -13,6 +13,7 @@ import {
   loadIconCatalog,
   renderIconGallery,
   renderIconPage,
+  renderNewIconIndex,
   validateIconDocs
 } from "../tools/catalog/render-icons.mjs";
 
@@ -99,4 +100,25 @@ test("pages are static and link into one navigable set", () => {
   }
   assert.equal(catalog.icons[0].previous, undefined);
   assert.equal(catalog.icons.at(-1).next, undefined);
+});
+
+test("all visible icon guidance uses American English", () => {
+  // Strip tags/attributes/style before inspecting visible prose. Class names,
+  // historical raw-source file paths and aria-labelledby are stable API.
+  const visibleText = html => html
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ");
+  const british = /\b(?:colour|colours|coloured|recolour|recoloured|behaviour|behaviours|labelled|labelling|neighbour|neighbours|centre|centred|visualisation)\b/i;
+  const pagesToCheck = [
+    ["gallery", renderIconGallery("../", catalog)],
+    ["new icons", renderNewIconIndex("../../", catalog)],
+    ...catalog.icons.map(icon => [icon.name, pages.get(icon.name)])
+  ];
+  for (const [name, html] of pagesToCheck) {
+    assert.doesNotMatch(visibleText(html), british, name + ": use US English in displayed documentation");
+  }
+  const sample = iconConfigurations(catalog.icons[0]);
+  assert.equal(sample.find(config => config.id === "custom-colour")?.title, "Custom color",
+    "keep the original source file ID but present American English");
 });
