@@ -359,7 +359,9 @@
 
   /* Select -------------------------------------------------------------- */
   .ef-select-field {
+    min-inline-size: 0;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--ef-primitive-spacing-2, 0.5rem);
     max-inline-size: 100%;
   }
@@ -367,12 +369,19 @@
   .ef-select {
     --ef-motion-distance: 0.35;
     position: relative;
+    min-inline-size: 0;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
     max-inline-size: 100%;
   }
 
   .ef-select__input {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-inline-size: 0;
+    max-inline-size: 100%;
     inline-size: 100%;
     min-block-size: 2.75rem;
     padding-inline-end: 2.75rem;

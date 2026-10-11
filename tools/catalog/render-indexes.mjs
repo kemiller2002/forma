@@ -136,13 +136,16 @@ export const renderAllComponents = context => {
       <h1>All components</h1>
       <p class="lead">Every public Forma component: ${catalog.components.length} components in ${catalog.categories.length} families. Filter by family, jump by letter, or use your browser's find (Ctrl+F / ⌘F) to search names, tags and descriptions on this page.</p>
     </header>
-    <fieldset class="ef-field catalog-filter">
-      <legend class="ef-field__label">Show family</legend>
-      <div class="ef-segmented">
-        <label class="ef-segment"><input type="radio" name="catalog-filter" id="filter-all" value="all" checked><span>All</span></label>
-        ${join(catalog.categories, category => `<label class="ef-segment"><input type="radio" name="catalog-filter" id="filter-${category.id}" value="${category.id}"><span>${escapeHtml(category.name)}</span></label>`)}
-      </div>
-    </fieldset>
+    <label class="ef-select-field catalog-filter">
+      <span class="ef-field__label">Show family</span>
+      <span class="ef-select">
+        <select class="ef-select__input" name="catalog-filter" id="catalog-family">
+          <option id="filter-all" value="all" selected>All families</option>
+          ${join(catalog.categories, category => `<option id="filter-${category.id}" value="${category.id}">${escapeHtml(category.name)}</option>`)}
+        </select>
+        <span class="ef-select__indicator" aria-hidden="true"></span>
+      </span>
+    </label>
     <nav class="letter-nav" aria-label="Jump to letter"><ul>${join(letters, letter => `<li><a href="#letter-${letter}">${letter}</a></li>`)}</ul></nav>
     ${join(letters, letter => `<section class="letter-group" id="letter-${letter}" aria-labelledby="letter-${letter}-title">
       <h2 id="letter-${letter}-title">${letter}</h2>
