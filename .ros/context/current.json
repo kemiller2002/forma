@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-11T21:04:43.000Z",
+  "updatedAt": "2026-10-11T21:07:59.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1891,34 +1891,34 @@
     {
       "id": "WI-0027",
       "type": "task",
-      "state": "active",
-      "semanticState": "active",
+      "state": "blocked",
+      "semanticState": "blocked",
       "evidence": [],
-      "updatedAt": "2026-10-11T21:04:43.000Z",
+      "updatedAt": "2026-10-11T21:07:59.000Z",
       "telemetryExecutionIds": [
         "EXE-20261011T185002267Z-893a3119"
       ],
       "latestCheckpoint": {
-        "id": "a554a1192fb8065977a86169",
-        "recordedAt": "2026-10-11T19:00:54.000Z",
+        "id": "bcfd49e99d30e1603212c18a",
+        "recordedAt": "2026-10-11T21:07:37.000Z",
         "executionId": "EXE-20261011T185002267Z-893a3119",
         "repository": "echelon-design-system",
         "branch": "fix/mobile-catalog-filter",
-        "commit": "289f731f97d894733a0e3d882d80b799f73460b9",
+        "commit": "b9431c3f495fce852fe08991a540f3702e3fbbea",
         "remote": {
           "name": "origin",
           "url": "https://github.com/kemiller2002/forma.git"
         },
         "remoteBranch": "fix/mobile-catalog-filter",
-        "remoteCommit": "289f731f97d894733a0e3d882d80b799f73460b9",
-        "summary": "Implemented compact native catalog filter, select sizing and mobile text reflow; WebKit responsive and source checks passed",
-        "nextAction": "Inspect exact-head CI; merge parent PR 149 and retarget the mobile PR to main when authorized",
+        "remoteCommit": "b9431c3f495fce852fe08991a540f3702e3fbbea",
+        "summary": "Repaired WebKit fade endpoint race; 19 targeted tests and 40 repeated tooltip cases passed",
+        "nextAction": "Observe exact-head CI; integrate PR 149 and PR 150 through repository gates when authorized",
         "verification": {
           "status": "verified",
           "mechanism": "git-remote-observation"
         }
       },
-      "blockReason": "Local implementation verified; awaiting exact-head CI and parent PR 149 before merging PR 150"
+      "blockReason": "WebKit endpoint test race fixed and 59 targeted/repeated cases passed; awaiting updated PR 150 CI and parent integration"
     }
   ]
 }

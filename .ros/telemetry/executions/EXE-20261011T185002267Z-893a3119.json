@@ -507,8 +507,8 @@
         "name": "ros-work-protocol",
         "mechanism": "blocked-transition"
       },
-      "lastAssessedAt": "2026-10-11T19:01:59.000Z",
-      "recordedAt": "2026-10-11T19:01:59.000Z",
+      "lastAssessedAt": "2026-10-11T21:07:59.000Z",
+      "recordedAt": "2026-10-11T21:07:59.000Z",
       "history": [
         {
           "status": "unknown",
@@ -1420,6 +1420,26 @@
       },
       "collectedAt": "2026-10-11T21:04:43.000Z",
       "schemaVersion": "1.0.0"
+    },
+    {
+      "measurementId": "MEAS-6a36f683902cd8659fe82321",
+      "id": "agent.interruptions",
+      "value": 1,
+      "unit": "count",
+      "currency": null,
+      "quality": "derived",
+      "confidence": null,
+      "scope": "execution",
+      "aggregation": "sum",
+      "dimensions": {},
+      "pricing": null,
+      "source": {
+        "type": "calculated",
+        "name": "ros-work-protocol",
+        "mechanism": "blocked-transition"
+      },
+      "collectedAt": "2026-10-11T21:07:59.000Z",
+      "schemaVersion": "1.0.0"
     }
   ],
   "rawTelemetry": [],
@@ -1454,6 +1474,17 @@
         "mechanism": "work-lifecycle"
       },
       "eventId": "TEVT-319852c06e7d007bcd82e519"
+    },
+    {
+      "type": "work.blocked",
+      "occurredAt": "2026-10-11T21:07:59.000Z",
+      "reason": "WebKit endpoint test race fixed and 59 targeted/repeated cases passed; awaiting updated PR 150 CI and parent integration",
+      "source": {
+        "type": "ros-clock",
+        "name": "ros",
+        "mechanism": "work-lifecycle"
+      },
+      "eventId": "TEVT-d70567bf3cd4538364e028f4"
     }
   ],
   "repository": {
