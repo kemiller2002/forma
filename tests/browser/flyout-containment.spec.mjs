@@ -81,7 +81,7 @@ test("retained flyout exit keeps viewport size inside a layout-containing ancest
 test("without overlay retention native close cannot retract into an example", async ({ page }) => {
   await page.route("**/dist/components.css", async route => {
     const response = await route.fetch();
-    await route.fulfill({ response, body: (await response.text()).replace("@supports (overlay: auto)", "@supports (forma-unavailable: true)") });
+    await route.fulfill({ response, body: (await response.text()).replaceAll("@supports (overlay: auto)", "@supports (forma-unavailable: true)") });
   });
   await page.reload();
   await page.locator("main").evaluate(element => { element.style.contain = "layout"; });

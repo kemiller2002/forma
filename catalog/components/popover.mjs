@@ -21,7 +21,7 @@ export default {
       "Non-modal: the page stays interactive; `popover=\"auto\"` closes on outside click or Escape, `popover=\"manual\"` closes only when told to.",
       "At most `min(30rem, 100vw - 2rem)` wide and `min(80dvh, 100dvh - 2rem)` tall; longer content scrolls inside with contained overscroll.",
       "Placement is not managed by Forma: the surface sits at the viewport's block-start, inline-start corner unless the application positions it.",
-      "Light perceived weight by default: a small downward settle and fade on entry, an exit with the same duration and easing."
+      "Stationary fades in both directions: position and size stay unchanged until fully transparent."
     ]
   },
   examples: [
@@ -116,7 +116,7 @@ export default {
     form: "The popover does not participate in forms itself. Controls inside it belong to their form as usual, but an auto popover can be light-dismissed while the user is typing, so avoid unsaved input in auto popovers."
   },
   states: [
-    { name: "Hidden", how: "not :popover-open", description: "Not displayed. While closing, it fades and rises slightly before display is removed." },
+    { name: "Hidden", how: "not :popover-open", description: "Not displayed. While closing, it fades in place before display and top-layer removal." },
     { name: "Open", how: ":popover-open", description: "Displayed in the top layer, fully opaque, at rest." },
     { name: "Scrolling", how: "content taller than max-block-size", description: "The surface scrolls internally; the page does not." },
     { name: "Manual", how: "popover=\"manual\"", description: "No light dismiss; closes only via popovertarget buttons (or script)." }
@@ -142,10 +142,10 @@ export default {
     "No collision handling or placement fallback is provided for `.ef-popover`."
   ],
   motion: [
-    "Entry: opacity fades in by perceptual interpolation while the surface settles from 0.35rem above and 98.5% scale over the light inertial duration with damped easing.",
-    "Exit: the reverse over the same inertial duration as entry; `display` and `overlay` are held until the exit finishes so it is visible.",
-    "`data-ef-motion-weight` changes perceived mass (light by default). The native `:popover-open` state is authoritative and is never delayed.",
-    "Under `prefers-reduced-motion: reduce` the transitions are effectively instant."
+    "Entry and exit: opacity alone follows the shared 120ms slow-fast-slow curve, at unchanged position and size.",
+    "Exit cleanup: display and top-layer placement are retained until opacity is zero where overlay retention is supported; otherwise native dismissal is immediate.",
+    "`data-ef-motion-weight` does not affect these perceptual fades. The native `:popover-open` state is authoritative and is never delayed.",
+    "Under `prefers-reduced-motion: reduce` the stationary fade reaches its endpoint effectively immediately.",
   ],
   guidance: {
     do: [

@@ -40,9 +40,9 @@ test("surface mass produces coherent light standard heavy inertial ordering", as
 
 test("popover and toast exits share their entry response", async ({ page }) => {
   const popover = page.locator("#physics-popover");
-  const popoverExit = seconds((await durations(popover))[1]);
+  const popoverExit = seconds((await durations(popover))[0]);
   await page.locator("#physics-popover-open").click();
-  const popoverEntry = seconds((await durations(popover))[1]);
+  const popoverEntry = seconds((await durations(popover))[0]);
   expect(popoverExit).toBeCloseTo(popoverEntry, 5);
   await page.locator("#physics-popover-close").click();
 

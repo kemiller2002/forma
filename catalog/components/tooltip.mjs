@@ -21,7 +21,7 @@ export default {
       "The trigger is a 44 by 44px round native button, so the hint is reachable by keyboard, touch and switch access.",
       "The surface is at most `min(20rem, 100vw - 2rem)` wide and wraps long words; inverse colors distinguish it from the page.",
       "Anchor placement above the button (flipping below or to the other side when there is no room) where supported. Without anchor positioning the surface has `margin: 0`, so it opens at the block-start, inline-start corner of the viewport, readable but away from its button.",
-      "Light perceived weight: a small upward settle and fade on entry, an exit with the same duration and easing, and no displacement under reduced motion."
+      "Stationary fades in both directions: position and size stay unchanged until fully transparent."
     ]
   },
   examples: [
@@ -106,7 +106,7 @@ export default {
       "ef-tooltip__trigger": "Round native button, at least 44 by 44px, monospace glyph, no padding.",
       "ef-tooltip__surface": "The popover hint: inverse surface, small text, max-content width up to 20rem, word wrapping, anchor placement with flip fallbacks where supported, and the entry/exit transition.",
       "data-ef-motion-weight": "On `.ef-tooltip`. Presentation-only perceived mass: light (default for hints), standard or heavy.",
-      "--ef-tooltip-offset": "Vertical displacement the surface travels from on entry and back to on exit. Default 0.25rem; forced to 0 under reduced motion."
+      "--ef-motion-fade-easing": "Perceptual curve shared by fade-in and fade-out; no spatial travel."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus to the trigger. Where interest invokers are supported, keyboard focus can also show the hint after the browser's delay." },
@@ -145,10 +145,10 @@ export default {
     "The trigger stays 44 by 44px at every width and aligns with surrounding text through `vertical-align: middle`."
   ],
   motion: [
-    "Entry: opacity fades by perceptual interpolation while the surface settles from `--ef-tooltip-offset` below its resting position over the light inertial duration with damped easing.",
-    "Exit: the reverse over the same inertial duration as entry; `display` and `overlay` are held until it finishes.",
+    "Entry and exit: opacity alone follows the shared 120ms slow-fast-slow curve, at unchanged position and size.",
+    "Exit cleanup: display and top-layer placement are retained until opacity is zero where overlay retention is supported; otherwise native dismissal is immediate.",
     "`data-ef-motion-weight` on `.ef-tooltip` changes perceived mass; light is the default.",
-    "Under `prefers-reduced-motion: reduce` the displacement is removed (the hint only fades) and durations become effectively instant."
+    "Under `prefers-reduced-motion: reduce` the stationary fade reaches its endpoint effectively immediately.",
   ],
   guidance: {
     do: [

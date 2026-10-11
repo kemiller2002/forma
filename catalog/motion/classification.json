@@ -176,9 +176,7 @@
       "family": "popover-menu",
       "selector": ".ef-popover, .ef-menu",
       "tracks": {
-        "opacity": "perceptual",
-        "translate": "inertial",
-        "scale": "inertial"
+        "opacity": "perceptual"
       },
       "entrySelectors": [
         ".ef-popover:popover-open",
@@ -186,7 +184,8 @@
       ],
       "reducedMotion": {
         "strategy": "explicit"
-      }
+      },
+      "note": "Stationary reciprocal perceptual fades (MOT-031, MOT-032). Retain display only with top-layer retention, until opacity is zero; otherwise native dismissal is immediate."
     },
     {
       "source": "src/styles/components.css",
@@ -463,8 +462,7 @@
       "family": "tooltip",
       "selector": ".ef-tooltip__surface",
       "tracks": {
-        "opacity": "perceptual",
-        "translate": "inertial"
+        "opacity": "perceptual"
       },
       "entrySelectors": [
         ".ef-tooltip__surface:popover-open"
@@ -472,7 +470,7 @@
       "reducedMotion": {
         "strategy": "explicit"
       },
-      "note": "Tooltip/contextual hint (MOT-018): light perceived weight, tiny origin-related displacement, perceptual opacity, shorter derived exit; reduced motion removes the displacement."
+      "note": "Stationary reciprocal perceptual fades (MOT-031, MOT-032). Retain display only with top-layer retention, until opacity is zero; otherwise native dismissal is immediate."
     },
     {
       "source": "src/styles/components.css",
@@ -574,6 +572,18 @@
         "strategy": "explicit"
       },
       "notes": "Changing-value emphasis (FORMA-MOT-011): the new authoritative value is legible from the first frame; a neutral surface tint fades by perceptual interpolation, identical for every direction of change. No count-through."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "stationary-surface-fade",
+      "selector": ".ef-popover, .ef-menu, .ef-tooltip__surface",
+      "tracks": {
+        "opacity": "perceptual"
+      },
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "note": "MOT-032: display and overlay carriers retain resting geometry until the perceptual fade is complete, only with overlay retention."
     }
   ]
 }
