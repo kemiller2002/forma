@@ -2,9 +2,9 @@
   "schemaVersion": "1.0.0",
   "protocolVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "actor": "anthropic/claude-code",
+  "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-10T13:36:11Z",
+  "updatedAt": "2026-10-11T07:05:50.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1798,6 +1798,51 @@
       "telemetryExecutionIds": [
         "EXE-20261010T133611298Z-0f5ec75b"
       ]
+    },
+    {
+      "id": "GH-142",
+      "type": "task",
+      "state": "blocked",
+      "semanticState": "blocked",
+      "evidence": [],
+      "updatedAt": "2026-10-10T19:12:25Z",
+      "telemetryExecutionIds": [
+        "EXE-20261010T190944784Z-2fc6a411"
+      ],
+      "blockReason": "Local implementation ready for CI; publishing branch requires explicit approval after automated review rejection"
+    },
+    {
+      "id": "GH-143",
+      "type": "task",
+      "state": "blocked",
+      "semanticState": "blocked",
+      "evidence": [],
+      "updatedAt": "2026-10-11T07:05:50.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261010T191327299Z-705de261",
+        "EXE-20261011T065924096Z-0dcaac60"
+      ],
+      "blockReason": "WebKit repair pushed and locally verified; full cross-browser CI pending before merge",
+      "latestCheckpoint": {
+        "id": "a8097d23a82a591e201de80e",
+        "recordedAt": "2026-10-11T07:05:47.000Z",
+        "executionId": "EXE-20261011T065924096Z-0dcaac60",
+        "repository": "echelon-design-system",
+        "branch": "fix/pr144-webkit-verified",
+        "commit": "cb31113c386b229b69b4b855ec942462d5470de7",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "fix/date-flyout-containment",
+        "remoteCommit": "cb31113c386b229b69b4b855ec942462d5470de7",
+        "summary": "WebKit reflow fix published on PR 144; full CI pending",
+        "nextAction": "Merge PR 144 after all five workflows pass its current head",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      }
     }
   ]
 }

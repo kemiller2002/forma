@@ -144,6 +144,7 @@ export default {
     ]
   },
   responsive: [
+    "Temporal inputs use a shrinkable border-box with normalized native appearance to avoid iOS intrinsic-width overflow; the native date/time picker remains browser-owned.",
     "Inputs are `inline-size: 100%` of their field, so localized formats and picker icons fit the available width.",
     "No breakpoints of its own; place several fields in [[grid]] so they collapse to one column when narrow.",
     "Touch devices use their native picker UI, which is full screen or a bottom sheet on most phones."

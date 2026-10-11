@@ -106,6 +106,21 @@
     color: var(--ef-color-text-primary, #171a18);
   }
 
+  /* iOS temporal controls otherwise retain a native intrinsic width despite
+     the author's width limit. Keep the native picker, not its native box. */
+  :where(input[type="date"], input[type="time"], input[type="datetime-local"]) {
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+  }
+
+  :where(input[type="date"], input[type="time"], input[type="datetime-local"])::-webkit-date-and-time-value {
+    min-inline-size: 0;
+    text-align: start;
+  }
+
   :where(:focus-visible) {
     outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
     outline-offset: 2px;

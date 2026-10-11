@@ -195,7 +195,7 @@ Forma's controls and transient surfaces share one physics-derived CSS motion voc
 - Mass affects inertial/spring response. It does not affect the gravity-derived timing used for vertical cues.
 - Do not add JavaScript to compute animation timing. The canonical model is expressed with CSS custom properties and CSS math, with static CSS fallbacks.
 - A consuming application may override the exposed physics variables for a justified branded/interaction treatment, but it must preserve reduced-motion behavior and native semantic state timing.
-- Entry and exit come from the same model; transient-surface exit is deliberately shorter and more damped.
+- Entry and exit share the same model, duration and easing. Native dialog exit animation requires top-layer retention; otherwise closing is immediate.
 - Native `details`, `popover`, and `dialog` state remains authoritative. Never create a second CSS-only semantic state machine.
 - Direct manipulation remains immediate; no physics effect may introduce pointer lag.
 - Modal flyouts are Forma's canonical left/right modal drawer baseline and use native dialog behavior; swipe/drag/resizing, bottom sheets, and persistent nonmodal drawers belong to Limen/application code.
