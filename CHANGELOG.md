@@ -7,6 +7,15 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.6.2
+
+Documentation-only American English consistency patch. The icon gallery and all
+80 individual icon pages use `color`, `behavior`, `labeled`, and other US
+English spellings in reader-facing text, with regression coverage. Existing
+technical names such as the historic `custom-colour.txt` source URL and CSS
+classes retain their identifiers so consumers and bookmarks do not break.
+No SVG geometry, icon name, component behavior, or CSS contract changes.
+
 ## 0.6.1
 
 Patch release: responsive navigation and native date/time field containment.
