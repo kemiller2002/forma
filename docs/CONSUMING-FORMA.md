@@ -122,6 +122,13 @@ IDs that a consumer does not recognize should be preserved as inert data, not
 rendered or rejected. There are no markup or token changes for existing
 components. See `docs/ICONS.md`.
 
+## 0.6.2
+
+American-English documentation correction across the icon catalog. This patch
+changes only human-readable help text and generated documentation; the existing
+`custom-colour.txt` example file and programmatic CSS/HTML identifiers remain
+compatible. Pin a published version rather than a moving branch.
+
 ## 0.6.1
 
 Patch upgrade from 0.6.0. The new version constrains native date/time input width inside responsive `.ef-field` grids while keeping native browser pickers, labels, values, and events unchanged. The Forma documentation site also presents unbroken navigation labels and internally scrollable code examples on narrow screens. Consumers must pin the actual immutable 0.6.1 release once available; do not assume a Git commit alone establishes publication.

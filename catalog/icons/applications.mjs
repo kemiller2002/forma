@@ -18,7 +18,7 @@ export const applicationIconDocs = Object.freeze({
   ),
   inbox: entry(
     "A tray with an incoming item indicates the mailbox or inbound queue.",
-    ["Inbox navigation for new and received messages.","Queues of incoming requests or assignments labelled Inbox."],
+    ["Inbox navigation for new and received messages.","Queues of incoming requests or assignments labeled Inbox."],
     ["A saved or processed item; use archive.","General file storage; use folder."],
     "Open inbox",
     ["email","archive","folder"]
@@ -144,7 +144,7 @@ export const applicationIconDocs = Object.freeze({
   ),
   minus: entry(
     "A horizontal bar indicates reduce, remove from a count or subtract.",
-    ["Decrease a numeric stepper value.","Remove an item from a collection when the control is labelled."],
+    ["Decrease a numeric stepper value.","Remove an item from a collection when the control is labeled."],
     ["Deleting data permanently; use trash.","Closing a dialog; use close."],
     "Decrease quantity",
     ["add","trash","close"]

@@ -1,0 +1,54 @@
+name: Validate US English icon documentation
+on:
+  push:
+    branches: [fix/forma-us-english-icon-docs]
+    paths:
+      - ".github/workflows/reconcile-us-english-icons.yml"
+      - "tools/catalog/render-icons.mjs"
+      - "docs/ICONS.md"
+      - "catalog/icons/**"
+      - "tests/icon-docs.test.mjs"
+      - "package.json"
+      - "package-lock.json"
+permissions:
+  contents: write
+jobs:
+  validate-and-reconcile:
+    if: github.repository == 'kemiller2002/forma'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0, persist-credentials: true}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: actions/setup-dotnet@v5
+        with: {dotnet-version: '10.0.x'}
+      - name: Validate US English and reconcile real Git history
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags
+          chmod +x ./praxis
+          npm install --ignore-scripts=false
+          npm run build
+          npm run site:build
+          node --test tests/icon-docs.test.mjs tests/site-build.test.mjs tests/package-contract.test.mjs
+          ./praxis registry check
+          if ! ./praxis work show GH-145 >/dev/null 2>&1; then
+            ./praxis add "Use American English across Forma icon documentation" --id GH-145 --source github-issue --source-reference "https://github.com/kemiller2002/forma/issues/145" --priority medium
+          fi
+          base="$(git merge-base HEAD origin/main)"
+          now="$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+          reason="GitHub connector authored text-only American English correction; attribute authentic committed changes to GH-145"
+          ./praxis work reconcile --id GH-145 --reason "$reason" --range "$base..HEAD" --occurred-at "$now" --dry-run
+          ./praxis work reconcile --id GH-145 --reason "$reason" --range "$base..HEAD" --occurred-at "$now"
+          ./praxis registry build
+          ./praxis validate
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .ros/work .ros/events .ros/telemetry registries
+          if ! git diff --cached --quiet; then
+            git commit -m "praxis: attribute Forma US English documentation GH-145"
+            git push origin HEAD:fix/forma-us-english-icon-docs
+          fi

@@ -644,6 +644,27 @@
       },
       "source": "manual",
       "sourceReference": null
+    },
+    {
+      "id": "GH-145",
+      "title": "Use American English across Forma icon documentation",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-10-11T01:00:52.144Z",
+      "updatedAt": "2026-10-11T01:00:52.144Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "automation",
+        "id": "github/github-actions",
+        "provider": "github",
+        "model": "unknown",
+        "runtime": "github-actions"
+      },
+      "source": "github-issue",
+      "sourceReference": "https://github.com/kemiller2002/forma/issues/145"
     }
   ]
 }
