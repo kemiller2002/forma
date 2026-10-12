@@ -64,11 +64,11 @@ The canonical normalized variables are:
 
 - `--ef-motion-mass` (`m`): inertial mass;
 - `--ef-motion-stiffness` (`k`): spring/restoring stiffness;
-- `--ef-motion-damping` (`ζ`): normalized damping ratio in the supported underdamped preset range;
+- `--ef-motion-damping` (`ζ`): normalized damping parameter that scales response time per preset. It does not select the curve shape: the shipped settle curve is critically damped (MOT-033);
 - `--ef-motion-distance` (`s`): normalized travel distance for gravity-derived movement;
 - `--ef-motion-gravity` (`g`): normalized gravitational acceleration;
 - `--ef-motion-base-duration`: the dimensional scale factor that maps the normalized model to UI time;
-- `--ef-motion-exit-duration`: a compatibility dismissal token equal to inertial entry.
+- `--ef-motion-exit-duration`: dismissal duration, `0.8 × T_inertia` clamped to 90–340ms (MOT-033).
 
 For spring/inertial settling, Forma uses the second-order-system scaling relationship:
 
@@ -99,7 +99,7 @@ Rules:
 - CSS math support may be progressively enhanced; unsupported browsers must retain a usable static/fallback timing;
 - motion must remain interruptible;
 - tests must verify the expected ordering `light < standard < heavy` for inertial duration and verify mass independence for gravity timing;
-- transient-surface exit duration equals inertial duration, including the same clamp bounds;
+- transient-surface exit duration is shorter than inertial entry (`0.8 × T_inertia`, clamped to 90–340ms);
 - reduced motion collapses spatial travel and overshoot while retaining clear final state.
 
 ### MOT-009 Surface mass grammar
@@ -238,7 +238,7 @@ Centered modal dialogs shall use a restrained vertical/scale response. Modal fly
 Dialog, flyout, popover, and menu spatial entry shall use the shared physics-derived inertia model. `data-ef-motion-weight="light|standard|heavy"` may tune perceived mass, but it must never imply domain importance, severity, permission, risk, or destructive intent.
 
 ### Exit
-Entry and exit use the same duration and easing. Direction comes from the target position, including mirrored left/right origins.
+Exit is shorter than entry and accelerates away from rest; entry settles directly into place (MOT-033). Direction comes from the target position, including mirrored left/right origins. A surface that fades does so before it is removed.
 
 Focus restoration shall not wait on decorative animation. Native dialog and Popover state changes immediately; animation only represents that state.
 
@@ -353,11 +353,11 @@ Aegis presentation intent determines the surface family; motion does not determi
 
 Every Forma animation SHALL use the motion model that matches the phenomenon being represented. The allowed canonical models are:
 
-1. **Inertial / spring response**
+1. **Inertial response (critically damped settling)**
    - Use for an object that is perceived as having mass and is moving toward a stable state after activation or release.
    - Examples: switch thumb, selection indicator, dialog or flyout entry, post-drop settling, post-snap pane settling.
-   - Use the canonical mass, stiffness, damping, and derived inertia duration variables.
-   - Overshoot MAY be used only when it cannot imply a false semantic value, exceed a constrained boundary, or reduce control.
+   - Use the canonical mass, stiffness, damping, and derived inertia duration variables, and `--ef-motion-settle-easing`.
+   - The default response settles without overshoot or rebound. Overshoot is an exception governed by MOT-033: it MAY be used only for a microinteraction or direct-manipulation release where it has a stated feedback purpose, and never where it could imply a false semantic value, exceed a constrained boundary, or reduce control.
 
 2. **Gravity-derived directional response**
    - Use for a small directional cue whose timing is intended to evoke vertical travel under uniform acceleration.
@@ -493,7 +493,7 @@ The motion contract is:
 - light perceived weight by default;
 - opacity plus a very small origin-related displacement MAY be used;
 - entry SHALL visually relate the surface to its invoker without large travel;
-- exit SHALL share entry duration and easing;
+- exit SHALL use the same monotonic fade curve as entry and SHALL be shorter (MOT-031);
 - motion SHALL NOT be the only indication that the surface appeared;
 - the content SHALL NOT require hover as its only access path;
 - focus, dismissal, timeout, and accessible-description behavior remain native/application responsibilities according to the chosen semantic pattern;
@@ -699,20 +699,61 @@ Only then may the canonical motion vocabulary be extended.
 
 ## MOT-030 — Reciprocal interactions
 
-Every reversible interaction SHALL share its motion model, mass, stiffness, damping, duration calculation, clamp bounds and easing in both directions. Only the target state and appropriate direction change. Left/right flyouts SHALL mirror their spatial origins. The exit token remains a compatibility name for inertial duration. Perceptual opacity and backdrop tracks retain their own shared perceptual model. Reduced motion SHALL remain immediate.
+*Amended 2026-10-12 by MOT-033: entry and exit no longer share duration and easing.*
+
+Every reversible interaction SHALL share its motion model and perceived-weight parameters in both directions, so opening and closing read as the same object. Entry and exit timing are related but not identical: exit is shorter and uses the exit easing (MOT-033). Left/right flyouts SHALL mirror their spatial origins. Perceptual opacity and backdrop tracks retain their own shared perceptual model. Reduced motion SHALL remain immediate.
 
 Rapid changes SHALL retarget retained browser transitions from the current rendered position without an application animation queue. When the browser does not retain a closing native dialog in the rendered/top layer, immediate disappearance at its closed endpoint is the supported progressive fallback; semantic state, focus return and subsequent reopening must remain correct. CSS does not guarantee continuous physical velocity, and native top-layer display/overlay behavior remains browser-owned. A consuming application requiring strict velocity continuity must supply its motion controller through Limen; Forma does not introduce a runtime simulator.
 
-Supersedes the shorter-exit guidance in MOT-008, MOT-009 and MOT-020. Verify preset equality at clamp boundaries, paired browser durations/easings, mirrored flyout origins and interrupted reversal.
+Verify mirrored flyout origins, interrupted reversal from the rendered position, and (per MOT-033) exits shorter than entries.
 
 
 ## MOT-031 — Quick surface fades
 
-Popover, action-menu and tooltip opacity SHALL use the shared perceptual fast duration (120ms default) and `--ef-motion-fade-easing` (`cubic-bezier(0.65, 0, 0.35, 1)`). The monotonic, symmetric curve starts gently, accelerates through the middle and settles gently without overshoot. Entry and exit SHALL use the same curve and duration. Native state and input eligibility change immediately, independently of the fade. Use stationary geometry (MOT-032), CSS-only starting styles and discrete top-layer exit handling; browsers without exit retention may dismiss immediately. Reduced motion SHALL remain immediate. This is a perceptual interpolation profile, not a combustion simulation or a new physical motion model.
+*Amended 2026-10-12 by MOT-033.*
+
+Popover, action-menu, tooltip, modal-dialog, toast, command-palette and backdrop opacity SHALL use `--ef-motion-fade-in-duration` (180ms default) on entry and `--ef-motion-fade-out-duration` (120ms default) on exit, both with `--ef-motion-fade-easing` (`cubic-bezier(0, 0, 0.58, 1)`). The curve is monotonic, changes from the first frame and decelerates into its endpoint, so no single 60Hz frame carries more than a quarter of the opacity change. (The former 120ms slow-fast-slow curve held opacity for the first frames and then changed about 38% in one frame, which read as a pop.) A surface whose content must not be visible before its initial state is applied SHALL start from opacity 0 through `@starting-style` or an equivalent closed-state style. Native state and input eligibility change immediately, independently of the fade. Use stationary geometry (MOT-032), CSS-only starting styles and discrete top-layer exit handling; browsers without exit retention may dismiss immediately. Reduced motion SHALL remain immediate. This is a perceptual interpolation profile, not a combustion simulation or a new physical motion model.
 
 
 ## MOT-032 — Fade before surface removal
 
-Popover, action-menu and tooltip surfaces SHALL remain at their resting position and size throughout a visible fade. Opacity is their only continuous entry/exit track; no translation, scaling or placement reset may run concurrently with a partially visible fade. Their reciprocal 120ms fade profile remains MOT-031. Display and top-layer removal SHALL be deferred until opacity reaches zero, using the same perceptual duration, only where overlay retention is supported. Without top-layer retention, use immediate native dismissal rather than showing a translucent surface in another containing block. Reduced motion SHALL reach endpoints immediately. Native semantic state, focus restoration and dismissal authority remain immediate; visual cleanup does not delay application actions.
+Popover, action-menu and tooltip surfaces SHALL remain at their resting position and size throughout a visible fade. Opacity is their only continuous entry/exit track; no translation, scaling or placement reset may run concurrently with a partially visible fade. Their fade profile is MOT-031. Display and top-layer removal SHALL be deferred until opacity reaches zero, using the same perceptual duration, only where overlay retention is supported. Without top-layer retention, use immediate native dismissal rather than showing a translucent surface in another containing block. Reduced motion SHALL reach endpoints immediately. Native semantic state, focus restoration and dismissal authority remain immediate; visual cleanup does not delay application actions.
 
 Acceptance: sample real CSS exit transitions at intermediate opacity and verify unchanged bounding rectangles, retained top-layer placement, eventual hidden display, immediate native closed state, interruption/reopening, narrow viewports and a containing ancestor. Verify the static fallback and reduced motion separately.
+
+
+## MOT-033 — Motion policy: settle directly; overshoot is an exception
+
+Added 2026-10-12. Physical models choose motion; physical plausibility does not require rebound, overshoot or bounce. A critically damped or overdamped response is the physically correct model for an object that must come to rest at a destination, and it is Forma's default. Motion communicates spatial relationship, causality, state change, hierarchy and continuity. It does not call attention to itself.
+
+**Structural motion** (drawers/flyouts, modals, panels, navigation surfaces, toasts, command palette, alerts and fault surfaces entering):
+
+- no bounce, rebound or overshoot by default;
+- entry uses `--ef-motion-settle-easing` (critically damped, zeta = 1): it leaves rest immediately, decelerates and stops exactly at the destination;
+- a surface that appears also fades, so it is never fully visible before its initial state is applied.
+
+**State transitions** (disclosure/accordion, tabs, selection indicators, validation, progress):
+
+- in-place movement uses the settle curve in both directions, so expansion and collapse are one continuous movement that ends without a jump;
+- an indicator never overshoots its target (a tab underline never exceeds its tab; a segmented indicator never implies a neighboring option);
+- a control's hit target does not move or resize when its state changes.
+
+**Microinteractions** (switch, checkbox, press feedback):
+
+- a subtle physical response is permitted;
+- overshoot requires a stated feedback purpose, recorded per property in `catalog/motion/classification.json` (`overshoot`), and its peak excursion stays within the control;
+- the shipped exceptions are the switch thumb latch and the checkbox glyph confirmation, both through `--ef-motion-spring-easing`, the only catalogued overshoot token.
+
+**Direct manipulation:** the visual tracks the authoritative input with no lag (MOT-002, MOT-019, MOT-020). Release settling uses the settle curve; a stronger physical response may follow release only when it reinforces the user's input and never leaves legal bounds.
+
+**Attention motion** (loading, activity, notifications): use sparingly; repeated motion runs only while the represented activity runs (MOT-016) and never continuously without a functional reason.
+
+**Exit motion:** shorter than entry (`--ef-motion-exit-duration` = `0.8 × T_inertia`, clamped to 90–340ms; fades 120ms against 180ms). Surfaces leaving the viewport or becoming transparent use `--ef-motion-exit-easing`; content that remains in place uses the settle curve. A visible fade completes before display or top-layer removal (MOT-032). Exit never moves a surface back toward the viewport.
+
+**Reduced motion:** preserve state communication; remove spatial travel, overshoot and compression; reach endpoints immediately rather than through a very short animation that pops. Do not substitute another distracting effect.
+
+**Accessibility and machine operability:** native state (`open`, `:popover-open`, `aria-selected`, `checked`) changes immediately and is the observable state. Focus moves into and out of surfaces without waiting for motion; animation never delays keyboard operability. A closing surface does not intercept input. Rapid repeated commands always end in the last commanded state. Animation completion is never the only way to determine state.
+
+**Governance:** `tools/motion-audit.mjs` reports `overshoot-unjustified` for an overshooting easing without a stated purpose and `easing-definition-overshoots` when any canonical easing other than a catalogued overshoot token is defined with overshoot or reversal. Browser tests sample real CSS transitions by pausing and stepping them (`tests/browser/structural-motion.spec.mjs`); they assert final positions, absence of overshoot and rebound, shorter exits, interruption, rapid toggling, focus timing and reduced motion at desktop and mobile widths without wall-clock sleeps.
+
+Supersedes the equal-duration and equal-easing clauses of MOT-008, section 7 (Exit), MOT-018, MOT-030 and MOT-031. Decision: `docs/decisions/ADR-0033-settled-structural-motion.md`.

@@ -2,6 +2,8 @@
 
 Accepted 2026-10-10 under the user-authorized MOT-030 requirement.
 
+**Superseded in part 2026-10-12 by [ADR-0033](ADR-0033-settled-structural-motion.md):** exits are now shorter than entries and structural motion settles without the spring overshoot. Mirrored origins and retargeting from the rendered position remain in force.
+
 Reversible interactions share their physics parameters, duration, clamp bounds and easing. Direction is supplied by target state and mirrored spatial origins. The exit-duration token remains compatible but now matches inertia, replacing the former 0.68 multiplier and separate exit bounds. Modal and flyout close easing now matches their opening spring easing. Other transient surfaces retain their existing damped response in both directions.
 
 Forma remains CSS-only. Native semantics change immediately; display and overlay retain visual exit rendering. Browser transitions handle interruptions, with position continuity but no claim of continuous physical velocity. A runtime simulator was rejected to preserve the zero-runtime architecture.
