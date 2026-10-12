@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-12T07:21:45.000Z",
+  "updatedAt": "2026-10-12T16:27:37.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1951,6 +1951,37 @@
         }
       },
       "blockReason": "Await exact-head browser CI and deployment verification for PR 151; local browser binaries/dependencies unavailable"
+    },
+    {
+      "id": "WI-0029",
+      "type": "task",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-10-12T16:27:37.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261012T162737143Z-047b0773"
+      ],
+      "latestCheckpoint": {
+        "id": "f0b4666e40e9fbada167c2b8",
+        "recordedAt": "2026-10-12T17:12:40.000Z",
+        "executionId": "EXE-20261012T162737143Z-047b0773",
+        "repository": "echelon-design-system",
+        "branch": "fix/motion-quality-pass",
+        "commit": "fde503f9b9496f366ad6dc944a5c4b2ab2ef223d",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "fix/motion-quality-pass",
+        "remoteCommit": "fde503f9b9496f366ad6dc944a5c4b2ab2ef223d",
+        "summary": "Settled structural motion (no overshoot, shorter exits), continuous fades and disclosures, MOT-033 policy and audit rules, unified site page rhythm and polish fixes; Chromium and site validation passed except pre-existing workflow-embed contrast",
+        "nextAction": "Run CI across Chromium, Firefox and WebKit; resolve engine differences; integrate via PR",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      }
     }
   ]
 }
