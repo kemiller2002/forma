@@ -79,11 +79,13 @@
       border-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
   }
 
-  :where(button, .ef-button):where(:not(:disabled)):hover {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+  @media (hover: hover) {
+    :where(button, .ef-button):where(:not(:disabled)):hover {
+      --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
+      --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
+      --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+      background: var(--ef-color-surface-secondary, #e3e0d7);
+    }
   }
 
   /*

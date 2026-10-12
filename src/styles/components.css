@@ -47,7 +47,7 @@
     font-size: 0.8125rem;
     line-height: 1.4;
   }
-  /* On a secondary surface, text-secondary falls below 4.5:1; use the surface's own text colour (forma#93). */
+  /* On a secondary surface, text-secondary falls below 4.5:1; use the surface's own text color (forma#93). */
   .ef-surface .ef-field__description { color: var(--ef-color-text-on-secondary-surface, #3a403c); }
 
   /* Motion model vocabulary --------------------------------------------- */
@@ -504,7 +504,9 @@
       opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing);
   }
 
-  .ef-slider__input:hover { filter: saturate(1.08); }
+  @media (hover: hover) {
+    .ef-slider__input:hover { filter: saturate(1.08); }
+  }
   .ef-slider__input:active { filter: saturate(1.14); }
   .ef-slider__input:disabled { cursor: not-allowed; opacity: 0.62; }
 
@@ -570,7 +572,7 @@
    * segments with the light inertial model. anchor-scope keeps every control
    * independent; without anchor positioning the checked segment's own
    * background above is the complete, correct presentation. Damped easing
-   * (no overshoot) keeps the indicator from implying a neighbouring option.
+   * (no overshoot) keeps the indicator from implying a neighboring option.
    */
   @supports (anchor-name: --ef-segment) and (anchor-scope: all) {
     .ef-segmented { anchor-scope: --ef-segment-selected; }
@@ -736,11 +738,13 @@
     text-decoration: none;
   }
 
-  .ef-menu__list :where(button, a):hover {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+  @media (hover: hover) {
+    .ef-menu__list :where(button, a):hover {
+      --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
+      --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
+      --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+      background: var(--ef-color-surface-secondary, #e3e0d7);
+    }
   }
 
   /* Tooltip / contextual hint (MOT-018, FORMA-MOT-004) ----------------- */
@@ -4224,8 +4228,10 @@
     color: var(--ef-grid-emphasis);
   }
 
-  .ef-character-grid__key:hover {
-    text-decoration: underline;
+  @media (hover: hover) {
+    .ef-character-grid__key:hover {
+      text-decoration: underline;
+    }
   }
 
   .ef-character-grid__key:focus-visible {

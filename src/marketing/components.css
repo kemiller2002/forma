@@ -73,7 +73,9 @@
     text-decoration: none;
   }
 
-  .ef-site-header__brand:hover { color: var(--ef-tone-text); text-decoration: underline; }
+  @media (hover: hover) {
+    .ef-site-header__brand:hover { color: var(--ef-tone-text); text-decoration: underline; }
+  }
 
   /* The brand name stays visible at every width; it wraps rather than hides,
      because the mark alone is decorative (aria-hidden). */
@@ -131,9 +133,11 @@
     text-decoration: none;
   }
 
-  .ef-site-nav__link:hover {
-    color: var(--ef-tone-text);
-    border-block-end-color: var(--ef-color-accent-primary);
+  @media (hover: hover) {
+    .ef-site-nav__link:hover {
+      color: var(--ef-tone-text);
+      border-block-end-color: var(--ef-color-accent-primary);
+    }
   }
 
   /* Current location uses a persistent rule plus aria-current, not hue alone. */
@@ -149,10 +153,12 @@
     color: var(--ef-tone-action-text);
   }
 
-  .ef-site-nav__link[data-ef-variant="action"]:hover {
-    background: var(--ef-tone-action-hover);
-    color: var(--ef-tone-action-text);
-    border-block-end-color: var(--ef-tone-action-text);
+  @media (hover: hover) {
+    .ef-site-nav__link[data-ef-variant="action"]:hover {
+      background: var(--ef-tone-action-hover);
+      color: var(--ef-tone-action-text);
+      border-block-end-color: var(--ef-tone-action-text);
+    }
   }
 
   /* Text roles --------------------------------------------------------- */
@@ -220,7 +226,9 @@
       color var(--ef-effect-transition-duration) var(--ef-effect-transition-easing);
   }
 
-  .ef-site .ef-button:hover { background: var(--ef-tone-hover); color: var(--ef-tone-text); }
+  @media (hover: hover) {
+    .ef-site .ef-button:hover { background: var(--ef-tone-hover); color: var(--ef-tone-text); }
+  }
 
   .ef-site .ef-button[data-ef-variant="primary"] {
     border-color: var(--ef-tone-action-background);
@@ -228,9 +236,11 @@
     color: var(--ef-tone-action-text);
   }
 
-  .ef-site .ef-button[data-ef-variant="primary"]:hover {
-    background: var(--ef-tone-action-hover);
-    color: var(--ef-tone-action-text);
+  @media (hover: hover) {
+    .ef-site .ef-button[data-ef-variant="primary"]:hover {
+      background: var(--ef-tone-action-hover);
+      color: var(--ef-tone-action-text);
+    }
   }
 
   .ef-site .ef-button:is(:disabled, [aria-disabled="true"]) {
@@ -267,7 +277,9 @@
   }
 
   a.ef-badge { min-block-size: 1.5rem; }
-  a.ef-badge:hover { border-color: var(--ef-tone-rule-strong); color: var(--ef-tone-text); }
+  @media (hover: hover) {
+    a.ef-badge:hover { border-color: var(--ef-tone-rule-strong); color: var(--ef-tone-text); }
+  }
 
   /* Status is carried by the badge text; the colored edge is redundant. */
   .ef-badge[data-ef-status] { border-inline-start-width: var(--ef-shape-border-width-accent); }
@@ -346,8 +358,12 @@
   }
 
   .ef-card:has(.ef-card__link) { transition: background-color var(--ef-effect-transition-duration) var(--ef-effect-transition-easing); }
-  .ef-card:has(.ef-card__link:hover) { background: var(--ef-tone-hover); }
-  .ef-card__link:hover { color: inherit; text-decoration: underline; }
+  @media (hover: hover) {
+    .ef-card:has(.ef-card__link:hover) { background: var(--ef-tone-hover); }
+  }
+  @media (hover: hover) {
+    .ef-card__link:hover { color: inherit; text-decoration: underline; }
+  }
   .ef-card__link:focus-visible { box-shadow: none; outline: none; }
 
   .ef-card:has(.ef-card__link:focus-visible) {

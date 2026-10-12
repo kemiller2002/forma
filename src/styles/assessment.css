@@ -154,7 +154,9 @@
     overflow-wrap: anywhere;
   }
 
-  .ef-ordinal-option:hover { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); background: var(--ef-color-surface-secondary, #e3e0d7); }
+  @media (hover: hover) {
+    .ef-ordinal-option:hover { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); background: var(--ef-color-surface-secondary, #e3e0d7); }
+  }
   /* Light inertial press on the marker only; the option (hit target) never
      moves or shrinks (MOT-014). */
   .ef-ordinal-option:has(input:active:not(:disabled)) .ef-ordinal-option__marker { scale: 0.92; }

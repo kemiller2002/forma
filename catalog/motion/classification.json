@@ -148,7 +148,7 @@
       "reducedMotion": {
         "strategy": "explicit"
       },
-      "note": "Anchor-positioned selection indicator (MOT-015): light inertial, damped (no overshoot into a neighbouring option), retargets on rapid input. Progressive enhancement; the checked segment background is the fallback."
+      "note": "Anchor-positioned selection indicator (MOT-015): light inertial, damped (no overshoot into a neighboring option), retargets on rapid input. Progressive enhancement; the checked segment background is the fallback."
     },
     {
       "source": "src/styles/components.css",

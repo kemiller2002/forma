@@ -156,9 +156,11 @@
     text-underline-offset: 0.2em;
   }
 
-  .ef-site :where(a:hover) {
-    color: var(--ef-tone-link-hover);
-    text-decoration-thickness: calc(var(--ef-shape-border-width) * 2);
+  @media (hover: hover) {
+    .ef-site :where(a:hover) {
+      color: var(--ef-tone-link-hover);
+      text-decoration-thickness: calc(var(--ef-shape-border-width) * 2);
+    }
   }
 
   .ef-site :where(ul, ol) { margin-block: 0 var(--ef-space-4); padding-inline-start: var(--ef-space-5); }

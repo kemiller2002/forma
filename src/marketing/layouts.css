@@ -140,8 +140,10 @@
     text-decoration: none;
   }
 
-  .ef-doc__nav :where(a:hover),
-  .ef-doc__aside :where(a:hover) { border-inline-start-color: var(--ef-color-accent-primary); }
+  @media (hover: hover) {
+    .ef-doc__nav :where(a:hover),
+    .ef-doc__aside :where(a:hover) { border-inline-start-color: var(--ef-color-accent-primary); }
+  }
 
   .ef-doc__nav :where(a[aria-current]) {
     border-inline-start-color: var(--ef-tone-rule-strong);
