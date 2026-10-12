@@ -64,18 +64,18 @@ export default {
       description: "Entries with long titles and two-sentence summaries and no eyebrow. Titles and summaries wrap within their columns; the link text stays on one line.",
       html: `<ef-entry-index class="ef-component-tag">
   <div class="ef-site">
-    <ol class="ef-index" aria-label="Research programmes">
+    <ol class="ef-index" aria-label="Research programs">
       <li class="ef-index__item">
         <p class="ef-index__marker">R / 01</p>
         <div class="ef-index__heading"><h3 class="ef-index__title">Human oversight of automated decisions</h3></div>
         <p class="ef-index__summary">How review, escalation and accountability survive automation. Includes field studies from regulated industries.</p>
-        <a class="ef-index__link" href="#entry-index-long-titles-oversight">Read the programme</a>
+        <a class="ef-index__link" href="#entry-index-long-titles-oversight">Read the program</a>
       </li>
       <li class="ef-index__item" id="entry-index-long-titles-oversight">
         <p class="ef-index__marker">R / 02</p>
         <div class="ef-index__heading"><h3 class="ef-index__title">Evidence-led visual hierarchy</h3></div>
         <p class="ef-index__summary">Measured effects of type, color and composition on comprehension. Findings feed Forma's tokens.</p>
-        <a class="ef-index__link" href="#entry-index-long-titles-oversight">Read the programme</a>
+        <a class="ef-index__link" href="#entry-index-long-titles-oversight">Read the program</a>
       </li>
     </ol>
   </div>
@@ -91,7 +91,7 @@ export default {
           "Below a 56rem list width each row regroups into a 3.5rem marker column beside the content, with heading, summary and link stacked in the second column.",
           "Below 28rem (most phones) the marker also moves into the single column above the heading; source order is unchanged.",
           "The link text does not wrap (`white-space: nowrap`), so keep it short; very long link text can overflow a 320px row.",
-          "The link is at least 24px tall and sits alone on its own line, so it is easy to tap without catching neighbours."
+          "The link is at least 24px tall and sits alone on its own line, so it is easy to tap without catching neighbors."
         ]
       },
       html: `<ef-entry-index class="ef-component-tag">

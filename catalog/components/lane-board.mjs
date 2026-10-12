@@ -4,7 +4,7 @@ export default {
   behavior: "Application content",
   summary: "Preserves item-to-lane membership in a bounded board with narrow-screen containment.",
   purpose: {
-    description: "A lane board shows items grouped into named lanes, such as workflow stages or owners, laid out as columns. Membership is structural: each lane is a labelled `section` with a heading, a count and an ordered list of items, so which lane an item is in is announced and survives any width. The board scrolls horizontally inside itself when the lanes do not fit, instead of squeezing them or overflowing the page. Moving items between lanes, drag and drop, and deciding which moves are legal are application behavior; Forma only provides the columns and inherits the shared direct-manipulation hooks for items the application is moving.",
+    description: "A lane board shows items grouped into named lanes, such as workflow stages or owners, laid out as columns. Membership is structural: each lane is a labeled `section` with a heading, a count and an ordered list of items, so which lane an item is in is announced and survives any width. The board scrolls horizontally inside itself when the lanes do not fit, instead of squeezing them or overflowing the page. Moving items between lanes, drag and drop, and deciding which moves are legal are application behavior; Forma only provides the columns and inherits the shared direct-manipulation hooks for items the application is moving.",
     useWhen: [
       "Work moves through a small number of named stages and people scan by stage, as in a kanban or release board.",
       "Lane membership is the key fact, and the count per lane matters.",
@@ -131,7 +131,7 @@ export default {
     { name: "Board focus", how: ":focus-visible on the board", description: "2px outline in the current text color." },
     { name: "Empty lane", how: "no items in the lane", description: "Application writes a zero count and a sentence in place of the list." },
     { name: "Drop target", how: "data-ef-drop on a lane", description: "Candidate is a dashed outline, accepted solid, rejected dashed with a fill." },
-    { name: "Item moving", how: "data-ef-manipulation on an item", description: "Application-written shared hook: dragging tracks directly, settling returns with damped motion." }
+    { name: "Item moving", how: "data-ef-manipulation on an item", description: "Application-written shared hook: dragging tracks directly, settling returns with critically damped motion, no overshoot." }
   ],
   accessibility: {
     forma: [
@@ -155,7 +155,7 @@ export default {
   ],
   motion: [
     "The board and lanes do not animate.",
-    "Items the application is moving use the shared direct-manipulation hooks: `dragging` tracks with no transition, `settling` returns with the damped inertial model and never overshoots.",
+    "Items the application is moving use the shared direct-manipulation hooks: `dragging` tracks with no transition, `settling` returns with the inertial model and the settle easing and never overshoots.",
     "`data-ef-motion-weight` on the board sets the mass those settles inherit.",
     "Under `prefers-reduced-motion: reduce` the settle duration becomes effectively instant and items appear at their final position."
   ],

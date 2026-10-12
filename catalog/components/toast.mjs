@@ -2,7 +2,7 @@ export default {
   name: "Toast",
   category: "feedback",
   behavior: "Native HTML",
-  summary: "A Popover-backed transient notification with standard perceived weight and reciprocal dismissal.",
+  summary: "A Popover-backed transient notification with standard perceived weight and a shorter exit than entry.",
   purpose: {
     description: "A toast is a short notification that floats above the page in the inline-end, block-end corner and does not displace layout. Forma builds it on the native Popover API: an `aside` with `popover=\"manual\"` is shown and hidden by the browser, from `popovertarget` invokers or from the application calling the native popover methods. Forma supplies the placement, surface and entry/exit motion. Timing, queuing and automatic dismissal are not part of Forma; an application that wants them implements them.",
     useWhen: [
@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "`popover=\"manual\"` means no light dismiss: clicking elsewhere or pressing Escape does not close it. It stays until a hide invoker or the application hides it.",
       "It renders in the top layer, so it is never clipped by overflow or covered by page content.",
-      "Exit shares the same duration and easing as entry."
+      "Exit is shorter than entry and accelerates away."
     ]
   },
   examples: [
@@ -130,8 +130,8 @@ export default {
   states: [
     { name: "Hidden", how: "default for popover=\"manual\"", description: "Not rendered (display none), transparent and offset 0.65rem downward." },
     { name: "Open", how: ":popover-open", description: "Opaque at its resting position in the top layer." },
-    { name: "Entering", how: "@starting-style on :popover-open", description: "Rises 0.65rem, fades in and scales from 0.99 to 1 over the inertia duration." },
-    { name: "Exiting", how: "leaving :popover-open", description: "Reverses with the same inertial duration; display and overlay stay until the exit finishes." }
+    { name: "Entering", how: "@starting-style on :popover-open", description: "Fades in over 180ms while it rises 0.65rem and scales from 0.99 to 1 over the inertia duration with the settle easing." },
+    { name: "Exiting", how: "leaving :popover-open", description: "Fades out over 120ms and moves back over the shorter exit duration with the exit easing; display and overlay stay until the exit finishes." }
   ],
   accessibility: {
     forma: [
@@ -153,8 +153,8 @@ export default {
     "The corner uses physical right and bottom offsets, so it stays on the right in right-to-left documents too."
   ],
   motion: [
-    "Entry uses the standard weight by default: opacity fades by perceptual interpolation (about 120ms) while position and scale settle over the inertia duration (about 215ms).",
-    "Exit shares the entry response (about 214ms at standard), including its damped easing.",
+    "Entry uses the standard weight by default: opacity fades in over `--ef-motion-fade-in-duration` (180ms) while position and scale settle over the inertia duration (214ms) with `--ef-motion-settle-easing`, with no overshoot.",
+    "Exit is shorter: opacity fades out over `--ef-motion-fade-out-duration` (120ms) and position and scale move over `--ef-motion-exit-duration` (171ms at standard) with `--ef-motion-exit-easing`.",
     "`display` and `overlay` transition with `allow-discrete`, so the toast stays in the top layer until its exit completes; the popover state itself changes immediately.",
     "`data-ef-motion-weight` light shortens and heavy lengthens the spatial motion. Opacity timing is independent of weight.",
     "Under `prefers-reduced-motion: reduce` every transition is effectively instant; the toast appears and disappears in place."

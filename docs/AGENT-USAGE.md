@@ -192,10 +192,11 @@ Forma's controls and transient surfaces share one physics-derived CSS motion voc
 
 - Use the canonical component default unless there is a documented visual-mass reason to override it: light for disclosure/popover/menu/tab cues, standard for notifications, heavy for modal dialog/flyout/command-palette surfaces.
 - `light`, `standard`, and `heavy` are presentation presets only. Never map them to risk, severity, permission, validation, destructive intent, or domain importance.
-- Mass affects inertial/spring response. It does not affect the gravity-derived timing used for vertical cues.
+- Mass affects inertial response. It does not affect the gravity-derived timing used for vertical cues or the surface fades.
 - Do not add JavaScript to compute animation timing. The canonical model is expressed with CSS custom properties and CSS math, with static CSS fallbacks.
 - A consuming application may override the exposed physics variables for a justified branded/interaction treatment, but it must preserve reduced-motion behavior and native semantic state timing.
-- Entry and exit share the same model, duration and easing. Native dialog exit animation requires top-layer retention; otherwise closing is immediate.
+- Structural motion settles directly (MOT-033): entry and in-place travel use `--ef-motion-settle-easing`, a critically damped response that stops exactly at the destination with no overshoot or rebound. Overshoot needs a documented purpose; today only the switch thumb latch and the checkbox glyph's scale keep the restrained `--ef-motion-spring-easing`.
+- Exits are shorter than entries: `--ef-motion-exit-duration` is 0.8 × the inertial entry duration (clamped 90–340ms) and surfaces leaving the viewport or fading away use `--ef-motion-exit-easing`. Fades run 180ms in and 120ms out. Native dialog exit animation requires top-layer retention; otherwise closing is immediate.
 - Native `details`, `popover`, and `dialog` state remains authoritative. Never create a second CSS-only semantic state machine.
 - Direct manipulation remains immediate; no physics effect may introduce pointer lag.
 - Modal flyouts are Forma's canonical left/right modal drawer baseline and use native dialog behavior; swipe/drag/resizing, bottom sheets, and persistent nonmodal drawers belong to Limen/application code.
@@ -207,11 +208,11 @@ Every animation represents one of five phenomena (MOT-010). Choose the model fir
 
 | Model | Use for | Timing variables |
 | --- | --- | --- |
-| inertial / spring | an object with perceived mass settling after activation or release (switch thumb, selection indicator, surface entry, press) | `--ef-motion-inertia-duration`, `--ef-motion-exit-duration`, `--ef-motion-press-duration`; `--ef-motion-spring-easing`, `--ef-motion-damped-easing` |
+| inertial (critically damped settling) | an object with perceived mass settling after activation or release (selection indicator, surface entry and exit, post-drop settling, press) | `--ef-motion-inertia-duration`, `--ef-motion-exit-duration`, `--ef-motion-press-duration`; `--ef-motion-settle-easing` (entry and in-place travel), `--ef-motion-exit-easing` (leaving), `--ef-motion-damped-easing` (press compression only), `--ef-motion-spring-easing` (documented overshoot exceptions only: switch thumb, checkbox glyph scale) |
 | gravity-derived | a small vertical directional cue; timing ignores mass | `--ef-motion-gravity-duration`; `--ef-motion-damped-easing` |
 | constant-velocity / cadence | repeated activity or a bounded discrete sequence | `--ef-motion-cadence-period`; `--ef-motion-cadence-easing` (`linear`) |
 | direct manipulation / authoritative value | drag, resize, scroll-linked, native range and determinate progress | `--ef-motion-direct-duration` (`0ms`); `--ef-motion-direct-easing` |
-| perceptual interpolation | opacity, color, background, border, shadow, backdrop; never assigned mass | `--ef-motion-perceptual-duration`, `--ef-motion-perceptual-emphasis-duration`; `--ef-motion-perceptual-easing` |
+| perceptual interpolation | opacity, color, background, border, shadow, backdrop; never assigned mass | `--ef-motion-perceptual-duration`, `--ef-motion-perceptual-emphasis-duration`; `--ef-motion-perceptual-easing`; surface fades use `--ef-motion-fade-in-duration` (180ms), `--ef-motion-fade-out-duration` (120ms) and `--ef-motion-fade-easing` (`cubic-bezier(0, 0, 0.58, 1)`) |
 
 `--ef-motion-state-duration` is a legacy compatibility variable: it derives from inertial mass, so shipped selectors must not use it for non-spatial change.
 

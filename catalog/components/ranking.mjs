@@ -72,7 +72,7 @@ export default {
     {
       id: "long-labels-heavy",
       title: "Long item labels with heavy motion weight",
-      description: "Items with sentence-length labels that wrap within the middle column. Heavy motion weight gives any application-driven settle (via the reorder hooks) a slower, more damped feel; it does not change the order logic.",
+      description: "Items with sentence-length labels that wrap within the middle column. Heavy motion weight gives any application-driven settle (via the reorder hooks) a slower settle; it does not change the order logic.",
       html: `<ef-ranking class="ef-component-tag">
   <fieldset class="ef-ranking" data-ef-motion-weight="heavy" aria-describedby="ranking-long-help">
     <legend class="ef-ranking__legend">Order the risks from most to least urgent.</legend>
@@ -175,7 +175,7 @@ export default {
     events: [
       { name: "click", description: "Native click from a move button. Limen handles it to reorder, renumber and announce." }
     ],
-    form: "The list does not submit anything natively. The application serialises the order, for example into hidden inputs, or sends it directly."
+    form: "The list does not submit anything natively. The application serializes the order, for example into hidden inputs, or sends it directly."
   },
   states: [
     { name: "Ordered", how: "DOM order plus data-ef-rank", description: "Position badges show 1 to n in list order." },
@@ -203,13 +203,13 @@ export default {
     "Labels wrap anywhere; no horizontal overflow."
   ],
   motion: [
-    "Items do not animate on their own. When the application sets `data-ef-manipulation` on an item, its translate follows the pointer with no lag while dragging and settles with a damped, non-overshooting transition afterwards; `data-ef-motion-weight` on the ranking sets that settle duration.",
+    "Items do not animate on their own. When the application sets `data-ef-manipulation` on an item, its translate follows the pointer with no lag while dragging and settles with a critically damped, non-overshooting transition afterwards; `data-ef-motion-weight` on the ranking sets that settle duration.",
     "Button hover and press use the foundation's perceptual background interpolation.",
     "Under `prefers-reduced-motion: reduce` settle transitions are effectively instant and items appear at their final position."
   ],
   guidance: {
     do: [
-      "Start from a neutral or randomised order when order bias matters.",
+      "Start from a neutral or randomized order when order bias matters.",
       "Announce each move with the item and its new position."
     ],
     avoid: [

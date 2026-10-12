@@ -141,7 +141,7 @@ export default {
   },
   related: [
     { slug: "button", note: "Use a plain `ef-actions` row when actions do not need to stay pinned on phones." },
-    { slug: "command-group", note: "Use for labelled groups of commands in a toolbar or header." },
+    { slug: "command-group", note: "Use for labeled groups of commands in a toolbar or header." },
     { slug: "overflow-command-disclosure", note: "Use for the secondary commands that do not belong in the bar." },
     { slug: "flyout", note: "Use the flyout's own action footer for actions inside a modal side surface." }
   ]

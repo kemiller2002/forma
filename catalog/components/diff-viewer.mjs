@@ -9,7 +9,7 @@ export default {
     useWhen: [
       "Users review what changed between two versions of a record, configuration or document metadata before accepting, publishing or reverting.",
       "The fields are named and each has a short value, so side-by-side reading is meaningful.",
-      "The comparison must remain understandable on a phone as two labelled sections."
+      "The comparison must remain understandable on a phone as two labeled sections."
     ],
     avoidWhen: [
       "Only the changed fields matter and each should show its before and after value together: use [[comparison-pairs]].",
@@ -164,7 +164,7 @@ export default {
       "State the number of changed fields in the header.",
       "`data-change` is not announced: add text such as a visually hidden \"(changed)\" in changed values, or list the changes in the header.",
       "Write added and removed values as text (Not set, Removed) rather than leaving a side empty.",
-      "If users step between changes, implement that navigation in the application and move focus to a labelled target."
+      "If users step between changes, implement that navigation in the application and move focus to a labeled target."
     ]
   },
   responsive: [

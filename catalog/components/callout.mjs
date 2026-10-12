@@ -2,7 +2,7 @@ export default {
   name: "Callout",
   category: "site",
   behavior: "Site content",
-  summary: "Labelled note, caution, evidence, or decision inside prose; a visible label and rule pattern carry the kind without relying on color.",
+  summary: "Labeled note, caution, evidence, or decision inside prose; a visible label and rule pattern carry the kind without relying on color.",
   purpose: {
     description: "A callout marks supporting material inside long-form content that a reader must notice: a note, a caution, cited evidence or a recorded decision. Each callout starts with a visible `.ef-callout__label` naming its kind and is named by that label through `aria-labelledby`. `data-ef-callout` selects the kind; each kind has its own rule pattern (solid, heavy frame, dashed, double) so kinds stay distinct in grayscale, forced colors and print. Notes, cautions and decisions are `aside` elements; evidence is a `figure` holding a `blockquote` and a `figcaption`. Callouts have no state and no runtime.",
     useWhen: [

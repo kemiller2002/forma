@@ -33,7 +33,7 @@ export default {
       <li><span class="ef-badge" data-ef-status="success">Stable</span></li>
       <li><span class="ef-badge">Version 1.4.0</span></li>
       <li><span class="ef-badge">.NET 8</span></li>
-      <li><span class="ef-badge">MIT licence</span></li>
+      <li><span class="ef-badge">MIT license</span></li>
     </ul>
   </div>
 </ef-badge>`
@@ -109,7 +109,7 @@ export default {
     ],
     consumer: [
       "Write the status in the badge text (\"Stable\", \"Deprecated\"), not only in `data-ef-status`.",
-      "Put badges in a labelled list.",
+      "Put badges in a labeled list.",
       "Use `a` for badges that navigate; do not make spans interactive with script."
     ]
   },

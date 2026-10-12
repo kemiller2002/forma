@@ -183,7 +183,7 @@ export default {
     ],
     consumer: [
       "Use real landmarks: `nav` for navigation and `aside` for the inspector, each with a unique accessible name.",
-      "Use `main` for the shell only once per page; when the shell is nested inside another page, use a labelled `section` instead.",
+      "Use `main` for the shell only once per page; when the shell is nested inside another page, use a labeled `section` instead.",
       "Set aria-current on the current navigation link and update it on navigation.",
       "Keep the status line short, textual and meaningful; move focus only when the user asked for it, not when the inspector content changes.",
       "Provide a skip link to the primary region when navigation is long."

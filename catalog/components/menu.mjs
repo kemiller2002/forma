@@ -138,7 +138,7 @@ export default {
     "No anchor placement, collision handling or bottom-sheet presentation is provided."
   ],
   motion: [
-    "Entry and exit: opacity alone follows the shared 120ms slow-fast-slow curve, at unchanged position and size.",
+    "Entry and exit: opacity alone fades, at unchanged position and size: 180ms in (`--ef-motion-fade-in-duration`) and 120ms out (`--ef-motion-fade-out-duration`), both with the decelerating `--ef-motion-fade-easing`, changing from the first frame.",
     "Display and top-layer placement remain until opacity is zero where retention is supported; otherwise dismissal is immediate.",
     "Item hover is an instant background change (no transition).",
     "`data-ef-motion-weight` remains available for other spatial tracks; it does not affect these perceptual fades. The native open state is authoritative.",
@@ -158,7 +158,7 @@ export default {
   related: [
     { slug: "popover", note: "General supplemental surface; the menu shares its surface and motion." },
     { slug: "overflow-command-disclosure", note: "In-flow alternative that pushes content down instead of overlaying it." },
-    { slug: "command-group", note: "Visible, labelled commands when there is room to show them." },
+    { slug: "command-group", note: "Visible, labeled commands when there is room to show them." },
     { slug: "command-palette", note: "Searchable command list for large command sets." },
     { slug: "select", note: "Use when the user chooses a value rather than runs an action." }
   ]

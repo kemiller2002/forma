@@ -91,7 +91,7 @@ export default {
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-empty-state", values: "id of the heading", default: "—", description: "Names the section so it is exposed as a labelled region." },
+      { name: "aria-labelledby", on: "section.ef-empty-state", values: "id of the heading", default: "—", description: "Names the section so it is exposed as a labeled region." },
       { name: "aria-hidden", on: ".ef-empty-state__symbol", values: "true", default: "—", description: "Hides the decorative symbol." },
       { name: "type", on: "button", values: "button", default: "—", description: "Keeps recovery actions from submitting a surrounding form." }
     ],
@@ -113,7 +113,7 @@ export default {
   ],
   accessibility: {
     forma: [
-      "Uses a labelled section with a real heading, so the empty region is discoverable by heading and landmark navigation.",
+      "Uses a labeled section with a real heading, so the empty region is discoverable by heading and landmark navigation.",
       "Keeps the symbol decorative and relies on text for meaning.",
       "Uses a dashed border rather than color to mark the region."
     ],

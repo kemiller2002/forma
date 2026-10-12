@@ -4,7 +4,7 @@ export default {
   behavior: "Application content",
   summary: "Keeps parent and current scope explicit as users move through nested or scaled representations.",
   purpose: {
-    description: "A scope trail states where the user is: each ancestor scope as a link and the current scope as plain text marked `aria-current=\"page\"`. It is a labelled `nav` with an ordered list; Forma lays the items out as a wrapping row with a slash drawn between them. It is used for ordinary nested records (System / Billing / Invoice 1042) and for scaled or zoomed representations, where the trail keeps the parent scope explicit while the view changes. The application supplies the ancestors and URLs.",
+    description: "A scope trail states where the user is: each ancestor scope as a link and the current scope as plain text marked `aria-current=\"page\"`. It is a labeled `nav` with an ordered list; Forma lays the items out as a wrapping row with a slash drawn between them. It is used for ordinary nested records (System / Billing / Invoice 1042) and for scaled or zoomed representations, where the trail keeps the parent scope explicit while the view changes. The application supplies the ancestors and URLs.",
     useWhen: [
       "Users drill into nested objects and need a way back to each parent.",
       "A zoomable or scaled view (map, diagram, canvas) needs the current scope stated in text.",

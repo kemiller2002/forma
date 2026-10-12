@@ -13,7 +13,7 @@ export default {
     ],
     avoidWhen: [
       "There are only two opposite answers: use [[binary-choice]].",
-      "Only the two endpoints carry meaning and the middle positions are unlabelled: use [[semantic-differential]].",
+      "Only the two endpoints carry meaning and the middle positions are unlabeled: use [[semantic-differential]].",
       "The answers are unordered categories: use [[choice-group]].",
       "The value is continuous or has many steps: use [[slider]] or [[numeric-stepper]].",
       "Several items share the same scale: use [[matrix-single]] so each row stays its own group."
@@ -198,7 +198,7 @@ export default {
   },
   related: [
     { slug: "special-choice", note: "Holds non-scale answers such as Don't know outside the continuum." },
-    { slug: "semantic-differential", note: "Use when only the two opposite endpoints are labelled." },
+    { slug: "semantic-differential", note: "Use when only the two opposite endpoints are labeled." },
     { slug: "matrix-single", note: "Repeats one scale across several items, one radio group per row." },
     { slug: "symbol-rating", note: "Use for star or icon ratings with textual meaning per symbol." },
     { slug: "slider", note: "Use for many-step or continuous numeric values." }

@@ -4,7 +4,7 @@ export default {
   behavior: "Application content",
   summary: "Groups related commands under an explicit, visible task label without owning command authority.",
   purpose: {
-    description: "A command group is a labelled `section` containing a heading and a wrapping row of native buttons. The heading names the task the commands serve (Edit, Share, Export), and `aria-labelledby` makes that name the group's accessible name, so a screen-reader user hears the context before the commands. Forma provides only layout: the label, the wrapping command row and a shared gap. Which commands exist, whether each is currently allowed, and what it does are application and Ordo decisions.",
+    description: "A command group is a labeled `section` containing a heading and a wrapping row of native buttons. The heading names the task the commands serve (Edit, Share, Export), and `aria-labelledby` makes that name the group's accessible name, so a screen-reader user hears the context before the commands. Forma provides only layout: the label, the wrapping command row and a shared gap. Which commands exist, whether each is currently allowed, and what it does are application and Ordo decisions.",
     useWhen: [
       "A toolbar or panel holds several families of commands and users need to know which family a command belongs to.",
       "Commands would be ambiguous without context, for example two Delete buttons acting on different objects.",
@@ -27,7 +27,7 @@ export default {
     {
       id: "document-toolbar",
       title: "Document toolbar with two groups",
-      description: "Two labelled groups side by side in a [[cluster]]. Each section is named by its own heading, so the two sets of commands stay distinguishable in the landmark and heading lists even though both sit in one toolbar row.",
+      description: "Two labeled groups side by side in a [[cluster]]. Each section is named by its own heading, so the two sets of commands stay distinguishable in the landmark and heading lists even though both sit in one toolbar row.",
       html: `<ef-command-group class="ef-component-tag">
   <div class="ef-cluster">
     <section class="ef-command-group" aria-labelledby="command-group-document-toolbar-format">

@@ -97,7 +97,7 @@ export default {
     {
       id: "default-appearance",
       title: "Approval chain with default styling",
-      description: "Three nodes with no authored color, so every surface uses Forma tokens. The rejection path is dashed and labelled, the start and end nodes use the pill shape, and the relationship list repeats each connector in reading order.",
+      description: "Three nodes with no authored color, so every surface uses Forma tokens. The rejection path is dashed and labeled, the start and end nodes use the pill shape, and the relationship list repeats each connector in reading order.",
       html: `<ef-diagram class="ef-component-tag">
   <figure class="ef-diagram" aria-labelledby="diagram-default-appearance-title">
     <figcaption id="diagram-default-appearance-title">Expense approval</figcaption>
@@ -183,7 +183,7 @@ export default {
     {
       id: "workflow-lanes-and-decision",
       title: "Budget approval across two lanes",
-      description: "A Workflow profile export with lanes, an ellipse start and end, a diamond decision with labelled outcomes, and two kinds of authored color: an amber fill that the consumer maps from the status field, and a purple fill a person chose by hand. The key keeps the two apart, and every node states its kind, owner and status in text.",
+      description: "A Workflow profile export with lanes, an ellipse start and end, a diamond decision with labeled outcomes, and two kinds of authored color: an amber fill that the consumer maps from the status field, and a purple fill a person chose by hand. The key keeps the two apart, and every node states its kind, owner and status in text.",
       html: `<ef-diagram class="ef-component-tag">
   <figure class="ef-diagram" aria-labelledby="diagram-lanes-title">
     <figcaption id="diagram-lanes-title">Budget approval</figcaption>
@@ -402,7 +402,7 @@ export default {
     { name: "Default appearance", how: "no authored custom properties", description: "Nodes and connectors use Forma surface, border and text tokens." },
     { name: "Authored color", how: "--ef-diagram-fill / -stroke / -accent / -foreground, --ef-diagram-connector-stroke / -width", description: "Consumer-resolved colors; removing one restores the token default." },
     { name: "Shape", how: "data-ef-shape=\"rounded\" | \"pill\" | \"ellipse\" | \"diamond\"", description: "Rounded corners, pill ends, ellipse or diamond; rectangle when absent. Every shape keeps a real border for backgrounds-off print." },
-    { name: "Group, lane or phase", how: "div.ef-diagram-group with data-ef-group=\"lane\" | \"phase\" and optional data-ef-line", description: "A labelled boundary beneath nodes; accepts the same authored color properties as a node." },
+    { name: "Group, lane or phase", how: "div.ef-diagram-group with data-ef-group=\"lane\" | \"phase\" and optional data-ef-line", description: "A labeled boundary beneath nodes; accepts the same authored color properties as a node." },
     { name: "Metadata value state", how: "span.ef-diagram-value-state with data-ef-value-state", description: "Text tag marking default, derived, source-bound, unknown, unavailable or invalid values." },
     { name: "Line style", how: "data-ef-line=\"dashed\" | \"dotted\"", description: "Dash pattern on a connector; solid when absent." },
     { name: "Viewport focus", how: ":focus-visible on .ef-diagram__viewport", description: "Foundation focus ring, independent of authored color." },

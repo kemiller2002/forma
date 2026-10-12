@@ -8,7 +8,7 @@ export default {
     useWhen: [
       "A familiar star or icon rating suits the audience, such as satisfaction or quality feedback.",
       "The scale has few positions and each has a textual meaning that can be announced.",
-      "Space is limited and a compact row of square targets fits better than a labelled scale."
+      "Space is limited and a compact row of square targets fits better than a labeled scale."
     ],
     avoidWhen: [
       "Visible text labels are important for sighted users to interpret the answer: use [[ordinal-scale]].",

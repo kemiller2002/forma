@@ -180,8 +180,8 @@ export default {
     "Headings, messages and references wrap; the marker column keeps its intrinsic width."
   ],
   motion: [
-    "Opening uses the shared dialog transition: the surface settles from a 0.75rem offset and 0.985 scale while the backdrop dims and blurs with a mass-independent perceptual fade.",
-    "The default perceived weight is heavy because of surface size and commitment, not severity; exit uses the same duration and easing as entry.",
+    "Opening uses the shared dialog transition: the surface fades in (180ms) and settles from a 0.75rem offset and 0.985 scale with no overshoot, while the backdrop dims and blurs with the mass-independent surface fade.",
+    "The default perceived weight is heavy because of surface size and commitment, not severity; exit is shorter than entry (a 120ms fade and the shorter exit duration with the exit easing).",
     "Motion never delays focus, the modal state, or recovery actions; the native open state is authoritative.",
     "Under `prefers-reduced-motion: reduce` translate and scale are removed, the backdrop blur is dropped and durations collapse to 0.01ms."
   ],

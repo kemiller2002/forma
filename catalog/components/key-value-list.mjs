@@ -2,7 +2,7 @@ export default {
   name: "Key-value list",
   category: "data",
   behavior: "Native HTML",
-  summary: "Description-list presentation of labelled values that stacks label above value on narrow screens.",
+  summary: "Description-list presentation of labeled values that stacks label above value on narrow screens.",
   purpose: {
     description: "A key-value list shows the facts about one object as label/value pairs. It is a native `dl` whose `dt`/`dd` pairs are grouped in `div` rows; Forma lays each row out as a two-column grid with a ruled separator and stacks the label above the value at phone width. The list is static content: the application supplies the labels, the values and how missing values are worded.",
     useWhen: [

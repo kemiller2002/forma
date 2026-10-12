@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Page navigation with explicit current-page semantics and compact mobile presentation.",
   purpose: {
-    description: "Pagination moves through a long result set one page at a time. It is a labelled `nav` of ordinary links: Previous and Next with `rel`, an ordered list of page links with `aria-current=\"page\"` on the current one, and a text summary such as \"Page 3 of 12\". Because every page is a real URL, pages can be bookmarked, opened in new tabs and navigated without script. The application decides page size, which page numbers to show, and how to handle unknown totals or cursor-based APIs.",
+    description: "Pagination moves through a long result set one page at a time. It is a labeled `nav` of ordinary links: Previous and Next with `rel`, an ordered list of page links with `aria-current=\"page\"` on the current one, and a text summary such as \"Page 3 of 12\". Because every page is a real URL, pages can be bookmarked, opened in new tabs and navigated without script. The application decides page size, which page numbers to show, and how to handle unknown totals or cursor-based APIs.",
     useWhen: [
       "A list or table has more results than fit comfortably and users benefit from stable, addressable pages.",
       "Users need to jump to a specific page or know how far through the results they are.",
@@ -75,13 +75,13 @@ export default {
     {
       id: "mobile-compact",
       title: "Compact pagination on a phone",
-      description: "Below 40rem the page list collapses to the current page, Previous and Next sit at the edges and the summary moves to its own centred line.",
+      description: "Below 40rem the page list collapses to the current page, Previous and Next sit at the edges and the summary moves to its own centered line.",
       mobile: {
         height: 200,
         notes: [
           "Page links other than the current one are hidden below 40rem; the current page stays as the anchor between Previous and Next.",
           "The row uses space-between, so Previous and Next land at opposite edges with large 44px targets.",
-          "The summary is reordered to the end, takes the full width and is centred, so position is still stated in text.",
+          "The summary is reordered to the end, takes the full width and is centered, so position is still stated in text.",
           "Hidden page numbers are removed from the accessibility tree too; the summary and Previous/Next remain the navigation path."
         ]
       },
@@ -112,7 +112,7 @@ export default {
     hooks: {
       "ef-pagination": "Root nav: a wrapping flex row of controls and summary.",
       "ef-pagination__pages": "Unstyled ordered list of page links in a row.",
-      "ef-pagination__summary": "Small secondary text stating the position, such as Page 3 of 12. Full-width and centred below 40rem."
+      "ef-pagination__summary": "Small secondary text stating the position, such as Page 3 of 12. Full-width and centered below 40rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through Previous, the page links and Next in source order." },
@@ -141,7 +141,7 @@ export default {
   },
   responsive: [
     "Wide: a wrapping flex row; page links sit in their own list.",
-    "Below 40rem: non-current page numbers are hidden, controls spread to the edges and the summary moves to a centred line at the end.",
+    "Below 40rem: non-current page numbers are hidden, controls spread to the edges and the summary moves to a centered line at the end.",
     "Long link text such as Older events wraps with the row rather than overflowing."
   ],
   motion: [

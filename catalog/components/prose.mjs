@@ -141,7 +141,7 @@ export default {
     ]
   },
   related: [
-    { slug: "callout", note: "Labelled supporting material inside prose." },
+    { slug: "callout", note: "Labeled supporting material inside prose." },
     { slug: "code-sample", note: "Captioned, scrollable code blocks inside prose." },
     { slug: "documentation-layout", note: "Places prose beside navigation and an outline." },
     { slug: "measure", note: "The application-side line-length primitive." }

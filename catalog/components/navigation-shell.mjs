@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Preserves current location and destination identity across persistent and compact navigation modes.",
   purpose: {
-    description: "The navigation shell pairs a content region with primary navigation that changes form with the viewport. Above 48rem a persistent `nav` sits in a side column; at 48rem and below the side column is hidden and a native `details` disclosure labelled Navigation shows the same destinations above the content. The application renders both lists with identical destinations, order and `aria-current`, so the current location and each destination's identity survive the switch. Only one of the two is displayed at a time, so assistive technology meets a single navigation landmark.",
+    description: "The navigation shell pairs a content region with primary navigation that changes form with the viewport. Above 48rem a persistent `nav` sits in a side column; at 48rem and below the side column is hidden and a native `details` disclosure labeled Navigation shows the same destinations above the content. The application renders both lists with identical destinations, order and `aria-current`, so the current location and each destination's identity survive the switch. Only one of the two is displayed at a time, so assistive technology meets a single navigation landmark.",
     useWhen: [
       "An application area has a handful of top-level destinations that should stay visible on wide screens.",
       "On phones the destinations should collapse behind one control without a script-driven drawer.",
@@ -27,7 +27,7 @@ export default {
     {
       id: "project-settings",
       title: "Project settings area",
-      description: "Five destinations with Access as the current page. Both lists carry the same aria-current. The content region is shown as a labelled section here; in an application it is the page's main element.",
+      description: "Five destinations with Access as the current page. Both lists carry the same aria-current. The content region is shown as a labeled section here; in an application it is the page's main element.",
       html: `<ef-navigation-shell class="ef-component-tag">
   <div class="ef-navigation-shell">
     <details class="ef-navigation-shell__compact">
@@ -143,7 +143,7 @@ export default {
   guidance: {
     do: [
       "Keep top-level destinations short and stable across pages.",
-      "Label the compact summary with a word users recognise, such as Navigation or Menu."
+      "Label the compact summary with a word users recognize, such as Navigation or Menu."
     ],
     avoid: [
       "Showing different destinations in the two modes.",

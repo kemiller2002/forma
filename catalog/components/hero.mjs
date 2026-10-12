@@ -100,7 +100,7 @@ export default {
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-hero", values: "id of the hero title", default: "—", description: "Names the hero region by its title so it is exposed as a labelled region." },
+      { name: "aria-labelledby", on: "section.ef-hero", values: "id of the hero title", default: "—", description: "Names the hero region by its title so it is exposed as a labeled region." },
       { name: "id", on: ".ef-hero__title", values: "string", default: "—", description: "Referenced by the section's aria-labelledby." }
     ],
     hooks: {

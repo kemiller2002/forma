@@ -106,7 +106,7 @@ export default {
       "ef-split-pane": "Root two-track grid. Direct children are the regions; each is allowed to shrink.",
       "ef-split-pane__separator": "Resize handle used only with `data-ef-resizable`; see [[resizable-split-pane]]. Hidden at 48rem and below.",
       "data-ef-resizable": "Switches the root to a three-track resizable layout (primary, separator, secondary) sized by `--ef-split-size`. Presentation only; see [[resizable-split-pane]].",
-      "data-ef-manipulation": "Written by application code during a resize. `resizing` makes the size track `--ef-split-size` immediately with no transition. Other values (such as `settling`) keep the damped settle. Presentation only.",
+      "data-ef-manipulation": "Written by application code during a resize. `resizing` makes the size track `--ef-split-size` immediately with no transition. Other values (such as `settling`) keep the critically damped settle. Presentation only.",
       "data-ef-collapsed": "On a resizable pane, pins the primary track to `--ef-split-min`, overriding any inline size. The application toggles it and keeps separator values in sync.",
       "data-ef-motion-weight": "Presentation-only perceived mass for resize settling: light, standard (default) or heavy. Has no effect on a fixed split, which does not animate.",
       "--ef-split-primary": "Primary track. Default `minmax(0, 2fr)`.",
@@ -146,7 +146,7 @@ export default {
   ],
   motion: [
     "No animation for a fixed split: the columns change instantly at the breakpoint.",
-    "With `data-ef-resizable` the track list settles with the damped inertial model after release or a keyboard step, and tracks directly while `data-ef-manipulation=\"resizing\"`; see [[resizable-split-pane]]."
+    "With `data-ef-resizable` the track list settles with the inertial model and the settle easing (no overshoot) after release or a keyboard step, and tracks directly while `data-ef-manipulation=\"resizing\"`; see [[resizable-split-pane]]."
   ],
   guidance: {
     do: [

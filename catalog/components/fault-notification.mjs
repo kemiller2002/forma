@@ -172,7 +172,7 @@ export default {
     "Text and reference codes wrap within the body column."
   ],
   motion: [
-    "With `data-ef-motion-entry`, the notification fades in (perceptual duration, independent of mass) and settles 0.45rem downward into place with the damped inertial easing.",
+    "With `data-ef-motion-entry`, the notification fades in (180ms, independent of mass) and settles 0.45rem downward into place with the settle easing, with no overshoot.",
     "The default perceived weight is standard. `data-ef-motion-weight` changes only the settle duration; it never expresses severity.",
     "Motion runs only on first render through @starting-style; re-rendered notifications without the attribute appear in place.",
     "There is no exit animation from Forma: removal is immediate when the application removes the element.",

@@ -82,7 +82,7 @@ export default {
       <header class="ef-section-heading">
         <div class="ef-section-heading__text">
           <p class="ef-eyebrow">Service lines</p>
-          <h2 id="section-heading-mobile-long-title-title">Diagnosis, constraint modelling and verification for consequential systems</h2>
+          <h2 id="section-heading-mobile-long-title-title">Diagnosis, constraint modeling and verification for consequential systems</h2>
           <p>Three engagements that can run alone or in sequence.</p>
         </div>
         <div class="ef-section-heading__aside"><a class="ef-button" href="#section-heading-mobile-long-title-title">Compare the engagements</a></div>

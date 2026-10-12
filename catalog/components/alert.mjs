@@ -146,9 +146,9 @@ export default {
     "The alert has no maximum width; it fills its container."
   ],
   motion: [
-    "With `data-ef-motion-entry`, a newly inserted alert moves from 0.5rem above to its resting position using the shared spring easing and inertia duration (about 215ms at the standard weight). Only position animates; the text is legible from the first frame.",
+    "With `data-ef-motion-entry`, a newly inserted alert moves from 0.5rem above to its resting position with the settle easing over the inertia duration (214ms at the standard weight): it decelerates and stops exactly at rest, with no overshoot or rebound. Only position animates; the text is legible from the first frame.",
     "The cue runs once per insertion via `@starting-style`. Rerendering text inside an existing alert does not replay it.",
-    "`data-ef-motion-weight` changes perceived mass only: light is quicker, heavy slower and more damped.",
+    "`data-ef-motion-weight` changes perceived mass only: light is quicker, heavy slower.",
     "Under `prefers-reduced-motion: reduce` the transition duration is effectively zero and the alert appears in place."
   ],
   guidance: {

@@ -142,7 +142,7 @@ export default {
     "No collision handling or placement fallback is provided for `.ef-popover`."
   ],
   motion: [
-    "Entry and exit: opacity alone follows the shared 120ms slow-fast-slow curve, at unchanged position and size.",
+    "Entry and exit: opacity alone fades, at unchanged position and size: 180ms in (`--ef-motion-fade-in-duration`) and 120ms out (`--ef-motion-fade-out-duration`), both with the decelerating `--ef-motion-fade-easing`, changing from the first frame.",
     "Exit cleanup: display and top-layer placement are retained until opacity is zero where overlay retention is supported; otherwise native dismissal is immediate.",
     "`data-ef-motion-weight` does not affect these perceptual fades. The native `:popover-open` state is authoritative and is never delayed.",
     "Under `prefers-reduced-motion: reduce` the stationary fade reaches its endpoint effectively immediately.",

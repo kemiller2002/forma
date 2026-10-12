@@ -5,7 +5,7 @@ export default {
   summary: "An ordinary native select with platform picker behavior and physics-derived CSS affordance motion.",
   owns: ["ef-select", "ef-select-field"],
   purpose: {
-    description: "A select picks one value from a fixed list. Forma wraps a native `select` so the browser remains the authority for the value, options, keyboard, type-ahead, picker, validity and form submission. `.ef-select-field` is the labelled field (a `label` element containing label text, control and description); `.ef-select` draws a chevron indicator that rotates while the picker is open in browsers that support the `:open` pseudo-class.",
+    description: "A select picks one value from a fixed list. Forma wraps a native `select` so the browser remains the authority for the value, options, keyboard, type-ahead, picker, validity and form submission. `.ef-select-field` is the labeled field (a `label` element containing label text, control and description); `.ef-select` draws a chevron indicator that rotates while the picker is open in browsers that support the `:open` pseudo-class.",
     useWhen: [
       "The user chooses exactly one value from a known list of roughly five or more options.",
       "The list is stable and the options are short text.",
@@ -172,7 +172,7 @@ export default {
     "No breakpoints; on touch devices the operating system supplies its own picker."
   ],
   motion: [
-    "When the picker opens, the chevron rotates 180 degrees with the shared inertial spring and drops slightly with gravity-derived timing; it reverses on close.",
+    "When the picker opens, the chevron rotates 180 degrees with the settle easing (no wobble) and drops slightly with gravity-derived timing; it reverses on close.",
     "`data-ef-motion-weight` changes the rotation's perceived mass only; vertical gravity timing does not depend on mass.",
     "The select's background and border use perceptual interpolation when they change.",
     "The value changes immediately; the indicator motion never gates the picker.",

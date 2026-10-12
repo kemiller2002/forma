@@ -106,7 +106,9 @@ export default {
       "ef-tooltip__trigger": "Round native button, at least 44 by 44px, monospace glyph, no padding.",
       "ef-tooltip__surface": "The popover hint: inverse surface, small text, max-content width up to 20rem, word wrapping, anchor placement with flip fallbacks where supported, and the entry/exit transition.",
       "data-ef-motion-weight": "On `.ef-tooltip`. Presentation-only perceived mass: light (default for hints), standard or heavy.",
-      "--ef-motion-fade-easing": "Perceptual curve shared by fade-in and fade-out; no spatial travel."
+      "--ef-motion-fade-easing": "Decelerating curve, `cubic-bezier(0, 0, 0.58, 1)`, shared by fade-in and fade-out; no spatial travel.",
+      "--ef-motion-fade-in-duration": "Duration of the fade in: 180ms.",
+      "--ef-motion-fade-out-duration": "Duration of the shorter fade out: 120ms."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus to the trigger. Where interest invokers are supported, keyboard focus can also show the hint after the browser's delay." },
@@ -145,7 +147,7 @@ export default {
     "The trigger stays 44 by 44px at every width and aligns with surrounding text through `vertical-align: middle`."
   ],
   motion: [
-    "Entry and exit: opacity alone follows the shared 120ms slow-fast-slow curve, at unchanged position and size.",
+    "Entry and exit: opacity alone fades, at unchanged position and size: 180ms in (`--ef-motion-fade-in-duration`) and 120ms out (`--ef-motion-fade-out-duration`), both with the decelerating `--ef-motion-fade-easing`, changing from the first frame.",
     "Exit cleanup: display and top-layer placement are retained until opacity is zero where overlay retention is supported; otherwise native dismissal is immediate.",
     "`data-ef-motion-weight` on `.ef-tooltip` changes perceived mass; light is the default.",
     "Under `prefers-reduced-motion: reduce` the stationary fade reaches its endpoint effectively immediately.",

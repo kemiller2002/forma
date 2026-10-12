@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Natural-language composition surface for type, dictate, paste, and attach workflows without embedding agent behavior.",
   purpose: {
-    description: "A composer is a calm, large plain-language input: visible context and help, a labelled native `textarea`, a row of secondary input methods (attach, dictate), one continuation action and a status line. It is how a user tells an application something in their own words. Forma owns only the presentation. Interpretation, agent or model calls, speech recognition, uploads, drafts, permissions and whether anything is committed belong to the application or Limen. The composer must work as a plain text field when no assisted capability is available, and its status line must never imply that text has already been recorded.",
+    description: "A composer is a calm, large plain-language input: visible context and help, a labeled native `textarea`, a row of secondary input methods (attach, dictate), one continuation action and a status line. It is how a user tells an application something in their own words. Forma owns only the presentation. Interpretation, agent or model calls, speech recognition, uploads, drafts, permissions and whether anything is committed belong to the application or Limen. The composer must work as a plain text field when no assisted capability is available, and its status line must never imply that text has already been recorded.",
     useWhen: [
       "Users describe a situation or request in free text that the application will interpret or route, such as a care note, an incident report or a request to an assistant.",
       "The same surface should accept typing, paste, dictation and attachments.",

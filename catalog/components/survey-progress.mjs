@@ -17,7 +17,7 @@ export default {
       "Progress is through scrolled content: use [[scroll-progress]]."
     ],
     characteristics: [
-      "Native `progress` with `value` and `max`, labelled by the visible label.",
+      "Native `progress` with `value` and `max`, labeled by the visible label.",
       "Explicit current/total text in monospace so users do not have to estimate the bar.",
       "Accent color via `accent-color`; the bar keeps the platform's rendering.",
       "Header wraps on narrow screens; the bar is always full width."

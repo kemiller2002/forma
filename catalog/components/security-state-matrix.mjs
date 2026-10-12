@@ -4,11 +4,11 @@ export default {
   behavior: "Aegis / application",
   summary: "Counts security results by explicit state (Verified, Violated, Unknown, Stale, N/A) so no state collapses into another or into a score.",
   purpose: {
-    description: "The security state matrix shows how many invariants or evidence records Tutela places in each state: Verified, Violated, Unknown, Stale and N/A. Each state is a labelled tile with its count as large text, and every state is always shown, including zero, so Unknown and Stale are as visible as Violated. It is a count display, not a score: the tiles are never summed into a percentage or grade. To compare several scopes, repeat the matrix once per scope with the scope named in its heading. Tutela supplies the counts; Forma never computes them.",
+    description: "The security state matrix shows how many invariants or evidence records Tutela places in each state: Verified, Violated, Unknown, Stale and N/A. Each state is a labeled tile with its count as large text, and every state is always shown, including zero, so Unknown and Stale are as visible as Violated. It is a count display, not a score: the tiles are never summed into a percentage or grade. To compare several scopes, repeat the matrix once per scope with the scope named in its heading. Tutela supplies the counts; Forma never computes them.",
     useWhen: [
       "A release or review page needs a quick, honest overview of evidence states for one scope.",
       "Unknown and stale counts must be shown with the same weight as violations.",
-      "Several scopes need side-by-side overviews, each with its own labelled matrix."
+      "Several scopes need side-by-side overviews, each with its own labeled matrix."
     ],
     avoidWhen: [
       "You need a true two-dimensional table (for example boundary × state with row and column headers): use a native table through [[data-grid]] so header scope is announced.",

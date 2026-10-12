@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Split pane whose application-supplied size tracks drag or keys directly, settles without overshoot, and is clamped to legal bounds in CSS.",
   purpose: {
-    description: "A resizable split pane is a [[split-pane]] with `data-ef-resizable` and a focusable `role=\"separator\"` between the two regions. The application owns the size: pointer drag, Arrow-key steps, collapse, reset and persistence are Limen or application code that writes one custom property, `--ef-split-size`. Forma turns that value into a three-track grid, clamps it to `--ef-split-min` and `--ef-split-max` so no illegal size is ever drawn, tracks it immediately while `data-ef-manipulation=\"resizing\"`, and settles with a damped, non-overshooting transition otherwise. Without application code the separator is focusable but inert.",
+    description: "A resizable split pane is a [[split-pane]] with `data-ef-resizable` and a focusable `role=\"separator\"` between the two regions. The application owns the size: pointer drag, Arrow-key steps, collapse, reset and persistence are Limen or application code that writes one custom property, `--ef-split-size`. Forma turns that value into a three-track grid, clamps it to `--ef-split-min` and `--ef-split-max` so no illegal size is ever drawn, tracks it immediately while `data-ef-manipulation=\"resizing\"`, and settles with a critically damped, non-overshooting transition otherwise. Without application code the separator is focusable but inert.",
     useWhen: [
       "Users genuinely need to trade space between two regions, such as a code editor and its preview or a document and a long inspector.",
       "The application can implement pointer and keyboard resizing through one shared size value and persist it.",
@@ -63,7 +63,7 @@ export default {
     {
       id: "heavy-settle",
       title: "Heavy settling weight",
-      description: "`data-ef-motion-weight=\"heavy\"` gives the settle after release or a keyboard step a slower, more damped response for a large, content-heavy pane. Weight is presentation only and never signals importance.",
+      description: "`data-ef-motion-weight=\"heavy\"` gives the settle after release or a keyboard step a slower response for a large, content-heavy pane. Weight is presentation only and never signals importance.",
       html: `<ef-resizable-split-pane class="ef-component-tag">
   <section class="ef-split-pane" data-ef-resizable data-ef-motion-weight="heavy" aria-label="Contract review" style="--ef-split-size: 55%">
     <div id="resizable-split-pane-heavy-settle-contract">
@@ -144,7 +144,7 @@ export default {
     form: "Not a form control. Persisting the size is application state, not form data."
   },
   states: [
-    { name: "Resting", how: "data-ef-resizable with --ef-split-size", description: "Primary width is the clamped size; changes settle with a damped inertial transition." },
+    { name: "Resting", how: "data-ef-resizable with --ef-split-size", description: "Primary width is the clamped size; changes settle with a critically damped inertial transition." },
     { name: "Resizing", how: "data-ef-manipulation=\"resizing\"", description: "No transition: the width tracks every write immediately, with a col-resize cursor." },
     { name: "Collapsed", how: "data-ef-collapsed", description: "Primary pinned to `--ef-split-min`, regardless of the inline size." },
     { name: "Clamped", how: "--ef-split-size outside min/max", description: "Drawn at the nearest legal bound; the application should also clamp its stored value and aria-valuenow." },
@@ -174,7 +174,7 @@ export default {
   ],
   motion: [
     "Direct manipulation: while `data-ef-manipulation=\"resizing\"` the transition duration is `--ef-motion-direct-duration` (0ms), so there is no pointer lag.",
-    "Settling after release, a keyboard step or collapse animates `grid-template-columns` with the inertial duration and the damped easing: no overshoot, and a new write re-targets from the current position.",
+    "Settling after release, a keyboard step or collapse animates `grid-template-columns` with the inertial duration and `--ef-motion-settle-easing`: no overshoot, and a new write re-targets from the current position.",
     "Because the track list is clamped, the settle can never pass through an illegal size.",
     "`data-ef-motion-weight` changes perceived mass for the settle only.",
     "Under `prefers-reduced-motion: reduce` the transition is 0.01ms, so the pane jumps directly to its final size."

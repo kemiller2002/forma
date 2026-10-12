@@ -4,7 +4,7 @@ export default {
   behavior: "Application content",
   summary: "Preserves cross-item comparison relationships in a bounded two-dimensional surface.",
   purpose: {
-    description: "A comparison grid is a native `table` with items as columns and attributes as row headers, inside a focusable, labelled region that scrolls horizontally when the table is wider than its container. The table is sized to its content (`min-inline-size: max-content`), so columns are never squeezed or recomposed: reading across a row always compares the same attribute. Forma provides the bounded surface and cell spacing; the application supplies the items, attributes and wording, including explicit Not included and Unknown cells.",
+    description: "A comparison grid is a native `table` with items as columns and attributes as row headers, inside a focusable, labeled region that scrolls horizontally when the table is wider than its container. The table is sized to its content (`min-inline-size: max-content`), so columns are never squeezed or recomposed: reading across a row always compares the same attribute. Forma provides the bounded surface and cell spacing; the application supplies the items, attributes and wording, including explicit Not included and Unknown cells.",
     useWhen: [
       "Three or more items (plans, vendors, releases) are compared across the same attributes.",
       "Keeping rows and columns aligned matters more than avoiding horizontal scrolling on phones.",

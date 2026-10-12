@@ -67,7 +67,7 @@ export default {
     {
       id: "feed-list-long-title",
       title: "Feed list with a long title",
-      description: "Several items stacked in a labelled section. A long, translated title wraps in the start column while the meta column keeps its natural width.",
+      description: "Several items stacked in a labeled section. A long, translated title wraps in the start column while the meta column keeps its natural width.",
       html: `<ef-feed-item class="ef-component-tag">
   <section class="ef-stack" data-density="standard" aria-label="Recent activity">
     <article class="ef-feed-item" lang="fr" aria-labelledby="feed-item-feed-list-long-title-first">
@@ -162,7 +162,7 @@ export default {
       "Give each item a heading at the right level and reference it with `aria-labelledby`.",
       "Provide record-specific accessible names for repeated actions such as Reply or Review.",
       "Render only actions that are currently legal; do not show disabled actions without an explanation.",
-      "Group items in a labelled section or list and announce newly arrived items through an application live region if the feed updates live."
+      "Group items in a labeled section or list and announce newly arrived items through an application live region if the feed updates live."
     ]
   },
   responsive: [

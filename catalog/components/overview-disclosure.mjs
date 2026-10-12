@@ -4,7 +4,7 @@ export default {
   behavior: "Application content",
   summary: "Keeps consequential state, scope, uncertainty, and unresolved work visible while secondary evidence uses native disclosure.",
   purpose: {
-    description: "Overview disclosure splits a result into two parts: an always-visible overview that states what the user must know to act (the state, its scope, how certain it is, what is still unresolved, and whether more verification is needed), and one or more [[disclosure]] sections below it for supporting evidence. It is a labelled `section` (`ef-overview-disclosure`) whose first child is `ef-overview-disclosure__overview`, marked with a thick inline-start rule, followed by native `details class=\"ef-disclosure\"` elements. Forma provides the structure and spacing. Deciding what is consequential, and writing the state text, is the application's job; the pattern never infers state, freshness or legality.",
+    description: "Overview disclosure splits a result into two parts: an always-visible overview that states what the user must know to act (the state, its scope, how certain it is, what is still unresolved, and whether more verification is needed), and one or more [[disclosure]] sections below it for supporting evidence. It is a labeled `section` (`ef-overview-disclosure`) whose first child is `ef-overview-disclosure__overview`, marked with a thick inline-start rule, followed by native `details class=\"ef-disclosure\"` elements. Forma provides the structure and spacing. Deciding what is consequential, and writing the state text, is the application's job; the pattern never infers state, freshness or legality.",
     useWhen: [
       "A verification, reconciliation or review result has supporting evidence that most users do not need to read every time.",
       "Hiding the wrong detail could lead someone to act on stale, partial or unknown information.",
@@ -147,7 +147,7 @@ export default {
     "No breakpoints and no horizontal overflow at 320px."
   ],
   motion: [
-    "The overview does not animate. Evidence sections use [[disclosure]] motion: the + / × indicator turns with light spring timing, content fades and settles on open, and block size settles where `interpolate-size` is supported.",
+    "The overview does not animate. Evidence sections use [[disclosure]] motion: the + / × indicator turns with the light settle timing (no overshoot), content opacity follows the open state in both directions, and block size settles where `interpolate-size` is supported.",
     "Under `prefers-reduced-motion: reduce` the disclosure height transition is removed and the rest is effectively instant."
   ],
   guidance: {

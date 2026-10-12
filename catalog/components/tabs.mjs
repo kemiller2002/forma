@@ -120,7 +120,7 @@ export default {
       "ef-tabs": "Root section and motion scope.",
       "ef-tabs__list": "The tablist: a flex row with a bottom rule that scrolls horizontally when tabs overflow.",
       "ef-tabs__panel": "A tab panel with vertical padding.",
-      "data-ef-motion-weight": "Presentation-only perceived mass for the underline and tab settle: light (default here), standard or heavy. Never encodes importance.",
+      "data-ef-motion-weight": "Presentation-only perceived mass for the underline settle: light (default here), standard or heavy. Never encodes importance.",
       "data-ef-motion-entry": "Presence attribute on `.ef-tabs__panel`. When the panel is inserted or un-hidden it starts at zero opacity and 0.25rem lower, then settles into place."
     },
     keyboard: [
@@ -134,8 +134,8 @@ export default {
     form: "Does not participate in forms. Tabs are buttons with type=\"button\" so they never submit."
   },
   states: [
-    { name: "Unselected", how: "aria-selected=\"false\"", description: "Transparent tab, nudged 0.08rem down, underline scaled to zero." },
-    { name: "Selected", how: "aria-selected=\"true\"", description: "Secondary surface, settled position and a 3px accent underline." },
+    { name: "Unselected", how: "aria-selected=\"false\"", description: "Transparent tab, underline scaled to zero." },
+    { name: "Selected", how: "aria-selected=\"true\"", description: "Secondary surface and a 3px accent underline. The tab itself does not move." },
     { name: "Focus", how: ":focus-visible", description: "Foundation two-tone focus ring on the tab." },
     { name: "Panel shown", how: "hidden removed, optional data-ef-motion-entry", description: "Panel visible; with the entry hook it fades and rises into place." },
     { name: "Overflowing", how: "tabs wider than the list", description: "The list scrolls horizontally inside itself." }
@@ -159,9 +159,9 @@ export default {
     "No breakpoints; the same structure is used at every width."
   ],
   motion: [
-    "The underline grows from zero width and the selected tab rises 0.08rem into place using the inertial spring timing of the light preset, so the change reads as a quick, light cue.",
+    "The underline grows from zero width with the settle easing over the light inertial duration (144ms) and never exceeds the tab's width. The selected tab itself does not move, so nothing shifts under the pointer.",
     "Tab surface color uses the shared perceptual interpolation.",
-    "A panel with `data-ef-motion-entry` fades in and rises 0.25rem when it appears.",
+    "A panel with `data-ef-motion-entry` fades in (180ms) and rises 0.25rem with the settle easing when it appears.",
     "Selection state is set immediately by the application; motion only follows it.",
     "Under `prefers-reduced-motion: reduce` these transitions are effectively instant."
   ],

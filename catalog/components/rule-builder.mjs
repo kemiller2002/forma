@@ -5,7 +5,7 @@ export default {
   summary: "Field/operator/value clauses for typed rule editing while the application owns expression semantics.",
   owns: ["ef-rule-builder", "ef-rule-clause", "ef-rule-group"],
   purpose: {
-    description: "A rule builder lets users compose a condition from clauses, each a field, an operator and a value, combined in AND/OR groups, with a plain-language summary of what the rule means. Forma provides the visual contract: a bordered panel with a header, groups with a visible operator badge, clause rows laid out as a grid of labelled native selects or inputs, and a summary bar. Adding and removing clauses, which operators and values a field allows, validation, the expression model and its serialization all belong to the application (Limen/Ordo); Forma never interprets the rule.",
+    description: "A rule builder lets users compose a condition from clauses, each a field, an operator and a value, combined in AND/OR groups, with a plain-language summary of what the rule means. Forma provides the visual contract: a bordered panel with a header, groups with a visible operator badge, clause rows laid out as a grid of labeled native selects or inputs, and a summary bar. Adding and removing clauses, which operators and values a field allows, validation, the expression model and its serialization all belong to the application (Limen/Ordo); Forma never interprets the rule.",
     useWhen: [
       "Users define when something applies (show a question, route a ticket, include a record) with conditions over typed fields.",
       "Conditions combine with AND/OR and users need to read the result back in plain language.",
@@ -17,7 +17,7 @@ export default {
       "Users type free-text queries: use [[search]]."
     ],
     characteristics: [
-      "Each clause is three labelled controls and a remove button in one row that stacks at narrow widths.",
+      "Each clause is three labeled controls and a remove button in one row that stacks at narrow widths.",
       "Group logic is shown as text (AND, OR) in a badge, not by color or indentation alone.",
       "The summary restates the rule in words so users can check it without parsing the clauses."
     ]

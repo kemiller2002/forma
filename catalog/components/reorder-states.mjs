@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Presentation hooks for dragging, displaced siblings, drop candidates, accepted/rejected drops and post-release settling.",
   purpose: {
-    description: "Reorder states are not a component of their own but a shared set of attribute hooks an application writes on items while the user moves them: `data-ef-manipulation` for the motion phase (dragging, displaced, settling, resizing) and `data-ef-drop` for the drop outcome (candidate, accepted, rejected), plus `--ef-drag-x` and `--ef-drag-y` for the live offset. Forma turns them into presentation: the dragged item tracks the offset with no lag and a lifting shadow, released and displaced items settle with a damped inertial response that never overshoots, and drop targets get dashed, solid or dashed-and-filled outlines. Pointer handling, keyboard reordering, legality checks and announcements are Limen/application behavior; the native move buttons remain the non-drag path.",
+    description: "Reorder states are not a component of their own but a shared set of attribute hooks an application writes on items while the user moves them: `data-ef-manipulation` for the motion phase (dragging, displaced, settling, resizing) and `data-ef-drop` for the drop outcome (candidate, accepted, rejected), plus `--ef-drag-x` and `--ef-drag-y` for the live offset. Forma turns them into presentation: the dragged item tracks the offset with no lag and a lifting shadow, released and displaced items settle with a critically damped inertial response that never overshoots, and drop targets get dashed, solid or dashed-and-filled outlines. Pointer handling, keyboard reordering, legality checks and announcements are Limen/application behavior; the native move buttons remain the non-drag path.",
     useWhen: [
       "An application implements drag-to-reorder or drag-between-lanes on [[ranking]], [[lane-board]] or a similar list and needs consistent visual feedback.",
       "A drop can be refused and the item must visibly return to its authoritative position.",
@@ -17,7 +17,7 @@ export default {
     ],
     characteristics: [
       "Direct phase: `dragging` and `resizing` use `--ef-motion-direct-duration` (0ms), so the item follows the application-supplied offset exactly.",
-      "Settling and displacement use `--ef-motion-inertia-duration` with `--ef-motion-damped-easing`: no overshoot past the final position.",
+      "Settling and displacement use `--ef-motion-inertia-duration` with `--ef-motion-settle-easing`: no overshoot past the final position.",
       "Drop outcomes differ by outline style, not only color: candidate dashed, accepted solid, rejected dashed with a secondary fill.",
       "All hooks are attribute selectors, so they work on any element; mass comes from the nearest motion scope such as `.ef-ranking[data-ef-motion-weight]`."
     ]
@@ -130,7 +130,7 @@ export default {
   ],
   api: {
     attributes: [
-      { name: "data-ef-manipulation", on: "the moving or affected item", values: "dragging | resizing | displaced | settling", default: "absent", description: "Motion phase written by the application. `dragging`/`resizing` track directly; `displaced`/`settling` return with damped settling. Remove it when the item is at rest." },
+      { name: "data-ef-manipulation", on: "the moving or affected item", values: "dragging | resizing | displaced | settling", default: "absent", description: "Motion phase written by the application. `dragging`/`resizing` track directly; `displaced`/`settling` return with critically damped settling. Remove it when the item is at rest." },
       { name: "data-ef-drop", on: "a drop target or dropped item", values: "candidate | accepted | rejected", default: "absent", description: "Drop presentation written by the application once it knows the target and the result. Remove it when the interaction ends." },
       { name: "style", on: "the moving item", values: "--ef-drag-x / --ef-drag-y lengths", default: "0px", description: "Application-written live offset of the item from its authoritative position. Reset to 0 on release so the item settles home." },
       { name: "data-ef-motion-weight", on: ".ef-ranking or another motion scope", values: "light | standard | heavy", default: "standard", description: "Perceived mass for settling within the scope. Presentation only; never encodes importance." },
@@ -140,12 +140,12 @@ export default {
       { name: "aria-atomic", on: ".ef-ranking__announcement", values: "true", default: "—", description: "Announces the whole message on each change." }
     ],
     hooks: {
-      "data-ef-manipulation": "Applies `translate: var(--ef-drag-x) var(--ef-drag-y)` with a damped inertial transition. `dragging` and `resizing` switch to the 0ms direct duration, raise the item (`z-index: 1`), add a lifting shadow and a grabbing cursor.",
+      "data-ef-manipulation": "Applies `translate: var(--ef-drag-x) var(--ef-drag-y)` with a critically damped inertial transition. `dragging` and `resizing` switch to the 0ms direct duration, raise the item (`z-index: 1`), add a lifting shadow and a grabbing cursor.",
       "data-ef-drop": "`candidate`: 2px dashed accent outline. `accepted`: 2px solid accent outline. `rejected`: 2px dashed border-color outline plus a secondary surface fill. All offset 2px; CanvasText outlines in forced colors.",
       "--ef-drag-x": "Horizontal offset from the authoritative position, written by the application. Default 0px.",
       "--ef-drag-y": "Vertical offset from the authoritative position, written by the application. Default 0px.",
       "--ef-motion-inertia-duration": "Settling duration, derived from the scope's mass, stiffness and damping (214ms at standard weight, clamped to 110–420ms).",
-      "--ef-motion-damped-easing": "Settling easing, `cubic-bezier(0.2, 0.8, 0.2, 1)`: decelerates without overshoot.",
+      "--ef-motion-settle-easing": "Settling easing: a critically damped response sampled into `linear()`. It leaves rest immediately, decelerates and stops exactly at the destination with no overshoot or rebound.",
       "--ef-motion-direct-duration": "Duration used during the direct phase: 0ms."
     },
     keyboard: [
@@ -161,8 +161,8 @@ export default {
   states: [
     { name: "At rest", how: "no data-ef-manipulation", description: "Item at its authoritative position; no offset." },
     { name: "Dragging", how: "data-ef-manipulation=\"dragging\" plus --ef-drag-x/-y", description: "Tracks the offset with no transition, raised with a shadow and grabbing cursor." },
-    { name: "Displaced", how: "data-ef-manipulation=\"displaced\"", description: "A sibling moving out of the way with damped settling." },
-    { name: "Settling", how: "data-ef-manipulation=\"settling\"", description: "Released item returning to its final position with damped settling, no overshoot." },
+    { name: "Displaced", how: "data-ef-manipulation=\"displaced\"", description: "A sibling moving out of the way with critically damped settling." },
+    { name: "Settling", how: "data-ef-manipulation=\"settling\"", description: "Released item returning to its final position with critically damped settling, no overshoot." },
     { name: "Drop candidate", how: "data-ef-drop=\"candidate\"", description: "Dashed outline on the prospective target." },
     { name: "Drop accepted", how: "data-ef-drop=\"accepted\"", description: "Solid outline; set only after the application accepts the move." },
     { name: "Drop rejected", how: "data-ef-drop=\"rejected\"", description: "Dashed outline and filled background while the item returns to its authoritative position; the reason is announced in text." }
@@ -188,8 +188,8 @@ export default {
   ],
   motion: [
     "Dragging and resizing are direct manipulation: `translate` follows `--ef-drag-x/-y` with `--ef-motion-direct-duration` (0ms), so there is no pointer lag.",
-    "Settling and displacement use the inertial model with damped easing: `translate` transitions over `--ef-motion-inertia-duration` (214ms at standard weight) and decelerates into place without overshoot.",
-    "Mass comes from the enclosing motion scope's `data-ef-motion-weight`: light settles faster, heavy slower and more damped. Weight never signals importance.",
+    "Settling and displacement use the inertial model with the settle easing: `translate` transitions over `--ef-motion-inertia-duration` (214ms at standard weight) and decelerates into place without overshoot.",
+    "Mass comes from the enclosing motion scope's `data-ef-motion-weight`: light settles faster, heavy slower. Weight never signals importance.",
     "Interruption re-targets from the current position because the transition always runs toward the latest offset the application writes.",
     "Drop outlines change instantly; they are state cues, not animated.",
     "Under `prefers-reduced-motion: reduce` the transition duration is 0.01ms, so items are placed directly at their final position."

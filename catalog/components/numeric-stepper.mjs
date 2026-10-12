@@ -70,7 +70,7 @@ export default {
       mobile: {
         height: 330,
         notes: [
-          "Inputs stay at most 10rem wide at every width, so the narrow field keeps signalling a short number.",
+          "Inputs stay at most 10rem wide at every width, so the narrow field keeps signaling a short number.",
           "Labels and descriptions wrap onto several lines; nothing scrolls horizontally at 320px.",
           "inputmode=numeric shows a digit keypad on phones; many mobile browsers hide the spin buttons, so typed entry is the main path.",
           "Each input keeps a 44px minimum height for touch.",

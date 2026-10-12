@@ -154,7 +154,7 @@ export default {
     { slug: "metric-value-change", note: "The same card when the application publishes a new value and wants the update marked." },
     { slug: "dashboard-grid", note: "Lays out several metric cards in columns that collapse on phones." },
     { slug: "freshness", note: "States how current a value is." },
-    { slug: "key-value-list", note: "Several labelled values about one object, in smaller type." },
+    { slug: "key-value-list", note: "Several labeled values about one object, in smaller type." },
     { slug: "progress-bar", note: "Shows completion of a determinate task rather than a standalone value." }
   ]
 };

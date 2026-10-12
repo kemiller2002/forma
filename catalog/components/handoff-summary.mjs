@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Ordo",
   summary: "Exposes agent identity, proposal, uncertainty, evidence scope, and retained human authority.",
   purpose: {
-    description: "A handoff summary is the point where an agent stops and a human decides. It names the agent that did the work, states the proposed consequence, the evidence the agent relied on and its scope, what remains uncertain, and who holds the authority to approve. It is a labelled definition list with the decision actions after it. Forma lays out the labelled facts and nothing more: which actions exist, whether the current user may take them, and what happens when they do are Ordo or application decisions. The summary must make uncertainty and missing evidence as visible as the proposal itself.",
+    description: "A handoff summary is the point where an agent stops and a human decides. It names the agent that did the work, states the proposed consequence, the evidence the agent relied on and its scope, what remains uncertain, and who holds the authority to approve. It is a labeled definition list with the decision actions after it. Forma lays out the labeled facts and nothing more: which actions exist, whether the current user may take them, and what happens when they do are Ordo or application decisions. The summary must make uncertainty and missing evidence as visible as the proposal itself.",
     useWhen: [
       "An automated agent has prepared a consequential change (publishing, sending, merging, paying) and a person must approve, reject or redirect it.",
       "Reviewers need to see which agent acted, on what evidence and with what known gaps.",
@@ -141,7 +141,7 @@ export default {
   ],
   guidance: {
     do: [
-      "Put uncertainty and human authority in their own labelled rows so they cannot be skimmed past.",
+      "Put uncertainty and human authority in their own labeled rows so they cannot be skimmed past.",
       "Include the evidence scope (what was and was not checked)."
     ],
     avoid: [
@@ -153,6 +153,6 @@ export default {
     { slug: "understanding", note: "Item-by-item review of interpreted facts." },
     { slug: "verification-frame", note: "Recognize, verify, act structure for consequential transitions." },
     { slug: "conversation", note: "The exchange that may lead to a handoff." },
-    { slug: "facts", note: "General labelled facts without an authority or decision structure." }
+    { slug: "facts", note: "General labeled facts without an authority or decision structure." }
   ]
 };

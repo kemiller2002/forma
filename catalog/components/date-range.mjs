@@ -4,7 +4,7 @@ export default {
   behavior: "Native HTML / application",
   summary: "Paired direct date entry with reusable preset affordances and mobile stacking.",
   purpose: {
-    description: "A date range collects a start and an end date as two labelled native `input type=\"date\"` controls inside a fieldset, optionally followed by preset buttons such as \"Last 30 days\". Native inputs keep typed entry, the platform picker and `min`/`max` validation. Filling the dates from a preset, checking that the end is not before the start, and range preview are application behavior; Forma supplies the layout and its narrow-width stacking.",
+    description: "A date range collects a start and an end date as two labeled native `input type=\"date\"` controls inside a fieldset, optionally followed by preset buttons such as \"Last 30 days\". Native inputs keep typed entry, the platform picker and `min`/`max` validation. Filling the dates from a preset, checking that the end is not before the start, and range preview are application behavior; Forma supplies the layout and its narrow-width stacking.",
     useWhen: [
       "Users filter or report over a period with a start and an end date.",
       "Common periods are worth one-tap shortcuts, while custom dates must stay possible.",

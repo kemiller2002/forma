@@ -8,7 +8,7 @@ export default {
     useWhen: [
       "A submit or Continue action found more than one problem, or one problem the user may not see because it is off-screen.",
       "A long form, survey page or wizard step needs a single place where the user can see everything that needs attention.",
-      "The application moves focus after a failed submit and needs a stable, labelled target."
+      "The application moves focus after a failed submit and needs a stable, labeled target."
     ],
     avoidWhen: [
       "Only one visible field is wrong and focus can go straight to it: a [[validation-message]] is enough.",

@@ -4,7 +4,7 @@ export default {
   behavior: "Aegis / application",
   summary: "Shows the provenance chain supporting a security conclusion.",
   purpose: {
-    description: "A security evidence chain shows the path from an evidence source through an observation to the invariant it supports and the resulting state, for example Aegis → SEC-EVD-042 → SEC-INV-014 → Violated. Each step is labelled with its role and, where it is a record, links to it by stable ID. The chain lets a reviewer check that a conclusion rests on a real observation rather than proximity or assumption. Tutela supplies the relationships; Forma lays them out in order and never infers a link that was not supplied.",
+    description: "A security evidence chain shows the path from an evidence source through an observation to the invariant it supports and the resulting state, for example Aegis → SEC-EVD-042 → SEC-INV-014 → Violated. Each step is labeled with its role and, where it is a record, links to it by stable ID. The chain lets a reviewer check that a conclusion rests on a real observation rather than proximity or assumption. Tutela supplies the relationships; Forma lays them out in order and never infers a link that was not supplied.",
     useWhen: [
       "A security conclusion must be traceable to its source and observation.",
       "Reviewers need to open each record in the chain by stable ID.",

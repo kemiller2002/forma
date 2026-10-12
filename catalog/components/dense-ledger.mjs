@@ -7,12 +7,12 @@ export default {
     description: "A dense ledger is a native `table` with tight cell padding, tabular numerals and ruled rows, meant for expert users who read many rows and compare values down columns. It keeps its table shape at every width: when the columns do not fit, the table scrolls inside an `.ef-bounded-overflow` region instead of recomposing into cards, so column relationships stay intact. Forma styles the table only; the rows, their order and the meaning of each state are application content.",
     useWhen: [
       "Operators or analysts scan many rows and compare values vertically, such as ledgers, audit entries or reconciliation lists.",
-      "Row and column relationships must survive on narrow screens, and horizontal scrolling inside a labelled region is acceptable.",
+      "Row and column relationships must survive on narrow screens, and horizontal scrolling inside a labeled region is acceptable.",
       "State is short text per row (Needs review, Ready, Unknown) rather than a color."
     ],
     avoidWhen: [
-      "Casual users on phones need to act on individual records: use [[data-grid]], which recomposes into labelled records.",
-      "The content is a few labelled facts about one object: use [[key-value-list]].",
+      "Casual users on phones need to act on individual records: use [[data-grid]], which recomposes into labeled records.",
+      "The content is a few labeled facts about one object: use [[key-value-list]].",
       "Rows are work that needs a decision: use [[work-queue]] so the reason and action lead.",
       "A small number of options is compared across attributes for a choice: use [[comparison-grid]]."
     ],
@@ -169,9 +169,9 @@ export default {
     ]
   },
   related: [
-    { slug: "data-grid", note: "Use when rows should recompose into labelled records on phones and carry sort and row actions." },
-    { slug: "bounded-overflow", note: "The labelled scroll region that contains a ledger wider than its container." },
+    { slug: "data-grid", note: "Use when rows should recompose into labeled records on phones and carry sort and row actions." },
+    { slug: "bounded-overflow", note: "The labeled scroll region that contains a ledger wider than its container." },
     { slug: "comparison-grid", note: "Compares a few options across attributes rather than listing many entries." },
-    { slug: "key-value-list", note: "Labelled facts about a single record." }
+    { slug: "key-value-list", note: "Labeled facts about a single record." }
   ]
 };

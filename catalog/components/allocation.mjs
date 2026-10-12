@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Distribute a bounded amount across multiple choices while preserving direct numeric entry.",
   purpose: {
-    description: "Allocation asks the user to split a fixed budget, such as 10 points or 100%, across several items. Each item is a labelled native number input, so values are typed directly and the browser enforces per-field min, max and step. The total row is an `output` in a polite live region. The aggregate rule (the sum must equal the budget) cannot be expressed in HTML, so the application calculates the total, writes it, and sets `data-ef-state=\"invalid\"` when the rule is broken.",
+    description: "Allocation asks the user to split a fixed budget, such as 10 points or 100%, across several items. Each item is a labeled native number input, so values are typed directly and the browser enforces per-field min, max and step. The total row is an `output` in a polite live region. The aggregate rule (the sum must equal the budget) cannot be expressed in HTML, so the application calculates the total, writes it, and sets `data-ef-state=\"invalid\"` when the rule is broken.",
     useWhen: [
       "Relative weight across items matters, not only their order.",
       "The budget is a small whole number or percentage that users can reason about.",

@@ -169,7 +169,7 @@ export default {
     forma: [
       "Requires severity in text (the status label) and repeats it with border style, so it is not communicated by color alone.",
       "In forced colors every obligation border becomes `CanvasText` and the panel border is preserved; the labels still distinguish severity.",
-      "Uses a labelled complementary region and a native list."
+      "Uses a labeled complementary region and a native list."
     ],
     consumer: [
       "Keep the heading's number, the count and the list in sync.",

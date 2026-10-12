@@ -165,7 +165,7 @@ export default {
     "Titles, messages and reference codes wrap without horizontal overflow at 320px."
   ],
   motion: [
-    "With `data-ef-motion-entry`, the banner fades in and settles 0.3rem downward on first render (perceptual opacity plus damped inertial translate).",
+    "With `data-ef-motion-entry`, the banner fades in and settles 0.3rem downward on first render (a 180ms opacity fade plus an inertial translate with the settle easing, no overshoot).",
     "Standard perceived weight is the default; weight never encodes severity.",
     "Because @starting-style applies only when the element first appears, re-rendered banners without the attribute do not animate.",
     "Under `prefers-reduced-motion: reduce` durations collapse to 0.01ms and the banner appears in place."

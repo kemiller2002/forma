@@ -138,7 +138,7 @@ export default {
   ],
   accessibility: {
     forma: [
-      "The no-script baseline uses a labelled native input and datalist, which browsers expose as a combobox with suggestions.",
+      "The no-script baseline uses a labeled native input and datalist, which browsers expose as a combobox with suggestions.",
       "Typed entry is always available, so the control never requires pointer use or a popup.",
       "The indicator is decorative and hidden from assistive technology."
     ],

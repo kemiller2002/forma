@@ -7,7 +7,7 @@ export default {
     description: "A dialog interrupts the page to ask for a decision or a short, bounded piece of work. Forma's dialog is the native `dialog` element opened as a modal from a button with `commandfor` and `command=\"show-modal\"`, and closed with `command=\"close\"`, a `form method=\"dialog\"` submission, or Escape. The browser owns the top layer, making the rest of the page inert, moving focus into the dialog, Escape handling and returning focus to the invoker. Forma provides the centered surface, the dimmed and blurred backdrop, a padded body, a wrapping action row, a full-width phone layout, and heavy-weight entry and exit motion. What the actions do, and whether they are allowed, is application logic.",
     useWhen: [
       "The user must confirm, choose or supply something before continuing, and the rest of the page should wait.",
-      "A consequential or destructive action needs an explicit, labelled confirmation step.",
+      "A consequential or destructive action needs an explicit, labeled confirmation step.",
       "A short form (one to a few fields) belongs to the current context and should not navigate away."
     ],
     avoidWhen: [
@@ -21,7 +21,7 @@ export default {
       "Native modal behavior: top layer, inert background, focus containment, Escape and focus return.",
       "Opened and closed declaratively by invoker buttons; no script is needed for the baseline.",
       "Width `min(38rem, 100vw - 2rem)` and height capped to the dynamic viewport; long content scrolls inside the dialog.",
-      "Heavy perceived weight by default: a short upward settle on entry and a reciprocal exit with the same duration and easing."
+      "Heavy perceived weight by default: a fade and short upward settle on entry, and a shorter, accelerating exit."
     ]
   },
   examples: [
@@ -117,7 +117,7 @@ export default {
       "ef-dialog": "The dialog surface: border, primary surface, shadow, width `min(38rem, 100vw - 2rem)`, viewport-capped height and contained overscroll. Also styles the backdrop.",
       "ef-dialog__body": "Padded content region (1.5rem, 1rem at 44rem and below).",
       "ef-dialog__actions": "Wrapping action row aligned to the inline end with a top rule; at 44rem and below its buttons stretch to full width.",
-      "open": "Native open state, set by the browser. `[open]` switches the surface to its resting position and the backdrop to its dimmed, blurred state, while preserving the shared spring timing in both directions.",
+      "open": "Native open state, set by the browser. `[open]` switches the surface to its resting position and the backdrop to its dimmed, blurred state, using the settle entry timing; closing uses the shorter exit timing.",
       "data-ef-motion-weight": "Presentation-only perceived mass: heavy (default for dialogs), standard or light. Never encodes severity or destructiveness."
     },
     keyboard: [
@@ -131,7 +131,7 @@ export default {
       { name: "cancel", description: "Native event fired when the user asks to close (Escape or light dismiss); cancelable." },
       { name: "close", description: "Native event fired after the dialog closes. Read `returnValue` to find which form button closed it." }
     ],
-    form: "A `form method=\"dialog\"` inside the dialog closes it on submission and records the submitter's value in `dialog.returnValue`; field values are not sent anywhere. Use `formnovalidate` on a cancel button so required fields do not block cancelling."
+    form: "A `form method=\"dialog\"` inside the dialog closes it on submission and records the submitter's value in `dialog.returnValue`; field values are not sent anywhere. Use `formnovalidate` on a cancel button so required fields do not block canceling."
   },
   states: [
     { name: "Closed", how: "no open attribute", description: "Not rendered. While closing, the surface travels down slightly and the backdrop fades before display is removed." },
@@ -160,8 +160,8 @@ export default {
     "A true full-screen mobile mode and pinned (sticky) action rows are not provided."
   ],
   motion: [
-    "Entry: the surface rises from 0.75rem below and scales from 98.5% to rest over the heavy inertial duration with spring easing; the backdrop dims and blurs by perceptual interpolation, independent of mass.",
-    "Exit: the same path reversed over the same inertial duration and easing as entry, and the backdrop fades; `display` and `overlay` are held until the exit finishes.",
+    "Entry: the surface fades in (`--ef-motion-fade-in-duration`, 180ms) while it rises 0.75rem and scales from 98.5% to rest over the heavy inertial duration (about 331ms) with `--ef-motion-settle-easing`, stopping exactly at rest with no overshoot. The backdrop dims and blurs with the surface fade tokens (180ms in, 120ms out), independent of mass.",
+    "Exit: the surface fades out (`--ef-motion-fade-out-duration`, 120ms) and moves back over the shorter `--ef-motion-exit-duration` (about 265ms at heavy) with `--ef-motion-exit-easing`; the backdrop fades; `display` and `overlay` are held until the exit finishes.",
     "`data-ef-motion-weight` changes perceived mass (heavy is the default). The native open state is always authoritative; motion never delays focus or inertness.",
     "Under `prefers-reduced-motion: reduce` the travel and scale are removed, the backdrop blur is dropped, and remaining transitions are effectively instant."
   ],

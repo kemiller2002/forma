@@ -145,7 +145,7 @@ export default {
   },
   related: [
     { slug: "stack", note: "Vertical rhythm between siblings." },
-    { slug: "command-group", note: "Labelled groups of commands with shared spacing." },
+    { slug: "command-group", note: "Labeled groups of commands with shared spacing." },
     { slug: "status-lozenge", note: "Status labels that are often arranged in a cluster." },
     { slug: "switcher", note: "Two regions side by side that stack as whole blocks, not individual wrapping items." }
   ]

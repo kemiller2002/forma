@@ -54,7 +54,7 @@ export default {
     {
       id: "multiple-targets",
       title: "Main content and search targets",
-      description: "A long page with two skip links. Each is hidden until focused and appears in the same corner, so only the focused one is ever visible. The search target is the form's labelled input, which is natively focusable.",
+      description: "A long page with two skip links. Each is hidden until focused and appears in the same corner, so only the focused one is ever visible. The search target is the form's labeled input, which is natively focusable.",
       html: `<ef-skip-link class="ef-component-tag">
   <div class="ef-site">
     <a class="ef-skip-link" href="#skip-multi-content">Skip to main content</a>

@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Semantic tabular records with sortable-column affordances, contained horizontal overflow and a labeled record projection on phones.",
   purpose: {
-    description: "A data grid presents a set of records as a native `table` inside a focusable, labelled scroll region. Forma styles the header, cells, sort indicators and the narrow-screen recomposition: at 30rem and below the header row is hidden and every cell prints its own `data-label`, so each row reads as a labelled record. Forma does not sort, filter, select, paginate or navigate cells. Header buttons are plain native buttons; the application (normally through Limen) decides what activating them does and writes the resulting `aria-sort`.",
+    description: "A data grid presents a set of records as a native `table` inside a focusable, labeled scroll region. Forma styles the header, cells, sort indicators and the narrow-screen recomposition: at 30rem and below the header row is hidden and every cell prints its own `data-label`, so each row reads as a labeled record. Forma does not sort, filter, select, paginate or navigate cells. Header buttons are plain native buttons; the application (normally through Limen) decides what activating them does and writes the resulting `aria-sort`.",
     useWhen: [
       "Users scan, compare and act on many records that share the same fields, such as invoices, tickets or deployments.",
       "Columns can be sorted by the application and the current sort must be visible and announced.",
@@ -13,7 +13,7 @@ export default {
     ],
     avoidWhen: [
       "The table is dense expert reference data where column alignment must survive on phones: use [[dense-ledger]] inside [[bounded-overflow]], which keeps the table shape.",
-      "Only a handful of labelled facts about one object are shown: use [[key-value-list]].",
+      "Only a handful of labeled facts about one object are shown: use [[key-value-list]].",
       "The user compares a few items across the same attributes and must keep rows and columns aligned: use [[comparison-grid]].",
       "Rows are unresolved work items whose main purpose is the next action: use [[work-queue]].",
       "Cells are editable or the grid needs arrow-key cell navigation: that requires an application-owned `role=\"grid\"` keyboard model, which Forma does not provide."
@@ -102,7 +102,7 @@ export default {
     {
       id: "wide-record-set",
       title: "Many columns and long values",
-      description: "Seven columns exceed a tablet-width container, so the table scrolls inside the labelled region rather than widening the page. The region is focusable, so keyboard users can scroll it with the arrow keys. Long customer names wrap inside their cells.",
+      description: "Seven columns exceed a tablet-width container, so the table scrolls inside the labeled region rather than widening the page. The region is focusable, so keyboard users can scroll it with the arrow keys. Long customer names wrap inside their cells.",
       html: `<ef-data-grid class="ef-component-tag">
   <div class="ef-data-grid" role="region" tabindex="0" aria-label="Shipment records">
     <table>
@@ -200,7 +200,7 @@ export default {
       { name: "datetime", on: "time", values: "ISO date", default: "—", description: "Machine-readable date for date cells; the visible text stays human-formatted." }
     ],
     hooks: {
-      "ef-data-grid": "Root scroll region around the native table. Bordered, horizontally scrollable, and recomposed into labelled records at 30rem and below."
+      "ef-data-grid": "Root scroll region around the native table. Bordered, horizontally scrollable, and recomposed into labeled records at 30rem and below."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the region, the header sort buttons and row actions in document order." },
@@ -240,7 +240,7 @@ export default {
     "Above 30rem the table keeps a 42rem minimum inline size and the `.ef-data-grid` region scrolls horizontally, so the page never overflows.",
     "At 30rem and below the grid recomposes into stacked records: `thead` hidden, every cell a `minmax(6.5rem, 0.4fr) minmax(0, 1fr)` label/value grid.",
     "Long text wraps inside cells; identifiers can use [[identifier]] so long codes break safely.",
-    "The application decides which columns are essential. For very wide data on phones, prefer fewer columns or a detail view over many labelled lines per record.",
+    "The application decides which columns are essential. For very wide data on phones, prefer fewer columns or a detail view over many labeled lines per record.",
     "Sort controls disappear with the header on phones; supply an equivalent sort control outside the grid."
   ],
   motion: [
@@ -263,6 +263,6 @@ export default {
     { slug: "collection-toolbar", note: "Search, filter, sort and count controls that sit above a grid and remain available when the header hides." },
     { slug: "comparison-grid", note: "Use when a few items are compared across attributes and rows and columns must stay aligned." },
     { slug: "pagination", note: "Splits long result sets into pages; the grid shows only the current page." },
-    { slug: "bounded-overflow", note: "Generic labelled scroll region for any wide content that must not become a record projection." }
+    { slug: "bounded-overflow", note: "Generic labeled scroll region for any wide content that must not become a record projection." }
   ]
 };

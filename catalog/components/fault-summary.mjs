@@ -27,7 +27,7 @@ export default {
     {
       id: "failed-submit",
       title: "After a failed submit",
-      description: "A summary above a short form after submission failed. Each link targets the affected field in the same page; the critical entry is bold as well as labelled Critical. The application focuses the summary once after the failed submit.",
+      description: "A summary above a short form after submission failed. Each link targets the affected field in the same page; the critical entry is bold as well as labeled Critical. The application focuses the summary once after the failed submit.",
       html: `<ef-fault-summary class="ef-component-tag">
   <section class="ef-fault-summary" tabindex="-1" aria-labelledby="fault-summary-failed-submit-title">
     <div class="ef-fault-summary__heading">

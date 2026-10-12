@@ -2,7 +2,7 @@ export default {
   name: "Text field",
   category: "forms",
   behavior: "Native HTML",
-  summary: "A labelled native text-like input (text, email, password, URL, tel, number) with optional description, using the .ef-field label/description structure.",
+  summary: "A labeled native text-like input (text, email, password, URL, tel, number) with optional description, using the .ef-field label/description structure.",
   owns: ["ef-field"],
   purpose: {
     description: "A text field collects a short, single-line value. Forma supplies the `.ef-field` structure (a grid of label, description and control) and the foundation styling for native inputs; the `input` element itself stays native, so the browser owns typing, autofill, input modes, constraint validation and form submission. The same `.ef-field` structure is shared by [[textarea]] and [[date-time-field]], and this entry documents it.",

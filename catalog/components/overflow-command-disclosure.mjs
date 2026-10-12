@@ -5,7 +5,7 @@ export default {
   summary: "Moves secondary commands into explicit native disclosure without shrinking targets or hiding group meaning.",
   owns: ["ef-overflow-commands"],
   purpose: {
-    description: "An overflow command disclosure is a native `details` element whose `summary` (normally \"More commands\" or a more specific phrase) reveals a labelled group of secondary buttons. The browser owns open and closed state, keyboard toggling and the expanded announcement. The revealed panel is in normal document flow, so it pushes content down rather than floating over it, and the commands keep full 44px targets. Deciding which commands are secondary is an application decision; the disclosure never removes a command, it only defers it.",
+    description: "An overflow command disclosure is a native `details` element whose `summary` (normally \"More commands\" or a more specific phrase) reveals a labeled group of secondary buttons. The browser owns open and closed state, keyboard toggling and the expanded announcement. The revealed panel is in normal document flow, so it pushes content down rather than floating over it, and the commands keep full 44px targets. Deciding which commands are secondary is an application decision; the disclosure never removes a command, it only defers it.",
     useWhen: [
       "A toolbar or record header has more commands than fit comfortably, and some are clearly used less often.",
       "Secondary commands must remain reachable on phones without shrinking targets or scrolling a toolbar sideways.",
@@ -155,7 +155,7 @@ export default {
     ]
   },
   related: [
-    { slug: "command-group", note: "Use for the visible, labelled commands; the overflow usually sits inside one." },
+    { slug: "command-group", note: "Use for the visible, labeled commands; the overflow usually sits inside one." },
     { slug: "menu", note: "Use when secondary actions should float over content and light-dismiss on outside click or Escape." },
     { slug: "disclosure", note: "Use for expandable explanatory content or optional fields rather than commands." },
     { slug: "mobile-action-bar", note: "Use for the one or two critical actions that must stay reachable on phones." }

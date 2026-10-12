@@ -147,7 +147,7 @@ export default {
   ],
   accessibility: {
     forma: [
-      "Uses an article with a heading, labelled comparison sides and definition lists, so the structure is navigable without seeing the layout.",
+      "Uses an article with a heading, labeled comparison sides and definition lists, so the structure is navigable without seeing the layout.",
       "Marks changed rows with a border in addition to their content, not color alone.",
       "Keeps recovery actions as native buttons in a predictable footer."
     ],

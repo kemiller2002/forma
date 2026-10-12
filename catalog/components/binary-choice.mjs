@@ -131,7 +131,7 @@ export default {
   ],
   accessibility: {
     forma: [
-      "Keeps native radios as the focusable, labelled elements, so name, checked state and arrow-key behavior come from the platform.",
+      "Keeps native radios as the focusable, labeled elements, so name, checked state and arrow-key behavior come from the platform.",
       "Makes the whole option label the pointer and touch target at a 44px minimum height.",
       "Shows selection with a surface change plus Highlight/HighlightText in forced-colors mode, and a visible focus ring."
     ],

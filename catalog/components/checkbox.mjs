@@ -155,7 +155,7 @@ export default {
   ],
   accessibility: {
     forma: [
-      "The native checkbox stays the focusable, labelled element, so role, state and Space activation come from the platform.",
+      "The native checkbox stays the focusable, labeled element, so role, state and Space activation come from the platform.",
       "The label wraps the input and the input covers the row, giving a large touch target of at least 44px height.",
       "The ✓ glyph is a non-color checked cue, and the focus ring is drawn on the visible box.",
       "Colors come from semantic tokens that project to system colors in forced-colors mode."
@@ -172,7 +172,7 @@ export default {
     "No breakpoints; stack rows in a fieldset or [[stack]] for full-width lists on phones."
   ],
   motion: [
-    "The check mark fades in and settles with the shared inertial spring (scale and a small rotation), so checking reads as a physical mark being placed.",
+    "The check mark fades in while its scale uses the restrained spring (`--ef-motion-spring-easing`) and its small rotation settles with the settle easing, with no overshoot. The spring on scale is a deliberate, purpose-limited exception (MOT-033): it confirms the input the user just gave, so checking reads as a mark being placed.",
     "The box fill and border change with perceptual interpolation, independent of mass.",
     "Pressing compresses the box briefly with a damped press response; the checked value changes immediately and is never delayed by motion.",
     "`data-ef-motion-weight` light, standard or heavy changes only perceived mass of the mark's settle.",

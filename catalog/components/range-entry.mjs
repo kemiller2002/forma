@@ -4,7 +4,7 @@ export default {
   behavior: "Native HTML",
   summary: "Direct lower/upper endpoint entry; graphical dual-thumb behavior is an optional application enhancement.",
   purpose: {
-    description: "Range entry collects a lower and an upper bound as two labelled native number inputs inside a fieldset, with a separator between them and a status line that restates the range. Typed entry is always available, so no dragging is required. Checking that the minimum does not exceed the maximum, writing the status text and any graphical dual-thumb slider are application behavior; Forma supplies the layout.",
+    description: "Range entry collects a lower and an upper bound as two labeled native number inputs inside a fieldset, with a separator between them and a status line that restates the range. Typed entry is always available, so no dragging is required. Checking that the minimum does not exceed the maximum, writing the status text and any graphical dual-thumb slider are application behavior; Forma supplies the layout.",
     useWhen: [
       "Users set both ends of a numeric range, such as a price band, response-time window or age range.",
       "Exact endpoint values matter.",

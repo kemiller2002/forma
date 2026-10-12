@@ -127,7 +127,7 @@ export default {
       { name: "lang", on: "root or regions", values: "BCP 47 tag", default: "inherited", description: "Declare the language of localized content so wrapping and pronunciation are correct." }
     ],
     hooks: {
-      "ef-attention-path": "Root grid of header, primary region and support grid. In an application page this is often `main`; nested, use a labelled `section`.",
+      "ef-attention-path": "Root grid of header, primary region and support grid. In an application page this is often `main`; nested, use a labeled `section`.",
       "ef-attention-path__primary": "The single first-glance region: 2px border, surface background, padding. Its action cluster stacks full width at 30rem and below.",
       "ef-attention-path__support": "Auto-fit grid of supporting regions (minimum 15rem each), each with a thin top rule.",
       "data-attention-step": "Presentation hook that prints \"Priority N\" before any region inside the path."

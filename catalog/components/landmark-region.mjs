@@ -42,7 +42,7 @@ export default {
     {
       id: "review-status",
       title: "Review status aside",
-      description: "A complementary landmark summarising a document review: who owns it, the due date and a status message. It uses `--ef-landmark-space` for a tighter band in a dense workspace.",
+      description: "A complementary landmark summarizing a document review: who owns it, the due date and a status message. It uses `--ef-landmark-space` for a tighter band in a dense workspace.",
       html: `<ef-landmark-region class="ef-component-tag">
   <aside class="ef-landmark-region" style="--ef-landmark-space: 0.5rem" aria-label="Review status">
     <p>Owner: Legal operations</p>

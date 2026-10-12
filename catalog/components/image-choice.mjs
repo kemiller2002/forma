@@ -6,7 +6,7 @@ export default {
   purpose: {
     description: "Image choice is the [[choice-group]] card with a picture. Adding `ef-choice--media` to an `ef-choice` label turns it into a two-column card: an `ef-choice__media` frame with a 4:3 aspect ratio beside the usual bold label and supporting text. The input stays a native radio (single choice) or checkbox (several choices), so selection, keyboard behavior and form submission are unchanged. The image supports recognition; the visible text is the accessible name and must carry the whole meaning, because images never replace text.",
     useWhen: [
-      "Options are visual (layouts, themes, chart types, product variants) and a preview helps people recognise them.",
+      "Options are visual (layouts, themes, chart types, product variants) and a preview helps people recognize them.",
       "Each option still has a clear text name that works without the image.",
       "Two to about six options are compared in a list."
     ],
@@ -132,7 +132,7 @@ export default {
     ],
     hooks: {
       "ef-choice--media": "Owned by [[choice-group]]. Turns an `ef-choice` card into the media layout: two columns, inline-start padding reduced, drawn indicator hidden. One column at 44rem and below.",
-      "ef-choice__media": "The media frame: 4:3 aspect ratio, subtle border, secondary surface, content centred and clipped. A child `img` is scaled to fit with `object-fit: cover`.",
+      "ef-choice__media": "The media frame: 4:3 aspect ratio, subtle border, secondary surface, content centered and clipped. A child `img` is scaled to fit with `object-fit: cover`.",
       "ef-choice__content": "The bold option name and supporting text, as in every choice card."
     },
     keyboard: [

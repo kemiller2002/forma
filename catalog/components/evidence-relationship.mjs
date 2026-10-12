@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Article grid with 0.75rem gaps: header (relationship type and claim), body, footer.",
       "The relationship type is text in the header, typically a `.ef-component-kicker`.",
-      "The body is a grid of short labelled statements (Evidence, Source, Scope).",
+      "The body is a grid of short labeled statements (Evidence, Source, Scope).",
       "Trailing margins inside the header and body are removed so the card stays compact."
     ]
   },
@@ -97,7 +97,7 @@ export default {
     ],
     hooks: {
       "ef-evidence-relationship": "Root article; a grid of header, body and footer with 0.75rem gaps. Removes the trailing margin of the header's last child.",
-      "ef-evidence-relationship__body": "Grid of labelled evidence statements with 0.5rem gaps; its last child has no bottom margin."
+      "ef-evidence-relationship__body": "Grid of labeled evidence statements with 0.5rem gaps; its last child has no bottom margin."
     },
     keyboard: [
       { keys: "None", action: "Static content; links inside the body are reached with Tab." }

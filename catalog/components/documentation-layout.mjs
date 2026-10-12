@@ -166,7 +166,7 @@ export default {
   ],
   guidance: {
     do: [
-      "Keep navigation groups short and labelled with `ef-doc__heading`.",
+      "Keep navigation groups short and labeled with `ef-doc__heading`.",
       "Include an outline only for articles long enough to need one."
     ],
     avoid: [

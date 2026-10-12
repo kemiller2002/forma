@@ -4,7 +4,7 @@ export default {
   behavior: "Native HTML / application",
   summary: "Uses semantic nesting and native disclosure for parent-child navigation without inventing tree behavior.",
   purpose: {
-    description: "A hierarchy tree lets users browse and navigate a nested structure such as a repository, organisation or document outline. It is deliberately not an ARIA `tree` widget: it is a labelled `nav` of nested lists, where each branch is a native `details`/`summary` disclosure and each leaf is a link. The browser owns expand and collapse, keyboard access is ordinary Tab order, and the current page is marked with `aria-current=\"page\"`. The application decides which branches start open and supplies the links.",
+    description: "A hierarchy tree lets users browse and navigate a nested structure such as a repository, organization or document outline. It is deliberately not an ARIA `tree` widget: it is a labeled `nav` of nested lists, where each branch is a native `details`/`summary` disclosure and each leaf is a link. The browser owns expand and collapse, keyboard access is ordinary Tab order, and the current page is marked with `aria-current=\"page\"`. The application decides which branches start open and supplies the links.",
     useWhen: [
       "Navigation destinations form a hierarchy of a few levels that users browse.",
       "Branches should be collapsible so the tree stays scannable.",
@@ -54,7 +54,7 @@ export default {
       title: "Branches that are also destinations",
       description: "When a branch has its own page, the summary stays a plain toggle and the branch page is the first child link. Putting a link inside the summary would create a nested interactive control.",
       html: `<ef-hierarchy-tree class="ef-component-tag">
-  <nav class="ef-hierarchy-tree" aria-label="Organisation">
+  <nav class="ef-hierarchy-tree" aria-label="Organization">
     <ul>
       <li><details open><summary>Engineering</summary><ul>
         <li><a href="#tree-overview-engineering" aria-current="page">Engineering overview</a></li>
@@ -136,7 +136,7 @@ export default {
     ],
     consumer: [
       "Open the branches on the path to the current page.",
-      "Until Forma restores a visible disclosure marker, make branch labels recognisable as groups (for example plural nouns) so sighted users can tell them from leaf links.",
+      "Until Forma restores a visible disclosure marker, make branch labels recognizable as groups (for example plural nouns) so sighted users can tell them from leaf links.",
       "Keep summaries as plain text; put branch pages in a child link rather than inside the summary.",
       "If you add role=\"tree\" and arrow-key navigation, implement the full ARIA tree pattern in the application."
     ]

@@ -23,10 +23,16 @@ These defaults describe visual inertia only.
 
 - inertial entry: `sqrt(mass / stiffness) / damping`
 - gravity cue: `sqrt(2 * distance / gravity)`
-- exit: identical to inertial entry, with the same easing and clamp bounds
-- popover, menu and tooltip: stationary reciprocal perceptual fades; retain top-layer geometry until opacity is zero (MOT-032)
+- exit: `0.8 ×` the inertial entry duration (clamped 90–340ms) with `--ef-motion-exit-easing`, so exits are shorter than entries (standard 214ms entry, 171ms exit; heavy about 331ms and 265ms; light 144ms and 115ms)
+- entry and in-place travel: `--ef-motion-settle-easing`, critically damped, no overshoot or rebound
+- popover, menu and tooltip: stationary perceptual fades, 180ms in and 120ms out with the decelerating `--ef-motion-fade-easing`; retain top-layer geometry until opacity is zero (MOT-032)
+- dialog and flyout backdrop: dims and blurs with the same fade tokens, independent of mass
 - reduced motion: effectively immediate spatial change with final visual state preserved
 - model vocabulary, classification and audit: see `src/motion.manifest.md`
+
+## Settling and overshoot (MOT-033)
+
+Structural motion settles directly; overshoot needs a documented purpose; exits are shorter than entries. Surfaces stop exactly at their destination, and a flyout never swings back into view on close. The restrained `--ef-motion-spring-easing` remains only for the switch thumb latch and the checkbox glyph's scale, which confirm input the user just gave.
 
 ## Native authority
 
@@ -41,6 +47,7 @@ CSS must never create a parallel semantic state machine.
 
 - `tests/browser/surface-physics.spec.mjs`
 - `tests/browser/overlay-motion.spec.mjs`
+- `tests/browser/structural-motion.spec.mjs`
 - `tests/browser/motion-foundation.spec.mjs`
 - `tests/motion-audit.test.mjs`
 - repository-wide mobile, accessibility, zero-runtime, package and cross-browser checks
@@ -48,7 +55,7 @@ CSS must never create a parallel semantic state machine.
 ## Maintenance
 
 - Owner: Echelon Foundry design system
-- Last checked against implementation: 2026-09-29
+- Last checked against implementation: 2026-10-12
 
 ## Native exit fallback
 

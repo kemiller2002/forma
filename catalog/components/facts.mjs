@@ -13,7 +13,7 @@ export default {
     avoidWhen: [
       "Claims need a title, paragraph and link: use [[card-grid]].",
       "Showing live application metrics with change over time: use [[metric-card]] or [[metric-value-change]].",
-      "Presenting a record's labelled fields in an application: use [[key-value-list]].",
+      "Presenting a record's labeled fields in an application: use [[key-value-list]].",
       "A status that could be missed must be communicated: use [[badge]] with a status or an [[alert]]."
     ],
     characteristics: [
@@ -129,7 +129,7 @@ export default {
   },
   related: [
     { slug: "card-grid", note: "For items with a title, paragraph and optional link." },
-    { slug: "key-value-list", note: "For labelled record fields in application UI." },
+    { slug: "key-value-list", note: "For labeled record fields in application UI." },
     { slug: "metric-card", note: "For live metrics with change and status in applications." },
     { slug: "hero", note: "Facts often sit in the hero's supporting aside." }
   ]

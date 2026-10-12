@@ -4,7 +4,7 @@ export default {
   notes: [
     "The [[alert]] comes first in source order because it is the one thing that needs action; metrics follow.",
     "The [[dashboard-grid]] recomposes from several columns to one by available width without reordering the cards.",
-    "The deploy table scrolls inside a labelled [[bounded-overflow]] region at narrow widths, so the page never scrolls sideways.",
+    "The deploy table scrolls inside a labeled [[bounded-overflow]] region at narrow widths, so the page never scrolls sideways.",
     "[[status-lozenge]] states (Confirmed, Needs attention, Unknown) remain distinguishable in grayscale and forced colors."
   ],
   html: `<div class="ef-stack">

@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Step state is written with `data-state=\"complete\"` and `data-state=\"current\"` plus `aria-current=\"step\"` on the current item.",
       "Position is stated three ways: \"Step 2 of 4\" text, the progress bar and the rail.",
-      "The rail is a four-column grid; below 40rem only the current step is shown, labelled Current step.",
+      "The rail is a four-column grid; below 40rem only the current step is shown, labeled Current step.",
       "Actions sit at opposite ends of the footer and wrap on narrow screens."
     ]
   },

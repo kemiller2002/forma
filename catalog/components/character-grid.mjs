@@ -243,7 +243,7 @@ export default {
     do: [
       "Start small: declare the real geometry of the screen being modeled (24 by 80, 32 by 80, or any size up to 50 by 132).",
       "Use a `form` surface for screens with fields and a `div` otherwise.",
-      "Wrap `dl`, labelled groups and sections in `ef-character-grid__group` so their children keep absolute coordinates."
+      "Wrap `dl`, labeled groups and sections in `ef-character-grid__group` so their children keep absolute coordinates."
     ],
     avoid: [
       "Inline `style` attributes inside the grid (CG-10); coordinates belong in `data-ef-*` attributes.",

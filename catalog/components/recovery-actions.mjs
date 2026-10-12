@@ -4,7 +4,7 @@ export default {
   behavior: "Aegis / Ordo / Application",
   summary: "Native buttons annotated with Aegis capability identity; current authority is revalidated on activation.",
   purpose: {
-    description: "Recovery actions project the Aegis recovery capabilities of a fault into ordinary native buttons inside a labelled group. Each button carries `data-ef-aegis-capability` with the exact Aegis capability case name, such as `CanRetry`, so application or Limen code knows which typed recovery request the click represents. The attribute communicates intent only. It is not authority: stale DOM must never authorize an effect, so the application rechecks the current Aegis capability and Ordo/application state every time a button is activated. Forma decides neither which actions exist nor whether they are legal.",
+    description: "Recovery actions project the Aegis recovery capabilities of a fault into ordinary native buttons inside a labeled group. Each button carries `data-ef-aegis-capability` with the exact Aegis capability case name, such as `CanRetry`, so application or Limen code knows which typed recovery request the click represents. The attribute communicates intent only. It is not authority: stale DOM must never authorize an effect, so the application rechecks the current Aegis capability and Ordo/application state every time a button is activated. Forma decides neither which actions exist nor whether they are legal.",
     useWhen: [
       "An Aegis presentation carries one or more recovery actions and you are rendering it in any fault surface.",
       "You need the canonical labels (Try again, Sign in, Reload, Set aside, Process again, Open read-only, Reconnect diagnostics) or localized equivalents that keep the capability identity.",

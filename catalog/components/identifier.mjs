@@ -137,7 +137,7 @@ export default {
   },
   related: [
     { slug: "verification-frame", note: "Recognize, verify, act composition that typically contains identifiers and verified critical values." },
-    { slug: "key-value-list", note: "Labelled rows that give each identifier its visible label." },
+    { slug: "key-value-list", note: "Labeled rows that give each identifier its visible label." },
     { slug: "code-sample", note: "Multi-line code or configuration, not inline values." },
     { slug: "text-roles", note: "Eyebrow, lead and kicker roles for ordinary text hierarchy rather than low-context values." }
   ]

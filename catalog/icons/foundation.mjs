@@ -19,7 +19,7 @@ export const foundationIconDocs = Object.freeze({
   "arrow-left": entry(
     "An arrow pointing left: go back to the previous step, page or item.",
     ["“Back” links in multi-step flows.", "Previous item in a pager or carousel."],
-    ["Undo; name the action “Undo” in text.", "Collapsing a side panel; use close or a labelled toggle."],
+    ["Undo; name the action “Undo” in text.", "Collapsing a side panel; use close or a labeled toggle."],
     "Back to results",
     ["arrow-right", "chevron-up"]
   ),
@@ -185,7 +185,7 @@ export const foundationIconDocs = Object.freeze({
     ["download", "file"]
   ),
   refresh: entry(
-    "Two curved arrows in a cycle: reload, retry or synchronise.",
+    "Two curved arrows in a cycle: reload, retry or synchronize.",
     ["Reloading stale data.", "Retrying a failed operation, with the word “Retry”.", "Manual sync controls."],
     ["Undo or history; use clock or text.", "Ongoing loading; use a progress component."],
     "Refresh data",

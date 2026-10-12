@@ -4,7 +4,7 @@ export default {
   behavior: "Native HTML",
   summary: "Expandable content built on details and summary with no runtime behavior layer; where interpolate-size is supported the panel settles to its intrinsic height, otherwise it opens instantly.",
   purpose: {
-    description: "A disclosure hides optional content behind a labelled row that the user opens when needed: advanced options, explanations, secondary detail. It is a native `details` element with `class=\"ef-disclosure\"`, a `summary`, and an `ef-disclosure__content` wrapper. The browser owns the open state (`open` attribute), keyboard toggling, the expanded announcement, find-in-page auto-expansion, and exclusive accordions via the `name` attribute. Forma draws top and bottom rules, a 44px summary row with a \"+\" indicator that turns to \"×\" when open, and light entry motion. Content inside stays in normal flow and pushes the page down.",
+    description: "A disclosure hides optional content behind a labeled row that the user opens when needed: advanced options, explanations, secondary detail. It is a native `details` element with `class=\"ef-disclosure\"`, a `summary`, and an `ef-disclosure__content` wrapper. The browser owns the open state (`open` attribute), keyboard toggling, the expanded announcement, find-in-page auto-expansion, and exclusive accordions via the `name` attribute. Forma draws top and bottom rules, a 44px summary row with a \"+\" indicator that turns to \"×\" when open, and light entry motion. Content inside stays in normal flow and pushes the page down.",
     useWhen: [
       "Content is optional or secondary and most users do not need it.",
       "A long page of questions and answers or settings should be scannable by heading first.",
@@ -103,8 +103,8 @@ export default {
     ],
     hooks: {
       "ef-disclosure": "The details element: top and bottom functional rules; a following `.ef-disclosure` drops its top rule so stacks share dividers. Its summary becomes a 44px flex row with the native marker removed and a + / × indicator.",
-      "ef-disclosure__content": "Wrapper for the revealed content, with bottom padding and the entry fade and settle.",
-      "open": "Native open state. `[open]` rotates the indicator 45° (+ becomes ×) and, where supported, lets `::details-content` settle to its intrinsic height.",
+      "ef-disclosure__content": "Wrapper for the revealed content, with bottom padding and the opacity fade that follows the open state.",
+      "open": "Native open state. `[open]` rotates the indicator 45° (+ becomes ×) and, where supported, lets `::details-content` settle to its intrinsic height without overshoot.",
       "data-ef-motion-weight": "Presentation-only perceived mass: light (default for disclosures), standard or heavy."
     },
     keyboard: [
@@ -141,9 +141,9 @@ export default {
     "No breakpoints."
   ],
   motion: [
-    "The + indicator rotates to × over the light inertial duration with spring easing; pressing the summary briefly scales the indicator with damped easing.",
-    "Newly opened content fades in (perceptual) and settles from 0.25rem above (inertial, damped) using `@starting-style`.",
-    "Where `interpolate-size` and `::details-content` are supported, the content region animates its block size from 0 to its intrinsic height with the inertial duration; elsewhere it opens instantly. The native open state is always immediate.",
+    "The + indicator rotates to × over the light inertial duration with the settle easing (no overshoot); pressing the summary briefly scales the indicator with damped easing.",
+    "Content opacity follows the native open state in both directions: it fades in on every open (`--ef-motion-fade-in-duration`, 180ms) and fades out faster on collapse (`--ef-motion-fade-out-duration`, 120ms), with the decelerating `--ef-motion-fade-easing`. Content does not translate; the revealed height carries the spatial relationship.",
+    "Where `interpolate-size` and `::details-content` are supported, the content region expands to its intrinsic height and collapses back as one continuous settle movement (collapse uses the shorter exit duration) and ends without a jump; elsewhere it opens instantly. The native open state is always immediate.",
     "`data-ef-motion-weight` changes perceived mass (light by default).",
     "Under `prefers-reduced-motion: reduce` the height transition is removed entirely (so content is never delayed), and the indicator and content transitions become effectively instant."
   ],

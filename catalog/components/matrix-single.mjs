@@ -179,7 +179,7 @@ export default {
     consumer: [
       "Give each row a unique radio name.",
       "Keep choice labels short; long descriptions do not fit matrix cells.",
-      "Associate row errors with the row fieldset and summarise multiple errors with [[validation-summary]]."
+      "Associate row errors with the row fieldset and summarize multiple errors with [[validation-summary]]."
     ]
   },
   responsive: [

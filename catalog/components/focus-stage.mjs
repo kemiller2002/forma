@@ -26,7 +26,7 @@ export default {
     {
       id: "article-editor",
       title: "Article editor with publishing checklist",
-      description: "The article body is the dominant surface; a readiness checklist and the publish action sit in the support column. The support column is labelled so it can be reached as a landmark.",
+      description: "The article body is the dominant surface; a readiness checklist and the publish action sit in the support column. The support column is labeled so it can be reached as a landmark.",
       html: `<ef-focus-stage class="ef-component-tag">
   <section class="ef-focus-stage" aria-label="Edit article">
     <article class="ef-focus-stage__primary ef-surface" aria-labelledby="focus-stage-article-editor-title">

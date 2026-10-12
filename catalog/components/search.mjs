@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Search entry, clearing, and result-count feedback with asynchronous behavior owned by the application.",
   purpose: {
-    description: "Search lets users find records by typing a query. The pattern is a `form` with `role=\"search\"` (a search landmark) containing a labelled `input type=\"search\"`, a Clear button and a `role=\"status\"` line for the result count. Native HTML provides the landmark, the search keyboard on phones, Enter to submit and, in many browsers, Escape to clear. Clearing through the button, debouncing, suggestions, pending state and updating the count are application behavior, normally through Limen.",
+    description: "Search lets users find records by typing a query. The pattern is a `form` with `role=\"search\"` (a search landmark) containing a labeled `input type=\"search\"`, a Clear button and a `role=\"status\"` line for the result count. Native HTML provides the landmark, the search keyboard on phones, Enter to submit and, in many browsers, Escape to clear. Clearing through the button, debouncing, suggestions, pending state and updating the count are application behavior, normally through Limen.",
     useWhen: [
       "Users look up records in a collection by keyword.",
       "A result count should be announced as results change.",

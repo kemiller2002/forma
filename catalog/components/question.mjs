@@ -4,7 +4,7 @@ export default {
   behavior: "Application content",
   summary: "A stable prompt, help, selector, and validation structure for assessment questions.",
   purpose: {
-    description: "The question shell is the frame every assessment item shares: an optional number or identifier, the prompt as a heading, help text, the answer selector and any validation message. It is a `section` labelled by its prompt, so each question is a navigable region with a stable structure regardless of which selector sits inside. The shell carries no applicability, branching, scoring or persistence meaning; the application decides whether a question is rendered and what its answer means.",
+    description: "The question shell is the frame every assessment item shares: an optional number or identifier, the prompt as a heading, help text, the answer selector and any validation message. It is a `section` labeled by its prompt, so each question is a navigable region with a stable structure regardless of which selector sits inside. The shell carries no applicability, branching, scoring or persistence meaning; the application decides whether a question is rendered and what its answer means.",
     useWhen: [
       "An assessment, survey or onboarding form presents a sequence of questions that should all read the same way.",
       "A question needs a visible number or identifier, help text and a place for a question-level validation message.",
@@ -92,7 +92,7 @@ export default {
     {
       id: "free-text-answer",
       title: "Optional free-text follow-up",
-      description: "Not every question is a scale. An optional follow-up uses an ordinary labelled textarea inside the same shell, so numbering, prompt and help stay consistent across selector types.",
+      description: "Not every question is a scale. An optional follow-up uses an ordinary labeled textarea inside the same shell, so numbering, prompt and help stay consistent across selector types.",
       html: `<ef-question class="ef-component-tag">
   <section class="ef-question" aria-labelledby="question-text-title">
     <header class="ef-question__header">
@@ -177,7 +177,7 @@ export default {
   ],
   accessibility: {
     forma: [
-      "Provides a section labelled by a heading, so each question is a named region and appears in heading navigation.",
+      "Provides a section labeled by a heading, so each question is a named region and appears in heading navigation.",
       "Keeps the number badge decorative and the prompt as the single source of the question's name.",
       "Lays out validation as text with a visible mark, not color alone."
     ],

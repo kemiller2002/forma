@@ -38,7 +38,7 @@ export default {
     {
       id: "neutral-states",
       title: "Neutral workflow states",
-      description: "States that are neither good nor bad, such as Draft or Scheduled, omit `data-state` and get the neutral bullet. The set is a labelled group so its purpose is announced.",
+      description: "States that are neither good nor bad, such as Draft or Scheduled, omit `data-state` and get the neutral bullet. The set is a labeled group so its purpose is announced.",
       html: `<ef-status-lozenge class="ef-component-tag">
   <div class="ef-status-lozenge-set" role="group" aria-label="Invoice workflow states">
     <span class="ef-status-lozenge">Draft</span>

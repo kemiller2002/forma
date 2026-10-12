@@ -147,7 +147,7 @@ export default {
   ],
   accessibility: {
     forma: [
-      "Keeps every control native: search form, labelled selects and a `details` disclosure with keyboard support from the browser.",
+      "Keeps every control native: search form, labeled selects and a `details` disclosure with keyboard support from the browser.",
       "Keeps search first in DOM and visual order at every width.",
       "Gives the filters summary a 2.75rem minimum height.",
       "On phones renders the filter panel in flow, so it never covers focused content."

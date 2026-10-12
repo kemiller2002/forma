@@ -177,7 +177,7 @@ export default {
     avoid: [
       "Replacing the wrapping list with a script-driven hamburger menu.",
       "Removing the brand name and relying on the mark alone.",
-      "Signalling the current page with color only."
+      "Signaling the current page with color only."
     ]
   },
   related: [

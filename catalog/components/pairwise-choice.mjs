@@ -7,7 +7,7 @@ export default {
   purpose: {
     description: "A pairwise choice asks the user to pick one of two described alternatives, shown side by side as large cards with an \"or\" between them. It is a native radio group: both cards are labels with visually hidden radios, so the browser owns selection, keyboard movement and required validation. The \"Option A / Option B\" eyebrow and the \"or\" separator are presentation; the application decides how many pairs to show, in which order, and what a preference means.",
     useWhen: [
-      "A decision or prioritisation exercise compares two alternatives at a time.",
+      "A decision or prioritization exercise compares two alternatives at a time.",
       "Each alternative needs a title and a short description to be understood.",
       "A series of pairwise comparisons is used to derive an overall preference."
     ],
@@ -21,14 +21,14 @@ export default {
       "Two equal-width cards with an auto-width separator column.",
       "The whole card is the click and touch target (minimum 5rem tall).",
       "The separator is `aria-hidden`; the radio group semantics communicate that only one can be chosen.",
-      "Cards stack vertically below 44rem with the separator centred between them."
+      "Cards stack vertically below 44rem with the separator centered between them."
     ]
   },
   examples: [
     {
       id: "option-b-selected",
       title: "Second option chosen",
-      description: "Comparison 4 of 10 in a prioritisation exercise with Option B selected. The selected card takes the inverse surface.",
+      description: "Comparison 4 of 10 in a prioritization exercise with Option B selected. The selected card takes the inverse surface.",
       html: `<ef-pairwise-choice class="ef-component-tag">
   <fieldset class="ef-pairwise" aria-describedby="pairwise-selected-position">
     <legend class="ef-pairwise__legend">Which should the platform team invest in next quarter?</legend>
@@ -82,7 +82,7 @@ export default {
     {
       id: "mobile-stacked",
       title: "Stacked comparison on a phone",
-      description: "Below 44rem the cards stack full width with the separator centred between them.",
+      description: "Below 44rem the cards stack full width with the separator centered between them.",
       mobile: {
         height: 420,
         notes: [
@@ -155,13 +155,13 @@ export default {
     ],
     consumer: [
       "Keep the accessible name meaningful: the card's strong title is read as part of the label, so do not rely on the eyebrow alone.",
-      "Randomise or balance A/B order in application logic if position bias matters.",
+      "Randomize or balance A/B order in application logic if position bias matters.",
       "Announce progress through a series of comparisons with visible text or [[survey-progress]]."
     ]
   },
   responsive: [
     "Wide: `minmax(0, 1fr) auto minmax(0, 1fr)` keeps the two cards equal regardless of text length.",
-    "Below 44rem: one column with the separator centred.",
+    "Below 44rem: one column with the separator centered.",
     "Card text wraps; there is no horizontal overflow."
   ],
   motion: [

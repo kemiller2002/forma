@@ -42,7 +42,7 @@ export default {
     </li>
     <li>
       <figure class="ef-frame" style="--ef-frame-ratio: 1 / 1">
-        <div class="ef-frame__media"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect width='100%25' height='100%25' fill='%23ddd8cc'/%3E%3C/svg%3E" alt="Grey fabric desk chair"></div>
+        <div class="ef-frame__media"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect width='100%25' height='100%25' fill='%23ddd8cc'/%3E%3C/svg%3E" alt="Gray fabric desk chair"></div>
         <figcaption>Desk chair</figcaption>
       </figure>
     </li>

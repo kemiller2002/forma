@@ -157,7 +157,7 @@ export default {
   ],
   accessibility: {
     forma: [
-      "Keeps the native checkbox as the focusable, labelled element, so the name, role=switch state and keyboard behavior come from the platform.",
+      "Keeps the native checkbox as the focusable, labeled element, so the name, role=switch state and keyboard behavior come from the platform.",
       "Wraps the input in its label, so the whole row is the click and touch target.",
       "Provides a visible focus indicator on the track and a position-based on/off cue that does not rely on color.",
       "Maps the track to system Highlight/Canvas colors in forced-colors mode."
@@ -176,8 +176,8 @@ export default {
     "There are no breakpoints. Placing switches in a [[stack]] or fieldset gives a full-width settings list on phones."
   ],
   motion: [
-    "The thumb travels with the shared inertial (spring) model: a short acceleration and a light settle at the end position, communicating that the setting physically changed.",
-    "`data-ef-motion-weight` changes perceived mass (light is quicker, heavy is slower and more damped). The checked state itself is immediate.",
+    "The thumb travels with the restrained spring (`--ef-motion-spring-easing`): it peaks about 1px past rest at the default size, stays within the track, and settles at the end position. This is a deliberate, purpose-limited exception to MOT-033: the latch confirms a control the user just operated. Structural surfaces settle without overshoot.",
+    "`data-ef-motion-weight` changes perceived mass (light is quicker, heavy is slower). The checked state itself is immediate.",
     "The track color is a perceptual interpolation that is independent of mass.",
     "Interrupting a toggle mid-travel re-targets from the current position; the native state is always authoritative.",
     "Under `prefers-reduced-motion: reduce` travel is effectively instant and position still shows the state."

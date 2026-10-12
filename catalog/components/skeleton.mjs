@@ -158,7 +158,7 @@ export default {
     ]
   },
   related: [
-    { slug: "spinner", note: "Labelled indeterminate activity for an action rather than a content region." },
+    { slug: "spinner", note: "Labeled indeterminate activity for an action rather than a content region." },
     { slug: "empty-state", note: "What replaces the skeleton when loading finishes with no data." },
     { slug: "progress-bar", note: "Use when the amount of work is known." }
   ]

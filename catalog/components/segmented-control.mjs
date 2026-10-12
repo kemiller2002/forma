@@ -74,8 +74,8 @@ export default {
   <fieldset class="ef-field">
     <legend class="ef-field__label">Distance unit</legend>
     <div class="ef-segmented">
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="m" checked><span>Metres</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="km"><span>Kilometres</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="m" checked><span>Meters</span></label>
+      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="km"><span>Kilometers</span></label>
       <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="ft"><span>Feet</span></label>
       <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="mi"><span>Miles</span></label>
       <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="nmi"><span>Nautical miles</span></label>
@@ -92,10 +92,10 @@ export default {
       { name: "checked", on: "input", values: "boolean", default: "absent", description: "Initial selection. Omit on all radios when the user must make an active choice." },
       { name: "required", on: "input", values: "boolean", default: "absent", description: "Native constraint: the form cannot submit until one segment is selected. Put it on one radio of the group." },
       { name: "aria-describedby", on: "input", values: "id", default: "—", description: "Links help text to the options." },
-      { name: "data-ef-motion-weight", on: ".ef-segmented", values: "light | standard | heavy", default: "light", description: "Perceived mass of the travelling indicator." }
+      { name: "data-ef-motion-weight", on: ".ef-segmented", values: "light | standard | heavy", default: "light", description: "Perceived mass of the traveling indicator." }
     ],
     hooks: {
-      "ef-segmented": "The track: an inline flex row with a functional border, secondary surface and a 2px inner gap. Also the anchor scope and host of the travelling indicator (`::before`).",
+      "ef-segmented": "The track: an inline flex row with a functional border, secondary surface and a 2px inner gap. Also the anchor scope and host of the traveling indicator (`::before`).",
       "ef-segment": "One option: a label containing the radio and a text span. At least 44px tall; filled with the inverse surface when its radio is checked.",
       "data-ef-motion-weight": "Presentation-only perceived mass for the selection indicator: light (default for this control), standard or heavy. Never encodes importance or preference."
     },
@@ -112,14 +112,14 @@ export default {
   },
   states: [
     { name: "Unselected", how: "no checked radio", description: "Transparent segment on the secondary surface. With no checked radio in the group, no indicator is drawn." },
-    { name: "Selected", how: ":checked radio", description: "Inverse (dark) surface with inverse text. With anchor positioning the fill is the travelling indicator; otherwise it is the segment's own background." },
+    { name: "Selected", how: ":checked radio", description: "Inverse (dark) surface with inverse text. With anchor positioning the fill is the traveling indicator; otherwise it is the segment's own background." },
     { name: "Focus", how: ":focus-visible on the radio", description: "Two-tone focus ring around the focused segment." },
     { name: "Pressed", how: ":active on the radio", description: "The label text scales to 97% while pressed; the segment (hit target) does not move." },
     { name: "Disabled", how: "disabled on a radio", description: "Native: cannot be selected or focused. No distinct visual treatment is provided." }
   ],
   accessibility: {
     forma: [
-      "Keeps native radios as the focusable, labelled elements, so group semantics, position in set and arrow-key selection come from the platform.",
+      "Keeps native radios as the focusable, labeled elements, so group semantics, position in set and arrow-key selection come from the platform.",
       "Keeps the radio topmost in the segment for direct and assistive hit-testing.",
       "Shows selection with a fill contrast (inverse surface) and, in forced-colors mode, Highlight/HighlightText with the indicator removed.",
       "Draws a visible focus ring on the segment that contains the focused radio."
@@ -138,7 +138,7 @@ export default {
     "Equal-width versus content-sized modes, icon segments and a horizontal-overflow strategy are not provided."
   ],
   motion: [
-    "Where CSS anchor positioning with `anchor-scope` is supported, one indicator (`::before`) travels to the selected segment using the light inertial duration and damped easing (no overshoot), so it never implies a neighbouring option.",
+    "Where CSS anchor positioning with `anchor-scope` is supported, one indicator (`::before`) travels to the selected segment using the light inertial duration and the settle easing (critically damped, no overshoot), so it never implies a neighboring option.",
     "`data-ef-motion-weight` changes the indicator's perceived mass; light is the default for this control.",
     "Segment background and text color change by perceptual interpolation; pressing compresses only the label text layer, never the hit target.",
     "Native selection is immediate. The indicator is presentation that follows the checked state and can be interrupted by the next selection.",
