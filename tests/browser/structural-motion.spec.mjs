@@ -49,6 +49,10 @@ async function sampleTransitions(locator, property, read, steps = 48) {
   }, { property, read: read.toString(), steps });
 }
 
+// Disclosure height animates only with intrinsic-size interpolation and
+// ::details-content (MOT-021); otherwise it opens and closes at once.
+const heightAnimates = () => CSS.supports("interpolate-size", "allow-keywords") && CSS.supports("selector(::details-content)");
+
 const nonDecreasing = values => values.every((value, index) => index === 0 || value >= values[index - 1] - 0.01);
 const nonIncreasing = values => values.every((value, index) => index === 0 || value <= values[index - 1] + 0.01);
 
@@ -248,6 +252,10 @@ test.describe("expand and collapse", () => {
   });
 
   test("child margins stay inside the animated box, so collapse ends without a jump", async ({ page }) => {
+    // Height animates only where intrinsic-size interpolation exists
+    // (MOT-021); elsewhere the disclosure opens and closes at once, so there
+    // is no animated endpoint to jump from.
+    test.skip(!(await page.evaluate(heightAnimates)), "no intrinsic-size interpolation: disclosure height changes at once");
     const disclosure = page.locator("#margin-disclosure");
     const closed = await disclosure.evaluate(element => element.getBoundingClientRect().height);
     // The collapse endpoint immediately before content-visibility hides the
@@ -278,29 +286,39 @@ test.describe("expand and collapse", () => {
     });
     const closedHeight = await disclosure.evaluate(element => element.getBoundingClientRect().height);
 
+    const animated = await page.evaluate(heightAnimates);
+
     for (const target of [true, false, true, false]) {
-      const run = await disclosure.evaluate(async (element, target) => {
+      const run = await disclosure.evaluate(async (element, { target, animated }) => {
         const content = element.querySelector(".ef-disclosure__content");
         const heights = [];
         let faded = false;
+        const start = element.getBoundingClientRect().height;
         element.open = target;
         // Sample rendered frames until the layout has moved and then stopped.
-        const start = element.getBoundingClientRect().height;
+        // Without height interpolation the change is immediate, so a few
+        // frames suffice.
         for (let frame = 0, still = 0, moved = false; frame < 120 && !(moved && still >= 4); frame += 1) {
           await new Promise(resolve => requestAnimationFrame(resolve));
           const height = element.getBoundingClientRect().height;
-          moved ||= Math.abs(height - start) > 0.01;
+          moved ||= Math.abs(height - start) > 0.01 || (!animated && frame >= 2);
           still = heights.length && Math.abs(height - heights.at(-1)) < 0.01 ? still + 1 : 0;
           heights.push(height);
           faded ||= content.getAnimations().some(animation => animation.transitionProperty === "opacity");
         }
-        await Promise.all(content.getAnimations().map(animation => animation.finished.catch(() => null)));
+        // Wait frame by frame (bounded) for the fade to settle: an engine
+        // may never finish a fade in a subtree it has stopped rendering.
+        for (let frame = 0; frame < 60 && content.getAnimations().length; frame += 1) {
+          await new Promise(resolve => requestAnimationFrame(resolve));
+        }
         return { heights, faded, open: element.open, opacity: getComputedStyle(content).opacity };
-      }, target);
+      }, { target, animated });
       expect(run.open).toBe(target);
       expect(target ? nonDecreasing(run.heights) : nonIncreasing(run.heights)).toBe(true);
       expect(run.heights.at(-1)).toBeCloseTo(target ? naturalOpen : closedHeight, 0);
-      expect(run.faded).toBe(true);
+      // Where height does not animate, closed content leaves rendering at
+      // once and there is nothing to fade out; opening still fades in.
+      if (target || animated) expect(run.faded).toBe(true);
       // Closed content is content-visibility: hidden, where the engine may stop
       // ticking the last frames of its fade; it is invisible either way, and
       // the native open state is the authoritative, observable state.

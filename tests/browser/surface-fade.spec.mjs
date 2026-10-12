@@ -41,7 +41,8 @@ for (const [slug, selector] of [["popover", ".ef-popover"], ["menu", ".ef-menu"]
       return { entry, exit, nativeClosed, display: getComputedStyle(element).display };
     });
     expect(result.entry.hz60.duration).toBe(180);
-    expect(result.entry.hz60.easing).toBe("cubic-bezier(0, 0, 0.58, 1)");
+    // WebKit serializes this curve as its equivalent keyword.
+    expect(["cubic-bezier(0, 0, 0.58, 1)", "ease-out"]).toContain(result.entry.hz60.easing);
     const checkCurve = (values, rising) => {
       values.forEach((value, index) => {
         expect(value).toBeGreaterThanOrEqual(0);
