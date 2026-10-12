@@ -311,7 +311,7 @@ test.describe("expand and collapse", () => {
         for (let frame = 0; frame < 60 && content.getAnimations().length; frame += 1) {
           await new Promise(resolve => requestAnimationFrame(resolve));
         }
-        return { heights, faded, open: element.open, opacity: getComputedStyle(content).opacity };
+        return { heights, faded, open: element.open, opacity: getComputedStyle(content).opacity, rendered: content.checkVisibility() };
       }, { target, animated });
       expect(run.open).toBe(target);
       expect(target ? nonDecreasing(run.heights) : nonIncreasing(run.heights)).toBe(true);
@@ -319,11 +319,11 @@ test.describe("expand and collapse", () => {
       // Where height does not animate, closed content leaves rendering at
       // once and there is nothing to fade out; opening still fades in.
       if (target || animated) expect(run.faded).toBe(true);
-      // Closed content is content-visibility: hidden, where the engine may stop
-      // ticking the last frames of its fade; it is invisible either way, and
-      // the native open state is the authoritative, observable state.
+      // Open content is fully opaque. Closed content is not rendered at all
+      // (content-visibility or display), so its computed opacity can be stale
+      // in some engines; rendering is the observable state that matters.
       if (target) expect(run.opacity).toBe("1");
-      else expect(Number(run.opacity)).toBeLessThan(0.01);
+      expect(run.rendered).toBe(target);
     }
   });
 
