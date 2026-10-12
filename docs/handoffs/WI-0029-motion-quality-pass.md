@@ -148,5 +148,10 @@ All results below are from 2026-10-12 on the local machine.
 - After collapse, closed disclosure content may report opacity just above
   0, because the engine stops ticking `content-visibility: hidden`
   subtrees. It is invisible either way.
-- Next: run CI across Chromium, Firefox and WebKit on this branch, resolve
-  any engine differences, and integrate through the repository gates.
+- Without intrinsic-size interpolation (Firefox, WebKit at the time of
+  writing), disclosures open and close at once, as MOT-021 intends. Firefox
+  does not update styles for hidden details content, so reopened content
+  may appear without its fade. Closed content is never rendered in any
+  engine, and tests assert that rather than its computed opacity.
+- Next: confirm CI is green across Chromium, Firefox and WebKit, then
+  integrate through the repository gates.
