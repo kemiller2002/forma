@@ -987,7 +987,8 @@
   :where(.ef-dialog, .ef-flyout)::backdrop {
     background: rgb(23 26 24 / 0);
     backdrop-filter: blur(0);
-    /* Dimming is non-spatial: the shared surface fade, without mass. */
+    /* Dimming is non-spatial: the shared surface fade, without mass (MOT-026).
+       It starts and ends with the surface's native state change. */
     transition:
       background var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing),
       backdrop-filter var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing);
@@ -1035,7 +1036,11 @@
 
   /* Edge flyout --------------------------------------------------------- */
   .ef-flyout {
-    --ef-flyout-closed-x: 100%;
+    /* The closed position clears the panel's shadow as well as the panel, so
+       no shadow strip is left at the viewport edge to appear or vanish in a
+       single frame when display changes. Equal to the shadow's blur. */
+    --ef-flyout-shadow-clearance: 3rem;
+    --ef-flyout-closed-x: calc(100% + var(--ef-flyout-shadow-clearance));
     position: fixed;
     inset-block: 0;
     inline-size: min(28rem, 90vw);
@@ -1044,7 +1049,7 @@
     max-block-size: 100dvh;
     box-sizing: border-box;
     margin-block: 0;
-    box-shadow: 0 0 3rem rgb(0 0 0 / 0.24);
+    box-shadow: 0 0 var(--ef-flyout-shadow-clearance) rgb(0 0 0 / 0.24);
     translate: var(--ef-flyout-closed-x) 0;
     transition:
       translate var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing);
@@ -1087,7 +1092,7 @@
   }
 
   .ef-flyout[data-ef-side="left"] {
-    --ef-flyout-closed-x: -100%;
+    --ef-flyout-closed-x: calc(-100% - var(--ef-flyout-shadow-clearance));
     inset-inline-start: 0;
     inset-inline-end: auto;
     margin-inline: 0;
@@ -1095,7 +1100,7 @@
   }
 
   .ef-flyout[data-ef-side="right"] {
-    --ef-flyout-closed-x: 100%;
+    --ef-flyout-closed-x: calc(100% + var(--ef-flyout-shadow-clearance));
     inset-inline-start: auto;
     inset-inline-end: 0;
     margin-inline: 0;

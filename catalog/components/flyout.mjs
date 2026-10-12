@@ -160,10 +160,11 @@ export default {
       "ef-flyout__close": "Close button kept at least 44 by 44px and never shrunk by a long title.",
       "ef-flyout__body": "The only scrolling region, with contained overscroll and 1rem padding.",
       "ef-flyout__actions": "Pinned footer: wrapping action row aligned to the inline end, with safe-area bottom padding and a top rule.",
-      "data-ef-side": "`left` attaches the panel to the inline-start edge and enters from the left (`--ef-flyout-closed-x: -100%`); `right` attaches to the inline-end edge and enters from the right. The attach edge is logical but the travel is physical, so in right-to-left pages the two do not match.",
+      "data-ef-side": "`left` attaches the panel to the inline-start edge and enters from the left (`--ef-flyout-closed-x: calc(-100% - var(--ef-flyout-shadow-clearance))`); `right` attaches to the inline-end edge and enters from the right. The attach edge is logical but the travel is physical, so in right-to-left pages the two do not match.",
       "open": "Native open state. `[open]` translates the panel to rest and dims and blurs the backdrop; it also selects the settle entry timing; closing uses the shorter exit timing.",
       "data-ef-motion-weight": "Presentation-only perceived mass: heavy (default for flyouts), standard or light.",
-      "--ef-flyout-closed-x": "Horizontal offset of the panel while closed and at the start of entry. Set by `data-ef-side` (-100% left, 100% right)."
+      "--ef-flyout-closed-x": "Horizontal offset of the panel while closed and at the start of entry. Set by `data-ef-side`: the panel width plus `--ef-flyout-shadow-clearance`, negative for left and positive for right, so neither the panel nor its shadow is left at the viewport edge.",
+      "--ef-flyout-shadow-clearance": "Extra closed-state travel equal to the panel shadow's blur (3rem), so the shadow does not appear or vanish in a single frame at the edge."
     },
     keyboard: [
       { keys: "Enter / Space on the invoker", action: "Opens the flyout; focus moves to the first focusable element (normally Close) or an autofocus element." },

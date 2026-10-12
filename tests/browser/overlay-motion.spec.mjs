@@ -39,9 +39,10 @@ test("left and right flyouts preserve opposite physical origins", async ({ page 
     }))
   );
 
+  // Each closed position clears the panel and its shadow past its own edge.
   expect(origins).toEqual([
-    { side: "left", closedX: "-100%" },
-    { side: "right", closedX: "100%" }
+    { side: "left", closedX: "calc(-100% - 3rem)" },
+    { side: "right", closedX: "calc(100% + 3rem)" }
   ]);
 });
 
@@ -124,9 +125,10 @@ test("flyouts remain contained at 320 CSS pixels", async ({ page }) => {
 test("interrupted flyout reversal preserves position or uses native static fallback", async ({ page, browserName }) => {
   for (const selector of ["#test-left-flyout", "#test-right-flyout"]) {
     const surface = page.locator(selector);
+    const closedTranslate = await surface.evaluate(element => getComputedStyle(element).translate);
     await surface.evaluate(element => element.showModal());
     await expect.poll(() => surface.evaluate(element => element.getAnimations().some(animation => animation.transitionProperty === "translate"))).toBe(true);
-    const sample = await surface.evaluate(element => {
+    const sample = await surface.evaluate((element, closedTranslate) => {
       const animation = element.getAnimations().find(animation => animation.transitionProperty === "translate");
       animation.pause();
       animation.currentTime = animation.effect.getTiming().duration * 0.35;
@@ -134,9 +136,9 @@ test("interrupted flyout reversal preserves position or uses native static fallb
       element.close();
       const after = getComputedStyle(element).translate;
       return { before, after, open: element.open, display: getComputedStyle(element).display,
-        closedX: getComputedStyle(element).getPropertyValue("--ef-flyout-closed-x").trim(),
+        closedX: closedTranslate,
         translateTransitions: element.getAnimations().filter(animation => animation.transitionProperty === "translate").length };
-    });
+    }, closedTranslate);
     expect(sample.open).toBe(false);
     // Chromium's retained-exit path is verified by the initial CI run; do
     // not let an accidental loss of that enhancement pass as a fallback.
