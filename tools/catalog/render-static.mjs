@@ -1,5 +1,5 @@
 // Static content pages that are not projections of the component catalog.
-import { page } from "./render-layout.mjs";
+import { breadcrumbs, page } from "./render-layout.mjs";
 
 export const renderBranding = () => {
   const brandSample = () => `<div class="brand-demo__content">
@@ -13,7 +13,8 @@ export const renderBranding = () => {
     <button type="button">Review obligations</button>
   </div>`;
   
-  const brandingBody = `<main id="main" class="content-section brand-lab">
+  const brandingBody = `<main id="main" class="page-shell brand-lab">
+    ${breadcrumbs("../", [{ label: "Forma", href: "../" }, { label: "Branding" }])}
     <span class="eyebrow">White label / skin system</span>
     <h1>Brand Laboratory</h1>
     <p class="lead">Brand identity enters Forma through a versioned manifest that compiles to scoped semantic tokens. Skins adjust presentation without changing identity, semantics, or application behavior.</p>
@@ -53,7 +54,8 @@ export const renderBranding = () => {
 };
 
 export const renderAgents = () => {
-  const agentBody = `<main id="main" class="content-section agent-page">
+  const agentBody = `<main id="main" class="page-shell agent-page">
+    ${breadcrumbs("../", [{ label: "Forma", href: "../" }, { label: "Agent use" }])}
     <span class="eyebrow">Agent operating contract</span>
     <h1>Use Forma as a presentation boundary, not an application runtime.</h1>
     <p class="lead">Agents reuse canonical patterns, preserve native semantics, and leave behavioral and domain authority in the systems that own it.</p>

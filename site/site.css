@@ -32,6 +32,12 @@
 
     --site-max: 1440px;
     --site-gutter: clamp(1rem, 4vw, 4.5rem);
+    /* One vertical rhythm for every content page: the space from the header
+       to a page's first content, and after its last. Section spacing on the
+       home page is separate and never doubles as page-start space. */
+    --site-page-start: clamp(3rem, 7vw, 7rem);
+    --site-page-end: 6rem;
+    --site-section-gap: clamp(5rem, 10vw, 10rem);
     --display: "Newsreader", Georgia, serif;
     --sans: "Manrope", system-ui, sans-serif;
     --mono: "IBM Plex Mono", monospace;
@@ -199,8 +205,10 @@
     text-decoration: none;
   }
 
-  .site-nav a:hover {
-    border-color: var(--ef-oxide-bronze);
+  @media (hover: hover) {
+    .site-nav a:hover {
+      border-color: var(--ef-oxide-bronze);
+    }
   }
 
   /* All navigation links are neutral until their owning section is active.
@@ -209,11 +217,21 @@
     background: var(--ef-foundry-charcoal);
     border-color: var(--ef-foundry-charcoal);
     color: var(--ef-parchment);
+    /* Where the strip scrolls (phones, enlarged text), it opens scrolled to
+       the current section instead of hiding it past the edge. Progressive:
+       without support the strip starts at its first link. */
+    scroll-initial-target: nearest;
+    /* Align to the end edge: scroll only as far as needed, and not at all
+       when the link is already in view. No scroll-snap-type is set, so this
+       does not snap user scrolling. */
+    scroll-snap-align: end;
   }
 
-  .site-nav a[aria-current]:hover {
-    border-color: var(--ef-parchment);
-    color: var(--ef-parchment);
+  @media (hover: hover) {
+    .site-nav a[aria-current]:hover {
+      border-color: var(--ef-parchment);
+      color: var(--ef-parchment);
+    }
   }
 
   .eyebrow,
@@ -253,8 +271,17 @@
     border-block-end: 1px solid var(--ef-forged-iron);
   }
 
+  /* Stacked sections of the home page. */
   .content-section {
-    margin-block: clamp(5rem, 10vw, 10rem);
+    margin-block: var(--site-section-gap);
+  }
+
+  /* Shared shell for every content page outside the catalog layout. */
+  .page-shell {
+    min-inline-size: 0;
+    inline-size: min(var(--site-max), 100%);
+    margin-inline: auto;
+    padding: var(--site-page-start) var(--site-gutter) var(--site-page-end);
   }
 
   .hero h1 {
@@ -354,13 +381,17 @@
     color: var(--ef-oxide-bronze);
   }
 
-  .component-card:hover {
-    background: var(--ef-parchment);
+  @media (hover: hover) {
+    .component-card:hover {
+      background: var(--ef-parchment);
+    }
   }
 
-  .component-card:hover h3 {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
+  @media (hover: hover) {
+    .component-card:hover h3 {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
   }
 
   .catalog-group + .catalog-group {
@@ -390,8 +421,10 @@
       color var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing);
   }
 
-  .ef-button:not(.example-canvas *, .catalog-card__preview *):hover {
-    background: var(--ef-stone);
+  @media (hover: hover) {
+    .ef-button:not(.example-canvas *, .catalog-card__preview *):hover {
+      background: var(--ef-stone);
+    }
   }
 
   .docs-shell {
@@ -445,8 +478,10 @@
     text-decoration: none;
   }
 
-  .component-nav a:hover {
-    color: var(--ef-carbon);
+  @media (hover: hover) {
+    .component-nav a:hover {
+      color: var(--ef-carbon);
+    }
   }
 
   .component-nav a[aria-current="page"] {
@@ -458,7 +493,7 @@
 
   .component-main {
     min-inline-size: 0;
-    padding: clamp(3rem, 7vw, 7rem) var(--site-gutter) 6rem;
+    padding: var(--site-page-start) var(--site-gutter) var(--site-page-end);
   }
 
   .breadcrumbs {
@@ -650,10 +685,9 @@
     justify-self: start;
   }
 
+  /* Prose page measure; block spacing comes from .page-shell. */
   .agent-page {
     max-inline-size: 64rem;
-    margin-inline: auto;
-    padding-block: clamp(5rem, 11vw, 10rem) 6rem;
   }
 
   .agent-page h1 {
@@ -670,7 +704,7 @@
   .agent-page li { overflow-wrap: anywhere; }
 
   /* Documentation prose and inline code wrap at large text sizes. */
-  :where(.component-main, .content-section) :where(p, li, dd, dt, th, td, h2, h3, h4):not(.example-canvas *, .catalog-card__preview *) { overflow-wrap: anywhere; }
+  :where(.component-main, .content-section, .page-shell) :where(p, li, dd, dt, th, td, h2, h3, h4):not(.example-canvas *, .catalog-card__preview *) { overflow-wrap: anywhere; }
   :where(p, li, dd, td):not(.example-canvas *, .catalog-card__preview *) > code { overflow-wrap: anywhere; }
 
   .agent-page p,
@@ -774,7 +808,9 @@
     text-decoration: none;
   }
 
-  .component-kicker--link:hover { text-decoration: underline; }
+  @media (hover: hover) {
+    .component-kicker--link:hover { text-decoration: underline; }
+  }
 
   .contract-grid dd {
     margin: .25rem 0 0;
@@ -844,7 +880,9 @@
     text-decoration: none;
   }
 
-  .page-toc a:hover { border-color: var(--ef-forged-iron); }
+  @media (hover: hover) {
+    .page-toc a:hover { border-color: var(--ef-forged-iron); }
+  }
 
   .doc-section {
     min-inline-size: 0;
@@ -1128,7 +1166,9 @@
     text-transform: uppercase;
   }
 
-  a.pager__link:hover { background: var(--ef-stone); }
+  @media (hover: hover) {
+    a.pager__link:hover { background: var(--ef-stone); }
+  }
   .pager__link--up { text-align: center; }
   .pager a[rel="next"] { text-align: end; }
 
@@ -1170,7 +1210,9 @@
     text-decoration: none;
   }
 
-  .catalog-nav a:hover { color: var(--ef-carbon); }
+  @media (hover: hover) {
+    .catalog-nav a:hover { color: var(--ef-carbon); }
+  }
 
   .catalog-nav a[aria-current="page"] {
     padding-inline-start: .6rem;
@@ -1281,7 +1323,9 @@
     text-decoration: none;
   }
 
-  .letter-nav a:hover { border-color: var(--ef-forged-iron); }
+  @media (hover: hover) {
+    .letter-nav a:hover { border-color: var(--ef-forged-iron); }
+  }
 
   .letter-group {
     scroll-margin-block-start: 6rem;
@@ -1421,7 +1465,7 @@
        stayed sticky; on phones it scrolls away with the page. */
     .site-header { position: static; }
     .breadcrumbs { margin-block-end: 1.5rem; }
-    .component-main { padding-block-start: 1.5rem; }
+    :root { --site-page-start: 1.5rem; }
     .catalog-row { grid-template-columns: 1fr; }
     .pager { grid-template-columns: 1fr; }
     .doc-table { overflow: visible; }
@@ -1560,7 +1604,8 @@
     }
 
     .hero,
-    .content-section {
+    .content-section,
+    .page-shell {
       padding-inline: 1rem;
     }
 
@@ -1627,10 +1672,9 @@
 
 
 @layer echelon.site {
+  /* Block spacing comes from .page-shell. */
   .brand-lab {
     max-inline-size: var(--site-max);
-    margin-inline: auto;
-    padding-block: clamp(4rem, 9vw, 8rem) 6rem;
   }
 
   .brand-lab > h1 {
@@ -1750,10 +1794,6 @@
   }
 
   @media (max-width: 680px) {
-    .brand-lab {
-      padding-inline: 1rem;
-    }
-
     .brand-lab > h1 {
       font-size: clamp(2.75rem, 14vw, 3.5rem);
     }

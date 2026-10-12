@@ -119,6 +119,9 @@ test("generated Visual Engineering stress specimens remain contained on phones",
 // grammar instead of site-local timing.
 test("site buttons use the shared perceptual motion and never move on hover", async ({ page }) => {
   await page.goto("/site-dist/index.html");
+  // Web fonts swap in after first paint and reflow the page; measure the
+  // settled layout so only hover can move the button.
+  await page.evaluate(() => document.fonts.ready);
   const button = page.locator("a.ef-button").first();
   await button.scrollIntoViewIfNeeded();
   const style = await button.evaluate((element) => {

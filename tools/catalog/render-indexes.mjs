@@ -205,7 +205,7 @@ export const compositionComponents = (context, composition) =>
   markupTags(composition.html).map(tag => context.bySlug.get(tag.slice(3))).filter(Boolean);
 
 export const renderCompositionsIndex = context => {
-  const body = `<main id="main" class="content-section">
+  const body = `<main id="main" class="page-shell">
   ${breadcrumbs(context.rootPath, [{ label: "Forma", href: context.rootPath }, { label: "Compositions" }])}
   <span class="eyebrow">Composed examples</span>
   <h1>Compositions</h1>
@@ -223,7 +223,7 @@ export const renderCompositionsIndex = context => {
 
 export const renderCompositionPage = (context, composition) => {
   const used = compositionComponents(context, composition);
-  const body = `<main id="main" class="content-section composition-page" data-composition="${composition.slug}">
+  const body = `<main id="main" class="page-shell composition-page" data-composition="${composition.slug}">
   ${breadcrumbs(context.rootPath, [{ label: "Forma", href: context.rootPath }, { label: "Compositions", href: `${context.rootPath}compositions/` }, { label: composition.title }])}
   <span class="eyebrow">Composition</span>
   <h1>${escapeHtml(composition.title)}</h1>
@@ -248,7 +248,7 @@ export const renderCompositionPage = (context, composition) => {
 };
 
 export const renderAccessibility = context => {
-  const body = `<main id="main" class="content-section agent-page">
+  const body = `<main id="main" class="page-shell agent-page">
   ${breadcrumbs(context.rootPath, [{ label: "Forma", href: context.rootPath }, { label: "Accessibility" }])}
   <span class="eyebrow">Accessibility statement</span>
   <h1>Accessible by construction, verified by test.</h1>
