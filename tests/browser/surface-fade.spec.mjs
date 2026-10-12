@@ -94,7 +94,10 @@ for (const [slug, selector] of [["popover", ".ef-popover"], ["menu", ".ef-menu"]
       // Isolate explicit dismissal from native interest hover/focus reopening.
       await page.mouse.move(0, 0);
       await page.evaluate(() => document.activeElement?.blur());
-      await target.evaluate(element => Promise.all(element.getAnimations().map(animation => animation.finished.catch(() => {}))));
+      // Native opening can queue the CSS transition for the next rendering
+      // update. An immediate getAnimations() snapshot can therefore be empty.
+      // Wait for the exact endpoint before measuring the real exit track.
+      await expect(target).toHaveCSS("opacity", "1");
       const result = await target.evaluate(element => {
         const box = () => {
           const { x, y, width, height } = element.getBoundingClientRect();
@@ -145,9 +148,8 @@ for (const [slug, selector] of [["popover", ".ef-popover"], ["menu", ".ef-menu"]
         getComputedStyle(element).opacity;
         element.showPopover();
       });
-      await target.evaluate(element => Promise.all(element.getAnimations().map(animation => animation.finished.catch(() => {}))));
+      await expect(target).toHaveCSS("opacity", "1");
       expect(await target.evaluate(element => element.matches(":popover-open"))).toBe(true);
-      expect(await target.evaluate(element => getComputedStyle(element).opacity)).toBe("1");
       await target.evaluate(element => element.hidePopover());
       await expect(target).toBeHidden();
     });

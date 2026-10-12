@@ -96,7 +96,7 @@ export default {
           "The select fills the available width and keeps a 44px minimum height; the indicator stays pinned 1rem from the inline end.",
           "Tapping opens the operating system's picker (a wheel or bottom sheet on most phones), which Forma does not style.",
           "The closed control truncates a long selected option on one line; the description wraps below it.",
-          "Orientation changes only change the width."
+          "Orientation changes only change the width. Long option labels stay within the available width even at 200% text size."
         ]
       },
       html: `<ef-select class="ef-component-tag">
@@ -130,7 +130,7 @@ export default {
     hooks: {
       "ef-select-field": "Root `label` grid holding label text, the select wrapper and the description with a 0.5rem gap. Wrapping makes the label text name the select.",
       "ef-select": "Positioning wrapper for the native select and the indicator. Carries the motion scope.",
-      "ef-select__input": "The native select: full width, 44px minimum height, `appearance: none`, inline-end padding for the indicator, dimmed with a not-allowed cursor when disabled.",
+      "ef-select__input": "The native select: full width with shrinkable intrinsic sizing for narrow containers and enlarged text, 44px minimum height, `appearance: none`, inline-end padding for the indicator, dimmed with a not-allowed cursor when disabled.",
       "ef-select__indicator": "Decorative chevron drawn with borders. Rotates when the select is `:open`.",
       "data-ef-motion-weight": "Presentation-only perceived mass for the indicator rotation: light, standard (default) or heavy. Gravity-derived vertical travel is independent of mass."
     },

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 27,
+  "nextSeq": 28,
   "items": [
     {
       "id": "WI-0001",
@@ -677,6 +677,27 @@
       "createdAt": "2026-10-11T15:07:14.585Z",
       "updatedAt": "2026-10-11T15:07:36.000Z",
       "createdBy": "openai/codex",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0027",
+      "title": "Replace oversized mobile catalog family grid with accessible compact filter",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-10-11T18:49:36.603Z",
+      "updatedAt": "2026-10-11T18:50:01.000Z",
+      "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
         "id": "openai/codex",

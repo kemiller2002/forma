@@ -133,15 +133,15 @@ test("keyboard users reach the skip link first and see focus on catalog controls
   await page.goto("/site-dist/components/index.html");
   await page.keyboard.press("Tab");
   await expect(page.locator(".skip-link")).toBeFocused();
-  const radio = page.locator("#filter-forms");
-  await radio.focus();
-  const outline = await radio.evaluate(element => getComputedStyle(element.closest("label") ?? element).outlineStyle + "|" + getComputedStyle(element).outlineStyle);
+  const filter = page.getByRole("combobox", { name: "Show family" });
+  await filter.focus();
+  const outline = await filter.evaluate(element => getComputedStyle(element.closest("label") ?? element).outlineStyle + "|" + getComputedStyle(element).outlineStyle);
   expect(outline).not.toBe("none|none");
 });
 
 test("the category filter on the A–Z index shows only the chosen family", async ({ page }) => {
   await page.goto("/site-dist/components/index.html");
-  await page.locator("#filter-forms").check({ force: true });
+  await page.getByRole("combobox", { name: "Show family" }).selectOption("forms");
   const visible = await page.locator(".catalog-row").evaluateAll(rows => rows.filter(row => row.getClientRects().length).map(row => row.dataset.category));
   expect(visible.length).toBe(manifest.categories.find(item => item.id === "forms").components.length);
   expect(new Set(visible)).toEqual(new Set(["forms"]));

@@ -161,3 +161,59 @@ test("only the current section receives selected navigation treatment on iPhone"
 function itemNotSelected(link, selected) {
   return link.text !== selected;
 }
+
+for (const width of [320, 390, 430, 1280]) {
+  test(`catalog family picker is compact and contained at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto("/site-dist/components/index.html");
+    const picker = page.getByRole("combobox", { name: "Show family" });
+    await expect(picker).toHaveValue("all");
+    await expect(picker.locator("option")).toHaveCount(19);
+    const box = await picker.boundingBox();
+    expect(box.height).toBeGreaterThanOrEqual(44);
+    expect(box.height).toBeLessThan(80);
+    expect(box.x).toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width).toBeLessThanOrEqual(width);
+    expect(await page.locator(".catalog-filter").evaluate(el => el.getBoundingClientRect().height)).toBeLessThan(125);
+    const letters = await page.locator(".letter-nav a").evaluateAll(els => els.map(el => el.getBoundingClientRect().toJSON()));
+    for (const letter of letters) {
+      expect(letter.width).toBeGreaterThanOrEqual(44);
+      expect(letter.height).toBeGreaterThanOrEqual(44);
+      expect(letter.right).toBeLessThanOrEqual(width);
+    }
+    await picker.focus();
+    await expect(picker).toBeFocused();
+    expect(await picker.evaluate(el => getComputedStyle(el).outlineStyle)).not.toBe("none");
+    await page.addStyleTag({ content: "html { font-size: 200% !important; }" });
+    await picker.selectOption({ label: "Attention and verification" });
+    const layout = await page.evaluate(() => ({
+      width: document.documentElement.clientWidth,
+      scroll: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
+      pickerRight: document.getElementById("catalog-family").getBoundingClientRect().right
+    }));
+    expect(layout.pickerRight).toBeLessThanOrEqual(layout.width);
+    expect(layout.scroll).toBeLessThanOrEqual(layout.width + 1);
+  });
+}
+
+test("native family selection filters every family and restores all without scripts", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/site-dist/components/index.html");
+  expect(await page.locator("script").count()).toBe(0);
+  const picker = page.getByRole("combobox", { name: "Show family" });
+  const families = await picker.locator("option").evaluateAll(options => options.map(option => option.value).filter(value => value !== "all"));
+  const total = await page.locator(".catalog-row").count();
+  for (const family of families) {
+    await picker.selectOption(family);
+    const visible = await page.locator(".catalog-row").evaluateAll(rows => rows.filter(row => row.getClientRects().length).map(row => row.dataset.category));
+    expect(visible.length, family).toBeGreaterThan(0);
+    expect(new Set(visible), family).toEqual(new Set([family]));
+    expect(visible.length).toBe(await page.locator(`.catalog-row[data-category="${family}"]`).count());
+  }
+  await picker.selectOption("all");
+  expect(await page.locator(".catalog-row").evaluateAll(rows => rows.filter(row => row.getClientRects().length).length)).toBe(total);
+  await page.emulateMedia({ forcedColors: "active", reducedMotion: "reduce" });
+  await expect(picker).toBeVisible();
+  await picker.selectOption("forms");
+  await expect(picker).toHaveValue("forms");
+});

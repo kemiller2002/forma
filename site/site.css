@@ -1254,6 +1254,8 @@
   }
 
   .catalog-filter {
+    inline-size: min(100%, 28rem);
+    min-inline-size: 0;
     margin: 2rem 0 1rem;
     padding: 0;
     border: 0;
@@ -1271,8 +1273,8 @@
   .letter-nav a {
     display: inline-grid;
     place-items: center;
-    min-inline-size: 2.75rem;
-    min-block-size: 2.75rem;
+    min-inline-size: max(44px, 2.75rem);
+    min-block-size: max(44px, 2.75rem);
     border: 1px solid var(--ef-stone);
     color: var(--ef-carbon);
     font-family: var(--mono);
@@ -1299,12 +1301,14 @@
 
   .catalog-row {
     display: grid;
-    grid-template-columns: minmax(10rem, 1fr) minmax(10rem, 1fr) minmax(8rem, .8fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, .8fr);
     gap: .25rem 1rem;
     align-items: center;
     padding: .5rem 0;
     border-block-end: 1px solid var(--ef-stone);
   }
+
+  .catalog-row > * { min-inline-size: 0; }
 
   .catalog-row__name {
     display: inline-flex;
