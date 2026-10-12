@@ -112,7 +112,8 @@ test("phone navigation is one native disclosure with full-size targets and no ho
   await expect(page.locator(".pager")).toContainText("All form inputs");
 });
 
-test("the viewport switcher resizes the real mobile frame", async ({ page }) => {
+for (const interaction of ["visible label", "keyboard"]) {
+test(`the viewport switcher resizes the real mobile frame using ${interaction}`, async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("/site-dist/components/switch/index.html");
   const demo = page.locator("#example-mobile-settings-list .viewport-demo");
@@ -121,13 +122,24 @@ test("the viewport switcher resizes the real mobile frame", async ({ page }) => 
   // The frame is lazy-loaded; measure only after its document has loaded.
   await expect.poll(() => frame.evaluate(element => element.contentDocument?.readyState ?? "loading")).toBe("complete");
   expect(Math.round((await frame.boundingBox()).width)).toBe(320);
-  for (const width of [390, 430, 768]) {
-    await demo.locator(`input[value="${width}"]`).check({ force: true });
-    expect(Math.round((await frame.boundingBox()).width)).toBe(width);
+  if (interaction === "keyboard") await demo.locator('input[value="320"]').focus();
+  for (const width of [390, 430, 768, 320]) {
+    const radio = demo.locator(`input[value="${width}"]`);
+    // The radio is transparent and one pixel wide. Use the visible label or
+    // native arrow-key navigation instead of forcing a click on its hit box.
+    if (interaction === "visible label") {
+      await demo.locator("label.ef-segment").filter({ has: page.locator(`input[value="${width}"]`) }).locator("span").click();
+    } else {
+      await page.keyboard.press("ArrowRight");
+      await expect(radio).toBeFocused();
+    }
+    await expect(radio).toBeChecked();
+    await expect.poll(async () => Math.round((await frame.boundingBox()).width)).toBe(width);
     const inner = await frame.evaluate(element => element.contentDocument.documentElement.clientWidth);
     expect(inner).toBeLessThanOrEqual(width);
   }
 });
+}
 
 test("keyboard users reach the skip link first and see focus on catalog controls", async ({ page }) => {
   await page.goto("/site-dist/components/index.html");

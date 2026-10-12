@@ -74,4 +74,5 @@
 | WI-0024 | Enforce reciprocal CSS physics for reversible interactions | active |  | medium |
 | WI-0025 | Add quick reciprocal slow-fast-slow fades to transient surfaces | blocked |  | medium |
 | WI-0026 | Keep popover menu and tooltip dismissal stationary until opacity is zero | blocked |  | medium |
-| WI-0027 | Replace oversized mobile catalog family grid with accessible compact filter | ready |  | medium |
+| WI-0027 | Replace oversized mobile catalog family grid with accessible compact filter | blocked |  | medium |
+| WI-0028 | Repair viewport switcher browser interaction to unblock documentation deployment | ready |  | medium |
