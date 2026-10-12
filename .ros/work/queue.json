@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 28,
+  "nextSeq": 29,
   "items": [
     {
       "id": "WI-0001",
@@ -697,6 +697,27 @@
       "attachments": [],
       "createdAt": "2026-10-11T18:49:36.603Z",
       "updatedAt": "2026-10-11T18:50:01.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0028",
+      "title": "Repair viewport switcher browser interaction to unblock documentation deployment",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-10-12T07:16:05.524Z",
+      "updatedAt": "2026-10-12T07:16:49.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",

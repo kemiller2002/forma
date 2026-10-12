@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-11T21:07:59.000Z",
+  "updatedAt": "2026-10-12T07:21:45.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1919,6 +1919,38 @@
         }
       },
       "blockReason": "WebKit endpoint test race fixed and 59 targeted/repeated cases passed; awaiting updated PR 150 CI and parent integration"
+    },
+    {
+      "id": "WI-0028",
+      "type": "task",
+      "state": "blocked",
+      "semanticState": "blocked",
+      "evidence": [],
+      "updatedAt": "2026-10-12T07:21:45.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261012T071650619Z-b1a90fce"
+      ],
+      "latestCheckpoint": {
+        "id": "40e7176b04ccbd3bb33c0d48",
+        "recordedAt": "2026-10-12T07:21:39.000Z",
+        "executionId": "EXE-20261012T071650619Z-b1a90fce",
+        "repository": "echelon-design-system",
+        "branch": "verify/viewport-switcher",
+        "commit": "56867c728fbf99d2e979052890a8de374012c7c0",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "fix/viewport-switcher-interaction",
+        "remoteCommit": "56867c728fbf99d2e979052890a8de374012c7c0",
+        "summary": "Repair committed in PR 151; site build and 39 structural tests pass; browser execution awaits exact-head CI",
+        "nextAction": "Require all five exact-head workflows, merge PR 151 with expected SHA, verify main documentation deployment and native 19-choice catalog select",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "blockReason": "Await exact-head browser CI and deployment verification for PR 151; local browser binaries/dependencies unavailable"
     }
   ]
 }
