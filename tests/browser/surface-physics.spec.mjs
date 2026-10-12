@@ -22,6 +22,8 @@ test.beforeEach(async ({ page }) => {
 test("surface mass produces coherent light standard heavy inertial ordering", async ({ page }) => {
   const disclosure = await durations(page.locator("#physics-disclosure > summary"), "::after");
 
+  // Entry responses are read in the open state; index 1 is translate for
+  // both the toast (opacity, translate, ...) and the dialog.
   await page.locator("#physics-toast-open").click();
   const toast = await durations(page.locator("#physics-toast"));
   await page.locator("#physics-toast-close").click();
@@ -32,25 +34,27 @@ test("surface mass produces coherent light standard heavy inertial ordering", as
 
   const light = seconds(disclosure[0]);
   const standard = seconds(toast[1]);
-  const heavy = seconds(dialog[0]);
+  const heavy = seconds(dialog[1]);
 
   expect(light).toBeLessThan(standard);
   expect(standard).toBeLessThan(heavy);
 });
 
-test("popover and toast exits share their entry response", async ({ page }) => {
+test("popover and toast exits are shorter than their entries", async ({ page }) => {
   const popover = page.locator("#physics-popover");
   const popoverExit = seconds((await durations(popover))[0]);
   await page.locator("#physics-popover-open").click();
   const popoverEntry = seconds((await durations(popover))[0]);
-  expect(popoverExit).toBeCloseTo(popoverEntry, 5);
+  expect(popoverExit).toBeLessThan(popoverEntry);
   await page.locator("#physics-popover-close").click();
 
   const toast = page.locator("#physics-toast");
-  const toastExit = seconds((await durations(toast))[1]);
+  const toastExit = await durations(toast);
   await page.locator("#physics-toast-open").click();
-  const toastEntry = seconds((await durations(toast))[1]);
-  expect(toastExit).toBeCloseTo(toastEntry, 5);
+  const toastEntry = await durations(toast);
+  // Opacity fade and spatial travel are each shorter on exit.
+  expect(seconds(toastExit[0])).toBeLessThan(seconds(toastEntry[0]));
+  expect(seconds(toastExit[1])).toBeLessThan(seconds(toastEntry[1]));
   await page.locator("#physics-toast-close").click();
 });
 

@@ -33,6 +33,7 @@ import { milliseconds, PRESETS, staticFallbacks } from "./motion-model.mjs";
 import {
   classifyValue,
   collectDefinitions,
+  easingShape,
   extractTracks,
   parseSource,
   references,
@@ -40,7 +41,7 @@ import {
   vocabulary
 } from "./motion-values.mjs";
 
-export { animationLayer, classifyValue, collectDefinitions, extractTracks, transitionLayer, varReferences } from "./motion-values.mjs";
+export { animationLayer, classifyValue, collectDefinitions, easingShape, extractTracks, transitionLayer, varReferences } from "./motion-values.mjs";
 
 const CATALOG = "catalog/motion";
 
@@ -140,8 +141,41 @@ const timingFindings = (track, entry, model, env) => {
   return [
     ...duration.flatMap((part) => partFindings(track, part, "duration", carrier ? null : model, entry, env)),
     ...(carrier ? [] : easing.flatMap((part) => partFindings(track, part, "easing", model, entry, env))),
+    ...(carrier ? [] : overshootFindings(track, easing, entry, env)),
     ...implicit
   ];
+};
+
+// MOT-033: structural and state motion settles without overshoot or rebound.
+// An overshooting easing (a catalogued overshoot token, or a literal curve
+// that leaves [0, 1] or reverses) is allowed only where the classification
+// entry states the purpose of that overshoot for that property.
+const overshootFindings = (track, easing, entry, env) => {
+  if (track.reduced) return [];
+  const overshootTokens = new Set(env.models.overshootTokens ?? []);
+  const overshooting = easing.filter((part) =>
+    (part.category === "canonical" && overshootTokens.has(part.token)) ||
+    (part.category === "literal" && (() => { const shape = easingShape(part.literal); return shape && (shape.overshoots || !shape.monotonic); })())
+  );
+  const purpose = entry?.overshoot?.[track.property];
+  return overshooting.length > 0 && !(typeof purpose === "string" && purpose.trim().length > 0)
+    ? [finding("overshoot-unjustified", track, { value: overshooting[0].token ?? overshooting[0].literal, detail: "overshoot needs a documented purpose on the classification entry (MOT-033); structural motion settles directly" })]
+    : [];
+};
+
+// MOT-033: every canonical easing except the catalogued overshoot tokens is
+// defined as a monotonic curve inside [0, 1].
+const easingDefinitionFindings = (definitions, env) => {
+  const overshootTokens = new Set(env.models.overshootTokens ?? []);
+  const easingTokens = new Set(Object.values(env.models.models).flatMap((model) => model.easingTokens));
+  return definitions
+    .filter((definition) => easingTokens.has(definition.name) && !overshootTokens.has(definition.name) && !definition.reduced)
+    .flatMap((definition) => {
+      const shape = easingShape(definition.value);
+      return shape && (shape.overshoots || !shape.monotonic)
+        ? [{ code: "easing-definition-overshoots", source: definition.source, selector: definition.selector, property: definition.name, line: definition.line, value: definition.value, detail: "only catalogued overshoot tokens may leave [0, 1] or reverse (MOT-033)" }]
+        : [];
+    });
 };
 
 // Reduced-motion rules of one source, as normalized selector lists.
@@ -372,7 +406,8 @@ export const auditSources = ({ models, classification, sources, primitives = {} 
     ...startingStyleFindings(parsed, index),
     ...scrollBehaviorFindings(parsed, env),
     ...compositionFindings(motionTracks),
-    ...definitionFindings(tracks, definitions, env)
+    ...definitionFindings(tracks, definitions, env),
+    ...easingDefinitionFindings(definitions, env)
   ];
   const unique = [...new Map(findings.map((item) => [findingKey(item), item])).values()];
   return { tracks, findings: unique, definitions };

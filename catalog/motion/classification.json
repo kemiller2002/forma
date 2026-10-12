@@ -38,6 +38,9 @@
       },
       "reducedMotion": {
         "strategy": "explicit"
+      },
+      "overshoot": {
+        "translate": "Latch feedback for a two-state control the user just operated: the thumb's restrained excursion (about 1px at the default size) stays within the track and reverses into the chosen end, so it never implies the opposite value."
       }
     },
     {
@@ -66,6 +69,9 @@
       "reducedMotion": {
         "strategy": "scope-tokens",
         "scope": ".ef-checkbox"
+      },
+      "overshoot": {
+        "scale": "Input confirmation: the check glyph's brief growth past its rest size acknowledges the click inside the box; rotation settles without overshoot and the semantic value is already native and final."
       }
     },
     {
@@ -161,15 +167,15 @@
       "family": "disclosure",
       "selector": ".ef-disclosure__content",
       "tracks": {
-        "opacity": "perceptual",
-        "translate": "inertial"
+        "opacity": "perceptual"
       },
       "entrySelectors": [
         ".ef-disclosure[open] .ef-disclosure__content"
       ],
       "reducedMotion": {
         "strategy": "explicit"
-      }
+      },
+      "note": "Content opacity follows the native open state in both directions (fade in on open, shorter fade out on collapse); no translation."
     },
     {
       "source": "src/styles/components.css",
@@ -207,6 +213,7 @@
       "family": "dialog",
       "selector": ".ef-dialog",
       "tracks": {
+        "opacity": "perceptual",
         "translate": "inertial",
         "scale": "inertial"
       },
@@ -236,8 +243,7 @@
       "family": "tabs",
       "selector": ".ef-tabs__list [role=\"tab\"]",
       "tracks": {
-        "background": "perceptual",
-        "translate": "inertial"
+        "background": "perceptual"
       },
       "reducedMotion": {
         "strategy": "explicit"

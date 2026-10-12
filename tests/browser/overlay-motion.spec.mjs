@@ -45,23 +45,37 @@ test("left and right flyouts preserve opposite physical origins", async ({ page 
   ]);
 });
 
-test("modal and flyout entry and exit share duration and easing", async ({ page }) => {
+test("modal and flyout exits are shorter than entries and entries settle without overshoot", async ({ page }) => {
   for (const [buttonName, selector] of [
     ["Open modal", "#test-modal"],
     ["Open left flyout", "#test-left-flyout"],
     ["Open right flyout", "#test-right-flyout"]
   ]) {
     const surface = page.locator(selector);
-    const response = element => {
+    // The closed state carries the exit response, the open state the entry.
+    const translateResponse = element => {
       const style = getComputedStyle(element);
-      return { duration: style.transitionDuration, easing: style.transitionTimingFunction };
+      const index = style.transitionProperty.split(",").map(value => value.trim()).indexOf("translate");
+      const duration = style.transitionDuration.split(",")[index].trim();
+      return {
+        ms: Number.parseFloat(duration) * (duration.endsWith("ms") ? 1 : 1000),
+        easing: style.transitionTimingFunction.split(/,(?![^()]*\))/)[index].trim()
+      };
     };
-    const exitResponse = await surface.evaluate(response);
-
+    const exitResponse = await surface.evaluate(translateResponse);
     await page.getByRole("button", { name: buttonName }).click();
+    const entryResponse = await surface.evaluate(translateResponse);
 
-    const entryResponse = await surface.evaluate(response);
-    expect(entryResponse).toEqual(exitResponse);
+    expect(exitResponse.ms).toBeLessThan(entryResponse.ms);
+    expect(exitResponse.ms).toBeCloseTo(entryResponse.ms * 0.8, 0);
+    expect(exitResponse.easing).toBe("cubic-bezier(0.4, 0, 1, 1)");
+    expect(entryResponse.easing).toMatch(/^linear\(/);
+    const outputs = entryResponse.easing.slice(7, -1).split(",").map(stop => Number.parseFloat(stop.trim()));
+    outputs.forEach((output, index) => {
+      expect(output).toBeGreaterThanOrEqual(0);
+      expect(output).toBeLessThanOrEqual(1);
+      if (index) expect(output).toBeGreaterThanOrEqual(outputs[index - 1]);
+    });
     await page.keyboard.press("Escape");
   }
 });

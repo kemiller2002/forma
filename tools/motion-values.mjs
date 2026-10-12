@@ -271,3 +271,30 @@ export const classifyValue = (value, kind, env, seen = new Set()) => {
       : [];
   return [...fromRefs, ...literalParts];
 };
+
+// ---------------------------------------------------------------------------
+// Easing shape (MOT-033)
+
+// Describe an easing function's output: whether it leaves [0, 1] (overshoot)
+// or reverses direction (rebound). Keywords and steps() never overshoot.
+// Returns null for text that is not a literal easing function.
+export const easingShape = (text) => {
+  const value = String(text ?? "").trim();
+  const bezier = value.match(/^cubic-bezier\(\s*([^)]*)\)$/);
+  if (bezier) {
+    const [, y1, , y2] = bezier[1].split(",").map(Number);
+    const overshoots = [y1, y2].some((y) => y < 0 || y > 1);
+    return { overshoots, monotonic: !overshoots };
+  }
+  const linear = value.match(/^linear\(\s*([\s\S]*)\)$/);
+  if (linear) {
+    const outputs = splitTopLevel(linear[1], ",").map((stop) => Number(stop.trim().split(/\s+/)[0]));
+    if (outputs.some((output) => !Number.isFinite(output))) return null;
+    return {
+      overshoots: outputs.some((output) => output < 0 || output > 1),
+      monotonic: outputs.every((output, index) => index === 0 || output >= outputs[index - 1])
+    };
+  }
+  if (EASING_KEYWORDS.has(value) || /^steps\(/.test(value)) return { overshoots: false, monotonic: true };
+  return null;
+};

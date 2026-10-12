@@ -67,9 +67,25 @@
     --ef-motion-perceptual-emphasis-duration: var(--ef-primitive-motion-duration-standard, 180ms);
     --ef-motion-perceptual-easing: var(--ef-primitive-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 
-    /* Brief surface fade: gentle ignition, fast middle, gentle settling.
-       Monotonic and symmetric: no opacity overshoot or delayed activation. */
-    --ef-motion-fade-easing: cubic-bezier(0.65, 0, 0.35, 1);
+    /* Surface fades (MOT-031). Opacity changes from the first frame and
+       decelerates into its endpoint, so no single frame carries a visible
+       step (a slow-fast-slow curve at this length jumps ~38% in one 60Hz
+       frame). Exit is shorter than entry; both are monotonic. */
+    --ef-motion-fade-in-duration: var(--ef-primitive-motion-duration-standard, 180ms);
+    --ef-motion-fade-out-duration: var(--ef-primitive-motion-duration-fast, 120ms);
+    --ef-motion-fade-easing: cubic-bezier(0, 0, 0.58, 1);
+
+    /*
+     * Settle (MOT-033): the step response of a critically damped system
+     * (zeta = 1, omega * T = 7), sampled to within 0.002. It leaves rest
+     * immediately, decelerates, and arrives exactly at its destination with
+     * no overshoot or rebound. Structural and in-place travel use it.
+     */
+    --ef-motion-settle-easing: linear(0, 0.005 1.5%, 0.026 3.5%, 0.067 6%, 0.133 9%, 0.435 21%, 0.547 26%, 0.634 30.5%, 0.707 35%, 0.775 40%, 0.833 45.5%, 0.881 51.5%, 0.922 58.5%, 0.955 67%, 0.980 78%, 0.997 94%, 1);
+    /* Exit: a surface leaving the viewport or fading away accelerates from
+       rest; its endpoint is off-screen or transparent, so it needs no
+       deceleration tail. Never used for content that remains in place. */
+    --ef-motion-exit-easing: cubic-bezier(0.4, 0, 1, 1);
 
     /* Constant-velocity cadence: repeated activity is parameterized by a
        named period and constant velocity, never by spring settling (MOT-016). */
@@ -100,8 +116,13 @@
     --ef-motion-gravity-duration: 255ms;
     --ef-motion-state-duration: 154ms;
     --ef-motion-press-duration: 107ms;
-    --ef-motion-exit-duration: 214ms;
+    --ef-motion-exit-duration: 171ms;
+    /* Restrained underdamped response. Permitted only for the
+       microinteractions catalogued with an overshoot purpose (switch thumb
+       latch, checkbox glyph confirmation); the motion audit rejects it on
+       any other selector. Peak excursion stays inside the control. */
     --ef-motion-spring-easing: linear(0, 0.42 24%, 0.82 48%, 1.055 70%, 0.988 88%, 1);
+    /* Press compression: responds within the first frame. */
     --ef-motion-damped-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
@@ -174,8 +195,13 @@
         calc(var(--ef-motion-inertia-duration) * 0.5),
         160ms
       );
-      /* Compatibility token: reciprocal motion has one response time. */
-      --ef-motion-exit-duration: var(--ef-motion-inertia-duration);
+      /* Exit is shorter than entry (MOT-033): dismissal confirms a decision
+         the user has already made. */
+      --ef-motion-exit-duration: clamp(
+        90ms,
+        calc(var(--ef-motion-inertia-duration) * 0.8),
+        340ms
+      );
     }
   }
 
@@ -319,7 +345,7 @@
     scale: 0.35;
     transition:
       opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      rotate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing),
+      rotate var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing),
       scale var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing);
   }
 
@@ -404,7 +430,7 @@
     rotate: 45deg;
     translate: 0 -0.12rem;
     transition:
-      rotate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing),
+      rotate var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing),
       translate var(--ef-motion-gravity-duration) var(--ef-motion-damped-easing);
   }
 
@@ -425,6 +451,8 @@
       --ef-motion-state-duration: 0.01ms;
       --ef-motion-press-duration: 0.01ms;
       --ef-motion-exit-duration: 0.01ms;
+      --ef-motion-settle-easing: linear;
+      --ef-motion-exit-easing: linear;
       --ef-motion-spring-easing: linear;
       --ef-motion-damped-easing: linear;
     }
@@ -564,10 +592,10 @@
       background: var(--ef-color-surface-inverse, #202421);
       pointer-events: none;
       transition:
-        top var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing),
-        right var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing),
-        bottom var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing),
-        left var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing);
+        top var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing),
+        right var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing),
+        bottom var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing),
+        left var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing);
     }
 
     .ef-segmented:not(:has(input:checked))::before { display: none; }
@@ -618,24 +646,33 @@
     rotate: 0deg;
     scale: 1;
     transition:
-      rotate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing),
+      rotate var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing),
       scale var(--ef-motion-press-duration) var(--ef-motion-damped-easing);
   }
   .ef-disclosure > summary:active::after { scale: 0.86; }
   .ef-disclosure[open] > summary::after { rotate: 45deg; }
+  /*
+   * Content opacity follows the native open state in both directions, so the
+   * fade runs on every open and close. (A @starting-style-only fade ran on
+   * the first open alone: closed details content keeps its computed style.)
+   * There is no translation; the revealed height already carries the
+   * spatial relationship. The starting style covers engines that render
+   * closed content as display: none.
+   */
   .ef-disclosure__content {
     padding: 0 0 1rem;
+    opacity: 0;
+    transition: opacity var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing);
+  }
+
+  .ef-disclosure[open] .ef-disclosure__content {
     opacity: 1;
-    translate: 0 0;
-    transition:
-      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      translate var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing);
+    transition-duration: var(--ef-motion-fade-in-duration);
   }
 
   @starting-style {
     .ef-disclosure[open] .ef-disclosure__content {
       opacity: 0;
-      translate: 0 -0.25rem;
     }
   }
 
@@ -653,13 +690,15 @@
     overflow: auto;
     overscroll-behavior: contain;
     opacity: 0;
-    /* Fade at the resting geometry. Never translate or scale a visible exit. */
-    transition: opacity var(--ef-motion-perceptual-duration) var(--ef-motion-fade-easing);
+    /* Fade at the resting geometry. Never translate or scale a visible exit.
+       The closed state carries the (shorter) exit; the open state the entry. */
+    transition: opacity var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing);
   }
 
   .ef-popover:popover-open,
   .ef-menu:popover-open {
     opacity: 1;
+    transition-duration: var(--ef-motion-fade-in-duration);
   }
 
   @starting-style {
@@ -749,11 +788,12 @@
     line-height: 1.4;
     overflow-wrap: anywhere;
     opacity: 0;
-    transition: opacity var(--ef-motion-perceptual-duration) var(--ef-motion-fade-easing);
+    transition: opacity var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing);
   }
 
   .ef-tooltip__surface:popover-open {
     opacity: 1;
+    transition-duration: var(--ef-motion-fade-in-duration);
   }
 
   @starting-style {
@@ -770,9 +810,15 @@
     .ef-menu,
     .ef-tooltip__surface {
       transition:
-        opacity var(--ef-motion-perceptual-duration) var(--ef-motion-fade-easing),
-        display var(--ef-motion-perceptual-duration) allow-discrete,
-        overlay var(--ef-motion-perceptual-duration) allow-discrete;
+        opacity var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing),
+        display var(--ef-motion-fade-out-duration) allow-discrete,
+        overlay var(--ef-motion-fade-out-duration) allow-discrete;
+    }
+
+    .ef-popover:popover-open,
+    .ef-menu:popover-open,
+    .ef-tooltip__surface:popover-open {
+      transition-duration: var(--ef-motion-fade-in-duration);
     }
   }
 
@@ -820,15 +866,28 @@
   @supports (interpolate-size: allow-keywords) and selector(::details-content) {
     .ef-disclosure { interpolate-size: allow-keywords; }
 
+    /*
+     * flow-root: child margins must stay inside the animated box. Without a
+     * formatting context, a first child's margin collapsed through it and
+     * appeared or vanished in one frame at either end of the animation.
+     * Only the block axis is clipped, so focus indicators are not cut off
+     * at the inline edges. Opening and collapsing share the settle curve,
+     * so both land without a jump; collapse uses the shorter exit time.
+     */
     .ef-disclosure::details-content {
+      display: flow-root;
       block-size: 0;
-      overflow: clip;
+      overflow-x: visible;
+      overflow-y: clip;
       transition:
-        block-size var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing),
-        content-visibility var(--ef-motion-inertia-duration) allow-discrete;
+        block-size var(--ef-motion-exit-duration) var(--ef-motion-settle-easing),
+        content-visibility var(--ef-motion-exit-duration) allow-discrete;
     }
 
-    .ef-disclosure[open]::details-content { block-size: auto; }
+    .ef-disclosure[open]::details-content {
+      block-size: auto;
+      transition-duration: var(--ef-motion-inertia-duration);
+    }
   }
 
   /*
@@ -846,7 +905,7 @@
 
   :root[data-ef-view-transitions]::view-transition-group(*) {
     animation-duration: var(--ef-motion-inertia-duration, 214ms);
-    animation-timing-function: var(--ef-motion-damped-easing, cubic-bezier(0.2, 0.8, 0.2, 1));
+    animation-timing-function: var(--ef-motion-settle-easing);
   }
 
   /*
@@ -897,9 +956,17 @@
   }
 
   /* Dialog and flyout ---------------------------------------------------- */
+  /*
+   * Structural motion (MOT-033). A transition uses the timing of the state
+   * it moves toward, so the closed state carries the exit response (shorter,
+   * accelerating away) and the open state carries the entry response
+   * (critically damped: decelerates and stops exactly, with no overshoot or
+   * rebound). Interrupting either one retargets from the rendered position.
+   */
   :where(.ef-dialog, .ef-flyout) {
-    --ef-overlay-motion-duration: var(--ef-motion-inertia-duration);
-    --ef-overlay-spatial-easing: var(--ef-motion-spring-easing);
+    --ef-overlay-motion-duration: var(--ef-motion-exit-duration);
+    --ef-overlay-spatial-easing: var(--ef-motion-exit-easing);
+    --ef-overlay-fade-duration: var(--ef-motion-fade-out-duration);
     padding: 0;
     border: 1px solid var(--ef-color-border-functional, #3a403c);
     background: var(--ef-color-surface-primary, #f2efe7);
@@ -909,21 +976,23 @@
 
   :where(.ef-dialog, .ef-flyout)[open] {
     --ef-overlay-motion-duration: var(--ef-motion-inertia-duration);
-    --ef-overlay-spatial-easing: var(--ef-motion-spring-easing);
+    --ef-overlay-spatial-easing: var(--ef-motion-settle-easing);
+    --ef-overlay-fade-duration: var(--ef-motion-fade-in-duration);
   }
 
   :where(.ef-dialog, .ef-flyout)::backdrop {
     background: rgb(23 26 24 / 0);
     backdrop-filter: blur(0);
-    /* Dimming is non-spatial: perceptual interpolation, without mass. */
+    /* Dimming is non-spatial: the shared surface fade, without mass. */
     transition:
-      background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      backdrop-filter var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing);
+      background var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing),
+      backdrop-filter var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing);
   }
 
   :where(.ef-dialog, .ef-flyout)[open]::backdrop {
     background: rgb(23 26 24 / 0.48);
     backdrop-filter: blur(2px);
+    transition-duration: var(--ef-motion-fade-in-duration);
   }
 
   /* Centered modal dialog ------------------------------------------------ */
@@ -931,14 +1000,20 @@
     inline-size: min(38rem, calc(100vw - 2rem));
     max-block-size: calc(100dvh - 2rem);
     box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 0.28);
+    /* Opacity carries appearance; the small rise and scale relate the
+       surface to the page beneath it. Without the fade, the opaque surface
+       appeared and disappeared in a single frame. */
+    opacity: 0;
     translate: 0 0.75rem;
     scale: 0.985;
     transition:
+      opacity var(--ef-overlay-fade-duration) var(--ef-motion-fade-easing),
       translate var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing),
       scale var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing);
   }
 
   .ef-dialog[open] {
+    opacity: 1;
     translate: 0 0;
     scale: 1;
   }
@@ -976,14 +1051,23 @@
   @supports (overlay: auto) {
     :where(.ef-dialog, .ef-flyout)::backdrop {
       transition:
-        background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-        backdrop-filter var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-        display var(--ef-overlay-motion-duration) allow-discrete,
-        overlay var(--ef-overlay-motion-duration) allow-discrete;
+        background var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing),
+        backdrop-filter var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing),
+        display var(--ef-motion-exit-duration) allow-discrete,
+        overlay var(--ef-motion-exit-duration) allow-discrete;
+    }
+
+    :where(.ef-dialog, .ef-flyout)[open]::backdrop {
+      transition-duration:
+        var(--ef-motion-fade-in-duration),
+        var(--ef-motion-fade-in-duration),
+        var(--ef-motion-inertia-duration),
+        var(--ef-motion-inertia-duration);
     }
 
     .ef-dialog {
       transition:
+        opacity var(--ef-overlay-fade-duration) var(--ef-motion-fade-easing),
         translate var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing),
         scale var(--ef-overlay-motion-duration) var(--ef-overlay-spatial-easing),
         display var(--ef-overlay-motion-duration) allow-discrete,
@@ -1068,6 +1152,7 @@
 
   @starting-style {
     .ef-dialog[open] {
+      opacity: 0;
       translate: 0 0.75rem;
       scale: 0.985;
     }
@@ -1335,10 +1420,9 @@
     min-block-size: 2.75rem;
     border: 0;
     background: transparent;
-    translate: 0 0.08rem;
-    transition:
-      background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      translate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing);
+    /* Selection changes the surface and the indicator, never the tab's own
+       position: a tab that shifts as it is selected moves under the pointer. */
+    transition: background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing);
   }
 
   .ef-tabs__list [role="tab"]::after {
@@ -1349,7 +1433,9 @@
     block-size: 3px;
     background: var(--ef-color-accent-primary, #905831);
     scale: 0 1;
-    transition: scale var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing);
+    /* Settles exactly at the tab's width; an overshoot would draw the
+       indicator under the neighboring tab. */
+    transition: scale var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing);
   }
 
   .ef-tabs__list [aria-selected="true"] {
@@ -1357,7 +1443,6 @@
     --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
     --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
     background: var(--ef-color-surface-secondary, #e3e0d7);
-    translate: 0 0;
   }
 
   .ef-tabs__list [aria-selected="true"]::after { scale: 1 1; }
@@ -1368,8 +1453,8 @@
     opacity: 1;
     translate: 0 0;
     transition:
-      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      translate var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing);
+      opacity var(--ef-motion-fade-in-duration) var(--ef-motion-fade-easing),
+      translate var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing);
   }
 
   @starting-style {
@@ -1595,7 +1680,7 @@
 
   .ef-alert[data-ef-motion-entry] {
     translate: 0 0;
-    transition: translate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing);
+    transition: translate var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing);
   }
 
   .ef-alert p {
@@ -1623,9 +1708,9 @@
     translate: 0 0.65rem;
     scale: 0.99;
     transition:
-      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      translate var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
-      scale var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
+      opacity var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing),
+      translate var(--ef-motion-exit-duration) var(--ef-motion-exit-easing),
+      scale var(--ef-motion-exit-duration) var(--ef-motion-exit-easing),
       display var(--ef-motion-exit-duration) allow-discrete,
       overlay var(--ef-motion-exit-duration) allow-discrete;
   }
@@ -1635,11 +1720,15 @@
     translate: 0 0;
     scale: 1;
     transition-duration:
-      var(--ef-motion-perceptual-duration),
+      var(--ef-motion-fade-in-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration);
+    transition-timing-function:
+      var(--ef-motion-fade-easing),
+      var(--ef-motion-settle-easing),
+      var(--ef-motion-settle-easing);
   }
 
   @starting-style {
@@ -1892,9 +1981,9 @@
     translate: 0 0.75rem;
     scale: 0.985;
     transition:
-      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      translate var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
-      scale var(--ef-motion-exit-duration) var(--ef-motion-damped-easing),
+      opacity var(--ef-motion-fade-out-duration) var(--ef-motion-fade-easing),
+      translate var(--ef-motion-exit-duration) var(--ef-motion-exit-easing),
+      scale var(--ef-motion-exit-duration) var(--ef-motion-exit-easing),
       display var(--ef-motion-exit-duration) allow-discrete,
       overlay var(--ef-motion-exit-duration) allow-discrete;
   }
@@ -1904,11 +1993,15 @@
     translate: 0 0;
     scale: 1;
     transition-duration:
-      var(--ef-motion-perceptual-duration),
+      var(--ef-motion-fade-in-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration),
       var(--ef-motion-inertia-duration);
+    transition-timing-function:
+      var(--ef-motion-fade-easing),
+      var(--ef-motion-settle-easing),
+      var(--ef-motion-settle-easing);
   }
 
   @starting-style {
@@ -2747,8 +2840,8 @@
     opacity: 1;
     translate: 0 0;
     transition:
-      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      translate var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing);
+      opacity var(--ef-motion-fade-in-duration) var(--ef-motion-fade-easing),
+      translate var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing);
   }
 
   @starting-style {
@@ -2782,8 +2875,8 @@
     opacity: 1;
     translate: 0 0;
     transition:
-      opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      translate var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing);
+      opacity var(--ef-motion-fade-in-duration) var(--ef-motion-fade-easing),
+      translate var(--ef-motion-inertia-duration) var(--ef-motion-settle-easing);
   }
 
   @starting-style {
@@ -3158,7 +3251,7 @@
    */
   [data-ef-manipulation] {
     translate: var(--ef-drag-x, 0px) var(--ef-drag-y, 0px);
-    transition: translate var(--ef-motion-inertia-duration, 214ms) var(--ef-motion-damped-easing, cubic-bezier(0.2, 0.8, 0.2, 1));
+    transition: translate var(--ef-motion-inertia-duration, 214ms) var(--ef-motion-settle-easing);
   }
 
   [data-ef-manipulation="dragging"],
@@ -3200,7 +3293,7 @@
     --ef-split-max: calc(100% - 16rem);
     grid-template-columns: clamp(var(--ef-split-min), var(--ef-split-size), var(--ef-split-max)) auto minmax(0, 1fr);
     column-gap: 0;
-    transition: grid-template-columns var(--ef-motion-inertia-duration, 214ms) var(--ef-motion-damped-easing, cubic-bezier(0.2, 0.8, 0.2, 1));
+    transition: grid-template-columns var(--ef-motion-inertia-duration, 214ms) var(--ef-motion-settle-easing);
   }
 
   .ef-split-pane[data-ef-resizable][data-ef-manipulation] {

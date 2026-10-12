@@ -1,10 +1,14 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { motionSettled } from "./helpers.mjs";
 
 const fixture = "/tests/browser/fixture/aegis-faults.html";
 
 test("Aegis fault presentation has no automatically detectable WCAG A/AA violations", async ({ page }) => {
   await page.goto(fixture);
+  // Entry fades blend text with its surface until they finish; audit the
+  // settled presentation.
+  await motionSettled(page);
   const results = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
     .analyze();

@@ -57,7 +57,7 @@ test("closed hint leaves no invisible interactive state", async ({ page }) => {
   expect(state).toEqual({ open: false, display: "none" });
 });
 
-test("stationary tooltip fade uses perceptual opacity and reciprocal response", async ({ page }) => {
+test("stationary tooltip fade uses perceptual opacity with a shorter exit", async ({ page }) => {
   const timing = await page.evaluate(() => {
     const element = document.getElementById("tooltip-retention");
     const read = () => {
@@ -74,11 +74,10 @@ test("stationary tooltip fade uses perceptual opacity and reciprocal response", 
   });
   expect(timing.mass).toBe("0.65");
   expect(["opacity", "opacity, display, overlay"]).toContain(timing.closed.properties);
-  // Perceptual response is identical in both directions.
-  expect(timing.closed.durations).toEqual(timing.open.durations);
+  // MOT-031: the same monotonic fade curve both ways; exit is shorter.
   expect(timing.closed.easing).toBe(timing.open.easing);
-  // Opacity is perceptual interpolation in both directions.
-  expect(timing.closed.durations[0]).toBe(timing.open.durations[0]);
+  expect(timing.closed.durations[0]).toBe(120);
+  expect(timing.open.durations[0]).toBe(180);
   expect(["none", "0px", "0px 0px"]).toContain(timing.translate);
 });
 

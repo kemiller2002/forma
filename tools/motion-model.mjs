@@ -18,10 +18,10 @@ export const BOUNDS = Object.freeze({
   gravity: Object.freeze([100, 420]),
   state: Object.freeze([90, 240]),
   press: Object.freeze([70, 160]),
-  exit: Object.freeze([110, 420])
+  exit: Object.freeze([90, 340])
 });
 
-export const FACTORS = Object.freeze({ state: 0.72, press: 0.5, exit: 1 });
+export const FACTORS = Object.freeze({ state: 0.72, press: 0.5, exit: 0.8 });
 
 const clamp = ([low, high]) => (value) => Math.min(high, Math.max(low, value));
 
@@ -38,8 +38,8 @@ const derived = (factor, bounds) => (preset, base = BASE_DURATION_MS) =>
 
 export const stateDuration = derived(FACTORS.state, BOUNDS.state);
 export const pressDuration = derived(FACTORS.press, BOUNDS.press);
-// Compatibility name; dismissal and entry share the exact same calculation.
-export const exitDuration = inertiaDuration;
+// Exit is shorter than entry (MOT-033): 0.8 x T_inertia, clamped.
+export const exitDuration = derived(FACTORS.exit, BOUNDS.exit);
 
 // The static fallback values authored in CSS for browsers without typed
 // sqrt()/calc() multiplication: the standard preset, rounded to whole ms.

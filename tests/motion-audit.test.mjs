@@ -15,7 +15,8 @@ import {
   staticFallbacks,
   stateDuration
 } from "../tools/motion-model.mjs";
-import { animationLayer, auditSources, findingKey, runAudit, transitionLayer } from "../tools/motion-audit.mjs";
+import { animationLayer, auditSources, easingShape, findingKey, runAudit, transitionLayer } from "../tools/motion-audit.mjs";
+import fs from "node:fs";
 
 // ---------------------------------------------------------------------------
 // Physics model
@@ -42,10 +43,14 @@ test("gravity timing follows sqrt(2s / g) and ignores mass", () => {
   assert.ok(gravityDuration({ distance: 0.3 }) < gravityDuration({ distance: 0.45 }), "shorter travel falls faster");
 });
 
-test("reciprocal motion shares the inertia calculation including clamp boundaries", () => {
+test("exit is 0.8 of inertial entry, clamped, and never longer than entry (MOT-033)", () => {
   for (const preset of [...Object.values(PRESETS), { mass: 0.01, stiffness: 10, damping: 1 }, { mass: 100, stiffness: 0.1, damping: 0.1 }]) {
-    assert.equal(exitDuration(preset), inertiaDuration(preset));
+    const entry = inertiaDuration(preset);
+    const exit = exitDuration(preset);
+    assert.equal(exit, Math.min(340, Math.max(90, entry * 0.8)));
+    assert.ok(exit < entry, `exit ${exit} must be shorter than entry ${entry}`);
   }
+  assert.ok(presetOrder.every((weight, index) => index === 0 || exitDuration(PRESETS[weight]) > exitDuration(PRESETS[presetOrder[index - 1]])));
 });
 
 test("static CSS fallbacks equal the standard preset derivation", () => {
@@ -54,7 +59,7 @@ test("static CSS fallbacks equal the standard preset derivation", () => {
     "--ef-motion-gravity-duration": 255,
     "--ef-motion-state-duration": 154,
     "--ef-motion-press-duration": 107,
-    "--ef-motion-exit-duration": 214
+    "--ef-motion-exit-duration": 171
   });
 });
 
@@ -300,6 +305,78 @@ test("animated transform shorthand is reported so concurrent effects compose", (
 test("stale classifications are reported so the catalog stays truthful", () => {
   const result = audit(".x { color: red; }", [{ selector: ".x", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } }]);
   assert.deepEqual(codes(result).map((item) => item.code), ["stale-classification", "stale-classification"]);
+});
+
+// ---------------------------------------------------------------------------
+// Overshoot policy (MOT-033)
+
+test("easing shape detects overshoot and reversal", () => {
+  assert.deepEqual(easingShape("linear(0, 0.42 24%, 0.82 48%, 1.055 70%, 0.988 88%, 1)"), { overshoots: true, monotonic: false });
+  assert.deepEqual(easingShape("cubic-bezier(0.34, 1.56, 0.64, 1)"), { overshoots: true, monotonic: false });
+  assert.deepEqual(easingShape("cubic-bezier(0.2, 0.8, 0.2, 1)"), { overshoots: false, monotonic: true });
+  assert.deepEqual(easingShape("linear(0, 0.6 40%, 0.5 60%, 1)"), { overshoots: false, monotonic: false });
+  assert.deepEqual(easingShape("ease-out"), { overshoots: false, monotonic: true });
+  assert.equal(easingShape("var(--x)"), null);
+});
+
+const OVERSHOOT_MODELS = { ...MODELS, overshootTokens: ["--ef-motion-spring-easing"] };
+const auditOvershoot = (css, entries = [], vocabulary = VOCABULARY) =>
+  auditSources({
+    models: OVERSHOOT_MODELS,
+    classification: { entries: entries.map((entry) => ({ source: "fixture.css", ...entry })) },
+    sources: [{ group: "core", file: "vocabulary.css", text: vocabulary }, { group: "core", file: "fixture.css", text: css }],
+    primitives: PRIMITIVES
+  });
+const springTrack = ".x { transition: translate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing); } @media (prefers-reduced-motion: reduce) { .x { transition: none; } }";
+
+test("an overshoot token needs a documented purpose for that property", () => {
+  const entry = { selector: ".x", tracks: { translate: "inertial" }, reducedMotion: { strategy: "explicit" } };
+  assert.deepEqual(codes(auditOvershoot(springTrack, [entry]), "overshoot-unjustified").map((item) => item.property), ["translate"]);
+  assert.deepEqual(codes(auditOvershoot(springTrack, [{ ...entry, overshoot: { translate: "  " } }]), "overshoot-unjustified").length, 1);
+  assert.deepEqual(codes(auditOvershoot(springTrack, [{ ...entry, overshoot: { scale: "latch" } }]), "overshoot-unjustified").length, 1);
+  assert.deepEqual(codes(auditOvershoot(springTrack, [{ ...entry, overshoot: { translate: "latch feedback inside the track" } }])), []);
+});
+
+test("a literal overshooting curve on a track is reported like the overshoot token", () => {
+  const css = ".x { transition: translate var(--ef-motion-inertia-duration) cubic-bezier(0.34, 1.56, 0.64, 1); } @media (prefers-reduced-motion: reduce) { .x { transition: none; } }";
+  const entry = { selector: ".x", tracks: { translate: "inertial" }, reducedMotion: { strategy: "explicit" }, approvedLiterals: [{ value: "cubic-bezier(0.34, 1.56, 0.64, 1)", reason: "test" }] };
+  assert.deepEqual(codes(auditOvershoot(css, [entry]), "overshoot-unjustified").map((item) => item.value), ["cubic-bezier(0.34, 1.56, 0.64, 1)"]);
+});
+
+test("only catalogued overshoot tokens may be defined with overshoot or reversal", () => {
+  const bouncyDamped = VOCABULARY.replace("--ef-motion-damped-easing: cubic-bezier(0.2, 0.8, 0.2, 1);", "--ef-motion-damped-easing: linear(0, 1.1 70%, 1);");
+  assert.deepEqual(codes(auditOvershoot(".y { color: red; }", [], bouncyDamped), "easing-definition-overshoots").map((item) => item.property), ["--ef-motion-damped-easing"]);
+  const bouncySpring = VOCABULARY.replace("--ef-motion-spring-easing: linear(0, 1);", "--ef-motion-spring-easing: linear(0, 1.1 70%, 1);");
+  assert.deepEqual(codes(auditOvershoot(".y { color: red; }", [], bouncySpring), "easing-definition-overshoots"), []);
+});
+
+test("the shipped settle easing is a critically damped response with no overshoot", () => {
+  const css = fs.readFileSync("src/styles/components.css", "utf8");
+  const value = css.match(/--ef-motion-settle-easing:\s*(linear\([^;]*\));/)[1];
+  assert.deepEqual(easingShape(value), { overshoots: false, monotonic: true });
+  const stops = splitTopLevel(value.slice("linear(".length, -1), ",").map((stop, index, all) => {
+    const [output, percent] = stop.trim().split(/\s+/);
+    return { x: percent ? Number.parseFloat(percent) / 100 : index / (all.length - 1), y: Number(output) };
+  });
+  const omegaT = 7;
+  const raw = (t) => 1 - (1 + omegaT * t) * Math.exp(-omegaT * t);
+  const critical = (t) => raw(t) / raw(1);
+  const at = (t) => {
+    const index = stops.findIndex((stop) => stop.x >= t);
+    if (index <= 0) return stops[Math.max(0, index)].y;
+    const [a, b] = [stops[index - 1], stops[index]];
+    return a.y + (b.y - a.y) * (t - a.x) / (b.x - a.x);
+  };
+  for (let step = 0; step <= 100; step += 1) { const t = step / 100; assert.ok(Math.abs(at(t) - critical(t)) < 0.004, `deviates at ${t.toFixed(2)}`); }
+  assert.equal(stops.at(-1).y, 1);
+});
+
+test("the shipped exit and fade easings never overshoot", () => {
+  const css = fs.readFileSync("src/styles/components.css", "utf8");
+  for (const name of ["--ef-motion-exit-easing", "--ef-motion-fade-easing", "--ef-motion-damped-easing"]) {
+    const value = css.match(new RegExp(`${name}:\\s*([^;]+);`))[1];
+    assert.deepEqual(easingShape(value), { overshoots: false, monotonic: true }, name);
+  }
 });
 
 // ---------------------------------------------------------------------------

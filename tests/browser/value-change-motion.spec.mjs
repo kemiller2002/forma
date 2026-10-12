@@ -127,7 +127,7 @@ test("overlay opacity and backdrop dimming use perceptual interpolation, not mas
     <div class="ef-popover" popover id="pop">Popover</div>
     <div class="ef-toast" popover="manual" id="toast">Saved</div>
     <dialog class="ef-dialog" id="dialog"><p>Dialog</p></dialog>`), { waitUntil: "load" });
-  const perceptual = await probeDuration(page, "--ef-motion-perceptual-duration");
+  const fadeIn = await probeDuration(page, "--ef-motion-fade-in-duration");
   const timings = await page.evaluate(() => {
     const byProperty = (element, pseudo) => {
       const style = getComputedStyle(element, pseudo);
@@ -136,22 +136,21 @@ test("overlay opacity and backdrop dimming use perceptual interpolation, not mas
       const easings = style.transitionTimingFunction.match(/cubic-bezier\([^)]*\)|[a-z-]+/g);
       return Object.fromEntries(properties.map((property, index) => [property, { duration: durations[index % durations.length], easing: easings[index % easings.length] }]));
     };
+    // Read each surface while it is open: opening the modal dialog
+    // light-dismisses the auto popover.
     document.getElementById("pop").showPopover();
+    const popoverOpen = byProperty(document.getElementById("pop"));
     document.getElementById("toast").showPopover();
+    const toastOpen = byProperty(document.getElementById("toast"));
     document.getElementById("dialog").showModal();
-    return {
-      popoverOpen: byProperty(document.getElementById("pop")),
-      toastOpen: byProperty(document.getElementById("toast")),
-      backdrop: byProperty(document.getElementById("dialog"), "::backdrop")
-    };
+    return { popoverOpen, toastOpen, backdrop: byProperty(document.getElementById("dialog"), "::backdrop") };
   });
   for (const [name, entry] of [["popover", timings.popoverOpen.opacity], ["toast", timings.toastOpen.opacity], ["backdrop", timings.backdrop["background-color"] ?? timings.backdrop.background], ["backdrop filter", timings.backdrop["backdrop-filter"]]]) {
     expect(entry, name).toBeDefined();
-    expect(entry.duration, name).toBeCloseTo(perceptual, 0);
-    // Surface fades use MOT-031; toast and backdrop retain their shared
-    // perceptual interpolation. All remain independent of perceived mass.
-    const easing = name === "popover" ? "cubic-bezier(0.65, 0, 0.35, 1)" : "cubic-bezier(0.2, 0, 0, 1)";
-    expect(entry.easing, name).toBe(easing);
+    // Every overlay opacity and backdrop entry uses the shared MOT-031 surface
+    // fade, independent of perceived mass.
+    expect(entry.duration, name).toBeCloseTo(fadeIn, 0);
+    expect(entry.easing, name).toBe("cubic-bezier(0, 0, 0.58, 1)");
   }
 });
 

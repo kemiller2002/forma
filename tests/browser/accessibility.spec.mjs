@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
-import { openFixture } from "./helpers.mjs";
+import { motionSettled, openFixture } from "./helpers.mjs";
 
 test("pilot fixture has no automatically detectable WCAG A/AA violations", async ({ page }) => {
   await openFixture(page);
@@ -89,6 +89,8 @@ test("overlay motion surfaces have no automatically detectable WCAG A/AA violati
 
   for (const buttonName of ["Open modal", "Open left flyout", "Open right flyout"]) {
     await page.getByRole("button", { name: buttonName }).click();
+    // Audit the settled surface; mid-fade text is blended with the page.
+    await motionSettled(page);
 
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])

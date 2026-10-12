@@ -23,20 +23,22 @@
   },
   "models": {
     "inertial": {
-      "label": "Inertial / spring response",
+      "label": "Inertial response (critically damped settling)",
       "requirement": "MOT-010 (1), MOT-008",
-      "phenomenon": "An object with perceived mass settling toward a stable state after activation or release.",
+      "phenomenon": "An object with perceived mass moving to a stable state after activation or release. It settles directly (critically damped); overshoot is an exception that requires a documented purpose (MOT-033).",
       "durationTokens": [
         "--ef-motion-inertia-duration",
         "--ef-motion-exit-duration",
         "--ef-motion-press-duration"
       ],
       "easingTokens": [
+        "--ef-motion-settle-easing",
+        "--ef-motion-exit-easing",
         "--ef-motion-spring-easing",
         "--ef-motion-damped-easing"
       ],
       "literalEasings": [],
-      "reducedMotion": "Remove travel, overshoot, bounce and spatial compression; place the final state immediately or nearly immediately."
+      "reducedMotion": "Remove travel, overshoot and spatial compression; place the final state immediately."
     },
     "gravity": {
       "label": "Gravity-derived directional response",
@@ -95,7 +97,9 @@
       "phenomenon": "Opacity, color, backdrop tint, blur and other non-spatial presentation changes. Never assigned fake mass, gravity or spring semantics.",
       "durationTokens": [
         "--ef-motion-perceptual-duration",
-        "--ef-motion-perceptual-emphasis-duration"
+        "--ef-motion-perceptual-emphasis-duration",
+        "--ef-motion-fade-in-duration",
+        "--ef-motion-fade-out-duration"
       ],
       "easingTokens": [
         "--ef-motion-perceptual-easing",
@@ -105,10 +109,14 @@
       "reducedMotion": "May retain a brief non-spatial transition when it materially improves comprehension."
     }
   },
+  "overshootTokens": [
+    "--ef-motion-spring-easing"
+  ],
+  "overshootPolicy": "MOT-033: structural, state and attention motion never overshoots. An overshoot token may appear only on a classification entry whose `overshoot` map states, per property, the feedback purpose; the motion audit reports `overshoot-unjustified` otherwise and `easing-definition-overshoots` when any other canonical easing is defined with overshoot or reversal.",
   "parameters": {
     "--ef-motion-mass": "inertial mass m (preset input; never domain semantics)",
     "--ef-motion-stiffness": "restoring stiffness k (preset input)",
-    "--ef-motion-damping": "damping ratio \u03b6 (preset input)",
+    "--ef-motion-damping": "damping ratio ζ (preset input)",
     "--ef-motion-distance": "normalized gravity travel distance s",
     "--ef-motion-gravity": "normalized gravitational acceleration g",
     "--ef-motion-base-duration": "dimensional scale that maps the normalized model to UI time"
