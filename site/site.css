@@ -690,7 +690,11 @@
     max-inline-size: 64rem;
   }
 
-  .agent-page h1 {
+  /* Page titles share one treatment. It lives in this layer because the
+     heading reset above (same layer, later than echelon.site) would
+     otherwise remove the top margin from a title styled in echelon.site. */
+  .agent-page h1,
+  .brand-lab > h1 {
     margin: 1rem 0 2rem;
     font-size: clamp(3rem, 7vw, 6.5rem);
   }
@@ -1615,7 +1619,8 @@
 
     .hero h1,
     .component-header h1,
-    .agent-page h1 {
+    .agent-page h1,
+    .brand-lab > h1 {
       font-size: clamp(2.75rem, 14vw, 3.5rem);
     }
 
@@ -1679,8 +1684,6 @@
 
   .brand-lab > h1 {
     max-inline-size: 12ch;
-    margin: 1rem 0 2rem;
-    font-size: clamp(3rem, 7vw, 6.5rem);
   }
 
   .brand-lab > .lead {
@@ -1794,10 +1797,6 @@
   }
 
   @media (max-width: 680px) {
-    .brand-lab > h1 {
-      font-size: clamp(2.75rem, 14vw, 3.5rem);
-    }
-
     .brand-demo {
       padding: var(--ef-primitive-spacing-4, 1rem);
     }

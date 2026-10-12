@@ -81,3 +81,23 @@ test.describe("touch devices", () => {
     expect(await link.evaluate(element => getComputedStyle(element).borderBlockEndColor)).toBe(before);
   });
 });
+
+// Page titles on shell pages share one treatment. A title styled in a lower
+// cascade layer once lost its top margin to the site heading reset.
+for (const width of [1440, 390]) {
+  test(`content page titles share size and spacing at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    const titles = [];
+    for (const url of ["/site-dist/accessibility/index.html", "/site-dist/agents/index.html", "/site-dist/branding/index.html"]) {
+      await page.goto(url);
+      await page.evaluate(() => document.fonts.ready);
+      titles.push(await page.evaluate(() => {
+        const title = document.querySelector("main h1");
+        const style = getComputedStyle(title);
+        const eyebrow = document.querySelector("main .eyebrow").getBoundingClientRect();
+        return { fontSize: style.fontSize, marginTop: style.marginTop, marginBottom: style.marginBottom, gap: Math.round(title.getBoundingClientRect().top - eyebrow.bottom) };
+      }));
+    }
+    for (const title of titles.slice(1)) expect(title).toEqual(titles[0]);
+  });
+}
