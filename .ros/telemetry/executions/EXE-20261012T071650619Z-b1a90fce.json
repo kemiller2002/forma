@@ -499,14 +499,30 @@
     },
     {
       "metricId": "agent.interruptions",
-      "status": "unknown",
-      "reason": "runtime capability not reported or mapped",
-      "discoveredAt": "2026-10-12T07:16:50.619Z",
+      "status": "derived",
+      "reason": "normalized measurement recorded",
+      "discoveredAt": "2026-10-12T07:21:45.000Z",
       "source": {
-        "type": "environment",
-        "name": "runtime-identity",
-        "mechanism": "explicit-or-unmapped-environment"
-      }
+        "type": "calculated",
+        "name": "ros-work-protocol",
+        "mechanism": "blocked-transition"
+      },
+      "lastAssessedAt": "2026-10-12T07:21:45.000Z",
+      "recordedAt": "2026-10-12T07:21:45.000Z",
+      "history": [
+        {
+          "status": "unknown",
+          "reason": "runtime capability not reported or mapped",
+          "source": {
+            "type": "environment",
+            "name": "runtime-identity",
+            "mechanism": "explicit-or-unmapped-environment"
+          },
+          "discoveredAt": "2026-10-12T07:16:50.619Z",
+          "lastAssessedAt": "2026-10-12T07:16:50.619Z",
+          "recordedAt": "2026-10-12T07:16:50.619Z"
+        }
+      ]
     },
     {
       "metricId": "agent.resumes",
@@ -1348,6 +1364,26 @@
       },
       "collectedAt": "2026-10-12T07:16:50.619Z",
       "schemaVersion": "1.0.0"
+    },
+    {
+      "measurementId": "MEAS-dc52e5f1efe0c4e90e00667c",
+      "id": "agent.interruptions",
+      "value": 1,
+      "unit": "count",
+      "currency": null,
+      "quality": "derived",
+      "confidence": null,
+      "scope": "execution",
+      "aggregation": "sum",
+      "dimensions": {},
+      "pricing": null,
+      "source": {
+        "type": "calculated",
+        "name": "ros-work-protocol",
+        "mechanism": "blocked-transition"
+      },
+      "collectedAt": "2026-10-12T07:21:45.000Z",
+      "schemaVersion": "1.0.0"
     }
   ],
   "rawTelemetry": [],
@@ -1360,6 +1396,17 @@
         "name": "ros",
         "mechanism": "work-lifecycle"
       }
+    },
+    {
+      "type": "work.blocked",
+      "occurredAt": "2026-10-12T07:21:45.000Z",
+      "reason": "Await exact-head browser CI and deployment verification for PR 151; local browser binaries/dependencies unavailable",
+      "source": {
+        "type": "ros-clock",
+        "name": "ros",
+        "mechanism": "work-lifecycle"
+      },
+      "eventId": "TEVT-588d009bce203fd54aa4cfc7"
     }
   ],
   "repository": {
