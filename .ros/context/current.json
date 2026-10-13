@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-13T18:33:19.000Z",
+  "updatedAt": "2026-10-13T20:48:50.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1996,33 +1996,34 @@
     {
       "id": "GH-156",
       "type": "task",
-      "state": "active",
-      "semanticState": "active",
+      "state": "blocked",
+      "semanticState": "blocked",
       "evidence": [],
-      "updatedAt": "2026-10-13T18:33:19.000Z",
+      "updatedAt": "2026-10-13T20:48:50.000Z",
       "telemetryExecutionIds": [
         "EXE-20261013T183320424Z-8a02891b"
       ],
       "latestCheckpoint": {
-        "id": "9fe79fe58b447043010844ff",
-        "recordedAt": "2026-10-13T19:15:36.000Z",
+        "id": "0426edc8d44a5f84d57834dd",
+        "recordedAt": "2026-10-13T20:47:43.000Z",
         "executionId": "EXE-20261013T183320424Z-8a02891b",
         "repository": "echelon-design-system",
         "branch": "feat/ui-conformance-pilot-2026-10",
-        "commit": "42790b3ce996f887840f20f17dbb2b1853b3e514",
+        "commit": "f66dba66981cd020329436ec27750036442d9334",
         "remote": {
           "name": "origin",
           "url": "https://github.com/kemiller2002/forma"
         },
         "remoteBranch": "feat/ui-conformance-pilot-2026-10",
-        "remoteCommit": "42790b3ce996f887840f20f17dbb2b1853b3e514",
-        "summary": "Helpers published as packages/conformance; 721 examples classified (87 live/226 actions, 306 static, 328 none) with catalog check, labels, inert rendering and outcome specs; form-row primitive, field height and consumer geometry fixes with regression specs",
-        "nextAction": "Marketing-site audit, full-catalog overflow probe review, ui:conformance script, version 0.7.0, full validation, draft PR",
+        "remoteCommit": "f66dba66981cd020329436ec27750036442d9334",
+        "summary": "Pilot complete on f66dba6: 721 examples classified (87 live/226 actions, 306 static, 328 none) with catalog check and outcome tests; form-row primitive; shared geometry and 200%-text overflow fixed catalog-wide (0/2884 renders fail); site and marketing audit; helpers package 0.1.0; version 0.7.0; ui:conformance 519/519, site:mobile 416/416, test:browser chromium 1166/1166 locally",
+        "nextAction": "Observe draft PR CI; owner review; Firefox/WebKit evidence and CI promotion of ui:conformance remain",
         "verification": {
           "status": "verified",
           "mechanism": "git-remote-observation"
         }
-      }
+      },
+      "blockReason": "Pilot implemented and pushed in draft PR #158 (stacked on #155); awaiting owner review and merge decisions on #155/#158, Firefox/WebKit evidence and CI promotion of ui:conformance; site demo-script policy is an owner decision"
     }
   ]
 }

@@ -499,14 +499,30 @@
     },
     {
       "metricId": "agent.interruptions",
-      "status": "unknown",
-      "reason": "runtime capability not reported or mapped",
-      "discoveredAt": "2026-10-13T18:33:20.424Z",
+      "status": "derived",
+      "reason": "normalized measurement recorded",
+      "discoveredAt": "2026-10-13T20:48:50.000Z",
       "source": {
-        "type": "environment",
-        "name": "runtime-identity",
-        "mechanism": "whitelisted-claude-environment"
-      }
+        "type": "calculated",
+        "name": "ros-work-protocol",
+        "mechanism": "blocked-transition"
+      },
+      "lastAssessedAt": "2026-10-13T20:48:50.000Z",
+      "recordedAt": "2026-10-13T20:48:50.000Z",
+      "history": [
+        {
+          "status": "unknown",
+          "reason": "runtime capability not reported or mapped",
+          "source": {
+            "type": "environment",
+            "name": "runtime-identity",
+            "mechanism": "whitelisted-claude-environment"
+          },
+          "discoveredAt": "2026-10-13T18:33:20.424Z",
+          "lastAssessedAt": "2026-10-13T18:33:20.424Z",
+          "recordedAt": "2026-10-13T18:33:20.424Z"
+        }
+      ]
     },
     {
       "metricId": "agent.resumes",
@@ -1348,6 +1364,26 @@
       },
       "collectedAt": "2026-10-13T18:33:20.424Z",
       "schemaVersion": "1.0.0"
+    },
+    {
+      "measurementId": "MEAS-f9194a42e5f0665741c0ca29",
+      "id": "agent.interruptions",
+      "value": 1,
+      "unit": "count",
+      "currency": null,
+      "quality": "derived",
+      "confidence": null,
+      "scope": "execution",
+      "aggregation": "sum",
+      "dimensions": {},
+      "pricing": null,
+      "source": {
+        "type": "calculated",
+        "name": "ros-work-protocol",
+        "mechanism": "blocked-transition"
+      },
+      "collectedAt": "2026-10-13T20:48:50.000Z",
+      "schemaVersion": "1.0.0"
     }
   ],
   "rawTelemetry": [],
@@ -1360,6 +1396,17 @@
         "name": "ros",
         "mechanism": "work-lifecycle"
       }
+    },
+    {
+      "type": "work.blocked",
+      "occurredAt": "2026-10-13T20:48:50.000Z",
+      "reason": "Pilot implemented and pushed in draft PR #158 (stacked on #155); awaiting owner review and merge decisions on #155/#158, Firefox/WebKit evidence and CI promotion of ui:conformance; site demo-script policy is an owner decision",
+      "source": {
+        "type": "ros-clock",
+        "name": "ros",
+        "mechanism": "work-lifecycle"
+      },
+      "eventId": "TEVT-3772f0cd070d709e8c3be876"
     }
   ],
   "repository": {
