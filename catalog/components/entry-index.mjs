@@ -72,7 +72,7 @@ export default {
       id: "long-titles",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Long titles and summaries",
-      description: "Entries with long titles and two-sentence summaries and no eyebrow. Titles and summaries wrap within their columns; the link text stays on one line.",
+      description: "Entries with long titles and two-sentence summaries and no eyebrow. Titles and summaries wrap within their columns; the link text stays on one line while it fits and wraps between words rather than overflowing at large text sizes.",
       html: `<ef-entry-index class="ef-component-tag">
   <div class="ef-site">
     <ol class="ef-index" aria-label="Research programmes">
@@ -108,7 +108,7 @@ export default {
         notes: [
           "Below a 56rem list width each row regroups into a 3.5rem marker column beside the content, with heading, summary and link stacked in the second column.",
           "Below 28rem (most phones) the marker also moves into the single column above the heading; source order is unchanged.",
-          "The link text does not wrap (`white-space: nowrap`), so keep it short; very long link text can overflow a 320px row.",
+          "The link text stays on one line while it fits and wraps between words instead of overflowing a 320px row; still keep it short.",
           "The link is at least 24px tall and sits alone on its own line, so it is easy to tap without catching neighbours."
         ]
       },
@@ -172,7 +172,7 @@ export default {
   responsive: [
     "Container queries on the list itself (`ef-index`) regroup rows at 56rem and 28rem; they respond to the space the list gets, not the viewport.",
     "Columns are `minmax(0, …)`, so titles and summaries wrap instead of widening the page.",
-    "`.ef-index__link` uses `white-space: nowrap`; very long link text can overflow at 320px."
+    "`.ef-index__link` keeps its text on one line while it fits and wraps between words at narrow widths or large text sizes instead of overflowing."
   ],
   motion: [
     "No animation: regrouping is immediate and links change only their underline thickness on hover."

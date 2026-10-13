@@ -1,6 +1,6 @@
 {
   "name": "@echelon-foundry/design-system",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "private": false,
   "type": "module",
   "description": "Zero-runtime HTML and CSS design system for Echelon Foundry applications.",
@@ -90,6 +90,7 @@
     "test:workflow-browser": "playwright test tests/browser/workflow-static.spec.mjs tests/browser/workflow-embed.spec.mjs",
     "workflow:check": "npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:workflow-browser",
     "test:machine": "playwright test tests/browser/machine-operability.spec.mjs",
+    "ui:conformance": "npm run site:build && npm run catalog:check && npm run test:package && playwright test --config=playwright.conformance.config.mjs",
     "icons:check": "node --test tests/icons.test.mjs"
   },
   "devDependencies": {

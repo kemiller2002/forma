@@ -1113,7 +1113,9 @@
 
   .pager {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* Three columns while each can hold a component name; stacks sooner
+       when text is enlarged instead of splitting words (ULI-L06). */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
     gap: 1px;
     margin-block-start: 4rem;
     border: 1px solid var(--ef-forged-iron);

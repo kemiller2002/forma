@@ -51,6 +51,11 @@
   .ef-site .ef-section[data-ef-tone]:not([data-ef-tone="page"]) {
     margin-block: calc(var(--ef-layout-section-space) / 2);
     padding: calc(var(--ef-layout-block-space) * 2);
+    /* The block-space token is rem-based; at enlarged text on a phone it
+       would leave a few characters of line length (96px content at 320px
+       and 200% text). Cap only the inline padding by viewport width; this
+       changes nothing at the default text size (ULI-L05). */
+    padding-inline: min(calc(var(--ef-layout-block-space) * 2), 12.5vw);
   }
 
   .ef-section > * + * { margin-block-start: var(--ef-layout-stack-space); }

@@ -316,7 +316,11 @@ export const measureOverflow = async page => {
       for (let node = element; node && node !== document.body; node = node.parentElement) {
         const overflow = getComputedStyle(node).overflowX;
         if (overflow === "auto" || overflow === "scroll") return { scroller: true };
-        if (overflow === "hidden" || overflow === "clip") return { rect: node.getBoundingClientRect() };
+        if (overflow === "hidden" || overflow === "clip") {
+          const rect = node.getBoundingClientRect();
+          // A 1px clipped box is the visually-hidden pattern: not visible text.
+          return rect.width <= 1 || rect.height <= 1 ? { hidden: true } : { rect };
+        }
       }
       return null;
     };
@@ -329,7 +333,7 @@ export const measureOverflow = async page => {
       const own = element.getBoundingClientRect();
       if (own.width <= 1 && own.height <= 1) return []; // visually hidden text
       const clip = clippingAncestor(element);
-      if (clip?.scroller) return [];
+      if (clip?.scroller || clip?.hidden) return [];
       const range = document.createRange();
       range.selectNodeContents(text);
       const escaped = [...range.getClientRects()].find(rect => rect.width > 0 &&

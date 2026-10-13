@@ -61,10 +61,6 @@
   }
 
   :where(button, .ef-button) {
-    /* Words in an action label never split mid-word because a table cell
-       allows it (td/th use overflow-wrap: anywhere); a single word wider
-       than its container may still break rather than overflow. */
-    overflow-wrap: break-word;
     min-block-size: 2.75rem;
     padding: 0.65rem 1rem;
     border: 1px solid var(--ef-color-border-functional, #3a403c);
@@ -164,14 +160,27 @@
   .ef-stack { display: flex; flex-direction: column; gap: var(--ef-stack-gap, var(--ef-primitive-spacing-4, 1rem)); }
   .ef-cluster { display: flex; flex-wrap: wrap; gap: var(--ef-cluster-gap, var(--ef-primitive-spacing-3, 0.75rem)); align-items: center; }
   /* .ef-actions (catalog: button) is an application-layer row of related actions; it was styled only in marketing.css (forma#93 gap). */
-  .ef-actions { display: flex; flex-wrap: wrap; gap: var(--ef-primitive-spacing-3, 0.75rem); align-items: center; }
+  /* min-inline-size: 0 lets an action row shrink inside a flex or grid parent
+     instead of being held at its widest button's word (ULI-L05). */
+  .ef-actions { display: flex; flex-wrap: wrap; gap: var(--ef-primitive-spacing-3, 0.75rem); align-items: center; min-inline-size: 0; }
   .ef-grid { display: grid; gap: var(--ef-grid-gap, var(--ef-primitive-spacing-4, 1rem)); grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ef-grid-min, 16rem)), 1fr)); }
   .ef-section { padding-block: var(--ef-section-space, var(--ef-primitive-spacing-7, 3rem)); }
   .ef-surface { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); min-inline-size: 0; padding: var(--ef-surface-space, var(--ef-primitive-spacing-5, 1.5rem)); background: var(--ef-color-surface-secondary, #e3e0d7); color: var(--ef-color-text-on-secondary-surface, #3a403c); border: 1px solid var(--ef-color-border-subtle, #e3e0d7); }
   .ef-surface :where(h1, h2, h3, h4, h5, h6, p) { color: inherit; }
 
-  :where(h1, h2, h3, h4, h5, h6, p, a, label, legend, td, th) {
+  :where(h1, h2, h3, h4, h5, h6, p, a, label, legend, td, th, dt, dd, caption, figcaption) {
     overflow-wrap: anywhere;
+  }
+
+  /* Action labels never split mid-word because their container allows it
+     (a link button inherits the rule above; a button inherits it from a
+     table cell). A single word wider than its container may still break
+     rather than overflow. Must follow the rule above (ULI-L06, L07). The
+     inline-size cap also clamps a flex item's automatic minimum, so a
+     button never pushes its row past its container (ULI-L05). */
+  :where(button, .ef-button) {
+    overflow-wrap: break-word;
+    max-inline-size: 100%;
   }
 
   @media (prefers-reduced-motion: reduce) {

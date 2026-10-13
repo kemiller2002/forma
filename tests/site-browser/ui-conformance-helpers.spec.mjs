@@ -403,6 +403,8 @@ test.describe("overflow, labels and focus", () => {
     await page.setViewportSize({ width: 320, height: 400 });
     await page.setContent(fixture(`<div style="overflow-x:auto;width:200px"><p style="white-space:nowrap;width:600px">A wide table row inside a contained, labelled scroller</p></div>`));
     expect((await measureOverflow(page)).status).toBe(STATUS.PASS);
+    await page.setContent(fixture(`<table><thead style="position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%)"><tr><th style="display:block;inline-size:7rem">A visually hidden column heading</th></tr></thead></table>`));
+    expect((await measureOverflow(page)).status).toBe(STATUS.PASS);
     await page.setContent(fixture(`<nav style="overflow:hidden;width:200px"><a href="#a" style="white-space:nowrap">A navigation label that is far too long to fit</a></nav>`));
     const report = await measureOverflow(page);
     expect(report.status).toBe(STATUS.FAIL);

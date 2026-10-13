@@ -635,6 +635,10 @@
 
   .ef-disclosure > summary {
     min-inline-size: 0;
+    /* The open marker rotates 45deg; its rotated (empty) box corners would
+       otherwise add a few pixels of page overflow at narrow widths (ULI-L05).
+       Clipping does not affect the summary's own focus ring. */
+    overflow-x: clip;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1240,7 +1244,7 @@
 
   .ef-collection-toolbar__controls label,
   .ef-collection-toolbar__filters {
-    min-inline-size: 9rem;
+    min-inline-size: min(9rem, 100%);
     font-size: 0.75rem;
     font-weight: 650;
   }
@@ -1534,8 +1538,10 @@
   /* Metrics and dashboards --------------------------------------------- */
   .ef-metric-card {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.5rem;
     min-inline-size: 0;
+    overflow-wrap: anywhere;
     padding: 1.25rem;
     border: 1px solid var(--ef-color-border-functional, #3a403c);
     background: var(--ef-color-surface-primary, #f2efe7);
@@ -1878,6 +1884,8 @@
   }
 
   .ef-wizard__steps li {
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
     display: flex;
     gap: 0.5rem;
     align-items: center;
@@ -1904,6 +1912,7 @@
   .ef-readiness-checklist > header h3 { margin: 0.5rem 0 0; }
   .ef-readiness-checklist__items { margin: 0; padding: 0; list-style: none; }
   .ef-readiness-checklist__items li {
+    overflow-wrap: anywhere;
     display: grid;
     grid-template-columns: 2rem minmax(0, 1fr) auto;
     gap: 0.75rem;
@@ -1971,6 +1980,7 @@
   .ef-command-palette__group button {
     inline-size: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 1rem;
     text-align: start;
@@ -2202,7 +2212,9 @@
   .ef-provenance-trail li {
     position: relative;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.2rem;
+    overflow-wrap: anywhere;
     padding: 0.75rem 0 0.75rem 2rem;
   }
   .ef-provenance-trail li::before {
@@ -2262,6 +2274,7 @@
   /* Mobile action bar --------------------------------------------------- */
   .ef-mobile-action-bar {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     padding: 0.75rem;
     padding-block-end: max(0.75rem, env(safe-area-inset-bottom));
@@ -2270,7 +2283,7 @@
     backdrop-filter: blur(10px);
   }
 
-  .ef-mobile-action-bar > * { flex: 1 1 0; }
+  .ef-mobile-action-bar > * { flex: 1 1 min(100%, 8rem); }
   .ef-mobile-action-bar__primary {
     background: var(--ef-color-surface-inverse, #202421);
     color: var(--ef-color-text-inverse, #f2efe7);
@@ -2408,7 +2421,7 @@
 
     .ef-work-queue__header { display: grid; }
     .ef-diff-row,
-    .ef-key-value-list > div { grid-template-columns: 1fr; gap: 0.25rem; }
+    .ef-key-value-list > div { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
 
     .ef-status-lozenge-set { align-items: stretch; }
     .ef-status-lozenge-set .ef-status-lozenge { flex: 1 1 100%; justify-content: center; }
@@ -2650,7 +2663,7 @@
     .ef-composer__actions button { min-block-size: 2.75rem; }
     .ef-composer__submit { inline-size: 100%; }
 
-    .ef-turn { grid-template-columns: 1fr; }
+    .ef-turn { grid-template-columns: minmax(0, 1fr); }
     .ef-turn__actions { grid-column: 1; }
     .ef-turn__actions button { inline-size: 100%; }
 
@@ -2933,6 +2946,7 @@
     --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
     --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
     display: inline-flex;
+    max-inline-size: 100%;
     align-items: center;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
     padding: 0.55rem 0.75rem;
@@ -2951,6 +2965,8 @@
   .ef-diagnostic-status__body {
     display: grid;
     gap: 0.1rem;
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
   }
 
   .ef-diagnostic-status__body > span {
@@ -3089,7 +3105,7 @@
   .ef-security-state-matrix__grid dt { font-size:.75rem; font-weight:700; }
   .ef-security-state-matrix__grid dd { margin:0; font-size:clamp(1.4rem,4vw,2rem); font-weight:750; }
   .ef-security-blockers ul { display:grid; gap:.75rem; padding-inline-start:1.25rem; }
-  .ef-security-blockers li { padding-inline-start:.25rem; }
+  .ef-security-blockers li { padding-inline-start:.25rem; min-inline-size:0; overflow-wrap:anywhere; }
   .ef-security-blockers li span { display:block; }
   .ef-security-evidence-chain ol { display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.5rem; padding:0; list-style:none; }
   .ef-security-evidence-chain li { padding:.75rem; border:1px solid var(--ef-color-border-functional,#3a403c); overflow-wrap:anywhere; }
@@ -3313,7 +3329,10 @@
   }
 
   @media (max-width: 48rem) {
-    .ef-split-pane[data-ef-resizable] { grid-template-columns: minmax(0, 1fr); }
+    /* Includes the collapsed state, whose track list would otherwise keep
+       three columns on a phone and squeeze the secondary pane (ULI-L05). */
+    .ef-split-pane[data-ef-resizable],
+    .ef-split-pane[data-ef-resizable][data-ef-collapsed] { grid-template-columns: minmax(0, 1fr); }
     .ef-split-pane__separator { display: none; }
   }
 
