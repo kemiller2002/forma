@@ -82,6 +82,10 @@ Agents must not:
 - introduce an advanced behavioral control without naming the application/Limen
   behavior contract it depends on.
 
+## Layout and demo-action conformance
+
+Before adding or changing a UI layout, control or catalog demo, read [Universal UI Conformance](UNIVERSAL-UI-CONFORMANCE.md). Declare meaningful peer-alignment relationships, verify responsive geometry and require an observable result for every enabled live demo action. Documentation-only static specimens must be labeled honestly. A visual click without an expected state transition is not evidence of functionality.
+
 ## Machine operability
 
 Read `requirements/MACHINE-OPERABILITY.md` before adding or changing an interaction.
