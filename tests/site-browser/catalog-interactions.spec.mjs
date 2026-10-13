@@ -65,6 +65,9 @@ for (const component of manifest.components) {
   for (const target of liveTargets(component)) {
     test(`ULI-A02 ${component.slug} / ${target.id}: every declared live action produces its outcome`, async ({ page }) => {
       const actions = target.interaction.actions;
+      // Budget grows with the number of declared actions; each assertion
+      // keeps its own bounded timeout.
+      test.setTimeout(30_000 + actions.length * 5_000);
       if (target.mobile) {
         await page.goto(`${componentUrl(component.slug)}mobile-${target.id}.html`);
         await expectInventoryMatches(page.locator("body"), actions, `${component.slug}/${target.id}`);
@@ -86,6 +89,8 @@ for (const component of manifest.components) {
   if (component.basicInteraction.kind === "live") {
     test(`ULI-A02 ${component.slug}: canonical pattern actions also work at 320px and in every motion weight`, async ({ page }) => {
       const actions = component.basicInteraction.actions;
+      // mobile.html plus up to three motion-weight copies.
+      test.setTimeout(30_000 + actions.length * 4 * 5_000);
       await page.goto(`${componentUrl(component.slug)}mobile.html`);
       await expectInventoryMatches(page.locator("body"), actions, `${component.slug}/mobile.html`);
       await runDeclaredActions(page, page.locator("body"), actions);
