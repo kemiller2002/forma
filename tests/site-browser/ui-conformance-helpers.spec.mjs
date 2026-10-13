@@ -48,3 +48,14 @@ test("action inventory reports candidates without claiming functionality", async
   const actions = await inventoryVisibleActions(page);
   expect(actions.map(item => item.nameHint)).toEqual(["Unwired example", "Save"]);
 });
+
+test("inert action cannot pass because expected feedback already exists", async ({ page }) => {
+  await page.setContent(`<!doctype html><html lang="en"><body>
+    <button type="button">Save</button>
+    <p role="status" aria-label="Save status">Saved</p>
+  </body></html>`);
+  await expect(expectActionOutcome(page, {
+    action: { role: "button", name: "Save" },
+    outcome: { kind: "text", target: { role: "status", name: "Save status" }, text: "Saved" }
+  })).rejects.toThrow(/Text did not change/);
+});
