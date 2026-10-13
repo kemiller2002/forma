@@ -219,11 +219,35 @@ export const runActionAssertion = async (root, contract) => {
   const premise = evaluateActionPremise({ ruleId, action, outcome, pre, controlIssue });
   if (premise) return premise;
 
-  // Focus first, as a keyboard user reaches it: a skip link is positioned
-  // off-screen until it has focus, and focus never changes another control's
-  // state. Then activate it through the pointer path.
-  await control.focus({ timeout: timeoutMs });
-  await control.click({ timeout: timeoutMs });
+  // Pointer users click what they can hit. A control that a pointer cannot
+  // hit but that focus reveals (a skip link hidden until focused) exists for
+  // keyboard users, so it is activated their way: focus, then Enter. A
+  // control that stays covered after focus is still clicked, so Playwright
+  // reports the interception as the defect it is. Focus is never applied to a
+  // hittable control: interest invokers (interestfor) open on focus, which
+  // would change the state the click is meant to change.
+  const hittable = () => element.evaluate(node => {
+    // Instant: a page with smooth scrolling would still be moving when read.
+    node.scrollIntoView?.({ block: "nearest", inline: "nearest", behavior: "instant" });
+    const rect = node.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    if (x < 0 || y < 0 || x > window.innerWidth || y > window.innerHeight) return false;
+    const hit = node.ownerDocument.elementFromPoint(x, y);
+    // A native control's own <label> receives its pointer activation.
+    const targets = [node, ...(node.labels ?? [])];
+    return Boolean(hit) && targets.some(target => target === hit || target.contains(hit));
+  });
+  if (await hittable()) {
+    await control.click({ timeout: timeoutMs });
+  } else {
+    await control.focus({ timeout: timeoutMs });
+    const revealed = await expect.poll(hittable, { timeout: timeoutMs }).toBe(true).then(() => true, () => false);
+    // Links activate with Enter; buttons, checkboxes and switches with Space.
+    const key = await element.evaluate(node => (node.tagName === "A" || node.getAttribute("role") === "link" ? "Enter" : " "));
+    if (revealed) await control.press(key === " " ? "Space" : key, { timeout: timeoutMs });
+    else await control.click({ timeout: timeoutMs });
+  }
 
   const appeared = await expect(async () => {
     const observed = await observeOutcome(root, element, outcome, timeoutMs);

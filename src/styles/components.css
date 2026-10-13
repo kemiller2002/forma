@@ -2316,7 +2316,9 @@
     .ef-operation-status,
     .ef-record-header,
     .ef-file-upload__queue li {
-      grid-template-columns: 1fr;
+      /* minmax(0, …): a long word or wide font never holds the track wider
+         than the screen (ULI-L05). */
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .ef-work-queue__item button,
@@ -3119,7 +3121,7 @@
   .ef-invariant-result dl { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(10rem,100%),1fr)); gap:.75rem; }
   .ef-invariant-result dt { color:var(--ef-color-text-secondary,#686d68); font-size:.75rem; font-weight:700; } .ef-invariant-result dd { margin:0; overflow-wrap:anywhere; }
   :where(.ef-evidence-age,.ef-security-trend) ul { display:grid; gap:.5rem; margin:0; padding:0; list-style:none; }
-  :where(.ef-evidence-age,.ef-security-trend) li { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); display:grid; gap:.2rem; border-inline-start:.3rem solid currentColor; padding:.65rem .75rem; background:var(--ef-color-surface-secondary,#e3e0d7); }
+  :where(.ef-evidence-age,.ef-security-trend) li { grid-template-columns:minmax(0,1fr); min-inline-size:0; overflow-wrap:anywhere; --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); display:grid; gap:.2rem; border-inline-start:.3rem solid currentColor; padding:.65rem .75rem; background:var(--ef-color-surface-secondary,#e3e0d7); }
   :where(.ef-evidence-age,.ef-security-trend) li span { overflow-wrap:anywhere; }
 
   /* Composition primitives ---------------------------------------------- */

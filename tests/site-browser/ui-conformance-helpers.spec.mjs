@@ -222,6 +222,26 @@ test.describe("ULI-A01/A02 action fixtures", () => {
     await expectActionOutcome(page, { action: { role: "link", name: "Skip to main content" }, outcome: { kind: "url", expected: /#main$/ } });
   });
 
+  test("a fixed skip link translated off-screen is reached by focus even after scrolling", async ({ page }) => {
+    await page.setContent(fixture(`<style>.skip{position:fixed;top:8px;left:8px;transform:translateY(-200%)}.skip:focus{transform:none}</style>
+      <a class="skip" href="#main">Skip to main content</a><div style="block-size:3000px"></div><main id="main" tabindex="-1">Main</main>`));
+    await page.evaluate(() => window.scrollTo(0, 1500));
+    await expectActionOutcome(page, { action: { role: "link", name: "Skip to main content" }, outcome: { kind: "url", expected: /#main$/ } });
+  });
+
+  test("an on-screen control is not focused before it is clicked", async ({ page }) => {
+    // Focus can have its own effect (interest invokers open on focus); a
+    // pointer activation must not be preceded by a programmatic focus.
+    await page.setContent(fixture(`<button type="button" id="b">Show count</button><p role="status" aria-label="Focus count">0</p>
+      <script>
+        const b = document.getElementById('b'); const out = document.querySelector('[role=status]');
+        let focusedBeforePointer = 0;
+        b.addEventListener('focus', () => { if (!b.matches(':active')) focusedBeforePointer += 1; });
+        b.addEventListener('click', () => { out.textContent = focusedBeforePointer === 0 ? 'clicked without prior focus' : 'focused before click'; });
+      </script>`));
+    await expectActionOutcome(page, { action: { role: "button", name: "Show count" }, outcome: { kind: "text", target: { role: "status", name: "Focus count" }, expected: "clicked without prior focus" } });
+  });
+
   test("pre-existing expected feedback cannot satisfy an inert button", async ({ page }) => {
     await page.setContent(fixture(`<button type="button">Save</button><p role="status" aria-label="Save status">Saved</p>`));
     const report = await runActionAssertion(page, {

@@ -1044,7 +1044,7 @@
     }
 
     .ef-rule-clause { grid-template-columns: 1fr; }
-    .ef-obligation { grid-template-columns: 1fr; }
+    .ef-obligation { grid-template-columns: minmax(0, 1fr); }
     .ef-obligation__status { justify-self: start; }
 
     .ef-ranking__item {
