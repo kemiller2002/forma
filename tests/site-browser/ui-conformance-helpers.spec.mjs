@@ -26,7 +26,7 @@ test("ULI-L01 measures declared peer input top alignment", async ({ page }) => {
 test("ULI-A01/A02 accepts an actual observable action outcome", async ({ page }) => {
   await page.setContent(`<!doctype html><html lang="en"><body>
     <button type="button" id="increment">Increment</button>
-    <p role="status" id="count">Count: 0</p>
+    <p role="status" aria-label="Counter" id="count">Count: 0</p>
     <script>
       document.getElementById('increment').addEventListener('click', () => {
         document.getElementById('count').textContent = 'Count: 1';
@@ -34,7 +34,7 @@ test("ULI-A01/A02 accepts an actual observable action outcome", async ({ page })
     </script></body></html>`);
   await expectActionOutcome(page, {
     action: { role: "button", name: "Increment" },
-    outcome: { kind: "text", target: { role: "status", name: "Count: 1" }, text: "Count: 1" }
+    outcome: { kind: "text", target: { role: "status", name: "Counter" }, text: "Count: 1" }
   });
   await expect(page.getByRole("status")).toHaveText("Count: 1");
 });
