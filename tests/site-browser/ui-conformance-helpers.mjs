@@ -37,9 +37,23 @@ export async function expectActionOutcome(page, { action, outcome }) {
   await expect(control).toBeEnabled();
 
   const previousUrl = page.url();
-  let target;
+  let target, previous;
   if (outcome.target) target = semantic(page, outcome.target);
   if (outcome.kind !== "url" && !target) throw new Error("Outcome requires a semantic target.");
+
+  // Capture the state *before* activation. Otherwise an inert button can pass
+  // merely because the asserted text or element was already present.
+  switch (outcome.kind) {
+    case "visible": previous = await target.isVisible(); break;
+    case "text": previous = await target.textContent(); break;
+    case "checked":
+    case "unchecked": previous = await target.isChecked(); break;
+    case "attribute":
+      if (!outcome.attribute || outcome.value === undefined) throw new Error("Attribute outcome needs attribute and value.");
+      previous = await target.getAttribute(outcome.attribute); break;
+    case "url": break;
+    default: throw new Error(`Unsupported observable outcome: ${outcome.kind}`);
+  }
 
   await control.click();
 
@@ -47,27 +61,29 @@ export async function expectActionOutcome(page, { action, outcome }) {
     case "url":
       if (!outcome.matches) throw new Error("URL outcome requires a target URL/regexp.");
       await expect(page).toHaveURL(outcome.matches);
-      if (!outcome.allowUnchangedUrl) expect(page.url(), "Action did not change navigation state").not.toBe(previousUrl);
+      expect(page.url(), "Action did not change navigation state").not.toBe(previousUrl);
       break;
     case "visible":
       await expect(target).toBeVisible();
+      expect(previous, "Target was visible before activation; no transition was demonstrated").toBe(false);
       break;
     case "text":
       if (outcome.text === undefined) throw new Error("Text outcome requires expected text.");
       await expect(target).toContainText(outcome.text);
+      expect(await target.textContent(), "Text did not change after activation").not.toBe(previous);
       break;
     case "checked":
       await expect(target).toBeChecked();
+      expect(previous, "Checkbox was already checked").toBe(false);
       break;
     case "unchecked":
       await expect(target).not.toBeChecked();
+      expect(previous, "Checkbox was already unchecked").toBe(true);
       break;
     case "attribute":
-      if (!outcome.attribute || outcome.value === undefined) throw new Error("Attribute outcome needs attribute and value.");
       await expect(target).toHaveAttribute(outcome.attribute, outcome.value);
+      expect(await target.getAttribute(outcome.attribute), "Attribute did not change after activation").not.toBe(previous);
       break;
-    default:
-      throw new Error(`Unsupported observable outcome: ${outcome.kind}`);
   }
 }
 
