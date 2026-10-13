@@ -23,9 +23,11 @@ export default {
       "No visual styling beyond layout; links use the theme's link treatment."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "deep-record",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Deeply nested record with long names",
       description: "Five levels with long names. The row wraps between items; every ancestor stays a real link and the current scope is plain text.",
       html: `<ef-scope-trail class="ef-component-tag">
@@ -42,6 +44,7 @@ export default {
     },
     {
       id: "zoomed-diagram",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Scope of a zoomed diagram",
       description: "In a zoomable architecture diagram the trail states the current zoom scope in text, followed by a heading for the current representation. Selecting an ancestor zooms back out.",
       html: `<ef-scope-trail class="ef-component-tag">
@@ -58,6 +61,7 @@ export default {
     },
     {
       id: "mobile-wrapping-trail",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Scope trail on a phone",
       description: "Four levels at phone width. Items wrap onto a second line; the separator stays at the start of each continued item.",
       mobile: {

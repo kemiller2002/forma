@@ -22,9 +22,11 @@ export default {
       "Unavailable keys are struck through and muted, a cue that survives grayscale and forced colors."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior", "form-handling"] },
   examples: [
     {
       id: "work-with-f-keys",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "5250-style F-key bar",
       description: "The same contract with 5250 vocabulary: `F3=Exit`, `F12=Cancel` and named roll actions. Only the key names and `data-ef-action` values change; Enter stays the first submit key.",
       html: `<ef-character-grid-keys class="ef-component-tag">
@@ -50,6 +52,7 @@ export default {
     },
     {
       id: "input-inhibited",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Input inhibited while waiting",
       description: "While a request is outstanding the application disables every key except Reset and shows the X SYSTEM indicator. Disabled keys are skipped by Tab and struck through; Reset stays a `type=\"button\"` key that sends nothing.",
       html: `<ef-character-grid-keys class="ef-component-tag">
@@ -73,6 +76,7 @@ export default {
     },
     {
       id: "named-actions",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Modern named actions",
       description: "A modern character-grid tool with named actions and a space instead of `=` between key and label. The vocabulary is open: `data-ef-action` can be any application name, and the buttons still work by pointer and Tab before any shortcut mapping exists.",
       html: `<ef-character-grid-keys class="ef-component-tag">
@@ -94,6 +98,7 @@ export default {
     },
     {
       id: "key-bar-mobile",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Key bar on a phone",
       description: "Keys on the two bottom rows of a 40-column screen. Every key is a 44px-tall button that can be tapped, which matters on phones that have no function keys at all.",
       mobile: {

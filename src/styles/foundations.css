@@ -61,6 +61,10 @@
   }
 
   :where(button, .ef-button) {
+    /* Words in an action label never split mid-word because a table cell
+       allows it (td/th use overflow-wrap: anywhere); a single word wider
+       than its container may still break rather than overflow. */
+    overflow-wrap: break-word;
     min-block-size: 2.75rem;
     padding: 0.65rem 1rem;
     border: 1px solid var(--ef-color-border-functional, #3a403c);
@@ -97,6 +101,7 @@
   }
 
   :where(input:not([type="checkbox"], [type="radio"], [type="range"]), textarea, select) {
+    box-sizing: border-box;
     min-block-size: 2.75rem;
     inline-size: 100%;
     padding: 0.7rem 0.8rem;
@@ -104,6 +109,35 @@
     border-radius: var(--ef-primitive-radius-none, 0);
     background: var(--ef-color-surface-primary, #f2efe7);
     color: var(--ef-color-text-primary, #171a18);
+    font: inherit;
+    line-height: var(--ef-field-line-height, 1.6);
+  }
+
+  /*
+   * Equivalent single-line controls share one intrinsic block size
+   * (UI-LAYOUT-INTERACTION ULI-L02, L13): one line of field text plus the
+   * field padding and border. Native date/time and select boxes otherwise
+   * differ by several pixels from text inputs (Chromium: 51.97 vs 49.97 vs
+   * 46.38 px), which staggers peers in a row. Em-based, so it grows with
+   * the user's text size.
+   */
+  :where(
+    input:not([type]),
+    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="tel"], [type="url"], [type="number"],
+      [type="date"], [type="time"], [type="datetime-local"], [type="month"], [type="week"]),
+    select:not([multiple], [size])
+  ) {
+    block-size: var(--ef-field-control-block-size, calc(var(--ef-field-line-height, 1.6) * 1em + 1.4rem + 2px));
+  }
+
+  :where(input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="week"])::-webkit-datetime-edit {
+    padding-block: 0;
+  }
+
+  /* A fieldset's default min-inline-size is min-content, which lets a long
+     legend or option widen a form past a narrow viewport (ULI-L05). */
+  :where(fieldset) {
+    min-inline-size: 0;
   }
 
   /* iOS temporal controls otherwise retain a native intrinsic width despite

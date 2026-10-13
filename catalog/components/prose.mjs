@@ -22,9 +22,16 @@ export default {
       "Links are underlined and thicken on hover; in print, external links show their URL after the text."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "guide-with-code",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "the release notes", expect: { url: "#prose-guide-with-code-caption" } }
+        ]
+      },
       title: "Guide with a code sample and callout",
       description: "A short guide composing a [[code-sample]] and a [[callout]] inside prose. The figure takes the prose block margins and the callout keeps the measure.",
       html: `<ef-prose class="ef-component-tag">
@@ -71,6 +78,12 @@ export default {
     },
     {
       id: "mobile-article",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "the token contract", expect: { url: "#prose-mobile-article-end" } }
+        ]
+      },
       title: "Phone article with long inline code",
       description: "An article at phone width with a quotation and a long inline code value.",
       mobile: {

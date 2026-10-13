@@ -34,6 +34,7 @@ export default {
   examples: [
     {
       id: "toolbar-search",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Search command with visible label",
       description: "Decorative search icon inside a native, visibly named button. Both pointer activation and Playwright role/name lookup belong to the button, never to the icon.",
       html: `<ef-icon class="ef-component-tag">
@@ -50,6 +51,7 @@ export default {
     },
     {
       id: "mobile-icon-action",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Icon action on a narrow screen",
       description: "The accessible name comes from aria-label on the native 44px button; the SVG remains aria-hidden. No gesture, coordinate selector or icon-generated event is required.",
       mobile: {

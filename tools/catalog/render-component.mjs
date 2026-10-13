@@ -1,6 +1,6 @@
 // The standardized component page. Every public component renders through
 // this one template so humans and agents can learn one page and read all.
-import { breadcrumbs, catalogNav, codeViewer, exampleBlock, mobileExampleBlock, page, table, viewportDemo } from "./render-layout.mjs";
+import { breadcrumbs, catalogNav, codeViewer, exampleBlock, interactionAttributes, interactionNote, mobileExampleBlock, page, table, viewportDemo } from "./render-layout.mjs";
 import { categoryHref, componentHref, describeValues, escapeHtml, inline, join, list, namespaceSnippet, when, wrapTag } from "./html.mjs";
 import { ownedHooks, siblings } from "./load.mjs";
 
@@ -202,22 +202,23 @@ export const renderComponentPage = (context, component) => {
     <section class="doc-section" id="basic" aria-labelledby="section-basic-title">
       <h2 id="section-basic-title">Basic example</h2>
       <p>The smallest correct markup: the canonical pattern from <code>patterns/${component.slug}.html</code> inside its public tag. Copy this first, then adapt labels, names and state.${isPageLevel(component) ? " This component owns a page's <code>main</code> landmark, so it renders in its own document below." : ""}</p>
-      ${exampleBlock({ id: "example-basic", kicker: "Canonical", title: `Minimal ${component.name.toLowerCase()}`, description: "Rendered live from the canonical pattern file.", live: basicLive(component, basicSource), source: basicSource, rawHref: rawPath("basic"), context })}
+      ${exampleBlock({ id: "example-basic", kicker: "Canonical", title: `Minimal ${component.name.toLowerCase()}`, description: "Rendered from the canonical pattern file.", live: basicLive(component, basicSource), source: basicSource, rawHref: rawPath("basic"), context, interaction: component.basicInteraction ?? null })}
     </section>
 
     <section class="doc-section" id="examples" aria-labelledby="section-examples-title">
       <h2 id="section-examples-title">Examples</h2>
-      ${join(scenarios, example => exampleBlock({ id: `example-${example.id}`, kicker: "Scenario", title: example.title, description: example.description, live: example.html, source: example.html, rawHref: rawPath(example.id), context }))}
+      ${join(scenarios, example => exampleBlock({ id: `example-${example.id}`, kicker: "Scenario", title: example.title, description: example.description, live: example.html, source: example.html, rawHref: rawPath(example.id), context, interaction: example.interaction ?? null }))}
     </section>
 
     <section class="doc-section" id="mobile" aria-labelledby="section-mobile-title">
       <h2 id="section-mobile-title">Mobile</h2>
       <p>Each mobile example renders in its own document inside a real narrow viewport, so Forma's media and container queries run exactly as they would on a phone. Choose a width to compare.</p>
-      ${join(mobiles, example => mobileExampleBlock({ id: `example-${example.id}`, title: example.title, description: example.description, notes: example.mobile.notes, src: framePath(example.id), height: example.mobile.height, source: example.html, rawHref: rawPath(example.id), context }))}
-      <section class="example-block example-block--baseline" data-example="mobile-baseline" data-mobile-example="baseline" aria-labelledby="mobile-baseline-title">
+      ${join(mobiles, example => mobileExampleBlock({ id: `example-${example.id}`, title: example.title, description: example.description, notes: example.mobile.notes, src: framePath(example.id), height: example.mobile.height, source: example.html, rawHref: rawPath(example.id), context, interaction: example.interaction ?? null }))}
+      <section class="example-block example-block--baseline" data-example="mobile-baseline" data-mobile-example="baseline" aria-labelledby="mobile-baseline-title"${interactionAttributes(component.basicInteraction ?? null)}>
         <div class="example-heading">
           <div><span class="component-kicker">Baseline</span><h3 id="mobile-baseline-title">Mobile · 320px</h3></div>
           <p>The canonical pattern in a true 320px viewport, the minimum width every Forma component must support without page-level horizontal scrolling.</p>
+          ${interactionNote("mobile-baseline", component.basicInteraction ?? null)}
         </div>
         ${viewportDemo({ id: "mobile-baseline", title: `${component.name} baseline`, src: "mobile.html", height: 420 })}
       </section>
@@ -247,7 +248,7 @@ export const renderComponentPage = (context, component) => {
       <h2 id="section-motion-title">Motion</h2>
       ${list(component.motion, context)}
       ${when(weightRoot && !isPageLevel(component), () => `<h3>Motion weights</h3><p>Forma motion is physics-derived: perceived mass changes how a surface accelerates and settles, never what state it is in. Compare the three presentation weights of the same markup:</p>
-      <div class="example-block" data-example="motion-weights"><div class="example-canvas"><!--live-->${motionWeightSpecimens(component, weightRoot)}<!--/live--></div></div>`)}
+      <div class="example-block" data-example="motion-weights"${interactionAttributes(component.basicInteraction ?? null)}><div class="example-canvas"${component.basicInteraction?.kind === "static" ? " inert" : ""}><!--live-->${motionWeightSpecimens(component, weightRoot)}<!--/live--></div></div>`)}
     </section>
 
     <section class="doc-section" id="guidance" aria-labelledby="section-guidance-title">

@@ -926,6 +926,9 @@
   }
 
   .ef-best-worst__row + .ef-best-worst__row { border-block-start: 0; }
+  /* A long unbroken option (a product code, a compound word) wraps inside
+     its track instead of scrolling the page sideways (ULI-L05). */
+  .ef-best-worst__row > :first-child { min-inline-size: 0; overflow-wrap: anywhere; }
   .ef-best-worst__row label { display: grid; place-items: center; min-block-size: 2.75rem; }
   .ef-best-worst__row input { inline-size: 1.25rem; block-size: 1.25rem; accent-color: var(--ef-color-accent-primary, #905831); }
 

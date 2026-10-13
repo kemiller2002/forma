@@ -22,9 +22,11 @@ export default {
       "Forced colors replace the palette while boundaries, focus and severity shapes remain."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior", "form-handling"] },
   examples: [
     {
       id: "host-error",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Host error with input inhibited",
       description: "The host did not respond. The error message uses `role=\"alert\"` and reverse video, the Operator Information Area on row 11 shows X SYSTEM, and only Reset is enabled until the application unlocks input.",
       html: `<ef-character-grid-3270 class="ef-component-tag">
@@ -51,6 +53,7 @@ export default {
     },
     {
       id: "field-states",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Field states in the 3279 palette",
       description: "Required, invalid and disabled fields in green on black. The state cues are the same shapes as the default presentation (double underline, dashed rules, dotted underline); focused fields add a block caret and a dark green focus background.",
       html: `<ef-character-grid-3270 class="ef-component-tag">
@@ -78,6 +81,7 @@ export default {
     },
     {
       id: "without-profile",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Same screen without the profile",
       description: "The host-error screen with `data-ef-profile` removed. Every run stays on the same cell; only tokens change, so it follows the application's light or dark theme. This is how a profile is verified to be presentation-only.",
       html: `<ef-character-grid-3270 class="ef-component-tag">
@@ -104,6 +108,7 @@ export default {
     },
     {
       id: "menu-mobile",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "3270 menu on a phone",
       description: "An 80-column menu at phone width. The profile does not change containment: the black screen scrolls inside its viewport and the page stays still.",
       mobile: {

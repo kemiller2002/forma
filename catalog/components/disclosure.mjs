@@ -23,9 +23,23 @@ export default {
       "Adjacent disclosures share a single rule between them, forming a stacked list."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "disclosure", name: "Advanced options", expect: { open: true } }
+    ]
+  },
   examples: [
     {
       id: "exclusive-faq",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Can I change my plan later?", expect: { open: false } },
+          { role: "disclosure", name: "What happens to my data if I cancel?", expect: { open: true } },
+          { role: "disclosure", name: "Do you offer discounts for non-profits?", expect: { open: true } }
+        ]
+      },
       title: "Exclusive FAQ list",
       description: "Three adjacent disclosures sharing `name=\"disclosure-exclusive-faq\"`, so opening one closes the others (a native exclusive accordion in supporting browsers; elsewhere they open independently). Adjacent rules collapse into single dividers.",
       html: `<ef-disclosure class="ef-component-tag">
@@ -53,6 +67,12 @@ export default {
     },
     {
       id: "advanced-fields-open",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Advanced delivery settings", expect: { open: false } }
+        ]
+      },
       title: "Advanced settings open with fields",
       description: "A disclosure that starts open because the user changed one of its fields last time. It contains form fields, which submit whether the disclosure is open or closed. The standard motion weight gives the larger panel a slightly slower settle.",
       html: `<ef-disclosure class="ef-component-tag">
@@ -74,6 +94,12 @@ export default {
     },
     {
       id: "mobile-long-summary",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Pourquoi certaines transactions apparaissent-elles deux fois sur mon relevé mensuel ?", expect: { open: true } }
+        ]
+      },
       title: "Long summary on a phone",
       description: "A disclosure with a long, translated summary at phone width. The summary text wraps beside the indicator, and the row stays a single tap target.",
       mobile: {

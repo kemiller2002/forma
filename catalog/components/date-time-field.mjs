@@ -25,10 +25,16 @@ export default {
   examples: [
     {
       id: "appointment-slot",
+      alignment: [
+        { ruleId: "ULI-L01", id: "call-slot-controls", edge: "top", peers: [
+          { role: "textbox", name: "Call date" },
+          { role: "textbox", name: "Start time (London time)" }
+        ] }
+      ],
       title: "Appointment date and time",
       description: "Separate date and time inputs for a support call. The date cannot be before today's booking window and the time is limited to 09:00–17:00 in 15-minute steps (step is in seconds).",
       html: `<ef-date-time-field class="ef-component-tag">
-  <div class="ef-grid">
+  <div class="ef-form-row">
     <div class="ef-field">
       <label class="ef-field__label" for="date-time-field-appointment-date">Call date</label>
       <span class="ef-field__description" id="date-time-field-appointment-date-description">Between 1 October and 31 December 2026.</span>
@@ -72,6 +78,12 @@ export default {
     },
     {
       id: "mobile-delivery-window",
+      alignment: [
+        { ruleId: "ULI-L01", id: "delivery-window-controls", edge: "top", peers: [
+          { role: "textbox", name: "Delivery date" },
+          { role: "textbox", name: "Earliest arrival" }
+        ] }
+      ],
       title: "Mobile delivery booking",
       description: "Date and time fields for a delivery at phone width. The grid collapses to one column and the platform picker takes over on tap.",
       mobile: {
@@ -85,7 +97,7 @@ export default {
         ]
       },
       html: `<ef-date-time-field class="ef-component-tag">
-  <div class="ef-grid">
+  <div class="ef-form-row">
     <div class="ef-field">
       <label class="ef-field__label" for="date-time-field-mobile-date">Delivery date</label>
       <input id="date-time-field-mobile-date" name="delivery-date" type="date" min="2026-10-01">
@@ -146,7 +158,7 @@ export default {
   responsive: [
     "Temporal inputs use a shrinkable border-box with normalized native appearance to avoid iOS intrinsic-width overflow; the native date/time picker remains browser-owned.",
     "Inputs are `inline-size: 100%` of their field, so localized formats and picker icons fit the available width.",
-    "No breakpoints of its own; place several fields in [[grid]] so they collapse to one column when narrow.",
+    "No breakpoints of its own; place several fields in [[form-row]] so their controls stay level side by side and collapse to one column when narrow.",
     "Touch devices use their native picker UI, which is full screen or a bottom sheet on most phones."
   ],
   motion: [

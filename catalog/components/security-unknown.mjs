@@ -26,6 +26,7 @@ export default {
   examples: [
     {
       id: "with-obligation",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Unknown with an assigned obligation",
       description: "An unknown that blocks release, with the obligation to obtain the missing evidence linked by ID. The owner and due date come from the application's obligation record.",
       html: `<ef-security-unknown class="ef-component-tag">

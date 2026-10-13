@@ -23,9 +23,11 @@ export default {
       "Opening is instant; nothing animates."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "record-toolbar-overflow",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Record toolbar with overflow",
       description: "The common case: the frequent commands stay visible in a [[command-group]], and three secondary commands sit behind a disclosure at the end of the same row. The panel label repeats the summary text so the revealed buttons are announced as one group.",
       html: `<ef-overflow-command-disclosure class="ef-component-tag">
@@ -48,6 +50,7 @@ export default {
     },
     {
       id: "open-by-default",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Open on arrival with many commands",
       description: "The `open` attribute renders the disclosure expanded on first load, for example when the application restores the user's last choice. Six commands with long labels wrap inside the panel. After load the browser owns the state; the attribute reflects it.",
       html: `<ef-overflow-command-disclosure class="ef-component-tag">
@@ -66,6 +69,7 @@ export default {
     },
     {
       id: "mobile-overflow",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Overflow on a phone",
       description: "At phone width the disclosure keeps secondary commands out of the way until requested. Once open, the panel wraps its commands onto new lines below the summary and pushes the following content down.",
       mobile: {

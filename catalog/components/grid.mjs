@@ -25,6 +25,7 @@ export default {
   examples: [
     {
       id: "plan-comparison",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Plan comparison",
       description: "Three plan panels with a wider minimum track (`--ef-grid-min: 18rem`) so each panel keeps a readable measure. The panels sit in three columns on a wide screen and drop to fewer columns as the container narrows.",
       html: `<ef-grid class="ef-component-tag">

@@ -23,9 +23,21 @@ export default {
       "An optional boundary note reminds readers that only approved values appear."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "disclosure", name: "Safe diagnostic details", expect: { open: true } }
+    ]
+  },
   examples: [
     {
       id: "support-view",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Safe diagnostic details", expect: { open: false } }
+        ]
+      },
       title: "Support view, open by default",
       description: "A support agent's view where the application opens the disclosure initially with the open attribute. Every row comes from an approved safe view model; the dependency name is the user-visible service name, not an internal host.",
       html: `<ef-fault-details class="ef-component-tag">
@@ -46,6 +58,7 @@ export default {
     },
     {
       id: "inside-inline-fault",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Collapsed details under an inline fault",
       description: "The disclosure composed inside the body of an inline fault, after the reference. The fault's message and recovery action remain visible whether or not the details are expanded.",
       html: `<ef-fault-details class="ef-component-tag">
@@ -74,6 +87,12 @@ export default {
     },
     {
       id: "mobile-stacked-values",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Safe diagnostic details", expect: { open: false } }
+        ]
+      },
       title: "Stacked values on a phone",
       description: "An expanded disclosure with long values at phone width.",
       mobile: {

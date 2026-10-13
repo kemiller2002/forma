@@ -21,6 +21,7 @@ export default {
       "Inside `.ef-section`, content directly after the heading starts without extra stack spacing because the heading already ends in a rule and margin."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "with-note",
@@ -65,6 +66,12 @@ export default {
     },
     {
       id: "mobile-long-title",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Compare the engagements", expect: { url: "#section-heading-mobile-long-title-title" } }
+        ]
+      },
       title: "Long title with an action on a phone",
       description: "A long heading with a framing sentence and an action. At phone width the aside wraps under the text and the button starts at the inline start.",
       mobile: {

@@ -25,6 +25,7 @@ export default {
   examples: [
     {
       id: "case-context-rail",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Case record with context rail",
       description: "A support case: a start rail with customer context and the conversation as primary content. The rail is first in the source, so it is read first and shown first when stacked.",
       html: `<ef-rail class="ef-component-tag">

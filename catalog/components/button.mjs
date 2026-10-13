@@ -24,9 +24,11 @@ export default {
       "`ef-actions` wraps its children onto new lines instead of shrinking or overflowing them."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
   examples: [
     {
       id: "unavailable-submit",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Unavailable submit with a stated reason",
       description: "A natively disabled submit button beside an active Cancel. The disabled button is removed from focus order and cannot submit the form. In the application layer the disabled button looks the same as an enabled one apart from losing hover feedback, so the visible sentence above the actions carries the reason.",
       html: `<ef-button class="ef-component-tag">
@@ -41,6 +43,7 @@ export default {
     },
     {
       id: "icon-with-hidden-label",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Icon button with a visually hidden label",
       description: "Remove buttons on applied filters. The glyph is decorative (aria-hidden) and the accessible name comes from `ef-visually-hidden` text that names both the action and the object, so each button is distinguishable in a screen-reader button list. Forma has no icon-only variant: the button keeps the standard padding and 44px minimum height.",
       html: `<ef-button class="ef-component-tag">
@@ -58,6 +61,7 @@ export default {
     },
     {
       id: "marketing-primary",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Marketing call to action",
       description: "Inside a marketing `.ef-site` shell, `data-ef-variant=\"primary\"` fills a link-button with the action tone, and `aria-disabled=\"true\"` gives a dashed, not-allowed treatment. Both hooks only work inside `.ef-site`. An aria-disabled button is still focusable and still fires click, so the application must ignore activation; the reason is linked with aria-describedby because the button stays in the focus order.",
       html: `<ef-button class="ef-component-tag">
@@ -73,6 +77,7 @@ export default {
     },
     {
       id: "mobile-wrapping-actions",
+      interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Wrapping action row on a phone",
       description: "Three actions with long, translated labels in `ef-actions`. At 320px the row wraps instead of shrinking targets or scrolling sideways, and long labels break inside their button.",
       mobile: {

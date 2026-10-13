@@ -25,9 +25,11 @@ export default {
       "Nested budgets are allowed and are evaluated separately, against their own direct children."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "access-request",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Access request decision",
       description: "A single budget for an access request: the primary region holds the decision, the secondary region the requester's justification, and three supporting facts sit in the support grid. Only the primary region contains actions.",
       html: `<ef-emphasis-budget class="ef-component-tag">
@@ -57,6 +59,7 @@ export default {
     },
     {
       id: "nested-budgets",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Nested independent budgets",
       description: "The page-level decision has one primary region. A supporting region contains its own independent budget, with its own single primary for a separate sub-decision. Each budget is counted against its direct children only, so this is valid.",
       html: `<ef-emphasis-budget class="ef-component-tag">
@@ -81,6 +84,7 @@ export default {
     },
     {
       id: "mobile-decision",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile decision",
       description: "At phone width all levels stack in source order and the primary action becomes a wrapping, full-height button.",
       mobile: {

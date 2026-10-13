@@ -21,9 +21,11 @@ export default {
       "Forma renders states; it does not fetch, debounce, rank or clear."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "no-results",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "No matching records",
       description: "A query that matched nothing. The status line announces zero results and says what to try next; the query stays in the field so it can be corrected.",
       html: `<ef-search class="ef-component-tag">
@@ -39,6 +41,7 @@ export default {
     },
     {
       id: "pending-search",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Search in progress",
       description: "The application is waiting for results. The status line says so in text, and the previous count is not shown as if it were current.",
       html: `<ef-search class="ef-component-tag">
@@ -54,6 +57,7 @@ export default {
     },
     {
       id: "mobile-library-search",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile document search",
       description: "Document search at phone width. The Clear button moves below the input so the query field keeps the full width.",
       mobile: {

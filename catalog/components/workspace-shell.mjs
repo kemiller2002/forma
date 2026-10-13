@@ -23,9 +23,11 @@ export default {
       "No behavior is attached: links, aria-current and the status text are written by the application."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "support-queue",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Support queue with a selected ticket",
       description: "A support workspace with section navigation, the queue as primary work and the selected ticket's properties in the inspector. The landmark carries a live status line the application updates after saves.",
       html: `<ef-workspace-shell class="ef-component-tag">
@@ -60,6 +62,7 @@ export default {
     },
     {
       id: "nothing-selected",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Nothing selected",
       description: "The inspector keeps its region and heading but explains that nothing is selected, instead of disappearing and shifting the layout. The status line reports an application-owned sync state as text.",
       html: `<ef-workspace-shell class="ef-component-tag">
@@ -86,6 +89,7 @@ export default {
     },
     {
       id: "long-labels",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Long navigation labels and a narrow inspector",
       description: "Content stress: long localized navigation labels wrap inside the bounded navigation column, and a long unbroken reference wraps inside the inspector because both regions allow shrinking.",
       html: `<ef-workspace-shell class="ef-component-tag">
@@ -111,6 +115,7 @@ export default {
     },
     {
       id: "mobile-stacked-regions",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile stacked regions",
       description: "At phone width the four regions stack into one column in source order: status first, then navigation, then work, then the inspector.",
       mobile: {

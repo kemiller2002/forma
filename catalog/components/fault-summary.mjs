@@ -23,9 +23,18 @@ export default {
       "No live region by default: announcements happen through focus, not repeated assertive updates."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "failed-submit",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Payee account could not be verified", expect: { url: "#fault-summary-failed-submit-payee" } },
+          { role: "link", name: "Receipt upload failed", expect: { url: "#fault-summary-failed-submit-receipt" } },
+          { role: "link", name: "Exchange rate is from yesterday", expect: { url: "#fault-summary-failed-submit-rate" } }
+        ]
+      },
       title: "After a failed submit",
       description: "A summary above a short form after submission failed. Each link targets the affected field in the same page; the critical entry is bold as well as labelled Critical. The application focuses the summary once after the failed submit.",
       html: `<ef-fault-summary class="ef-component-tag">
@@ -93,6 +102,13 @@ export default {
     },
     {
       id: "mobile-summary",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Delivery instructions for the north warehouse loading dock could not be saved", expect: { url: "#fault-summary-mobile-summary-title" } },
+          { role: "link", name: "Synchronization is waiting for the carrier service", expect: { url: "#fault-summary-mobile-summary-title" } }
+        ]
+      },
       title: "Fault summary on a phone",
       description: "A summary with long entry titles and references at phone width.",
       mobile: {

@@ -23,9 +23,37 @@ export default {
       "`data-ef-layout` declares the page type (marketing, product, documentation) for identity retargets; it does not change layout by itself."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "link", name: "Skip to main content", expect: { url: "#shell-main" } },
+      { role: "link", name: "Example / Product", expect: { url: "#shell-main" } },
+      { role: "link", name: "Overview", expect: { url: "#shell-main" } },
+      { role: "link", name: "Documentation", expect: { url: "#shell-cta" } },
+      { role: "link", name: "Get started", within: { role: "navigation", name: "Primary" }, expect: { url: "#shell-cta" } },
+      { role: "link", name: "Get started", within: { role: "main" }, expect: { url: "#shell-cta" } },
+      { role: "link", name: "Read the documentation", expect: { url: "#shell-cta" } },
+      { role: "link", name: "Install", expect: { url: "#shell-main" } }
+    ]
+  },
   examples: [
     {
       id: "product-page",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Skip to main content", expect: { url: "#marketing-shell-product-page-main" } },
+          { role: "link", name: "Echelon / Ordo", expect: { url: "#marketing-shell-product-page-main" } },
+          { role: "link", name: "Overview", expect: { url: "#marketing-shell-product-page-main" } },
+          { role: "link", name: "Documentation", expect: { url: "#marketing-shell-product-page-cta" } },
+          { role: "link", name: "Install", within: { role: "navigation", name: "Ordo" }, expect: { url: "#marketing-shell-product-page-cta" } },
+          { role: "link", name: "Install", within: { role: "region", name: "Make every legal transition explicit" }, expect: { url: "#marketing-shell-product-page-cta" } },
+          { role: "link", name: "Read the quick start", expect: { url: "#marketing-shell-product-page-main" } },
+          { role: "link", name: "Privacy", expect: { url: "#marketing-shell-product-page-main" } },
+          { role: "link", name: "Source", expect: { url: "#marketing-shell-product-page-main" } },
+          { role: "link", name: "Release notes", expect: { url: "#marketing-shell-product-page-main" } }
+        ]
+      },
       title: "Product page frame",
       description: "A product page declared with `data-ef-layout=\"product\"`: no header tagline, release badges in the hero, and a footer with secondary navigation. The skip link targets the main region, which takes `tabindex=\"-1\"` so focus lands on it. On a real page the main region is a `main` element and the hero title is the page's only `h1`; the catalog page already has both, so this specimen uses a `div` and an `h2`.",
       html: `<ef-marketing-shell class="ef-component-tag">
@@ -76,6 +104,15 @@ export default {
     },
     {
       id: "single-offer",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Echelon Foundry", expect: { url: "#marketing-shell-single-offer-main" } },
+          { role: "link", name: "Diagnostic", expect: { url: "#marketing-shell-single-offer-main" } },
+          { role: "link", name: "Book a session", expect: { url: "#marketing-shell-single-offer-main" } },
+          { role: "link", name: "Book a working session", expect: { url: "#marketing-shell-single-offer-main" } }
+        ]
+      },
       title: "Single-offer page",
       description: "A single-offer page is the marketing layout with fewer sections, not a separate layout. The header keeps its tagline where there is room, the page has one hero and one closing action, and the footer uses the surface tone instead of inverse.",
       html: `<ef-marketing-shell class="ef-component-tag">
@@ -113,6 +150,19 @@ export default {
     },
     {
       id: "mobile-frame",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Skip to main content", expect: { url: "#marketing-shell-mobile-frame-main" } },
+          { role: "link", name: "Echelon Foundry", expect: { url: "#marketing-shell-mobile-frame-main" } },
+          { role: "link", name: "Overview", expect: { url: "#marketing-shell-mobile-frame-main" } },
+          { role: "link", name: "Research", expect: { url: "#marketing-shell-mobile-frame-main" } },
+          { role: "link", name: "Products", expect: { url: "#marketing-shell-mobile-frame-main" } },
+          { role: "link", name: "Get in touch", expect: { url: "#marketing-shell-mobile-frame-main" } },
+          { role: "link", name: "Book a session", expect: { url: "#marketing-shell-mobile-frame-main" } },
+          { role: "link", name: "See the work", expect: { url: "#marketing-shell-mobile-frame-main" } }
+        ]
+      },
       title: "Phone-width frame",
       description: "The whole frame at phone width: the tagline yields, navigation wraps under the brand instead of collapsing into a menu, and the header is not sticky.",
       mobile: {

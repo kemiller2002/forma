@@ -23,9 +23,11 @@ export default {
       "Known gap: summaries are rendered as flex rows, which removes the browser's disclosure triangle in Chromium-based browsers, so there is currently no visual open/closed marker. Expanded state is still exposed programmatically by details."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "collapsed-siblings",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Current page deep in the tree",
       description: "Only the branches on the path to the current page are open; sibling branches are collapsed so the tree stays short. The application sets open on the ancestors of the current page.",
       html: `<ef-hierarchy-tree class="ef-component-tag">
@@ -51,6 +53,7 @@ export default {
     },
     {
       id: "branch-overview-links",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Branches that are also destinations",
       description: "When a branch has its own page, the summary stays a plain toggle and the branch page is the first child link. Putting a link inside the summary would create a nested interactive control.",
       html: `<ef-hierarchy-tree class="ef-component-tag">
@@ -73,6 +76,7 @@ export default {
     },
     {
       id: "mobile-reduced-indent",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Deep tree on a phone",
       description: "Four levels at phone width. Indentation per level halves below 30rem so deep items keep usable width.",
       mobile: {

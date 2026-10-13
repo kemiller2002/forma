@@ -23,9 +23,11 @@ export default {
       "At 40rem and below the header is one column and every action becomes full width."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
   examples: [
     {
       id: "blocked-case",
+      interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Blocked case with restricted actions",
       description: "A case that is blocked on another team. Status is text with a symbol, the context line explains why, and the application renders only the actions that are legal now; there is no More menu because there are no secondary actions.",
       html: `<ef-record-header class="ef-component-tag">
@@ -46,6 +48,7 @@ export default {
     },
     {
       id: "long-identity",
+      interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Long identifier and several secondary actions",
       description: "Content stress: a long supplier name and a long reference number wrap in the identity column while the action column keeps its natural width. Four secondary actions are collapsed into the More disclosure.",
       html: `<ef-record-header class="ef-component-tag">
@@ -76,6 +79,7 @@ export default {
     },
     {
       id: "mobile-actions",
+      interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Mobile record with collapsed actions",
       description: "At phone width identity comes first, then the primary action and the More disclosure as full-width rows.",
       mobile: {

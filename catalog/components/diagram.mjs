@@ -24,6 +24,12 @@ export default {
       "Focus uses Forma's foundation ring and never reads authored color."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "link", name: "Publish", expect: { url: "#diagram-title" } }
+    ]
+  },
   examples: [
     {
       id: "portable-workflow",

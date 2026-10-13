@@ -41,6 +41,7 @@ const pageOf = root => (typeof root.page === "function" ? root.page() : root);
 // ARIA role and so cannot be reached with getByRole.
 export const resolveTarget = (root, { role, name, scope }) => {
   const base = scope ?? root;
+  if (role === "text") return base.getByText(name, { exact: typeof name === "string" });
   if (role === "disclosure") {
     const pattern = name instanceof RegExp ? name : new RegExp(`^\\s*${escapeRegExp(name)}\\s*$`);
     return base.locator("summary").filter({ hasText: pattern });
@@ -70,6 +71,51 @@ const observePeer = async (root, peer, timeoutMs) => {
 };
 
 const observePeers = (root, peers, timeoutMs) => Promise.all(peers.map(peer => observePeer(root, peer, timeoutMs)));
+
+// Declared groups in markup (the attribute vocabulary Forma Studio exports):
+//   data-uli-align-group="id"  data-uli-align-edge="top|bottom|center|left|right"
+//   data-uli-align-peer="name" (optional; defaults to the element's text)
+// The declaring elements themselves are the peers; nothing is inferred.
+export const readDeclaredGroups = root => root.locator("[data-uli-align-group]").evaluateAll(elements =>
+  Object.values(elements.reduce((groups, element, index) => {
+    const id = element.getAttribute("data-uli-align-group");
+    const group = groups[id] ?? { id, edge: null, peers: [] };
+    const rect = element.getBoundingClientRect();
+    return { ...groups, [id]: {
+      ...group,
+      edge: group.edge ?? element.getAttribute("data-uli-align-edge"),
+      peers: [...group.peers, {
+        name: element.getAttribute("data-uli-align-peer") || element.textContent.replace(/\s+/g, " ").trim().slice(0, 60) || `${element.tagName.toLowerCase()}#${index}`,
+        box: element.checkVisibility?.() === false ? null : { x: rect.x, y: rect.y, width: rect.width, height: rect.height }
+      }]
+    } };
+  }, {})));
+
+const readStableDeclaredGroups = async (root, deadline, previous) => {
+  await settleFontsAndFrames(root);
+  const current = await readDeclaredGroups(root);
+  if (previous && JSON.stringify(previous) === JSON.stringify(current)) return current;
+  if (Date.now() >= deadline) return null;
+  return readStableDeclaredGroups(root, deadline, current);
+};
+
+export const measureDeclaredGroups = async (root, { ruleId = "ULI-L01", toleranceCssPx, timeoutMs = DEFAULT_TIMEOUT_MS } = {}) => {
+  const groups = await readStableDeclaredGroups(root, Date.now() + timeoutMs, null);
+  if (!groups) return [{ ruleId, group: "*", status: STATUS.UNKNOWN, reason: "layout did not stabilize within the timeout", measurements: [] }];
+  return groups.map(group => (group.peers.length < 2
+    ? { ruleId, group: group.id, status: STATUS.UNKNOWN, reason: "a declared group needs at least two peers", measurements: [] }
+    : evaluateAlignment(
+      { ruleId, id: group.id, edge: group.edge ?? "top", toleranceCssPx, peers: group.peers.map(peer => ({ role: "declared", name: peer.name })) },
+      group.peers.map(peer => ({ peer: { role: "declared", name: peer.name }, count: 1, box: peer.box })))));
+};
+
+export const expectDeclaredGroups = async (root, options) => {
+  const reports = await measureDeclaredGroups(root, options);
+  expect(reports.length, "no data-uli-align-group declarations found").toBeGreaterThan(0);
+  const failing = reports.filter(report => report.status !== STATUS.PASS);
+  expect(failing.map(formatReport).join("\n")).toBe("");
+  return reports;
+};
 
 // Re-read until two consecutive frame-separated observations agree, bounded
 // by a deadline. Each retry waits for real animation frames, not a fixed sleep.
@@ -173,6 +219,10 @@ export const runActionAssertion = async (root, contract) => {
   const premise = evaluateActionPremise({ ruleId, action, outcome, pre, controlIssue });
   if (premise) return premise;
 
+  // Focus first, as a keyboard user reaches it: a skip link is positioned
+  // off-screen until it has focus, and focus never changes another control's
+  // state. Then activate it through the pointer path.
+  await control.focus({ timeout: timeoutMs });
   await control.click({ timeout: timeoutMs });
 
   const appeared = await expect(async () => {
@@ -208,7 +258,10 @@ export const inventoryActions = async (root, { includeHidden = false } = {}) => 
       tag: element.tagName.toLowerCase(),
       type: element.getAttribute("type"),
       href: element.getAttribute("href"),
-      rendered: rect.width > 0 && rect.height > 0 && style.visibility !== "hidden",
+      // checkVisibility also excludes content of a closed <details>, which
+      // can still report client rects.
+      rendered: rect.width > 0 && rect.height > 0 && style.visibility !== "hidden" &&
+        (typeof element.checkVisibility !== "function" || element.checkVisibility({ visibilityProperty: true, contentVisibilityAuto: true })),
       disabled: element.matches(":disabled") || element.getAttribute("aria-disabled") === "true",
       inert: Boolean(element.closest("[inert]"))
     };

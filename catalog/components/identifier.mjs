@@ -35,6 +35,7 @@ export default {
     },
     {
       id: "transfer-verification",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Transfer amount and destination to verify",
       description: "Before approving a transfer, the destination account and amount are marked for deliberate verification. The reference is only an identifier; the fee is consequential but not flagged for verification. The double underline invites checking; it does not mean the value is correct.",
       html: `<ef-identifier class="ef-component-tag">

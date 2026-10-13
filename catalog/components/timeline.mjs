@@ -61,6 +61,12 @@ export default {
     },
     {
       id: "expandable-detail",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Show changed fields", expect: { open: true } }
+        ]
+      },
       title: "Event with expandable detail",
       description: "A configuration change whose full diff is optional reading. The detail sits in a native [[disclosure]] inside the event's content, so the timeline stays scannable and the browser owns open and closed state.",
       html: `<ef-timeline class="ef-component-tag">

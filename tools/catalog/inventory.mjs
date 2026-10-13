@@ -8,6 +8,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { loadCatalog } from "./load.mjs";
 import { patternOnlyClasses, validateComponent } from "./validate.mjs";
+import { interactionSummary } from "./interaction.mjs";
 
 const TARGET = "docs/COMPONENT-INVENTORY.md";
 
@@ -38,6 +39,7 @@ export const renderInventory = (catalog, root) => {
   const planned = readJson(path.join(root, "catalog", "planned.json")).planned ?? [];
   const issues = readJson(path.join(root, "catalog", "known-issues.json")).issues ?? [];
   const categoryName = new Map(catalog.categories.map(category => [category.id, category.name]));
+  const interaction = interactionSummary(catalog);
   const rows = catalog.categories.flatMap(category => category.components.map(component => {
     const problems = validateComponent(catalog, component);
     const scenarios = component.examples.filter(example => !example.mobile).length;
@@ -55,7 +57,8 @@ checker (\`npm run catalog:check\`) fails when a canonical pattern or a public
 \`.ef-*\` block class is missing from this list.
 
 - Public components: **${catalog.components.length}** in **${catalog.categories.length}** families
-- Live examples on the documentation site: **${catalog.components.reduce((total, component) => total + component.examples.length + 1, 0)}** (each component: canonical Basic + scenario examples + mobile examples)
+- Rendered examples on the documentation site: **${catalog.components.reduce((total, component) => total + component.examples.length + 1, 0)}** (each component: canonical Basic + scenario examples + mobile examples)
+- Example interaction (UI-LAYOUT-INTERACTION@1.0.0 ULI-A03/A09): **${interaction.live}** live demos with **${interaction.liveActions}** declared, outcome-tested actions; **${interaction.static}** static specimens (rendered inert and labelled); **${interaction.noActions}** examples render no action control
 - Compositions: **${catalog.compositions.length}** (${catalog.compositions.map(item => item.title).join(", ")})
 - Requirement-defined components not yet implemented: **${planned.length}**
 

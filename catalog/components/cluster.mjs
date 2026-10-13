@@ -22,9 +22,11 @@ export default {
       "Items keep their intrinsic width; the cluster never stretches or shrinks them to fill the row."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
   examples: [
     {
       id: "form-actions",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Form actions",
       description: "The primary and secondary actions of a form footer. When the translated labels no longer fit on one line, the secondary actions wrap below the primary one instead of overflowing.",
       html: `<ef-cluster class="ef-component-tag">
@@ -53,6 +55,7 @@ export default {
     },
     {
       id: "custom-gap",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Tight filter chips",
       description: "A filter summary with a narrower gap set through `--ef-cluster-space`. Links remain full-size targets; only the space between them changes.",
       html: `<ef-cluster class="ef-component-tag">
@@ -68,6 +71,7 @@ export default {
     },
     {
       id: "mobile-toolbar",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile toolbar",
       description: "Four toolbar buttons at phone width. The row wraps into two lines rather than scrolling or shrinking the buttons.",
       mobile: {

@@ -24,9 +24,25 @@ export default {
       "Heavy perceived weight by default: a short upward settle on entry and a reciprocal exit with the same duration and easing."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "button", name: "Open modal", expect: { open: true } },
+      { role: "button", name: "Cancel", expect: { open: false } }
+    ]
+  },
   examples: [
     {
       id: "destructive-confirmation",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Delete project…", expect: { open: true } },
+          { role: "button", name: "Keep project", expect: { open: false } },
+          { role: "button", name: "Delete project…", expect: { open: true } },
+          { role: "button", name: "Delete project", expect: { open: false } }
+        ]
+      },
       title: "Destructive confirmation",
       description: "Deleting a project. The dialog's form uses `method=\"dialog\"`, so either button closes the dialog and sets its return value to the button's value for the application to act on. `autofocus` puts initial focus on the safe choice. Forma has no destructive button variant; the title and the button label carry the consequence.",
       html: `<ef-dialog class="ef-component-tag">
@@ -47,6 +63,13 @@ export default {
     },
     {
       id: "light-dismiss-long-content",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "What's new in 4.2", expect: { open: true } },
+          { role: "button", name: "Close", expect: { open: false } }
+        ]
+      },
       title: "Long release notes with light dismiss",
       description: "Read-only content that does not need a decision. `closedby=\"any\"` lets a click on the backdrop close the dialog in browsers that support it; Escape and the Close button work everywhere. The content is longer than a phone screen, so the dialog scrolls within its viewport-capped height. The standard motion weight makes entry a little quicker than the heavy default.",
       html: `<ef-dialog class="ef-component-tag">
@@ -71,6 +94,15 @@ export default {
     },
     {
       id: "mobile-short-form",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Rename board", expect: { open: true } },
+          { role: "button", name: "Cancel", expect: { open: false } },
+          { role: "button", name: "Rename board", expect: { open: true } },
+          { role: "button", name: "Save name", expect: { open: false } }
+        ]
+      },
       title: "Short form on a phone",
       description: "A one-field rename dialog at phone width. The dialog fills the width minus a small margin and its actions stretch to full-width rows.",
       mobile: {

@@ -22,9 +22,11 @@ export default {
       "The group is named with `role=\"group\"` and `aria-label` so screen readers announce it as a set of recovery options."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "localized-labels",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Localized labels",
       description: "French labels for three capabilities. The visible text changes; the capability identity in data-ef-aegis-capability does not, so application code maps clicks exactly as before.",
       html: `<ef-recovery-actions class="ef-component-tag">
@@ -37,6 +39,7 @@ export default {
     },
     {
       id: "import-recovery",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Recovery for a failed import",
       description: "The group inside an inline fault for a data import. Aegis supplied Process again and Set aside; both keep their default labels. The group name includes the affected batch because several import faults can be on one page.",
       html: `<ef-recovery-actions class="ef-component-tag">
@@ -56,6 +59,7 @@ export default {
     },
     {
       id: "mobile-stacked",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Stacked actions on a phone",
       description: "Three recovery actions at phone width.",
       mobile: {

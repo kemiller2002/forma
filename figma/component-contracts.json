@@ -671,6 +671,16 @@
       }
     },
     {
+      "id": "form-row",
+      "figmaName": "Forma / Form Row",
+      "source": "patterns/form-row.html",
+      "codeConnect": {
+        "id": "Forma/form-row",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "grid",
       "figmaName": "Forma / Grid",
       "source": "patterns/grid.html",

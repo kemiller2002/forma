@@ -22,9 +22,11 @@ export default {
       "There are no drawn connectors: order comes from the list, and each step names its role in text."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "verified",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Chain ending in a verified state",
       description: "A complete chain for an authorization invariant, from a CI source through a linked observation to a Verified state.",
       html: `<ef-security-evidence-chain class="ef-component-tag">
@@ -41,6 +43,7 @@ export default {
     },
     {
       id: "missing-observation",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Chain with a missing observation",
       description: "No observation exists for the invariant, so the Observation step says so in text and the state is Unknown. The gap is shown rather than skipped, which would make the chain look complete.",
       html: `<ef-security-evidence-chain class="ef-component-tag">
@@ -57,6 +60,7 @@ export default {
     },
     {
       id: "mobile",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Evidence chain on a phone",
       description: "A chain with long source text at phone width.",
       mobile: {

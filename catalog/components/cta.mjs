@@ -21,9 +21,17 @@ export default {
       "Primary buttons use the tone's action colors, so they invert correctly on the inverse tone."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "page-tone",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Install", expect: { url: "#cta-page-tone-title" } },
+          { role: "link", name: "Read the upgrade guide", expect: { url: "#cta-page-tone-title" } }
+        ]
+      },
       title: "Page-tone closing action",
       description: "Without a tone the CTA sits on the page background with a strong rule above it. One primary action and one secondary action.",
       html: `<ef-cta class="ef-component-tag">
@@ -42,6 +50,13 @@ export default {
     },
     {
       id: "surface-single-action",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Read past issues", expect: { url: "#cta-surface-single-action-title" } },
+          { role: "link", name: "Subscribe", expect: { url: "#cta-surface-single-action-title" } }
+        ]
+      },
       title: "Surface panel with a single action",
       description: "`data-ef-tone=\"surface\"` turns the CTA into a padded panel on the secondary surface. Links and labels switch to text colors validated for that surface.",
       html: `<ef-cta class="ef-component-tag">
@@ -61,6 +76,13 @@ export default {
     },
     {
       id: "mobile-inverse",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Start a diagnostic", expect: { url: "#cta-mobile-inverse-title" } },
+          { role: "link", name: "Meet the team", expect: { url: "#cta-mobile-inverse-title" } }
+        ]
+      },
       title: "Phone inverse CTA",
       description: "An inverse-tone CTA at phone width. The actions wrap below the text and stack.",
       mobile: {

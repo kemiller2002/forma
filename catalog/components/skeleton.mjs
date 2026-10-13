@@ -60,6 +60,7 @@ export default {
     },
     {
       id: "stalled-load",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Stalled load with explanation",
       description: "Loading is taking longer than expected. The application sets `aria-busy=\"false\"` so the shimmer stops, and shows a plain text note with a retry action instead of letting the placeholder shimmer indefinitely.",
       html: `<ef-skeleton class="ef-component-tag">

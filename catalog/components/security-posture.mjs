@@ -23,6 +23,7 @@ export default {
       "The qualification sentence stays visible so a PASS is never read as a general claim that the system is secure."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "pass",
@@ -48,6 +49,7 @@ export default {
     },
     {
       id: "conditional",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Conditional on an active exception",
       description: "A CONDITIONAL posture. The condition is listed as its own metadata row with a link to the governing exception, and the status label uses the attention glyph.",
       html: `<ef-security-posture class="ef-component-tag">
@@ -71,6 +73,7 @@ export default {
     },
     {
       id: "indeterminate",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Indeterminate because evidence is unknown",
       description: "An INDETERMINATE posture. The unresolved unknowns are listed with the same prominence as blockers, rather than being folded into a pass or a failure.",
       html: `<ef-security-posture class="ef-component-tag">
@@ -100,6 +103,7 @@ export default {
     },
     {
       id: "mobile-blocked",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Blocked posture on a phone",
       description: "A BLOCKED posture with blockers and a long scope at phone width.",
       mobile: {

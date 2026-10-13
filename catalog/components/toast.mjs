@@ -22,9 +22,17 @@ export default {
       "Exit shares the same duration and easing as entry."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "button", name: "Show notification", expect: { open: true } },
+      { role: "button", name: "Dismiss notification", expect: { open: false } }
+    ]
+  },
   examples: [
     {
       id: "undo-archive",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Undo after archiving",
       description: "A confirmation with a recovery action. The Undo button is a normal button the application wires up; the Close button is a native hide invoker. Both sit in the header row beside the text.",
       html: `<ef-toast class="ef-component-tag">
@@ -45,6 +53,14 @@ export default {
     },
     {
       id: "export-ready",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Toggle export notice", expect: { open: true } },
+          { role: "link", name: "audit-2026-09.csv", expect: { url: "#toast-export-ready-notice" } },
+          { role: "button", name: "Dismiss export notification", expect: { open: false } }
+        ]
+      },
       title: "Export ready with a link",
       description: "A toggle invoker (no `popovertargetaction`) that shows and hides the same toast, and a download link inside the notification. The link is the useful content; the toast only draws attention to it.",
       html: `<ef-toast class="ef-component-tag">
@@ -62,6 +78,13 @@ export default {
     },
     {
       id: "light-copy-confirmation",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Copy share link", expect: { open: true } },
+          { role: "button", name: "Dismiss copy notification", expect: { open: false } }
+        ]
+      },
       title: "Lightweight copy confirmation",
       description: "A single-line confirmation with no body paragraph, using the light weight for a quicker, less settled entry. Weight is presentation only and says nothing about importance.",
       html: `<ef-toast class="ef-component-tag">
@@ -76,6 +99,13 @@ export default {
     },
     {
       id: "mobile-saved-draft",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Save draft", expect: { open: true } },
+          { role: "button", name: "Dismiss save notification", expect: { open: false } }
+        ]
+      },
       title: "Mobile draft saved",
       description: "A toast opened on a phone. It stays anchored to the bottom corner, clears the device safe areas and never exceeds the viewport width minus 2rem.",
       mobile: {

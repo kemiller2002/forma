@@ -23,9 +23,11 @@ export default {
       "At 30rem and below each row stacks the type above its targets."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "incoming-and-outgoing",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Incoming and outgoing relationships",
       description: "Both directions for the Billing service. Outgoing (Depends on) and incoming (Depended on by) are distinct relationship names, and several targets share a row as a comma-separated list of links. A relationship with no targets says None recorded.",
       html: `<ef-relationship-index class="ef-component-tag">
@@ -42,6 +44,7 @@ export default {
     },
     {
       id: "diagram-equivalent",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Text equivalent of a diagram selection",
       description: "The index sits under a system map and updates with the selected node. The header names the selection and states that the list mirrors the diagram's connections, including one the diagram marks as unverified.",
       html: `<ef-relationship-index class="ef-component-tag">
@@ -57,6 +60,7 @@ export default {
     },
     {
       id: "mobile-relationships",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile relationship index",
       description: "The index at phone width, where each relationship type sits above its targets.",
       mobile: {

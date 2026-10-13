@@ -23,9 +23,11 @@ export default {
       "Uses `role=\"status\"` for the first insertion only; a persistent banner must not announce again on every render."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "read-only-mode",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Degraded read-only mode",
       description: "An error-severity banner above a workspace while the storage service is unavailable. Aegis supplied Reload as the only recovery action. Error severity keeps the standard 2px block borders.",
       html: `<ef-fault-banner class="ef-component-tag">
@@ -61,6 +63,7 @@ export default {
     },
     {
       id: "critical-two-actions",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Critical condition with two recovery paths",
       description: "Critical severity thickens the top and bottom borders to 3px. Two Aegis capabilities are offered in the order supplied; neither is a bypass.",
       html: `<ef-fault-banner class="ef-component-tag">
@@ -81,6 +84,7 @@ export default {
     },
     {
       id: "mobile-diagnostics",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Diagnostics banner on a phone",
       description: "A critical banner at the top of a phone layout, with its recovery action below the text.",
       mobile: {

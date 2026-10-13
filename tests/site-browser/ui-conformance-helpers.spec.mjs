@@ -214,6 +214,12 @@ test.describe("ULI-A01/A02 action fixtures", () => {
     expect(await page.getByRole("status", { name: "Other" }).textContent()).toBe("Other: changed");
   });
 
+  test("an off-screen skip link is reached by focus before activation", async ({ page }) => {
+    await page.setContent(fixture(`<style>.skip{position:absolute;left:-999px}.skip:focus{left:8px}</style>
+      <a class="skip" href="#main">Skip to main content</a><main id="main" tabindex="-1">Main</main>`));
+    await expectActionOutcome(page, { action: { role: "link", name: "Skip to main content" }, outcome: { kind: "url", expected: /#main$/ } });
+  });
+
   test("pre-existing expected feedback cannot satisfy an inert button", async ({ page }) => {
     await page.setContent(fixture(`<button type="button">Save</button><p role="status" aria-label="Save status">Saved</p>`));
     const report = await runActionAssertion(page, {
@@ -383,11 +389,12 @@ test.describe("scoped, native and inert actions", () => {
       <details><summary>Details</summary></details>
       <button disabled>Disabled</button>
       <div inert><button>Inert</button></div>
-      <dialog><button>Close dialog</button></dialog>`));
+      <dialog><button>Close dialog</button></dialog>
+      <details><summary>Closed section</summary><a href="#hidden">Hidden link</a></details>`));
     const visible = await inventoryActions(page);
-    expect(visible.map(item => [item.role, item.name])).toEqual([["button", "Remove filter Owner"], ["link", "Back to top"], ["disclosure", "Details"]]);
+    expect(visible.map(item => [item.role, item.name])).toEqual([["button", "Remove filter Owner"], ["link", "Back to top"], ["disclosure", "Details"], ["disclosure", "Closed section"]]);
     const all = await inventoryActions(page, { includeHidden: true });
-    expect(all.map(item => item.name)).toContain("Close dialog");
+    expect(all.map(item => item.name)).toEqual(expect.arrayContaining(["Close dialog", "Hidden link"]));
   });
 });
 

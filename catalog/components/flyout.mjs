@@ -23,9 +23,33 @@ export default {
       "Safe-area insets pad the header top and footer bottom."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "button", name: "Open left flyout", expect: { open: true } },
+      { role: "button", name: "Close left flyout", expect: { open: false } },
+      { role: "button", name: "Open left flyout", expect: { open: true } },
+      { role: "button", name: "Apply", expect: { open: false } },
+      { role: "button", name: "Open right flyout", expect: { open: true } },
+      { role: "button", name: "Close right flyout", expect: { open: false } },
+      { role: "button", name: "Open right flyout", expect: { open: true } },
+      { role: "button", name: "Done", expect: { open: false } }
+    ]
+  },
   examples: [
     {
       id: "filters-with-pinned-actions",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Filters", expect: { open: true } },
+          { role: "button", name: "Close filters", expect: { open: false } },
+          { role: "button", name: "Filters", expect: { open: true } },
+          { role: "button", name: "Clear all", expect: { open: false } },
+          { role: "button", name: "Filters", expect: { open: true } },
+          { role: "button", name: "Show results", expect: { open: false } }
+        ]
+      },
       title: "Filters with a long, scrolling body",
       description: "A left flyout holding more filters than fit on screen. The body scrolls on its own while the header (title and close) and the footer (Clear and Show results) stay pinned. The form uses `method=\"dialog\"` so either footer button closes the flyout and the application reads which one was used.",
       html: `<ef-flyout class="ef-component-tag">
@@ -78,6 +102,13 @@ export default {
     },
     {
       id: "quick-view-light-dismiss",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Recent activity", expect: { open: true } },
+          { role: "button", name: "Close recent activity", expect: { open: false } }
+        ]
+      },
       title: "Quick view that closes on outside click",
       description: "A right flyout for glancing at recent activity. `closedby=\"any\"` lets a click on the visible strip of page (the backdrop) close it where supported, and the standard motion weight makes it feel lighter than the heavy default. It has no footer, so the body fills the remaining height.",
       html: `<ef-flyout class="ef-component-tag">
@@ -104,6 +135,15 @@ export default {
     },
     {
       id: "mobile-record-detail",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "View order 58213", expect: { open: true } },
+          { role: "button", name: "Close order 58213", expect: { open: false } },
+          { role: "button", name: "View order 58213", expect: { open: true } },
+          { role: "button", name: "Done", expect: { open: false } }
+        ]
+      },
       title: "Record detail on a phone",
       description: "A right flyout with record details at phone width. It covers 90% of the width, leaving a strip of the page visible as context.",
       mobile: {

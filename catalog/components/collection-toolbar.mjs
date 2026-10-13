@@ -23,9 +23,16 @@ export default {
       "The count uses small monospace text and never wraps."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "disclosure", name: "Filters 2 active", expect: { open: true } }
+    ]
+  },
   examples: [
     {
       id: "active-filters",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Search term with active filters",
       description: "A search term and two applied filters. The filter panel is closed, but its summary text states \"2 active\", so the state stays visible. On wide screens the panel, when opened, is positioned over the content below the toolbar.",
       html: `<ef-collection-toolbar class="ef-component-tag">
@@ -51,6 +58,12 @@ export default {
     },
     {
       id: "no-results",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Filters None active", expect: { open: true } }
+        ]
+      },
       title: "Search with no results",
       description: "A search that matches nothing. The count states 0 results in the status region; the filters summary shows none are active, so the user knows the search term alone caused the empty result.",
       html: `<ef-collection-toolbar class="ef-component-tag">
@@ -74,6 +87,12 @@ export default {
     },
     {
       id: "mobile-toolbar",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Filters 1 active", expect: { open: false } }
+        ]
+      },
       title: "Mobile collection toolbar",
       description: "The full toolbar at phone width. Search spans the row, the controls wrap below it, and the filter panel opens inline instead of floating over the list.",
       mobile: {

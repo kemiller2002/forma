@@ -22,9 +22,22 @@ export default {
       "Thumb position (not only color) communicates on versus off, and forced-colors mode uses system Highlight colors."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "switch", name: "Notifications Receive operational updates.", expect: { checked: true } }
+    ]
+  },
   examples: [
     {
       id: "notification-preferences",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "switch", name: "Deployment results Email me when a deployment I started finishes or fails.", expect: { checked: false } },
+          { role: "switch", name: "Weekly digest A Monday summary of activity across all projects.", expect: { checked: true } }
+        ]
+      },
       title: "Notification preferences",
       description: "Independent settings stacked in a fieldset. Each switch carries a label and a description linked with aria-describedby, and one starts checked.",
       html: `<ef-switch class="ef-component-tag">
@@ -66,6 +79,12 @@ export default {
     },
     {
       id: "motion-weight-and-long-label",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "switch", name: "Synchronisation automatique des archives de projets partagés entre tous les espaces de travail", expect: { checked: true } }
+        ]
+      },
       title: "Heavy motion weight with a long label",
       description: "A heavy presentation weight gives the thumb a slower, more settled travel. The long translated label wraps beside the track instead of widening the page. Weight is presentation only and says nothing about importance.",
       html: `<ef-switch class="ef-component-tag">
@@ -80,6 +99,14 @@ export default {
     },
     {
       id: "mobile-settings-list",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "switch", name: "Share location with my team", expect: { checked: false } },
+          { role: "switch", name: "Show when I'm active Colleagues see a presence dot next to your name.", expect: { checked: true } },
+          { role: "switch", name: "Send anonymous usage analytics", expect: { checked: true } }
+        ]
+      },
       title: "Mobile settings list",
       description: "Three switches in a phone-width settings group. The label column absorbs all remaining width, so labels wrap while the 44px-tall rows keep their touch targets.",
       mobile: {

@@ -26,6 +26,7 @@ export default {
   examples: [
     {
       id: "record-details",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Record details with status and links",
       description: "A deployment's properties. Values mix plain text, an [[identifier]], a link, a machine-readable time and a [[status-lozenge]]; the list itself stays a plain description list.",
       html: `<ef-key-value-list class="ef-component-tag">
@@ -56,6 +57,7 @@ export default {
     },
     {
       id: "mobile-account-summary",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile account summary",
       description: "An account summary at phone width. Each row stacks its label above its value so neither is squeezed into a narrow column.",
       mobile: {

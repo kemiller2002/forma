@@ -52,6 +52,7 @@ export default {
     },
     {
       id: "move-without-drag",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Moving an item without dragging",
       description: "Each item has a native button that moves it to the next lane, the non-drag path the application must provide. The target lane shows the shared `data-ef-drop=\"candidate\"` cue (a dashed outline, not only color) and a live message reports the outcome in text. A light motion weight keeps any settle of moved cards quick.",
       html: `<ef-lane-board class="ef-component-tag">

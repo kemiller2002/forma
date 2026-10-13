@@ -24,9 +24,23 @@ export default {
       "Each branch is marked with an inline-start guide line and indentation, not color."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "disclosure", name: "Platform", expect: { open: false } },
+      { role: "disclosure", name: "Data", expect: { open: true } }
+    ]
+  },
   examples: [
     {
       id: "parent-level-option",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Data", expect: { open: false } },
+          { role: "disclosure", name: "Platform", expect: { open: true } }
+        ]
+      },
       title: "Category-level option",
       description: "The application allows choosing a whole category, so it renders an explicit \"Any Data service\" option as the first child of the branch. Making the category selectable is expressed as an ordinary option with its own value, never by clicking the summary.",
       html: `<ef-hierarchical-choice class="ef-component-tag">
@@ -58,6 +72,15 @@ export default {
     },
     {
       id: "restored-deep-selection",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Germany", expect: { open: false } },
+          { role: "disclosure", name: "Ireland", expect: { open: true } },
+          { role: "disclosure", name: "Europe", expect: { open: false } },
+          { role: "disclosure", name: "North America", expect: { open: true } }
+        ]
+      },
       title: "Restored selection three levels deep",
       description: "A saved answer is restored. The application opens every branch on the path to the checked option and repeats the selection as text after the tree, so the answer is visible even if the user collapses the branch.",
       html: `<ef-hierarchical-choice class="ef-component-tag">
@@ -104,6 +127,13 @@ export default {
     },
     {
       id: "mobile-nested-tree",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Reporting and analytics workspace", expect: { open: false } },
+          { role: "disclosure", name: "Administration", expect: { open: true } }
+        ]
+      },
       title: "Nested tree on a phone",
       description: "A two-level hierarchy with long names at phone width. Indentation tightens at narrow widths so deep options keep most of the line for their text.",
       mobile: {

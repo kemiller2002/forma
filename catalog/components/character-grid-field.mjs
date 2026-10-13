@@ -25,6 +25,7 @@ export default {
   examples: [
     {
       id: "sign-on",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Sign-on with required fields",
       description: "Two required fields and one optional field. Password fields keep their native type and autocomplete tokens; each requirement is stated in a visible hint as well as by the double underline.",
       html: `<ef-character-grid-field class="ef-component-tag">
@@ -53,6 +54,7 @@ export default {
     },
     {
       id: "address-validation",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Validation error after Enter",
       description: "The application rejected two values. Each invalid field has `aria-invalid=\"true\"` and lists both its format hint and the shared message in `aria-describedby`. The message reserves two rows with `data-ef-height` because its length varies.",
       html: `<ef-character-grid-field class="ef-component-tag">
@@ -104,6 +106,7 @@ export default {
     },
     {
       id: "payment-mobile",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Payment entry on a phone",
       description: "A small entry screen at phone width. Rows grow to the 44px touch pitch and the numeric field asks the on-screen keyboard for digits with `inputmode`.",
       mobile: {

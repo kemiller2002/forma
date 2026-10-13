@@ -23,9 +23,11 @@ export default {
       "The group expresses no priority, legality or permission; it only arranges what the application renders."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "document-toolbar",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Document toolbar with two groups",
       description: "Two labelled groups side by side in a [[cluster]]. Each section is named by its own heading, so the two sets of commands stay distinguishable in the landmark and heading lists even though both sit in one toolbar row.",
       html: `<ef-command-group class="ef-component-tag">
@@ -50,6 +52,7 @@ export default {
     },
     {
       id: "unavailable-command",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Command unavailable with a visible reason",
       description: "The application has decided Merge is not currently legal. The button is natively disabled, and a sentence inside the group states why, because the application-layer disabled button looks almost identical to an enabled one. Forma does not decide legality; it only renders the state it is given.",
       html: `<ef-command-group class="ef-component-tag">
@@ -66,6 +69,7 @@ export default {
     },
     {
       id: "mobile-record-commands",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Record commands on a phone",
       description: "A group of five commands with longer labels at phone width. The commands wrap into several rows under the label; nothing is hidden or scrolled.",
       mobile: {

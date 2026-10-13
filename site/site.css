@@ -551,6 +551,19 @@
     font-size: .82rem;
   }
 
+  /* Live demo / static specimen label (ULI-A03, A09). Spans the heading. */
+  .example-heading .example-interaction {
+    grid-column: 1 / -1;
+    padding-block: .5rem;
+    padding-inline: .75rem;
+    border-inline-start: .25rem solid var(--ef-verdigris);
+    font-size: .9rem;
+  }
+
+  .example-heading .example-interaction--static {
+    border-inline-start-color: var(--ef-oxide-bronze);
+  }
+
   .example-canvas {
     min-inline-size: 0;
     max-inline-size: 100%;

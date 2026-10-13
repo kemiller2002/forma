@@ -23,6 +23,7 @@ export default {
       "No color is applied to the value; direction and state must be written as text."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "unknown-value",
@@ -39,6 +40,7 @@ export default {
     },
     {
       id: "stale-with-freshness",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Value with freshness and period",
       description: "The value is stated with its period and a [[freshness]] line, so users can tell how current it is. A trend is written as words (\"down 4 from last week\"), not as a green or red arrow.",
       html: `<ef-metric-card class="ef-component-tag">
@@ -65,6 +67,7 @@ export default {
     },
     {
       id: "mobile-metric-stack",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile metric stack",
       description: "Two cards at phone width. The value shrinks toward its 2rem minimum and each card keeps its label, context and link in reading order.",
       mobile: {

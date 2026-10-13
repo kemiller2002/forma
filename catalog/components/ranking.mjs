@@ -23,9 +23,11 @@ export default {
       "The announcement paragraph is visually hidden but remains in the accessibility tree as a polite live region."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "after-keyboard-move",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "After moving an item up",
       description: "Delivery speed has just been moved to first place with its Move up button. The application renumbered the list, disabled the impossible moves at the ends and wrote the announcement.",
       html: `<ef-ranking class="ef-component-tag">
@@ -71,6 +73,7 @@ export default {
     },
     {
       id: "long-labels-heavy",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Long item labels with heavy motion weight",
       description: "Items with sentence-length labels that wrap within the middle column. Heavy motion weight gives any application-driven settle (via the reorder hooks) a slower, more damped feel; it does not change the order logic.",
       html: `<ef-ranking class="ef-component-tag">
@@ -101,6 +104,7 @@ export default {
     },
     {
       id: "mobile-full-width-controls",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Ranking on a phone",
       description: "Below 44rem the move buttons drop under the item text and split the row width, giving large touch targets.",
       mobile: {

@@ -25,6 +25,7 @@ export default {
   examples: [
     {
       id: "form-with-help",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Form with help text",
       description: "A payment details form with a help panel. The form is the primary region; the help panel sits beside it on wide screens and below it when the pane narrows.",
       html: `<ef-switcher class="ef-component-tag">
@@ -67,6 +68,7 @@ export default {
     },
     {
       id: "mobile-stacked",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile stacked regions",
       description: "A release note with a supporting download panel at phone width. The row cannot hold both minimums, so the regions stack.",
       mobile: {

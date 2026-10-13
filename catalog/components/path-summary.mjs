@@ -23,9 +23,11 @@ export default {
       "`aria-current=\"step\"` can mark the selected or final step; Forma adds no visual styling for it."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "evidence-path",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Evidence path from claim to source",
       description: "How a readiness claim traces back to raw test output. Each relationship phrase is written to read naturally into the next step, and the final step is the source.",
       html: `<ef-path-summary class="ef-component-tag">
@@ -42,6 +44,7 @@ export default {
     },
     {
       id: "broken-path",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Path with an unknown link",
       description: "The route from an order to its shipment has a gap: the relationship between the warehouse pick and the carrier handoff was not recorded. The step still appears, stating Unknown, so the path does not look continuous when it is not.",
       html: `<ef-path-summary class="ef-component-tag">
@@ -58,6 +61,7 @@ export default {
     },
     {
       id: "mobile-path",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile data flow path",
       description: "A three-step data flow at phone width. Entity and relationship text wrap within each numbered step.",
       mobile: {

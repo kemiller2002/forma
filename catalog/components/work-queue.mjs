@@ -23,9 +23,11 @@ export default {
       "At 40rem and below each item becomes one column and its button stretches to full width."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "mixed-states",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Overdue, unknown and blocked work",
       description: "Three items with different application states, each written as text with a [[status-lozenge]]. The unknown write outcome asks for reconciliation rather than a retry, and the blocked item's action is to view the blocker because nothing else is legal.",
       html: `<ef-work-queue class="ef-component-tag">
@@ -71,6 +73,7 @@ export default {
     },
     {
       id: "mobile-queue",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile work queue",
       description: "Two items at phone width. Each item stacks its reason above a full-width action, and the header stacks the count under the title.",
       mobile: {

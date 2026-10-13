@@ -24,9 +24,11 @@ export default {
       "The shell never announces itself, steals focus or animates. Those behaviors belong to the intent-specific patterns and the application."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "warning-two-actions",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Session expired with two recovery paths",
       description: "A warning-severity fault in a record panel. Aegis supplied two capabilities, so two native buttons are rendered in the order given. The dashed start border repeats the Warning label structurally.",
       html: `<ef-fault class="ef-component-tag">
@@ -47,6 +49,7 @@ export default {
     },
     {
       id: "critical-reload",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Critical fault in a side panel",
       description: "Critical severity widens the start border and adds an outline so the level stays distinguishable in grayscale and forced colors. Visual weight is not a substitute for the Critical text label, which remains first in the body.",
       html: `<ef-fault class="ef-component-tag">
@@ -82,6 +85,7 @@ export default {
     },
     {
       id: "mobile-long-content",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Long title and reference on a phone",
       description: "An error with a long translated title and a long reference at phone width. The actions column drops below the body and each button spans the full width.",
       mobile: {

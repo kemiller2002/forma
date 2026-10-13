@@ -24,9 +24,11 @@ export default {
       "At 40rem and below each turn is one column and turn actions are full width."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "multi-party",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Multi-party care conversation",
       description: "Two people and an application in one history. Every turn names its speaker; the application turn contains a structured list and an action to review its proposal. Nothing about layout or color says whose statement is correct.",
       html: `<ef-conversation class="ef-component-tag">
@@ -61,6 +63,7 @@ export default {
     },
     {
       id: "failed-turn",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Application turn that could not complete",
       description: "The application could not finish a request. Its turn says so in text with a status lozenge and offers a retry, and the user's original message stays visible so nothing they wrote is lost.",
       html: `<ef-conversation class="ef-component-tag">
@@ -88,6 +91,7 @@ export default {
     },
     {
       id: "mobile-history",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile history",
       description: "At phone width the speaker label sits above each turn's content and actions become full-width buttons.",
       mobile: {

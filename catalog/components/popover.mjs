@@ -24,9 +24,23 @@ export default {
       "Stationary fades in both directions: position and size stay unchanged until fully transparent."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "button", name: "Show options", expect: { open: true } },
+      { role: "button", name: "Close", expect: { open: false } }
+    ]
+  },
   examples: [
     {
       id: "manual-reference-panel",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Keyboard shortcuts", expect: { open: true } },
+          { role: "button", name: "Close shortcuts", expect: { open: false } }
+        ]
+      },
       title: "Keyboard shortcuts panel that stays open",
       description: "A reference the user keeps open while working. `popover=\"manual\"` disables light dismiss, so clicking the page or pressing Escape does not close it; the Close button and the invoker (which toggles) do. The popover is named by its heading through aria-labelledby.",
       html: `<ef-popover class="ef-component-tag">
@@ -44,6 +58,13 @@ export default {
     },
     {
       id: "long-change-history",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Change history (12)", expect: { open: true } },
+          { role: "button", name: "Close history", expect: { open: false } }
+        ]
+      },
       title: "Long change history that scrolls",
       description: "An auto popover with more content than fits. The surface stops at `min(80dvh, 100dvh - 2rem)` and scrolls internally without scrolling the page. `data-ef-motion-weight=\"standard\"` gives the larger surface a slightly slower settle than the light default.",
       html: `<ef-popover class="ef-component-tag">
@@ -66,6 +87,13 @@ export default {
     },
     {
       id: "mobile-field-help",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Where do I find my IBAN?", expect: { open: true } },
+          { role: "button", name: "Close help", expect: { open: false } }
+        ]
+      },
       title: "Field help on a phone",
       description: "A help popover beside a form field at phone width. The surface is bounded to the viewport minus a small margin and wraps its text.",
       mobile: {

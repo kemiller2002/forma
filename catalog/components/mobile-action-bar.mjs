@@ -23,9 +23,11 @@ export default {
       "A translucent surface with a backdrop blur separates the bar from content scrolling underneath."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "single-primary",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Single submit action",
       description: "One primary action that fills the bar. The accessible name of the landmark says which task the action belongs to.",
       html: `<ef-mobile-action-bar class="ef-component-tag">
@@ -36,6 +38,7 @@ export default {
     },
     {
       id: "three-actions",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Three actions with long labels",
       description: "Three equal-width actions: two secondary and one primary. Long labels wrap inside their buttons instead of widening the bar, and every button keeps the 44px minimum height. Order in source is the order users hear and tab through; here the primary comes last.",
       html: `<ef-mobile-action-bar class="ef-component-tag">
@@ -48,6 +51,7 @@ export default {
     },
     {
       id: "mobile-sticky-form",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Sticky under a long form",
       description: "At phone width the bar sticks to the bottom of the viewport while the form above scrolls. It is the last child of the form, so it stops sticking when the end of the form is reached and never overlaps content after it.",
       mobile: {

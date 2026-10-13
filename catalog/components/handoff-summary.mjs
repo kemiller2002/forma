@@ -23,9 +23,11 @@ export default {
       "No border or background of its own: place it in a [[surface]] or another frame when it needs separation."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "database-migration",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Database migration proposal",
       description: "An agent proposes a schema migration. The summary names the agent, the exact migration identifier, the evidence and its scope, the uncertainty that remains, and who must approve. The decision actions follow the facts.",
       html: `<ef-handoff-summary class="ef-component-tag">
@@ -48,6 +50,7 @@ export default {
     },
     {
       id: "review-only",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Reviewer without approval authority",
       description: "The current user can review but does not hold the authority to approve. The summary says so in text and the application renders only the actions this user may take; there is no disabled Approve button pretending to be available.",
       html: `<ef-handoff-summary class="ef-component-tag">
@@ -69,6 +72,7 @@ export default {
     },
     {
       id: "mobile-approval",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile approval",
       description: "At phone width each fact stacks its label above its value, and the actions wrap below the facts.",
       mobile: {

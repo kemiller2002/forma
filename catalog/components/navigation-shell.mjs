@@ -23,9 +23,11 @@ export default {
       "Forma does not style `aria-current`; any visual current-location cue comes from the application's link styling."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "project-settings",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Project settings area",
       description: "Five destinations with Access as the current page. Both lists carry the same aria-current. The content region is shown as a labelled section here; in an application it is the page's main element.",
       html: `<ef-navigation-shell class="ef-component-tag">
@@ -44,6 +46,7 @@ export default {
     },
     {
       id: "narrow-rail",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Narrower navigation column",
       description: "The application narrows the navigation column with the --ef-navigation-width custom property and tightens the gap with --ef-navigation-space. Long destination names wrap within the column.",
       html: `<ef-navigation-shell class="ef-component-tag">
@@ -62,6 +65,7 @@ export default {
     },
     {
       id: "mobile-compact-open",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Compact navigation on a phone",
       description: "At phone width the persistent column is hidden and the compact disclosure appears above the content. It is shown open here so the destinations are visible.",
       mobile: {

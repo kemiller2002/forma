@@ -22,9 +22,11 @@ export default {
       "At 48rem and below the stage is one column, primary first."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "article-editor",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Article editor with publishing checklist",
       description: "The article body is the dominant surface; a readiness checklist and the publish action sit in the support column. The support column is labelled so it can be reached as a landmark.",
       html: `<ef-focus-stage class="ef-component-tag">
@@ -47,6 +49,7 @@ export default {
     },
     {
       id: "narrow-support",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Compact support column",
       description: "The support track is narrowed with `--ef-focus-stage-support` and the gap tightened with `--ef-focus-stage-space`, for a dense review screen where the support holds only a few properties.",
       html: `<ef-focus-stage class="ef-component-tag">
@@ -65,6 +68,7 @@ export default {
     },
     {
       id: "mobile-stacked",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Mobile stacked support",
       description: "At phone width the support column moves below the primary work, keeping the form first in both reading and focus order.",
       mobile: {

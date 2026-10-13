@@ -22,9 +22,11 @@ export default {
       "Items and nested nav links wrap, so long labels never force horizontal scrolling."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "project-context",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Project context band",
       description: "A named section with the project name, local navigation and a live status message. The section is a region landmark because it has an accessible name; the nav is a second, separately named landmark.",
       html: `<ef-landmark-region class="ef-component-tag">
@@ -53,6 +55,7 @@ export default {
     },
     {
       id: "mobile-wrapped-band",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile wrapped band",
       description: "The project band at phone width. It stops being sticky, and the heading, navigation links and status wrap onto separate lines.",
       mobile: {
