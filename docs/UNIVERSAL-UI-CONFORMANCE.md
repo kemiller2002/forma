@@ -1,7 +1,7 @@
 # Universal UI Layout and Action Conformance Adoption
 
 Status: implementation pilot (not yet a passed release gate)  
-Authority: `visual-engineering/UI-LAYOUT-INTERACTION@1.0.0` (`kemiller2002/visual-engineering/framework/standards/UI-LAYOUT-INTERACTION.md`). Forma cites its rule IDs (ULI-L01..L12, ULI-A01..A10), statuses and tolerances; it does not restate or fork them.  
+Authority: `visual-engineering/UI-LAYOUT-INTERACTION@1.0.0` (`kemiller2002/visual-engineering/framework/standards/UI-LAYOUT-INTERACTION.md`). Forma cites its rule IDs (ULI-L01..L13, ULI-A01..A10), statuses and tolerances; it does not restate or fork them.  
 Crosswalk: `kemiller2002/application-visual-language/style-guide/ui-conformance.md`
 
 Forma owns **intrinsic component layout**, semantic markup and the documentation presentation system. It does not own a consumer's domain operation: Limen/application code owns behaviors beyond native HTML. Do not introduce runtime behavior into the package to make a demo pass.
@@ -20,7 +20,7 @@ Forma owns **intrinsic component layout**, semantic markup and the documentation
 
 `patterns/button.html` and `catalog/components/button.mjs` contain action-style specimens (including Save changes, Cancel and # fragment links) that cannot be assumed functional by virtue of being native buttons. The documentation site must distinguish copyable *markup specimens* from live actionable examples and wire demonstrable behavior where marketed as live. Do not mark the full catalog passing until the 166 component pages / 717 example specimens reported in the current generated inventory have been classified and every *enabled live action* exercised.
 
-Reference browser helpers: `tests/site-browser/ui-conformance-helpers.mjs`, self-tested by `tests/site-browser/ui-conformance-helpers.spec.mjs` (run by `npm run site:mobile`). These helpers only prove assertions in tests that invoke them; their presence does not establish site-wide coverage.
+Reference browser helpers: the dev-only package `@echelon-foundry/forma-conformance` (`packages/conformance`, API in its README; `tests/site-browser/ui-conformance-helpers.mjs` re-exports it), self-tested by `tests/site-browser/ui-conformance-helpers.spec.mjs` (run by `npm run site:mobile`). The package is separate from the zero-runtime design-system package and is checked by `tests/conformance-package.test.mjs`. These helpers only prove assertions in tests that invoke them; their presence does not establish site-wide coverage.
 
 - `measureAlignment` / `expectPeerAlignment` compare only an explicitly declared group (rule ID, group id, peers by role and accessible name, edge, tolerance defaulting to the contract's 1 CSS px). They measure after `document.fonts.ready` and two consecutive frame-separated measurements agree, and report rule ID, element names, measured coordinates, delta and tolerance. A missing, ambiguous, hidden, null-box or zero-size peer is `UNKNOWN`, never `PASS`.
 - `runActionAssertion` / `expectActionOutcome` require an explicit expected post-state. They capture the pre-state, activate the control through its role and name (no coordinates, no fixed sleeps), and wait with bounded Playwright auto-waiting for the expected post-state. They report `FAIL` when the pre-state already satisfies the expectation, when the expected post-state never appears (an inert control, or one that changes something unrelated), or when post equals pre; a missing, ambiguous or disabled control or target is `UNKNOWN`.

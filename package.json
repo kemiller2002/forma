@@ -68,7 +68,7 @@
     "site:check": "npm run site:build && npm run catalog:check && npm run site:test && npm run site:mobile",
     "site:mobile": "playwright test --config=playwright.site.config.mjs",
     "pack:verify": "npm run build && npm pack --dry-run",
-    "test:package": "node --test tests/package-contract.test.mjs",
+    "test:package": "node --test tests/package-contract.test.mjs tests/conformance-package.test.mjs",
     "test:css": "node --test tests/css-source.test.mjs tests/dist-css.test.mjs tests/contrast-pairs.test.mjs tests/diagram-contract.test.mjs",
     "test:contrast": "node --test tests/contrast-pairs.test.mjs && playwright test tests/browser/pattern-contrast.spec.mjs --project=chromium",
     "brands:build": "dotnet run --project tools/BrandCompiler/BrandCompiler.fsproj -- brands dist/brands",
