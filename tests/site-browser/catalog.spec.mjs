@@ -224,6 +224,10 @@ chunks.forEach((chunk, index) => {
         .exclude("iframe")
         .options({ iframes: false })
         .analyze();
+      // Static specimens render inert on the site (ULI-A09), and axe skips
+      // inert content. Their markup is still the copyable consumer markup,
+      // so lift inert for this pass to keep the same coverage as live demos.
+      await page.evaluate(() => document.querySelectorAll('.example-canvas[inert]').forEach(canvas => canvas.removeAttribute("inert")));
       const examples = await page.locator(".example-canvas").count()
         ? await new AxeBuilder({ page })
           .withTags(tags)

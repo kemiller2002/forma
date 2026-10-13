@@ -7,6 +7,7 @@
 import { expect, test } from "@playwright/test";
 import {
   CONTRACT_WIDTHS,
+  expectActionOutcome,
   expectDestinationClearOfHeader,
   expectNoOverflow,
   inventoryActions,
@@ -115,19 +116,25 @@ for (const url of PAGES) {
   });
 }
 
-test("ULI-L05 marketing fragment navigation lands clear of the sticky header", async ({ page }) => {
+test("ULI-L05 marketing header links land their destinations clear of the sticky header", async ({ page }) => {
   for (const file of ["index.html", "product.html", "docs.html"]) {
     for (const width of [768, 1280]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(`/examples/echelon-marketing-site/${file}`);
       const header = page.locator(".ef-site-header");
-      const fragments = await page.locator(".ef-site-header a[href^='#']").evaluateAll(links => [...new Set(links.map(link => link.getAttribute("href")))]);
-      for (const href of fragments) {
-        if (href === "#" || !(await page.locator(href).count())) continue;
-        await page.goto(`/examples/echelon-marketing-site/${file}${href}`);
-        const destination = page.locator(`${href} :is(h1, h2, h3)`).first();
-        const target = (await destination.count()) ? destination : page.locator(href);
-        await expectDestinationClearOfHeader(page, target, header);
+      const links = await header.locator("a[href^='#']").evaluateAll(anchors =>
+        anchors.filter(anchor => anchor.checkVisibility()).map(anchor => ({ href: anchor.getAttribute("href"), name: anchor.textContent.replace(/\s+/g, " ").trim() })));
+      for (const link of links.filter(item => item.href.length > 1)) {
+        if (!(await page.locator(link.href).count())) continue;
+        await page.evaluate(() => { history.replaceState(history.state, "", location.pathname); window.scrollTo(0, 0); });
+        await expectActionOutcome(page, {
+          ruleId: "ULI-A02",
+          scope: header,
+          action: { role: "link", name: link.name },
+          outcome: { kind: "url", expected: new RegExp(`${link.href}$`) }
+        });
+        const heading = page.locator(`${link.href} :is(h1, h2, h3)`).first();
+        await expectDestinationClearOfHeader(page, (await heading.count()) ? heading : page.locator(link.href), header);
       }
     }
   }

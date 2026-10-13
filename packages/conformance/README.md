@@ -56,6 +56,9 @@ A target is `{ role, name, scope? }`:
   both named "Features"). Contracts and groups also accept a default `scope`.
 - `role: "disclosure"`: addresses a native `<summary>` by its text. Playwright
   gives `<summary>` no implicit role, so `getByRole` cannot reach it.
+- `role: "text"`: addresses an element by its exact visible text (Playwright
+  `getByText`). Use it only for a peer that has no role, such as a status
+  lozenge beside a heading.
 
 Every function takes a `root` that is a `Page` or a `Locator`.
 
@@ -73,6 +76,16 @@ await expectPeerAlignment(page, {
 
 Measurement starts after `document.fonts.ready`. A result is taken only when
 two consecutive frame-separated measurements agree.
+
+Groups can also be declared in markup with the attribute vocabulary Forma
+Studio exports:
+
+- `data-uli-align-group="id"`;
+- `data-uli-align-edge="top|bottom|center|left|right"`;
+- `data-uli-align-peer="name"`, which is optional.
+
+`measureDeclaredGroups(root)` and `expectDeclaredGroups(root)` measure every
+declared group. The declaring elements are the peers; nothing is inferred.
 
 ## Actions (ULI-A01, A02, A05, A06)
 

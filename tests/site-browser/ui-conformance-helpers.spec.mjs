@@ -10,6 +10,8 @@ import {
   expectPeerAlignment,
   evaluateLabelIntegrity,
   evaluateOverflow,
+  expectDeclaredGroups,
+  measureDeclaredGroups,
   expectNoOverflow,
   inventoryActions,
   inventoryVisibleActions,
@@ -424,5 +426,38 @@ test.describe("overflow, labels and focus", () => {
     await recordTabSequence(page, 3);
     expect(await wasFocusedDuringSequence(page.getByRole("button", { name: "Two" }))).toBe(true);
     expect(await wasFocusedDuringSequence(page.getByRole("button", { name: "Skipped" }))).toBe(false);
+  });
+});
+
+test.describe("declared groups in markup (data-uli-align-*)", () => {
+  const rowMarkup = second => fixture(`<div style="display:flex;gap:16px;align-items:flex-start">
+    <input aria-label="City" data-uli-align-group="address" data-uli-align-edge="top" data-uli-align-peer="City">
+    <input aria-label="Postal code" data-uli-align-group="address" data-uli-align-peer="Postal code" style="${second}">
+  </div>`);
+
+  test("aligned declared peers pass and staggered ones fail with measured values", async ({ page }) => {
+    await page.setContent(rowMarkup(""));
+    const [aligned] = await expectDeclaredGroups(page);
+    expect(aligned).toMatchObject({ group: "address", edge: "top", status: STATUS.PASS });
+    await page.setContent(rowMarkup("margin-top: 12px"));
+    const [staggered] = await measureDeclaredGroups(page);
+    expect(staggered.status).toBe(STATUS.FAIL);
+    expect(staggered.deltaCssPx).toBeCloseTo(12, 0);
+    expect(staggered.measurements.map(item => item.element)).toEqual(['declared "City"', 'declared "Postal code"']);
+  });
+
+  test("a hidden or lone declared peer is UNKNOWN, and no declarations is an error", async ({ page }) => {
+    await page.setContent(rowMarkup("display: none"));
+    expect((await measureDeclaredGroups(page))[0].status).toBe(STATUS.UNKNOWN);
+    await page.setContent(fixture(`<input aria-label="Lone" data-uli-align-group="solo">`));
+    expect((await measureDeclaredGroups(page))[0].status).toBe(STATUS.UNKNOWN);
+    await page.setContent(fixture(`<p>No declarations</p>`));
+    await expect(expectDeclaredGroups(page)).rejects.toThrow(/no data-uli-align-group declarations/);
+  });
+
+  test("the text pseudo-role measures a peer without a role", async ({ page }) => {
+    await page.setContent(fixture(`<div style="display:flex;align-items:center;gap:8px"><h2 style="margin:0">INV-1042</h2><span>Overdue</span></div>`));
+    const report = await measureAlignment(page, { ruleId: "ULI-L07", id: "title-status", edge: "center", peers: [{ role: "heading", name: "INV-1042" }, { role: "text", name: "Overdue" }] });
+    expect(report.status).toBe(STATUS.PASS);
   });
 });
