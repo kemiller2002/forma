@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-13T20:50:37.000Z",
+  "updatedAt": "2026-10-13T23:18:16.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1999,31 +1999,31 @@
       "state": "blocked",
       "semanticState": "blocked",
       "evidence": [],
-      "updatedAt": "2026-10-13T20:50:37.000Z",
+      "updatedAt": "2026-10-13T23:18:16.000Z",
       "telemetryExecutionIds": [
         "EXE-20261013T183320424Z-8a02891b"
       ],
       "latestCheckpoint": {
-        "id": "2abef9d742b95dc4c6c827ac",
-        "recordedAt": "2026-10-13T20:50:36.000Z",
+        "id": "7e44a15a0b4a27f85107576f",
+        "recordedAt": "2026-10-13T23:18:05.000Z",
         "executionId": "EXE-20261013T183320424Z-8a02891b",
         "repository": "echelon-design-system",
         "branch": "feat/ui-conformance-pilot-2026-10",
-        "commit": "3ac2fd1cf11c32a0742482faf677d6cb541c84d0",
+        "commit": "f9e29cdb7855015427b5c868bc2f5c30d64dd764",
         "remote": {
           "name": "origin",
           "url": "https://github.com/kemiller2002/forma"
         },
         "remoteBranch": "feat/ui-conformance-pilot-2026-10",
-        "remoteCommit": "3ac2fd1cf11c32a0742482faf677d6cb541c84d0",
-        "summary": "ui:conformance added as blocking ui-conformance job in forma-site-validation (3ac2fd1); PR #158 draft",
-        "nextAction": "Watch #158 CI to completion; fix failures at root",
+        "remoteCommit": "f9e29cdb7855015427b5c868bc2f5c30d64dd764",
+        "summary": "Fixed #158 CI root causes (interest-invoker focus, wide fallback fonts, font-settle flake) in f9e29cd; local ui:conformance 521/521",
+        "nextAction": "Watch #158 CI to green, mark ready",
         "verification": {
           "status": "verified",
           "mechanism": "git-remote-observation"
         }
       },
-      "blockReason": "Draft PR #158 awaiting CI completion and owner review/merge decisions (#155 first); Firefox/WebKit evidence and site demo-script policy remain owner decisions"
+      "blockReason": "Awaiting #158 CI completion and owner merge"
     }
   ]
 }
