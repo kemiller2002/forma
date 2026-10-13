@@ -42,7 +42,7 @@ The documentation site runs no script (enforced by `tests/site-build.test.mjs`) 
 - `tests/site-browser/site-conformance.spec.mjs` audits the documentation site and the Echelon marketing reference fixture: overflow and intact navigation labels at every contract width and 200% text, valid destinations for every enabled action, and fragment destinations clear of the sticky header.
 - `tests/conformance/catalog-text-scale.spec.mjs` sweeps every catalog example at 320/390px and 100%/200% text.
 
-Run everything with `npm run ui:conformance` (Chromium; text scaling uses the DevTools protocol).
+Run everything with `npm run ui:conformance` (Chromium; text scaling uses the DevTools protocol). CI runs it as the blocking `ui-conformance` job in `.github/workflows/forma-site-validation.yml` and uploads results and traces.
 
 ## Pilot status and remaining work
 
@@ -51,7 +51,7 @@ Done in the pilot: catalog live/static classification and its check; outcome tes
 Remaining:
 
 - Firefox and WebKit evidence for the conformance suites. They are Chromium-only because of text scaling.
-- Promotion of `npm run ui:conformance` to a blocking CI job once its runtime and false-positive rate are reviewed. The site-browser specs already run in `npm run site:mobile`.
+- Review of the `ui-conformance` CI job (`.github/workflows/forma-site-validation.yml`, blocking since the pilot) for runtime and false positives as the catalog grows.
 - A product decision on whether the documentation site may run demo scripts. Without that, application-behavior examples stay labelled static specimens.
 - Compositions pages and icon pages are not yet classified example by example.
 
