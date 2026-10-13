@@ -507,8 +507,8 @@
         "name": "ros-work-protocol",
         "mechanism": "blocked-transition"
       },
-      "lastAssessedAt": "2026-10-13T20:48:50.000Z",
-      "recordedAt": "2026-10-13T20:48:50.000Z",
+      "lastAssessedAt": "2026-10-13T20:50:37.000Z",
+      "recordedAt": "2026-10-13T20:50:37.000Z",
       "history": [
         {
           "status": "unknown",
@@ -526,14 +526,30 @@
     },
     {
       "metricId": "agent.resumes",
-      "status": "unknown",
-      "reason": "runtime capability not reported or mapped",
-      "discoveredAt": "2026-10-13T18:33:20.424Z",
+      "status": "derived",
+      "reason": "normalized measurement recorded",
+      "discoveredAt": "2026-10-13T20:49:42.000Z",
       "source": {
-        "type": "environment",
-        "name": "runtime-identity",
-        "mechanism": "whitelisted-claude-environment"
-      }
+        "type": "calculated",
+        "name": "ros-work-protocol",
+        "mechanism": "resume-transition"
+      },
+      "lastAssessedAt": "2026-10-13T20:49:42.000Z",
+      "recordedAt": "2026-10-13T20:49:42.000Z",
+      "history": [
+        {
+          "status": "unknown",
+          "reason": "runtime capability not reported or mapped",
+          "source": {
+            "type": "environment",
+            "name": "runtime-identity",
+            "mechanism": "whitelisted-claude-environment"
+          },
+          "discoveredAt": "2026-10-13T18:33:20.424Z",
+          "lastAssessedAt": "2026-10-13T18:33:20.424Z",
+          "recordedAt": "2026-10-13T18:33:20.424Z"
+        }
+      ]
     },
     {
       "metricId": "agent.human_escalations",
@@ -1384,6 +1400,46 @@
       },
       "collectedAt": "2026-10-13T20:48:50.000Z",
       "schemaVersion": "1.0.0"
+    },
+    {
+      "measurementId": "MEAS-a645680d8186bd1c7601c10d",
+      "id": "agent.resumes",
+      "value": 1,
+      "unit": "count",
+      "currency": null,
+      "quality": "derived",
+      "confidence": null,
+      "scope": "execution",
+      "aggregation": "sum",
+      "dimensions": {},
+      "pricing": null,
+      "source": {
+        "type": "calculated",
+        "name": "ros-work-protocol",
+        "mechanism": "resume-transition"
+      },
+      "collectedAt": "2026-10-13T20:49:42.000Z",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "measurementId": "MEAS-ef89b0a0e8d4a0bdce948af5",
+      "id": "agent.interruptions",
+      "value": 1,
+      "unit": "count",
+      "currency": null,
+      "quality": "derived",
+      "confidence": null,
+      "scope": "execution",
+      "aggregation": "sum",
+      "dimensions": {},
+      "pricing": null,
+      "source": {
+        "type": "calculated",
+        "name": "ros-work-protocol",
+        "mechanism": "blocked-transition"
+      },
+      "collectedAt": "2026-10-13T20:50:37.000Z",
+      "schemaVersion": "1.0.0"
     }
   ],
   "rawTelemetry": [],
@@ -1407,6 +1463,28 @@
         "mechanism": "work-lifecycle"
       },
       "eventId": "TEVT-3772f0cd070d709e8c3be876"
+    },
+    {
+      "type": "work.resumed",
+      "occurredAt": "2026-10-13T20:49:42.000Z",
+      "reason": null,
+      "source": {
+        "type": "ros-clock",
+        "name": "ros",
+        "mechanism": "work-lifecycle"
+      },
+      "eventId": "TEVT-3ce7fa6e66ba094057c6041a"
+    },
+    {
+      "type": "work.blocked",
+      "occurredAt": "2026-10-13T20:50:37.000Z",
+      "reason": "Draft PR #158 awaiting CI completion and owner review/merge decisions (#155 first); Firefox/WebKit evidence and site demo-script policy remain owner decisions",
+      "source": {
+        "type": "ros-clock",
+        "name": "ros",
+        "mechanism": "work-lifecycle"
+      },
+      "eventId": "TEVT-93d1d347bee3b288cb802ca7"
     }
   ],
   "repository": {
