@@ -23,9 +23,18 @@ export default {
       "On wide, tall viewports the navigation and outline stick below the header and scroll independently when longer than the viewport."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "article-without-outline",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Tokens", expect: { url: "#documentation-layout-article-without-outline-tokens" } },
+          { role: "link", name: "Surface tones", expect: { url: "#documentation-layout-article-without-outline-tones" } },
+          { role: "link", name: "Breakpoints", expect: { url: "#documentation-layout-article-without-outline-tokens" } }
+        ]
+      },
       title: "Article without an outline",
       description: "A short reference page with navigation and an article only. Without an aside, the article fills the remaining columns at every width. Examples use `h2` for the article title because the catalog page already has an `h1`.",
       html: `<ef-documentation-layout class="ef-component-tag">
@@ -47,6 +56,19 @@ export default {
     },
     {
       id: "long-guide",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Install", expect: { url: "#documentation-layout-long-guide-article" } },
+          { role: "link", name: "Upgrade", expect: { url: "#documentation-layout-long-guide-article" } },
+          { role: "link", name: "Local CSS policy", expect: { url: "#documentation-layout-long-guide-article" } },
+          { role: "link", name: "Deploy to GitHub Pages", expect: { url: "#documentation-layout-long-guide-article" } },
+          { role: "link", name: "Test before deployment", expect: { url: "#documentation-layout-long-guide-article" } },
+          { role: "link", name: "Read the release notes", expect: { url: "#documentation-layout-long-guide-notes" } },
+          { role: "link", name: "Update the lock", expect: { url: "#documentation-layout-long-guide-lock" } },
+          { role: "link", name: "Verify", expect: { url: "#documentation-layout-long-guide-verify" } }
+        ]
+      },
       title: "Long guide with outline",
       description: "A guide with several navigation groups and an outline of its headings. The outline follows the article in source order; it moves beside the article only when the main region is at least 72rem wide.",
       html: `<ef-documentation-layout class="ef-component-tag">
@@ -80,6 +102,16 @@ export default {
     },
     {
       id: "mobile-compact-nav",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Install", expect: { url: "#documentation-layout-mobile-compact-nav-article" } },
+          { role: "link", name: "Configure", expect: { url: "#documentation-layout-mobile-compact-nav-article" } },
+          { role: "link", name: "Upgrade", expect: { url: "#documentation-layout-mobile-compact-nav-article" } },
+          { role: "link", name: "Deploy", expect: { url: "#documentation-layout-mobile-compact-nav-article" } },
+          { role: "link", name: "Verify", expect: { url: "#documentation-layout-mobile-compact-nav-verify" } }
+        ]
+      },
       title: "Phone compact navigation",
       description: "At phone width the navigation becomes a short wrapping row above the article, and the outline follows the article.",
       mobile: {

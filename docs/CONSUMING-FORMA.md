@@ -122,6 +122,10 @@ IDs that a consumer does not recognize should be preserved as inert data, not
 rendered or rejected. There are no markup or token changes for existing
 components. See `docs/ICONS.md`.
 
+## 0.7.0
+
+Minor upgrade from 0.6.1. It adds the `.ef-form-row` primitive for peer fields and fixes shared geometry: one intrinsic height for single-line controls, and no overflow at 320/390 px with 200% text across the catalog. No markup, class or token is removed. Pages that lined up side-by-side fields with local margins can switch to `.ef-form-row` and delete those margins. Pin the immutable 0.7.0 release once it is published; a Git commit alone does not establish publication. Consumers that copied Forma's Playwright conformance helpers can depend on the dev-only `@echelon-foundry/forma-conformance` instead (see `packages/conformance/README.md`).
+
 ## 0.6.1
 
 Patch upgrade from 0.6.0. The new version constrains native date/time input width inside responsive `.ef-field` grids while keeping native browser pickers, labels, values, and events unchanged. The Forma documentation site also presents unbroken navigation labels and internally scrollable code examples on narrow screens. Consumers must pin the actual immutable 0.6.1 release once available; do not assume a Git commit alone establishes publication.

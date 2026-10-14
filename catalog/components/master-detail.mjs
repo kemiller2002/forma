@@ -22,9 +22,11 @@ export default {
       "At 40rem and below the list becomes a horizontally scrolling row of 12rem cards above the detail; the detail stays in the page flow."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "nothing-selected",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "No record selected",
       description: "The first visit to the list before any record is chosen. No row carries aria-current, and the detail region says what to do instead of showing stale data from a previous record.",
       html: `<ef-master-detail class="ef-component-tag">
@@ -43,6 +45,7 @@ export default {
     },
     {
       id: "blocked-record",
+      interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Blocked record with long names",
       description: "A selected record in a blocked state, with long customer names wrapping inside the list rows. Status is a text lozenge with a symbol, and the only legal action shown is the one the application allows.",
       html: `<ef-master-detail class="ef-component-tag">
@@ -67,6 +70,7 @@ export default {
     },
     {
       id: "mobile-record-switcher",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile record switcher",
       description: "At phone width the list becomes a horizontal switcher above the detail, and the selected record's detail follows directly underneath.",
       mobile: {

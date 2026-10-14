@@ -25,6 +25,7 @@ export default {
   examples: [
     {
       id: "form-with-summary",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Form beside its order summary",
       description: "A checkout form as the primary region and a live order summary as the secondary aside. Both columns start at the top, and the summary keeps its 16rem minimum.",
       html: `<ef-split-pane class="ef-component-tag">

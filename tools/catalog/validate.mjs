@@ -6,6 +6,8 @@
 //   node tools/catalog/validate.mjs switch     # one or more slugs
 import { pathToFileURL } from "node:url";
 import { loadCatalog, markupAttributes, markupClasses, markupTags, ownedHooks } from "./load.mjs";
+import { interactionProblems } from "./interaction.mjs";
+import { alignmentProblems } from "./alignment.mjs";
 
 export const MIN_SCENARIO_EXAMPLES = 2; // plus the canonical Basic example = three
 export const MIN_MOBILE_EXAMPLES = 1;
@@ -120,10 +122,16 @@ const exampleRules = (catalog, component) => {
         .map(name => [true, `${where}: class "${name}" is neither in Forma CSS nor in a canonical pattern`]),
       ...markupAttributes(html).filter(name => name.startsWith("data-ef-") && !catalog.hookIndex.attributeNames.has(name) && !patternAttributes.has(name))
         .map(name => [true, `${where}: attribute "${name}" is neither styled by Forma CSS nor used by a canonical pattern`]),
-      [Boolean(example.mobile) && !nonEmptyList(example.mobile.notes), `${where}: mobile.notes must explain what changes at narrow widths`]
+      [Boolean(example.mobile) && !nonEmptyList(example.mobile.notes), `${where}: mobile.notes must explain what changes at narrow widths`],
+      ...interactionProblems(example.interaction, html).map(message => [true, `${where}: ${message}`]),
+      ...alignmentProblems(example.alignment, html).map(message => [true, `${where}: ${message}`])
     ].filter(([failed]) => failed).map(([, message]) => problem(slug, message));
   });
-  return [...counts, ...perExample];
+  const basic = [
+    ...interactionProblems(component.basicInteraction, component.pattern ?? "").map(message => problem(slug, `Basic example (basicInteraction): ${message}`)),
+    ...alignmentProblems(component.basicAlignment, component.pattern ?? "").map(message => problem(slug, `Basic example (basicAlignment): ${message}`))
+  ];
+  return [...counts, ...basic, ...perExample];
 };
 
 const apiRules = (catalog, component) => {

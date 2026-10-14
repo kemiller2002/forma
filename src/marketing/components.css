@@ -193,6 +193,9 @@
     flex-wrap: wrap;
     align-items: center;
     gap: var(--ef-space-3);
+    /* Shrinks inside a flex or grid parent instead of being held at its
+       widest button's word (ULI-L05). */
+    min-inline-size: 0;
   }
 
   .ef-site .ef-button {
@@ -212,6 +215,10 @@
     line-height: var(--ef-type-leading-snug);
     text-align: center;
     text-decoration: none;
+    /* Never wider than its row and never split mid-word unless one word is
+       wider than the row (ULI-L05, L06). */
+    max-inline-size: 100%;
+    overflow-wrap: break-word;
     cursor: pointer;
     /* Hover and press are perceptual emphasis on the surface only: the hit
        target never moves under the pointer (MOT-014). */
@@ -458,7 +465,10 @@
     min-block-size: 1.5rem;
     font-size: var(--ef-type-size-small);
     font-weight: var(--ef-type-weight-strong);
-    white-space: nowrap;
+    /* One line whenever it fits (inline-flex shrinks to its content); it
+       wraps at word boundaries instead of overflowing a narrow column at
+       large text sizes (UI-LAYOUT-INTERACTION ULI-L05). */
+    max-inline-size: 100%;
   }
 
   /* Four disparate columns cannot degrade by a minimum item size, so the
@@ -490,6 +500,9 @@
     padding-block: var(--ef-space-4);
     border-block-end: var(--ef-shape-border-width) solid var(--ef-tone-rule);
     color: var(--ef-tone-text);
+    /* The step text is an anonymous flex item; let a long word wrap inside
+       it instead of overflowing a narrow column (ULI-L05). */
+    overflow-wrap: anywhere;
   }
 
   .ef-steps > li::before {
@@ -619,6 +632,7 @@
 
   .ef-code-figure > figcaption {
     margin-block-end: var(--ef-space-2);
+    overflow-wrap: anywhere;
     color: var(--ef-tone-muted);
     font-family: var(--ef-type-family-mono);
     font-size: var(--ef-type-size-label);

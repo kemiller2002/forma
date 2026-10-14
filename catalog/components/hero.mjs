@@ -22,9 +22,17 @@ export default {
       "The title size comes from the heading level inside `.ef-site`; `.ef-hero__title` only sets its spacing."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "product-release",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Install", expect: { url: "#hero-product-release-title" } },
+          { role: "link", name: "Read the documentation", expect: { url: "#hero-product-release-title" } }
+        ]
+      },
       title: "Product release hero",
       description: "A product page hero with release badges and actions in the content region and facts in the aside. On a real page the title is the `h1`; the catalog page already has one, so this specimen uses `h2`.",
       html: `<ef-hero class="ef-component-tag">
@@ -53,6 +61,12 @@ export default {
     },
     {
       id: "promise-only",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Book a working session", expect: { url: "#hero-promise-only-title" } }
+        ]
+      },
       title: "Promise without supporting context",
       description: "A single-offer hero with no aside: eyebrow, title and one primary action. Without an aside the content region takes the full width and the lead keeps its narrow reading measure.",
       html: `<ef-hero class="ef-component-tag">
@@ -70,6 +84,13 @@ export default {
     },
     {
       id: "mobile-stacked",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Book a working session", expect: { url: "#hero-mobile-stacked-title" } },
+          { role: "link", name: "See the body of work", expect: { url: "#hero-mobile-stacked-title" } }
+        ]
+      },
       title: "Phone hero with statement",
       description: "At phone width the statement in the aside moves below the promise and actions, keeping source order.",
       mobile: {

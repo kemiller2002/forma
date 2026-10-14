@@ -24,9 +24,11 @@ export default {
       "Choose `ef-visually-hidden` for application markup; `ef-sr-only` is used by the assessment patterns and when a later rule must be able to reveal the text."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "row-action-context",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Repeated actions with context",
       description: "Each row has a visible Edit button. The hidden suffix makes every accessible name unique (\"Edit invoice INV-1042\"), so a screen reader's list of buttons is usable.",
       html: `<ef-visually-hidden class="ef-component-tag">
@@ -44,6 +46,7 @@ export default {
     },
     {
       id: "search-label",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Search field with a hidden label",
       description: "The Search button makes the field's purpose obvious on screen, but the input still needs a real `label`. The label is visually hidden and remains the input's accessible name; the placeholder is only an example query.",
       html: `<ef-visually-hidden class="ef-component-tag">
@@ -73,6 +76,7 @@ export default {
     },
     {
       id: "mobile-icon-toolbar",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Icon toolbar on a phone",
       description: "A compact toolbar of symbol buttons for a narrow screen. Each glyph is `aria-hidden` and each button is named by visually hidden text.",
       mobile: {

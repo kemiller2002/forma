@@ -21,9 +21,11 @@ export default {
       "Actions sit at the end of the footer and wrap on narrow screens."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "multiple-fields",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Several fields changed",
       description: "A vendor record where two of three fields changed. Each side is a [[diff-viewer]] column with `ef-diff-row` entries, and `data-change=\"changed\"` marks the rows that differ. The application offers three legal recoveries.",
       html: `<ef-conflict-review class="ef-component-tag">
@@ -63,6 +65,7 @@ export default {
     },
     {
       id: "record-deleted",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Record deleted by someone else",
       description: "There is no current version to compare, so the diff is omitted. The header explains what happened and the only actions are ones that cannot overwrite anything.",
       html: `<ef-conflict-review class="ef-component-tag">
@@ -81,6 +84,7 @@ export default {
     },
     {
       id: "mobile-balance-conflict",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile balance conflict",
       description: "A single-field conflict at phone width.",
       mobile: {

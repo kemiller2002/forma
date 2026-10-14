@@ -7,8 +7,9 @@ the component catalog (`catalog/components/*.mjs`), the canonical patterns
 checker (`npm run catalog:check`) fails when a canonical pattern or a public
 `.ef-*` block class is missing from this list.
 
-- Public components: **166** in **18** families
-- Live examples on the documentation site: **717** (each component: canonical Basic + scenario examples + mobile examples)
+- Public components: **167** in **18** families
+- Rendered examples on the documentation site: **721** (each component: canonical Basic + scenario examples + mobile examples)
+- Example interaction (UI-LAYOUT-INTERACTION@1.0.0 ULI-A03/A09): **87** live demos with **226** declared, outcome-tested actions; **306** static specimens (rendered inert and labelled); **328** examples render no action control
 - Compositions: **5** (Operations dashboard, Form with validation, Keyboard and focus, Mobile settings, Overlay interaction)
 - Requirement-defined components not yet implemented: **29**
 
@@ -104,6 +105,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Bounded overflow | `<ef-bounded-overflow>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | dense-ledger, comparison-grid, data-grid, code-sample |
 | Cluster | `<ef-cluster>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | stack, command-group, status-lozenge, switcher |
 | Container | `<ef-container>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | measure, section, marketing-shell, prose |
+| Form row | `<ef-form-row>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | text-field, date-time-field, grid, stack, validation-message |
 | Frame | `<ef-frame>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | workflow-package.test.mjs | grid, diagram, image-choice |
 | Grid | `<ef-grid>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | responsive-grid, mosaic, dashboard-grid, card-grid, character-grid |
 | Landmark region | `<ef-landmark-region>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | workspace-shell, navigation-shell, site-header, alert |
@@ -202,7 +204,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 - **Feedback and status** (`/components/feedback/`, 16): Alerts, notifications, validation, loading and progress, and explicit operation states that never collapse unknown into failure.
 - **Faults and recovery** (`/components/faults/`, 10): The Aegis fault presentation family: safe inline, notification, banner and blocking faults with application-authorized recovery.
 - **Overlays and disclosure** (`/components/overlays/`, 7): Native dialog, Popover API and details/summary surfaces: modal dialogs, edge flyouts, popovers, tooltips, menus and disclosure.
-- **Layout primitives** (`/components/layout/`, 17): Intrinsic, container-aware composition primitives that recompose by available space without reordering source.
+- **Layout primitives** (`/components/layout/`, 18): Intrinsic, container-aware composition primitives that recompose by available space without reordering source.
 - **Workspaces and shells** (`/components/workspaces/`, 8): Multi-region application compositions: workspace shells, master/detail, split panes, dashboards and record headers.
 - **Data display** (`/components/data/`, 19): Tables, ledgers, key-value lists, metrics, timelines, diffs, collections and relationship displays.
 - **Workflow and diagrams** (`/components/workflow/`, 3): Presentation-only building blocks for boards, diagrams and spatial canvases; geometry, routing and editing stay in the application.

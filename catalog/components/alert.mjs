@@ -23,9 +23,11 @@ export default {
       "Forma has no tone variants: every alert uses the same accent border. Distinguish kinds of alert with words and icon glyphs, not color."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "stale-data-warning",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Stale data warning",
       description: "A persistent alert rendered with the page, so it has no entry cue. It explains that figures are out of date and offers the recovery action beside the explanation. `role=\"status\"` is kept because the message is informative, not urgent.",
       html: `<ef-alert class="ef-component-tag">
@@ -55,6 +57,7 @@ export default {
     },
     {
       id: "urgent-session-expiry",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Urgent interruption",
       description: "A time-sensitive warning inserted by the application with `role=\"alert\"`, so assistive technology announces it immediately. Two actions sit in a [[cluster]] in the trailing column. Reserve `role=\"alert\"` for messages that must interrupt.",
       html: `<ef-alert class="ef-component-tag">
@@ -73,6 +76,7 @@ export default {
     },
     {
       id: "mobile-review-alert",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile review prompt",
       description: "The canonical review alert at phone width. The three grid columns collapse into one, so the icon, text and a full-width action stack vertically.",
       mobile: {

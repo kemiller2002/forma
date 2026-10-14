@@ -24,9 +24,11 @@ export default {
       "Enters with the standard perceived motion weight (a short fade and a small downward settle); motion never encodes severity."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "reauthenticate",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Background sync needs sign-in",
       description: "An error raised by a background synchronization. Aegis supplied the Sign in capability. The dismiss button's accessible name starts with its visible label, so speech users can say \"Dismiss\".",
       html: `<ef-fault-notification class="ef-component-tag">
@@ -47,6 +49,7 @@ export default {
     },
     {
       id: "informational-rerender",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Restored notification without re-announcement",
       description: "A diagnostic notification re-rendered after navigation. It has no role=status because it was already announced when first inserted, no recovery actions because Aegis supplied none, and no data-ef-motion-entry so it does not animate again.",
       html: `<ef-fault-notification class="ef-component-tag">
@@ -64,6 +67,7 @@ export default {
     },
     {
       id: "not-dismissible",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Critical notification that cannot be dismissed",
       description: "Current application policy does not allow dismissal while diagnostics are disconnected, so no dismiss button is rendered. The only way forward is the Aegis-supplied recovery action or resolution upstream.",
       html: `<ef-fault-notification class="ef-component-tag">
@@ -83,6 +87,7 @@ export default {
     },
     {
       id: "mobile-sync",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Sync failure on a phone",
       description: "A warning notification at phone width with a recovery action and a dismiss control.",
       mobile: {

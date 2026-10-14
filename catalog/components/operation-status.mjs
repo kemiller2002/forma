@@ -22,9 +22,11 @@ export default {
       "Actions are supplied by the application and wrap in their own row."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "payment-failed",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Payment declined",
       description: "A confirmed failure. The lozenge says Failed, the text states that no money moved, and the only actions offered are the ones the application allows: update the card or choose another method.",
       html: `<ef-operation-status class="ef-component-tag">
@@ -63,6 +65,7 @@ export default {
     },
     {
       id: "blocked-by-permission",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Blocked by a missing approval",
       description: "The operation was not attempted because a prerequisite is missing. The lozenge says Blocked and the single action takes the user to request the approval.",
       html: `<ef-operation-status class="ef-component-tag">
@@ -81,6 +84,7 @@ export default {
     },
     {
       id: "mobile-unknown-save",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile unknown outcome",
       description: "The canonical unknown-outcome state at phone width.",
       mobile: {

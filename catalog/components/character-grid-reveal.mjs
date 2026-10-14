@@ -21,6 +21,7 @@ export default {
       "Staged text is not a live region; screen readers read it immediately and in order."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["form-handling"] },
   examples: [
     {
       id: "title-only",
@@ -79,6 +80,7 @@ export default {
     },
     {
       id: "banner-mobile",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Sign-on banner on a phone",
       description: "A 40-column sign-on banner. The reveal timing depends on cell positions, not on viewport width, so it looks the same on a phone.",
       mobile: {

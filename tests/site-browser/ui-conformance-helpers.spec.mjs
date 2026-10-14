@@ -1,13 +1,25 @@
 import { expect, test } from "@playwright/test";
 import {
+  CONTRACT,
+  CONTRACT_WIDTHS,
   STATUS,
   edgeCoordinate,
   evaluateActionOutcome,
   evaluateAlignment,
   expectActionOutcome,
   expectPeerAlignment,
+  evaluateLabelIntegrity,
+  evaluateOverflow,
+  expectDeclaredGroups,
+  measureDeclaredGroups,
+  expectNoOverflow,
+  inventoryActions,
   inventoryVisibleActions,
   measureAlignment,
+  measureLabelIntegrity,
+  measureOverflow,
+  recordTabSequence,
+  wasFocusedDuringSequence,
   runActionAssertion,
   validateActionContract,
   validateAlignmentGroup
@@ -204,6 +216,32 @@ test.describe("ULI-A01/A02 action fixtures", () => {
     expect(await page.getByRole("status", { name: "Other" }).textContent()).toBe("Other: changed");
   });
 
+  test("an off-screen skip link is reached by focus before activation", async ({ page }) => {
+    await page.setContent(fixture(`<style>.skip{position:absolute;left:-999px}.skip:focus{left:8px}</style>
+      <a class="skip" href="#main">Skip to main content</a><main id="main" tabindex="-1">Main</main>`));
+    await expectActionOutcome(page, { action: { role: "link", name: "Skip to main content" }, outcome: { kind: "url", expected: /#main$/ } });
+  });
+
+  test("a fixed skip link translated off-screen is reached by focus even after scrolling", async ({ page }) => {
+    await page.setContent(fixture(`<style>.skip{position:fixed;top:8px;left:8px;transform:translateY(-200%)}.skip:focus{transform:none}</style>
+      <a class="skip" href="#main">Skip to main content</a><div style="block-size:3000px"></div><main id="main" tabindex="-1">Main</main>`));
+    await page.evaluate(() => window.scrollTo(0, 1500));
+    await expectActionOutcome(page, { action: { role: "link", name: "Skip to main content" }, outcome: { kind: "url", expected: /#main$/ } });
+  });
+
+  test("an on-screen control is not focused before it is clicked", async ({ page }) => {
+    // Focus can have its own effect (interest invokers open on focus); a
+    // pointer activation must not be preceded by a programmatic focus.
+    await page.setContent(fixture(`<button type="button" id="b">Show count</button><p role="status" aria-label="Focus count">0</p>
+      <script>
+        const b = document.getElementById('b'); const out = document.querySelector('[role=status]');
+        let focusedBeforePointer = 0;
+        b.addEventListener('focus', () => { if (!b.matches(':active')) focusedBeforePointer += 1; });
+        b.addEventListener('click', () => { out.textContent = focusedBeforePointer === 0 ? 'clicked without prior focus' : 'focused before click'; });
+      </script>`));
+    await expectActionOutcome(page, { action: { role: "button", name: "Show count" }, outcome: { kind: "text", target: { role: "status", name: "Focus count" }, expected: "clicked without prior focus" } });
+  });
+
   test("pre-existing expected feedback cannot satisfy an inert button", async ({ page }) => {
     await page.setContent(fixture(`<button type="button">Save</button><p role="status" aria-label="Save status">Saved</p>`));
     const report = await runActionAssertion(page, {
@@ -304,4 +342,142 @@ test("action inventory reports candidates without claiming functionality", async
     <button type="submit">Save</button>`));
   const actions = await inventoryVisibleActions(page);
   expect(actions.map(item => item.nameHint)).toEqual(["Unwired example", "Save"]);
+});
+
+test.describe("published package surface", () => {
+  test("cites the canonical contract and widths", () => {
+    expect(CONTRACT).toEqual({ id: "visual-engineering/UI-LAYOUT-INTERACTION", version: "1.0.0" });
+    expect(CONTRACT_WIDTHS).toEqual([320, 390, 768, 1280]);
+  });
+
+  test("overflow and label evaluation never pass without evidence", () => {
+    expect(evaluateOverflow({ scrollWidth: 0, clientWidth: 0 }).status).toBe(STATUS.UNKNOWN);
+    expect(evaluateOverflow({ scrollWidth: 330, clientWidth: 320, escapes: [] }).status).toBe(STATUS.FAIL);
+    expect(evaluateOverflow({ scrollWidth: 320, clientWidth: 320, escapes: ["span"] }).status).toBe(STATUS.FAIL);
+    expect(evaluateOverflow({ scrollWidth: 320, clientWidth: 320, escapes: [] }).status).toBe(STATUS.PASS);
+    const label = { name: "Pricing", scrollWidth: 80, clientWidth: 80, scrollHeight: 20, clientHeight: 20, left: 0, right: 80, viewport: 320 };
+    expect(evaluateLabelIntegrity({ ...label, display: "inline", clientWidth: 0, clientHeight: 0 }).status).toBe(STATUS.UNKNOWN);
+    expect(evaluateLabelIntegrity({ ...label, display: "block" }).status).toBe(STATUS.PASS);
+    expect(evaluateLabelIntegrity({ ...label, display: "block", scrollWidth: 120 }).status).toBe(STATUS.FAIL);
+    expect(evaluateLabelIntegrity({ ...label, display: "block", right: 330 }).status).toBe(STATUS.FAIL);
+  });
+});
+
+test.describe("scoped, native and inert actions", () => {
+  test("scope disambiguates duplicate names across regions", async ({ page }) => {
+    await page.setContent(fixture(`
+      <header><a href="#features">Features</a></header>
+      <footer><a href="#features-footer">Features</a></footer>
+      <h2 id="features">Features</h2><h2 id="features-footer">More features</h2>`));
+    const unscoped = await runActionAssertion(page, { action: { role: "link", name: "Features" }, outcome: { kind: "url", expected: /#features$/ }, timeoutMs: NEGATIVE_TIMEOUT_MS });
+    expect(unscoped.status).toBe(STATUS.UNKNOWN);
+    await expectActionOutcome(page, { scope: page.locator("footer"), action: { role: "link", name: "Features" }, outcome: { kind: "url", expected: /#features-footer$/ } });
+    await expectActionOutcome(page.locator("header"), { action: { role: "link", name: "Features" }, outcome: { kind: "url", expected: /#features$/ } });
+  });
+
+  test("native disclosure, popover and modal dialog pass through controlled targets", async ({ page }) => {
+    await page.setContent(fixture(`
+      <details><summary>Shipping details</summary><p>Ships in two days.</p></details>
+      <button type="button" popovertarget="tips">Show tips</button>
+      <div popover id="tips" aria-label="Tips">Tips</div>
+      <button type="button" commandfor="confirm" command="show-modal">Delete project</button>
+      <dialog id="confirm" aria-label="Confirm deletion"><form method="dialog"><button>Keep project</button></form></dialog>`));
+    await expectActionOutcome(page, { action: { role: "disclosure", name: "Shipping details" }, outcome: { kind: "open", target: "controlled", expected: true } });
+    await expectActionOutcome(page, { action: { role: "button", name: "Show tips" }, outcome: { kind: "open", target: "controlled", expected: true } });
+    await page.keyboard.press("Escape");
+    await expectActionOutcome(page, { action: { role: "button", name: "Delete project" }, outcome: { kind: "open", target: "controlled", expected: true } });
+    await expectActionOutcome(page, { action: { role: "button", name: "Keep project" }, outcome: { kind: "open", target: "controlled", expected: false } });
+  });
+
+  test("controls without a controlled element or inside inert content do not pass", async ({ page }) => {
+    await page.setContent(fixture(`
+      <button type="button">Unlinked</button>
+      <div inert><button type="button" popovertarget="p">Inert opener</button></div>
+      <div popover id="p">Popover</div>
+      <button type="button" aria-disabled="true" popovertarget="p">Soft disabled</button>`));
+    const reports = await Promise.all(["Unlinked", "Inert opener", "Soft disabled"].map(name =>
+      runActionAssertion(page, { action: { role: "button", name }, outcome: { kind: "open", target: "controlled", expected: true }, timeoutMs: NEGATIVE_TIMEOUT_MS })));
+    expect(reports.map(report => [report.status, report.reason])).toEqual([
+      [STATUS.UNKNOWN, "outcome target not found before activation"],
+      [STATUS.UNKNOWN, "action control is inert"],
+      [STATUS.UNKNOWN, "action control is disabled"]
+    ]);
+  });
+
+  test("inventory resolves roles and names and skips disabled and inert controls", async ({ page }) => {
+    await page.setContent(fixture(`
+      <button type="button"><span aria-hidden="true">×</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Remove filter Owner</span></button>
+      <a href="#top">Back to top</a>
+      <details><summary>Details</summary></details>
+      <button disabled>Disabled</button>
+      <div inert><button>Inert</button></div>
+      <dialog><button>Close dialog</button></dialog>
+      <details><summary>Closed section</summary><a href="#hidden">Hidden link</a></details>`));
+    const visible = await inventoryActions(page);
+    expect(visible.map(item => [item.role, item.name])).toEqual([["button", "Remove filter Owner"], ["link", "Back to top"], ["disclosure", "Details"], ["disclosure", "Closed section"]]);
+    const all = await inventoryActions(page, { includeHidden: true });
+    expect(all.map(item => item.name)).toEqual(expect.arrayContaining(["Close dialog", "Hidden link"]));
+  });
+});
+
+test.describe("overflow, labels and focus", () => {
+  test("clipped text fails, scroll containers are permitted", async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 400 });
+    await page.setContent(fixture(`<div style="overflow-x:auto;width:200px"><p style="white-space:nowrap;width:600px">A wide table row inside a contained, labelled scroller</p></div>`));
+    expect((await measureOverflow(page)).status).toBe(STATUS.PASS);
+    await page.setContent(fixture(`<table><thead style="position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%)"><tr><th style="display:block;inline-size:7rem">A visually hidden column heading</th></tr></thead></table>`));
+    expect((await measureOverflow(page)).status).toBe(STATUS.PASS);
+    await page.setContent(fixture(`<nav style="overflow:hidden;width:200px"><a href="#a" style="white-space:nowrap">A navigation label that is far too long to fit</a></nav>`));
+    const report = await measureOverflow(page);
+    expect(report.status).toBe(STATUS.FAIL);
+    expect(report.escapes.join(" ")).toMatch(/navigation label/);
+    await expect(expectNoOverflow(page)).rejects.toThrow(/ULI-L05 FAIL/);
+  });
+
+  test("label integrity measures block boxes and refuses inline ones", async ({ page }) => {
+    await page.setContent(fixture(`<span id="inline">Inline</span><div id="fits" style="width:200px">Fits</div><div id="clips" style="width:40px;overflow:hidden;white-space:nowrap">Truncated label</div>`));
+    expect((await measureLabelIntegrity(page.locator("#inline"))).status).toBe(STATUS.UNKNOWN);
+    expect((await measureLabelIntegrity(page.locator("#fits"))).status).toBe(STATUS.PASS);
+    expect((await measureLabelIntegrity(page.locator("#clips"))).status).toBe(STATUS.FAIL);
+  });
+
+  test("tab sequence records reachable controls only", async ({ page }) => {
+    await page.setContent(fixture(`<button>One</button><div inert><button>Skipped</button></div><button>Two</button>`));
+    await recordTabSequence(page, 3);
+    expect(await wasFocusedDuringSequence(page.getByRole("button", { name: "Two" }))).toBe(true);
+    expect(await wasFocusedDuringSequence(page.getByRole("button", { name: "Skipped" }))).toBe(false);
+  });
+});
+
+test.describe("declared groups in markup (data-uli-align-*)", () => {
+  const rowMarkup = second => fixture(`<div style="display:flex;gap:16px;align-items:flex-start">
+    <input aria-label="City" data-uli-align-group="address" data-uli-align-edge="top" data-uli-align-peer="City">
+    <input aria-label="Postal code" data-uli-align-group="address" data-uli-align-peer="Postal code" style="${second}">
+  </div>`);
+
+  test("aligned declared peers pass and staggered ones fail with measured values", async ({ page }) => {
+    await page.setContent(rowMarkup(""));
+    const [aligned] = await expectDeclaredGroups(page);
+    expect(aligned).toMatchObject({ group: "address", edge: "top", status: STATUS.PASS });
+    await page.setContent(rowMarkup("margin-top: 12px"));
+    const [staggered] = await measureDeclaredGroups(page);
+    expect(staggered.status).toBe(STATUS.FAIL);
+    expect(staggered.deltaCssPx).toBeCloseTo(12, 0);
+    expect(staggered.measurements.map(item => item.element)).toEqual(['declared "City"', 'declared "Postal code"']);
+  });
+
+  test("a hidden or lone declared peer is UNKNOWN, and no declarations is an error", async ({ page }) => {
+    await page.setContent(rowMarkup("display: none"));
+    expect((await measureDeclaredGroups(page))[0].status).toBe(STATUS.UNKNOWN);
+    await page.setContent(fixture(`<input aria-label="Lone" data-uli-align-group="solo">`));
+    expect((await measureDeclaredGroups(page))[0].status).toBe(STATUS.UNKNOWN);
+    await page.setContent(fixture(`<p>No declarations</p>`));
+    await expect(expectDeclaredGroups(page)).rejects.toThrow(/no data-uli-align-group declarations/);
+  });
+
+  test("the text pseudo-role measures a peer without a role", async ({ page }) => {
+    await page.setContent(fixture(`<div style="display:flex;align-items:center;gap:8px"><h2 style="margin:0">INV-1042</h2><span>Overdue</span></div>`));
+    const report = await measureAlignment(page, { ruleId: "ULI-L07", id: "title-status", edge: "center", peers: [{ role: "heading", name: "INV-1042" }, { role: "text", name: "Overdue" }] });
+    expect(report.status).toBe(STATUS.PASS);
+  });
 });

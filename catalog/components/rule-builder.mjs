@@ -22,9 +22,11 @@ export default {
       "The summary restates the rule in words so users can check it without parsing the clauses."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "nested-any-group",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Routing rule with a nested OR group",
       description: "An AND group containing one clause and a nested OR group of two clauses. Each group is a named role=group, the visible operator badge is hidden from assistive technology because the group name says the same thing, and remove buttons name their clause.",
       html: `<ef-rule-builder class="ef-component-tag">
@@ -84,6 +86,7 @@ export default {
     },
     {
       id: "incomplete-clause",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Incomplete condition",
       description: "The application rejected a clause with no value chosen. The empty value select is marked invalid and linked to a validation message; the summary says the rule cannot be applied yet instead of guessing its meaning.",
       html: `<ef-rule-builder class="ef-component-tag">
@@ -120,6 +123,7 @@ export default {
     },
     {
       id: "mobile-audience-rule",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile audience rule",
       description: "A two-clause AND rule at phone width. The header and each clause stack so every control gets the full width.",
       mobile: {

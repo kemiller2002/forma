@@ -22,9 +22,23 @@ export default {
       "Counts and partial selection are communicated in text written by the application, not by color or a mixed-state glyph."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "disclosure", name: "Platform", expect: { open: false } },
+      { role: "disclosure", name: "Data", expect: { open: true } }
+    ]
+  },
   examples: [
     {
       id: "category-includes-children",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Platform", expect: { open: false } },
+          { role: "disclosure", name: "Data", expect: { open: true } }
+        ]
+      },
       title: "Category option that includes its children",
       description: "The application's rule is that \"All Platform services\" covers current and future Platform services. It is rendered as an explicit option whose description states the rule; the application, not Forma, keeps the child checkboxes consistent with it.",
       html: `<ef-hierarchical-multi-choice class="ef-component-tag">
@@ -58,6 +72,13 @@ export default {
     },
     {
       id: "partial-branch-in-text",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Sales (1 of 3 selected)", expect: { open: true } },
+          { role: "disclosure", name: "Support (none selected)", expect: { open: true } }
+        ]
+      },
       title: "Partial selection stated in the summary",
       description: "Items are independent. The application writes each branch's count into its summary, so a collapsed branch still tells the user that something inside it is checked. This replaces a mixed-state checkbox, which would need script.",
       html: `<ef-hierarchical-multi-choice class="ef-component-tag">
@@ -90,6 +111,13 @@ export default {
     },
     {
       id: "mobile-notification-areas",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Projects I own", expect: { open: false } },
+          { role: "disclosure", name: "Projects I follow", expect: { open: false } }
+        ]
+      },
       title: "Notification areas on a phone",
       description: "Two open branches with long item names at phone width, followed by the status line.",
       mobile: {

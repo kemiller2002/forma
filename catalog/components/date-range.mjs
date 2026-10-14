@@ -22,9 +22,11 @@ export default {
       "Below 40rem the two dates stack and the arrow separator is hidden."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "bounded-report",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Report period with limits",
       description: "A billing report limited to the last year of retained data. Both dates are required and bounded with min and max; the description states the limit. Presets are grouped with role=group so their accessible name is exposed.",
       html: `<ef-date-range class="ef-component-tag">
@@ -65,6 +67,7 @@ export default {
     },
     {
       id: "mobile-activity-filter",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile activity filter",
       description: "An activity-log filter at phone width. The dates stack and the presets wrap into rows of full-size buttons.",
       mobile: {

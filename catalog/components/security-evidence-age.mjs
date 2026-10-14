@@ -23,9 +23,11 @@ export default {
       "Dates use `time` elements with machine-readable values."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "mixed",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Current, stale and never observed",
       description: "Three evidence records in three different states. The never-observed entry is shown explicitly instead of being omitted or treated as stale.",
       html: `<ef-security-evidence-age class="ef-component-tag">
@@ -41,6 +43,7 @@ export default {
     },
     {
       id: "all-stale",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "All evidence invalidated",
       description: "Every record is stale after a dependency upgrade. The heading states the count so the situation is clear before reading the list.",
       html: `<ef-security-evidence-age class="ef-component-tag">
@@ -55,6 +58,7 @@ export default {
     },
     {
       id: "mobile",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Evidence freshness on a phone",
       description: "Long reasons and IDs at phone width.",
       mobile: {

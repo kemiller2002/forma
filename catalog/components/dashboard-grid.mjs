@@ -25,6 +25,7 @@ export default {
   examples: [
     {
       id: "attention-first",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Attention-first operations overview",
       description: "The blocks that need action come first in source order and carry text status with a symbol, not only color. A full-width summary spans the grid with `ef-span-full`.",
       html: `<ef-dashboard-grid class="ef-component-tag">

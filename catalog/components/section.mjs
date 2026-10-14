@@ -25,6 +25,7 @@ export default {
   examples: [
     {
       id: "toned-band",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Surface-toned band on a marketing page",
       description: "A section with `data-ef-tone=\"surface\"` inside the site shell. The band gets inner padding and the secondary background; links and muted text switch to colors validated for that tone.",
       html: `<ef-section class="ef-component-tag">
@@ -44,6 +45,7 @@ export default {
     },
     {
       id: "inverse-band",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Inverse band for a key statement",
       description: "An inverse-toned section used once on a page for a statement that should stand apart. Heading, text and link colors all switch to the inverse role tokens.",
       html: `<ef-section class="ef-component-tag">

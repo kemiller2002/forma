@@ -23,9 +23,11 @@ export default {
       "Orientation is plain text, so scope never depends on reading position or size."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "floor-plan-scope",
+      interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Scoped view with a scope trail",
       description: "A facilities map zoomed into one floor. A [[scope-trail]] shows ancestry, the orientation line states zoom and region in words, the view controls are grouped and named, and the index is open so every desk in view is one link away.",
       html: `<ef-spatial-canvas class="ef-component-tag">
@@ -54,6 +56,7 @@ export default {
     },
     {
       id: "empty-region",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Empty region",
       description: "The user has panned to an area with no objects. The orientation line says so in text and offers a way back, so the empty surface is not mistaken for a loading failure; the index states that nothing is in view.",
       html: `<ef-spatial-canvas class="ef-component-tag">
@@ -74,6 +77,7 @@ export default {
     },
     {
       id: "mobile-index-first",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile map with object index",
       description: "At phone width the surface scrolls inside its viewport and the index is the practical way to reach objects.",
       mobile: {

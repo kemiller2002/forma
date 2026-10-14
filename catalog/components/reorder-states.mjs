@@ -22,9 +22,11 @@ export default {
       "All hooks are attribute selectors, so they work on any element; mass comes from the nearest motion scope such as `.ef-ranking[data-ef-motion-weight]`."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "accepted-drop",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Accepted drop settling into place",
       description: "The application accepted the move of Delivery speed to position 1. The moved item shows the solid accepted outline while it settles, its former neighbor is marked displaced, and the live region states the new order in words.",
       html: `<ef-reorder-states class="ef-component-tag">
@@ -62,6 +64,7 @@ export default {
     },
     {
       id: "keyboard-move-light",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Keyboard move with a light motion weight",
       description: "The user pressed Move down on Onboarding. There is no drag and no drop target: the application swaps the items and writes `settling` on the moved item and `displaced` on the sibling, so the keyboard path ends in the same visual state as a drag. The light weight on the ranking scope shortens the settle.",
       html: `<ef-reorder-states class="ef-component-tag">
@@ -91,6 +94,7 @@ export default {
     },
     {
       id: "mobile-drag-in-progress",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile drag in progress",
       description: "A touch drag at phone width. The dragged item is offset by the application-written `--ef-drag-y` and lifted with a shadow; the item under it is the drop candidate with a dashed outline. The move buttons stay available as the non-drag path.",
       mobile: {

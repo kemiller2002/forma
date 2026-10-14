@@ -23,9 +23,19 @@ export default {
       "Hover and current state use an under-rule; the action link uses the tone's action colors and a border in forced colors."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "current-section",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Echelon / Limen", expect: { url: "#site-header-current-section-home" } },
+          { role: "link", name: "Overview", expect: { url: "#site-header-current-section-home" } },
+          { role: "link", name: "Documentation", expect: { url: "#site-header-current-section-home" } },
+          { role: "link", name: "Releases", expect: { url: "#site-header-current-section-home" } }
+        ]
+      },
       title: "Current section on a subpage",
       description: "On a documentation subpage the Documentation link is marked `aria-current=\"true\"` (the current section, not the exact page). It gets the same persistent under-rule as `aria-current=\"page\"`. No action link is used here, so no destination competes with the page content.",
       html: `<ef-site-header class="ef-component-tag">
@@ -50,6 +60,17 @@ export default {
     },
     {
       id: "long-brand-name",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Echelon Foundry / Tutoris Research Publications", expect: { url: "#site-header-long-brand-name-top" } },
+          { role: "link", name: "Publications", expect: { url: "#site-header-long-brand-name-top" } },
+          { role: "link", name: "Methods", expect: { url: "#site-header-long-brand-name-top" } },
+          { role: "link", name: "Datasets", expect: { url: "#site-header-long-brand-name-top" } },
+          { role: "link", name: "About", expect: { url: "#site-header-long-brand-name-top" } },
+          { role: "link", name: "Subscribe", expect: { url: "#site-header-long-brand-name-top" } }
+        ]
+      },
       title: "Long brand name without tagline",
       description: "A long compound product name and no tagline. The name wraps inside the identity group rather than truncating, and the navigation drops below the identity when both no longer fit on one row.",
       html: `<ef-site-header class="ef-component-tag">
@@ -75,6 +96,17 @@ export default {
     },
     {
       id: "mobile-wrapping-nav",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Echelon Foundry", expect: { url: "#site-header-mobile-wrapping-nav-top" } },
+          { role: "link", name: "Overview", expect: { url: "#site-header-mobile-wrapping-nav-top" } },
+          { role: "link", name: "Research", expect: { url: "#site-header-mobile-wrapping-nav-top" } },
+          { role: "link", name: "Products", expect: { url: "#site-header-mobile-wrapping-nav-top" } },
+          { role: "link", name: "Writing", expect: { url: "#site-header-mobile-wrapping-nav-top" } },
+          { role: "link", name: "Get in touch", expect: { url: "#site-header-mobile-wrapping-nav-top" } }
+        ]
+      },
       title: "Phone navigation wraps",
       description: "Five destinations at phone width. The tagline yields, the brand stays on its own row, and the links wrap into two right-aligned rows that each keep a 44px target.",
       mobile: {

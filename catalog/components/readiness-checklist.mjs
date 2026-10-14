@@ -21,9 +21,11 @@ export default {
       "The header lozenge summarizes progress in words, such as \"5 of 7 complete\"."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "ready-to-publish",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "All prerequisites met",
       description: "Every item is complete. The header lozenge switches to the ok glyph and the transition button is available below the list, supplied by the application.",
       html: `<ef-readiness-checklist class="ef-component-tag">
@@ -43,6 +45,12 @@ export default {
     },
     {
       id: "blocked-submission",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Add", expect: { url: "#readiness-checklist-blocked-submission-title" } }
+        ]
+      },
       title: "Several blocking items",
       description: "A grant application with two blocking prerequisites and one incomplete item. Blocking items say \"Blocking\" in text and link to where they are resolved; the header counts what is complete.",
       html: `<ef-readiness-checklist class="ef-component-tag">
@@ -62,6 +70,7 @@ export default {
     },
     {
       id: "mobile-month-close",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile month-end close",
       description: "The canonical close checklist at phone width with an action on an incomplete item.",
       mobile: {

@@ -22,9 +22,11 @@ export default {
       "Unknown or unreconciled work can be listed as its own obligation with its own wording."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "single-blocking",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "One blocking obligation",
       description: "A single obligation that blocks publication. The heading and count agree, and the action is a button because it starts work in place rather than navigating.",
       html: `<ef-obligation-panel class="ef-component-tag">
@@ -51,6 +53,13 @@ export default {
     },
     {
       id: "unknown-and-evidence",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Check archive", expect: { url: "#obligation-panel-unknown-and-evidence-title" } },
+          { role: "link", name: "Upload", expect: { url: "#obligation-panel-unknown-and-evidence-title" } }
+        ]
+      },
       title: "Unreconciled and evidence obligations",
       description: "An unknown storage outcome listed as its own obligation without a severity attribute, so it keeps the neutral border, next to an evidence request. The status labels say exactly what kind of work each is.",
       html: `<ef-obligation-panel class="ef-component-tag">
@@ -85,6 +94,14 @@ export default {
     },
     {
       id: "mobile-finalization",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Go to question", expect: { url: "#obligation-panel-mobile-finalization-title" } },
+          { role: "link", name: "Add justification", expect: { url: "#obligation-panel-mobile-finalization-title" } },
+          { role: "link", name: "Upload", expect: { url: "#obligation-panel-mobile-finalization-title" } }
+        ]
+      },
       title: "Mobile finalization",
       description: "Three obligations of different severity at phone width.",
       mobile: {

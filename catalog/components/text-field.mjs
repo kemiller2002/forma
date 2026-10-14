@@ -27,6 +27,7 @@ export default {
   examples: [
     {
       id: "sign-in-credentials",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Sign-in credentials",
       description: "Email and password fields with the autocomplete tokens password managers rely on. The password description states the rule up front instead of waiting for an error.",
       html: `<ef-text-field class="ef-component-tag">
@@ -81,10 +82,16 @@ export default {
     },
     {
       id: "numeric-and-phone",
+      alignment: [
+        { ruleId: "ULI-L01", id: "seats-and-phone-controls", edge: "top", peers: [
+          { role: "spinbutton", name: "Seats" },
+          { role: "textbox", name: "On-call phone" }
+        ] }
+      ],
       title: "Quantity and phone number",
       description: "Type-specific inputs. The number field uses native min, max and step constraints; the telephone field uses type=tel so phones show a dial pad, with no pattern forced because phone formats vary by country.",
       html: `<ef-text-field class="ef-component-tag">
-  <div class="ef-grid">
+  <div class="ef-form-row">
     <div class="ef-field">
       <label class="ef-field__label" for="text-field-numeric-seats">Seats</label>
       <span class="ef-field__description" id="text-field-numeric-seats-description">1 to 500.</span>
@@ -191,7 +198,7 @@ export default {
   responsive: [
     "Inputs are block-level to their field: `inline-size: 100%` with `max-inline-size: 100%`, so they follow the container width.",
     "The field is a single-column grid; long labels and descriptions wrap (`overflow-wrap: anywhere` on labels) instead of widening the page.",
-    "There are no breakpoints. Place fields in [[stack]] for a single column or [[grid]] for side-by-side fields that collapse to one column when narrow.",
+    "There are no breakpoints. Place fields in [[stack]] for a single column or [[form-row]] for side-by-side peer fields that keep their controls level and collapse to one column when narrow.",
     "The 44px minimum height is kept at every width."
   ],
   motion: [

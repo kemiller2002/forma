@@ -7,6 +7,35 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.7.0
+
+Minor release: shared layout and interaction conformance with
+`visual-engineering/UI-LAYOUT-INTERACTION@1.0.0` (forma#156).
+
+### Added
+- **Form row** (`.ef-form-row`, `patterns/form-row.html`). Peer fields share label, description, control and validation-message subgrid rows, so controls keep one top edge whatever their labels, help or errors say (ULI-L01, L13). Fields wrap by available width with no breakpoints.
+- Catalog interaction declarations: every example that renders an enabled action is a declared **live demo** with outcome-tested native actions, or a labelled, inert **static specimen**. The documentation site shows the label, and `npm run catalog:check` enforces the declarations.
+- `npm run ui:conformance` runs the conformance evidence suites (Chromium).
+- `@echelon-foundry/forma-conformance` 0.1.0, a separate dev-only package of Playwright helpers. The design-system package does not include or depend on it.
+
+### Fixed
+- Single-line text, date, time, number and select controls share one em-based intrinsic height. In Chromium they previously measured 49.97, 51.97 and 46.38 px (ULI-L02).
+- At 320 and 390 px with 200% text, these no longer overflow (ULI-L05):
+  - the data grid's stacked label column;
+  - status lozenges;
+  - the record header;
+  - best-worst options with long words;
+  - key-value lists, metric cards and the mobile action bar;
+  - the command palette, conversation, diagnostic status, provenance trail, readiness checklist, security blockers, wizard steps and semantic differential;
+  - the collection toolbar filters, disclosure and code figure captions.
+- A collapsed resizable split pane now stacks on narrow screens instead of keeping three columns and squeezing the secondary pane.
+- The record-header status is centred on the title row rather than on the type label and title together (ULI-L07).
+- Action labels no longer split mid-word inside table cells or link buttons, and an action row can no longer push past its container.
+- The marketing layer keeps index links on one line while they fit, gives steps and toned sections readable line lengths at large text sizes, and caps link buttons at their row width.
+- `fieldset` no longer keeps a min-content width, and a stretched `.ef-field` keeps its control under its label.
+
+No class, token or icon was renamed or removed. Visual changes appear only where the previous geometry overflowed, staggered or mismatched.
+
 ## 0.6.1
 
 Patch release: responsive navigation and native date/time field containment.

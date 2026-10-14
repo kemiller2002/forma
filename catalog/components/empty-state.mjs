@@ -21,9 +21,11 @@ export default {
       "The symbol is decorative; the heading carries the explanation."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "first-use",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "First use",
       description: "A collection that has never had records. The heading names the object, the text says what it is for, and the primary action creates the first one.",
       html: `<ef-empty-state class="ef-component-tag">
@@ -37,6 +39,7 @@ export default {
     },
     {
       id: "search-no-matches",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Search with no matches",
       description: "A search that returned nothing. The query is repeated so the user can spot a typo, and two recovery actions are grouped in a [[cluster]]: clear the search or open help.",
       html: `<ef-empty-state class="ef-component-tag">
@@ -65,6 +68,7 @@ export default {
     },
     {
       id: "mobile-filtered-list",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile filtered list",
       description: "A filtered list with no results at phone width, with a long heading and two actions.",
       mobile: {

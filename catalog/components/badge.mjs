@@ -22,6 +22,7 @@ export default {
       "Linked badges have no underline; a stronger border on hover and the shell's focus ring mark them as interactive."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "release-status",
@@ -55,6 +56,16 @@ export default {
     },
     {
       id: "mobile-topic-links",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Accessibility", expect: { url: "#badge-mobile-topic-links-end" } },
+          { role: "link", name: "Design tokens", expect: { url: "#badge-mobile-topic-links-end" } },
+          { role: "link", name: "Forced colors", expect: { url: "#badge-mobile-topic-links-end" } },
+          { role: "link", name: "Release engineering", expect: { url: "#badge-mobile-topic-links-end" } },
+          { role: "link", name: "Typography", expect: { url: "#badge-mobile-topic-links-end" } }
+        ]
+      },
       title: "Phone topic links",
       description: "Linked topic badges under an article at phone width. The list wraps onto several lines.",
       mobile: {

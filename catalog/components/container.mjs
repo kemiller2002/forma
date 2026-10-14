@@ -61,6 +61,7 @@ export default {
     },
     {
       id: "custom-width",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Custom width for a sign-up form",
       description: "A form container narrower than the narrow preset, set with `--ef-container-width: 28rem`. It stays centered and still shrinks to 100% on small screens.",
       html: `<ef-container class="ef-component-tag">
@@ -78,6 +79,7 @@ export default {
     },
     {
       id: "mobile-container",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile page width",
       description: "Narrow and standard containers at phone width. Every preset is wider than the screen, so each resolves to 100% and the page gutter alone controls the edges.",
       mobile: {

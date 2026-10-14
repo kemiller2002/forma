@@ -23,9 +23,11 @@ export default {
       "The motion scope defaults to the light preset; the pattern states it explicitly with `data-ef-motion-weight=\"light\"`."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "history-selected",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Second tab selected with roving focus",
       description: "History is selected. The application has applied roving tabindex (only the selected tab is in the tab order), hidden the other panels, and marked the visible panel with data-ef-motion-entry so it fades in when shown.",
       html: `<ef-tabs class="ef-component-tag">
@@ -53,6 +55,7 @@ export default {
     },
     {
       id: "overflowing-tabs",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Many tabs overflowing the list",
       description: "Seven tabs in a narrow container. The list scrolls horizontally inside its own bounds with a thin scrollbar rather than wrapping; the page itself does not scroll sideways.",
       html: `<ef-tabs class="ef-component-tag">
@@ -78,6 +81,7 @@ export default {
     },
     {
       id: "mobile-scrolling-list",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Tabs on a phone",
       description: "Four tabs at phone width. The list becomes horizontally scrollable when the labels no longer fit; each tab keeps its full label and 44px height.",
       mobile: {

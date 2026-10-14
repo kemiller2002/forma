@@ -22,9 +22,11 @@ export default {
       "Application states are rendered by changing values, `aria-invalid`, message content and the status indicator, never the structure."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior", "form-handling"] },
   examples: [
     {
       id: "inquiry-validation",
+      interaction: { kind: "static", reasons: ["application-behavior", "form-handling"] },
       title: "Inquiry validation",
       description: "The application rejected the date of birth after Enter. The field has `aria-invalid=\"true\"` and is described by its format hint and the message, which becomes `role=\"alert\"` with the INVALID severity word. The insert cursor (initial focus) would go to this field; that is application behavior.",
       html: `<ef-character-grid-workflow class="ef-component-tag">
@@ -58,6 +60,7 @@ export default {
     },
     {
       id: "history-empty",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "History with no transactions",
       description: "Transaction History after the user narrowed the dates. The table states the empty result in one full-width row, the paging position says 0 of 0 and the information message confirms the period. PF7 and PF8 are omitted because there is nothing to page.",
       html: `<ef-character-grid-workflow class="ef-component-tag">
@@ -96,6 +99,7 @@ export default {
     },
     {
       id: "history-error-mobile",
+      interaction: { kind: "static", reasons: ["application-behavior", "form-handling"] },
       title: "Service error on a phone",
       description: "Transaction History when the transaction service failed, at phone width. The table says the history is unavailable, the error message is an alert, and the Operator Information Area shows X SYSTEM until Reset.",
       mobile: {

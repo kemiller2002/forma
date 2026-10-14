@@ -22,9 +22,11 @@ export default {
       "The same required, invalid, disabled and focus cues as other grid fields."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["form-handling"] },
   examples: [
     {
       id: "work-with-jobs",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Options typed before Enter",
       description: "A \"Work with jobs\" list where the operator has typed options on two rows but not yet pressed Enter. The legend uses a different vocabulary; only the codes and labels change.",
       html: `<ef-character-grid-selection class="ef-component-tag">
@@ -58,6 +60,7 @@ export default {
     },
     {
       id: "empty-list",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Empty result",
       description: "No records match the filter, so there are no option fields. The table states the empty result in a full-width row instead of leaving blank lines, and the legend is omitted because no option can be typed.",
       html: `<ef-character-grid-selection class="ef-component-tag">
@@ -88,6 +91,7 @@ export default {
     },
     {
       id: "selection-mobile",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Option column on a phone",
       description: "A narrow list on a 40-column grid. On phones each one-cell option field widens to the 44px touch minimum, which extends into its three-cell column plus two-cell gutter and never into the next column.",
       mobile: {

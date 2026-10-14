@@ -24,9 +24,11 @@ export default {
       "Recovery actions are only the ones Aegis supplied, as native buttons with `data-ef-aegis-capability`."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "field-save",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Field that failed to save",
       description: "An autosaved field whose last save failed. The input lists the fault in aria-describedby after its own help text, so a screen reader announces the failure when the field is focused, without any global announcement.",
       html: `<ef-fault-inline class="ef-component-tag">
@@ -51,6 +53,7 @@ export default {
     },
     {
       id: "import-row",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Import batch that could not be processed",
       description: "A warning inside a batch detail region. Aegis supplied two capabilities, Process again and Set aside, which are rendered with their default labels. The region's aria-describedby points at the fault.",
       html: `<ef-fault-inline class="ef-component-tag">
@@ -91,6 +94,7 @@ export default {
     },
     {
       id: "mobile-upload",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Upload failure on a phone",
       description: "An upload fault inside a narrow form. The two recovery buttons stack at full width beneath the message.",
       mobile: {

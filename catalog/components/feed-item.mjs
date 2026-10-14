@@ -23,9 +23,11 @@ export default {
       "At 30rem and below the grid becomes one column and the meta row aligns to the start."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "mention-with-actions",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mention with several actions",
       description: "A comment mention with two owned actions. The buttons name the item they act on, because many feed items can carry a Reply button.",
       html: `<ef-feed-item class="ef-component-tag">
@@ -66,6 +68,7 @@ export default {
     },
     {
       id: "feed-list-long-title",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Feed list with a long title",
       description: "Several items stacked in a labelled section. A long, translated title wraps in the start column while the meta column keeps its natural width.",
       html: `<ef-feed-item class="ef-component-tag">
@@ -96,6 +99,7 @@ export default {
     },
     {
       id: "mobile-feed-item",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile feed item",
       description: "A blocked deployment item at phone width. Status and time move under the title; the summary and action follow in reading order.",
       mobile: {

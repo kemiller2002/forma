@@ -23,9 +23,22 @@ export default {
       "Evidence sections are standard [[disclosure]] elements with their own motion and states."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "disclosure", name: "Inspect secondary evidence", expect: { open: true } }
+    ]
+  },
   examples: [
     {
       id: "reconciliation-unknown",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Per-source results", expect: { open: true } },
+          { role: "disclosure", name: "Request timestamps", expect: { open: true } }
+        ]
+      },
       title: "Reconciliation with an unknown source",
       description: "One source has not answered, so the result is explicitly Unknown, not Failed. The overview states the state as text with a [[status-lozenge]], the scope (3 of 4 sources), and what remains. Two evidence sections hold the per-source detail and the raw timestamps.",
       html: `<ef-overview-disclosure class="ef-component-tag">
@@ -57,6 +70,12 @@ export default {
     },
     {
       id: "verified-nothing-outstanding",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Reviewer decisions", expect: { open: true } }
+        ]
+      },
       title: "Verified with nothing outstanding",
       description: "A complete result still keeps its scope and freshness in the overview, including the explicit statement that nothing is unresolved, so the absence of work is stated rather than implied by missing content.",
       html: `<ef-overview-disclosure class="ef-component-tag">
@@ -77,6 +96,12 @@ export default {
     },
     {
       id: "mobile-stale-evidence",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "disclosure", name: "Last known result", expect: { open: true } }
+        ]
+      },
       title: "Stale evidence on a phone",
       description: "A stale certificate check at phone width. The overview wraps but stays first and visible; the evidence is one tap away.",
       mobile: {

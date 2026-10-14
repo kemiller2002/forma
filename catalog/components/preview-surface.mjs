@@ -22,9 +22,11 @@ export default {
       "The footer is the place for the commit status in words and the next legal action supplied by the application."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "announcement-before-send",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Announcement before sending",
       description: "An email announcement previewed before it goes to every customer. The view controls are toggle buttons with aria-pressed, the footer states the audience and that nothing has been sent, and the send action is a separate application-owned button.",
       html: `<ef-preview-surface class="ef-component-tag">
@@ -51,6 +53,7 @@ export default {
     },
     {
       id: "blocked-publish",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Preview with a blocking problem",
       description: "The preview renders, but the application has found a problem that blocks publishing. The footer says so in text and offers only the legal next step; there is no disabled Publish button that looks available.",
       html: `<ef-preview-surface class="ef-component-tag">
@@ -73,6 +76,7 @@ export default {
     },
     {
       id: "mobile-invoice",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile invoice preview",
       description: "At phone width the header and footer stack, the canvas padding shrinks and the previewed page fills the width.",
       mobile: {

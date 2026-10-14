@@ -22,9 +22,19 @@ export default {
       "Rows are separated by rules, with a strong rule above the first row."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "product-family",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Visit Ordo", expect: { url: "#entry-index-product-family-ordo" } },
+          { role: "link", name: "Visit Limen", expect: { url: "#entry-index-product-family-limen" } },
+          { role: "link", name: "Visit Dokimos", expect: { url: "#entry-index-product-family-dokimos" } },
+          { role: "link", name: "Visit Forma", expect: { url: "#entry-index-product-family-forma" } }
+        ]
+      },
       title: "Product family index",
       description: "Four products in order. On a wide container marker, heading, summary and link line up in four columns across every row.",
       html: `<ef-entry-index class="ef-component-tag">
@@ -60,8 +70,9 @@ export default {
     },
     {
       id: "long-titles",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Long titles and summaries",
-      description: "Entries with long titles and two-sentence summaries and no eyebrow. Titles and summaries wrap within their columns; the link text stays on one line.",
+      description: "Entries with long titles and two-sentence summaries and no eyebrow. Titles and summaries wrap within their columns; the link text stays on one line while it fits and wraps between words rather than overflowing at large text sizes.",
       html: `<ef-entry-index class="ef-component-tag">
   <div class="ef-site">
     <ol class="ef-index" aria-label="Research programmes">
@@ -69,13 +80,13 @@ export default {
         <p class="ef-index__marker">R / 01</p>
         <div class="ef-index__heading"><h3 class="ef-index__title">Human oversight of automated decisions</h3></div>
         <p class="ef-index__summary">How review, escalation and accountability survive automation. Includes field studies from regulated industries.</p>
-        <a class="ef-index__link" href="#entry-index-long-titles-oversight">Read the programme</a>
+        <a class="ef-index__link" href="#entry-index-long-titles-oversight">Read the programme<span class="ef-visually-hidden">: Human oversight of automated decisions</span></a>
       </li>
-      <li class="ef-index__item" id="entry-index-long-titles-oversight">
+      <li class="ef-index__item">
         <p class="ef-index__marker">R / 02</p>
         <div class="ef-index__heading"><h3 class="ef-index__title">Evidence-led visual hierarchy</h3></div>
         <p class="ef-index__summary">Measured effects of type, color and composition on comprehension. Findings feed Forma's tokens.</p>
-        <a class="ef-index__link" href="#entry-index-long-titles-oversight">Read the programme</a>
+        <a class="ef-index__link" href="#entry-index-long-titles-hierarchy">Read the programme<span class="ef-visually-hidden">: Evidence-led visual hierarchy</span></a>
       </li>
     </ol>
   </div>
@@ -83,6 +94,13 @@ export default {
     },
     {
       id: "mobile-single-column",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Visit AI Engineering", expect: { url: "#entry-index-mobile-single-column-visual" } },
+          { role: "link", name: "Visit Visual Engineering", expect: { url: "#entry-index-mobile-single-column-visual" } }
+        ]
+      },
       title: "Phone single column",
       description: "Two research areas at phone width, where each row has regrouped into one column.",
       mobile: {
@@ -90,7 +108,7 @@ export default {
         notes: [
           "Below a 56rem list width each row regroups into a 3.5rem marker column beside the content, with heading, summary and link stacked in the second column.",
           "Below 28rem (most phones) the marker also moves into the single column above the heading; source order is unchanged.",
-          "The link text does not wrap (`white-space: nowrap`), so keep it short; very long link text can overflow a 320px row.",
+          "The link text stays on one line while it fits and wraps between words instead of overflowing a 320px row; still keep it short.",
           "The link is at least 24px tall and sits alone on its own line, so it is easy to tap without catching neighbours."
         ]
       },
@@ -154,7 +172,7 @@ export default {
   responsive: [
     "Container queries on the list itself (`ef-index`) regroup rows at 56rem and 28rem; they respond to the space the list gets, not the viewport.",
     "Columns are `minmax(0, …)`, so titles and summaries wrap instead of widening the page.",
-    "`.ef-index__link` uses `white-space: nowrap`; very long link text can overflow at 320px."
+    "`.ef-index__link` keeps its text on one line while it fits and wraps between words at narrow widths or large text sizes instead of overflowing."
   ],
   motion: [
     "No animation: regrouping is immediate and links change only their underline thickness on hover."

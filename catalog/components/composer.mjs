@@ -23,9 +23,11 @@ export default {
       "At 40rem and below input methods become a two-column grid of 2.75rem buttons and the submit button is full width."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "no-assistance",
+      interaction: { kind: "static", reasons: ["application-behavior", "form-handling"] },
       title: "Assistance unavailable",
       description: "The interpretation service is down. The composer still works as a plain note field: dictation is not offered, attaching still is, and the status line says in words what will happen to the text.",
       html: `<ef-composer class="ef-component-tag">
@@ -51,6 +53,7 @@ export default {
     },
     {
       id: "dictating-with-attachment",
+      interaction: { kind: "static", reasons: ["application-behavior", "form-handling"] },
       title: "Dictating with an attachment",
       description: "Dictation is in progress, shown by the pressed state and label of the Dictate button, and one file is attached. The status reports both as text. Recording and upload are application behavior.",
       html: `<ef-composer class="ef-component-tag">
@@ -78,6 +81,7 @@ export default {
     },
     {
       id: "mobile-capture",
+      interaction: { kind: "static", reasons: ["application-behavior", "form-handling"] },
       title: "Mobile capture",
       description: "At phone width the input methods form a two-column grid and the continuation action spans the full width below them.",
       mobile: {

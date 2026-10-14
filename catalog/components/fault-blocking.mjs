@@ -23,9 +23,11 @@ export default {
       "Respects viewport and dynamic viewport bounds on phones, scrolling internally when content is long."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "sign-in-required",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Sign-in required to continue",
       description: "An error-severity blocking fault with a single Aegis capability. The invoker uses the native command attributes to open the dialog modally for this preview; in an application Limen opens it when the Aegis intent is Blocking.",
       html: `<ef-fault-blocking class="ef-component-tag">
@@ -50,6 +52,7 @@ export default {
     },
     {
       id: "corrupt-local-copy",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Unverifiable local copy with safe details",
       description: "A critical blocking fault offering three Aegis capabilities. Approved, already-sanitized details sit in a collapsed disclosure inside the dialog body; nothing developer-only is rendered.",
       html: `<ef-fault-blocking class="ef-component-tag">
@@ -85,6 +88,7 @@ export default {
     },
     {
       id: "mobile-reload",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Blocking fault on a phone",
       description: "A critical blocking fault opened at phone width, with two recovery actions stacked full width.",
       mobile: {

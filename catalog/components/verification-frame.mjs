@@ -23,9 +23,11 @@ export default {
       "At 30rem and below the act area is a one-column grid of full-width, wrapping buttons."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "production-release",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Production release with stale evidence",
       description: "The application reports that one piece of evidence is stale. The frame shows it as stale, not as failed or passed, and the act area offers refreshing the evidence first. The target environment and commit are low-context values marked for deliberate reading.",
       html: `<ef-verification-frame class="ef-component-tag">
@@ -54,6 +56,7 @@ export default {
     },
     {
       id: "payment-approval",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Payment approval with long identifiers",
       description: "Content stress: a long IBAN and a long payee name wrap inside their fact cells. The critical amount carries the deliberate-verification cue, and both a review action and the approval come from the application's current capabilities.",
       html: `<ef-verification-frame class="ef-component-tag">
@@ -82,6 +85,7 @@ export default {
     },
     {
       id: "mobile-case-closure",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile case closure",
       description: "At phone width facts stack in one column and the actions become full-width buttons below the facts.",
       mobile: {

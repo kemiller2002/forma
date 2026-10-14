@@ -22,6 +22,11 @@ on:
       - "docs/AGENT-USAGE.md"
       - "AGENTS.md"
       - ".github/workflows/forma-site-validation.yml"
+      - "packages/conformance/**"
+      - "tests/conformance/**"
+      - "playwright.conformance.config.mjs"
+      - "examples/echelon-marketing-site/**"
+      - "src/marketing/**"
   push:
     branches:
       - "work/**"
@@ -43,6 +48,11 @@ on:
       - "docs/AGENT-USAGE.md"
       - "AGENTS.md"
       - ".github/workflows/forma-site-validation.yml"
+      - "packages/conformance/**"
+      - "tests/conformance/**"
+      - "playwright.conformance.config.mjs"
+      - "examples/echelon-marketing-site/**"
+      - "src/marketing/**"
   workflow_dispatch:
 
 permissions:
@@ -72,3 +82,35 @@ jobs:
       - run: npm run site:check
       - name: Verify responsive navigation and native dates in WebKit
         run: npx playwright test --config=playwright.site.webkit.config.mjs
+
+  # visual-engineering/UI-LAYOUT-INTERACTION@1.0.0 evidence (forma#156):
+  # helper self-tests, every declared live action, declared alignment groups,
+  # shared-geometry regressions, the site and marketing audit and the
+  # catalog-wide text-scale sweep. Chromium only (text scaling uses the
+  # DevTools protocol). Blocking; traces and results are uploaded.
+  ui-conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Wait for commit batch
+        if: github.event_name != 'workflow_dispatch'
+        run: sleep 600
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --ignore-scripts=false
+      - run: dotnet restore tools/TokenCompiler/TokenCompiler.fsproj
+      - run: npx playwright install --with-deps chromium
+      - run: npm run ui:conformance
+      - name: Upload conformance results and traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-conformance-results
+          path: test-results/
+          if-no-files-found: ignore
+          retention-days: 14

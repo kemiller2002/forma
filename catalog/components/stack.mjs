@@ -22,9 +22,17 @@ export default {
       "The stack draws no border, background or padding, so it adds no visual noise to a composition."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "settings-panel",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "switch", name: "Failed builds", expect: { checked: false } },
+          { role: "switch", name: "Mentions in review comments", expect: { checked: true } }
+        ]
+      },
       title: "Settings panel",
       description: "A stack arranges a heading, two switches and a save action inside a surface. The stack owns the vertical relationship; each switch keeps its own internal layout.",
       html: `<ef-stack class="ef-component-tag">
@@ -46,6 +54,7 @@ export default {
     },
     {
       id: "compact-density",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Compact density for an expert form",
       description: "The same kind of content under `data-density=\"compact\"`. The posture reduces the stack gap so more fields fit on screen for repeated data entry; field order, labels and target sizes do not change.",
       html: `<ef-stack class="ef-component-tag">
@@ -91,6 +100,12 @@ export default {
     },
     {
       id: "mobile-account-summary",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Manage billing", expect: { url: "#stack-mobile-account-summary-title" } }
+        ]
+      },
       title: "Mobile account summary",
       description: "A phone-width account summary. The stack is already a single column, so nothing recomposes; long values wrap inside each child.",
       mobile: {

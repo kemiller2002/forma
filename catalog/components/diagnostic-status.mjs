@@ -53,6 +53,7 @@ export default {
     },
     {
       id: "unavailable-with-recovery",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Diagnostics unavailable with a recovery action",
       description: "The unavailable state next to the Reconnect diagnostics capability that Aegis supplied. The status and the recovery group are siblings; the status stays text-first and the button is an ordinary recovery action.",
       html: `<ef-diagnostic-status class="ef-component-tag">

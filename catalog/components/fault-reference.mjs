@@ -22,6 +22,7 @@ export default {
       "Selecting the reference with a pointer or keyboard works without the copy button."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "text-only",
@@ -34,6 +35,7 @@ export default {
     },
     {
       id: "localized-with-copy",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Localized label with copy action",
       description: "A Spanish label and copy button. The copy button's accessible name contains its visible text and the reference, so it is unambiguous when several references are on a page. Clipboard behavior is supplied by the application.",
       html: `<ef-fault-reference class="ef-component-tag">
@@ -46,6 +48,7 @@ export default {
     },
     {
       id: "mobile-long-reference",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Long reference on a phone",
       description: "An unusually long reference with a copy button at phone width.",
       mobile: {

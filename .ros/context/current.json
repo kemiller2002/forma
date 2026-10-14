@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-13T18:26:28.000Z",
+  "updatedAt": "2026-10-14T08:26:48Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1992,6 +1992,38 @@
         }
       },
       "completedAt": "2026-10-13T18:26:28.000Z"
+    },
+    {
+      "id": "GH-156",
+      "type": "task",
+      "state": "blocked",
+      "semanticState": "blocked",
+      "evidence": [],
+      "updatedAt": "2026-10-14T08:26:48Z",
+      "telemetryExecutionIds": [
+        "EXE-20261013T183320424Z-8a02891b"
+      ],
+      "latestCheckpoint": {
+        "id": "128ec6b5ea956a28a4d260e4",
+        "recordedAt": "2026-10-14T08:26:46Z",
+        "executionId": "EXE-20261013T183320424Z-8a02891b",
+        "repository": "echelon-design-system",
+        "branch": "feat/ui-conformance-pilot-2026-10",
+        "commit": "481b966451cb6712fcce904f16f64f1d70d2cf0a",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "feat/ui-conformance-pilot-2026-10",
+        "remoteCommit": "481b966451cb6712fcce904f16f64f1d70d2cf0a",
+        "summary": "481b966: tooltip declarations back to open-only; Escape reset of unrelated auto popovers before each declared action; inventory regenerated (CI interest invokers kept tooltips open)",
+        "nextAction": "Watch #158 CI to green, mark ready for coordinator merge",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "blockReason": "Pending #158 CI and owner merge"
     }
   ]
 }

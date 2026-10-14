@@ -22,9 +22,11 @@ export default {
       "The summary text states position explicitly, so the current page does not depend on the highlighted box."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "first-page",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "First page of results",
       description: "On page 1 there is nowhere to go back to, so the application omits Previous rather than rendering a dead control.",
       html: `<ef-pagination class="ef-component-tag">
@@ -41,6 +43,7 @@ export default {
     },
     {
       id: "gapped-range",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Long result set with gaps",
       description: "Forty pages with the current page in the middle. The application shows the first and last pages and a window around the current one; the gaps are plain list items with an ellipsis.",
       html: `<ef-pagination class="ef-component-tag">
@@ -62,6 +65,7 @@ export default {
     },
     {
       id: "cursor-unknown-total",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Cursor-based paging with an unknown total",
       description: "The API returns cursors, not page numbers, and does not know the total. Only Previous and Next are rendered and the summary describes the visible range.",
       html: `<ef-pagination class="ef-component-tag">
@@ -74,6 +78,7 @@ export default {
     },
     {
       id: "mobile-compact",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Compact pagination on a phone",
       description: "Below 40rem the page list collapses to the current page, Previous and Next sit at the edges and the summary moves to its own centred line.",
       mobile: {

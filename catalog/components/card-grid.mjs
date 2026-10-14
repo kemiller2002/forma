@@ -24,9 +24,17 @@ export default {
       "A linked card shows hover as a surface color change and draws the focus ring on the whole card."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "linked-services",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Find the cause of a recurring failure", expect: { url: "#card-grid-linked-services-diagnostic" } },
+          { role: "link", name: "Model the rules your system must keep", expect: { url: "#card-grid-linked-services-architecture" } }
+        ]
+      },
       title: "Two-column linked services",
       description: "Two linked service cards with footers stating the outcome. Each whole card is a target, but each link's accessible name is only its title. `data-ef-columns=\"2\"` stops the grid at two columns even on very wide screens.",
       html: `<ef-card-grid class="ef-component-tag">
@@ -70,6 +78,12 @@ export default {
     },
     {
       id: "mobile-single-column",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Prove what is wrong before changing it", expect: { url: "#card-grid-mobile-single-column-verify" } }
+        ]
+      },
       title: "Phone single column",
       description: "Three capability cards at phone width, one linked and one on the inverse tone. The grid collapses to a single column and each card spans the full width.",
       mobile: {

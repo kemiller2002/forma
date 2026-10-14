@@ -22,9 +22,11 @@ export default {
       "Every part has `min-inline-size: 0`, so long filter values wrap instead of overflowing."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "fixed-scope",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Fixed scope with removable filters",
       description: "The workspace scope is shown but has no remove button because it is set by the page, not by the user's query. The date range and status filters can be removed individually.",
       html: `<ef-active-filter-summary class="ef-component-tag">
@@ -56,6 +58,7 @@ export default {
     },
     {
       id: "mobile-many-filters",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile summary with many filters",
       description: "Five filters on a phone. Filters wrap onto several rows and a long value wraps within its own item, next to its remove button.",
       mobile: {

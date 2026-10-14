@@ -64,6 +64,7 @@ export default {
     },
     {
       id: "mobile-evidence",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile evidence relationship",
       description: "A supporting relationship at phone width. The single-column layout is unchanged; long claims and scope lines wrap.",
       mobile: {

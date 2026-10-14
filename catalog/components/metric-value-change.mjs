@@ -23,6 +23,7 @@ export default {
       "Under reduced motion and in forced-colors mode there is no transition; the new value simply appears."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "status-change",
@@ -55,6 +56,7 @@ export default {
     },
     {
       id: "mobile-updated-metric",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Mobile updated metric",
       description: "A metric card at phone width right after an update. The tint covers only the value element; layout does not move when the value is replaced.",
       mobile: {

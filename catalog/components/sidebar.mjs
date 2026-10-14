@@ -22,9 +22,11 @@ export default {
       "Only the two element classes are styled; the regions keep their own semantics (aside, nav, article)."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "settings-navigation",
+      interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Settings with section navigation",
       description: "Account settings: a local navigation list in the sidebar and a form in the content region. On a wide screen they sit side by side; in a narrow pane the navigation wraps above the form.",
       html: `<ef-sidebar class="ef-component-tag">
@@ -53,6 +55,7 @@ export default {
     },
     {
       id: "article-end-sidebar",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Article with related links after it",
       description: "The article comes first in the source and the related links second, so the sidebar sits at the inline end on wide screens and below the article when stacked. The sidebar width is narrowed with `--ef-sidebar-width`.",
       html: `<ef-sidebar class="ef-component-tag">
@@ -72,6 +75,7 @@ export default {
     },
     {
       id: "mobile-filters",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Mobile filters above results",
       description: "A filter panel beside search results. At phone width the viewport fallback makes the sidebar a one-column grid, so filters stack above results in source order.",
       mobile: {

@@ -22,9 +22,11 @@ export default {
       "No buttons: the component never implies that a blocker can be dismissed or bypassed."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "four-kinds",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Every kind of release blocker",
       description: "One entry for each kind Tutela reports. The kind is written as the first words of each explanation so it does not depend on data-kind, color or position.",
       html: `<ef-security-blockers class="ef-component-tag">
@@ -52,6 +54,7 @@ export default {
     },
     {
       id: "mobile-long",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Blockers on a phone",
       description: "Long IDs and explanations at phone width.",
       mobile: {

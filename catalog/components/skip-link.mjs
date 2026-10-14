@@ -22,9 +22,25 @@ export default {
       "At least `--ef-layout-target-min` (2.75rem) tall with bold text; removed when printing."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "link", name: "Skip to main content", expect: { url: "#skip-link-main" } }
+    ]
+  },
   examples: [
     {
       id: "before-site-header",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Skip to main content", expect: { url: "#skip-header-content" } },
+          { role: "link", name: "Example / Docs", expect: { url: "#skip-header-content" } },
+          { role: "link", name: "Guides", expect: { url: "#skip-header-content" } },
+          { role: "link", name: "Reference", expect: { url: "#skip-header-content" } },
+          { role: "link", name: "Support", expect: { url: "#skip-header-content" } }
+        ]
+      },
       title: "Before a site header",
       description: "The skip link comes first, before the site header's brand and navigation links. Its target is the content region with tabindex=\"-1\". In a real page that region is the single main element; it is a section here because the documentation page already has one.",
       html: `<ef-skip-link class="ef-component-tag">
@@ -53,6 +69,13 @@ export default {
     },
     {
       id: "multiple-targets",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Skip to main content", expect: { url: "#skip-multi-content" } },
+          { role: "link", name: "Skip to search", expect: { url: "#skip-multi-search" } }
+        ]
+      },
       title: "Main content and search targets",
       description: "A long page with two skip links. Each is hidden until focused and appears in the same corner, so only the focused one is ever visible. The search target is the form's labelled input, which is natively focusable.",
       html: `<ef-skip-link class="ef-component-tag">
@@ -72,6 +95,12 @@ export default {
     },
     {
       id: "mobile-translated-label",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Aller au contenu", expect: { url: "#skip-mobile-content" } }
+        ]
+      },
       title: "Translated skip link on a phone",
       description: "A French skip link at phone width. When focused it appears in the top corner of the viewport, clear of the sticky header.",
       mobile: {

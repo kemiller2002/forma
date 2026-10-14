@@ -26,6 +26,7 @@ export default {
   examples: [
     {
       id: "expired",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Expired exception",
       description: "An exception whose expiry has passed. Status says Expired in text, and the record links the invariant it deviated from so the reviewer can see what is now unprotected.",
       html: `<ef-security-exception class="ef-component-tag">
@@ -44,6 +45,7 @@ export default {
     },
     {
       id: "requested",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Requested, not yet approved",
       description: "A requested exception. The approver field states that approval is pending instead of being left blank, and the record does not imply the exception already applies.",
       html: `<ef-security-exception class="ef-component-tag">

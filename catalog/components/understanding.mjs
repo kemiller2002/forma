@@ -23,9 +23,11 @@ export default {
       "At 40rem and below items and the header stack, and item actions become full width."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "conflict-with-record",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Conflict with the existing record",
       description: "The application found that a new statement contradicts what is recorded. The conflict item states both values in text and offers resolution; the header summarizes how many items need attention.",
       html: `<ef-understanding class="ef-component-tag">
@@ -60,6 +62,7 @@ export default {
     },
     {
       id: "all-understood",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Everything understood",
       description: "Every item is understood. The header states this in text with an ok lozenge, and each item still links to its source so the user can check before the application moves on.",
       html: `<ef-understanding class="ef-component-tag">
@@ -89,6 +92,7 @@ export default {
     },
     {
       id: "mobile-review",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile review with a question",
       description: "At phone width each item stacks state, content and action, and every action is a full-width button so answering and checking sources stay reachable.",
       mobile: {

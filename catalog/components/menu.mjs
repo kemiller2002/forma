@@ -25,9 +25,11 @@ export default {
       "Forma does not anchor the menu to its trigger; it opens at the viewport's block-start, inline-start corner unless the application positions it."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "row-actions-mixed",
+      interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Row actions mixing links and commands",
       description: "Actions for one invoice in a table row. View and Download are links (navigation, so the page change closes the menu); Duplicate and Void are buttons whose effects, and closing the menu afterwards, belong to the application. The trigger names its object so several row menus are distinguishable.",
       html: `<ef-menu class="ef-component-tag">
@@ -44,6 +46,7 @@ export default {
     },
     {
       id: "unavailable-and-long-labels",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Unavailable action and long labels",
       description: "A standard-weight menu with one natively disabled action and long, translated labels. Labels wrap inside their rows rather than widening the menu past its 30rem limit. The disabled item is skipped by Tab; its label says why it is unavailable because Forma adds no disabled styling to menu items.",
       html: `<ef-menu class="ef-component-tag">
@@ -59,6 +62,7 @@ export default {
     },
     {
       id: "mobile-record-menu",
+      interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Record menu on a phone",
       description: "A five-item menu at phone width. The menu is bounded to the viewport and its rows keep full touch targets.",
       mobile: {

@@ -25,6 +25,7 @@ export default {
   examples: [
     {
       id: "terms-consent",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Required consent",
       description: "A required agreement before creating an account. The native required constraint blocks submission while unchecked; the label names what is being agreed to and links the document.",
       html: `<ef-checkbox class="ef-component-tag">

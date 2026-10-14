@@ -23,9 +23,11 @@ export default {
       "Order is always source order: the path is declared, not rearranged."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "payment-release",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Blocked payment release",
       description: "A treasury screen where the primary step is a blocked payment that needs a second approver. Evidence and context are supporting steps. Status is text, and the critical amount uses `.ef-critical-value` for deliberate reading.",
       html: `<ef-attention-path class="ef-component-tag">
@@ -58,6 +60,7 @@ export default {
     },
     {
       id: "reconciling-state",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Reconciling state with long localized text",
       description: "The primary issue is an application-reported reconciling state, shown as its own state rather than collapsed into failure. Long German text wraps inside every region, and a supporting region without a declared step simply has no priority label.",
       html: `<ef-attention-path class="ef-component-tag">
@@ -87,6 +90,7 @@ export default {
     },
     {
       id: "mobile-review",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile review path",
       description: "At phone width the supporting steps stack under the primary region and the primary actions become full-width buttons.",
       mobile: {

@@ -25,6 +25,7 @@ export default {
   examples: [
     {
       id: "billing-summary",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Billing summary panel",
       description: "A surface on a section groups a heading, key facts and an action. The section supplies the landmark semantics and the surface supplies the boundary.",
       html: `<ef-surface class="ef-component-tag">
@@ -53,6 +54,7 @@ export default {
     },
     {
       id: "nested-content",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Empty state inside a surface",
       description: "A surface holding an empty result message and the action that resolves it. The panel keeps the empty region visibly bounded so it is not mistaken for missing page content.",
       html: `<ef-surface class="ef-component-tag">
@@ -65,6 +67,7 @@ export default {
     },
     {
       id: "mobile-panel",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile panel",
       description: "A surface at phone width with a long unbroken reference value. The panel fills the column and the value wraps inside the padding.",
       mobile: {

@@ -21,9 +21,16 @@ export default {
       "Every item is a link, so the whole summary is operable with a keyboard."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "single-error",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Enter the contract start date.", expect: { url: "#validation-summary-single-error-date" } }
+        ]
+      },
       title: "One off-screen error",
       description: "A summary with a single item for a form where the problem may be below the fold. The heading uses the singular and the link targets the input's id.",
       html: `<ef-validation-summary class="ef-component-tag">
@@ -50,6 +57,7 @@ export default {
     },
     {
       id: "form-with-field-errors",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Summary above field-level messages",
       description: "The full composition after a failed submit: the summary at the top of the form, and a matching [[validation-message]] at each field. Link text matches the field message so users recognize it when they arrive.",
       html: `<ef-validation-summary class="ef-component-tag">
@@ -86,6 +94,14 @@ export default {
     },
     {
       id: "mobile-survey-page",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Question 2: choose how often access reviews happen.", expect: { url: "#validation-summary-mobile-survey-page-title" } },
+          { role: "link", name: "Question 5: the allocation must total exactly 100 points.", expect: { url: "#validation-summary-mobile-survey-page-title" } },
+          { role: "link", name: "Question 9: describe the exception process in at least 20 characters.", expect: { url: "#validation-summary-mobile-survey-page-title" } }
+        ]
+      },
       title: "Mobile survey page",
       description: "A survey summary at phone width with longer link text. Items wrap inside the list while the mark stays in its own column.",
       mobile: {

@@ -21,9 +21,11 @@ export default {
       "Unknown outcome is distinct from failure: the application could not confirm what happened."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "mixed-outcomes",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Failed, unknown and waiting files",
       description: "A queue after a network interruption: one file was rejected for size (Failed lozenge with the reason), one lost its connection mid-transfer so the outcome is unknown and offers Check status, one is waiting (an indeterminate progress element with no value), and one failed on the server and offers Retry.",
       html: `<ef-file-upload class="ef-component-tag">
@@ -81,6 +83,7 @@ export default {
     },
     {
       id: "mobile-evidence",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile evidence upload",
       description: "An evidence queue at phone width. Queue rows stack their parts and actions become full-width buttons.",
       mobile: {

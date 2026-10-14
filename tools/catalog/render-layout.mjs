@@ -1,6 +1,7 @@
 // Page chrome and reusable documentation blocks: site header/footer, the
 // catalog navigation, the code viewer, example blocks and the mobile
 // viewport demonstration. Every function is pure: data in, HTML string out.
+import { staticExplanation } from "./interaction.mjs";
 import { categoryHref, componentHref, escapeHtml, inline, join, list, when } from "./html.mjs";
 
 export const VIEWPORTS = [
@@ -82,7 +83,7 @@ export const page = ({ title, rootPath, body, description = "Forma, the zero-run
 // Tables stack into labelled rows on phones (see site.css). Explicit table
 // roles keep the semantics when the display value changes.
 // A narrow-viewport document that renders one snippet with Forma CSS only.
-export const frameDocument = ({ title, rootPath, source }) => `<!doctype html>
+export const frameDocument = ({ title, rootPath, source, interaction = null }) => `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -95,7 +96,7 @@ export const frameDocument = ({ title, rootPath, source }) => `<!doctype html>
     main { inline-size: 100%; max-inline-size: 100%; }
   </style>
 </head>
-<body>
+<body${interactionAttributes(interaction)}${interaction?.kind === "static" ? " inert" : ""}>
   ${/<main\b/.test(source) ? source : `<main>${source}</main>`}
 </body>
 </html>`;
@@ -141,12 +142,30 @@ export const codeViewer = ({ id, label, source, rawHref }) => `<figure class="ef
   <p class="code-viewer__hint">Click or tap the code once to select all of it, then copy.</p>
 </figure>`;
 
-export const exampleBlock = ({ id, kicker, title, description, live, source, rawHref, context, canvasClass = "", attributes = "" }) => `<section class="example-block" id="${id}" data-example="${id}" aria-labelledby="${id}-title"${attributes}>
+// Honest interaction labelling (ULI-A03, A09): a live demo states that its
+// actions work and are tested; a static specimen says why its controls are
+// not operable here and renders inert. Examples without actions get no label.
+export const interactionNote = (id, interaction) => {
+  if (interaction?.kind === "live") {
+    const count = interaction.actions.length;
+    return `<p class="example-interaction example-interaction--live" id="${id}-interaction"><strong>Live demo.</strong> ${count} native ${count === 1 ? "action works" : "actions work"} here and ${count === 1 ? "is" : "are"} verified by an outcome test.</p>`;
+  }
+  if (interaction?.kind === "static") {
+    return `<p class="example-interaction example-interaction--static" id="${id}-interaction"><strong>Static specimen.</strong> ${escapeHtml(staticExplanation(interaction))} Its controls are shown for their markup and appearance and cannot be operated here.</p>`;
+  }
+  return "";
+};
+
+export const interactionAttributes = interaction =>
+  interaction ? ` data-interaction="${interaction.kind}"` : ' data-interaction="none"';
+
+export const exampleBlock = ({ id, kicker, title, description, live, source, rawHref, context, canvasClass = "", attributes = "", interaction = null }) => `<section class="example-block" id="${id}" data-example="${id}" aria-labelledby="${id}-title"${interactionAttributes(interaction)}${attributes}>
   <div class="example-heading">
     <div><span class="component-kicker">${escapeHtml(kicker)}</span><h3 id="${id}-title">${escapeHtml(title)}</h3></div>
     <p>${inline(description, context)}</p>
+    ${interactionNote(id, interaction)}
   </div>
-  <div class="example-canvas ${canvasClass}"><!--live-->${live}<!--/live--></div>
+  <div class="example-canvas ${canvasClass}"${interaction?.kind === "static" ? ` inert aria-describedby="${id}-interaction"` : ""}><!--live-->${live}<!--/live--></div>
   ${codeViewer({ id: `${id}-code`, label: `HTML · ${title}`, source, rawHref })}
 </section>`;
 
@@ -165,10 +184,11 @@ export const viewportDemo = ({ id, title, src, height = 480 }) => `<div class="v
   <p class="viewport-demo__note">Frames narrower than the selected width show the component at the width available.</p>
 </div>`;
 
-export const mobileExampleBlock = ({ id, title, description, notes, src, height, source, rawHref, context }) => `<section class="example-block example-block--mobile" id="${id}" data-example="${id}" data-mobile-example="${id}" aria-labelledby="${id}-title">
+export const mobileExampleBlock = ({ id, title, description, notes, src, height, source, rawHref, context, interaction = null }) => `<section class="example-block example-block--mobile" id="${id}" data-example="${id}" data-mobile-example="${id}" aria-labelledby="${id}-title"${interactionAttributes(interaction)}>
   <div class="example-heading">
     <div><span class="component-kicker">Mobile example</span><h3 id="${id}-title">${escapeHtml(title)}</h3></div>
     <p>${inline(description, context)}</p>
+    ${interactionNote(id, interaction)}
   </div>
   ${viewportDemo({ id, title, src, height })}
   <div class="mobile-notes">

@@ -25,9 +25,11 @@ export default {
       "Status is expected to be text (for example a [[status-lozenge]]), never cell color alone."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "descending-sort",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Sorted by due date, newest first",
       description: "The application has sorted by Due in descending order, so only that header carries `aria-sort=\"descending\"` and shows a down arrow. Row actions name their record so a list of Open buttons is not ambiguous out of context.",
       html: `<ef-data-grid class="ef-component-tag">
@@ -72,6 +74,7 @@ export default {
     },
     {
       id: "empty-result",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Empty result",
       description: "The query returned no records. The header row stays so the columns still explain what would appear, and an [[empty-state]] after the region says why the table is empty and how to recover. Forma does not decide between empty, loading and failed; the application renders the right one.",
       html: `<ef-data-grid class="ef-component-tag">
@@ -101,6 +104,7 @@ export default {
     },
     {
       id: "wide-record-set",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Many columns and long values",
       description: "Seven columns exceed a tablet-width container, so the table scrolls inside the labelled region rather than widening the page. The region is focusable, so keyboard users can scroll it with the arrow keys. Long customer names wrap inside their cells.",
       html: `<ef-data-grid class="ef-component-tag">
@@ -144,6 +148,7 @@ export default {
     },
     {
       id: "mobile-record-projection",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Mobile record projection",
       description: "At phone width the header row disappears and each row becomes a bordered record whose cells print their `data-label`. The row action stretches to the full record width.",
       mobile: {

@@ -23,9 +23,11 @@ export default {
       "Unavailable commands stay visible as disabled buttons with a reason, instead of disappearing."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "toolbar-invoker",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Opened from a toolbar button",
       description: "The palette opened as a modal with a native invoker (`commandfor` and `command=\"show-modal\"`), so the browser handles focus, Escape and returning focus to the button. A Close button gives touch users an explicit way out.",
       html: `<ef-command-palette class="ef-component-tag">
@@ -71,6 +73,7 @@ export default {
     },
     {
       id: "unavailable-commands",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Unavailable commands with reasons",
       description: "Commands the user may run but that are blocked right now stay listed as disabled buttons, each with a reason inside the button so it is part of the accessible name. Commands the user is not authorized to run are not rendered at all.",
       html: `<ef-command-palette class="ef-component-tag">
@@ -92,6 +95,7 @@ export default {
     },
     {
       id: "mobile-full-screen",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Full-screen palette on a phone",
       description: "At phone width the palette fills the viewport without a border. Long command names wrap and shortcut hints stay at the inline end.",
       mobile: {

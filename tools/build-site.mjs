@@ -81,11 +81,11 @@ catalog.categories.forEach(category =>
 catalog.components.forEach(component => {
   const dir = `components/${component.slug}`;
   write(`${dir}/index.html`, renderComponentPage(contextAt("../../"), component));
-  write(`${dir}/mobile.html`, frameDocument({ title: `${component.name} at 320px`, rootPath: "../../", source: wrapTag(component.slug, component.pattern) }));
+  write(`${dir}/mobile.html`, frameDocument({ title: `${component.name} at 320px`, rootPath: "../../", source: wrapTag(component.slug, component.pattern), interaction: component.basicInteraction ?? null }));
   component.examples.filter(example => example.mobile).forEach(example =>
-    write(`${dir}/${framePath(example.id)}`, frameDocument({ title: `${component.name}: ${example.title}`, rootPath: "../../", source: example.html })));
+    write(`${dir}/${framePath(example.id)}`, frameDocument({ title: `${component.name}: ${example.title}`, rootPath: "../../", source: example.html, interaction: example.interaction ?? null })));
   if (isPageLevel(component)) {
-    write(`${dir}/basic.html`, frameDocument({ title: `${component.name} basic example`, rootPath: "../../", source: wrapTag(component.slug, component.pattern) }));
+    write(`${dir}/basic.html`, frameDocument({ title: `${component.name} basic example`, rootPath: "../../", source: wrapTag(component.slug, component.pattern), interaction: component.basicInteraction ?? null }));
   }
   componentRawFiles(component).forEach(raw => write(`${dir}/${raw.file}`, raw.content));
 });
@@ -138,7 +138,8 @@ const manifest = {
       customProperties: hook.customProperties
     })),
     keyboard: component.api?.keyboard ?? [],
-    examples: component.examples.map(example => ({ id: example.id, title: example.title, mobile: Boolean(example.mobile), raw: `components/${component.slug}/${example.id}.txt` })),
+    basicInteraction: component.basicInteraction ?? { kind: "none" },
+    examples: component.examples.map(example => ({ id: example.id, title: example.title, mobile: Boolean(example.mobile), raw: `components/${component.slug}/${example.id}.txt`, interaction: example.interaction ?? { kind: "none" } })),
     related: (component.related ?? []).map(item => item.slug)
   })),
   compositions: catalog.compositions.map(composition => ({ slug: composition.slug, title: composition.title, docsUrl: `compositions/${composition.slug}/` }))

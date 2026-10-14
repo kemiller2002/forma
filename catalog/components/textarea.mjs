@@ -66,6 +66,7 @@ Follow-up tracked in OPS-4412.</textarea>
     },
     {
       id: "mobile-feedback",
+      interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Mobile feedback form",
       description: "A feedback textarea at phone width with a submit button below it. The field fills the width and grows only as tall as its rows until the user resizes it.",
       mobile: {

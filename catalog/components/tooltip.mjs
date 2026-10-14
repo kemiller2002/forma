@@ -24,9 +24,24 @@ export default {
       "Stationary fades in both directions: position and size stay unchanged until fully transparent."
     ]
   },
+  basicInteraction: {
+    kind: "live",
+    actions: [
+      { role: "button", name: "About the retention period", expect: { open: true } },
+      { role: "button", name: "How maintenance windows are applied", expect: { open: true } },
+      { role: "button", name: "About error budget", expect: { open: true } }
+    ]
+  },
   examples: [
     {
       id: "metric-definition",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "What is Apdex?", expect: { open: true } },
+          { role: "button", name: "What is p95 latency?", expect: { open: true } }
+        ]
+      },
       title: "Metric definition in a summary",
       description: "Two terms in a [[key-value-list]] each carry a hint. The trigger's hidden text names what the hint is about, so a screen-reader user can tell the two buttons apart. Values stay visible on the page; only the definitions are in hints.",
       html: `<ef-tooltip class="ef-component-tag">
@@ -56,6 +71,12 @@ export default {
     },
     {
       id: "long-hint-standard-weight",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Acerca del periodo de conservación", expect: { open: true } }
+        ]
+      },
       title: "Long translated hint",
       description: "A longer hint in Spanish with `data-ef-motion-weight=\"standard\"` on the wrapper, giving a slightly slower settle than the light default. The surface stops at 20rem and wraps, and long compound words break rather than overflow.",
       html: `<ef-tooltip class="ef-component-tag">
@@ -70,6 +91,12 @@ export default {
     },
     {
       id: "mobile-edge-hint",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "button", name: "Why two-step sign-in is required", expect: { open: true } }
+        ]
+      },
       title: "Hint at the edge of a phone screen",
       description: "A hint whose button sits at the far inline end of a row at phone width. The placement fallbacks move the surface to the side with more room so it stays on screen.",
       mobile: {

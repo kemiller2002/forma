@@ -26,8 +26,43 @@
     min-inline-size: 0;
     max-inline-size: 100%;
     grid-template-columns: minmax(0, 1fr);
+    /* A stretched field (a grid row taller than it) keeps its label and
+       control at the top instead of distributing the extra space between
+       rows, which would push the control below its peers (ULI-L01). */
+    align-content: start;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
   }
+
+  /*
+   * Form row (ULI-L01, L03, L13). Peer fields share one set of rows: label,
+   * description, control and validation message. Each field spans the four
+   * rows through subgrid and places its parts explicitly, so every control
+   * in a visual row starts at the same top edge however long the labels,
+   * descriptions or messages of its neighbours are. Fields wrap to new rows
+   * by available width. Without subgrid support each field keeps its own
+   * grid (the previous behavior).
+   */
+  .ef-form-row {
+    --ef-form-row-min: 14rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ef-form-row-min)), 1fr));
+    column-gap: var(--ef-form-row-gap, var(--ef-primitive-spacing-4, 1rem));
+    row-gap: 0;
+    align-items: start;
+    min-inline-size: 0;
+  }
+
+  .ef-form-row > .ef-field {
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    margin-block-end: var(--ef-form-row-gap, var(--ef-primitive-spacing-4, 1rem));
+  }
+
+  .ef-form-row > .ef-field > .ef-field__label { grid-row: 1; }
+  .ef-form-row > .ef-field > .ef-field__description { grid-row: 2; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
+  .ef-form-row > .ef-field > :not(.ef-field__label, .ef-field__description, .ef-validation-message) { grid-row: 3; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
+  .ef-form-row > .ef-field > .ef-validation-message { grid-row: 4; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
 
   .ef-field > :is(input[type="date"], input[type="time"], input[type="datetime-local"]) {
     min-inline-size: 0;
@@ -600,6 +635,10 @@
 
   .ef-disclosure > summary {
     min-inline-size: 0;
+    /* The open marker rotates 45deg; its rotated (empty) box corners would
+       otherwise add a few pixels of page overflow at narrow widths (ULI-L05).
+       Clipping does not affect the summary's own focus ring. */
+    overflow-x: clip;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1145,7 +1184,9 @@
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
     line-height: 1.2;
-    white-space: nowrap;
+    /* Wraps inside its container rather than widening it (ULI-L05). */
+    max-inline-size: 100%;
+    overflow-wrap: anywhere;
   }
 
   .ef-status-lozenge::before {
@@ -1203,7 +1244,7 @@
 
   .ef-collection-toolbar__controls label,
   .ef-collection-toolbar__filters {
-    min-inline-size: 9rem;
+    min-inline-size: min(9rem, 100%);
     font-size: 0.75rem;
     font-weight: 650;
   }
@@ -1497,8 +1538,10 @@
   /* Metrics and dashboards --------------------------------------------- */
   .ef-metric-card {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.5rem;
     min-inline-size: 0;
+    overflow-wrap: anywhere;
     padding: 1.25rem;
     border: 1px solid var(--ef-color-border-functional, #3a403c);
     background: var(--ef-color-surface-primary, #f2efe7);
@@ -1841,6 +1884,8 @@
   }
 
   .ef-wizard__steps li {
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
     display: flex;
     gap: 0.5rem;
     align-items: center;
@@ -1867,6 +1912,7 @@
   .ef-readiness-checklist > header h3 { margin: 0.5rem 0 0; }
   .ef-readiness-checklist__items { margin: 0; padding: 0; list-style: none; }
   .ef-readiness-checklist__items li {
+    overflow-wrap: anywhere;
     display: grid;
     grid-template-columns: 2rem minmax(0, 1fr) auto;
     gap: 0.75rem;
@@ -1934,6 +1980,7 @@
   .ef-command-palette__group button {
     inline-size: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 1rem;
     text-align: start;
@@ -2050,12 +2097,37 @@
   }
 
   .ef-record-header__main nav { font-size: 0.75rem; }
+  /*
+   * The status sits beside the record title and is centred on the title's
+   * row, not on the type label and title together (ULI-L01, L07). The
+   * identity block spans two subgrid rows (type, title); the status occupies
+   * the title row. Narrow containers stack the status below.
+   */
+  .ef-record-header__main { container-type: inline-size; min-inline-size: 0; }
   .ef-record-header__title {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, auto) auto;
+    grid-template-rows: auto auto;
+    justify-content: start;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
     align-items: center;
     margin-block: 0.75rem 0;
+  }
+  .ef-record-header__title > :first-child {
+    display: grid;
+    grid-row: 1 / span 2;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    min-inline-size: 0;
+  }
+  .ef-record-header__title > :first-child > .ef-record-header__type { grid-row: 1; align-self: end; }
+  .ef-record-header__title > :first-child > :is(h1, h2, h3, h4) { grid-row: 2; }
+  .ef-record-header__title > :not(:first-child) { grid-row: 2; }
+  @container (max-width: 24em) {
+    .ef-record-header__title { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+    .ef-record-header__title > :first-child { grid-row: auto; }
+    .ef-record-header__title > :not(:first-child) { grid-row: auto; justify-self: start; }
   }
   .ef-record-header__title h2 { margin: 0.15rem 0 0; }
   .ef-record-header__type {
@@ -2140,7 +2212,9 @@
   .ef-provenance-trail li {
     position: relative;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.2rem;
+    overflow-wrap: anywhere;
     padding: 0.75rem 0 0.75rem 2rem;
   }
   .ef-provenance-trail li::before {
@@ -2200,6 +2274,7 @@
   /* Mobile action bar --------------------------------------------------- */
   .ef-mobile-action-bar {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     padding: 0.75rem;
     padding-block-end: max(0.75rem, env(safe-area-inset-bottom));
@@ -2208,7 +2283,7 @@
     backdrop-filter: blur(10px);
   }
 
-  .ef-mobile-action-bar > * { flex: 1 1 0; }
+  .ef-mobile-action-bar > * { flex: 1 1 min(100%, 8rem); }
   .ef-mobile-action-bar__primary {
     background: var(--ef-color-surface-inverse, #202421);
     color: var(--ef-color-text-inverse, #f2efe7);
@@ -2241,7 +2316,9 @@
     .ef-operation-status,
     .ef-record-header,
     .ef-file-upload__queue li {
-      grid-template-columns: 1fr;
+      /* minmax(0, …): a long word or wide font never holds the track wider
+         than the screen (ULI-L05). */
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .ef-work-queue__item button,
@@ -2320,6 +2397,7 @@
       margin-block-end: 0.75rem;
       border: 1px solid var(--ef-color-border-functional, #3a403c);
     }
+    .ef-data-grid tr { container-type: inline-size; }
     .ef-data-grid td {
       display: grid;
       grid-template-columns: minmax(6.5rem, 0.4fr) minmax(0, 1fr);
@@ -2333,13 +2411,19 @@
       font-weight: 650;
     }
     .ef-data-grid td[data-label="Actions"] > * { inline-size: 100%; }
+    /* When enlarged text leaves no room for a label beside its value, the
+       label stacks above the value instead of squeezing it to a few
+       characters per line (ULI-L05). 16em is two readable columns. */
+    @container (max-width: 16em) {
+      .ef-data-grid td { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
+    }
 
     .ef-search__control { grid-template-columns: 1fr; }
     .ef-search__control input { border-inline-end: 1px solid var(--ef-color-border-functional, #3a403c); border-block-end: 0; }
 
     .ef-work-queue__header { display: grid; }
     .ef-diff-row,
-    .ef-key-value-list > div { grid-template-columns: 1fr; gap: 0.25rem; }
+    .ef-key-value-list > div { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
 
     .ef-status-lozenge-set { align-items: stretch; }
     .ef-status-lozenge-set .ef-status-lozenge { flex: 1 1 100%; justify-content: center; }
@@ -2581,7 +2665,7 @@
     .ef-composer__actions button { min-block-size: 2.75rem; }
     .ef-composer__submit { inline-size: 100%; }
 
-    .ef-turn { grid-template-columns: 1fr; }
+    .ef-turn { grid-template-columns: minmax(0, 1fr); }
     .ef-turn__actions { grid-column: 1; }
     .ef-turn__actions button { inline-size: 100%; }
 
@@ -2864,6 +2948,7 @@
     --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
     --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
     display: inline-flex;
+    max-inline-size: 100%;
     align-items: center;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
     padding: 0.55rem 0.75rem;
@@ -2882,6 +2967,8 @@
   .ef-diagnostic-status__body {
     display: grid;
     gap: 0.1rem;
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
   }
 
   .ef-diagnostic-status__body > span {
@@ -3020,7 +3107,7 @@
   .ef-security-state-matrix__grid dt { font-size:.75rem; font-weight:700; }
   .ef-security-state-matrix__grid dd { margin:0; font-size:clamp(1.4rem,4vw,2rem); font-weight:750; }
   .ef-security-blockers ul { display:grid; gap:.75rem; padding-inline-start:1.25rem; }
-  .ef-security-blockers li { padding-inline-start:.25rem; }
+  .ef-security-blockers li { padding-inline-start:.25rem; min-inline-size:0; overflow-wrap:anywhere; }
   .ef-security-blockers li span { display:block; }
   .ef-security-evidence-chain ol { display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.5rem; padding:0; list-style:none; }
   .ef-security-evidence-chain li { padding:.75rem; border:1px solid var(--ef-color-border-functional,#3a403c); overflow-wrap:anywhere; }
@@ -3034,7 +3121,7 @@
   .ef-invariant-result dl { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(10rem,100%),1fr)); gap:.75rem; }
   .ef-invariant-result dt { color:var(--ef-color-text-secondary,#686d68); font-size:.75rem; font-weight:700; } .ef-invariant-result dd { margin:0; overflow-wrap:anywhere; }
   :where(.ef-evidence-age,.ef-security-trend) ul { display:grid; gap:.5rem; margin:0; padding:0; list-style:none; }
-  :where(.ef-evidence-age,.ef-security-trend) li { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); display:grid; gap:.2rem; border-inline-start:.3rem solid currentColor; padding:.65rem .75rem; background:var(--ef-color-surface-secondary,#e3e0d7); }
+  :where(.ef-evidence-age,.ef-security-trend) li { grid-template-columns:minmax(0,1fr); min-inline-size:0; overflow-wrap:anywhere; --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); display:grid; gap:.2rem; border-inline-start:.3rem solid currentColor; padding:.65rem .75rem; background:var(--ef-color-surface-secondary,#e3e0d7); }
   :where(.ef-evidence-age,.ef-security-trend) li span { overflow-wrap:anywhere; }
 
   /* Composition primitives ---------------------------------------------- */
@@ -3244,7 +3331,10 @@
   }
 
   @media (max-width: 48rem) {
-    .ef-split-pane[data-ef-resizable] { grid-template-columns: minmax(0, 1fr); }
+    /* Includes the collapsed state, whose track list would otherwise keep
+       three columns on a phone and squeeze the secondary pane (ULI-L05). */
+    .ef-split-pane[data-ef-resizable],
+    .ef-split-pane[data-ef-resizable][data-ef-collapsed] { grid-template-columns: minmax(0, 1fr); }
     .ef-split-pane__separator { display: none; }
   }
 

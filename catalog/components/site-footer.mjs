@@ -21,9 +21,19 @@ export default {
       "In print, footer actions are removed and the tone is flattened."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "surface-product-footer",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Documentation", expect: { url: "#site-footer-surface-product-footer-note" } },
+          { role: "link", name: "Release notes", expect: { url: "#site-footer-surface-product-footer-note" } },
+          { role: "link", name: "Source", expect: { url: "#site-footer-surface-product-footer-note" } },
+          { role: "link", name: "Privacy", expect: { url: "#site-footer-surface-product-footer-note" } }
+        ]
+      },
       title: "Surface footer for a product site",
       description: "A product footer on the surface tone with an identity sentence, product links and a legal line. Links on the surface tone use primary text, which is validated for that background.",
       html: `<ef-site-footer class="ef-component-tag">
@@ -56,6 +66,16 @@ export default {
     },
     {
       id: "mobile-full-footer",
+      interaction: {
+        kind: "live",
+        actions: [
+          { role: "link", name: "Schedule a working session", expect: { url: "#site-footer-mobile-full-footer-note" } },
+          { role: "link", name: "Research", expect: { url: "#site-footer-mobile-full-footer-note" } },
+          { role: "link", name: "Products", expect: { url: "#site-footer-mobile-full-footer-note" } },
+          { role: "link", name: "Privacy", expect: { url: "#site-footer-mobile-full-footer-note" } },
+          { role: "link", name: "Source", expect: { url: "#site-footer-mobile-full-footer-note" } }
+        ]
+      },
       title: "Phone footer with action and links",
       description: "The full footer at phone width: identity, a contact action, secondary navigation and the note.",
       mobile: {

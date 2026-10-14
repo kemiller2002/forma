@@ -23,9 +23,11 @@ export default {
       "Actions sit at opposite ends of the footer and wrap on narrow screens."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["application-behavior"] },
   examples: [
     {
       id: "validation-blocked",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Advance blocked by validation",
       description: "The user pressed Continue on step 1 with a missing field. Ordo refused the transition; the application rendered a focusable validation summary in the body and marked the field invalid. The rail and position are unchanged.",
       html: `<ef-wizard class="ef-component-tag">
@@ -62,6 +64,7 @@ export default {
     },
     {
       id: "resumed-final-step",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Resumed at the final step",
       description: "A draft resumed from a saved session. Three steps are complete and Publish is current; the footer offers Back, Save and exit, and the final action.",
       html: `<ef-wizard class="ef-component-tag">
@@ -89,6 +92,7 @@ export default {
     },
     {
       id: "mobile-current-step",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Wizard on a phone",
       description: "Below 40rem the header stacks, the rail shows only the current step with a Current step note, and actions wrap if they do not fit.",
       mobile: {

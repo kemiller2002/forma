@@ -23,9 +23,11 @@ export default {
       "The article id is the stable invariant ID for deep links."
     ]
   },
+  basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
   examples: [
     {
       id: "verified",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Verified invariant",
       description: "An invariant Tutela reports as Verified, with its current evidence and independent verification recorded.",
       html: `<ef-security-invariant-result class="ef-component-tag">
@@ -42,6 +44,7 @@ export default {
     },
     {
       id: "unknown",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Unknown because evidence is missing",
       description: "An invariant that cannot be evaluated. The Unknown state is written out and the missing evidence is listed as its own term, so it is not mistaken for a pass or a violation.",
       html: `<ef-security-invariant-result class="ef-component-tag">
@@ -59,6 +62,7 @@ export default {
     },
     {
       id: "mobile",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Violated invariant on a phone",
       description: "A violated invariant with a long statement at phone width.",
       mobile: {
