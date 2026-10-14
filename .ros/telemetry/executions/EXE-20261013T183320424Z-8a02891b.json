@@ -507,8 +507,8 @@
         "name": "ros-work-protocol",
         "mechanism": "blocked-transition"
       },
-      "lastAssessedAt": "2026-10-13T23:39:31.000Z",
-      "recordedAt": "2026-10-13T23:39:31.000Z",
+      "lastAssessedAt": "2026-10-14T00:20:38.000Z",
+      "recordedAt": "2026-10-14T00:20:38.000Z",
       "history": [
         {
           "status": "unknown",
@@ -534,8 +534,8 @@
         "name": "ros-work-protocol",
         "mechanism": "resume-transition"
       },
-      "lastAssessedAt": "2026-10-13T23:39:21.000Z",
-      "recordedAt": "2026-10-13T23:39:21.000Z",
+      "lastAssessedAt": "2026-10-14T00:15:47.000Z",
+      "recordedAt": "2026-10-14T00:15:47.000Z",
       "history": [
         {
           "status": "unknown",
@@ -1520,6 +1520,46 @@
       },
       "collectedAt": "2026-10-13T23:39:31.000Z",
       "schemaVersion": "1.0.0"
+    },
+    {
+      "measurementId": "MEAS-4318b27930957064a33a214b",
+      "id": "agent.resumes",
+      "value": 1,
+      "unit": "count",
+      "currency": null,
+      "quality": "derived",
+      "confidence": null,
+      "scope": "execution",
+      "aggregation": "sum",
+      "dimensions": {},
+      "pricing": null,
+      "source": {
+        "type": "calculated",
+        "name": "ros-work-protocol",
+        "mechanism": "resume-transition"
+      },
+      "collectedAt": "2026-10-14T00:15:47.000Z",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "measurementId": "MEAS-597e9ae6083e28764030ee98",
+      "id": "agent.interruptions",
+      "value": 1,
+      "unit": "count",
+      "currency": null,
+      "quality": "derived",
+      "confidence": null,
+      "scope": "execution",
+      "aggregation": "sum",
+      "dimensions": {},
+      "pricing": null,
+      "source": {
+        "type": "calculated",
+        "name": "ros-work-protocol",
+        "mechanism": "blocked-transition"
+      },
+      "collectedAt": "2026-10-14T00:20:38.000Z",
+      "schemaVersion": "1.0.0"
     }
   ],
   "rawTelemetry": [],
@@ -1609,6 +1649,28 @@
         "mechanism": "work-lifecycle"
       },
       "eventId": "TEVT-458992c5168788000195b4bc"
+    },
+    {
+      "type": "work.resumed",
+      "occurredAt": "2026-10-14T00:15:47.000Z",
+      "reason": null,
+      "source": {
+        "type": "ros-clock",
+        "name": "ros",
+        "mechanism": "work-lifecycle"
+      },
+      "eventId": "TEVT-84606f4d88f0afef986bb238"
+    },
+    {
+      "type": "work.blocked",
+      "occurredAt": "2026-10-14T00:20:38.000Z",
+      "reason": "Awaiting #158 CI completion and owner merge",
+      "source": {
+        "type": "ros-clock",
+        "name": "ros",
+        "mechanism": "work-lifecycle"
+      },
+      "eventId": "TEVT-18c1ec85751d712b8b5c99cf"
     }
   ],
   "repository": {
