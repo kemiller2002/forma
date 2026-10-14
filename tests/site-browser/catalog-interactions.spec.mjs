@@ -30,11 +30,33 @@ const landmark = (scope, within) => (within ? scope.getByRole(within.role, withi
 // repeated destination is still an observable transition.
 const clearFragment = page => page.evaluate(() => history.replaceState(history.state, "", location.pathname + location.search));
 
+// Reset strategy (ULI-A05): an open auto popover (a tooltip) that neither
+// contains the next control nor is the one it controls belongs to an earlier,
+// independent action. Dismiss it the way a user does, with Escape, so it does
+// not cover the next control on a narrow screen. (Activating a tooltip trigger
+// again is not a reliable close: with interest invokers, the hovering pointer
+// keeps it open.)
+const dismissUnrelatedPopovers = async (page, control) => {
+  const unrelatedOpen = () => control.evaluate(node => {
+    const controlled = [node.getAttribute("popovertarget"), node.getAttribute("commandfor"), node.getAttribute("aria-controls")].filter(Boolean);
+    return [...node.ownerDocument.querySelectorAll("[popover]:popover-open")]
+      .filter(popover => popover.getAttribute("popover") !== "manual" && !popover.contains(node) && !controlled.includes(popover.id)).length;
+  }).catch(() => 0);
+  for (let remaining = await unrelatedOpen(); remaining > 0; remaining = await unrelatedOpen()) {
+    await page.keyboard.press("Escape");
+    await expect.poll(unrelatedOpen).toBeLessThan(remaining);
+  }
+};
+
 const runDeclaredActions = async (page, scope, actions) => {
   const reports = [];
   for (const action of actions) {
     if ("url" in action.expect) await clearFragment(page);
     const actionScope = landmark(scope, action.within);
+    const control = action.role === "disclosure"
+      ? actionScope.locator("summary").filter({ hasText: action.name })
+      : actionScope.getByRole(action.role, { name: action.name, exact: true });
+    if (await control.count() === 1) await dismissUnrelatedPopovers(page, control);
     reports.push(await expectActionOutcome(page, {
       ruleId: "ULI-A02",
       scope: actionScope,
