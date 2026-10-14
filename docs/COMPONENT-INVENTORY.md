@@ -9,7 +9,7 @@ checker (`npm run catalog:check`) fails when a canonical pattern or a public
 
 - Public components: **167** in **18** families
 - Rendered examples on the documentation site: **721** (each component: canonical Basic + scenario examples + mobile examples)
-- Example interaction (UI-LAYOUT-INTERACTION@1.0.0 ULI-A03/A09): **87** live demos with **226** declared, outcome-tested actions; **306** static specimens (rendered inert and labelled); **328** examples render no action control
+- Example interaction (UI-LAYOUT-INTERACTION@1.0.0 ULI-A03/A09): **87** live demos with **233** declared, outcome-tested actions; **306** static specimens (rendered inert and labelled); **328** examples render no action control
 - Compositions: **5** (Operations dashboard, Form with validation, Keyboard and focus, Mobile settings, Overlay interaction)
 - Requirement-defined components not yet implemented: **29**
 
