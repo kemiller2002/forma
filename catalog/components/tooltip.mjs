@@ -28,8 +28,11 @@ export default {
     kind: "live",
     actions: [
       { role: "button", name: "About the retention period", expect: { open: true } },
+      { role: "button", name: "About the retention period", expect: { open: false } },
       { role: "button", name: "How maintenance windows are applied", expect: { open: true } },
-      { role: "button", name: "About error budget", expect: { open: true } }
+      { role: "button", name: "How maintenance windows are applied", expect: { open: false } },
+      { role: "button", name: "About error budget", expect: { open: true } },
+      { role: "button", name: "About error budget", expect: { open: false } }
     ]
   },
   examples: [
@@ -39,7 +42,9 @@ export default {
         kind: "live",
         actions: [
           { role: "button", name: "What is Apdex?", expect: { open: true } },
-          { role: "button", name: "What is p95 latency?", expect: { open: true } }
+          { role: "button", name: "What is Apdex?", expect: { open: false } },
+          { role: "button", name: "What is p95 latency?", expect: { open: true } },
+          { role: "button", name: "What is p95 latency?", expect: { open: false } }
         ]
       },
       title: "Metric definition in a summary",
@@ -74,7 +79,8 @@ export default {
       interaction: {
         kind: "live",
         actions: [
-          { role: "button", name: "Acerca del periodo de conservación", expect: { open: true } }
+          { role: "button", name: "Acerca del periodo de conservación", expect: { open: true } },
+          { role: "button", name: "Acerca del periodo de conservación", expect: { open: false } }
         ]
       },
       title: "Long translated hint",
@@ -94,7 +100,8 @@ export default {
       interaction: {
         kind: "live",
         actions: [
-          { role: "button", name: "Why two-step sign-in is required", expect: { open: true } }
+          { role: "button", name: "Why two-step sign-in is required", expect: { open: true } },
+          { role: "button", name: "Why two-step sign-in is required", expect: { open: false } }
         ]
       },
       title: "Hint at the edge of a phone screen",

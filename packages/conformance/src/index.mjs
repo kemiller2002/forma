@@ -238,11 +238,18 @@ export const runActionAssertion = async (root, contract) => {
     const targets = [node, ...(node.labels ?? [])];
     return Boolean(hit) && targets.some(target => target === hit || target.contains(hit));
   });
+  const box = () => element.evaluate(node => { const r = node.getBoundingClientRect(); return [r.x, r.y, r.width, r.height].map(Math.round).join(","); });
   if (await hittable()) {
     await control.click({ timeout: timeoutMs });
   } else {
+    // Focus-revealed means focus moved the control itself into view. A
+    // control covered by something else (an open popover over the next
+    // trigger) is not revealed by its own focus, even when focusing it
+    // happens to change other state, so it is clicked and any interception
+    // is reported.
+    const before = await box();
     await control.focus({ timeout: timeoutMs });
-    const revealed = await expect.poll(hittable, { timeout: timeoutMs }).toBe(true).then(() => true, () => false);
+    const revealed = await expect.poll(async () => (await box()) !== before && (await hittable()), { timeout: timeoutMs }).toBe(true).then(() => true, () => false);
     // Links activate with Enter; buttons, checkboxes and switches with Space.
     const key = await element.evaluate(node => (node.tagName === "A" || node.getAttribute("role") === "link" ? "Enter" : " "));
     if (revealed) await control.press(key === " " ? "Space" : key, { timeout: timeoutMs });

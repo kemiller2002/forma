@@ -119,6 +119,14 @@ An action reports **FAIL** in three cases:
   inert or changes something unrelated;
 - the post-state equals the pre-state.
 
+Activation follows the user's real path. A control that a pointer can hit
+(itself or its own `<label>`) is clicked, with no programmatic focus first,
+because focus can have effects of its own: interest invokers open on focus.
+A control that a pointer cannot hit, but that moves into view when it gets
+focus (a skip link), is activated from the keyboard: Enter for links, Space
+otherwise. A control covered by something else is still clicked, so the
+interception is reported.
+
 It reports **UNKNOWN** when the control or target is missing, ambiguous,
 hidden, disabled, `aria-disabled` or inert. Playwright role queries ignore
 `inert`, so the helper checks it explicitly.
