@@ -7,9 +7,9 @@ the component catalog (`catalog/components/*.mjs`), the canonical patterns
 checker (`npm run catalog:check`) fails when a canonical pattern or a public
 `.ef-*` block class is missing from this list.
 
-- Public components: **167** in **18** families
-- Rendered examples on the documentation site: **721** (each component: canonical Basic + scenario examples + mobile examples)
-- Example interaction (UI-LAYOUT-INTERACTION@1.0.0 ULI-A03/A09): **87** live demos with **226** declared, outcome-tested actions; **306** static specimens (rendered inert and labelled); **328** examples render no action control
+- Public components: **168** in **18** families
+- Rendered examples on the documentation site: **725** (each component: canonical Basic + scenario examples + mobile examples)
+- Example interaction (UI-LAYOUT-INTERACTION@1.0.0 ULI-A03/A09): **91** live demos with **234** declared, outcome-tested actions; **306** static specimens (rendered inert and labelled); **328** examples render no action control
 - Compositions: **5** (Operations dashboard, Form with validation, Keyboard and focus, Mobile settings, Overlay interaction)
 - Requirement-defined components not yet implemented: **29**
 
@@ -35,6 +35,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Date and time field | `<ef-date-time-field>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | date-range, text-field, numeric-stepper |
 | Date range | `<ef-date-range>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | mobile.spec.mjs | date-time-field, range-entry, segmented-control |
 | File upload queue | `<ef-file-upload>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | status-lozenge, progress-bar, operation-status, composer |
+| Form | `<ef-form>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | design-contract.test.mjs | form-row, validation-message, validation-summary, button |
 | Numeric stepper | `<ef-numeric-stepper>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | slider, range-entry, text-field, allocation |
 | Range entry | `<ef-range-entry>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | date-range, numeric-stepper, slider |
 | Rule builder | `<ef-rule-builder>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, active-filter-summary, select, validation-message |
@@ -197,7 +198,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 ## Categories
 
 - **Actions** (`/components/actions/`, 4): Buttons and grouped commands that start work. Forma styles the native control; the application decides what an action does and whether it is currently legal.
-- **Form inputs** (`/components/forms/`, 14): Native text, date, numeric, range, file and toggle inputs with delegated labels, help text and form participation left to the browser.
+- **Form inputs** (`/components/forms/`, 15): Native text, date, numeric, range, file and toggle inputs with delegated labels, help text and form participation left to the browser.
 - **Selection and choice** (`/components/selection/`, 6): Radio- and checkbox-backed choice structures: segmented controls, choice cards, multi-select guidance and hierarchical selection.
 - **Assessment and survey** (`/components/assessment/`, 12): Question shells and response scales that keep Unanswered distinct, keep radio semantics per row, and never compute scores.
 - **Navigation** (`/components/navigation/`, 7): Where am I and where can I go: shells, tabs, pagination, scope trails, trees, wizards and skip links.

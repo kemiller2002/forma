@@ -109,7 +109,8 @@ export default {
     ],
     hooks: {
       "ef-validation-message": "Paragraph root: a flex row of mark and text with bold, small primary-colored text.",
-      "ef-validation-message__mark": "Bordered circular mark holding a short glyph such as !. Decorative."
+      "ef-validation-message__mark": "Bordered circular mark holding a short glyph such as !. Decorative.",
+      "ef-validation-message--when-invalid": "Optional native-validation modifier: hidden until a sibling control reaches :user-invalid after an attempted submission."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "The message is not focusable. It is read as the description of the control it is linked to when that control receives focus." }

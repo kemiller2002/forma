@@ -681,6 +681,16 @@
       }
     },
     {
+      "id": "form",
+      "figmaName": "Forma / Form",
+      "source": "patterns/form.html",
+      "codeConnect": {
+        "id": "Forma/form",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "grid",
       "figmaName": "Forma / Grid",
       "source": "patterns/grid.html",

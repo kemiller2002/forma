@@ -55,6 +55,21 @@ More selective imports are available:
 Canonical HTML patterns are exported under `patterns/*` and documented at
 https://forma.echelonfoundry.com/.
 
+## Design by Construction forms
+
+Forma 0.8.0 adds an optional, build-time `forma.design/1.0.0` contract for
+constructing semantic forms. The schema, capability contract and examples are
+available through these package exports:
+
+- `@echelon-foundry/design-system/design/forma-design.schema.json`
+- `@echelon-foundry/design-system/contracts/design-capabilities.json`
+- `@echelon-foundry/design-system/design/examples/*`
+
+Validate and render before deployment; the rendered result is ordinary HTML
+and uses Forma's existing zero-runtime CSS. Hand-authored HTML remains a
+supported escape path. See `docs/DESIGN-CONTRACT.md` for mode and refusal
+rules.
+
 
 ## Component authoring tags
 
@@ -101,6 +116,14 @@ contract are package files:
 Static workflow HTML needs only `tokens.css`, `foundations.css` and
 `components.css`. An interactive viewer or editor needs the separate opt-in
 package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
+
+## 0.8.0
+
+Minor upgrade from 0.7.0. It adds the optional `forma.design/1.0.0` build-time
+contract and the responsive `.ef-form` composition. Existing hand-authored
+HTML remains valid, and no class, token, component or icon was removed. Pin
+the immutable 0.8.0 release once it is published; a Git commit alone does not
+establish publication.
 
 ## 0.4.1
 

@@ -1,0 +1,47 @@
+[
+  {
+    "created": "2026-10-15",
+    "derived_from": [
+      "INPUT-55d9f31e1426fc19"
+    ],
+    "id": "RQ-FORMA-2026-A001",
+    "owners": [
+      "design-system"
+    ],
+    "path": "research/requirements/RQ-FORMA-2026-A001--design-by-construction.md",
+    "provenance": {
+      "contributions": {
+        "EXE-20261016T083232002Z-9c56a32c": {
+          "actor": {
+            "id": "openai/codex",
+            "kind": "agent",
+            "model": "gpt-5",
+            "provider": "openai",
+            "runtime": "codex"
+          },
+          "at": "2026-10-16T08:33:02.000Z",
+          "operations": [
+            "created"
+          ],
+          "reason": "Ingest claimed Design by Construction form requirements into the canonical Forma requirement surface"
+        }
+      }
+    },
+    "related_documents": [
+      "docs/DESIGN-CONTRACT.md",
+      "contracts/design-capabilities.json",
+      "schemas/design/1.0/forma-design.schema.json"
+    ],
+    "status": "accepted",
+    "tags": [
+      "design-by-construction",
+      "forms",
+      "accessibility",
+      "responsive-design",
+      "machine-operability"
+    ],
+    "title": "Forma Design by Construction",
+    "updated": "2026-10-15",
+    "version": "1.0.0"
+  }
+]

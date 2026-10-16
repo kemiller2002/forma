@@ -728,6 +728,30 @@
       },
       "source": "manual",
       "sourceReference": null
+    },
+    {
+      "id": "WI-0029",
+      "title": "Implement Design by Construction forms",
+      "description": "Implement the ingested Forma form, interaction, responsive, accessibility, examples, and Design by Construction requirements.",
+      "tags": [
+        "forms",
+        "design-by-construction"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-10-16T08:32:17.000Z",
+      "updatedAt": "2026-10-16T08:37:43.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "praxis-inbox",
+      "sourceReference": "INPUT-55d9f31e1426fc19"
     }
   ]
 }

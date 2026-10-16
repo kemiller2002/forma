@@ -1,0 +1,13 @@
+{
+  "format": "forma.design-capabilities",
+  "schemaVersion": "1.0.0",
+  "contractVersions": ["1.0.0"],
+  "modes": ["standard", "extended", "custom"],
+  "formLayouts": ["stack", "grid"],
+  "catalogLayoutModels": ["stack", "grid", "split", "dock", "flow", "canvas", "overlay", "page", "repeater"],
+  "controls": ["text", "email", "tel", "url", "number", "date", "time", "datetime-local", "textarea", "select", "checkbox", "radio-group", "toggle"],
+  "standardActionBindings": ["form.submit", "form.reset"],
+  "minimumViewportCssPx": 320,
+  "standardOverflow": "wrap",
+  "runtime": "none"
+}

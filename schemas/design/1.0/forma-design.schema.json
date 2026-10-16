@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forma.echelonfoundry.com/schemas/design/1.0/forma-design.schema.json",
+  "title": "Forma Design Contract 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "id", "mode", "compatibility", "responsive", "motion", "root"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "format": { "const": "forma.design" },
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "$ref": "#/$defs/id" },
+    "mode": { "enum": ["standard", "extended", "custom"] },
+    "customReason": { "type": "string", "minLength": 1 },
+    "validationEvidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["forma"],
+      "properties": { "forma": { "type": "string", "minLength": 1 } }
+    },
+    "responsive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy", "narrow", "minimumViewportCssPx"],
+      "properties": {
+        "strategy": { "const": "container" },
+        "narrow": { "const": "stack" },
+        "minimumViewportCssPx": { "type": "integer", "minimum": 240, "maximum": 320 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile", "reducedMotion"],
+      "properties": {
+        "profile": { "enum": ["none", "perceptual", "direct", "inertial", "gravity"] },
+        "reducedMotion": { "const": "preserve-state" }
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9-]*:[a-z][a-z0-9-]*$" },
+      "additionalProperties": true
+    },
+    "root": { "$ref": "#/$defs/form" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "mode": { "const": "custom" } }, "required": ["mode"] },
+      "then": { "required": ["customReason", "validationEvidence"] }
+    }
+  ],
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "form": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id", "title", "method", "action", "children"],
+      "properties": {
+        "kind": { "const": "form" },
+        "id": { "$ref": "#/$defs/id" },
+        "title": { "type": "string", "minLength": 1 },
+        "method": { "enum": ["get", "post"] },
+        "action": { "type": "string", "pattern": "^#[a-z][a-z0-9-]*$" },
+        "children": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "oneOf": [
+            { "$ref": "#/$defs/layout" },
+            { "$ref": "#/$defs/actions" },
+            { "$ref": "#/$defs/feedback" }
+          ] }
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id", "model", "overflow", "children"],
+      "properties": {
+        "kind": { "const": "layout" },
+        "id": { "$ref": "#/$defs/id" },
+        "model": { "enum": ["stack", "grid"] },
+        "alignControls": { "type": "boolean" },
+        "overflow": { "enum": ["wrap", "bounded-scroll"] },
+        "density": { "enum": ["comfortable", "dense"] },
+        "children": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/field" }
+        }
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id", "name", "label", "control"],
+      "properties": {
+        "kind": { "const": "field" },
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "control": { "$ref": "#/$defs/control" },
+        "validation": { "$ref": "#/$defs/validation" }
+      }
+    },
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["text", "email", "tel", "url", "number", "date", "time", "datetime-local", "textarea", "select", "checkbox", "radio-group", "toggle"] },
+        "value": { "type": ["string", "number"] },
+        "checked": { "type": "boolean" },
+        "required": { "type": "boolean" },
+        "readonly": { "type": "boolean" },
+        "disabled": { "type": "boolean" },
+        "autocomplete": { "type": "string", "minLength": 1 },
+        "inputmode": { "type": "string", "minLength": 1 },
+        "rows": { "type": "integer", "minimum": 2, "maximum": 20 },
+        "options": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["value", "label"],
+            "properties": {
+              "value": { "type": "string" },
+              "label": { "type": "string", "minLength": 1 },
+              "selected": { "type": "boolean" },
+              "disabled": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "message"],
+      "properties": {
+        "kind": { "enum": ["required", "email", "range", "pattern"] },
+        "message": { "type": "string", "minLength": 1 }
+      }
+    },
+    "actions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id", "children"],
+      "properties": {
+        "kind": { "const": "actions" },
+        "id": { "$ref": "#/$defs/id" },
+        "children": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/action" }
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id", "label", "type", "binding"],
+      "properties": {
+        "kind": { "const": "action" },
+        "id": { "$ref": "#/$defs/id" },
+        "label": { "type": "string", "minLength": 1 },
+        "type": { "enum": ["submit", "reset"] },
+        "binding": { "enum": ["form.submit", "form.reset"] }
+      }
+    },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id", "label", "message"],
+      "properties": {
+        "kind": { "const": "feedback" },
+        "id": { "$ref": "#/$defs/id" },
+        "label": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

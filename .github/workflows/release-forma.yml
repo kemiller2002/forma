@@ -18,6 +18,8 @@ on:
       - "patterns/**"
       - "schemas/**"
       - "contracts/**"
+      - "examples/design/**"
+      - "tools/design-contract/**"
       - "icons/**"
       - "catalog/icons.mjs"
       - "catalog/icons/**"
@@ -169,6 +171,11 @@ jobs:
             package/dist/icons/html/search.html
             package/schemas/icon-registry.schema.json
             package/docs/ICONS.md
+            package/patterns/form.html
+            package/schemas/design/1.0/forma-design.schema.json
+            package/contracts/design-capabilities.json
+            package/examples/design/valid/customer-form.forma-design.json
+            package/docs/DESIGN-CONTRACT.md
           )
 
           for required in "${required_files[@]}"; do
@@ -192,6 +199,8 @@ jobs:
           test -f node_modules/@echelon-foundry/design-system/dist/brands/index.json
           test -f node_modules/@echelon-foundry/design-system/schemas/brand-manifest.schema.json
           test -f node_modules/@echelon-foundry/design-system/patterns/data-grid.html
+          test -f node_modules/@echelon-foundry/design-system/patterns/form.html
+          test -f node_modules/@echelon-foundry/design-system/schemas/design/1.0/forma-design.schema.json
           # Icons resolve through the public export map and carry this release's version.
           node --input-type=module -e '
             import { createRequire } from "node:module";

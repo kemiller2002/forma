@@ -25,7 +25,8 @@ export const STATIC_REASONS = Object.freeze({
 export const EXPECT_KINDS = Object.freeze({
   open: value => typeof value === "boolean",
   url: value => typeof value === "string" && value.startsWith("#") && value.length > 1,
-  checked: value => typeof value === "boolean"
+  checked: value => typeof value === "boolean",
+  value: value => typeof value === "string"
 });
 
 const ACTION_ROLES = new Set(["button", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "tab", "switch"]);
@@ -63,7 +64,12 @@ const actionProblems = (action, index) => {
     !(typeof action?.role === "string" && action.role) && `${where} needs a role`,
     !(typeof action?.name === "string" && action.name.trim()) && `${where} needs an accessible name`,
     action?.within !== undefined && !(typeof action.within?.role === "string" && action.within.role) && `${where}.within needs a landmark role`,
-    ...Object.keys(action ?? {}).filter(key => !["role", "name", "expect", "within"].includes(key)).map(key => `${where} has unexpected field "${key}"`),
+    ...Object.keys(action ?? {}).filter(key => !["role", "name", "expect", "within", "prepare"].includes(key)).map(key => `${where} has unexpected field "${key}"`),
+    action?.prepare !== undefined && action.prepare?.kind !== "fill" && `${where}.prepare.kind must be "fill"`,
+    action?.prepare !== undefined && !(typeof action.prepare?.target?.role === "string" && typeof action.prepare?.target?.name === "string") && `${where}.prepare.target needs a role and accessible name`,
+    action?.prepare !== undefined && typeof action.prepare?.value !== "string" && `${where}.prepare.value must be a string`,
+    ...Object.keys(action?.prepare ?? {}).filter(key => !["kind", "target", "value"].includes(key)).map(key => `${where}.prepare has unexpected field "${key}"`),
+    kinds.includes("value") && action?.prepare === undefined && `${where}.expect.value requires a fill preparation target`,
     kinds.length !== 1 && `${where}.expect must declare exactly one outcome (${Object.keys(EXPECT_KINDS).join(", ")})`,
     kinds.length === 1 && !EXPECT_KINDS[kinds[0]] && `${where}.expect.${kinds[0]} is not a supported outcome`,
     kinds.length === 1 && EXPECT_KINDS[kinds[0]] && !EXPECT_KINDS[kinds[0]](action.expect[kinds[0]]) && `${where}.expect.${kinds[0]} has an invalid value`

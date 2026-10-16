@@ -1,0 +1,35 @@
+{
+  "format": "forma.design",
+  "schemaVersion": "2.0.0",
+  "id": "future-form",
+  "mode": "standard",
+  "compatibility": { "forma": ">=1.0.0 <2.0.0" },
+  "responsive": { "strategy": "container", "narrow": "stack", "minimumViewportCssPx": 320 },
+  "motion": { "profile": "none", "reducedMotion": "preserve-state" },
+  "root": {
+    "kind": "form",
+    "id": "future",
+    "title": "Future form",
+    "method": "get",
+    "action": "#saved",
+    "children": [
+      {
+        "kind": "layout",
+        "id": "fields",
+        "model": "stack",
+        "overflow": "wrap",
+        "children": [
+          { "kind": "field", "id": "name", "name": "name", "label": "Name", "control": { "kind": "text" } }
+        ]
+      },
+      {
+        "kind": "actions",
+        "id": "actions",
+        "children": [
+          { "kind": "action", "id": "save", "label": "Save", "type": "submit", "binding": "form.submit" }
+        ]
+      },
+      { "kind": "feedback", "id": "saved", "label": "Save status", "message": "Saved." }
+    ]
+  }
+}

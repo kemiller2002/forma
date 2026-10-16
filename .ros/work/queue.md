@@ -18,6 +18,8 @@
 | GH-14 | Build cross-application mobile Forma component wave | complete | forma,mobile,cross-application | high |
 | GH-142 | GH-142 | blocked |  |  |
 | GH-143 | GH-143 | blocked |  |  |
+| GH-155 | GH-155 | complete |  |  |
+| GH-156 | GH-156 | blocked |  |  |
 | GH-18 | Prepare Forma for application consumption | active | readiness,bootstrap | high |
 | GH-25 | Add CSS-only physics-derived motion and native checkbox/select controls | complete | forma,motion,css,accessibility | high |
 | GH-29 | Extend physics-derived motion across Forma transient surfaces | complete | forma,motion,css,accessibility,transient-surfaces | high |
@@ -75,4 +77,5 @@
 | WI-0025 | Add quick reciprocal slow-fast-slow fades to transient surfaces | blocked |  | medium |
 | WI-0026 | Keep popover menu and tooltip dismissal stationary until opacity is zero | blocked |  | medium |
 | WI-0027 | Replace oversized mobile catalog family grid with accessible compact filter | blocked |  | medium |
-| WI-0028 | Repair viewport switcher browser interaction to unblock documentation deployment | ready |  | medium |
+| WI-0028 | Repair viewport switcher browser interaction to unblock documentation deployment | blocked |  | medium |
+| WI-0029 | Implement Design by Construction forms | complete | forms, design-by-construction | high |

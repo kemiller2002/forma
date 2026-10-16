@@ -106,6 +106,12 @@ test.describe("pure evaluation", () => {
     expect(() => validateActionContract({ action: { role: "button" }, outcome: { kind: "url", expected: /x/ } })).toThrow(/role and name/);
   });
 
+  test("value outcomes are part of the observable action contract", () => {
+    const action = { role: "button", name: "Reset" };
+    const target = { role: "textbox", name: "Name" };
+    expect(validateActionContract({ action, outcome: { kind: "value", target, expected: "Artemis" } }).outcome.kind).toBe("value");
+  });
+
   test("action evaluation fails when post equals pre or expectation already held", () => {
     const contract = { ruleId: "ULI-A02", action: { role: "button", name: "Go" }, outcome: { kind: "text", target: { role: "status", name: "S" }, expected: "Done" } };
     const unchanged = evaluateActionOutcome({ ...contract, pre: { value: "Idle" }, post: { value: "Idle" } });

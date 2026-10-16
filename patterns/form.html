@@ -1,0 +1,19 @@
+<form class="ef-form" id="nasa-mission-customer" method="get" action="#nasa-mission-customer-saved" aria-labelledby="nasa-mission-customer-title">
+<h2 id="nasa-mission-customer-title">Artemis mission customer contact</h2>
+<div class="ef-form-row" data-ef-form-layout="grid">
+  <div class="ef-field">
+  <label class="ef-field__label" for="nasa-mission-contact-name">Mission contact name (required)</label>
+  <span class="ef-field__description" id="nasa-mission-contact-name-description">Primary contact for Artemis II payload coordination.</span>
+  <input type="text" id="nasa-mission-contact-name" name="contact-name" required autocomplete="name" value="Reid Wiseman" aria-describedby="nasa-mission-contact-name-description nasa-mission-contact-name-error">
+  <p class="ef-validation-message ef-validation-message--when-invalid" id="nasa-mission-contact-name-error"><span class="ef-validation-message__mark" aria-hidden="true">!</span>Enter the mission contact name.</p>
+  </div>
+  <div class="ef-field">
+  <label class="ef-field__label" for="nasa-mission-contact-email">Mission contact email (required)</label>
+  <span class="ef-field__description" id="nasa-mission-contact-email-description">Use the monitored address for launch-window updates.</span>
+  <input type="email" id="nasa-mission-contact-email" name="contact-email" required autocomplete="email" inputmode="email" value="artemis-ii@nasa.gov" aria-describedby="nasa-mission-contact-email-description nasa-mission-contact-email-error">
+  <p class="ef-validation-message ef-validation-message--when-invalid" id="nasa-mission-contact-email-error"><span class="ef-validation-message__mark" aria-hidden="true">!</span>Enter an email address such as name@nasa.gov.</p>
+  </div>
+</div>
+<div class="ef-actions"><button type="submit">Save customer</button><button type="reset">Reset form</button></div>
+<p class="ef-form__outcome" id="nasa-mission-customer-saved" role="status" aria-label="Save status">Mission customer contact saved.</p>
+</form>
