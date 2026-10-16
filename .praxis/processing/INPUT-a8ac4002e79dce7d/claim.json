@@ -17,7 +17,24 @@
     "runtime": "codex"
   },
   "executionId": "EXE-20261016T154358749Z-1c5d95dd",
-  "derivations": [],
+  "derivations": [
+    {
+      "kind": "requirement",
+      "targetKind": "artifact",
+      "target": "RQ-FORMA-2026-A003",
+      "summary": "Draft semantic color pairing and rendered-validation contract preserving FORMA-COLOR-002.1 through .5 and acceptance criteria",
+      "locator": "research/requirements/RQ-FORMA-2026-A003--semantic-color-pairings-and-validation.md",
+      "recordedAt": "2026-10-16T15:47:27.257Z",
+      "actor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "executionId": "EXE-20261016T154358749Z-1c5d95dd"
+    }
+  ],
   "noDerivationReason": null,
   "closedAt": null,
   "releaseReason": null,

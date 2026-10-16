@@ -34,15 +34,19 @@
         "type": "ros-git",
         "name": "git",
         "mechanism": "repository-baseline"
+      },
+      {
+        "type": "runtime-output",
+        "name": "generic-telemetry-envelope",
+        "mechanism": "json"
       }
     ]
   },
   "classification": {
     "types": [
-      "maintenance",
-      "governance"
+      "maintenance"
     ],
-    "rationale": null,
+    "rationale": "Repository reconciliation and requirement intake",
     "evidence": [],
     "rd": null
   },
@@ -1351,7 +1355,23 @@
       "schemaVersion": "1.0.0"
     }
   ],
-  "rawTelemetry": [],
+  "rawTelemetry": [
+    {
+      "snapshotId": "classification-1792165666981",
+      "adapter": "generic",
+      "schemaVersion": null,
+      "collectedAt": "2026-10-16T15:47:46.990Z",
+      "source": {
+        "type": "runtime-output",
+        "name": "generic-telemetry-envelope",
+        "mechanism": "json"
+      },
+      "payload": {},
+      "payloadBytes": 2,
+      "discoveredFields": [],
+      "redactions": []
+    }
+  ],
   "events": [
     {
       "type": "execution.started",
@@ -1378,6 +1398,23 @@
         "name": "step",
         "mechanism": "step-lifecycle"
       }
+    },
+    {
+      "type": "telemetry.snapshot.ingested",
+      "snapshotId": "classification-1792165666981",
+      "adapter": "generic",
+      "rawRetention": {
+        "status": "retained",
+        "reason": null,
+        "payloadBytes": 2
+      },
+      "occurredAt": "2026-10-16T15:47:46.990Z",
+      "source": {
+        "type": "runtime-output",
+        "name": "generic-telemetry-envelope",
+        "mechanism": "json"
+      },
+      "eventId": "TEVT-e273a1b01bf168d75f1b8754"
     }
   ],
   "repository": {
