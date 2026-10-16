@@ -81,4 +81,4 @@
 | WI-0027 | Replace oversized mobile catalog family grid with accessible compact filter | complete |  | medium |
 | WI-0028 | Repair viewport switcher browser interaction to unblock documentation deployment | complete |  | medium |
 | WI-0029 | Implement Design by Construction forms | complete | forms, design-by-construction | high |
-| WI-0030 | Reconcile outstanding Forma repository items | active |  | high |
+| WI-0030 | Reconcile outstanding Forma repository items | complete |  | high |

@@ -759,10 +759,10 @@
       "description": "Reconcile completed Praxis work, ingest FORMA-COLOR-001 and FORMA-COLOR-002 with provenance, and triage conflicting pull requests against current main.",
       "tags": [],
       "priority": "high",
-      "status": "ready",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-16T15:43:54.619Z",
-      "updatedAt": "2026-10-16T15:43:58.430Z",
+      "updatedAt": "2026-10-16T19:56:13.346Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
