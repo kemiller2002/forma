@@ -41,6 +41,15 @@ test("live declarations must cover every rendered action with a supported outcom
   assert.match(interactionProblems({ kind: "maybe" }, html)[0], /must be "live" or "static"/);
 });
 
+test("live reset declarations may prepare a field and assert its restored value", () => {
+  const html = `<form><label>Name <input value="Artemis"></label><button type="reset">Reset</button></form>`;
+  const declaration = { kind: "live", actions: [{
+    role: "button", name: "Reset", prepare: { kind: "fill", target: { role: "textbox", name: "Name" }, value: "Changed" }, expect: { value: "Artemis" }
+  }] };
+  assert.deepEqual(interactionProblems(declaration, html), []);
+  assert.match(interactionProblems({ kind: "live", actions: [{ ...declaration.actions[0], prepare: { kind: "click" } }] }, html)[0], /prepare.kind/);
+});
+
 test("same-named actions in different landmarks are distinct declarations", () => {
   const html = `<nav><a href="#c">Get started</a></nav><main><a href="#c">Get started</a></main>`;
   const one = [{ role: "link", name: "Get started", expect: { url: "#c" } }];

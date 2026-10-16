@@ -1,6 +1,6 @@
 {
   "name": "@echelon-foundry/forma-conformance",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "type": "module",
   "description": "Dev-only Playwright helpers for visual-engineering/UI-LAYOUT-INTERACTION@1.0.0: declared alignment groups, action outcomes, overflow and label integrity. Never part of the zero-runtime @echelon-foundry/design-system package.",

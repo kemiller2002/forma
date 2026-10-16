@@ -1,0 +1,36 @@
+{
+  "format": "forma.design",
+  "schemaVersion": "1.0.0",
+  "id": "misaligned-fields",
+  "mode": "standard",
+  "compatibility": { "forma": ">=0.8.0 <1.0.0" },
+  "responsive": { "strategy": "container", "narrow": "stack", "minimumViewportCssPx": 320 },
+  "motion": { "profile": "none", "reducedMotion": "preserve-state" },
+  "root": {
+    "kind": "form",
+    "id": "bad-form",
+    "title": "Bad form",
+    "method": "get",
+    "action": "#saved",
+    "children": [
+      {
+        "kind": "layout",
+        "id": "fields",
+        "model": "grid",
+        "alignControls": false,
+        "overflow": "wrap",
+        "children": [
+          { "kind": "field", "id": "name", "name": "name", "label": "Name", "control": { "kind": "text" } }
+        ]
+      },
+      {
+        "kind": "actions",
+        "id": "actions",
+        "children": [
+          { "kind": "action", "id": "save", "label": "Save", "type": "submit", "binding": "form.submit" }
+        ]
+      },
+      { "kind": "feedback", "id": "saved", "label": "Save status", "message": "Saved." }
+    ]
+  }
+}

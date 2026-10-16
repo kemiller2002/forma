@@ -22,6 +22,8 @@ test("Forma is a versioned public-consumer package", () => {
   assert.equal(pkg.exports?.["./skins.css"], "./dist/skins.css");
   assert.equal(pkg.exports?.["./brands/*"], "./dist/brands/*");
   assert.equal(pkg.exports?.["./brand-manifest.schema.json"], "./schemas/brand-manifest.schema.json");
+  assert.equal(pkg.exports?.["./design/forma-design.schema.json"], "./schemas/design/1.0/forma-design.schema.json");
+  assert.equal(pkg.exports?.["./contracts/design-capabilities.json"], "./contracts/design-capabilities.json");
   assert.ok(pkg.sideEffects?.includes("./dist/brands/*.css"));
 
   for (const path of [
@@ -45,6 +47,7 @@ test("Forma is a versioned public-consumer package", () => {
     "patterns/toast.html",
     "patterns/data-grid.html",
     "patterns/work-queue.html",
+    "patterns/form.html",
     "tokens/echelon.tokens.json",
     "figma/component-contracts.json",
     "dist/icons/add.svg",
@@ -52,7 +55,11 @@ test("Forma is a versioned public-consumer package", () => {
     "dist/icons/html/agent.html",
     "dist/icons/registry.json",
     "schemas/icon-registry.schema.json",
-    "docs/ICONS.md"
+    "docs/ICONS.md",
+    "schemas/design/1.0/forma-design.schema.json",
+    "contracts/design-capabilities.json",
+    "examples/design/valid/customer-form.forma-design.json",
+    "docs/DESIGN-CONTRACT.md"
   ]) {
     assert.ok(fs.existsSync(path), `missing consumer artifact ${path}`);
   }
@@ -88,6 +95,7 @@ test("npm package contract contains the expected consumer surface", () => {
     "patterns/toast.html",
     "patterns/data-grid.html",
     "patterns/work-queue.html",
+    "patterns/form.html",
     "tokens/echelon.tokens.json",
     "figma/component-contracts.json",
     "dist/icons/add.svg",
@@ -95,7 +103,11 @@ test("npm package contract contains the expected consumer surface", () => {
     "dist/icons/html/agent.html",
     "dist/icons/registry.json",
     "schemas/icon-registry.schema.json",
-    "docs/ICONS.md"
+    "docs/ICONS.md",
+    "schemas/design/1.0/forma-design.schema.json",
+    "contracts/design-capabilities.json",
+    "examples/design/valid/customer-form.forma-design.json",
+    "docs/DESIGN-CONTRACT.md"
   ]) {
     assert.ok(files.has(path), `release package omits ${path}`);
   }
@@ -146,6 +158,7 @@ test("release workflow watches versioned icon and site assets without weakening 
     "icons/**", "catalog/icons.mjs", "catalog/icons/**",
     "tools/icons/**", "tools/catalog/render-icons.mjs", "tools/build-site.mjs",
     "examples/echelon-marketing-site/forma.lock",
+    "examples/design/**", "tools/design-contract/**",
     "docs/ICONS.md", "tests/icon-docs.test.mjs",
     ".github/workflows/release-forma.yml"
   ]) {

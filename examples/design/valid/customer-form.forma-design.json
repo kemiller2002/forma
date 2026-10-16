@@ -1,0 +1,97 @@
+{
+  "$schema": "../../../schemas/design/1.0/forma-design.schema.json",
+  "format": "forma.design",
+  "schemaVersion": "1.0.0",
+  "id": "nasa-mission-customer-form",
+  "mode": "standard",
+  "compatibility": { "forma": ">=0.8.0 <1.0.0" },
+  "responsive": {
+    "strategy": "container",
+    "narrow": "stack",
+    "minimumViewportCssPx": 320
+  },
+  "motion": {
+    "profile": "none",
+    "reducedMotion": "preserve-state"
+  },
+  "root": {
+    "kind": "form",
+    "id": "nasa-mission-customer",
+    "title": "Artemis mission customer contact",
+    "method": "get",
+    "action": "#nasa-mission-customer-saved",
+    "children": [
+      {
+        "kind": "layout",
+        "id": "nasa-mission-customer-fields",
+        "model": "grid",
+        "alignControls": true,
+        "overflow": "wrap",
+        "density": "comfortable",
+        "children": [
+          {
+            "kind": "field",
+            "id": "nasa-mission-contact-name",
+            "name": "contact-name",
+            "label": "Mission contact name",
+            "description": "Primary contact for Artemis II payload coordination.",
+            "control": {
+              "kind": "text",
+              "value": "Reid Wiseman",
+              "required": true,
+              "autocomplete": "name"
+            },
+            "validation": {
+              "kind": "required",
+              "message": "Enter the mission contact name."
+            }
+          },
+          {
+            "kind": "field",
+            "id": "nasa-mission-contact-email",
+            "name": "contact-email",
+            "label": "Mission contact email",
+            "description": "Use the monitored address for launch-window updates.",
+            "control": {
+              "kind": "email",
+              "value": "artemis-ii@nasa.gov",
+              "required": true,
+              "autocomplete": "email",
+              "inputmode": "email"
+            },
+            "validation": {
+              "kind": "email",
+              "message": "Enter an email address such as name@nasa.gov."
+            }
+          }
+        ]
+      },
+      {
+        "kind": "actions",
+        "id": "nasa-mission-customer-actions",
+        "children": [
+          {
+            "kind": "action",
+            "id": "save-nasa-mission-customer",
+            "label": "Save customer",
+            "type": "submit",
+            "binding": "form.submit"
+          },
+          {
+            "kind": "action",
+            "id": "reset-nasa-mission-customer",
+            "label": "Reset form",
+            "type": "reset",
+            "binding": "form.reset"
+          }
+        ]
+      },
+      {
+        "kind": "feedback",
+        "id": "nasa-mission-customer-saved",
+        "label": "Save status",
+        "message": "Mission customer contact saved."
+      }
+    ]
+  }
+}

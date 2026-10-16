@@ -21,6 +21,7 @@ const escapeRegExp = value => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const outcomeOf = (action, scope) => {
   if ("open" in action.expect) return { kind: "open", target: "controlled", expected: action.expect.open };
   if ("checked" in action.expect) return { kind: "checked", target: { role: action.role, name: action.name, scope }, expected: action.expect.checked };
+  if ("value" in action.expect) return { kind: "value", target: { ...action.prepare.target, scope }, expected: action.expect.value };
   return { kind: "url", expected: new RegExp(`${escapeRegExp(action.expect.url)}$`) };
 };
 
@@ -53,6 +54,9 @@ const runDeclaredActions = async (page, scope, actions) => {
   for (const action of actions) {
     if ("url" in action.expect) await clearFragment(page);
     const actionScope = landmark(scope, action.within);
+    if (action.prepare?.kind === "fill") {
+      await actionScope.getByRole(action.prepare.target.role, { name: action.prepare.target.name, exact: true }).fill(action.prepare.value);
+    }
     const control = action.role === "disclosure"
       ? actionScope.locator("summary").filter({ hasText: action.name })
       : actionScope.getByRole(action.role, { name: action.name, exact: true });

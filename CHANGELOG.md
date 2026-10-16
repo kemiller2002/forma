@@ -7,6 +7,22 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.8.0
+
+Minor release: Design by Construction forms and fully operable form examples.
+
+### Added
+- A versioned `forma.design/1.0.0` JSON contract, capability declaration, validator, deterministic HTML renderer, valid NASA fixture and refusal fixtures for unsupported versions, presentation overrides, invalid nesting, misalignment and unbound actions.
+- A complete form catalog page with functional basic, advanced, validation and mobile examples built from native custom-element HTML.
+- Package exports for the design schema, capabilities and examples, while preserving hand-authored HTML and audited extended/custom escape paths.
+
+### Fixed
+- Forms now have a bounded responsive root, aligned grid-field tracks, stable validation-message placement and visible fragment-targeted success feedback.
+- Native controls and buttons have explicit disabled, read-only and invalid presentation without relying on colour alone.
+- Catalog reset examples are outcome-tested by preparing and observing a native field value; submit examples remain URL-outcome tested.
+
+No existing component, class, token or icon was renamed or removed. Forma remains zero-runtime HTML and CSS; design validation and rendering are build-time tools.
+
 ## 0.7.0
 
 Minor release: shared layout and interaction conformance with

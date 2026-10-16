@@ -134,6 +134,7 @@ export const matchesExpected = (observed, expected) => {
 // never guessed.
 export const OUTCOME_KINDS = Object.freeze({
   text: { targets: "semantic", expectedType: "string-or-regexp" },
+  value: { targets: "semantic", expectedType: "string-or-regexp" },
   visible: { targets: "semantic", expectedType: "boolean" },
   checked: { targets: "semantic", expectedType: "boolean" },
   attribute: { targets: "semantic", expectedType: "string-or-regexp" },

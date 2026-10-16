@@ -101,6 +101,7 @@ await expectActionOutcome(page, {
 | Outcome kind | Observes | `expected` |
 | --- | --- | --- |
 | `text` | normalized text of `target` (exact, or `RegExp`) | string or RegExp |
+| `value` | current value of an input, select or textarea `target` | string or RegExp |
 | `visible` | whether `target` is visible | boolean |
 | `checked` | checked state of `target` | boolean |
 | `attribute` | `target`'s `attribute` value | string or RegExp |
