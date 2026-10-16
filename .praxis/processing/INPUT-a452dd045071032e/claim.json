@@ -1,0 +1,25 @@
+{
+  "schema": "praxis.inbox-claim/1",
+  "claimId": "INPUT-a452dd045071032e",
+  "state": "claimed",
+  "source": {
+    "path": ".praxis/inbox/documents/2026-10-14-FORMA-COLOR-001.md",
+    "fileName": "2026-10-14-FORMA-COLOR-001.md",
+    "sha256": "d4d48ac5f97ad9f2744db696b2f1e55ff29eb28045e6619cdb58d57237cbf522",
+    "size": 4188
+  },
+  "claimedAt": "2026-10-16T15:45:59.996Z",
+  "claimant": {
+    "kind": "agent",
+    "id": "openai/codex",
+    "provider": "openai",
+    "model": "unknown",
+    "runtime": "codex"
+  },
+  "executionId": "EXE-20261016T154358749Z-1c5d95dd",
+  "derivations": [],
+  "noDerivationReason": null,
+  "closedAt": null,
+  "releaseReason": null,
+  "rejectionReason": null
+}
