@@ -17,7 +17,24 @@
     "runtime": "codex"
   },
   "executionId": "EXE-20261016T001518995Z-0d7c3c0e",
-  "derivations": [],
+  "derivations": [
+    {
+      "kind": "requirement",
+      "targetKind": "path",
+      "target": "requirements/DESIGN-BY-CONSTRUCTION.md",
+      "summary": "Accepted versioned Design by Construction form contract and explicitly scoped cross-repository follow-up obligations",
+      "locator": null,
+      "recordedAt": "2026-10-16T01:03:17.293Z",
+      "actor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "executionId": "EXE-20261016T001518995Z-0d7c3c0e"
+    }
+  ],
   "noDerivationReason": null,
   "closedAt": null,
   "releaseReason": null,
