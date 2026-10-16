@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 29,
+  "nextSeq": 31,
   "items": [
     {
       "id": "WI-0001",
@@ -546,10 +546,10 @@
       "description": null,
       "tags": [],
       "priority": "high",
-      "status": "captured",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-08T22:36:14.415Z",
-      "updatedAt": "2026-10-08T22:36:14.415Z",
+      "updatedAt": "2026-10-16T19:53:33.054Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "automation",
@@ -567,10 +567,10 @@
       "description": null,
       "tags": [],
       "priority": "high",
-      "status": "captured",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-09T18:35:23.081Z",
-      "updatedAt": "2026-10-09T18:35:23.081Z",
+      "updatedAt": "2026-10-16T19:53:34.054Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "automation",
@@ -588,10 +588,10 @@
       "description": null,
       "tags": [],
       "priority": "high",
-      "status": "captured",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-09T21:51:12.472Z",
-      "updatedAt": "2026-10-09T21:51:12.472Z",
+      "updatedAt": "2026-10-16T19:53:35.054Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "automation",
@@ -609,10 +609,10 @@
       "description": null,
       "tags": [],
       "priority": "high",
-      "status": "captured",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-10T00:11:57.373Z",
-      "updatedAt": "2026-10-10T00:11:57.373Z",
+      "updatedAt": "2026-10-16T19:53:36.054Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "automation",
@@ -630,10 +630,10 @@
       "description": null,
       "tags": [],
       "priority": "medium",
-      "status": "ready",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-10T13:35:26.148Z",
-      "updatedAt": "2026-10-10T13:36:10Z",
+      "updatedAt": "2026-10-16T19:52:56.842Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
@@ -651,10 +651,10 @@
       "description": null,
       "tags": [],
       "priority": "medium",
-      "status": "ready",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-11T08:27:51.308Z",
-      "updatedAt": "2026-10-11T08:29:09.000Z",
+      "updatedAt": "2026-10-16T19:52:59.842Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
@@ -672,10 +672,10 @@
       "description": null,
       "tags": [],
       "priority": "medium",
-      "status": "ready",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-11T15:07:14.585Z",
-      "updatedAt": "2026-10-11T15:07:36.000Z",
+      "updatedAt": "2026-10-16T19:53:00.842Z",
       "createdBy": "openai/codex",
       "createdByActor": {
         "kind": "agent",
@@ -693,10 +693,10 @@
       "description": null,
       "tags": [],
       "priority": "medium",
-      "status": "ready",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-11T18:49:36.603Z",
-      "updatedAt": "2026-10-11T18:50:01.000Z",
+      "updatedAt": "2026-10-16T19:53:01.842Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
@@ -714,10 +714,10 @@
       "description": null,
       "tags": [],
       "priority": "medium",
-      "status": "ready",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-12T07:16:05.524Z",
-      "updatedAt": "2026-10-12T07:16:49.000Z",
+      "updatedAt": "2026-10-16T19:53:02.842Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
@@ -752,6 +752,77 @@
       },
       "source": "praxis-inbox",
       "sourceReference": "INPUT-55d9f31e1426fc19"
+    },
+    {
+      "id": "WI-0030",
+      "title": "Reconcile outstanding Forma repository items",
+      "description": "Reconcile completed Praxis work, ingest FORMA-COLOR-001 and FORMA-COLOR-002 with provenance, and triage conflicting pull requests against current main.",
+      "tags": [],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-10-16T15:43:54.619Z",
+      "updatedAt": "2026-10-16T19:56:13.346Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "user-request",
+      "sourceReference": "Codex task 2026-10-16"
+    },
+    {
+      "id": "GH-159",
+      "title": "Publish a versioned public semantic color token contract",
+      "description": "Implement RQ-FORMA-2026-A002 from GitHub issue #159: release-pinned public token manifest, deterministic reference validation, fallback policy, and Summa migration guidance.",
+      "tags": [
+        "color",
+        "tokens",
+        "validation"
+      ],
+      "priority": "high",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-10-16T15:47:13.039Z",
+      "updatedAt": "2026-10-16T15:47:13.039Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "github-issue",
+      "sourceReference": "https://github.com/kemiller2002/forma/issues/159"
+    },
+    {
+      "id": "GH-160",
+      "title": "Define semantic color pairings and rendered validation fixtures",
+      "description": "Implement RQ-FORMA-2026-A003 from GitHub issue #160 after the public token contract: role pairings, light/dark/forced-colors behavior, non-hue meaning, and executable rendered fixtures.",
+      "tags": [
+        "color",
+        "accessibility",
+        "visual-regression"
+      ],
+      "priority": "high",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-10-16T15:47:14.039Z",
+      "updatedAt": "2026-10-16T15:47:14.039Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "github-issue",
+      "sourceReference": "https://github.com/kemiller2002/forma/issues/160"
     }
   ]
 }

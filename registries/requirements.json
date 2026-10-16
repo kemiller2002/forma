@@ -43,5 +43,96 @@
     "title": "Forma Design by Construction",
     "updated": "2026-10-15",
     "version": "1.0.0"
+  },
+  {
+    "created": "2026-10-16",
+    "derived_from": [
+      "INPUT-a452dd045071032e"
+    ],
+    "id": "RQ-FORMA-2026-A002",
+    "owners": [
+      "design-system"
+    ],
+    "path": "research/requirements/RQ-FORMA-2026-A002--public-semantic-color-contract.md",
+    "provenance": {
+      "contributions": {
+        "EXE-20261016T154358749Z-1c5d95dd": {
+          "actor": {
+            "id": "openai/codex",
+            "kind": "agent",
+            "model": "unknown",
+            "provider": "openai",
+            "runtime": "codex"
+          },
+          "at": "2026-10-16T15:47:18.335Z",
+          "operations": [
+            "created"
+          ],
+          "reason": "Ingest FORMA-COLOR-001 as a draft canonical requirement without claiming implementation or palette approval"
+        }
+      }
+    },
+    "related_documents": [
+      "tokens/echelon.tokens.json",
+      "requirements/WHITE-LABEL-AND-SKINNING.md",
+      "docs/BRANDING.md"
+    ],
+    "status": "draft",
+    "tags": [
+      "color",
+      "design-tokens",
+      "validation",
+      "compatibility",
+      "accessibility"
+    ],
+    "title": "Public Semantic Color Token Contract",
+    "updated": "2026-10-16",
+    "version": "0.1.0"
+  },
+  {
+    "created": "2026-10-16",
+    "derived_from": [
+      "INPUT-a8ac4002e79dce7d"
+    ],
+    "id": "RQ-FORMA-2026-A003",
+    "owners": [
+      "design-system"
+    ],
+    "path": "research/requirements/RQ-FORMA-2026-A003--semantic-color-pairings-and-validation.md",
+    "provenance": {
+      "contributions": {
+        "EXE-20261016T154358749Z-1c5d95dd": {
+          "actor": {
+            "id": "openai/codex",
+            "kind": "agent",
+            "model": "unknown",
+            "provider": "openai",
+            "runtime": "codex"
+          },
+          "at": "2026-10-16T15:47:19.335Z",
+          "operations": [
+            "created"
+          ],
+          "reason": "Ingest FORMA-COLOR-002 as a draft canonical requirement preserving its dependency and human-judgment boundary"
+        }
+      }
+    },
+    "related_documents": [
+      "research/requirements/RQ-FORMA-2026-A002--public-semantic-color-contract.md",
+      "requirements/WHITE-LABEL-AND-SKINNING.md",
+      "requirements/QUALITY-AND-DISTRIBUTION.md"
+    ],
+    "status": "draft",
+    "tags": [
+      "color",
+      "themes",
+      "contrast",
+      "forced-colors",
+      "visual-regression",
+      "accessibility"
+    ],
+    "title": "Semantic Color Pairings and Rendered Validation",
+    "updated": "2026-10-16",
+    "version": "0.1.0"
   }
 ]

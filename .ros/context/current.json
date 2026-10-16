@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-16T08:37:43.000Z",
+  "updatedAt": "2026-10-16T19:56:13.346Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1791,36 +1791,70 @@
     {
       "id": "WI-0024",
       "type": "task",
-      "state": "active",
-      "semanticState": "active",
-      "evidence": [],
-      "updatedAt": "2026-10-10T13:36:11Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "requirements/MOTION-AND-INTERACTION.md"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/surface-physics.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:52:56.842Z",
       "telemetryExecutionIds": [
-        "EXE-20261010T133611298Z-0f5ec75b"
-      ]
+        "EXE-20261010T133611298Z-0f5ec75b",
+        "EXE-20261016T195227898Z-9097633e"
+      ],
+      "completedAt": "2026-10-16T19:52:56.842Z",
+      "conclusion": "Merged in PR #141 with reciprocal motion tests and exact-main CI."
     },
     {
       "id": "GH-142",
       "type": "task",
-      "state": "blocked",
-      "semanticState": "blocked",
-      "evidence": [],
-      "updatedAt": "2026-10-10T19:12:25Z",
-      "telemetryExecutionIds": [
-        "EXE-20261010T190944784Z-2fc6a411"
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/styles/components.css"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/flyout-containment.spec.mjs"
+        }
       ],
-      "blockReason": "Local implementation ready for CI; publishing branch requires explicit approval after automated review rejection"
+      "updatedAt": "2026-10-16T19:52:57.842Z",
+      "telemetryExecutionIds": [
+        "EXE-20261010T190944784Z-2fc6a411",
+        "EXE-20261016T195231192Z-c83071a3"
+      ],
+      "blockReason": "Local implementation ready for CI; publishing branch requires explicit approval after automated review rejection",
+      "completedAt": "2026-10-16T19:52:57.842Z",
+      "conclusion": "Merged in PR #144; date/time containment and flyout exit behavior verified."
     },
     {
       "id": "GH-143",
       "type": "task",
-      "state": "blocked",
-      "semanticState": "blocked",
-      "evidence": [],
-      "updatedAt": "2026-10-11T07:05:50.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/styles/assessment.css"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/selection-alignment.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:52:58.842Z",
       "telemetryExecutionIds": [
         "EXE-20261010T191327299Z-705de261",
-        "EXE-20261011T065924096Z-0dcaac60"
+        "EXE-20261011T065924096Z-0dcaac60",
+        "EXE-20261016T195231354Z-3ae6be91"
       ],
       "blockReason": "WebKit repair pushed and locally verified; full cross-browser CI pending before merge",
       "latestCheckpoint": {
@@ -1842,29 +1876,53 @@
           "status": "verified",
           "mechanism": "git-remote-observation"
         }
-      }
+      },
+      "completedAt": "2026-10-16T19:52:58.842Z",
+      "conclusion": "Merged in PR #144; ordinal and selection alignment verified."
     },
     {
       "id": "WI-0025",
       "type": "task",
-      "state": "blocked",
-      "semanticState": "blocked",
-      "evidence": [],
-      "updatedAt": "2026-10-11T08:37:08.000Z",
-      "telemetryExecutionIds": [
-        "EXE-20261011T082910009Z-caf60bb5"
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/styles/components.css"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/surface-fade.spec.mjs"
+        }
       ],
-      "blockReason": "Publication authorized; implementation locally validated; full cross-browser CI required before merge"
+      "updatedAt": "2026-10-16T19:52:59.842Z",
+      "telemetryExecutionIds": [
+        "EXE-20261011T082910009Z-caf60bb5",
+        "EXE-20261016T195231528Z-10443a2a"
+      ],
+      "blockReason": "Publication authorized; implementation locally validated; full cross-browser CI required before merge",
+      "completedAt": "2026-10-16T19:52:59.842Z",
+      "conclusion": "Merged in PR #148 with reciprocal transient-surface fade coverage."
     },
     {
       "id": "WI-0026",
       "type": "task",
-      "state": "blocked",
-      "semanticState": "blocked",
-      "evidence": [],
-      "updatedAt": "2026-10-11T15:16:54.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/styles/components.css"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/tooltip.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:53:00.842Z",
       "telemetryExecutionIds": [
-        "EXE-20261011T150736443Z-83366035"
+        "EXE-20261011T150736443Z-83366035",
+        "EXE-20261016T195231737Z-db8ee62b"
       ],
       "latestCheckpoint": {
         "id": "eb4de45f7e1fad6ad3f10040",
@@ -1886,17 +1944,29 @@
           "mechanism": "git-remote-observation"
         }
       },
-      "blockReason": "PR 149 published; full cross-browser CI pending before integration"
+      "blockReason": "PR 149 published; full cross-browser CI pending before integration",
+      "completedAt": "2026-10-16T19:53:00.842Z",
+      "conclusion": "Merged in PR #149 with stationary dismissal coverage."
     },
     {
       "id": "WI-0027",
       "type": "task",
-      "state": "blocked",
-      "semanticState": "blocked",
-      "evidence": [],
-      "updatedAt": "2026-10-11T21:07:59.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/catalog/render-indexes.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/site-browser/catalog.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:53:01.842Z",
       "telemetryExecutionIds": [
-        "EXE-20261011T185002267Z-893a3119"
+        "EXE-20261011T185002267Z-893a3119",
+        "EXE-20261016T195231989Z-7872ec45"
       ],
       "latestCheckpoint": {
         "id": "bcfd49e99d30e1603212c18a",
@@ -1918,17 +1988,29 @@
           "mechanism": "git-remote-observation"
         }
       },
-      "blockReason": "WebKit endpoint test race fixed and 59 targeted/repeated cases passed; awaiting updated PR 150 CI and parent integration"
+      "blockReason": "WebKit endpoint test race fixed and 59 targeted/repeated cases passed; awaiting updated PR 150 CI and parent integration",
+      "completedAt": "2026-10-16T19:53:01.842Z",
+      "conclusion": "Merged in PR #150 with responsive catalog filtering and enlarged-text coverage."
     },
     {
       "id": "WI-0028",
       "type": "task",
-      "state": "blocked",
-      "semanticState": "blocked",
-      "evidence": [],
-      "updatedAt": "2026-10-12T07:21:45.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tests/site-browser/catalog.spec.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/site-browser/catalog.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:53:02.842Z",
       "telemetryExecutionIds": [
-        "EXE-20261012T071650619Z-b1a90fce"
+        "EXE-20261012T071650619Z-b1a90fce",
+        "EXE-20261016T195232327Z-eb90d05e"
       ],
       "latestCheckpoint": {
         "id": "40e7176b04ccbd3bb33c0d48",
@@ -1950,7 +2032,9 @@
           "mechanism": "git-remote-observation"
         }
       },
-      "blockReason": "Await exact-head browser CI and deployment verification for PR 151; local browser binaries/dependencies unavailable"
+      "blockReason": "Await exact-head browser CI and deployment verification for PR 151; local browser binaries/dependencies unavailable",
+      "completedAt": "2026-10-16T19:53:02.842Z",
+      "conclusion": "Merged in PR #151; viewport switching now uses visible labels and keyboard operation."
     },
     {
       "id": "GH-155",
@@ -1996,12 +2080,22 @@
     {
       "id": "GH-156",
       "type": "task",
-      "state": "blocked",
-      "semanticState": "blocked",
-      "evidence": [],
-      "updatedAt": "2026-10-14T08:26:48Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/catalog/interaction.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/catalog-interaction.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:53:03.842Z",
       "telemetryExecutionIds": [
-        "EXE-20261013T183320424Z-8a02891b"
+        "EXE-20261013T183320424Z-8a02891b",
+        "EXE-20261016T195232658Z-0f50e36d"
       ],
       "latestCheckpoint": {
         "id": "128ec6b5ea956a28a4d260e4",
@@ -2023,7 +2117,9 @@
           "mechanism": "git-remote-observation"
         }
       },
-      "blockReason": "Pending #158 CI and owner merge"
+      "blockReason": "Pending #158 CI and owner merge",
+      "completedAt": "2026-10-16T19:53:03.842Z",
+      "conclusion": "Merged in PR #158; catalog conformance pilot and interaction evidence validated on main."
     },
     {
       "id": "WI-0029",
@@ -2066,6 +2162,141 @@
         }
       },
       "completedAt": "2026-10-16T08:37:43.000Z"
+    },
+    {
+      "id": "WI-0030",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "research/requirements/RQ-FORMA-2026-A002--public-semantic-color-contract.md"
+        },
+        {
+          "type": "implementation",
+          "path": "research/requirements/RQ-FORMA-2026-A003--semantic-color-pairings-and-validation.md"
+        },
+        {
+          "type": "tests",
+          "path": "tests/design-contract.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:56:13.346Z",
+      "telemetryExecutionIds": [
+        "EXE-20261016T154358749Z-1c5d95dd"
+      ],
+      "latestCheckpoint": {
+        "id": "f8ac598402b41d669537de5a",
+        "recordedAt": "2026-10-16T19:56:07.051Z",
+        "executionId": "EXE-20261016T154358749Z-1c5d95dd",
+        "stepId": "STEP-20261016T154555950Z-d1907d89",
+        "repository": "echelon-design-system",
+        "branch": "chore/reconcile-outstanding-20261016",
+        "commit": "a1226de28f988d6d481fe8bf3acf26b78e330801",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "chore/reconcile-outstanding-20261016",
+        "remoteCommit": "a1226de28f988d6d481fe8bf3acf26b78e330801",
+        "summary": "Color requirements ingested with provenance; completed historical work reconciled; stale conflicted PRs triaged without rewriting branches",
+        "nextAction": "Complete WI-0030, validate generated Praxis state, and open the reconciliation PR",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-16T19:56:13.346Z",
+      "conclusion": "Ingested both color source documents with provenance, reconciled twelve completed historical work entries, closed two delivered issues and six superseded/conflicted pull requests without rewriting their branches, and preserved all live follow-up issues."
+    },
+    {
+      "id": "GH-116",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "icons/registry.json"
+        },
+        {
+          "type": "tests",
+          "path": "tests/icons.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:53:33.054Z",
+      "telemetryExecutionIds": [
+        "EXE-20261016T195327656Z-7892df3e"
+      ],
+      "completedAt": "2026-10-16T19:53:33.054Z",
+      "conclusion": "Delivered by PR #121; issue #116 is closed and Forma 0.6.0 shipped the 80-icon registry."
+    },
+    {
+      "id": "GH-122",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/catalog/render-icons.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/icon-docs.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:53:34.054Z",
+      "telemetryExecutionIds": [
+        "EXE-20261016T195327806Z-478f9472"
+      ],
+      "completedAt": "2026-10-16T19:53:34.054Z",
+      "conclusion": "Delivered by PRs #123-#125; issue #122 is closed and all new icon pages are published."
+    },
+    {
+      "id": "GH-128",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "site/site.css"
+        },
+        {
+          "type": "tests",
+          "path": "tests/site-browser/responsive-navigation.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:53:35.054Z",
+      "telemetryExecutionIds": [
+        "EXE-20261016T195327981Z-84170e49"
+      ],
+      "completedAt": "2026-10-16T19:53:35.054Z",
+      "conclusion": "Delivered by PR #134; issue #128 is closed with responsive navigation and date containment coverage."
+    },
+    {
+      "id": "GH-132",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/catalog/render-indexes.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/site-browser/responsive-navigation.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-16T19:53:36.054Z",
+      "telemetryExecutionIds": [
+        "EXE-20261016T195328199Z-faefdd82"
+      ],
+      "completedAt": "2026-10-16T19:53:36.054Z",
+      "conclusion": "Delivered by PR #134; issue #132 is closed with semantic active-section navigation."
     }
   ]
 }

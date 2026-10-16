@@ -1,0 +1,42 @@
+{
+  "schema": "praxis.inbox-claim/1",
+  "claimId": "INPUT-a452dd045071032e",
+  "state": "completed",
+  "source": {
+    "path": ".praxis/inbox/documents/2026-10-14-FORMA-COLOR-001.md",
+    "fileName": "2026-10-14-FORMA-COLOR-001.md",
+    "sha256": "d4d48ac5f97ad9f2744db696b2f1e55ff29eb28045e6619cdb58d57237cbf522",
+    "size": 4188
+  },
+  "claimedAt": "2026-10-16T15:45:59.996Z",
+  "claimant": {
+    "kind": "agent",
+    "id": "openai/codex",
+    "provider": "openai",
+    "model": "unknown",
+    "runtime": "codex"
+  },
+  "executionId": "EXE-20261016T154358749Z-1c5d95dd",
+  "derivations": [
+    {
+      "kind": "requirement",
+      "targetKind": "artifact",
+      "target": "RQ-FORMA-2026-A002",
+      "summary": "Draft public semantic color token contract preserving FORMA-COLOR-001.1 through .5 and acceptance criteria",
+      "locator": "research/requirements/RQ-FORMA-2026-A002--public-semantic-color-contract.md",
+      "recordedAt": "2026-10-16T15:47:27.115Z",
+      "actor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "executionId": "EXE-20261016T154358749Z-1c5d95dd"
+    }
+  ],
+  "noDerivationReason": null,
+  "closedAt": "2026-10-16T15:48:02.307Z",
+  "releaseReason": null,
+  "rejectionReason": null
+}
