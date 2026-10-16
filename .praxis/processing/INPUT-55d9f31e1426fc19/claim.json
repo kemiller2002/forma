@@ -8,7 +8,7 @@
     "sha256": "297257a0a361d7853f637a65c5011fb1086f06f0649245666cc912c4b5b13cb8",
     "size": 5356
   },
-  "claimedAt": "2026-10-16T08:32:11.845Z",
+  "claimedAt": "2026-10-16T08:35:59.648Z",
   "claimant": {
     "kind": "agent",
     "id": "openai/codex",
@@ -16,15 +16,15 @@
     "model": "gpt-5",
     "runtime": "codex"
   },
-  "executionId": null,
+  "executionId": "EXE-20261016T083232002Z-9c56a32c",
   "derivations": [
     {
       "kind": "requirement",
       "targetKind": "artifact",
-      "target": "RQ-FORMA-2026-DBC01",
+      "target": "RQ-FORMA-2026-A001",
       "summary": "Canonical Forma Design by Construction form contract and acceptance requirements",
-      "locator": "requirements/DESIGN-BY-CONSTRUCTION.md",
-      "recordedAt": "2026-10-16T08:33:19.445Z",
+      "locator": "research/requirements/RQ-FORMA-2026-A001--design-by-construction.md",
+      "recordedAt": "2026-10-16T08:36:03.413Z",
       "actor": {
         "kind": "agent",
         "id": "openai/codex",
