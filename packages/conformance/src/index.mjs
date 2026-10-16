@@ -184,6 +184,7 @@ const observeOutcome = async (root, control, outcome, timeoutMs) => {
   if (count !== 1) return { value: null, missing: count === 0, count };
   switch (outcome.kind) {
     case "text": return { value: normalizeText(await target.textContent({ timeout: timeoutMs })), missing: false, count };
+    case "value": return { value: await target.inputValue({ timeout: timeoutMs }), missing: false, count };
     case "checked": return { value: await target.isChecked({ timeout: timeoutMs }), missing: false, count };
     case "attribute": return { value: await target.getAttribute(outcome.attribute, { timeout: timeoutMs }), missing: false, count };
     case "open": return { value: await readOpen(await target.elementHandle({ timeout: timeoutMs })), missing: false, count };

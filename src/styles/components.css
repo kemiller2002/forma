@@ -64,6 +64,39 @@
   .ef-form-row > .ef-field > :not(.ef-field__label, .ef-field__description, .ef-validation-message) { grid-row: 3; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
   .ef-form-row > .ef-field > .ef-validation-message { grid-row: 4; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
 
+  /* Form contract ------------------------------------------------------- */
+  .ef-form {
+    container-type: inline-size;
+    display: grid;
+    gap: var(--ef-form-gap, var(--ef-primitive-spacing-5, 1.5rem));
+    min-inline-size: 0;
+    max-inline-size: var(--ef-form-max, 64rem);
+  }
+
+  .ef-form > :where(h1, h2, h3, p) { margin-block: 0; }
+
+  /* Native constraint validation owns validity. The recovery text is in the
+     DOM and programmatically associated from first render, but appears only
+     after the browser marks the control user-invalid. */
+  .ef-validation-message--when-invalid { display: none; }
+  .ef-field:has(> :user-invalid) > .ef-validation-message--when-invalid { display: flex; }
+
+  /* GET submission to the declared fragment is a real, script-free outcome.
+     The status remains absent from layout and the accessibility tree until it
+     is the URL target. */
+  .ef-form__outcome { display: none; }
+  .ef-form__outcome:target {
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    display: block;
+    padding: var(--ef-primitive-spacing-3, 0.75rem);
+    border-inline-start: 0.25rem solid var(--ef-color-status-success, #2f6f4e);
+    background: var(--ef-color-surface-secondary, #e3e0d7);
+    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    font-weight: 650;
+  }
+
   .ef-field > :is(input[type="date"], input[type="time"], input[type="datetime-local"]) {
     min-inline-size: 0;
     inline-size: 100%;
@@ -5428,4 +5461,3 @@
     .ef-icon { color: CanvasText; }
   }
 }
-
