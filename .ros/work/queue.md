@@ -78,4 +78,4 @@
 | WI-0026 | Keep popover menu and tooltip dismissal stationary until opacity is zero | blocked |  | medium |
 | WI-0027 | Replace oversized mobile catalog family grid with accessible compact filter | blocked |  | medium |
 | WI-0028 | Repair viewport switcher browser interaction to unblock documentation deployment | blocked |  | medium |
-| WI-0029 | Implement Design by Construction forms | ready | forms, design-by-construction | high |
+| WI-0029 | Implement Design by Construction forms | complete | forms, design-by-construction | high |
