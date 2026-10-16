@@ -1,7 +1,7 @@
 {
   "schema": "praxis.inbox-claim/1",
   "claimId": "INPUT-a452dd045071032e",
-  "state": "claimed",
+  "state": "completed",
   "source": {
     "path": ".praxis/inbox/documents/2026-10-14-FORMA-COLOR-001.md",
     "fileName": "2026-10-14-FORMA-COLOR-001.md",
@@ -36,7 +36,7 @@
     }
   ],
   "noDerivationReason": null,
-  "closedAt": null,
+  "closedAt": "2026-10-16T15:48:02.307Z",
   "releaseReason": null,
   "rejectionReason": null
 }
