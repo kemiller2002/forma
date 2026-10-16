@@ -10,16 +10,16 @@
 | FORMA-GH-98-CATALOG | Refresh Forma component inventory after machine-operability changes | complete | forma,catalog,machine-operability | medium |
 | FORMA-RELEASE-041 | FORMA-RELEASE-041 | complete |  |  |
 | GH-110 | GH-110 | complete |  |  |
-| GH-116 | Expand Forma icon library from 40 to 80, prioritizing email and communications | captured |  | high |
+| GH-116 | Expand Forma icon library from 40 to 80, prioritizing email and communications | complete |  | high |
 | GH-12 | Align Forma documentation site with Echelon Foundry CSS | complete | forma,css,visual-engineering | high |
-| GH-122 | Publish navigable pages for 40 new Forma 0.6.0 icons | captured |  | high |
-| GH-128 | Prevent responsive nav wrapping and native date overflows | captured |  | high |
-| GH-132 | Highlight only the active Forma documentation section | captured |  | high |
+| GH-122 | Publish navigable pages for 40 new Forma 0.6.0 icons | complete |  | high |
+| GH-128 | Prevent responsive nav wrapping and native date overflows | complete |  | high |
+| GH-132 | Highlight only the active Forma documentation section | complete |  | high |
 | GH-14 | Build cross-application mobile Forma component wave | complete | forma,mobile,cross-application | high |
-| GH-142 | GH-142 | blocked |  |  |
-| GH-143 | GH-143 | blocked |  |  |
+| GH-142 | GH-142 | complete |  |  |
+| GH-143 | GH-143 | complete |  |  |
 | GH-155 | GH-155 | complete |  |  |
-| GH-156 | GH-156 | blocked |  |  |
+| GH-156 | GH-156 | complete |  |  |
 | GH-159 | Publish a versioned public semantic color token contract | captured | color, tokens, validation | high |
 | GH-160 | Define semantic color pairings and rendered validation fixtures | captured | color, accessibility, visual-regression | high |
 | GH-18 | Prepare Forma for application consumption | active | readiness,bootstrap | high |
@@ -75,10 +75,10 @@
 | WI-0021 | Move forma to Ordo 1.5.0 via echelon-current 1.2.0 (conditor upgrade --current) | complete |  | medium |
 | WI-0022 | Extend Forma's public contract for seven presentation gaps Chrona found (application sidebar and tab bar, large surface radius, display title scale, inverse hero surface, time-column timeline, filled primary action and control radius, skip link without marketing tokens) | captured | forma, contract, chrona | medium |
 | WI-0023 | Generate a documentation page for every Forma icon: appearance, meaning, sizes, colour and contrast modes, usage configurations and copyable markup | complete |  | medium |
-| WI-0024 | Enforce reciprocal CSS physics for reversible interactions | active |  | medium |
-| WI-0025 | Add quick reciprocal slow-fast-slow fades to transient surfaces | blocked |  | medium |
-| WI-0026 | Keep popover menu and tooltip dismissal stationary until opacity is zero | blocked |  | medium |
-| WI-0027 | Replace oversized mobile catalog family grid with accessible compact filter | blocked |  | medium |
-| WI-0028 | Repair viewport switcher browser interaction to unblock documentation deployment | blocked |  | medium |
+| WI-0024 | Enforce reciprocal CSS physics for reversible interactions | complete |  | medium |
+| WI-0025 | Add quick reciprocal slow-fast-slow fades to transient surfaces | complete |  | medium |
+| WI-0026 | Keep popover menu and tooltip dismissal stationary until opacity is zero | complete |  | medium |
+| WI-0027 | Replace oversized mobile catalog family grid with accessible compact filter | complete |  | medium |
+| WI-0028 | Repair viewport switcher browser interaction to unblock documentation deployment | complete |  | medium |
 | WI-0029 | Implement Design by Construction forms | complete | forms, design-by-construction | high |
 | WI-0030 | Reconcile outstanding Forma repository items | active |  | high |

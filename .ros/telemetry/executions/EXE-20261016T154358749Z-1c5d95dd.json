@@ -1415,6 +1415,23 @@
         "mechanism": "json"
       },
       "eventId": "TEVT-e273a1b01bf168d75f1b8754"
+    },
+    {
+      "type": "step.completed",
+      "occurredAt": "2026-10-16T19:55:39.185Z",
+      "stepId": "STEP-20261016T154555950Z-d1907d89",
+      "actor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": {
+        "type": "ros-cli",
+        "name": "step",
+        "mechanism": "step-lifecycle"
+      }
     }
   ],
   "repository": {
@@ -1463,12 +1480,12 @@
       "name": "Reconcile completed work and ingest color requirements",
       "description": null,
       "classification": [],
-      "status": "active",
+      "status": "completed",
       "plannedAt": "2026-10-16T15:45:55.950Z",
       "startedAt": "2026-10-16T15:45:55.950Z",
-      "completedAt": null,
-      "endedAt": null,
-      "updatedAt": "2026-10-16T15:45:55.950Z",
+      "completedAt": "2026-10-16T19:55:39.185Z",
+      "endedAt": "2026-10-16T19:55:39.185Z",
+      "updatedAt": "2026-10-16T19:55:39.185Z",
       "actor": {
         "kind": "agent",
         "id": "openai/codex",
@@ -1690,6 +1707,19 @@
           "from": null,
           "to": "active",
           "occurredAt": "2026-10-16T15:45:55.950Z",
+          "reason": null,
+          "actor": {
+            "kind": "agent",
+            "id": "openai/codex",
+            "provider": "openai",
+            "model": "unknown",
+            "runtime": "codex"
+          }
+        },
+        {
+          "from": "active",
+          "to": "completed",
+          "occurredAt": "2026-10-16T19:55:39.185Z",
           "reason": null,
           "actor": {
             "kind": "agent",
