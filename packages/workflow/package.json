@@ -4,7 +4,7 @@
   "private": false,
   "type": "module",
   "description": "Embeddable Forma workflow renderer and editor (<forma-workflow>), built on the Forma portable workflow format. Optional runtime companion to the zero-runtime @echelon-foundry/design-system.",
-  "license": "MIT",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "exports": {
     ".": "./dist/forma-workflow.js",
     "./forma-workflow.js": "./dist/forma-workflow.js",

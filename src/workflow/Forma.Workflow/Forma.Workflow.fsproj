@@ -11,6 +11,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <IsTrimmable>true</IsTrimmable>
     <PackageId>EchelonFoundry.Forma.Workflow</PackageId>
+    <PackageLicenseExpression>PolyForm-Noncommercial-1.0.0</PackageLicenseExpression>
     <Version>1.0.0</Version>
     <Description>Forma portable workflow format: model, validation, layout, HTML rendering and the embeddable editor engine.</Description>
     <NoWarn>$(NoWarn);FS3370</NoWarn>

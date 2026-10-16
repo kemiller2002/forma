@@ -155,3 +155,8 @@ See [docs/FIGMA.md](docs/FIGMA.md) for the variable, component, and Code Connect
 workflow. The public package also exposes `./tokens.json` and
 `./figma/components.json` for design tooling.
 
+## License
+
+Source available under PolyForm Noncommercial 1.0.0 for permitted noncommercial uses. Commercial use requires a separate license from Echelon Foundry. Previously distributed versions remain subject to the licenses under which they were released.
+
+Commercial licensing information is forthcoming.
