@@ -1,0 +1,25 @@
+{
+  "schema": "praxis.inbox-claim/1",
+  "claimId": "INPUT-55d9f31e1426fc19",
+  "state": "claimed",
+  "source": {
+    "path": ".praxis/inbox/documents/design-by-construction-2026-10-15.md",
+    "fileName": "design-by-construction-2026-10-15.md",
+    "sha256": "297257a0a361d7853f637a65c5011fb1086f06f0649245666cc912c4b5b13cb8",
+    "size": 5356
+  },
+  "claimedAt": "2026-10-16T00:16:33.682Z",
+  "claimant": {
+    "kind": "agent",
+    "id": "openai/codex",
+    "provider": "openai",
+    "model": "gpt-5",
+    "runtime": "codex"
+  },
+  "executionId": "EXE-20261016T001518995Z-0d7c3c0e",
+  "derivations": [],
+  "noDerivationReason": null,
+  "closedAt": null,
+  "releaseReason": null,
+  "rejectionReason": null
+}
