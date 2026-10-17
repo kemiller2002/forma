@@ -2307,7 +2307,28 @@
       "updatedAt": "2026-10-16T21:42:50.639Z",
       "telemetryExecutionIds": [
         "EXE-20261016T214249100Z-e1c09473"
-      ]
+      ],
+      "latestCheckpoint": {
+        "id": "c9573d31ff1b7e8ac0153f2b",
+        "recordedAt": "2026-10-17T04:18:32.000Z",
+        "executionId": "EXE-20261016T214249100Z-e1c09473",
+        "stepId": "STEP-20261016T214257191Z-f35a7004",
+        "repository": "echelon-design-system",
+        "branch": "feat/semantic-color-contracts-20261016",
+        "commit": "99dc495909a87135b59f891be82a36959da78f38",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "feat/semantic-color-contracts-20261016",
+        "remoteCommit": "99dc495909a87135b59f891be82a36959da78f38",
+        "summary": "Committed and pushed Forma 0.9.0 generated semantic color contract, validator CLI/API, compatibility policy, package surface, and documentation at 99dc495.",
+        "nextAction": "Open the combined GH-159/GH-160 pull request and verify clean GitHub CI before completion or merge.",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      }
     },
     {
       "id": "GH-160",
@@ -2318,7 +2339,28 @@
       "updatedAt": "2026-10-16T21:42:50.639Z",
       "telemetryExecutionIds": [
         "EXE-20261016T214249263Z-6b460da6"
-      ]
+      ],
+      "latestCheckpoint": {
+        "id": "c0011fbf93529b1c1c134b60",
+        "recordedAt": "2026-10-17T04:18:38.000Z",
+        "executionId": "EXE-20261016T214249263Z-6b460da6",
+        "stepId": "STEP-20261016T214258191Z-724b2f8d",
+        "repository": "echelon-design-system",
+        "branch": "feat/semantic-color-contracts-20261016",
+        "commit": "99dc495909a87135b59f891be82a36959da78f38",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "feat/semantic-color-contracts-20261016",
+        "remoteCommit": "99dc495909a87135b59f891be82a36959da78f38",
+        "summary": "Committed and pushed semantic pairings, cross-theme status roles, rendered light/dark/forced-color fixtures, non-hue assertions, and accessibility regressions at 99dc495.",
+        "nextAction": "Open the combined GH-159/GH-160 pull request and verify clean GitHub CI before completion or merge.",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      }
     }
   ]
 }
