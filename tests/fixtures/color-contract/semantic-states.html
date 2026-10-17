@@ -1,0 +1,74 @@
+<main class="ef-stack" aria-labelledby="color-fixture-title">
+  <h1 id="color-fixture-title">Mission review color contract</h1>
+
+  <ef-navigation-shell class="ef-component-tag">
+    <nav class="ef-navigation-shell__persistent" aria-label="Mission review">
+      <a href="#overview" aria-current="page">Overview</a>
+      <a id="keyboard-focus-target" href="#telemetry">Telemetry</a>
+      <a href="#decisions">Decisions</a>
+    </nav>
+  </ef-navigation-shell>
+
+  <section id="overview" class="ef-stack" aria-labelledby="state-title">
+    <h2 id="state-title">Review states</h2>
+    <div class="ef-status-lozenge-set" aria-label="Mission review states">
+      <span class="ef-status-lozenge" data-state="ok">Verified</span>
+      <span class="ef-status-lozenge" data-state="attention">Review required</span>
+      <span class="ef-status-lozenge" data-state="blocked">Blocked</span>
+      <span class="ef-status-lozenge" data-state="unknown">Telemetry unknown</span>
+    </div>
+    <aside class="ef-callout" data-ef-callout="caution" aria-labelledby="notice-title">
+      <strong class="ef-callout__label" id="notice-title">Warning</strong>
+      <p>Confirm the unresolved telemetry channel before approval.</p>
+    </aside>
+  </section>
+
+  <ef-form class="ef-component-tag">
+    <form class="ef-form" aria-labelledby="error-title">
+      <h2 id="error-title">Recovery action</h2>
+      <div class="ef-field">
+        <label class="ef-field__label" for="evidence-reference">Evidence reference</label>
+        <input id="evidence-reference" aria-invalid="true" aria-describedby="evidence-reference-error" value="unknown">
+        <p class="ef-validation-message" id="evidence-reference-error"><span class="ef-validation-message__mark" aria-hidden="true">!</span>Replace the unknown reference with a verified evidence ID.</p>
+      </div>
+    </form>
+  </ef-form>
+
+  <ef-data-grid class="ef-component-tag">
+    <div class="ef-table-scroll" tabindex="0" role="region" aria-label="Mission review decisions">
+      <table class="ef-data-grid">
+        <thead><tr><th scope="col">Decision</th><th scope="col">State</th><th scope="col">Action</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Thermal review</th><td><span class="ef-status-lozenge" data-state="unknown">Outcome unknown</span></td><td><button disabled>Approve</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </ef-data-grid>
+
+  <figure class="color-contract-chart" data-color-role="categorical-data-visualization" aria-labelledby="chart-title chart-description">
+    <figcaption id="chart-title">Example mission verification by system</figcaption>
+    <p id="chart-description">Navigation has three checks, thermal has two, and communications has one. Bar patterns and labels repeat every value.</p>
+    <svg viewBox="0 0 360 150" role="img" aria-labelledby="chart-svg-title chart-svg-description">
+      <title id="chart-svg-title">Mission verification checks</title>
+      <desc id="chart-svg-description">Three labelled horizontal bars: Navigation 3, Thermal 2, Communications 1.</desc>
+      <defs>
+        <pattern id="diagonal-lines" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M-2 2 L2-2 M0 8 L8 0 M6 10 L10 6" stroke="currentColor" stroke-width="2"/></pattern>
+        <pattern id="cross-lines" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0 L8 8 M8 0 L0 8" stroke="currentColor" stroke-width="1.5"/></pattern>
+      </defs>
+      <g data-series="navigation" aria-label="Navigation, 3 checks"><title>Navigation, 3 checks</title><text x="0" y="25">Navigation 3</text><rect x="145" y="8" width="180" height="24"/></g>
+      <g data-series="thermal" aria-label="Thermal, 2 checks"><title>Thermal, 2 checks</title><text x="0" y="70">Thermal 2</text><rect x="145" y="53" width="120" height="24"/></g>
+      <g data-series="communications" aria-label="Communications, 1 check"><title>Communications, 1 check</title><text x="0" y="115">Communications 1</text><rect x="145" y="98" width="60" height="24"/></g>
+    </svg>
+    <table><caption>Text alternative</caption><thead><tr><th scope="col">System</th><th scope="col">Checks</th></tr></thead><tbody><tr><th scope="row">Navigation</th><td>3</td></tr><tr><th scope="row">Thermal</th><td>2</td></tr><tr><th scope="row">Communications</th><td>1</td></tr></tbody></table>
+  </figure>
+</main>
+
+<style>
+  .color-contract-chart { padding: 1rem; border: 1px solid var(--ef-color-border-functional); background: var(--ef-color-surface-primary); color: var(--ef-color-text-primary); }
+  .color-contract-chart svg { display: block; inline-size: min(100%, 36rem); color: var(--ef-color-text-primary); }
+  .color-contract-chart rect { stroke: currentColor; stroke-width: 2; }
+  .color-contract-chart [data-series="navigation"] rect { fill: var(--summa-series-navigation, url(#diagonal-lines)); }
+  .color-contract-chart [data-series="thermal"] rect { fill: var(--summa-series-thermal, url(#cross-lines)); }
+  .color-contract-chart [data-series="communications"] rect { fill: var(--summa-series-communications, none); stroke-dasharray: 6 3; }
+  .color-contract-chart text { fill: currentColor; font: 16px system-ui, sans-serif; }
+</style>

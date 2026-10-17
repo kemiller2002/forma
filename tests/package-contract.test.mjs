@@ -24,6 +24,9 @@ test("Forma is a versioned public-consumer package", () => {
   assert.equal(pkg.exports?.["./brand-manifest.schema.json"], "./schemas/brand-manifest.schema.json");
   assert.equal(pkg.exports?.["./design/forma-design.schema.json"], "./schemas/design/1.0/forma-design.schema.json");
   assert.equal(pkg.exports?.["./contracts/design-capabilities.json"], "./contracts/design-capabilities.json");
+  assert.equal(pkg.exports?.["./color-contract"], "./tools/color-contract/index.mjs");
+  assert.equal(pkg.exports?.["./contracts/color-contract.json"], "./contracts/color-contract.json");
+  assert.equal(pkg.bin?.["forma-color"], "./tools/color-contract/cli.mjs");
   assert.ok(pkg.sideEffects?.includes("./dist/brands/*.css"));
 
   for (const path of [
@@ -59,7 +62,11 @@ test("Forma is a versioned public-consumer package", () => {
     "schemas/design/1.0/forma-design.schema.json",
     "contracts/design-capabilities.json",
     "examples/design/valid/customer-form.forma-design.json",
-    "docs/DESIGN-CONTRACT.md"
+    "docs/DESIGN-CONTRACT.md",
+    "contracts/color-contract.json",
+    "tools/color-contract/index.mjs",
+    "tools/color-contract/cli.mjs",
+    "docs/COLOR.md"
   ]) {
     assert.ok(fs.existsSync(path), `missing consumer artifact ${path}`);
   }
@@ -107,7 +114,11 @@ test("npm package contract contains the expected consumer surface", () => {
     "schemas/design/1.0/forma-design.schema.json",
     "contracts/design-capabilities.json",
     "examples/design/valid/customer-form.forma-design.json",
-    "docs/DESIGN-CONTRACT.md"
+    "docs/DESIGN-CONTRACT.md",
+    "contracts/color-contract.json",
+    "tools/color-contract/index.mjs",
+    "tools/color-contract/cli.mjs",
+    "docs/COLOR.md"
   ]) {
     assert.ok(files.has(path), `release package omits ${path}`);
   }
@@ -158,8 +169,8 @@ test("release workflow watches versioned icon and site assets without weakening 
     "icons/**", "catalog/icons.mjs", "catalog/icons/**",
     "tools/icons/**", "tools/catalog/render-icons.mjs", "tools/build-site.mjs",
     "examples/echelon-marketing-site/forma.lock",
-    "examples/design/**", "tools/design-contract/**",
-    "docs/ICONS.md", "tests/icon-docs.test.mjs",
+    "examples/design/**", "tools/design-contract/**", "tools/color-contract/**",
+    "docs/ICONS.md", "docs/COLOR.md", "tests/icon-docs.test.mjs", "tests/color-contract.test.mjs",
     ".github/workflows/release-forma.yml"
   ]) {
     assert.ok(watched.includes(path), "release trigger dropped " + path);

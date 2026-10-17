@@ -1,0 +1,4 @@
+.primary { background: var(--ef-color-action-primary, #905831); }
+.link { color: var(--ef-color-text-link); }
+.focus:focus-visible { outline-color: var(--ef-color-focus); }
+.error { color: var(--ef-color-text-danger, #8d3027); }

@@ -2,7 +2,7 @@
 id: RQ-FORMA-2026-A002
 title: Public Semantic Color Token Contract
 status: draft
-version: 0.1.0
+version: 0.2.0
 owners:
   - design-system
 created: 2026-10-16
@@ -11,6 +11,8 @@ related_documents:
   - tokens/echelon.tokens.json
   - requirements/WHITE-LABEL-AND-SKINNING.md
   - docs/BRANDING.md
+  - docs/COLOR.md
+  - contracts/color-contract.json
 tags: [color, design-tokens, validation, compatibility, accessibility]
 derived_from: [INPUT-a452dd045071032e]
 provenance:
@@ -25,6 +27,16 @@ provenance:
         model: unknown
         runtime: codex
       reason: "Ingest FORMA-COLOR-001 as a draft canonical requirement without claiming implementation or palette approval"
+    EXE-20261016T214249100Z-e1c09473:
+      operations: [modified]
+      at: 2026-10-16T21:50:52.393Z
+      actor:
+        kind: agent
+        id: openai/codex
+        provider: openai
+        model: unknown
+        runtime: codex
+      reason: "Implement the generated public color contract, validator, fallback policy, packaging, and Summa migration evidence"
 ---
 
 # Public Semantic Color Token Contract
@@ -53,12 +65,12 @@ Existing brand, skin, forced-colors, and public-token behavior remain authoritat
 - Contract changes carry versioned release notes and tests, and diagnostics are reproducible and actionable.
 - Documentation distinguishes valid token use from appropriate palette selection; this requirement guarantees only the former.
 
-## Dependencies and unknowns
+## Resolved implementation decisions
 
 - Preserve, rather than duplicate, the brand/skin architecture tracked by issue #22 and forced-colors behavior tracked by issue #55.
-- The replacement roles for Summa's four unresolved names remain design decisions; ingestion does not select them.
-- The public-manifest serialization format and CLI command surface remain implementation decisions constrained by deterministic, release-pinned consumption.
+- Summa primary action uses `surface-inverse` with `text-inverse`; link uses `accent-primary` on `surface-primary` (or Forma's secondary-surface hook); focus uses `focus-ring` with `focus-gap`; danger text uses `status-danger` on `surface-primary` with explicit error text.
+- The generated `forma.color-contract/1.0.0` JSON artifact and `forma-color validate` CLI are the release-pinned surfaces. Unknown `--ef-*` names fail even with fallbacks; application-owned variables are ignored.
 
 ## Implementation work
 
-Tracked by GitHub issue #159 and repository work item `GH-159`. Implementation and visual approval remain pending.
+Tracked by GitHub issue #159 and repository work item `GH-159`. Forma 0.9.0 implements the generated manifest, API/CLI, fallback policy, compatibility fixture, package exports, release notes, and Summa migration map. Independent review of this still-draft requirement and product palette choices remains pending; implementation does not self-approve either.

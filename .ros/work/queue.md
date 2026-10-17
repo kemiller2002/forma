@@ -20,8 +20,8 @@
 | GH-143 | GH-143 | complete |  |  |
 | GH-155 | GH-155 | complete |  |  |
 | GH-156 | GH-156 | complete |  |  |
-| GH-159 | Publish a versioned public semantic color token contract | captured | color, tokens, validation | high |
-| GH-160 | Define semantic color pairings and rendered validation fixtures | captured | color, accessibility, visual-regression | high |
+| GH-159 | Publish a versioned public semantic color token contract | ready | color, tokens, validation | high |
+| GH-160 | Define semantic color pairings and rendered validation fixtures | ready | color, accessibility, visual-regression | high |
 | GH-18 | Prepare Forma for application consumption | active | readiness,bootstrap | high |
 | GH-25 | Add CSS-only physics-derived motion and native checkbox/select controls | complete | forma,motion,css,accessibility | high |
 | GH-29 | Extend physics-derived motion across Forma transient surfaces | complete | forma,motion,css,accessibility,transient-surfaces | high |

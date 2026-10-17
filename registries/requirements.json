@@ -69,13 +69,29 @@
             "created"
           ],
           "reason": "Ingest FORMA-COLOR-001 as a draft canonical requirement without claiming implementation or palette approval"
+        },
+        "EXE-20261016T214249100Z-e1c09473": {
+          "actor": {
+            "id": "openai/codex",
+            "kind": "agent",
+            "model": "unknown",
+            "provider": "openai",
+            "runtime": "codex"
+          },
+          "at": "2026-10-16T21:50:52.393Z",
+          "operations": [
+            "modified"
+          ],
+          "reason": "Implement the generated public color contract, validator, fallback policy, packaging, and Summa migration evidence"
         }
       }
     },
     "related_documents": [
       "tokens/echelon.tokens.json",
       "requirements/WHITE-LABEL-AND-SKINNING.md",
-      "docs/BRANDING.md"
+      "docs/BRANDING.md",
+      "docs/COLOR.md",
+      "contracts/color-contract.json"
     ],
     "status": "draft",
     "tags": [
@@ -87,7 +103,7 @@
     ],
     "title": "Public Semantic Color Token Contract",
     "updated": "2026-10-16",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   {
     "created": "2026-10-16",
@@ -114,13 +130,29 @@
             "created"
           ],
           "reason": "Ingest FORMA-COLOR-002 as a draft canonical requirement preserving its dependency and human-judgment boundary"
+        },
+        "EXE-20261016T214249263Z-6b460da6": {
+          "actor": {
+            "id": "openai/codex",
+            "kind": "agent",
+            "model": "unknown",
+            "provider": "openai",
+            "runtime": "codex"
+          },
+          "at": "2026-10-16T21:50:52.561Z",
+          "operations": [
+            "modified"
+          ],
+          "reason": "Implement semantic pairings, cross-theme status roles, and rendered non-color accessibility evidence"
         }
       }
     },
     "related_documents": [
       "research/requirements/RQ-FORMA-2026-A002--public-semantic-color-contract.md",
       "requirements/WHITE-LABEL-AND-SKINNING.md",
-      "requirements/QUALITY-AND-DISTRIBUTION.md"
+      "requirements/QUALITY-AND-DISTRIBUTION.md",
+      "docs/COLOR.md",
+      "contracts/color-contract.json"
     ],
     "status": "draft",
     "tags": [
@@ -133,6 +165,6 @@
     ],
     "title": "Semantic Color Pairings and Rendered Validation",
     "updated": "2026-10-16",
-    "version": "0.1.0"
+    "version": "0.2.0"
   }
 ]

@@ -176,7 +176,7 @@
      recovery message remains the non-colour explanation of what to fix. */
   :where(input:not([type="checkbox"], [type="radio"], [type="range"]), textarea, select):where([aria-invalid="true"], :user-invalid) {
     border-inline-start-width: 0.3rem;
-    border-inline-start-color: var(--ef-color-status-danger, #8d3027);
+    border-inline-start-color: var(--ef-color-status-danger, #a13a2c);
   }
 
   :where(:focus-visible) {

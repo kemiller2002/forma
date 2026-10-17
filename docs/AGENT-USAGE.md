@@ -147,7 +147,7 @@ checks against every compiled theme and brand:
 
 | Surface | Foreground roles |
 | --- | --- |
-| `surface-primary` | `text-primary`, `text-heading`, `text-secondary`, `text-on-secondary-surface`, `accent-primary`, `accent-secondary`, and `text-muted`, `accent-hover`, `status-*` where declared |
+| `surface-primary` | `text-primary`, `text-heading`, `text-secondary`, `text-on-secondary-surface`, `accent-primary`, `accent-secondary`, all four `status-*` roles, and `text-muted` / `accent-hover` where declared |
 | `surface-secondary` | `text-primary`, `text-heading`, `text-on-secondary-surface` |
 | `surface-elevated` | `text-primary` |
 | `surface-inverse` | `text-inverse` |
@@ -166,6 +166,11 @@ around the pairing with consumer CSS such as `p { color: inherit }`.
 `tests/browser/pattern-contrast.spec.mjs` runs axe's color-contrast rule over
 every `patterns/*.html` file in every theme, every brand (light and dark) and
 forced colors.
+
+The generated public vocabulary, semantic pairings, fallback rules, validator,
+data-visualization boundary, and Summa migration map are documented in
+[`COLOR.md`](COLOR.md). Validate against the contract shipped by the pinned
+Forma release; a plausible `--ef-color-*` spelling is not a token.
 
 ## Public component tags
 

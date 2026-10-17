@@ -7,6 +7,21 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.9.0
+
+Minor release: public semantic color contracts and rendered state validation.
+
+### Added
+- A generated `forma.color-contract/1.0.0` manifest for every shipped theme and brand, with public/internal separation, source provenance, semantic pairings, forced-colors behavior and explicit application-extension boundaries.
+- The zero-dependency `forma-color` CLI and `color-contract` Node API, which refuse unknown `--ef-color-*` references and reserved internal color variables with source locations and supported-role suggestions while ignoring application-owned variables.
+- Public success, warning, danger and information tokens across all core themes and shipped brands, plus rendered light/dark/forced-colors and non-hue state evidence.
+
+### Changed
+- Status lozenges use the public status foregrounds while retaining explicit text, glyph and border cues.
+- Brand status overrides remain optional for schema 1.0 compatibility and inherit from the active core theme when absent.
+
+The contract documents Summa's four unsupported spellings and their supported replacements. A valid token and passing contrast establish compatibility, not product-palette appropriateness or semantic comprehension.
+
 ## 0.8.0
 
 Minor release: Design by Construction forms and fully operable form examples.

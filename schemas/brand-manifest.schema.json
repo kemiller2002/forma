@@ -122,7 +122,7 @@
             "status": {
               "type": "object",
               "additionalProperties": false,
-              "description": "Optional marketing status roles; each must reach 4.5:1 on the primary surface and always accompany text.",
+              "description": "Optional brand overrides for public status roles. Omitted roles inherit from the active core theme; declared values must reach 4.5:1 on the primary surface and accompany a non-color cue.",
               "properties": {
                 "success": { "$ref": "#/$defs/hex" },
                 "warning": { "$ref": "#/$defs/hex" },

@@ -40,6 +40,7 @@ test("repository brand manifests compile deterministically and remain scoped", (
   assert.match(css, /\[data-ef-brand="example-harbor"\]/);
   assert.match(css, /\[data-ef-theme="dark"\] \[data-ef-brand="example-harbor"\]/);
   assert.match(css, /--ef-color-accent-primary: #7a4a00/);
+  assert.match(css, /--ef-color-status-danger: #a13a2c/);
   assert.match(css, /--ef-primitive-radius-medium: 12px/);
 
   const index = JSON.parse(fs.readFileSync(path.join(first, "index.json"), "utf8"));
@@ -70,7 +71,7 @@ test("unsafe font-family injection is rejected", () => {
   assert.match(result.stderr, /unsafe font-family/i);
 });
 
-test("optional extended marketing roles are emitted and contrast-gated", () => {
+test("extended brand roles are emitted and contrast-gated", () => {
   const source = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-src-"));
   const output = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-out-"));
   const data = JSON.parse(fs.readFileSync("brands/echelon.brand.json", "utf8"));

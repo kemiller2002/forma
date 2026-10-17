@@ -82,7 +82,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Skeleton | `<ef-skeleton>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | loading-progress.spec.mjs | spinner, empty-state, progress-bar |
 | Spinner | `<ef-spinner>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | loading-progress.spec.mjs | progress-bar, skeleton, operation-status |
 | State survivability | `<ef-state-survivability>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | visual-engineering-semantics.spec.mjs | operation-status, status-lozenge, freshness, security-state-matrix |
-| Status lozenge | `<ef-status-lozenge>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | forced-colors-projection.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
+| Status lozenge | `<ef-status-lozenge>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | color-contract.spec.mjs, forced-colors-projection.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
 | Toast | `<ef-toast>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, popover, fault-notification, dialog |
 | Validation message | `<ef-validation-message>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | validation-summary, text-field, question, alert |
 | Validation summary | `<ef-validation-summary>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | validation-message, alert, obligation-panel |
