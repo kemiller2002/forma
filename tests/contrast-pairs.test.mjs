@@ -107,12 +107,16 @@ const compiled = [
 
 test("compiled themes and brands expose complete color contexts", () => {
   const contexts = compiled.flatMap(themeContexts);
+  const publicStatus = ["status-success", "status-warning", "status-danger", "status-info"];
   const themes = Object.keys(JSON.parse(read("tokens/echelon.tokens.json")).semantic);
   for (const theme of themes.filter((id) => id !== "light")) {
     assert.ok(contexts.some((context) => context.id.includes(`[data-ef-theme="${theme}"]`)), `no compiled context for theme ${theme}`);
   }
   for (const brand of JSON.parse(read("dist/brands/index.json")).brands) {
     assert.ok(contexts.some((context) => context.id.includes(`[data-ef-brand="${brand.id}"]`)), `no compiled context for brand ${brand.id}`);
+  }
+  for (const context of contexts) {
+    for (const role of publicStatus) assert.ok(context.colors[role], `${context.id} omits public ${role}`);
   }
 });
 

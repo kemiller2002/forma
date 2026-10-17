@@ -1,0 +1,56 @@
+{
+  "format": "forma.color-contract/1.0.0",
+  "formaVersion": "0.6.1",
+  "publicTokens": [
+    {"name":"--ef-color-accent-primary"},
+    {"name":"--ef-color-accent-secondary"},
+    {"name":"--ef-color-border-functional"},
+    {"name":"--ef-color-border-subtle"},
+    {"name":"--ef-color-control-active"},
+    {"name":"--ef-color-control-thumb"},
+    {"name":"--ef-color-control-track"},
+    {"name":"--ef-color-focus-gap"},
+    {"name":"--ef-color-focus-ring"},
+    {"name":"--ef-color-surface-inverse"},
+    {"name":"--ef-color-surface-inverse-secondary"},
+    {"name":"--ef-color-surface-primary"},
+    {"name":"--ef-color-surface-secondary"},
+    {"name":"--ef-color-text-heading"},
+    {"name":"--ef-color-text-inverse"},
+    {"name":"--ef-color-text-on-secondary-surface"},
+    {"name":"--ef-color-text-primary"},
+    {"name":"--ef-color-text-secondary"}
+  ],
+  "unsupportedNames": [
+    {"name":"--ef-color-action-primary","use":"--ef-color-surface-inverse"},
+    {"name":"--ef-color-text-link","use":"--ef-color-accent-primary"},
+    {"name":"--ef-color-focus","use":"--ef-color-focus-ring"},
+    {"name":"--ef-color-text-danger","use":"--ef-color-status-danger"}
+  ],
+  "contexts": [
+    {
+      "kind": "theme",
+      "id": "light",
+      "values": {
+        "--ef-color-accent-primary":"#905831",
+        "--ef-color-accent-secondary":"#47756b",
+        "--ef-color-border-functional":"#3a403c",
+        "--ef-color-border-subtle":"#e3e0d7",
+        "--ef-color-control-active":"#905831",
+        "--ef-color-control-thumb":"#f2efe7",
+        "--ef-color-control-track":"#686d68",
+        "--ef-color-focus-gap":"#f2efe7",
+        "--ef-color-focus-ring":"#171a18",
+        "--ef-color-surface-inverse":"#202421",
+        "--ef-color-surface-inverse-secondary":"#3a403c",
+        "--ef-color-surface-primary":"#f2efe7",
+        "--ef-color-surface-secondary":"#e3e0d7",
+        "--ef-color-text-heading":"#202421",
+        "--ef-color-text-inverse":"#f2efe7",
+        "--ef-color-text-on-secondary-surface":"#3a403c",
+        "--ef-color-text-primary":"#171a18",
+        "--ef-color-text-secondary":"#686d68"
+      }
+    }
+  ]
+}

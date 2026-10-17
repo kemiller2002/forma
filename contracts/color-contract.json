@@ -1,0 +1,1814 @@
+{
+  "format": "forma.color-contract/1.0.0",
+  "formaVersion": "0.9.0",
+  "validationScope": "CSS var() references to --ef-color-* plus reserved internal color-related prefixes; other Forma APIs are governed by their own contracts.",
+  "compatibility": {
+    "policy": "Validate with the contract shipped by the pinned Forma package version.",
+    "additiveWithinMajor": true
+  },
+  "fallbackPolicy": {
+    "unknownFormaToken": "refused-even-with-fallback",
+    "applicationToken": "ignored",
+    "knownFormaTokenLiteralFallback": "permitted-only-when-the-six-digit-hex-equals-the-light-theme-value",
+    "rationale": "A literal may support standalone layer loading, but it must not invent a color or make an unsupported Forma name appear valid."
+  },
+  "publicTokens": [
+    {
+      "name": "--ef-color-accent-primary",
+      "role": "accent.primary",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.accent.primary"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-accent-secondary",
+      "role": "accent.secondary",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.accent.secondary"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-border-functional",
+      "role": "border.functional",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.border.functional"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-border-subtle",
+      "role": "border.subtle",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.border.subtle"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-control-active",
+      "role": "control.active",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.control.active"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-control-thumb",
+      "role": "control.thumb",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.control.thumb"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-control-track",
+      "role": "control.track",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.control.track"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-focus-gap",
+      "role": "focus.gap",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.focus.gap"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-focus-ring",
+      "role": "focus.ring",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.focus.ring"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-status-danger",
+      "role": "status.danger",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.status.danger"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-status-info",
+      "role": "status.info",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.status.info"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-status-success",
+      "role": "status.success",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.status.success"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-status-warning",
+      "role": "status.warning",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.status.warning"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-surface-inverse",
+      "role": "surface.inverse",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.surface.inverse"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-surface-inverse-secondary",
+      "role": "surface.inverse-secondary",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.surface.inverse-secondary"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-surface-primary",
+      "role": "surface.primary",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.surface.primary"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-surface-secondary",
+      "role": "surface.secondary",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.surface.secondary"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-text-heading",
+      "role": "text.heading",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.text.heading"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-text-inverse",
+      "role": "text.inverse",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.text.inverse"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-text-on-secondary-surface",
+      "role": "text.on-secondary-surface",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.text.on-secondary-surface"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-text-primary",
+      "role": "text.primary",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.text.primary"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    },
+    {
+      "name": "--ef-color-text-secondary",
+      "role": "text.secondary",
+      "scopes": [
+        "root",
+        "theme",
+        "brand",
+        "skin"
+      ],
+      "variants": {
+        "themes": [
+          "light",
+          "dark",
+          "high-contrast",
+          "muted-professional",
+          "accent-neutral",
+          "operations-salience",
+          "paper-ink",
+          "clinical-light",
+          "dark-restrained",
+          "complementary-energy",
+          "analogous-cohesive",
+          "split-complementary",
+          "mono-semantic",
+          "neutral-editorial",
+          "warm-earth",
+          "cool-institutional",
+          "nature-derived",
+          "dark-technical"
+        ],
+        "brands": [
+          "echelon",
+          "example-harbor"
+        ]
+      },
+      "source": {
+        "file": "tokens/echelon.tokens.json",
+        "path": "semantic.<theme>.color.text.secondary"
+      },
+      "provenance": {
+        "kind": "generated",
+        "compiler": "tools/color-contract/build.mjs"
+      },
+      "deprecatedAliases": []
+    }
+  ],
+  "internalVariables": {
+    "public": false,
+    "prefixes": [
+      "--ef-tone-",
+      "--ef-surface-",
+      "--ef-field-",
+      "--ef-grid-",
+      "--ef-effect-"
+    ],
+    "policy": "Implementation variables are not a consumer compatibility contract."
+  },
+  "unsupportedNames": [
+    {
+      "name": "--ef-color-action-primary",
+      "use": "--ef-color-surface-inverse",
+      "pairWith": "--ef-color-text-inverse"
+    },
+    {
+      "name": "--ef-color-text-link",
+      "use": "--ef-color-accent-primary",
+      "pairWith": "--ef-color-surface-primary"
+    },
+    {
+      "name": "--ef-color-focus",
+      "use": "--ef-color-focus-ring",
+      "pairWith": "--ef-color-focus-gap"
+    },
+    {
+      "name": "--ef-color-text-danger",
+      "use": "--ef-color-status-danger",
+      "pairWith": "--ef-color-surface-primary"
+    }
+  ],
+  "rolePairings": [
+    {
+      "role": "primary-action",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-text-inverse",
+      "background": "--ef-color-surface-inverse",
+      "minimumContrast": 4.5,
+      "nonColorCue": "visible action label and native button semantics"
+    },
+    {
+      "role": "secondary-action",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-text-primary",
+      "background": "--ef-color-surface-primary",
+      "boundary": "--ef-color-border-functional",
+      "minimumContrast": 4.5,
+      "nonColorCue": "visible action label and functional border"
+    },
+    {
+      "role": "link",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-accent-primary",
+      "background": "--ef-color-surface-primary",
+      "minimumContrast": 4.5,
+      "nonColorCue": "underline or link context; secondary surfaces re-pair through Forma's surface hook"
+    },
+    {
+      "role": "selection",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-text-inverse",
+      "background": "--ef-color-surface-inverse",
+      "minimumContrast": 4.5,
+      "nonColorCue": "native selected, checked, or aria-current state"
+    },
+    {
+      "role": "notice",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-status-info",
+      "background": "--ef-color-surface-primary",
+      "minimumContrast": 4.5,
+      "nonColorCue": "state text plus glyph, border, or accessible name"
+    },
+    {
+      "role": "pending-or-unknown",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-status-info",
+      "background": "--ef-color-surface-primary",
+      "minimumContrast": 4.5,
+      "nonColorCue": "state text plus glyph, border, or accessible name"
+    },
+    {
+      "role": "warning",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-status-warning",
+      "background": "--ef-color-surface-primary",
+      "minimumContrast": 4.5,
+      "nonColorCue": "state text plus glyph, border, or accessible name"
+    },
+    {
+      "role": "danger",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-status-danger",
+      "background": "--ef-color-surface-primary",
+      "minimumContrast": 4.5,
+      "nonColorCue": "state text plus glyph, border, or accessible name"
+    },
+    {
+      "role": "success",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-status-success",
+      "background": "--ef-color-surface-primary",
+      "minimumContrast": 4.5,
+      "nonColorCue": "state text plus glyph, border, or accessible name"
+    },
+    {
+      "role": "disabled",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-text-primary",
+      "background": "--ef-color-surface-secondary",
+      "boundary": "--ef-color-border-functional",
+      "minimumContrast": 4.5,
+      "nonColorCue": "native disabled state, dashed boundary, and not-allowed cursor; opacity is supplemental"
+    },
+    {
+      "role": "focus",
+      "classification": "supported-primitive",
+      "foreground": "--ef-color-focus-ring",
+      "background": "--ef-color-surface-primary",
+      "minimumContrast": 3,
+      "nonColorCue": "two-part outline geometry shown by keyboard focus"
+    },
+    {
+      "role": "categorical-data-visualization",
+      "classification": "application-extension",
+      "minimumContrast": 3,
+      "nonColorCue": "direct labels, shapes, patterns, or a text/table alternative",
+      "note": "Forma does not certify a universal categorical palette."
+    },
+    {
+      "role": "ordinal-data-visualization",
+      "classification": "application-extension",
+      "minimumContrast": 3,
+      "nonColorCue": "ordered position plus labels, patterns, or a text/table alternative",
+      "note": "Applications must validate the complete rendered scale in context."
+    }
+  ],
+  "forcedColors": {
+    "foreground": "CanvasText",
+    "surface": "Canvas",
+    "selection": "Highlight/HighlightText",
+    "authorAdjust": "auto"
+  },
+  "contexts": [
+    {
+      "kind": "theme",
+      "id": "light",
+      "selector": ":root, [data-ef-theme=\"light\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#171a18",
+        "--ef-color-text-heading": "#202421",
+        "--ef-color-text-secondary": "#686d68",
+        "--ef-color-text-on-secondary-surface": "#3a403c",
+        "--ef-color-text-inverse": "#f2efe7",
+        "--ef-color-surface-primary": "#f2efe7",
+        "--ef-color-surface-secondary": "#e3e0d7",
+        "--ef-color-surface-inverse": "#202421",
+        "--ef-color-surface-inverse-secondary": "#3a403c",
+        "--ef-color-accent-primary": "#905831",
+        "--ef-color-accent-secondary": "#47756b",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#e3e0d7",
+        "--ef-color-border-functional": "#3a403c",
+        "--ef-color-focus-ring": "#171a18",
+        "--ef-color-focus-gap": "#f2efe7",
+        "--ef-color-control-track": "#686d68",
+        "--ef-color-control-thumb": "#f2efe7",
+        "--ef-color-control-active": "#905831"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "dark",
+      "selector": "[data-ef-theme=\"dark\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#f2efe7",
+        "--ef-color-text-heading": "#f2efe7",
+        "--ef-color-text-secondary": "#e3e0d7",
+        "--ef-color-text-on-secondary-surface": "#f2efe7",
+        "--ef-color-text-inverse": "#171a18",
+        "--ef-color-surface-primary": "#171a18",
+        "--ef-color-surface-secondary": "#202421",
+        "--ef-color-surface-inverse": "#f2efe7",
+        "--ef-color-surface-inverse-secondary": "#e3e0d7",
+        "--ef-color-accent-primary": "#a87e5e",
+        "--ef-color-accent-secondary": "#698d84",
+        "--ef-color-status-success": "#8cc49f",
+        "--ef-color-status-warning": "#ddb266",
+        "--ef-color-status-danger": "#ef9a8b",
+        "--ef-color-status-info": "#90b9dc",
+        "--ef-color-border-subtle": "#3a403c",
+        "--ef-color-border-functional": "#e3e0d7",
+        "--ef-color-focus-ring": "#f2efe7",
+        "--ef-color-focus-gap": "#171a18",
+        "--ef-color-control-track": "#686d68",
+        "--ef-color-control-thumb": "#f2efe7",
+        "--ef-color-control-active": "#a87e5e"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "high-contrast",
+      "selector": "[data-ef-theme=\"high-contrast\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#000000",
+        "--ef-color-text-heading": "#000000",
+        "--ef-color-text-secondary": "#303030",
+        "--ef-color-text-on-secondary-surface": "#000000",
+        "--ef-color-text-inverse": "#ffffff",
+        "--ef-color-surface-primary": "#ffffff",
+        "--ef-color-surface-secondary": "#eeeeee",
+        "--ef-color-surface-inverse": "#000000",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#000000",
+        "--ef-color-accent-secondary": "#303030",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#d8d8d8",
+        "--ef-color-border-functional": "#000000",
+        "--ef-color-focus-ring": "#000000",
+        "--ef-color-focus-gap": "#ffffff",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#ffffff",
+        "--ef-color-control-active": "#000000"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "muted-professional",
+      "selector": "[data-ef-theme=\"muted-professional\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#161616",
+        "--ef-color-text-heading": "#161616",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#303030",
+        "--ef-color-text-inverse": "#ffffff",
+        "--ef-color-surface-primary": "#eeeeee",
+        "--ef-color-surface-secondary": "#d8d8d8",
+        "--ef-color-surface-inverse": "#161616",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#70405c",
+        "--ef-color-accent-secondary": "#356b64",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#d8d8d8",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#161616",
+        "--ef-color-focus-gap": "#eeeeee",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#ffffff",
+        "--ef-color-control-active": "#70405c"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "accent-neutral",
+      "selector": "[data-ef-theme=\"accent-neutral\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#161616",
+        "--ef-color-text-heading": "#161616",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#303030",
+        "--ef-color-text-inverse": "#ffffff",
+        "--ef-color-surface-primary": "#ffffff",
+        "--ef-color-surface-secondary": "#eeeeee",
+        "--ef-color-surface-inverse": "#161616",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#005ea8",
+        "--ef-color-accent-secondary": "#006b75",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#d8d8d8",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#005ea8",
+        "--ef-color-focus-gap": "#ffffff",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#ffffff",
+        "--ef-color-control-active": "#005ea8"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "operations-salience",
+      "selector": "[data-ef-theme=\"operations-salience\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#161616",
+        "--ef-color-text-heading": "#161616",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#303030",
+        "--ef-color-text-inverse": "#ffffff",
+        "--ef-color-surface-primary": "#ffffff",
+        "--ef-color-surface-secondary": "#eeeeee",
+        "--ef-color-surface-inverse": "#161616",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#9c2f25",
+        "--ef-color-accent-secondary": "#315f8c",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#d8d8d8",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#9c2f25",
+        "--ef-color-focus-gap": "#ffffff",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#ffffff",
+        "--ef-color-control-active": "#9c2f25"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "paper-ink",
+      "selector": "[data-ef-theme=\"paper-ink\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#211d18",
+        "--ef-color-text-heading": "#211d18",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#211d18",
+        "--ef-color-text-inverse": "#f7f2e7",
+        "--ef-color-surface-primary": "#f7f2e7",
+        "--ef-color-surface-secondary": "#e7dece",
+        "--ef-color-surface-inverse": "#211d18",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#905831",
+        "--ef-color-accent-secondary": "#285c45",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#e7dece",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#211d18",
+        "--ef-color-focus-gap": "#f7f2e7",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#f7f2e7",
+        "--ef-color-control-active": "#905831"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "clinical-light",
+      "selector": "[data-ef-theme=\"clinical-light\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#17242b",
+        "--ef-color-text-heading": "#17242b",
+        "--ef-color-text-secondary": "#50636d",
+        "--ef-color-text-on-secondary-surface": "#17242b",
+        "--ef-color-text-inverse": "#f8fafb",
+        "--ef-color-surface-primary": "#f8fafb",
+        "--ef-color-surface-secondary": "#e6edf1",
+        "--ef-color-surface-inverse": "#17242b",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#005ea8",
+        "--ef-color-accent-secondary": "#006b75",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#e6edf1",
+        "--ef-color-border-functional": "#50636d",
+        "--ef-color-focus-ring": "#005ea8",
+        "--ef-color-focus-gap": "#f8fafb",
+        "--ef-color-control-track": "#50636d",
+        "--ef-color-control-thumb": "#ffffff",
+        "--ef-color-control-active": "#005ea8"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "dark-restrained",
+      "selector": "[data-ef-theme=\"dark-restrained\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#e8f1f4",
+        "--ef-color-text-heading": "#e8f1f4",
+        "--ef-color-text-secondary": "#e3e0d7",
+        "--ef-color-text-on-secondary-surface": "#e8f1f4",
+        "--ef-color-text-inverse": "#12191d",
+        "--ef-color-surface-primary": "#12191d",
+        "--ef-color-surface-secondary": "#202a30",
+        "--ef-color-surface-inverse": "#e8f1f4",
+        "--ef-color-surface-inverse-secondary": "#e3e0d7",
+        "--ef-color-accent-primary": "#d99a55",
+        "--ef-color-accent-secondary": "#698d84",
+        "--ef-color-status-success": "#8cc49f",
+        "--ef-color-status-warning": "#ddb266",
+        "--ef-color-status-danger": "#ef9a8b",
+        "--ef-color-status-info": "#90b9dc",
+        "--ef-color-border-subtle": "#3a403c",
+        "--ef-color-border-functional": "#e3e0d7",
+        "--ef-color-focus-ring": "#e8f1f4",
+        "--ef-color-focus-gap": "#12191d",
+        "--ef-color-control-track": "#686d68",
+        "--ef-color-control-thumb": "#e8f1f4",
+        "--ef-color-control-active": "#d99a55"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "complementary-energy",
+      "selector": "[data-ef-theme=\"complementary-energy\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#161616",
+        "--ef-color-text-heading": "#161616",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#303030",
+        "--ef-color-text-inverse": "#ffffff",
+        "--ef-color-surface-primary": "#ffffff",
+        "--ef-color-surface-secondary": "#eeeeee",
+        "--ef-color-surface-inverse": "#161616",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#175f8f",
+        "--ef-color-accent-secondary": "#9a3f19",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#d8d8d8",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#175f8f",
+        "--ef-color-focus-gap": "#ffffff",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#ffffff",
+        "--ef-color-control-active": "#175f8f"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "analogous-cohesive",
+      "selector": "[data-ef-theme=\"analogous-cohesive\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#161616",
+        "--ef-color-text-heading": "#161616",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#303030",
+        "--ef-color-text-inverse": "#ffffff",
+        "--ef-color-surface-primary": "#ffffff",
+        "--ef-color-surface-secondary": "#eeeeee",
+        "--ef-color-surface-inverse": "#161616",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#315f8c",
+        "--ef-color-accent-secondary": "#286c68",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#d8d8d8",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#315f8c",
+        "--ef-color-focus-gap": "#ffffff",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#ffffff",
+        "--ef-color-control-active": "#315f8c"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "split-complementary",
+      "selector": "[data-ef-theme=\"split-complementary\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#161616",
+        "--ef-color-text-heading": "#161616",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#303030",
+        "--ef-color-text-inverse": "#ffffff",
+        "--ef-color-surface-primary": "#ffffff",
+        "--ef-color-surface-secondary": "#eeeeee",
+        "--ef-color-surface-inverse": "#161616",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#175f8f",
+        "--ef-color-accent-secondary": "#93451e",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#d8d8d8",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#7a3f70",
+        "--ef-color-focus-gap": "#ffffff",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#ffffff",
+        "--ef-color-control-active": "#175f8f"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "mono-semantic",
+      "selector": "[data-ef-theme=\"mono-semantic\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#161616",
+        "--ef-color-text-heading": "#161616",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#303030",
+        "--ef-color-text-inverse": "#ffffff",
+        "--ef-color-surface-primary": "#ffffff",
+        "--ef-color-surface-secondary": "#eeeeee",
+        "--ef-color-surface-inverse": "#161616",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#3b5f55",
+        "--ef-color-accent-secondary": "#555555",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#d8d8d8",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#161616",
+        "--ef-color-focus-gap": "#ffffff",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#ffffff",
+        "--ef-color-control-active": "#3b5f55"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "neutral-editorial",
+      "selector": "[data-ef-theme=\"neutral-editorial\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#161616",
+        "--ef-color-text-heading": "#161616",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#303030",
+        "--ef-color-text-inverse": "#f6f4ef",
+        "--ef-color-surface-primary": "#f6f4ef",
+        "--ef-color-surface-secondary": "#e7e3da",
+        "--ef-color-surface-inverse": "#161616",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#905831",
+        "--ef-color-accent-secondary": "#356b64",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#e7e3da",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#161616",
+        "--ef-color-focus-gap": "#f6f4ef",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#f6f4ef",
+        "--ef-color-control-active": "#905831"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "warm-earth",
+      "selector": "[data-ef-theme=\"warm-earth\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#29231c",
+        "--ef-color-text-heading": "#29231c",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#29231c",
+        "--ef-color-text-inverse": "#f3eadc",
+        "--ef-color-surface-primary": "#f3eadc",
+        "--ef-color-surface-secondary": "#dfcfb8",
+        "--ef-color-surface-inverse": "#29231c",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#905831",
+        "--ef-color-accent-secondary": "#356044",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#dfcfb8",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#29231c",
+        "--ef-color-focus-gap": "#f3eadc",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#f3eadc",
+        "--ef-color-control-active": "#905831"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "cool-institutional",
+      "selector": "[data-ef-theme=\"cool-institutional\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#17252b",
+        "--ef-color-text-heading": "#17252b",
+        "--ef-color-text-secondary": "#50636d",
+        "--ef-color-text-on-secondary-surface": "#17252b",
+        "--ef-color-text-inverse": "#f4f7f8",
+        "--ef-color-surface-primary": "#f4f7f8",
+        "--ef-color-surface-secondary": "#dde6e9",
+        "--ef-color-surface-inverse": "#17252b",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#245d7a",
+        "--ef-color-accent-secondary": "#006b75",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#dde6e9",
+        "--ef-color-border-functional": "#50636d",
+        "--ef-color-focus-ring": "#245d7a",
+        "--ef-color-focus-gap": "#f4f7f8",
+        "--ef-color-control-track": "#50636d",
+        "--ef-color-control-thumb": "#ffffff",
+        "--ef-color-control-active": "#245d7a"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "nature-derived",
+      "selector": "[data-ef-theme=\"nature-derived\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#20281f",
+        "--ef-color-text-heading": "#20281f",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#20281f",
+        "--ef-color-text-inverse": "#f1f0e5",
+        "--ef-color-surface-primary": "#f1f0e5",
+        "--ef-color-surface-secondary": "#dce2cf",
+        "--ef-color-surface-inverse": "#20281f",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#315f3d",
+        "--ef-color-accent-secondary": "#315e75",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#dce2cf",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#20281f",
+        "--ef-color-focus-gap": "#f1f0e5",
+        "--ef-color-control-track": "#555555",
+        "--ef-color-control-thumb": "#f1f0e5",
+        "--ef-color-control-active": "#315f3d"
+      }
+    },
+    {
+      "kind": "theme",
+      "id": "dark-technical",
+      "selector": "[data-ef-theme=\"dark-technical\"]",
+      "source": "tokens/echelon.tokens.json",
+      "values": {
+        "--ef-color-text-primary": "#e7eef0",
+        "--ef-color-text-heading": "#e7eef0",
+        "--ef-color-text-secondary": "#e3e0d7",
+        "--ef-color-text-on-secondary-surface": "#e7eef0",
+        "--ef-color-text-inverse": "#101619",
+        "--ef-color-surface-primary": "#101619",
+        "--ef-color-surface-secondary": "#1d272c",
+        "--ef-color-surface-inverse": "#e7eef0",
+        "--ef-color-surface-inverse-secondary": "#e3e0d7",
+        "--ef-color-accent-primary": "#63a8b2",
+        "--ef-color-accent-secondary": "#d29a58",
+        "--ef-color-status-success": "#8cc49f",
+        "--ef-color-status-warning": "#ddb266",
+        "--ef-color-status-danger": "#ef9a8b",
+        "--ef-color-status-info": "#90b9dc",
+        "--ef-color-border-subtle": "#3a403c",
+        "--ef-color-border-functional": "#e3e0d7",
+        "--ef-color-focus-ring": "#e7eef0",
+        "--ef-color-focus-gap": "#101619",
+        "--ef-color-control-track": "#686d68",
+        "--ef-color-control-thumb": "#e7eef0",
+        "--ef-color-control-active": "#63a8b2"
+      }
+    },
+    {
+      "kind": "brand",
+      "id": "echelon/light",
+      "selector": "[data-ef-brand=\"echelon\"][data-ef-theme=\"light\"]",
+      "source": "brands/echelon.brand.json",
+      "values": {
+        "--ef-color-text-primary": "#171a18",
+        "--ef-color-text-heading": "#202421",
+        "--ef-color-text-secondary": "#686d68",
+        "--ef-color-text-on-secondary-surface": "#3a403c",
+        "--ef-color-text-inverse": "#f2efe7",
+        "--ef-color-surface-primary": "#f2efe7",
+        "--ef-color-surface-secondary": "#e3e0d7",
+        "--ef-color-surface-inverse": "#202421",
+        "--ef-color-surface-inverse-secondary": "#3a403c",
+        "--ef-color-accent-primary": "#905831",
+        "--ef-color-accent-secondary": "#47756b",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#e3e0d7",
+        "--ef-color-border-functional": "#3a403c",
+        "--ef-color-focus-ring": "#171a18",
+        "--ef-color-focus-gap": "#f2efe7",
+        "--ef-color-control-track": "#686d68",
+        "--ef-color-control-thumb": "#f2efe7",
+        "--ef-color-control-active": "#905831"
+      }
+    },
+    {
+      "kind": "brand",
+      "id": "echelon/dark",
+      "selector": "[data-ef-brand=\"echelon\"][data-ef-theme=\"dark\"]",
+      "source": "brands/echelon.brand.json",
+      "values": {
+        "--ef-color-text-primary": "#f2efe7",
+        "--ef-color-text-heading": "#f2efe7",
+        "--ef-color-text-secondary": "#e3e0d7",
+        "--ef-color-text-on-secondary-surface": "#f2efe7",
+        "--ef-color-text-inverse": "#171a18",
+        "--ef-color-surface-primary": "#171a18",
+        "--ef-color-surface-secondary": "#202421",
+        "--ef-color-surface-inverse": "#f2efe7",
+        "--ef-color-surface-inverse-secondary": "#e3e0d7",
+        "--ef-color-accent-primary": "#a87e5e",
+        "--ef-color-accent-secondary": "#698d84",
+        "--ef-color-status-success": "#8cc49f",
+        "--ef-color-status-warning": "#ddb266",
+        "--ef-color-status-danger": "#ef9a8b",
+        "--ef-color-status-info": "#90b9dc",
+        "--ef-color-border-subtle": "#3a403c",
+        "--ef-color-border-functional": "#e3e0d7",
+        "--ef-color-focus-ring": "#f2efe7",
+        "--ef-color-focus-gap": "#171a18",
+        "--ef-color-control-track": "#686d68",
+        "--ef-color-control-thumb": "#f2efe7",
+        "--ef-color-control-active": "#a87e5e"
+      }
+    },
+    {
+      "kind": "brand",
+      "id": "example-harbor/light",
+      "selector": "[data-ef-brand=\"example-harbor\"][data-ef-theme=\"light\"]",
+      "source": "brands/example-harbor.brand.json",
+      "values": {
+        "--ef-color-text-primary": "#15212a",
+        "--ef-color-text-heading": "#15212a",
+        "--ef-color-text-secondary": "#43515b",
+        "--ef-color-text-on-secondary-surface": "#24333d",
+        "--ef-color-text-inverse": "#f7f9fb",
+        "--ef-color-surface-primary": "#f7f9fb",
+        "--ef-color-surface-secondary": "#e4ebf0",
+        "--ef-color-surface-inverse": "#20384a",
+        "--ef-color-surface-inverse-secondary": "#31556f",
+        "--ef-color-accent-primary": "#7a4a00",
+        "--ef-color-accent-secondary": "#275d6b",
+        "--ef-color-status-success": "#2e6a45",
+        "--ef-color-status-warning": "#86560f",
+        "--ef-color-status-danger": "#a13a2c",
+        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-border-subtle": "#b7c5cf",
+        "--ef-color-border-functional": "#43515b",
+        "--ef-color-focus-ring": "#15212a",
+        "--ef-color-focus-gap": "#f7f9fb",
+        "--ef-color-control-track": "#5d6d78",
+        "--ef-color-control-thumb": "#f7f9fb",
+        "--ef-color-control-active": "#7a4a00"
+      }
+    },
+    {
+      "kind": "brand",
+      "id": "example-harbor/dark",
+      "selector": "[data-ef-brand=\"example-harbor\"][data-ef-theme=\"dark\"]",
+      "source": "brands/example-harbor.brand.json",
+      "values": {
+        "--ef-color-text-primary": "#f7f9fb",
+        "--ef-color-text-heading": "#f7f9fb",
+        "--ef-color-text-secondary": "#dbe6ec",
+        "--ef-color-text-on-secondary-surface": "#f7f9fb",
+        "--ef-color-text-inverse": "#101820",
+        "--ef-color-surface-primary": "#101820",
+        "--ef-color-surface-secondary": "#20303d",
+        "--ef-color-surface-inverse": "#f7f9fb",
+        "--ef-color-surface-inverse-secondary": "#dbe6ec",
+        "--ef-color-accent-primary": "#d7a85b",
+        "--ef-color-accent-secondary": "#6eb3c0",
+        "--ef-color-status-success": "#8cc49f",
+        "--ef-color-status-warning": "#ddb266",
+        "--ef-color-status-danger": "#ef9a8b",
+        "--ef-color-status-info": "#90b9dc",
+        "--ef-color-border-subtle": "#40515f",
+        "--ef-color-border-functional": "#dbe6ec",
+        "--ef-color-focus-ring": "#f7f9fb",
+        "--ef-color-focus-gap": "#101820",
+        "--ef-color-control-track": "#60717e",
+        "--ef-color-control-thumb": "#f7f9fb",
+        "--ef-color-control-active": "#d7a85b"
+      }
+    }
+  ]
+}

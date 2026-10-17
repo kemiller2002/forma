@@ -91,7 +91,7 @@
     --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
     display: block;
     padding: var(--ef-primitive-spacing-3, 0.75rem);
-    border-inline-start: 0.25rem solid var(--ef-color-status-success, #2f6f4e);
+    border-inline-start: 0.25rem solid var(--ef-color-status-success, #2e6a45);
     background: var(--ef-color-surface-secondary, #e3e0d7);
     color: var(--ef-color-text-on-secondary-surface, #3a403c);
     font-weight: 650;
@@ -1228,6 +1228,10 @@
     line-height: 0;
   }
 
+  .ef-status-lozenge[data-state="ok"] { color: var(--ef-color-status-success, #2e6a45); border-inline-start-width: 0.25rem; }
+  .ef-status-lozenge[data-state="attention"] { color: var(--ef-color-status-warning, #86560f); border-inline-start-width: 0.25rem; }
+  .ef-status-lozenge[data-state="unknown"] { color: var(--ef-color-status-info, #2d5f86); border-inline-start-width: 0.25rem; }
+  .ef-status-lozenge[data-state="blocked"] { color: var(--ef-color-status-danger, #a13a2c); border-inline-start-width: 0.25rem; }
   .ef-status-lozenge[data-state="ok"]::before { content: "✓"; }
   .ef-status-lozenge[data-state="attention"]::before { content: "!"; }
   .ef-status-lozenge[data-state="unknown"]::before { content: "?"; }

@@ -1,6 +1,6 @@
 {
   "name": "@echelon-foundry/design-system",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": false,
   "type": "module",
   "description": "Zero-runtime HTML and CSS design system for Echelon Foundry applications.",
@@ -23,6 +23,8 @@
     "./marketing.css": "./dist/marketing.css",
     "./marketing/*": "./dist/marketing/*",
     "./tokens.json": "./tokens/echelon.tokens.json",
+    "./color-contract": "./tools/color-contract/index.mjs",
+    "./contracts/color-contract.json": "./contracts/color-contract.json",
     "./figma/components.json": "./figma/component-contracts.json",
     "./contracts/diagram-presentation.json": "./contracts/diagram-presentation.json",
     "./workflow/forma-workflow.schema.json": "./schemas/workflow/1.0/forma-workflow.schema.json",
@@ -42,6 +44,9 @@
     "docs/BRANDING.md",
     "docs/MARKETING-SITES.md",
     "tokens/echelon.tokens.json",
+    "tools/color-contract",
+    "contracts/color-contract.json",
+    "docs/COLOR.md",
     "figma/component-contracts.json",
     "contracts/diagram-presentation.json",
     "schemas/workflow/1.0/forma-workflow.schema.json",
@@ -62,15 +67,16 @@
     "clean": "node tools/clean.mjs",
     "tokens:build": "dotnet run --project tools/TokenCompiler/TokenCompiler.fsproj -- tokens/echelon.tokens.json dist/tokens.css",
     "assets:build": "node tools/build-assets.mjs",
-    "build": "npm run clean && npm run tokens:build && npm run brands:build && npm run marketing:theme && npm run assets:build && npm run marketing:build && npm run example:install",
+    "build": "npm run clean && npm run tokens:build && npm run brands:build && npm run color:build && npm run marketing:theme && npm run assets:build && npm run marketing:build && npm run example:install",
     "test:tokens": "node --test tests/token-compiler.test.mjs",
     "test:browser": "playwright test",
     "test:a11y": "playwright test tests/browser/accessibility.spec.mjs",
     "test:runtime": "node --test tests/zero-runtime.test.mjs",
     "test:design": "node --test tests/design-contract.test.mjs",
+    "test:color": "node --test tests/color-contract.test.mjs",
     "motion:audit": "node tools/motion-audit.mjs",
     "test:motion": "node --test tests/motion-audit.test.mjs tests/motion-gate.test.mjs && node tools/motion-audit.mjs --strict",
-    "check": "npm run build && npm run icons:check && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:design && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:figma && npm run test:css && npm run test:package && npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:browser",
+    "check": "npm run build && npm run icons:check && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:design && npm run test:color && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:figma && npm run test:css && npm run test:package && npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:browser",
     "site:build": "npm run build && node tools/build-site.mjs",
     "site:test": "node --test tests/site-build.test.mjs tests/catalog-coverage.test.mjs tests/icon-docs.test.mjs tests/catalog-interaction.test.mjs",
     "site:check": "npm run site:build && npm run catalog:check && npm run site:test && npm run site:mobile",
@@ -80,6 +86,7 @@
     "test:css": "node --test tests/css-source.test.mjs tests/dist-css.test.mjs tests/contrast-pairs.test.mjs tests/diagram-contract.test.mjs",
     "test:contrast": "node --test tests/contrast-pairs.test.mjs && playwright test tests/browser/pattern-contrast.spec.mjs --project=chromium",
     "brands:build": "dotnet run --project tools/BrandCompiler/BrandCompiler.fsproj -- brands dist/brands",
+    "color:build": "node tools/color-contract/build.mjs",
     "test:brands": "node --test tests/brand-compiler.test.mjs",
     "test:character-grid": "node --test tests/character-grid.test.mjs",
     "marketing:theme": "dotnet run --project tools/TokenCompiler/TokenCompiler.fsproj -- themes/echelon/marketing.tokens.json build/marketing/echelon-marketing.tokens.css --reference tokens/echelon.tokens.json",
@@ -105,6 +112,9 @@
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
     "@playwright/test": "1.63.0"
+  },
+  "bin": {
+    "forma-color": "./tools/color-contract/cli.mjs"
   },
   "publishConfig": {
     "access": "public",

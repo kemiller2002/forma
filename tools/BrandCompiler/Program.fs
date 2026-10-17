@@ -124,8 +124,8 @@ let semanticPaths =
       "color.control.thumb", [ "color"; "control"; "thumb" ]
       "color.control.active", [ "color"; "control"; "active" ] ]
 
-// Extended marketing roles (requirements/MARKETING-PRESENTATION.md). Optional,
-// so existing manifests stay valid; each one present is contrast-gated.
+// Additive roles remain optional in third-party 1.0 manifests. Omitted roles
+// inherit from the active core theme; shipped brands override all public roles.
 let optionalSemanticPaths =
     [ "color.surface.elevated", [ "color"; "surface"; "elevated" ]
       "color.text.muted", [ "color"; "text"; "muted" ]

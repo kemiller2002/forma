@@ -23,6 +23,7 @@
         "text": {"primary":"#15212a","heading":"#15212a","secondary":"#43515b","on-secondary-surface":"#24333d","inverse":"#f7f9fb"},
         "surface": {"primary":"#f7f9fb","secondary":"#e4ebf0","inverse":"#20384a","inverse-secondary":"#31556f"},
         "accent": {"primary":"#7a4a00","secondary":"#275d6b"},
+        "status": {"success":"#2e6a45","warning":"#86560f","danger":"#a13a2c","info":"#2d5f86"},
         "border": {"subtle":"#b7c5cf","functional":"#43515b"},
         "focus": {"ring":"#15212a","gap":"#f7f9fb"},
         "control": {"track":"#5d6d78","thumb":"#f7f9fb","active":"#7a4a00"}
@@ -33,6 +34,7 @@
         "text": {"primary":"#f7f9fb","heading":"#f7f9fb","secondary":"#dbe6ec","on-secondary-surface":"#f7f9fb","inverse":"#101820"},
         "surface": {"primary":"#101820","secondary":"#20303d","inverse":"#f7f9fb","inverse-secondary":"#dbe6ec"},
         "accent": {"primary":"#d7a85b","secondary":"#6eb3c0"},
+        "status": {"success":"#8cc49f","warning":"#ddb266","danger":"#ef9a8b","info":"#90b9dc"},
         "border": {"subtle":"#40515f","functional":"#dbe6ec"},
         "focus": {"ring":"#f7f9fb","gap":"#101820"},
         "control": {"track":"#60717e","thumb":"#f7f9fb","active":"#d7a85b"}

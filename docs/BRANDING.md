@@ -125,9 +125,12 @@ Ordo / domain
 
 ## Accessibility
 
-The brand compiler currently validates the relationships that are most likely to
-make a branded interface unreadable: primary and secondary text, text on
-secondary surfaces, inverse text, primary/secondary accents, and focus rings.
+The brand compiler validates the relationships that are most likely to make a
+branded interface unreadable: primary and secondary text, text on secondary
+surfaces, inverse text, primary/secondary accents, focus rings, and every
+declared status role. Shipped brands override success, warning, danger, and
+info; a third-party 1.0 manifest may omit them and inherit the active core
+theme, preserving schema compatibility.
 
 A failed brand does not get a best-effort output. Fix the manifest and compile
 again.

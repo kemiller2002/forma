@@ -2,7 +2,7 @@
 id: RQ-FORMA-2026-A003
 title: Semantic Color Pairings and Rendered Validation
 status: draft
-version: 0.1.0
+version: 0.2.0
 owners:
   - design-system
 created: 2026-10-16
@@ -11,6 +11,8 @@ related_documents:
   - research/requirements/RQ-FORMA-2026-A002--public-semantic-color-contract.md
   - requirements/WHITE-LABEL-AND-SKINNING.md
   - requirements/QUALITY-AND-DISTRIBUTION.md
+  - docs/COLOR.md
+  - contracts/color-contract.json
 tags: [color, themes, contrast, forced-colors, visual-regression, accessibility]
 derived_from: [INPUT-a8ac4002e79dce7d]
 provenance:
@@ -25,6 +27,16 @@ provenance:
         model: unknown
         runtime: codex
       reason: "Ingest FORMA-COLOR-002 as a draft canonical requirement preserving its dependency and human-judgment boundary"
+    EXE-20261016T214249263Z-6b460da6:
+      operations: [modified]
+      at: 2026-10-16T21:50:52.561Z
+      actor:
+        kind: agent
+        id: openai/codex
+        provider: openai
+        model: unknown
+        runtime: codex
+      reason: "Implement semantic pairings, cross-theme status roles, and rendered non-color accessibility evidence"
 ---
 
 # Semantic Color Pairings and Rendered Validation
@@ -53,12 +65,12 @@ It depends on the public, release-pinned token contract in `RQ-FORMA-2026-A002` 
 - At least one negative test proves that a contrast calculation alone cannot produce a false success for semantic comprehension.
 - Existing contrast, brand, theme, and accessibility checks are reused and extended, not replaced.
 
-## Dependencies and unknowns
+## Resolved implementation decisions
 
-- `RQ-FORMA-2026-A002` must define the public role vocabulary before this requirement can certify fixtures against it.
+- `RQ-FORMA-2026-A002` defines the public vocabulary in the generated release-pinned contract.
 - Preserve the brand/skin architecture in issue #22, forced-colors work in issue #55, and the Visual Engineering controlled-theme evaluation tracked by visual-engineering issue #14.
-- Exact simulation tooling, fixture coverage boundaries, and the product-review evidence format remain implementation decisions. Automated simulation is screening evidence, not proof of human perception or aesthetic quality.
+- The executable fixture composes existing navigation, status, callout, form, table, disabled-state, and focus patterns plus a labelled/patterned application-owned chart. Browser tests cover light, dark, forced colors, computed contrast, keyboard focus, grayscale and protan/deutan/tritan matrix screening. Automated simulation remains screening evidence, not proof of human perception or aesthetic quality.
 
 ## Implementation work
 
-Tracked by GitHub issue #160 and repository work item `GH-160`. Implementation and visual approval remain pending.
+Tracked by GitHub issue #160 and repository work item `GH-160`. Forma 0.9.0 implements the role table, public status vocabulary, rendered fixture, theme/brand contrast gates, non-hue assertions, dark-pair mismatch fixture, and contrast-only semantic-comprehension refusal. Independent review of this still-draft requirement and product-level aesthetic judgment remains pending.

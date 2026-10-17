@@ -31,7 +31,22 @@ test("canonical token source compiles deterministically", () => {
   assert.equal(one, two);
   assert.match(one, /--ef-color-accent-primary: #905831/);
   assert.match(one, /--ef-color-text-on-secondary-surface: #3a403c/);
+  assert.match(one, /--ef-color-status-danger: #a13a2c/);
   assert.match(one, /--ef-primitive-motion-duration-standard: 180ms/);
+});
+
+test("unsafe status pairing is rejected", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-tokens-"));
+  const source = path.join(dir, "unsafe-status.json");
+  const output = path.join(dir, "unsafe-status.css");
+  const data = JSON.parse(fs.readFileSync(canonicalPath, "utf8"));
+
+  data.semantic.dark.color.status.danger.$value = "{primitive.color.status-danger}";
+  fs.writeFileSync(source, JSON.stringify(data, null, 2));
+
+  const result = runCompiler(source, output);
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /dark danger status contrast/i);
 });
 
 test("unsafe dark accent pairing is rejected", () => {

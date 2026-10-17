@@ -55,6 +55,22 @@ More selective imports are available:
 Canonical HTML patterns are exported under `patterns/*` and documented at
 https://forma.echelonfoundry.com/.
 
+## Semantic color validation
+
+Forma 0.9.0 publishes `contracts/color-contract.json` and the build-time
+`color-contract` API / `forma-color` CLI. Validate CSS against the artifact
+from the exact package version the application pins:
+
+```bash
+npx forma-color validate src/**/*.css
+```
+
+The validator rejects unknown `--ef-color-*` names and reserved internal color
+variables even when they include literal fallbacks, and ignores
+application-owned custom properties. See `docs/COLOR.md`
+for supported pairings, forced-colors behavior, data-visualization boundaries,
+and the Summa migration map.
+
 ## Design by Construction forms
 
 Forma 0.8.0 adds an optional, build-time `forma.design/1.0.0` contract for
@@ -116,6 +132,13 @@ contract are package files:
 Static workflow HTML needs only `tokens.css`, `foundations.css` and
 `components.css`. An interactive viewer or editor needs the separate opt-in
 package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
+
+## 0.9.0
+
+Minor upgrade from 0.8.0. It adds the public semantic color manifest,
+validator, four cross-theme status roles, and rendered non-hue evidence. No
+existing token, class, component, or icon was removed. Brand manifest schema
+1.0 remains compatible because status overrides are optional.
 
 ## 0.8.0
 
