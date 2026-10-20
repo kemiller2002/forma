@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-17T13:49:48.000Z",
+  "updatedAt": "2026-10-20T08:03:21.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -2391,6 +2391,40 @@
       },
       "completedAt": "2026-10-17T13:49:48.000Z",
       "conclusion": "Semantic role pairings, all-theme and shipped-brand status colors, rendered light/dark/forced-colors coverage, non-hue cues, and application visualization boundaries are implemented; PR #164 passed every GitHub check on b2b47f9."
+    },
+    {
+      "id": "WI-0031",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "research/requirements/RQ-FORMA-2026-A001--design-by-construction.md"
+        },
+        {
+          "type": "implementation",
+          "path": "packages/conformance/src/index.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/design-contract.test.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/site-browser/form-contract.spec.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/site-browser/catalog-interactions.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-20T08:03:21.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261020T075840560Z-7215eb81"
+      ],
+      "completedAt": "2026-10-20T08:03:21.000Z",
+      "conclusion": "PRs #158 and #162 are merged and authoritative; their source branches are fully contained in main, while feat/design-by-construction-forms is a superseded implementation-identical predecessor with older Praxis records. Exact main commit 18e6ff7 passed targeted local validation, 532 conformance checks, and all GitHub checks; no code gap required implementation."
     }
   ]
 }

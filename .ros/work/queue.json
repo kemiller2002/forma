@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 31,
+  "nextSeq": 32,
   "items": [
     {
       "id": "WI-0001",
@@ -823,6 +823,31 @@
       },
       "source": "github-issue",
       "sourceReference": "https://github.com/kemiller2002/forma/issues/160"
+    },
+    {
+      "id": "WI-0031",
+      "title": "Reconcile Forma Design by Construction and UI conformance work",
+      "description": "Audit PRs 158 and 162 plus their four source branches by Git ancestry and tree diffs; verify the authoritative merged implementations, Praxis traceability, affected tests, exact-main CI, and merge disposition without reimplementing completed work.",
+      "tags": [
+        "reconciliation",
+        "design-by-construction",
+        "ui-conformance"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-10-20T07:58:25.878Z",
+      "updatedAt": "2026-10-20T08:03:21.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "manual",
+      "sourceReference": null
     }
   ]
 }
