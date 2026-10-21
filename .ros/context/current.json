@@ -2435,7 +2435,27 @@
       "updatedAt": "2026-10-21T18:10:14.000Z",
       "telemetryExecutionIds": [
         "EXE-20261021T181014746Z-fc9e184b"
-      ]
+      ],
+      "latestCheckpoint": {
+        "id": "fca78415b5fb188291abd309",
+        "recordedAt": "2026-10-21T18:40:52.000Z",
+        "executionId": "EXE-20261021T181014746Z-fc9e184b",
+        "repository": "echelon-design-system",
+        "branch": "claude/rlp-001-relational-physics-4urqm8",
+        "commit": "5f65e8993869385078bf61c3909264f5ba937cbd",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/rlp-001-relational-physics-4urqm8",
+        "remoteCommit": "5f65e8993869385078bf61c3909264f5ba937cbd",
+        "summary": "Pre-registration, engine, harness, tasks and arms committed",
+        "nextAction": "Run 12-attempt pilot",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      }
     }
   ]
 }
