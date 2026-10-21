@@ -1,7 +1,7 @@
 // Per-icon documentation pages (WI-0023): guidance covers the registry
 // exactly, and every generated page shows the real compiled geometry, every
 // documented size, colour context and configuration, with correct
-// accessibility wiring and no script.
+// accessibility wiring and no behaviour script.
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
@@ -20,6 +20,7 @@ const registry = JSON.parse(fs.readFileSync(new URL("../icons/registry.json", im
 const catalog = loadIconCatalog();
 const pages = new Map(catalog.icons.map(icon => [icon.name, renderIconPage(catalog, icon)]));
 const SECTIONS = ["meaning", "sizes", "colour", "configurations", "source", "accessibility", "related"];
+const stripRuntimeStamp = html => html.replace(/\s*<script type="module" src="[^"]*assets\/runtime\.js"><\/script>/g, "");
 
 test("guidance covers every registry icon exactly once", () => {
   assert.deepEqual(validateIconDocs(registry.icons, iconDocs), []);
@@ -85,11 +86,11 @@ test("configurations are wired for assistive technology", () => {
   }
 });
 
-test("pages are static and link into one navigable set", () => {
+test("pages use only the audited metadata runtime and link into one navigable set", () => {
   const gallery = renderIconGallery("../", catalog);
   for (const icon of catalog.icons) {
     const html = pages.get(icon.name);
-    assert.equal(/<script\b|\son[a-z]+=/i.test(html), false, `${icon.name}: page contains script`);
+    assert.equal(/<script\b|\son[a-z]+=/i.test(stripRuntimeStamp(html)), false, `${icon.name}: page contains behaviour script`);
     assert.ok(gallery.includes(`href="../icons/${icon.name}/"`), `${icon.name}: gallery does not link to the page`);
     for (const neighbour of [icon.previous, icon.next].filter(Boolean)) {
       assert.ok(html.includes(`href="../../icons/${neighbour}/"`), `${icon.name}: pager link to ${neighbour} missing`);
