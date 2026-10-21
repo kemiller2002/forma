@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-21T14:16:01.000Z",
+  "updatedAt": "2026-10-21T14:17:24.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -2476,13 +2476,44 @@
     {
       "id": "WI-0033",
       "type": "task",
-      "state": "active",
-      "semanticState": "active",
-      "evidence": [],
-      "updatedAt": "2026-10-21T14:16:01.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tests/workflow-package.test.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/workflow-package.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-21T14:17:24.000Z",
       "telemetryExecutionIds": [
         "EXE-20261021T141608478Z-152bcab6"
-      ]
+      ],
+      "latestCheckpoint": {
+        "id": "382f8b337977d2ddac198c41",
+        "recordedAt": "2026-10-21T14:17:16.000Z",
+        "executionId": "EXE-20261021T141608478Z-152bcab6",
+        "repository": "echelon-design-system",
+        "branch": "feat/runtime-version-stamp",
+        "commit": "a0f92c3b9e031f6029c26cedc862abaee3b7c652",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "feat/runtime-version-stamp",
+        "remoteCommit": "a0f92c3b9e031f6029c26cedc862abaee3b7c652",
+        "summary": "Forma workflow package guardrail now permits exactly the audited dist/runtime.js stamp; exact CI command passes locally",
+        "nextAction": "Await exact-head CI on PR #166",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-21T14:17:24.000Z",
+      "conclusion": "The Forma workflow-package boundary now permits only the approved metadata runtime and still rejects every other distributed JavaScript or WebAssembly runtime."
     }
   ]
 }
