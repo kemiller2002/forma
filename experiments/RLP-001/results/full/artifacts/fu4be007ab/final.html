@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product cards with nested panels</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  .media{display:block;width:100%;height:auto;aspect-ratio:3/2}
+  .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--ef-primitive-spacing-1) var(--ef-primitive-spacing-3)}
+  .row span{overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+  <main class="ef-surface">
+<section class="ef-stack" data-rlp="section">
+  <h2 data-rlp="section-title">Recommended for your studio</h2>
+  <div class="ef-grid" style="--ef-grid-min: 16rem; align-items: start">
+    <article class="ef-surface ef-stack" data-rlp="card-a">
+      <img data-rlp="card-a-media" src="assets/placeholder.svg" alt="Desk lamp illustration" class="media">
+      <div class="ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+      <h3 data-rlp="card-a-title">Arc desk lamp</h3>
+      <p data-rlp="card-a-text">Warm, dimmable light.</p>
+      </div>
+      <div class="ef-surface ef-stack" data-rlp="card-a-specs" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+        <div class="row"><span data-rlp="card-a-spec-1-label">Price</span><span data-rlp="card-a-spec-1-value">$89</span></div>
+        <div class="row"><span data-rlp="card-a-spec-2-label">Ships</span><span data-rlp="card-a-spec-2-value">Tomorrow</span></div>
+      </div>
+      <div class="ef-actions" data-rlp="card-a-actions">
+        <button type="button" class="secondary" data-rlp="card-a-save">Save</button>
+        <button type="button" data-rlp="card-a-add">Add to cart</button>
+      </div>
+    </article>
+    <article class="ef-surface ef-stack" data-rlp="card-b">
+      <img data-rlp="card-b-media" src="assets/placeholder.svg" alt="Chair illustration" class="media">
+      <div class="ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+      <h3 data-rlp="card-b-title">Task chair</h3>
+      <p data-rlp="card-b-text">Adjustable lumbar support, breathable mesh, and armrests that move in four directions so long work sessions stay comfortable.</p>
+      </div>
+      <div class="ef-surface ef-stack" data-rlp="card-b-specs" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+        <div class="row"><span data-rlp="card-b-spec-1-label">Price</span><span data-rlp="card-b-spec-1-value">$420</span></div>
+        <div class="row"><span data-rlp="card-b-spec-2-label">Ships</span><span data-rlp="card-b-spec-2-value">In 2 weeks</span></div>
+      </div>
+      <div class="ef-actions" data-rlp="card-b-actions">
+        <button type="button" class="secondary" data-rlp="card-b-save">Save</button>
+        <button type="button" data-rlp="card-b-add">Add to cart</button>
+      </div>
+    </article>
+    <article class="ef-surface ef-stack" data-rlp="card-c">
+      <img data-rlp="card-c-media" src="assets/placeholder.svg" alt="Shelf illustration" class="media">
+      <div class="ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+      <h3 data-rlp="card-c-title">Modular shelf</h3>
+      <p data-rlp="card-c-text">Stackable units that grow with your collection.</p>
+      </div>
+      <div class="ef-surface ef-stack" data-rlp="card-c-specs" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+        <div class="row"><span data-rlp="card-c-spec-1-label">Price</span><span data-rlp="card-c-spec-1-value">$65 per unit</span></div>
+        <div class="row"><span data-rlp="card-c-spec-2-label">Ships</span><span data-rlp="card-c-spec-2-value">In 3 days</span></div>
+      </div>
+      <div class="ef-actions" data-rlp="card-c-actions">
+        <button type="button" class="secondary" data-rlp="card-c-save">Save</button>
+        <button type="button" data-rlp="card-c-add">Add to cart</button>
+      </div>
+    </article>
+  </div>
+</section>
+</main>
+</body>
+</html>
