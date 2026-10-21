@@ -42,5 +42,50 @@
       "RLP-001-H7"
     ],
     "title": "RLP-001: Relational layout physics — agent efficiency and correctness"
+  },
+  {
+    "author_agent": "anthropic/claude-code",
+    "created": "2026-10-21",
+    "derived_from": [
+      "EX-FORMA-2026-0001"
+    ],
+    "id": "EX-FORMA-2026-0002",
+    "inputs": [
+      "research/experiments/EX-FORMA-2026-0001--relational-layout-physics.md",
+      "experiments/RLP-001/results/pilot-3/GATES.md",
+      ".praxis/inbox/documents/2026-10-21-RLP-001-EXT-01.md"
+    ],
+    "outputs": [
+      "experiments/RLP-001/docs/EXTENSION-01.md",
+      "experiments/RLP-001/results/x1-pilot/",
+      "experiments/RLP-001/results/x1/"
+    ],
+    "path": "research/experiments/EX-FORMA-2026-0002--rlp-001-extension-layout-models.md",
+    "provenance": {
+      "contributions": {
+        "EXE-20261021T181014746Z-fc9e184b": {
+          "actor": {
+            "id": "anthropic/claude-code",
+            "kind": "agent",
+            "model": "unknown",
+            "provider": "anthropic",
+            "runtime": "claude-code"
+          },
+          "at": "2026-10-21T19:01:23.594Z",
+          "operations": [
+            "created"
+          ]
+        }
+      }
+    },
+    "related_theories": [],
+    "research_area": "agent-ui-construction",
+    "status": "proposed",
+    "tests_hypotheses": [
+      "RLP-001-X1-H1",
+      "RLP-001-X1-H2",
+      "RLP-001-X1-H3"
+    ],
+    "title": "RLP-001 extension 01: semantic, hierarchical and Gestalt layout models"
   }
 ]

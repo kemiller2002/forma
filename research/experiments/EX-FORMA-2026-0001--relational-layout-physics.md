@@ -152,3 +152,8 @@ Hypotheses RLP-001-H1…H7 to `research/hypotheses/` once results exist.
   handicapping Arm B. It now sits in the lowest cascade layer and is linked
   first. The pilot was rerun as `pilot-3`. Pilot runs 1 and 2 are reported
   as infrastructure-validation data, not as arm comparisons.
+- 2026-10-21, after pilot run 3 (all gates passed): a research extension was
+  registered as EX-FORMA-2026-0002 (`experiments/RLP-001/docs/EXTENSION-01.md`).
+  It adds exploratory variants (X1, hierarchy-derived relational layout) and
+  an arm-neutral Gestalt measure. This record's arms, hypotheses H1–H7,
+  metrics and protocol are unchanged.
