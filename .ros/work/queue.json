@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 33,
+  "nextSeq": 34,
   "items": [
     {
       "id": "WI-0001",
@@ -859,6 +859,27 @@
       "attachments": [],
       "createdAt": "2026-10-21T08:16:39.163Z",
       "updatedAt": "2026-10-21T14:02:23.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0033",
+      "title": "Align Forma workflow package guardrail with audited runtime metadata",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-10-21T14:15:59.826Z",
+      "updatedAt": "2026-10-21T14:16:01.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",

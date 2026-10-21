@@ -84,3 +84,4 @@
 | WI-0030 | Reconcile outstanding Forma repository items | complete |  | high |
 | WI-0031 | Reconcile Forma Design by Construction and UI conformance work | complete | reconciliation, design-by-construction, ui-conformance | high |
 | WI-0032 | Implement Forma runtime version registry and diagnostics | complete |  | medium |
+| WI-0033 | Align Forma workflow package guardrail with audited runtime metadata | ready |  | medium |
