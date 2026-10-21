@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 35,
+  "nextSeq": 36,
   "items": [
     {
       "id": "WI-0001",
@@ -901,6 +901,27 @@
       "attachments": [],
       "createdAt": "2026-10-21T14:35:24.284Z",
       "updatedAt": "2026-10-21T14:36:20.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0035",
+      "title": "Align Forma browser static guard with audited runtime metadata",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-10-21T19:20:17.005Z",
+      "updatedAt": "2026-10-21T19:20:30.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
