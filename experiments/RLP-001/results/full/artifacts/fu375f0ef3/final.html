@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment thread with dynamic content</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  body { padding: 1rem; }
+  .thread { max-width: 40rem; margin: 0 auto; padding: 1.25rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .thread h2 { margin: 0; }
+  .comments { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .comment { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
+  .avatar { width: 2.5rem; height: 2.5rem; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+  .content { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; min-width: 0; }
+  .content p { margin: 0; overflow-wrap: anywhere; }
+  .meta { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; align-items: baseline; }
+  .author { font-weight: 600; }
+  .time { font-size: 0.875em; opacity: 0.8; }
+  .content button { min-height: 2rem; min-width: 3rem; }
+  .thread > p[role="status"] { margin: 0; }
+  .composer { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; padding-top: 1.25rem; border-top: 1px solid #ddd; }
+  .composer label { display: block; }
+  .composer textarea { display: block; width: 100%; box-sizing: border-box; }
+  .composer .error { margin: 0; }
+  .composer button { min-height: 2.5rem; margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+  <section class="surface thread" data-rlp="thread">
+    <h2 data-rlp="title">Discussion</h2>
+    <ol class="comments" data-rlp="comments">
+      <li class="comment" data-rlp="comment-1">
+        <img class="avatar" data-rlp="comment-1-avatar" src="assets/placeholder.svg" alt="" width="40" height="40">
+        <div class="content">
+          <p class="meta"><span class="author" data-rlp="comment-1-author">Priya</span> <span class="time" data-rlp="comment-1-time">3 hours ago</span></p>
+          <p class="body" data-rlp="comment-1-body">Can we ship the migration behind a flag first?</p>
+          <button type="button" class="secondary" data-rlp="comment-1-reply" aria-label="Reply to Priya">Reply</button>
+        </div>
+      </li>
+      <li class="comment" data-rlp="comment-2">
+        <img class="avatar" data-rlp="comment-2-avatar" src="assets/placeholder.svg" alt="" width="40" height="40">
+        <div class="content">
+          <p class="meta"><span class="author" data-rlp="comment-2-author">Marcus</span> <span class="time" data-rlp="comment-2-time">2 hours ago</span></p>
+          <p class="body" data-rlp="comment-2-body">Agreed. I added a flag to the rollout plan.</p>
+          <button type="button" class="secondary" data-rlp="comment-2-reply" aria-label="Reply to Marcus">Reply</button>
+        </div>
+      </li>
+      <li class="comment" data-rlp="comment-3">
+        <img class="avatar" data-rlp="comment-3-avatar" src="assets/placeholder.svg" alt="" width="40" height="40">
+        <div class="content">
+          <p class="meta"><span class="author" data-rlp="comment-3-author">Lena</span> <span class="time" data-rlp="comment-3-time">1 hour ago</span></p>
+          <p class="body" data-rlp="comment-3-body">Looks good to me.</p>
+          <button type="button" class="secondary" data-rlp="comment-3-reply" aria-label="Reply to Lena">Reply</button>
+        </div>
+      </li>
+    </ol>
+    <p role="status" data-rlp="more-status">Loading earlier comments…</p>
+    <div class="composer">
+      <label for="composer-input" data-rlp="composer-label">Add a comment</label>
+      <textarea id="composer-input" data-rlp="composer-input" rows="3" aria-describedby="composer-error"></textarea>
+      <p id="composer-error" class="error" data-rlp="composer-error" hidden>Write a comment before posting.</p>
+      <button type="button" data-rlp="post">Post comment</button>
+    </div>
+  </section>
+</body>
+</html>

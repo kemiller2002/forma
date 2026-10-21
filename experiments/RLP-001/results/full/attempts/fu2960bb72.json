@@ -1,0 +1,442 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu2960bb72",
+ "taskId": "T07-nav-docs",
+ "category": "navigation",
+ "split": "dev",
+ "arm": "D",
+ "repetition": 2,
+ "executionOrder": 17,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:09:23.930Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 4,
+  "inputTokens": 197467,
+  "inputUncachedTokens": 8,
+  "cacheCreationTokens": 52716,
+  "cacheReadTokens": 144743,
+  "outputTokens": 65,
+  "totalTokens": 197532,
+  "toolCalls": 7,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 2,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 10630,
+  "toolTokens": null,
+  "durationMs": 20237,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:02:30.804Z",
+    "durationMs": 2342,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 1,
+  "standardByInvariant": {
+   "unexpected-shift": 1
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 1,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 37,
+       "evaluations": 93,
+       "iterations": 897,
+       "maxIterations": 40,
+       "unconverged": 0,
+       "measureCalls": 33,
+       "aborted": false,
+       "solveMs": 37.5,
+       "memoEntries": 39
+      },
+      "totalMs": 60.8000000002794,
+      "energy": 9.984487312413797e-9
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 37,
+       "evaluations": 100,
+       "iterations": 1175,
+       "maxIterations": 40,
+       "unconverged": 0,
+       "measureCalls": 43,
+       "aborted": false,
+       "solveMs": 33.6999999997206,
+       "memoEntries": 49
+      },
+      "totalMs": 36.799999999813735,
+      "energy": 8.80083338028953e-9
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 37,
+       "evaluations": 101,
+       "iterations": 2380,
+       "maxIterations": 47,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 48.90000000037253,
+       "memoEntries": 32
+      },
+      "totalMs": 51.60000000009313,
+      "energy": 7.452512385623794e-9
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 37,
+       "evaluations": 101,
+       "iterations": 2555,
+       "maxIterations": 52,
+       "unconverged": 0,
+       "measureCalls": 18,
+       "aborted": false,
+       "solveMs": 56.40000000037253,
+       "memoEntries": 24
+      },
+      "totalMs": 61.10000000009313,
+      "energy": 9.280208056543507e-9
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 37,
+       "evaluations": 101,
+       "iterations": 2731,
+       "maxIterations": 56,
+       "unconverged": 0,
+       "measureCalls": 11,
+       "aborted": false,
+       "solveMs": 65.20000000018626,
+       "memoEntries": 17
+      },
+      "totalMs": 70,
+      "energy": 1.2280463082272014e-8
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 1,
+  "standardByInvariant": {
+   "unexpected-shift": 1
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 1,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 37,
+       "evaluations": 93,
+       "iterations": 897,
+       "maxIterations": 40,
+       "unconverged": 0,
+       "measureCalls": 33,
+       "aborted": false,
+       "solveMs": 25.399999999906868,
+       "memoEntries": 39
+      },
+      "totalMs": 27.5,
+      "energy": 9.984487312413797e-9
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 37,
+       "evaluations": 100,
+       "iterations": 1175,
+       "maxIterations": 40,
+       "unconverged": 0,
+       "measureCalls": 43,
+       "aborted": false,
+       "solveMs": 100.60000000009313,
+       "memoEntries": 49
+      },
+      "totalMs": 107.8000000002794,
+      "energy": 8.80083338028953e-9
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 37,
+       "evaluations": 101,
+       "iterations": 2380,
+       "maxIterations": 47,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 46.10000000009313,
+       "memoEntries": 32
+      },
+      "totalMs": 48.1999999997206,
+      "energy": 7.452512385623794e-9
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 37,
+       "evaluations": 101,
+       "iterations": 2555,
+       "maxIterations": 52,
+       "unconverged": 0,
+       "measureCalls": 18,
+       "aborted": false,
+       "solveMs": 54.39999999990687,
+       "memoEntries": 24
+      },
+      "totalMs": 56.700000000186265,
+      "energy": 9.280208056543507e-9
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 37,
+       "evaluations": 101,
+       "iterations": 2731,
+       "maxIterations": 56,
+       "unconverged": 0,
+       "measureCalls": 11,
+       "aborted": false,
+       "solveMs": 95.5,
+       "memoEntries": 17
+      },
+      "totalMs": 97.5,
+      "energy": 1.2280463082272014e-8
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 13,
+  "derived": 16,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 13,
+  "rawStatements": {
+   "explicit": 22,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 13,
+  "byCategory": {
+   "explicit": {
+    "padding": 1,
+    "margin": 3,
+    "alignment": 2,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 2,
+    "dimension": 3,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 4,
+    "alignment": 4,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 4,
+    "dimension": 4,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:link-sdks",
+    "invariant": "unexpected-shift",
+    "element": "search-label",
+    "expected": "unchanged (above link-sdks)",
+    "observed": "moved 93.61px",
+    "relationship": "search-label ↑ link-sdks"
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:link-sdks",
+    "invariant": "unexpected-shift",
+    "element": "search-label",
+    "expected": "unchanged (above link-sdks)",
+    "observed": "moved 93.61px",
+    "relationship": "search-label ↑ link-sdks"
+   }
+  ]
+ }
+}

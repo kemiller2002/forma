@@ -137,7 +137,11 @@ const summarize = result => ({
 // reported instead of looping.
 const MAX_RESOLVES_PER_FRAME = 12;
 
-export const mount = (root, arm) => {
+// `transform` rewrites the raw description before resolution (identity for
+// Arms C and D; the X1 extension derives spacing from structure).
+const identity = raw => ({ raw, diagnostics: [] });
+
+export const mount = (root, arm, transform = identity) => {
   const state = { revision: 0, perFrame: 0, frameScheduled: false, pending: false, halted: false, lastWidth: -1, lastRem: -1, history: [] };
   const remPx = () => px(getComputedStyle(document.documentElement).fontSize);
   const run = reason => {
@@ -149,13 +153,15 @@ export const mount = (root, arm) => {
       requestAnimationFrame(() => { state.perFrame = 0; state.frameScheduled = false; });
     }
     const started = performance.now();
-    const raw = snapshot(root);
+    const transformed = transform(snapshot(root));
+    const raw = transformed.raw;
     const width = root.getBoundingClientRect().width;
     const result = resolve(arm, raw, width, { remPx: remPx(), now: () => performance.now() });
     const oscillating = state.perFrame > MAX_RESOLVES_PER_FRAME;
     const diagnostics = [
       ...result.diagnostics,
       ...bareTextIssues(raw),
+      ...transformed.diagnostics,
       ...(oscillating ? [diagnostic("oscillation", raw.key, `more than ${MAX_RESOLVES_PER_FRAME} resolves in one frame; re-resolution halted until content changes`)] : [])
     ];
     const final = { ...result, diagnostics, status: statusOf(diagnostics) };
@@ -201,9 +207,9 @@ export const mount = (root, arm) => {
   };
 };
 
-export const mountAll = arm => {
+export const mountAll = (arm, transform = identity) => {
   const roots = [...document.querySelectorAll("[data-rl-root]")];
-  const mounted = roots.map(root => mount(root, arm));
+  const mounted = roots.map(root => mount(root, arm, transform));
   window.__rlp = Object.freeze({
     arm,
     roots: mounted,

@@ -1,0 +1,258 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fua4a628f8",
+ "taskId": "T08-nav-workspace",
+ "category": "navigation",
+ "split": "heldout",
+ "arm": "B",
+ "repetition": 3,
+ "executionOrder": 13,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:08:16.796Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 250416,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 53263,
+  "cacheReadTokens": 197143,
+  "outputTokens": 62,
+  "totalTokens": 250478,
+  "toolCalls": 8,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 9689,
+  "toolTokens": null,
+  "durationMs": 44470,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:02:36.570Z",
+    "durationMs": 8025,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:02:55.293Z",
+    "durationMs": 2094,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 6,
+  "standardByInvariant": {
+   "reading-order": 6
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1,
+   "font-scale": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 2
+  },
+  "responsiveFailureViewports": [
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 12,
+  "derived": 13,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 12,
+  "rawStatements": {
+   "explicit": 15,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 21,
+  "byCategory": {
+   "explicit": {
+    "padding": 3,
+    "margin": 2,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 5,
+    "responsive": 1,
+    "dimension": 1,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 1,
+    "margin": 3,
+    "alignment": 3,
+    "positioning": 0,
+    "grouping": 3,
+    "responsive": 3,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "section-6 → new",
+    "expected": "new after section-6",
+    "observed": "new at 597.67,90.59 129.33×48.38, section-6 at 117.48,200.56 77.27×33.59",
+    "relationship": "section-6 → new",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:heading",
+    "invariant": "reading-order",
+    "element": "section-6 → new",
+    "expected": "new after section-6",
+    "observed": "new at 597.67,90.59 129.33×48.38, section-6 at 117.48,209.28 77.27×33.59",
+    "relationship": "section-6 → new",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "section-6 → new",
+    "expected": "new after section-6",
+    "observed": "new at 853.67,90.59 129.33×48.38, section-6 at 752.69,154.97 77.27×33.59",
+    "relationship": "section-6 → new",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:heading",
+    "invariant": "reading-order",
+    "element": "section-6 → new",
+    "expected": "new after section-6",
+    "observed": "new at 853.67,90.59 129.33×48.38, section-6 at 752.69,154.97 77.27×33.59",
+    "relationship": "section-6 → new",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "section-6 → new",
+    "expected": "new after section-6",
+    "observed": "new at 1269.67,90.59 129.33×48.38, section-6 at 752.69,154.97 77.27×33.59",
+    "relationship": "section-6 → new",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:heading",
+    "invariant": "reading-order",
+    "element": "section-6 → new",
+    "expected": "new after section-6",
+    "observed": "new at 1269.67,90.59 129.33×48.38, section-6 at 752.69,154.97 77.27×33.59",
+    "relationship": "section-6 → new",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "section-6 → new",
+    "expected": "new after section-6",
+    "observed": "new at 1269.67,90.59 129.33×48.38, section-6 at 1020.91,154.97 77.27×33.59",
+    "relationship": "section-6 → new",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "section-6 → new",
+    "expected": "new after section-6",
+    "observed": "new at 470.36,179.38 256.64×94.78, section-6 at 41,451.97 138.52×59.19",
+    "relationship": "section-6 → new",
+    "fontScale": 2
+   }
+  ],
+  "final": []
+ }
+}

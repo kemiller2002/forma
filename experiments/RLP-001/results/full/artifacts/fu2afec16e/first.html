@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operations dashboard</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  main { padding: var(--ef-primitive-spacing-5); max-width: 90rem; margin-inline: auto; }
+  .tiles { grid-template-columns: 1fr; }
+  @media (min-width: 36rem) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .panels { align-items: flex-start; }
+  .tile-value { font-size: 1.75rem; font-weight: 700; margin: 0; }
+  .tile-label, .tile-delta { margin: 0; }
+  .alert-list { list-style: none; margin: 0; padding: 0; }
+  .alert-list li { overflow-wrap: anywhere; }
+  .requests-table { width: 100%; border-collapse: collapse; }
+  .requests-table th, .requests-table td { text-align: start; padding: var(--ef-primitive-spacing-2) var(--ef-primitive-spacing-3); white-space: nowrap; }
+  .requests-table th:not(:first-child), .requests-table td:not(:first-child) { text-align: end; }
+  h1, h2 { margin: 0; }
+  p { margin: 0; }
+</style>
+</head>
+<body>
+  <main data-rlp="dashboard" class="ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-5)">
+    <header data-rlp="header" class="ef-cluster" style="justify-content: space-between">
+      <div class="ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-1)">
+        <h1 data-rlp="title">Service health</h1>
+        <p data-rlp="period">Last 24 hours</p>
+      </div>
+      <button type="button" class="secondary" data-rlp="refresh">Refresh</button>
+    </header>
+
+    <div data-rlp="tiles" class="ef-grid tiles">
+      <article data-rlp="tile-uptime" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+        <p class="tile-label" data-rlp="tile-uptime-label">Uptime</p>
+        <p class="tile-value" data-rlp="tile-uptime-value">99.98%</p>
+        <p class="tile-delta" data-rlp="tile-uptime-delta">+0.01%</p>
+      </article>
+      <article data-rlp="tile-latency" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+        <p class="tile-label" data-rlp="tile-latency-label">Median latency</p>
+        <p class="tile-value" data-rlp="tile-latency-value">182 ms</p>
+        <p class="tile-delta" data-rlp="tile-latency-delta">−12 ms</p>
+      </article>
+      <article data-rlp="tile-errors" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+        <p class="tile-label" data-rlp="tile-errors-label">Error rate</p>
+        <p class="tile-value" data-rlp="tile-errors-value">0.4%</p>
+        <p class="tile-delta" data-rlp="tile-errors-delta">+0.1%</p>
+      </article>
+      <article data-rlp="tile-traffic" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+        <p class="tile-label" data-rlp="tile-traffic-label">Requests</p>
+        <p class="tile-value" data-rlp="tile-traffic-value">1.2 M</p>
+        <p class="tile-delta" data-rlp="tile-traffic-delta">+8%</p>
+      </article>
+    </div>
+
+    <div class="ef-switcher panels">
+      <section data-rlp="requests" class="ef-surface ef-stack ef-switcher__primary" aria-labelledby="requests-h">
+        <h2 id="requests-h" data-rlp="requests-title">Slowest endpoints</h2>
+        <div class="ef-bounded-overflow" tabindex="0" role="region" aria-labelledby="requests-h">
+          <table data-rlp="requests-table" class="requests-table">
+            <thead><tr><th scope="col">Endpoint</th><th scope="col">Calls</th><th scope="col">p95</th><th scope="col">Errors</th></tr></thead>
+            <tbody>
+              <tr><td>/api/search</td><td>41,200</td><td>640 ms</td><td>0.2%</td></tr>
+              <tr><td>/api/checkout</td><td>8,930</td><td>512 ms</td><td>1.1%</td></tr>
+              <tr><td>/api/profile</td><td>22,410</td><td>301 ms</td><td>0.0%</td></tr>
+              <tr><td>/api/recommendations</td><td>17,004</td><td>288 ms</td><td>0.3%</td></tr>
+              <tr><td>/api/cart</td><td>12,775</td><td>190 ms</td><td>0.1%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section data-rlp="alerts" class="ef-surface ef-stack ef-switcher__secondary" aria-labelledby="alerts-h">
+        <h2 id="alerts-h" data-rlp="alerts-title">Active alerts</h2>
+        <ul class="alert-list ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-3)">
+          <li data-rlp="alert-1">Checkout error rate above 1%</li>
+          <li data-rlp="alert-2">Search p95 above 600 ms</li>
+          <li data-rlp="alert-3">Certificate renews in 9 days</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,150 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu375f0ef3",
+ "taskId": "T10-dynamic-thread",
+ "category": "dynamic",
+ "split": "heldout",
+ "arm": "A",
+ "repetition": 1,
+ "executionOrder": 20,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:09:52.175Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 4,
+  "inputTokens": 196956,
+  "inputUncachedTokens": 8,
+  "cacheCreationTokens": 52811,
+  "cacheReadTokens": 144137,
+  "outputTokens": 59,
+  "totalTokens": 197015,
+  "toolCalls": 7,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 2,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 9415,
+  "toolTokens": null,
+  "durationMs": 41947,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:02:46.628Z",
+    "durationMs": 7807,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 31,
+  "derived": 0,
+  "uncertain": 1,
+  "corrective": 0,
+  "total": 32,
+  "rawStatements": {
+   "explicit": 46,
+   "uncertain": 1
+  },
+  "firstDraftExplicit": 31,
+  "byCategory": {
+   "explicit": {
+    "padding": 4,
+    "margin": 8,
+    "alignment": 3,
+    "positioning": 0,
+    "grouping": 4,
+    "responsive": 2,
+    "dimension": 10,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 1,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [],
+  "final": []
+ }
+}

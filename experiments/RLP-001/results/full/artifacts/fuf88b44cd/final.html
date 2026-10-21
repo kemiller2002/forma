@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing comparison with conflicting demands</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+  <main data-rl-root data-rl="group">
+    <section data-rl="group" data-rl-bond="section" data-rlp="pricing">
+      <h1 data-rlp="pricing-title">Choose a plan</h1>
+      <div data-rl="group" data-rl-flow="wrap" data-rl-equal data-rl-bond="loose" data-rlp="plans">
+        <article data-rl="container" data-rl-min="13rem" data-rlp="plan-free">
+          <h2 data-rlp="plan-free-name">Free</h2>
+          <p data-rlp="plan-free-price">$0</p>
+          <ul data-rlp="plan-free-features"><li>1 project</li></ul>
+          <button data-rlp="plan-free-choose">Choose Free</button>
+        </article>
+        <article data-rl="container" data-rl-min="13rem" data-rlp="plan-team">
+          <p data-rlp="badge">Most popular</p>
+          <h2 data-rlp="plan-team-name">Team</h2>
+          <p data-rlp="plan-team-price">$12 per seat</p>
+          <ul data-rlp="plan-team-features"><li>Unlimited projects</li><li>Shared libraries</li><li>Version history</li><li>Priority email support</li></ul>
+          <button data-rlp="plan-team-choose">Choose Team</button>
+        </article>
+        <article data-rl="container" data-rl-min="13rem" data-rlp="plan-business">
+          <h2 data-rlp="plan-business-name">Business with advanced compliance controls</h2>
+          <p data-rlp="plan-business-price">$45 per seat</p>
+          <ul data-rlp="plan-business-features"><li>Everything in Team</li><li>Single sign-on</li><li>Audit log export</li><li>Data residency</li><li>Custom retention</li><li>Dedicated success manager</li></ul>
+          <button data-rlp="plan-business-choose">Choose Business</button>
+        </article>
+        <article data-rl="container" data-rl-min="13rem" data-rlp="plan-enterprise">
+          <h2 data-rlp="plan-enterprise-name">Enterprise</h2>
+          <p data-rlp="plan-enterprise-price">Contact sales</p>
+          <ul data-rlp="plan-enterprise-features"><li>Everything in Business</li><li>On-premises option</li></ul>
+          <button data-rlp="plan-enterprise-choose">Talk to sales</button>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

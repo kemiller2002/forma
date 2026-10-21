@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment thread with dynamic content</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  main { max-width: 44rem; margin: 0 auto; padding: 1rem; }
+  .thread { padding: 1.25rem; display: grid; gap: 1rem; }
+  .thread h2 { margin: 0; }
+  .comments { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+  .comment { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
+  .avatar { width: 2.5rem; height: 2.5rem; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+  .content { display: grid; gap: 0.5rem; justify-items: start; min-width: 0; }
+  .content p { margin: 0; overflow-wrap: anywhere; }
+  .meta { display: flex; flex-wrap: wrap; column-gap: 0.5rem; }
+  .composer { display: grid; gap: 0.5rem; justify-items: start; }
+  .composer textarea { width: 100%; box-sizing: border-box; }
+  .composer [hidden] { display: none; }
+  .composer .error { margin: 0; }
+  .composer-actions { margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+<main>
+  <section class="surface thread" data-rlp="thread" aria-labelledby="t">
+    <h2 id="t" data-rlp="title">Discussion</h2>
+    <ol class="comments" data-rlp="comments">
+      <li data-rlp="comment-1" class="comment">
+        <img data-rlp="comment-1-avatar" class="avatar" src="assets/placeholder.svg" alt="" width="40" height="40">
+        <div class="content">
+          <p class="meta"><strong data-rlp="comment-1-author">Priya</strong> <span data-rlp="comment-1-time">3 hours ago</span></p>
+          <p data-rlp="comment-1-body" class="body">Can we ship the migration behind a flag first?</p>
+          <button type="button" class="secondary" data-rlp="comment-1-reply" aria-label="Reply to Priya">Reply</button>
+        </div>
+      </li>
+      <li data-rlp="comment-2" class="comment">
+        <img data-rlp="comment-2-avatar" class="avatar" src="assets/placeholder.svg" alt="" width="40" height="40">
+        <div class="content">
+          <p class="meta"><strong data-rlp="comment-2-author">Marcus</strong> <span data-rlp="comment-2-time">2 hours ago</span></p>
+          <p data-rlp="comment-2-body" class="body">Agreed. I added a flag to the rollout plan.</p>
+          <button type="button" class="secondary" data-rlp="comment-2-reply" aria-label="Reply to Marcus">Reply</button>
+        </div>
+      </li>
+      <li data-rlp="comment-3" class="comment">
+        <img data-rlp="comment-3-avatar" class="avatar" src="assets/placeholder.svg" alt="" width="40" height="40">
+        <div class="content">
+          <p class="meta"><strong data-rlp="comment-3-author">Lena</strong> <span data-rlp="comment-3-time">1 hour ago</span></p>
+          <p data-rlp="comment-3-body" class="body">Looks good to me.</p>
+          <button type="button" class="secondary" data-rlp="comment-3-reply" aria-label="Reply to Lena">Reply</button>
+        </div>
+      </li>
+    </ol>
+    <p data-rlp="more-status" role="status">Loading earlier comments…</p>
+    <div class="composer">
+      <label for="ci" data-rlp="composer-label">Add a comment</label>
+      <textarea id="ci" data-rlp="composer-input" rows="3" aria-describedby="ce"></textarea>
+      <p id="ce" class="error" data-rlp="composer-error" hidden>Write a comment before posting.</p>
+      <button type="button" data-rlp="post" class="composer-actions">Post comment</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

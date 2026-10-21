@@ -1,0 +1,204 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": "main",
+   "context": "",
+   "property": "padding",
+   "value": "1.5rem 1rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "main",
+   "context": "",
+   "property": "max-width",
+   "value": "90rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "main",
+   "context": "",
+   "property": "margin",
+   "value": "0 auto",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".features",
+   "context": "",
+   "property": "display",
+   "value": "grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".pricing",
+   "context": "",
+   "property": "gap",
+   "value": "1.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plans",
+   "context": "",
+   "property": "gap",
+   "value": "1rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plans",
+   "context": "",
+   "property": "align-items",
+   "value": "stretch",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plans",
+   "context": "",
+   "property": "grid-template-columns",
+   "value": "repeat(auto-fit, minmax(min(100%, 14rem), 1fr))",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan",
+   "context": "",
+   "property": "flex-direction",
+   "value": "column",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan",
+   "context": "",
+   "property": "gap",
+   "value": "0.75rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan",
+   "context": "",
+   "property": "padding",
+   "value": "1.25rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan",
+   "context": "",
+   "property": "min-width",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".badge",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".features",
+   "context": "",
+   "property": "padding-left",
+   "value": "1.25rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".features",
+   "context": "",
+   "property": "gap",
+   "value": "0.375rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan button",
+   "context": "",
+   "property": "margin-top",
+   "value": "auto",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".badge",
+   "context": "",
+   "property": "align-self",
+   "value": "flex-start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan button",
+   "context": "",
+   "property": "min-height",
+   "value": "2.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan button",
+   "context": "",
+   "property": "max-width",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".features",
+   "context": "",
+   "property": "margin-bottom",
+   "value": "0.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".badge",
+   "context": "",
+   "property": "padding",
+   "value": "0.25rem 0.625rem",
+   "category": "padding",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

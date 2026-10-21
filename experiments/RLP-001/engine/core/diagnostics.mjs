@@ -9,7 +9,8 @@ export const CODES = Object.freeze({
   "excessive-computation": "error",
   "numeric-instability": "error",
   "constraint-violation": "error",
-  "hierarchy-inversion": "warning"
+  "hierarchy-inversion": "warning",
+  "ignored-attribute": "warning"
 });
 
 export const diagnostic = (code, node, detail, data = {}) => Object.freeze({

@@ -79,7 +79,11 @@ try {
   await screenshots(browser, screensDir);
   const usage = transcriptUsage(arg("--transcript"), ws);
   const decisions = classify(finalHtml, firstHtml);
-  const ownScripts = [...finalHtml.matchAll(/<script\b[^>]*>/gi)].map(m => m[0]).filter(s => !/src="assets\/rlp\/rlp\.mjs"/.test(s));
+  const ownScripts = [
+    ...[...finalHtml.matchAll(/<script\b[^>]*>/gi)].map(m => m[0]).filter(s => !/src="assets\/rlp\/rlp\.mjs"/.test(s)),
+    ...[...finalHtml.matchAll(/\s(on[a-z]+)\s*=\s*("[^"]*"|'[^']*')/gi)].map(m => `${m[1]}=${m[2]}`),
+    ...[...finalHtml.matchAll(/href\s*=\s*["']\s*javascript:/gi)].map(m => m[0])
+  ];
   const result = {
     experiment: "RLP-001",
     phase: manifest.phase,

@@ -15,8 +15,12 @@ const forma = path.resolve(experiment, "../..");
 
 export const MAX_VALIDATIONS = 5;
 export const ARMS = Object.freeze(["A", "B", "C", "D"]);
+// Exploratory variants (RLP-001 extension 01). Never part of the four-arm design.
+export const VARIANTS = Object.freeze(["X1"]);
+const RELATIONAL = ["C", "D", "X1"];
+const ENTRY = { C: "rlp-rules.mjs", D: "rlp-physics.mjs", X1: "rlp-x1.mjs" };
 
-const guideFor = arm => path.join(experiment, "arms", arm === "C" || arm === "D" ? "relational" : arm, "GUIDE.md");
+const guideFor = arm => path.join(experiment, "arms", arm === "X1" ? "x1" : arm === "C" || arm === "D" ? "relational" : arm, "GUIDE.md");
 
 const head = (task, arm) => [
   `<meta charset="utf-8">`,
@@ -24,7 +28,7 @@ const head = (task, arm) => [
   `<title>${task.title}</title>`,
   `<link rel="stylesheet" href="assets/base.css">`,
   ...(arm === "B" ? [`<link rel="stylesheet" href="assets/forma.css">`] : []),
-  ...(arm === "C" || arm === "D" ? [`<script type="module" src="assets/rlp/rlp.mjs"></script>`] : []),
+  ...(RELATIONAL.includes(arm) ? [`<script type="module" src="assets/rlp/rlp.mjs"></script>`] : []),
   ...(arm === "A" || arm === "B" ? [`<style>\n  /* your CSS */\n</style>`] : [])
 ].map(line => `  ${line}`).join("\n");
 
@@ -83,12 +87,12 @@ const formaBundle = () => ["tokens.css", "foundations.css", "components.css"]
   .map(file => fs.readFileSync(path.join(forma, "dist", file), "utf8"))
   .join("\n");
 
-const engineFiles = () => ["dom.mjs", ...fs.readdirSync(path.join(experiment, "engine/core")).filter(f => f.endsWith(".mjs")).map(f => `core/${f}`)];
+const engineFiles = () => ["dom.mjs", ...["core", "variants"].flatMap(d => fs.readdirSync(path.join(experiment, "engine", d)).filter(f => f.endsWith(".mjs")).map(f => `${d}/${f}`))];
 
 export const createWorkspace = ({ root, attemptId, taskId, arm }) => {
   const task = TASKS.find(t => t.id === taskId);
   if (!task) throw new Error(`unknown task ${taskId}`);
-  if (!ARMS.includes(arm)) throw new Error(`unknown arm ${arm}`);
+  if (![...ARMS, ...VARIANTS].includes(arm)) throw new Error(`unknown arm ${arm}`);
   const dir = path.join(root, attemptId);
   if (fs.existsSync(dir)) throw new Error(`workspace ${dir} already exists`);
   fs.mkdirSync(path.join(dir, ".rlp/snapshots"), { recursive: true });
@@ -98,9 +102,9 @@ export const createWorkspace = ({ root, attemptId, taskId, arm }) => {
   copy(path.join(experiment, "arms/base.css"), path.join(dir, "assets/base.css"));
   copy(path.join(experiment, "assets/placeholder.svg"), path.join(dir, "assets/placeholder.svg"));
   if (arm === "B") fs.writeFileSync(path.join(dir, "assets/forma.css"), formaBundle());
-  if (arm === "C" || arm === "D") {
+  if (RELATIONAL.includes(arm)) {
     engineFiles().forEach(f => copy(path.join(experiment, "engine", f), path.join(dir, "assets/rlp", f)));
-    fs.copyFileSync(path.join(experiment, "engine", arm === "C" ? "rlp-rules.mjs" : "rlp-physics.mjs"), path.join(dir, "assets/rlp/rlp.mjs"));
+    fs.copyFileSync(path.join(experiment, "engine", ENTRY[arm]), path.join(dir, "assets/rlp/rlp.mjs"));
   }
   fs.writeFileSync(path.join(dir, "index.html"), starter(task, arm));
   fs.writeFileSync(path.join(dir, "validate"), `#!/bin/sh\nexec node ${path.join(experiment, "harness/validate.mjs")} --workspace "${dir}" "$@"\n`, { mode: 0o755 });

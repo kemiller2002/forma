@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment thread with dynamic content</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+  <main data-rl-root data-rl="group">
+    <section data-rlp="thread" data-rl="container" data-rl-bond="loose">
+      <h2 data-rlp="title">Discussion</h2>
+      <ol data-rlp="comments" data-rl="group" data-rl-bond="loose">
+        <li data-rlp="comment-1" data-rl="group" data-rl-flow="row" data-rl-bond="related" data-rl-align="start">
+          <img data-rlp="comment-1-avatar" src="assets/placeholder.svg" alt="" width="40" height="40" data-rl-size="content">
+          <div data-rl="group" data-rl-bond="tight" data-rl-fill data-rl-min="12rem">
+            <div data-rl="group" data-rl-flow="wrap" data-rl-bond="tight">
+              <strong data-rlp="comment-1-author" data-rl-size="content">Priya</strong>
+              <span data-rlp="comment-1-time" data-rl-size="content">3 hours ago</span>
+            </div>
+            <p data-rlp="comment-1-body">Can we ship the migration behind a flag first?</p>
+            <button type="button" class="secondary" data-rlp="comment-1-reply" aria-label="Reply to Priya" data-rl-size="content">Reply</button>
+          </div>
+        </li>
+        <li data-rlp="comment-2" data-rl="group" data-rl-flow="row" data-rl-bond="related" data-rl-align="start">
+          <img data-rlp="comment-2-avatar" src="assets/placeholder.svg" alt="" width="40" height="40" data-rl-size="content">
+          <div data-rl="group" data-rl-bond="tight" data-rl-fill data-rl-min="12rem">
+            <div data-rl="group" data-rl-flow="wrap" data-rl-bond="tight">
+              <strong data-rlp="comment-2-author" data-rl-size="content">Marcus</strong>
+              <span data-rlp="comment-2-time" data-rl-size="content">2 hours ago</span>
+            </div>
+            <p data-rlp="comment-2-body">Agreed. I added a flag to the rollout plan.</p>
+            <button type="button" class="secondary" data-rlp="comment-2-reply" aria-label="Reply to Marcus" data-rl-size="content">Reply</button>
+          </div>
+        </li>
+        <li data-rlp="comment-3" data-rl="group" data-rl-flow="row" data-rl-bond="related" data-rl-align="start">
+          <img data-rlp="comment-3-avatar" src="assets/placeholder.svg" alt="" width="40" height="40" data-rl-size="content">
+          <div data-rl="group" data-rl-bond="tight" data-rl-fill data-rl-min="12rem">
+            <div data-rl="group" data-rl-flow="wrap" data-rl-bond="tight">
+              <strong data-rlp="comment-3-author" data-rl-size="content">Lena</strong>
+              <span data-rlp="comment-3-time" data-rl-size="content">1 hour ago</span>
+            </div>
+            <p data-rlp="comment-3-body">Looks good to me.</p>
+            <button type="button" class="secondary" data-rlp="comment-3-reply" aria-label="Reply to Lena" data-rl-size="content">Reply</button>
+          </div>
+        </li>
+      </ol>
+      <p data-rlp="more-status" role="status">Loading earlier comments…</p>
+      <div data-rl="group" data-rl-bond="tight">
+        <label data-rlp="composer-label" for="composer-input">Add a comment</label>
+        <textarea data-rlp="composer-input" id="composer-input" rows="3" aria-describedby="composer-error"></textarea>
+        <p data-rlp="composer-error" id="composer-error" class="error" hidden>Write a comment before posting.</p>
+        <button type="button" data-rlp="post" data-rl-size="content">Post comment</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
