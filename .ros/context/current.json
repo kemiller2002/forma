@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-21T08:16:49.440Z",
+  "updatedAt": "2026-10-21T14:02:23.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -2429,13 +2429,49 @@
     {
       "id": "WI-0032",
       "type": "task",
-      "state": "active",
-      "semanticState": "active",
-      "evidence": [],
-      "updatedAt": "2026-10-21T08:16:49.440Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/build-runtime.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/runtime-version.spec.mjs"
+        },
+        {
+          "type": "requirement",
+          "path": "research/requirements/RQ-FORMA-2026-A004--runtime-version-reporting.md"
+        }
+      ],
+      "updatedAt": "2026-10-21T14:02:23.000Z",
       "telemetryExecutionIds": [
         "EXE-20261021T081649625Z-5b3dab6b"
-      ]
+      ],
+      "latestCheckpoint": {
+        "id": "31b92ac2c81ca77f11133d07",
+        "recordedAt": "2026-10-21T14:02:08.000Z",
+        "executionId": "EXE-20261021T081649625Z-5b3dab6b",
+        "stepId": "STEP-20261021T084114976Z-bb2bf082",
+        "repository": "echelon-design-system",
+        "branch": "feat/runtime-version-stamp",
+        "commit": "5d4a1876b6149661da38d5b52f8546eed673f372",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "feat/runtime-version-stamp",
+        "remoteCommit": "5d4a1876b6149661da38d5b52f8546eed673f372",
+        "summary": "Forma 0.9.1 runtime registry, site integration, requirements, and browser verification pushed",
+        "nextAction": "Review and merge the runtime version stamp pull request",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-21T14:02:23.000Z",
+      "conclusion": "Forma 0.9.1 reports its exact built version through ECHELON-RUNTIME-1 and production browser verification passed in Chromium and WebKit."
     }
   ]
 }
