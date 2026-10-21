@@ -21,7 +21,7 @@ export const DEFAULTS = Object.freeze({
 });
 
 // Physics solver weights (Arm D). Frozen before held-out evaluation; see
-// research/experiments/RLP-001/docs/ENGINE.md.
+// experiments/RLP-001/docs/ENGINE.md.
 export const WEIGHTS = Object.freeze({
   boundary: 1,      // wb: clearance deviation from target
   separation: 4,    // ws: sibling repulsion below target separation

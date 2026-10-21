@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "author_agent": "anthropic/claude-code",
+    "created": "2026-10-21",
+    "id": "EX-FORMA-2026-0001",
+    "inputs": [
+      ".praxis/inbox/documents/2026-10-21-RLP-001.md",
+      "experiments/RLP-001/baseline.json"
+    ],
+    "outputs": [
+      "experiments/RLP-001/results/",
+      "experiments/RLP-001/REPORT.md"
+    ],
+    "path": "research/experiments/EX-FORMA-2026-0001--relational-layout-physics.md",
+    "provenance": {
+      "contributions": {
+        "EXE-20261021T181014746Z-fc9e184b": {
+          "actor": {
+            "id": "anthropic/claude-code",
+            "kind": "agent",
+            "model": "unknown",
+            "provider": "anthropic",
+            "runtime": "claude-code"
+          },
+          "at": "2026-10-21T18:38:25.971Z",
+          "operations": [
+            "created"
+          ]
+        }
+      }
+    },
+    "related_theories": [],
+    "research_area": "agent-ui-construction",
+    "status": "active",
+    "tests_hypotheses": [
+      "RLP-001-H1",
+      "RLP-001-H2",
+      "RLP-001-H3",
+      "RLP-001-H4",
+      "RLP-001-H5",
+      "RLP-001-H6",
+      "RLP-001-H7"
+    ],
+    "title": "RLP-001: Relational layout physics — agent efficiency and correctness"
+  }
+]

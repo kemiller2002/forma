@@ -59,11 +59,18 @@ const leafBox = (node, width, ctx) => {
 };
 
 // Collect shared-edge members (data-rl-align-edge) inside a laid-out box,
-// with their top edge relative to the box.
-const members = (box, offset = 0) => [
-  ...(box.node.alignEdge ? [{ name: box.node.alignEdge, key: box.key, top: offset }] : []),
-  ...box.children.flatMap(c => members(c.box, offset + c.y))
-];
+// with their top edge relative to the box. A member inside a tight bond is
+// pushed by inserting space before the whole tightly bonded group, so
+// alignment never separates elements that belong together (for example a
+// label from its control).
+const members = (box, offset = 0, head = undefined) => {
+  const tight = box.node.kind !== "leaf" && box.node.bond === "tight" && box.children.length > 0;
+  const nextHead = tight ? box.children[0].box.key : head;
+  return [
+    ...(box.node.alignEdge ? [{ name: box.node.alignEdge, key: head ?? box.key, top: offset }] : []),
+    ...box.children.flatMap(c => members(c.box, offset + c.y, nextHead))
+  ];
+};
 
 const crossOffset = (align, lineHeight, height) =>
   align === "center" ? (lineHeight - height) / 2 : align === "end" ? lineHeight - height : 0;
@@ -182,7 +189,7 @@ const verifyBox = box => {
 };
 
 const hierarchy = node => [
-  ...(isContainer(node) ? node.children.filter(c => isContainer(c) && c.children.length > 1 && c.gap > node.gap)
+  ...(isContainer(node) && node.children.length > 1 ? node.children.filter(c => isContainer(c) && c.children.length > 1 && c.gap > node.gap)
     .map(c => diagnostic("hierarchy-inversion", c.key, "a group's internal separation exceeds the separation between it and its siblings", { inner: c.gap, outer: node.gap })) : []),
   ...node.children.flatMap(hierarchy)
 ];
