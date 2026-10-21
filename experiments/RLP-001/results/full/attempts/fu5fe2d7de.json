@@ -1,0 +1,368 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu5fe2d7de",
+ "taskId": "T09-dynamic-checkout",
+ "category": "dynamic",
+ "split": "dev",
+ "arm": "A",
+ "repetition": 1,
+ "executionOrder": 41,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:13:28.514Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 251309,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 17897,
+  "cacheReadTokens": 233402,
+  "outputTokens": 67,
+  "totalTokens": 251376,
+  "toolCalls": 5,
+  "toolCallsByName": {
+   "Read": 1,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 10391,
+  "toolTokens": null,
+  "durationMs": 40158,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:04:07.593Z",
+    "durationMs": 3922,
+    "failures": 6,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:04:18.110Z",
+    "durationMs": 3595,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 4,
+  "standardInstances": 17,
+  "standardByInvariant": {
+   "unexpected-shift": 5,
+   "proximity": 2,
+   "target-size": 10
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 4,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   320,
+   375,
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 4,
+  "unexpectedShift": 5,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 2,
+  "standardByInvariant": {
+   "proximity": 2
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   320
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 41,
+  "derived": 0,
+  "uncertain": 1,
+  "corrective": 4,
+  "total": 42,
+  "rawStatements": {
+   "explicit": 64,
+   "uncertain": 1
+  },
+  "firstDraftExplicit": 42,
+  "byCategory": {
+   "explicit": {
+    "padding": 5,
+    "margin": 7,
+    "alignment": 6,
+    "positioning": 0,
+    "grouping": 10,
+    "responsive": 2,
+    "dimension": 11,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 1,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 1,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 3,
+    "correction": 4
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above item-4)",
+    "observed": "moved 13px",
+    "relationship": "item-3 ↑ item-4"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "proximity",
+    "element": "promo-error ~ promo-input",
+    "expected": "<= 24px apart",
+    "observed": "58px",
+    "relationship": "promo-error ~ promo-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "target-size",
+    "element": "ship-ground-input",
+    "expected": ">= 24×24",
+    "observed": "20×20",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "target-size",
+    "element": "ship-air-input",
+    "expected": ">= 24×24",
+    "observed": "20×20",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "proximity",
+    "element": "promo-error ~ promo-input",
+    "expected": "<= 24px apart",
+    "observed": "58px",
+    "relationship": "promo-error ~ promo-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:clone:item-4",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above item-4)",
+    "observed": "moved 13px",
+    "relationship": "item-3 ↑ item-4"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "target-size",
+    "element": "ship-ground-input",
+    "expected": ">= 24×24",
+    "observed": "20×20",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "target-size",
+    "element": "ship-air-input",
+    "expected": ">= 24×24",
+    "observed": "20×20",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:clone:item-4",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above item-4)",
+    "observed": "moved 13px",
+    "relationship": "item-3 ↑ item-4"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "target-size",
+    "element": "ship-ground-input",
+    "expected": ">= 24×24",
+    "observed": "20×20",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "target-size",
+    "element": "ship-air-input",
+    "expected": ">= 24×24",
+    "observed": "20×20",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:clone:item-4",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above item-4)",
+    "observed": "moved 13px",
+    "relationship": "item-3 ↑ item-4"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "target-size",
+    "element": "ship-ground-input",
+    "expected": ">= 24×24",
+    "observed": "20×20",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "target-size",
+    "element": "ship-air-input",
+    "expected": ">= 24×24",
+    "observed": "20×20",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:clone:item-4",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above item-4)",
+    "observed": "moved 13px",
+    "relationship": "item-3 ↑ item-4"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "target-size",
+    "element": "ship-ground-input",
+    "expected": ">= 24×24",
+    "observed": "20×20",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "target-size",
+    "element": "ship-air-input",
+    "expected": ">= 24×24",
+    "observed": "20×20",
+    "fontScale": 1
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "proximity",
+    "element": "promo-error ~ promo-input",
+    "expected": "<= 24px apart",
+    "observed": "58px",
+    "relationship": "promo-error ~ promo-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "proximity",
+    "element": "promo-error ~ promo-input",
+    "expected": "<= 24px apart",
+    "observed": "58px",
+    "relationship": "promo-error ~ promo-input",
+    "fontScale": 1
+   }
+  ]
+ }
+}

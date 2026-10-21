@@ -1,0 +1,2766 @@
+{
+ "phase": "pilot-3",
+ "viewports": [
+  320,
+  375,
+  768,
+  1024,
+  1440
+ ],
+ "byArm": {
+  "A": {
+   "attempts": 3,
+   "proximityPairs": 40,
+   "proximityFailures": 0,
+   "proximityTies": 15,
+   "proximityMedianRatio": 3.3333333333333335,
+   "groupCases": 35,
+   "groupInversions": 0,
+   "groupTies": 4,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "attemptsWithProximityFailure": 0,
+   "attemptsWithProximityTie": 2,
+   "attemptsWithInversion": 0
+  },
+  "B": {
+   "attempts": 3,
+   "proximityPairs": 40,
+   "proximityFailures": 0,
+   "proximityTies": 4,
+   "proximityMedianRatio": 2,
+   "groupCases": 35,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 5,
+   "groupMedianRatio": 1.3333333333333333,
+   "attemptsWithProximityFailure": 0,
+   "attemptsWithProximityTie": 1,
+   "attemptsWithInversion": 0
+  },
+  "C": {
+   "attempts": 3,
+   "proximityPairs": 40,
+   "proximityFailures": 0,
+   "proximityTies": 5,
+   "proximityMedianRatio": 2,
+   "groupCases": 35,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "attemptsWithProximityFailure": 0,
+   "attemptsWithProximityTie": 1,
+   "attemptsWithInversion": 0
+  },
+  "D": {
+   "attempts": 3,
+   "proximityPairs": 40,
+   "proximityFailures": 0,
+   "proximityTies": 5,
+   "proximityMedianRatio": 2,
+   "groupCases": 35,
+   "groupInversions": 1,
+   "groupTies": 3,
+   "groupRegionResolved": 5,
+   "groupMedianRatio": 1.5,
+   "attemptsWithProximityFailure": 0,
+   "attemptsWithProximityTie": 1,
+   "attemptsWithInversion": 1
+  }
+ },
+ "attempts": [
+  {
+   "attemptId": "pi2577eba3",
+   "taskId": "T01-form-account",
+   "arm": "D",
+   "proximityPairs": 35,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 3,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "piab84fe0e",
+   "taskId": "T01-form-account",
+   "arm": "A",
+   "proximityPairs": 35,
+   "proximityFailures": 0,
+   "proximityTies": 10,
+   "proximityMedianRatio": 3.3333333333333335,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 3,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 6,
+       "otherGap": 24,
+       "ratio": 4
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 6,
+       "otherGap": 26,
+       "ratio": 4.333333333333333
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 6,
+       "otherGap": 24,
+       "ratio": 4
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 6,
+       "otherGap": 24,
+       "ratio": 4
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 6,
+       "otherGap": 26,
+       "ratio": 4.333333333333333
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 6,
+       "otherGap": 24,
+       "ratio": 4
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 6,
+       "otherGap": 20,
+       "ratio": 3.3333333333333335
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "pid9963a95",
+   "taskId": "T03-cards-product",
+   "arm": "C",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 20,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "pi16d798d1",
+   "taskId": "T09-dynamic-checkout",
+   "arm": "C",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 5,
+   "proximityMedianRatio": 1,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 4.875,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 124,
+       "inside": 16,
+       "ratio": 7.75,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 124,
+       "inside": 16,
+       "ratio": 7.75,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 124,
+       "inside": 16,
+       "ratio": 7.75,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 124,
+       "inside": 16,
+       "ratio": 7.75,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 124,
+       "inside": 16,
+       "ratio": 7.75,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "pi0f80fe03",
+   "taskId": "T03-cards-product",
+   "arm": "D",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 20,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 5,
+   "groupMedianRatio": 1.5,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 16,
+       "inside": 24,
+       "ratio": 0.6666666666666666,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 16,
+       "inside": 24,
+       "ratio": 0.6666666666666666,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 13.703125,
+       "inside": 24,
+       "ratio": 0.5709635416666666,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 15.984375,
+       "inside": 24,
+       "ratio": 0.666015625,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 16,
+       "inside": 24,
+       "ratio": 0.6666666666666666,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "pi496a86b1",
+   "taskId": "T09-dynamic-checkout",
+   "arm": "A",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 5,
+   "proximityMedianRatio": 1,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 4,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 4.479166666666667,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 122,
+       "inside": 16,
+       "ratio": 7.625,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 122,
+       "inside": 16,
+       "ratio": 7.625,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 12,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 122,
+       "inside": 16,
+       "ratio": 7.625,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 122,
+       "inside": 16,
+       "ratio": 7.625,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 122,
+       "inside": 16,
+       "ratio": 7.625,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "pif7fc271b",
+   "taskId": "T09-dynamic-checkout",
+   "arm": "D",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 5,
+   "proximityMedianRatio": 1,
+   "groupCases": 10,
+   "groupInversions": 1,
+   "groupTies": 3,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 4.4321273122959735,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 124,
+       "inside": 16,
+       "ratio": 7.75,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 26.4921875,
+       "ratio": 0.6039516366853436,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 124,
+       "inside": 16,
+       "ratio": 7.75,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 14.359375,
+       "ratio": 1.1142546245919478,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 124,
+       "inside": 16,
+       "ratio": 7.75,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 124,
+       "inside": 16,
+       "ratio": 7.75,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 8,
+       "otherGap": 8,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 124,
+       "inside": 16,
+       "ratio": 7.75,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "pif225f950",
+   "taskId": "T03-cards-product",
+   "arm": "A",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 20,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 1.75,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 12,
+       "inside": 8,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 12,
+       "inside": 8,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 12,
+       "inside": 8,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 12,
+       "inside": 8,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 12,
+       "inside": 8,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 12,
+       "inside": 8,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 84,
+       "inside": 8,
+       "ratio": 10.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 12,
+       "inside": 8,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 12,
+       "inside": 8,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 84.015625,
+       "inside": 8,
+       "ratio": 10.501953125,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 12,
+       "inside": 8,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 60.015625,
+       "inside": 8,
+       "ratio": 7.501953125,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 60,
+       "inside": 8,
+       "ratio": 7.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 12,
+       "inside": 8,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 60,
+       "inside": 8,
+       "ratio": 7.5,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "pic5f71560",
+   "taskId": "T03-cards-product",
+   "arm": "B",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 20,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 5,
+   "groupMedianRatio": 1.3333333333333333,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 16,
+       "inside": 16,
+       "ratio": 1,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "pi9aea9233",
+   "taskId": "T01-form-account",
+   "arm": "B",
+   "proximityPairs": 35,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 40,
+       "ratio": 5
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 12,
+       "otherGap": 24,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 12,
+       "otherGap": 24,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 40,
+       "ratio": 5
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 12,
+       "otherGap": 24,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 12,
+       "otherGap": 24,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 12,
+       "otherGap": 24,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 12,
+       "otherGap": 24,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 12,
+       "otherGap": 24,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 12,
+       "otherGap": 24,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 12,
+       "otherGap": 24,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 12,
+       "otherGap": 24,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "pi4ac9263d",
+   "taskId": "T09-dynamic-checkout",
+   "arm": "B",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 4,
+   "proximityMedianRatio": 1,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 4.55615234375,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 24,
+       "otherGap": 32,
+       "ratio": 1.3333333333333333
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 219.96875,
+       "inside": 32,
+       "ratio": 6.8740234375,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 32,
+       "inside": 12,
+       "ratio": 2.6666666666666665,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 24,
+       "otherGap": 24,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 163.59375,
+       "inside": 32,
+       "ratio": 5.1123046875,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 32,
+       "inside": 8,
+       "ratio": 4,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 24,
+       "otherGap": 24,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 163.59375,
+       "inside": 32,
+       "ratio": 5.1123046875,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 24,
+       "otherGap": 24,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 163.59375,
+       "inside": 32,
+       "ratio": 5.1123046875,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 24,
+       "otherGap": 24,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 163.59375,
+       "inside": 32,
+       "ratio": 5.1123046875,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "pi44aafaef",
+   "taskId": "T01-form-account",
+   "arm": "C",
+   "proximityPairs": 35,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 3,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

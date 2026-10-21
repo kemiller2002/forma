@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace section navigation</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  body { padding: 1rem; }
+  .bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "crumbs" "title" "tabs" "acts";
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+  .crumbs { grid-area: crumbs; }
+  .crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; }
+  .crumbs li + li::before { content: "/"; margin-right: 0.5rem; color: #5b6472; }
+  .crumbs a, .crumbs [aria-current] { display: inline-block; min-height: 1.5rem; line-height: 1.5rem; }
+  h1 { grid-area: title; margin: 0; min-width: 0; overflow-wrap: anywhere; }
+  .sections { grid-area: tabs; }
+  .sections ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .sections a {
+    display: inline-block; padding: 0.5rem 0.75rem; min-height: 2.5rem; box-sizing: border-box;
+    border: 1px solid #c9ced6; border-radius: 0.5rem; text-decoration: none;
+  }
+  .sections a[aria-current="page"] { font-weight: 700; background: #e8effc; border-color: #2f5fd0; }
+  .actions { grid-area: acts; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+  @media (min-width: 48rem) {
+    .bar {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "crumbs crumbs" "title acts" "tabs tabs";
+      align-items: center;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="surface bar" data-rlp="bar">
+    <nav class="crumbs" aria-label="Breadcrumb" data-rlp="breadcrumb">
+      <ol>
+        <li><a href="#" data-rlp="crumb-1">Workspaces</a></li>
+        <li><a href="#" data-rlp="crumb-2">Acme Corporation</a></li>
+        <li><a href="#" data-rlp="crumb-3">Billing</a></li>
+        <li><span aria-current="page" data-rlp="crumb-4">Invoices</span></li>
+      </ol>
+    </nav>
+    <h1 data-rlp="heading">Invoices</h1>
+    <nav class="sections" aria-label="Billing sections" data-rlp="sections">
+      <ul>
+        <li><a href="#" data-rlp="section-1">Overview</a></li>
+        <li><a href="#" aria-current="page" data-rlp="section-2">Invoices</a></li>
+        <li><a href="#" data-rlp="section-3">Payment methods</a></li>
+        <li><a href="#" data-rlp="section-4">Tax registrations and exemptions</a></li>
+        <li><a href="#" data-rlp="section-5">Usage</a></li>
+        <li><a href="#" data-rlp="section-6">Settings</a></li>
+      </ul>
+    </nav>
+    <div class="actions" data-rlp="actions">
+      <button type="button" class="secondary" data-rlp="export">Export CSV</button>
+      <button type="button" data-rlp="new">New invoice</button>
+    </div>
+  </header>
+</body>
+</html>

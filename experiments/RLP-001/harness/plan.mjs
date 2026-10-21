@@ -4,13 +4,15 @@ import path from "node:path";
 import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { TASKS } from "../tasks/tasks.mjs";
-import { ARMS, createWorkspace, workerPrompt } from "./workspace.mjs";
+import { ARMS, VARIANTS, createWorkspace, workerPrompt } from "./workspace.mjs";
 
 // Creates a phase manifest: every (task, arm, repetition) attempt with a
 // random opaque id, a randomized execution order (seeded, seed recorded),
 // and an isolated workspace.
 //
-// usage: plan.mjs --phase pilot|full --seed N --model NAME --runs-root DIR
+// usage: plan.mjs --phase pilot|full|x1-pilot|x1-full --seed N --model NAME --runs-root DIR [--arms A,B,...]
+// --arms defaults to the four pre-registered arms; exploratory variants
+// (VARIANTS) run only when named, in their own phase.
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const experiment = path.resolve(here, "..");
@@ -32,10 +34,13 @@ const random = prng(seed);
 const shuffle = list => list.map(item => ({ item, key: random() })).sort((a, b) => a.key - b.key).map(x => x.item);
 const opaqueId = () => Array.from({ length: 8 }, () => Math.floor(random() * 16).toString(16)).join("");
 
-const isPilot = phase.startsWith("pilot");
+const arms = arg("--arms", ARMS.join(",")).split(",");
+const unknown = arms.filter(a => ![...ARMS, ...VARIANTS].includes(a));
+if (unknown.length) throw new Error(`unknown arm ${unknown.join(", ")}`);
+const isPilot = /(^|-)pilot/.test(phase);
 const tasks = isPilot ? TASKS.filter(t => t.pilot) : TASKS;
 const repetitions = isPilot ? 1 : 3;
-const cells = tasks.flatMap(t => ARMS.flatMap(arm => Array.from({ length: repetitions }, (_, r) => ({ taskId: t.id, arm, repetition: r + 1 }))));
+const cells = tasks.flatMap(t => arms.flatMap(arm => Array.from({ length: repetitions }, (_, r) => ({ taskId: t.id, arm, repetition: r + 1 }))));
 const ordered = shuffle(cells).map((cell, order) => ({ ...cell, order: order + 1, attemptId: `${phase.replace(/[^a-z0-9]/g, "").slice(0, 2)}${opaqueId()}` }));
 
 const root = path.join(runsRoot, phase);

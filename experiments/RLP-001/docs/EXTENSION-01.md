@@ -70,8 +70,8 @@ execution window and no shared randomization).
 Computed from the same browser captures, outside the pre-registered defect
 counts:
 
-- **Proximity contrast:** for each label, hint or message (`for`) and its control, the ratio of the distance to the nearest *unrelated* visible element to the distance to its own control. A ratio ≤ 1 is a Gestalt failure: the element is not visually closer to what it belongs to.
-- **Group separation contrast:** for each spec parent with two or more child groups, the median gap between child groups divided by the median gap inside them. A value ≤ 1 is an inversion.
+- **Proximity contrast:** for each label, hint or message (`for`) and its control, the ratio of the distance to the nearest *unrelated* visible element to the distance to its own control. A ratio < 1 is a Gestalt failure: the element is visibly closer to something unrelated. A ratio of exactly 1 is reported separately as a tie, because alignment can resolve it (a checkbox beside its label with the next option the same distance below). This tie rule was fixed after inspecting pilot-3 output and before any full-run G-metric was computed.
+- **Group separation contrast:** for each spec parent with two or more child groups, the median gap between child groups divided by the median gap inside them. A value < 1 is an inversion and exactly 1 a tie. When every child group draws its own boundary (a border, or a background unlike its parent's), common region carries the grouping, and the case is reported as region-resolved rather than as an inversion. Like the tie rule, this was fixed after inspecting pilot-3 output (bordered product cards 16px apart with 24px inside) and before any full-run G-metric was computed.
 
 Reported per arm for the main experiment and for X1. They do not change H1–H7.
 

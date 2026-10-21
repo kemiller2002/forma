@@ -1,0 +1,296 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": "body",
+   "context": "",
+   "property": "padding",
+   "value": "1rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".bar",
+   "context": "",
+   "property": "display",
+   "value": "grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".bar",
+   "context": "",
+   "property": "grid-template-columns",
+   "value": "minmax(0, 1fr)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".bar",
+   "context": "",
+   "property": "grid-template-areas",
+   "value": "\"crumbs\" \"title\" \"tabs\" \"acts\"",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".bar",
+   "context": "",
+   "property": "gap",
+   "value": "1rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".bar",
+   "context": "",
+   "property": "padding",
+   "value": "1.25rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".crumbs",
+   "context": "",
+   "property": "grid-area",
+   "value": "crumbs",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sections ul",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sections ul",
+   "context": "",
+   "property": "padding",
+   "value": "0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "flex-wrap",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".crumbs ol",
+   "context": "",
+   "property": "gap",
+   "value": "0.25rem 0.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".crumbs li + li::before",
+   "context": "",
+   "property": "margin-right",
+   "value": "0.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sections a",
+   "context": "",
+   "property": "display",
+   "value": "inline-block",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".crumbs a, .crumbs [aria-current]",
+   "context": "",
+   "property": "min-height",
+   "value": "1.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "h1",
+   "context": "",
+   "property": "grid-area",
+   "value": "title",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "h1",
+   "context": "",
+   "property": "min-width",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sections",
+   "context": "",
+   "property": "grid-area",
+   "value": "tabs",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sections ul",
+   "context": "",
+   "property": "gap",
+   "value": "0.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sections a",
+   "context": "",
+   "property": "padding",
+   "value": "0.5rem 0.75rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sections a",
+   "context": "",
+   "property": "min-height",
+   "value": "2.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sections a",
+   "context": "",
+   "property": "box-sizing",
+   "value": "border-box",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "grid-area",
+   "value": "acts",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "gap",
+   "value": "0.75rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "align-items",
+   "value": "center",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".bar",
+   "context": "@media (min-width: 48rem)",
+   "property": "grid-template-columns",
+   "value": "minmax(0, 1fr) auto",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".bar",
+   "context": "@media (min-width: 48rem)",
+   "property": "grid-template-areas",
+   "value": "\"crumbs crumbs\" \"title title\" \"tabs tabs\" \"acts acts\"",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".bar",
+   "context": "@media (min-width: 48rem)",
+   "property": "align-items",
+   "value": "center",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "@",
+   "context": "@media (min-width: 48rem)",
+   "property": "@condition",
+   "value": "@media (min-width: 48rem)",
+   "category": "responsive",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [
+  {
+   "source": "css",
+   "selector": ".crumbs a, .crumbs [aria-current]",
+   "context": "",
+   "property": "line-height",
+   "value": "1.5rem",
+   "category": "dimension",
+   "kind": "uncertain"
+  },
+  {
+   "source": "css",
+   "selector": ".sections a",
+   "context": "",
+   "property": "border",
+   "value": "1px solid #c9ced6",
+   "category": "dimension",
+   "kind": "uncertain"
+  }
+ ],
+ "corrective": [
+  {
+   "source": "css",
+   "selector": ".bar",
+   "context": "@media (min-width: 48rem)",
+   "property": "grid-template-areas",
+   "value": "\"crumbs crumbs\" \"title title\" \"tabs tabs\" \"acts acts\"",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ]
+}
