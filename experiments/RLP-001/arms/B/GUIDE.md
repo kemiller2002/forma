@@ -7,8 +7,8 @@ spacing tokens.
 
 ## What is provided
 
-- `assets/forma.css`: Forma tokens, foundations and components (link it
-  before `assets/base.css`; the starter page already does).
+- `assets/forma.css`: Forma tokens, foundations and components (the starter
+  page links it after `assets/base.css`, so Forma's styles take precedence).
 - `assets/base.css`: shared typography, colors, control and button appearance.
   `button.secondary` is the secondary button style; `.error` styles messages.
 - `assets/placeholder.svg` for illustrations.

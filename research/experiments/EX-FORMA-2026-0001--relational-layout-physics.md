@@ -147,3 +147,8 @@ Hypotheses RLP-001-H1…H7 to `research/hypotheses/` once results exist.
   in the shared relational adapter (C and D) was fixed. Both changes were made
   on development tasks only. The pilot was rerun as `pilot-2` with a new seed.
   Pilot run 1 data is preserved and reported.
+- 2026-10-21, after pilot run 2 (`experiments/RLP-001/results/pilot-2/GATES.md`):
+  the shared `base.css` was unlayered and overrode Forma's layered spacing,
+  handicapping Arm B. It now sits in the lowest cascade layer and is linked
+  first. The pilot was rerun as `pilot-3`. Pilot runs 1 and 2 are reported
+  as infrastructure-validation data, not as arm comparisons.

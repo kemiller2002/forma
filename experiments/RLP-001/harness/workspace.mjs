@@ -22,8 +22,8 @@ const head = (task, arm) => [
   `<meta charset="utf-8">`,
   `<meta name="viewport" content="width=device-width, initial-scale=1">`,
   `<title>${task.title}</title>`,
-  ...(arm === "B" ? [`<link rel="stylesheet" href="assets/forma.css">`] : []),
   `<link rel="stylesheet" href="assets/base.css">`,
+  ...(arm === "B" ? [`<link rel="stylesheet" href="assets/forma.css">`] : []),
   ...(arm === "C" || arm === "D" ? [`<script type="module" src="assets/rlp/rlp.mjs"></script>`] : []),
   ...(arm === "A" || arm === "B" ? [`<style>\n  /* your CSS */\n</style>`] : [])
 ].map(line => `  ${line}`).join("\n");
