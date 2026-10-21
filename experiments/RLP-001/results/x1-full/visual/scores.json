@@ -1,0 +1,5013 @@
+{
+ "phase": "x1-full",
+ "images": 288,
+ "pairedImages": 144,
+ "agreement": {
+  "exact": 0.6964285714285714,
+  "within1": 0.9940476190476191
+ },
+ "perArm": {
+  "C": {
+   "hierarchy": 3.361111111111111,
+   "spacing": 3.3402777777777777,
+   "alignment": 3.3194444444444446,
+   "readability": 3.5416666666666665,
+   "grouping": 3.423611111111111,
+   "density": 3.0972222222222223,
+   "overall": 3.1944444444444446
+  },
+  "X1": {
+   "hierarchy": 3.4444444444444446,
+   "spacing": 3.4583333333333335,
+   "alignment": 3.361111111111111,
+   "readability": 3.5208333333333335,
+   "grouping": 3.5069444444444446,
+   "density": 3.125,
+   "overall": 3.2222222222222223
+  }
+ },
+ "disagreements": [
+  {
+   "attemptId": "x1e5cecb0c",
+   "arm": "X1",
+   "group": "T04-cards-profile|1|375",
+   "criterion": "readability",
+   "ratings": [
+    2,
+    4
+   ],
+   "notes": [
+    "Tiny centered avatar clashes with left-aligned text below.",
+    "Small off-centre avatar weakens hierarchy."
+   ]
+  },
+  {
+   "attemptId": "x1320115d9",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|3|1440",
+   "criterion": "readability",
+   "ratings": [
+    1,
+    3
+   ],
+   "notes": [
+    "Huge images overwhelm tiny comment text.",
+    "Giant images dominate; author names indistinguishable from text."
+   ]
+  },
+  {
+   "attemptId": "x1320115d9",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|3|1440",
+   "criterion": "grouping",
+   "ratings": [
+    1,
+    3
+   ],
+   "notes": [
+    "Huge images overwhelm tiny comment text.",
+    "Giant images dominate; author names indistinguishable from text."
+   ]
+  },
+  {
+   "attemptId": "fua2941da3",
+   "arm": "C",
+   "group": "T10-dynamic-thread|3|1440",
+   "criterion": "readability",
+   "ratings": [
+    1,
+    3
+   ],
+   "notes": [
+    "Bold names help but huge images and tight comment spacing hurt.",
+    "Giant images still dominate but bold names aid scanning."
+   ]
+  },
+  {
+   "attemptId": "fua2941da3",
+   "arm": "C",
+   "group": "T10-dynamic-thread|3|1440",
+   "criterion": "grouping",
+   "ratings": [
+    1,
+    3
+   ],
+   "notes": [
+    "Bold names help but huge images and tight comment spacing hurt.",
+    "Giant images still dominate but bold names aid scanning."
+   ]
+  },
+  {
+   "attemptId": "x1e4c66c6f",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|3|1440",
+   "criterion": "hierarchy",
+   "ratings": [
+    2,
+    4
+   ],
+   "notes": [
+    "Page heading flush to the edge and cards with uneven button positions.",
+    "Slightly better padded plan cards."
+   ]
+  }
+ ],
+ "ratings": [
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b01/image-1.png",
+   "attemptId": "x117e36a42",
+   "arm": "X1",
+   "group": "T01-form-account|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Clean single-column form with full-width fields and roomy padding."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b01/image-2.png",
+   "attemptId": "fuc91e49a4",
+   "arm": "C",
+   "group": "T01-form-account|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 4,
+    "note": "Full-width fields but heading and fields sit close to the card edge."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b02/image-1.png",
+   "attemptId": "fue9fbafa8",
+   "arm": "C",
+   "group": "T05-dashboard-ops|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "KPI values are not emphasized and the header sits flush to the page edge."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b02/image-2.png",
+   "attemptId": "x166cb46dc",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Bold KPI values and more padding make the cards read better."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b03/image-1.png",
+   "attemptId": "fueeb5d697",
+   "arm": "C",
+   "group": "T03-cards-product|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact cards with side-by-side buttons read cleanly."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b03/image-2.png",
+   "attemptId": "x1f6755795",
+   "arm": "X1",
+   "group": "T03-cards-product|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Stacked buttons and loose spacing make the cards feel long and sparse."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b04/image-1.png",
+   "attemptId": "fu4d441cea",
+   "arm": "C",
+   "group": "T01-form-account|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 3,
+    "note": "Inputs are narrower than the card and misalign with the buttons."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b04/image-2.png",
+   "attemptId": "x1fc101ecb",
+   "arm": "X1",
+   "group": "T01-form-account|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Full-width fields and aligned buttons with comfortable spacing."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b05/image-1.png",
+   "attemptId": "x1a67bca27",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Clear layout with roomy cards but an oversized chart placeholder."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b05/image-2.png",
+   "attemptId": "fu3fcb5c10",
+   "arm": "C",
+   "group": "T06-dashboard-finance|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Tidy dashboard layout with slightly tighter padding and large chart."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b06/image-1.png",
+   "attemptId": "fu3c051d74",
+   "arm": "C",
+   "group": "T04-cards-profile|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Large image, clear name, tidy stat tiles and activity list."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b06/image-2.png",
+   "attemptId": "x1e5cecb0c",
+   "arm": "X1",
+   "group": "T04-cards-profile|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 2,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Tiny centered avatar clashes with left-aligned text below."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b07/image-1.png",
+   "attemptId": "fube9b7229",
+   "arm": "C",
+   "group": "T06-dashboard-finance|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Narrow stat cards and table words break mid-word."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b07/image-2.png",
+   "attemptId": "x137c66848",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Bold values help but cards are narrow and labels and table cells break."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b08/image-1.png",
+   "attemptId": "x1001bb0be",
+   "arm": "X1",
+   "group": "T01-form-account|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 3,
+    "note": "Inputs are narrower than the buttons and card, leaving ragged edges."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b08/image-2.png",
+   "attemptId": "fu7cff66d0",
+   "arm": "C",
+   "group": "T01-form-account|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 4,
+    "note": "Full-width fields but heading and fields sit close to the card edge."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b09/image-1.png",
+   "attemptId": "x1a25b598b",
+   "arm": "X1",
+   "group": "T08-nav-workspace|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Breadcrumb, title, tabs and right-aligned actions are clearly layered."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b09/image-2.png",
+   "attemptId": "fubb407509",
+   "arm": "C",
+   "group": "T08-nav-workspace|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Actions are left-aligned and tight under the tab links."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b10/image-1.png",
+   "attemptId": "x1f08fb7bb",
+   "arm": "X1",
+   "group": "T07-nav-docs|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Nav and search sit in one bar but items are unevenly spaced."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b10/image-2.png",
+   "attemptId": "fu652d9f84",
+   "arm": "C",
+   "group": "T07-nav-docs|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Similar bar with tighter padding and weak brand separation."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b11/image-1.png",
+   "attemptId": "fudf8b1b5b",
+   "arm": "C",
+   "group": "T11-adversarial-settings|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Small gutters and an unbreakable checkbox label overflow awkwardly."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b11/image-2.png",
+   "attemptId": "x1ab322000",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "More padding and full-width button but the long label still breaks mid-word."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b12/image-1.png",
+   "attemptId": "fu93fae6de",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Name, quantity and price run together on cramped rows."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b12/image-2.png",
+   "attemptId": "x13359c253",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Item names, quantity and price are cleanly separated with good rhythm."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b13/image-1.png",
+   "attemptId": "x1daeb3e44",
+   "arm": "X1",
+   "group": "T03-cards-product|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 4,
+    "overall": 4,
+    "note": "Airy cards with clear sections; buttons float at differing heights."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b13/image-2.png",
+   "attemptId": "fu33cb209d",
+   "arm": "C",
+   "group": "T03-cards-product|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 4,
+    "overall": 4,
+    "note": "Consistent card contents but buttons sit at uneven heights."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b14/image-1.png",
+   "attemptId": "fu40a7cfb4",
+   "arm": "C",
+   "group": "T02-form-shipping|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Buttons are mismatched in width and alignment and radio notes are not indented."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b14/image-2.png",
+   "attemptId": "x1d2be5ab6",
+   "arm": "X1",
+   "group": "T02-form-shipping|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Indented radio descriptions group well; buttons still slightly uneven."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b15/image-1.png",
+   "attemptId": "fue7e0c36b",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Cards occupy only part of the width and look unbalanced."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b15/image-2.png",
+   "attemptId": "x1f085808a",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "More padding but cards are narrow and text wraps."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b16/image-1.png",
+   "attemptId": "x11c827dbc",
+   "arm": "X1",
+   "group": "T07-nav-docs|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Nav and search bar are functional but top-aligned and loosely spaced."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b16/image-2.png",
+   "attemptId": "fu95140c20",
+   "arm": "C",
+   "group": "T07-nav-docs|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Nav is centered against the button while the search label floats above."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b17/image-1.png",
+   "attemptId": "x1775efae2",
+   "arm": "X1",
+   "group": "T04-cards-profile|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact header with avatar, clear stats and tidy activity list."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b17/image-2.png",
+   "attemptId": "fu858c2ae3",
+   "arm": "C",
+   "group": "T04-cards-profile|3|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 3,
+    "grouping": 4,
+    "density": 2,
+    "overall": 2,
+    "note": "Oversized image dominates and pushes the key content down."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b18/image-1.png",
+   "attemptId": "x1320115d9",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|3|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 1,
+    "grouping": 1,
+    "density": 2,
+    "overall": 2,
+    "note": "Huge images overwhelm tiny comment text."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b18/image-2.png",
+   "attemptId": "fua2941da3",
+   "arm": "C",
+   "group": "T10-dynamic-thread|3|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 2,
+    "alignment": 3,
+    "readability": 1,
+    "grouping": 1,
+    "density": 2,
+    "overall": 2,
+    "note": "Bold names help but huge images and tight comment spacing hurt."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b19/image-1.png",
+   "attemptId": "x1a0931f81",
+   "arm": "X1",
+   "group": "T07-nav-docs|1|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Nav and search bar are functional but top-aligned and loosely spaced."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b19/image-2.png",
+   "attemptId": "fu5663052b",
+   "arm": "C",
+   "group": "T07-nav-docs|1|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Nav is centered against the button while the search label floats above."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b20/image-1.png",
+   "attemptId": "x1f085808a",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Plan cards have ragged button positions and cramped text."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b20/image-2.png",
+   "attemptId": "fue7e0c36b",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Slightly roomier plan cards but buttons still at uneven heights."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b21/image-1.png",
+   "attemptId": "x1d4a28d3e",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Wide gap and a sparse nav box with inline links."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b21/image-2.png",
+   "attemptId": "fu0142591f",
+   "arm": "C",
+   "group": "T11-adversarial-settings|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Vertical side nav is clear and the content panel is neatly structured."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b22/image-1.png",
+   "attemptId": "fu40a7cfb4",
+   "arm": "C",
+   "group": "T02-form-shipping|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Compact form in a bounded card with clear grouping."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b22/image-2.png",
+   "attemptId": "x1d2be5ab6",
+   "arm": "X1",
+   "group": "T02-form-shipping|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Fields stretch very wide, making lines hard to scan."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b23/image-1.png",
+   "attemptId": "fu4d441cea",
+   "arm": "C",
+   "group": "T01-form-account|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Two-column form in a bounded card, tidy but the helper text unbalances it."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b23/image-2.png",
+   "attemptId": "x1fc101ecb",
+   "arm": "X1",
+   "group": "T01-form-account|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Full-width two-column form stretches wide with large empty space."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b24/image-1.png",
+   "attemptId": "fu95140c20",
+   "arm": "C",
+   "group": "T07-nav-docs|3|375",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 2,
+    "alignment": 2,
+    "readability": 3,
+    "grouping": 2,
+    "density": 3,
+    "overall": 2,
+    "note": "Centered brand and links mix with left-aligned search; inconsistent alignment."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b24/image-2.png",
+   "attemptId": "x11c827dbc",
+   "arm": "X1",
+   "group": "T07-nav-docs|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Consistent left alignment with comfortable padding."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b25/image-1.png",
+   "attemptId": "x1a0931f81",
+   "arm": "X1",
+   "group": "T07-nav-docs|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Consistent left alignment with comfortable padding."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b25/image-2.png",
+   "attemptId": "fu5663052b",
+   "arm": "C",
+   "group": "T07-nav-docs|1|375",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 2,
+    "alignment": 2,
+    "readability": 3,
+    "grouping": 2,
+    "density": 3,
+    "overall": 2,
+    "note": "Centered brand and links mix with left-aligned search; inconsistent alignment."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b26/image-1.png",
+   "attemptId": "fu7cff66d0",
+   "arm": "C",
+   "group": "T01-form-account|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact two-column form with clear labels and aligned buttons."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b26/image-2.png",
+   "attemptId": "x1001bb0be",
+   "arm": "X1",
+   "group": "T01-form-account|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Airy two-column form with consistent alignment."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b27/image-1.png",
+   "attemptId": "fue8f7cd71",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Rows are crowded with name, quantity and price close together."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b27/image-2.png",
+   "attemptId": "x11ca67cdc",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Item names wrap awkwardly beside the quantity and price."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b28/image-1.png",
+   "attemptId": "fub2613ab8",
+   "arm": "C",
+   "group": "T03-cards-product|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact consistent cards with tight text spacing."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b28/image-2.png",
+   "attemptId": "x1fa646935",
+   "arm": "X1",
+   "group": "T03-cards-product|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Airy consistent cards with clear sections."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b29/image-1.png",
+   "attemptId": "x11af6288d",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Neat dashboard but the filter panel stretches tall with a small button."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b29/image-2.png",
+   "attemptId": "fudb3f547d",
+   "arm": "C",
+   "group": "T06-dashboard-finance|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Tidy dashboard with compact filter panel and clear sections."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b30/image-1.png",
+   "attemptId": "x11ca67cdc",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|1|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Item names sit far from quantity and price across the wide row."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b30/image-2.png",
+   "attemptId": "fue8f7cd71",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|1|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Item names sit far from quantity and price across the wide row."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b31/image-1.png",
+   "attemptId": "fu235adae1",
+   "arm": "C",
+   "group": "T05-dashboard-ops|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Narrow stat cards and mid-word table breaks hurt legibility."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b31/image-2.png",
+   "attemptId": "x190ceda21",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Narrow stat cards and mid-word table breaks hurt legibility."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b32/image-1.png",
+   "attemptId": "x14a4ddc8a",
+   "arm": "X1",
+   "group": "T08-nav-workspace|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Nav links are tiny against a tall sidebar and Save button is small."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b32/image-2.png",
+   "attemptId": "fu4d038af0",
+   "arm": "C",
+   "group": "T08-nav-workspace|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Well-structured settings page with consistent fields and padding."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b33/image-1.png",
+   "attemptId": "fudf8b1b5b",
+   "arm": "C",
+   "group": "T11-adversarial-settings|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Sidebar stretches tall with little content."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b33/image-2.png",
+   "attemptId": "x1ab322000",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 3,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Sidebar fits content and the Save button spans the panel clearly."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b34/image-1.png",
+   "attemptId": "fu0142591f",
+   "arm": "C",
+   "group": "T11-adversarial-settings|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Nav links are spread unevenly and the checkbox label breaks mid-word."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b34/image-2.png",
+   "attemptId": "x1d4a28d3e",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Consistent padding but the checkbox label breaks mid-word."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b35/image-1.png",
+   "attemptId": "fuc91e49a4",
+   "arm": "C",
+   "group": "T01-form-account|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Full-width form is stretched across the wide page."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b35/image-2.png",
+   "attemptId": "x117e36a42",
+   "arm": "X1",
+   "group": "T01-form-account|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Bounded form card with clear grouping and aligned buttons."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b36/image-1.png",
+   "attemptId": "x190ceda21",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Balanced dashboard with a clear table and alerts panel."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c1/b36/image-2.png",
+   "attemptId": "fu235adae1",
+   "arm": "C",
+   "group": "T05-dashboard-ops|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Dashboard works well and alerts panel fits its content."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b01/image-1.png",
+   "attemptId": "fu858c2ae3",
+   "arm": "C",
+   "group": "T04-cards-profile|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Oversized banner image and narrow stat cards left-aligned with empty space."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b01/image-2.png",
+   "attemptId": "x1775efae2",
+   "arm": "X1",
+   "group": "T04-cards-profile|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact avatar header and tidy cards, though the third stat card is orphaned."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b02/image-1.png",
+   "attemptId": "fub2d63ead",
+   "arm": "C",
+   "group": "T10-dynamic-thread|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Huge placeholder images dominate each comment and waste space."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b02/image-2.png",
+   "attemptId": "x1780541f3",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Small avatars with clear name/body/reply structure."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b03/image-1.png",
+   "attemptId": "x1e6bb299e",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 2,
+    "alignment": 2,
+    "readability": 3,
+    "grouping": 2,
+    "density": 2,
+    "overall": 2,
+    "note": "Stretched full-width rows with prices misaligned to item names and far from them."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b03/image-2.png",
+   "attemptId": "fu93ad4bf1",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact card with aligned rows and clear total and action."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b04/image-1.png",
+   "attemptId": "x1e4c66c6f",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|3|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Page heading flush to the edge and cards with uneven button positions."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b04/image-2.png",
+   "attemptId": "fu1a992744",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Cards with consistent padding but heading still flush to the left edge."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b05/image-1.png",
+   "attemptId": "x171f41516",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Settings panel is clear but save button is stretched across and nav card is oddly tall."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b05/image-2.png",
+   "attemptId": "fueff2bcb2",
+   "arm": "C",
+   "group": "T11-adversarial-settings|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Tidy nested settings with a sensibly sized save button."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b06/image-1.png",
+   "attemptId": "fu572ed09d",
+   "arm": "C",
+   "group": "T02-form-shipping|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Multi-column form is organized but fields stretch very wide."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b06/image-2.png",
+   "attemptId": "x162e0e53d",
+   "arm": "X1",
+   "group": "T02-form-shipping|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Single-column fields are consistent but the state select text is truncated."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b07/image-1.png",
+   "attemptId": "fue9fbafa8",
+   "arm": "C",
+   "group": "T05-dashboard-ops|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Table numbers break mid-digit and stat cards are narrow with dead space."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b07/image-2.png",
+   "attemptId": "x166cb46dc",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Bold values help hierarchy but numbers still wrap mid-digit in the table."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b08/image-1.png",
+   "attemptId": "fu2c568155",
+   "arm": "C",
+   "group": "T02-form-shipping|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Action buttons are staggered, one right-aligned and one left-aligned."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b08/image-2.png",
+   "attemptId": "x1da8351ce",
+   "arm": "X1",
+   "group": "T02-form-shipping|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Roomier padding but staggered action buttons look accidental."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b09/image-1.png",
+   "attemptId": "fu427eecc3",
+   "arm": "C",
+   "group": "T05-dashboard-ops|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Clear KPI row plus table and alerts panel, though content runs to the very page edges."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b09/image-2.png",
+   "attemptId": "x13752acdf",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Bold KPI values and roomier cards read well; alerts wrap in a narrow panel."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b10/image-1.png",
+   "attemptId": "x14a4ddc8a",
+   "arm": "X1",
+   "group": "T08-nav-workspace|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Clear header stack but actions float far right away from the title."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b10/image-2.png",
+   "attemptId": "fu4d038af0",
+   "arm": "C",
+   "group": "T08-nav-workspace|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Tidy header with actions grouped below the nav."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b11/image-1.png",
+   "attemptId": "x171f41516",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Long checkbox label breaks mid-word and the nested boxes squeeze the content."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b11/image-2.png",
+   "attemptId": "fueff2bcb2",
+   "arm": "C",
+   "group": "T11-adversarial-settings|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Same mid-word break with slightly less cramped nesting."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b12/image-1.png",
+   "attemptId": "fub2613ab8",
+   "arm": "C",
+   "group": "T03-cards-product|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Compact product cards with clear specs and paired buttons, but they leave empty space to the right."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b12/image-2.png",
+   "attemptId": "x1fa646935",
+   "arm": "X1",
+   "group": "T03-cards-product|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Stacked left-aligned buttons and loose spacing make the cards feel unfinished."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b13/image-1.png",
+   "attemptId": "x13378ba9f",
+   "arm": "X1",
+   "group": "T08-nav-workspace|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Clear breadcrumb, title, nav and actions; link rows are a little tight."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b13/image-2.png",
+   "attemptId": "fu5efa05e6",
+   "arm": "C",
+   "group": "T08-nav-workspace|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Same structure with comfortable spacing between link rows."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b14/image-1.png",
+   "attemptId": "x11af6288d",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 2,
+    "alignment": 2,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Summary cards have inconsistent padding and the table wraps words and numbers badly."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b14/image-2.png",
+   "attemptId": "fudb3f547d",
+   "arm": "C",
+   "group": "T06-dashboard-finance|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Consistent card padding but table text still breaks mid-word."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b15/image-1.png",
+   "attemptId": "fua2946c91",
+   "arm": "C",
+   "group": "T10-dynamic-thread|2|375",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Full-width placeholder images swamp the short comments."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b15/image-2.png",
+   "attemptId": "x18fff92b6",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|2|375",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Large images dominate each comment and waste vertical space."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b16/image-1.png",
+   "attemptId": "x162e0e53d",
+   "arm": "X1",
+   "group": "T02-form-shipping|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "State select text is clipped and the two action buttons are staggered."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b16/image-2.png",
+   "attemptId": "fu572ed09d",
+   "arm": "C",
+   "group": "T02-form-shipping|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Spacing is even but action buttons are staggered with different alignments."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b17/image-1.png",
+   "attemptId": "x1f6755795",
+   "arm": "X1",
+   "group": "T03-cards-product|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Neat three-card row but button rows do not line up across cards of different content height."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b17/image-2.png",
+   "attemptId": "fueeb5d697",
+   "arm": "C",
+   "group": "T03-cards-product|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Tighter cards with good internal structure, but buttons sit at uneven heights."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b18/image-1.png",
+   "attemptId": "fua2946c91",
+   "arm": "C",
+   "group": "T10-dynamic-thread|2|1440",
+   "ratings": {
+    "hierarchy": 1,
+    "spacing": 2,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 2,
+    "density": 1,
+    "overall": 1,
+    "note": "Enormous placeholder images dwarf tiny text and make the page extremely long."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b18/image-2.png",
+   "attemptId": "x18fff92b6",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|2|1440",
+   "ratings": {
+    "hierarchy": 1,
+    "spacing": 2,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 2,
+    "density": 1,
+    "overall": 1,
+    "note": "Giant images overwhelm tiny comment text and waste huge areas."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b19/image-1.png",
+   "attemptId": "x1780541f3",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact avatar comments with clear name, text and reply grouping."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b19/image-2.png",
+   "attemptId": "fub2d63ead",
+   "arm": "C",
+   "group": "T10-dynamic-thread|1|1440",
+   "ratings": {
+    "hierarchy": 1,
+    "spacing": 2,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 2,
+    "density": 1,
+    "overall": 1,
+    "note": "Giant images dominate and the text is tiny relative to the page."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b20/image-1.png",
+   "attemptId": "x1e6bb299e",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Clean order card with clear item rows, though price and remove button crowd together."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b20/image-2.png",
+   "attemptId": "fu93ad4bf1",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Row content is squeezed together and one item name wraps awkwardly."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b21/image-1.png",
+   "attemptId": "fu1a992744",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Clear plan cards but narrow column leaves empty space on the right."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b21/image-2.png",
+   "attemptId": "x1e4c66c6f",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Same narrow cards and the Choose Business button text wraps."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b22/image-1.png",
+   "attemptId": "fubb407509",
+   "arm": "C",
+   "group": "T08-nav-workspace|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Well-ordered header with consistent left alignment and grouped actions."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b22/image-2.png",
+   "attemptId": "x1a25b598b",
+   "arm": "X1",
+   "group": "T08-nav-workspace|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 3,
+    "note": "Actions right-aligned while everything else is left-aligned."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b23/image-1.png",
+   "attemptId": "x1320115d9",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|3|375",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Large placeholder images overshadow the comment text."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b23/image-2.png",
+   "attemptId": "fua2941da3",
+   "arm": "C",
+   "group": "T10-dynamic-thread|3|375",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Bolder names help slightly but images still dominate."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b24/image-1.png",
+   "attemptId": "x1f08fb7bb",
+   "arm": "X1",
+   "group": "T07-nav-docs|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Stacked nav, search and button are orderly but sign-in is bare and unrelated looking."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b24/image-2.png",
+   "attemptId": "fu652d9f84",
+   "arm": "C",
+   "group": "T07-nav-docs|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Search and sign-in share a row which blurs their separate purposes."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b25/image-1.png",
+   "attemptId": "x152187df4",
+   "arm": "X1",
+   "group": "T04-cards-profile|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Clear profile with tidy activity card, though the third stat card is orphaned."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b25/image-2.png",
+   "attemptId": "fufcbfa9b4",
+   "arm": "C",
+   "group": "T04-cards-profile|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Slightly tighter version with side-by-side activity times; orphaned stat card remains."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b26/image-1.png",
+   "attemptId": "x1daeb3e44",
+   "arm": "X1",
+   "group": "T03-cards-product|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Stacked buttons and large gaps inside the cards feel loose."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b26/image-2.png",
+   "attemptId": "fu33cb209d",
+   "arm": "C",
+   "group": "T03-cards-product|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact cards with side-by-side buttons and tidy spec boxes, but cards are not full width."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b27/image-1.png",
+   "attemptId": "x1a67bca27",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 2,
+    "alignment": 2,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "The word Remaining breaks mid-word, card heights vary, and the table wraps badly."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b27/image-2.png",
+   "attemptId": "fu3fcb5c10",
+   "arm": "C",
+   "group": "T06-dashboard-finance|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Consistent cards but table cells still break words and numbers."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b28/image-1.png",
+   "attemptId": "fu93fae6de",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Item names sit higher than price and button, and rows stretch very wide."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b28/image-2.png",
+   "attemptId": "x13359c253",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Quantity under name is clearer but prices float far from their items."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b29/image-1.png",
+   "attemptId": "x167e5f959",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Clear plan cards with consistent buttons but a narrow column leaving empty space right."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b29/image-2.png",
+   "attemptId": "fuf88b44cd",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Narrow cards cause the Choose Business button and some text to wrap."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b30/image-1.png",
+   "attemptId": "x167e5f959",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Four-column cards are aligned but the content leaves large empty areas and buttons sit at uneven heights."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b30/image-2.png",
+   "attemptId": "fuf88b44cd",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Consistent padded cards with a tidy heading, though buttons are not baseline aligned across cards."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b31/image-1.png",
+   "attemptId": "fufcbfa9b4",
+   "arm": "C",
+   "group": "T04-cards-profile|2|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Gigantic banner image pushes the actual profile content far down."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b31/image-2.png",
+   "attemptId": "x152187df4",
+   "arm": "X1",
+   "group": "T04-cards-profile|2|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Huge hero image dominates while text is small and wide."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b32/image-1.png",
+   "attemptId": "fu427eecc3",
+   "arm": "C",
+   "group": "T05-dashboard-ops|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Narrow stat cards and table cells that break numbers mid-digit."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b32/image-2.png",
+   "attemptId": "x13752acdf",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Bold KPI values help, but the table still splits numbers across lines."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b33/image-1.png",
+   "attemptId": "fube9b7229",
+   "arm": "C",
+   "group": "T06-dashboard-finance|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Sensible dashboard layout but the oversized chart image dominates and padding is tight."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b33/image-2.png",
+   "attemptId": "x137c66848",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Bold figures and comfortable padding, though the chart placeholder is still oversized."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b34/image-1.png",
+   "attemptId": "x1da8351ce",
+   "arm": "X1",
+   "group": "T02-form-shipping|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Clean wide form but delivery descriptions float away from their radios with loose gaps."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b34/image-2.png",
+   "attemptId": "fu2c568155",
+   "arm": "C",
+   "group": "T02-form-shipping|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 4,
+    "overall": 4,
+    "note": "Tighter form with sensible field grouping, descriptions flush left under radios."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b35/image-1.png",
+   "attemptId": "x1e5cecb0c",
+   "arm": "X1",
+   "group": "T04-cards-profile|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact header with avatar and aligned follow button, tidy stats and activity."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b35/image-2.png",
+   "attemptId": "fu3c051d74",
+   "arm": "C",
+   "group": "T04-cards-profile|1|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Giant hero image pushes all profile content far down the page."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b36/image-1.png",
+   "attemptId": "fu5efa05e6",
+   "arm": "C",
+   "group": "T08-nav-workspace|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Well-ordered header with consistent edges and grouped actions."
+   }
+  },
+  {
+   "reviewer": "r1",
+   "id": "r1-c2/b36/image-2.png",
+   "attemptId": "x13378ba9f",
+   "arm": "X1",
+   "group": "T08-nav-workspace|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Same clear structure with slightly looser padding."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b01/image-1.png",
+   "attemptId": "x117e36a42",
+   "arm": "X1",
+   "group": "T01-form-account|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Clean form with comfortable padding and clear labels."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b01/image-2.png",
+   "attemptId": "fuc91e49a4",
+   "arm": "C",
+   "group": "T01-form-account|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Same form but tighter padding around heading and edges."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b02/image-1.png",
+   "attemptId": "fue9fbafa8",
+   "arm": "C",
+   "group": "T05-dashboard-ops|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 3,
+    "note": "Stat values not emphasized; cards cramped to text edges."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b02/image-2.png",
+   "attemptId": "x166cb46dc",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Bold stat values and roomier card padding."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b03/image-1.png",
+   "attemptId": "fueeb5d697",
+   "arm": "C",
+   "group": "T03-cards-product|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact cards with side-by-side actions; cards leave right gap."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b03/image-2.png",
+   "attemptId": "x1f6755795",
+   "arm": "X1",
+   "group": "T03-cards-product|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Stacked buttons and loose spacing make cards long and airy."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b04/image-1.png",
+   "attemptId": "x1fc101ecb",
+   "arm": "X1",
+   "group": "T01-form-account|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Full-width inputs align with button edge."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b04/image-2.png",
+   "attemptId": "fu4d441cea",
+   "arm": "C",
+   "group": "T01-form-account|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 3,
+    "note": "Inputs stop short of the right edge, misaligned with buttons."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b05/image-1.png",
+   "attemptId": "fu3fcb5c10",
+   "arm": "C",
+   "group": "T06-dashboard-finance|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Tidy dashboard layout; modest padding."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b05/image-2.png",
+   "attemptId": "x1a67bca27",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Roomier padding and consistent alignment."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b06/image-1.png",
+   "attemptId": "fu3c051d74",
+   "arm": "C",
+   "group": "T04-cards-profile|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Strong hero image and clear name; stat cards wrap awkwardly."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b06/image-2.png",
+   "attemptId": "x1e5cecb0c",
+   "arm": "X1",
+   "group": "T04-cards-profile|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Small off-centre avatar weakens hierarchy."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b07/image-1.png",
+   "attemptId": "fube9b7229",
+   "arm": "C",
+   "group": "T06-dashboard-finance|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Stat cards narrow; table headings and numbers break mid-word."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b07/image-2.png",
+   "attemptId": "x137c66848",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Bold values but Remaining and amounts break mid-word."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b08/image-1.png",
+   "attemptId": "x1001bb0be",
+   "arm": "X1",
+   "group": "T01-form-account|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 3,
+    "note": "Inputs stop short of the right edge, misaligned with buttons."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b08/image-2.png",
+   "attemptId": "fu7cff66d0",
+   "arm": "C",
+   "group": "T01-form-account|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Full-width inputs align with buttons; heading gap slightly tight."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b09/image-1.png",
+   "attemptId": "x1a25b598b",
+   "arm": "X1",
+   "group": "T08-nav-workspace|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Right-aligned actions separate from title and tabs; clear order."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b09/image-2.png",
+   "attemptId": "fubb407509",
+   "arm": "C",
+   "group": "T08-nav-workspace|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Actions left-aligned and tight under tabs; weaker separation."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b10/image-1.png",
+   "attemptId": "fu652d9f84",
+   "arm": "C",
+   "group": "T07-nav-docs|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Search label and field cramped against nav links; slim padding."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b10/image-2.png",
+   "attemptId": "x1f08fb7bb",
+   "arm": "X1",
+   "group": "T07-nav-docs|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Roomier padding; search group sits reasonably but nav tightly packed."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b11/image-1.png",
+   "attemptId": "x1ab322000",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Long unbroken label overflows the card; full-width save button."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b11/image-2.png",
+   "attemptId": "fudf8b1b5b",
+   "arm": "C",
+   "group": "T11-adversarial-settings|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Unbroken label wraps mid-word; tight padding and small save button."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b12/image-1.png",
+   "attemptId": "fu93fae6de",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Qty and price squeezed in a row beside buttons; columns ragged."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b12/image-2.png",
+   "attemptId": "x13359c253",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Qty under name and aligned prices make rows easy to scan."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b13/image-1.png",
+   "attemptId": "fu33cb209d",
+   "arm": "C",
+   "group": "T03-cards-product|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Clear cards but tight padding and empty bottom space under buttons."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b13/image-2.png",
+   "attemptId": "x1daeb3e44",
+   "arm": "X1",
+   "group": "T03-cards-product|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Roomier padding and consistent card structure."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b14/image-1.png",
+   "attemptId": "fu40a7cfb4",
+   "arm": "C",
+   "group": "T02-form-shipping|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Radio helper text not indented; buttons offset and uneven."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b14/image-2.png",
+   "attemptId": "x1d2be5ab6",
+   "arm": "X1",
+   "group": "T02-form-shipping|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Radio descriptions indented under options; buttons still offset."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b15/image-1.png",
+   "attemptId": "x1f085808a",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Narrow cards with cramped text and wrapping button label."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b15/image-2.png",
+   "attemptId": "fue7e0c36b",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Wider padding, fuller buttons, less awkward wrapping."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b16/image-1.png",
+   "attemptId": "x11c827dbc",
+   "arm": "X1",
+   "group": "T07-nav-docs|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Sign in aligns with input but nav links top-aligned and header airy."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b16/image-2.png",
+   "attemptId": "fu95140c20",
+   "arm": "C",
+   "group": "T07-nav-docs|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Sign in button floats off the input row; wide search field."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b17/image-1.png",
+   "attemptId": "fu858c2ae3",
+   "arm": "C",
+   "group": "T04-cards-profile|3|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Huge hero image dwarfs the name and small stats."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b17/image-2.png",
+   "attemptId": "x1775efae2",
+   "arm": "X1",
+   "group": "T04-cards-profile|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact avatar beside name and follow action gives clear hierarchy."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b18/image-1.png",
+   "attemptId": "x1320115d9",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|3|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Giant images dominate; author names indistinguishable from text."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b18/image-2.png",
+   "attemptId": "fua2941da3",
+   "arm": "C",
+   "group": "T10-dynamic-thread|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Giant images still dominate but bold names aid scanning."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b19/image-1.png",
+   "attemptId": "x1a0931f81",
+   "arm": "X1",
+   "group": "T07-nav-docs|1|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Sign in aligns with input but nav links top-aligned and header airy."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b19/image-2.png",
+   "attemptId": "fu5663052b",
+   "arm": "C",
+   "group": "T07-nav-docs|1|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Sign in button floats off the input row."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b20/image-1.png",
+   "attemptId": "fue7e0c36b",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Even cards with full-width buttons; buttons not baseline-aligned across cards."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b20/image-2.png",
+   "attemptId": "x1f085808a",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Tighter title-to-price spacing; buttons ragged across cards."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b21/image-1.png",
+   "attemptId": "x1d4a28d3e",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Horizontal tab links in a wide box waste space; long label unbroken."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b21/image-2.png",
+   "attemptId": "fu0142591f",
+   "arm": "C",
+   "group": "T11-adversarial-settings|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 3,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Vertical nav list and tidy content panel read clearly."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b22/image-1.png",
+   "attemptId": "fu40a7cfb4",
+   "arm": "C",
+   "group": "T02-form-shipping|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Contained form with city/state/zip row; empty right side."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b22/image-2.png",
+   "attemptId": "x1d2be5ab6",
+   "arm": "X1",
+   "group": "T02-form-shipping|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Radios indented but fields stretch very wide."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b23/image-1.png",
+   "attemptId": "fu4d441cea",
+   "arm": "C",
+   "group": "T01-form-account|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Compact two-column form; empty right half of page."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b23/image-2.png",
+   "attemptId": "x1fc101ecb",
+   "arm": "X1",
+   "group": "T01-form-account|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Two-column form fills width; long fields and wide spread."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b24/image-1.png",
+   "attemptId": "x11c827dbc",
+   "arm": "X1",
+   "group": "T07-nav-docs|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Consistent left alignment; link rows wrap loosely with no grouping."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b24/image-2.png",
+   "attemptId": "fu95140c20",
+   "arm": "C",
+   "group": "T07-nav-docs|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Mixed centred and left-aligned links look accidental."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b25/image-1.png",
+   "attemptId": "x1a0931f81",
+   "arm": "X1",
+   "group": "T07-nav-docs|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Consistent left alignment; link rows wrap loosely with no grouping."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b25/image-2.png",
+   "attemptId": "fu5663052b",
+   "arm": "C",
+   "group": "T07-nav-docs|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Mixed centred and left-aligned links look accidental."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b26/image-1.png",
+   "attemptId": "fu7cff66d0",
+   "arm": "C",
+   "group": "T01-form-account|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Tidy two-column form but heading and subtitle tight."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b26/image-2.png",
+   "attemptId": "x1001bb0be",
+   "arm": "X1",
+   "group": "T01-form-account|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "More generous padding and rhythm in the two-column form."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b27/image-1.png",
+   "attemptId": "fue8f7cd71",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Item names stay on one line; clear row with qty, price and remove."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b27/image-2.png",
+   "attemptId": "x11ca67cdc",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Item names wrap in rows; qty and price columns ragged."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b28/image-1.png",
+   "attemptId": "x1fa646935",
+   "arm": "X1",
+   "group": "T03-cards-product|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Roomy cards with clear price box and actions."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b28/image-2.png",
+   "attemptId": "fub2613ab8",
+   "arm": "C",
+   "group": "T03-cards-product|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Tighter price box padding; otherwise consistent cards."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b29/image-1.png",
+   "attemptId": "x11af6288d",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Sidebar stretches full height; roomy padding and clean table."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b29/image-2.png",
+   "attemptId": "fudb3f547d",
+   "arm": "C",
+   "group": "T06-dashboard-finance|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Sidebar sized to content; chart and table well aligned."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b30/image-1.png",
+   "attemptId": "x11ca67cdc",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 2,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Item names sit above the row centre of qty, price and remove."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b30/image-2.png",
+   "attemptId": "fue8f7cd71",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Row items vertically centred; tidy actions and total."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b31/image-1.png",
+   "attemptId": "fu235adae1",
+   "arm": "C",
+   "group": "T05-dashboard-ops|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Stat cards narrow; table numbers split mid-word."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b31/image-2.png",
+   "attemptId": "x190ceda21",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Heavier padding squeezes table, breaking numbers and percents."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b32/image-1.png",
+   "attemptId": "fu4d038af0",
+   "arm": "C",
+   "group": "T08-nav-workspace|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 3,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Left-aligned actions, but tabs wrap loosely under heading."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b32/image-2.png",
+   "attemptId": "x14a4ddc8a",
+   "arm": "X1",
+   "group": "T08-nav-workspace|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 4,
+    "overall": 3,
+    "note": "Roomier padding; right-aligned buttons ragged against left-aligned content."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b33/image-1.png",
+   "attemptId": "fudf8b1b5b",
+   "arm": "C",
+   "group": "T11-adversarial-settings|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Tab list in a tall empty sidebar; unbroken label runs long."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b33/image-2.png",
+   "attemptId": "x1ab322000",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Sidebar sized to content, but the save button spans the whole panel."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b34/image-1.png",
+   "attemptId": "x1d4a28d3e",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Long label breaks mid-word; nav links cramped in the box."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b34/image-2.png",
+   "attemptId": "fu0142591f",
+   "arm": "C",
+   "group": "T11-adversarial-settings|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Spaced-out tabs; long label still breaks but less awkwardly."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b35/image-1.png",
+   "attemptId": "x117e36a42",
+   "arm": "X1",
+   "group": "T01-form-account|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Compact two-column form; empty right half of page."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b35/image-2.png",
+   "attemptId": "fuc91e49a4",
+   "arm": "C",
+   "group": "T01-form-account|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Two-column form fills width; very long inputs."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b36/image-1.png",
+   "attemptId": "x190ceda21",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Spacious stat cards and clear table; alerts card stretches to table height."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c1/b36/image-2.png",
+   "attemptId": "fu235adae1",
+   "arm": "C",
+   "group": "T05-dashboard-ops|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact alerts card but bottom edges of panels do not line up."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b01/image-1.png",
+   "attemptId": "fu858c2ae3",
+   "arm": "C",
+   "group": "T04-cards-profile|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Oversized image and narrow stacked stat cards feel unbalanced."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b01/image-2.png",
+   "attemptId": "x1775efae2",
+   "arm": "X1",
+   "group": "T04-cards-profile|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact avatar header and two-up stats read cleanly."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b02/image-1.png",
+   "attemptId": "fub2d63ead",
+   "arm": "C",
+   "group": "T10-dynamic-thread|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Huge avatars dominate each comment."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b02/image-2.png",
+   "attemptId": "x1780541f3",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Small avatars with bold names group comments well."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b03/image-1.png",
+   "attemptId": "x1e6bb299e",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 3,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Qty/price sit above button centre line and far from names."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b03/image-2.png",
+   "attemptId": "fu93ad4bf1",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Compact rows align; card leaves right side empty."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b04/image-1.png",
+   "attemptId": "fu1a992744",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Clear cards, but heading flush to edge and uneven card fill."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b04/image-2.png",
+   "attemptId": "x1e4c66c6f",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Slightly better padded plan cards."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b05/image-1.png",
+   "attemptId": "fueff2bcb2",
+   "arm": "C",
+   "group": "T11-adversarial-settings|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Cramped nav links and unbreakable label overflows tidy layout."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b05/image-2.png",
+   "attemptId": "x171f41516",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Roomier but same long label and tiny nav."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b06/image-1.png",
+   "attemptId": "x162e0e53d",
+   "arm": "X1",
+   "group": "T02-form-shipping|3|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "State select text is clipped and city field disproportionately wide."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b06/image-2.png",
+   "attemptId": "fu572ed09d",
+   "arm": "C",
+   "group": "T02-form-shipping|3|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Balanced two-column form with legible controls."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b07/image-1.png",
+   "attemptId": "x166cb46dc",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Table columns wrap digits badly; cards half width."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b07/image-2.png",
+   "attemptId": "fue9fbafa8",
+   "arm": "C",
+   "group": "T05-dashboard-ops|3|375",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Table wraps badly and metric values lose emphasis."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b08/image-1.png",
+   "attemptId": "fu2c568155",
+   "arm": "C",
+   "group": "T02-form-shipping|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Stacked buttons misaligned left versus right."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b08/image-2.png",
+   "attemptId": "x1da8351ce",
+   "arm": "X1",
+   "group": "T02-form-shipping|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Same stacked-button misalignment with more padding."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b09/image-1.png",
+   "attemptId": "fu427eecc3",
+   "arm": "C",
+   "group": "T05-dashboard-ops|1|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Cards flush to edges, plain metric values."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b09/image-2.png",
+   "attemptId": "x13752acdf",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Bold metric values and comfortable padding."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b10/image-1.png",
+   "attemptId": "x14a4ddc8a",
+   "arm": "X1",
+   "group": "T08-nav-workspace|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Actions far right, detached from links."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b10/image-2.png",
+   "attemptId": "fu4d038af0",
+   "arm": "C",
+   "group": "T08-nav-workspace|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Actions align left with content."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b11/image-1.png",
+   "attemptId": "x171f41516",
+   "arm": "X1",
+   "group": "T11-adversarial-settings|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Label breaks mid-word in nested cards."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b11/image-2.png",
+   "attemptId": "fueff2bcb2",
+   "arm": "C",
+   "group": "T11-adversarial-settings|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Slightly tighter but label still breaks."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b12/image-1.png",
+   "attemptId": "fub2613ab8",
+   "arm": "C",
+   "group": "T03-cards-product|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Tidy cards with buttons side by side, narrow column."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b12/image-2.png",
+   "attemptId": "x1fa646935",
+   "arm": "X1",
+   "group": "T03-cards-product|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Stacked buttons and loose spacing."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b13/image-1.png",
+   "attemptId": "x13378ba9f",
+   "arm": "X1",
+   "group": "T08-nav-workspace|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Fine but link wrapping is ragged."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b13/image-2.png",
+   "attemptId": "fu5efa05e6",
+   "arm": "C",
+   "group": "T08-nav-workspace|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Similar wrapping; slightly more padding."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b14/image-1.png",
+   "attemptId": "fudb3f547d",
+   "arm": "C",
+   "group": "T06-dashboard-finance|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Table cells wrap mid-word."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b14/image-2.png",
+   "attemptId": "x11af6288d",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 2,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 2,
+    "note": "Uneven card heights and spacing, table wraps."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b15/image-1.png",
+   "attemptId": "fua2946c91",
+   "arm": "C",
+   "group": "T10-dynamic-thread|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Oversized avatars."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b15/image-2.png",
+   "attemptId": "x18fff92b6",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Oversized avatars."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b16/image-1.png",
+   "attemptId": "x162e0e53d",
+   "arm": "X1",
+   "group": "T02-form-shipping|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "State select clipped; buttons stacked unevenly."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b16/image-2.png",
+   "attemptId": "fu572ed09d",
+   "arm": "C",
+   "group": "T02-form-shipping|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Select readable but buttons stacked unevenly."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b17/image-1.png",
+   "attemptId": "fueeb5d697",
+   "arm": "C",
+   "group": "T03-cards-product|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Clean three-card grid."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b17/image-2.png",
+   "attemptId": "x1f6755795",
+   "arm": "X1",
+   "group": "T03-cards-product|2|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Clean grid with generous padding."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b18/image-1.png",
+   "attemptId": "x18fff92b6",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|2|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 2,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 2,
+    "density": 1,
+    "overall": 2,
+    "note": "Enormous images, tiny text."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b18/image-2.png",
+   "attemptId": "fua2946c91",
+   "arm": "C",
+   "group": "T10-dynamic-thread|2|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 2,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 2,
+    "density": 1,
+    "overall": 2,
+    "note": "Enormous images, tiny text."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b19/image-1.png",
+   "attemptId": "fub2d63ead",
+   "arm": "C",
+   "group": "T10-dynamic-thread|1|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 2,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 2,
+    "density": 1,
+    "overall": 2,
+    "note": "Enormous images, tiny text."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b19/image-2.png",
+   "attemptId": "x1780541f3",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Small avatars, clear comment structure."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b20/image-1.png",
+   "attemptId": "x1e6bb299e",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 4,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Qty and price baseline offset from buttons."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b20/image-2.png",
+   "attemptId": "fu93ad4bf1",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|3|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact rows; item info crowded."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b21/image-1.png",
+   "attemptId": "fu1a992744",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Cards use only part of width."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b21/image-2.png",
+   "attemptId": "x1e4c66c6f",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 3,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Cards narrow, button text wraps."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b22/image-1.png",
+   "attemptId": "x1a25b598b",
+   "arm": "X1",
+   "group": "T08-nav-workspace|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Buttons right-aligned against left content."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b22/image-2.png",
+   "attemptId": "fubb407509",
+   "arm": "C",
+   "group": "T08-nav-workspace|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Buttons align left with content."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b23/image-1.png",
+   "attemptId": "x1320115d9",
+   "arm": "X1",
+   "group": "T10-dynamic-thread|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Loose spacing, plain names."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b23/image-2.png",
+   "attemptId": "fua2941da3",
+   "arm": "C",
+   "group": "T10-dynamic-thread|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 3,
+    "note": "Bold names and tighter grouping."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b24/image-1.png",
+   "attemptId": "fu652d9f84",
+   "arm": "C",
+   "group": "T07-nav-docs|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 2,
+    "density": 3,
+    "overall": 3,
+    "note": "Nav links stack unevenly then search row."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b24/image-2.png",
+   "attemptId": "x1f08fb7bb",
+   "arm": "X1",
+   "group": "T07-nav-docs|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Aligned left edge, button below field."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b25/image-1.png",
+   "attemptId": "x152187df4",
+   "arm": "X1",
+   "group": "T04-cards-profile|2|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Large image, activity times drop under text."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b25/image-2.png",
+   "attemptId": "fufcbfa9b4",
+   "arm": "C",
+   "group": "T04-cards-profile|2|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Activity rows pair text and time well."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b26/image-1.png",
+   "attemptId": "x1daeb3e44",
+   "arm": "X1",
+   "group": "T03-cards-product|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 2,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Stacked buttons and loose gaps."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b26/image-2.png",
+   "attemptId": "fu33cb209d",
+   "arm": "C",
+   "group": "T03-cards-product|1|375",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Compact cards with side-by-side actions."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b27/image-1.png",
+   "attemptId": "fu3fcb5c10",
+   "arm": "C",
+   "group": "T06-dashboard-finance|3|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Table wraps mid-word, narrow cards."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b27/image-2.png",
+   "attemptId": "x1a67bca27",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|3|375",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Remaining label breaks and table wraps."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b28/image-1.png",
+   "attemptId": "x13359c253",
+   "arm": "X1",
+   "group": "T09-dynamic-checkout|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Price not aligned with name rows."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b28/image-2.png",
+   "attemptId": "fu93fae6de",
+   "arm": "C",
+   "group": "T09-dynamic-checkout|2|1440",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 2,
+    "readability": 3,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Item names sit above buttons and amounts."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b29/image-1.png",
+   "attemptId": "fuf88b44cd",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Cards narrow, button text wraps."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b29/image-2.png",
+   "attemptId": "x167e5f959",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Cards narrow but tidy."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b30/image-1.png",
+   "attemptId": "x167e5f959",
+   "arm": "X1",
+   "group": "T12-adversarial-pricing|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Buttons tight to text."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b30/image-2.png",
+   "attemptId": "fuf88b44cd",
+   "arm": "C",
+   "group": "T12-adversarial-pricing|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Well-spaced plan cards."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b31/image-1.png",
+   "attemptId": "fufcbfa9b4",
+   "arm": "C",
+   "group": "T04-cards-profile|2|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Giant image pushes content far down."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b31/image-2.png",
+   "attemptId": "x152187df4",
+   "arm": "X1",
+   "group": "T04-cards-profile|2|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Giant image pushes content far down."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b32/image-1.png",
+   "attemptId": "fu427eecc3",
+   "arm": "C",
+   "group": "T05-dashboard-ops|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 3,
+    "overall": 3,
+    "note": "Table wraps mid-word."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b32/image-2.png",
+   "attemptId": "x13752acdf",
+   "arm": "X1",
+   "group": "T05-dashboard-ops|1|375",
+   "ratings": {
+    "hierarchy": 3,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 2,
+    "grouping": 3,
+    "density": 2,
+    "overall": 3,
+    "note": "Bold values but table wraps."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b33/image-1.png",
+   "attemptId": "fube9b7229",
+   "arm": "C",
+   "group": "T06-dashboard-finance|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Good dashboard layout."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b33/image-2.png",
+   "attemptId": "x137c66848",
+   "arm": "X1",
+   "group": "T06-dashboard-finance|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Bold values and roomy panels."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b34/image-1.png",
+   "attemptId": "fu2c568155",
+   "arm": "C",
+   "group": "T02-form-shipping|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact form, sensible field widths."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b34/image-2.png",
+   "attemptId": "x1da8351ce",
+   "arm": "X1",
+   "group": "T02-form-shipping|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Slightly loose radio spacing."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b35/image-1.png",
+   "attemptId": "x1e5cecb0c",
+   "arm": "X1",
+   "group": "T04-cards-profile|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 4,
+    "overall": 4,
+    "note": "Compact profile header."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b35/image-2.png",
+   "attemptId": "fu3c051d74",
+   "arm": "C",
+   "group": "T04-cards-profile|1|1440",
+   "ratings": {
+    "hierarchy": 2,
+    "spacing": 3,
+    "alignment": 3,
+    "readability": 4,
+    "grouping": 3,
+    "density": 2,
+    "overall": 2,
+    "note": "Giant image dominates."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b36/image-1.png",
+   "attemptId": "x13378ba9f",
+   "arm": "X1",
+   "group": "T08-nav-workspace|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Clear header, large empty area."
+   }
+  },
+  {
+   "reviewer": "r2",
+   "id": "r2-c2/b36/image-2.png",
+   "attemptId": "fu5efa05e6",
+   "arm": "C",
+   "group": "T08-nav-workspace|1|1440",
+   "ratings": {
+    "hierarchy": 4,
+    "spacing": 4,
+    "alignment": 4,
+    "readability": 4,
+    "grouping": 4,
+    "density": 3,
+    "overall": 4,
+    "note": "Clear header, large empty area."
+   }
+  }
+ ]
+}

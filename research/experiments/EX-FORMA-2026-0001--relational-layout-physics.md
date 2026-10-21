@@ -2,10 +2,10 @@
 id: EX-FORMA-2026-0001
 title: "RLP-001: Relational layout physics — agent efficiency and correctness"
 research_area: agent-ui-construction
-status: active
+status: completed
 created: 2026-10-21
 author_agent: anthropic/claude-code
-tests_hypotheses: [RLP-001-H1, RLP-001-H2, RLP-001-H3, RLP-001-H4, RLP-001-H5, RLP-001-H6, RLP-001-H7]
+tests_hypotheses: [HY-FORMA-2026-0001, HY-FORMA-2026-0002, RLP-001-H1, RLP-001-H2, RLP-001-H3, RLP-001-H4, RLP-001-H5, RLP-001-H6, RLP-001-H7]
 related_theories: []
 inputs:
   - .praxis/inbox/documents/2026-10-21-RLP-001.md
@@ -16,14 +16,17 @@ outputs:
 provenance:
   contributions:
     EXE-20261021T181014746Z-fc9e184b:
-      operations: [created]
+      operations: [created, modified]
       at: 2026-10-21T18:38:25.971Z
+      last: 2026-10-21T19:54:17.610Z
       actor:
         kind: agent
         id: anthropic/claude-code
         provider: anthropic
         model: unknown
         runtime: claude-code
+      evidence: [experiments/RLP-001/REPORT.md]
+      reason: "Results, conclusion and status recorded after execution"
 ---
 
 # Experiment
@@ -113,7 +116,19 @@ Arm B controls for "any standardization helps". Arm C controls for "relationship
 
 ## Results
 
-Recorded in `experiments/RLP-001/REPORT.md` after execution.
+Full results: `experiments/RLP-001/REPORT.md` and `experiments/RLP-001/results/full/analysis.md`. 144 attempts, all scored, same model in every transcript, no leakage.
+
+| Hypothesis | Result | Verdict |
+|---|---|---|
+| H1 (primary) | A − D first-draft defects 0.47, 95% CI [−0.19, 1.11], Wilcoxon p = 0.18 | Not supported |
+| H2 | Tokens per accepted interface 267k (A) vs 262k (D); task-paired A − D 25.7k, p = 0.034 | Weak |
+| H3 | Decisions 31.4 (A) → 12.8 (D); A − D 18.6, p < 0.001 | Supported |
+| H4 | Repairs A − D 0.44, CI [0.19, 0.69], p = 0.016 | Supported (small) |
+| H5 | Held-out defects A − D 2.39, CI [0.31, 5.42], p = 0.031; dynamic-step defects not improved | Supported for held-out conditions only |
+| H6 | D had more first-draft defects than C (0.81 vs 0.31), equal held-out defects | Falsified |
+| H7 | D solve p95 105.5 ms (9 of 12 tasks > 50 ms); 0 convergence failures. C p95 9.3 ms | Fails for D |
+
+Blind visual review (576 ratings, 2 reviewers) preferred A: overall A 4.28, B 2.53, C 2.94, D 3.03. Rubric reliability on the full run: category κ = 0.83.
 
 ## Threats to validity
 
@@ -125,11 +140,20 @@ See README (commands, seeds, versions) and `baseline.json`.
 
 ## Conclusion
 
-Pending.
+Outcome B: relationships win and physics does not. The relational vocabulary
+resolved by deterministic rules (C) matched or beat energy minimization (D)
+on every correctness measure, at about one twelfth of D's p95 runtime. The
+pre-registered primary hypothesis (D vs A) is not supported. Relationships
+reduce independent decisions and unseen-content defects (HY-FORMA-2026-0001).
+Physics adds cost without benefit (HY-FORMA-2026-0002). Visual quality of the
+relational arms lags conventional CSS. Recommended next step: compile the
+vocabulary to zero-runtime CSS (candidate X2) and fix the page-gutter and
+row-grouping gaps before any Forma adoption.
 
 ## Registry updates required
 
-Hypotheses RLP-001-H1…H7 to `research/hypotheses/` once results exist.
+H1–H7 are consolidated into HY-FORMA-2026-0001 (supported: H3, H5, H6) and
+HY-FORMA-2026-0002 (rejected: H1, H6, H7).
 
 ## Deviations
 
@@ -157,3 +181,10 @@ Hypotheses RLP-001-H1…H7 to `research/hypotheses/` once results exist.
   It adds exploratory variants (X1, hierarchy-derived relational layout) and
   an arm-neutral Gestalt measure. This record's arms, hypotheses H1–H7,
   metrics and protocol are unchanged.
+- 2026-10-21, during analysis (no data or criterion changed):
+  - Four attempts (T06, arms A, A, B, C) contained an inline
+    `onsubmit="return false"`. It is inert for layout, so the attempts were
+    retained and reported.
+  - The blind visual scorer dropped ratings whose image names lacked `.png`.
+    It now normalizes the names, and all 576 ratings are counted.
+  - An exploratory, unregistered C − A comparison is reported in REPORT.md.

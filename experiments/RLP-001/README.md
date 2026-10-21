@@ -12,7 +12,7 @@ Experimental and isolated: nothing here is part of the published
 | `arms/` | `base.css` (shared by all arms, lowest cascade layer) and the guide each arm's workers receive. |
 | `tasks/tasks.mjs` | The 12 benchmark task definitions (6 dev, 6 held out). |
 | `harness/` | Workspace builder, validator, geometry checks, evaluation, decision classifier, usage extraction, collection, analysis, blind visual and rubric reviews. |
-| `docs/` | `ENGINE.md` (mathematics and solver), `DECISION-RUBRIC.md`. |
+| `docs/` | `ENGINE.md` (mathematics and solver), `DECISION-RUBRIC.md`, `EXTENSION-01.md` (exploratory variants and G-metric). |
 | `results/<phase>/` | `manifest.json` (attempts, seed, order, engine commit), `agents.json`, `attempts/*.json` (raw per-attempt measurements), `artifacts/*/` (first draft, final page, validation log, decision evidence), `analysis.json`/`.md`, reviews, `GATES.md` for pilots. |
 | `REPORT.md` | Research report and recommendation. |
 
@@ -45,6 +45,17 @@ node experiments/RLP-001/harness/visual.mjs prepare --phase full --seed 7 --revi
 node experiments/RLP-001/harness/visual.mjs score --phase full
 node experiments/RLP-001/harness/rubric-review.mjs prepare --phase full --per-arm 20 --seed 11
 node experiments/RLP-001/harness/rubric-review.mjs score --phase full
+
+# Extension 01: X1 (hierarchy-derived spacing), separate phases, same harness
+node experiments/RLP-001/harness/plan.mjs --phase x1-pilot --seed 20261025 --model sonnet --arms X1
+node experiments/RLP-001/harness/plan.mjs --phase x1-full --seed 20261026 --model sonnet --arms X1
+experiments/RLP-001/harness/collect-phase.sh x1-full 4
+node experiments/RLP-001/harness/analyze.mjs --phase x1-full
+node experiments/RLP-001/harness/compare-variant.mjs --variant-phase x1-full --variant X1 --base-phase full --base C
+node experiments/RLP-001/harness/visual.mjs prepare --phase x1-full --seed 8 --reviewers 2 --chunks 2 --include full:C
+
+# G-metric (arm-neutral Gestalt measure) for any phase
+node experiments/RLP-001/harness/gestalt.mjs --phase full
 ```
 
 A worker can be checked by hand: open its workspace, read `AGENT.md`, and run

@@ -111,6 +111,7 @@ if (mode === "score") {
   const key = JSON.parse(fs.readFileSync(path.join(resultsDir, "visual", "key.json"), "utf8"));
   const dirs = fs.readdirSync(reviewRoot).filter(d => fs.existsSync(path.join(reviewRoot, d, "ratings.json")));
   const ratings = dirs.flatMap(d => Object.entries(JSON.parse(fs.readFileSync(path.join(reviewRoot, d, "ratings.json"), "utf8")))
+    .map(([raw, r]) => [raw.endsWith(".png") ? raw : `${raw}.png`, r]) // some reviewers omit the extension
     .map(([image, r]) => ({ reviewer: d.split("-")[0], id: `${d}/${image}`, ...key[`${d}/${image}`], ratings: r })))
     .filter(r => r.arm);
   const mean = xs => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null);
