@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing comparison with conflicting demands</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  .page{padding:var(--ef-primitive-spacing-5)}
+  .plan{display:flex;flex-direction:column;gap:var(--ef-primitive-spacing-4);min-width:0;overflow-wrap:anywhere}
+  .plan h2,.plan p,.plan ul{margin:0}
+  .plan ul{padding-left:var(--ef-primitive-spacing-5)}
+  .plan .ef-actions{margin-top:auto}
+  .badge{align-self:flex-start;margin:0}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="ef-stack" data-rlp="pricing">
+  <h1 data-rlp="pricing-title">Choose a plan</h1>
+  <div class="ef-grid" style="--ef-grid-min: min(100%, 15rem)" data-rlp="plans">
+    <article class="ef-surface plan" data-rlp="plan-free">
+      <h2 data-rlp="plan-free-name">Free</h2>
+      <p data-rlp="plan-free-price">$0</p>
+      <ul data-rlp="plan-free-features"><li>1 project</li></ul>
+      <div class="ef-actions"><button type="button" data-rlp="plan-free-choose">Choose Free</button></div>
+    </article>
+    <article class="ef-surface plan" data-rlp="plan-team">
+      <p class="badge" data-rlp="badge">Most popular</p>
+      <h2 data-rlp="plan-team-name">Team</h2>
+      <p data-rlp="plan-team-price">$12 per seat</p>
+      <ul data-rlp="plan-team-features"><li>Unlimited projects</li><li>Shared libraries</li><li>Version history</li><li>Priority email support</li></ul>
+      <div class="ef-actions"><button type="button" data-rlp="plan-team-choose">Choose Team</button></div>
+    </article>
+    <article class="ef-surface plan" data-rlp="plan-business">
+      <h2 data-rlp="plan-business-name">Business with advanced compliance controls</h2>
+      <p data-rlp="plan-business-price">$45 per seat</p>
+      <ul data-rlp="plan-business-features"><li>Everything in Team</li><li>Single sign-on</li><li>Audit log export</li><li>Data residency</li><li>Custom retention</li><li>Dedicated success manager</li></ul>
+      <div class="ef-actions"><button type="button" data-rlp="plan-business-choose">Choose Business</button></div>
+    </article>
+    <article class="ef-surface plan" data-rlp="plan-enterprise">
+      <h2 data-rlp="plan-enterprise-name">Enterprise</h2>
+      <p data-rlp="plan-enterprise-price">Contact sales</p>
+      <ul data-rlp="plan-enterprise-features"><li>Everything in Business</li><li>On-premises option</li></ul>
+      <div class="ef-actions"><button type="button" data-rlp="plan-enterprise-choose">Talk to sales</button></div>
+    </article>
+  </div>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,8155 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "generatedAt": "2026-10-21T19:39:23.809Z",
+ "attempts": 144,
+ "tasks": [
+  "T01-form-account",
+  "T02-form-shipping",
+  "T03-cards-product",
+  "T04-cards-profile",
+  "T05-dashboard-ops",
+  "T06-dashboard-finance",
+  "T07-nav-docs",
+  "T08-nav-workspace",
+  "T09-dynamic-checkout",
+  "T10-dynamic-thread",
+  "T11-adversarial-settings",
+  "T12-adversarial-pricing"
+ ],
+ "note": "Confirmatory: A − D first-draft defects. Everything else exploratory.",
+ "perArm": {
+  "A": {
+   "attempts": 36,
+   "accepted": 33,
+   "acceptanceRate": 0.9166666666666666,
+   "tokensPerAccepted": 266635.6060606061,
+   "decisionsPerAccepted": 34.24242424242424,
+   "metrics": {
+    "firstDraftDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.2777777777777777,
+     "median": 1,
+     "sd": 1.5604232230137551,
+     "q1": 0,
+     "q3": 2,
+     "min": 0,
+     "max": 7
+    },
+    "firstDraftGeometryDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.2777777777777777,
+     "median": 1,
+     "sd": 1.5604232230137551,
+     "q1": 0,
+     "q3": 2,
+     "min": 0,
+     "max": 7
+    },
+    "firstDraftAccessibilityDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.08333333333333333,
+     "median": 0,
+     "sd": 0.280305955290694,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 1
+    },
+    "finalHeldoutDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 2.5555555555555554,
+     "median": 0,
+     "sd": 5.643931985235848,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 26
+    },
+    "finalDynamicDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.08333333333333333,
+     "median": 0,
+     "sd": 0.280305955290694,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 1
+    },
+    "unexpectedShift": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "accepted": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.9166666666666666,
+     "median": 1,
+     "sd": 0.280305955290694,
+     "q1": 1,
+     "q3": 1,
+     "min": 0,
+     "max": 1
+    },
+    "totalTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 244415.97222222222,
+     "median": 250314.5,
+     "sd": 50341.44859797008,
+     "q1": 197132,
+     "q3": 253674.25,
+     "min": 194485,
+     "max": 422622
+    },
+    "outputTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 296.8888888888889,
+     "median": 124.5,
+     "sd": 513.0891193978337,
+     "q1": 81.5,
+     "q3": 320.5,
+     "min": 59,
+     "max": 2454
+    },
+    "inputTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 244119.08333333334,
+     "median": 249678,
+     "sd": 50299.73570869221,
+     "q1": 196956.75,
+     "q3": 252784.75,
+     "min": 194167,
+     "max": 422414
+    },
+    "toolCalls": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 7.194444444444445,
+     "median": 8,
+     "sd": 1.7536809360305041,
+     "q1": 7,
+     "q3": 8,
+     "min": 4,
+     "max": 11
+    },
+    "durationMs": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 44652.38888888889,
+     "median": 41096,
+     "sd": 11305.494950377708,
+     "q1": 37912,
+     "q3": 50268.75,
+     "min": 23916,
+     "max": 79302
+    },
+    "validationRuns": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.6944444444444444,
+     "median": 2,
+     "sd": 0.709907215041694,
+     "q1": 1,
+     "q3": 2,
+     "min": 1,
+     "max": 4
+    },
+    "repairIterations": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.6944444444444444,
+     "median": 1,
+     "sd": 0.709907215041694,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 3
+    },
+    "decisionsTotal": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 31.38888888888889,
+     "median": 32,
+     "sd": 6.74548643921158,
+     "q1": 25.75,
+     "q3": 36,
+     "min": 18,
+     "max": 43
+    },
+    "decisionsExplicit": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 30.555555555555557,
+     "median": 31,
+     "sd": 6.733474774563467,
+     "q1": 25.75,
+     "q3": 34.25,
+     "min": 17,
+     "max": 42
+    },
+    "decisionsDerived": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "decisionsCorrective": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.7222222222222223,
+     "median": 1,
+     "sd": 2.5813740650072523,
+     "q1": 0,
+     "q3": 2,
+     "min": 0,
+     "max": 10
+    },
+    "decisionsUncertain": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.8333333333333334,
+     "median": 1,
+     "sd": 0.7367883976130073,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "rawStatements": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 44.55555555555556,
+     "median": 46,
+     "sd": 12.435994863860639,
+     "q1": 33.75,
+     "q3": 53.25,
+     "min": 22,
+     "max": 67
+    }
+   },
+   "decisionCategories": {
+    "explicit": {
+     "padding": 4,
+     "margin": 8.166666666666666,
+     "alignment": 3.25,
+     "positioning": 0.2222222222222222,
+     "grouping": 5.722222222222222,
+     "responsive": 3.4444444444444446,
+     "dimension": 5.75,
+     "correction": 0
+    },
+    "derived": {
+     "padding": 0,
+     "margin": 0,
+     "alignment": 0,
+     "positioning": 0,
+     "grouping": 0,
+     "responsive": 0,
+     "dimension": 0,
+     "correction": 0
+    },
+    "corrective": {
+     "padding": 0.4444444444444444,
+     "margin": 0.3611111111111111,
+     "alignment": 0.2777777777777778,
+     "positioning": 0.16666666666666666,
+     "grouping": 0.1388888888888889,
+     "responsive": 0.1111111111111111,
+     "dimension": 0.2222222222222222,
+     "correction": 1.7222222222222223
+    }
+   },
+   "engine": null
+  },
+  "B": {
+   "attempts": 36,
+   "accepted": 32,
+   "acceptanceRate": 0.8888888888888888,
+   "tokensPerAccepted": 306426.4375,
+   "decisionsPerAccepted": 21.1875,
+   "metrics": {
+    "firstDraftDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.1111111111111112,
+     "median": 1,
+     "sd": 1.2823589374447568,
+     "q1": 0,
+     "q3": 2,
+     "min": 0,
+     "max": 5
+    },
+    "firstDraftGeometryDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.1111111111111112,
+     "median": 1,
+     "sd": 1.2823589374447568,
+     "q1": 0,
+     "q3": 2,
+     "min": 0,
+     "max": 5
+    },
+    "firstDraftAccessibilityDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.1388888888888889,
+     "median": 0,
+     "sd": 0.42445109277598786,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "finalHeldoutDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.6944444444444444,
+     "median": 0,
+     "sd": 2.5390599435274064,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 15
+    },
+    "finalDynamicDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.1388888888888889,
+     "median": 0,
+     "sd": 0.42445109277598786,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "unexpectedShift": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.08333333333333333,
+     "median": 0,
+     "sd": 0.3683941988065037,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "accepted": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.8888888888888888,
+     "median": 1,
+     "sd": 0.3187276291558383,
+     "q1": 1,
+     "q3": 1,
+     "min": 0,
+     "max": 1
+    },
+    "totalTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 272379.05555555556,
+     "median": 252212.5,
+     "sd": 84244.72943546064,
+     "q1": 198407.5,
+     "q3": 313340.5,
+     "min": 196141,
+     "max": 519239
+    },
+    "outputTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 437.30555555555554,
+     "median": 131,
+     "sd": 654.1679478301072,
+     "q1": 89,
+     "q3": 396,
+     "min": 59,
+     "max": 2385
+    },
+    "inputTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 271941.75,
+     "median": 252060.5,
+     "sd": 84253.04871173167,
+     "q1": 198126.5,
+     "q3": 312889.5,
+     "min": 195856,
+     "max": 519117
+    },
+    "toolCalls": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 7.277777777777778,
+     "median": 7,
+     "sd": 1.6837222558725755,
+     "q1": 7,
+     "q3": 8,
+     "min": 4,
+     "max": 12
+    },
+    "durationMs": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 40297.88888888889,
+     "median": 38666.5,
+     "sd": 13534.090233349432,
+     "q1": 29542.75,
+     "q3": 49194.75,
+     "min": 20366,
+     "max": 70833
+    },
+    "validationRuns": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.6111111111111112,
+     "median": 2,
+     "sd": 0.6448821720849599,
+     "q1": 1,
+     "q3": 2,
+     "min": 1,
+     "max": 3
+    },
+    "repairIterations": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.6111111111111112,
+     "median": 1,
+     "sd": 0.6448821720849599,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "decisionsTotal": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 18.833333333333332,
+     "median": 19,
+     "sd": 6.340346993658944,
+     "q1": 14,
+     "q3": 22.25,
+     "min": 5,
+     "max": 33
+    },
+    "decisionsExplicit": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 18.555555555555557,
+     "median": 19,
+     "sd": 6.244743821553081,
+     "q1": 13.75,
+     "q3": 22.25,
+     "min": 5,
+     "max": 32
+    },
+    "decisionsDerived": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 28.916666666666668,
+     "median": 29,
+     "sd": 12.625088401387814,
+     "q1": 17.75,
+     "q3": 38,
+     "min": 9,
+     "max": 60
+    },
+    "decisionsCorrective": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 2.3333333333333335,
+     "median": 0,
+     "sd": 3.6015869518072967,
+     "q1": 0,
+     "q3": 3.25,
+     "min": 0,
+     "max": 13
+    },
+    "decisionsUncertain": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.2777777777777778,
+     "median": 0,
+     "sd": 0.5662463427121809,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "rawStatements": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 31.27777777777778,
+     "median": 32,
+     "sd": 11.641333038816258,
+     "q1": 22.5,
+     "q3": 39.25,
+     "min": 6,
+     "max": 52
+    }
+   },
+   "decisionCategories": {
+    "explicit": {
+     "padding": 1.8055555555555556,
+     "margin": 4.111111111111111,
+     "alignment": 1.3611111111111112,
+     "positioning": 0.16666666666666666,
+     "grouping": 7.138888888888889,
+     "responsive": 1.5555555555555556,
+     "dimension": 2.4166666666666665,
+     "correction": 0
+    },
+    "derived": {
+     "padding": 3.0555555555555554,
+     "margin": 9.13888888888889,
+     "alignment": 2.8333333333333335,
+     "positioning": 0,
+     "grouping": 9.13888888888889,
+     "responsive": 3.4444444444444446,
+     "dimension": 1.3055555555555556,
+     "correction": 0
+    },
+    "corrective": {
+     "padding": 0.1388888888888889,
+     "margin": 0.6944444444444444,
+     "alignment": 0.08333333333333333,
+     "positioning": 0.16666666666666666,
+     "grouping": 0.8611111111111112,
+     "responsive": 0.1388888888888889,
+     "dimension": 0.25,
+     "correction": 2.3333333333333335
+    }
+   },
+   "engine": null
+  },
+  "C": {
+   "attempts": 36,
+   "accepted": 32,
+   "acceptanceRate": 0.8888888888888888,
+   "tokensPerAccepted": 255101.875,
+   "decisionsPerAccepted": 14.34375,
+   "metrics": {
+    "firstDraftDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.3055555555555556,
+     "median": 0,
+     "sd": 0.6242455764220837,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "firstDraftGeometryDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.3055555555555556,
+     "median": 0,
+     "sd": 0.6242455764220837,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "firstDraftAccessibilityDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.16666666666666666,
+     "median": 0,
+     "sd": 0.5070925528371102,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "finalHeldoutDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.19444444444444445,
+     "median": 0,
+     "sd": 0.576662537832728,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "finalDynamicDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.16666666666666666,
+     "median": 0,
+     "sd": 0.5070925528371102,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "unexpectedShift": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.027777777777777776,
+     "median": 0,
+     "sd": 0.16666666666666655,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 1
+    },
+    "accepted": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.8888888888888888,
+     "median": 1,
+     "sd": 0.31872762915583835,
+     "q1": 1,
+     "q3": 1,
+     "min": 0,
+     "max": 1
+    },
+    "totalTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 226757.22222222222,
+     "median": 199602.5,
+     "sd": 50748.37278073124,
+     "q1": 198868.75,
+     "q3": 252499.25,
+     "min": 196545,
+     "max": 420294
+    },
+    "outputTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 352,
+     "median": 120.5,
+     "sd": 538.8667473769108,
+     "q1": 80.25,
+     "q3": 152.25,
+     "min": 60,
+     "max": 2005
+    },
+    "inputTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 226405.22222222222,
+     "median": 199293,
+     "sd": 50689.102857721155,
+     "q1": 197957.25,
+     "q3": 252141,
+     "min": 196420,
+     "max": 418840
+    },
+    "toolCalls": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 7,
+     "median": 7,
+     "sd": 1.6388149028228556,
+     "q1": 7,
+     "q3": 8,
+     "min": 4,
+     "max": 11
+    },
+    "durationMs": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 39275.36111111111,
+     "median": 37132.5,
+     "sd": 15763.029881253844,
+     "q1": 31026.75,
+     "q3": 38978.75,
+     "min": 15143,
+     "max": 92039
+    },
+    "validationRuns": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.3611111111111112,
+     "median": 1,
+     "sd": 0.8669413484125104,
+     "q1": 1,
+     "q3": 1,
+     "min": 1,
+     "max": 5
+    },
+    "repairIterations": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.3611111111111111,
+     "median": 0,
+     "sd": 0.8669413484125104,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 4
+    },
+    "decisionsTotal": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 12.75,
+     "median": 12.5,
+     "sd": 4.087437199168063,
+     "q1": 11,
+     "q3": 15,
+     "min": 5,
+     "max": 21
+    },
+    "decisionsExplicit": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 12.75,
+     "median": 12.5,
+     "sd": 4.087437199168063,
+     "q1": 11,
+     "q3": 15,
+     "min": 5,
+     "max": 21
+    },
+    "decisionsDerived": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 48.833333333333336,
+     "median": 53,
+     "sd": 17.941969950768666,
+     "q1": 38,
+     "q3": 61,
+     "min": 16,
+     "max": 83
+    },
+    "decisionsCorrective": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.6944444444444444,
+     "median": 0,
+     "sd": 2.1754401123771903,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 12
+    },
+    "decisionsUncertain": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "rawStatements": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 40.361111111111114,
+     "median": 41,
+     "sd": 18.322745860624053,
+     "q1": 26.25,
+     "q3": 51.25,
+     "min": 12,
+     "max": 87
+    }
+   },
+   "decisionCategories": {
+    "explicit": {
+     "padding": 0.08333333333333333,
+     "margin": 2.8333333333333335,
+     "alignment": 1.4722222222222223,
+     "positioning": 0.5,
+     "grouping": 2.0833333333333335,
+     "responsive": 1.5,
+     "dimension": 4.277777777777778,
+     "correction": 0
+    },
+    "derived": {
+     "padding": 2.9444444444444446,
+     "margin": 11.472222222222221,
+     "alignment": 11.472222222222221,
+     "positioning": 0,
+     "grouping": 0,
+     "responsive": 11.472222222222221,
+     "dimension": 11.472222222222221,
+     "correction": 0
+    },
+    "corrective": {
+     "padding": 0,
+     "margin": 0.1388888888888889,
+     "alignment": 0.08333333333333333,
+     "positioning": 0.027777777777777776,
+     "grouping": 0.027777777777777776,
+     "responsive": 0.1111111111111111,
+     "dimension": 0.3055555555555556,
+     "correction": 0.6944444444444444
+    }
+   },
+   "engine": {
+    "resolves": 180,
+    "solveMs": {
+     "n": 180,
+     "unavailable": 0,
+     "mean": 3.767222222238262,
+     "median": 2.7999999998137355,
+     "sd": 3.0383917856192078,
+     "q1": 1.874999999650754,
+     "q3": 4.699999999254942,
+     "min": 1.1000000000931323,
+     "max": 21
+    },
+    "solveP95": 9.309999999823045,
+    "totalMsP95": 23.14500000008846,
+    "iterations": {
+     "n": 180,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "measureCalls": {
+     "n": 180,
+     "unavailable": 0,
+     "mean": 18.333333333333332,
+     "median": 18.5,
+     "sd": 4.673711097082747,
+     "q1": 16.25,
+     "q3": 21,
+     "min": 9,
+     "max": 28
+    },
+    "invalidStatus": 0,
+    "convergenceFailures": 0,
+    "diagnosticCodes": {
+     "hierarchy-inversion": 5
+    }
+   }
+  },
+  "D": {
+   "attempts": 36,
+   "accepted": 30,
+   "acceptanceRate": 0.8333333333333334,
+   "tokensPerAccepted": 262482.1666666667,
+   "decisionsPerAccepted": 15.333333333333334,
+   "metrics": {
+    "firstDraftDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.8055555555555556,
+     "median": 0,
+     "sd": 1.5272654263551186,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 6
+    },
+    "firstDraftGeometryDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.8055555555555556,
+     "median": 0,
+     "sd": 1.5272654263551186,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 6
+    },
+    "firstDraftAccessibilityDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.2222222222222222,
+     "median": 0,
+     "sd": 0.5404289889185185,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "finalHeldoutDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.16666666666666666,
+     "median": 0,
+     "sd": 0.5070925528371102,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "finalDynamicDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.19444444444444445,
+     "median": 0,
+     "sd": 0.5247826458609558,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "unexpectedShift": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.08333333333333333,
+     "median": 0,
+     "sd": 0.28030595529069413,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 1
+    },
+    "accepted": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.8333333333333334,
+     "median": 1,
+     "sd": 0.37796447300922714,
+     "q1": 1,
+     "q3": 1,
+     "min": 0,
+     "max": 1
+    },
+    "totalTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 218735.13888888888,
+     "median": 199578.5,
+     "sd": 32235.321632513416,
+     "q1": 198845.5,
+     "q3": 253092.25,
+     "min": 195621,
+     "max": 309726
+    },
+    "outputTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 457.4166666666667,
+     "median": 124,
+     "sd": 722.3800493606434,
+     "q1": 65,
+     "q3": 245.75,
+     "min": 60,
+     "max": 2397
+    },
+    "inputTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 218277.72222222222,
+     "median": 199269.5,
+     "sd": 32269.41450583209,
+     "q1": 198075.25,
+     "q3": 252459.75,
+     "min": 195557,
+     "max": 309660
+    },
+    "toolCalls": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 6.694444444444445,
+     "median": 7,
+     "sd": 1.4893803974317539,
+     "q1": 6.75,
+     "q3": 8,
+     "min": 4,
+     "max": 9
+    },
+    "durationMs": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 33701,
+     "median": 31772.5,
+     "sd": 10676.48692354238,
+     "q1": 26960.75,
+     "q3": 38821.75,
+     "min": 18017,
+     "max": 60177
+    },
+    "validationRuns": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.25,
+     "median": 1,
+     "sd": 0.5,
+     "q1": 1,
+     "q3": 1,
+     "min": 1,
+     "max": 3
+    },
+    "repairIterations": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.25,
+     "median": 0,
+     "sd": 0.5,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "decisionsTotal": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 12.777777777777779,
+     "median": 13,
+     "sd": 4.057522897469842,
+     "q1": 10,
+     "q3": 15.25,
+     "min": 5,
+     "max": 21
+    },
+    "decisionsExplicit": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 12.777777777777779,
+     "median": 13,
+     "sd": 4.057522897469842,
+     "q1": 10,
+     "q3": 15.25,
+     "min": 5,
+     "max": 21
+    },
+    "decisionsDerived": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 48.166666666666664,
+     "median": 53,
+     "sd": 17.246945899409056,
+     "q1": 35,
+     "q3": 57,
+     "min": 16,
+     "max": 78
+    },
+    "decisionsCorrective": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.75,
+     "median": 0,
+     "sd": 1.8727367292662513,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 9
+    },
+    "decisionsUncertain": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "rawStatements": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 39.166666666666664,
+     "median": 40.5,
+     "sd": 16.112993869190525,
+     "q1": 24,
+     "q3": 50.25,
+     "min": 12,
+     "max": 67
+    }
+   },
+   "decisionCategories": {
+    "explicit": {
+     "padding": 0.1111111111111111,
+     "margin": 2.611111111111111,
+     "alignment": 1.4722222222222223,
+     "positioning": 0.5,
+     "grouping": 2.0833333333333335,
+     "responsive": 1.5833333333333333,
+     "dimension": 4.416666666666667,
+     "correction": 0
+    },
+    "derived": {
+     "padding": 2.9444444444444446,
+     "margin": 11.305555555555555,
+     "alignment": 11.305555555555555,
+     "positioning": 0,
+     "grouping": 0,
+     "responsive": 11.305555555555555,
+     "dimension": 11.305555555555555,
+     "correction": 0
+    },
+    "corrective": {
+     "padding": 0,
+     "margin": 0.2222222222222222,
+     "alignment": 0.1111111111111111,
+     "positioning": 0.027777777777777776,
+     "grouping": 0.05555555555555555,
+     "responsive": 0.16666666666666666,
+     "dimension": 0.16666666666666666,
+     "correction": 0.75
+    }
+   },
+   "engine": {
+    "resolves": 180,
+    "solveMs": {
+     "n": 180,
+     "unavailable": 0,
+     "mean": 52.12555555556642,
+     "median": 33.90000000037253,
+     "sd": 113.12716833182972,
+     "q1": 23.2249999998603,
+     "q3": 54.39999999990687,
+     "min": 10.900000000372529,
+     "max": 1496.8000000002794
+    },
+    "solveP95": 105.47000000034457,
+    "totalMsP95": 109.24000000017693,
+    "iterations": {
+     "n": 180,
+     "unavailable": 0,
+     "mean": 1849.5,
+     "median": 819.5,
+     "sd": 5447.273444874989,
+     "q1": 521.5,
+     "q3": 2225.5,
+     "min": 96,
+     "max": 70798
+    },
+    "measureCalls": {
+     "n": 180,
+     "unavailable": 0,
+     "mean": 42.25555555555555,
+     "median": 33,
+     "sd": 39.397433802119984,
+     "q1": 27,
+     "q3": 46,
+     "min": 11,
+     "max": 508
+    },
+    "invalidStatus": 0,
+    "convergenceFailures": 0,
+    "diagnosticCodes": {
+     "hierarchy-inversion": 5
+    }
+   }
+  }
+ },
+ "primary": {
+  "comparison": "A − D",
+  "metric": "firstDraftDefects",
+  "tasks": 12,
+  "meanDifference": 0.47222222222222215,
+  "medianDifference": 0.3333333333333333,
+  "bootstrap95": [
+   -0.19444444444444434,
+   1.111111111111111
+  ],
+  "wilcoxon": {
+   "n": 9,
+   "W": 34.5,
+   "p": 0.17578125
+  },
+  "cliffsDelta": 0.24228395061728394,
+  "perTask": [
+   {
+    "task": "T01-form-account",
+    "x": 1.3333333333333333,
+    "y": 0
+   },
+   {
+    "task": "T02-form-shipping",
+    "x": 2,
+    "y": 4
+   },
+   {
+    "task": "T03-cards-product",
+    "x": 0,
+    "y": 0
+   },
+   {
+    "task": "T04-cards-profile",
+    "x": 1,
+    "y": 0.3333333333333333
+   },
+   {
+    "task": "T05-dashboard-ops",
+    "x": 2,
+    "y": 0
+   },
+   {
+    "task": "T06-dashboard-finance",
+    "x": 1.3333333333333333,
+    "y": 0
+   },
+   {
+    "task": "T07-nav-docs",
+    "x": 1.6666666666666667,
+    "y": 2
+   },
+   {
+    "task": "T08-nav-workspace",
+    "x": 0.6666666666666666,
+    "y": 0
+   },
+   {
+    "task": "T09-dynamic-checkout",
+    "x": 1.6666666666666667,
+    "y": 2
+   },
+   {
+    "task": "T10-dynamic-thread",
+    "x": 0,
+    "y": 0
+   },
+   {
+    "task": "T11-adversarial-settings",
+    "x": 3.6666666666666665,
+    "y": 1.3333333333333333
+   },
+   {
+    "task": "T12-adversarial-pricing",
+    "x": 0,
+    "y": 0
+   }
+  ]
+ },
+ "secondary": [
+  {
+   "comparison": "A − D",
+   "metric": "totalTokens",
+   "tasks": 12,
+   "meanDifference": 25680.83333333333,
+   "medianDifference": 35307.66666666667,
+   "bootstrap95": [
+    8512.799999999994,
+    42432.07499999998
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "W": 66,
+    "p": 0.0341796875
+   },
+   "cliffsDelta": 0.05709876543209876,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 234393.66666666666,
+     "y": 198987.66666666666
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 272727.3333333333,
+     "y": 235321
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 197594.66666666666,
+     "y": 198524.66666666666
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 252603.66666666666,
+     "y": 200831.33333333334
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 252204,
+     "y": 200277.66666666666
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 252262.66666666666,
+     "y": 199511
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 265325.6666666667,
+     "y": 250104
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 231381,
+     "y": 196171.66666666666
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 234312,
+     "y": 256582.66666666666
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 196610,
+     "y": 217833.33333333334
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 346748.3333333333,
+     "y": 271826.3333333333
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 196828.66666666666,
+     "y": 198850.33333333334
+    }
+   ]
+  },
+  {
+   "comparison": "A − D",
+   "metric": "decisionsTotal",
+   "tasks": 12,
+   "meanDifference": 18.61111111111111,
+   "medianDifference": 18.333333333333336,
+   "bootstrap95": [
+    16.13888888888889,
+    21.249999999999996
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "W": 78,
+    "p": 0.00048828125
+   },
+   "cliffsDelta": 0.9922839506172839,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 33,
+     "y": 13
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 41,
+     "y": 16.333333333333332
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 27.333333333333332,
+     "y": 13.333333333333334
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 33,
+     "y": 15
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 35,
+     "y": 16.333333333333332
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 33.666666666666664,
+     "y": 20
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 23.666666666666668,
+     "y": 11.666666666666666
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 23,
+     "y": 6.333333333333333
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 40.333333333333336,
+     "y": 12.333333333333334
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 28,
+     "y": 9
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 35.666666666666664,
+     "y": 13
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 23,
+     "y": 7
+    }
+   ]
+  },
+  {
+   "comparison": "A − D",
+   "metric": "repairIterations",
+   "tasks": 12,
+   "meanDifference": 0.4444444444444444,
+   "medianDifference": 0.33333333333333326,
+   "bootstrap95": [
+    0.19444444444444445,
+    0.6944444444444445
+   ],
+   "wilcoxon": {
+    "n": 7,
+    "W": 28,
+    "p": 0.015625
+   },
+   "cliffsDelta": 0.36419753086419754,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0.6666666666666666,
+     "y": 0.6666666666666666
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 1.3333333333333333,
+     "y": 1
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0.6666666666666666,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0.3333333333333333,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 2,
+     "y": 1
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ]
+  },
+  {
+   "comparison": "A − D",
+   "metric": "finalHeldoutDefects",
+   "tasks": 12,
+   "meanDifference": 2.388888888888889,
+   "medianDifference": 0.16666666666666666,
+   "bootstrap95": [
+    0.3055555555555556,
+    5.416666666666667
+   ],
+   "wilcoxon": {
+    "n": 6,
+    "W": 21,
+    "p": 0.03125
+   },
+   "cliffsDelta": 0.26697530864197533,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 6.666666666666667,
+     "y": 0
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0.3333333333333333,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 4.666666666666667,
+     "y": 1.6666666666666667
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 16.666666666666668,
+     "y": 0
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ]
+  },
+  {
+   "comparison": "A − D",
+   "metric": "finalDefects",
+   "tasks": 12,
+   "meanDifference": -0.13888888888888887,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -0.27777777777777773,
+    -0.027777777777777776
+   ],
+   "wilcoxon": {
+    "n": 4,
+    "W": 0,
+    "p": 0.125
+   },
+   "cliffsDelta": -0.08796296296296297,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 0,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0.3333333333333333,
+     "y": 0.6666666666666666
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0.6666666666666666,
+     "y": 1.3333333333333333
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 0,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ]
+  }
+ ],
+ "mechanisms": [
+  {
+   "comparison": "A − B",
+   "metric": "firstDraftDefects",
+   "tasks": 12,
+   "meanDifference": 0.16666666666666666,
+   "medianDifference": 0.16666666666666663,
+   "bootstrap95": [
+    -0.5555555555555556,
+    0.7777777777777778
+   ],
+   "wilcoxon": {
+    "n": 10,
+    "W": 35.5,
+    "p": 0.447265625
+   },
+   "cliffsDelta": 0.037037037037037035,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 1.3333333333333333,
+     "y": 1
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 2,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 3
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 1,
+     "y": 1.3333333333333333
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 2,
+     "y": 2
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 1.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 1.6666666666666667,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0.6666666666666666,
+     "y": 1
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 1.6666666666666667,
+     "y": 0.6666666666666666
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 3.6666666666666665,
+     "y": 3
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0.6666666666666666
+    }
+   ],
+   "holmP": 0.447265625
+  },
+  {
+   "comparison": "B − C",
+   "metric": "firstDraftDefects",
+   "tasks": 12,
+   "meanDifference": 0.8055555555555554,
+   "medianDifference": 0.8333333333333333,
+   "bootstrap95": [
+    0.16666666666666666,
+    1.4444444444444446
+   ],
+   "wilcoxon": {
+    "n": 10,
+    "W": 46.5,
+    "p": 0.05078125
+   },
+   "cliffsDelta": 0.39197530864197533,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 3,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 1.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 2,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0.3333333333333333,
+     "y": 0.6666666666666666
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0.6666666666666666,
+     "y": 2
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 3,
+     "y": 1
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0.6666666666666666,
+     "y": 0
+    }
+   ],
+   "holmP": 0.15234375
+  },
+  {
+   "comparison": "C − D",
+   "metric": "firstDraftDefects",
+   "tasks": 12,
+   "meanDifference": -0.49999999999999994,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -1.2222222222222225,
+    -0.027777777777777776
+   ],
+   "wilcoxon": {
+    "n": 4,
+    "W": 0,
+    "p": 0.125
+   },
+   "cliffsDelta": -0.1396604938271605,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0,
+     "y": 4
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 0,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0.6666666666666666,
+     "y": 2
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 2,
+     "y": 2
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 1,
+     "y": 1.3333333333333333
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ],
+   "holmP": 0.25
+  },
+  {
+   "comparison": "A − B",
+   "metric": "finalDefects",
+   "tasks": 12,
+   "meanDifference": -0.05555555555555555,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -0.19444444444444442,
+    0.05555555555555555
+   ],
+   "wilcoxon": {
+    "n": 3,
+    "W": 1.5,
+    "p": 0.75
+   },
+   "cliffsDelta": -0.03009259259259259,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0.3333333333333333,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0.6666666666666666,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 0,
+     "y": 0.6666666666666666
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "B − C",
+   "metric": "finalDefects",
+   "tasks": 12,
+   "meanDifference": -0.027777777777777787,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -0.22222222222222224,
+    0.1111111111111111
+   ],
+   "wilcoxon": {
+    "n": 3,
+    "W": 3,
+    "p": 1
+   },
+   "cliffsDelta": -0.0030864197530864196,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0.3333333333333333,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0.3333333333333333,
+     "y": 1.3333333333333333
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 0.6666666666666666,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "C − D",
+   "metric": "finalDefects",
+   "tasks": 12,
+   "meanDifference": -0.05555555555555555,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -0.13888888888888887,
+    0
+   ],
+   "wilcoxon": {
+    "n": 2,
+    "W": 0,
+    "p": 0.5
+   },
+   "cliffsDelta": -0.05246913580246913,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 0,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0.3333333333333333,
+     "y": 0.6666666666666666
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 1.3333333333333333,
+     "y": 1.3333333333333333
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 0.3333333333333333,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "A − B",
+   "metric": "finalHeldoutDefects",
+   "tasks": 12,
+   "meanDifference": 1.8611111111111114,
+   "medianDifference": 0.16666666666666666,
+   "bootstrap95": [
+    0.08333333333333338,
+    4.111805555555546
+   ],
+   "wilcoxon": {
+    "n": 9,
+    "W": 36,
+    "p": 0.12890625
+   },
+   "cliffsDelta": 0.16666666666666666,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 6.666666666666667,
+     "y": 0
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 1,
+     "y": 0.6666666666666666
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0.3333333333333333,
+     "y": 1
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 4.666666666666667,
+     "y": 1
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 16.666666666666668,
+     "y": 5
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ],
+   "holmP": 0.38671875
+  },
+  {
+   "comparison": "B − C",
+   "metric": "finalHeldoutDefects",
+   "tasks": 12,
+   "meanDifference": 0.5,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -0.08333333333333333,
+    1.3333333333333333
+   ],
+   "wilcoxon": {
+    "n": 6,
+    "W": 16.5,
+    "p": 0.28125
+   },
+   "cliffsDelta": 0.10648148148148148,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 0.6666666666666666,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 1,
+     "y": 2
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 5,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ],
+   "holmP": 0.5625
+  },
+  {
+   "comparison": "C − D",
+   "metric": "finalHeldoutDefects",
+   "tasks": 12,
+   "meanDifference": 0.027777777777777773,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -0.05555555555555556,
+    0.1111111111111111
+   ],
+   "wilcoxon": {
+    "n": 3,
+    "W": 3.5,
+    "p": 1
+   },
+   "cliffsDelta": 0.0030864197530864196,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 2,
+     "y": 1.6666666666666667
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 0.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "A − B",
+   "metric": "totalTokens",
+   "tasks": 12,
+   "meanDifference": -27963.08333333334,
+   "medianDifference": -20315.333333333343,
+   "bootstrap95": [
+    -63666.34236111112,
+    4100.407638888864
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "W": 21,
+    "p": 0.17626953125
+   },
+   "cliffsDelta": -0.24845679012345678,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 234393.66666666666,
+     "y": 330594.3333333333
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 272727.3333333333,
+     "y": 317230
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 197594.66666666666,
+     "y": 252684.33333333334
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 252603.66666666666,
+     "y": 217427
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 252204,
+     "y": 422195.6666666667
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 252262.66666666666,
+     "y": 217234.33333333334
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 265325.6666666667,
+     "y": 196395
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 231381,
+     "y": 251634.33333333334
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 234312,
+     "y": 254060.66666666666
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 196610,
+     "y": 216987.33333333334
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 346748.3333333333,
+     "y": 357253.3333333333
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 196828.66666666666,
+     "y": 234852.33333333334
+    }
+   ],
+   "holmP": 0.3525390625
+  },
+  {
+   "comparison": "B − C",
+   "metric": "totalTokens",
+   "tasks": 12,
+   "meanDifference": 45621.833333333336,
+   "medianDifference": 27292.66666666667,
+   "bootstrap95": [
+    10189.272222222226,
+    86888.41527777775
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "W": 63,
+    "p": 0.06396484375
+   },
+   "cliffsDelta": 0.20601851851851852,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 330594.3333333333,
+     "y": 198485
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 317230,
+     "y": 199095.33333333334
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 252684.33333333334,
+     "y": 200024.66666666666
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 217427,
+     "y": 198471.33333333334
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 422195.6666666667,
+     "y": 218811
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 217234.33333333334,
+     "y": 218055.66666666666
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 196395,
+     "y": 214785.66666666666
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 251634.33333333334,
+     "y": 216004.66666666666
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 254060.66666666666,
+     "y": 295432.6666666667
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 216987.33333333334,
+     "y": 217663.66666666666
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 357253.3333333333,
+     "y": 345578.6666666667
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 234852.33333333334,
+     "y": 198678.33333333334
+    }
+   ],
+   "holmP": 0.19189453125
+  },
+  {
+   "comparison": "C − D",
+   "metric": "totalTokens",
+   "tasks": 12,
+   "meanDifference": 8022.0833333333385,
+   "medianDifference": 665.166666666657,
+   "bootstrap95": [
+    -7463.738888888889,
+    25034.577777777788
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "W": 48,
+    "p": 0.5185546875
+   },
+   "cliffsDelta": 0.023148148148148147,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 198485,
+     "y": 198987.66666666666
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 199095.33333333334,
+     "y": 235321
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 200024.66666666666,
+     "y": 198524.66666666666
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 198471.33333333334,
+     "y": 200831.33333333334
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 218811,
+     "y": 200277.66666666666
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 218055.66666666666,
+     "y": 199511
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 214785.66666666666,
+     "y": 250104
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 216004.66666666666,
+     "y": 196171.66666666666
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 295432.6666666667,
+     "y": 256582.66666666666
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 217663.66666666666,
+     "y": 217833.33333333334
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 345578.6666666667,
+     "y": 271826.3333333333
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 198678.33333333334,
+     "y": 198850.33333333334
+    }
+   ],
+   "holmP": 0.5185546875
+  },
+  {
+   "comparison": "A − B",
+   "metric": "decisionsTotal",
+   "tasks": 12,
+   "meanDifference": 12.555555555555557,
+   "medianDifference": 11,
+   "bootstrap95": [
+    9.472222222222221,
+    15.75
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "W": 78,
+    "p": 0.00048828125
+   },
+   "cliffsDelta": 0.8240740740740741,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 33,
+     "y": 14.333333333333334
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 41,
+     "y": 20
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 27.333333333333332,
+     "y": 15.333333333333334
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 33,
+     "y": 24
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 35,
+     "y": 26.666666666666668
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 33.666666666666664,
+     "y": 19
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 23.666666666666668,
+     "y": 9.666666666666666
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 23,
+     "y": 14.333333333333334
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 40.333333333333336,
+     "y": 17.333333333333332
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 28,
+     "y": 22
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 35.666666666666664,
+     "y": 30.333333333333332
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 23,
+     "y": 13
+    }
+   ],
+   "holmP": 0.00146484375
+  },
+  {
+   "comparison": "B − C",
+   "metric": "decisionsTotal",
+   "tasks": 12,
+   "meanDifference": 6.083333333333332,
+   "medianDifference": 5.333333333333334,
+   "bootstrap95": [
+    3.194444444444444,
+    9.166666666666666
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "W": 75,
+    "p": 0.00244140625
+   },
+   "cliffsDelta": 0.5787037037037037,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 14.333333333333334,
+     "y": 13.333333333333334
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 20,
+     "y": 15.666666666666666
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 15.333333333333334,
+     "y": 13.333333333333334
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 24,
+     "y": 13.333333333333334
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 26.666666666666668,
+     "y": 18
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 19,
+     "y": 19.666666666666668
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 9.666666666666666,
+     "y": 10.333333333333334
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 14.333333333333334,
+     "y": 6
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 17.333333333333332,
+     "y": 13.333333333333334
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 22,
+     "y": 10.666666666666666
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 30.333333333333332,
+     "y": 12.666666666666666
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 13,
+     "y": 6.666666666666667
+    }
+   ],
+   "holmP": 0.0048828125
+  },
+  {
+   "comparison": "C − D",
+   "metric": "decisionsTotal",
+   "tasks": 12,
+   "meanDifference": -0.027777777777777384,
+   "medianDifference": -0.3333333333333326,
+   "bootstrap95": [
+    -0.5833333333333326,
+    0.5555555555555558
+   ],
+   "wilcoxon": {
+    "n": 11,
+    "W": 32,
+    "p": 0.953125
+   },
+   "cliffsDelta": -0.013117283950617283,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 13.333333333333334,
+     "y": 13
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 15.666666666666666,
+     "y": 16.333333333333332
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 13.333333333333334,
+     "y": 13.333333333333334
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 13.333333333333334,
+     "y": 15
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 18,
+     "y": 16.333333333333332
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 19.666666666666668,
+     "y": 20
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 10.333333333333334,
+     "y": 11.666666666666666
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 6,
+     "y": 6.333333333333333
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 13.333333333333334,
+     "y": 12.333333333333334
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 10.666666666666666,
+     "y": 9
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 12.666666666666666,
+     "y": 13
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 6.666666666666667,
+     "y": 7
+    }
+   ],
+   "holmP": 0.953125
+  },
+  {
+   "comparison": "A − B",
+   "metric": "repairIterations",
+   "tasks": 12,
+   "meanDifference": 0.08333333333333333,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -0.27777777777777785,
+    0.4444444444444445
+   ],
+   "wilcoxon": {
+    "n": 9,
+    "W": 25.5,
+    "p": 0.7578125
+   },
+   "cliffsDelta": 0.05324074074074074,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0.3333333333333333,
+     "y": 1
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0.6666666666666666,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 1
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 1,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 1,
+     "y": 1
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 1,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 1.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0.6666666666666666,
+     "y": 1
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0.3333333333333333,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 2,
+     "y": 1.6666666666666667
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0.6666666666666666
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "B − C",
+   "metric": "repairIterations",
+   "tasks": 12,
+   "meanDifference": 0.25000000000000006,
+   "medianDifference": 0.3333333333333333,
+   "bootstrap95": [
+    -0.1666666666666666,
+    0.6388888888888888
+   ],
+   "wilcoxon": {
+    "n": 10,
+    "W": 40,
+    "p": 0.21875
+   },
+   "cliffsDelta": 0.28858024691358025,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 0.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 0.3333333333333333,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0.3333333333333333,
+     "y": 1.3333333333333333
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 1.6666666666666667,
+     "y": 2.6666666666666665
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0.6666666666666666,
+     "y": 0
+    }
+   ],
+   "holmP": 0.65625
+  },
+  {
+   "comparison": "C − D",
+   "metric": "repairIterations",
+   "tasks": 12,
+   "meanDifference": 0.11111111111111109,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -0.2222222222222222,
+    0.49999999999999983
+   ],
+   "wilcoxon": {
+    "n": 4,
+    "W": 7,
+    "p": 0.625
+   },
+   "cliffsDelta": -0.007716049382716049,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T02-form-shipping",
+     "x": 0,
+     "y": 0.6666666666666666
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T04-cards-profile",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T05-dashboard-ops",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T06-dashboard-finance",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T07-nav-docs",
+     "x": 0.3333333333333333,
+     "y": 1
+    },
+    {
+     "task": "T08-nav-workspace",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 1.3333333333333333,
+     "y": 0.3333333333333333
+    },
+    {
+     "task": "T10-dynamic-thread",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T11-adversarial-settings",
+     "x": 2.6666666666666665,
+     "y": 1
+    },
+    {
+     "task": "T12-adversarial-pricing",
+     "x": 0,
+     "y": 0
+    }
+   ],
+   "holmP": 1
+  }
+ ],
+ "correlations": {
+  "decisions~tokens": {
+   "rho": 0.20365036862493496,
+   "n": 144
+  },
+  "decisions~firstDraftDefects": {
+   "rho": 0.2657328905026129,
+   "n": 144
+  },
+  "decisions~repairIterations": {
+   "rho": 0.28047441254690114,
+   "n": 144
+  },
+  "tokens~repairIterations": {
+   "rho": 0.7468483852080051,
+   "n": 144
+  },
+  "firstDraftDefects~repairIterations": {
+   "rho": 0.8451071221986935,
+   "n": 144
+  },
+  "decisions~finalDefects": {
+   "rho": -0.07324467649063453,
+   "n": 144
+  }
+ },
+ "compliance": [
+  {
+   "attempt": "fuf80f03c3",
+   "arm": "B",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu9190c629",
+   "arm": "A",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu45740455",
+   "arm": "D",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu024ec1b9",
+   "arm": "A",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 1,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu235adae1",
+   "arm": "C",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu5731fb02",
+   "arm": "B",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fua9b4ae86",
+   "arm": "D",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu202022b0",
+   "arm": "D",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fubc33ee91",
+   "arm": "D",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu39619e57",
+   "arm": "B",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuf88b44cd",
+   "arm": "C",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu5dc03db5",
+   "arm": "B",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fua4a628f8",
+   "arm": "B",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu2afec16e",
+   "arm": "B",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fub231152b",
+   "arm": "A",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu92354dec",
+   "arm": "A",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu2960bb72",
+   "arm": "D",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu51cde206",
+   "arm": "A",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fue6eef699",
+   "arm": "A",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu375f0ef3",
+   "arm": "A",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuee3a5c2a",
+   "arm": "D",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fue8fe9443",
+   "arm": "D",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fua2941da3",
+   "arm": "C",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu0d6d7ba3",
+   "arm": "D",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuc2aae7a9",
+   "arm": "A",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu97509495",
+   "arm": "B",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fue277deb4",
+   "arm": "D",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu7908b0e1",
+   "arm": "D",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu3c051d74",
+   "arm": "C",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu5663052b",
+   "arm": "C",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fudb3f547d",
+   "arm": "C",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fubb407509",
+   "arm": "C",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fub849c025",
+   "arm": "A",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu427eecc3",
+   "arm": "C",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu49a392b0",
+   "arm": "D",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu10b3aaff",
+   "arm": "B",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu8a465a45",
+   "arm": "D",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu93fae6de",
+   "arm": "C",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu652d9f84",
+   "arm": "C",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuac3673c4",
+   "arm": "A",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu5fe2d7de",
+   "arm": "A",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuf4673d3a",
+   "arm": "B",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu99b6fd55",
+   "arm": "D",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu5d3fd27a",
+   "arm": "A",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 1,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuf48e24c2",
+   "arm": "D",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu3fcb5c10",
+   "arm": "C",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 1,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fube9b7229",
+   "arm": "C",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu95140c20",
+   "arm": "C",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu91be11ad",
+   "arm": "D",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu28fff2d8",
+   "arm": "B",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fue545619d",
+   "arm": "B",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu0f34d24d",
+   "arm": "B",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fud789f5c7",
+   "arm": "D",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu789d5686",
+   "arm": "D",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu157ba22a",
+   "arm": "A",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fue8f7cd71",
+   "arm": "C",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu4e446b78",
+   "arm": "A",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu0e103ab1",
+   "arm": "D",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fue9fbafa8",
+   "arm": "C",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu2e174855",
+   "arm": "D",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu4be007ab",
+   "arm": "B",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fufb191a65",
+   "arm": "B",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fube75cfb4",
+   "arm": "B",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu4a9a9c88",
+   "arm": "D",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu1d16efa4",
+   "arm": "A",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu682d9da4",
+   "arm": "B",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuf7098a45",
+   "arm": "B",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu7bb6a3b5",
+   "arm": "D",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu63f4e1a1",
+   "arm": "D",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu64d1b417",
+   "arm": "B",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu51fd9c2f",
+   "arm": "D",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu95eed3f5",
+   "arm": "A",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu9e1984c7",
+   "arm": "D",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu4d441cea",
+   "arm": "C",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu559fb2c8",
+   "arm": "A",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu7cff66d0",
+   "arm": "C",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fua418c643",
+   "arm": "A",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fudf8b1b5b",
+   "arm": "C",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu40a7cfb4",
+   "arm": "C",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu741bb268",
+   "arm": "B",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fueeb5d697",
+   "arm": "C",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fufcbfa9b4",
+   "arm": "C",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu8ba96954",
+   "arm": "A",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu5efa05e6",
+   "arm": "C",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu0142591f",
+   "arm": "C",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu8e7d3c2f",
+   "arm": "B",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu88ebe535",
+   "arm": "B",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu59ac8f70",
+   "arm": "D",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu0d4fc08c",
+   "arm": "B",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu837be8d6",
+   "arm": "A",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu2c568155",
+   "arm": "C",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu662e8ed2",
+   "arm": "D",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fub3e45793",
+   "arm": "B",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu4a8bde31",
+   "arm": "B",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu50858b84",
+   "arm": "A",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu6c84e5ca",
+   "arm": "D",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fua2946c91",
+   "arm": "C",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu134bd5cf",
+   "arm": "D",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuc42cb70e",
+   "arm": "B",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu43192864",
+   "arm": "B",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu4c0e5a46",
+   "arm": "B",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu2910cddb",
+   "arm": "B",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuf9bd1fed",
+   "arm": "D",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuc91e49a4",
+   "arm": "C",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuaf292444",
+   "arm": "D",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu858c2ae3",
+   "arm": "C",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fueff2bcb2",
+   "arm": "C",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu9ef37b76",
+   "arm": "A",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu95f935bf",
+   "arm": "A",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuc6c902a0",
+   "arm": "A",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fufa7f4359",
+   "arm": "A",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu0e706c7e",
+   "arm": "B",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fub2d63ead",
+   "arm": "C",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuc0c3186c",
+   "arm": "B",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 1,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu7e2d22e9",
+   "arm": "D",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fucb4cb903",
+   "arm": "B",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu33cb209d",
+   "arm": "C",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fue7e0c36b",
+   "arm": "C",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu9de6a84f",
+   "arm": "B",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fub48ce8b1",
+   "arm": "B",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu56321c04",
+   "arm": "D",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu72e728f2",
+   "arm": "B",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu90a710b2",
+   "arm": "A",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu4d038af0",
+   "arm": "C",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fub0068fd1",
+   "arm": "D",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fue7814a06",
+   "arm": "B",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fub2613ab8",
+   "arm": "C",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fue62a0af5",
+   "arm": "D",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fua952ffe3",
+   "arm": "A",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu421d8dcd",
+   "arm": "A",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu22a2bc06",
+   "arm": "A",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuffd39e60",
+   "arm": "B",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fuce96f395",
+   "arm": "A",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu59ce046f",
+   "arm": "A",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu0c4a2b3a",
+   "arm": "A",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu5c9080e7",
+   "arm": "A",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu0295579c",
+   "arm": "A",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu93ad4bf1",
+   "arm": "C",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu56838dff",
+   "arm": "A",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu572ed09d",
+   "arm": "C",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu3726bc47",
+   "arm": "D",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu73a681d7",
+   "arm": "D",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu36f811ce",
+   "arm": "A",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "fu1a992744",
+   "arm": "C",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  }
+ ],
+ "perAttempt": [
+  {
+   "order": 1,
+   "attempt": "fuf80f03c3",
+   "task": "T12-adversarial-pricing",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197701,
+   "output": 120,
+   "tools": 7,
+   "durationMs": 20366,
+   "decisions": 14,
+   "derived": 26,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 2,
+   "attempt": "fu9190c629",
+   "task": "T10-dynamic-thread",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 3,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 195666,
+   "output": 122,
+   "tools": 4,
+   "durationMs": 39876,
+   "decisions": 25,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "separation": 4
+   }
+  },
+  {
+   "order": 3,
+   "attempt": "fu45740455",
+   "task": "T03-cards-product",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199668,
+   "output": 117,
+   "tools": 7,
+   "durationMs": 35081,
+   "decisions": 11,
+   "derived": 78,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 4,
+   "attempt": "fu024ec1b9",
+   "task": "T06-dashboard-finance",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 1,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 252754,
+   "output": 68,
+   "tools": 8,
+   "durationMs": 53495,
+   "decisions": 35,
+   "derived": 0,
+   "corrective": 5,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "containment": 1
+   }
+  },
+  {
+   "order": 5,
+   "attempt": "fu235adae1",
+   "task": "T05-dashboard-ops",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200487,
+   "output": 60,
+   "tools": 7,
+   "durationMs": 39761,
+   "decisions": 19,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 6,
+   "attempt": "fu5731fb02",
+   "task": "T05-dashboard-ops",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 316386,
+   "output": 2385,
+   "tools": 6,
+   "durationMs": 51543,
+   "decisions": 24,
+   "derived": 35,
+   "corrective": 3,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 7,
+   "attempt": "fua9b4ae86",
+   "task": "T03-cards-product",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198034,
+   "output": 60,
+   "tools": 4,
+   "durationMs": 41980,
+   "decisions": 14,
+   "derived": 75,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 8,
+   "attempt": "fu202022b0",
+   "task": "T02-form-shipping",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 6,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 254007,
+   "output": 65,
+   "tools": 8,
+   "durationMs": 53886,
+   "decisions": 17,
+   "derived": 65,
+   "corrective": 1,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 9,
+   "attempt": "fubc33ee91",
+   "task": "T08-nav-workspace",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 195753,
+   "output": 65,
+   "tools": 4,
+   "durationMs": 21859,
+   "decisions": 5,
+   "derived": 21,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 10,
+   "attempt": "fu39619e57",
+   "task": "T04-cards-profile",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199316,
+   "output": 202,
+   "tools": 7,
+   "durationMs": 28489,
+   "decisions": 23,
+   "derived": 48,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 11,
+   "attempt": "fuf88b44cd",
+   "task": "T12-adversarial-pricing",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199316,
+   "output": 120,
+   "tools": 7,
+   "durationMs": 42667,
+   "decisions": 7,
+   "derived": 32,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 12,
+   "attempt": "fu5dc03db5",
+   "task": "T06-dashboard-finance",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 2,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198521,
+   "output": 59,
+   "tools": 7,
+   "durationMs": 29894,
+   "decisions": 19,
+   "derived": 38,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "offscreen": 1,
+    "containment": 1
+   }
+  },
+  {
+   "order": 13,
+   "attempt": "fua4a628f8",
+   "task": "T08-nav-workspace",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 250478,
+   "output": 62,
+   "tools": 8,
+   "durationMs": 44470,
+   "decisions": 12,
+   "derived": 13,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 14,
+   "attempt": "fu2afec16e",
+   "task": "T05-dashboard-ops",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 430962,
+   "output": 158,
+   "tools": 11,
+   "durationMs": 59530,
+   "decisions": 26,
+   "derived": 37,
+   "corrective": 1,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 15,
+   "attempt": "fub231152b",
+   "task": "T12-adversarial-pricing",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197081,
+   "output": 124,
+   "tools": 7,
+   "durationMs": 41238,
+   "decisions": 22,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 16,
+   "attempt": "fu92354dec",
+   "task": "T03-cards-product",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197899,
+   "output": 65,
+   "tools": 7,
+   "durationMs": 40260,
+   "decisions": 28,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 17,
+   "attempt": "fu2960bb72",
+   "task": "T07-nav-docs",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 197532,
+   "output": 65,
+   "tools": 7,
+   "durationMs": 20237,
+   "decisions": 13,
+   "derived": 16,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "unexpected-shift": 1
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 18,
+   "attempt": "fu51cde206",
+   "task": "T04-cards-profile",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 16,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 252284,
+   "output": 67,
+   "tools": 8,
+   "durationMs": 49686,
+   "decisions": 30,
+   "derived": 0,
+   "corrective": 1,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "horizontal-overflow": 1,
+    "offscreen": 11,
+    "containment": 4
+   }
+  },
+  {
+   "order": 19,
+   "attempt": "fue6eef699",
+   "task": "T08-nav-workspace",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 250408,
+   "output": 119,
+   "tools": 8,
+   "durationMs": 47664,
+   "decisions": 20,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 20,
+   "attempt": "fu375f0ef3",
+   "task": "T10-dynamic-thread",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197015,
+   "output": 59,
+   "tools": 7,
+   "durationMs": 41947,
+   "decisions": 32,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 21,
+   "attempt": "fuee3a5c2a",
+   "task": "T06-dashboard-finance",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199396,
+   "output": 125,
+   "tools": 7,
+   "durationMs": 27077,
+   "decisions": 18,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 22,
+   "attempt": "fue8fe9443",
+   "task": "T12-adversarial-pricing",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198173,
+   "output": 64,
+   "tools": 7,
+   "durationMs": 20253,
+   "decisions": 6,
+   "derived": 32,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 23,
+   "attempt": "fua2941da3",
+   "task": "T10-dynamic-thread",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 254165,
+   "output": 1007,
+   "tools": 8,
+   "durationMs": 29950,
+   "decisions": 11,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 24,
+   "attempt": "fu0d6d7ba3",
+   "task": "T10-dynamic-thread",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199722,
+   "output": 65,
+   "tools": 7,
+   "durationMs": 22538,
+   "decisions": 8,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 25,
+   "attempt": "fuc2aae7a9",
+   "task": "T02-form-shipping",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 4,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 309867,
+   "output": 88,
+   "tools": 9,
+   "durationMs": 39328,
+   "decisions": 41,
+   "derived": 0,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 26,
+   "attempt": "fu97509495",
+   "task": "T11-adversarial-settings",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 5,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 450666,
+   "output": 107,
+   "tools": 8,
+   "durationMs": 51942,
+   "decisions": 31,
+   "derived": 22,
+   "corrective": 13,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 27,
+   "attempt": "fue277deb4",
+   "task": "T08-nav-workspace",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 195621,
+   "output": 64,
+   "tools": 4,
+   "durationMs": 18017,
+   "decisions": 6,
+   "derived": 20,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 28,
+   "attempt": "fu7908b0e1",
+   "task": "T09-dynamic-checkout",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 2,
+   "heldout": 2,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 255977,
+   "output": 140,
+   "tools": 8,
+   "durationMs": 31901,
+   "decisions": 12,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "row-association": 12
+   },
+   "heldoutByInvariant": {
+    "row-association": 4
+   }
+  },
+  {
+   "order": 29,
+   "attempt": "fu3c051d74",
+   "task": "T04-cards-profile",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197488,
+   "output": 119,
+   "tools": 4,
+   "durationMs": 20323,
+   "decisions": 13,
+   "derived": 61,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 30,
+   "attempt": "fu5663052b",
+   "task": "T07-nav-docs",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197486,
+   "output": 117,
+   "tools": 7,
+   "durationMs": 15143,
+   "decisions": 11,
+   "derived": 16,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 31,
+   "attempt": "fudb3f547d",
+   "task": "T06-dashboard-finance",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 254747,
+   "output": 75,
+   "tools": 8,
+   "durationMs": 30942,
+   "decisions": 21,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 32,
+   "attempt": "fubb407509",
+   "task": "T08-nav-workspace",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197974,
+   "output": 67,
+   "tools": 7,
+   "durationMs": 23054,
+   "decisions": 5,
+   "derived": 21,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 33,
+   "attempt": "fub849c025",
+   "task": "T01-form-account",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 4,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 309846,
+   "output": 82,
+   "tools": 9,
+   "durationMs": 56603,
+   "decisions": 32,
+   "derived": 0,
+   "corrective": 3,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 34,
+   "attempt": "fu427eecc3",
+   "task": "T05-dashboard-ops",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199554,
+   "output": 60,
+   "tools": 7,
+   "durationMs": 24932,
+   "decisions": 17,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 35,
+   "attempt": "fu49a392b0",
+   "task": "T07-nav-docs",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 3,
+   "finalDefects": 1,
+   "heldout": 1,
+   "accepted": false,
+   "runs": 3,
+   "tokens": 299841,
+   "output": 134,
+   "tools": 6,
+   "durationMs": 52807,
+   "decisions": 12,
+   "derived": 17,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "reading-order": 1
+   },
+   "heldoutByInvariant": {
+    "reading-order": 1
+   }
+  },
+  {
+   "order": 36,
+   "attempt": "fu10b3aaff",
+   "task": "T07-nav-docs",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 3,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 196141,
+   "output": 120,
+   "tools": 7,
+   "durationMs": 21634,
+   "decisions": 14,
+   "derived": 9,
+   "corrective": 0,
+   "uncertain": 2,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "horizontal-overflow": 1,
+    "offscreen": 1,
+    "containment": 1
+   }
+  },
+  {
+   "order": 37,
+   "attempt": "fu8a465a45",
+   "task": "T12-adversarial-pricing",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198987,
+   "output": 118,
+   "tools": 7,
+   "durationMs": 26612,
+   "decisions": 9,
+   "derived": 32,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 38,
+   "attempt": "fu93fae6de",
+   "task": "T09-dynamic-checkout",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 2,
+   "finalDefects": 2,
+   "heldout": 2,
+   "accepted": false,
+   "runs": 2,
+   "tokens": 256629,
+   "output": 123,
+   "tools": 8,
+   "durationMs": 40408,
+   "decisions": 12,
+   "derived": 53,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "row-association": 12
+   },
+   "heldoutByInvariant": {
+    "row-association": 4
+   }
+  },
+  {
+   "order": 39,
+   "attempt": "fu652d9f84",
+   "task": "T07-nav-docs",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 250016,
+   "output": 78,
+   "tools": 8,
+   "durationMs": 31055,
+   "decisions": 9,
+   "derived": 17,
+   "corrective": 1,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 40,
+   "attempt": "fuac3673c4",
+   "task": "T08-nav-workspace",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 249250,
+   "output": 133,
+   "tools": 8,
+   "durationMs": 36304,
+   "decisions": 31,
+   "derived": 0,
+   "corrective": 1,
+   "uncertain": 2,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 41,
+   "attempt": "fu5fe2d7de",
+   "task": "T09-dynamic-checkout",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 4,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 2,
+   "tokens": 251376,
+   "output": 67,
+   "tools": 5,
+   "durationMs": 40158,
+   "decisions": 42,
+   "derived": 0,
+   "corrective": 4,
+   "uncertain": 1,
+   "finalByInvariant": {
+    "proximity": 2
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 42,
+   "attempt": "fuf4673d3a",
+   "task": "T07-nav-docs",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 196783,
+   "output": 59,
+   "tools": 7,
+   "durationMs": 20500,
+   "decisions": 10,
+   "derived": 11,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 43,
+   "attempt": "fu99b6fd55",
+   "task": "T05-dashboard-ops",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199088,
+   "output": 1534,
+   "tools": 4,
+   "durationMs": 21471,
+   "decisions": 16,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 44,
+   "attempt": "fu5d3fd27a",
+   "task": "T06-dashboard-finance",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 1,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 252365,
+   "output": 125,
+   "tools": 8,
+   "durationMs": 37321,
+   "decisions": 32,
+   "derived": 0,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "containment": 1
+   }
+  },
+  {
+   "order": 45,
+   "attempt": "fuf48e24c2",
+   "task": "T11-adversarial-settings",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 253552,
+   "output": 127,
+   "tools": 8,
+   "durationMs": 39307,
+   "decisions": 14,
+   "derived": 36,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 46,
+   "attempt": "fu3fcb5c10",
+   "task": "T06-dashboard-finance",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200140,
+   "output": 60,
+   "tools": 7,
+   "durationMs": 28047,
+   "decisions": 18,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 47,
+   "attempt": "fube9b7229",
+   "task": "T06-dashboard-finance",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199280,
+   "output": 121,
+   "tools": 7,
+   "durationMs": 26316,
+   "decisions": 20,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 48,
+   "attempt": "fu95140c20",
+   "task": "T07-nav-docs",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 196855,
+   "output": 61,
+   "tools": 7,
+   "durationMs": 25839,
+   "decisions": 11,
+   "derived": 16,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "unexpected-shift": 1
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 49,
+   "attempt": "fu91be11ad",
+   "task": "T10-dynamic-thread",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 254869,
+   "output": 135,
+   "tools": 8,
+   "durationMs": 29254,
+   "decisions": 9,
+   "derived": 57,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 50,
+   "attempt": "fu28fff2d8",
+   "task": "T08-nav-workspace",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 252046,
+   "output": 424,
+   "tools": 8,
+   "durationMs": 31801,
+   "decisions": 19,
+   "derived": 13,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 51,
+   "attempt": "fue545619d",
+   "task": "T10-dynamic-thread",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198202,
+   "output": 59,
+   "tools": 7,
+   "durationMs": 22981,
+   "decisions": 21,
+   "derived": 31,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 52,
+   "attempt": "fu0f34d24d",
+   "task": "T08-nav-workspace",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 252379,
+   "output": 67,
+   "tools": 8,
+   "durationMs": 34091,
+   "decisions": 12,
+   "derived": 15,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 53,
+   "attempt": "fud789f5c7",
+   "task": "T11-adversarial-settings",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 2,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 2,
+   "tokens": 252201,
+   "output": 63,
+   "tools": 8,
+   "durationMs": 30390,
+   "decisions": 12,
+   "derived": 40,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "unexpected-shift": 1
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 54,
+   "attempt": "fu789d5686",
+   "task": "T01-form-account",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198661,
+   "output": 65,
+   "tools": 7,
+   "durationMs": 24532,
+   "decisions": 13,
+   "derived": 49,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 55,
+   "attempt": "fu157ba22a",
+   "task": "T03-cards-product",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198672,
+   "output": 63,
+   "tools": 7,
+   "durationMs": 23916,
+   "decisions": 28,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 56,
+   "attempt": "fue8f7cd71",
+   "task": "T09-dynamic-checkout",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 2,
+   "heldout": 2,
+   "accepted": false,
+   "runs": 2,
+   "tokens": 313928,
+   "output": 81,
+   "tools": 9,
+   "durationMs": 49309,
+   "decisions": 13,
+   "derived": 53,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "row-association": 12
+   },
+   "heldoutByInvariant": {
+    "row-association": 4
+   }
+  },
+  {
+   "order": 57,
+   "attempt": "fu4e446b78",
+   "task": "T07-nav-docs",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 247764,
+   "output": 68,
+   "tools": 8,
+   "durationMs": 28670,
+   "decisions": 24,
+   "derived": 0,
+   "corrective": 3,
+   "uncertain": 2,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 58,
+   "attempt": "fu0e103ab1",
+   "task": "T10-dynamic-thread",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198909,
+   "output": 61,
+   "tools": 7,
+   "durationMs": 22383,
+   "decisions": 10,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 59,
+   "attempt": "fue9fbafa8",
+   "task": "T05-dashboard-ops",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 256392,
+   "output": 65,
+   "tools": 8,
+   "durationMs": 34262,
+   "decisions": 18,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 60,
+   "attempt": "fu2e174855",
+   "task": "T11-adversarial-settings",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 309726,
+   "output": 66,
+   "tools": 9,
+   "durationMs": 34379,
+   "decisions": 13,
+   "derived": 40,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 61,
+   "attempt": "fu4be007ab",
+   "task": "T03-cards-product",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 3,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 254384,
+   "output": 67,
+   "tools": 8,
+   "durationMs": 31353,
+   "decisions": 15,
+   "derived": 43,
+   "corrective": 4,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 62,
+   "attempt": "fufb191a65",
+   "task": "T01-form-account",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 368239,
+   "output": 93,
+   "tools": 7,
+   "durationMs": 43472,
+   "decisions": 17,
+   "derived": 38,
+   "corrective": 10,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 63,
+   "attempt": "fube75cfb4",
+   "task": "T03-cards-product",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 3,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 251876,
+   "output": 67,
+   "tools": 5,
+   "durationMs": 25458,
+   "decisions": 17,
+   "derived": 44,
+   "corrective": 8,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 64,
+   "attempt": "fu4a9a9c88",
+   "task": "T09-dynamic-checkout",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 2,
+   "finalDefects": 2,
+   "heldout": 2,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 253664,
+   "output": 136,
+   "tools": 9,
+   "durationMs": 31805,
+   "decisions": 11,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "row-association": 12
+   },
+   "heldoutByInvariant": {
+    "row-association": 4
+   }
+  },
+  {
+   "order": 65,
+   "attempt": "fu1d16efa4",
+   "task": "T07-nav-docs",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 300691,
+   "output": 135,
+   "tools": 9,
+   "durationMs": 39909,
+   "decisions": 24,
+   "derived": 0,
+   "corrective": 4,
+   "uncertain": 2,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 66,
+   "attempt": "fu682d9da4",
+   "task": "T11-adversarial-settings",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 312689,
+   "output": 77,
+   "tools": 9,
+   "durationMs": 45852,
+   "decisions": 33,
+   "derived": 16,
+   "corrective": 7,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 67,
+   "attempt": "fuf7098a45",
+   "task": "T09-dynamic-checkout",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 1,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 197667,
+   "output": 120,
+   "tools": 4,
+   "durationMs": 22926,
+   "decisions": 19,
+   "derived": 11,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "proximity": 2
+   },
+   "heldoutByInvariant": {
+    "row-association": 1
+   }
+  },
+  {
+   "order": 68,
+   "attempt": "fu7bb6a3b5",
+   "task": "T05-dashboard-ops",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200402,
+   "output": 60,
+   "tools": 7,
+   "durationMs": 30282,
+   "decisions": 16,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 69,
+   "attempt": "fu63f4e1a1",
+   "task": "T01-form-account",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198907,
+   "output": 201,
+   "tools": 7,
+   "durationMs": 27551,
+   "decisions": 13,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 70,
+   "attempt": "fu64d1b417",
+   "task": "T06-dashboard-finance",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 254693,
+   "output": 2150,
+   "tools": 8,
+   "durationMs": 48412,
+   "decisions": 20,
+   "derived": 38,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 71,
+   "attempt": "fu51fd9c2f",
+   "task": "T02-form-shipping",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 6,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 254446,
+   "output": 131,
+   "tools": 8,
+   "durationMs": 52621,
+   "decisions": 14,
+   "derived": 69,
+   "corrective": 6,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 72,
+   "attempt": "fu95eed3f5",
+   "task": "T01-form-account",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 195808,
+   "output": 125,
+   "tools": 4,
+   "durationMs": 38109,
+   "decisions": 34,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 73,
+   "attempt": "fu9e1984c7",
+   "task": "T01-form-account",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199395,
+   "output": 65,
+   "tools": 7,
+   "durationMs": 38663,
+   "decisions": 13,
+   "derived": 49,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 74,
+   "attempt": "fu4d441cea",
+   "task": "T01-form-account",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197043,
+   "output": 119,
+   "tools": 4,
+   "durationMs": 38718,
+   "decisions": 15,
+   "derived": 49,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 75,
+   "attempt": "fu559fb2c8",
+   "task": "T02-form-shipping",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197645,
+   "output": 123,
+   "tools": 7,
+   "durationMs": 41245,
+   "decisions": 43,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 76,
+   "attempt": "fu7cff66d0",
+   "task": "T01-form-account",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199510,
+   "output": 120,
+   "tools": 7,
+   "durationMs": 36689,
+   "decisions": 13,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 77,
+   "attempt": "fua418c643",
+   "task": "T12-adversarial-pricing",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 196371,
+   "output": 119,
+   "tools": 7,
+   "durationMs": 36369,
+   "decisions": 23,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 78,
+   "attempt": "fudf8b1b5b",
+   "task": "T11-adversarial-settings",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 309460,
+   "output": 133,
+   "tools": 9,
+   "durationMs": 58935,
+   "decisions": 11,
+   "derived": 40,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 79,
+   "attempt": "fu40a7cfb4",
+   "task": "T02-form-shipping",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199140,
+   "output": 120,
+   "tools": 7,
+   "durationMs": 38653,
+   "decisions": 17,
+   "derived": 65,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 80,
+   "attempt": "fu741bb268",
+   "task": "T02-form-shipping",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 386355,
+   "output": 172,
+   "tools": 7,
+   "durationMs": 41303,
+   "decisions": 20,
+   "derived": 25,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 81,
+   "attempt": "fueeb5d697",
+   "task": "T03-cards-product",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200271,
+   "output": 65,
+   "tools": 7,
+   "durationMs": 37093,
+   "decisions": 15,
+   "derived": 78,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 82,
+   "attempt": "fufcbfa9b4",
+   "task": "T04-cards-profile",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197674,
+   "output": 183,
+   "tools": 4,
+   "durationMs": 38683,
+   "decisions": 15,
+   "derived": 65,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 83,
+   "attempt": "fu8ba96954",
+   "task": "T06-dashboard-finance",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 1,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 251669,
+   "output": 2454,
+   "tools": 5,
+   "durationMs": 52017,
+   "decisions": 34,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "containment": 1
+   }
+  },
+  {
+   "order": 84,
+   "attempt": "fu5efa05e6",
+   "task": "T08-nav-workspace",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198096,
+   "output": 122,
+   "tools": 7,
+   "durationMs": 37172,
+   "decisions": 7,
+   "derived": 21,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 85,
+   "attempt": "fu0142591f",
+   "task": "T11-adversarial-settings",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 1,
+   "accepted": false,
+   "runs": 5,
+   "tokens": 420294,
+   "output": 1454,
+   "tools": 11,
+   "durationMs": 86311,
+   "decisions": 16,
+   "derived": 40,
+   "corrective": 5,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "reading-order": 2
+   },
+   "heldoutByInvariant": {
+    "reading-order": 1
+   }
+  },
+  {
+   "order": 86,
+   "attempt": "fu8e7d3c2f",
+   "task": "T07-nav-docs",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 196261,
+   "output": 405,
+   "tools": 7,
+   "durationMs": 35416,
+   "decisions": 5,
+   "derived": 11,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "unexpected-shift": 1
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 87,
+   "attempt": "fu88ebe535",
+   "task": "T01-form-account",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 1,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 315295,
+   "output": 1573,
+   "tools": 6,
+   "durationMs": 57583,
+   "decisions": 13,
+   "derived": 30,
+   "corrective": 5,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "target-size": 1
+   }
+  },
+  {
+   "order": 88,
+   "attempt": "fu59ac8f70",
+   "task": "T04-cards-profile",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 201828,
+   "output": 2019,
+   "tools": 7,
+   "durationMs": 39592,
+   "decisions": 17,
+   "derived": 57,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "unexpected-shift": 1
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 89,
+   "attempt": "fu0d4fc08c",
+   "task": "T12-adversarial-pricing",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198113,
+   "output": 120,
+   "tools": 7,
+   "durationMs": 38229,
+   "decisions": 13,
+   "derived": 18,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 90,
+   "attempt": "fu837be8d6",
+   "task": "T03-cards-product",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 1,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 196213,
+   "output": 59,
+   "tools": 4,
+   "durationMs": 36149,
+   "decisions": 26,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "separation": 2
+   }
+  },
+  {
+   "order": 91,
+   "attempt": "fu2c568155",
+   "task": "T02-form-shipping",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199377,
+   "output": 2005,
+   "tools": 4,
+   "durationMs": 38163,
+   "decisions": 15,
+   "derived": 61,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 92,
+   "attempt": "fu662e8ed2",
+   "task": "T08-nav-workspace",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197141,
+   "output": 327,
+   "tools": 6,
+   "durationMs": 36648,
+   "decisions": 8,
+   "derived": 21,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 93,
+   "attempt": "fub3e45793",
+   "task": "T04-cards-profile",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 4,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 256156,
+   "output": 1953,
+   "tools": 8,
+   "durationMs": 51934,
+   "decisions": 29,
+   "derived": 19,
+   "corrective": 4,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 94,
+   "attempt": "fu4a8bde31",
+   "task": "T09-dynamic-checkout",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 1,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 366876,
+   "output": 132,
+   "tools": 7,
+   "durationMs": 57042,
+   "decisions": 19,
+   "derived": 17,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "row-association": 1
+   }
+  },
+  {
+   "order": 95,
+   "attempt": "fu50858b84",
+   "task": "T01-form-account",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197527,
+   "output": 388,
+   "tools": 7,
+   "durationMs": 44936,
+   "decisions": 33,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 96,
+   "attempt": "fu6c84e5ca",
+   "task": "T06-dashboard-finance",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199717,
+   "output": 2116,
+   "tools": 4,
+   "durationMs": 38058,
+   "decisions": 21,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 97,
+   "attempt": "fua2946c91",
+   "task": "T10-dynamic-thread",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199175,
+   "output": 385,
+   "tools": 7,
+   "durationMs": 37196,
+   "decisions": 10,
+   "derived": 57,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 98,
+   "attempt": "fu134bd5cf",
+   "task": "T07-nav-docs",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 252939,
+   "output": 1289,
+   "tools": 8,
+   "durationMs": 54091,
+   "decisions": 10,
+   "derived": 21,
+   "corrective": 9,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 99,
+   "attempt": "fuc42cb70e",
+   "task": "T02-form-shipping",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 1,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 198476,
+   "output": 399,
+   "tools": 7,
+   "durationMs": 36029,
+   "decisions": 19,
+   "derived": 27,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {
+    "target-size": 4
+   },
+   "heldoutByInvariant": {
+    "target-size": 1
+   }
+  },
+  {
+   "order": 100,
+   "attempt": "fu43192864",
+   "task": "T10-dynamic-thread",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 252864,
+   "output": 395,
+   "tools": 8,
+   "durationMs": 41484,
+   "decisions": 22,
+   "derived": 29,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 101,
+   "attempt": "fu4c0e5a46",
+   "task": "T03-cards-product",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 3,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 251793,
+   "output": 130,
+   "tools": 5,
+   "durationMs": 38764,
+   "decisions": 14,
+   "derived": 60,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 102,
+   "attempt": "fu2910cddb",
+   "task": "T12-adversarial-pricing",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 308743,
+   "output": 326,
+   "tools": 9,
+   "durationMs": 63443,
+   "decisions": 12,
+   "derived": 34,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 103,
+   "attempt": "fuf9bd1fed",
+   "task": "T05-dashboard-ops",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 201343,
+   "output": 1795,
+   "tools": 7,
+   "durationMs": 38256,
+   "decisions": 17,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 104,
+   "attempt": "fuc91e49a4",
+   "task": "T01-form-account",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198902,
+   "output": 119,
+   "tools": 8,
+   "durationMs": 38215,
+   "decisions": 12,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 105,
+   "attempt": "fuaf292444",
+   "task": "T04-cards-profile",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 201177,
+   "output": 1934,
+   "tools": 7,
+   "durationMs": 39298,
+   "decisions": 15,
+   "derived": 65,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 106,
+   "attempt": "fu858c2ae3",
+   "task": "T04-cards-profile",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200252,
+   "output": 1448,
+   "tools": 7,
+   "durationMs": 38643,
+   "decisions": 12,
+   "derived": 61,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 107,
+   "attempt": "fueff2bcb2",
+   "task": "T11-adversarial-settings",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 306982,
+   "output": 135,
+   "tools": 9,
+   "durationMs": 65305,
+   "decisions": 11,
+   "derived": 40,
+   "corrective": 1,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 108,
+   "attempt": "fu9ef37b76",
+   "task": "T12-adversarial-pricing",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197034,
+   "output": 119,
+   "tools": 7,
+   "durationMs": 39187,
+   "decisions": 24,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 109,
+   "attempt": "fu95f935bf",
+   "task": "T04-cards-profile",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 4,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 254470,
+   "output": 2159,
+   "tools": 8,
+   "durationMs": 52987,
+   "decisions": 33,
+   "derived": 0,
+   "corrective": 1,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "content-overflow": 2,
+    "containment": 2
+   }
+  },
+  {
+   "order": 110,
+   "attempt": "fuc6c902a0",
+   "task": "T09-dynamic-checkout",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 7,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 254499,
+   "output": 238,
+   "tools": 8,
+   "durationMs": 47474,
+   "decisions": 36,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 2,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "content-overflow": 6,
+    "row-association": 1
+   }
+  },
+  {
+   "order": 111,
+   "attempt": "fufa7f4359",
+   "task": "T08-nav-workspace",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 194485,
+   "output": 318,
+   "tools": 4,
+   "durationMs": 32708,
+   "decisions": 18,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 112,
+   "attempt": "fu0e706c7e",
+   "task": "T11-adversarial-settings",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 2,
+   "heldout": 15,
+   "accepted": false,
+   "runs": 3,
+   "tokens": 308405,
+   "output": 1016,
+   "tools": 9,
+   "durationMs": 70833,
+   "decisions": 27,
+   "derived": 26,
+   "corrective": 10,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "unexpected-shift": 2
+   },
+   "heldoutByInvariant": {
+    "horizontal-overflow": 1,
+    "offscreen": 11,
+    "content-overflow": 1,
+    "containment": 2
+   }
+  },
+  {
+   "order": 113,
+   "attempt": "fub2d63ead",
+   "task": "T10-dynamic-thread",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199651,
+   "output": 123,
+   "tools": 7,
+   "durationMs": 37994,
+   "decisions": 11,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 114,
+   "attempt": "fuc0c3186c",
+   "task": "T06-dashboard-finance",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198489,
+   "output": 122,
+   "tools": 7,
+   "durationMs": 38569,
+   "decisions": 18,
+   "derived": 37,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 115,
+   "attempt": "fu7e2d22e9",
+   "task": "T09-dynamic-checkout",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 1,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 260107,
+   "output": 2397,
+   "tools": 8,
+   "durationMs": 60177,
+   "decisions": 14,
+   "derived": 53,
+   "corrective": 3,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "row-association": 1
+   }
+  },
+  {
+   "order": 116,
+   "attempt": "fucb4cb903",
+   "task": "T05-dashboard-ops",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 519239,
+   "output": 122,
+   "tools": 12,
+   "durationMs": 64802,
+   "decisions": 30,
+   "derived": 29,
+   "corrective": 0,
+   "uncertain": 2,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 117,
+   "attempt": "fu33cb209d",
+   "task": "T03-cards-product",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199273,
+   "output": 1429,
+   "tools": 4,
+   "durationMs": 35994,
+   "decisions": 13,
+   "derived": 78,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 118,
+   "attempt": "fue7e0c36b",
+   "task": "T12-adversarial-pricing",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200174,
+   "output": 1656,
+   "tools": 7,
+   "durationMs": 36109,
+   "decisions": 6,
+   "derived": 32,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 119,
+   "attempt": "fu9de6a84f",
+   "task": "T10-dynamic-thread",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199896,
+   "output": 1743,
+   "tools": 7,
+   "durationMs": 35410,
+   "decisions": 23,
+   "derived": 39,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 120,
+   "attempt": "fub48ce8b1",
+   "task": "T02-form-shipping",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 366859,
+   "output": 265,
+   "tools": 7,
+   "durationMs": 44035,
+   "decisions": 21,
+   "derived": 25,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 121,
+   "attempt": "fu56321c04",
+   "task": "T12-adversarial-pricing",
+   "arm": "D",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199391,
+   "output": 123,
+   "tools": 7,
+   "durationMs": 28622,
+   "decisions": 6,
+   "derived": 32,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 122,
+   "attempt": "fu72e728f2",
+   "task": "T09-dynamic-checkout",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 1,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197639,
+   "output": 195,
+   "tools": 4,
+   "durationMs": 27974,
+   "decisions": 14,
+   "derived": 39,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "row-association": 1
+   }
+  },
+  {
+   "order": 123,
+   "attempt": "fu90a710b2",
+   "task": "T05-dashboard-ops",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 250221,
+   "output": 80,
+   "tools": 5,
+   "durationMs": 40954,
+   "decisions": 32,
+   "derived": 0,
+   "corrective": 2,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 124,
+   "attempt": "fu4d038af0",
+   "task": "T08-nav-workspace",
+   "arm": "C",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 251944,
+   "output": 142,
+   "tools": 8,
+   "durationMs": 34412,
+   "decisions": 6,
+   "derived": 21,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 125,
+   "attempt": "fub0068fd1",
+   "task": "T04-cards-profile",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199489,
+   "output": 257,
+   "tools": 7,
+   "durationMs": 31740,
+   "decisions": 13,
+   "derived": 61,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 126,
+   "attempt": "fue7814a06",
+   "task": "T04-cards-profile",
+   "arm": "B",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 196809,
+   "output": 208,
+   "tools": 4,
+   "durationMs": 26518,
+   "decisions": 20,
+   "derived": 48,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 127,
+   "attempt": "fub2613ab8",
+   "task": "T03-cards-product",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200530,
+   "output": 119,
+   "tools": 7,
+   "durationMs": 34390,
+   "decisions": 12,
+   "derived": 83,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 128,
+   "attempt": "fue62a0af5",
+   "task": "T06-dashboard-finance",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199420,
+   "output": 242,
+   "tools": 7,
+   "durationMs": 34784,
+   "decisions": 21,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 129,
+   "attempt": "fua952ffe3",
+   "task": "T07-nav-docs",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 1,
+   "accepted": false,
+   "runs": 2,
+   "tokens": 247522,
+   "output": 366,
+   "tools": 8,
+   "durationMs": 39607,
+   "decisions": 23,
+   "derived": 0,
+   "corrective": 2,
+   "uncertain": 2,
+   "finalByInvariant": {
+    "reading-order": 4
+   },
+   "heldoutByInvariant": {
+    "reading-order": 1
+   }
+  },
+  {
+   "order": 130,
+   "attempt": "fu421d8dcd",
+   "task": "T11-adversarial-settings",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 26,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 308392,
+   "output": 145,
+   "tools": 9,
+   "durationMs": 56570,
+   "decisions": 32,
+   "derived": 0,
+   "corrective": 10,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "content-overflow": 2,
+    "horizontal-overflow": 1,
+    "offscreen": 13,
+    "containment": 10
+   }
+  },
+  {
+   "order": 131,
+   "attempt": "fu22a2bc06",
+   "task": "T05-dashboard-ops",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 253409,
+   "output": 328,
+   "tools": 8,
+   "durationMs": 46258,
+   "decisions": 41,
+   "derived": 0,
+   "corrective": 1,
+   "uncertain": 2,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 132,
+   "attempt": "fuffd39e60",
+   "task": "T01-form-account",
+   "arm": "B",
+   "rep": 2,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 308249,
+   "output": 71,
+   "tools": 9,
+   "durationMs": 46642,
+   "decisions": 13,
+   "derived": 40,
+   "corrective": 9,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 133,
+   "attempt": "fuce96f395",
+   "task": "T05-dashboard-ops",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 252982,
+   "output": 495,
+   "tools": 8,
+   "durationMs": 46677,
+   "decisions": 32,
+   "derived": 0,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 134,
+   "attempt": "fu59ce046f",
+   "task": "T11-adversarial-settings",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 13,
+   "accepted": true,
+   "runs": 4,
+   "tokens": 422622,
+   "output": 208,
+   "tools": 11,
+   "durationMs": 79302,
+   "decisions": 37,
+   "derived": 0,
+   "corrective": 6,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "content-overflow": 1,
+    "horizontal-overflow": 1,
+    "offscreen": 2,
+    "containment": 9
+   }
+  },
+  {
+   "order": 135,
+   "attempt": "fu0c4a2b3a",
+   "task": "T02-form-shipping",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 310670,
+   "output": 540,
+   "tools": 9,
+   "durationMs": 58136,
+   "decisions": 39,
+   "derived": 0,
+   "corrective": 1,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 136,
+   "attempt": "fu5c9080e7",
+   "task": "T11-adversarial-settings",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 7,
+   "finalDefects": 0,
+   "heldout": 11,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 309231,
+   "output": 406,
+   "tools": 9,
+   "durationMs": 65216,
+   "decisions": 38,
+   "derived": 0,
+   "corrective": 10,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "content-overflow": 2,
+    "horizontal-overflow": 1,
+    "offscreen": 2,
+    "containment": 6
+   }
+  },
+  {
+   "order": 137,
+   "attempt": "fu0295579c",
+   "task": "T10-dynamic-thread",
+   "arm": "A",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197149,
+   "output": 385,
+   "tools": 7,
+   "durationMs": 68541,
+   "decisions": 27,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 138,
+   "attempt": "fu93ad4bf1",
+   "task": "T09-dynamic-checkout",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 2,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 315741,
+   "output": 133,
+   "tools": 9,
+   "durationMs": 92039,
+   "decisions": 15,
+   "derived": 65,
+   "corrective": 12,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "row-association": 2
+   }
+  },
+  {
+   "order": 139,
+   "attempt": "fu56838dff",
+   "task": "T09-dynamic-checkout",
+   "arm": "A",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 7,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 197061,
+   "output": 125,
+   "tools": 4,
+   "durationMs": 33723,
+   "decisions": 43,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 2,
+   "finalByInvariant": {
+    "proximity": 2
+   },
+   "heldoutByInvariant": {
+    "content-overflow": 6,
+    "row-association": 1
+   }
+  },
+  {
+   "order": 140,
+   "attempt": "fu572ed09d",
+   "task": "T02-form-shipping",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198769,
+   "output": 323,
+   "tools": 6,
+   "durationMs": 35239,
+   "decisions": 15,
+   "derived": 65,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 141,
+   "attempt": "fu3726bc47",
+   "task": "T02-form-shipping",
+   "arm": "D",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197510,
+   "output": 120,
+   "tools": 4,
+   "durationMs": 29257,
+   "decisions": 18,
+   "derived": 61,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 142,
+   "attempt": "fu73a681d7",
+   "task": "T03-cards-product",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197872,
+   "output": 122,
+   "tools": 4,
+   "durationMs": 27827,
+   "decisions": 15,
+   "derived": 78,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 143,
+   "attempt": "fu36f811ce",
+   "task": "T04-cards-profile",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 251057,
+   "output": 123,
+   "tools": 8,
+   "durationMs": 34946,
+   "decisions": 36,
+   "derived": 0,
+   "corrective": 2,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 144,
+   "attempt": "fu1a992744",
+   "task": "T12-adversarial-pricing",
+   "arm": "C",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 196545,
+   "output": 125,
+   "tools": 4,
+   "durationMs": 55952,
+   "decisions": 7,
+   "derived": 32,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  }
+ ]
+}

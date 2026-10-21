@@ -1,0 +1,60 @@
+{
+ "explicit": [
+  {
+   "source": "rl-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "data-rl",
+   "value": "group",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "loose",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "data-rl-equal",
+   "value": "(present)",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "article#39",
+   "context": "",
+   "property": "data-rl",
+   "value": "container",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "article#39",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "14rem",
+   "category": "dimension",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

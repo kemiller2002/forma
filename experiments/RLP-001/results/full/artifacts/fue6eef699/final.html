@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace section navigation</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  body { padding: 1rem; }
+  .bar { padding: 1.25rem; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.5rem; margin: 0; padding: 0; list-style: none; }
+  .crumbs a, .crumbs span { display: inline-flex; align-items: center; min-height: 1.5rem; min-width: 1.5rem; }
+  .crumbs li { display: flex; align-items: center; gap: 0.5rem; }
+  .crumbs li + li::before { content: "/"; }
+  .head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  h1 { margin: 0; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-start; }
+  .actions button { min-height: 2.5rem; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+  .tabs a { display: inline-flex; align-items: center; min-height: 2.5rem; padding: 0.25rem 0.75rem; border: 1px solid #c8ccd4; border-radius: 0.5rem; }
+  .tabs a[aria-current="page"] { font-weight: 600; background: #e8efff; border-color: #2f5fd0; color: #1a3f9c; }
+  </style>
+</head>
+<body>
+  <header class="surface bar" data-rlp="bar">
+    <nav aria-label="Breadcrumb" data-rlp="breadcrumb">
+      <ul class="crumbs">
+        <li><a href="#" data-rlp="crumb-1">Workspaces</a></li>
+        <li><a href="#" data-rlp="crumb-2">Acme Corporation</a></li>
+        <li><a href="#" data-rlp="crumb-3">Billing</a></li>
+        <li><span aria-current="page" data-rlp="crumb-4">Invoices</span></li>
+      </ul>
+    </nav>
+    <div class="head">
+      <h1 data-rlp="heading">Invoices</h1>
+      <nav class="sections" aria-label="Billing sections" data-rlp="sections">
+        <ul class="tabs">
+          <li><a href="#" data-rlp="section-1">Overview</a></li>
+          <li><a href="#" aria-current="page" data-rlp="section-2">Invoices</a></li>
+          <li><a href="#" data-rlp="section-3">Payment methods</a></li>
+          <li><a href="#" data-rlp="section-4">Tax registrations and exemptions</a></li>
+          <li><a href="#" data-rlp="section-5">Usage</a></li>
+          <li><a href="#" data-rlp="section-6">Settings</a></li>
+        </ul>
+      </nav>
+      <div class="actions" data-rlp="actions">
+        <button type="button" class="secondary" data-rlp="export">Export CSV</button>
+        <button type="button" data-rlp="new">New invoice</button>
+      </div>
+    </div>
+  </header>
+</body>
+</html>

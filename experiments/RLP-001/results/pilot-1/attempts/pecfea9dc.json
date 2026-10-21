@@ -1,0 +1,832 @@
+{
+ "experiment": "RLP-001",
+ "phase": "pilot-1",
+ "attemptId": "pecfea9dc",
+ "taskId": "T09-dynamic-checkout",
+ "category": "dynamic",
+ "split": "dev",
+ "arm": "D",
+ "repetition": 1,
+ "executionOrder": 12,
+ "model": "sonnet",
+ "engineCommit": "778ac21c18a22379feb428e56b88e0e590d3fe65",
+ "collectedAt": "2026-10-21T18:46:12.162Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 9,
+  "inputTokens": 490787,
+  "inputUncachedTokens": 18,
+  "cacheCreationTokens": 59655,
+  "cacheReadTokens": 431114,
+  "outputTokens": 80,
+  "totalTokens": 490867,
+  "toolCalls": 12,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 7,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 19029,
+  "toolTokens": null,
+  "durationMs": 74106,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": 59950,
+   "toolUses": 12,
+   "durationMs": 74143
+  },
+  "validationRuns": 5,
+  "repairIterations": 4,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T18:42:00.931Z",
+    "durationMs": 7557,
+    "failures": 12,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T18:42:16.190Z",
+    "durationMs": 3248,
+    "failures": 9,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   },
+   {
+    "run": 3,
+    "startedAt": "2026-10-21T18:42:24.501Z",
+    "durationMs": 2852,
+    "failures": 9,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/003.html"
+   },
+   {
+    "run": 4,
+    "startedAt": "2026-10-21T18:42:35.954Z",
+    "durationMs": 3804,
+    "failures": 9,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/004.html"
+   },
+   {
+    "run": 5,
+    "startedAt": "2026-10-21T18:42:48.262Z",
+    "durationMs": 2942,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/005.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 30,
+  "standardByInvariant": {
+   "proximity": 30
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 2,
+   "font-scale": 2
+  },
+  "heldoutByInvariant": {
+   "proximity": 4
+  },
+  "responsiveFailureViewports": [
+   320,
+   375,
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 496,
+       "maxIterations": 120,
+       "unconverged": 0,
+       "measureCalls": 35,
+       "aborted": false,
+       "solveMs": 12.899999999906868,
+       "memoEntries": 45
+      },
+      "totalMs": 16.100000000093132,
+      "energy": 1.4406134879663012e-7
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 276,
+       "iterations": 4144,
+       "maxIterations": 126,
+       "unconverged": 0,
+       "measureCalls": 35,
+       "aborted": false,
+       "solveMs": 56.90000000037253,
+       "memoEntries": 45
+      },
+      "totalMs": 62.299999999813735,
+      "energy": 2.526255214898771
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 805,
+       "maxIterations": 133,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 16.699999999720603,
+       "memoEntries": 36
+      },
+      "totalMs": 20.199999999720603,
+      "energy": 3.355439198106573e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 816,
+       "maxIterations": 134,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 15.100000000093132,
+       "memoEntries": 36
+      },
+      "totalMs": 20.200000000186265,
+      "energy": 2.1487847777773722e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 823,
+       "maxIterations": 135,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 17,
+       "memoEntries": 36
+      },
+      "totalMs": 21.699999999720603,
+      "energy": 1.196044693549393e-7
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 496,
+       "maxIterations": 120,
+       "unconverged": 0,
+       "measureCalls": 35,
+       "aborted": false,
+       "solveMs": 14.399999999906868,
+       "memoEntries": 45
+      },
+      "totalMs": 18.200000000186265,
+      "energy": 1.4406134879663012e-7
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 276,
+       "iterations": 4144,
+       "maxIterations": 126,
+       "unconverged": 0,
+       "measureCalls": 35,
+       "aborted": false,
+       "solveMs": 58.299999999813735,
+       "memoEntries": 45
+      },
+      "totalMs": 62.39999999990687,
+      "energy": 2.526255214898771
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 805,
+       "maxIterations": 133,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 19,
+       "memoEntries": 36
+      },
+      "totalMs": 22.100000000093132,
+      "energy": 3.3554391981473513e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 816,
+       "maxIterations": 134,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 16.100000000093132,
+       "memoEntries": 36
+      },
+      "totalMs": 19.199999999720603,
+      "energy": 2.1487847778011884e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 823,
+       "maxIterations": 135,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 23.5,
+       "memoEntries": 36
+      },
+      "totalMs": 27.200000000186265,
+      "energy": 1.1960446935425618e-7
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 11,
+  "derived": 53,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 11,
+  "rawStatements": {
+   "explicit": 55,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 12,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 3,
+    "alignment": 2,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 1,
+    "dimension": 3,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 1,
+    "margin": 13,
+    "alignment": 13,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 13,
+    "dimension": 13,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "56px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "56px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:item-2",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "56px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:item-1-name",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "56px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "56px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "56px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "62.27px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:clone:item-4",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "62.27px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:remove:item-2",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "62.27px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "3:text:item-1-name",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "62.27px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "4:reveal:promo-error",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "62.27px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "62.27px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:clone:item-4",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "2:remove:item-2",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "3:text:item-1-name",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "4:reveal:promo-error",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:clone:item-4",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "2:remove:item-2",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "3:text:item-1-name",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "4:reveal:promo-error",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:clone:item-4",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "2:remove:item-2",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "3:text:item-1-name",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "4:reveal:promo-error",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "56px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 24px apart",
+    "observed": "73.05px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 48px apart",
+    "observed": "112px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "<= 48px apart",
+    "observed": "131.47px",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 2
+   }
+  ],
+  "final": []
+ }
+}

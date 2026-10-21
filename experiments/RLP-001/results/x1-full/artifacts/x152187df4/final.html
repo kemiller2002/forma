@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile panel with nested sections</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+  <main data-rl-root data-rl="group">
+  <article data-rlp="profile" data-rl="container">
+    <header data-rlp="header" data-rl="group" data-rl-flow="row" data-rl-align="center">
+      <img data-rlp="avatar" src="assets/placeholder.svg" alt="Portrait of Dana Okafor" width="64" height="64" data-rl-size="content">
+      <div data-rl="group" data-rl-fill data-rl-min="12rem">
+        <h2 data-rlp="name">Dana Okafor</h2>
+        <p data-rlp="role">Principal engineer, Platform reliability</p>
+      </div>
+      <button data-rlp="follow" type="button" data-rl-anchor="end">Follow</button>
+    </header>
+    <div data-rlp="stats" data-rl="group" data-rl-flow="wrap" data-rl-equal>
+      <div data-rlp="stat-reviews" data-rl="container" data-rl-min="9rem" data-rl-align-edge="stat">
+        <p data-rlp="stat-reviews-value">128</p>
+        <p data-rlp="stat-reviews-label">Reviews this quarter</p>
+      </div>
+      <div data-rlp="stat-deploys" data-rl="container" data-rl-min="9rem" data-rl-align-edge="stat">
+        <p data-rlp="stat-deploys-value">56</p>
+        <p data-rlp="stat-deploys-label">Deploys</p>
+      </div>
+      <div data-rlp="stat-incidents" data-rl="container" data-rl-min="9rem" data-rl-align-edge="stat">
+        <p data-rlp="stat-incidents-value">3</p>
+        <p data-rlp="stat-incidents-label">Open incidents</p>
+      </div>
+    </div>
+    <section data-rlp="about" data-rl="group">
+      <h3 data-rlp="about-title">About</h3>
+      <p data-rlp="about-text">Dana leads the reliability guild and maintains the incident review process. Ask about capacity planning and on-call health.</p>
+    </section>
+    <section data-rlp="activity" data-rl="container">
+      <h3 data-rlp="activity-title">Recent activity</h3>
+      <div data-rl="group">
+        <div data-rlp="activity-1" data-rl="group" data-rl-flow="row">
+          <p data-rlp="activity-1-text" data-rl-fill data-rl-min="12rem">Approved the database failover runbook</p>
+          <p data-rlp="activity-1-time" data-rl-anchor="end">2 hours ago</p>
+        </div>
+        <div data-rlp="activity-2" data-rl="group" data-rl-flow="row">
+          <p data-rlp="activity-2-text" data-rl-fill data-rl-min="12rem">Opened a capacity review for the search cluster</p>
+          <p data-rlp="activity-2-time" data-rl-anchor="end">Yesterday</p>
+        </div>
+        <div data-rlp="activity-3" data-rl="group" data-rl-flow="row">
+          <p data-rlp="activity-3-text" data-rl-fill data-rl-min="12rem">Closed incident INC-2231</p>
+          <p data-rlp="activity-3-time" data-rl-anchor="end">Monday</p>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+</body>
+</html>

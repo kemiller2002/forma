@@ -1,0 +1,258 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": ".page",
+   "context": "",
+   "property": "max-width",
+   "value": "80rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".page",
+   "context": "",
+   "property": "margin",
+   "value": "0 auto",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".page",
+   "context": "",
+   "property": "padding",
+   "value": "1.5rem 1rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".page h2",
+   "context": "",
+   "property": "margin-bottom",
+   "value": "1.25rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".specs",
+   "context": "",
+   "property": "display",
+   "value": "grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".cards",
+   "context": "",
+   "property": "grid-template-columns",
+   "value": "repeat(auto-fit,minmax(min(100%,16rem),1fr))",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".cards",
+   "context": "",
+   "property": "gap",
+   "value": "1.25rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".cards",
+   "context": "",
+   "property": "align-items",
+   "value": "stretch",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".card",
+   "context": "",
+   "property": "flex-direction",
+   "value": "column",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "gap",
+   "value": "0.75rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".card",
+   "context": "",
+   "property": "padding",
+   "value": "1.25rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".card",
+   "context": "",
+   "property": "min-width",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".card img",
+   "context": "",
+   "property": "display",
+   "value": "block",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".card img",
+   "context": "",
+   "property": "width",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".card img",
+   "context": "",
+   "property": "height",
+   "value": "auto",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".card img",
+   "context": "",
+   "property": "aspect-ratio",
+   "value": "3/2",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".card h3",
+   "context": "",
+   "property": "margin-top",
+   "value": "0.25rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".specs",
+   "context": "",
+   "property": "padding",
+   "value": "0.75rem 1rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".specs",
+   "context": "",
+   "property": "margin-top",
+   "value": "auto",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".specs",
+   "context": "",
+   "property": "gap",
+   "value": "0.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "flex-wrap",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".spec",
+   "context": "",
+   "property": "justify-content",
+   "value": "space-between",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".spec",
+   "context": "",
+   "property": "gap",
+   "value": "0.25rem 1rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".spec dt,.spec dd",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "padding-top",
+   "value": "0.25rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions button",
+   "context": "",
+   "property": "min-height",
+   "value": "2.75rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions button",
+   "context": "",
+   "property": "min-width",
+   "value": "2.75rem",
+   "category": "dimension",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

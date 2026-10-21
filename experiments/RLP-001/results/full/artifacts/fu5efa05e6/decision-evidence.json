@@ -1,0 +1,69 @@
+{
+ "explicit": [
+  {
+   "source": "rl-attr",
+   "selector": "div#23",
+   "context": "",
+   "property": "data-rl",
+   "value": "group",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "header#9",
+   "context": "",
+   "property": "data-rl",
+   "value": "container",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "header#9",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "loose",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#23",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "nav#10",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "tight",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "nav#16",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "related",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#23",
+   "context": "",
+   "property": "data-rl-align",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

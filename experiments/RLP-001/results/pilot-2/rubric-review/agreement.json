@@ -1,0 +1,91 @@
+{
+ "phase": "pilot-2",
+ "labeled": 80,
+ "of": 80,
+ "category": {
+  "n": 80,
+  "agreement": 0.975,
+  "kappa": 0.9686397491179929
+ },
+ "kind": {
+  "n": 80,
+  "agreement": 0.9625,
+  "kappa": 0.387755102040817
+ },
+ "byArm": {
+  "A": {
+   "n": 20,
+   "agreement": 0.95,
+   "kappa": 0.9367088607594937
+  },
+  "B": {
+   "n": 20,
+   "agreement": 0.95,
+   "kappa": 0.9337748344370861
+  },
+  "C": {
+   "n": 20,
+   "agreement": 1,
+   "kappa": 1
+  },
+  "D": {
+   "n": 20,
+   "agreement": 1,
+   "kappa": 1
+  }
+ },
+ "disagreements": [
+  {
+   "item": "s005",
+   "arm": "A",
+   "statement": "grid-area: remove",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "grouping",
+    "uncertain"
+   ]
+  },
+  {
+   "item": "s031",
+   "arm": "A",
+   "statement": "grid-area: price",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "grouping",
+    "uncertain"
+   ]
+  },
+  {
+   "item": "s041",
+   "arm": "B",
+   "statement": "class: ef-surface",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "padding",
+    "explicit"
+   ]
+  },
+  {
+   "item": "s050",
+   "arm": "A",
+   "statement": "flex: none",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "dimension",
+    "uncertain"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,169 @@
+{
+ "explicit": [
+  {
+   "source": "rl-attr",
+   "selector": "div#45",
+   "context": "",
+   "property": "data-rl",
+   "value": "group",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "section#9",
+   "context": "",
+   "property": "data-rl",
+   "value": "container",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#45",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "row",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#45",
+   "context": "",
+   "property": "data-rl-align",
+   "value": "center",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "span#46",
+   "context": "",
+   "property": "data-rl-fill",
+   "value": "(present)",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "span#23",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "4rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "span#47",
+   "context": "",
+   "property": "data-rl-size",
+   "value": "content",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "span#47",
+   "context": "",
+   "property": "data-rl-anchor",
+   "value": "end",
+   "category": "positioning",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#29",
+   "context": "",
+   "property": "data-rl-align",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "input#30",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "8rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "button#31",
+   "context": "",
+   "property": "data-rl-align-edge",
+   "value": "promo",
+   "category": "alignment",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": [
+  {
+   "source": "rl-attr",
+   "selector": "span#23",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "4rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#45",
+   "context": "",
+   "property": "data-rl",
+   "value": "group",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#45",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "row",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#45",
+   "context": "",
+   "property": "data-rl-align",
+   "value": "center",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "span#47",
+   "context": "",
+   "property": "data-rl-size",
+   "value": "content",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "span#46",
+   "context": "",
+   "property": "data-rl-fill",
+   "value": "(present)",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "span#47",
+   "context": "",
+   "property": "data-rl-anchor",
+   "value": "end",
+   "category": "positioning",
+   "kind": "explicit"
+  }
+ ]
+}

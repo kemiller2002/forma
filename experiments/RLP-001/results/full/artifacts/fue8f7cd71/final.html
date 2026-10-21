@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout summary with dynamic content</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+<main data-rl-root data-rl="group">
+  <section data-rlp="summary" data-rl="container" data-rl-bond="loose">
+    <h2 data-rlp="title">Order summary</h2>
+    <ul data-rlp="items" data-rl="group" data-rl-bond="related">
+        <li data-rlp="item-1" data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="center">
+          <span data-rlp="item-1-name" data-rl-fill data-rl-min="4rem">Linen notebook</span>
+          <span data-rlp="item-1-qty" data-rl-size="content">Qty 2</span>
+          <span data-rlp="item-1-price" data-rl-size="content" data-rl-anchor="end">$24.00</span>
+          <button type="button" class="secondary" data-rlp="item-1-remove" aria-label="Remove Linen notebook" data-rl-size="content">Remove</button>
+        </li>
+        <li data-rlp="item-2" data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="center">
+          <span data-rlp="item-2-name" data-rl-fill data-rl-min="4rem">Fountain pen</span>
+          <span data-rlp="item-2-qty" data-rl-size="content">Qty 1</span>
+          <span data-rlp="item-2-price" data-rl-size="content" data-rl-anchor="end">$58.00</span>
+          <button type="button" class="secondary" data-rlp="item-2-remove" aria-label="Remove Fountain pen" data-rl-size="content">Remove</button>
+        </li>
+        <li data-rlp="item-3" data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="center">
+          <span data-rlp="item-3-name" data-rl-fill data-rl-min="4rem">Ink refills, pack of 12</span>
+          <span data-rlp="item-3-qty" data-rl-size="content">Qty 3</span>
+          <span data-rlp="item-3-price" data-rl-size="content" data-rl-anchor="end">$18.00</span>
+          <button type="button" class="secondary" data-rlp="item-3-remove" aria-label="Remove Ink refills" data-rl-size="content">Remove</button>
+        </li>
+    </ul>
+    <div data-rl="group" data-rl-bond="tight">
+      <label for="promo" data-rlp="promo-label">Promo code</label>
+      <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+        <input type="text" id="promo" data-rlp="promo-input" aria-describedby="promo-err" data-rl-fill data-rl-min="8rem" data-rl-align-edge="promo">
+        <button type="button" class="secondary" data-rlp="promo-apply" data-rl-size="content" data-rl-align-edge="promo">Apply</button>
+      </div>
+      <p id="promo-err" class="error" data-rlp="promo-error" hidden>That code has expired.</p>
+    </div>
+    <section data-rlp="shipping" data-rl="group" data-rl-bond="tight">
+      <h3 data-rlp="shipping-title">Shipping</h3>
+      <p role="status" data-rlp="shipping-loading">Calculating shipping options…</p>
+      <div data-rlp="shipping-options" data-rl="group" data-rl-bond="tight" hidden>
+        <div data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="center">
+          <input type="radio" name="ship" id="ship-ground" data-rlp="ship-ground-input" checked data-rl-size="content">
+          <label for="ship-ground" data-rlp="ship-ground-label" data-rl-fill>Ground — $6.00</label>
+        </div>
+        <div data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="center">
+          <input type="radio" name="ship" id="ship-air" data-rlp="ship-air-input" data-rl-size="content">
+          <label for="ship-air" data-rlp="ship-air-label" data-rl-fill>Air — $19.00</label>
+        </div>
+      </div>
+    </section>
+    <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+      <span data-rlp="total-label" data-rl-size="content">Total</span>
+      <span data-rlp="total-value" data-rl-size="content" data-rl-anchor="end">$160.00</span>
+    </div>
+    <button type="submit" data-rlp="place">Place order</button>
+  </section>
+</main>
+</body>
+</html>

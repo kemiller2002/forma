@@ -1,0 +1,830 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fub3e45793",
+ "taskId": "T04-cards-profile",
+ "category": "cards",
+ "split": "heldout",
+ "arm": "B",
+ "repetition": 1,
+ "executionOrder": 93,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:23:27.966Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 254203,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 18837,
+  "cacheReadTokens": 235356,
+  "outputTokens": 1953,
+  "totalTokens": 256156,
+  "toolCalls": 8,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 13360,
+  "toolTokens": null,
+  "durationMs": 51934,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:07:22.812Z",
+    "durationMs": 9835,
+    "failures": 19,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:07:41.959Z",
+    "durationMs": 5246,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 4,
+  "standardInstances": 48,
+  "standardByInvariant": {
+   "separation": 45,
+   "unexpected-shift": 3
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 4,
+  "heldoutDistinct": 3,
+  "heldoutByCondition": {
+   "heldout-text": 6,
+   "font-scale": 6
+  },
+  "heldoutByInvariant": {
+   "separation": 12
+  },
+  "responsiveFailureViewports": [
+   320,
+   375,
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 4,
+  "unexpectedShift": 3,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 29,
+  "derived": 19,
+  "uncertain": 0,
+  "corrective": 4,
+  "total": 29,
+  "rawStatements": {
+   "explicit": 38,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 27,
+  "byCategory": {
+   "explicit": {
+    "padding": 2,
+    "margin": 9,
+    "alignment": 3,
+    "positioning": 0,
+    "grouping": 8,
+    "responsive": 2,
+    "dimension": 5,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 5,
+    "margin": 5,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 5,
+    "responsive": 2,
+    "dimension": 1,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 1,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 4
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:role",
+    "invariant": "unexpected-shift",
+    "element": "name",
+    "expected": "unchanged (above role)",
+    "observed": "moved 5.98px",
+    "relationship": "name ↑ role"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:role",
+    "invariant": "unexpected-shift",
+    "element": "name",
+    "expected": "unchanged (above role)",
+    "observed": "moved 5.98px",
+    "relationship": "name ↑ role"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:role",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:role",
+    "invariant": "unexpected-shift",
+    "element": "name",
+    "expected": "unchanged (above role)",
+    "observed": "moved 5.98px",
+    "relationship": "name ↑ role"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "2:remove:activity-2",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-reviews-value × stat-reviews-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-reviews-value × stat-reviews-label",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-deploys-value × stat-deploys-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-deploys-value × stat-deploys-label",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "stat-incidents-value × stat-incidents-label",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "stat-incidents-value × stat-incidents-label",
+    "fontScale": 2
+   }
+  ],
+  "final": []
+ }
+}

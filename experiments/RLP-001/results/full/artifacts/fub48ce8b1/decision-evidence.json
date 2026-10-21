@@ -1,0 +1,196 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": "[hidden]",
+   "context": "",
+   "property": "display",
+   "value": "none !important",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".option",
+   "context": "",
+   "property": "display",
+   "value": "grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".option",
+   "context": "",
+   "property": "grid-template-columns",
+   "value": "auto minmax(0, 1fr)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".option",
+   "context": "",
+   "property": "column-gap",
+   "value": "var(--ef-primitive-spacing-3)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".option",
+   "context": "",
+   "property": "row-gap",
+   "value": "var(--ef-primitive-spacing-1)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".save",
+   "context": "",
+   "property": "align-items",
+   "value": "center",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "fieldset",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".option > :nth-child(3)",
+   "context": "",
+   "property": "grid-column",
+   "value": "2",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".save",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".save",
+   "context": "",
+   "property": "gap",
+   "value": "var(--ef-primitive-spacing-3)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "padding",
+   "value": "0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "fieldset",
+   "context": "",
+   "property": "min-inline-size",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "margin-block-end",
+   "value": "var(--ef-primitive-spacing-3)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#17",
+   "context": "",
+   "property": "--ef-form-row-min",
+   "value": "9rem",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "form#9",
+   "context": "",
+   "property": "class",
+   "value": "ef-form",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "form#9",
+   "context": "",
+   "property": "class",
+   "value": "ef-surface",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#28",
+   "context": "",
+   "property": "class",
+   "value": "ef-field",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#17",
+   "context": "",
+   "property": "class",
+   "value": "ef-form-row",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "fieldset#32",
+   "context": "",
+   "property": "class",
+   "value": "ef-stack",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#45",
+   "context": "",
+   "property": "class",
+   "value": "ef-actions",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [
+  {
+   "source": "css",
+   "selector": "fieldset",
+   "context": "",
+   "property": "border",
+   "value": "0",
+   "category": "dimension",
+   "kind": "uncertain"
+  }
+ ],
+ "corrective": []
+}

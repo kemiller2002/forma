@@ -1,0 +1,620 @@
+{
+ "experiment": "RLP-001",
+ "phase": "pilot-1",
+ "attemptId": "p177eb124",
+ "taskId": "T03-cards-product",
+ "category": "cards",
+ "split": "dev",
+ "arm": "D",
+ "repetition": 1,
+ "executionOrder": 3,
+ "model": "sonnet",
+ "engineCommit": "778ac21c18a22379feb428e56b88e0e590d3fe65",
+ "collectedAt": "2026-10-21T18:43:16.064Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 4,
+  "inputTokens": 197474,
+  "inputUncachedTokens": 8,
+  "cacheCreationTokens": 52840,
+  "cacheReadTokens": 144626,
+  "outputTokens": 64,
+  "totalTokens": 197538,
+  "toolCalls": 4,
+  "toolCallsByName": {
+   "Read": 1,
+   "Bash": 2,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 11492,
+  "toolTokens": null,
+  "durationMs": 23674,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": 53044,
+   "toolUses": 4,
+   "durationMs": 23709
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T18:41:52.810Z",
+    "durationMs": 2886,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 9,
+  "heldoutByCondition": {
+   "font-scale": 9
+  },
+  "heldoutByInvariant": {
+   "overlap": 9
+  },
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 137,
+       "iterations": 1431,
+       "maxIterations": 39,
+       "unconverged": 0,
+       "measureCalls": 95,
+       "aborted": false,
+       "solveMs": 29.399999999906868,
+       "memoEntries": 143
+      },
+      "totalMs": 34,
+      "energy": 2.0667145308865527e-8
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 137,
+       "iterations": 1640,
+       "maxIterations": 42,
+       "unconverged": 0,
+       "measureCalls": 79,
+       "aborted": false,
+       "solveMs": 27.600000000093132,
+       "memoEntries": 127
+      },
+      "totalMs": 32,
+      "energy": 2.4994435297950908e-8
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 327,
+       "iterations": 5642,
+       "maxIterations": 50,
+       "unconverged": 0,
+       "measureCalls": 52,
+       "aborted": false,
+       "solveMs": 67.10000000009313,
+       "memoEntries": 100
+      },
+      "totalMs": 71.39999999990687,
+      "energy": 2.843580478880493
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 89,
+       "iterations": 2163,
+       "maxIterations": 52,
+       "unconverged": 0,
+       "measureCalls": 46,
+       "aborted": false,
+       "solveMs": 32.39999999990687,
+       "memoEntries": 94
+      },
+      "totalMs": 38.10000000009313,
+      "energy": 2.2878888115528313e-8
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 89,
+       "iterations": 2278,
+       "maxIterations": 53,
+       "unconverged": 0,
+       "measureCalls": 46,
+       "aborted": false,
+       "solveMs": 39,
+       "memoEntries": 94
+      },
+      "totalMs": 46.299999999813735,
+      "energy": 3.020140599454877e-8
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 9,
+  "heldoutByCondition": {
+   "font-scale": 9
+  },
+  "heldoutByInvariant": {
+   "overlap": 9
+  },
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 137,
+       "iterations": 1431,
+       "maxIterations": 39,
+       "unconverged": 0,
+       "measureCalls": 95,
+       "aborted": false,
+       "solveMs": 29.200000000186265,
+       "memoEntries": 143
+      },
+      "totalMs": 33.200000000186265,
+      "energy": 2.0667145308865527e-8
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 137,
+       "iterations": 1640,
+       "maxIterations": 42,
+       "unconverged": 0,
+       "measureCalls": 79,
+       "aborted": false,
+       "solveMs": 27.600000000093132,
+       "memoEntries": 127
+      },
+      "totalMs": 31.5,
+      "energy": 2.4994435297950908e-8
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 327,
+       "iterations": 5642,
+       "maxIterations": 50,
+       "unconverged": 0,
+       "measureCalls": 52,
+       "aborted": false,
+       "solveMs": 68.3000000002794,
+       "memoEntries": 100
+      },
+      "totalMs": 72.89999999990687,
+      "energy": 2.843580478880493
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 89,
+       "iterations": 2163,
+       "maxIterations": 52,
+       "unconverged": 0,
+       "measureCalls": 46,
+       "aborted": false,
+       "solveMs": 34,
+       "memoEntries": 94
+      },
+      "totalMs": 39.59999999962747,
+      "energy": 2.2878888115528313e-8
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 89,
+       "iterations": 2278,
+       "maxIterations": 53,
+       "unconverged": 0,
+       "measureCalls": 46,
+       "aborted": false,
+       "solveMs": 37.299999999813735,
+       "memoEntries": 94
+      },
+      "totalMs": 41.700000000186265,
+      "energy": 3.020140599454877e-8
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 10,
+  "derived": 75,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 10,
+  "rawStatements": {
+   "explicit": 49,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 10,
+  "byCategory": {
+   "explicit": {
+    "padding": 1,
+    "margin": 2,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 2,
+    "dimension": 2,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 3,
+    "margin": 18,
+    "alignment": 18,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 18,
+    "dimension": 18,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-a-media × card-a-title",
+    "expected": "no overlap",
+    "observed": "32102.66px²",
+    "relationship": "card-a-media × card-a-title",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-a-media × card-a-text",
+    "expected": "no overlap",
+    "observed": "32928px²",
+    "relationship": "card-a-media × card-a-text",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-a-media × card-a-specs",
+    "expected": "no overlap",
+    "observed": "72951.81px²",
+    "relationship": "card-a-media × card-a-specs",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-b-media × card-b-title",
+    "expected": "no overlap",
+    "observed": "32102.66px²",
+    "relationship": "card-b-media × card-b-title",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-b-media × card-b-text",
+    "expected": "no overlap",
+    "observed": "98784px²",
+    "relationship": "card-b-media × card-b-text",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-b-media × card-b-specs",
+    "expected": "no overlap",
+    "observed": "7095.81px²",
+    "relationship": "card-b-media × card-b-specs",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-c-media × card-c-title",
+    "expected": "no overlap",
+    "observed": "32102.66px²",
+    "relationship": "card-c-media × card-c-title",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-c-media × card-c-text",
+    "expected": "no overlap",
+    "observed": "65856px²",
+    "relationship": "card-c-media × card-c-text",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-c-media × card-c-specs",
+    "expected": "no overlap",
+    "observed": "40023.81px²",
+    "relationship": "card-c-media × card-c-specs",
+    "fontScale": 2
+   }
+  ],
+  "final": [
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-a-media × card-a-title",
+    "expected": "no overlap",
+    "observed": "32102.66px²",
+    "relationship": "card-a-media × card-a-title",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-a-media × card-a-text",
+    "expected": "no overlap",
+    "observed": "32928px²",
+    "relationship": "card-a-media × card-a-text",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-a-media × card-a-specs",
+    "expected": "no overlap",
+    "observed": "72951.81px²",
+    "relationship": "card-a-media × card-a-specs",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-b-media × card-b-title",
+    "expected": "no overlap",
+    "observed": "32102.66px²",
+    "relationship": "card-b-media × card-b-title",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-b-media × card-b-text",
+    "expected": "no overlap",
+    "observed": "98784px²",
+    "relationship": "card-b-media × card-b-text",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-b-media × card-b-specs",
+    "expected": "no overlap",
+    "observed": "7095.81px²",
+    "relationship": "card-b-media × card-b-specs",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-c-media × card-c-title",
+    "expected": "no overlap",
+    "observed": "32102.66px²",
+    "relationship": "card-c-media × card-c-title",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-c-media × card-c-text",
+    "expected": "no overlap",
+    "observed": "65856px²",
+    "relationship": "card-c-media × card-c-text",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "overlap",
+    "element": "card-c-media × card-c-specs",
+    "expected": "no overlap",
+    "observed": "40023.81px²",
+    "relationship": "card-c-media × card-c-specs",
+    "fontScale": 2
+   }
+  ]
+ }
+}

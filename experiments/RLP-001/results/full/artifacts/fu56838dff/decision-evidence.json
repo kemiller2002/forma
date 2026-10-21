@@ -1,0 +1,394 @@
+{
+ "explicit": [
+  {
+   "source": "style-attr",
+   "selector": "h2#8",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "body",
+   "context": "",
+   "property": "padding",
+   "value": "1rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".summary",
+   "context": "",
+   "property": "max-width",
+   "value": "40rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".summary",
+   "context": "",
+   "property": "margin",
+   "value": "0 auto",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".summary",
+   "context": "",
+   "property": "padding",
+   "value": "1.25rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".shipping-options",
+   "context": "",
+   "property": "display",
+   "value": "grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".summary",
+   "context": "",
+   "property": "gap",
+   "value": "1.25rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items",
+   "context": "",
+   "property": "padding",
+   "value": "0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items",
+   "context": "",
+   "property": "gap",
+   "value": ".75rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li",
+   "context": "",
+   "property": "grid-template-columns",
+   "value": "minmax(0,1fr) auto",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li",
+   "context": "",
+   "property": "grid-template-areas",
+   "value": "\"name price\" \"qty remove\"",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li",
+   "context": "",
+   "property": "gap",
+   "value": ".5rem 1rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".shipping-options div",
+   "context": "",
+   "property": "align-items",
+   "value": "center",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li",
+   "context": "",
+   "property": "padding-bottom",
+   "value": ".75rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li>[data-rlp$=\"-name\"]",
+   "context": "",
+   "property": "grid-area",
+   "value": "name",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li>[data-rlp$=\"-qty\"]",
+   "context": "",
+   "property": "grid-area",
+   "value": "qty",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li>[data-rlp$=\"-price\"]",
+   "context": "",
+   "property": "grid-area",
+   "value": "price",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li>[data-rlp$=\"-price\"]",
+   "context": "",
+   "property": "text-align",
+   "value": "end",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li>button",
+   "context": "",
+   "property": "grid-area",
+   "value": "remove",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li>button",
+   "context": "",
+   "property": "justify-self",
+   "value": "end",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".shipping-options div",
+   "context": "",
+   "property": "min-height",
+   "value": "1.75rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li",
+   "context": "@media(min-width:36rem)",
+   "property": "grid-template-columns",
+   "value": "minmax(0,1fr) auto auto auto",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".items li",
+   "context": "@media(min-width:36rem)",
+   "property": "grid-template-areas",
+   "value": "\"name qty price remove\"",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".total",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".promo",
+   "context": "",
+   "property": "flex-wrap",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".promo",
+   "context": "",
+   "property": "gap",
+   "value": ".25rem .5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".promo",
+   "context": "",
+   "property": "align-items",
+   "value": "flex-start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".promo .error",
+   "context": "",
+   "property": "flex",
+   "value": "0 0 100%",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".promo input",
+   "context": "",
+   "property": "flex",
+   "value": "1 1 10rem",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".promo input",
+   "context": "",
+   "property": "min-width",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".promo button",
+   "context": "",
+   "property": "box-sizing",
+   "value": "border-box",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".promo button",
+   "context": "",
+   "property": "height",
+   "value": "2.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".shipping-options div",
+   "context": "",
+   "property": "gap",
+   "value": ".5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".shipping-options",
+   "context": "",
+   "property": "gap",
+   "value": ".25rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".total",
+   "context": "",
+   "property": "justify-content",
+   "value": "space-between",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".total",
+   "context": "",
+   "property": "gap",
+   "value": "1rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".total",
+   "context": "",
+   "property": "align-items",
+   "value": "baseline",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".total",
+   "context": "",
+   "property": "padding-top",
+   "value": ".75rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".place",
+   "context": "",
+   "property": "min-height",
+   "value": "2.75rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".place",
+   "context": "",
+   "property": "width",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "@",
+   "context": "@media(min-width:36rem)",
+   "property": "@condition",
+   "value": "@media(min-width:36rem)",
+   "category": "responsive",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [
+  {
+   "source": "css",
+   "selector": ".items li",
+   "context": "",
+   "property": "border-bottom",
+   "value": "1px solid #ddd",
+   "category": "dimension",
+   "kind": "uncertain"
+  },
+  {
+   "source": "css",
+   "selector": ".total",
+   "context": "",
+   "property": "border-top",
+   "value": "1px solid #ddd",
+   "category": "dimension",
+   "kind": "uncertain"
+  }
+ ],
+ "corrective": []
+}

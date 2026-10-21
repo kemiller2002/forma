@@ -1,0 +1,132 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": ".page",
+   "context": "",
+   "property": "padding",
+   "value": "var(--ef-primitive-spacing-5)",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan",
+   "context": "",
+   "property": "flex-direction",
+   "value": "column",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan",
+   "context": "",
+   "property": "gap",
+   "value": "var(--ef-primitive-spacing-4)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan",
+   "context": "",
+   "property": "min-width",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".badge",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan ul",
+   "context": "",
+   "property": "padding-left",
+   "value": "var(--ef-primitive-spacing-5)",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".plan .ef-actions",
+   "context": "",
+   "property": "margin-top",
+   "value": "auto",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".badge",
+   "context": "",
+   "property": "align-self",
+   "value": "flex-start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "--ef-grid-min",
+   "value": "min(100%, 15rem)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "section#9",
+   "context": "",
+   "property": "class",
+   "value": "ef-stack",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#11",
+   "context": "",
+   "property": "class",
+   "value": "ef-grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "article#42",
+   "context": "",
+   "property": "class",
+   "value": "ef-surface",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#48",
+   "context": "",
+   "property": "class",
+   "value": "ef-actions",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

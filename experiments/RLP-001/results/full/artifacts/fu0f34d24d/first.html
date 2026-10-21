@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace section navigation</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  body { margin: 0; padding: var(--ef-primitive-spacing-4); }
+  nav a { display: inline-block; min-height: 1.5rem; padding: var(--ef-primitive-spacing-1) var(--ef-primitive-spacing-2); }
+  nav ul { list-style: none; margin: 0; padding: 0; }
+  .crumbs li + li::before { content: "/"; margin-inline-end: var(--ef-primitive-spacing-2); }
+  h1 { margin: 0; overflow-wrap: anywhere; }
+  [aria-current="page"] { font-weight: 600; }
+</style>
+</head>
+<body>
+  <header data-rlp="bar" class="ef-surface ef-stack">
+    <nav data-rlp="breadcrumb" aria-label="Breadcrumb">
+      <ul class="ef-cluster crumbs" style="--ef-cluster-gap: var(--ef-primitive-spacing-2)">
+        <li><a data-rlp="crumb-1" href="#">Workspaces</a></li>
+        <li><a data-rlp="crumb-2" href="#">Acme Corporation</a></li>
+        <li><a data-rlp="crumb-3" href="#">Billing</a></li>
+        <li><span data-rlp="crumb-4" aria-current="page">Invoices</span></li>
+      </ul>
+    </nav>
+    <div class="ef-switcher">
+      <div class="ef-switcher__primary"><h1 data-rlp="heading">Invoices</h1></div>
+      <div class="ef-switcher__secondary ef-actions" data-rlp="actions">
+        <button type="button" data-rlp="export" class="secondary">Export CSV</button>
+        <button type="button" data-rlp="new">New invoice</button>
+      </div>
+    </div>
+    <nav data-rlp="sections" aria-label="Billing sections">
+      <ul class="ef-cluster">
+        <li><a data-rlp="section-1" href="#">Overview</a></li>
+        <li><a data-rlp="section-2" href="#" aria-current="page">Invoices</a></li>
+        <li><a data-rlp="section-3" href="#">Payment methods</a></li>
+        <li><a data-rlp="section-4" href="#">Tax registrations and exemptions</a></li>
+        <li><a data-rlp="section-5" href="#">Usage</a></li>
+        <li><a data-rlp="section-6" href="#">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+</body>
+</html>

@@ -1,0 +1,180 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu8e7d3c2f",
+ "taskId": "T07-nav-docs",
+ "category": "navigation",
+ "split": "dev",
+ "arm": "B",
+ "repetition": 1,
+ "executionOrder": 86,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:22:36.601Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 4,
+  "inputTokens": 195856,
+  "inputUncachedTokens": 8,
+  "cacheCreationTokens": 15731,
+  "cacheReadTokens": 180117,
+  "outputTokens": 405,
+  "totalTokens": 196261,
+  "toolCalls": 7,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 2,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 8906,
+  "toolTokens": null,
+  "durationMs": 35416,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:07:12.111Z",
+    "durationMs": 3015,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 1,
+  "standardByInvariant": {
+   "unexpected-shift": 1
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 1,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 1,
+  "standardByInvariant": {
+   "unexpected-shift": 1
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 1,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 5,
+  "derived": 11,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 5,
+  "rawStatements": {
+   "explicit": 6,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 5,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 2,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 3,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 1,
+    "margin": 3,
+    "alignment": 2,
+    "positioning": 0,
+    "grouping": 3,
+    "responsive": 2,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:link-sdks",
+    "invariant": "unexpected-shift",
+    "element": "search-label",
+    "expected": "unchanged (above link-sdks)",
+    "observed": "moved 187.2px",
+    "relationship": "search-label ↑ link-sdks"
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:link-sdks",
+    "invariant": "unexpected-shift",
+    "element": "search-label",
+    "expected": "unchanged (above link-sdks)",
+    "observed": "moved 187.2px",
+    "relationship": "search-label ↑ link-sdks"
+   }
+  ]
+ }
+}

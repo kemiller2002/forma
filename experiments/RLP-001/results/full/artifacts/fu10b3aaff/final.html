@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation site header</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  nav a { display: inline-block; padding: var(--ef-primitive-spacing-2) var(--ef-primitive-spacing-3); }
+  nav a[aria-current="page"] { font-weight: 700; text-decoration: underline; text-underline-offset: 0.3em; border-bottom: 2px solid currentColor; }
+  .brand { font-weight: 700; display: inline-block; padding: var(--ef-primitive-spacing-2) 0; }
+  .search { display: flex; align-items: center; gap: var(--ef-primitive-spacing-2); flex-wrap: wrap; }
+  .search input { min-width: 12rem; }
+</style>
+</head>
+<body>
+  <header data-rlp="header" class="ef-surface ef-cluster" style="--ef-cluster-gap: var(--ef-primitive-spacing-5)">
+    <a data-rlp="brand" class="brand" href="#">Northwind Docs</a>
+    <nav data-rlp="nav" aria-label="Primary">
+      <div class="ef-cluster" style="--ef-cluster-gap: var(--ef-primitive-spacing-2)">
+        <a data-rlp="link-guides" href="#">Guides</a>
+        <a data-rlp="link-api" href="#" aria-current="page">API reference</a>
+        <a data-rlp="link-sdks" href="#">SDKs</a>
+        <a data-rlp="link-integrations" href="#">Integrations and partner ecosystem</a>
+        <a data-rlp="link-changelog" href="#">Changelog</a>
+      </div>
+    </nav>
+    <div class="search">
+      <label data-rlp="search-label" for="search-input">Search documentation</label>
+      <input data-rlp="search-input" id="search-input" type="search">
+    </div>
+    <button data-rlp="signin" type="button">Sign in</button>
+  </header>
+</body>
+</html>

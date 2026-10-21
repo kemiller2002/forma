@@ -1,0 +1,1048 @@
+{
+ "experiment": "RLP-001",
+ "phase": "pilot-2",
+ "attemptId": "picc5bdbb2",
+ "taskId": "T01-form-account",
+ "category": "forms",
+ "split": "dev",
+ "arm": "B",
+ "repetition": 1,
+ "executionOrder": 2,
+ "model": "sonnet",
+ "engineCommit": "08f17694c03df5b01de9d59cf8b9f75138df681a",
+ "collectedAt": "2026-10-21T18:54:04.896Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 8,
+  "inputTokens": 435477,
+  "inputUncachedTokens": 16,
+  "cacheCreationTokens": 62248,
+  "cacheReadTokens": 373213,
+  "outputTokens": 174,
+  "totalTokens": 435651,
+  "toolCalls": 11,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 6,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 26422,
+  "toolTokens": null,
+  "durationMs": 41782,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": 62632,
+   "toolUses": 11,
+   "durationMs": 41807
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T18:49:57.675Z",
+    "durationMs": 2228,
+    "failures": 27,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T18:50:10.754Z",
+    "durationMs": 1809,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 4,
+  "standardInstances": 70,
+  "standardByInvariant": {
+   "separation": 55,
+   "proximity": 15
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 4,
+  "heldoutDistinct": 4,
+  "heldoutByCondition": {
+   "heldout-text": 4,
+   "font-scale": 4
+  },
+  "heldoutByInvariant": {
+   "separation": 4,
+   "target-size": 1,
+   "proximity": 1,
+   "label-ambiguity": 2
+  },
+  "responsiveFailureViewports": [
+   320,
+   375,
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 4,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "target-size": 1
+  },
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 17,
+  "derived": 38,
+  "uncertain": 0,
+  "corrective": 6,
+  "total": 17,
+  "rawStatements": {
+   "explicit": 23,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 16,
+  "byCategory": {
+   "explicit": {
+    "padding": 2,
+    "margin": 4,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 8,
+    "responsive": 1,
+    "dimension": 1,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 1,
+    "margin": 12,
+    "alignment": 5,
+    "positioning": 0,
+    "grouping": 12,
+    "responsive": 5,
+    "dimension": 3,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 2,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 4,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 6
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:reveal:email-error",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:reveal:email-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:hide:email-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:hide:email-error",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:reveal:email-error",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:reveal:email-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "4:hide:email-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "4:hide:email-error",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:reveal:email-error",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:reveal:email-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:reveal:email-error",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "2:reveal:password-error",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "3:text:name-label",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "4:hide:email-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "4:hide:email-error",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "4:hide:email-error",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:reveal:email-error",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:reveal:email-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:reveal:email-error",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "2:reveal:password-error",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "3:text:name-label",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "4:hide:email-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "4:hide:email-error",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "4:hide:email-error",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:reveal:email-error",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:reveal:email-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:reveal:email-error",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "2:reveal:password-error",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "2:reveal:password-error",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "email-input × email-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "email-input × email-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "3:text:name-label",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "3:text:name-label",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "4:hide:email-error",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "4:hide:email-error",
+    "invariant": "separation",
+    "element": "password-input × password-error",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-input × password-error",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "4:hide:email-error",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "target-size",
+    "element": "pref-tips-input",
+    "expected": ">= 24×24",
+    "observed": "13×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "confirm-label ~ confirm-input",
+    "expected": "<= 24px apart",
+    "observed": "26.19px",
+    "relationship": "confirm-label ~ confirm-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "label-ambiguity",
+    "element": "password-label",
+    "expected": "nearest control is password-input",
+    "observed": "email-input is nearer (40px vs 80.78px)",
+    "relationship": "password-label → password-input",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "separation",
+    "element": "password-label × password-hint",
+    "expected": ">= 4px apart",
+    "observed": "0px",
+    "relationship": "password-label × password-hint",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "label-ambiguity",
+    "element": "password-label",
+    "expected": "nearest control is password-input",
+    "observed": "email-input is nearer (40px vs 44.39px)",
+    "relationship": "password-label → password-input",
+    "fontScale": 2
+   }
+  ],
+  "final": [
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "target-size",
+    "element": "pref-tips-input",
+    "expected": ">= 24×24",
+    "observed": "13×24",
+    "fontScale": 1
+   }
+  ]
+ }
+}

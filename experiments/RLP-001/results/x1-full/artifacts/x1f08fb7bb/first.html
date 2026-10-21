@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation site header</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+<style>[aria-current="page"]{font-weight:700;text-decoration:underline}</style>
+</head>
+<body>
+  <div data-rl-root data-rl="group">
+  <header data-rlp="header" data-rl="container" data-rl-flow="wrap" data-rl-align="center">
+    <a href="#" data-rlp="brand" data-rl-size="content">Northwind Docs</a>
+    <nav data-rl="group" data-rl-flow="wrap" data-rl-fill data-rl-min="16rem" aria-label="Primary" data-rlp="nav">
+      <a href="#" data-rlp="link-guides">Guides</a>
+      <a href="#" aria-current="page" data-rlp="link-api">API reference</a>
+      <a href="#" data-rlp="link-sdks">SDKs</a>
+      <a href="#" data-rlp="link-integrations">Integrations and partner ecosystem</a>
+      <a href="#" data-rlp="link-changelog">Changelog</a>
+    </nav>
+    <div data-rl="group" data-rl-min="14rem">
+      <label for="search-input" data-rlp="search-label">Search documentation</label>
+      <input type="search" id="search-input" data-rlp="search-input">
+    </div>
+    <button type="button" data-rlp="signin" data-rl-size="content">Sign in</button>
+  </header>
+</div>
+</body>
+</html>

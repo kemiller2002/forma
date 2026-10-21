@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout summary with dynamic content</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  .item{--ef-cluster-gap:var(--ef-primitive-spacing-3);justify-content:flex-start}
+  .item__name{flex:1 1 10rem;min-width:0;overflow-wrap:anywhere}
+  .item__price{margin-inline-start:auto}
+  #items{list-style:none;padding:0;margin:0}
+  .promo-row{--ef-cluster-gap:var(--ef-primitive-spacing-2);align-items:flex-start}
+  .promo-row input{flex:1 1 10rem;min-width:0}
+  .total{--ef-cluster-gap:var(--ef-primitive-spacing-3);justify-content:space-between}
+  .ship-opt{--ef-cluster-gap:var(--ef-primitive-spacing-2)}
+</style>
+</head>
+<body>
+  <main>
+<section class="ef-surface ef-stack" data-rlp="summary">
+  <h2 data-rlp="title">Order summary</h2>
+  <ul id="items" class="ef-stack" data-rlp="items">
+      <li data-rlp="item-1" class="item ef-cluster">
+        <span data-rlp="item-1-name" class="item__name">Linen notebook</span>
+        <span data-rlp="item-1-qty">Qty 2</span>
+        <span data-rlp="item-1-price" class="item__price">$24.00</span>
+        <button type="button" class="secondary" data-rlp="item-1-remove" aria-label="Remove Linen notebook">Remove</button>
+      </li>
+      <li data-rlp="item-2" class="item ef-cluster">
+        <span data-rlp="item-2-name" class="item__name">Fountain pen</span>
+        <span data-rlp="item-2-qty">Qty 1</span>
+        <span data-rlp="item-2-price" class="item__price">$58.00</span>
+        <button type="button" class="secondary" data-rlp="item-2-remove" aria-label="Remove Fountain pen">Remove</button>
+      </li>
+      <li data-rlp="item-3" class="item ef-cluster">
+        <span data-rlp="item-3-name" class="item__name">Ink refills, pack of 12</span>
+        <span data-rlp="item-3-qty">Qty 3</span>
+        <span data-rlp="item-3-price" class="item__price">$18.00</span>
+        <button type="button" class="secondary" data-rlp="item-3-remove" aria-label="Remove Ink refills">Remove</button>
+      </li>
+  </ul>
+  <div class="ef-stack" style="--ef-stack-gap:var(--ef-primitive-spacing-2)">
+    <label for="promo" class="ef-field__label" data-rlp="promo-label">Promo code</label>
+    <div class="promo-row ef-cluster">
+      <input type="text" id="promo" data-rlp="promo-input" aria-describedby="promo-err">
+      <button type="button" class="secondary" data-rlp="promo-apply">Apply</button>
+    </div>
+    <p id="promo-err" class="error" data-rlp="promo-error" hidden>That code has expired.</p>
+  </div>
+  <section class="ef-stack" data-rlp="shipping" style="--ef-stack-gap:var(--ef-primitive-spacing-2)">
+    <h3 data-rlp="shipping-title">Shipping</h3>
+    <p role="status" data-rlp="shipping-loading">Calculating shipping options…</p>
+    <div class="ef-stack" data-rlp="shipping-options" hidden style="--ef-stack-gap:var(--ef-primitive-spacing-2)">
+      <div class="ship-opt ef-cluster"><input type="radio" name="ship" id="sg" data-rlp="ship-ground-input" checked><label for="sg" data-rlp="ship-ground-label">Ground — $6.00</label></div>
+      <div class="ship-opt ef-cluster"><input type="radio" name="ship" id="sa" data-rlp="ship-air-input"><label for="sa" data-rlp="ship-air-label">Air — $19.00</label></div>
+    </div>
+  </section>
+  <div class="total ef-cluster">
+    <span data-rlp="total-label">Total</span>
+    <span data-rlp="total-value">$160.00</span>
+  </div>
+  <button type="submit" data-rlp="place">Place order</button>
+</section>
+</main>
+</body>
+</html>

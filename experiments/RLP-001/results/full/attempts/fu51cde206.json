@@ -1,0 +1,536 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu51cde206",
+ "taskId": "T04-cards-profile",
+ "category": "cards",
+ "split": "heldout",
+ "arm": "A",
+ "repetition": 2,
+ "executionOrder": 18,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:09:18.440Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 252217,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 53972,
+  "cacheReadTokens": 198235,
+  "outputTokens": 67,
+  "totalTokens": 252284,
+  "toolCalls": 8,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 10255,
+  "toolTokens": null,
+  "durationMs": 49686,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:02:52.525Z",
+    "durationMs": 3983,
+    "failures": 1,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:03:00.291Z",
+    "durationMs": 2504,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 3,
+  "standardByInvariant": {
+   "unexpected-shift": 3
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 16,
+  "heldoutByCondition": {
+   "font-scale": 16
+  },
+  "heldoutByInvariant": {
+   "horizontal-overflow": 1,
+   "offscreen": 11,
+   "containment": 4
+  },
+  "responsiveFailureViewports": [
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 3,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 16,
+  "heldoutByCondition": {
+   "font-scale": 16
+  },
+  "heldoutByInvariant": {
+   "horizontal-overflow": 1,
+   "offscreen": 11,
+   "containment": 4
+  },
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 29,
+  "derived": 0,
+  "uncertain": 1,
+  "corrective": 1,
+  "total": 30,
+  "rawStatements": {
+   "explicit": 43,
+   "uncertain": 1
+  },
+  "firstDraftExplicit": 29,
+  "byCategory": {
+   "explicit": {
+    "padding": 3,
+    "margin": 9,
+    "alignment": 4,
+    "positioning": 0,
+    "grouping": 6,
+    "responsive": 2,
+    "dimension": 5,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 1,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 1
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:role",
+    "invariant": "unexpected-shift",
+    "element": "name",
+    "expected": "unchanged (above role)",
+    "observed": "moved 4.25px",
+    "relationship": "name ↑ role"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:role",
+    "invariant": "unexpected-shift",
+    "element": "name",
+    "expected": "unchanged (above role)",
+    "observed": "moved 4.25px",
+    "relationship": "name ↑ role"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:role",
+    "invariant": "unexpected-shift",
+    "element": "name",
+    "expected": "unchanged (above role)",
+    "observed": "moved 4.25px",
+    "relationship": "name ↑ role"
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 375",
+    "observed": "377 (ULI-L05)",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "header",
+    "expected": "within 0..375",
+    "observed": "73,73 304×439",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "name",
+    "expected": "within 0..375",
+    "observed": "73,233 304×55",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "role",
+    "expected": "within 0..375",
+    "observed": "73,296 304×96",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "stats",
+    "expected": "within 0..375",
+    "observed": "73,560 304×679.56",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "stat-reviews",
+    "expected": "within 0..375",
+    "observed": "73,560 304×237.19",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "stat-deploys",
+    "expected": "within 0..375",
+    "observed": "73,829.19 304×189.19",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "stat-incidents",
+    "expected": "within 0..375",
+    "observed": "73,1050.38 304×189.19",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "about",
+    "expected": "within 0..375",
+    "observed": "73,1287.56 304×398.8",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "about-title",
+    "expected": "within 0..375",
+    "observed": "73,1287.56 304×46.8",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "about-text",
+    "expected": "within 0..375",
+    "observed": "73,1350.36 304×336",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "activity",
+    "expected": "within 0..375",
+    "observed": "73,1734.36 304×943.59",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "header",
+    "expected": "inside profile",
+    "observed": "73,73 304×439 vs 32,32 311×2686.95",
+    "relationship": "header ⊂ profile",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "stats",
+    "expected": "inside profile",
+    "observed": "73,560 304×679.56 vs 32,32 311×2686.95",
+    "relationship": "stats ⊂ profile",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "about",
+    "expected": "inside profile",
+    "observed": "73,1287.56 304×398.8 vs 32,32 311×2686.95",
+    "relationship": "about ⊂ profile",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "activity",
+    "expected": "inside profile",
+    "observed": "73,1734.36 304×943.59 vs 32,32 311×2686.95",
+    "relationship": "activity ⊂ profile",
+    "fontScale": 2
+   }
+  ],
+  "final": [
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 375",
+    "observed": "377 (ULI-L05)",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "header",
+    "expected": "within 0..375",
+    "observed": "73,73 304×439",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "name",
+    "expected": "within 0..375",
+    "observed": "73,233 304×55",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "role",
+    "expected": "within 0..375",
+    "observed": "73,296 304×96",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "stats",
+    "expected": "within 0..375",
+    "observed": "73,560 304×679.56",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "stat-reviews",
+    "expected": "within 0..375",
+    "observed": "73,560 304×237.19",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "stat-deploys",
+    "expected": "within 0..375",
+    "observed": "73,829.19 304×189.19",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "stat-incidents",
+    "expected": "within 0..375",
+    "observed": "73,1050.38 304×189.19",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "about",
+    "expected": "within 0..375",
+    "observed": "73,1287.56 304×398.8",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "about-title",
+    "expected": "within 0..375",
+    "observed": "73,1287.56 304×46.8",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "about-text",
+    "expected": "within 0..375",
+    "observed": "73,1350.36 304×336",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "activity",
+    "expected": "within 0..375",
+    "observed": "73,1734.36 304×943.59",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "header",
+    "expected": "inside profile",
+    "observed": "73,73 304×439 vs 32,32 311×2686.95",
+    "relationship": "header ⊂ profile",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "stats",
+    "expected": "inside profile",
+    "observed": "73,560 304×679.56 vs 32,32 311×2686.95",
+    "relationship": "stats ⊂ profile",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "about",
+    "expected": "inside profile",
+    "observed": "73,1287.56 304×398.8 vs 32,32 311×2686.95",
+    "relationship": "about ⊂ profile",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "activity",
+    "expected": "inside profile",
+    "observed": "73,1734.36 304×943.59 vs 32,32 311×2686.95",
+    "relationship": "activity ⊂ profile",
+    "fontScale": 2
+   }
+  ]
+ }
+}

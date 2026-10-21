@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing comparison with conflicting demands</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  main { padding: var(--ef-primitive-spacing-5); }
+  .plan { min-width: 0; }
+  .plan h2, .plan p, .plan li { overflow-wrap: anywhere; margin: 0; }
+  .plan ul { margin: 0; padding-left: var(--ef-primitive-spacing-5); }
+  .plan ul li + li { margin-top: var(--ef-primitive-spacing-2); }
+  .badge { display: inline-block; align-self: flex-start; padding: var(--ef-primitive-spacing-1) var(--ef-primitive-spacing-3); border: 1px solid currentColor; border-radius: 1rem; font-size: 0.875rem; }
+</style>
+</head>
+<body>
+  <main>
+    <section data-rlp="pricing" class="ef-stack">
+      <h1 data-rlp="pricing-title">Choose a plan</h1>
+      <div data-rlp="plans" class="ef-grid" style="--ef-grid-min: 14rem">
+        <article data-rlp="plan-free" class="plan ef-surface ef-stack">
+          <h2 data-rlp="plan-free-name">Free</h2>
+          <p data-rlp="plan-free-price">$0</p>
+          <ul data-rlp="plan-free-features"><li>1 project</li></ul>
+          <button type="button" data-rlp="plan-free-choose">Choose Free</button>
+        </article>
+        <article data-rlp="plan-team" class="plan ef-surface ef-stack">
+          <span data-rlp="badge" class="badge">Most popular</span>
+          <h2 data-rlp="plan-team-name">Team</h2>
+          <p data-rlp="plan-team-price">$12 per seat</p>
+          <ul data-rlp="plan-team-features"><li>Unlimited projects</li><li>Shared libraries</li><li>Version history</li><li>Priority email support</li></ul>
+          <button type="button" data-rlp="plan-team-choose">Choose Team</button>
+        </article>
+        <article data-rlp="plan-business" class="plan ef-surface ef-stack">
+          <h2 data-rlp="plan-business-name">Business with advanced compliance controls</h2>
+          <p data-rlp="plan-business-price">$45 per seat</p>
+          <ul data-rlp="plan-business-features"><li>Everything in Team</li><li>Single sign-on</li><li>Audit log export</li><li>Data residency</li><li>Custom retention</li><li>Dedicated success manager</li></ul>
+          <button type="button" data-rlp="plan-business-choose">Choose Business</button>
+        </article>
+        <article data-rlp="plan-enterprise" class="plan ef-surface ef-stack">
+          <h2 data-rlp="plan-enterprise-name">Enterprise</h2>
+          <p data-rlp="plan-enterprise-price">Contact sales</p>
+          <ul data-rlp="plan-enterprise-features"><li>Everything in Business</li><li>On-premises option</li></ul>
+          <button type="button" data-rlp="plan-enterprise-choose">Talk to sales</button>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

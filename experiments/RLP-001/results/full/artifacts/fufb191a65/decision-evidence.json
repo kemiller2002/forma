@@ -1,0 +1,250 @@
+{
+ "explicit": [
+  {
+   "source": "style-attr",
+   "selector": "main#8",
+   "context": "",
+   "property": "padding",
+   "value": "var(--ef-primitive-spacing-4)",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "form#9",
+   "context": "",
+   "property": "--ef-surface-space",
+   "value": "var(--ef-primitive-spacing-5)",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "form#9",
+   "context": "",
+   "property": "margin-inline",
+   "value": "auto",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "form#9",
+   "context": "",
+   "property": "inline-size",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#24",
+   "context": "",
+   "property": "display",
+   "value": "block",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "p#25",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "p#26",
+   "context": "",
+   "property": "margin",
+   "value": "var(--ef-primitive-spacing-2) 0 0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "fieldset#30",
+   "context": "",
+   "property": "--ef-stack-gap",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "legend#31",
+   "context": "",
+   "property": "margin-block-end",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#35",
+   "context": "",
+   "property": "--ef-cluster-gap",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "fieldset#30",
+   "context": "",
+   "property": "class",
+   "value": "ef-stack",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "form#9",
+   "context": "",
+   "property": "class",
+   "value": "ef-form",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "form#9",
+   "context": "",
+   "property": "class",
+   "value": "ef-surface",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#20",
+   "context": "",
+   "property": "class",
+   "value": "ef-form-row",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#27",
+   "context": "",
+   "property": "class",
+   "value": "ef-field",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#35",
+   "context": "",
+   "property": "class",
+   "value": "ef-cluster",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#38",
+   "context": "",
+   "property": "class",
+   "value": "ef-actions",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": [
+  {
+   "source": "style-attr",
+   "selector": "div#24",
+   "context": "",
+   "property": "display",
+   "value": "block",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "p#25",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "p#26",
+   "context": "",
+   "property": "margin",
+   "value": "var(--ef-primitive-spacing-2) 0 0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "fieldset#30",
+   "context": "",
+   "property": "--ef-stack-gap",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "legend#31",
+   "context": "",
+   "property": "margin-block-end",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#35",
+   "context": "",
+   "property": "--ef-cluster-gap",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#27",
+   "context": "",
+   "property": "class",
+   "value": "ef-field",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "fieldset#30",
+   "context": "",
+   "property": "class",
+   "value": "ef-stack",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#35",
+   "context": "",
+   "property": "class",
+   "value": "ef-cluster",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#38",
+   "context": "",
+   "property": "class",
+   "value": "ef-actions",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation site header</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  header { display:flex; flex-wrap:wrap; align-items:flex-end; gap:0.75rem 1.5rem; padding:1rem 1.25rem; margin:0; }
+  .brand { flex:1 0 100%; font-weight:700; font-size:1.25rem; padding:0.5rem 0; }
+  nav { flex:1 0 100%; min-width:0; }
+  nav ul { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:0.5rem 1rem; }
+  nav a { display:inline-block; padding:0.5rem 0.25rem; border-bottom:3px solid transparent; }
+  nav a[aria-current="page"] { font-weight:700; border-bottom-color:currentColor; }
+  .search { display:flex; flex-direction:column; gap:0.25rem; flex:0 1 16rem; min-width:0; }
+  .search input { width:100%; box-sizing:border-box; }
+  header button { flex:0 0 auto; min-height:2.5rem; }
+  @media (max-width:40rem){ .search{flex:1 1 100%;} }
+</style>
+</head>
+<body>
+<header class="surface" data-rlp="header">
+  <a class="brand" href="#" data-rlp="brand">Northwind Docs</a>
+  <nav aria-label="Primary" data-rlp="nav">
+    <ul>
+      <li><a href="#" data-rlp="link-guides">Guides</a></li>
+      <li><a href="#" aria-current="page" data-rlp="link-api">API reference</a></li>
+      <li><a href="#" data-rlp="link-sdks">SDKs</a></li>
+      <li><a href="#" data-rlp="link-integrations">Integrations and partner ecosystem</a></li>
+      <li><a href="#" data-rlp="link-changelog">Changelog</a></li>
+    </ul>
+  </nav>
+  <div class="search">
+    <label for="search-input" data-rlp="search-label">Search documentation</label>
+    <input type="search" id="search-input" data-rlp="search-input">
+  </div>
+  <button type="button" data-rlp="signin">Sign in</button>
+</header>
+</body>
+</html>

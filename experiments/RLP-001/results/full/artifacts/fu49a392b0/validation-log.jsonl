@@ -1,0 +1,3 @@
+{"run":1,"startedAt":"2026-10-21T19:03:55.726Z","durationMs":9337,"failures":1,"engineErrors":0,"snapshot":".rlp/snapshots/001.html"}
+{"run":2,"startedAt":"2026-10-21T19:04:10.599Z","durationMs":9720,"failures":4,"engineErrors":0,"snapshot":".rlp/snapshots/002.html"}
+{"run":3,"startedAt":"2026-10-21T19:04:24.021Z","durationMs":9271,"failures":0,"engineErrors":0,"snapshot":".rlp/snapshots/003.html"}

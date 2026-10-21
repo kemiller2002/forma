@@ -1,0 +1,150 @@
+{
+ "experiment": "RLP-001",
+ "phase": "pilot-3",
+ "attemptId": "pif225f950",
+ "taskId": "T03-cards-product",
+ "category": "cards",
+ "split": "dev",
+ "arm": "A",
+ "repetition": 1,
+ "executionOrder": 8,
+ "model": "sonnet",
+ "engineCommit": "cbc2c0a49e81b66847a25202b3cbdda36d5d4290",
+ "collectedAt": "2026-10-21T18:58:13.841Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 4,
+  "inputTokens": 198782,
+  "inputUncachedTokens": 8,
+  "cacheCreationTokens": 17692,
+  "cacheReadTokens": 181082,
+  "outputTokens": 59,
+  "totalTokens": 198841,
+  "toolCalls": 7,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 2,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 10879,
+  "toolTokens": null,
+  "durationMs": 31516,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": 53974,
+   "toolUses": 7,
+   "durationMs": 31549
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T18:56:32.666Z",
+    "durationMs": 9809,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 29,
+  "derived": 0,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 29,
+  "rawStatements": {
+   "explicit": 38,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 29,
+  "byCategory": {
+   "explicit": {
+    "padding": 4,
+    "margin": 10,
+    "alignment": 2,
+    "positioning": 0,
+    "grouping": 4,
+    "responsive": 2,
+    "dimension": 7,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [],
+  "final": []
+ }
+}

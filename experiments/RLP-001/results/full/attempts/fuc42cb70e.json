@@ -1,0 +1,268 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fuc42cb70e",
+ "taskId": "T02-form-shipping",
+ "category": "forms",
+ "split": "heldout",
+ "arm": "B",
+ "repetition": 2,
+ "executionOrder": 99,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:24:13.188Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 4,
+  "inputTokens": 198077,
+  "inputUncachedTokens": 8,
+  "cacheCreationTokens": 17347,
+  "cacheReadTokens": 180722,
+  "outputTokens": 399,
+  "totalTokens": 198476,
+  "toolCalls": 7,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 2,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 10615,
+  "toolTokens": null,
+  "durationMs": 36029,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:07:39.672Z",
+    "durationMs": 6109,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 4,
+  "standardByInvariant": {
+   "target-size": 4
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "target-size": 1
+  },
+  "responsiveFailureViewports": [
+   320
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 4,
+  "standardByInvariant": {
+   "target-size": 4
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "target-size": 1
+  },
+  "responsiveFailureViewports": [
+   320
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 18,
+  "derived": 27,
+  "uncertain": 1,
+  "corrective": 0,
+  "total": 19,
+  "rawStatements": {
+   "explicit": 26,
+   "uncertain": 1
+  },
+  "firstDraftExplicit": 18,
+  "byCategory": {
+   "explicit": {
+    "padding": 2,
+    "margin": 4,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 10,
+    "responsive": 0,
+    "dimension": 1,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 1,
+    "margin": 10,
+    "alignment": 2,
+    "positioning": 0,
+    "grouping": 10,
+    "responsive": 2,
+    "dimension": 2,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 1,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "target-size",
+    "element": "save-input",
+    "expected": ">= 24×24",
+    "observed": "21.08×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:reveal:zip-error",
+    "invariant": "target-size",
+    "element": "save-input",
+    "expected": ">= 24×24",
+    "observed": "21.08×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:text:city-label",
+    "invariant": "target-size",
+    "element": "save-input",
+    "expected": ">= 24×24",
+    "observed": "21.08×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:hide:zip-error",
+    "invariant": "target-size",
+    "element": "save-input",
+    "expected": ">= 24×24",
+    "observed": "21.08×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "target-size",
+    "element": "save-input",
+    "expected": ">= 24×24",
+    "observed": "21.08×24",
+    "fontScale": 1
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "target-size",
+    "element": "save-input",
+    "expected": ">= 24×24",
+    "observed": "21.08×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:reveal:zip-error",
+    "invariant": "target-size",
+    "element": "save-input",
+    "expected": ">= 24×24",
+    "observed": "21.08×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:text:city-label",
+    "invariant": "target-size",
+    "element": "save-input",
+    "expected": ">= 24×24",
+    "observed": "21.08×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:hide:zip-error",
+    "invariant": "target-size",
+    "element": "save-input",
+    "expected": ">= 24×24",
+    "observed": "21.08×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "target-size",
+    "element": "save-input",
+    "expected": ">= 24×24",
+    "observed": "21.08×24",
+    "fontScale": 1
+   }
+  ]
+ }
+}

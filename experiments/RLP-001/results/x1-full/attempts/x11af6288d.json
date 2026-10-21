@@ -1,0 +1,412 @@
+{
+ "experiment": "RLP-001",
+ "phase": "x1-full",
+ "attemptId": "x11af6288d",
+ "taskId": "T06-dashboard-finance",
+ "category": "dashboards",
+ "split": "heldout",
+ "arm": "X1",
+ "repetition": 2,
+ "executionOrder": 17,
+ "model": "sonnet",
+ "engineCommit": "f2f06a2abeb171d003e57dbe38c2a1d4c88ebee5",
+ "collectedAt": "2026-10-21T19:44:42.907Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 4,
+  "inputTokens": 197999,
+  "inputUncachedTokens": 8,
+  "cacheCreationTokens": 17254,
+  "cacheReadTokens": 180737,
+  "outputTokens": 1881,
+  "totalTokens": 199880,
+  "toolCalls": 4,
+  "toolCallsByName": {
+   "Read": 1,
+   "Bash": 2,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 10813,
+  "toolTokens": null,
+  "durationMs": 35935,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:18:12.987Z",
+    "durationMs": 8551,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 28,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 17,
+       "aborted": false,
+       "solveMs": 2,
+       "memoEntries": 29
+      },
+      "totalMs": 5.699999999254942,
+      "energy": 22.35
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 28,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 17,
+       "aborted": false,
+       "solveMs": 1.900000000372529,
+       "memoEntries": 29
+      },
+      "totalMs": 5.7999999998137355,
+      "energy": 36.74453125000001
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 25,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 17,
+       "aborted": false,
+       "solveMs": 8.600000000558794,
+       "memoEntries": 29
+      },
+      "totalMs": 20.59999999962747,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 25,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 17,
+       "aborted": false,
+       "solveMs": 1.5,
+       "memoEntries": 29
+      },
+      "totalMs": 6.2999999998137355,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 25,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 17,
+       "aborted": false,
+       "solveMs": 2.2000000001862645,
+       "memoEntries": 29
+      },
+      "totalMs": 18.59999999962747,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 28,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 17,
+       "aborted": false,
+       "solveMs": 2.6000000005587935,
+       "memoEntries": 29
+      },
+      "totalMs": 5.900000000372529,
+      "energy": 22.35
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 28,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 17,
+       "aborted": false,
+       "solveMs": 5.1000000005587935,
+       "memoEntries": 29
+      },
+      "totalMs": 21.800000000745058,
+      "energy": 36.74453125000001
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 25,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 17,
+       "aborted": false,
+       "solveMs": 1.599999999627471,
+       "memoEntries": 29
+      },
+      "totalMs": 12.700000000186265,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 25,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 17,
+       "aborted": false,
+       "solveMs": 3.699999999254942,
+       "memoEntries": 29
+      },
+      "totalMs": 20.299999999813735,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 25,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 17,
+       "aborted": false,
+       "solveMs": 2.7000000001862645,
+       "memoEntries": 29
+      },
+      "totalMs": 7.5,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 16,
+  "derived": 54,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 16,
+  "rawStatements": {
+   "explicit": 31,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 16,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 3,
+    "responsive": 1,
+    "dimension": 11,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 6,
+    "margin": 12,
+    "alignment": 12,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 12,
+    "dimension": 12,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [],
+  "final": []
+ }
+}

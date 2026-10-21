@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace section navigation</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  header{padding:1.25rem;display:grid;gap:1rem}
+  header ol{list-style:none;margin:0;padding:0}
+  .crumbs{display:flex;flex-wrap:wrap;gap:.25rem .75rem}
+  .crumbs a,.crumbs span,.tabs a{display:inline-flex;align-items:center;min-height:1.5rem}
+  h1{overflow-wrap:anywhere}
+  .tabs{display:flex;flex-wrap:wrap;gap:.5rem}
+  .tabs a{padding:.375rem .75rem;min-height:2.25rem;border:1px solid #ccc;border-radius:.375rem}
+  .actions{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:flex-end}
+  .actions button{min-height:2.5rem}
+</style>
+</head>
+<body>
+  <header class="surface" data-rlp="bar">
+  <nav aria-label="Breadcrumb" data-rlp="breadcrumb"><div class="crumbs">
+    <a href="#" data-rlp="crumb-1">Workspaces</a>
+    <a href="#" data-rlp="crumb-2">Acme Corporation</a>
+    <a href="#" data-rlp="crumb-3">Billing</a>
+    <span aria-current="page" data-rlp="crumb-4">Invoices</span></div>
+  </nav>
+  <h1 data-rlp="heading">Invoices</h1>
+  <nav aria-label="Billing sections" data-rlp="sections"><div class="tabs">
+    <a href="#" data-rlp="section-1">Overview</a>
+    <a href="#" aria-current="page" data-rlp="section-2">Invoices</a>
+    <a href="#" data-rlp="section-3">Payment methods</a>
+    <a href="#" data-rlp="section-4">Tax registrations and exemptions</a>
+    <a href="#" data-rlp="section-5">Usage</a>
+    <a href="#" data-rlp="section-6">Settings</a></div>
+  </nav>
+  <div class="actions" data-rlp="actions">
+    <button type="button" class="secondary" data-rlp="export">Export CSV</button>
+    <button type="button" data-rlp="new">New invoice</button>
+  </div>
+</header>
+</body>
+</html>

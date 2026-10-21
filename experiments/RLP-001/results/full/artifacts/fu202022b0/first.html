@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shipping address form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+  <main data-rl-root data-rl="group">
+<form data-rl="container" data-rl-bond="loose" data-rlp="form" novalidate>
+  <h2 data-rlp="title">Shipping address</h2>
+  <div data-rl="group" data-rl-bond="related">
+    <div data-rl="group" data-rl-bond="tight">
+      <label for="street" data-rlp="street-label">Street address *</label>
+      <input id="street" type="text" autocomplete="address-line1" required data-rlp="street-input" data-rl-align-edge="s">
+    </div>
+    <div data-rl="group" data-rl-bond="tight">
+      <label for="unit" data-rlp="unit-label">Apartment, suite, or unit</label>
+      <input id="unit" type="text" autocomplete="address-line2" data-rlp="unit-input" data-rl-align-edge="s">
+    </div>
+  </div>
+  <div data-rl="group" data-rl-flow="wrap" data-rl-bond="related">
+    <div data-rl="group" data-rl-bond="tight" data-rl-min="12rem" data-rl-fill>
+      <label for="city" data-rlp="city-label">City *</label>
+      <input id="city" type="text" autocomplete="address-level2" required data-rlp="city-input" data-rl-align-edge="c">
+    </div>
+    <div data-rl="group" data-rl-bond="tight" data-rl-min="9rem">
+      <label for="state" data-rlp="state-label">State *</label>
+      <select id="state" data-rlp="state-input" data-rl-align-edge="c">
+        <option value="">Choose a state</option>
+        <option>Ohio</option>
+        <option>Oregon</option>
+        <option>Texas</option>
+      </select>
+    </div>
+    <div data-rl="group" data-rl-bond="tight" data-rl-min="8rem">
+      <label for="zip" data-rlp="zip-label">ZIP code *</label>
+      <input id="zip" type="text" inputmode="numeric" autocomplete="postal-code" required aria-describedby="zip-error" data-rlp="zip-input" data-rl-align-edge="c">
+      <p id="zip-error" class="error" hidden data-rlp="zip-error">Enter a five-digit ZIP code.</p>
+    </div>
+  </div>
+  <fieldset data-rl="group" data-rl-bond="related" data-rlp="delivery">
+    <legend data-rlp="delivery-legend">Delivery speed</legend>
+    <div data-rl="group" data-rl-bond="tight">
+      <div data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="center">
+        <input id="standard" type="radio" name="speed" checked aria-describedby="standard-note" data-rlp="standard-input" data-rl-size="content">
+        <label for="standard" data-rlp="standard-label">Standard — free</label>
+      </div>
+      <p id="standard-note" data-rlp="standard-note">Arrives in 5 to 7 business days.</p>
+    </div>
+    <div data-rl="group" data-rl-bond="tight">
+      <div data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="center">
+        <input id="express" type="radio" name="speed" aria-describedby="express-note" data-rlp="express-input" data-rl-size="content">
+        <label for="express" data-rlp="express-label">Express — $12.00</label>
+      </div>
+      <p id="express-note" data-rlp="express-note">Arrives in 2 business days.</p>
+    </div>
+  </fieldset>
+  <div data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="center">
+    <input id="save" type="checkbox" data-rlp="save-input" data-rl-size="content">
+    <label for="save" data-rlp="save-label">Save this address for next time</label>
+  </div>
+  <div data-rl="group" data-rl-flow="row" data-rl-bond="related" data-rlp="actions">
+    <button type="button" class="secondary" data-rlp="back" data-rl-anchor="end">Back to cart</button>
+    <button type="submit" data-rlp="continue">Continue to payment</button>
+  </div>
+</form>
+</main>
+</body>
+</html>

@@ -1,0 +1,208 @@
+{
+ "phase": "full",
+ "labeled": 80,
+ "of": 80,
+ "category": {
+  "n": 80,
+  "agreement": 0.8625,
+  "kappa": 0.8279906176700548
+ },
+ "kind": {
+  "n": 80,
+  "agreement": 0.9375,
+  "kappa": 0
+ },
+ "byArm": {
+  "A": {
+   "n": 20,
+   "agreement": 0.9,
+   "kappa": 0.8742138364779876
+  },
+  "B": {
+   "n": 20,
+   "agreement": 0.55,
+   "kappa": 0.4561933534743203
+  },
+  "C": {
+   "n": 20,
+   "agreement": 1,
+   "kappa": 1
+  },
+  "D": {
+   "n": 20,
+   "agreement": 1,
+   "kappa": 1
+  }
+ },
+ "disagreements": [
+  {
+   "item": "s001",
+   "arm": "B",
+   "statement": "class: ef-actions",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "alignment",
+    "explicit"
+   ]
+  },
+  {
+   "item": "s010",
+   "arm": "A",
+   "statement": "flex: none",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "dimension",
+    "uncertain"
+   ]
+  },
+  {
+   "item": "s016",
+   "arm": "B",
+   "statement": "class: ef-stack",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "margin",
+    "explicit"
+   ]
+  },
+  {
+   "item": "s018",
+   "arm": "B",
+   "statement": "class: ef-stack",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "margin",
+    "explicit"
+   ]
+  },
+  {
+   "item": "s021",
+   "arm": "B",
+   "statement": "class: ef-form-row",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "alignment",
+    "explicit"
+   ]
+  },
+  {
+   "item": "s028",
+   "arm": "B",
+   "statement": "class: ef-stack",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "margin",
+    "explicit"
+   ]
+  },
+  {
+   "item": "s038",
+   "arm": "B",
+   "statement": "flex: 1",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "dimension",
+    "uncertain"
+   ]
+  },
+  {
+   "item": "s039",
+   "arm": "A",
+   "statement": "grid-row: 1 / span 2",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "grouping",
+    "uncertain"
+   ]
+  },
+  {
+   "item": "s051",
+   "arm": "A",
+   "statement": "grid-row: 3",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "grouping",
+    "uncertain"
+   ]
+  },
+  {
+   "item": "s059",
+   "arm": "B",
+   "statement": "class: ef-stack",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "margin",
+    "explicit"
+   ]
+  },
+  {
+   "item": "s060",
+   "arm": "A",
+   "statement": "flex: 0 0 auto",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "dimension",
+    "explicit"
+   ]
+  },
+  {
+   "item": "s062",
+   "arm": "B",
+   "statement": "flex: none",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "dimension",
+    "uncertain"
+   ]
+  },
+  {
+   "item": "s066",
+   "arm": "B",
+   "statement": "class: ef-stack",
+   "classifier": [
+    "grouping",
+    "explicit"
+   ],
+   "reviewer": [
+    "margin",
+    "explicit"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,2882 @@
+{
+ "r1-c1/b01/image-1.png": {
+  "attemptId": "fu56321c04",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r1-c1/b01/image-2.png": {
+  "attemptId": "fuf80f03c3",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r1-c1/b01/image-3.png": {
+  "attemptId": "fub231152b",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r1-c1/b01/image-4.png": {
+  "attemptId": "fue7e0c36b",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r1-c1/b02/image-1.png": {
+  "attemptId": "fu59ac8f70",
+  "arm": "D",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r1-c1/b02/image-2.png": {
+  "attemptId": "fu36f811ce",
+  "arm": "A",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r1-c1/b02/image-3.png": {
+  "attemptId": "fub3e45793",
+  "arm": "B",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r1-c1/b02/image-4.png": {
+  "attemptId": "fu3c051d74",
+  "arm": "C",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r1-c1/b03/image-1.png": {
+  "attemptId": "fue9fbafa8",
+  "arm": "C",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r1-c1/b03/image-2.png": {
+  "attemptId": "fu5731fb02",
+  "arm": "B",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r1-c1/b03/image-3.png": {
+  "attemptId": "fuf9bd1fed",
+  "arm": "D",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r1-c1/b03/image-4.png": {
+  "attemptId": "fu90a710b2",
+  "arm": "A",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r1-c1/b04/image-1.png": {
+  "attemptId": "fu0d4fc08c",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r1-c1/b04/image-2.png": {
+  "attemptId": "fuf88b44cd",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r1-c1/b04/image-3.png": {
+  "attemptId": "fu9ef37b76",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r1-c1/b04/image-4.png": {
+  "attemptId": "fu8a465a45",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r1-c1/b05/image-1.png": {
+  "attemptId": "fua952ffe3",
+  "arm": "A",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r1-c1/b05/image-2.png": {
+  "attemptId": "fu134bd5cf",
+  "arm": "D",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r1-c1/b05/image-3.png": {
+  "attemptId": "fu95140c20",
+  "arm": "C",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r1-c1/b05/image-4.png": {
+  "attemptId": "fuf4673d3a",
+  "arm": "B",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r1-c1/b06/image-1.png": {
+  "attemptId": "fu45740455",
+  "arm": "D",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r1-c1/b06/image-2.png": {
+  "attemptId": "fu157ba22a",
+  "arm": "A",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r1-c1/b06/image-3.png": {
+  "attemptId": "fueeb5d697",
+  "arm": "C",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r1-c1/b06/image-4.png": {
+  "attemptId": "fube75cfb4",
+  "arm": "B",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r1-c1/b07/image-1.png": {
+  "attemptId": "fu157ba22a",
+  "arm": "A",
+  "group": "T03-cards-product|2|375"
+ },
+ "r1-c1/b07/image-2.png": {
+  "attemptId": "fueeb5d697",
+  "arm": "C",
+  "group": "T03-cards-product|2|375"
+ },
+ "r1-c1/b07/image-3.png": {
+  "attemptId": "fube75cfb4",
+  "arm": "B",
+  "group": "T03-cards-product|2|375"
+ },
+ "r1-c1/b07/image-4.png": {
+  "attemptId": "fu45740455",
+  "arm": "D",
+  "group": "T03-cards-product|2|375"
+ },
+ "r1-c1/b08/image-1.png": {
+  "attemptId": "fub2d63ead",
+  "arm": "C",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r1-c1/b08/image-2.png": {
+  "attemptId": "fu375f0ef3",
+  "arm": "A",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r1-c1/b08/image-3.png": {
+  "attemptId": "fu9de6a84f",
+  "arm": "B",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r1-c1/b08/image-4.png": {
+  "attemptId": "fu0e103ab1",
+  "arm": "D",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r1-c1/b09/image-1.png": {
+  "attemptId": "fu8ba96954",
+  "arm": "A",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r1-c1/b09/image-2.png": {
+  "attemptId": "fuee3a5c2a",
+  "arm": "D",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r1-c1/b09/image-3.png": {
+  "attemptId": "fudb3f547d",
+  "arm": "C",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r1-c1/b09/image-4.png": {
+  "attemptId": "fuc0c3186c",
+  "arm": "B",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r1-c1/b10/image-1.png": {
+  "attemptId": "fu2960bb72",
+  "arm": "D",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r1-c1/b10/image-2.png": {
+  "attemptId": "fu652d9f84",
+  "arm": "C",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r1-c1/b10/image-3.png": {
+  "attemptId": "fu1d16efa4",
+  "arm": "A",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r1-c1/b10/image-4.png": {
+  "attemptId": "fu10b3aaff",
+  "arm": "B",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r1-c1/b11/image-1.png": {
+  "attemptId": "fuf88b44cd",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r1-c1/b11/image-2.png": {
+  "attemptId": "fu0d4fc08c",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r1-c1/b11/image-3.png": {
+  "attemptId": "fu8a465a45",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r1-c1/b11/image-4.png": {
+  "attemptId": "fu9ef37b76",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r1-c1/b12/image-1.png": {
+  "attemptId": "fu0e706c7e",
+  "arm": "B",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r1-c1/b12/image-2.png": {
+  "attemptId": "fudf8b1b5b",
+  "arm": "C",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r1-c1/b12/image-3.png": {
+  "attemptId": "fu2e174855",
+  "arm": "D",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r1-c1/b12/image-4.png": {
+  "attemptId": "fu421d8dcd",
+  "arm": "A",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r1-c2/b01/image-1.png": {
+  "attemptId": "fu4a8bde31",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r1-c2/b01/image-2.png": {
+  "attemptId": "fu7908b0e1",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r1-c2/b01/image-3.png": {
+  "attemptId": "fu5fe2d7de",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r1-c2/b01/image-4.png": {
+  "attemptId": "fue8f7cd71",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r1-c2/b02/image-1.png": {
+  "attemptId": "fu51fd9c2f",
+  "arm": "D",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r1-c2/b02/image-2.png": {
+  "attemptId": "fu40a7cfb4",
+  "arm": "C",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r1-c2/b02/image-3.png": {
+  "attemptId": "fuc42cb70e",
+  "arm": "B",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r1-c2/b02/image-4.png": {
+  "attemptId": "fu0c4a2b3a",
+  "arm": "A",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r1-c2/b03/image-1.png": {
+  "attemptId": "fu97509495",
+  "arm": "B",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r1-c2/b03/image-2.png": {
+  "attemptId": "fu0142591f",
+  "arm": "C",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r1-c2/b03/image-3.png": {
+  "attemptId": "fu5c9080e7",
+  "arm": "A",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r1-c2/b03/image-4.png": {
+  "attemptId": "fud789f5c7",
+  "arm": "D",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r1-c2/b04/image-1.png": {
+  "attemptId": "fu5731fb02",
+  "arm": "B",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r1-c2/b04/image-2.png": {
+  "attemptId": "fue9fbafa8",
+  "arm": "C",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r1-c2/b04/image-3.png": {
+  "attemptId": "fuf9bd1fed",
+  "arm": "D",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r1-c2/b04/image-4.png": {
+  "attemptId": "fu90a710b2",
+  "arm": "A",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r1-c2/b05/image-1.png": {
+  "attemptId": "fu88ebe535",
+  "arm": "B",
+  "group": "T01-form-account|3|375"
+ },
+ "r1-c2/b05/image-2.png": {
+  "attemptId": "fuc91e49a4",
+  "arm": "C",
+  "group": "T01-form-account|3|375"
+ },
+ "r1-c2/b05/image-3.png": {
+  "attemptId": "fu789d5686",
+  "arm": "D",
+  "group": "T01-form-account|3|375"
+ },
+ "r1-c2/b05/image-4.png": {
+  "attemptId": "fu50858b84",
+  "arm": "A",
+  "group": "T01-form-account|3|375"
+ },
+ "r1-c2/b06/image-1.png": {
+  "attemptId": "fu4a8bde31",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r1-c2/b06/image-2.png": {
+  "attemptId": "fu7908b0e1",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r1-c2/b06/image-3.png": {
+  "attemptId": "fu5fe2d7de",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r1-c2/b06/image-4.png": {
+  "attemptId": "fue8f7cd71",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r1-c2/b07/image-1.png": {
+  "attemptId": "fu51fd9c2f",
+  "arm": "D",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r1-c2/b07/image-2.png": {
+  "attemptId": "fu40a7cfb4",
+  "arm": "C",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r1-c2/b07/image-3.png": {
+  "attemptId": "fuc42cb70e",
+  "arm": "B",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r1-c2/b07/image-4.png": {
+  "attemptId": "fu0c4a2b3a",
+  "arm": "A",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r1-c2/b08/image-1.png": {
+  "attemptId": "fu0e103ab1",
+  "arm": "D",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r1-c2/b08/image-2.png": {
+  "attemptId": "fu375f0ef3",
+  "arm": "A",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r1-c2/b08/image-3.png": {
+  "attemptId": "fu9de6a84f",
+  "arm": "B",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r1-c2/b08/image-4.png": {
+  "attemptId": "fub2d63ead",
+  "arm": "C",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r1-c2/b09/image-1.png": {
+  "attemptId": "fu421d8dcd",
+  "arm": "A",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r1-c2/b09/image-2.png": {
+  "attemptId": "fudf8b1b5b",
+  "arm": "C",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r1-c2/b09/image-3.png": {
+  "attemptId": "fu0e706c7e",
+  "arm": "B",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r1-c2/b09/image-4.png": {
+  "attemptId": "fu2e174855",
+  "arm": "D",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r1-c2/b10/image-1.png": {
+  "attemptId": "fu92354dec",
+  "arm": "A",
+  "group": "T03-cards-product|3|375"
+ },
+ "r1-c2/b10/image-2.png": {
+  "attemptId": "fu4c0e5a46",
+  "arm": "B",
+  "group": "T03-cards-product|3|375"
+ },
+ "r1-c2/b10/image-3.png": {
+  "attemptId": "fua9b4ae86",
+  "arm": "D",
+  "group": "T03-cards-product|3|375"
+ },
+ "r1-c2/b10/image-4.png": {
+  "attemptId": "fub2613ab8",
+  "arm": "C",
+  "group": "T03-cards-product|3|375"
+ },
+ "r1-c2/b11/image-1.png": {
+  "attemptId": "fu858c2ae3",
+  "arm": "C",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r1-c2/b11/image-2.png": {
+  "attemptId": "fu95f935bf",
+  "arm": "A",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r1-c2/b11/image-3.png": {
+  "attemptId": "fub0068fd1",
+  "arm": "D",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r1-c2/b11/image-4.png": {
+  "attemptId": "fue7814a06",
+  "arm": "B",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r1-c2/b12/image-1.png": {
+  "attemptId": "fu9e1984c7",
+  "arm": "D",
+  "group": "T01-form-account|1|1440"
+ },
+ "r1-c2/b12/image-2.png": {
+  "attemptId": "fufb191a65",
+  "arm": "B",
+  "group": "T01-form-account|1|1440"
+ },
+ "r1-c2/b12/image-3.png": {
+  "attemptId": "fub849c025",
+  "arm": "A",
+  "group": "T01-form-account|1|1440"
+ },
+ "r1-c2/b12/image-4.png": {
+  "attemptId": "fu4d441cea",
+  "arm": "C",
+  "group": "T01-form-account|1|1440"
+ },
+ "r1-c3/b01/image-1.png": {
+  "attemptId": "fuc2aae7a9",
+  "arm": "A",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r1-c3/b01/image-2.png": {
+  "attemptId": "fu741bb268",
+  "arm": "B",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r1-c3/b01/image-3.png": {
+  "attemptId": "fu572ed09d",
+  "arm": "C",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r1-c3/b01/image-4.png": {
+  "attemptId": "fu3726bc47",
+  "arm": "D",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r1-c3/b02/image-1.png": {
+  "attemptId": "fu5d3fd27a",
+  "arm": "A",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r1-c3/b02/image-2.png": {
+  "attemptId": "fu6c84e5ca",
+  "arm": "D",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r1-c3/b02/image-3.png": {
+  "attemptId": "fu64d1b417",
+  "arm": "B",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r1-c3/b02/image-4.png": {
+  "attemptId": "fube9b7229",
+  "arm": "C",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r1-c3/b03/image-1.png": {
+  "attemptId": "fu43192864",
+  "arm": "B",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r1-c3/b03/image-2.png": {
+  "attemptId": "fu91be11ad",
+  "arm": "D",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r1-c3/b03/image-3.png": {
+  "attemptId": "fua2946c91",
+  "arm": "C",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r1-c3/b03/image-4.png": {
+  "attemptId": "fu0295579c",
+  "arm": "A",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r1-c3/b04/image-1.png": {
+  "attemptId": "fuce96f395",
+  "arm": "A",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r1-c3/b04/image-2.png": {
+  "attemptId": "fu2afec16e",
+  "arm": "B",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r1-c3/b04/image-3.png": {
+  "attemptId": "fu7bb6a3b5",
+  "arm": "D",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r1-c3/b04/image-4.png": {
+  "attemptId": "fu427eecc3",
+  "arm": "C",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r1-c3/b05/image-1.png": {
+  "attemptId": "fuf4673d3a",
+  "arm": "B",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r1-c3/b05/image-2.png": {
+  "attemptId": "fua952ffe3",
+  "arm": "A",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r1-c3/b05/image-3.png": {
+  "attemptId": "fu95140c20",
+  "arm": "C",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r1-c3/b05/image-4.png": {
+  "attemptId": "fu134bd5cf",
+  "arm": "D",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r1-c3/b06/image-1.png": {
+  "attemptId": "fu49a392b0",
+  "arm": "D",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r1-c3/b06/image-2.png": {
+  "attemptId": "fu8e7d3c2f",
+  "arm": "B",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r1-c3/b06/image-3.png": {
+  "attemptId": "fu5663052b",
+  "arm": "C",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r1-c3/b06/image-4.png": {
+  "attemptId": "fu4e446b78",
+  "arm": "A",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r1-c3/b07/image-1.png": {
+  "attemptId": "fu4d038af0",
+  "arm": "C",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r1-c3/b07/image-2.png": {
+  "attemptId": "fu28fff2d8",
+  "arm": "B",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r1-c3/b07/image-3.png": {
+  "attemptId": "fubc33ee91",
+  "arm": "D",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r1-c3/b07/image-4.png": {
+  "attemptId": "fuac3673c4",
+  "arm": "A",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r1-c3/b08/image-1.png": {
+  "attemptId": "fue8fe9443",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r1-c3/b08/image-2.png": {
+  "attemptId": "fua418c643",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r1-c3/b08/image-3.png": {
+  "attemptId": "fu2910cddb",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r1-c3/b08/image-4.png": {
+  "attemptId": "fu1a992744",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r1-c3/b09/image-1.png": {
+  "attemptId": "fuf7098a45",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r1-c3/b09/image-2.png": {
+  "attemptId": "fu4a9a9c88",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r1-c3/b09/image-3.png": {
+  "attemptId": "fu93fae6de",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r1-c3/b09/image-4.png": {
+  "attemptId": "fuc6c902a0",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r1-c3/b10/image-1.png": {
+  "attemptId": "fu59ac8f70",
+  "arm": "D",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r1-c3/b10/image-2.png": {
+  "attemptId": "fub3e45793",
+  "arm": "B",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r1-c3/b10/image-3.png": {
+  "attemptId": "fu3c051d74",
+  "arm": "C",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r1-c3/b10/image-4.png": {
+  "attemptId": "fu36f811ce",
+  "arm": "A",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r1-c3/b11/image-1.png": {
+  "attemptId": "fue6eef699",
+  "arm": "A",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r1-c3/b11/image-2.png": {
+  "attemptId": "fu5efa05e6",
+  "arm": "C",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r1-c3/b11/image-3.png": {
+  "attemptId": "fu662e8ed2",
+  "arm": "D",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r1-c3/b11/image-4.png": {
+  "attemptId": "fu0f34d24d",
+  "arm": "B",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r1-c3/b12/image-1.png": {
+  "attemptId": "fu7e2d22e9",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r1-c3/b12/image-2.png": {
+  "attemptId": "fu56838dff",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r1-c3/b12/image-3.png": {
+  "attemptId": "fu72e728f2",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r1-c3/b12/image-4.png": {
+  "attemptId": "fu93ad4bf1",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r1-c4/b01/image-1.png": {
+  "attemptId": "fuc91e49a4",
+  "arm": "C",
+  "group": "T01-form-account|3|1440"
+ },
+ "r1-c4/b01/image-2.png": {
+  "attemptId": "fu50858b84",
+  "arm": "A",
+  "group": "T01-form-account|3|1440"
+ },
+ "r1-c4/b01/image-3.png": {
+  "attemptId": "fu88ebe535",
+  "arm": "B",
+  "group": "T01-form-account|3|1440"
+ },
+ "r1-c4/b01/image-4.png": {
+  "attemptId": "fu789d5686",
+  "arm": "D",
+  "group": "T01-form-account|3|1440"
+ },
+ "r1-c4/b02/image-1.png": {
+  "attemptId": "fu64d1b417",
+  "arm": "B",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r1-c4/b02/image-2.png": {
+  "attemptId": "fube9b7229",
+  "arm": "C",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r1-c4/b02/image-3.png": {
+  "attemptId": "fu6c84e5ca",
+  "arm": "D",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r1-c4/b02/image-4.png": {
+  "attemptId": "fu5d3fd27a",
+  "arm": "A",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r1-c4/b03/image-1.png": {
+  "attemptId": "fua4a628f8",
+  "arm": "B",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r1-c4/b03/image-2.png": {
+  "attemptId": "fubb407509",
+  "arm": "C",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r1-c4/b03/image-3.png": {
+  "attemptId": "fue277deb4",
+  "arm": "D",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r1-c4/b03/image-4.png": {
+  "attemptId": "fufa7f4359",
+  "arm": "A",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r1-c4/b04/image-1.png": {
+  "attemptId": "fu28fff2d8",
+  "arm": "B",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r1-c4/b04/image-2.png": {
+  "attemptId": "fuac3673c4",
+  "arm": "A",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r1-c4/b04/image-3.png": {
+  "attemptId": "fu4d038af0",
+  "arm": "C",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r1-c4/b04/image-4.png": {
+  "attemptId": "fubc33ee91",
+  "arm": "D",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r1-c4/b05/image-1.png": {
+  "attemptId": "fud789f5c7",
+  "arm": "D",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r1-c4/b05/image-2.png": {
+  "attemptId": "fu97509495",
+  "arm": "B",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r1-c4/b05/image-3.png": {
+  "attemptId": "fu5c9080e7",
+  "arm": "A",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r1-c4/b05/image-4.png": {
+  "attemptId": "fu0142591f",
+  "arm": "C",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r1-c4/b06/image-1.png": {
+  "attemptId": "fu3fcb5c10",
+  "arm": "C",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r1-c4/b06/image-2.png": {
+  "attemptId": "fue62a0af5",
+  "arm": "D",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r1-c4/b06/image-3.png": {
+  "attemptId": "fu024ec1b9",
+  "arm": "A",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r1-c4/b06/image-4.png": {
+  "attemptId": "fu5dc03db5",
+  "arm": "B",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r1-c4/b07/image-1.png": {
+  "attemptId": "fu73a681d7",
+  "arm": "D",
+  "group": "T03-cards-product|1|375"
+ },
+ "r1-c4/b07/image-2.png": {
+  "attemptId": "fu837be8d6",
+  "arm": "A",
+  "group": "T03-cards-product|1|375"
+ },
+ "r1-c4/b07/image-3.png": {
+  "attemptId": "fu33cb209d",
+  "arm": "C",
+  "group": "T03-cards-product|1|375"
+ },
+ "r1-c4/b07/image-4.png": {
+  "attemptId": "fu4be007ab",
+  "arm": "B",
+  "group": "T03-cards-product|1|375"
+ },
+ "r1-c4/b08/image-1.png": {
+  "attemptId": "fu0295579c",
+  "arm": "A",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r1-c4/b08/image-2.png": {
+  "attemptId": "fu43192864",
+  "arm": "B",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r1-c4/b08/image-3.png": {
+  "attemptId": "fu91be11ad",
+  "arm": "D",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r1-c4/b08/image-4.png": {
+  "attemptId": "fua2946c91",
+  "arm": "C",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r1-c4/b09/image-1.png": {
+  "attemptId": "fue545619d",
+  "arm": "B",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r1-c4/b09/image-2.png": {
+  "attemptId": "fu0d6d7ba3",
+  "arm": "D",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r1-c4/b09/image-3.png": {
+  "attemptId": "fu9190c629",
+  "arm": "A",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r1-c4/b09/image-4.png": {
+  "attemptId": "fua2941da3",
+  "arm": "C",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r1-c4/b10/image-1.png": {
+  "attemptId": "fu73a681d7",
+  "arm": "D",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r1-c4/b10/image-2.png": {
+  "attemptId": "fu837be8d6",
+  "arm": "A",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r1-c4/b10/image-3.png": {
+  "attemptId": "fu33cb209d",
+  "arm": "C",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r1-c4/b10/image-4.png": {
+  "attemptId": "fu4be007ab",
+  "arm": "B",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r1-c4/b11/image-1.png": {
+  "attemptId": "fueff2bcb2",
+  "arm": "C",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r1-c4/b11/image-2.png": {
+  "attemptId": "fu59ce046f",
+  "arm": "A",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r1-c4/b11/image-3.png": {
+  "attemptId": "fu682d9da4",
+  "arm": "B",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r1-c4/b11/image-4.png": {
+  "attemptId": "fuf48e24c2",
+  "arm": "D",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r1-c4/b12/image-1.png": {
+  "attemptId": "fudb3f547d",
+  "arm": "C",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r1-c4/b12/image-2.png": {
+  "attemptId": "fu8ba96954",
+  "arm": "A",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r1-c4/b12/image-3.png": {
+  "attemptId": "fuc0c3186c",
+  "arm": "B",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r1-c4/b12/image-4.png": {
+  "attemptId": "fuee3a5c2a",
+  "arm": "D",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r1-c5/b01/image-1.png": {
+  "attemptId": "fue7e0c36b",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r1-c5/b01/image-2.png": {
+  "attemptId": "fu56321c04",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r1-c5/b01/image-3.png": {
+  "attemptId": "fub231152b",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r1-c5/b01/image-4.png": {
+  "attemptId": "fuf80f03c3",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r1-c5/b02/image-1.png": {
+  "attemptId": "fua4a628f8",
+  "arm": "B",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r1-c5/b02/image-2.png": {
+  "attemptId": "fubb407509",
+  "arm": "C",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r1-c5/b02/image-3.png": {
+  "attemptId": "fue277deb4",
+  "arm": "D",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r1-c5/b02/image-4.png": {
+  "attemptId": "fufa7f4359",
+  "arm": "A",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r1-c5/b03/image-1.png": {
+  "attemptId": "fu202022b0",
+  "arm": "D",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r1-c5/b03/image-2.png": {
+  "attemptId": "fu2c568155",
+  "arm": "C",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r1-c5/b03/image-3.png": {
+  "attemptId": "fub48ce8b1",
+  "arm": "B",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r1-c5/b03/image-4.png": {
+  "attemptId": "fu559fb2c8",
+  "arm": "A",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r1-c5/b04/image-1.png": {
+  "attemptId": "fu51cde206",
+  "arm": "A",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r1-c5/b04/image-2.png": {
+  "attemptId": "fufcbfa9b4",
+  "arm": "C",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r1-c5/b04/image-3.png": {
+  "attemptId": "fuaf292444",
+  "arm": "D",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r1-c5/b04/image-4.png": {
+  "attemptId": "fu39619e57",
+  "arm": "B",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r1-c5/b05/image-1.png": {
+  "attemptId": "fu559fb2c8",
+  "arm": "A",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r1-c5/b05/image-2.png": {
+  "attemptId": "fub48ce8b1",
+  "arm": "B",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r1-c5/b05/image-3.png": {
+  "attemptId": "fu2c568155",
+  "arm": "C",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r1-c5/b05/image-4.png": {
+  "attemptId": "fu202022b0",
+  "arm": "D",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r1-c5/b06/image-1.png": {
+  "attemptId": "fufb191a65",
+  "arm": "B",
+  "group": "T01-form-account|1|375"
+ },
+ "r1-c5/b06/image-2.png": {
+  "attemptId": "fu9e1984c7",
+  "arm": "D",
+  "group": "T01-form-account|1|375"
+ },
+ "r1-c5/b06/image-3.png": {
+  "attemptId": "fub849c025",
+  "arm": "A",
+  "group": "T01-form-account|1|375"
+ },
+ "r1-c5/b06/image-4.png": {
+  "attemptId": "fu4d441cea",
+  "arm": "C",
+  "group": "T01-form-account|1|375"
+ },
+ "r1-c5/b07/image-1.png": {
+  "attemptId": "fu1d16efa4",
+  "arm": "A",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r1-c5/b07/image-2.png": {
+  "attemptId": "fu10b3aaff",
+  "arm": "B",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r1-c5/b07/image-3.png": {
+  "attemptId": "fu652d9f84",
+  "arm": "C",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r1-c5/b07/image-4.png": {
+  "attemptId": "fu2960bb72",
+  "arm": "D",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r1-c5/b08/image-1.png": {
+  "attemptId": "fue7814a06",
+  "arm": "B",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r1-c5/b08/image-2.png": {
+  "attemptId": "fu95f935bf",
+  "arm": "A",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r1-c5/b08/image-3.png": {
+  "attemptId": "fu858c2ae3",
+  "arm": "C",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r1-c5/b08/image-4.png": {
+  "attemptId": "fub0068fd1",
+  "arm": "D",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r1-c5/b09/image-1.png": {
+  "attemptId": "fu4a9a9c88",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r1-c5/b09/image-2.png": {
+  "attemptId": "fuc6c902a0",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r1-c5/b09/image-3.png": {
+  "attemptId": "fuf7098a45",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r1-c5/b09/image-4.png": {
+  "attemptId": "fu93fae6de",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r1-c5/b10/image-1.png": {
+  "attemptId": "fu741bb268",
+  "arm": "B",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r1-c5/b10/image-2.png": {
+  "attemptId": "fu572ed09d",
+  "arm": "C",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r1-c5/b10/image-3.png": {
+  "attemptId": "fuc2aae7a9",
+  "arm": "A",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r1-c5/b10/image-4.png": {
+  "attemptId": "fu3726bc47",
+  "arm": "D",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r1-c5/b11/image-1.png": {
+  "attemptId": "fu95eed3f5",
+  "arm": "A",
+  "group": "T01-form-account|2|1440"
+ },
+ "r1-c5/b11/image-2.png": {
+  "attemptId": "fu7cff66d0",
+  "arm": "C",
+  "group": "T01-form-account|2|1440"
+ },
+ "r1-c5/b11/image-3.png": {
+  "attemptId": "fuffd39e60",
+  "arm": "B",
+  "group": "T01-form-account|2|1440"
+ },
+ "r1-c5/b11/image-4.png": {
+  "attemptId": "fu63f4e1a1",
+  "arm": "D",
+  "group": "T01-form-account|2|1440"
+ },
+ "r1-c5/b12/image-1.png": {
+  "attemptId": "fu0d6d7ba3",
+  "arm": "D",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r1-c5/b12/image-2.png": {
+  "attemptId": "fu9190c629",
+  "arm": "A",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r1-c5/b12/image-3.png": {
+  "attemptId": "fua2941da3",
+  "arm": "C",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r1-c5/b12/image-4.png": {
+  "attemptId": "fue545619d",
+  "arm": "B",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r1-c6/b01/image-1.png": {
+  "attemptId": "fu5efa05e6",
+  "arm": "C",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r1-c6/b01/image-2.png": {
+  "attemptId": "fu662e8ed2",
+  "arm": "D",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r1-c6/b01/image-3.png": {
+  "attemptId": "fue6eef699",
+  "arm": "A",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r1-c6/b01/image-4.png": {
+  "attemptId": "fu0f34d24d",
+  "arm": "B",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r1-c6/b02/image-1.png": {
+  "attemptId": "fu427eecc3",
+  "arm": "C",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r1-c6/b02/image-2.png": {
+  "attemptId": "fuce96f395",
+  "arm": "A",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r1-c6/b02/image-3.png": {
+  "attemptId": "fu2afec16e",
+  "arm": "B",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r1-c6/b02/image-4.png": {
+  "attemptId": "fu7bb6a3b5",
+  "arm": "D",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r1-c6/b03/image-1.png": {
+  "attemptId": "fu024ec1b9",
+  "arm": "A",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r1-c6/b03/image-2.png": {
+  "attemptId": "fu5dc03db5",
+  "arm": "B",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r1-c6/b03/image-3.png": {
+  "attemptId": "fu3fcb5c10",
+  "arm": "C",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r1-c6/b03/image-4.png": {
+  "attemptId": "fue62a0af5",
+  "arm": "D",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r1-c6/b04/image-1.png": {
+  "attemptId": "fu59ce046f",
+  "arm": "A",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r1-c6/b04/image-2.png": {
+  "attemptId": "fueff2bcb2",
+  "arm": "C",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r1-c6/b04/image-3.png": {
+  "attemptId": "fuf48e24c2",
+  "arm": "D",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r1-c6/b04/image-4.png": {
+  "attemptId": "fu682d9da4",
+  "arm": "B",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r1-c6/b05/image-1.png": {
+  "attemptId": "fu49a392b0",
+  "arm": "D",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r1-c6/b05/image-2.png": {
+  "attemptId": "fu8e7d3c2f",
+  "arm": "B",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r1-c6/b05/image-3.png": {
+  "attemptId": "fu4e446b78",
+  "arm": "A",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r1-c6/b05/image-4.png": {
+  "attemptId": "fu5663052b",
+  "arm": "C",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r1-c6/b06/image-1.png": {
+  "attemptId": "fua9b4ae86",
+  "arm": "D",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r1-c6/b06/image-2.png": {
+  "attemptId": "fub2613ab8",
+  "arm": "C",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r1-c6/b06/image-3.png": {
+  "attemptId": "fu92354dec",
+  "arm": "A",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r1-c6/b06/image-4.png": {
+  "attemptId": "fu4c0e5a46",
+  "arm": "B",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r1-c6/b07/image-1.png": {
+  "attemptId": "fu235adae1",
+  "arm": "C",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r1-c6/b07/image-2.png": {
+  "attemptId": "fu99b6fd55",
+  "arm": "D",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r1-c6/b07/image-3.png": {
+  "attemptId": "fucb4cb903",
+  "arm": "B",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r1-c6/b07/image-4.png": {
+  "attemptId": "fu22a2bc06",
+  "arm": "A",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r1-c6/b08/image-1.png": {
+  "attemptId": "fu7cff66d0",
+  "arm": "C",
+  "group": "T01-form-account|2|375"
+ },
+ "r1-c6/b08/image-2.png": {
+  "attemptId": "fu63f4e1a1",
+  "arm": "D",
+  "group": "T01-form-account|2|375"
+ },
+ "r1-c6/b08/image-3.png": {
+  "attemptId": "fu95eed3f5",
+  "arm": "A",
+  "group": "T01-form-account|2|375"
+ },
+ "r1-c6/b08/image-4.png": {
+  "attemptId": "fuffd39e60",
+  "arm": "B",
+  "group": "T01-form-account|2|375"
+ },
+ "r1-c6/b09/image-1.png": {
+  "attemptId": "fucb4cb903",
+  "arm": "B",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r1-c6/b09/image-2.png": {
+  "attemptId": "fu99b6fd55",
+  "arm": "D",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r1-c6/b09/image-3.png": {
+  "attemptId": "fu235adae1",
+  "arm": "C",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r1-c6/b09/image-4.png": {
+  "attemptId": "fu22a2bc06",
+  "arm": "A",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r1-c6/b10/image-1.png": {
+  "attemptId": "fu7e2d22e9",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r1-c6/b10/image-2.png": {
+  "attemptId": "fu93ad4bf1",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r1-c6/b10/image-3.png": {
+  "attemptId": "fu72e728f2",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r1-c6/b10/image-4.png": {
+  "attemptId": "fu56838dff",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r1-c6/b11/image-1.png": {
+  "attemptId": "fua418c643",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r1-c6/b11/image-2.png": {
+  "attemptId": "fu2910cddb",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r1-c6/b11/image-3.png": {
+  "attemptId": "fue8fe9443",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r1-c6/b11/image-4.png": {
+  "attemptId": "fu1a992744",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r1-c6/b12/image-1.png": {
+  "attemptId": "fuaf292444",
+  "arm": "D",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r1-c6/b12/image-2.png": {
+  "attemptId": "fu51cde206",
+  "arm": "A",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r1-c6/b12/image-3.png": {
+  "attemptId": "fufcbfa9b4",
+  "arm": "C",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r1-c6/b12/image-4.png": {
+  "attemptId": "fu39619e57",
+  "arm": "B",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r2-c1/b01/image-1.png": {
+  "attemptId": "fub231152b",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r2-c1/b01/image-2.png": {
+  "attemptId": "fu56321c04",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r2-c1/b01/image-3.png": {
+  "attemptId": "fue7e0c36b",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r2-c1/b01/image-4.png": {
+  "attemptId": "fuf80f03c3",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r2-c1/b02/image-1.png": {
+  "attemptId": "fu3c051d74",
+  "arm": "C",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r2-c1/b02/image-2.png": {
+  "attemptId": "fub3e45793",
+  "arm": "B",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r2-c1/b02/image-3.png": {
+  "attemptId": "fu59ac8f70",
+  "arm": "D",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r2-c1/b02/image-4.png": {
+  "attemptId": "fu36f811ce",
+  "arm": "A",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r2-c1/b03/image-1.png": {
+  "attemptId": "fu90a710b2",
+  "arm": "A",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r2-c1/b03/image-2.png": {
+  "attemptId": "fue9fbafa8",
+  "arm": "C",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r2-c1/b03/image-3.png": {
+  "attemptId": "fuf9bd1fed",
+  "arm": "D",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r2-c1/b03/image-4.png": {
+  "attemptId": "fu5731fb02",
+  "arm": "B",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r2-c1/b04/image-1.png": {
+  "attemptId": "fu0d4fc08c",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r2-c1/b04/image-2.png": {
+  "attemptId": "fu8a465a45",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r2-c1/b04/image-3.png": {
+  "attemptId": "fuf88b44cd",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r2-c1/b04/image-4.png": {
+  "attemptId": "fu9ef37b76",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r2-c1/b05/image-1.png": {
+  "attemptId": "fu134bd5cf",
+  "arm": "D",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r2-c1/b05/image-2.png": {
+  "attemptId": "fu95140c20",
+  "arm": "C",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r2-c1/b05/image-3.png": {
+  "attemptId": "fua952ffe3",
+  "arm": "A",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r2-c1/b05/image-4.png": {
+  "attemptId": "fuf4673d3a",
+  "arm": "B",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r2-c1/b06/image-1.png": {
+  "attemptId": "fu157ba22a",
+  "arm": "A",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r2-c1/b06/image-2.png": {
+  "attemptId": "fube75cfb4",
+  "arm": "B",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r2-c1/b06/image-3.png": {
+  "attemptId": "fu45740455",
+  "arm": "D",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r2-c1/b06/image-4.png": {
+  "attemptId": "fueeb5d697",
+  "arm": "C",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r2-c1/b07/image-1.png": {
+  "attemptId": "fu45740455",
+  "arm": "D",
+  "group": "T03-cards-product|2|375"
+ },
+ "r2-c1/b07/image-2.png": {
+  "attemptId": "fueeb5d697",
+  "arm": "C",
+  "group": "T03-cards-product|2|375"
+ },
+ "r2-c1/b07/image-3.png": {
+  "attemptId": "fu157ba22a",
+  "arm": "A",
+  "group": "T03-cards-product|2|375"
+ },
+ "r2-c1/b07/image-4.png": {
+  "attemptId": "fube75cfb4",
+  "arm": "B",
+  "group": "T03-cards-product|2|375"
+ },
+ "r2-c1/b08/image-1.png": {
+  "attemptId": "fu375f0ef3",
+  "arm": "A",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r2-c1/b08/image-2.png": {
+  "attemptId": "fub2d63ead",
+  "arm": "C",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r2-c1/b08/image-3.png": {
+  "attemptId": "fu9de6a84f",
+  "arm": "B",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r2-c1/b08/image-4.png": {
+  "attemptId": "fu0e103ab1",
+  "arm": "D",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r2-c1/b09/image-1.png": {
+  "attemptId": "fuee3a5c2a",
+  "arm": "D",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r2-c1/b09/image-2.png": {
+  "attemptId": "fudb3f547d",
+  "arm": "C",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r2-c1/b09/image-3.png": {
+  "attemptId": "fuc0c3186c",
+  "arm": "B",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r2-c1/b09/image-4.png": {
+  "attemptId": "fu8ba96954",
+  "arm": "A",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r2-c1/b10/image-1.png": {
+  "attemptId": "fu652d9f84",
+  "arm": "C",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r2-c1/b10/image-2.png": {
+  "attemptId": "fu2960bb72",
+  "arm": "D",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r2-c1/b10/image-3.png": {
+  "attemptId": "fu1d16efa4",
+  "arm": "A",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r2-c1/b10/image-4.png": {
+  "attemptId": "fu10b3aaff",
+  "arm": "B",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r2-c1/b11/image-1.png": {
+  "attemptId": "fu0d4fc08c",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r2-c1/b11/image-2.png": {
+  "attemptId": "fuf88b44cd",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r2-c1/b11/image-3.png": {
+  "attemptId": "fu8a465a45",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r2-c1/b11/image-4.png": {
+  "attemptId": "fu9ef37b76",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r2-c1/b12/image-1.png": {
+  "attemptId": "fudf8b1b5b",
+  "arm": "C",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r2-c1/b12/image-2.png": {
+  "attemptId": "fu2e174855",
+  "arm": "D",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r2-c1/b12/image-3.png": {
+  "attemptId": "fu421d8dcd",
+  "arm": "A",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r2-c1/b12/image-4.png": {
+  "attemptId": "fu0e706c7e",
+  "arm": "B",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r2-c2/b01/image-1.png": {
+  "attemptId": "fue8f7cd71",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r2-c2/b01/image-2.png": {
+  "attemptId": "fu4a8bde31",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r2-c2/b01/image-3.png": {
+  "attemptId": "fu5fe2d7de",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r2-c2/b01/image-4.png": {
+  "attemptId": "fu7908b0e1",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r2-c2/b02/image-1.png": {
+  "attemptId": "fu0c4a2b3a",
+  "arm": "A",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r2-c2/b02/image-2.png": {
+  "attemptId": "fu40a7cfb4",
+  "arm": "C",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r2-c2/b02/image-3.png": {
+  "attemptId": "fuc42cb70e",
+  "arm": "B",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r2-c2/b02/image-4.png": {
+  "attemptId": "fu51fd9c2f",
+  "arm": "D",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r2-c2/b03/image-1.png": {
+  "attemptId": "fu5c9080e7",
+  "arm": "A",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r2-c2/b03/image-2.png": {
+  "attemptId": "fud789f5c7",
+  "arm": "D",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r2-c2/b03/image-3.png": {
+  "attemptId": "fu97509495",
+  "arm": "B",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r2-c2/b03/image-4.png": {
+  "attemptId": "fu0142591f",
+  "arm": "C",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r2-c2/b04/image-1.png": {
+  "attemptId": "fu5731fb02",
+  "arm": "B",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r2-c2/b04/image-2.png": {
+  "attemptId": "fue9fbafa8",
+  "arm": "C",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r2-c2/b04/image-3.png": {
+  "attemptId": "fu90a710b2",
+  "arm": "A",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r2-c2/b04/image-4.png": {
+  "attemptId": "fuf9bd1fed",
+  "arm": "D",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r2-c2/b05/image-1.png": {
+  "attemptId": "fu88ebe535",
+  "arm": "B",
+  "group": "T01-form-account|3|375"
+ },
+ "r2-c2/b05/image-2.png": {
+  "attemptId": "fu50858b84",
+  "arm": "A",
+  "group": "T01-form-account|3|375"
+ },
+ "r2-c2/b05/image-3.png": {
+  "attemptId": "fu789d5686",
+  "arm": "D",
+  "group": "T01-form-account|3|375"
+ },
+ "r2-c2/b05/image-4.png": {
+  "attemptId": "fuc91e49a4",
+  "arm": "C",
+  "group": "T01-form-account|3|375"
+ },
+ "r2-c2/b06/image-1.png": {
+  "attemptId": "fu7908b0e1",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r2-c2/b06/image-2.png": {
+  "attemptId": "fu5fe2d7de",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r2-c2/b06/image-3.png": {
+  "attemptId": "fue8f7cd71",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r2-c2/b06/image-4.png": {
+  "attemptId": "fu4a8bde31",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r2-c2/b07/image-1.png": {
+  "attemptId": "fu51fd9c2f",
+  "arm": "D",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r2-c2/b07/image-2.png": {
+  "attemptId": "fuc42cb70e",
+  "arm": "B",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r2-c2/b07/image-3.png": {
+  "attemptId": "fu40a7cfb4",
+  "arm": "C",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r2-c2/b07/image-4.png": {
+  "attemptId": "fu0c4a2b3a",
+  "arm": "A",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r2-c2/b08/image-1.png": {
+  "attemptId": "fu9de6a84f",
+  "arm": "B",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r2-c2/b08/image-2.png": {
+  "attemptId": "fu375f0ef3",
+  "arm": "A",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r2-c2/b08/image-3.png": {
+  "attemptId": "fub2d63ead",
+  "arm": "C",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r2-c2/b08/image-4.png": {
+  "attemptId": "fu0e103ab1",
+  "arm": "D",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r2-c2/b09/image-1.png": {
+  "attemptId": "fudf8b1b5b",
+  "arm": "C",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r2-c2/b09/image-2.png": {
+  "attemptId": "fu0e706c7e",
+  "arm": "B",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r2-c2/b09/image-3.png": {
+  "attemptId": "fu421d8dcd",
+  "arm": "A",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r2-c2/b09/image-4.png": {
+  "attemptId": "fu2e174855",
+  "arm": "D",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r2-c2/b10/image-1.png": {
+  "attemptId": "fub2613ab8",
+  "arm": "C",
+  "group": "T03-cards-product|3|375"
+ },
+ "r2-c2/b10/image-2.png": {
+  "attemptId": "fu92354dec",
+  "arm": "A",
+  "group": "T03-cards-product|3|375"
+ },
+ "r2-c2/b10/image-3.png": {
+  "attemptId": "fu4c0e5a46",
+  "arm": "B",
+  "group": "T03-cards-product|3|375"
+ },
+ "r2-c2/b10/image-4.png": {
+  "attemptId": "fua9b4ae86",
+  "arm": "D",
+  "group": "T03-cards-product|3|375"
+ },
+ "r2-c2/b11/image-1.png": {
+  "attemptId": "fub0068fd1",
+  "arm": "D",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r2-c2/b11/image-2.png": {
+  "attemptId": "fu95f935bf",
+  "arm": "A",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r2-c2/b11/image-3.png": {
+  "attemptId": "fue7814a06",
+  "arm": "B",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r2-c2/b11/image-4.png": {
+  "attemptId": "fu858c2ae3",
+  "arm": "C",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r2-c2/b12/image-1.png": {
+  "attemptId": "fu9e1984c7",
+  "arm": "D",
+  "group": "T01-form-account|1|1440"
+ },
+ "r2-c2/b12/image-2.png": {
+  "attemptId": "fub849c025",
+  "arm": "A",
+  "group": "T01-form-account|1|1440"
+ },
+ "r2-c2/b12/image-3.png": {
+  "attemptId": "fu4d441cea",
+  "arm": "C",
+  "group": "T01-form-account|1|1440"
+ },
+ "r2-c2/b12/image-4.png": {
+  "attemptId": "fufb191a65",
+  "arm": "B",
+  "group": "T01-form-account|1|1440"
+ },
+ "r2-c3/b01/image-1.png": {
+  "attemptId": "fuc2aae7a9",
+  "arm": "A",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r2-c3/b01/image-2.png": {
+  "attemptId": "fu741bb268",
+  "arm": "B",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r2-c3/b01/image-3.png": {
+  "attemptId": "fu3726bc47",
+  "arm": "D",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r2-c3/b01/image-4.png": {
+  "attemptId": "fu572ed09d",
+  "arm": "C",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r2-c3/b02/image-1.png": {
+  "attemptId": "fu6c84e5ca",
+  "arm": "D",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r2-c3/b02/image-2.png": {
+  "attemptId": "fu5d3fd27a",
+  "arm": "A",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r2-c3/b02/image-3.png": {
+  "attemptId": "fube9b7229",
+  "arm": "C",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r2-c3/b02/image-4.png": {
+  "attemptId": "fu64d1b417",
+  "arm": "B",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r2-c3/b03/image-1.png": {
+  "attemptId": "fu91be11ad",
+  "arm": "D",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r2-c3/b03/image-2.png": {
+  "attemptId": "fua2946c91",
+  "arm": "C",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r2-c3/b03/image-3.png": {
+  "attemptId": "fu43192864",
+  "arm": "B",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r2-c3/b03/image-4.png": {
+  "attemptId": "fu0295579c",
+  "arm": "A",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r2-c3/b04/image-1.png": {
+  "attemptId": "fuce96f395",
+  "arm": "A",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r2-c3/b04/image-2.png": {
+  "attemptId": "fu2afec16e",
+  "arm": "B",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r2-c3/b04/image-3.png": {
+  "attemptId": "fu7bb6a3b5",
+  "arm": "D",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r2-c3/b04/image-4.png": {
+  "attemptId": "fu427eecc3",
+  "arm": "C",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r2-c3/b05/image-1.png": {
+  "attemptId": "fuf4673d3a",
+  "arm": "B",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r2-c3/b05/image-2.png": {
+  "attemptId": "fua952ffe3",
+  "arm": "A",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r2-c3/b05/image-3.png": {
+  "attemptId": "fu134bd5cf",
+  "arm": "D",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r2-c3/b05/image-4.png": {
+  "attemptId": "fu95140c20",
+  "arm": "C",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r2-c3/b06/image-1.png": {
+  "attemptId": "fu5663052b",
+  "arm": "C",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r2-c3/b06/image-2.png": {
+  "attemptId": "fu49a392b0",
+  "arm": "D",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r2-c3/b06/image-3.png": {
+  "attemptId": "fu4e446b78",
+  "arm": "A",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r2-c3/b06/image-4.png": {
+  "attemptId": "fu8e7d3c2f",
+  "arm": "B",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r2-c3/b07/image-1.png": {
+  "attemptId": "fubc33ee91",
+  "arm": "D",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r2-c3/b07/image-2.png": {
+  "attemptId": "fuac3673c4",
+  "arm": "A",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r2-c3/b07/image-3.png": {
+  "attemptId": "fu4d038af0",
+  "arm": "C",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r2-c3/b07/image-4.png": {
+  "attemptId": "fu28fff2d8",
+  "arm": "B",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r2-c3/b08/image-1.png": {
+  "attemptId": "fue8fe9443",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r2-c3/b08/image-2.png": {
+  "attemptId": "fu1a992744",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r2-c3/b08/image-3.png": {
+  "attemptId": "fu2910cddb",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r2-c3/b08/image-4.png": {
+  "attemptId": "fua418c643",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r2-c3/b09/image-1.png": {
+  "attemptId": "fuc6c902a0",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r2-c3/b09/image-2.png": {
+  "attemptId": "fu4a9a9c88",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r2-c3/b09/image-3.png": {
+  "attemptId": "fuf7098a45",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r2-c3/b09/image-4.png": {
+  "attemptId": "fu93fae6de",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r2-c3/b10/image-1.png": {
+  "attemptId": "fu3c051d74",
+  "arm": "C",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r2-c3/b10/image-2.png": {
+  "attemptId": "fub3e45793",
+  "arm": "B",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r2-c3/b10/image-3.png": {
+  "attemptId": "fu36f811ce",
+  "arm": "A",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r2-c3/b10/image-4.png": {
+  "attemptId": "fu59ac8f70",
+  "arm": "D",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r2-c3/b11/image-1.png": {
+  "attemptId": "fue6eef699",
+  "arm": "A",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r2-c3/b11/image-2.png": {
+  "attemptId": "fu662e8ed2",
+  "arm": "D",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r2-c3/b11/image-3.png": {
+  "attemptId": "fu0f34d24d",
+  "arm": "B",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r2-c3/b11/image-4.png": {
+  "attemptId": "fu5efa05e6",
+  "arm": "C",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r2-c3/b12/image-1.png": {
+  "attemptId": "fu56838dff",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r2-c3/b12/image-2.png": {
+  "attemptId": "fu7e2d22e9",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r2-c3/b12/image-3.png": {
+  "attemptId": "fu72e728f2",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r2-c3/b12/image-4.png": {
+  "attemptId": "fu93ad4bf1",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r2-c4/b01/image-1.png": {
+  "attemptId": "fu789d5686",
+  "arm": "D",
+  "group": "T01-form-account|3|1440"
+ },
+ "r2-c4/b01/image-2.png": {
+  "attemptId": "fuc91e49a4",
+  "arm": "C",
+  "group": "T01-form-account|3|1440"
+ },
+ "r2-c4/b01/image-3.png": {
+  "attemptId": "fu50858b84",
+  "arm": "A",
+  "group": "T01-form-account|3|1440"
+ },
+ "r2-c4/b01/image-4.png": {
+  "attemptId": "fu88ebe535",
+  "arm": "B",
+  "group": "T01-form-account|3|1440"
+ },
+ "r2-c4/b02/image-1.png": {
+  "attemptId": "fu5d3fd27a",
+  "arm": "A",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r2-c4/b02/image-2.png": {
+  "attemptId": "fu64d1b417",
+  "arm": "B",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r2-c4/b02/image-3.png": {
+  "attemptId": "fube9b7229",
+  "arm": "C",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r2-c4/b02/image-4.png": {
+  "attemptId": "fu6c84e5ca",
+  "arm": "D",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r2-c4/b03/image-1.png": {
+  "attemptId": "fua4a628f8",
+  "arm": "B",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r2-c4/b03/image-2.png": {
+  "attemptId": "fubb407509",
+  "arm": "C",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r2-c4/b03/image-3.png": {
+  "attemptId": "fufa7f4359",
+  "arm": "A",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r2-c4/b03/image-4.png": {
+  "attemptId": "fue277deb4",
+  "arm": "D",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r2-c4/b04/image-1.png": {
+  "attemptId": "fubc33ee91",
+  "arm": "D",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r2-c4/b04/image-2.png": {
+  "attemptId": "fu4d038af0",
+  "arm": "C",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r2-c4/b04/image-3.png": {
+  "attemptId": "fu28fff2d8",
+  "arm": "B",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r2-c4/b04/image-4.png": {
+  "attemptId": "fuac3673c4",
+  "arm": "A",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r2-c4/b05/image-1.png": {
+  "attemptId": "fu0142591f",
+  "arm": "C",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r2-c4/b05/image-2.png": {
+  "attemptId": "fu5c9080e7",
+  "arm": "A",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r2-c4/b05/image-3.png": {
+  "attemptId": "fud789f5c7",
+  "arm": "D",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r2-c4/b05/image-4.png": {
+  "attemptId": "fu97509495",
+  "arm": "B",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r2-c4/b06/image-1.png": {
+  "attemptId": "fue62a0af5",
+  "arm": "D",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r2-c4/b06/image-2.png": {
+  "attemptId": "fu3fcb5c10",
+  "arm": "C",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r2-c4/b06/image-3.png": {
+  "attemptId": "fu5dc03db5",
+  "arm": "B",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r2-c4/b06/image-4.png": {
+  "attemptId": "fu024ec1b9",
+  "arm": "A",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r2-c4/b07/image-1.png": {
+  "attemptId": "fu73a681d7",
+  "arm": "D",
+  "group": "T03-cards-product|1|375"
+ },
+ "r2-c4/b07/image-2.png": {
+  "attemptId": "fu4be007ab",
+  "arm": "B",
+  "group": "T03-cards-product|1|375"
+ },
+ "r2-c4/b07/image-3.png": {
+  "attemptId": "fu33cb209d",
+  "arm": "C",
+  "group": "T03-cards-product|1|375"
+ },
+ "r2-c4/b07/image-4.png": {
+  "attemptId": "fu837be8d6",
+  "arm": "A",
+  "group": "T03-cards-product|1|375"
+ },
+ "r2-c4/b08/image-1.png": {
+  "attemptId": "fu43192864",
+  "arm": "B",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r2-c4/b08/image-2.png": {
+  "attemptId": "fu0295579c",
+  "arm": "A",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r2-c4/b08/image-3.png": {
+  "attemptId": "fua2946c91",
+  "arm": "C",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r2-c4/b08/image-4.png": {
+  "attemptId": "fu91be11ad",
+  "arm": "D",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r2-c4/b09/image-1.png": {
+  "attemptId": "fu0d6d7ba3",
+  "arm": "D",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r2-c4/b09/image-2.png": {
+  "attemptId": "fu9190c629",
+  "arm": "A",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r2-c4/b09/image-3.png": {
+  "attemptId": "fue545619d",
+  "arm": "B",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r2-c4/b09/image-4.png": {
+  "attemptId": "fua2941da3",
+  "arm": "C",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r2-c4/b10/image-1.png": {
+  "attemptId": "fu837be8d6",
+  "arm": "A",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r2-c4/b10/image-2.png": {
+  "attemptId": "fu33cb209d",
+  "arm": "C",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r2-c4/b10/image-3.png": {
+  "attemptId": "fu73a681d7",
+  "arm": "D",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r2-c4/b10/image-4.png": {
+  "attemptId": "fu4be007ab",
+  "arm": "B",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r2-c4/b11/image-1.png": {
+  "attemptId": "fueff2bcb2",
+  "arm": "C",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r2-c4/b11/image-2.png": {
+  "attemptId": "fu682d9da4",
+  "arm": "B",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r2-c4/b11/image-3.png": {
+  "attemptId": "fuf48e24c2",
+  "arm": "D",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r2-c4/b11/image-4.png": {
+  "attemptId": "fu59ce046f",
+  "arm": "A",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r2-c4/b12/image-1.png": {
+  "attemptId": "fudb3f547d",
+  "arm": "C",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r2-c4/b12/image-2.png": {
+  "attemptId": "fuc0c3186c",
+  "arm": "B",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r2-c4/b12/image-3.png": {
+  "attemptId": "fu8ba96954",
+  "arm": "A",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r2-c4/b12/image-4.png": {
+  "attemptId": "fuee3a5c2a",
+  "arm": "D",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r2-c5/b01/image-1.png": {
+  "attemptId": "fu56321c04",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r2-c5/b01/image-2.png": {
+  "attemptId": "fub231152b",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r2-c5/b01/image-3.png": {
+  "attemptId": "fue7e0c36b",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r2-c5/b01/image-4.png": {
+  "attemptId": "fuf80f03c3",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r2-c5/b02/image-1.png": {
+  "attemptId": "fufa7f4359",
+  "arm": "A",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r2-c5/b02/image-2.png": {
+  "attemptId": "fue277deb4",
+  "arm": "D",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r2-c5/b02/image-3.png": {
+  "attemptId": "fua4a628f8",
+  "arm": "B",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r2-c5/b02/image-4.png": {
+  "attemptId": "fubb407509",
+  "arm": "C",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r2-c5/b03/image-1.png": {
+  "attemptId": "fu2c568155",
+  "arm": "C",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r2-c5/b03/image-2.png": {
+  "attemptId": "fu202022b0",
+  "arm": "D",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r2-c5/b03/image-3.png": {
+  "attemptId": "fub48ce8b1",
+  "arm": "B",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r2-c5/b03/image-4.png": {
+  "attemptId": "fu559fb2c8",
+  "arm": "A",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r2-c5/b04/image-1.png": {
+  "attemptId": "fu39619e57",
+  "arm": "B",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r2-c5/b04/image-2.png": {
+  "attemptId": "fufcbfa9b4",
+  "arm": "C",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r2-c5/b04/image-3.png": {
+  "attemptId": "fu51cde206",
+  "arm": "A",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r2-c5/b04/image-4.png": {
+  "attemptId": "fuaf292444",
+  "arm": "D",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r2-c5/b05/image-1.png": {
+  "attemptId": "fu559fb2c8",
+  "arm": "A",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r2-c5/b05/image-2.png": {
+  "attemptId": "fu202022b0",
+  "arm": "D",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r2-c5/b05/image-3.png": {
+  "attemptId": "fu2c568155",
+  "arm": "C",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r2-c5/b05/image-4.png": {
+  "attemptId": "fub48ce8b1",
+  "arm": "B",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r2-c5/b06/image-1.png": {
+  "attemptId": "fu9e1984c7",
+  "arm": "D",
+  "group": "T01-form-account|1|375"
+ },
+ "r2-c5/b06/image-2.png": {
+  "attemptId": "fub849c025",
+  "arm": "A",
+  "group": "T01-form-account|1|375"
+ },
+ "r2-c5/b06/image-3.png": {
+  "attemptId": "fu4d441cea",
+  "arm": "C",
+  "group": "T01-form-account|1|375"
+ },
+ "r2-c5/b06/image-4.png": {
+  "attemptId": "fufb191a65",
+  "arm": "B",
+  "group": "T01-form-account|1|375"
+ },
+ "r2-c5/b07/image-1.png": {
+  "attemptId": "fu10b3aaff",
+  "arm": "B",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r2-c5/b07/image-2.png": {
+  "attemptId": "fu2960bb72",
+  "arm": "D",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r2-c5/b07/image-3.png": {
+  "attemptId": "fu652d9f84",
+  "arm": "C",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r2-c5/b07/image-4.png": {
+  "attemptId": "fu1d16efa4",
+  "arm": "A",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r2-c5/b08/image-1.png": {
+  "attemptId": "fu95f935bf",
+  "arm": "A",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r2-c5/b08/image-2.png": {
+  "attemptId": "fub0068fd1",
+  "arm": "D",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r2-c5/b08/image-3.png": {
+  "attemptId": "fue7814a06",
+  "arm": "B",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r2-c5/b08/image-4.png": {
+  "attemptId": "fu858c2ae3",
+  "arm": "C",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r2-c5/b09/image-1.png": {
+  "attemptId": "fuc6c902a0",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r2-c5/b09/image-2.png": {
+  "attemptId": "fu93fae6de",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r2-c5/b09/image-3.png": {
+  "attemptId": "fu4a9a9c88",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r2-c5/b09/image-4.png": {
+  "attemptId": "fuf7098a45",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r2-c5/b10/image-1.png": {
+  "attemptId": "fuc2aae7a9",
+  "arm": "A",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r2-c5/b10/image-2.png": {
+  "attemptId": "fu741bb268",
+  "arm": "B",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r2-c5/b10/image-3.png": {
+  "attemptId": "fu572ed09d",
+  "arm": "C",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r2-c5/b10/image-4.png": {
+  "attemptId": "fu3726bc47",
+  "arm": "D",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r2-c5/b11/image-1.png": {
+  "attemptId": "fuffd39e60",
+  "arm": "B",
+  "group": "T01-form-account|2|1440"
+ },
+ "r2-c5/b11/image-2.png": {
+  "attemptId": "fu7cff66d0",
+  "arm": "C",
+  "group": "T01-form-account|2|1440"
+ },
+ "r2-c5/b11/image-3.png": {
+  "attemptId": "fu63f4e1a1",
+  "arm": "D",
+  "group": "T01-form-account|2|1440"
+ },
+ "r2-c5/b11/image-4.png": {
+  "attemptId": "fu95eed3f5",
+  "arm": "A",
+  "group": "T01-form-account|2|1440"
+ },
+ "r2-c5/b12/image-1.png": {
+  "attemptId": "fu9190c629",
+  "arm": "A",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r2-c5/b12/image-2.png": {
+  "attemptId": "fua2941da3",
+  "arm": "C",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r2-c5/b12/image-3.png": {
+  "attemptId": "fu0d6d7ba3",
+  "arm": "D",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r2-c5/b12/image-4.png": {
+  "attemptId": "fue545619d",
+  "arm": "B",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r2-c6/b01/image-1.png": {
+  "attemptId": "fu662e8ed2",
+  "arm": "D",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r2-c6/b01/image-2.png": {
+  "attemptId": "fu0f34d24d",
+  "arm": "B",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r2-c6/b01/image-3.png": {
+  "attemptId": "fu5efa05e6",
+  "arm": "C",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r2-c6/b01/image-4.png": {
+  "attemptId": "fue6eef699",
+  "arm": "A",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r2-c6/b02/image-1.png": {
+  "attemptId": "fuce96f395",
+  "arm": "A",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r2-c6/b02/image-2.png": {
+  "attemptId": "fu2afec16e",
+  "arm": "B",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r2-c6/b02/image-3.png": {
+  "attemptId": "fu427eecc3",
+  "arm": "C",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r2-c6/b02/image-4.png": {
+  "attemptId": "fu7bb6a3b5",
+  "arm": "D",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r2-c6/b03/image-1.png": {
+  "attemptId": "fu3fcb5c10",
+  "arm": "C",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r2-c6/b03/image-2.png": {
+  "attemptId": "fu024ec1b9",
+  "arm": "A",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r2-c6/b03/image-3.png": {
+  "attemptId": "fue62a0af5",
+  "arm": "D",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r2-c6/b03/image-4.png": {
+  "attemptId": "fu5dc03db5",
+  "arm": "B",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r2-c6/b04/image-1.png": {
+  "attemptId": "fueff2bcb2",
+  "arm": "C",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r2-c6/b04/image-2.png": {
+  "attemptId": "fu59ce046f",
+  "arm": "A",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r2-c6/b04/image-3.png": {
+  "attemptId": "fu682d9da4",
+  "arm": "B",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r2-c6/b04/image-4.png": {
+  "attemptId": "fuf48e24c2",
+  "arm": "D",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r2-c6/b05/image-1.png": {
+  "attemptId": "fu49a392b0",
+  "arm": "D",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r2-c6/b05/image-2.png": {
+  "attemptId": "fu4e446b78",
+  "arm": "A",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r2-c6/b05/image-3.png": {
+  "attemptId": "fu8e7d3c2f",
+  "arm": "B",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r2-c6/b05/image-4.png": {
+  "attemptId": "fu5663052b",
+  "arm": "C",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r2-c6/b06/image-1.png": {
+  "attemptId": "fu92354dec",
+  "arm": "A",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r2-c6/b06/image-2.png": {
+  "attemptId": "fu4c0e5a46",
+  "arm": "B",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r2-c6/b06/image-3.png": {
+  "attemptId": "fua9b4ae86",
+  "arm": "D",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r2-c6/b06/image-4.png": {
+  "attemptId": "fub2613ab8",
+  "arm": "C",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r2-c6/b07/image-1.png": {
+  "attemptId": "fu22a2bc06",
+  "arm": "A",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r2-c6/b07/image-2.png": {
+  "attemptId": "fucb4cb903",
+  "arm": "B",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r2-c6/b07/image-3.png": {
+  "attemptId": "fu99b6fd55",
+  "arm": "D",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r2-c6/b07/image-4.png": {
+  "attemptId": "fu235adae1",
+  "arm": "C",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r2-c6/b08/image-1.png": {
+  "attemptId": "fu7cff66d0",
+  "arm": "C",
+  "group": "T01-form-account|2|375"
+ },
+ "r2-c6/b08/image-2.png": {
+  "attemptId": "fuffd39e60",
+  "arm": "B",
+  "group": "T01-form-account|2|375"
+ },
+ "r2-c6/b08/image-3.png": {
+  "attemptId": "fu95eed3f5",
+  "arm": "A",
+  "group": "T01-form-account|2|375"
+ },
+ "r2-c6/b08/image-4.png": {
+  "attemptId": "fu63f4e1a1",
+  "arm": "D",
+  "group": "T01-form-account|2|375"
+ },
+ "r2-c6/b09/image-1.png": {
+  "attemptId": "fu22a2bc06",
+  "arm": "A",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r2-c6/b09/image-2.png": {
+  "attemptId": "fucb4cb903",
+  "arm": "B",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r2-c6/b09/image-3.png": {
+  "attemptId": "fu235adae1",
+  "arm": "C",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r2-c6/b09/image-4.png": {
+  "attemptId": "fu99b6fd55",
+  "arm": "D",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r2-c6/b10/image-1.png": {
+  "attemptId": "fu7e2d22e9",
+  "arm": "D",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r2-c6/b10/image-2.png": {
+  "attemptId": "fu93ad4bf1",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r2-c6/b10/image-3.png": {
+  "attemptId": "fu72e728f2",
+  "arm": "B",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r2-c6/b10/image-4.png": {
+  "attemptId": "fu56838dff",
+  "arm": "A",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r2-c6/b11/image-1.png": {
+  "attemptId": "fu2910cddb",
+  "arm": "B",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r2-c6/b11/image-2.png": {
+  "attemptId": "fu1a992744",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r2-c6/b11/image-3.png": {
+  "attemptId": "fua418c643",
+  "arm": "A",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r2-c6/b11/image-4.png": {
+  "attemptId": "fue8fe9443",
+  "arm": "D",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r2-c6/b12/image-1.png": {
+  "attemptId": "fu39619e57",
+  "arm": "B",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r2-c6/b12/image-2.png": {
+  "attemptId": "fuaf292444",
+  "arm": "D",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r2-c6/b12/image-3.png": {
+  "attemptId": "fufcbfa9b4",
+  "arm": "C",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r2-c6/b12/image-4.png": {
+  "attemptId": "fu51cde206",
+  "arm": "A",
+  "group": "T04-cards-profile|2|1440"
+ }
+}

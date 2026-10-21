@@ -1,0 +1,51 @@
+{
+ "explicit": [
+  {
+   "source": "rl-attr",
+   "selector": "div#23",
+   "context": "",
+   "property": "data-rl",
+   "value": "group",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "header#9",
+   "context": "",
+   "property": "data-rl",
+   "value": "container",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "header#9",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "loose",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#23",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#23",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "related",
+   "category": "margin",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

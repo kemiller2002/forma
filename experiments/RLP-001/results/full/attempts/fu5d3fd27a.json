@@ -1,0 +1,336 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu5d3fd27a",
+ "taskId": "T06-dashboard-finance",
+ "category": "dashboards",
+ "split": "heldout",
+ "arm": "A",
+ "repetition": 1,
+ "executionOrder": 44,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:13:54.753Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 252240,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 18224,
+  "cacheReadTokens": 234006,
+  "outputTokens": 125,
+  "totalTokens": 252365,
+  "toolCalls": 8,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 9719,
+  "toolTokens": null,
+  "durationMs": 37321,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:04:21.312Z",
+    "durationMs": 2131,
+    "failures": 4,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:04:28.504Z",
+    "durationMs": 3857,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [
+   "onsubmit=\"return false\""
+  ],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 2,
+  "standardInstances": 8,
+  "standardByInvariant": {
+   "offscreen": 4,
+   "containment": 4
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 2,
+  "heldoutDistinct": 2,
+  "heldoutByCondition": {
+   "heldout-text": 2,
+   "font-scale": 4
+  },
+  "heldoutByInvariant": {
+   "offscreen": 3,
+   "containment": 3
+  },
+  "responsiveFailureViewports": [
+   320,
+   375
+  ],
+  "dynamicDistinct": 2,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "font-scale": 1
+  },
+  "heldoutByInvariant": {
+   "containment": 1
+  },
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 32,
+  "derived": 0,
+  "uncertain": 0,
+  "corrective": 2,
+  "total": 32,
+  "rawStatements": {
+   "explicit": 62,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 31,
+  "byCategory": {
+   "explicit": {
+    "padding": 3,
+    "margin": 8,
+    "alignment": 5,
+    "positioning": 0,
+    "grouping": 3,
+    "responsive": 5,
+    "dimension": 8,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 1,
+    "margin": 0,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 2
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "transactions-table",
+    "expected": "within 0..320",
+    "observed": "37,1086.59 434.41×287",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "transactions-table",
+    "expected": "inside transactions",
+    "observed": "37,1086.59 434.41×287 vs 16,1026.09 288×368.5",
+    "relationship": "transactions-table ⊂ transactions",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:chart-caption",
+    "invariant": "offscreen",
+    "element": "transactions-table",
+    "expected": "within 0..320",
+    "observed": "37,1158.59 434.41×287",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:chart-caption",
+    "invariant": "containment",
+    "element": "transactions-table",
+    "expected": "inside transactions",
+    "observed": "37,1158.59 434.41×287 vs 16,1098.09 288×368.5",
+    "relationship": "transactions-table ⊂ transactions",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "transactions-table",
+    "expected": "within 0..375",
+    "observed": "37,1114.09 434.41×287",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "transactions-table",
+    "expected": "inside transactions",
+    "observed": "37,1114.09 434.41×287 vs 16,1053.59 343×368.5",
+    "relationship": "transactions-table ⊂ transactions",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:chart-caption",
+    "invariant": "offscreen",
+    "element": "transactions-table",
+    "expected": "within 0..375",
+    "observed": "37,1162.09 434.41×287",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:chart-caption",
+    "invariant": "containment",
+    "element": "transactions-table",
+    "expected": "inside transactions",
+    "observed": "37,1162.09 434.41×287 vs 16,1101.59 343×368.5",
+    "relationship": "transactions-table ⊂ transactions",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "transactions-table",
+    "expected": "within 0..320",
+    "observed": "37,1134.59 434.41×287",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "transactions-table",
+    "expected": "inside transactions",
+    "observed": "37,1134.59 434.41×287 vs 16,1074.09 288×368.5",
+    "relationship": "transactions-table ⊂ transactions",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "transactions-table",
+    "expected": "within 0..375",
+    "observed": "73,2433.88 868.78×567",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "transactions-table",
+    "expected": "inside transactions",
+    "observed": "73,2433.88 868.78×567 vs 32,2203.88 311×838",
+    "relationship": "transactions-table ⊂ transactions",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "transactions-table",
+    "expected": "within 0..768",
+    "observed": "73,1833.19 868.78×567",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "transactions-table",
+    "expected": "inside transactions",
+    "observed": "73,1833.19 868.78×567 vs 32,1713.19 704×728",
+    "relationship": "transactions-table ⊂ transactions",
+    "fontScale": 2
+   }
+  ],
+  "final": [
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "transactions-table",
+    "expected": "inside transactions",
+    "observed": "73,2433.88 298.23×3003 vs 32,2203.88 311×3274",
+    "relationship": "transactions-table ⊂ transactions",
+    "fontScale": 2
+   }
+  ]
+ }
+}

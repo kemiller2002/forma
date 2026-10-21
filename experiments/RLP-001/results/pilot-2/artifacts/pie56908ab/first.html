@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout summary with dynamic content</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;padding:1rem}
+  .summary{max-width:36rem;margin:0 auto;padding:1.25rem;display:grid;gap:1.25rem}
+  [hidden]{display:none!important}
+  .items{list-style:none;margin:0;padding:0;display:grid;gap:0.75rem}
+  .items li{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name price" "qty remove";gap:0.5rem 1rem;align-items:center;padding-bottom:0.75rem;border-bottom:1px solid #ddd}
+  .items li:last-child{border-bottom:0;padding-bottom:0}
+  .n{grid-area:name;overflow-wrap:anywhere}
+  .q{grid-area:qty}
+  .p{grid-area:price;text-align:end}
+  .r{grid-area:remove;justify-self:end;min-height:2rem;min-width:2rem}
+  @media (min-width:34rem){
+    .items li{grid-template-columns:minmax(0,1fr) auto auto auto;grid-template-areas:"name qty price remove"}
+  }
+  .promo{display:grid;gap:0.5rem}
+  .promo-row{display:flex;gap:0.5rem;align-items:flex-start}
+  .promo-row input{flex:1 1 auto;min-width:0;min-height:2.5rem}
+  .promo-row button{flex:none;min-height:2.5rem}
+  .promo .error{margin:0}
+  .shipping{display:grid;gap:0.5rem}
+  .shipping h3,.shipping p{margin:0}
+  .shipping-options{display:grid;gap:0.25rem}
+  .opt{display:flex;align-items:center;gap:0.5rem;min-height:2rem}
+  .total{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;border-top:1px solid #ddd;padding-top:1rem}
+  .place{min-height:2.75rem;justify-self:stretch}
+
+</style>
+</head>
+<body>
+  <section class="surface summary" data-rlp="summary">
+  <h2 data-rlp="title">Order summary</h2>
+  <ul class="items" data-rlp="items">
+    <li data-rlp="item-1"><span class="n" data-rlp="item-1-name">Linen notebook</span><span class="q" data-rlp="item-1-qty">Qty 2</span><span class="p" data-rlp="item-1-price">$24.00</span><button type="button" class="secondary r" data-rlp="item-1-remove" aria-label="Remove Linen notebook">Remove</button></li>
+    <li data-rlp="item-2"><span class="n" data-rlp="item-2-name">Fountain pen</span><span class="q" data-rlp="item-2-qty">Qty 1</span><span class="p" data-rlp="item-2-price">$58.00</span><button type="button" class="secondary r" data-rlp="item-2-remove" aria-label="Remove Fountain pen">Remove</button></li>
+    <li data-rlp="item-3"><span class="n" data-rlp="item-3-name">Ink refills, pack of 12</span><span class="q" data-rlp="item-3-qty">Qty 3</span><span class="p" data-rlp="item-3-price">$18.00</span><button type="button" class="secondary r" data-rlp="item-3-remove" aria-label="Remove Ink refills">Remove</button></li>
+  </ul>
+  <div class="promo">
+    <label for="promo" data-rlp="promo-label">Promo code</label>
+    <div class="promo-row">
+      <input id="promo" type="text" data-rlp="promo-input" aria-describedby="promo-err">
+      <button type="button" class="secondary" data-rlp="promo-apply">Apply</button>
+    </div>
+    <p class="error" id="promo-err" data-rlp="promo-error" hidden>That code has expired.</p>
+  </div>
+  <section class="shipping" data-rlp="shipping" aria-labelledby="ship-h">
+    <h3 id="ship-h" data-rlp="shipping-title">Shipping</h3>
+    <p role="status" data-rlp="shipping-loading">Calculating shipping options…</p>
+    <div class="shipping-options" data-rlp="shipping-options" hidden>
+      <div class="opt"><input type="radio" id="sg" name="ship" checked data-rlp="ship-ground-input"><label for="sg" data-rlp="ship-ground-label">Ground — $6.00</label></div>
+      <div class="opt"><input type="radio" id="sa" name="ship" data-rlp="ship-air-input"><label for="sa" data-rlp="ship-air-label">Air — $19.00</label></div>
+    </div>
+  </section>
+  <div class="total"><span data-rlp="total-label">Total</span><span data-rlp="total-value">$160.00</span></div>
+  <button type="submit" class="place" data-rlp="place">Place order</button>
+</section>
+</body>
+</html>

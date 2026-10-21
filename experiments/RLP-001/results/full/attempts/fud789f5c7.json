@@ -1,0 +1,624 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fud789f5c7",
+ "taskId": "T11-adversarial-settings",
+ "category": "adversarial",
+ "split": "dev",
+ "arm": "D",
+ "repetition": 2,
+ "executionOrder": 53,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:15:21.041Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 252138,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 17801,
+  "cacheReadTokens": 234327,
+  "outputTokens": 63,
+  "totalTokens": 252201,
+  "toolCalls": 8,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 11770,
+  "toolTokens": null,
+  "durationMs": 30390,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:04:51.375Z",
+    "durationMs": 3555,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:05:00.720Z",
+    "durationMs": 2542,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 2,
+  "standardInstances": 7,
+  "standardByInvariant": {
+   "reading-order": 6,
+   "unexpected-shift": 1
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 2,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 1
+  },
+  "responsiveFailureViewports": [
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 2,
+  "unexpectedShift": 1,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n22",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 21,
+       "evaluations": 9,
+       "iterations": 61,
+       "maxIterations": 23,
+       "unconverged": 0,
+       "measureCalls": 29,
+       "aborted": false,
+       "solveMs": 9.100000000093132,
+       "memoEntries": 47
+      },
+      "totalMs": 23.699999999720603,
+      "energy": 3.5601469108082505e-31
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n22",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 21,
+       "evaluations": 60,
+       "iterations": 734,
+       "maxIterations": 23,
+       "unconverged": 0,
+       "measureCalls": 29,
+       "aborted": false,
+       "solveMs": 21.5,
+       "memoEntries": 47
+      },
+      "totalMs": 27,
+      "energy": 0.5908203125000007
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n22",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 21,
+       "evaluations": 9,
+       "iterations": 229,
+       "maxIterations": 123,
+       "unconverged": 0,
+       "measureCalls": 29,
+       "aborted": false,
+       "solveMs": 17.5,
+       "memoEntries": 47
+      },
+      "totalMs": 28.799999999813735,
+      "energy": 2.5485228391620892e-9
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n22",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 21,
+       "evaluations": 9,
+       "iterations": 274,
+       "maxIterations": 132,
+       "unconverged": 0,
+       "measureCalls": 29,
+       "aborted": false,
+       "solveMs": 10.899999999906868,
+       "memoEntries": 47
+      },
+      "totalMs": 16.100000000093132,
+      "energy": 1.3556364288339707e-9
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n22",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 21,
+       "evaluations": 9,
+       "iterations": 399,
+       "maxIterations": 134,
+       "unconverged": 0,
+       "measureCalls": 29,
+       "aborted": false,
+       "solveMs": 14.399999999906868,
+       "memoEntries": 47
+      },
+      "totalMs": 19.100000000093132,
+      "energy": 4.606473371181163e-8
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 1,
+  "standardByInvariant": {
+   "unexpected-shift": 1
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 1,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n22",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 24,
+       "iterations": 303,
+       "maxIterations": 53,
+       "unconverged": 0,
+       "measureCalls": 29,
+       "aborted": false,
+       "solveMs": 29.09999999962747,
+       "memoEntries": 47
+      },
+      "totalMs": 33.8000000002794,
+      "energy": 5.073385687534774e-9
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n22",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 76,
+       "iterations": 1001,
+       "maxIterations": 53,
+       "unconverged": 0,
+       "measureCalls": 33,
+       "aborted": false,
+       "solveMs": 45.10000000009313,
+       "memoEntries": 51
+      },
+      "totalMs": 54.5,
+      "energy": 0.5908203175733864
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n22",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 25,
+       "iterations": 619,
+       "maxIterations": 123,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 19.5,
+       "memoEntries": 44
+      },
+      "totalMs": 23.899999999906868,
+      "energy": 7.616362399162766e-9
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n22",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 25,
+       "iterations": 664,
+       "maxIterations": 132,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 34.89999999990687,
+       "memoEntries": 44
+      },
+      "totalMs": 43,
+      "energy": 6.4262831518495684e-9
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n22",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 25,
+       "iterations": 789,
+       "maxIterations": 134,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 34.5,
+       "memoEntries": 44
+      },
+      "totalMs": 37.60000000009313,
+      "energy": 5.113263701593438e-8
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 12,
+  "derived": 40,
+  "uncertain": 0,
+  "corrective": 2,
+  "total": 12,
+  "rawStatements": {
+   "explicit": 28,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 11,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 2,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 2,
+    "dimension": 6,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 4,
+    "margin": 9,
+    "alignment": 9,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 9,
+    "dimension": 9,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 1,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 1,
+    "dimension": 0,
+    "correction": 2
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 364.95,70.59 382.05×27.5, side-3 at 21,150.59 277.94×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 364.95,70.59 382.05×27.5, side-3 at 21,150.59 277.94×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 364.97,70.59 638.03×27.5, side-3 at 21,150.59 277.97×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 364.97,70.59 638.03×27.5, side-3 at 21,150.59 277.97×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 364.95,70.59 1054.05×27.5, side-3 at 21,150.59 277.95×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 364.95,70.59 1054.05×27.5, side-3 at 21,150.59 277.95×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "unexpected-shift",
+    "element": "auto-label",
+    "expected": "unchanged (above auto-hint)",
+    "observed": "moved 32.02px",
+    "relationship": "auto-label ↑ auto-hint"
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 364.95,70.59 1054.05×27.5, side-3 at 21,150.59 277.95×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "unexpected-shift",
+    "element": "auto-label",
+    "expected": "unchanged (above auto-hint)",
+    "observed": "moved 32.02px",
+    "relationship": "auto-label ↑ auto-hint"
+   }
+  ]
+ }
+}

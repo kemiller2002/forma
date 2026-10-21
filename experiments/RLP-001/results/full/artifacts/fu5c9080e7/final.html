@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deeply nested settings in a narrow column</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  *, *::before, *::after { box-sizing: border-box; }
+  main { max-width: 90rem; margin: 0 auto; padding: 1rem; }
+  h1 { margin-bottom: 1rem; }
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+  @media (min-width: 48rem) { .layout { grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); } }
+  nav { padding: 0.5rem; }
+  nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; }
+  nav a { display: block; min-height: 1.5rem; padding: 0.25rem 0.5rem; overflow-wrap: anywhere; }
+  .content { padding: 1.25rem; min-width: 0; }
+  .content h2 { margin-bottom: 1rem; }
+  fieldset.group { min-width: 0; margin: 0 0 1.5rem; padding: 1.25rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  legend { float: left; width: 100%; padding: 0; margin: 0; }
+  legend + * { clear: both; }
+  .row { padding: 1rem; display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); column-gap: 0.75rem; row-gap: 0.25rem; align-items: start; }
+  .row input { width: 1.5rem; height: 1.5rem; margin: 0; }
+  .row label { overflow-wrap: anywhere; word-break: break-word; min-width: 0; }
+  .row .hint { grid-column: 2; margin: 0; overflow-wrap: anywhere; }
+  .field { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.25rem; min-width: 0; }
+  .field input { width: 30rem; max-width: 100%; min-height: 2.5rem; }
+  .field input[type=number] { width: 10rem; }
+  .field label { overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+<main data-rlp="page">
+  <h1 data-rlp="page-title">Device settings</h1>
+  <div class="layout" data-rlp="layout">
+    <nav class="surface" data-rlp="sidebar" aria-label="Settings sections">
+      <ul>
+        <li><a href="#" data-rlp="side-1">General</a></li>
+        <li><a href="#" aria-current="page" data-rlp="side-2">Sync</a></li>
+        <li><a href="#" data-rlp="side-3">Security</a></li>
+      </ul>
+    </nav>
+    <section class="surface content" data-rlp="content" aria-labelledby="sync-title">
+      <h2 id="sync-title" data-rlp="sync-title">Sync</h2>
+      <fieldset class="surface group" data-rlp="group">
+        <legend data-rlp="group-legend">Synchronization</legend>
+        <div class="surface row" data-rlp="row">
+          <input type="checkbox" id="auto-input" data-rlp="auto-input" aria-describedby="auto-hint">
+          <label for="auto-input" data-rlp="auto-label">AutomaticallySynchronizeAcrossAllRegisteredDevicesAndWorkspaces</label>
+          <p class="hint" id="auto-hint" data-rlp="auto-hint">Changes appear on every signed-in device within a minute.</p>
+        </div>
+        <div class="field">
+          <label for="endpoint-input" data-rlp="endpoint-label">Sync endpoint URL (prefers at least 30rem of width)</label>
+          <input type="url" id="endpoint-input" data-rlp="endpoint-input">
+        </div>
+        <div class="field">
+          <label for="interval-input" data-rlp="interval-label">Interval in minutes</label>
+          <input type="number" min="1" id="interval-input" data-rlp="interval-input">
+        </div>
+      </fieldset>
+      <button type="button" data-rlp="save">Save settings</button>
+    </section>
+  </div>
+</main>
+</body>
+</html>

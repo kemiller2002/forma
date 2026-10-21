@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relational form smoke test</title>
+<link rel="stylesheet" href="../../../arms/base.css">
+<script type="module" src="../../rlp-rules.mjs"></script>
+</head><body>
+<main data-rl-root data-rl="group" data-rl-clearance="none">
+  <form data-rl="container" data-rl-clearance="surface" data-rl-bond="loose" novalidate>
+    <h1 data-rlp="title">Contact details</h1>
+    <div data-rl="group" data-rl-flow="wrap" data-rl-bond="related">
+      <div data-rl="group" data-rl-bond="tight" data-rl-min="14rem">
+        <label for="first" data-rlp="first-label">First name</label>
+        <input id="first" data-rl-align-edge="control" data-rlp="first-input">
+      </div>
+      <div data-rl="group" data-rl-bond="tight" data-rl-min="14rem">
+        <label for="last" data-rlp="last-label">Last name, as written on official documents</label>
+        <input id="last" data-rl-align-edge="control" data-rlp="last-input">
+        <p class="error" hidden data-rlp="last-error">Enter your last name.</p>
+      </div>
+    </div>
+    <div data-rl="group" data-rl-flow="row">
+      <button type="button" class="secondary" data-rl-anchor="end">Cancel</button>
+      <button type="submit">Save</button>
+    </div>
+  </form>
+</main></body></html>

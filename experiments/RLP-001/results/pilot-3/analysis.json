@@ -1,0 +1,2477 @@
+{
+ "experiment": "RLP-001",
+ "phase": "pilot-3",
+ "generatedAt": "2026-10-21T19:14:37.638Z",
+ "attempts": 12,
+ "tasks": [
+  "T01-form-account",
+  "T03-cards-product",
+  "T09-dynamic-checkout"
+ ],
+ "note": "Confirmatory: A − D first-draft defects. Everything else exploratory.",
+ "perArm": {
+  "A": {
+   "attempts": 3,
+   "accepted": 3,
+   "acceptanceRate": 1,
+   "tokensPerAccepted": 216283,
+   "decisionsPerAccepted": 35,
+   "metrics": {
+    "firstDraftDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 3.3333333333333335,
+     "median": 0,
+     "sd": 5.773502691896257,
+     "q1": 0,
+     "q3": 5,
+     "min": 0,
+     "max": 10
+    },
+    "firstDraftGeometryDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 3.3333333333333335,
+     "median": 0,
+     "sd": 5.773502691896257,
+     "q1": 0,
+     "q3": 5,
+     "min": 0,
+     "max": 10
+    },
+    "firstDraftAccessibilityDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalHeldoutDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 2.3333333333333335,
+     "median": 0,
+     "sd": 4.041451884327381,
+     "q1": 0,
+     "q3": 3.5,
+     "min": 0,
+     "max": 7
+    },
+    "finalDynamicDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "unexpectedShift": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "accepted": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 1,
+     "median": 1,
+     "sd": 0,
+     "q1": 1,
+     "q3": 1,
+     "min": 1,
+     "max": 1
+    },
+    "totalTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 216283,
+     "median": 198923,
+     "sd": 30139.44398956291,
+     "q1": 198882,
+     "q3": 225004,
+     "min": 198841,
+     "max": 251085
+    },
+    "outputTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 82.33333333333333,
+     "median": 64,
+     "sd": 36.17089069035118,
+     "q1": 61.5,
+     "q3": 94,
+     "min": 59,
+     "max": 124
+    },
+    "inputTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 216200.66666666666,
+     "median": 198799,
+     "sd": 30155.294432874194,
+     "q1": 198790.5,
+     "q3": 224910,
+     "min": 198782,
+     "max": 251021
+    },
+    "toolCalls": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 6.333333333333333,
+     "median": 7,
+     "sd": 1.1547005383792517,
+     "q1": 6,
+     "q3": 7,
+     "min": 5,
+     "max": 7
+    },
+    "durationMs": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 35735.333333333336,
+     "median": 35639,
+     "sd": 4268.31539759345,
+     "q1": 33577.5,
+     "q3": 37845,
+     "min": 31516,
+     "max": 40051
+    },
+    "validationRuns": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 1.3333333333333333,
+     "median": 1,
+     "sd": 0.5773502691896257,
+     "q1": 1,
+     "q3": 1.5,
+     "min": 1,
+     "max": 2
+    },
+    "repairIterations": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.3333333333333333,
+     "median": 0,
+     "sd": 0.5773502691896258,
+     "q1": 0,
+     "q3": 0.5,
+     "min": 0,
+     "max": 1
+    },
+    "decisionsTotal": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 35,
+     "median": 37,
+     "sd": 5.291502622129181,
+     "q1": 33,
+     "q3": 38,
+     "min": 29,
+     "max": 39
+    },
+    "decisionsExplicit": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 34.666666666666664,
+     "median": 36,
+     "sd": 5.131601439446884,
+     "q1": 32.5,
+     "q3": 37.5,
+     "min": 29,
+     "max": 39
+    },
+    "decisionsDerived": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "decisionsCorrective": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "decisionsUncertain": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.3333333333333333,
+     "median": 0,
+     "sd": 0.5773502691896258,
+     "q1": 0,
+     "q3": 0.5,
+     "min": 0,
+     "max": 1
+    },
+    "rawStatements": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 49.333333333333336,
+     "median": 50,
+     "sd": 11.015141094572204,
+     "q1": 44,
+     "q3": 55,
+     "min": 38,
+     "max": 60
+    }
+   },
+   "decisionCategories": {
+    "explicit": {
+     "padding": 3.3333333333333335,
+     "margin": 9.333333333333334,
+     "alignment": 3.3333333333333335,
+     "positioning": 0,
+     "grouping": 7.666666666666667,
+     "responsive": 2.6666666666666665,
+     "dimension": 8.333333333333334,
+     "correction": 0
+    },
+    "derived": {
+     "padding": 0,
+     "margin": 0,
+     "alignment": 0,
+     "positioning": 0,
+     "grouping": 0,
+     "responsive": 0,
+     "dimension": 0,
+     "correction": 0
+    },
+    "corrective": {
+     "padding": 0,
+     "margin": 0,
+     "alignment": 0,
+     "positioning": 0,
+     "grouping": 0,
+     "responsive": 0,
+     "dimension": 0,
+     "correction": 0
+    }
+   },
+   "engine": null
+  },
+  "B": {
+   "attempts": 3,
+   "accepted": 2,
+   "acceptanceRate": 0.6666666666666666,
+   "tokensPerAccepted": 352434,
+   "decisionsPerAccepted": 29,
+   "metrics": {
+    "firstDraftDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 1,
+     "sd": 0.5773502691896258,
+     "q1": 0.5,
+     "q3": 1,
+     "min": 0,
+     "max": 1
+    },
+    "firstDraftGeometryDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 1,
+     "sd": 0.5773502691896258,
+     "q1": 0.5,
+     "q3": 1,
+     "min": 0,
+     "max": 1
+    },
+    "firstDraftAccessibilityDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.3333333333333333,
+     "median": 0,
+     "sd": 0.5773502691896258,
+     "q1": 0,
+     "q3": 0.5,
+     "min": 0,
+     "max": 1
+    },
+    "finalHeldoutDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.3333333333333333,
+     "median": 0,
+     "sd": 0.5773502691896258,
+     "q1": 0,
+     "q3": 0.5,
+     "min": 0,
+     "max": 1
+    },
+    "finalDynamicDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.3333333333333333,
+     "median": 0,
+     "sd": 0.5773502691896258,
+     "q1": 0,
+     "q3": 0.5,
+     "min": 0,
+     "max": 1
+    },
+    "unexpectedShift": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "accepted": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 1,
+     "sd": 0.5773502691896258,
+     "q1": 0.5,
+     "q3": 1,
+     "min": 0,
+     "max": 1
+    },
+    "totalTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 234956,
+     "median": 199675,
+     "sd": 62288.248016780824,
+     "q1": 198996,
+     "q3": 253275.5,
+     "min": 198317,
+     "max": 306876
+    },
+    "outputTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 64,
+     "median": 60,
+     "sd": 7.810249675906654,
+     "q1": 59.5,
+     "q3": 66.5,
+     "min": 59,
+     "max": 73
+    },
+    "inputTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 234892,
+     "median": 199615,
+     "sd": 62280.44880217226,
+     "q1": 198936.5,
+     "q3": 253209,
+     "min": 198258,
+     "max": 306803
+    },
+    "toolCalls": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 6.333333333333333,
+     "median": 6,
+     "sd": 0.5773502691896258,
+     "q1": 6,
+     "q3": 6.5,
+     "min": 6,
+     "max": 7
+    },
+    "durationMs": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 29289.666666666668,
+     "median": 33165,
+     "sd": 10720.85725739007,
+     "q1": 25167.5,
+     "q3": 35349.5,
+     "min": 17170,
+     "max": 37534
+    },
+    "validationRuns": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 1.3333333333333333,
+     "median": 1,
+     "sd": 0.5773502691896257,
+     "q1": 1,
+     "q3": 1.5,
+     "min": 1,
+     "max": 2
+    },
+    "repairIterations": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.3333333333333333,
+     "median": 0,
+     "sd": 0.5773502691896258,
+     "q1": 0,
+     "q3": 0.5,
+     "min": 0,
+     "max": 1
+    },
+    "decisionsTotal": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 19.333333333333332,
+     "median": 20,
+     "sd": 4.041451884327381,
+     "q1": 17.5,
+     "q3": 21.5,
+     "min": 15,
+     "max": 23
+    },
+    "decisionsExplicit": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 19,
+     "median": 20,
+     "sd": 3.605551275463989,
+     "q1": 17.5,
+     "q3": 21,
+     "min": 15,
+     "max": 22
+    },
+    "decisionsDerived": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 37.666666666666664,
+     "median": 38,
+     "sd": 22.50185177565023,
+     "q1": 26.5,
+     "q3": 49,
+     "min": 15,
+     "max": 60
+    },
+    "decisionsCorrective": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 5.666666666666667,
+     "median": 0,
+     "sd": 9.814954576223638,
+     "q1": 0,
+     "q3": 8.5,
+     "min": 0,
+     "max": 17
+    },
+    "decisionsUncertain": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.3333333333333333,
+     "median": 0,
+     "sd": 0.5773502691896258,
+     "q1": 0,
+     "q3": 0.5,
+     "min": 0,
+     "max": 1
+    },
+    "rawStatements": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 37,
+     "median": 36,
+     "sd": 2.6457513110645907,
+     "q1": 35.5,
+     "q3": 38,
+     "min": 35,
+     "max": 40
+    }
+   },
+   "decisionCategories": {
+    "explicit": {
+     "padding": 1.3333333333333333,
+     "margin": 4.666666666666667,
+     "alignment": 2,
+     "positioning": 0,
+     "grouping": 7,
+     "responsive": 1.3333333333333333,
+     "dimension": 2.6666666666666665,
+     "correction": 0
+    },
+    "derived": {
+     "padding": 2.6666666666666665,
+     "margin": 11.666666666666666,
+     "alignment": 5,
+     "positioning": 0,
+     "grouping": 11.666666666666666,
+     "responsive": 5.333333333333333,
+     "dimension": 1.3333333333333333,
+     "correction": 0
+    },
+    "corrective": {
+     "padding": 0.3333333333333333,
+     "margin": 1.3333333333333333,
+     "alignment": 0.3333333333333333,
+     "positioning": 0,
+     "grouping": 2,
+     "responsive": 0.3333333333333333,
+     "dimension": 1.3333333333333333,
+     "correction": 5.666666666666667
+    }
+   },
+   "engine": null
+  },
+  "C": {
+   "attempts": 3,
+   "accepted": 3,
+   "acceptanceRate": 1,
+   "tokensPerAccepted": 256985.33333333334,
+   "decisionsPerAccepted": 12.666666666666666,
+   "metrics": {
+    "firstDraftDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "firstDraftGeometryDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "firstDraftAccessibilityDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalHeldoutDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "finalDynamicDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "unexpectedShift": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "accepted": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 1,
+     "median": 1,
+     "sd": 0,
+     "q1": 1,
+     "q3": 1,
+     "min": 1,
+     "max": 1
+    },
+    "totalTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 256985.33333333334,
+     "median": 254657,
+     "sd": 59304.78920233452,
+     "q1": 226768,
+     "q3": 286038.5,
+     "min": 198879,
+     "max": 317420
+    },
+    "outputTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 141,
+     "median": 74,
+     "sd": 129.2555608088101,
+     "q1": 66.5,
+     "q3": 182,
+     "min": 59,
+     "max": 290
+    },
+    "inputTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 256844.33333333334,
+     "median": 254367,
+     "sd": 59301.82167803392,
+     "q1": 226593.5,
+     "q3": 285856.5,
+     "min": 198820,
+     "max": 317346
+    },
+    "toolCalls": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 7.666666666666667,
+     "median": 7,
+     "sd": 1.1547005383792517,
+     "q1": 7,
+     "q3": 8,
+     "min": 7,
+     "max": 9
+    },
+    "durationMs": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 37606,
+     "median": 36043,
+     "sd": 14491.854229186823,
+     "q1": 30001,
+     "q3": 44429.5,
+     "min": 23959,
+     "max": 52816
+    },
+    "validationRuns": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 1.6666666666666667,
+     "median": 1,
+     "sd": 1.1547005383792517,
+     "q1": 1,
+     "q3": 2,
+     "min": 1,
+     "max": 3
+    },
+    "repairIterations": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "decisionsTotal": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 12.666666666666666,
+     "median": 13,
+     "sd": 1.5275252316519468,
+     "q1": 12,
+     "q3": 13.5,
+     "min": 11,
+     "max": 14
+    },
+    "decisionsExplicit": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 12.666666666666666,
+     "median": 13,
+     "sd": 1.5275252316519468,
+     "q1": 12,
+     "q3": 13.5,
+     "min": 11,
+     "max": 14
+    },
+    "decisionsDerived": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 69.33333333333333,
+     "median": 77,
+     "sd": 14.153915830374762,
+     "q1": 65,
+     "q3": 77.5,
+     "min": 53,
+     "max": 78
+    },
+    "decisionsCorrective": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 3,
+     "median": 0,
+     "sd": 5.196152422706632,
+     "q1": 0,
+     "q3": 4.5,
+     "min": 0,
+     "max": 9
+    },
+    "decisionsUncertain": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "rawStatements": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 63.333333333333336,
+     "median": 67,
+     "sd": 21.73323108360405,
+     "q1": 53.5,
+     "q3": 75,
+     "min": 40,
+     "max": 83
+    }
+   },
+   "decisionCategories": {
+    "explicit": {
+     "padding": 0,
+     "margin": 2.6666666666666665,
+     "alignment": 1.6666666666666667,
+     "positioning": 1,
+     "grouping": 2.3333333333333335,
+     "responsive": 1.6666666666666667,
+     "dimension": 3.3333333333333335,
+     "correction": 0
+    },
+    "derived": {
+     "padding": 2.6666666666666665,
+     "margin": 16.666666666666668,
+     "alignment": 16.666666666666668,
+     "positioning": 0,
+     "grouping": 0,
+     "responsive": 16.666666666666668,
+     "dimension": 16.666666666666668,
+     "correction": 0
+    },
+    "corrective": {
+     "padding": 0,
+     "margin": 0.6666666666666666,
+     "alignment": 0.3333333333333333,
+     "positioning": 0.3333333333333333,
+     "grouping": 0.3333333333333333,
+     "responsive": 0.3333333333333333,
+     "dimension": 1,
+     "correction": 3
+    }
+   },
+   "engine": {
+    "resolves": 15,
+    "solveMs": {
+     "n": 15,
+     "unavailable": 0,
+     "mean": 5.62666666659837,
+     "median": 4.7000000001862645,
+     "sd": 4.897297602679571,
+     "q1": 2.9499999997206032,
+     "q3": 5.750000000232831,
+     "min": 1.7999999998137355,
+     "max": 21.699999999720603
+    },
+    "solveP95": 12.459999999916167,
+    "totalMsP95": 22.070000000251447,
+    "iterations": {
+     "n": 15,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "measureCalls": {
+     "n": 15,
+     "unavailable": 0,
+     "mean": 22.333333333333332,
+     "median": 21,
+     "sd": 4.336994790119514,
+     "q1": 18,
+     "q3": 28,
+     "min": 18,
+     "max": 28
+    },
+    "invalidStatus": 0,
+    "convergenceFailures": 0,
+    "diagnosticCodes": {}
+   }
+  },
+  "D": {
+   "attempts": 3,
+   "accepted": 2,
+   "acceptanceRate": 0.6666666666666666,
+   "tokensPerAccepted": 326339,
+   "decisionsPerAccepted": 18.5,
+   "metrics": {
+    "firstDraftDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "firstDraftGeometryDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "firstDraftAccessibilityDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "finalHeldoutDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "finalDynamicDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "unexpectedShift": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "accepted": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 1,
+     "sd": 0.5773502691896258,
+     "q1": 0.5,
+     "q3": 1,
+     "min": 0,
+     "max": 1
+    },
+    "totalTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 217559.33333333334,
+     "median": 199560,
+     "sd": 32265.221219345967,
+     "q1": 198934.5,
+     "q3": 227184.5,
+     "min": 198309,
+     "max": 254809
+    },
+    "outputTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 67.66666666666667,
+     "median": 62,
+     "sd": 11.590225767142474,
+     "q1": 61,
+     "q3": 71.5,
+     "min": 60,
+     "max": 81
+    },
+    "inputTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 217491.66666666666,
+     "median": 199500,
+     "sd": 32253.69579340224,
+     "q1": 198873.5,
+     "q3": 227114,
+     "min": 198247,
+     "max": 254728
+    },
+    "toolCalls": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 6.333333333333333,
+     "median": 7,
+     "sd": 2.0816659994661326,
+     "q1": 5.5,
+     "q3": 7.5,
+     "min": 4,
+     "max": 8
+    },
+    "durationMs": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 29969.333333333332,
+     "median": 31873,
+     "sd": 5212.105172896392,
+     "q1": 27973,
+     "q3": 32917.5,
+     "min": 24073,
+     "max": 33962
+    },
+    "validationRuns": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 1,
+     "median": 1,
+     "sd": 0,
+     "q1": 1,
+     "q3": 1,
+     "min": 1,
+     "max": 1
+    },
+    "repairIterations": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "decisionsTotal": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 12.333333333333334,
+     "median": 13,
+     "sd": 1.1547005383792517,
+     "q1": 12,
+     "q3": 13,
+     "min": 11,
+     "max": 13
+    },
+    "decisionsExplicit": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 12.333333333333334,
+     "median": 13,
+     "sd": 1.1547005383792517,
+     "q1": 12,
+     "q3": 13,
+     "min": 11,
+     "max": 13
+    },
+    "decisionsDerived": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 60,
+     "median": 53,
+     "sd": 15.716233645501712,
+     "q1": 51,
+     "q3": 65.5,
+     "min": 49,
+     "max": 78
+    },
+    "decisionsCorrective": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "decisionsUncertain": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "rawStatements": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 53.666666666666664,
+     "median": 54,
+     "sd": 15.50268793897798,
+     "q1": 46,
+     "q3": 61.5,
+     "min": 38,
+     "max": 69
+    }
+   },
+   "decisionCategories": {
+    "explicit": {
+     "padding": 0,
+     "margin": 3,
+     "alignment": 2.3333333333333335,
+     "positioning": 1,
+     "grouping": 2,
+     "responsive": 1.6666666666666667,
+     "dimension": 2.3333333333333335,
+     "correction": 0
+    },
+    "derived": {
+     "padding": 2.6666666666666665,
+     "margin": 14.333333333333334,
+     "alignment": 14.333333333333334,
+     "positioning": 0,
+     "grouping": 0,
+     "responsive": 14.333333333333334,
+     "dimension": 14.333333333333334,
+     "correction": 0
+    },
+    "corrective": {
+     "padding": 0,
+     "margin": 0,
+     "alignment": 0,
+     "positioning": 0,
+     "grouping": 0,
+     "responsive": 0,
+     "dimension": 0,
+     "correction": 0
+    }
+   },
+   "engine": {
+    "resolves": 15,
+    "solveMs": {
+     "n": 15,
+     "unavailable": 0,
+     "mean": 39.82000000008072,
+     "median": 30.300000000279397,
+     "sd": 23.686500073139293,
+     "q1": 24.700000000186265,
+     "q3": 47.90000000037253,
+     "min": 16.600000000093132,
+     "max": 92.6999999997206
+    },
+    "solveP95": 89.90000000004656,
+    "totalMsP95": 99.78000000002794,
+    "iterations": {
+     "n": 15,
+     "unavailable": 0,
+     "mean": 1420.0666666666666,
+     "median": 761,
+     "sd": 1552.7670447424157,
+     "q1": 470.5,
+     "q3": 1751,
+     "min": 287,
+     "max": 5636
+    },
+    "measureCalls": {
+     "n": 15,
+     "unavailable": 0,
+     "mean": 39.733333333333334,
+     "median": 27,
+     "sd": 21.089830544149766,
+     "q1": 27,
+     "q3": 46,
+     "min": 25,
+     "max": 88
+    },
+    "invalidStatus": 0,
+    "convergenceFailures": 0,
+    "diagnosticCodes": {
+     "hierarchy-inversion": 15
+    }
+   }
+  }
+ },
+ "primary": {
+  "comparison": "A − D",
+  "metric": "firstDraftDefects",
+  "tasks": 3,
+  "meanDifference": 2.6666666666666665,
+  "medianDifference": 0,
+  "bootstrap95": [
+   -2,
+   10
+  ],
+  "wilcoxon": {
+   "n": 2,
+   "W": 2,
+   "p": 1
+  },
+  "cliffsDelta": 0.1111111111111111,
+  "perTask": [
+   {
+    "task": "T01-form-account",
+    "x": 10,
+    "y": 0
+   },
+   {
+    "task": "T03-cards-product",
+    "x": 0,
+    "y": 0
+   },
+   {
+    "task": "T09-dynamic-checkout",
+    "x": 0,
+    "y": 2
+   }
+  ]
+ },
+ "secondary": [
+  {
+   "comparison": "A − D",
+   "metric": "totalTokens",
+   "tasks": 3,
+   "meanDifference": -1276.3333333333333,
+   "medianDifference": 614,
+   "bootstrap95": [
+    -55968,
+    51525
+   ],
+   "wilcoxon": {
+    "n": 3,
+    "W": 3,
+    "p": 1
+   },
+   "cliffsDelta": -0.1111111111111111,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 251085,
+     "y": 199560
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 198841,
+     "y": 254809
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 198923,
+     "y": 198309
+    }
+   ]
+  },
+  {
+   "comparison": "A − D",
+   "metric": "decisionsTotal",
+   "tasks": 3,
+   "meanDifference": 22.666666666666668,
+   "medianDifference": 24,
+   "bootstrap95": [
+    18,
+    26
+   ],
+   "wilcoxon": {
+    "n": 3,
+    "W": 6,
+    "p": 0.25
+   },
+   "cliffsDelta": 1,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 37,
+     "y": 13
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 29,
+     "y": 11
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 39,
+     "y": 13
+    }
+   ]
+  },
+  {
+   "comparison": "A − D",
+   "metric": "repairIterations",
+   "tasks": 3,
+   "meanDifference": 0.3333333333333333,
+   "medianDifference": 0,
+   "bootstrap95": [
+    0,
+    1
+   ],
+   "wilcoxon": {
+    "n": 1,
+    "W": 1,
+    "p": 1
+   },
+   "cliffsDelta": 0.3333333333333333,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0,
+     "y": 0
+    }
+   ]
+  },
+  {
+   "comparison": "A − D",
+   "metric": "finalHeldoutDefects",
+   "tasks": 3,
+   "meanDifference": 1.6666666666666667,
+   "medianDifference": 0,
+   "bootstrap95": [
+    0,
+    5
+   ],
+   "wilcoxon": {
+    "n": 1,
+    "W": 1,
+    "p": 1
+   },
+   "cliffsDelta": 0.1111111111111111,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 7,
+     "y": 2
+    }
+   ]
+  },
+  {
+   "comparison": "A − D",
+   "metric": "finalDefects",
+   "tasks": 3,
+   "meanDifference": -0.6666666666666666,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -2,
+    0
+   ],
+   "wilcoxon": {
+    "n": 1,
+    "W": 0,
+    "p": 1
+   },
+   "cliffsDelta": -0.3333333333333333,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0,
+     "y": 2
+    }
+   ]
+  }
+ ],
+ "mechanisms": [
+  {
+   "comparison": "A − B",
+   "metric": "firstDraftDefects",
+   "tasks": 3,
+   "meanDifference": 2.6666666666666665,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -1,
+    9
+   ],
+   "wilcoxon": {
+    "n": 2,
+    "W": 2,
+    "p": 1
+   },
+   "cliffsDelta": -0.1111111111111111,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 10,
+     "y": 1
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0,
+     "y": 1
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "B − C",
+   "metric": "firstDraftDefects",
+   "tasks": 3,
+   "meanDifference": 0,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -1,
+    1
+   ],
+   "wilcoxon": {
+    "n": 2,
+    "W": 1.5,
+    "p": 1
+   },
+   "cliffsDelta": 0.1111111111111111,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 1,
+     "y": 2
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "C − D",
+   "metric": "firstDraftDefects",
+   "tasks": 3,
+   "meanDifference": 0,
+   "medianDifference": 0,
+   "bootstrap95": [
+    0,
+    0
+   ],
+   "wilcoxon": {
+    "n": 0,
+    "W": 0,
+    "p": 1
+   },
+   "cliffsDelta": 0,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 2,
+     "y": 2
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "A − B",
+   "metric": "finalDefects",
+   "tasks": 3,
+   "meanDifference": -0.3333333333333333,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -1,
+    0
+   ],
+   "wilcoxon": {
+    "n": 1,
+    "W": 0,
+    "p": 1
+   },
+   "cliffsDelta": -0.3333333333333333,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0,
+     "y": 1
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "B − C",
+   "metric": "finalDefects",
+   "tasks": 3,
+   "meanDifference": 0.3333333333333333,
+   "medianDifference": 0,
+   "bootstrap95": [
+    0,
+    1
+   ],
+   "wilcoxon": {
+    "n": 1,
+    "W": 1,
+    "p": 1
+   },
+   "cliffsDelta": 0.3333333333333333,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 1,
+     "y": 0
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "C − D",
+   "metric": "finalDefects",
+   "tasks": 3,
+   "meanDifference": -0.6666666666666666,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -2,
+    0
+   ],
+   "wilcoxon": {
+    "n": 1,
+    "W": 0,
+    "p": 1
+   },
+   "cliffsDelta": -0.3333333333333333,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0,
+     "y": 2
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "A − B",
+   "metric": "finalHeldoutDefects",
+   "tasks": 3,
+   "meanDifference": 2,
+   "medianDifference": 0,
+   "bootstrap95": [
+    0,
+    6
+   ],
+   "wilcoxon": {
+    "n": 1,
+    "W": 1,
+    "p": 1
+   },
+   "cliffsDelta": 0.1111111111111111,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 7,
+     "y": 1
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "B − C",
+   "metric": "finalHeldoutDefects",
+   "tasks": 3,
+   "meanDifference": -0.3333333333333333,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -1,
+    0
+   ],
+   "wilcoxon": {
+    "n": 1,
+    "W": 0,
+    "p": 1
+   },
+   "cliffsDelta": -0.1111111111111111,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 1,
+     "y": 2
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "C − D",
+   "metric": "finalHeldoutDefects",
+   "tasks": 3,
+   "meanDifference": 0,
+   "medianDifference": 0,
+   "bootstrap95": [
+    0,
+    0
+   ],
+   "wilcoxon": {
+    "n": 0,
+    "W": 0,
+    "p": 1
+   },
+   "cliffsDelta": 0,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 2,
+     "y": 2
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "A − B",
+   "metric": "totalTokens",
+   "tasks": 3,
+   "meanDifference": -18673,
+   "medianDifference": -752,
+   "bootstrap95": [
+    -55791,
+    524
+   ],
+   "wilcoxon": {
+    "n": 3,
+    "W": 1,
+    "p": 0.5
+   },
+   "cliffsDelta": -0.1111111111111111,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 251085,
+     "y": 306876
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 198841,
+     "y": 198317
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 198923,
+     "y": 199675
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "B − C",
+   "metric": "totalTokens",
+   "tasks": 3,
+   "meanDifference": -22029.333333333332,
+   "medianDifference": -56340,
+   "bootstrap95": [
+    -117745,
+    107997
+   ],
+   "wilcoxon": {
+    "n": 3,
+    "W": 2,
+    "p": 0.75
+   },
+   "cliffsDelta": -0.3333333333333333,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 306876,
+     "y": 198879
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 198317,
+     "y": 254657
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 199675,
+     "y": 317420
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "C − D",
+   "metric": "totalTokens",
+   "tasks": 3,
+   "meanDifference": 39426,
+   "medianDifference": -152,
+   "bootstrap95": [
+    -681,
+    119111
+   ],
+   "wilcoxon": {
+    "n": 3,
+    "W": 3,
+    "p": 1
+   },
+   "cliffsDelta": 0.3333333333333333,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 198879,
+     "y": 199560
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 254657,
+     "y": 254809
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 317420,
+     "y": 198309
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "A − B",
+   "metric": "decisionsTotal",
+   "tasks": 3,
+   "meanDifference": 15.666666666666666,
+   "medianDifference": 14,
+   "bootstrap95": [
+    14,
+    19
+   ],
+   "wilcoxon": {
+    "n": 3,
+    "W": 6,
+    "p": 0.25
+   },
+   "cliffsDelta": 1,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 37,
+     "y": 23
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 29,
+     "y": 15
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 39,
+     "y": 20
+    }
+   ],
+   "holmP": 0.75
+  },
+  {
+   "comparison": "B − C",
+   "metric": "decisionsTotal",
+   "tasks": 3,
+   "meanDifference": 6.666666666666667,
+   "medianDifference": 9,
+   "bootstrap95": [
+    1,
+    10
+   ],
+   "wilcoxon": {
+    "n": 3,
+    "W": 6,
+    "p": 0.25
+   },
+   "cliffsDelta": 1,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 23,
+     "y": 13
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 15,
+     "y": 14
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 20,
+     "y": 11
+    }
+   ],
+   "holmP": 0.75
+  },
+  {
+   "comparison": "C − D",
+   "metric": "decisionsTotal",
+   "tasks": 3,
+   "meanDifference": 0.3333333333333333,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -2,
+    3
+   ],
+   "wilcoxon": {
+    "n": 2,
+    "W": 2,
+    "p": 1
+   },
+   "cliffsDelta": 0.2222222222222222,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 13,
+     "y": 13
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 14,
+     "y": 11
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 11,
+     "y": 13
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "A − B",
+   "metric": "repairIterations",
+   "tasks": 3,
+   "meanDifference": 0,
+   "medianDifference": 0,
+   "bootstrap95": [
+    0,
+    0
+   ],
+   "wilcoxon": {
+    "n": 0,
+    "W": 0,
+    "p": 1
+   },
+   "cliffsDelta": 0,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 1,
+     "y": 1
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0,
+     "y": 0
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "B − C",
+   "metric": "repairIterations",
+   "tasks": 3,
+   "meanDifference": -0.3333333333333333,
+   "medianDifference": 0,
+   "bootstrap95": [
+    -2,
+    1
+   ],
+   "wilcoxon": {
+    "n": 2,
+    "W": 1,
+    "p": 1
+   },
+   "cliffsDelta": -0.1111111111111111,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 1,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 0,
+     "y": 2
+    }
+   ],
+   "holmP": 1
+  },
+  {
+   "comparison": "C − D",
+   "metric": "repairIterations",
+   "tasks": 3,
+   "meanDifference": 0.6666666666666666,
+   "medianDifference": 0,
+   "bootstrap95": [
+    0,
+    2
+   ],
+   "wilcoxon": {
+    "n": 1,
+    "W": 1,
+    "p": 1
+   },
+   "cliffsDelta": 0.3333333333333333,
+   "perTask": [
+    {
+     "task": "T01-form-account",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T03-cards-product",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "task": "T09-dynamic-checkout",
+     "x": 2,
+     "y": 0
+    }
+   ],
+   "holmP": 1
+  }
+ ],
+ "correlations": {
+  "decisions~tokens": {
+   "rho": -0.20459349299161889,
+   "n": 12
+  },
+  "decisions~firstDraftDefects": {
+   "rho": 0.041482862369751114,
+   "n": 12
+  },
+  "decisions~repairIterations": {
+   "rho": 0.032508947411656816,
+   "n": 12
+  },
+  "tokens~repairIterations": {
+   "rho": 0.6582805886043833,
+   "n": 12
+  },
+  "firstDraftDefects~repairIterations": {
+   "rho": 0.7140693262269152,
+   "n": 12
+  },
+  "decisions~finalDefects": {
+   "rho": -0.08677090709409362,
+   "n": 12
+  }
+ },
+ "compliance": [
+  {
+   "attempt": "pi2577eba3",
+   "arm": "D",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "piab84fe0e",
+   "arm": "A",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "pid9963a95",
+   "arm": "C",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "pi16d798d1",
+   "arm": "C",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "pi0f80fe03",
+   "arm": "D",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "pi496a86b1",
+   "arm": "A",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "pif7fc271b",
+   "arm": "D",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "pif225f950",
+   "arm": "A",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "pic5f71560",
+   "arm": "B",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "pi9aea9233",
+   "arm": "B",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "pi4ac9263d",
+   "arm": "B",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "pi44aafaef",
+   "arm": "C",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  }
+ ],
+ "perAttempt": [
+  {
+   "order": 1,
+   "attempt": "pi2577eba3",
+   "task": "T01-form-account",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199560,
+   "output": 60,
+   "tools": 7,
+   "durationMs": 24073,
+   "decisions": 13,
+   "derived": 49,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 2,
+   "attempt": "piab84fe0e",
+   "task": "T01-form-account",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 10,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 251085,
+   "output": 64,
+   "tools": 5,
+   "durationMs": 40051,
+   "decisions": 37,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 3,
+   "attempt": "pid9963a95",
+   "task": "T03-cards-product",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 254657,
+   "output": 290,
+   "tools": 7,
+   "durationMs": 36043,
+   "decisions": 14,
+   "derived": 78,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 4,
+   "attempt": "pi16d798d1",
+   "task": "T09-dynamic-checkout",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 0,
+   "heldout": 2,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 317420,
+   "output": 74,
+   "tools": 9,
+   "durationMs": 52816,
+   "decisions": 11,
+   "derived": 77,
+   "corrective": 9,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "row-association": 2
+   }
+  },
+  {
+   "order": 5,
+   "attempt": "pi0f80fe03",
+   "task": "T03-cards-product",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 254809,
+   "output": 81,
+   "tools": 8,
+   "durationMs": 33962,
+   "decisions": 11,
+   "derived": 78,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 6,
+   "attempt": "pi496a86b1",
+   "task": "T09-dynamic-checkout",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 7,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198923,
+   "output": 124,
+   "tools": 7,
+   "durationMs": 35639,
+   "decisions": 39,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "content-overflow": 6,
+    "row-association": 1
+   }
+  },
+  {
+   "order": 7,
+   "attempt": "pif7fc271b",
+   "task": "T09-dynamic-checkout",
+   "arm": "D",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 2,
+   "heldout": 2,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 198309,
+   "output": 62,
+   "tools": 4,
+   "durationMs": 31873,
+   "decisions": 13,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "row-association": 12
+   },
+   "heldoutByInvariant": {
+    "row-association": 4
+   }
+  },
+  {
+   "order": 8,
+   "attempt": "pif225f950",
+   "task": "T03-cards-product",
+   "arm": "A",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198841,
+   "output": 59,
+   "tools": 7,
+   "durationMs": 31516,
+   "decisions": 29,
+   "derived": 0,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 9,
+   "attempt": "pic5f71560",
+   "task": "T03-cards-product",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198317,
+   "output": 59,
+   "tools": 6,
+   "durationMs": 17170,
+   "decisions": 15,
+   "derived": 60,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 10,
+   "attempt": "pi9aea9233",
+   "task": "T01-form-account",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 2,
+   "tokens": 306876,
+   "output": 73,
+   "tools": 6,
+   "durationMs": 37534,
+   "decisions": 23,
+   "derived": 38,
+   "corrective": 17,
+   "uncertain": 1,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 11,
+   "attempt": "pi4ac9263d",
+   "task": "T09-dynamic-checkout",
+   "arm": "B",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 1,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 199675,
+   "output": 60,
+   "tools": 7,
+   "durationMs": 33165,
+   "decisions": 20,
+   "derived": 15,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "proximity": 2
+   },
+   "heldoutByInvariant": {
+    "row-association": 1
+   }
+  },
+  {
+   "order": 12,
+   "attempt": "pi44aafaef",
+   "task": "T01-form-account",
+   "arm": "C",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198879,
+   "output": 59,
+   "tools": 7,
+   "durationMs": 23959,
+   "decisions": 13,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  }
+ ]
+}

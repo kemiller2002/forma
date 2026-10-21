@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing comparison with conflicting demands</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  main { padding: 1.5rem 1rem; max-width: 90rem; margin: 0 auto; }
+  .pricing { display: grid; gap: 1.5rem; }
+  .plans { display: grid; gap: 1rem; align-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+  .plan { display: flex; flex-direction: column; gap: 0.75rem; padding: 1.25rem; min-width: 0; overflow-wrap: anywhere; }
+  .plan h2 { margin: 0; }
+  .price { margin: 0; font-weight: 600; }
+  .features { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.375rem; }
+  .plan button { margin-top: auto; align-self: flex-start; min-height: 2.5rem; max-width: 100%; }
+  .features { margin-bottom: 0.5rem; }
+  .badge { align-self: flex-start; margin: 0; padding: 0.25rem 0.625rem; border-radius: 999px;
+    background: #1e3a8a; color: #fff; font-size: 0.875rem; font-weight: 600; }
+</style>
+</head>
+<body>
+  <main>
+  <section class="pricing" data-rlp="pricing">
+    <h1 data-rlp="pricing-title">Choose a plan</h1>
+    <div class="plans" data-rlp="plans">
+      <article class="plan surface" data-rlp="plan-free">
+        <h2 data-rlp="plan-free-name">Free</h2>
+        <p class="price" data-rlp="plan-free-price">$0</p>
+        <ul class="features" data-rlp="plan-free-features"><li>1 project</li></ul>
+        <button type="button" data-rlp="plan-free-choose">Choose Free</button>
+      </article>
+      <article class="plan surface" data-rlp="plan-team">
+        <p class="badge" data-rlp="badge">Most popular</p>
+        <h2 data-rlp="plan-team-name">Team</h2>
+        <p class="price" data-rlp="plan-team-price">$12 per seat</p>
+        <ul class="features" data-rlp="plan-team-features"><li>Unlimited projects</li><li>Shared libraries</li><li>Version history</li><li>Priority email support</li></ul>
+        <button type="button" data-rlp="plan-team-choose">Choose Team</button>
+      </article>
+      <article class="plan surface" data-rlp="plan-business">
+        <h2 data-rlp="plan-business-name">Business with advanced compliance controls</h2>
+        <p class="price" data-rlp="plan-business-price">$45 per seat</p>
+        <ul class="features" data-rlp="plan-business-features"><li>Everything in Team</li><li>Single sign-on</li><li>Audit log export</li><li>Data residency</li><li>Custom retention</li><li>Dedicated success manager</li></ul>
+        <button type="button" data-rlp="plan-business-choose">Choose Business</button>
+      </article>
+      <article class="plan surface" data-rlp="plan-enterprise">
+        <h2 data-rlp="plan-enterprise-name">Enterprise</h2>
+        <p class="price" data-rlp="plan-enterprise-price">Contact sales</p>
+        <ul class="features" data-rlp="plan-enterprise-features"><li>Everything in Business</li><li>On-premises option</li></ul>
+        <button type="button" data-rlp="plan-enterprise-choose">Talk to sales</button>
+      </article>
+    </div>
+  </section>
+  </main>
+</body>
+</html>

@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-20T08:03:21.000Z",
+  "updatedAt": "2026-10-21T19:54:59Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -2425,6 +2425,56 @@
       ],
       "completedAt": "2026-10-20T08:03:21.000Z",
       "conclusion": "PRs #158 and #162 are merged and authoritative; their source branches are fully contained in main, while feat/design-by-construction-forms is a superseded implementation-identical predecessor with older Praxis records. Exact main commit 18e6ff7 passed targeted local validation, 532 conformance checks, and all GitHub checks; no code gap required implementation."
+    },
+    {
+      "id": "RLP-001",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "experiments/RLP-001/engine"
+        },
+        {
+          "type": "tests",
+          "path": "experiments/RLP-001/engine/test/core.test.mjs"
+        },
+        {
+          "type": "report",
+          "path": "experiments/RLP-001/REPORT.md"
+        },
+        {
+          "type": "experiment",
+          "path": "research/experiments/EX-FORMA-2026-0001--relational-layout-physics.md"
+        }
+      ],
+      "updatedAt": "2026-10-21T19:54:59Z",
+      "telemetryExecutionIds": [
+        "EXE-20261021T181014746Z-fc9e184b"
+      ],
+      "latestCheckpoint": {
+        "id": "d80b4ebe63041c05c949ec4b",
+        "recordedAt": "2026-10-21T19:54:49Z",
+        "executionId": "EXE-20261021T181014746Z-fc9e184b",
+        "repository": "echelon-design-system",
+        "branch": "claude/rlp-001-relational-physics-4urqm8",
+        "commit": "e64d7a183927e96f54e63bbaa08ef9b470bb9535",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/rlp-001-relational-physics-4urqm8",
+        "remoteCommit": "e64d7a183927e96f54e63bbaa08ef9b470bb9535",
+        "summary": "Full experiment (144), X1 extension (3+36), blind visual and rubric reviews, G-metric, analysis and REPORT.md complete. Outcome B.",
+        "nextAction": "Review PR #167; candidate X2 (zero-runtime CSS compilation of the C vocabulary)",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-21T19:54:59Z",
+      "conclusion": "Outcome B: relationships win, physics does not. H1 not supported; H3, H4, H5 (held-out) supported; H6 falsified; H7 fails for D. X1 removes Gestalt inversions but causes dynamic layout shift."
     }
   ]
 }
