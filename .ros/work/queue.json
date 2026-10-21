@@ -918,10 +918,10 @@
       "description": null,
       "tags": [],
       "priority": "medium",
-      "status": "ready",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-10-21T19:20:17.005Z",
-      "updatedAt": "2026-10-21T19:20:30.000Z",
+      "updatedAt": "2026-10-21T19:22:35.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
