@@ -15,7 +15,10 @@ const attempts = fs.readdirSync(path.join(dir, "attempts")).filter(f => f.endsWi
   .map(f => JSON.parse(fs.readFileSync(path.join(dir, "attempts", f), "utf8")))
   .sort((a, b) => a.executionOrder - b.executionOrder);
 
-const ARMS = ["A", "B", "C", "D"];
+// The four pre-registered arms, then any exploratory variant present (X*).
+const ARMS = ["A", "B", "C", "D", "X1"].filter(arm => attempts.some(a => a.arm === arm));
+const RELATIONAL = ["C", "D", "X1"];
+const has = (...arms) => arms.every(arm => ARMS.includes(arm));
 const sum = xs => xs.reduce((a, b) => a + b, 0);
 const mean = xs => (xs.length ? sum(xs) / xs.length : null);
 const quantile = (xs, q) => {
@@ -178,18 +181,18 @@ const perArm = Object.fromEntries(ARMS.map(arm => {
       ...acc,
       [kind]: Object.fromEntries(Object.keys(list[0]?.decisions.byCategory[kind] ?? {}).map(c => [c, mean(list.map(a => a.decisions.byCategory[kind][c]))]))
     }), {}),
-    engine: arm === "C" || arm === "D" ? engineStats(arm) : null
+    engine: RELATIONAL.includes(arm) ? engineStats(arm) : null
   }];
 }));
 
-const PRIMARY = compare("A", "D", "firstDraftDefects");
+const PRIMARY = has("A", "D") ? compare("A", "D", "firstDraftDefects") : null;
 const mechanismMetrics = ["firstDraftDefects", "finalDefects", "finalHeldoutDefects", "totalTokens", "decisionsTotal", "repairIterations"];
 const mechanisms = mechanismMetrics.flatMap(metric => {
-  const set = [["A", "B"], ["B", "C"], ["C", "D"]].map(([x, y]) => compare(x, y, metric));
+  const set = [["A", "B"], ["B", "C"], ["C", "D"]].filter(pair => has(...pair)).map(([x, y]) => compare(x, y, metric));
   const adjusted = holm(set.map(s => s.wilcoxon.p));
   return set.map((s, i) => ({ ...s, holmP: adjusted[i] }));
 });
-const secondary = ["totalTokens", "decisionsTotal", "repairIterations", "finalHeldoutDefects", "finalDefects"].map(m => compare("A", "D", m));
+const secondary = has("A", "D") ? ["totalTokens", "decisionsTotal", "repairIterations", "finalHeldoutDefects", "finalDefects"].map(m => compare("A", "D", m)) : [];
 
 const series = name => attempts.map(METRICS[name]);
 const correlations = Object.fromEntries([
@@ -248,13 +251,13 @@ const md = [
   "",
   row(["Comparison", "Metric", "Tasks", "Mean diff", "95% bootstrap CI", "Wilcoxon p", "Holm p", "Cliff's δ"]),
   row(["---", "---", "---:", "---:", "---", "---:", "---:", "---:"]),
-  ...[PRIMARY, ...secondary, ...mechanisms].map(c => row([c.comparison, c.metric, c.tasks, f(c.meanDifference, 2), c.bootstrap95 ? `[${f(c.bootstrap95[0], 2)}, ${f(c.bootstrap95[1], 2)}]` : "—", f(c.wilcoxon.p, 3), f(c.holmP, 3), f(c.cliffsDelta, 2)])),
+  ...[PRIMARY, ...secondary, ...mechanisms].filter(Boolean).map(c => row([c.comparison, c.metric, c.tasks, f(c.meanDifference, 2), c.bootstrap95 ? `[${f(c.bootstrap95[0], 2)}, ${f(c.bootstrap95[1], 2)}]` : "—", f(c.wilcoxon.p, 3), f(c.holmP, 3), f(c.cliffsDelta, 2)])),
   "",
   "## Engine runtime (final pages, all viewports)",
   "",
   row(["Arm", "Resolves", "Solve ms median", "Solve ms p95", "Total ms p95", "Iterations median", "Invalid status", "Convergence failures"]),
   row(["---", "---:", "---:", "---:", "---:", "---:", "---:", "---:"]),
-  ...["C", "D"].map(a => perArm[a].engine).map((e, i) => (e ? row([["C", "D"][i], e.resolves, f(e.solveMs.median, 1), f(e.solveP95, 1), f(e.totalMsP95, 1), f(e.iterations.median, 0), e.invalidStatus, e.convergenceFailures]) : "")),
+  ...RELATIONAL.filter(a => ARMS.includes(a)).map(a => [a, perArm[a].engine]).map(([arm, e]) => (e ? row([arm, e.resolves, f(e.solveMs.median, 1), f(e.solveP95, 1), f(e.totalMsP95, 1), f(e.iterations.median, 0), e.invalidStatus, e.convergenceFailures]) : "")),
   "",
   "## Correlations (Spearman, attempt level, exploratory)",
   "",

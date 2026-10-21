@@ -6,7 +6,7 @@ import fs from "node:fs";
 const [phase, cmd, ...rest] = process.argv.slice(2);
 const dir = new URL(`../results/${phase}/`, import.meta.url);
 const file = new URL("agents.json", dir);
-const agents = JSON.parse(fs.readFileSync(file, "utf8"));
+const agents = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : { transcriptDir: "/root/.claude/projects/-home-user/ca1f845b-cd53-558b-bd1c-bc2ce4fd9bc7/subagents", attempts: {} };
 const manifest = JSON.parse(fs.readFileSync(new URL("manifest.json", dir), "utf8"));
 if (cmd === "add") {
   const pairs = Object.fromEntries(rest.reduce((acc, v, i) => (i % 2 ? [...acc.slice(0, -1), [acc[acc.length - 1][0], v]] : [...acc, [v]]), []));
