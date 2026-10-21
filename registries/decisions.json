@@ -23,5 +23,44 @@
     "title": "Adopt semantic machine operability as a public interaction contract",
     "type": "decision-record",
     "updated": "2026-10-02"
+  },
+  {
+    "created": "2026-10-21",
+    "id": "DF-FORMA-2026-0002",
+    "path": "research/decisions/DF-FORMA-2026-0002--allow-build-stamped-runtime-version-diagnostics.md",
+    "provenance": {
+      "contributions": {
+        "EXE-20261021T081649625Z-5b3dab6b": {
+          "actor": {
+            "id": "openai/codex",
+            "kind": "agent",
+            "model": "unknown",
+            "provider": "openai",
+            "runtime": "codex"
+          },
+          "at": "2026-10-21T08:41:07.965Z",
+          "operations": [
+            "created"
+          ],
+          "reason": "Record the narrow metadata-only exception to Forma's zero-component-runtime architecture"
+        }
+      }
+    },
+    "related_documents": [
+      "docs/decisions/ADR-0002-zero-runtime-html-css-components.md",
+      "research/requirements/RQ-FORMA-2026-A004--runtime-version-reporting.md"
+    ],
+    "status": "accepted",
+    "superseded_by": [],
+    "supersedes": [],
+    "tags": [
+      "architecture",
+      "runtime-metadata",
+      "diagnostics",
+      "versioning"
+    ],
+    "title": "Allow build-stamped runtime version diagnostics",
+    "type": "decision-record",
+    "updated": "2026-10-21"
   }
 ]

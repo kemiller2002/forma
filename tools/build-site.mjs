@@ -54,6 +54,7 @@ const write = (relative, content) => {
 fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(path.join(output, "assets"), { recursive: true });
 fs.copyFileSync(path.join(root, "dist", "all.css"), path.join(output, "assets", "forma.css"));
+fs.copyFileSync(path.join(root, "dist", "runtime.js"), path.join(output, "assets", "runtime.js"));
 fs.copyFileSync(path.join(root, "site", "site.css"), path.join(output, "assets", "site.css"));
 fs.cpSync(path.join(root, "dist", "brands"), path.join(output, "assets", "brands"), { recursive: true });
 fs.writeFileSync(path.join(output, ".nojekyll"), "");

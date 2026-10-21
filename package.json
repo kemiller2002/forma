@@ -1,16 +1,18 @@
 {
   "name": "@echelon-foundry/design-system",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "private": false,
   "type": "module",
-  "description": "Zero-runtime HTML and CSS design system for Echelon Foundry applications.",
+  "description": "Zero-component-runtime HTML and CSS design system for Echelon Foundry applications.",
   "sideEffects": [
+    "./dist/runtime.js",
     "./dist/*.css",
     "./dist/brands/*.css",
     "./dist/marketing.css",
     "./dist/marketing/*.css"
   ],
   "exports": {
+    "./runtime": "./dist/runtime.js",
     "./tokens.css": "./dist/tokens.css",
     "./foundations.css": "./dist/foundations.css",
     "./components.css": "./dist/components.css",
@@ -67,7 +69,8 @@
     "clean": "node tools/clean.mjs",
     "tokens:build": "dotnet run --project tools/TokenCompiler/TokenCompiler.fsproj -- tokens/echelon.tokens.json dist/tokens.css",
     "assets:build": "node tools/build-assets.mjs",
-    "build": "npm run clean && npm run tokens:build && npm run brands:build && npm run color:build && npm run marketing:theme && npm run assets:build && npm run marketing:build && npm run example:install",
+    "build": "npm run clean && npm run tokens:build && npm run brands:build && npm run color:build && npm run marketing:theme && npm run runtime:build && npm run assets:build && npm run marketing:build && npm run example:install",
+    "runtime:build": "node tools/build-runtime.mjs",
     "test:tokens": "node --test tests/token-compiler.test.mjs",
     "test:browser": "playwright test",
     "test:a11y": "playwright test tests/browser/accessibility.spec.mjs",
@@ -127,7 +130,7 @@
   "homepage": "https://forma.echelonfoundry.com/",
   "keywords": [
     "design-system",
-    "zero-runtime",
+    "zero-component-runtime",
     "marketing-presentation",
     "accessibility",
     "workflow",

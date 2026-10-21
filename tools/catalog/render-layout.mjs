@@ -56,7 +56,7 @@ const siteFooter = rootPath => `<footer class="site-footer">
   <p class="footer-note">Forma design system <span>Generated from canonical patterns, catalog entries and the built stylesheet.</span></p>
 </footer>`;
 
-export const page = ({ title, rootPath, body, description = "Forma, the zero-runtime Echelon Foundry design system.", head = "", navSection = null, navSubpage = false }) => `<!doctype html>
+export const page = ({ title, rootPath, body, description = "Forma, the zero-component-runtime Echelon Foundry design system.", head = "", navSection = null, navSubpage = false }) => `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -71,6 +71,7 @@ export const page = ({ title, rootPath, body, description = "Forma, the zero-run
   <link rel="stylesheet" href="${rootPath}assets/brands/echelon.css">
   <link rel="stylesheet" href="${rootPath}assets/brands/example-harbor.css">
   <link rel="stylesheet" href="${rootPath}assets/site.css">${head}
+  <script type="module" src="${rootPath}assets/runtime.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -90,6 +91,7 @@ export const frameDocument = ({ title, rootPath, source, interaction = null }) =
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(title)}</title>
   <link rel="stylesheet" href="${rootPath}assets/forma.css">
+  <script type="module" src="${rootPath}assets/runtime.js"></script>
   <style>
     html, body { inline-size: 100%; max-inline-size: 100%; overflow-x: clip; }
     body { margin: 0; padding: 12px; }

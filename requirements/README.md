@@ -17,7 +17,7 @@ The system exists to make Echelon applications look, communicate, and behave con
 7. **Visual Engineering governs visual decisions.**
 8. **Communication Engineering governs interface language.**
 9. **Progressive enhancement.** Prefer declarative browser capabilities such as popover, details/summary, dialog commands, modern selectors, and CSS transitions.
-10. **Zero browser runtime.** Published design-system artifacts shall contain no JavaScript or WebAssembly runtime.
+10. **Zero component behavior runtime.** Published components remain HTML and CSS only. The sole browser JavaScript exception is the package-version diagnostic entry point required by `ECHELON-RUNTIME-1`; it may write only to the Echelon runtime registry and console and must not register elements, inspect the DOM, or own behavior.
 11. **Mobile is part of correctness.** Every implemented pattern must define and verify a 320px recomposition without changing semantic meaning or domain authority.
 12. **Human actions are machine-operable.** Every interaction must expose a deterministic semantic path for Playwright-class automation without coordinate-only input, implementation selectors, or fixed timing guesses.
 

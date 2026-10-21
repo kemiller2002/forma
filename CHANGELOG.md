@@ -7,6 +7,16 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.9.1
+
+Patch release: deterministic browser runtime version diagnostics.
+
+### Added
+- The `@echelon-foundry/design-system/runtime` entry point, generated from the package version, registers Forma 0.9.1 in `window.__ECHELON_RUNTIME__` and emits one compact console diagnostic.
+- Cross-browser Playwright coverage for actual build metadata, independent load order, duplicate initialization, conflict diagnostics, and the combined Echelon registry.
+
+Component HTML and CSS remain behavior-free. The diagnostic does not inspect or modify the DOM and adds no production dependency.
+
 ## 0.9.0
 
 Minor release: public semantic color contracts and rendered state validation.

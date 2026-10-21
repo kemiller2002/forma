@@ -41,8 +41,9 @@ function walk(dir) {
 }
 walk("dist");
 
-if (outputFiles.some(file => file.endsWith(".js") || file.endsWith(".mjs"))) {
-  throw new Error("Runtime JavaScript artifact detected in dist/");
+const executable = outputFiles.filter(file => file.endsWith(".js") || file.endsWith(".mjs"));
+if (executable.some(file => file !== "runtime.js")) {
+  throw new Error(`Unexpected runtime JavaScript artifact detected in dist/: ${executable.join(", ")}`);
 }
 
 const bytes = Object.fromEntries(outputFiles.map(file => [file, fs.statSync(path.join("dist", file)).size]));
