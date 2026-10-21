@@ -139,3 +139,11 @@ Hypotheses RLP-001-H1…H7 to `research/hypotheses/` once results exist.
   `research/experiments/RLP-001/` to `experiments/RLP-001/`, because Praxis
   treats every Markdown file under `research/experiments/` as a canonical EX
   record. No method change.
+- 2026-10-21, after pilot run 1 (`experiments/RLP-001/results/pilot-1/GATES.md`):
+  the pilot failed G2 and evaluability. Task `pairs` that describe row
+  membership were scored with the 1.5rem proximity rule, which contradicted
+  the task text. They became `rowPairs`, scored by a new `row-association`
+  invariant (same row, or stacked within 1.5rem). A leaf-measurement defect
+  in the shared relational adapter (C and D) was fixed. Both changes were made
+  on development tasks only. The pilot was rerun as `pilot-2` with a new seed.
+  Pilot run 1 data is preserved and reported.

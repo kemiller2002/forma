@@ -60,6 +60,10 @@ const measureLeaf = element => {
   if (scrolls) style.overflowX = "auto";
   style.position = "absolute";
   style.blockSize = "";
+  // The engine assigns the inline size; a leaf's own percentage limits would
+  // resolve against its parent's previous geometry and corrupt measurement.
+  style.maxInlineSize = "none";
+  style.minInlineSize = "0";
   const minRect = measureWith("min-content");
   const maxRect = measureWith("max-content");
   const remPx = px(getComputedStyle(document.documentElement).fontSize);

@@ -71,7 +71,7 @@ validation messages and hints with the controls they describe.
 ## Structure and relationships
 
 ${task.structure.map(s => `- ${s}`).join("\n")}
-${task.alignTop?.length ? `\nPeers that share a line align their top edges: ${task.alignTop.map(g => g.map(id => `\`${id}\``).join(", ")).join("; ")}.\n` : ""}${task.equalWidth?.length ? `\nPeers that share a line have equal widths: ${task.equalWidth.map(g => g.map(id => `\`${id}\``).join(", ")).join("; ")}.\n` : ""}
+${task.alignTop?.length ? `\nPeers that share a line align their top edges: ${task.alignTop.map(g => g.map(id => `\`${id}\``).join(", ")).join("; ")}.\n` : ""}${task.rowPairs?.length ? `\nThese pairs share a line when there is room (they may sit at opposite ends of it) and stay close together when stacked: ${task.rowPairs.map(([a, b]) => `\`${a}\` with \`${b}\``).join("; ")}.\n` : ""}${task.equalWidth?.length ? `\nPeers that share a line have equal widths: ${task.equalWidth.map(g => g.map(id => `\`${id}\``).join(", ")).join("; ")}.\n` : ""}
 Visual reading order follows this sequence: ${task.order.map(id => `\`${id}\``).join(" → ")}.
 
 ## Dynamic behavior
@@ -88,8 +88,9 @@ ${task.dynamic.map((step, i) => describeStep(step, i + 1)).join("\n")}
 2. No element overlaps another, no content is clipped or cut off, and the
    page never scrolls horizontally.
 3. Every panel keeps its content inside its boundary with clear space.
-4. Related elements sit close together; separate groups are visibly
-   separated; siblings never touch.
+4. Related elements sit close together (labels, hints and messages within
+   1.5rem of their control; headings with their text); separate groups are
+   visibly separated; siblings never touch.
 5. Interactive targets are at least 24 × 24 CSS px.
 6. The visual reading order matches the document order above.
 7. Peers listed above align and size as stated when they share a line.

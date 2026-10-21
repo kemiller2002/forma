@@ -112,6 +112,12 @@ export const checkSnapshot = (task, snapshot, state, { fontScale = 1 } = {}) => 
     const distance = Math.min(...peers.map(id => gap(byId.get(a).box, byId.get(id).box)));
     return distance > proximityLimit + TOL ? [failure("proximity", `${a} ~ ${b}`, `<= ${round(proximityLimit)}px apart`, `${round(distance)}px`, { relationship: `${a} ~ ${b}` })] : [];
   });
+  const rowAssociation = (task.rowPairs ?? []).filter(([a, b]) => visibleIds.has(a) && visibleIds.has(b)).flatMap(([a, b]) => {
+    const A = byId.get(a).box;
+    const B = byId.get(b).box;
+    const together = sameRow(A, B) || gap(A, B) <= proximityLimit + TOL;
+    return together ? [] : [failure("row-association", `${a} ~ ${b}`, "same row, or stacked within 1.5rem", `${round(gap(A, B))}px apart on different rows`, { relationship: `${a} ~ ${b}` })];
+  });
   const controls = visible.filter(({ spec }) => ["control", "select", "textarea", "checkbox", "radio"].includes(spec.kind));
   const ambiguity = visible.filter(({ spec }) => spec.kind === "label" && spec.for && visibleIds.has(spec.for)).flatMap(({ spec, dom }) => {
     const own = gap(dom.box, byId.get(spec.for).box);
@@ -143,7 +149,7 @@ export const checkSnapshot = (task, snapshot, state, { fontScale = 1 } = {}) => 
     return before ? [failure("reading-order", `${a.id} → ${b.id}`, `${b.id} after ${a.id}`, `${b.id} at ${boxText(b.box)}, ${a.id} at ${boxText(a.box)}`, { relationship: `${a.id} → ${b.id}` })] : [];
   });
 
-  return [...presence, ...overflow, ...clipping, ...containment, ...separation, ...targets, ...proximity, ...ambiguity, ...alignment, ...order]
+  return [...presence, ...overflow, ...clipping, ...containment, ...separation, ...targets, ...proximity, ...rowAssociation, ...ambiguity, ...alignment, ...order]
     .map(f => ({ ...f, fontScale }));
 };
 

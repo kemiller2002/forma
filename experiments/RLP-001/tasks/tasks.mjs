@@ -8,6 +8,8 @@
 // radio, button, link, media, message, table, list, item, status.
 //
 // `for` links a label or message to the control it describes.
+// `pairs` must sit close together (within 1.5rem). `rowPairs` must share a
+// visual row, or sit stacked close together when the row has no room.
 // `hidden` elements exist in the markup from the start with the `hidden`
 // attribute; dynamic steps reveal them.
 //
@@ -154,7 +156,8 @@ export const TASKS = [
     ],
     alignTop: [["card-a", "card-b", "card-c"]],
     equalWidth: [["card-a", "card-b", "card-c"]],
-    pairs: [["card-a-title", "card-a-text"], ["card-b-title", "card-b-text"], ["card-c-title", "card-c-text"], ["card-a-spec-1-label", "card-a-spec-1-value"]],
+    pairs: [["card-a-title", "card-a-text"], ["card-b-title", "card-b-text"], ["card-c-title", "card-c-text"]],
+    rowPairs: [["card-a-spec-1-label", "card-a-spec-1-value"], ["card-b-spec-2-label", "card-b-spec-2-value"]],
     order: ["section-title", "card-a", "card-b", "card-c"],
     dynamic: [
       { op: "text", id: "card-a-text", text: "Warm, dimmable light with a weighted base, a fabric cord, and a hinge that holds any angle without drifting over time." },
@@ -200,7 +203,8 @@ export const TASKS = [
     ],
     alignTop: [["stat-reviews", "stat-deploys", "stat-incidents"]],
     equalWidth: [["stat-reviews", "stat-deploys", "stat-incidents"]],
-    pairs: [["name", "role"], ["about-title", "about-text"], ["activity-1-text", "activity-1-time"]],
+    pairs: [["name", "role"], ["about-title", "about-text"]],
+    rowPairs: [["activity-1-text", "activity-1-time"]],
     order: ["name", "follow", "stat-reviews", "stat-deploys", "stat-incidents", "about-title", "activity-title", "activity-1", "activity-2", "activity-3"],
     dynamic: [
       { op: "text", id: "role", text: "Principal engineer, Platform reliability and developer productivity programs" },
@@ -397,7 +401,7 @@ export const TASKS = [
       "Items can be added or removed after load; the layout must adapt without overlap or clipping."
     ],
     alignTop: [["promo-input", "promo-apply"]],
-    pairs: [["total-label", "total-value"], ["item-1-name", "item-1-price"]],
+    rowPairs: [["total-label", "total-value"], ["item-1-name", "item-1-price"], ["item-1-name", "item-1-remove"]],
     order: ["title", "item-1", "item-2", "item-3", "promo-input", "shipping-title", "total-label", "place"],
     dynamic: [
       { op: "clone", source: "item-3", id: "item-4", text: { "item-4-name": "Blotting paper", "item-4-qty": "Qty 1", "item-4-price": "$6.00" } },

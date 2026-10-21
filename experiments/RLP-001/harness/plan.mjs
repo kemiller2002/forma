@@ -32,10 +32,11 @@ const random = prng(seed);
 const shuffle = list => list.map(item => ({ item, key: random() })).sort((a, b) => a.key - b.key).map(x => x.item);
 const opaqueId = () => Array.from({ length: 8 }, () => Math.floor(random() * 16).toString(16)).join("");
 
-const tasks = phase === "pilot" ? TASKS.filter(t => t.pilot) : TASKS;
-const repetitions = phase === "pilot" ? 1 : 3;
+const isPilot = phase.startsWith("pilot");
+const tasks = isPilot ? TASKS.filter(t => t.pilot) : TASKS;
+const repetitions = isPilot ? 1 : 3;
 const cells = tasks.flatMap(t => ARMS.flatMap(arm => Array.from({ length: repetitions }, (_, r) => ({ taskId: t.id, arm, repetition: r + 1 }))));
-const ordered = shuffle(cells).map((cell, order) => ({ ...cell, order: order + 1, attemptId: `${phase[0]}${opaqueId()}` }));
+const ordered = shuffle(cells).map((cell, order) => ({ ...cell, order: order + 1, attemptId: `${phase.replace(/[^a-z0-9]/g, "").slice(0, 2)}${opaqueId()}` }));
 
 const root = path.join(runsRoot, phase);
 fs.mkdirSync(root, { recursive: true });
