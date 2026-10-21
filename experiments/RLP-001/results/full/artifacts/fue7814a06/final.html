@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile panel with nested sections</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  .between{justify-content:space-between}
+  .grow{flex:1 1 14rem;min-width:0}
+  .avatar{width:4rem;height:4rem;aspect-ratio:1/1;flex:none}
+  ul.ef-stack{list-style:none;margin:0;padding:0}
+  h2,h3,p{margin:0}
+</style>
+</head>
+<body>
+  <main class="ef-stack" style="padding:var(--ef-primitive-spacing-4)">
+<article class="ef-surface ef-stack" data-rlp="profile">
+  <header class="ef-cluster between" data-rlp="header">
+    <div class="ef-cluster grow" style="flex-wrap:nowrap;align-items:flex-start">
+      <img class="avatar" data-rlp="avatar" src="assets/placeholder.svg" alt="Portrait of Dana Okafor" width="64" height="64">
+      <div class="ef-stack grow" style="--ef-stack-gap:var(--ef-primitive-spacing-1)">
+        <h2 data-rlp="name">Dana Okafor</h2>
+        <p data-rlp="role">Principal engineer, Platform reliability</p>
+      </div>
+    </div>
+    <button type="button" data-rlp="follow">Follow</button>
+  </header>
+  <div class="ef-grid" style="--ef-grid-min:10rem" data-rlp="stats">
+    <div class="ef-surface ef-stack" style="--ef-stack-gap:var(--ef-primitive-spacing-1)" data-rlp="stat-reviews"><span data-rlp="stat-reviews-value">128</span><span data-rlp="stat-reviews-label">Reviews this quarter</span></div>
+    <div class="ef-surface ef-stack" style="--ef-stack-gap:var(--ef-primitive-spacing-1)" data-rlp="stat-deploys"><span data-rlp="stat-deploys-value">56</span><span data-rlp="stat-deploys-label">Deploys</span></div>
+    <div class="ef-surface ef-stack" style="--ef-stack-gap:var(--ef-primitive-spacing-1)" data-rlp="stat-incidents"><span data-rlp="stat-incidents-value">3</span><span data-rlp="stat-incidents-label">Open incidents</span></div>
+  </div>
+  <section class="ef-stack" style="--ef-stack-gap:var(--ef-primitive-spacing-2)" data-rlp="about">
+    <h3 data-rlp="about-title">About</h3>
+    <p class="ef-measure" data-rlp="about-text">Dana leads the reliability guild and maintains the incident review process. Ask about capacity planning and on-call health.</p>
+  </section>
+  <section class="ef-surface ef-stack" data-rlp="activity">
+    <h3 data-rlp="activity-title">Recent activity</h3>
+    <ul class="ef-stack">
+      <li class="ef-cluster between" data-rlp="activity-1"><span data-rlp="activity-1-text">Approved the database failover runbook</span><span data-rlp="activity-1-time">2 hours ago</span></li>
+      <li class="ef-cluster between" data-rlp="activity-2"><span data-rlp="activity-2-text">Opened a capacity review for the search cluster</span><span data-rlp="activity-2-time">Yesterday</span></li>
+      <li class="ef-cluster between" data-rlp="activity-3"><span data-rlp="activity-3-text">Closed incident INC-2231</span><span data-rlp="activity-3-time">Monday</span></li>
+    </ul>
+  </section>
+</article>
+</main>
+</body>
+</html>

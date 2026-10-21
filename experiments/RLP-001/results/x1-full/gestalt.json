@@ -1,0 +1,6500 @@
+{
+ "phase": "x1-full",
+ "viewports": [
+  320,
+  375,
+  768,
+  1024,
+  1440
+ ],
+ "byArm": {
+  "X1": {
+   "attempts": 36,
+   "proximityPairs": 390,
+   "proximityFailures": 0,
+   "proximityTies": 15,
+   "proximityMedianRatio": 2,
+   "groupCases": 285,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "attemptsWithProximityFailure": 0,
+   "attemptsWithProximityTie": 3,
+   "attemptsWithInversion": 0
+  }
+ },
+ "attempts": [
+  {
+   "attemptId": "x1001bb0be",
+   "taskId": "T01-form-account",
+   "arm": "X1",
+   "proximityPairs": 35,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 4,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 32,
+       "inside": 8,
+       "ratio": 4,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 32,
+       "inside": 8,
+       "ratio": 4,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 32,
+       "inside": 8,
+       "ratio": 4,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 32,
+       "inside": 8,
+       "ratio": 4,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 32,
+       "inside": 8,
+       "ratio": 4,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1fa646935",
+   "taskId": "T03-cards-product",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 20,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 1.5,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 31.984375,
+       "inside": 24,
+       "ratio": 1.3326822916666667,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1a0931f81",
+   "taskId": "T07-nav-docs",
+   "arm": "X1",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 0,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": null,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 71,
+       "ratio": 8.875
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    }
+   ]
+  },
+  {
+   "attemptId": "x14a4ddc8a",
+   "taskId": "T08-nav-workspace",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1e6bb299e",
+   "taskId": "T09-dynamic-checkout",
+   "arm": "X1",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 5,
+   "proximityMedianRatio": 1,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 4.583333333333334,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 148,
+       "inside": 24,
+       "ratio": 6.166666666666667,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 148,
+       "inside": 24,
+       "ratio": 6.166666666666667,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 148,
+       "inside": 24,
+       "ratio": 6.166666666666667,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 148,
+       "inside": 24,
+       "ratio": 6.166666666666667,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 148,
+       "inside": 24,
+       "ratio": 6.166666666666667,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1e4c66c6f",
+   "taskId": "T12-adversarial-pricing",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1f08fb7bb",
+   "taskId": "T07-nav-docs",
+   "arm": "X1",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 0,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": null,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 71,
+       "ratio": 8.875
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    }
+   ]
+  },
+  {
+   "attemptId": "x1da8351ce",
+   "taskId": "T02-form-shipping",
+   "arm": "X1",
+   "proximityPairs": 50,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 3,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 11,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 16,
+       "otherGap": 24,
+       "ratio": 1.5
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 16,
+       "otherGap": 32,
+       "ratio": 2
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 120,
+       "inside": 8,
+       "ratio": 15,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 16,
+       "otherGap": 24,
+       "ratio": 1.5
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 16,
+       "otherGap": 32,
+       "ratio": 2
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 16,
+       "otherGap": 24,
+       "ratio": 1.5
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 16,
+       "otherGap": 32,
+       "ratio": 2
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 16,
+       "otherGap": 24,
+       "ratio": 1.5
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 16,
+       "otherGap": 32,
+       "ratio": 2
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 16,
+       "otherGap": 24,
+       "ratio": 1.5
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 16,
+       "otherGap": 32,
+       "ratio": 2
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1a67bca27",
+   "taskId": "T06-dashboard-finance",
+   "arm": "X1",
+   "proximityPairs": 10,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2.25,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 15.984375,
+       "inside": 8,
+       "ratio": 1.998046875,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x166cb46dc",
+   "taskId": "T05-dashboard-ops",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2.75,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1320115d9",
+   "taskId": "T10-dynamic-thread",
+   "arm": "X1",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 4,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x167e5f959",
+   "taskId": "T12-adversarial-pricing",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1780541f3",
+   "taskId": "T10-dynamic-thread",
+   "arm": "X1",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 4,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1f085808a",
+   "taskId": "T12-adversarial-pricing",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "plans",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1d2be5ab6",
+   "taskId": "T02-form-shipping",
+   "arm": "X1",
+   "proximityPairs": 50,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 3,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 11,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 56,
+       "ratio": 7
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 120,
+       "inside": 8,
+       "ratio": 15,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x137c66848",
+   "taskId": "T06-dashboard-finance",
+   "arm": "X1",
+   "proximityPairs": 10,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2.25,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 15.984375,
+       "inside": 8,
+       "ratio": 1.998046875,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x11af6288d",
+   "taskId": "T06-dashboard-finance",
+   "arm": "X1",
+   "proximityPairs": 10,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2.25,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 15.984375,
+       "inside": 8,
+       "ratio": 1.998046875,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "category-label",
+       "control": "category-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "month-label",
+       "control": "month-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 20,
+       "inside": 8,
+       "ratio": 2.5,
+       "bounded": false
+      },
+      {
+       "parent": "summary",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1d4a28d3e",
+   "taskId": "T11-adversarial-settings",
+   "arm": "X1",
+   "proximityPairs": 20,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 4.625,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 1.6,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 77,
+       "ratio": 9.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 77,
+       "ratio": 9.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 77,
+       "ratio": 9.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 69,
+       "ratio": 8.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x11ca67cdc",
+   "taskId": "T09-dynamic-checkout",
+   "arm": "X1",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 5,
+   "proximityMedianRatio": 1,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 5.125,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 132,
+       "inside": 16,
+       "ratio": 8.25,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 132,
+       "inside": 16,
+       "ratio": 8.25,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 132,
+       "inside": 16,
+       "ratio": 8.25,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 132,
+       "inside": 16,
+       "ratio": 8.25,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 132,
+       "inside": 16,
+       "ratio": 8.25,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1daeb3e44",
+   "taskId": "T03-cards-product",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 20,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 1.5,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 31.984375,
+       "inside": 24,
+       "ratio": 1.3326822916666667,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x171f41516",
+   "taskId": "T11-adversarial-settings",
+   "arm": "X1",
+   "proximityPairs": 20,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 3.8125,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 1.6,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 69,
+       "ratio": 8.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 16,
+       "otherGap": 37,
+       "ratio": 2.3125
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 69,
+       "ratio": 8.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 16,
+       "otherGap": 37,
+       "ratio": 2.3125
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 69,
+       "ratio": 8.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 16,
+       "otherGap": 37,
+       "ratio": 2.3125
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 69,
+       "ratio": 8.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 16,
+       "otherGap": 37,
+       "ratio": 2.3125
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 16,
+       "otherGap": 37,
+       "ratio": 2.3125
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x13378ba9f",
+   "taskId": "T08-nav-workspace",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x11c827dbc",
+   "taskId": "T07-nav-docs",
+   "arm": "X1",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 0,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": null,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 71,
+       "ratio": 8.875
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "search-label",
+       "control": "search-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": []
+    }
+   ]
+  },
+  {
+   "attemptId": "x1f6755795",
+   "taskId": "T03-cards-product",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 20,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 1.5,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 32,
+       "inside": 24,
+       "ratio": 1.3333333333333333,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "section",
+       "between": 31.984375,
+       "inside": 24,
+       "ratio": 1.3326822916666667,
+       "bounded": true
+      },
+      {
+       "parent": "card-a",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-b",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "card-c",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x190ceda21",
+   "taskId": "T05-dashboard-ops",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2.75,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1ab322000",
+   "taskId": "T11-adversarial-settings",
+   "arm": "X1",
+   "proximityPairs": 20,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 3.8125,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 1.6,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 69,
+       "ratio": 8.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 16,
+       "otherGap": 37,
+       "ratio": 2.3125
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 69,
+       "ratio": 8.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 16,
+       "otherGap": 37,
+       "ratio": 2.3125
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 69,
+       "ratio": 8.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 16,
+       "otherGap": 37,
+       "ratio": 2.3125
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 69,
+       "ratio": 8.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 16,
+       "otherGap": 37,
+       "ratio": 2.3125
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "auto-label",
+       "control": "auto-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "auto-hint",
+       "control": "auto-input",
+       "ownGap": 16,
+       "otherGap": 37,
+       "ratio": 2.3125
+      },
+      {
+       "element": "endpoint-label",
+       "control": "endpoint-input",
+       "ownGap": 8,
+       "otherGap": 37,
+       "ratio": 4.625
+      },
+      {
+       "element": "interval-label",
+       "control": "interval-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      }
+     ],
+     "groups": [
+      {
+       "parent": "layout",
+       "between": 32,
+       "inside": 20,
+       "ratio": 1.6,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1fc101ecb",
+   "taskId": "T01-form-account",
+   "arm": "X1",
+   "proximityPairs": 35,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 3,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1a25b598b",
+   "taskId": "T08-nav-workspace",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "bar",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x162e0e53d",
+   "taskId": "T02-form-shipping",
+   "arm": "X1",
+   "proximityPairs": 50,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 3,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 11,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 56,
+       "ratio": 7
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 120,
+       "inside": 8,
+       "ratio": 15,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "street-label",
+       "control": "street-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "unit-label",
+       "control": "unit-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "city-label",
+       "control": "city-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "state-label",
+       "control": "state-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "zip-label",
+       "control": "zip-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "standard-label",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "standard-note",
+       "control": "standard-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-label",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "express-note",
+       "control": "express-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      },
+      {
+       "element": "save-label",
+       "control": "save-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 88,
+       "inside": 8,
+       "ratio": 11,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1e5cecb0c",
+   "taskId": "T04-cards-profile",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 15,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 15.984375,
+       "inside": 8,
+       "ratio": 1.998046875,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 24,
+       "inside": 16,
+       "ratio": 1.5,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x13752acdf",
+   "taskId": "T05-dashboard-ops",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 3.25,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": true
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "dashboard",
+       "between": 28,
+       "inside": 8,
+       "ratio": 3.5,
+       "bounded": false
+      },
+      {
+       "parent": "tiles",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x117e36a42",
+   "taskId": "T01-form-account",
+   "arm": "X1",
+   "proximityPairs": 35,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 2,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 3,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 24,
+       "ratio": 3
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "name-label",
+       "control": "name-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "email-label",
+       "control": "email-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-label",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "password-hint",
+       "control": "password-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "confirm-label",
+       "control": "confirm-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-news-label",
+       "control": "pref-news-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      },
+      {
+       "element": "pref-tips-label",
+       "control": "pref-tips-input",
+       "ownGap": 8,
+       "otherGap": 16,
+       "ratio": 2
+      }
+     ],
+     "groups": [
+      {
+       "parent": "form",
+       "between": 24,
+       "inside": 8,
+       "ratio": 3,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x152187df4",
+   "taskId": "T04-cards-profile",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 15,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 15.984375,
+       "inside": 8,
+       "ratio": 1.998046875,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x18fff92b6",
+   "taskId": "T10-dynamic-thread",
+   "arm": "X1",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": 4,
+   "groupCases": 5,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "composer-label",
+       "control": "composer-input",
+       "ownGap": 8,
+       "otherGap": 32,
+       "ratio": 4
+      }
+     ],
+     "groups": [
+      {
+       "parent": "comments",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x1775efae2",
+   "taskId": "T04-cards-profile",
+   "arm": "X1",
+   "proximityPairs": 0,
+   "proximityFailures": 0,
+   "proximityTies": 0,
+   "proximityMedianRatio": null,
+   "groupCases": 15,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 2,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 15.984375,
+       "inside": 8,
+       "ratio": 1.998046875,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [],
+     "groups": [
+      {
+       "parent": "profile",
+       "between": 32,
+       "inside": 16,
+       "ratio": 2,
+       "bounded": false
+      },
+      {
+       "parent": "stats",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": true
+      },
+      {
+       "parent": "activity",
+       "between": 16,
+       "inside": 8,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "attemptId": "x13359c253",
+   "taskId": "T09-dynamic-checkout",
+   "arm": "X1",
+   "proximityPairs": 5,
+   "proximityFailures": 0,
+   "proximityTies": 5,
+   "proximityMedianRatio": 1,
+   "groupCases": 10,
+   "groupInversions": 0,
+   "groupTies": 0,
+   "groupRegionResolved": 0,
+   "groupMedianRatio": 4.083333333333334,
+   "perViewport": [
+    {
+     "width": 320,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 148,
+       "inside": 24,
+       "ratio": 6.166666666666667,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 375,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 148,
+       "inside": 24,
+       "ratio": 6.166666666666667,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 768,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 148,
+       "inside": 24,
+       "ratio": 6.166666666666667,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1024,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 148,
+       "inside": 24,
+       "ratio": 6.166666666666667,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    },
+    {
+     "width": 1440,
+     "proximity": [
+      {
+       "element": "promo-label",
+       "control": "promo-input",
+       "ownGap": 16,
+       "otherGap": 16,
+       "ratio": 1
+      }
+     ],
+     "groups": [
+      {
+       "parent": "summary",
+       "between": 148,
+       "inside": 24,
+       "ratio": 6.166666666666667,
+       "bounded": false
+      },
+      {
+       "parent": "items",
+       "between": 24,
+       "inside": 12,
+       "ratio": 2,
+       "bounded": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,313 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": "main",
+   "context": "",
+   "property": "max-width",
+   "value": "90rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "main",
+   "context": "",
+   "property": "margin",
+   "value": "0 auto",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".transactions",
+   "context": "",
+   "property": "padding",
+   "value": "1rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".transactions",
+   "context": "",
+   "property": "display",
+   "value": "grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".summary",
+   "context": "",
+   "property": "gap",
+   "value": "1rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".summary",
+   "context": "",
+   "property": "grid-template-columns",
+   "value": "minmax(0, 1fr)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "main",
+   "context": "",
+   "property": "align-items",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "main > *",
+   "context": "",
+   "property": "min-width",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".chart",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".tile",
+   "context": "",
+   "property": "gap",
+   "value": "0.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".tile",
+   "context": "",
+   "property": "align-content",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".chart img",
+   "context": "",
+   "property": "display",
+   "value": "block",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".transactions",
+   "context": "",
+   "property": "gap",
+   "value": "0.75rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field",
+   "context": "",
+   "property": "gap",
+   "value": "0.375rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "table",
+   "context": "",
+   "property": "width",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".chart img",
+   "context": "",
+   "property": "height",
+   "value": "auto",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".chart img",
+   "context": "",
+   "property": "aspect-ratio",
+   "value": "2 / 1",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".table-wrap",
+   "context": "",
+   "property": "overflow-x",
+   "value": "auto",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "th, td",
+   "context": "",
+   "property": "text-align",
+   "value": "left",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "th, td",
+   "context": "",
+   "property": "padding",
+   "value": "0.5rem 0.75rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "th:last-child, td:last-child",
+   "context": "",
+   "property": "text-align",
+   "value": "right",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".summary",
+   "context": "@media (min-width: 40rem)",
+   "property": "grid-template-columns",
+   "value": "repeat(3, minmax(0, 1fr))",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "main",
+   "context": "@media (min-width: 60rem)",
+   "property": "grid-template-columns",
+   "value": "minmax(0, 1fr) 18rem",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "main",
+   "context": "@media (min-width: 60rem)",
+   "property": "padding",
+   "value": "1.5rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "main",
+   "context": "@media (min-width: 60rem)",
+   "property": "gap",
+   "value": "1.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "h1, .summary",
+   "context": "@media (min-width: 60rem)",
+   "property": "grid-column",
+   "value": "1 / -1",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".filters",
+   "context": "@media (min-width: 60rem)",
+   "property": "grid-column",
+   "value": "2",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".filters",
+   "context": "@media (min-width: 60rem)",
+   "property": "grid-row",
+   "value": "3 / span 2",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".transactions",
+   "context": "@media (min-width: 60rem)",
+   "property": "grid-column",
+   "value": "1",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".chart",
+   "context": "@media (min-width: 60rem)",
+   "property": "grid-row",
+   "value": "3",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".transactions",
+   "context": "@media (min-width: 60rem)",
+   "property": "grid-row",
+   "value": "4",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "@",
+   "context": "@media (min-width: 40rem)",
+   "property": "@condition",
+   "value": "@media (min-width: 40rem)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "@",
+   "context": "@media (min-width: 60rem)",
+   "property": "@condition",
+   "value": "@media (min-width: 60rem)",
+   "category": "responsive",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [
+  {
+   "source": "css",
+   "selector": "th, td",
+   "context": "",
+   "property": "border-bottom",
+   "value": "1px solid #ddd",
+   "category": "dimension",
+   "kind": "uncertain"
+  }
+ ],
+ "corrective": []
+}

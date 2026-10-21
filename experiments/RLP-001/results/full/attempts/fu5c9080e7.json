@@ -1,0 +1,1168 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu5c9080e7",
+ "taskId": "T11-adversarial-settings",
+ "category": "adversarial",
+ "split": "dev",
+ "arm": "A",
+ "repetition": 2,
+ "executionOrder": 136,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:28:52.188Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 6,
+  "inputTokens": 308825,
+  "inputUncachedTokens": 12,
+  "cacheCreationTokens": 19775,
+  "cacheReadTokens": 289038,
+  "outputTokens": 406,
+  "totalTokens": 309231,
+  "toolCalls": 9,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 4,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 12137,
+  "toolTokens": null,
+  "durationMs": 65216,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 3,
+  "repairIterations": 2,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:10:15.632Z",
+    "durationMs": 3716,
+    "failures": 16,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:10:33.930Z",
+    "durationMs": 2782,
+    "failures": 10,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   },
+   {
+    "run": 3,
+    "startedAt": "2026-10-21T19:10:41.035Z",
+    "durationMs": 3385,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/003.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 7,
+  "standardInstances": 46,
+  "standardByInvariant": {
+   "horizontal-overflow": 6,
+   "offscreen": 12,
+   "clearance": 10,
+   "containment": 12,
+   "reading-order": 6
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 7,
+  "heldoutDistinct": 18,
+  "heldoutByCondition": {
+   "heldout-text": 8,
+   "font-scale": 27
+  },
+  "heldoutByInvariant": {
+   "horizontal-overflow": 3,
+   "offscreen": 13,
+   "clearance": 3,
+   "containment": 12,
+   "reading-order": 2,
+   "content-overflow": 2
+  },
+  "responsiveFailureViewports": [
+   320,
+   375,
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 7,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 11,
+  "heldoutByCondition": {
+   "font-scale": 11
+  },
+  "heldoutByInvariant": {
+   "content-overflow": 2,
+   "horizontal-overflow": 1,
+   "offscreen": 2,
+   "containment": 6
+  },
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 38,
+  "derived": 0,
+  "uncertain": 0,
+  "corrective": 10,
+  "total": 38,
+  "rawStatements": {
+   "explicit": 54,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 33,
+  "byCategory": {
+   "explicit": {
+    "padding": 5,
+    "margin": 10,
+    "alignment": 1,
+    "positioning": 2,
+    "grouping": 4,
+    "responsive": 5,
+    "dimension": 11,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 2,
+    "margin": 2,
+    "alignment": 0,
+    "positioning": 2,
+    "grouping": 1,
+    "responsive": 2,
+    "dimension": 1,
+    "correction": 10
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 320",
+    "observed": "538 (ULI-L05)",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-label",
+    "expected": "within 0..320",
+    "observed": "58,614.09 480×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-input",
+    "expected": "within 0..320",
+    "observed": "58,642.09 480×42",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-label",
+    "expected": "inside group",
+    "observed": "58,614.09 480×24 vs 37,300.09 246×491",
+    "relationship": "endpoint-label ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-input",
+    "expected": "inside group",
+    "observed": "58,642.09 480×42 vs 37,300.09 246×491",
+    "relationship": "endpoint-input ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:auto-hint",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 320",
+    "observed": "538 (ULI-L05)",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:auto-hint",
+    "invariant": "offscreen",
+    "element": "endpoint-label",
+    "expected": "within 0..320",
+    "observed": "58,806.09 480×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:auto-hint",
+    "invariant": "offscreen",
+    "element": "endpoint-input",
+    "expected": "within 0..320",
+    "observed": "58,834.09 480×42",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:auto-hint",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:auto-hint",
+    "invariant": "containment",
+    "element": "endpoint-label",
+    "expected": "inside group",
+    "observed": "58,806.09 480×24 vs 37,300.09 246×683",
+    "relationship": "endpoint-label ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:auto-hint",
+    "invariant": "containment",
+    "element": "endpoint-input",
+    "expected": "inside group",
+    "observed": "58,834.09 480×42 vs 37,300.09 246×683",
+    "relationship": "endpoint-input ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 375",
+    "observed": "538 (ULI-L05)",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-label",
+    "expected": "within 0..375",
+    "observed": "58,542.09 480×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-input",
+    "expected": "within 0..375",
+    "observed": "58,570.09 480×42",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-label",
+    "expected": "inside group",
+    "observed": "58,542.09 480×24 vs 37,300.09 301×419",
+    "relationship": "endpoint-label ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-input",
+    "expected": "inside group",
+    "observed": "58,570.09 480×42 vs 37,300.09 301×419",
+    "relationship": "endpoint-input ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:auto-hint",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 375",
+    "observed": "538 (ULI-L05)",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:auto-hint",
+    "invariant": "offscreen",
+    "element": "endpoint-label",
+    "expected": "within 0..375",
+    "observed": "58,662.09 480×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:auto-hint",
+    "invariant": "offscreen",
+    "element": "endpoint-input",
+    "expected": "within 0..375",
+    "observed": "58,690.09 480×42",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:auto-hint",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:auto-hint",
+    "invariant": "containment",
+    "element": "endpoint-label",
+    "expected": "inside group",
+    "observed": "58,662.09 480×24 vs 37,300.09 301×539",
+    "relationship": "endpoint-label ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:auto-hint",
+    "invariant": "containment",
+    "element": "endpoint-input",
+    "expected": "inside group",
+    "observed": "58,690.09 480×42 vs 37,300.09 301×539",
+    "relationship": "endpoint-input ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 768",
+    "observed": "818 (ULI-L05)",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-label",
+    "expected": "within 0..768",
+    "observed": "338,324.09 480×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-input",
+    "expected": "within 0..768",
+    "observed": "338,352.09 480×42",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-label",
+    "expected": "inside group",
+    "observed": "338,324.09 480×24 vs 317,130.09 414×371",
+    "relationship": "endpoint-label ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-input",
+    "expected": "inside group",
+    "observed": "338,352.09 480×42 vs 317,130.09 414×371",
+    "relationship": "endpoint-input ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 317,86.59 414×27.5, side-3 at 33,162.59 222×32",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 768",
+    "observed": "818 (ULI-L05)",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "offscreen",
+    "element": "endpoint-label",
+    "expected": "within 0..768",
+    "observed": "338,396.09 480×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "offscreen",
+    "element": "endpoint-input",
+    "expected": "within 0..768",
+    "observed": "338,424.09 480×42",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "containment",
+    "element": "endpoint-label",
+    "expected": "inside group",
+    "observed": "338,396.09 480×24 vs 317,130.09 414×443",
+    "relationship": "endpoint-label ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "containment",
+    "element": "endpoint-input",
+    "expected": "inside group",
+    "observed": "338,424.09 480×42 vs 317,130.09 414×443",
+    "relationship": "endpoint-input ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 317,86.59 414×27.5, side-3 at 33,162.59 222×32",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 317,86.59 670×27.5, side-3 at 33,162.59 222×32",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:auto-hint",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 317,86.59 670×27.5, side-3 at 33,162.59 222×32",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 317,86.59 1086×27.5, side-3 at 33,162.59 222×32",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 317,86.59 1086×27.5, side-3 at 33,162.59 222×32",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 320",
+    "observed": "538 (ULI-L05)",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-label",
+    "expected": "within 0..320",
+    "observed": "58,614.09 480×24",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-input",
+    "expected": "within 0..320",
+    "observed": "58,642.09 480×42",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-label",
+    "expected": "inside group",
+    "observed": "58,614.09 480×24 vs 37,300.09 246×539",
+    "relationship": "endpoint-label ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-input",
+    "expected": "inside group",
+    "observed": "58,642.09 480×42 vs 37,300.09 246×539",
+    "relationship": "endpoint-input ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 317,86.59 1086×27.5, side-3 at 33,162.59 222×32",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 375",
+    "observed": "1074 (ULI-L05)",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-label",
+    "expected": "within 0..375",
+    "observed": "114,6330.38 960×48",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-input",
+    "expected": "within 0..375",
+    "observed": "114,6386.38 960×82",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "interval-label",
+    "expected": "within 0..375",
+    "observed": "114,6500.38 320×48",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "interval-input",
+    "expected": "within 0..375",
+    "observed": "114,6556.38 320×82",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "auto-label",
+    "expected": "content fits its box",
+    "observed": "scroll 32×3024 > client 9×3024",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "auto-hint",
+    "expected": "content fits its box",
+    "observed": "scroll 28×2352 > client 9×2352",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "clearance",
+    "element": "group-legend",
+    "expected": ">= 4px from group boundary",
+    "observed": "0px",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-label",
+    "expected": "inside group",
+    "observed": "114,6330.38 960×48 vs 73,664.38 229×6015",
+    "relationship": "endpoint-label ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-input",
+    "expected": "inside group",
+    "observed": "114,6386.38 960×82 vs 73,664.38 229×6015",
+    "relationship": "endpoint-input ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "interval-label",
+    "expected": "inside group",
+    "observed": "114,6500.38 320×48 vs 73,664.38 229×6015",
+    "relationship": "interval-label ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "interval-input",
+    "expected": "inside group",
+    "observed": "114,6556.38 320×82 vs 73,664.38 229×6015",
+    "relationship": "interval-input ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 768",
+    "observed": "1634 (ULI-L05)",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "row",
+    "expected": "within 0..768",
+    "observed": "674,1026.19 138×5450",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "auto-label",
+    "expected": "within 0..768",
+    "observed": "779,1059.19 0×3024",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "auto-hint",
+    "expected": "within 0..768",
+    "observed": "779,4091.19 0×2352",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-label",
+    "expected": "within 0..768",
+    "observed": "674,6508.19 960×48",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "endpoint-input",
+    "expected": "within 0..768",
+    "observed": "674,6564.19 960×82",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "interval-label",
+    "expected": "within 0..768",
+    "observed": "674,6678.19 320×48",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "interval-input",
+    "expected": "within 0..768",
+    "observed": "674,6734.19 320×82",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "group-legend",
+    "expected": "inside group",
+    "observed": "674,314.19 52.53×672 vs 633,314.19 82×6543",
+    "relationship": "group-legend ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "row",
+    "expected": "inside group",
+    "observed": "674,1026.19 138×5450 vs 633,314.19 82×6543",
+    "relationship": "row ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-label",
+    "expected": "inside group",
+    "observed": "674,6508.19 960×48 vs 633,314.19 82×6543",
+    "relationship": "endpoint-label ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-input",
+    "expected": "inside group",
+    "observed": "674,6564.19 960×82 vs 633,314.19 82×6543",
+    "relationship": "endpoint-input ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "interval-label",
+    "expected": "inside group",
+    "observed": "674,6678.19 320×48 vs 633,314.19 82×6543",
+    "relationship": "interval-label ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "interval-input",
+    "expected": "inside group",
+    "observed": "674,6734.19 320×82 vs 633,314.19 82×6543",
+    "relationship": "interval-input ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 633,172.19 62×110, side-3 at 65,324.19 446×64",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 2
+   }
+  ],
+  "final": [
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "auto-label",
+    "expected": "content fits its box",
+    "observed": "scroll 32×3024 > client 9×3024",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "auto-hint",
+    "expected": "content fits its box",
+    "observed": "scroll 28×2352 > client 9×2352",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "horizontal-overflow",
+    "element": "document",
+    "expected": "scrollWidth <= 768",
+    "observed": "811 (ULI-L05)",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "auto-label",
+    "expected": "within 0..768",
+    "observed": "779,1140.19 0×3024",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "auto-hint",
+    "expected": "within 0..768",
+    "observed": "779,4172.19 0×2352",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "row",
+    "expected": "inside group",
+    "observed": "674,1107.19 66×5450 vs 633,314.19 82×9408",
+    "relationship": "row ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "auto-input",
+    "expected": "inside row",
+    "observed": "707,1140.19 48×48 vs 674,1107.19 66×5450",
+    "relationship": "auto-input ⊂ row",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "auto-label",
+    "expected": "inside row",
+    "observed": "779,1140.19 0×3024 vs 674,1107.19 66×5450",
+    "relationship": "auto-label ⊂ row",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "auto-hint",
+    "expected": "inside row",
+    "observed": "779,4172.19 0×2352 vs 674,1107.19 66×5450",
+    "relationship": "auto-hint ⊂ row",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "endpoint-input",
+    "expected": "inside group",
+    "observed": "674,8661.19 50×82 vs 633,314.19 82×9408",
+    "relationship": "endpoint-input ⊂ group",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "interval-input",
+    "expected": "inside group",
+    "observed": "674,9599.19 50×82 vs 633,314.19 82×9408",
+    "relationship": "interval-input ⊂ group",
+    "fontScale": 2
+   }
+  ]
+ }
+}

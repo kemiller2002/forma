@@ -1,0 +1,304 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": "body",
+   "context": "",
+   "property": "padding",
+   "value": "1rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "form",
+   "context": "",
+   "property": "max-width",
+   "value": "44rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "form",
+   "context": "",
+   "property": "margin",
+   "value": "0 auto",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "form",
+   "context": "",
+   "property": "padding",
+   "value": "1.5rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "fieldset",
+   "context": "",
+   "property": "display",
+   "value": "grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row",
+   "context": "",
+   "property": "gap",
+   "value": "1.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".check input",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".check",
+   "context": "",
+   "property": "gap",
+   "value": "0.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row",
+   "context": "",
+   "property": "grid-template-columns",
+   "value": "minmax(0, 1fr)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field",
+   "context": "",
+   "property": "gap",
+   "value": "0.375rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field",
+   "context": "",
+   "property": "align-content",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "fieldset",
+   "context": "",
+   "property": "min-width",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field input",
+   "context": "",
+   "property": "width",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field input",
+   "context": "",
+   "property": "box-sizing",
+   "value": "border-box",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".msgs",
+   "context": "",
+   "property": "gap",
+   "value": "0.25rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row",
+   "context": "@media (min-width: 40rem)",
+   "property": "grid-template-columns",
+   "value": "repeat(2, minmax(0, 1fr))",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row",
+   "context": "@media (min-width: 40rem)",
+   "property": "column-gap",
+   "value": "1.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field",
+   "context": "@media (min-width: 40rem)",
+   "property": "row-gap",
+   "value": "0.375rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field",
+   "context": "@media (min-width: 40rem)",
+   "property": "grid-row",
+   "value": "span 3",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field",
+   "context": "@media (min-width: 40rem)",
+   "property": "grid-template-rows",
+   "value": "subgrid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "padding",
+   "value": "0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "margin-bottom",
+   "value": "0.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".check",
+   "context": "",
+   "property": "align-items",
+   "value": "center",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".check",
+   "context": "",
+   "property": "min-height",
+   "value": "1.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".check input",
+   "context": "",
+   "property": "flex",
+   "value": "none",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "flex-wrap",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "justify-content",
+   "value": "flex-end",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "gap",
+   "value": "0.75rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions button",
+   "context": "",
+   "property": "min-height",
+   "value": "2.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions button",
+   "context": "",
+   "property": "min-width",
+   "value": "2.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "@",
+   "context": "@media (min-width: 40rem)",
+   "property": "@condition",
+   "value": "@media (min-width: 40rem)",
+   "category": "responsive",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [
+  {
+   "source": "css",
+   "selector": "fieldset",
+   "context": "",
+   "property": "border",
+   "value": "0",
+   "category": "dimension",
+   "kind": "uncertain"
+  }
+ ],
+ "corrective": []
+}

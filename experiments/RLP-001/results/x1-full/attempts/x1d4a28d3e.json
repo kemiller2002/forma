@@ -1,0 +1,560 @@
+{
+ "experiment": "RLP-001",
+ "phase": "x1-full",
+ "attemptId": "x1d4a28d3e",
+ "taskId": "T11-adversarial-settings",
+ "category": "adversarial",
+ "split": "dev",
+ "arm": "X1",
+ "repetition": 2,
+ "executionOrder": 18,
+ "model": "sonnet",
+ "engineCommit": "f2f06a2abeb171d003e57dbe38c2a1d4c88ebee5",
+ "collectedAt": "2026-10-21T19:44:44.041Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 7,
+  "inputTokens": 359634,
+  "inputUncachedTokens": 14,
+  "cacheCreationTokens": 18594,
+  "cacheReadTokens": 341026,
+  "outputTokens": 82,
+  "totalTokens": 359716,
+  "toolCalls": 7,
+  "toolCallsByName": {
+   "Read": 1,
+   "Bash": 5,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 12437,
+  "toolTokens": null,
+  "durationMs": 64758,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 4,
+  "repairIterations": 3,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:18:18.490Z",
+    "durationMs": 5136,
+    "failures": 3,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:18:29.914Z",
+    "durationMs": 1806,
+    "failures": 3,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   },
+   {
+    "run": 3,
+    "startedAt": "2026-10-21T19:18:38.016Z",
+    "durationMs": 1741,
+    "failures": 3,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/003.html"
+   },
+   {
+    "run": 4,
+    "startedAt": "2026-10-21T19:18:47.513Z",
+    "durationMs": 1655,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/004.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 2,
+  "standardInstances": 8,
+  "standardByInvariant": {
+   "reading-order": 6,
+   "unexpected-shift": 2
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 2,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 1
+  },
+  "responsiveFailureViewports": [
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 2,
+  "unexpectedShift": 2,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 22,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 3.099999999627471,
+       "memoEntries": 23
+      },
+      "totalMs": 6.7000000001862645,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 22,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.2000000001862645,
+       "memoEntries": 23
+      },
+      "totalMs": 4.7999999998137355,
+      "energy": 0.5908203125
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 21,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 2.3999999994412065,
+       "memoEntries": 23
+      },
+      "totalMs": 5.2999999998137355,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.8999999994412065,
+       "memoEntries": 23
+      },
+      "totalMs": 5.7000000001862645,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 4.2000000001862645,
+       "memoEntries": 23
+      },
+      "totalMs": 17.299999999813735,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 1,
+  "standardByInvariant": {
+   "unexpected-shift": 1
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 1,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.2999999998137355,
+       "memoEntries": 23
+      },
+      "totalMs": 4.3999999994412065,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.2999999998137355,
+       "memoEntries": 23
+      },
+      "totalMs": 9.400000000372529,
+      "energy": 0.5908203125
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 19,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.5,
+       "memoEntries": 23
+      },
+      "totalMs": 11.699999999254942,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 19,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 3.3999999994412065,
+       "memoEntries": 23
+      },
+      "totalMs": 8.899999999441206,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 18,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 3.2999999998137355,
+       "memoEntries": 23
+      },
+      "totalMs": 17.300000000745058,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 10,
+  "derived": 40,
+  "uncertain": 0,
+  "corrective": 4,
+  "total": 10,
+  "rawStatements": {
+   "explicit": 26,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 10,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 1,
+    "dimension": 6,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 4,
+    "margin": 9,
+    "alignment": 9,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 9,
+    "dimension": 9,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 1,
+    "dimension": 2,
+    "correction": 4
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 478×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 478×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 734×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 734×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:auto-hint",
+    "invariant": "unexpected-shift",
+    "element": "auto-label",
+    "expected": "unchanged (above auto-hint)",
+    "observed": "moved 40px",
+    "relationship": "auto-label ↑ auto-hint"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 1150×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 1150×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "unexpected-shift",
+    "element": "auto-label",
+    "expected": "unchanged (above auto-hint)",
+    "observed": "moved 40px",
+    "relationship": "auto-label ↑ auto-hint"
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 1150×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "unexpected-shift",
+    "element": "auto-label",
+    "expected": "unchanged (above auto-hint)",
+    "observed": "moved 40px",
+    "relationship": "auto-label ↑ auto-hint"
+   }
+  ]
+ }
+}

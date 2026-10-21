@@ -1,0 +1,51 @@
+{
+ "explicit": [
+  {
+   "source": "style-attr",
+   "selector": "header#8",
+   "context": "",
+   "property": "--ef-cluster-gap",
+   "value": "var(--ef-primitive-spacing-5)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "nav#10",
+   "context": "",
+   "property": "--ef-cluster-gap",
+   "value": "var(--ef-primitive-spacing-4)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "header#8",
+   "context": "",
+   "property": "class",
+   "value": "ef-surface",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "nav#10",
+   "context": "",
+   "property": "class",
+   "value": "ef-cluster",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#16",
+   "context": "",
+   "property": "class",
+   "value": "ef-field",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

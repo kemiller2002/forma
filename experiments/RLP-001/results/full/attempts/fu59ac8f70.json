@@ -1,0 +1,442 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu59ac8f70",
+ "taskId": "T04-cards-profile",
+ "category": "cards",
+ "split": "heldout",
+ "arm": "D",
+ "repetition": 1,
+ "executionOrder": 88,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:22:51.058Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 4,
+  "inputTokens": 199809,
+  "inputUncachedTokens": 8,
+  "cacheCreationTokens": 18189,
+  "cacheReadTokens": 181612,
+  "outputTokens": 2019,
+  "totalTokens": 201828,
+  "toolCalls": 7,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 2,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 12470,
+  "toolTokens": null,
+  "durationMs": 39592,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:07:24.502Z",
+    "durationMs": 9881,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 1,
+  "standardByInvariant": {
+   "unexpected-shift": 1
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   768
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 1,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 140,
+       "iterations": 2292,
+       "maxIterations": 23,
+       "unconverged": 0,
+       "measureCalls": 40,
+       "aborted": false,
+       "solveMs": 53.69999999925494,
+       "memoEntries": 60
+      },
+      "totalMs": 58.80000000074506,
+      "energy": 1.1736113420879224
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 89,
+       "iterations": 1234,
+       "maxIterations": 71,
+       "unconverged": 0,
+       "measureCalls": 39,
+       "aborted": false,
+       "solveMs": 22.5,
+       "memoEntries": 59
+      },
+      "totalMs": 30.5,
+      "energy": 2.3689515312158025
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 21,
+       "iterations": 763,
+       "maxIterations": 95,
+       "unconverged": 0,
+       "measureCalls": 36,
+       "aborted": false,
+       "solveMs": 33.5,
+       "memoEntries": 56
+      },
+      "totalMs": 42.60000000055879,
+      "energy": 1.9587926008022222e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 21,
+       "iterations": 785,
+       "maxIterations": 113,
+       "unconverged": 0,
+       "measureCalls": 36,
+       "aborted": false,
+       "solveMs": 29.799999999813735,
+       "memoEntries": 56
+      },
+      "totalMs": 34.39999999944121,
+      "energy": 1.6533049568743014e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 21,
+       "iterations": 798,
+       "maxIterations": 124,
+       "unconverged": 0,
+       "measureCalls": 36,
+       "aborted": false,
+       "solveMs": 39.89999999944121,
+       "memoEntries": 56
+      },
+      "totalMs": 55.5,
+      "energy": 8.790286250501326e-8
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 1,
+  "standardByInvariant": {
+   "unexpected-shift": 1
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   768
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 1,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 140,
+       "iterations": 2292,
+       "maxIterations": 23,
+       "unconverged": 0,
+       "measureCalls": 40,
+       "aborted": false,
+       "solveMs": 67.70000000018626,
+       "memoEntries": 60
+      },
+      "totalMs": 71.20000000018626,
+      "energy": 1.1736113420879224
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 89,
+       "iterations": 1234,
+       "maxIterations": 71,
+       "unconverged": 0,
+       "measureCalls": 39,
+       "aborted": false,
+       "solveMs": 29.59999999962747,
+       "memoEntries": 59
+      },
+      "totalMs": 33.5,
+      "energy": 2.3689515312158025
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 21,
+       "iterations": 763,
+       "maxIterations": 95,
+       "unconverged": 0,
+       "measureCalls": 36,
+       "aborted": false,
+       "solveMs": 29.200000000186265,
+       "memoEntries": 56
+      },
+      "totalMs": 37,
+      "energy": 1.9587926008022222e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 21,
+       "iterations": 785,
+       "maxIterations": 113,
+       "unconverged": 0,
+       "measureCalls": 36,
+       "aborted": false,
+       "solveMs": 23,
+       "memoEntries": 56
+      },
+      "totalMs": 29.59999999962747,
+      "energy": 1.6533049568743014e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 27,
+       "evaluations": 21,
+       "iterations": 798,
+       "maxIterations": 124,
+       "unconverged": 0,
+       "measureCalls": 36,
+       "aborted": false,
+       "solveMs": 42.5,
+       "memoEntries": 56
+      },
+      "totalMs": 50.200000000186265,
+      "energy": 8.790286250501326e-8
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 17,
+  "derived": 57,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 17,
+  "rawStatements": {
+   "explicit": 45,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 17,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 2,
+    "alignment": 2,
+    "positioning": 1,
+    "grouping": 2,
+    "responsive": 2,
+    "dimension": 8,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 5,
+    "margin": 13,
+    "alignment": 13,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 13,
+    "dimension": 13,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:role",
+    "invariant": "unexpected-shift",
+    "element": "name",
+    "expected": "unchanged (above role)",
+    "observed": "moved 2.25px",
+    "relationship": "name ↑ role"
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:role",
+    "invariant": "unexpected-shift",
+    "element": "name",
+    "expected": "unchanged (above role)",
+    "observed": "moved 2.25px",
+    "relationship": "name ↑ role"
+   }
+  ]
+ }
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deeply nested settings in a narrow column</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+  <main data-rlp="page" data-rl-root data-rl="group" data-rl-bond="loose">
+  <h1 data-rlp="page-title">Device settings</h1>
+  <div data-rlp="layout" data-rl="group" data-rl-flow="row" data-rl-bond="loose">
+    <nav data-rlp="sidebar" data-rl="container" aria-label="Settings sections" data-rl-min="20rem" data-rl-max="20rem" data-rl-bond="tight" data-rl-flow="row">
+      <a data-rlp="side-1" href="#">General</a>
+      <a data-rlp="side-2" href="#" aria-current="page">Sync</a>
+      <a data-rlp="side-3" href="#">Security</a>
+    </nav>
+    <section data-rlp="content" data-rl="container" data-rl-fill data-rl-min="20rem" data-rl-bond="loose">
+      <h2 data-rlp="sync-title">Sync</h2>
+      <fieldset data-rlp="group" data-rl="container" data-rl-bond="loose">
+        <legend data-rlp="group-legend">Synchronization</legend>
+        <div data-rlp="row" data-rl="container" data-rl-bond="tight">
+          <div data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="start">
+            <input data-rlp="auto-input" type="checkbox" id="auto" aria-describedby="auto-hint" data-rl-size="content">
+            <label data-rlp="auto-label" for="auto" data-rl-fill>AutomaticallySynchronizeAcrossAllRegisteredDevicesAndWorkspaces</label>
+          </div>
+          <p data-rlp="auto-hint" id="auto-hint">Changes appear on every signed-in device within a minute.</p>
+        </div>
+        <div data-rl="group" data-rl-bond="tight">
+          <label data-rlp="endpoint-label" for="endpoint">Sync endpoint URL (prefers at least 30rem of width)</label>
+          <input data-rlp="endpoint-input" id="endpoint" type="url" data-rl-min="30rem">
+        </div>
+        <div data-rl="group" data-rl-bond="tight">
+          <label data-rlp="interval-label" for="interval">Interval in minutes</label>
+          <input data-rlp="interval-input" id="interval" type="number" min="1">
+        </div>
+      </fieldset>
+      <button data-rlp="save" type="button" data-rl-size="content">Save settings</button>
+    </section>
+  </div>
+</main>
+</body>
+</html>

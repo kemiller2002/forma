@@ -1,0 +1,386 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": ".page",
+   "context": "",
+   "property": "max-inline-size",
+   "value": "75rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".page",
+   "context": "",
+   "property": "margin-inline",
+   "value": "auto",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".page",
+   "context": "",
+   "property": "padding",
+   "value": "1.5rem 1rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field",
+   "context": "",
+   "property": "display",
+   "value": "grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".content",
+   "context": "",
+   "property": "gap",
+   "value": "1.5rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".layout",
+   "context": "",
+   "property": "grid-template-columns",
+   "value": "minmax(0, 1fr)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row",
+   "context": "",
+   "property": "align-items",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".layout",
+   "context": "@media (min-width: 48rem)",
+   "property": "grid-template-columns",
+   "value": "minmax(14rem, 20rem) minmax(0, 1fr)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row",
+   "context": "",
+   "property": "padding",
+   "value": "1rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".actions",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sidebar ul",
+   "context": "",
+   "property": "flex-wrap",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sidebar ul",
+   "context": "",
+   "property": "gap",
+   "value": "0.25rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sidebar a",
+   "context": "",
+   "property": "display",
+   "value": "block",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sidebar a",
+   "context": "",
+   "property": "padding",
+   "value": "0.5rem 0.625rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sidebar a",
+   "context": "",
+   "property": "min-block-size",
+   "value": "2.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".content",
+   "context": "",
+   "property": "padding",
+   "value": "1.5rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field",
+   "context": "",
+   "property": "min-inline-size",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".group",
+   "context": "",
+   "property": "gap",
+   "value": "1.25rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".group legend",
+   "context": "",
+   "property": "float",
+   "value": "left",
+   "category": "positioning",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".group legend",
+   "context": "",
+   "property": "inline-size",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".group legend",
+   "context": "",
+   "property": "padding",
+   "value": "0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".group legend + *",
+   "context": "",
+   "property": "clear",
+   "value": "both",
+   "category": "positioning",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row",
+   "context": "",
+   "property": "grid-template-columns",
+   "value": "auto minmax(0, 1fr)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row",
+   "context": "",
+   "property": "column-gap",
+   "value": "0.75rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row",
+   "context": "",
+   "property": "row-gap",
+   "value": "0.25rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row .hint",
+   "context": "",
+   "property": "grid-column",
+   "value": "2",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row input",
+   "context": "",
+   "property": "margin-block-start",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".field",
+   "context": "",
+   "property": "gap",
+   "value": "0.375rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".endpoint",
+   "context": "",
+   "property": "inline-size",
+   "value": "min(100%, 30rem)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".interval",
+   "context": "",
+   "property": "max-inline-size",
+   "value": "12rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "@",
+   "context": "@media (min-width: 48rem)",
+   "property": "@condition",
+   "value": "@media (min-width: 48rem)",
+   "category": "responsive",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [
+  {
+   "source": "css",
+   "selector": ".group",
+   "context": "",
+   "property": "border",
+   "value": "1px solid #c9c5bb",
+   "category": "dimension",
+   "kind": "uncertain"
+  }
+ ],
+ "corrective": [
+  {
+   "source": "css",
+   "selector": ".layout",
+   "context": "@media (min-width: 48rem)",
+   "property": "grid-template-columns",
+   "value": "minmax(14rem, 20rem) minmax(0, 1fr)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sidebar ul",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sidebar ul",
+   "context": "",
+   "property": "flex-wrap",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sidebar ul",
+   "context": "",
+   "property": "gap",
+   "value": "0.25rem",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sidebar a",
+   "context": "",
+   "property": "padding",
+   "value": "0.5rem 0.625rem",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".sidebar a",
+   "context": "",
+   "property": "min-block-size",
+   "value": "2.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".group legend",
+   "context": "",
+   "property": "float",
+   "value": "left",
+   "category": "positioning",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".group legend",
+   "context": "",
+   "property": "inline-size",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".group legend",
+   "context": "",
+   "property": "padding",
+   "value": "0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".group legend + *",
+   "context": "",
+   "property": "clear",
+   "value": "both",
+   "category": "positioning",
+   "kind": "explicit"
+  }
+ ]
+}

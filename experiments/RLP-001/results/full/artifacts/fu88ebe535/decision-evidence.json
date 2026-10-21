@@ -1,0 +1,169 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": "main",
+   "context": "",
+   "property": "padding",
+   "value": "var(--ef-primitive-spacing-4)",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".pref-item",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".pref-item",
+   "context": "",
+   "property": "align-items",
+   "value": "center",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".pref-item",
+   "context": "",
+   "property": "gap",
+   "value": "var(--ef-primitive-spacing-3)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".pref-item",
+   "context": "",
+   "property": "min-block-size",
+   "value": "1.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#24",
+   "context": "",
+   "property": "--ef-stack-gap",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "fieldset#30",
+   "context": "",
+   "property": "--ef-stack-gap",
+   "value": "var(--ef-primitive-spacing-3)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "form#9",
+   "context": "",
+   "property": "class",
+   "value": "ef-form",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "form#9",
+   "context": "",
+   "property": "class",
+   "value": "ef-surface",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#20",
+   "context": "",
+   "property": "class",
+   "value": "ef-form-row",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#27",
+   "context": "",
+   "property": "class",
+   "value": "ef-field",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "fieldset#30",
+   "context": "",
+   "property": "class",
+   "value": "ef-stack",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#38",
+   "context": "",
+   "property": "class",
+   "value": "ef-actions",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": [
+  {
+   "source": "style-attr",
+   "selector": "div#24",
+   "context": "",
+   "property": "--ef-stack-gap",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "fieldset#30",
+   "context": "",
+   "property": "--ef-stack-gap",
+   "value": "var(--ef-primitive-spacing-3)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "fieldset#30",
+   "context": "",
+   "property": "class",
+   "value": "ef-stack",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#27",
+   "context": "",
+   "property": "class",
+   "value": "ef-field",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#38",
+   "context": "",
+   "property": "class",
+   "value": "ef-actions",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ]
+}

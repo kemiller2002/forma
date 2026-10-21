@@ -1,0 +1,1442 @@
+{
+ "r1-c1/b01/image-1.png": {
+  "attemptId": "x117e36a42",
+  "arm": "X1",
+  "group": "T01-form-account|3|375"
+ },
+ "r1-c1/b01/image-2.png": {
+  "attemptId": "fuc91e49a4",
+  "arm": "C",
+  "group": "T01-form-account|3|375"
+ },
+ "r1-c1/b02/image-1.png": {
+  "attemptId": "fue9fbafa8",
+  "arm": "C",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r1-c1/b02/image-2.png": {
+  "attemptId": "x166cb46dc",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r1-c1/b03/image-1.png": {
+  "attemptId": "fueeb5d697",
+  "arm": "C",
+  "group": "T03-cards-product|2|375"
+ },
+ "r1-c1/b03/image-2.png": {
+  "attemptId": "x1f6755795",
+  "arm": "X1",
+  "group": "T03-cards-product|2|375"
+ },
+ "r1-c1/b04/image-1.png": {
+  "attemptId": "fu4d441cea",
+  "arm": "C",
+  "group": "T01-form-account|1|375"
+ },
+ "r1-c1/b04/image-2.png": {
+  "attemptId": "x1fc101ecb",
+  "arm": "X1",
+  "group": "T01-form-account|1|375"
+ },
+ "r1-c1/b05/image-1.png": {
+  "attemptId": "x1a67bca27",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r1-c1/b05/image-2.png": {
+  "attemptId": "fu3fcb5c10",
+  "arm": "C",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r1-c1/b06/image-1.png": {
+  "attemptId": "fu3c051d74",
+  "arm": "C",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r1-c1/b06/image-2.png": {
+  "attemptId": "x1e5cecb0c",
+  "arm": "X1",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r1-c1/b07/image-1.png": {
+  "attemptId": "fube9b7229",
+  "arm": "C",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r1-c1/b07/image-2.png": {
+  "attemptId": "x137c66848",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r1-c1/b08/image-1.png": {
+  "attemptId": "x1001bb0be",
+  "arm": "X1",
+  "group": "T01-form-account|2|375"
+ },
+ "r1-c1/b08/image-2.png": {
+  "attemptId": "fu7cff66d0",
+  "arm": "C",
+  "group": "T01-form-account|2|375"
+ },
+ "r1-c1/b09/image-1.png": {
+  "attemptId": "x1a25b598b",
+  "arm": "X1",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r1-c1/b09/image-2.png": {
+  "attemptId": "fubb407509",
+  "arm": "C",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r1-c1/b10/image-1.png": {
+  "attemptId": "x1f08fb7bb",
+  "arm": "X1",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r1-c1/b10/image-2.png": {
+  "attemptId": "fu652d9f84",
+  "arm": "C",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r1-c1/b11/image-1.png": {
+  "attemptId": "fudf8b1b5b",
+  "arm": "C",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r1-c1/b11/image-2.png": {
+  "attemptId": "x1ab322000",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r1-c1/b12/image-1.png": {
+  "attemptId": "fu93fae6de",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r1-c1/b12/image-2.png": {
+  "attemptId": "x13359c253",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r1-c1/b13/image-1.png": {
+  "attemptId": "x1daeb3e44",
+  "arm": "X1",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r1-c1/b13/image-2.png": {
+  "attemptId": "fu33cb209d",
+  "arm": "C",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r1-c1/b14/image-1.png": {
+  "attemptId": "fu40a7cfb4",
+  "arm": "C",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r1-c1/b14/image-2.png": {
+  "attemptId": "x1d2be5ab6",
+  "arm": "X1",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r1-c1/b15/image-1.png": {
+  "attemptId": "fue7e0c36b",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r1-c1/b15/image-2.png": {
+  "attemptId": "x1f085808a",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r1-c1/b16/image-1.png": {
+  "attemptId": "x11c827dbc",
+  "arm": "X1",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r1-c1/b16/image-2.png": {
+  "attemptId": "fu95140c20",
+  "arm": "C",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r1-c1/b17/image-1.png": {
+  "attemptId": "x1775efae2",
+  "arm": "X1",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r1-c1/b17/image-2.png": {
+  "attemptId": "fu858c2ae3",
+  "arm": "C",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r1-c1/b18/image-1.png": {
+  "attemptId": "x1320115d9",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r1-c1/b18/image-2.png": {
+  "attemptId": "fua2941da3",
+  "arm": "C",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r1-c1/b19/image-1.png": {
+  "attemptId": "x1a0931f81",
+  "arm": "X1",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r1-c1/b19/image-2.png": {
+  "attemptId": "fu5663052b",
+  "arm": "C",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r1-c1/b20/image-1.png": {
+  "attemptId": "x1f085808a",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r1-c1/b20/image-2.png": {
+  "attemptId": "fue7e0c36b",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r1-c1/b21/image-1.png": {
+  "attemptId": "x1d4a28d3e",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r1-c1/b21/image-2.png": {
+  "attemptId": "fu0142591f",
+  "arm": "C",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r1-c1/b22/image-1.png": {
+  "attemptId": "fu40a7cfb4",
+  "arm": "C",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r1-c1/b22/image-2.png": {
+  "attemptId": "x1d2be5ab6",
+  "arm": "X1",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r1-c1/b23/image-1.png": {
+  "attemptId": "fu4d441cea",
+  "arm": "C",
+  "group": "T01-form-account|1|1440"
+ },
+ "r1-c1/b23/image-2.png": {
+  "attemptId": "x1fc101ecb",
+  "arm": "X1",
+  "group": "T01-form-account|1|1440"
+ },
+ "r1-c1/b24/image-1.png": {
+  "attemptId": "fu95140c20",
+  "arm": "C",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r1-c1/b24/image-2.png": {
+  "attemptId": "x11c827dbc",
+  "arm": "X1",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r1-c1/b25/image-1.png": {
+  "attemptId": "x1a0931f81",
+  "arm": "X1",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r1-c1/b25/image-2.png": {
+  "attemptId": "fu5663052b",
+  "arm": "C",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r1-c1/b26/image-1.png": {
+  "attemptId": "fu7cff66d0",
+  "arm": "C",
+  "group": "T01-form-account|2|1440"
+ },
+ "r1-c1/b26/image-2.png": {
+  "attemptId": "x1001bb0be",
+  "arm": "X1",
+  "group": "T01-form-account|2|1440"
+ },
+ "r1-c1/b27/image-1.png": {
+  "attemptId": "fue8f7cd71",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r1-c1/b27/image-2.png": {
+  "attemptId": "x11ca67cdc",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r1-c1/b28/image-1.png": {
+  "attemptId": "fub2613ab8",
+  "arm": "C",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r1-c1/b28/image-2.png": {
+  "attemptId": "x1fa646935",
+  "arm": "X1",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r1-c1/b29/image-1.png": {
+  "attemptId": "x11af6288d",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r1-c1/b29/image-2.png": {
+  "attemptId": "fudb3f547d",
+  "arm": "C",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r1-c1/b30/image-1.png": {
+  "attemptId": "x11ca67cdc",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r1-c1/b30/image-2.png": {
+  "attemptId": "fue8f7cd71",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r1-c1/b31/image-1.png": {
+  "attemptId": "fu235adae1",
+  "arm": "C",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r1-c1/b31/image-2.png": {
+  "attemptId": "x190ceda21",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r1-c1/b32/image-1.png": {
+  "attemptId": "x14a4ddc8a",
+  "arm": "X1",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r1-c1/b32/image-2.png": {
+  "attemptId": "fu4d038af0",
+  "arm": "C",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r1-c1/b33/image-1.png": {
+  "attemptId": "fudf8b1b5b",
+  "arm": "C",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r1-c1/b33/image-2.png": {
+  "attemptId": "x1ab322000",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r1-c1/b34/image-1.png": {
+  "attemptId": "fu0142591f",
+  "arm": "C",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r1-c1/b34/image-2.png": {
+  "attemptId": "x1d4a28d3e",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r1-c1/b35/image-1.png": {
+  "attemptId": "fuc91e49a4",
+  "arm": "C",
+  "group": "T01-form-account|3|1440"
+ },
+ "r1-c1/b35/image-2.png": {
+  "attemptId": "x117e36a42",
+  "arm": "X1",
+  "group": "T01-form-account|3|1440"
+ },
+ "r1-c1/b36/image-1.png": {
+  "attemptId": "x190ceda21",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r1-c1/b36/image-2.png": {
+  "attemptId": "fu235adae1",
+  "arm": "C",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r1-c2/b01/image-1.png": {
+  "attemptId": "fu858c2ae3",
+  "arm": "C",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r1-c2/b01/image-2.png": {
+  "attemptId": "x1775efae2",
+  "arm": "X1",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r1-c2/b02/image-1.png": {
+  "attemptId": "fub2d63ead",
+  "arm": "C",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r1-c2/b02/image-2.png": {
+  "attemptId": "x1780541f3",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r1-c2/b03/image-1.png": {
+  "attemptId": "x1e6bb299e",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r1-c2/b03/image-2.png": {
+  "attemptId": "fu93ad4bf1",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r1-c2/b04/image-1.png": {
+  "attemptId": "x1e4c66c6f",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r1-c2/b04/image-2.png": {
+  "attemptId": "fu1a992744",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r1-c2/b05/image-1.png": {
+  "attemptId": "x171f41516",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r1-c2/b05/image-2.png": {
+  "attemptId": "fueff2bcb2",
+  "arm": "C",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r1-c2/b06/image-1.png": {
+  "attemptId": "fu572ed09d",
+  "arm": "C",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r1-c2/b06/image-2.png": {
+  "attemptId": "x162e0e53d",
+  "arm": "X1",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r1-c2/b07/image-1.png": {
+  "attemptId": "fue9fbafa8",
+  "arm": "C",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r1-c2/b07/image-2.png": {
+  "attemptId": "x166cb46dc",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r1-c2/b08/image-1.png": {
+  "attemptId": "fu2c568155",
+  "arm": "C",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r1-c2/b08/image-2.png": {
+  "attemptId": "x1da8351ce",
+  "arm": "X1",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r1-c2/b09/image-1.png": {
+  "attemptId": "fu427eecc3",
+  "arm": "C",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r1-c2/b09/image-2.png": {
+  "attemptId": "x13752acdf",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r1-c2/b10/image-1.png": {
+  "attemptId": "x14a4ddc8a",
+  "arm": "X1",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r1-c2/b10/image-2.png": {
+  "attemptId": "fu4d038af0",
+  "arm": "C",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r1-c2/b11/image-1.png": {
+  "attemptId": "x171f41516",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r1-c2/b11/image-2.png": {
+  "attemptId": "fueff2bcb2",
+  "arm": "C",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r1-c2/b12/image-1.png": {
+  "attemptId": "fub2613ab8",
+  "arm": "C",
+  "group": "T03-cards-product|3|375"
+ },
+ "r1-c2/b12/image-2.png": {
+  "attemptId": "x1fa646935",
+  "arm": "X1",
+  "group": "T03-cards-product|3|375"
+ },
+ "r1-c2/b13/image-1.png": {
+  "attemptId": "x13378ba9f",
+  "arm": "X1",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r1-c2/b13/image-2.png": {
+  "attemptId": "fu5efa05e6",
+  "arm": "C",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r1-c2/b14/image-1.png": {
+  "attemptId": "x11af6288d",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r1-c2/b14/image-2.png": {
+  "attemptId": "fudb3f547d",
+  "arm": "C",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r1-c2/b15/image-1.png": {
+  "attemptId": "fua2946c91",
+  "arm": "C",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r1-c2/b15/image-2.png": {
+  "attemptId": "x18fff92b6",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r1-c2/b16/image-1.png": {
+  "attemptId": "x162e0e53d",
+  "arm": "X1",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r1-c2/b16/image-2.png": {
+  "attemptId": "fu572ed09d",
+  "arm": "C",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r1-c2/b17/image-1.png": {
+  "attemptId": "x1f6755795",
+  "arm": "X1",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r1-c2/b17/image-2.png": {
+  "attemptId": "fueeb5d697",
+  "arm": "C",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r1-c2/b18/image-1.png": {
+  "attemptId": "fua2946c91",
+  "arm": "C",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r1-c2/b18/image-2.png": {
+  "attemptId": "x18fff92b6",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r1-c2/b19/image-1.png": {
+  "attemptId": "x1780541f3",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r1-c2/b19/image-2.png": {
+  "attemptId": "fub2d63ead",
+  "arm": "C",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r1-c2/b20/image-1.png": {
+  "attemptId": "x1e6bb299e",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r1-c2/b20/image-2.png": {
+  "attemptId": "fu93ad4bf1",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r1-c2/b21/image-1.png": {
+  "attemptId": "fu1a992744",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r1-c2/b21/image-2.png": {
+  "attemptId": "x1e4c66c6f",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r1-c2/b22/image-1.png": {
+  "attemptId": "fubb407509",
+  "arm": "C",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r1-c2/b22/image-2.png": {
+  "attemptId": "x1a25b598b",
+  "arm": "X1",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r1-c2/b23/image-1.png": {
+  "attemptId": "x1320115d9",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r1-c2/b23/image-2.png": {
+  "attemptId": "fua2941da3",
+  "arm": "C",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r1-c2/b24/image-1.png": {
+  "attemptId": "x1f08fb7bb",
+  "arm": "X1",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r1-c2/b24/image-2.png": {
+  "attemptId": "fu652d9f84",
+  "arm": "C",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r1-c2/b25/image-1.png": {
+  "attemptId": "x152187df4",
+  "arm": "X1",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r1-c2/b25/image-2.png": {
+  "attemptId": "fufcbfa9b4",
+  "arm": "C",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r1-c2/b26/image-1.png": {
+  "attemptId": "x1daeb3e44",
+  "arm": "X1",
+  "group": "T03-cards-product|1|375"
+ },
+ "r1-c2/b26/image-2.png": {
+  "attemptId": "fu33cb209d",
+  "arm": "C",
+  "group": "T03-cards-product|1|375"
+ },
+ "r1-c2/b27/image-1.png": {
+  "attemptId": "x1a67bca27",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r1-c2/b27/image-2.png": {
+  "attemptId": "fu3fcb5c10",
+  "arm": "C",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r1-c2/b28/image-1.png": {
+  "attemptId": "fu93fae6de",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r1-c2/b28/image-2.png": {
+  "attemptId": "x13359c253",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r1-c2/b29/image-1.png": {
+  "attemptId": "x167e5f959",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r1-c2/b29/image-2.png": {
+  "attemptId": "fuf88b44cd",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r1-c2/b30/image-1.png": {
+  "attemptId": "x167e5f959",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r1-c2/b30/image-2.png": {
+  "attemptId": "fuf88b44cd",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r1-c2/b31/image-1.png": {
+  "attemptId": "fufcbfa9b4",
+  "arm": "C",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r1-c2/b31/image-2.png": {
+  "attemptId": "x152187df4",
+  "arm": "X1",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r1-c2/b32/image-1.png": {
+  "attemptId": "fu427eecc3",
+  "arm": "C",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r1-c2/b32/image-2.png": {
+  "attemptId": "x13752acdf",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r1-c2/b33/image-1.png": {
+  "attemptId": "fube9b7229",
+  "arm": "C",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r1-c2/b33/image-2.png": {
+  "attemptId": "x137c66848",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r1-c2/b34/image-1.png": {
+  "attemptId": "x1da8351ce",
+  "arm": "X1",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r1-c2/b34/image-2.png": {
+  "attemptId": "fu2c568155",
+  "arm": "C",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r1-c2/b35/image-1.png": {
+  "attemptId": "x1e5cecb0c",
+  "arm": "X1",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r1-c2/b35/image-2.png": {
+  "attemptId": "fu3c051d74",
+  "arm": "C",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r1-c2/b36/image-1.png": {
+  "attemptId": "fu5efa05e6",
+  "arm": "C",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r1-c2/b36/image-2.png": {
+  "attemptId": "x13378ba9f",
+  "arm": "X1",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r2-c1/b01/image-1.png": {
+  "attemptId": "x117e36a42",
+  "arm": "X1",
+  "group": "T01-form-account|3|375"
+ },
+ "r2-c1/b01/image-2.png": {
+  "attemptId": "fuc91e49a4",
+  "arm": "C",
+  "group": "T01-form-account|3|375"
+ },
+ "r2-c1/b02/image-1.png": {
+  "attemptId": "fue9fbafa8",
+  "arm": "C",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r2-c1/b02/image-2.png": {
+  "attemptId": "x166cb46dc",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|3|1440"
+ },
+ "r2-c1/b03/image-1.png": {
+  "attemptId": "fueeb5d697",
+  "arm": "C",
+  "group": "T03-cards-product|2|375"
+ },
+ "r2-c1/b03/image-2.png": {
+  "attemptId": "x1f6755795",
+  "arm": "X1",
+  "group": "T03-cards-product|2|375"
+ },
+ "r2-c1/b04/image-1.png": {
+  "attemptId": "x1fc101ecb",
+  "arm": "X1",
+  "group": "T01-form-account|1|375"
+ },
+ "r2-c1/b04/image-2.png": {
+  "attemptId": "fu4d441cea",
+  "arm": "C",
+  "group": "T01-form-account|1|375"
+ },
+ "r2-c1/b05/image-1.png": {
+  "attemptId": "fu3fcb5c10",
+  "arm": "C",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r2-c1/b05/image-2.png": {
+  "attemptId": "x1a67bca27",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|3|1440"
+ },
+ "r2-c1/b06/image-1.png": {
+  "attemptId": "fu3c051d74",
+  "arm": "C",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r2-c1/b06/image-2.png": {
+  "attemptId": "x1e5cecb0c",
+  "arm": "X1",
+  "group": "T04-cards-profile|1|375"
+ },
+ "r2-c1/b07/image-1.png": {
+  "attemptId": "fube9b7229",
+  "arm": "C",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r2-c1/b07/image-2.png": {
+  "attemptId": "x137c66848",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|1|375"
+ },
+ "r2-c1/b08/image-1.png": {
+  "attemptId": "x1001bb0be",
+  "arm": "X1",
+  "group": "T01-form-account|2|375"
+ },
+ "r2-c1/b08/image-2.png": {
+  "attemptId": "fu7cff66d0",
+  "arm": "C",
+  "group": "T01-form-account|2|375"
+ },
+ "r2-c1/b09/image-1.png": {
+  "attemptId": "x1a25b598b",
+  "arm": "X1",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r2-c1/b09/image-2.png": {
+  "attemptId": "fubb407509",
+  "arm": "C",
+  "group": "T08-nav-workspace|3|1440"
+ },
+ "r2-c1/b10/image-1.png": {
+  "attemptId": "fu652d9f84",
+  "arm": "C",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r2-c1/b10/image-2.png": {
+  "attemptId": "x1f08fb7bb",
+  "arm": "X1",
+  "group": "T07-nav-docs|2|1440"
+ },
+ "r2-c1/b11/image-1.png": {
+  "attemptId": "x1ab322000",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r2-c1/b11/image-2.png": {
+  "attemptId": "fudf8b1b5b",
+  "arm": "C",
+  "group": "T11-adversarial-settings|1|375"
+ },
+ "r2-c1/b12/image-1.png": {
+  "attemptId": "fu93fae6de",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r2-c1/b12/image-2.png": {
+  "attemptId": "x13359c253",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|2|375"
+ },
+ "r2-c1/b13/image-1.png": {
+  "attemptId": "fu33cb209d",
+  "arm": "C",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r2-c1/b13/image-2.png": {
+  "attemptId": "x1daeb3e44",
+  "arm": "X1",
+  "group": "T03-cards-product|1|1440"
+ },
+ "r2-c1/b14/image-1.png": {
+  "attemptId": "fu40a7cfb4",
+  "arm": "C",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r2-c1/b14/image-2.png": {
+  "attemptId": "x1d2be5ab6",
+  "arm": "X1",
+  "group": "T02-form-shipping|2|375"
+ },
+ "r2-c1/b15/image-1.png": {
+  "attemptId": "x1f085808a",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r2-c1/b15/image-2.png": {
+  "attemptId": "fue7e0c36b",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|2|375"
+ },
+ "r2-c1/b16/image-1.png": {
+  "attemptId": "x11c827dbc",
+  "arm": "X1",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r2-c1/b16/image-2.png": {
+  "attemptId": "fu95140c20",
+  "arm": "C",
+  "group": "T07-nav-docs|3|1440"
+ },
+ "r2-c1/b17/image-1.png": {
+  "attemptId": "fu858c2ae3",
+  "arm": "C",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r2-c1/b17/image-2.png": {
+  "attemptId": "x1775efae2",
+  "arm": "X1",
+  "group": "T04-cards-profile|3|1440"
+ },
+ "r2-c1/b18/image-1.png": {
+  "attemptId": "x1320115d9",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r2-c1/b18/image-2.png": {
+  "attemptId": "fua2941da3",
+  "arm": "C",
+  "group": "T10-dynamic-thread|3|1440"
+ },
+ "r2-c1/b19/image-1.png": {
+  "attemptId": "x1a0931f81",
+  "arm": "X1",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r2-c1/b19/image-2.png": {
+  "attemptId": "fu5663052b",
+  "arm": "C",
+  "group": "T07-nav-docs|1|1440"
+ },
+ "r2-c1/b20/image-1.png": {
+  "attemptId": "fue7e0c36b",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r2-c1/b20/image-2.png": {
+  "attemptId": "x1f085808a",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|2|1440"
+ },
+ "r2-c1/b21/image-1.png": {
+  "attemptId": "x1d4a28d3e",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r2-c1/b21/image-2.png": {
+  "attemptId": "fu0142591f",
+  "arm": "C",
+  "group": "T11-adversarial-settings|2|1440"
+ },
+ "r2-c1/b22/image-1.png": {
+  "attemptId": "fu40a7cfb4",
+  "arm": "C",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r2-c1/b22/image-2.png": {
+  "attemptId": "x1d2be5ab6",
+  "arm": "X1",
+  "group": "T02-form-shipping|2|1440"
+ },
+ "r2-c1/b23/image-1.png": {
+  "attemptId": "fu4d441cea",
+  "arm": "C",
+  "group": "T01-form-account|1|1440"
+ },
+ "r2-c1/b23/image-2.png": {
+  "attemptId": "x1fc101ecb",
+  "arm": "X1",
+  "group": "T01-form-account|1|1440"
+ },
+ "r2-c1/b24/image-1.png": {
+  "attemptId": "x11c827dbc",
+  "arm": "X1",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r2-c1/b24/image-2.png": {
+  "attemptId": "fu95140c20",
+  "arm": "C",
+  "group": "T07-nav-docs|3|375"
+ },
+ "r2-c1/b25/image-1.png": {
+  "attemptId": "x1a0931f81",
+  "arm": "X1",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r2-c1/b25/image-2.png": {
+  "attemptId": "fu5663052b",
+  "arm": "C",
+  "group": "T07-nav-docs|1|375"
+ },
+ "r2-c1/b26/image-1.png": {
+  "attemptId": "fu7cff66d0",
+  "arm": "C",
+  "group": "T01-form-account|2|1440"
+ },
+ "r2-c1/b26/image-2.png": {
+  "attemptId": "x1001bb0be",
+  "arm": "X1",
+  "group": "T01-form-account|2|1440"
+ },
+ "r2-c1/b27/image-1.png": {
+  "attemptId": "fue8f7cd71",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r2-c1/b27/image-2.png": {
+  "attemptId": "x11ca67cdc",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|1|375"
+ },
+ "r2-c1/b28/image-1.png": {
+  "attemptId": "x1fa646935",
+  "arm": "X1",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r2-c1/b28/image-2.png": {
+  "attemptId": "fub2613ab8",
+  "arm": "C",
+  "group": "T03-cards-product|3|1440"
+ },
+ "r2-c1/b29/image-1.png": {
+  "attemptId": "x11af6288d",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r2-c1/b29/image-2.png": {
+  "attemptId": "fudb3f547d",
+  "arm": "C",
+  "group": "T06-dashboard-finance|2|1440"
+ },
+ "r2-c1/b30/image-1.png": {
+  "attemptId": "x11ca67cdc",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r2-c1/b30/image-2.png": {
+  "attemptId": "fue8f7cd71",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|1|1440"
+ },
+ "r2-c1/b31/image-1.png": {
+  "attemptId": "fu235adae1",
+  "arm": "C",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r2-c1/b31/image-2.png": {
+  "attemptId": "x190ceda21",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|2|375"
+ },
+ "r2-c1/b32/image-1.png": {
+  "attemptId": "fu4d038af0",
+  "arm": "C",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r2-c1/b32/image-2.png": {
+  "attemptId": "x14a4ddc8a",
+  "arm": "X1",
+  "group": "T08-nav-workspace|2|375"
+ },
+ "r2-c1/b33/image-1.png": {
+  "attemptId": "fudf8b1b5b",
+  "arm": "C",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r2-c1/b33/image-2.png": {
+  "attemptId": "x1ab322000",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|1|1440"
+ },
+ "r2-c1/b34/image-1.png": {
+  "attemptId": "x1d4a28d3e",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r2-c1/b34/image-2.png": {
+  "attemptId": "fu0142591f",
+  "arm": "C",
+  "group": "T11-adversarial-settings|2|375"
+ },
+ "r2-c1/b35/image-1.png": {
+  "attemptId": "x117e36a42",
+  "arm": "X1",
+  "group": "T01-form-account|3|1440"
+ },
+ "r2-c1/b35/image-2.png": {
+  "attemptId": "fuc91e49a4",
+  "arm": "C",
+  "group": "T01-form-account|3|1440"
+ },
+ "r2-c1/b36/image-1.png": {
+  "attemptId": "x190ceda21",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r2-c1/b36/image-2.png": {
+  "attemptId": "fu235adae1",
+  "arm": "C",
+  "group": "T05-dashboard-ops|2|1440"
+ },
+ "r2-c2/b01/image-1.png": {
+  "attemptId": "fu858c2ae3",
+  "arm": "C",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r2-c2/b01/image-2.png": {
+  "attemptId": "x1775efae2",
+  "arm": "X1",
+  "group": "T04-cards-profile|3|375"
+ },
+ "r2-c2/b02/image-1.png": {
+  "attemptId": "fub2d63ead",
+  "arm": "C",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r2-c2/b02/image-2.png": {
+  "attemptId": "x1780541f3",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|1|375"
+ },
+ "r2-c2/b03/image-1.png": {
+  "attemptId": "x1e6bb299e",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r2-c2/b03/image-2.png": {
+  "attemptId": "fu93ad4bf1",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|3|1440"
+ },
+ "r2-c2/b04/image-1.png": {
+  "attemptId": "fu1a992744",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r2-c2/b04/image-2.png": {
+  "attemptId": "x1e4c66c6f",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|3|1440"
+ },
+ "r2-c2/b05/image-1.png": {
+  "attemptId": "fueff2bcb2",
+  "arm": "C",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r2-c2/b05/image-2.png": {
+  "attemptId": "x171f41516",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|3|1440"
+ },
+ "r2-c2/b06/image-1.png": {
+  "attemptId": "x162e0e53d",
+  "arm": "X1",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r2-c2/b06/image-2.png": {
+  "attemptId": "fu572ed09d",
+  "arm": "C",
+  "group": "T02-form-shipping|3|1440"
+ },
+ "r2-c2/b07/image-1.png": {
+  "attemptId": "x166cb46dc",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r2-c2/b07/image-2.png": {
+  "attemptId": "fue9fbafa8",
+  "arm": "C",
+  "group": "T05-dashboard-ops|3|375"
+ },
+ "r2-c2/b08/image-1.png": {
+  "attemptId": "fu2c568155",
+  "arm": "C",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r2-c2/b08/image-2.png": {
+  "attemptId": "x1da8351ce",
+  "arm": "X1",
+  "group": "T02-form-shipping|1|375"
+ },
+ "r2-c2/b09/image-1.png": {
+  "attemptId": "fu427eecc3",
+  "arm": "C",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r2-c2/b09/image-2.png": {
+  "attemptId": "x13752acdf",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|1|1440"
+ },
+ "r2-c2/b10/image-1.png": {
+  "attemptId": "x14a4ddc8a",
+  "arm": "X1",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r2-c2/b10/image-2.png": {
+  "attemptId": "fu4d038af0",
+  "arm": "C",
+  "group": "T08-nav-workspace|2|1440"
+ },
+ "r2-c2/b11/image-1.png": {
+  "attemptId": "x171f41516",
+  "arm": "X1",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r2-c2/b11/image-2.png": {
+  "attemptId": "fueff2bcb2",
+  "arm": "C",
+  "group": "T11-adversarial-settings|3|375"
+ },
+ "r2-c2/b12/image-1.png": {
+  "attemptId": "fub2613ab8",
+  "arm": "C",
+  "group": "T03-cards-product|3|375"
+ },
+ "r2-c2/b12/image-2.png": {
+  "attemptId": "x1fa646935",
+  "arm": "X1",
+  "group": "T03-cards-product|3|375"
+ },
+ "r2-c2/b13/image-1.png": {
+  "attemptId": "x13378ba9f",
+  "arm": "X1",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r2-c2/b13/image-2.png": {
+  "attemptId": "fu5efa05e6",
+  "arm": "C",
+  "group": "T08-nav-workspace|1|375"
+ },
+ "r2-c2/b14/image-1.png": {
+  "attemptId": "fudb3f547d",
+  "arm": "C",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r2-c2/b14/image-2.png": {
+  "attemptId": "x11af6288d",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|2|375"
+ },
+ "r2-c2/b15/image-1.png": {
+  "attemptId": "fua2946c91",
+  "arm": "C",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r2-c2/b15/image-2.png": {
+  "attemptId": "x18fff92b6",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|2|375"
+ },
+ "r2-c2/b16/image-1.png": {
+  "attemptId": "x162e0e53d",
+  "arm": "X1",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r2-c2/b16/image-2.png": {
+  "attemptId": "fu572ed09d",
+  "arm": "C",
+  "group": "T02-form-shipping|3|375"
+ },
+ "r2-c2/b17/image-1.png": {
+  "attemptId": "fueeb5d697",
+  "arm": "C",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r2-c2/b17/image-2.png": {
+  "attemptId": "x1f6755795",
+  "arm": "X1",
+  "group": "T03-cards-product|2|1440"
+ },
+ "r2-c2/b18/image-1.png": {
+  "attemptId": "x18fff92b6",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r2-c2/b18/image-2.png": {
+  "attemptId": "fua2946c91",
+  "arm": "C",
+  "group": "T10-dynamic-thread|2|1440"
+ },
+ "r2-c2/b19/image-1.png": {
+  "attemptId": "fub2d63ead",
+  "arm": "C",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r2-c2/b19/image-2.png": {
+  "attemptId": "x1780541f3",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|1|1440"
+ },
+ "r2-c2/b20/image-1.png": {
+  "attemptId": "x1e6bb299e",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r2-c2/b20/image-2.png": {
+  "attemptId": "fu93ad4bf1",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|3|375"
+ },
+ "r2-c2/b21/image-1.png": {
+  "attemptId": "fu1a992744",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r2-c2/b21/image-2.png": {
+  "attemptId": "x1e4c66c6f",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|3|375"
+ },
+ "r2-c2/b22/image-1.png": {
+  "attemptId": "x1a25b598b",
+  "arm": "X1",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r2-c2/b22/image-2.png": {
+  "attemptId": "fubb407509",
+  "arm": "C",
+  "group": "T08-nav-workspace|3|375"
+ },
+ "r2-c2/b23/image-1.png": {
+  "attemptId": "x1320115d9",
+  "arm": "X1",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r2-c2/b23/image-2.png": {
+  "attemptId": "fua2941da3",
+  "arm": "C",
+  "group": "T10-dynamic-thread|3|375"
+ },
+ "r2-c2/b24/image-1.png": {
+  "attemptId": "fu652d9f84",
+  "arm": "C",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r2-c2/b24/image-2.png": {
+  "attemptId": "x1f08fb7bb",
+  "arm": "X1",
+  "group": "T07-nav-docs|2|375"
+ },
+ "r2-c2/b25/image-1.png": {
+  "attemptId": "x152187df4",
+  "arm": "X1",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r2-c2/b25/image-2.png": {
+  "attemptId": "fufcbfa9b4",
+  "arm": "C",
+  "group": "T04-cards-profile|2|375"
+ },
+ "r2-c2/b26/image-1.png": {
+  "attemptId": "x1daeb3e44",
+  "arm": "X1",
+  "group": "T03-cards-product|1|375"
+ },
+ "r2-c2/b26/image-2.png": {
+  "attemptId": "fu33cb209d",
+  "arm": "C",
+  "group": "T03-cards-product|1|375"
+ },
+ "r2-c2/b27/image-1.png": {
+  "attemptId": "fu3fcb5c10",
+  "arm": "C",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r2-c2/b27/image-2.png": {
+  "attemptId": "x1a67bca27",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|3|375"
+ },
+ "r2-c2/b28/image-1.png": {
+  "attemptId": "x13359c253",
+  "arm": "X1",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r2-c2/b28/image-2.png": {
+  "attemptId": "fu93fae6de",
+  "arm": "C",
+  "group": "T09-dynamic-checkout|2|1440"
+ },
+ "r2-c2/b29/image-1.png": {
+  "attemptId": "fuf88b44cd",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r2-c2/b29/image-2.png": {
+  "attemptId": "x167e5f959",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|1|375"
+ },
+ "r2-c2/b30/image-1.png": {
+  "attemptId": "x167e5f959",
+  "arm": "X1",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r2-c2/b30/image-2.png": {
+  "attemptId": "fuf88b44cd",
+  "arm": "C",
+  "group": "T12-adversarial-pricing|1|1440"
+ },
+ "r2-c2/b31/image-1.png": {
+  "attemptId": "fufcbfa9b4",
+  "arm": "C",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r2-c2/b31/image-2.png": {
+  "attemptId": "x152187df4",
+  "arm": "X1",
+  "group": "T04-cards-profile|2|1440"
+ },
+ "r2-c2/b32/image-1.png": {
+  "attemptId": "fu427eecc3",
+  "arm": "C",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r2-c2/b32/image-2.png": {
+  "attemptId": "x13752acdf",
+  "arm": "X1",
+  "group": "T05-dashboard-ops|1|375"
+ },
+ "r2-c2/b33/image-1.png": {
+  "attemptId": "fube9b7229",
+  "arm": "C",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r2-c2/b33/image-2.png": {
+  "attemptId": "x137c66848",
+  "arm": "X1",
+  "group": "T06-dashboard-finance|1|1440"
+ },
+ "r2-c2/b34/image-1.png": {
+  "attemptId": "fu2c568155",
+  "arm": "C",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r2-c2/b34/image-2.png": {
+  "attemptId": "x1da8351ce",
+  "arm": "X1",
+  "group": "T02-form-shipping|1|1440"
+ },
+ "r2-c2/b35/image-1.png": {
+  "attemptId": "x1e5cecb0c",
+  "arm": "X1",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r2-c2/b35/image-2.png": {
+  "attemptId": "fu3c051d74",
+  "arm": "C",
+  "group": "T04-cards-profile|1|1440"
+ },
+ "r2-c2/b36/image-1.png": {
+  "attemptId": "x13378ba9f",
+  "arm": "X1",
+  "group": "T08-nav-workspace|1|1440"
+ },
+ "r2-c2/b36/image-2.png": {
+  "attemptId": "fu5efa05e6",
+  "arm": "C",
+  "group": "T08-nav-workspace|1|1440"
+ }
+}

@@ -1,0 +1,2001 @@
+{
+ "experiment": "RLP-001",
+ "phase": "x1-full",
+ "attemptId": "x13359c253",
+ "taskId": "T09-dynamic-checkout",
+ "category": "dynamic",
+ "split": "dev",
+ "arm": "X1",
+ "repetition": 2,
+ "executionOrder": 36,
+ "model": "sonnet",
+ "engineCommit": "f2f06a2abeb171d003e57dbe38c2a1d4c88ebee5",
+ "collectedAt": "2026-10-21T19:46:51.376Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 256330,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 19893,
+  "cacheReadTokens": 236427,
+  "outputTokens": 71,
+  "totalTokens": 256401,
+  "toolCalls": 5,
+  "toolCallsByName": {
+   "Read": 1,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 16495,
+  "toolTokens": null,
+  "durationMs": 50345,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:19:18.972Z",
+    "durationMs": 11005,
+    "failures": 54,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:19:39.939Z",
+    "durationMs": 6351,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 23,
+  "standardInstances": 129,
+  "standardByInvariant": {
+   "row-association": 24,
+   "unexpected-shift": 105
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 23,
+  "heldoutDistinct": 2,
+  "heldoutByCondition": {
+   "heldout-text": 2,
+   "font-scale": 4
+  },
+  "heldoutByInvariant": {
+   "row-association": 6
+  },
+  "responsiveFailureViewports": [
+   320,
+   375,
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 23,
+  "unexpectedShift": 105,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 28,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 21,
+       "aborted": false,
+       "solveMs": 1.5,
+       "memoEntries": 31
+      },
+      "totalMs": 5.699999999254942,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 28,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 21,
+       "aborted": false,
+       "solveMs": 1.599999999627471,
+       "memoEntries": 31
+      },
+      "totalMs": 9.299999999813735,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 19,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 21,
+       "aborted": false,
+       "solveMs": 6.2999999998137355,
+       "memoEntries": 31
+      },
+      "totalMs": 14.099999999627471,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 19,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 21,
+       "aborted": false,
+       "solveMs": 3.099999999627471,
+       "memoEntries": 31
+      },
+      "totalMs": 8,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 19,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 21,
+       "aborted": false,
+       "solveMs": 2.2999999998137355,
+       "memoEntries": 31
+      },
+      "totalMs": 7.2999999998137355,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 2,
+  "standardInstances": 12,
+  "standardByInvariant": {
+   "row-association": 12
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 2,
+  "heldoutDistinct": 2,
+  "heldoutByCondition": {
+   "heldout-text": 2,
+   "font-scale": 2
+  },
+  "heldoutByInvariant": {
+   "row-association": 4
+  },
+  "responsiveFailureViewports": [
+   320
+  ],
+  "dynamicDistinct": 2,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 31,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 21,
+       "aborted": false,
+       "solveMs": 1.6000000005587935,
+       "memoEntries": 34
+      },
+      "totalMs": 8.299999999813735,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 25,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 21,
+       "aborted": false,
+       "solveMs": 6.7000000001862645,
+       "memoEntries": 34
+      },
+      "totalMs": 16.299999999813735,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 25,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 21,
+       "aborted": false,
+       "solveMs": 1.8999999994412065,
+       "memoEntries": 34
+      },
+      "totalMs": 6.7000000001862645,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 25,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 21,
+       "aborted": false,
+       "solveMs": 2.2000000001862645,
+       "memoEntries": 34
+      },
+      "totalMs": 9.5,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 25,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 21,
+       "aborted": false,
+       "solveMs": 6.8999999994412065,
+       "memoEntries": 34
+      },
+      "totalMs": 16.200000000186265,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 11,
+  "derived": 65,
+  "uncertain": 0,
+  "corrective": 8,
+  "total": 11,
+  "rawStatements": {
+   "explicit": 54,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 10,
+  "byCategory": {
+   "explicit": {
+    "padding": 1,
+    "margin": 1,
+    "alignment": 2,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 1,
+    "dimension": 4,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 1,
+    "margin": 16,
+    "alignment": 16,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 16,
+    "dimension": 16,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 2,
+    "positioning": 0,
+    "grouping": 1,
+    "responsive": 1,
+    "dimension": 4,
+    "correction": 8
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:item-2",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:item-2",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:item-1-name",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:item-1-name",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "items",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "items ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-label",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-label ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-input",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-input ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-apply",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-apply ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-error",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-error ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "shipping-title",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 24px",
+    "relationship": "shipping-title ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:clone:item-4",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:clone:item-4",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:remove:item-2",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:remove:item-2",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "3:text:item-1-name",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "3:text:item-1-name",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "4:reveal:promo-error",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "4:reveal:promo-error",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "items",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "items ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-label",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-label ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-input",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-input ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-apply",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-apply ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-error",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-error ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "shipping-title",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 24px",
+    "relationship": "shipping-title ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "items",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "items ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-label",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-label ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-input",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-input ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-apply",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-apply ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-error",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-error ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "shipping-title",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 24px",
+    "relationship": "shipping-title ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "items",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "items ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-label",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-label ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-input",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-input ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-apply",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-apply ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-error",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-error ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "shipping-title",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 24px",
+    "relationship": "shipping-title ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "items",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "items ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-1-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-1-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-3-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-3-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4 ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-name",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-name ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-qty",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-qty ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-price",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-price ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "item-4-remove",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 8px",
+    "relationship": "item-4-remove ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-label",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-label ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-input",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-input ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-apply",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-apply ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "promo-error",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 16px",
+    "relationship": "promo-error ↑ shipping-options"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "5:hide:shipping-options",
+    "invariant": "unexpected-shift",
+    "element": "shipping-title",
+    "expected": "unchanged (above shipping-options)",
+    "observed": "moved 24px",
+    "relationship": "shipping-title ↑ shipping-options"
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "40px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "72px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "80px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "144px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "80px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "144px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 2
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "48px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "88px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "48px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "88px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:item-2",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "48px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:item-2",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "88px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:item-1-name",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "48px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:item-1-name",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "88px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "48px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "88px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "48px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "88px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "48px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "88px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "176px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 2
+   }
+  ]
+ }
+}

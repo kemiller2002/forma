@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create-account form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  body { padding: 1rem; }
+  form { max-width: 44rem; margin: 0 auto; padding: 1.5rem; display: grid; gap: 1.5rem; }
+  .pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+  .field { display: grid; gap: 0.375rem; align-content: start; min-width: 0; }
+  .field input { width: 100%; }
+  .msgs { display: grid; gap: 0.25rem; }
+  .msgs:empty { display: none; }
+  .head { display: grid; gap: 0.5rem; }
+  fieldset { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 0.5rem; }
+  legend { padding: 0; margin-bottom: 0.5rem; }
+  .check { display: flex; align-items: center; gap: 0.5rem; min-height: 1.5rem; }
+  .check input { flex: none; }
+  .actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.75rem; }
+  @media (min-width: 40rem) {
+    .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: 1.25rem; row-gap: 0.375rem; }
+    .field { grid-row: span 3; grid-template-rows: subgrid; gap: 0; row-gap: 0.375rem; }
+  }
+  </style>
+</head>
+<body>
+<form class="surface" data-rlp="form" novalidate>
+  <div class="head">
+    <h1 data-rlp="title">Create your account</h1>
+    <p data-rlp="intro">All fields marked with an asterisk are required.</p>
+  </div>
+
+  <div class="pair">
+    <div class="field">
+      <label data-rlp="name-label" for="name">Full name *</label>
+      <input data-rlp="name-input" id="name" name="name" type="text" autocomplete="name" required>
+      <div class="msgs"></div>
+    </div>
+    <div class="field">
+      <label data-rlp="email-label" for="email">Email address *</label>
+      <input data-rlp="email-input" id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+      <div class="msgs"><p class="error" id="email-error" data-rlp="email-error" hidden>Enter an email address in the format name@example.com.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <div class="field">
+      <label data-rlp="password-label" for="password">Password *</label>
+      <input data-rlp="password-input" id="password" name="password" type="password" autocomplete="new-password" required aria-describedby="password-hint password-error">
+      <div class="msgs">
+        <p data-rlp="password-hint" id="password-hint">Use at least 12 characters.</p>
+        <p class="error" id="password-error" data-rlp="password-error" hidden>Your password is too short.</p>
+      </div>
+    </div>
+    <div class="field">
+      <label data-rlp="confirm-label" for="confirm">Confirm password *</label>
+      <input data-rlp="confirm-input" id="confirm" name="confirm" type="password" autocomplete="new-password" required>
+      <div class="msgs"></div>
+    </div>
+  </div>
+
+  <fieldset data-rlp="prefs">
+    <legend data-rlp="prefs-legend">Email preferences</legend>
+    <div class="check">
+      <input data-rlp="pref-news-input" id="pref-news" name="news" type="checkbox">
+      <label data-rlp="pref-news-label" for="pref-news">Product news</label>
+    </div>
+    <div class="check">
+      <input data-rlp="pref-tips-input" id="pref-tips" name="tips" type="checkbox">
+      <label data-rlp="pref-tips-label" for="pref-tips">Tips and tutorials</label>
+    </div>
+  </fieldset>
+
+  <div class="actions" data-rlp="actions">
+    <button type="button" class="secondary" data-rlp="cancel">Cancel</button>
+    <button type="submit" data-rlp="submit">Create account</button>
+  </div>
+</form>
+</body>
+</html>

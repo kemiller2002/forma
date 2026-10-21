@@ -1,0 +1,340 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": ".row-grid",
+   "context": "",
+   "property": "display",
+   "value": "grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row-grid",
+   "context": "",
+   "property": "grid-template-columns",
+   "value": "auto minmax(0,1fr)",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row-grid",
+   "context": "",
+   "property": "gap",
+   "value": "var(--ef-primitive-spacing-2) var(--ef-primitive-spacing-3)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#10",
+   "context": "",
+   "property": "align-items",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "fieldset",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "input#29",
+   "context": "",
+   "property": "min-width",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".row-grid .hint",
+   "context": "",
+   "property": "grid-column",
+   "value": "2",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "width",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "input[type=url],input[type=number]",
+   "context": "",
+   "property": "max-width",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "input[type=url],input[type=number]",
+   "context": "",
+   "property": "box-sizing",
+   "value": "border-box",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "padding",
+   "value": "0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "nav a",
+   "context": "",
+   "property": "display",
+   "value": "inline-block",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "nav a",
+   "context": "",
+   "property": "min-height",
+   "value": "1.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "nav a",
+   "context": "",
+   "property": "padding",
+   "value": "var(--ef-primitive-spacing-1) 0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "float",
+   "value": "left",
+   "category": "positioning",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "margin",
+   "value": "0 0 var(--ef-primitive-spacing-3)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend+*",
+   "context": "",
+   "property": "clear",
+   "value": "both",
+   "category": "positioning",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "fieldset",
+   "context": "",
+   "property": "align-self",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "main#8",
+   "context": "",
+   "property": "padding",
+   "value": "var(--ef-primitive-spacing-4)",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#10",
+   "context": "",
+   "property": "--ef-sidebar-width",
+   "value": "20rem",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "ul#12",
+   "context": "",
+   "property": "--ef-cluster-gap",
+   "value": "var(--ef-primitive-spacing-4)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "fieldset#21",
+   "context": "",
+   "property": "class",
+   "value": "ef-stack",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#10",
+   "context": "",
+   "property": "class",
+   "value": "ef-sidebar",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#23",
+   "context": "",
+   "property": "class",
+   "value": "ef-surface",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "ul#12",
+   "context": "",
+   "property": "class",
+   "value": "ef-cluster",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#30",
+   "context": "",
+   "property": "class",
+   "value": "ef-field",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#33",
+   "context": "",
+   "property": "class",
+   "value": "ef-actions",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": [
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "float",
+   "value": "left",
+   "category": "positioning",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "width",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "padding",
+   "value": "0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend",
+   "context": "",
+   "property": "margin",
+   "value": "0 0 var(--ef-primitive-spacing-3)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "legend+*",
+   "context": "",
+   "property": "clear",
+   "value": "both",
+   "category": "positioning",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "fieldset",
+   "context": "",
+   "property": "align-self",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#10",
+   "context": "",
+   "property": "align-items",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#10",
+   "context": "",
+   "property": "--ef-sidebar-width",
+   "value": "20rem",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "ul#12",
+   "context": "",
+   "property": "--ef-cluster-gap",
+   "value": "var(--ef-primitive-spacing-4)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "ul#12",
+   "context": "",
+   "property": "class",
+   "value": "ef-cluster",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ]
+}

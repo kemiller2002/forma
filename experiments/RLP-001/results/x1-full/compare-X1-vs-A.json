@@ -1,0 +1,128 @@
+{
+ "variantPhase": "x1-full",
+ "variant": "X1",
+ "basePhase": "full",
+ "base": "A",
+ "note": "Exploratory: different execution windows and no shared randomization.",
+ "comparisons": [
+  {
+   "comparison": "X1 − A",
+   "metric": "firstDraftDefects",
+   "tasks": 12,
+   "variantMean": 2.3333333333333335,
+   "baseMean": 1.2777777777777777,
+   "meanDifference": 1.0555555555555554,
+   "bootstrap95": [
+    -1.2222222222222223,
+    5.0555555555555545
+   ],
+   "wilcoxon": {
+    "n": 10,
+    "wPlus": 14.5,
+    "p": 0.20703125
+   }
+  },
+  {
+   "comparison": "X1 − A",
+   "metric": "finalDefects",
+   "tasks": 12,
+   "variantMean": 0.3055555555555556,
+   "baseMean": 0.08333333333333333,
+   "meanDifference": 0.22222222222222224,
+   "bootstrap95": [
+    0.05555555555555556,
+    0.3888888888888889
+   ],
+   "wilcoxon": {
+    "n": 5,
+    "wPlus": 15,
+    "p": 0.0625
+   }
+  },
+  {
+   "comparison": "X1 − A",
+   "metric": "heldoutDefects",
+   "tasks": 12,
+   "variantMean": 0.16666666666666666,
+   "baseMean": 2.5555555555555554,
+   "meanDifference": -2.388888888888889,
+   "bootstrap95": [
+    -5.4444444444444455,
+    -0.3333333333333333
+   ],
+   "wilcoxon": {
+    "n": 7,
+    "wPlus": 0,
+    "p": 0.015625
+   }
+  },
+  {
+   "comparison": "X1 − A",
+   "metric": "accepted",
+   "tasks": 12,
+   "variantMean": 0.75,
+   "baseMean": 0.9166666666666666,
+   "meanDifference": -0.1666666666666667,
+   "bootstrap95": [
+    -0.3333333333333333,
+    -0.02777777777777778
+   ],
+   "wilcoxon": {
+    "n": 4,
+    "wPlus": 0,
+    "p": 0.125
+   }
+  },
+  {
+   "comparison": "X1 − A",
+   "metric": "tokens",
+   "tasks": 12,
+   "variantMean": 233756.08333333334,
+   "baseMean": 244415.97222222222,
+   "meanDifference": -10659.888888888885,
+   "bootstrap95": [
+    -37754.13888888888,
+    24600.611111111106
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "wPlus": 25,
+    "p": 0.30126953125
+   }
+  },
+  {
+   "comparison": "X1 − A",
+   "metric": "validationRuns",
+   "tasks": 12,
+   "variantMean": 1.5277777777777777,
+   "baseMean": 1.6944444444444444,
+   "meanDifference": -0.16666666666666663,
+   "bootstrap95": [
+    -0.5555555555555557,
+    0.3055555555555556
+   ],
+   "wilcoxon": {
+    "n": 9,
+    "wPlus": 14,
+    "p": 0.33203125
+   }
+  },
+  {
+   "comparison": "X1 − A",
+   "metric": "decisions",
+   "tasks": 12,
+   "variantMean": 10.63888888888889,
+   "baseMean": 31.38888888888889,
+   "meanDifference": -20.750000000000004,
+   "bootstrap95": [
+    -23.5,
+    -18.30555555555556
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "wPlus": 0,
+    "p": 0.00048828125
+   }
+  }
+ ]
+}

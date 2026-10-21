@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finance dashboard</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  main { padding: var(--ef-primitive-spacing-4); }
+  .tile-label, .tile-value { display: block; margin: 0; }
+  .tile-value { font-size: 1.5rem; font-weight: 600; }
+  figure { margin: 0; }
+  figure img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; }
+  figcaption { margin-top: var(--ef-primitive-spacing-3); }
+  th, td { text-align: left; padding: var(--ef-primitive-spacing-2) var(--ef-primitive-spacing-3); }
+  table { border-collapse: collapse; width: 100%; }
+</style>
+</head>
+<body>
+  <main data-rlp="dashboard" class="ef-stack">
+    <h1 data-rlp="title">Team spending</h1>
+    <div data-rlp="summary" class="ef-grid" style="--ef-grid-min: 10rem">
+      <div data-rlp="tile-budget" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+        <span data-rlp="tile-budget-label" class="tile-label">Budget</span>
+        <span data-rlp="tile-budget-value" class="tile-value">$48,000</span>
+      </div>
+      <div data-rlp="tile-spent" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+        <span data-rlp="tile-spent-label" class="tile-label">Spent</span>
+        <span data-rlp="tile-spent-value" class="tile-value">$31,420</span>
+      </div>
+      <div data-rlp="tile-left" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+        <span data-rlp="tile-left-label" class="tile-label">Remaining</span>
+        <span data-rlp="tile-left-value" class="tile-value">$16,580</span>
+      </div>
+    </div>
+    <div class="ef-sidebar" style="--ef-sidebar-width: 16rem">
+      <div class="ef-sidebar__side">
+        <form data-rlp="filters" class="ef-surface ef-form">
+          <h2 data-rlp="filters-title">Filters</h2>
+          <div class="ef-field">
+            <label data-rlp="category-label" class="ef-field__label" for="category-input">Category</label>
+            <select data-rlp="category-input" id="category-input" name="category">
+              <option>All categories</option>
+              <option>Travel</option>
+              <option>Software</option>
+              <option>Hardware</option>
+            </select>
+          </div>
+          <div class="ef-field">
+            <label data-rlp="month-label" class="ef-field__label" for="month-input">Month</label>
+            <select data-rlp="month-input" id="month-input" name="month">
+              <option>October</option>
+              <option>September</option>
+              <option>August</option>
+            </select>
+          </div>
+          <div class="ef-actions">
+            <button data-rlp="apply" type="submit">Apply filters</button>
+          </div>
+        </form>
+      </div>
+      <div class="ef-sidebar__content ef-stack">
+        <figure data-rlp="chart" class="ef-surface">
+          <img data-rlp="chart-media" src="assets/placeholder.svg" alt="Bar chart of weekly spending">
+          <figcaption data-rlp="chart-caption">Weekly spending, October</figcaption>
+        </figure>
+        <section data-rlp="transactions" class="ef-surface ef-stack">
+          <h2 data-rlp="transactions-title">Recent transactions</h2>
+          <div class="ef-bounded-overflow" tabindex="0" role="region" aria-label="Transactions table">
+            <table data-rlp="transactions-table">
+              <thead><tr><th scope="col">Date</th><th scope="col">Merchant</th><th scope="col">Category</th><th scope="col">Amount</th></tr></thead>
+              <tbody>
+                <tr><td>Oct 18</td><td>Northwind Air</td><td>Travel</td><td>$612.40</td></tr>
+                <tr><td>Oct 17</td><td>Figma</td><td>Software</td><td>$75.00</td></tr>
+                <tr><td>Oct 16</td><td>Contoso Hardware</td><td>Hardware</td><td>$1,240.00</td></tr>
+                <tr><td>Oct 15</td><td>Fabrikam Hotels</td><td>Travel</td><td>$389.10</td></tr>
+                <tr><td>Oct 14</td><td>GitHub</td><td>Software</td><td>$210.00</td></tr>
+                <tr><td>Oct 12</td><td>Adatum Rentals</td><td>Travel</td><td>$96.75</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

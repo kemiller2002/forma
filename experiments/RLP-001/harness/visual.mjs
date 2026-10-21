@@ -8,7 +8,9 @@ import { fileURLToPath } from "node:url";
 //            viewport and repetition (one image per arm), copy them under
 //            opaque names in random order, and write the key separately.
 //   score:   join reviewer ratings with the key and summarize per arm.
-// usage: visual.mjs prepare --phase P --seed N --reviewers 2 --chunks K
+// usage: visual.mjs prepare --phase P --seed N --reviewers 2 --chunks K [--include PHASE:ARM]
+// --include adds another phase's attempts of one arm to the same batches
+// (extension 01: X1 rated beside Arm C).
 //        visual.mjs score --phase P
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -64,10 +66,16 @@ if (mode === "prepare") {
   const random = prng(Number(arg("--seed", "7")));
   const reviewers = Number(arg("--reviewers", "2"));
   const chunks = Number(arg("--chunks", "1"));
-  const groups = [...manifest.attempts.reduce((acc, a) => {
+  const included = (arg("--include") ?? "").split(",").filter(Boolean).flatMap(spec => {
+    const [otherPhase, arm] = spec.split(":");
+    const other = JSON.parse(fs.readFileSync(path.join(experiment, "results", otherPhase, "manifest.json"), "utf8"));
+    return other.attempts.filter(a => a.arm === arm).map(a => ({ ...a, screensRoot: other.screensRoot }));
+  });
+  const attempts = [...manifest.attempts.map(a => ({ ...a, screensRoot: manifest.screensRoot })), ...included];
+  const groups = [...attempts.reduce((acc, a) => {
     VIEWPORTS.forEach(v => {
       const key = `${a.taskId}|${a.repetition}|${v}`;
-      acc.set(key, [...(acc.get(key) ?? []), { attemptId: a.attemptId, arm: a.arm, file: path.join(manifest.screensRoot, a.attemptId, `${v}.png`) }]);
+      acc.set(key, [...(acc.get(key) ?? []), { attemptId: a.attemptId, arm: a.arm, file: path.join(a.screensRoot, a.attemptId, `${v}.png`) }]);
     });
     return acc;
   }, new Map()).entries()].map(([key, items]) => ({ key, items }))
@@ -106,7 +114,7 @@ if (mode === "score") {
     .map(([image, r]) => ({ reviewer: d.split("-")[0], id: `${d}/${image}`, ...key[`${d}/${image}`], ratings: r })))
     .filter(r => r.arm);
   const mean = xs => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null);
-  const perArm = Object.fromEntries(["A", "B", "C", "D"].map(arm => [arm, Object.fromEntries(CRITERIA.map(c => [c, mean(ratings.filter(r => r.arm === arm).map(r => r.ratings[c]).filter(Number.isFinite))]))]));
+  const perArm = Object.fromEntries([...new Set(ratings.map(r => r.arm))].sort().map(arm => [arm, Object.fromEntries(CRITERIA.map(c => [c, mean(ratings.filter(r => r.arm === arm).map(r => r.ratings[c]).filter(Number.isFinite))]))]));
   // Disagreement: the same image rated by two reviewers.
   const byImage = ratings.reduce((acc, r) => acc.set(`${r.attemptId}|${r.group}`, [...(acc.get(`${r.attemptId}|${r.group}`) ?? []), r]), new Map());
   const paired = [...byImage.values()].filter(rs => rs.length >= 2);
