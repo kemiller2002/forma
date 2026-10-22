@@ -10,14 +10,15 @@ const core = JSON.parse(fs.readFileSync("package.json", "utf8"));
 const workflow = JSON.parse(fs.readFileSync("packages/workflow/package.json", "utf8"));
 const pack = (cwd) => new Set(JSON.parse(execFileSync("npm", ["pack", "--dry-run", "--json", "--ignore-scripts"], { cwd, encoding: "utf8" }))[0].files.map((f) => f.path));
 
-test("the design-system package publishes the workflow schema, capability contract and examples, and no runtime", () => {
+test("the design-system package publishes workflow assets and only the audited metadata runtime", () => {
   assert.equal(core.exports["./workflow/forma-workflow.schema.json"], "./schemas/workflow/1.0/forma-workflow.schema.json");
   assert.equal(core.exports["./contracts/workflow-capabilities.json"], "./contracts/workflow-capabilities.json");
   const files = pack(".");
   for (const f of ["schemas/workflow/1.0/forma-workflow.schema.json", "contracts/workflow-capabilities.json", "examples/workflows/forma/workflows/minimal.forma-workflow.json", "docs/workflow/FORMAT.md"]) {
     assert.ok(files.has(f), `missing ${f}`);
   }
-  for (const f of files) assert.ok(!/\.(js|mjs|cjs|wasm)$/.test(f) || !f.startsWith("dist/"), `runtime file ${f} in the core package`);
+  assert.ok(files.has("dist/runtime.js"), "missing the generated runtime version stamp");
+  for (const f of files) assert.ok(f === "dist/runtime.js" || !/\.(js|mjs|cjs|wasm)$/.test(f) || !f.startsWith("dist/"), `unexpected runtime file ${f} in the core package`);
   assert.deepEqual(core.dependencies ?? {}, {});
   assert.ok(![...files].some((f) => f.startsWith("packages/") || f.startsWith("src/workflow/")), "editor sources are not in the core package");
 });

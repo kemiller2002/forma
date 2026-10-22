@@ -196,10 +196,14 @@ for (const width of [320, 390, 430, 1280]) {
   });
 }
 
-test("native family selection filters every family and restores all without scripts", async ({ page }) => {
+test("native family selection filters every family and restores all without behaviour scripts", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/site-dist/components/index.html");
-  expect(await page.locator("script").count()).toBe(0);
+  expect(await page.locator("script").evaluateAll(scripts => scripts.map(script => ({
+    type: script.getAttribute("type"),
+    src: script.getAttribute("src"),
+    text: script.textContent
+  })))).toEqual([{ type: "module", src: "../assets/runtime.js", text: "" }]);
   const picker = page.getByRole("combobox", { name: "Show family" });
   const families = await picker.locator("option").evaluateAll(options => options.map(option => option.value).filter(value => value !== "all"));
   const total = await page.locator(".catalog-row").count();

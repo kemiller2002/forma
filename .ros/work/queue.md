@@ -51,6 +51,7 @@
 | GH-68 | GH-68 | complete |  |  |
 | GH-82 | GH-82 | complete |  |  |
 | GH-9 | Build Forma component documentation site | complete | forma,documentation,github-pages | high |
+| RLP-001 | RLP-001 | complete |  |  |
 | ROS-INSTALL-3-1-4 | ROS-INSTALL-3-1-4 | complete |  |  |
 | WI-0001 | Install Echelon engineering capabilities | complete |  | high |
 | WI-0002 | Deep design system requirements | complete |  | high |
@@ -83,3 +84,8 @@
 | WI-0029 | Implement Design by Construction forms | complete | forms, design-by-construction | high |
 | WI-0030 | Reconcile outstanding Forma repository items | complete |  | high |
 | WI-0031 | Reconcile Forma Design by Construction and UI conformance work | complete | reconciliation, design-by-construction, ui-conformance | high |
+| WI-0032 | Implement Forma runtime version registry and diagnostics | complete |  | medium |
+| WI-0033 | Align Forma workflow package guardrail with audited runtime metadata | complete |  | medium |
+| WI-0034 | Align Forma catalog and icon static guards with audited runtime metadata | complete |  | medium |
+| WI-0035 | Align Forma browser static guard with audited runtime metadata | complete |  | medium |
+| WI-0036 | Integrate reviewed Forma runtime version stamp with current main | complete |  | medium |

@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-21T19:54:59Z",
+  "updatedAt": "2026-10-22T12:00:18.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -2425,6 +2425,225 @@
       ],
       "completedAt": "2026-10-20T08:03:21.000Z",
       "conclusion": "PRs #158 and #162 are merged and authoritative; their source branches are fully contained in main, while feat/design-by-construction-forms is a superseded implementation-identical predecessor with older Praxis records. Exact main commit 18e6ff7 passed targeted local validation, 532 conformance checks, and all GitHub checks; no code gap required implementation."
+    },
+    {
+      "id": "WI-0032",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/build-runtime.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/runtime-version.spec.mjs"
+        },
+        {
+          "type": "requirement",
+          "path": "research/requirements/RQ-FORMA-2026-A004--runtime-version-reporting.md"
+        }
+      ],
+      "updatedAt": "2026-10-21T14:02:23.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261021T081649625Z-5b3dab6b"
+      ],
+      "latestCheckpoint": {
+        "id": "31b92ac2c81ca77f11133d07",
+        "recordedAt": "2026-10-21T14:02:08.000Z",
+        "executionId": "EXE-20261021T081649625Z-5b3dab6b",
+        "stepId": "STEP-20261021T084114976Z-bb2bf082",
+        "repository": "echelon-design-system",
+        "branch": "feat/runtime-version-stamp",
+        "commit": "5d4a1876b6149661da38d5b52f8546eed673f372",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "feat/runtime-version-stamp",
+        "remoteCommit": "5d4a1876b6149661da38d5b52f8546eed673f372",
+        "summary": "Forma 0.9.1 runtime registry, site integration, requirements, and browser verification pushed",
+        "nextAction": "Review and merge the runtime version stamp pull request",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-21T14:02:23.000Z",
+      "conclusion": "Forma 0.9.1 reports its exact built version through ECHELON-RUNTIME-1 and production browser verification passed in Chromium and WebKit."
+    },
+    {
+      "id": "WI-0033",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tests/workflow-package.test.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/workflow-package.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-21T14:17:24.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261021T141608478Z-152bcab6"
+      ],
+      "latestCheckpoint": {
+        "id": "382f8b337977d2ddac198c41",
+        "recordedAt": "2026-10-21T14:17:16.000Z",
+        "executionId": "EXE-20261021T141608478Z-152bcab6",
+        "repository": "echelon-design-system",
+        "branch": "feat/runtime-version-stamp",
+        "commit": "a0f92c3b9e031f6029c26cedc862abaee3b7c652",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "feat/runtime-version-stamp",
+        "remoteCommit": "a0f92c3b9e031f6029c26cedc862abaee3b7c652",
+        "summary": "Forma workflow package guardrail now permits exactly the audited dist/runtime.js stamp; exact CI command passes locally",
+        "nextAction": "Await exact-head CI on PR #166",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-21T14:17:24.000Z",
+      "conclusion": "The Forma workflow-package boundary now permits only the approved metadata runtime and still rejects every other distributed JavaScript or WebAssembly runtime."
+    },
+    {
+      "id": "WI-0034",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tests/catalog-coverage.test.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/icon-docs.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-21T14:36:20.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261021T143541021Z-2a44cd10"
+      ],
+      "latestCheckpoint": {
+        "id": "8570650cd46ace9d257c1716",
+        "recordedAt": "2026-10-21T14:36:14.000Z",
+        "executionId": "EXE-20261021T143541021Z-2a44cd10",
+        "repository": "echelon-design-system",
+        "branch": "feat/runtime-version-stamp",
+        "commit": "4080c765a3d76723085c877baf46bbcc9304b56f",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "feat/runtime-version-stamp",
+        "remoteCommit": "4080c765a3d76723085c877baf46bbcc9304b56f",
+        "summary": "Forma catalog and icon static guards permit only the audited external runtime metadata stamp; all 45 site structural tests pass",
+        "nextAction": "Await exact-head CI on PR #166",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-21T14:36:20.000Z",
+      "conclusion": "Forma static-site guardrails now distinguish the approved metadata-only runtime stamp from prohibited behavior scripts, and the full structural site suite passes."
+    },
+    {
+      "id": "WI-0035",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tests/site-browser/responsive-navigation.spec.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/site-browser/responsive-navigation.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-21T19:22:35.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261021T192039268Z-c05fa28c"
+      ],
+      "latestCheckpoint": {
+        "id": "e763f8377969a490376aa7d1",
+        "recordedAt": "2026-10-21T19:22:28.000Z",
+        "executionId": "EXE-20261021T192039268Z-c05fa28c",
+        "repository": "echelon-design-system",
+        "branch": "feat/runtime-version-stamp",
+        "commit": "19fc401330678349ab868cdb84657ef8b2417670",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "feat/runtime-version-stamp",
+        "remoteCommit": "19fc401330678349ab868cdb84657ef8b2417670",
+        "summary": "Forma browser static guard now permits exactly the audited external runtime module; focused Chromium mobile test passes",
+        "nextAction": "Await exact-head CI on PR #166",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-21T19:22:35.000Z",
+      "conclusion": "The Forma browser test now enforces exactly one metadata-only runtime module while continuing to prove native family filtering requires no behavior script."
+    },
+    {
+      "id": "WI-0036",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/build-runtime.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/runtime-version.spec.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/site-browser/runtime-version.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-22T12:00:18.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261022T115615787Z-84322728"
+      ],
+      "latestCheckpoint": {
+        "id": "0125a40e03a219115fe5b82d",
+        "recordedAt": "2026-10-22T12:00:09.000Z",
+        "executionId": "EXE-20261022T115615787Z-84322728",
+        "repository": "echelon-design-system",
+        "branch": "feat/runtime-version-stamp",
+        "commit": "4f68d1996d97e29f7665a1c4dbf0065232737716",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "feat/runtime-version-stamp",
+        "remoteCommit": "4f68d1996d97e29f7665a1c4dbf0065232737716",
+        "summary": "Integrated Forma runtime stamp branch with current main using semantic Praxis history reconciliation; runtime build, 58 focused Node tests, 3 Playwright tests, and Praxis validation passed",
+        "nextAction": "Complete integration work item, push final Praxis state, verify exact-head CI, and merge PR #166",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-22T12:00:18.000Z",
+      "conclusion": "Current main was integrated without runtime-source overlap; both Praxis histories were semantically preserved, focused Node and Playwright verification passed, and the branch is ready for exact-head CI and merge."
     },
     {
       "id": "RLP-001",

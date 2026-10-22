@@ -4,11 +4,26 @@ title: Zero-runtime HTML and CSS component architecture
 status: accepted
 date: 2026-09-22
 supersedes: ADR-0001
+amended_by: DF-FORMA-2026-0002
+provenance:
+  contributions:
+    EXE-20261021T081649625Z-5b3dab6b:
+      operations: [modified]
+      at: 2026-10-21T08:41:08.125Z
+      actor:
+        kind: agent
+        id: openai/codex
+        provider: openai
+        model: unknown
+        runtime: codex
+      reason: "Cross-reference the accepted metadata-only runtime diagnostic exception"
 ---
 
 # Decision
 
-The Echelon Design System production package shall contain **HTML and CSS only**.
+The Echelon Design System components shall contain **HTML and CSS only**. The
+package may include the metadata-only browser entry point defined by
+`DF-FORMA-2026-0002`; it is not a component behavior runtime.
 
 Specifically:
 
@@ -20,7 +35,9 @@ Specifically:
 - documentation and consuming markup may use inert `<ef-*>` authoring wrappers around the canonical semantic HTML; these wrappers are not registered with `customElements.define()`, have no lifecycle or hidden behavior, and do not change semantic ownership;
 - native browser behavior is preferred wherever it can satisfy the interaction;
 - behavior beyond declarative HTML belongs to Limen/application code;
-- the published `dist/` directory must contain no JavaScript or WebAssembly.
+- the published `dist/` directory must contain no JavaScript or WebAssembly
+  except the generated `runtime.js` version diagnostic; that module must not
+  implement or initialize component behavior.
 
 # Context
 
@@ -108,7 +125,9 @@ Rejected where it would produce brittle keyboard, focus, or accessibility semant
 
 The decision is validated only if:
 
-1. `dist/` contains no .js, .mjs, .wasm, inline scripts, or executable component assets;
+1. `dist/` contains no .mjs, .wasm, inline scripts, or executable component
+   assets, and its only .js file is the metadata-only `runtime.js` allowed by
+   `DF-FORMA-2026-0002`;
 2. package production dependencies are empty;
 3. pattern files contain no `script` or `javascript:`;
 4. native form controls pass keyboard/form/reset tests;

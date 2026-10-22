@@ -1,6 +1,6 @@
 {
   "format": "forma.color-contract/1.0.0",
-  "formaVersion": "0.9.0",
+  "formaVersion": "0.9.1",
   "validationScope": "CSS var() references to --ef-color-* plus reserved internal color-related prefixes; other Forma APIs are governed by their own contracts.",
   "compatibility": {
     "policy": "Validate with the contract shipped by the pinned Forma package version.",

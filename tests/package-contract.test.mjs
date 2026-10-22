@@ -25,12 +25,14 @@ test("Forma is a versioned public-consumer package", () => {
   assert.equal(pkg.exports?.["./design/forma-design.schema.json"], "./schemas/design/1.0/forma-design.schema.json");
   assert.equal(pkg.exports?.["./contracts/design-capabilities.json"], "./contracts/design-capabilities.json");
   assert.equal(pkg.exports?.["./color-contract"], "./tools/color-contract/index.mjs");
+  assert.equal(pkg.exports?.["./runtime"], "./dist/runtime.js");
   assert.equal(pkg.exports?.["./contracts/color-contract.json"], "./contracts/color-contract.json");
   assert.equal(pkg.bin?.["forma-color"], "./tools/color-contract/cli.mjs");
   assert.ok(pkg.sideEffects?.includes("./dist/brands/*.css"));
 
   for (const path of [
     "dist/all.css",
+    "dist/runtime.js",
     "dist/tokens.css",
     "dist/foundations.css",
     "dist/components.css",
@@ -83,6 +85,7 @@ test("npm package contract contains the expected consumer surface", () => {
 
   for (const path of [
     "dist/all.css",
+    "dist/runtime.js",
     "dist/tokens.css",
     "dist/foundations.css",
     "dist/components.css",
