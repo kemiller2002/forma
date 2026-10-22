@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-22T11:56:10.0000000\u002B00:00",
+  "updatedAt": "2026-10-22T12:00:18.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -1676,7 +1676,7 @@
         },
         "remoteBranch": "chore/ordo-1.5.0",
         "remoteCommit": "71f443096f37265d015f11f58dd3fa5a53941d7f",
-        "summary": "conditor upgrade --current to echelon-current 1.2.0 (Ordo 1.4.2 -\u003E 1.5.0) committed and pushed; local checks passed",
+        "summary": "conditor upgrade --current to echelon-current 1.2.0 (Ordo 1.4.2 -> 1.5.0) committed and pushed; local checks passed",
         "nextAction": "Open the PR, get CI green and merge",
         "verification": {
           "status": "verified",
@@ -2602,13 +2602,48 @@
     {
       "id": "WI-0036",
       "type": "task",
-      "state": "active",
-      "semanticState": "active",
-      "evidence": [],
-      "updatedAt": "2026-10-22T11:56:10.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/build-runtime.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/runtime-version.spec.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/site-browser/runtime-version.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-10-22T12:00:18.000Z",
       "telemetryExecutionIds": [
         "EXE-20261022T115615787Z-84322728"
-      ]
+      ],
+      "latestCheckpoint": {
+        "id": "0125a40e03a219115fe5b82d",
+        "recordedAt": "2026-10-22T12:00:09.000Z",
+        "executionId": "EXE-20261022T115615787Z-84322728",
+        "repository": "echelon-design-system",
+        "branch": "feat/runtime-version-stamp",
+        "commit": "4f68d1996d97e29f7665a1c4dbf0065232737716",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "feat/runtime-version-stamp",
+        "remoteCommit": "4f68d1996d97e29f7665a1c4dbf0065232737716",
+        "summary": "Integrated Forma runtime stamp branch with current main using semantic Praxis history reconciliation; runtime build, 58 focused Node tests, 3 Playwright tests, and Praxis validation passed",
+        "nextAction": "Complete integration work item, push final Praxis state, verify exact-head CI, and merge PR #166",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-22T12:00:18.000Z",
+      "conclusion": "Current main was integrated without runtime-source overlap; both Praxis histories were semantically preserved, focused Node and Playwright verification passed, and the branch is ready for exact-head CI and merge."
     },
     {
       "id": "RLP-001",
@@ -2650,7 +2685,7 @@
         },
         "remoteBranch": "claude/rlp-001-relational-physics-4urqm8",
         "remoteCommit": "e64d7a183927e96f54e63bbaa08ef9b470bb9535",
-        "summary": "Full experiment (144), X1 extension (3\u002B36), blind visual and rubric reviews, G-metric, analysis and REPORT.md complete. Outcome B.",
+        "summary": "Full experiment (144), X1 extension (3+36), blind visual and rubric reviews, G-metric, analysis and REPORT.md complete. Outcome B.",
         "nextAction": "Review PR #167; candidate X2 (zero-runtime CSS compilation of the C vocabulary)",
         "verification": {
           "status": "verified",
