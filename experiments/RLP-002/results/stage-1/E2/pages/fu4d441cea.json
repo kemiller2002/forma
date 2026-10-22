@@ -1,0 +1,50 @@
+{
+ "attemptId": "fu4d441cea",
+ "taskId": "T01-form-account",
+ "repetition": 1,
+ "ruleset": "E2",
+ "compileStatus": "approximated",
+ "deterministic": true,
+ "sourceBytes": 3294,
+ "compiledBytes": 3706,
+ "c": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "stableMs": 414,
+  "engineMs": 17.800000000046566
+ },
+ "candidate": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 150
+ },
+ "newInstances": [],
+ "newDistinct": [],
+ "resolvedInstances": [],
+ "findings": [
+  {
+   "element": "div#31",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "div#34",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "actions",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  }
+ ]
+}

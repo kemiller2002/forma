@@ -1,0 +1,56 @@
+{
+ "attemptId": "fu858c2ae3",
+ "taskId": "T04-cards-profile",
+ "repetition": 3,
+ "ruleset": "E1",
+ "compileStatus": "approximated",
+ "deterministic": true,
+ "sourceBytes": 3122,
+ "compiledBytes": 3312,
+ "c": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "stableMs": 523,
+  "engineMs": 17.199999999953434
+ },
+ "candidate": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 274
+ },
+ "newInstances": [],
+ "newDistinct": [],
+ "resolvedInstances": [],
+ "findings": [
+  {
+   "element": "header",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "activity-1",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "activity-2",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "activity-3",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  }
+ ]
+}

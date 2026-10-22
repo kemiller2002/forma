@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile panel with nested sections</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/rlc/E2.css">
+</head>
+<body>
+<main data-rl-root data-rl="group">
+  <article data-rl="container" data-rl-bond="section" data-rlp="profile">
+    <header data-rl="group" data-rl-flow="row" data-rlp="header">
+      <img src="assets/placeholder.svg" alt="Portrait of Dana Okafor" width="64" height="64" data-rl-size="content" data-rlp="avatar">
+      <div data-rl="group" data-rl-bond="tight" data-rl-fill data-rl-min="12rem" style="--rl-min: 12rem">
+        <h2 data-rlp="name">Dana Okafor</h2>
+        <p data-rlp="role">Principal engineer, Platform reliability</p>
+      </div>
+      <button type="button" data-rl-anchor="end" data-rlp="follow">Follow</button>
+    </header>
+    <div data-rl="group" data-rl-flow="row" data-rl-equal data-rlp="stats" data-rlc="grid" style="--rl-col: max(9rem, calc((calc(9rem + 9rem + 9rem + 1rem + 1rem) - 100%) * 999))">
+        <div data-rl="container" data-rl-bond="tight" data-rl-min="9rem" data-rl-align-edge="stat" data-rlp="stat-reviews" style="--rl-min: 9rem">
+          <p data-rlp="stat-reviews-value">128</p>
+          <p data-rlp="stat-reviews-label">Reviews this quarter</p>
+        </div>
+        <div data-rl="container" data-rl-bond="tight" data-rl-min="9rem" data-rl-align-edge="stat" data-rlp="stat-deploys" style="--rl-min: 9rem">
+          <p data-rlp="stat-deploys-value">56</p>
+          <p data-rlp="stat-deploys-label">Deploys</p>
+        </div>
+        <div data-rl="container" data-rl-bond="tight" data-rl-min="9rem" data-rl-align-edge="stat" data-rlp="stat-incidents" style="--rl-min: 9rem">
+          <p data-rlp="stat-incidents-value">3</p>
+          <p data-rlp="stat-incidents-label">Open incidents</p>
+        </div>
+    </div>
+    <section data-rl="group" data-rl-bond="tight" data-rlp="about">
+      <h3 data-rlp="about-title">About</h3>
+      <p data-rlp="about-text">Dana leads the reliability guild and maintains the incident review process. Ask about capacity planning and on-call health.</p>
+    </section>
+    <section data-rl="container" data-rlp="activity">
+      <h3 data-rlp="activity-title">Recent activity</h3>
+      <ul data-rl="group">
+        <li data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rlp="activity-1">
+          <span data-rl-fill data-rlp="activity-1-text">Approved the database failover runbook</span>
+          <span data-rl-anchor="end" data-rlp="activity-1-time">2 hours ago</span>
+        </li>
+        <li data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rlp="activity-2">
+          <span data-rl-fill data-rlp="activity-2-text">Opened a capacity review for the search cluster</span>
+          <span data-rl-anchor="end" data-rlp="activity-2-time">Yesterday</span>
+        </li>
+        <li data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rlp="activity-3">
+          <span data-rl-fill data-rlp="activity-3-text">Closed incident INC-2231</span>
+          <span data-rl-anchor="end" data-rlp="activity-3-time">Monday</span>
+        </li>
+      </ul>
+    </section>
+  </article>
+</main>
+</body>
+</html>

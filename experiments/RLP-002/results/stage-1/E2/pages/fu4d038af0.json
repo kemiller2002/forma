@@ -1,0 +1,31 @@
+{
+ "attemptId": "fu4d038af0",
+ "taskId": "T08-nav-workspace",
+ "repetition": 2,
+ "ruleset": "E2",
+ "compileStatus": "exact",
+ "deterministic": true,
+ "sourceBytes": 1574,
+ "compiledBytes": 1566,
+ "c": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "stableMs": 433,
+  "engineMs": 29.899999999906868
+ },
+ "candidate": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 357
+ },
+ "newInstances": [],
+ "newDistinct": [],
+ "resolvedInstances": [],
+ "findings": []
+}

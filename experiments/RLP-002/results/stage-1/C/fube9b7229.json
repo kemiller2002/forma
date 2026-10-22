@@ -1,0 +1,31 @@
+{
+ "attemptId": "fube9b7229",
+ "taskId": "T06-dashboard-finance",
+ "repetition": 1,
+ "sourceSha": "932e5a004c1866ad536525fd313e9cee5e76493fdddbd3b53ccdc347f28510b4",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 506,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 25,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 17,
+    "aborted": false,
+    "solveMs": 3.5999999998603016,
+    "memoEntries": 29
+   },
+   "totalMs": 13.399999999906868,
+   "energy": 0
+  }
+ }
+}

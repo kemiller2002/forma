@@ -1,0 +1,31 @@
+{
+ "attemptId": "fu235adae1",
+ "taskId": "T05-dashboard-ops",
+ "repetition": 2,
+ "sourceSha": "8ad150e01647d27077a7941e6fc5d45846e68c88cd73baf9c0df561da4d5089a",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 437,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 27,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 21,
+    "aborted": false,
+    "solveMs": 3.699999999953434,
+    "memoEntries": 33
+   },
+   "totalMs": 23.900000000023283,
+   "energy": 0
+  }
+ }
+}

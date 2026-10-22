@@ -1,0 +1,37 @@
+{
+ "attemptId": "fu95140c20",
+ "taskId": "T07-nav-docs",
+ "repetition": 3,
+ "sourceSha": "19c1d21a614366e6d177bb9e5aba7bcd921482950247cf3ff23d93c8f1502ed1",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [
+  "standard|1440|1:text:link-sdks|unexpected-shift|search-label"
+ ],
+ "distinct": [
+  "unexpected-shift|search-label"
+ ],
+ "byInvariant": {
+  "unexpected-shift": 1
+ },
+ "timing": {
+  "stableMs": 487,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 6,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 9,
+    "aborted": false,
+    "solveMs": 16.700000000186265,
+    "memoEntries": 13
+   },
+   "totalMs": 36.39999999990687,
+   "energy": 0
+  }
+ }
+}

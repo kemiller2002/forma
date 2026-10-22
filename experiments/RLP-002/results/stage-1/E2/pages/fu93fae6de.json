@@ -1,0 +1,94 @@
+{
+ "attemptId": "fu93fae6de",
+ "taskId": "T09-dynamic-checkout",
+ "repetition": 2,
+ "ruleset": "E2",
+ "compileStatus": "approximated",
+ "deterministic": true,
+ "sourceBytes": 4020,
+ "compiledBytes": 4104,
+ "c": {
+  "instances": 16,
+  "distinct": 2,
+  "byInvariant": {
+   "row-association": 16
+  },
+  "stableMs": 355,
+  "engineMs": 13.199999999953434
+ },
+ "candidate": {
+  "instances": 1,
+  "distinct": 1,
+  "byInvariant": {
+   "row-association": 1
+  },
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 87
+ },
+ "newInstances": [],
+ "newDistinct": [],
+ "resolvedInstances": [
+  "font-scale|375|initial|row-association|item-1-name ~ item-1-price",
+  "heldout-text|320|initial|row-association|item-1-name ~ item-1-price",
+  "heldout-text|320|initial|row-association|item-1-name ~ item-1-remove",
+  "standard|320|1:clone:item-4|row-association|item-1-name ~ item-1-price",
+  "standard|320|1:clone:item-4|row-association|item-1-name ~ item-1-remove",
+  "standard|320|2:remove:item-2|row-association|item-1-name ~ item-1-price",
+  "standard|320|2:remove:item-2|row-association|item-1-name ~ item-1-remove",
+  "standard|320|3:text:item-1-name|row-association|item-1-name ~ item-1-price",
+  "standard|320|3:text:item-1-name|row-association|item-1-name ~ item-1-remove",
+  "standard|320|4:reveal:promo-error|row-association|item-1-name ~ item-1-price",
+  "standard|320|4:reveal:promo-error|row-association|item-1-name ~ item-1-remove",
+  "standard|320|5:hide:shipping-options|row-association|item-1-name ~ item-1-price",
+  "standard|320|5:hide:shipping-options|row-association|item-1-name ~ item-1-remove",
+  "standard|320|initial|row-association|item-1-name ~ item-1-price",
+  "standard|320|initial|row-association|item-1-name ~ item-1-remove"
+ ],
+ "findings": [
+  {
+   "element": "item-1",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "item-2",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "item-3",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "div#29",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "div#37",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "div#40",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "div#43",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  }
+ ]
+}

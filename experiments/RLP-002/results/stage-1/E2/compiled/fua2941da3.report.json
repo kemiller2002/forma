@@ -1,0 +1,27 @@
+{
+  "compiler": "rlc/1",
+  "source": "final.html",
+  "stylesheet": "assets/rlc/E2.css",
+  "engineScriptsRemoved": 1,
+  "status": "approximated",
+  "findings": [
+    {
+      "element": "comment-1",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "comment-2",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "comment-3",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    }
+  ]
+}

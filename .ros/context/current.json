@@ -2694,6 +2694,56 @@
       },
       "completedAt": "2026-10-21T19:54:59Z",
       "conclusion": "Outcome B: relationships win, physics does not. H1 not supported; H3, H4, H5 (held-out) supported; H6 falsified; H7 fails for D. X1 removes Gestalt inversions but causes dynamic layout shift."
+    },
+    {
+      "id": "RLP-002",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "experiments/RLP-002/compiler"
+        },
+        {
+          "type": "tests",
+          "path": "experiments/RLP-002/results/stage-1/GATES.md"
+        },
+        {
+          "type": "report",
+          "path": "experiments/RLP-002/REPORT.md"
+        },
+        {
+          "type": "research-record",
+          "path": "research/experiments/EX-FORMA-2026-0003--rlp-002-zero-runtime-relational-layout.md"
+        }
+      ],
+      "updatedAt": "2026-10-22T11:34:28Z",
+      "telemetryExecutionIds": [
+        "EXE-20261022T105808600Z-fc3d6356"
+      ],
+      "latestCheckpoint": {
+        "id": "59d7a4865ae90ea89f8ed6a1",
+        "recordedAt": "2026-10-22T11:34:21Z",
+        "executionId": "EXE-20261022T105808600Z-fc3d6356",
+        "repository": "echelon-design-system",
+        "branch": "claude/rlp-001-relational-physics-4urqm8",
+        "commit": "f5f2e5d65fff6d9f3e4d19fe43473f1dffe951dc",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/rlp-001-relational-physics-4urqm8",
+        "remoteCommit": "f5f2e5d65fff6d9f3e4d19fe43473f1dffe951dc",
+        "summary": "Stage 1 gate failed after one correction cycle (E1->E2); stopped before Arm F, visual review and Stage 2; REPORT.md recommends REFINE",
+        "nextAction": "Review PR; follow-up RLP-002 R1",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-22T11:34:28Z",
+      "conclusion": "REFINE: vocabulary compiles to zero-runtime CSS; exact relationships preserve C invariants; content-dependent rows fail the Stage 1 gate; Stage 2 not run per protocol."
     }
   ]
 }

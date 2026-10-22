@@ -1,0 +1,31 @@
+{
+ "attemptId": "fub2613ab8",
+ "taskId": "T03-cards-product",
+ "repetition": 3,
+ "sourceSha": "d03c257d6d5daa9c40560ccc0d38d7936eb18b0d96683b3dc31e67ec1e8edb0d",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 570,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 36,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 28,
+    "aborted": false,
+    "solveMs": 9,
+    "memoEntries": 48
+   },
+   "totalMs": 24.899999999906868,
+   "energy": 0
+  }
+ }
+}

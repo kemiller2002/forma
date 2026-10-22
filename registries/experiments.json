@@ -102,5 +102,61 @@
       "RLP-001-X1-H3"
     ],
     "title": "RLP-001 extension 01: semantic, hierarchical and Gestalt layout models"
+  },
+  {
+    "author_agent": "anthropic/claude-code",
+    "created": "2026-10-22",
+    "derived_from": [
+      "EX-FORMA-2026-0001"
+    ],
+    "id": "EX-FORMA-2026-0003",
+    "inputs": [
+      ".praxis/inbox/documents/2026-10-22-RLP-002.md",
+      "experiments/RLP-001/REPORT.md",
+      "experiments/RLP-001/results/full/",
+      "experiments/RLP-002/BASELINE.md"
+    ],
+    "outputs": [
+      "experiments/RLP-002/results/",
+      "experiments/RLP-002/REPORT.md"
+    ],
+    "path": "research/experiments/EX-FORMA-2026-0003--rlp-002-zero-runtime-relational-layout.md",
+    "provenance": {
+      "contributions": {
+        "EXE-20261022T105808600Z-fc3d6356": {
+          "actor": {
+            "id": "anthropic/claude-code",
+            "kind": "agent",
+            "model": "unknown",
+            "provider": "anthropic",
+            "runtime": "claude-code"
+          },
+          "at": "2026-10-22T10:59:40.815Z",
+          "evidence": [
+            "experiments/RLP-002/PROTOCOL.md",
+            "experiments/RLP-002/REPORT.md",
+            "experiments/RLP-002/results/stage-1/GATES.md"
+          ],
+          "last": "2026-10-22T11:33:55.703Z",
+          "operations": [
+            "created",
+            "modified"
+          ],
+          "reason": "RLP-002 pre-registration"
+        }
+      }
+    },
+    "related_theories": [],
+    "research_area": "agent-ui-construction",
+    "status": "completed",
+    "tests_hypotheses": [
+      "RLP-002-H1",
+      "RLP-002-H2",
+      "RLP-002-H3",
+      "RLP-002-H4",
+      "RLP-002-H5",
+      "RLP-002-H6"
+    ],
+    "title": "RLP-002: Zero-runtime relational layout compilation and visual quality"
   }
 ]

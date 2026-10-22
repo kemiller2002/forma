@@ -1,0 +1,31 @@
+{
+ "attemptId": "fubb407509",
+ "taskId": "T08-nav-workspace",
+ "repetition": 3,
+ "sourceSha": "777743b6ab05993fe9e1252e50c6f4de1ee419d58ff1e11a7bbc7ca01b970f03",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 460,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 8,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 13,
+    "aborted": false,
+    "solveMs": 4.199999999953434,
+    "memoEntries": 18
+   },
+   "totalMs": 13.70000000006985,
+   "energy": 0
+  }
+ }
+}

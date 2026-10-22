@@ -1,0 +1,491 @@
+{
+ "ruleset": "E1",
+ "passed": false,
+ "conditions": [
+  {
+   "id": "compiles",
+   "rule": "every supported page compiles",
+   "pass": true,
+   "detail": "36 compiled; 10 exact, 26 approximated or unsupported"
+  },
+  {
+   "id": "no-new-hard-defects",
+   "rule": "no new hard-invariant defect on any supported page",
+   "pass": true,
+   "detail": "0 new on supported pages; 838 new on other pages"
+  },
+  {
+   "id": "no-new-accessibility",
+   "rule": "no new axe violation on any page",
+   "pass": true,
+   "detail": "0 new"
+  },
+  {
+   "id": "no-layout-runtime",
+   "rule": "no script element, no script or WASM request, identical geometry with JavaScript disabled",
+   "pass": true,
+   "detail": "max geometry delta 0px"
+  },
+  {
+   "id": "deterministic",
+   "rule": "identical output from two compilations",
+   "pass": true,
+   "detail": "36/36"
+  },
+  {
+   "id": "no-added-shift",
+   "rule": "no added unexpected-shift on any page",
+   "pass": false,
+   "detail": "8 new instances on 3 pages"
+  },
+  {
+   "id": "unsupported-documented",
+   "rule": "every approximated or unsupported relationship is reported by the compiler",
+   "pass": true,
+   "detail": "109 findings"
+  },
+  {
+   "id": "practical-scope",
+   "rule": "compiler <= 600 lines, stylesheet <= 16 KB, build <= 2 s per page",
+   "pass": true,
+   "detail": "460 lines, 6545 B, 6 ms per page (batch, incl. startup)"
+  }
+ ],
+ "pages": {
+  "total": 36,
+  "byStatus": {
+   "approximated": 24,
+   "exact": 10,
+   "unsupported": 2
+  },
+  "withNewDefects": 16
+ },
+ "newInstancesByInvariant": {
+  "clearance": 42,
+  "target-size": 462,
+  "separation": 317,
+  "unexpected-shift": 8,
+  "reading-order": 9
+ },
+ "newInstancesByStatus": {
+  "exact": 0,
+  "other": 838
+ },
+ "resolvedInstances": 31,
+ "findingsByFeature": {
+  "flow=row: approximated": 104,
+  "align-edge grid: approximated": 3,
+  "align-edge (nested): unsupported": 2
+ },
+ "bytes": {
+  "stylesheet": 6545,
+  "meanAddedPerPage": 168.30555555555554
+ },
+ "stableMs": {
+  "cMedian": 467.5,
+  "candidateMedian": 183.5
+ },
+ "perPage": [
+  {
+   "id": "fu0142591f",
+   "task": "T11-adversarial-settings",
+   "status": "approximated",
+   "c": 3,
+   "candidate": 31,
+   "new": 28,
+   "resolved": 0,
+   "newByInvariant": {
+    "clearance": 14,
+    "target-size": 14
+   }
+  },
+  {
+   "id": "fu1a992744",
+   "task": "T12-adversarial-pricing",
+   "status": "exact",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fu235adae1",
+   "task": "T05-dashboard-ops",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fu2c568155",
+   "task": "T02-form-shipping",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 120,
+   "new": 120,
+   "resolved": 0,
+   "newByInvariant": {
+    "separation": 48,
+    "target-size": 72
+   }
+  },
+  {
+   "id": "fu33cb209d",
+   "task": "T03-cards-product",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fu3c051d74",
+   "task": "T04-cards-profile",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 1,
+   "new": 1,
+   "resolved": 0,
+   "newByInvariant": {
+    "unexpected-shift": 1
+   }
+  },
+  {
+   "id": "fu3fcb5c10",
+   "task": "T06-dashboard-finance",
+   "status": "exact",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fu40a7cfb4",
+   "task": "T02-form-shipping",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 120,
+   "new": 120,
+   "resolved": 0,
+   "newByInvariant": {
+    "separation": 48,
+    "target-size": 72
+   }
+  },
+  {
+   "id": "fu427eecc3",
+   "task": "T05-dashboard-ops",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fu4d038af0",
+   "task": "T08-nav-workspace",
+   "status": "exact",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fu4d441cea",
+   "task": "T01-form-account",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 116,
+   "new": 116,
+   "resolved": 0,
+   "newByInvariant": {
+    "separation": 58,
+    "target-size": 58
+   }
+  },
+  {
+   "id": "fu5663052b",
+   "task": "T07-nav-docs",
+   "status": "exact",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fu572ed09d",
+   "task": "T02-form-shipping",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 119,
+   "new": 119,
+   "resolved": 0,
+   "newByInvariant": {
+    "separation": 47,
+    "target-size": 72
+   }
+  },
+  {
+   "id": "fu5efa05e6",
+   "task": "T08-nav-workspace",
+   "status": "exact",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fu652d9f84",
+   "task": "T07-nav-docs",
+   "status": "unsupported",
+   "c": 0,
+   "candidate": 9,
+   "new": 9,
+   "resolved": 0,
+   "newByInvariant": {
+    "reading-order": 9
+   }
+  },
+  {
+   "id": "fu7cff66d0",
+   "task": "T01-form-account",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 116,
+   "new": 116,
+   "resolved": 0,
+   "newByInvariant": {
+    "separation": 58,
+    "target-size": 58
+   }
+  },
+  {
+   "id": "fu858c2ae3",
+   "task": "T04-cards-profile",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fu93ad4bf1",
+   "task": "T09-dynamic-checkout",
+   "status": "approximated",
+   "c": 2,
+   "candidate": 11,
+   "new": 10,
+   "resolved": 1,
+   "newByInvariant": {
+    "target-size": 10
+   }
+  },
+  {
+   "id": "fu93fae6de",
+   "task": "T09-dynamic-checkout",
+   "status": "approximated",
+   "c": 16,
+   "candidate": 11,
+   "new": 10,
+   "resolved": 15,
+   "newByInvariant": {
+    "target-size": 10
+   }
+  },
+  {
+   "id": "fu95140c20",
+   "task": "T07-nav-docs",
+   "status": "unsupported",
+   "c": 1,
+   "candidate": 1,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fua2941da3",
+   "task": "T10-dynamic-thread",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fua2946c91",
+   "task": "T10-dynamic-thread",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 6,
+   "new": 6,
+   "resolved": 0,
+   "newByInvariant": {
+    "unexpected-shift": 6
+   }
+  },
+  {
+   "id": "fub2613ab8",
+   "task": "T03-cards-product",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fub2d63ead",
+   "task": "T10-dynamic-thread",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fubb407509",
+   "task": "T08-nav-workspace",
+   "status": "exact",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fube9b7229",
+   "task": "T06-dashboard-finance",
+   "status": "exact",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fuc91e49a4",
+   "task": "T01-form-account",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 116,
+   "new": 116,
+   "resolved": 0,
+   "newByInvariant": {
+    "separation": 58,
+    "target-size": 58
+   }
+  },
+  {
+   "id": "fudb3f547d",
+   "task": "T06-dashboard-finance",
+   "status": "exact",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fudf8b1b5b",
+   "task": "T11-adversarial-settings",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 28,
+   "new": 28,
+   "resolved": 0,
+   "newByInvariant": {
+    "clearance": 14,
+    "target-size": 14
+   }
+  },
+  {
+   "id": "fue7e0c36b",
+   "task": "T12-adversarial-pricing",
+   "status": "exact",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fue8f7cd71",
+   "task": "T09-dynamic-checkout",
+   "status": "approximated",
+   "c": 16,
+   "candidate": 11,
+   "new": 10,
+   "resolved": 15,
+   "newByInvariant": {
+    "target-size": 10
+   }
+  },
+  {
+   "id": "fue9fbafa8",
+   "task": "T05-dashboard-ops",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fueeb5d697",
+   "task": "T03-cards-product",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fueff2bcb2",
+   "task": "T11-adversarial-settings",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 28,
+   "new": 28,
+   "resolved": 0,
+   "newByInvariant": {
+    "clearance": 14,
+    "target-size": 14
+   }
+  },
+  {
+   "id": "fuf88b44cd",
+   "task": "T12-adversarial-pricing",
+   "status": "exact",
+   "c": 0,
+   "candidate": 0,
+   "new": 0,
+   "resolved": 0,
+   "newByInvariant": {}
+  },
+  {
+   "id": "fufcbfa9b4",
+   "task": "T04-cards-profile",
+   "status": "approximated",
+   "c": 0,
+   "candidate": 1,
+   "new": 1,
+   "resolved": 0,
+   "newByInvariant": {
+    "unexpected-shift": 1
+   }
+  }
+ ]
+}

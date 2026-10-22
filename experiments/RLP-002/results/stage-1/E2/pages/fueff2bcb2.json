@@ -1,0 +1,50 @@
+{
+ "attemptId": "fueff2bcb2",
+ "taskId": "T11-adversarial-settings",
+ "repetition": 3,
+ "ruleset": "E2",
+ "compileStatus": "approximated",
+ "deterministic": true,
+ "sourceBytes": 2369,
+ "compiledBytes": 2433,
+ "c": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "stableMs": 457,
+  "engineMs": 8.900000000139698
+ },
+ "candidate": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 377
+ },
+ "newInstances": [],
+ "newDistinct": [],
+ "resolvedInstances": [],
+ "findings": [
+  {
+   "element": "layout",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "sidebar",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "div#20",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  }
+ ]
+}

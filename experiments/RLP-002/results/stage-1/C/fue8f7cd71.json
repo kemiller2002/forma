@@ -1,0 +1,53 @@
+{
+ "attemptId": "fue8f7cd71",
+ "taskId": "T09-dynamic-checkout",
+ "repetition": 1,
+ "sourceSha": "1ae3a40f2898751de124a6716a5842c78cc3abe34ec9fbd6a45b69d28a27b2a5",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [
+  "font-scale|375|initial|row-association|item-1-name ~ item-1-price",
+  "font-scale|375|initial|row-association|item-1-name ~ item-1-remove",
+  "heldout-text|320|initial|row-association|item-1-name ~ item-1-price",
+  "heldout-text|320|initial|row-association|item-1-name ~ item-1-remove",
+  "standard|320|1:clone:item-4|row-association|item-1-name ~ item-1-price",
+  "standard|320|1:clone:item-4|row-association|item-1-name ~ item-1-remove",
+  "standard|320|2:remove:item-2|row-association|item-1-name ~ item-1-price",
+  "standard|320|2:remove:item-2|row-association|item-1-name ~ item-1-remove",
+  "standard|320|3:text:item-1-name|row-association|item-1-name ~ item-1-price",
+  "standard|320|3:text:item-1-name|row-association|item-1-name ~ item-1-remove",
+  "standard|320|4:reveal:promo-error|row-association|item-1-name ~ item-1-price",
+  "standard|320|4:reveal:promo-error|row-association|item-1-name ~ item-1-remove",
+  "standard|320|5:hide:shipping-options|row-association|item-1-name ~ item-1-price",
+  "standard|320|5:hide:shipping-options|row-association|item-1-name ~ item-1-remove",
+  "standard|320|initial|row-association|item-1-name ~ item-1-price",
+  "standard|320|initial|row-association|item-1-name ~ item-1-remove"
+ ],
+ "distinct": [
+  "row-association|item-1-name ~ item-1-price",
+  "row-association|item-1-name ~ item-1-remove"
+ ],
+ "byInvariant": {
+  "row-association": 16
+ },
+ "timing": {
+  "stableMs": 251,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 19,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 21,
+    "aborted": false,
+    "solveMs": 13.300000000046566,
+    "memoEntries": 31
+   },
+   "totalMs": 26.300000000046566,
+   "energy": 0
+  }
+ }
+}

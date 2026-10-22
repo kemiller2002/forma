@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nested shared edge at different positions</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+<main data-rl-root data-rl="group">
+  <!-- Shared edge one level inside tight items, at index 1 in the first item
+       and index 2 in the second (a hint precedes the input). Arm C pushes the
+       groups until the inputs share a top edge; rlc cannot express this with
+       subgrid rows and emits no alignment (reported unsupported). -->
+  <div data-rl="group" data-rl-flow="row" id="line">
+    <div data-rl="group" data-rl-bond="tight" data-rl-min="12rem">
+      <label for="a">Search</label>
+      <input id="a" data-rl-align-edge="control">
+    </div>
+    <div data-rl="group" data-rl-bond="tight" data-rl-min="12rem">
+      <label for="b">Filter</label>
+      <small id="hint">Applies to every column</small>
+      <input id="b" data-rl-align-edge="control">
+    </div>
+  </div>
+</main>
+</body>
+</html>

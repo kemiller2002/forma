@@ -1,0 +1,31 @@
+{
+ "attemptId": "fu2c568155",
+ "taskId": "T02-form-shipping",
+ "repetition": 1,
+ "sourceSha": "afcfaab5851919f454f1853f32d31aa5fee6fd6a6b8891556217be21526ceed1",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 398,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 30,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 22,
+    "aborted": false,
+    "solveMs": 4.699999999953434,
+    "memoEntries": 37
+   },
+   "totalMs": 26.300000000046566,
+   "energy": 0
+  }
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "attemptId": "fua2946c91",
+ "taskId": "T10-dynamic-thread",
+ "repetition": 2,
+ "ruleset": "E2",
+ "compileStatus": "approximated",
+ "deterministic": true,
+ "sourceBytes": 3702,
+ "compiledBytes": 3694,
+ "c": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "stableMs": 397,
+  "engineMs": 27.300000000046566
+ },
+ "candidate": {
+  "instances": 6,
+  "distinct": 2,
+  "byInvariant": {
+   "unexpected-shift": 6
+  },
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 103
+ },
+ "newInstances": [
+  "standard|1024|3:text:comment-1-body|unexpected-shift|comment-1-author",
+  "standard|1024|3:text:comment-1-body|unexpected-shift|comment-1-time",
+  "standard|1440|3:text:comment-1-body|unexpected-shift|comment-1-author",
+  "standard|1440|3:text:comment-1-body|unexpected-shift|comment-1-time",
+  "standard|768|3:text:comment-1-body|unexpected-shift|comment-1-author",
+  "standard|768|3:text:comment-1-body|unexpected-shift|comment-1-time"
+ ],
+ "newDistinct": [
+  "unexpected-shift|comment-1-author",
+  "unexpected-shift|comment-1-time"
+ ],
+ "resolvedInstances": [],
+ "findings": [
+  {
+   "element": "comment-1",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "comment-2",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "comment-3",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  }
+ ]
+}

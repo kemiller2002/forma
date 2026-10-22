@@ -1,0 +1,31 @@
+{
+ "attemptId": "fuc91e49a4",
+ "taskId": "T01-form-account",
+ "repetition": 3,
+ "sourceSha": "90b846863dcf9242d9416c6c517a28424631618a89ce621b024132c8f8335efe",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 422,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 25,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 18,
+    "aborted": false,
+    "solveMs": 12.099999999860302,
+    "memoEntries": 31
+   },
+   "totalMs": 30.100000000093132,
+   "energy": 0
+  }
+ }
+}

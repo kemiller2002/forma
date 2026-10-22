@@ -1,0 +1,38 @@
+{
+ "attemptId": "fue9fbafa8",
+ "taskId": "T05-dashboard-ops",
+ "repetition": 3,
+ "ruleset": "E2",
+ "compileStatus": "approximated",
+ "deterministic": true,
+ "sourceBytes": 3574,
+ "compiledBytes": 3835,
+ "c": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "stableMs": 442,
+  "engineMs": 14.399999999906868
+ },
+ "candidate": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 179
+ },
+ "newInstances": [],
+ "newDistinct": [],
+ "resolvedInstances": [],
+ "findings": [
+  {
+   "element": "header",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  }
+ ]
+}

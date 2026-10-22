@@ -1,0 +1,31 @@
+{
+ "attemptId": "fu5663052b",
+ "taskId": "T07-nav-docs",
+ "repetition": 1,
+ "ruleset": "E2",
+ "compileStatus": "exact",
+ "deterministic": true,
+ "sourceBytes": 1492,
+ "compiledBytes": 1508,
+ "c": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "stableMs": 499,
+  "engineMs": 6.300000000046566
+ },
+ "candidate": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 431
+ },
+ "newInstances": [],
+ "newDistinct": [],
+ "resolvedInstances": [],
+ "findings": []
+}

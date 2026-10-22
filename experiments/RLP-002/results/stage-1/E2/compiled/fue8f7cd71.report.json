@@ -1,0 +1,51 @@
+{
+  "compiler": "rlc/1",
+  "source": "final.html",
+  "stylesheet": "assets/rlc/E2.css",
+  "engineScriptsRemoved": 1,
+  "status": "approximated",
+  "findings": [
+    {
+      "element": "item-1",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "item-2",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "item-3",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#29",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#37",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#40",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#43",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    }
+  ]
+}

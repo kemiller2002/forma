@@ -1,0 +1,31 @@
+{
+ "attemptId": "fudf8b1b5b",
+ "taskId": "T11-adversarial-settings",
+ "repetition": 1,
+ "sourceSha": "f5a9645a0246f9e45d84c6ee0f0bf9ef1dc83b9fd1d41ea3410972bba76d46a9",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 648,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 19,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 14,
+    "aborted": false,
+    "solveMs": 2.0999999998603016,
+    "memoEntries": 23
+   },
+   "totalMs": 20.399999999906868,
+   "energy": 0
+  }
+ }
+}

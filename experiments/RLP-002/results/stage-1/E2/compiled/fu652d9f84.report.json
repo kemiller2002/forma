@@ -1,0 +1,15 @@
+{
+  "compiler": "rlc/1",
+  "source": "final.html",
+  "stylesheet": "assets/rlc/E2.css",
+  "engineScriptsRemoved": 1,
+  "status": "unsupported",
+  "findings": [
+    {
+      "element": "header",
+      "feature": "align-edge (nested)",
+      "status": "unsupported",
+      "reason": "not every item declares data-rl-min; no static alignment emitted"
+    }
+  ]
+}

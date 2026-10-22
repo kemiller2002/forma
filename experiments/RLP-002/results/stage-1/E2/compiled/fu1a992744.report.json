@@ -1,0 +1,8 @@
+{
+  "compiler": "rlc/1",
+  "source": "final.html",
+  "stylesheet": "assets/rlc/E2.css",
+  "engineScriptsRemoved": 1,
+  "status": "exact",
+  "findings": []
+}

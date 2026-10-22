@@ -1,0 +1,31 @@
+{
+ "attemptId": "fu652d9f84",
+ "taskId": "T07-nav-docs",
+ "repetition": 2,
+ "sourceSha": "ed95b824f006e509e1c0984d0cb6bd1bfdf5d39ce18fa285944d3f5b8c205279",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 473,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 8,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 9,
+    "aborted": false,
+    "solveMs": 2.6000000000931323,
+    "memoEntries": 17
+   },
+   "totalMs": 17.299999999813735,
+   "energy": 0
+  }
+ }
+}

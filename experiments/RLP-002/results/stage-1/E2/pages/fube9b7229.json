@@ -1,0 +1,31 @@
+{
+ "attemptId": "fube9b7229",
+ "taskId": "T06-dashboard-finance",
+ "repetition": 1,
+ "ruleset": "E2",
+ "compileStatus": "exact",
+ "deterministic": true,
+ "sourceBytes": 3943,
+ "compiledBytes": 4246,
+ "c": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "stableMs": 506,
+  "engineMs": 13.399999999906868
+ },
+ "candidate": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 314
+ },
+ "newInstances": [],
+ "newDistinct": [],
+ "resolvedInstances": [],
+ "findings": []
+}
