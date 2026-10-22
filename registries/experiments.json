@@ -133,10 +133,14 @@
           },
           "at": "2026-10-22T10:59:40.815Z",
           "evidence": [
-            "experiments/RLP-002/PROTOCOL.md"
+            "experiments/RLP-002/PROTOCOL.md",
+            "experiments/RLP-002/REPORT.md",
+            "experiments/RLP-002/results/stage-1/GATES.md"
           ],
+          "last": "2026-10-22T11:33:55.703Z",
           "operations": [
-            "created"
+            "created",
+            "modified"
           ],
           "reason": "RLP-002 pre-registration"
         }
@@ -144,7 +148,7 @@
     },
     "related_theories": [],
     "research_area": "agent-ui-construction",
-    "status": "active",
+    "status": "completed",
     "tests_hypotheses": [
       "RLP-002-H1",
       "RLP-002-H2",

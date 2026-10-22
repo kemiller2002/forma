@@ -2485,7 +2485,27 @@
       "updatedAt": "2026-10-22T10:58:06Z",
       "telemetryExecutionIds": [
         "EXE-20261022T105808600Z-fc3d6356"
-      ]
+      ],
+      "latestCheckpoint": {
+        "id": "6deab8cc6b452e47374859c8",
+        "recordedAt": "2026-10-22T10:59:52Z",
+        "executionId": "EXE-20261022T105808600Z-fc3d6356",
+        "repository": "echelon-design-system",
+        "branch": "claude/rlp-001-relational-physics-4urqm8",
+        "commit": "0dfb230f96501a9cdf095064d66012ea48709fba",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/rlp-001-relational-physics-4urqm8",
+        "remoteCommit": "0dfb230f96501a9cdf095064d66012ea48709fba",
+        "summary": "Checkpoint 1: baseline and protocol registered (EX-FORMA-2026-0003)",
+        "nextAction": "Implement F# compiler rlc and ruleset E/1",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      }
     }
   ]
 }

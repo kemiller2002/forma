@@ -2,7 +2,7 @@
 id: EX-FORMA-2026-0003
 title: "RLP-002: Zero-runtime relational layout compilation and visual quality"
 research_area: agent-ui-construction
-status: active
+status: completed
 created: 2026-10-22
 author_agent: anthropic/claude-code
 tests_hypotheses: [RLP-002-H1, RLP-002-H2, RLP-002-H3, RLP-002-H4, RLP-002-H5, RLP-002-H6]
@@ -18,8 +18,9 @@ outputs:
 provenance:
   contributions:
     EXE-20261022T105808600Z-fc3d6356:
-      operations: [created]
+      operations: [created, modified]
       at: 2026-10-22T10:59:40.815Z
+      last: 2026-10-22T11:33:55.703Z
       actor:
         kind: agent
         id: anthropic/claude-code
@@ -27,7 +28,7 @@ provenance:
         model: unknown
         runtime: claude-code
       reason: "RLP-002 pre-registration"
-      evidence: [experiments/RLP-002/PROTOCOL.md]
+      evidence: [experiments/RLP-002/PROTOCOL.md, experiments/RLP-002/REPORT.md, experiments/RLP-002/results/stage-1/GATES.md]
 derived_from: [EX-FORMA-2026-0001]
 ---
 
@@ -99,7 +100,27 @@ These are the decision rules in `HYPOTHESES.md`:
 
 ## Results
 
-Pending.
+Full report: `experiments/RLP-002/REPORT.md`. Gate record:
+`experiments/RLP-002/results/stage-1/GATES.md`.
+
+Stage 1 replay of the 36 RLP-001 Arm C pages. C was re-scored in the same
+pass and agrees with the archive on 36/36 pages.
+
+| Hypothesis | Result | Verdict |
+|---|---|---|
+| H1 | 0 new defect instances on the 10 exact pages. 17 on the 26 approximated or unsupported pages after the correction cycle: 8 `unexpected-shift`, 9 `reading-order`. | Supported on supported layouts. Stage 1 gate **failed** on added `unexpected-shift`. |
+| H2 | 0 scripts and 0 script or WASM requests in 36/36 pages; 0 px geometry change with JavaScript disabled | Supported |
+| H3–H6 | Arm F, the visual review and Stage 2 depend on the Stage 1 gate | Not evaluated |
+
+The cost bounds for H6 were met on the compiler side:
+- compiler 460 lines;
+- stylesheet 7.3 KB;
+- about 6 ms per page;
+- deterministic output (36/36).
+
+Overall, compiled E2 had 24 defect instances against C's 38, because
+per-item wrapping removed 31 C row-association defects. The gate counts only
+new defects, as pre-registered.
 
 ## Threats to validity
 
@@ -113,12 +134,26 @@ See `experiments/RLP-002/BASELINE.md` and README.
 
 ## Conclusion
 
-Pending.
+**REFINE.** The relational vocabulary compiles to deterministic, zero-runtime
+CSS. Wherever a relationship compiles exactly, the result is as correct as
+the run-time engine. Content-dependent all-or-nothing rows cannot compile
+exactly, and that failed the gate. Nested shared edges at different
+positions are also unsupported (1 of 36 pages).
+
+Follow-up (RLP-002 R1):
+1. Replace all-or-nothing rows with keep-together and wrap-tail rows, and make nested-edge mismatches compile-time errors.
+2. Re-run Stage 1.
+3. Then run Arm F, the blind review and Stage 2 as registered.
+
+No production change is justified yet.
 
 ## Registry updates required
 
-Pending results.
+None. The H1–H2 outcomes are recorded here, H3–H6 are not evaluated, and
+there is no change to HY-FORMA-2026-0001 or -0002.
 
 ## Deviations
 
-None yet.
+None to the criteria. There was one pre-registered correction cycle (ruleset
+E1 → E2, both kept). Arm F, the visual review and Stage 2 were not run,
+because the Stage 1 gate failed.
