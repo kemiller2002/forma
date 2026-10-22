@@ -1,0 +1,63 @@
+{
+  "compiler": "rlc/1",
+  "source": "final.html",
+  "stylesheet": "assets/rlc/E1.css",
+  "engineScriptsRemoved": 1,
+  "status": "approximated",
+  "findings": [
+    {
+      "element": "div#17",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#20",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "card-a-actions",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#31",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#34",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "card-b-actions",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#45",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#48",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "card-c-actions",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    }
+  ]
+}

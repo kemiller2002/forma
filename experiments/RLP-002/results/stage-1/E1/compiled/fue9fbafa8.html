@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operations dashboard</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/rlc/E1.css">
+</head>
+<body>
+  <main data-rlp="dashboard" data-rl-root data-rl="group" data-rl-bond="section">
+    <header data-rlp="header" data-rl="group" data-rl-flow="row" data-rl-align="center">
+      <div data-rl="group" data-rl-bond="tight">
+        <h1 data-rlp="title">Service health</h1>
+        <p data-rlp="period">Last 24 hours</p>
+      </div>
+      <button type="button" class="secondary" data-rlp="refresh" data-rl-anchor="end">Refresh</button>
+    </header>
+    <div data-rlp="tiles" data-rl="group" data-rl-flow="wrap" data-rl-equal data-rl-bond="loose" data-rlc="grid" style="--rl-col: 12rem">
+      <div data-rlp="tile-uptime" data-rl="container" data-rl-bond="tight" data-rl-min="12rem" style="--rl-min: 12rem">
+        <span data-rlp="tile-uptime-label">Uptime</span>
+        <span data-rlp="tile-uptime-value">99.98%</span>
+        <span data-rlp="tile-uptime-delta">+0.01%</span>
+      </div>
+      <div data-rlp="tile-latency" data-rl="container" data-rl-bond="tight" data-rl-min="12rem" style="--rl-min: 12rem">
+        <span data-rlp="tile-latency-label">Median latency</span>
+        <span data-rlp="tile-latency-value">182 ms</span>
+        <span data-rlp="tile-latency-delta">−12 ms</span>
+      </div>
+      <div data-rlp="tile-errors" data-rl="container" data-rl-bond="tight" data-rl-min="12rem" style="--rl-min: 12rem">
+        <span data-rlp="tile-errors-label">Error rate</span>
+        <span data-rlp="tile-errors-value">0.4%</span>
+        <span data-rlp="tile-errors-delta">+0.1%</span>
+      </div>
+      <div data-rlp="tile-traffic" data-rl="container" data-rl-bond="tight" data-rl-min="12rem" style="--rl-min: 12rem">
+        <span data-rlp="tile-traffic-label">Requests</span>
+        <span data-rlp="tile-traffic-value">1.2 M</span>
+        <span data-rlp="tile-traffic-delta">+8%</span>
+      </div>
+    </div>
+    <div data-rl="group" data-rl-flow="row" data-rl-bond="loose" data-rlc="switch" style="--rl-switch: calc(30rem + 16rem + 1.5rem)">
+      <section data-rlp="requests" data-rl="container" data-rl-bond="loose" data-rl-min="30rem" data-rl-fill data-rl-align-edge="panels" style="--rl-min: 30rem">
+        <h2 data-rlp="requests-title">Slowest endpoints</h2>
+        <div data-rl-scroll tabindex="0" role="region" aria-label="Slowest endpoints table">
+          <table data-rlp="requests-table">
+            <thead><tr><th scope="col">Endpoint</th><th scope="col">Calls</th><th scope="col">p95</th><th scope="col">Errors</th></tr></thead>
+            <tbody>
+            <tr><td>/api/search</td><td>41,200</td><td>640 ms</td><td>0.2%</td></tr>
+            <tr><td>/api/checkout</td><td>8,930</td><td>512 ms</td><td>1.1%</td></tr>
+            <tr><td>/api/profile</td><td>22,410</td><td>301 ms</td><td>0.0%</td></tr>
+            <tr><td>/api/recommendations</td><td>17,004</td><td>288 ms</td><td>0.3%</td></tr>
+            <tr><td>/api/cart</td><td>12,775</td><td>190 ms</td><td>0.1%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section data-rlp="alerts" data-rl="container" data-rl-bond="loose" data-rl-min="16rem" data-rl-max="24rem" data-rl-align-edge="panels" style="--rl-min: 16rem; --rl-max: 24rem">
+        <h2 data-rlp="alerts-title">Active alerts</h2>
+        <ul data-rl="group" data-rl-bond="related">
+          <li data-rlp="alert-1">Checkout error rate above 1%</li>
+          <li data-rlp="alert-2">Search p95 above 600 ms</li>
+          <li data-rlp="alert-3">Certificate renews in 9 days</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

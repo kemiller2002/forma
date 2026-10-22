@@ -1,0 +1,42 @@
+{
+ "attemptId": "fu0142591f",
+ "taskId": "T11-adversarial-settings",
+ "repetition": 2,
+ "ruleset": "E2",
+ "compileStatus": "approximated",
+ "deterministic": true,
+ "sourceBytes": 2524,
+ "compiledBytes": 2740,
+ "c": {
+  "instances": 3,
+  "distinct": 1,
+  "byInvariant": {
+   "reading-order": 3
+  },
+  "stableMs": 576,
+  "engineMs": 30.700000000186265
+ },
+ "candidate": {
+  "instances": 3,
+  "distinct": 1,
+  "byInvariant": {
+   "reading-order": 3
+  },
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 425
+ },
+ "newInstances": [],
+ "newDistinct": [],
+ "resolvedInstances": [],
+ "findings": [
+  {
+   "element": "div#20",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+  "compiler": "rlc/1",
+  "source": "final.html",
+  "stylesheet": "assets/rlc/E1.css",
+  "engineScriptsRemoved": 1,
+  "status": "approximated",
+  "findings": [
+    {
+      "element": "div#17",
+      "feature": "align-edge grid",
+      "status": "approximated",
+      "reason": "unequal item minimums share equal grid tracks"
+    },
+    {
+      "element": "div#35",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#40",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#44",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "actions",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    }
+  ]
+}

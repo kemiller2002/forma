@@ -1,0 +1,31 @@
+{
+ "attemptId": "fuf88b44cd",
+ "taskId": "T12-adversarial-pricing",
+ "repetition": 1,
+ "sourceSha": "9c378e37016e22bb2a50bc6b389dab4c6c8c8511d7a10a924166ef6b3a301854",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 462,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 21,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 18,
+    "aborted": false,
+    "solveMs": 3.400000000023283,
+    "memoEntries": 25
+   },
+   "totalMs": 11.699999999953434,
+   "energy": 0
+  }
+ }
+}

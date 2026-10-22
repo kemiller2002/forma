@@ -1,0 +1,31 @@
+{
+ "attemptId": "fu4d038af0",
+ "taskId": "T08-nav-workspace",
+ "repetition": 2,
+ "sourceSha": "10e34dfe0a571e1ebba78957a39f0eb43a8b1537cafc47be73057edc0712e469",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 433,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 8,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 13,
+    "aborted": false,
+    "solveMs": 18.5,
+    "memoEntries": 18
+   },
+   "totalMs": 29.899999999906868,
+   "energy": 0
+  }
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "attemptId": "fue8f7cd71",
+ "taskId": "T09-dynamic-checkout",
+ "repetition": 1,
+ "ruleset": "E1",
+ "compileStatus": "approximated",
+ "deterministic": true,
+ "sourceBytes": 4045,
+ "compiledBytes": 4129,
+ "c": {
+  "instances": 16,
+  "distinct": 2,
+  "byInvariant": {
+   "row-association": 16
+  },
+  "stableMs": 251,
+  "engineMs": 26.300000000046566
+ },
+ "candidate": {
+  "instances": 11,
+  "distinct": 3,
+  "byInvariant": {
+   "target-size": 10,
+   "row-association": 1
+  },
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 103
+ },
+ "newInstances": [
+  "standard|1024|5:hide:shipping-options|target-size|ship-air-input",
+  "standard|1024|5:hide:shipping-options|target-size|ship-ground-input",
+  "standard|1440|5:hide:shipping-options|target-size|ship-air-input",
+  "standard|1440|5:hide:shipping-options|target-size|ship-ground-input",
+  "standard|320|5:hide:shipping-options|target-size|ship-air-input",
+  "standard|320|5:hide:shipping-options|target-size|ship-ground-input",
+  "standard|375|5:hide:shipping-options|target-size|ship-air-input",
+  "standard|375|5:hide:shipping-options|target-size|ship-ground-input",
+  "standard|768|5:hide:shipping-options|target-size|ship-air-input",
+  "standard|768|5:hide:shipping-options|target-size|ship-ground-input"
+ ],
+ "newDistinct": [
+  "target-size|ship-air-input",
+  "target-size|ship-ground-input"
+ ],
+ "resolvedInstances": [
+  "font-scale|375|initial|row-association|item-1-name ~ item-1-price",
+  "heldout-text|320|initial|row-association|item-1-name ~ item-1-price",
+  "heldout-text|320|initial|row-association|item-1-name ~ item-1-remove",
+  "standard|320|1:clone:item-4|row-association|item-1-name ~ item-1-price",
+  "standard|320|1:clone:item-4|row-association|item-1-name ~ item-1-remove",
+  "standard|320|2:remove:item-2|row-association|item-1-name ~ item-1-price",
+  "standard|320|2:remove:item-2|row-association|item-1-name ~ item-1-remove",
+  "standard|320|3:text:item-1-name|row-association|item-1-name ~ item-1-price",
+  "standard|320|3:text:item-1-name|row-association|item-1-name ~ item-1-remove",
+  "standard|320|4:reveal:promo-error|row-association|item-1-name ~ item-1-price",
+  "standard|320|4:reveal:promo-error|row-association|item-1-name ~ item-1-remove",
+  "standard|320|5:hide:shipping-options|row-association|item-1-name ~ item-1-price",
+  "standard|320|5:hide:shipping-options|row-association|item-1-name ~ item-1-remove",
+  "standard|320|initial|row-association|item-1-name ~ item-1-price",
+  "standard|320|initial|row-association|item-1-name ~ item-1-remove"
+ ],
+ "findings": [
+  {
+   "element": "item-1",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "item-2",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "item-3",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "div#29",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "div#37",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "div#40",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  },
+  {
+   "element": "div#43",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  }
+ ]
+}

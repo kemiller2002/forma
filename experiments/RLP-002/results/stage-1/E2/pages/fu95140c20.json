@@ -1,0 +1,42 @@
+{
+ "attemptId": "fu95140c20",
+ "taskId": "T07-nav-docs",
+ "repetition": 3,
+ "ruleset": "E2",
+ "compileStatus": "unsupported",
+ "deterministic": true,
+ "sourceBytes": 1562,
+ "compiledBytes": 1578,
+ "c": {
+  "instances": 1,
+  "distinct": 1,
+  "byInvariant": {
+   "unexpected-shift": 1
+  },
+  "stableMs": 487,
+  "engineMs": 36.39999999990687
+ },
+ "candidate": {
+  "instances": 1,
+  "distinct": 1,
+  "byInvariant": {
+   "unexpected-shift": 1
+  },
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 262
+ },
+ "newInstances": [],
+ "newDistinct": [],
+ "resolvedInstances": [],
+ "findings": [
+  {
+   "element": "header",
+   "feature": "align-edge (nested)",
+   "status": "unsupported",
+   "reason": "not every item declares data-rl-min; no static alignment emitted"
+  }
+ ]
+}

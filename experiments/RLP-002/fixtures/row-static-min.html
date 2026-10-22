@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Row switch with static minimums</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+<main data-rl-root data-rl="group">
+  <!-- Supported: every child declares data-rl-min, so the one-line-or-stacked
+       threshold is static (28rem + 18rem + 1rem) and rlc compiles it exactly. -->
+  <div data-rl="group" data-rl-flow="row" id="line">
+    <section data-rl="container" data-rl-min="28rem" data-rl-fill id="main-panel"><h2>Main</h2><p>Primary content.</p></section>
+    <section data-rl="container" data-rl-min="18rem" id="side-panel"><h2>Side</h2><p>Secondary content.</p></section>
+  </div>
+</main>
+</body>
+</html>

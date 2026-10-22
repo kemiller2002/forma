@@ -1,0 +1,125 @@
+/* RLP-002 ruleset E/2: the RLP-001 relational vocabulary as static CSS.
+   E/2 = E/1 plus the Stage 1 correction cycle (results/stage-1/GATES.md,
+   run 1): native form-element rendering that the Arm C engine bypassed is
+   neutralized (fieldset legends, fixed-size controls).
+   No visual change from Arm C: the same token values (bond and clearance in
+   rem), the same hard floors, no gutters, no typography. The compiler (rlc)
+   writes per-element values as custom properties (--rl-min, --rl-max,
+   --rl-switch, --rl-col, --rl-span) and flags in data-rlc; everything else is
+   selected from the data-rl-* attributes. No script runs. */
+@layer rlp-base, rlc;
+
+@layer rlc {
+  /* Hidden content stays hidden even though nodes set display. */
+  [hidden] { display: none !important; }
+
+  /* Values written by the compiler apply only to the element that declares
+     them; reset so descendants never inherit a parent's size. */
+  [data-rl-root], [data-rl-root] * { --rl-min: initial; --rl-max: initial; }
+
+  /* Nodes: a group or container lays out its children in a column by default,
+     separated by its bond. */
+  [data-rl-root], [data-rl="group"], [data-rl="container"] {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--rl-gap);
+    min-inline-size: 0;
+    --rl-gap: 1rem;
+  }
+  [data-rl][data-rl-bond="tight"] { --rl-gap: 0.5rem; }
+  [data-rl][data-rl-bond="related"] { --rl-gap: 1rem; }
+  [data-rl][data-rl-bond="loose"] { --rl-gap: 1.5rem; }
+  [data-rl][data-rl-bond="section"] { --rl-gap: 2rem; }
+
+  /* Clearance: the space between a container's boundary and its children. */
+  [data-rl="container"] { padding: 1.25rem; }
+  [data-rl][data-rl-clearance="none"] { padding: 0; }
+  [data-rl][data-rl-clearance="inset"] { padding: 0.75rem; }
+  [data-rl][data-rl-clearance="surface"] { padding: 1.25rem; }
+  [data-rl][data-rl-clearance="spacious"] { padding: 2rem; }
+  [data-rl][data-rl-clearance-block="none"] { padding-block: 0; }
+  [data-rl][data-rl-clearance-block="inset"] { padding-block: 0.75rem; }
+  [data-rl][data-rl-clearance-block="surface"] { padding-block: 1.25rem; }
+  [data-rl][data-rl-clearance-block="spacious"] { padding-block: 2rem; }
+  [data-rl][data-rl-clearance-inline="none"] { padding-inline: 0; }
+  [data-rl][data-rl-clearance-inline="inset"] { padding-inline: 0.75rem; }
+  [data-rl][data-rl-clearance-inline="surface"] { padding-inline: 1.25rem; }
+  [data-rl][data-rl-clearance-inline="spacious"] { padding-inline: 2rem; }
+
+  /* Cross-axis alignment of children. */
+  [data-rl][data-rl-align="start"] { align-items: flex-start; }
+  [data-rl][data-rl-align="center"] { align-items: center; }
+  [data-rl][data-rl-align="end"] { align-items: flex-end; }
+  [data-rl][data-rl-align="stretch"] { align-items: stretch; }
+
+  /* Maximum width on any child. */
+  [data-rl-root] [data-rl-max] { max-inline-size: var(--rl-max); }
+
+  /* Column flow: children stretch to the inner width unless content-sized;
+     an end anchor pushes the child to the end of the line. */
+  :is([data-rl-root], [data-rl]):not([data-rl-flow="row"], [data-rl-flow="wrap"]):not([data-rl-align]) > [data-rl-size="content"] { align-self: flex-start; }
+  :is([data-rl-root], [data-rl]):not([data-rl-flow="row"], [data-rl-flow="wrap"]) > [data-rl-anchor="end"] { margin-inline-start: auto; }
+  :is([data-rl-root], [data-rl]):not([data-rl-flow="row"], [data-rl-flow="wrap"]):not([data-rl-align]) > [data-rl-anchor="end"]:not([data-rl-size="content"]) { inline-size: 100%; }
+
+  /* Row and wrap flow: children share lines. Leaves keep their content
+     width; groups, containers and children with a minimum grow to share
+     free space; with any fill child, only fill children grow. */
+  [data-rl][data-rl-flow="row"], [data-rl][data-rl-flow="wrap"] { flex-direction: row; flex-wrap: wrap; }
+  :is([data-rl-flow="row"], [data-rl-flow="wrap"]) > * { flex: 0 1 auto; }
+  :is([data-rl-flow="row"], [data-rl-flow="wrap"]) > :is([data-rl]:not([data-rl-size="content"]), [data-rl-min]) { flex-grow: 1; }
+  :is([data-rl-flow="row"], [data-rl-flow="wrap"]) > [data-rl-min] { flex-basis: var(--rl-min); }
+  :is([data-rl-flow="row"], [data-rl-flow="wrap"]):has(> [data-rl-fill]) > :not([data-rl-fill]) { flex-grow: 0; }
+  :is([data-rl-flow="row"], [data-rl-flow="wrap"]) > [data-rl-fill] { flex-grow: 1; }
+  :is([data-rl-flow="row"], [data-rl-flow="wrap"]) > [data-rl-anchor="end"] { margin-inline-start: auto; }
+  :is([data-rl-flow="row"], [data-rl-flow="wrap"]) > :is(input, select, textarea) { inline-size: auto; }
+  /* Under the default stretch, containers match the line height; leaves keep
+     their natural block size. */
+  :is([data-rl-flow="row"], [data-rl-flow="wrap"]):not([data-rl-align]) > :not([data-rl]) { align-self: flex-start; }
+
+  /* Equal widths without static minimums: equal shares on one line. */
+  [data-rl][data-rl-equal]:not([data-rlc~="grid"]) > * { flex: 1 1 0; }
+
+  /* Exact one-line-or-stacked rows (compiler: every child declares a
+     minimum, so the threshold is static). */
+  [data-rl][data-rlc~="switch"] > * { flex-basis: max(var(--rl-min, 0px), calc((var(--rl-switch) - 100%) * 999)); }
+
+  /* Equal-width and shared-edge lines with static minimums: equal tracks of
+     at least the largest minimum, as many per line as fit. */
+  [data-rl][data-rlc~="grid"] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--rl-col)), 1fr));
+    align-items: stretch;
+  }
+  [data-rlc~="grid"] > * { min-inline-size: 0; }
+  [data-rlc~="grid"]:not([data-rl-align]) > :not([data-rl]) { align-self: start; }
+
+  /* Shared edges one level inside tightly bonded items: the items share row
+     tracks (subgrid), and what precedes the member sits at the end of its
+     track, so the tight group moves down together. */
+  [data-rl][data-rlc~="edge-item"] {
+    display: grid;
+    grid-row: span var(--rl-span);
+    grid-template-rows: subgrid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--rl-gap);
+    align-content: start;
+  }
+  [data-rlc~="edge-item"] > [data-rl-size="content"] { justify-self: start; }
+  [data-rlc~="edge-item"] > [data-rl-anchor="end"] { justify-self: end; }
+  [data-rlc~="edge-pre"] { align-self: end; }
+
+  /* Hard floors: interactive targets and usable text controls. Interactive
+     elements never shrink below the 24 px target. */
+  [data-rl-root] :where(button, a[href], summary, input:not([type="hidden"]), select, textarea, [role="button"], [role="link"], [role="tab"], [tabindex]:not([tabindex="-1"])) { min-inline-size: 24px; }
+  [data-rl-root] input:is([type="checkbox"], [type="radio"]) { flex-shrink: 0; min-block-size: 24px; }
+
+  /* A fieldset legend is an ordinary child of the relational node (Arm C
+     placed it like any other child); a floated legend is not the rendered
+     legend, so it joins the fieldset's flex flow. */
+  [data-rl-root] fieldset > legend { float: inline-start; inline-size: 100%; padding: 0; }
+  [data-rl-root] :is(input:not([type="checkbox"], [type="radio"], [type="hidden"], [type="submit"], [type="button"], [type="reset"]), select, textarea) { min-inline-size: 6rem; }
+
+  /* Wide content scrolls inside its own box instead of forcing its width. */
+  [data-rl-scroll] { overflow-x: auto; min-inline-size: 0; max-inline-size: 100%; }
+}

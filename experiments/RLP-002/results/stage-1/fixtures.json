@@ -1,0 +1,149 @@
+{
+ "ruleset": "E2",
+ "results": [
+  {
+   "fixture": "fixtures/row-content-switch.html",
+   "relationship": "flow=row whose children lack data-rl-min (content-dependent switch)",
+   "compilerStatus": "approximated",
+   "findings": [
+    {
+     "element": "div#10",
+     "feature": "flow=row",
+     "status": "approximated",
+     "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+     "element": "div#11",
+     "feature": "flow=row",
+     "status": "approximated",
+     "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    }
+   ],
+   "measurements": [
+    {
+     "c": {
+      "width": 375,
+      "nameShiftPx": 0
+     },
+     "E2": {
+      "width": 375,
+      "nameShiftPx": 0
+     }
+    },
+    {
+     "c": {
+      "width": 600,
+      "nameShiftPx": 0
+     },
+     "E2": {
+      "width": 600,
+      "nameShiftPx": 99.2
+     }
+    },
+    {
+     "c": {
+      "width": 768,
+      "nameShiftPx": 0
+     },
+     "E2": {
+      "width": 768,
+      "nameShiftPx": 0
+     }
+    },
+    {
+     "c": {
+      "width": 1024,
+      "nameShiftPx": 0
+     },
+     "E2": {
+      "width": 1024,
+      "nameShiftPx": 0
+     }
+    }
+   ]
+  },
+  {
+   "fixture": "fixtures/nested-edge-mismatch.html",
+   "relationship": "nested shared edge at different positions inside tight items",
+   "compilerStatus": "unsupported",
+   "findings": [
+    {
+     "element": "div#9",
+     "feature": "align-edge (nested)",
+     "status": "unsupported",
+     "reason": "members sit at different positions inside their items; no static alignment emitted"
+    }
+   ],
+   "measurements": [
+    {
+     "c": {
+      "width": 1024,
+      "inputTopDifferencePx": 0
+     },
+     "E2": {
+      "width": 1024,
+      "inputTopDifferencePx": 29
+     }
+    }
+   ]
+  },
+  {
+   "fixture": "fixtures/row-static-min.html",
+   "relationship": "flow=row with data-rl-min on every child (supported: exact switch)",
+   "compilerStatus": "exact",
+   "findings": [],
+   "measurements": [
+    {
+     "c": {
+      "width": 700,
+      "oneLine": false
+     },
+     "E2": {
+      "width": 700,
+      "oneLine": false
+     }
+    },
+    {
+     "c": {
+      "width": 740,
+      "oneLine": false
+     },
+     "E2": {
+      "width": 740,
+      "oneLine": false
+     }
+    },
+    {
+     "c": {
+      "width": 752,
+      "oneLine": true
+     },
+     "E2": {
+      "width": 752,
+      "oneLine": true
+     }
+    },
+    {
+     "c": {
+      "width": 760,
+      "oneLine": true
+     },
+     "E2": {
+      "width": 760,
+      "oneLine": true
+     }
+    },
+    {
+     "c": {
+      "width": 800,
+      "oneLine": true
+     },
+     "E2": {
+      "width": 800,
+      "oneLine": true
+     }
+    }
+   ]
+  }
+ ]
+}

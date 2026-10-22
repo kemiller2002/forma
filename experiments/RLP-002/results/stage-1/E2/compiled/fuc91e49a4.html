@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create-account form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/rlc/E2.css">
+</head>
+<body>
+  <main data-rl-root data-rl="group">
+    <form data-rl="container" data-rl-bond="loose" data-rlp="form">
+      <div data-rl="group" data-rl-bond="tight">
+        <h1 data-rlp="title">Create your account</h1>
+        <p data-rlp="intro">All fields marked with an asterisk are required.</p>
+      </div>
+      <div data-rl="group" data-rl-flow="wrap" data-rlc="grid" style="--rl-col: 14rem">
+        <div data-rl="group" data-rl-bond="tight" data-rl-min="14rem" data-rlc="edge-item" style="--rl-span: 3; --rl-min: 14rem">
+          <label for="name-input" data-rlp="name-label" data-rlc="edge-pre">Full name *</label>
+          <input id="name-input" type="text" autocomplete="name" required data-rlp="name-input" data-rl-align-edge="control">
+        </div>
+        <div data-rl="group" data-rl-bond="tight" data-rl-min="14rem" data-rlc="edge-item" style="--rl-span: 3; --rl-min: 14rem">
+          <label for="email-input" data-rlp="email-label" data-rlc="edge-pre">Email address *</label>
+          <input id="email-input" type="email" autocomplete="email" required aria-describedby="email-error" data-rlp="email-input" data-rl-align-edge="control">
+          <p id="email-error" class="error" hidden data-rlp="email-error">Enter an email address in the format name@example.com.</p>
+        </div>
+      </div>
+      <div data-rl="group" data-rl-flow="wrap" data-rlc="grid" style="--rl-col: 14rem">
+        <div data-rl="group" data-rl-bond="tight" data-rl-min="14rem" data-rlc="edge-item" style="--rl-span: 4; --rl-min: 14rem">
+          <label for="password-input" data-rlp="password-label" data-rlc="edge-pre">Password *</label>
+          <input id="password-input" type="password" autocomplete="new-password" required aria-describedby="password-hint password-error" data-rlp="password-input" data-rl-align-edge="control2">
+          <p id="password-hint" data-rlp="password-hint">Use at least 12 characters.</p>
+          <p id="password-error" class="error" hidden data-rlp="password-error">Your password is too short.</p>
+        </div>
+        <div data-rl="group" data-rl-bond="tight" data-rl-min="14rem" data-rlc="edge-item" style="--rl-span: 4; --rl-min: 14rem">
+          <label for="confirm-input" data-rlp="confirm-label" data-rlc="edge-pre">Confirm password *</label>
+          <input id="confirm-input" type="password" autocomplete="new-password" required data-rlp="confirm-input" data-rl-align-edge="control2">
+        </div>
+      </div>
+      <fieldset data-rl="group" data-rlp="prefs">
+        <legend data-rlp="prefs-legend">Email preferences</legend>
+        <div data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="center">
+          <input id="pref-news-input" type="checkbox" data-rlp="pref-news-input" data-rl-size="content">
+          <label for="pref-news-input" data-rlp="pref-news-label">Product news</label>
+        </div>
+        <div data-rl="group" data-rl-flow="row" data-rl-bond="tight" data-rl-align="center">
+          <input id="pref-tips-input" type="checkbox" data-rlp="pref-tips-input" data-rl-size="content">
+          <label for="pref-tips-input" data-rlp="pref-tips-label">Tips and tutorials</label>
+        </div>
+      </fieldset>
+      <div data-rl="group" data-rl-flow="row" data-rlp="actions">
+        <button type="button" class="secondary" data-rlp="cancel" data-rl-anchor="end">Cancel</button>
+        <button type="submit" data-rlp="submit">Create account</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

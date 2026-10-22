@@ -1,0 +1,39 @@
+{
+ "attemptId": "fu93ad4bf1",
+ "taskId": "T09-dynamic-checkout",
+ "repetition": 3,
+ "sourceSha": "3c866879a91b0cf60dff66f52d457af46987de99062682e058be926ecb4dbafa",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [
+  "font-scale|375|initial|row-association|item-1-name ~ item-1-price",
+  "font-scale|375|initial|row-association|item-1-name ~ item-1-remove"
+ ],
+ "distinct": [
+  "row-association|item-1-name ~ item-1-price",
+  "row-association|item-1-name ~ item-1-remove"
+ ],
+ "byInvariant": {
+  "row-association": 2
+ },
+ "timing": {
+  "stableMs": 489,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 22,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 21,
+    "aborted": false,
+    "solveMs": 3.7999999998137355,
+    "memoEntries": 34
+   },
+   "totalMs": 11.5,
+   "energy": 0
+  }
+ }
+}

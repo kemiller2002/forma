@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shipping address form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/rlc/E2.css">
+</head>
+<body>
+  <main data-rl-root data-rl="group">
+<form data-rl="container" data-rl-bond="loose" data-rlp="form">
+  <h2 data-rlp="title">Shipping address</h2>
+  <div data-rl="group" data-rl-flow="wrap" data-rlc="grid" style="--rl-col: 14rem">
+    <div data-rl="group" data-rl-bond="tight" data-rl-min="14rem" data-rlc="edge-item" style="--rl-span: 2; --rl-min: 14rem">
+      <label for="street" data-rlp="street-label" data-rlc="edge-pre">Street address *</label>
+      <input id="street" type="text" autocomplete="address-line1" required data-rlp="street-input" data-rl-align-edge="street">
+    </div>
+    <div data-rl="group" data-rl-bond="tight" data-rl-min="14rem" data-rlc="edge-item" style="--rl-span: 2; --rl-min: 14rem">
+      <label for="unit" data-rlp="unit-label" data-rlc="edge-pre">Apartment, suite, or unit</label>
+      <input id="unit" type="text" autocomplete="address-line2" data-rlp="unit-input" data-rl-align-edge="street">
+    </div>
+  </div>
+  <div data-rl="group" data-rl-flow="wrap" data-rlc="grid" style="--rl-col: max(12rem, 10rem, 8rem)">
+    <div data-rl="group" data-rl-bond="tight" data-rl-min="12rem" data-rlc="edge-item" style="--rl-span: 3; --rl-min: 12rem">
+      <label for="city" data-rlp="city-label" data-rlc="edge-pre">City *</label>
+      <input id="city" type="text" autocomplete="address-level2" required data-rlp="city-input" data-rl-align-edge="csz">
+    </div>
+    <div data-rl="group" data-rl-bond="tight" data-rl-min="10rem" data-rlc="edge-item" style="--rl-span: 3; --rl-min: 10rem">
+      <label for="state" data-rlp="state-label" data-rlc="edge-pre">State *</label>
+      <select id="state" data-rlp="state-input" data-rl-align-edge="csz">
+        <option value="">Choose a state</option>
+        <option>Ohio</option>
+        <option>Oregon</option>
+        <option>Texas</option>
+      </select>
+    </div>
+    <div data-rl="group" data-rl-bond="tight" data-rl-min="8rem" data-rlc="edge-item" style="--rl-span: 3; --rl-min: 8rem">
+      <label for="zip" data-rlp="zip-label" data-rlc="edge-pre">ZIP code *</label>
+      <input id="zip" type="text" autocomplete="postal-code" inputmode="numeric" required aria-describedby="zip-error" data-rlp="zip-input" data-rl-align-edge="csz">
+      <p id="zip-error" class="error" hidden data-rlp="zip-error">Enter a five-digit ZIP code.</p>
+    </div>
+  </div>
+  <fieldset data-rl="group" data-rlp="delivery">
+    <legend data-rlp="delivery-legend">Delivery speed</legend>
+    <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+      <input type="radio" id="standard" name="speed" checked aria-describedby="standard-note" data-rlp="standard-input" data-rl-size="content">
+      <div data-rl="group" data-rl-bond="tight" data-rl-fill>
+        <label for="standard" data-rlp="standard-label">Standard — free</label>
+        <p id="standard-note" data-rlp="standard-note">Arrives in 5 to 7 business days.</p>
+      </div>
+    </div>
+    <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+      <input type="radio" id="express" name="speed" aria-describedby="express-note" data-rlp="express-input" data-rl-size="content">
+      <div data-rl="group" data-rl-bond="tight" data-rl-fill>
+        <label for="express" data-rlp="express-label">Express — $12.00</label>
+        <p id="express-note" data-rlp="express-note">Arrives in 2 business days.</p>
+      </div>
+    </div>
+  </fieldset>
+  <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+    <input type="checkbox" id="save" data-rlp="save-input" data-rl-size="content">
+    <label for="save" data-rlp="save-label" data-rl-fill>Save this address for next time</label>
+  </div>
+  <div data-rl="group" data-rl-flow="row" data-rlp="actions">
+    <button type="button" class="secondary" data-rlp="back" data-rl-anchor="end">Back to cart</button>
+    <button type="submit" data-rlp="continue">Continue to payment</button>
+  </div>
+</form>
+</main>
+</body>
+</html>

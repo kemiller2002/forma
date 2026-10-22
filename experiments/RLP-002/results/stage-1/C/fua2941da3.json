@@ -1,0 +1,31 @@
+{
+ "attemptId": "fua2941da3",
+ "taskId": "T10-dynamic-thread",
+ "repetition": 3,
+ "sourceSha": "b05af2fb70a7038a457f950d6c95912c39bce3296872833e5b5ddc4ce7844fc7",
+ "workspaceMatchesArtifact": true,
+ "settledEverywhere": true,
+ "instances": [],
+ "distinct": [],
+ "byInvariant": {},
+ "timing": {
+  "stableMs": 333,
+  "engine": {
+   "stats": {
+    "arm": "rules",
+    "lines": 29,
+    "candidates": 0,
+    "evaluations": 0,
+    "iterations": 0,
+    "maxIterations": 0,
+    "unconverged": 0,
+    "measureCalls": 20,
+    "aborted": false,
+    "solveMs": 10.699999999953434,
+    "memoEntries": 33
+   },
+   "totalMs": 19.70000000006985,
+   "energy": 0
+  }
+ }
+}

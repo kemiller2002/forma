@@ -1,0 +1,52 @@
+{
+ "attemptId": "fu652d9f84",
+ "taskId": "T07-nav-docs",
+ "repetition": 2,
+ "ruleset": "E1",
+ "compileStatus": "unsupported",
+ "deterministic": true,
+ "sourceBytes": 1439,
+ "compiledBytes": 1455,
+ "c": {
+  "instances": 0,
+  "distinct": 0,
+  "byInvariant": {},
+  "stableMs": 473,
+  "engineMs": 17.299999999813735
+ },
+ "candidate": {
+  "instances": 9,
+  "distinct": 1,
+  "byInvariant": {
+   "reading-order": 9
+  },
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 344
+ },
+ "newInstances": [
+  "font-scale|768|initial|reading-order|search-input → signin",
+  "standard|1024|1:text:link-sdks|reading-order|search-input → signin",
+  "standard|1024|initial|reading-order|search-input → signin",
+  "standard|1440|1:text:link-sdks|reading-order|search-input → signin",
+  "standard|1440|initial|reading-order|search-input → signin",
+  "standard|375|1:text:link-sdks|reading-order|search-input → signin",
+  "standard|375|initial|reading-order|search-input → signin",
+  "standard|768|1:text:link-sdks|reading-order|search-input → signin",
+  "standard|768|initial|reading-order|search-input → signin"
+ ],
+ "newDistinct": [
+  "reading-order|search-input → signin"
+ ],
+ "resolvedInstances": [],
+ "findings": [
+  {
+   "element": "header",
+   "feature": "align-edge (nested)",
+   "status": "unsupported",
+   "reason": "not every item declares data-rl-min; no static alignment emitted"
+  }
+ ]
+}

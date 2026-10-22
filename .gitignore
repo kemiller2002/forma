@@ -61,3 +61,5 @@ src/workflow/**/obj/
 tests/workflow/**/bin/
 tests/workflow/**/obj/
 packages/workflow/dist/
+experiments/RLP-002/compiler/bin/
+experiments/RLP-002/compiler/obj/

@@ -1,0 +1,76 @@
+{
+ "attemptId": "fu0142591f",
+ "taskId": "T11-adversarial-settings",
+ "repetition": 2,
+ "ruleset": "E1",
+ "compileStatus": "approximated",
+ "deterministic": true,
+ "sourceBytes": 2524,
+ "compiledBytes": 2740,
+ "c": {
+  "instances": 3,
+  "distinct": 1,
+  "byInvariant": {
+   "reading-order": 3
+  },
+  "stableMs": 576,
+  "engineMs": 30.700000000186265
+ },
+ "candidate": {
+  "instances": 31,
+  "distinct": 3,
+  "byInvariant": {
+   "clearance": 14,
+   "target-size": 14,
+   "reading-order": 3
+  },
+  "settledEverywhere": true,
+  "scriptElements": 0,
+  "scriptRequests": 0,
+  "jsDisabledMaxDeltaPx": 0,
+  "stableMs": 331
+ },
+ "newInstances": [
+  "font-scale|375|initial|clearance|group-legend",
+  "font-scale|375|initial|target-size|auto-input",
+  "font-scale|768|initial|clearance|group-legend",
+  "font-scale|768|initial|target-size|auto-input",
+  "heldout-text|1440|initial|clearance|group-legend",
+  "heldout-text|1440|initial|target-size|auto-input",
+  "heldout-text|320|initial|clearance|group-legend",
+  "heldout-text|320|initial|target-size|auto-input",
+  "standard|1024|1:text:auto-hint|clearance|group-legend",
+  "standard|1024|1:text:auto-hint|target-size|auto-input",
+  "standard|1024|initial|clearance|group-legend",
+  "standard|1024|initial|target-size|auto-input",
+  "standard|1440|1:text:auto-hint|clearance|group-legend",
+  "standard|1440|1:text:auto-hint|target-size|auto-input",
+  "standard|1440|initial|clearance|group-legend",
+  "standard|1440|initial|target-size|auto-input",
+  "standard|320|1:text:auto-hint|clearance|group-legend",
+  "standard|320|1:text:auto-hint|target-size|auto-input",
+  "standard|320|initial|clearance|group-legend",
+  "standard|320|initial|target-size|auto-input",
+  "standard|375|1:text:auto-hint|clearance|group-legend",
+  "standard|375|1:text:auto-hint|target-size|auto-input",
+  "standard|375|initial|clearance|group-legend",
+  "standard|375|initial|target-size|auto-input",
+  "standard|768|1:text:auto-hint|clearance|group-legend",
+  "standard|768|1:text:auto-hint|target-size|auto-input",
+  "standard|768|initial|clearance|group-legend",
+  "standard|768|initial|target-size|auto-input"
+ ],
+ "newDistinct": [
+  "clearance|group-legend",
+  "target-size|auto-input"
+ ],
+ "resolvedInstances": [],
+ "findings": [
+  {
+   "element": "div#20",
+   "feature": "flow=row",
+   "status": "approximated",
+   "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+  }
+ ]
+}

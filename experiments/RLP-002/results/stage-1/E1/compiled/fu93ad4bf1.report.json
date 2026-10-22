@@ -1,0 +1,69 @@
+{
+  "compiler": "rlc/1",
+  "source": "final.html",
+  "stylesheet": "assets/rlc/E1.css",
+  "engineScriptsRemoved": 1,
+  "status": "approximated",
+  "findings": [
+    {
+      "element": "item-1",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#13",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "item-2",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#19",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "item-3",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#25",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#32",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#40",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#43",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    },
+    {
+      "element": "div#46",
+      "feature": "flow=row",
+      "status": "approximated",
+      "reason": "one-line-or-stacked switching depends on content widths; compiled as per-item wrapping"
+    }
+  ]
+}
