@@ -87,3 +87,4 @@
 | WI-0033 | Align Forma workflow package guardrail with audited runtime metadata | complete |  | medium |
 | WI-0034 | Align Forma catalog and icon static guards with audited runtime metadata | complete |  | medium |
 | WI-0035 | Align Forma browser static guard with audited runtime metadata | complete |  | medium |
+| WI-0036 | Integrate reviewed Forma runtime version stamp with current main | ready |  | medium |

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 36,
+  "nextSeq": 37,
   "items": [
     {
       "id": "WI-0001",
@@ -922,6 +922,27 @@
       "attachments": [],
       "createdAt": "2026-10-21T19:20:17.005Z",
       "updatedAt": "2026-10-21T19:22:35.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0036",
+      "title": "Integrate reviewed Forma runtime version stamp with current main",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-10-22T11:56:00.013Z",
+      "updatedAt": "2026-10-22T11:56:03.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
