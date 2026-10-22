@@ -10,6 +10,9 @@ const patterns = fs.readdirSync(path.join(root, "patterns"))
   .map(file => path.basename(file, ".html"))
   .sort();
 
+const stripRuntimeStamp = html => html.replace(/\s*<script type="module" src="[^"]*assets\/runtime\.js"><\/script>/g, "");
+const assertNoBehaviorScript = (html, label) => assert.equal(/<script\b/i.test(stripRuntimeStamp(html)), false, label);
+
 test("site documents every implemented Forma pattern", () => {
   const manifest = JSON.parse(fs.readFileSync(path.join(output, "site-manifest.json"), "utf8"));
   assert.equal(manifest.componentCount, patterns.length);
@@ -51,7 +54,7 @@ test("ef authoring tags remain inert and zero-runtime", () => {
   for (const slug of patterns) {
     const html = fs.readFileSync(path.join(output, "components", slug, "index.html"), "utf8");
     assert.equal(/customElements\.define\s*\(/.test(html), false, `${slug} attempts to register an ef tag`);
-    assert.equal(/<script\b/i.test(html), false, `${slug} added runtime script`);
+    assertNoBehaviorScript(html, `${slug} added a component behavior script`);
   }
 });
 
@@ -88,14 +91,14 @@ test("physics-enabled surface pages publish explicit light standard heavy exampl
 test("physics examples remain zero-runtime and namespaced", () => {
   for (const slug of ["dialog", "flyout", "menu", "popover", "toast", "command-palette"]) {
     const html = fs.readFileSync(path.join(output, "components", slug, "index.html"), "utf8");
-    assert.equal(/<script\b/i.test(html), false);
+    assertNoBehaviorScript(html, `${slug} added a component behavior script`);
     assert.match(html, new RegExp(`motion-${slug}-light-`));
     assert.match(html, new RegExp(`motion-${slug}-standard-`));
     assert.match(html, new RegExp(`motion-${slug}-heavy-`));
   }
 });
 
-test("published Forma documentation has no runtime script elements", () => {
+test("published Forma documentation loads only the version diagnostic runtime", () => {
   const files = [];
   const walk = dir => {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -108,7 +111,10 @@ test("published Forma documentation has no runtime script elements", () => {
   walk(output);
   for (const file of files) {
     const html = fs.readFileSync(file, "utf8");
-    assert.equal(/<script\b/i.test(html), false, `runtime script found in ${path.relative(root, file)}`);
+    const scripts = html.match(/<script\b[^>]*><\/script>/gi) ?? [];
+    assert.equal(scripts.length, 1, `${path.relative(root, file)} must load one runtime diagnostic`);
+    assert.match(scripts[0], /type="module" src="[^"]*assets\/runtime\.js"/);
+    assertNoBehaviorScript(html, `unexpected runtime script found in ${path.relative(root, file)}`);
   }
 });
 
@@ -162,7 +168,7 @@ test("every component page publishes an explicit 320px mobile example", () => {
     assert.ok(fs.existsSync(mobilePath), `${slug} is missing mobile.html`);
     const mobile = fs.readFileSync(mobilePath, "utf8");
     assert.match(mobile, /width=device-width/);
-    assert.equal(/<script\b/i.test(mobile), false, `runtime script found in mobile preview for ${slug}`);
+    assertNoBehaviorScript(mobile, `component behavior script found in mobile preview for ${slug}`);
   }
 
   const css = fs.readFileSync(path.join(output, "assets", "site.css"), "utf8");
@@ -182,7 +188,7 @@ test("brand laboratory proves scoped brands and skins without runtime script", (
   assert.match(html, /data-ef-skin="compact"/);
   assert.match(html, /data-ef-skin="comfortable"/);
   assert.match(html, /data-ef-skin="square"/);
-  assert.equal(/<script\b/i.test(html), false);
+  assertNoBehaviorScript(html, "branding page added a component behavior script");
 
   for (const file of ["echelon.css", "example-harbor.css", "index.json"]) {
     assert.ok(
@@ -231,7 +237,7 @@ test("every component page publishes Visual Engineering stress screens", () => {
 test("Visual Engineering stress screens remain zero-runtime and preserve custom tags", () => {
   for (const slug of patterns) {
     const html = fs.readFileSync(path.join(output, "components", slug, "index.html"), "utf8");
-    assert.equal(/<script\b/i.test(html), false);
+    assertNoBehaviorScript(html, `${slug} added a component behavior script`);
     const stress = html.split('<div class="ve-stress-grid"')[1]?.split('<nav class="pager"')[0] ?? "";
     assert.match(stress, new RegExp(`<ef-${slug}\\b`), `${slug} stress specimens lost the public authoring tag`);
   }
@@ -246,7 +252,7 @@ test("gallery exposes every registry icon as static, named, copyable HTML", () =
     assert.ok(html.includes(`data-ef-icon="${icon.name}"`), `missing preview for ${icon.name}`);
     assert.ok(html.includes(`<code>${icon.name}</code>`), `missing named documentation for ${icon.name}`);
   }
-  assert.equal(html.includes("<script"), false);
+  assertNoBehaviorScript(html, "component catalog added a component behavior script");
   assert.ok(fs.readFileSync(path.join(output, "site-manifest.json"), "utf8").includes('"iconGalleryUrl": "icons/"'));
 });
 
@@ -259,7 +265,7 @@ test("every registry icon has a generated page, downloadable SVG and raw configu
     assert.equal(icon.docsUrl, `icons/${icon.name}/`);
     const html = fs.readFileSync(path.join(dir, "index.html"), "utf8");
     assert.ok(html.includes(`data-icon="${icon.name}"`), `${icon.name}: page is not the icon page`);
-    assert.equal(html.includes("<script"), false, `${icon.name}: page contains script`);
+    assertNoBehaviorScript(html, `${icon.name}: page contains a component behavior script`);
     // The download is byte-identical to the packaged release asset.
     assert.deepEqual(fs.readFileSync(path.join(dir, `${icon.name}.svg`)), fs.readFileSync(path.join("dist/icons", `${icon.name}.svg`)));
     assert.equal(fs.readFileSync(path.join(dir, "decorative.txt"), "utf8"), fs.readFileSync(path.join("dist/icons/html", `${icon.name}.html`), "utf8"));
@@ -283,7 +289,7 @@ test("Forma 0.6.0 publishes a dedicated, complete and machine-navigable page for
   assert.equal(manifest.iconRelease, "0.6.0");
   assert.ok(gallery.includes('href="../icons/new/"'), "main gallery must link to the new collection");
   assert.equal((recent.match(/class="icon-gallery__card" data-new-icon=/g) ?? []).length, 40);
-  assert.equal(/<script\b|\son[a-z]+\s*=/i.test(recent), false, "new-icons index must remain static and safe");
+  assert.equal(/<script\b|\son[a-z]+\s*=/i.test(stripRuntimeStamp(recent)), false, "new-icons index must remain static and safe");
 
   for (const name of names) {
     const record = manifest.icons.find(icon => icon.name === name);

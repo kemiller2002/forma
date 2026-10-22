@@ -1,10 +1,10 @@
 # Consuming Forma
 
-Forma is the zero-runtime Echelon Foundry presentation package.
+Forma is the zero-component-runtime Echelon Foundry presentation package.
 
 ## Canonical version
 
-The current application baseline is **Forma 0.3.0**.
+The current application baseline is **Forma 0.9.1**.
 
 Applications must pin a concrete Forma version. Do not copy CSS files into an
 application and do not depend on the moving repository branch.
@@ -54,6 +54,21 @@ More selective imports are available:
 
 Canonical HTML patterns are exported under `patterns/*` and documented at
 https://forma.echelonfoundry.com/.
+
+## Runtime version diagnostic
+
+Browser applications load the behavior-free diagnostic once alongside their
+Forma CSS:
+
+```js
+import "@echelon-foundry/design-system/runtime";
+```
+
+It records the exact built package version at
+`window.__ECHELON_RUNTIME__.libraries.forma` and writes one compact console
+message. It does not register custom elements, inspect markup, or add component
+behavior. Loading the same version repeatedly is silent; a second, different
+Forma version produces a warning and leaves the first registration intact.
 
 ## Semantic color validation
 
@@ -132,6 +147,12 @@ contract are package files:
 Static workflow HTML needs only `tokens.css`, `foundations.css` and
 `components.css`. An interactive viewer or editor needs the separate opt-in
 package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
+
+## 0.9.1
+
+Patch upgrade from 0.9.0. It adds the opt-in `runtime` entry point and the
+`ECHELON-RUNTIME-1` browser registry contract. Component markup and CSS are
+unchanged.
 
 ## 0.9.0
 

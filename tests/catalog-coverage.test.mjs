@@ -24,6 +24,7 @@ const componentPage = slug => read(path.join(output, "components", slug, "index.
 const stripSource = html => html.replace(/<pre\b[\s\S]*?<\/pre>/g, "").replace(/<style\b[\s\S]*?<\/style>/g, "");
 // Live component markup is wrapped in <!--live--> markers by the renderer.
 const stripLive = html => html.replace(/<!--live-->[\s\S]*?<!--\/live-->/g, "");
+const stripRuntimeStamp = html => html.replace(/\s*<script type="module" src="[^"]*assets\/runtime\.js"><\/script>/g, "");
 
 test("catalog entries satisfy every coverage and integrity rule", () => {
   const problems = validateCatalog(catalog);
@@ -190,10 +191,10 @@ test("compositions render real components and link back to their pages", () => {
   }
 });
 
-test("the documentation site stays zero-runtime", () => {
+test("the documentation site loads only the audited metadata runtime", () => {
   for (const file of pages) {
     const html = read(file);
-    assert.doesNotMatch(html, /<script\b/i, path.relative(root, file));
+    assert.doesNotMatch(stripRuntimeStamp(html), /<script\b/i, path.relative(root, file));
     assert.doesNotMatch(html, /\son[a-z]+=/i, path.relative(root, file));
   }
 });

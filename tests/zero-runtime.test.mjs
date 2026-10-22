@@ -13,9 +13,12 @@ function filesUnder(dir) {
   return output;
 }
 
-test("production distribution contains no JavaScript or WebAssembly", () => {
-  const forbidden = filesUnder("dist").filter(file => /\.(?:js|mjs|cjs|wasm)$/i.test(file));
-  assert.deepEqual(forbidden, []);
+test("production distribution contains only the audited metadata runtime and no WebAssembly", () => {
+  const executable = filesUnder("dist").filter(file => /\.(?:js|mjs|cjs|wasm)$/i.test(file));
+  assert.deepEqual(executable, [path.join("dist", "runtime.js")]);
+  const runtime = fs.readFileSync(path.join("dist", "runtime.js"), "utf8");
+  assert.match(runtime, /__ECHELON_RUNTIME__/);
+  assert.doesNotMatch(runtime, /customElements|document\.|querySelector|innerHTML|process\.env/);
 });
 
 test("canonical HTML patterns contain no executable script", () => {

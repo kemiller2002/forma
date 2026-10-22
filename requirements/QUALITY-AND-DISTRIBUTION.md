@@ -17,7 +17,7 @@ Consumers shall be able to consume:
 - canonical HTML pattern files;
 - documentation.
 
-The production package shall not export JavaScript or WebAssembly component code.
+The production package shall not export JavaScript or WebAssembly component code. It may export the behavior-free runtime-version diagnostic defined by `ECHELON-RUNTIME-1`.
 
 ### QD-003 No hidden install mutation
 Package installation shall not mutate a consuming repository through install scripts.
@@ -61,10 +61,10 @@ Token parsing, alias resolution, Brand Manifest compilation, brand-scope generat
 ### QD-TEST-002 Native DOM interaction
 Every interactive pattern shall have browser tests covering its applicable native keyboard, pointer, focus, form, state, and declarative behavior.
 
-### QD-TEST-003 Zero-runtime boundary
+### QD-TEST-003 Zero-component-runtime boundary
 CI shall fail if production artifacts include:
 
-- .js/.mjs/.cjs component files;
+- .js/.mjs/.cjs component files other than the audited runtime-version diagnostic;
 - .wasm;
 - inline script in canonical patterns;
 - javascript: URLs;
@@ -100,7 +100,7 @@ A pattern cannot be marked stable until:
 - RTL behavior passes if directional;
 - examples and anti-patterns exist;
 - clean consumer HTML can use the distributed CSS/pattern;
-- zero-runtime gate passes;
+- zero-component-runtime gate passes;
 - no known critical security issue remains.
 
 ## 5. Performance budgets
@@ -114,7 +114,7 @@ Track at least:
 - canonical pattern markup size;
 - style/recalc behavior for heavy pages.
 
-The design-system JavaScript/WASM runtime budget is exactly **0 bytes**.
+The design-system component-behavior JavaScript/WASM runtime budget is exactly **0 bytes**. The small build-stamped `runtime.js` diagnostic is measured separately and may only register immutable public package metadata.
 
 ## 6. Dependency policy
 
@@ -140,7 +140,7 @@ The documentation site shall dogfood the design system and show:
 - experimental/stable/deprecated status;
 - mobile presentation.
 
-The documentation site's own application behavior may use Limen/F#; that does not change the design-system package's zero-runtime rule.
+The documentation site loads Forma's version diagnostic so the actual library version is machine-readable. Its component examples remain behavior-free; other application behavior may use Limen/F# without changing that boundary.
 
 ## 8. Playground
 
