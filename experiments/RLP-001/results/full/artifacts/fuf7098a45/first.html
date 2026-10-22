@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout summary with dynamic content</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  .page{padding:var(--ef-primitive-spacing-4);max-width:40rem;margin-inline:auto}
+  .items{list-style:none;margin:0;padding:0}
+  .line{display:flex;flex-wrap:wrap;align-items:center;gap:var(--ef-primitive-spacing-2) var(--ef-primitive-spacing-4)}
+  .line__name{flex:1 1 10rem;min-width:0;overflow-wrap:anywhere}
+  .line__price{margin-inline-start:auto}
+  .promo-row{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--ef-primitive-spacing-2)}
+  .promo-row input{flex:1 1 10rem;min-width:0}
+  .total{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--ef-primitive-spacing-2)}
+  .ship-opt{display:flex;align-items:center;gap:var(--ef-primitive-spacing-2)}
+</style>
+</head>
+<body>
+  <main class="page">
+<section data-rlp="summary" class="ef-surface ef-stack">
+  <h2 data-rlp="title">Order summary</h2>
+  <ul data-rlp="items" class="items ef-stack" style="--ef-stack-gap:var(--ef-primitive-spacing-4)">
+    <li data-rlp="item-1" class="line">
+      <span data-rlp="item-1-name" class="line__name">Linen notebook</span>
+      <span data-rlp="item-1-qty">Qty 2</span>
+      <span data-rlp="item-1-price" class="line__price">$24.00</span>
+      <button type="button" class="secondary" data-rlp="item-1-remove" aria-label="Remove Linen notebook">Remove</button>
+    </li>
+    <li data-rlp="item-2" class="line">
+      <span data-rlp="item-2-name" class="line__name">Fountain pen</span>
+      <span data-rlp="item-2-qty">Qty 1</span>
+      <span data-rlp="item-2-price" class="line__price">$58.00</span>
+      <button type="button" class="secondary" data-rlp="item-2-remove" aria-label="Remove Fountain pen">Remove</button>
+    </li>
+    <li data-rlp="item-3" class="line">
+      <span data-rlp="item-3-name" class="line__name">Ink refills, pack of 12</span>
+      <span data-rlp="item-3-qty">Qty 3</span>
+      <span data-rlp="item-3-price" class="line__price">$18.00</span>
+      <button type="button" class="secondary" data-rlp="item-3-remove" aria-label="Remove Ink refills">Remove</button>
+    </li>
+  </ul>
+  <div class="ef-field">
+    <label data-rlp="promo-label" class="ef-field__label" for="promo">Promo code</label>
+    <div class="promo-row">
+      <input data-rlp="promo-input" id="promo" type="text" aria-describedby="promo-err">
+      <button type="button" class="secondary" data-rlp="promo-apply">Apply</button>
+    </div>
+    <p data-rlp="promo-error" id="promo-err" class="error ef-validation-message" hidden>That code has expired.</p>
+  </div>
+  <section data-rlp="shipping" class="ef-stack" aria-labelledby="ship-h">
+    <h3 data-rlp="shipping-title" id="ship-h">Shipping</h3>
+    <p data-rlp="shipping-loading" role="status">Calculating shipping options…</p>
+    <div data-rlp="shipping-options" class="ef-stack" hidden>
+      <div class="ship-opt"><input type="radio" name="ship" id="sg" data-rlp="ship-ground-input" checked><label for="sg" data-rlp="ship-ground-label">Ground — $6.00</label></div>
+      <div class="ship-opt"><input type="radio" name="ship" id="sa" data-rlp="ship-air-input"><label for="sa" data-rlp="ship-air-label">Air — $19.00</label></div>
+    </div>
+  </section>
+  <div class="total"><span data-rlp="total-label">Total</span><span data-rlp="total-value">$160.00</span></div>
+  <button type="submit" data-rlp="place">Place order</button>
+</section>
+</main>
+</body>
+</html>

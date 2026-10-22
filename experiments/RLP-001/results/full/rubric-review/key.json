@@ -1,0 +1,642 @@
+[
+ {
+  "item": "s001",
+  "arm": "B",
+  "attemptId": "fu9de6a84f",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-actions"
+ },
+ {
+  "item": "s002",
+  "arm": "B",
+  "attemptId": "fu0f34d24d",
+  "category": "padding",
+  "kind": "explicit",
+  "statement": "padding: var(--ef-primitive-spacing-4)"
+ },
+ {
+  "item": "s003",
+  "arm": "A",
+  "attemptId": "fu92354dec",
+  "category": "padding",
+  "kind": "explicit",
+  "statement": "padding: 1.25rem"
+ },
+ {
+  "item": "s004",
+  "arm": "C",
+  "attemptId": "fua2946c91",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-size: content"
+ },
+ {
+  "item": "s005",
+  "arm": "C",
+  "attemptId": "fu2c568155",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: row"
+ },
+ {
+  "item": "s006",
+  "arm": "C",
+  "attemptId": "fufcbfa9b4",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s007",
+  "arm": "C",
+  "attemptId": "fu7cff66d0",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s008",
+  "arm": "A",
+  "attemptId": "fu90a710b2",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "display: flex"
+ },
+ {
+  "item": "s009",
+  "arm": "D",
+  "attemptId": "fu59ac8f70",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: section"
+ },
+ {
+  "item": "s010",
+  "arm": "A",
+  "attemptId": "fu51cde206",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "flex: none"
+ },
+ {
+  "item": "s011",
+  "arm": "C",
+  "attemptId": "fue9fbafa8",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s012",
+  "arm": "D",
+  "attemptId": "fu202022b0",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-min: 9rem"
+ },
+ {
+  "item": "s013",
+  "arm": "C",
+  "attemptId": "fu3c051d74",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: loose"
+ },
+ {
+  "item": "s014",
+  "arm": "A",
+  "attemptId": "fu4e446b78",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "@condition: @media (max-width:40rem)"
+ },
+ {
+  "item": "s015",
+  "arm": "D",
+  "attemptId": "fu7e2d22e9",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s016",
+  "arm": "B",
+  "attemptId": "fu39619e57",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-stack"
+ },
+ {
+  "item": "s017",
+  "arm": "C",
+  "attemptId": "fu572ed09d",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "data-rl-align-edge: street"
+ },
+ {
+  "item": "s018",
+  "arm": "B",
+  "attemptId": "fu39619e57",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-stack"
+ },
+ {
+  "item": "s019",
+  "arm": "B",
+  "attemptId": "fu39619e57",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "--ef-grid-gap: var(--ef-primitive-spacing-4)"
+ },
+ {
+  "item": "s020",
+  "arm": "D",
+  "attemptId": "fu2960bb72",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "data-rl-align-edge: control"
+ },
+ {
+  "item": "s021",
+  "arm": "B",
+  "attemptId": "fuffd39e60",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-form-row"
+ },
+ {
+  "item": "s022",
+  "arm": "A",
+  "attemptId": "fu5d3fd27a",
+  "category": "padding",
+  "kind": "explicit",
+  "statement": "padding: 1.25rem"
+ },
+ {
+  "item": "s023",
+  "arm": "A",
+  "attemptId": "fu59ce046f",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "display: grid"
+ },
+ {
+  "item": "s024",
+  "arm": "D",
+  "attemptId": "fu134bd5cf",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s025",
+  "arm": "B",
+  "attemptId": "fu682d9da4",
+  "category": "padding",
+  "kind": "explicit",
+  "statement": "padding: 0 0 var(--ef-primitive-spacing-3)"
+ },
+ {
+  "item": "s026",
+  "arm": "C",
+  "attemptId": "fu858c2ae3",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: section"
+ },
+ {
+  "item": "s027",
+  "arm": "C",
+  "attemptId": "fu4d441cea",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: wrap"
+ },
+ {
+  "item": "s028",
+  "arm": "B",
+  "attemptId": "fu5731fb02",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-stack"
+ },
+ {
+  "item": "s029",
+  "arm": "B",
+  "attemptId": "fu2910cddb",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "--ef-grid-min: 14rem"
+ },
+ {
+  "item": "s030",
+  "arm": "D",
+  "attemptId": "fue8fe9443",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s031",
+  "arm": "D",
+  "attemptId": "fu202022b0",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s032",
+  "arm": "A",
+  "attemptId": "fub849c025",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "display: grid"
+ },
+ {
+  "item": "s033",
+  "arm": "D",
+  "attemptId": "fu73a681d7",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: container"
+ },
+ {
+  "item": "s034",
+  "arm": "A",
+  "attemptId": "fu421d8dcd",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "display: grid"
+ },
+ {
+  "item": "s035",
+  "arm": "C",
+  "attemptId": "fu93fae6de",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: row"
+ },
+ {
+  "item": "s036",
+  "arm": "B",
+  "attemptId": "fu9de6a84f",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "display: flex"
+ },
+ {
+  "item": "s037",
+  "arm": "C",
+  "attemptId": "fu572ed09d",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s038",
+  "arm": "B",
+  "attemptId": "fu43192864",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "flex: 1"
+ },
+ {
+  "item": "s039",
+  "arm": "A",
+  "attemptId": "fu559fb2c8",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "grid-row: 1 / span 2"
+ },
+ {
+  "item": "s040",
+  "arm": "D",
+  "attemptId": "fu59ac8f70",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s041",
+  "arm": "D",
+  "attemptId": "fubc33ee91",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: wrap"
+ },
+ {
+  "item": "s042",
+  "arm": "B",
+  "attemptId": "fub3e45793",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "--ef-cluster-gap: var(--ef-primitive-spacing-4)"
+ },
+ {
+  "item": "s043",
+  "arm": "B",
+  "attemptId": "fu4be007ab",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "--ef-grid-min: 16rem"
+ },
+ {
+  "item": "s044",
+  "arm": "A",
+  "attemptId": "fu92354dec",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr))"
+ },
+ {
+  "item": "s045",
+  "arm": "A",
+  "attemptId": "fu59ce046f",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "min-inline-size: 0"
+ },
+ {
+  "item": "s046",
+  "arm": "C",
+  "attemptId": "fu93ad4bf1",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: row"
+ },
+ {
+  "item": "s047",
+  "arm": "D",
+  "attemptId": "fu202022b0",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s048",
+  "arm": "A",
+  "attemptId": "fuc2aae7a9",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "@condition: @media (min-width: 40rem)"
+ },
+ {
+  "item": "s049",
+  "arm": "A",
+  "attemptId": "fu559fb2c8",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "min-width: 0"
+ },
+ {
+  "item": "s050",
+  "arm": "A",
+  "attemptId": "fu5d3fd27a",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "align-content: start"
+ },
+ {
+  "item": "s051",
+  "arm": "A",
+  "attemptId": "fu8ba96954",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "grid-row: 3"
+ },
+ {
+  "item": "s052",
+  "arm": "B",
+  "attemptId": "fuf80f03c3",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "display: flex"
+ },
+ {
+  "item": "s053",
+  "arm": "B",
+  "attemptId": "fue7814a06",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "--ef-stack-gap: var(--ef-primitive-spacing-1)"
+ },
+ {
+  "item": "s054",
+  "arm": "D",
+  "attemptId": "fuaf292444",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-size: content"
+ },
+ {
+  "item": "s055",
+  "arm": "C",
+  "attemptId": "fu93ad4bf1",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-min: 10rem"
+ },
+ {
+  "item": "s056",
+  "arm": "B",
+  "attemptId": "fufb191a65",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "margin-inline: auto"
+ },
+ {
+  "item": "s057",
+  "arm": "C",
+  "attemptId": "fufcbfa9b4",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-fill: (present)"
+ },
+ {
+  "item": "s058",
+  "arm": "C",
+  "attemptId": "fudb3f547d",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: row"
+ },
+ {
+  "item": "s059",
+  "arm": "B",
+  "attemptId": "fu4a8bde31",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-stack"
+ },
+ {
+  "item": "s060",
+  "arm": "A",
+  "attemptId": "fua952ffe3",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "flex: 0 0 auto"
+ },
+ {
+  "item": "s061",
+  "arm": "C",
+  "attemptId": "fue7e0c36b",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s062",
+  "arm": "B",
+  "attemptId": "fue7814a06",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "flex: none"
+ },
+ {
+  "item": "s063",
+  "arm": "A",
+  "attemptId": "fu5fe2d7de",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "margin: 0"
+ },
+ {
+  "item": "s064",
+  "arm": "D",
+  "attemptId": "fuee3a5c2a",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: loose"
+ },
+ {
+  "item": "s065",
+  "arm": "D",
+  "attemptId": "fu45740455",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: loose"
+ },
+ {
+  "item": "s066",
+  "arm": "B",
+  "attemptId": "fu4be007ab",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-stack"
+ },
+ {
+  "item": "s067",
+  "arm": "A",
+  "attemptId": "fua418c643",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "align-self: flex-start"
+ },
+ {
+  "item": "s068",
+  "arm": "D",
+  "attemptId": "fuf9bd1fed",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s069",
+  "arm": "D",
+  "attemptId": "fu91be11ad",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-size: content"
+ },
+ {
+  "item": "s070",
+  "arm": "D",
+  "attemptId": "fu51fd9c2f",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s071",
+  "arm": "C",
+  "attemptId": "fue8f7cd71",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: row"
+ },
+ {
+  "item": "s072",
+  "arm": "D",
+  "attemptId": "fu789d5686",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "data-rl-align: center"
+ },
+ {
+  "item": "s073",
+  "arm": "C",
+  "attemptId": "fua2946c91",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-size: content"
+ },
+ {
+  "item": "s074",
+  "arm": "A",
+  "attemptId": "fu90a710b2",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "margin: 0 auto"
+ },
+ {
+  "item": "s075",
+  "arm": "A",
+  "attemptId": "fu421d8dcd",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "margin-block-start: 0"
+ },
+ {
+  "item": "s076",
+  "arm": "D",
+  "attemptId": "fu7bb6a3b5",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: container"
+ },
+ {
+  "item": "s077",
+  "arm": "C",
+  "attemptId": "fu93ad4bf1",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-max: 40rem"
+ },
+ {
+  "item": "s078",
+  "arm": "D",
+  "attemptId": "fuaf292444",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-size: content"
+ },
+ {
+  "item": "s079",
+  "arm": "C",
+  "attemptId": "fub2613ab8",
+  "category": "positioning",
+  "kind": "explicit",
+  "statement": "data-rl-anchor: end"
+ },
+ {
+  "item": "s080",
+  "arm": "B",
+  "attemptId": "fu9de6a84f",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "width: 2.5rem"
+ }
+]

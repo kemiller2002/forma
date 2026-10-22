@@ -1,0 +1,663 @@
+{
+ "experiment": "RLP-001",
+ "phase": "pilot-3",
+ "attemptId": "pi0f80fe03",
+ "taskId": "T03-cards-product",
+ "category": "cards",
+ "split": "dev",
+ "arm": "D",
+ "repetition": 1,
+ "executionOrder": 5,
+ "model": "sonnet",
+ "engineCommit": "cbc2c0a49e81b66847a25202b3cbdda36d5d4290",
+ "collectedAt": "2026-10-21T18:58:18.321Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 254728,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 19006,
+  "cacheReadTokens": 235712,
+  "outputTokens": 81,
+  "totalTokens": 254809,
+  "toolCalls": 8,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 2,
+   "bash": 1,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 12913,
+  "toolTokens": null,
+  "durationMs": 33962,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": 55296,
+   "toolUses": 8,
+   "durationMs": 33986
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T18:56:36.919Z",
+    "durationMs": 8768,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n15",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n29",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n43",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 131,
+       "iterations": 1345,
+       "maxIterations": 39,
+       "unconverged": 0,
+       "measureCalls": 88,
+       "aborted": false,
+       "solveMs": 61.39999999990687,
+       "memoEntries": 136
+      },
+      "totalMs": 66,
+      "energy": 1.7753503206586176e-8
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n15",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n29",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n43",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 86,
+       "iterations": 1078,
+       "maxIterations": 41,
+       "unconverged": 0,
+       "measureCalls": 86,
+       "aborted": false,
+       "solveMs": 66.29999999981374,
+       "memoEntries": 134
+      },
+      "totalMs": 76.5,
+      "energy": 2.2191651959818556e-8
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n15",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n29",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n43",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 327,
+       "iterations": 5636,
+       "maxIterations": 50,
+       "unconverged": 0,
+       "measureCalls": 52,
+       "aborted": false,
+       "solveMs": 103.60000000009313,
+       "memoEntries": 100
+      },
+      "totalMs": 108.70000000018626,
+      "energy": 1.1796435767645912
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n15",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n29",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n43",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 89,
+       "iterations": 2157,
+       "maxIterations": 52,
+       "unconverged": 0,
+       "measureCalls": 46,
+       "aborted": false,
+       "solveMs": 51.09999999962747,
+       "memoEntries": 94
+      },
+      "totalMs": 62.89999999990687,
+      "energy": 2.1914533838649103e-8
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n15",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n29",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n43",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 89,
+       "iterations": 2274,
+       "maxIterations": 53,
+       "unconverged": 0,
+       "measureCalls": 46,
+       "aborted": false,
+       "solveMs": 51.39999999990687,
+       "memoEntries": 94
+      },
+      "totalMs": 59.5,
+      "energy": 3.034153021961922e-8
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n15",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n29",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n43",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 131,
+       "iterations": 1345,
+       "maxIterations": 39,
+       "unconverged": 0,
+       "measureCalls": 88,
+       "aborted": false,
+       "solveMs": 51.40000000037253,
+       "memoEntries": 136
+      },
+      "totalMs": 56.60000000009313,
+      "energy": 1.7753503206586176e-8
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n15",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n29",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n43",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 86,
+       "iterations": 1078,
+       "maxIterations": 41,
+       "unconverged": 0,
+       "measureCalls": 86,
+       "aborted": false,
+       "solveMs": 25,
+       "memoEntries": 134
+      },
+      "totalMs": 31.899999999906868,
+      "energy": 2.2191651959818556e-8
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n15",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n29",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n43",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 327,
+       "iterations": 5636,
+       "maxIterations": 50,
+       "unconverged": 0,
+       "measureCalls": 52,
+       "aborted": false,
+       "solveMs": 92.6999999997206,
+       "memoEntries": 100
+      },
+      "totalMs": 101.60000000009313,
+      "energy": 1.1796435767645912
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n15",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n29",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n43",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 89,
+       "iterations": 2157,
+       "maxIterations": 52,
+       "unconverged": 0,
+       "measureCalls": 46,
+       "aborted": false,
+       "solveMs": 44.40000000037253,
+       "memoEntries": 94
+      },
+      "totalMs": 55.799999999813735,
+      "energy": 2.1914533838649103e-8
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n15",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n29",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     },
+     {
+      "code": "hierarchy-inversion",
+      "severity": "warning",
+      "node": "n43",
+      "detail": "a group's internal separation exceeds the separation between it and its siblings",
+      "inner": 24,
+      "outer": 16
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 78,
+       "evaluations": 89,
+       "iterations": 2274,
+       "maxIterations": 53,
+       "unconverged": 0,
+       "measureCalls": 46,
+       "aborted": false,
+       "solveMs": 55.40000000037253,
+       "memoEntries": 94
+      },
+      "totalMs": 63.6999999997206,
+      "energy": 3.034153021961922e-8
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 11,
+  "derived": 78,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 11,
+  "rawStatements": {
+   "explicit": 54,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 11,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 3,
+    "alignment": 1,
+    "positioning": 1,
+    "grouping": 2,
+    "responsive": 2,
+    "dimension": 2,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 6,
+    "margin": 18,
+    "alignment": 18,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 18,
+    "dimension": 18,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [],
+  "final": []
+ }
+}

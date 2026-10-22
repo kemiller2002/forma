@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout summary with dynamic content</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+  <main data-rl-root data-rl="group">
+    <section data-rl="container" data-rl-bond="loose" data-rlp="summary">
+      <h2 data-rlp="title">Order summary</h2>
+      <ul data-rl="group" data-rlp="items">
+        <li data-rl="group" data-rl-flow="row" data-rl-align="start" data-rlp="item-1">
+          <span data-rl-fill data-rl-min="8rem" data-rlp="item-1-name">Linen notebook</span>
+          <span data-rl-size="content" data-rlp="item-1-qty">Qty 2</span>
+          <span data-rl-size="content" data-rlp="item-1-price">$24.00</span>
+          <button type="button" class="secondary" aria-label="Remove Linen notebook" data-rlp="item-1-remove">Remove</button>
+        </li>
+        <li data-rl="group" data-rl-flow="row" data-rl-align="start" data-rlp="item-2">
+          <span data-rl-fill data-rl-min="8rem" data-rlp="item-2-name">Fountain pen</span>
+          <span data-rl-size="content" data-rlp="item-2-qty">Qty 1</span>
+          <span data-rl-size="content" data-rlp="item-2-price">$58.00</span>
+          <button type="button" class="secondary" aria-label="Remove Fountain pen" data-rlp="item-2-remove">Remove</button>
+        </li>
+        <li data-rl="group" data-rl-flow="row" data-rl-align="start" data-rlp="item-3">
+          <span data-rl-fill data-rl-min="8rem" data-rlp="item-3-name">Ink refills, pack of 12</span>
+          <span data-rl-size="content" data-rlp="item-3-qty">Qty 3</span>
+          <span data-rl-size="content" data-rlp="item-3-price">$18.00</span>
+          <button type="button" class="secondary" aria-label="Remove Ink refills" data-rlp="item-3-remove">Remove</button>
+        </li>
+      </ul>
+      <div data-rl="group" data-rl-bond="tight">
+        <label for="promo" data-rlp="promo-label">Promo code</label>
+        <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+          <input type="text" id="promo" aria-describedby="promo-err" data-rl-fill data-rl-min="8rem" data-rl-align-edge="promo" data-rlp="promo-input">
+          <button type="button" class="secondary" data-rl-size="content" data-rl-align-edge="promo" data-rlp="promo-apply">Apply</button>
+        </div>
+        <p class="error" id="promo-err" hidden data-rlp="promo-error">That code has expired.</p>
+      </div>
+      <section data-rl="group" data-rl-bond="tight" data-rlp="shipping">
+        <h3 data-rlp="shipping-title">Shipping</h3>
+        <p role="status" data-rlp="shipping-loading">Calculating shipping options…</p>
+        <div data-rl="group" data-rl-bond="tight" hidden data-rlp="shipping-options">
+          <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+            <input type="radio" name="ship" id="ship-ground" checked data-rl-size="content" data-rlp="ship-ground-input">
+            <label for="ship-ground" data-rl-fill data-rlp="ship-ground-label">Ground — $6.00</label>
+          </div>
+          <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+            <input type="radio" name="ship" id="ship-air" data-rl-size="content" data-rlp="ship-air-input">
+            <label for="ship-air" data-rl-fill data-rlp="ship-air-label">Air — $19.00</label>
+          </div>
+        </div>
+      </section>
+      <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+        <span data-rl-fill data-rlp="total-label">Total</span>
+        <span data-rl-size="content" data-rl-anchor="end" data-rlp="total-value">$160.00</span>
+      </div>
+      <button type="submit" data-rlp="place">Place order</button>
+    </section>
+  </main>
+</body>
+</html>

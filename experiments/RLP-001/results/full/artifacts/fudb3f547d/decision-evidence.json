@@ -1,0 +1,195 @@
+{
+ "explicit": [
+  {
+   "source": "style-attr",
+   "selector": "img#39",
+   "context": "",
+   "property": "aspect-ratio",
+   "value": "2 / 1",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#39",
+   "context": "",
+   "property": "width",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#39",
+   "context": "",
+   "property": "height",
+   "value": "auto",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#39",
+   "context": "",
+   "property": "display",
+   "value": "block",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#37",
+   "context": "",
+   "property": "data-rl",
+   "value": "group",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "main#8",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "section",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#20",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "row",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#10",
+   "context": "",
+   "property": "data-rl-equal",
+   "value": "(present)",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#37",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "loose",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "section#41",
+   "context": "",
+   "property": "data-rl",
+   "value": "container",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#30",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "tight",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#17",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "9rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#17",
+   "context": "",
+   "property": "data-rl-align-edge",
+   "value": "tile",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#20",
+   "context": "",
+   "property": "data-rl-align",
+   "value": "start",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "form#21",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "15rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "form#21",
+   "context": "",
+   "property": "data-rl-max",
+   "value": "20rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "button#36",
+   "context": "",
+   "property": "data-rl-size",
+   "value": "content",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#37",
+   "context": "",
+   "property": "data-rl-fill",
+   "value": "(present)",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#37",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "20rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "section#41",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "related",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#43",
+   "context": "",
+   "property": "data-rl-scroll",
+   "value": "(present)",
+   "category": "dimension",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

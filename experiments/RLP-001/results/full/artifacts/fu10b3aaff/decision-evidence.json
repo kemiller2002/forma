@@ -1,0 +1,133 @@
+{
+ "explicit": [
+  {
+   "source": "css",
+   "selector": ".brand",
+   "context": "",
+   "property": "display",
+   "value": "inline-block",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": "nav a",
+   "context": "",
+   "property": "padding",
+   "value": "var(--ef-primitive-spacing-2) var(--ef-primitive-spacing-3)",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".brand",
+   "context": "",
+   "property": "padding",
+   "value": "var(--ef-primitive-spacing-2) 0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".search",
+   "context": "",
+   "property": "display",
+   "value": "flex",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".search",
+   "context": "",
+   "property": "align-items",
+   "value": "center",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".search",
+   "context": "",
+   "property": "gap",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".search",
+   "context": "",
+   "property": "flex-wrap",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "css",
+   "selector": ".search input",
+   "context": "",
+   "property": "min-width",
+   "value": "12rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "header#8",
+   "context": "",
+   "property": "--ef-cluster-gap",
+   "value": "var(--ef-primitive-spacing-5)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "--ef-cluster-gap",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "header#8",
+   "context": "",
+   "property": "class",
+   "value": "ef-surface",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#11",
+   "context": "",
+   "property": "class",
+   "value": "ef-cluster",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [
+  {
+   "source": "css",
+   "selector": "nav a[aria-current=\"page\"]",
+   "context": "",
+   "property": "text-underline-offset",
+   "value": "0.3em",
+   "category": "dimension",
+   "kind": "uncertain"
+  },
+  {
+   "source": "css",
+   "selector": "nav a[aria-current=\"page\"]",
+   "context": "",
+   "property": "border-bottom",
+   "value": "2px solid currentColor",
+   "category": "dimension",
+   "kind": "uncertain"
+  }
+ ],
+ "corrective": []
+}

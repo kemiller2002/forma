@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operations dashboard</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  main { padding: var(--ef-primitive-spacing-5); max-inline-size: 90rem; margin-inline: auto; }
+  .tiles { grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 30rem) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .header-bar { justify-content: space-between; }
+  .tile-value { font-size: 1.75rem; font-weight: 700; }
+  .alert-list { list-style: none; margin: 0; padding: 0; }
+  .alert-list li { padding-block: var(--ef-primitive-spacing-2); }
+  .ef-switcher__primary { flex: 2 1 28rem; }
+  .ef-switcher__secondary { flex: 1 1 16rem; }
+  </style>
+</head>
+<body>
+<main data-rlp="dashboard" class="ef-stack">
+  <header data-rlp="header" class="ef-cluster header-bar">
+    <div class="ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-1)">
+      <h1 data-rlp="title">Service health</h1>
+      <p data-rlp="period">Last 24 hours</p>
+    </div>
+    <button type="button" class="secondary" data-rlp="refresh">Refresh</button>
+  </header>
+
+  <div data-rlp="tiles" class="ef-grid tiles">
+    <article data-rlp="tile-uptime" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+      <span data-rlp="tile-uptime-label">Uptime</span>
+      <span class="tile-value" data-rlp="tile-uptime-value">99.98%</span>
+      <span data-rlp="tile-uptime-delta">+0.01%</span>
+    </article>
+    <article data-rlp="tile-latency" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+      <span data-rlp="tile-latency-label">Median latency</span>
+      <span class="tile-value" data-rlp="tile-latency-value">182 ms</span>
+      <span data-rlp="tile-latency-delta">−12 ms</span>
+    </article>
+    <article data-rlp="tile-errors" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+      <span data-rlp="tile-errors-label">Error rate</span>
+      <span class="tile-value" data-rlp="tile-errors-value">0.4%</span>
+      <span data-rlp="tile-errors-delta">+0.1%</span>
+    </article>
+    <article data-rlp="tile-traffic" class="ef-surface ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+      <span data-rlp="tile-traffic-label">Requests</span>
+      <span class="tile-value" data-rlp="tile-traffic-value">1.2 M</span>
+      <span data-rlp="tile-traffic-delta">+8%</span>
+    </article>
+  </div>
+
+  <div class="ef-switcher">
+    <section data-rlp="requests" class="ef-surface ef-stack ef-switcher__primary" aria-labelledby="requests-h">
+      <h2 id="requests-h" data-rlp="requests-title">Slowest endpoints</h2>
+      <div class="ef-bounded-overflow" tabindex="0" role="region" aria-label="Slowest endpoints table">
+        <table data-rlp="requests-table" class="ef-dense-ledger">
+          <thead><tr><th scope="col">Endpoint</th><th scope="col">Calls</th><th scope="col">p95</th><th scope="col">Errors</th></tr></thead>
+          <tbody>
+            <tr><td>/api/search</td><td>41,200</td><td>640 ms</td><td>0.2%</td></tr>
+            <tr><td>/api/checkout</td><td>8,930</td><td>512 ms</td><td>1.1%</td></tr>
+            <tr><td>/api/profile</td><td>22,410</td><td>301 ms</td><td>0.0%</td></tr>
+            <tr><td>/api/recommendations</td><td>17,004</td><td>288 ms</td><td>0.3%</td></tr>
+            <tr><td>/api/cart</td><td>12,775</td><td>190 ms</td><td>0.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section data-rlp="alerts" class="ef-surface ef-stack ef-switcher__secondary" aria-labelledby="alerts-h">
+      <h2 id="alerts-h" data-rlp="alerts-title">Active alerts</h2>
+      <ul class="alert-list">
+        <li data-rlp="alert-1">Checkout error rate above 1%</li>
+        <li data-rlp="alert-2">Search p95 above 600 ms</li>
+        <li data-rlp="alert-3">Certificate renews in 9 days</li>
+      </ul>
+    </section>
+  </div>
+</main>
+</body>
+</html>

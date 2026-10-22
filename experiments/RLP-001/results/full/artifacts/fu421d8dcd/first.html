@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deeply nested settings in a narrow column</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  .page { max-inline-size: 75rem; margin-inline: auto; padding: 1.5rem 1rem; display: grid; gap: 1.5rem; }
+  .layout { display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr); align-items: start; }
+  @media (min-width: 48rem) { .layout { grid-template-columns: minmax(10rem, 16rem) minmax(0, 1fr); } }
+  .sidebar { padding: 1rem; }
+  .sidebar ul { display: grid; gap: 0.5rem; }
+  .sidebar a { display: block; padding: 0.5rem 0.75rem; min-block-size: 2.75rem; border-radius: 0.375rem; }
+  .content { padding: 1.5rem; display: grid; gap: 1.5rem; min-inline-size: 0; }
+  .group { padding: 1rem; display: grid; gap: 1.25rem; min-inline-size: 0; border: 1px solid #c9c5bb; border-radius: 0.5rem; }
+  .group legend { float: none; padding: 0 0.5rem; font-weight: 700; font-size: 1.125rem; }
+  .row { padding: 1rem; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 0.75rem; row-gap: 0.25rem; align-items: start; }
+  .row label { font-weight: 600; min-inline-size: 0; overflow-wrap: anywhere; }
+  .row .hint { grid-column: 2; }
+  .row input { margin-block-start: 0; }
+  .field { display: grid; gap: 0.375rem; min-inline-size: 0; }
+  .endpoint { inline-size: min(100%, 30rem); }
+  .interval { max-inline-size: 12rem; }
+  .actions { display: flex; }
+</style>
+</head>
+<body>
+  <main class="page" data-rlp="page">
+    <h1 data-rlp="page-title">Device settings</h1>
+    <div class="layout" data-rlp="layout">
+      <nav class="surface sidebar" data-rlp="sidebar" aria-label="Settings sections">
+        <ul>
+          <li><a href="#" data-rlp="side-1">General</a></li>
+          <li><a href="#" data-rlp="side-2" aria-current="page">Sync</a></li>
+          <li><a href="#" data-rlp="side-3">Security</a></li>
+        </ul>
+      </nav>
+      <section class="surface content" data-rlp="content" aria-labelledby="sync-title">
+        <h2 id="sync-title" data-rlp="sync-title">Sync</h2>
+        <fieldset class="group" data-rlp="group">
+          <legend data-rlp="group-legend">Synchronization</legend>
+          <div class="surface row" data-rlp="row">
+            <input type="checkbox" id="auto-input" data-rlp="auto-input" aria-describedby="auto-hint">
+            <label for="auto-input" data-rlp="auto-label">AutomaticallySynchronizeAcrossAllRegisteredDevicesAndWorkspaces</label>
+            <p class="hint muted" id="auto-hint" data-rlp="auto-hint">Changes appear on every signed-in device within a minute.</p>
+          </div>
+          <div class="field endpoint">
+            <label for="endpoint-input" data-rlp="endpoint-label">Sync endpoint URL (prefers at least 30rem of width)</label>
+            <input type="url" id="endpoint-input" data-rlp="endpoint-input">
+          </div>
+          <div class="field interval">
+            <label for="interval-input" data-rlp="interval-label">Interval in minutes</label>
+            <input type="number" min="1" id="interval-input" data-rlp="interval-input">
+          </div>
+        </fieldset>
+        <div class="actions"><button type="button" data-rlp="save">Save settings</button></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

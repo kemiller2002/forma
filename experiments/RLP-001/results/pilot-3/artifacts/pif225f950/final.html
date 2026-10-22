@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product cards with nested panels</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  body { margin: 0; }
+  main { max-width: 80rem; margin: 0 auto; padding: 1.5rem 1rem; }
+  [data-rlp="section"] { display: block; }
+  [data-rlp="section-title"] { margin-bottom: 1.25rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.5rem; align-items: stretch; }
+  .card { display: flex; flex-direction: column; gap: 0.75rem; padding: 1.25rem; min-width: 0; overflow-wrap: anywhere; }
+  .media { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 0.5rem; }
+  .card h3 { margin: 0.25rem 0 0; }
+  .card p { margin: 0; }
+  .specs { margin: 0.5rem 0 0; padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem; }
+  .row dt, .row dd { margin: 0; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: auto; padding-top: 0.75rem; }
+  .actions button { min-height: 2.5rem; min-width: 2.5rem; }
+  </style>
+</head>
+<body>
+  <main>
+  <section data-rlp="section">
+    <h2 data-rlp="section-title">Recommended for your studio</h2>
+    <div class="cards">
+    <article class="surface card" data-rlp="card-a">
+      <img class="media" data-rlp="card-a-media" src="assets/placeholder.svg" alt="Desk lamp illustration">
+      <h3 data-rlp="card-a-title">Arc desk lamp</h3>
+      <p data-rlp="card-a-text">Warm, dimmable light.</p>
+      <dl class="surface specs" data-rlp="card-a-specs">
+        <div class="row"><dt data-rlp="card-a-spec-1-label">Price</dt><dd data-rlp="card-a-spec-1-value">$89</dd></div>
+        <div class="row"><dt data-rlp="card-a-spec-2-label">Ships</dt><dd data-rlp="card-a-spec-2-value">Tomorrow</dd></div>
+      </dl>
+      <div class="actions" data-rlp="card-a-actions">
+        <button type="button" class="secondary" data-rlp="card-a-save">Save</button>
+        <button type="button" data-rlp="card-a-add">Add to cart</button>
+      </div>
+    </article>
+    <article class="surface card" data-rlp="card-b">
+      <img class="media" data-rlp="card-b-media" src="assets/placeholder.svg" alt="Chair illustration">
+      <h3 data-rlp="card-b-title">Task chair</h3>
+      <p data-rlp="card-b-text">Adjustable lumbar support, breathable mesh, and armrests that move in four directions so long work sessions stay comfortable.</p>
+      <dl class="surface specs" data-rlp="card-b-specs">
+        <div class="row"><dt data-rlp="card-b-spec-1-label">Price</dt><dd data-rlp="card-b-spec-1-value">$420</dd></div>
+        <div class="row"><dt data-rlp="card-b-spec-2-label">Ships</dt><dd data-rlp="card-b-spec-2-value">In 2 weeks</dd></div>
+      </dl>
+      <div class="actions" data-rlp="card-b-actions">
+        <button type="button" class="secondary" data-rlp="card-b-save">Save</button>
+        <button type="button" data-rlp="card-b-add">Add to cart</button>
+      </div>
+    </article>
+    <article class="surface card" data-rlp="card-c">
+      <img class="media" data-rlp="card-c-media" src="assets/placeholder.svg" alt="Shelf illustration">
+      <h3 data-rlp="card-c-title">Modular shelf</h3>
+      <p data-rlp="card-c-text">Stackable units that grow with your collection.</p>
+      <dl class="surface specs" data-rlp="card-c-specs">
+        <div class="row"><dt data-rlp="card-c-spec-1-label">Price</dt><dd data-rlp="card-c-spec-1-value">$65 per unit</dd></div>
+        <div class="row"><dt data-rlp="card-c-spec-2-label">Ships</dt><dd data-rlp="card-c-spec-2-value">In 3 days</dd></div>
+      </dl>
+      <div class="actions" data-rlp="card-c-actions">
+        <button type="button" class="secondary" data-rlp="card-c-save">Save</button>
+        <button type="button" data-rlp="card-c-add">Add to cart</button>
+      </div>
+    </article>
+    </div>
+  </section>
+  </main>
+</body>
+</html>

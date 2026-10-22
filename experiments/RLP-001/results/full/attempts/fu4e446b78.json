@@ -1,0 +1,246 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu4e446b78",
+ "taskId": "T07-nav-docs",
+ "category": "navigation",
+ "split": "dev",
+ "arm": "A",
+ "repetition": 1,
+ "executionOrder": 57,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:15:51.437Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 247696,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 16391,
+  "cacheReadTokens": 231295,
+  "outputTokens": 68,
+  "totalTokens": 247764,
+  "toolCalls": 8,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 8285,
+  "toolTokens": null,
+  "durationMs": 28670,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:04:51.563Z",
+    "durationMs": 2495,
+    "failures": 3,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:05:00.409Z",
+    "durationMs": 1957,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 2,
+  "standardInstances": 6,
+  "standardByInvariant": {
+   "reading-order": 6
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 2,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 1
+  },
+  "responsiveFailureViewports": [
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 2,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 22,
+  "derived": 0,
+  "uncertain": 2,
+  "corrective": 3,
+  "total": 24,
+  "rawStatements": {
+   "explicit": 28,
+   "uncertain": 2
+  },
+  "firstDraftExplicit": 22,
+  "byCategory": {
+   "explicit": {
+    "padding": 4,
+    "margin": 4,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 7,
+    "responsive": 2,
+    "dimension": 4,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 2,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 1,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 1,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 3
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 202.77,17 60.84×43, brand at 21,41 157.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 202.77,17 60.84×43, brand at 21,41 157.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 202.77,17 60.84×43, brand at 21,41 157.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 202.77,17 60.84×43, brand at 21,66.5 157.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "link-changelog → search-input",
+    "expected": "search-input after link-changelog",
+    "observed": "search-input at 636.59,81.5 256×44, link-changelog at 495.7,119 90.02×43",
+    "relationship": "link-changelog → search-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 202.77,17 60.84×43, brand at 21,41 157.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 407.77,17 60.84×43, brand at 21,41 362.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   }
+  ],
+  "final": []
+ }
+}

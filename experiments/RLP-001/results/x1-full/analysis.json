@@ -1,0 +1,1617 @@
+{
+ "experiment": "RLP-001",
+ "phase": "x1-full",
+ "generatedAt": "2026-10-21T19:47:21.786Z",
+ "attempts": 36,
+ "tasks": [
+  "T01-form-account",
+  "T02-form-shipping",
+  "T03-cards-product",
+  "T04-cards-profile",
+  "T05-dashboard-ops",
+  "T06-dashboard-finance",
+  "T07-nav-docs",
+  "T08-nav-workspace",
+  "T09-dynamic-checkout",
+  "T10-dynamic-thread",
+  "T11-adversarial-settings",
+  "T12-adversarial-pricing"
+ ],
+ "note": "Confirmatory: A − D first-draft defects. Everything else exploratory.",
+ "perArm": {
+  "X1": {
+   "attempts": 36,
+   "accepted": 27,
+   "acceptanceRate": 0.75,
+   "tokensPerAccepted": 311674.77777777775,
+   "decisionsPerAccepted": 14.185185185185185,
+   "metrics": {
+    "firstDraftDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 2.3333333333333335,
+     "median": 0,
+     "sd": 6.45865974597561,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 24
+    },
+    "firstDraftGeometryDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 2.3333333333333335,
+     "median": 0,
+     "sd": 6.45865974597561,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 24
+    },
+    "firstDraftAccessibilityDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.3055555555555556,
+     "median": 0,
+     "sd": 0.576662537832728,
+     "q1": 0,
+     "q3": 0.25,
+     "min": 0,
+     "max": 2
+    },
+    "finalHeldoutDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.16666666666666666,
+     "median": 0,
+     "sd": 0.560611910581388,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 2
+    },
+    "finalDynamicDefects": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.3055555555555556,
+     "median": 0,
+     "sd": 0.576662537832728,
+     "q1": 0,
+     "q3": 0.25,
+     "min": 0,
+     "max": 2
+    },
+    "unexpectedShift": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.08333333333333333,
+     "median": 0,
+     "sd": 0.280305955290694,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 1
+    },
+    "accepted": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.75,
+     "median": 1,
+     "sd": 0.43915503282683993,
+     "q1": 0.75,
+     "q3": 1,
+     "min": 0,
+     "max": 1
+    },
+    "totalTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 233756.08333333334,
+     "median": 199965,
+     "sd": 67148.33372993808,
+     "q1": 197951.25,
+     "q3": 252563.25,
+     "min": 196259,
+     "max": 489593
+    },
+    "outputTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 518.1388888888889,
+     "median": 122,
+     "sd": 723.9254954868443,
+     "q1": 70.75,
+     "q3": 669.75,
+     "min": 59,
+     "max": 1929
+    },
+    "inputTokens": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 233237.94444444444,
+     "median": 198342.5,
+     "sd": 67331.21280948995,
+     "q1": 197756,
+     "q3": 252481.75,
+     "min": 196130,
+     "max": 489199
+    },
+    "toolCalls": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 5.138888888888889,
+     "median": 4,
+     "sd": 1.4373145152933704,
+     "q1": 4,
+     "q3": 6.25,
+     "min": 4,
+     "max": 9
+    },
+    "durationMs": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 40500.305555555555,
+     "median": 36181.5,
+     "sd": 18132.544184924907,
+     "q1": 32581.75,
+     "q3": 39176.5,
+     "min": 19009,
+     "max": 109972
+    },
+    "validationRuns": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.5277777777777777,
+     "median": 1,
+     "sd": 0.9705995528865098,
+     "q1": 1,
+     "q3": 1.25,
+     "min": 1,
+     "max": 4
+    },
+    "repairIterations": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0.5277777777777778,
+     "median": 0,
+     "sd": 0.9705995528865098,
+     "q1": 0,
+     "q3": 0.25,
+     "min": 0,
+     "max": 3
+    },
+    "decisionsTotal": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 10.63888888888889,
+     "median": 10,
+     "sd": 3.381907980312532,
+     "q1": 9,
+     "q3": 13,
+     "min": 5,
+     "max": 17
+    },
+    "decisionsExplicit": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 10.63888888888889,
+     "median": 10,
+     "sd": 3.381907980312532,
+     "q1": 9,
+     "q3": 13,
+     "min": 5,
+     "max": 17
+    },
+    "decisionsDerived": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 49.52777777777778,
+     "median": 53.5,
+     "sd": 18.765448662157365,
+     "q1": 38,
+     "q3": 65,
+     "min": 17,
+     "max": 90
+    },
+    "decisionsCorrective": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 1.0833333333333333,
+     "median": 0,
+     "sd": 2.346730248056401,
+     "q1": 0,
+     "q3": 0.5,
+     "min": 0,
+     "max": 9
+    },
+    "decisionsUncertain": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "rawStatements": {
+     "n": 36,
+     "unavailable": 0,
+     "mean": 31.555555555555557,
+     "median": 31.5,
+     "sd": 13.904664057059508,
+     "q1": 21,
+     "q3": 40.5,
+     "min": 9,
+     "max": 66
+    }
+   },
+   "decisionCategories": {
+    "explicit": {
+     "padding": 0.08333333333333333,
+     "margin": 0.1111111111111111,
+     "alignment": 1.5833333333333333,
+     "positioning": 0.5277777777777778,
+     "grouping": 2.0833333333333335,
+     "responsive": 1.5833333333333333,
+     "dimension": 4.666666666666667,
+     "correction": 0
+    },
+    "derived": {
+     "padding": 3.0833333333333335,
+     "margin": 11.61111111111111,
+     "alignment": 11.61111111111111,
+     "positioning": 0,
+     "grouping": 0,
+     "responsive": 11.61111111111111,
+     "dimension": 11.61111111111111,
+     "correction": 0
+    },
+    "corrective": {
+     "padding": 0,
+     "margin": 0,
+     "alignment": 0.3333333333333333,
+     "positioning": 0.05555555555555555,
+     "grouping": 0.08333333333333333,
+     "responsive": 0.16666666666666666,
+     "dimension": 0.4444444444444444,
+     "correction": 1.0833333333333333
+    }
+   },
+   "engine": {
+    "resolves": 180,
+    "solveMs": {
+     "n": 180,
+     "unavailable": 0,
+     "mean": 4.481666666621136,
+     "median": 3.25,
+     "sd": 4.253903563869922,
+     "q1": 2.0749999997206032,
+     "q3": 5.525000000139698,
+     "min": 0.8999999994412065,
+     "max": 32.799999999813735
+    },
+    "solveP95": 9.814999999804417,
+    "totalMsP95": 28.334999999823037,
+    "iterations": {
+     "n": 180,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "measureCalls": {
+     "n": 180,
+     "unavailable": 0,
+     "mean": 18.333333333333332,
+     "median": 18.5,
+     "sd": 4.673711097082749,
+     "q1": 16.25,
+     "q3": 21,
+     "min": 9,
+     "max": 28
+    },
+    "invalidStatus": 0,
+    "convergenceFailures": 0,
+    "diagnosticCodes": {}
+   }
+  }
+ },
+ "primary": null,
+ "secondary": [],
+ "mechanisms": [],
+ "correlations": {
+  "decisions~tokens": {
+   "rho": 0.1663133845285455,
+   "n": 36
+  },
+  "decisions~firstDraftDefects": {
+   "rho": -0.11620464689893896,
+   "n": 36
+  },
+  "decisions~repairIterations": {
+   "rho": -0.14079646888741965,
+   "n": 36
+  },
+  "tokens~repairIterations": {
+   "rho": 0.7547411213210097,
+   "n": 36
+  },
+  "firstDraftDefects~repairIterations": {
+   "rho": 0.8420135453912476,
+   "n": 36
+  },
+  "decisions~finalDefects": {
+   "rho": -0.044017258724704765,
+   "n": 36
+  }
+ },
+ "compliance": [
+  {
+   "attempt": "x1001bb0be",
+   "arm": "X1",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1fa646935",
+   "arm": "X1",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1a0931f81",
+   "arm": "X1",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x14a4ddc8a",
+   "arm": "X1",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1e6bb299e",
+   "arm": "X1",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1e4c66c6f",
+   "arm": "X1",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1f08fb7bb",
+   "arm": "X1",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1da8351ce",
+   "arm": "X1",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1a67bca27",
+   "arm": "X1",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x166cb46dc",
+   "arm": "X1",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1320115d9",
+   "arm": "X1",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x167e5f959",
+   "arm": "X1",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1780541f3",
+   "arm": "X1",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1f085808a",
+   "arm": "X1",
+   "task": "T12-adversarial-pricing",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1d2be5ab6",
+   "arm": "X1",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x137c66848",
+   "arm": "X1",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 1,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x11af6288d",
+   "arm": "X1",
+   "task": "T06-dashboard-finance",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1d4a28d3e",
+   "arm": "X1",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x11ca67cdc",
+   "arm": "X1",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1daeb3e44",
+   "arm": "X1",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x171f41516",
+   "arm": "X1",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x13378ba9f",
+   "arm": "X1",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x11c827dbc",
+   "arm": "X1",
+   "task": "T07-nav-docs",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1f6755795",
+   "arm": "X1",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x190ceda21",
+   "arm": "X1",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1ab322000",
+   "arm": "X1",
+   "task": "T11-adversarial-settings",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1fc101ecb",
+   "arm": "X1",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1a25b598b",
+   "arm": "X1",
+   "task": "T08-nav-workspace",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x162e0e53d",
+   "arm": "X1",
+   "task": "T02-form-shipping",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1e5cecb0c",
+   "arm": "X1",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x13752acdf",
+   "arm": "X1",
+   "task": "T05-dashboard-ops",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x117e36a42",
+   "arm": "X1",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x152187df4",
+   "arm": "X1",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x18fff92b6",
+   "arm": "X1",
+   "task": "T10-dynamic-thread",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1775efae2",
+   "arm": "X1",
+   "task": "T04-cards-profile",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x13359c253",
+   "arm": "X1",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  }
+ ],
+ "perAttempt": [
+  {
+   "order": 1,
+   "attempt": "x1001bb0be",
+   "task": "T01-form-account",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 201730,
+   "output": 1674,
+   "tools": 7,
+   "durationMs": 38871,
+   "decisions": 11,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 2,
+   "attempt": "x1fa646935",
+   "task": "T03-cards-product",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198539,
+   "output": 126,
+   "tools": 4,
+   "durationMs": 21496,
+   "decisions": 9,
+   "derived": 90,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 3,
+   "attempt": "x1a0931f81",
+   "task": "T07-nav-docs",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 2,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 3,
+   "tokens": 300394,
+   "output": 70,
+   "tools": 6,
+   "durationMs": 47445,
+   "decisions": 9,
+   "derived": 17,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "reading-order": 2
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 4,
+   "attempt": "x14a4ddc8a",
+   "task": "T08-nav-workspace",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 196259,
+   "output": 129,
+   "tools": 4,
+   "durationMs": 24400,
+   "decisions": 5,
+   "derived": 21,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 5,
+   "attempt": "x1e6bb299e",
+   "task": "T09-dynamic-checkout",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 23,
+   "finalDefects": 0,
+   "heldout": 2,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 489593,
+   "output": 394,
+   "tools": 9,
+   "durationMs": 109972,
+   "decisions": 10,
+   "derived": 65,
+   "corrective": 9,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {
+    "row-association": 2
+   }
+  },
+  {
+   "order": 6,
+   "attempt": "x1e4c66c6f",
+   "task": "T12-adversarial-pricing",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200050,
+   "output": 124,
+   "tools": 7,
+   "durationMs": 30631,
+   "decisions": 5,
+   "derived": 32,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 7,
+   "attempt": "x1f08fb7bb",
+   "task": "T07-nav-docs",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 2,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 3,
+   "tokens": 300758,
+   "output": 74,
+   "tools": 6,
+   "durationMs": 40093,
+   "decisions": 9,
+   "derived": 17,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "reading-order": 2
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 8,
+   "attempt": "x1da8351ce",
+   "task": "T02-form-shipping",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200493,
+   "output": 122,
+   "tools": 7,
+   "durationMs": 38220,
+   "decisions": 13,
+   "derived": 65,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 9,
+   "attempt": "x1a67bca27",
+   "task": "T06-dashboard-finance",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 201886,
+   "output": 1929,
+   "tools": 7,
+   "durationMs": 36022,
+   "decisions": 16,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 10,
+   "attempt": "x166cb46dc",
+   "task": "T05-dashboard-ops",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198402,
+   "output": 62,
+   "tools": 4,
+   "durationMs": 38479,
+   "decisions": 14,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 11,
+   "attempt": "x1320115d9",
+   "task": "T10-dynamic-thread",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 197717,
+   "output": 66,
+   "tools": 4,
+   "durationMs": 32738,
+   "decisions": 8,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "presence": 1
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 12,
+   "attempt": "x167e5f959",
+   "task": "T12-adversarial-pricing",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197312,
+   "output": 66,
+   "tools": 4,
+   "durationMs": 32113,
+   "decisions": 7,
+   "derived": 32,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 13,
+   "attempt": "x1780541f3",
+   "task": "T10-dynamic-thread",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197823,
+   "output": 59,
+   "tools": 4,
+   "durationMs": 29095,
+   "decisions": 11,
+   "derived": 53,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 14,
+   "attempt": "x1f085808a",
+   "task": "T12-adversarial-pricing",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197103,
+   "output": 65,
+   "tools": 4,
+   "durationMs": 21144,
+   "decisions": 6,
+   "derived": 32,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 15,
+   "attempt": "x1d2be5ab6",
+   "task": "T02-form-shipping",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197962,
+   "output": 67,
+   "tools": 4,
+   "durationMs": 31350,
+   "decisions": 14,
+   "derived": 65,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 16,
+   "attempt": "x137c66848",
+   "task": "T06-dashboard-finance",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199807,
+   "output": 1886,
+   "tools": 4,
+   "durationMs": 38372,
+   "decisions": 17,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 17,
+   "attempt": "x11af6288d",
+   "task": "T06-dashboard-finance",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 199880,
+   "output": 1881,
+   "tools": 4,
+   "durationMs": 35935,
+   "decisions": 16,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 18,
+   "attempt": "x1d4a28d3e",
+   "task": "T11-adversarial-settings",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 2,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 4,
+   "tokens": 359716,
+   "output": 82,
+   "tools": 7,
+   "durationMs": 64758,
+   "decisions": 10,
+   "derived": 40,
+   "corrective": 4,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "unexpected-shift": 1
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 19,
+   "attempt": "x11ca67cdc",
+   "task": "T09-dynamic-checkout",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 24,
+   "finalDefects": 2,
+   "heldout": 2,
+   "accepted": false,
+   "runs": 4,
+   "tokens": 376840,
+   "output": 81,
+   "tools": 7,
+   "durationMs": 91294,
+   "decisions": 9,
+   "derived": 45,
+   "corrective": 7,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "row-association": 12
+   },
+   "heldoutByInvariant": {
+    "row-association": 4
+   }
+  },
+  {
+   "order": 20,
+   "attempt": "x1daeb3e44",
+   "task": "T03-cards-product",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 251284,
+   "output": 85,
+   "tools": 5,
+   "durationMs": 36954,
+   "decisions": 9,
+   "derived": 78,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 21,
+   "attempt": "x171f41516",
+   "task": "T11-adversarial-settings",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 304821,
+   "output": 77,
+   "tools": 6,
+   "durationMs": 61536,
+   "decisions": 13,
+   "derived": 40,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 22,
+   "attempt": "x13378ba9f",
+   "task": "T08-nav-workspace",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 196427,
+   "output": 59,
+   "tools": 4,
+   "durationMs": 21180,
+   "decisions": 6,
+   "derived": 21,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 23,
+   "attempt": "x11c827dbc",
+   "task": "T07-nav-docs",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 2,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 3,
+   "tokens": 300778,
+   "output": 253,
+   "tools": 6,
+   "durationMs": 53423,
+   "decisions": 9,
+   "derived": 17,
+   "corrective": 2,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "reading-order": 2
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 24,
+   "attempt": "x1f6755795",
+   "task": "T03-cards-product",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198387,
+   "output": 66,
+   "tools": 4,
+   "durationMs": 34829,
+   "decisions": 10,
+   "derived": 78,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 25,
+   "attempt": "x190ceda21",
+   "task": "T05-dashboard-ops",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200213,
+   "output": 1868,
+   "tools": 4,
+   "durationMs": 36341,
+   "decisions": 14,
+   "derived": 54,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 26,
+   "attempt": "x1ab322000",
+   "task": "T11-adversarial-settings",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 3,
+   "tokens": 304413,
+   "output": 74,
+   "tools": 6,
+   "durationMs": 54069,
+   "decisions": 10,
+   "derived": 40,
+   "corrective": 3,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 27,
+   "attempt": "x1fc101ecb",
+   "task": "T01-form-account",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 198941,
+   "output": 1497,
+   "tools": 4,
+   "durationMs": 38360,
+   "decisions": 10,
+   "derived": 49,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 28,
+   "attempt": "x1a25b598b",
+   "task": "T08-nav-workspace",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 196599,
+   "output": 123,
+   "tools": 4,
+   "durationMs": 19009,
+   "decisions": 6,
+   "derived": 21,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 29,
+   "attempt": "x162e0e53d",
+   "task": "T02-form-shipping",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197919,
+   "output": 122,
+   "tools": 4,
+   "durationMs": 33505,
+   "decisions": 12,
+   "derived": 65,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 30,
+   "attempt": "x1e5cecb0c",
+   "task": "T04-cards-profile",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 199300,
+   "output": 1568,
+   "tools": 4,
+   "durationMs": 35712,
+   "decisions": 15,
+   "derived": 57,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "unexpected-shift": 1
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 31,
+   "attempt": "x13752acdf",
+   "task": "T05-dashboard-ops",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200053,
+   "output": 1752,
+   "tools": 4,
+   "durationMs": 37241,
+   "decisions": 13,
+   "derived": 70,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 32,
+   "attempt": "x117e36a42",
+   "task": "T01-form-account",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197628,
+   "output": 121,
+   "tools": 4,
+   "durationMs": 35891,
+   "decisions": 11,
+   "derived": 49,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 33,
+   "attempt": "x152187df4",
+   "task": "T04-cards-profile",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 201294,
+   "output": 1633,
+   "tools": 7,
+   "durationMs": 37480,
+   "decisions": 12,
+   "derived": 61,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 34,
+   "attempt": "x18fff92b6",
+   "task": "T10-dynamic-thread",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 1,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 200301,
+   "output": 122,
+   "tools": 7,
+   "durationMs": 34037,
+   "decisions": 6,
+   "derived": 57,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 35,
+   "attempt": "x1775efae2",
+   "task": "T04-cards-profile",
+   "arm": "X1",
+   "rep": 3,
+   "firstDraftDefects": 1,
+   "finalDefects": 1,
+   "heldout": 0,
+   "accepted": false,
+   "runs": 1,
+   "tokens": 198196,
+   "output": 205,
+   "tools": 4,
+   "durationMs": 35671,
+   "decisions": 17,
+   "derived": 65,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "unexpected-shift": 1
+   },
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 36,
+   "attempt": "x13359c253",
+   "task": "T09-dynamic-checkout",
+   "arm": "X1",
+   "rep": 2,
+   "firstDraftDefects": 23,
+   "finalDefects": 2,
+   "heldout": 2,
+   "accepted": false,
+   "runs": 2,
+   "tokens": 256401,
+   "output": 71,
+   "tools": 5,
+   "durationMs": 50345,
+   "decisions": 11,
+   "derived": 65,
+   "corrective": 8,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "row-association": 12
+   },
+   "heldoutByInvariant": {
+    "row-association": 4
+   }
+  }
+ ]
+}

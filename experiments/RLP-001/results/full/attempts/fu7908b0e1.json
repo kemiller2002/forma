@@ -1,0 +1,785 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu7908b0e1",
+ "taskId": "T09-dynamic-checkout",
+ "category": "dynamic",
+ "split": "dev",
+ "arm": "D",
+ "repetition": 1,
+ "executionOrder": 28,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:11:25.247Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 255837,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 19854,
+  "cacheReadTokens": 235973,
+  "outputTokens": 140,
+  "totalTokens": 255977,
+  "toolCalls": 8,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 2,
+   "bash": 1,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 12964,
+  "toolTokens": null,
+  "durationMs": 31901,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:03:48.147Z",
+    "durationMs": 3874,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 2,
+  "standardInstances": 12,
+  "standardByInvariant": {
+   "row-association": 12
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 2,
+  "heldoutDistinct": 2,
+  "heldoutByCondition": {
+   "heldout-text": 2,
+   "font-scale": 2
+  },
+  "heldoutByInvariant": {
+   "row-association": 4
+  },
+  "responsiveFailureViewports": [
+   320
+  ],
+  "dynamicDistinct": 2,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 534,
+       "maxIterations": 129,
+       "unconverged": 0,
+       "measureCalls": 35,
+       "aborted": false,
+       "solveMs": 34.200000000186265,
+       "memoEntries": 45
+      },
+      "totalMs": 48.3000000002794,
+      "energy": 1.383979588672445e-7
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 276,
+       "iterations": 4182,
+       "maxIterations": 130,
+       "unconverged": 0,
+       "measureCalls": 35,
+       "aborted": false,
+       "solveMs": 171.6999999997206,
+       "memoEntries": 45
+      },
+      "totalMs": 179.90000000037253,
+      "energy": 2.5262552221019225
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 845,
+       "maxIterations": 134,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 29.700000000186265,
+       "memoEntries": 36
+      },
+      "totalMs": 37,
+      "energy": 2.9578361838893065e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 855,
+       "maxIterations": 134,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 39.89999999990687,
+       "memoEntries": 36
+      },
+      "totalMs": 49.40000000037253,
+      "energy": 2.638092171872239e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 863,
+       "maxIterations": 135,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 45.8000000002794,
+       "memoEntries": 36
+      },
+      "totalMs": 54.60000000009313,
+      "energy": 1.1530948813929011e-7
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 2,
+  "standardInstances": 12,
+  "standardByInvariant": {
+   "row-association": 12
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 2,
+  "heldoutDistinct": 2,
+  "heldoutByCondition": {
+   "heldout-text": 2,
+   "font-scale": 2
+  },
+  "heldoutByInvariant": {
+   "row-association": 4
+  },
+  "responsiveFailureViewports": [
+   320
+  ],
+  "dynamicDistinct": 2,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 534,
+       "maxIterations": 129,
+       "unconverged": 0,
+       "measureCalls": 35,
+       "aborted": false,
+       "solveMs": 32.799999999813735,
+       "memoEntries": 45
+      },
+      "totalMs": 37.3000000002794,
+      "energy": 1.383979588672445e-7
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 276,
+       "iterations": 4182,
+       "maxIterations": 130,
+       "unconverged": 0,
+       "measureCalls": 35,
+       "aborted": false,
+       "solveMs": 69.10000000009313,
+       "memoEntries": 45
+      },
+      "totalMs": 75.09999999962747,
+      "energy": 2.5262552221019225
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 845,
+       "maxIterations": 134,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 26.699999999720603,
+       "memoEntries": 36
+      },
+      "totalMs": 33.89999999990687,
+      "energy": 2.9578361838893065e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 855,
+       "maxIterations": 134,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 24.800000000279397,
+       "memoEntries": 36
+      },
+      "totalMs": 33.39999999990687,
+      "energy": 2.638092171872239e-7
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "physics",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "physics",
+       "lines": 0,
+       "candidates": 15,
+       "evaluations": 21,
+       "iterations": 863,
+       "maxIterations": 135,
+       "unconverged": 0,
+       "measureCalls": 26,
+       "aborted": false,
+       "solveMs": 33.200000000186265,
+       "memoEntries": 36
+      },
+      "totalMs": 42.200000000186265,
+      "energy": 1.1530948813929011e-7
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 12,
+  "derived": 53,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 12,
+  "rawStatements": {
+   "explicit": 60,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 12,
+  "byCategory": {
+   "explicit": {
+    "padding": 1,
+    "margin": 4,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 1,
+    "dimension": 3,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 1,
+    "margin": 13,
+    "alignment": 13,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 13,
+    "dimension": 13,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:item-2",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:item-2",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:item-1-name",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:item-1-name",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "112px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "192px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 2
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:item-2",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:item-2",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:item-1-name",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "3:text:item-1-name",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "56px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "96px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-price",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "112px apart on different rows",
+    "relationship": "item-1-name ~ item-1-price",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "192px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 2
+   }
+  ]
+ }
+}

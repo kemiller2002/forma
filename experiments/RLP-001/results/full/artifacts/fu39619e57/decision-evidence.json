@@ -1,0 +1,213 @@
+{
+ "explicit": [
+  {
+   "source": "style-attr",
+   "selector": "main#8",
+   "context": "",
+   "property": "padding",
+   "value": "var(--ef-primitive-spacing-4)",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "article#9",
+   "context": "",
+   "property": "--ef-stack-gap",
+   "value": "var(--ef-primitive-spacing-5)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "--ef-cluster-gap",
+   "value": "var(--ef-primitive-spacing-4)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "li#39",
+   "context": "",
+   "property": "justify-content",
+   "value": "space-between",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "flex",
+   "value": "1 1 16rem",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#13",
+   "context": "",
+   "property": "min-width",
+   "value": "0",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#12",
+   "context": "",
+   "property": "width",
+   "value": "4rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#12",
+   "context": "",
+   "property": "height",
+   "value": "4rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#12",
+   "context": "",
+   "property": "aspect-ratio",
+   "value": "1/1",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#12",
+   "context": "",
+   "property": "flex",
+   "value": "none",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#24",
+   "context": "",
+   "property": "--ef-stack-gap",
+   "value": "var(--ef-primitive-spacing-1)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#13",
+   "context": "",
+   "property": "flex",
+   "value": "1 1 10rem",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#17",
+   "context": "",
+   "property": "--ef-grid-min",
+   "value": "9rem",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "div#17",
+   "context": "",
+   "property": "--ef-grid-gap",
+   "value": "var(--ef-primitive-spacing-4)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "section#27",
+   "context": "",
+   "property": "--ef-stack-gap",
+   "value": "var(--ef-primitive-spacing-2)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "ul#32",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "ul#32",
+   "context": "",
+   "property": "padding",
+   "value": "0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "li#39",
+   "context": "",
+   "property": "--ef-cluster-gap",
+   "value": "var(--ef-primitive-spacing-1) var(--ef-primitive-spacing-4)",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "ul#32",
+   "context": "",
+   "property": "class",
+   "value": "ef-stack",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "section#30",
+   "context": "",
+   "property": "class",
+   "value": "ef-surface",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "li#39",
+   "context": "",
+   "property": "class",
+   "value": "ef-cluster",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "div#17",
+   "context": "",
+   "property": "class",
+   "value": "ef-grid",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "class",
+   "selector": "p#29",
+   "context": "",
+   "property": "class",
+   "value": "ef-measure",
+   "category": "grouping",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

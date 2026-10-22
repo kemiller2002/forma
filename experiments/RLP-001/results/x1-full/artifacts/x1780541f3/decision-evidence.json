@@ -1,0 +1,105 @@
+{
+ "explicit": [
+  {
+   "source": "style-attr",
+   "selector": "ol#11",
+   "context": "",
+   "property": "margin",
+   "value": "0",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "ol#11",
+   "context": "",
+   "property": "padding",
+   "value": "0",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#29",
+   "context": "",
+   "property": "width",
+   "value": "2.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#29",
+   "context": "",
+   "property": "height",
+   "value": "2.5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#29",
+   "context": "",
+   "property": "aspect-ratio",
+   "value": "1/1",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#37",
+   "context": "",
+   "property": "data-rl",
+   "value": "group",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "section#9",
+   "context": "",
+   "property": "data-rl",
+   "value": "container",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#31",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "row",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "button#41",
+   "context": "",
+   "property": "data-rl-size",
+   "value": "content",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#30",
+   "context": "",
+   "property": "data-rl-fill",
+   "value": "(present)",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#30",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "12rem",
+   "category": "dimension",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

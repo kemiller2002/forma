@@ -1,0 +1,141 @@
+{
+ "explicit": [
+  {
+   "source": "style-attr",
+   "selector": "img#41",
+   "context": "",
+   "property": "aspect-ratio",
+   "value": "3 / 2",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "style-attr",
+   "selector": "img#41",
+   "context": "",
+   "property": "width",
+   "value": "100%",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#51",
+   "context": "",
+   "property": "data-rl",
+   "value": "group",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "loose",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#11",
+   "context": "",
+   "property": "data-rl-equal",
+   "value": "(present)",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#44",
+   "context": "",
+   "property": "data-rl",
+   "value": "container",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "article#40",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "related",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "article#40",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "15rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "article#40",
+   "context": "",
+   "property": "data-rl-align-edge",
+   "value": "card",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#44",
+   "context": "",
+   "property": "data-rl-clearance",
+   "value": "inset",
+   "category": "padding",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#48",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "tight",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#51",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "row",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "span#49",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "5rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "span#50",
+   "context": "",
+   "property": "data-rl-anchor",
+   "value": "end",
+   "category": "positioning",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

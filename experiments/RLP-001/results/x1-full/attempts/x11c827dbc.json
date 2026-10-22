@@ -1,0 +1,531 @@
+{
+ "experiment": "RLP-001",
+ "phase": "x1-full",
+ "attemptId": "x11c827dbc",
+ "taskId": "T07-nav-docs",
+ "category": "navigation",
+ "split": "dev",
+ "arm": "X1",
+ "repetition": 3,
+ "executionOrder": 23,
+ "model": "sonnet",
+ "engineCommit": "f2f06a2abeb171d003e57dbe38c2a1d4c88ebee5",
+ "collectedAt": "2026-10-21T19:45:24.007Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 6,
+  "inputTokens": 300525,
+  "inputUncachedTokens": 12,
+  "cacheCreationTokens": 16422,
+  "cacheReadTokens": 284091,
+  "outputTokens": 253,
+  "totalTokens": 300778,
+  "toolCalls": 6,
+  "toolCallsByName": {
+   "Read": 1,
+   "Bash": 4,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 10392,
+  "toolTokens": null,
+  "durationMs": 53423,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 3,
+  "repairIterations": 2,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:19:13.629Z",
+    "durationMs": 5694,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:19:32.549Z",
+    "durationMs": 4092,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   },
+   {
+    "run": 3,
+    "startedAt": "2026-10-21T19:19:43.574Z",
+    "durationMs": 4661,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/003.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 2,
+  "standardInstances": 5,
+  "standardByInvariant": {
+   "reading-order": 5
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 2,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 1
+  },
+  "responsiveFailureViewports": [
+   768,
+   1024
+  ],
+  "dynamicDistinct": 2,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 10,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 0.900000000372529,
+       "memoEntries": 13
+      },
+      "totalMs": 5.1000000005587935,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 10,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 2.599999999627471,
+       "memoEntries": 13
+      },
+      "totalMs": 6.7999999998137355,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 8,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 1,
+       "memoEntries": 13
+      },
+      "totalMs": 7.7000000001862645,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 6,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 3.2000000001862645,
+       "memoEntries": 13
+      },
+      "totalMs": 8.799999999813735,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 5,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 0.8999999994412065,
+       "memoEntries": 13
+      },
+      "totalMs": 5.7000000001862645,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 2,
+  "standardByInvariant": {
+   "reading-order": 2
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [
+   768
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 10,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 1.900000000372529,
+       "memoEntries": 13
+      },
+      "totalMs": 6.5,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 10,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 1.2000000001862645,
+       "memoEntries": 13
+      },
+      "totalMs": 5.1000000005587935,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 8,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 1.2999999998137355,
+       "memoEntries": 13
+      },
+      "totalMs": 7,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 10,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 1.599999999627471,
+       "memoEntries": 24
+      },
+      "totalMs": 6.2000000001862645,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 8,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 1.7000000001862645,
+       "memoEntries": 24
+      },
+      "totalMs": 13.5,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 9,
+  "derived": 17,
+  "uncertain": 0,
+  "corrective": 2,
+  "total": 9,
+  "rawStatements": {
+   "explicit": 14,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 8,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 2,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 1,
+    "dimension": 4,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 1,
+    "margin": 4,
+    "alignment": 4,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 4,
+    "dimension": 4,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 2,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 2
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 171.06,33 52.84×24, brand at 33,65 122.06×24",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 171.06,33 52.84×24, brand at 33,81 122.06×24",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "link-changelog → search-input",
+    "expected": "search-input after link-changelog",
+    "observed": "search-input at 511,87 224×44, link-changelog at 171.06,129 82.02×24",
+    "relationship": "link-changelog → search-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 171.06,43 52.84×24, brand at 33,59 122.06×24",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 171.06,43 52.84×24, brand at 33,59 122.06×24",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 329.02,43 52.84×24, brand at 33,59 280.02×24",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "link-changelog → search-input",
+    "expected": "search-input after link-changelog",
+    "observed": "search-input at 511,65 224×44, link-changelog at 171.06,97 82.02×24",
+    "relationship": "link-changelog → search-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "link-changelog → search-input",
+    "expected": "search-input after link-changelog",
+    "observed": "search-input at 511,65 224×44, link-changelog at 171.06,129 82.02×24",
+    "relationship": "link-changelog → search-input",
+    "fontScale": 1
+   }
+  ]
+ }
+}

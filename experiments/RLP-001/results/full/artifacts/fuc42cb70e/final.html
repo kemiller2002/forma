@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shipping address form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  body { padding: var(--ef-primitive-spacing-4); }
+  .option { display: grid; grid-template-columns: auto 1fr; column-gap: var(--ef-primitive-spacing-3); row-gap: var(--ef-primitive-spacing-1); align-items: center; }
+  .option input { margin: 0; }
+  .option .note { grid-column: 2; margin: 0; }
+  fieldset.ef-stack { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .check { display: flex; gap: var(--ef-primitive-spacing-3); align-items: center; }
+</style>
+</head>
+<body>
+  <main>
+  <form class="ef-surface ef-form ef-stack" data-rlp="form" novalidate>
+    <h2 data-rlp="title">Shipping address</h2>
+    <div class="ef-field">
+      <label class="ef-field__label" for="street" data-rlp="street-label">Street address *</label>
+      <input id="street" type="text" autocomplete="address-line1" required data-rlp="street-input">
+    </div>
+    <div class="ef-field">
+      <label class="ef-field__label" for="unit" data-rlp="unit-label">Apartment, suite, or unit</label>
+      <input id="unit" type="text" autocomplete="address-line2" data-rlp="unit-input">
+    </div>
+    <div class="ef-form-row">
+      <div class="ef-field">
+        <label class="ef-field__label" for="city" data-rlp="city-label">City *</label>
+        <input id="city" type="text" autocomplete="address-level2" required data-rlp="city-input">
+      </div>
+      <div class="ef-field">
+        <label class="ef-field__label" for="state" data-rlp="state-label">State *</label>
+        <select id="state" data-rlp="state-input">
+          <option>Choose a state</option><option>Ohio</option><option>Oregon</option><option>Texas</option>
+        </select>
+      </div>
+      <div class="ef-field">
+        <label class="ef-field__label" for="zip" data-rlp="zip-label">ZIP code *</label>
+        <input id="zip" type="text" autocomplete="postal-code" inputmode="numeric" required aria-describedby="zip-error" data-rlp="zip-input">
+        <p id="zip-error" class="error ef-validation-message" data-rlp="zip-error" hidden>Enter a five-digit ZIP code.</p>
+      </div>
+    </div>
+    <fieldset class="ef-stack" data-rlp="delivery">
+      <legend data-rlp="delivery-legend">Delivery speed</legend>
+      <div class="option">
+        <input id="standard" type="radio" name="speed" checked aria-describedby="standard-note" data-rlp="standard-input">
+        <label for="standard" data-rlp="standard-label">Standard — free</label>
+        <p id="standard-note" class="note" data-rlp="standard-note">Arrives in 5 to 7 business days.</p>
+      </div>
+      <div class="option">
+        <input id="express" type="radio" name="speed" aria-describedby="express-note" data-rlp="express-input">
+        <label for="express" data-rlp="express-label">Express — $12.00</label>
+        <p id="express-note" class="note" data-rlp="express-note">Arrives in 2 business days.</p>
+      </div>
+    </fieldset>
+    <div class="check">
+      <input id="save" type="checkbox" data-rlp="save-input">
+      <label for="save" data-rlp="save-label">Save this address for next time</label>
+    </div>
+    <div class="ef-actions" data-rlp="actions">
+      <button type="button" class="secondary" data-rlp="back">Back to cart</button>
+      <button type="submit" data-rlp="continue">Continue to payment</button>
+    </div>
+  </form>
+  </main>
+</body>
+</html>

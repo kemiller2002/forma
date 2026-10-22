@@ -1,0 +1,370 @@
+{
+ "experiment": "RLP-001",
+ "phase": "pilot-2",
+ "attemptId": "pie56908ab",
+ "taskId": "T09-dynamic-checkout",
+ "category": "dynamic",
+ "split": "dev",
+ "arm": "A",
+ "repetition": 1,
+ "executionOrder": 4,
+ "model": "sonnet",
+ "engineCommit": "08f17694c03df5b01de9d59cf8b9f75138df681a",
+ "collectedAt": "2026-10-21T18:53:49.298Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 250977,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 53804,
+  "cacheReadTokens": 197163,
+  "outputTokens": 128,
+  "totalTokens": 251105,
+  "toolCalls": 5,
+  "toolCallsByName": {
+   "Read": 1,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 9982,
+  "toolTokens": null,
+  "durationMs": 33991,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": 54068,
+   "toolUses": 5,
+   "durationMs": 34018
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T18:49:55.149Z",
+    "durationMs": 3475,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T18:50:03.678Z",
+    "durationMs": 1920,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 5,
+  "standardByInvariant": {
+   "unexpected-shift": 5
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 7,
+  "heldoutByCondition": {
+   "font-scale": 7
+  },
+  "heldoutByInvariant": {
+   "content-overflow": 6,
+   "row-association": 1
+  },
+  "responsiveFailureViewports": [
+   320,
+   375,
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 5,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 7,
+  "heldoutByCondition": {
+   "font-scale": 7
+  },
+  "heldoutByInvariant": {
+   "content-overflow": 6,
+   "row-association": 1
+  },
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 42,
+  "derived": 0,
+  "uncertain": 1,
+  "corrective": 2,
+  "total": 43,
+  "rawStatements": {
+   "explicit": 58,
+   "uncertain": 2
+  },
+  "firstDraftExplicit": 43,
+  "byCategory": {
+   "explicit": {
+    "padding": 5,
+    "margin": 8,
+    "alignment": 7,
+    "positioning": 0,
+    "grouping": 11,
+    "responsive": 4,
+    "dimension": 7,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 1,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 1,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 1,
+    "correction": 2
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:clone:item-4",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above item-4)",
+    "observed": "moved 13px",
+    "relationship": "item-3 ↑ item-4"
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:clone:item-4",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above item-4)",
+    "observed": "moved 13px",
+    "relationship": "item-3 ↑ item-4"
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:clone:item-4",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above item-4)",
+    "observed": "moved 13px",
+    "relationship": "item-3 ↑ item-4"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:clone:item-4",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above item-4)",
+    "observed": "moved 13px",
+    "relationship": "item-3 ↑ item-4"
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:clone:item-4",
+    "invariant": "unexpected-shift",
+    "element": "item-3",
+    "expected": "unchanged (above item-4)",
+    "observed": "moved 13px",
+    "relationship": "item-3 ↑ item-4"
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-1-name",
+    "expected": "content fits its box",
+    "observed": "scroll 20×624 > client 7×624",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-1-qty",
+    "expected": "content fits its box",
+    "observed": "scroll 24×192 > client 7×192",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-2-name",
+    "expected": "content fits its box",
+    "observed": "scroll 20×528 > client 7×528",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-2-qty",
+    "expected": "content fits its box",
+    "observed": "scroll 24×192 > client 7×192",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-3-name",
+    "expected": "content fits its box",
+    "observed": "scroll 20×912 > client 7×912",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-3-qty",
+    "expected": "content fits its box",
+    "observed": "scroll 24×192 > client 7×192",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "71px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 2
+   }
+  ],
+  "final": [
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-1-name",
+    "expected": "content fits its box",
+    "observed": "scroll 20×624 > client 7×624",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-1-qty",
+    "expected": "content fits its box",
+    "observed": "scroll 24×192 > client 7×192",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-2-name",
+    "expected": "content fits its box",
+    "observed": "scroll 20×528 > client 7×528",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-2-qty",
+    "expected": "content fits its box",
+    "observed": "scroll 24×192 > client 7×192",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-3-name",
+    "expected": "content fits its box",
+    "observed": "scroll 20×912 > client 7×912",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "content-overflow",
+    "element": "item-3-qty",
+    "expected": "content fits its box",
+    "observed": "scroll 24×192 > client 7×192",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "71px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 2
+   }
+  ]
+ }
+}

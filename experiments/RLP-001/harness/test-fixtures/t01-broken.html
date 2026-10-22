@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create-account form</title><link rel="stylesheet" href="assets/base.css">
+<style>
+  form { width: 400px; padding: 0; }
+  .row { display: flex; gap: 0; }
+  .row > div { width: 50%; }
+  #cancel { width: 20px; height: 20px; padding: 0; min-block-size: 0; overflow: hidden; }
+  .prefs { height: 30px; overflow: hidden; }
+  #confirm-wrap { margin-top: -40px; }
+</style></head>
+<body>
+<form class="surface" data-rlp="form">
+  <h1 data-rlp="title">Create your account</h1>
+  <p data-rlp="intro">All fields marked with an asterisk are required.</p>
+  <div class="row">
+    <div><label for="name" data-rlp="name-label">Full name *</label><input id="name" data-rlp="name-input"></div>
+    <div><label for="email" data-rlp="email-label">Email address *</label><p style="height:40px"></p><input id="email" data-rlp="email-input"><p class="error" hidden data-rlp="email-error">Enter an email address in the format name@example.com.</p></div>
+  </div>
+  <div><label for="password" data-rlp="password-label">Password *</label><input id="password" type="password" data-rlp="password-input"><p data-rlp="password-hint">Use at least 12 characters.</p><p class="error" hidden data-rlp="password-error">Your password is too short.</p></div>
+  <div id="confirm-wrap"><label for="confirm" data-rlp="confirm-label">Confirm password *</label><input id="confirm" type="password" data-rlp="confirm-input"></div>
+  <fieldset class="prefs" data-rlp="prefs"><legend data-rlp="prefs-legend">Email preferences</legend>
+    <input id="news" type="checkbox" data-rlp="pref-news-input"><label for="news" data-rlp="pref-news-label">Product news</label>
+    <input id="tips" type="checkbox" data-rlp="pref-tips-input"><label for="tips" data-rlp="pref-tips-label">Tips and tutorials</label>
+  </fieldset>
+  <div data-rlp="actions"><button id="cancel" class="secondary" data-rlp="cancel">Cancel</button><button data-rlp="submit">Create account</button></div>
+</form></body></html>

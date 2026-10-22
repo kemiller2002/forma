@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finance dashboard</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+  <main data-rlp="dashboard" data-rl-root data-rl="group" data-rl-bond="section">
+    <h1 data-rlp="title">Team spending</h1>
+    <div data-rlp="summary" data-rl="group" data-rl-flow="row" data-rl-equal data-rl-bond="loose">
+      <div data-rl="container" data-rl-bond="tight" data-rl-min="9rem" data-rlp="tile-budget" data-rl-align-edge="tiles">
+        <p data-rlp="tile-budget-label">Budget</p>
+        <p data-rlp="tile-budget-value">$48,000</p>
+      </div>
+      <div data-rl="container" data-rl-bond="tight" data-rl-min="9rem" data-rlp="tile-spent" data-rl-align-edge="tiles">
+        <p data-rlp="tile-spent-label">Spent</p>
+        <p data-rlp="tile-spent-value">$31,420</p>
+      </div>
+      <div data-rl="container" data-rl-bond="tight" data-rl-min="9rem" data-rlp="tile-left" data-rl-align-edge="tiles">
+        <p data-rlp="tile-left-label">Remaining</p>
+        <p data-rlp="tile-left-value">$16,580</p>
+      </div>
+    </div>
+    <div data-rl="group" data-rl-flow="row" data-rl-bond="section" data-rl-align="start">
+      <form data-rlp="filters" data-rl="container" data-rl-bond="loose" data-rl-min="15rem" data-rl-max="20rem" action="#" onsubmit="return false">
+        <h2 data-rlp="filters-title">Filters</h2>
+        <div data-rl="group" data-rl-bond="tight">
+          <label data-rlp="category-label" for="category-input">Category</label>
+          <select data-rlp="category-input" id="category-input" name="category">
+            <option>All categories</option>
+            <option>Travel</option>
+            <option>Software</option>
+            <option>Hardware</option>
+          </select>
+        </div>
+        <div data-rl="group" data-rl-bond="tight">
+          <label data-rlp="month-label" for="month-input">Month</label>
+          <select data-rlp="month-input" id="month-input" name="month">
+            <option>October</option>
+            <option>September</option>
+            <option>August</option>
+          </select>
+        </div>
+        <button data-rlp="apply" type="submit" data-rl-size="content">Apply filters</button>
+      </form>
+      <div data-rl="group" data-rl-bond="section" data-rl-fill data-rl-min="20rem">
+        <figure data-rlp="chart" data-rl="container" data-rl-bond="related">
+          <img data-rlp="chart-media" src="assets/placeholder.svg" alt="Bar chart of weekly spending" width="400" height="200" style="aspect-ratio: 2 / 1">
+          <figcaption data-rlp="chart-caption">Weekly spending, October</figcaption>
+        </figure>
+        <section data-rlp="transactions" data-rl="container" data-rl-bond="loose">
+          <h2 data-rlp="transactions-title">Recent transactions</h2>
+          <div data-rl-scroll tabindex="0" role="region" aria-label="Recent transactions table">
+            <table data-rlp="transactions-table">
+              <thead><tr><th scope="col">Date</th><th scope="col">Merchant</th><th scope="col">Category</th><th scope="col">Amount</th></tr></thead>
+              <tbody>
+          <tr><td>Oct 18</td><td>Northwind Air</td><td>Travel</td><td>$612.40</td></tr>
+          <tr><td>Oct 17</td><td>Figma</td><td>Software</td><td>$75.00</td></tr>
+          <tr><td>Oct 16</td><td>Contoso Hardware</td><td>Hardware</td><td>$1,240.00</td></tr>
+          <tr><td>Oct 15</td><td>Fabrikam Hotels</td><td>Travel</td><td>$389.10</td></tr>
+          <tr><td>Oct 14</td><td>GitHub</td><td>Software</td><td>$210.00</td></tr>
+          <tr><td>Oct 12</td><td>Adatum Rentals</td><td>Travel</td><td>$96.75</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

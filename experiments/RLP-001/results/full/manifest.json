@@ -1,0 +1,1458 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "seed": 20261024,
+ "model": "sonnet",
+ "agentType": "general-purpose",
+ "budget": {
+  "maxValidationRuns": 5,
+  "note": "Same instructions, model, agent type and validation budget for every attempt."
+ },
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "engineDirty": false,
+ "createdAt": "2026-10-21T19:01:37.645Z",
+ "runsRoot": "/home/user/rlp-runs/full",
+ "screensRoot": "/home/user/rlp-runs/screens/full",
+ "attempts": [
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "B",
+   "repetition": 2,
+   "order": 1,
+   "attemptId": "fuf80f03c3",
+   "workspace": "/home/user/rlp-runs/full/fuf80f03c3",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuf80f03c3. Read /home/user/rlp-runs/full/fuf80f03c3/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "A",
+   "repetition": 3,
+   "order": 2,
+   "attemptId": "fu9190c629",
+   "workspace": "/home/user/rlp-runs/full/fu9190c629",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu9190c629. Read /home/user/rlp-runs/full/fu9190c629/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "D",
+   "repetition": 2,
+   "order": 3,
+   "attemptId": "fu45740455",
+   "workspace": "/home/user/rlp-runs/full/fu45740455",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu45740455. Read /home/user/rlp-runs/full/fu45740455/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "A",
+   "repetition": 3,
+   "order": 4,
+   "attemptId": "fu024ec1b9",
+   "workspace": "/home/user/rlp-runs/full/fu024ec1b9",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu024ec1b9. Read /home/user/rlp-runs/full/fu024ec1b9/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "C",
+   "repetition": 2,
+   "order": 5,
+   "attemptId": "fu235adae1",
+   "workspace": "/home/user/rlp-runs/full/fu235adae1",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu235adae1. Read /home/user/rlp-runs/full/fu235adae1/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "B",
+   "repetition": 3,
+   "order": 6,
+   "attemptId": "fu5731fb02",
+   "workspace": "/home/user/rlp-runs/full/fu5731fb02",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu5731fb02. Read /home/user/rlp-runs/full/fu5731fb02/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "D",
+   "repetition": 3,
+   "order": 7,
+   "attemptId": "fua9b4ae86",
+   "workspace": "/home/user/rlp-runs/full/fua9b4ae86",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fua9b4ae86. Read /home/user/rlp-runs/full/fua9b4ae86/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "D",
+   "repetition": 1,
+   "order": 8,
+   "attemptId": "fu202022b0",
+   "workspace": "/home/user/rlp-runs/full/fu202022b0",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu202022b0. Read /home/user/rlp-runs/full/fu202022b0/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "D",
+   "repetition": 2,
+   "order": 9,
+   "attemptId": "fubc33ee91",
+   "workspace": "/home/user/rlp-runs/full/fubc33ee91",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fubc33ee91. Read /home/user/rlp-runs/full/fubc33ee91/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "B",
+   "repetition": 2,
+   "order": 10,
+   "attemptId": "fu39619e57",
+   "workspace": "/home/user/rlp-runs/full/fu39619e57",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu39619e57. Read /home/user/rlp-runs/full/fu39619e57/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "C",
+   "repetition": 1,
+   "order": 11,
+   "attemptId": "fuf88b44cd",
+   "workspace": "/home/user/rlp-runs/full/fuf88b44cd",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuf88b44cd. Read /home/user/rlp-runs/full/fuf88b44cd/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "B",
+   "repetition": 3,
+   "order": 12,
+   "attemptId": "fu5dc03db5",
+   "workspace": "/home/user/rlp-runs/full/fu5dc03db5",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu5dc03db5. Read /home/user/rlp-runs/full/fu5dc03db5/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "B",
+   "repetition": 3,
+   "order": 13,
+   "attemptId": "fua4a628f8",
+   "workspace": "/home/user/rlp-runs/full/fua4a628f8",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fua4a628f8. Read /home/user/rlp-runs/full/fua4a628f8/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "B",
+   "repetition": 1,
+   "order": 14,
+   "attemptId": "fu2afec16e",
+   "workspace": "/home/user/rlp-runs/full/fu2afec16e",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu2afec16e. Read /home/user/rlp-runs/full/fu2afec16e/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "A",
+   "repetition": 2,
+   "order": 15,
+   "attemptId": "fub231152b",
+   "workspace": "/home/user/rlp-runs/full/fub231152b",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fub231152b. Read /home/user/rlp-runs/full/fub231152b/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "A",
+   "repetition": 3,
+   "order": 16,
+   "attemptId": "fu92354dec",
+   "workspace": "/home/user/rlp-runs/full/fu92354dec",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu92354dec. Read /home/user/rlp-runs/full/fu92354dec/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "D",
+   "repetition": 2,
+   "order": 17,
+   "attemptId": "fu2960bb72",
+   "workspace": "/home/user/rlp-runs/full/fu2960bb72",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu2960bb72. Read /home/user/rlp-runs/full/fu2960bb72/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "A",
+   "repetition": 2,
+   "order": 18,
+   "attemptId": "fu51cde206",
+   "workspace": "/home/user/rlp-runs/full/fu51cde206",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu51cde206. Read /home/user/rlp-runs/full/fu51cde206/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "A",
+   "repetition": 1,
+   "order": 19,
+   "attemptId": "fue6eef699",
+   "workspace": "/home/user/rlp-runs/full/fue6eef699",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fue6eef699. Read /home/user/rlp-runs/full/fue6eef699/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "A",
+   "repetition": 1,
+   "order": 20,
+   "attemptId": "fu375f0ef3",
+   "workspace": "/home/user/rlp-runs/full/fu375f0ef3",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu375f0ef3. Read /home/user/rlp-runs/full/fu375f0ef3/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "D",
+   "repetition": 2,
+   "order": 21,
+   "attemptId": "fuee3a5c2a",
+   "workspace": "/home/user/rlp-runs/full/fuee3a5c2a",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuee3a5c2a. Read /home/user/rlp-runs/full/fuee3a5c2a/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "D",
+   "repetition": 3,
+   "order": 22,
+   "attemptId": "fue8fe9443",
+   "workspace": "/home/user/rlp-runs/full/fue8fe9443",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fue8fe9443. Read /home/user/rlp-runs/full/fue8fe9443/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "C",
+   "repetition": 3,
+   "order": 23,
+   "attemptId": "fua2941da3",
+   "workspace": "/home/user/rlp-runs/full/fua2941da3",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fua2941da3. Read /home/user/rlp-runs/full/fua2941da3/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "D",
+   "repetition": 3,
+   "order": 24,
+   "attemptId": "fu0d6d7ba3",
+   "workspace": "/home/user/rlp-runs/full/fu0d6d7ba3",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu0d6d7ba3. Read /home/user/rlp-runs/full/fu0d6d7ba3/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "A",
+   "repetition": 3,
+   "order": 25,
+   "attemptId": "fuc2aae7a9",
+   "workspace": "/home/user/rlp-runs/full/fuc2aae7a9",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuc2aae7a9. Read /home/user/rlp-runs/full/fuc2aae7a9/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "B",
+   "repetition": 2,
+   "order": 26,
+   "attemptId": "fu97509495",
+   "workspace": "/home/user/rlp-runs/full/fu97509495",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu97509495. Read /home/user/rlp-runs/full/fu97509495/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "D",
+   "repetition": 3,
+   "order": 27,
+   "attemptId": "fue277deb4",
+   "workspace": "/home/user/rlp-runs/full/fue277deb4",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fue277deb4. Read /home/user/rlp-runs/full/fue277deb4/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "D",
+   "repetition": 1,
+   "order": 28,
+   "attemptId": "fu7908b0e1",
+   "workspace": "/home/user/rlp-runs/full/fu7908b0e1",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu7908b0e1. Read /home/user/rlp-runs/full/fu7908b0e1/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "C",
+   "repetition": 1,
+   "order": 29,
+   "attemptId": "fu3c051d74",
+   "workspace": "/home/user/rlp-runs/full/fu3c051d74",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu3c051d74. Read /home/user/rlp-runs/full/fu3c051d74/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "C",
+   "repetition": 1,
+   "order": 30,
+   "attemptId": "fu5663052b",
+   "workspace": "/home/user/rlp-runs/full/fu5663052b",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu5663052b. Read /home/user/rlp-runs/full/fu5663052b/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "C",
+   "repetition": 2,
+   "order": 31,
+   "attemptId": "fudb3f547d",
+   "workspace": "/home/user/rlp-runs/full/fudb3f547d",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fudb3f547d. Read /home/user/rlp-runs/full/fudb3f547d/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "C",
+   "repetition": 3,
+   "order": 32,
+   "attemptId": "fubb407509",
+   "workspace": "/home/user/rlp-runs/full/fubb407509",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fubb407509. Read /home/user/rlp-runs/full/fubb407509/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "A",
+   "repetition": 1,
+   "order": 33,
+   "attemptId": "fub849c025",
+   "workspace": "/home/user/rlp-runs/full/fub849c025",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fub849c025. Read /home/user/rlp-runs/full/fub849c025/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "C",
+   "repetition": 1,
+   "order": 34,
+   "attemptId": "fu427eecc3",
+   "workspace": "/home/user/rlp-runs/full/fu427eecc3",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu427eecc3. Read /home/user/rlp-runs/full/fu427eecc3/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "D",
+   "repetition": 1,
+   "order": 35,
+   "attemptId": "fu49a392b0",
+   "workspace": "/home/user/rlp-runs/full/fu49a392b0",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu49a392b0. Read /home/user/rlp-runs/full/fu49a392b0/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "B",
+   "repetition": 2,
+   "order": 36,
+   "attemptId": "fu10b3aaff",
+   "workspace": "/home/user/rlp-runs/full/fu10b3aaff",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu10b3aaff. Read /home/user/rlp-runs/full/fu10b3aaff/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "D",
+   "repetition": 1,
+   "order": 37,
+   "attemptId": "fu8a465a45",
+   "workspace": "/home/user/rlp-runs/full/fu8a465a45",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu8a465a45. Read /home/user/rlp-runs/full/fu8a465a45/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "C",
+   "repetition": 2,
+   "order": 38,
+   "attemptId": "fu93fae6de",
+   "workspace": "/home/user/rlp-runs/full/fu93fae6de",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu93fae6de. Read /home/user/rlp-runs/full/fu93fae6de/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "C",
+   "repetition": 2,
+   "order": 39,
+   "attemptId": "fu652d9f84",
+   "workspace": "/home/user/rlp-runs/full/fu652d9f84",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu652d9f84. Read /home/user/rlp-runs/full/fu652d9f84/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "A",
+   "repetition": 2,
+   "order": 40,
+   "attemptId": "fuac3673c4",
+   "workspace": "/home/user/rlp-runs/full/fuac3673c4",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuac3673c4. Read /home/user/rlp-runs/full/fuac3673c4/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "A",
+   "repetition": 1,
+   "order": 41,
+   "attemptId": "fu5fe2d7de",
+   "workspace": "/home/user/rlp-runs/full/fu5fe2d7de",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu5fe2d7de. Read /home/user/rlp-runs/full/fu5fe2d7de/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "B",
+   "repetition": 3,
+   "order": 42,
+   "attemptId": "fuf4673d3a",
+   "workspace": "/home/user/rlp-runs/full/fuf4673d3a",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuf4673d3a. Read /home/user/rlp-runs/full/fuf4673d3a/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "D",
+   "repetition": 2,
+   "order": 43,
+   "attemptId": "fu99b6fd55",
+   "workspace": "/home/user/rlp-runs/full/fu99b6fd55",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu99b6fd55. Read /home/user/rlp-runs/full/fu99b6fd55/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "A",
+   "repetition": 1,
+   "order": 44,
+   "attemptId": "fu5d3fd27a",
+   "workspace": "/home/user/rlp-runs/full/fu5d3fd27a",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu5d3fd27a. Read /home/user/rlp-runs/full/fu5d3fd27a/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "D",
+   "repetition": 3,
+   "order": 45,
+   "attemptId": "fuf48e24c2",
+   "workspace": "/home/user/rlp-runs/full/fuf48e24c2",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuf48e24c2. Read /home/user/rlp-runs/full/fuf48e24c2/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "C",
+   "repetition": 3,
+   "order": 46,
+   "attemptId": "fu3fcb5c10",
+   "workspace": "/home/user/rlp-runs/full/fu3fcb5c10",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu3fcb5c10. Read /home/user/rlp-runs/full/fu3fcb5c10/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "C",
+   "repetition": 1,
+   "order": 47,
+   "attemptId": "fube9b7229",
+   "workspace": "/home/user/rlp-runs/full/fube9b7229",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fube9b7229. Read /home/user/rlp-runs/full/fube9b7229/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "C",
+   "repetition": 3,
+   "order": 48,
+   "attemptId": "fu95140c20",
+   "workspace": "/home/user/rlp-runs/full/fu95140c20",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu95140c20. Read /home/user/rlp-runs/full/fu95140c20/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "D",
+   "repetition": 2,
+   "order": 49,
+   "attemptId": "fu91be11ad",
+   "workspace": "/home/user/rlp-runs/full/fu91be11ad",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu91be11ad. Read /home/user/rlp-runs/full/fu91be11ad/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "B",
+   "repetition": 2,
+   "order": 50,
+   "attemptId": "fu28fff2d8",
+   "workspace": "/home/user/rlp-runs/full/fu28fff2d8",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu28fff2d8. Read /home/user/rlp-runs/full/fu28fff2d8/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "B",
+   "repetition": 3,
+   "order": 51,
+   "attemptId": "fue545619d",
+   "workspace": "/home/user/rlp-runs/full/fue545619d",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fue545619d. Read /home/user/rlp-runs/full/fue545619d/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "B",
+   "repetition": 1,
+   "order": 52,
+   "attemptId": "fu0f34d24d",
+   "workspace": "/home/user/rlp-runs/full/fu0f34d24d",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu0f34d24d. Read /home/user/rlp-runs/full/fu0f34d24d/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "D",
+   "repetition": 2,
+   "order": 53,
+   "attemptId": "fud789f5c7",
+   "workspace": "/home/user/rlp-runs/full/fud789f5c7",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fud789f5c7. Read /home/user/rlp-runs/full/fud789f5c7/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "D",
+   "repetition": 3,
+   "order": 54,
+   "attemptId": "fu789d5686",
+   "workspace": "/home/user/rlp-runs/full/fu789d5686",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu789d5686. Read /home/user/rlp-runs/full/fu789d5686/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "A",
+   "repetition": 2,
+   "order": 55,
+   "attemptId": "fu157ba22a",
+   "workspace": "/home/user/rlp-runs/full/fu157ba22a",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu157ba22a. Read /home/user/rlp-runs/full/fu157ba22a/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "C",
+   "repetition": 1,
+   "order": 56,
+   "attemptId": "fue8f7cd71",
+   "workspace": "/home/user/rlp-runs/full/fue8f7cd71",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fue8f7cd71. Read /home/user/rlp-runs/full/fue8f7cd71/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "A",
+   "repetition": 1,
+   "order": 57,
+   "attemptId": "fu4e446b78",
+   "workspace": "/home/user/rlp-runs/full/fu4e446b78",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu4e446b78. Read /home/user/rlp-runs/full/fu4e446b78/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "D",
+   "repetition": 1,
+   "order": 58,
+   "attemptId": "fu0e103ab1",
+   "workspace": "/home/user/rlp-runs/full/fu0e103ab1",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu0e103ab1. Read /home/user/rlp-runs/full/fu0e103ab1/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "C",
+   "repetition": 3,
+   "order": 59,
+   "attemptId": "fue9fbafa8",
+   "workspace": "/home/user/rlp-runs/full/fue9fbafa8",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fue9fbafa8. Read /home/user/rlp-runs/full/fue9fbafa8/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "D",
+   "repetition": 1,
+   "order": 60,
+   "attemptId": "fu2e174855",
+   "workspace": "/home/user/rlp-runs/full/fu2e174855",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu2e174855. Read /home/user/rlp-runs/full/fu2e174855/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "B",
+   "repetition": 1,
+   "order": 61,
+   "attemptId": "fu4be007ab",
+   "workspace": "/home/user/rlp-runs/full/fu4be007ab",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu4be007ab. Read /home/user/rlp-runs/full/fu4be007ab/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "B",
+   "repetition": 1,
+   "order": 62,
+   "attemptId": "fufb191a65",
+   "workspace": "/home/user/rlp-runs/full/fufb191a65",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fufb191a65. Read /home/user/rlp-runs/full/fufb191a65/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "B",
+   "repetition": 2,
+   "order": 63,
+   "attemptId": "fube75cfb4",
+   "workspace": "/home/user/rlp-runs/full/fube75cfb4",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fube75cfb4. Read /home/user/rlp-runs/full/fube75cfb4/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "D",
+   "repetition": 2,
+   "order": 64,
+   "attemptId": "fu4a9a9c88",
+   "workspace": "/home/user/rlp-runs/full/fu4a9a9c88",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu4a9a9c88. Read /home/user/rlp-runs/full/fu4a9a9c88/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "A",
+   "repetition": 2,
+   "order": 65,
+   "attemptId": "fu1d16efa4",
+   "workspace": "/home/user/rlp-runs/full/fu1d16efa4",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu1d16efa4. Read /home/user/rlp-runs/full/fu1d16efa4/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "B",
+   "repetition": 3,
+   "order": 66,
+   "attemptId": "fu682d9da4",
+   "workspace": "/home/user/rlp-runs/full/fu682d9da4",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu682d9da4. Read /home/user/rlp-runs/full/fu682d9da4/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "B",
+   "repetition": 2,
+   "order": 67,
+   "attemptId": "fuf7098a45",
+   "workspace": "/home/user/rlp-runs/full/fuf7098a45",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuf7098a45. Read /home/user/rlp-runs/full/fuf7098a45/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "D",
+   "repetition": 1,
+   "order": 68,
+   "attemptId": "fu7bb6a3b5",
+   "workspace": "/home/user/rlp-runs/full/fu7bb6a3b5",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu7bb6a3b5. Read /home/user/rlp-runs/full/fu7bb6a3b5/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "D",
+   "repetition": 2,
+   "order": 69,
+   "attemptId": "fu63f4e1a1",
+   "workspace": "/home/user/rlp-runs/full/fu63f4e1a1",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu63f4e1a1. Read /home/user/rlp-runs/full/fu63f4e1a1/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "B",
+   "repetition": 1,
+   "order": 70,
+   "attemptId": "fu64d1b417",
+   "workspace": "/home/user/rlp-runs/full/fu64d1b417",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu64d1b417. Read /home/user/rlp-runs/full/fu64d1b417/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "D",
+   "repetition": 2,
+   "order": 71,
+   "attemptId": "fu51fd9c2f",
+   "workspace": "/home/user/rlp-runs/full/fu51fd9c2f",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu51fd9c2f. Read /home/user/rlp-runs/full/fu51fd9c2f/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "A",
+   "repetition": 2,
+   "order": 72,
+   "attemptId": "fu95eed3f5",
+   "workspace": "/home/user/rlp-runs/full/fu95eed3f5",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu95eed3f5. Read /home/user/rlp-runs/full/fu95eed3f5/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "D",
+   "repetition": 1,
+   "order": 73,
+   "attemptId": "fu9e1984c7",
+   "workspace": "/home/user/rlp-runs/full/fu9e1984c7",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu9e1984c7. Read /home/user/rlp-runs/full/fu9e1984c7/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "C",
+   "repetition": 1,
+   "order": 74,
+   "attemptId": "fu4d441cea",
+   "workspace": "/home/user/rlp-runs/full/fu4d441cea",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu4d441cea. Read /home/user/rlp-runs/full/fu4d441cea/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "A",
+   "repetition": 1,
+   "order": 75,
+   "attemptId": "fu559fb2c8",
+   "workspace": "/home/user/rlp-runs/full/fu559fb2c8",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu559fb2c8. Read /home/user/rlp-runs/full/fu559fb2c8/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "C",
+   "repetition": 2,
+   "order": 76,
+   "attemptId": "fu7cff66d0",
+   "workspace": "/home/user/rlp-runs/full/fu7cff66d0",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu7cff66d0. Read /home/user/rlp-runs/full/fu7cff66d0/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "A",
+   "repetition": 3,
+   "order": 77,
+   "attemptId": "fua418c643",
+   "workspace": "/home/user/rlp-runs/full/fua418c643",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fua418c643. Read /home/user/rlp-runs/full/fua418c643/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "C",
+   "repetition": 1,
+   "order": 78,
+   "attemptId": "fudf8b1b5b",
+   "workspace": "/home/user/rlp-runs/full/fudf8b1b5b",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fudf8b1b5b. Read /home/user/rlp-runs/full/fudf8b1b5b/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "C",
+   "repetition": 2,
+   "order": 79,
+   "attemptId": "fu40a7cfb4",
+   "workspace": "/home/user/rlp-runs/full/fu40a7cfb4",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu40a7cfb4. Read /home/user/rlp-runs/full/fu40a7cfb4/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "B",
+   "repetition": 3,
+   "order": 80,
+   "attemptId": "fu741bb268",
+   "workspace": "/home/user/rlp-runs/full/fu741bb268",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu741bb268. Read /home/user/rlp-runs/full/fu741bb268/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "C",
+   "repetition": 2,
+   "order": 81,
+   "attemptId": "fueeb5d697",
+   "workspace": "/home/user/rlp-runs/full/fueeb5d697",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fueeb5d697. Read /home/user/rlp-runs/full/fueeb5d697/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "C",
+   "repetition": 2,
+   "order": 82,
+   "attemptId": "fufcbfa9b4",
+   "workspace": "/home/user/rlp-runs/full/fufcbfa9b4",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fufcbfa9b4. Read /home/user/rlp-runs/full/fufcbfa9b4/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "A",
+   "repetition": 2,
+   "order": 83,
+   "attemptId": "fu8ba96954",
+   "workspace": "/home/user/rlp-runs/full/fu8ba96954",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu8ba96954. Read /home/user/rlp-runs/full/fu8ba96954/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "C",
+   "repetition": 1,
+   "order": 84,
+   "attemptId": "fu5efa05e6",
+   "workspace": "/home/user/rlp-runs/full/fu5efa05e6",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu5efa05e6. Read /home/user/rlp-runs/full/fu5efa05e6/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "C",
+   "repetition": 2,
+   "order": 85,
+   "attemptId": "fu0142591f",
+   "workspace": "/home/user/rlp-runs/full/fu0142591f",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu0142591f. Read /home/user/rlp-runs/full/fu0142591f/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "B",
+   "repetition": 1,
+   "order": 86,
+   "attemptId": "fu8e7d3c2f",
+   "workspace": "/home/user/rlp-runs/full/fu8e7d3c2f",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu8e7d3c2f. Read /home/user/rlp-runs/full/fu8e7d3c2f/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "B",
+   "repetition": 3,
+   "order": 87,
+   "attemptId": "fu88ebe535",
+   "workspace": "/home/user/rlp-runs/full/fu88ebe535",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu88ebe535. Read /home/user/rlp-runs/full/fu88ebe535/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "D",
+   "repetition": 1,
+   "order": 88,
+   "attemptId": "fu59ac8f70",
+   "workspace": "/home/user/rlp-runs/full/fu59ac8f70",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu59ac8f70. Read /home/user/rlp-runs/full/fu59ac8f70/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "B",
+   "repetition": 1,
+   "order": 89,
+   "attemptId": "fu0d4fc08c",
+   "workspace": "/home/user/rlp-runs/full/fu0d4fc08c",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu0d4fc08c. Read /home/user/rlp-runs/full/fu0d4fc08c/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "A",
+   "repetition": 1,
+   "order": 90,
+   "attemptId": "fu837be8d6",
+   "workspace": "/home/user/rlp-runs/full/fu837be8d6",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu837be8d6. Read /home/user/rlp-runs/full/fu837be8d6/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "C",
+   "repetition": 1,
+   "order": 91,
+   "attemptId": "fu2c568155",
+   "workspace": "/home/user/rlp-runs/full/fu2c568155",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu2c568155. Read /home/user/rlp-runs/full/fu2c568155/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "D",
+   "repetition": 1,
+   "order": 92,
+   "attemptId": "fu662e8ed2",
+   "workspace": "/home/user/rlp-runs/full/fu662e8ed2",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu662e8ed2. Read /home/user/rlp-runs/full/fu662e8ed2/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "B",
+   "repetition": 1,
+   "order": 93,
+   "attemptId": "fub3e45793",
+   "workspace": "/home/user/rlp-runs/full/fub3e45793",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fub3e45793. Read /home/user/rlp-runs/full/fub3e45793/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "B",
+   "repetition": 1,
+   "order": 94,
+   "attemptId": "fu4a8bde31",
+   "workspace": "/home/user/rlp-runs/full/fu4a8bde31",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu4a8bde31. Read /home/user/rlp-runs/full/fu4a8bde31/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "A",
+   "repetition": 3,
+   "order": 95,
+   "attemptId": "fu50858b84",
+   "workspace": "/home/user/rlp-runs/full/fu50858b84",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu50858b84. Read /home/user/rlp-runs/full/fu50858b84/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "D",
+   "repetition": 1,
+   "order": 96,
+   "attemptId": "fu6c84e5ca",
+   "workspace": "/home/user/rlp-runs/full/fu6c84e5ca",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu6c84e5ca. Read /home/user/rlp-runs/full/fu6c84e5ca/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "C",
+   "repetition": 2,
+   "order": 97,
+   "attemptId": "fua2946c91",
+   "workspace": "/home/user/rlp-runs/full/fua2946c91",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fua2946c91. Read /home/user/rlp-runs/full/fua2946c91/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "D",
+   "repetition": 3,
+   "order": 98,
+   "attemptId": "fu134bd5cf",
+   "workspace": "/home/user/rlp-runs/full/fu134bd5cf",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu134bd5cf. Read /home/user/rlp-runs/full/fu134bd5cf/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "B",
+   "repetition": 2,
+   "order": 99,
+   "attemptId": "fuc42cb70e",
+   "workspace": "/home/user/rlp-runs/full/fuc42cb70e",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuc42cb70e. Read /home/user/rlp-runs/full/fuc42cb70e/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "B",
+   "repetition": 2,
+   "order": 100,
+   "attemptId": "fu43192864",
+   "workspace": "/home/user/rlp-runs/full/fu43192864",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu43192864. Read /home/user/rlp-runs/full/fu43192864/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "B",
+   "repetition": 3,
+   "order": 101,
+   "attemptId": "fu4c0e5a46",
+   "workspace": "/home/user/rlp-runs/full/fu4c0e5a46",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu4c0e5a46. Read /home/user/rlp-runs/full/fu4c0e5a46/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "B",
+   "repetition": 3,
+   "order": 102,
+   "attemptId": "fu2910cddb",
+   "workspace": "/home/user/rlp-runs/full/fu2910cddb",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu2910cddb. Read /home/user/rlp-runs/full/fu2910cddb/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "D",
+   "repetition": 3,
+   "order": 103,
+   "attemptId": "fuf9bd1fed",
+   "workspace": "/home/user/rlp-runs/full/fuf9bd1fed",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuf9bd1fed. Read /home/user/rlp-runs/full/fuf9bd1fed/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "C",
+   "repetition": 3,
+   "order": 104,
+   "attemptId": "fuc91e49a4",
+   "workspace": "/home/user/rlp-runs/full/fuc91e49a4",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuc91e49a4. Read /home/user/rlp-runs/full/fuc91e49a4/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "D",
+   "repetition": 2,
+   "order": 105,
+   "attemptId": "fuaf292444",
+   "workspace": "/home/user/rlp-runs/full/fuaf292444",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuaf292444. Read /home/user/rlp-runs/full/fuaf292444/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "C",
+   "repetition": 3,
+   "order": 106,
+   "attemptId": "fu858c2ae3",
+   "workspace": "/home/user/rlp-runs/full/fu858c2ae3",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu858c2ae3. Read /home/user/rlp-runs/full/fu858c2ae3/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "C",
+   "repetition": 3,
+   "order": 107,
+   "attemptId": "fueff2bcb2",
+   "workspace": "/home/user/rlp-runs/full/fueff2bcb2",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fueff2bcb2. Read /home/user/rlp-runs/full/fueff2bcb2/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "A",
+   "repetition": 1,
+   "order": 108,
+   "attemptId": "fu9ef37b76",
+   "workspace": "/home/user/rlp-runs/full/fu9ef37b76",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu9ef37b76. Read /home/user/rlp-runs/full/fu9ef37b76/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "A",
+   "repetition": 3,
+   "order": 109,
+   "attemptId": "fu95f935bf",
+   "workspace": "/home/user/rlp-runs/full/fu95f935bf",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu95f935bf. Read /home/user/rlp-runs/full/fu95f935bf/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "A",
+   "repetition": 2,
+   "order": 110,
+   "attemptId": "fuc6c902a0",
+   "workspace": "/home/user/rlp-runs/full/fuc6c902a0",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuc6c902a0. Read /home/user/rlp-runs/full/fuc6c902a0/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "A",
+   "repetition": 3,
+   "order": 111,
+   "attemptId": "fufa7f4359",
+   "workspace": "/home/user/rlp-runs/full/fufa7f4359",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fufa7f4359. Read /home/user/rlp-runs/full/fufa7f4359/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "B",
+   "repetition": 1,
+   "order": 112,
+   "attemptId": "fu0e706c7e",
+   "workspace": "/home/user/rlp-runs/full/fu0e706c7e",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu0e706c7e. Read /home/user/rlp-runs/full/fu0e706c7e/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "C",
+   "repetition": 1,
+   "order": 113,
+   "attemptId": "fub2d63ead",
+   "workspace": "/home/user/rlp-runs/full/fub2d63ead",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fub2d63ead. Read /home/user/rlp-runs/full/fub2d63ead/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "B",
+   "repetition": 2,
+   "order": 114,
+   "attemptId": "fuc0c3186c",
+   "workspace": "/home/user/rlp-runs/full/fuc0c3186c",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuc0c3186c. Read /home/user/rlp-runs/full/fuc0c3186c/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "D",
+   "repetition": 3,
+   "order": 115,
+   "attemptId": "fu7e2d22e9",
+   "workspace": "/home/user/rlp-runs/full/fu7e2d22e9",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu7e2d22e9. Read /home/user/rlp-runs/full/fu7e2d22e9/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "B",
+   "repetition": 2,
+   "order": 116,
+   "attemptId": "fucb4cb903",
+   "workspace": "/home/user/rlp-runs/full/fucb4cb903",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fucb4cb903. Read /home/user/rlp-runs/full/fucb4cb903/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "C",
+   "repetition": 1,
+   "order": 117,
+   "attemptId": "fu33cb209d",
+   "workspace": "/home/user/rlp-runs/full/fu33cb209d",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu33cb209d. Read /home/user/rlp-runs/full/fu33cb209d/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "C",
+   "repetition": 2,
+   "order": 118,
+   "attemptId": "fue7e0c36b",
+   "workspace": "/home/user/rlp-runs/full/fue7e0c36b",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fue7e0c36b. Read /home/user/rlp-runs/full/fue7e0c36b/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "B",
+   "repetition": 1,
+   "order": 119,
+   "attemptId": "fu9de6a84f",
+   "workspace": "/home/user/rlp-runs/full/fu9de6a84f",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu9de6a84f. Read /home/user/rlp-runs/full/fu9de6a84f/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "B",
+   "repetition": 1,
+   "order": 120,
+   "attemptId": "fub48ce8b1",
+   "workspace": "/home/user/rlp-runs/full/fub48ce8b1",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fub48ce8b1. Read /home/user/rlp-runs/full/fub48ce8b1/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "D",
+   "repetition": 2,
+   "order": 121,
+   "attemptId": "fu56321c04",
+   "workspace": "/home/user/rlp-runs/full/fu56321c04",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu56321c04. Read /home/user/rlp-runs/full/fu56321c04/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "B",
+   "repetition": 3,
+   "order": 122,
+   "attemptId": "fu72e728f2",
+   "workspace": "/home/user/rlp-runs/full/fu72e728f2",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu72e728f2. Read /home/user/rlp-runs/full/fu72e728f2/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "A",
+   "repetition": 3,
+   "order": 123,
+   "attemptId": "fu90a710b2",
+   "workspace": "/home/user/rlp-runs/full/fu90a710b2",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu90a710b2. Read /home/user/rlp-runs/full/fu90a710b2/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T08-nav-workspace",
+   "arm": "C",
+   "repetition": 2,
+   "order": 124,
+   "attemptId": "fu4d038af0",
+   "workspace": "/home/user/rlp-runs/full/fu4d038af0",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu4d038af0. Read /home/user/rlp-runs/full/fu4d038af0/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "D",
+   "repetition": 3,
+   "order": 125,
+   "attemptId": "fub0068fd1",
+   "workspace": "/home/user/rlp-runs/full/fub0068fd1",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fub0068fd1. Read /home/user/rlp-runs/full/fub0068fd1/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "B",
+   "repetition": 3,
+   "order": 126,
+   "attemptId": "fue7814a06",
+   "workspace": "/home/user/rlp-runs/full/fue7814a06",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fue7814a06. Read /home/user/rlp-runs/full/fue7814a06/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "C",
+   "repetition": 3,
+   "order": 127,
+   "attemptId": "fub2613ab8",
+   "workspace": "/home/user/rlp-runs/full/fub2613ab8",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fub2613ab8. Read /home/user/rlp-runs/full/fub2613ab8/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T06-dashboard-finance",
+   "arm": "D",
+   "repetition": 3,
+   "order": 128,
+   "attemptId": "fue62a0af5",
+   "workspace": "/home/user/rlp-runs/full/fue62a0af5",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fue62a0af5. Read /home/user/rlp-runs/full/fue62a0af5/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T07-nav-docs",
+   "arm": "A",
+   "repetition": 3,
+   "order": 129,
+   "attemptId": "fua952ffe3",
+   "workspace": "/home/user/rlp-runs/full/fua952ffe3",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fua952ffe3. Read /home/user/rlp-runs/full/fua952ffe3/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "A",
+   "repetition": 1,
+   "order": 130,
+   "attemptId": "fu421d8dcd",
+   "workspace": "/home/user/rlp-runs/full/fu421d8dcd",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu421d8dcd. Read /home/user/rlp-runs/full/fu421d8dcd/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "A",
+   "repetition": 2,
+   "order": 131,
+   "attemptId": "fu22a2bc06",
+   "workspace": "/home/user/rlp-runs/full/fu22a2bc06",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu22a2bc06. Read /home/user/rlp-runs/full/fu22a2bc06/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T01-form-account",
+   "arm": "B",
+   "repetition": 2,
+   "order": 132,
+   "attemptId": "fuffd39e60",
+   "workspace": "/home/user/rlp-runs/full/fuffd39e60",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuffd39e60. Read /home/user/rlp-runs/full/fuffd39e60/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T05-dashboard-ops",
+   "arm": "A",
+   "repetition": 1,
+   "order": 133,
+   "attemptId": "fuce96f395",
+   "workspace": "/home/user/rlp-runs/full/fuce96f395",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fuce96f395. Read /home/user/rlp-runs/full/fuce96f395/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "A",
+   "repetition": 3,
+   "order": 134,
+   "attemptId": "fu59ce046f",
+   "workspace": "/home/user/rlp-runs/full/fu59ce046f",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu59ce046f. Read /home/user/rlp-runs/full/fu59ce046f/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "A",
+   "repetition": 2,
+   "order": 135,
+   "attemptId": "fu0c4a2b3a",
+   "workspace": "/home/user/rlp-runs/full/fu0c4a2b3a",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu0c4a2b3a. Read /home/user/rlp-runs/full/fu0c4a2b3a/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T11-adversarial-settings",
+   "arm": "A",
+   "repetition": 2,
+   "order": 136,
+   "attemptId": "fu5c9080e7",
+   "workspace": "/home/user/rlp-runs/full/fu5c9080e7",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu5c9080e7. Read /home/user/rlp-runs/full/fu5c9080e7/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T10-dynamic-thread",
+   "arm": "A",
+   "repetition": 2,
+   "order": 137,
+   "attemptId": "fu0295579c",
+   "workspace": "/home/user/rlp-runs/full/fu0295579c",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu0295579c. Read /home/user/rlp-runs/full/fu0295579c/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "C",
+   "repetition": 3,
+   "order": 138,
+   "attemptId": "fu93ad4bf1",
+   "workspace": "/home/user/rlp-runs/full/fu93ad4bf1",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu93ad4bf1. Read /home/user/rlp-runs/full/fu93ad4bf1/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T09-dynamic-checkout",
+   "arm": "A",
+   "repetition": 3,
+   "order": 139,
+   "attemptId": "fu56838dff",
+   "workspace": "/home/user/rlp-runs/full/fu56838dff",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu56838dff. Read /home/user/rlp-runs/full/fu56838dff/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "C",
+   "repetition": 3,
+   "order": 140,
+   "attemptId": "fu572ed09d",
+   "workspace": "/home/user/rlp-runs/full/fu572ed09d",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu572ed09d. Read /home/user/rlp-runs/full/fu572ed09d/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T02-form-shipping",
+   "arm": "D",
+   "repetition": 3,
+   "order": 141,
+   "attemptId": "fu3726bc47",
+   "workspace": "/home/user/rlp-runs/full/fu3726bc47",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu3726bc47. Read /home/user/rlp-runs/full/fu3726bc47/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T03-cards-product",
+   "arm": "D",
+   "repetition": 1,
+   "order": 142,
+   "attemptId": "fu73a681d7",
+   "workspace": "/home/user/rlp-runs/full/fu73a681d7",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu73a681d7. Read /home/user/rlp-runs/full/fu73a681d7/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T04-cards-profile",
+   "arm": "A",
+   "repetition": 1,
+   "order": 143,
+   "attemptId": "fu36f811ce",
+   "workspace": "/home/user/rlp-runs/full/fu36f811ce",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu36f811ce. Read /home/user/rlp-runs/full/fu36f811ce/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  },
+  {
+   "taskId": "T12-adversarial-pricing",
+   "arm": "C",
+   "repetition": 3,
+   "order": 144,
+   "attemptId": "fu1a992744",
+   "workspace": "/home/user/rlp-runs/full/fu1a992744",
+   "prompt": "You are an independent worker in a controlled experiment. Your workspace is /home/user/rlp-runs/full/fu1a992744. Read /home/user/rlp-runs/full/fu1a992744/AGENT.md and follow it exactly. Work only inside that directory.",
+   "status": "planned"
+  }
+ ]
+}

@@ -1378,6 +1378,23 @@
         "name": "step",
         "mechanism": "step-lifecycle"
       }
+    },
+    {
+      "type": "step.completed",
+      "occurredAt": "2026-10-22T11:59:40.000Z",
+      "stepId": "STEP-20261022T115633000Z-c000b478",
+      "actor": {
+        "kind": "agent",
+        "id": "openai/codex",
+        "provider": "openai",
+        "model": "unknown",
+        "runtime": "codex"
+      },
+      "source": {
+        "type": "ros-cli",
+        "name": "step",
+        "mechanism": "step-lifecycle"
+      }
     }
   ],
   "repository": {
@@ -1426,12 +1443,12 @@
       "name": "Integrate current main and reconcile Praxis histories",
       "description": null,
       "classification": [],
-      "status": "active",
+      "status": "completed",
       "plannedAt": "2026-10-22T11:56:33.000Z",
       "startedAt": "2026-10-22T11:56:33.000Z",
-      "completedAt": null,
-      "endedAt": null,
-      "updatedAt": "2026-10-22T11:56:33.000Z",
+      "completedAt": "2026-10-22T11:59:40.000Z",
+      "endedAt": "2026-10-22T11:59:40.000Z",
+      "updatedAt": "2026-10-22T11:59:40.000Z",
       "actor": {
         "kind": "agent",
         "id": "openai/codex",
@@ -1653,6 +1670,19 @@
           "from": null,
           "to": "active",
           "occurredAt": "2026-10-22T11:56:33.000Z",
+          "reason": null,
+          "actor": {
+            "kind": "agent",
+            "id": "openai/codex",
+            "provider": "openai",
+            "model": "unknown",
+            "runtime": "codex"
+          }
+        },
+        {
+          "from": "active",
+          "to": "completed",
+          "occurredAt": "2026-10-22T11:59:40.000Z",
           "reason": null,
           "actor": {
             "kind": "agent",

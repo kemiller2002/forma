@@ -1,0 +1,642 @@
+[
+ {
+  "item": "s001",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-size: content"
+ },
+ {
+  "item": "s002",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s003",
+  "arm": "A",
+  "attemptId": "pie56908ab",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "margin: 0"
+ },
+ {
+  "item": "s004",
+  "arm": "D",
+  "attemptId": "pi2c758db9",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s005",
+  "arm": "A",
+  "attemptId": "pie56908ab",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "grid-area: remove"
+ },
+ {
+  "item": "s006",
+  "arm": "B",
+  "attemptId": "pi11e9fb7d",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-stack"
+ },
+ {
+  "item": "s007",
+  "arm": "D",
+  "attemptId": "pic79fd4d8",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s008",
+  "arm": "B",
+  "attemptId": "pi11e9fb7d",
+  "category": "padding",
+  "kind": "explicit",
+  "statement": "padding: var(--ef-primitive-spacing-4)"
+ },
+ {
+  "item": "s009",
+  "arm": "D",
+  "attemptId": "pic79fd4d8",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "width: 100%"
+ },
+ {
+  "item": "s010",
+  "arm": "A",
+  "attemptId": "pie56908ab",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "@condition: @media (min-width:34rem)"
+ },
+ {
+  "item": "s011",
+  "arm": "A",
+  "attemptId": "pi1ecbdda6",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "align-items: center"
+ },
+ {
+  "item": "s012",
+  "arm": "B",
+  "attemptId": "pi11e9fb7d",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "gap: var(--ef-primitive-spacing-2) var(--ef-primitive-spacing-4)"
+ },
+ {
+  "item": "s013",
+  "arm": "B",
+  "attemptId": "picc5bdbb2",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "--ef-stack-gap: var(--ef-primitive-spacing-1)"
+ },
+ {
+  "item": "s014",
+  "arm": "D",
+  "attemptId": "pic79fd4d8",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: row"
+ },
+ {
+  "item": "s015",
+  "arm": "D",
+  "attemptId": "pi2c758db9",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: row"
+ },
+ {
+  "item": "s016",
+  "arm": "D",
+  "attemptId": "pic79fd4d8",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: container"
+ },
+ {
+  "item": "s017",
+  "arm": "D",
+  "attemptId": "pi2c758db9",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: related"
+ },
+ {
+  "item": "s018",
+  "arm": "D",
+  "attemptId": "pi2c758db9",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-size: content"
+ },
+ {
+  "item": "s019",
+  "arm": "A",
+  "attemptId": "pi1ecbdda6",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "grid-template-columns: repeat(2,minmax(0,1fr))"
+ },
+ {
+  "item": "s020",
+  "arm": "D",
+  "attemptId": "pi21355778",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: wrap"
+ },
+ {
+  "item": "s021",
+  "arm": "A",
+  "attemptId": "pie56908ab",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "grid-template-columns: minmax(0,1fr) auto"
+ },
+ {
+  "item": "s022",
+  "arm": "B",
+  "attemptId": "pi11e9fb7d",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-stack"
+ },
+ {
+  "item": "s023",
+  "arm": "A",
+  "attemptId": "pie56908ab",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "margin: 0"
+ },
+ {
+  "item": "s024",
+  "arm": "B",
+  "attemptId": "pi11e9fb7d",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "max-inline-size: 40rem"
+ },
+ {
+  "item": "s025",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "data-rl-align: center"
+ },
+ {
+  "item": "s026",
+  "arm": "A",
+  "attemptId": "pi1ecbdda6",
+  "category": "padding",
+  "kind": "explicit",
+  "statement": "padding: 0"
+ },
+ {
+  "item": "s027",
+  "arm": "D",
+  "attemptId": "pi21355778",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s028",
+  "arm": "D",
+  "attemptId": "pi21355778",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-min: 14rem"
+ },
+ {
+  "item": "s029",
+  "arm": "A",
+  "attemptId": "pie56908ab",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "gap: 0.5rem"
+ },
+ {
+  "item": "s030",
+  "arm": "B",
+  "attemptId": "picc5bdbb2",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-stack"
+ },
+ {
+  "item": "s031",
+  "arm": "A",
+  "attemptId": "pie56908ab",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "grid-area: price"
+ },
+ {
+  "item": "s032",
+  "arm": "B",
+  "attemptId": "picc5bdbb2",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "justify-content: flex-start"
+ },
+ {
+  "item": "s033",
+  "arm": "C",
+  "attemptId": "pic0cd1229",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s034",
+  "arm": "B",
+  "attemptId": "pi0a99ef71",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-stack"
+ },
+ {
+  "item": "s035",
+  "arm": "D",
+  "attemptId": "pi2c758db9",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s036",
+  "arm": "A",
+  "attemptId": "pi9631913e",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "gap: 1.5rem"
+ },
+ {
+  "item": "s037",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: row"
+ },
+ {
+  "item": "s038",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-fill: (present)"
+ },
+ {
+  "item": "s039",
+  "arm": "A",
+  "attemptId": "pi1ecbdda6",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "display: grid"
+ },
+ {
+  "item": "s040",
+  "arm": "D",
+  "attemptId": "pic79fd4d8",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: container"
+ },
+ {
+  "item": "s041",
+  "arm": "B",
+  "attemptId": "pi0a99ef71",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-surface"
+ },
+ {
+  "item": "s042",
+  "arm": "B",
+  "attemptId": "pi0a99ef71",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "flex-wrap: wrap"
+ },
+ {
+  "item": "s043",
+  "arm": "A",
+  "attemptId": "pie56908ab",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "box-sizing: border-box"
+ },
+ {
+  "item": "s044",
+  "arm": "C",
+  "attemptId": "pic0cd1229",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s045",
+  "arm": "B",
+  "attemptId": "pi11e9fb7d",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-stack"
+ },
+ {
+  "item": "s046",
+  "arm": "D",
+  "attemptId": "pic79fd4d8",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s047",
+  "arm": "C",
+  "attemptId": "pi59e49d53",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "width: 100%"
+ },
+ {
+  "item": "s048",
+  "arm": "A",
+  "attemptId": "pi9631913e",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "display: flex"
+ },
+ {
+  "item": "s049",
+  "arm": "B",
+  "attemptId": "pi0a99ef71",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "align-items: start"
+ },
+ {
+  "item": "s050",
+  "arm": "A",
+  "attemptId": "pi1ecbdda6",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "flex: none"
+ },
+ {
+  "item": "s051",
+  "arm": "C",
+  "attemptId": "pi59e49d53",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: related"
+ },
+ {
+  "item": "s052",
+  "arm": "D",
+  "attemptId": "pi21355778",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s053",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-fill: (present)"
+ },
+ {
+  "item": "s054",
+  "arm": "A",
+  "attemptId": "pi1ecbdda6",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "grid-template-rows: auto auto auto"
+ },
+ {
+  "item": "s055",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s056",
+  "arm": "B",
+  "attemptId": "pi11e9fb7d",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "align-items: center"
+ },
+ {
+  "item": "s057",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s058",
+  "arm": "D",
+  "attemptId": "pic79fd4d8",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: row"
+ },
+ {
+  "item": "s059",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s060",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "data-rl-bond: tight"
+ },
+ {
+  "item": "s061",
+  "arm": "D",
+  "attemptId": "pic79fd4d8",
+  "category": "positioning",
+  "kind": "explicit",
+  "statement": "data-rl-anchor: end"
+ },
+ {
+  "item": "s062",
+  "arm": "C",
+  "attemptId": "pi59e49d53",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: container"
+ },
+ {
+  "item": "s063",
+  "arm": "A",
+  "attemptId": "pi1ecbdda6",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "width: 100%"
+ },
+ {
+  "item": "s064",
+  "arm": "B",
+  "attemptId": "picc5bdbb2",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-field"
+ },
+ {
+  "item": "s065",
+  "arm": "B",
+  "attemptId": "pi11e9fb7d",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "align-items: center"
+ },
+ {
+  "item": "s066",
+  "arm": "C",
+  "attemptId": "pi59e49d53",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-equal: (present)"
+ },
+ {
+  "item": "s067",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-size: content"
+ },
+ {
+  "item": "s068",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "data-rl-align: center"
+ },
+ {
+  "item": "s069",
+  "arm": "A",
+  "attemptId": "pie56908ab",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "grid-template-areas: \"name price\" \"qty remove\""
+ },
+ {
+  "item": "s070",
+  "arm": "D",
+  "attemptId": "pi2c758db9",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: group"
+ },
+ {
+  "item": "s071",
+  "arm": "C",
+  "attemptId": "pi59e49d53",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "data-rl: container"
+ },
+ {
+  "item": "s072",
+  "arm": "B",
+  "attemptId": "picc5bdbb2",
+  "category": "grouping",
+  "kind": "explicit",
+  "statement": "class: ef-form"
+ },
+ {
+  "item": "s073",
+  "arm": "C",
+  "attemptId": "pia424f353",
+  "category": "dimension",
+  "kind": "explicit",
+  "statement": "data-rl-size: content"
+ },
+ {
+  "item": "s074",
+  "arm": "D",
+  "attemptId": "pic79fd4d8",
+  "category": "positioning",
+  "kind": "explicit",
+  "statement": "data-rl-anchor: end"
+ },
+ {
+  "item": "s075",
+  "arm": "B",
+  "attemptId": "pi0a99ef71",
+  "category": "margin",
+  "kind": "explicit",
+  "statement": "gap: var(--ef-primitive-spacing-1) var(--ef-primitive-spacing-3)"
+ },
+ {
+  "item": "s076",
+  "arm": "B",
+  "attemptId": "pi11e9fb7d",
+  "category": "alignment",
+  "kind": "explicit",
+  "statement": "justify-content: space-between"
+ },
+ {
+  "item": "s077",
+  "arm": "B",
+  "attemptId": "picc5bdbb2",
+  "category": "padding",
+  "kind": "explicit",
+  "statement": "padding-block-end: var(--ef-primitive-spacing-3)"
+ },
+ {
+  "item": "s078",
+  "arm": "D",
+  "attemptId": "pi2c758db9",
+  "category": "responsive",
+  "kind": "explicit",
+  "statement": "data-rl-flow: row"
+ },
+ {
+  "item": "s079",
+  "arm": "A",
+  "attemptId": "pi1ecbdda6",
+  "category": "padding",
+  "kind": "explicit",
+  "statement": "padding: 1rem"
+ },
+ {
+  "item": "s080",
+  "arm": "A",
+  "attemptId": "pie56908ab",
+  "category": "dimension",
+  "kind": "uncertain",
+  "statement": "border-top: 1px solid #ddd"
+ }
+]

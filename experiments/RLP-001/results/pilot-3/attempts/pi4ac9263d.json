@@ -1,0 +1,234 @@
+{
+ "experiment": "RLP-001",
+ "phase": "pilot-3",
+ "attemptId": "pi4ac9263d",
+ "taskId": "T09-dynamic-checkout",
+ "category": "dynamic",
+ "split": "dev",
+ "arm": "B",
+ "repetition": 1,
+ "executionOrder": 11,
+ "model": "sonnet",
+ "engineCommit": "cbc2c0a49e81b66847a25202b3cbdda36d5d4290",
+ "collectedAt": "2026-10-21T18:58:44.077Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 4,
+  "inputTokens": 199615,
+  "inputUncachedTokens": 8,
+  "cacheCreationTokens": 18319,
+  "cacheReadTokens": 181288,
+  "outputTokens": 60,
+  "totalTokens": 199675,
+  "toolCalls": 7,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 2,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 11679,
+  "toolTokens": null,
+  "durationMs": 33165,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": 54616,
+   "toolUses": 7,
+   "durationMs": 33196
+  },
+  "validationRuns": 1,
+  "repairIterations": 0,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T18:56:35.351Z",
+    "durationMs": 9132,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 2,
+  "standardByInvariant": {
+   "proximity": 2
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "font-scale": 1
+  },
+  "heldoutByInvariant": {
+   "row-association": 1
+  },
+  "responsiveFailureViewports": [
+   320
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 2,
+  "standardByInvariant": {
+   "proximity": 2
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "font-scale": 1
+  },
+  "heldoutByInvariant": {
+   "row-association": 1
+  },
+  "responsiveFailureViewports": [
+   320
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 20,
+  "derived": 15,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 20,
+  "rawStatements": {
+   "explicit": 36,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 20,
+  "byCategory": {
+   "explicit": {
+    "padding": 2,
+    "margin": 6,
+    "alignment": 3,
+    "positioning": 0,
+    "grouping": 6,
+    "responsive": 1,
+    "dimension": 2,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 1,
+    "margin": 6,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 6,
+    "responsive": 1,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "proximity",
+    "element": "promo-error ~ promo-input",
+    "expected": "<= 24px apart",
+    "observed": "80.38px",
+    "relationship": "promo-error ~ promo-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "proximity",
+    "element": "promo-error ~ promo-input",
+    "expected": "<= 24px apart",
+    "observed": "80.38px",
+    "relationship": "promo-error ~ promo-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "67.19px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 2
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "4:reveal:promo-error",
+    "invariant": "proximity",
+    "element": "promo-error ~ promo-input",
+    "expected": "<= 24px apart",
+    "observed": "80.38px",
+    "relationship": "promo-error ~ promo-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "5:hide:shipping-options",
+    "invariant": "proximity",
+    "element": "promo-error ~ promo-input",
+    "expected": "<= 24px apart",
+    "observed": "80.38px",
+    "relationship": "promo-error ~ promo-input",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "row-association",
+    "element": "item-1-name ~ item-1-remove",
+    "expected": "same row, or stacked within 1.5rem",
+    "observed": "67.19px apart on different rows",
+    "relationship": "item-1-name ~ item-1-remove",
+    "fontScale": 2
+   }
+  ]
+ }
+}

@@ -1,0 +1,42 @@
+{
+  "experiment": "RLP-001",
+  "recordedAt": "2026-10-21T18:10:32.857Z",
+  "note": "Baseline main-branch HEADs before any RLP-001 change. Forma is the only repository modified by the experiment.",
+  "repositories": {
+    "kemiller2002/forma": {
+      "commit": "b4d2ec296b917ddd45cdf5f08d0a2093adb62b19"
+    },
+    "kemiller2002/praxis": {
+      "commit": "64005151118caa34da4f9a7fc194bc498cbcc37a"
+    },
+    "kemiller2002/dokimos": {
+      "commit": "c99c21b3cb78105416a5379d599f5b0f9bbec638"
+    },
+    "kemiller2002/ordo": {
+      "commit": "f69f8ac8a094ec5cbf5da946e612f199fa9f478c"
+    },
+    "kemiller2002/research-documents": {
+      "commit": "f6778c260c2bc144544510a44eb81a88480ac542"
+    },
+    "kemiller2002/visual-engineering": {
+      "commit": "1bda5ff24493d75af02e02df4ca11fe1a417fc5c"
+    },
+    "kemiller2002/application-visual-language": {
+      "commit": "f0f093b5e79ab31b078fce40109dbe8a92a6db62"
+    }
+  },
+  "forma": {
+    "packageVersion": "0.9.0",
+    "conformancePackageVersion": "0.2.0"
+  },
+  "tools": {
+    "node": "v22.22.0",
+    "npm": "10.9.4",
+    "dotnetSdk": "10.0.402",
+    "playwright": "1.63.0",
+    "axeCorePlaywright": "4.13.0",
+    "chromium": "Chromium 141.0.7390.37",
+    "praxis": "praxis 3.7.2",
+    "os": "Linux 6.18.44-fc-v139"
+  }
+}

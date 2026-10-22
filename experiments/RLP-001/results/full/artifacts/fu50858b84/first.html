@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create-account form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  body { padding: 1rem; }
+  form { max-width: 44rem; margin: 0 auto; padding: 1.5rem; display: grid; gap: 1.5rem; }
+  h1 { margin: 0; }
+  .intro { margin: 0; }
+  .head { display: grid; gap: 0.5rem; }
+  .row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .field { display: grid; gap: 0.375rem; align-content: start; min-width: 0; }
+  .field input { width: 100%; box-sizing: border-box; min-width: 0; }
+  .msgs { display: grid; gap: 0.25rem; }
+  .msgs > * { margin: 0; }
+  @media (min-width: 40rem) {
+    .row { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.5rem; row-gap: 0.375rem; }
+    .field { grid-row: span 3; grid-template-rows: subgrid; row-gap: 0.375rem; }
+  }
+  fieldset { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 0.5rem; }
+  legend { padding: 0; margin-bottom: 0.5rem; font-weight: 600; }
+  .check { display: flex; align-items: center; gap: 0.5rem; min-height: 1.5rem; }
+  .check input { margin: 0; flex: none; }
+  .actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.75rem; }
+  .actions button { min-height: 2.5rem; min-width: 2.5rem; }
+  </style>
+</head>
+<body>
+  <form class="surface" data-rlp="form" novalidate>
+    <div class="head">
+      <h1 data-rlp="title">Create your account</h1>
+      <p class="intro" data-rlp="intro">All fields marked with an asterisk are required.</p>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="name" data-rlp="name-label">Full name *</label>
+        <input id="name" type="text" autocomplete="name" required data-rlp="name-input">
+        <div class="msgs"></div>
+      </div>
+      <div class="field">
+        <label for="email" data-rlp="email-label">Email address *</label>
+        <input id="email" type="email" autocomplete="email" required aria-describedby="email-error" data-rlp="email-input">
+        <div class="msgs"><p id="email-error" class="error" hidden data-rlp="email-error">Enter an email address in the format name@example.com.</p></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="password" data-rlp="password-label">Password *</label>
+        <input id="password" type="password" autocomplete="new-password" required aria-describedby="password-hint password-error" data-rlp="password-input">
+        <div class="msgs">
+          <p id="password-hint" data-rlp="password-hint">Use at least 12 characters.</p>
+          <p id="password-error" class="error" hidden data-rlp="password-error">Your password is too short.</p>
+        </div>
+      </div>
+      <div class="field">
+        <label for="confirm" data-rlp="confirm-label">Confirm password *</label>
+        <input id="confirm" type="password" autocomplete="new-password" required data-rlp="confirm-input">
+        <div class="msgs"></div>
+      </div>
+    </div>
+    <fieldset data-rlp="prefs">
+      <legend data-rlp="prefs-legend">Email preferences</legend>
+      <div class="check">
+        <input id="pref-news" type="checkbox" data-rlp="pref-news-input">
+        <label for="pref-news" data-rlp="pref-news-label">Product news</label>
+      </div>
+      <div class="check">
+        <input id="pref-tips" type="checkbox" data-rlp="pref-tips-input">
+        <label for="pref-tips" data-rlp="pref-tips-label">Tips and tutorials</label>
+      </div>
+    </fieldset>
+    <div class="actions" data-rlp="actions">
+      <button type="button" class="secondary" data-rlp="cancel">Cancel</button>
+      <button type="submit" data-rlp="submit">Create account</button>
+    </div>
+  </form>
+</body>
+</html>

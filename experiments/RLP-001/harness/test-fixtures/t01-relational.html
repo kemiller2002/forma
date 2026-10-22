@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create-account form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+<main data-rl-root data-rl="group" data-rl-clearance="none">
+  <form data-rl="container" data-rl-bond="loose" data-rlp="form" novalidate>
+    <div data-rl="group" data-rl-bond="tight">
+      <h1 data-rlp="title">Create your account</h1>
+      <p data-rlp="intro">All fields marked with an asterisk are required.</p>
+    </div>
+    <div data-rl="group" data-rl-flow="wrap">
+      <div data-rl="group" data-rl-bond="tight" data-rl-min="15rem">
+        <label for="name" data-rlp="name-label">Full name *</label>
+        <input id="name" type="text" autocomplete="name" required data-rl-align-edge="control" data-rlp="name-input">
+      </div>
+      <div data-rl="group" data-rl-bond="tight" data-rl-min="15rem">
+        <label for="email" data-rlp="email-label">Email address *</label>
+        <input id="email" type="email" autocomplete="email" required aria-describedby="email-error" data-rl-align-edge="control" data-rlp="email-input">
+        <p id="email-error" class="error" hidden data-rlp="email-error">Enter an email address in the format name@example.com.</p>
+      </div>
+    </div>
+    <div data-rl="group" data-rl-flow="wrap">
+      <div data-rl="group" data-rl-bond="tight" data-rl-min="15rem">
+        <label for="password" data-rlp="password-label">Password *</label>
+        <input id="password" type="password" autocomplete="new-password" required aria-describedby="password-hint password-error" data-rl-align-edge="control" data-rlp="password-input">
+        <p id="password-hint" class="muted" data-rlp="password-hint">Use at least 12 characters.</p>
+        <p id="password-error" class="error" hidden data-rlp="password-error">Your password is too short.</p>
+      </div>
+      <div data-rl="group" data-rl-bond="tight" data-rl-min="15rem">
+        <label for="confirm" data-rlp="confirm-label">Confirm password *</label>
+        <input id="confirm" type="password" autocomplete="new-password" required data-rl-align-edge="control" data-rlp="confirm-input">
+      </div>
+    </div>
+    <fieldset data-rl="group" data-rl-bond="tight" data-rlp="prefs">
+      <legend data-rlp="prefs-legend">Email preferences</legend>
+      <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+        <input id="news" type="checkbox" data-rlp="pref-news-input">
+        <label for="news" data-rl-fill data-rlp="pref-news-label">Product news</label>
+      </div>
+      <div data-rl="group" data-rl-flow="row" data-rl-bond="tight">
+        <input id="tips" type="checkbox" data-rlp="pref-tips-input">
+        <label for="tips" data-rl-fill data-rlp="pref-tips-label">Tips and tutorials</label>
+      </div>
+    </fieldset>
+    <div data-rl="group" data-rl-flow="row" data-rlp="actions">
+      <button type="button" class="secondary" data-rl-anchor="end" data-rlp="cancel">Cancel</button>
+      <button type="submit" data-rlp="submit">Create account</button>
+    </div>
+  </form>
+</main>
+</body>
+</html>

@@ -1,0 +1,466 @@
+{
+ "experiment": "RLP-001",
+ "phase": "x1-pilot",
+ "generatedAt": "2026-10-21T19:16:43.915Z",
+ "attempts": 3,
+ "tasks": [
+  "T01-form-account",
+  "T03-cards-product",
+  "T09-dynamic-checkout"
+ ],
+ "note": "Confirmatory: A − D first-draft defects. Everything else exploratory.",
+ "perArm": {
+  "X1": {
+   "attempts": 3,
+   "accepted": 2,
+   "acceptanceRate": 0.6666666666666666,
+   "tokensPerAccepted": 389181.5,
+   "decisionsPerAccepted": 16.5,
+   "metrics": {
+    "firstDraftDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 7.666666666666667,
+     "median": 0,
+     "sd": 13.279056191361391,
+     "q1": 0,
+     "q3": 11.5,
+     "min": 0,
+     "max": 23
+    },
+    "firstDraftGeometryDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 7.666666666666667,
+     "median": 0,
+     "sd": 13.279056191361391,
+     "q1": 0,
+     "q3": 11.5,
+     "min": 0,
+     "max": 23
+    },
+    "firstDraftAccessibilityDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "finalDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "finalHeldoutDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "finalDynamicDefects": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "unexpectedShift": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "accepted": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 1,
+     "sd": 0.5773502691896258,
+     "q1": 0.5,
+     "q3": 1,
+     "min": 0,
+     "max": 1
+    },
+    "totalTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 259454.33333333334,
+     "median": 201092,
+     "sd": 104084.23798219081,
+     "q1": 199369.5,
+     "q3": 290358,
+     "min": 197647,
+     "max": 379624
+    },
+    "outputTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 112,
+     "median": 134,
+     "sd": 46.119410230400824,
+     "q1": 96.5,
+     "q3": 138.5,
+     "min": 59,
+     "max": 143
+    },
+    "inputTokens": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 259342.33333333334,
+     "median": 201033,
+     "sd": 104058.0223785429,
+     "q1": 199273,
+     "q3": 290257,
+     "min": 197513,
+     "max": 379481
+    },
+    "toolCalls": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 6,
+     "median": 7,
+     "sd": 1.7320508075688772,
+     "q1": 5.5,
+     "q3": 7,
+     "min": 4,
+     "max": 7
+    },
+    "durationMs": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 37394.333333333336,
+     "median": 25453,
+     "sd": 23784.872131952554,
+     "q1": 23699.5,
+     "q3": 45118.5,
+     "min": 21946,
+     "max": 64784
+    },
+    "validationRuns": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 1.6666666666666667,
+     "median": 1,
+     "sd": 1.1547005383792517,
+     "q1": 1,
+     "q3": 2,
+     "min": 1,
+     "max": 3
+    },
+    "repairIterations": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0.6666666666666666,
+     "median": 0,
+     "sd": 1.1547005383792517,
+     "q1": 0,
+     "q3": 1,
+     "min": 0,
+     "max": 2
+    },
+    "decisionsTotal": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 11,
+     "median": 11,
+     "sd": 1,
+     "q1": 10.5,
+     "q3": 11.5,
+     "min": 10,
+     "max": 12
+    },
+    "decisionsExplicit": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 11,
+     "median": 11,
+     "sd": 1,
+     "q1": 10.5,
+     "q3": 11.5,
+     "min": 10,
+     "max": 12
+    },
+    "decisionsDerived": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 66.66666666666667,
+     "median": 61,
+     "sd": 21.07921567168317,
+     "q1": 55,
+     "q3": 75.5,
+     "min": 49,
+     "max": 90
+    },
+    "decisionsCorrective": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 2.3333333333333335,
+     "median": 0,
+     "sd": 4.041451884327381,
+     "q1": 0,
+     "q3": 3.5,
+     "min": 0,
+     "max": 7
+    },
+    "decisionsUncertain": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "rawStatements": {
+     "n": 3,
+     "unavailable": 0,
+     "mean": 48.333333333333336,
+     "median": 56,
+     "sd": 15.947831618540913,
+     "q1": 43,
+     "q3": 57.5,
+     "min": 30,
+     "max": 59
+    }
+   },
+   "decisionCategories": {
+    "explicit": {
+     "padding": 0,
+     "margin": 0,
+     "alignment": 2.3333333333333335,
+     "positioning": 1,
+     "grouping": 2.3333333333333335,
+     "responsive": 1.6666666666666667,
+     "dimension": 3.6666666666666665,
+     "correction": 0
+    },
+    "derived": {
+     "padding": 2.6666666666666665,
+     "margin": 16,
+     "alignment": 16,
+     "positioning": 0,
+     "grouping": 0,
+     "responsive": 16,
+     "dimension": 16,
+     "correction": 0
+    },
+    "corrective": {
+     "padding": 0,
+     "margin": 0,
+     "alignment": 0.3333333333333333,
+     "positioning": 0.3333333333333333,
+     "grouping": 0.3333333333333333,
+     "responsive": 0.3333333333333333,
+     "dimension": 1,
+     "correction": 2.3333333333333335
+    }
+   },
+   "engine": {
+    "resolves": 15,
+    "solveMs": {
+     "n": 15,
+     "unavailable": 0,
+     "mean": 3.920000000235935,
+     "median": 2.6000000005587935,
+     "sd": 2.9988569252402497,
+     "q1": 2.2000000001862645,
+     "q3": 4.150000000372529,
+     "min": 1.7999999998137355,
+     "max": 11.900000000372529
+    },
+    "solveP95": 10.430000000633298,
+    "totalMsP95": 23.499999999999993,
+    "iterations": {
+     "n": 15,
+     "unavailable": 0,
+     "mean": 0,
+     "median": 0,
+     "sd": 0,
+     "q1": 0,
+     "q3": 0,
+     "min": 0,
+     "max": 0
+    },
+    "measureCalls": {
+     "n": 15,
+     "unavailable": 0,
+     "mean": 22.333333333333332,
+     "median": 21,
+     "sd": 4.336994790119514,
+     "q1": 18,
+     "q3": 28,
+     "min": 18,
+     "max": 28
+    },
+    "invalidStatus": 0,
+    "convergenceFailures": 0,
+    "diagnosticCodes": {}
+   }
+  }
+ },
+ "primary": null,
+ "secondary": [],
+ "mechanisms": [],
+ "correlations": {
+  "decisions~tokens": {
+   "rho": 0.5,
+   "n": 3
+  },
+  "decisions~firstDraftDefects": {
+   "rho": 0,
+   "n": 3
+  },
+  "decisions~repairIterations": {
+   "rho": 0,
+   "n": 3
+  },
+  "tokens~repairIterations": {
+   "rho": 0.8660254037844387,
+   "n": 3
+  },
+  "firstDraftDefects~repairIterations": {
+   "rho": 1,
+   "n": 3
+  },
+  "decisions~finalDefects": {
+   "rho": 0,
+   "n": 3
+  }
+ },
+ "compliance": [
+  {
+   "attempt": "x1fb1c5ac4",
+   "arm": "X1",
+   "task": "T01-form-account",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x171646696",
+   "arm": "X1",
+   "task": "T03-cards-product",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  },
+  {
+   "attempt": "x1c36f77f8",
+   "arm": "X1",
+   "task": "T09-dynamic-checkout",
+   "leakage": 0,
+   "ownScripts": 0,
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "neverValidated": false,
+   "reported": null
+  }
+ ],
+ "perAttempt": [
+  {
+   "order": 1,
+   "attempt": "x1fb1c5ac4",
+   "task": "T01-form-account",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 197647,
+   "output": 134,
+   "tools": 4,
+   "durationMs": 21946,
+   "decisions": 10,
+   "derived": 49,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 2,
+   "attempt": "x171646696",
+   "task": "T03-cards-product",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 0,
+   "finalDefects": 0,
+   "heldout": 0,
+   "accepted": true,
+   "runs": 1,
+   "tokens": 201092,
+   "output": 59,
+   "tools": 7,
+   "durationMs": 25453,
+   "decisions": 12,
+   "derived": 90,
+   "corrective": 0,
+   "uncertain": 0,
+   "finalByInvariant": {},
+   "heldoutByInvariant": {}
+  },
+  {
+   "order": 3,
+   "attempt": "x1c36f77f8",
+   "task": "T09-dynamic-checkout",
+   "arm": "X1",
+   "rep": 1,
+   "firstDraftDefects": 23,
+   "finalDefects": 2,
+   "heldout": 2,
+   "accepted": false,
+   "runs": 3,
+   "tokens": 379624,
+   "output": 143,
+   "tools": 7,
+   "durationMs": 64784,
+   "decisions": 11,
+   "derived": 61,
+   "corrective": 7,
+   "uncertain": 0,
+   "finalByInvariant": {
+    "row-association": 12
+   },
+   "heldoutByInvariant": {
+    "row-association": 4
+   }
+  }
+ ]
+}

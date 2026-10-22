@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shipping address form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  main { max-inline-size: 40rem; margin-inline: auto; padding: 1rem; }
+  form { padding: 1.25rem; display: grid; gap: 1.25rem; }
+  @media (min-width: 30rem) { main { padding: 2rem 1rem; } form { padding: 1.75rem; } }
+  .field { display: grid; gap: 0.25rem; }
+  .csz { display: grid; gap: 0.25rem 1rem; grid-template-columns: minmax(0, 1fr); }
+  .csz label { align-self: end; }
+  @media (min-width: 40rem) {
+    .csz { grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 1fr); gap: 0.25rem 1rem; }
+    .csz > [data-rlp=city-label] { grid-column: 1; grid-row: 1; }
+    .csz > [data-rlp=city-input] { grid-column: 1; grid-row: 2; }
+    .csz > [data-rlp=state-label] { grid-column: 2; grid-row: 1; }
+    .csz > [data-rlp=state-input] { grid-column: 2; grid-row: 2; }
+    .csz > [data-rlp=zip-label] { grid-column: 3; grid-row: 1; }
+    .csz > [data-rlp=zip-input] { grid-column: 3; grid-row: 2; }
+    .csz > [data-rlp=zip-error] { grid-column: 3; grid-row: 3; }
+  }
+  .csz [data-rlp=zip-error] { margin: 0; }
+  fieldset.delivery { display: grid; gap: 0.75rem; }
+  legend { font-weight: 600; padding-block-end: 0.5rem; }
+  .opt, .check { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); column-gap: 0.75rem; row-gap: 0.125rem; align-items: start; }
+  .opt input, .check input { grid-column: 1; grid-row: 1; align-self: start; }
+  .opt label, .check label { grid-column: 2; grid-row: 1; min-block-size: 1.5rem; }
+  .opt .muted { grid-column: 2; grid-row: 2; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: flex-end; padding-block-start: 0.25rem; }
+  @media (max-width: 29.99rem) { .actions button { flex: 1 1 100%; } }
+  </style>
+</head>
+<body>
+  <main>
+  <form class="surface" data-rlp="form" novalidate>
+    <h2 data-rlp="title">Shipping address</h2>
+    <div class="field">
+      <label for="street" data-rlp="street-label">Street address *</label>
+      <input id="street" type="text" autocomplete="address-line1" required data-rlp="street-input">
+    </div>
+    <div class="field">
+      <label for="unit" data-rlp="unit-label">Apartment, suite, or unit</label>
+      <input id="unit" type="text" autocomplete="address-line2" data-rlp="unit-input">
+    </div>
+    <div class="csz">
+      <label for="city" data-rlp="city-label">City *</label>
+      <input id="city" type="text" autocomplete="address-level2" required data-rlp="city-input">
+      <label for="state" data-rlp="state-label">State *</label>
+      <select id="state" data-rlp="state-input">
+        <option value="">Choose a state</option>
+        <option>Ohio</option>
+        <option>Oregon</option>
+        <option>Texas</option>
+      </select>
+      <label for="zip" data-rlp="zip-label">ZIP code *</label>
+      <input id="zip" type="text" autocomplete="postal-code" inputmode="numeric" required aria-describedby="zip-error" data-rlp="zip-input">
+      <p id="zip-error" class="error" hidden data-rlp="zip-error">Enter a five-digit ZIP code.</p>
+    </div>
+    <fieldset class="delivery" data-rlp="delivery">
+      <legend data-rlp="delivery-legend">Delivery speed</legend>
+      <div class="opt">
+        <input id="standard" type="radio" name="speed" checked aria-describedby="standard-note" data-rlp="standard-input">
+        <label for="standard" data-rlp="standard-label">Standard — free</label>
+        <span id="standard-note" class="muted" data-rlp="standard-note">Arrives in 5 to 7 business days.</span>
+      </div>
+      <div class="opt">
+        <input id="express" type="radio" name="speed" aria-describedby="express-note" data-rlp="express-input">
+        <label for="express" data-rlp="express-label">Express — $12.00</label>
+        <span id="express-note" class="muted" data-rlp="express-note">Arrives in 2 business days.</span>
+      </div>
+    </fieldset>
+    <div class="check">
+      <input id="save" type="checkbox" data-rlp="save-input">
+      <label for="save" data-rlp="save-label">Save this address for next time</label>
+    </div>
+    <div class="actions" data-rlp="actions">
+      <button type="button" class="secondary" data-rlp="back">Back to cart</button>
+      <button type="submit" data-rlp="continue">Continue to payment</button>
+    </div>
+  </form>
+  </main>
+</body>
+</html>

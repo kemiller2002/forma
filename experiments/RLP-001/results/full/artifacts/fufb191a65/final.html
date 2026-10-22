@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create-account form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  /* your CSS */
+</style>
+</head>
+<body>
+  <main class="ef-stack" style="padding: var(--ef-primitive-spacing-4)">
+<form class="ef-form ef-surface" data-rlp="form" style="--ef-surface-space: var(--ef-primitive-spacing-5); margin-inline:auto; inline-size:100%" novalidate>
+  <h1 data-rlp="title">Create your account</h1>
+  <p data-rlp="intro">All fields marked with an asterisk are required.</p>
+  <div class="ef-form-row">
+    <div class="ef-field">
+      <label class="ef-field__label" for="name" data-rlp="name-label">Full name *</label>
+      <input id="name" type="text" autocomplete="name" required data-rlp="name-input">
+    </div>
+    <div class="ef-field">
+      <label class="ef-field__label" for="email" data-rlp="email-label">Email address *</label>
+      <input id="email" type="email" autocomplete="email" required aria-describedby="email-error" data-rlp="email-input">
+      <p id="email-error" class="error ef-validation-message" hidden data-rlp="email-error">Enter an email address in the format name@example.com.</p>
+    </div>
+  </div>
+  <div class="ef-form-row">
+    <div class="ef-field">
+      <label class="ef-field__label" for="password" data-rlp="password-label">Password *</label>
+      <input id="password" type="password" autocomplete="new-password" required aria-describedby="password-hint password-error" data-rlp="password-input">
+      <div class="ef-validation-message" style="display:block">
+      <p id="password-hint" class="ef-field__description" style="margin:0" data-rlp="password-hint">Use at least 12 characters.</p>
+      <p id="password-error" class="error" hidden data-rlp="password-error" style="margin:var(--ef-primitive-spacing-2) 0 0">Your password is too short.</p>
+      </div>
+    </div>
+    <div class="ef-field">
+      <label class="ef-field__label" for="confirm" data-rlp="confirm-label">Confirm password *</label>
+      <input id="confirm" type="password" autocomplete="new-password" required data-rlp="confirm-input">
+    </div>
+  </div>
+  <fieldset class="ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)" data-rlp="prefs">
+    <legend data-rlp="prefs-legend" style="margin-block-end: var(--ef-primitive-spacing-2)">Email preferences</legend>
+    <div class="ef-cluster" style="--ef-cluster-gap: var(--ef-primitive-spacing-2)">
+      <input id="news" type="checkbox" data-rlp="pref-news-input">
+      <label for="news" data-rlp="pref-news-label">Product news</label>
+    </div>
+    <div class="ef-cluster" style="--ef-cluster-gap: var(--ef-primitive-spacing-2)">
+      <input id="tips" type="checkbox" data-rlp="pref-tips-input">
+      <label for="tips" data-rlp="pref-tips-label">Tips and tutorials</label>
+    </div>
+  </fieldset>
+  <div class="ef-actions" data-rlp="actions">
+    <button type="button" class="secondary" data-rlp="cancel">Cancel</button>
+    <button type="submit" data-rlp="submit">Create account</button>
+  </div>
+</form>
+</main>
+</body>
+</html>

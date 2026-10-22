@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace section navigation</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+  <main data-rl-root data-rl="group">
+<header data-rl="container" data-rlp="bar">
+  <nav data-rl="group" data-rl-flow="wrap" aria-label="Breadcrumb" data-rlp="breadcrumb">
+    <a href="#" data-rlp="crumb-1">Workspaces</a>
+    <a href="#" data-rlp="crumb-2">Acme Corporation</a>
+    <a href="#" data-rlp="crumb-3">Billing</a>
+    <span aria-current="page" data-rlp="crumb-4">Invoices</span>
+  </nav>
+  <h1 data-rlp="heading">Invoices</h1>
+  <nav data-rl="group" data-rl-flow="wrap" aria-label="Billing sections" data-rlp="sections">
+    <a href="#" data-rlp="section-1">Overview</a>
+    <a href="#" aria-current="page" data-rlp="section-2">Invoices</a>
+    <a href="#" data-rlp="section-3">Payment methods</a>
+    <a href="#" data-rlp="section-4">Tax registrations and exemptions</a>
+    <a href="#" data-rlp="section-5">Usage</a>
+    <a href="#" data-rlp="section-6">Settings</a>
+  </nav>
+  <div data-rl="group" data-rl-flow="row" data-rlp="actions">
+    <button class="secondary" data-rl-anchor="end" data-rlp="export">Export CSV</button>
+    <button data-rlp="new">New invoice</button>
+  </div>
+</header>
+</main>
+</body>
+</html>

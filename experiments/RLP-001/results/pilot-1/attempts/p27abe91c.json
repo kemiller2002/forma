@@ -1,0 +1,381 @@
+{
+ "experiment": "RLP-001",
+ "phase": "pilot-1",
+ "attemptId": "p27abe91c",
+ "taskId": "T03-cards-product",
+ "category": "cards",
+ "split": "dev",
+ "arm": "B",
+ "repetition": 1,
+ "executionOrder": 10,
+ "model": "sonnet",
+ "engineCommit": "778ac21c18a22379feb428e56b88e0e590d3fe65",
+ "collectedAt": "2026-10-21T18:44:39.570Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 6,
+  "inputTokens": 311890,
+  "inputUncachedTokens": 12,
+  "cacheCreationTokens": 56385,
+  "cacheReadTokens": 255493,
+  "outputTokens": 107,
+  "totalTokens": 311997,
+  "toolCalls": 9,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 4,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 16111,
+  "toolTokens": null,
+  "durationMs": 40236,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": 56731,
+   "toolUses": 9,
+   "durationMs": 40270
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T18:42:03.971Z",
+    "durationMs": 5559,
+    "failures": 6,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T18:42:13.981Z",
+    "durationMs": 1890,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 15,
+  "standardByInvariant": {
+   "proximity": 15
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 2,
+   "font-scale": 2
+  },
+  "heldoutByInvariant": {
+   "proximity": 4
+  },
+  "responsiveFailureViewports": [
+   320,
+   375,
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 17,
+  "derived": 36,
+  "uncertain": 0,
+  "corrective": 0,
+  "total": 17,
+  "rawStatements": {
+   "explicit": 35,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 18,
+  "byCategory": {
+   "explicit": {
+    "padding": 2,
+    "margin": 5,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 5,
+    "responsive": 2,
+    "dimension": 2,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 6,
+    "margin": 11,
+    "alignment": 3,
+    "positioning": 0,
+    "grouping": 11,
+    "responsive": 4,
+    "dimension": 1,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "135.06px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:card-a-text",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "135.06px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:text:card-c-title",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "135.06px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "190.06px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:card-a-text",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "190.06px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:text:card-c-title",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "190.06px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "203.06px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:card-a-text",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "203.06px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "2:text:card-c-title",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "203.06px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "161.72px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:card-a-text",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "161.72px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "2:text:card-c-title",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "161.72px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "300.39px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:card-a-text",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "300.39px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "2:text:card-c-title",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "300.39px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "135.06px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 24px apart",
+    "observed": "300.39px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 48px apart",
+    "observed": "121.16px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "proximity",
+    "element": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "expected": "<= 48px apart",
+    "observed": "514.16px",
+    "relationship": "card-a-spec-1-label ~ card-a-spec-1-value",
+    "fontScale": 2
+   }
+  ],
+  "final": []
+ }
+}

@@ -1,0 +1,123 @@
+{
+ "explicit": [
+  {
+   "source": "rl-attr",
+   "selector": "div#37",
+   "context": "",
+   "property": "data-rl",
+   "value": "group",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "form#9",
+   "context": "",
+   "property": "data-rl",
+   "value": "container",
+   "category": "grouping",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "form#9",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "loose",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#20",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "wrap",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "fieldset#29",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "related",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#34",
+   "context": "",
+   "property": "data-rl-bond",
+   "value": "tight",
+   "category": "margin",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#26",
+   "context": "",
+   "property": "data-rl-min",
+   "value": "14rem",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "input#18",
+   "context": "",
+   "property": "data-rl-align-edge",
+   "value": "row1",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "input#28",
+   "context": "",
+   "property": "data-rl-align-edge",
+   "value": "row2",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#37",
+   "context": "",
+   "property": "data-rl-flow",
+   "value": "row",
+   "category": "responsive",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "div#34",
+   "context": "",
+   "property": "data-rl-align",
+   "value": "center",
+   "category": "alignment",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "input#35",
+   "context": "",
+   "property": "data-rl-size",
+   "value": "content",
+   "category": "dimension",
+   "kind": "explicit"
+  },
+  {
+   "source": "rl-attr",
+   "selector": "button#38",
+   "context": "",
+   "property": "data-rl-anchor",
+   "value": "end",
+   "category": "positioning",
+   "kind": "explicit"
+  }
+ ],
+ "uncertain": [],
+ "corrective": []
+}

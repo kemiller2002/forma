@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create-account form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+<main data-rl-root data-rl="group">
+<form data-rl="container" data-rlp="form" action="#">
+<h1 data-rlp="title">Create your account</h1>
+<p data-rlp="intro">All fields marked with an asterisk are required.</p>
+<div data-rl="group" data-rl-flow="wrap">
+<div data-rl="group" data-rl-min="14rem">
+<label for="name" data-rlp="name-label">Full name *</label>
+<input id="name" type="text" autocomplete="name" required data-rlp="name-input" data-rl-align-edge="c1">
+</div>
+<div data-rl="group" data-rl-min="14rem">
+<label for="email" data-rlp="email-label">Email address *</label>
+<input id="email" type="email" autocomplete="email" required aria-describedby="email-error" data-rlp="email-input" data-rl-align-edge="c1">
+<p id="email-error" class="error" hidden data-rlp="email-error">Enter an email address in the format name@example.com.</p>
+</div>
+</div>
+<div data-rl="group" data-rl-flow="wrap">
+<div data-rl="group" data-rl-min="14rem">
+<label for="password" data-rlp="password-label">Password *</label>
+<input id="password" type="password" autocomplete="new-password" required aria-describedby="password-hint password-error" data-rlp="password-input" data-rl-align-edge="c2">
+<p id="password-hint" data-rlp="password-hint">Use at least 12 characters.</p>
+<p id="password-error" class="error" hidden data-rlp="password-error">Your password is too short.</p>
+</div>
+<div data-rl="group" data-rl-min="14rem">
+<label for="confirm" data-rlp="confirm-label">Confirm password *</label>
+<input id="confirm" type="password" autocomplete="new-password" required data-rlp="confirm-input" data-rl-align-edge="c2">
+</div>
+</div>
+<fieldset data-rl="group" data-rlp="prefs">
+<legend data-rlp="prefs-legend">Email preferences</legend>
+<div data-rl="group" data-rl-flow="row" data-rl-align="center">
+<input id="news" type="checkbox" data-rlp="pref-news-input" data-rl-size="content">
+<label for="news" data-rlp="pref-news-label">Product news</label>
+</div>
+<div data-rl="group" data-rl-flow="row" data-rl-align="center">
+<input id="tips" type="checkbox" data-rlp="pref-tips-input" data-rl-size="content">
+<label for="tips" data-rlp="pref-tips-label">Tips and tutorials</label>
+</div>
+</fieldset>
+<div data-rl="group" data-rl-flow="row" data-rlp="actions">
+<button type="button" class="secondary" data-rl-anchor="end" data-rlp="cancel">Cancel</button>
+<button type="submit" data-rlp="submit">Create account</button>
+</div>
+</form>
+</main>
+</body>
+</html>

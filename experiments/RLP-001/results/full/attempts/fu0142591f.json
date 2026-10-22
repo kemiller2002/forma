@@ -1,0 +1,574 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu0142591f",
+ "taskId": "T11-adversarial-settings",
+ "category": "adversarial",
+ "split": "dev",
+ "arm": "C",
+ "repetition": 2,
+ "executionOrder": 85,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:22:35.431Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 8,
+  "inputTokens": 418840,
+  "inputUncachedTokens": 16,
+  "cacheCreationTokens": 19754,
+  "cacheReadTokens": 399070,
+  "outputTokens": 1454,
+  "totalTokens": 420294,
+  "toolCalls": 11,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 6,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 13413,
+  "toolTokens": null,
+  "durationMs": 86311,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 5,
+  "repairIterations": 4,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:07:26.206Z",
+    "durationMs": 8274,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:07:48.958Z",
+    "durationMs": 4466,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   },
+   {
+    "run": 3,
+    "startedAt": "2026-10-21T19:07:59.329Z",
+    "durationMs": 4077,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/003.html"
+   },
+   {
+    "run": 4,
+    "startedAt": "2026-10-21T19:08:08.183Z",
+    "durationMs": 3676,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/004.html"
+   },
+   {
+    "run": 5,
+    "startedAt": "2026-10-21T19:08:18.195Z",
+    "durationMs": 3048,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/005.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 6,
+  "standardByInvariant": {
+   "reading-order": 6
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 1
+  },
+  "responsiveFailureViewports": [
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 22,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 2,
+       "memoEntries": 23
+      },
+      "totalMs": 13.700000000186265,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 22,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.5,
+       "memoEntries": 23
+      },
+      "totalMs": 6.5,
+      "energy": 0.5908203125
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 21,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.5,
+       "memoEntries": 23
+      },
+      "totalMs": 9.5,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.8999999994412065,
+       "memoEntries": 23
+      },
+      "totalMs": 13.900000000372529,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.2999999998137355,
+       "memoEntries": 23
+      },
+      "totalMs": 4.599999999627471,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 2,
+  "standardByInvariant": {
+   "reading-order": 2
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 1
+  },
+  "responsiveFailureViewports": [
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 3.400000000372529,
+       "memoEntries": 23
+      },
+      "totalMs": 8.200000000186265,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 2.1000000005587935,
+       "memoEntries": 23
+      },
+      "totalMs": 6.199999999254942,
+      "energy": 0.5908203125
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 19,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 2.2000000001862645,
+       "memoEntries": 23
+      },
+      "totalMs": 4.7999999998137355,
+      "energy": 39.2
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 19,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 3.400000000372529,
+       "memoEntries": 23
+      },
+      "totalMs": 14.099999999627471,
+      "energy": 96.80000000000001
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.400000000372529,
+       "memoEntries": 23
+      },
+      "totalMs": 5.7999999998137355,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 16,
+  "derived": 40,
+  "uncertain": 0,
+  "corrective": 5,
+  "total": 16,
+  "rawStatements": {
+   "explicit": 37,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 13,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 4,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 2,
+    "dimension": 7,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 4,
+    "margin": 9,
+    "alignment": 9,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 9,
+    "dimension": 9,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 1,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 1,
+    "dimension": 3,
+    "correction": 5
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 213,86.59 534×27.5, side-3 at 21,150.59 118×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 213,86.59 534×27.5, side-3 at 21,150.59 118×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 213,86.59 790×27.5, side-3 at 21,150.59 118×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 213,86.59 790×27.5, side-3 at 21,150.59 118×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 213,86.59 1206×27.5, side-3 at 21,150.59 118×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 213,86.59 1206×27.5, side-3 at 21,150.59 118×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 213,86.59 1206×27.5, side-3 at 21,150.59 118×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 213,86.59 1206×27.5, side-3 at 21,166.59 118×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 213,86.59 1206×27.5, side-3 at 21,166.59 118×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 213,86.59 1206×27.5, side-3 at 21,166.59 118×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   }
+  ]
+ }
+}

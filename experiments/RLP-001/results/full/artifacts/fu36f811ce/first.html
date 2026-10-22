@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile panel with nested sections</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  main { max-width: 48rem; margin: 0 auto; padding: 1rem; }
+  .profile { padding: 1.25rem; display: grid; gap: 1.5rem; }
+  .header { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: 1rem; align-items: center; }
+  .header img { width: 4rem; height: 4rem; aspect-ratio: 1 / 1; display: block; }
+  .who { display: grid; gap: 0.25rem; min-width: 0; }
+  .who h2, .who p { overflow-wrap: anywhere; }
+  .header button { grid-column: 1 / -1; justify-self: start; min-height: 2.5rem; min-width: 6rem; }
+  .stats { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .stat { padding: 1rem; display: grid; gap: 0.25rem; align-content: start; }
+  .stat-value { font-size: 1.75rem; font-weight: 700; line-height: 1.2; }
+  .stat-label { overflow-wrap: anywhere; }
+  .about { display: grid; gap: 0.5rem; }
+  .activity { padding: 1.25rem; display: grid; gap: 0.75rem; }
+  .activity ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+  .activity li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem; }
+  .activity li span:first-child { overflow-wrap: anywhere; }
+  @media (min-width: 40rem) {
+    .header { grid-template-columns: 4rem minmax(0, 1fr) auto; }
+    .header button { grid-column: auto; justify-self: end; }
+    .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="surface profile" data-rlp="profile">
+      <div class="header" data-rlp="header">
+        <img data-rlp="avatar" src="assets/placeholder.svg" alt="Portrait of Dana Okafor" width="64" height="64">
+        <div class="who">
+          <h2 data-rlp="name">Dana Okafor</h2>
+          <p data-rlp="role">Principal engineer, Platform reliability</p>
+        </div>
+        <button type="button" data-rlp="follow">Follow</button>
+      </div>
+      <div class="stats" data-rlp="stats">
+        <div class="surface stat" data-rlp="stat-reviews">
+          <span class="stat-value" data-rlp="stat-reviews-value">128</span>
+          <span class="stat-label" data-rlp="stat-reviews-label">Reviews this quarter</span>
+        </div>
+        <div class="surface stat" data-rlp="stat-deploys">
+          <span class="stat-value" data-rlp="stat-deploys-value">56</span>
+          <span class="stat-label" data-rlp="stat-deploys-label">Deploys</span>
+        </div>
+        <div class="surface stat" data-rlp="stat-incidents">
+          <span class="stat-value" data-rlp="stat-incidents-value">3</span>
+          <span class="stat-label" data-rlp="stat-incidents-label">Open incidents</span>
+        </div>
+      </div>
+      <section class="about" data-rlp="about">
+        <h3 data-rlp="about-title">About</h3>
+        <p data-rlp="about-text">Dana leads the reliability guild and maintains the incident review process. Ask about capacity planning and on-call health.</p>
+      </section>
+      <section class="surface activity" data-rlp="activity">
+        <h3 data-rlp="activity-title">Recent activity</h3>
+        <ul>
+          <li data-rlp="activity-1"><span data-rlp="activity-1-text">Approved the database failover runbook</span><span data-rlp="activity-1-time">2 hours ago</span></li>
+          <li data-rlp="activity-2"><span data-rlp="activity-2-text">Opened a capacity review for the search cluster</span><span data-rlp="activity-2-time">Yesterday</span></li>
+          <li data-rlp="activity-3"><span data-rlp="activity-3-text">Closed incident INC-2231</span><span data-rlp="activity-3-time">Monday</span></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

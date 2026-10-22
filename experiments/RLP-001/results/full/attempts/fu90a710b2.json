@@ -1,0 +1,360 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu90a710b2",
+ "taskId": "T05-dashboard-ops",
+ "category": "dashboards",
+ "split": "dev",
+ "arm": "A",
+ "repetition": 3,
+ "executionOrder": 123,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:27:18.742Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 250141,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 17433,
+  "cacheReadTokens": 232698,
+  "outputTokens": 80,
+  "totalTokens": 250221,
+  "toolCalls": 5,
+  "toolCallsByName": {
+   "Read": 1,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 9618,
+  "toolTokens": null,
+  "durationMs": 40954,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:09:36.104Z",
+    "durationMs": 5881,
+    "failures": 6,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:09:52.539Z",
+    "durationMs": 4480,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 2,
+  "standardInstances": 12,
+  "standardByInvariant": {
+   "offscreen": 6,
+   "containment": 6
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 2,
+  "heldoutDistinct": 2,
+  "heldoutByCondition": {
+   "heldout-text": 2,
+   "font-scale": 4
+  },
+  "heldoutByInvariant": {
+   "offscreen": 3,
+   "containment": 3
+  },
+  "responsiveFailureViewports": [
+   320,
+   375
+  ],
+  "dynamicDistinct": 2,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 31,
+  "derived": 0,
+  "uncertain": 1,
+  "corrective": 2,
+  "total": 32,
+  "rawStatements": {
+   "explicit": 45,
+   "uncertain": 1
+  },
+  "firstDraftExplicit": 31,
+  "byCategory": {
+   "explicit": {
+    "padding": 5,
+    "margin": 7,
+    "alignment": 5,
+    "positioning": 0,
+    "grouping": 4,
+    "responsive": 5,
+    "dimension": 5,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 1,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 2,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 2
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "requests-table",
+    "expected": "within 0..320",
+    "observed": "37,818.09 448×270",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "requests-table",
+    "expected": "inside requests",
+    "observed": "37,818.09 448×270 vs 16,753.59 288×355.5",
+    "relationship": "requests-table ⊂ requests",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:alert-2",
+    "invariant": "offscreen",
+    "element": "requests-table",
+    "expected": "within 0..320",
+    "observed": "37,818.09 448×270",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "1:text:alert-2",
+    "invariant": "containment",
+    "element": "requests-table",
+    "expected": "inside requests",
+    "observed": "37,818.09 448×270 vs 16,753.59 288×355.5",
+    "relationship": "requests-table ⊂ requests",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:alert-3",
+    "invariant": "offscreen",
+    "element": "requests-table",
+    "expected": "within 0..320",
+    "observed": "37,818.09 448×270",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 320,
+    "step": "2:remove:alert-3",
+    "invariant": "containment",
+    "element": "requests-table",
+    "expected": "inside requests",
+    "observed": "37,818.09 448×270 vs 16,753.59 288×355.5",
+    "relationship": "requests-table ⊂ requests",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "requests-table",
+    "expected": "within 0..375",
+    "observed": "37,758.09 448×270",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "requests-table",
+    "expected": "inside requests",
+    "observed": "37,758.09 448×270 vs 16,693.59 343×355.5",
+    "relationship": "requests-table ⊂ requests",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:alert-2",
+    "invariant": "offscreen",
+    "element": "requests-table",
+    "expected": "within 0..375",
+    "observed": "37,758.09 448×270",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:alert-2",
+    "invariant": "containment",
+    "element": "requests-table",
+    "expected": "inside requests",
+    "observed": "37,758.09 448×270 vs 16,693.59 343×355.5",
+    "relationship": "requests-table ⊂ requests",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:remove:alert-3",
+    "invariant": "offscreen",
+    "element": "requests-table",
+    "expected": "within 0..375",
+    "observed": "37,758.09 448×270",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "2:remove:alert-3",
+    "invariant": "containment",
+    "element": "requests-table",
+    "expected": "inside requests",
+    "observed": "37,758.09 448×270 vs 16,693.59 343×355.5",
+    "relationship": "requests-table ⊂ requests",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "requests-table",
+    "expected": "within 0..320",
+    "observed": "37,875.69 448×270",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 320,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "requests-table",
+    "expected": "inside requests",
+    "observed": "37,875.69 448×270 vs 16,811.19 288×355.5",
+    "relationship": "requests-table ⊂ requests",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "requests-table",
+    "expected": "within 0..375",
+    "observed": "73,1797.38 896×534",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "requests-table",
+    "expected": "inside requests",
+    "observed": "73,1797.38 896×534 vs 32,1614.38 311×758",
+    "relationship": "requests-table ⊂ requests",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "offscreen",
+    "element": "requests-table",
+    "expected": "within 0..768",
+    "observed": "73,927.19 896×534",
+    "fontScale": 2
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "containment",
+    "element": "requests-table",
+    "expected": "inside requests",
+    "observed": "73,927.19 896×534 vs 32,799.19 704×703",
+    "relationship": "requests-table ⊂ requests",
+    "fontScale": 2
+   }
+  ],
+  "final": []
+ }
+}

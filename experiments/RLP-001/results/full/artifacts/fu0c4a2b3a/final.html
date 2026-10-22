@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shipping address form</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  main { max-inline-size: 42rem; margin-inline: auto; padding: 1.5rem 1rem; }
+  form { padding: 1.5rem 1.25rem; display: grid; gap: 1.5rem; }
+  h2 { margin-block-end: -0.5rem; }
+  .field { display: grid; align-content: start; }
+  .field > label { margin-block-end: 0.375rem; }
+  .stack { display: grid; gap: 1rem; }
+  .row { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
+  .error { margin-block-start: 0.375rem; font-size: 0.875rem; }
+  .error[hidden] { display: none; }
+  @media (min-width: 40rem) {
+    .row { grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 1fr); grid-template-rows: auto auto auto; row-gap: 0; }
+    .row .field { grid-row: span 3; grid-template-rows: subgrid; }
+  }
+  fieldset.delivery { display: grid; gap: 1rem; }
+  fieldset.delivery legend { font-weight: 600; margin-block-end: 0.75rem; float: left; inline-size: 100%; }
+  fieldset.delivery legend + * { clear: both; }
+  .option { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); column-gap: 0.75rem; row-gap: 0.25rem; align-items: start; }
+  .option input { grid-row: 1; grid-column: 1; }
+  .option label { grid-row: 1; grid-column: 2; min-block-size: 1.5rem; font-weight: 600; }
+  .option .note { grid-row: 2; grid-column: 2; color: #4d544f; font-size: 0.875rem; }
+  .check { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); column-gap: 0.75rem; align-items: start; }
+  .check label { min-block-size: 1.5rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: flex-end; padding-block-start: 0.5rem; }
+  @media (max-width: 30rem) { .actions > button { flex: 1 1 100%; } }
+</style>
+</head>
+<body>
+  <main>
+    <form class="surface" data-rlp="form" novalidate>
+      <h2 data-rlp="title">Shipping address</h2>
+
+      <div class="stack">
+        <div class="field">
+          <label for="street" data-rlp="street-label">Street address *</label>
+          <input id="street" type="text" autocomplete="address-line1" required data-rlp="street-input">
+        </div>
+        <div class="field">
+          <label for="unit" data-rlp="unit-label">Apartment, suite, or unit</label>
+          <input id="unit" type="text" autocomplete="address-line2" data-rlp="unit-input">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="city" data-rlp="city-label">City *</label>
+          <input id="city" type="text" autocomplete="address-level2" required data-rlp="city-input">
+        </div>
+        <div class="field">
+          <label for="state" data-rlp="state-label">State *</label>
+          <select id="state" data-rlp="state-input">
+            <option value="">Choose a state</option>
+            <option value="OH">Ohio</option>
+            <option value="OR">Oregon</option>
+            <option value="TX">Texas</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="zip" data-rlp="zip-label">ZIP code *</label>
+          <input id="zip" type="text" autocomplete="postal-code" inputmode="numeric" required aria-describedby="zip-error" data-rlp="zip-input">
+          <p id="zip-error" class="error" hidden data-rlp="zip-error">Enter a five-digit ZIP code.</p>
+        </div>
+      </div>
+
+      <fieldset class="delivery" data-rlp="delivery">
+        <legend data-rlp="delivery-legend">Delivery speed</legend>
+        <div class="option">
+          <input id="standard" type="radio" name="speed" checked aria-describedby="standard-note" data-rlp="standard-input">
+          <label for="standard" data-rlp="standard-label">Standard — free</label>
+          <span id="standard-note" class="note" data-rlp="standard-note">Arrives in 5 to 7 business days.</span>
+        </div>
+        <div class="option">
+          <input id="express" type="radio" name="speed" aria-describedby="express-note" data-rlp="express-input">
+          <label for="express" data-rlp="express-label">Express — $12.00</label>
+          <span id="express-note" class="note" data-rlp="express-note">Arrives in 2 business days.</span>
+        </div>
+      </fieldset>
+
+      <div class="check">
+        <input id="save" type="checkbox" data-rlp="save-input">
+        <label for="save" data-rlp="save-label">Save this address for next time</label>
+      </div>
+
+      <div class="actions" data-rlp="actions">
+        <button type="button" class="secondary" data-rlp="back">Back to cart</button>
+        <button type="submit" data-rlp="continue">Continue to payment</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

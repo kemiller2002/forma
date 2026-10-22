@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace section navigation</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  body { margin: 0; padding: var(--ef-primitive-spacing-4); }
+  .bar { display: grid; gap: var(--ef-primitive-spacing-4); grid-template-columns: minmax(0,1fr); }
+  .bar h1 { margin: 0; overflow-wrap: anywhere; }
+  .bar ul { list-style: none; margin: 0; padding: 0; }
+  .bar nav a { display: inline-block; min-height: 1.5rem; padding: var(--ef-primitive-spacing-1) var(--ef-primitive-spacing-2); }
+  @media (min-width: 48rem) {
+    .bar { grid-template-columns: minmax(0,1fr) auto; column-gap: var(--ef-primitive-spacing-5); }
+    .bar > .crumbs, .bar > .secs { grid-column: 1 / -1; }
+    .bar > h1 { grid-column: 1; grid-row: 2; }
+    .bar > .actions { grid-column: 2; grid-row: 2; align-self: start; }
+    .bar > .secs { grid-row: 3; }
+  }
+</style>
+</head>
+<body>
+  <header class="ef-surface bar" data-rlp="bar">
+    <nav class="crumbs" aria-label="Breadcrumb" data-rlp="breadcrumb">
+      <ul class="ef-cluster">
+        <li><a href="#" data-rlp="crumb-1">Workspaces</a></li>
+        <li><a href="#" data-rlp="crumb-2">Acme Corporation</a></li>
+        <li><a href="#" data-rlp="crumb-3">Billing</a></li>
+        <li><span aria-current="page" data-rlp="crumb-4">Invoices</span></li>
+      </ul>
+    </nav>
+    <h1 data-rlp="heading">Invoices</h1>
+    <nav class="secs" aria-label="Billing sections" data-rlp="sections">
+      <ul class="ef-cluster">
+        <li><a href="#" data-rlp="section-1">Overview</a></li>
+        <li><a href="#" aria-current="page" data-rlp="section-2">Invoices</a></li>
+        <li><a href="#" data-rlp="section-3">Payment methods</a></li>
+        <li><a href="#" data-rlp="section-4">Tax registrations and exemptions</a></li>
+        <li><a href="#" data-rlp="section-5">Usage</a></li>
+        <li><a href="#" data-rlp="section-6">Settings</a></li>
+      </ul>
+    </nav>
+    <div class="ef-actions actions" data-rlp="actions">
+      <button type="button" class="secondary" data-rlp="export">Export CSV</button>
+      <button type="button" data-rlp="new">New invoice</button>
+    </div>
+  </header>
+</body>
+</html>

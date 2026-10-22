@@ -1,0 +1,300 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fua952ffe3",
+ "taskId": "T07-nav-docs",
+ "category": "navigation",
+ "split": "dev",
+ "arm": "A",
+ "repetition": 3,
+ "executionOrder": 129,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:28:02.254Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 247156,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 16043,
+  "cacheReadTokens": 231103,
+  "outputTokens": 366,
+  "totalTokens": 247522,
+  "toolCalls": 8,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 7946,
+  "toolTokens": null,
+  "durationMs": 39607,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:09:36.641Z",
+    "durationMs": 6856,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:09:52.695Z",
+    "durationMs": 3077,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 5,
+  "standardByInvariant": {
+   "reading-order": 5
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 1
+  },
+  "responsiveFailureViewports": [
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "final": {
+  "standardDistinct": 1,
+  "standardInstances": 4,
+  "standardByInvariant": {
+   "reading-order": 4
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 1
+  },
+  "responsiveFailureViewports": [
+   768,
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": []
+ },
+ "decisions": {
+  "explicit": 21,
+  "derived": 0,
+  "uncertain": 2,
+  "corrective": 2,
+  "total": 23,
+  "rawStatements": {
+   "explicit": 26,
+   "uncertain": 2
+  },
+  "firstDraftExplicit": 21,
+  "byCategory": {
+   "explicit": {
+    "padding": 4,
+    "margin": 5,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 6,
+    "responsive": 1,
+    "dimension": 4,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 2,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 1,
+    "margin": 0,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 2
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 218.77,33 68.84×43, brand at 37,55 157.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 218.77,33 68.84×43, brand at 37,55 157.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 218.77,33 68.84×43, brand at 37,55 157.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 218.77,33 68.84×43, brand at 37,55 157.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 218.77,33 68.84×43, brand at 37,55 157.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "brand → link-guides",
+    "expected": "link-guides after brand",
+    "observed": "link-guides at 423.77,33 68.84×43, brand at 37,55 362.77×46",
+    "relationship": "brand → link-guides",
+    "fontScale": 1
+   }
+  ],
+  "final": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 317,139 86.41×44, search-input at 37,167 256×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 317,139 86.41×44, search-input at 37,167 256×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 1316.59,33 86.41×44, search-input at 1036.59,61 256×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 1316.59,33 86.41×44, search-input at 1036.59,61 256×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 1316.59,33 86.41×44, search-input at 1036.59,61 256×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   }
+  ]
+ }
+}

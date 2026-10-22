@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout summary with dynamic content</title>
+  <link rel="stylesheet" href="assets/forma.css">
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  [hidden] { display: none !important; }
+  main { padding: var(--ef-primitive-spacing-4); max-inline-size: 40rem; margin-inline: auto; }
+  .line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ef-primitive-spacing-2) var(--ef-primitive-spacing-3); padding-block: var(--ef-primitive-spacing-3); border-block-end: 1px solid #c9c5bb; }
+  .line-name { flex: 0 1 auto; min-inline-size: 0; }
+  .line-qty { flex: 0 0 auto; order: 3; }
+  .line-price { flex: 0 0 auto; order: 2; text-align: end; }
+  .line button { order: 4; }
+  .promo-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--ef-primitive-spacing-3); }
+  .promo-row input { flex: 1 1 10rem; inline-size: auto; }
+  .promo-row button { flex: 0 0 auto; }
+  .radio-row { display: flex; align-items: center; gap: var(--ef-primitive-spacing-3); min-block-size: 2.75rem; }
+  .total-row { display: flex; flex-wrap: wrap; gap: var(--ef-primitive-spacing-4); font-weight: 700; font-size: 1.125rem; }
+  .place { align-self: stretch; }
+  </style>
+</head>
+<body>
+<main>
+  <section class="ef-surface surface ef-stack" data-rlp="summary" style="--ef-stack-gap: var(--ef-primitive-spacing-5)">
+    <h2 data-rlp="title">Order summary</h2>
+    <ul class="ef-stack" style="--ef-stack-gap: 0" data-rlp="items">
+      <li class="line" data-rlp="item-1">
+        <span class="line-name" data-rlp="item-1-name">Linen notebook</span>
+        <span class="line-qty" data-rlp="item-1-qty">Qty 2</span>
+        <span class="line-price" data-rlp="item-1-price">$24.00</span>
+        <button type="button" class="secondary" data-rlp="item-1-remove" aria-label="Remove Linen notebook">Remove</button>
+      </li>
+      <li class="line" data-rlp="item-2">
+        <span class="line-name" data-rlp="item-2-name">Fountain pen</span>
+        <span class="line-qty" data-rlp="item-2-qty">Qty 1</span>
+        <span class="line-price" data-rlp="item-2-price">$58.00</span>
+        <button type="button" class="secondary" data-rlp="item-2-remove" aria-label="Remove Fountain pen">Remove</button>
+      </li>
+      <li class="line" data-rlp="item-3">
+        <span class="line-name" data-rlp="item-3-name">Ink refills, pack of 12</span>
+        <span class="line-qty" data-rlp="item-3-qty">Qty 3</span>
+        <span class="line-price" data-rlp="item-3-price">$18.00</span>
+        <button type="button" class="secondary" data-rlp="item-3-remove" aria-label="Remove Ink refills">Remove</button>
+      </li>
+    </ul>
+
+    <div class="ef-field">
+      <label class="ef-field__label" for="promo" data-rlp="promo-label">Promo code</label>
+      <div class="promo-row">
+        <input type="text" id="promo" data-rlp="promo-input" aria-describedby="promo-err">
+        <button type="button" class="secondary" data-rlp="promo-apply">Apply</button>
+      </div>
+      <p class="error ef-validation-message" id="promo-err" data-rlp="promo-error" hidden>That code has expired.</p>
+    </div>
+
+    <section class="ef-stack" data-rlp="shipping" style="--ef-stack-gap: var(--ef-primitive-spacing-3)">
+      <h3 data-rlp="shipping-title">Shipping</h3>
+      <p role="status" data-rlp="shipping-loading">Calculating shipping options…</p>
+      <div class="ef-stack" data-rlp="shipping-options" style="--ef-stack-gap: var(--ef-primitive-spacing-2)" hidden>
+        <div class="radio-row">
+          <input type="radio" name="ship" id="ship-ground" data-rlp="ship-ground-input" checked>
+          <label for="ship-ground" data-rlp="ship-ground-label">Ground — $6.00</label>
+        </div>
+        <div class="radio-row">
+          <input type="radio" name="ship" id="ship-air" data-rlp="ship-air-input">
+          <label for="ship-air" data-rlp="ship-air-label">Air — $19.00</label>
+        </div>
+      </div>
+    </section>
+
+    <div class="total-row">
+      <span data-rlp="total-label">Total</span>
+      <span data-rlp="total-value">$160.00</span>
+    </div>
+    <button type="submit" class="place" data-rlp="place">Place order</button>
+  </section>
+</main>
+</body>
+</html>

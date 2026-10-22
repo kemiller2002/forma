@@ -1,0 +1,531 @@
+{
+ "experiment": "RLP-001",
+ "phase": "full",
+ "attemptId": "fu652d9f84",
+ "taskId": "T07-nav-docs",
+ "category": "navigation",
+ "split": "dev",
+ "arm": "C",
+ "repetition": 2,
+ "executionOrder": 39,
+ "model": "sonnet",
+ "engineCommit": "e4d5c76dcee212595dcae6dd377221aef6c91dab",
+ "collectedAt": "2026-10-21T19:13:16.582Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 5,
+  "inputTokens": 249938,
+  "inputUncachedTokens": 10,
+  "cacheCreationTokens": 16904,
+  "cacheReadTokens": 233024,
+  "outputTokens": 78,
+  "totalTokens": 250016,
+  "toolCalls": 8,
+  "toolCallsByName": {
+   "Read": 4,
+   "Bash": 3,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 10899,
+  "toolTokens": null,
+  "durationMs": 31055,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 2,
+  "repairIterations": 1,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:03:59.656Z",
+    "durationMs": 3723,
+    "failures": 4,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:04:09.989Z",
+    "durationMs": 3411,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 8,
+  "standardByInvariant": {
+   "reading-order": 8
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "font-scale": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 1
+  },
+  "responsiveFailureViewports": [
+   375,
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 10,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 1.8999999999068677,
+       "memoEntries": 13
+      },
+      "totalMs": 4,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 9,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 6.099999999627471,
+       "memoEntries": 13
+      },
+      "totalMs": 7.7999999998137355,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 7,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 5.399999999906868,
+       "memoEntries": 13
+      },
+      "totalMs": 9.100000000093132,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 6,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 4.7000000001862645,
+       "memoEntries": 13
+      },
+      "totalMs": 8.5,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 5,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 1.6999999997206032,
+       "memoEntries": 13
+      },
+      "totalMs": 4,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 10,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 5,
+       "memoEntries": 13
+      },
+      "totalMs": 7.699999999720603,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 11,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 3.3000000002793968,
+       "memoEntries": 17
+      },
+      "totalMs": 5.399999999906868,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 9,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 2,
+       "memoEntries": 17
+      },
+      "totalMs": 4.400000000372529,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 8,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 2.8000000002793968,
+       "memoEntries": 17
+      },
+      "totalMs": 4.7999999998137355,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 8,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 9,
+       "aborted": false,
+       "solveMs": 1.7000000001862645,
+       "memoEntries": 24
+      },
+      "totalMs": 4.600000000093132,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 9,
+  "derived": 17,
+  "uncertain": 0,
+  "corrective": 1,
+  "total": 9,
+  "rawStatements": {
+   "explicit": 15,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 8,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 2,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 1,
+    "dimension": 3,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 1,
+    "margin": 4,
+    "alignment": 4,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 4,
+    "dimension": 4,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 1
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 267.59,181 86.41×44, search-input at 21,213 230.59×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 375,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 267.59,221 86.41×44, search-input at 21,253 230.59×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 660.59,101 86.41×44, search-input at 21,133 623.59×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 660.59,141 86.41×44, search-input at 21,173 623.59×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 916.59,61 86.41×44, search-input at 21,93 879.59×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 916.59,61 86.41×44, search-input at 21,93 879.59×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 1332.59,21 86.41×44, search-input at 1092.59,53 224×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:link-sdks",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 1332.59,21 86.41×44, search-input at 1092.59,53 224×44",
+    "relationship": "search-input → signin",
+    "fontScale": 1
+   },
+   {
+    "condition": "font-scale",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "search-input → signin",
+    "expected": "signin after search-input",
+    "observed": "signin at 556.2,361 170.8×88, search-input at 41,425 483.2×88",
+    "relationship": "search-input → signin",
+    "fontScale": 2
+   }
+  ],
+  "final": []
+ }
+}

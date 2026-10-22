@@ -1,0 +1,128 @@
+{
+ "variantPhase": "full",
+ "variant": "C",
+ "basePhase": "full",
+ "base": "A",
+ "note": "Exploratory: different execution windows and no shared randomization.",
+ "comparisons": [
+  {
+   "comparison": "C − A",
+   "metric": "firstDraftDefects",
+   "tasks": 12,
+   "variantMean": 0.3055555555555556,
+   "baseMean": 1.2777777777777777,
+   "meanDifference": -0.972222222222222,
+   "bootstrap95": [
+    -1.4722222222222223,
+    -0.47222222222222227
+   ],
+   "wilcoxon": {
+    "n": 9,
+    "wPlus": 1,
+    "p": 0.0078125
+   }
+  },
+  {
+   "comparison": "C − A",
+   "metric": "finalDefects",
+   "tasks": 12,
+   "variantMean": 0.16666666666666666,
+   "baseMean": 0.08333333333333333,
+   "meanDifference": 0.08333333333333333,
+   "bootstrap95": [
+    0,
+    0.2222222222222222
+   ],
+   "wilcoxon": {
+    "n": 2,
+    "wPlus": 3,
+    "p": 0.5
+   }
+  },
+  {
+   "comparison": "C − A",
+   "metric": "heldoutDefects",
+   "tasks": 12,
+   "variantMean": 0.19444444444444445,
+   "baseMean": 2.5555555555555554,
+   "meanDifference": -2.361111111111111,
+   "bootstrap95": [
+    -5.361111111111112,
+    -0.3333333333333333
+   ],
+   "wilcoxon": {
+    "n": 7,
+    "wPlus": 0,
+    "p": 0.015625
+   }
+  },
+  {
+   "comparison": "C − A",
+   "metric": "accepted",
+   "tasks": 12,
+   "variantMean": 0.8888888888888888,
+   "baseMean": 0.9166666666666666,
+   "meanDifference": -0.02777777777777778,
+   "bootstrap95": [
+    -0.08333333333333333,
+    0
+   ],
+   "wilcoxon": {
+    "n": 1,
+    "wPlus": 0,
+    "p": 1
+   }
+  },
+  {
+   "comparison": "C − A",
+   "metric": "tokens",
+   "tasks": 12,
+   "variantMean": 226757.22222222222,
+   "baseMean": 244415.97222222222,
+   "meanDifference": -17658.749999999996,
+   "bootstrap95": [
+    -37540.3611111111,
+    3181.6388888888955
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "wPlus": 21,
+    "p": 0.17626953125
+   }
+  },
+  {
+   "comparison": "C − A",
+   "metric": "validationRuns",
+   "tasks": 12,
+   "variantMean": 1.3611111111111112,
+   "baseMean": 1.6944444444444444,
+   "meanDifference": -0.3333333333333333,
+   "bootstrap95": [
+    -0.6944444444444445,
+    0.055555555555555546
+   ],
+   "wilcoxon": {
+    "n": 9,
+    "wPlus": 10.5,
+    "p": 0.1796875
+   }
+  },
+  {
+   "comparison": "C − A",
+   "metric": "decisions",
+   "tasks": 12,
+   "variantMean": 12.75,
+   "baseMean": 31.38888888888889,
+   "meanDifference": -18.63888888888889,
+   "bootstrap95": [
+    -21.194444444444446,
+    -16.333333333333332
+   ],
+   "wilcoxon": {
+    "n": 12,
+    "wPlus": 0,
+    "p": 0.00048828125
+   }
+  }
+ ]
+}

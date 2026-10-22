@@ -1,0 +1,551 @@
+{
+ "experiment": "RLP-001",
+ "phase": "x1-full",
+ "attemptId": "x171f41516",
+ "taskId": "T11-adversarial-settings",
+ "category": "adversarial",
+ "split": "dev",
+ "arm": "X1",
+ "repetition": 3,
+ "executionOrder": 21,
+ "model": "sonnet",
+ "engineCommit": "f2f06a2abeb171d003e57dbe38c2a1d4c88ebee5",
+ "collectedAt": "2026-10-21T19:45:21.194Z",
+ "agent": {
+  "available": true,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "apiMessages": 6,
+  "inputTokens": 304744,
+  "inputUncachedTokens": 12,
+  "cacheCreationTokens": 17809,
+  "cacheReadTokens": 286923,
+  "outputTokens": 77,
+  "totalTokens": 304821,
+  "toolCalls": 6,
+  "toolCallsByName": {
+   "Read": 1,
+   "Bash": 4,
+   "SubagentHandback": 1
+  },
+  "toolResultChars": 11822,
+  "toolTokens": null,
+  "durationMs": 61536,
+  "reportedResult": null,
+  "leakage": [],
+  "notification": {
+   "finalContextTokens": null,
+   "toolUses": null,
+   "durationMs": null
+  },
+  "validationRuns": 3,
+  "repairIterations": 2,
+  "neverValidated": false,
+  "devRuns": [
+   {
+    "run": 1,
+    "startedAt": "2026-10-21T19:19:18.066Z",
+    "durationMs": 7722,
+    "failures": 2,
+    "engineErrors": 2,
+    "snapshot": ".rlp/snapshots/001.html"
+   },
+   {
+    "run": 2,
+    "startedAt": "2026-10-21T19:19:38.213Z",
+    "durationMs": 4941,
+    "failures": 2,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/002.html"
+   },
+   {
+    "run": 3,
+    "startedAt": "2026-10-21T19:19:53.005Z",
+    "durationMs": 4875,
+    "failures": 0,
+    "engineErrors": 0,
+    "snapshot": ".rlp/snapshots/003.html"
+   }
+  ]
+ },
+ "compliance": {
+  "ownScripts": [],
+  "leakage": []
+ },
+ "firstDraft": {
+  "standardDistinct": 1,
+  "standardInstances": 6,
+  "standardByInvariant": {
+   "reading-order": 6
+  },
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 1,
+  "heldoutDistinct": 1,
+  "heldoutByCondition": {
+   "heldout-text": 1
+  },
+  "heldoutByInvariant": {
+   "reading-order": 1
+  },
+  "responsiveFailureViewports": [
+   768,
+   1024,
+   1440
+  ],
+  "dynamicDistinct": 1,
+  "unexpectedShift": 0,
+  "accepted": false,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "invalid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "invalid-dimension",
+      "severity": "error",
+      "node": "n15",
+      "detail": "data-rl-min \"0\" is not a non-negative rem or px length"
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 22,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 2.099999999627471,
+       "memoEntries": 23
+      },
+      "totalMs": 4.900000000372529,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "invalid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "invalid-dimension",
+      "severity": "error",
+      "node": "n15",
+      "detail": "data-rl-min \"0\" is not a non-negative rem or px length"
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 22,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 4.599999999627471,
+       "memoEntries": 23
+      },
+      "totalMs": 17.299999999813735,
+      "energy": 0.5908203125
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "invalid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "invalid-dimension",
+      "severity": "error",
+      "node": "n15",
+      "detail": "data-rl-min \"0\" is not a non-negative rem or px length"
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 21,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.2999999998137355,
+       "memoEntries": 23
+      },
+      "totalMs": 4.7999999998137355,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "invalid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "invalid-dimension",
+      "severity": "error",
+      "node": "n15",
+      "detail": "data-rl-min \"0\" is not a non-negative rem or px length"
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.400000000372529,
+       "memoEntries": 23
+      },
+      "totalMs": 5.6000000005587935,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "invalid",
+    "revision": 2,
+    "diagnostics": [
+     {
+      "code": "invalid-dimension",
+      "severity": "error",
+      "node": "n15",
+      "detail": "data-rl-min \"0\" is not a non-negative rem or px length"
+     }
+    ],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.199999999254942,
+       "memoEntries": 23
+      },
+      "totalMs": 4.1000000005587935,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "final": {
+  "standardDistinct": 0,
+  "standardInstances": 0,
+  "standardByInvariant": {},
+  "accessibilityDistinct": 0,
+  "geometryDistinct": 0,
+  "heldoutDistinct": 0,
+  "heldoutByCondition": {},
+  "heldoutByInvariant": {},
+  "responsiveFailureViewports": [],
+  "dynamicDistinct": 0,
+  "unexpectedShift": 0,
+  "accepted": true,
+  "settledEverywhere": true,
+  "engine": [
+   {
+    "viewport": 320,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 1.2000000001862645,
+       "memoEntries": 23
+      },
+      "totalMs": 7.099999999627471,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 375,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 20,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 4.7000000001862645,
+       "memoEntries": 23
+      },
+      "totalMs": 8,
+      "energy": 0.5908203125
+     }
+    ]
+   },
+   {
+    "viewport": 768,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 19,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 8.5,
+       "memoEntries": 23
+      },
+      "totalMs": 15.900000000372529,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1024,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 19,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 4.5,
+       "memoEntries": 23
+      },
+      "totalMs": 12.700000000186265,
+      "energy": 0
+     }
+    ]
+   },
+   {
+    "viewport": 1440,
+    "arm": "rules",
+    "status": "valid",
+    "revision": 2,
+    "diagnostics": [],
+    "last": [
+     {
+      "stats": {
+       "arm": "rules",
+       "lines": 18,
+       "candidates": 0,
+       "evaluations": 0,
+       "iterations": 0,
+       "maxIterations": 0,
+       "unconverged": 0,
+       "measureCalls": 14,
+       "aborted": false,
+       "solveMs": 2.5,
+       "memoEntries": 23
+      },
+      "totalMs": 7.3999999994412065,
+      "energy": 0
+     }
+    ]
+   }
+  ]
+ },
+ "decisions": {
+  "explicit": 13,
+  "derived": 40,
+  "uncertain": 0,
+  "corrective": 2,
+  "total": 13,
+  "rawStatements": {
+   "explicit": 23,
+   "uncertain": 0
+  },
+  "firstDraftExplicit": 13,
+  "byCategory": {
+   "explicit": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 1,
+    "positioning": 0,
+    "grouping": 2,
+    "responsive": 2,
+    "dimension": 8,
+    "correction": 0
+   },
+   "derived": {
+    "padding": 4,
+    "margin": 9,
+    "alignment": 9,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 9,
+    "dimension": 9,
+    "correction": 0
+   },
+   "uncertain": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 0,
+    "dimension": 0,
+    "correction": 0
+   },
+   "corrective": {
+    "padding": 0,
+    "margin": 0,
+    "alignment": 0,
+    "positioning": 0,
+    "grouping": 0,
+    "responsive": 1,
+    "dimension": 1,
+    "correction": 2
+   }
+  }
+ },
+ "failures": {
+  "first": [
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 478×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 768,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 478×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 734×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1024,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 734×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 1150×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "standard",
+    "viewport": 1440,
+    "step": "1:text:auto-hint",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 1150×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   },
+   {
+    "condition": "heldout-text",
+    "viewport": 1440,
+    "step": "initial",
+    "invariant": "reading-order",
+    "element": "side-3 → sync-title",
+    "expected": "sync-title after side-3",
+    "observed": "sync-title at 257,98.59 1150×27.5, side-3 at 33,162.59 126×24",
+    "relationship": "side-3 → sync-title",
+    "fontScale": 1
+   }
+  ],
+  "final": []
+ }
+}

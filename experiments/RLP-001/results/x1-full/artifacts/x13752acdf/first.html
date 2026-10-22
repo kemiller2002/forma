@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operations dashboard</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+<main data-rl-root data-rl="group" data-rlp="dashboard">
+<header data-rl="group" data-rl-flow="row" data-rl-align="center" data-rlp="header">
+<div data-rl="group" data-rl-fill><h1 data-rlp="title">Service health</h1><p data-rlp="period">Last 24 hours</p></div>
+<button type="button" class="secondary" data-rl-anchor="end" data-rlp="refresh">Refresh</button>
+</header>
+<div data-rl="group" data-rl-flow="wrap" data-rl-equal data-rlp="tiles">
+<div data-rl="container" data-rl-min="12rem" data-rlp="tile-uptime"><div data-rl="group"><span data-rlp="tile-uptime-label">Uptime</span><strong data-rlp="tile-uptime-value">99.98%</strong><span data-rlp="tile-uptime-delta">+0.01%</span></div></div>
+<div data-rl="container" data-rl-min="12rem" data-rlp="tile-latency"><div data-rl="group"><span data-rlp="tile-latency-label">Median latency</span><strong data-rlp="tile-latency-value">182 ms</strong><span data-rlp="tile-latency-delta">−12 ms</span></div></div>
+<div data-rl="container" data-rl-min="12rem" data-rlp="tile-errors"><div data-rl="group"><span data-rlp="tile-errors-label">Error rate</span><strong data-rlp="tile-errors-value">0.4%</strong><span data-rlp="tile-errors-delta">+0.1%</span></div></div>
+<div data-rl="container" data-rl-min="12rem" data-rlp="tile-traffic"><div data-rl="group"><span data-rlp="tile-traffic-label">Requests</span><strong data-rlp="tile-traffic-value">1.2 M</strong><span data-rlp="tile-traffic-delta">+8%</span></div></div>
+</div>
+<div data-rl="group" data-rl-flow="row">
+<section data-rl="container" data-rl-fill data-rl-min="26rem" data-rlp="requests" aria-labelledby="rt">
+<h2 id="rt" data-rlp="requests-title">Slowest endpoints</h2>
+<div data-rl-scroll tabindex="0" role="region" aria-label="Slowest endpoints table"><table data-rlp="requests-table">
+<thead><tr><th scope="col">Endpoint</th><th scope="col">Calls</th><th scope="col">p95</th><th scope="col">Errors</th></tr></thead>
+<tbody>
+<tr><td>/api/search</td><td>41,200</td><td>640 ms</td><td>0.2%</td></tr>
+<tr><td>/api/checkout</td><td>8,930</td><td>512 ms</td><td>1.1%</td></tr>
+<tr><td>/api/profile</td><td>22,410</td><td>301 ms</td><td>0.0%</td></tr>
+<tr><td>/api/recommendations</td><td>17,004</td><td>288 ms</td><td>0.3%</td></tr>
+<tr><td>/api/cart</td><td>12,775</td><td>190 ms</td><td>0.1%</td></tr>
+</tbody></table></div>
+</section>
+<section data-rl="container" data-rl-min="16rem" data-rl-max="24rem" data-rlp="alerts" aria-labelledby="at">
+<h2 id="at" data-rlp="alerts-title">Active alerts</h2>
+<ul data-rl="group">
+<li data-rlp="alert-1">Checkout error rate above 1%</li>
+<li data-rlp="alert-2">Search p95 above 600 ms</li>
+<li data-rlp="alert-3">Certificate renews in 9 days</li>
+</ul>
+</section>
+</div>
+</main>
+</body>
+</html>

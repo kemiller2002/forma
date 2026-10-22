@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation site header</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <script type="module" src="assets/rlp/rlp.mjs"></script>
+</head>
+<body>
+  <div data-rl-root data-rl="group">
+    <header data-rlp="header" data-rl="container" data-rl-flow="wrap" data-rl-align="start">
+      <a data-rlp="brand" href="#" data-rl-size="content">Northwind Docs</a>
+      <nav data-rlp="nav" aria-label="Primary" data-rl="group" data-rl-flow="wrap" data-rl-min="16rem" data-rl-fill>
+        <a data-rlp="link-guides" href="#">Guides</a>
+        <a data-rlp="link-api" href="#" aria-current="page">API reference</a>
+        <a data-rlp="link-sdks" href="#">SDKs</a>
+        <a data-rlp="link-integrations" href="#">Integrations and partner ecosystem</a>
+        <a data-rlp="link-changelog" href="#">Changelog</a>
+      </nav>
+      <div data-rl="group" data-rl-min="14rem">
+        <label data-rlp="search-label" for="search">Search documentation</label>
+        <input data-rlp="search-input" id="search" type="search" data-rl-align-edge="control">
+      </div>
+      <button data-rlp="signin" type="button" data-rl-size="content" data-rl-align-edge="control">Sign in</button>
+    </header>
+  </div>
+</body>
+</html>

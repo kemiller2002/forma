@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment thread with dynamic content</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/forma.css">
+  <style>
+  main { padding: var(--ef-primitive-spacing-4); }
+  ol.comments { list-style: none; margin: 0; padding: 0; }
+  .comment { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: var(--ef-primitive-spacing-3); align-items: start; }
+  .comment p { margin: 0; overflow-wrap: anywhere; }
+  .avatar { width: 2.5rem; height: 2.5rem; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+  .meta { display: flex; flex-wrap: wrap; gap: var(--ef-primitive-spacing-1) var(--ef-primitive-spacing-2); align-items: baseline; }
+  .composer { max-width: none; }
+  </style>
+</head>
+<body>
+<main>
+  <section data-rlp="thread" class="ef-surface ef-stack">
+    <h2 data-rlp="title">Discussion</h2>
+    <ol data-rlp="comments" class="comments ef-stack">
+      <li data-rlp="comment-1" class="comment">
+        <img data-rlp="comment-1-avatar" class="avatar" src="assets/placeholder.svg" alt="" width="40" height="40">
+        <div class="ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+          <p class="meta"><strong data-rlp="comment-1-author">Priya</strong> <span data-rlp="comment-1-time">3 hours ago</span></p>
+          <p data-rlp="comment-1-body">Can we ship the migration behind a flag first?</p>
+          <div class="ef-actions"><button type="button" class="secondary" data-rlp="comment-1-reply" aria-label="Reply to Priya">Reply</button></div>
+        </div>
+      </li>
+      <li data-rlp="comment-2" class="comment">
+        <img data-rlp="comment-2-avatar" class="avatar" src="assets/placeholder.svg" alt="" width="40" height="40">
+        <div class="ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+          <p class="meta"><strong data-rlp="comment-2-author">Marcus</strong> <span data-rlp="comment-2-time">2 hours ago</span></p>
+          <p data-rlp="comment-2-body">Agreed. I added a flag to the rollout plan.</p>
+          <div class="ef-actions"><button type="button" class="secondary" data-rlp="comment-2-reply" aria-label="Reply to Marcus">Reply</button></div>
+        </div>
+      </li>
+      <li data-rlp="comment-3" class="comment">
+        <img data-rlp="comment-3-avatar" class="avatar" src="assets/placeholder.svg" alt="" width="40" height="40">
+        <div class="ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+          <p class="meta"><strong data-rlp="comment-3-author">Lena</strong> <span data-rlp="comment-3-time">1 hour ago</span></p>
+          <p data-rlp="comment-3-body">Looks good to me.</p>
+          <div class="ef-actions"><button type="button" class="secondary" data-rlp="comment-3-reply" aria-label="Reply to Lena">Reply</button></div>
+        </div>
+      </li>
+    </ol>
+    <p data-rlp="more-status" role="status">Loading earlier comments…</p>
+    <div class="ef-field composer ef-stack" style="--ef-stack-gap: var(--ef-primitive-spacing-2)">
+      <label class="ef-field__label" for="composer-input" data-rlp="composer-label">Add a comment</label>
+      <textarea id="composer-input" data-rlp="composer-input" rows="3" aria-describedby="composer-error"></textarea>
+      <p id="composer-error" class="error ef-validation-message" data-rlp="composer-error" hidden>Write a comment before posting.</p>
+      <div class="ef-actions"><button type="button" data-rlp="post">Post comment</button></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

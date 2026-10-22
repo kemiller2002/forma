@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operations dashboard</title>
+  <link rel="stylesheet" href="assets/base.css">
+  <style>
+  main { display: grid; gap: 1.5rem; padding: 1rem; max-width: 90rem; margin: 0 auto; box-sizing: border-box; }
+  header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1rem; }
+  .heading { display: grid; gap: 0.25rem; min-width: 0; }
+  .heading h1, .heading p { overflow-wrap: anywhere; }
+  .tiles { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; align-items: start; }
+  .tile { padding: 1.25rem; display: grid; gap: 0.5rem; min-width: 0; overflow-wrap: anywhere; }
+  .tile p { margin: 0; }
+  .panels { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+  .panel { padding: 1rem; display: grid; gap: 1rem; min-width: 0; }
+  .panel h2 { margin: 0; }
+  .scroll { overflow-x: auto; min-width: 0; }
+  table { border-collapse: collapse; width: 100%; table-layout: auto; }
+  th, td { padding: 0.5rem 0.5rem; text-align: left; overflow-wrap: anywhere; }
+  th:not(:first-child), td:not(:first-child) { text-align: right; }
+  .alerts-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+  .alerts-list li { overflow-wrap: anywhere; }
+  @media (min-width: 40rem) {
+    main { padding: 1.5rem; }
+    .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 64rem) {
+    .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .panels { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+  }
+  </style>
+</head>
+<body>
+  <main data-rlp="dashboard">
+    <header data-rlp="header">
+      <div class="heading">
+        <h1 data-rlp="title">Service health</h1>
+        <p data-rlp="period">Last 24 hours</p>
+      </div>
+      <button type="button" class="secondary" data-rlp="refresh">Refresh</button>
+    </header>
+    <div class="tiles" data-rlp="tiles">
+      <div class="surface tile" data-rlp="tile-uptime">
+        <p data-rlp="tile-uptime-label">Uptime</p>
+        <p data-rlp="tile-uptime-value">99.98%</p>
+        <p data-rlp="tile-uptime-delta">+0.01%</p>
+      </div>
+      <div class="surface tile" data-rlp="tile-latency">
+        <p data-rlp="tile-latency-label">Median latency</p>
+        <p data-rlp="tile-latency-value">182 ms</p>
+        <p data-rlp="tile-latency-delta">−12 ms</p>
+      </div>
+      <div class="surface tile" data-rlp="tile-errors">
+        <p data-rlp="tile-errors-label">Error rate</p>
+        <p data-rlp="tile-errors-value">0.4%</p>
+        <p data-rlp="tile-errors-delta">+0.1%</p>
+      </div>
+      <div class="surface tile" data-rlp="tile-traffic">
+        <p data-rlp="tile-traffic-label">Requests</p>
+        <p data-rlp="tile-traffic-value">1.2 M</p>
+        <p data-rlp="tile-traffic-delta">+8%</p>
+      </div>
+    </div>
+    <div class="panels">
+      <section class="surface panel" data-rlp="requests">
+        <h2 data-rlp="requests-title">Slowest endpoints</h2>
+        <div class="scroll" tabindex="0" role="region" aria-label="Slowest endpoints table">
+          <table data-rlp="requests-table">
+            <thead><tr><th scope="col">Endpoint</th><th scope="col">Calls</th><th scope="col">p95</th><th scope="col">Errors</th></tr></thead>
+            <tbody>
+              <tr><td>/api/search</td><td>41,200</td><td>640 ms</td><td>0.2%</td></tr>
+              <tr><td>/api/checkout</td><td>8,930</td><td>512 ms</td><td>1.1%</td></tr>
+              <tr><td>/api/profile</td><td>22,410</td><td>301 ms</td><td>0.0%</td></tr>
+              <tr><td>/api/recommendations</td><td>17,004</td><td>288 ms</td><td>0.3%</td></tr>
+              <tr><td>/api/cart</td><td>12,775</td><td>190 ms</td><td>0.1%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="surface panel" data-rlp="alerts">
+        <h2 data-rlp="alerts-title">Active alerts</h2>
+        <ul class="alerts-list">
+          <li data-rlp="alert-1">Checkout error rate above 1%</li>
+          <li data-rlp="alert-2">Search p95 above 600 ms</li>
+          <li data-rlp="alert-3">Certificate renews in 9 days</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

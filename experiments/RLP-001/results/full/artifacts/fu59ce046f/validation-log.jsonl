@@ -1,0 +1,4 @@
+{"run":1,"startedAt":"2026-10-21T19:10:14.649Z","durationMs":3613,"failures":6,"engineErrors":0,"snapshot":".rlp/snapshots/001.html"}
+{"run":2,"startedAt":"2026-10-21T19:10:32.894Z","durationMs":2950,"failures":8,"engineErrors":0,"snapshot":".rlp/snapshots/002.html"}
+{"run":3,"startedAt":"2026-10-21T19:10:45.005Z","durationMs":4291,"failures":4,"engineErrors":0,"snapshot":".rlp/snapshots/003.html"}
+{"run":4,"startedAt":"2026-10-21T19:10:56.646Z","durationMs":2277,"failures":0,"engineErrors":0,"snapshot":".rlp/snapshots/004.html"}
