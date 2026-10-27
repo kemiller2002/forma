@@ -1,0 +1,78 @@
+{
+  "constraint": "connector.starts-inside",
+  "origin": {
+    "case": "responsive-000",
+    "seed": "53931ee345f4fbe9",
+    "family": "responsive"
+  },
+  "minimization": [
+    "round 0: 13 candidates, kept size 100",
+    "round 1: 10 candidates, kept size 43",
+    "round 2: 6 candidates, kept size 37",
+    "round 3: 6 candidates, kept size 31",
+    "round 4: 6 candidates, kept size 29",
+    "round 5: 6 candidates, kept size 27"
+  ],
+  "case": {
+    "id": "connector.starts-inside--diagram--responsive-000",
+    "family": "responsive",
+    "seed": "53931ee345f4fbe9",
+    "note": "graph",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        768,
+        800
+      ],
+      "rootPercent": 200,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 1,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Generated graph",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "down"
+        },
+        "nodes": [
+          {
+            "id": "n3",
+            "kind": "event",
+            "label": "Ro"
+          },
+          {
+            "id": "n4",
+            "kind": "end",
+            "label": "Ro",
+            "layout": {
+              "width": 160,
+              "height": 120
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "e0",
+            "source": {
+              "node": "n3"
+            },
+            "target": {
+              "node": "n4"
+            },
+            "label": "no"
+          }
+        ]
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

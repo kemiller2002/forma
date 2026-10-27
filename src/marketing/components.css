@@ -206,7 +206,8 @@
     min-block-size: calc(var(--ef-layout-target-min) + var(--ef-space-2));
     padding: var(--ef-space-3) var(--ef-space-5);
     border: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
-    border-radius: var(--ef-shape-radius);
+    /* Bounded so a brand radius never reaches the content (LCE-001, see .ef-card). */
+    border-radius: min(var(--ef-shape-radius), calc(var(--ef-space-5) + var(--ef-space-3) * 2.414 - 2.414px));
     background: transparent;
     color: var(--ef-tone-text);
     font: inherit;
@@ -218,7 +219,10 @@
     /* Never wider than its row and never split mid-word unless one word is
        wider than the row (ULI-L05, L06). */
     max-inline-size: 100%;
-    overflow-wrap: break-word;
+    /* anywhere, not break-word: inside inline-flex only anywhere lets the
+       min-content width shrink, so a word wider than the row breaks instead of
+       overflowing the button (LCE-001). Words still break only when they must. */
+    overflow-wrap: anywhere;
     cursor: pointer;
     /* Hover and press are perceptual emphasis on the surface only: the hit
        target never moves under the pointer (MOT-014). */
@@ -263,11 +267,13 @@
     display: inline-flex;
     align-items: center;
     gap: var(--ef-space-1);
+    max-inline-size: 100%;
     padding: var(--ef-space-1) var(--ef-space-2);
     border: var(--ef-shape-border-width) solid var(--ef-tone-rule);
-    border-radius: var(--ef-shape-radius);
+    border-radius: min(var(--ef-shape-radius), calc(var(--ef-space-2) + var(--ef-space-1) * 2.414 - 2.414px));
     color: var(--ef-tone-text);
     font-family: var(--ef-type-family-mono);
+    overflow-wrap: anywhere;
     font-size: var(--ef-type-size-label);
     line-height: var(--ef-type-leading-snug);
     text-decoration: none;
@@ -313,7 +319,15 @@
     min-inline-size: 0;
     padding: var(--ef-layout-block-space);
     border: var(--ef-shape-border-width) solid var(--ef-tone-rule);
-    border-radius: var(--ef-shape-radius);
+    /*
+     * A brand radius is capped by the padding (LCE-001). Content whose corner
+     * sits at padding p from both edges stays clear of a circular corner of
+     * radius r while r <= (2 + √2)·(p - c) + c for clearance c; with c = 1px
+     * that is p·3.414 - 2.414px. A badge or button uses its own two paddings:
+     * pi + pb·2.414 - 2.414px (pb the smaller). A larger brand radius (a pill
+     * or 50%) would otherwise cut through multi-line content.
+     */
+    border-radius: min(var(--ef-shape-radius), calc(var(--ef-layout-block-space) * 3.414 - 2.414px));
   }
 
   /* Inside a grid, cards share hairline rules instead of doubling borders. */

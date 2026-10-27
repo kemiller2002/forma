@@ -1,0 +1,46 @@
+{
+  "constraint": "boundary.corner",
+  "origin": {
+    "case": "rounded-014",
+    "seed": "7453e30125ca68a2",
+    "family": "rounded"
+  },
+  "minimization": [
+    "round 0: 1 candidates, kept size 2",
+    "round 1: 1 candidates, kept size 1"
+  ],
+  "case": {
+    "id": "boundary.corner--probe--rounded-014",
+    "family": "rounded",
+    "seed": "7453e30125ca68a2",
+    "note": "cjk-short radius=50%",
+    "script": "cjk",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "probe",
+      "probe": {
+        "width": 280,
+        "padding": [
+          12,
+          2,
+          12,
+          8
+        ],
+        "border": 2,
+        "radius": "50%",
+        "text": "根",
+        "center": false
+      }
+    }
+  },
+  "expect": "fail",
+  "disposition": "Controlled CSS experiment (a bare box with chosen radius and padding), not a Forma component: shows the geometric bound the component fixes rely on."
+}

@@ -195,21 +195,21 @@ export default {
     <figcaption id="diagram-lanes-title">Budget approval</figcaption>
     <p>Amber fill comes from the status mapping (Needs input). Purple is a highlight the author chose; it carries no status. Owners come from the lane.</p>
     <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Budget approval canvas, scroll to see all items">
-      <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 780px; --ef-diagram-canvas-h: 400px;">
+      <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 780px; --ef-diagram-canvas-h: 430px;">
         <div class="ef-diagram-group" data-ef-group="lane" style="--ef-diagram-x: 0px; --ef-diagram-y: 0px; --ef-diagram-w: 780px; --ef-diagram-h: 190px;">
           <p class="ef-diagram-group__header"><span class="ef-diagram-group__kind">Lane</span> <span class="ef-diagram-group__label">Requester</span></p>
         </div>
-        <div class="ef-diagram-group" data-ef-group="lane" style="--ef-diagram-x: 0px; --ef-diagram-y: 196px; --ef-diagram-w: 780px; --ef-diagram-h: 204px; --ef-diagram-accent: #6b3fa0;">
+        <div class="ef-diagram-group" data-ef-group="lane" style="--ef-diagram-x: 0px; --ef-diagram-y: 196px; --ef-diagram-w: 780px; --ef-diagram-h: 234px; --ef-diagram-accent: #6b3fa0;">
           <p class="ef-diagram-group__header"><span class="ef-diagram-group__kind">Lane</span> <span class="ef-diagram-group__label">Finance</span></p>
         </div>
-        <svg class="ef-diagram__wires" viewBox="0 0 780 400" aria-hidden="true" focusable="false">
+        <svg class="ef-diagram__wires" viewBox="0 0 780 430" aria-hidden="true" focusable="false">
           <defs>
             <marker id="diagram-lanes-arrow" class="ef-diagram-marker" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
           </defs>
           <path class="ef-diagram-connector" d="M184 110 H214" marker-end="url(#diagram-lanes-arrow)"/>
           <path class="ef-diagram-connector" d="M320 164 V222" marker-end="url(#diagram-lanes-arrow)"/>
-          <path class="ef-diagram-connector" d="M395 297 H468" marker-end="url(#diagram-lanes-arrow)"/>
-          <path class="ef-diagram-connector" data-ef-line="dashed" d="M245 297 H200 V150 H214" marker-end="url(#diagram-lanes-arrow)"/>
+          <path class="ef-diagram-connector" d="M412 314 H468" marker-end="url(#diagram-lanes-arrow)"/>
+          <path class="ef-diagram-connector" data-ef-line="dashed" d="M228 314 H200 V150 H214" marker-end="url(#diagram-lanes-arrow)"/>
           <path class="ef-diagram-connector" d="M558 240 V110 H638" marker-end="url(#diagram-lanes-arrow)"/>
         </svg>
         <article class="ef-diagram-node" data-ef-shape="ellipse" aria-labelledby="diagram-lanes-submit" style="--ef-diagram-x: 24px; --ef-diagram-y: 64px; --ef-diagram-w: 160px; --ef-diagram-h: 92px;">
@@ -221,7 +221,7 @@ export default {
           <h3 class="ef-diagram-node__label" id="diagram-lanes-prepare">Prepare budget</h3>
           <dl class="ef-diagram-node__meta"><dt>Status</dt><dd>Needs input</dd><dt>Owner</dt><dd>Requester <span class="ef-diagram-value-state" data-ef-value-state="derived">from lane</span></dd></dl>
         </article>
-        <article class="ef-diagram-node" data-ef-shape="diamond" aria-labelledby="diagram-lanes-decide" style="--ef-diagram-x: 245px; --ef-diagram-y: 222px; --ef-diagram-w: 150px;">
+        <article class="ef-diagram-node" data-ef-shape="diamond" aria-labelledby="diagram-lanes-decide" style="--ef-diagram-x: 228px; --ef-diagram-y: 222px; --ef-diagram-w: 184px;">
           <p class="ef-diagram-node__kind">Decision</p>
           <h3 class="ef-diagram-node__label" id="diagram-lanes-decide">Within budget?</h3>
         </article>
@@ -234,8 +234,8 @@ export default {
           <p class="ef-diagram-node__kind">End</p>
           <h3 class="ef-diagram-node__label" id="diagram-lanes-closed">Closed</h3>
         </article>
-        <span class="ef-diagram-connector__label" style="--ef-diagram-x: 404px; --ef-diagram-y: 272px;">yes</span>
-        <span class="ef-diagram-connector__label" style="--ef-diagram-x: 150px; --ef-diagram-y: 300px;">no, revise</span>
+        <span class="ef-diagram-connector__label" style="--ef-diagram-x: 422px; --ef-diagram-y: 290px;">yes</span>
+        <span class="ef-diagram-connector__label" style="--ef-diagram-x: 150px; --ef-diagram-y: 320px;">no, revise</span>
       </div>
     </div>
     <ol class="ef-diagram__relations" aria-label="Relationships">

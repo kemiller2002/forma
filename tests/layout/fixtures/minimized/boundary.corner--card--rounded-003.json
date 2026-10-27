@@ -1,0 +1,39 @@
+{
+  "constraint": "boundary.corner",
+  "origin": {
+    "case": "rounded-003",
+    "seed": "d7eb6bff6c03a62c",
+    "family": "rounded"
+  },
+  "minimization": [
+    "round 0: 1 candidates, kept size 415",
+    "round 1: 1 candidates, kept size 207",
+    "round 2: 1 candidates, kept size 107",
+    "round 3: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "boundary.corner--card--rounded-003",
+    "family": "rounded",
+    "seed": "d7eb6bff6c03a62c",
+    "note": "extreme-paragraph radius=999px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "component",
+      "component": "card",
+      "text": "Counter interrupts from the rendezvous radar coupling data units stole computer capacity, and the executive",
+      "radius": "999px",
+      "hostWidth": 600
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

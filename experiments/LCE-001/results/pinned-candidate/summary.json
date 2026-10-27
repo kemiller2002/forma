@@ -1,0 +1,118 @@
+{
+  "label": "Corrected packages from this branch",
+  "browser": "153.0.8010.12",
+  "cases": 15,
+  "renderMs": 15037,
+  "totalMs": 16471,
+  "fonts": {
+    "latin": true,
+    "accented": true,
+    "cjk": true,
+    "hebrew": true,
+    "arabic": true,
+    "emoji": true,
+    "combining": true
+  },
+  "families": [
+    {
+      "family": "causa",
+      "cases": 15,
+      "casesWithErrors": 0
+    }
+  ],
+  "constraints": [
+    {
+      "constraint": "contain.overflow",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "contain.clipped",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "padding.preserved",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "boundary.corner",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "boundary.clearance",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "allocation.exceeded",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "separation.nodes",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "connector.crosses-node",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "connector.starts-inside",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "label.overlaps-node",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "label.overlaps-label",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "canvas.containment",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "nest.containment",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "viewport.overflow",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "a11y.min-text",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "a11y.target-size",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "determinism",
+      "findings": 0,
+      "cases": 0
+    }
+  ],
+  "severities": {},
+  "staticAgreement": {
+    "renderedAndStatic": 0,
+    "renderedOnly": 0,
+    "staticOnly": 0,
+    "neither": 15
+  }
+}
+

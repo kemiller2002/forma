@@ -1,0 +1,7 @@
+ACCEPTED  add diagram (obligations: 0)
+ACCEPTED  add node with a paragraph label in an 8x8 box (obligations: 0)
+ACCEPTED  add a second node overlapping the first (obligations: 0)
+ACCEPTED  resize node a to 8x8 again (obligations: 0)
+ACCEPTED  rename node b to a 600-character label (obligations: 0)
+"Studio LayoutChecks apply to Layout pages only; no diagram geometry check exists."
+Studio Validation.project findings: 1 ["workflow.start.missing"]

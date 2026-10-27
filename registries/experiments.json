@@ -158,5 +158,43 @@
       "RLP-002-H6"
     ],
     "title": "RLP-002: Zero-runtime relational layout compilation and visual quality"
+  },
+  {
+    "author_agent": "anthropic/claude-code",
+    "created": "2026-10-27",
+    "id": "EX-FORMA-2026-0004",
+    "inputs": [
+      ".praxis/inbox/documents/2026-10-27-LCE-001.md",
+      "tests/layout/fixtures/causa/"
+    ],
+    "outputs": [
+      "experiments/LCE-001/REPORT.md",
+      "experiments/LCE-001/results/",
+      "tests/layout/"
+    ],
+    "path": "research/experiments/EX-FORMA-2026-0004--lce-001-layout-constraint-enforcement.md",
+    "provenance": {
+      "contributions": {
+        "EXE-20261027T133505963Z-36c7489b": {
+          "actor": {
+            "id": "anthropic/claude-code",
+            "kind": "agent",
+            "model": "unknown",
+            "provider": "anthropic",
+            "runtime": "claude-code"
+          },
+          "at": "2026-10-27T13:54:03.502Z",
+          "operations": [
+            "created"
+          ],
+          "reason": "LCE-001 layout constraint research record"
+        }
+      }
+    },
+    "related_theories": [],
+    "research_area": "layout-constraints",
+    "status": "completed",
+    "tests_hypotheses": [],
+    "title": "LCE-001: Adversarial layout research and constraint enforcement"
   }
 ]

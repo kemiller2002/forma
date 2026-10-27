@@ -13,7 +13,7 @@ test("generated public contract is deterministic and covers every released conte
   assert.equal(read("contracts/color-contract.json"), before);
   const contract = current();
   assert.equal(contract.format, "forma.color-contract/1.0.0");
-  assert.equal(contract.formaVersion, "0.9.0");
+  assert.equal(contract.formaVersion, JSON.parse(read("package.json")).version);
   assert.equal(contract.contexts.filter(item => item.kind === "theme").length, 18);
   assert.equal(contract.contexts.filter(item => item.kind === "brand").length, 4);
   const names = contract.publicTokens.map(token => token.name);

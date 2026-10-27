@@ -51,7 +51,9 @@
 | GH-68 | GH-68 | complete |  |  |
 | GH-82 | GH-82 | complete |  |  |
 | GH-9 | Build Forma component documentation site | complete | forma,documentation,github-pages | high |
+| LCE-001 | LCE-001 | active |  |  |
 | RLP-001 | RLP-001 | complete |  |  |
+| RLP-002 | RLP-002 | complete |  |  |
 | ROS-INSTALL-3-1-4 | ROS-INSTALL-3-1-4 | complete |  |  |
 | WI-0001 | Install Echelon engineering capabilities | complete |  | high |
 | WI-0002 | Deep design system requirements | complete |  | high |
@@ -89,3 +91,7 @@
 | WI-0034 | Align Forma catalog and icon static guards with audited runtime metadata | complete |  | medium |
 | WI-0035 | Align Forma browser static guard with audited runtime metadata | complete |  | medium |
 | WI-0036 | Integrate reviewed Forma runtime version stamp with current main | complete |  | medium |
+| WI-0037 | LCE-001 follow-up: stack .ef-alert actions by container width, not viewport (overflows in 96-160px columns at 125-200% text) | captured |  | medium |
+| WI-0038 | LCE-001 follow-up: global connector-label placement for dense fan-in (fallback overlap is reported by LayoutCheck) | captured |  | medium |
+| WI-0039 | LCE-001 follow-up: Forma.Workflow editor Resize should run LayoutCheck and refuse or warn on sizes that cannot hold content | captured |  | medium |
+| WI-0040 | LCE-001 follow-up: optional measured relayout in the forma-workflow embed for typography beyond the reserved WCAG 1.4.12 envelope | captured |  | medium |

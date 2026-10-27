@@ -1,0 +1,66 @@
+{
+  "constraint": "allocation.exceeded",
+  "origin": {
+    "case": "rectangle-003",
+    "seed": "ef9b9c4ed41663a7",
+    "family": "rectangle"
+  },
+  "minimization": [
+    "round 0: 2 candidates, kept size 28",
+    "round 1: 2 candidates, kept size 19",
+    "round 2: 2 candidates, kept size 14",
+    "round 3: 2 candidates, kept size 12",
+    "round 4: 2 candidates, kept size 11",
+    "round 5: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "allocation.exceeded--diagram--rectangle-003",
+    "family": "rectangle",
+    "seed": "ef9b9c4ed41663a7",
+    "note": "identifier",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 1,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Probe",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "right"
+        },
+        "nodes": [
+          {
+            "id": "n1",
+            "kind": "start",
+            "label": "e",
+            "variant": "rectangle",
+            "layout": {
+              "width": 120,
+              "height": 48
+            }
+          }
+        ],
+        "edges": []
+      }
+    }
+  },
+  "expect": "fail",
+  "static": [
+    "layout.node.too-small"
+  ],
+  "disposition": "Authored geometry (120x48) cannot hold the content. Reported before rendering by LayoutCheck layout.node.too-small; the author or Studio must resize."
+}

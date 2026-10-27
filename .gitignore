@@ -63,3 +63,6 @@ tests/workflow/**/obj/
 packages/workflow/dist/
 experiments/RLP-002/compiler/bin/
 experiments/RLP-002/compiler/obj/
+
+# LCE-001 layout probe output (pages, measurements, findings)
+tests/layout/out/

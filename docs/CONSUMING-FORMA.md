@@ -4,7 +4,7 @@ Forma is the zero-component-runtime Echelon Foundry presentation package.
 
 ## Canonical version
 
-The current application baseline is **Forma 0.9.1**.
+The current application baseline is **Forma 0.10.0**.
 
 Applications must pin a concrete Forma version. Do not copy CSS files into an
 application and do not depend on the moving repository branch.
@@ -147,6 +147,21 @@ contract are package files:
 Static workflow HTML needs only `tokens.css`, `foundations.css` and
 `components.css`. An interactive viewer or editor needs the separate opt-in
 package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
+
+## 0.10.0
+
+Minor upgrade from 0.9.1, with `@echelon-foundry/forma-workflow` 1.1.0. No
+class, token, component or icon was removed. Visible changes to check:
+
+- Diagram nodes are sized for their shape and reserve WCAG 1.4.12 text-spacing
+  room, so nodes are taller and default layouts move.
+- Diagram geometry custom properties are emitted in rem.
+- Tall pill nodes keep bounded corners.
+- A brand `--ef-shape-radius` on marketing cards, badges and buttons is capped
+  by each component's padding.
+
+`Forma.Workflow.LayoutCheck` (in forma-workflow 1.1.0) reports authored layouts
+that cannot hold their content. Run it before publishing diagrams.
 
 ## 0.9.1
 

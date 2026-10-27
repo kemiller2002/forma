@@ -1,0 +1,179 @@
+{
+  "constraint": "*",
+  "origin": {
+    "source": "kemiller2002/causa-data workspaces/demo/historical-v1/investigations/e3adbee5-5096-5a10-bbfb-cecda86a154b/snapshot.json",
+    "derivation": "indy-init-rehearsal-004 src/app/View.fs graphDocument"
+  },
+  "case": {
+    "id": "causa-e3adbee5-1280-z100-t200",
+    "family": "causa",
+    "seed": "0000000000000000",
+    "note": "Apollo 11 lunar landing, July 1969: why the descent succeeded despite program alarms",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 200,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 1,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Causal analysis: Apollo 11 lunar landing, July 1969: why the descent succeeded despite program alarms",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "right"
+        },
+        "nodes": [
+          {
+            "id": "h-2b7c50ea-9029-51fe-9f40-d788fc54b423",
+            "kind": "task",
+            "label": "The 1202 and 1201 alarms were Executive overflows caused by counter interrupts from the rendezvous radar coupling data units, which stole more than 10 percent of the computer's capacity.",
+            "description": "Hypothesis · Supported · 12 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-30394834-ceb0-5558-a930-71c15c0f50c3",
+            "kind": "task",
+            "label": "The landing came long of its target mainly because the onboard state vector carried a downrange error at powered descent initiation, with manual range extension adding to it.",
+            "description": "Hypothesis · Supported · 3 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-35b0e7cd-bafd-5a33-9049-ddc4f3eda7e2",
+            "kind": "task",
+            "label": "In P63 the crew's Verb 16 Noun 68 monitoring display added computer load that reduced the remaining margin; in P64 the essential load plus landing-point redesignation processing left less than 10 percent margin.",
+            "description": "Hypothesis · Supported · 3 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-4f9f8b11-68f2-52de-816c-a034c3f5a2cd",
+            "kind": "task",
+            "label": "A backup abort guidance system ran in monitor mode through descent and mission rules defined when the primary guidance had failed, so continuing after the alarms kept an abort path, although abort options narrowed close to the surface.",
+            "description": "Hypothesis · Supported · 3 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-8cb5b1bf-eaf3-5112-8d84-2eb2ccfe1701",
+            "kind": "task",
+            "label": "Propellant monitoring and callouts kept the landing inside the margin: the engine was cut off with about 45 s of firing time remaining against a 20 s landing go/no-go point, and post-flight calculation (50 s) agreed with the onboard indication within measurement accuracy.",
+            "description": "Hypothesis · Supported · 9 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-9681d6b6-762a-5e7e-82da-20d8cc80de1e",
+            "kind": "task",
+            "label": "Armstrong's manual control in P66 extended the range past a boulder field around a large crater to a safe touchdown point.",
+            "description": "Hypothesis · Supported · 5 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-e6c5794c-8889-579b-9c81-a0e89f275088",
+            "kind": "task",
+            "label": "Flight controllers could judge in real time that the alarms were not a guidance failure, because it had been decided before flight that such alarms would not prevent continuing while they were intermittent and navigation was good; they gave explicit Go calls for the first 1202 and the 1201 and a general Go before the late 1202s.",
+            "description": "Hypothesis · Supported · 7 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-ffa1e47b-dcfe-5841-b404-c33922de8009",
+            "kind": "task",
+            "label": "The computer's restart protection preserved guidance: each overflow triggered a software restart that discarded stale jobs and resumed the priority guidance and control computations.",
+            "description": "Hypothesis · Supported · 6 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "c-650c1c8f-613d-5a07-9c07-694c7ade9367",
+            "kind": "end",
+            "label": "Five executive-overflow program alarms occurred during Apollo 11's powered descent, and the descent nevertheless continued to a safe landing, long of its target",
+            "description": "Outcome · causal relationship Confirmed"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e0",
+            "source": {
+              "node": "h-2b7c50ea-9029-51fe-9f40-d788fc54b423"
+            },
+            "target": {
+              "node": "c-650c1c8f-613d-5a07-9c07-694c7ade9367"
+            },
+            "label": "Root cause"
+          },
+          {
+            "id": "e1",
+            "source": {
+              "node": "h-35b0e7cd-bafd-5a33-9049-ddc4f3eda7e2"
+            },
+            "target": {
+              "node": "c-650c1c8f-613d-5a07-9c07-694c7ade9367"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e2",
+            "source": {
+              "node": "h-ffa1e47b-dcfe-5841-b404-c33922de8009"
+            },
+            "target": {
+              "node": "c-650c1c8f-613d-5a07-9c07-694c7ade9367"
+            },
+            "label": "Enabling condition"
+          },
+          {
+            "id": "e3",
+            "source": {
+              "node": "h-e6c5794c-8889-579b-9c81-a0e89f275088"
+            },
+            "target": {
+              "node": "c-650c1c8f-613d-5a07-9c07-694c7ade9367"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e4",
+            "source": {
+              "node": "h-9681d6b6-762a-5e7e-82da-20d8cc80de1e"
+            },
+            "target": {
+              "node": "c-650c1c8f-613d-5a07-9c07-694c7ade9367"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e5",
+            "source": {
+              "node": "h-8cb5b1bf-eaf3-5112-8d84-2eb2ccfe1701"
+            },
+            "target": {
+              "node": "c-650c1c8f-613d-5a07-9c07-694c7ade9367"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e6",
+            "source": {
+              "node": "h-30394834-ceb0-5558-a930-71c15c0f50c3"
+            },
+            "target": {
+              "node": "c-650c1c8f-613d-5a07-9c07-694c7ade9367"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e7",
+            "source": {
+              "node": "h-4f9f8b11-68f2-52de-816c-a034c3f5a2cd"
+            },
+            "target": {
+              "node": "c-650c1c8f-613d-5a07-9c07-694c7ade9367"
+            },
+            "label": "Enabling condition"
+          }
+        ]
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001 (baseline violated six constraints); must keep passing."
+}

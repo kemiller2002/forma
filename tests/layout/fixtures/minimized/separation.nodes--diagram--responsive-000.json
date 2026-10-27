@@ -1,0 +1,74 @@
+{
+  "constraint": "separation.nodes",
+  "origin": {
+    "case": "responsive-000",
+    "seed": "53931ee345f4fbe9",
+    "family": "responsive"
+  },
+  "minimization": [
+    "round 0: 13 candidates, kept size 100",
+    "round 1: 8 candidates, kept size 77",
+    "round 2: 4 candidates, kept size 55",
+    "round 3: 4 candidates, kept size 49",
+    "round 4: 4 candidates, kept size 47",
+    "round 5: 4 candidates, kept size 46"
+  ],
+  "case": {
+    "id": "separation.nodes--diagram--responsive-000",
+    "family": "responsive",
+    "seed": "53931ee345f4fbe9",
+    "note": "graph",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        768,
+        800
+      ],
+      "rootPercent": 200,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 1,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Generated graph",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "down"
+        },
+        "nodes": [
+          {
+            "id": "n1",
+            "kind": "decision",
+            "label": "Cold O-ring resilience",
+            "variant": "pill"
+          },
+          {
+            "id": "n3",
+            "kind": "event",
+            "label": "R"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e0",
+            "source": {
+              "node": "n1"
+            },
+            "target": {
+              "node": "n3"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

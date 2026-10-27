@@ -1,0 +1,38 @@
+{
+  "constraint": "contain.overflow",
+  "origin": {
+    "case": "responsive-003",
+    "seed": "4d9a15b72aab3742",
+    "family": "responsive"
+  },
+  "minimization": [
+    "round 0: 1 candidates, kept size 38",
+    "round 1: 1 candidates, kept size 21",
+    "round 2: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "contain.overflow--button--responsive-003",
+    "family": "responsive",
+    "seed": "4d9a15b72aab3742",
+    "note": "long-words",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        320,
+        800
+      ],
+      "rootPercent": 125,
+      "letterSpacingEm": 0.05,
+      "weight": 400
+    },
+    "subject": {
+      "type": "component",
+      "component": "button",
+      "text": "Incomprehensibilities",
+      "radius": "8px",
+      "hostWidth": 200
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

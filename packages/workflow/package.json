@@ -1,6 +1,6 @@
 {
   "name": "@echelon-foundry/forma-workflow",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "type": "module",
   "description": "Embeddable Forma workflow renderer and editor (<forma-workflow>), built on the Forma portable workflow format. Optional runtime companion to the zero-runtime @echelon-foundry/design-system.",

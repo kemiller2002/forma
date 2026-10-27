@@ -1,0 +1,36 @@
+{
+  "constraint": "boundary.corner",
+  "origin": {
+    "case": "rounded-038",
+    "seed": "1c94db649c04f170",
+    "family": "rounded"
+  },
+  "minimization": [
+    "round 0: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "boundary.corner--button--rounded-038",
+    "family": "rounded",
+    "seed": "1c94db649c04f170",
+    "note": "paragraph radius=999px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "component",
+      "component": "button",
+      "text": "Counter interrupts from the rendezvous radar coupling data units stole computer capacity, and the executive raised a program alarm each time its queue overflowed.",
+      "radius": "999px",
+      "hostWidth": 120
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

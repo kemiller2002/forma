@@ -1,0 +1,49 @@
+{
+  "constraint": "contain.overflow",
+  "origin": {
+    "case": "rectangle-012",
+    "seed": "5bff85af748f52eb",
+    "family": "rectangle"
+  },
+  "minimization": [
+    "round 0: 1 candidates, kept size 43",
+    "round 1: 1 candidates, kept size 21",
+    "round 2: 1 candidates, kept size 11",
+    "round 3: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "contain.overflow--probe--rectangle-012",
+    "family": "rectangle",
+    "seed": "5bff85af748f52eb",
+    "note": "punctuation",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "probe",
+      "probe": {
+        "width": 48,
+        "height": 80,
+        "padding": [
+          0,
+          8,
+          4,
+          0
+        ],
+        "border": 0,
+        "radius": "0px",
+        "text": "Wait—what?!",
+        "center": true
+      }
+    }
+  },
+  "expect": "fail",
+  "disposition": "Controlled CSS experiment: a fixed-size bare box with more text than it can hold. Not a Forma component."
+}

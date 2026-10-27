@@ -1,0 +1,41 @@
+{
+  "constraint": "boundary.corner",
+  "origin": {
+    "case": "rounded-035",
+    "seed": "c324caa55165f13f",
+    "family": "rounded"
+  },
+  "minimization": [
+    "round 0: 1 candidates, kept size 89",
+    "round 1: 1 candidates, kept size 44",
+    "round 2: 1 candidates, kept size 23",
+    "round 3: 1 candidates, kept size 7",
+    "round 4: 1 candidates, kept size 3",
+    "round 5: 1 candidates, kept size 1"
+  ],
+  "case": {
+    "id": "boundary.corner--badge--rounded-035",
+    "family": "rounded",
+    "seed": "c324caa55165f13f",
+    "note": "paragraph radius=50%",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "component",
+      "component": "badge",
+      "text": "C",
+      "radius": "50%",
+      "hostWidth": 96
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

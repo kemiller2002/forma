@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="forma-layout-probe">
+    <resource name="FSharpSignatureData.forma-layout-probe" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedData.forma-layout-probe" action="remove"></resource>
+    <resource name="FSharpSignatureDataB.forma-layout-probe" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedDataB.forma-layout-probe" action="remove"></resource>
+    <resource name="FSharpOptimizationData.forma-layout-probe" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedData.forma-layout-probe" action="remove"></resource>
+    <resource name="FSharpOptimizationDataB.forma-layout-probe" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedDataB.forma-layout-probe" action="remove"></resource>
+    <resource name="FSharpOptimizationInfo.forma-layout-probe" action="remove"></resource>
+    <resource name="FSharpSignatureInfo.forma-layout-probe" action="remove"></resource>
+  </assembly>
+</linker>

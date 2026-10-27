@@ -1,0 +1,818 @@
+{
+  "radiusPadding": {
+    "rows": [
+      {
+        "case": "sweep-radius-p4-r00",
+        "note": "p4-r00",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r02",
+        "note": "p4-r02",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r04",
+        "note": "p4-r04",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r06",
+        "note": "p4-r06",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r08",
+        "note": "p4-r08",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r10",
+        "note": "p4-r10",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r12",
+        "note": "p4-r12",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r14",
+        "note": "p4-r14",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r16",
+        "note": "p4-r16",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r18",
+        "note": "p4-r18",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r20",
+        "note": "p4-r20",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p4-r22",
+        "note": "p4-r22",
+        "errors": [
+          "boundary.corner (1.26px)"
+        ]
+      },
+      {
+        "case": "sweep-radius-p4-r24",
+        "note": "p4-r24",
+        "errors": [
+          "boundary.corner (2.08px)"
+        ]
+      },
+      {
+        "case": "sweep-radius-p4-r28",
+        "note": "p4-r28",
+        "errors": [
+          "boundary.corner (3.73px)"
+        ]
+      },
+      {
+        "case": "sweep-radius-p4-r32",
+        "note": "p4-r32",
+        "errors": [
+          "boundary.corner (5.22px)"
+        ]
+      },
+      {
+        "case": "sweep-radius-p4-r40",
+        "note": "p4-r40",
+        "errors": [
+          "boundary.corner (5.22px)"
+        ]
+      },
+      {
+        "case": "sweep-radius-p4-r48",
+        "note": "p4-r48",
+        "errors": [
+          "boundary.corner (5.22px)"
+        ]
+      },
+      {
+        "case": "sweep-radius-p4-r64",
+        "note": "p4-r64",
+        "errors": [
+          "boundary.corner (5.22px)"
+        ]
+      },
+      {
+        "case": "sweep-radius-p8-r00",
+        "note": "p8-r00",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r02",
+        "note": "p8-r02",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r04",
+        "note": "p8-r04",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r06",
+        "note": "p8-r06",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r08",
+        "note": "p8-r08",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r10",
+        "note": "p8-r10",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r12",
+        "note": "p8-r12",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r14",
+        "note": "p8-r14",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r16",
+        "note": "p8-r16",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r18",
+        "note": "p8-r18",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r20",
+        "note": "p8-r20",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r22",
+        "note": "p8-r22",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r24",
+        "note": "p8-r24",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r28",
+        "note": "p8-r28",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r32",
+        "note": "p8-r32",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p8-r40",
+        "note": "p8-r40",
+        "errors": [
+          "boundary.corner (1.22px)"
+        ]
+      },
+      {
+        "case": "sweep-radius-p8-r48",
+        "note": "p8-r48",
+        "errors": [
+          "boundary.corner (1.22px)"
+        ]
+      },
+      {
+        "case": "sweep-radius-p8-r64",
+        "note": "p8-r64",
+        "errors": [
+          "boundary.corner (1.22px)"
+        ]
+      },
+      {
+        "case": "sweep-radius-p12-r00",
+        "note": "p12-r00",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r02",
+        "note": "p12-r02",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r04",
+        "note": "p12-r04",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r06",
+        "note": "p12-r06",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r08",
+        "note": "p12-r08",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r10",
+        "note": "p12-r10",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r12",
+        "note": "p12-r12",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r14",
+        "note": "p12-r14",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r16",
+        "note": "p12-r16",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r18",
+        "note": "p12-r18",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r20",
+        "note": "p12-r20",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r22",
+        "note": "p12-r22",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r24",
+        "note": "p12-r24",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r28",
+        "note": "p12-r28",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r32",
+        "note": "p12-r32",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r40",
+        "note": "p12-r40",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r48",
+        "note": "p12-r48",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p12-r64",
+        "note": "p12-r64",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r00",
+        "note": "p16-r00",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r02",
+        "note": "p16-r02",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r04",
+        "note": "p16-r04",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r06",
+        "note": "p16-r06",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r08",
+        "note": "p16-r08",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r10",
+        "note": "p16-r10",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r12",
+        "note": "p16-r12",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r14",
+        "note": "p16-r14",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r16",
+        "note": "p16-r16",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r18",
+        "note": "p16-r18",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r20",
+        "note": "p16-r20",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r22",
+        "note": "p16-r22",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r24",
+        "note": "p16-r24",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r28",
+        "note": "p16-r28",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r32",
+        "note": "p16-r32",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r40",
+        "note": "p16-r40",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r48",
+        "note": "p16-r48",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p16-r64",
+        "note": "p16-r64",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r00",
+        "note": "p24-r00",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r02",
+        "note": "p24-r02",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r04",
+        "note": "p24-r04",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r06",
+        "note": "p24-r06",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r08",
+        "note": "p24-r08",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r10",
+        "note": "p24-r10",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r12",
+        "note": "p24-r12",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r14",
+        "note": "p24-r14",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r16",
+        "note": "p24-r16",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r18",
+        "note": "p24-r18",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r20",
+        "note": "p24-r20",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r22",
+        "note": "p24-r22",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r24",
+        "note": "p24-r24",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r28",
+        "note": "p24-r28",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r32",
+        "note": "p24-r32",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r40",
+        "note": "p24-r40",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r48",
+        "note": "p24-r48",
+        "errors": []
+      },
+      {
+        "case": "sweep-radius-p24-r64",
+        "note": "p24-r64",
+        "errors": []
+      }
+    ],
+    "transitions": [
+      {
+        "padding": 4,
+        "firstFailingRadius": 22,
+        "analyticFirstFailingRadius": 16
+      },
+      {
+        "padding": 8,
+        "firstFailingRadius": 40,
+        "analyticFirstFailingRadius": 32
+      },
+      {
+        "padding": 12,
+        "firstFailingRadius": null,
+        "analyticFirstFailingRadius": 48
+      },
+      {
+        "padding": 16,
+        "firstFailingRadius": null,
+        "analyticFirstFailingRadius": 64
+      },
+      {
+        "padding": 24,
+        "firstFailingRadius": null,
+        "analyticFirstFailingRadius": null
+      }
+    ]
+  },
+  "pillLength": [
+    {
+      "case": "sweep-pill-w01",
+      "note": "w01",
+      "errors": []
+    },
+    {
+      "case": "sweep-pill-w02",
+      "note": "w02",
+      "errors": [
+        "allocation.exceeded (20.8px)"
+      ]
+    },
+    {
+      "case": "sweep-pill-w03",
+      "note": "w03",
+      "errors": []
+    },
+    {
+      "case": "sweep-pill-w04",
+      "note": "w04",
+      "errors": [
+        "allocation.exceeded (16.8px)"
+      ]
+    },
+    {
+      "case": "sweep-pill-w06",
+      "note": "w06",
+      "errors": [
+        "boundary.corner (0.76px)",
+        "allocation.exceeded (12.8px)"
+      ]
+    },
+    {
+      "case": "sweep-pill-w08",
+      "note": "w08",
+      "errors": [
+        "boundary.corner (4.69px)",
+        "allocation.exceeded (32.8px)",
+        "canvas.containment (8.8px)"
+      ]
+    },
+    {
+      "case": "sweep-pill-w10",
+      "note": "w10",
+      "errors": [
+        "boundary.corner (4.69px)",
+        "allocation.exceeded (16.8px)"
+      ]
+    },
+    {
+      "case": "sweep-pill-w12",
+      "note": "w12",
+      "errors": [
+        "boundary.corner (12.73px)",
+        "allocation.exceeded (32.8px)",
+        "canvas.containment (8.8px)"
+      ]
+    },
+    {
+      "case": "sweep-pill-w16",
+      "note": "w16",
+      "errors": [
+        "boundary.corner (14.19px)",
+        "allocation.exceeded (28.8px)",
+        "canvas.containment (4.8px)"
+      ]
+    },
+    {
+      "case": "sweep-pill-w20",
+      "note": "w20",
+      "errors": [
+        "boundary.corner (14.19px)",
+        "allocation.exceeded (44.8px)",
+        "canvas.containment (20.8px)"
+      ]
+    },
+    {
+      "case": "sweep-pill-w28",
+      "note": "w28",
+      "errors": [
+        "boundary.corner (14.19px)",
+        "allocation.exceeded (104.8px)",
+        "canvas.containment (80.8px)"
+      ]
+    },
+    {
+      "case": "sweep-pill-w40",
+      "note": "w40",
+      "errors": [
+        "boundary.corner (14.19px)",
+        "allocation.exceeded (116.8px)",
+        "canvas.containment (92.8px)"
+      ]
+    }
+  ],
+  "zoom": [
+    {
+      "zoom": "z050",
+      "maxSizeDriftPx": 0.06,
+      "errors": 4
+    },
+    {
+      "zoom": "z075",
+      "maxSizeDriftPx": 1.32,
+      "errors": 4
+    },
+    {
+      "zoom": "z100",
+      "maxSizeDriftPx": 0,
+      "errors": 4
+    },
+    {
+      "zoom": "z125",
+      "maxSizeDriftPx": 0.77,
+      "errors": 4
+    },
+    {
+      "zoom": "z150",
+      "maxSizeDriftPx": 0.01,
+      "errors": 4
+    },
+    {
+      "zoom": "z200",
+      "maxSizeDriftPx": 0.02,
+      "errors": 4
+    }
+  ],
+  "zoomRows": [
+    {
+      "case": "sweep-zoom-z050",
+      "note": "z050",
+      "errors": [
+        "boundary.corner (6.11px)",
+        "allocation.exceeded (2.7px)",
+        "allocation.exceeded (20.7px)",
+        "label.overlaps-node (21.79px)"
+      ]
+    },
+    {
+      "case": "sweep-zoom-z075",
+      "note": "z075",
+      "errors": [
+        "boundary.corner (8.79px)",
+        "allocation.exceeded (3.11px)",
+        "allocation.exceeded (30.11px)",
+        "label.overlaps-node (32.71px)"
+      ]
+    },
+    {
+      "case": "sweep-zoom-z100",
+      "note": "z100",
+      "errors": [
+        "boundary.corner (11.49px)",
+        "allocation.exceeded (5.47px)",
+        "allocation.exceeded (41.47px)",
+        "label.overlaps-node (43.6px)"
+      ]
+    },
+    {
+      "case": "sweep-zoom-z125",
+      "note": "z125",
+      "errors": [
+        "boundary.corner (14.9px)",
+        "allocation.exceeded (5.88px)",
+        "allocation.exceeded (50.88px)",
+        "label.overlaps-node (54.51px)"
+      ]
+    },
+    {
+      "case": "sweep-zoom-z150",
+      "note": "z150",
+      "errors": [
+        "boundary.corner (17.59px)",
+        "allocation.exceeded (8.22px)",
+        "allocation.exceeded (62.22px)",
+        "label.overlaps-node (65.41px)"
+      ]
+    },
+    {
+      "case": "sweep-zoom-z200",
+      "note": "z200",
+      "errors": [
+        "boundary.corner (23.7px)",
+        "allocation.exceeded (10.98px)",
+        "allocation.exceeded (82.98px)",
+        "label.overlaps-node (87.22px)"
+      ]
+    }
+  ],
+  "textScale": [
+    {
+      "case": "sweep-text-t100",
+      "note": "t100",
+      "errors": []
+    },
+    {
+      "case": "sweep-text-t100-diagram",
+      "note": "t100-diagram",
+      "errors": [
+        "boundary.corner (11.49px)",
+        "allocation.exceeded (5.47px)",
+        "allocation.exceeded (41.47px)",
+        "label.overlaps-node (43.6px)"
+      ]
+    },
+    {
+      "case": "sweep-text-t125",
+      "note": "t125",
+      "errors": []
+    },
+    {
+      "case": "sweep-text-t125-diagram",
+      "note": "t125-diagram",
+      "errors": [
+        "boundary.corner (13px)",
+        "allocation.exceeded (192.12px)",
+        "allocation.exceeded (80.88px)",
+        "label.overlaps-node (57.02px)",
+        "canvas.containment (168.12px)"
+      ]
+    },
+    {
+      "case": "sweep-text-t150",
+      "note": "t150",
+      "errors": []
+    },
+    {
+      "case": "sweep-text-t150-diagram",
+      "note": "t150-diagram",
+      "errors": [
+        "boundary.corner (12.48px)",
+        "allocation.exceeded (370.91px)",
+        "allocation.exceeded (178.56px)",
+        "label.overlaps-node (70.36px)",
+        "canvas.containment (346.91px)",
+        "canvas.containment (18.56px)"
+      ]
+    },
+    {
+      "case": "sweep-text-t175",
+      "note": "t175",
+      "errors": []
+    },
+    {
+      "case": "sweep-text-t175-diagram",
+      "note": "t175-diagram",
+      "errors": [
+        "boundary.corner (12.69px)",
+        "allocation.exceeded (579.7px)",
+        "allocation.exceeded (262.64px)",
+        "label.overlaps-node (83.65px)",
+        "canvas.containment (555.7px)",
+        "canvas.containment (102.64px)"
+      ]
+    },
+    {
+      "case": "sweep-text-t200",
+      "note": "t200",
+      "errors": []
+    },
+    {
+      "case": "sweep-text-t200-diagram",
+      "note": "t200-diagram",
+      "errors": [
+        "boundary.corner (12.16px)",
+        "allocation.exceeded (814.17px)",
+        "allocation.exceeded (394.58px)",
+        "label.overlaps-node (94.65px)",
+        "canvas.containment (790.17px)",
+        "canvas.containment (234.58px)"
+      ]
+    },
+    {
+      "case": "sweep-text-t250",
+      "note": "t250",
+      "errors": [
+        "boundary.corner (1.47px)"
+      ]
+    },
+    {
+      "case": "sweep-text-t250-diagram",
+      "note": "t250-diagram",
+      "errors": [
+        "boundary.corner (11.83px)",
+        "allocation.exceeded (1525.25px)",
+        "allocation.exceeded (616.75px)",
+        "label.overlaps-node (105.83px)",
+        "canvas.containment (1501.25px)",
+        "canvas.containment (456.75px)",
+        "canvas.containment (48.25px)"
+      ]
+    },
+    {
+      "case": "sweep-text-t300",
+      "note": "t300",
+      "errors": [
+        "contain.overflow (33.39px)"
+      ]
+    },
+    {
+      "case": "sweep-text-t300-diagram",
+      "note": "t300-diagram",
+      "errors": [
+        "boundary.corner (11.52px)",
+        "allocation.exceeded (2297.27px)",
+        "allocation.exceeded (943.2px)",
+        "label.overlaps-node (115.92px)",
+        "canvas.containment (2273.27px)",
+        "canvas.containment (783.2px)",
+        "canvas.containment (110.7px)"
+      ]
+    }
+  ]
+}
+

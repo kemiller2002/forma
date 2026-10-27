@@ -121,6 +121,14 @@
     opacity: var(--ef-site-backdrop-opacity, 1);
   }
 
+  /*
+   * Prose defaults stop at an embedded diagram (LCE-001). Diagram geometry is
+   * computed for the component layer's type metrics; a site heading size or
+   * paragraph margin made nodes outgrow their layout. revert-layer hands these
+   * elements back to the earlier layers.
+   */
+  .ef-site .ef-diagram :where(h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, svg, dl, dt, dd, strong, b) { all: revert-layer; }
+
   .ef-site :where(h1, h2, h3, h4, h5, h6) {
     margin-block: 0;
     color: var(--ef-tone-heading);

@@ -1,0 +1,59 @@
+{
+  "constraint": "nest.containment",
+  "origin": {
+    "case": "nested-031",
+    "seed": "8c369b46286d1f85",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 2 candidates, kept size 139",
+    "round 1: 2 candidates, kept size 94",
+    "round 2: 2 candidates, kept size 73",
+    "round 3: 2 candidates, kept size 57",
+    "round 4: 2 candidates, kept size 53",
+    "round 5: 2 candidates, kept size 51"
+  ],
+  "case": {
+    "id": "nest.containment--nested-badge--nested-031",
+    "family": "nested",
+    "seed": "8c369b46286d1f85",
+    "note": "paragraph host-radius=16px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "nested",
+      "host": {
+        "probe": {
+          "width": 120,
+          "padding": [
+            2,
+            12,
+            4,
+            0
+          ],
+          "border": 1,
+          "radius": "16px",
+          "text": "",
+          "center": false
+        }
+      },
+      "inner": {
+        "type": "component",
+        "component": "badge",
+        "text": "C",
+        "radius": "999px",
+        "hostWidth": 600
+      }
+    }
+  },
+  "expect": "fail",
+  "disposition": "Consumer composition: a Forma badge inside an arbitrary rounded container whose padding is smaller than its corner radius. The parent, not Forma, owns that constraint."
+}

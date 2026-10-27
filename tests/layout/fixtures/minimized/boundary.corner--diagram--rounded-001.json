@@ -1,0 +1,59 @@
+{
+  "constraint": "boundary.corner",
+  "origin": {
+    "case": "rounded-001",
+    "seed": "12b0738bd18f8c9c",
+    "family": "rounded"
+  },
+  "minimization": [
+    "round 0: 2 candidates, kept size 587",
+    "round 1: 2 candidates, kept size 379",
+    "round 2: 2 candidates, kept size 217",
+    "round 3: 1 candidates, kept size 117",
+    "round 4: 1 candidates, kept size 63",
+    "round 5: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "boundary.corner--diagram--rounded-001",
+    "family": "rounded",
+    "seed": "12b0738bd18f8c9c",
+    "note": "extreme-paragraph radius=24px / 8px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 1,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Probe",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "right"
+        },
+        "nodes": [
+          {
+            "id": "n1",
+            "kind": "subprocess",
+            "label": "Counter interrupts from the rendezvous radar coupling",
+            "variant": "pill"
+          }
+        ],
+        "edges": []
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

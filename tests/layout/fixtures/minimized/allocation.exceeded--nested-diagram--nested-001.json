@@ -1,0 +1,55 @@
+{
+  "constraint": "allocation.exceeded",
+  "origin": {
+    "case": "nested-001",
+    "seed": "d81651a381d0c66c",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 2 candidates, kept size 172",
+    "round 1: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "allocation.exceeded--nested-diagram--nested-001",
+    "family": "nested",
+    "seed": "d81651a381d0c66c",
+    "note": "paragraph host-radius=999px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 1,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Probe",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "right"
+        },
+        "nodes": [
+          {
+            "id": "n1",
+            "kind": "task",
+            "label": "Counter interrupts from the rendezvous radar coupling data units stole computer capacity, and the executive raised a program alarm each time its queue overflowed.",
+            "variant": "rectangle"
+          }
+        ],
+        "edges": []
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

@@ -1,0 +1,70 @@
+{
+  "constraint": "separation.nodes",
+  "origin": {
+    "case": "nested-002",
+    "seed": "8985eb5ea74c68e8",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 22 candidates, kept size 548",
+    "round 1: 15 candidates, kept size 443",
+    "round 2: 11 candidates, kept size 297",
+    "round 3: 7 candidates, kept size 224",
+    "round 4: 7 candidates, kept size 179",
+    "round 5: 7 candidates, kept size 146"
+  ],
+  "case": {
+    "id": "separation.nodes--nested-diagram--nested-002",
+    "family": "nested",
+    "seed": "8985eb5ea74c68e8",
+    "note": "unbroken host-radius=8px / 24px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "nested",
+      "host": {
+        "card": "8px / 24px"
+      },
+      "inner": {
+        "type": "diagram",
+        "zoom": 0.75,
+        "workflow": {
+          "format": "forma-workflow",
+          "formatVersion": "1.0.0",
+          "id": "probe",
+          "title": "Generated graph",
+          "forma": {
+            "version": "0.9.0"
+          },
+          "layout": {
+            "direction": "right"
+          },
+          "nodes": [
+            {
+              "id": "n3",
+              "kind": "task",
+              "label": "Counter interrupts from the rendezvous radar"
+            },
+            {
+              "id": "n5",
+              "kind": "subprocess",
+              "label": "ניתוח שורש הבעיה הראה",
+              "description": "Root cause"
+            }
+          ],
+          "edges": []
+        }
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}
