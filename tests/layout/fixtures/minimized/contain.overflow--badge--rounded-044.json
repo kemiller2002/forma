@@ -1,0 +1,38 @@
+{
+  "constraint": "contain.overflow",
+  "origin": {
+    "case": "rounded-044",
+    "seed": "07db550e1962f7f3",
+    "family": "rounded"
+  },
+  "minimization": [
+    "round 0: 1 candidates, kept size 37",
+    "round 1: 1 candidates, kept size 18",
+    "round 2: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "contain.overflow--badge--rounded-044",
+    "family": "rounded",
+    "seed": "07db550e1962f7f3",
+    "note": "unbroken radius=8px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "component",
+      "component": "badge",
+      "text": "Pneumonoultramicro",
+      "radius": "8px",
+      "hostWidth": 96
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

@@ -1,0 +1,104 @@
+{
+  "constraint": "label.overlaps-label",
+  "origin": {
+    "case": "nested-002",
+    "seed": "8985eb5ea74c68e8",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 22 candidates, kept size 577",
+    "round 1: 21 candidates, kept size 504",
+    "round 2: 21 candidates, kept size 453",
+    "round 3: 21 candidates, kept size 304",
+    "round 4: 16 candidates, kept size 227",
+    "round 5: 12 candidates, kept size 177"
+  ],
+  "case": {
+    "id": "label.overlaps-label--nested-diagram--nested-002",
+    "family": "nested",
+    "seed": "8985eb5ea74c68e8",
+    "note": "unbroken host-radius=8px / 24px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 0.75,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Generated graph",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "right"
+        },
+        "nodes": [
+          {
+            "id": "n1",
+            "kind": "event",
+            "label": "Root cause",
+            "variant": "ellipse",
+            "layout": {
+              "width": 96
+            }
+          },
+          {
+            "id": "n2",
+            "kind": "event",
+            "label": "Incomprehensibilities notwithstanding,",
+            "variant": "diamond"
+          },
+          {
+            "id": "n3",
+            "kind": "task",
+            "label": "Counter interrupts from the rendezvous radar coupling data units stole computer capacity,"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e0",
+            "source": {
+              "node": "n1"
+            },
+            "target": {
+              "node": "n2"
+            },
+            "label": "1202 alarm"
+          },
+          {
+            "id": "e1",
+            "source": {
+              "node": "n2"
+            },
+            "target": {
+              "node": "n3"
+            },
+            "label": "root cause"
+          },
+          {
+            "id": "e2",
+            "source": {
+              "node": "n1"
+            },
+            "target": {
+              "node": "n3"
+            },
+            "label": "contributing factor"
+          }
+        ]
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

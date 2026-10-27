@@ -1,0 +1,41 @@
+{
+  "constraint": "contain.overflow",
+  "origin": {
+    "case": "responsive-089",
+    "seed": "2f8fe1faddb9de1d",
+    "family": "responsive"
+  },
+  "minimization": [
+    "round 0: 1 candidates, kept size 34",
+    "round 1: 1 candidates, kept size 17",
+    "round 2: 1 candidates, kept size 8",
+    "round 3: 1 candidates, kept size 4",
+    "round 4: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "contain.overflow--wizard-step--responsive-089",
+    "family": "responsive",
+    "seed": "2f8fe1faddb9de1d",
+    "note": "path",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        800
+      ],
+      "rootPercent": 150,
+      "letterSpacingEm": 0,
+      "lineHeight": 1,
+      "weight": 700
+    },
+    "subject": {
+      "type": "component",
+      "component": "wizard-step",
+      "text": "/hom",
+      "radius": "8px / 24px",
+      "hostWidth": 600
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

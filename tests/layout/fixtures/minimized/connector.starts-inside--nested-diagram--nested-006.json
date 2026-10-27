@@ -1,0 +1,77 @@
+{
+  "constraint": "connector.starts-inside",
+  "origin": {
+    "case": "nested-006",
+    "seed": "0cbf1be91c04721a",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 21 candidates, kept size 471",
+    "round 1: 19 candidates, kept size 353",
+    "round 2: 13 candidates, kept size 262",
+    "round 3: 9 candidates, kept size 211",
+    "round 4: 9 candidates, kept size 161",
+    "round 5: 8 candidates, kept size 117"
+  ],
+  "case": {
+    "id": "connector.starts-inside--nested-diagram--nested-006",
+    "family": "nested",
+    "seed": "0cbf1be91c04721a",
+    "note": "unbroken host-radius=8px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 0.5,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Generated graph",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "down"
+        },
+        "nodes": [
+          {
+            "id": "n3",
+            "kind": "end",
+            "label": "🚀 Launch ✅ Verified 🔥 Fire 🧑‍🚀 Crew 👩🏽‍🔬 Analyst",
+            "layout": {
+              "width": 160
+            }
+          },
+          {
+            "id": "n4",
+            "kind": "start",
+            "label": "Incomprehensibilities notwithstanding,",
+            "variant": "rounded"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e0",
+            "source": {
+              "node": "n3"
+            },
+            "target": {
+              "node": "n4"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

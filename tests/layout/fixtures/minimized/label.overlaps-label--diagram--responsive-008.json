@@ -1,0 +1,100 @@
+{
+  "constraint": "label.overlaps-label",
+  "origin": {
+    "case": "responsive-008",
+    "seed": "1beb8360a5d6c3ad",
+    "family": "responsive"
+  },
+  "minimization": [
+    "round 0: 14 candidates, kept size 566",
+    "round 1: 13 candidates, kept size 404",
+    "round 2: 12 candidates, kept size 292",
+    "round 3: 9 candidates, kept size 241",
+    "round 4: 9 candidates, kept size 190",
+    "round 5: 9 candidates, kept size 152"
+  ],
+  "case": {
+    "id": "label.overlaps-label--diagram--responsive-008",
+    "family": "responsive",
+    "seed": "1beb8360a5d6c3ad",
+    "note": "graph",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        320,
+        800
+      ],
+      "rootPercent": 150,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 1,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Generated graph",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "right"
+        },
+        "nodes": [
+          {
+            "id": "n1",
+            "kind": "event",
+            "label": "Incomprehensibilities notwithstanding,"
+          },
+          {
+            "id": "n2",
+            "kind": "task",
+            "label": "Pneumonoultramicroscopicsilicovolcano"
+          },
+          {
+            "id": "n3",
+            "kind": "end",
+            "label": "Incomprehensibilities notwithstanding,",
+            "variant": "rounded"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e0",
+            "source": {
+              "node": "n1"
+            },
+            "target": {
+              "node": "n2"
+            },
+            "label": "1202 alarm"
+          },
+          {
+            "id": "e1",
+            "source": {
+              "node": "n2"
+            },
+            "target": {
+              "node": "n3"
+            },
+            "label": "1202 alarm"
+          },
+          {
+            "id": "e2",
+            "source": {
+              "node": "n1"
+            },
+            "target": {
+              "node": "n3"
+            },
+            "label": "原因"
+          }
+        ]
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

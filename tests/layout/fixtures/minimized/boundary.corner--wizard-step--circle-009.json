@@ -1,0 +1,36 @@
+{
+  "constraint": "boundary.corner",
+  "origin": {
+    "case": "circle-009",
+    "seed": "640428a853547210",
+    "family": "circle"
+  },
+  "minimization": [
+    "round 0: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "boundary.corner--wizard-step--circle-009",
+    "family": "circle",
+    "seed": "640428a853547210",
+    "note": "indicator 1.5k",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "component",
+      "component": "wizard-step",
+      "text": "1.5k",
+      "radius": "50%",
+      "hostWidth": 600
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

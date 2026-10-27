@@ -1,0 +1,59 @@
+{
+  "constraint": "nest.containment",
+  "origin": {
+    "case": "nested-045",
+    "seed": "263094cba08a0a72",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 2 candidates, kept size 67",
+    "round 1: 2 candidates, kept size 58",
+    "round 2: 2 candidates, kept size 54",
+    "round 3: 2 candidates, kept size 52",
+    "round 4: 2 candidates, kept size 51",
+    "round 5: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "nest.containment--nested-button--nested-045",
+    "family": "nested",
+    "seed": "263094cba08a0a72",
+    "note": "cjk host-radius=999px",
+    "script": "cjk",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "nested",
+      "host": {
+        "probe": {
+          "width": 200,
+          "padding": [
+            4,
+            4,
+            2,
+            16
+          ],
+          "border": 8,
+          "radius": "999px",
+          "text": "",
+          "center": true
+        }
+      },
+      "inner": {
+        "type": "component",
+        "component": "button",
+        "text": "原",
+        "radius": "24px",
+        "hostWidth": 600
+      }
+    }
+  },
+  "expect": "fail",
+  "disposition": "Consumer composition: a Forma button inside an arbitrary pill-shaped container. The parent owns that constraint."
+}

@@ -1,0 +1,43 @@
+{
+  "constraint": "contain.overflow",
+  "origin": {
+    "case": "nested-040",
+    "seed": "bffe4d7bde69a680",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 2 candidates, kept size 94",
+    "round 1: 2 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "contain.overflow--nested-badge--nested-040",
+    "family": "nested",
+    "seed": "bffe4d7bde69a680",
+    "note": "url host-radius=8px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "nested",
+      "host": {
+        "card": "8px"
+      },
+      "inner": {
+        "type": "component",
+        "component": "badge",
+        "text": "https://www.example.com/a/very/long/path/to/",
+        "radius": "50%",
+        "hostWidth": 600
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

@@ -1,0 +1,121 @@
+{
+  "constraint": "connector.crosses-node",
+  "origin": {
+    "case": "nested-002",
+    "seed": "8985eb5ea74c68e8",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 22 candidates, kept size 561",
+    "round 1: 18 candidates, kept size 399",
+    "round 2: 17 candidates, kept size 348",
+    "round 3: 17 candidates, kept size 297",
+    "round 4: 17 candidates, kept size 247",
+    "round 5: 16 candidates, kept size 203"
+  ],
+  "case": {
+    "id": "connector.crosses-node--nested-diagram--nested-002",
+    "family": "nested",
+    "seed": "8985eb5ea74c68e8",
+    "note": "unbroken host-radius=8px / 24px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 0.75,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Generated graph",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "right"
+        },
+        "nodes": [
+          {
+            "id": "n1",
+            "kind": "event",
+            "label": "Root cause",
+            "variant": "ellipse",
+            "layout": {
+              "width": 96
+            }
+          },
+          {
+            "id": "n2",
+            "kind": "event",
+            "label": "Incomprehensibilities notwithstanding,",
+            "variant": "diamond"
+          },
+          {
+            "id": "n4",
+            "kind": "end",
+            "label": "Incomprehensibilities notwithstanding,",
+            "variant": "rounded"
+          },
+          {
+            "id": "n5",
+            "kind": "subprocess",
+            "label": "ניתוח שורש הבעיה הראה כשל בטבעת האיטום בטמפרטורה נמוכה",
+            "description": "Root cause"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e0",
+            "source": {
+              "node": "n1"
+            },
+            "target": {
+              "node": "n2"
+            },
+            "label": "1202 alarm"
+          },
+          {
+            "id": "e1",
+            "source": {
+              "node": "n2"
+            },
+            "target": {
+              "node": "n4"
+            },
+            "label": "contributing factor"
+          },
+          {
+            "id": "e2",
+            "source": {
+              "node": "n4"
+            },
+            "target": {
+              "node": "n5"
+            },
+            "label": "root cause"
+          },
+          {
+            "id": "e3",
+            "source": {
+              "node": "n1"
+            },
+            "target": {
+              "node": "n5"
+            },
+            "label": "enabling condition"
+          }
+        ]
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001; must keep passing."
+}

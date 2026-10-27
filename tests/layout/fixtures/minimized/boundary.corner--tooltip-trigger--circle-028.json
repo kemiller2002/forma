@@ -1,0 +1,36 @@
+{
+  "constraint": "boundary.corner",
+  "origin": {
+    "case": "circle-028",
+    "seed": "cf9d3334cdcefcc3",
+    "family": "circle"
+  },
+  "minimization": [
+    "round 0: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "boundary.corner--tooltip-trigger--circle-028",
+    "family": "circle",
+    "seed": "cf9d3334cdcefcc3",
+    "note": "glyph 1.5k",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "component",
+      "component": "tooltip-trigger",
+      "text": "1.5k",
+      "radius": "50%",
+      "hostWidth": 600
+    }
+  },
+  "expect": "fail",
+  "disposition": "Contract limit, not corrected: the tooltip trigger is a circle for one glyph (the canonical \"?\"). A widening fix changed hover geometry and broke the catalog interaction test (ULI-A02), so it was reverted; the rendered check keeps reporting multi-character glyphs."
+}

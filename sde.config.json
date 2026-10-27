@@ -8,7 +8,10 @@
       "src/workflow/Forma.Workflow.Wasm/bin",
       "src/workflow/Forma.Workflow.Wasm/obj",
       "tests/workflow/Forma.Workflow.Tests/bin",
-      "tests/workflow/Forma.Workflow.Tests/obj"
+      "tests/workflow/Forma.Workflow.Tests/obj",
+      "tests/layout/Forma.Layout.Probe/bin",
+      "tests/layout/Forma.Layout.Probe/obj",
+      "tests/layout/out"
     ]
   }
 }

@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    LCE-001 adversarial layout probe. Generates deterministic component and
+    diagram configurations, renders them with the real Forma stylesheets and the
+    Forma.Workflow engine, has a browser measure the result (tests/layout/measure.mjs),
+    and evaluates the measured geometry against explicit layout constraints.
+    No package dependencies beyond the Forma.Workflow library.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <IsPackable>false</IsPackable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <AssemblyName>forma-layout-probe</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Seed.fs" />
+    <Compile Include="Corpus.fs" />
+    <Compile Include="Cases.fs" />
+    <Compile Include="Families.fs" />
+    <Compile Include="Pages.fs" />
+    <Compile Include="Measure.fs" />
+    <Compile Include="Constraints.fs" />
+    <Compile Include="Search.fs" />
+    <Compile Include="Report.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../../src/workflow/Forma.Workflow/Forma.Workflow.fsproj" />
+  </ItemGroup>
+</Project>

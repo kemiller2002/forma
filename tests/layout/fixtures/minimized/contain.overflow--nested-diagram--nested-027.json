@@ -1,0 +1,70 @@
+{
+  "constraint": "contain.overflow",
+  "origin": {
+    "case": "nested-027",
+    "seed": "644c0581d36ee443",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 19 candidates, kept size 560",
+    "round 1: 16 candidates, kept size 455",
+    "round 2: 12 candidates, kept size 361",
+    "round 3: 9 candidates, kept size 276",
+    "round 4: 7 candidates, kept size 203",
+    "round 5: 7 candidates, kept size 149"
+  ],
+  "case": {
+    "id": "contain.overflow--nested-diagram--nested-027",
+    "family": "nested",
+    "seed": "644c0581d36ee443",
+    "note": "cjk host-radius=2px",
+    "script": "cjk",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "nested",
+      "host": {
+        "card": "2px"
+      },
+      "inner": {
+        "type": "diagram",
+        "zoom": 1,
+        "workflow": {
+          "format": "forma-workflow",
+          "formatVersion": "1.0.0",
+          "id": "probe",
+          "title": "Generated graph",
+          "forma": {
+            "version": "0.9.0"
+          },
+          "layout": {
+            "direction": "down"
+          },
+          "nodes": [
+            {
+              "id": "n6",
+              "kind": "decision",
+              "label": "Counter interrupts from the rendezvous radar coupling data units stole computer capacity,",
+              "layout": {
+                "width": 200
+              }
+            }
+          ],
+          "edges": []
+        }
+      }
+    }
+  },
+  "expect": "fail",
+  "static": [
+    "layout.node.too-small"
+  ],
+  "disposition": "Authored diamond width too small for its label. Reported before rendering by LayoutCheck layout.node.too-small."
+}

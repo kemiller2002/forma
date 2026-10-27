@@ -102,10 +102,10 @@ let all =
 
       test "FillMissing keeps authored positions; Recompute replaces them" (fun () ->
           let w = fixture "static-export"
-          let authored = w.Nodes |> List.map (fun n -> n.Layout.Position)
+          let defaults = (Layout.apply Recompute w).Nodes |> List.map _.Layout.Position
           let moved = { w with Nodes = w.Nodes |> List.mapi (fun i n -> if i = 0 then { n with Layout = { n.Layout with Position = Some { X = 900.0; Y = 500.0 } } } else n) }
           equal (Some { X = 900.0; Y = 500.0 }) (Layout.apply FillMissing moved).Nodes[0].Layout.Position "kept"
-          equal authored ((Layout.apply Recompute moved).Nodes |> List.map _.Layout.Position) "recomputed to the default")
+          equal defaults ((Layout.apply Recompute moved).Nodes |> List.map _.Layout.Position) "recomputed to the default")
 
       test "Members of a group or lane stay inside its boundary in the default layout" (fun () ->
           for id in [ "groups"; "swimlanes" ] do

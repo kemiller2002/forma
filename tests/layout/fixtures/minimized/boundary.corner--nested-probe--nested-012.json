@@ -1,0 +1,47 @@
+{
+  "constraint": "boundary.corner",
+  "origin": {
+    "case": "nested-012",
+    "seed": "39bc65160439e512",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 2 candidates, kept size 75",
+    "round 1: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "boundary.corner--nested-probe--nested-012",
+    "family": "nested",
+    "seed": "39bc65160439e512",
+    "note": "unbroken host-radius=4px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "probe",
+      "probe": {
+        "width": 280,
+        "height": 120,
+        "padding": [
+          24,
+          2,
+          0,
+          12
+        ],
+        "border": 8,
+        "radius": "50%",
+        "text": "Pneumonoultramicroscopicsilicovolcanoconiosis_and_then_some_more_characters",
+        "center": true
+      }
+    }
+  },
+  "expect": "fail",
+  "disposition": "Controlled CSS experiment host (bare rounded box), not a Forma component."
+}

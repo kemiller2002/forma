@@ -1,0 +1,49 @@
+{
+  "constraint": "contain.overflow",
+  "origin": {
+    "case": "nested-000",
+    "seed": "652175d8b1d16d30",
+    "family": "nested"
+  },
+  "minimization": [
+    "round 0: 2 candidates, kept size 75",
+    "round 1: 1 candidates, kept size 37",
+    "round 2: 1 candidates, kept size 18",
+    "round 3: 1 candidates, none smaller still fails"
+  ],
+  "case": {
+    "id": "contain.overflow--nested-probe--nested-000",
+    "family": "nested",
+    "seed": "652175d8b1d16d30",
+    "note": "unbroken host-radius=32px",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "probe",
+      "probe": {
+        "width": 80,
+        "height": 80,
+        "padding": [
+          8,
+          24,
+          0,
+          0
+        ],
+        "border": 1,
+        "radius": "2px",
+        "text": "Pneumonoultramicro",
+        "center": false
+      }
+    }
+  },
+  "expect": "fail",
+  "disposition": "Controlled CSS experiment host (bare box with fixed size), not a Forma component."
+}

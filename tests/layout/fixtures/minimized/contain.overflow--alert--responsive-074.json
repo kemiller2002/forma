@@ -1,0 +1,40 @@
+{
+  "constraint": "contain.overflow",
+  "origin": {
+    "case": "responsive-074",
+    "seed": "386706643371bf0e",
+    "family": "responsive"
+  },
+  "minimization": [
+    "round 0: 1 candidates, kept size 22",
+    "round 1: 1 candidates, kept size 4",
+    "round 2: 1 candidates, kept size 2",
+    "round 3: 1 candidates, kept size 1"
+  ],
+  "case": {
+    "id": "contain.overflow--alert--responsive-074",
+    "family": "responsive",
+    "seed": "386706643371bf0e",
+    "note": "medium",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        800
+      ],
+      "rootPercent": 125,
+      "letterSpacingEm": 0.05,
+      "lineHeight": 1.5,
+      "weight": 400
+    },
+    "subject": {
+      "type": "component",
+      "component": "alert",
+      "text": "C",
+      "radius": "8px / 24px",
+      "hostWidth": 160
+    }
+  },
+  "expect": "fail",
+  "disposition": "Open limitation: .ef-alert stacks its action by viewport media query, not container width, so a 160px column at 125% text overflows. Recorded as a Forma work item."
+}

@@ -1,0 +1,147 @@
+{
+  "constraint": "*",
+  "origin": {
+    "source": "kemiller2002/causa-data workspaces/demo/historical-v1/investigations/c6b26614-fc43-5013-a15c-cf95942ee07b/snapshot.json",
+    "derivation": "indy-init-rehearsal-004 src/app/View.fs graphDocument"
+  },
+  "case": {
+    "id": "causa-c6b26614-375-z100-t100",
+    "family": "causa",
+    "seed": "0000000000000000",
+    "note": "Apollo 1 (AS-204) Command Module fire, 27 January 1967",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        375,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 1,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Causal analysis: Apollo 1 (AS-204) Command Module fire, 27 January 1967",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "right"
+        },
+        "nodes": [
+          {
+            "id": "h-082b7018-1c41-5ac1-9e18-3d7b108cc7ff",
+            "kind": "task",
+            "label": "Deficiencies in Command Module design, workmanship and quality control, including vulnerable Teflon-insulated wiring and coolant plumbing, created multiple credible ignition opportunities (two of the three candidate arcs showed poor engineering and installation) and an unnecessarily hazardous condition.",
+            "description": "Hypothesis · Supported · 3 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-18c1ba74-1c28-5b82-8533-3295c2511261",
+            "kind": "task",
+            "label": "The inward-opening, multi-piece hatch could not be opened against the cabin pressure, so the crew could not escape.",
+            "description": "Hypothesis · Supported · 8 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-1e5e9314-c49b-5415-9be2-7c03fcce8897",
+            "kind": "task",
+            "label": "The fire was most probably brought about by a minor electrical malfunction or failure of equipment or wire insulation, the Board's most probable initiator being an electrical arc in the lower forward left-hand equipment bay near the Environmental Control Unit; the exact source was not identified.",
+            "description": "Hypothesis · Supported · 7 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-7ba392b4-318c-5dea-a711-54dc41b966ed",
+            "kind": "task",
+            "label": "The test was not classified as hazardous, so no emergency escape, rescue, fire or medical preparations were in place; this contributed to the failed rescue, although in medical opinion the crew could not have been resuscitated by the time the hatches were opened.",
+            "description": "Hypothesis · Supported · 3 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-bc19360f-4901-5b7d-bd98-1e615a3c0349",
+            "kind": "task",
+            "label": "The sealed Command Module cabin, pressurized with 100-percent oxygen at 16.7 psia and containing extensive combustible materials near possible ignition sources, turned a minor ignition into a rapidly fatal fire.",
+            "description": "Hypothesis · Supported · 12 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-c6c25eba-60c7-5fa1-97f2-77857a2cdaf3",
+            "kind": "task",
+            "label": "Program management problems (engineering orders open at delivery, an incomplete pre-test constraint list, insufficient response to changing program requirements) let deficiencies stand; the Senate committee inferred overconfidence from earlier pure-oxygen success.",
+            "description": "Hypothesis · Supported · 7 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "c-a3dadf87-4540-5a7a-8991-b6086354fa69",
+            "kind": "end",
+            "label": "Fire in Command Module 012 during the Plugs-Out Integrated Test, the death of the crew and the failed rescue",
+            "description": "Outcome · causal relationship Confirmed"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e0",
+            "source": {
+              "node": "h-bc19360f-4901-5b7d-bd98-1e615a3c0349"
+            },
+            "target": {
+              "node": "c-a3dadf87-4540-5a7a-8991-b6086354fa69"
+            },
+            "label": "Root cause"
+          },
+          {
+            "id": "e1",
+            "source": {
+              "node": "h-1e5e9314-c49b-5415-9be2-7c03fcce8897"
+            },
+            "target": {
+              "node": "c-a3dadf87-4540-5a7a-8991-b6086354fa69"
+            },
+            "label": "Trigger"
+          },
+          {
+            "id": "e2",
+            "source": {
+              "node": "h-082b7018-1c41-5ac1-9e18-3d7b108cc7ff"
+            },
+            "target": {
+              "node": "c-a3dadf87-4540-5a7a-8991-b6086354fa69"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e3",
+            "source": {
+              "node": "h-18c1ba74-1c28-5b82-8533-3295c2511261"
+            },
+            "target": {
+              "node": "c-a3dadf87-4540-5a7a-8991-b6086354fa69"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e4",
+            "source": {
+              "node": "h-7ba392b4-318c-5dea-a711-54dc41b966ed"
+            },
+            "target": {
+              "node": "c-a3dadf87-4540-5a7a-8991-b6086354fa69"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e5",
+            "source": {
+              "node": "h-c6c25eba-60c7-5fa1-97f2-77857a2cdaf3"
+            },
+            "target": {
+              "node": "c-a3dadf87-4540-5a7a-8991-b6086354fa69"
+            },
+            "label": "Enabling condition"
+          }
+        ]
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001 (baseline violated six constraints); must keep passing."
+}

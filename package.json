@@ -102,6 +102,8 @@
     "catalog:check": "node tools/catalog/validate.mjs && node tools/catalog/inventory.mjs --check",
     "catalog:inventory": "node tools/catalog/inventory.mjs",
     "workflow:test": "dotnet run --project tests/workflow/Forma.Workflow.Tests -c Release",
+    "layout:probe": "dotnet run --project tests/layout/Forma.Layout.Probe -c Release --",
+    "test:layout": "dotnet run --project tests/layout/Forma.Layout.Probe -c Release -- regress",
     "workflow:build": "node tools/build-workflow-package.mjs",
     "workflow:validate": "dotnet run --project src/workflow/Forma.Workflow.Cli -c Release -- validate examples/workflows/forma/workflows/*.forma-workflow.json",
     "design:validate": "node tools/design-contract/cli.mjs validate examples/design/valid/*.forma-design.json",

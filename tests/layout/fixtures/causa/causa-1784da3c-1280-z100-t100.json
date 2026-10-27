@@ -1,0 +1,179 @@
+{
+  "constraint": "*",
+  "origin": {
+    "source": "kemiller2002/causa-data workspaces/demo/historical-v1/investigations/1784da3c-7141-59ee-a495-1d5d44bf2284/snapshot.json",
+    "derivation": "indy-init-rehearsal-004 src/app/View.fs graphDocument"
+  },
+  "case": {
+    "id": "causa-1784da3c-1280-z100-t100",
+    "family": "causa",
+    "seed": "0000000000000000",
+    "note": "Space Shuttle Challenger (STS-51-L) loss, 28 January 1986",
+    "script": "latin",
+    "page": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "rootPercent": 100,
+      "letterSpacingEm": 0,
+      "weight": 400
+    },
+    "subject": {
+      "type": "diagram",
+      "zoom": 1,
+      "workflow": {
+        "format": "forma-workflow",
+        "formatVersion": "1.0.0",
+        "id": "probe",
+        "title": "Causal analysis: Space Shuttle Challenger (STS-51-L) loss, 28 January 1986",
+        "forma": {
+          "version": "0.9.0"
+        },
+        "layout": {
+          "direction": "right"
+        },
+        "nodes": [
+          {
+            "id": "h-11a6bd07-10dc-58c3-90ae-ce276f0752fc",
+            "kind": "task",
+            "label": "Marshall management appears to have contained the O-ring concern within the project instead of communicating it to Levels I and II (the Commission's Finding 3 is worded 'appears to be a propensity').",
+            "description": "Hypothesis · Supported · 6 supporting, 3 contradicting evidence"
+          },
+          {
+            "id": "h-46f246bd-e0c1-5175-99b0-045a41ff7d92",
+            "kind": "task",
+            "label": "Thiokol management reversed its engineers' no-launch recommendation at the urging of Marshall to accommodate a major customer.",
+            "description": "Hypothesis · Supported · 6 supporting, 1 contradicting evidence"
+          },
+          {
+            "id": "h-4978f2e3-b3cd-5562-8bd6-398f0812d98d",
+            "kind": "task",
+            "label": "The faulty design of the right Solid Rocket Motor aft field joint caused the pressure seal to fail, letting combustion gas leak and weaken and/or penetrate the External Tank.",
+            "description": "Hypothesis · Supported · 12 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-5635d5c6-82d5-5809-bd2b-2b2b315c9766",
+            "kind": "task",
+            "label": "The launch decision process was flawed: Thiokol's initial recommendation against launch and the continuing opposition of its engineers did not reach those who made the final decision, and the O-ring erosion history, although briefed to Level I in August 1985, was not acted on as a constraint on launch.",
+            "description": "Hypothesis · Supported · 6 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-805ac71e-6a26-5042-81be-e1ccda84e85a",
+            "kind": "task",
+            "label": "At ignition the O-rings, their resiliency reduced by cold (modelled at 28 +/- 5 degrees F at the coldest point of the joint), combined with a tight tang-to-clevis gap and strut-enhanced joint opening near the 300-degree position, probably could not follow the opening gap quickly enough to seal, so blow-by and erosion began at or shortly after ignition.",
+            "description": "Hypothesis · Supported · 11 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-b00a6002-4ce5-5fdd-a03a-e362f3007dce",
+            "kind": "task",
+            "label": "The safety, reliability and quality assurance organization was silent: absent from the launch-decision forums and doing little or no trend analysis of O-ring distress.",
+            "description": "Hypothesis · Supported · 2 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-ddd2415c-1f5c-5e25-8b0d-f15117282721",
+            "kind": "task",
+            "label": "Over the preceding years NASA and Thiokol accepted escalating O-ring erosion and blow-by as an acceptable flight risk, apparently because earlier flights had survived it, waiving launch constraints and relying on flight-readiness rationales (later literature calls this normalization; the 1986 sources say 'acceptable risk').",
+            "description": "Hypothesis · Supported · 12 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "h-ea8ba6ca-3918-5c8b-97c8-e900d02bf1c7",
+            "kind": "task",
+            "label": "Pressure to meet an ambitious flight rate left no margin for unforeseen hardware problems and may have obscured engineering concerns (Rogers hedges this: 'may occasionally'; the House Committee finds it directly contributed to unsafe launch operations).",
+            "description": "Hypothesis · Supported · 3 supporting, 0 contradicting evidence"
+          },
+          {
+            "id": "c-663ba4a6-2a30-56b7-ae39-e3d04c8d4f78",
+            "kind": "end",
+            "label": "Loss of Challenger 73 seconds after launch on 28 January 1986",
+            "description": "Outcome · causal relationship Confirmed"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e0",
+            "source": {
+              "node": "h-4978f2e3-b3cd-5562-8bd6-398f0812d98d"
+            },
+            "target": {
+              "node": "c-663ba4a6-2a30-56b7-ae39-e3d04c8d4f78"
+            },
+            "label": "Root cause"
+          },
+          {
+            "id": "e1",
+            "source": {
+              "node": "h-805ac71e-6a26-5042-81be-e1ccda84e85a"
+            },
+            "target": {
+              "node": "c-663ba4a6-2a30-56b7-ae39-e3d04c8d4f78"
+            },
+            "label": "Trigger"
+          },
+          {
+            "id": "e2",
+            "source": {
+              "node": "h-5635d5c6-82d5-5809-bd2b-2b2b315c9766"
+            },
+            "target": {
+              "node": "c-663ba4a6-2a30-56b7-ae39-e3d04c8d4f78"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e3",
+            "source": {
+              "node": "h-46f246bd-e0c1-5175-99b0-045a41ff7d92"
+            },
+            "target": {
+              "node": "c-663ba4a6-2a30-56b7-ae39-e3d04c8d4f78"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e4",
+            "source": {
+              "node": "h-11a6bd07-10dc-58c3-90ae-ce276f0752fc"
+            },
+            "target": {
+              "node": "c-663ba4a6-2a30-56b7-ae39-e3d04c8d4f78"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e5",
+            "source": {
+              "node": "h-b00a6002-4ce5-5fdd-a03a-e362f3007dce"
+            },
+            "target": {
+              "node": "c-663ba4a6-2a30-56b7-ae39-e3d04c8d4f78"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e6",
+            "source": {
+              "node": "h-ddd2415c-1f5c-5e25-8b0d-f15117282721"
+            },
+            "target": {
+              "node": "c-663ba4a6-2a30-56b7-ae39-e3d04c8d4f78"
+            },
+            "label": "Contributing factor"
+          },
+          {
+            "id": "e7",
+            "source": {
+              "node": "h-ea8ba6ca-3918-5c8b-97c8-e900d02bf1c7"
+            },
+            "target": {
+              "node": "c-663ba4a6-2a30-56b7-ae39-e3d04c8d4f78"
+            },
+            "label": "Enabling condition"
+          }
+        ]
+      }
+    }
+  },
+  "expect": "pass",
+  "disposition": "Corrected by LCE-001 (baseline violated six constraints); must keep passing."
+}

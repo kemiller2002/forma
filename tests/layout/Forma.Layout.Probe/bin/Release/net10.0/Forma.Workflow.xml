@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Forma.Workflow</name></assembly>
+<members>
+<member name="T:Forma.Workflow.JsonLimits">
+<summary>
+ Limits applied to untrusted input before anything else reads it.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Json">
+<summary>
+ An order-preserving JSON value. Numbers keep their source text so metadata
+ round-trips exactly; objects keep property order so output is deterministic.
+</summary>
+</member>
+<member name="T:Forma.Workflow.SchemaError">
+<summary>
+ One structural violation, located by JSON Pointer.
+</summary>
+</member>
+<member name="T:Forma.Workflow.SemanticVersion">
+<summary>
+ A semantic version (format version or Forma release).
+</summary>
+</member>
+<member name="T:Forma.Workflow.HostMode.RuntimeMode">
+<summary>
+ Read-only; the host projects runtime state (status) onto the workflow.
+</summary>
+</member>
+<member name="T:Forma.Workflow.HostMode.PickMode">
+<summary>
+ The user picks objects; the host receives the selection.
+</summary>
+</member>
+<member name="T:Forma.Workflow.HostMode.EditMode">
+<summary>
+ Full editing through validated commands.
+</summary>
+</member>
+<member name="T:Forma.Workflow.HostMode.InspectMode">
+<summary>
+ Read-only with selection and an inspector for metadata, references and status.
+</summary>
+</member>
+<member name="T:Forma.Workflow.HostMode.ViewMode">
+<summary>
+ Read-only display.
+</summary>
+</member>
+<member name="T:Forma.Workflow.HostMode">
+<summary>
+ Host modes of the embeddable renderer/editor (PORTABLE-WORKFLOW-INTERCHANGE).
+</summary>
+</member>
+<member name="T:Forma.Workflow.Workflow">
+<summary>
+ A portable workflow document (format 1.x).
+</summary>
+</member>
+<member name="T:Forma.Workflow.BoxLayout">
+<summary>
+ Presentation geometry and layout intent. A position is both coordinates or none.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Interaction">
+<summary>
+ Declarative intents. The host supplies behavior; nothing here executes.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Reference">
+<summary>
+ A typed pointer to a host/domain object. Displayed, never dereferenced.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Extensions">
+<summary>
+ Namespaced producer data. Each value is a JSON object.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Metadata">
+<summary>
+ Ordered JSON object members that Forma preserves and never interprets.
+</summary>
+</member>
+<member name="T:Forma.Workflow.NodeKind">
+<summary>
+ A core kind may carry a display override; a producer kind must carry its label.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Shape">
+<summary>
+ Forma shape vocabulary. Presentation only.
+</summary>
+</member>
+<member name="T:Forma.Workflow.ColorValue">
+<summary>
+ What an object refers to.
+</summary>
+</member>
+<member name="T:Forma.Workflow.ColorSource">
+<summary>
+ What a palette slot holds.
+</summary>
+</member>
+<member name="T:Forma.Workflow.SlotName">
+<summary>
+ A palette slot name (palette:&lt;slot&gt;).
+</summary>
+</member>
+<member name="T:Forma.Workflow.HexColor">
+<summary>
+ Lowercase #rrggbb.
+</summary>
+</member>
+<member name="T:Forma.Workflow.ColorToken">
+<summary>
+ The Forma colour tokens a workflow may reference (contracts/diagram-presentation.json).
+</summary>
+</member>
+<member name="P:Forma.Workflow.ValidationReport.Extensions">
+<summary>
+ Extension namespaces present anywhere in the document.
+</summary>
+</member>
+<member name="P:Forma.Workflow.ValidationReport.Capabilities">
+<summary>
+ Capabilities the document uses or requires.
+</summary>
+</member>
+<member name="P:Forma.Workflow.ValidationReport.Workflow">
+<summary>
+ The decoded workflow whenever the document is structurally valid, so an
+ editor can open a semantically invalid file and show findings without
+ deleting anyone&apos;s data.
+</summary>
+</member>
+<member name="T:Forma.Workflow.CompatibilityClass.UnavailableCapabilities">
+<summary>
+ Valid format that needs Forma capabilities the target release lacks.
+</summary>
+</member>
+<member name="T:Forma.Workflow.CompatibilityClass.SemanticallyInvalid">
+<summary>
+ Schema-valid, but references, identity, ports or membership are broken.
+</summary>
+</member>
+<member name="T:Forma.Workflow.CompatibilityClass.StructurallyInvalid">
+<summary>
+ Not well-formed JSON, wrong format, or violates the published schema.
+</summary>
+</member>
+<member name="T:Forma.Workflow.CompatibilityClass.MigrationRequired">
+<summary>
+ Declares another format version. `Automatic` means the reader migrated it.
+</summary>
+</member>
+<member name="T:Forma.Workflow.CompatibilityClass.SupportedWithPreservedExtensions">
+<summary>
+ Valid; carries namespaced extensions that are preserved but not interpreted.
+</summary>
+</member>
+<member name="T:Forma.Workflow.CompatibilityClass.FullySupported">
+<summary>
+ Valid and every construct is understood.
+</summary>
+</member>
+<member name="T:Forma.Workflow.CompatibilityClass">
+<summary>
+ The six compatibility classes required by PORTABLE-WORKFLOW-INTERCHANGE.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Finding">
+<summary>
+ One validation result, located by JSON Pointer and, where it concerns an
+ object, by that object&apos;s stable id.
+</summary>
+</member>
+<member name="T:Forma.Workflow.LayoutRequest.Recompute">
+<summary>
+ Recompute every position (the explicit &quot;auto-layout&quot; command).
+</summary>
+</member>
+<member name="T:Forma.Workflow.LayoutRequest.FillMissing">
+<summary>
+ Keep authored positions and sizes; place only what has none.
+</summary>
+</member>
+<member name="T:Forma.Workflow.LayoutRequest">
+<summary>
+ How `Layout.apply` treats authored geometry.
+</summary>
+</member>
+<member name="T:Forma.Workflow.ResolvedLayout">
+<summary>
+ Complete resolved geometry for rendering. Derived; never stored unless
+ `Layout.apply` is asked to write it back into the document&apos;s layout fields.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Route">
+<summary>
+ A routed connector: its SVG path, its points and where its label sits.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Boundary">
+<summary>
+ The visible boundary of a component. Every Forma shape is one of these:
+ a rectangle, rounded rectangle, pill and ellipse are boxes with (possibly
+ elliptical) corners; a diamond is a box rotated about its centre.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Sides">
+<summary>
+ Side thicknesses (border widths, padding or a clearance) in CSS order.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Corners">
+<summary>
+ The four corner radii of a box, in CSS order.
+</summary>
+</member>
+<member name="T:Forma.Workflow.CornerRadius">
+<summary>
+ One elliptical corner radius in CSS px: horizontal and vertical semi-axes.
+</summary>
+</member>
+<member name="T:Forma.Workflow.LayoutIssue">
+<summary>
+ A layout constraint the resolved geometry does not satisfy.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Markup.Comment">
+<summary>
+ An HTML comment. &quot;--&quot; and &quot;&gt;&quot; sequences are neutralised.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Markup">
+<summary>
+ A tiny typed HTML tree. Every text node and attribute value is escaped when
+ rendered, so untrusted labels, metadata and extension values can never become
+ markup. There is deliberately no &quot;raw HTML&quot; case.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Dependency.RuntimeModule">
+<summary>
+ A public ES module needed only for requested interactivity.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Dependency.Stylesheet">
+<summary>
+ A stylesheet from a public package (package name, version, path inside it).
+</summary>
+</member>
+<member name="T:Forma.Workflow.Dependency">
+<summary>
+ A declared external requirement of rendered output.
+</summary>
+</member>
+<member name="P:Forma.Workflow.RenderOptions.WorkflowHref">
+<summary>
+ Where a navigate-to-workflow intent links, if anywhere.
+</summary>
+</member>
+<member name="P:Forma.Workflow.RenderOptions.VisibleMetadata">
+<summary>
+ Metadata keys to show visibly on nodes, in this order. Default: none
+ (metadata stays machine-readable in the workflow file, FMD-META-006/007).
+</summary>
+</member>
+<member name="P:Forma.Workflow.RenderOptions.HeadingLevel">
+<summary>
+ Heading level for node labels (2-6).
+</summary>
+</member>
+<member name="P:Forma.Workflow.RenderOptions.IdPrefix">
+<summary>
+ Prefix for every generated element id; defaults to &quot;wf-&lt;workflow id&gt;&quot;.
+</summary>
+</member>
+<member name="T:Forma.Workflow.RenderOptions">
+<summary>
+ How a workflow is rendered.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Phrases.Leads">
+<summary>
+ source, target -&gt; sentence stem
+</summary>
+</member>
+<member name="T:Forma.Workflow.Phrases">
+<summary>
+ Generated connective text. English by default; hosts localize by supplying
+ their own phrases. Workflow content itself is never translated.
+</summary>
+</member>
+<member name="P:Forma.Workflow.DocumentOptions.Theme">
+<summary>
+ Optional explicit theme (&quot;light&quot; or &quot;dark&quot;).
+</summary>
+</member>
+<member name="P:Forma.Workflow.DocumentOptions.Brand">
+<summary>
+ Optional public Forma brand id (loads brands/&lt;id&gt;.css and sets data-ef-brand).
+</summary>
+</member>
+<member name="P:Forma.Workflow.DocumentOptions.FormaBase">
+<summary>
+ URL prefix where the Forma package&apos;s dist files are served,
+ e.g. &quot;node_modules/@echelon-foundry/design-system/dist/&quot; or &quot;/assets/forma/&quot;.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Interactivity.InteractiveOutput">
+<summary>
+ Wraps the static figure in the public &lt;forma-workflow&gt; element, which
+ upgrades it through the @echelon-foundry/forma-workflow runtime. Without
+ script the static figure still renders.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Interactivity">
+<summary>
+ Requested interactivity for exported HTML. Static is the default and adds no script.
+</summary>
+</member>
+<member name="T:Forma.Workflow.History">
+<summary>
+ Undo/redo history of workflow states. Each entry is one logical change.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Refusal">
+<summary>
+ Why a command was refused. Nothing changes when a command is refused.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Change">
+<summary>
+ A legal change that was applied.
+</summary>
+</member>
+<member name="T:Forma.Workflow.EditCommand.ReplaceDocument">
+<summary>
+ The host replaces the document (for example after its own validated change).
+</summary>
+</member>
+<member name="T:Forma.Workflow.EditCommand">
+<summary>
+ Every change to a workflow is one of these. Pointer, keyboard, touch,
+ inspector and host API input are adapters onto this one command surface.
+</summary>
+</member>
+<member name="T:Forma.Workflow.ObjectRef">
+<summary>
+ An addressable workflow object.
+</summary>
+</member>
+<member name="P:Forma.Workflow.EmbedOutput.FocusElement">
+<summary>
+ Element id the host should focus after rendering, if any.
+</summary>
+</member>
+<member name="P:Forma.Workflow.EmbedState.Runtime">
+<summary>
+ Runtime-visualization overlay; never stored in the document.
+</summary>
+</member>
+<member name="P:Forma.Workflow.EmbedState.Zoom">
+<summary>
+ Percent; view state, never stored in the document.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Emission">
+<summary>
+ What the engine tells the host happened. These are the public events.
+</summary>
+</member>
+<member name="T:Forma.Workflow.HostMessage">
+<summary>
+ Messages from the host (the &lt;forma-workflow&gt; element or a .NET host).
+</summary>
+</member>
+<member name="T:Forma.Workflow.UiEvent">
+<summary>
+ A DOM event translated by the host element into data. It carries no meaning;
+ the engine decides what, if anything, it does.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Pending">
+<summary>
+ A gesture waiting for its second step (non-drag connect and reconnect).
+</summary>
+</member>
+<member name="T:Forma.Workflow.Sessions">
+<summary>
+ Several embedded components behind one engine instance (one WebAssembly
+ runtime per page). The host glue holds this value; this module stays pure.
+</summary>
+</member>
+<member name="M:Forma.Workflow.JsonModule.equivalent(Forma.Workflow.Json,Forma.Workflow.Json)">
+<summary>
+ Structural equality that ignores object property order and numeric spelling.
+</summary>
+</member>
+<member name="M:Forma.Workflow.JsonModule.htmlSafe(Forma.Workflow.Json)">
+<summary>
+ Single-line output safe to place inside an HTML `&lt;script type=&quot;application/json&quot;&gt;`.
+</summary>
+</member>
+<member name="M:Forma.Workflow.JsonModule.compact(Forma.Workflow.Json)">
+<summary>
+ Single-line output.
+</summary>
+</member>
+<member name="M:Forma.Workflow.JsonModule.serialize(Forma.Workflow.Json)">
+<summary>
+ Canonical, deterministic, two-space indented output with a final newline.
+</summary>
+</member>
+<member name="M:Forma.Workflow.JsonModule.escape(System.Boolean,System.String)">
+<summary>
+ JSON string escaping. `htmlSafe` also escapes &lt;, &gt;, &amp; and &apos; so the text
+ can sit inside an HTML script data block without ending it.
+</summary>
+</member>
+<member name="M:Forma.Workflow.JsonModule.parseWith(Forma.Workflow.JsonLimits,System.String)">
+<summary>
+ Parses untrusted text. Comments, trailing commas, duplicate keys, excess
+ depth and oversize input are errors rather than silently tolerated.
+</summary>
+</member>
+<member name="M:Forma.Workflow.JsonSchema.validate(Forma.Workflow.JsonSchema.Schema,Forma.Workflow.Json)">
+<summary>
+ Validates a value against the schema root. An empty list means valid.
+</summary>
+</member>
+<member name="T:Forma.Workflow.JsonSchema">
+<summary>
+ A dependency-free JSON Schema 2020-12 validator for the keyword subset the
+ published workflow schema uses. The schema file stays the single structural
+ authority: Forma validates documents against that file, not a parallel copy.
+ Unsupported keywords are rejected when the schema is loaded so the subset
+ cannot silently drift.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Identifiers.QualifiedName">
+ <namespace>:<name>, used for producer kinds, states and commands.
+</member>
+<member name="T:Forma.Workflow.Identifiers.Namespace">
+<summary>
+ Reverse-DNS namespace such as com.example.erp.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Identifiers.LocalId">
+<summary>
+ Unique within an owner: a port within its node, a reference within its object.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Identifiers">
+<summary>
+ Validated identifiers and names. Constructors are private so a value of these
+ types is always well formed (the schema patterns, enforced in F#).
+</summary>
+</member>
+<member name="M:Forma.Workflow.Format.repositoryPath(Forma.Workflow.Identifiers.WorkflowId)">
+<summary>
+ The repository convention for workflow files.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Format.schemaUri">
+<summary>
+ Stable public URL of the schema for this format version.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Format.suffix">
+<summary>
+ The canonical file suffix.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Format.current">
+<summary>
+ The format version this library reads and writes.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Format.identifier">
+<summary>
+ The format identifier every document declares.
+</summary>
+</member>
+<member name="M:Forma.Workflow.HexColorModule.luminance(Forma.Workflow.HexColor)">
+<summary>
+ WCAG relative luminance.
+</summary>
+</member>
+<member name="T:Forma.Workflow.CodecRead">
+<summary>
+ JSON reading primitives and the value tables shared by decoding and encoding.
+ Internal to Codec, which re-exports the public tables.
+</summary>
+</member>
+<member name="M:Forma.Workflow.CodecDecode.decode(Forma.Workflow.Json)">
+<summary>
+ Decodes a schema-valid document. Callers normally go through
+ `Validation.load`, which runs the schema first so these errors are rare.
+</summary>
+</member>
+<member name="T:Forma.Workflow.CodecDecode">
+<summary>
+ Decoding from schema-valid JSON into the typed model. Internal to Codec.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Codec.serialize(Forma.Workflow.Workflow)">
+<summary>
+ Canonical text of a workflow document.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Codec.encode(Forma.Workflow.Workflow)">
+<summary>
+ Canonical encoding: fixed property order, empty optional collections omitted.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Codec.decode(Forma.Workflow.Json)">
+<summary>
+ Decodes a schema-valid document. Callers normally go through
+ `Validation.load`, which runs the schema first so these errors are rare.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Codec">
+<summary>
+ Decoding from schema-valid JSON into the typed model, and canonical
+ encoding back. Metadata, extension values and parameters are carried as JSON
+ and never interpreted, so they round-trip unchanged.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Capabilities.used(Forma.Workflow.Workflow)">
+<summary>
+ Capabilities a document actually uses, inferred from its content.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Capabilities.all">
+<summary>
+ The published capability manifest (contracts/workflow-capabilities.json).
+</summary>
+</member>
+<member name="P:Forma.Workflow.Capabilities.formaVersion">
+<summary>
+ The Forma release this library ships in.
+</summary>
+</member>
+<member name="M:Forma.Workflow.ValidationRules.hasBidiControl(System.String)">
+<summary>
+ Bidirectional override/isolate controls can disguise text (CVE-2021-42574 class).
+</summary>
+</member>
+<member name="M:Forma.Workflow.ValidationRules.isSafeUrl(System.String)">
+<summary>
+ http, https and mailto URLs and relative references are allowed. Anything
+ with another scheme (javascript:, data:, vbscript: ...), control
+ characters or surrounding whitespace is rejected.
+</summary>
+</member>
+<member name="T:Forma.Workflow.ValidationRules">
+<summary>
+ Identity, connection, membership, interaction and URL rules. Internal to
+ Validation, which re-exports isSafeUrl.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.reportJson(Forma.Workflow.ValidationReport)">
+<summary>
+ The machine-readable report used by the CLI, CI, agents and hosts.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.check(Forma.Workflow.Workflow)">
+<summary>
+ Re-validates an in-memory workflow (for example after an edit).
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.load(System.String)">
+<summary>
+ Parses, classifies and decodes untrusted text.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.ofJson(Forma.Workflow.Json)">
+<summary>
+ Classifies and decodes a parsed document.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.migrate(Forma.Workflow.SemanticVersion,Forma.Workflow.Json)">
+<summary>
+ Pre-releases of the current format version upgrade automatically: the
+ version is rewritten and the document must then pass the current schema.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.semantic(Forma.Workflow.Workflow)">
+<summary>
+ Every rule that needs a decoded workflow.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.accessibility(Forma.Workflow.Workflow)">
+<summary>
+ Accessibility rules that can be decided from the document alone.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.extensionNamespaces(Forma.Workflow.Workflow)">
+<summary>
+ Extension namespaces present anywhere in the document, in first-seen order.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.resolveLiteral(Forma.Workflow.Workflow,Microsoft.FSharp.Core.FSharpOption{Forma.Workflow.ColorValue})">
+<summary>
+ Resolves a colour to a literal where that is statically knowable.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.isSafeUrl(System.String)">
+<summary>
+ http, https and mailto URLs and relative references are allowed. Anything
+ with another scheme (javascript:, data:, vbscript: ...), control
+ characters or surrounding whitespace is rejected.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Validation.schemaJson">
+<summary>
+ The published schema text (schemas/workflow/1.0/forma-workflow.schema.json).
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutGeometry.safeInlinePadding(Forma.Workflow.CornerRadius,System.Double,System.Double)">
+<summary>
+ The smallest inline (left and right) padding that keeps content clear of
+ a box&apos;s corners by `clearance`, given its block padding and corner radius
+ (both measured from the inner, padding-edge curve). It is `clearance`
+ when the corners do not reach the content. A single padding value does
+ not work for every radius.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutGeometry.inscribed(System.Double,Forma.Workflow.Boundary)">
+<summary>
+ The largest axis-aligned rectangle with aspect `aspect` (width/height),
+ centred in a boundary, found by bisection on its scale. Content laid out
+ inside it cannot cross the boundary whatever the shape.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutGeometry.segmentCrosses(Forma.Workflow.Rect,Forma.Workflow.Point,Forma.Workflow.Point)">
+<summary>
+ Whether the segment a-b passes through the interior of `r` (Liang-Barsky clipping).
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutGeometry.rectExcess(Forma.Workflow.Boundary,Forma.Workflow.Rect)">
+<summary>
+ Every supported boundary is convex, so a rectangle is inside exactly when
+ its four corners are. Returns the worst corner excess.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutGeometry.excess(Forma.Workflow.Boundary,Forma.Workflow.Point)">
+<summary>
+ How far a point lies outside a boundary, in px (0 when inside). Exact
+ for straight edges and circular corners; for an elliptical corner it is
+ the radial excess scaled by the shorter semi-axis, an approximation that
+ is zero exactly when the point is inside.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutGeometry.inset(Forma.Workflow.Sides,Forma.Workflow.Boundary)">
+<summary>
+ The boundary moved inwards by `s`. For a box this is the CSS inner
+ (padding-edge) curve: each radius shrinks by the adjoining side, never
+ below zero. Applied with a uniform clearance it is the set of points at
+ least that far from a circular corner.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutGeometry.normalize(Forma.Workflow.Rect,Forma.Workflow.Corners)">
+<summary>
+ CSS Backgrounds 3 §5.5: when adjacent radii exceed a side, every radius
+ is scaled by the same factor. This is why `border-radius: 999px` makes a
+ pill whose radius is half the box&apos;s shorter side.
+</summary>
+</member>
+<member name="T:Forma.Workflow.LayoutGeometry">
+<summary>
+ Pure plane geometry for layout constraints (LCE-001). It answers whether
+ content lies inside the region a shape actually shows, which a bounding
+ rectangle cannot: text can sit inside a box&apos;s rectangle and still cross
+ its curved corner.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutText.lines(Forma.Workflow.LayoutText.Style,System.Double,System.String)">
+<summary>
+ Lines after greedy wrapping at `maxWidth` px. Words wider than the line
+ break anywhere, as Forma&apos;s `overflow-wrap: anywhere` does. Empty text is one line.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutText.segments(System.String)">
+<summary>
+ Break-opportunity segments: words separated by white space, and each
+ wide (CJK) character on its own. `true` marks a segment preceded by a space.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutText.width(Forma.Workflow.LayoutText.Style,System.String)">
+<summary>
+ Width in px of a run of text in a style.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutText.advance(System.Boolean,System.Text.Rune)">
+<summary>
+ Advance of one character in em.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutText.isWide(System.Text.Rune)">
+<summary>
+ East Asian wide characters: each is its own line-break opportunity.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutText.withTextSpacing(Forma.Workflow.LayoutText.Style)">
+<summary>
+ WCAG 2.2 SC 1.4.12 text spacing: a reader may set line height 1.5,
+ letter spacing 0.12em and word spacing 0.16em without losing content.
+ A layout that reserves this room stays valid under those overrides.
+</summary>
+</member>
+<member name="T:Forma.Workflow.LayoutText">
+<summary>
+ A deterministic, font-independent text measure for layout estimates
+ (LCE-001). Character count is not rendered width: an ideograph or an emoji
+ is about twice a Latin letter and a combining mark adds nothing. Advances
+ are em fractions per character class, taken as the widest of the sans
+ fonts measured in Chromium (Inter, DejaVu Sans, Liberation Sans, FreeSans),
+ so the estimate errs towards more room. It cannot reproduce a browser&apos;s
+ shaping; the rendered-geometry check (tests/layout) is the authority.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.strip(Forma.Workflow.Workflow)">
+<summary>
+ The workflow with every layout field removed: its pure semantics.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.apply(Forma.Workflow.LayoutRequest,Forma.Workflow.Workflow)">
+<summary>
+ Writes resolved geometry into layout fields only. Ids, semantics,
+ metadata, references and extensions are untouched by construction: only
+ `Layout` record fields are replaced.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.resolve(Forma.Workflow.Workflow)">
+<summary>
+ Computes geometry for every node, group, port and edge.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.labelSize(System.String)">
+<summary>
+ Estimated size of a connector label box: one line up to 12rem, then wrapped.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Layout.labelMaxWidth">
+<summary>
+ Widest connector label box (.ef-diagram-connector__label max-inline-size: 12rem).
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.lanes(Forma.Workflow.Workflow)">
+<summary>
+ Swimlanes (and phases when there are no swimlanes) in document order, with their members.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.ranks(Forma.Workflow.Workflow)">
+<summary>
+ Ranks by longest path over forward edges. Cycles are broken by ignoring
+ edges that close a cycle in document-order depth-first traversal.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.sizeOf(Forma.Workflow.Node)">
+<summary>
+ The allocated size. Authored dimensions are kept as the author&apos;s intent;
+ `LayoutCheck` reports when they cannot hold the content.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.requiredHeight(Forma.Workflow.Node,System.Double)">
+<summary>
+ The height (for a diamond, the side) a node needs at width `w` so its
+ visible region holds the content (LCE-001): a box needs its content plus
+ padding; an ellipse needs the content&apos;s corners inside the inner
+ ellipse; a diamond needs the content inside its inscribed square.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.estimateHeight(Forma.Workflow.Node,System.Double)">
+<summary>
+ Estimated rectangular-box height (kept for callers of the 1.0 API).
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.contentWidth(Forma.Workflow.Shape,System.Double)">
+<summary>
+ Horizontal room the shape leaves for content at width `w` (the CSS padding plus borders).
+</summary>
+</member>
+<member name="M:Forma.Workflow.Layout.contentHeight(Forma.Workflow.Node,System.Double)">
+<summary>
+ Height of a node&apos;s content stack laid out at `width` px.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Layout.labelTextStyle">
+<summary>
+ Connector labels (.ef-diagram-connector__label): 0.875rem, one line, 0.25rem inline padding.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Layout.clearance">
+<summary>
+ Distance kept between content and a curved boundary.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Layout">
+<summary>
+ Deterministic default layout. The same document always produces the same
+ geometry: ordering derives only from document order, requested rank/order
+ and the graph, never from hashing or time.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutCheck.check(Forma.Workflow.Workflow)">
+<summary>
+ Every static layout issue for a workflow, deterministic in document order.
+</summary>
+</member>
+<member name="M:Forma.Workflow.LayoutCheck.sizes(Forma.Workflow.Workflow)">
+<summary>
+ Authored sizes too small for the content in the node&apos;s shape.
+</summary>
+</member>
+<member name="T:Forma.Workflow.LayoutCheck">
+<summary>
+ Static layout validation (LCE-001): what can be known before a browser
+ renders. It works on the resolved layout and the text estimate, so it
+ finds authored geometry that cannot hold its content, overlapping nodes,
+ connectors through nodes and colliding labels. It does not replace the
+ rendered-geometry check (tests/layout): fonts and user styles decide the
+ final text size, and only a browser measures it.
+</summary>
+</member>
+<member name="M:Forma.Workflow.MarkupModule.style(Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}})">
+<summary>
+ Builds a style attribute from custom properties whose values the caller
+ constructs from typed data (numbers, validated colours, token names).
+</summary>
+</member>
+<member name="M:Forma.Workflow.MarkupModule.rem(System.Double)">
+<summary>
+ Formats canvas px as rem (1rem = 16 canvas px), so diagram geometry
+ scales with the text it holds when the reader enlarges text (LCE-001).
+</summary>
+</member>
+<member name="M:Forma.Workflow.MarkupModule.px(System.Double)">
+<summary>
+ Formats a CSS length in px with invariant culture and no trailing zeros.
+</summary>
+</member>
+<member name="M:Forma.Workflow.MarkupModule.toCompactHtml(Forma.Workflow.Markup)">
+<summary>
+ Compact single-line HTML (used by the live editor view).
+</summary>
+</member>
+<member name="M:Forma.Workflow.MarkupModule.renderAll(Microsoft.FSharp.Collections.FSharpList{Forma.Workflow.Markup})">
+<summary>
+ Deterministic, indented HTML for a list of top-level nodes.
+</summary>
+</member>
+<member name="M:Forma.Workflow.MarkupModule.moduleScript(System.String)">
+<summary>
+ A module script reference (no inline code). Only used for declared public runtime modules.
+</summary>
+</member>
+<member name="M:Forma.Workflow.MarkupModule.scriptData(Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}},Forma.Workflow.Json)">
+<summary>
+ A JSON data block. The JSON is written with &lt;, &gt;, &amp; escaped so the text can
+ never close the element or start markup.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Render.fragment(Forma.Workflow.RenderOptions,Forma.Workflow.Workflow)">
+<summary>
+ A static HTML fragment for insertion into an existing page. A leading
+ comment declares the public Forma assets it needs.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Render.staticDependencies">
+<summary>
+ Public Forma stylesheets a static workflow needs.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Render.figure(Forma.Workflow.RenderOptions,Forma.Workflow.Workflow)">
+<summary>
+ The workflow figure as a Markup tree (used by fragment and document output
+ and by hosts that compose it into larger pages).
+</summary>
+</member>
+<member name="M:Forma.Workflow.Render.relationText(Forma.Workflow.Workflow,Forma.Workflow.Phrases,Forma.Workflow.Edge)">
+<summary>
+ One sentence per connector: endpoints, label, kind, ports, status and line
+ style. This is the non-visual equivalent of the drawn connectors.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Render.readingOrder(Forma.Workflow.Workflow,Forma.Workflow.ResolvedLayout)">
+<summary>
+ The reading order: along the flow, then across it. Independent of paint
+ order and of the order nodes appear in the file.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Render.metadataText(Forma.Workflow.Json)">
+<summary>
+ Visible text for a metadata value; nested objects are not rendered.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Render.statusHook(Forma.Workflow.Status)">
+<summary>
+ The data-ef-status hook value (core states only; producer states get no cue).
+</summary>
+</member>
+<member name="M:Forma.Workflow.Render.cssColor(Forma.Workflow.ColorValue)">
+<summary>
+ The CSS value for a colour. Palette slots resolve through
+ --ef-workflow-palette-&lt;slot&gt; on the figure, so a brand can restyle token
+ slots without touching objects.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Render">
+<summary>
+ Static HTML rendering of a portable workflow using public Forma diagram
+ contracts. The result needs no script: relationships, membership, status and
+ references are all present as text.
+</summary>
+</member>
+<member name="M:Forma.Workflow.WorkflowDocument.dependencyJson(Microsoft.FSharp.Collections.FSharpList{Forma.Workflow.Dependency})">
+<summary>
+ A machine-readable dependency manifest for an export.
+</summary>
+</member>
+<member name="M:Forma.Workflow.WorkflowDocument.document(Forma.Workflow.DocumentOptions,Forma.Workflow.Workflow)">
+<summary>
+ A complete, valid HTML document that opens as ordinary HTML with the
+ declared public assets.
+</summary>
+</member>
+<member name="M:Forma.Workflow.WorkflowDocument.fragment(Forma.Workflow.DocumentOptions,Forma.Workflow.Workflow)">
+<summary>
+ A fragment with its dependency comment, honouring interactivity.
+</summary>
+</member>
+<member name="M:Forma.Workflow.WorkflowDocument.content(Forma.Workflow.DocumentOptions,Forma.Workflow.Workflow)">
+<summary>
+ The body content for given options (a fragment when static).
+</summary>
+</member>
+<member name="M:Forma.Workflow.WorkflowDocument.interactiveElement(Forma.Workflow.RenderOptions,Forma.Workflow.HostMode,Forma.Workflow.Workflow)">
+<summary>
+ The workflow wrapped for interactive output: the public custom element,
+ its portable JSON source as an inert data block, and the static figure as
+ fallback content.
+</summary>
+</member>
+<member name="M:Forma.Workflow.WorkflowDocument.dependencies(Forma.Workflow.DocumentOptions)">
+<summary>
+ The dependencies for given output options.
+</summary>
+</member>
+<member name="T:Forma.Workflow.WorkflowDocument">
+<summary>
+ Complete HTML documents and interactive wrappers.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Editing.apply(Forma.Workflow.EditCommand,Forma.Workflow.Workflow)">
+<summary>
+ Applies a command if it is legal: the target exists and the result has
+ no validation error the document did not already have. A refused
+ command changes nothing.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Editing.transform(Forma.Workflow.EditCommand,Forma.Workflow.Workflow)">
+<summary>
+ Applies a command without validation. Unknown targets are refused here.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Editing.freshId(System.String,Forma.Workflow.Workflow)">
+<summary>
+ The first unused &quot;&lt;stem&gt;-&lt;n&gt;&quot; id, deterministic for a given document.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Editing">
+<summary>
+ The workflow editing core: legal transitions over a workflow with undo and
+ redo. Pure: every function returns a new value.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Embed.parseMetadata(System.String,System.String)">
+<summary>
+ Parses a metadata value as the chosen type. Unknown JSON stays JSON.
+</summary>
+</member>
+<member name="M:Forma.Workflow.Embed.nameOf(Forma.Workflow.Workflow,Forma.Workflow.ObjectRef)">
+<summary>
+ The readable name of an object, for announcements.
+</summary>
+</member>
+<member name="P:Forma.Workflow.Embed.protocol">
+<summary>
+ The versioned host boundary identifier.
+</summary>
+</member>
+<member name="T:Forma.Workflow.Embed">
+<summary>
+ The embeddable workflow component as a pure engine. A host element feeds it
+ messages and renders the HTML it returns; every decision happens here.
+</summary>
+</member>
+<member name="T:Forma.Workflow.EmbedForm">
+<summary>
+ Form controls and inspector sections for the embeddable component&apos;s view,
+ built from public Forma field patterns. Internal to EmbedView.
+</summary>
+</member>
+<member name="M:Forma.Workflow.EmbedView.view(Forma.Workflow.RenderOptions,Forma.Workflow.EmbedState)">
+<summary>
+ Renders the component for its current state.
+</summary>
+</member>
+<member name="M:Forma.Workflow.EmbedView.displayed(Forma.Workflow.EmbedState,Forma.Workflow.Workflow)">
+<summary>
+ The workflow as displayed: runtime overlay applied, positions filled.
+</summary>
+</member>
+<member name="T:Forma.Workflow.EmbedView">
+<summary>
+ The embeddable component&apos;s view. The canvas is the same public figure the
+ static renderer produces; editor-only affordances use ef-workflow-editor*
+ classes and data-fw-* hooks that never appear in exported output.
+</summary>
+</member>
+<member name="M:Forma.Workflow.EmbedHost.document(System.String,Microsoft.FSharp.Collections.FSharpMap{System.String,Forma.Workflow.EmbedState})">
+<summary>
+ The current document of an instance, canonical JSON text.
+</summary>
+</member>
+<member name="M:Forma.Workflow.EmbedHost.dispose(System.String,Microsoft.FSharp.Collections.FSharpMap{System.String,Forma.Workflow.EmbedState})">
+<summary>
+ Forgets an instance when its element is removed.
+</summary>
+</member>
+<member name="M:Forma.Workflow.EmbedHost.dispatch(Forma.Workflow.RenderOptions,System.String,Microsoft.FSharp.Collections.FSharpMap{System.String,Forma.Workflow.EmbedState})">
+<summary>
+ Handles one JSON message and returns the next sessions and the JSON reply.
+</summary>
+</member>
+<member name="M:Forma.Workflow.EmbedProtocol.decode(Forma.Workflow.Json)">
+<summary>
+ Decodes one host message. The instance id addresses one embedded component.
+</summary>
+</member>
+<member name="M:Forma.Workflow.EmbedProtocol.command(Forma.Workflow.Json)">
+<summary>
+ Host API commands. Every one becomes a validated EditCommand.
+</summary>
+</member>
+<member name="T:Forma.Workflow.EmbedProtocol">
+<summary>
+ The JSON wire format of the host boundary &quot;forma-workflow-host/1&quot;. The
+ browser element, the iframe bridge and .NET hosts all speak it. It moves
+ data only: documents, events, HTML and emissions.
+</summary>
+</member>
+</members>
+</doc>
