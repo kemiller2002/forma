@@ -7,9 +7,9 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
-## Unreleased
+## 0.10.0
 
-Layout constraint enforcement (LCE-001, `experiments/LCE-001/REPORT.md`).
+Minor release: layout constraint enforcement (LCE-001, `experiments/LCE-001/REPORT.md`). `@echelon-foundry/forma-workflow` 1.1.0 ships the matching engine.
 
 ### Fixed
 - **Pill diagram nodes.** The curve no longer cuts multi-line text. The corner radius is bounded by the node padding, so a short pill stays a stadium.
