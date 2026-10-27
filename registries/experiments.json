@@ -173,6 +173,24 @@
       "tests/layout/"
     ],
     "path": "research/experiments/EX-FORMA-2026-0004--lce-001-layout-constraint-enforcement.md",
+    "provenance": {
+      "contributions": {
+        "EXE-20261027T133505963Z-36c7489b": {
+          "actor": {
+            "id": "anthropic/claude-code",
+            "kind": "agent",
+            "model": "unknown",
+            "provider": "anthropic",
+            "runtime": "claude-code"
+          },
+          "at": "2026-10-27T13:54:03.502Z",
+          "operations": [
+            "created"
+          ],
+          "reason": "LCE-001 layout constraint research record"
+        }
+      }
+    },
     "related_theories": [],
     "research_area": "layout-constraints",
     "status": "completed",

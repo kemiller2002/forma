@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-27T13:35:04.000Z",
+  "updatedAt": "2026-10-27T14:13:21.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -2748,13 +2748,48 @@
     {
       "id": "LCE-001",
       "type": "research",
-      "state": "active",
-      "semanticState": "active",
-      "evidence": [],
-      "updatedAt": "2026-10-27T13:35:04.000Z",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "research/experiments/EX-FORMA-2026-0004--lce-001-layout-constraint-enforcement.md"
+        },
+        {
+          "type": "report",
+          "path": "experiments/LCE-001/REPORT.md"
+        },
+        {
+          "type": "results",
+          "path": "experiments/LCE-001/results/comparison.json"
+        }
+      ],
+      "updatedAt": "2026-10-27T14:13:21.000Z",
       "telemetryExecutionIds": [
         "EXE-20261027T133505963Z-36c7489b"
-      ]
+      ],
+      "latestCheckpoint": {
+        "id": "be12f03358d730d8bdf69a2e",
+        "recordedAt": "2026-10-27T14:13:14.000Z",
+        "executionId": "EXE-20261027T133505963Z-36c7489b",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-layout-constraints-0z9rzl",
+        "commit": "f57d64c677d174193fe1f69fa375156f471873da",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "claude/forma-layout-constraints-0z9rzl",
+        "remoteCommit": "f57d64c677d174193fe1f69fa375156f471873da",
+        "summary": "LCE-001 probe, constraint corrections, LayoutCheck, 50 regression fixtures and report pushed",
+        "nextAction": "Review the PR; then release Forma and vendor into Studio and the Causa app",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-27T14:13:21.000Z",
+      "conclusion": "supported"
     }
   ]
 }
