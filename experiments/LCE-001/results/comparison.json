@@ -1,0 +1,260 @@
+{
+ "batch": {
+  "baseline": {
+   "cases": 500,
+   "casesWithError": 285,
+   "experiment": 83,
+   "authored": 89,
+   "forma": 113,
+   "constraints": {
+    "allocation.exceeded": 188,
+    "canvas.containment": 108,
+    "contain.overflow": 56,
+    "boundary.corner": 151,
+    "separation.nodes": 46,
+    "connector.crosses-node": 54,
+    "label.overlaps-node": 73,
+    "label.overlaps-label": 10,
+    "connector.starts-inside": 39,
+    "nest.containment": 21
+   },
+   "renderMs": 10947,
+   "totalMs": 16189,
+   "static": {
+    "renderedAndStatic": 0,
+    "renderedOnly": 198,
+    "staticOnly": 0,
+    "neither": 62
+   },
+   "warnings": 69
+  },
+  "candidate": {
+   "cases": 500,
+   "casesWithError": 133,
+   "experiment": 67,
+   "authored": 62,
+   "forma": 4,
+   "constraints": {
+    "allocation.exceeded": 62,
+    "canvas.containment": 28,
+    "contain.overflow": 37,
+    "boundary.corner": 35,
+    "nest.containment": 20,
+    "separation.nodes": 7,
+    "connector.starts-inside": 14,
+    "label.overlaps-node": 12,
+    "connector.crosses-node": 4
+   },
+   "renderMs": 10948,
+   "totalMs": 17216,
+   "static": {
+    "renderedAndStatic": 65,
+    "renderedOnly": 2,
+    "staticOnly": 3,
+    "neither": 190
+   },
+   "warnings": 67
+  },
+  "formaRemaining": [
+   "circle-028 tooltip-trigger boundary.corner 0.61px 1280x900-r100-ls0.000-lhn-w400 :: \"1.5k\" (span) at 18.7,86008.1 38.5x19.0 in 16.0,85995.9 44.0x44.0",
+   "circle-085 tooltip-trigger boundary.corner 0.61px 1280x900-r100-ls0.000-lhn-w400 :: \"1.5k\" (span) at 18.7,102265.3 38.5x19.0 in 16.0,102253.1 44.0x44.0",
+   "responsive-089 wizard-step contain.overflow 629.05px 1280x800-r150-ls0.000-lh1.00-w700 :: \"/home/user/repos/forma/src/workflow/Form\" (span) at 51.0,1246.8 728.0x24.0 in 41.0,1238.5",
+   "responsive-074 alert contain.overflow 44.5px 1280x800-r125-ls0.050-lh1.50-w400 :: \"Review\" (button) at 144.0,80.0 76.5x24.0 in 16.0,42.0 160.0x2621.3"
+  ]
+ },
+ "batch-b": {
+  "baseline": {
+   "cases": 500,
+   "casesWithError": 274,
+   "experiment": 71,
+   "authored": 76,
+   "forma": 127,
+   "constraints": {
+    "allocation.exceeded": 175,
+    "canvas.containment": 99,
+    "contain.overflow": 66,
+    "boundary.corner": 141,
+    "separation.nodes": 42,
+    "label.overlaps-node": 67,
+    "nest.containment": 13,
+    "connector.crosses-node": 41,
+    "connector.starts-inside": 33,
+    "label.overlaps-label": 9
+   },
+   "renderMs": 10221,
+   "totalMs": 15424,
+   "static": {
+    "renderedAndStatic": 0,
+    "renderedOnly": 192,
+    "staticOnly": 0,
+    "neither": 67
+   },
+   "warnings": 61
+  },
+  "candidate": {
+   "cases": 500,
+   "casesWithError": 109,
+   "experiment": 51,
+   "authored": 48,
+   "forma": 10,
+   "constraints": {
+    "contain.overflow": 41,
+    "allocation.exceeded": 42,
+    "canvas.containment": 22,
+    "boundary.corner": 33,
+    "nest.containment": 13,
+    "separation.nodes": 4,
+    "connector.starts-inside": 5,
+    "label.overlaps-node": 5,
+    "connector.crosses-node": 1,
+    "label.overlaps-label": 2
+   },
+   "renderMs": 11323,
+   "totalMs": 18019,
+   "static": {
+    "renderedAndStatic": 52,
+    "renderedOnly": 4,
+    "staticOnly": 4,
+    "neither": 199
+   },
+   "warnings": 61
+  },
+  "formaRemaining": [
+   "circle-043 tooltip-trigger boundary.corner 0.61px 1280x900-r100-ls0.000-lhn-w400 :: \"1.5k\" (span) at 18.7,89086.0 38.5x19.0 in 16.0,89073.8 44.0x44.0",
+   "responsive-003 diagram allocation.exceeded 22px 320x800-r150-ls0.050-lh2.00-w700 :: allocated 89.0,185.0 600.0x600.0, rendered 89.0,185.0 600.0x622.0",
+   "responsive-003 diagram allocation.exceeded 90px 320x800-r150-ls0.050-lh2.00-w700 :: allocated 89.0,1073.0 600.0x816.0, rendered 89.0,1073.0 600.0x906.0",
+   "responsive-003 diagram connector.starts-inside 22px 320x800-r150-ls0.050-lh2.00-w700 :: lc-responsive-003-s-e-e0 meets n1 at 389.0,785.0, inside 89.0,185.0 600.0x622.0",
+   "responsive-003 diagram connector.starts-inside 90px 320x800-r150-ls0.050-lh2.00-w700 :: lc-responsive-003-s-e-e1 meets n2 at 389.0,1889.0, inside 89.0,1073.0 600.0x906.0",
+   "responsive-011 alert contain.overflow 11.05px 320x800-r200-ls0.120-lh1.50-w400 :: \"Review\" (button) at 92.0,9802.7 31.0x39.0 in 16.0,42.0 96.0x9859.5",
+   "responsive-016 wizard-step contain.overflow 916.98px 320x800-r200-ls0.000-lhn-w400 :: \"/home/user/repos/forma/src/workflow/Form\" (span) at 62.0,247.0 970.6x31.0 in 49.0,234.8 6",
+   "responsive-019 wizard-step contain.overflow 1534.42px 320x800-r150-ls0.000-lhn-w400 :: \"Counter interrupts from the rendezvous r\" (span) at 51.0,193.8 1566.4x24.0 in 41.0,185.4 ",
+   "responsive-051 wizard-step contain.overflow 66.2px 320x800-r200-ls0.050-lh1.50-w400 :: \"根本原因\" (span) at 62.0,241.0 109.2x31.0 in 49.0,228.5 56.0x56.0",
+   "responsive-060 alert contain.overflow 7.2px 375x800-r200-ls0.000-lh1.00-w700 :: \"Review\" (button) at 92.0,2938.5 27.2x39.0 in 16.0,36.0 96.0x2993.3",
+   "responsive-066 diagram allocation.exceeded 10px 1280x800-r100-ls0.050-lh2.00-w400 :: allocated 1139.0,148.0 200.0x80.0, rendered 1139.0,148.0 200.0x90.0",
+   "responsive-066 diagram label.overlaps-node 6.12px 1280x800-r100-ls0.050-lh2.00-w400 :: label \"原因\" 670.0,121.0 37.4x28.0 overlaps n2 590.0,148.0 200.0x360.0",
+   "responsive-090 alert contain.overflow 117.61px 768x800-r150-ls0.000-lhn-w400 :: \"Review\" (button) at 514.4,81.8 84.6x29.0 in 632.0,36.2 120.0x3845.7",
+   "responsive-098 wizard-step contain.overflow 457.95px 1280x800-r150-ls0.000-lh1.50-w400 :: \"Ångström élève naïve façade Øresund Šibe\" (span) at 51.0,142.1 490.0x24.0 in 41.0,133.8 4"
+  ]
+ },
+ "challenge-a": {
+  "baseline": {
+   "cases": 200,
+   "casesWithError": 193,
+   "experiment": 0,
+   "authored": 68,
+   "forma": 125,
+   "constraints": {
+    "boundary.corner": 138,
+    "allocation.exceeded": 184,
+    "label.overlaps-node": 137,
+    "label.overlaps-label": 21,
+    "canvas.containment": 86,
+    "connector.starts-inside": 114,
+    "contain.overflow": 16,
+    "connector.crosses-node": 112,
+    "separation.nodes": 49
+   },
+   "renderMs": 5768,
+   "totalMs": 9134,
+   "static": {
+    "renderedAndStatic": 0,
+    "renderedOnly": 193,
+    "staticOnly": 0,
+    "neither": 7
+   },
+   "warnings": 20
+  },
+  "candidate": {
+   "cases": 200,
+   "casesWithError": 39,
+   "experiment": 0,
+   "authored": 39,
+   "forma": 0,
+   "constraints": {
+    "contain.overflow": 19,
+    "label.overlaps-node": 7,
+    "label.overlaps-label": 2,
+    "allocation.exceeded": 18,
+    "connector.crosses-node": 3,
+    "boundary.corner": 5,
+    "separation.nodes": 6,
+    "connector.starts-inside": 5,
+    "canvas.containment": 7
+   },
+   "renderMs": 5862,
+   "totalMs": 10343,
+   "static": {
+    "renderedAndStatic": 38,
+    "renderedOnly": 1,
+    "staticOnly": 1,
+    "neither": 160
+   },
+   "warnings": 1
+  },
+  "formaRemaining": []
+ },
+ "challenge-b": {
+  "baseline": {
+   "cases": 200,
+   "casesWithError": 194,
+   "experiment": 0,
+   "authored": 74,
+   "forma": 120,
+   "constraints": {
+    "boundary.corner": 147,
+    "allocation.exceeded": 188,
+    "connector.starts-inside": 123,
+    "connector.crosses-node": 104,
+    "label.overlaps-node": 133,
+    "canvas.containment": 91,
+    "contain.overflow": 14,
+    "separation.nodes": 45,
+    "label.overlaps-label": 23
+   },
+   "renderMs": 5462,
+   "totalMs": 8714,
+   "static": {
+    "renderedAndStatic": 0,
+    "renderedOnly": 194,
+    "staticOnly": 0,
+    "neither": 6
+   },
+   "warnings": 24
+  },
+  "candidate": {
+   "cases": 200,
+   "casesWithError": 51,
+   "experiment": 0,
+   "authored": 45,
+   "forma": 6,
+   "constraints": {
+    "contain.overflow": 17,
+    "allocation.exceeded": 25,
+    "separation.nodes": 5,
+    "connector.starts-inside": 8,
+    "label.overlaps-node": 10,
+    "label.overlaps-label": 3,
+    "canvas.containment": 8,
+    "boundary.corner": 3,
+    "connector.crosses-node": 3
+   },
+   "renderMs": 6014,
+   "totalMs": 10867,
+   "static": {
+    "renderedAndStatic": 51,
+    "renderedOnly": 0,
+    "staticOnly": 0,
+    "neither": 149
+   },
+   "warnings": 1
+  },
+  "formaRemaining": [
+   "challenge-021 diagram label.overlaps-label 58.34px 1280x900-r100-ls0.000-lhn-w400 :: 45.0,18912.2 192.0x44.8 overlaps 161.0,18887.2 192.0x89.6",
+   "challenge-029 diagram label.overlaps-node 25.53px 1280x900-r100-ls0.000-lhn-w400 :: label \"Root cause\" 482.0,26500.8 122.9x33.6 overlaps out 585.5,25227.3 300.0x1512.0",
+   "challenge-033 diagram label.overlaps-node 35.09px 1280x900-r100-ls0.000-lhn-w400 :: label \"root cause\" 1539.5,29718.0 117.3x33.6 overlaps n3 1484.0,29500.5 300.0x228.0",
+   "challenge-035 diagram connector.crosses-node 0px 1280x900-r100-ls0.000-lhn-w400 :: lc-challenge-035-s-e-e2 passes through n5 111.0,33235.5 200.0x512.0",
+   "challenge-115 diagram connector.crosses-node 0px 1280x900-r100-ls0.000-lhn-w400 :: lc-challenge-115-s-e-e3 passes through n4 273.0,106671.7 200.0x816.0",
+   "challenge-191 diagram label.overlaps-node 73.31px 1280x900-r100-ls0.000-lhn-w400 :: label \"原因分析の結果として酸素環境下での電気的故障が火災の原因と判断された\" 41.0,171699.1 192.0x67.2 overlaps n2 153.0,1714"
+  ]
+ }
+}

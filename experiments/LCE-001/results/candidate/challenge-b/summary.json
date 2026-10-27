@@ -1,0 +1,122 @@
+{
+  "label": "Candidate (LCE-001): challenge B (unseen seed) (seed 0000000003ce0003, 200 per family)",
+  "browser": "153.0.8010.12",
+  "cases": 200,
+  "renderMs": 6014,
+  "totalMs": 10867,
+  "fonts": {
+    "latin": true,
+    "accented": true,
+    "cjk": true,
+    "hebrew": true,
+    "arabic": true,
+    "emoji": true,
+    "combining": true
+  },
+  "families": [
+    {
+      "family": "challenge",
+      "cases": 200,
+      "casesWithErrors": 51
+    }
+  ],
+  "constraints": [
+    {
+      "constraint": "contain.overflow",
+      "findings": 22,
+      "cases": 17
+    },
+    {
+      "constraint": "contain.clipped",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "padding.preserved",
+      "findings": 1,
+      "cases": 1
+    },
+    {
+      "constraint": "boundary.corner",
+      "findings": 3,
+      "cases": 3
+    },
+    {
+      "constraint": "boundary.clearance",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "allocation.exceeded",
+      "findings": 28,
+      "cases": 25
+    },
+    {
+      "constraint": "separation.nodes",
+      "findings": 5,
+      "cases": 5
+    },
+    {
+      "constraint": "connector.crosses-node",
+      "findings": 3,
+      "cases": 3
+    },
+    {
+      "constraint": "connector.starts-inside",
+      "findings": 13,
+      "cases": 8
+    },
+    {
+      "constraint": "label.overlaps-node",
+      "findings": 14,
+      "cases": 10
+    },
+    {
+      "constraint": "label.overlaps-label",
+      "findings": 3,
+      "cases": 3
+    },
+    {
+      "constraint": "canvas.containment",
+      "findings": 9,
+      "cases": 8
+    },
+    {
+      "constraint": "nest.containment",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "viewport.overflow",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "a11y.min-text",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "a11y.target-size",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "determinism",
+      "findings": 0,
+      "cases": 0
+    }
+  ],
+  "severities": {
+    "error": 100,
+    "warning": 1,
+    "info": 5
+  },
+  "staticAgreement": {
+    "renderedAndStatic": 51,
+    "renderedOnly": 0,
+    "staticOnly": 0,
+    "neither": 149
+  }
+}
+

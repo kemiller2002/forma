@@ -1,0 +1,141 @@
+{
+  "label": "Candidate (LCE-001): adversarial batch (seed 0000000001ce0001, 100 per family)",
+  "browser": "153.0.8010.12",
+  "cases": 500,
+  "renderMs": 10948,
+  "totalMs": 17216,
+  "fonts": {
+    "latin": true,
+    "accented": true,
+    "cjk": true,
+    "hebrew": true,
+    "arabic": true,
+    "emoji": true,
+    "combining": true
+  },
+  "families": [
+    {
+      "family": "rectangle",
+      "cases": 100,
+      "casesWithErrors": 12
+    },
+    {
+      "family": "rounded",
+      "cases": 100,
+      "casesWithErrors": 15
+    },
+    {
+      "family": "circle",
+      "cases": 100,
+      "casesWithErrors": 33
+    },
+    {
+      "family": "nested",
+      "cases": 100,
+      "casesWithErrors": 42
+    },
+    {
+      "family": "responsive",
+      "cases": 100,
+      "casesWithErrors": 31
+    }
+  ],
+  "constraints": [
+    {
+      "constraint": "contain.overflow",
+      "findings": 37,
+      "cases": 37
+    },
+    {
+      "constraint": "contain.clipped",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "padding.preserved",
+      "findings": 53,
+      "cases": 25
+    },
+    {
+      "constraint": "boundary.corner",
+      "findings": 35,
+      "cases": 35
+    },
+    {
+      "constraint": "boundary.clearance",
+      "findings": 14,
+      "cases": 14
+    },
+    {
+      "constraint": "allocation.exceeded",
+      "findings": 74,
+      "cases": 62
+    },
+    {
+      "constraint": "separation.nodes",
+      "findings": 10,
+      "cases": 7
+    },
+    {
+      "constraint": "connector.crosses-node",
+      "findings": 5,
+      "cases": 4
+    },
+    {
+      "constraint": "connector.starts-inside",
+      "findings": 27,
+      "cases": 14
+    },
+    {
+      "constraint": "label.overlaps-node",
+      "findings": 13,
+      "cases": 12
+    },
+    {
+      "constraint": "label.overlaps-label",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "canvas.containment",
+      "findings": 29,
+      "cases": 28
+    },
+    {
+      "constraint": "nest.containment",
+      "findings": 20,
+      "cases": 20
+    },
+    {
+      "constraint": "viewport.overflow",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "a11y.min-text",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "a11y.target-size",
+      "findings": 0,
+      "cases": 0
+    },
+    {
+      "constraint": "determinism",
+      "findings": 0,
+      "cases": 0
+    }
+  ],
+  "severities": {
+    "warning": 67,
+    "error": 250
+  },
+  "staticAgreement": {
+    "renderedAndStatic": 65,
+    "renderedOnly": 2,
+    "staticOnly": 3,
+    "neither": 190
+  }
+}
+
