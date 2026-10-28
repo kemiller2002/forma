@@ -202,7 +202,7 @@ Static workflow HTML needs only `tokens.css`, `foundations.css` and
 `components.css`. An interactive viewer or editor needs the separate opt-in
 package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
 
-## Unreleased (next minor)
+## 0.11.0
 
 Additive. No class, token or component changed for pages without
 `data-ef-type`; marketing pages render as before. Opt in to a typography role

@@ -7,9 +7,9 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
-## Unreleased
+## 0.11.0
 
-Minor (additive): typography roles (EII-F, `.praxis/inbox/documents/2026-10-28-EII-F-typography-roles.md`).
+Minor release: typography roles (EII-F, `.praxis/inbox/documents/2026-10-28-EII-F-typography-roles.md`).
 
 ### Added
 - **Typography roles.** `data-ef-type="application"`, `"dense"` and `"accessible"` select fixed heading and body steps from existing tokens: application h1/h2/h3 2xl/xl/lg with no ch caps; dense one step smaller with snug leading; accessible one step larger with relaxed leading. Marketing stays the default. Roles work in the `.ef-site` shell and on the application layer alone. See `docs/CONSUMING-FORMA.md`, "Typography roles".
@@ -21,6 +21,8 @@ Minor (additive): typography roles (EII-F, `.praxis/inbox/documents/2026-10-28-E
 - An application screen on the `.ef-site` shell no longer has to inherit the marketing display scale (h1 up to 7.25rem at 14ch), which the R5 rehearsal overrode locally.
 - On the application layer, wrapped h1/h2 lines under a role use snug leading; with the core 1.02 line-height their glyph boxes overlapped at 200% text.
 
+
+## 0.10.0
 
 Minor release: layout constraint enforcement (LCE-001, `experiments/LCE-001/REPORT.md`). `@echelon-foundry/forma-workflow` 1.1.0 ships the matching engine.
 
