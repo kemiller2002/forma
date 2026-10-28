@@ -142,8 +142,8 @@
     line-height: var(--ef-type-leading-heading);
   }
 
-  .ef-site :where(h1) { font-size: var(--ef-type-size-h1); max-inline-size: 14ch; }
-  .ef-site :where(h2) { font-size: var(--ef-type-size-h2); max-inline-size: 18ch; }
+  .ef-site :where(h1) { font-size: var(--ef-type-size-h1); max-inline-size: var(--ef-type-measure-h1); }
+  .ef-site :where(h2) { font-size: var(--ef-type-size-h2); max-inline-size: var(--ef-type-measure-h2); }
   .ef-site :where(h3) { font-size: var(--ef-type-size-h3); line-height: var(--ef-type-leading-snug); }
   .ef-site :where(h4, h5, h6) { font-size: var(--ef-type-size-h4); line-height: var(--ef-type-leading-snug); }
 

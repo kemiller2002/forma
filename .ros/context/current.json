@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-27T14:13:21.000Z",
+  "updatedAt": "2026-10-28T02:05:51.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -2790,6 +2790,55 @@
       },
       "completedAt": "2026-10-27T14:13:21.000Z",
       "conclusion": "supported"
+    },
+    {
+      "id": "EII-F",
+      "type": "implementation",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/styles/foundations.css"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/type-roles.spec.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/corner-containment.spec.mjs"
+        },
+        {
+          "type": "results",
+          "path": "experiments/EII-F/RESULTS.md"
+        }
+      ],
+      "updatedAt": "2026-10-28T02:05:51.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261028T005446033Z-c910147d"
+      ],
+      "latestCheckpoint": {
+        "id": "213b15567bf25aecfec20eb0",
+        "recordedAt": "2026-10-28T02:05:50.000Z",
+        "executionId": "EXE-20261028T005446033Z-c910147d",
+        "repository": "echelon-design-system",
+        "branch": "claude/eii-f-typography-roles",
+        "commit": "9c1d48e92d30570518496e1afb61e7d0c321746d",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma.git"
+        },
+        "remoteBranch": "claude/eii-f-typography-roles",
+        "remoteCommit": "9c1d48e92d30570518496e1afb61e7d0c321746d",
+        "summary": "Typography roles (data-ef-type), reproduce-first browser tests, corner regression and conformance boundary.corner port, docs and evidence pushed",
+        "nextAction": "Review the branch; at the next minor release, publish and adopt the application role in the next rehearsal",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-28T02:05:51.000Z"
     }
   ]
 }

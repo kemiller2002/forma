@@ -1,0 +1,35 @@
+
+Running 31 tests using 2 workers
+
+[1/31] [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 1440px
+[2/31] [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 1180px
+[3/31] [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 820px
+[4/31] [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 320px
+[5/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <html> sets its fixed steps and leading (site)
+[6/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <body> sets its fixed steps and leading (site)
+[7/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <html> sets its fixed steps and leading (site)
+[8/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <body> sets its fixed steps and leading (site)
+[9/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <html> sets its fixed steps and leading (site)
+[10/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <body> sets its fixed steps and leading (site)
+[11/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <html> sets its fixed steps and leading (app)
+[12/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <body> sets its fixed steps and leading (app)
+[13/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <html> sets its fixed steps and leading (app)
+[14/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <body> sets its fixed steps and leading (app)
+[15/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <html> sets its fixed steps and leading (app)
+[16/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <body> sets its fixed steps and leading (app)
+[17/31] [chromium] › tests/browser/type-roles.spec.mjs:230:1 › dense is smaller and tighter than application; accessible is larger and looser
+[18/31] [chromium] › tests/browser/type-roles.spec.mjs:245:1 › without a role, and with data-ef-type=marketing, the site shell keeps the marketing display scale
+[19/31] [chromium] › tests/browser/type-roles.spec.mjs:256:1 › the nearest role wins: a dense region inside an application screen
+[20/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › application role holds layout at 320-1280px and 200% text (site)
+[21/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › application role keeps focus visible and keyboard order intact at 320px and 200% text (site)
+[22/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › dense role holds layout at 320-1280px and 200% text (site)
+[23/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › dense role keeps focus visible and keyboard order intact at 320px and 200% text (site)
+[24/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › accessible role holds layout at 320-1280px and 200% text (site)
+[25/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › accessible role keeps focus visible and keyboard order intact at 320px and 200% text (site)
+[26/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › application role holds layout at 320-1280px and 200% text (app)
+[27/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › application role keeps focus visible and keyboard order intact at 320px and 200% text (app)
+[28/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › dense role holds layout at 320-1280px and 200% text (app)
+[29/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › dense role keeps focus visible and keyboard order intact at 320px and 200% text (app)
+[30/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › accessible role holds layout at 320-1280px and 200% text (app)
+[31/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › accessible role keeps focus visible and keyboard order intact at 320px and 200% text (app)
+  31 passed (27.5s)

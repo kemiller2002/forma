@@ -156,6 +156,18 @@ detector.
   check keyboard reachability.
 - `CONTRACT_WIDTHS`: `[320, 390, 768, 1280]`.
 
+## Rounded-corner containment (ULI-L05, boundary.corner)
+
+- `measureCornerContainment(locator)` / `expectTextInsideCorners(locator)`:
+  every rendered text line in the element lies inside its visible curved
+  boundary (the inner border edge, with CSS radius normalisation, so
+  `999px` is a stadium and `50%` an ellipse). Text can sit inside a box's
+  rectangle and still cross a rounded corner; this catches that. A box with
+  no text reports `UNKNOWN`. Tolerance 0.5px.
+- `evaluateCornerContainment(observation)` and
+  `resolveCornerRadius(value, width, height)` are the pure core, ported from
+  Forma's internal layout probe (LCE-001).
+
 ## Compatibility
 
 Version 0.1.0 keeps every export of the first helper release, which shipped

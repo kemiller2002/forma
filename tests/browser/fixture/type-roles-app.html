@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typography roles: application layer only</title>
+  <!-- EII-F fixture. The same application screen on the application layer
+       alone (tokens, foundations, components; no .ef-site shell). Tests set
+       data-ef-type on <html> or <body>. -->
+  <link rel="stylesheet" href="/dist/tokens.css">
+  <link rel="stylesheet" href="/dist/foundations.css">
+  <link rel="stylesheet" href="/dist/components.css">
+</head>
+<body>
+  <a class="ef-skip-link" href="#main">Skip to main content</a>
+  <header class="ef-actions">
+    <span>Investigation tool</span>
+    <button type="button" class="ef-button" id="disconnect">Disconnect</button>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="ef-stack" data-role-sample>
+      <h1 id="title">Connect a data repository</h1>
+      <p id="lede">Choose the repository that holds investigation records. Nothing is written until you confirm.</p>
+
+      <form class="ef-form" id="connect" aria-labelledby="title">
+        <div class="ef-field">
+          <label class="ef-field__label" for="repository">Repository</label>
+          <p class="ef-field__description" id="repository-hint">Owner and name, for example acme/records-of-reconciliation-and-administration.</p>
+          <input id="repository" name="repository" type="text" aria-describedby="repository-hint" value="kemiller2002/indy-init-rehearsal-005-causa-data-repository-with-a-very-long-name">
+        </div>
+        <div class="ef-actions">
+          <button type="submit" class="ef-button" id="connect-submit">Connect repository</button>
+          <a href="#investigations" id="skip-to-list">Skip to investigations</a>
+        </div>
+      </form>
+
+      <h2 id="investigations">Reconciliation and administration</h2>
+      <p>Commit <code>9f3c2a7e1b4d6085c3e2f1a0b9d8c7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0</code> recorded the latest change.</p>
+      <p id="long-url">https://github.com/kemiller2002/indy-init-rehearsal-005/blob/main/src/kernel/causa.css#L342-L353-application-type-scale</p>
+
+      <div class="ef-grid">
+        <section class="ef-surface" aria-labelledby="card-1">
+          <h3 id="card-1">Apollo 1 cabin fire: contributing conditions</h3>
+          <p>Status: open. Last reviewed by the operations administrator.</p>
+          <a href="#card-1">Open investigation</a>
+        </section>
+        <section class="ef-surface" aria-labelledby="card-2">
+          <h3 id="card-2">Telecommunicationsinfrastructuremodernisation</h3>
+          <p>Status: closed. Findings were accepted.</p>
+          <a href="#card-2">Open investigation</a>
+        </section>
+      </div>
+
+      <h4 id="ledger-title">Activity ledger</h4>
+      <div class="ef-bounded-overflow" role="region" aria-labelledby="ledger-title" tabindex="0">
+        <table class="ef-dense-ledger">
+          <thead><tr><th scope="col">When</th><th scope="col">Who</th><th scope="col">What</th></tr></thead>
+          <tbody>
+            <tr><td>2026-10-27</td><td>administrator</td><td>Opened the investigation and attached evidence</td></tr>
+            <tr><td>2026-10-28</td><td>reviewer</td><td>Accepted the findings</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

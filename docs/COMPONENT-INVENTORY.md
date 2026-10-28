@@ -35,7 +35,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Date and time field | `<ef-date-time-field>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | date-range, text-field, numeric-stepper |
 | Date range | `<ef-date-range>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | mobile.spec.mjs | date-time-field, range-entry, segmented-control |
 | File upload queue | `<ef-file-upload>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | status-lozenge, progress-bar, operation-status, composer |
-| Form | `<ef-form>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | design-contract.test.mjs | form-row, validation-message, validation-summary, button |
+| Form | `<ef-form>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | design-contract.test.mjs, type-roles.spec.mjs | form-row, validation-message, validation-summary, button |
 | Numeric stepper | `<ef-numeric-stepper>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | slider, range-entry, text-field, allocation |
 | Range entry | `<ef-range-entry>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | date-range, numeric-stepper, slider |
 | Rule builder | `<ef-rule-builder>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, active-filter-summary, select, validation-message |
@@ -43,7 +43,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Select | `<ef-select>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | physics-motion.spec.mjs, selection-alignment.spec.mjs | combobox, choice-group, segmented-control, multi-choice |
 | Slider | `<ef-slider>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | core-controls-motion.spec.mjs | numeric-stepper, range-entry, ordinal-scale, allocation |
 | Switch | `<ef-switch>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, physics-motion.spec.mjs, progressive-motion.spec.mjs, selection-alignment.spec.mjs, switch.spec.mjs, value-change-motion.spec.mjs | checkbox, binary-choice, segmented-control, multi-choice |
-| Text field | `<ef-text-field>` | Form inputs | implemented | complete | 5 | 1 | yes | yes | yes | pattern-contrast.spec.mjs | textarea, date-time-field, numeric-stepper, search, validation-message |
+| Text field | `<ef-text-field>` | Form inputs | implemented | complete | 5 | 1 | yes | yes | yes | pattern-contrast.spec.mjs, type-roles.spec.mjs | textarea, date-time-field, numeric-stepper, search, validation-message |
 | Textarea | `<ef-textarea>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | text-field, composer, validation-message |
 | Choice group | `<ef-choice-group>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs, selection-alignment.spec.mjs | multi-choice, image-choice, segmented-control, ordinal-scale, binary-choice |
 | Hierarchical choice | `<ef-hierarchical-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchical-multi-choice, hierarchy-tree, choice-group, disclosure |
@@ -119,7 +119,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Sidebar | `<ef-sidebar>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | composition.spec.mjs | rail, switcher, split-pane, workspace-shell |
 | Split | `<ef-split>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | switcher, hero, split-pane, container |
 | Stack | `<ef-stack>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | cluster, grid, surface, prose |
-| Surface | `<ef-surface>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | css-source.test.mjs, dist-css.test.mjs, forced-colors-projection.spec.mjs, pattern-contrast.spec.mjs | card-grid, callout, preview-surface, stack |
+| Surface | `<ef-surface>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | css-source.test.mjs, dist-css.test.mjs, forced-colors-projection.spec.mjs, pattern-contrast.spec.mjs, type-roles.spec.mjs | card-grid, callout, preview-surface, stack |
 | Switcher | `<ef-switcher>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | sidebar, rail, split, cluster |
 | Dashboard grid | `<ef-dashboard-grid>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | metric-card, responsive-grid, mosaic, work-queue |
 | Focus stage | `<ef-focus-stage>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | split-pane, rail, workspace-shell, preview-surface |
@@ -185,7 +185,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Entry index | `<ef-entry-index>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | card-grid, steps, relationship-index |
 | Facts | `<ef-facts>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | card-grid, key-value-list, metric-card, hero |
 | Hero | `<ef-hero>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | section-heading, facts, text-roles, split |
-| Marketing shell | `<ef-marketing-shell>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing.spec.mjs | site-header, site-footer, skip-link, documentation-layout, workspace-shell |
+| Marketing shell | `<ef-marketing-shell>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing.spec.mjs, type-roles.spec.mjs | site-header, site-footer, skip-link, documentation-layout, workspace-shell |
 | Prose | `<ef-prose>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | callout, code-sample, documentation-layout, measure |
 | Section heading | `<ef-section-heading>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hero, section, text-roles |
 | Site footer | `<ef-site-footer>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | site-header, marketing-shell, cta |

@@ -2,6 +2,7 @@
 
 | ID | Work | Status | Tags | Priority |
 |---|---|---|---|---|
+| EII-F | EII-F: Forma typography roles (application, dense, accessible) and layout-constraint regression tests | complete |  | high |
 | FORMA-A11Y-002 | FORMA-A11Y-002 | complete |  |  |
 | FORMA-GH-88 | FORMA-GH-88 | complete |  |  |
 | FORMA-GH-93 | FORMA-GH-93 | complete |  |  |
@@ -51,7 +52,7 @@
 | GH-68 | GH-68 | complete |  |  |
 | GH-82 | GH-82 | complete |  |  |
 | GH-9 | Build Forma component documentation site | complete | forma,documentation,github-pages | high |
-| LCE-001 | LCE-001 | active |  |  |
+| LCE-001 | LCE-001 | complete |  |  |
 | RLP-001 | RLP-001 | complete |  |  |
 | RLP-002 | RLP-002 | complete |  |  |
 | ROS-INSTALL-3-1-4 | ROS-INSTALL-3-1-4 | complete |  |  |

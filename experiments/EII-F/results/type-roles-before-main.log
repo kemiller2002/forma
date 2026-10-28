@@ -1,0 +1,775 @@
+
+Running 31 tests using 2 workers
+
+[1/31] [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 1180px
+[2/31] [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 1440px
+  1) [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 1180px 
+
+    Error: h1 is the 2xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 32
+    Received: 98.8
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   66.8
+
+      200 |     await open(page, "site", { width, role: "application", on: "body" });
+      201 |     const h1 = await typeOf(page, "#title");
+    > 202 |     expect(h1.fontSize, "h1 is the 2xl step").toBeCloseTo(await tokenPx(page, "2xl"), 1);
+          |                                               ^
+      203 |     expect(h1.maxInlineSize, "h1 takes the full measure").toBe("none");
+      204 |     expect(await lineCount(page, "#title"), "h1 wraps at most once, only at 320px").toBeLessThanOrEqual(width <= 320 ? 2 : 1);
+      205 |     expect((await typeOf(page, "#investigations")).fontSize, "h2 is the xl step").toBeCloseTo(await tokenPx(page, "xl"), 1);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:202:47
+
+    Error Context: test-results/type-roles-application-rol-0d0fd--without-a-ch-cap-at-1180px-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-application-rol-0d0fd--without-a-ch-cap-at-1180px-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-application-rol-0d0fd--without-a-ch-cap-at-1180px-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  2) [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 1440px 
+
+    Error: h1 is the 2xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 32
+    Received: 114.4
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   82.4
+
+      200 |     await open(page, "site", { width, role: "application", on: "body" });
+      201 |     const h1 = await typeOf(page, "#title");
+    > 202 |     expect(h1.fontSize, "h1 is the 2xl step").toBeCloseTo(await tokenPx(page, "2xl"), 1);
+          |                                               ^
+      203 |     expect(h1.maxInlineSize, "h1 takes the full measure").toBe("none");
+      204 |     expect(await lineCount(page, "#title"), "h1 wraps at most once, only at 320px").toBeLessThanOrEqual(width <= 320 ? 2 : 1);
+      205 |     expect((await typeOf(page, "#investigations")).fontSize, "h2 is the xl step").toBeCloseTo(await tokenPx(page, "xl"), 1);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:202:47
+
+    Error Context: test-results/type-roles-application-rol-6b272--without-a-ch-cap-at-1440px-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-application-rol-6b272--without-a-ch-cap-at-1440px-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-application-rol-6b272--without-a-ch-cap-at-1440px-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[3/31] [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 820px
+[4/31] [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 320px
+  3) [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 320px 
+
+    Error: h1 is the 2xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 32
+    Received: 47.2
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   15.200000000000003
+
+      200 |     await open(page, "site", { width, role: "application", on: "body" });
+      201 |     const h1 = await typeOf(page, "#title");
+    > 202 |     expect(h1.fontSize, "h1 is the 2xl step").toBeCloseTo(await tokenPx(page, "2xl"), 1);
+          |                                               ^
+      203 |     expect(h1.maxInlineSize, "h1 takes the full measure").toBe("none");
+      204 |     expect(await lineCount(page, "#title"), "h1 wraps at most once, only at 320px").toBeLessThanOrEqual(width <= 320 ? 2 : 1);
+      205 |     expect((await typeOf(page, "#investigations")).fontSize, "h2 is the xl step").toBeCloseTo(await tokenPx(page, "xl"), 1);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:202:47
+
+    Error Context: test-results/type-roles-application-rol-6560e-s-without-a-ch-cap-at-320px-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-application-rol-6560e-s-without-a-ch-cap-at-320px-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-application-rol-6560e-s-without-a-ch-cap-at-320px-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  4) [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 820px 
+
+    Error: h1 is the 2xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 32
+    Received: 77.2
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   45.2
+
+      200 |     await open(page, "site", { width, role: "application", on: "body" });
+      201 |     const h1 = await typeOf(page, "#title");
+    > 202 |     expect(h1.fontSize, "h1 is the 2xl step").toBeCloseTo(await tokenPx(page, "2xl"), 1);
+          |                                               ^
+      203 |     expect(h1.maxInlineSize, "h1 takes the full measure").toBe("none");
+      204 |     expect(await lineCount(page, "#title"), "h1 wraps at most once, only at 320px").toBeLessThanOrEqual(width <= 320 ? 2 : 1);
+      205 |     expect((await typeOf(page, "#investigations")).fontSize, "h2 is the xl step").toBeCloseTo(await tokenPx(page, "xl"), 1);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:202:47
+
+    Error Context: test-results/type-roles-application-rol-4367d-s-without-a-ch-cap-at-820px-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-application-rol-4367d-s-without-a-ch-cap-at-820px-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-application-rol-4367d-s-without-a-ch-cap-at-820px-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[5/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <body> sets its fixed steps and leading (site)
+[6/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <html> sets its fixed steps and leading (site)
+  5) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <html> sets its fixed steps and leading (site) 
+
+    Error: #title is the 2xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 32
+    Received: 104.8
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   72.8
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-application-rol-1166b-xed-steps-and-leading-site--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-application-rol-1166b-xed-steps-and-leading-site--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-application-rol-1166b-xed-steps-and-leading-site--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  6) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <body> sets its fixed steps and leading (site) 
+
+    Error: #title is the 2xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 32
+    Received: 104.8
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   72.8
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-application-rol-a66c9-xed-steps-and-leading-site--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-application-rol-a66c9-xed-steps-and-leading-site--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-application-rol-a66c9-xed-steps-and-leading-site--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[7/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <html> sets its fixed steps and leading (site)
+[8/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <body> sets its fixed steps and leading (site)
+  7) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <html> sets its fixed steps and leading (site) 
+
+    Error: #title is the xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 24
+    Received: 104.8
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   80.8
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-dense-role-on-h-0f40e-xed-steps-and-leading-site--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-dense-role-on-h-0f40e-xed-steps-and-leading-site--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-dense-role-on-h-0f40e-xed-steps-and-leading-site--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  8) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <body> sets its fixed steps and leading (site) 
+
+    Error: #title is the xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 24
+    Received: 104.8
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   80.8
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-dense-role-on-b-1ff8d-xed-steps-and-leading-site--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-dense-role-on-b-1ff8d-xed-steps-and-leading-site--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-dense-role-on-b-1ff8d-xed-steps-and-leading-site--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[9/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <html> sets its fixed steps and leading (site)
+[10/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <body> sets its fixed steps and leading (site)
+  9) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <html> sets its fixed steps and leading (site) 
+
+    Error: #title is the 3xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 40
+    Received: 104.8
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   64.8
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-accessible-role-4f458-xed-steps-and-leading-site--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-accessible-role-4f458-xed-steps-and-leading-site--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-accessible-role-4f458-xed-steps-and-leading-site--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  10) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <body> sets its fixed steps and leading (site) 
+
+    Error: #title is the 3xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 40
+    Received: 104.8
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   64.8
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-accessible-role-0e5c2-xed-steps-and-leading-site--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-accessible-role-0e5c2-xed-steps-and-leading-site--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-accessible-role-0e5c2-xed-steps-and-leading-site--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[11/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <html> sets its fixed steps and leading (app)
+[12/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <body> sets its fixed steps and leading (app)
+  11) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <html> sets its fixed steps and leading (app) 
+
+    Error: #card-1 is the lg step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 20
+    Received: 18.72
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   1.2800000000000011
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-application-rol-970cf-ixed-steps-and-leading-app--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-application-rol-970cf-ixed-steps-and-leading-app--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-application-rol-970cf-ixed-steps-and-leading-app--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  12) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <body> sets its fixed steps and leading (app) 
+
+    Error: #card-1 is the lg step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 20
+    Received: 18.72
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   1.2800000000000011
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-application-rol-cf5ff-ixed-steps-and-leading-app--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-application-rol-cf5ff-ixed-steps-and-leading-app--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-application-rol-cf5ff-ixed-steps-and-leading-app--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[13/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <html> sets its fixed steps and leading (app)
+[14/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <body> sets its fixed steps and leading (app)
+  13) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <html> sets its fixed steps and leading (app) 
+
+    Error: #title is the xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 24
+    Received: 32
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   8
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-dense-role-on-h-4e231-ixed-steps-and-leading-app--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-dense-role-on-h-4e231-ixed-steps-and-leading-app--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-dense-role-on-h-4e231-ixed-steps-and-leading-app--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  14) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <body> sets its fixed steps and leading (app) 
+
+    Error: #title is the xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 24
+    Received: 32
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   8
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-dense-role-on-b-3f0f4-ixed-steps-and-leading-app--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-dense-role-on-b-3f0f4-ixed-steps-and-leading-app--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-dense-role-on-b-3f0f4-ixed-steps-and-leading-app--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[15/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <html> sets its fixed steps and leading (app)
+[16/31] [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <body> sets its fixed steps and leading (app)
+  15) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <body> sets its fixed steps and leading (app) 
+
+    Error: #title is the 3xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 40
+    Received: 32
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   8
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-accessible-role-6a095-ixed-steps-and-leading-app--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-accessible-role-6a095-ixed-steps-and-leading-app--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-accessible-role-6a095-ixed-steps-and-leading-app--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  16) [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <html> sets its fixed steps and leading (app) 
+
+    Error: #title is the 3xl step
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 40
+    Received: 32
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   8
+
+      216 |         await open(page, fixture, { width: 1280, role, on });
+      217 |         for (const [selector, step] of [["#title", steps.h1], ["#investigations", steps.h2], ["#card-1", steps.h3], ["#ledger-title", steps.h4], ["#lede", steps.body]]) {
+    > 218 |           expect((await typeOf(page, selector)).fontSize, `${selector} is the ${step} step`).toBeCloseTo(await tokenPx(page, step), 1);
+          |                                                                                              ^
+      219 |         }
+      220 |         const h1 = await typeOf(page, "#title");
+      221 |         expect(h1.lineHeight / h1.fontSize, "heading leading token").toBeCloseTo(await tokenNumber(page, steps.leadingHeading), 2);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:218:94
+
+    Error Context: test-results/type-roles-accessible-role-a7d9a-ixed-steps-and-leading-app--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-accessible-role-a7d9a-ixed-steps-and-leading-app--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-accessible-role-a7d9a-ixed-steps-and-leading-app--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[17/31] [chromium] › tests/browser/type-roles.spec.mjs:230:1 › dense is smaller and tighter than application; accessible is larger and looser
+[18/31] [chromium] › tests/browser/type-roles.spec.mjs:245:1 › without a role, and with data-ef-type=marketing, the site shell keeps the marketing display scale
+[19/31] [chromium] › tests/browser/type-roles.spec.mjs:256:1 › the nearest role wins: a dense region inside an application screen
+  17) [chromium] › tests/browser/type-roles.spec.mjs:230:1 › dense is smaller and tighter than application; accessible is larger and looser 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 104.8
+    Received:   104.8
+
+      234 |   };
+      235 |   const [application, dense, accessible] = [await measure("application"), await measure("dense"), await measure("accessible")];
+    > 236 |   expect(dense.h1.fontSize).toBeLessThan(application.h1.fontSize);
+          |                             ^
+      237 |   expect(dense.body.fontSize).toBeLessThan(application.body.fontSize);
+      238 |   expect(dense.body.lineHeight / dense.body.fontSize).toBeLessThan(application.body.lineHeight / application.body.fontSize);
+      239 |   expect(accessible.h1.fontSize).toBeGreaterThan(application.h1.fontSize);
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:236:29
+
+    Error Context: test-results/type-roles-dense-is-smalle-a43a0-ssible-is-larger-and-looser-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-dense-is-smalle-a43a0-ssible-is-larger-and-looser-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-dense-is-smalle-a43a0-ssible-is-larger-and-looser-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  18) [chromium] › tests/browser/type-roles.spec.mjs:256:1 › the nearest role wins: a dense region inside an application screen 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 24
+    Received: 104.8
+
+    Expected precision:    1
+    Expected difference: < 0.05
+    Received difference:   80.8
+
+      257 |   await open(page, "site", { width: 1280, role: "application", on: "html" });
+      258 |   await page.evaluate(() => document.querySelector("[data-role-sample]").setAttribute("data-ef-type", "dense"));
+    > 259 |   expect((await typeOf(page, "#title")).fontSize).toBeCloseTo(await tokenPx(page, ROLES.dense.h1), 1);
+          |                                                   ^
+      260 |   expect((await typeOf(page, "#lede")).fontSize).toBeCloseTo(await tokenPx(page, ROLES.dense.body), 1);
+      261 | });
+      262 |
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:259:51
+
+    Error Context: test-results/type-roles-the-nearest-rol-98a98-nside-an-application-screen-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-the-nearest-rol-98a98-nside-an-application-screen-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-the-nearest-rol-98a98-nside-an-application-screen-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[20/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › application role holds layout at 320-1280px and 200% text (site)
+[21/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › application role keeps focus visible and keyboard order intact at 320px and 200% text (site)
+[22/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › dense role holds layout at 320-1280px and 200% text (site)
+[23/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › dense role keeps focus visible and keyboard order intact at 320px and 200% text (site)
+[24/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › accessible role holds layout at 320-1280px and 200% text (site)
+[25/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › accessible role keeps focus visible and keyboard order intact at 320px and 200% text (site)
+[26/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › application role holds layout at 320-1280px and 200% text (app)
+  19) [chromium] › tests/browser/type-roles.spec.mjs:268:5 › application role holds layout at 320-1280px and 200% text (app) 
+
+    Error: [320px x2] line boxes overlap by 5.7px in h1#title "Connect a data repository"
+    [320px x2] line boxes overlap by 5.7px in h1#title "Connect a data repository"
+    [320px x2] line boxes overlap by 4.0px in h2#investigations "Reconciliation and administratio"
+    [320px x2] line boxes overlap by 4.0px in h2#investigations "Reconciliation and administratio"
+    [375px x2] line boxes overlap by 5.7px in h1#title "Connect a data repository"
+    [375px x2] line boxes overlap by 4.0px in h2#investigations "Reconciliation and administratio"
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 8
+
+    - Array []
+    + Array [
+    +   "[320px x2] line boxes overlap by 5.7px in h1#title \"Connect a data repository\"",
+    +   "[320px x2] line boxes overlap by 5.7px in h1#title \"Connect a data repository\"",
+    +   "[320px x2] line boxes overlap by 4.0px in h2#investigations \"Reconciliation and administratio\"",
+    +   "[320px x2] line boxes overlap by 4.0px in h2#investigations \"Reconciliation and administratio\"",
+    +   "[375px x2] line boxes overlap by 5.7px in h1#title \"Connect a data repository\"",
+    +   "[375px x2] line boxes overlap by 4.0px in h2#investigations \"Reconciliation and administratio\"",
+    + ]
+
+      276 |         }
+      277 |       }
+    > 278 |       expect(failures, failures.join("\n")).toEqual([]);
+          |                                             ^
+      279 |     });
+      280 |
+      281 |     test(`${role} role keeps focus visible and keyboard order intact at 320px and 200% text (${fixture})`, async ({ page }) => {
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:278:45
+
+    Error Context: test-results/type-roles-application-rol-eeccd-20-1280px-and-200-text-app--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-application-rol-eeccd-20-1280px-and-200-text-app--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-application-rol-eeccd-20-1280px-and-200-text-app--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[27/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › application role keeps focus visible and keyboard order intact at 320px and 200% text (app)
+[28/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › dense role holds layout at 320-1280px and 200% text (app)
+[29/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › dense role keeps focus visible and keyboard order intact at 320px and 200% text (app)
+  20) [chromium] › tests/browser/type-roles.spec.mjs:268:5 › dense role holds layout at 320-1280px and 200% text (app) 
+
+    Error: [320px x2] line boxes overlap by 5.7px in h1#title "Connect a data repository"
+    [320px x2] line boxes overlap by 5.7px in h1#title "Connect a data repository"
+    [320px x2] line boxes overlap by 4.0px in h2#investigations "Reconciliation and administratio"
+    [320px x2] line boxes overlap by 4.0px in h2#investigations "Reconciliation and administratio"
+    [375px x2] line boxes overlap by 5.7px in h1#title "Connect a data repository"
+    [375px x2] line boxes overlap by 4.0px in h2#investigations "Reconciliation and administratio"
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 8
+
+    - Array []
+    + Array [
+    +   "[320px x2] line boxes overlap by 5.7px in h1#title \"Connect a data repository\"",
+    +   "[320px x2] line boxes overlap by 5.7px in h1#title \"Connect a data repository\"",
+    +   "[320px x2] line boxes overlap by 4.0px in h2#investigations \"Reconciliation and administratio\"",
+    +   "[320px x2] line boxes overlap by 4.0px in h2#investigations \"Reconciliation and administratio\"",
+    +   "[375px x2] line boxes overlap by 5.7px in h1#title \"Connect a data repository\"",
+    +   "[375px x2] line boxes overlap by 4.0px in h2#investigations \"Reconciliation and administratio\"",
+    + ]
+
+      276 |         }
+      277 |       }
+    > 278 |       expect(failures, failures.join("\n")).toEqual([]);
+          |                                             ^
+      279 |     });
+      280 |
+      281 |     test(`${role} role keeps focus visible and keyboard order intact at 320px and 200% text (${fixture})`, async ({ page }) => {
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:278:45
+
+    Error Context: test-results/type-roles-dense-role-hold-b37cb-20-1280px-and-200-text-app--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-dense-role-hold-b37cb-20-1280px-and-200-text-app--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-dense-role-hold-b37cb-20-1280px-and-200-text-app--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[30/31] [chromium] › tests/browser/type-roles.spec.mjs:268:5 › accessible role holds layout at 320-1280px and 200% text (app)
+[31/31] [chromium] › tests/browser/type-roles.spec.mjs:281:5 › accessible role keeps focus visible and keyboard order intact at 320px and 200% text (app)
+  21) [chromium] › tests/browser/type-roles.spec.mjs:268:5 › accessible role holds layout at 320-1280px and 200% text (app) 
+
+    Error: [320px x2] line boxes overlap by 5.7px in h1#title "Connect a data repository"
+    [320px x2] line boxes overlap by 5.7px in h1#title "Connect a data repository"
+    [320px x2] line boxes overlap by 4.0px in h2#investigations "Reconciliation and administratio"
+    [320px x2] line boxes overlap by 4.0px in h2#investigations "Reconciliation and administratio"
+    [375px x2] line boxes overlap by 5.7px in h1#title "Connect a data repository"
+    [375px x2] line boxes overlap by 4.0px in h2#investigations "Reconciliation and administratio"
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 8
+
+    - Array []
+    + Array [
+    +   "[320px x2] line boxes overlap by 5.7px in h1#title \"Connect a data repository\"",
+    +   "[320px x2] line boxes overlap by 5.7px in h1#title \"Connect a data repository\"",
+    +   "[320px x2] line boxes overlap by 4.0px in h2#investigations \"Reconciliation and administratio\"",
+    +   "[320px x2] line boxes overlap by 4.0px in h2#investigations \"Reconciliation and administratio\"",
+    +   "[375px x2] line boxes overlap by 5.7px in h1#title \"Connect a data repository\"",
+    +   "[375px x2] line boxes overlap by 4.0px in h2#investigations \"Reconciliation and administratio\"",
+    + ]
+
+      276 |         }
+      277 |       }
+    > 278 |       expect(failures, failures.join("\n")).toEqual([]);
+          |                                             ^
+      279 |     });
+      280 |
+      281 |     test(`${role} role keeps focus visible and keyboard order intact at 320px and 200% text (${fixture})`, async ({ page }) => {
+        at /home/user/forma/tests/browser/type-roles.spec.mjs:278:45
+
+    Error Context: test-results/type-roles-accessible-role-2dd3e-20-1280px-and-200-text-app--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/type-roles-accessible-role-2dd3e-20-1280px-and-200-text-app--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/type-roles-accessible-role-2dd3e-20-1280px-and-200-text-app--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  21 failed
+    [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 1440px 
+    [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 1180px 
+    [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 820px 
+    [chromium] › tests/browser/type-roles.spec.mjs:199:3 › application role: site-shell h1/h2/h3 use fixed steps without a ch cap at 320px 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <html> sets its fixed steps and leading (site) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <body> sets its fixed steps and leading (site) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <html> sets its fixed steps and leading (site) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <body> sets its fixed steps and leading (site) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <html> sets its fixed steps and leading (site) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <body> sets its fixed steps and leading (site) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <html> sets its fixed steps and leading (app) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › application role on <body> sets its fixed steps and leading (app) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <html> sets its fixed steps and leading (app) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › dense role on <body> sets its fixed steps and leading (app) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <html> sets its fixed steps and leading (app) 
+    [chromium] › tests/browser/type-roles.spec.mjs:215:7 › accessible role on <body> sets its fixed steps and leading (app) 
+    [chromium] › tests/browser/type-roles.spec.mjs:230:1 › dense is smaller and tighter than application; accessible is larger and looser 
+    [chromium] › tests/browser/type-roles.spec.mjs:256:1 › the nearest role wins: a dense region inside an application screen 
+    [chromium] › tests/browser/type-roles.spec.mjs:268:5 › application role holds layout at 320-1280px and 200% text (app) 
+    [chromium] › tests/browser/type-roles.spec.mjs:268:5 › dense role holds layout at 320-1280px and 200% text (app) 
+    [chromium] › tests/browser/type-roles.spec.mjs:268:5 › accessible role holds layout at 320-1280px and 200% text (app) 
+  10 passed (49.1s)

@@ -1,0 +1,44 @@
+diff --git a/src/marketing/components.css b/src/marketing/components.css
+index 2f62292..7522eff 100644
+--- a/src/marketing/components.css
++++ b/src/marketing/components.css
+@@ -207,7 +207,7 @@
+     padding: var(--ef-space-3) var(--ef-space-5);
+     border: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
+     /* Bounded so a brand radius never reaches the content (LCE-001, see .ef-card). */
+-    border-radius: min(var(--ef-shape-radius), calc(var(--ef-space-5) + var(--ef-space-3) * 2.414 - 2.414px));
++    border-radius: var(--ef-shape-radius);
+     background: transparent;
+     color: var(--ef-tone-text);
+     font: inherit;
+@@ -270,7 +270,7 @@
+     max-inline-size: 100%;
+     padding: var(--ef-space-1) var(--ef-space-2);
+     border: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+-    border-radius: min(var(--ef-shape-radius), calc(var(--ef-space-2) + var(--ef-space-1) * 2.414 - 2.414px));
++    border-radius: var(--ef-shape-radius);
+     color: var(--ef-tone-text);
+     font-family: var(--ef-type-family-mono);
+     overflow-wrap: anywhere;
+@@ -327,7 +327,7 @@
+      * pi + pb·2.414 - 2.414px (pb the smaller). A larger brand radius (a pill
+      * or 50%) would otherwise cut through multi-line content.
+      */
+-    border-radius: min(var(--ef-shape-radius), calc(var(--ef-layout-block-space) * 3.414 - 2.414px));
++    border-radius: var(--ef-shape-radius);
+   }
+ 
+   /* Inside a grid, cards share hairline rules instead of doubling borders. */
+diff --git a/src/styles/components.css b/src/styles/components.css
+index 05bd69e..b608d9c 100644
+--- a/src/styles/components.css
++++ b/src/styles/components.css
+@@ -4641,7 +4641,7 @@
+    * spacing tokens. It follows the padding tokens, so it holds at any text size.
+    */
+   .ef-diagram-node[data-ef-shape="pill"] {
+-    border-radius: min(999px, calc(var(--ef-primitive-spacing-5, 1.5rem) + var(--ef-primitive-spacing-3, 0.75rem) * 2.414 - 7.66px));
++    border-radius: 999px;
+     padding-inline: var(--ef-primitive-spacing-5, 1.5rem);
+   }
+   /*

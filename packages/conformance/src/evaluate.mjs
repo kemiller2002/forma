@@ -228,3 +228,105 @@ export const evaluateLabelIntegrity = ({ name, display, scrollWidth, clientWidth
     reason: `${clipped ? "content clipped" : "content fits"}; ${offscreen ? "box offscreen" : "box on screen"}`
   };
 };
+
+// ---------------------------------------------------------------------------
+// ULI-L05: text inside a curved boundary (boundary.corner)
+// ---------------------------------------------------------------------------
+// Ported from Forma's internal layout probe (LCE-001: tests/layout
+// Constraints.fs boundary.corner and Forma.Workflow LayoutGeometry). Text can
+// sit inside a box's rectangle and still cross its rounded corner; a bounding
+// rectangle cannot see that. Geometry is in CSS px, relative to any origin.
+
+const splitTop = (separator, value) => {
+  const parts = [];
+  let current = "", depth = 0;
+  for (const ch of value) {
+    if (ch === separator && depth === 0) { if (current.trim()) parts.push(current.trim()); current = ""; continue; }
+    if (ch === "(") depth += 1;
+    if (ch === ")") depth -= 1;
+    current += ch;
+  }
+  if (current.trim()) parts.push(current.trim());
+  return parts;
+};
+
+// One computed radius length: px, %, or min()/max() of those.
+const radiusLength = (token, basis) => {
+  const t = token.trim();
+  const args = prefix => splitTop(",", t.slice(prefix.length, -1)).map(arg => radiusLength(arg, basis));
+  if (t.startsWith("min(")) return Math.min(...args("min("));
+  if (t.startsWith("max(")) return Math.max(...args("max("));
+  if (t.endsWith("%")) return parseFloat(t) / 100 * basis;
+  const value = parseFloat(t);
+  return Number.isFinite(value) ? value : 0;
+};
+
+// A computed `border-*-radius` ("8px", "50%", "24px 8px", "min(999px, 43px)")
+// resolved against a box of the given size.
+export const resolveCornerRadius = (value, width, height) => {
+  const [a, b = a] = splitTop(" ", String(value ?? "0px"));
+  return { rx: Math.max(0, radiusLength(a ?? "0px", width)), ry: Math.max(0, radiusLength(b ?? "0px", height)) };
+};
+
+// CSS Backgrounds 3 §5.5: radii that overflow a side all scale down together.
+const normalizeCorners = (rect, c) => {
+  const ratio = (side, a, b) => (a + b > 0 ? side / (a + b) : Infinity);
+  const f = Math.min(1, ratio(rect.width, c.topLeft.rx, c.topRight.rx), ratio(rect.width, c.bottomLeft.rx, c.bottomRight.rx),
+    ratio(rect.height, c.topLeft.ry, c.bottomLeft.ry), ratio(rect.height, c.topRight.ry, c.bottomRight.ry));
+  if (f >= 1) return c;
+  const scale = k => ({ rx: k.rx * f, ry: k.ry * f });
+  return { topLeft: scale(c.topLeft), topRight: scale(c.topRight), bottomRight: scale(c.bottomRight), bottomLeft: scale(c.bottomLeft) };
+};
+
+// How far a point lies outside a rounded box (0 inside). Exact for edges and
+// circular corners; elliptical corners use the radial excess scaled by the
+// shorter semi-axis, which is zero exactly when the point is inside.
+const pointExcess = ({ left, top, right, bottom, corners: c }, x, y) => {
+  const outside = Math.max(0, left - x, x - right, top - y, y - bottom);
+  if (outside > 0) return outside;
+  const corner = (k, cx, cy, inX, inY) => {
+    if (k.rx <= 0 || k.ry <= 0 || !(inX && inY)) return 0;
+    const q = Math.hypot((x - cx) / k.rx, (y - cy) / k.ry);
+    return q <= 1 ? 0 : (q - 1) * Math.min(k.rx, k.ry);
+  };
+  return Math.max(0,
+    corner(c.topLeft, left + c.topLeft.rx, top + c.topLeft.ry, x < left + c.topLeft.rx, y < top + c.topLeft.ry),
+    corner(c.topRight, right - c.topRight.rx, top + c.topRight.ry, x > right - c.topRight.rx, y < top + c.topRight.ry),
+    corner(c.bottomRight, right - c.bottomRight.rx, bottom - c.bottomRight.ry, x > right - c.bottomRight.rx, y > bottom - c.bottomRight.ry),
+    corner(c.bottomLeft, left + c.bottomLeft.rx, bottom - c.bottomLeft.ry, x < left + c.bottomLeft.rx, y > bottom - c.bottomLeft.ry));
+};
+
+// Observation: { name, rect: {left, top, width, height}, radii: [tl, tr, br,
+// bl] computed strings, border: {top, right, bottom, left} px, fragments:
+// [{ text, left, top, right, bottom }] (text line boxes) }. Every boundary is
+// convex, so a fragment is inside exactly when its four corners are. The
+// visible boundary is the inner border edge (CSS inner radius = outer radius
+// minus the adjoining border width).
+export const evaluateCornerContainment = ({ name, rect, radii = [], border = { top: 0, right: 0, bottom: 0, left: 0 }, fragments = [] }, { tolerance = 0.5 } = {}) => {
+  const base = { ruleId: "ULI-L05", check: "boundary.corner", name };
+  if (!rect || !(rect.width > 0) || !(rect.height > 0)) return { ...base, status: STATUS.UNKNOWN, reason: "no box observed", worst: null };
+  if (fragments.length === 0) return { ...base, status: STATUS.UNKNOWN, reason: "no text observed inside the box", worst: null };
+  const [tl, tr, br, bl] = [0, 1, 2, 3].map(i => resolveCornerRadius(radii[i], rect.width, rect.height));
+  const outer = normalizeCorners(rect, { topLeft: tl, topRight: tr, bottomRight: br, bottomLeft: bl });
+  const shrink = (k, h, v) => ({ rx: Math.max(0, k.rx - h), ry: Math.max(0, k.ry - v) });
+  const inner = {
+    left: rect.left + border.left, top: rect.top + border.top,
+    right: rect.left + rect.width - border.right, bottom: rect.top + rect.height - border.bottom,
+    corners: {
+      topLeft: shrink(outer.topLeft, border.left, border.top), topRight: shrink(outer.topRight, border.right, border.top),
+      bottomRight: shrink(outer.bottomRight, border.right, border.bottom), bottomLeft: shrink(outer.bottomLeft, border.left, border.bottom)
+    }
+  };
+  const worst = fragments
+    .map(fragment => ({ fragment, excess: Math.max(...[[fragment.left, fragment.top], [fragment.right, fragment.top], [fragment.right, fragment.bottom], [fragment.left, fragment.bottom]].map(([x, y]) => pointExcess(inner, x, y))) }))
+    .reduce((a, b) => (b.excess > a.excess ? b : a));
+  const failed = worst.excess > tolerance;
+  return {
+    ...base,
+    status: failed ? STATUS.FAIL : STATUS.PASS,
+    worst: { text: worst.fragment.text, excess: Math.round(worst.excess * 100) / 100 },
+    reason: failed
+      ? `text "${worst.fragment.text}" crosses the visible boundary by ${worst.excess.toFixed(2)}px (radii ${radii.join(" / ")})`
+      : `${fragments.length} text line(s) inside the visible boundary (radii ${radii.join(" / ")})`
+  };
+};
