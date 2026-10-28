@@ -1044,7 +1044,7 @@
       "description": null,
       "tags": [],
       "priority": "high",
-      "status": "ready",
+      "status": "complete",
       "attachments": [
         {
           "id": "ATT-1",
@@ -1057,7 +1057,7 @@
         }
       ],
       "createdAt": "2026-10-28T00:54:36.000Z",
-      "updatedAt": "2026-10-28T00:54:45.000Z",
+      "updatedAt": "2026-10-28T02:05:51.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",

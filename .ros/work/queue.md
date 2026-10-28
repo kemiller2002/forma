@@ -2,7 +2,7 @@
 
 | ID | Work | Status | Tags | Priority |
 |---|---|---|---|---|
-| EII-F | EII-F: Forma typography roles (application, dense, accessible) and layout-constraint regression tests | ready |  | high |
+| EII-F | EII-F: Forma typography roles (application, dense, accessible) and layout-constraint regression tests | complete |  | high |
 | FORMA-A11Y-002 | FORMA-A11Y-002 | complete |  |  |
 | FORMA-GH-88 | FORMA-GH-88 | complete |  |  |
 | FORMA-GH-93 | FORMA-GH-93 | complete |  |  |
