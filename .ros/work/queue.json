@@ -1037,6 +1037,37 @@
       },
       "source": "manual",
       "sourceReference": null
+    },
+    {
+      "id": "EII-F",
+      "title": "EII-F: Forma typography roles (application, dense, accessible) and layout-constraint regression tests",
+      "description": null,
+      "tags": [],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [
+        {
+          "id": "ATT-1",
+          "seq": 1,
+          "name": "2026-10-28-EII-F-typography-roles.md",
+          "file": "1-2026-10-28-EII-F-typography-roles.md",
+          "size": 3095,
+          "contentType": null,
+          "uploadedAt": "2026-10-28T00:54:41.000Z"
+        }
+      ],
+      "createdAt": "2026-10-28T00:54:36.000Z",
+      "updatedAt": "2026-10-28T00:54:45.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-10-28-EII-F-typography-roles.md"
     }
   ]
 }

@@ -133,6 +133,7 @@ Before changing application CSS for customer identity or presentation, read
 
 - Express customer/product identity through a versioned Brand Manifest.
 - Use documented `data-ef-skin` presets for presentation-only density or shape changes.
+- Use `data-ef-type="application|dense|accessible"` for an application, dense administrative or large-text heading and body scale (see `docs/CONSUMING-FORMA.md`, "Typography roles"). Do not restate `--ef-type-size-*` or heading `max-inline-size` in application CSS.
 - Do not fork canonical component CSS, depend on internal selectors, or accept arbitrary customer CSS as the normal white-label path.
 - Runtime brand/theme/skin selection, persistence, remote loading, and interactive preview behavior belong to the consuming application, normally through Limen.
 - Brand terminology and asset references are application/build inputs; they are not hidden CSS content.

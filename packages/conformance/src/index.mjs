@@ -6,6 +6,7 @@ import {
   evaluateActionOutcome,
   evaluateActionPremise,
   evaluateAlignment,
+  evaluateCornerContainment,
   evaluateLabelIntegrity,
   evaluateOverflow,
   formatReport,
@@ -412,6 +413,45 @@ export const measureLabelIntegrity = async locator => {
 export const expectLabelIntact = async locator => {
   const report = await measureLabelIntegrity(locator);
   expect(report.status, `${report.ruleId} ${report.status}: "${report.name}": ${report.reason}`).toBe(STATUS.PASS);
+  return report;
+};
+
+// Text inside a rounded or pill-shaped box stays inside its visible curved
+// boundary (ULI-L05, boundary.corner). Measures every rendered text line in
+// the element against its computed radii and border widths.
+export const measureCornerContainment = async locator => {
+  await expect(locator).toBeVisible();
+  await settleFontsAndFrames(locator);
+  const observation = await locator.evaluate(element => {
+    const style = getComputedStyle(element);
+    const box = element.getBoundingClientRect();
+    const fragments = [];
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    for (let text = walker.nextNode(); text; text = walker.nextNode()) {
+      const owner = text.parentElement;
+      if (!text.textContent.trim() || !owner?.checkVisibility()) continue;
+      const own = owner.getBoundingClientRect();
+      if (own.width <= 1 && own.height <= 1) continue; // visually hidden text
+      const range = document.createRange();
+      range.selectNodeContents(text);
+      for (const rect of range.getClientRects()) {
+        if (rect.width > 0 && rect.height > 0) fragments.push({ text: text.textContent.trim().slice(0, 40), left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom });
+      }
+    }
+    return {
+      name: element.textContent.replace(/\s+/g, " ").trim().slice(0, 40),
+      rect: { left: box.left, top: box.top, width: box.width, height: box.height },
+      radii: ["top-left", "top-right", "bottom-right", "bottom-left"].map(corner => style.getPropertyValue(`border-${corner}-radius`)),
+      border: { top: parseFloat(style.borderTopWidth), right: parseFloat(style.borderRightWidth), bottom: parseFloat(style.borderBottomWidth), left: parseFloat(style.borderLeftWidth) },
+      fragments
+    };
+  });
+  return evaluateCornerContainment(observation);
+};
+
+export const expectTextInsideCorners = async locator => {
+  const report = await measureCornerContainment(locator);
+  expect(report.status, `${report.ruleId} ${report.check} ${report.status}: "${report.name}": ${report.reason}`).toBe(STATUS.PASS);
   return report;
 };
 

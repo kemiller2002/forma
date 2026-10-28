@@ -44,3 +44,20 @@ test("the publish workflow releases the conformance package when its version is 
   const workflow = fs.readFileSync(path.join(root, ".github/workflows/publish.yml"), "utf8");
   assert.match(workflow, /working-directory: packages\/conformance/);
 });
+
+test("boundary.corner: text crossing a rounded corner fails; text clear of it passes", async () => {
+  const { evaluateCornerContainment, resolveCornerRadius, STATUS } = await import(path.join(root, "packages/conformance/src/evaluate.mjs"));
+  const rect = { left: 0, top: 0, width: 100, height: 40 };
+  const line = { text: "a", left: 2, top: 2, right: 98, bottom: 38 };
+  // A 999px radius normalises to a 20px stadium; the line's corner is 5.46px outside.
+  const pill = evaluateCornerContainment({ name: "pill", rect, radii: Array(4).fill("999px"), fragments: [line] });
+  assert.equal(pill.status, STATUS.FAIL);
+  assert.ok(Math.abs(pill.worst.excess - 5.46) < 0.01);
+  const capped = evaluateCornerContainment({ name: "capped", rect, radii: Array(4).fill("min(999px, 2px)"), fragments: [line] });
+  assert.equal(capped.status, STATUS.PASS);
+  // The visible boundary is the inner border edge.
+  const bordered = evaluateCornerContainment({ name: "border", rect, radii: Array(4).fill("0px"), border: { top: 3, right: 3, bottom: 3, left: 3 }, fragments: [line] });
+  assert.equal(bordered.status, STATUS.FAIL);
+  assert.equal(evaluateCornerContainment({ name: "empty", rect, radii: [], fragments: [] }).status, STATUS.UNKNOWN);
+  assert.deepEqual(resolveCornerRadius("50% 10px", 100, 40), { rx: 50, ry: 10 });
+});

@@ -136,6 +136,60 @@ Do not copy or fork Forma CSS for customer branding. See
 `docs/BRANDING.md` for the manifest, scoping, theme, accessibility, and Limen
 boundary contracts.
 
+## Typography roles
+
+Forma has four typography roles. Select one with `data-ef-type` on any
+element, usually `<html>` or `<body>`; the nearest role wins, so a region can
+use another role than its page. Marketing is the default and needs no
+attribute.
+
+| Role | Attribute | h1 / h2 / h3 / h4 | Body | Leading (body) | Heading measure |
+|---|---|---|---|---|---|
+| Marketing | none (or `data-ef-type="marketing"` at the root) | fluid display-1 / display-2 / lg / md | md | the theme's | 14ch / 18ch |
+| Application | `data-ef-type="application"` | 2xl / xl / lg / md | md | normal | none |
+| Dense administrative | `data-ef-type="dense"` | xl / lg / md / sm | sm | snug | none |
+| Accessible large text | `data-ef-type="accessible"` | 3xl / 2xl / xl / lg | lg | relaxed | none |
+
+Every value is an existing `--ef-primitive-font-size-*` or
+`--ef-primitive-line-height-*` token. A role restates the type role tokens
+(`--ef-type-size-*`, `--ef-type-leading-*`, `--ef-type-measure-h1/h2`), so it
+works both inside the `.ef-site` shell and on the application layer alone
+(`tokens.css` + `foundations.css` + `components.css`), where it also gives
+headings and body text their sizes. Component headings keep their own sizes.
+Body text takes the role on `<body>` (or the role element), never on `<html>`,
+so `rem` keeps meaning the reader's text size. Roles are defined in
+`foundations.css`, which every bundle includes; there is nothing extra to load.
+
+Nesting `data-ef-type="marketing"` inside another role is not supported: the
+marketing values come from the page root and its theme.
+
+**Why.** An application screen built on the `.ef-site` shell used to inherit
+the marketing display scale: h1 up to 7.25rem at 1280px and wider, capped at
+14ch, so "Connect a data repository" wrapped to three lines on a phone. On the
+application layer alone, wrapped h1/h2 lines used a line-height of 1.02, so at
+200% text their glyph boxes overlapped. The R5 rehearsal
+(`indy-init-rehearsal-005`, `f207cd4`) had to override Forma in its own CSS.
+`tests/browser/type-roles.spec.mjs` reproduces both failures and checks each
+role for containment, overlap, clipping, focus visibility, keyboard order,
+long unbroken content and 200% text at 320-1280px.
+
+**Adopting it.** An application on the site shell sets the role and deletes
+its local heading overrides. For the R5 rehearsal this would be (described
+only; R5 is not changed by this release):
+
+1. `src/kernel/index.html`: `<body class="ef-site causa" data-ef-type="application" ...>`.
+2. `src/kernel/causa.css`: delete the "Application type scale (UI-014)" block
+   (lines 342-353: the `--ef-type-size-h1/h2/h3` restatement, the
+   `max-inline-size: none` / `line-height: 1.2` rule and the three
+   `font-size` rules). The role gives h1/h2 the snug leading (1.25).
+3. Keep `tests/browser/identity.spec.js` (h1 = 2 x root, one line, two at
+   320px) as the consumer check.
+
+Rounded-corner text containment (LCE-001) is now also available to consumers:
+`measureCornerContainment(locator)` / `expectTextInsideCorners(locator)` in
+`@echelon-foundry/forma-conformance` check rendered text against the visible
+curved boundary.
+
 ## Workflows
 
 Forma 0.4.0 adds the portable workflow format. The JSON Schema and capability
@@ -147,6 +201,15 @@ contract are package files:
 Static workflow HTML needs only `tokens.css`, `foundations.css` and
 `components.css`. An interactive viewer or editor needs the separate opt-in
 package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
+
+## Unreleased (next minor)
+
+Additive. No class, token or component changed for pages without
+`data-ef-type`; marketing pages render as before. Opt in to a typography role
+with `data-ef-type` (see "Typography roles"). The marketing heading measures
+are now the role tokens `--ef-type-measure-h1` (14ch) and
+`--ef-type-measure-h2` (18ch); a site that overrode `max-inline-size` on
+`.ef-site h1/h2` can set those tokens instead.
 
 ## 0.10.0
 

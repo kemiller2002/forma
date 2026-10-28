@@ -295,4 +295,106 @@
   :where(.ef-stack, .ef-grid, .ef-responsive-grid, .ef-priority-stack)[data-density] { gap: var(--ef-density-space); }
   @media (max-width: 48rem) { .ef-rail, .ef-rail[data-side="end"], .ef-focus-stage { grid-template-columns: minmax(0, 1fr); } .ef-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ef-span-2 { grid-column: 1 / -1; } }
   @media (max-width: 30rem) { .ef-mosaic { grid-template-columns: minmax(0, 1fr); } .ef-mosaic > [data-span="2"], .ef-mosaic > [data-span="full"] { grid-column: auto; } .ef-responsive-grid { --ef-responsive-grid-min: 100%; } .ef-priority-stack { --ef-priority-min: 100%; } }
+
+  /*
+   * Typography roles (EII-F). data-ef-type selects a role on any element,
+   * usually <html> or <body>; the nearest role wins:
+   *   marketing   the default (no attribute needed): the marketing layer's
+   *               fluid display scale and heading measures, unchanged.
+   *   application fixed steps for tools: h1 2xl, h2 xl, h3 lg, no ch caps.
+   *   dense       administrative density: one step smaller, snug leading.
+   *   accessible  large text: one step larger, relaxed leading.
+   * A role restates the type role tokens that the marketing layer
+   * (src/marketing/roles.css) and its themes declare, using only primitive
+   * steps. This layer follows echelon.tokens, so a role overrides a theme's
+   * :root role values; the .ef-site shell consumes the same tokens. The rules
+   * below give the application layer, which has no heading scale of its own,
+   * the same headings. Component headings (later layers) keep their sizes.
+   */
+  :where([data-ef-type="application"]) {
+    --ef-type-size-h1: var(--ef-primitive-font-size-2xl);
+    --ef-type-size-h2: var(--ef-primitive-font-size-xl);
+    --ef-type-size-h3: var(--ef-primitive-font-size-lg);
+    --ef-type-size-h4: var(--ef-primitive-font-size-md);
+    --ef-type-size-body: var(--ef-primitive-font-size-md);
+    --ef-type-size-lead: var(--ef-primitive-font-size-lg);
+    --ef-type-size-statement: var(--ef-primitive-font-size-xl);
+    --ef-type-size-small: var(--ef-primitive-font-size-sm);
+    --ef-type-size-label: var(--ef-primitive-font-size-xs);
+    --ef-type-leading-heading: var(--ef-primitive-line-height-snug);
+    --ef-type-leading-snug: var(--ef-primitive-line-height-snug);
+    --ef-type-leading-body: var(--ef-primitive-line-height-normal);
+    --ef-type-leading-lead: var(--ef-primitive-line-height-normal);
+    --ef-type-measure-h1: none;
+    --ef-type-measure-h2: none;
+  }
+
+  :where([data-ef-type="dense"]) {
+    --ef-type-size-h1: var(--ef-primitive-font-size-xl);
+    --ef-type-size-h2: var(--ef-primitive-font-size-lg);
+    --ef-type-size-h3: var(--ef-primitive-font-size-md);
+    --ef-type-size-h4: var(--ef-primitive-font-size-sm);
+    --ef-type-size-body: var(--ef-primitive-font-size-sm);
+    --ef-type-size-lead: var(--ef-primitive-font-size-md);
+    --ef-type-size-statement: var(--ef-primitive-font-size-lg);
+    --ef-type-size-small: var(--ef-primitive-font-size-xs);
+    --ef-type-size-label: var(--ef-primitive-font-size-xs);
+    --ef-type-leading-heading: var(--ef-primitive-line-height-snug);
+    --ef-type-leading-snug: var(--ef-primitive-line-height-snug);
+    --ef-type-leading-body: var(--ef-primitive-line-height-snug);
+    --ef-type-leading-lead: var(--ef-primitive-line-height-snug);
+    --ef-type-measure-h1: none;
+    --ef-type-measure-h2: none;
+  }
+
+  :where([data-ef-type="accessible"]) {
+    --ef-type-size-h1: var(--ef-primitive-font-size-3xl);
+    --ef-type-size-h2: var(--ef-primitive-font-size-2xl);
+    --ef-type-size-h3: var(--ef-primitive-font-size-xl);
+    --ef-type-size-h4: var(--ef-primitive-font-size-lg);
+    --ef-type-size-body: var(--ef-primitive-font-size-lg);
+    --ef-type-size-lead: var(--ef-primitive-font-size-xl);
+    --ef-type-size-statement: var(--ef-primitive-font-size-2xl);
+    --ef-type-size-small: var(--ef-primitive-font-size-md);
+    --ef-type-size-label: var(--ef-primitive-font-size-sm);
+    --ef-type-leading-heading: var(--ef-primitive-line-height-snug);
+    --ef-type-leading-snug: var(--ef-primitive-line-height-normal);
+    --ef-type-leading-body: var(--ef-primitive-line-height-relaxed);
+    --ef-type-leading-lead: var(--ef-primitive-line-height-relaxed);
+    --ef-type-measure-h1: none;
+    --ef-type-measure-h2: none;
+  }
+
+  /* Body text takes the role on <body> or the role element, never on <html>
+     itself, so rem keeps meaning the user's default text size. */
+  :where(
+    html[data-ef-type="application"] > body, :not(html)[data-ef-type="application"],
+    html[data-ef-type="dense"] > body, :not(html)[data-ef-type="dense"],
+    html[data-ef-type="accessible"] > body, :not(html)[data-ef-type="accessible"]
+  ) {
+    font-size: var(--ef-type-size-body);
+    line-height: var(--ef-type-leading-body);
+  }
+
+  :where([data-ef-type="application"], [data-ef-type="dense"], [data-ef-type="accessible"]) :where(h1) {
+    font-size: var(--ef-type-size-h1);
+    line-height: var(--ef-type-leading-heading);
+    max-inline-size: var(--ef-type-measure-h1);
+  }
+
+  :where([data-ef-type="application"], [data-ef-type="dense"], [data-ef-type="accessible"]) :where(h2) {
+    font-size: var(--ef-type-size-h2);
+    line-height: var(--ef-type-leading-heading);
+    max-inline-size: var(--ef-type-measure-h2);
+  }
+
+  :where([data-ef-type="application"], [data-ef-type="dense"], [data-ef-type="accessible"]) :where(h3) {
+    font-size: var(--ef-type-size-h3);
+    line-height: var(--ef-type-leading-snug);
+  }
+
+  :where([data-ef-type="application"], [data-ef-type="dense"], [data-ef-type="accessible"]) :where(h4, h5, h6) {
+    font-size: var(--ef-type-size-h4);
+    line-height: var(--ef-type-leading-snug);
+  }
 }

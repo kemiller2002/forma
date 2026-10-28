@@ -1,0 +1,122 @@
+
+Running 4 tests using 2 workers
+
+[1/4] [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a pill brand radius at 375px
+[2/4] [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a pill brand radius at 320px
+[3/4] [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a half brand radius at 320px
+  1) [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a pill brand radius at 320px 
+
+    Error: #badge: FAIL text "Fixture data: synthetic, not GitHub; rec" crosses the visible boundary by 2.63px (radii 999px / 999px / 999px / 999px)
+    #card: FAIL text "Contributing conditions" crosses the visible boundary by 5.06px (radii 999px / 999px / 999px / 999px)
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "#badge: FAIL text \"Fixture data: synthetic, not GitHub; rec\" crosses the visible boundary by 2.63px (radii 999px / 999px / 999px / 999px)",
+    +   "#card: FAIL text \"Contributing conditions\" crosses the visible boundary by 5.06px (radii 999px / 999px / 999px / 999px)",
+    + ]
+
+      27 |         if (report.status !== "PASS") failures.push(`${selector}: ${report.status} ${report.reason}`);
+      28 |       }
+    > 29 |       expect(failures, failures.join("\n")).toEqual([]);
+         |                                             ^
+      30 |     });
+      31 |   }
+      32 | }
+        at /home/user/forma/tests/browser/corner-containment.spec.mjs:29:45
+
+    Error Context: test-results/corner-containment-wrapped-f165c--pill-brand-radius-at-320px-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/corner-containment-wrapped-f165c--pill-brand-radius-at-320px-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/corner-containment-wrapped-f165c--pill-brand-radius-at-320px-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  2) [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a half brand radius at 320px 
+
+    Error: #badge: FAIL text "Fixture data: synthetic, not GitHub; rec" crosses the visible boundary by 7.15px (radii 50% / 50% / 50% / 50%)
+    #card: FAIL text "Contributing conditions" crosses the visible boundary by 11.45px (radii 50% / 50% / 50% / 50%)
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "#badge: FAIL text \"Fixture data: synthetic, not GitHub; rec\" crosses the visible boundary by 7.15px (radii 50% / 50% / 50% / 50%)",
+    +   "#card: FAIL text \"Contributing conditions\" crosses the visible boundary by 11.45px (radii 50% / 50% / 50% / 50%)",
+    + ]
+
+      27 |         if (report.status !== "PASS") failures.push(`${selector}: ${report.status} ${report.reason}`);
+      28 |       }
+    > 29 |       expect(failures, failures.join("\n")).toEqual([]);
+         |                                             ^
+      30 |     });
+      31 |   }
+      32 | }
+        at /home/user/forma/tests/browser/corner-containment.spec.mjs:29:45
+
+    Error Context: test-results/corner-containment-wrapped-a2c7d--half-brand-radius-at-320px-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/corner-containment-wrapped-a2c7d--half-brand-radius-at-320px-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/corner-containment-wrapped-a2c7d--half-brand-radius-at-320px-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[4/4] [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a half brand radius at 375px
+  3) [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a half brand radius at 375px 
+
+    Error: #badge: FAIL text "Fixture data: synthetic, not GitHub; rec" crosses the visible boundary by 4.51px (radii 50% / 50% / 50% / 50%)
+    #button: FAIL text "Connect the investigation data repositor" crosses the visible boundary by 0.61px (radii 50% / 50% / 50% / 50%)
+    #card: FAIL text "Contributing conditions" crosses the visible boundary by 9.01px (radii 50% / 50% / 50% / 50%)
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 5
+
+    - Array []
+    + Array [
+    +   "#badge: FAIL text \"Fixture data: synthetic, not GitHub; rec\" crosses the visible boundary by 4.51px (radii 50% / 50% / 50% / 50%)",
+    +   "#button: FAIL text \"Connect the investigation data repositor\" crosses the visible boundary by 0.61px (radii 50% / 50% / 50% / 50%)",
+    +   "#card: FAIL text \"Contributing conditions\" crosses the visible boundary by 9.01px (radii 50% / 50% / 50% / 50%)",
+    + ]
+
+      27 |         if (report.status !== "PASS") failures.push(`${selector}: ${report.status} ${report.reason}`);
+      28 |       }
+    > 29 |       expect(failures, failures.join("\n")).toEqual([]);
+         |                                             ^
+      30 |     });
+      31 |   }
+      32 | }
+        at /home/user/forma/tests/browser/corner-containment.spec.mjs:29:45
+
+    Error Context: test-results/corner-containment-wrapped-e3614--half-brand-radius-at-375px-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/corner-containment-wrapped-e3614--half-brand-radius-at-375px-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/corner-containment-wrapped-e3614--half-brand-radius-at-375px-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  3 failed
+    [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a pill brand radius at 320px 
+    [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a half brand radius at 320px 
+    [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a half brand radius at 375px 
+  1 passed (3.7s)

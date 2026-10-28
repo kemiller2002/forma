@@ -1,0 +1,8 @@
+
+Running 4 tests using 2 workers
+
+[1/4] [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a pill brand radius at 320px
+[2/4] [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a pill brand radius at 375px
+[3/4] [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a half brand radius at 320px
+[4/4] [chromium] › tests/browser/corner-containment.spec.mjs:13:5 › wrapped text stays inside a half brand radius at 375px
+  4 passed (2.6s)

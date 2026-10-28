@@ -47,6 +47,10 @@
     --ef-type-size-h3: var(--ef-primitive-font-size-lg);
     --ef-type-size-h4: var(--ef-primitive-font-size-md);
     --ef-type-size-statement: var(--ef-primitive-font-size-fluid-display-3);
+    /* Display heading measures. A typography role (data-ef-type, see
+       src/styles/foundations.css) lifts them for application screens. */
+    --ef-type-measure-h1: 14ch;
+    --ef-type-measure-h2: 18ch;
     --ef-type-leading-body: var(--ef-primitive-line-height-normal);
     --ef-type-leading-lead: var(--ef-primitive-line-height-normal);
     --ef-type-leading-heading: var(--ef-primitive-line-height-snug);

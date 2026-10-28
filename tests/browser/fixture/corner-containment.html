@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rounded-corner text containment</title>
+  <!-- EII-F regression fixture for LCE-001: marketing components whose text
+       wraps to several lines. Tests apply a pill or 50% brand radius; the
+       padding cap must keep every line inside the visible curve. -->
+  <link rel="stylesheet" href="/dist/all.css">
+</head>
+<body class="ef-site">
+  <main class="ef-site__main">
+    <div class="ef-container">
+      <p><span class="ef-badge" id="badge">Fixture data: synthetic, not GitHub; reconciliation pending administrator review</span></p>
+      <p><a class="ef-button" id="button" href="#card">Connect the investigation data repository and continue to the review</a></p>
+      <article class="ef-card" id="card">
+        <h3>Contributing conditions</h3>
+        <p>Three lines or more of card text reach the lower corners of the card when the brand radius is a pill.</p>
+      </article>
+    </div>
+  </main>
+</body>
+</html>
