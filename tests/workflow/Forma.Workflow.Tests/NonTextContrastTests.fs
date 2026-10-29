@@ -17,7 +17,7 @@ let private node id (color: (string * Json) list) =
 
 /// A two-node, one-edge, one-group document with the given authored colours
 /// and an optional legend entry.
-let private docWith (nodeColor: (string * Json) list) (edgeColor: (string * Json) list) (groupColor: (string * Json) list) (palette: (string * Json) list) (legendColor: (string * Json) list) =
+let private docFor (options: ValidationOptions) (nodeColor: (string * Json) list) (edgeColor: (string * Json) list) (groupColor: (string * Json) list) (palette: (string * Json) list) (legendColor: (string * Json) list) =
     obj [ yield "format", str "forma-workflow"
           yield "formatVersion", str "1.0.0"
           yield "id", str "nontext"
@@ -35,7 +35,9 @@ let private docWith (nodeColor: (string * Json) list) (edgeColor: (string * Json
                                       yield "members", arr [ str "cause"; str "effect" ]
                                       if not groupColor.IsEmpty then yield "color", obj groupColor ] ] ]
     |> Json.serialize
-    |> Validation.load
+    |> Validation.loadWith options
+
+let private docWith nodeColor edgeColor groupColor palette legendColor = docFor ValidationOptions.defaults nodeColor edgeColor groupColor palette legendColor
 
 let private doc nodeColor edgeColor groupColor palette = docWith nodeColor edgeColor groupColor palette []
 
@@ -139,6 +141,22 @@ let all =
           equal "/nodes/0/color/stroke" dark.Pointer "pointer"
           equal "Stroke colour #3a403c on the dark surface #171a18 has contrast 1.65:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." dark.Message "dark message"
           equal [] (nonText (doc [ "stroke", str "#9e6410" ] [] [] [])) "derived indicator passes on both default surfaces")
+
+      test "A pinned host theme scopes the default-surface judgement to that theme's surface" (fun () ->
+          let pinned theme = docFor { Theme = theme } [ "stroke", str "#3a403c" ] [ "stroke", str "#3a403c" ] [] [] []
+          equal [] (nonText (pinned (Some "light"))) "pinned light accepts #3a403c"
+          expect (Validation.isValid (pinned (Some "light"))) "pinned light is valid"
+          let dark = nonText (pinned (Some "dark"))
+          equal [ "/nodes/0/color/stroke"; "/edges/0/color/stroke" ] (dark |> List.map _.Pointer) "pinned dark rejects #3a403c"
+          expect (dark |> List.forall (fun f -> f.Message.Contains "the dark surface #171a18")) (sprintf "%A" dark)
+          let unpinned = nonText (pinned None)
+          equal 2 unpinned.Length "no theme rejects #3a403c"
+          expect (unpinned |> List.forall (fun f -> f.Message.Contains "the dark surface #171a18")) (sprintf "%A" unpinned)
+          // The other direction: amber fails only on light.
+          equal [] (nonText (docFor { Theme = Some "dark" } [ "stroke", str "#e9a23b" ] [] [] [] [])) "pinned dark accepts amber"
+          // A theme Forma.Workflow does not pin (a brand theme name) judges both surfaces.
+          equal 2 (nonText (pinned (Some "warm-earth"))).Length "unknown theme falls back to both surfaces"
+          equal [ "light", "#f2efe7" ] (Validation.surfacesFor { Theme = Some "light" } |> List.map (fun (t, h) -> t, h.Value)) "surfacesFor light")
 
       test "Legend swatches are judged against the default surfaces (Rehearsal 6 palette:amber legend)" (fun () ->
           let f = single "legend" (nonText (docWith [] [] [] [ "amber", str "#e9a23b" ] [ "stroke", str "palette:amber" ]))

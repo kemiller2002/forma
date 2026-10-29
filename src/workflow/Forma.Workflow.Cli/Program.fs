@@ -11,13 +11,15 @@ let usage =
 Commands
   validate <file>...           Classify and validate workflow files.
       --json                   Print the machine-readable report.
+      --theme light|dark       The theme the host pins; default-surface contrast is
+                               judged for it only (default: light and dark).
   normalize <file> [--out F]   Write the canonical serialization.
   layout <file> [--recompute] [--out F]
                                Write default layout geometry into layout fields only.
   render <file> [--document] [--out F] [--deps F]
       --forma-base URL         Where Forma dist files are served (document only).
       --brand ID               Public Forma brand to load and apply.
-      --theme light|dark       Explicit theme (document only).
+      --theme light|dark       Explicit theme (document only); also scopes validation.
       --interactive MODE       view|inspect|edit|pick|runtime: wrap in <forma-workflow>.
       --runtime-base URL       Where @echelon-foundry/forma-workflow files are served.
       --metadata KEY[,KEY]     Metadata keys to show on nodes.
@@ -46,11 +48,14 @@ let private write (target: string option) (text: string) =
 let private read path =
     try Ok(File.ReadAllText path) with ex -> Result.Error ex.Message
 
-let private loadValid path =
+/// Validation options from the shared flags: --theme names the host's pinned theme.
+let private validationOptions (args: Args) : ValidationOptions = { Theme = args.Flags.TryFind "--theme" }
+
+let private loadValid (options: ValidationOptions) path =
     match read path with
     | Result.Error e -> Result.Error(3, $"{path}: {e}")
     | Ok text ->
-        let report = Validation.load text
+        let report = Validation.loadWith options text
         match report.Workflow with
         | Some w when Validation.isValid report -> Ok w
         | _ ->
@@ -65,7 +70,7 @@ let private validate (args: Args) =
             |> List.map (fun path ->
                 match read path with
                 | Result.Error e -> path, None, Some e
-                | Ok text -> path, Some(Validation.load text), None)
+                | Ok text -> path, Some(Validation.loadWith (validationOptions args) text), None)
         if args.Flags.ContainsKey "--json" then
             let items =
                 results
@@ -91,7 +96,7 @@ let private validate (args: Args) =
 let private withWorkflow (args: Args) (f: Workflow -> int) =
     match args.Positional with
     | [ path ] ->
-        match loadValid path with
+        match loadValid (validationOptions args) path with
         | Ok w -> f w
         | Result.Error(code, message) -> (eprintfn "%s" message; code)
     | _ -> (eprintfn "%s" usage; 2)

@@ -9,15 +9,23 @@ and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 
 ## Unreleased
 
-Additive: diagram non-text contrast (R7-REM-009, `.praxis/inbox/documents/2026-10-29-R7-REM-009-diagram-nontext-contrast.md`).
+**Behaviour change: workflow validation is stricter.** Diagram non-text contrast (R7-REM-009, `.praxis/inbox/documents/2026-10-29-R7-REM-009-diagram-nontext-contrast.md`).
+Documents that validated before can now fail with `A11Y-NONTEXT-CONTRAST`, and `forma-workflow render` refuses them (exit 1). The status tokens are additive.
+
+### Migration
+- Prefer Forma tokens for outlines and connectors: `token:status-*` or `token:border-functional` follow the theme and are not judged by the document rule.
+- If the host pins a theme, pass it: `--theme light|dark` on `validate` and `render`, or `ValidationOptions.Theme` with `Validation.loadWith`. Default-surface contrast is then judged for that theme only.
+- Otherwise adjust literal colours to reach 3:1 against the light (`#f2efe7`) and dark (`#171a18`) surfaces, or against the node's literal fill.
 
 ### Added
 - **Status colour tokens in the workflow vocabulary.** `token:status-warning`, `token:status-danger`, `token:status-success` and `token:status-info` are accepted wherever a workflow colour is (`fill`, `stroke`, `accent`, `foreground`, edge `stroke`, palette slots) and render to `var(--ef-color-status-*)`. The workflow schema enum and `contracts/diagram-presentation.json` list them. An application can draw an attention outline with a Forma token instead of a brand literal.
-- **Validation rule `A11Y-NONTEXT-CONTRAST`** (error, accessibility; WCAG 1.4.11, 3:1). Literal (or literal-palette) colours on nodes, groups, legend swatches and edges. Without an authored fill, strokes, accents, legend swatches and edge strokes are judged against both default surfaces, light `#f2efe7` and dark `#171a18`, and the weaker theme is named. With a literal fill, the accent must reach 3:1 against the fill; the stroke is reported only when it is below 3:1 against the fill and neither stroke nor fill reaches 3:1 against a default surface, so borderless filled shapes stay valid. Token values and token/literal mixes are not judged by the document rule; `tests/nontext-contrast.test.mjs` checks every status token and `border-functional` at 3:1 on surface-primary and surface-secondary in every shipped theme and brand. Rehearsal 6 regression: Causa's `#e9a23b` outline on `#f5f3ed` measured 1.95:1 and passed validation. See `docs/workflow/VALIDATION.md`, "Non-text contrast".
+- **Validation rule `A11Y-NONTEXT-CONTRAST`** (error, accessibility; WCAG 1.4.11, 3:1). Literal (or literal-palette) colours on nodes, groups, legend swatches and edges. Without an authored fill, strokes, accents, legend swatches and edge strokes are judged against both default surfaces, light `#f2efe7` and dark `#171a18`, and the weaker theme is named; a pinned host theme (`--theme`, `ValidationOptions`) limits this to that theme's surface. With a literal fill, the accent must reach 3:1 against the fill; the stroke is reported only when it is below 3:1 against the fill and neither stroke nor fill reaches 3:1 against a default surface, so borderless filled shapes stay valid. Token values and token/literal mixes are not judged by the document rule; `tests/nontext-contrast.test.mjs` checks every status token and `border-functional` at 3:1 on surface-primary and surface-secondary in every shipped theme and brand. Rehearsal 6 regression: Causa's `#e9a23b` outline on `#f5f3ed` measured 1.95:1 and passed validation. See `docs/workflow/VALIDATION.md`, "Non-text contrast".
 - **Contract.** `contracts/diagram-presentation.json` marks `fill`, `stroke`, `accent` and `connectorStroke` `"contrast": "consumer"` (as `foreground` already was): colours set through the CSS custom properties bypass document validation and must be measured by the application.
 - **Browser regression.** `tests/browser/diagram-nontext-contrast.spec.mjs` measures real Forma.Workflow output (golden documents in `tests/fixtures/workflow-nontext/`, checked by the F# suite) in Chromium: status-token outlines, a diamond node and an edge reach 3:1 in light, dark and forced colours; the Rehearsal 6 document is reported by the validator and measures below 3:1.
 
 ### Changed
+- **Validation is stricter** (see Migration above).
+- **`Validation.loadWith` / `ofJsonWith` / `semanticWith`** take `ValidationOptions` (`{ Theme }`); `load`, `ofJson` and `semantic` keep their behaviour with no pinned theme. The CLI's `validate` accepts `--theme`, and `render --theme` now also scopes validation.
 - `examples/workflows/forma/workflows/colored.forma-workflow.json`: connector `c2` stroke `#2f5fb3` → `#3d6cc0`. The old value is 2.85:1 on the dark surface and is now an `A11Y-NONTEXT-CONTRAST` error. Existing documents with literal colours may newly fail this rule.
 
 

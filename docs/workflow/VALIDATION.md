@@ -101,6 +101,11 @@ nodes, groups, legend swatches and edges against the 3:1 minimum of WCAG 1.4.11:
   and in the dark theme, including `prefers-color-scheme: dark`). The weaker
   theme is reported and named. Legend swatches and edge strokes are judged the
   same way.
+- **Pinned host theme.** When the host pins a theme (`--theme light|dark` on
+  `forma-workflow validate` and `render`, or `ValidationOptions.Theme` with
+  `Validation.loadWith`), default-surface comparisons use that theme's surface
+  only. Without a pinned theme the host follows `prefers-color-scheme`, so
+  both surfaces apply. Any other theme name is judged against both.
 - **Literal fill.** The accent is an indicator and must reach 3:1 against the
   fill. The stroke is the shape's boundary: it is reported when it is below
   3:1 against the fill *and* neither the stroke nor the fill reaches 3:1
@@ -113,8 +118,17 @@ token/literal mixes (a token stroke on a literal fill, a literal stroke on a
 token fill). Forma's own token pairs (every `status-*` token and
 `border-functional` on `surface-primary` and `surface-secondary`, in every
 shipped theme and brand) are covered by `tests/nontext-contrast.test.mjs`.
-Literal colours are judged against Forma's default light and dark surfaces,
-not against a brand or theme surface an application applies.
+Only `#f2efe7` and `#171a18` are used as default surfaces. Literal colours
+are judged against them, not against the surface of another Forma theme
+(for example `high-contrast`, `warm-earth` or `dark-technical`) or a brand an
+application applies; those surfaces are approximated by the light and dark
+defaults.
+
+The browser regression for this rule measures real Forma.Workflow output: the
+sources and golden HTML and findings files live in
+`tests/fixtures/workflow-nontext/`, and the F# suite checks them byte for
+byte. After an intended change to the renderer or the rule, regenerate them
+with `FORMA_UPDATE_GOLDEN=1 dotnet run --project tests/workflow/Forma.Workflow.Tests -c Release`.
 
 **CSS custom properties bypass validation.** Colours an application sets
 directly through `--ef-diagram-stroke`, `--ef-diagram-accent`,
