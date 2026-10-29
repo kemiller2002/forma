@@ -9,7 +9,7 @@ open System
 module Render =
     let formaPackage = "@echelon-foundry/design-system"
     let workflowPackage = "@echelon-foundry/forma-workflow"
-    let workflowPackageVersion = "1.1.0"
+    let workflowPackageVersion = "1.2.0"
 
     let private el = Markup.el
     let private text = Markup.text
