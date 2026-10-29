@@ -104,7 +104,7 @@ saving.
 | `kindLabel` | Display text for the kind. Optional for core kinds. |
 | `label`, `description` | Visible text. |
 | `variant` | Forma shape: `rectangle`, `rounded`, `pill`, `ellipse` or `diamond`. Presentation only; a shape never implies a kind. |
-| `color` | `fill`, `stroke`, `accent` and `foreground`. Each is a `#rrggbb` literal, a Forma token (`token:accent-primary`) or a palette slot (`palette:finance`). |
+| `color` | `fill`, `stroke`, `accent` and `foreground`. Each is a `#rrggbb` literal, a Forma token or a palette slot (`palette:finance`). Tokens: `token:accent-primary`, `token:accent-secondary`, `token:border-functional`, `token:border-subtle`, `token:surface-primary`, `token:surface-secondary`, `token:surface-inverse`, `token:text-primary`, `token:text-secondary`, and the status roles `token:status-warning`, `token:status-danger`, `token:status-success` and `token:status-info` (render to `var(--ef-color-status-*)`; use them for attention outlines instead of a brand literal). |
 | `status` | `{ "state": "active", "label": "In progress", "detail": "...", "updatedAt": "..." }`. Core states are `none`, `pending`, `ready`, `active`, `waiting`, `complete`, `blocked`, `failed`, `skipped`, `cancelled` and `unknown`. A namespaced state needs a `label`. |
 | `ports` | Connection points: `id`, `side` (`top`, `right`, `bottom`, `left`), `direction` (`in`, `out`, `inout`), `label`, `maxConnections`. |
 | `references` | Domain references: `id`, `system` (a namespace), `type`, `key`, `label` and `href`. Forma displays them and never dereferences them. |

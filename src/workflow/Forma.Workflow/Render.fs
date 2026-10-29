@@ -32,6 +32,10 @@ module Render =
         | SurfaceInverse -> "var(--ef-color-surface-inverse)"
         | TextPrimary -> "var(--ef-color-text-primary)"
         | TextSecondary -> "var(--ef-color-text-secondary)"
+        | StatusWarning -> "var(--ef-color-status-warning)"
+        | StatusDanger -> "var(--ef-color-status-danger)"
+        | StatusSuccess -> "var(--ef-color-status-success)"
+        | StatusInfo -> "var(--ef-color-status-info)"
 
     /// The CSS value for a colour. Palette slots resolve through
     /// --ef-workflow-palette-<slot> on the figure, so a brand can restyle token
