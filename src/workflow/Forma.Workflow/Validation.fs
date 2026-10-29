@@ -108,7 +108,7 @@ module Validation =
     /// and accent must reach 3:1 against the resolvable fill, or against Forma's
     /// light surface when no fill is authored. Token (and token-backed palette)
     /// values are not judged here; the token pairs are covered by the
-    /// token-level contrast test (tests/contrast-pairs.test.mjs). A fill that is
+    /// token-level contrast test (tests/nontext-contrast.test.mjs). A fill that is
     /// authored but unresolvable leaves the check undecided.
     let private nonTextContrast (w: Workflow) ptr subject (c: ObjectColor) =
         let fill =
