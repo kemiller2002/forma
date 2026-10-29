@@ -96,3 +96,4 @@
 | WI-0038 | LCE-001 follow-up: global connector-label placement for dense fan-in (fallback overlap is reported by LayoutCheck) | captured |  | medium |
 | WI-0039 | LCE-001 follow-up: Forma.Workflow editor Resize should run LayoutCheck and refuse or warn on sizes that cannot hold content | captured |  | medium |
 | WI-0040 | LCE-001 follow-up: optional measured relayout in the forma-workflow embed for typography beyond the reserved WCAG 1.4.12 envelope | captured |  | medium |
+| WI-0041 | R7-REM-009: diagram non-text contrast (A11Y-NONTEXT-CONTRAST) and status tokens for diagram outlines | ready | forma, accessibility, r7-remediation | high |

@@ -94,6 +94,43 @@ module Validation =
 
     let private blank (s: string) = String.IsNullOrWhiteSpace s
 
+    /// Forma's light surface-primary (--ef-color-surface-primary, the
+    /// components.css fallback): the effective fill of a node without an
+    /// authored fill, and the canvas behind groups and edges.
+    let defaultSurface = HexColor.create "#f2efe7"
+
+    /// WCAG 1.4.11 minimum for non-text indicators (outlines, accents, connectors).
+    let nonTextMinimum = 3.0
+
+    let private ratioText (ratio: float) = ratio.ToString("0.00", Globalization.CultureInfo.InvariantCulture)
+
+    /// A11Y-NONTEXT-CONTRAST for a node or group: a statically resolvable stroke
+    /// and accent must reach 3:1 against the resolvable fill, or against Forma's
+    /// light surface when no fill is authored. Token (and token-backed palette)
+    /// values are not judged here; the token pairs are covered by the
+    /// token-level contrast test (tests/contrast-pairs.test.mjs). A fill that is
+    /// authored but unresolvable leaves the check undecided.
+    let private nonTextContrast (w: Workflow) ptr subject (c: ObjectColor) =
+        let fill =
+            match c.Fill with
+            | None -> Some(defaultSurface, $"the default surface {defaultSurface.Value}")
+            | Some _ -> resolveLiteral w c.Fill |> Option.map (fun h -> h, $"fill {h.Value}")
+        let check (field: string) (label: string) value =
+            match resolveLiteral w value, fill with
+            | Some colour, Some(background, described) when HexColor.contrast colour background < nonTextMinimum ->
+                [ finding "A11Y-NONTEXT-CONTRAST" Severity.Error FindingCategory.Accessibility (ptr + "/color/" + field) subject
+                      $"{label} colour {colour.Value} on {described} has contrast {ratioText (HexColor.contrast colour background)}:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." ]
+            | _ -> []
+        check "stroke" "Stroke" c.Stroke @ check "accent" "Accent" c.Accent
+
+    /// A11Y-NONTEXT-CONTRAST for an edge: a resolvable stroke against the canvas surface.
+    let private edgeContrast (w: Workflow) ptr subject (stroke: ColorValue option) =
+        match resolveLiteral w stroke with
+        | Some colour when HexColor.contrast colour defaultSurface < nonTextMinimum ->
+            [ finding "A11Y-NONTEXT-CONTRAST" Severity.Error FindingCategory.Accessibility (ptr + "/color/stroke") subject
+                  $"Edge colour {colour.Value} on the diagram surface {defaultSurface.Value} has contrast {ratioText (HexColor.contrast colour defaultSurface)}:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." ]
+        | _ -> []
+
     /// Accessibility rules that can be decided from the document alone.
     let private accessibility (w: Workflow) =
         let title =
@@ -127,6 +164,10 @@ module Validation =
         let contrasts =
             (w.Nodes |> List.mapi (fun i n -> contrast (nodePtr i) (Some n.Id.Value) n.Color) |> List.concat)
             @ (w.Groups |> List.mapi (fun i g -> contrast (groupPtr i) (Some g.Id.Value) g.Color) |> List.concat)
+        let nonText =
+            (w.Nodes |> List.mapi (fun i n -> nonTextContrast w (nodePtr i) (Some n.Id.Value) n.Color) |> List.concat)
+            @ (w.Groups |> List.mapi (fun i g -> nonTextContrast w (groupPtr i) (Some g.Id.Value) g.Color) |> List.concat)
+            @ (w.Edges |> List.mapi (fun i e -> edgeContrast w (edgePtr i) (Some e.Id.Value) e.Stroke) |> List.concat)
         let branches =
             w.Nodes
             |> List.mapi (fun i n ->
@@ -161,7 +202,7 @@ module Validation =
             |> List.filter (fun (_, _, t) -> hasBidiControl t)
             |> List.map (fun (ptr, subject, _) ->
                 finding "SEC-BIDI-CONTROL" Severity.Warning FindingCategory.Security ptr subject "Text contains bidirectional override characters that can make it read differently than it is stored.")
-        title @ names @ groupNames @ contrasts @ branches @ customColorWithoutLegend @ bidi
+        title @ names @ groupNames @ contrasts @ nonText @ branches @ customColorWithoutLegend @ bidi
 
     let private layoutFindings (w: Workflow) =
         match w.Layout.Mode with

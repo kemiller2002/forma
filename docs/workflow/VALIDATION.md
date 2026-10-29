@@ -84,7 +84,7 @@ JSON Schema validator enforces it, so there is no hand-maintained copy.
 | Groups | `GROUP-MISSING-MEMBER`, `GROUP-MISSING-PARENT`, `GROUP-CYCLE`, `GROUP-LANE-CONFLICT` |
 | Extensions | `EXT-RESERVED` (and the schema's namespace and object rules) |
 | Compatibility | `COMPAT-UNAVAILABLE`, `COMPAT-UNKNOWN-CAPABILITY` |
-| Accessibility (static) | `A11Y-TITLE`, `A11Y-NAME`, `A11Y-CONTRAST` (authored text colour against fill below 4.5:1), `A11Y-BRANCH-LABEL`, `A11Y-LEGEND` |
+| Accessibility (static) | `A11Y-TITLE`, `A11Y-NAME`, `A11Y-CONTRAST` (authored text colour against fill below 4.5:1), `A11Y-NONTEXT-CONTRAST` (authored stroke or accent against fill, or edge stroke against the diagram surface, below 3:1, WCAG 1.4.11; an unset fill is Forma's light surface `#f2efe7`; token values are not judged by this rule and are covered by the token-level contrast test), `A11Y-BRANCH-LABEL`, `A11Y-LEGEND` |
 | Security | `SEC-UNSAFE-URL` (anything other than http, https, mailto or relative; also control characters and leading spaces), `SEC-BIDI-CONTROL` |
 | Semantics (warnings) | `SEM-DECISION-BRANCHES`, `SEM-START-INCOMING`, `SEM-END-OUTGOING`, `LAYOUT-PARTIAL` |
 

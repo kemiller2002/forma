@@ -97,7 +97,11 @@
       "--ef-color-surface-secondary",
       "--ef-color-surface-inverse",
       "--ef-color-text-primary",
-      "--ef-color-text-secondary"
+      "--ef-color-text-secondary",
+      "--ef-color-status-warning",
+      "--ef-color-status-danger",
+      "--ef-color-status-success",
+      "--ef-color-status-info"
     ],
     "reset": "Remove the custom property to restore the Forma default (FMD-RESOLVE-006)."
   },

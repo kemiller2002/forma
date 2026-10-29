@@ -7,6 +7,16 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## Unreleased
+
+Additive: diagram non-text contrast (R7-REM-009, `.praxis/inbox/documents/2026-10-29-R7-REM-009-diagram-nontext-contrast.md`).
+
+### Added
+- **Status colour tokens in the workflow vocabulary.** `token:status-warning`, `token:status-danger`, `token:status-success` and `token:status-info` are accepted wherever a workflow colour is (`fill`, `stroke`, `accent`, `foreground`, edge `stroke`, palette slots) and render to `var(--ef-color-status-*)`. The workflow schema enum and `contracts/diagram-presentation.json` list them. An application can draw an attention outline with a Forma token instead of a brand literal.
+- **Validation rule `A11Y-NONTEXT-CONTRAST`** (error, accessibility). A literal or literal-palette stroke or accent on a node or group must reach 3:1 (WCAG 1.4.11) against its literal fill, or against Forma's light surface `#f2efe7` when no fill is authored; a literal edge stroke must reach 3:1 against that surface. Token values are not judged by the document rule; `tests/nontext-contrast.test.mjs` checks every status token and `border-functional` at 3:1 on surface-primary and surface-secondary in every shipped theme and brand. Rehearsal 6 regression: Causa's `#e9a23b` outline on `#f5f3ed` measured 1.95:1 and passed validation.
+- **Browser regression.** `tests/browser/diagram-nontext-contrast.spec.mjs` measures the computed border against the computed background of status-token outlined nodes in Chromium.
+
+
 ## 0.11.0
 
 Minor release: typography roles (EII-F, `.praxis/inbox/documents/2026-10-28-EII-F-typography-roles.md`).
