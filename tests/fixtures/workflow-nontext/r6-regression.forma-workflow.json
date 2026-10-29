@@ -1,0 +1,14 @@
+{
+  "format": "forma-workflow",
+  "formatVersion": "1.0.0",
+  "id": "r6-regression",
+  "title": "Rehearsal 6 amber outline",
+  "forma": { "version": "0.4.0" },
+  "nodes": [
+    { "id": "cause", "kind": "task", "label": "Amber outline", "color": { "fill": "#f5f3ed", "stroke": "#e9a23b" } },
+    { "id": "gate", "kind": "task", "label": "Amber diamond", "variant": "diamond", "color": { "fill": "#f5f3ed", "stroke": "#e9a23b", "accent": "#e9a23b" } }
+  ],
+  "edges": [
+    { "id": "e1", "source": { "node": "cause" }, "target": { "node": "gate" } }
+  ]
+}

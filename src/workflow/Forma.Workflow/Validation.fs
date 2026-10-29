@@ -99,37 +99,71 @@ module Validation =
     /// authored fill, and the canvas behind groups and edges.
     let defaultSurface = HexColor.create "#f2efe7"
 
+    /// The default diagram surfaces a literal colour may land on: the compiled
+    /// light theme and the dark theme (prefers-color-scheme: dark and
+    /// data-ef-theme="dark"), both --ef-color-surface-primary in dist/tokens.css.
+    let defaultSurfaces = [ "light", defaultSurface; "dark", HexColor.create "#171a18" ]
+
     /// WCAG 1.4.11 minimum for non-text indicators (outlines, accents, connectors).
     let nonTextMinimum = 3.0
 
     let private ratioText (ratio: float) = ratio.ToString("0.00", Globalization.CultureInfo.InvariantCulture)
 
-    /// A11Y-NONTEXT-CONTRAST for a node or group: a statically resolvable stroke
-    /// and accent must reach 3:1 against the resolvable fill, or against Forma's
-    /// light surface when no fill is authored. Token (and token-backed palette)
-    /// values are not judged here; the token pairs are covered by the
-    /// token-level contrast test (tests/nontext-contrast.test.mjs). A fill that is
-    /// authored but unresolvable leaves the check undecided.
-    let private nonTextContrast (w: Workflow) ptr subject (c: ObjectColor) =
-        let fill =
-            match c.Fill with
-            | None -> Some(defaultSurface, $"the default surface {defaultSurface.Value}")
-            | Some _ -> resolveLiteral w c.Fill |> Option.map (fun h -> h, $"fill {h.Value}")
-        let check (field: string) (label: string) value =
-            match resolveLiteral w value, fill with
-            | Some colour, Some(background, described) when HexColor.contrast colour background < nonTextMinimum ->
-                [ finding "A11Y-NONTEXT-CONTRAST" Severity.Error FindingCategory.Accessibility (ptr + "/color/" + field) subject
-                      $"{label} colour {colour.Value} on {described} has contrast {ratioText (HexColor.contrast colour background)}:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." ]
-            | _ -> []
-        check "stroke" "Stroke" c.Stroke @ check "accent" "Accent" c.Accent
+    let private nonTextFinding ptr subject message =
+        finding "A11Y-NONTEXT-CONTRAST" Severity.Error FindingCategory.Accessibility ptr subject
+            $"{message}; non-text indicators need at least 3:1 (WCAG 1.4.11)."
 
-    /// A11Y-NONTEXT-CONTRAST for an edge: a resolvable stroke against the canvas surface.
+    /// A literal drawn directly on the default surfaces, judged in the theme where it is weakest.
+    let private onSurfaces ptr subject (label: string) (colour: HexColor) =
+        let theme, surface = defaultSurfaces |> List.minBy (fun (_, s) -> HexColor.contrast colour s)
+        let ratio = HexColor.contrast colour surface
+        if ratio < nonTextMinimum then
+            [ nonTextFinding ptr subject $"{label} colour {colour.Value} on the {theme} surface {surface.Value} has contrast {ratioText ratio}:1" ]
+        else []
+
+    /// A11Y-NONTEXT-CONTRAST for a node, group or legend swatch.
+    /// - No authored fill: the shape is drawn on the default surface, so a
+    ///   literal stroke and accent must reach 3:1 against the light and the dark
+    ///   surface.
+    /// - Literal fill: the accent is an indicator and must reach 3:1 against the
+    ///   fill. The stroke is a boundary: it is reported when it is below 3:1
+    ///   against the fill and the boundary is not otherwise perceivable, that is
+    ///   when neither the stroke nor the fill reaches 3:1 against a default
+    ///   surface (a borderless filled shape stays valid where its fill stands out).
+    /// Token values (and token-backed palette slots), token fills and token/literal
+    /// mixes are not judged: the theme decides them. The token pairs are covered by
+    /// tests/nontext-contrast.test.mjs.
+    let private nonTextContrast (w: Workflow) ptr subject (c: ObjectColor) =
+        let stroke, accent = resolveLiteral w c.Stroke, resolveLiteral w c.Accent
+        let field name = ptr + "/color/" + name
+        let onSurface name label value = value |> Option.map (onSurfaces (field name) subject label) |> Option.defaultValue []
+        match c.Fill with
+        | None -> onSurface "stroke" "Stroke" stroke @ onSurface "accent" "Accent" accent
+        | Some _ ->
+            match resolveLiteral w c.Fill with
+            | None -> []
+            | Some fill ->
+                let below a b = HexColor.contrast a b < nonTextMinimum
+                let strokeFindings =
+                    match stroke with
+                    | Some s when below s fill ->
+                        defaultSurfaces
+                        |> List.tryFind (fun (_, surface) -> below s surface && below fill surface)
+                        |> Option.map (fun (theme, surface) ->
+                            nonTextFinding (field "stroke") subject
+                                $"Stroke colour {s.Value} on fill {fill.Value} has contrast {ratioText (HexColor.contrast s fill)}:1, and neither reaches 3:1 against the {theme} surface {surface.Value}, so the shape has no perceivable boundary")
+                        |> Option.toList
+                    | _ -> []
+                let accentFindings =
+                    match accent with
+                    | Some a when below a fill ->
+                        [ nonTextFinding (field "accent") subject $"Accent colour {a.Value} on fill {fill.Value} has contrast {ratioText (HexColor.contrast a fill)}:1" ]
+                    | _ -> []
+                strokeFindings @ accentFindings
+
+    /// A11Y-NONTEXT-CONTRAST for an edge: a literal stroke against the default surfaces.
     let private edgeContrast (w: Workflow) ptr subject (stroke: ColorValue option) =
-        match resolveLiteral w stroke with
-        | Some colour when HexColor.contrast colour defaultSurface < nonTextMinimum ->
-            [ finding "A11Y-NONTEXT-CONTRAST" Severity.Error FindingCategory.Accessibility (ptr + "/color/stroke") subject
-                  $"Edge colour {colour.Value} on the diagram surface {defaultSurface.Value} has contrast {ratioText (HexColor.contrast colour defaultSurface)}:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." ]
-        | _ -> []
+        resolveLiteral w stroke |> Option.map (onSurfaces (ptr + "/color/stroke") subject "Edge") |> Option.defaultValue []
 
     /// Accessibility rules that can be decided from the document alone.
     let private accessibility (w: Workflow) =
@@ -168,6 +202,7 @@ module Validation =
             (w.Nodes |> List.mapi (fun i n -> nonTextContrast w (nodePtr i) (Some n.Id.Value) n.Color) |> List.concat)
             @ (w.Groups |> List.mapi (fun i g -> nonTextContrast w (groupPtr i) (Some g.Id.Value) g.Color) |> List.concat)
             @ (w.Edges |> List.mapi (fun i e -> edgeContrast w (edgePtr i) (Some e.Id.Value) e.Stroke) |> List.concat)
+            @ (w.Presentation.Legend |> List.mapi (fun i l -> nonTextContrast w $"/presentation/legend/{i}" (Some l.Id.Value) l.Color) |> List.concat)
         let branches =
             w.Nodes
             |> List.mapi (fun i n ->

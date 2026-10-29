@@ -1,27 +1,25 @@
+import fs from "node:fs";
 import { expect, test } from "@playwright/test";
 
-// R7-REM-009 (Rehearsal 6 UI-016-O11 / PF-016-O1): a diagram node outlined with
-// a Forma status token keeps WCAG 1.4.11 non-text contrast (3:1) against its
-// computed background. The markup mirrors Forma.Workflow's render of
-// color.stroke = "token:status-*" (--ef-diagram-stroke: var(--ef-color-status-*)).
-const STATUS = ["warning", "danger", "success", "info"];
+// R7-REM-009 (Rehearsal 6 UI-016-O11 / PF-016-O1): diagram outlines keep WCAG
+// 1.4.11 non-text contrast (3:1). The documents are the real Forma.Workflow
+// output for tests/fixtures/workflow-nontext/*.forma-workflow.json: the F#
+// suite (NonTextContrastTests) renders them and checks these golden files
+// byte for byte, together with the validator's findings for the regression.
+const dir = "tests/fixtures/workflow-nontext";
+const STATUS_NODES = ["warning", "danger", "success", "info", "check"];
+const MODES = [
+  { name: "light", media: { colorScheme: "light", forcedColors: "none" }, canvas: [0xf2, 0xef, 0xe7] },
+  { name: "dark", media: { colorScheme: "dark", forcedColors: "none" }, canvas: [0x17, 0x1a, 0x18] },
+  { name: "forced colours", media: { colorScheme: "light", forcedColors: "active" } }
+];
 
-const page_ = (nodes) => `<!doctype html>
-<html lang="en" data-ef-theme="light">
-<head>
-  <meta charset="utf-8">
-  <title>Diagram non-text contrast</title>
-  <link rel="stylesheet" href="/dist/tokens.css">
-  <link rel="stylesheet" href="/dist/foundations.css">
-  <link rel="stylesheet" href="/dist/components.css">
-</head>
-<body><main>
-<figure class="ef-diagram" aria-labelledby="t"><figcaption id="t">Outlines</figcaption>
-<div class="ef-diagram__viewport" tabindex="0" role="region" aria-labelledby="t">
-<ol class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 60rem; --ef-diagram-canvas-h: 10rem;">
-${nodes.map(([id, style], i) => `<li><article class="ef-diagram-node" id="${id}" aria-label="${id}" style="--ef-diagram-x: ${1 + i * 13}rem; --ef-diagram-y: 1rem; --ef-diagram-w: 12rem; ${style}"><p>${id}</p></article></li>`).join("\n")}
-</ol></div></figure>
-</main></body></html>`;
+const open = async (page, file, media) => {
+  await page.emulateMedia(media);
+  await page.goto("/tests/browser/fixture/index.html");
+  const html = fs.readFileSync(`${dir}/${file}`, "utf8").replaceAll("node_modules/@echelon-foundry/design-system/dist/", "/dist/");
+  await page.setContent(html, { waitUntil: "load" });
+};
 
 const channel = (value) => {
   const c = value / 255;
@@ -39,32 +37,48 @@ const rgb = (css) => {
   return [1, 2, 3].map((i) => Number(match[i]));
 };
 
-const measure = (page, id) => page.locator(`#${id}`).evaluate((element) => {
-  const style = getComputedStyle(element);
-  return { top: style.borderTopColor, start: style.borderLeftColor, background: style.backgroundColor };
+// The painted outline and fill of a node: a diamond paints both on ::before.
+const measureNode = (page, id) => page.locator(`#${id}`).evaluate((element) => {
+  const diamond = element.dataset.efShape === "diamond";
+  const style = getComputedStyle(element, diamond ? "::before" : null);
+  return { diamond, top: style.borderTopColor, start: style.borderLeftColor, background: style.backgroundColor };
 });
+const canvasColor = (page) => page.locator(".ef-diagram__viewport").evaluate((element) => getComputedStyle(element).backgroundColor);
 
-test("status-token outlines reach 3:1 against the computed node background in the light theme", async ({ page, browserName }) => {
-  test.skip(browserName !== "chromium", "computed-colour measurement is pinned to Chromium");
-  await page.goto("/tests/browser/fixture/index.html");
-  await page.setContent(page_([
-    ...STATUS.map((status) => [`token-${status}`, `--ef-diagram-stroke: var(--ef-color-status-${status});`]),
-    ["regression", "--ef-diagram-fill: #f5f3ed; --ef-diagram-stroke: #e9a23b;"]
-  ]), { waitUntil: "load" });
-
-  for (const status of STATUS) {
-    const { top, start, background } = await measure(page, `token-${status}`);
-    const surface = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--ef-color-surface-primary").trim());
-    expect(surface).toBe("#f2efe7");
-    expect(rgb(background)).toEqual([0xf2, 0xef, 0xe7]);
-    for (const border of [top, start]) {
-      const ratio = contrast(rgb(border), rgb(background));
-      expect(ratio, `status-${status}: ${border} on ${background} = ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(3);
+for (const { name, media, canvas: expectedCanvas } of MODES) {
+  test(`status-token outlines rendered by Forma.Workflow reach 3:1 (${name})`, async ({ page, browserName }) => {
+    test.skip(browserName !== "chromium", "computed-colour measurement is pinned to Chromium");
+    await open(page, "status-outlines.document.html", media);
+    for (const node of STATUS_NODES) {
+      const id = `wf-status-outlines-n-${node}`;
+      const { diamond, top, start, background } = await measureNode(page, id);
+      if (node === "check") expect(diamond, "the diamond node is measured on ::before").toBe(true);
+      for (const border of [top, start]) {
+        const ratio = contrast(rgb(border), rgb(background));
+        expect(ratio, `${id}: ${border} on ${background} = ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(3);
+      }
     }
-  }
+    const canvas = await canvasColor(page);
+    if (expectedCanvas) expect(rgb(canvas), `${name} surface`).toEqual(expectedCanvas);
+    const edge = await page.locator("path.ef-diagram-connector").first().evaluate((element) => getComputedStyle(element).stroke);
+    const ratio = contrast(rgb(edge), rgb(canvas));
+    expect(ratio, `edge ${edge} on ${canvas} = ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(3);
+  });
+}
 
-  // Negative control: the Rehearsal 6 outline is measured as failing, so the
-  // measurement can detect the defect it guards against.
-  const regression = await measure(page, "regression");
-  expect(contrast(rgb(regression.top), rgb(regression.background))).toBeLessThan(3);
+test("negative control: the Rehearsal 6 outline is reported by the validator and measures below 3:1", async ({ page, browserName }) => {
+  test.skip(browserName !== "chromium", "computed-colour measurement is pinned to Chromium");
+  const findings = fs.readFileSync(`${dir}/r6-regression.findings.txt`, "utf8");
+  for (const pointer of ["/nodes/0/color/stroke", "/nodes/1/color/stroke", "/nodes/1/color/accent"]) {
+    expect(findings).toContain(`A11Y-NONTEXT-CONTRAST ${pointer} `);
+  }
+  expect(findings).toContain("Stroke colour #e9a23b on fill #f5f3ed has contrast 1.95:1");
+
+  await open(page, "r6-regression.document.html", { colorScheme: "light", forcedColors: "none" });
+  for (const node of ["cause", "gate"]) {
+    const { top, background } = await measureNode(page, `wf-r6-regression-n-${node}`);
+    expect(rgb(top)).toEqual([0xe9, 0xa2, 0x3b]);
+    expect(rgb(background)).toEqual([0xf5, 0xf3, 0xed]);
+    expect(contrast(rgb(top), rgb(background))).toBeLessThan(3);
+  }
 });

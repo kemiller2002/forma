@@ -84,8 +84,43 @@ JSON Schema validator enforces it, so there is no hand-maintained copy.
 | Groups | `GROUP-MISSING-MEMBER`, `GROUP-MISSING-PARENT`, `GROUP-CYCLE`, `GROUP-LANE-CONFLICT` |
 | Extensions | `EXT-RESERVED` (and the schema's namespace and object rules) |
 | Compatibility | `COMPAT-UNAVAILABLE`, `COMPAT-UNKNOWN-CAPABILITY` |
-| Accessibility (static) | `A11Y-TITLE`, `A11Y-NAME`, `A11Y-CONTRAST` (authored text colour against fill below 4.5:1), `A11Y-NONTEXT-CONTRAST` (authored stroke or accent against fill, or edge stroke against the diagram surface, below 3:1, WCAG 1.4.11; an unset fill is Forma's light surface `#f2efe7`; token values are not judged by this rule and are covered by the token-level contrast test), `A11Y-BRANCH-LABEL`, `A11Y-LEGEND` |
+| Accessibility (static) | `A11Y-TITLE`, `A11Y-NAME`, `A11Y-CONTRAST` (authored text colour against fill below 4.5:1), `A11Y-NONTEXT-CONTRAST` (non-text indicators below 3:1, WCAG 1.4.11; see below), `A11Y-BRANCH-LABEL`, `A11Y-LEGEND` |
 | Security | `SEC-UNSAFE-URL` (anything other than http, https, mailto or relative; also control characters and leading spaces), `SEC-BIDI-CONTROL` |
 | Semantics (warnings) | `SEM-DECISION-BRANCHES`, `SEM-START-INCOMING`, `SEM-END-OUTGOING`, `LAYOUT-PARTIAL` |
 
 Errors decide the class. Warnings and notes do not.
+
+### Non-text contrast (`A11Y-NONTEXT-CONTRAST`)
+
+The rule judges literal colours (`#rrggbb`, or a palette slot holding one) on
+nodes, groups, legend swatches and edges against the 3:1 minimum of WCAG 1.4.11:
+
+- **No authored fill.** The shape is drawn on the default surface, so its
+  stroke and accent are judged against both default surfaces: light `#f2efe7`
+  and dark `#171a18` (`--ef-color-surface-primary` in the compiled light theme
+  and in the dark theme, including `prefers-color-scheme: dark`). The weaker
+  theme is reported and named. Legend swatches and edge strokes are judged the
+  same way.
+- **Literal fill.** The accent is an indicator and must reach 3:1 against the
+  fill. The stroke is the shape's boundary: it is reported when it is below
+  3:1 against the fill *and* neither the stroke nor the fill reaches 3:1
+  against a default surface. A borderless filled shape (stroke equal to fill)
+  is valid wherever its fill stands out from the surface.
+
+**Limits.** The rule cannot know which theme a token resolves in, so it does
+not judge token values, token-backed palette slots, token fills, or
+token/literal mixes (a token stroke on a literal fill, a literal stroke on a
+token fill). Forma's own token pairs (every `status-*` token and
+`border-functional` on `surface-primary` and `surface-secondary`, in every
+shipped theme and brand) are covered by `tests/nontext-contrast.test.mjs`.
+Literal colours are judged against Forma's default light and dark surfaces,
+not against a brand or theme surface an application applies.
+
+**CSS custom properties bypass validation.** Colours an application sets
+directly through `--ef-diagram-stroke`, `--ef-diagram-accent`,
+`--ef-diagram-fill`, `--ef-diagram-connector-stroke` or
+`--ef-diagram-foreground` never pass through the document, so no finding is
+produced; `contracts/diagram-presentation.json` marks them
+`"contrast": "consumer"`. An application that colours diagrams that way must
+measure the result in its own browser tests (computed border colour against
+computed background, as `tests/browser/diagram-nontext-contrast.spec.mjs` does).

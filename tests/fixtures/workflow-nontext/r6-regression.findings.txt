@@ -1,0 +1,3 @@
+A11Y-NONTEXT-CONTRAST /nodes/0/color/stroke Stroke colour #e9a23b on fill #f5f3ed has contrast 1.95:1, and neither reaches 3:1 against the light surface #f2efe7, so the shape has no perceivable boundary; non-text indicators need at least 3:1 (WCAG 1.4.11).
+A11Y-NONTEXT-CONTRAST /nodes/1/color/stroke Stroke colour #e9a23b on fill #f5f3ed has contrast 1.95:1, and neither reaches 3:1 against the light surface #f2efe7, so the shape has no perceivable boundary; non-text indicators need at least 3:1 (WCAG 1.4.11).
+A11Y-NONTEXT-CONTRAST /nodes/1/color/accent Accent colour #e9a23b on fill #f5f3ed has contrast 1.95:1; non-text indicators need at least 3:1 (WCAG 1.4.11).

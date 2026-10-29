@@ -65,11 +65,11 @@
     }
   },
   "appearanceProperties": {
-    "fill": { "customProperty": "--ef-diagram-fill", "appliesTo": ["node", "group", "legend"], "syntax": "color", "default": { "node": "--ef-color-surface-primary", "group": "transparent", "legend": "--ef-color-surface-primary" } },
-    "stroke": { "customProperty": "--ef-diagram-stroke", "appliesTo": ["node", "group", "legend"], "syntax": "color", "default": { "node": "--ef-color-border-functional", "group": "--ef-color-border-functional", "legend": "--ef-color-border-functional" }, "print": "Authored stroke prints; otherwise black." },
-    "accent": { "customProperty": "--ef-diagram-accent", "appliesTo": ["node", "group", "legend"], "syntax": "color", "default": { "node": "stroke", "group": "stroke", "legend": "stroke" } },
+    "fill": { "customProperty": "--ef-diagram-fill", "appliesTo": ["node", "group", "legend"], "syntax": "color", "default": { "node": "--ef-color-surface-primary", "group": "transparent", "legend": "--ef-color-surface-primary" }, "contrast": "consumer" },
+    "stroke": { "customProperty": "--ef-diagram-stroke", "appliesTo": ["node", "group", "legend"], "syntax": "color", "default": { "node": "--ef-color-border-functional", "group": "--ef-color-border-functional", "legend": "--ef-color-border-functional" }, "print": "Authored stroke prints; otherwise black.", "contrast": "consumer" },
+    "accent": { "customProperty": "--ef-diagram-accent", "appliesTo": ["node", "group", "legend"], "syntax": "color", "default": { "node": "stroke", "group": "stroke", "legend": "stroke" }, "contrast": "consumer" },
     "foreground": { "customProperty": "--ef-diagram-foreground", "appliesTo": ["node", "group"], "syntax": "color", "default": { "node": "--ef-color-text-primary", "group": "--ef-color-text-primary" }, "contrast": "consumer" },
-    "connectorStroke": { "customProperty": "--ef-diagram-connector-stroke", "appliesTo": ["connector"], "syntax": "color", "default": { "connector": "--ef-color-border-functional" } },
+    "connectorStroke": { "customProperty": "--ef-diagram-connector-stroke", "appliesTo": ["connector"], "syntax": "color", "default": { "connector": "--ef-color-border-functional" }, "contrast": "consumer" },
     "connectorWidth": { "customProperty": "--ef-diagram-connector-width", "appliesTo": ["connector"], "syntax": "number", "range": [1, 8], "default": { "connector": "2" } }
   },
   "geometryProperties": {

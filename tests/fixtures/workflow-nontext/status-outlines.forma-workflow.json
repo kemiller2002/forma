@@ -1,0 +1,25 @@
+{
+  "format": "forma-workflow",
+  "formatVersion": "1.0.0",
+  "id": "status-outlines",
+  "title": "Status token outlines",
+  "forma": { "version": "0.4.0" },
+  "presentation": {
+    "legend": [
+      { "id": "attention", "label": "Needs attention", "color": { "stroke": "token:status-warning" } }
+    ]
+  },
+  "nodes": [
+    { "id": "warning", "kind": "task", "label": "Warning outline", "color": { "stroke": "token:status-warning" } },
+    { "id": "danger", "kind": "task", "label": "Danger outline", "color": { "stroke": "token:status-danger" } },
+    { "id": "success", "kind": "task", "label": "Success outline", "color": { "stroke": "token:status-success" } },
+    { "id": "info", "kind": "task", "label": "Info outline", "color": { "stroke": "token:status-info" } },
+    { "id": "check", "kind": "task", "label": "Warning diamond", "variant": "diamond", "color": { "stroke": "token:status-warning", "accent": "token:status-warning" } }
+  ],
+  "edges": [
+    { "id": "e1", "source": { "node": "warning" }, "target": { "node": "danger" }, "label": "then", "color": { "stroke": "token:status-warning" } },
+    { "id": "e2", "source": { "node": "danger" }, "target": { "node": "success" } },
+    { "id": "e3", "source": { "node": "success" }, "target": { "node": "info" } },
+    { "id": "e4", "source": { "node": "info" }, "target": { "node": "check" } }
+  ]
+}

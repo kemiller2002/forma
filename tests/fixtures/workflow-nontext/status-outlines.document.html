@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Status token outlines</title>
+    <meta name="generator" content="Forma workflow renderer 1.0.0">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/tokens.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/foundations.css">
+    <link rel="stylesheet" href="node_modules/@echelon-foundry/design-system/dist/components.css">
+  </head>
+  <body>
+    <main>
+      <figure class="ef-diagram" id="wf-status-outlines" aria-labelledby="wf-status-outlines-title">
+        <figcaption id="wf-status-outlines-title">Status token outlines</figcaption>
+        <div class="ef-diagram__viewport" tabindex="0" role="group" aria-label="Status token outlines diagram, scroll to see all items">
+          <div class="ef-diagram__canvas" style="--ef-diagram-canvas-w: 89.5rem; --ef-diagram-canvas-h: 15.5rem;">
+            <svg class="ef-diagram__wires" viewBox="0 0 1432 248" aria-hidden="true" focusable="false">
+              <defs>
+                <marker id="wf-status-outlines-arrow" class="ef-diagram-marker" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 z" />
+                </marker>
+              </defs>
+              <path class="ef-diagram-connector" id="wf-status-outlines-e-e1" d="M224 76 L272 76 L272 64 L320 64" marker-end="url(#wf-status-outlines-arrow)" style="--ef-diagram-connector-stroke: var(--ef-color-status-warning);" />
+              <path class="ef-diagram-connector" id="wf-status-outlines-e-e2" d="M520 64 L568 64 L568 76 L616 76" marker-end="url(#wf-status-outlines-arrow)" />
+              <path class="ef-diagram-connector" id="wf-status-outlines-e-e3" d="M816 76 L864 76 L864 64 L912 64" marker-end="url(#wf-status-outlines-arrow)" />
+              <path class="ef-diagram-connector" id="wf-status-outlines-e-e4" d="M1112 64 L1160 64 L1160 124 L1208 124" marker-end="url(#wf-status-outlines-arrow)" />
+            </svg>
+            <article class="ef-diagram-node" id="wf-status-outlines-n-warning" data-ef-shape="rounded" aria-labelledby="wf-status-outlines-n-warning-label" style="--ef-diagram-x: 1.5rem; --ef-diagram-y: 1.5rem; --ef-diagram-w: 12.5rem; --ef-diagram-h: 6.5rem; --ef-diagram-stroke: var(--ef-color-status-warning);">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-status-outlines-n-warning-label">Warning outline</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-status-outlines-n-danger" data-ef-shape="rounded" aria-labelledby="wf-status-outlines-n-danger-label" style="--ef-diagram-x: 20rem; --ef-diagram-y: 1.5rem; --ef-diagram-w: 12.5rem; --ef-diagram-h: 5rem; --ef-diagram-stroke: var(--ef-color-status-danger);">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-status-outlines-n-danger-label">Danger outline</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-status-outlines-n-success" data-ef-shape="rounded" aria-labelledby="wf-status-outlines-n-success-label" style="--ef-diagram-x: 38.5rem; --ef-diagram-y: 1.5rem; --ef-diagram-w: 12.5rem; --ef-diagram-h: 6.5rem; --ef-diagram-stroke: var(--ef-color-status-success);">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-status-outlines-n-success-label">Success outline</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-status-outlines-n-info" data-ef-shape="rounded" aria-labelledby="wf-status-outlines-n-info-label" style="--ef-diagram-x: 57rem; --ef-diagram-y: 1.5rem; --ef-diagram-w: 12.5rem; --ef-diagram-h: 5rem; --ef-diagram-stroke: var(--ef-color-status-info);">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-status-outlines-n-info-label">Info outline</h3>
+            </article>
+            <article class="ef-diagram-node" id="wf-status-outlines-n-check" data-ef-shape="diamond" aria-labelledby="wf-status-outlines-n-check-label" style="--ef-diagram-x: 75.5rem; --ef-diagram-y: 1.5rem; --ef-diagram-w: 12.5rem; --ef-diagram-h: 12.5rem; --ef-diagram-stroke: var(--ef-color-status-warning); --ef-diagram-accent: var(--ef-color-status-warning);">
+              <p class="ef-diagram-node__kind">Task</p>
+              <h3 class="ef-diagram-node__label" id="wf-status-outlines-n-check-label">Warning diamond</h3>
+            </article>
+            <span class="ef-diagram-connector__label" aria-hidden="true" style="--ef-diagram-x: 15.5625rem; --ef-diagram-y: 3.6875rem;">then</span>
+          </div>
+        </div>
+        <ol class="ef-diagram__relations" aria-label="Relationships">
+          <li>Warning outline leads to Danger outline: “then”.</li>
+          <li>Danger outline leads to Success outline.</li>
+          <li>Success outline leads to Info outline.</li>
+          <li>Info outline leads to Warning diamond.</li>
+        </ol>
+        <dl class="ef-diagram-legend" aria-label="Key">
+          <div>
+            <dt><span class="ef-diagram-legend__swatch" style="--ef-diagram-stroke: var(--ef-color-status-warning);"></span> Needs attention</dt>
+            <dd></dd>
+          </div>
+        </dl>
+      </figure>
+    </main>
+  </body>
+</html>
