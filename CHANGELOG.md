@@ -7,7 +7,9 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
-## Unreleased
+## 0.12.0
+
+Minor release: diagram non-text contrast and status tokens.
 
 **Behaviour change: workflow validation is stricter.** Diagram non-text contrast (R7-REM-009, `.praxis/inbox/documents/2026-10-29-R7-REM-009-diagram-nontext-contrast.md`).
 Documents that validated before can now fail with `A11Y-NONTEXT-CONTRAST`, and `forma-workflow render` refuses them (exit 1). The status tokens are additive.

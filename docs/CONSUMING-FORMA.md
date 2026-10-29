@@ -202,6 +202,16 @@ Static workflow HTML needs only `tokens.css`, `foundations.css` and
 `components.css`. An interactive viewer or editor needs the separate opt-in
 package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
 
+## 0.12.0
+
+Behaviour change for workflow documents; no CSS class or component changed.
+`forma-workflow validate` reports the new error `A11Y-NONTEXT-CONTRAST`
+(WCAG 1.4.11, 3:1) for literal diagram colours, and `render` refuses those
+documents. Prefer `token:status-*` or `token:border-functional`, pass the
+host's pinned theme with `--theme`, or adjust literal colours. The four status
+tokens (`token:status-warning|danger|success|info`) are additive. See
+`CHANGELOG.md` 0.12.0 and `docs/workflow/VALIDATION.md`, "Non-text contrast".
+
 ## 0.11.0
 
 Additive. No class, token or component changed for pages without
