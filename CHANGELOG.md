@@ -7,6 +7,10 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## @echelon-foundry/forma-workflow 1.2.0
+
+Minor release of the workflow package (and `EchelonFoundry.Forma.Workflow` 1.2.0): it ships the Forma 0.12.0 engine. **Behaviour change: validation is stricter.** Documents that validated under 1.1.0 can now fail with `A11Y-NONTEXT-CONTRAST` (WCAG 1.4.11, 3:1), and `render` refuses documents that fail validation. Added: `token:status-warning|danger|success|info` diagram colours, `ValidationOptions.Theme` and `--theme` on `validate`/`render`. No element, class, attribute or token was removed or renamed (QD-004), so this is a minor release, as Forma 0.12.0 was. See 0.12.0 below for the migration.
+
 ## 0.12.0
 
 Minor release: diagram non-text contrast and status tokens.
