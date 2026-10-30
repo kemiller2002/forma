@@ -42,6 +42,8 @@ logs/*
 
 # Generated build output
 dist/
+# A deliberately broken Forma root for tests/token-validator.test.mjs (its dist/ is source, not build output).
+!tests/fixtures/token-validation/forma-broken/dist/
 site-dist/
 
 # F# tool build output (never tracked: stale binaries can be mistaken for up to date)
