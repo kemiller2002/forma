@@ -1,0 +1,2 @@
+:root { --ef-primitive-color-ink: #000000; --ef-primitive-color-old-ink: #000000; --ef-color-text-primary: #000000; --ef-color-text-secondary: #000000; }
+.ef-thing { color: var(--ef-color-text-primry); border-color: var(--ef-primitive-color-old-ink); gap: var(--ef-thing-gap, 1rem); }

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" data-ef-type="application">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forma layout reliability fixtures</title>
+  <link rel="stylesheet" href="../../../dist/all.css">
+  <link rel="stylesheet" href="../../../dist/brands/example-harbor.css">
+  <style>
+    /* Fixture chrome only. Nothing here changes how a Forma component lays out. */
+    body { padding: 1rem; }
+    [data-lr-fixture] { margin-block-end: 2rem; }
+    [data-lr-fixture] > h2 { font-size: 1rem; margin: 0 0 0.5rem; }
+    /* Fixture 4 rounds a Forma surface the way a branded application does,
+       with a brand radius token. */
+    .lr-rounded { border-radius: var(--ef-primitive-radius-medium, 12px); }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Layout reliability fixtures</h1>
+
+  <!--
+    Each fixture names the failure class it exercises (data-lr-class) and the
+    container whose content box must hold every descendant box and every line
+    of text (data-lr-contain). Overlays, popovers and intentional scrollers
+    declare their own contract instead (data-lr-overlay, data-lr-scroll).
+  -->
+
+  <section data-lr-fixture="card-identifier" data-lr-class="unbroken token in a card" aria-labelledby="f1">
+    <h2 id="f1">1. Card with a long unbroken identifier</h2>
+    <article class="ef-surface" data-lr-contain>
+      <h3>Evidence EV-7731</h3>
+      <dl class="ef-key-value-list">
+        <div><dt>Source commit</dt><dd><span class="ef-identifier">sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span></dd></div>
+        <div><dt>Execution</dt><dd>EXE-20261030T061200481Z-a6b1be1d-0f3c-4d6e-9a7b-2c1e5f8d4b3a-rehearsal-seven-candidate</dd></div>
+      </dl>
+      <div class="ef-cluster">
+        <span class="ef-status-lozenge" data-state="attention">Unverified</span>
+        <span>https://github.com/kemiller2002/causa-data/blob/9f86d081884c7d659a2feaa0c55ad015a3bf4f1b/investigations/INV-0042/evidence/EV-7731.json</span>
+      </div>
+      <ul>
+        <li>refs/heads/claude/rehearsal-007-readiness-audit-2ap9t7-with-a-very-long-branch-name-that-has-no-spaces</li>
+      </ul>
+    </article>
+  </section>
+
+  <section data-lr-fixture="flex-row" data-lr-class="flex item refuses to shrink" aria-labelledby="f2">
+    <h2 id="f2">2. Flex row with a long label and two buttons</h2>
+    <div class="ef-surface" data-lr-contain>
+      <div class="ef-cluster" data-lr-row>
+        <strong>Hypothesis&nbsp;H-12:&nbsp;Connection-pool-exhaustion-under-retry-storm-caused-the-checkout-latency-regression</strong>
+        <button type="button">Edit</button>
+        <button type="button">Withdraw</button>
+      </div>
+      <div class="ef-actions">
+        <span>Kausalzusammenhangsüberprüfungsergebnisdokumentation</span>
+        <button type="button">Speichern</button>
+        <button type="button">Verwerfen</button>
+      </div>
+      <header class="ef-record-header">
+        <div class="ef-record-header__main">
+          <div class="ef-record-header__title">
+            <div><span class="ef-record-header__type">Investigation</span><h3>INV-2026-10-30-checkout-latency-regression-after-connection-pool-change</h3></div>
+            <span class="ef-status-lozenge" data-state="blocked">Conflict-detected-on-remote-head</span>
+          </div>
+        </div>
+        <div class="ef-record-header__actions"><button type="button">Resolve</button></div>
+      </header>
+    </div>
+  </section>
+
+  <section data-lr-fixture="nested-grid" data-lr-class="grid and flex children inside nested containers" aria-labelledby="f3">
+    <h2 id="f3">3. Grid containing nested cards</h2>
+    <div class="ef-grid" data-lr-contain>
+      <article class="ef-surface" data-lr-contain>
+        <h3>Timeline</h3>
+        <div class="ef-grid">
+          <div class="ef-surface" data-lr-contain>
+            <div class="ef-stack">
+              <span>2026-10-30T06:12:00.481Z/deploy/checkout-service/v4.18.2-rc.3+build.20261030061200</span>
+              <span class="ef-identifier">trace-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331</span>
+            </div>
+          </div>
+          <div class="ef-surface" data-lr-contain><p>A short sibling card.</p></div>
+        </div>
+      </article>
+      <article class="ef-surface" data-lr-contain>
+        <h3>Inspector</h3>
+        <div class="ef-split-pane">
+          <div><span>selection:node/H-12/evidence/EV-7731/observation/OB-0099/attachment/latency-histogram.csv</span></div>
+          <div><p>Detail</p></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section data-lr-fixture="rounded-panel" data-lr-class="content escaping a rounded panel" aria-labelledby="f4" data-ef-brand="example-harbor">
+    <h2 id="f4">4. Rounded panel with a long paragraph</h2>
+    <div class="ef-surface lr-rounded" data-lr-contain data-lr-corner>
+      <p>The rollback restored p95 latency within four minutes, which is consistent with the hypothesis but does not exclude the concurrent cache eviction. Evidence: https://observability.example.com/d/checkout/latency?from=1730268720000&amp;to=1730272320000&amp;var-service=checkout&amp;var-region=us-east-1&amp;refresh=30s</p>
+      <div><em>Contributing-factor-classification-pending-owner-review-and-independent-replication</em></div>
+      <table class="ef-dense-ledger">
+        <thead><tr><th scope="col">Signal</th><th scope="col">Value</th></tr></thead>
+        <tbody><tr><td>p95</td><td>1,840&nbsp;ms</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section data-lr-fixture="navigation" data-lr-class="navigation with many items" aria-labelledby="f5">
+    <h2 id="f5">5. Navigation bar with many items</h2>
+    <div data-lr-contain>
+      <div class="ef-landmark-region">
+        <strong>Causa</strong>
+        <nav aria-label="Workspace">
+          <a href="#n1">Investigations</a><a href="#n2">Hypotheses</a><a href="#n3">Evidence</a><a href="#n4">Timeline</a><a href="#n5">Causal graph</a><a href="#n6">Actions</a><a href="#n7">Reports</a><a href="#n8">Administration</a><a href="#n9">Settings</a><a href="#n10">Ermittlungsverfahrensübersicht</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <section data-lr-fixture="narrow-form" data-lr-class="form at a narrow viewport" aria-labelledby="f6">
+    <h2 id="f6">6. Form at a narrow viewport</h2>
+    <form class="ef-form" data-lr-contain action="#f6" aria-labelledby="f6-title">
+      <h3 id="f6-title">Record an observation</h3>
+      <div class="ef-form-row" data-ef-form-layout="grid">
+        <div class="ef-field">
+          <label class="ef-field__label" for="f6-a">Beobachtungszeitpunkt (koordinierte Weltzeit, erforderlich)</label>
+          <input id="f6-a" type="datetime-local">
+        </div>
+        <div class="ef-field">
+          <label class="ef-field__label" for="f6-b">Evidence source</label>
+          <span class="ef-field__description" id="f6-b-d">Paste a permalink such as https://github.com/kemiller2002/causa-data/blob/main/investigations/INV-0042/evidence.json</span>
+          <select id="f6-b" aria-describedby="f6-b-d"><option>Production telemetry export (Prometheus remote-read, 15-second resolution)</option></select>
+        </div>
+      </div>
+      <fieldset>
+        <legend>Klassifizierung des beobachteten Zusammenhangs zwischen Ursache und Wirkung</legend>
+        <label><input type="radio" name="f6-c" checked> Supports</label>
+        <label><input type="radio" name="f6-c"> Contradicts</label>
+      </fieldset>
+      <div class="ef-actions"><button type="submit">Observation speichern</button><button type="reset">Zurücksetzen</button></div>
+    </form>
+  </section>
+
+  <section data-lr-fixture="dialog" data-lr-class="dialog with validation errors" aria-labelledby="f7">
+    <h2 id="f7">7. Dialog containing validation errors</h2>
+    <button type="button" id="f7-open">Open conflict dialog</button>
+    <dialog class="ef-dialog" id="f7-dialog" aria-labelledby="f7-title" data-lr-contain>
+      <div class="ef-dialog__body">
+        <h3 id="f7-title">Save conflict</h3>
+        <div class="ef-validation-summary" role="alert" tabindex="-1" aria-labelledby="f7-summary">
+          <div class="ef-validation-summary__icon" aria-hidden="true">!</div>
+          <div>
+            <h4 class="ef-validation-summary__title" id="f7-summary">2 changes could not be saved</h4>
+            <ul class="ef-validation-summary__list">
+              <li>Expected head 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b but the remote head is e3b0c44298fc1c149afbf4c8996fb92427ae41e4.</li>
+              <li><a href="#f7">investigations/INV-0042/hypotheses/H-12-connection-pool-exhaustion.json</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="ef-dialog__actions">
+        <button type="button" id="f7-close">Keep my local changes</button>
+        <button type="button">Reload remote version</button>
+      </div>
+    </dialog>
+  </section>
+
+  <section data-lr-fixture="dropdown-edge" data-lr-class="dropdown near the viewport boundary" aria-labelledby="f8">
+    <h2 id="f8">8. Dropdown near the viewport boundary</h2>
+    <div class="ef-cluster" style="justify-content: flex-end">
+      <button type="button" id="f8-trigger" popovertarget="f8-menu">More actions</button>
+    </div>
+    <div class="ef-menu" id="f8-menu" popover data-lr-overlay>
+      <ul class="ef-menu__list">
+        <li><button type="button">Duplicate investigation</button></li>
+        <li><button type="button">Export as Folio report</button></li>
+        <li><button type="button">Archive-investigation-and-all-attached-evidence</button></li>
+      </ul>
+    </div>
+  </section>
+
+  <section data-lr-fixture="large-svg" data-lr-class="large intrinsic media" aria-labelledby="f9">
+    <h2 id="f9">9. Component containing a large SVG</h2>
+    <figure class="ef-surface" data-lr-contain>
+      <svg data-lr-media width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-label="Latency over time">
+        <rect width="1200" height="400" fill="none" stroke="currentColor"/>
+        <polyline fill="none" stroke="currentColor" stroke-width="4" points="0,350 200,320 400,120 600,90 800,300 1000,330 1200,340"/>
+      </svg>
+      <figcaption>p95 latency, 30 October 2026</figcaption>
+      <p>Icon stays at its intrinsic size:
+        <svg data-lr-icon width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="currentColor"/></svg>
+      </p>
+    </figure>
+  </section>
+
+  <section data-lr-fixture="enlarged-text" data-lr-class="200% text" aria-labelledby="f10">
+    <h2 id="f10">10. Screen at 200% text</h2>
+    <div class="ef-surface" data-lr-contain style="font-size: 200%">
+      <div class="ef-cluster">
+        <span class="ef-status-lozenge" data-state="ok">Saved</span>
+        <span class="ef-status-lozenge" data-state="attention">Unsaved changes</span>
+      </div>
+      <dl class="ef-key-value-list">
+        <div><dt>Investigation</dt><dd>Checkout latency regression</dd></div>
+        <div><dt>Remote head</dt><dd><span class="ef-identifier">e3b0c44298fc1c149afbf4c8996fb924</span></dd></div>
+      </dl>
+      <div class="ef-actions"><button type="button">Save investigation</button><button type="button">Discard</button></div>
+    </div>
+  </section>
+
+  <section data-lr-fixture="scroller" data-lr-class="intentional horizontal scroll is preserved" aria-labelledby="f11">
+    <h2 id="f11">11. Intentional scroller (control)</h2>
+    <div class="ef-bounded-overflow" data-lr-scroll tabindex="0" aria-label="Raw log">
+      <pre>2026-10-30T06:12:00.481Z checkout-service pool=primary active=200 idle=0 waiting=1843 timeout_ms=30000 retry=exponential jitter=full attempt=7 trace=0af7651916cd43dd8448eb211c80319c</pre>
+    </div>
+  </section>
+</main>
+<script>
+  // Fixture control only: open the dialog through the native API.
+  document.getElementById("f7-open").addEventListener("click", () => document.getElementById("f7-dialog").showModal());
+  document.getElementById("f7-close").addEventListener("click", () => document.getElementById("f7-dialog").close());
+</script>
+</body>
+</html>

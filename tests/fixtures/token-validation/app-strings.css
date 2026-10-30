@@ -1,0 +1,7 @@
+/* Strings and at-rule scopes (LRP-001 review findings 8 and 9). */
+.brace::before { content: "}"; color: var(--ef-bad-one); }
+.comment-marker::after { content: "/*"; }
+.after-marker { color: var(--ef-bad-two); }
+.quoted::before { content: "var(--ef-not-a-token)"; }
+@media (prefers-color-scheme: dark) { :root { --app-a: var(--app-b); } }
+@media (prefers-color-scheme: light) { :root { --app-b: var(--app-a); } }

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" data-ef-type="application">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Causa-shaped Forma regions</title>
+  <link rel="stylesheet" href="../../../dist/all.css">
+  <style>
+    /* Fixture chrome only. */
+    body { padding: 1rem; }
+    .lr-graph { inline-size: 84rem; block-size: 18rem; border: 1px dashed currentColor; }
+  </style>
+</head>
+<body>
+<!--
+  Small representative regions of the Indy Init Causa screens (docs/SCREEN-CONTRACTS.md,
+  CAUSA-UI-EXPERIENCE-REQUIREMENTS.md, CAUSA-PERSISTENCE-REQUIREMENTS.md), built only from
+  canonical Forma patterns with realistic Causa content. This is not Causa: there is no
+  behaviour, state or data. Each [data-lr-region] names the screen area it stands for.
+-->
+<div class="ef-navigation-shell">
+  <details class="ef-navigation-shell__compact">
+    <summary>Navigation</summary>
+    <nav aria-label="Primary compact"><a href="#dash" aria-current="page">Investigations</a><a href="#admin">Administration</a><a href="#settings">Settings</a></nav>
+  </details>
+  <nav class="ef-navigation-shell__persistent" aria-label="Primary"><a href="#dash" aria-current="page">Investigations</a><a href="#admin">Administration</a><a href="#settings">Settings</a></nav>
+  <main class="ef-navigation-shell__content" id="dash">
+    <h1>Checkout latency regression after connection-pool change</h1>
+
+    <section data-lr-region="save-state" data-lr-contain aria-label="Save state">
+      <div class="ef-cluster">
+        <span class="ef-status-lozenge" data-state="attention">Unsaved changes</span>
+        <p class="ef-freshness"><span class="ef-freshness__label">Last saved to</span> <span class="ef-identifier">kemiller2002/causa-data@e3b0c44298fc1c149afbf4c8996fb92427ae41e4</span> <time datetime="2026-10-30T06:12:00Z">06:12 UTC</time> <span class="ef-freshness__state">Behind remote</span></p>
+      </div>
+    </section>
+
+    <section data-lr-region="dashboard" data-lr-contain aria-label="Investigation dashboard" class="ef-dashboard-grid">
+      <article class="ef-metric-card"><div class="ef-metric-card__label">Open hypotheses</div><div class="ef-metric-card__value">7</div><p>H-12-connection-pool-exhaustion-under-retry-storm leads.</p></article>
+      <article class="ef-metric-card"><div class="ef-metric-card__label">Evidence awaiting review</div><div class="ef-metric-card__value">18</div><p>Oldest: EV-7731/observation/OB-0099/latency-histogram.csv</p></article>
+      <article class="ef-metric-card"><div class="ef-metric-card__label">Unresolved conflicts</div><div class="ef-metric-card__value">1</div><p>Remote head moved.</p></article>
+    </section>
+
+    <section data-lr-region="causal-graph" aria-label="Causal graph">
+      <h2>Causal graph</h2>
+      <div class="ef-bounded-overflow" data-lr-scroll tabindex="0" role="region" aria-label="Causal graph canvas">
+        <div class="lr-graph">A wide graph canvas that scrolls inside its region.</div>
+      </div>
+    </section>
+
+    <div class="ef-split-pane" data-lr-region="inspector" data-lr-contain>
+      <section aria-label="Timeline">
+        <h2>Timeline</h2>
+        <ol class="ef-timeline" aria-label="Investigation timeline">
+          <li class="ef-timeline__item">
+            <div class="ef-timeline__marker" aria-hidden="true"></div>
+            <div class="ef-timeline__content">
+              <div class="ef-timeline__meta"><time datetime="2026-10-30T06:12:00Z">Oct 30 · 06:12</time><span class="ef-status-lozenge" data-state="ok">Confirmed</span></div>
+              <h3>Deploy checkout-service v4.18.2-rc.3+build.20261030061200</h3>
+              <p>Pool size changed in commit 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b.</p>
+              <small>Source: deploy/checkout-service/pipelines/release-train-2026-10-30T06:00:00Z</small>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section aria-label="Evidence inspector">
+        <h2>Evidence inspector</h2>
+        <dl class="ef-key-value-list">
+          <div><dt>Evidence</dt><dd><span class="ef-identifier">EV-7731</span></dd></div>
+          <div><dt>Attachment</dt><dd>investigations/INV-0042/evidence/EV-7731/observation/OB-0099/latency-histogram.csv</dd></div>
+          <div><dt>Digest</dt><dd><span class="ef-identifier">sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08</span></dd></div>
+        </dl>
+      </section>
+    </div>
+
+    <section class="ef-operation-status" data-lr-region="operation" data-lr-contain aria-labelledby="op-title">
+      <div class="ef-operation-status__symbol" aria-hidden="true">↻</div>
+      <div>
+        <span class="ef-status-lozenge" data-state="unknown">Unknown outcome</span>
+        <h2 id="op-title">We cannot confirm whether the save to refs/heads/investigations/INV-0042 completed</h2>
+        <p>Reconcile before retrying. Expected head e3b0c44298fc1c149afbf4c8996fb92427ae41e4.</p>
+      </div>
+      <div class="ef-operation-status__actions"><button type="button">Reconcile</button><button type="button">View details</button></div>
+    </section>
+
+    <article class="ef-conflict-review" data-lr-region="conflict" data-lr-contain aria-labelledby="conflict-title">
+      <header class="ef-conflict-review__header">
+        <span class="ef-status-lozenge" data-state="attention">Conflict</span>
+        <h2 id="conflict-title">investigations/INV-0042/hypotheses/H-12.json changed on the remote</h2>
+        <p>No changes were applied. Remote head 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b differs from e3b0c44298fc1c149afbf4c8996fb92427ae41e4.</p>
+      </header>
+      <div class="ef-diff-viewer">
+        <div class="ef-diff-viewer__grid">
+          <section class="ef-diff-viewer__side"><h3>Your version</h3><p>status: supported-by-EV-7731-and-EV-7732-pending-independent-replication</p></section>
+          <section class="ef-diff-viewer__side"><h3>Remote version</h3><p>status: withdrawn-after-cache-eviction-correlation</p></section>
+        </div>
+      </div>
+      <footer class="ef-conflict-review__actions"><button type="button">Keep mine</button><button type="button">Reload remote</button></footer>
+    </article>
+
+    <section data-lr-region="command" aria-label="Command interface">
+      <dialog class="ef-command-palette" id="command-palette" aria-labelledby="command-title">
+        <header class="ef-command-palette__header"><h2 id="command-title">Commands</h2><kbd>Esc</kbd></header>
+        <label class="ef-visually-hidden" for="command-search">Find a command</label>
+        <input id="command-search" type="search" placeholder="Type a command, hypothesis or evidence ID">
+        <div class="ef-command-palette__group">
+          <h3>Suggested</h3>
+          <button type="button"><span>Attach evidence to H-12-connection-pool-exhaustion-under-retry-storm</span><kbd>⌘ E</kbd></button>
+          <button type="button" disabled><span>Publish Folio report</span><small>Unavailable until every hypothesis has a disposition</small></button>
+        </div>
+      </dialog>
+    </section>
+  </main>
+</div>
+</body>
+</html>

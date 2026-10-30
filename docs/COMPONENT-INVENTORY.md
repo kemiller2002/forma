@@ -75,14 +75,14 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Empty state | `<ef-empty-state>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skeleton, alert, collection-toolbar, active-filter-summary |
 | Freshness | `<ef-freshness>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | security-evidence-age, state-survivability, provenance-trail, status-lozenge |
 | Obligation panel | `<ef-obligation-panel>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | readiness-checklist, work-queue, operation-status, validation-summary |
-| Operation status | `<ef-operation-status>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, conflict-review, state-survivability, recovery-actions |
+| Operation status | `<ef-operation-status>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | causa-representative.spec.mjs | alert, conflict-review, state-survivability, recovery-actions |
 | Progress bar | `<ef-progress-bar>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | spinner, measure, survey-progress, steps |
 | Readiness checklist | `<ef-readiness-checklist>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | obligation-panel, wizard, state-survivability |
 | Scroll progress | `<ef-scroll-progress>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | progressive-motion.spec.mjs | progress-bar, entry-index, documentation-layout |
 | Skeleton | `<ef-skeleton>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | loading-progress.spec.mjs | spinner, empty-state, progress-bar |
 | Spinner | `<ef-spinner>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | loading-progress.spec.mjs | progress-bar, skeleton, operation-status |
 | State survivability | `<ef-state-survivability>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | visual-engineering-semantics.spec.mjs | operation-status, status-lozenge, freshness, security-state-matrix |
-| Status lozenge | `<ef-status-lozenge>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | color-contract.spec.mjs, forced-colors-projection.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
+| Status lozenge | `<ef-status-lozenge>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | color-contract.spec.mjs, forced-colors-projection.spec.mjs, layout-reliability.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
 | Toast | `<ef-toast>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, popover, fault-notification, dialog |
 | Validation message | `<ef-validation-message>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | validation-summary, text-field, question, alert |
 | Validation summary | `<ef-validation-summary>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | validation-message, alert, obligation-panel |
@@ -119,15 +119,15 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Sidebar | `<ef-sidebar>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | composition.spec.mjs | rail, switcher, split-pane, workspace-shell |
 | Split | `<ef-split>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | switcher, hero, split-pane, container |
 | Stack | `<ef-stack>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | cluster, grid, surface, prose |
-| Surface | `<ef-surface>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | css-source.test.mjs, dist-css.test.mjs, forced-colors-projection.spec.mjs, pattern-contrast.spec.mjs, type-roles.spec.mjs | card-grid, callout, preview-surface, stack |
+| Surface | `<ef-surface>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | conformance-package.test.mjs, css-source.test.mjs, dist-css.test.mjs, forced-colors-projection.spec.mjs, pattern-contrast.spec.mjs, type-roles.spec.mjs, word-integrity.spec.mjs | card-grid, callout, preview-surface, stack |
 | Switcher | `<ef-switcher>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | sidebar, rail, split, cluster |
-| Dashboard grid | `<ef-dashboard-grid>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | metric-card, responsive-grid, mosaic, work-queue |
+| Dashboard grid | `<ef-dashboard-grid>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | causa-representative.spec.mjs | metric-card, responsive-grid, mosaic, work-queue |
 | Focus stage | `<ef-focus-stage>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | split-pane, rail, workspace-shell, preview-surface |
 | Master/detail workspace | `<ef-master-detail>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | data-grid, work-queue, split-pane, record-header |
 | Preview surface | `<ef-preview-surface>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, readiness-checklist, verification-frame, focus-stage |
 | Record header | `<ef-record-header>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | section-heading, menu, mobile-action-bar, master-detail, status-lozenge |
 | Resizable split pane | `<ef-resizable-split-pane>` | Workspaces and shells | implemented | complete | 4 | 1 | yes | yes | yes | direct-manipulation.spec.mjs | split-pane, reorder-states, workspace-shell, flyout |
-| Split pane | `<ef-split-pane>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | direct-manipulation.spec.mjs | resizable-split-pane, sidebar, switcher, focus-stage, workspace-shell |
+| Split pane | `<ef-split-pane>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | causa-representative.spec.mjs, direct-manipulation.spec.mjs | resizable-split-pane, sidebar, switcher, focus-stage, workspace-shell |
 | Workspace shell | `<ef-workspace-shell>` | Workspaces and shells | implemented | complete | 4 | 1 | yes | yes | yes | generic only | navigation-shell, master-detail, split-pane, focus-stage, landmark-region |
 | Active filter summary | `<ef-active-filter-summary>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, scope-trail, empty-state, status-lozenge |
 | Collection toolbar | `<ef-collection-toolbar>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | active-filter-summary, search, data-grid, flyout, pagination |

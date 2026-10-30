@@ -26,7 +26,11 @@ import {
 // Structure: pure evaluation (evaluate.mjs) decides the status; the adapters
 // below only observe. Missing evidence is UNKNOWN, never PASS.
 
+import { pageOf, settleFontsAndFrames } from "./settle.mjs";
+
 export * from "./evaluate.mjs";
+export * from "./geometry.mjs";
+export { settleFontsAndFrames };
 
 // ---------------------------------------------------------------------------
 // Locator layer
@@ -34,7 +38,6 @@ export * from "./evaluate.mjs";
 
 const escapeRegExp = value => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-const pageOf = root => (typeof root.page === "function" ? root.page() : root);
 
 // Resolve a declared target. `scope` (a Locator) narrows the search when the
 // same accessible name legitimately appears in several regions. The
@@ -54,11 +57,6 @@ const withScope = (target, scope) => (target && typeof target === "object" && sc
 
 // Playwright role queries do not honour `inert`, so actionability checks it.
 const isInert = locator => locator.evaluate(element => Boolean(element.closest("[inert]")));
-
-// Wait until web fonts have loaded and two animation frames have elapsed.
-export const settleFontsAndFrames = root =>
-  pageOf(root).evaluate(() => document.fonts.ready.then(() =>
-    new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))));
 
 // ---------------------------------------------------------------------------
 // ULI-L01/L02/L10: declared alignment groups

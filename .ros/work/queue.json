@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 42,
+  "nextSeq": 43,
   "items": [
     {
       "id": "WI-0001",
@@ -1084,6 +1084,32 @@
       "createdAt": "2026-10-29T11:30:00Z",
       "updatedAt": "2026-10-29T09:54:22Z",
       "createdBy": "anthropic/claude-code",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0042",
+      "title": "LRP-001: Forma layout reliability patch (containment defaults, token validation, geometry suite)",
+      "description": "Echelon Foundry assignment, 2026-10-30: make correct layouts the default in Forma (containment of long tokens, flex/grid shrink, media aspect, focus visibility), add design-token reference validation, and a reusable browser geometry suite with adversarial fixtures. Input: .praxis/inbox/documents/2026-10-30-LRP-001-layout-reliability.md",
+      "tags": [
+        "forma",
+        "layout",
+        "accessibility",
+        "tokens"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-10-30T07:08:50.090Z",
+      "updatedAt": "2026-10-30T08:33:33.000Z",
+      "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
         "id": "anthropic/claude-code",

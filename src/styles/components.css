@@ -63,6 +63,12 @@
   .ef-form-row > .ef-field > .ef-field__description { grid-row: 2; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
   .ef-form-row > .ef-field > :not(.ef-field__label, .ef-field__description, .ef-validation-message) { grid-row: 3; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
   .ef-form-row > .ef-field > .ef-validation-message { grid-row: 4; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
+  /* WebKit lets a select's longest option add scrollable overflow through
+     the subgrid, so a 320px form scrolled sideways by the option's width
+     (LRP-001; Safari is the primary iPad target). Layout containment keeps
+     it inside the select. Rows align at start, so the lost baseline is
+     unused here. */
+  .ef-form-row > .ef-field > select { contain: layout; }
 
   /* Form contract ------------------------------------------------------- */
   .ef-form {
@@ -2032,6 +2038,9 @@
     border-inline: 0;
     border-block-end: 0;
   }
+  /* A command's label is no wider than its button, so a long label breaks
+     inside the button instead of overflowing the palette (LRP-001). */
+  .ef-command-palette__group button > * { max-inline-size: 100%; }
   .ef-command-palette__group button:last-child { border-block-end: 1px solid var(--ef-color-border-functional, #3a403c); }
   .ef-command-palette kbd {
     padding: 0.1rem 0.35rem;
@@ -2166,7 +2175,9 @@
     row-gap: 0;
     min-inline-size: 0;
   }
-  .ef-record-header__title > :first-child > .ef-record-header__type { grid-row: 1; align-self: end; }
+  /* A type label wider than a narrow header (320px at 200% text) breaks
+     rather than setting the column's minimum and overflowing (LRP-001). */
+  .ef-record-header__title > :first-child > .ef-record-header__type { grid-row: 1; align-self: end; overflow-wrap: anywhere; }
   .ef-record-header__title > :first-child > :is(h1, h2, h3, h4) { grid-row: 2; }
   .ef-record-header__title > :not(:first-child) { grid-row: 2; }
   @container (max-width: 24em) {

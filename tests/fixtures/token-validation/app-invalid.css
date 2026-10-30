@@ -1,0 +1,9 @@
+/* Each rule exercises one finding class of tools/TokenValidator. */
+.unknown { background: var(--ef-nonexistent-color); }
+.unknown-with-fallback { background: var(--ef-nonexistent-color, white); }
+.namespace-slip { padding: var(--ef-spacing-4); }
+.namespace-lookalike { color: var(--forma-color-text-primary); }
+.minted { --ef-causa-accent: #905831; }
+.cycle { --app-a: var(--app-b); --app-b: var(--app-a); }
+.nested { border-color: var(--app-border, var(--ef-color-border-funtional)); }
+.reads-internal { padding: var(--ef-surface-space); }

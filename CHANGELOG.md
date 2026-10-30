@@ -7,6 +7,51 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.13.0
+
+Minor release: layout reliability (LRP-001). The source document is `.praxis/inbox/documents/2026-10-30-LRP-001-layout-reliability.md`; the baseline and the Indy Init report are in `docs/reliability/`. `@echelon-foundry/forma-conformance` 0.3.0 ships the new geometry checks.
+
+**Behaviour change: a token too long for its line now breaks inside Forma containers.** Before this release, a token without spaces kept its full width and escaped the card, dialog or field around it. This affected URLs, SHAs, paths and identifiers in a `span`, `strong`, `em`, `div` or `li`. Such a token now breaks at the container's edge. Words that fit are never split: containers pass on `overflow-wrap: break-word`, which leaves a word's minimum width alone, not `anywhere`. Content with an explicit `white-space` (`nowrap`, `pre`) keeps its wrapping, as do code blocks, truncating selects, character-grid runs and buttons. No class, token, element or attribute was removed or renamed (QD-004).
+
+### Fixed
+- **Text containment.** `overflow-wrap: break-word` is now inherited from these Forma containers, so arbitrary application text inside them breaks only when it would overflow:
+  - `.ef-surface`, `.ef-stack`, `.ef-cluster`, `.ef-actions`, `.ef-grid`, `.ef-responsive-grid`, `.ef-rail`, `.ef-mosaic`, `.ef-priority-stack`, `.ef-focus-stage`, `.ef-sidebar`, `.ef-switcher`, `.ef-split-pane`;
+  - `.ef-dialog`, `.ef-popover`, `.ef-menu`, `.ef-form`, `.ef-field`, `.ef-validation-summary`, `.ef-record-header`.
+
+  At 320px on 0.12.0, the fixtures measured escapes of up to 716px.
+- **Flex rows.** Children of `.ef-cluster` and `.ef-actions` are capped at the row's width (`max-inline-size: 100%`). This also caps their automatic flex minimum, so a long label no longer pushes the row past its container; it breaks inside the row. Items that fit keep their content size, and no control is shrunk below its label. A `dialog` or `[popover]` authored inside the row is exempt. A full-bleed child that uses negative margins is now capped at the row's width.
+- **Record header.** The type label can break when it is wider than a narrow header (320px at 200% text).
+- **Command palette.** A command's label is capped at its button's width, so a long label no longer overflows the palette.
+- **WebKit horizontal scrolling in forms.** A `select` with a long option inside `.ef-form-row` added the option's width to the page's horizontal scroll in WebKit/Safari. It now gets layout containment, which keeps that width inside the select; the subgrid alignment is kept.
+- **Focus on date and time pickers.** In Chromium, keyboard focus on the picker button of a date, time, datetime-local, month or week input painted no focus indicator. It now shows the Forma focus ring. The rule applies only to that case (`:focus-within:not(:focus)`), so pointer focus on the input itself keeps the native behaviour.
+- **Focus scrolling.** Focus-visible elements have `scroll-margin: 0.5rem`, so tabbing to an element at the viewport edge brings its whole focus ring into view. Chromium and WebKit honour this; Firefox does not.
+  - Side effect: in WebKit, tabbing into a mandatory scroll-snap container offsets the snap position by that margin.
+
+### Added
+- **Design-token validator (`tools/TokenValidator`).** It is written in F#, has no dependencies, and ships in the package. It validates `var(--ef-*)` references and `--ef-*` declarations against the Forma installation itself. That installation's token sources, built CSS and color contract are the source of truth. It reports:
+  - `unknown-token`, even when the reference has a fallback;
+  - `deprecated-token` (DTCG `$deprecated`);
+  - `namespace`: `--forma-*`, `--ef_*`, a dropped segment such as `--ef-spacing-4`, or an application minting a new `--ef-*` name;
+  - `internal-variable`;
+  - custom-property `cycle`, judged per rule and at-rule context.
+
+  Strings and comments are inert. With `--self` it also checks Forma's own `invalid-alias`, alias `cycle`, `theme-missing` (token themes and brand manifests) and `missing-definition`. Application-owned custom properties are never reported.
+  - Forma itself: `npm run tokens:validate`, which is now part of `check` and `release:check`. These scripts therefore need the .NET SDK.
+  - Applications: `dotnet run --project node_modules/@echelon-foundry/design-system/tools/TokenValidator/TokenValidator.fsproj -- --forma node_modules/@echelon-foundry/design-system src/`. See `docs/CONSUMING-FORMA.md`, "Design-token validation".
+- **`@echelon-foundry/forma-conformance` 0.3.0**, which also publishes the 0.11.0 corner-containment helpers:
+  - `measureContainment`, `expectContained` and `evaluateContainment` (ULI-L05 `contain.element`) check that every descendant box and text line stays inside a component's content box.
+  - `measureFocusVisibility`, `expectFocusVisible` and `evaluateFocusVisibility` (WCAG 2.4.7/2.4.11 `focus.unclipped`) check that a visible outline or outward box-shadow is painted and that no hard clip cuts it.
+- **Browser geometry suite.**
+  - `tests/browser/layout-reliability.spec.mjs` covers 11 adversarial fixtures at 320, 375, 768 and 1280px and at 200% text. It also runs dialog, dropdown, focus, media, theme, skin and axe checks. On 0.12.0 it failed 48 of 78 checks across Chromium, Firefox and WebKit.
+  - `tests/browser/word-integrity.spec.mjs` checks that no canonical pattern or fixture splits a word that fits its box.
+  - `tests/browser/causa-representative.spec.mjs` covers Causa-shaped regions at phone, iPad portrait, iPad landscape and desktop sizes.
+
+### Known limitations
+- `.ef-dashboard-grid`, `.ef-split-pane` and `.ef-operation-status` reflow only at a viewport media query. Under page-level 200% text at iPad portrait width they stay wider than their region. This is the same class as the alert's viewport-based stacking. The Causa spec asserts these still fail, so a fix is noticed.
+- A narrowed `<svg>` with `width`/`height` attributes keeps its attribute height, so its box is taller than the drawing; the drawing itself is letterboxed, not distorted.
+  - No single declaration fixes this without a regression in some engine. `block-size: auto` makes icons stretch in flex rows in every engine. The intrinsic keywords avoid that stretch, but WebKit does not resize an SVG with them.
+  - Workaround: give such charts `block-size: auto` yourself, or omit the `height` attribute.
+
 ## @echelon-foundry/forma-workflow 1.2.0
 
 Minor release of the workflow package (and `EchelonFoundry.Forma.Workflow` 1.2.0): it ships the Forma 0.12.0 engine. **Behaviour change: validation is stricter.** Documents that validated under 1.1.0 can now fail with `A11Y-NONTEXT-CONTRAST` (WCAG 1.4.11, 3:1), and `render` refuses documents that fail validation. Added: `token:status-warning|danger|success|info` diagram colours, `ValidationOptions.Theme` and `--theme` on `validate`/`render`. No element, class, attribute or token was removed or renamed (QD-004), so this is a minor release, as Forma 0.12.0 was. See 0.12.0 below for the migration.

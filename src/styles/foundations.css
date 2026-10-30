@@ -183,6 +183,20 @@
     outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
     outline-offset: 2px;
     box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    /* Focus scrolling brings the whole indicator into view, not only the
+       element's border box (LRP-001). Changes scroll position only. */
+    scroll-margin: 0.5rem;
+  }
+
+  /* Keyboard focus on a date or time control's own picker button leaves the
+     host input :focus-within but neither :focus nor :focus-visible
+     (Chromium), which painted no indicator at all (LRP-001). :not(:focus)
+     limits this to that case: pointer focus on the input itself (WebKit)
+     keeps the native behaviour. */
+  :where(input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="week"]):focus-within:not(:focus) {
+    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
   }
 
   .ef-stack { display: flex; flex-direction: column; gap: var(--ef-stack-gap, var(--ef-primitive-spacing-4, 1rem)); }
@@ -198,6 +212,39 @@
 
   :where(h1, h2, h3, h4, h5, h6, p, a, label, legend, td, th, dt, dd, caption, figcaption) {
     overflow-wrap: anywhere;
+  }
+
+  /*
+   * Layout reliability (LRP-001, docs/reliability/layout-baseline.md).
+   * Forma containers that hold arbitrary application content pass
+   * overflow-wrap: break-word to that content by inheritance, so a long token
+   * in a span, strong, em, div or li breaks instead of escaping the card,
+   * dialog or field. break-word, unlike anywhere, leaves min-content sizes
+   * alone: a word that fits is never split, and auto-sized flex and grid
+   * items keep whole words. Inheritance never overrides a declared value:
+   * text elements above keep anywhere, character-grid runs keep normal, and
+   * white-space: pre or nowrap content (code blocks, truncating selects,
+   * scrollers) does not wrap.
+   */
+  :where(
+    .ef-surface, .ef-stack, .ef-cluster, .ef-actions, .ef-grid, .ef-responsive-grid,
+    .ef-rail, .ef-mosaic, .ef-priority-stack, .ef-focus-stage, .ef-sidebar, .ef-switcher, .ef-split-pane,
+    .ef-dialog, .ef-popover, .ef-menu, .ef-form, .ef-field, .ef-validation-summary, .ef-record-header
+  ) {
+    overflow-wrap: break-word;
+  }
+
+  /*
+   * A wrapping row's item can be no wider than the row (LRP-001), which also
+   * caps its automatic flex minimum, so a long label or an inline-block item
+   * cannot push the row past its container; the item's text then breaks
+   * inside it. Items keep their content size whenever it fits: nothing here
+   * shrinks a control below its label. Top-layer children (a dialog or
+   * popover authored inside the row) keep their own sizing. A full-bleed
+   * child with negative margins is capped at the row's width.
+   */
+  :where(.ef-cluster, .ef-actions) > :not(dialog, [popover]) {
+    max-inline-size: 100%;
   }
 
   /* Action labels never split mid-word because their container allows it

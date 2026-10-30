@@ -168,6 +168,38 @@ detector.
   `resolveCornerRadius(value, width, height)` are the pure core, ported from
   Forma's internal layout probe (LCE-001).
 
+## Element containment (ULI-L05, contain.element)
+
+- `measureContainment(locator, { axes, exclude, tolerance })` /
+  `expectContained(locator, options)`: every descendant box and every
+  rendered text line of the element lies inside its content box (inside the
+  border and padding). Page-level overflow cannot see a token that escapes a
+  card into its neighbour; this does. `axes` is `["inline"]` (default) or
+  `["inline", "block"]`.
+- Not observed, because their contracts permit overflow: popovers, dialogs
+  other than the element itself, fixed-position layers, anything matching
+  `exclude`, and the contents of a nested scroll or clip container. That
+  container's own box is still measured.
+- No descendants, or no content box, reports `UNKNOWN`. Tolerance is 1px.
+- `evaluateContainment(observation)` is the pure core.
+
+## Focus visibility (WCAG 2.4.7, 2.4.11; focus.unclipped)
+
+- `measureFocusVisibility(page)` / `expectFocusVisible(page)`: the focused
+  element paints a focus indicator. That is a visible outline, or an outward
+  box-shadow with a spread of at least 1px. A decorative `0 1px 2px` shadow,
+  an inset shadow and a transparent outline do not count.
+- A hard clip is an ancestor's padding box where `overflow` is `hidden` or
+  `clip`, or that has `contain: paint`. A hard clip must not cut any part of
+  the indicator.
+- On an axis where the element is longer than such a clip, the element only
+  needs a visible part on that axis.
+- Scroll container edges and the viewport edge are scroll positions the user
+  controls, and engines differ in how far focus scrolls (Firefox ignores
+  `scroll-margin` here). So these edges only need part of the element in
+  view (WCAG 2.4.11). `scrollEdge` reports how far the ring runs past one.
+- `evaluateFocusVisibility(observation)` is the pure core.
+
 ## Compatibility
 
 Version 0.1.0 keeps every export of the first helper release, which shipped

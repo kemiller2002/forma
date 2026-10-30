@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-29T09:54:26Z",
+  "updatedAt": "2026-10-30T08:33:33.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -2850,6 +2850,64 @@
       "telemetryExecutionIds": [
         "EXE-20261029T095426668Z-10bccc63"
       ]
+    },
+    {
+      "id": "WI-0042",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/styles/foundations.css"
+        },
+        {
+          "type": "implementation",
+          "path": "tools/TokenValidator/Validation.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/layout-reliability.spec.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/token-validator.test.mjs"
+        },
+        {
+          "type": "research-record",
+          "path": "docs/reliability/layout-baseline.md"
+        },
+        {
+          "type": "research-record",
+          "path": "docs/reliability/indy-init-compatibility.md"
+        }
+      ],
+      "updatedAt": "2026-10-30T08:33:33.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261030T070915644Z-1378ccbc"
+      ],
+      "latestCheckpoint": {
+        "id": "07845e9ddabe2d4af11314a1",
+        "recordedAt": "2026-10-30T08:33:31.000Z",
+        "executionId": "EXE-20261030T070915644Z-1378ccbc",
+        "repository": "echelon-design-system",
+        "branch": "claude/lrp-001-layout-reliability",
+        "commit": "3acb7f6eeea3716d06c2f16f181e33c484b0df9c",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/lrp-001-layout-reliability",
+        "remoteCommit": "3acb7f6eeea3716d06c2f16f181e33c484b0df9c",
+        "summary": "Forma 0.13.0 layout reliability patch implemented, independently reviewed and remediated; full 3-engine browser suite 3690 passed/0 failed; PR #176 open",
+        "nextAction": "Merge PR #176 when CI is green; verify release-forma.yml tags v0.13.0 and record the artifact digest",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-10-30T08:33:33.000Z",
+      "conclusion": "Layout reliability defaults, token validator and geometry suite shipped as Forma 0.13.0 (PR #176). Before/after: 30/78 -> 78/78 adversarial checks across three engines; full suite 3690 passed, 0 failed."
     }
   ]
 }

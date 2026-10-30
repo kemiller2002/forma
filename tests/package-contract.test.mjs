@@ -121,6 +121,10 @@ test("npm package contract contains the expected consumer surface", () => {
     "contracts/color-contract.json",
     "tools/color-contract/index.mjs",
     "tools/color-contract/cli.mjs",
+    "tools/TokenValidator/TokenValidator.fsproj",
+    "tools/TokenValidator/Css.fs",
+    "tools/TokenValidator/Validation.fs",
+    "tools/TokenValidator/Program.fs",
     "docs/COLOR.md"
   ]) {
     assert.ok(files.has(path), `release package omits ${path}`);
@@ -172,7 +176,7 @@ test("release workflow watches versioned icon and site assets without weakening 
     "icons/**", "catalog/icons.mjs", "catalog/icons/**",
     "tools/icons/**", "tools/catalog/render-icons.mjs", "tools/build-site.mjs",
     "examples/echelon-marketing-site/forma.lock",
-    "examples/design/**", "tools/design-contract/**", "tools/color-contract/**",
+    "examples/design/**", "tools/design-contract/**", "tools/color-contract/**", "tools/TokenValidator/**",
     "docs/ICONS.md", "docs/COLOR.md", "tests/icon-docs.test.mjs", "tests/color-contract.test.mjs",
     ".github/workflows/release-forma.yml"
   ]) {

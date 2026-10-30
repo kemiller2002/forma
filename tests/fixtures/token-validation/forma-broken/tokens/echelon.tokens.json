@@ -1,0 +1,17 @@
+{
+  "$description": "A deliberately broken token source for tests/token-validator.test.mjs.",
+  "primitive": {
+    "color": {
+      "$type": "color",
+      "ink": { "$value": { "colorSpace": "srgb", "components": [0, 0, 0], "hex": "#000000" } },
+      "old-ink": { "$value": "{primitive.color.ink}", "$deprecated": "Use primitive.color.ink." },
+      "loop-a": { "$value": "{primitive.color.loop-b}" },
+      "loop-b": { "$value": "{primitive.color.loop-a}" },
+      "dangling": { "$value": "{primitive.color.missing}" }
+    }
+  },
+  "semantic": {
+    "light": { "color": { "$type": "color", "text": { "primary": { "$value": "{primitive.color.ink}" }, "secondary": { "$value": "{primitive.color.ink}" } } } },
+    "dark": { "color": { "$type": "color", "text": { "primary": { "$value": "{primitive.color.ink}" } } } }
+  }
+}
