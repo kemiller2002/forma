@@ -298,8 +298,10 @@ let cyclesIn (declarations: Declaration list) : Finding list =
     |> List.filter (fun d -> reaches d.Property (Set.singleton d.Property) d.Property)
     |> List.map (fun d -> finding "cycle" d.File d.Line d.Property $"{d.Property} refers back to itself through custom properties in '{d.Selector}', so it is invalid at computed-value time.")
 
+/// Declarations that apply together: one rule, keyed by its full context so
+/// blocks under mutually exclusive at-rules are never combined.
 let private byRule (declarations: Declaration list) =
-    declarations |> List.groupBy (fun d -> d.File, d.Selector) |> List.map snd
+    declarations |> List.groupBy (fun d -> d.File, d.Context) |> List.map snd
 
 /// Validate application CSS against a Forma installation.
 let validateCss (registry: Registry) (declarations: Declaration list) : Finding list =

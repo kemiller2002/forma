@@ -91,7 +91,12 @@ test("focus.unclipped: a clipping ancestor that cuts the ring fails; the viewpor
   assert.deepEqual(clipped.cutBy, [{ label: "div.ef-surface", excess: 5 }]);
   // An element taller than its scroller only needs a visible part on that axis.
   const tall = { left: 95, top: -300, right: 205, bottom: 1300 };
-  assert.equal(evaluateFocusVisibility({ name: "Long", indicator: true, ring: tall, clips: [{ label: "dialog", left: 40, top: 40, right: 280, bottom: 860 }], viewport }).status, STATUS.PASS);
+  assert.equal(evaluateFocusVisibility({ name: "Long", indicator: true, ring: tall, clips: [{ label: "div.clip", left: 40, top: 40, right: 280, bottom: 860 }], viewport }).status, STATUS.PASS);
+  // A scroll container's edge, like the viewport's, only needs part in view.
+  const atScrollEdge = evaluateFocusVisibility({ name: "Keep", indicator: true, ring: { left: 95, top: 840, right: 205, bottom: 862 }, clips: [{ label: "dialog", scrolls: true, left: 40, top: 40, right: 280, bottom: 860 }], viewport });
+  assert.equal(atScrollEdge.status, STATUS.PASS);
+  assert.equal(atScrollEdge.scrollEdge, 2);
+  assert.equal(evaluateFocusVisibility({ name: "Below", indicator: true, ring: { left: 95, top: 870, right: 205, bottom: 890 }, clips: [{ label: "dialog", scrolls: true, left: 40, top: 40, right: 280, bottom: 860 }], viewport }).status, STATUS.FAIL);
   // The viewport edge is the user agent's scroll policy: partly in view passes and is reported; wholly outside fails.
   const edge = evaluateFocusVisibility({ name: "Edge", indicator: true, ring: { left: 95, top: 880, right: 205, bottom: 930 }, clips: [], viewport });
   assert.equal(edge.status, STATUS.PASS);

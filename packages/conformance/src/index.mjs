@@ -561,18 +561,41 @@ export const measureFocusVisibility = async page => {
     const element = document.activeElement;
     if (!element || element === document.body) return { name: null, ring: null, viewport: null };
     const style = getComputedStyle(element);
-    const outline = style.outlineStyle !== "none" ? (parseFloat(style.outlineWidth) || 0) + Math.max(0, parseFloat(style.outlineOffset) || 0) : 0;
-    const shadowSpread = style.boxShadow === "none" ? 0
-      : Math.max(0, ...[...style.boxShadow.matchAll(/(-?[\d.]+)px\s+(-?[\d.]+)px\s+(-?[\d.]+)px\s+(-?[\d.]+)px/g)]
-        .map(([, x, y, blur, spread]) => Math.max(Math.abs(+x), Math.abs(+y)) + +spread));
-    const reach = Math.max(outline, shadowSpread);
+    // An indicator is a visible outline or an outward box-shadow with a
+    // spread: a decorative 0 1px 2px shadow, an inset shadow or a
+    // transparent outline is not a focus indicator.
+    const visibleColor = color => !/^transparent$|rgba?\([^)]*[,/]\s*0(\.0+)?\s*\)$/.test(color.trim());
+    const outline = style.outlineStyle !== "none" && (parseFloat(style.outlineWidth) || 0) > 0 && visibleColor(style.outlineColor)
+      ? (parseFloat(style.outlineWidth) || 0) + Math.max(0, parseFloat(style.outlineOffset) || 0) : 0;
+    const layers = style.boxShadow === "none" ? [] : style.boxShadow.split(/,(?![^(]*\))/);
+    const shadowReach = Math.max(0, ...layers
+      .filter(layer => !/\binset\b/.test(layer))
+      .map(layer => {
+        const color = layer.match(/rgba?\([^)]*\)|transparent/)?.[0] ?? "currentcolor";
+        const [x = 0, y = 0, , spread = 0] = [...layer.replace(/rgba?\([^)]*\)/, "").matchAll(/(-?[\d.]+)px/g)].map(([, value]) => +value);
+        return spread >= 1 && visibleColor(color) ? Math.max(Math.abs(x), Math.abs(y)) + spread : 0;
+      }));
+    const reach = Math.max(outline, shadowReach);
     const rect = element.getBoundingClientRect();
     const ring = { left: rect.left - reach, top: rect.top - reach, right: rect.right + reach, bottom: rect.bottom + reach };
     const ancestors = [];
     for (let node = element.parentElement; node && node !== document.documentElement; node = node.parentElement) ancestors.push(node);
+    // Overflow clips at the padding box: inside the borders. A scroll
+    // container's edge is a scroll position the user controls; a hidden or
+    // clip edge is not (see evaluateFocusVisibility).
     const clips = ancestors
       .filter(node => { const own = getComputedStyle(node); return own.overflowX !== "visible" || own.overflowY !== "visible" || /paint|strict|content/.test(own.contain); })
-      .map(node => { const box = node.getBoundingClientRect(); return { label: node.tagName.toLowerCase() + [...node.classList].slice(0, 1).map(name => "." + name).join(""), left: box.left, top: box.top, right: box.right, bottom: box.bottom }; });
+      .map(node => {
+        const box = node.getBoundingClientRect();
+        const own = getComputedStyle(node);
+        const px = value => parseFloat(value) || 0;
+        return {
+          label: node.tagName.toLowerCase() + [...node.classList].slice(0, 1).map(name => "." + name).join(""),
+          scrolls: /auto|scroll/.test(own.overflowX + " " + own.overflowY),
+          left: box.left + px(own.borderLeftWidth), top: box.top + px(own.borderTopWidth),
+          right: box.right - px(own.borderRightWidth), bottom: box.bottom - px(own.borderBottomWidth)
+        };
+      });
     const label = (element.getAttribute("aria-label") || element.textContent || element.tagName).replace(/\s+/g, " ").trim().slice(0, 40);
     return { name: label, indicator: reach > 0, ring, clips, viewport: { width: document.documentElement.clientWidth, height: window.innerHeight } };
   });

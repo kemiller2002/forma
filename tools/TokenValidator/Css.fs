@@ -15,30 +15,49 @@ type Declaration =
     { File: string
       Line: int
       Selector: string
+      /// Every enclosing prelude, outermost first (at-rules and selectors).
+      Context: string
       Property: string
       Value: string
       References: VarReference list }
 
-/// Replace comments with spaces (newlines kept) so offsets and line numbers
-/// still match the source.
-let stripComments (text: string) =
+/// Replace comments with spaces and blank the contents of quoted strings,
+/// keeping their quotes and every newline, so offsets and line numbers still
+/// match the source. Braces, comment markers and var() inside a string
+/// (content: "}") are then inert.
+let normalise (text: string) =
     let builder = StringBuilder(text.Length)
-    let rec go index inComment =
+    let blank (c: char) = if c = '\n' then '\n' else ' '
+    let rec go index (state: char option) inComment =
         if index >= text.Length then ()
         elif inComment then
             if index + 1 < text.Length && text[index] = '*' && text[index + 1] = '/' then
                 builder.Append("  ") |> ignore
-                go (index + 2) false
+                go (index + 2) None false
             else
-                builder.Append(if text[index] = '\n' then '\n' else ' ') |> ignore
-                go (index + 1) true
-        elif index + 1 < text.Length && text[index] = '/' && text[index + 1] = '*' then
-            builder.Append("  ") |> ignore
-            go (index + 2) true
+                builder.Append(blank text[index]) |> ignore
+                go (index + 1) None true
         else
-            builder.Append(text[index]) |> ignore
-            go (index + 1) false
-    go 0 false
+            match state with
+            | Some _ when text[index] = '\\' && index + 1 < text.Length ->
+                builder.Append(blank text[index]).Append(blank text[index + 1]) |> ignore
+                go (index + 2) state false
+            | Some quote when text[index] = quote ->
+                builder.Append(quote) |> ignore
+                go (index + 1) None false
+            | Some _ ->
+                builder.Append(blank text[index]) |> ignore
+                go (index + 1) state false
+            | None when index + 1 < text.Length && text[index] = '/' && text[index + 1] = '*' ->
+                builder.Append("  ") |> ignore
+                go (index + 2) None true
+            | None when text[index] = '"' || text[index] = '\'' ->
+                builder.Append(text[index]) |> ignore
+                go (index + 1) (Some text[index]) false
+            | None ->
+                builder.Append(text[index]) |> ignore
+                go (index + 1) None false
+    go 0 None false
     builder.ToString()
 
 let private isNameChar (c: char) = Char.IsLetterOrDigit c || c = '-' || c = '_'
@@ -101,9 +120,10 @@ let private pieces (body: string) (offset: int) =
 /// Declarations of one file. Nested blocks (@media, @layer, nesting) are
 /// walked; a declaration's selector is the innermost enclosing prelude.
 let declarations (file: string) (source: string) : Declaration list =
-    let text = stripComments source
+    let text = normalise source
     let starts = lineStarts text
-    let declarationOf selector (offset: int, piece: string) =
+    let declarationOf (stack: string list) (offset: int, piece: string) =
+        let selector = match stack with innermost :: _ -> innermost | [] -> ""
         let colon = piece.IndexOf(':')
         let property = if colon > 0 then piece.Substring(0, colon).Trim() else ""
         if colon <= 0 || property.Length = 0 || property.Contains("{") || property.Contains("}") || property.StartsWith("@") then None
@@ -114,6 +134,7 @@ let declarations (file: string) (source: string) : Declaration list =
                 { File = file
                   Line = lineAt starts (offset + leading)
                   Selector = selector
+                  Context = stack |> List.rev |> String.concat " » "
                   Property = property
                   Value = value
                   References = references value }
@@ -123,7 +144,7 @@ let declarations (file: string) (source: string) : Declaration list =
         if index >= text.Length then
             let tail =
                 match stack with
-                | selector :: _ -> pieces (text.Substring(segmentStart)) segmentStart |> List.choose (declarationOf selector)
+                | _ :: _ -> pieces (text.Substring(segmentStart)) segmentStart |> List.choose (declarationOf stack)
                 | [] -> []
             List.rev acc @ tail
         else
@@ -137,13 +158,13 @@ let declarations (file: string) (source: string) : Declaration list =
                     else "", segment
                 let found =
                     match stack with
-                    | selector :: _ when declared.Length > 0 -> pieces declared segmentStart |> List.choose (declarationOf selector)
+                    | _ :: _ when declared.Length > 0 -> pieces declared segmentStart |> List.choose (declarationOf stack)
                     | _ -> []
                 walk (index + 1) (index + 1) (prelude.Trim() :: stack) (List.rev found @ acc)
             | '}' ->
                 let found =
                     match stack with
-                    | selector :: _ -> pieces (text.Substring(segmentStart, index - segmentStart)) segmentStart |> List.choose (declarationOf selector)
+                    | _ :: _ -> pieces (text.Substring(segmentStart, index - segmentStart)) segmentStart |> List.choose (declarationOf stack)
                     | [] -> []
                 walk (index + 1) (index + 1) (match stack with _ :: rest -> rest | [] -> []) (List.rev found @ acc)
             | _ -> walk (index + 1) segmentStart stack acc

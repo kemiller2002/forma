@@ -57,6 +57,12 @@ test("application CSS: tokens, documented inputs, overrides and application-owne
   assert.equal(status, 0);
 });
 
+test("application CSS: strings are inert and cycles only count within one rule context", () => {
+  const { status, findings } = run(path.join(fixtures, "app-strings.css"));
+  assert.equal(status, 1);
+  assert.deepEqual(codesAt(findings), ["2:unknown-token:--ef-bad-one", "4:unknown-token:--ef-bad-two"]);
+});
+
 test("Forma sources: invalid aliases, alias cycles, theme gaps, missing definitions and deprecated use are reported", () => {
   const { status, findings } = run("--forma", path.join(fixtures, "forma-broken"), "--self");
   assert.equal(status, 1);

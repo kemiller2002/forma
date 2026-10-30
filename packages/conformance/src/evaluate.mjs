@@ -370,17 +370,19 @@ export const evaluateContainment = ({ name, content, axes = ["inline"], items = 
 // ---------------------------------------------------------------------------
 // WCAG 2.4.7 / 2.4.11: the focus indicator is drawn and not clipped
 // ---------------------------------------------------------------------------
-// Observation: { name, indicator: boolean (outline or box-shadow present),
-// ring: { left, top, right, bottom } (the element box grown by the painted
-// indicator), clips: [{ label, left, top, right, bottom }] (ancestors that
-// clip: overflow other than visible, or contain: paint), viewport: { width,
-// height } }. Clipping ancestors are the page's own CSS: a ring they cut is
-// FAIL. On an axis where the ring is longer than a clip (an element taller
-// than its scroller), no scroll position can show all of it, so that axis only
-// needs a visible part. The viewport edge is the user agent's scroll policy
-// (Firefox does not scroll a partly visible element on Tab), so the viewport
-// only needs part of the element in view (WCAG 2.4.11: not entirely hidden);
-// `viewportEdge` reports how far the ring runs past it.
+// Observation: { name, indicator: boolean (a visible outline or outward
+// box-shadow), ring: { left, top, right, bottom } (the element box grown by
+// the painted indicator), clips: [{ label, scrolls, left, top, right, bottom
+// }] (ancestors' padding boxes where overflow is not visible, or contain:
+// paint), viewport: { width, height } }.
+// A hard clip (overflow hidden or clip, contain: paint) is the page's own
+// CSS and hides what it cuts for good: any cut is FAIL. On an axis where the
+// ring is longer than such a clip (an element taller than its box), that axis
+// only needs a visible part. A scroll container's edge and the viewport edge
+// are scroll positions the user controls, and engines differ in how far focus
+// scrolls (Firefox does not honour scroll-margin when focusing), so they only
+// need part of the element in view (WCAG 2.4.11: not entirely hidden);
+// `scrollEdge` reports how far the ring runs past the nearest such edge.
 
 const axisExcess = (start, end, clipStart, clipEnd) =>
   end - start > clipEnd - clipStart
@@ -395,21 +397,24 @@ export const evaluateFocusVisibility = ({ name, indicator, ring, clips = [], vie
   const base = { ruleId: "WCAG-2.4.7", check: "focus.unclipped", name };
   if (!ring || !viewport) return { ...base, status: STATUS.UNKNOWN, reason: "no focused element observed", cutBy: [] };
   if (!indicator) return { ...base, status: STATUS.FAIL, reason: "focused element paints no outline or box-shadow", cutBy: [] };
-  const screen = { left: 0, top: 0, right: viewport.width, bottom: viewport.height };
   const round = value => Math.round(value * 100) / 100;
+  const ports = [...clips.filter(clip => clip.scrolls), { label: "viewport", left: 0, top: 0, right: viewport.width, bottom: viewport.height }];
   const cutBy = clips
+    .filter(clip => !clip.scrolls)
     .map(clip => ({ label: clip.label, excess: round(clipExcess(ring, clip)) }))
     .filter(cut => cut.excess > tolerance);
-  const offscreen = ring.right <= screen.left || ring.left >= screen.right || ring.bottom <= screen.top || ring.top >= screen.bottom;
-  const viewportEdge = round(Math.max(0, clipExcess(ring, screen)));
-  const failures = [...cutBy.map(cut => `${cut.label} (${cut.excess}px)`), ...(offscreen ? ["viewport (entirely outside)"] : [])];
+  const outside = (box, port) => box.right <= port.left || box.left >= port.right || box.bottom <= port.top || box.top >= port.bottom;
+  const hidden = ports.filter(port => outside(ring, port)).map(port => `${port.label} (entirely outside)`);
+  const scrollEdge = round(Math.max(0, ...ports.map(port => clipExcess(ring, port))));
+  const failures = [...cutBy.map(cut => `${cut.label} (${cut.excess}px)`), ...hidden];
   return {
     ...base,
     status: failures.length > 0 ? STATUS.FAIL : STATUS.PASS,
     cutBy,
-    viewportEdge,
+    scrollEdge,
+    viewportEdge: scrollEdge,
     reason: failures.length > 0
       ? `focus indicator cut by ${failures.join(", ")}`
-      : `focus indicator painted and unclipped (${clips.length} clipping ancestor(s) checked; ${viewportEdge}px past the viewport edge)`
+      : `focus indicator painted and not cut by a hard clip (${clips.length} clipping ancestor(s) checked; ${scrollEdge}px past a scroll edge)`
   };
 };

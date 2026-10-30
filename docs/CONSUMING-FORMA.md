@@ -225,20 +225,23 @@ Application-owned properties such as `--causa-*` are never reported. Keep `forma
 
 Layout reliability. No class, token or component was removed.
 
-**Behaviour change:** long unbroken text (URLs, SHAs, paths, identifiers) in `span`, `strong`, `em`, `div` or `li` now wraps inside Forma containers instead of escaping them; see `CHANGELOG.md` 0.13.0 for the list of containers. Check any screen that relied on such text overflowing. Text that should not wrap must say so explicitly, with `white-space: nowrap` (or `pre`) or by placing it in `.ef-bounded-overflow`, which scrolls.
+**Behaviour change:** a token too long for its line (a URL, SHA, path or identifier) in a `span`, `strong`, `em`, `div` or `li` now breaks inside Forma containers instead of escaping them. Words that fit are not split. `CHANGELOG.md` 0.13.0 lists the containers. Check any screen that relied on such text overflowing. Text that must not wrap should say so explicitly, with `white-space: nowrap` (or `pre`), or sit in `.ef-bounded-overflow`, which scrolls.
 
 Other visible changes to check:
 
-- Children of `.ef-cluster` and `.ef-actions` are no wider than the row.
-- An `<svg>` with a `viewBox` and absolute `width`/`height` keeps its aspect ratio when narrowed.
-- In WebKit, a `select` in `.ef-form-row` no longer widens the page.
-- Date and time pickers show the focus ring on their picker button.
-- Focus scrolling keeps the whole ring in view.
+- **Rows:** children of `.ef-cluster` and `.ef-actions` are no wider than the row. A full-bleed child with negative margins is capped too.
+- **Forms:** in WebKit, a `select` in `.ef-form-row` no longer widens the page.
+- **Focus:** date and time pickers show the focus ring on their picker button, and focus scrolling keeps the whole ring in view.
 
 New tools:
 
 - `tools/TokenValidator`; see "Design-token validation".
 - `forma-conformance` 0.3.0 `expectContained` and `expectFocusVisible`, for application geometry tests.
+
+Known limitations (`CHANGELOG.md` 0.13.0):
+
+- `.ef-dashboard-grid`, `.ef-split-pane` and `.ef-operation-status` reflow on the viewport, not their container.
+- A narrowed SVG chart with `width`/`height` attributes keeps a too-tall box.
 
 ## 0.12.0
 

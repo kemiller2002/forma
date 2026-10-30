@@ -186,14 +186,18 @@ detector.
 ## Focus visibility (WCAG 2.4.7, 2.4.11; focus.unclipped)
 
 - `measureFocusVisibility(page)` / `expectFocusVisible(page)`: the focused
-  element paints an outline or box-shadow, and no clipping ancestor
-  (`overflow` other than `visible`, or `contain: paint`) cuts any part of it.
-- On an axis where the element is longer than the clip (an element taller
-  than its scroller), the element only needs a visible part on that axis.
-- The viewport edge depends on how the browser scrolls: Firefox does not
-  scroll a partly visible element on Tab. So the viewport only needs part of
-  the element in view. `viewportEdge` reports how far the ring runs past the
-  viewport edge.
+  element paints a focus indicator. That is a visible outline, or an outward
+  box-shadow with a spread of at least 1px. A decorative `0 1px 2px` shadow,
+  an inset shadow and a transparent outline do not count.
+- A hard clip is an ancestor's padding box where `overflow` is `hidden` or
+  `clip`, or that has `contain: paint`. A hard clip must not cut any part of
+  the indicator.
+- On an axis where the element is longer than such a clip, the element only
+  needs a visible part on that axis.
+- Scroll container edges and the viewport edge are scroll positions the user
+  controls, and engines differ in how far focus scrolls (Firefox ignores
+  `scroll-margin` here). So these edges only need part of the element in
+  view (WCAG 2.4.11). `scrollEdge` reports how far the ring runs past one.
 - `evaluateFocusVisibility(observation)` is the pure core.
 
 ## Compatibility

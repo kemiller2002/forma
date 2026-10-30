@@ -2038,6 +2038,9 @@
     border-inline: 0;
     border-block-end: 0;
   }
+  /* A command's label is no wider than its button, so a long label breaks
+     inside the button instead of overflowing the palette (LRP-001). */
+  .ef-command-palette__group button > * { max-inline-size: 100%; }
   .ef-command-palette__group button:last-child { border-block-end: 1px solid var(--ef-color-border-functional, #3a403c); }
   .ef-command-palette kbd {
     padding: 0.1rem 0.35rem;
@@ -2172,7 +2175,9 @@
     row-gap: 0;
     min-inline-size: 0;
   }
-  .ef-record-header__title > :first-child > .ef-record-header__type { grid-row: 1; align-self: end; }
+  /* A type label wider than a narrow header (320px at 200% text) breaks
+     rather than setting the column's minimum and overflowing (LRP-001). */
+  .ef-record-header__title > :first-child > .ef-record-header__type { grid-row: 1; align-self: end; overflow-wrap: anywhere; }
   .ef-record-header__title > :first-child > :is(h1, h2, h3, h4) { grid-row: 2; }
   .ef-record-header__title > :not(:first-child) { grid-row: 2; }
   @container (max-width: 24em) {
