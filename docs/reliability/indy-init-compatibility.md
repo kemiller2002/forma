@@ -93,5 +93,12 @@ None are required to adopt 0.13.0. Recommended:
 - **Recommended Forma version:** `@echelon-foundry/design-system` **0.13.0**, with `@echelon-foundry/forma-conformance` 0.3.0 as a dev dependency. forma-workflow stays at 1.2.0.
 - **Is it safe to include in the Indy Init dependency lock?** It is a candidate, **not** a pre-approved lock entry.
   - The Rehearsal 7 kickoff set (echelon-current 1.33.0, DEC-R7-011) pins Forma 0.12.0. Under `docs/REHEARSAL-DEPENDENCY-LOCK.md` DEP-CURRENT-002 to -006, only the owner admits a newer release, through a Registry release set and its verification gates.
-  - On the Forma side, 0.13.0 passed its release gates. Everything else (owner approval of a release set that includes it, and the DEP-CURRENT-004 verification) belongs to the Indy Init process.
+  - On the Forma side, the evidence is:
+    - the full three-engine browser suite on the release commit (3,690 passed, 0 failed, 72 skipped);
+    - the node, F#, layout-probe and token-validation suites;
+    - PR CI;
+    - `release:check`, which `release-forma.yml` runs before it tags.
+
+    The release workflow's outcome and the published digest are recorded in the PR (kemiller2002/forma#176) and in the work-item handoff, not here.
+  - Everything else belongs to the Indy Init process: owner approval of a release set that includes 0.13.0, and the DEP-CURRENT-004 verification.
   - Do not edit the frozen requirements or lock to adopt it.
