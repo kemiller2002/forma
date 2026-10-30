@@ -168,6 +168,34 @@ detector.
   `resolveCornerRadius(value, width, height)` are the pure core, ported from
   Forma's internal layout probe (LCE-001).
 
+## Element containment (ULI-L05, contain.element)
+
+- `measureContainment(locator, { axes, exclude, tolerance })` /
+  `expectContained(locator, options)`: every descendant box and every
+  rendered text line of the element lies inside its content box (inside the
+  border and padding). Page-level overflow cannot see a token that escapes a
+  card into its neighbour; this does. `axes` is `["inline"]` (default) or
+  `["inline", "block"]`.
+- Not observed, because their contracts permit overflow: popovers, dialogs
+  other than the element itself, fixed-position layers, anything matching
+  `exclude`, and the contents of a nested scroll or clip container. That
+  container's own box is still measured.
+- No descendants, or no content box, reports `UNKNOWN`. Tolerance is 1px.
+- `evaluateContainment(observation)` is the pure core.
+
+## Focus visibility (WCAG 2.4.7, 2.4.11; focus.unclipped)
+
+- `measureFocusVisibility(page)` / `expectFocusVisible(page)`: the focused
+  element paints an outline or box-shadow, and no clipping ancestor
+  (`overflow` other than `visible`, or `contain: paint`) cuts any part of it.
+- On an axis where the element is longer than the clip (an element taller
+  than its scroller), the element only needs a visible part on that axis.
+- The viewport edge depends on how the browser scrolls: Firefox does not
+  scroll a partly visible element on Tab. So the viewport only needs part of
+  the element in view. `viewportEdge` reports how far the ring runs past the
+  viewport edge.
+- `evaluateFocusVisibility(observation)` is the pure core.
+
 ## Compatibility
 
 Version 0.1.0 keeps every export of the first helper release, which shipped

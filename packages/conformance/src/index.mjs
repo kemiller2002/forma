@@ -6,7 +6,9 @@ import {
   evaluateActionOutcome,
   evaluateActionPremise,
   evaluateAlignment,
+  evaluateContainment,
   evaluateCornerContainment,
+  evaluateFocusVisibility,
   evaluateLabelIntegrity,
   evaluateOverflow,
   formatReport,
@@ -480,3 +482,105 @@ export const recordTabSequence = async (page, maxSteps) => {
 };
 
 export const wasFocusedDuringSequence = locator => locator.evaluate(element => window.__uliFocused?.has(element) ?? false);
+
+// ---------------------------------------------------------------------------
+// ULI-L05: element containment (contain.element)
+// ---------------------------------------------------------------------------
+// Every descendant box and text line of the element lies inside its content
+// box. Not observed (their contracts permit overflow): popovers, dialogs
+// other than the element itself, fixed-position layers, anything matching
+// `exclude`, and the contents of a nested scroll or clip container (that
+// container's own box is still measured). `axes` is ["inline"] (default) or
+// ["inline", "block"].
+export const measureContainment = async (locator, { axes = ["inline"], exclude = null, tolerance } = {}) => {
+  await expect(locator).toBeVisible();
+  await settleFontsAndFrames(locator);
+  const observation = await locator.evaluate((root, { axes, exclude }) => {
+    const px = value => parseFloat(value) || 0;
+    const style = getComputedStyle(root);
+    const box = root.getBoundingClientRect();
+    const content = {
+      left: box.left + px(style.borderLeftWidth) + px(style.paddingLeft),
+      right: box.right - px(style.borderRightWidth) - px(style.paddingRight),
+      top: box.top + px(style.borderTopWidth) + px(style.paddingTop),
+      bottom: box.bottom - px(style.borderBottomWidth) - px(style.paddingBottom)
+    };
+    const describe = element => {
+      const classes = [...element.classList].slice(0, 2).map(name => "." + name).join("");
+      return element.tagName.toLowerCase() + classes;
+    };
+    const layer = element => element.matches("[popover], dialog") || getComputedStyle(element).position === "fixed" || (exclude && element.matches(exclude));
+    const contains = element => {
+      const own = getComputedStyle(element);
+      return own.overflowX !== "visible" || own.overflowY !== "visible";
+    };
+    const rectItem = (label, rect) => ({ label, left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom });
+    const visit = element => {
+      if (layer(element) || !element.checkVisibility()) return [];
+      const rect = element.getBoundingClientRect();
+      if (rect.width <= 1 && rect.height <= 1) return []; // visually hidden
+      const self = [rectItem(describe(element), rect)];
+      return contains(element) ? self : [...self, ...observeChildren(element)];
+    };
+    const textItems = (text, owner) => {
+      if (!text.textContent.trim()) return [];
+      const range = document.createRange();
+      range.selectNodeContents(text);
+      const label = `${describe(owner)} "${text.textContent.trim().slice(0, 40)}"`;
+      return [...range.getClientRects()].filter(rect => rect.width > 0).map(rect => rectItem(label, rect));
+    };
+    const observeChildren = element => [...element.childNodes].flatMap(node =>
+      node.nodeType === Node.ELEMENT_NODE ? visit(node)
+        : node.nodeType === Node.TEXT_NODE ? textItems(node, element) : []);
+    return {
+      name: describe(root) + (root.id ? "#" + root.id : ""),
+      content,
+      axes,
+      items: observeChildren(root)
+    };
+  }, { axes, exclude });
+  return evaluateContainment(observation, tolerance === undefined ? {} : { tolerance });
+};
+
+export const expectContained = async (locator, options) => {
+  const report = await measureContainment(locator, options);
+  const detail = report.escapes.slice(0, 8).map(escape => `${escape.label}: ${escape.side} +${escape.excess}px`).join("\n");
+  expect(report.status, `${report.ruleId} ${report.check} ${report.status}: ${report.name}: ${report.reason}\n${detail}`).toBe(STATUS.PASS);
+  return report;
+};
+
+// ---------------------------------------------------------------------------
+// WCAG 2.4.7 / 2.4.11: the focused element's indicator is painted and unclipped
+// ---------------------------------------------------------------------------
+// Observes document.activeElement: whether it paints an outline or
+// box-shadow, how far that indicator extends, and every ancestor that would
+// clip it (overflow other than visible, or contain: paint).
+export const measureFocusVisibility = async page => {
+  await settleFontsAndFrames(page);
+  const observation = await page.evaluate(() => {
+    const element = document.activeElement;
+    if (!element || element === document.body) return { name: null, ring: null, viewport: null };
+    const style = getComputedStyle(element);
+    const outline = style.outlineStyle !== "none" ? (parseFloat(style.outlineWidth) || 0) + Math.max(0, parseFloat(style.outlineOffset) || 0) : 0;
+    const shadowSpread = style.boxShadow === "none" ? 0
+      : Math.max(0, ...[...style.boxShadow.matchAll(/(-?[\d.]+)px\s+(-?[\d.]+)px\s+(-?[\d.]+)px\s+(-?[\d.]+)px/g)]
+        .map(([, x, y, blur, spread]) => Math.max(Math.abs(+x), Math.abs(+y)) + +spread));
+    const reach = Math.max(outline, shadowSpread);
+    const rect = element.getBoundingClientRect();
+    const ring = { left: rect.left - reach, top: rect.top - reach, right: rect.right + reach, bottom: rect.bottom + reach };
+    const ancestors = [];
+    for (let node = element.parentElement; node && node !== document.documentElement; node = node.parentElement) ancestors.push(node);
+    const clips = ancestors
+      .filter(node => { const own = getComputedStyle(node); return own.overflowX !== "visible" || own.overflowY !== "visible" || /paint|strict|content/.test(own.contain); })
+      .map(node => { const box = node.getBoundingClientRect(); return { label: node.tagName.toLowerCase() + [...node.classList].slice(0, 1).map(name => "." + name).join(""), left: box.left, top: box.top, right: box.right, bottom: box.bottom }; });
+    const label = (element.getAttribute("aria-label") || element.textContent || element.tagName).replace(/\s+/g, " ").trim().slice(0, 40);
+    return { name: label, indicator: reach > 0, ring, clips, viewport: { width: document.documentElement.clientWidth, height: window.innerHeight } };
+  });
+  return evaluateFocusVisibility(observation);
+};
+
+export const expectFocusVisible = async page => {
+  const report = await measureFocusVisibility(page);
+  expect(report.status, `${report.ruleId} ${report.check} ${report.status}: "${report.name}": ${report.reason}`).toBe(STATUS.PASS);
+  return report;
+};

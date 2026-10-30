@@ -63,6 +63,12 @@
   .ef-form-row > .ef-field > .ef-field__description { grid-row: 2; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
   .ef-form-row > .ef-field > :not(.ef-field__label, .ef-field__description, .ef-validation-message) { grid-row: 3; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
   .ef-form-row > .ef-field > .ef-validation-message { grid-row: 4; margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); }
+  /* WebKit lets a select's longest option add scrollable overflow through
+     the subgrid, so a 320px form scrolled sideways by the option's width
+     (LRP-001; Safari is the primary iPad target). Layout containment keeps
+     it inside the select. Rows align at start, so the lost baseline is
+     unused here. */
+  .ef-form-row > .ef-field > select { contain: layout; }
 
   /* Form contract ------------------------------------------------------- */
   .ef-form {

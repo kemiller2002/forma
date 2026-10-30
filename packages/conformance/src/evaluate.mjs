@@ -330,3 +330,86 @@ export const evaluateCornerContainment = ({ name, rect, radii = [], border = { t
       : `${fragments.length} text line(s) inside the visible boundary (radii ${radii.join(" / ")})`
   };
 };
+
+// ---------------------------------------------------------------------------
+// ULI-L05: element containment (contain.element)
+// ---------------------------------------------------------------------------
+// A component's descendants, and every line of their text, stay inside its
+// content box. Page-level overflow cannot see this: a long token can escape a
+// card into its neighbour without widening the page as a whole. Geometry is in CSS
+// px. Observation: { name, content: { left, top, right, bottom } (the
+// container's content box), axes: ["inline"] or ["inline", "block"], items:
+// [{ label, left, top, right, bottom }] }. Callers exclude overlays, popovers
+// and the contents of scroll containers, whose contracts permit overflow.
+
+const AXIS_SIDES = Object.freeze({
+  inline: [["left", (item, box) => box.left - item.left], ["right", (item, box) => item.right - box.right]],
+  block: [["top", (item, box) => box.top - item.top], ["bottom", (item, box) => item.bottom - box.bottom]]
+});
+
+const escapesOf = (content, axes, tolerance) => item =>
+  axes.flatMap(axis => AXIS_SIDES[axis] ?? [])
+    .map(([side, excessOf]) => ({ label: item.label, side, excess: Math.round(excessOf(item, content) * 100) / 100 }))
+    .filter(escape => escape.excess > tolerance);
+
+export const evaluateContainment = ({ name, content, axes = ["inline"], items = [] }, { tolerance = DEFAULT_TOLERANCE_CSS_PX } = {}) => {
+  const base = { ruleId: "ULI-L05", check: "contain.element", name };
+  if (!content || !(content.right > content.left)) return { ...base, status: STATUS.UNKNOWN, reason: "no content box observed", escapes: [] };
+  if (items.length === 0) return { ...base, status: STATUS.UNKNOWN, reason: "no descendants observed inside the container", escapes: [] };
+  const escapes = items.flatMap(escapesOf(content, axes, tolerance)).sort((a, b) => b.excess - a.excess);
+  return {
+    ...base,
+    status: escapes.length > 0 ? STATUS.FAIL : STATUS.PASS,
+    escapes,
+    reason: escapes.length > 0
+      ? `${escapes.length} escape(s); worst: ${escapes[0].label} crosses the ${escapes[0].side} edge by ${escapes[0].excess}px`
+      : `${items.length} box(es) and text line(s) inside the content box (${axes.join(", ")})`
+  };
+};
+
+// ---------------------------------------------------------------------------
+// WCAG 2.4.7 / 2.4.11: the focus indicator is drawn and not clipped
+// ---------------------------------------------------------------------------
+// Observation: { name, indicator: boolean (outline or box-shadow present),
+// ring: { left, top, right, bottom } (the element box grown by the painted
+// indicator), clips: [{ label, left, top, right, bottom }] (ancestors that
+// clip: overflow other than visible, or contain: paint), viewport: { width,
+// height } }. Clipping ancestors are the page's own CSS: a ring they cut is
+// FAIL. On an axis where the ring is longer than a clip (an element taller
+// than its scroller), no scroll position can show all of it, so that axis only
+// needs a visible part. The viewport edge is the user agent's scroll policy
+// (Firefox does not scroll a partly visible element on Tab), so the viewport
+// only needs part of the element in view (WCAG 2.4.11: not entirely hidden);
+// `viewportEdge` reports how far the ring runs past it.
+
+const axisExcess = (start, end, clipStart, clipEnd) =>
+  end - start > clipEnd - clipStart
+    ? Math.max(0, clipStart - end, start - clipEnd)
+    : Math.max(clipStart - start, end - clipEnd);
+
+const clipExcess = (ring, clip) => Math.max(
+  axisExcess(ring.left, ring.right, clip.left, clip.right),
+  axisExcess(ring.top, ring.bottom, clip.top, clip.bottom));
+
+export const evaluateFocusVisibility = ({ name, indicator, ring, clips = [], viewport }, { tolerance = DEFAULT_TOLERANCE_CSS_PX } = {}) => {
+  const base = { ruleId: "WCAG-2.4.7", check: "focus.unclipped", name };
+  if (!ring || !viewport) return { ...base, status: STATUS.UNKNOWN, reason: "no focused element observed", cutBy: [] };
+  if (!indicator) return { ...base, status: STATUS.FAIL, reason: "focused element paints no outline or box-shadow", cutBy: [] };
+  const screen = { left: 0, top: 0, right: viewport.width, bottom: viewport.height };
+  const round = value => Math.round(value * 100) / 100;
+  const cutBy = clips
+    .map(clip => ({ label: clip.label, excess: round(clipExcess(ring, clip)) }))
+    .filter(cut => cut.excess > tolerance);
+  const offscreen = ring.right <= screen.left || ring.left >= screen.right || ring.bottom <= screen.top || ring.top >= screen.bottom;
+  const viewportEdge = round(Math.max(0, clipExcess(ring, screen)));
+  const failures = [...cutBy.map(cut => `${cut.label} (${cut.excess}px)`), ...(offscreen ? ["viewport (entirely outside)"] : [])];
+  return {
+    ...base,
+    status: failures.length > 0 ? STATUS.FAIL : STATUS.PASS,
+    cutBy,
+    viewportEdge,
+    reason: failures.length > 0
+      ? `focus indicator cut by ${failures.join(", ")}`
+      : `focus indicator painted and unclipped (${clips.length} clipping ancestor(s) checked; ${viewportEdge}px past the viewport edge)`
+  };
+};

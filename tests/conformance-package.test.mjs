@@ -61,3 +61,41 @@ test("boundary.corner: text crossing a rounded corner fails; text clear of it pa
   assert.equal(evaluateCornerContainment({ name: "empty", rect, radii: [], fragments: [] }).status, STATUS.UNKNOWN);
   assert.deepEqual(resolveCornerRadius("50% 10px", 100, 40), { rx: 50, ry: 10 });
 });
+
+test("contain.element: a descendant past the content box fails; contained descendants pass", async () => {
+  const { evaluateContainment, STATUS } = await import(path.join(root, "packages/conformance/src/evaluate.mjs"));
+  const content = { left: 16, top: 16, right: 304, bottom: 400 };
+  const inside = { label: "span", left: 16, top: 20, right: 300, bottom: 40 };
+  const escaping = { label: 'span "sha256:9f86d0"', left: 16, top: 60, right: 520.4, bottom: 80 };
+  assert.equal(evaluateContainment({ name: "card", content, items: [inside] }).status, STATUS.PASS);
+  const failed = evaluateContainment({ name: "card", content, items: [inside, escaping] });
+  assert.equal(failed.status, STATUS.FAIL);
+  assert.deepEqual(failed.escapes, [{ label: 'span "sha256:9f86d0"', side: "right", excess: 216.4 }]);
+  // Block containment is only judged when asked for.
+  const tall = { label: "p", left: 16, top: 20, right: 300, bottom: 480 };
+  assert.equal(evaluateContainment({ name: "card", content, items: [tall] }).status, STATUS.PASS);
+  assert.equal(evaluateContainment({ name: "card", content, axes: ["inline", "block"], items: [tall] }).status, STATUS.FAIL);
+  // Missing evidence is UNKNOWN, never PASS.
+  assert.equal(evaluateContainment({ name: "card", content, items: [] }).status, STATUS.UNKNOWN);
+  assert.equal(evaluateContainment({ name: "card", items: [inside] }).status, STATUS.UNKNOWN);
+});
+
+test("focus.unclipped: a clipping ancestor that cuts the ring fails; the viewport edge only needs part in view", async () => {
+  const { evaluateFocusVisibility, STATUS } = await import(path.join(root, "packages/conformance/src/evaluate.mjs"));
+  const viewport = { width: 320, height: 900 };
+  const ring = { left: 95, top: 95, right: 205, bottom: 145 };
+  assert.equal(evaluateFocusVisibility({ name: "Save", indicator: true, ring, clips: [], viewport }).status, STATUS.PASS);
+  assert.equal(evaluateFocusVisibility({ name: "Save", indicator: false, ring, clips: [], viewport }).status, STATUS.FAIL);
+  const clipped = evaluateFocusVisibility({ name: "Save", indicator: true, ring, clips: [{ label: "div.ef-surface", left: 100, top: 0, right: 300, bottom: 900 }], viewport });
+  assert.equal(clipped.status, STATUS.FAIL);
+  assert.deepEqual(clipped.cutBy, [{ label: "div.ef-surface", excess: 5 }]);
+  // An element taller than its scroller only needs a visible part on that axis.
+  const tall = { left: 95, top: -300, right: 205, bottom: 1300 };
+  assert.equal(evaluateFocusVisibility({ name: "Long", indicator: true, ring: tall, clips: [{ label: "dialog", left: 40, top: 40, right: 280, bottom: 860 }], viewport }).status, STATUS.PASS);
+  // The viewport edge is the user agent's scroll policy: partly in view passes and is reported; wholly outside fails.
+  const edge = evaluateFocusVisibility({ name: "Edge", indicator: true, ring: { left: 95, top: 880, right: 205, bottom: 930 }, clips: [], viewport });
+  assert.equal(edge.status, STATUS.PASS);
+  assert.equal(edge.viewportEdge, 30);
+  assert.equal(evaluateFocusVisibility({ name: "Gone", indicator: true, ring: { left: 95, top: 1000, right: 205, bottom: 1050 }, clips: [], viewport }).status, STATUS.FAIL);
+  assert.equal(evaluateFocusVisibility({ name: null, ring: null, viewport: null }).status, STATUS.UNKNOWN);
+});

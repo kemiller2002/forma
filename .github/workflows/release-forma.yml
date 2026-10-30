@@ -21,6 +21,7 @@ on:
       - "examples/design/**"
       - "tools/design-contract/**"
       - "tools/color-contract/**"
+      - "tools/TokenValidator/**"
       - "icons/**"
       - "catalog/icons.mjs"
       - "catalog/icons/**"

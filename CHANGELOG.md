@@ -7,6 +7,40 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 0.13.0
+
+Minor release: layout reliability (LRP-001, `.praxis/inbox/documents/2026-10-30-LRP-001-layout-reliability.md`, `docs/reliability/`). `@echelon-foundry/forma-conformance` 0.3.0 ships the new geometry checks.
+
+**Behaviour change: long unbroken text now wraps inside Forma containers.** Before this release, a token without spaces in a `span`, `strong`, `em`, `div` or `li` (a URL, SHA, path or identifier) kept its full width and escaped the card, dialog or field around it. It now breaks inside the container. Text that already fits renders as before. Explicit `white-space: nowrap`/`pre`, truncating selects, code blocks, character-grid runs and buttons keep their own wrapping. No class, token, element or attribute was removed or renamed (QD-004).
+
+### Fixed
+- **Text containment.** `overflow-wrap: anywhere` now also applies to `li`, `blockquote` and `summary`, and is inherited from these Forma containers so arbitrary application text inside them wraps:
+  - `.ef-surface`, `.ef-stack`, `.ef-cluster`, `.ef-actions`, `.ef-grid`, `.ef-responsive-grid`, `.ef-rail`, `.ef-mosaic`, `.ef-priority-stack`, `.ef-focus-stage`, `.ef-sidebar`, `.ef-switcher`, `.ef-split-pane`;
+  - `.ef-dialog`, `.ef-popover`, `.ef-menu`, `.ef-form`, `.ef-field`, `.ef-validation-summary`, `.ef-record-header`.
+
+  Before the fix, the fixtures measured escapes of up to 716px at 320px.
+- **Flex rows.** Children of `.ef-cluster` and `.ef-actions` are capped at the row's width (`max-inline-size: 100%`), so a nowrap or inline-block item can no longer push the row past its container. Items that fit keep their content size; no control is shrunk below its label.
+- **SVG aspect ratio.** An `<svg>` with a `viewBox` and absolute `width`/`height` attributes keeps its aspect ratio when narrowed. A 1200×400 chart at 320px previously rendered 316×400. Percentage-sized SVGs, `preserveAspectRatio="none"` graphics and class-sized icons are unaffected.
+- **WebKit horizontal scrolling in forms.** A `select` with a long option inside `.ef-form-row` no longer adds the option's width to the page's horizontal scroll in WebKit/Safari: it gets layout containment, and the subgrid alignment is kept.
+- **Focus on date and time pickers.** Keyboard focus on the calendar or clock button of a date, time, datetime-local, month or week input now shows the Forma focus ring. Before this fix, Chromium painted no indicator.
+- **Focus scrolling.** Focus-visible elements have `scroll-margin: 0.5rem`, so tabbing to an element at the viewport edge brings its whole focus ring into view, not only its border box.
+
+### Added
+- **Design-token validator (`tools/TokenValidator`, F#, no dependencies, shipped in the package).** It validates `var(--ef-*)` references and `--ef-*` declarations against the Forma installation itself, using that installation's token sources, built CSS and color contract as the source of truth. It reports:
+  - `unknown-token`, including references that have a fallback;
+  - `deprecated-token` (DTCG `$deprecated`);
+  - `namespace` (`--forma-*`, `--ef_*`, a dropped segment such as `--ef-spacing-4`, or an application minting a new `--ef-*` name);
+  - `internal-variable`;
+  - custom-property `cycle`s.
+
+  With `--self` it also checks Forma's own `invalid-alias`, alias `cycle`, `theme-missing` (token themes and brand manifests) and `missing-definition`. Application-owned custom properties are never reported. The commands are `npm run tokens:validate` (Forma itself; part of `check` and `release:check`) and `dotnet run --project node_modules/@echelon-foundry/design-system/tools/TokenValidator/TokenValidator.fsproj -- --forma node_modules/@echelon-foundry/design-system src/` for applications. See `docs/CONSUMING-FORMA.md`, "Design-token validation".
+- **`@echelon-foundry/forma-conformance` 0.3.0.**
+  - `measureContainment` / `expectContained` / `evaluateContainment` (ULI-L05 `contain.element`): every descendant box and text line stays inside a component's content box.
+  - `measureFocusVisibility` / `expectFocusVisible` / `evaluateFocusVisibility` (WCAG 2.4.7/2.4.11 `focus.unclipped`): the focus indicator is painted and no clipping ancestor cuts it.
+- **Browser geometry suite.**
+  - `tests/browser/layout-reliability.spec.mjs` covers 11 adversarial fixtures at 320, 375, 768 and 1280px and at 200% text, plus dialog, dropdown, focus, media, theme and skin checks and axe. Before this release it failed 48 of 78 checks across Chromium, Firefox and WebKit.
+  - `tests/browser/causa-representative.spec.mjs` covers Causa-shaped regions at phone, iPad portrait and landscape, and desktop sizes.
+
 ## @echelon-foundry/forma-workflow 1.2.0
 
 Minor release of the workflow package (and `EchelonFoundry.Forma.Workflow` 1.2.0): it ships the Forma 0.12.0 engine. **Behaviour change: validation is stricter.** Documents that validated under 1.1.0 can now fail with `A11Y-NONTEXT-CONTRAST` (WCAG 1.4.11, 3:1), and `render` refuses documents that fail validation. Added: `token:status-warning|danger|success|info` diagram colours, `ValidationOptions.Theme` and `--theme` on `validate`/`render`. No element, class, attribute or token was removed or renamed (QD-004), so this is a minor release, as Forma 0.12.0 was. See 0.12.0 below for the migration.

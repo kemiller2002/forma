@@ -202,6 +202,44 @@ Static workflow HTML needs only `tokens.css`, `foundations.css` and
 `components.css`. An interactive viewer or editor needs the separate opt-in
 package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
 
+## Design-token validation
+
+Forma 0.13.0 ships an F# validator for every `--ef-*` reference, not only colors. Run it in application CI against the exact package the application pins (requires the .NET 10 SDK):
+
+```bash
+dotnet run --project node_modules/@echelon-foundry/design-system/tools/TokenValidator/TokenValidator.fsproj -- \
+  --forma node_modules/@echelon-foundry/design-system  src/styles/   # files or directories; --json for machine output
+```
+
+It exits 1 on any error. The installed package is the source of truth: its token JSON, its built `dist/` CSS, and `contracts/color-contract.json`. A name is valid when that Forma version defines it, or reads it with a fallback as a documented input (for example `--ef-stack-gap`). The validator reports:
+
+- unknown and deprecated tokens. A fallback such as `var(--ef-nonexistent, white)` does not make an unknown token valid.
+- wrong namespaces: `--forma-*`, `--ef_*`, or a dropped segment such as `--ef-spacing-4` for `--ef-primitive-spacing-4`.
+- new names an application declares in the `--ef-` namespace.
+- reads of internal implementation variables.
+- custom properties that refer to each other in a cycle.
+
+Application-owned properties such as `--causa-*` are never reported. Keep `forma-color` for color-role pairing rules; the two validators agree on the color namespace.
+
+## 0.13.0
+
+Layout reliability. No class, token or component was removed.
+
+**Behaviour change:** long unbroken text (URLs, SHAs, paths, identifiers) in `span`, `strong`, `em`, `div` or `li` now wraps inside Forma containers instead of escaping them; see `CHANGELOG.md` 0.13.0 for the list of containers. Check any screen that relied on such text overflowing. Text that should not wrap must say so explicitly, with `white-space: nowrap` (or `pre`) or by placing it in `.ef-bounded-overflow`, which scrolls.
+
+Other visible changes to check:
+
+- Children of `.ef-cluster` and `.ef-actions` are no wider than the row.
+- An `<svg>` with a `viewBox` and absolute `width`/`height` keeps its aspect ratio when narrowed.
+- In WebKit, a `select` in `.ef-form-row` no longer widens the page.
+- Date and time pickers show the focus ring on their picker button.
+- Focus scrolling keeps the whole ring in view.
+
+New tools:
+
+- `tools/TokenValidator`; see "Design-token validation".
+- `forma-conformance` 0.3.0 `expectContained` and `expectFocusVisible`, for application geometry tests.
+
 ## 0.12.0
 
 Behaviour change for workflow documents; no CSS class or component changed.
