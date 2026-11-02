@@ -544,6 +544,10 @@
 
   .ef-cta[data-ef-tone]:not([data-ef-tone="page"]) {
     padding: calc(var(--ef-layout-block-space) * 2);
+    /* Same cap as a toned .ef-section (ULI-L05): at 320px and 200% text the
+       uncapped inline padding left a 96px content box (MKT-CONTAIN). It
+       changes nothing at the default text size. */
+    padding-inline: min(calc(var(--ef-layout-block-space) * 2), 12.5vw);
     border-block-start: 0;
   }
 

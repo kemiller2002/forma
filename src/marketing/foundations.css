@@ -184,6 +184,23 @@
     overflow-wrap: anywhere;
   }
 
+  /*
+   * Marketing containment (MKT-CONTAIN, WI-0043). LRP-001 passes
+   * overflow-wrap: break-word to arbitrary content inside the application
+   * containers; marketing components hold the same kind of content (list
+   * items, spans and divs that the element rule above does not reach), so
+   * they pass it on too. break-word never splits a word that fits and leaves
+   * min-content sizes alone; declared values (badges, steps, code) win over
+   * inheritance. Found by the EDF site at 320px: list words escaped a card at
+   * 200% text and a release URL in a span escaped it at every width.
+   */
+  .ef-site :where(
+    .ef-hero, .ef-section-heading, .ef-card, .ef-facts, .ef-index, .ef-callout,
+    .ef-cta, .ef-split, .ef-doc, .ef-prose, .ef-statement, .ef-site-footer
+  ) {
+    overflow-wrap: break-word;
+  }
+
   .ef-site :where(hr) {
     margin-block: var(--ef-layout-section-space);
     border: 0;

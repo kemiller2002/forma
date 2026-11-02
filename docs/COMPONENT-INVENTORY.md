@@ -177,9 +177,9 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Security trend | `<ef-security-trend>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-state-matrix, metric-value-change, security-evidence-age |
 | Security unknown | `<ef-security-unknown>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-blockers, security-invariant-result, obligation-panel, operation-status |
 | Badge | `<ef-badge>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing.spec.mjs | status-lozenge, facts, hero |
-| Call to action | `<ef-cta>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs | hero, button, section |
+| Call to action | `<ef-cta>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing-containment.spec.mjs | hero, button, section |
 | Callout | `<ef-callout>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | callout.spec.mjs | prose, alert, cta |
-| Card grid | `<ef-card-grid>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, site-css-policy.test.mjs, marketing.spec.mjs | facts, entry-index, metric-card, surface |
+| Card grid | `<ef-card-grid>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, site-css-policy.test.mjs, marketing-containment.spec.mjs, marketing.spec.mjs | facts, entry-index, metric-card, surface |
 | Code sample | `<ef-code-sample>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | prose, steps, diff-viewer, identifier |
 | Documentation layout | `<ef-documentation-layout>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | prose, marketing-shell, sidebar, rail |
 | Entry index | `<ef-entry-index>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | card-grid, steps, relationship-index |
@@ -190,7 +190,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Section heading | `<ef-section-heading>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hero, section, text-roles |
 | Site footer | `<ef-site-footer>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | site-header, marketing-shell, cta |
 | Site header | `<ef-site-header>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | marketing-shell, site-footer, navigation-shell, skip-link |
-| Steps | `<ef-steps>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | wizard, timeline, entry-index, code-sample |
+| Steps | `<ef-steps>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-containment.spec.mjs | wizard, timeline, entry-index, code-sample |
 | Icon | `<ef-icon>` | Utilities | implemented | complete | 3 | 1 | yes | yes | yes | icons.test.mjs, icons.spec.mjs | button, status-lozenge, visually-hidden |
 | Text roles | `<ef-text-roles>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | section-heading, hero, prose, callout |
 | Visually hidden | `<ef-visually-hidden>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skip-link, tooltip, text-roles |
