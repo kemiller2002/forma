@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-10-30T08:33:33.000Z",
+  "updatedAt": "2026-11-02T07:10:39.000Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -2908,6 +2908,47 @@
       },
       "completedAt": "2026-10-30T08:33:33.000Z",
       "conclusion": "Layout reliability defaults, token validator and geometry suite shipped as Forma 0.13.0 (PR #176). Before/after: 30/78 -> 78/78 adversarial checks across three engines; full suite 3690 passed, 0 failed."
+    },
+    {
+      "id": "WI-0043",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "src/marketing/foundations.css"
+        },
+        {
+          "type": "tests",
+          "path": "tests/browser/marketing-containment.spec.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-02T07:10:39.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261102T070107535Z-d016003b"
+      ],
+      "latestCheckpoint": {
+        "id": "73fb741c2681901edb5fcbe6",
+        "recordedAt": "2026-11-02T07:10:38.000Z",
+        "executionId": "EXE-20261102T070107535Z-d016003b",
+        "repository": "echelon-design-system",
+        "branch": "claude/marketing-containment",
+        "commit": "515c2623fa34be0517b3d7b5bc12271428fcf81f",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/marketing-containment",
+        "remoteCommit": "515c2623fa34be0517b3d7b5bc12271428fcf81f",
+        "summary": "Marketing containment fix, regression spec and changelog pushed on claude/marketing-containment",
+        "nextAction": "Review and merge the PR, then release a patch (proposed 0.13.1) so EDF can drop its forma-exception rules",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-02T07:10:39.000Z"
     }
   ]
 }

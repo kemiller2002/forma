@@ -98,3 +98,4 @@
 | WI-0040 | LCE-001 follow-up: optional measured relayout in the forma-workflow embed for typography beyond the reserved WCAG 1.4.12 envelope | captured |  | medium |
 | WI-0041 | R7-REM-009: diagram non-text contrast (A11Y-NONTEXT-CONTRAST) and status tokens for diagram outlines | active | forma, accessibility, r7-remediation | high |
 | WI-0042 | LRP-001: Forma layout reliability patch (containment defaults, token validation, geometry suite) | complete | forma, layout, accessibility, tokens | high |
+| WI-0043 | MKT-CONTAIN: marketing containers (.ef-card, .ef-callout, .ef-cta, ...) do not pass overflow-wrap containment to li/span/div content, and toned .ef-cta inline padding is uncapped at 320px/200% text (found by EDF site migration) | complete |  | medium |
