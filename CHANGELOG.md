@@ -7,6 +7,17 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## Unreleased
+
+Patch candidate (proposed 0.13.1): marketing containment (MKT-CONTAIN, WI-0043). Found by the Echelon Diagnostic Framework site migration to 0.13.0. No class, token, element or attribute was removed or renamed.
+
+### Fixed
+- **Text containment in marketing components.** LRP-001 (0.13.0) passed `overflow-wrap: break-word` only to the application containers. Marketing components hold the same kind of content, so list items, spans and divs inside them could still escape: on 0.13.0 a release URL in a `span` escaped `.ef-card` by 160px at 320px, and at 200% text ordinary list words ("explanations", "propagation") escaped a card by up to 18px. `.ef-site` now passes `break-word` from `.ef-hero`, `.ef-section-heading`, `.ef-card`, `.ef-facts`, `.ef-index`, `.ef-callout`, `.ef-cta`, `.ef-split`, `.ef-doc`, `.ef-prose`, `.ef-statement` and `.ef-site-footer`. Words that fit are never split; declared values (badges, steps, code) are unchanged.
+- **Toned CTA at narrow widths.** `.ef-cta[data-ef-tone]` caps its inline padding at `12.5vw`, as a toned `.ef-section` already does (ULI-L05). At 320px and 200% text the uncapped padding left a 96px content box. Nothing changes at the default text size.
+
+### Tests
+- `tests/browser/marketing-containment.spec.mjs` with `tests/browser/fixture/marketing-containment.html`: containment of every marketing container at 320, 375, 768 and 1280px with default and 200% text, the toned-CTA line length, and that fitting words in cards are not split. Nine of its ten tests fail on 0.13.0.
+
 ## 0.13.0
 
 Minor release: layout reliability (LRP-001). The source document is `.praxis/inbox/documents/2026-10-30-LRP-001-layout-reliability.md`; the baseline and the Indy Init report are in `docs/reliability/`. `@echelon-foundry/forma-conformance` 0.3.0 ships the new geometry checks.
