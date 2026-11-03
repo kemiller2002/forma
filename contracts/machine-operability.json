@@ -1,6 +1,6 @@
 {
   "name": "forma-machine-operability",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "referenceAutomation": "Playwright",
   "toolNeutral": true,
   "principle": "Every human-operable action has a deterministic semantically discoverable machine-operable path to the same authoritative application state.",
@@ -44,5 +44,30 @@
     "forma": "semantic markup, accessible naming, public structure and presentation-state hooks",
     "applicationOrLimen": "behavior beyond native HTML and application state synchronization",
     "ordoOrDomain": "legality, capabilities, obligations, permissions and consequential transitions"
+  },
+  "requirementIdentity": {
+    "requirement": "FMO-019",
+    "required": false,
+    "owner": "application",
+    "locatorTier": "documented-application-owned-stable-object-identity",
+    "attribute": "data-requirement-id",
+    "instanceAttribute": "data-requirement-instance",
+    "placement": "on the element of the component's kind (the input, textarea, select, button, link, display or region itself), never on a wrapper, label or unrelated element",
+    "components": {
+      "text-input": "input of type text, search, email, url, tel, number, date, datetime-local or password",
+      "textarea": "textarea",
+      "select": "select",
+      "checkbox": "input type=checkbox",
+      "button": "button, or input type=submit|button",
+      "link": "a[href]",
+      "display": "dd, dt, time, output, p, span, strong, data, li, td, h1-h4",
+      "region": "section, form, fieldset, main, nav, aside, dialog"
+    },
+    "scope": "one element per ID per active scope; repeated controls carry distinct data-requirement-instance keys",
+    "neverReplaces": [
+      "role-and-accessible-name",
+      "native-label-id-name-value-or-url-target"
+    ],
+    "implementation": "Forma.Workflow.RequirementIdentity (EchelonFoundry.Forma.Workflow)"
   }
 }

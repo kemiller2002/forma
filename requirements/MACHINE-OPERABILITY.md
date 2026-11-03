@@ -108,6 +108,18 @@ The contract MUST be expressible through standard browser semantics and document
 
 Machine-operable identity, action semantics, and observable state are part of the public interaction contract. A change that removes or materially changes an established machine path requires migration treatment equivalent to other public interaction contract changes.
 
+### FMO-019 Optional requirement identity
+
+An application that verifies its requirements field by field MAY put `data-requirement-id="<ID>"` on the element that implements a requirement. This is locator tier 3 of FMO-012 (documented application-owned stable object identity), so it never replaces role, accessible name or native relationships, and Forma never requires it (FMO-013).
+
+When it is used:
+
+- it goes on the element of the component's kind (the input, textarea, select, button, link, display or region itself), never on a wrapper, label or unrelated element;
+- one element carries a given ID per active scope, and repeated controls add a distinct `data-requirement-instance` key;
+- it never changes the element's role, accessible name, state or styling.
+
+`Forma.Workflow.RequirementIdentity` enforces these rules for F# markup, and `contracts/machine-operability.json` (`requirementIdentity`) publishes them. A hidden element carrying an ID is not visible, and a disabled one is not operable: identity never stands in for those states.
+
 ## 4. Reference Playwright rules
 
 Playwright conformance tests SHOULD:

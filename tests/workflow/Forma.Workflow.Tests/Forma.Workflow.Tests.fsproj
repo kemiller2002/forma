@@ -14,6 +14,7 @@
     <Compile Include="EditorTests.fs" />
     <Compile Include="LayoutTests.fs" />
     <Compile Include="NonTextContrastTests.fs" />
+    <Compile Include="RequirementIdentityTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
