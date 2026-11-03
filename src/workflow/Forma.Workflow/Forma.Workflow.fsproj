@@ -42,6 +42,7 @@
     <Compile Include="Layout.fs" />
     <Compile Include="LayoutCheck.fs" />
     <Compile Include="Markup.fs" />
+    <Compile Include="RequirementIdentity.fs" />
     <Compile Include="RenderOptions.fs" />
     <Compile Include="Render.fs" />
     <Compile Include="WorkflowDocument.fs" />
