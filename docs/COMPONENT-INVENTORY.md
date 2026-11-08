@@ -125,7 +125,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Focus stage | `<ef-focus-stage>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | split-pane, rail, workspace-shell, preview-surface |
 | Master/detail workspace | `<ef-master-detail>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | data-grid, work-queue, split-pane, record-header |
 | Preview surface | `<ef-preview-surface>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, readiness-checklist, verification-frame, focus-stage |
-| Record header | `<ef-record-header>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | section-heading, menu, mobile-action-bar, master-detail, status-lozenge |
+| Record header | `<ef-record-header>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | layout-reliability.spec.mjs | section-heading, menu, mobile-action-bar, master-detail, status-lozenge |
 | Resizable split pane | `<ef-resizable-split-pane>` | Workspaces and shells | implemented | complete | 4 | 1 | yes | yes | yes | direct-manipulation.spec.mjs | split-pane, reorder-states, workspace-shell, flyout |
 | Split pane | `<ef-split-pane>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | causa-representative.spec.mjs, direct-manipulation.spec.mjs | resizable-split-pane, sidebar, switcher, focus-stage, workspace-shell |
 | Workspace shell | `<ef-workspace-shell>` | Workspaces and shells | implemented | complete | 4 | 1 | yes | yes | yes | generic only | navigation-shell, master-detail, split-pane, focus-stage, landmark-region |

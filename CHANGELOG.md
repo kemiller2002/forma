@@ -7,12 +7,18 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
-## Unreleased
+## 0.13.1
 
-Patch candidate (proposed 0.13.1): marketing containment (MKT-CONTAIN, WI-0043). Found by the Echelon Diagnostic Framework site migration to 0.13.0. No class, token, element or attribute was removed or renamed.
+Patch release with two fixes:
+
+- marketing containment (MKT-CONTAIN, WI-0043), found by the Echelon Diagnostic Framework site migration to 0.13.0;
+- the record header's type label below 24em (GH-179, WI-0044), found by Signal's upgrade to 0.13.0.
+
+No class, token, element or attribute was removed or renamed.
 
 ### Fixed
 - **Text containment in marketing components.** LRP-001 (0.13.0) passed `overflow-wrap: break-word` only to the application containers. Marketing components hold the same kind of content, so list items, spans and divs inside them could still escape: on 0.13.0 a release URL in a `span` escaped `.ef-card` by 160px at 320px, and at 200% text ordinary list words ("explanations", "propagation") escaped a card by up to 18px. `.ef-site` now passes `break-word` from `.ef-hero`, `.ef-section-heading`, `.ef-card`, `.ef-facts`, `.ef-index`, `.ef-callout`, `.ef-cta`, `.ef-split`, `.ef-doc`, `.ef-prose`, `.ef-statement` and `.ef-site-footer`. Words that fit are never split; declared values (badges, steps, code) are unchanged.
+- **Record header type label below 24em (GH-179).** In 0.13.0 the header's `@container (max-width: 24em)` rule dropped the title grid's rows, but the identity block stayed `grid-template-rows: subgrid`, so the type label collapsed onto the title. It overlapped by 120–145px at 320–375px and by up to 790px at 200% text in the LRP-001 fixture, and in Signal it overlapped the page title on phones. The identity block now uses its own implicit rows below 24em, so the label sits above the title as it did in 0.6.1. Nothing changes above 24em.
 - **Toned CTA at narrow widths.** `.ef-cta[data-ef-tone]` caps its inline padding at `12.5vw`, as a toned `.ef-section` already does (ULI-L05). At 320px and 200% text the uncapped padding left a 96px content box. Nothing changes at the default text size.
 
 ### Added
@@ -20,6 +26,7 @@ Patch candidate (proposed 0.13.1): marketing containment (MKT-CONTAIN, WI-0043).
 
 ### Tests
 - `tests/workflow/Forma.Workflow.Tests/RequirementIdentityTests.fs` (11 cases) and `tests/browser/requirement-identity.spec.mjs` with the generated `tests/browser/fixture/requirement-identity.html`: placement on the control, untouched attributes, label association and role, stability across re-render, refusal of unrelated or ambiguous elements, instance keys, duplicate detection, hidden and disabled states.
+- `tests/browser/layout-reliability.spec.mjs`: the record header's type label ends at or above its title at 320, 375, 768 and 1280px with default and 200% text (GH-179). It fails on 0.13.0 at five of those eight points; containment could not see the defect because both boxes stay inside the header.
 - `tests/browser/marketing-containment.spec.mjs` with `tests/browser/fixture/marketing-containment.html`: containment of every marketing container at 320, 375, 768 and 1280px with default and 200% text, the toned-CTA line length, and that fitting words in cards are not split. Nine of its ten tests fail on 0.13.0.
 
 ## 0.13.0
