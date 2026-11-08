@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 44,
+  "nextSeq": 45,
   "items": [
     {
       "id": "WI-0001",
@@ -1130,6 +1130,27 @@
       "attachments": [],
       "createdAt": "2026-11-02T06:48:13.207Z",
       "updatedAt": "2026-11-02T07:10:39.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0044",
+      "title": "GH-179: record header type label overlaps the title below 24em (0.13.0 regression)",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-11-08T18:13:06.109Z",
+      "updatedAt": "2026-11-08T18:13:12.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",

@@ -198,6 +198,32 @@ test("containment holds in the dark theme and with the compact and square skins"
   }
 });
 
+// GH-179: below 24em the header's title grid drops its rows, and an identity
+// block left on subgrid collapsed the type label onto the title (0.13.0).
+// Containment cannot see this, since both boxes stay inside the header, so
+// the reading order of the two is measured directly: the label ends at or
+// above the line where the title starts, at every width and at 200% text.
+const typeToTitleGap = page => page.locator("[data-lr-fixture] .ef-record-header__title").first().evaluate(title => {
+  const type = title.querySelector(".ef-record-header__type").getBoundingClientRect();
+  const heading = title.querySelector(":is(h1, h2, h3, h4)").getBoundingClientRect();
+  return { gap: heading.top - type.bottom, typeHeight: type.height, headingHeight: heading.height };
+});
+
+test("a record header's type label stays above its title at every width and at 200% text", async ({ page }) => {
+  const failures = [];
+  for (const width of WIDTHS) {
+    for (const css of [undefined, ENLARGED]) {
+      await open(page, { width, css });
+      const { gap, typeHeight, headingHeight } = await typeToTitleGap(page);
+      // Non-vacuous: both boxes rendered.
+      expect(typeHeight, `${width}px type label rendered`).toBeGreaterThan(0);
+      expect(headingHeight, `${width}px title rendered`).toBeGreaterThan(0);
+      if (gap < -0.5) failures.push(`${width}px${css ? " at 200% text" : ""}: the type label overlaps the title by ${Math.round(-gap)}px`);
+    }
+  }
+  expect(failures, failures.join("\n")).toEqual([]);
+});
+
 test("the fixtures have no axe WCAG A/AA violations at 375px", async ({ page }) => {
   await open(page, { width: 375 });
   const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]).analyze();

@@ -2182,7 +2182,10 @@
   .ef-record-header__title > :not(:first-child) { grid-row: 2; }
   @container (max-width: 24em) {
     .ef-record-header__title { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
-    .ef-record-header__title > :first-child { grid-row: auto; }
+    /* The title grid has no rows here, so the identity block cannot stay a
+       subgrid: it would collapse the type label onto the title (GH-179).
+       Its own implicit rows keep the label above the title. */
+    .ef-record-header__title > :first-child { grid-row: auto; grid-template-rows: none; }
     .ef-record-header__title > :not(:first-child) { grid-row: auto; justify-self: start; }
   }
   .ef-record-header__title h2 { margin: 0.15rem 0 0; }
