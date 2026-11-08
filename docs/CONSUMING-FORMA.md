@@ -221,6 +221,13 @@ It exits 1 on any error. The installed package is the source of truth: its token
 
 Application-owned properties such as `--causa-*` are never reported. Keep `forma-color` for color-role pairing rules; the two validators agree on the color namespace.
 
+## 0.13.1
+
+Patch release with two fixes. No class, token or component was removed or renamed.
+
+- **Record header (GH-179):** below 24em, `.ef-record-header`'s type label collapsed onto the record title in 0.13.0. It now sits above the title again, as it did in 0.6.1. Applications that worked around the overlap should remove the workaround.
+- **Marketing containment (MKT-CONTAIN):** long tokens in marketing components (`.ef-card`, `.ef-hero`, `.ef-cta` and others under `.ef-site`) break inside the component instead of escaping it, as application containers already did in 0.13.0. At narrow widths, a toned `.ef-cta` caps its inline padding.
+
 ## 0.13.0
 
 Layout reliability. No class, token or component was removed.

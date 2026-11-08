@@ -7,9 +7,14 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
-## Unreleased
+## 0.13.1
 
-Patch candidate (proposed 0.13.1): marketing containment (MKT-CONTAIN, WI-0043). Found by the Echelon Diagnostic Framework site migration to 0.13.0. No class, token, element or attribute was removed or renamed.
+Patch release with two fixes:
+
+- marketing containment (MKT-CONTAIN, WI-0043), found by the Echelon Diagnostic Framework site migration to 0.13.0;
+- the record header's type label below 24em (GH-179, WI-0044), found by Signal's upgrade to 0.13.0.
+
+No class, token, element or attribute was removed or renamed.
 
 ### Fixed
 - **Text containment in marketing components.** LRP-001 (0.13.0) passed `overflow-wrap: break-word` only to the application containers. Marketing components hold the same kind of content, so list items, spans and divs inside them could still escape: on 0.13.0 a release URL in a `span` escaped `.ef-card` by 160px at 320px, and at 200% text ordinary list words ("explanations", "propagation") escaped a card by up to 18px. `.ef-site` now passes `break-word` from `.ef-hero`, `.ef-section-heading`, `.ef-card`, `.ef-facts`, `.ef-index`, `.ef-callout`, `.ef-cta`, `.ef-split`, `.ef-doc`, `.ef-prose`, `.ef-statement` and `.ef-site-footer`. Words that fit are never split; declared values (badges, steps, code) are unchanged.
