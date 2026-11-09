@@ -1206,7 +1206,7 @@
         "--forma-color-focus-ring": "#eeeeee",
         "--forma-color-focus-gap": "#161616",
         "--forma-color-control-track": "#767676",
-        "--forma-color-control-thumb": "#eeeeee",
+        "--forma-color-control-thumb": "#161616",
         "--forma-color-control-active": "#93b6ec"
       }
     },
@@ -1416,7 +1416,7 @@
         "--forma-color-focus-ring": "#e8f1f4",
         "--forma-color-focus-gap": "#12191d",
         "--forma-color-control-track": "#767676",
-        "--forma-color-control-thumb": "#e8f1f4",
+        "--forma-color-control-thumb": "#12191d",
         "--forma-color-control-active": "#d99a55"
       }
     },
@@ -1686,7 +1686,7 @@
         "--forma-color-focus-ring": "#e7eef0",
         "--forma-color-focus-gap": "#101619",
         "--forma-color-control-track": "#767676",
-        "--forma-color-control-thumb": "#e7eef0",
+        "--forma-color-control-thumb": "#101619",
         "--forma-color-control-active": "#63a8b2"
       }
     },
@@ -1746,7 +1746,7 @@
         "--forma-color-focus-ring": "#f7f9fb",
         "--forma-color-focus-gap": "#101820",
         "--forma-color-control-track": "#60717e",
-        "--forma-color-control-thumb": "#f7f9fb",
+        "--forma-color-control-thumb": "#101820",
         "--forma-color-control-active": "#d7a85b"
       }
     },
@@ -1806,7 +1806,7 @@
         "--forma-color-focus-ring": "#f5f1f8",
         "--forma-color-focus-gap": "#17131c",
         "--forma-color-control-track": "#857c90",
-        "--forma-color-control-thumb": "#f5f1f8",
+        "--forma-color-control-thumb": "#17131c",
         "--forma-color-control-active": "#d3a6e0"
       }
     }

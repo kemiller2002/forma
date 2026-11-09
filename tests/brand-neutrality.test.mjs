@@ -54,6 +54,17 @@ test("no Echelon brand, theme, bundle or example remains in the repository", () 
   }
 });
 
+test("default font stacks are neutral system stacks and Forma loads no web font", () => {
+  const tokens = fs.readFileSync("dist/tokens.css", "utf8");
+  assert.match(tokens, /--forma-primitive-font-family-sans: system-ui,/);
+  assert.match(tokens, /--forma-primitive-font-family-display: ui-serif,/);
+  assert.match(tokens, /--forma-primitive-font-family-mono: ui-monospace,/);
+  for (const file of fs.readdirSync("dist", { recursive: true }).filter((f) => f.endsWith(".css"))) {
+    const css = fs.readFileSync(path.join("dist", file), "utf8");
+    assert.doesNotMatch(css, /@font-face|@import\s+url\(\s*["']?https?:|fonts\.googleapis/i, `dist/${file} loads a web font`);
+  }
+});
+
 test("the AIS-001 rules contain no color literal", () => {
   const block = aisBlock();
   assert.ok(block, `components.css must keep the marker "${AIS_MARKER}"`);
@@ -71,7 +82,13 @@ test("identity detector catches names, logo paths and palette names; allows publ
   assert.equal(identityFindings('[data-forma-brand="echelon"] {}').length, 1);
   assert.equal(identityFindings("const KEY = \"__ECHELON_RUNTIME__\";", "dist/components.js").length, 1,
     "the runtime contract is allowed in runtime.js only");
-  assert.deepEqual(identityFindings("const KEY = \"__ECHELON_RUNTIME__\"; registerEchelonRuntime(); // Echelon Runtime", "dist/runtime.js"), []);
+  assert.deepEqual(identityFindings("const KEY = \"__ECHELON_RUNTIME__\"; registerEchelonRuntime(); installEchelonRuntimeRegistrar(); x.echelonRuntimeSchemaVersion", "dist/runtime.js"), []);
+  assert.equal(identityFindings('console.info("Echelon Runtime · Forma v1.0.0")', "dist/runtime.js").length, 1, "console text must be neutral");
+  // Echelon's typefaces are identity; Forma's default stacks are system fonts.
+  assert.equal(identityFindings(':root { --forma-primitive-font-family-sans: Manrope, system-ui, sans-serif; }').length, 1);
+  assert.equal(identityFindings('font-family: Newsreader, Georgia, serif; font-family: "IBM Plex Mono", monospace;').length, 2);
+  assert.equal(identityFindings('@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono");').length, 1);
+  assert.deepEqual(identityFindings("font-family: system-ui, ui-serif, ui-monospace, Georgia, serif;"), []);
   assert.deepEqual(identityFindings('npm install @echelon-foundry/design-system; see https://forma.echelonfoundry.com/schemas/x.json'), []);
   assert.equal(identityFindings("@echelon-foundry/design-system Echelon").length, 1, "a scope does not excuse a bare name next to it");
 });

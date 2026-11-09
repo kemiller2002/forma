@@ -6,8 +6,9 @@
 // allows zero findings in Forma's source CSS, in dist/, and in the packed npm
 // tarball:
 //
-//   identity  the organization's name, its brand manifest, its logo paths and
-//             its palette names ("Echelon", "/brand/", "oxide-bronze", ...);
+//   identity  the organization's name, its brand manifest, its logo paths,
+//             its palette names ("Echelon", "/brand/", "oxide-bronze", ...) and
+//             its typefaces (Newsreader, Manrope, IBM Plex Mono);
 //   palette   a color literal equal to a color of the Echelon palette Forma
 //             shipped through 0.14.0 (hex in any length, or rgb()/rgba());
 //   layer     an `@layer echelon` cascade-layer name.
@@ -16,10 +17,14 @@
 //   - the npm scope `@echelon-foundry/<package>`, the publisher domain
 //     `*.echelonfoundry.com` (homepage, schema $id URIs), the .NET namespace
 //     `EchelonFoundry.Forma.*` and the licensor named in the README;
-//   - in dist/runtime.js only, the identifiers of the cross-library
+//   - in dist/runtime.js only, the code identifiers of the cross-library
 //     ECHELON-RUNTIME-1 registry contract shared with other libraries
-//     (window.__ECHELON_RUNTIME__ and its registrar);
+//     (window.__ECHELON_RUNTIME__ and its registrar); its console text is
+//     neutral and not allowed to name the organization;
 //   - CHANGELOG.md, the release history, which records the removal itself.
+//
+// Scope: the documentation site (site/, tools/catalog) is the publisher's own
+// site, outside the package; it loads its own web fonts and is not scanned.
 //
 // Usage:
 //   node tools/brand-neutrality.mjs                 check src CSS, dist/ and a fresh npm pack
@@ -43,19 +48,21 @@ export const ECHELON_PALETTE = Object.freeze(new Set([
 
 // Echelon palette and asset names that identify the organization even
 // without its name.
-const IDENTITY = /echelon|\/brand\/|oxide-bronze|verdigris|foundry-charcoal|forged-iron/gi;
+// Echelon's typefaces (Newsreader, Manrope, IBM Plex Mono) are identity too:
+// Forma's defaults are system stacks and Forma loads no web fonts.
+const IDENTITY = /echelon|\/brand\/|oxide-bronze|verdigris|foundry-charcoal|forged-iron|newsreader|manrope|ibm[ +]plex/gi;
 const PUBLISHER = [
   /@echelon-foundry\/[a-z0-9-]+/gi,
   /\b(?:[a-z0-9-]+\.)*echelonfoundry\.com\b/gi,
   /\bEchelonFoundry\.Forma\.[A-Za-z.]+/g,
   /separate license from Echelon Foundry/g
 ];
+// Code identifiers only; the console text the registry prints is neutral.
 const RUNTIME_CONTRACT = [
   /__ECHELON_(?:REGISTER_)?RUNTIME__/g,
   /\binstallEchelonRuntimeRegistrar\b/g,
   /\bregisterEchelonRuntime\b/g,
-  /\bechelonRuntimeSchemaVersion\b/g,
-  /\bEchelon [Rr]untime\b/g
+  /\bechelonRuntimeSchemaVersion\b/g
 ];
 const EXEMPT_FILES = new Set(["CHANGELOG.md"]);
 const LAYER = /@layer\b[^{;]*\bechelon\b/gi;

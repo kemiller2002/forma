@@ -37,7 +37,7 @@
         "status": {"success":"#93d39b","warning":"#e7b766","danger":"#f3a39a","info":"#a1c3ef"},
         "border": {"subtle":"#3e3348","functional":"#ddd3e6"},
         "focus": {"ring":"#f5f1f8","gap":"#17131c"},
-        "control": {"track":"#857c90","thumb":"#f5f1f8","active":"#d3a6e0"}
+        "control": {"track":"#857c90","thumb":"#17131c","active":"#d3a6e0"}
       }
     }
   },

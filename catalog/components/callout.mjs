@@ -82,7 +82,7 @@ export default {
       <p>Sites load the theme's webfonts themselves.</p>
       <aside class="forma-callout" data-forma-callout="note" aria-labelledby="callout-mobile-note-label">
         <p class="forma-callout__label" id="callout-mobile-note-label">Note</p>
-        <p>Fallback stacks are defined, so pages stay readable if <code>fonts.googleapis.com/css2?family=IBM+Plex+Mono</code> fails to load.</p>
+        <p>Fallback stacks are defined, so pages stay readable if <code>fonts.example.com/css2?family=Example+Mono</code> fails to load.</p>
       </aside>
     </article>
   </div>

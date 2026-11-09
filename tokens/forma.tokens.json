@@ -978,24 +978,33 @@
     },
     "font-family": {
       "$type": "fontFamily",
+      "$description": "Neutral system font stacks: Forma ships and loads no web fonts. A brand manifest or theme sets an organization's families (presentation.fontFamily).",
       "display": {
         "$value": [
-          "Newsreader",
+          "ui-serif",
           "Georgia",
+          "Cambria",
+          "Times New Roman",
           "serif"
         ]
       },
       "sans": {
         "$value": [
-          "Manrope",
           "system-ui",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
           "sans-serif"
         ]
       },
       "mono": {
         "$value": [
-          "IBM Plex Mono",
           "ui-monospace",
+          "SF Mono",
+          "Menlo",
+          "Consolas",
+          "Liberation Mono",
           "monospace"
         ]
       }
@@ -1623,7 +1632,7 @@
             "$value": "{primitive.color.neutral-500}"
           },
           "thumb": {
-            "$value": "{primitive.color.neutral-100}"
+            "$value": "{primitive.color.neutral-950}"
           },
           "active": {
             "$value": "{primitive.color.blue-300}"
@@ -2211,7 +2220,7 @@
             "$value": "{primitive.color.neutral-500}"
           },
           "thumb": {
-            "$value": "{primitive.color.ice}"
+            "$value": "{primitive.color.deep-slate}"
           },
           "active": {
             "$value": "{primitive.color.amber-light}"
@@ -2967,7 +2976,7 @@
             "$value": "{primitive.color.neutral-500}"
           },
           "thumb": {
-            "$value": "{primitive.color.tech-text}"
+            "$value": "{primitive.color.tech-bg}"
           },
           "active": {
             "$value": "{primitive.color.tech-cyan}"
