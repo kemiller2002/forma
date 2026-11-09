@@ -7,6 +7,21 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 1.0.2
+
+Patch release: re-review fixes to the namespace codemod (`tools/NamespaceMigrator`) in 1.0.1 (WI-0049, source `.praxis/inbox/documents/2026-11-09-FORMA-1.0.2-CODEMOD.md`). No class, token, element, attribute or CSS output changed (QD-004 patch). Forma's own tree needed no change.
+
+### Fixed
+- **Regression from 1.0.0:** a `>` inside a JSX expression or a quoted attribute value no longer ends the tag, so `src`/`href` after `onClick={() => go()}` or `onLoad={() => x > 1}` stay locations. Tags are scanned with balanced `{...}` and quoted strings skipped; a JSX `href={"..."}` value is a location as a whole.
+- **Regression from 1.0.0:** dotfile names are paths, not class selectors: `".ef-config.json"` (a whole quoted string ending in a file extension) and `"/.ef-rc.json"` (after `/`) are left alone. A CSS selector such as `.ef-icon.svg` and a compound class string such as `".ef-card.ef-x"` are still migrated.
+- `--check` and `--dry-run` report from the same whole-file rewrite as write mode, so a tag that spans lines is no longer over-reported.
+- Markdown reference definitions (`[d]: /ef-doc`, `[e]: ef-doc`) are locations in Markdown files.
+- A Razor expression in an attribute value (`href="@Url.Action("ef-index")"`) is read whole, so its inner quotes no longer end the value.
+- `docs/COMPONENT-INVENTORY.md` no longer lists the codemod and guard tests as dedicated component tests (their fixture strings are not component coverage).
+
+### Tests
+- `tests/namespace-migrator.test.mjs` (21 tests): every case above with fixtures (`jsx-tags.tsx`, `Razor.cshtml`, `references.md`), all 1.0.0 and 1.0.1 location and name cases, and idempotence.
+
 ## 1.0.1
 
 Patch release: the namespace codemod (`tools/NamespaceMigrator`) left some Forma names unrewritten while `--check` reported a clean tree (WI-0048, source `.praxis/inbox/documents/2026-11-09-FORMA-1.0.1-CODEMOD.md`). No class, token, element, attribute or CSS output changed (QD-004 patch). Re-run the codemod with `--check` if you migrated with 1.0.0; Forma's own tree needed no change.

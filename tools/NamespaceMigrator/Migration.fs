@@ -19,8 +19,10 @@
 /// `beef-`, `--ref-`, `x-ef-`, `@ef-labs` and `/ef-icons` are left alone.
 ///
 /// Locations are never rewritten: absolute and protocol-relative URLs,
-/// CSS `url(...)` and `@import` targets, URL-valued HTML attributes (`src`,
-/// `href`, `srcset`, `action`, `poster`, ...), Markdown link targets, module
+/// CSS `url(...)` and `@import` targets, URL-valued attributes (`src`,
+/// `href`, `srcset`, `action`, `poster`, ...) inside a markup tag (scanned so a
+/// `>` in a JSX or Razor expression does not end it), Markdown link targets
+/// and reference definitions (Markdown only), dotfile names, module
 /// specifiers (`import … from "…"`, `import("…")`, `require("…")`), scoped
 /// package names (`@scope/name`), file names (`ef-page.html`) and host names
 /// (`ef-cdn.example.org`).
@@ -51,9 +53,13 @@ let kindOf (path: string) =
     | ".markdown" -> Markdown
     | _ -> Other
 
+/// File extensions that make a name a file name.
+let private fileExtensions =
+    @"(?:html?|css|s[ac]ss|less|[cm]?js|jsx|[cm]?ts|tsx|json|md|svg|png|jpe?g|gif|webp|avif|ico|woff2?|ttf|otf|eot|map|txt|xml|pdf|zip|razor|cshtml|vue|svelte|ya?ml|toml|rc|ini|lock)"
+
 /// A file or host name continues the token: `ef-page.html`, `ef-cdn.example.org`.
 let private notLocation =
-    @"(?![A-Za-z0-9_\-]*\.(?:html?|css|s[ac]ss|less|[cm]?js|jsx|[cm]?ts|tsx|json|md|svg|png|jpe?g|gif|webp|avif|ico|woff2?|ttf|otf|eot|map|txt|xml|pdf|zip|razor|cshtml|vue|svelte)(?![A-Za-z0-9_\-]))"
+    @"(?![A-Za-z0-9_\-]*\." + fileExtensions + @"(?![A-Za-z0-9_\-]))"
     + @"(?![A-Za-z0-9_\-]*\.(?:[a-z0-9\-]+\.)*(?:com|org|net|io|dev|app|co|edu|gov|cloud|example|test|local|localhost)(?![A-Za-z0-9_\-]))"
 
 /// The rule names, reported by --dry-run.
@@ -71,7 +77,9 @@ let private token =
         // follows (`.ef-shell.app`, `.ef-icon.svg`): a location never has a
         // `.` right before the name, unless that `.` follows a host label
         // (`www.ef-cdn.example.org`); a compound selector (`.a.ef-x`) still counts.
-        + @"|(?<classname>(?<=(?<![A-Za-z0-9_$\-])(?:\.[A-Za-z_][A-Za-z0-9_\-]*)*\.)ef-)"
+        // Not a dotfile path: after `/` (`"/.ef-rc.json"`), or a whole quoted
+        // string that ends in a file extension (`".ef-config.json"`).
+        + @"|(?<classname>(?<=(?<![A-Za-z0-9_$\-/])(?:\.[A-Za-z_][A-Za-z0-9_\-]*)*\.)(?!(?<=[""'`]\.)ef-[A-Za-z0-9_\-]*(?:\.[A-Za-z0-9_\-]+)*\." + fileExtensions + @"[""'`])ef-)"
         + $"|(?<name>{boundary}ef-{notLocation})"
     )
 
@@ -89,25 +97,103 @@ let private locations =
       @"(?<![:\w])//[A-Za-z0-9\-]+(?:\.[A-Za-z0-9\-]+)+[^\s""'`<>()]*"
       @"\burl\(\s*(?:""[^""]*""|'[^']*'|[^)]*)\)"
       @"@import\s+(?:url\()?\s*(?:""[^""]*""|'[^']*')"
-      // URL-valued attributes inside an HTML, Razor, Vue or JSX tag only; a
-      // script assignment (`const src = "ef-x"`) is not a location.
-      @"(?<=<[A-Za-z][A-Za-z0-9:._\-]*\s(?:[^<>""']|""[^""]*""|'[^']*')*)(?<![A-Za-z0-9_$.\-])(?:src|href|srcset|action|formaction|poster|data|cite|background|xlink:href|manifest|ping)\s*=\s*(?:""[^""]*""|'[^']*'|[^\s>]+)"
       @"\bfrom\s+(?:""[^""]*""|'[^']*')"
       @"\bimport\s*(?:\(\s*)?(?:""[^""]*""|'[^']*')"
       @"\brequire\s*\(\s*(?:""[^""]*""|'[^']*')"
       @"@[a-z0-9][a-z0-9._\-]*/[a-z0-9][a-z0-9._\-/]*" ]
     |> List.map regex
 
-/// A Markdown link target, `[text](target)`: only in Markdown, and never a
-/// quoted call argument such as `handlers[0]("ef-x")`.
+/// A Markdown link target, `[text](target)`, or a reference definition,
+/// `[label]: target`: only in Markdown, and never a quoted call argument such
+/// as `handlers[0]("ef-x")`.
 let private markdownLink = regex @"\[[^\]\n]*\]\((?<target>[^)\s""'`]+)\)"
+let private markdownReference = regex @"^[ ]{0,3}\[[^\]\n]+\]:[ \t]*(?<target>\S+)"
+
+// --- Markup tags -------------------------------------------------------------
+//
+// A URL-valued attribute is a location only inside an HTML, Razor, Vue or JSX
+// tag. A tag is scanned character by character, so a `>` inside a quoted
+// value, a JSX expression (`onClick={() => go()}`, `{x > 1}`) or a Razor
+// expression (`href="@Url.Action("ef-index")"`) does not end it.
+
+let private tagStart = regex @"<[A-Za-z][A-Za-z0-9:._\-]*(?=[\s/>])"
+let private urlAttribute =
+    Regex(@"\G(?<![A-Za-z0-9_$.\-:@])(?:src|href|srcset|action|formaction|poster|data|cite|background|xlink:href|manifest|ping)\s*=\s*", RegexOptions.CultureInvariant)
+
+/// The index just past a quoted string that starts at `start` (the quote).
+let rec private skipQuoted (text: string) (quote: char) (pos: int) =
+    if pos >= text.Length then text.Length
+    elif text[pos] = '\\' then skipQuoted text quote (pos + 2)
+    elif text[pos] = quote then pos + 1
+    else skipQuoted text quote (pos + 1)
+
+/// The index just past a balanced group that opens at `start`, skipping
+/// quoted strings inside it.
+let private skipBalanced (text: string) (opening: char) (closing: char) (start: int) =
+    let rec loop depth pos =
+        if pos >= text.Length then text.Length
+        else
+            match text[pos] with
+            | '"' | '\'' | '`' as quote -> loop depth (skipQuoted text quote (pos + 1))
+            | c when c = opening -> loop (depth + 1) (pos + 1)
+            | c when c = closing -> if depth = 1 then pos + 1 else loop (depth - 1) (pos + 1)
+            | _ -> loop depth (pos + 1)
+    loop 0 start
+
+/// The span of an attribute value that starts at `pos`, and the index after it.
+let private attributeValue (text: string) (pos: int) =
+    if pos >= text.Length then (pos, pos), pos
+    else
+        match text[pos] with
+        | '{' -> let finish = skipBalanced text '{' '}' pos in (pos, finish), finish
+        | '"' | '\'' as quote ->
+            // Razor: "@Url.Action("ef-index")" holds quotes inside parentheses.
+            let rec loop parens i =
+                if i >= text.Length then text.Length
+                else
+                    match text[i] with
+                    | '(' -> loop (parens + 1) (i + 1)
+                    | ')' -> loop (max 0 (parens - 1)) (i + 1)
+                    | c when c = quote && parens = 0 -> i + 1
+                    | '"' | '\'' as inner when parens > 0 -> loop parens (skipQuoted text inner (i + 1))
+                    | _ -> loop parens (i + 1)
+            let finish = if pos + 1 < text.Length && text[pos + 1] = '@' then loop 0 (pos + 1) else skipQuoted text quote (pos + 1)
+            (pos, finish), finish
+        | _ ->
+            let rec loop i = if i < text.Length && not (Char.IsWhiteSpace text[i]) && text[i] <> '>' then loop (i + 1) else i
+            let finish = loop pos
+            (pos, finish), finish
+
+/// URL-valued attribute values inside the tag that opens at `start`.
+let private tagLocations (text: string) (start: int) =
+    let rec loop pos acc =
+        if pos >= text.Length then acc
+        else
+            match text[pos] with
+            | '>' -> acc
+            | '"' | '\'' as quote -> loop (skipQuoted text quote (pos + 1)) acc
+            | '{' -> loop (skipBalanced text '{' '}' pos) acc
+            | c when Char.IsWhiteSpace c ->
+                let m = urlAttribute.Match(text, pos + 1)
+                if m.Success then
+                    let span, after = attributeValue text (m.Index + m.Length)
+                    loop after (span :: acc)
+                else loop (pos + 1) acc
+            | _ -> loop (pos + 1) acc
+    loop start []
+
+let private markupLocations (text: string) =
+    [ for m in tagStart.Matches text do yield! tagLocations text (m.Index + m.Length) ]
 
 let private maskedSpans (kind: Kind) (text: string) =
     let links =
         match kind with
-        | Markdown -> [ for m in markdownLink.Matches text -> m.Groups["target"].Index, m.Groups["target"].Index + m.Groups["target"].Length ]
+        | Markdown ->
+            [ for pattern in [ markdownLink; markdownReference ] do
+                  for m in pattern.Matches text -> m.Groups["target"].Index, m.Groups["target"].Index + m.Groups["target"].Length ]
         | Other -> []
     links
+    @ markupLocations text
     @ (locations
        |> List.collect (fun pattern -> [ for m in pattern.Matches text -> m.Index, m.Index + m.Length ]))
 
@@ -171,24 +257,25 @@ type Change =
       Before: string
       After: string }
 
-/// Line-level changes, for --dry-run and --check reports. Rules never match
-/// across a newline, so a line rewrites independently.
+/// Line-level changes, for --dry-run and --check reports. They come from the
+/// same whole-file rewrite as write mode (a tag or a JSX expression can span
+/// lines), so a report never shows a change that writing would not make.
+/// Rewrites never add or remove a newline, so lines correspond one to one.
 let changes (kind: Kind) (text: string) =
-    lines text
-    |> Array.toList
-    |> List.mapi (fun index before ->
-        let after = migrateAs kind before
-        if after = before then
-            None
-        else
-            let named = tokens kind before |> List.map snd |> List.distinct
-            let rule = if named.IsEmpty then "dataset-destructuring" else String.concat "," named
-            Some
-                { Line = index + 1
-                  Rule = rule
-                  Before = before.TrimEnd('\r')
-                  After = after.TrimEnd('\r') })
-    |> List.choose id
+    let before = lines text
+    let after = lines (migrateAs kind text)
+    let starts = before |> Array.scan (fun offset (line: string) -> offset + line.Length + 1) 0
+    let ruleAt =
+        tokens kind text
+        |> List.map (fun (m, rule) -> (before.Length - 1 |> min (Array.findIndexBack (fun start -> start <= m.Index) starts[.. before.Length - 1])), rule)
+    [ for index in 0 .. before.Length - 1 do
+          if before[index] <> after[index] then
+              let named = ruleAt |> List.filter (fst >> (=) index) |> List.map snd |> List.distinct
+              yield
+                  { Line = index + 1
+                    Rule = if named.IsEmpty then "dataset-destructuring" else String.concat "," named
+                    Before = before[index].TrimEnd('\r')
+                    After = after[index].TrimEnd('\r') } ]
 
 /// Whether a text still holds a namespace token (for files of a kind the
 /// migrator does not rewrite: they are reported, never silently passed).

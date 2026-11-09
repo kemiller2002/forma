@@ -35,7 +35,7 @@ test("write mode rewrites the fixtures exactly to the expected output", () => {
   const dir = copyInput();
   const result = run(dir);
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /rewrote 29 line\(s\) in 15 of 15 file\(s\); 2 other file\(s\) to review/);
+  assert.match(result.stdout, /rewrote 32 line\(s\) in 17 of 18 file\(s\); 2 other file\(s\) to review/);
   assert.deepEqual(snapshot(dir), snapshot(path.join(fixtures, "expected")));
 });
 
@@ -44,7 +44,7 @@ test("--check reports and writes nothing, exit 3; exit 0 once migrated", () => {
   const before = snapshot(dir);
   const check = run("--check", dir);
   assert.equal(check.status, 3, check.stdout + check.stderr);
-  assert.match(check.stdout, /would rewrite 29 line\(s\) in 15 of 15 file\(s\)/);
+  assert.match(check.stdout, /would rewrite 32 line\(s\) in 17 of 18 file\(s\)/);
   assert.match(check.stdout, /styles\.css: 4 line\(s\)/);
   assert.deepEqual(snapshot(dir), before, "--check must not write");
   assert.equal(run(dir).status, 0);
@@ -57,7 +57,7 @@ test("--check reports and writes nothing, exit 3; exit 0 once migrated", () => {
   assert.match(review.stdout, /review: .*latin1\.css \(not UTF-8\) contains namespace tokens/);
   const again = run("--check", "--exclude", "ignored.txt", "--exclude", "latin1.css", dir);
   assert.equal(again.status, 0, again.stdout);
-  assert.match(again.stdout, /would rewrite 0 line\(s\) in 0 of 15 file\(s\); 0 other file\(s\) to review/);
+  assert.match(again.stdout, /would rewrite 0 line\(s\) in 0 of 18 file\(s\); 0 other file\(s\) to review/);
 });
 
 test("--dry-run prints each changed line before and after and writes nothing", () => {
@@ -209,7 +209,7 @@ test("script assignments to src/data/background, call arguments after [i], class
     [".ef-icon.svg {}", ".forma-icon.svg {}", "scss"],
     [".ef-card.md, .ef-card.map {}", ".forma-card.md, .forma-card.map {}", "css"],
     [".ef-shell.ef-tabs.test {}", ".forma-shell.forma-tabs.test {}", "css"],
-    ['el.querySelector(".ef-icon.svg")', 'el.querySelector(".forma-icon.svg")', "mjs"],
+    ['el.querySelector(".ef-icon.is-open")', 'el.querySelector(".forma-icon.is-open")', "mjs"],
     ["const { efTone }: DOMStringMap = el.dataset;", "const { formaTone: efTone }: DOMStringMap = el.dataset;", "ts"],
     ["const { efRow, efCol: col }: Record<string, string> = node.dataset;", "const { formaRow: efRow, formaCol: col }: Record<string, string> = node.dataset;", "tsx"]
   ]) assert.equal(migrateText(input, extension), output, `${extension}: ${input}`);
@@ -234,6 +234,57 @@ test("the 1.0.1 rewrites are idempotent", () => {
   for (const [text, extension] of [
     ['const data = "ef-card"; const { efTone }: DOMStringMap = el.dataset;', "ts"],
     [".ef-shell.ef-tabs.test, .ef-icon.svg {}", "css"]
+  ]) {
+    const once = migrateText(text, extension);
+    assert.equal(migrateText(once, extension), once, text);
+  }
+});
+
+// Forma 1.0.2 (WI-0049).
+test("a JSX expression or quoted value containing > does not end the tag: its src/href stay locations", () => {
+  for (const [input, output] of [
+    ['<a onClick={() => go()} href={"ef-docs"} className="ef-link">x</a>', '<a onClick={() => go()} href={"ef-docs"} className="forma-link">x</a>'],
+    ['<img onLoad={() => x > 1} src="ef-asset" className="ef-img" />', '<img onLoad={() => x > 1} src="ef-asset" className="forma-img" />'],
+    ['<a title="a > b" href="ef-page" className="ef-a">x</a>', '<a title="a > b" href="ef-page" className="forma-a">x</a>'],
+    ['<a data-x={{ y: "}" }} href="ef-z" class="ef-b">x</a>', '<a data-x={{ y: "}" }} href="ef-z" class="forma-b">x</a>']
+  ]) assert.equal(migrateText(input, "tsx"), output, input);
+});
+
+test("dotfile names are paths, not class selectors", () => {
+  for (const text of ['const f = ".ef-config.json";', 'const g = "/.ef-rc.json";', "const h = '.ef-settings.yml';", 'load("./.ef-tools.toml")']) {
+    assert.equal(migrateText(text, "mjs"), text, text);
+  }
+  assert.equal(migrateText('const s = ".ef-card.ef-x";', "mjs"), 'const s = ".forma-card.forma-x";');
+  assert.equal(migrateText(".ef-config.json {}", "css"), ".forma-config.json {}", "a CSS selector is still a selector");
+});
+
+test("Markdown reference definitions and Razor expressions in attributes are locations", () => {
+  for (const text of ["[d]: /ef-doc", "[e]: ef-doc", '   [f]: https://example.com/ef-x "Title"']) {
+    assert.equal(migrateText(text, "md"), text, text);
+  }
+  assert.equal(migrateText("[d]: /ef-doc\nUse `.ef-button`.", "md"), "[d]: /ef-doc\nUse `.forma-button`.");
+  assert.equal(migrateText('<a class="ef-nav" href="@Url.Action("ef-index")">Home</a>', "cshtml"), '<a class="forma-nav" href="@Url.Action("ef-index")">Home</a>');
+  assert.equal(migrateText('<a href="@Url.Content("~/ef-a.css")" class="ef-c">x</a>', "razor"), '<a href="@Url.Content("~/ef-a.css")" class="forma-c">x</a>');
+});
+
+test("--dry-run and --check report exactly what write mode changes, also for tags that span lines", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-nsm-multi-"));
+  const file = path.join(dir, "multi.html");
+  fs.writeFileSync(file, '<a\n  class="ef-link"\n  href="ef-page.html"\n  src="ef-asset">x</a>\n');
+  const dry = run("--dry-run", dir);
+  assert.match(dry.stdout, /multi\.html:2 \[name\]/);
+  assert.doesNotMatch(dry.stdout, /multi\.html:[34] /, "src/href lines must not be reported");
+  assert.match(run("--check", dir).stdout, /multi\.html: 1 line\(s\)/);
+  run(dir);
+  assert.equal(fs.readFileSync(file, "utf8"), '<a\n  class="forma-link"\n  href="ef-page.html"\n  src="ef-asset">x</a>\n');
+  assert.equal(run("--check", dir).status, 0);
+});
+
+test("the 1.0.2 rewrites are idempotent", () => {
+  for (const [text, extension] of [
+    ['<a onClick={() => go()} href={"ef-docs"} className="ef-link">x</a>', "tsx"],
+    ['const f = ".ef-config.json"; const s = ".ef-card";', "mjs"],
+    ["[d]: /ef-doc\nUse `.ef-x`.", "md"]
   ]) {
     const once = migrateText(text, extension);
     assert.equal(migrateText(once, extension), once, text);
