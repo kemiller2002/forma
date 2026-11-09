@@ -53,6 +53,9 @@ mark) and line endings, and changes only Forma names:
   Anywhere else it is left unchanged and listed as `review:` with its line, and
   `--check` exits 3 until you decide: rewrite it by hand if it is a selector,
   or `--exclude` the file if it is a file name.
+  A word prefix that is not an HTML element (`"logo.ef-x.png"`) makes it a file
+  name, left alone. In a selector argument, a URL attribute value
+  (`img[src=ef-a.png]`) is a location too.
 
 Words (`ref-`, `chef-`, `--ref-`, `beef-`) and locations are never touched:
 URLs and host names (`https://ef-cdn.example.org/...`), paths

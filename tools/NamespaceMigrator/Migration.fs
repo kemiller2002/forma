@@ -122,10 +122,11 @@ let private tagStart = regex @"<[A-Za-z][A-Za-z0-9:._\-]*(?=[\s/>])"
 let private urlAttribute =
     Regex(@"\G(?<![A-Za-z0-9_$.\-:@])(?:src|href|srcset|action|formaction|poster|data|cite|background|xlink:href|manifest|ping)\s*=\s*", RegexOptions.CultureInvariant)
 
-/// The longest a tag is scanned for its end. A real tag ends with `>` long
-/// before this; the bound keeps a stray `<b` in script (`if (a <b && c)`)
-/// from scanning the rest of the file.
-let private tagScanLimit = 4096
+/// A safety bound on one tag's scan, far above any real tag (a long data
+/// attribute, a large JSX prop object). The scan normally ends at the tag's
+/// `>` or at the next bare `<`, which keeps the total work linear: a stray
+/// `<b` in script (`if (a <b && c)`) stops at the next `<`.
+let private tagScanLimit = 1 <<< 20
 
 /// The index just past a quoted string whose opening quote is just before
 /// `pos`, or `limit`. `escapes`: a backslash escapes the next character (in
@@ -136,14 +137,20 @@ let rec private skipQuoted (text: string) (limit: int) (escapes: bool) (quote: c
     elif text[pos] = quote then pos + 1
     else skipQuoted text limit escapes quote (pos + 1)
 
+/// The longest `{...}` group (a JSX expression) the scan follows, far above a
+/// real prop object (the tests use a 6 KB one). Only unbalanced braces reach it; it keeps
+/// script such as `if (a <b && c) {` without a closing brace linear.
+let private braceGroupLimit = 16384
+
 /// The index just past a balanced `{...}` group that opens at `start`, skipping
-/// script strings inside it, or `limit`.
+/// script strings inside it, or the bound.
 let private skipBraces (text: string) (limit: int) (start: int) =
+    let bound = min limit (start + braceGroupLimit)
     let rec loop depth pos =
-        if pos >= limit then limit
+        if pos >= bound then bound
         else
             match text[pos] with
-            | '"' | '\'' | '`' as quote -> loop depth (skipQuoted text limit true quote (pos + 1))
+            | '"' | '\'' | '`' as quote -> loop depth (skipQuoted text bound true quote (pos + 1))
             | '{' -> loop (depth + 1) (pos + 1)
             | '}' -> if depth = 1 then pos + 1 else loop (depth - 1) (pos + 1)
             | _ -> loop depth (pos + 1)
@@ -175,17 +182,19 @@ let private attributeValue (text: string) (limit: int) (pos: int) =
             let finish = loop pos
             (pos, finish), finish
 
-/// URL-valued attribute values inside the tag that opens at `start`. It is a
-/// tag only if a `>` closes it before another `<` and within the scan limit;
-/// otherwise it is not markup and nothing is masked.
+/// URL-valued attribute values inside the tag that opens at `start`. The scan
+/// ends at the tag's `>`, at a bare `<` (`title=a<b`), at a character an
+/// attribute list does not have outside quotes and braces (`(`, `)`, `;`, `&`:
+/// script such as `if (a <b && c) { x.src = s; }`), at the end of the text or
+/// at the safety bound. Values found before any of these ends are kept, so a
+/// location is never rewritten because the scan stopped early.
 let private tagLocations (text: string) (start: int) =
     let limit = min text.Length (start + tagScanLimit)
     let rec loop pos acc =
-        if pos >= limit then []
+        if pos >= limit then acc
         else
             match text[pos] with
-            | '>' -> acc
-            | '<' -> []
+            | '>' | '<' | '(' | ')' | ';' | '&' -> acc
             | '"' | '\'' as quote -> loop (skipQuoted text limit false quote (pos + 1)) acc
             | '{' -> loop (skipBraces text limit pos) acc
             | c when Char.IsWhiteSpace c ->
@@ -210,7 +219,7 @@ let private markupLocations (text: string) =
 
 let private ambiguousString =
     regex (
-        @"(?<![A-Za-z0-9_$])(?<q>[""'`])(?<value>(?:[A-Za-z][A-Za-z0-9_\-]*)?(?:\.[A-Za-z_][A-Za-z0-9_\-]*)*?\.ef-[A-Za-z0-9_\-]*(?:\.[A-Za-z0-9_\-]+)*?\."
+        @"(?<![A-Za-z0-9_$])(?<q>[""'`])(?<value>(?<prefix>[A-Za-z][A-Za-z0-9_\-]*)?(?:\.[A-Za-z_][A-Za-z0-9_\-]*)*?\.ef-[A-Za-z0-9_\-]*(?:\.[A-Za-z0-9_\-]+)*?\."
         + fileExtensions
         + @")\k<q>"
     )
@@ -223,16 +232,25 @@ let private selectorArgument =
     regex @"\b(?:querySelector(?:All)?|closest|matches|webkitMatchesSelector)\s*\(\s*(?<q>[""'`])(?<value>[^""'`\n]*)\k<q>"
 let private selectorToken = regex @"(?<customproperty>(?<![A-Za-z0-9_$\-])--ef-)|(?<attribute>(?<![A-Za-z0-9_$\-])data-ef-)|(?<name>(?<![A-Za-z0-9_$\-])ef-)"
 
+/// URL-valued attribute selectors keep their value: `img[src=ef-a.png]`.
+let private selectorLocation =
+    regex @"\[\s*(?:src|href|srcset|action|formaction|poster|data|cite|background|xlink:href|manifest|ping)\s*[~|^$*]?=\s*(?<value>[^\]]*)\]"
+
+let private selectorProtected (value: string) =
+    [ for m in selectorLocation.Matches value -> m.Groups["value"].Index, m.Groups["value"].Index + m.Groups["value"].Length ]
+
 let private rewriteSelectorArguments (text: string) =
     selectorArgument.Replace(
         text,
         MatchEvaluator(fun m ->
             let value = m.Groups["value"]
+            let protectedSpans = selectorProtected value.Value
             let rewritten =
                 selectorToken.Replace(
                     value.Value,
                     MatchEvaluator(fun t ->
-                        if t.Groups["customproperty"].Success then "--forma-"
+                        if protectedSpans |> List.exists (fun (a, b) -> t.Index >= a && t.Index < b) then t.Value
+                        elif t.Groups["customproperty"].Success then "--forma-"
                         elif t.Groups["attribute"].Success then "data-forma-"
                         else "forma-"))
             m.Value.Substring(0, value.Index - m.Index) + rewritten + m.Value.Substring(value.Index - m.Index + value.Length))
@@ -242,15 +260,33 @@ let private rewriteSelectorArguments (text: string) =
 let private selectorTokens (text: string) =
     [ for m in selectorArgument.Matches text do
           let value = m.Groups["value"]
-          for t in selectorToken.Matches value.Value -> value.Index + t.Index, "selector" ]
+          let protectedSpans = selectorProtected value.Value
+          for t in selectorToken.Matches value.Value do
+              if not (protectedSpans |> List.exists (fun (a, b) -> t.Index >= a && t.Index < b)) then
+                  yield value.Index + t.Index, "selector" ]
+
+/// HTML element names: a string such as "div.ef-card.md" may be a selector
+/// (element and class), but "logo.ef-x.png" can only be a file name.
+let private htmlElements =
+    set
+        [ "a"; "abbr"; "address"; "article"; "aside"; "audio"; "b"; "blockquote"; "body"; "button"; "canvas"; "caption"
+          "code"; "col"; "dd"; "details"; "dialog"; "div"; "dl"; "dt"; "em"; "fieldset"; "figcaption"; "figure"; "footer"
+          "form"; "h1"; "h2"; "h3"; "h4"; "h5"; "h6"; "header"; "hr"; "html"; "i"; "iframe"; "img"; "input"; "label"
+          "legend"; "li"; "main"; "mark"; "menu"; "meter"; "nav"; "object"; "ol"; "optgroup"; "option"; "output"; "p"
+          "picture"; "pre"; "progress"; "q"; "s"; "section"; "select"; "small"; "source"; "span"; "strong"; "sub"
+          "summary"; "sup"; "svg"; "table"; "tbody"; "td"; "template"; "textarea"; "tfoot"; "th"; "thead"; "time"; "tr"
+          "u"; "ul"; "video" ]
 
 /// Whole quoted strings that read as a selector or as a file name, outside a
-/// selector API: (index, length, value).
+/// selector API: (index, length, value, ambiguous). A string whose prefix is
+/// not an HTML element name is a file name: masked, not reported.
 let private ambiguousStrings (text: string) =
     [ for m in ambiguousString.Matches text do
           let before = text.Substring(max 0 (m.Index - 64), min 64 m.Index)
           if not (selectorApi.IsMatch before) then
-              yield m.Index, m.Length, m.Groups["value"].Value ]
+              let prefix = m.Groups["prefix"]
+              let isFileName = prefix.Success && not (htmlElements.Contains(prefix.Value.ToLowerInvariant()))
+              yield m.Index, m.Length, m.Groups["value"].Value, not isFileName ]
 
 let private maskedSpans (kind: Kind) (text: string) =
     let links =
@@ -261,7 +297,9 @@ let private maskedSpans (kind: Kind) (text: string) =
         | Other -> []
     links
     @ markupLocations text
-    @ [ for index, length, _ in ambiguousStrings text -> index, index + length ]
+    @ [ for index, length, _, _ in ambiguousStrings text -> index, index + length ]
+    // Selector API arguments are rewritten separately (rewriteSelectorArguments).
+    @ [ for m in selectorArgument.Matches text -> m.Groups["value"].Index, m.Groups["value"].Index + m.Groups["value"].Length ]
     @ (locations
        |> List.collect (fun pattern -> [ for m in pattern.Matches text -> m.Index, m.Index + m.Length ]))
 
@@ -392,7 +430,9 @@ let changes (kind: Kind) (text: string) =
 /// unrewritten (reported for review): 1-based line and the string.
 let ambiguous (text: string) =
     let lineOf = lineIndex (lines text)
-    ambiguousStrings text |> List.map (fun (index, _, value) -> lineOf index + 1, value)
+    ambiguousStrings text
+    |> List.filter (fun (_, _, _, isAmbiguous) -> isAmbiguous)
+    |> List.map (fun (index, _, value, _) -> lineOf index + 1, value)
 
 /// Whether a text still holds a namespace token (for files of a kind the
 /// migrator does not rewrite: they are reported, never silently passed).

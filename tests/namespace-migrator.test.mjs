@@ -344,3 +344,57 @@ test("performance: 20,000 lines with a stray < run in linear time (1.0.2 review 
   assert.ok(seconds < 2, `20,000 lines took ${seconds.toFixed(2)} s; expected under 2 s`);
 });
 
+// Forma 1.0.2 re-review (WI-0051): a scan that stops early keeps the
+// locations it has already found.
+test("href/src stay locations after a long value, a large JSX prop, many attributes, or before a bare <", () => {
+  const long = "x".repeat(5000);
+  const prop = `{{ ${Array.from({ length: 600 }, (_, i) => `key${i}: "value${i}"`).join(", ")} }}`;
+  assert.ok(prop.length > 6000, "the JSX prop is over 6 KB");
+  const many = Array.from({ length: 400 }, (_, i) => `  data-a${i}="v${i}"`).join("\n");
+  for (const [input, output, extension] of [
+    [`<a data-payload="${long}" href="ef-after-long" class="ef-k">x</a>`, `<a data-payload="${long}" href="ef-after-long" class="forma-k">x</a>`, "html"],
+    [`<img data-payload="${long}" src="ef-img-after" class="ef-i">`, `<img data-payload="${long}" src="ef-img-after" class="forma-i">`, "html"],
+    [`<Widget opts=${prop} href="ef-jsx-after" className="ef-w" />`, `<Widget opts=${prop} href="ef-jsx-after" className="forma-w" />`, "tsx"],
+    [`<a\n${many}\n  href="ef-after-many" class="ef-m">y</a>`, `<a\n${many}\n  href="ef-after-many" class="forma-m">y</a>`, "html"],
+    ['<a href="ef-before-lt" title=a<b class="ef-t">z</a>', '<a href="ef-before-lt" title=a<b class="forma-t">z</a>', "html"]
+  ]) assert.equal(migrateText(input, extension), output, input.slice(0, 60));
+});
+
+test("an unquoted URL attribute value in a selector argument is a location", () => {
+  assert.equal(migrateText("el.querySelector('img[src=ef-a.png]')", "mjs"), "el.querySelector('img[src=ef-a.png]')");
+  assert.equal(migrateText("el.querySelector('a[href^=ef-b] .ef-c')", "mjs"), "el.querySelector('a[href^=ef-b] .forma-c')");
+  assert.equal(migrateText('el.querySelectorAll(".ef-x[data-ef-y]")', "mjs"), 'el.querySelectorAll(".forma-x[data-forma-y]")');
+});
+
+test("a word-prefixed name with a file extension is a file name, not ambiguous", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-nsm-word-"));
+  const file = path.join(dir, "names.mjs");
+  const source = 'const l = "logo.ef-x.png"; const d = "div.ef-card.md";\n';
+  fs.writeFileSync(file, source);
+  const check = run("--check", dir);
+  assert.doesNotMatch(check.stdout, /logo\.ef-x\.png/, "a file name is not reported");
+  assert.match(check.stdout, /review: .*names\.mjs:1 "div\.ef-card\.md"/, "an element-prefixed string is still ambiguous");
+  assert.equal(run(dir).status, 0);
+  assert.equal(fs.readFileSync(file, "utf8"), source);
+});
+
+test("performance: unbalanced braces after a stray < stay bounded", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-nsm-perf2-"));
+  fs.writeFileSync(path.join(dir, "unbalanced.mjs"), "if (a <b && c) {\n".repeat(20000) + "<b x={\n".repeat(2000));
+  const started = process.hrtime.bigint();
+  const result = run("--check", dir);
+  const seconds = Number(process.hrtime.bigint() - started) / 1e9;
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  assert.ok(seconds < 2, `took ${seconds.toFixed(2)} s; expected under 2 s`);
+});
+
+test("the re-review rewrites are idempotent", () => {
+  for (const [text, extension] of [
+    ['<a href="ef-before-lt" title=a<b class="ef-t">z</a>', "html"],
+    ["el.querySelector('a[href^=ef-b] .ef-c')", "mjs"]
+  ]) {
+    const once = migrateText(text, extension);
+    assert.equal(migrateText(once, extension), once, text);
+  }
+});
+
