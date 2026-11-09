@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 50,
+  "nextSeq": 51,
   "items": [
     {
       "id": "WI-0001",
@@ -1278,6 +1278,32 @@
       "attachments": [],
       "createdAt": "2026-11-09T20:24:17.000Z",
       "updatedAt": "2026-11-09T20:30:50.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0050",
+      "title": "Forma 1.0.2 review fixes (PR #184): ambiguous dotfile selectors to review, bounded tag scan, linear reporting, attribute escapes, dot-directories",
+      "description": "Source: .praxis/inbox/documents/2026-11-09-FORMA-1.0.2-REVIEW-01.md; follows WI-0049",
+      "tags": [
+        "forma",
+        "namespace",
+        "codemod",
+        "review"
+      ],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-09T21:38:25.000Z",
+      "updatedAt": "2026-11-09T21:46:10.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",

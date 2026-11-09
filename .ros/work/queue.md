@@ -105,3 +105,4 @@
 | WI-0047 | Forma 1.0.0 review fixes (PR #182): switch contrast, codemod contexts and coverage, neutral fonts, runtime text, release race | complete | forma, branding, namespace, review | high |
 | WI-0048 | Forma 1.0.1: NamespaceMigrator false negatives (context-aware location skips, class selectors, typed destructuring, non-UTF-8 review) | complete | forma, namespace, codemod | medium |
 | WI-0049 | Forma 1.0.2: NamespaceMigrator re-review fixes (JSX tag scanning, dotfiles, whole-file reporting, Markdown reference links, Razor, inventory) | complete | forma, namespace, codemod | medium |
+| WI-0050 | Forma 1.0.2 review fixes (PR #184): ambiguous dotfile selectors to review, bounded tag scan, linear reporting, attribute escapes, dot-directories | complete | forma, namespace, codemod, review | medium |
