@@ -16,7 +16,7 @@ export default {
       "Work with measurable progress: use [[progress-bar]]. The start-up screen never shows a percentage it does not have."
     ],
     characteristics: [
-      "Zero runtime: identity, indicator and status render from HTML and CSS alone.",
+      "Zero runtime: identity, indicator and status render from HTML and CSS alone. Use an inline SVG mark so the identity needs no request either.",
       "The status sentence names the application and the work, never the word Loading alone.",
       "The slow-start note is revealed after --ef-startup-slow-after (default 8s) without script, and at once when the host sets data-ef-state=\"slow\".",
       "Failed and timed-out states remove the indicator and show the problem with a recovery action, so nothing spins forever.",
@@ -33,9 +33,7 @@ export default {
   <div class="ef-startup" data-ef-extent="region" data-ef-state="slow">
     <span class="ef-app-identity" data-ef-size="64">
       <span class="ef-app-identity__mark">
-        <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23234'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1">
-        <span class="ef-app-identity__monogram" aria-hidden="true">N</span>
-      </object>
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg>
       </span>
       <span class="ef-app-identity__name">Northwind Ledger</span>
     </span>
@@ -66,9 +64,7 @@ export default {
   <div class="ef-startup" data-ef-extent="region" data-ef-state="failed">
     <span class="ef-app-identity" data-ef-size="64">
       <span class="ef-app-identity__mark">
-        <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23234'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1">
-        <span class="ef-app-identity__monogram" aria-hidden="true">N</span>
-      </object>
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg>
       </span>
       <span class="ef-app-identity__name">Northwind Ledger</span>
     </span>
@@ -99,9 +95,7 @@ export default {
   <div class="ef-startup" data-ef-extent="region" data-ef-state="timed-out">
     <span class="ef-app-identity" data-ef-size="64">
       <span class="ef-app-identity__mark">
-        <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23234'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1">
-        <span class="ef-app-identity__monogram" aria-hidden="true">N</span>
-      </object>
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg>
       </span>
       <span class="ef-app-identity__name">Northwind Ledger</span>
     </span>
@@ -136,9 +130,7 @@ export default {
   <div class="ef-startup" data-ef-extent="region" data-ef-state="starting">
     <span class="ef-app-identity" data-ef-size="64">
       <span class="ef-app-identity__mark">
-        <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23234'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1">
-        <span class="ef-app-identity__monogram" aria-hidden="true">N</span>
-      </object>
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg>
       </span>
       <span class="ef-app-identity__name">Northwind Ledger</span>
     </span>

@@ -5532,10 +5532,17 @@
 @layer echelon.components {
   /* Application identity (AIS-001.1) ----------------------------------- */
   /*
-   * The application supplies its mark and name; Forma lays them out. The
-   * mark is an <object> whose fallback content is a text monogram, so a
-   * mark that fails to load degrades to the monogram natively, with no
-   * script. Light and dark marks are siblings selected by the active theme.
+   * The application supplies its mark and name; Forma lays them out. Three
+   * mark forms are supported:
+   *   inline <svg>  preferred: nothing to fetch, so nothing can fail during
+   *                 a slow start, and it works under `object-src 'none'`.
+   *                 Drawn with currentColor it takes the theme accent.
+   *   <object>      an external asset with a text monogram as its fallback
+   *                 content, so a missing asset degrades natively without
+   *                 script. Needs a CSP that allows object-src for the asset.
+   *   <img>         an external raster asset; it has no native fallback.
+   * Light and dark variants are siblings marked .ef-app-identity__variant
+   * with data-ef-scheme, selected by the active theme.
    */
   .ef-app-identity {
     --ef-app-identity-size: 2rem;
@@ -5571,18 +5578,17 @@
     display: inline-grid;
     inline-size: var(--ef-app-identity-size);
     block-size: var(--ef-app-identity-size);
+    color: var(--ef-color-accent-primary, CanvasText);
   }
 
-  .ef-app-identity__mark > object,
-  .ef-app-identity__mark > img,
-  .ef-app-identity__mark > svg {
+  .ef-app-identity__mark > :is(object, img, svg) {
     grid-area: 1 / 1;
     display: grid;
     inline-size: 100%;
     block-size: 100%;
   }
 
-  /* Fallback shown by the browser when the mark asset cannot be loaded. */
+  /* Fallback content of an <object> mark, shown when the asset cannot load. */
   .ef-app-identity__monogram {
     display: grid;
     place-items: center;
@@ -5611,21 +5617,24 @@
   /*
    * Mark variants. Without an explicit theme the operating-system preference
    * selects the variant; an explicit data-ef-theme wins, including one level
-   * of nesting (a light region inside a dark page).
+   * of nesting (a light region inside a dark page). Dark themes are dark,
+   * dark-restrained and dark-technical; every other theme is light.
    */
-  .ef-app-identity__mark > [data-ef-scheme="dark"] { display: none; }
+  .ef-app-identity__variant[data-ef-scheme="dark"] { display: none; }
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-ef-theme]) .ef-app-identity__mark > [data-ef-scheme="light"] { display: none; }
-    :root:not([data-ef-theme]) .ef-app-identity__mark > [data-ef-scheme="dark"] { display: grid; }
+    :root:not([data-ef-theme]) .ef-app-identity__variant[data-ef-scheme="light"] { display: none; }
+    :root:not([data-ef-theme]) .ef-app-identity__variant[data-ef-scheme="dark"] { display: grid; }
   }
 
-  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__mark > [data-ef-scheme="light"] { display: none; }
-  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__mark > [data-ef-scheme="dark"] { display: grid; }
-  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) [data-ef-theme]:not([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__mark > [data-ef-scheme="light"] { display: grid; }
-  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) [data-ef-theme]:not([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__mark > [data-ef-scheme="dark"] { display: none; }
+  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="light"] { display: none; }
+  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="dark"] { display: grid; }
+  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) [data-ef-theme]:not([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="light"] { display: grid; }
+  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) [data-ef-theme]:not([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="dark"] { display: none; }
 
   @media (forced-colors: active) {
+    .ef-app-identity__mark { color: CanvasText; }
+
     .ef-app-identity__monogram {
       border: 1px solid CanvasText;
       background: Canvas;

@@ -51,6 +51,25 @@ test("a mark that fails to load degrades to its monogram", async ({ page }) => {
   await expect(loaded).toBeHidden();
 });
 
+test("under object-src 'none' an object mark degrades to its monogram and an inline mark still renders", async ({ page }) => {
+  await page.goto("/tests/browser/fixture/ais-001-csp.html");
+  await expect(page.locator("#csp-object .ef-app-identity__monogram")).toBeVisible();
+  const svg = page.locator("#csp-inline svg");
+  await expect(svg).toBeVisible();
+  const box = await svg.boundingBox();
+  expect(Math.round(box.width)).toBe(64);
+});
+
+test("an inline currentColor mark takes the theme accent, per brand", async ({ page }) => {
+  await open(page);
+  const read = id => page.locator(`#${id} .ef-app-identity__mark path`).first().evaluate(path => getComputedStyle(path).fill);
+  const accent = id => page.locator(`#${id}`).evaluate(element => getComputedStyle(element).getPropertyValue("--ef-color-accent-primary").trim());
+  const toRgb = hex => `rgb(${[1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)).join(", ")})`;
+  expect(await read("startup-echelon-light")).toBe(toRgb(await accent("startup-echelon-light")));
+  expect(await read("startup-harbor-dark")).toBe(toRgb(await accent("startup-harbor-dark")));
+  expect(await read("startup-echelon-light")).not.toBe(await read("startup-harbor-dark"));
+});
+
 for (const [size, pixels] of [["16", 16], ["24", 24], ["32", 32], ["64", 64]]) {
   test(`identity mark renders at ${size} pixels`, async ({ page }) => {
     await open(page);
