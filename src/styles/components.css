@@ -5522,3 +5522,269 @@
     .ef-icon { color: CanvasText; }
   }
 }
+
+/*
+ * AIS-001: application identity, pre-runtime startup and pending actions.
+ * Brand-neutral by construction: these rules name no organization, ship no
+ * mark, and use no color literal (tests/brand-neutrality.test.mjs). Every
+ * color is a semantic token supplied by the active theme or brand.
+ */
+@layer echelon.components {
+  /* Application identity (AIS-001.1) ----------------------------------- */
+  /*
+   * The application supplies its mark and name; Forma lays them out. Three
+   * mark forms are supported:
+   *   inline <svg>  preferred: nothing to fetch, so nothing can fail during
+   *                 a slow start, and it works under `object-src 'none'`.
+   *                 Drawn with currentColor it takes the theme accent.
+   *   <object>      an external asset with a text monogram as its fallback
+   *                 content, so a missing asset degrades natively without
+   *                 script. Needs a CSP that allows object-src for the asset.
+   *   <img>         an external raster asset; it has no native fallback.
+   * Light and dark variants are siblings marked .ef-app-identity__variant
+   * with data-ef-scheme, selected by the active theme.
+   */
+  .ef-app-identity {
+    --ef-app-identity-size: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    color: var(--ef-color-text-heading, inherit);
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    overflow-wrap: break-word;
+  }
+
+  .ef-app-identity[data-ef-size="16"] { --ef-app-identity-size: 1rem; }
+  .ef-app-identity[data-ef-size="24"] { --ef-app-identity-size: 1.5rem; }
+  .ef-app-identity[data-ef-size="32"] { --ef-app-identity-size: 2rem; }
+  .ef-app-identity[data-ef-size="64"] { --ef-app-identity-size: 4rem; font-size: var(--ef-primitive-font-size-xl, 1.5rem); }
+
+  a.ef-app-identity {
+    min-block-size: 2.75rem;
+  }
+
+  a.ef-app-identity:hover .ef-app-identity__name {
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+  }
+
+  .ef-app-identity__mark {
+    flex: 0 0 auto;
+    display: inline-grid;
+    inline-size: var(--ef-app-identity-size);
+    block-size: var(--ef-app-identity-size);
+    /* Routed through the secondary-surface hook so the mark re-pairs there. */
+    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-primary, CanvasText));
+  }
+
+  .ef-app-identity__mark > :is(object, img, svg) {
+    grid-area: 1 / 1;
+    display: grid;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  /* Fallback content of an <object> mark, shown when the asset cannot load. */
+  .ef-app-identity__monogram {
+    display: grid;
+    place-items: center;
+    inline-size: 100%;
+    block-size: 100%;
+    border-radius: var(--ef-primitive-radius-small, 0.25rem);
+    background: var(--ef-color-accent-primary, CanvasText);
+    color: var(--ef-color-text-inverse, Canvas);
+    font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
+    font-size: calc(var(--ef-app-identity-size) * 0.5);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .ef-app-identity__name {
+    min-inline-size: 0;
+  }
+
+  .ef-app-identity__context {
+    display: block;
+    color: var(--ef-color-text-secondary, inherit);
+    font-size: 0.8em;
+    font-weight: 400;
+  }
+
+  /*
+   * Mark variants. Without an explicit theme the operating-system preference
+   * selects the variant; an explicit data-ef-theme wins, including one level
+   * of nesting (a light region inside a dark page, or inside a page that
+   * follows a dark preference). Deeper alternation is not resolved: CSS
+   * cannot select the nearest themed ancestor without @scope. Dark themes
+   * are dark, dark-restrained and dark-technical; a new dark theme must be
+   * added to these lists. A single-color inline mark drawn with
+   * currentColor needs no variants and adapts to every theme.
+   */
+  .ef-app-identity__variant[data-ef-scheme="dark"] { display: none; }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-ef-theme]) .ef-app-identity__variant[data-ef-scheme="light"] { display: none; }
+    :root:not([data-ef-theme]) .ef-app-identity__variant[data-ef-scheme="dark"] { display: grid; }
+    /* An explicit light theme on a region still wins over the preference. */
+    :root:not([data-ef-theme]) [data-ef-theme]:not([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="light"] { display: grid; }
+    :root:not([data-ef-theme]) [data-ef-theme]:not([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="dark"] { display: none; }
+  }
+
+  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="light"] { display: none; }
+  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="dark"] { display: grid; }
+  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) [data-ef-theme]:not([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="light"] { display: grid; }
+  :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) [data-ef-theme]:not([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="dark"] { display: none; }
+
+  @media (forced-colors: active) {
+    .ef-app-identity__mark { color: CanvasText; }
+
+    .ef-app-identity__monogram {
+      border: 1px solid CanvasText;
+      background: Canvas;
+      color: CanvasText;
+    }
+  }
+
+  /* Pre-runtime startup (AIS-001.2) ------------------------------------ */
+  /*
+   * Authored in the application's initial HTML so it renders before any
+   * runtime (WebAssembly, script) loads; it needs only Forma CSS. The host
+   * removes it, or sets `hidden`, when the application has mounted, and may
+   * set data-ef-state to slow, failed or timed-out. The "still starting"
+   * note is revealed after --ef-startup-slow-after with no script; the
+   * delay is a discrete reveal, not motion, so it also applies under
+   * reduced motion. Progress is never fabricated: the indicator is
+   * indeterminate activity only.
+   */
+  .ef-startup {
+    --ef-startup-slow-after: 8s;
+    box-sizing: border-box;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: var(--ef-primitive-spacing-4, 1rem);
+    min-block-size: 100svh;
+    padding: var(--ef-primitive-spacing-6, 2rem) var(--ef-primitive-spacing-4, 1rem);
+    background: var(--ef-color-surface-primary, Canvas);
+    color: var(--ef-color-text-primary, CanvasText);
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  .ef-startup[data-ef-extent="region"] {
+    min-block-size: 16rem;
+  }
+
+  .ef-startup[hidden] { display: none; }
+
+  .ef-startup > * {
+    max-inline-size: min(36rem, 100%);
+    margin: 0;
+  }
+
+  .ef-startup__status {
+    display: grid;
+    justify-items: center;
+    gap: var(--ef-primitive-spacing-2, 0.5rem);
+  }
+
+  .ef-startup__status > * { margin: 0; }
+
+  .ef-startup__slow {
+    color: var(--ef-color-text-secondary, inherit);
+    visibility: hidden;
+    /* A zero-length animation that fills forwards after the delay: the note
+       is hidden until then and visible from then on. No interpolated frame
+       exists, so no engine rounding can leave it hidden. */
+    animation: ef-startup-reveal 0s linear var(--ef-startup-slow-after) forwards;
+  }
+
+  .ef-startup[data-ef-state="slow"] .ef-startup__slow {
+    visibility: visible;
+    animation: none;
+  }
+
+  @keyframes ef-startup-reveal {
+    from, to { visibility: visible; }
+  }
+
+  .ef-startup__problem,
+  .ef-startup__noscript {
+    display: none;
+    justify-items: center;
+    gap: var(--ef-primitive-spacing-3, 0.75rem);
+    padding: var(--ef-primitive-spacing-4, 1rem);
+    border: 1px solid var(--ef-color-status-danger, CanvasText);
+    border-inline-start-width: var(--ef-primitive-border-width-accent, 4px);
+    background: var(--ef-color-surface-primary, Canvas);
+    text-align: start;
+  }
+
+  .ef-startup__problem > *,
+  .ef-startup__noscript > * { margin: 0; }
+
+  .ef-startup__problem-title { font-weight: 700; }
+
+  .ef-startup:is([data-ef-state="failed"], [data-ef-state="timed-out"]) .ef-startup__status { display: none; }
+  .ef-startup:is([data-ef-state="failed"], [data-ef-state="timed-out"]) .ef-startup__problem { display: grid; }
+
+  @media (scripting: none) {
+    .ef-startup__status,
+    .ef-startup__problem { display: none; }
+    .ef-startup__noscript { display: grid; }
+  }
+
+  /* Pending actions (AIS-001.3) ---------------------------------------- */
+  /*
+   * aria-busy="true" on a button or button-styled link shows an in-place
+   * busy indicator before the label and keeps the label, so the control
+   * stays the same control. Pair it with aria-disabled="true" and ignore
+   * repeated activation in the application: CSS cannot stop a keyboard
+   * submission, and Forma has no runtime. A pending form wraps its fields
+   * in <fieldset disabled>, which the browser enforces.
+   */
+  :where(button, .ef-button)[aria-busy="true"] {
+    cursor: progress;
+  }
+
+  :where(button, .ef-button)[aria-busy="true"]:hover,
+  :where(button, .ef-button)[aria-busy="true"]:active {
+    background: var(--ef-color-surface-primary, Canvas);
+  }
+
+  :where(button, .ef-button)[aria-busy="true"]::before {
+    content: "";
+    display: inline-block;
+    box-sizing: border-box;
+    inline-size: 1em;
+    block-size: 1em;
+    margin-inline-end: 0.5em;
+    vertical-align: -0.125em;
+    border: 2px solid currentColor;
+    border-block-start-color: transparent;
+    border-radius: 50%;
+    animation: ef-spinner-rotate var(--ef-motion-cadence-rotation-period) var(--ef-motion-cadence-easing) infinite;
+  }
+
+  .ef-form[aria-busy="true"] {
+    cursor: progress;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    /* Not motion: the slow-start note still appears after its delay. */
+    .ef-startup__slow {
+      animation-name: ef-startup-reveal;
+    }
+
+    :where(button, .ef-button)[aria-busy="true"]::before {
+      animation: none;
+      border-block-start-color: currentColor;
+      border-style: dotted;
+    }
+  }
+}

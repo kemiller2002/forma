@@ -61,6 +61,16 @@
       }
     },
     {
+      "id": "app-identity",
+      "figmaName": "Forma / Application Identity",
+      "source": "patterns/app-identity.html",
+      "codeConnect": {
+        "id": "Forma/app-identity",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "attention-path",
       "figmaName": "Forma / Attention Path",
       "source": "patterns/attention-path.html",
@@ -651,21 +661,11 @@
       }
     },
     {
-      "id": "frame",
-      "figmaName": "Forma / Frame",
-      "source": "patterns/frame.html",
+      "id": "form",
+      "figmaName": "Forma / Form",
+      "source": "patterns/form.html",
       "codeConnect": {
-        "id": "Forma/frame",
-        "nodeUrl": null,
-        "status": "requires-published-figma-component"
-      }
-    },
-    {
-      "id": "freshness",
-      "figmaName": "Forma / Freshness",
-      "source": "patterns/freshness.html",
-      "codeConnect": {
-        "id": "Forma/freshness",
+        "id": "Forma/form",
         "nodeUrl": null,
         "status": "requires-published-figma-component"
       }
@@ -681,11 +681,21 @@
       }
     },
     {
-      "id": "form",
-      "figmaName": "Forma / Form",
-      "source": "patterns/form.html",
+      "id": "frame",
+      "figmaName": "Forma / Frame",
+      "source": "patterns/frame.html",
       "codeConnect": {
-        "id": "Forma/form",
+        "id": "Forma/frame",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "freshness",
+      "figmaName": "Forma / Freshness",
+      "source": "patterns/freshness.html",
+      "codeConnect": {
+        "id": "Forma/freshness",
         "nodeUrl": null,
         "status": "requires-published-figma-component"
       }
@@ -1476,6 +1486,16 @@
       "source": "patterns/stack.html",
       "codeConnect": {
         "id": "Forma/stack",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "startup",
+      "figmaName": "Forma / Start-up Screen",
+      "source": "patterns/startup.html",
+      "codeConnect": {
+        "id": "Forma/startup",
         "nodeUrl": null,
         "status": "requires-published-figma-component"
       }
