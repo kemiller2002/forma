@@ -35,7 +35,7 @@ test("write mode rewrites the fixtures exactly to the expected output", () => {
   const dir = copyInput();
   const result = run(dir);
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /rewrote 22 line\(s\) in 11 of 11 file\(s\); 1 other file\(s\) to review/);
+  assert.match(result.stdout, /rewrote 29 line\(s\) in 15 of 15 file\(s\); 2 other file\(s\) to review/);
   assert.deepEqual(snapshot(dir), snapshot(path.join(fixtures, "expected")));
 });
 
@@ -44,7 +44,7 @@ test("--check reports and writes nothing, exit 3; exit 0 once migrated", () => {
   const before = snapshot(dir);
   const check = run("--check", dir);
   assert.equal(check.status, 3, check.stdout + check.stderr);
-  assert.match(check.stdout, /would rewrite 22 line\(s\) in 11 of 11 file\(s\)/);
+  assert.match(check.stdout, /would rewrite 29 line\(s\) in 15 of 15 file\(s\)/);
   assert.match(check.stdout, /styles\.css: 4 line\(s\)/);
   assert.deepEqual(snapshot(dir), before, "--check must not write");
   assert.equal(run(dir).status, 0);
@@ -53,9 +53,11 @@ test("--check reports and writes nothing, exit 3; exit 0 once migrated", () => {
   const review = run("--check", dir);
   assert.equal(review.status, 3, review.stdout);
   assert.match(review.stdout, /review: .*ignored\.txt contains namespace tokens/);
-  const again = run("--check", "--exclude", "ignored.txt", dir);
+  // A supported kind that is not UTF-8 is never rewritten, and never passed silently.
+  assert.match(review.stdout, /review: .*latin1\.css \(not UTF-8\) contains namespace tokens/);
+  const again = run("--check", "--exclude", "ignored.txt", "--exclude", "latin1.css", dir);
   assert.equal(again.status, 0, again.stdout);
-  assert.match(again.stdout, /would rewrite 0 line\(s\) in 0 of 11 file\(s\); 0 other file\(s\) to review/);
+  assert.match(again.stdout, /would rewrite 0 line\(s\) in 0 of 15 file\(s\); 0 other file\(s\) to review/);
 });
 
 test("--dry-run prints each changed line before and after and writes nothing", () => {
@@ -190,3 +192,51 @@ test("the migrator ships in the npm package without build output", () => {
   }
   assert.ok(![...packed].some((file) => /^tools\/NamespaceMigrator\/(bin|obj)\//.test(file)));
 });
+
+// Forma 1.0.1 (WI-0048): names 1.0.0 mistook for locations are migrated;
+// genuine locations still are not.
+test("script assignments to src/data/background, call arguments after [i], class selectors with file- or host-like suffixes and typed dataset destructuring are migrated", () => {
+  for (const [input, output, extension] of [
+    ['const data = "ef-card";', 'const data = "forma-card";', "mjs"],
+    ["const src = 'ef-button';", "const src = 'forma-button';", "ts"],
+    ['x.background = "ef-hero";', 'x.background = "forma-hero";', "js"],
+    ['let href = "ef-nav"', 'let href = "forma-nav"', "fs"],
+    ['handlers[0]("ef-x");', 'handlers[0]("forma-x");', "mjs"],
+    ['handlers[0]("ef-x") in prose', 'handlers[0]("forma-x") in prose', "md"],
+    ['<script>const data = "ef-card";</script>', '<script>const data = "forma-card";</script>', "html"],
+    [".ef-shell.app {}", ".forma-shell.app {}", "css"],
+    [".ef-tabs.test {}", ".forma-tabs.test {}", "css"],
+    [".ef-icon.svg {}", ".forma-icon.svg {}", "scss"],
+    [".ef-card.md, .ef-card.map {}", ".forma-card.md, .forma-card.map {}", "css"],
+    [".ef-shell.ef-tabs.test {}", ".forma-shell.forma-tabs.test {}", "css"],
+    ['el.querySelector(".ef-icon.svg")', 'el.querySelector(".forma-icon.svg")', "mjs"],
+    ["const { efTone }: DOMStringMap = el.dataset;", "const { formaTone: efTone }: DOMStringMap = el.dataset;", "ts"],
+    ["const { efRow, efCol: col }: Record<string, string> = node.dataset;", "const { formaRow: efRow, formaCol: col }: Record<string, string> = node.dataset;", "tsx"]
+  ]) assert.equal(migrateText(input, extension), output, `${extension}: ${input}`);
+});
+
+test("tag attributes, Markdown links, URLs, hosts, files and packages remain locations in 1.0.1", () => {
+  for (const [extension, text] of [
+    ["html", '<a\n  class="x" href="ef-page.html" data="ef-data.json">x</a>'],
+    ["razor", '<img src="/assets/ef-logo.svg" alt="">'],
+    ["vue", '<template><img :src="\'ef-logo.svg\'"></template>'],
+    ["tsx", 'const C = () => <img src="ef-logo.svg" />;'],
+    ["md", "[Guide](ef-guide.md)"],
+    ["mjs", 'const host = "www.ef-cdn.example.org";'],
+    ["mjs", 'const h = "https://ef-cdn.example.org/a.js";'],
+    ["mjs", 'import x from "@ef-labs/widget";'],
+    ["css", '@import url("https://fonts.example.com/ef-sans.css");'],
+    ["css", ".x { background: url(/img/ef-bg.png); }"]
+  ]) assert.equal(migrateText(text, extension), text, `${extension}: ${text}`);
+});
+
+test("the 1.0.1 rewrites are idempotent", () => {
+  for (const [text, extension] of [
+    ['const data = "ef-card"; const { efTone }: DOMStringMap = el.dataset;', "ts"],
+    [".ef-shell.ef-tabs.test, .ef-icon.svg {}", "css"]
+  ]) {
+    const once = migrateText(text, extension);
+    assert.equal(migrateText(once, extension), once, text);
+  }
+});
+

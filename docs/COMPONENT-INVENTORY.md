@@ -68,7 +68,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Pagination | `<forma-pagination>` | Navigation | implemented | complete | 4 | 1 | yes | yes | yes | generic only | collection-toolbar, data-grid, wizard |
 | Scope trail | `<forma-scope-trail>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchy-tree, spatial-canvas, provenance-trail, pagination |
 | Skip link | `<forma-skip-link>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | marketing-shell, site-header, visually-hidden |
-| Tabs | `<forma-tabs>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | segmented-control, navigation-shell, wizard, disclosure |
+| Tabs | `<forma-tabs>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | namespace-migrator.test.mjs | segmented-control, navigation-shell, wizard, disclosure |
 | Wizard | `<forma-wizard>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | survey-progress, steps, readiness-checklist, tabs |
 | Alert | `<forma-alert>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | toast, callout, operation-status, fault-banner |
 | Conflict review | `<forma-conflict-review>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, operation-status, recovery-actions |
@@ -193,7 +193,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Site footer | `<forma-site-footer>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | site-header, marketing-shell, cta |
 | Site header | `<forma-site-header>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | marketing-shell, site-footer, navigation-shell, skip-link |
 | Steps | `<forma-steps>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-containment.spec.mjs | wizard, timeline, entry-index, code-sample |
-| Icon | `<forma-icon>` | Utilities | implemented | complete | 3 | 1 | yes | yes | yes | icons.test.mjs, icons.spec.mjs | button, status-lozenge, visually-hidden |
+| Icon | `<forma-icon>` | Utilities | implemented | complete | 3 | 1 | yes | yes | yes | icons.test.mjs, namespace-migrator.test.mjs, icons.spec.mjs | button, status-lozenge, visually-hidden |
 | Text roles | `<forma-text-roles>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | section-heading, hero, prose, callout |
 | Visually hidden | `<forma-visually-hidden>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skip-link, tooltip, text-roles |
 

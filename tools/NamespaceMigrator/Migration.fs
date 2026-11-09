@@ -38,6 +38,19 @@ let private regex pattern = Regex(pattern, options)
 let private boundary =
     @"(?:(?<![A-Za-z0-9_$\-/@])|(?<=</)|(?<=\\b)|(?<=(?:^|[\s(,=:\[!&|?{};])/))"
 
+/// What kind of text is rewritten: Markdown link targets are locations only in
+/// Markdown.
+type Kind =
+    | Markdown
+    | Other
+
+/// The kind of a file, by extension.
+let kindOf (path: string) =
+    match IO.Path.GetExtension(path).ToLowerInvariant() with
+    | ".md"
+    | ".markdown" -> Markdown
+    | _ -> Other
+
 /// A file or host name continues the token: `ef-page.html`, `ef-cdn.example.org`.
 let private notLocation =
     @"(?![A-Za-z0-9_\-]*\.(?:html?|css|s[ac]ss|less|[cm]?js|jsx|[cm]?ts|tsx|json|md|svg|png|jpe?g|gif|webp|avif|ico|woff2?|ttf|otf|eot|map|txt|xml|pdf|zip|razor|cshtml|vue|svelte)(?![A-Za-z0-9_\-]))"
@@ -54,6 +67,11 @@ let private token =
         + $"|(?<attribute>{boundary}data-ef-{notLocation})"
         + @"|(?<dataset>(?<=\bdataset\??\.)ef(?=[A-Z]))"
         + @"|(?<datasetindex>(?<=\bdataset\??\.?\[\s*[""'`])ef(?=[A-Z]))"
+        // `.ef-x` is a class selector even when a host- or file-like suffix
+        // follows (`.ef-shell.app`, `.ef-icon.svg`): a location never has a
+        // `.` right before the name, unless that `.` follows a host label
+        // (`www.ef-cdn.example.org`); a compound selector (`.a.ef-x`) still counts.
+        + @"|(?<classname>(?<=(?<![A-Za-z0-9_$\-])(?:\.[A-Za-z_][A-Za-z0-9_\-]*)*\.)ef-)"
         + $"|(?<name>{boundary}ef-{notLocation})"
     )
 
@@ -62,6 +80,7 @@ let private replacementFor (m: Match) =
     elif m.Groups["attribute"].Success then "attribute", "data-forma-"
     elif m.Groups["dataset"].Success then "dataset", "forma"
     elif m.Groups["datasetindex"].Success then "dataset-index", "forma"
+    elif m.Groups["classname"].Success then "name", "forma-"
     else "name", "forma-"
 
 /// Spans that are locations, never names.
@@ -70,23 +89,35 @@ let private locations =
       @"(?<![:\w])//[A-Za-z0-9\-]+(?:\.[A-Za-z0-9\-]+)+[^\s""'`<>()]*"
       @"\burl\(\s*(?:""[^""]*""|'[^']*'|[^)]*)\)"
       @"@import\s+(?:url\()?\s*(?:""[^""]*""|'[^']*')"
-      @"\b(?:src|href|srcset|action|formaction|poster|data|cite|background|xlink:href|manifest|ping)\s*=\s*(?:""[^""]*""|'[^']*'|[^\s>]+)"
-      @"\]\([^)\s]*\)"
+      // URL-valued attributes inside an HTML, Razor, Vue or JSX tag only; a
+      // script assignment (`const src = "ef-x"`) is not a location.
+      @"(?<=<[A-Za-z][A-Za-z0-9:._\-]*\s(?:[^<>""']|""[^""]*""|'[^']*')*)(?<![A-Za-z0-9_$.\-])(?:src|href|srcset|action|formaction|poster|data|cite|background|xlink:href|manifest|ping)\s*=\s*(?:""[^""]*""|'[^']*'|[^\s>]+)"
       @"\bfrom\s+(?:""[^""]*""|'[^']*')"
       @"\bimport\s*(?:\(\s*)?(?:""[^""]*""|'[^']*')"
       @"\brequire\s*\(\s*(?:""[^""]*""|'[^']*')"
       @"@[a-z0-9][a-z0-9._\-]*/[a-z0-9][a-z0-9._\-/]*" ]
     |> List.map regex
 
-let private maskedSpans (text: string) =
-    locations
-    |> List.collect (fun pattern -> [ for m in pattern.Matches text -> m.Index, m.Index + m.Length ])
+/// A Markdown link target, `[text](target)`: only in Markdown, and never a
+/// quoted call argument such as `handlers[0]("ef-x")`.
+let private markdownLink = regex @"\[[^\]\n]*\]\((?<target>[^)\s""'`]+)\)"
+
+let private maskedSpans (kind: Kind) (text: string) =
+    let links =
+        match kind with
+        | Markdown -> [ for m in markdownLink.Matches text -> m.Groups["target"].Index, m.Groups["target"].Index + m.Groups["target"].Length ]
+        | Other -> []
+    links
+    @ (locations
+       |> List.collect (fun pattern -> [ for m in pattern.Matches text -> m.Index, m.Index + m.Length ]))
 
 let private inside (spans: (int * int) list) (index: int) =
     spans |> List.exists (fun (start, finish) -> index >= start && index < finish)
 
 /// `const { efTone, efState: state } = el.dataset` -> `{ formaTone: efTone, formaState: state }`.
-let private destructuring = regex @"\{(?<body>[^{}]*)\}(?=\s*=\s*[A-Za-z0-9_$.?\[\]""'`()]*\bdataset\b)"
+/// An optional type annotation (`: DOMStringMap`) may sit between the pattern and `=`.
+let private destructuring =
+    regex @"\{(?<body>[^{}]*)\}(?=\s*(?::\s*[A-Za-z0-9_$.<>\[\]|&, ]+?)?\s*=\s*[A-Za-z0-9_$.?!\[\]""'`()]*\bdataset\b)"
 /// A key is the first name of an entry (after `{` or `,`); `formaX: efX`
 /// keeps its local name `efX` on a second run, which stays idempotent.
 let private destructuredKey = regex @"(?<=(?:\A|,)\s*)ef(?<rest>[A-Z][A-Za-z0-9_$]*)(?<alias>\s*:)?"
@@ -107,16 +138,16 @@ let private rewriteDestructuring (text: string) =
     )
 
 /// Matches of namespace tokens outside locations, with their rule name.
-let private tokens (text: string) =
-    let spans = maskedSpans text
+let private tokens (kind: Kind) (text: string) =
+    let spans = maskedSpans kind text
     [ for m in token.Matches text do
           if not (inside spans m.Index) then
               yield m, fst (replacementFor m) ]
 
 /// The text with every namespace token rewritten. Idempotent: `forma-` never
 /// matches a rule.
-let migrate (text: string) =
-    let spans = maskedSpans text
+let migrateAs (kind: Kind) (text: string) =
+    let spans = maskedSpans kind text
     let rewritten =
         token.Replace(
             text,
@@ -124,9 +155,12 @@ let migrate (text: string) =
         )
     rewriteDestructuring rewritten
 
+/// `migrateAs` for text that is not Markdown.
+let migrate (text: string) = migrateAs Other text
+
 /// Occurrences per rule in a text, before rewriting.
-let count (text: string) =
-    tokens text |> List.countBy snd
+let count (kind: Kind) (text: string) =
+    tokens kind text |> List.countBy snd
 
 let private lines (text: string) = text.Split('\n')
 
@@ -139,15 +173,15 @@ type Change =
 
 /// Line-level changes, for --dry-run and --check reports. Rules never match
 /// across a newline, so a line rewrites independently.
-let changes (text: string) =
+let changes (kind: Kind) (text: string) =
     lines text
     |> Array.toList
     |> List.mapi (fun index before ->
-        let after = migrate before
+        let after = migrateAs kind before
         if after = before then
             None
         else
-            let named = tokens before |> List.map snd |> List.distinct
+            let named = tokens kind before |> List.map snd |> List.distinct
             let rule = if named.IsEmpty then "dataset-destructuring" else String.concat "," named
             Some
                 { Line = index + 1
@@ -158,7 +192,7 @@ let changes (text: string) =
 
 /// Whether a text still holds a namespace token (for files of a kind the
 /// migrator does not rewrite: they are reported, never silently passed).
-let hasTokens (text: string) = migrate text <> text
+let hasTokens (text: string) = migrateAs Markdown text <> text || migrate text <> text
 
 /// The file kinds the migrator rewrites.
 let supportedExtensions =
