@@ -53,9 +53,11 @@ mark) and line endings, and changes only Forma names:
   Anywhere else it is left unchanged and listed as `review:` with its line, and
   `--check` exits 3 until you decide: rewrite it by hand if it is a selector,
   or `--exclude` the file if it is a file name.
-  A word prefix that is not an HTML element (`"logo.ef-x.png"`) makes it a file
-  name, left alone. In a selector argument, a URL attribute value
-  (`img[src=ef-a.png]`) is a location too.
+  A plain word prefix that is not an HTML or SVG element (`"logo.ef-x.png"`)
+  makes it a file name, left alone; an element-like prefix (`"path.ef-icon.svg"`,
+  `"my-widget.ef-x.md"`, `"ef-tabs.ef-active.md"`) keeps it listed for review.
+  In a selector argument, a URL attribute value (`img[src=ef-a.png]`,
+  `a[href='ef-c']`) is a location too.
 
 Words (`ref-`, `chef-`, `--ref-`, `beef-`) and locations are never touched:
 URLs and host names (`https://ef-cdn.example.org/...`), paths
@@ -369,7 +371,7 @@ Application-owned properties such as `--causa-*` are never reported. Keep `forma
 Patch: the namespace codemod keeps URL attributes after a JSX expression or a
 quoted value that contains `>` as locations, leaves dotfile paths and Markdown
 reference definitions alone, lists strings that could be a selector or a file
-name (`".ef-icon.svg"` outside `querySelector`) for review instead of guessing, keeps Razor `@Url.Action("...")` values intact,
+name (`".ef-icon.svg"` outside `querySelector`) for review instead of guessing, keeps Razor `@Url.Action("...")` values and URL attributes after `&`, `(`, `)` or `;` in a tag intact,
 and its `--check`/`--dry-run` reports match write mode for tags that span
 lines. If you ran 1.0.1's codemod on JSX, Razor or Markdown, review its diff
 for those cases. No CSS, class or token changed.

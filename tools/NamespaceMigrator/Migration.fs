@@ -137,14 +137,35 @@ let rec private skipQuoted (text: string) (limit: int) (escapes: bool) (quote: c
     elif text[pos] = quote then pos + 1
     else skipQuoted text limit escapes quote (pos + 1)
 
-/// The longest `{...}` group (a JSX expression) the scan follows, far above a
-/// real prop object (the tests use a 6 KB one). Only unbalanced braces reach it; it keeps
-/// script such as `if (a <b && c) {` without a closing brace linear.
+/// Where every `{...}` group ends, from one pass over the text: brace depth
+/// with script strings skipped inside braces (outside braces quotes are prose
+/// or markup and are not tracked). An unclosed `{` ends at the end of the
+/// text. The tag scan looks groups up here, so a JSX expression of any size
+/// is skipped in constant time and unbalanced braces cannot make the scan
+/// quadratic.
+let private braceEnds (text: string) =
+    let ends = Collections.Generic.Dictionary<int, int>()
+    let rec loop (opens: int list) pos =
+        if pos >= text.Length then
+            for start in opens do ends[start] <- text.Length
+        else
+            match text[pos], opens with
+            | ('"' | '\'' | '`' as quote), _ :: _ -> loop opens (skipQuoted text text.Length true quote (pos + 1))
+            | '{', _ -> loop (pos :: opens) (pos + 1)
+            | '}', start :: rest ->
+                ends[start] <- pos + 1
+                loop rest (pos + 1)
+            | _ -> loop opens (pos + 1)
+    loop [] 0
+    ends
+
+/// The longest `{...}` group followed by a local scan, used only for a `{`
+/// the one-pass table did not reach (inside an unclosed script string).
 let private braceGroupLimit = 16384
 
 /// The index just past a balanced `{...}` group that opens at `start`, skipping
 /// script strings inside it, or the bound.
-let private skipBraces (text: string) (limit: int) (start: int) =
+let private scanBraces (text: string) (limit: int) (start: int) =
     let bound = min limit (start + braceGroupLimit)
     let rec loop depth pos =
         if pos >= bound then bound
@@ -156,12 +177,17 @@ let private skipBraces (text: string) (limit: int) (start: int) =
             | _ -> loop depth (pos + 1)
     loop 0 start
 
+let private skipBraces (ends: Collections.Generic.Dictionary<int, int>) (text: string) (limit: int) (start: int) =
+    match ends.TryGetValue start with
+    | true, finish -> finish
+    | _ -> scanBraces text limit start
+
 /// The span of an attribute value that starts at `pos`, and the index after it.
-let private attributeValue (text: string) (limit: int) (pos: int) =
+let private attributeValue (ends: Collections.Generic.Dictionary<int, int>) (text: string) (limit: int) (pos: int) =
     if pos >= limit then (pos, pos), pos
     else
         match text[pos] with
-        | '{' -> let finish = skipBraces text limit pos in (pos, finish), finish
+        | '{' -> let finish = skipBraces ends text limit pos in (pos, finish), finish
         | '"' | '\'' as quote ->
             // Razor: "@Url.Action("ef-index")" holds C# strings inside parentheses.
             let rec loop parens i =
@@ -183,31 +209,36 @@ let private attributeValue (text: string) (limit: int) (pos: int) =
             (pos, finish), finish
 
 /// URL-valued attribute values inside the tag that opens at `start`. The scan
-/// ends at the tag's `>`, at a bare `<` (`title=a<b`), at a character an
-/// attribute list does not have outside quotes and braces (`(`, `)`, `;`, `&`:
-/// script such as `if (a <b && c) { x.src = s; }`), at the end of the text or
-/// at the safety bound. Values found before any of these ends are kept, so a
-/// location is never rewritten because the scan stopped early.
-let private tagLocations (text: string) (start: int) =
+/// ends at the tag's `>`, at a bare `<` (`title=a<b`), at the end of the text
+/// or at the safety bound; values found before the end are kept. Script that
+/// only looks like a tag start (`if (a <b && c) { x.src = s; }`) is harmless:
+/// `{...}` is skipped, the attribute must follow whitespace (so `x.src` never
+/// matches) and the scan stops at the next `<`. Braces are looked up, so each
+/// scan reads only the tag's own top-level text and the total stays linear.
+let private tagLocations (ends: Collections.Generic.Dictionary<int, int>) (text: string) (start: int) =
     let limit = min text.Length (start + tagScanLimit)
     let rec loop pos acc =
         if pos >= limit then acc
         else
             match text[pos] with
-            | '>' | '<' | '(' | ')' | ';' | '&' -> acc
+            | '>' | '<' -> acc
             | '"' | '\'' as quote -> loop (skipQuoted text limit false quote (pos + 1)) acc
-            | '{' -> loop (skipBraces text limit pos) acc
+            | '{' -> loop (skipBraces ends text limit pos) acc
             | c when Char.IsWhiteSpace c ->
                 let m = urlAttribute.Match(text, pos + 1)
                 if m.Success && m.Index + m.Length <= limit then
-                    let span, after = attributeValue text limit (m.Index + m.Length)
+                    let span, after = attributeValue ends text limit (m.Index + m.Length)
                     loop after (span :: acc)
                 else loop (pos + 1) acc
             | _ -> loop (pos + 1) acc
     loop start []
 
 let private markupLocations (text: string) =
-    [ for m in tagStart.Matches text do yield! tagLocations text (m.Index + m.Length) ]
+    let starts = tagStart.Matches text
+    if starts.Count = 0 then []
+    else
+        let ends = braceEnds text
+        [ for m in starts do yield! tagLocations ends text (m.Index + m.Length) ]
 
 // --- Ambiguous strings --------------------------------------------------------
 //
@@ -229,7 +260,7 @@ let private selectorApi = regex @"\b(?:querySelector(?:All)?|closest|matches|web
 /// A selector API argument: unambiguously a selector, so every Forma class in
 /// it is migrated, whatever suffix follows (`"div.ef-card.md"`).
 let private selectorArgument =
-    regex @"\b(?:querySelector(?:All)?|closest|matches|webkitMatchesSelector)\s*\(\s*(?<q>[""'`])(?<value>[^""'`\n]*)\k<q>"
+    regex @"\b(?:querySelector(?:All)?|closest|matches|webkitMatchesSelector)\s*\(\s*(?<q>[""'`])(?<value>(?:(?!\k<q>)[^\n])*)\k<q>"
 let private selectorToken = regex @"(?<customproperty>(?<![A-Za-z0-9_$\-])--ef-)|(?<attribute>(?<![A-Za-z0-9_$\-])data-ef-)|(?<name>(?<![A-Za-z0-9_$\-])ef-)"
 
 /// URL-valued attribute selectors keep their value: `img[src=ef-a.png]`.
@@ -275,7 +306,22 @@ let private htmlElements =
           "legend"; "li"; "main"; "mark"; "menu"; "meter"; "nav"; "object"; "ol"; "optgroup"; "option"; "output"; "p"
           "picture"; "pre"; "progress"; "q"; "s"; "section"; "select"; "small"; "source"; "span"; "strong"; "sub"
           "summary"; "sup"; "svg"; "table"; "tbody"; "td"; "template"; "textarea"; "tfoot"; "th"; "thead"; "time"; "tr"
-          "u"; "ul"; "video" ]
+          "u"; "ul"; "video"; "link"; "script"; "style"; "slot"; "area"; "br"; "head"; "title"; "kbd"; "var"; "del"
+          "ins"; "colgroup"; "map"; "noscript"; "ruby"; "samp"; "search"; "wbr"; "cite"; "data"; "dfn"; "bdi"; "bdo"; "embed"
+          "track"; "base"; "meta" ]
+
+/// SVG element names: "path.ef-icon.svg" may be a selector for an SVG element.
+let private svgElements =
+    set
+        [ "svg"; "g"; "path"; "use"; "symbol"; "circle"; "rect"; "line"; "polyline"; "polygon"; "ellipse"; "text"; "tspan"
+          "defs"; "clippath"; "mask"; "pattern"; "image"; "marker"; "lineargradient"; "radialgradient"; "stop"; "filter"
+          "foreignobject"; "textpath"; "desc"; "title"; "view"; "switch" ]
+
+/// A prefix that may name an element: HTML or SVG, a custom element (it has a
+/// `-`, such as `my-widget`) or a Forma element (`ef-tabs`).
+let private mayBeElement (prefix: string) =
+    let name = prefix.ToLowerInvariant()
+    htmlElements.Contains name || svgElements.Contains name || name.Contains '-' || name.StartsWith "ef-"
 
 /// Whole quoted strings that read as a selector or as a file name, outside a
 /// selector API: (index, length, value, ambiguous). A string whose prefix is
@@ -285,7 +331,7 @@ let private ambiguousStrings (text: string) =
           let before = text.Substring(max 0 (m.Index - 64), min 64 m.Index)
           if not (selectorApi.IsMatch before) then
               let prefix = m.Groups["prefix"]
-              let isFileName = prefix.Success && not (htmlElements.Contains(prefix.Value.ToLowerInvariant()))
+              let isFileName = prefix.Success && not (mayBeElement prefix.Value)
               yield m.Index, m.Length, m.Groups["value"].Value, not isFileName ]
 
 let private maskedSpans (kind: Kind) (text: string) =

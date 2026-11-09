@@ -398,3 +398,55 @@ test("the re-review rewrites are idempotent", () => {
   }
 });
 
+// Forma 1.0.2 re-review 3 (WI-0052).
+test("href/src stay locations after &, (, ), ; and Razor or Angular syntax in a tag", () => {
+  for (const [input, output, extension] of [
+    ['<a title=a&amp;b href="ef-docs1" class="ef-c1">x</a>', '<a title=a&amp;b href="ef-docs1" class="forma-c1">x</a>', "html"],
+    ['<a onclick=go() href=ef-docs2 class="ef-c2">x</a>', '<a onclick=go() href=ef-docs2 class="forma-c2">x</a>', "html"],
+    ['<a (click)="go()" href="ef-docs3" class="ef-c3">x</a>', '<a (click)="go()" href="ef-docs3" class="forma-c3">x</a>', "html"],
+    ['<a style=color:red; href="ef-docs4" class="ef-c4">x</a>', '<a style=color:red; href="ef-docs4" class="forma-c4">x</a>', "html"],
+    ['<a data-x=@(Model.Y) href="ef-docs5" class="ef-c5">x</a>', '<a data-x=@(Model.Y) href="ef-docs5" class="forma-c5">x</a>', "cshtml"],
+    ['<a class="ef-r1" @(Model.Attr) href="ef-r-docs2">x</a>', '<a class="forma-r1" @(Model.Attr) href="ef-r-docs2">x</a>', "cshtml"]
+  ]) assert.equal(migrateText(input, extension), output, input);
+});
+
+test("a JSX prop over 16 KiB that contains ( keeps the href after it a location", () => {
+  const prop = `{{ ${Array.from({ length: 1500 }, (_, i) => `k${i}: f("v${i}")`).join(", ")} }}`;
+  assert.ok(prop.length > 16384, "the JSX prop is over 16 KiB");
+  assert.equal(migrateText(`<Widget opts=${prop} href="ef-jsx-big" className="ef-w" />`, "tsx"),
+    `<Widget opts=${prop} href="ef-jsx-big" className="forma-w" />`);
+});
+
+test("a prefix that may name an element keeps a quoted name-and-extension string ambiguous", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-nsm-prefix-"));
+  const file = path.join(dir, "prefixes.mjs");
+  const ambiguous = ["ef-tabs.ef-active.md", "my-widget.ef-x.md", "path.ef-icon.svg", "use.ef-glyph.svg", "g.ef-g.svg", "symbol.ef-s.svg",
+    "link.ef-x.css", "script.ef-x.js", "style.ef-x.css", "slot.ef-x.md", "title.ef-x.md", "kbd.ef-x.md", "colgroup.ef-x.md"];
+  const source = ambiguous.map((value, i) => `const a${i} = "${value}";`).join("\n") + '\nconst file = "logo.ef-x.png";\n';
+  fs.writeFileSync(file, source);
+  const check = run("--check", dir);
+  assert.equal(check.status, 3);
+  ambiguous.forEach((value, i) => {
+    assert.match(check.stdout, new RegExp(`review: .*prefixes\\.mjs:${i + 1} "${value.replaceAll(".", "\\.")}"`), value);
+  });
+  assert.doesNotMatch(check.stdout, /logo\.ef-x\.png/, "a plain word prefix is still a file name");
+  assert.equal(run(dir).status, 0);
+  assert.equal(fs.readFileSync(file, "utf8"), source);
+});
+
+test("a selector argument with nested quotes keeps its attribute value a location", () => {
+  assert.equal(migrateText(`el.querySelector("a[href='ef-c'] .ef-s")`, "mjs"), `el.querySelector("a[href='ef-c'] .forma-s")`);
+  assert.equal(migrateText(`el.querySelector('a[href="ef-c"] .ef-s')`, "mjs"), `el.querySelector('a[href="ef-c"] .forma-s')`);
+  assert.equal(migrateText("el.closest(`div[data-ef-x='1'].ef-y`)", "mjs"), "el.closest(`div[data-forma-x='1'].forma-y`)");
+});
+
+test("the re-review 3 rewrites are idempotent", () => {
+  for (const [text, extension] of [
+    ['<a onclick=go() href=ef-docs2 class="ef-c2">x</a>', "html"],
+    [`el.querySelector("a[href='ef-c'] .ef-s")`, "mjs"]
+  ]) {
+    const once = migrateText(text, extension);
+    assert.equal(migrateText(once, extension), once, text);
+  }
+});
+
