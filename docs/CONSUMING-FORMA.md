@@ -41,15 +41,20 @@ mark) and line endings, and changes only Forma names:
   `</ef-x>`, a regular-expression literal such as `/^\.ef-x/`);
 - custom properties (`--ef-x`) and attributes (`data-ef-x`);
 - the DOM dataset: `el.dataset.efX`, `el.dataset["efX"]` and destructuring
-  `const { efTone } = el.dataset`, which becomes
-  `const { formaTone: efTone } = el.dataset` so the local name is kept.
+  `const { efTone } = el.dataset` (also with a type annotation such as
+  `: DOMStringMap`), which becomes `const { formaTone: efTone } = el.dataset`
+  so the local name is kept.
+- `.ef-x` is always a class selector, even when a file- or host-like suffix
+  follows (`.ef-icon.svg`, `.ef-shell.app`).
 
 Words (`ref-`, `chef-`, `--ref-`, `beef-`) and locations are never touched:
 URLs and host names (`https://ef-cdn.example.org/...`), paths
 (`/assets/ef-logo.svg`), file names (`ef-page.html`), CSS `url(...)` and
-`@import` targets, URL-valued HTML attributes (`src`, `href`, `srcset`, ...),
-Markdown link targets, module specifiers (`import ... from "..."`,
-`require("...")`) and scoped packages (`@ef-labs/widget`).
+`@import` targets, URL-valued attributes (`src`, `href`, `srcset`, ...) inside
+an HTML, Razor, Vue or JSX tag, Markdown link targets in Markdown files, module
+specifiers (`import ... from "..."`, `require("...")`) and scoped packages
+(`@ef-labs/widget`). A script variable named `src`, `data` or `href` is not a
+location: `const src = "ef-button"` is migrated.
 
 It always skips `node_modules`, `.git`, `bin` and `obj`, and by default also
 `vendor`, `bower_components`, `jspm_packages`, `dist` and `wwwroot/lib`
@@ -64,7 +69,9 @@ dotnet run --project "$M" -- --check src wwwroot     # exit 0: nothing left
 ```
 
 `--check` never gives a false all-clear: a text file of another kind (a
-`.txt`, a template, a `.yml`) that contains Forma names is listed as
+`.txt`, a template, a `.yml`), or a supported file that is not UTF-8 (for
+example a Latin-1 stylesheet, which is never rewritten so it cannot be
+corrupted), that contains Forma names is listed as
 `review: ...` and keeps the exit status at 3 until you fix it by hand or
 exclude it. `--exclude TEXT` (repeatable) skips paths that contain `TEXT`, for
 example a changelog that must keep the old names. Review the diff and commit
@@ -343,6 +350,15 @@ It exits 1 on any error. The installed package is the source of truth: its token
 - custom properties that refer to each other in a cycle.
 
 Application-owned properties such as `--causa-*` are never reported. Keep `forma-color` for color-role pairing rules; the two validators agree on the color namespace.
+
+## 1.0.1
+
+Patch: the namespace codemod migrates names that 1.0.0 mistook for locations
+(script variables named `src`, `data` or `href`; calls such as
+`handlers[0]("ef-x")`; class selectors such as `.ef-icon.svg`; typed dataset
+destructuring) and lists non-UTF-8 files that hold Forma names for review. If
+you migrated with 1.0.0, upgrade and run the codemod with `--check` again. No
+CSS, class or token changed.
 
 ## 1.0.0
 

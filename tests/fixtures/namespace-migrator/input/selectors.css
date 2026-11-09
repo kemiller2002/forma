@@ -1,0 +1,3 @@
+/* Class selectors with host- or file-like suffixes are still class selectors. */
+.ef-shell.app, .ef-tabs.test, .ef-icon.svg {}
+.ef-card.md, .ef-card.map, .ef-shell.ef-tabs.test {}

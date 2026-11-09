@@ -20,9 +20,10 @@ let private usage =
   (default)          Rewrite files in place. Encoding (UTF-8, with or without a
                      byte-order mark) and line endings are preserved.
   --check            Report what would change; write nothing. Exit 3 when a
-                     file would change, or when a text file of a kind this tool
-                     does not rewrite contains namespace tokens (listed as
-                     "review"); exit 0 only when nothing needs attention.
+                     file would change, or when a text file this tool does not
+                     rewrite (another kind, or a supported kind that is not
+                     UTF-8) contains namespace tokens (listed as "review");
+                     exit 0 only when nothing needs attention.
   --dry-run          Print every line that would change (before and after);
                      write nothing. Exit 0.
   --exclude TEXT     Skip files whose path contains TEXT (repeatable).
@@ -37,9 +38,11 @@ let private usage =
 Rewrites only namespace tokens: --ef-* -> --forma-*, data-ef-* ->
 data-forma-*, ef-* (classes, tags, ids, class strings) -> forma-*,
 dataset.efX / dataset["efX"] -> formaX, and dataset destructuring
-{ efX } -> { formaX: efX }. Words (ref-, chef-, --ref-, beef-) and locations
-(URLs, url(), @import, src/href values, module specifiers, @scope/packages,
-file and host names) are untouched."""
+{ efX } -> { formaX: efX } (also with a type annotation). Words (ref-, chef-,
+--ref-, beef-) and locations (URLs, url(), @import, src/href values inside a
+markup tag, Markdown link targets in .md files, module specifiers,
+@scope/packages, file and host names) are untouched; `.ef-x` is always a
+class selector."""
 
 type private Mode =
     | Write
@@ -93,17 +96,27 @@ type private Source =
 let private utf8Bom = [| 0xEFuy; 0xBBuy; 0xBFuy |]
 let private strictUtf8 = UTF8Encoding(false, true)
 
-let private read (file: string) : Source option =
+/// What a file holds: UTF-8 text (rewritten), other text (never rewritten,
+/// so it cannot be corrupted, but inspected through a Latin-1 view and
+/// listed for review when it holds Forma names), or binary (ignored).
+type private Content =
+    | Utf8 of Source
+    | OtherText of string
+    | Binary
+
+let private latin1 = Encoding.Latin1
+
+let private read (file: string) : Content =
     let bytes = File.ReadAllBytes file
     let bom = bytes.Length >= 3 && bytes[0..2] = utf8Bom
     let body = if bom then bytes[3..] else bytes
     if Array.contains 0uy body[.. min (body.Length - 1) 8191] then
-        None // binary
+        Binary
     else
         try
-            Some { Text = strictUtf8.GetString body; Bom = bom }
+            Utf8 { Text = strictUtf8.GetString body; Bom = bom }
         with :? DecoderFallbackException ->
-            None // not UTF-8 text
+            OtherText(latin1.GetString body)
 
 let private write (file: string) (source: Source) (text: string) =
     let body = strictUtf8.GetBytes text
@@ -116,10 +129,11 @@ type private Outcome =
       Migrated: string }
 
 let private examine (file: string) (source: Source) =
-    let migrated = migrate source.Text
+    let kind = kindOf file
+    let migrated = migrateAs kind source.Text
     { File = normalize file
       Source = source
-      Changes = if migrated = source.Text then [] else changes source.Text
+      Changes = if migrated = source.Text then [] else changes kind source.Text
       Migrated = migrated }
 
 let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
@@ -134,7 +148,7 @@ let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
         | Check
         | Write -> printfn "%s: %d line(s)" outcome.File outcome.Changes.Length
     for file in review do
-        printfn "review: %s contains namespace tokens but is not a kind this tool rewrites; fix it by hand or --exclude it" file
+        printfn "review: %s contains namespace tokens this tool does not rewrite (another file kind, or not UTF-8); fix it by hand or --exclude it" file
     let lineCount = changed |> List.sumBy (fun o -> o.Changes.Length)
     let verb =
         match mode with
@@ -159,11 +173,26 @@ let main argv =
                 |> List.distinct
                 |> List.filter (fun file -> options.Excludes |> List.forall (fun text -> not ((normalize file).Contains text)))
             let supported, other = candidates |> List.partition isSupported
-            let outcomes = supported |> List.choose (fun file -> read file |> Option.map (examine file))
-            let review =
+            let contents = supported |> List.map (fun file -> file, read file)
+            let outcomes =
+                contents |> List.choose (fun (file, content) -> match content with Utf8 source -> Some(examine file source) | _ -> None)
+            // Supported files that are not UTF-8 are never rewritten, but a
+            // Forma name in them is listed for review instead of passing silently.
+            let notUtf8 =
+                contents
+                |> List.choose (fun (file, content) ->
+                    match content with
+                    | OtherText text when hasTokens text -> Some(normalize file + " (not UTF-8)")
+                    | _ -> None)
+            let otherKinds =
                 other
                 |> List.filter (fun file -> FileInfo(file).Length < 5_000_000L)
-                |> List.choose (fun file -> read file |> Option.filter (fun s -> hasTokens s.Text) |> Option.map (fun _ -> normalize file))
+                |> List.choose (fun file ->
+                    match read file with
+                    | Utf8 source when hasTokens source.Text -> Some(normalize file)
+                    | OtherText text when hasTokens text -> Some(normalize file)
+                    | _ -> None)
+            let review = notUtf8 @ otherKinds
             let changed = report options.Mode outcomes review
             match options.Mode with
             | Write ->

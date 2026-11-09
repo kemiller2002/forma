@@ -7,6 +7,20 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 1.0.1
+
+Patch release: the namespace codemod (`tools/NamespaceMigrator`) left some Forma names unrewritten while `--check` reported a clean tree (WI-0048, source `.praxis/inbox/documents/2026-11-09-FORMA-1.0.1-CODEMOD.md`). No class, token, element, attribute or CSS output changed (QD-004 patch). Re-run the codemod with `--check` if you migrated with 1.0.0; Forma's own tree needed no change.
+
+### Fixed
+- A script variable or property named like a URL attribute is not a location: `const data = "ef-card"`, `const src = 'ef-button'` and `x.background = "ef-hero"` are migrated. URL-valued attributes are skipped only inside an HTML, Razor, Vue or JSX tag.
+- Markdown link targets are skipped only in Markdown files and only as `[text](target)`; a call such as `handlers[0]("ef-x")` is migrated.
+- `.ef-x` is always a class selector, even with a file- or host-like suffix: `.ef-shell.app`, `.ef-tabs.test`, `.ef-icon.svg`, `.ef-card.md`, `.ef-card.map` and compound `.ef-shell.ef-tabs.test` are migrated (`www.ef-cdn.example.org` and `ef-page.html` remain locations).
+- Typed dataset destructuring (`const { efTone }: DOMStringMap = el.dataset`, `Record<string, string>`) is migrated, keeping the local name.
+- A supported file that is not UTF-8 (for example a Latin-1 `.css`) is no longer skipped silently: it is never rewritten, and when it holds Forma names it is listed as `review: ... (not UTF-8)` and `--check` exits 3.
+
+### Tests
+- `tests/namespace-migrator.test.mjs` (16 tests): every case above, the 1.0.0 location cases (URLs, hosts, scoped packages, `url()`, `@import`, tag `src`/`href`, Markdown links), idempotence, and new fixtures (`false-negatives.ts`, `selectors.css`, `tag-attributes.html`, `links.md`, `latin1.css`).
+
 ## 1.0.0
 
 Major release: Forma is brand-neutral (BNR-001, owner decision EDS-ADR-002) and its `ef-` namespace is renamed to `forma-` (FORMA-NS-001, owner decision 2026-11-09 "Do the major break"). Both breaks ship together so applications migrate once: run the codemod, then (Echelon applications) add `@echelon-foundry/echelon-theme`. The migration guide is "Migrating to Forma 1.0.0" in `docs/CONSUMING-FORMA.md`. Work item WI-0046; sources `.praxis/inbox/documents/2026-11-09-BNR-001-brand-neutral-forma.md` and `2026-11-09-FORMA-NS-001-namespace-rename.md`.
