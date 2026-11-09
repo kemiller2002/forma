@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
 // Forma-owned marketing reference fixture (examples/marketing-site).
-// A fictional organization (Tidewater Systems) on the neutral forma-marketing.css.
+// A fictional organization (Tidal Systems) on the neutral forma-marketing.css.
 // It consumes the installed release bundle exactly as an independent site does.
 const base = "/examples/marketing-site/";
 const pages = ["index.html", "product.html", "docs.html"];

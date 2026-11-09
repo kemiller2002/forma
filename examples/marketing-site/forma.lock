@@ -1,5 +1,5 @@
 # Forma presentation pin for the marketing reference fixture (a fictional
-# organization, Tidewater Systems).
+# organization, Tidal Systems).
 #
 # Inside the Forma repository this fixture is built from the in-repo release
 # artifacts (npm run example:install copies this lock, records the current
