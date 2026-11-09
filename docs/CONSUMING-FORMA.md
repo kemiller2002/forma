@@ -45,8 +45,14 @@ mark) and line endings, and changes only Forma names:
   `: DOMStringMap`), which becomes `const { formaTone: efTone } = el.dataset`
   so the local name is kept.
 - `.ef-x` is a class selector, even when a file- or host-like suffix follows
-  (`.ef-icon.svg`, `.ef-shell.app` in CSS), except a dotfile name: a whole
-  quoted string such as `".ef-config.json"`, or one after `/`.
+  (`.ef-icon.svg`, `.ef-shell.app` in CSS), but not after `/` in a path
+  (`"/.ef-rc.json"`, `"assets/.ef-cache/x"`).
+- A whole quoted string that could be a selector or a file name
+  (`".ef-icon.svg"`, `".ef-config.json"`, `"div.ef-card.md"`) is migrated as
+  the argument of `querySelector`, `querySelectorAll`, `closest` or `matches`.
+  Anywhere else it is left unchanged and listed as `review:` with its line, and
+  `--check` exits 3 until you decide: rewrite it by hand if it is a selector,
+  or `--exclude` the file if it is a file name.
 
 Words (`ref-`, `chef-`, `--ref-`, `beef-`) and locations are never touched:
 URLs and host names (`https://ef-cdn.example.org/...`), paths
@@ -54,7 +60,8 @@ URLs and host names (`https://ef-cdn.example.org/...`), paths
 `@import` targets, URL-valued attributes (`src`, `href`, `srcset`, ...) inside
 an HTML, Razor, Vue or JSX tag (including JSX `{...}` and Razor `@...(...)`
 values), Markdown link targets and reference definitions (`[d]: /ef-doc`) in
-Markdown files, dotfile names (`".ef-config.json"`, `"/.ef-rc.json"`), module
+Markdown files, dotfile and dot-directory paths (`"/.ef-rc.json"`,
+`"assets/.ef-cache/x"`), module
 specifiers (`import ... from "..."`, `require("...")`) and scoped packages
 (`@ef-labs/widget`). A script variable named `src`, `data` or `href` is not a
 location: `const src = "ef-button"` is migrated.
@@ -357,8 +364,9 @@ Application-owned properties such as `--causa-*` are never reported. Keep `forma
 ## 1.0.2
 
 Patch: the namespace codemod keeps URL attributes after a JSX expression or a
-quoted value that contains `>` as locations, leaves dotfile names and Markdown
-reference definitions alone, keeps Razor `@Url.Action("...")` values intact,
+quoted value that contains `>` as locations, leaves dotfile paths and Markdown
+reference definitions alone, lists strings that could be a selector or a file
+name (`".ef-icon.svg"` outside `querySelector`) for review instead of guessing, keeps Razor `@Url.Action("...")` values intact,
 and its `--check`/`--dry-run` reports match write mode for tags that span
 lines. If you ran 1.0.1's codemod on JSX, Razor or Markdown, review its diff
 for those cases. No CSS, class or token changed.

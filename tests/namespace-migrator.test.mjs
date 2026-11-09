@@ -55,9 +55,11 @@ test("--check reports and writes nothing, exit 3; exit 0 once migrated", () => {
   assert.match(review.stdout, /review: .*ignored\.txt contains namespace tokens/);
   // A supported kind that is not UTF-8 is never rewritten, and never passed silently.
   assert.match(review.stdout, /review: .*latin1\.css \(not UTF-8\) contains namespace tokens/);
-  const again = run("--check", "--exclude", "ignored.txt", "--exclude", "latin1.css", dir);
+  // A string that is either a selector or a file name stays unrewritten and is listed.
+  assert.match(review.stdout, /review: .*jsx-tags\.tsx:4 "\.ef-config\.json" is either a class selector or a file name/);
+  const again = run("--check", "--exclude", "ignored.txt", "--exclude", "latin1.css", "--exclude", "jsx-tags.tsx", dir);
   assert.equal(again.status, 0, again.stdout);
-  assert.match(again.stdout, /would rewrite 0 line\(s\) in 0 of 18 file\(s\); 0 other file\(s\) to review/);
+  assert.match(again.stdout, /would rewrite 0 line\(s\) in 0 of 17 file\(s\); 0 other file\(s\) to review; 0 ambiguous string\(s\) to review/);
 });
 
 test("--dry-run prints each changed line before and after and writes nothing", () => {
@@ -210,6 +212,8 @@ test("script assignments to src/data/background, call arguments after [i], class
     [".ef-card.md, .ef-card.map {}", ".forma-card.md, .forma-card.map {}", "css"],
     [".ef-shell.ef-tabs.test {}", ".forma-shell.forma-tabs.test {}", "css"],
     ['el.querySelector(".ef-icon.is-open")', 'el.querySelector(".forma-icon.is-open")', "mjs"],
+    // Restored from 1.0.1: a selector API argument is unambiguously a selector.
+    ['el.querySelector(".ef-icon.svg")', 'el.querySelector(".forma-icon.svg")', "mjs"],
     ["const { efTone }: DOMStringMap = el.dataset;", "const { formaTone: efTone }: DOMStringMap = el.dataset;", "ts"],
     ["const { efRow, efCol: col }: Record<string, string> = node.dataset;", "const { formaRow: efRow, formaCol: col }: Record<string, string> = node.dataset;", "tsx"]
   ]) assert.equal(migrateText(input, extension), output, `${extension}: ${input}`);
@@ -254,6 +258,10 @@ test("dotfile names are paths, not class selectors", () => {
   for (const text of ['const f = ".ef-config.json";', 'const g = "/.ef-rc.json";', "const h = '.ef-settings.yml';", 'load("./.ef-tools.toml")']) {
     assert.equal(migrateText(text, "mjs"), text, text);
   }
+  // Dot-directories and extensionless dotfiles inside a path (1.0.2 review).
+  for (const text of ['const d = "assets/.ef-cache/x";', 'const e = "src/.ef-rc";']) {
+    assert.equal(migrateText(text, "mjs"), text, text);
+  }
   assert.equal(migrateText('const s = ".ef-card.ef-x";', "mjs"), 'const s = ".forma-card.forma-x";');
   assert.equal(migrateText(".ef-config.json {}", "css"), ".forma-config.json {}", "a CSS selector is still a selector");
 });
@@ -289,5 +297,50 @@ test("the 1.0.2 rewrites are idempotent", () => {
     const once = migrateText(text, extension);
     assert.equal(migrateText(once, extension), once, text);
   }
+});
+
+// Forma 1.0.2 review (WI-0050).
+test("a quoted string that is either a selector or a file name: migrated in a selector API, otherwise left and listed for review", () => {
+  for (const [input, output] of [
+    ['el.querySelector(".ef-icon.svg")', 'el.querySelector(".forma-icon.svg")'],
+    ['document.querySelectorAll(".ef-map.lock")', 'document.querySelectorAll(".forma-map.lock")'],
+    ['el.closest("div.ef-card.md")', 'el.closest("div.forma-card.md")'],
+    ["el.matches('.ef-button.md')", "el.matches('.forma-button.md')"]
+  ]) assert.equal(migrateText(input, "mjs"), output, input);
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-nsm-ambiguous-"));
+  const file = path.join(dir, "ambiguous.mjs");
+  const source = 'const a = ".ef-button.md";\nconst b = "div.ef-card.md";\nconst c = ".ef-icon.svg";\nconst d = ".ef-config.json";\n';
+  fs.writeFileSync(file, source);
+  const check = run("--check", dir);
+  assert.equal(check.status, 3, "an ambiguous string never passes --check silently");
+  for (const [line, value] of [[1, ".ef-button.md"], [2, "div.ef-card.md"], [3, ".ef-icon.svg"], [4, ".ef-config.json"]]) {
+    assert.match(check.stdout, new RegExp(`review: .*ambiguous\\.mjs:${line} "${value.replaceAll(".", "\\.")}" is either a class selector or a file name and was left unrewritten`));
+  }
+  assert.match(check.stdout, /4 ambiguous string\(s\) to review/);
+  assert.equal(run(dir).status, 0);
+  assert.equal(fs.readFileSync(file, "utf8"), source, "ambiguous strings are not rewritten");
+});
+
+test("a backslash does not escape the closing quote of an HTML attribute value", () => {
+  assert.equal(migrateText('<a title="C:\\" href="ef-docs" class="ef-x">x</a>', "html"), '<a title="C:\\" href="ef-docs" class="forma-x">x</a>');
+  // In a JSX expression a backslash still escapes.
+  assert.equal(migrateText('<a onClick={() => f("\\"}")} href="ef-docs" className="ef-y">x</a>', "tsx"), '<a onClick={() => f("\\"}")} href="ef-docs" className="forma-y">x</a>');
+});
+
+test("a stray < in script is not a tag and does not mask what follows", () => {
+  assert.equal(migrateText('if (a <b && c) { x.src = "ef-a"; }', "mjs"), 'if (a <b && c) { x.src = "forma-a"; }');
+});
+
+test("performance: 20,000 lines with a stray < run in linear time (1.0.2 review regression)", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-nsm-perf-"));
+  fs.writeFileSync(path.join(dir, "stray.mjs"), "if (a <b && c) { z(); }\n".repeat(20000));
+  fs.writeFileSync(path.join(dir, "tokens.css"), ".ef-a { color: var(--ef-b); }\n".repeat(20000));
+  const started = process.hrtime.bigint();
+  // --check computes the same per-line report as --dry-run without printing 20,000 lines.
+  const result = run("--check", dir);
+  const seconds = Number(process.hrtime.bigint() - started) / 1e9;
+  assert.equal(result.status, 3, result.stderr);
+  assert.match(result.stdout, /would rewrite 20000 line\(s\) in 1 of 2 file\(s\)/);
+  assert.ok(seconds < 2, `20,000 lines took ${seconds.toFixed(2)} s; expected under 2 s`);
 });
 

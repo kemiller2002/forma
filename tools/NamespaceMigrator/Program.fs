@@ -22,8 +22,11 @@ let private usage =
   --check            Report what would change; write nothing. Exit 3 when a
                      file would change, or when a text file this tool does not
                      rewrite (another kind, or a supported kind that is not
-                     UTF-8) contains namespace tokens (listed as "review");
-                     exit 0 only when nothing needs attention.
+                     UTF-8) contains namespace tokens, or when a quoted string
+                     could be a selector or a file name (".ef-icon.svg"; left
+                     unrewritten unless it is a querySelector/closest/matches
+                     argument), all listed as "review"; exit 0 only when
+                     nothing needs attention.
   --dry-run          Print every line that would change (before and after);
                      write nothing. Exit 0.
   --exclude TEXT     Skip files whose path contains TEXT (repeatable).
@@ -126,7 +129,8 @@ type private Outcome =
     { File: string
       Source: Source
       Changes: Change list
-      Migrated: string }
+      Migrated: string
+      Ambiguous: (int * string) list }
 
 let private examine (file: string) (source: Source) =
     let kind = kindOf file
@@ -134,7 +138,8 @@ let private examine (file: string) (source: Source) =
     { File = normalize file
       Source = source
       Changes = if migrated = source.Text then [] else changes kind source.Text
-      Migrated = migrated }
+      Migrated = migrated
+      Ambiguous = ambiguous source.Text }
 
 let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
     let changed = outcomes |> List.filter (fun o -> o.Migrated <> o.Source.Text)
@@ -147,6 +152,10 @@ let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
                 printfn "  + %s" (change.After.Trim())
         | Check
         | Write -> printfn "%s: %d line(s)" outcome.File outcome.Changes.Length
+    let ambiguousCount = outcomes |> List.sumBy (fun o -> o.Ambiguous.Length)
+    for outcome in outcomes do
+        for line, value in outcome.Ambiguous do
+            printfn "review: %s:%d \"%s\" is either a class selector or a file name and was left unrewritten; rewrite it by hand if it is a selector" outcome.File line value
     for file in review do
         printfn "review: %s contains namespace tokens this tool does not rewrite (another file kind, or not UTF-8); fix it by hand or --exclude it" file
     let lineCount = changed |> List.sumBy (fun o -> o.Changes.Length)
@@ -155,8 +164,8 @@ let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
         | Write -> "rewrote"
         | Check
         | DryRun -> "would rewrite"
-    printfn "namespace migration: %s %d line(s) in %d of %d file(s); %d other file(s) to review" verb lineCount changed.Length outcomes.Length review.Length
-    changed
+    printfn "namespace migration: %s %d line(s) in %d of %d file(s); %d other file(s) to review; %d ambiguous string(s) to review" verb lineCount changed.Length outcomes.Length review.Length ambiguousCount
+    changed, ambiguousCount
 
 [<EntryPoint>]
 let main argv =
@@ -193,13 +202,13 @@ let main argv =
                     | OtherText text when hasTokens text -> Some(normalize file)
                     | _ -> None)
             let review = notUtf8 @ otherKinds
-            let changed = report options.Mode outcomes review
+            let changed, ambiguousCount = report options.Mode outcomes review
             match options.Mode with
             | Write ->
                 for outcome in changed do
                     write outcome.File outcome.Source outcome.Migrated
                 0
-            | Check -> if changed.IsEmpty && review.IsEmpty then 0 else 3
+            | Check -> if changed.IsEmpty && review.IsEmpty && ambiguousCount = 0 then 0 else 3
             | DryRun -> 0
         with ex ->
             eprintfn "error: %s" ex.Message
