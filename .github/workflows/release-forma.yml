@@ -255,8 +255,7 @@ jobs:
               --notes "Forma ${RELEASE_TAG#v}: zero-runtime, brand-neutral design system. Marketing sites pin forma-marketing.css through forma.lock and load an organization theme after it; see docs/MARKETING-SITES.md."
           fi
 
-      - name: Publish to npm when trusted publishing is enabled
-        if: vars.NPM_PUBLISH_ENABLED == 'true'
-        run: |
-          npm install -g npm@11
-          npm publish --access public "$ARCHIVE"
+      # npm is owned by publish.yml (one publisher per registry, so a merge
+      # cannot fail on a double publish): it publishes a new package.json
+      # version once, after `npm view` shows it is not yet on npm. This
+      # workflow owns the immutable vX.Y.Z tag and the GitHub release.

@@ -32,24 +32,55 @@ The CHANGELOG (1.0.0) lists every breaking change.
 ### Step 1: run the codemod
 
 The F# codemod ships in the package (`tools/NamespaceMigrator`, .NET 10 SDK,
-no package references). It rewrites HTML, CSS, JS/MJS, F#, JSON and Markdown,
-and changes only namespace tokens: `ref-`, `chef-`, `--ref-` and similar words
-are left alone. It skips `node_modules`, `.git`, `bin` and `obj`.
+no package references). It rewrites `.html .htm .css .scss .sass .less .js
+.mjs .cjs .jsx .ts .mts .cts .tsx .vue .svelte .razor .cshtml .fs .fsi .fsx
+.json .md`, keeps each file's encoding (UTF-8 with or without a byte-order
+mark) and line endings, and changes only Forma names:
+
+- classes, element names, ids and class strings (`ef-x` -> `forma-x`,
+  `</ef-x>`, a regular-expression literal such as `/^\.ef-x/`);
+- custom properties (`--ef-x`) and attributes (`data-ef-x`);
+- the DOM dataset: `el.dataset.efX`, `el.dataset["efX"]` and destructuring
+  `const { efTone } = el.dataset`, which becomes
+  `const { formaTone: efTone } = el.dataset` so the local name is kept.
+
+Words (`ref-`, `chef-`, `--ref-`, `beef-`) and locations are never touched:
+URLs and host names (`https://ef-cdn.example.org/...`), paths
+(`/assets/ef-logo.svg`), file names (`ef-page.html`), CSS `url(...)` and
+`@import` targets, URL-valued HTML attributes (`src`, `href`, `srcset`, ...),
+Markdown link targets, module specifiers (`import ... from "..."`,
+`require("...")`) and scoped packages (`@ef-labs/widget`).
+
+It always skips `node_modules`, `.git`, `bin` and `obj`, and by default also
+`vendor`, `bower_components`, `jspm_packages`, `dist` and `wwwroot/lib`
+(third-party copies and build output); `--include-vendored` includes them.
 
 ```bash
 M=node_modules/@echelon-foundry/design-system/tools/NamespaceMigrator/NamespaceMigrator.fsproj
-dotnet run --project "$M" -- --check src wwwroot     # report; exit 3 when anything would change
+dotnet run --project "$M" -- --check src wwwroot     # report; exit 3 when anything needs attention
 dotnet run --project "$M" -- --dry-run src wwwroot   # every changed line, before and after
 dotnet run --project "$M" -- src wwwroot             # rewrite in place
 dotnet run --project "$M" -- --check src wwwroot     # exit 0: nothing left
 ```
 
-`--exclude TEXT` (repeatable) skips paths that contain `TEXT`, for example a
-changelog that must keep the old names. Review the diff and commit it as one
-change. Names the codemod cannot see (a class assembled from separate string
-pieces such as `"e" + "f-"`) must be fixed by hand; `TokenValidator` reports a
-remaining `--ef-*` reference as a `namespace` finding with the `--forma-*`
-suggestion.
+`--check` never gives a false all-clear: a text file of another kind (a
+`.txt`, a template, a `.yml`) that contains Forma names is listed as
+`review: ...` and keeps the exit status at 3 until you fix it by hand or
+exclude it. `--exclude TEXT` (repeatable) skips paths that contain `TEXT`, for
+example a changelog that must keep the old names. Review the diff and commit
+it as one change.
+
+Fix by hand what no text rewrite can see:
+
+- a name assembled from pieces (`"e" + "f-" + slug`, `` `${prefix}-card` ``);
+- a dataset key computed at run time (`el.dataset[key]` where `key` holds
+  `"efTone"`);
+- Forma names inside a location you own (a `/ef-icons/` asset folder you
+  serve yourself): rename the folder and its references together;
+- files in skipped directories or of kinds listed for review.
+
+`TokenValidator` reports a remaining `--ef-*` reference as a `namespace`
+finding with the `--forma-*` suggestion.
 
 Then upgrade the pin to `1.0.0`.
 

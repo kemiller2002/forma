@@ -1,32 +1,45 @@
 /// forma-namespace-migrator: rewrites Forma's pre-1.0 `ef-` namespace to
-/// `forma-` (FORMA-NS-001) in HTML, CSS, JS/MJS, F#, JSON and Markdown.
+/// `forma-` (FORMA-NS-001) in HTML, CSS/SCSS/Sass/Less, JS/TS (and JSX/TSX),
+/// Vue, Svelte, Razor, F#, JSON and Markdown.
 ///
 ///   dotnet run --project node_modules/@echelon-foundry/design-system/tools/NamespaceMigrator/NamespaceMigrator.fsproj -- --check src
 ///
-/// Exit status: 0 success (and, with --check, nothing to change), 2 invalid
-/// arguments or unreadable input, 3 --check found files that would change.
+/// Exit status: 0 success (and, with --check, nothing to change or review),
+/// 2 invalid arguments or unreadable input, 3 --check found files that would
+/// change or text files of another kind that contain namespace tokens.
 module Forma.NamespaceMigrator.Program
 
 open System
 open System.IO
+open System.Text
 open Forma.NamespaceMigrator.Migration
 
 let private usage =
-    """usage: NamespaceMigrator [--check | --dry-run] [--exclude TEXT]... PATH...
+    """usage: NamespaceMigrator [--check | --dry-run] [--exclude TEXT]... [--include-vendored] PATH...
 
-  (default)   Rewrite files in place.
-  --check     Report what would change; write nothing. Exit 3 when anything
-              would change, 0 when the tree already uses the forma- namespace.
-  --dry-run   Print every line that would change (before and after); write
-              nothing. Exit 0.
-  --exclude   Skip files whose path contains TEXT (repeatable).
-  PATH...     Files or directories. Directories are searched recursively for
-              .html .htm .css .js .mjs .cjs .fs .fsi .fsx .json .md files,
-              skipping node_modules, .git, bin and obj.
+  (default)          Rewrite files in place. Encoding (UTF-8, with or without a
+                     byte-order mark) and line endings are preserved.
+  --check            Report what would change; write nothing. Exit 3 when a
+                     file would change, or when a text file of a kind this tool
+                     does not rewrite contains namespace tokens (listed as
+                     "review"); exit 0 only when nothing needs attention.
+  --dry-run          Print every line that would change (before and after);
+                     write nothing. Exit 0.
+  --exclude TEXT     Skip files whose path contains TEXT (repeatable).
+  --include-vendored Also descend into vendor, bower_components, jspm_packages,
+                     dist and wwwroot/lib, which are skipped by default as
+                     third-party copies or build output. node_modules, .git,
+                     bin and obj are always skipped.
+  PATH...            Files or directories. Rewritten kinds: .html .htm .css
+                     .scss .sass .less .js .mjs .cjs .jsx .ts .mts .cts .tsx
+                     .vue .svelte .razor .cshtml .fs .fsi .fsx .json .md.
 
 Rewrites only namespace tokens: --ef-* -> --forma-*, data-ef-* ->
-data-forma-*, ef-* (classes, tags, ids, strings) -> forma-*, and
-dataset.efX -> dataset.formaX. ref-, chef-, --ref-, beef- are untouched."""
+data-forma-*, ef-* (classes, tags, ids, class strings) -> forma-*,
+dataset.efX / dataset["efX"] -> formaX, and dataset destructuring
+{ efX } -> { formaX: efX }. Words (ref-, chef-, --ref-, beef-) and locations
+(URLs, url(), @import, src/href values, module specifiers, @scope/packages,
+file and host names) are untouched."""
 
 type private Mode =
     | Write
@@ -36,6 +49,7 @@ type private Mode =
 type private Options =
     { Mode: Mode
       Excludes: string list
+      IncludeVendored: bool
       Paths: string list }
 
 let rec private parse (options: Options) (args: string list) =
@@ -46,43 +60,70 @@ let rec private parse (options: Options) (args: string list) =
     | "--dry-run" :: rest when options.Mode = Write -> parse { options with Mode = DryRun } rest
     | ("--check" | "--dry-run") :: _ -> Error "--check and --dry-run are exclusive"
     | "--exclude" :: text :: rest -> parse { options with Excludes = text :: options.Excludes } rest
+    | "--include-vendored" :: rest -> parse { options with IncludeVendored = true } rest
     | ("--help" | "-h") :: _ -> Error ""
     | flag :: _ when flag.StartsWith("--") -> Error $"unknown option {flag}"
     | path :: rest -> parse { options with Paths = path :: options.Paths } rest
 
 let private normalize (path: string) = path.Replace('\\', '/')
 
-let rec private files (path: string) : string list =
+let rec private files (includeVendored: bool) (path: string) : string list =
     if Directory.Exists path then
+        let descend (dir: string) =
+            let name = Path.GetFileName dir
+            not (alwaysSkipped.Contains name) && (includeVendored || not (isVendored path name))
         let nested =
             Directory.GetDirectories path
-            |> Array.filter (fun dir -> not (skippedDirectories.Contains(Path.GetFileName dir)))
+            |> Array.filter descend
             |> Array.sort
             |> Array.toList
-            |> List.collect files
-        let own = Directory.GetFiles path |> Array.filter isSupported |> Array.sort |> Array.toList
-        own @ nested
+            |> List.collect (files includeVendored)
+        (Directory.GetFiles path |> Array.sort |> Array.toList) @ nested
     elif File.Exists path then
         [ path ]
     else
         failwith $"no such file or directory: {path}"
 
+/// A file's text with its encoding facts, so a rewrite writes back exactly
+/// what it read except for the tokens.
+type private Source =
+    { Text: string
+      Bom: bool }
+
+let private utf8Bom = [| 0xEFuy; 0xBBuy; 0xBFuy |]
+let private strictUtf8 = UTF8Encoding(false, true)
+
+let private read (file: string) : Source option =
+    let bytes = File.ReadAllBytes file
+    let bom = bytes.Length >= 3 && bytes[0..2] = utf8Bom
+    let body = if bom then bytes[3..] else bytes
+    if Array.contains 0uy body[.. min (body.Length - 1) 8191] then
+        None // binary
+    else
+        try
+            Some { Text = strictUtf8.GetString body; Bom = bom }
+        with :? DecoderFallbackException ->
+            None // not UTF-8 text
+
+let private write (file: string) (source: Source) (text: string) =
+    let body = strictUtf8.GetBytes text
+    File.WriteAllBytes(file, (if source.Bom then Array.append utf8Bom body else body))
+
 type private Outcome =
     { File: string
+      Source: Source
       Changes: Change list
-      Original: string
       Migrated: string }
 
-let private examine (file: string) =
-    let original = File.ReadAllText file
-    let migrated = migrate original
+let private examine (file: string) (source: Source) =
+    let migrated = migrate source.Text
     { File = normalize file
-      Changes = if migrated = original then [] else changes original
-      Original = original
+      Source = source
+      Changes = if migrated = source.Text then [] else changes source.Text
       Migrated = migrated }
 
-let private report (mode: Mode) (outcomes: Outcome list) =
-    let changed = outcomes |> List.filter (fun o -> o.Migrated <> o.Original)
+let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
+    let changed = outcomes |> List.filter (fun o -> o.Migrated <> o.Source.Text)
     for outcome in changed do
         match mode with
         | DryRun ->
@@ -91,39 +132,45 @@ let private report (mode: Mode) (outcomes: Outcome list) =
                 printfn "  - %s" (change.Before.Trim())
                 printfn "  + %s" (change.After.Trim())
         | Check
-        | Write ->
-            printfn "%s: %d line(s)" outcome.File outcome.Changes.Length
+        | Write -> printfn "%s: %d line(s)" outcome.File outcome.Changes.Length
+    for file in review do
+        printfn "review: %s contains namespace tokens but is not a kind this tool rewrites; fix it by hand or --exclude it" file
     let lineCount = changed |> List.sumBy (fun o -> o.Changes.Length)
     let verb =
         match mode with
         | Write -> "rewrote"
         | Check
         | DryRun -> "would rewrite"
-    printfn "namespace migration: %s %d line(s) in %d of %d file(s)" verb lineCount changed.Length outcomes.Length
+    printfn "namespace migration: %s %d line(s) in %d of %d file(s); %d other file(s) to review" verb lineCount changed.Length outcomes.Length review.Length
     changed
 
 [<EntryPoint>]
 let main argv =
-    match parse { Mode = Write; Excludes = []; Paths = [] } (List.ofArray argv) with
+    match parse { Mode = Write; Excludes = []; IncludeVendored = false; Paths = [] } (List.ofArray argv) with
     | Error message ->
         if message <> "" then eprintfn "error: %s" message
         eprintfn "%s" usage
         if message = "" then 0 else 2
     | Ok options ->
         try
-            let outcomes =
+            let candidates =
                 options.Paths
-                |> List.collect files
+                |> List.collect (files options.IncludeVendored)
                 |> List.distinct
                 |> List.filter (fun file -> options.Excludes |> List.forall (fun text -> not ((normalize file).Contains text)))
-                |> List.map examine
-            let changed = report options.Mode outcomes
+            let supported, other = candidates |> List.partition isSupported
+            let outcomes = supported |> List.choose (fun file -> read file |> Option.map (examine file))
+            let review =
+                other
+                |> List.filter (fun file -> FileInfo(file).Length < 5_000_000L)
+                |> List.choose (fun file -> read file |> Option.filter (fun s -> hasTokens s.Text) |> Option.map (fun _ -> normalize file))
+            let changed = report options.Mode outcomes review
             match options.Mode with
             | Write ->
                 for outcome in changed do
-                    File.WriteAllText(outcome.File, outcome.Migrated)
+                    write outcome.File outcome.Source outcome.Migrated
                 0
-            | Check -> if changed.IsEmpty then 0 else 3
+            | Check -> if changed.IsEmpty && review.IsEmpty then 0 else 3
             | DryRun -> 0
         with ex ->
             eprintfn "error: %s" ex.Message

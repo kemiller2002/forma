@@ -189,3 +189,14 @@ test("release workflow watches versioned icon and site assets without weakening 
   assert.ok(!workflow.includes('gh release upload "$RELEASE_TAG" "$ARCHIVE"'),
     "a published stable release must never be overwritten");
 });
+
+// FORMA-1.0.0-REVIEW-01 R6: exactly one workflow publishes to npm, so a merge
+// cannot race two publishes of the same version.
+test("only publish.yml publishes to npm, and only a version npm does not have", () => {
+  const release = fs.readFileSync(".github/workflows/release-forma.yml", "utf8");
+  const publish = fs.readFileSync(".github/workflows/publish.yml", "utf8");
+  assert.doesNotMatch(release.replace(/^\s*#.*$/gm, ""), /npm publish/, "release-forma.yml must leave npm to publish.yml");
+  const step = publish.slice(publish.indexOf("Publish committed version when it is new"));
+  assert.ok(step.indexOf("npm view") >= 0 && step.indexOf("npm view") < step.indexOf("npm publish"), "publish.yml must check npm before publishing");
+});
+

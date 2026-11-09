@@ -35,7 +35,7 @@ test("write mode rewrites the fixtures exactly to the expected output", () => {
   const dir = copyInput();
   const result = run(dir);
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /rewrote 12 line\(s\) in 6 of 6 file\(s\)/);
+  assert.match(result.stdout, /rewrote 22 line\(s\) in 11 of 11 file\(s\); 1 other file\(s\) to review/);
   assert.deepEqual(snapshot(dir), snapshot(path.join(fixtures, "expected")));
 });
 
@@ -44,13 +44,18 @@ test("--check reports and writes nothing, exit 3; exit 0 once migrated", () => {
   const before = snapshot(dir);
   const check = run("--check", dir);
   assert.equal(check.status, 3, check.stdout + check.stderr);
-  assert.match(check.stdout, /would rewrite 12 line\(s\) in 6 of 6 file\(s\)/);
-  assert.match(check.stdout, /styles\.css: 3 line\(s\)/);
+  assert.match(check.stdout, /would rewrite 22 line\(s\) in 11 of 11 file\(s\)/);
+  assert.match(check.stdout, /styles\.css: 4 line\(s\)/);
   assert.deepEqual(snapshot(dir), before, "--check must not write");
   assert.equal(run(dir).status, 0);
-  const again = run("--check", dir);
+  // A text file of a kind the tool does not rewrite still holds tokens:
+  // --check never gives a false all-clear.
+  const review = run("--check", dir);
+  assert.equal(review.status, 3, review.stdout);
+  assert.match(review.stdout, /review: .*ignored\.txt contains namespace tokens/);
+  const again = run("--check", "--exclude", "ignored.txt", dir);
   assert.equal(again.status, 0, again.stdout);
-  assert.match(again.stdout, /would rewrite 0 line\(s\)/);
+  assert.match(again.stdout, /would rewrite 0 line\(s\) in 0 of 11 file\(s\); 0 other file\(s\) to review/);
 });
 
 test("--dry-run prints each changed line before and after and writes nothing", () => {
@@ -72,11 +77,33 @@ test("the migration is idempotent", () => {
   assert.deepEqual(snapshot(dir), snapshot(expected));
 });
 
-test("unsupported file types, build output and dependencies are not touched", () => {
+test("unsupported file types, build output, vendored copies and dependencies are not touched by default", () => {
   const dir = copyInput();
   run(dir);
   assert.equal(fs.readFileSync(path.join(dir, "ignored.txt"), "utf8"), fs.readFileSync(path.join(fixtures, "input/ignored.txt"), "utf8"));
   assert.equal(fs.readFileSync(path.join(dir, "bin/out.css"), "utf8"), ".ef-from-build-output {}\n");
+  assert.equal(fs.readFileSync(path.join(dir, "vendor/v.css"), "utf8"), ".ef-from-vendor {}\n");
+  assert.equal(fs.readFileSync(path.join(dir, "wwwroot/lib/pkg/l.css"), "utf8"), ".ef-from-client-lib {}\n");
+  assert.equal(fs.readFileSync(path.join(dir, "dist/d.css"), "utf8"), ".ef-from-build {}\n");
+});
+
+test("--include-vendored also rewrites vendored copies and build output (never bin, obj, node_modules)", () => {
+  const dir = copyInput();
+  assert.equal(run("--include-vendored", dir).status, 0);
+  assert.equal(fs.readFileSync(path.join(dir, "vendor/v.css"), "utf8"), ".forma-from-vendor {}\n");
+  assert.equal(fs.readFileSync(path.join(dir, "wwwroot/lib/pkg/l.css"), "utf8"), ".forma-from-client-lib {}\n");
+  assert.equal(fs.readFileSync(path.join(dir, "dist/d.css"), "utf8"), ".forma-from-build {}\n");
+  assert.equal(fs.readFileSync(path.join(dir, "bin/out.css"), "utf8"), ".ef-from-build-output {}\n");
+});
+
+test("a UTF-8 byte-order mark and CRLF line endings are preserved", () => {
+  const dir = copyInput();
+  run(dir);
+  const bytes = fs.readFileSync(path.join(dir, "bom-crlf.css"));
+  assert.deepEqual([...bytes.subarray(0, 3)], [0xef, 0xbb, 0xbf], "BOM kept");
+  assert.equal(bytes.subarray(3).toString("utf8"), ".forma-bom {}\r\n.forma-crlf { color: var(--forma-x); }\r\n");
+  const plain = path.join(dir, "styles.css");
+  assert.notEqual(fs.readFileSync(plain)[0], 0xef, "no BOM added to a file without one");
 });
 
 test("--exclude skips matching paths", () => {
@@ -99,10 +126,47 @@ test("every namespace token form is rewritten", () => {
     ["#ef-anchor", "#forma-anchor"],
     ["(ef-)", "(forma-)"],
     ["/\\bef-x/", "/\\bforma-x/"],
-    ["`ef-*`", "`forma-*`"]
+    ["`ef-*`", "`forma-*`"],
+    ['x.dataset["efState"]', 'x.dataset["formaState"]'],
+    ["x.dataset['efX']", "x.dataset['formaX']"],
+    ["const { efTone } = el.dataset;", "const { formaTone: efTone } = el.dataset;"],
+    ["const { efTone: tone, efRow } = this.el.dataset;", "const { formaTone: tone, formaRow: efRow } = this.el.dataset;"],
+    ["text.match(/--ef-[a-z]+/g)", "text.match(/--forma-[a-z]+/g)"],
+    ['s.replace(/data-ef-row="1"/, "")', 's.replace(/data-forma-row="1"/, "")']
   ];
-  for (const [input, output] of cases) assert.equal(migrateText(input), output, input);
+  for (const [input, output] of cases) assert.equal(migrateText(input, "mjs"), output, input);
+  for (const [input, output, extension] of [
+    ['<div className="ef-card" data-ef-tone="inverse" />', '<div className="forma-card" data-forma-tone="inverse" />', "tsx"],
+    ["const c: string = \"ef-card\";", "const c: string = \"forma-card\";", "ts"],
+    [".ef-card { &__title { color: var(--ef-x); } }", ".forma-card { &__title { color: var(--forma-x); } }", "scss"],
+    ['<section class="ef-surface" data-ef-tone="@Tone"></section>', '<section class="forma-surface" data-forma-tone="@Tone"></section>', "razor"],
+    ['<aside class="ef-callout" :data-ef-callout="k"></aside>', '<aside class="forma-callout" :data-forma-callout="k"></aside>', "vue"]
+  ]) assert.equal(migrateText(input, extension), output, `${extension}: ${input}`);
 });
+
+test("locations are never rewritten: URLs, hosts, paths, file names, url(), @import, module specifiers, scoped packages", () => {
+  const cases = [
+    ["css", '@import url("https://fonts.example.com/ef-sans.css");'],
+    ["css", '@import "../ef-base.css";'],
+    ["css", ".x { background: url(/img/ef-bg.png); }"],
+    ["mjs", 'const u = "https://cdn.example.com/ef-icons/sprite.svg";'],
+    ["mjs", 'const h = "https://ef-cdn.example.org/a.js";'],
+    ["mjs", 'import x from "@ef-labs/widget";'],
+    ["mjs", 'const y = require("ef-pkg/ef-x");'],
+    ["mjs", 'const p = "/assets/ef-logo.svg";'],
+    ["mjs", 'const host = "ef-cdn.example.org";'],
+    ["mjs", 'const f = "ef-page.html";'],
+    ["html", '<img src="/assets/ef-logo.svg" alt="">'],
+    ["html", '<a href="ef-page.html">Page</a>'],
+    ["html", '<script src="//cdn.example.com/ef-a.js"></script>'],
+    ["md", "[Guide](ef-guide.md) and <https://example.com/ef-x>"]
+  ];
+  for (const [extension, text] of cases) assert.equal(migrateText(text, extension), text, text);
+  // ... while a Forma name next to a location still migrates.
+  assert.equal(migrateText('<a class="ef-link" href="https://example.com/ef-x">x</a>', "html"), '<a class="forma-link" href="https://example.com/ef-x">x</a>');
+});
+
+
 
 test("adversarial words are not namespace tokens", () => {
   for (const word of ["ref-", "chef-", "beef-", "--ref-x", "--chef-x", "x-ef-y", "x--ef-y", "data-xef-y", "--xef-y", "efc-x", "ef_x", "ef",

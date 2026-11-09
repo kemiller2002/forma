@@ -20,7 +20,7 @@ import { fileURLToPath } from "node:url";
 import { SOURCE_CSS, extractTarball, packTarball } from "./brand-neutrality.mjs";
 
 const BOUNDARY = String.raw`(?:(?<![A-Za-z0-9_$\-])|(?<=\\b))`;
-export const LEGACY_TOKEN = new RegExp(`${BOUNDARY}(?:--ef-|data-ef-|ef-)[^\\s"'\`<>(){}\\[\\],;:]*|(?<=\\bdataset\\??\\.)ef[A-Z]\\w*`, "g");
+export const LEGACY_TOKEN = new RegExp(`${BOUNDARY}(?:--ef-|data-ef-|ef-)[^\\s"'\`<>(){}\\[\\],;:]*|(?<=\\bdataset\\??\\.)ef[A-Z]\\w*|(?<=\\bdataset\\??\\.?\\[\\s*["'\`])ef[A-Z]\\w*`, "g");
 const TEXT = /\.(?:css|html?|js|mjs|cjs|json|md|txt|fs|fsi|fsx|fsproj|svg|ya?ml)$/i;
 
 export const exempt = (file) => path.basename(file) === "CHANGELOG.md" || /(?:^|\/)tools\/NamespaceMigrator\//.test(file.replaceAll(path.sep, "/"));

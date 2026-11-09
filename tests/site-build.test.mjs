@@ -140,7 +140,10 @@ test("site chrome uses the neutral Forma default palette and no former Echelon p
     assert.match(css, new RegExp(value.replace("#", "\\#"), "i"), `missing neutral palette value ${value}`);
   }
   assert.deepEqual(paletteFindings(css), [], "site.css copies a former Echelon palette value");
-  assert.deepEqual(identityFindings(fs.readFileSync(path.join(output, "branding", "index.html"), "utf8").replace(/Echelon Foundry|Echelon \/ Foundry/g, "")), [],
+  assert.deepEqual(identityFindings(fs.readFileSync(path.join(output, "branding", "index.html"), "utf8")
+    // The documentation site is the publisher's: its chrome names the publisher
+    // and its <head> loads the site's own web fonts (allow-listed here only).
+    .replace(/<head>[\s\S]*?<\/head>/, "").replace(/Echelon Foundry|Echelon \/ Foundry/g, "")), [],
     "the brand laboratory demonstrates an Echelon brand");
 
   assert.match(css, /background-size:\s*48px\s+48px/);

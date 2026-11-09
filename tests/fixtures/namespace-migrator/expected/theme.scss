@@ -1,0 +1,2 @@
+$accent: var(--forma-color-accent-primary);
+.forma-card { &__title { color: $accent; } }

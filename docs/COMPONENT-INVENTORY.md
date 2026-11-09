@@ -181,7 +181,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Badge | `<forma-badge>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing.spec.mjs | status-lozenge, facts, hero |
 | Call to action | `<forma-cta>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing-containment.spec.mjs | hero, button, section |
 | Callout | `<forma-callout>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | callout.spec.mjs | prose, alert, cta |
-| Card grid | `<forma-card-grid>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, site-css-policy.test.mjs, marketing-containment.spec.mjs, marketing.spec.mjs | facts, entry-index, metric-card, surface |
+| Card grid | `<forma-card-grid>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, namespace-migrator.test.mjs, site-css-policy.test.mjs, marketing-containment.spec.mjs, marketing.spec.mjs | facts, entry-index, metric-card, surface |
 | Code sample | `<forma-code-sample>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | prose, steps, diff-viewer, identifier |
 | Documentation layout | `<forma-documentation-layout>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | prose, marketing-shell, sidebar, rail |
 | Entry index | `<forma-entry-index>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | card-grid, steps, relationship-index |

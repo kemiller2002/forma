@@ -41,7 +41,7 @@ test("the compilers emit the forma- namespace", () => {
 
 test("every legacy token form is detected", () => {
   for (const leak of [".ef-button {}", "<ef-card>", "</ef-card>", 'class="x ef-y"', "var(--ef-a)", "--ef-a: 1;", '[data-ef-theme="dark"]',
-    "el.dataset.efRow", "el.dataset?.efRow", '"ef-component-tag"', "/\\bef-x/", "`ef-*`", "#ef-id"]) {
+    "el.dataset.efRow", "el.dataset?.efRow", 'el.dataset["efRow"]', '"ef-component-tag"', "/\\bef-x/", "`ef-*`", "#ef-id"]) {
     assert.equal(legacyTokens(leak).length, 1, leak);
   }
 });

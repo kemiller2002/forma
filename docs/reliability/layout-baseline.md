@@ -35,8 +35,8 @@ Every number below was produced in this session. Nothing is estimated.
   - Components: `.forma-sidebar`, `.forma-switcher`, `.forma-split-pane`, `.forma-frame`, `.forma-measure`, `.forma-form-row`, `.forma-field`.
 - **Browser tests.** Playwright runs Chromium, Firefox and WebKit (`playwright.config.mjs`, 58 specs in `tests/browser`), plus the site suites. The F# layout probe (`tests/layout`, LCE-001) runs offline from CI.
 - **Release procedure.**
-  - Merging a new `package.json` version to `main` runs `release-forma.yml`. That workflow runs `npm run release:check`, packs and verifies the tarball, exercises it as a consumer, and creates the immutable `vX.Y.Z` GitHub release. It publishes to npm only when `NPM_PUBLISH_ENABLED` is set.
-  - `publish.yml` publishes the npm packages.
+  - Merging a new `package.json` version to `main` runs `release-forma.yml`. That workflow runs `npm run release:check`, packs and verifies the tarball, exercises it as a consumer, and creates the immutable `vX.Y.Z` GitHub release. It does not publish to npm.
+  - `publish.yml` is the only npm publisher: it publishes each new `package.json` version once, after checking that npm does not have it yet.
   - A release-path change merged without a version bump fails the immutable-tag guard.
   - `tests/package-contract.test.mjs` requires the newest `CHANGELOG.md` heading to equal the package version and to not be marked unreleased.
 
