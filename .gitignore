@@ -44,6 +44,8 @@ logs/*
 dist/
 # A deliberately broken Forma root for tests/token-validator.test.mjs (its dist/ is source, not build output).
 !tests/fixtures/token-validation/forma-broken/dist/
+# The codemod fixtures prove that dist/ is skipped by default.
+!tests/fixtures/namespace-migrator/*/dist/
 site-dist/
 
 # F# tool build output (never tracked: stale binaries can be mistaken for up to date)
