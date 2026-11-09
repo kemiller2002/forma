@@ -5578,7 +5578,8 @@
     display: inline-grid;
     inline-size: var(--ef-app-identity-size);
     block-size: var(--ef-app-identity-size);
-    color: var(--ef-color-accent-primary, CanvasText);
+    /* Routed through the secondary-surface hook so the mark re-pairs there. */
+    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-primary, CanvasText));
   }
 
   .ef-app-identity__mark > :is(object, img, svg) {
@@ -5617,14 +5618,21 @@
   /*
    * Mark variants. Without an explicit theme the operating-system preference
    * selects the variant; an explicit data-ef-theme wins, including one level
-   * of nesting (a light region inside a dark page). Dark themes are dark,
-   * dark-restrained and dark-technical; every other theme is light.
+   * of nesting (a light region inside a dark page, or inside a page that
+   * follows a dark preference). Deeper alternation is not resolved: CSS
+   * cannot select the nearest themed ancestor without @scope. Dark themes
+   * are dark, dark-restrained and dark-technical; a new dark theme must be
+   * added to these lists. A single-color inline mark drawn with
+   * currentColor needs no variants and adapts to every theme.
    */
   .ef-app-identity__variant[data-ef-scheme="dark"] { display: none; }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-ef-theme]) .ef-app-identity__variant[data-ef-scheme="light"] { display: none; }
     :root:not([data-ef-theme]) .ef-app-identity__variant[data-ef-scheme="dark"] { display: grid; }
+    /* An explicit light theme on a region still wins over the preference. */
+    :root:not([data-ef-theme]) [data-ef-theme]:not([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="light"] { display: grid; }
+    :root:not([data-ef-theme]) [data-ef-theme]:not([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="dark"] { display: none; }
   }
 
   :is([data-ef-theme="dark"], [data-ef-theme="dark-restrained"], [data-ef-theme="dark-technical"]) .ef-app-identity__variant[data-ef-scheme="light"] { display: none; }
@@ -5690,7 +5698,10 @@
   .ef-startup__slow {
     color: var(--ef-color-text-secondary, inherit);
     visibility: hidden;
-    animation: ef-startup-reveal 1ms step-end var(--ef-startup-slow-after) both;
+    /* A zero-length animation that fills forwards after the delay: the note
+       is hidden until then and visible from then on. No interpolated frame
+       exists, so no engine rounding can leave it hidden. */
+    animation: ef-startup-reveal 0s linear var(--ef-startup-slow-after) forwards;
   }
 
   .ef-startup[data-ef-state="slow"] .ef-startup__slow {
@@ -5699,8 +5710,7 @@
   }
 
   @keyframes ef-startup-reveal {
-    from { visibility: hidden; }
-    to { visibility: visible; }
+    from, to { visibility: visible; }
   }
 
   .ef-startup__problem,

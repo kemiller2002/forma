@@ -598,12 +598,12 @@
       "note": "Bounded discrete sequence of one step: the slow-start note becomes visible once, after --ef-startup-slow-after (AIS-001.2).",
       "approvedLiterals": [
         {
-          "value": "1ms",
-          "reason": "A discrete one-step reveal: the keyframe only flips visibility, so the duration carries no motion; the delay (--ef-startup-slow-after) is the parameter."
+          "value": "0s",
+          "reason": "A discrete reveal: a zero-length animation filled forwards after --ef-startup-slow-after; it has no interpolated frame (AIS-001.2)."
         },
         {
-          "value": "step-end",
-          "reason": "Discrete visibility flip with no interpolated frame (AIS-001.2)."
+          "value": "linear",
+          "reason": "Irrelevant for a zero-length animation; stated so the easing is explicit."
         }
       ]
     },

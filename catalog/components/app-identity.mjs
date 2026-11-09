@@ -170,7 +170,7 @@ export default {
     consumer: [
       "Supply the visible name, or a visually hidden one when only the mark shows. Do not rely on the mark's own title for the name.",
       "Serve marks that are legible at 16 pixels and keep enough contrast on both light and dark surfaces.",
-      "Prefer an inline SVG mark. For an external mark, serve only trusted, script-free, same-origin files, and allow them in the page's object-src if you want them shown rather than the monogram.",
+      "Prefer an inline SVG mark. For an external mark, serve only trusted, script-free, same-origin files, and allow them in the page's object-src if you want them shown rather than the monogram. A same-origin object SVG runs its own script with the page origin's access, so never use object for a customer-supplied mark.",
       "Choose a monogram letter that identifies the application, not the parent organization."
     ]
   },

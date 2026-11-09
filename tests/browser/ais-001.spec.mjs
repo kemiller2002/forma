@@ -97,13 +97,37 @@ test("start-up shows identity, indicator and a meaningful status under both bran
 test("the slow-start note is hidden at first and revealed after the delay without script", async ({ page }) => {
   await open(page);
   const root = page.locator("#startup-echelon-light");
-  await root.evaluate(element => element.style.setProperty("--ef-startup-slow-after", "600ms"));
+  await root.evaluate(element => element.style.setProperty("--ef-startup-slow-after", "3s"));
   // Restart the animation so the shortened delay applies from now.
   await root.evaluate(element => { const slow = element.querySelector(".ef-startup__slow"); slow.style.animation = "none"; void slow.offsetWidth; slow.style.animation = ""; });
   await expect(root.locator(".ef-startup__slow")).toBeHidden();
   const before = await root.locator(".ef-startup__slow").boundingBox();
   expect(before?.height ?? 0).toBeGreaterThan(0);
   await expect(root.locator(".ef-startup__slow")).toBeVisible({ timeout: 5000 });
+});
+
+for (const reducedMotion of ["no-preference", "reduce"]) {
+  test(`the slow-start note appears at the default delay (${reducedMotion} motion)`, async ({ page }) => {
+    test.setTimeout(30_000);
+    await open(page, { reducedMotion });
+    const note = page.locator("#startup-echelon-light .ef-startup__slow");
+    await expect(note).toBeHidden();
+    await page.waitForTimeout(6_000);
+    await expect(note).toBeHidden();
+    await expect(note).toBeVisible({ timeout: 6_000 });
+  });
+}
+
+test("an explicit light region keeps the light mark under a dark operating-system preference", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.goto(FIXTURE);
+  await page.locator("body").evaluate(body => {
+    const region = document.createElement("section");
+    region.dataset.efTheme = "light";
+    region.innerHTML = document.querySelector("#identity-light").outerHTML.replace('id="identity-light"', 'id="identity-os-light-region"');
+    body.append(region);
+  });
+  expect(await visibleScheme(page, "identity-os-light-region")).toEqual(["light"]);
 });
 
 test("the host can mark a slow start explicitly", async ({ page }) => {

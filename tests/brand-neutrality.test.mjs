@@ -2,7 +2,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { AIS_MARKER, GENERIC_STYLESHEETS, aisBlock, echelonPalette, hexLiterals, identityCount, measure, paletteCount } from "./support/brand-neutrality.mjs";
+import { AIS_MARKER, GENERIC_STYLESHEETS, aisBlock, colorLiterals, echelonPalette, hexLiterals, identityCount, measure, paletteCount } from "./support/brand-neutrality.mjs";
 
 const baseline = JSON.parse(fs.readFileSync("tests/fixtures/brand-neutrality-baseline.json", "utf8")).files;
 const current = measure();
@@ -26,9 +26,8 @@ for (const file of GENERIC_STYLESHEETS) {
 test("the AIS-001 rules contain no color literal and no organization name", () => {
   const block = aisBlock();
   assert.ok(block, `components.css must keep the marker "${AIS_MARKER}"`);
-  assert.deepEqual(hexLiterals(block), []);
+  assert.deepEqual(colorLiterals(block), []);
   assert.equal(identityCount(block), 0);
-  assert.doesNotMatch(block.replace(/\/\*[\s\S]*?\*\//g, ""), /\brgb\(|\bhsl\(|\boklch\(/i);
 });
 
 test("brand-neutral patterns name no organization", () => {
@@ -48,6 +47,15 @@ test("detectors catch planted identity and palette leaks", () => {
   assert.equal(paletteCount(".x { color: #905831; border-color: #FFF; }", palette), 1);
   assert.equal(paletteCount(".x { color: var(--ef-color-accent-primary); }", palette), 0);
   assert.deepEqual(hexLiterals(".x { color: #abc; }"), ["#aabbcc"]);
+  assert.equal(paletteCount(".x { color: #905831cc; }", palette), 1);
+  assert.equal(identityCount(".x { background: url(/assets/echelon.brand.svg); }"), 1);
+  for (const leak of ["#905831cc", "rgba(144, 88, 49, 1)", "hwb(25 19% 44%)", "oklch(50% 0.1 50)", "color(srgb 1 0 0)", "sienna", "white"]) {
+    assert.ok(colorLiterals(`.x { border-color: ${leak}; }`).length > 0, leak);
+  }
+  for (const allowed of ["Canvas", "CanvasText", "currentColor", "transparent", "inherit", "var(--ef-color-accent-primary, CanvasText)"]) {
+    assert.deepEqual(colorLiterals(`.x { color: ${allowed}; }`), [], allowed);
+  }
+  assert.deepEqual(colorLiterals('.x::after { content: "white"; }'), []);
 });
 
 test("a stylesheet with an added Echelon literal would fail the ratchet", () => {

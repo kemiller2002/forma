@@ -25,11 +25,14 @@ export const GENERIC_STYLESHEETS = Object.freeze([
   "src/marketing/layouts.css"
 ]);
 
-const HEX = /#[0-9a-f]{6}\b|#[0-9a-f]{3}\b/gi;
+const HEX = /#(?:[0-9a-f]{8}|[0-9a-f]{6}|[0-9a-f]{4}|[0-9a-f]{3})\b/gi;
 
+// Normalized to #rrggbb; an alpha channel is dropped, so #905831cc still
+// counts as the palette color it tints.
 const normalizeHex = (hex) => {
-  const h = hex.toLowerCase();
-  return h.length === 4 ? `#${[...h.slice(1)].map((c) => c + c).join("")}` : h;
+  const h = hex.toLowerCase().slice(1);
+  const full = h.length <= 4 ? [...h].map((c) => c + c).join("") : h;
+  return `#${full.slice(0, 6)}`;
 };
 
 const stripComments = (css) => css.replace(/\/\*[\s\S]*?\*\//g, (comment) => comment.replace(/[^\n]/g, " "));
@@ -65,7 +68,9 @@ export const echelonPalette = (root = ".") => {
 };
 
 const IDENTITY = /echelon|\/brand\//gi;
-const ALLOWED_IDENTITY = /@layer\s+echelon\.[a-z-]+|echelon\.(?:tokens|foundations|components|brand|assessment|marketing)\b/gi;
+// Only the historical cascade-layer names are allowed: `@layer echelon.x`
+// statements and blocks (comments are stripped before matching).
+const ALLOWED_IDENTITY = /@layer\s+echelon\.[a-z-]+(?:\s*,\s*echelon\.[a-z-]+)*/gi;
 
 export const identityCount = (css) =>
   (stripComments(css).replace(ALLOWED_IDENTITY, "").match(IDENTITY) ?? []).length;
@@ -74,6 +79,23 @@ export const paletteCount = (css, palette) =>
   (stripComments(css).match(HEX) ?? []).map(normalizeHex).filter((hex) => palette.has(hex)).length;
 
 export const hexLiterals = (css) => (stripComments(css).match(HEX) ?? []).map(normalizeHex);
+
+// Every way of writing a literal color other than a system color or keyword:
+// hex (3, 4, 6, 8 digits), color functions, and CSS named colors. Used on
+// rules that must take every color from tokens (the AIS-001 block).
+const COLOR_FUNCTION = /\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color)\(/gi;
+const NAMED_COLORS = "aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen".split(" ");
+const NAMED = new RegExp(`:[^;{}]*\\b(?:${NAMED_COLORS.join("|")})\\b`, "gi");
+const declarationValues = (css) => stripComments(css).replace(/"[^"]*"|'[^']*'/g, '""');
+
+export const colorLiterals = (css) => {
+  const values = declarationValues(css);
+  return [
+    ...(values.match(HEX) ?? []),
+    ...(values.match(COLOR_FUNCTION) ?? []),
+    ...[...values.matchAll(NAMED)].map((match) => match[0].trim())
+  ];
+};
 
 export const measure = (root = ".") => {
   const palette = echelonPalette(root);

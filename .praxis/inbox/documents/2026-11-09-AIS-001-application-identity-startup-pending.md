@@ -30,7 +30,7 @@ Verified gaps:
 
 **AIS-001.2 Pre-WASM startup.** A brand-neutral `.ef-startup` pattern is authored in the application's initial HTML and needs only Forma CSS. It shows the application identity, a visible indicator and a meaningful status message (not the word "Loading" alone) in a polite status region. It reveals a "still starting" message after a delay with no script, honours reduced motion with a static but perceivable equivalent, and presents failed and timed-out states (set by the host) with a recovery action. It never shows fabricated progress.
 
-**AIS-001.3 Pending actions.** Buttons and button-styled links with `aria-busy="true"` show an in-place busy indicator, keep their label, and look unavailable; a form with `aria-busy="true"` presents its pending state. Duplicate-submission prevention remains the application's duty and is documented (zero-runtime).
+**AIS-001.3 Pending actions.** Buttons and button-styled links with `aria-busy="true"` show an in-place busy indicator, keep their label, and drop hover and press feedback (amended 2026-11-09 after independent review: a pending action is not dimmed like a disabled one, because its label still reports the work in progress); a form with `aria-busy="true"` presents its pending state. Duplicate-submission prevention remains the application's duty and is documented (zero-runtime).
 
 **AIS-001.4 Brand-neutrality guard.** A test fails when Forma's generic stylesheets gain new Echelon identity (names, logo paths) or additional Echelon-palette literals beyond the recorded baseline, and when the new AIS-001 rules contain any hex color literal.
 
