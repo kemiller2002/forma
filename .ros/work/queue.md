@@ -107,3 +107,4 @@
 | WI-0049 | Forma 1.0.2: NamespaceMigrator re-review fixes (JSX tag scanning, dotfiles, whole-file reporting, Markdown reference links, Razor, inventory) | complete | forma, namespace, codemod | medium |
 | WI-0050 | Forma 1.0.2 review fixes (PR #184): ambiguous dotfile selectors to review, bounded tag scan, linear reporting, attribute escapes, dot-directories | complete | forma, namespace, codemod, review | medium |
 | WI-0051 | Forma 1.0.2 re-review fixes (PR #184): keep tag spans on early stop, protect selector attribute values, word-prefixed file names | complete | forma, namespace, codemod, review | medium |
+| WI-0052 | Forma 1.0.2 re-review fixes (PR #184): drop script stop characters, ambiguous prefixes, nested selector quotes | complete | forma, namespace, codemod, review | medium |

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 52,
+  "nextSeq": 53,
   "items": [
     {
       "id": "WI-0001",
@@ -1330,6 +1330,32 @@
       "attachments": [],
       "createdAt": "2026-11-09T22:29:44.000Z",
       "updatedAt": "2026-11-09T22:40:21.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0052",
+      "title": "Forma 1.0.2 re-review fixes (PR #184): drop script stop characters, ambiguous prefixes, nested selector quotes",
+      "description": "Source: .praxis/inbox/documents/2026-11-09-FORMA-1.0.2-REVIEW-03.md; follows WI-0051",
+      "tags": [
+        "forma",
+        "namespace",
+        "codemod",
+        "review"
+      ],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-09T23:29:14.000Z",
+      "updatedAt": "2026-11-09T23:37:23.253Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
