@@ -9,8 +9,8 @@ import { expect, test } from "@playwright/test";
 const dir = "tests/fixtures/workflow-nontext";
 const STATUS_NODES = ["warning", "danger", "success", "info", "check"];
 const MODES = [
-  { name: "light", media: { colorScheme: "light", forcedColors: "none" }, canvas: [0xf2, 0xef, 0xe7] },
-  { name: "dark", media: { colorScheme: "dark", forcedColors: "none" }, canvas: [0x17, 0x1a, 0x18] },
+  { name: "light", media: { colorScheme: "light", forcedColors: "none" }, canvas: [0xfa, 0xfa, 0xfa] },
+  { name: "dark", media: { colorScheme: "dark", forcedColors: "none" }, canvas: [0x16, 0x16, 0x16] },
   { name: "forced colours", media: { colorScheme: "light", forcedColors: "active" } }
 ];
 

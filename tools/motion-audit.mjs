@@ -61,7 +61,7 @@ export const sourceList = (models) =>
 export const readSources = (models, root = ".") =>
   sourceList(models).map(({ group, file }) => ({ group, file, text: fs.readFileSync(path.join(root, file), "utf8") }));
 
-// Flat design-token primitives from tokens/echelon.tokens.json, used to verify
+// Flat design-token primitives from tokens/forma.tokens.json, used to verify
 // that var() fallbacks restate the token they stand in for.
 export const primitiveMotionValues = (tokens) => {
   const primitive = tokens.primitive ?? {};
@@ -400,7 +400,7 @@ export const summarize = (tracks, models) =>
 
 export const runAudit = (root = ".") => {
   const catalog = loadCatalog(root);
-  const tokens = readJson(root, "tokens/echelon.tokens.json");
+  const tokens = readJson(root, "tokens/forma.tokens.json");
   const result = auditSources({
     models: catalog.models,
     classification: catalog.classification,

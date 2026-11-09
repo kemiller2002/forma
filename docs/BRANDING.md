@@ -18,6 +18,30 @@ terminology.
 The manifest is data. Do not place CSS, script, credentials, or executable
 configuration in it.
 
+## Forma is brand-neutral
+
+Forma ships no organization's brand (EDS-ADR-002). The default `:root` light
+and dark palette is a neutral, accessible Forma palette; an organization's
+identity arrives as a brand or theme package that the application loads after
+Forma. Forma's own `brands/` directory holds only two unrelated example
+brands, `example-harbor` and `example-orchard`, which exist to prove that
+scoping, isolation and contrast gates work for any organization.
+
+## Compile an external brand
+
+The F# `BrandCompiler` and `TokenCompiler` sources and project files ship in
+the npm package, so a theme package compiles its own manifest with exactly the
+compiler Forma uses (requires the .NET 10 SDK; the projects have no package
+references):
+
+```bash
+dotnet run --project node_modules/@echelon-foundry/design-system/tools/BrandCompiler/BrandCompiler.fsproj -- theme/ dist/
+```
+
+The output for a manifest is byte-identical to what Forma's own build emits for
+the same manifest (`tests/external-brand-compiler.test.mjs` proves it against
+the packed tarball). Load the result after Forma's CSS.
+
 ## Build
 
 Compile all repository brand manifests with:
@@ -153,9 +177,11 @@ monogram as its fallback content, with light and dark variants marked by
 `.ef-app-identity__variant` and `data-ef-scheme`. The pre-runtime start-up screen
 `.ef-startup` (`patterns/startup.html`) shows the same identity before a
 WebAssembly or script runtime has loaded. Both are brand-neutral: every color
-comes from the active theme or brand, and `tests/brand-neutrality.test.mjs`
-fails if Forma's generic stylesheets gain organization identity or palette
-literals.
+comes from the active theme or brand. `tools/brand-neutrality.mjs` (run by
+`tests/brand-neutrality.test.mjs` and by the release workflow) fails on any
+organization identity, any literal from the organization palette Forma used
+before 1.0.0, or a legacy organization cascade-layer name in Forma's source
+CSS, `dist/` or the packed tarball.
 
 ## White-labeling rules for applications
 

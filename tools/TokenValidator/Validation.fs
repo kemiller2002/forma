@@ -13,7 +13,7 @@ let FormaPrefix = "--ef-"
 
 /// Prefixes that look like an attempt at a Forma token but are not the
 /// namespace (`--forma-text`, `--ef_color`, `--EF-color`).
-let private lookalikePrefixes = [ "--forma-"; "--echelon-"; "--ef_"; "--ef--"; "--efc-" ]
+let private lookalikePrefixes = [ "--forma-"; "--ef_"; "--ef--"; "--efc-" ]
 
 type Severity =
     | Blocking
@@ -128,7 +128,7 @@ let declarationsOf (files: string list) =
 /// Token sources shipped with (or kept in) a Forma root: the core token file
 /// and any theme token files.
 let tokenSourcesOf (root: string) =
-    let core = Path.Combine(root, "tokens", "echelon.tokens.json")
+    let core = Path.Combine(root, "tokens", "forma.tokens.json")
     let themes =
         let directory = Path.Combine(root, "themes")
         if Directory.Exists directory then
@@ -156,7 +156,7 @@ let private internalPrefixesOf (root: string) =
 /// and the built stylesheets in dist/.
 let registryOf (root: string) =
     let sources = tokenSourcesOf root
-    if sources.IsEmpty then failwith $"no token source under '{root}' (expected tokens/echelon.tokens.json)"
+    if sources.IsEmpty then failwith $"no token source under '{root}' (expected tokens/forma.tokens.json)"
     let dist = Path.Combine(root, "dist")
     let css = cssFilesUnder dist
     if css.IsEmpty then failwith $"no built stylesheets under '{dist}' (run npm run build, or point --forma at an installed package)"

@@ -96,8 +96,8 @@ The rule judges literal colours (`#rrggbb`, or a palette slot holding one) on
 nodes, groups, legend swatches and edges against the 3:1 minimum of WCAG 1.4.11:
 
 - **No authored fill.** The shape is drawn on the default surface, so its
-  stroke and accent are judged against both default surfaces: light `#f2efe7`
-  and dark `#171a18` (`--ef-color-surface-primary` in the compiled light theme
+  stroke and accent are judged against both default surfaces: light `#fafafa`
+  and dark `#161616` (`--ef-color-surface-primary` in the compiled light theme
   and in the dark theme, including `prefers-color-scheme: dark`). The weaker
   theme is reported and named. Legend swatches and edge strokes are judged the
   same way.
@@ -118,7 +118,7 @@ token/literal mixes (a token stroke on a literal fill, a literal stroke on a
 token fill). Forma's own token pairs (every `status-*` token and
 `border-functional` on `surface-primary` and `surface-secondary`, in every
 shipped theme and brand) are covered by `tests/nontext-contrast.test.mjs`.
-Only `#f2efe7` and `#171a18` are used as default surfaces. Literal colours
+Only `#fafafa` and `#161616` are used as default surfaces. Literal colours
 are judged against them, not against the surface of another Forma theme
 (for example `high-contrast`, `warm-earth` or `dark-technical`) or a brand an
 application applies; those surfaces are approximated by the light and dark

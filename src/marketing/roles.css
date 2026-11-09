@@ -2,15 +2,15 @@
   Forma marketing role contract: brand-neutral defaults.
 
   Marketing foundations, components, and layouts consume only these role
-  tokens and Forma's core semantic tokens. A theme (for example the compiled
-  Echelon Marketing Theme) restates the roles at :root with higher
+  tokens and Forma's core semantic tokens. A theme (an organization's
+  compiled marketing theme, shipped outside Forma) restates the roles at :root with higher
   specificity, so these :where() defaults apply only when no theme does.
 
   Defaults are declared on every theme/brand scope as well as :root so that
   derived values recompute inside a nested data-ef-theme or data-ef-brand
   subtree instead of inheriting the root's resolved value.
 */
-@layer echelon.tokens {
+@layer forma.tokens {
   :where(:root, [data-ef-theme], [data-ef-brand]) {
     /* Extended color roles, derived from core semantics. */
     --ef-color-surface-elevated: var(--ef-color-surface-primary);

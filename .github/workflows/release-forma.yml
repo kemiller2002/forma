@@ -14,7 +14,6 @@ on:
       - "src/styles/**"
       - "tokens/**"
       - "brands/**"
-      - "themes/echelon/**"
       - "patterns/**"
       - "schemas/**"
       - "contracts/**"
@@ -22,6 +21,9 @@ on:
       - "tools/design-contract/**"
       - "tools/color-contract/**"
       - "tools/TokenValidator/**"
+      - "tools/TokenCompiler/**"
+      - "tools/BrandCompiler/**"
+      - "tools/brand-neutrality.mjs"
       - "icons/**"
       - "catalog/icons.mjs"
       - "catalog/icons/**"
@@ -31,7 +33,7 @@ on:
       - "tools/build-site.mjs"
       - "tools/PresentationBundler/**"
       - "actions/install-presentation/**"
-      - "examples/echelon-marketing-site/forma.lock"
+      - "examples/marketing-site/forma.lock"
       - "docs/ICONS.md"
       - "docs/COLOR.md"
       - "docs/CONSUMING-FORMA.md"
@@ -153,13 +155,11 @@ jobs:
             package/dist/components.css
             package/dist/assessment.css
             package/dist/skins.css
-            package/dist/brands/echelon.css
             package/dist/brands/example-harbor.css
+            package/dist/brands/example-orchard.css
             package/dist/brands/index.json
             package/dist/marketing.css
             package/dist/marketing/forma-marketing.css
-            package/dist/marketing/forma-marketing-theme-echelon.css
-            package/dist/marketing/forma-echelon-marketing.css
             package/dist/marketing/forma-all.css
             package/dist/marketing/forma-marketing.manifest.json
             package/dist/marketing/forma-marketing.sha256
@@ -180,6 +180,10 @@ jobs:
             package/contracts/design-capabilities.json
             package/examples/design/valid/customer-form.forma-design.json
             package/docs/DESIGN-CONTRACT.md
+            package/tools/BrandCompiler/BrandCompiler.fsproj
+            package/tools/BrandCompiler/Program.fs
+            package/tools/TokenCompiler/TokenCompiler.fsproj
+            package/tools/TokenCompiler/Program.fs
           )
 
           for required in "${required_files[@]}"; do
@@ -188,6 +192,9 @@ jobs:
               exit 1
             }
           done
+
+          # EDS-ADR-002: the release package carries no organization identity.
+          node tools/brand-neutrality.mjs --tarball "$ARCHIVE"
 
       - name: Exercise packed package as a consumer
         shell: bash
@@ -199,7 +206,9 @@ jobs:
           npm install --no-audit --no-fund ./forma.tgz
           test -f node_modules/@echelon-foundry/design-system/dist/all.css
           test -f node_modules/@echelon-foundry/design-system/dist/skins.css
-          test -f node_modules/@echelon-foundry/design-system/dist/brands/echelon.css
+          test -f node_modules/@echelon-foundry/design-system/dist/brands/example-harbor.css
+          test -f node_modules/@echelon-foundry/design-system/dist/brands/example-orchard.css
+          test ! -e node_modules/@echelon-foundry/design-system/dist/brands/echelon.css
           test -f node_modules/@echelon-foundry/design-system/dist/brands/index.json
           test -f node_modules/@echelon-foundry/design-system/schemas/brand-manifest.schema.json
           test -f node_modules/@echelon-foundry/design-system/patterns/data-grid.html
@@ -220,10 +229,12 @@ jobs:
         run: |
           (cd dist/marketing && sha256sum -c forma-marketing.sha256)
           site="$(mktemp -d)"
-          printf 'forma %s\ndestination assets/forma\nasset forma-echelon-marketing.css\n' "${RELEASE_TAG#v}" > "$site/forma.lock"
+          printf 'forma %s\ndestination assets/forma\nasset forma-marketing.css\n' "${RELEASE_TAG#v}" > "$site/forma.lock"
           (cd "$site" && "$GITHUB_WORKSPACE/actions/install-presentation/install.sh" --source "$GITHUB_WORKSPACE/dist/marketing" --update)
           (cd "$site" && "$GITHUB_WORKSPACE/actions/install-presentation/install.sh" --source "$GITHUB_WORKSPACE/dist/marketing")
-          test -s "$site/assets/forma/forma-echelon-marketing.css"
+          test -s "$site/assets/forma/forma-marketing.css"
+          test ! -e dist/marketing/forma-echelon-marketing.css
+          test ! -e dist/marketing/forma-marketing-theme-echelon.css
 
       - name: Create GitHub release
         env:
@@ -241,7 +252,7 @@ jobs:
           else
             gh release create "$RELEASE_TAG" "$ARCHIVE" "${marketing[@]}" --target "$GITHUB_SHA" \
               --title "$RELEASE_TAG" \
-              --notes "Forma ${RELEASE_TAG#v}: zero-runtime Echelon Foundry design system. Marketing sites pin forma-echelon-marketing.css through forma.lock; see docs/MARKETING-SITES.md."
+              --notes "Forma ${RELEASE_TAG#v}: zero-runtime, brand-neutral design system. Marketing sites pin forma-marketing.css through forma.lock and load an organization theme after it; see docs/MARKETING-SITES.md."
           fi
 
       - name: Publish to npm when trusted publishing is enabled

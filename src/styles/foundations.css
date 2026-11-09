@@ -1,4 +1,4 @@
-@layer echelon.foundations {
+@layer forma.foundations {
   *, *::before, *::after { box-sizing: border-box; }
 
   :where(html) {
@@ -6,21 +6,21 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
   }
 
   :where(body) {
     margin: 0;
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
     font-size: 1rem;
     line-height: 1.6;
   }
 
   :where(h1, h2) {
-    color: var(--ef-color-text-heading, #202421);
+    color: var(--ef-color-text-heading, #161616);
     font-family: var(--ef-primitive-font-family-display, Georgia, serif);
     font-weight: 500;
     letter-spacing: -0.03em;
@@ -28,12 +28,12 @@
   }
 
   :where(h3, h4, h5, h6) {
-    color: var(--ef-color-text-heading, #202421);
+    color: var(--ef-color-text-heading, #161616);
     line-height: 1.25;
   }
 
   :where(p) {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     max-inline-size: 72ch;
   }
 
@@ -42,7 +42,7 @@
    * "Secondary-surface pairing" below); elsewhere accent text uses the accent.
    */
   :where(a) {
-    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-primary, #905831));
+    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-primary, #2b5ea8));
     text-decoration-thickness: 0.08em;
     text-underline-offset: 0.18em;
   }
@@ -63,10 +63,10 @@
   :where(button, .ef-button) {
     min-block-size: 2.75rem;
     padding: 0.65rem 1rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     border-radius: var(--ef-primitive-radius-none, 0);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     font-weight: 700;
     /*
      * Hover and press feedback is perceptual interpolation (MOT-014, MOT-026):
@@ -80,10 +80,10 @@
   }
 
   :where(button, .ef-button):where(:not(:disabled)):hover {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
+    background: var(--ef-color-surface-secondary, #eeeeee);
   }
 
   /*
@@ -92,7 +92,7 @@
    * perceptual interpolation above.
    */
   :where(button, .ef-button):where(:not(:disabled)):active {
-    background: color-mix(in srgb, var(--ef-color-surface-secondary, #e3e0d7) 82%, var(--ef-color-text-primary, #171a18));
+    background: color-mix(in srgb, var(--ef-color-surface-secondary, #eeeeee) 82%, var(--ef-color-text-primary, #161616));
     transition-duration: var(--ef-motion-direct-duration, 0ms);
   }
 
@@ -107,10 +107,10 @@
     min-block-size: 2.75rem;
     inline-size: 100%;
     padding: 0.7rem 0.8rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     border-radius: var(--ef-primitive-radius-none, 0);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     font: inherit;
     line-height: var(--ef-field-line-height, 1.6);
   }
@@ -158,31 +158,31 @@
   }
 
   :where(input:not([type="checkbox"], [type="radio"], [type="range"]), textarea, select):disabled {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
     border-style: dashed;
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    background: var(--ef-color-surface-secondary, #eeeeee);
     cursor: not-allowed;
     opacity: 0.62;
   }
 
   :where(input:not([type="checkbox"], [type="radio"], [type="range"]), textarea):read-only:not(:disabled) {
     border-style: dashed;
-    background: color-mix(in srgb, var(--ef-color-surface-secondary, #e3e0d7) 55%, transparent);
+    background: color-mix(in srgb, var(--ef-color-surface-secondary, #eeeeee) 55%, transparent);
   }
 
   /* Invalid state keeps native semantics and adds a shape cue. The associated
      recovery message remains the non-colour explanation of what to fix. */
   :where(input:not([type="checkbox"], [type="radio"], [type="range"]), textarea, select):where([aria-invalid="true"], :user-invalid) {
     border-inline-start-width: 0.3rem;
-    border-inline-start-color: var(--ef-color-status-danger, #a13a2c);
+    border-inline-start-color: var(--ef-color-status-danger, #b0302a);
   }
 
   :where(:focus-visible) {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
     /* Focus scrolling brings the whole indicator into view, not only the
        element's border box (LRP-001). Changes scroll position only. */
     scroll-margin: 0.5rem;
@@ -194,9 +194,9 @@
      limits this to that case: pointer focus on the input itself (WebKit)
      keeps the native behaviour. */
   :where(input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="week"]):focus-within:not(:focus) {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
   }
 
   .ef-stack { display: flex; flex-direction: column; gap: var(--ef-stack-gap, var(--ef-primitive-spacing-4, 1rem)); }
@@ -207,7 +207,7 @@
   .ef-actions { display: flex; flex-wrap: wrap; gap: var(--ef-primitive-spacing-3, 0.75rem); align-items: center; min-inline-size: 0; }
   .ef-grid { display: grid; gap: var(--ef-grid-gap, var(--ef-primitive-spacing-4, 1rem)); grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ef-grid-min, 16rem)), 1fr)); }
   .ef-section { padding-block: var(--ef-section-space, var(--ef-primitive-spacing-7, 3rem)); }
-  .ef-surface { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); min-inline-size: 0; padding: var(--ef-surface-space, var(--ef-primitive-spacing-5, 1.5rem)); background: var(--ef-color-surface-secondary, #e3e0d7); color: var(--ef-color-text-on-secondary-surface, #3a403c); border: 1px solid var(--ef-color-border-subtle, #e3e0d7); }
+  .ef-surface { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030); --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616); min-inline-size: 0; padding: var(--ef-surface-space, var(--ef-primitive-spacing-5, 1.5rem)); background: var(--ef-color-surface-secondary, #eeeeee); color: var(--ef-color-text-on-secondary-surface, #303030); border: 1px solid var(--ef-color-border-subtle, #d8d8d8); }
   .ef-surface :where(h1, h2, h3, h4, h5, h6, p) { color: inherit; }
 
   :where(h1, h2, h3, h4, h5, h6, p, a, label, legend, td, th, dt, dd, caption, figcaption) {
@@ -335,7 +335,7 @@
   .ef-mosaic > [data-span="2"] { grid-column: span 2; }
   .ef-mosaic > [data-span="full"] { grid-column: 1 / -1; }
   .ef-dense-ledger { inline-size: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-  .ef-dense-ledger :is(th, td) { padding: var(--ef-ledger-cell-space, var(--ef-primitive-spacing-2, 0.5rem)); border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7); text-align: start; vertical-align: top; }
+  .ef-dense-ledger :is(th, td) { padding: var(--ef-ledger-cell-space, var(--ef-primitive-spacing-2, 0.5rem)); border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8); text-align: start; vertical-align: top; }
   [data-density="relaxed"] { --ef-density-space: var(--ef-primitive-spacing-5, 1.5rem); }
   [data-density="standard"] { --ef-density-space: var(--ef-primitive-spacing-4, 1rem); }
   [data-density="compact"], [data-density="analytical"] { --ef-density-space: var(--ef-primitive-spacing-2, 0.5rem); }
@@ -353,7 +353,7 @@
    *   accessible  large text: one step larger, relaxed leading.
    * A role restates the type role tokens that the marketing layer
    * (src/marketing/roles.css) and its themes declare, using only primitive
-   * steps. This layer follows echelon.tokens, so a role overrides a theme's
+   * steps. This layer follows forma.tokens, so a role overrides a theme's
    * :root role values; the .ef-site shell consumes the same tokens. The rules
    * below give the application layer, which has no heading scale of its own,
    * the same headings. Component headings (later layers) keep their sizes.

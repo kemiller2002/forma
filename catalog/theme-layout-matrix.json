@@ -17,109 +17,109 @@
     {
       "id": "FORMA-LIGHT",
       "selector": null,
-      "source": "tokens/echelon.tokens.json semantic.light",
+      "source": "tokens/forma.tokens.json semantic.light",
       "status": "supported"
     },
     {
       "id": "FORMA-DARK",
       "selector": "dark",
-      "source": "tokens/echelon.tokens.json semantic.dark",
+      "source": "tokens/forma.tokens.json semantic.dark",
       "status": "supported"
     },
     {
       "id": "THEME-HIGH-CONTRAST",
       "selector": "high-contrast",
-      "source": "tokens/echelon.tokens.json semantic.high-contrast",
+      "source": "tokens/forma.tokens.json semantic.high-contrast",
       "status": "partial"
     },
     {
       "id": "THEME-MUTED-PROFESSIONAL",
       "selector": "muted-professional",
-      "source": "tokens/echelon.tokens.json semantic.muted-professional",
+      "source": "tokens/forma.tokens.json semantic.muted-professional",
       "status": "partial"
     },
     {
       "id": "THEME-ACCENT-NEUTRAL",
       "selector": "accent-neutral",
-      "source": "tokens/echelon.tokens.json semantic.accent-neutral",
+      "source": "tokens/forma.tokens.json semantic.accent-neutral",
       "status": "partial"
     },
     {
       "id": "THEME-OPERATIONS-SALIENCE",
       "selector": "operations-salience",
-      "source": "tokens/echelon.tokens.json semantic.operations-salience",
+      "source": "tokens/forma.tokens.json semantic.operations-salience",
       "status": "partial"
     },
     {
       "id": "THEME-PAPER-INK",
       "selector": "paper-ink",
-      "source": "tokens/echelon.tokens.json semantic.paper-ink",
+      "source": "tokens/forma.tokens.json semantic.paper-ink",
       "status": "partial"
     },
     {
       "id": "THEME-CLINICAL-LIGHT",
       "selector": "clinical-light",
-      "source": "tokens/echelon.tokens.json semantic.clinical-light",
+      "source": "tokens/forma.tokens.json semantic.clinical-light",
       "status": "partial"
     },
     {
       "id": "THEME-DARK-RESTRAINED",
       "selector": "dark-restrained",
-      "source": "tokens/echelon.tokens.json semantic.dark-restrained",
+      "source": "tokens/forma.tokens.json semantic.dark-restrained",
       "status": "partial"
     },
     {
       "id": "THEME-COMPLEMENTARY-ENERGY",
       "selector": "complementary-energy",
-      "source": "tokens/echelon.tokens.json semantic.complementary-energy",
+      "source": "tokens/forma.tokens.json semantic.complementary-energy",
       "status": "partial"
     },
     {
       "id": "THEME-ANALOGOUS-COHESIVE",
       "selector": "analogous-cohesive",
-      "source": "tokens/echelon.tokens.json semantic.analogous-cohesive",
+      "source": "tokens/forma.tokens.json semantic.analogous-cohesive",
       "status": "partial"
     },
     {
       "id": "THEME-SPLIT-COMPLEMENTARY",
       "selector": "split-complementary",
-      "source": "tokens/echelon.tokens.json semantic.split-complementary",
+      "source": "tokens/forma.tokens.json semantic.split-complementary",
       "status": "partial"
     },
     {
       "id": "THEME-MONO-SEMANTIC",
       "selector": "mono-semantic",
-      "source": "tokens/echelon.tokens.json semantic.mono-semantic",
+      "source": "tokens/forma.tokens.json semantic.mono-semantic",
       "status": "partial"
     },
     {
       "id": "THEME-NEUTRAL-EDITORIAL",
       "selector": "neutral-editorial",
-      "source": "tokens/echelon.tokens.json semantic.neutral-editorial",
+      "source": "tokens/forma.tokens.json semantic.neutral-editorial",
       "status": "partial"
     },
     {
       "id": "THEME-WARM-EARTH",
       "selector": "warm-earth",
-      "source": "tokens/echelon.tokens.json semantic.warm-earth",
+      "source": "tokens/forma.tokens.json semantic.warm-earth",
       "status": "partial"
     },
     {
       "id": "THEME-COOL-INSTITUTIONAL",
       "selector": "cool-institutional",
-      "source": "tokens/echelon.tokens.json semantic.cool-institutional",
+      "source": "tokens/forma.tokens.json semantic.cool-institutional",
       "status": "partial"
     },
     {
       "id": "THEME-NATURE-DERIVED",
       "selector": "nature-derived",
-      "source": "tokens/echelon.tokens.json semantic.nature-derived",
+      "source": "tokens/forma.tokens.json semantic.nature-derived",
       "status": "partial"
     },
     {
       "id": "THEME-DARK-TECHNICAL",
       "selector": "dark-technical",
-      "source": "tokens/echelon.tokens.json semantic.dark-technical",
+      "source": "tokens/forma.tokens.json semantic.dark-technical",
       "status": "partial"
     }
   ],

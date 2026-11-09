@@ -5,7 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 
-const forma = "dist/marketing/forma-echelon-marketing.css";
+const forma = "dist/marketing/forma-marketing.css";
 
 function check(css) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-policy-"));
@@ -49,7 +49,7 @@ test("identity tokens may be retargeted only to other Forma tokens", () => {
 });
 
 test("copying Forma palette values instead of using tokens is a violation", () => {
-  const result = check(".dk-panel { background: #F2EFE7; }");
+  const result = check(".dk-panel { background: #FAFAFA; }");
   assert.equal(result.status, 1);
   assert.match(result.output, /PALETTE-COPY/);
 });
@@ -60,8 +60,8 @@ test("a documented forma-exception exempts a rule and is counted", () => {
   assert.match(result.output, /1 documented exception/);
 });
 
-test("the current Echelon Foundry stylesheet pattern is detected as duplicate presentation", () => {
-  const legacy = `:root { --ef-parchment: #f2efe7; --ef-text-primary: var(--ef-carbon); }
+test("a legacy hand-rolled site stylesheet pattern is detected as duplicate presentation", () => {
+  const legacy = `:root { --ef-paper: #fafafa; --ef-text-primary: var(--ef-ink); }
 body { margin: 0; background: var(--ef-surface-primary); }
 h1, h2 { font-family: var(--display); }
 .site-header { position: sticky; }

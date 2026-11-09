@@ -18,7 +18,7 @@
     the fold.
   All other recomposition is content-driven (flex-wrap / auto-fit minimums).
 */
-@layer echelon.marketing.layouts {
+@layer forma.marketing.layouts {
   @media (min-width: 40rem) and (min-height: 36rem) {
     .ef-site-header { position: sticky; inset-block-start: 0; }
   }

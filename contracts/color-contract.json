@@ -44,12 +44,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.accent.primary"
       },
       "provenance": {
@@ -89,12 +89,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.accent.secondary"
       },
       "provenance": {
@@ -134,12 +134,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.border.functional"
       },
       "provenance": {
@@ -179,12 +179,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.border.subtle"
       },
       "provenance": {
@@ -224,12 +224,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.control.active"
       },
       "provenance": {
@@ -269,12 +269,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.control.thumb"
       },
       "provenance": {
@@ -314,12 +314,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.control.track"
       },
       "provenance": {
@@ -359,12 +359,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.focus.gap"
       },
       "provenance": {
@@ -404,12 +404,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.focus.ring"
       },
       "provenance": {
@@ -449,12 +449,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.status.danger"
       },
       "provenance": {
@@ -494,12 +494,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.status.info"
       },
       "provenance": {
@@ -539,12 +539,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.status.success"
       },
       "provenance": {
@@ -584,12 +584,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.status.warning"
       },
       "provenance": {
@@ -629,12 +629,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.surface.inverse"
       },
       "provenance": {
@@ -674,12 +674,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.surface.inverse-secondary"
       },
       "provenance": {
@@ -719,12 +719,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.surface.primary"
       },
       "provenance": {
@@ -764,12 +764,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.surface.secondary"
       },
       "provenance": {
@@ -809,12 +809,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.text.heading"
       },
       "provenance": {
@@ -854,12 +854,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.text.inverse"
       },
       "provenance": {
@@ -899,12 +899,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.text.on-secondary-surface"
       },
       "provenance": {
@@ -944,12 +944,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.text.primary"
       },
       "provenance": {
@@ -989,12 +989,12 @@
           "dark-technical"
         ],
         "brands": [
-          "echelon",
-          "example-harbor"
+          "example-harbor",
+          "example-orchard"
         ]
       },
       "source": {
-        "file": "tokens/echelon.tokens.json",
+        "file": "tokens/forma.tokens.json",
         "path": "semantic.<theme>.color.text.secondary"
       },
       "provenance": {
@@ -1154,67 +1154,67 @@
       "kind": "theme",
       "id": "light",
       "selector": ":root, [data-ef-theme=\"light\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
-        "--ef-color-text-primary": "#171a18",
-        "--ef-color-text-heading": "#202421",
-        "--ef-color-text-secondary": "#686d68",
-        "--ef-color-text-on-secondary-surface": "#3a403c",
-        "--ef-color-text-inverse": "#f2efe7",
-        "--ef-color-surface-primary": "#f2efe7",
-        "--ef-color-surface-secondary": "#e3e0d7",
-        "--ef-color-surface-inverse": "#202421",
-        "--ef-color-surface-inverse-secondary": "#3a403c",
-        "--ef-color-accent-primary": "#905831",
-        "--ef-color-accent-secondary": "#47756b",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
-        "--ef-color-border-subtle": "#e3e0d7",
-        "--ef-color-border-functional": "#3a403c",
-        "--ef-color-focus-ring": "#171a18",
-        "--ef-color-focus-gap": "#f2efe7",
-        "--ef-color-control-track": "#686d68",
-        "--ef-color-control-thumb": "#f2efe7",
-        "--ef-color-control-active": "#905831"
+        "--ef-color-text-primary": "#161616",
+        "--ef-color-text-heading": "#161616",
+        "--ef-color-text-secondary": "#555555",
+        "--ef-color-text-on-secondary-surface": "#303030",
+        "--ef-color-text-inverse": "#fafafa",
+        "--ef-color-surface-primary": "#fafafa",
+        "--ef-color-surface-secondary": "#eeeeee",
+        "--ef-color-surface-inverse": "#232323",
+        "--ef-color-surface-inverse-secondary": "#303030",
+        "--ef-color-accent-primary": "#2b5ea8",
+        "--ef-color-accent-secondary": "#1d6b66",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
+        "--ef-color-border-subtle": "#d8d8d8",
+        "--ef-color-border-functional": "#555555",
+        "--ef-color-focus-ring": "#161616",
+        "--ef-color-focus-gap": "#fafafa",
+        "--ef-color-control-track": "#767676",
+        "--ef-color-control-thumb": "#fafafa",
+        "--ef-color-control-active": "#2b5ea8"
       }
     },
     {
       "kind": "theme",
       "id": "dark",
       "selector": "[data-ef-theme=\"dark\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
-        "--ef-color-text-primary": "#f2efe7",
-        "--ef-color-text-heading": "#f2efe7",
-        "--ef-color-text-secondary": "#e3e0d7",
-        "--ef-color-text-on-secondary-surface": "#f2efe7",
-        "--ef-color-text-inverse": "#171a18",
-        "--ef-color-surface-primary": "#171a18",
-        "--ef-color-surface-secondary": "#202421",
-        "--ef-color-surface-inverse": "#f2efe7",
-        "--ef-color-surface-inverse-secondary": "#e3e0d7",
-        "--ef-color-accent-primary": "#a87e5e",
-        "--ef-color-accent-secondary": "#698d84",
-        "--ef-color-status-success": "#8cc49f",
-        "--ef-color-status-warning": "#ddb266",
-        "--ef-color-status-danger": "#ef9a8b",
-        "--ef-color-status-info": "#90b9dc",
-        "--ef-color-border-subtle": "#3a403c",
-        "--ef-color-border-functional": "#e3e0d7",
-        "--ef-color-focus-ring": "#f2efe7",
-        "--ef-color-focus-gap": "#171a18",
-        "--ef-color-control-track": "#686d68",
-        "--ef-color-control-thumb": "#f2efe7",
-        "--ef-color-control-active": "#a87e5e"
+        "--ef-color-text-primary": "#eeeeee",
+        "--ef-color-text-heading": "#eeeeee",
+        "--ef-color-text-secondary": "#d8d8d8",
+        "--ef-color-text-on-secondary-surface": "#eeeeee",
+        "--ef-color-text-inverse": "#161616",
+        "--ef-color-surface-primary": "#161616",
+        "--ef-color-surface-secondary": "#232323",
+        "--ef-color-surface-inverse": "#eeeeee",
+        "--ef-color-surface-inverse-secondary": "#d8d8d8",
+        "--ef-color-accent-primary": "#93b6ec",
+        "--ef-color-accent-secondary": "#73c2ba",
+        "--ef-color-status-success": "#82cf9c",
+        "--ef-color-status-warning": "#e6b85e",
+        "--ef-color-status-danger": "#f5a097",
+        "--ef-color-status-info": "#95bdea",
+        "--ef-color-border-subtle": "#303030",
+        "--ef-color-border-functional": "#d8d8d8",
+        "--ef-color-focus-ring": "#eeeeee",
+        "--ef-color-focus-gap": "#161616",
+        "--ef-color-control-track": "#767676",
+        "--ef-color-control-thumb": "#eeeeee",
+        "--ef-color-control-active": "#93b6ec"
       }
     },
     {
       "kind": "theme",
       "id": "high-contrast",
       "selector": "[data-ef-theme=\"high-contrast\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#000000",
         "--ef-color-text-heading": "#000000",
@@ -1227,10 +1227,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#000000",
         "--ef-color-accent-secondary": "#303030",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#d8d8d8",
         "--ef-color-border-functional": "#000000",
         "--ef-color-focus-ring": "#000000",
@@ -1244,7 +1244,7 @@
       "kind": "theme",
       "id": "muted-professional",
       "selector": "[data-ef-theme=\"muted-professional\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#161616",
         "--ef-color-text-heading": "#161616",
@@ -1257,10 +1257,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#70405c",
         "--ef-color-accent-secondary": "#356b64",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#d8d8d8",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#161616",
@@ -1274,7 +1274,7 @@
       "kind": "theme",
       "id": "accent-neutral",
       "selector": "[data-ef-theme=\"accent-neutral\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#161616",
         "--ef-color-text-heading": "#161616",
@@ -1287,10 +1287,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#005ea8",
         "--ef-color-accent-secondary": "#006b75",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#d8d8d8",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#005ea8",
@@ -1304,7 +1304,7 @@
       "kind": "theme",
       "id": "operations-salience",
       "selector": "[data-ef-theme=\"operations-salience\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#161616",
         "--ef-color-text-heading": "#161616",
@@ -1317,10 +1317,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#9c2f25",
         "--ef-color-accent-secondary": "#315f8c",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#d8d8d8",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#9c2f25",
@@ -1334,7 +1334,7 @@
       "kind": "theme",
       "id": "paper-ink",
       "selector": "[data-ef-theme=\"paper-ink\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#211d18",
         "--ef-color-text-heading": "#211d18",
@@ -1345,26 +1345,26 @@
         "--ef-color-surface-secondary": "#e7dece",
         "--ef-color-surface-inverse": "#211d18",
         "--ef-color-surface-inverse-secondary": "#303030",
-        "--ef-color-accent-primary": "#905831",
+        "--ef-color-accent-primary": "#93451e",
         "--ef-color-accent-secondary": "#285c45",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#e7dece",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#211d18",
         "--ef-color-focus-gap": "#f7f2e7",
         "--ef-color-control-track": "#555555",
         "--ef-color-control-thumb": "#f7f2e7",
-        "--ef-color-control-active": "#905831"
+        "--ef-color-control-active": "#93451e"
       }
     },
     {
       "kind": "theme",
       "id": "clinical-light",
       "selector": "[data-ef-theme=\"clinical-light\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#17242b",
         "--ef-color-text-heading": "#17242b",
@@ -1377,10 +1377,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#005ea8",
         "--ef-color-accent-secondary": "#006b75",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#e6edf1",
         "--ef-color-border-functional": "#50636d",
         "--ef-color-focus-ring": "#005ea8",
@@ -1394,28 +1394,28 @@
       "kind": "theme",
       "id": "dark-restrained",
       "selector": "[data-ef-theme=\"dark-restrained\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#e8f1f4",
         "--ef-color-text-heading": "#e8f1f4",
-        "--ef-color-text-secondary": "#e3e0d7",
+        "--ef-color-text-secondary": "#d8d8d8",
         "--ef-color-text-on-secondary-surface": "#e8f1f4",
         "--ef-color-text-inverse": "#12191d",
         "--ef-color-surface-primary": "#12191d",
         "--ef-color-surface-secondary": "#202a30",
         "--ef-color-surface-inverse": "#e8f1f4",
-        "--ef-color-surface-inverse-secondary": "#e3e0d7",
+        "--ef-color-surface-inverse-secondary": "#d8d8d8",
         "--ef-color-accent-primary": "#d99a55",
-        "--ef-color-accent-secondary": "#698d84",
-        "--ef-color-status-success": "#8cc49f",
-        "--ef-color-status-warning": "#ddb266",
-        "--ef-color-status-danger": "#ef9a8b",
-        "--ef-color-status-info": "#90b9dc",
-        "--ef-color-border-subtle": "#3a403c",
-        "--ef-color-border-functional": "#e3e0d7",
+        "--ef-color-accent-secondary": "#73c2ba",
+        "--ef-color-status-success": "#82cf9c",
+        "--ef-color-status-warning": "#e6b85e",
+        "--ef-color-status-danger": "#f5a097",
+        "--ef-color-status-info": "#95bdea",
+        "--ef-color-border-subtle": "#303030",
+        "--ef-color-border-functional": "#d8d8d8",
         "--ef-color-focus-ring": "#e8f1f4",
         "--ef-color-focus-gap": "#12191d",
-        "--ef-color-control-track": "#686d68",
+        "--ef-color-control-track": "#767676",
         "--ef-color-control-thumb": "#e8f1f4",
         "--ef-color-control-active": "#d99a55"
       }
@@ -1424,7 +1424,7 @@
       "kind": "theme",
       "id": "complementary-energy",
       "selector": "[data-ef-theme=\"complementary-energy\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#161616",
         "--ef-color-text-heading": "#161616",
@@ -1437,10 +1437,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#175f8f",
         "--ef-color-accent-secondary": "#9a3f19",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#d8d8d8",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#175f8f",
@@ -1454,7 +1454,7 @@
       "kind": "theme",
       "id": "analogous-cohesive",
       "selector": "[data-ef-theme=\"analogous-cohesive\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#161616",
         "--ef-color-text-heading": "#161616",
@@ -1467,10 +1467,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#315f8c",
         "--ef-color-accent-secondary": "#286c68",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#d8d8d8",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#315f8c",
@@ -1484,7 +1484,7 @@
       "kind": "theme",
       "id": "split-complementary",
       "selector": "[data-ef-theme=\"split-complementary\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#161616",
         "--ef-color-text-heading": "#161616",
@@ -1497,10 +1497,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#175f8f",
         "--ef-color-accent-secondary": "#93451e",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#d8d8d8",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#7a3f70",
@@ -1514,7 +1514,7 @@
       "kind": "theme",
       "id": "mono-semantic",
       "selector": "[data-ef-theme=\"mono-semantic\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#161616",
         "--ef-color-text-heading": "#161616",
@@ -1527,10 +1527,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#3b5f55",
         "--ef-color-accent-secondary": "#555555",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#d8d8d8",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#161616",
@@ -1544,7 +1544,7 @@
       "kind": "theme",
       "id": "neutral-editorial",
       "selector": "[data-ef-theme=\"neutral-editorial\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#161616",
         "--ef-color-text-heading": "#161616",
@@ -1555,26 +1555,26 @@
         "--ef-color-surface-secondary": "#e7e3da",
         "--ef-color-surface-inverse": "#161616",
         "--ef-color-surface-inverse-secondary": "#303030",
-        "--ef-color-accent-primary": "#905831",
+        "--ef-color-accent-primary": "#244f73",
         "--ef-color-accent-secondary": "#356b64",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#e7e3da",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#161616",
         "--ef-color-focus-gap": "#f6f4ef",
         "--ef-color-control-track": "#555555",
         "--ef-color-control-thumb": "#f6f4ef",
-        "--ef-color-control-active": "#905831"
+        "--ef-color-control-active": "#244f73"
       }
     },
     {
       "kind": "theme",
       "id": "warm-earth",
       "selector": "[data-ef-theme=\"warm-earth\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#29231c",
         "--ef-color-text-heading": "#29231c",
@@ -1585,26 +1585,26 @@
         "--ef-color-surface-secondary": "#dfcfb8",
         "--ef-color-surface-inverse": "#29231c",
         "--ef-color-surface-inverse-secondary": "#303030",
-        "--ef-color-accent-primary": "#905831",
+        "--ef-color-accent-primary": "#9a3f19",
         "--ef-color-accent-secondary": "#356044",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#dfcfb8",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#29231c",
         "--ef-color-focus-gap": "#f3eadc",
         "--ef-color-control-track": "#555555",
         "--ef-color-control-thumb": "#f3eadc",
-        "--ef-color-control-active": "#905831"
+        "--ef-color-control-active": "#9a3f19"
       }
     },
     {
       "kind": "theme",
       "id": "cool-institutional",
       "selector": "[data-ef-theme=\"cool-institutional\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#17252b",
         "--ef-color-text-heading": "#17252b",
@@ -1617,10 +1617,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#245d7a",
         "--ef-color-accent-secondary": "#006b75",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#dde6e9",
         "--ef-color-border-functional": "#50636d",
         "--ef-color-focus-ring": "#245d7a",
@@ -1634,7 +1634,7 @@
       "kind": "theme",
       "id": "nature-derived",
       "selector": "[data-ef-theme=\"nature-derived\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#20281f",
         "--ef-color-text-heading": "#20281f",
@@ -1647,10 +1647,10 @@
         "--ef-color-surface-inverse-secondary": "#303030",
         "--ef-color-accent-primary": "#315f3d",
         "--ef-color-accent-secondary": "#315e75",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#1f6b3d",
+        "--ef-color-status-warning": "#8a5200",
+        "--ef-color-status-danger": "#b0302a",
+        "--ef-color-status-info": "#235f97",
         "--ef-color-border-subtle": "#dce2cf",
         "--ef-color-border-functional": "#555555",
         "--ef-color-focus-ring": "#20281f",
@@ -1664,90 +1664,30 @@
       "kind": "theme",
       "id": "dark-technical",
       "selector": "[data-ef-theme=\"dark-technical\"]",
-      "source": "tokens/echelon.tokens.json",
+      "source": "tokens/forma.tokens.json",
       "values": {
         "--ef-color-text-primary": "#e7eef0",
         "--ef-color-text-heading": "#e7eef0",
-        "--ef-color-text-secondary": "#e3e0d7",
+        "--ef-color-text-secondary": "#d8d8d8",
         "--ef-color-text-on-secondary-surface": "#e7eef0",
         "--ef-color-text-inverse": "#101619",
         "--ef-color-surface-primary": "#101619",
         "--ef-color-surface-secondary": "#1d272c",
         "--ef-color-surface-inverse": "#e7eef0",
-        "--ef-color-surface-inverse-secondary": "#e3e0d7",
+        "--ef-color-surface-inverse-secondary": "#d8d8d8",
         "--ef-color-accent-primary": "#63a8b2",
         "--ef-color-accent-secondary": "#d29a58",
-        "--ef-color-status-success": "#8cc49f",
-        "--ef-color-status-warning": "#ddb266",
-        "--ef-color-status-danger": "#ef9a8b",
-        "--ef-color-status-info": "#90b9dc",
-        "--ef-color-border-subtle": "#3a403c",
-        "--ef-color-border-functional": "#e3e0d7",
+        "--ef-color-status-success": "#82cf9c",
+        "--ef-color-status-warning": "#e6b85e",
+        "--ef-color-status-danger": "#f5a097",
+        "--ef-color-status-info": "#95bdea",
+        "--ef-color-border-subtle": "#303030",
+        "--ef-color-border-functional": "#d8d8d8",
         "--ef-color-focus-ring": "#e7eef0",
         "--ef-color-focus-gap": "#101619",
-        "--ef-color-control-track": "#686d68",
+        "--ef-color-control-track": "#767676",
         "--ef-color-control-thumb": "#e7eef0",
         "--ef-color-control-active": "#63a8b2"
-      }
-    },
-    {
-      "kind": "brand",
-      "id": "echelon/light",
-      "selector": "[data-ef-brand=\"echelon\"][data-ef-theme=\"light\"]",
-      "source": "brands/echelon.brand.json",
-      "values": {
-        "--ef-color-text-primary": "#171a18",
-        "--ef-color-text-heading": "#202421",
-        "--ef-color-text-secondary": "#686d68",
-        "--ef-color-text-on-secondary-surface": "#3a403c",
-        "--ef-color-text-inverse": "#f2efe7",
-        "--ef-color-surface-primary": "#f2efe7",
-        "--ef-color-surface-secondary": "#e3e0d7",
-        "--ef-color-surface-inverse": "#202421",
-        "--ef-color-surface-inverse-secondary": "#3a403c",
-        "--ef-color-accent-primary": "#905831",
-        "--ef-color-accent-secondary": "#47756b",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
-        "--ef-color-border-subtle": "#e3e0d7",
-        "--ef-color-border-functional": "#3a403c",
-        "--ef-color-focus-ring": "#171a18",
-        "--ef-color-focus-gap": "#f2efe7",
-        "--ef-color-control-track": "#686d68",
-        "--ef-color-control-thumb": "#f2efe7",
-        "--ef-color-control-active": "#905831"
-      }
-    },
-    {
-      "kind": "brand",
-      "id": "echelon/dark",
-      "selector": "[data-ef-brand=\"echelon\"][data-ef-theme=\"dark\"]",
-      "source": "brands/echelon.brand.json",
-      "values": {
-        "--ef-color-text-primary": "#f2efe7",
-        "--ef-color-text-heading": "#f2efe7",
-        "--ef-color-text-secondary": "#e3e0d7",
-        "--ef-color-text-on-secondary-surface": "#f2efe7",
-        "--ef-color-text-inverse": "#171a18",
-        "--ef-color-surface-primary": "#171a18",
-        "--ef-color-surface-secondary": "#202421",
-        "--ef-color-surface-inverse": "#f2efe7",
-        "--ef-color-surface-inverse-secondary": "#e3e0d7",
-        "--ef-color-accent-primary": "#a87e5e",
-        "--ef-color-accent-secondary": "#698d84",
-        "--ef-color-status-success": "#8cc49f",
-        "--ef-color-status-warning": "#ddb266",
-        "--ef-color-status-danger": "#ef9a8b",
-        "--ef-color-status-info": "#90b9dc",
-        "--ef-color-border-subtle": "#3a403c",
-        "--ef-color-border-functional": "#e3e0d7",
-        "--ef-color-focus-ring": "#f2efe7",
-        "--ef-color-focus-gap": "#171a18",
-        "--ef-color-control-track": "#686d68",
-        "--ef-color-control-thumb": "#f2efe7",
-        "--ef-color-control-active": "#a87e5e"
       }
     },
     {
@@ -1767,10 +1707,10 @@
         "--ef-color-surface-inverse-secondary": "#31556f",
         "--ef-color-accent-primary": "#7a4a00",
         "--ef-color-accent-secondary": "#275d6b",
-        "--ef-color-status-success": "#2e6a45",
-        "--ef-color-status-warning": "#86560f",
-        "--ef-color-status-danger": "#a13a2c",
-        "--ef-color-status-info": "#2d5f86",
+        "--ef-color-status-success": "#256b3f",
+        "--ef-color-status-warning": "#7f5200",
+        "--ef-color-status-danger": "#a8342a",
+        "--ef-color-status-info": "#29608f",
         "--ef-color-border-subtle": "#b7c5cf",
         "--ef-color-border-functional": "#43515b",
         "--ef-color-focus-ring": "#15212a",
@@ -1797,10 +1737,10 @@
         "--ef-color-surface-inverse-secondary": "#dbe6ec",
         "--ef-color-accent-primary": "#d7a85b",
         "--ef-color-accent-secondary": "#6eb3c0",
-        "--ef-color-status-success": "#8cc49f",
-        "--ef-color-status-warning": "#ddb266",
-        "--ef-color-status-danger": "#ef9a8b",
-        "--ef-color-status-info": "#90b9dc",
+        "--ef-color-status-success": "#8dd0a6",
+        "--ef-color-status-warning": "#e2b469",
+        "--ef-color-status-danger": "#f0a093",
+        "--ef-color-status-info": "#9cc1e3",
         "--ef-color-border-subtle": "#40515f",
         "--ef-color-border-functional": "#dbe6ec",
         "--ef-color-focus-ring": "#f7f9fb",
@@ -1808,6 +1748,66 @@
         "--ef-color-control-track": "#60717e",
         "--ef-color-control-thumb": "#f7f9fb",
         "--ef-color-control-active": "#d7a85b"
+      }
+    },
+    {
+      "kind": "brand",
+      "id": "example-orchard/light",
+      "selector": "[data-ef-brand=\"example-orchard\"][data-ef-theme=\"light\"]",
+      "source": "brands/example-orchard.brand.json",
+      "values": {
+        "--ef-color-text-primary": "#1d1a22",
+        "--ef-color-text-heading": "#1d1a22",
+        "--ef-color-text-secondary": "#4d4757",
+        "--ef-color-text-on-secondary-surface": "#2c2733",
+        "--ef-color-text-inverse": "#fbf9f6",
+        "--ef-color-surface-primary": "#fbf9f6",
+        "--ef-color-surface-secondary": "#ece6ef",
+        "--ef-color-surface-inverse": "#2c2238",
+        "--ef-color-surface-inverse-secondary": "#46385a",
+        "--ef-color-accent-primary": "#6a2f7a",
+        "--ef-color-accent-secondary": "#2f6a2c",
+        "--ef-color-status-success": "#2b6a33",
+        "--ef-color-status-warning": "#835000",
+        "--ef-color-status-danger": "#a3312c",
+        "--ef-color-status-info": "#2d5c94",
+        "--ef-color-border-subtle": "#d3c9da",
+        "--ef-color-border-functional": "#4d4757",
+        "--ef-color-focus-ring": "#1d1a22",
+        "--ef-color-focus-gap": "#fbf9f6",
+        "--ef-color-control-track": "#6d6578",
+        "--ef-color-control-thumb": "#fbf9f6",
+        "--ef-color-control-active": "#6a2f7a"
+      }
+    },
+    {
+      "kind": "brand",
+      "id": "example-orchard/dark",
+      "selector": "[data-ef-brand=\"example-orchard\"][data-ef-theme=\"dark\"]",
+      "source": "brands/example-orchard.brand.json",
+      "values": {
+        "--ef-color-text-primary": "#f5f1f8",
+        "--ef-color-text-heading": "#f5f1f8",
+        "--ef-color-text-secondary": "#ddd3e6",
+        "--ef-color-text-on-secondary-surface": "#f5f1f8",
+        "--ef-color-text-inverse": "#17131c",
+        "--ef-color-surface-primary": "#17131c",
+        "--ef-color-surface-secondary": "#2a2232",
+        "--ef-color-surface-inverse": "#f5f1f8",
+        "--ef-color-surface-inverse-secondary": "#ddd3e6",
+        "--ef-color-accent-primary": "#d3a6e0",
+        "--ef-color-accent-secondary": "#9fd49a",
+        "--ef-color-status-success": "#93d39b",
+        "--ef-color-status-warning": "#e7b766",
+        "--ef-color-status-danger": "#f3a39a",
+        "--ef-color-status-info": "#a1c3ef",
+        "--ef-color-border-subtle": "#3e3348",
+        "--ef-color-border-functional": "#ddd3e6",
+        "--ef-color-focus-ring": "#f5f1f8",
+        "--ef-color-focus-gap": "#17131c",
+        "--ef-color-control-track": "#857c90",
+        "--ef-color-control-thumb": "#f5f1f8",
+        "--ef-color-control-active": "#d3a6e0"
       }
     }
   ]

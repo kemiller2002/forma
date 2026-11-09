@@ -236,7 +236,7 @@ const ICON_STYLES = `<style>
   .icon-doc .code-viewer + .code-viewer { margin-block-start: 1.5rem; }
   .icon-gallery__grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1rem; }
   .icon-gallery__card { min-inline-size: 0; padding: 1rem; border: 1px solid var(--ef-color-border-functional, #444); background: var(--ef-color-surface-primary, white); }
-  .icon-gallery__preview { display: flex; align-items: center; min-block-size: 3rem; color: var(--ef-color-text-primary, #171a18); }
+  .icon-gallery__preview { display: flex; align-items: center; min-block-size: 3rem; color: var(--ef-color-text-primary, #161616); }
   .icon-gallery__card h3 { font-size: 1rem; margin: .5rem 0 .2rem; }
   .icon-gallery__card h3 a { display: inline-flex; align-items: center; min-block-size: 2.75rem; }
   .icon-gallery__card p { margin: .2rem 0 .7rem; }

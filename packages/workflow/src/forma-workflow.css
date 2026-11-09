@@ -5,7 +5,7 @@
  * editor-only affordances (selection, handles, panels) and never appear in
  * exported static HTML (FMD-DIA-007, ADR-0006). Load after Forma's CSS.
  */
-@layer echelon.workflow-editor {
+@layer forma.workflow-editor {
   forma-workflow { display: block; min-inline-size: 0; }
   .ef-workflow-host { min-inline-size: 0; }
 
@@ -16,7 +16,7 @@
   .ef-workflow-editor__pending {
     margin: 0;
     padding: var(--ef-primitive-spacing-2, 0.5rem) var(--ef-primitive-spacing-3, 0.75rem);
-    border: 2px dashed var(--ef-color-border-functional, #3a403c);
+    border: 2px dashed var(--ef-color-border-functional, #555555);
   }
 
   /* Layout: structure | canvas | inspector on wide screens; stacked below 64rem. */
@@ -71,7 +71,7 @@
   .ef-workflow-editor[data-mode="pick"] .ef-workflow-editor__object { cursor: pointer; }
   .ef-workflow-editor__selected { outline: 3px solid var(--ef-color-accent-primary, #2f5fb3); outline-offset: 4px; }
   .ef-workflow-editor[data-mode="edit"] .ef-workflow-editor__selected[data-fw-drag="move"] { cursor: move; touch-action: none; }
-  .ef-workflow-editor__object:focus-visible { outline: 3px solid var(--ef-color-text-primary, #171a18); outline-offset: 4px; }
+  .ef-workflow-editor__object:focus-visible { outline: 3px solid var(--ef-color-text-primary, #161616); outline-offset: 4px; }
   .ef-workflow-editor__intent { margin-block-start: var(--ef-primitive-spacing-2, 0.5rem); min-block-size: 2.75rem; }
   .ef-workflow-editor__resize,
   .ef-workflow-editor__connect {
@@ -79,7 +79,7 @@
     inline-size: 1.75rem;
     block-size: 1.75rem;
     box-sizing: border-box;
-    border: 2px solid var(--ef-color-surface-primary, #f2efe7);
+    border: 2px solid var(--ef-color-surface-primary, #fafafa);
     background: var(--ef-color-accent-primary, #2f5fb3);
     touch-action: none;
   }

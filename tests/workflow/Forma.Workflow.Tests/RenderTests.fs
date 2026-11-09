@@ -125,10 +125,10 @@ let all =
           let w = fixture "static-export"
           let fragment = WorkflowDocument.fragment DocumentOptions.defaults w
           expect (fragment.Html.StartsWith "<!-- Requires @echelon-foundry/design-system@0.4.0/tokens.css") fragment.Html
-          let doc = WorkflowDocument.document { DocumentOptions.defaults with FormaBase = "/assets/forma/"; Brand = Some "echelon" } w
-          for css in [ "tokens.css"; "foundations.css"; "components.css"; "brands/echelon.css" ] do
+          let doc = WorkflowDocument.document { DocumentOptions.defaults with FormaBase = "/assets/forma/"; Brand = Some "example-harbor" } w
+          for css in [ "tokens.css"; "foundations.css"; "components.css"; "brands/example-harbor.css" ] do
               expect (doc.Html.Contains $"<link rel=\"stylesheet\" href=\"/assets/forma/{css}\">") css
-          expect (doc.Html.Contains "data-ef-brand=\"echelon\"") "brand applied"
+          expect (doc.Html.Contains "data-ef-brand=\"example-harbor\"") "brand applied"
           equal 4 doc.Dependencies.Length "dependencies")
 
       test "A complete document is valid HTML structure with doctype, language, charset, viewport and title" (fun () ->

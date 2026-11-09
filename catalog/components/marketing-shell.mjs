@@ -5,7 +5,7 @@ export default {
   summary: "Reusable marketing-site frame: skip link, identity header with wrapping navigation, main content, and footer. Sites own content; the shell owns structure, focus, and responsive behavior.",
   owns: ["ef-site"],
   purpose: {
-    description: "The marketing shell is the `.ef-site` root that every Echelon marketing, product and documentation page starts from. It scopes the whole marketing layer (typography, link and focus treatment, surface tones, reduced motion) so that loading marketing CSS never restyles an application, and it fixes the page frame in source order: `.ef-skip-link`, `header.ef-site-header`, `main.ef-site__main`, `footer.ef-site-footer`. Sites supply content only; there is no runtime and no state beyond native focus and `aria-current`.",
+    description: "The marketing shell is the `.ef-site` root that every marketing, product and documentation page starts from. It scopes the whole marketing layer (typography, link and focus treatment, surface tones, reduced motion) so that loading marketing CSS never restyles an application, and it fixes the page frame in source order: `.ef-skip-link`, `header.ef-site-header`, `main.ef-site__main`, `footer.ef-site-footer`. Sites supply content only; there is no runtime and no state beyond native focus and `aria-current`.",
     useWhen: [
       "Building any page of a public marketing, product or documentation site that consumes a pinned Forma release.",
       "Several sites must share one frame, focus treatment and responsive behavior without copying CSS.",
@@ -43,7 +43,7 @@ export default {
         kind: "live",
         actions: [
           { role: "link", name: "Skip to main content", expect: { url: "#marketing-shell-product-page-main" } },
-          { role: "link", name: "Echelon / Ordo", expect: { url: "#marketing-shell-product-page-main" } },
+          { role: "link", name: "Harbor / Ordo", expect: { url: "#marketing-shell-product-page-main" } },
           { role: "link", name: "Overview", expect: { url: "#marketing-shell-product-page-main" } },
           { role: "link", name: "Documentation", expect: { url: "#marketing-shell-product-page-cta" } },
           { role: "link", name: "Install", within: { role: "navigation", name: "Ordo" }, expect: { url: "#marketing-shell-product-page-cta" } },
@@ -62,7 +62,7 @@ export default {
     <header class="ef-site-header">
       <div class="ef-site-header__inner">
         <div class="ef-site-header__identity">
-          <a class="ef-site-header__brand" href="#marketing-shell-product-page-main"><span class="ef-site-header__mark" aria-hidden="true">OR</span><span class="ef-site-header__name">Echelon / Ordo</span></a>
+          <a class="ef-site-header__brand" href="#marketing-shell-product-page-main"><span class="ef-site-header__mark" aria-hidden="true">OR</span><span class="ef-site-header__name">Harbor / Ordo</span></a>
         </div>
         <nav class="ef-site-nav" aria-label="Ordo">
           <ul class="ef-site-nav__list">
@@ -96,7 +96,7 @@ export default {
     <footer class="ef-site-footer" data-ef-tone="inverse">
       <div class="ef-site-footer__inner">
         <nav class="ef-site-footer__nav" aria-label="Ordo footer"><ul><li><a href="#marketing-shell-product-page-main">Privacy</a></li><li><a href="#marketing-shell-product-page-main">Source</a></li><li><a href="#marketing-shell-product-page-main">Release notes</a></li></ul></nav>
-        <p class="ef-site-footer__note"><span>&copy; 2026 Echelon Foundry</span><span>Built with Forma</span></p>
+        <p class="ef-site-footer__note"><span>&copy; 2026 Example Harbor</span><span>Built with Forma</span></p>
       </div>
     </footer>
   </div>
@@ -107,7 +107,7 @@ export default {
       interaction: {
         kind: "live",
         actions: [
-          { role: "link", name: "Echelon Foundry", expect: { url: "#marketing-shell-single-offer-main" } },
+          { role: "link", name: "Example Harbor", expect: { url: "#marketing-shell-single-offer-main" } },
           { role: "link", name: "Diagnostic", expect: { url: "#marketing-shell-single-offer-main" } },
           { role: "link", name: "Book a session", expect: { url: "#marketing-shell-single-offer-main" } },
           { role: "link", name: "Book a working session", expect: { url: "#marketing-shell-single-offer-main" } }
@@ -120,7 +120,7 @@ export default {
     <header class="ef-site-header">
       <div class="ef-site-header__inner">
         <div class="ef-site-header__identity">
-          <a class="ef-site-header__brand" href="#marketing-shell-single-offer-main"><span class="ef-site-header__mark" aria-hidden="true">EF</span><span class="ef-site-header__name">Echelon Foundry</span></a>
+          <a class="ef-site-header__brand" href="#marketing-shell-single-offer-main"><span class="ef-site-header__mark" aria-hidden="true">EH</span><span class="ef-site-header__name">Example Harbor</span></a>
           <p class="ef-site-header__tagline">Diagnostic engineering for consequential systems</p>
         </div>
         <nav class="ef-site-nav" aria-label="Offer">
@@ -142,7 +142,7 @@ export default {
     </div>
     <footer class="ef-site-footer" data-ef-tone="surface">
       <div class="ef-site-footer__inner">
-        <p class="ef-site-footer__note"><span>&copy; 2026 Echelon Foundry</span><span>Indianapolis, Indiana</span></p>
+        <p class="ef-site-footer__note"><span>&copy; 2026 Example Harbor</span><span>Indianapolis, Indiana</span></p>
       </div>
     </footer>
   </div>
@@ -154,7 +154,7 @@ export default {
         kind: "live",
         actions: [
           { role: "link", name: "Skip to main content", expect: { url: "#marketing-shell-mobile-frame-main" } },
-          { role: "link", name: "Echelon Foundry", expect: { url: "#marketing-shell-mobile-frame-main" } },
+          { role: "link", name: "Example Harbor", expect: { url: "#marketing-shell-mobile-frame-main" } },
           { role: "link", name: "Overview", expect: { url: "#marketing-shell-mobile-frame-main" } },
           { role: "link", name: "Research", expect: { url: "#marketing-shell-mobile-frame-main" } },
           { role: "link", name: "Products", expect: { url: "#marketing-shell-mobile-frame-main" } },
@@ -181,7 +181,7 @@ export default {
     <header class="ef-site-header">
       <div class="ef-site-header__inner">
         <div class="ef-site-header__identity">
-          <a class="ef-site-header__brand" href="#marketing-shell-mobile-frame-main"><span class="ef-site-header__mark" aria-hidden="true">EF</span><span class="ef-site-header__name">Echelon Foundry</span></a>
+          <a class="ef-site-header__brand" href="#marketing-shell-mobile-frame-main"><span class="ef-site-header__mark" aria-hidden="true">EH</span><span class="ef-site-header__name">Example Harbor</span></a>
           <p class="ef-site-header__tagline">Evidence-driven engineering systems</p>
         </div>
         <nav class="ef-site-nav" aria-label="Site">
@@ -205,7 +205,7 @@ export default {
     </div>
     <footer class="ef-site-footer" data-ef-tone="inverse">
       <div class="ef-site-footer__inner">
-        <p class="ef-site-footer__note"><span>&copy; 2026 Echelon Foundry</span><span>Built with Forma</span></p>
+        <p class="ef-site-footer__note"><span>&copy; 2026 Example Harbor</span><span>Built with Forma</span></p>
       </div>
     </footer>
   </div>
@@ -225,7 +225,7 @@ export default {
       "ef-site__main": "Main content region. Centers content to `--ef-layout-width-max`, applies gutters, grows to push the footer down, and is the `ef-main` size container the documentation layout queries.",
       "data-ef-layout": "Declares the page type: `marketing`, `product` or `documentation`. No layout rules key off it; sites may use it as a selector for allowlisted identity retargets.",
       "data-ef-tone": "Surface tone on any region inside the shell: `page` (default), `surface`, `elevated` or `inverse`. A tone sets the background and the `--ef-tone-*` text, link, label and rule colors that every component reads.",
-      "--ef-site-backdrop": "Optional decorative background image drawn behind the whole shell on a fixed pseudo-element. Default none; the Echelon theme sets a faint drafting grid. Allowlisted for site identity.",
+      "--ef-site-backdrop": "Optional decorative background image drawn behind the whole shell on a fixed pseudo-element. Default none; an organization theme may set a faint drafting grid. Allowlisted for site identity.",
       "--ef-site-backdrop-size": "Background size for the backdrop. Default auto.",
       "--ef-site-backdrop-opacity": "Opacity of the backdrop layer. Default 1."
     },

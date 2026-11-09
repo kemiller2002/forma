@@ -30,7 +30,7 @@ export default {
       interaction: {
         kind: "live",
         actions: [
-          { role: "link", name: "Echelon / Limen", expect: { url: "#site-header-current-section-home" } },
+          { role: "link", name: "Harbor / Limen", expect: { url: "#site-header-current-section-home" } },
           { role: "link", name: "Overview", expect: { url: "#site-header-current-section-home" } },
           { role: "link", name: "Documentation", expect: { url: "#site-header-current-section-home" } },
           { role: "link", name: "Releases", expect: { url: "#site-header-current-section-home" } }
@@ -43,7 +43,7 @@ export default {
     <header class="ef-site-header">
       <div class="ef-site-header__inner">
         <div class="ef-site-header__identity">
-          <a class="ef-site-header__brand" href="#site-header-current-section-home"><span class="ef-site-header__mark" aria-hidden="true">LM</span><span class="ef-site-header__name">Echelon / Limen</span></a>
+          <a class="ef-site-header__brand" href="#site-header-current-section-home"><span class="ef-site-header__mark" aria-hidden="true">LM</span><span class="ef-site-header__name">Harbor / Limen</span></a>
           <p class="ef-site-header__tagline">Behavior at the interface boundary</p>
         </div>
         <nav class="ef-site-nav" aria-label="Limen">
@@ -63,7 +63,7 @@ export default {
       interaction: {
         kind: "live",
         actions: [
-          { role: "link", name: "Echelon Foundry / Tutoris Research Publications", expect: { url: "#site-header-long-brand-name-top" } },
+          { role: "link", name: "Example Harbor / Tutoris Research Publications", expect: { url: "#site-header-long-brand-name-top" } },
           { role: "link", name: "Publications", expect: { url: "#site-header-long-brand-name-top" } },
           { role: "link", name: "Methods", expect: { url: "#site-header-long-brand-name-top" } },
           { role: "link", name: "Datasets", expect: { url: "#site-header-long-brand-name-top" } },
@@ -78,7 +78,7 @@ export default {
     <header class="ef-site-header">
       <div class="ef-site-header__inner">
         <div class="ef-site-header__identity">
-          <a class="ef-site-header__brand" href="#site-header-long-brand-name-top"><span class="ef-site-header__mark" aria-hidden="true">TR</span><span class="ef-site-header__name">Echelon Foundry / Tutoris Research Publications</span></a>
+          <a class="ef-site-header__brand" href="#site-header-long-brand-name-top"><span class="ef-site-header__mark" aria-hidden="true">TR</span><span class="ef-site-header__name">Example Harbor / Tutoris Research Publications</span></a>
         </div>
         <nav class="ef-site-nav" aria-label="Tutoris">
           <ul class="ef-site-nav__list">
@@ -99,7 +99,7 @@ export default {
       interaction: {
         kind: "live",
         actions: [
-          { role: "link", name: "Echelon Foundry", expect: { url: "#site-header-mobile-wrapping-nav-top" } },
+          { role: "link", name: "Example Harbor", expect: { url: "#site-header-mobile-wrapping-nav-top" } },
           { role: "link", name: "Overview", expect: { url: "#site-header-mobile-wrapping-nav-top" } },
           { role: "link", name: "Research", expect: { url: "#site-header-mobile-wrapping-nav-top" } },
           { role: "link", name: "Products", expect: { url: "#site-header-mobile-wrapping-nav-top" } },
@@ -123,10 +123,10 @@ export default {
     <header class="ef-site-header">
       <div class="ef-site-header__inner">
         <div class="ef-site-header__identity">
-          <a class="ef-site-header__brand" href="#site-header-mobile-wrapping-nav-top"><span class="ef-site-header__mark" aria-hidden="true">EF</span><span class="ef-site-header__name">Echelon Foundry</span></a>
+          <a class="ef-site-header__brand" href="#site-header-mobile-wrapping-nav-top"><span class="ef-site-header__mark" aria-hidden="true">EH</span><span class="ef-site-header__name">Example Harbor</span></a>
           <p class="ef-site-header__tagline">Evidence-driven engineering systems</p>
         </div>
-        <nav class="ef-site-nav" aria-label="Echelon Foundry">
+        <nav class="ef-site-nav" aria-label="Example Harbor">
           <ul class="ef-site-nav__list">
             <li><a class="ef-site-nav__link" id="site-header-mobile-wrapping-nav-top" href="#site-header-mobile-wrapping-nav-top" aria-current="page">Overview</a></li>
             <li><a class="ef-site-nav__link" href="#site-header-mobile-wrapping-nav-top">Research</a></li>

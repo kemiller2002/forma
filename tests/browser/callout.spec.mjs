@@ -12,7 +12,7 @@ const html = (theme = "", extraCss = "") => `<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Callout</title>
-  <link rel="stylesheet" href="/dist/marketing/forma-echelon-marketing.css">
+  <link rel="stylesheet" href="/dist/marketing/forma-marketing.css">
   <style>${extraCss}</style>
 </head>
 <body><main>

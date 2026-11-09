@@ -6,7 +6,7 @@ test("brand scopes coexist without semantic-token leakage", async ({ page }) => 
   await page.locator("body").evaluate(body => {
     const shell = document.createElement("div");
     shell.innerHTML = [
-      '<section id="brand-ech" data-ef-brand="echelon"><button type="button">Action</button></section>',
+      '<section id="brand-orchard" data-ef-brand="example-orchard"><button type="button">Action</button></section>',
       '<section id="brand-harbor" data-ef-brand="example-harbor"><button type="button">Action</button></section>'
     ].join("");
     body.append(shell);
@@ -22,13 +22,13 @@ test("brand scopes coexist without semantic-token leakage", async ({ page }) => 
     };
     return {
       root: getComputedStyle(document.documentElement).getPropertyValue("--ef-color-accent-primary").trim(),
-      echelon: read("#brand-ech"),
+      orchard: read("#brand-orchard"),
       harbor: read("#brand-harbor")
     };
   });
 
-  expect(values.root).toBe("#905831");
-  expect(values.echelon).toEqual({ accent: "#905831", radius: "8px" });
+  expect(values.root).toBe("#2b5ea8");
+  expect(values.orchard).toEqual({ accent: "#6a2f7a", radius: "4px" });
   expect(values.harbor).toEqual({ accent: "#7a4a00", radius: "12px" });
 });
 
@@ -58,9 +58,9 @@ test("skin presets override presentation primitives without changing brand token
   await openFixture(page);
   await page.locator("body").evaluate(body => {
     body.insertAdjacentHTML("beforeend", [
-      '<section id="compact" data-ef-brand="echelon" data-ef-skin="compact">Compact</section>',
-      '<section id="comfortable" data-ef-brand="echelon" data-ef-skin="comfortable">Comfortable</section>',
-      '<section id="square" data-ef-brand="echelon" data-ef-skin="square">Square</section>'
+      '<section id="compact" data-ef-brand="example-orchard" data-ef-skin="compact">Compact</section>',
+      '<section id="comfortable" data-ef-brand="example-orchard" data-ef-skin="comfortable">Comfortable</section>',
+      '<section id="square" data-ef-brand="example-orchard" data-ef-skin="square">Square</section>'
     ].join(""));
   });
 
@@ -79,6 +79,6 @@ test("skin presets override presentation primitives without changing brand token
     compactSpacing: "12px",
     comfortableSpacing: "20px",
     squareRadius: "0",
-    compactAccent: "#905831"
+    compactAccent: "#6a2f7a"
   });
 });

@@ -8,7 +8,7 @@ system.
 
 Figma represents Forma's visual contracts. Canonical application markup remains
 in `patterns/*.html`; canonical design tokens remain in
-`tokens/echelon.tokens.json`.
+`tokens/forma.tokens.json`.
 
 ## 2. Authority and synchronization
 
@@ -17,7 +17,7 @@ in `patterns/*.html`; canonical design tokens remain in
 The repository owns the canonical component anatomy and token values.
 
 - Component anatomy: `patterns/*.html`
-- Token values and aliases: `tokens/echelon.tokens.json`
+- Token values and aliases: `tokens/forma.tokens.json`
 - Figma mapping inventory: `figma/component-contracts.json`
 
 A Figma file may not become an independent authority for token values, semantic

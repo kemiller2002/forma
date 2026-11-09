@@ -17,7 +17,7 @@ const sourceFiles = Object.values(models.sources).flat();
 // A pristine copy of everything the audit reads.
 const fixture = () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-motion-gate-"));
-  ["catalog/motion/models.json", "catalog/motion/classification.json", "catalog/motion/debt.json", "tokens/echelon.tokens.json", ...sourceFiles]
+  ["catalog/motion/models.json", "catalog/motion/classification.json", "catalog/motion/debt.json", "tokens/forma.tokens.json", ...sourceFiles]
     .forEach((file) => {
       fs.mkdirSync(path.dirname(path.join(dir, file)), { recursive: true });
       fs.copyFileSync(path.join(root, file), path.join(dir, file));

@@ -101,14 +101,13 @@ function themeContexts(file) {
 
 const compiled = [
   "dist/tokens.css",
-  ...fs.readdirSync("dist/brands").filter((file) => file.endsWith(".css")).map((file) => path.join("dist/brands", file)),
-  "dist/marketing/forma-marketing-theme-echelon.css"
+  ...fs.readdirSync("dist/brands").filter((file) => file.endsWith(".css")).map((file) => path.join("dist/brands", file))
 ];
 
 test("compiled themes and brands expose complete color contexts", () => {
   const contexts = compiled.flatMap(themeContexts);
   const publicStatus = ["status-success", "status-warning", "status-danger", "status-info"];
-  const themes = Object.keys(JSON.parse(read("tokens/echelon.tokens.json")).semantic);
+  const themes = Object.keys(JSON.parse(read("tokens/forma.tokens.json")).semantic);
   for (const theme of themes.filter((id) => id !== "light")) {
     assert.ok(contexts.some((context) => context.id.includes(`[data-ef-theme="${theme}"]`)), `no compiled context for theme ${theme}`);
   }

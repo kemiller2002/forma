@@ -65,9 +65,9 @@ test("an inline currentColor mark takes the theme accent, per brand", async ({ p
   const read = id => page.locator(`#${id} .ef-app-identity__mark path`).first().evaluate(path => getComputedStyle(path).fill);
   const accent = id => page.locator(`#${id}`).evaluate(element => getComputedStyle(element).getPropertyValue("--ef-color-accent-primary").trim());
   const toRgb = hex => `rgb(${[1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)).join(", ")})`;
-  expect(await read("startup-echelon-light")).toBe(toRgb(await accent("startup-echelon-light")));
+  expect(await read("startup-orchard-light")).toBe(toRgb(await accent("startup-orchard-light")));
   expect(await read("startup-harbor-dark")).toBe(toRgb(await accent("startup-harbor-dark")));
-  expect(await read("startup-echelon-light")).not.toBe(await read("startup-harbor-dark"));
+  expect(await read("startup-orchard-light")).not.toBe(await read("startup-harbor-dark"));
 });
 
 for (const [size, pixels] of [["16", 16], ["24", 24], ["32", 32], ["64", 64]]) {
@@ -81,7 +81,7 @@ for (const [size, pixels] of [["16", 16], ["24", 24], ["32", 32], ["64", 64]]) {
 
 test("start-up shows identity, indicator and a meaningful status under both brands", async ({ page }) => {
   await open(page);
-  for (const id of ["startup-echelon-light", "startup-harbor-dark"]) {
+  for (const id of ["startup-orchard-light", "startup-harbor-dark"]) {
     const root = page.locator(`#${id}`);
     await expect(root.locator(".ef-app-identity__name")).toBeVisible();
     await expect(root.locator(".ef-spinner__indicator")).toBeVisible();
@@ -90,13 +90,13 @@ test("start-up shows identity, indicator and a meaningful status under both bran
     await expect(root.locator(".ef-startup__problem")).toBeHidden();
     await expect(root.locator(".ef-startup__noscript")).toBeHidden();
   }
-  const colors = await page.evaluate(() => ["#startup-echelon-light", "#startup-harbor-dark"].map(id => getComputedStyle(document.querySelector(id)).backgroundColor));
+  const colors = await page.evaluate(() => ["#startup-orchard-light", "#startup-harbor-dark"].map(id => getComputedStyle(document.querySelector(id)).backgroundColor));
   expect(colors[0]).not.toBe(colors[1]);
 });
 
 test("the slow-start note is hidden at first and revealed after the delay without script", async ({ page }) => {
   await open(page);
-  const root = page.locator("#startup-echelon-light");
+  const root = page.locator("#startup-orchard-light");
   await root.evaluate(element => element.style.setProperty("--ef-startup-slow-after", "3s"));
   // Restart the animation so the shortened delay applies from now.
   await root.evaluate(element => { const slow = element.querySelector(".ef-startup__slow"); slow.style.animation = "none"; void slow.offsetWidth; slow.style.animation = ""; });
@@ -110,7 +110,7 @@ for (const reducedMotion of ["no-preference", "reduce"]) {
   test(`the slow-start note appears at the default delay (${reducedMotion} motion)`, async ({ page }) => {
     test.setTimeout(30_000);
     await open(page, { reducedMotion });
-    const note = page.locator("#startup-echelon-light .ef-startup__slow");
+    const note = page.locator("#startup-orchard-light .ef-startup__slow");
     await expect(note).toBeHidden();
     await page.waitForTimeout(6_000);
     await expect(note).toBeHidden();
@@ -149,7 +149,7 @@ test("start-up shows the no-script message when scripting is off", async ({ brow
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto(FIXTURE);
-  const root = page.locator("#startup-echelon-light");
+  const root = page.locator("#startup-orchard-light");
   await expect(root.locator(".ef-startup__noscript")).toBeVisible();
   await expect(root.locator(".ef-startup__status")).toBeHidden();
   await context.close();
@@ -157,7 +157,7 @@ test("start-up shows the no-script message when scripting is off", async ({ brow
 
 test("start-up shows a static indicator under reduced motion and still reveals the slow note", async ({ page }) => {
   await open(page, { reducedMotion: "reduce" });
-  const root = page.locator("#startup-echelon-light");
+  const root = page.locator("#startup-orchard-light");
   const animation = await root.locator(".ef-spinner__indicator").evaluate(element => getComputedStyle(element).animationName);
   expect(animation).toBe("none");
   await expect(root.locator(".ef-spinner__indicator")).toBeVisible();

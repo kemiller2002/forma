@@ -68,7 +68,7 @@ export const page = ({ title, rootPath, body, description = "Forma, the zero-com
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,650&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${rootPath}assets/forma.css">
-  <link rel="stylesheet" href="${rootPath}assets/brands/echelon.css">
+  <link rel="stylesheet" href="${rootPath}assets/brands/example-orchard.css">
   <link rel="stylesheet" href="${rootPath}assets/brands/example-harbor.css">
   <link rel="stylesheet" href="${rootPath}assets/site.css">${head}
   <script type="module" src="${rootPath}assets/runtime.js"></script>

@@ -19,7 +19,7 @@ import path from "node:path";
 const root = process.cwd();
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 
-const tokens = JSON.parse(read("tokens/echelon.tokens.json"));
+const tokens = JSON.parse(read("tokens/forma.tokens.json"));
 const brands = JSON.parse(read("dist/brands/index.json")).brands;
 const stylesheet = [
   read("dist/all.css"),

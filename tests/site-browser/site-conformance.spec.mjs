@@ -1,4 +1,4 @@
-// Forma documentation site and the Forma-owned Echelon marketing reference
+// Forma documentation site and the Forma-owned marketing reference
 // fixture against visual-engineering/UI-LAYOUT-INTERACTION@1.0.0: no page
 // overflow and intact navigation labels at every contract width and at
 // doubled text (ULI-L05, L06, L09); every enabled action has a valid
@@ -15,9 +15,9 @@ import {
 } from "./ui-conformance-helpers.mjs";
 
 const PAGES = [
-  "/examples/echelon-marketing-site/index.html",
-  "/examples/echelon-marketing-site/product.html",
-  "/examples/echelon-marketing-site/docs.html",
+  "/examples/marketing-site/index.html",
+  "/examples/marketing-site/product.html",
+  "/examples/marketing-site/docs.html",
   "/site-dist/index.html",
   "/site-dist/components/index.html",
   "/site-dist/components/button/index.html",
@@ -120,7 +120,7 @@ test("ULI-L05 marketing header links land their destinations clear of the sticky
   for (const file of ["index.html", "product.html", "docs.html"]) {
     for (const width of [768, 1280]) {
       await page.setViewportSize({ width, height: 900 });
-      await page.goto(`/examples/echelon-marketing-site/${file}`);
+      await page.goto(`/examples/marketing-site/${file}`);
       const header = page.locator(".ef-site-header");
       const links = await header.locator("a[href^='#']").evaluateAll(anchors =>
         anchors.filter(anchor => anchor.checkVisibility()).map(anchor => ({ href: anchor.getAttribute("href"), name: anchor.textContent.replace(/\s+/g, " ").trim() })));

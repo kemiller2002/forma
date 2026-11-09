@@ -39,5 +39,5 @@ Provide left- and right-edge modal surfaces for contextual navigation, filters, 
 
 ## Maintenance
 
-- Owner: Echelon Foundry design system
+- Owner: Forma design system
 - Last checked against implementation: 2026-09-23

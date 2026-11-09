@@ -11,7 +11,7 @@
   with minimum sizes. The two container queries below exist because a row's
   column structure cannot be expressed as a minimum item size.
 */
-@layer echelon.marketing.components {
+@layer forma.marketing.components {
   /* Skip link --------------------------------------------------------- */
   .ef-skip-link {
     position: fixed;

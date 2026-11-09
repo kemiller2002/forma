@@ -26,7 +26,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 
 | Component | Tag | Category | Implementation | Documentation | Examples | Mobile | HTML shown | Accessibility | API | Dedicated tests | Related |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Button | `<ef-button>` | Actions | implemented | complete | 5 | 1 | yes | yes | yes | marketing.spec.mjs | command-group, overflow-command-disclosure, menu, mobile-action-bar, cta |
+| Button | `<ef-button>` | Actions | implemented | complete | 5 | 1 | yes | yes | yes | namespace-migrator.test.mjs, brand-isolation.spec.mjs, marketing.spec.mjs | command-group, overflow-command-disclosure, menu, mobile-action-bar, cta |
 | Command group | `<ef-command-group>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, overflow-command-disclosure, menu, collection-toolbar, command-palette |
 | Mobile action bar | `<ef-mobile-action-bar>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, command-group, overflow-command-disclosure, flyout |
 | Overflow command disclosure | `<ef-overflow-command-disclosure>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | command-group, menu, disclosure, mobile-action-bar |
@@ -81,7 +81,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Scroll progress | `<ef-scroll-progress>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | progressive-motion.spec.mjs | progress-bar, entry-index, documentation-layout |
 | Skeleton | `<ef-skeleton>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | loading-progress.spec.mjs | spinner, empty-state, progress-bar |
 | Spinner | `<ef-spinner>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | ais-001.spec.mjs, loading-progress.spec.mjs | progress-bar, skeleton, operation-status |
-| Start-up screen | `<ef-startup>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | brand-neutrality.test.mjs, ais-001.spec.mjs | app-identity, spinner, fault-blocking, skeleton |
+| Start-up screen | `<ef-startup>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | ais-001.spec.mjs | app-identity, spinner, fault-blocking, skeleton |
 | State survivability | `<ef-state-survivability>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | visual-engineering-semantics.spec.mjs | operation-status, status-lozenge, freshness, security-state-matrix |
 | Status lozenge | `<ef-status-lozenge>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | color-contract.spec.mjs, forced-colors-projection.spec.mjs, layout-reliability.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
 | Toast | `<ef-toast>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, popover, fault-notification, dialog |
@@ -122,7 +122,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Stack | `<ef-stack>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | cluster, grid, surface, prose |
 | Surface | `<ef-surface>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | conformance-package.test.mjs, css-source.test.mjs, dist-css.test.mjs, forced-colors-projection.spec.mjs, pattern-contrast.spec.mjs, type-roles.spec.mjs, word-integrity.spec.mjs | card-grid, callout, preview-surface, stack |
 | Switcher | `<ef-switcher>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | sidebar, rail, split, cluster |
-| Application identity | `<ef-app-identity>` | Workspaces and shells | implemented | complete | 5 | 1 | yes | yes | yes | brand-neutrality.test.mjs, ais-001.spec.mjs | startup, navigation-shell, site-header |
+| Application identity | `<ef-app-identity>` | Workspaces and shells | implemented | complete | 5 | 1 | yes | yes | yes | ais-001.spec.mjs | startup, navigation-shell, site-header |
 | Dashboard grid | `<ef-dashboard-grid>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | causa-representative.spec.mjs | metric-card, responsive-grid, mosaic, work-queue |
 | Focus stage | `<ef-focus-stage>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | split-pane, rail, workspace-shell, preview-surface |
 | Master/detail workspace | `<ef-master-detail>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | data-grid, work-queue, split-pane, record-header |
@@ -278,7 +278,6 @@ Recorded from reading every pattern and its CSS during the catalog upgrade (WI-0
 
 | Component | Issue | Location |
 | --- | --- | --- |
-| tokens (choice cards, fault, file-upload, conversation, master-detail, surface, security-evidence-age) | --ef-color-text-secondary (#686d68) on --ef-color-surface-secondary (#e3e0d7) is 4.0:1 and --ef-color-accent-primary (#905831) on the same surface is 4.38:1, both below WCAG AA 4.5:1. Components that put secondary text or links on the secondary surface inherit the failure. Reproduced with dist/all.css alone. | tokens/echelon.tokens.json; src/styles/components.css; src/styles/assessment.css |
 | alert, fault-banner, fault-notification, toast | aside elements carry role="status" or role="alert", which ARIA in HTML does not allow on aside (axe aria-allowed-role). | patterns/alert.html, patterns/fault-banner.html, patterns/fault-notification.html, patterns/toast.html |
 | text-field, textarea, date-time-field, select | Native inputs have no Forma styling for :disabled, :read-only, [aria-invalid] or :user-invalid; author colors also override the browser's disabled look, so a disabled field looks enabled. | src/styles/foundations.css (input/textarea/select rule) |
 | button | Application-layer disabled buttons look enabled apart from losing hover; a.ef-button stays inline so its 44px min-block-size does not apply; primary/destructive variants exist only inside .ef-site; .ef-actions ships only in the marketing stylesheet. | src/styles/foundations.css:59-90; src/marketing/components.css:191 |

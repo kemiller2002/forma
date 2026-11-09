@@ -81,7 +81,7 @@ export default {
       <pre class="ef-code" tabindex="0" aria-labelledby="code-sample-mobile-lock-file-caption"><code>forma 0.3.0
 repository kemiller2002/forma
 destination assets/forma
-asset forma-echelon-marketing.css sha256:9f2c4e1a7b3d5c8e0f6a2b4d6e8f0a1c3e5b7d9f1a3c5e7b9d1f3a5c7e9b1d3f</code></pre>
+asset forma-marketing.css sha256:9f2c4e1a7b3d5c8e0f6a2b4d6e8f0a1c3e5b7d9f1a3c5e7b9d1f3a5c7e9b1d3f</code></pre>
     </figure>
   </div>
 </ef-code-sample>`

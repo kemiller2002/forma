@@ -85,6 +85,6 @@ disclosure rules.
 ```fsharp
 let w = (Validation.load text).Workflow.Value
 let fragment = WorkflowDocument.fragment DocumentOptions.defaults w
-let page = WorkflowDocument.document { DocumentOptions.defaults with FormaBase = "/assets/forma/"; Brand = Some "echelon" } w
+let page = WorkflowDocument.document { DocumentOptions.defaults with FormaBase = "/assets/forma/"; Brand = Some "example-harbor" } w
 // fragment.Html, page.Html, page.Dependencies
 ```

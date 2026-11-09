@@ -11,7 +11,7 @@
   (--ef-tone-*) that components read, so text, links, labels, and rules stay
   legible on every surface without per-component color overrides.
 */
-@layer echelon.marketing.foundations {
+@layer forma.marketing.foundations {
   :where(:root, [data-ef-theme], [data-ef-brand]),
   .ef-site,
   [data-ef-tone="page"] {

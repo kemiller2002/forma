@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Optional SequentialReveal presentation: a row-major clip mask over protected text already in the DOM, static by default and under reduced motion; orchestration stays in the application.",
   purpose: {
-    description: "SequentialReveal draws protected text on a [[character-grid]] as if it were being typed onto the screen, left to right and top to bottom. It is a presentation-only mask: the text is in the DOM, in the accessibility tree and in source order from time zero, and only its painting is staged with a stepped `clip-path`. It is an Echelon behavior, not authentic 3270 behavior, and it is never required. Forma supplies the mask and timing; the application or Limen decides when a reveal starts, completes it on any input, and replays it only on explicit request.",
+    description: "SequentialReveal draws protected text on a [[character-grid]] as if it were being typed onto the screen, left to right and top to bottom. It is a presentation-only mask: the text is in the DOM, in the accessibility tree and in source order from time zero, and only its painting is staged with a stepped `clip-path`. It is a Forma presentation behavior, not authentic 3270 behavior, and it is never required. Forma supplies the mask and timing; the application or Limen decides when a reveal starts, completes it on any input, and replays it only on explicit request.",
     useWhen: [
       "A sign-on banner or screen title appears for the first time and a brief typed-on effect helps orientation.",
       "The effect can be skipped at any moment without losing information."

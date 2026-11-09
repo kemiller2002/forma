@@ -266,7 +266,7 @@ Before claiming consequential UI complete, apply `requirements/VISUAL-ENGINEERIN
 
 Figma mirrors Forma; it does not own Forma. For Figma-facing changes:
 
-- keep `tokens/echelon.tokens.json` authoritative for token values;
+- keep `tokens/forma.tokens.json` authoritative for token values;
 - keep `patterns/*.html` authoritative for semantic anatomy;
 - preserve the shared Figma property vocabulary in `figma/component-contracts.json`;
 - use real published library node URLs before adding Code Connect templates;

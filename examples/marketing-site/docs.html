@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Documentation | Echelon Foundry reference fixture</title>
-  <meta name="description" content="Forma-owned reference fixture reproducing the Echelon Foundry marketing composition from shared Forma assets.">
-  <link rel="stylesheet" href="assets/forma/forma-echelon-marketing.css">
+  <title>Documentation | Tidewater Systems reference fixture</title>
+  <meta name="description" content="Forma-owned reference fixture for a fictional organization, built only from shared Forma assets.">
+  <link rel="stylesheet" href="assets/forma/forma-marketing.css">
   <link rel="stylesheet" href="site.css">
 </head>
 <body class="ef-site" data-ef-layout="documentation">
@@ -13,7 +13,7 @@
   <header class="ef-site-header">
     <div class="ef-site-header__inner">
       <div class="ef-site-header__identity">
-        <a class="ef-site-header__brand" href="index.html"><span class="ef-site-header__mark" aria-hidden="true">EF</span><span class="ef-site-header__name">Echelon / Foundry</span></a>
+        <a class="ef-site-header__brand" href="index.html"><span class="ef-site-header__mark" aria-hidden="true">TS</span><span class="ef-site-header__name">Tidewater / Systems</span></a>
         <p class="ef-site-header__tagline">Systems architecture &amp; applied research</p>
       </div>
       <nav class="ef-site-nav" aria-label="Primary">
@@ -44,13 +44,13 @@
         <h1 id="doc-title">Consume Forma from a marketing site</h1>
         <p>Documentation pages use the same shell. The article stays inside the reading measure, links remain underlined, and the navigation compacts on narrow screens without a script.</p>
         <h2 id="theme">Select the theme</h2>
-        <p>Load <code>forma-echelon-marketing.css</code>, which is the brand-neutral marketing layer followed by the Echelon Marketing Theme.</p>
+        <p>Load <code>forma-marketing.css</code>, the brand-neutral marketing layer. An organization theme, when the site has one, loads after it.</p>
         <figure class="ef-code-figure">
           <figcaption id="lock-caption">forma.lock</figcaption>
           <pre class="ef-code" tabindex="0" aria-labelledby="lock-caption"><code>forma 0.3.0
 repository kemiller2002/forma
 destination assets/forma
-asset forma-echelon-marketing.css sha256:&lt;digest&gt;</code></pre>
+asset forma-marketing.css sha256:&lt;digest&gt;</code></pre>
         </figure>
         <h2 id="upgrade">Upgrade deliberately</h2>
         <p>Change the pinned version, run the installer with <code>--update</code>, review the release notes, and run the site checks before committing.</p>
@@ -67,7 +67,7 @@ asset forma-echelon-marketing.css sha256:&lt;digest&gt;</code></pre>
     <div class="ef-site-footer__inner">
       <div class="ef-site-footer__main">
         <div>
-          <p class="ef-eyebrow">Echelon / Foundry</p>
+          <p class="ef-eyebrow">Tidewater / Systems</p>
           <p>Strategy, architecture, and delivery for consequential systems.</p>
           <p class="site-signature">Engineering what surrounds the intelligence.</p>
         </div>
@@ -76,7 +76,7 @@ asset forma-echelon-marketing.css sha256:&lt;digest&gt;</code></pre>
           <a href="mailto:hello@example.com">hello@example.com</a>
         </div>
       </div>
-      <p class="ef-site-footer__note"><span>&copy; 2026 Echelon Foundry</span><span>Indianapolis, Indiana</span></p>
+      <p class="ef-site-footer__note"><span>&copy; 2026 Tidewater Systems</span><span>Port Example, Coastline</span></p>
     </div>
   </footer>
 </body>

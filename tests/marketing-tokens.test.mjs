@@ -6,9 +6,11 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 
 const compiler = "tools/TokenCompiler/TokenCompiler.fsproj";
-const themeSource = "themes/echelon/marketing.tokens.json";
-const coreSource = "tokens/echelon.tokens.json";
-const themeCss = fs.readFileSync("build/marketing/echelon-marketing.tokens.css", "utf8");
+// Forma ships no organization's marketing theme (EDS-ADR-002). An external
+// theme compiles its role choices with TokenCompiler --reference against
+// Forma's core tokens; this neutral fixture exercises that path.
+const themeSource = "tests/fixtures/marketing/example-marketing.tokens.json";
+const coreSource = "tokens/forma.tokens.json";
 const roles = fs.readFileSync("src/marketing/roles.css", "utf8");
 
 // The marketing role contract (requirements/MARKETING-PRESENTATION.md MKT-TOK).
@@ -46,7 +48,14 @@ function compile(source, output) {
   return spawnSync("dotnet", ["run", "--project", compiler, "--", source, output, "--reference", coreSource], { encoding: "utf8" });
 }
 
-test("Echelon Marketing Theme supplies every semantic color role in light and dark", () => {
+const themeCss = (() => {
+  const output = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "forma-theme-")), "example-marketing.tokens.css");
+  const result = compile(themeSource, output);
+  assert.equal(result.status, 0, result.stderr);
+  return fs.readFileSync(output, "utf8");
+})();
+
+test("an external marketing theme supplies every semantic color role in light and dark", () => {
   const light = block(themeCss, ':root, [data-ef-theme="light"]');
   const dark = block(themeCss, '[data-ef-theme="dark"]');
   for (const role of colorRoles) {
@@ -55,7 +64,7 @@ test("Echelon Marketing Theme supplies every semantic color role in light and da
   }
 });
 
-test("Echelon Marketing Theme supplies every typography, layout, shape, and effect role", () => {
+test("an external marketing theme supplies every typography, layout, shape, and effect role", () => {
   const neutral = block(themeCss, "  :root");
   for (const token of roleTokens) {
     assert.match(neutral, new RegExp(`${token}: [^;]+;`), `theme lacks ${token}`);
@@ -113,7 +122,7 @@ test("theme compilation is deterministic", () => {
 test("a theme status color below 4.5:1 is rejected at compile time", () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-theme-"));
   const data = JSON.parse(fs.readFileSync(themeSource, "utf8"));
-  data.semantic.light.color.status.success.$value = "{primitive.color.stone}";
+  data.semantic.light.color.status.success.$value = "{primitive.color.neutral-100}";
   const source = path.join(dir, "unsafe.json");
   fs.writeFileSync(source, JSON.stringify(data));
   const result = compile(source, path.join(dir, "unsafe.css"));
@@ -133,7 +142,7 @@ test("a theme cannot alias a token that does not exist", () => {
 });
 
 test("no unresolved custom-property references in the distributed marketing CSS", () => {
-  for (const file of ["forma-marketing.css", "forma-echelon-marketing.css"]) {
+  for (const file of ["forma-marketing.css", "forma-all.css"]) {
     const css = fs.readFileSync(path.join("dist/marketing", file), "utf8");
     const defined = new Set([...css.matchAll(/(--ef-[a-z0-9-]+)\s*:/g)].map(m => m[1]));
     const unresolved = [...css.matchAll(/var\(\s*(--ef-[a-z0-9-]+)\s*(,)?/g)]

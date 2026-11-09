@@ -1,81 +1,81 @@
 {
-  "$description": "Echelon Marketing Theme. Applies Echelon Foundry brand decisions to Forma's generic marketing role tokens. Every value aliases a core primitive in tokens/echelon.tokens.json (compiled with --reference); this file owns choices, not raw values.",
+  "$description": "Example marketing theme (test fixture). Exercises TokenCompiler --reference: every value aliases a core primitive in tokens/forma.tokens.json, so the theme owns choices, not raw values. Not shipped.",
   "semantic": {
     "light": {
       "color": {
         "text": {
           "primary": {
-            "$value": "{primitive.color.carbon}"
+            "$value": "{primitive.color.neutral-950}"
           },
           "heading": {
-            "$value": "{primitive.color.foundry-charcoal}"
+            "$value": "{primitive.color.neutral-900}"
           },
           "secondary": {
-            "$value": "{primitive.color.graphite}"
+            "$value": "{primitive.color.neutral-650}"
           },
           "muted": {
-            "$value": "{primitive.color.graphite}"
+            "$value": "{primitive.color.neutral-650}"
           },
           "on-secondary-surface": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-800}"
           },
           "inverse": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           }
         },
         "surface": {
           "primary": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           },
           "secondary": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-100}"
           },
           "elevated": {
-            "$value": "{primitive.color.parchment-light}"
+            "$value": "{primitive.color.white}"
           },
           "inverse": {
-            "$value": "{primitive.color.foundry-charcoal}"
+            "$value": "{primitive.color.neutral-900}"
           },
           "inverse-secondary": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-800}"
           }
         },
         "accent": {
           "primary": {
-            "$value": "{primitive.color.oxide-bronze}"
+            "$value": "{primitive.color.blue-600}"
           },
           "hover": {
-            "$value": "{primitive.color.oxide-bronze-deep}"
+            "$value": "{primitive.color.navy}"
           },
           "secondary": {
-            "$value": "{primitive.color.verdigris}"
+            "$value": "{primitive.color.teal-700}"
           }
         },
         "border": {
           "subtle": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           },
           "functional": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-800}"
           }
         },
         "focus": {
           "ring": {
-            "$value": "{primitive.color.carbon}"
+            "$value": "{primitive.color.neutral-950}"
           },
           "gap": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           }
         },
         "control": {
           "track": {
-            "$value": "{primitive.color.graphite}"
+            "$value": "{primitive.color.neutral-500}"
           },
           "thumb": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           },
           "active": {
-            "$value": "{primitive.color.oxide-bronze}"
+            "$value": "{primitive.color.blue-600}"
           }
         },
         "status": {
@@ -98,77 +98,77 @@
       "color": {
         "text": {
           "primary": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           },
           "heading": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           },
           "secondary": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-100}"
           },
           "muted": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-100}"
           },
           "on-secondary-surface": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           },
           "inverse": {
-            "$value": "{primitive.color.carbon}"
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "surface": {
           "primary": {
-            "$value": "{primitive.color.carbon}"
+            "$value": "{primitive.color.neutral-950}"
           },
           "secondary": {
-            "$value": "{primitive.color.foundry-charcoal}"
+            "$value": "{primitive.color.neutral-900}"
           },
           "elevated": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-800}"
           },
           "inverse": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           },
           "inverse-secondary": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-100}"
           }
         },
         "accent": {
           "primary": {
-            "$value": "{primitive.color.oxide-bronze-light}"
+            "$value": "{primitive.color.blue-300}"
           },
           "hover": {
-            "$value": "{primitive.color.oxide-bronze-pale}"
+            "$value": "{primitive.color.ice}"
           },
           "secondary": {
-            "$value": "{primitive.color.verdigris-light}"
+            "$value": "{primitive.color.teal-300}"
           }
         },
         "border": {
           "subtle": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-800}"
           },
           "functional": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           }
         },
         "focus": {
           "ring": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           },
           "gap": {
-            "$value": "{primitive.color.carbon}"
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "control": {
           "track": {
-            "$value": "{primitive.color.graphite}"
+            "$value": "{primitive.color.neutral-500}"
           },
           "thumb": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           },
           "active": {
-            "$value": "{primitive.color.oxide-bronze-light}"
+            "$value": "{primitive.color.blue-300}"
           }
         },
         "status": {

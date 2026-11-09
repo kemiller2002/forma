@@ -15,9 +15,9 @@ test("explicit dark theme resolves accessible derived accent tokens", async ({ p
   });
 
   expect(values).toEqual({
-    primary: "#a87e5e",
-    secondary: "#698d84",
-    surface: "#171a18"
+    primary: "#93b6ec",
+    secondary: "#73c2ba",
+    surface: "#161616"
   });
 });
 
@@ -26,5 +26,5 @@ test("light secondary surface uses its dedicated safe text token", async ({ page
   const value = await page.locator("html").evaluate(element =>
     getComputedStyle(element).getPropertyValue("--ef-color-text-on-secondary-surface").trim()
   );
-  expect(value).toBe("#3a403c");
+  expect(value).toBe("#303030");
 });

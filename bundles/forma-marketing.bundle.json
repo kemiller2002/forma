@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "name": "forma-marketing",
+  "description": "Brand-neutral Forma presentation artifacts for marketing sites. Every artifact is a single self-contained CSS file with no imports or relative URLs. An organization's marketing theme ships separately and loads after forma-marketing.css.",
+  "outputDirectory": "dist/marketing",
+  "artifacts": [
+    {
+      "file": "forma-marketing.css",
+      "description": "Brand-neutral marketing layer: core tokens, role defaults, Forma foundations, marketing foundations, components, and layouts.",
+      "sources": [
+        "dist/tokens.css",
+        "src/marketing/roles.css",
+        "dist/foundations.css",
+        "src/marketing/foundations.css",
+        "src/marketing/components.css",
+        "src/marketing/layouts.css"
+      ]
+    },
+    {
+      "file": "forma-all.css",
+      "description": "Complete Forma surface (application components, assessment, and marketing layers) for sites that also present Forma application patterns such as data grids or status lozenges.",
+      "sources": [
+        "dist/all.css"
+      ]
+    }
+  ]
+}

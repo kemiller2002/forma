@@ -12,7 +12,7 @@ function runCompiler(source, output) {
 }
 
 function copyRepositoryBrands(dir) {
-  for (const file of ["echelon.brand.json", "example-harbor.brand.json"]) {
+  for (const file of ["example-harbor.brand.json", "example-orchard.brand.json"]) {
     fs.copyFileSync(path.join("brands", file), path.join(dir, file));
   }
 }
@@ -28,7 +28,7 @@ test("repository brand manifests compile deterministically and remain scoped", (
   const b = runCompiler(source, second);
   assert.equal(b.status, 0, b.stderr);
 
-  for (const file of ["echelon.css", "example-harbor.css", "index.json"]) {
+  for (const file of ["example-harbor.css", "example-orchard.css", "index.json"]) {
     assert.equal(
       fs.readFileSync(path.join(first, file), "utf8"),
       fs.readFileSync(path.join(second, file), "utf8"),
@@ -40,11 +40,11 @@ test("repository brand manifests compile deterministically and remain scoped", (
   assert.match(css, /\[data-ef-brand="example-harbor"\]/);
   assert.match(css, /\[data-ef-theme="dark"\] \[data-ef-brand="example-harbor"\]/);
   assert.match(css, /--ef-color-accent-primary: #7a4a00/);
-  assert.match(css, /--ef-color-status-danger: #a13a2c/);
+  assert.match(css, /--ef-color-status-danger: #a8342a/);
   assert.match(css, /--ef-primitive-radius-medium: 12px/);
 
   const index = JSON.parse(fs.readFileSync(path.join(first, "index.json"), "utf8"));
-  assert.deepEqual(index.brands.map(item => item.id), ["echelon", "example-harbor"]);
+  assert.deepEqual(index.brands.map(item => item.id), ["example-harbor", "example-orchard"]);
 });
 
 test("unsafe brand contrast is rejected", () => {
@@ -74,19 +74,19 @@ test("unsafe font-family injection is rejected", () => {
 test("extended brand roles are emitted and contrast-gated", () => {
   const source = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-src-"));
   const output = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-out-"));
-  const data = JSON.parse(fs.readFileSync("brands/echelon.brand.json", "utf8"));
+  const data = JSON.parse(fs.readFileSync("brands/example-orchard.brand.json", "utf8"));
   data.id = "product-identity";
-  Object.assign(data.themes.light.color.accent, { primary: "#47756b", hover: "#3a403c" });
-  data.themes.light.color.status = { success: "#2e6a45", warning: "#86560f", danger: "#a13a2c", info: "#2d5f86" };
+  Object.assign(data.themes.light.color.accent, { primary: "#2f6a2c", hover: "#2c2733" });
+  data.themes.light.color.status = { success: "#2b6a33", warning: "#835000", danger: "#a3312c", info: "#2d5c94" };
   fs.writeFileSync(path.join(source, "product-identity.brand.json"), JSON.stringify(data, null, 2));
 
   const ok = runCompiler(source, output);
   assert.equal(ok.status, 0, ok.stderr);
   const css = fs.readFileSync(path.join(output, "product-identity.css"), "utf8");
-  assert.match(css, /--ef-color-accent-hover: #3a403c/);
-  assert.match(css, /--ef-color-status-danger: #a13a2c/);
+  assert.match(css, /--ef-color-accent-hover: #2c2733/);
+  assert.match(css, /--ef-color-status-danger: #a3312c/);
 
-  data.themes.light.color.status.warning = "#ddb266";
+  data.themes.light.color.status.warning = "#e7b766";
   fs.writeFileSync(path.join(source, "product-identity.brand.json"), JSON.stringify(data, null, 2));
   const unsafe = runCompiler(source, output);
   assert.notEqual(unsafe.status, 0);

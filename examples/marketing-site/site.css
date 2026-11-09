@@ -1,5 +1,6 @@
 /*
-  Site-local CSS for the Echelon marketing reference fixture.
+  Site-local CSS for the marketing reference fixture (Tidewater Systems, a
+  fictional organization).
 
   Everything shared (tokens, typography, header, navigation, hero, sections,
   cards, buttons, CTA, footer, responsive and accessibility behavior) comes
@@ -15,7 +16,7 @@
 }
 
 /* Product identity: product pages retarget the accent to the validated
-   verdigris role. Identity tokens may only reference other Forma tokens. */
+   secondary accent role. Identity tokens may only reference other Forma tokens. */
 [data-ef-layout="product"] {
   --ef-color-accent-primary: var(--ef-color-accent-secondary);
   --ef-color-accent-hover: var(--ef-color-text-primary);

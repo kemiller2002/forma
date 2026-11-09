@@ -30,9 +30,9 @@ module Pages =
           yield $"  inline-size: {css p.Width};"
           match p.Height with Some h -> yield $"  block-size: {css h};" | None -> ()
           yield $"  padding: {css s.Top} {css s.Right} {css s.Bottom} {css s.Left};"
-          yield $"  border: {css p.Border} solid #3a403c;"
+          yield $"  border: {css p.Border} solid #555555;"
           yield $"  border-radius: {p.Radius};"
-          yield "  background: #f2efe7;"
+          yield "  background: #fafafa;"
           if p.Center then yield "  display: grid; place-content: center; text-align: center;"
           yield "}"
           yield $"{selector} > p {{ margin: 0; }}" ]

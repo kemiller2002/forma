@@ -8,7 +8,7 @@
 @property --ef-height { syntax: "<integer>"; inherits: false; initial-value: 1; }
 @property --ef-gutter { syntax: "<integer>"; inherits: true; initial-value: 1; }
 
-@layer echelon.components {
+@layer forma.components {
   /*
    * Public ef-* authoring tags are inert wrappers, not registered Custom
    * Elements. display: contents keeps layout and semantics owned by the
@@ -92,14 +92,14 @@
      is the URL target. */
   .ef-form__outcome { display: none; }
   .ef-form__outcome:target {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
     display: block;
     padding: var(--ef-primitive-spacing-3, 0.75rem);
-    border-inline-start: 0.25rem solid var(--ef-color-status-success, #2e6a45);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    border-inline-start: 0.25rem solid var(--ef-color-status-success, #1f6b3d);
+    background: var(--ef-color-surface-secondary, #eeeeee);
+    color: var(--ef-color-text-on-secondary-surface, #303030);
     font-weight: 650;
   }
 
@@ -110,19 +110,19 @@
   }
 
   .ef-field__label {
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
     font-size: 0.9375rem;
     font-weight: 650;
     line-height: 1.25;
   }
 
   .ef-field__description {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
     line-height: 1.4;
   }
   /* On a secondary surface, text-secondary falls below 4.5:1; use the surface's own text colour (forma#93). */
-  .ef-surface .ef-field__description { color: var(--ef-color-text-on-secondary-surface, #3a403c); }
+  .ef-surface .ef-field__description { color: var(--ef-color-text-on-secondary-surface, #303030); }
 
   /* Motion model vocabulary --------------------------------------------- */
   /*
@@ -266,7 +266,7 @@
     gap: var(--ef-primitive-spacing-3, 0.75rem);
     min-block-size: 2.75rem;
     max-inline-size: 100%;
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
     cursor: pointer;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -285,9 +285,9 @@
     position: relative;
     inline-size: var(--ef-switch-width);
     block-size: var(--ef-switch-height);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     border-radius: var(--ef-primitive-radius-pill, 999px);
-    background: var(--ef-color-control-track, #686d68);
+    background: var(--ef-color-control-track, #767676);
     transition:
       background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
       border-color var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing);
@@ -300,9 +300,9 @@
     inset-inline-start: var(--ef-switch-gap);
     inline-size: var(--ef-switch-thumb);
     block-size: var(--ef-switch-thumb);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     border-radius: 50%;
-    background: var(--ef-color-control-thumb, #f2efe7);
+    background: var(--ef-color-control-thumb, #fafafa);
     box-shadow: 0 1px 2px rgb(0 0 0 / 0.18);
     translate: 0 -50%;
     scale: 1;
@@ -313,7 +313,7 @@
   }
 
   .ef-switch__input:checked + .ef-switch__track {
-    background: var(--ef-color-control-active, #905831);
+    background: var(--ef-color-control-active, #2b5ea8);
   }
 
   .ef-switch__input:checked + .ef-switch__track::after {
@@ -323,9 +323,9 @@
   .ef-switch__input:active + .ef-switch__track::after { scale: 1.12; }
 
   .ef-switch__input:focus-visible + .ef-switch__track {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
   }
 
   .ef-switch__input:disabled ~ * { opacity: 0.62; }
@@ -336,7 +336,7 @@
   .ef-switch__description {
     display: block;
     margin-block-start: 0.2rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
     line-height: 1.35;
   }
@@ -350,7 +350,7 @@
     gap: var(--ef-primitive-spacing-3, 0.75rem);
     min-block-size: 2.75rem;
     max-inline-size: 100%;
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
     cursor: pointer;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -371,9 +371,9 @@
     block-size: 1.25rem;
     display: grid;
     place-items: center;
-    border: 2px solid var(--ef-color-border-functional, #3a403c);
+    border: 2px solid var(--ef-color-border-functional, #555555);
     border-radius: var(--ef-primitive-radius-small, 4px);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    background: var(--ef-color-surface-primary, #fafafa);
     scale: 1;
     transition:
       background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
@@ -383,7 +383,7 @@
 
   .ef-checkbox__box::after {
     content: "✓";
-    color: var(--ef-color-text-inverse, #f2efe7);
+    color: var(--ef-color-text-inverse, #fafafa);
     font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
     font-size: 0.9rem;
     font-weight: 800;
@@ -398,8 +398,8 @@
   }
 
   .ef-checkbox__input:checked + .ef-checkbox__box {
-    border-color: var(--ef-color-control-active, #905831);
-    background: var(--ef-color-control-active, #905831);
+    border-color: var(--ef-color-control-active, #2b5ea8);
+    background: var(--ef-color-control-active, #2b5ea8);
   }
 
   .ef-checkbox__input:checked + .ef-checkbox__box::after {
@@ -411,9 +411,9 @@
   .ef-checkbox__input:active + .ef-checkbox__box { scale: 0.92; }
 
   .ef-checkbox__input:focus-visible + .ef-checkbox__box {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
   }
 
   .ef-checkbox:has(.ef-checkbox__input:disabled) {
@@ -426,7 +426,7 @@
   .ef-checkbox__description {
     display: block;
     margin-block-start: 0.2rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
     line-height: 1.35;
   }
@@ -473,7 +473,7 @@
     block-size: 0.55rem;
     border-inline-end: 2px solid currentColor;
     border-block-end: 2px solid currentColor;
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
     pointer-events: none;
     rotate: 45deg;
     translate: 0 -0.12rem;
@@ -532,7 +532,7 @@
 
   .ef-slider__label { font-size: 0.9375rem; font-weight: 650; }
   .ef-slider__bounds {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
   }
@@ -541,7 +541,7 @@
     inline-size: 100%;
     min-block-size: 2.75rem;
     margin: 0;
-    accent-color: var(--ef-color-control-active, #905831);
+    accent-color: var(--ef-color-control-active, #2b5ea8);
     cursor: pointer;
     /* Hover/active emphasis only. The native value is direct manipulation
        owned by the browser and is never transitioned (SL-MOT-001). */
@@ -555,23 +555,23 @@
   .ef-slider__input:disabled { cursor: not-allowed; opacity: 0.62; }
 
   .ef-slider__input:focus-visible {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
   }
 
   /* Segmented control --------------------------------------------------- */
   .ef-segmented {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
     max-inline-size: 100%;
     display: inline-flex;
     flex-wrap: wrap;
     gap: 2px;
     padding: 2px;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-secondary, #eeeeee);
     position: relative;
     isolation: isolate;
   }
@@ -590,7 +590,7 @@
     place-items: center;
     padding: 0.55rem 0.9rem;
     background: transparent;
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    color: var(--ef-color-text-on-secondary-surface, #303030);
     cursor: pointer;
     transition:
       background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
@@ -605,8 +605,8 @@
   }
 
   .ef-segment:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
   }
 
   .ef-segment:has(input:active:not(:disabled)) > :not(input) { scale: 0.97; }
@@ -635,7 +635,7 @@
       right: anchor(right);
       bottom: anchor(bottom);
       left: anchor(left);
-      background: var(--ef-color-surface-inverse, #202421);
+      background: var(--ef-color-surface-inverse, #232323);
       pointer-events: none;
       transition:
         top var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing),
@@ -660,14 +660,14 @@
   }
 
   .ef-segment:has(input:focus-visible) {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
   }
 
   /* Disclosure ---------------------------------------------------------- */
   .ef-disclosure {
-    border-block: 1px solid var(--ef-color-border-functional, #3a403c);
+    border-block: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-disclosure + .ef-disclosure { border-block-start: 0; }
@@ -724,9 +724,9 @@
     max-block-size: min(80dvh, calc(100dvh - 2rem));
     margin: 0;
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.18);
     overflow: auto;
     overscroll-behavior: contain;
@@ -770,16 +770,16 @@
     padding: 0.6rem 0.75rem;
     border: 0;
     background: transparent;
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
     text-align: start;
     text-decoration: none;
   }
 
   .ef-menu__list :where(button, a):hover {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
+    background: var(--ef-color-surface-secondary, #eeeeee);
   }
 
   /* Tooltip / contextual hint (MOT-018, FORMA-MOT-004) ----------------- */
@@ -825,9 +825,9 @@
     max-inline-size: min(20rem, calc(100vw - 2rem));
     margin: 0;
     padding: 0.5rem 0.75rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
     font-size: 0.8125rem;
     line-height: 1.4;
     overflow-wrap: anywhere;
@@ -945,7 +945,7 @@
     z-index: 2;
     display: none;
     block-size: 0.1875rem;
-    background: var(--ef-color-accent-primary, #905831);
+    background: var(--ef-color-accent-primary, #2b5ea8);
     pointer-events: none;
   }
 
@@ -984,9 +984,9 @@
     --ef-overlay-motion-duration: var(--ef-motion-inertia-duration);
     --ef-overlay-spatial-easing: var(--ef-motion-spring-easing);
     padding: 0;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     overscroll-behavior: contain;
   }
 
@@ -996,7 +996,7 @@
   }
 
   :where(.ef-dialog, .ef-flyout)::backdrop {
-    background: rgb(23 26 24 / 0);
+    background: rgb(22 22 22 / 0);
     backdrop-filter: blur(0);
     /* Dimming is non-spatial: perceptual interpolation, without mass. */
     transition:
@@ -1005,7 +1005,7 @@
   }
 
   :where(.ef-dialog, .ef-flyout)[open]::backdrop {
-    background: rgb(23 26 24 / 0.48);
+    background: rgb(22 22 22 / 0.48);
     backdrop-filter: blur(2px);
   }
 
@@ -1034,7 +1034,7 @@
     justify-content: flex-end;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
     padding: 1rem 1.5rem;
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   /* Edge flyout --------------------------------------------------------- */
@@ -1121,7 +1121,7 @@
     justify-content: space-between;
     padding-block-start: max(var(--ef-primitive-spacing-4, 1rem), env(safe-area-inset-top));
     padding-block-end: var(--ef-primitive-spacing-4, 1rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-flyout__header > * { min-inline-size: 0; }
@@ -1146,7 +1146,7 @@
     justify-content: flex-end;
     padding-block-start: var(--ef-primitive-spacing-4, 1rem);
     padding-block-end: max(var(--ef-primitive-spacing-4, 1rem), env(safe-area-inset-bottom));
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   @starting-style {
@@ -1160,7 +1160,7 @@
     }
 
     :where(.ef-dialog, .ef-flyout)[open]::backdrop {
-      background: rgb(23 26 24 / 0);
+      background: rgb(22 22 22 / 0);
       backdrop-filter: blur(0);
     }
   }
@@ -1197,7 +1197,7 @@
   }
 
   .ef-component-kicker {
-    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-secondary, #47756b));
+    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-secondary, #1d6b66));
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
     letter-spacing: 0.08em;
@@ -1222,9 +1222,9 @@
     gap: 0.35rem;
     min-block-size: 1.75rem;
     padding: 0.2rem 0.55rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
     line-height: 1.2;
@@ -1239,10 +1239,10 @@
     line-height: 0;
   }
 
-  .ef-status-lozenge[data-state="ok"] { color: var(--ef-color-status-success, #2e6a45); border-inline-start-width: 0.25rem; }
-  .ef-status-lozenge[data-state="attention"] { color: var(--ef-color-status-warning, #86560f); border-inline-start-width: 0.25rem; }
-  .ef-status-lozenge[data-state="unknown"] { color: var(--ef-color-status-info, #2d5f86); border-inline-start-width: 0.25rem; }
-  .ef-status-lozenge[data-state="blocked"] { color: var(--ef-color-status-danger, #a13a2c); border-inline-start-width: 0.25rem; }
+  .ef-status-lozenge[data-state="ok"] { color: var(--ef-color-status-success, #1f6b3d); border-inline-start-width: 0.25rem; }
+  .ef-status-lozenge[data-state="attention"] { color: var(--ef-color-status-warning, #8a5200); border-inline-start-width: 0.25rem; }
+  .ef-status-lozenge[data-state="unknown"] { color: var(--ef-color-status-info, #235f97); border-inline-start-width: 0.25rem; }
+  .ef-status-lozenge[data-state="blocked"] { color: var(--ef-color-status-danger, #b0302a); border-inline-start-width: 0.25rem; }
   .ef-status-lozenge[data-state="ok"]::before { content: "✓"; }
   .ef-status-lozenge[data-state="attention"]::before { content: "!"; }
   .ef-status-lozenge[data-state="unknown"]::before { content: "?"; }
@@ -1255,7 +1255,7 @@
   }
 
   .ef-search__label {
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
     font-size: 0.8125rem;
     font-weight: 650;
   }
@@ -1270,7 +1270,7 @@
   .ef-search__status,
   .ef-combobox__help {
     margin: 0;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.75rem;
   }
 
@@ -1280,7 +1280,7 @@
     gap: 1rem;
     align-items: end;
     padding-block: 0.75rem;
-    border-block: 1px solid var(--ef-color-border-functional, #3a403c);
+    border-block: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-collection-toolbar__controls {
@@ -1303,7 +1303,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.65rem 0.75rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     cursor: pointer;
   }
 
@@ -1314,14 +1314,14 @@
     gap: 0.75rem;
     min-inline-size: min(20rem, calc(100vw - 2rem));
     padding: 1rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
     box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 0.14);
   }
 
   .ef-collection-toolbar__count {
     margin: 0 0 0.75rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
     white-space: nowrap;
@@ -1331,8 +1331,8 @@
   .ef-data-grid {
     max-inline-size: 100%;
     overflow-x: auto;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
 
   .ef-data-grid table {
@@ -1344,17 +1344,17 @@
   .ef-data-grid th,
   .ef-data-grid td {
     padding: 0.75rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
     text-align: start;
     vertical-align: middle;
   }
 
   .ef-data-grid th {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
-    color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
+    background: var(--ef-color-surface-secondary, #eeeeee);
+    color: var(--ef-color-text-primary, #161616);
     font-size: 0.75rem;
   }
 
@@ -1390,18 +1390,18 @@
     display: grid;
     place-items: center;
     padding: 0.4rem 0.65rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    color: var(--ef-color-text-primary, #171a18);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    color: var(--ef-color-text-primary, #161616);
     text-decoration: none;
   }
 
   .ef-pagination a[aria-current="page"] {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
   }
 
   .ef-pagination__summary {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.75rem;
   }
 
@@ -1414,7 +1414,7 @@
     display: flex;
     max-inline-size: 100%;
     overflow-x: auto;
-    border-block-end: 1px solid var(--ef-color-border-functional, #3a403c);
+    border-block-end: 1px solid var(--ef-color-border-functional, #555555);
     scrollbar-width: thin;
   }
 
@@ -1436,16 +1436,16 @@
     inset-inline: 0.6rem;
     inset-block-end: 0;
     block-size: 3px;
-    background: var(--ef-color-accent-primary, #905831);
+    background: var(--ef-color-accent-primary, #2b5ea8);
     scale: 0 1;
     transition: scale var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing);
   }
 
   .ef-tabs__list [aria-selected="true"] {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
+    background: var(--ef-color-surface-secondary, #eeeeee);
     translate: 0 0;
   }
 
@@ -1488,7 +1488,7 @@
     position: absolute;
     inset-inline-start: 0.5625rem;
     inset-block: 1rem 0;
-    border-inline-start: 1px solid var(--ef-color-border-functional, #3a403c);
+    border-inline-start: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-timeline__marker {
@@ -1496,15 +1496,15 @@
     inline-size: 1.125rem;
     block-size: 1.125rem;
     margin-block-start: 0.2rem;
-    border: 2px solid var(--ef-color-border-functional, #3a403c);
+    border: 2px solid var(--ef-color-border-functional, #555555);
     border-radius: 50%;
-    background: var(--ef-color-surface-primary, #f2efe7);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
 
   .ef-timeline__content {
     min-inline-size: 0;
     padding: 1rem;
-    border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-timeline__content h3,
@@ -1521,7 +1521,7 @@
 
   /* Diff and conflict --------------------------------------------------- */
   .ef-diff-viewer {
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-diff-viewer__header,
@@ -1530,7 +1530,7 @@
   .ef-work-queue__header,
   .ef-preview-surface__header {
     padding: 1rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-diff-viewer__header h3,
@@ -1549,7 +1549,7 @@
   }
 
   .ef-diff-viewer__side + .ef-diff-viewer__side {
-    border-inline-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-inline-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-diff-viewer dl { margin: 0; }
@@ -1558,16 +1558,16 @@
     grid-template-columns: minmax(7rem, 0.4fr) minmax(0, 1fr);
     gap: 1rem;
     padding-block: 0.6rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-diff-row[data-change="changed"] {
-    border-inline-start: 0.3rem solid var(--ef-color-accent-primary, #905831);
+    border-inline-start: 0.3rem solid var(--ef-color-accent-primary, #2b5ea8);
     padding-inline-start: 0.6rem;
   }
 
   .ef-conflict-review {
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-conflict-review > .ef-diff-viewer {
@@ -1580,7 +1580,7 @@
     justify-content: flex-end;
     gap: 0.5rem;
     padding: 1rem;
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   /* Metrics and dashboards --------------------------------------------- */
@@ -1591,18 +1591,18 @@
     min-inline-size: 0;
     overflow-wrap: anywhere;
     padding: 1.25rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
 
   .ef-metric-card__label {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
     font-weight: 650;
   }
 
   .ef-metric-card__value {
-    color: var(--ef-color-text-heading, #202421);
+    color: var(--ef-color-text-heading, #161616);
     font-family: var(--ef-primitive-font-family-display, Georgia, serif);
     font-size: clamp(2rem, 8vw, 3.5rem);
     line-height: 1;
@@ -1624,10 +1624,10 @@
 
   @starting-style {
     :where([data-ef-value-change]) {
-      --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-      --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-      --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-      background-color: var(--ef-color-surface-secondary, #e3e0d7);
+      --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+      --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+      --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
+      background-color: var(--ef-color-surface-secondary, #eeeeee);
     }
   }
 
@@ -1643,7 +1643,7 @@
 
   /* Work queue ---------------------------------------------------------- */
   .ef-work-queue {
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-work-queue__header {
@@ -1665,7 +1665,7 @@
     gap: 1rem;
     align-items: center;
     padding: 1rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-work-queue__item:last-child { border-block-end: 0; }
@@ -1679,9 +1679,9 @@
     gap: 1rem;
     align-items: start;
     padding: 1rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    border-inline-start: 0.35rem solid var(--ef-color-accent-primary, #905831);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    border-inline-start: 0.35rem solid var(--ef-color-accent-primary, #2b5ea8);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
 
   .ef-alert[data-ef-motion-entry] {
@@ -1690,7 +1690,7 @@
   }
 
   .ef-alert p {
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
   }
 
   @starting-style {
@@ -1705,10 +1705,10 @@
     max-inline-size: min(26rem, calc(100vw - 2rem));
     margin: 0;
     padding: 1rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    border-inline-start: 0.35rem solid var(--ef-color-accent-primary, #905831);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    border-inline-start: 0.35rem solid var(--ef-color-accent-primary, #2b5ea8);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.18);
     opacity: 0;
     translate: 0 0.65rem;
@@ -1771,7 +1771,7 @@
     justify-items: center;
     gap: 0.75rem;
     padding: clamp(2rem, 8vw, 5rem) 1.25rem;
-    border: 1px dashed var(--ef-color-border-functional, #3a403c);
+    border: 1px dashed var(--ef-color-border-functional, #555555);
     text-align: center;
   }
 
@@ -1782,7 +1782,7 @@
     display: grid;
     gap: 0.75rem;
     padding: 1rem;
-    border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   /* Shimmer runs only while the application reports the activity. */
@@ -1790,9 +1790,9 @@
     block-size: 0.9rem;
     inline-size: 100%;
     background: linear-gradient(90deg,
-      var(--ef-color-surface-secondary, #e3e0d7),
-      color-mix(in srgb, var(--ef-color-surface-secondary, #e3e0d7) 55%, var(--ef-color-surface-primary, #f2efe7)),
-      var(--ef-color-surface-secondary, #e3e0d7));
+      var(--ef-color-surface-secondary, #eeeeee),
+      color-mix(in srgb, var(--ef-color-surface-secondary, #eeeeee) 55%, var(--ef-color-surface-primary, #fafafa)),
+      var(--ef-color-surface-secondary, #eeeeee));
     background-size: 200% 100%;
   }
 
@@ -1826,7 +1826,7 @@
     align-items: center;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
     margin: 0;
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
   }
 
   .ef-spinner__indicator {
@@ -1875,7 +1875,7 @@
   .ef-progress__label { font-weight: 700; }
 
   .ef-progress__value {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
   }
@@ -1883,7 +1883,7 @@
   .ef-progress__bar {
     inline-size: 100%;
     block-size: 0.65rem;
-    accent-color: var(--ef-color-accent-primary, #905831);
+    accent-color: var(--ef-color-accent-primary, #2b5ea8);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1896,7 +1896,7 @@
   /* Wizard and checklist ------------------------------------------------ */
   .ef-wizard,
   .ef-readiness-checklist {
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-wizard__header,
@@ -1910,11 +1910,11 @@
     grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.4fr);
     gap: 1rem;
     align-items: center;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-wizard__position {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
   }
@@ -1928,7 +1928,7 @@
     margin: 0;
     padding: 1rem;
     list-style: none;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-wizard__steps li {
@@ -1937,7 +1937,7 @@
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
   }
 
@@ -1948,18 +1948,18 @@
     min-inline-size: 1.75rem;
     block-size: 1.75rem;
     padding-inline: 0.375rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     border-radius: 999px;
     white-space: nowrap;
   }
 
   .ef-wizard__steps [data-state="complete"] > span::after { content: "✓"; position: absolute; }
-  .ef-wizard__steps [data-state="current"] { color: var(--ef-color-text-primary, #171a18); font-weight: 700; }
-  .ef-wizard__steps [data-state="current"] > span { background: var(--ef-color-surface-inverse, #202421); color: var(--ef-color-text-inverse, #f2efe7); }
+  .ef-wizard__steps [data-state="current"] { color: var(--ef-color-text-primary, #161616); font-weight: 700; }
+  .ef-wizard__steps [data-state="current"] > span { background: var(--ef-color-surface-inverse, #232323); color: var(--ef-color-text-inverse, #fafafa); }
   .ef-wizard__body { padding: 1.25rem; }
-  .ef-wizard__actions { justify-content: space-between; border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7); }
+  .ef-wizard__actions { justify-content: space-between; border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8); }
 
-  .ef-readiness-checklist > header { border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7); }
+  .ef-readiness-checklist > header { border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8); }
   .ef-readiness-checklist > header h3 { margin: 0.5rem 0 0; }
   .ef-readiness-checklist__items { margin: 0; padding: 0; list-style: none; }
   .ef-readiness-checklist__items li {
@@ -1970,11 +1970,11 @@
     align-items: center;
     min-block-size: 3rem;
     padding: 0.65rem 1rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
   .ef-readiness-checklist__items li:last-child { border-block-end: 0; }
   .ef-readiness-checklist__items [data-state="complete"] > :first-child { font-weight: 800; }
-  .ef-readiness-checklist__items [data-state="blocked"] { border-inline-start: 0.35rem solid var(--ef-color-accent-primary, #905831); }
+  .ef-readiness-checklist__items [data-state="blocked"] { border-inline-start: 0.35rem solid var(--ef-color-accent-primary, #2b5ea8); }
 
   /* Command palette ----------------------------------------------------- */
   .ef-command-palette {
@@ -1982,9 +1982,9 @@
     max-block-size: min(40rem, calc(100dvh - 2rem));
     margin: auto;
     padding: 0;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     opacity: 0;
     translate: 0 0.75rem;
     scale: 0.985;
@@ -2021,7 +2021,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-command-palette__header h3 { margin: 0; }
@@ -2041,10 +2041,10 @@
   /* A command's label is no wider than its button, so a long label breaks
      inside the button instead of overflowing the palette (LRP-001). */
   .ef-command-palette__group button > * { max-inline-size: 100%; }
-  .ef-command-palette__group button:last-child { border-block-end: 1px solid var(--ef-color-border-functional, #3a403c); }
+  .ef-command-palette__group button:last-child { border-block-end: 1px solid var(--ef-color-border-functional, #555555); }
   .ef-command-palette kbd {
     padding: 0.1rem 0.35rem;
-    border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border: 1px solid var(--ef-color-border-subtle, #d8d8d8);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
   }
 
@@ -2105,12 +2105,12 @@
   }
 
   .ef-file-upload__drop {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
     padding: 1.5rem;
-    border: 1px dashed var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    border: 1px dashed var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-secondary, #eeeeee);
   }
 
   .ef-file-upload__drop h3 { margin-block-start: 0; }
@@ -2126,7 +2126,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-file-upload__queue li {
@@ -2135,10 +2135,10 @@
     gap: 1rem;
     align-items: center;
     padding-block: 0.75rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
-  .ef-file-upload__queue small { display: block; color: var(--ef-color-text-secondary, #686d68); }
+  .ef-file-upload__queue small { display: block; color: var(--ef-color-text-secondary, #555555); }
   .ef-file-upload__queue progress { inline-size: 100%; }
 
   /* Record header and master/detail ------------------------------------ */
@@ -2147,7 +2147,7 @@
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 2rem;
     align-items: end;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-record-header__main nav { font-size: 0.75rem; }
@@ -2190,7 +2190,7 @@
   }
   .ef-record-header__title h2 { margin: 0.15rem 0 0; }
   .ef-record-header__type {
-    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-secondary, #47756b));
+    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-secondary, #1d6b66));
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
     letter-spacing: 0.08em;
@@ -2204,7 +2204,7 @@
     display: grid;
     place-items: center;
     padding: 0.65rem 1rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     cursor: pointer;
     font-weight: 700;
   }
@@ -2214,8 +2214,8 @@
     inset-inline-end: 0;
     min-inline-size: 10rem;
     padding: 0.5rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
   .ef-record-header__menu button { inline-size: 100%; }
 
@@ -2223,11 +2223,11 @@
     display: grid;
     grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr);
     min-block-size: 22rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-master-detail__master {
-    border-inline-end: 1px solid var(--ef-color-border-functional, #3a403c);
+    border-inline-end: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-master-detail__master a {
@@ -2235,20 +2235,20 @@
     gap: 0.15rem;
     min-block-size: 3.5rem;
     padding: 0.75rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
-    color: var(--ef-color-text-primary, #171a18);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
+    color: var(--ef-color-text-primary, #161616);
     text-decoration: none;
   }
 
   .ef-master-detail__master a[aria-current="page"] {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    border-inline-start: 0.35rem solid var(--ef-color-accent-primary, #905831);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
+    border-inline-start: 0.35rem solid var(--ef-color-accent-primary, #2b5ea8);
+    background: var(--ef-color-surface-secondary, #eeeeee);
   }
 
-  .ef-master-detail__master span { color: var(--ef-color-text-secondary, #686d68); font-size: 0.75rem; }
+  .ef-master-detail__master span { color: var(--ef-color-text-secondary, #555555); font-size: 0.75rem; }
   .ef-master-detail__detail { padding: 1.25rem; min-inline-size: 0; }
 
   .ef-key-value-list { margin: 1rem 0 0; }
@@ -2257,13 +2257,13 @@
     grid-template-columns: minmax(7rem, 0.35fr) minmax(0, 1fr);
     gap: 1rem;
     padding-block: 0.5rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   /* Provenance and preview --------------------------------------------- */
   .ef-provenance-trail {
     padding: 1rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-provenance-trail h3 { margin-block-start: 0; }
@@ -2283,8 +2283,8 @@
     inset-block-start: 1.15rem;
     inline-size: 0.7rem;
     block-size: 0.7rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
     rotate: 45deg;
   }
   .ef-provenance-trail li:not(:last-child)::after {
@@ -2292,17 +2292,17 @@
     position: absolute;
     inset-inline-start: 0.78rem;
     inset-block: 1.85rem -0.2rem;
-    border-inline-start: 1px solid var(--ef-color-border-functional, #3a403c);
+    border-inline-start: 1px solid var(--ef-color-border-functional, #555555);
   }
   .ef-provenance-trail__kind,
   .ef-provenance-trail small {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
   }
 
   .ef-preview-surface {
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
   .ef-preview-surface__header {
     display: flex;
@@ -2311,23 +2311,23 @@
     align-items: center;
   }
   .ef-preview-surface__canvas {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
     padding: clamp(1rem, 4vw, 3rem);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    background: var(--ef-color-surface-secondary, #eeeeee);
   }
   .ef-preview-surface__canvas > article {
     max-inline-size: 42rem;
     margin-inline: auto;
     padding: clamp(1rem, 4vw, 2.5rem);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
   .ef-preview-surface__footer {
     justify-content: space-between;
     padding: 1rem;
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   /* Mobile action bar --------------------------------------------------- */
@@ -2337,15 +2337,15 @@
     gap: 0.5rem;
     padding: 0.75rem;
     padding-block-end: max(0.75rem, env(safe-area-inset-bottom));
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: color-mix(in srgb, var(--ef-color-surface-primary, #f2efe7) 94%, transparent);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: color-mix(in srgb, var(--ef-color-surface-primary, #fafafa) 94%, transparent);
     backdrop-filter: blur(10px);
   }
 
   .ef-mobile-action-bar > * { flex: 1 1 min(100%, 8rem); }
   .ef-mobile-action-bar__primary {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
   }
 
   /* Mobile recomposition ------------------------------------------------ */
@@ -2391,7 +2391,7 @@
     .ef-diff-viewer__grid { grid-template-columns: 1fr; }
     .ef-diff-viewer__side + .ef-diff-viewer__side {
       border-inline-start: 0;
-      border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+      border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
     }
 
     .ef-wizard__header { grid-template-columns: 1fr; }
@@ -2400,7 +2400,7 @@
     .ef-wizard__steps [data-state="current"]::after {
       content: "Current step";
       margin-inline-start: auto;
-      color: var(--ef-color-text-secondary, #686d68);
+      color: var(--ef-color-text-secondary, #555555);
       font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
       font-size: 0.6875rem;
       font-weight: 400;
@@ -2425,7 +2425,7 @@
       max-inline-size: 100%;
       overflow-x: auto;
       border-inline-end: 0;
-      border-block-end: 1px solid var(--ef-color-border-functional, #3a403c);
+      border-block-end: 1px solid var(--ef-color-border-functional, #555555);
     }
     .ef-master-detail__master a { flex: 0 0 12rem; }
 
@@ -2454,7 +2454,7 @@
     .ef-data-grid thead { display: none; }
     .ef-data-grid tr {
       margin-block-end: 0.75rem;
-      border: 1px solid var(--ef-color-border-functional, #3a403c);
+      border: 1px solid var(--ef-color-border-functional, #555555);
     }
     .ef-data-grid tr { container-type: inline-size; }
     .ef-data-grid td {
@@ -2465,7 +2465,7 @@
     }
     .ef-data-grid td::before {
       content: attr(data-label);
-      color: var(--ef-color-text-secondary, #686d68);
+      color: var(--ef-color-text-secondary, #555555);
       font-size: 0.75rem;
       font-weight: 650;
     }
@@ -2478,7 +2478,7 @@
     }
 
     .ef-search__control { grid-template-columns: 1fr; }
-    .ef-search__control input { border-inline-end: 1px solid var(--ef-color-border-functional, #3a403c); border-block-end: 0; }
+    .ef-search__control input { border-inline-end: 1px solid var(--ef-color-border-functional, #555555); border-block-end: 0; }
 
     .ef-work-queue__header { display: grid; }
     .ef-diff-row,
@@ -2550,7 +2550,7 @@
        static presentation (as in the fallback and forced colors): the checked
        segment carries its own inverse surface and the indicator is removed. */
     .ef-segmented::before { display: none; transition: none; }
-    .ef-segment:has(input:checked) { background: var(--ef-color-surface-inverse, #202421); }
+    .ef-segment:has(input:checked) { background: var(--ef-color-surface-inverse, #232323); }
   }
 
   @media (forced-colors: active) {
@@ -2578,8 +2578,8 @@
     gap: 1rem;
     min-inline-size: 0;
     padding: clamp(1rem, 3vw, 1.5rem);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
 
   .ef-composer__context { display: grid; gap: 0.35rem; }
@@ -2587,7 +2587,7 @@
   .ef-conversation__header h2,
   .ef-understanding__header h2 { margin: 0; }
   .ef-composer__context p,
-  .ef-understanding__header p { margin: 0; color: var(--ef-color-text-secondary, #686d68); }
+  .ef-understanding__header p { margin: 0; color: var(--ef-color-text-secondary, #555555); }
 
   .ef-composer__field { display: grid; }
   .ef-composer__field textarea {
@@ -2611,24 +2611,24 @@
   }
 
   .ef-composer__submit {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
   }
 
   .ef-composer__status {
     margin: 0;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.75rem;
   }
 
   .ef-conversation {
     min-inline-size: 0;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-conversation__header {
     padding: 1rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-conversation__turns {
@@ -2644,19 +2644,19 @@
     grid-template-columns: minmax(6rem, 0.22fr) minmax(0, 1fr);
     gap: 0.75rem 1rem;
     padding: 1rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-turn[data-ef-speaker="assistant"] {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
+    background: var(--ef-color-surface-secondary, #eeeeee);
   }
 
   .ef-turn__speaker {
     margin: 0;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
     font-weight: 800;
@@ -2670,7 +2670,7 @@
   .ef-turn__actions { grid-column: 2; }
 
   .ef-understanding {
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-understanding__header {
@@ -2679,7 +2679,7 @@
     align-items: start;
     gap: 1rem;
     padding: 1rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-understanding__items {
@@ -2694,12 +2694,12 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-understanding__item[data-ef-state="unknown"],
   .ef-understanding__item[data-ef-state="conflict"] {
-    border-inline-start: 0.3rem solid var(--ef-color-accent-primary, #905831);
+    border-inline-start: 0.3rem solid var(--ef-color-accent-primary, #2b5ea8);
     padding-inline-start: 0.7rem;
   }
 
@@ -2714,7 +2714,7 @@
   .ef-understanding__item[data-ef-state="accepted"] .ef-understanding__state::before { content: "✓ "; }
   .ef-understanding__item[data-ef-state="unknown"] .ef-understanding__state::before { content: "? "; }
   .ef-understanding__item[data-ef-state="conflict"] .ef-understanding__state::before { content: "! "; }
-  .ef-understanding__item p { margin: 0.2rem 0 0; color: var(--ef-color-text-secondary, #686d68); }
+  .ef-understanding__item p { margin: 0.2rem 0 0; color: var(--ef-color-text-secondary, #555555); }
 
   @media (max-width: 40rem) {
     .ef-composer__actions,
@@ -2745,7 +2745,7 @@
 }
 
 
-@layer echelon.components {
+@layer forma.components {
   /*
    * Aegis perceived-weight defaults live with the shared physics scope:
    * notification and banner use the standard scope default, blocking faults
@@ -2769,17 +2769,17 @@
     align-items: start;
     gap: var(--ef-primitive-spacing-3, 0.75rem);
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     border-inline-start-width: 0.35rem;
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
   }
 
   .ef-fault[data-ef-severity="diagnostic"] { border-inline-start-style: dotted; }
   .ef-fault[data-ef-severity="warning"] { border-inline-start-style: dashed; }
   .ef-fault[data-ef-severity="critical"] {
     border-inline-start-width: 0.55rem;
-    outline: 1px solid var(--ef-color-border-functional, #3a403c);
+    outline: 1px solid var(--ef-color-border-functional, #555555);
     outline-offset: 2px;
   }
 
@@ -2806,7 +2806,7 @@
 
   .ef-fault__severity {
     margin: 0 0 0.2rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.72rem;
     font-weight: 800;
@@ -2831,12 +2831,12 @@
     align-items: center;
     gap: 0.4rem;
     margin: 0.55rem 0 0;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
   }
 
   .ef-fault-reference code {
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
     font-weight: 750;
     overflow-wrap: anywhere;
   }
@@ -2860,12 +2860,12 @@
   }
 
   .ef-fault--inline {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
     grid-template-columns: auto minmax(0, 1fr) auto;
     padding: 0.75rem;
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    background: var(--ef-color-surface-secondary, #eeeeee);
   }
 
   .ef-fault-notification {
@@ -2876,10 +2876,10 @@
     gap: var(--ef-primitive-spacing-3, 0.75rem);
     inline-size: min(32rem, calc(100vw - 2rem));
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     border-inline-start-width: 0.35rem;
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     box-shadow: 0 0.8rem 2.2rem rgb(0 0 0 / 0.18);
     opacity: 1;
     translate: 0 0;
@@ -2913,7 +2913,7 @@
     gap: var(--ef-primitive-spacing-3, 0.75rem);
     inline-size: 100%;
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     border-block-width: 2px;
   }
 
@@ -2956,15 +2956,15 @@
     display: grid;
     gap: var(--ef-primitive-spacing-4, 1rem);
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border: 2px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    border: 2px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
   }
 
   .ef-fault-summary:focus-visible {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
   }
 
   .ef-fault-summary__heading {
@@ -2996,24 +2996,24 @@
   .ef-fault-summary__meta {
     display: block;
     margin-block-start: 0.15rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
     overflow-wrap: anywhere;
   }
 
   .ef-diagnostic-status {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
     display: inline-flex;
     max-inline-size: 100%;
     align-items: center;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
     padding: 0.55rem 0.75rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
-    color: var(--ef-color-text-primary, #171a18);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-secondary, #eeeeee);
+    color: var(--ef-color-text-primary, #161616);
   }
 
   .ef-diagnostic-status__marker {
@@ -3031,7 +3031,7 @@
   }
 
   .ef-diagnostic-status__body > span {
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    color: var(--ef-color-text-on-secondary-surface, #303030);
     font-size: 0.8125rem;
   }
 
@@ -3041,7 +3041,7 @@
   }
 
   .ef-fault-details {
-    border-block: 1px solid var(--ef-color-border-functional, #3a403c);
+    border-block: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-fault-details > summary {
@@ -3073,7 +3073,7 @@
 
   .ef-fault-details__boundary {
     margin-block-end: 0;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
   }
 
@@ -3149,38 +3149,38 @@
 
   /* Tutela security results --------------------------------------------- */
   :where(.ef-security-posture,.ef-security-state-matrix,.ef-security-blockers,.ef-security-evidence-chain,.ef-security-unknown,.ef-security-exception) {
-    min-inline-size: 0; border: 1px solid var(--ef-color-border-functional,#3a403c);
-    background: var(--ef-color-surface-primary,#f2efe7); color: var(--ef-color-text-primary,#171a18);
+    min-inline-size: 0; border: 1px solid var(--ef-color-border-functional,#555555);
+    background: var(--ef-color-surface-primary,#fafafa); color: var(--ef-color-text-primary,#161616);
     padding: var(--ef-primitive-spacing-4,1rem);
   }
   .ef-security-posture__header { display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem; align-items:start; }
   .ef-security-posture__eyebrow,.ef-security-unknown header p,.ef-security-exception header p { margin:0; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; }
   .ef-security-posture__meta,.ef-security-unknown dl,.ef-security-exception dl { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(12rem,100%),1fr)); gap:.75rem; }
   :where(.ef-security-posture__meta,.ef-security-unknown dl,.ef-security-exception dl) div { min-inline-size:0; }
-  :where(.ef-security-posture__meta,.ef-security-unknown dl,.ef-security-exception dl) dt { color:var(--ef-color-text-secondary,#686d68); font-size:.75rem; font-weight:700; }
+  :where(.ef-security-posture__meta,.ef-security-unknown dl,.ef-security-exception dl) dt { color:var(--ef-color-text-secondary,#555555); font-size:.75rem; font-weight:700; }
   :where(.ef-security-posture__meta,.ef-security-unknown dl,.ef-security-exception dl) dd { margin:0; overflow-wrap:anywhere; }
   .ef-security-posture__blockers,.ef-security-blockers { border-inline-start:.35rem solid currentColor; }
-  .ef-security-posture__qualification { color:var(--ef-color-text-secondary,#686d68); font-size:.8125rem; }
+  .ef-security-posture__qualification { color:var(--ef-color-text-secondary,#555555); font-size:.8125rem; }
   .ef-security-state-matrix__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(7rem,1fr)); gap:.5rem; margin:0; }
-  .ef-security-state-matrix__grid div { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); border-block-start:.25rem solid currentColor; padding:.75rem; background:var(--ef-color-surface-secondary,#e3e0d7); }
+  .ef-security-state-matrix__grid div { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030); --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616); border-block-start:.25rem solid currentColor; padding:.75rem; background:var(--ef-color-surface-secondary,#eeeeee); }
   .ef-security-state-matrix__grid dt { font-size:.75rem; font-weight:700; }
   .ef-security-state-matrix__grid dd { margin:0; font-size:clamp(1.4rem,4vw,2rem); font-weight:750; }
   .ef-security-blockers ul { display:grid; gap:.75rem; padding-inline-start:1.25rem; }
   .ef-security-blockers li { padding-inline-start:.25rem; min-inline-size:0; overflow-wrap:anywhere; }
   .ef-security-blockers li span { display:block; }
   .ef-security-evidence-chain ol { display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.5rem; padding:0; list-style:none; }
-  .ef-security-evidence-chain li { padding:.75rem; border:1px solid var(--ef-color-border-functional,#3a403c); overflow-wrap:anywhere; }
+  .ef-security-evidence-chain li { padding:.75rem; border:1px solid var(--ef-color-border-functional,#555555); overflow-wrap:anywhere; }
   .ef-security-evidence-chain li strong,.ef-security-evidence-chain li span,.ef-security-evidence-chain li a { display:block; }
   @media (max-width:30rem) { .ef-security-posture__header { display:grid; } .ef-security-evidence-chain ol { grid-template-columns:1fr; } }
   @media (forced-colors:active) { :where(.ef-security-posture__blockers,.ef-security-blockers,.ef-security-state-matrix__grid div) { border-color:CanvasText; } }
 
-  :where(.ef-invariant-result,.ef-evidence-age,.ef-security-trend) { min-inline-size:0; border:1px solid var(--ef-color-border-functional,#3a403c); padding:var(--ef-primitive-spacing-4,1rem); background:var(--ef-color-surface-primary,#f2efe7); }
+  :where(.ef-invariant-result,.ef-evidence-age,.ef-security-trend) { min-inline-size:0; border:1px solid var(--ef-color-border-functional,#555555); padding:var(--ef-primitive-spacing-4,1rem); background:var(--ef-color-surface-primary,#fafafa); }
   .ef-invariant-result header { display:flex; flex-wrap:wrap; align-items:baseline; gap:.5rem 1rem; }
   .ef-invariant-result header p { flex-basis:100%; margin:0; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; }
   .ef-invariant-result dl { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(10rem,100%),1fr)); gap:.75rem; }
-  .ef-invariant-result dt { color:var(--ef-color-text-secondary,#686d68); font-size:.75rem; font-weight:700; } .ef-invariant-result dd { margin:0; overflow-wrap:anywhere; }
+  .ef-invariant-result dt { color:var(--ef-color-text-secondary,#555555); font-size:.75rem; font-weight:700; } .ef-invariant-result dd { margin:0; overflow-wrap:anywhere; }
   :where(.ef-evidence-age,.ef-security-trend) ul { display:grid; gap:.5rem; margin:0; padding:0; list-style:none; }
-  :where(.ef-evidence-age,.ef-security-trend) li { grid-template-columns:minmax(0,1fr); min-inline-size:0; overflow-wrap:anywhere; --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); display:grid; gap:.2rem; border-inline-start:.3rem solid currentColor; padding:.65rem .75rem; background:var(--ef-color-surface-secondary,#e3e0d7); }
+  :where(.ef-evidence-age,.ef-security-trend) li { grid-template-columns:minmax(0,1fr); min-inline-size:0; overflow-wrap:anywhere; --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030); --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616); display:grid; gap:.2rem; border-inline-start:.3rem solid currentColor; padding:.65rem .75rem; background:var(--ef-color-surface-secondary,#eeeeee); }
   :where(.ef-evidence-age,.ef-security-trend) li span { overflow-wrap:anywhere; }
 
   /* Composition primitives ---------------------------------------------- */
@@ -3317,22 +3317,22 @@
   }
 
   [data-ef-drop="candidate"] {
-    outline: 2px dashed var(--ef-color-accent-primary, #905831);
+    outline: 2px dashed var(--ef-color-accent-primary, #2b5ea8);
     outline-offset: 2px;
   }
 
   [data-ef-drop="accepted"] {
-    outline: 2px solid var(--ef-color-accent-primary, #905831);
+    outline: 2px solid var(--ef-color-accent-primary, #2b5ea8);
     outline-offset: 2px;
   }
 
   [data-ef-drop="rejected"] {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    outline: 2px dashed var(--ef-color-border-functional, #3a403c);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
+    outline: 2px dashed var(--ef-color-border-functional, #555555);
     outline-offset: 2px;
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    background: var(--ef-color-surface-secondary, #eeeeee);
   }
 
   /*
@@ -3380,13 +3380,13 @@
     inline-size: 2px;
     block-size: 100%;
     min-block-size: 2rem;
-    background: var(--ef-color-border-functional, #3a403c);
+    background: var(--ef-color-border-functional, #555555);
   }
 
   .ef-split-pane__separator:focus-visible {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: -3px;
-    box-shadow: inset 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: inset 0 0 0 5px var(--ef-color-focus-ring, #161616);
   }
 
   @media (max-width: 48rem) {
@@ -3573,8 +3573,8 @@
   .ef-verification-frame {
     display: grid;
     gap: var(--ef-primitive-spacing-4, 1rem);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
   .ef-verification-frame__recognize,
   .ef-verification-frame__verify,
@@ -3584,7 +3584,7 @@
   .ef-verification-frame__recognize {
     display: grid;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
   .ef-verification-frame__recognize > :is(h2, h3, p),
   .ef-verification-frame__verify > :first-child,
@@ -3605,10 +3605,10 @@
   .ef-verification-frame__facts > div {
     min-inline-size: 0;
     padding-block: var(--ef-primitive-spacing-2, 0.5rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
   .ef-verification-frame__facts dt {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.75rem;
     font-weight: 700;
   }
@@ -3618,7 +3618,7 @@
     flex-wrap: wrap;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
     align-items: center;
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
   .ef-verification-frame__act > p { flex: 1 1 18rem; }
   @media (max-width: 30rem) {
@@ -3709,14 +3709,14 @@
     grid-template-columns: minmax(8rem, 0.8fr) repeat(2, minmax(0, 1fr));
     gap: var(--ef-primitive-spacing-2, 0.5rem) var(--ef-primitive-spacing-4, 1rem);
     padding-block: var(--ef-primitive-spacing-3, 0.75rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
   .ef-comparison-pairs__label { font-weight: 700; }
   .ef-comparison-pairs__value { min-inline-size: 0; overflow-wrap: anywhere; }
   .ef-comparison-pairs__value::before {
     display: block;
     margin-block-end: 0.2rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.75rem;
     font-weight: 700;
   }
@@ -3746,7 +3746,7 @@
     gap: var(--ef-primitive-spacing-3, 0.75rem);
     align-items: start;
     padding-block: var(--ef-primitive-spacing-2, 0.5rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
   .ef-state-survivability__state p { margin: 0; }
 
@@ -3768,8 +3768,8 @@
     display: grid;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border: 2px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 2px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
   .ef-attention-path__primary > :first-child,
   .ef-attention-path__primary > :last-child { margin-block: 0; }
@@ -3781,7 +3781,7 @@
   .ef-attention-path__support > * {
     min-inline-size: 0;
     padding: var(--ef-primitive-spacing-3, 0.75rem);
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
   .ef-attention-path [data-attention-step] {
     position: relative;
@@ -3790,7 +3790,7 @@
     content: "Priority " attr(data-attention-step);
     display: block;
     margin-block-end: 0.35rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
     font-weight: 700;
@@ -3857,20 +3857,20 @@
   }
   .ef-emphasis-budget [data-emphasis="primary"] {
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border: 2px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 2px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
   .ef-emphasis-budget [data-emphasis="secondary"] {
     padding: var(--ef-primitive-spacing-3, 0.75rem);
-    border-inline-start: 0.2rem solid var(--ef-color-border-functional, #3a403c);
+    border-inline-start: 0.2rem solid var(--ef-color-border-functional, #555555);
   }
   .ef-emphasis-budget [data-emphasis="supporting"] {
     padding-block: var(--ef-primitive-spacing-2, 0.5rem);
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
   .ef-emphasis-label {
     margin: 0 0 0.3rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
     font-weight: 700;
@@ -3921,7 +3921,7 @@
 }
 
 
-@layer echelon.components {
+@layer forma.components {
   /* CharacterGrid ------------------------------------------------------- */
   /*
    * A fixed rows x columns grid of equal-width cells. Every run declares its
@@ -3937,20 +3937,20 @@
     /* 1.5rem floor: WCAG 2.2 SC 2.5.8 needs 24px targets in adjacent rows. */
     --ef-grid-row-pitch: max(calc(var(--ef-grid-line-height) * 1em), 1.5rem);
     --ef-grid-inset: 1ch;
-    --ef-grid-background: var(--ef-color-surface-primary, #f2efe7);
-    --ef-grid-foreground: var(--ef-color-text-primary, #171a18);
-    --ef-grid-protected: var(--ef-color-text-primary, #171a18);
-    --ef-grid-emphasis: var(--ef-color-text-heading, #202421);
-    --ef-grid-muted: var(--ef-color-text-secondary, #686d68);
-    --ef-grid-field: var(--ef-color-text-primary, #171a18);
-    --ef-grid-field-surface: var(--ef-color-surface-secondary, #e3e0d7);
-    --ef-grid-boundary: var(--ef-color-border-functional, #3a403c);
-    --ef-grid-focus: var(--ef-color-focus-ring, #171a18);
-    --ef-grid-information: var(--ef-color-text-primary, #171a18);
-    --ef-grid-success: var(--ef-color-text-primary, #171a18);
-    --ef-grid-warning: var(--ef-color-text-primary, #171a18);
-    --ef-grid-validation: var(--ef-color-text-primary, #171a18);
-    --ef-grid-error: var(--ef-color-text-primary, #171a18);
+    --ef-grid-background: var(--ef-color-surface-primary, #fafafa);
+    --ef-grid-foreground: var(--ef-color-text-primary, #161616);
+    --ef-grid-protected: var(--ef-color-text-primary, #161616);
+    --ef-grid-emphasis: var(--ef-color-text-heading, #161616);
+    --ef-grid-muted: var(--ef-color-text-secondary, #555555);
+    --ef-grid-field: var(--ef-color-text-primary, #161616);
+    --ef-grid-field-surface: var(--ef-color-surface-secondary, #eeeeee);
+    --ef-grid-boundary: var(--ef-color-border-functional, #555555);
+    --ef-grid-focus: var(--ef-color-focus-ring, #161616);
+    --ef-grid-information: var(--ef-color-text-primary, #161616);
+    --ef-grid-success: var(--ef-color-text-primary, #161616);
+    --ef-grid-warning: var(--ef-color-text-primary, #161616);
+    --ef-grid-validation: var(--ef-color-text-primary, #161616);
+    --ef-grid-error: var(--ef-color-text-primary, #161616);
     container: ef-character-grid / inline-size;
     display: block;
     max-inline-size: 100%;
@@ -3965,11 +3965,11 @@
     overscroll-behavior-inline: contain;
     background: var(--ef-grid-background);
     color: var(--ef-grid-foreground);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-character-grid__viewport:focus-visible {
-    outline: 2px solid var(--ef-color-focus-ring, #171a18);
+    outline: 2px solid var(--ef-color-focus-ring, #161616);
     outline-offset: 2px;
   }
 
@@ -4612,8 +4612,8 @@
     max-inline-size: 100%;
     overflow: auto;
     overscroll-behavior: contain;
-    border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-subtle, #d8d8d8);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
   .ef-diagram__canvas {
     position: relative;
@@ -4627,10 +4627,10 @@
   .ef-diagram__wires { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; overflow: visible; pointer-events: none; }
 
   .ef-diagram-node {
-    --ef-diagram-node-fill: var(--ef-diagram-fill, var(--ef-color-surface-primary, #f2efe7));
-    --ef-diagram-node-stroke: var(--ef-diagram-stroke, var(--ef-color-border-functional, #3a403c));
+    --ef-diagram-node-fill: var(--ef-diagram-fill, var(--ef-color-surface-primary, #fafafa));
+    --ef-diagram-node-stroke: var(--ef-diagram-stroke, var(--ef-color-border-functional, #555555));
     --ef-diagram-node-accent: var(--ef-diagram-accent, var(--ef-diagram-node-stroke));
-    --ef-diagram-node-foreground: var(--ef-diagram-foreground, var(--ef-color-text-primary, #171a18));
+    --ef-diagram-node-foreground: var(--ef-diagram-foreground, var(--ef-color-text-primary, #161616));
     position: absolute;
     left: var(--ef-diagram-x, 0);
     top: var(--ef-diagram-y, 0);
@@ -4710,19 +4710,19 @@
 
   .ef-diagram-connector {
     fill: none;
-    stroke: var(--ef-diagram-connector-stroke, var(--ef-color-border-functional, #3a403c));
+    stroke: var(--ef-diagram-connector-stroke, var(--ef-color-border-functional, #555555));
     stroke-width: var(--ef-diagram-connector-width, 2);
   }
   .ef-diagram-connector[data-ef-line="dashed"] { stroke-dasharray: 8 6; }
   .ef-diagram-connector[data-ef-line="dotted"] { stroke-dasharray: 2 5; stroke-linecap: round; }
-  .ef-diagram-marker { fill: var(--ef-color-border-functional, #3a403c); stroke: none; }
+  .ef-diagram-marker { fill: var(--ef-color-border-functional, #555555); stroke: none; }
   .ef-diagram-connector__label {
     position: absolute;
     left: var(--ef-diagram-x, 0);
     top: var(--ef-diagram-y, 0);
     padding: 0 var(--ef-primitive-spacing-1, 0.25rem);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     font-size: 0.875rem;
     /* One line up to 12rem, then wrapping: the layout reserves that box (LCE-001). */
     inline-size: max-content;
@@ -4732,7 +4732,7 @@
 
   /* The text equivalent: every relationship in reading order. */
   .ef-diagram__relations { margin: 0; padding-inline-start: 1.25rem; }
-  .ef-diagram__relations :where(li) { color: var(--ef-color-text-primary, #171a18); }
+  .ef-diagram__relations :where(li) { color: var(--ef-color-text-primary, #161616); }
 
   .ef-diagram-legend { display: flex; flex-wrap: wrap; gap: var(--ef-primitive-spacing-2, 0.5rem) var(--ef-primitive-spacing-5, 1.5rem); margin: 0; }
   .ef-diagram-legend > div { display: flex; align-items: center; gap: var(--ef-primitive-spacing-2, 0.5rem); }
@@ -4741,10 +4741,10 @@
     display: inline-block;
     inline-size: 1.25rem;
     block-size: 1.25rem;
-    border: 2px solid var(--ef-diagram-stroke, var(--ef-color-border-functional, #3a403c));
+    border: 2px solid var(--ef-diagram-stroke, var(--ef-color-border-functional, #555555));
     border-inline-start-width: 6px;
-    border-inline-start-color: var(--ef-diagram-accent, var(--ef-diagram-stroke, var(--ef-color-border-functional, #3a403c)));
-    background: var(--ef-diagram-fill, var(--ef-color-surface-primary, #f2efe7));
+    border-inline-start-color: var(--ef-diagram-accent, var(--ef-diagram-stroke, var(--ef-color-border-functional, #555555)));
+    background: var(--ef-diagram-fill, var(--ef-color-surface-primary, #fafafa));
     vertical-align: middle;
   }
 
@@ -4757,9 +4757,9 @@
    */
   .ef-diagram-group {
     --ef-diagram-group-fill: var(--ef-diagram-fill, transparent);
-    --ef-diagram-group-stroke: var(--ef-diagram-stroke, var(--ef-color-border-functional, #3a403c));
+    --ef-diagram-group-stroke: var(--ef-diagram-stroke, var(--ef-color-border-functional, #555555));
     --ef-diagram-group-accent: var(--ef-diagram-accent, var(--ef-diagram-group-stroke));
-    --ef-diagram-group-foreground: var(--ef-diagram-foreground, var(--ef-color-text-primary, #171a18));
+    --ef-diagram-group-foreground: var(--ef-diagram-foreground, var(--ef-color-text-primary, #161616));
     position: absolute;
     left: var(--ef-diagram-x, 0);
     top: var(--ef-diagram-y, 0);
@@ -4847,9 +4847,9 @@
     inline-size: 0.75rem;
     block-size: 0.75rem;
     box-sizing: border-box;
-    border: 2px solid var(--ef-diagram-node-stroke, var(--ef-color-border-functional, #3a403c));
+    border: 2px solid var(--ef-diagram-node-stroke, var(--ef-color-border-functional, #555555));
     border-radius: 50%;
-    background: var(--ef-color-surface-primary, #f2efe7);
+    background: var(--ef-color-surface-primary, #fafafa);
     transform: translate(-50%, -50%);
   }
   .ef-diagram-port[data-ef-side="top"] { left: var(--ef-diagram-port-offset, 50%); top: 0; }
@@ -4864,13 +4864,13 @@
     inset-inline-start: 50%;
     transform: translateX(-50%);
     padding: 0 0.125rem;
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     font-size: 0.6875rem;
     line-height: 1.2;
     white-space: nowrap;
   }
-  .ef-diagram-node[data-ef-status="active"] { box-shadow: 0 0 0 3px var(--ef-color-surface-primary, #f2efe7), 0 0 0 6px var(--ef-diagram-node-stroke); }
+  .ef-diagram-node[data-ef-status="active"] { box-shadow: 0 0 0 3px var(--ef-color-surface-primary, #fafafa), 0 0 0 6px var(--ef-diagram-node-stroke); }
   .ef-diagram-node[data-ef-status="blocked"],
   .ef-diagram-node[data-ef-status="failed"] { border-style: double; border-width: 4px; border-inline-start-width: 6px; }
   .ef-diagram-node[data-ef-status="skipped"],
@@ -5498,7 +5498,7 @@
 }
 
 /* Forma static icon presentation. SVG supplies geometry, CSS supplies sizing and color. */
-@layer echelon.components {
+@layer forma.components {
   .ef-icon {
     display: inline-flex;
     inline-size: var(--ef-icon-size, 1.25em);
@@ -5529,7 +5529,7 @@
  * mark, and use no color literal (tests/brand-neutrality.test.mjs). Every
  * color is a semantic token supplied by the active theme or brand.
  */
-@layer echelon.components {
+@layer forma.components {
   /* Application identity (AIS-001.1) ----------------------------------- */
   /*
    * The application supplies its mark and name; Forma lays them out. Three

@@ -61,7 +61,7 @@ export default {
       <li class="ef-index__item">
         <p class="ef-index__marker">P / 04</p>
         <div class="ef-index__heading"><p class="ef-eyebrow">Presentation</p><h3 class="ef-index__title" id="entry-index-product-family-forma">Forma</h3></div>
-        <p class="ef-index__summary">Zero-runtime HTML and CSS contracts for every Echelon interface.</p>
+        <p class="ef-index__summary">Zero-runtime HTML and CSS contracts for every interface.</p>
         <a class="ef-index__link" href="#entry-index-product-family-forma">Visit Forma</a>
       </li>
     </ol>

@@ -17,5 +17,5 @@ Do not encode model confidence, truth, clinical authority, or transition legalit
 
 ## Maintenance
 
-- Owner: Echelon Foundry design system
+- Owner: Forma design system
 - Introduced: 2026-09-23

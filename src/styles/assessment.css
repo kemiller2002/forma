@@ -1,10 +1,10 @@
-@layer echelon.assessment {
+@layer forma.assessment {
   /* Question shell ------------------------------------------------------ */
   .ef-question {
     display: grid;
     gap: var(--ef-primitive-spacing-4, 1rem);
     padding-block: var(--ef-primitive-spacing-5, 1.5rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-question__header {
@@ -19,7 +19,7 @@
     block-size: 2rem;
     display: grid;
     place-items: center;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     border-radius: 50%;
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
@@ -28,7 +28,7 @@
 
   .ef-question__prompt {
     margin: 0;
-    color: var(--ef-color-text-heading, #202421);
+    color: var(--ef-color-text-heading, #161616);
     font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
     font-size: clamp(1rem, 0.95rem + 0.25vw, 1.2rem);
     font-weight: 700;
@@ -38,7 +38,7 @@
 
   .ef-question__help {
     margin: 0.35rem 0 0;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.875rem;
   }
 
@@ -76,7 +76,7 @@
   .ef-ranking__legend,
   .ef-allocation__legend {
     margin-block-end: var(--ef-primitive-spacing-3, 0.75rem);
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.4;
@@ -85,7 +85,7 @@
   .ef-ordinal-scale__options {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-ordinal-scale--3 .ef-ordinal-scale__options { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -105,14 +105,14 @@
     place-items: center;
     gap: 0.45rem;
     padding: 0.75rem 0.45rem;
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     text-align: center;
     cursor: pointer;
   }
 
   .ef-ordinal-option + .ef-ordinal-option {
-    border-inline-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-inline-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   /* Native inputs stay topmost for direct and assistive hit-testing, including
@@ -132,10 +132,10 @@
     block-size: 2rem;
     display: grid;
     place-items: center;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     border-radius: 50%;
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
     font-weight: 700;
@@ -154,19 +154,19 @@
     overflow-wrap: anywhere;
   }
 
-  .ef-ordinal-option:hover { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); background: var(--ef-color-surface-secondary, #e3e0d7); }
+  .ef-ordinal-option:hover { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030); --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616); background: var(--ef-color-surface-secondary, #eeeeee); }
   /* Light inertial press on the marker only; the option (hit target) never
      moves or shrinks (MOT-014). */
   .ef-ordinal-option:has(input:active:not(:disabled)) .ef-ordinal-option__marker { scale: 0.92; }
 
   .ef-ordinal-option:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
   }
 
   .ef-ordinal-option:has(input:checked) .ef-ordinal-option__marker {
-    background: var(--ef-color-accent-primary, #905831);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-accent-primary, #2b5ea8);
+    color: var(--ef-color-text-inverse, #fafafa);
     border-color: currentColor;
   }
 
@@ -174,9 +174,9 @@
   .ef-choice:has(input:focus-visible),
   .ef-special-choice:has(input:focus-visible) {
     z-index: 1;
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
   }
 
   /* Special answer states ---------------------------------------------- */
@@ -186,7 +186,7 @@
     gap: var(--ef-primitive-spacing-2, 0.5rem);
     margin-block-start: var(--ef-primitive-spacing-3, 0.75rem);
     padding-block-start: var(--ef-primitive-spacing-3, 0.75rem);
-    border-block-start: 1px dashed var(--ef-color-border-functional, #3a403c);
+    border-block-start: 1px dashed var(--ef-color-border-functional, #555555);
   }
 
   .ef-special-choice {
@@ -195,15 +195,15 @@
     display: inline-flex;
     align-items: center;
     padding: 0.55rem 0.85rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
+    color: var(--ef-color-text-primary, #161616);
     cursor: pointer;
   }
 
   .ef-special-choice:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
   }
 
   /* Choice cards -------------------------------------------------------- */
@@ -221,8 +221,8 @@
     display: grid;
     align-items: center;
     padding: 0.8rem 1rem 0.8rem 3rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
     cursor: pointer;
   }
 
@@ -234,30 +234,30 @@
     transform: translateY(-50%);
     inline-size: 1.125rem;
     block-size: 1.125rem;
-    border: 2px solid var(--ef-color-border-functional, #3a403c);
+    border: 2px solid var(--ef-color-border-functional, #555555);
     border-radius: 50%;
-    background: var(--ef-color-surface-primary, #f2efe7);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
 
   .ef-choice:has(input[type="checkbox"])::before { border-radius: 0.2rem; }
 
   .ef-choice:has(input:checked) {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    border-color: var(--ef-color-accent-primary, #905831);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
+    border-color: var(--ef-color-accent-primary, #2b5ea8);
+    background: var(--ef-color-surface-secondary, #eeeeee);
   }
 
   .ef-choice:has(input:checked)::before {
     background:
-      radial-gradient(circle, var(--ef-color-accent-primary, #905831) 0 42%, transparent 44%);
-    border-color: var(--ef-color-accent-primary, #905831);
+      radial-gradient(circle, var(--ef-color-accent-primary, #2b5ea8) 0 42%, transparent 44%);
+    border-color: var(--ef-color-accent-primary, #2b5ea8);
   }
 
   .ef-choice:has(input[type="checkbox"]:checked)::before {
-    background: var(--ef-color-accent-primary, #905831);
-    box-shadow: inset 0 0 0 3px var(--ef-color-surface-primary, #f2efe7);
+    background: var(--ef-color-accent-primary, #2b5ea8);
+    box-shadow: inset 0 0 0 3px var(--ef-color-surface-primary, #fafafa);
   }
 
   .ef-ordinal-option:has(input:disabled),
@@ -273,7 +273,7 @@
   }
 
   .ef-choice__content > span {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
   }
 
@@ -283,7 +283,7 @@
     align-items: flex-start;
     gap: var(--ef-primitive-spacing-2, 0.5rem);
     margin: 0.5rem 0 0;
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--ef-color-text-primary, #161616);
     font-size: 0.875rem;
     font-weight: 650;
   }
@@ -302,16 +302,16 @@
   }
 
   .ef-validation-summary {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     gap: var(--ef-primitive-spacing-3, 0.75rem);
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border: 2px solid var(--ef-color-accent-primary, #905831);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    border: 2px solid var(--ef-color-accent-primary, #2b5ea8);
+    background: var(--ef-color-surface-secondary, #eeeeee);
+    color: var(--ef-color-text-on-secondary-surface, #303030);
   }
 
   .ef-validation-summary__title {
@@ -328,7 +328,7 @@
   }
 
   .ef-validation-summary a {
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    color: var(--ef-color-text-on-secondary-surface, #303030);
     font-weight: 700;
   }
 
@@ -349,7 +349,7 @@
 
   .ef-survey-progress__label { font-weight: 700; }
   .ef-survey-progress__value {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
   }
@@ -357,12 +357,12 @@
   .ef-survey-progress__bar {
     inline-size: 100%;
     block-size: 0.65rem;
-    accent-color: var(--ef-color-accent-primary, #905831);
+    accent-color: var(--ef-color-accent-primary, #2b5ea8);
   }
 
   .ef-survey-progress__context {
     margin: 0;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
   }
 
@@ -382,8 +382,8 @@
     gap: var(--ef-primitive-spacing-3, 0.75rem);
     min-block-size: 3.25rem;
     padding: 0.6rem 0.75rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
 
   .ef-ranking__position {
@@ -391,8 +391,8 @@
     block-size: 2rem;
     display: grid;
     place-items: center;
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
     font-weight: 800;
@@ -453,7 +453,7 @@
     gap: 1rem;
     margin-block-start: var(--ef-primitive-spacing-3, 0.75rem);
     padding-block-start: var(--ef-primitive-spacing-3, 0.75rem);
-    border-block-start: 1px solid var(--ef-color-border-functional, #3a403c);
+    border-block-start: 1px solid var(--ef-color-border-functional, #555555);
     font-weight: 750;
   }
 
@@ -464,14 +464,14 @@
 
   .ef-allocation__total[data-ef-state="invalid"] {
     border-block-start-width: 2px;
-    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-primary, #905831));
+    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-primary, #2b5ea8));
   }
 
   /* Rule builder visual contract --------------------------------------- */
   .ef-rule-builder {
     min-inline-size: 0;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
 
   .ef-rule-builder__header {
@@ -480,7 +480,7 @@
     align-items: flex-start;
     gap: 1rem;
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-rule-builder__header h2,
@@ -507,7 +507,7 @@
   .ef-rule-group__operator {
     justify-self: start;
     padding: 0.25rem 0.45rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
     font-weight: 800;
@@ -530,22 +530,22 @@
   }
 
   .ef-rule-builder__summary {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
     margin: 0;
     padding: var(--ef-primitive-spacing-3, 0.75rem) var(--ef-primitive-spacing-4, 1rem);
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
+    background: var(--ef-color-surface-secondary, #eeeeee);
+    color: var(--ef-color-text-on-secondary-surface, #303030);
     font-size: 0.8125rem;
   }
 
   /* Ordo obligation panel ---------------------------------------------- */
   .ef-obligation-panel {
     min-inline-size: 0;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
 
   .ef-obligation-panel__header {
@@ -554,7 +554,7 @@
     align-items: flex-start;
     gap: 1rem;
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-end: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
   .ef-obligation-panel__header h2,
@@ -576,8 +576,8 @@
     block-size: 2rem;
     display: grid;
     place-items: center;
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
     font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
     font-weight: 800;
@@ -596,16 +596,16 @@
     align-items: start;
     gap: var(--ef-primitive-spacing-3, 0.75rem);
     padding: var(--ef-primitive-spacing-4, 1rem);
-    border-inline-start: 4px solid var(--ef-color-border-functional, #3a403c);
+    border-inline-start: 4px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-obligation + .ef-obligation {
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
   }
 
-  .ef-obligation[data-ef-severity="blocking"] { border-inline-start-color: var(--ef-color-accent-primary, #905831); }
+  .ef-obligation[data-ef-severity="blocking"] { border-inline-start-color: var(--ef-color-accent-primary, #2b5ea8); }
   .ef-obligation[data-ef-severity="warning"] { border-inline-start-style: double; }
-  .ef-obligation[data-ef-severity="information"] { border-inline-start-color: var(--ef-color-accent-secondary, #47756b); }
+  .ef-obligation[data-ef-severity="information"] { border-inline-start-color: var(--ef-color-accent-secondary, #1d6b66); }
 
   .ef-obligation__status {
     min-inline-size: 5.5rem;
@@ -670,7 +670,7 @@
     display: inline-grid;
     grid-auto-flow: column;
     grid-auto-columns: minmax(6rem, 1fr);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-binary-option {
@@ -680,10 +680,10 @@
     place-items: center;
     padding: 0.55rem 1rem;
     cursor: pointer;
-    background: var(--ef-color-surface-primary, #f2efe7);
+    background: var(--ef-color-surface-primary, #fafafa);
   }
 
-  .ef-binary-option + .ef-binary-option { border-inline-start: 1px solid var(--ef-color-border-functional, #3a403c); }
+  .ef-binary-option + .ef-binary-option { border-inline-start: 1px solid var(--ef-color-border-functional, #555555); }
   .ef-binary-option input,
   .ef-symbol-rating__option input,
   .ef-semantic-differential__scale input {
@@ -696,17 +696,17 @@
   .ef-binary-option:has(input:checked),
   .ef-symbol-rating__option:has(input:checked),
   .ef-semantic-differential__scale label:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
   }
 
   .ef-binary-option:has(input:focus-visible),
   .ef-symbol-rating__option:has(input:focus-visible),
   .ef-semantic-differential__scale label:has(input:focus-visible) {
     z-index: 1;
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
   }
 
   .ef-semantic-differential__endpoints {
@@ -715,7 +715,7 @@
     justify-content: space-between;
     gap: 1rem;
     margin-block-end: 0.4rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
     font-weight: 650;
   }
@@ -726,7 +726,7 @@
     max-inline-size: 100%;
     display: grid;
     grid-template-columns: repeat(7, minmax(2.75rem, 1fr));
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-semantic-differential__scale label {
@@ -739,7 +739,7 @@
     font-weight: 750;
   }
 
-  .ef-semantic-differential__scale label + label { border-inline-start: 1px solid var(--ef-color-border-subtle, #e3e0d7); }
+  .ef-semantic-differential__scale label + label { border-inline-start: 1px solid var(--ef-color-border-subtle, #d8d8d8); }
   .ef-semantic-differential__scale label > span[aria-hidden="true"] { pointer-events: none; }
 
   .ef-semantic-differential__scale input {
@@ -764,7 +764,7 @@
     min-block-size: 2.75rem;
     display: grid;
     place-items: center;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
     cursor: pointer;
   }
 
@@ -796,7 +796,7 @@
     font-weight: 700;
   }
 
-  .ef-range-entry__separator { padding-block-end: 0.65rem; color: var(--ef-color-text-secondary, #686d68); }
+  .ef-range-entry__separator { padding-block-end: 0.65rem; color: var(--ef-color-text-secondary, #555555); }
 
   .ef-range-entry__status,
   .ef-selection-status,
@@ -808,7 +808,7 @@
 
   .ef-selection-guidance {
     margin: 0 0 var(--ef-primitive-spacing-2, 0.5rem);
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.8125rem;
   }
 
@@ -824,14 +824,14 @@
   .ef-choice--media::before { display: none; }
 
   .ef-choice__media {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #303030);
+    --ef-surface-accent-text-color: var(--ef-color-text-primary, #161616);
     display: grid;
     place-items: center;
     overflow: hidden;
-    border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    border: 1px solid var(--ef-color-border-subtle, #d8d8d8);
+    background: var(--ef-color-surface-secondary, #eeeeee);
     aspect-ratio: 4 / 3;
   }
 
@@ -854,7 +854,7 @@
     align-items: stretch;
     margin: 0;
     padding: 0.6rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-matrix__row > legend {
@@ -878,7 +878,7 @@
     display: grid;
     place-items: center;
     padding: 0.4rem;
-    border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border: 1px solid var(--ef-color-border-subtle, #d8d8d8);
     text-align: center;
     cursor: pointer;
     font-size: 0.75rem;
@@ -892,14 +892,14 @@
   }
 
   .ef-matrix__choices label:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
   }
 
   .ef-matrix__choices label:has(input:focus-visible) {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 1px;
-    box-shadow: 0 0 0 4px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 4px var(--ef-color-focus-ring, #161616);
   }
 
   .ef-best-worst__header,
@@ -912,7 +912,7 @@
 
   .ef-best-worst__header {
     padding: 0.35rem 0.6rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--ef-color-text-secondary, #555555);
     font-size: 0.75rem;
     font-weight: 700;
     text-align: center;
@@ -923,7 +923,7 @@
   .ef-best-worst__row {
     min-block-size: 3rem;
     padding: 0.5rem 0.6rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--ef-color-border-functional, #555555);
   }
 
   .ef-best-worst__row + .ef-best-worst__row { border-block-start: 0; }
@@ -931,7 +931,7 @@
      its track instead of scrolling the page sideways (ULI-L05). */
   .ef-best-worst__row > :first-child { min-inline-size: 0; overflow-wrap: anywhere; }
   .ef-best-worst__row label { display: grid; place-items: center; min-block-size: 2.75rem; }
-  .ef-best-worst__row input { inline-size: 1.25rem; block-size: 1.25rem; accent-color: var(--ef-color-accent-primary, #905831); }
+  .ef-best-worst__row input { inline-size: 1.25rem; block-size: 1.25rem; accent-color: var(--ef-color-accent-primary, #2b5ea8); }
 
   .ef-pairwise {
     min-inline-size: 0;
@@ -961,8 +961,8 @@
     align-content: center;
     gap: 0.2rem;
     padding: 0.85rem 1rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--ef-color-border-functional, #555555);
+    background: var(--ef-color-surface-primary, #fafafa);
     cursor: pointer;
   }
 
@@ -974,14 +974,14 @@
   }
 
   .ef-pairwise__option:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    background: var(--ef-color-surface-inverse, #232323);
+    color: var(--ef-color-text-inverse, #fafafa);
   }
 
   .ef-pairwise__option:has(input:focus-visible) {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
   }
 
   .ef-pairwise__eyebrow {
@@ -993,7 +993,7 @@
   }
 
   .ef-pairwise__option > span:last-child { font-size: 0.8125rem; }
-  .ef-pairwise__versus { align-self: center; color: var(--ef-color-text-secondary, #686d68); font-size: 0.8125rem; }
+  .ef-pairwise__versus { align-self: center; color: var(--ef-color-text-secondary, #555555); font-size: 0.8125rem; }
 
   .ef-hierarchy__tree,
   .ef-hierarchy__tree ul {
@@ -1003,7 +1003,7 @@
   }
 
   .ef-hierarchy__tree { padding-inline-start: 0; }
-  .ef-hierarchy details { border-inline-start: 2px solid var(--ef-color-border-subtle, #e3e0d7); padding-inline-start: 0.75rem; }
+  .ef-hierarchy details { border-inline-start: 2px solid var(--ef-color-border-subtle, #d8d8d8); padding-inline-start: 0.75rem; }
   .ef-hierarchy summary { min-block-size: 2.75rem; display: flex; align-items: center; cursor: pointer; font-weight: 700; }
   .ef-hierarchy label { min-block-size: 2.75rem; display: flex; align-items: center; gap: 0.5rem; }
 
@@ -1034,7 +1034,7 @@
 
     .ef-ordinal-option + .ef-ordinal-option {
       border-inline-start: 0;
-      border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+      border-block-start: 1px solid var(--ef-color-border-subtle, #d8d8d8);
     }
 
     .ef-rule-builder__header,
@@ -1078,7 +1078,7 @@
 
     .ef-binary-option + .ef-binary-option {
       border-inline-start: 0;
-      border-block-start: 1px solid var(--ef-color-border-functional, #3a403c);
+      border-block-start: 1px solid var(--ef-color-border-functional, #555555);
     }
 
     .ef-semantic-differential__endpoints:not(.ef-semantic-differential__endpoints--mobile) { display: none; }

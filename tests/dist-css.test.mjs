@@ -49,7 +49,7 @@ function compositions() {
   map.set("dist/marketing.css", marketing);
   map.set("dist/all.css", ["dist/tokens.css", "src/styles/foundations.css", "src/styles/components.css", "src/styles/assessment.css", ...marketing]);
 
-  const bundle = JSON.parse(read("bundles/echelon-marketing.bundle.json"));
+  const bundle = JSON.parse(read("bundles/forma-marketing.bundle.json"));
   for (const artifact of bundle.artifacts) {
     map.set(path.join(bundle.outputDirectory, artifact.file), artifact.sources.map((source) =>
       source.startsWith("artifact:") ? path.join(bundle.outputDirectory, source.slice("artifact:".length)) : source));

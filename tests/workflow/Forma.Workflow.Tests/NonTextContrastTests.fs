@@ -48,7 +48,7 @@ let private nonText (report: ValidationReport) =
 
 let private ratio a b = HexColor.contrast (HexColor.create a) (HexColor.create b)
 let private shown (r: float) = r.ToString("0.00", Globalization.CultureInfo.InvariantCulture)
-let private amberOnLight = shown (ratio "#e9a23b" "#f2efe7")
+let private amberOnLight = shown (ratio "#e9a23b" "#fafafa")
 
 let private single label (findings: Finding list) =
     match findings with
@@ -88,7 +88,7 @@ let all =
           equal FindingCategory.Accessibility f.Category "category"
           equal "/nodes/0/color/stroke" f.Pointer "pointer"
           equal (Some "cause") f.Subject "subject"
-          equal "Stroke colour #e9a23b on fill #f5f3ed has contrast 1.95:1, and neither reaches 3:1 against the light surface #f2efe7, so the shape has no perceivable boundary; non-text indicators need at least 3:1 (WCAG 1.4.11)." f.Message "message")
+          equal "Stroke colour #e9a23b on fill #f5f3ed has contrast 1.95:1, and neither reaches 3:1 against the light surface #fafafa, so the shape has no perceivable boundary; non-text indicators need at least 3:1 (WCAG 1.4.11)." f.Message "message")
 
       test "The corrected Causa derived indicator #9e6410 on #f5f3ed (4.42:1) passes" (fun () ->
           equal "4.42" (shown (ratio "#9e6410" "#f5f3ed")) "measured ratio"
@@ -97,10 +97,10 @@ let all =
           expect (Validation.isValid report) (sprintf "%A" report.Findings))
 
       test "A borderless filled node validates: its fill is the boundary where it stands out from the surface" (fun () ->
-          // Reviewer case: stroke = fill = #3a403c is 1.00:1, but the fill is 9.24:1 on the light surface.
+          // Reviewer case: stroke = fill = #3a403c is 1.00:1, but the fill is 10.17:1 on the light surface.
           let light = single "borderless #3a403c" (nonText (doc [ "fill", str "#3a403c"; "stroke", str "#3a403c" ] [] [] []))
-          // ... which leaves it 1.65:1 on the dark surface: that, not the light case, is reported.
-          expect (light.Message.Contains "the dark surface #171a18") light.Message
+          // ... which leaves it 1.70:1 on the dark surface: that, not the light case, is reported.
+          expect (light.Message.Contains "the dark surface #161616") light.Message
           expect (not (light.Message.Contains "light surface")) light.Message
           // A fill that stands out on both default surfaces validates however its stroke is set.
           for fill in [ "#6b7280"; "#7a6f5a" ] do
@@ -108,7 +108,7 @@ let all =
               equal [] (nonText report) fill
           // A stroke matching a pale fill still fails when neither stands out on the light surface.
           let pale = single "pale" (nonText (doc [ "fill", str "#f5f3ed"; "stroke", str "#f5f3ed" ] [] [] []))
-          expect (pale.Message.Contains "light surface #f2efe7") pale.Message)
+          expect (pale.Message.Contains "light surface #fafafa") pale.Message)
 
       test "An accent below 3:1 against its fill is an error even when the boundary is perceivable" (fun () ->
           let f = single "accent" (nonText (doc [ "fill", str "#f5f3ed"; "stroke", str "#3a403c"; "accent", str "#e9a23b" ] [] [] []))
@@ -126,20 +126,20 @@ let all =
           let amber = single "amber edge" (nonText (doc [] [ "stroke", str "#e9a23b" ] [] []))
           equal "/edges/0/color/stroke" amber.Pointer "pointer"
           equal (Some "link") amber.Subject "subject"
-          equal $"Edge colour #e9a23b on the light surface #f2efe7 has contrast {amberOnLight}:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." amber.Message "amber message"
+          equal $"Edge colour #e9a23b on the light surface #fafafa has contrast {amberOnLight}:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." amber.Message "amber message"
           let dark = single "dark edge" (nonText (doc [] [ "stroke", str "#3a403c" ] [] []))
-          equal "Edge colour #3a403c on the dark surface #171a18 has contrast 1.65:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." dark.Message "dark message"
+          equal "Edge colour #3a403c on the dark surface #161616 has contrast 1.70:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." dark.Message "dark message"
           equal [] (nonText (doc [] [ "stroke", str "#6b7280" ] [] [])) "mid-tone edge passes on both surfaces")
 
       test "Without an authored fill an outline is judged against both default surfaces, the worst reported" (fun () ->
-          equal "#f2efe7" Validation.defaultSurface.Value "default surface"
-          equal [ "light", "#f2efe7"; "dark", "#171a18" ] (Validation.defaultSurfaces |> List.map (fun (t, h) -> t, h.Value)) "default surfaces"
+          equal "#fafafa" Validation.defaultSurface.Value "default surface"
+          equal [ "light", "#fafafa"; "dark", "#161616" ] (Validation.defaultSurfaces |> List.map (fun (t, h) -> t, h.Value)) "default surfaces"
           let amber = single "amber" (nonText (doc [ "stroke", str "#e9a23b" ] [] [] []))
-          equal $"Stroke colour #e9a23b on the light surface #f2efe7 has contrast {amberOnLight}:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." amber.Message "light message"
-          // Rehearsal reviewer: #3a403c passes on light (9.24:1) but is 1.65:1 under prefers-color-scheme: dark.
+          equal $"Stroke colour #e9a23b on the light surface #fafafa has contrast {amberOnLight}:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." amber.Message "light message"
+          // Rehearsal reviewer: #3a403c passes on light (10.17:1) but is 1.70:1 under prefers-color-scheme: dark.
           let dark = single "dark" (nonText (doc [ "stroke", str "#3a403c" ] [] [] []))
           equal "/nodes/0/color/stroke" dark.Pointer "pointer"
-          equal "Stroke colour #3a403c on the dark surface #171a18 has contrast 1.65:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." dark.Message "dark message"
+          equal "Stroke colour #3a403c on the dark surface #161616 has contrast 1.70:1; non-text indicators need at least 3:1 (WCAG 1.4.11)." dark.Message "dark message"
           equal [] (nonText (doc [ "stroke", str "#9e6410" ] [] [] [])) "derived indicator passes on both default surfaces")
 
       test "A pinned host theme scopes the default-surface judgement to that theme's surface" (fun () ->
@@ -148,23 +148,23 @@ let all =
           expect (Validation.isValid (pinned (Some "light"))) "pinned light is valid"
           let dark = nonText (pinned (Some "dark"))
           equal [ "/nodes/0/color/stroke"; "/edges/0/color/stroke" ] (dark |> List.map _.Pointer) "pinned dark rejects #3a403c"
-          expect (dark |> List.forall (fun f -> f.Message.Contains "the dark surface #171a18")) (sprintf "%A" dark)
+          expect (dark |> List.forall (fun f -> f.Message.Contains "the dark surface #161616")) (sprintf "%A" dark)
           let unpinned = nonText (pinned None)
           equal 2 unpinned.Length "no theme rejects #3a403c"
-          expect (unpinned |> List.forall (fun f -> f.Message.Contains "the dark surface #171a18")) (sprintf "%A" unpinned)
+          expect (unpinned |> List.forall (fun f -> f.Message.Contains "the dark surface #161616")) (sprintf "%A" unpinned)
           // The other direction: amber fails only on light.
           equal [] (nonText (docFor { Theme = Some "dark" } [ "stroke", str "#e9a23b" ] [] [] [] [])) "pinned dark accepts amber"
           // A theme Forma.Workflow does not pin (a brand theme name) judges both surfaces.
           equal 2 (nonText (pinned (Some "warm-earth"))).Length "unknown theme falls back to both surfaces"
-          equal [ "light", "#f2efe7" ] (Validation.surfacesFor { Theme = Some "light" } |> List.map (fun (t, h) -> t, h.Value)) "surfacesFor light")
+          equal [ "light", "#fafafa" ] (Validation.surfacesFor { Theme = Some "light" } |> List.map (fun (t, h) -> t, h.Value)) "surfacesFor light")
 
       test "Legend swatches are judged against the default surfaces (Rehearsal 6 palette:amber legend)" (fun () ->
           let f = single "legend" (nonText (docWith [] [] [] [ "amber", str "#e9a23b" ] [ "stroke", str "palette:amber" ]))
           equal "/presentation/legend/0/color/stroke" f.Pointer "pointer"
           equal (Some "tone") f.Subject "subject"
-          expect (f.Message.StartsWith "Stroke colour #e9a23b on the light surface #f2efe7 has contrast 1.88:1") f.Message
+          expect (f.Message.StartsWith $"Stroke colour #e9a23b on the light surface #fafafa has contrast {amberOnLight}:1") f.Message
           let accent = single "legend accent" (nonText (docWith [] [] [] [] [ "accent", str "#3a403c" ]))
-          expect (accent.Message.Contains "the dark surface #171a18") accent.Message
+          expect (accent.Message.Contains "the dark surface #161616") accent.Message
           equal [] (nonText (docWith [] [] [] [] [ "stroke", str "token:status-warning" ])) "token legend")
 
       test "Palette slots holding literals are resolved; token values and token/literal mixes are not judged" (fun () ->

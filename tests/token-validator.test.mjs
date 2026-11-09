@@ -77,7 +77,7 @@ test("Forma sources: invalid aliases, alias cycles, theme gaps, missing definiti
     "theme-missing:--ef-color-text-secondary"
   ]);
   assert.ok(findings.some(f => f.code === "theme-missing" && f.file.endsWith("half.brand.json")), "brand theme gap");
-  assert.ok(findings.some(f => f.code === "theme-missing" && f.file.endsWith("echelon.tokens.json")), "token theme gap");
+  assert.ok(findings.some(f => f.code === "theme-missing" && f.file.endsWith("forma.tokens.json")), "token theme gap");
 });
 
 test("application CSS: a token the Forma version deprecates is reported with its replacement", () => {

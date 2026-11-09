@@ -5,7 +5,7 @@ import path from "node:path";
 // FORMA-A11Y-001: forced-colors token projection and surface text contrast.
 const root = process.cwd();
 const css = fs.readFileSync(path.join(root, "dist", "all.css"), "utf8");
-const brand = fs.readFileSync(path.join(root, "dist", "brands", "echelon.css"), "utf8");
+const brand = fs.readFileSync(path.join(root, "dist", "brands", "example-orchard.css"), "utf8");
 const matrix = JSON.parse(fs.readFileSync(path.join(root, "catalog", "theme-layout-matrix.json"), "utf8"));
 
 const doc = (theme, body) => `<!doctype html><html lang="en"${theme.selector ? ` data-ef-theme="${theme.selector}"` : ""}><head><meta charset="utf-8"><title>Projection</title><style>${css}</style><style>${brand}</style></head><body>${body}</body></html>`;
@@ -15,7 +15,7 @@ const probe = `
     <h1>Heading</h1>
     <p>Body text</p>
     <article class="ef-surface"><h2>Card</h2><p>Secondary surface text</p></article>
-    <div data-ef-brand="echelon"><p id="branded">Branded text</p></div>
+    <div data-ef-brand="example-orchard"><p id="branded">Branded text</p></div>
     <span class="ef-status-lozenge" data-state="attention">Attention</span>
   </main>`;
 

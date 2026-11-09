@@ -120,7 +120,7 @@ portable document over the same `forma-workflow-host/1` contract, through
 `postMessage`:
 
 ```html
-<iframe src="/assets/forma-workflow/frame.html?parent=https://app.example.org&forma=https://app.example.org/assets/forma/&brand=echelon"></iframe>
+<iframe src="/assets/forma-workflow/frame.html?parent=https://app.example.org&forma=https://app.example.org/assets/forma/&brand=example-harbor"></iframe>
 ```
 
 | From the parent | Fields |

@@ -18,7 +18,7 @@ Every number below was produced in this session. Nothing is estimated.
 
 - **Zero component runtime.** Forma is semantic HTML plus CSS. `dist/runtime.js` (3,030 bytes) is a version diagnostic only.
 - **CSS organisation.** CSS lives in cascade layers:
-  - `echelon.tokens` is generated from `tokens/echelon.tokens.json` by the F# `tools/TokenCompiler`.
+  - `forma.tokens` is generated from `tokens/forma.tokens.json` by the F# `tools/TokenCompiler`.
   - `echelon.foundations` is `src/styles/foundations.css`: element defaults, composition primitives and typography roles.
   - The component layers come from `src/styles/components.css` and `assessment.css`.
   - The marketing layer is `src/marketing/*`.

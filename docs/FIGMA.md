@@ -7,7 +7,7 @@ the implementation source of truth.
 
 | Forma | Figma |
 | --- | --- |
-| `tokens/echelon.tokens.json` | Variables and modes |
+| `tokens/forma.tokens.json` | Variables and modes |
 | `patterns/*.html` | Library components and component properties |
 | CSS semantic/component tokens | Bound fills, strokes, text, spacing, radius, and other supported properties |
 | Native/application-rendered states | Figma variants/properties used for visualization |
@@ -21,7 +21,7 @@ Custom Elements or a JavaScript component runtime.
 
 The canonical file is always:
 
-`tokens/echelon.tokens.json`
+`tokens/forma.tokens.json`
 
 The npm package exposes the same file as
 `@echelon-foundry/design-system/tokens.json`. Do not maintain a separately
@@ -74,7 +74,7 @@ The verified Starter-compatible layout is:
 This keeps a Starter-built library upgrade-safe. After moving the file to a
 plan that supports multiple variable modes, add `Dark` to the existing
 `Forma Semantic Color` collection and populate the dark aliases from
-`tokens/echelon.tokens.json`. Existing components should not need to be
+`tokens/forma.tokens.json`. Existing components should not need to be
 rebuilt.
 
 The current Starter implementation was validated with:

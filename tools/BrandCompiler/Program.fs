@@ -236,7 +236,7 @@ let compileBrand (outputDir: string) (sourcePath: string) =
 
     let css = StringBuilder()
     css.AppendLine($"/* Generated from {Path.GetFileName sourcePath}. Do not edit directly. */") |> ignore
-    css.AppendLine("@layer echelon.brand {") |> ignore
+    css.AppendLine("@layer forma.brand {") |> ignore
     writeBlock css $"  [data-ef-brand=\"{id}\"]" (presentation @ light)
     writeBlock css $"  [data-ef-theme=\"light\"] [data-ef-brand=\"{id}\"], [data-ef-brand=\"{id}\"][data-ef-theme=\"light\"]" light
     writeBlock css $"  [data-ef-theme=\"dark\"] [data-ef-brand=\"{id}\"], [data-ef-brand=\"{id}\"][data-ef-theme=\"dark\"]" dark

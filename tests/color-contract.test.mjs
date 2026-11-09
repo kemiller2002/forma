@@ -56,7 +56,7 @@ test("unknown names fail closed despite a fallback and known literal fallbacks c
   const contract = current();
   assert.equal(validateCssColorReferences("color: var(--ef-color-made-up, #ffffff)", { contract })[0].code, "COLOR_UNKNOWN_FORMA_TOKEN");
   assert.equal(validateCssColorReferences("color: var(--ef-color-text-primary, #000000)", { contract })[0].code, "COLOR_LITERAL_FALLBACK_MISMATCH");
-  assert.deepEqual(validateCssColorReferences("color: var(--ef-color-text-primary, #171a18)", { contract }), []);
+  assert.deepEqual(validateCssColorReferences("color: var(--ef-color-text-primary, #161616)", { contract }), []);
 });
 
 test("CLI validates without loading or copying Forma component CSS", () => {

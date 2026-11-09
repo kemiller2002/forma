@@ -296,7 +296,7 @@ let main argv =
 
         let css = StringBuilder()
         css.AppendLine($"/* Generated from {Path.GetFileName sourcePath}. Do not edit directly. */") |> ignore
-        css.AppendLine("@layer echelon.tokens {") |> ignore
+        css.AppendLine("@layer forma.tokens {") |> ignore
         writeBlock css "  :root" neutral
         writeBlock css "  :root, [data-ef-theme=\"light\"]" (semantic "light")
         css.AppendLine("  @media (prefers-color-scheme: dark) {") |> ignore

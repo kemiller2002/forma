@@ -1,9 +1,10 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-// Forma-owned Echelon marketing reference fixture (examples/echelon-marketing-site).
+// Forma-owned marketing reference fixture (examples/marketing-site).
+// A fictional organization (Tidewater Systems) on the neutral forma-marketing.css.
 // It consumes the installed release bundle exactly as an independent site does.
-const base = "/examples/echelon-marketing-site/";
+const base = "/examples/marketing-site/";
 const pages = ["index.html", "product.html", "docs.html"];
 const widths = { wide: 1280, tablet: 768, phone: 390, narrow: 320 };
 const wcag = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
@@ -204,23 +205,21 @@ test("print output drops navigation and the decorative backdrop", async ({ page 
   expect(await page.evaluate(() => getComputedStyle(document.body, "::before").display)).toBe("none");
 });
 
-test("the Echelon theme applies through tokens and the product page retargets only its accent", async ({ page }) => {
+test("the neutral Forma default applies through tokens and the product page retargets only its accent", async ({ page }) => {
   await open(page, "index.html", widths.wide);
   const home = await page.evaluate(() => ({
     background: getComputedStyle(document.body).backgroundColor,
-    display: getComputedStyle(document.querySelector("h1")).fontFamily,
     accent: getComputedStyle(document.body).getPropertyValue("--ef-color-accent-primary").trim()
   }));
-  expect(home.background).toBe("rgb(242, 239, 231)");
-  expect(home.display).toContain("Newsreader");
-  expect(home.accent).toBe("#905831");
+  expect(home.background).toBe("rgb(250, 250, 250)");
+  expect(home.accent).toBe("#2b5ea8");
   await open(page, "product.html", widths.wide);
   const product = await page.evaluate(() => ({
     background: getComputedStyle(document.body).backgroundColor,
     accent: getComputedStyle(document.body).getPropertyValue("--ef-color-accent-primary").trim()
   }));
   expect(product.background).toBe(home.background);
-  expect(product.accent).toBe("#47756b");
+  expect(product.accent).toBe("#1d6b66");
 });
 
 test("documentation layout regroups by available width without reordering", async ({ page }) => {

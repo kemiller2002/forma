@@ -88,6 +88,6 @@ Escalation required:
 
 ## Maintenance
 
-- Owner: Echelon Foundry design system
-- First demanding consumer: Echelon Signal
+- Owner: Forma design system
+- First demanding consumer: an assessment-heavy application (Signal)
 - Last checked against implementation: 2026-09-22

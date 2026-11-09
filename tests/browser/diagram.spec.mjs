@@ -73,7 +73,7 @@ test("authored color never hides focus", async ({ page }) => {
   const link = node(page, "Publish").getByRole("link");
   await link.focus();
   const focused = await link.evaluate((element) => ({ outline: getComputedStyle(element).outlineStyle, ring: getComputedStyle(element).boxShadow }));
-  await node(page, "Publish").evaluate((element) => element.style.setProperty("--ef-diagram-fill", "#171a18"));
+  await node(page, "Publish").evaluate((element) => element.style.setProperty("--ef-diagram-fill", "#161616"));
   const recolored = await link.evaluate((element) => ({ outline: getComputedStyle(element).outlineStyle, ring: getComputedStyle(element).boxShadow }));
   expect(focused.outline).not.toBe("none");
   expect(recolored).toEqual(focused);

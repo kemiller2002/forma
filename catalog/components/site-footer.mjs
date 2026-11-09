@@ -41,10 +41,10 @@ export default {
     <footer class="ef-site-footer" data-ef-tone="surface">
       <div class="ef-site-footer__inner">
         <div class="ef-site-footer__main">
-          <div><p class="ef-eyebrow">Echelon / Dokimos</p><p>Longitudinal quality evidence for every change.</p></div>
+          <div><p class="ef-eyebrow">Harbor / Dokimos</p><p>Longitudinal quality evidence for every change.</p></div>
         </div>
         <nav class="ef-site-footer__nav" aria-label="Dokimos footer"><ul><li><a href="#site-footer-surface-product-footer-note">Documentation</a></li><li><a href="#site-footer-surface-product-footer-note">Release notes</a></li><li><a href="#site-footer-surface-product-footer-note">Source</a></li><li><a href="#site-footer-surface-product-footer-note">Privacy</a></li></ul></nav>
-        <p class="ef-site-footer__note" id="site-footer-surface-product-footer-note"><span>&copy; 2026 Echelon Foundry</span><span>Version 1.4.0</span></p>
+        <p class="ef-site-footer__note" id="site-footer-surface-product-footer-note"><span>&copy; 2026 Example Harbor</span><span>Version 1.4.0</span></p>
       </div>
     </footer>
   </div>
@@ -58,7 +58,7 @@ export default {
   <div class="ef-site">
     <footer class="ef-site-footer" data-ef-tone="inverse">
       <div class="ef-site-footer__inner">
-        <p class="ef-site-footer__note"><span>&copy; 2026 Echelon Foundry</span><span>Indianapolis, Indiana</span><span>Built with Forma</span></p>
+        <p class="ef-site-footer__note"><span>&copy; 2026 Example Harbor</span><span>Indianapolis, Indiana</span><span>Built with Forma</span></p>
       </div>
     </footer>
   </div>
@@ -92,11 +92,11 @@ export default {
     <footer class="ef-site-footer" data-ef-tone="inverse">
       <div class="ef-site-footer__inner">
         <div class="ef-site-footer__main">
-          <div><p class="ef-eyebrow">Echelon Foundry</p><p>Strategy, architecture and delivery for consequential systems.</p></div>
+          <div><p class="ef-eyebrow">Example Harbor</p><p>Strategy, architecture and delivery for consequential systems.</p></div>
           <div class="ef-actions"><a class="ef-button" href="#site-footer-mobile-full-footer-note">Schedule a working session</a></div>
         </div>
-        <nav class="ef-site-footer__nav" aria-label="Echelon Foundry footer"><ul><li><a href="#site-footer-mobile-full-footer-note">Research</a></li><li><a href="#site-footer-mobile-full-footer-note">Products</a></li><li><a href="#site-footer-mobile-full-footer-note">Privacy</a></li><li><a href="#site-footer-mobile-full-footer-note">Source</a></li></ul></nav>
-        <p class="ef-site-footer__note" id="site-footer-mobile-full-footer-note"><span>&copy; 2026 Echelon Foundry</span><span>Indianapolis, Indiana</span></p>
+        <nav class="ef-site-footer__nav" aria-label="Example Harbor footer"><ul><li><a href="#site-footer-mobile-full-footer-note">Research</a></li><li><a href="#site-footer-mobile-full-footer-note">Products</a></li><li><a href="#site-footer-mobile-full-footer-note">Privacy</a></li><li><a href="#site-footer-mobile-full-footer-note">Source</a></li></ul></nav>
+        <p class="ef-site-footer__note" id="site-footer-mobile-full-footer-note"><span>&copy; 2026 Example Harbor</span><span>Indianapolis, Indiana</span></p>
       </div>
     </footer>
   </div>

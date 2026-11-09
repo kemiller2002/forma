@@ -61,7 +61,7 @@ become layout names.
 Tokens reach the browser as CSS custom properties. They are compiled from DTCG
 JSON by `tools/TokenCompiler` (F#).
 
-- The Echelon theme compiles with `--reference tokens/echelon.tokens.json`.
+- The Echelon theme compiles with `--reference tokens/forma.tokens.json`.
 - Every theme value aliases a core primitive.
 - The compiler fails the build when a role pair misses its contrast floor.
 
@@ -102,7 +102,7 @@ stone is below 4.5:1.
 | Effects | `--ef-effect-{shadow-raised,transition-duration,transition-easing}` |
 | Focus | `--ef-focus-{ring-width,ring-offset,halo-width}` |
 
-The core primitive scales behind them live in `tokens/echelon.tokens.json`:
+The core primitive scales behind them live in `tokens/forma.tokens.json`:
 
 - `font-size`, `font-size-fluid`, `line-height`, `font-weight`, `letter-spacing`
 - `size`, `size-fluid`

@@ -131,25 +131,20 @@ test("index and agent documentation are complete", () => {
 });
 
 
-test("site chrome preserves the canonical Echelon Foundry visual system", () => {
+test("site chrome uses the neutral Forma default palette and no former Echelon palette value", async () => {
   const css = fs.readFileSync(path.join(output, "assets", "site.css"), "utf8");
   const index = fs.readFileSync(path.join(output, "index.html"), "utf8");
+  const { paletteFindings, identityFindings } = await import("../tools/brand-neutrality.mjs");
 
-  for (const value of [
-    "#202421",
-    "#3a403c",
-    "#f2efe7",
-    "#905831",
-    "#47756b",
-    "#171a18",
-    "#686d68",
-    "#e3e0d7"
-  ]) {
-    assert.match(css, new RegExp(value.replace("#", "\\#"), "i"), `missing Echelon Foundry palette value ${value}`);
+  for (const value of ["#232323", "#303030", "#fafafa", "#2b5ea8", "#1d6b66", "#161616", "#555555", "#eeeeee"]) {
+    assert.match(css, new RegExp(value.replace("#", "\\#"), "i"), `missing neutral palette value ${value}`);
   }
+  assert.deepEqual(paletteFindings(css), [], "site.css copies a former Echelon palette value");
+  assert.deepEqual(identityFindings(fs.readFileSync(path.join(output, "branding", "index.html"), "utf8").replace(/Echelon Foundry|Echelon \/ Foundry/g, "")), [],
+    "the brand laboratory demonstrates an Echelon brand");
 
   assert.match(css, /background-size:\s*48px\s+48px/);
-  assert.match(css, /rgb\(242 239 231 \/ \.94\)/);
+  assert.match(css, /rgb\(250 250 250 \/ \.94\)/);
   assert.match(css, /backdrop-filter:\s*blur\(14px\)/);
   assert.match(index, /family=IBM\+Plex\+Mono/);
   assert.match(index, /family=Manrope/);
@@ -182,7 +177,8 @@ test("brand laboratory proves scoped brands and skins without runtime script", (
   assert.ok(fs.existsSync(brandPage), "missing Brand Laboratory page");
 
   const html = fs.readFileSync(brandPage, "utf8");
-  assert.match(html, /data-ef-brand="echelon"/);
+  assert.match(html, /data-ef-brand="example-orchard"/);
+  assert.doesNotMatch(html, /data-ef-brand="echelon"/);
   assert.match(html, /data-ef-brand="example-harbor"/);
   assert.match(html, /data-ef-theme="dark"/);
   assert.match(html, /data-ef-skin="compact"/);
@@ -190,7 +186,7 @@ test("brand laboratory proves scoped brands and skins without runtime script", (
   assert.match(html, /data-ef-skin="square"/);
   assertNoBehaviorScript(html, "branding page added a component behavior script");
 
-  for (const file of ["echelon.css", "example-harbor.css", "index.json"]) {
+  for (const file of ["example-harbor.css", "example-orchard.css", "index.json"]) {
     assert.ok(
       fs.existsSync(path.join(output, "assets", "brands", file)),
       "missing published brand artifact " + file

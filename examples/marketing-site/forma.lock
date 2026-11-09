@@ -1,4 +1,5 @@
-# Forma presentation pin for the Echelon marketing reference fixture.
+# Forma presentation pin for the marketing reference fixture (a fictional
+# organization, Tidewater Systems).
 #
 # Inside the Forma repository this fixture is built from the in-repo release
 # artifacts (npm run example:install copies this lock, records the current
@@ -7,4 +8,4 @@
 forma 0.14.0
 repository kemiller2002/forma
 destination assets/forma
-asset forma-echelon-marketing.css sha256:recorded-at-install
+asset forma-marketing.css sha256:recorded-at-install

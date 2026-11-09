@@ -1,130 +1,8 @@
 {
-  "$description": "Canonical Echelon Foundry design tokens. DTCG 2025.10 format subset.",
+  "$description": "Canonical Forma design tokens: a brand-neutral default palette. DTCG 2025.10 format subset. Organization identity belongs in a brand manifest or theme package.",
   "primitive": {
     "color": {
       "$type": "color",
-      "foundry-charcoal": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.12549,
-            0.141176,
-            0.129412
-          ],
-          "alpha": 1,
-          "hex": "#202421"
-        }
-      },
-      "forged-iron": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.227451,
-            0.25098,
-            0.235294
-          ],
-          "alpha": 1,
-          "hex": "#3a403c"
-        }
-      },
-      "parchment": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.94902,
-            0.937255,
-            0.905882
-          ],
-          "alpha": 1,
-          "hex": "#f2efe7"
-        }
-      },
-      "oxide-bronze": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.564706,
-            0.345098,
-            0.192157
-          ],
-          "alpha": 1,
-          "hex": "#905831"
-        }
-      },
-      "oxide-bronze-light": {
-        "$description": "Accessible dark-surface accent derived from oxide bronze.",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.658824,
-            0.494118,
-            0.368627
-          ],
-          "alpha": 1,
-          "hex": "#a87e5e"
-        }
-      },
-      "verdigris": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.278431,
-            0.458824,
-            0.419608
-          ],
-          "alpha": 1,
-          "hex": "#47756b"
-        }
-      },
-      "verdigris-light": {
-        "$description": "Accessible dark-surface accent derived from verdigris.",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.411765,
-            0.552941,
-            0.517647
-          ],
-          "alpha": 1,
-          "hex": "#698d84"
-        }
-      },
-      "carbon": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.090196,
-            0.101961,
-            0.094118
-          ],
-          "alpha": 1,
-          "hex": "#171a18"
-        }
-      },
-      "graphite": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.407843,
-            0.427451,
-            0.407843
-          ],
-          "alpha": 1,
-          "hex": "#686d68"
-        }
-      },
-      "stone": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.890196,
-            0.878431,
-            0.843137
-          ],
-          "alpha": 1,
-          "hex": "#e3e0d7"
-        }
-      },
       "black": {
         "$value": {
           "colorSpace": "srgb",
@@ -773,136 +651,184 @@
           "hex": "#d29a58"
         }
       },
-      "parchment-light": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.972549,
-            0.964706,
-            0.945098
-          ],
-          "alpha": 1,
-          "hex": "#f8f6f1"
-        }
-      },
-      "oxide-bronze-deep": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.454902,
-            0.27451,
-            0.121569
-          ],
-          "alpha": 1,
-          "hex": "#74461f"
-        }
-      },
-      "oxide-bronze-pale": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.788235,
-            0.627451,
-            0.498039
-          ],
-          "alpha": 1,
-          "hex": "#c9a07f"
-        }
-      },
       "status-success": {
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.180392,
-            0.415686,
-            0.270588
+            0.121569,
+            0.419608,
+            0.239216
           ],
           "alpha": 1,
-          "hex": "#2e6a45"
+          "hex": "#1f6b3d"
         }
       },
       "status-warning": {
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.52549,
-            0.337255,
-            0.058824
+            0.541176,
+            0.321569,
+            0.0
           ],
           "alpha": 1,
-          "hex": "#86560f"
+          "hex": "#8a5200"
         }
       },
       "status-danger": {
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.631373,
-            0.227451,
-            0.172549
+            0.690196,
+            0.188235,
+            0.164706
           ],
           "alpha": 1,
-          "hex": "#a13a2c"
+          "hex": "#b0302a"
         }
       },
       "status-info": {
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.176471,
+            0.137255,
             0.372549,
-            0.52549
+            0.592157
           ],
           "alpha": 1,
-          "hex": "#2d5f86"
+          "hex": "#235f97"
         }
       },
       "status-success-light": {
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.54902,
-            0.768627,
-            0.623529
+            0.509804,
+            0.811765,
+            0.611765
           ],
           "alpha": 1,
-          "hex": "#8cc49f"
+          "hex": "#82cf9c"
         }
       },
       "status-warning-light": {
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.866667,
-            0.698039,
-            0.4
+            0.901961,
+            0.721569,
+            0.368627
           ],
           "alpha": 1,
-          "hex": "#ddb266"
+          "hex": "#e6b85e"
         }
       },
       "status-danger-light": {
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.937255,
-            0.603922,
-            0.545098
+            0.960784,
+            0.627451,
+            0.592157
           ],
           "alpha": 1,
-          "hex": "#ef9a8b"
+          "hex": "#f5a097"
         }
       },
       "status-info-light": {
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.564706,
-            0.72549,
-            0.862745
+            0.584314,
+            0.741176,
+            0.917647
           ],
           "alpha": 1,
-          "hex": "#90b9dc"
+          "hex": "#95bdea"
+        }
+      },
+      "neutral-50": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.980392,
+            0.980392,
+            0.980392
+          ],
+          "alpha": 1,
+          "hex": "#fafafa"
+        }
+      },
+      "neutral-900": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.137255,
+            0.137255,
+            0.137255
+          ],
+          "alpha": 1,
+          "hex": "#232323"
+        }
+      },
+      "neutral-500": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.462745,
+            0.462745,
+            0.462745
+          ],
+          "alpha": 1,
+          "hex": "#767676"
+        }
+      },
+      "blue-600": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.168627,
+            0.368627,
+            0.658824
+          ],
+          "alpha": 1,
+          "hex": "#2b5ea8"
+        }
+      },
+      "blue-300": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.576471,
+            0.713725,
+            0.92549
+          ],
+          "alpha": 1,
+          "hex": "#93b6ec"
+        }
+      },
+      "teal-700": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.113725,
+            0.419608,
+            0.4
+          ],
+          "alpha": 1,
+          "hex": "#1d6b66"
+        }
+      },
+      "teal-300": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.45098,
+            0.760784,
+            0.729412
+          ],
+          "alpha": 1,
+          "hex": "#73c2ba"
         }
       }
     },
@@ -1430,9 +1356,9 @@
             "color": {
               "colorSpace": "srgb",
               "components": [
-                0.090196,
-                0.101961,
-                0.094118
+                0.086275,
+                0.086275,
+                0.086275
               ],
               "alpha": 0.08
             },
@@ -1457,9 +1383,9 @@
             "color": {
               "colorSpace": "srgb",
               "components": [
-                0.090196,
-                0.101961,
-                0.094118
+                0.086275,
+                0.086275,
+                0.086275
               ],
               "alpha": 0.08
             },
@@ -1541,41 +1467,41 @@
       "color": {
         "text": {
           "primary": {
-            "$value": "{primitive.color.carbon}"
+            "$value": "{primitive.color.neutral-950}"
           },
           "heading": {
-            "$value": "{primitive.color.foundry-charcoal}"
+            "$value": "{primitive.color.neutral-950}"
           },
           "secondary": {
-            "$value": "{primitive.color.graphite}"
+            "$value": "{primitive.color.neutral-650}"
           },
           "on-secondary-surface": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-800}"
           },
           "inverse": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           }
         },
         "surface": {
           "primary": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           },
           "secondary": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-100}"
           },
           "inverse": {
-            "$value": "{primitive.color.foundry-charcoal}"
+            "$value": "{primitive.color.neutral-900}"
           },
           "inverse-secondary": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-800}"
           }
         },
         "accent": {
           "primary": {
-            "$value": "{primitive.color.oxide-bronze}"
+            "$value": "{primitive.color.blue-600}"
           },
           "secondary": {
-            "$value": "{primitive.color.verdigris}"
+            "$value": "{primitive.color.teal-700}"
           }
         },
         "status": {
@@ -1594,29 +1520,29 @@
         },
         "border": {
           "subtle": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           },
           "functional": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-650}"
           }
         },
         "focus": {
           "ring": {
-            "$value": "{primitive.color.carbon}"
+            "$value": "{primitive.color.neutral-950}"
           },
           "gap": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           }
         },
         "control": {
           "track": {
-            "$value": "{primitive.color.graphite}"
+            "$value": "{primitive.color.neutral-500}"
           },
           "thumb": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-50}"
           },
           "active": {
-            "$value": "{primitive.color.oxide-bronze}"
+            "$value": "{primitive.color.blue-600}"
           }
         }
       }
@@ -1625,41 +1551,41 @@
       "color": {
         "text": {
           "primary": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-100}"
           },
           "heading": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-100}"
           },
           "secondary": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           },
           "on-secondary-surface": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-100}"
           },
           "inverse": {
-            "$value": "{primitive.color.carbon}"
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "surface": {
           "primary": {
-            "$value": "{primitive.color.carbon}"
+            "$value": "{primitive.color.neutral-950}"
           },
           "secondary": {
-            "$value": "{primitive.color.foundry-charcoal}"
+            "$value": "{primitive.color.neutral-900}"
           },
           "inverse": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-100}"
           },
           "inverse-secondary": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           }
         },
         "accent": {
           "primary": {
-            "$value": "{primitive.color.oxide-bronze-light}"
+            "$value": "{primitive.color.blue-300}"
           },
           "secondary": {
-            "$value": "{primitive.color.verdigris-light}"
+            "$value": "{primitive.color.teal-300}"
           }
         },
         "status": {
@@ -1678,29 +1604,29 @@
         },
         "border": {
           "subtle": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-800}"
           },
           "functional": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           }
         },
         "focus": {
           "ring": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-100}"
           },
           "gap": {
-            "$value": "{primitive.color.carbon}"
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "control": {
           "track": {
-            "$value": "{primitive.color.graphite}"
+            "$value": "{primitive.color.neutral-500}"
           },
           "thumb": {
-            "$value": "{primitive.color.parchment}"
+            "$value": "{primitive.color.neutral-100}"
           },
           "active": {
-            "$value": "{primitive.color.oxide-bronze-light}"
+            "$value": "{primitive.color.blue-300}"
           }
         }
       }
@@ -2076,7 +2002,7 @@
         },
         "accent": {
           "primary": {
-            "$value": "{primitive.color.oxide-bronze}"
+            "$value": "{primitive.color.split-rust}"
           },
           "secondary": {
             "$value": "{primitive.color.forest}"
@@ -2120,7 +2046,7 @@
             "$value": "{primitive.color.paper}"
           },
           "active": {
-            "$value": "{primitive.color.oxide-bronze}"
+            "$value": "{primitive.color.split-rust}"
           }
         }
       }
@@ -2219,7 +2145,7 @@
             "$value": "{primitive.color.ice}"
           },
           "secondary": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           },
           "on-secondary-surface": {
             "$value": "{primitive.color.ice}"
@@ -2239,7 +2165,7 @@
             "$value": "{primitive.color.ice}"
           },
           "inverse-secondary": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           }
         },
         "accent": {
@@ -2247,7 +2173,7 @@
             "$value": "{primitive.color.amber-light}"
           },
           "secondary": {
-            "$value": "{primitive.color.verdigris-light}"
+            "$value": "{primitive.color.teal-300}"
           }
         },
         "status": {
@@ -2266,10 +2192,10 @@
         },
         "border": {
           "subtle": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-800}"
           },
           "functional": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           }
         },
         "focus": {
@@ -2282,7 +2208,7 @@
         },
         "control": {
           "track": {
-            "$value": "{primitive.color.graphite}"
+            "$value": "{primitive.color.neutral-500}"
           },
           "thumb": {
             "$value": "{primitive.color.ice}"
@@ -2664,7 +2590,7 @@
         },
         "accent": {
           "primary": {
-            "$value": "{primitive.color.oxide-bronze}"
+            "$value": "{primitive.color.navy}"
           },
           "secondary": {
             "$value": "{primitive.color.muted-teal}"
@@ -2708,7 +2634,7 @@
             "$value": "{primitive.color.editorial-bg}"
           },
           "active": {
-            "$value": "{primitive.color.oxide-bronze}"
+            "$value": "{primitive.color.navy}"
           }
         }
       }
@@ -2748,7 +2674,7 @@
         },
         "accent": {
           "primary": {
-            "$value": "{primitive.color.oxide-bronze}"
+            "$value": "{primitive.color.comp-rust}"
           },
           "secondary": {
             "$value": "{primitive.color.earth-green}"
@@ -2792,7 +2718,7 @@
             "$value": "{primitive.color.earth-bg}"
           },
           "active": {
-            "$value": "{primitive.color.oxide-bronze}"
+            "$value": "{primitive.color.comp-rust}"
           }
         }
       }
@@ -2975,7 +2901,7 @@
             "$value": "{primitive.color.tech-text}"
           },
           "secondary": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           },
           "on-secondary-surface": {
             "$value": "{primitive.color.tech-text}"
@@ -2995,7 +2921,7 @@
             "$value": "{primitive.color.tech-text}"
           },
           "inverse-secondary": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           }
         },
         "accent": {
@@ -3022,10 +2948,10 @@
         },
         "border": {
           "subtle": {
-            "$value": "{primitive.color.forged-iron}"
+            "$value": "{primitive.color.neutral-800}"
           },
           "functional": {
-            "$value": "{primitive.color.stone}"
+            "$value": "{primitive.color.neutral-200}"
           }
         },
         "focus": {
@@ -3038,7 +2964,7 @@
         },
         "control": {
           "track": {
-            "$value": "{primitive.color.graphite}"
+            "$value": "{primitive.color.neutral-500}"
           },
           "thumb": {
             "$value": "{primitive.color.tech-text}"

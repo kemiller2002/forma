@@ -6,7 +6,7 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 
 const project = "tools/TokenCompiler/TokenCompiler.fsproj";
-const canonicalPath = path.resolve("tokens/echelon.tokens.json");
+const canonicalPath = path.resolve("tokens/forma.tokens.json");
 
 function runCompiler(source, output) {
   return spawnSync(
@@ -29,9 +29,9 @@ test("canonical token source compiles deterministically", () => {
   const one = fs.readFileSync(first, "utf8");
   const two = fs.readFileSync(second, "utf8");
   assert.equal(one, two);
-  assert.match(one, /--ef-color-accent-primary: #905831/);
-  assert.match(one, /--ef-color-text-on-secondary-surface: #3a403c/);
-  assert.match(one, /--ef-color-status-danger: #a13a2c/);
+  assert.match(one, /--ef-color-accent-primary: #2b5ea8/);
+  assert.match(one, /--ef-color-text-on-secondary-surface: #303030/);
+  assert.match(one, /--ef-color-status-danger: #b0302a/);
   assert.match(one, /--ef-primitive-motion-duration-standard: 180ms/);
 });
 
@@ -55,7 +55,7 @@ test("unsafe dark accent pairing is rejected", () => {
   const output = path.join(dir, "unsafe.css");
   const data = JSON.parse(fs.readFileSync(canonicalPath, "utf8"));
 
-  data.semantic.dark.color.accent.primary.$value = "{primitive.color.oxide-bronze}";
+  data.semantic.dark.color.accent.primary.$value = "{primitive.color.blue-600}";
   fs.writeFileSync(source, JSON.stringify(data, null, 2));
 
   const result = runCompiler(source, output);

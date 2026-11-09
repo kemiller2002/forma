@@ -1,15 +1,16 @@
-# Building an Echelon marketing site with Forma
+# Building a marketing site with Forma
 
-This guide is for agents and engineers who create or migrate an Echelon
-marketing site, for example Dokimos, Ordo, Praxis, Limen, Vigila, Tutoris, or
-the main Echelon Foundry site.
+This guide is for agents and engineers who create or migrate a marketing site
+on Forma. Forma is brand-neutral: it ships the generic marketing layer, and an
+organization's marketing theme (its colors, typography and backdrop) ships in
+that organization's own theme package and loads after Forma.
 
 - Rules: [`requirements/MARKETING-PRESENTATION.md`](../requirements/MARKETING-PRESENTATION.md)
 - Distribution decision: [ADR-0003](decisions/ADR-0003-marketing-presentation-distribution.md)
-- Working reference: [`examples/echelon-marketing-site`](../examples/echelon-marketing-site)
+- Working reference: [`examples/marketing-site`](../examples/marketing-site) (a fictional organization)
 - Migrating an existing site: [`docs/marketing/MIGRATION-CONTRACT.md`](marketing/MIGRATION-CONTRACT.md)
 
-## 1. How do I make a new Echelon marketing site?
+## 1. How do I make a new marketing site?
 
 1. Create `forma.lock` (see question 2) and install the pinned assets.
 2. Start every page from the MarketingShell (`patterns/marketing-shell.html`).
@@ -45,7 +46,7 @@ my-site/
 forma 0.3.0
 repository kemiller2002/forma
 destination assets/forma
-asset forma-echelon-marketing.css sha256:<filled in by install.sh --update>
+asset forma-marketing.css sha256:<filled in by install.sh --update>
 ```
 
 `index.html`:
@@ -56,18 +57,17 @@ asset forma-echelon-marketing.css sha256:<filled in by install.sh --update>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product | Echelon Foundry</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500&display=swap">
-  <link rel="stylesheet" href="/assets/forma/forma-echelon-marketing.css">
+  <title>Product | Example Organization</title>
+  <link rel="stylesheet" href="/assets/forma/forma-marketing.css">
+  <!-- Optional: the organization's marketing theme, after Forma. -->
+  <link rel="stylesheet" href="/assets/theme/marketing-theme.css">
 </head>
 <body class="ef-site" data-ef-layout="product">
   <a class="ef-skip-link" href="#main-content">Skip to main content</a>
   <header class="ef-site-header">
     <div class="ef-site-header__inner">
       <div class="ef-site-header__identity">
-        <a class="ef-site-header__brand" href="/"><span class="ef-site-header__mark" aria-hidden="true">PX</span><span class="ef-site-header__name">Echelon / Product</span></a>
+        <a class="ef-site-header__brand" href="/"><span class="ef-site-header__mark" aria-hidden="true">PX</span><span class="ef-site-header__name">Example / Product</span></a>
       </div>
       <nav class="ef-site-nav" aria-label="Primary">
         <ul class="ef-site-nav__list">
@@ -90,7 +90,7 @@ asset forma-echelon-marketing.css sha256:<filled in by install.sh --update>
   </main>
   <footer class="ef-site-footer" data-ef-tone="inverse">
     <div class="ef-site-footer__inner">
-      <p class="ef-site-footer__note"><span>&copy; 2026 Echelon Foundry</span></p>
+      <p class="ef-site-footer__note"><span>&copy; 2026 Example Organization</span></p>
     </div>
   </footer>
 </body>
@@ -135,7 +135,7 @@ need Node, npm, or .NET.
 
 Sites that already use npm may instead depend on
 `@echelon-foundry/design-system` at an exact version and copy
-`node_modules/@echelon-foundry/design-system/dist/marketing/forma-echelon-marketing.css`
+`node_modules/@echelon-foundry/design-system/dist/marketing/forma-marketing.css`
 at build time. The lock file is still the recommended record, because it
 carries the checksum.
 
@@ -143,17 +143,17 @@ Available assets for each release:
 
 | Asset | Use |
 |---|---|
-| `forma-echelon-marketing.css` | Default for Echelon sites: generic layer plus Echelon theme |
-| `forma-marketing.css` + `forma-marketing-theme-echelon.css` | The same content split in two, for sites that load the theme separately |
+| `forma-marketing.css` | The brand-neutral marketing layer. An organization theme, if any, loads after it |
 | `forma-all.css` | Adds Forma application patterns (data grid, dense ledger, status lozenge, provenance trail); load it instead of `forma-marketing.css` when needed |
 | `forma-marketing.manifest.json`, `forma-marketing.sha256` | Version, sizes, sources, checksums |
 
-## 3. How do I select the Echelon Marketing Theme?
+## 3. How do I apply an organization's marketing theme?
 
-Load `forma-echelon-marketing.css`; it already contains the theme. On `<html>`:
+Load `forma-marketing.css`, then the organization's theme stylesheet from its
+own pinned package (Forma ships none). Without a theme, the neutral Forma
+defaults apply. On `<html>`:
 
-- Set `data-ef-theme="light"` to match the reference site, which is light
-  only.
+- Set `data-ef-theme="light"` for a light-only site.
 - Set `data-ef-theme="dark"` for the validated dark map.
 - Omit the attribute to follow the operating-system preference.
 
@@ -222,7 +222,7 @@ Keep local class names out of the `ef-` namespace. Use a site prefix such as
 
 ## 6. What must go back into Forma?
 
-Anything another Echelon site could use, and anything that would otherwise
+Anything another site could use, and anything that would otherwise
 redefine:
 
 - global typography, containers, or the spacing scale;
@@ -253,7 +253,7 @@ Run these checks in CI:
 - **Install:** `bash install.sh`. It fails on any drift.
 - **Local-CSS policy:** use `kemiller2002/forma/actions/check-site-css@v<version>`
   with `files: site.css`, or run
-  `dotnet run --project <forma>/tools/SiteCssPolicy/SiteCssPolicy.fsproj -- --forma assets/forma/forma-echelon-marketing.css site.css`.
+  `dotnet run --project <forma>/tools/SiteCssPolicy/SiteCssPolicy.fsproj -- --forma assets/forma/forma-marketing.css site.css`.
 - **Structure:** at least the checks in Forma's
   `tests/marketing-structure.test.mjs`:
   - skip link first;

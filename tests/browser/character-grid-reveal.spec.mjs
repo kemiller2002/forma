@@ -73,7 +73,7 @@ test("staged text is fully available to assistive technology before the reveal r
   await page.evaluate(() => document.getAnimations().forEach(animation => { animation.pause(); animation.currentTime = 0; }));
   const clipped = await page.locator("#character-grid-reveal-title").evaluate(element => getComputedStyle(element).clipPath);
   expect(clipped).toContain("inset");
-  await expect(page.getByRole("heading", { name: "ECHELON FOUNDRY" })).toBeAttached();
+  await expect(page.getByRole("heading", { name: "EXAMPLE SYSTEMS" })).toBeAttached();
   const snapshot = await page.locator(".ef-character-grid__surface").ariaSnapshot();
   expect(snapshot).toContain("OPERATIONS NETWORK");
   expect(snapshot).toContain("Authorized use only.");

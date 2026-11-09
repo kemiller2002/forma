@@ -63,7 +63,7 @@ export const createColorContract = ({ tokenDocument, brands, formaVersion }) => 
     kind: "theme",
     id,
     selector: id === "light" ? ":root, [data-ef-theme=\"light\"]" : `[data-ef-theme=\"${id}\"]`,
-    source: "tokens/echelon.tokens.json",
+    source: "tokens/forma.tokens.json",
     values: flattenTheme(tokenDocument, id)
   }));
   const baseline = themes.find(context => context.id === "light")?.values ?? {};
@@ -95,7 +95,7 @@ export const createColorContract = ({ tokenDocument, brands, formaVersion }) => 
       role: rolesByName.get(name),
       scopes: ["root", "theme", "brand", "skin"],
       variants: { themes: themeIds, brands: brands.map(item => item.document.id) },
-      source: { file: "tokens/echelon.tokens.json", path: `semantic.<theme>.color.${rolesByName.get(name)}` },
+      source: { file: "tokens/forma.tokens.json", path: `semantic.<theme>.color.${rolesByName.get(name)}` },
       provenance: { kind: "generated", compiler: "tools/color-contract/build.mjs" },
       deprecatedAliases: []
     })),

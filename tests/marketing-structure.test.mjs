@@ -4,9 +4,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 
-const example = "examples/echelon-marketing-site";
+const example = "examples/marketing-site";
 const pages = ["index.html", "product.html", "docs.html"];
-const bundleCss = fs.readFileSync(path.join(example, "assets/forma/forma-echelon-marketing.css"), "utf8");
+const bundleCss = fs.readFileSync(path.join(example, "assets/forma/forma-marketing.css"), "utf8");
 const siteCss = fs.readFileSync(path.join(example, "site.css"), "utf8");
 const html = file => fs.readFileSync(path.join(example, file), "utf8");
 const marketingPatterns = [
@@ -22,7 +22,7 @@ test("reference pages render only from installed Forma assets plus a small local
   for (const file of pages) {
     const source = html(file);
     const stylesheets = [...source.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g)].map(m => m[1]);
-    assert.deepEqual(stylesheets, ["assets/forma/forma-echelon-marketing.css", "site.css"], `${file} loads unexpected CSS`);
+    assert.deepEqual(stylesheets, ["assets/forma/forma-marketing.css", "site.css"], `${file} loads unexpected CSS`);
     assert.doesNotMatch(source, /<style\b|\sstyle="/i, `${file} carries inline presentation`);
     assert.doesNotMatch(source, /<script\b/i, `${file} adds runtime behavior`);
   }
@@ -43,7 +43,7 @@ test("every class the reference site uses comes from Forma or is declared local"
 
 test("reference site-local CSS satisfies the Forma local-CSS policy", () => {
   const result = spawnSync("dotnet", ["run", "--project", "tools/SiteCssPolicy/SiteCssPolicy.fsproj", "--",
-    "--forma", path.join(example, "assets/forma/forma-echelon-marketing.css"), path.join(example, "site.css")], { encoding: "utf8" });
+    "--forma", path.join(example, "assets/forma/forma-marketing.css"), path.join(example, "site.css")], { encoding: "utf8" });
   assert.equal(result.status, 0, result.stdout + result.stderr);
 });
 

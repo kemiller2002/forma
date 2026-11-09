@@ -24,7 +24,7 @@ export const renderBranding = () => {
         <p>These examples use identical inner markup. Only the brand and theme scopes differ.</p>
       </div>
       <div class="brand-demo-grid">
-        <article class="brand-demo-wrap"><p class="category-label">Echelon / light</p><section class="brand-demo" data-ef-brand="echelon">${brandSample()}</section></article>
+        <article class="brand-demo-wrap"><p class="category-label">Example Orchard / light</p><section class="brand-demo" data-ef-brand="example-orchard">${brandSample()}</section></article>
         <article class="brand-demo-wrap"><p class="category-label">Example Harbor / light</p><section class="brand-demo" data-ef-brand="example-harbor">${brandSample()}</section></article>
         <article class="brand-demo-wrap"><p class="category-label">Example Harbor / dark</p><section class="brand-demo" data-ef-brand="example-harbor" data-ef-theme="dark">${brandSample()}</section></article>
       </div>
@@ -36,9 +36,9 @@ export const renderBranding = () => {
         <p>Density and shape can change while the brand's semantic color and typography remain authoritative.</p>
       </div>
       <div class="brand-demo-grid">
-        <article class="brand-demo-wrap"><p class="category-label">Compact</p><section class="brand-demo" data-ef-brand="echelon" data-ef-skin="compact">${brandSample()}</section></article>
-        <article class="brand-demo-wrap"><p class="category-label">Comfortable</p><section class="brand-demo" data-ef-brand="echelon" data-ef-skin="comfortable">${brandSample()}</section></article>
-        <article class="brand-demo-wrap"><p class="category-label">Square</p><section class="brand-demo" data-ef-brand="echelon" data-ef-skin="square">${brandSample()}</section></article>
+        <article class="brand-demo-wrap"><p class="category-label">Compact</p><section class="brand-demo" data-ef-brand="example-orchard" data-ef-skin="compact">${brandSample()}</section></article>
+        <article class="brand-demo-wrap"><p class="category-label">Comfortable</p><section class="brand-demo" data-ef-brand="example-orchard" data-ef-skin="comfortable">${brandSample()}</section></article>
+        <article class="brand-demo-wrap"><p class="category-label">Square</p><section class="brand-demo" data-ef-brand="example-orchard" data-ef-skin="square">${brandSample()}</section></article>
       </div>
     </section>
   
