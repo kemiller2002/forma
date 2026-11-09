@@ -101,6 +101,27 @@ export default {
 </ef-form>`
     },
     {
+      id: "pending-submission",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
+      title: "Submission pending",
+      description: "After a valid submit the application marks the form `aria-busy=\"true\"`, wraps its fields in `<fieldset disabled>` so the browser refuses edits and a second submission, and marks the submit button pending. A status message names the work. When the save completes or fails, the application removes all three and reports the outcome.",
+      html: `<ef-form class="ef-component-tag">
+  <form class="ef-form" action="#" method="post" aria-busy="true" aria-describedby="form-pending-status">
+    <fieldset disabled>
+      <legend>Crew contact</legend>
+      <div class="ef-field">
+        <label class="ef-field__label" for="form-pending-name">Contact name</label>
+        <input id="form-pending-name" name="contact" type="text" value="Mae Jemison" autocomplete="name">
+      </div>
+      <div class="ef-actions">
+        <button type="submit" aria-busy="true" aria-disabled="true">Saving contact</button>
+      </div>
+    </fieldset>
+    <p id="form-pending-status" role="status">Saving the crew contact.</p>
+  </form>
+</ef-form>`
+    },
+    {
       id: "customer-email-validation",
       title: "Customer email validation",
       description: "A compact customer form uses native required and email constraints. The linked recovery message appears when the browser refuses an invalid submission; valid Save and Reset actions remain native.",
@@ -178,9 +199,11 @@ export default {
       { name: "type", on: "button", values: "submit | reset | button", default: "submit", description: "Write the native command explicitly. Design-contract standard mode binds submit and reset only." },
       { name: "required", on: "native form control", values: "boolean", default: "absent", description: "Participates in native constraint validation. Also state required status in visible text." },
       { name: "aria-describedby", on: "native form control", values: "description and validation ids", default: "—", description: "Associates guidance and recovery text in reading order." },
-      { name: "role", on: ".ef-form__outcome", values: "status", default: "—", description: "Announces newly navigated save feedback without moving focus." }
+      { name: "role", on: ".ef-form__outcome", values: "status", default: "—", description: "Announces newly navigated save feedback without moving focus." },
+      { name: "aria-busy", on: "form.ef-form", values: "true", default: "absent", description: "Marks a submission in flight: progress cursor on the form. Pair it with `<fieldset disabled>` around the fields (the browser then refuses edits and resubmission) and a pending submit button; the application removes all three when the work finishes." }
     ],
     hooks: {
+      "aria-busy": "Pending selector: `.ef-form[aria-busy=\"true\"]` sets the progress cursor; the disabled fieldset does the rest natively.",
       "ef-form": "Form root: a min-width-zero grid with semantic vertical spacing, container context and an optional maximum measure.",
       "ef-form__outcome": "Native fragment-targeted status. Hidden until it is the current URL target, then shown with a non-colour border cue.",
       "--ef-form-gap": "Space between heading, field layouts, action group and feedback.",
@@ -202,6 +225,7 @@ export default {
     { name: "Ready", how: "valid native controls", description: "Save can submit; Reset restores declared initial values." },
     { name: "Invalid", how: ":user-invalid plus linked .ef-validation-message--when-invalid", description: "Submission is refused; a thicker danger-side border and text recovery message identify the field without colour alone." },
     { name: "Saved", how: ".ef-form__outcome:target", description: "A successful native GET reaches the declared URL fragment and exposes status feedback." },
+    { name: "Pending", how: "aria-busy=\"true\" on the form, fields inside <fieldset disabled>, pending submit button", description: "The browser refuses edits and resubmission through the disabled fieldset; the form shows a progress cursor and its status message names the work. The application restores the form and reports success or failure." },
     { name: "Disabled or read-only field", how: "disabled or readonly native attribute", description: "Disabled controls are dashed, dimmed and omitted from submission; read-only text controls are dashed and remain focusable, selectable and submitted." }
   ],
   accessibility: {

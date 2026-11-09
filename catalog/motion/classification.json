@@ -584,6 +584,40 @@
         "strategy": "explicit"
       },
       "note": "MOT-032: display and overlay carriers retain resting geometry until the perceptual fade is complete, only with overlay retention."
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "startup",
+      "selector": ".ef-startup__slow",
+      "tracks": {
+        "animation:ef-startup-reveal": "cadence"
+      },
+      "reducedMotion": {
+        "strategy": "explicit"
+      },
+      "note": "Bounded discrete sequence of one step: the slow-start note becomes visible once, after --ef-startup-slow-after (AIS-001.2).",
+      "approvedLiterals": [
+        {
+          "value": "1ms",
+          "reason": "A discrete one-step reveal: the keyframe only flips visibility, so the duration carries no motion; the delay (--ef-startup-slow-after) is the parameter."
+        },
+        {
+          "value": "step-end",
+          "reason": "Discrete visibility flip with no interpolated frame (AIS-001.2)."
+        }
+      ]
+    },
+    {
+      "source": "src/styles/components.css",
+      "family": "button",
+      "selector": ":where(button, .ef-button)[aria-busy=\"true\"]::before",
+      "tracks": {
+        "animation:ef-spinner-rotate": "cadence"
+      },
+      "reducedMotion": {
+        "strategy": "stop"
+      },
+      "note": "Pending action ring: the shared spinner cadence while the application reports the action busy (AIS-001.3, MOT-016)."
     }
   ]
 }

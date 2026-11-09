@@ -221,6 +221,14 @@ It exits 1 on any error. The installed package is the source of truth: its token
 
 Application-owned properties such as `--causa-*` are never reported. Keep `forma-color` for color-role pairing rules; the two validators agree on the color namespace.
 
+## 0.14.0
+
+Additive minor release. No class, token or component was removed or renamed, and nothing that already exists changes appearance.
+
+- **Application identity:** render your application's mark and name with `.ef-app-identity` (`patterns/app-identity.html`). Use an `<object>` for the mark, with a `.ef-app-identity__monogram` inside it as the fallback, and serve the mark same-origin and script-free. If you have light and dark marks, mark them `data-ef-scheme="light"` and `"dark"`.
+- **Pre-runtime start-up:** put `.ef-startup` (`patterns/startup.html`) in the initial HTML of the page your WebAssembly or script mounts into. Your loader sets `data-ef-state` to `slow`, `failed` or `timed-out`, and removes the screen or sets `hidden` once the application has mounted.
+- **Pending actions:** set `aria-busy="true"` and `aria-disabled="true"` on the action in flight, and ignore repeated activation in the application. For a pending form, also set `aria-busy="true"` on the form and wrap its fields in `<fieldset disabled>`.
+
 ## 0.13.1
 
 Patch release with two fixes. No class, token or component was removed or renamed.

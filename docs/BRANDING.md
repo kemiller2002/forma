@@ -143,6 +143,19 @@ surfaces become `Canvas`). Brands and themes cannot opt out: the user's
 forced-colors choice always wins. Selection and state presentation that needs
 `Highlight` keeps its explicit component rules (FORMA-A11Y-001).
 
+## Application identity and start-up
+
+A brand manifest's `identity.assets` (`mark`, `logo`, `logoDark`, `favicon`)
+name files; Forma never ships them. An application renders its own identity
+with `.ef-app-identity` (`patterns/app-identity.html`): the mark is an
+`<object>` with a text monogram as its fallback content, with light and dark
+variants marked by `data-ef-scheme`. The pre-runtime start-up screen
+`.ef-startup` (`patterns/startup.html`) shows the same identity before a
+WebAssembly or script runtime has loaded. Both are brand-neutral: every color
+comes from the active theme or brand, and `tests/brand-neutrality.test.mjs`
+fails if Forma's generic stylesheets gain organization identity or palette
+literals.
+
 ## White-labeling rules for applications
 
 Applications should not fork Forma component CSS just to implement customer

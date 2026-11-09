@@ -42,6 +42,21 @@ export default {
 </ef-button>`
     },
     {
+      id: "pending-save",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
+      title: "Save in progress",
+      description: "The application set `aria-busy=\"true\"` and `aria-disabled=\"true\"` on the button it just submitted and changed the label to name the work. Forma draws an in-place busy ring before the label; the button keeps its size and place, stays focusable, and loses hover feedback. The status line beside it carries the announcement. The application must ignore further activation until the save completes or fails.",
+      html: `<ef-button class="ef-component-tag">
+  <form class="ef-stack" action="#" method="post">
+    <div class="ef-actions">
+      <button type="submit" aria-busy="true" aria-disabled="true" aria-describedby="button-pending-save-status">Saving changes</button>
+      <button type="button">Cancel</button>
+    </div>
+    <p id="button-pending-save-status" role="status">Saving changes to the launch checklist.</p>
+  </form>
+</ef-button>`
+    },
+    {
       id: "icon-with-hidden-label",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Icon button with a visually hidden label",
@@ -104,11 +119,13 @@ export default {
       { name: "disabled", on: "button", values: "boolean", default: "absent", description: "Natively disables the button: not focusable, not activatable, not submitted. In the application layer it only removes hover and press feedback; inside `.ef-site` it also gets the dashed treatment." },
       { name: "href", on: "a.ef-button", values: "URL", default: "—", description: "A link styled as a button. It keeps link semantics: Enter activates it, Space scrolls the page." },
       { name: "aria-disabled", on: "button or a.ef-button inside .ef-site", values: "true", default: "absent", description: "Marks an unavailable action that must stay focusable (for example to expose its reason). It does not block activation; the application must ignore it." },
+      { name: "aria-busy", on: "button or a.ef-button", values: "true", default: "absent", description: "Marks an action whose work is in flight. Forma draws a busy ring before the label (static under reduced motion) and removes hover and press feedback. Pair it with `aria-disabled=\"true\"` and ignore repeated activation in the application; Forma cannot block a keyboard submission." },
       { name: "aria-describedby", on: "button", values: "id", default: "—", description: "Links a visible explanation, such as why an aria-disabled action is unavailable." },
       { name: "data-ef-variant", on: "a.ef-button or button.ef-button inside .ef-site", values: "primary", default: "absent (outlined)", description: "Marketing-only filled primary treatment. Has no effect outside a `.ef-site` shell." },
       { name: "aria-hidden", on: "decorative glyph span", values: "true", default: "—", description: "Hides a decorative icon or glyph so the visually hidden text is the whole accessible name." }
     ],
     hooks: {
+      "aria-busy": "Pending selector: `:where(button, .ef-button)[aria-busy=\"true\"]` draws the busy ring (::before) and removes hover and press feedback.",
       "ef-button": "Applies the native button treatment to a non-button element, normally a link. Inside `.ef-site` it becomes the marketing button (inline-flex, tone-aware colors, brand radius).",
       "ef-actions": "Wrapping flex row for related actions with a consistent gap. Global (not limited to `.ef-site`), although it ships in the marketing stylesheet.",
       "data-ef-variant": "Marketing only (`.ef-site .ef-button[data-ef-variant=\"primary\"]`): filled with the action tone background and text, with its own hover tone.",
@@ -131,6 +148,7 @@ export default {
     { name: "Pressed", how: ":active (not :disabled)", description: "A darker mix of the secondary surface, applied instantly on press; release fades back." },
     { name: "Focus", how: ":focus-visible", description: "Two-tone focus ring (gap outline plus ring shadow) visible on light and dark surfaces." },
     { name: "Disabled", how: "disabled attribute", description: "Not focusable or activatable. In the application layer the only visual change is the absence of hover and press feedback; inside `.ef-site` the button becomes dashed with a not-allowed cursor." },
+    { name: "Pending", how: "aria-busy=\"true\" (with aria-disabled=\"true\")", description: "A busy ring before the unchanged-position label, progress cursor, no hover or press feedback. Under reduced motion the ring is static and dotted. The application owns the label text, duplicate-activation refusal and the completion or failure message." },
     { name: "Marketing primary", how: "data-ef-variant=\"primary\" inside .ef-site", description: "Filled action-tone button for the single most important marketing action." },
     { name: "Marketing unavailable", how: "aria-disabled=\"true\" inside .ef-site", description: "Dashed border and not-allowed cursor while remaining focusable." }
   ],
