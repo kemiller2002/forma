@@ -27,13 +27,13 @@
       "requirement": "MOT-010 (1), MOT-008",
       "phenomenon": "An object with perceived mass settling toward a stable state after activation or release.",
       "durationTokens": [
-        "--ef-motion-inertia-duration",
-        "--ef-motion-exit-duration",
-        "--ef-motion-press-duration"
+        "--forma-motion-inertia-duration",
+        "--forma-motion-exit-duration",
+        "--forma-motion-press-duration"
       ],
       "easingTokens": [
-        "--ef-motion-spring-easing",
-        "--ef-motion-damped-easing"
+        "--forma-motion-spring-easing",
+        "--forma-motion-damped-easing"
       ],
       "literalEasings": [],
       "reducedMotion": "Remove travel, overshoot, bounce and spatial compression; place the final state immediately or nearly immediately."
@@ -43,10 +43,10 @@
       "requirement": "MOT-010 (2), MOT-008",
       "phenomenon": "A small directional cue evoking vertical travel under uniform acceleration. Timing is independent of mass.",
       "durationTokens": [
-        "--ef-motion-gravity-duration"
+        "--forma-motion-gravity-duration"
       ],
       "easingTokens": [
-        "--ef-motion-damped-easing"
+        "--forma-motion-damped-easing"
       ],
       "literalEasings": [],
       "reducedMotion": "Remove spatial travel."
@@ -56,17 +56,17 @@
       "requirement": "MOT-010 (3), MOT-016",
       "phenomenon": "Continuous or repeated activity, or a bounded discrete sequence, whose primary parameter is a named period, velocity or cadence.",
       "durationTokens": [
-        "--ef-motion-cadence-period",
-        "--ef-motion-cadence-rotation-period",
-        "--ef-reveal-char-ms",
-        "--ef-reveal-row-ms",
-        "--ef-reveal-scale",
-        "--ef-len",
-        "--ef-row",
-        "--ef-col"
+        "--forma-motion-cadence-period",
+        "--forma-motion-cadence-rotation-period",
+        "--forma-reveal-char-ms",
+        "--forma-reveal-row-ms",
+        "--forma-reveal-scale",
+        "--forma-len",
+        "--forma-row",
+        "--forma-col"
       ],
       "easingTokens": [
-        "--ef-motion-cadence-easing"
+        "--forma-motion-cadence-easing"
       ],
       "literalEasings": [
         "linear",
@@ -79,10 +79,10 @@
       "requirement": "MOT-010 (4), MOT-002, MOT-017, MOT-023",
       "phenomenon": "The pointer, scroll position, native control value or application value is authoritative; the visual is a projection of it.",
       "durationTokens": [
-        "--ef-motion-direct-duration"
+        "--forma-motion-direct-duration"
       ],
       "easingTokens": [
-        "--ef-motion-direct-easing"
+        "--forma-motion-direct-easing"
       ],
       "literalEasings": [
         "linear"
@@ -94,39 +94,39 @@
       "requirement": "MOT-010 (5), MOT-026",
       "phenomenon": "Opacity, color, backdrop tint, blur and other non-spatial presentation changes. Never assigned fake mass, gravity or spring semantics.",
       "durationTokens": [
-        "--ef-motion-perceptual-duration",
-        "--ef-motion-perceptual-emphasis-duration"
+        "--forma-motion-perceptual-duration",
+        "--forma-motion-perceptual-emphasis-duration"
       ],
       "easingTokens": [
-        "--ef-motion-perceptual-easing",
-        "--ef-motion-fade-easing"
+        "--forma-motion-perceptual-easing",
+        "--forma-motion-fade-easing"
       ],
       "literalEasings": [],
       "reducedMotion": "May retain a brief non-spatial transition when it materially improves comprehension."
     }
   },
   "parameters": {
-    "--ef-motion-mass": "inertial mass m (preset input; never domain semantics)",
-    "--ef-motion-stiffness": "restoring stiffness k (preset input)",
-    "--ef-motion-damping": "damping ratio \u03b6 (preset input)",
-    "--ef-motion-distance": "normalized gravity travel distance s",
-    "--ef-motion-gravity": "normalized gravitational acceleration g",
-    "--ef-motion-base-duration": "dimensional scale that maps the normalized model to UI time"
+    "--forma-motion-mass": "inertial mass m (preset input; never domain semantics)",
+    "--forma-motion-stiffness": "restoring stiffness k (preset input)",
+    "--forma-motion-damping": "damping ratio \u03b6 (preset input)",
+    "--forma-motion-distance": "normalized gravity travel distance s",
+    "--forma-motion-gravity": "normalized gravitational acceleration g",
+    "--forma-motion-base-duration": "dimensional scale that maps the normalized model to UI time"
   },
   "legacyTokens": {
-    "--ef-motion-state-duration": {
-      "replacement": "--ef-motion-perceptual-duration",
+    "--forma-motion-state-duration": {
+      "replacement": "--forma-motion-perceptual-duration",
       "reason": "Derived from inertial duration (0.72 x T_inertia), so it assigns mass to non-spatial change, which MOT-010 (5) forbids. Retained as a compatibility variable for consumers; shipped Forma selectors migrate to the perceptual tokens."
     }
   },
   "genericTokens": [
-    "--ef-primitive-motion-duration-instant",
-    "--ef-primitive-motion-duration-fast",
-    "--ef-primitive-motion-duration-standard",
-    "--ef-primitive-motion-duration-slow",
-    "--ef-primitive-motion-easing-standard",
-    "--ef-primitive-motion-easing-enter",
-    "--ef-primitive-motion-easing-exit"
+    "--forma-primitive-motion-duration-instant",
+    "--forma-primitive-motion-duration-fast",
+    "--forma-primitive-motion-duration-standard",
+    "--forma-primitive-motion-duration-slow",
+    "--forma-primitive-motion-easing-standard",
+    "--forma-primitive-motion-easing-enter",
+    "--forma-primitive-motion-easing-exit"
   ],
   "spatialProperties": [
     "translate",

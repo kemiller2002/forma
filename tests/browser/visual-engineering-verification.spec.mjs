@@ -30,7 +30,7 @@ test("verification frame survives 200% text and text-spacing overrides", async (
   await page.setViewportSize({ width: 320, height: 900 });
   await page.setContent(doc(pattern("verification-frame"), `html{font-size:200%} *{line-height:1.5!important;letter-spacing:.12em!important;word-spacing:.16em!important}`));
   expect(await overflow(page)).toBeFalsy();
-  await expect(page.locator(".ef-verification-frame__act button").first()).toBeVisible();
+  await expect(page.locator(".forma-verification-frame__act button").first()).toBeVisible();
 });
 
 test("verification semantics survive forced colors and reduced motion", async ({ page }) => {
@@ -45,7 +45,7 @@ test("verification semantics survive forced colors and reduced motion", async ({
 
 test("critical values remain text and do not encode authority in CSS", async ({ page }) => {
   await page.setContent(doc(pattern("identifier")));
-  const value = page.locator(".ef-critical-value[data-ef-verify='true']");
+  const value = page.locator(".forma-critical-value[data-forma-verify='true']");
   await expect(value).toHaveText("$10,001.00");
   expect(await value.evaluate(el => el.tagName)).toBe("SPAN");
   expect(await value.getAttribute("role")).toBeNull();

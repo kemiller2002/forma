@@ -27,41 +27,41 @@ export default {
       id: "decimal-hours",
       title: "Hours in half-hour steps",
       description: "A decimal quantity with a unit. step=0.5 lets ArrowUp/ArrowDown move by half an hour, and inputmode=decimal shows a keypad with a decimal separator on phones. The label uses for/id and the description sits outside the label so it is announced as a description, not as part of the name.",
-      html: `<ef-numeric-stepper class="ef-component-tag">
-  <div class="ef-numeric-stepper">
-    <label class="ef-numeric-stepper__label" for="numeric-stepper-hours-input">Time spent (hours)</label>
+      html: `<forma-numeric-stepper class="forma-component-tag">
+  <div class="forma-numeric-stepper">
+    <label class="forma-numeric-stepper__label" for="numeric-stepper-hours-input">Time spent (hours)</label>
     <input id="numeric-stepper-hours-input" type="number" name="hours-spent" min="0" max="24" step="0.5" value="1.5" inputmode="decimal" aria-describedby="numeric-stepper-hours-description">
-    <span class="ef-field__description" id="numeric-stepper-hours-description">0 to 24, in steps of 0.5.</span>
+    <span class="forma-field__description" id="numeric-stepper-hours-description">0 to 24, in steps of 0.5.</span>
   </div>
-</ef-numeric-stepper>`
+</forma-numeric-stepper>`
     },
     {
       id: "out-of-range",
       title: "Value above the maximum",
       description: "The user typed 60 for a limit whose maximum is 50. The application marked the input invalid after the native check failed and linked a message stating the allowed range; the typed value is kept.",
-      html: `<ef-numeric-stepper class="ef-component-tag">
-  <div class="ef-numeric-stepper">
-    <label class="ef-numeric-stepper__label" for="numeric-stepper-retries-input">Maximum retries</label>
+      html: `<forma-numeric-stepper class="forma-component-tag">
+  <div class="forma-numeric-stepper">
+    <label class="forma-numeric-stepper__label" for="numeric-stepper-retries-input">Maximum retries</label>
     <input id="numeric-stepper-retries-input" type="number" name="max-retries" min="0" max="50" step="1" value="60" inputmode="numeric" required aria-invalid="true" aria-describedby="numeric-stepper-retries-description numeric-stepper-retries-error">
-    <span class="ef-field__description" id="numeric-stepper-retries-description">Whole number from 0 through 50.</span>
-    <p class="ef-validation-message" id="numeric-stepper-retries-error">
-      <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+    <span class="forma-field__description" id="numeric-stepper-retries-description">Whole number from 0 through 50.</span>
+    <p class="forma-validation-message" id="numeric-stepper-retries-error">
+      <span class="forma-validation-message__mark" aria-hidden="true">!</span>
       Enter 50 or fewer retries.
     </p>
   </div>
-</ef-numeric-stepper>`
+</forma-numeric-stepper>`
     },
     {
       id: "fixed-by-contract",
       title: "Fixed by contract",
       description: "A seat count set by the contract. readonly keeps the value focusable and submitted while the description explains where to change it.",
-      html: `<ef-numeric-stepper class="ef-component-tag">
-  <div class="ef-numeric-stepper">
-    <label class="ef-numeric-stepper__label" for="numeric-stepper-seats-input">Licensed seats</label>
+      html: `<forma-numeric-stepper class="forma-component-tag">
+  <div class="forma-numeric-stepper">
+    <label class="forma-numeric-stepper__label" for="numeric-stepper-seats-input">Licensed seats</label>
     <input id="numeric-stepper-seats-input" type="number" name="licensed-seats" min="1" max="1000" value="250" readonly aria-describedby="numeric-stepper-seats-description">
-    <span class="ef-field__description" id="numeric-stepper-seats-description">Set by your contract. Contact your account manager to change it.</span>
+    <span class="forma-field__description" id="numeric-stepper-seats-description">Set by your contract. Contact your account manager to change it.</span>
   </div>
-</ef-numeric-stepper>`
+</forma-numeric-stepper>`
     },
     {
       id: "mobile-quantities",
@@ -77,18 +77,18 @@ export default {
           "Orientation changes only reflow the text."
         ]
       },
-      html: `<ef-numeric-stepper class="ef-component-tag">
-  <div class="ef-stack">
-    <label class="ef-numeric-stepper">
-      <span class="ef-numeric-stepper__label">Replacement badges to print</span>
+      html: `<forma-numeric-stepper class="forma-component-tag">
+  <div class="forma-stack">
+    <label class="forma-numeric-stepper">
+      <span class="forma-numeric-stepper__label">Replacement badges to print</span>
       <input type="number" name="badge-quantity" min="1" max="20" step="1" value="1" inputmode="numeric">
     </label>
-    <label class="ef-numeric-stepper">
-      <span class="ef-numeric-stepper__label">Visitor passes for the event day</span>
+    <label class="forma-numeric-stepper">
+      <span class="forma-numeric-stepper__label">Visitor passes for the event day</span>
       <input type="number" name="visitor-passes" min="0" max="100" step="5" value="10" inputmode="numeric">
     </label>
   </div>
-</ef-numeric-stepper>`
+</forma-numeric-stepper>`
     }
   ],
   api: {
@@ -102,13 +102,13 @@ export default {
       { name: "name", on: "input", values: "string", default: "—", description: "Form field name." },
       { name: "required", on: "input", values: "boolean", default: "absent", description: "Blocks submission while empty." },
       { name: "readonly", on: "input", values: "boolean", default: "absent", description: "Focusable and submitted but not editable or steppable." },
-      { name: "for", on: "label.ef-numeric-stepper__label", values: "id of the input", default: "—", description: "Use when the root is not the label, so the description can stay out of the accessible name." },
+      { name: "for", on: "label.forma-numeric-stepper__label", values: "id of the input", default: "—", description: "Use when the root is not the label, so the description can stay out of the accessible name." },
       { name: "aria-describedby", on: "input", values: "id list", default: "—", description: "Links the range description and any validation message." },
       { name: "aria-invalid", on: "input", values: "true", default: "absent", description: "Set by the application while a validation message is shown." }
     ],
     hooks: {
-      "ef-numeric-stepper": "Root grid (label element or wrapper) stacking label, input and description with a 0.5rem gap. Constrains a descendant number input to 10rem with tabular numerals.",
-      "ef-numeric-stepper__label": "Visible label text in bold."
+      "forma-numeric-stepper": "Root grid (label element or wrapper) stacking label, input and description with a 0.5rem gap. Constrains a descendant number input to 10rem with tabular numerals.",
+      "forma-numeric-stepper__label": "Visible label text in bold."
     },
     keyboard: [
       { keys: "ArrowUp / ArrowDown", action: "Increments or decrements by step, clamped to min and max (native)." },
@@ -123,7 +123,7 @@ export default {
   states: [
     { name: "Default", how: "value within bounds", description: "Compact bordered input with tabular numerals." },
     { name: "Focus", how: ":focus-visible", description: "Foundation two-tone focus ring." },
-    { name: "Invalid", how: "aria-invalid=\"true\" plus a linked .ef-validation-message", description: "Error line with a non-color mark. Native :invalid (out of range or off step) is not restyled by Forma." },
+    { name: "Invalid", how: "aria-invalid=\"true\" plus a linked .forma-validation-message", description: "Error line with a non-color mark. Native :invalid (out of range or off step) is not restyled by Forma." },
     { name: "Read-only", how: "readonly attribute", description: "Native behavior with no distinct styling; explain it in the description." },
     { name: "Disabled", how: "disabled attribute", description: "Skipped by focus and not submitted; Forma adds no dimmed style." }
   ],

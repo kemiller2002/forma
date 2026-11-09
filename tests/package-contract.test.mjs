@@ -38,8 +38,8 @@ test("Forma is a versioned public-consumer package", () => {
     "dist/components.css",
     "dist/assessment.css",
     "dist/skins.css",
-    "dist/brands/echelon.css",
     "dist/brands/example-harbor.css",
+    "dist/brands/example-orchard.css",
     "dist/brands/index.json",
     "schemas/brand-manifest.schema.json",
     "docs/BRANDING.md",
@@ -53,7 +53,7 @@ test("Forma is a versioned public-consumer package", () => {
     "patterns/data-grid.html",
     "patterns/work-queue.html",
     "patterns/form.html",
-    "tokens/echelon.tokens.json",
+    "tokens/forma.tokens.json",
     "figma/component-contracts.json",
     "dist/icons/add.svg",
     "dist/icons/workflow.svg",
@@ -91,8 +91,8 @@ test("npm package contract contains the expected consumer surface", () => {
     "dist/components.css",
     "dist/assessment.css",
     "dist/skins.css",
-    "dist/brands/echelon.css",
     "dist/brands/example-harbor.css",
+    "dist/brands/example-orchard.css",
     "dist/brands/index.json",
     "schemas/brand-manifest.schema.json",
     "docs/BRANDING.md",
@@ -106,7 +106,7 @@ test("npm package contract contains the expected consumer surface", () => {
     "patterns/data-grid.html",
     "patterns/work-queue.html",
     "patterns/form.html",
-    "tokens/echelon.tokens.json",
+    "tokens/forma.tokens.json",
     "figma/component-contracts.json",
     "dist/icons/add.svg",
     "dist/icons/workflow.svg",
@@ -175,7 +175,7 @@ test("release workflow watches versioned icon and site assets without weakening 
     "package.json", "package-lock.json",
     "icons/**", "catalog/icons.mjs", "catalog/icons/**",
     "tools/icons/**", "tools/catalog/render-icons.mjs", "tools/build-site.mjs",
-    "examples/echelon-marketing-site/forma.lock",
+    "examples/marketing-site/forma.lock",
     "examples/design/**", "tools/design-contract/**", "tools/color-contract/**", "tools/TokenValidator/**",
     "docs/ICONS.md", "docs/COLOR.md", "tests/icon-docs.test.mjs", "tests/color-contract.test.mjs",
     ".github/workflows/release-forma.yml"
@@ -189,3 +189,14 @@ test("release workflow watches versioned icon and site assets without weakening 
   assert.ok(!workflow.includes('gh release upload "$RELEASE_TAG" "$ARCHIVE"'),
     "a published stable release must never be overwritten");
 });
+
+// FORMA-1.0.0-REVIEW-01 R6: exactly one workflow publishes to npm, so a merge
+// cannot race two publishes of the same version.
+test("only publish.yml publishes to npm, and only a version npm does not have", () => {
+  const release = fs.readFileSync(".github/workflows/release-forma.yml", "utf8");
+  const publish = fs.readFileSync(".github/workflows/publish.yml", "utf8");
+  assert.doesNotMatch(release.replace(/^\s*#.*$/gm, ""), /npm publish/, "release-forma.yml must leave npm to publish.yml");
+  const step = publish.slice(publish.indexOf("Publish committed version when it is new"));
+  assert.ok(step.indexOf("npm view") >= 0 && step.indexOf("npm view") < step.indexOf("npm publish"), "publish.yml must check npm before publishing");
+});
+

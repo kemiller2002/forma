@@ -3,7 +3,7 @@ export default {
   category: "assessment",
   behavior: "Native HTML",
   summary: "Repeated single-choice scales arranged as a matrix while retaining per-row radio semantics.",
-  owns: ["ef-matrix"],
+  owns: ["forma-matrix"],
   purpose: {
     description: "A single-choice matrix asks the same scale question about several items. It looks like a table, but it is built from nested fieldsets: the outer fieldset names the whole set and each row is its own fieldset with its own radio group. Screen readers therefore announce the row prompt and the choice label for every radio, and each row validates independently. On narrow screens the rows decompose into ordinary stacked controls rather than relying on horizontal scrolling.",
     useWhen: [
@@ -29,33 +29,33 @@ export default {
       id: "partially-answered",
       title: "Partially answered with a row error",
       description: "Three satisfaction rows after an attempted submit. Two are answered; the unanswered row has aria-invalid and a validation message referenced from its fieldset.",
-      html: `<ef-matrix-single class="ef-component-tag">
-  <fieldset class="ef-matrix">
-    <legend class="ef-matrix__legend">How satisfied are you with each tool?</legend>
-    <div class="ef-matrix__rows">
-      <fieldset class="ef-matrix__row">
+      html: `<forma-matrix-single class="forma-component-tag">
+  <fieldset class="forma-matrix">
+    <legend class="forma-matrix__legend">How satisfied are you with each tool?</legend>
+    <div class="forma-matrix__rows">
+      <fieldset class="forma-matrix__row">
         <legend>Issue tracker</legend>
-        <div class="ef-matrix__choices">
+        <div class="forma-matrix__choices">
           <label><input type="radio" name="matrix-partial-tracker" value="1" required><span>Unsatisfied</span></label>
           <label><input type="radio" name="matrix-partial-tracker" value="2"><span>Neutral</span></label>
           <label><input type="radio" name="matrix-partial-tracker" value="3" checked><span>Satisfied</span></label>
         </div>
       </fieldset>
-      <fieldset class="ef-matrix__row" aria-describedby="matrix-partial-ci-error">
+      <fieldset class="forma-matrix__row" aria-describedby="matrix-partial-ci-error">
         <legend>Continuous integration</legend>
-        <div class="ef-matrix__choices">
+        <div class="forma-matrix__choices">
           <label><input type="radio" name="matrix-partial-ci" value="1" required aria-invalid="true"><span>Unsatisfied</span></label>
           <label><input type="radio" name="matrix-partial-ci" value="2" aria-invalid="true"><span>Neutral</span></label>
           <label><input type="radio" name="matrix-partial-ci" value="3" aria-invalid="true"><span>Satisfied</span></label>
         </div>
       </fieldset>
-      <p class="ef-validation-message" id="matrix-partial-ci-error">
-        <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+      <p class="forma-validation-message" id="matrix-partial-ci-error">
+        <span class="forma-validation-message__mark" aria-hidden="true">!</span>
         Rate continuous integration before continuing.
       </p>
-      <fieldset class="ef-matrix__row">
+      <fieldset class="forma-matrix__row">
         <legend>Chat</legend>
-        <div class="ef-matrix__choices">
+        <div class="forma-matrix__choices">
           <label><input type="radio" name="matrix-partial-chat" value="1" required checked><span>Unsatisfied</span></label>
           <label><input type="radio" name="matrix-partial-chat" value="2"><span>Neutral</span></label>
           <label><input type="radio" name="matrix-partial-chat" value="3"><span>Satisfied</span></label>
@@ -63,20 +63,20 @@ export default {
       </fieldset>
     </div>
   </fieldset>
-</ef-matrix-single>`
+</forma-matrix-single>`
     },
     {
       id: "long-row-prompts",
       title: "Long row prompts with Not applicable",
       description: "Row prompts that wrap over several lines, and a fifth Not applicable column that is a real answer in each row. The prompt column keeps a 10rem minimum and wraps.",
-      html: `<ef-matrix-single class="ef-component-tag">
-  <fieldset class="ef-matrix">
-    <legend class="ef-matrix__legend">How consistently does your team follow these practices?</legend>
-    <p class="ef-field__description">Choose Not applicable only when the practice does not apply to your service.</p>
-    <div class="ef-matrix__rows">
-      <fieldset class="ef-matrix__row">
+      html: `<forma-matrix-single class="forma-component-tag">
+  <fieldset class="forma-matrix">
+    <legend class="forma-matrix__legend">How consistently does your team follow these practices?</legend>
+    <p class="forma-field__description">Choose Not applicable only when the practice does not apply to your service.</p>
+    <div class="forma-matrix__rows">
+      <fieldset class="forma-matrix__row">
         <legend>Every schema migration is reviewed and has a tested rollback path</legend>
-        <div class="ef-matrix__choices">
+        <div class="forma-matrix__choices">
           <label><input type="radio" name="matrix-long-migrations" value="never" required><span>Never</span></label>
           <label><input type="radio" name="matrix-long-migrations" value="sometimes"><span>Sometimes</span></label>
           <label><input type="radio" name="matrix-long-migrations" value="usually"><span>Usually</span></label>
@@ -84,9 +84,9 @@ export default {
           <label><input type="radio" name="matrix-long-migrations" value="na"><span>Not applicable</span></label>
         </div>
       </fieldset>
-      <fieldset class="ef-matrix__row">
+      <fieldset class="forma-matrix__row">
         <legend>Feature flags older than 90 days are removed or made permanent</legend>
-        <div class="ef-matrix__choices">
+        <div class="forma-matrix__choices">
           <label><input type="radio" name="matrix-long-flags" value="never" required><span>Never</span></label>
           <label><input type="radio" name="matrix-long-flags" value="sometimes"><span>Sometimes</span></label>
           <label><input type="radio" name="matrix-long-flags" value="usually"><span>Usually</span></label>
@@ -96,7 +96,7 @@ export default {
       </fieldset>
     </div>
   </fieldset>
-</ef-matrix-single>`
+</forma-matrix-single>`
     },
     {
       id: "mobile-decomposed",
@@ -111,21 +111,21 @@ export default {
           "There is no horizontal scroll at 320px; adding columns lengthens the list instead."
         ]
       },
-      html: `<ef-matrix-single class="ef-component-tag">
-  <fieldset class="ef-matrix">
-    <legend class="ef-matrix__legend">Rate each capability.</legend>
-    <div class="ef-matrix__rows">
-      <fieldset class="ef-matrix__row">
+      html: `<forma-matrix-single class="forma-component-tag">
+  <fieldset class="forma-matrix">
+    <legend class="forma-matrix__legend">Rate each capability.</legend>
+    <div class="forma-matrix__rows">
+      <fieldset class="forma-matrix__row">
         <legend>Alerting</legend>
-        <div class="ef-matrix__choices">
+        <div class="forma-matrix__choices">
           <label><input type="radio" name="matrix-mobile-alerting" value="1" required><span>Initial</span></label>
           <label><input type="radio" name="matrix-mobile-alerting" value="2"><span>Developing</span></label>
           <label><input type="radio" name="matrix-mobile-alerting" value="3"><span>Established</span></label>
         </div>
       </fieldset>
-      <fieldset class="ef-matrix__row">
+      <fieldset class="forma-matrix__row">
         <legend>Runbooks</legend>
-        <div class="ef-matrix__choices">
+        <div class="forma-matrix__choices">
           <label><input type="radio" name="matrix-mobile-runbooks" value="1" required><span>Initial</span></label>
           <label><input type="radio" name="matrix-mobile-runbooks" value="2" checked><span>Developing</span></label>
           <label><input type="radio" name="matrix-mobile-runbooks" value="3"><span>Established</span></label>
@@ -133,7 +133,7 @@ export default {
       </fieldset>
     </div>
   </fieldset>
-</ef-matrix-single>`
+</forma-matrix-single>`
     }
   ],
   api: {
@@ -147,11 +147,11 @@ export default {
       { name: "aria-describedby", on: "row fieldset", values: "id of an error or help element", default: "—", description: "Associates a row-level error or help text with that row." }
     ],
     hooks: {
-      "ef-matrix": "Outer fieldset for the whole set, with browser border and padding removed.",
-      "ef-matrix__legend": "Question text for the whole matrix.",
-      "ef-matrix__rows": "Grid stacking the rows with a small gap.",
-      "ef-matrix__row": "Bordered fieldset for one item: prompt column plus choices column. Its legend is floated into the first column.",
-      "ef-matrix__choices": "Equal columns of at least 5rem for the row's choices; each label is a bordered 44px-tall cell and the radio is visually hidden."
+      "forma-matrix": "Outer fieldset for the whole set, with browser border and padding removed.",
+      "forma-matrix__legend": "Question text for the whole matrix.",
+      "forma-matrix__rows": "Grid stacking the rows with a small gap.",
+      "forma-matrix__row": "Bordered fieldset for one item: prompt column plus choices column. Its legend is floated into the first column.",
+      "forma-matrix__choices": "Equal columns of at least 5rem for the row's choices; each label is a bordered 44px-tall cell and the radio is visually hidden."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves from one row's radio group to the next; each row is one tab stop." },

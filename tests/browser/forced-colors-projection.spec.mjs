@@ -5,18 +5,18 @@ import path from "node:path";
 // FORMA-A11Y-001: forced-colors token projection and surface text contrast.
 const root = process.cwd();
 const css = fs.readFileSync(path.join(root, "dist", "all.css"), "utf8");
-const brand = fs.readFileSync(path.join(root, "dist", "brands", "echelon.css"), "utf8");
+const brand = fs.readFileSync(path.join(root, "dist", "brands", "example-orchard.css"), "utf8");
 const matrix = JSON.parse(fs.readFileSync(path.join(root, "catalog", "theme-layout-matrix.json"), "utf8"));
 
-const doc = (theme, body) => `<!doctype html><html lang="en"${theme.selector ? ` data-ef-theme="${theme.selector}"` : ""}><head><meta charset="utf-8"><title>Projection</title><style>${css}</style><style>${brand}</style></head><body>${body}</body></html>`;
+const doc = (theme, body) => `<!doctype html><html lang="en"${theme.selector ? ` data-forma-theme="${theme.selector}"` : ""}><head><meta charset="utf-8"><title>Projection</title><style>${css}</style><style>${brand}</style></head><body>${body}</body></html>`;
 
 const probe = `
   <main>
     <h1>Heading</h1>
     <p>Body text</p>
-    <article class="ef-surface"><h2>Card</h2><p>Secondary surface text</p></article>
-    <div data-ef-brand="echelon"><p id="branded">Branded text</p></div>
-    <span class="ef-status-lozenge" data-state="attention">Attention</span>
+    <article class="forma-surface"><h2>Card</h2><p>Secondary surface text</p></article>
+    <div data-forma-brand="example-orchard"><p id="branded">Branded text</p></div>
+    <span class="forma-status-lozenge" data-state="attention">Attention</span>
   </main>`;
 
 const luminance = (rgb) => {
@@ -35,7 +35,7 @@ for (const theme of matrix.implementedThemes) {
   test(`${theme.id}: forced colors paint text in the forced system color`, async ({ page }) => {
     await page.emulateMedia({ forcedColors: "active" });
     await page.setContent(doc(theme, probe));
-    const samples = await page.locator("h1, h2, p, .ef-status-lozenge").evaluateAll((elements) =>
+    const samples = await page.locator("h1, h2, p, .forma-status-lozenge").evaluateAll((elements) =>
       elements.map((element) => {
         const style = getComputedStyle(element);
         const tokens = getComputedStyle(element);
@@ -43,8 +43,8 @@ for (const theme of matrix.implementedThemes) {
           text: element.textContent.trim(),
           color: style.color,
           fill: style.webkitTextFillColor,
-          textToken: tokens.getPropertyValue("--ef-color-text-secondary").trim(),
-          surfaceToken: tokens.getPropertyValue("--ef-color-surface-secondary").trim()
+          textToken: tokens.getPropertyValue("--forma-color-text-secondary").trim(),
+          surfaceToken: tokens.getPropertyValue("--forma-color-surface-secondary").trim()
         };
       }));
     for (const sample of samples) {
@@ -55,11 +55,11 @@ for (const theme of matrix.implementedThemes) {
     }
   });
 
-  test(`${theme.id}: text inside .ef-surface meets 4.5:1 on the secondary surface`, async ({ page }) => {
+  test(`${theme.id}: text inside .forma-surface meets 4.5:1 on the secondary surface`, async ({ page }) => {
     await page.setContent(doc(theme, probe));
-    const pair = await page.locator(".ef-surface p").evaluate((element) => ({
+    const pair = await page.locator(".forma-surface p").evaluate((element) => ({
       color: getComputedStyle(element).color,
-      background: getComputedStyle(element.closest(".ef-surface")).backgroundColor
+      background: getComputedStyle(element.closest(".forma-surface")).backgroundColor
     }));
     expect(contrast(pair.color, pair.background)).toBeGreaterThanOrEqual(4.5);
   });

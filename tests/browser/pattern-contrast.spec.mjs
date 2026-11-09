@@ -19,7 +19,7 @@ import path from "node:path";
 const root = process.cwd();
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 
-const tokens = JSON.parse(read("tokens/echelon.tokens.json"));
+const tokens = JSON.parse(read("tokens/forma.tokens.json"));
 const brands = JSON.parse(read("dist/brands/index.json")).brands;
 const stylesheet = [
   read("dist/all.css"),
@@ -31,15 +31,15 @@ const patterns = fs.readdirSync(path.join(root, "patterns"))
   .sort();
 
 // Documented compositions consumers build from those patterns: a field hint
-// (.ef-field__description) and a link inside .ef-surface, and an inline fault
+// (.forma-field__description) and a link inside .forma-surface, and an inline fault
 // inside a surface. Vigila's #token-note hint is the first of these.
 const compositions = {
-  "composition: field hint on .ef-surface": `<section class="ef-surface"><h2>Access token</h2><p>Paste the token issued by your administrator. <a href="#rotate">Rotate tokens</a>.</p><div class="ef-field"><label class="ef-field__label" for="token">Token</label><span class="ef-field__description" id="token-note">Tokens expire after 30 days.</span><input id="token" aria-describedby="token-note"></div></section>`,
-  "composition: kicker on .ef-surface": `<section class="ef-surface"><p class="ef-component-kicker">Evidence</p><h2>Boundary review</h2><p>Reviewed against the current boundary.</p></section>`,
-  "composition: inline fault on .ef-surface": `<section class="ef-surface">${read("patterns/fault-inline.html")}</section>`
+  "composition: field hint on .forma-surface": `<section class="forma-surface"><h2>Access token</h2><p>Paste the token issued by your administrator. <a href="#rotate">Rotate tokens</a>.</p><div class="forma-field"><label class="forma-field__label" for="token">Token</label><span class="forma-field__description" id="token-note">Tokens expire after 30 days.</span><input id="token" aria-describedby="token-note"></div></section>`,
+  "composition: kicker on .forma-surface": `<section class="forma-surface"><p class="forma-component-kicker">Evidence</p><h2>Boundary review</h2><p>Reviewed against the current boundary.</p></section>`,
+  "composition: inline fault on .forma-surface": `<section class="forma-surface">${read("patterns/fault-inline.html")}</section>`
 };
 
-const theme = (id, scheme = "light") => ({ id, attributes: id === "light" ? {} : { "data-ef-theme": id }, media: { colorScheme: scheme } });
+const theme = (id, scheme = "light") => ({ id, attributes: id === "light" ? {} : { "data-forma-theme": id }, media: { colorScheme: scheme } });
 const isDark = (id) => /dark/.test(id);
 
 // light is the :root default; dark is reachable both by attribute and by the
@@ -53,17 +53,17 @@ const contexts = [
     .map((id) => theme(id, isDark(id) ? "dark" : "light")),
   ...brands.flatMap((brand) => ["light", "dark"].map((scheme) => ({
     id: `brand ${brand.id} ${scheme}`,
-    attributes: { "data-ef-brand": brand.id, "data-ef-theme": scheme },
+    attributes: { "data-forma-brand": brand.id, "data-forma-theme": scheme },
     media: { colorScheme: scheme }
   }))),
   ...["light", "dark"].map((scheme) => ({
     id: `forced-colors ${scheme}`,
-    attributes: scheme === "dark" ? { "data-ef-theme": "dark" } : {},
+    attributes: scheme === "dark" ? { "data-forma-theme": "dark" } : {},
     media: { colorScheme: scheme, forcedColors: "active" }
   })),
   ...brands.map((brand) => ({
     id: `forced-colors brand ${brand.id}`,
-    attributes: { "data-ef-brand": brand.id },
+    attributes: { "data-forma-brand": brand.id },
     media: { colorScheme: "light", forcedColors: "active" }
   }))
 ];
@@ -99,7 +99,7 @@ test.describe("documented pattern contrast", () => {
   test("the harness covers every pattern, theme and brand", () => {
     expect(patterns.length).toBeGreaterThan(100);
     expect(contexts.map((context) => context.id)).toEqual(expect.arrayContaining(["light", "dark", "forced-colors light", "forced-colors dark"]));
-    for (const brand of brands) expect(contexts.some((context) => context.attributes["data-ef-brand"] === brand.id)).toBe(true);
+    for (const brand of brands) expect(contexts.some((context) => context.attributes["data-forma-brand"] === brand.id)).toBe(true);
   });
 
   for (const context of contexts) {

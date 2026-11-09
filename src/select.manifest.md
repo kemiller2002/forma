@@ -14,7 +14,7 @@ Style an ordinary single-value native `select` while preserving platform picker 
 
 ## Interfaces
 
-- Inbound: native select/options, Forma class structure, optional `data-ef-motion-weight="light|standard|heavy"`
+- Inbound: native select/options, Forma class structure, optional `data-forma-motion-weight="light|standard|heavy"`
 - Outbound: native select value and events
 
 ## Motion

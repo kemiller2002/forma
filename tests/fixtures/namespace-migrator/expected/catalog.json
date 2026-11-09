@@ -1,0 +1,1 @@
+{ "owns": ["forma-icon"], "tag": "forma-component-tag", "hook": "--forma-icon-size", "attr": "data-forma-size", "keep": ["ref-link", "chef-x", "--ref-y", "beef-z"] }

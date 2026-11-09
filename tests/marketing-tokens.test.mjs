@@ -6,9 +6,11 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 
 const compiler = "tools/TokenCompiler/TokenCompiler.fsproj";
-const themeSource = "themes/echelon/marketing.tokens.json";
-const coreSource = "tokens/echelon.tokens.json";
-const themeCss = fs.readFileSync("build/marketing/echelon-marketing.tokens.css", "utf8");
+// Forma ships no organization's marketing theme (EDS-ADR-002). An external
+// theme compiles its role choices with TokenCompiler --reference against
+// Forma's core tokens; this neutral fixture exercises that path.
+const themeSource = "tests/fixtures/marketing/example-marketing.tokens.json";
+const coreSource = "tokens/forma.tokens.json";
 const roles = fs.readFileSync("src/marketing/roles.css", "utf8");
 
 // The marketing role contract (requirements/MARKETING-PRESENTATION.md MKT-TOK).
@@ -19,7 +21,7 @@ const colorRoles = [
   "border-subtle", "border-functional",
   "status-success", "status-warning", "status-danger", "status-info",
   "focus-ring", "focus-gap"
-].map(name => `--ef-color-${name}`);
+].map(name => `--forma-color-${name}`);
 
 const roleTokens = [
   "type-family-body", "type-family-display", "type-family-mono",
@@ -34,7 +36,7 @@ const roleTokens = [
   "shape-radius", "shape-border-width", "shape-border-width-accent",
   "effect-shadow-raised", "effect-transition-duration", "effect-transition-easing",
   "focus-ring-width", "focus-ring-offset", "focus-halo-width"
-].map(name => `--ef-${name}`);
+].map(name => `--forma-${name}`);
 
 function block(css, selector) {
   const start = css.indexOf(selector + " {");
@@ -46,16 +48,23 @@ function compile(source, output) {
   return spawnSync("dotnet", ["run", "--project", compiler, "--", source, output, "--reference", coreSource], { encoding: "utf8" });
 }
 
-test("Echelon Marketing Theme supplies every semantic color role in light and dark", () => {
-  const light = block(themeCss, ':root, [data-ef-theme="light"]');
-  const dark = block(themeCss, '[data-ef-theme="dark"]');
+const themeCss = (() => {
+  const output = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "forma-theme-")), "example-marketing.tokens.css");
+  const result = compile(themeSource, output);
+  assert.equal(result.status, 0, result.stderr);
+  return fs.readFileSync(output, "utf8");
+})();
+
+test("an external marketing theme supplies every semantic color role in light and dark", () => {
+  const light = block(themeCss, ':root, [data-forma-theme="light"]');
+  const dark = block(themeCss, '[data-forma-theme="dark"]');
   for (const role of colorRoles) {
     assert.match(light, new RegExp(`${role}: #[0-9a-f]{6};`), `light theme lacks ${role}`);
     assert.match(dark, new RegExp(`${role}: #[0-9a-f]{6};`), `dark theme lacks ${role}`);
   }
 });
 
-test("Echelon Marketing Theme supplies every typography, layout, shape, and effect role", () => {
+test("an external marketing theme supplies every typography, layout, shape, and effect role", () => {
   const neutral = block(themeCss, "  :root");
   for (const token of roleTokens) {
     assert.match(neutral, new RegExp(`${token}: [^;]+;`), `theme lacks ${token}`);
@@ -64,19 +73,19 @@ test("Echelon Marketing Theme supplies every typography, layout, shape, and effe
 
 // FORMA-MOT-008: marketing state changes are perceptual interpolation, so the
 // theme and the generic defaults must agree with Forma's perceptual timing
-// (--ef-motion-perceptual-duration derives from the fast primitive).
+// (--forma-motion-perceptual-duration derives from the fast primitive).
 test("marketing transition roles use the perceptual timing, not generic standard timing", () => {
   const primitive = (name) => fs.readFileSync("dist/tokens.css", "utf8").match(new RegExp(`${name}: ([^;]+);`))[1];
   const neutral = block(themeCss, "  :root");
-  assert.match(neutral, new RegExp(`--ef-effect-transition-duration: ${primitive("--ef-primitive-motion-duration-fast")};`));
-  assert.match(neutral, new RegExp(`--ef-effect-transition-easing: ${primitive("--ef-primitive-motion-easing-standard").replace(/[()]/g, "\\$&")};`));
-  assert.match(roles, /--ef-effect-transition-duration: var\(--ef-motion-perceptual-duration, 120ms\);/);
-  assert.match(roles, /--ef-effect-transition-easing: var\(--ef-motion-perceptual-easing, cubic-bezier\(0\.2, 0, 0, 1\)\);/);
+  assert.match(neutral, new RegExp(`--forma-effect-transition-duration: ${primitive("--forma-primitive-motion-duration-fast")};`));
+  assert.match(neutral, new RegExp(`--forma-effect-transition-easing: ${primitive("--forma-primitive-motion-easing-standard").replace(/[()]/g, "\\$&")};`));
+  assert.match(roles, /--forma-effect-transition-duration: var\(--forma-motion-perceptual-duration, 120ms\);/);
+  assert.match(roles, /--forma-effect-transition-easing: var\(--forma-motion-perceptual-easing, cubic-bezier\(0\.2, 0, 0, 1\)\);/);
 });
 
 test("generic role defaults cover every role so the marketing layer works without a theme", () => {
-  for (const token of [...roleTokens, "--ef-color-surface-elevated", "--ef-color-text-muted", "--ef-color-accent-hover",
-    "--ef-color-status-success", "--ef-color-status-warning", "--ef-color-status-danger", "--ef-color-status-info"]) {
+  for (const token of [...roleTokens, "--forma-color-surface-elevated", "--forma-color-text-muted", "--forma-color-accent-hover",
+    "--forma-color-status-success", "--forma-color-status-warning", "--forma-color-status-danger", "--forma-color-status-info"]) {
     assert.match(roles, new RegExp(`${token}:`), `roles.css has no default for ${token}`);
   }
   assert.doesNotMatch(roles, /#[0-9a-fA-F]{3,8}\b/, "role defaults must derive from tokens, not literals");
@@ -94,14 +103,14 @@ test("theme source owns choices, not raw values: every value is an alias", () =>
 });
 
 test("fluid type keeps a rem term so text scales with zoom and user font size", () => {
-  for (const [, value] of themeCss.matchAll(/--ef-type-size-[a-z0-9-]+: (clamp\([^;]+\));/g)) {
+  for (const [, value] of themeCss.matchAll(/--forma-type-size-[a-z0-9-]+: (clamp\([^;]+\));/g)) {
     const preferred = value.split(",")[1];
     assert.match(preferred, /rem/, `${value} scales with viewport only`);
   }
 });
 
 test("theme compilation is deterministic", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-theme-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-theme-"));
   const a = compile(themeSource, path.join(dir, "a.css"));
   const b = compile(themeSource, path.join(dir, "b.css"));
   assert.equal(a.status, 0, a.stderr);
@@ -111,9 +120,9 @@ test("theme compilation is deterministic", () => {
 });
 
 test("a theme status color below 4.5:1 is rejected at compile time", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-theme-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-theme-"));
   const data = JSON.parse(fs.readFileSync(themeSource, "utf8"));
-  data.semantic.light.color.status.success.$value = "{primitive.color.stone}";
+  data.semantic.light.color.status.success.$value = "{primitive.color.neutral-100}";
   const source = path.join(dir, "unsafe.json");
   fs.writeFileSync(source, JSON.stringify(data));
   const result = compile(source, path.join(dir, "unsafe.css"));
@@ -122,7 +131,7 @@ test("a theme status color below 4.5:1 is rejected at compile time", () => {
 });
 
 test("a theme cannot alias a token that does not exist", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-theme-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-theme-"));
   const data = JSON.parse(fs.readFileSync(themeSource, "utf8"));
   data.type.size.h1.$value = "{primitive.font-size-fluid.display-9}";
   const source = path.join(dir, "missing.json");
@@ -133,10 +142,10 @@ test("a theme cannot alias a token that does not exist", () => {
 });
 
 test("no unresolved custom-property references in the distributed marketing CSS", () => {
-  for (const file of ["forma-marketing.css", "forma-echelon-marketing.css"]) {
+  for (const file of ["forma-marketing.css", "forma-all.css"]) {
     const css = fs.readFileSync(path.join("dist/marketing", file), "utf8");
-    const defined = new Set([...css.matchAll(/(--ef-[a-z0-9-]+)\s*:/g)].map(m => m[1]));
-    const unresolved = [...css.matchAll(/var\(\s*(--ef-[a-z0-9-]+)\s*(,)?/g)]
+    const defined = new Set([...css.matchAll(/(--forma-[a-z0-9-]+)\s*:/g)].map(m => m[1]));
+    const unresolved = [...css.matchAll(/var\(\s*(--forma-[a-z0-9-]+)\s*(,)?/g)]
       .filter(([, name, fallback]) => !defined.has(name) && !fallback)
       .map(([, name]) => name);
     assert.deepEqual([...new Set(unresolved)], [], `${file} references undefined tokens`);

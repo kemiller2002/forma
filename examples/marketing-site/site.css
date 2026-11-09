@@ -1,0 +1,23 @@
+/*
+  Site-local CSS for the marketing reference fixture (Tidal Systems, a
+  fictional organization).
+
+  Everything shared (tokens, typography, header, navigation, hero, sections,
+  cards, buttons, CTA, footer, responsive and accessibility behavior) comes
+  from Forma. Local CSS is limited to identity or content that is unique to
+  this site. This file is checked by tools/SiteCssPolicy in Forma's tests.
+*/
+
+/* Unique content: the founder's signature line on the About page. */
+.site-signature {
+  font-family: var(--forma-type-family-display);
+  font-size: var(--forma-type-size-lead);
+  font-style: italic;
+}
+
+/* Product identity: product pages retarget the accent to the validated
+   secondary accent role. Identity tokens may only reference other Forma tokens. */
+[data-forma-layout="product"] {
+  --forma-color-accent-primary: var(--forma-color-accent-secondary);
+  --forma-color-accent-hover: var(--forma-color-text-primary);
+}

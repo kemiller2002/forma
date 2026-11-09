@@ -19,7 +19,7 @@ test("the contract is published by the package", () => {
 });
 
 test("every class the contract names exists in the diagram CSS", () => {
-  const classes = JSON.stringify(contract.elements).match(/"(ef-diagram[a-z_-]*)"/g).map((value) => value.slice(1, -1));
+  const classes = JSON.stringify(contract.elements).match(/"(forma-diagram[a-z_-]*)"/g).map((value) => value.slice(1, -1));
   for (const name of new Set(classes)) {
     assert.match(diagramCss, new RegExp(`\\.${name}(?![a-z_-])`), name);
   }
@@ -27,11 +27,11 @@ test("every class the contract names exists in the diagram CSS", () => {
 
 test("shape, line, group and value-state vocabularies match the CSS hooks", () => {
   const { node, connector, group, valueState } = contract.elements;
-  assert.deepEqual(new Set(node.shapes.filter((shape) => shape !== node.defaultShape)), attributeValues("data-ef-shape"));
-  assert.deepEqual(new Set(connector.lineStyles.filter((style) => style !== connector.defaultLineStyle)), attributeValues("data-ef-line"));
-  assert.deepEqual(new Set(group.lineStyles.filter((style) => style !== "solid")), attributeValues("data-ef-line"));
-  for (const variant of attributeValues("data-ef-group")) assert.ok(group.variants.includes(variant), variant);
-  const styledStates = attributeValues("data-ef-value-state");
+  assert.deepEqual(new Set(node.shapes.filter((shape) => shape !== node.defaultShape)), attributeValues("data-forma-shape"));
+  assert.deepEqual(new Set(connector.lineStyles.filter((style) => style !== connector.defaultLineStyle)), attributeValues("data-forma-line"));
+  assert.deepEqual(new Set(group.lineStyles.filter((style) => style !== "solid")), attributeValues("data-forma-line"));
+  for (const variant of attributeValues("data-forma-group")) assert.ok(group.variants.includes(variant), variant);
+  const styledStates = attributeValues("data-forma-value-state");
   for (const state of styledStates) assert.ok(valueState.states.includes(state), state);
 });
 
@@ -40,8 +40,8 @@ test("every authored input custom property in the CSS is declared, and every dec
     ...Object.values(contract.appearanceProperties).map((property) => property.customProperty),
     ...Object.values(contract.geometryProperties).filter((value) => value.startsWith("--"))
   ]);
-  const read = new Set([...diagramCss.matchAll(/var\((--ef-diagram-[a-z-]+)/g)].map((match) => match[1]));
-  const internal = new Set([...diagramCss.matchAll(/(--ef-diagram-(?:node|group)-[a-z]+):/g)].map((match) => match[1]));
+  const read = new Set([...diagramCss.matchAll(/var\((--forma-diagram-[a-z-]+)/g)].map((match) => match[1]));
+  const internal = new Set([...diagramCss.matchAll(/(--forma-diagram-(?:node|group)-[a-z]+):/g)].map((match) => match[1]));
   for (const property of declared) assert.ok(read.has(property), `${property} is declared but never read`);
   for (const property of read) {
     if (!internal.has(property)) assert.ok(declared.has(property), `${property} is read but not declared in the contract`);

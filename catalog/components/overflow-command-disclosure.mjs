@@ -3,7 +3,7 @@ export default {
   category: "actions",
   behavior: "Native HTML",
   summary: "Moves secondary commands into explicit native disclosure without shrinking targets or hiding group meaning.",
-  owns: ["ef-overflow-commands"],
+  owns: ["forma-overflow-commands"],
   purpose: {
     description: "An overflow command disclosure is a native `details` element whose `summary` (normally \"More commands\" or a more specific phrase) reveals a labelled group of secondary buttons. The browser owns open and closed state, keyboard toggling and the expanded announcement. The revealed panel is in normal document flow, so it pushes content down rather than floating over it, and the commands keep full 44px targets. Deciding which commands are secondary is an application decision; the disclosure never removes a command, it only defers it.",
     useWhen: [
@@ -30,15 +30,15 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Record toolbar with overflow",
       description: "The common case: the frequent commands stay visible in a [[command-group]], and three secondary commands sit behind a disclosure at the end of the same row. The panel label repeats the summary text so the revealed buttons are announced as one group.",
-      html: `<ef-overflow-command-disclosure class="ef-component-tag">
-  <section class="ef-command-group" aria-labelledby="overflow-command-disclosure-record-toolbar-overflow-label">
-    <h2 class="ef-command-group__label" id="overflow-command-disclosure-record-toolbar-overflow-label">Customer record</h2>
-    <div class="ef-command-group__commands">
+      html: `<forma-overflow-command-disclosure class="forma-component-tag">
+  <section class="forma-command-group" aria-labelledby="overflow-command-disclosure-record-toolbar-overflow-label">
+    <h2 class="forma-command-group__label" id="overflow-command-disclosure-record-toolbar-overflow-label">Customer record</h2>
+    <div class="forma-command-group__commands">
       <button type="button">Edit</button>
       <button type="button">Send message</button>
-      <details class="ef-overflow-commands">
+      <details class="forma-overflow-commands">
         <summary>More record commands</summary>
-        <div class="ef-overflow-commands__panel" role="group" aria-label="More record commands">
+        <div class="forma-overflow-commands__panel" role="group" aria-label="More record commands">
           <button type="button">Merge duplicates</button>
           <button type="button">Export history</button>
           <button type="button">Archive customer</button>
@@ -46,17 +46,17 @@ export default {
       </details>
     </div>
   </section>
-</ef-overflow-command-disclosure>`
+</forma-overflow-command-disclosure>`
     },
     {
       id: "open-by-default",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Open on arrival with many commands",
       description: "The `open` attribute renders the disclosure expanded on first load, for example when the application restores the user's last choice. Six commands with long labels wrap inside the panel. After load the browser owns the state; the attribute reflects it.",
-      html: `<ef-overflow-command-disclosure class="ef-component-tag">
-  <details class="ef-overflow-commands" open>
+      html: `<forma-overflow-command-disclosure class="forma-component-tag">
+  <details class="forma-overflow-commands" open>
     <summary>Bulk commands for 24 selected items</summary>
-    <div class="ef-overflow-commands__panel" role="group" aria-label="Bulk commands for 24 selected items">
+    <div class="forma-overflow-commands__panel" role="group" aria-label="Bulk commands for 24 selected items">
       <button type="button">Assign to a teammate</button>
       <button type="button">Change priority</button>
       <button type="button">Add labels</button>
@@ -65,7 +65,7 @@ export default {
       <button type="button">Close selected items</button>
     </div>
   </details>
-</ef-overflow-command-disclosure>`
+</forma-overflow-command-disclosure>`
     },
     {
       id: "mobile-overflow",
@@ -81,34 +81,34 @@ export default {
           "There are no breakpoints. If the same commands are visible on desktop, the application decides whether to render them inline or in the disclosure; Forma does not move them."
         ]
       },
-      html: `<ef-overflow-command-disclosure class="ef-component-tag">
-  <div class="ef-stack">
-    <div class="ef-actions">
+      html: `<forma-overflow-command-disclosure class="forma-component-tag">
+  <div class="forma-stack">
+    <div class="forma-actions">
       <button type="button">Approve</button>
       <button type="button">Request changes</button>
     </div>
-    <details class="ef-overflow-commands">
+    <details class="forma-overflow-commands">
       <summary>More review commands</summary>
-      <div class="ef-overflow-commands__panel" role="group" aria-label="More review commands">
+      <div class="forma-overflow-commands__panel" role="group" aria-label="More review commands">
         <button type="button">Reassign reviewer</button>
         <button type="button">Copy review link</button>
         <button type="button">Mark as spam</button>
       </div>
     </details>
   </div>
-</ef-overflow-command-disclosure>`
+</forma-overflow-command-disclosure>`
     }
   ],
   api: {
     attributes: [
       { name: "open", on: "details", values: "boolean", default: "absent (closed)", description: "Initial expanded state. The browser toggles it as the user opens and closes the disclosure." },
-      { name: "role", on: ".ef-overflow-commands__panel", values: "group", default: "—", description: "Exposes the revealed commands as one named group." },
-      { name: "aria-label", on: ".ef-overflow-commands__panel", values: "string", default: "—", description: "Names the group; normally the same text as the summary so the context is repeated when focus enters the commands." },
+      { name: "role", on: ".forma-overflow-commands__panel", values: "group", default: "—", description: "Exposes the revealed commands as one named group." },
+      { name: "aria-label", on: ".forma-overflow-commands__panel", values: "string", default: "—", description: "Names the group; normally the same text as the summary so the context is repeated when focus enters the commands." },
       { name: "type", on: "button", values: "button", default: "—", description: "Commands are ordinary buttons that must not submit an enclosing form." }
     ],
     hooks: {
-      "ef-overflow-commands": "Root `details` element. Positioned relative so application enhancements can anchor to it.",
-      "ef-overflow-commands__panel": "The revealed wrapping row of commands, with a top gap under the summary. Uses `--ef-command-space` from an enclosing [[command-group]] when present."
+      "forma-overflow-commands": "Root `details` element. Positioned relative so application enhancements can anchor to it.",
+      "forma-overflow-commands__panel": "The revealed wrapping row of commands, with a top gap under the summary. Uses `--forma-command-space` from an enclosing [[command-group]] when present."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves to the summary, then into the revealed commands when open." },

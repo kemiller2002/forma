@@ -14,7 +14,7 @@ Provide left- and right-edge modal surfaces for contextual navigation, filters, 
 
 ## Interfaces
 
-- Inbound: semantic dialog content, `data-ef-side="left|right"`, optional `data-ef-motion-weight="light|standard|heavy"`
+- Inbound: semantic dialog content, `data-forma-side="left|right"`, optional `data-forma-motion-weight="light|standard|heavy"`
 - Outbound: native dialog open/close state and events
 
 ## Motion
@@ -39,5 +39,5 @@ Provide left- and right-edge modal surfaces for contextual navigation, filters, 
 
 ## Maintenance
 
-- Owner: Echelon Foundry design system
+- Owner: Forma design system
 - Last checked against implementation: 2026-09-23

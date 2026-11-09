@@ -19,63 +19,63 @@ export default {
       "Every message starts with a visible severity word; color is never the only cue.",
       "Shape cues add to the word: underline for warning, double underline for validation, reverse video with an outline for error and for the inhibited indicator.",
       "Messages wrap within their run and grow their rows if needed; they are never truncated, clipped or scrolled.",
-      "Device status rows (`data-ef-status-rows`) follow the application rows, so row-major and focus order are unchanged."
+      "Device status rows (`data-forma-status-rows`) follow the application rows, so row-major and focus order are unchanged."
     ]
   },
   examples: [
     {
       id: "update-success",
       title: "Success after an update",
-      description: "A success message with the severity word OK, and a READY indicator on a device status row after the application rows (`data-ef-status-rows=\"1\"`).",
-      html: `<ef-character-grid-status class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="6" data-ef-status-rows="1" data-ef-columns="80" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-status-update-success-title" tabindex="0">
-      <div class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-status-update-success-title" data-ef-row="1" data-ef-col="31" data-ef-len="19" data-ef-emphasis="intensified">ACCOUNT MAINTENANCE</h2>
-        <span class="ef-character-grid__text" data-ef-row="3" data-ef-col="2" data-ef-len="16">Account<span class="ef-character-grid__leader" aria-hidden="true"> . . . :</span></span>
-        <span class="ef-character-grid__value" data-ef-row="3" data-ef-col="20" data-ef-len="13">00417-2231-09</span>
-        <p class="ef-character-grid__message" role="status" data-ef-severity="success" data-ef-row="6" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__severity"><span>OK</span></span> ACCM004I Account 00417-2231-09 updated. Changes take effect at end of day.</p>
-        <p class="ef-character-grid__status" role="status" data-ef-row="7" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__indicator"><span>READY</span></span></p>
+      description: "A success message with the severity word OK, and a READY indicator on a device status row after the application rows (`data-forma-status-rows=\"1\"`).",
+      html: `<forma-character-grid-status class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="6" data-forma-status-rows="1" data-forma-columns="80" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-status-update-success-title" tabindex="0">
+      <div class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-status-update-success-title" data-forma-row="1" data-forma-col="31" data-forma-len="19" data-forma-emphasis="intensified">ACCOUNT MAINTENANCE</h2>
+        <span class="forma-character-grid__text" data-forma-row="3" data-forma-col="2" data-forma-len="16">Account<span class="forma-character-grid__leader" aria-hidden="true"> . . . :</span></span>
+        <span class="forma-character-grid__value" data-forma-row="3" data-forma-col="20" data-forma-len="13">00417-2231-09</span>
+        <p class="forma-character-grid__message" role="status" data-forma-severity="success" data-forma-row="6" data-forma-col="2" data-forma-len="78"><span class="forma-character-grid__severity"><span>OK</span></span> ACCM004I Account 00417-2231-09 updated. Changes take effect at end of day.</p>
+        <p class="forma-character-grid__status" role="status" data-forma-row="7" data-forma-col="2" data-forma-len="78"><span class="forma-character-grid__indicator"><span>READY</span></span></p>
       </div>
     </div>
   </div>
-</ef-character-grid-status>`
+</forma-character-grid-status>`
     },
     {
       id: "report-warning",
       title: "Warning that does not block",
-      description: "A warning uses `role=\"status\"` because it does not need to interrupt. The severity word WARN is underlined as a shape cue. This screen draws its own status on its last row, so it omits `data-ef-status-rows`.",
-      html: `<ef-character-grid-status class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="6" data-ef-columns="80" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-status-report-warning-title" tabindex="0">
-      <div class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-status-report-warning-title" data-ef-row="1" data-ef-col="30" data-ef-len="21" data-ef-emphasis="intensified">MONTHLY BRANCH REPORT</h2>
-        <span class="ef-character-grid__text" data-ef-row="3" data-ef-col="2" data-ef-len="16">Period<span class="ef-character-grid__leader" aria-hidden="true">  . . . :</span></span>
-        <span class="ef-character-grid__value" data-ef-row="3" data-ef-col="20" data-ef-len="7">2026-09</span>
-        <p class="ef-character-grid__message" role="status" data-ef-severity="warning" data-ef-row="5" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__severity"><span>WARN</span></span> RPT021W Report includes 3 branches with incomplete data for September.</p>
-        <p class="ef-character-grid__status" role="status" data-ef-row="6" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__indicator"><span>READY</span></span>  Page 1 of 4</p>
+      description: "A warning uses `role=\"status\"` because it does not need to interrupt. The severity word WARN is underlined as a shape cue. This screen draws its own status on its last row, so it omits `data-forma-status-rows`.",
+      html: `<forma-character-grid-status class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="6" data-forma-columns="80" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-status-report-warning-title" tabindex="0">
+      <div class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-status-report-warning-title" data-forma-row="1" data-forma-col="30" data-forma-len="21" data-forma-emphasis="intensified">MONTHLY BRANCH REPORT</h2>
+        <span class="forma-character-grid__text" data-forma-row="3" data-forma-col="2" data-forma-len="16">Period<span class="forma-character-grid__leader" aria-hidden="true">  . . . :</span></span>
+        <span class="forma-character-grid__value" data-forma-row="3" data-forma-col="20" data-forma-len="7">2026-09</span>
+        <p class="forma-character-grid__message" role="status" data-forma-severity="warning" data-forma-row="5" data-forma-col="2" data-forma-len="78"><span class="forma-character-grid__severity"><span>WARN</span></span> RPT021W Report includes 3 branches with incomplete data for September.</p>
+        <p class="forma-character-grid__status" role="status" data-forma-row="6" data-forma-col="2" data-forma-len="78"><span class="forma-character-grid__indicator"><span>READY</span></span>  Page 1 of 4</p>
       </div>
     </div>
   </div>
-</ef-character-grid-status>`
+</forma-character-grid-status>`
     },
     {
       id: "long-error",
       title: "Long error in reserved rows",
-      description: "Runtime message text varies in length, so the message run reserves two rows with `data-ef-height=\"2\"` and wraps within its width. `role=\"alert\"` announces it immediately, and the ERROR word is drawn in reverse video.",
-      html: `<ef-character-grid-status class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="7" data-ef-columns="80" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-status-long-error-title" tabindex="0">
-      <div class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-status-long-error-title" data-ef-row="1" data-ef-col="33" data-ef-len="15" data-ef-emphasis="intensified">PAYMENT RELEASE</h2>
-        <span class="ef-character-grid__text" data-ef-row="3" data-ef-col="2" data-ef-len="16">Batch<span class="ef-character-grid__leader" aria-hidden="true"> . . . . :</span></span>
-        <span class="ef-character-grid__value" data-ef-row="3" data-ef-col="20" data-ef-len="11">PB-20260930</span>
-        <p class="ef-character-grid__message" role="alert" data-ef-severity="error" data-ef-row="5" data-ef-col="2" data-ef-len="78" data-ef-height="2"><span class="ef-character-grid__severity"><span>ERROR</span></span> PAY117E Batch rejected: total 48,210.55 does not match its 212 items (48,201.55). Correct the batch and resubmit.</p>
-        <p class="ef-character-grid__status" role="status" data-ef-row="7" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__indicator"><span>READY</span></span></p>
+      description: "Runtime message text varies in length, so the message run reserves two rows with `data-forma-height=\"2\"` and wraps within its width. `role=\"alert\"` announces it immediately, and the ERROR word is drawn in reverse video.",
+      html: `<forma-character-grid-status class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="7" data-forma-columns="80" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-status-long-error-title" tabindex="0">
+      <div class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-status-long-error-title" data-forma-row="1" data-forma-col="33" data-forma-len="15" data-forma-emphasis="intensified">PAYMENT RELEASE</h2>
+        <span class="forma-character-grid__text" data-forma-row="3" data-forma-col="2" data-forma-len="16">Batch<span class="forma-character-grid__leader" aria-hidden="true"> . . . . :</span></span>
+        <span class="forma-character-grid__value" data-forma-row="3" data-forma-col="20" data-forma-len="11">PB-20260930</span>
+        <p class="forma-character-grid__message" role="alert" data-forma-severity="error" data-forma-row="5" data-forma-col="2" data-forma-len="78" data-forma-height="2"><span class="forma-character-grid__severity"><span>ERROR</span></span> PAY117E Batch rejected: total 48,210.55 does not match its 212 items (48,201.55). Correct the batch and resubmit.</p>
+        <p class="forma-character-grid__status" role="status" data-forma-row="7" data-forma-col="2" data-forma-len="78"><span class="forma-character-grid__indicator"><span>READY</span></span></p>
       </div>
     </div>
   </div>
-</ef-character-grid-status>`
+</forma-character-grid-status>`
     },
     {
       id: "status-mobile",
@@ -90,41 +90,41 @@ export default {
           "The severity word stays first on the line, so it is visible even when the viewport is scrolled to its start."
         ]
       },
-      html: `<ef-character-grid-status class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="6" data-ef-columns="40" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-status-status-mobile-title" tabindex="0">
-      <div class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-status-status-mobile-title" data-ef-row="1" data-ef-col="14" data-ef-len="13" data-ef-emphasis="intensified">STOCK INQUIRY</h2>
-        <span class="ef-character-grid__text" data-ef-row="2" data-ef-col="2" data-ef-len="10">Item . . :</span>
-        <span class="ef-character-grid__value" data-ef-row="2" data-ef-col="13" data-ef-len="9">SKU-40211</span>
-        <p class="ef-character-grid__message" role="status" data-ef-severity="information" data-ef-row="4" data-ef-col="2" data-ef-len="38" data-ef-height="2"><span class="ef-character-grid__severity"><span>INFO</span></span> Stock levels are being refreshed from the warehouse.</p>
-        <p class="ef-character-grid__status" role="status" data-ef-row="6" data-ef-col="2" data-ef-len="38"><span class="ef-character-grid__indicator" data-ef-state="inhibited"><span>X SYSTEM</span></span>  Please wait</p>
+      html: `<forma-character-grid-status class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="6" data-forma-columns="40" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-status-status-mobile-title" tabindex="0">
+      <div class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-status-status-mobile-title" data-forma-row="1" data-forma-col="14" data-forma-len="13" data-forma-emphasis="intensified">STOCK INQUIRY</h2>
+        <span class="forma-character-grid__text" data-forma-row="2" data-forma-col="2" data-forma-len="10">Item . . :</span>
+        <span class="forma-character-grid__value" data-forma-row="2" data-forma-col="13" data-forma-len="9">SKU-40211</span>
+        <p class="forma-character-grid__message" role="status" data-forma-severity="information" data-forma-row="4" data-forma-col="2" data-forma-len="38" data-forma-height="2"><span class="forma-character-grid__severity"><span>INFO</span></span> Stock levels are being refreshed from the warehouse.</p>
+        <p class="forma-character-grid__status" role="status" data-forma-row="6" data-forma-col="2" data-forma-len="38"><span class="forma-character-grid__indicator" data-forma-state="inhibited"><span>X SYSTEM</span></span>  Please wait</p>
       </div>
     </div>
   </div>
-</ef-character-grid-status>`
+</forma-character-grid-status>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: ".ef-character-grid__message / .ef-character-grid__status", values: "status | alert", default: "—", description: "`status` for information, success and warning and for the system status line; `alert` for validation and error that need immediate attention. The element must exist before its text changes." },
-      { name: "id", on: ".ef-character-grid__message", values: "string", default: "—", description: "Lets invalid fields reference the message with `aria-describedby`." }
+      { name: "role", on: ".forma-character-grid__message / .forma-character-grid__status", values: "status | alert", default: "—", description: "`status` for information, success and warning and for the system status line; `alert` for validation and error that need immediate attention. The element must exist before its text changes." },
+      { name: "id", on: ".forma-character-grid__message", values: "string", default: "—", description: "Lets invalid fields reference the message with `aria-describedby`." }
     ],
     hooks: {
-      "ef-character-grid__message": "Message run. Wraps within its width (`pre-wrap`), never clips, and takes the severity color.",
-      "ef-character-grid__severity": "Required visible severity word (INFO, OK, WARN, CHECK, ERROR) in bold. Wrap the word in an inner `span`.",
-      "ef-character-grid__status": "System status run in the muted color; always `role=\"status\"`.",
-      "ef-character-grid__indicator": "Bold indicator word inside the status run, such as READY or X SYSTEM. Wrap the word in an inner `span`.",
-      "data-ef-severity": "`information`, `success`, `warning`, `validation` or `error` (CG-15). Sets the message color and the severity-word shape cue.",
-      "data-ef-state": "`inhibited` on the indicator draws reverse video with an outline; an outlined box in forced colors.",
-      "data-ef-status-rows": "On the grid: 1 or 2 device status rows after the application rows, for status runs only (CG-18).",
-      "data-ef-height": "Rows a message reserves when its runtime length varies.",
-      "--ef-grid-information": "Information message color.",
-      "--ef-grid-success": "Success message color.",
-      "--ef-grid-warning": "Warning message color.",
-      "--ef-grid-validation": "Validation message color.",
-      "--ef-grid-error": "Error message color.",
-      "--ef-grid-muted": "Status line color."
+      "forma-character-grid__message": "Message run. Wraps within its width (`pre-wrap`), never clips, and takes the severity color.",
+      "forma-character-grid__severity": "Required visible severity word (INFO, OK, WARN, CHECK, ERROR) in bold. Wrap the word in an inner `span`.",
+      "forma-character-grid__status": "System status run in the muted color; always `role=\"status\"`.",
+      "forma-character-grid__indicator": "Bold indicator word inside the status run, such as READY or X SYSTEM. Wrap the word in an inner `span`.",
+      "data-forma-severity": "`information`, `success`, `warning`, `validation` or `error` (CG-15). Sets the message color and the severity-word shape cue.",
+      "data-forma-state": "`inhibited` on the indicator draws reverse video with an outline; an outlined box in forced colors.",
+      "data-forma-status-rows": "On the grid: 1 or 2 device status rows after the application rows, for status runs only (CG-18).",
+      "data-forma-height": "Rows a message reserves when its runtime length varies.",
+      "--forma-grid-information": "Information message color.",
+      "--forma-grid-success": "Success message color.",
+      "--forma-grid-warning": "Warning message color.",
+      "--forma-grid-validation": "Validation message color.",
+      "--forma-grid-error": "Error message color.",
+      "--forma-grid-muted": "Status line color."
     },
     keyboard: [
       { keys: "None", action: "Messages and status are not focusable. Live regions are announced without moving focus." }
@@ -133,12 +133,12 @@ export default {
     form: "Messages and status runs are not form controls and submit nothing."
   },
   states: [
-    { name: "Information", how: "data-ef-severity=\"information\", role=\"status\"", description: "Plain severity word, information color." },
-    { name: "Success", how: "data-ef-severity=\"success\", role=\"status\"", description: "Plain severity word, success color." },
-    { name: "Warning", how: "data-ef-severity=\"warning\", role=\"status\"", description: "Severity word with a 2px underline." },
-    { name: "Validation", how: "data-ef-severity=\"validation\", role=\"alert\"", description: "Severity word with a double underline; fields reference the message." },
-    { name: "Error", how: "data-ef-severity=\"error\", role=\"alert\"", description: "Severity word in reverse video with an outline; an outlined box in forced colors." },
-    { name: "Input inhibited", how: "data-ef-state=\"inhibited\" on the indicator", description: "Indicator in reverse video. Whether input is actually inhibited is application behavior." }
+    { name: "Information", how: "data-forma-severity=\"information\", role=\"status\"", description: "Plain severity word, information color." },
+    { name: "Success", how: "data-forma-severity=\"success\", role=\"status\"", description: "Plain severity word, success color." },
+    { name: "Warning", how: "data-forma-severity=\"warning\", role=\"status\"", description: "Severity word with a 2px underline." },
+    { name: "Validation", how: "data-forma-severity=\"validation\", role=\"alert\"", description: "Severity word with a double underline; fields reference the message." },
+    { name: "Error", how: "data-forma-severity=\"error\", role=\"alert\"", description: "Severity word in reverse video with an outline; an outlined box in forced colors." },
+    { name: "Input inhibited", how: "data-forma-state=\"inhibited\" on the indicator", description: "Indicator in reverse video. Whether input is actually inhibited is application behavior." }
   ],
   accessibility: {
     forma: [
@@ -154,7 +154,7 @@ export default {
     ]
   },
   responsive: [
-    "Messages wrap within their width (`white-space: pre-wrap`, `overflow-wrap: anywhere`); reserve rows with `data-ef-height` where length varies.",
+    "Messages wrap within their width (`white-space: pre-wrap`, `overflow-wrap: anywhere`); reserve rows with `data-forma-height` where length varies.",
     "If a message exceeds its reserved rows, intrinsic row tracks grow and later rows move down.",
     "The status line keeps preserved spacing (`white-space: pre`) and its cell position; the grid's containment keeps the page from scrolling sideways."
   ],

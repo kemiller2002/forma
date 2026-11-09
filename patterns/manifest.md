@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Own the canonical semantic HTML structures consumed by Echelon applications. Patterns contain no JavaScript and no hidden behavior.
+Own the canonical semantic HTML structures consumed by applications. Patterns contain no JavaScript and no hidden behavior.
 
 ## Ownership
 
@@ -25,7 +25,7 @@ Own the canonical semantic HTML structures consumed by Echelon applications. Pat
 
 ## Dependencies
 
-- Allowed direct dependencies: semantic HTML, generated tokens CSS, Echelon CSS
+- Allowed direct dependencies: semantic HTML, generated tokens CSS, Forma CSS
 - Required composition context: consuming application supplies behavior beyond native HTML
 
 ## Modification boundaries
@@ -35,14 +35,14 @@ Own the canonical semantic HTML structures consumed by Echelon applications. Pat
 
 ## Local agent instructions
 
-- Documentation and consumer examples wrap the canonical pattern in `<ef-{slug} class="ef-component-tag">`.
-- The `ef-*` wrapper is inert and must never replace the native semantic element inside it or be registered with `customElements.define()`.
+- Documentation and consumer examples wrap the canonical pattern in `<forma-{slug} class="forma-component-tag">`.
+- The `forma-*` wrapper is inert and must never replace the native semantic element inside it or be registered with `customElements.define()`.
 - Modal flyouts stay on native `dialog`; gesture-driven or persistent drawer behavior belongs to Limen/application code.
 - Aegis presentation patterns consume the safe presentation view supplied by the application; raw Aegis faults and diagnostics are outside the pattern boundary.
-- `data-ef-aegis-capability` identifies a rendered recovery capability for Limen/application mapping but never grants authority.
+- `data-forma-aegis-capability` identifies a rendered recovery capability for Limen/application mapping but never grants authority.
 
 ## Maintenance
 
-- Owner: Echelon Foundry design system
+- Owner: Forma design system
 - Last checked against implementation: 2026-09-23
 - Known gaps: advanced behavioral patterns require separate Limen contracts

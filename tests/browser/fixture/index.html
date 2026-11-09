@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Echelon Design System Pilot</title>
+  <title>Forma Design System Pilot</title>
   <link rel="stylesheet" href="/dist/tokens.css">
   <link rel="stylesheet" href="/dist/foundations.css">
   <link rel="stylesheet" href="/dist/components.css">
   <link rel="stylesheet" href="/dist/skins.css">
-  <link rel="stylesheet" href="/dist/brands/echelon.css">
+  <link rel="stylesheet" href="/dist/brands/example-orchard.css">
   <link rel="stylesheet" href="/dist/brands/example-harbor.css">
   <script type="module" src="/dist/runtime.js"></script>
   <style>
@@ -21,61 +21,61 @@
     <h1>Design system pilot</h1>
 
     <form id="settings">
-      <label class="ef-switch">
-        <input id="notifications" class="ef-switch__input" type="checkbox" role="switch" name="notifications" value="enabled" aria-describedby="notifications-description">
-        <span class="ef-switch__track" aria-hidden="true"></span>
-        <span class="ef-switch__text">
-          <span class="ef-switch__label">Notifications</span>
-          <span class="ef-switch__description" id="notifications-description">Receive operational updates.</span>
+      <label class="forma-switch">
+        <input id="notifications" class="forma-switch__input" type="checkbox" role="switch" name="notifications" value="enabled" aria-describedby="notifications-description">
+        <span class="forma-switch__track" aria-hidden="true"></span>
+        <span class="forma-switch__text">
+          <span class="forma-switch__label">Notifications</span>
+          <span class="forma-switch__description" id="notifications-description">Receive operational updates.</span>
         </span>
       </label>
 
-      <label class="ef-switch">
-        <input id="required-switch" class="ef-switch__input" type="checkbox" role="switch" name="terms" value="accepted" required>
-        <span class="ef-switch__track" aria-hidden="true"></span>
-        <span class="ef-switch__text">
-          <span class="ef-switch__label">Required setting</span>
+      <label class="forma-switch">
+        <input id="required-switch" class="forma-switch__input" type="checkbox" role="switch" name="terms" value="accepted" required>
+        <span class="forma-switch__track" aria-hidden="true"></span>
+        <span class="forma-switch__text">
+          <span class="forma-switch__label">Required setting</span>
         </span>
       </label>
 
-      <label class="ef-slider">
-        <span class="ef-slider__header">
-          <span class="ef-slider__label">Volume</span>
+      <label class="forma-slider">
+        <span class="forma-slider__header">
+          <span class="forma-slider__label">Volume</span>
         </span>
-        <input id="volume" class="ef-slider__input" type="range" name="volume" min="0" max="100" step="5" value="25">
-        <span class="ef-slider__bounds" aria-hidden="true"><span>0</span><span>100</span></span>
-        <span class="ef-field__description">Adjust the output level.</span>
+        <input id="volume" class="forma-slider__input" type="range" name="volume" min="0" max="100" step="5" value="25">
+        <span class="forma-slider__bounds" aria-hidden="true"><span>0</span><span>100</span></span>
+        <span class="forma-field__description">Adjust the output level.</span>
       </label>
 
-      <fieldset class="ef-field">
-        <legend class="ef-field__label">Density</legend>
-        <div class="ef-segmented">
-          <label class="ef-segment">
+      <fieldset class="forma-field">
+        <legend class="forma-field__label">Density</legend>
+        <div class="forma-segmented">
+          <label class="forma-segment">
             <input id="density-comfortable" type="radio" name="density" value="comfortable" checked>
             <span>Comfortable</span>
           </label>
-          <label class="ef-segment">
+          <label class="forma-segment">
             <input id="density-compact" type="radio" name="density" value="compact">
             <span>Compact</span>
           </label>
         </div>
       </fieldset>
 
-      <div class="ef-cluster">
+      <div class="forma-cluster">
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
       </div>
     </form>
 
     <section class="examples" aria-label="Declarative examples">
-      <details class="ef-disclosure" id="advanced-options">
+      <details class="forma-disclosure" id="advanced-options">
         <summary>Advanced options</summary>
-        <div class="ef-disclosure__content"><p>Additional content.</p></div>
+        <div class="forma-disclosure__content"><p>Additional content.</p></div>
       </details>
 
       <div>
         <button id="popover-open" type="button" popovertarget="example-popover">Show options</button>
-        <div class="ef-popover" id="example-popover" popover>
+        <div class="forma-popover" id="example-popover" popover>
           <strong>Options</strong>
           <p>This surface is controlled entirely by declarative HTML.</p>
           <button id="popover-close" type="button" popovertarget="example-popover" popovertargetaction="hide">Close</button>
@@ -84,12 +84,12 @@
 
       <div>
         <button id="dialog-open" type="button" commandfor="example-dialog" command="show-modal">Open dialog</button>
-        <dialog class="ef-dialog" id="example-dialog" aria-labelledby="dialog-title">
-          <div class="ef-dialog__body">
+        <dialog class="forma-dialog" id="example-dialog" aria-labelledby="dialog-title">
+          <div class="forma-dialog__body">
             <h2 id="dialog-title">Confirm action</h2>
             <p>The browser owns modal behavior.</p>
           </div>
-          <div class="ef-dialog__actions">
+          <div class="forma-dialog__actions">
             <button id="dialog-close" type="button" commandfor="example-dialog" command="close">Cancel</button>
           </div>
         </dialog>

@@ -28,32 +28,32 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "No matching records",
       description: "A query that matched nothing. The status line announces zero results and says what to try next; the query stays in the field so it can be corrected.",
-      html: `<ef-search class="ef-component-tag">
-  <form class="ef-search" role="search" aria-label="Customers" action="/customers" method="get">
-    <label class="ef-search__label" for="search-no-results-query">Search customers</label>
-    <div class="ef-search__control">
+      html: `<forma-search class="forma-component-tag">
+  <form class="forma-search" role="search" aria-label="Customers" action="/customers" method="get">
+    <label class="forma-search__label" for="search-no-results-query">Search customers</label>
+    <div class="forma-search__control">
       <input id="search-no-results-query" name="q" type="search" value="acme holdngs" autocomplete="off">
-      <button type="button" class="ef-search__clear">Clear</button>
+      <button type="button" class="forma-search__clear">Clear</button>
     </div>
-    <p class="ef-search__status" role="status">No customers match "acme holdngs". Check the spelling or search by account number.</p>
+    <p class="forma-search__status" role="status">No customers match "acme holdngs". Check the spelling or search by account number.</p>
   </form>
-</ef-search>`
+</forma-search>`
     },
     {
       id: "pending-search",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Search in progress",
       description: "The application is waiting for results. The status line says so in text, and the previous count is not shown as if it were current.",
-      html: `<ef-search class="ef-component-tag">
-  <form class="ef-search" role="search" aria-label="Incidents" action="/incidents" method="get">
-    <label class="ef-search__label" for="search-pending-query">Search incidents</label>
-    <div class="ef-search__control">
+      html: `<forma-search class="forma-component-tag">
+  <form class="forma-search" role="search" aria-label="Incidents" action="/incidents" method="get">
+    <label class="forma-search__label" for="search-pending-query">Search incidents</label>
+    <div class="forma-search__control">
       <input id="search-pending-query" name="q" type="search" value="database failover" autocomplete="off" placeholder="Title, ID or service">
-      <button type="button" class="ef-search__clear">Clear</button>
+      <button type="button" class="forma-search__clear">Clear</button>
     </div>
-    <p class="ef-search__status" role="status">Searching…</p>
+    <p class="forma-search__status" role="status">Searching…</p>
   </form>
-</ef-search>`
+</forma-search>`
     },
     {
       id: "mobile-library-search",
@@ -69,16 +69,16 @@ export default {
           "Long result-count messages wrap under the control; nothing scrolls horizontally."
         ]
       },
-      html: `<ef-search class="ef-component-tag">
-  <form class="ef-search" role="search" aria-label="Documents" action="/documents" method="get">
-    <label class="ef-search__label" for="search-mobile-query">Search documents</label>
-    <div class="ef-search__control">
+      html: `<forma-search class="forma-component-tag">
+  <form class="forma-search" role="search" aria-label="Documents" action="/documents" method="get">
+    <label class="forma-search__label" for="search-mobile-query">Search documents</label>
+    <div class="forma-search__control">
       <input id="search-mobile-query" name="q" type="search" value="retention policy" autocomplete="off">
-      <button type="button" class="ef-search__clear">Clear</button>
+      <button type="button" class="forma-search__clear">Clear</button>
     </div>
-    <p class="ef-search__status" role="status">7 documents</p>
+    <p class="forma-search__status" role="status">7 documents</p>
   </form>
-</ef-search>`
+</forma-search>`
     }
   ],
   api: {
@@ -86,19 +86,19 @@ export default {
       { name: "role", on: "form", values: "search", default: "—", description: "Makes the form a search landmark. Add aria-label when a page has more than one search." },
       { name: "aria-label", on: "form", values: "string", default: "—", description: "Names the search landmark (for example \"Customers\") so several searches can be told apart." },
       { name: "type", on: "input / button", values: "search on the input; button on Clear", default: "—", description: "type=search gives the search keyboard and native clearing affordances; type=button keeps Clear from submitting the form." },
-      { name: "for", on: "label.ef-search__label", values: "id of the input", default: "—", description: "Associates the visible label." },
+      { name: "for", on: "label.forma-search__label", values: "id of the input", default: "—", description: "Associates the visible label." },
       { name: "name", on: "input", values: "string", default: "—", description: "Query parameter name on submission." },
       { name: "value", on: "input", values: "string", default: "empty", description: "The current query when the page renders results for it." },
       { name: "autocomplete", on: "input", values: "off", default: "browser heuristic", description: "Stops browser form history from competing with application suggestions." },
       { name: "placeholder", on: "input", values: "string", default: "—", description: "Optional hint about searchable fields; not a label." },
-      { name: "role", on: ".ef-search__status", values: "status", default: "—", description: "Polite live region so result-count and pending text are announced." }
+      { name: "role", on: ".forma-search__status", values: "status", default: "—", description: "Polite live region so result-count and pending text are announced." }
     ],
     hooks: {
-      "ef-search": "Root grid (the form) stacking label, control and status.",
-      "ef-search__label": "Compact visible label (0.8125rem, weight 650).",
-      "ef-search__control": "Two-column grid: flexible input and auto-width Clear button, joined without a gap. One column at 30rem and below.",
-      "ef-search__clear": "The Clear button, at least 4.5rem wide. Its action is application behavior.",
-      "ef-search__status": "Result count or state text in secondary color at 0.75rem."
+      "forma-search": "Root grid (the form) stacking label, control and status.",
+      "forma-search__label": "Compact visible label (0.8125rem, weight 650).",
+      "forma-search__control": "Two-column grid: flexible input and auto-width Clear button, joined without a gap. One column at 30rem and below.",
+      "forma-search__clear": "The Clear button, at least 4.5rem wide. Its action is application behavior.",
+      "forma-search__status": "Result count or state text in secondary color at 0.75rem."
     },
     keyboard: [
       { keys: "Enter", action: "Submits the search form (native implicit submission)." },
@@ -113,9 +113,9 @@ export default {
   },
   states: [
     { name: "Empty", how: "no value", description: "Label, empty input and Clear button; the status can be empty or state the total." },
-    { name: "Results", how: "application text in .ef-search__status", description: "A count such as \"24 results\"." },
-    { name: "Pending", how: "application text in .ef-search__status", description: "Text such as \"Searching…\" while a request is outstanding." },
-    { name: "No results", how: "application text in .ef-search__status", description: "Zero count with a recovery hint; keep the query in the field." },
+    { name: "Results", how: "application text in .forma-search__status", description: "A count such as \"24 results\"." },
+    { name: "Pending", how: "application text in .forma-search__status", description: "Text such as \"Searching…\" while a request is outstanding." },
+    { name: "No results", how: "application text in .forma-search__status", description: "Zero count with a recovery hint; keep the query in the field." },
     { name: "Focus", how: ":focus-visible", description: "Foundation two-tone focus ring on the input or button." }
   ],
   accessibility: {

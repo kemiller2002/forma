@@ -50,11 +50,11 @@ test("registration is idempotent, order-independent, and diagnoses version confl
   }, version);
 
   expect(result.duplicateWarnings).toBe(0);
-  expect(result.warnings).toEqual([`Echelon Runtime conflict: Forma v${version} is already registered; ignored v999.0.0.`]);
+  expect(result.warnings).toEqual([`Runtime registry conflict: Forma v${version} is already registered; ignored v999.0.0.`]);
   expect(result.infos).toEqual([
-    `Echelon Runtime · Forma v${version}`,
-    "Echelon Runtime · Folio vfolio-contract-fixture",
-    "Echelon Runtime · Limen vlimen-contract-fixture"
+    `Runtime registry · Forma v${version}`,
+    "Runtime registry · Folio vfolio-contract-fixture",
+    "Runtime registry · Limen vlimen-contract-fixture"
   ]);
   expect(result.forward).toEqual(result.reverse);
   expect(result.forward.libraries.forma.version).toBe(version);

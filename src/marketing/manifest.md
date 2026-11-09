@@ -8,13 +8,13 @@ product, and documentation websites (GH-49).
 ## Ownership
 
 - State, including presentation state: CSS only. Native states (`:hover`,
-  `:focus-visible`, `aria-current`) and declarative attributes (`data-ef-tone`,
-  `data-ef-variant`, `data-ef-columns`, `data-ef-status`, `data-ef-width`,
-  `data-ef-layout`).
+  `:focus-visible`, `aria-current`) and declarative attributes (`data-forma-tone`,
+  `data-forma-variant`, `data-forma-columns`, `data-forma-status`, `data-forma-width`,
+  `data-forma-layout`).
 - Transitions, commands, messages: none.
 - Invariants and guards:
   - only role and core semantic tokens;
-  - marketing foundations scoped to `.ef-site`;
+  - marketing foundations scoped to `.forma-site`;
   - contrast-safe surface tones;
   - no CSS reordering;
   - 44 px targets;
@@ -27,8 +27,8 @@ product, and documentation websites (GH-49).
 
 - Inbound: core tokens (`dist/tokens.css`), role tokens (`roles.css`), themes
   (`themes/*`).
-- Outbound: `ef-*` classes documented in `patterns/` and the MarketingShell
-  (`.ef-site`).
+- Outbound: `forma-*` classes documented in `patterns/` and the MarketingShell
+  (`.forma-site`).
 
 ## Tests and verification
 

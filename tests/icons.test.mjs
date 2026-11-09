@@ -40,7 +40,7 @@ test("generated decorative markup cannot accidentally become an icon-only contro
     const html = files.get("html/" + icon.name + ".html");
     assert.match(svg, /viewBox="0 0 24 24"/);
     assert.match(svg, /stroke="currentColor"/);
-    assert.match(html, /<ef-icon class="ef-component-tag">/);
+    assert.match(html, /<forma-icon class="forma-component-tag">/);
     assert.match(html, /aria-hidden="true" focusable="false"/);
     assert.doesNotMatch(html, /<button|tabindex=|role="button"/i);
   }

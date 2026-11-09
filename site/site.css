@@ -1,34 +1,38 @@
+/* Layer order: the brand laboratory rules sit below the site rules, as they did
+   when they lived in a separate cascade layer before Forma 1.0.0. */
+@layer forma.site-brand-lab, forma.site;
+
 @layer forma.site {
   :root {
-    /* Canonical Echelon Foundry palette from consulting-company/assets/css/style.css */
-    --ef-foundry-charcoal: #202421;
-    --ef-forged-iron: #3a403c;
-    --ef-parchment: #f2efe7;
-    --ef-oxide-bronze: #905831;
-    --ef-verdigris: #47756b;
-    --ef-carbon: #171a18;
-    --ef-graphite: #686d68;
-    --ef-stone: #e3e0d7;
+    /* Documentation-site palette: Forma's neutral default light values. */
+    --site-gray-900: #232323;
+    --site-gray-800: #303030;
+    --site-paper: #fafafa;
+    --site-accent: #2b5ea8;
+    --site-accent-secondary: #1d6b66;
+    --site-ink: #161616;
+    --site-gray-600: #555555;
+    --site-gray-200: #eeeeee;
 
-    /* Keep the Forma token surface aligned to the production Echelon Foundry site. */
-    --ef-color-text-primary: var(--ef-carbon);
-    --ef-color-text-heading: var(--ef-foundry-charcoal);
-    --ef-color-text-secondary: var(--ef-graphite);
-    --ef-color-text-on-secondary-surface: var(--ef-forged-iron);
-    --ef-color-text-inverse: var(--ef-parchment);
-    --ef-color-surface-primary: var(--ef-parchment);
-    --ef-color-surface-secondary: var(--ef-stone);
-    --ef-color-surface-inverse: var(--ef-foundry-charcoal);
-    --ef-color-surface-inverse-secondary: var(--ef-forged-iron);
-    --ef-color-accent-primary: var(--ef-oxide-bronze);
-    --ef-color-accent-secondary: var(--ef-verdigris);
-    --ef-color-border-subtle: var(--ef-stone);
-    --ef-color-border-functional: var(--ef-forged-iron);
-    --ef-color-focus-gap: var(--ef-parchment);
-    --ef-color-focus-ring: var(--ef-carbon);
-    --ef-color-control-track: var(--ef-graphite);
-    --ef-color-control-thumb: var(--ef-parchment);
-    --ef-color-control-active: var(--ef-oxide-bronze);
+    /* The documentation site pins the light theme. */
+    --forma-color-text-primary: var(--site-ink);
+    --forma-color-text-heading: var(--site-gray-900);
+    --forma-color-text-secondary: var(--site-gray-600);
+    --forma-color-text-on-secondary-surface: var(--site-gray-800);
+    --forma-color-text-inverse: var(--site-paper);
+    --forma-color-surface-primary: var(--site-paper);
+    --forma-color-surface-secondary: var(--site-gray-200);
+    --forma-color-surface-inverse: var(--site-gray-900);
+    --forma-color-surface-inverse-secondary: var(--site-gray-800);
+    --forma-color-accent-primary: var(--site-accent);
+    --forma-color-accent-secondary: var(--site-accent-secondary);
+    --forma-color-border-subtle: var(--site-gray-200);
+    --forma-color-border-functional: var(--site-gray-800);
+    --forma-color-focus-gap: var(--site-paper);
+    --forma-color-focus-ring: var(--site-ink);
+    --forma-color-control-track: var(--site-gray-600);
+    --forma-color-control-thumb: var(--site-paper);
+    --forma-color-control-active: var(--site-accent);
 
     --site-max: 1440px;
     --site-gutter: clamp(1rem, 4vw, 4.5rem);
@@ -48,8 +52,8 @@
   body {
     min-inline-size: 320px;
     margin: 0;
-    background: var(--ef-parchment);
-    color: var(--ef-carbon);
+    background: var(--site-paper);
+    color: var(--site-ink);
     font-family: var(--sans);
     font-size: 1rem;
     line-height: 1.65;
@@ -63,8 +67,8 @@
     opacity: .18;
     pointer-events: none;
     background-image:
-      linear-gradient(rgb(23 26 24 / .06) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(23 26 24 / .06) 1px, transparent 1px);
+      linear-gradient(rgb(22 22 22 / .06) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(22 22 22 / .06) 1px, transparent 1px);
     background-size: 48px 48px;
   }
 
@@ -72,17 +76,17 @@
      cascade layer than Forma, so unscoped rules would restyle the components
      being documented. */
   :where(a:not(.example-canvas *, .catalog-card__preview *)) {
-    color: var(--ef-oxide-bronze);
+    color: var(--site-accent);
     text-decoration-thickness: .08em;
     text-underline-offset: .2em;
   }
 
   :where(p:not(.example-canvas *, .catalog-card__preview *)) {
-    color: var(--ef-graphite);
+    color: var(--site-gray-600);
   }
 
   :where(h1:not(.example-canvas *, .catalog-card__preview *), h2:not(.example-canvas *, .catalog-card__preview *), h3:not(.example-canvas *, .catalog-card__preview *)) {
-    color: var(--ef-foundry-charcoal);
+    color: var(--site-gray-900);
     margin-block-start: 0;
     overflow-wrap: anywhere;
   }
@@ -105,8 +109,8 @@
     inset-inline-start: .5rem;
     z-index: 100;
     padding: .7rem 1rem;
-    background: var(--ef-parchment);
-    color: var(--ef-carbon);
+    background: var(--site-paper);
+    color: var(--site-ink);
     transform: translateY(-150%);
   }
 
@@ -116,8 +120,8 @@
     position: sticky;
     inset-block-start: 0;
     z-index: 20;
-    background: rgb(242 239 231 / .94);
-    border-block-end: 1px solid var(--ef-forged-iron);
+    background: rgb(250 250 250 / .94);
+    border-block-end: 1px solid var(--site-gray-800);
     backdrop-filter: blur(14px);
   }
 
@@ -142,7 +146,7 @@
     display: flex;
     align-items: center;
     gap: .7rem;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-weight: 700;
     text-decoration: none;
     white-space: nowrap;
@@ -154,15 +158,15 @@
     place-items: center;
     inline-size: 2.35rem;
     aspect-ratio: 1;
-    background: var(--ef-foundry-charcoal);
-    color: var(--ef-parchment);
+    background: var(--site-gray-900);
+    color: var(--site-paper);
     font-family: var(--mono);
     font-size: .72rem;
   }
 
   .brand-subtitle {
     max-inline-size: 24ch;
-    color: var(--ef-graphite);
+    color: var(--site-gray-600);
     font-family: var(--mono);
     font-size: .65rem;
     line-height: 1.3;
@@ -195,31 +199,31 @@
     justify-content: center;
     padding: .55rem .7rem;
     border-block-end: 2px solid transparent;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     text-decoration: none;
   }
 
   .site-nav a:hover {
-    border-color: var(--ef-oxide-bronze);
+    border-color: var(--site-accent);
   }
 
   /* All navigation links are neutral until their owning section is active.
      Semantics and presentation agree for both landing and detail pages. */
   .site-nav a[aria-current] {
-    background: var(--ef-foundry-charcoal);
-    border-color: var(--ef-foundry-charcoal);
-    color: var(--ef-parchment);
+    background: var(--site-gray-900);
+    border-color: var(--site-gray-900);
+    color: var(--site-paper);
   }
 
   .site-nav a[aria-current]:hover {
-    border-color: var(--ef-parchment);
-    color: var(--ef-parchment);
+    border-color: var(--site-paper);
+    color: var(--site-paper);
   }
 
   .eyebrow,
   .component-kicker,
   .category-label {
-    color: var(--ef-verdigris);
+    color: var(--site-accent-secondary);
     font-family: var(--mono);
     font-size: .72rem;
     font-weight: 500;
@@ -228,7 +232,7 @@
   }
 
   .metric-label {
-    color: var(--ef-forged-iron);
+    color: var(--site-gray-800);
     font-family: var(--mono);
     font-size: .7rem;
     font-weight: 500;
@@ -250,7 +254,7 @@
     align-items: end;
     margin-block-start: 0;
     padding-block: clamp(4rem, 10vw, 9rem) 4rem;
-    border-block-end: 1px solid var(--ef-forged-iron);
+    border-block-end: 1px solid var(--site-gray-800);
   }
 
   .content-section {
@@ -267,7 +271,7 @@
   .component-header .lead,
   .agent-page .lead {
     max-inline-size: 62ch;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-size: clamp(1.15rem, 2vw, 1.55rem);
     line-height: 1.5;
   }
@@ -275,21 +279,21 @@
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-block-start: 1px solid var(--ef-stone);
-    border-inline-start: 1px solid var(--ef-stone);
+    border-block-start: 1px solid var(--site-gray-200);
+    border-inline-start: 1px solid var(--site-gray-200);
   }
 
   .hero-stat {
     min-inline-size: 0;
     padding: 1.1rem;
-    border-inline-end: 1px solid var(--ef-stone);
-    border-block-end: 1px solid var(--ef-stone);
+    border-inline-end: 1px solid var(--site-gray-200);
+    border-block-end: 1px solid var(--site-gray-200);
   }
 
   .hero-stat strong {
     display: block;
     margin-block-start: .25rem;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-size: 1rem;
     font-weight: 700;
   }
@@ -301,7 +305,7 @@
     align-items: end;
     margin-block-end: 2.5rem;
     padding-block-end: 1.5rem;
-    border-block-end: 1px solid var(--ef-forged-iron);
+    border-block-end: 1px solid var(--site-gray-800);
   }
 
   .section-heading h2 {
@@ -314,17 +318,17 @@
   .component-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-block-start: 1px solid var(--ef-stone);
-    border-inline-start: 1px solid var(--ef-stone);
+    border-block-start: 1px solid var(--site-gray-200);
+    border-inline-start: 1px solid var(--site-gray-200);
   }
 
   .principle,
   .component-card {
     min-inline-size: 0;
     padding: clamp(1.25rem, 2.5vw, 2.25rem);
-    border-inline-end: 1px solid var(--ef-stone);
-    border-block-end: 1px solid var(--ef-stone);
-    background: var(--ef-stone);
+    border-inline-end: 1px solid var(--site-gray-200);
+    border-block-end: 1px solid var(--site-gray-200);
+    background: var(--site-gray-200);
   }
 
   .principle h3,
@@ -333,29 +337,29 @@
     margin-block: .35rem .7rem;
   }
 
-  .principle .category-label { color: var(--ef-forged-iron); }
-  .principle a { color: var(--ef-carbon); }
+  .principle .category-label { color: var(--site-gray-800); }
+  .principle a { color: var(--site-ink); }
 
   .principle p,
   .component-card p {
-    color: var(--ef-carbon);
+    color: var(--site-ink);
   }
 
   .component-card a {
     min-block-size: 2.75rem;
     display: inline-flex;
     align-items: center;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     text-decoration: none;
   }
 
   .component-card a::after {
     content: " →";
-    color: var(--ef-oxide-bronze);
+    color: var(--site-accent);
   }
 
   .component-card:hover {
-    background: var(--ef-parchment);
+    background: var(--site-paper);
   }
 
   .component-card:hover h3 {
@@ -367,18 +371,18 @@
     margin-block-start: 4rem;
   }
 
-  /* The site's own action links reuse the .ef-button name; keep the site
+  /* The site's own action links reuse the .forma-button name; keep the site
      treatment off the Forma buttons inside live examples. */
-  .ef-button:not(.example-canvas *, .catalog-card__preview *) {
+  .forma-button:not(.example-canvas *, .catalog-card__preview *) {
     display: inline-flex;
     min-block-size: 3.2rem;
     align-items: center;
     justify-content: center;
     padding: .7rem 1.2rem;
-    border: 1px solid var(--ef-forged-iron);
+    border: 1px solid var(--site-gray-800);
     border-radius: 0;
     background: transparent;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-size: .84rem;
     font-weight: 700;
     text-decoration: none;
@@ -386,12 +390,12 @@
        press are perceptual surface emphasis, and the hit target never moves
        under the pointer (MOT-014). */
     transition:
-      background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      color var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing);
+      background var(--forma-motion-perceptual-duration) var(--forma-motion-perceptual-easing),
+      color var(--forma-motion-perceptual-duration) var(--forma-motion-perceptual-easing);
   }
 
-  .ef-button:not(.example-canvas *, .catalog-card__preview *):hover {
-    background: var(--ef-stone);
+  .forma-button:not(.example-canvas *, .catalog-card__preview *):hover {
+    background: var(--site-gray-200);
   }
 
   .docs-shell {
@@ -406,7 +410,7 @@
     min-inline-size: 0;
     max-inline-size: 100%;
     padding: 2rem 1.2rem 4rem var(--site-gutter);
-    border-inline-end: 1px solid var(--ef-forged-iron);
+    border-inline-end: 1px solid var(--site-gray-800);
   }
 
   .component-nav-inner {
@@ -419,7 +423,7 @@
   }
 
   .component-nav h2 {
-    color: var(--ef-verdigris);
+    color: var(--site-accent-secondary);
     font-family: var(--mono);
     font-size: .72rem;
     font-weight: 500;
@@ -440,19 +444,19 @@
     align-items: center;
     padding: .38rem 0;
     border-inline-start: 2px solid transparent;
-    color: var(--ef-graphite);
+    color: var(--site-gray-600);
     font-size: .8rem;
     text-decoration: none;
   }
 
   .component-nav a:hover {
-    color: var(--ef-carbon);
+    color: var(--site-ink);
   }
 
   .component-nav a[aria-current="page"] {
     padding-inline-start: .6rem;
-    border-color: var(--ef-oxide-bronze);
-    color: var(--ef-carbon);
+    border-color: var(--site-accent);
+    color: var(--site-ink);
     font-weight: 700;
   }
 
@@ -479,12 +483,12 @@
   }
 
   .breadcrumbs a {
-    color: var(--ef-oxide-bronze);
+    color: var(--site-accent);
   }
 
   .component-header {
     padding-block-end: 3rem;
-    border-block-end: 1px solid var(--ef-forged-iron);
+    border-block-end: 1px solid var(--site-gray-800);
   }
 
   .component-header h1 {
@@ -497,21 +501,21 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     margin-block-start: 3rem;
-    border-block-start: 1px solid var(--ef-stone);
-    border-inline-start: 1px solid var(--ef-stone);
+    border-block-start: 1px solid var(--site-gray-200);
+    border-inline-start: 1px solid var(--site-gray-200);
   }
 
   .contract-item {
     min-inline-size: 0;
     padding: 1.1rem;
-    border-inline-end: 1px solid var(--ef-stone);
-    border-block-end: 1px solid var(--ef-stone);
+    border-inline-end: 1px solid var(--site-gray-200);
+    border-block-end: 1px solid var(--site-gray-200);
   }
 
   .contract-item strong {
     display: block;
     margin-block-start: .25rem;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-size: .85rem;
   }
 
@@ -535,7 +539,7 @@
     align-items: end;
     margin-block-end: 1.25rem;
     padding-block-end: 1rem;
-    border-block-end: 1px solid var(--ef-stone);
+    border-block-end: 1px solid var(--site-gray-200);
   }
 
   .example-heading h3 {
@@ -556,12 +560,12 @@
     grid-column: 1 / -1;
     padding-block: .5rem;
     padding-inline: .75rem;
-    border-inline-start: .25rem solid var(--ef-verdigris);
+    border-inline-start: .25rem solid var(--site-accent-secondary);
     font-size: .9rem;
   }
 
   .example-heading .example-interaction--static {
-    border-inline-start-color: var(--ef-oxide-bronze);
+    border-inline-start-color: var(--site-accent);
   }
 
   .example-canvas {
@@ -574,19 +578,19 @@
     grid-template-columns: minmax(0, 1fr);
     align-content: center;
     padding: clamp(1.25rem, 3vw, 2.5rem);
-    border: 1px solid var(--ef-forged-iron);
-    background: var(--ef-parchment);
+    border: 1px solid var(--site-gray-800);
+    background: var(--site-paper);
     overflow: auto;
   }
 
   .example-canvas--secondary {
-    background: var(--ef-stone);
+    background: var(--site-gray-200);
   }
 
   .example-canvas--mobile {
     display: block;
     padding: 1rem;
-    background: var(--ef-stone);
+    background: var(--site-gray-200);
   }
 
   .example-canvas--mobile::before {
@@ -595,10 +599,10 @@
     inline-size: min(100%, 320px);
     margin-inline: auto;
     padding: .35rem .5rem;
-    border: 1px solid var(--ef-forged-iron);
+    border: 1px solid var(--site-gray-800);
     border-block-end: 0;
-    background: var(--ef-foundry-charcoal);
-    color: var(--ef-parchment);
+    background: var(--site-gray-900);
+    color: var(--site-paper);
     font-family: var(--mono);
     font-size: .65rem;
   }
@@ -609,8 +613,8 @@
     max-inline-size: 320px;
     block-size: 34rem;
     margin-inline: auto;
-    border: 1px solid var(--ef-forged-iron);
-    background: var(--ef-parchment);
+    border: 1px solid var(--site-gray-800);
+    background: var(--site-paper);
   }
 
   .motion-weight-grid {
@@ -624,7 +628,7 @@
   .motion-weight-sample {
     min-inline-size: 0;
     padding: 1rem;
-    border: 1px solid var(--ef-stone);
+    border: 1px solid var(--site-gray-200);
     background: rgb(255 255 255 / .18);
   }
 
@@ -635,19 +639,19 @@
     align-items: baseline;
     margin-block-end: 1rem;
     padding-block-end: .65rem;
-    border-block-end: 1px solid var(--ef-stone);
+    border-block-end: 1px solid var(--site-gray-200);
     font-family: var(--mono);
     text-transform: uppercase;
   }
 
   .motion-weight-label strong {
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-size: .76rem;
     letter-spacing: .08em;
   }
 
   .motion-weight-label span {
-    color: var(--ef-graphite);
+    color: var(--site-gray-600);
     font-size: .62rem;
     letter-spacing: .04em;
   }
@@ -659,7 +663,7 @@
     align-content: start;
   }
 
-  .motion-weight-demo > :where(button, .ef-button) {
+  .motion-weight-demo > :where(button, .forma-button) {
     justify-self: start;
   }
 
@@ -702,19 +706,19 @@
     inline-size: 100%;
     min-inline-size: 40rem;
     border-collapse: collapse;
-    border-block-start: 1px solid var(--ef-forged-iron);
+    border-block-start: 1px solid var(--site-gray-800);
   }
 
   .agent-page th,
   .agent-page td {
     padding: .8rem;
-    border-block-end: 1px solid var(--ef-stone);
+    border-block-end: 1px solid var(--site-gray-200);
     text-align: start;
     vertical-align: top;
   }
 
   .agent-page th {
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-family: var(--mono);
     font-size: .72rem;
     text-transform: uppercase;
@@ -724,20 +728,20 @@
   .agent-page pre {
     padding: 1rem;
     overflow: auto;
-    background: var(--ef-foundry-charcoal);
-    color: var(--ef-parchment);
+    background: var(--site-gray-900);
+    color: var(--site-paper);
     font-family: var(--mono);
   }
 
   .site-footer {
-    background: var(--ef-foundry-charcoal);
-    color: var(--ef-parchment);
+    background: var(--site-gray-900);
+    color: var(--site-paper);
     padding: clamp(2rem, 5vw, 5rem) max(1rem, calc((100vw - 1440px)/2 + 4.5rem));
   }
 
   .site-footer p,
   .site-footer a {
-    color: var(--ef-parchment);
+    color: var(--site-paper);
   }
 
   .site-footer a {
@@ -757,7 +761,7 @@
     justify-content: space-between;
     margin: 4rem 0 0;
     padding-block-start: 1rem;
-    border-block-start: 1px solid var(--ef-forged-iron);
+    border-block-start: 1px solid var(--site-gray-800);
     font-family: var(--mono);
     font-size: .65rem;
   }
@@ -774,7 +778,7 @@
   .catalog-row__tag,
   .catalog-card__tag code,
   .related-list code {
-    color: var(--ef-forged-iron);
+    color: var(--site-gray-800);
     font-family: var(--mono);
     font-size: .8rem;
     overflow-wrap: anywhere;
@@ -791,7 +795,7 @@
 
   .contract-grid dd {
     margin: .25rem 0 0;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-size: .85rem;
     font-weight: 700;
     overflow-wrap: anywhere;
@@ -816,7 +820,7 @@
   .breadcrumbs li + li::before {
     content: "/";
     margin-inline-end: .5rem;
-    color: var(--ef-graphite);
+    color: var(--site-gray-600);
   }
 
   .breadcrumbs a {
@@ -851,13 +855,13 @@
     align-items: center;
     min-block-size: 2.75rem;
     padding: .4rem .75rem;
-    border: 1px solid var(--ef-stone);
-    color: var(--ef-carbon);
+    border: 1px solid var(--site-gray-200);
+    color: var(--site-ink);
     font-size: .8rem;
     text-decoration: none;
   }
 
-  .page-toc a:hover { border-color: var(--ef-forged-iron); }
+  .page-toc a:hover { border-color: var(--site-gray-800); }
 
   .doc-section {
     min-inline-size: 0;
@@ -868,7 +872,7 @@
   .doc-section > h2 {
     margin: 0 0 1.25rem;
     padding-block-end: .75rem;
-    border-block-end: 1px solid var(--ef-forged-iron);
+    border-block-end: 1px solid var(--site-gray-800);
     font-size: clamp(1.9rem, 3.4vw, 2.8rem);
   }
 
@@ -880,7 +884,7 @@
   .doc-section p:not(.example-canvas *, .catalog-card__preview *),
   .doc-section li:not(.example-canvas *, .catalog-card__preview *) {
     max-inline-size: 72ch;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
   }
 
   .doc-lead {
@@ -888,7 +892,7 @@
   }
 
   .doc-note {
-    color: var(--ef-graphite);
+    color: var(--site-gray-600);
     font-size: .85rem;
   }
 
@@ -900,13 +904,13 @@
 
   .guidance {
     padding: 0 1.25rem 1rem;
-    border: 1px solid var(--ef-stone);
-    border-block-start: 3px solid var(--ef-verdigris);
+    border: 1px solid var(--site-gray-200);
+    border-block-start: 3px solid var(--site-accent-secondary);
   }
 
   .guidance--avoid {
     border-block-start-style: dashed;
-    border-block-start-color: var(--ef-oxide-bronze);
+    border-block-start-color: var(--site-accent);
   }
 
   .examples,
@@ -923,7 +927,7 @@
 
   .doc-table {
     margin-block: 1.5rem;
-    border: 1px solid var(--ef-stone);
+    border: 1px solid var(--site-gray-200);
   }
 
   .doc-table table {
@@ -934,7 +938,7 @@
 
   .doc-table caption {
     padding: .75rem;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-weight: 700;
     text-align: start;
   }
@@ -943,14 +947,14 @@
   .doc-table td {
     min-inline-size: 7rem;
     padding: .65rem .75rem;
-    border-block-start: 1px solid var(--ef-stone);
+    border-block-start: 1px solid var(--site-gray-200);
     text-align: start;
     vertical-align: top;
     overflow-wrap: anywhere;
   }
 
   .doc-table thead th {
-    color: var(--ef-forged-iron);
+    color: var(--site-gray-800);
     font-family: var(--mono);
     font-size: .68rem;
     letter-spacing: .06em;
@@ -979,14 +983,14 @@
     contain: layout;
   }
 
-  /* Code viewer: Forma's .ef-code-figure/.ef-code with site framing. The
+  /* Code viewer: Forma's .forma-code-figure/.forma-code with site framing. The
      block keeps its authored line breaks and scrolls inside itself. */
   .code-viewer {
     min-inline-size: 0;
     max-inline-size: 100%;
-    border: 1px solid var(--ef-forged-iron);
+    border: 1px solid var(--site-gray-800);
     border-block-start: 0;
-    background: var(--ef-foundry-charcoal);
+    background: var(--site-gray-900);
   }
 
   .code-viewer__bar {
@@ -997,7 +1001,7 @@
     gap: .25rem 1rem;
     margin: 0;
     padding: .25rem .25rem .25rem 1rem;
-    color: var(--ef-parchment);
+    color: var(--site-paper);
     font-family: var(--mono);
     font-size: .72rem;
   }
@@ -1013,7 +1017,7 @@
     min-block-size: 2.75rem;
     min-inline-size: 2.75rem;
     padding: .25rem .75rem;
-    color: var(--ef-parchment);
+    color: var(--site-paper);
   }
 
   .code-viewer__code {
@@ -1023,7 +1027,7 @@
     overscroll-behavior-inline: contain;
     max-block-size: 32rem;
     margin: 0;
-    border-block-start: 1px solid var(--ef-forged-iron);
+    border-block-start: 1px solid var(--site-gray-800);
     border-radius: 0;
     font-family: var(--mono);
     font-size: .75rem;
@@ -1037,7 +1041,7 @@
   .code-viewer .code-viewer__hint {
     margin: 0;
     padding: .5rem 1rem;
-    color: var(--ef-stone);
+    color: var(--site-gray-200);
     font-size: .72rem;
   }
 
@@ -1053,8 +1057,8 @@
     display: block;
     inline-size: 100%;
     block-size: 36rem;
-    border: 1px solid var(--ef-stone);
-    background: var(--ef-parchment);
+    border: 1px solid var(--site-gray-200);
+    background: var(--site-paper);
   }
 
   .example-mobile-frame {
@@ -1071,7 +1075,7 @@
 
   .viewport-demo__note {
     margin: .5rem 0 0;
-    color: var(--ef-graphite);
+    color: var(--site-gray-600);
     font-size: .75rem;
   }
 
@@ -1096,7 +1100,7 @@
   .related-list li {
     min-inline-size: 0;
     padding: 1rem 1.25rem;
-    border: 1px solid var(--ef-stone);
+    border: 1px solid var(--site-gray-200);
   }
 
   .related-list a {
@@ -1118,8 +1122,8 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
     gap: 1px;
     margin-block-start: 4rem;
-    border: 1px solid var(--ef-forged-iron);
-    background: var(--ef-forged-iron);
+    border: 1px solid var(--site-gray-800);
+    background: var(--site-gray-800);
   }
 
   .pager__link {
@@ -1128,22 +1132,22 @@
     justify-content: center;
     min-block-size: 4rem;
     padding: .75rem 1rem;
-    background: var(--ef-parchment);
-    color: var(--ef-carbon);
+    background: var(--site-paper);
+    color: var(--site-ink);
     font-weight: 700;
     text-decoration: none;
     overflow-wrap: anywhere;
   }
 
   .pager__link span {
-    color: var(--ef-verdigris);
+    color: var(--site-accent-secondary);
     font-family: var(--mono);
     font-size: .65rem;
     font-weight: 500;
     text-transform: uppercase;
   }
 
-  a.pager__link:hover { background: var(--ef-stone); }
+  a.pager__link:hover { background: var(--site-gray-200); }
   .pager__link--up { text-align: center; }
   .pager a[rel="next"] { text-align: end; }
 
@@ -1156,14 +1160,14 @@
     align-items: center;
     gap: .5rem;
     min-block-size: 2.75rem;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-size: .8rem;
     font-weight: 700;
     cursor: pointer;
   }
 
   .catalog-nav__count {
-    color: var(--ef-graphite);
+    color: var(--site-gray-600);
     font-family: var(--mono);
     font-size: .65rem;
     font-weight: 500;
@@ -1180,17 +1184,17 @@
     display: flex;
     align-items: center;
     border-inline-start: 2px solid transparent;
-    color: var(--ef-graphite);
+    color: var(--site-gray-600);
     font-size: .8rem;
     text-decoration: none;
   }
 
-  .catalog-nav a:hover { color: var(--ef-carbon); }
+  .catalog-nav a:hover { color: var(--site-ink); }
 
   .catalog-nav a[aria-current="page"] {
     padding-inline-start: .6rem;
-    border-color: var(--ef-oxide-bronze);
-    color: var(--ef-carbon);
+    border-color: var(--site-accent);
+    color: var(--site-ink);
     font-weight: 700;
   }
 
@@ -1201,7 +1205,7 @@
   }
 
   .catalog-nav__all a {
-    color: var(--ef-oxide-bronze);
+    color: var(--site-accent);
     font-weight: 700;
   }
 
@@ -1210,9 +1214,9 @@
     align-items: center;
     min-block-size: 2.75rem;
     padding-inline: 1rem;
-    border: 1px solid var(--ef-forged-iron);
-    background: var(--ef-stone);
-    color: var(--ef-carbon);
+    border: 1px solid var(--site-gray-800);
+    background: var(--site-gray-200);
+    color: var(--site-ink);
     font-weight: 700;
     cursor: pointer;
   }
@@ -1234,8 +1238,8 @@
     flex-direction: column;
     min-inline-size: 0;
     padding: 1.25rem;
-    border: 1px solid var(--ef-forged-iron);
-    background: var(--ef-parchment);
+    border: 1px solid var(--site-gray-800);
+    background: var(--site-paper);
   }
 
   .catalog-card h2 { margin: 0; font-family: var(--sans); font-size: 1.15rem; letter-spacing: 0; }
@@ -1244,10 +1248,10 @@
     display: inline-flex;
     align-items: center;
     min-block-size: 2.75rem;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
   }
 
-  .catalog-card p { margin: .25rem 0; color: var(--ef-carbon); font-size: .88rem; }
+  .catalog-card p { margin: .25rem 0; color: var(--site-ink); font-size: .88rem; }
 
   .catalog-card__preview {
     position: relative;
@@ -1255,8 +1259,8 @@
     margin-block-start: auto;
     padding: .75rem;
     overflow: hidden;
-    border: 1px solid var(--ef-stone);
-    background: var(--ef-stone);
+    border: 1px solid var(--site-gray-200);
+    background: var(--site-gray-200);
     pointer-events: none;
   }
 
@@ -1265,7 +1269,7 @@
     position: absolute;
     inset: auto 0 0;
     block-size: 2.5rem;
-    background: linear-gradient(transparent, var(--ef-stone));
+    background: linear-gradient(transparent, var(--site-gray-200));
   }
 
   .catalog-filter {
@@ -1290,13 +1294,13 @@
     place-items: center;
     min-inline-size: max(44px, 2.75rem);
     min-block-size: max(44px, 2.75rem);
-    border: 1px solid var(--ef-stone);
-    color: var(--ef-carbon);
+    border: 1px solid var(--site-gray-200);
+    color: var(--site-ink);
     font-family: var(--mono);
     text-decoration: none;
   }
 
-  .letter-nav a:hover { border-color: var(--ef-forged-iron); }
+  .letter-nav a:hover { border-color: var(--site-gray-800); }
 
   .letter-group {
     scroll-margin-block-start: 6rem;
@@ -1311,7 +1315,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    border-block-start: 1px solid var(--ef-forged-iron);
+    border-block-start: 1px solid var(--site-gray-800);
   }
 
   .catalog-row {
@@ -1320,7 +1324,7 @@
     gap: .25rem 1rem;
     align-items: center;
     padding: .5rem 0;
-    border-block-end: 1px solid var(--ef-stone);
+    border-block-end: 1px solid var(--site-gray-200);
   }
 
   .catalog-row > * { min-inline-size: 0; }
@@ -1329,7 +1333,7 @@
     display: inline-flex;
     align-items: center;
     min-block-size: 2.75rem;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
     font-weight: 700;
   }
 
@@ -1337,14 +1341,14 @@
     display: inline-flex;
     align-items: center;
     min-block-size: 2.75rem;
-    color: var(--ef-oxide-bronze);
+    color: var(--site-accent);
     font-size: .8rem;
   }
 
   .catalog-row__summary {
     grid-column: 1 / -1;
     margin: 0;
-    color: var(--ef-graphite);
+    color: var(--site-gray-600);
     font-size: .85rem;
   }
 
@@ -1360,7 +1364,7 @@
   .family-card {
     min-inline-size: 0;
     padding: 1.25rem 1.5rem;
-    border: 1px solid var(--ef-forged-iron);
+    border: 1px solid var(--site-gray-800);
   }
 
   .family-card h3,
@@ -1376,23 +1380,23 @@
     display: inline-flex;
     align-items: center;
     min-block-size: 2.75rem;
-    color: var(--ef-carbon);
+    color: var(--site-ink);
   }
 
   .family-card__count {
-    color: var(--ef-verdigris);
+    color: var(--site-accent-secondary);
     font-family: var(--mono);
     font-size: .75rem;
   }
 
-  .family-card p { color: var(--ef-carbon); font-size: .9rem; }
+  .family-card p { color: var(--site-ink); font-size: .9rem; }
 
   .family-card__members {
-    color: var(--ef-forged-iron) !important;
+    color: var(--site-gray-800) !important;
     font-size: .8rem !important;
   }
 
-  .family-card__members a { color: var(--ef-forged-iron); }
+  .family-card__members a { color: var(--site-gray-800); }
 
   .hero-actions {
     display: flex;
@@ -1408,7 +1412,7 @@
     align-items: stretch;
   }
 
-  .quick-start .code-viewer { border-block-start: 1px solid var(--ef-forged-iron); }
+  .quick-start .code-viewer { border-block-start: 1px solid var(--site-gray-800); }
 
   .composition-canvas {
     display: block;
@@ -1442,13 +1446,13 @@
     .doc-table { overflow: visible; }
     .doc-table :is(table, tbody, tr, th, td) { display: block; }
     .doc-table thead { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); }
-    .doc-table tr { padding-block: .5rem; border-block-start: 1px solid var(--ef-forged-iron); }
+    .doc-table tr { padding-block: .5rem; border-block-start: 1px solid var(--site-gray-800); }
     .doc-table :is(th, td) { min-inline-size: 0; padding-block: .25rem; border: 0; }
     .doc-table td:last-child { min-inline-size: 0; }
     .doc-table td[data-label]::before {
       content: attr(data-label);
       display: block;
-      color: var(--ef-forged-iron);
+      color: var(--site-gray-800);
       font-family: var(--mono);
       font-size: .65rem;
       text-transform: uppercase;
@@ -1502,7 +1506,7 @@
     .component-nav {
       padding: 1rem var(--site-gutter);
       border-inline-end: 0;
-      border-block-end: 1px solid var(--ef-forged-iron);
+      border-block-end: 1px solid var(--site-gray-800);
       overflow: hidden;
     }
 
@@ -1641,7 +1645,7 @@
 }
 
 
-@layer echelon.site {
+@layer forma.site-brand-lab {
   .brand-lab {
     max-inline-size: var(--site-max);
     margin-inline: auto;
@@ -1667,7 +1671,7 @@
   .brand-demo-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--ef-primitive-spacing-4, 1rem);
+    gap: var(--forma-primitive-spacing-4, 1rem);
   }
 
   .brand-demo-wrap {
@@ -1681,22 +1685,22 @@
   .brand-demo {
     min-inline-size: 0;
     block-size: 100%;
-    padding: var(--ef-primitive-spacing-5, 1.5rem);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    border-radius: var(--ef-primitive-radius-medium, 8px);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
-    font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
+    padding: var(--forma-primitive-spacing-5, 1.5rem);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    border-radius: var(--forma-primitive-radius-medium, 8px);
+    background: var(--forma-color-surface-primary, #fafafa);
+    color: var(--forma-color-text-primary, #161616);
+    font-family: var(--forma-primitive-font-family-sans, system-ui, sans-serif);
   }
 
   .brand-demo__content {
     display: grid;
-    gap: var(--ef-primitive-spacing-4, 1rem);
+    gap: var(--forma-primitive-spacing-4, 1rem);
   }
 
   .brand-demo__eyebrow {
-    color: var(--ef-color-accent-secondary, #47756b);
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    color: var(--forma-color-accent-secondary, #1d6b66);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-size: .72rem;
     font-weight: 600;
     letter-spacing: .08em;
@@ -1705,51 +1709,51 @@
 
   .brand-demo h2 {
     margin: 0;
-    color: var(--ef-color-text-heading, #202421);
-    font-family: var(--ef-primitive-font-family-display, Georgia, serif);
+    color: var(--forma-color-text-heading, #161616);
+    font-family: var(--forma-primitive-font-family-display, Georgia, serif);
     font-size: clamp(1.8rem, 3vw, 2.6rem);
     line-height: 1;
   }
 
   .brand-demo p,
   .brand-demo span {
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--forma-color-text-secondary, #555555);
   }
 
   .brand-demo__accent {
     display: grid;
-    gap: var(--ef-primitive-spacing-2, .5rem);
-    padding: var(--ef-primitive-spacing-4, 1rem);
-    border-inline-start: .35rem solid var(--ef-color-accent-primary, #905831);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    gap: var(--forma-primitive-spacing-2, .5rem);
+    padding: var(--forma-primitive-spacing-4, 1rem);
+    border-inline-start: .35rem solid var(--forma-color-accent-primary, #2b5ea8);
+    background: var(--forma-color-surface-secondary, #eeeeee);
+    color: var(--forma-color-text-on-secondary-surface, #303030);
   }
 
   .brand-demo__accent strong,
   .brand-demo__accent span {
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    color: var(--forma-color-text-on-secondary-surface, #303030);
   }
 
   .brand-demo button {
     min-block-size: 2.75rem;
     justify-self: start;
-    padding-inline: var(--ef-primitive-spacing-4, 1rem);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    border-radius: var(--ef-primitive-radius-small, 4px);
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+    padding-inline: var(--forma-primitive-spacing-4, 1rem);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    border-radius: var(--forma-primitive-radius-small, 4px);
+    background: var(--forma-color-surface-inverse, #232323);
+    color: var(--forma-color-text-inverse, #fafafa);
     font: inherit;
     font-weight: 700;
   }
 
   .brand-demo button:focus-visible {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    outline: 3px solid var(--forma-color-focus-gap, #fafafa);
+    box-shadow: 0 0 0 5px var(--forma-color-focus-ring, #161616);
   }
 
   .brand-boundary {
     padding: clamp(1.5rem, 4vw, 3rem);
-    border: 1px solid var(--ef-forged-iron);
+    border: 1px solid var(--site-gray-800);
   }
 
   .brand-boundary h2 {
@@ -1774,7 +1778,7 @@
     }
 
     .brand-demo {
-      padding: var(--ef-primitive-spacing-4, 1rem);
+      padding: var(--forma-primitive-spacing-4, 1rem);
     }
   }
 
@@ -1796,7 +1800,7 @@
 .ve-stress {
   min-inline-size: 0;
   padding: 1rem;
-  border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+  border: 1px solid var(--forma-color-border-subtle, #d8d8d8);
   overflow-wrap: anywhere;
 }
 .ve-stress__demo { min-inline-size: 0; margin-block-start: 0.75rem; }

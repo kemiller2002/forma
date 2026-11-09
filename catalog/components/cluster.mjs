@@ -29,45 +29,45 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Form actions",
       description: "The primary and secondary actions of a form footer. When the translated labels no longer fit on one line, the secondary actions wrap below the primary one instead of overflowing.",
-      html: `<ef-cluster class="ef-component-tag">
-  <div class="ef-cluster" role="group" aria-label="Invoice actions">
+      html: `<forma-cluster class="forma-component-tag">
+  <div class="forma-cluster" role="group" aria-label="Invoice actions">
     <button type="submit">Send invoice</button>
     <button type="button">Save as draft</button>
     <button type="button">Discard changes</button>
   </div>
-</ef-cluster>`
+</forma-cluster>`
     },
     {
       id: "record-metadata",
       title: "Record metadata line",
       description: "A cluster of status lozenges and plain metadata under a record title. Each lozenge carries its state in text, so the line survives grayscale and forced colors.",
-      html: `<ef-cluster class="ef-component-tag">
-  <article class="ef-stack" data-density="compact" aria-labelledby="cluster-record-metadata-title">
+      html: `<forma-cluster class="forma-component-tag">
+  <article class="forma-stack" data-density="compact" aria-labelledby="cluster-record-metadata-title">
     <h2 id="cluster-record-metadata-title">INV-2291 · Northwind Logistics</h2>
-    <p class="ef-cluster">
-      <span class="ef-status-lozenge" data-state="attention">Overdue 12 days</span>
-      <span class="ef-status-lozenge" data-state="ok">Contact confirmed</span>
+    <p class="forma-cluster">
+      <span class="forma-status-lozenge" data-state="attention">Overdue 12 days</span>
+      <span class="forma-status-lozenge" data-state="ok">Contact confirmed</span>
       <span>Owner: Finance operations</span>
       <span>Updated <time datetime="2026-09-28">28 Sep 2026</time></span>
     </p>
   </article>
-</ef-cluster>`
+</forma-cluster>`
     },
     {
       id: "custom-gap",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Tight filter chips",
-      description: "A filter summary with a narrower gap set through `--ef-cluster-space`. Links remain full-size targets; only the space between them changes.",
-      html: `<ef-cluster class="ef-component-tag">
+      description: "A filter summary with a narrower gap set through `--forma-cluster-space`. Links remain full-size targets; only the space between them changes.",
+      html: `<forma-cluster class="forma-component-tag">
   <nav aria-label="Active filters">
-    <p class="ef-cluster" style="--ef-cluster-space: 0.5rem">
+    <p class="forma-cluster" style="--forma-cluster-space: 0.5rem">
       <a href="#status-open">Status: open</a>
       <a href="#owner-me">Owner: me</a>
       <a href="#region-emea">Region: Europe, Middle East and Africa</a>
       <a href="#clear-filters">Clear all filters</a>
     </p>
   </nav>
-</ef-cluster>`
+</forma-cluster>`
     },
     {
       id: "mobile-toolbar",
@@ -83,27 +83,27 @@ export default {
           "In landscape the row usually fits on one line again; no markup or order changes."
         ]
       },
-      html: `<ef-cluster class="ef-component-tag">
-  <div class="ef-cluster" role="toolbar" aria-label="Document tools">
+      html: `<forma-cluster class="forma-component-tag">
+  <div class="forma-cluster" role="toolbar" aria-label="Document tools">
     <button type="button">Comment</button>
     <button type="button">Suggest edit</button>
     <button type="button">Share</button>
     <button type="button">Download PDF</button>
   </div>
-</ef-cluster>`
+</forma-cluster>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: ".ef-cluster", values: "group | toolbar", default: "none", description: "Optional. Use group with aria-label to name a set of related controls. toolbar implies arrow-key navigation, which the application must implement; Forma does not." },
-      { name: "aria-label", on: ".ef-cluster", values: "string", default: "—", description: "Names the group when a role is present." },
-      { name: "style", on: ".ef-cluster", values: "--ef-cluster-space: <length>", default: "—", description: "Inline override of the cluster gap for one instance." },
-      { name: "data-density", on: "surrounding .ef-stack", values: "relaxed | standard | compact | analytical", default: "—", description: "Appears on the surrounding stack in the metadata example. It does not change the cluster gap." }
+      { name: "role", on: ".forma-cluster", values: "group | toolbar", default: "none", description: "Optional. Use group with aria-label to name a set of related controls. toolbar implies arrow-key navigation, which the application must implement; Forma does not." },
+      { name: "aria-label", on: ".forma-cluster", values: "string", default: "—", description: "Names the group when a role is present." },
+      { name: "style", on: ".forma-cluster", values: "--forma-cluster-space: <length>", default: "—", description: "Inline override of the cluster gap for one instance." },
+      { name: "data-density", on: "surrounding .forma-stack", values: "relaxed | standard | compact | analytical", default: "—", description: "Appears on the surrounding stack in the metadata example. It does not change the cluster gap." }
     ],
     hooks: {
-      "ef-cluster": "Wrapping flex row with centered cross-axis alignment and one gap for items and lines.",
-      "--ef-cluster-space": "Gap between items and between wrapped lines. Default `--ef-primitive-spacing-3` (0.75rem). This is the effective gap.",
-      "--ef-cluster-gap": "Foundation-layer gap variable. The component layer sets the gap from `--ef-cluster-space`, so setting this alone has no visible effect."
+      "forma-cluster": "Wrapping flex row with centered cross-axis alignment and one gap for items and lines.",
+      "--forma-cluster-space": "Gap between items and between wrapped lines. Default `--forma-primitive-spacing-3` (0.75rem). This is the effective gap.",
+      "--forma-cluster-gap": "Foundation-layer gap variable. The component layer sets the gap from `--forma-cluster-space`, so setting this alone has no visible effect."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through focusable items in source order, which matches the wrapped visual order." },
@@ -144,7 +144,7 @@ export default {
     ],
     avoid: [
       "Encoding priority or severity in item order alone.",
-      "Setting `--ef-cluster-gap` and expecting it to change spacing; use `--ef-cluster-space`."
+      "Setting `--forma-cluster-gap` and expecting it to change spacing; use `--forma-cluster-space`."
     ]
   },
   related: [

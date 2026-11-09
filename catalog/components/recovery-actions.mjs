@@ -4,7 +4,7 @@ export default {
   behavior: "Aegis / Ordo / Application",
   summary: "Native buttons annotated with Aegis capability identity; current authority is revalidated on activation.",
   purpose: {
-    description: "Recovery actions project the Aegis recovery capabilities of a fault into ordinary native buttons inside a labelled group. Each button carries `data-ef-aegis-capability` with the exact Aegis capability case name, such as `CanRetry`, so application or Limen code knows which typed recovery request the click represents. The attribute communicates intent only. It is not authority: stale DOM must never authorize an effect, so the application rechecks the current Aegis capability and Ordo/application state every time a button is activated. Forma decides neither which actions exist nor whether they are legal.",
+    description: "Recovery actions project the Aegis recovery capabilities of a fault into ordinary native buttons inside a labelled group. Each button carries `data-forma-aegis-capability` with the exact Aegis capability case name, such as `CanRetry`, so application or Limen code knows which typed recovery request the click represents. The attribute communicates intent only. It is not authority: stale DOM must never authorize an effect, so the application rechecks the current Aegis capability and Ordo/application state every time a button is activated. Forma decides neither which actions exist nor whether they are legal.",
     useWhen: [
       "An Aegis presentation carries one or more recovery actions and you are rendering it in any fault surface.",
       "You need the canonical labels (Try again, Sign in, Reload, Set aside, Process again, Open read-only, Reconnect diagnostics) or localized equivalents that keep the capability identity.",
@@ -28,34 +28,34 @@ export default {
       id: "localized-labels",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Localized labels",
-      description: "French labels for three capabilities. The visible text changes; the capability identity in data-ef-aegis-capability does not, so application code maps clicks exactly as before.",
-      html: `<ef-recovery-actions class="ef-component-tag">
-  <div class="ef-recovery-actions" role="group" aria-label="Actions de récupération" lang="fr">
-    <button type="button" data-ef-aegis-capability="CanRetry">Réessayer</button>
-    <button type="button" data-ef-aegis-capability="CanReload">Recharger</button>
-    <button type="button" data-ef-aegis-capability="CanRestoreSink">Reconnecter les diagnostics</button>
+      description: "French labels for three capabilities. The visible text changes; the capability identity in data-forma-aegis-capability does not, so application code maps clicks exactly as before.",
+      html: `<forma-recovery-actions class="forma-component-tag">
+  <div class="forma-recovery-actions" role="group" aria-label="Actions de récupération" lang="fr">
+    <button type="button" data-forma-aegis-capability="CanRetry">Réessayer</button>
+    <button type="button" data-forma-aegis-capability="CanReload">Recharger</button>
+    <button type="button" data-forma-aegis-capability="CanRestoreSink">Reconnecter les diagnostics</button>
   </div>
-</ef-recovery-actions>`
+</forma-recovery-actions>`
     },
     {
       id: "import-recovery",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Recovery for a failed import",
       description: "The group inside an inline fault for a data import. Aegis supplied Process again and Set aside; both keep their default labels. The group name includes the affected batch because several import faults can be on one page.",
-      html: `<ef-recovery-actions class="ef-component-tag">
-  <div class="ef-fault ef-fault--inline" role="group" data-ef-intent="inline" data-ef-severity="warning" aria-labelledby="recovery-actions-import-recovery-title">
-    <div class="ef-fault__marker" aria-hidden="true">!</div>
-    <div class="ef-fault__body">
-      <p class="ef-fault__severity">Warning</p>
-      <p class="ef-fault__title" id="recovery-actions-import-recovery-title"><strong>3 rows in timesheets-week-39.csv were not imported.</strong></p>
-      <p class="ef-fault-reference">Reference <code>AG-61KDA</code></p>
+      html: `<forma-recovery-actions class="forma-component-tag">
+  <div class="forma-fault forma-fault--inline" role="group" data-forma-intent="inline" data-forma-severity="warning" aria-labelledby="recovery-actions-import-recovery-title">
+    <div class="forma-fault__marker" aria-hidden="true">!</div>
+    <div class="forma-fault__body">
+      <p class="forma-fault__severity">Warning</p>
+      <p class="forma-fault__title" id="recovery-actions-import-recovery-title"><strong>3 rows in timesheets-week-39.csv were not imported.</strong></p>
+      <p class="forma-fault-reference">Reference <code>AG-61KDA</code></p>
     </div>
-    <div class="ef-recovery-actions" role="group" aria-label="Recovery actions for timesheets-week-39.csv">
-      <button type="button" data-ef-aegis-capability="CanReprocess">Process again</button>
-      <button type="button" data-ef-aegis-capability="CanQuarantine">Set aside</button>
+    <div class="forma-recovery-actions" role="group" aria-label="Recovery actions for timesheets-week-39.csv">
+      <button type="button" data-forma-aegis-capability="CanReprocess">Process again</button>
+      <button type="button" data-forma-aegis-capability="CanQuarantine">Set aside</button>
     </div>
   </div>
-</ef-recovery-actions>`
+</forma-recovery-actions>`
     },
     {
       id: "mobile-stacked",
@@ -71,32 +71,32 @@ export default {
           "Order is preserved when stacking: the first capability Aegis supplied is still first."
         ]
       },
-      html: `<ef-recovery-actions class="ef-component-tag">
-  <div class="ef-recovery-actions" role="group" aria-label="Recovery actions">
-    <button type="button" data-ef-aegis-capability="CanReauthenticate">Sign in</button>
-    <button type="button" data-ef-aegis-capability="CanOpenReadOnly">Open read-only</button>
-    <button type="button" data-ef-aegis-capability="CanReload">Reload</button>
+      html: `<forma-recovery-actions class="forma-component-tag">
+  <div class="forma-recovery-actions" role="group" aria-label="Recovery actions">
+    <button type="button" data-forma-aegis-capability="CanReauthenticate">Sign in</button>
+    <button type="button" data-forma-aegis-capability="CanOpenReadOnly">Open read-only</button>
+    <button type="button" data-forma-aegis-capability="CanReload">Reload</button>
   </div>
-</ef-recovery-actions>`
+</forma-recovery-actions>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: ".ef-recovery-actions", values: "group", default: "—", description: "Exposes the buttons as one named set." },
-      { name: "aria-label", on: ".ef-recovery-actions", values: "string", default: "—", description: "Names the group, for example \"Recovery actions\". Include the affected object when several groups share a page." },
+      { name: "role", on: ".forma-recovery-actions", values: "group", default: "—", description: "Exposes the buttons as one named set." },
+      { name: "aria-label", on: ".forma-recovery-actions", values: "string", default: "—", description: "Names the group, for example \"Recovery actions\". Include the affected object when several groups share a page." },
       { name: "type", on: "button", values: "button", default: "—", description: "Required so a recovery button never submits an enclosing form." },
-      { name: "data-ef-aegis-capability", on: "button", values: "CanRetry | CanReauthenticate | CanReload | CanQuarantine | CanReprocess | CanOpenReadOnly | CanRestoreSink", default: "—", description: "The exact Aegis capability case name. Intent only, never authorization: the application revalidates the capability and domain state on every activation." },
-      { name: "lang", on: ".ef-recovery-actions or button", values: "BCP 47 tag", default: "inherited", description: "Set when labels are in a different language from the page so they are pronounced correctly." }
+      { name: "data-forma-aegis-capability", on: "button", values: "CanRetry | CanReauthenticate | CanReload | CanQuarantine | CanReprocess | CanOpenReadOnly | CanRestoreSink", default: "—", description: "The exact Aegis capability case name. Intent only, never authorization: the application revalidates the capability and domain state on every activation." },
+      { name: "lang", on: ".forma-recovery-actions or button", values: "BCP 47 tag", default: "inherited", description: "Set when labels are in a different language from the page so they are pronounced correctly." }
     ],
     hooks: {
-      "ef-recovery-actions": "Wrapping flex row with a 0.5rem gap. Direct child buttons get a 44px minimum height; below a 36rem viewport the row fills the width and each button becomes full width."
+      "forma-recovery-actions": "Wrapping flex row with a 0.5rem gap. Direct child buttons get a 44px minimum height; below a 36rem viewport the row fills the width and each button becomes full width."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between recovery buttons in source order." },
       { keys: "Enter / Space", action: "Activates the focused button (native button behavior)." }
     ],
     events: [
-      { name: "click", description: "Native click. Limen/application code reads data-ef-aegis-capability, revalidates the current Aegis capability and Ordo/application state, and only then issues the typed recovery request." }
+      { name: "click", description: "Native click. Limen/application code reads data-forma-aegis-capability, revalidates the current Aegis capability and Ordo/application state, and only then issues the typed recovery request." }
     ],
     form: "Buttons are type=\"button\" and do not participate in form submission or reset."
   },

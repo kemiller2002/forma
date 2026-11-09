@@ -7,7 +7,7 @@ const root = process.cwd();
 const read = file => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"));
 const brandFiles = fs.readdirSync(path.join(root, "brands")).filter(file => file.endsWith(".brand.json")).sort();
 const contract = createColorContract({
-  tokenDocument: read("tokens/echelon.tokens.json"),
+  tokenDocument: read("tokens/forma.tokens.json"),
   brands: brandFiles.map(file => ({ file: `brands/${file}`, document: read(`brands/${file}`) })),
   formaVersion: read("package.json").version
 });

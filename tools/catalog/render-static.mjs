@@ -24,9 +24,9 @@ export const renderBranding = () => {
         <p>These examples use identical inner markup. Only the brand and theme scopes differ.</p>
       </div>
       <div class="brand-demo-grid">
-        <article class="brand-demo-wrap"><p class="category-label">Echelon / light</p><section class="brand-demo" data-ef-brand="echelon">${brandSample()}</section></article>
-        <article class="brand-demo-wrap"><p class="category-label">Example Harbor / light</p><section class="brand-demo" data-ef-brand="example-harbor">${brandSample()}</section></article>
-        <article class="brand-demo-wrap"><p class="category-label">Example Harbor / dark</p><section class="brand-demo" data-ef-brand="example-harbor" data-ef-theme="dark">${brandSample()}</section></article>
+        <article class="brand-demo-wrap"><p class="category-label">Example Orchard / light</p><section class="brand-demo" data-forma-brand="example-orchard">${brandSample()}</section></article>
+        <article class="brand-demo-wrap"><p class="category-label">Example Harbor / light</p><section class="brand-demo" data-forma-brand="example-harbor">${brandSample()}</section></article>
+        <article class="brand-demo-wrap"><p class="category-label">Example Harbor / dark</p><section class="brand-demo" data-forma-brand="example-harbor" data-forma-theme="dark">${brandSample()}</section></article>
       </div>
     </section>
   
@@ -36,9 +36,9 @@ export const renderBranding = () => {
         <p>Density and shape can change while the brand's semantic color and typography remain authoritative.</p>
       </div>
       <div class="brand-demo-grid">
-        <article class="brand-demo-wrap"><p class="category-label">Compact</p><section class="brand-demo" data-ef-brand="echelon" data-ef-skin="compact">${brandSample()}</section></article>
-        <article class="brand-demo-wrap"><p class="category-label">Comfortable</p><section class="brand-demo" data-ef-brand="echelon" data-ef-skin="comfortable">${brandSample()}</section></article>
-        <article class="brand-demo-wrap"><p class="category-label">Square</p><section class="brand-demo" data-ef-brand="echelon" data-ef-skin="square">${brandSample()}</section></article>
+        <article class="brand-demo-wrap"><p class="category-label">Compact</p><section class="brand-demo" data-forma-brand="example-orchard" data-forma-skin="compact">${brandSample()}</section></article>
+        <article class="brand-demo-wrap"><p class="category-label">Comfortable</p><section class="brand-demo" data-forma-brand="example-orchard" data-forma-skin="comfortable">${brandSample()}</section></article>
+        <article class="brand-demo-wrap"><p class="category-label">Square</p><section class="brand-demo" data-forma-brand="example-orchard" data-forma-skin="square">${brandSample()}</section></article>
       </div>
     </section>
   
@@ -46,7 +46,7 @@ export const renderBranding = () => {
       <span class="eyebrow">Boundary</span>
       <h2>Presentation changes. Authority does not.</h2>
       <p>Runtime selection, persistence, remote manifest loading, or an interactive editor belong to the consuming application through Limen. Legal state and transitions remain Ordo/application authority. Forma emits static CSS and preserves its zero-runtime contract.</p>
-      <a class="ef-button" href="../agents/">Read the agent contract</a>
+      <a class="forma-button" href="../agents/">Read the agent contract</a>
     </section>
   </main>`;
   return page({ title: "Brand Laboratory", rootPath: "../", body: brandingBody });
@@ -62,7 +62,7 @@ export const renderAgents = () => {
     <ol>
       <li>Identify the user task and domain state.</li>
       <li>Find the closest canonical pattern under <code>patterns/</code>.</li>
-      <li>Use its public <code>&lt;ef-…&gt;</code> authoring tag around the canonical pattern.</li>
+      <li>Use its public <code>&lt;forma-…&gt;</code> authoring tag around the canonical pattern.</li>
       <li>Preserve its semantic elements, class structure, labels, IDs, and ARIA relationships.</li>
       <li>Supply application content and rendered state.</li>
       <li>Put non-native behavior in the consuming application/Limen.</li>
@@ -86,7 +86,7 @@ export const renderAgents = () => {
   
     <h2>Do not</h2>
     <ul>
-      <li>Register Forma's <code>&lt;ef-…&gt;</code> authoring tags with <code>customElements.define()</code>; they are intentionally inert wrappers.</li>
+      <li>Register Forma's <code>&lt;forma-…&gt;</code> authoring tags with <code>customElements.define()</code>; they are intentionally inert wrappers.</li>
       <li>Add runtime JavaScript or WebAssembly to Forma.</li>
       <li>Replace native HTML only to obtain a custom appearance.</li>
       <li>Create duplicate components for presets an existing semantic pattern represents.</li>

@@ -8,7 +8,7 @@ Forma owns **intrinsic component layout**, semantic markup and the documentation
 
 ## Change requirements for agents
 
-1. Declare sibling alignment intent before placing multi-column fields. Peer text inputs, selects and controls in the same form row have a shared top edge, unless the composition explicitly chooses another relationship. A label/help-text difference must not accidentally stagger the input controls. Use `.ef-form-row` (catalog: Form row) for peer fields and declare the group in the example's `alignment` (or `basicAlignment`).
+1. Declare sibling alignment intent before placing multi-column fields. Peer text inputs, selects and controls in the same form row have a shared top edge, unless the composition explicitly chooses another relationship. A label/help-text difference must not accidentally stagger the input controls. Use `.forma-form-row` (catalog: Form row) for peer fields and declare the group in the example's `alignment` (or `basicAlignment`).
 2. Prefer a compositional Forma layout primitive over local corrective `margin-top`, offsets or CSS hacks. Record missing primitives as design-system requirements. Intrinsic control heights and internal icon geometry belong in Forma.
 3. Test at 320, 390, 768 and 1280 CSS pixels; preserve visible names and avoid unintended page horizontal overflow. Include long labels, validation text, zoom and expanded/error states where relevant.
 4. Classify each documentation example explicitly as **live demo** or **static specimen** with its `interaction` declaration (`basicInteraction` for the canonical Basic example; schema and reasons in `tools/catalog/interaction.mjs`). A live demo's enabled controls MUST perform a real native/local state change or a clearly indicated mock operation with observable result. Static specimens may illustrate markup/disabled states but must not claim an operation completed. Do not silently convert buttons into meaningless inert decoration.
@@ -36,7 +36,7 @@ The documentation site runs no script (enforced by `tests/site-build.test.mjs`) 
 
 ## Layout primitives and geometry evidence
 
-- `.ef-form-row` keeps peer field controls on one top edge regardless of label, description or validation length (subgrid). `tests/site-browser/catalog-alignment.spec.mjs` measures every declared group at 320/390/768/1280px and at 100% and 200% text.
+- `.forma-form-row` keeps peer field controls on one top edge regardless of label, description or validation length (subgrid). `tests/site-browser/catalog-alignment.spec.mjs` measures every declared group at 320/390/768/1280px and at 100% and 200% text.
 - Single-line native controls (text-like, date/time, number, select) share one em-based intrinsic height.
 - `tests/site-browser/forma-geometry.spec.mjs` holds regression fixtures for defects reported by consumers (HelixNote, Forma Studio, Summa, Signal).
 - `tests/site-browser/site-conformance.spec.mjs` audits the documentation site and the Echelon marketing reference fixture: overflow and intact navigation labels at every contract width and 200% text, valid destinations for every enabled action, and fragment destinations clear of the sticky header.

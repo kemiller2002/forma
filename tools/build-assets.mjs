@@ -23,7 +23,7 @@ const components = fs.readFileSync("dist/components.css", "utf8");
 const assessment = fs.readFileSync("dist/assessment.css", "utf8");
 
 // The generic marketing layer (brand-neutral, scoped to its own classes and
-// the .ef-site shell) is part of the complete surface; the Echelon theme is not.
+// the .forma-site shell) is part of the complete surface; an organization theme is not (Forma ships none).
 const marketingSources = ["roles.css", "foundations.css", "components.css", "layouts.css"];
 const marketing = marketingSources
   .map(file => fs.readFileSync(path.join("src/marketing", file), "utf8"))

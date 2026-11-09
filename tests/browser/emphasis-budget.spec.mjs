@@ -52,7 +52,7 @@ test("emphasis labels survive visual-channel dropout", async ({ page }) => {
   await page.setContent(doc(`<div class="dropout">${pattern}</div>`, `.dropout{filter:grayscale(1)}.dropout *{background:transparent!important;border-color:transparent!important;box-shadow:none!important}`));
   const pairs = await page.locator("[data-emphasis]").evaluateAll(elements => elements.map(el => ({
     emphasis: el.getAttribute("data-emphasis"),
-    label: el.querySelector(":scope > .ef-emphasis-label")?.textContent?.trim().toLowerCase()
+    label: el.querySelector(":scope > .forma-emphasis-label")?.textContent?.trim().toLowerCase()
   })));
   expect(pairs).toEqual([
     { emphasis: "primary", label: "primary" },

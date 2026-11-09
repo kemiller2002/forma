@@ -23,5 +23,5 @@ Keep interpretation, agent behavior, recording, upload, persistence, permissions
 
 ## Maintenance
 
-- Owner: Echelon Foundry design system
+- Owner: Forma design system
 - Introduced for cross-application agent/capture workflows: 2026-09-23

@@ -14,7 +14,7 @@
 ## Repository-wide composition
 
 - Composition/root entry point: consuming application's HTML
-- Shared contracts: `patterns/*.html`, `src/styles/*.css`, `tokens/echelon.tokens.json`
+- Shared contracts: `patterns/*.html`, `src/styles/*.css`, `tokens/forma.tokens.json`
 - Behavior boundary: Limen/application code outside this package
 - Architecture checks: `npm run check`
 - Boundary checks: `npm run test:runtime`, `npm run test:browser`

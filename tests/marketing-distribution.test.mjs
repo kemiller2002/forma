@@ -7,7 +7,7 @@ import path from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
-const bundle = JSON.parse(fs.readFileSync("bundles/echelon-marketing.bundle.json", "utf8"));
+const bundle = JSON.parse(fs.readFileSync("bundles/forma-marketing.bundle.json", "utf8"));
 const dist = bundle.outputDirectory;
 const manifest = JSON.parse(fs.readFileSync(path.join(dist, "forma-marketing.manifest.json"), "utf8"));
 const installer = path.resolve("actions/install-presentation/install.sh");
@@ -30,7 +30,7 @@ test("every bundle artifact exists, is versioned, and matches its manifest and c
 });
 
 test("the bundler is deterministic", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-bundle-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-bundle-"));
   const outputs = ["a", "b"].map(run => {
     const definition = path.join(dir, `${run}.json`);
     fs.writeFileSync(definition, JSON.stringify({ ...bundle, outputDirectory: path.relative(process.cwd(), path.join(dir, run)) }));
@@ -47,22 +47,15 @@ test("the bundler is deterministic", () => {
 
 test("artifacts contain the expected foundations, components, layouts, and theme layers", () => {
   const generic = read("forma-marketing.css");
-  for (const layer of ["echelon.tokens", "echelon.foundations", "echelon.marketing.foundations", "echelon.marketing.components", "echelon.marketing.layouts"]) {
+  for (const layer of ["forma.tokens", "forma.foundations", "forma.marketing.foundations", "forma.marketing.components", "forma.marketing.layouts"]) {
     assert.match(generic, new RegExp(`@layer ${layer.replace(/\./g, "\\.")} \\{`), `forma-marketing.css lacks ${layer}`);
   }
-  for (const component of [".ef-site-header", ".ef-site-nav__link", ".ef-hero", ".ef-card-grid", ".ef-cta", ".ef-site-footer", ".ef-skip-link", ".ef-doc"]) {
+  for (const component of [".forma-site-header", ".forma-site-nav__link", ".forma-hero", ".forma-card-grid", ".forma-cta", ".forma-site-footer", ".forma-skip-link", ".forma-doc"]) {
     assert.ok(generic.includes(component), `forma-marketing.css lacks ${component}`);
   }
-  assert.doesNotMatch(generic, /@layer echelon\.theme/, "the generic layer must not carry a brand theme");
-
-  const theme = read("forma-marketing-theme-echelon.css");
-  assert.match(theme, /@layer echelon\.theme/);
-  assert.match(theme, /--ef-color-status-success: #/);
-
-  const complete = read("forma-echelon-marketing.css");
-  assert.ok(complete.includes(generic.slice(generic.indexOf("/* --- source:"))), "complete bundle must contain the generic layer verbatim");
-  assert.ok(complete.includes(theme.slice(theme.indexOf("/* --- source:"))), "complete bundle must contain the theme verbatim");
-  assert.ok(complete.indexOf("@layer echelon.theme") > complete.indexOf("@layer echelon.marketing.layouts"), "theme must load after the generic layer");
+  assert.doesNotMatch(generic, /@layer [a-z-]+\.theme\b/, "the generic layer must not carry an organization theme");
+  // EDS-ADR-002: organization marketing themes ship outside Forma.
+  assert.deepEqual(manifest.artifacts.map((artifact) => artifact.file).sort(), ["forma-all.css", "forma-marketing.css"]);
 });
 
 test("artifacts are self-contained and runtime-free", () => {
@@ -76,7 +69,7 @@ test("artifacts are self-contained and runtime-free", () => {
 });
 
 test("the bundler rejects a source that would make an artifact depend on other files", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-bundle-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-bundle-"));
   const bad = path.join(dir, "bad.css");
   fs.writeFileSync(bad, '@import "elsewhere.css";\n');
   const definition = path.join(dir, "bad.json");
@@ -90,7 +83,7 @@ test("the bundler rejects a source that would make an artifact depend on other f
 });
 
 function site(lockBody) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-site-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-site-"));
   fs.writeFileSync(path.join(dir, "forma.lock"), lockBody);
   return dir;
 }
@@ -98,27 +91,27 @@ function site(lockBody) {
 const install = (cwd, ...args) => spawnSync("bash", [installer, "--source", path.resolve(dist), ...args], { cwd, encoding: "utf8" });
 
 test("an independent site pins, installs, and verifies the Echelon bundle without Node or npm", () => {
-  const dir = site(`forma ${pkg.version}\ndestination assets/forma\nasset forma-echelon-marketing.css\n`);
+  const dir = site(`forma ${pkg.version}\ndestination assets/forma\nasset forma-marketing.css\n`);
   const pin = install(dir, "--update");
   assert.equal(pin.status, 0, pin.stderr);
   const lock = fs.readFileSync(path.join(dir, "forma.lock"), "utf8");
   assert.match(lock, new RegExp(`^forma ${pkg.version.replace(/\./g, "\\.")}$`, "m"), "the pinned version must be discoverable in the site repository");
-  assert.match(lock, new RegExp(`asset forma-echelon-marketing\\.css sha256:${manifest.artifacts.find(a => a.file === "forma-echelon-marketing.css").sha256}`));
+  assert.match(lock, new RegExp(`asset forma-marketing\\.css sha256:${manifest.artifacts.find(a => a.file === "forma-marketing.css").sha256}`));
 
   const verify = install(dir);
   assert.equal(verify.status, 0, verify.stderr);
-  assert.equal(sha(path.join(dir, "assets/forma/forma-echelon-marketing.css")), sha(path.join(dist, "forma-echelon-marketing.css")));
+  assert.equal(sha(path.join(dir, "assets/forma/forma-marketing.css")), sha(path.join(dist, "forma-marketing.css")));
 });
 
 test("the installer refuses changed, missing, or unpinned assets", () => {
-  const tampered = site(`forma ${pkg.version}\ndestination assets/forma\nasset forma-echelon-marketing.css sha256:${"0".repeat(64)}\n`);
+  const tampered = site(`forma ${pkg.version}\ndestination assets/forma\nasset forma-marketing.css sha256:${"0".repeat(64)}\n`);
   assert.equal(install(tampered).status, 3, "a checksum mismatch must fail");
   assert.equal(fs.existsSync(path.join(tampered, "assets/forma")), false, "nothing is installed after a mismatch");
 
   const missing = site(`forma ${pkg.version}\ndestination assets/forma\nasset forma-not-released.css sha256:${"0".repeat(64)}\n`);
   assert.equal(install(missing).status, 4);
 
-  const floating = site("forma latest\ndestination assets/forma\nasset forma-echelon-marketing.css\n");
+  const floating = site("forma latest\ndestination assets/forma\nasset forma-marketing.css\n");
   assert.equal(install(floating).status, 2, "a floating version must be rejected");
 });
 

@@ -18,7 +18,7 @@ export default {
     ],
     characteristics: [
       "Article grid with 0.75rem gaps: header (relationship type and claim), body, footer.",
-      "The relationship type is text in the header, typically a `.ef-component-kicker`.",
+      "The relationship type is text in the header, typically a `.forma-component-kicker`.",
       "The body is a grid of short labelled statements (Evidence, Source, Scope).",
       "Trailing margins inside the header and body are removed so the card stays compact."
     ]
@@ -28,39 +28,39 @@ export default {
       id: "contradicting-evidence",
       title: "Contradicting evidence",
       description: "A load test contradicts the claim that the service meets its latency target. The relationship type Contradicts is the first thing read, and the footer states the evidence is current.",
-      html: `<ef-evidence-relationship class="ef-component-tag">
-  <article class="ef-evidence-relationship" aria-labelledby="evidence-relationship-contradicting-evidence-claim">
+      html: `<forma-evidence-relationship class="forma-component-tag">
+  <article class="forma-evidence-relationship" aria-labelledby="evidence-relationship-contradicting-evidence-claim">
     <header>
-      <p class="ef-component-kicker">Contradicts</p>
+      <p class="forma-component-kicker">Contradicts</p>
       <h2 id="evidence-relationship-contradicting-evidence-claim">Claim: checkout meets the 400 ms p95 latency target</h2>
     </header>
-    <div class="ef-evidence-relationship__body">
+    <div class="forma-evidence-relationship__body">
       <p><strong>Evidence:</strong> Load test measured 612 ms p95 at 2,000 requests per second.</p>
       <p><strong>Source:</strong> Performance run PR-5520</p>
       <p><strong>Scope:</strong> EU West, release candidate rel-2026.10-rc2</p>
     </div>
-    <footer><span class="ef-status-lozenge">Current</span></footer>
+    <footer><span class="forma-status-lozenge">Current</span></footer>
   </article>
-</ef-evidence-relationship>`
+</forma-evidence-relationship>`
     },
     {
       id: "partial-scope",
       title: "Evidence covering part of the scope",
       description: "Tests passed, but only for one of the two platforms the claim covers. The relationship is Partially supports, the scope line names what is covered, and the footer says the evidence is stale because a newer commit exists.",
-      html: `<ef-evidence-relationship class="ef-component-tag">
-  <article class="ef-evidence-relationship" aria-labelledby="evidence-relationship-partial-scope-claim">
+      html: `<forma-evidence-relationship class="forma-component-tag">
+  <article class="forma-evidence-relationship" aria-labelledby="evidence-relationship-partial-scope-claim">
     <header>
-      <p class="ef-component-kicker">Partially supports</p>
+      <p class="forma-component-kicker">Partially supports</p>
       <h2 id="evidence-relationship-partial-scope-claim">Claim: the mobile app is ready for release</h2>
     </header>
-    <div class="ef-evidence-relationship__body">
+    <div class="forma-evidence-relationship__body">
       <p><strong>Evidence:</strong> UI regression suite passed, 412 of 412 tests.</p>
       <p><strong>Source:</strong> CI run 1187</p>
-      <p><strong>Scope:</strong> Android only, commit <span class="ef-identifier">a41c9e0</span>. iOS has no run for this commit.</p>
+      <p><strong>Scope:</strong> Android only, commit <span class="forma-identifier">a41c9e0</span>. iOS has no run for this commit.</p>
     </div>
-    <footer><span class="ef-status-lozenge" data-state="unknown">Stale: 3 newer commits</span></footer>
+    <footer><span class="forma-status-lozenge" data-state="unknown">Stale: 3 newer commits</span></footer>
   </article>
-</ef-evidence-relationship>`
+</forma-evidence-relationship>`
     },
     {
       id: "mobile-evidence",
@@ -76,29 +76,29 @@ export default {
           "Links inside the body keep their own touch targets; the article itself is not interactive."
         ]
       },
-      html: `<ef-evidence-relationship class="ef-component-tag">
-  <article class="ef-evidence-relationship" aria-labelledby="evidence-relationship-mobile-evidence-claim">
+      html: `<forma-evidence-relationship class="forma-component-tag">
+  <article class="forma-evidence-relationship" aria-labelledby="evidence-relationship-mobile-evidence-claim">
     <header>
-      <p class="ef-component-kicker">Supports</p>
+      <p class="forma-component-kicker">Supports</p>
       <h2 id="evidence-relationship-mobile-evidence-claim">Claim: backups are restorable</h2>
     </header>
-    <div class="ef-evidence-relationship__body">
+    <div class="forma-evidence-relationship__body">
       <p><strong>Evidence:</strong> Monthly restore drill completed in 38 minutes.</p>
       <p><strong>Source:</strong> <a href="#evidence-relationship-mobile-evidence-drill">Restore drill record DR-0926</a></p>
       <p><strong>Scope:</strong> Production database, snapshot of 26 Sep 2026</p>
     </div>
-    <footer><span class="ef-status-lozenge" data-state="ok">Current</span></footer>
+    <footer><span class="forma-status-lozenge" data-state="ok">Current</span></footer>
   </article>
-</ef-evidence-relationship>`
+</forma-evidence-relationship>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "article.ef-evidence-relationship", values: "id of the claim heading", default: "—", description: "Names the article by its claim." }
+      { name: "aria-labelledby", on: "article.forma-evidence-relationship", values: "id of the claim heading", default: "—", description: "Names the article by its claim." }
     ],
     hooks: {
-      "ef-evidence-relationship": "Root article; a grid of header, body and footer with 0.75rem gaps. Removes the trailing margin of the header's last child.",
-      "ef-evidence-relationship__body": "Grid of labelled evidence statements with 0.5rem gaps; its last child has no bottom margin."
+      "forma-evidence-relationship": "Root article; a grid of header, body and footer with 0.75rem gaps. Removes the trailing margin of the header's last child.",
+      "forma-evidence-relationship__body": "Grid of labelled evidence statements with 0.5rem gaps; its last child has no bottom margin."
     },
     keyboard: [
       { keys: "None", action: "Static content; links inside the body are reached with Tab." }

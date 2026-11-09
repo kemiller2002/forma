@@ -28,10 +28,10 @@ export default {
       id: "new-artifact",
       title: "New artifact with nothing verified yet",
       description: "Counts for an artifact that has just been assessed. Zero counts are shown rather than omitted, so the large Unknown count is read in context.",
-      html: `<ef-security-state-matrix class="ef-component-tag">
-  <section class="ef-security-state-matrix" aria-labelledby="security-state-matrix-new-artifact-title">
+      html: `<forma-security-state-matrix class="forma-component-tag">
+  <section class="forma-security-state-matrix" aria-labelledby="security-state-matrix-new-artifact-title">
     <h2 id="security-state-matrix-new-artifact-title">Security evidence state for build 7f3c9a2</h2>
-    <dl class="ef-security-state-matrix__grid">
+    <dl class="forma-security-state-matrix__grid">
       <div data-state="verified"><dt>Verified</dt><dd>0</dd></div>
       <div data-state="violated"><dt>Violated</dt><dd>0</dd></div>
       <div data-state="unknown"><dt>Unknown</dt><dd>26</dd></div>
@@ -39,17 +39,17 @@ export default {
       <div data-state="na"><dt>N/A</dt><dd>2</dd></div>
     </dl>
   </section>
-</ef-security-state-matrix>`
+</forma-security-state-matrix>`
     },
     {
       id: "per-scope",
       title: "One matrix per assessed scope",
       description: "Two scopes compared by repeating the matrix, each with the scope in its heading. The layout never implies that counts from different scopes can be added together.",
-      html: `<ef-security-state-matrix class="ef-component-tag">
-  <div class="ef-stack">
-    <section class="ef-security-state-matrix" aria-labelledby="security-state-matrix-per-scope-auth-title">
+      html: `<forma-security-state-matrix class="forma-component-tag">
+  <div class="forma-stack">
+    <section class="forma-security-state-matrix" aria-labelledby="security-state-matrix-per-scope-auth-title">
       <h3 id="security-state-matrix-per-scope-auth-title">Authentication boundary</h3>
-      <dl class="ef-security-state-matrix__grid">
+      <dl class="forma-security-state-matrix__grid">
         <div data-state="verified"><dt>Verified</dt><dd>9</dd></div>
         <div data-state="violated"><dt>Violated</dt><dd>0</dd></div>
         <div data-state="unknown"><dt>Unknown</dt><dd>1</dd></div>
@@ -57,9 +57,9 @@ export default {
         <div data-state="na"><dt>N/A</dt><dd>1</dd></div>
       </dl>
     </section>
-    <section class="ef-security-state-matrix" aria-labelledby="security-state-matrix-per-scope-egress-title">
+    <section class="forma-security-state-matrix" aria-labelledby="security-state-matrix-per-scope-egress-title">
       <h3 id="security-state-matrix-per-scope-egress-title">Network egress boundary</h3>
-      <dl class="ef-security-state-matrix__grid">
+      <dl class="forma-security-state-matrix__grid">
         <div data-state="verified"><dt>Verified</dt><dd>2</dd></div>
         <div data-state="violated"><dt>Violated</dt><dd>1</dd></div>
         <div data-state="unknown"><dt>Unknown</dt><dd>2</dd></div>
@@ -68,7 +68,7 @@ export default {
       </dl>
     </section>
   </div>
-</ef-security-state-matrix>`
+</forma-security-state-matrix>`
     },
     {
       id: "mobile",
@@ -83,10 +83,10 @@ export default {
           "In landscape more tiles fit per row; order is unchanged."
         ]
       },
-      html: `<ef-security-state-matrix class="ef-component-tag">
-  <section class="ef-security-state-matrix" aria-labelledby="security-state-matrix-mobile-title">
+      html: `<forma-security-state-matrix class="forma-component-tag">
+  <section class="forma-security-state-matrix" aria-labelledby="security-state-matrix-mobile-title">
     <h2 id="security-state-matrix-mobile-title">Security evidence state</h2>
-    <dl class="ef-security-state-matrix__grid">
+    <dl class="forma-security-state-matrix__grid">
       <div data-state="verified"><dt>Verified</dt><dd>18</dd></div>
       <div data-state="violated"><dt>Violated</dt><dd>1</dd></div>
       <div data-state="unknown"><dt>Unknown</dt><dd>3</dd></div>
@@ -94,17 +94,17 @@ export default {
       <div data-state="na"><dt>N/A</dt><dd>4</dd></div>
     </dl>
   </section>
-</ef-security-state-matrix>`
+</forma-security-state-matrix>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-security-state-matrix", values: "id of the heading", default: "—", description: "Names the region; include the scope or subject in the heading." },
-      { name: "data-state", on: ".ef-security-state-matrix__grid > div", values: "verified | violated | unknown | stale | na", default: "—", description: "Machine state name for the tile. Not styled by Forma CSS; the dt text is the visible label." }
+      { name: "aria-labelledby", on: "section.forma-security-state-matrix", values: "id of the heading", default: "—", description: "Names the region; include the scope or subject in the heading." },
+      { name: "data-state", on: ".forma-security-state-matrix__grid > div", values: "verified | violated | unknown | stale | na", default: "—", description: "Machine state name for the tile. Not styled by Forma CSS; the dt text is the visible label." }
     ],
     hooks: {
-      "ef-security-state-matrix": "Root section: bordered, padded primary surface.",
-      "ef-security-state-matrix__grid": "Description list laid out as an auto-fit grid of tiles at least 7rem wide. Each tile has a 0.25rem top border in the current text color (CanvasText in forced colors) and a secondary surface; dt is a small bold label and dd a large fluid count."
+      "forma-security-state-matrix": "Root section: bordered, padded primary surface.",
+      "forma-security-state-matrix__grid": "Description list laid out as an auto-fit grid of tiles at least 7rem wide. Each tile has a 0.25rem top border in the current text color (CanvasText in forced colors) and a secondary surface; dt is a small bold label and dd a large fluid count."
     },
     keyboard: [
       { keys: "—", action: "Not interactive. Link to detailed lists from surrounding content if readers need to drill in." }

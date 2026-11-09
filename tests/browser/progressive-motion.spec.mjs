@@ -27,7 +27,7 @@ const withoutFeature = async (page, pattern) => {
   });
 };
 
-const open = (page) => page.locator("details.ef-disclosure").first();
+const open = (page) => page.locator("details.forma-disclosure").first();
 
 // ::details-content transitions are not exposed through getAnimations(), so
 // the panel height is sampled every frame after the native state changes.
@@ -58,7 +58,7 @@ test("intrinsic-size disclosure animates height where supported and stays native
   expect(final).toBeGreaterThan(0);
   const intermediate = samples.some((value) => value < final - 0.5);
   expect(intermediate).toBe(supported);
-  await expect(details.locator(".ef-disclosure__content")).toBeVisible();
+  await expect(details.locator(".forma-disclosure__content")).toBeVisible();
 });
 
 test("without intrinsic-size support the disclosure opens instantly and fully", async ({ page }) => {
@@ -69,7 +69,7 @@ test("without intrinsic-size support the disclosure opens instantly and fully", 
   await expect(details).toHaveAttribute("open", "");
   // Full size from the first rendered frame: no clipped intermediate state.
   expect(samples[0]).toBeCloseTo(samples.at(-1), 0);
-  await expect(details.locator(".ef-disclosure__content")).toBeVisible();
+  await expect(details.locator(".forma-disclosure__content")).toBeVisible();
 });
 
 test("collapsed intrinsic-size content is not focusable and reduced motion resizes immediately", async ({ page }) => {
@@ -87,7 +87,7 @@ test("scroll-linked progress is a direct projection of scroll position", async (
   await page.setViewportSize({ width: 800, height: 400 });
   await page.setContent(html(`${scrollProgress}<div style="block-size: 3000px"></div>`), { waitUntil: "load" });
   const supported = await page.evaluate(() => CSS.supports("animation-timeline: scroll()"));
-  const bar = page.locator(".ef-scroll-progress");
+  const bar = page.locator(".forma-scroll-progress");
   if (!supported) {
     await expect(bar).toBeHidden();
     return;
@@ -97,7 +97,7 @@ test("scroll-linked progress is a direct projection of scroll position", async (
       const max = document.documentElement.scrollHeight - innerHeight;
       scrollTo(0, max * fraction);
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        const bar = document.querySelector(".ef-scroll-progress");
+        const bar = document.querySelector(".forma-scroll-progress");
         done({ scale: Number.parseFloat(getComputedStyle(bar).scale.split(" ")[0]), scrolled: scrollY / max });
       }));
     }), ratio);
@@ -109,11 +109,11 @@ test("scroll-linked progress is a direct projection of scroll position", async (
 test("scroll progress is absent without scroll timelines and under reduced motion", async ({ page }) => {
   await withoutFeature(page, "@supports (animation-timeline: scroll())");
   await page.setContent(html(`${scrollProgress}<div style="block-size: 3000px"></div>`), { waitUntil: "load" });
-  await expect(page.locator(".ef-scroll-progress")).toBeHidden();
+  await expect(page.locator(".forma-scroll-progress")).toBeHidden();
   await page.unrouteAll();
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setContent(html(`${scrollProgress}<div style="block-size: 3000px"></div>`), { waitUntil: "load" });
-  await expect(page.locator(".ef-scroll-progress")).toBeHidden();
+  await expect(page.locator(".forma-scroll-progress")).toBeHidden();
 });
 
 test("opt-in View Transitions use perceptual crossfades and never gate the state update", async ({ page }) => {
@@ -121,7 +121,7 @@ test("opt-in View Transitions use perceptual crossfades and never gate the state
   const supported = await page.evaluate(() => typeof document.startViewTransition === "function");
   test.skip(!supported, "View Transitions unsupported: the application updates state directly");
   const result = await page.evaluate(async () => {
-    document.documentElement.setAttribute("data-ef-view-transitions", "");
+    document.documentElement.setAttribute("data-forma-view-transitions", "");
     const transition = document.startViewTransition(() => { document.getElementById("status").textContent = "Published"; });
     await transition.ready;
     const timings = document.getAnimations()
@@ -137,7 +137,7 @@ test("opt-in View Transitions use perceptual crossfades and never gate the state
   expect(crossfade.length).toBeGreaterThan(0);
   const perceptual = await page.evaluate(() => {
     const probe = document.createElement("span");
-    probe.style.animationDelay = "var(--ef-motion-perceptual-emphasis-duration)";
+    probe.style.animationDelay = "var(--forma-motion-perceptual-emphasis-duration)";
     document.body.append(probe);
     const value = Number.parseFloat(getComputedStyle(probe).animationDelay) * 1000;
     probe.remove();
@@ -152,7 +152,7 @@ test("View Transitions are skipped under reduced motion; the update still happen
   const supported = await page.evaluate(() => typeof document.startViewTransition === "function");
   test.skip(!supported, "View Transitions unsupported");
   const result = await page.evaluate(async () => {
-    document.documentElement.setAttribute("data-ef-view-transitions", "");
+    document.documentElement.setAttribute("data-forma-view-transitions", "");
     const transition = document.startViewTransition(() => { document.getElementById("status").textContent = "Published"; });
     await transition.ready;
     const running = document.getAnimations().filter((animation) => animation.effect?.pseudoElement?.startsWith("::view-transition") && animation.effect.getComputedTiming().duration > 0).length;
@@ -165,12 +165,12 @@ test("View Transitions are skipped under reduced motion; the update still happen
 
 test("concurrent press and selection motion compose without clobbering", async ({ page }) => {
   await page.setContent(html(fs.readFileSync("patterns/switch.html", "utf8")), { waitUntil: "load" });
-  const input = page.locator(".ef-switch__input").first();
-  const box = await page.locator(".ef-switch").first().boundingBox();
+  const input = page.locator(".forma-switch__input").first();
+  const box = await page.locator(".forma-switch").first().boundingBox();
   await page.mouse.move(box.x + 10, box.y + box.height / 2);
   await page.mouse.down();
   await input.evaluate((element) => { element.checked = !element.checked; });
-  const thumb = await page.locator(".ef-switch__track").first().evaluate(async (track) => {
+  const thumb = await page.locator(".forma-switch__track").first().evaluate(async (track) => {
     await Promise.all(track.getAnimations({ subtree: true }).map((animation) => animation.finished.catch(() => null)));
     const style = getComputedStyle(track, "::after");
     return { translate: style.translate, scale: style.scale, pressed: track.previousElementSibling.matches(":active") };

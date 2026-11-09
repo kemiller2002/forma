@@ -7,7 +7,7 @@ import { expect, test } from "@playwright/test";
 const wcag = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
 
 const html = ({ theme = "", dir = "ltr", css = "" } = {}) => `<!doctype html>
-<html lang="en" dir="${dir}"${theme ? ` data-ef-theme="${theme}"` : ""}>
+<html lang="en" dir="${dir}"${theme ? ` data-forma-theme="${theme}"` : ""}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,10 +38,10 @@ test("the diagram exposes named items and a text relationship for every connecto
   for (const name of ["Draft article", "Legal review", "Publish", "Rework"]) {
     await expect(node(page, name)).toBeVisible();
   }
-  const connectors = await page.locator(".ef-diagram-connector").count();
+  const connectors = await page.locator(".forma-diagram-connector").count();
   await expect(page.getByRole("list", { name: "Relationships" }).getByRole("listitem")).toHaveCount(connectors);
   // Connector paint is decorative; the relationship list is the accessible form.
-  await expect(page.locator(".ef-diagram__wires")).toHaveAttribute("aria-hidden", "true");
+  await expect(page.locator(".forma-diagram__wires")).toHaveAttribute("aria-hidden", "true");
 });
 
 test("authored color overrides apply, and removing one restores the Forma default", async ({ page }) => {
@@ -51,9 +51,9 @@ test("authored color overrides apply, and removing one restores the Forma defaul
   const review = await style(node(page, "Legal review"), "backgroundColor");
   expect(review).toBe("rgb(255, 241, 214)");
   expect(fallback).not.toBe(review);
-  await rework.evaluate((element) => element.style.setProperty("--ef-diagram-fill", "#fff1d6"));
+  await rework.evaluate((element) => element.style.setProperty("--forma-diagram-fill", "#fff1d6"));
   expect(await style(rework, "backgroundColor")).toBe(review);
-  await rework.evaluate((element) => element.style.removeProperty("--ef-diagram-fill"));
+  await rework.evaluate((element) => element.style.removeProperty("--forma-diagram-fill"));
   expect(await style(rework, "backgroundColor")).toBe(fallback);
 });
 
@@ -61,10 +61,10 @@ test("color is not the only cue: kind, state and line style are text or structur
   await open(page, 1280);
   await page.emulateMedia({ forcedColors: "active" });
   for (const name of ["Draft article", "Legal review", "Publish", "Rework"]) {
-    await expect(node(page, name).locator(".ef-diagram-node__kind")).not.toBeEmpty();
-    await expect(node(page, name).locator(".ef-diagram-node__meta")).toContainText("State");
+    await expect(node(page, name).locator(".forma-diagram-node__kind")).not.toBeEmpty();
+    await expect(node(page, name).locator(".forma-diagram-node__meta")).toContainText("State");
   }
-  const dashes = await page.locator(".ef-diagram-connector").evaluateAll((paths) => paths.map((path) => getComputedStyle(path).strokeDasharray));
+  const dashes = await page.locator(".forma-diagram-connector").evaluateAll((paths) => paths.map((path) => getComputedStyle(path).strokeDasharray));
   expect(new Set(dashes).size).toBe(3);
 });
 
@@ -73,7 +73,7 @@ test("authored color never hides focus", async ({ page }) => {
   const link = node(page, "Publish").getByRole("link");
   await link.focus();
   const focused = await link.evaluate((element) => ({ outline: getComputedStyle(element).outlineStyle, ring: getComputedStyle(element).boxShadow }));
-  await node(page, "Publish").evaluate((element) => element.style.setProperty("--ef-diagram-fill", "#171a18"));
+  await node(page, "Publish").evaluate((element) => element.style.setProperty("--forma-diagram-fill", "#161616"));
   const recolored = await link.evaluate((element) => ({ outline: getComputedStyle(element).outlineStyle, ring: getComputedStyle(element).boxShadow }));
   expect(focused.outline).not.toBe("none");
   expect(recolored).toEqual(focused);
@@ -86,7 +86,7 @@ test("print without backgrounds keeps boundaries, kinds and line styles", async 
     expect(parseFloat(await style(node(page, name), "borderTopWidth"))).toBeGreaterThan(0);
     expect(await style(node(page, name), "borderTopColor")).toBe("rgb(0, 0, 0)");
   }
-  const dashes = await page.locator(".ef-diagram-connector").evaluateAll((paths) => paths.map((path) => getComputedStyle(path).strokeDasharray));
+  const dashes = await page.locator(".forma-diagram-connector").evaluateAll((paths) => paths.map((path) => getComputedStyle(path).strokeDasharray));
   expect(new Set(dashes).size).toBe(3);
 });
 

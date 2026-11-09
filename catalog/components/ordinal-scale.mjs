@@ -3,7 +3,7 @@ export default {
   category: "assessment",
   behavior: "Native HTML",
   summary: "One radio-backed contract for ordered Likert, agreement, confidence, frequency, and similar scales.",
-  owns: ["ef-ordinal-scale", "ef-ordinal-option"],
+  owns: ["forma-ordinal-scale", "forma-ordinal-option"],
   purpose: {
     description: "An ordinal scale asks the user to pick one position on an ordered set of 3 to 11 answers. It is a native radio group inside a fieldset; each option shows a numbered marker and a text label, and the options form one continuous bordered row. Likert, agreement, frequency, confidence, maturity and NPS are label presets over this single structure, not separate components. Forma attaches no score or direction to position: the application maps each value to meaning.",
     useWhen: [
@@ -20,7 +20,7 @@ export default {
     ],
     characteristics: [
       "Cardinality modifiers (`--3`, `--4`, `--5`, `--6`, `--7`, `--10`, `--11`) set the column count; the default is five.",
-      "Special answers live in `.ef-special-choices` below a dashed rule and may share the radio name.",
+      "Special answers live in `.forma-special-choices` below a dashed rule and may share the radio name.",
       "Options become a vertical list of full-width rows below 44rem, so labels never have to shrink to fit.",
       "In the narrow layout, each label block is vertically centered beside its numbered marker, including wrapped labels.",
       "Even-point scales have no implied midpoint; visual order does not imply score."
@@ -31,56 +31,56 @@ export default {
       id: "nps-eleven-point",
       title: "0 to 10 likelihood (NPS-style)",
       description: "An eleven-point presentation using the --11 modifier. Only the endpoints have visible words; the middle positions carry their number as screen-reader text because the marker is decorative.",
-      html: `<ef-ordinal-scale class="ef-component-tag">
-  <fieldset class="ef-ordinal-scale ef-ordinal-scale--11">
-    <legend class="ef-ordinal-scale__legend">How likely are you to recommend this service to a colleague?</legend>
-    <div class="ef-ordinal-scale__options">
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="0" required><span class="ef-ordinal-option__marker" aria-hidden="true">0</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">0, </span>Not at all likely</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="1"><span class="ef-ordinal-option__marker" aria-hidden="true">1</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">1</span></span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="2"><span class="ef-ordinal-option__marker" aria-hidden="true">2</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">2</span></span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="3"><span class="ef-ordinal-option__marker" aria-hidden="true">3</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">3</span></span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="4"><span class="ef-ordinal-option__marker" aria-hidden="true">4</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">4</span></span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="5"><span class="ef-ordinal-option__marker" aria-hidden="true">5</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">5</span></span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="6"><span class="ef-ordinal-option__marker" aria-hidden="true">6</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">6</span></span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="7"><span class="ef-ordinal-option__marker" aria-hidden="true">7</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">7</span></span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="8"><span class="ef-ordinal-option__marker" aria-hidden="true">8</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">8</span></span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="9"><span class="ef-ordinal-option__marker" aria-hidden="true">9</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">9</span></span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="10"><span class="ef-ordinal-option__marker" aria-hidden="true">10</span><span class="ef-ordinal-option__label"><span class="ef-sr-only">10, </span>Extremely likely</span></label>
+      html: `<forma-ordinal-scale class="forma-component-tag">
+  <fieldset class="forma-ordinal-scale forma-ordinal-scale--11">
+    <legend class="forma-ordinal-scale__legend">How likely are you to recommend this service to a colleague?</legend>
+    <div class="forma-ordinal-scale__options">
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="0" required><span class="forma-ordinal-option__marker" aria-hidden="true">0</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">0, </span>Not at all likely</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="1"><span class="forma-ordinal-option__marker" aria-hidden="true">1</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">1</span></span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="2"><span class="forma-ordinal-option__marker" aria-hidden="true">2</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">2</span></span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="3"><span class="forma-ordinal-option__marker" aria-hidden="true">3</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">3</span></span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="4"><span class="forma-ordinal-option__marker" aria-hidden="true">4</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">4</span></span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="5"><span class="forma-ordinal-option__marker" aria-hidden="true">5</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">5</span></span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="6"><span class="forma-ordinal-option__marker" aria-hidden="true">6</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">6</span></span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="7"><span class="forma-ordinal-option__marker" aria-hidden="true">7</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">7</span></span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="8"><span class="forma-ordinal-option__marker" aria-hidden="true">8</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">8</span></span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="9"><span class="forma-ordinal-option__marker" aria-hidden="true">9</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">9</span></span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-nps-recommend" value="10"><span class="forma-ordinal-option__marker" aria-hidden="true">10</span><span class="forma-ordinal-option__label"><span class="forma-sr-only">10, </span>Extremely likely</span></label>
     </div>
   </fieldset>
-</ef-ordinal-scale>`
+</forma-ordinal-scale>`
     },
     {
       id: "four-point-maturity",
       title: "Four-point maturity with a saved answer",
       description: "An even scale with no midpoint, restored from a saved draft with Established checked. The labels are a maturity preset over the same structure, not a separate component.",
-      html: `<ef-ordinal-scale class="ef-component-tag">
-  <fieldset class="ef-ordinal-scale ef-ordinal-scale--4">
-    <legend class="ef-ordinal-scale__legend">How mature is incident post-review in your team?</legend>
-    <div class="ef-ordinal-scale__options">
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-maturity-review" value="initial" required><span class="ef-ordinal-option__marker" aria-hidden="true">1</span><span class="ef-ordinal-option__label">Initial</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-maturity-review" value="developing"><span class="ef-ordinal-option__marker" aria-hidden="true">2</span><span class="ef-ordinal-option__label">Developing</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-maturity-review" value="established" checked><span class="ef-ordinal-option__marker" aria-hidden="true">3</span><span class="ef-ordinal-option__label">Established</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-maturity-review" value="optimized"><span class="ef-ordinal-option__marker" aria-hidden="true">4</span><span class="ef-ordinal-option__label">Optimized</span></label>
+      html: `<forma-ordinal-scale class="forma-component-tag">
+  <fieldset class="forma-ordinal-scale forma-ordinal-scale--4">
+    <legend class="forma-ordinal-scale__legend">How mature is incident post-review in your team?</legend>
+    <div class="forma-ordinal-scale__options">
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-maturity-review" value="initial" required><span class="forma-ordinal-option__marker" aria-hidden="true">1</span><span class="forma-ordinal-option__label">Initial</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-maturity-review" value="developing"><span class="forma-ordinal-option__marker" aria-hidden="true">2</span><span class="forma-ordinal-option__label">Developing</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-maturity-review" value="established" checked><span class="forma-ordinal-option__marker" aria-hidden="true">3</span><span class="forma-ordinal-option__label">Established</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-maturity-review" value="optimized"><span class="forma-ordinal-option__marker" aria-hidden="true">4</span><span class="forma-ordinal-option__label">Optimized</span></label>
     </div>
   </fieldset>
-</ef-ordinal-scale>`
+</forma-ordinal-scale>`
     },
     {
       id: "frequency-with-disabled-option",
       title: "Frequency scale with one unavailable position",
       description: "A three-point frequency scale where the application has disabled one position that does not apply to this respondent, with a description saying why. Heavy motion weight gives the marker press a slower, more settled response.",
-      html: `<ef-ordinal-scale class="ef-component-tag">
-  <fieldset class="ef-ordinal-scale ef-ordinal-scale--3" data-ef-motion-weight="heavy" aria-describedby="ordinal-frequency-help">
-    <legend class="ef-ordinal-scale__legend">How often do you deploy on weekends?</legend>
-    <p class="ef-field__description" id="ordinal-frequency-help">Weekly is unavailable because weekend deploys are frozen for your team.</p>
-    <div class="ef-ordinal-scale__options">
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-frequency-weekend" value="never" required><span class="ef-ordinal-option__marker" aria-hidden="true">1</span><span class="ef-ordinal-option__label">Never</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-frequency-weekend" value="monthly"><span class="ef-ordinal-option__marker" aria-hidden="true">2</span><span class="ef-ordinal-option__label">About once a month</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-frequency-weekend" value="weekly" disabled><span class="ef-ordinal-option__marker" aria-hidden="true">3</span><span class="ef-ordinal-option__label">Weekly</span></label>
+      html: `<forma-ordinal-scale class="forma-component-tag">
+  <fieldset class="forma-ordinal-scale forma-ordinal-scale--3" data-forma-motion-weight="heavy" aria-describedby="ordinal-frequency-help">
+    <legend class="forma-ordinal-scale__legend">How often do you deploy on weekends?</legend>
+    <p class="forma-field__description" id="ordinal-frequency-help">Weekly is unavailable because weekend deploys are frozen for your team.</p>
+    <div class="forma-ordinal-scale__options">
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-frequency-weekend" value="never" required><span class="forma-ordinal-option__marker" aria-hidden="true">1</span><span class="forma-ordinal-option__label">Never</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-frequency-weekend" value="monthly"><span class="forma-ordinal-option__marker" aria-hidden="true">2</span><span class="forma-ordinal-option__label">About once a month</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-frequency-weekend" value="weekly" disabled><span class="forma-ordinal-option__marker" aria-hidden="true">3</span><span class="forma-ordinal-option__label">Weekly</span></label>
     </div>
   </fieldset>
-</ef-ordinal-scale>`
+</forma-ordinal-scale>`
     },
     {
       id: "mobile-seven-point",
@@ -95,23 +95,23 @@ export default {
           "The special-choices row wraps its pills onto new lines if needed; each keeps a 44px minimum height."
         ]
       },
-      html: `<ef-ordinal-scale class="ef-component-tag">
-  <fieldset class="ef-ordinal-scale ef-ordinal-scale--7">
-    <legend class="ef-ordinal-scale__legend">Our on-call rotation is sustainable.</legend>
-    <div class="ef-ordinal-scale__options">
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="1" required><span class="ef-ordinal-option__marker" aria-hidden="true">1</span><span class="ef-ordinal-option__label">Strongly disagree</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="2"><span class="ef-ordinal-option__marker" aria-hidden="true">2</span><span class="ef-ordinal-option__label">Disagree</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="3"><span class="ef-ordinal-option__marker" aria-hidden="true">3</span><span class="ef-ordinal-option__label">Somewhat disagree</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="4"><span class="ef-ordinal-option__marker" aria-hidden="true">4</span><span class="ef-ordinal-option__label">Neither agree nor disagree</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="5"><span class="ef-ordinal-option__marker" aria-hidden="true">5</span><span class="ef-ordinal-option__label">Somewhat agree</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="6"><span class="ef-ordinal-option__marker" aria-hidden="true">6</span><span class="ef-ordinal-option__label">Agree</span></label>
-      <label class="ef-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="7"><span class="ef-ordinal-option__marker" aria-hidden="true">7</span><span class="ef-ordinal-option__label">Strongly agree</span></label>
+      html: `<forma-ordinal-scale class="forma-component-tag">
+  <fieldset class="forma-ordinal-scale forma-ordinal-scale--7">
+    <legend class="forma-ordinal-scale__legend">Our on-call rotation is sustainable.</legend>
+    <div class="forma-ordinal-scale__options">
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="1" required><span class="forma-ordinal-option__marker" aria-hidden="true">1</span><span class="forma-ordinal-option__label">Strongly disagree</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="2"><span class="forma-ordinal-option__marker" aria-hidden="true">2</span><span class="forma-ordinal-option__label">Disagree</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="3"><span class="forma-ordinal-option__marker" aria-hidden="true">3</span><span class="forma-ordinal-option__label">Somewhat disagree</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="4"><span class="forma-ordinal-option__marker" aria-hidden="true">4</span><span class="forma-ordinal-option__label">Neither agree nor disagree</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="5"><span class="forma-ordinal-option__marker" aria-hidden="true">5</span><span class="forma-ordinal-option__label">Somewhat agree</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="6"><span class="forma-ordinal-option__marker" aria-hidden="true">6</span><span class="forma-ordinal-option__label">Agree</span></label>
+      <label class="forma-ordinal-option"><input type="radio" name="ordinal-mobile-oncall" value="7"><span class="forma-ordinal-option__marker" aria-hidden="true">7</span><span class="forma-ordinal-option__label">Strongly agree</span></label>
     </div>
-    <div class="ef-special-choices" aria-label="Other responses">
-      <label class="ef-special-choice"><input type="radio" name="ordinal-mobile-oncall" value="na"><span>Not applicable: I am not on call</span></label>
+    <div class="forma-special-choices" aria-label="Other responses">
+      <label class="forma-special-choice"><input type="radio" name="ordinal-mobile-oncall" value="na"><span>Not applicable: I am not on call</span></label>
     </div>
   </fieldset>
-</ef-ordinal-scale>`
+</forma-ordinal-scale>`
     }
   ],
   api: {
@@ -122,25 +122,25 @@ export default {
       { name: "required", on: "first input", values: "boolean", default: "absent", description: "Native required-group validation." },
       { name: "checked", on: "input", values: "boolean", default: "absent", description: "Restores a saved answer." },
       { name: "disabled", on: "input or fieldset", values: "boolean", default: "absent", description: "Removes a position (or the whole scale) from focus and submission and dims it." },
-      { name: "aria-hidden", on: ".ef-ordinal-option__marker", values: "true", default: "—", description: "The numbered marker is decorative; the label supplies the accessible name." },
-      { name: "aria-label", on: ".ef-special-choices", values: "string", default: "—", description: "Names the group of non-scale answers, for example Other responses." },
+      { name: "aria-hidden", on: ".forma-ordinal-option__marker", values: "true", default: "—", description: "The numbered marker is decorative; the label supplies the accessible name." },
+      { name: "aria-label", on: ".forma-special-choices", values: "string", default: "—", description: "Names the group of non-scale answers, for example Other responses." },
       { name: "aria-describedby", on: "fieldset", values: "id list", default: "—", description: "Associates help or error text with the scale." }
     ],
     hooks: {
-      "ef-ordinal-scale": "Root fieldset. Browser border and padding removed; it is also a motion scope.",
-      "ef-ordinal-scale__legend": "Question or statement text above the options.",
-      "ef-ordinal-scale__options": "Bordered grid holding the positions. Column count comes from the cardinality modifier.",
-      "ef-ordinal-scale--3": "Three equal columns.",
-      "ef-ordinal-scale--4": "Four equal columns (no midpoint).",
-      "ef-ordinal-scale--5": "Five equal columns. Also the default when no modifier is set.",
-      "ef-ordinal-scale--6": "Six equal columns.",
-      "ef-ordinal-scale--7": "Seven equal columns.",
-      "ef-ordinal-scale--10": "Ten equal columns.",
-      "ef-ordinal-scale--11": "Eleven equal columns, for 0 to 10 scales.",
-      "ef-ordinal-option": "Label for one position: marker above label, at least 5.5rem tall on wide screens. The radio is visually hidden but stays the hit and focus target.",
-      "ef-ordinal-option__marker": "Circular numbered marker. It compresses slightly while pressed; the option does not move.",
-      "ef-ordinal-option__label": "Text label for the position. Wraps anywhere to fit narrow columns.",
-      "data-ef-motion-weight": "Presentation-only perceived mass for the marker press response: light (default for this scope), standard or heavy. Never encodes importance or score."
+      "forma-ordinal-scale": "Root fieldset. Browser border and padding removed; it is also a motion scope.",
+      "forma-ordinal-scale__legend": "Question or statement text above the options.",
+      "forma-ordinal-scale__options": "Bordered grid holding the positions. Column count comes from the cardinality modifier.",
+      "forma-ordinal-scale--3": "Three equal columns.",
+      "forma-ordinal-scale--4": "Four equal columns (no midpoint).",
+      "forma-ordinal-scale--5": "Five equal columns. Also the default when no modifier is set.",
+      "forma-ordinal-scale--6": "Six equal columns.",
+      "forma-ordinal-scale--7": "Seven equal columns.",
+      "forma-ordinal-scale--10": "Ten equal columns.",
+      "forma-ordinal-scale--11": "Eleven equal columns, for 0 to 10 scales.",
+      "forma-ordinal-option": "Label for one position: marker above label, at least 5.5rem tall on wide screens. The radio is visually hidden but stays the hit and focus target.",
+      "forma-ordinal-option__marker": "Circular numbered marker. It compresses slightly while pressed; the option does not move.",
+      "forma-ordinal-option__label": "Text label for the position. Wraps anywhere to fit narrow columns.",
+      "data-forma-motion-weight": "Presentation-only perceived mass for the marker press response: light (default for this scope), standard or heavy. Never encodes importance or score."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus into the group (checked radio, or the first when unanswered) and out of it." },
@@ -182,7 +182,7 @@ export default {
   ],
   motion: [
     "Option surface, border and text color use the shared perceptual interpolation (about 120ms), identical for every position so motion never encodes value.",
-    "The marker compresses to 0.92 scale on press using the press duration from the scale's motion scope; `data-ef-motion-weight` changes that duration. The option itself never moves.",
+    "The marker compresses to 0.92 scale on press using the press duration from the scale's motion scope; `data-forma-motion-weight` changes that duration. The option itself never moves.",
     "Selection is immediate: rapid keyboard changes do not queue animations.",
     "Under `prefers-reduced-motion: reduce` the marker transition is effectively instant and press compression is removed; selection styling is unchanged."
   ],

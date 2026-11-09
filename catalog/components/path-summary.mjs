@@ -30,34 +30,34 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Evidence path from claim to source",
       description: "How a readiness claim traces back to raw test output. Each relationship phrase is written to read naturally into the next step, and the final step is the source.",
-      html: `<ef-path-summary class="ef-component-tag">
-  <section class="ef-path-summary" aria-labelledby="path-summary-evidence-path-title">
+      html: `<forma-path-summary class="forma-component-tag">
+  <section class="forma-path-summary" aria-labelledby="path-summary-evidence-path-title">
     <header><h2 id="path-summary-evidence-path-title">Evidence path for “Release is ready”</h2><p>4 steps, claim to source</p></header>
-    <ol class="ef-path-summary__steps">
+    <ol class="forma-path-summary__steps">
       <li><a href="#path-summary-evidence-path-claim">Release readiness claim</a><span>is supported by</span></li>
       <li><a href="#path-summary-evidence-path-gate">Quality gate QG-17</a><span>which evaluated</span></li>
       <li><a href="#path-summary-evidence-path-run">CI run 1187</a><span>which produced</span></li>
       <li aria-current="step"><a href="#path-summary-evidence-path-log">Test report artifact</a><span>the original source</span></li>
     </ol>
   </section>
-</ef-path-summary>`
+</forma-path-summary>`
     },
     {
       id: "broken-path",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Path with an unknown link",
       description: "The route from an order to its shipment has a gap: the relationship between the warehouse pick and the carrier handoff was not recorded. The step still appears, stating Unknown, so the path does not look continuous when it is not.",
-      html: `<ef-path-summary class="ef-component-tag">
-  <section class="ef-path-summary" aria-labelledby="path-summary-broken-path-title">
+      html: `<forma-path-summary class="forma-component-tag">
+  <section class="forma-path-summary" aria-labelledby="path-summary-broken-path-title">
     <header><h2 id="path-summary-broken-path-title">Order ORD-5521 to delivery</h2><p>3 known relationships, 1 unknown</p></header>
-    <ol class="ef-path-summary__steps">
+    <ol class="forma-path-summary__steps">
       <li><a href="#path-summary-broken-path-order">Order ORD-5521</a><span>was allocated to</span></li>
       <li><a href="#path-summary-broken-path-pick">Pick list PL-880</a><span>unknown relationship to the next step: handoff not recorded</span></li>
       <li><a href="#path-summary-broken-path-carrier">Carrier consignment NL-44102</a><span>was delivered as</span></li>
       <li aria-current="step"><a href="#path-summary-broken-path-pod">Proof of delivery</a><span>signed 28 Sep 2026</span></li>
     </ol>
   </section>
-</ef-path-summary>`
+</forma-path-summary>`
     },
     {
       id: "mobile-path",
@@ -73,27 +73,27 @@ export default {
           "Orientation changes only affect line wrapping."
         ]
       },
-      html: `<ef-path-summary class="ef-component-tag">
-  <section class="ef-path-summary" aria-labelledby="path-summary-mobile-path-title">
+      html: `<forma-path-summary class="forma-component-tag">
+  <section class="forma-path-summary" aria-labelledby="path-summary-mobile-path-title">
     <header><h2 id="path-summary-mobile-path-title">Selected path</h2><p>3 relationships</p></header>
-    <ol class="ef-path-summary__steps">
+    <ol class="forma-path-summary__steps">
       <li><a href="#path-summary-mobile-path-chrona">Chrona time tracking</a><span>provides time entries to</span></li>
       <li><a href="#path-summary-mobile-path-billing">Billing</a><span>creates billable charges for</span></li>
       <li aria-current="step"><a href="#path-summary-mobile-path-summa">Summa general ledger</a><span>records the invoice</span></li>
     </ol>
   </section>
-</ef-path-summary>`
+</forma-path-summary>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-path-summary", values: "id of the header heading", default: "—", description: "Names the path." },
+      { name: "aria-labelledby", on: "section.forma-path-summary", values: "id of the header heading", default: "—", description: "Names the path." },
       { name: "aria-current", on: "li", values: "step", default: "absent", description: "Optionally marks the selected or final step for assistive technology. Not styled by Forma." },
       { name: "href", on: "a", values: "URL or fragment", default: "—", description: "Links each entity to its view or node." }
     ],
     hooks: {
-      "ef-path-summary": "Root section; a grid with 0.75rem gaps. Removes the trailing margin of the header's last child.",
-      "ef-path-summary__steps": "The numbered `ol`: 0.5rem gaps, 1.5rem inline-start gutter; each `li` has a small inline-start padding and its `span` is displayed as a block below the entity."
+      "forma-path-summary": "Root section; a grid with 0.75rem gaps. Removes the trailing margin of the header's last child.",
+      "forma-path-summary__steps": "The numbered `ol`: 0.5rem gaps, 1.5rem inline-start gutter; each `li` has a small inline-start padding and its `span` is displayed as a block below the entity."
     },
     keyboard: [
       { keys: "Tab", action: "Moves through the entity links in path order." },
@@ -103,7 +103,7 @@ export default {
     form: "Not a form control."
   },
   states: [
-    { name: "Step", how: "li in .ef-path-summary__steps", description: "Entity plus relationship to the next step." },
+    { name: "Step", how: "li in .forma-path-summary__steps", description: "Entity plus relationship to the next step." },
     { name: "Current or final step", how: "aria-current=\"step\"", description: "Exposed to assistive technology; no visual change from Forma." },
     { name: "Unknown link", how: "application text in the step's span", description: "Stated in words so gaps are visible." }
   ],

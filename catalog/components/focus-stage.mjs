@@ -17,7 +17,7 @@ export default {
       "The screen also needs navigation and a status landmark: use [[workspace-shell]]."
     ],
     characteristics: [
-      "Tracks are `minmax(0, 1fr)` and `var(--ef-focus-stage-support)`, so the primary surface takes every extra pixel.",
+      "Tracks are `minmax(0, 1fr)` and `var(--forma-focus-stage-support)`, so the primary surface takes every extra pixel.",
       "Both children set `min-inline-size: 0` and align to the top.",
       "At 48rem and below the stage is one column, primary first."
     ]
@@ -29,13 +29,13 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Article editor with publishing checklist",
       description: "The article body is the dominant surface; a readiness checklist and the publish action sit in the support column. The support column is labelled so it can be reached as a landmark.",
-      html: `<ef-focus-stage class="ef-component-tag">
-  <section class="ef-focus-stage" aria-label="Edit article">
-    <article class="ef-focus-stage__primary ef-surface" aria-labelledby="focus-stage-article-editor-title">
+      html: `<forma-focus-stage class="forma-component-tag">
+  <section class="forma-focus-stage" aria-label="Edit article">
+    <article class="forma-focus-stage__primary forma-surface" aria-labelledby="focus-stage-article-editor-title">
       <h2 id="focus-stage-article-editor-title">Why we moved billing to event sourcing</h2>
       <p>Two years ago our invoices were computed from a mutable ledger. Every correction overwrote history, and every audit started with a reconstruction.</p>
     </article>
-    <aside class="ef-focus-stage__support ef-stack" aria-labelledby="focus-stage-article-editor-support">
+    <aside class="forma-focus-stage__support forma-stack" aria-labelledby="focus-stage-article-editor-support">
       <h3 id="focus-stage-article-editor-support">Before publishing</h3>
       <ul>
         <li>Summary written</li>
@@ -45,26 +45,26 @@ export default {
       <button type="button">Request review</button>
     </aside>
   </section>
-</ef-focus-stage>`
+</forma-focus-stage>`
     },
     {
       id: "narrow-support",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Compact support column",
-      description: "The support track is narrowed with `--ef-focus-stage-support` and the gap tightened with `--ef-focus-stage-space`, for a dense review screen where the support holds only a few properties.",
-      html: `<ef-focus-stage class="ef-component-tag">
-  <section class="ef-focus-stage" aria-label="Review site photo" style="--ef-focus-stage-support: minmax(10rem, 13rem); --ef-focus-stage-space: 0.75rem">
-    <article class="ef-focus-stage__primary ef-surface" aria-labelledby="focus-stage-narrow-support-title">
+      description: "The support track is narrowed with `--forma-focus-stage-support` and the gap tightened with `--forma-focus-stage-space`, for a dense review screen where the support holds only a few properties.",
+      html: `<forma-focus-stage class="forma-component-tag">
+  <section class="forma-focus-stage" aria-label="Review site photo" style="--forma-focus-stage-support: minmax(10rem, 13rem); --forma-focus-stage-space: 0.75rem">
+    <article class="forma-focus-stage__primary forma-surface" aria-labelledby="focus-stage-narrow-support-title">
       <h2 id="focus-stage-narrow-support-title">Site photo 14 · north fence line</h2>
       <p>Photo shows a 2 m gap in the perimeter fence beside gate 3, with fresh tyre tracks on the inside.</p>
     </article>
-    <aside class="ef-focus-stage__support ef-stack" aria-labelledby="focus-stage-narrow-support-props">
+    <aside class="forma-focus-stage__support forma-stack" aria-labelledby="focus-stage-narrow-support-props">
       <h3 id="focus-stage-narrow-support-props">Photo details</h3>
       <p>Taken 2 Oct, 10:14 by M. Chen.</p>
       <button type="button">Flag for repair</button>
     </aside>
   </section>
-</ef-focus-stage>`
+</forma-focus-stage>`
     },
     {
       id: "mobile-stacked",
@@ -80,34 +80,34 @@ export default {
           "Landscape tablets above 48rem restore the side column without changing focus order."
         ]
       },
-      html: `<ef-focus-stage class="ef-component-tag">
-  <section class="ef-focus-stage" aria-label="Expense claim">
-    <form class="ef-focus-stage__primary ef-stack" aria-labelledby="focus-stage-mobile-title">
+      html: `<forma-focus-stage class="forma-component-tag">
+  <section class="forma-focus-stage" aria-label="Expense claim">
+    <form class="forma-focus-stage__primary forma-stack" aria-labelledby="focus-stage-mobile-title">
       <h2 id="focus-stage-mobile-title">New expense</h2>
       <label for="focus-stage-mobile-amount">Amount</label>
       <input id="focus-stage-mobile-amount" name="amount" inputmode="decimal">
       <button type="submit">Submit claim</button>
     </form>
-    <aside class="ef-focus-stage__support" aria-labelledby="focus-stage-mobile-support">
+    <aside class="forma-focus-stage__support" aria-labelledby="focus-stage-mobile-support">
       <h3 id="focus-stage-mobile-support">Policy</h3>
       <p>Meals over $75 need an itemized receipt.</p>
     </aside>
   </section>
-</ef-focus-stage>`
+</forma-focus-stage>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-label", on: "root, support aside", values: "string", default: "—", description: "Names the stage and the support landmark when they have no visible heading." },
       { name: "aria-labelledby", on: "primary and support regions", values: "id of a visible heading", default: "—", description: "Names each region by its heading." },
-      { name: "style", on: "root", values: "--ef-focus-stage-support, --ef-focus-stage-space", default: "—", description: "Per-instance override of the support track and gap." }
+      { name: "style", on: "root", values: "--forma-focus-stage-support, --forma-focus-stage-space", default: "—", description: "Per-instance override of the support track and gap." }
     ],
     hooks: {
-      "ef-focus-stage": "Root two-column grid: flexible primary track and bounded support track.",
-      "ef-focus-stage__primary": "The dominant work surface. Often combined with `ef-surface`.",
-      "ef-focus-stage__support": "The subordinate context column. Often combined with `ef-stack`.",
-      "--ef-focus-stage-support": "Support track size. Default `minmax(14rem, 20rem)`.",
-      "--ef-focus-stage-space": "Gap between primary and support. Default the 1.5rem spacing token."
+      "forma-focus-stage": "Root two-column grid: flexible primary track and bounded support track.",
+      "forma-focus-stage__primary": "The dominant work surface. Often combined with `forma-surface`.",
+      "forma-focus-stage__support": "The subordinate context column. Often combined with `forma-stack`.",
+      "--forma-focus-stage-support": "Support track size. Default `minmax(14rem, 20rem)`.",
+      "--forma-focus-stage-space": "Gap between primary and support. Default the 1.5rem spacing token."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the primary region first, then the support region. No added keyboard behavior." }
@@ -131,9 +131,9 @@ export default {
     ]
   },
   responsive: [
-    "Wide: `minmax(0, 1fr) var(--ef-focus-stage-support)`; extra width always goes to the primary surface.",
+    "Wide: `minmax(0, 1fr) var(--forma-focus-stage-support)`; extra width always goes to the primary surface.",
     "At 48rem and below: a single column.",
-    "The breakpoint is viewport-based; inside a narrow container on a wide screen the support column still takes at least 14rem, so lower `--ef-focus-stage-support` there."
+    "The breakpoint is viewport-based; inside a narrow container on a wide screen the support column still takes at least 14rem, so lower `--forma-focus-stage-support` there."
   ],
   motion: [
     "No animation: the layout changes instantly at the breakpoint and nothing moves when support content changes."

@@ -44,7 +44,7 @@ for (const viewport of viewports) {
 
         const tooSmall = [];
         for (const element of document.querySelectorAll(
-          ".site-nav a, .component-nav a, .ef-button, .example-block summary, .site-footer a"
+          ".site-nav a, .component-nav a, .forma-button, .example-block summary, .site-footer a"
         )) {
           const style = getComputedStyle(element);
           if (style.display === "none" || style.visibility === "hidden") continue;
@@ -122,11 +122,11 @@ test("site buttons use the shared perceptual motion and never move on hover", as
   // Measure after web fonts settle: a late font swap reflows the page by a
   // pixel, which is not hover movement (it made this test fail 3 in 30 runs).
   await page.evaluate(() => document.fonts.ready);
-  const button = page.locator("a.ef-button").first();
+  const button = page.locator("a.forma-button").first();
   await button.scrollIntoViewIfNeeded();
   const style = await button.evaluate((element) => {
     const probe = document.createElement("span");
-    probe.style.animationDelay = "var(--ef-motion-perceptual-duration)";
+    probe.style.animationDelay = "var(--forma-motion-perceptual-duration)";
     document.body.append(probe);
     const perceptual = getComputedStyle(probe).animationDelay;
     probe.remove();
@@ -149,7 +149,7 @@ test("reduced motion removes site transitions and smooth scrolling", async ({ pa
   await page.goto("/site-dist/index.html");
   const state = await page.evaluate(() => ({
     scroll: getComputedStyle(document.documentElement).scrollBehavior,
-    transition: getComputedStyle(document.querySelector("a.ef-button")).transitionProperty
+    transition: getComputedStyle(document.querySelector("a.forma-button")).transitionProperty
   }));
   expect(state.scroll).toBe("auto");
   expect(state.transition).toBe("none");

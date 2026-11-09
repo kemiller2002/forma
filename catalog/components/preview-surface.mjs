@@ -29,50 +29,50 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Announcement before sending",
       description: "An email announcement previewed before it goes to every customer. The view controls are toggle buttons with aria-pressed, the footer states the audience and that nothing has been sent, and the send action is a separate application-owned button.",
-      html: `<ef-preview-surface class="ef-component-tag">
-  <section class="ef-preview-surface" aria-labelledby="preview-surface-announcement-title">
-    <header class="ef-preview-surface__header">
-      <div><span class="ef-status-lozenge">Preview</span><h3 id="preview-surface-announcement-title">Maintenance announcement</h3></div>
-      <div class="ef-preview-surface__controls" role="group" aria-label="Preview width">
+      html: `<forma-preview-surface class="forma-component-tag">
+  <section class="forma-preview-surface" aria-labelledby="preview-surface-announcement-title">
+    <header class="forma-preview-surface__header">
+      <div><span class="forma-status-lozenge">Preview</span><h3 id="preview-surface-announcement-title">Maintenance announcement</h3></div>
+      <div class="forma-preview-surface__controls" role="group" aria-label="Preview width">
         <button type="button" aria-pressed="true">Desktop</button>
         <button type="button" aria-pressed="false">Mobile</button>
       </div>
     </header>
-    <div class="ef-preview-surface__canvas">
+    <div class="forma-preview-surface__canvas">
       <article aria-labelledby="preview-surface-announcement-subject">
         <h2 id="preview-surface-announcement-subject">Scheduled maintenance on 14 October</h2>
         <p>Hello, the dashboard will be read-only from 02:00 to 03:30 UTC while we upgrade our database. No data will be lost.</p>
       </article>
     </div>
-    <footer class="ef-preview-surface__footer">
+    <footer class="forma-preview-surface__footer">
       <span>Not sent · 4,210 recipients</span>
       <button type="button">Send announcement</button>
     </footer>
   </section>
-</ef-preview-surface>`
+</forma-preview-surface>`
     },
     {
       id: "blocked-publish",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Preview with a blocking problem",
       description: "The preview renders, but the application has found a problem that blocks publishing. The footer says so in text and offers only the legal next step; there is no disabled Publish button that looks available.",
-      html: `<ef-preview-surface class="ef-component-tag">
-  <section class="ef-preview-surface" aria-labelledby="preview-surface-blocked-publish-title">
-    <header class="ef-preview-surface__header">
-      <div><span class="ef-status-lozenge" data-state="blocked">Cannot publish</span><h3 id="preview-surface-blocked-publish-title">Release notes 4.2</h3></div>
+      html: `<forma-preview-surface class="forma-component-tag">
+  <section class="forma-preview-surface" aria-labelledby="preview-surface-blocked-publish-title">
+    <header class="forma-preview-surface__header">
+      <div><span class="forma-status-lozenge" data-state="blocked">Cannot publish</span><h3 id="preview-surface-blocked-publish-title">Release notes 4.2</h3></div>
     </header>
-    <div class="ef-preview-surface__canvas">
+    <div class="forma-preview-surface__canvas">
       <article aria-labelledby="preview-surface-blocked-publish-heading">
         <h2 id="preview-surface-blocked-publish-heading">What's new in 4.2</h2>
         <p>Bulk export now supports CSV and Parquet. See the migration guide for [missing link].</p>
       </article>
     </div>
-    <footer class="ef-preview-surface__footer">
+    <footer class="forma-preview-surface__footer">
       <span>Not published · 1 broken link must be fixed first</span>
       <button type="button">Return to editor</button>
     </footer>
   </section>
-</ef-preview-surface>`
+</forma-preview-surface>`
     },
     {
       id: "mobile-invoice",
@@ -88,23 +88,23 @@ export default {
           "Very wide previewed content (tables, images) still needs its own [[bounded-overflow]] region inside the article."
         ]
       },
-      html: `<ef-preview-surface class="ef-component-tag">
-  <section class="ef-preview-surface" aria-labelledby="preview-surface-mobile-title">
-    <header class="ef-preview-surface__header">
-      <div><span class="ef-status-lozenge">Preview</span><h3 id="preview-surface-mobile-title">Invoice INV-1042</h3></div>
+      html: `<forma-preview-surface class="forma-component-tag">
+  <section class="forma-preview-surface" aria-labelledby="preview-surface-mobile-title">
+    <header class="forma-preview-surface__header">
+      <div><span class="forma-status-lozenge">Preview</span><h3 id="preview-surface-mobile-title">Invoice INV-1042</h3></div>
     </header>
-    <div class="ef-preview-surface__canvas">
+    <div class="forma-preview-surface__canvas">
       <article aria-labelledby="preview-surface-mobile-heading">
         <h2 id="preview-surface-mobile-heading">Acme Manufacturing</h2>
         <p>Consulting, September · $5,000.00 · due 4 October 2026</p>
       </article>
     </div>
-    <footer class="ef-preview-surface__footer">
+    <footer class="forma-preview-surface__footer">
       <span>Not issued</span>
       <button type="button">Issue invoice</button>
     </footer>
   </section>
-</ef-preview-surface>`
+</forma-preview-surface>`
     }
   ],
   api: {
@@ -115,11 +115,11 @@ export default {
       { name: "aria-label", on: "controls container", values: "string", default: "—", description: "Names the control group, for example \"Preview width\"." }
     ],
     hooks: {
-      "ef-preview-surface": "Root bordered region.",
-      "ef-preview-surface__header": "Title row with optional controls; a flex row that stacks at 40rem and below.",
-      "ef-preview-surface__controls": "Wrapping group of view controls in the header.",
-      "ef-preview-surface__canvas": "Tinted, padded area that holds the previewed material. A direct `article` child is drawn as a centered page up to 42rem wide.",
-      "ef-preview-surface__footer": "Commit status and next action; wraps and stacks at 40rem and below."
+      "forma-preview-surface": "Root bordered region.",
+      "forma-preview-surface__header": "Title row with optional controls; a flex row that stacks at 40rem and below.",
+      "forma-preview-surface__controls": "Wrapping group of view controls in the header.",
+      "forma-preview-surface__canvas": "Tinted, padded area that holds the previewed material. A direct `article` child is drawn as a centered page up to 42rem wide.",
+      "forma-preview-surface__footer": "Commit status and next action; wraps and stacks at 40rem and below."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through header controls, any links inside the previewed content, then footer actions." },

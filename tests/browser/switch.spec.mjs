@@ -40,7 +40,7 @@ test("switch thumb is vertically centered in the track", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.reload();
 
-  const track = page.locator(".ef-switch__track").first();
+  const track = page.locator(".forma-switch__track").first();
   const geometry = await track.evaluate(element => {
     const rect = element.getBoundingClientRect();
     const thumb = getComputedStyle(element, "::after");
@@ -67,7 +67,7 @@ test("switch animation collapses for reduced motion", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.reload();
 
-  const duration = await page.locator(".ef-switch__track").first().evaluate(element =>
+  const duration = await page.locator(".forma-switch__track").first().evaluate(element =>
     getComputedStyle(element).transitionDuration.split(",")[0]
   );
 

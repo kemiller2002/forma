@@ -28,43 +28,43 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "First use",
       description: "A collection that has never had records. The heading names the object, the text says what it is for, and the primary action creates the first one.",
-      html: `<ef-empty-state class="ef-component-tag">
-  <section class="ef-empty-state" aria-labelledby="empty-state-first-use-title">
-    <div class="ef-empty-state__symbol" aria-hidden="true">+</div>
+      html: `<forma-empty-state class="forma-component-tag">
+  <section class="forma-empty-state" aria-labelledby="empty-state-first-use-title">
+    <div class="forma-empty-state__symbol" aria-hidden="true">+</div>
     <h3 id="empty-state-first-use-title">No vendors yet</h3>
     <p>Vendors you add here can be selected on purchase orders and invoices.</p>
     <button type="button">Add vendor</button>
   </section>
-</ef-empty-state>`
+</forma-empty-state>`
     },
     {
       id: "search-no-matches",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Search with no matches",
       description: "A search that returned nothing. The query is repeated so the user can spot a typo, and two recovery actions are grouped in a [[cluster]]: clear the search or open help.",
-      html: `<ef-empty-state class="ef-component-tag">
-  <section class="ef-empty-state" aria-labelledby="empty-state-search-no-matches-title">
-    <div class="ef-empty-state__symbol" aria-hidden="true">?</div>
+      html: `<forma-empty-state class="forma-component-tag">
+  <section class="forma-empty-state" aria-labelledby="empty-state-search-no-matches-title">
+    <div class="forma-empty-state__symbol" aria-hidden="true">?</div>
     <h3 id="empty-state-search-no-matches-title">No records match "reconcilation"</h3>
     <p>Check the spelling, or search by record number instead.</p>
-    <div class="ef-cluster">
+    <div class="forma-cluster">
       <button type="button">Clear search</button>
-      <a class="ef-button" href="#empty-state-search-no-matches-title">Search tips</a>
+      <a class="forma-button" href="#empty-state-search-no-matches-title">Search tips</a>
     </div>
   </section>
-</ef-empty-state>`
+</forma-empty-state>`
     },
     {
       id: "queue-complete",
       title: "Work queue cleared",
       description: "An empty queue that is a good outcome. There is no action to take, so the empty state has only a heading and text; it must not look or read like an error.",
-      html: `<ef-empty-state class="ef-component-tag">
-  <section class="ef-empty-state" aria-labelledby="empty-state-queue-complete-title">
-    <div class="ef-empty-state__symbol" aria-hidden="true">✓</div>
+      html: `<forma-empty-state class="forma-component-tag">
+  <section class="forma-empty-state" aria-labelledby="empty-state-queue-complete-title">
+    <div class="forma-empty-state__symbol" aria-hidden="true">✓</div>
     <h3 id="empty-state-queue-complete-title">Nothing waiting for review</h3>
     <p>New items assigned to you will appear here.</p>
   </section>
-</ef-empty-state>`
+</forma-empty-state>`
     },
     {
       id: "mobile-filtered-list",
@@ -80,28 +80,28 @@ export default {
           "Nothing scrolls horizontally at 320px in either orientation."
         ]
       },
-      html: `<ef-empty-state class="ef-component-tag">
-  <section class="ef-empty-state" aria-labelledby="empty-state-mobile-filtered-list-title">
-    <div class="ef-empty-state__symbol" aria-hidden="true">□</div>
+      html: `<forma-empty-state class="forma-component-tag">
+  <section class="forma-empty-state" aria-labelledby="empty-state-mobile-filtered-list-title">
+    <div class="forma-empty-state__symbol" aria-hidden="true">□</div>
     <h3 id="empty-state-mobile-filtered-list-title">No open invoices from Northwind Traders in the last 30 days</h3>
     <p>Change the date range or remove the vendor filter.</p>
-    <div class="ef-cluster">
+    <div class="forma-cluster">
       <button type="button">Clear filters</button>
       <button type="button">Last 90 days</button>
     </div>
   </section>
-</ef-empty-state>`
+</forma-empty-state>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-empty-state", values: "id of the heading", default: "—", description: "Names the section so it is exposed as a labelled region." },
-      { name: "aria-hidden", on: ".ef-empty-state__symbol", values: "true", default: "—", description: "Hides the decorative symbol." },
+      { name: "aria-labelledby", on: "section.forma-empty-state", values: "id of the heading", default: "—", description: "Names the section so it is exposed as a labelled region." },
+      { name: "aria-hidden", on: ".forma-empty-state__symbol", values: "true", default: "—", description: "Hides the decorative symbol." },
       { name: "type", on: "button", values: "button", default: "—", description: "Keeps recovery actions from submitting a surrounding form." }
     ],
     hooks: {
-      "ef-empty-state": "Root section: centered grid with dashed border and viewport-scaled vertical padding. Removes heading and paragraph margins.",
-      "ef-empty-state__symbol": "Bordered 2rem square holding a short text glyph. Decorative."
+      "forma-empty-state": "Root section: centered grid with dashed border and viewport-scaled vertical padding. Removes heading and paragraph margins.",
+      "forma-empty-state__symbol": "Bordered 2rem square holding a short text glyph. Decorative."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the recovery actions. The empty state itself is not focusable." }

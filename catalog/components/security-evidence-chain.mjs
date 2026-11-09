@@ -29,8 +29,8 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Chain ending in a verified state",
       description: "A complete chain for an authorization invariant, from a CI source through a linked observation to a Verified state.",
-      html: `<ef-security-evidence-chain class="ef-component-tag">
-  <figure class="ef-security-evidence-chain" aria-labelledby="security-evidence-chain-verified-caption">
+      html: `<forma-security-evidence-chain class="forma-component-tag">
+  <figure class="forma-security-evidence-chain" aria-labelledby="security-evidence-chain-verified-caption">
     <figcaption id="security-evidence-chain-verified-caption">Evidence chain for SEC-INV-003</figcaption>
     <ol>
       <li><strong>Source</strong><span>CI policy tests, run 1042</span></li>
@@ -39,15 +39,15 @@ export default {
       <li><strong>State</strong><span>Verified</span></li>
     </ol>
   </figure>
-</ef-security-evidence-chain>`
+</forma-security-evidence-chain>`
     },
     {
       id: "missing-observation",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Chain with a missing observation",
       description: "No observation exists for the invariant, so the Observation step says so in text and the state is Unknown. The gap is shown rather than skipped, which would make the chain look complete.",
-      html: `<ef-security-evidence-chain class="ef-component-tag">
-  <figure class="ef-security-evidence-chain" aria-labelledby="security-evidence-chain-missing-observation-caption">
+      html: `<forma-security-evidence-chain class="forma-component-tag">
+  <figure class="forma-security-evidence-chain" aria-labelledby="security-evidence-chain-missing-observation-caption">
     <figcaption id="security-evidence-chain-missing-observation-caption">Evidence chain for SEC-INV-021</figcaption>
     <ol>
       <li><strong>Source</strong><span>Runtime egress monitor</span></li>
@@ -56,7 +56,7 @@ export default {
       <li><strong>State</strong><span>Unknown</span></li>
     </ol>
   </figure>
-</ef-security-evidence-chain>`
+</forma-security-evidence-chain>`
     },
     {
       id: "mobile",
@@ -72,8 +72,8 @@ export default {
           "Forma does not reset the browser's default figure margins, so at 320px the chain is inset by roughly 40px on each side and steps are correspondingly narrower."
         ]
       },
-      html: `<ef-security-evidence-chain class="ef-component-tag">
-  <figure class="ef-security-evidence-chain" aria-labelledby="security-evidence-chain-mobile-caption">
+      html: `<forma-security-evidence-chain class="forma-component-tag">
+  <figure class="forma-security-evidence-chain" aria-labelledby="security-evidence-chain-mobile-caption">
     <figcaption id="security-evidence-chain-mobile-caption">Evidence chain for SEC-INV-014</figcaption>
     <ol>
       <li><strong>Source</strong><span>Aegis authorization audit, production mirror environment</span></li>
@@ -82,7 +82,7 @@ export default {
       <li><strong>State</strong><span>Violated</span></li>
     </ol>
   </figure>
-</ef-security-evidence-chain>`
+</forma-security-evidence-chain>`
     }
   ],
   api: {
@@ -91,7 +91,7 @@ export default {
       { name: "href", on: "a", values: "stable record URL or #ID", default: "—", description: "Deep link to the observation or invariant record." }
     ],
     hooks: {
-      "ef-security-evidence-chain": "Root figure: bordered, padded primary surface. Its ordered list is an unstyled auto-fit grid of steps at least 9rem wide (one column below 30rem); each step is bordered and padded, with its strong, span and link children displayed as blocks."
+      "forma-security-evidence-chain": "Root figure: bordered, padded primary surface. Its ordered list is an unstyled auto-fit grid of steps at least 9rem wide (one column below 30rem); each step is bordered and padded, with its strong, span and link children displayed as blocks."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between record links in chain order." },

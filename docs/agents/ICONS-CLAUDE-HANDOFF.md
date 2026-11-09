@@ -34,7 +34,7 @@ Do not infer alternate repositories or create another icons repo.
 
 ## Invariants
 
-- Forma core stays zero-runtime. `<ef-icon>` is inert; native HTML has semantics and controls.
+- Forma core stays zero-runtime. `<forma-icon>` is inert; native HTML has semantics and controls.
 - Forma owns drawing geometry, labels as suggested metadata, styling and packaging, **never** executable actions, authoritative state or workflow semantics.
 - Limen owns browser capabilities and application commands. F# and Ordo own Studio state and legality. Folio owns pagination and print.
 - The same static SVG shapes must work in light/dark/custom brands, 320px/mobile, offline HTML, grayscale/forced colors, and printed PDF without remote assets.

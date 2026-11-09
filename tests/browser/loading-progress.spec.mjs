@@ -41,41 +41,41 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("indeterminate activity uses the declared cadence: named period, linear, infinite", async ({ page }) => {
-  const period = await resolveTime(page, "--ef-motion-cadence-period");
-  const rotation = await resolveTime(page, "--ef-motion-cadence-rotation-period");
+  const period = await resolveTime(page, "--forma-motion-cadence-period");
+  const rotation = await resolveTime(page, "--forma-motion-cadence-rotation-period");
   const read = (selector) => page.locator(selector).first().evaluate((element) => {
     const style = getComputedStyle(element);
     return { name: style.animationName, duration: style.animationDuration, easing: style.animationTimingFunction, iterations: style.animationIterationCount };
   });
-  expect(await read(".ef-skeleton__line")).toEqual({ name: "ef-skeleton-shift", duration: period, easing: "linear", iterations: "infinite" });
-  expect(await read(".ef-spinner__indicator")).toEqual({ name: "ef-spinner-rotate", duration: rotation, easing: "linear", iterations: "infinite" });
+  expect(await read(".forma-skeleton__line")).toEqual({ name: "forma-skeleton-shift", duration: period, easing: "linear", iterations: "infinite" });
+  expect(await read(".forma-spinner__indicator")).toEqual({ name: "forma-spinner-rotate", duration: rotation, easing: "linear", iterations: "infinite" });
 });
 
 test("cadence stops when the represented activity stops", async ({ page }) => {
-  expect(await running(page, ".ef-skeleton__line")).toBeGreaterThan(0);
-  expect(await running(page, ".ef-spinner__indicator")).toBe(1);
-  await page.locator(".ef-skeleton").evaluate((element) => element.setAttribute("aria-busy", "false"));
-  await page.locator(".ef-spinner").evaluate((element) => {
-    element.dataset.efState = "idle";
-    element.querySelector(".ef-spinner__label").textContent = "Deployment history loaded";
+  expect(await running(page, ".forma-skeleton__line")).toBeGreaterThan(0);
+  expect(await running(page, ".forma-spinner__indicator")).toBe(1);
+  await page.locator(".forma-skeleton").evaluate((element) => element.setAttribute("aria-busy", "false"));
+  await page.locator(".forma-spinner").evaluate((element) => {
+    element.dataset.formaState = "idle";
+    element.querySelector(".forma-spinner__label").textContent = "Deployment history loaded";
   });
-  expect(await running(page, ".ef-skeleton__line")).toBe(0);
-  expect(await running(page, ".ef-spinner__indicator")).toBe(0);
+  expect(await running(page, ".forma-skeleton__line")).toBe(0);
+  expect(await running(page, ".forma-spinner__indicator")).toBe(0);
   await expect(page.getByRole("status")).toHaveText("Deployment history loaded");
 });
 
 test("updating status text does not restart the cycle as if new work began", async ({ page }) => {
-  const before = await page.locator(".ef-spinner__indicator").evaluate(async (element) => {
+  const before = await page.locator(".forma-spinner__indicator").evaluate(async (element) => {
     await new Promise((done) => setTimeout(done, 150));
     return element.getAnimations()[0].currentTime;
   });
-  const after = await page.locator(".ef-spinner").evaluate(async (element) => {
-    const animation = element.querySelector(".ef-spinner__indicator").getAnimations()[0];
-    element.querySelector(".ef-spinner__label").textContent = "Loading deployment history (page 2)";
+  const after = await page.locator(".forma-spinner").evaluate(async (element) => {
+    const animation = element.querySelector(".forma-spinner__indicator").getAnimations()[0];
+    element.querySelector(".forma-spinner__label").textContent = "Loading deployment history (page 2)";
     element.setAttribute("aria-label", "Loading");
     element.removeAttribute("aria-label");
     await new Promise((done) => setTimeout(done, 50));
-    const current = element.querySelector(".ef-spinner__indicator").getAnimations()[0];
+    const current = element.querySelector(".forma-spinner__indicator").getAnimations()[0];
     return { same: current === animation, time: current.currentTime };
   });
   expect(after.same).toBe(true);
@@ -84,17 +84,17 @@ test("updating status text does not restart the cycle as if new work began", asy
 
 test("activity animation encodes neither importance nor completion time", async ({ page }) => {
   // Every skeleton line shares one period; no line runs faster or slower.
-  const durations = await page.locator(".ef-skeleton__line").evaluateAll((elements) => elements.map((element) => getComputedStyle(element).animationDuration));
+  const durations = await page.locator(".forma-skeleton__line").evaluateAll((elements) => elements.map((element) => getComputedStyle(element).animationDuration));
   expect(new Set(durations).size).toBe(1);
 });
 
 test("reduced motion stops repeated activity while text and busy semantics remain", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  expect(await running(page, ".ef-skeleton__line")).toBe(0);
-  expect(await running(page, ".ef-spinner__indicator")).toBe(0);
-  await expect(page.locator(".ef-skeleton")).toHaveAttribute("aria-busy", "true");
+  expect(await running(page, ".forma-skeleton__line")).toBe(0);
+  expect(await running(page, ".forma-spinner__indicator")).toBe(0);
+  await expect(page.locator(".forma-skeleton")).toHaveAttribute("aria-busy", "true");
   await expect(page.getByRole("status")).toHaveText("Loading deployment history");
-  const indicator = await page.locator(".ef-spinner__indicator").boundingBox();
+  const indicator = await page.locator(".forma-spinner__indicator").boundingBox();
   expect(indicator.width).toBeGreaterThan(10);
 });
 
@@ -124,7 +124,7 @@ test("indeterminate progress stays explicit text plus a browser-owned bar", asyn
 
 test("forced colors keeps the spinner indicator and progress visible", async ({ page }) => {
   await page.emulateMedia({ forcedColors: "active" });
-  const border = await page.locator(".ef-spinner__indicator").evaluate((element) => getComputedStyle(element).borderInlineStartColor);
+  const border = await page.locator(".forma-spinner__indicator").evaluate((element) => getComputedStyle(element).borderInlineStartColor);
   expect(border).not.toBe("rgba(0, 0, 0, 0)");
   await expect(page.getByRole("progressbar", { name: "Exporting audit log" })).toBeVisible();
 });

@@ -55,7 +55,7 @@ test("every component page publishes the standard sections in order", () => {
     positions.forEach((position, index) => assert.ok(position > -1, `${component.slug} is missing section ${SECTIONS[index][0]}`));
     assert.deepEqual([...positions].sort((a, b) => a - b), positions, `${component.slug} sections are out of order`);
     assert.ok(html.includes(`<h1>${component.name.replaceAll("&", "&amp;")}</h1>`), `${component.slug} h1 does not show its name`);
-    assert.ok(html.includes(`&lt;ef-${component.slug}&gt;`), `${component.slug} does not show its tag`);
+    assert.ok(html.includes(`&lt;forma-${component.slug}&gt;`), `${component.slug} does not show its tag`);
   }
 });
 
@@ -68,13 +68,13 @@ test("every component shows at least three live examples and one mobile example,
     assert.ok(mobiles >= 1, `${component.slug} renders no mobile example`);
     const blocks = html.split(/<section class="example-block(?: example-block--mobile)?" id="example-/).slice(1);
     for (const block of blocks) {
-      assert.match(block, /<pre class="ef-code code-viewer__code"/, `${component.slug} has an example without HTML source`);
+      assert.match(block, /<pre class="forma-code code-viewer__code"/, `${component.slug} has an example without HTML source`);
       assert.match(block, /class="code-viewer__raw"/, `${component.slug} has an example without a raw source link`);
     }
     for (const example of component.examples.filter(item => item.mobile)) {
       const frame = path.join(output, "components", component.slug, `mobile-${example.id}.html`);
       assert.ok(fs.existsSync(frame), `${component.slug} is missing the mobile frame for ${example.id}`);
-      assert.match(read(frame), new RegExp(`<ef-${component.slug}\\b`));
+      assert.match(read(frame), new RegExp(`<forma-${component.slug}\\b`));
     }
   }
 });
@@ -89,7 +89,7 @@ test("displayed source is exactly the rendered source for every authored example
     const html = componentPage(component.slug);
     for (const example of component.examples.filter(item => !item.mobile)) {
       const block = html.split(`id="example-${example.id}"`)[1];
-      const shown = unescape(/<pre class="ef-code code-viewer__code"[^>]*><code>([\s\S]*?)<\/code><\/pre>/.exec(block)[1]);
+      const shown = unescape(/<pre class="forma-code code-viewer__code"[^>]*><code>([\s\S]*?)<\/code><\/pre>/.exec(block)[1]);
       assert.ok(shown === example.html.trim(), `${component.slug}/${example.id} displayed source differs`);
       assert.ok(block.includes(example.html.trim()), `${component.slug}/${example.id} live render differs from source`);
     }
@@ -155,10 +155,10 @@ test("links are relative so the site works under any GitHub Pages base path", ()
   }
 });
 
-test("every ef-* tag rendered anywhere is a catalog component", () => {
+test("every forma-* tag rendered anywhere is a catalog component", () => {
   const slugs = new Set(catalog.components.map(item => item.slug));
   for (const file of pages) {
-    const tags = [...new Set([...stripSource(read(file)).matchAll(/<ef-([a-z0-9-]+)\b/g)].map(match => match[1]))];
+    const tags = [...new Set([...stripSource(read(file)).matchAll(/<forma-([a-z0-9-]+)\b/g)].map(match => match[1]))];
     assert.deepEqual(tags.filter(tag => !slugs.has(tag)), [], path.relative(root, file));
   }
 });
@@ -172,9 +172,9 @@ test("category pages, the A–Z index and the manifest cover every component", (
     const categoryPage = read(path.join(output, "components", component.category, "index.html"));
     assert.match(categoryPage, new RegExp(`components/${component.slug}/"`), `${component.slug} missing from its category page`);
     const entry = manifest.components.find(item => item.slug === component.slug);
-    assert.equal(entry.tag, `ef-${component.slug}`);
+    assert.equal(entry.tag, `forma-${component.slug}`);
     assert.equal(entry.docsUrl, `components/${component.slug}/`);
-    assert.ok(entry.minimalHtml.includes(`<ef-${component.slug} class="ef-component-tag">`));
+    assert.ok(entry.minimalHtml.includes(`<forma-${component.slug} class="forma-component-tag">`));
   }
   for (const category of catalog.categories) {
     assert.ok(fs.existsSync(path.join(output, "components", category.id, "index.html")), `missing category page ${category.id}`);
@@ -186,7 +186,7 @@ test("compositions render real components and link back to their pages", () => {
   assert.ok(catalog.compositions.some(item => item.slug === "mobile-settings" && item.mobile));
   for (const composition of catalog.compositions) {
     const html = read(path.join(output, "compositions", composition.slug, "index.html"));
-    const tags = [...new Set([...composition.html.matchAll(/<ef-([a-z0-9-]+)\b/g)].map(match => match[1]))];
+    const tags = [...new Set([...composition.html.matchAll(/<forma-([a-z0-9-]+)\b/g)].map(match => match[1]))];
     for (const tag of tags) assert.match(html, new RegExp(`components/${tag}/"`), `${composition.slug} does not link to ${tag}`);
   }
 });
@@ -200,7 +200,7 @@ test("the documentation site loads only the audited metadata runtime", () => {
 });
 
 test("inventory attributes dedicated tests by pattern reference, not by same-named compiled icon assets", () => {
-  const search = { slug: "search", owns: ["ef-search"] };
+  const search = { slug: "search", owns: ["forma-search"] };
   const source = (file, text) => ({ file: `tests/${file}`, text });
   // A compiled icon asset path shares the component's slug but is not its pattern.
   assert.deepEqual(dedicatedTests([source("icons.test.mjs", 'compileIcons(source).get("html/search.html")')], search), []);
@@ -208,7 +208,7 @@ test("inventory attributes dedicated tests by pattern reference, not by same-nam
   // Real references to the pattern or its owned block still count.
   assert.deepEqual(dedicatedTests([source("a.spec.mjs", "page.goto('/patterns/search.html')")], search), ["a.spec.mjs"]);
   assert.deepEqual(dedicatedTests([source("b.spec.mjs", "page.goto('/components/search.html')")], search), ["b.spec.mjs"]);
-  assert.deepEqual(dedicatedTests([source("c.spec.mjs", "page.locator('.ef-search input')")], search), ["c.spec.mjs"]);
+  assert.deepEqual(dedicatedTests([source("c.spec.mjs", "page.locator('.forma-search input')")], search), ["c.spec.mjs"]);
   // Generic suites are never listed as dedicated coverage.
   assert.deepEqual(dedicatedTests([source("package-contract.test.mjs", "patterns/search.html")], search), []);
 });

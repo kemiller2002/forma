@@ -8,7 +8,7 @@ Assessed 2026-10-30 for work item `WI-0042`. Indy Init (`kemiller2002/Indy-init`
   - The Causa-shaped regions are built from canonical Forma patterns with realistic Causa content (SHAs, evidence paths, hypothesis IDs).
   - They were measured in Chromium, Firefox and WebKit (WebKit stands in for iPad Safari).
   - Viewports: 320px, iPad portrait 820×1180, iPad landscape 1180×820 and 1440px desktop, each at default and 200% text.
-- **Not executed.** No Causa application exists to test. Indy Init is a planning repository: the application is built from zero at kickoff (`docs/HACKATHON-BOUNDARIES.md`). It contains no CSS and no `ef-*` usage to run the token validator against.
+- **Not executed.** No Causa application exists to test. Indy Init is a planning repository: the application is built from zero at kickoff (`docs/HACKATHON-BOUNDARIES.md`). It contains no CSS and no `forma-*` usage to run the token validator against.
   - Integration with Limen, Folio and Arca, and the exact-SHA deployment acceptance (DEP-CURRENT-004), are therefore **not** claimed.
   - The fixtures are evidence about Forma's components with Causa-like content. They are not evidence about Causa.
 
@@ -26,15 +26,15 @@ Assessed 2026-10-30 for work item `WI-0042`. Indy Init (`kemiller2002/Indy-init`
 
 | Causa area | Forma pieces | Result on 0.13.0 |
 |---|---|---|
-| Save-state indicators | `.ef-status-lozenge`, `.ef-freshness`, `.ef-identifier` with a repository@SHA | Contained, with no page scroll, at every viewport and text size in all three engines. |
-| Conflict dialogs | `.ef-conflict-review` with long paths and SHAs; `dialog.ef-dialog` with a validation summary | Contained at every viewport. The modal dialog stays in the viewport at 320 and 768px at both text sizes, and focus is visible. On 0.12.0 a validation-summary SHA escaped the dialog by 175px. |
-| Command interface | `.ef-command-palette` opened modally | Contained and on screen at 320px and iPad portrait at both text sizes. Before this patch a long command label overflowed by 5px at 320px with 200% text. |
-| Evidence inspector and timeline | `.ef-split-pane` with `.ef-timeline` and `.ef-key-value-list` | Contained everywhere except iPad portrait at 200% text; see the limitations. |
-| Causal graph container | `.ef-bounded-overflow` holding an 84rem canvas | The canvas scrolls inside its region and the page does not scroll. |
-| Investigation dashboard | `.ef-dashboard-grid` with `.ef-metric-card` | Contained except at iPad portrait with 200% text; see the limitations. |
-| Navigation | `.ef-navigation-shell`, and `.ef-landmark-region` with 10 items | Contained with no page scroll. |
-| Forms, iPad Safari | `.ef-form-row` with a long-option `select` | On 0.12.0, WebKit scrolled the page sideways by 300px at 320px. On 0.13.0 it does not. |
-| Rounded panels | Brand radius on `.ef-surface` | Text stays inside the curve (corner check) at 320px and at 200%. |
+| Save-state indicators | `.forma-status-lozenge`, `.forma-freshness`, `.forma-identifier` with a repository@SHA | Contained, with no page scroll, at every viewport and text size in all three engines. |
+| Conflict dialogs | `.forma-conflict-review` with long paths and SHAs; `dialog.forma-dialog` with a validation summary | Contained at every viewport. The modal dialog stays in the viewport at 320 and 768px at both text sizes, and focus is visible. On 0.12.0 a validation-summary SHA escaped the dialog by 175px. |
+| Command interface | `.forma-command-palette` opened modally | Contained and on screen at 320px and iPad portrait at both text sizes. Before this patch a long command label overflowed by 5px at 320px with 200% text. |
+| Evidence inspector and timeline | `.forma-split-pane` with `.forma-timeline` and `.forma-key-value-list` | Contained everywhere except iPad portrait at 200% text; see the limitations. |
+| Causal graph container | `.forma-bounded-overflow` holding an 84rem canvas | The canvas scrolls inside its region and the page does not scroll. |
+| Investigation dashboard | `.forma-dashboard-grid` with `.forma-metric-card` | Contained except at iPad portrait with 200% text; see the limitations. |
+| Navigation | `.forma-navigation-shell`, and `.forma-landmark-region` with 10 items | Contained with no page scroll. |
+| Forms, iPad Safari | `.forma-form-row` with a long-option `select` | On 0.12.0, WebKit scrolled the page sideways by 300px at 320px. On 0.13.0 it does not. |
+| Rounded panels | Brand radius on `.forma-surface` | Text stays inside the curve (corner check) at 320px and at 200%. |
 | Accessibility | axe WCAG 2.0/2.1/2.2 A/AA | No violations on the Causa-shaped page at iPad portrait, or on the layout fixtures at 375px. |
 
 Rehearsal defects these address:
@@ -45,10 +45,10 @@ Rehearsal defects these address:
 
 ## Remaining limitations
 
-1. **Some components reflow only on a viewport media query.** This affects `.ef-dashboard-grid`, `.ef-split-pane` and `.ef-operation-status`.
+1. **Some components reflow only on a viewport media query.** This affects `.forma-dashboard-grid`, `.forma-split-pane` and `.forma-operation-status`.
    - Under page-level 200% text at iPad portrait width (820px), these stay wider than their region and the page scrolls sideways. The containment measurements give the sizes.
    - With the browser's own text-size setting, media queries in `em` respond, so this applies to page-level scaling and to these components inside narrower containers.
-   - It is the same class as the open `.ef-alert` item (`env-and-forma.md`).
+   - It is the same class as the open `.forma-alert` item (`env-and-forma.md`).
    - The spec asserts these still fail, so a fix will be noticed.
    - **Causa impact:** at iPad portrait with 200% text, put the dashboard, inspector and operation-status regions in a single column, or a container that collapses them, until Forma provides container-relative reflow.
 2. **Narrowed SVG charts.** A narrowed SVG with `width`/`height` attributes keeps a box taller than its drawing. No cross-engine fix exists without regressing icons. Give Causa charts `block-size: auto`, or omit the `height` attribute.
@@ -59,7 +59,7 @@ Rehearsal defects these address:
 ## F#, Limen and package compatibility
 
 - **No breaking API change.**
-  - No `ef-*` class, `--ef-*` token, pattern, export or attribute was removed or renamed.
+  - No `forma-*` class, `--forma-*` token, pattern, export or attribute was removed or renamed.
   - `@echelon-foundry/forma-workflow` 1.2.0 and the `Forma.Workflow` F# engine are unchanged. The Causa graph path (forma-workflow frame) is unaffected.
   - Forma remains zero-runtime: `dist/runtime.js` is byte-identical in size (3,030 bytes), there are no new runtime dependencies, and no JavaScript layout engine was added. Limen's boundary is untouched.
 - **Token validator.**
@@ -68,7 +68,7 @@ Rehearsal defects these address:
   - It needs only the base class library: no NuGet packages.
 - **Behaviour change Causa should know about.**
   - Long unbroken tokens inside Forma containers now break at the container edge instead of overflowing.
-  - Text that must not wrap needs `white-space: nowrap`, or `.ef-bounded-overflow` to scroll.
+  - Text that must not wrap needs `white-space: nowrap`, or `.forma-bounded-overflow` to scroll.
 
 ## Required consuming-application changes
 
@@ -78,7 +78,7 @@ None are required to adopt 0.13.0. Recommended:
    ```bash
    dotnet run --project node_modules/@echelon-foundry/design-system/tools/TokenValidator/TokenValidator.fsproj -- --forma node_modules/@echelon-foundry/design-system src/
    ```
-   Use application-owned names (`--causa-*`) for Causa's own properties. Declaring new `--ef-*` names is reported.
+   Use application-owned names (`--causa-*`) for Causa's own properties. Declaring new `--forma-*` names is reported.
 2. Use `@echelon-foundry/forma-conformance` 0.3.0 in Causa's Playwright suite. It covers ESO-R6-10:
    - `expectContained` on each screen region;
    - `expectFocusVisible` while tabbing;

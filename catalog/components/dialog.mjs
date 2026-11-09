@@ -45,21 +45,21 @@ export default {
       },
       title: "Destructive confirmation",
       description: "Deleting a project. The dialog's form uses `method=\"dialog\"`, so either button closes the dialog and sets its return value to the button's value for the application to act on. `autofocus` puts initial focus on the safe choice. Forma has no destructive button variant; the title and the button label carry the consequence.",
-      html: `<ef-dialog class="ef-component-tag">
+      html: `<forma-dialog class="forma-component-tag">
   <button type="button" commandfor="dialog-destructive-confirmation" command="show-modal">Delete project…</button>
-  <dialog class="ef-dialog" id="dialog-destructive-confirmation" aria-labelledby="dialog-destructive-confirmation-title" aria-describedby="dialog-destructive-confirmation-description">
+  <dialog class="forma-dialog" id="dialog-destructive-confirmation" aria-labelledby="dialog-destructive-confirmation-title" aria-describedby="dialog-destructive-confirmation-description">
     <form method="dialog">
-      <div class="ef-dialog__body">
+      <div class="forma-dialog__body">
         <h2 id="dialog-destructive-confirmation-title">Delete “Atlas migration”?</h2>
         <p id="dialog-destructive-confirmation-description">All 214 work items and their history will be permanently deleted. This cannot be undone.</p>
       </div>
-      <div class="ef-dialog__actions">
+      <div class="forma-dialog__actions">
         <button type="submit" value="cancel" autofocus>Keep project</button>
         <button type="submit" value="delete">Delete project</button>
       </div>
     </form>
   </dialog>
-</ef-dialog>`
+</forma-dialog>`
     },
     {
       id: "light-dismiss-long-content",
@@ -72,10 +72,10 @@ export default {
       },
       title: "Long release notes with light dismiss",
       description: "Read-only content that does not need a decision. `closedby=\"any\"` lets a click on the backdrop close the dialog in browsers that support it; Escape and the Close button work everywhere. The content is longer than a phone screen, so the dialog scrolls within its viewport-capped height. The standard motion weight makes entry a little quicker than the heavy default.",
-      html: `<ef-dialog class="ef-component-tag">
+      html: `<forma-dialog class="forma-component-tag">
   <button type="button" commandfor="dialog-light-dismiss-long-content" command="show-modal">What's new in 4.2</button>
-  <dialog class="ef-dialog" id="dialog-light-dismiss-long-content" closedby="any" data-ef-motion-weight="standard" aria-labelledby="dialog-light-dismiss-long-content-title">
-    <div class="ef-dialog__body">
+  <dialog class="forma-dialog" id="dialog-light-dismiss-long-content" closedby="any" data-forma-motion-weight="standard" aria-labelledby="dialog-light-dismiss-long-content-title">
+    <div class="forma-dialog__body">
       <h2 id="dialog-light-dismiss-long-content-title">What's new in 4.2</h2>
       <h3>Scheduled exports</h3>
       <p>Exports can now run daily or weekly and are delivered to a shared folder. Existing manual exports are unchanged.</p>
@@ -86,11 +86,11 @@ export default {
       <h3>Deprecations</h3>
       <p>The legacy CSV importer will be removed in 5.0. Use the new importer, which supports column mapping and previews.</p>
     </div>
-    <div class="ef-dialog__actions">
+    <div class="forma-dialog__actions">
       <button type="button" commandfor="dialog-light-dismiss-long-content" command="close">Close</button>
     </div>
   </dialog>
-</ef-dialog>`
+</forma-dialog>`
     },
     {
       id: "mobile-short-form",
@@ -114,24 +114,24 @@ export default {
           "The on-screen keyboard may cover the lower part of the dialog; keep fields near the top and actions immediately after them."
         ]
       },
-      html: `<ef-dialog class="ef-component-tag">
+      html: `<forma-dialog class="forma-component-tag">
   <button type="button" commandfor="dialog-mobile-short-form" command="show-modal">Rename board</button>
-  <dialog class="ef-dialog" id="dialog-mobile-short-form" aria-labelledby="dialog-mobile-short-form-title">
+  <dialog class="forma-dialog" id="dialog-mobile-short-form" aria-labelledby="dialog-mobile-short-form-title">
     <form method="dialog">
-      <div class="ef-dialog__body">
+      <div class="forma-dialog__body">
         <h2 id="dialog-mobile-short-form-title">Rename board</h2>
-        <div class="ef-field">
-          <label class="ef-field__label" for="dialog-mobile-short-form-name">Board name</label>
+        <div class="forma-field">
+          <label class="forma-field__label" for="dialog-mobile-short-form-name">Board name</label>
           <input id="dialog-mobile-short-form-name" name="board-name" type="text" value="Quarterly planning" required>
         </div>
       </div>
-      <div class="ef-dialog__actions">
+      <div class="forma-dialog__actions">
         <button type="submit" value="cancel" formnovalidate>Cancel</button>
         <button type="submit" value="save">Save name</button>
       </div>
     </form>
   </dialog>
-</ef-dialog>`
+</forma-dialog>`
     }
   ],
   api: {
@@ -143,14 +143,14 @@ export default {
       { name: "closedby", on: "dialog", values: "any | closerequest | none", default: "closerequest for modals", description: "Which user actions close the dialog. `any` adds backdrop click (light dismiss) where supported." },
       { name: "method", on: "form inside the dialog", values: "dialog", default: "—", description: "Submitting closes the dialog and sets `returnValue` to the submitter's value, without a network request." },
       { name: "autofocus", on: "a control inside the dialog", values: "boolean", default: "absent", description: "Chooses which element receives focus when the dialog opens; otherwise the first focusable element does." },
-      { name: "data-ef-motion-weight", on: "dialog", values: "light | standard | heavy", default: "heavy", description: "Presentation-only perceived mass for entry and exit." }
+      { name: "data-forma-motion-weight", on: "dialog", values: "light | standard | heavy", default: "heavy", description: "Presentation-only perceived mass for entry and exit." }
     ],
     hooks: {
-      "ef-dialog": "The dialog surface: border, primary surface, shadow, width `min(38rem, 100vw - 2rem)`, viewport-capped height and contained overscroll. Also styles the backdrop.",
-      "ef-dialog__body": "Padded content region (1.5rem, 1rem at 44rem and below).",
-      "ef-dialog__actions": "Wrapping action row aligned to the inline end with a top rule; at 44rem and below its buttons stretch to full width.",
+      "forma-dialog": "The dialog surface: border, primary surface, shadow, width `min(38rem, 100vw - 2rem)`, viewport-capped height and contained overscroll. Also styles the backdrop.",
+      "forma-dialog__body": "Padded content region (1.5rem, 1rem at 44rem and below).",
+      "forma-dialog__actions": "Wrapping action row aligned to the inline end with a top rule; at 44rem and below its buttons stretch to full width.",
       "open": "Native open state, set by the browser. `[open]` switches the surface to its resting position and the backdrop to its dimmed, blurred state, while preserving the shared spring timing in both directions.",
-      "data-ef-motion-weight": "Presentation-only perceived mass: heavy (default for dialogs), standard or light. Never encodes severity or destructiveness."
+      "data-forma-motion-weight": "Presentation-only perceived mass: heavy (default for dialogs), standard or light. Never encodes severity or destructiveness."
     },
     keyboard: [
       { keys: "Enter / Space on the invoker", action: "Opens the dialog; focus moves to the autofocus element or the first focusable element inside." },
@@ -194,7 +194,7 @@ export default {
   motion: [
     "Entry: the surface rises from 0.75rem below and scales from 98.5% to rest over the heavy inertial duration with spring easing; the backdrop dims and blurs by perceptual interpolation, independent of mass.",
     "Exit: the same path reversed over the same inertial duration and easing as entry, and the backdrop fades; `display` and `overlay` are held until the exit finishes.",
-    "`data-ef-motion-weight` changes perceived mass (heavy is the default). The native open state is always authoritative; motion never delays focus or inertness.",
+    "`data-forma-motion-weight` changes perceived mass (heavy is the default). The native open state is always authoritative; motion never delays focus or inertness.",
     "Under `prefers-reduced-motion: reduce` the travel and scale are removed, the backdrop blur is dropped, and remaining transitions are effectively instant."
   ],
   guidance: {

@@ -9,7 +9,7 @@ const wcag = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
 const example = (id) => diagram.examples.find((entry) => entry.id === id).html;
 
 const html = ({ theme = "", body }) => `<!doctype html>
-<html lang="en"${theme ? ` data-ef-theme="${theme}"` : ""}>
+<html lang="en"${theme ? ` data-forma-theme="${theme}"` : ""}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,11 +33,11 @@ const style = (locator, property, pseudo = null) =>
 test("ellipse and diamond are presentation variants with visible kind text", async ({ page }) => {
   await open(page, 1280, "workflow-lanes-and-decision");
   const start = node(page, "Submit request");
-  await expect(start).toHaveAttribute("data-ef-shape", "ellipse");
-  await expect(start.locator(".ef-diagram-node__kind")).toHaveText("Start");
+  await expect(start).toHaveAttribute("data-forma-shape", "ellipse");
+  await expect(start.locator(".forma-diagram-node__kind")).toHaveText("Start");
   expect(await style(start, "borderTopLeftRadius")).toBe("50%");
   const decision = node(page, "Within budget?");
-  await expect(decision.locator(".ef-diagram-node__kind")).toHaveText("Decision");
+  await expect(decision.locator(".forma-diagram-node__kind")).toHaveText("Decision");
   const box = await decision.boundingBox();
   expect(Math.abs(box.width - box.height)).toBeLessThanOrEqual(1);
   expect(await style(decision, "transform", "::before")).not.toBe("none");
@@ -72,37 +72,37 @@ test("the diamond's content sits inside the diamond, not across its edges", asyn
 
 test("groups paint beneath connectors and nodes and keep a text label", async ({ page }) => {
   await open(page, 1280, "workflow-lanes-and-decision");
-  const order = await page.locator(".ef-diagram__canvas > *").evaluateAll((children) => children.map((child) => child.getAttribute("class").split(" ")[0]));
-  expect(order.lastIndexOf("ef-diagram-group")).toBeLessThan(order.indexOf("ef-diagram__wires"));
-  const lanes = page.locator(".ef-diagram-group");
+  const order = await page.locator(".forma-diagram__canvas > *").evaluateAll((children) => children.map((child) => child.getAttribute("class").split(" ")[0]));
+  expect(order.lastIndexOf("forma-diagram-group")).toBeLessThan(order.indexOf("forma-diagram__wires"));
+  const lanes = page.locator(".forma-diagram-group");
   await expect(lanes).toHaveCount(2);
-  await expect(lanes.nth(0).locator(".ef-diagram-group__label")).toHaveText("Requester");
-  await expect(lanes.nth(1).locator(".ef-diagram-group__kind")).toHaveText("Lane");
+  await expect(lanes.nth(0).locator(".forma-diagram-group__label")).toHaveText("Requester");
+  await expect(lanes.nth(1).locator(".forma-diagram-group__kind")).toHaveText("Lane");
 });
 
 test("group authored color applies and removing it restores the default", async ({ page }) => {
   await open(page, 1280, "workflow-lanes-and-decision");
-  const finance = page.locator(".ef-diagram-group").nth(1);
-  const requester = page.locator(".ef-diagram-group").nth(0);
+  const finance = page.locator(".forma-diagram-group").nth(1);
+  const requester = page.locator(".forma-diagram-group").nth(0);
   expect(await style(finance, "borderLeftColor")).toBe("rgb(107, 63, 160)");
   const fallback = await style(requester, "borderLeftColor");
-  await finance.evaluate((element) => element.style.removeProperty("--ef-diagram-accent"));
+  await finance.evaluate((element) => element.style.removeProperty("--forma-diagram-accent"));
   expect(await style(finance, "borderLeftColor")).toBe(fallback);
 });
 
 test("value states are text first, with a distinct secondary border cue", async ({ page }) => {
   await open(page, 1280, "metadata-value-states");
-  const tags = page.locator(".ef-diagram-value-state");
+  const tags = page.locator(".forma-diagram-value-state");
   await expect(tags).toHaveCount(6);
   const states = await tags.evaluateAll((elements) => elements.map((element) => ({
-    state: element.dataset.efValueState,
+    state: element.dataset.formaValueState,
     text: element.textContent.trim(),
     border: getComputedStyle(element).borderTopStyle
   })));
   for (const entry of states) expect(entry.text.length).toBeGreaterThan(0);
   expect(new Set(states.map((entry) => entry.border)).size).toBeGreaterThanOrEqual(4);
   // The explicit value has no tag: explicit is the default reading.
-  await expect(page.locator("dd", { hasText: "In review" }).locator(".ef-diagram-value-state")).toHaveCount(0);
+  await expect(page.locator("dd", { hasText: "In review" }).locator(".forma-diagram-value-state")).toHaveCount(0);
   await page.emulateMedia({ forcedColors: "active" });
   expect(new Set(await tags.evaluateAll((elements) => elements.map((element) => getComputedStyle(element).borderTopStyle))).size).toBeGreaterThanOrEqual(4);
 });
@@ -115,9 +115,9 @@ test("print keeps authored strokes and black boundaries for every shape and grou
   const decision = node(page, "Within budget?");
   expect(parseFloat(await style(decision, "borderTopWidth", "::before"))).toBeGreaterThan(0);
   expect(await style(decision, "borderTopColor", "::before")).toBe("rgb(0, 0, 0)");
-  await decision.evaluate((element) => element.style.setProperty("--ef-diagram-stroke", "#2f5fb3"));
+  await decision.evaluate((element) => element.style.setProperty("--forma-diagram-stroke", "#2f5fb3"));
   expect(await style(decision, "borderTopColor", "::before")).toBe("rgb(47, 95, 179)");
-  const lane = page.locator(".ef-diagram-group").first();
+  const lane = page.locator(".forma-diagram-group").first();
   expect(await style(lane, "borderBottomColor")).toBe("rgb(0, 0, 0)");
 });
 
@@ -125,18 +125,18 @@ test("in forced colors, shapes and groups keep boundaries and value states keep 
   await open(page, 1280, "workflow-lanes-and-decision");
   await page.emulateMedia({ forcedColors: "active" });
   expect(await style(node(page, "Within budget?"), "borderTopStyle", "::before")).toBe("solid");
-  expect(await style(page.locator(".ef-diagram-group").first(), "borderTopStyle")).toBe("solid");
-  await expect(node(page, "Prepare budget").locator(".ef-diagram-value-state")).toHaveText("from lane");
+  expect(await style(page.locator(".forma-diagram-group").first(), "borderTopStyle")).toBe("solid");
+  await expect(node(page, "Prepare budget").locator(".forma-diagram-value-state")).toHaveText("from lane");
 });
 
 test("grayscale leaves every distinction in text, line style or the key", async ({ page }) => {
   await open(page, 1280, "workflow-lanes-and-decision");
   await page.addStyleTag({ content: "html { filter: grayscale(1); }" });
-  const dashes = await page.locator(".ef-diagram-connector").evaluateAll((paths) => paths.map((path) => getComputedStyle(path).strokeDasharray));
+  const dashes = await page.locator(".forma-diagram-connector").evaluateAll((paths) => paths.map((path) => getComputedStyle(path).strokeDasharray));
   expect(new Set(dashes).size).toBe(2);
-  const legend = await page.locator(".ef-diagram-legend dd").allTextContents();
+  const legend = await page.locator(".forma-diagram-legend dd").allTextContents();
   expect(legend.every((text) => text.trim().length > 0)).toBe(true);
-  await expect(page.getByRole("list", { name: "Relationships" }).getByRole("listitem")).toHaveCount(await page.locator(".ef-diagram-connector").count());
+  await expect(page.getByRole("list", { name: "Relationships" }).getByRole("listitem")).toHaveCount(await page.locator(".forma-diagram-connector").count());
 });
 
 test("at 320px the page does not overflow and nodes do not clip at 200% text", async ({ page }) => {

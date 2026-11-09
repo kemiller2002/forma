@@ -26,36 +26,36 @@ export default {
       id: "install-procedure",
       title: "Installation procedure with a code sample",
       description: "A product install section: the steps sit in the primary column of a split and the matching command in the supporting column. Inline `code` stays legible inside a step.",
-      html: `<ef-steps class="ef-component-tag">
-  <div class="ef-site">
-    <section class="ef-section" aria-labelledby="steps-install-procedure-title">
-      <div class="ef-split">
+      html: `<forma-steps class="forma-component-tag">
+  <div class="forma-site">
+    <section class="forma-section" aria-labelledby="steps-install-procedure-title">
+      <div class="forma-split">
         <div>
-          <p class="ef-eyebrow">Install</p>
+          <p class="forma-eyebrow">Install</p>
           <h3 id="steps-install-procedure-title">Three steps to a first report</h3>
-          <ol class="ef-steps" role="list" aria-label="Installation">
+          <ol class="forma-steps" role="list" aria-label="Installation">
             <li>Add <code>example-quality</code> to the repository's tool manifest.</li>
             <li>Run the baseline collection on the main branch.</li>
             <li>Publish the report from CI on every pull request.</li>
           </ol>
         </div>
-        <figure class="ef-code-figure">
+        <figure class="forma-code-figure">
           <figcaption id="steps-install-procedure-code">Collect a baseline</figcaption>
-          <pre class="ef-code" tabindex="0" aria-labelledby="steps-install-procedure-code"><code>example-quality collect --baseline</code></pre>
+          <pre class="forma-code" tabindex="0" aria-labelledby="steps-install-procedure-code"><code>example-quality collect --baseline</code></pre>
         </figure>
       </div>
     </section>
   </div>
-</ef-steps>`
+</forma-steps>`
     },
     {
       id: "long-method",
       title: "Ten-step method with long items",
       description: "A longer method on the surface tone. Numbers keep two digits (01 to 10) so the text column stays aligned, and multi-line items wrap beside their number.",
-      html: `<ef-steps class="ef-component-tag">
-  <div class="ef-site">
-    <div data-ef-tone="surface">
-      <ol class="ef-steps" role="list" aria-label="Diagnostic method">
+      html: `<forma-steps class="forma-component-tag">
+  <div class="forma-site">
+    <div data-forma-tone="surface">
+      <ol class="forma-steps" role="list" aria-label="Diagnostic method">
         <li>Understand the domain, its constraints and the decisions people make inside it.</li>
         <li>Collect the reported symptoms without explaining them yet.</li>
         <li>Group symptoms that recur together across teams, releases and environments.</li>
@@ -69,7 +69,7 @@ export default {
       </ol>
     </div>
   </div>
-</ef-steps>`
+</forma-steps>`
     },
     {
       id: "mobile-method",
@@ -84,25 +84,25 @@ export default {
           "Orientation changes only reflow line breaks."
         ]
       },
-      html: `<ef-steps class="ef-component-tag">
-  <div class="ef-site">
-    <ol class="ef-steps" role="list" aria-label="Engagement method">
+      html: `<forma-steps class="forma-component-tag">
+  <div class="forma-site">
+    <ol class="forma-steps" role="list" aria-label="Engagement method">
       <li>Understand the domain and its constraints before proposing anything.</li>
       <li>Identify recurring symptom patterns across teams.</li>
       <li>Trace the causal mechanism with evidence.</li>
       <li>Deliver treatment and prevention, then verify both.</li>
     </ol>
   </div>
-</ef-steps>`
+</forma-steps>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: "ol.ef-steps", values: "list", default: "—", description: "Restores list semantics that some browsers drop when list-style is removed." },
-      { name: "aria-label", on: "ol.ef-steps", values: "string", default: "—", description: "Names the procedure when no visible heading introduces it directly." }
+      { name: "role", on: "ol.forma-steps", values: "list", default: "—", description: "Restores list semantics that some browsers drop when list-style is removed." },
+      { name: "aria-label", on: "ol.forma-steps", values: "string", default: "—", description: "Names the procedure when no visible heading introduces it directly." }
     ],
     hooks: {
-      "ef-steps": "The `ol`. Resets the `ef-step` counter, removes default markers and padding, and draws a top rule; each direct `li` increments the counter, shows it as a two-digit mono number, and draws a bottom rule."
+      "forma-steps": "The `ol`. Resets the `forma-step` counter, removes default markers and padding, and draws a top rule; each direct `li` increments the counter, shows it as a two-digit mono number, and draws a bottom rule."
     },
     keyboard: [
       { keys: "—", action: "Not interactive. Links placed inside a step follow native link behavior." }
@@ -111,7 +111,7 @@ export default {
   },
   states: [
     { name: "Default", how: "no attributes", description: "Static numbered list; there is no current or completed step." },
-    { name: "Toned", how: "data-ef-tone on an ancestor", description: "Text and rules follow the surrounding surface tone." }
+    { name: "Toned", how: "data-forma-tone on an ancestor", description: "Text and rules follow the surrounding surface tone." }
   ],
   accessibility: {
     forma: [

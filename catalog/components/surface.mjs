@@ -28,42 +28,42 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Billing summary panel",
       description: "A surface on a section groups a heading, key facts and an action. The section supplies the landmark semantics and the surface supplies the boundary.",
-      html: `<ef-surface class="ef-component-tag">
-  <section class="ef-surface ef-stack" aria-labelledby="surface-billing-summary-title">
+      html: `<forma-surface class="forma-component-tag">
+  <section class="forma-surface forma-stack" aria-labelledby="surface-billing-summary-title">
     <h2 id="surface-billing-summary-title">Current plan</h2>
-    <dl class="ef-key-value-list">
+    <dl class="forma-key-value-list">
       <div><dt>Plan</dt><dd>Team, 25 seats</dd></div>
       <div><dt>Next invoice</dt><dd><time datetime="2026-10-01">1 October 2026</time>, $1,250.00</dd></div>
       <div><dt>Payment method</dt><dd>Visa ending 4242</dd></div>
     </dl>
-    <div class="ef-cluster"><button type="button">Change plan</button></div>
+    <div class="forma-cluster"><button type="button">Change plan</button></div>
   </section>
-</ef-surface>`
+</forma-surface>`
     },
     {
       id: "compact-padding",
       title: "Compact panels in a dense list",
-      description: "Surfaces as list items with reduced padding (`--ef-surface-space: 0.75rem`). The border keeps adjacent items distinct even with a tight gap.",
-      html: `<ef-surface class="ef-component-tag">
-  <ul class="ef-stack" data-density="compact" aria-label="Pending approvals">
-    <li class="ef-surface" style="--ef-surface-space: 0.75rem"><strong>Expense report EX-4410</strong> · Travel to Lisbon · $840.20</li>
-    <li class="ef-surface" style="--ef-surface-space: 0.75rem"><strong>Purchase order PO-1188</strong> · Laptop replacements · $6,300.00</li>
-    <li class="ef-surface" style="--ef-surface-space: 0.75rem"><strong>Contract CN-207</strong> · Cleaning services renewal · $12,000.00</li>
+      description: "Surfaces as list items with reduced padding (`--forma-surface-space: 0.75rem`). The border keeps adjacent items distinct even with a tight gap.",
+      html: `<forma-surface class="forma-component-tag">
+  <ul class="forma-stack" data-density="compact" aria-label="Pending approvals">
+    <li class="forma-surface" style="--forma-surface-space: 0.75rem"><strong>Expense report EX-4410</strong> · Travel to Lisbon · $840.20</li>
+    <li class="forma-surface" style="--forma-surface-space: 0.75rem"><strong>Purchase order PO-1188</strong> · Laptop replacements · $6,300.00</li>
+    <li class="forma-surface" style="--forma-surface-space: 0.75rem"><strong>Contract CN-207</strong> · Cleaning services renewal · $12,000.00</li>
   </ul>
-</ef-surface>`
+</forma-surface>`
     },
     {
       id: "nested-content",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Empty state inside a surface",
       description: "A surface holding an empty result message and the action that resolves it. The panel keeps the empty region visibly bounded so it is not mistaken for missing page content.",
-      html: `<ef-surface class="ef-component-tag">
-  <section class="ef-surface ef-stack" aria-labelledby="surface-nested-content-title">
+      html: `<forma-surface class="forma-component-tag">
+  <section class="forma-surface forma-stack" aria-labelledby="surface-nested-content-title">
     <h2 id="surface-nested-content-title">Scheduled reports</h2>
     <p>No reports are scheduled. Scheduled reports are emailed to you as PDF files.</p>
-    <div class="ef-cluster"><button type="button">Schedule a report</button></div>
+    <div class="forma-cluster"><button type="button">Schedule a report</button></div>
   </section>
-</ef-surface>`
+</forma-surface>`
     },
     {
       id: "mobile-panel",
@@ -79,33 +79,33 @@ export default {
           "Orientation changes only widen the panel."
         ]
       },
-      html: `<ef-surface class="ef-component-tag">
-  <section class="ef-surface ef-stack" aria-labelledby="surface-mobile-panel-title">
+      html: `<forma-surface class="forma-component-tag">
+  <section class="forma-surface forma-stack" aria-labelledby="surface-mobile-panel-title">
     <h2 id="surface-mobile-panel-title">Webhook endpoint</h2>
     <p>https://hooks.example.com/services/T024BE7LD/B06Q8K3N1RX/9f8a7b6c5d4e3f2a1b0c</p>
-    <div class="ef-cluster"><button type="button">Send test event</button></div>
+    <div class="forma-cluster"><button type="button">Send test event</button></div>
   </section>
-</ef-surface>`
+</forma-surface>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-labelledby", on: "section / article", values: "id of the panel heading", default: "—", description: "Names a surface that is a landmark or named region." },
       { name: "aria-label", on: "list", values: "string", default: "—", description: "Names a list of surfaces." },
-      { name: "style", on: ".ef-surface", values: "--ef-surface-space: <length>", default: "—", description: "Per-instance padding override." },
-      { name: "data-density", on: "surrounding .ef-stack", values: "compact", default: "—", description: "Used on the stack that spaces surfaces in the dense list example; it does not change surface padding." }
+      { name: "style", on: ".forma-surface", values: "--forma-surface-space: <length>", default: "—", description: "Per-instance padding override." },
+      { name: "data-density", on: "surrounding .forma-stack", values: "compact", default: "—", description: "Used on the stack that spaces surfaces in the dense list example; it does not change surface padding." }
     ],
     hooks: {
-      "ef-surface": "Panel with secondary surface background, on-secondary text color, subtle 1px border and padding. Headings and paragraphs inside inherit its color.",
-      "--ef-surface-space": "Padding on all sides. Default `--ef-primitive-spacing-5` (1.5rem).",
-      "--ef-surface-accent-text-color": "Color of links and accent labels inside a secondary surface. Every rule that paints the secondary surface sets it to `--ef-color-text-primary` and rebinds secondary and muted text to `--ef-color-text-on-secondary-surface`, because accent and secondary text are not AA-validated on that surface. Outside one, they use their accent role."
+      "forma-surface": "Panel with secondary surface background, on-secondary text color, subtle 1px border and padding. Headings and paragraphs inside inherit its color.",
+      "--forma-surface-space": "Padding on all sides. Default `--forma-primitive-spacing-5` (1.5rem).",
+      "--forma-surface-accent-text-color": "Color of links and accent labels inside a secondary surface. Every rule that paints the secondary surface sets it to `--forma-color-text-primary` and rebinds secondary and muted text to `--forma-color-text-on-secondary-surface`, because accent and secondary text are not AA-validated on that surface. Outside one, they use their accent role."
     },
     keyboard: [],
     events: [],
     form: "Not a form control. A form can be a surface."
   },
   states: [
-    { name: "Default", how: ".ef-surface", description: "Secondary tone, subtle border, 1.5rem padding." },
+    { name: "Default", how: ".forma-surface", description: "Secondary tone, subtle border, 1.5rem padding." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Border becomes CanvasText and the background resolves to Canvas, so the boundary stays visible." }
   ],
   accessibility: {
@@ -123,7 +123,7 @@ export default {
   responsive: [
     "Fluid: fills its parent's inline size; no breakpoints.",
     "`min-inline-size: 0` lets surfaces shrink inside grids and flex rows, so long content wraps instead of overflowing.",
-    "Padding does not change with width; reduce `--ef-surface-space` for dense contexts."
+    "Padding does not change with width; reduce `--forma-surface-space` for dense contexts."
   ],
   motion: [
     "No animation: the surface is static."

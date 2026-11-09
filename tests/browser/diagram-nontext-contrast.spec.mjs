@@ -9,8 +9,8 @@ import { expect, test } from "@playwright/test";
 const dir = "tests/fixtures/workflow-nontext";
 const STATUS_NODES = ["warning", "danger", "success", "info", "check"];
 const MODES = [
-  { name: "light", media: { colorScheme: "light", forcedColors: "none" }, canvas: [0xf2, 0xef, 0xe7] },
-  { name: "dark", media: { colorScheme: "dark", forcedColors: "none" }, canvas: [0x17, 0x1a, 0x18] },
+  { name: "light", media: { colorScheme: "light", forcedColors: "none" }, canvas: [0xfa, 0xfa, 0xfa] },
+  { name: "dark", media: { colorScheme: "dark", forcedColors: "none" }, canvas: [0x16, 0x16, 0x16] },
   { name: "forced colours", media: { colorScheme: "light", forcedColors: "active" } }
 ];
 
@@ -39,11 +39,11 @@ const rgb = (css) => {
 
 // The painted outline and fill of a node: a diamond paints both on ::before.
 const measureNode = (page, id) => page.locator(`#${id}`).evaluate((element) => {
-  const diamond = element.dataset.efShape === "diamond";
+  const diamond = element.dataset.formaShape === "diamond";
   const style = getComputedStyle(element, diamond ? "::before" : null);
   return { diamond, top: style.borderTopColor, start: style.borderLeftColor, background: style.backgroundColor };
 });
-const canvasColor = (page) => page.locator(".ef-diagram__viewport").evaluate((element) => getComputedStyle(element).backgroundColor);
+const canvasColor = (page) => page.locator(".forma-diagram__viewport").evaluate((element) => getComputedStyle(element).backgroundColor);
 
 for (const { name, media, canvas: expectedCanvas } of MODES) {
   test(`status-token outlines rendered by Forma.Workflow reach 3:1 (${name})`, async ({ page, browserName }) => {
@@ -60,7 +60,7 @@ for (const { name, media, canvas: expectedCanvas } of MODES) {
     }
     const canvas = await canvasColor(page);
     if (expectedCanvas) expect(rgb(canvas), `${name} surface`).toEqual(expectedCanvas);
-    const edge = await page.locator("path.ef-diagram-connector").first().evaluate((element) => getComputedStyle(element).stroke);
+    const edge = await page.locator("path.forma-diagram-connector").first().evaluate((element) => getComputedStyle(element).stroke);
     const ratio = contrast(rgb(edge), rgb(canvas));
     expect(ratio, `edge ${edge} on ${canvas} = ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(3);
   });

@@ -1,48 +1,48 @@
-@layer echelon.assessment {
+@layer forma.assessment {
   /* Question shell ------------------------------------------------------ */
-  .ef-question {
+  .forma-question {
     display: grid;
-    gap: var(--ef-primitive-spacing-4, 1rem);
-    padding-block: var(--ef-primitive-spacing-5, 1.5rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    gap: var(--forma-primitive-spacing-4, 1rem);
+    padding-block: var(--forma-primitive-spacing-5, 1.5rem);
+    border-block-end: 1px solid var(--forma-color-border-subtle, #d8d8d8);
   }
 
-  .ef-question__header {
+  .forma-question__header {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: start;
-    gap: var(--ef-primitive-spacing-3, 0.75rem);
+    gap: var(--forma-primitive-spacing-3, 0.75rem);
   }
 
-  .ef-question__number {
+  .forma-question__number {
     min-inline-size: 2rem;
     block-size: 2rem;
     display: grid;
     place-items: center;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--forma-color-border-functional, #555555);
     border-radius: 50%;
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
     font-weight: 700;
   }
 
-  .ef-question__prompt {
+  .forma-question__prompt {
     margin: 0;
-    color: var(--ef-color-text-heading, #202421);
-    font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
+    color: var(--forma-color-text-heading, #161616);
+    font-family: var(--forma-primitive-font-family-sans, system-ui, sans-serif);
     font-size: clamp(1rem, 0.95rem + 0.25vw, 1.2rem);
     font-weight: 700;
     letter-spacing: 0;
     line-height: 1.35;
   }
 
-  .ef-question__help {
+  .forma-question__help {
     margin: 0.35rem 0 0;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--forma-color-text-secondary, #555555);
     font-size: 0.875rem;
   }
 
-  .ef-question__body { min-inline-size: 0; }
+  .forma-question__body { min-inline-size: 0; }
 
   /*
    * Shared assessment selection response (MOT-015, FORMA-MOT-003). Native
@@ -52,51 +52,51 @@
    * strength, correctness, quality or severity. Fallbacks restate the shared
    * vocabulary for pages that load assessment.css without components.css.
    */
-  :where(.ef-ordinal-option, .ef-choice, .ef-special-choice, .ef-binary-option, .ef-symbol-rating__option, .ef-semantic-differential__scale label) {
+  :where(.forma-ordinal-option, .forma-choice, .forma-special-choice, .forma-binary-option, .forma-symbol-rating__option, .forma-semantic-differential__scale label) {
     transition:
-      background-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
-      border-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
-      color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
+      background-color var(--forma-motion-perceptual-duration, 120ms) var(--forma-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
+      border-color var(--forma-motion-perceptual-duration, 120ms) var(--forma-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
+      color var(--forma-motion-perceptual-duration, 120ms) var(--forma-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
   }
 
   /* Ordinal / Likert scale --------------------------------------------- */
-  .ef-ordinal-scale,
-  .ef-choice-group,
-  .ef-special-choice-group,
-  .ef-ranking,
-  .ef-allocation {
+  .forma-ordinal-scale,
+  .forma-choice-group,
+  .forma-special-choice-group,
+  .forma-ranking,
+  .forma-allocation {
     min-inline-size: 0;
     margin: 0;
     padding: 0;
     border: 0;
   }
 
-  .ef-ordinal-scale__legend,
-  .ef-choice-group__legend,
-  .ef-ranking__legend,
-  .ef-allocation__legend {
-    margin-block-end: var(--ef-primitive-spacing-3, 0.75rem);
-    color: var(--ef-color-text-primary, #171a18);
+  .forma-ordinal-scale__legend,
+  .forma-choice-group__legend,
+  .forma-ranking__legend,
+  .forma-allocation__legend {
+    margin-block-end: var(--forma-primitive-spacing-3, 0.75rem);
+    color: var(--forma-color-text-primary, #161616);
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.4;
   }
 
-  .ef-ordinal-scale__options {
+  .forma-ordinal-scale__options {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--forma-color-border-functional, #555555);
   }
 
-  .ef-ordinal-scale--3 .ef-ordinal-scale__options { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .ef-ordinal-scale--4 .ef-ordinal-scale__options { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .ef-ordinal-scale--5 .ef-ordinal-scale__options { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .ef-ordinal-scale--6 .ef-ordinal-scale__options { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  .ef-ordinal-scale--7 .ef-ordinal-scale__options { grid-template-columns: repeat(7, minmax(0, 1fr)); }
-  .ef-ordinal-scale--10 .ef-ordinal-scale__options { grid-template-columns: repeat(10, minmax(0, 1fr)); }
-  .ef-ordinal-scale--11 .ef-ordinal-scale__options { grid-template-columns: repeat(11, minmax(0, 1fr)); }
+  .forma-ordinal-scale--3 .forma-ordinal-scale__options { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .forma-ordinal-scale--4 .forma-ordinal-scale__options { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .forma-ordinal-scale--5 .forma-ordinal-scale__options { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .forma-ordinal-scale--6 .forma-ordinal-scale__options { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .forma-ordinal-scale--7 .forma-ordinal-scale__options { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .forma-ordinal-scale--10 .forma-ordinal-scale__options { grid-template-columns: repeat(10, minmax(0, 1fr)); }
+  .forma-ordinal-scale--11 .forma-ordinal-scale__options { grid-template-columns: repeat(11, minmax(0, 1fr)); }
 
-  .ef-ordinal-option {
+  .forma-ordinal-option {
     position: relative;
     min-inline-size: 0;
     min-block-size: 5.5rem;
@@ -105,21 +105,21 @@
     place-items: center;
     gap: 0.45rem;
     padding: 0.75rem 0.45rem;
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    background: var(--forma-color-surface-primary, #fafafa);
+    color: var(--forma-color-text-primary, #161616);
     text-align: center;
     cursor: pointer;
   }
 
-  .ef-ordinal-option + .ef-ordinal-option {
-    border-inline-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+  .forma-ordinal-option + .forma-ordinal-option {
+    border-inline-start: 1px solid var(--forma-color-border-subtle, #d8d8d8);
   }
 
   /* Native inputs stay topmost for direct and assistive hit-testing, including
      while a marker is press-compressed. */
-  .ef-ordinal-option input,
-  .ef-choice input,
-  .ef-special-choice input {
+  .forma-ordinal-option input,
+  .forma-choice input,
+  .forma-special-choice input {
     z-index: 1;
     position: absolute;
     inline-size: 1px;
@@ -127,106 +127,106 @@
     opacity: 0;
   }
 
-  .ef-ordinal-option__marker {
+  .forma-ordinal-option__marker {
     inline-size: 2rem;
     block-size: 2rem;
     display: grid;
     place-items: center;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--forma-color-border-functional, #555555);
     border-radius: 50%;
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    background: var(--forma-color-surface-primary, #fafafa);
+    color: var(--forma-color-text-primary, #161616);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
     font-weight: 700;
     scale: none;
     transition:
-      scale var(--ef-motion-press-duration, 107ms) var(--ef-motion-damped-easing, cubic-bezier(0.2, 0.8, 0.2, 1)),
-      background-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
-      border-color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
-      color var(--ef-motion-perceptual-duration, 120ms) var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
+      scale var(--forma-motion-press-duration, 107ms) var(--forma-motion-damped-easing, cubic-bezier(0.2, 0.8, 0.2, 1)),
+      background-color var(--forma-motion-perceptual-duration, 120ms) var(--forma-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
+      border-color var(--forma-motion-perceptual-duration, 120ms) var(--forma-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1)),
+      color var(--forma-motion-perceptual-duration, 120ms) var(--forma-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
   }
 
-  .ef-ordinal-option__label {
+  .forma-ordinal-option__label {
     align-self: start;
     font-size: 0.8125rem;
     line-height: 1.25;
     overflow-wrap: anywhere;
   }
 
-  .ef-ordinal-option:hover { --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c); --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18); background: var(--ef-color-surface-secondary, #e3e0d7); }
+  .forma-ordinal-option:hover { --forma-color-text-secondary: var(--forma-color-text-on-secondary-surface, #303030); --forma-color-text-muted: var(--forma-color-text-on-secondary-surface, #303030); --forma-surface-accent-text-color: var(--forma-color-text-primary, #161616); background: var(--forma-color-surface-secondary, #eeeeee); }
   /* Light inertial press on the marker only; the option (hit target) never
      moves or shrinks (MOT-014). */
-  .ef-ordinal-option:has(input:active:not(:disabled)) .ef-ordinal-option__marker { scale: 0.92; }
+  .forma-ordinal-option:has(input:active:not(:disabled)) .forma-ordinal-option__marker { scale: 0.92; }
 
-  .ef-ordinal-option:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+  .forma-ordinal-option:has(input:checked) {
+    background: var(--forma-color-surface-inverse, #232323);
+    color: var(--forma-color-text-inverse, #fafafa);
   }
 
-  .ef-ordinal-option:has(input:checked) .ef-ordinal-option__marker {
-    background: var(--ef-color-accent-primary, #905831);
-    color: var(--ef-color-text-inverse, #f2efe7);
+  .forma-ordinal-option:has(input:checked) .forma-ordinal-option__marker {
+    background: var(--forma-color-accent-primary, #2b5ea8);
+    color: var(--forma-color-text-inverse, #fafafa);
     border-color: currentColor;
   }
 
-  .ef-ordinal-option:has(input:focus-visible),
-  .ef-choice:has(input:focus-visible),
-  .ef-special-choice:has(input:focus-visible) {
+  .forma-ordinal-option:has(input:focus-visible),
+  .forma-choice:has(input:focus-visible),
+  .forma-special-choice:has(input:focus-visible) {
     z-index: 1;
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--forma-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--forma-color-focus-ring, #161616);
   }
 
   /* Special answer states ---------------------------------------------- */
-  .ef-special-choices {
+  .forma-special-choices {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
-    margin-block-start: var(--ef-primitive-spacing-3, 0.75rem);
-    padding-block-start: var(--ef-primitive-spacing-3, 0.75rem);
-    border-block-start: 1px dashed var(--ef-color-border-functional, #3a403c);
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
+    margin-block-start: var(--forma-primitive-spacing-3, 0.75rem);
+    padding-block-start: var(--forma-primitive-spacing-3, 0.75rem);
+    border-block-start: 1px dashed var(--forma-color-border-functional, #555555);
   }
 
-  .ef-special-choice {
+  .forma-special-choice {
     position: relative;
     min-block-size: 2.75rem;
     display: inline-flex;
     align-items: center;
     padding: 0.55rem 0.85rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
-    color: var(--ef-color-text-primary, #171a18);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    background: var(--forma-color-surface-primary, #fafafa);
+    color: var(--forma-color-text-primary, #161616);
     cursor: pointer;
   }
 
-  .ef-special-choice:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+  .forma-special-choice:has(input:checked) {
+    background: var(--forma-color-surface-inverse, #232323);
+    color: var(--forma-color-text-inverse, #fafafa);
   }
 
   /* Choice cards -------------------------------------------------------- */
-  .ef-choice-group {
+  .forma-choice-group {
     /* A column flex layout lets wrapped cards determine their own height.
        WebKit can retain stale grid row heights on fieldset viewport reflow. */
     display: flex;
     flex-direction: column;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
   }
 
-  .ef-choice {
+  .forma-choice {
     position: relative;
     min-block-size: 3.25rem;
     display: grid;
     align-items: center;
     padding: 0.8rem 1rem 0.8rem 3rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    background: var(--forma-color-surface-primary, #fafafa);
     cursor: pointer;
   }
 
-  .ef-choice::before {
+  .forma-choice::before {
     content: "";
     position: absolute;
     inset-block-start: 50%;
@@ -234,62 +234,62 @@
     transform: translateY(-50%);
     inline-size: 1.125rem;
     block-size: 1.125rem;
-    border: 2px solid var(--ef-color-border-functional, #3a403c);
+    border: 2px solid var(--forma-color-border-functional, #555555);
     border-radius: 50%;
-    background: var(--ef-color-surface-primary, #f2efe7);
+    background: var(--forma-color-surface-primary, #fafafa);
   }
 
-  .ef-choice:has(input[type="checkbox"])::before { border-radius: 0.2rem; }
+  .forma-choice:has(input[type="checkbox"])::before { border-radius: 0.2rem; }
 
-  .ef-choice:has(input:checked) {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
-    border-color: var(--ef-color-accent-primary, #905831);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+  .forma-choice:has(input:checked) {
+    --forma-color-text-secondary: var(--forma-color-text-on-secondary-surface, #303030);
+    --forma-color-text-muted: var(--forma-color-text-on-secondary-surface, #303030);
+    --forma-surface-accent-text-color: var(--forma-color-text-primary, #161616);
+    border-color: var(--forma-color-accent-primary, #2b5ea8);
+    background: var(--forma-color-surface-secondary, #eeeeee);
   }
 
-  .ef-choice:has(input:checked)::before {
+  .forma-choice:has(input:checked)::before {
     background:
-      radial-gradient(circle, var(--ef-color-accent-primary, #905831) 0 42%, transparent 44%);
-    border-color: var(--ef-color-accent-primary, #905831);
+      radial-gradient(circle, var(--forma-color-accent-primary, #2b5ea8) 0 42%, transparent 44%);
+    border-color: var(--forma-color-accent-primary, #2b5ea8);
   }
 
-  .ef-choice:has(input[type="checkbox"]:checked)::before {
-    background: var(--ef-color-accent-primary, #905831);
-    box-shadow: inset 0 0 0 3px var(--ef-color-surface-primary, #f2efe7);
+  .forma-choice:has(input[type="checkbox"]:checked)::before {
+    background: var(--forma-color-accent-primary, #2b5ea8);
+    box-shadow: inset 0 0 0 3px var(--forma-color-surface-primary, #fafafa);
   }
 
-  .ef-ordinal-option:has(input:disabled),
-  .ef-choice:has(input:disabled),
-  .ef-special-choice:has(input:disabled) {
+  .forma-ordinal-option:has(input:disabled),
+  .forma-choice:has(input:disabled),
+  .forma-special-choice:has(input:disabled) {
     opacity: 0.62;
     cursor: not-allowed;
   }
 
-  .ef-choice__content {
+  .forma-choice__content {
     display: grid;
     gap: 0.15rem;
   }
 
-  .ef-choice__content > span {
-    color: var(--ef-color-text-secondary, #686d68);
+  .forma-choice__content > span {
+    color: var(--forma-color-text-secondary, #555555);
     font-size: 0.8125rem;
   }
 
   /* Validation ---------------------------------------------------------- */
-  .ef-validation-message {
+  .forma-validation-message {
     display: flex;
     align-items: flex-start;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
     margin: 0.5rem 0 0;
-    color: var(--ef-color-text-primary, #171a18);
+    color: var(--forma-color-text-primary, #161616);
     font-size: 0.875rem;
     font-weight: 650;
   }
 
-  .ef-validation-message__mark,
-  .ef-validation-summary__icon {
+  .forma-validation-message__mark,
+  .forma-validation-summary__icon {
     flex: 0 0 auto;
     inline-size: 1.5rem;
     block-size: 1.5rem;
@@ -297,48 +297,48 @@
     place-items: center;
     border: 1px solid currentColor;
     border-radius: 50%;
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-weight: 800;
   }
 
-  .ef-validation-summary {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+  .forma-validation-summary {
+    --forma-color-text-secondary: var(--forma-color-text-on-secondary-surface, #303030);
+    --forma-color-text-muted: var(--forma-color-text-on-secondary-surface, #303030);
+    --forma-surface-accent-text-color: var(--forma-color-text-primary, #161616);
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
-    gap: var(--ef-primitive-spacing-3, 0.75rem);
-    padding: var(--ef-primitive-spacing-4, 1rem);
-    border: 2px solid var(--ef-color-accent-primary, #905831);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    gap: var(--forma-primitive-spacing-3, 0.75rem);
+    padding: var(--forma-primitive-spacing-4, 1rem);
+    border: 2px solid var(--forma-color-accent-primary, #2b5ea8);
+    background: var(--forma-color-surface-secondary, #eeeeee);
+    color: var(--forma-color-text-on-secondary-surface, #303030);
   }
 
-  .ef-validation-summary__title {
+  .forma-validation-summary__title {
     margin: 0;
-    font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
+    font-family: var(--forma-primitive-font-family-sans, system-ui, sans-serif);
     font-size: 1rem;
     letter-spacing: 0;
     line-height: 1.35;
   }
 
-  .ef-validation-summary__list {
+  .forma-validation-summary__list {
     margin: 0.5rem 0 0;
     padding-inline-start: 1.25rem;
   }
 
-  .ef-validation-summary a {
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+  .forma-validation-summary a {
+    color: var(--forma-color-text-on-secondary-surface, #303030);
     font-weight: 700;
   }
 
   /* Survey progress ----------------------------------------------------- */
-  .ef-survey-progress {
+  .forma-survey-progress {
     display: grid;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
   }
 
-  .ef-survey-progress__header {
+  .forma-survey-progress__header {
     min-inline-size: 0;
     display: flex;
     flex-wrap: wrap;
@@ -347,75 +347,75 @@
     align-items: baseline;
   }
 
-  .ef-survey-progress__label { font-weight: 700; }
-  .ef-survey-progress__value {
-    color: var(--ef-color-text-secondary, #686d68);
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+  .forma-survey-progress__label { font-weight: 700; }
+  .forma-survey-progress__value {
+    color: var(--forma-color-text-secondary, #555555);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
   }
 
-  .ef-survey-progress__bar {
+  .forma-survey-progress__bar {
     inline-size: 100%;
     block-size: 0.65rem;
-    accent-color: var(--ef-color-accent-primary, #905831);
+    accent-color: var(--forma-color-accent-primary, #2b5ea8);
   }
 
-  .ef-survey-progress__context {
+  .forma-survey-progress__context {
     margin: 0;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--forma-color-text-secondary, #555555);
     font-size: 0.8125rem;
   }
 
   /* Ranking visual contract -------------------------------------------- */
-  .ef-ranking__list {
+  .forma-ranking__list {
     display: grid;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
-    margin: var(--ef-primitive-spacing-3, 0.75rem) 0 0;
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
+    margin: var(--forma-primitive-spacing-3, 0.75rem) 0 0;
     padding: 0;
     list-style: none;
   }
 
-  .ef-ranking__item {
+  .forma-ranking__item {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    gap: var(--ef-primitive-spacing-3, 0.75rem);
+    gap: var(--forma-primitive-spacing-3, 0.75rem);
     min-block-size: 3.25rem;
     padding: 0.6rem 0.75rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    background: var(--forma-color-surface-primary, #fafafa);
   }
 
-  .ef-ranking__position {
+  .forma-ranking__position {
     inline-size: 2rem;
     block-size: 2rem;
     display: grid;
     place-items: center;
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    background: var(--forma-color-surface-inverse, #232323);
+    color: var(--forma-color-text-inverse, #fafafa);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
     font-weight: 800;
   }
 
-  .ef-ranking__label {
+  .forma-ranking__label {
     min-inline-size: 0;
     font-weight: 650;
     overflow-wrap: anywhere;
   }
 
-  .ef-ranking__actions {
+  .forma-ranking__actions {
     display: inline-flex;
     gap: 0.25rem;
   }
 
-  .ef-ranking__actions button {
+  .forma-ranking__actions button {
     min-inline-size: 2.75rem;
     min-block-size: 2.75rem;
     padding: 0;
   }
 
-  .ef-ranking__announcement {
+  .forma-ranking__announcement {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
@@ -429,189 +429,189 @@
   }
 
   /* Allocation ---------------------------------------------------------- */
-  .ef-allocation__items {
+  .forma-allocation__items {
     display: grid;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
   }
 
-  .ef-allocation__item {
+  .forma-allocation__item {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(5rem, 7rem);
     align-items: center;
-    gap: var(--ef-primitive-spacing-3, 0.75rem);
+    gap: var(--forma-primitive-spacing-3, 0.75rem);
   }
 
-  .ef-allocation__item input {
+  .forma-allocation__item input {
     text-align: end;
     font-variant-numeric: tabular-nums;
   }
 
-  .ef-allocation__total {
+  .forma-allocation__total {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 1rem;
-    margin-block-start: var(--ef-primitive-spacing-3, 0.75rem);
-    padding-block-start: var(--ef-primitive-spacing-3, 0.75rem);
-    border-block-start: 1px solid var(--ef-color-border-functional, #3a403c);
+    margin-block-start: var(--forma-primitive-spacing-3, 0.75rem);
+    padding-block-start: var(--forma-primitive-spacing-3, 0.75rem);
+    border-block-start: 1px solid var(--forma-color-border-functional, #555555);
     font-weight: 750;
   }
 
-  .ef-allocation__total output {
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+  .forma-allocation__total output {
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-variant-numeric: tabular-nums;
   }
 
-  .ef-allocation__total[data-ef-state="invalid"] {
+  .forma-allocation__total[data-forma-state="invalid"] {
     border-block-start-width: 2px;
-    color: var(--ef-surface-accent-text-color, var(--ef-color-accent-primary, #905831));
+    color: var(--forma-surface-accent-text-color, var(--forma-color-accent-primary, #2b5ea8));
   }
 
   /* Rule builder visual contract --------------------------------------- */
-  .ef-rule-builder {
+  .forma-rule-builder {
     min-inline-size: 0;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    background: var(--forma-color-surface-primary, #fafafa);
   }
 
-  .ef-rule-builder__header {
+  .forma-rule-builder__header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 1rem;
-    padding: var(--ef-primitive-spacing-4, 1rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    padding: var(--forma-primitive-spacing-4, 1rem);
+    border-block-end: 1px solid var(--forma-color-border-subtle, #d8d8d8);
   }
 
-  .ef-rule-builder__header h2,
-  .ef-rule-builder__header p { margin: 0; }
+  .forma-rule-builder__header h2,
+  .forma-rule-builder__header p { margin: 0; }
 
-  .ef-rule-builder__header h2 {
-    font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
+  .forma-rule-builder__header h2 {
+    font-family: var(--forma-primitive-font-family-sans, system-ui, sans-serif);
     font-size: 1rem;
     letter-spacing: 0;
   }
 
-  .ef-rule-builder__header p {
+  .forma-rule-builder__header p {
     margin-block-start: 0.25rem;
     font-size: 0.8125rem;
   }
 
-  .ef-rule-group {
+  .forma-rule-group {
     position: relative;
     display: grid;
-    gap: var(--ef-primitive-spacing-3, 0.75rem);
-    padding: var(--ef-primitive-spacing-4, 1rem);
+    gap: var(--forma-primitive-spacing-3, 0.75rem);
+    padding: var(--forma-primitive-spacing-4, 1rem);
   }
 
-  .ef-rule-group__operator {
+  .forma-rule-group__operator {
     justify-self: start;
     padding: 0.25rem 0.45rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
     font-weight: 800;
     letter-spacing: 0.08em;
   }
 
-  .ef-rule-clause {
+  .forma-rule-clause {
     min-inline-size: 0;
     display: grid;
     grid-template-columns: minmax(8rem, 1.25fr) minmax(8rem, 1fr) minmax(8rem, 1fr) auto;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
     align-items: end;
   }
 
-  .ef-rule-clause label {
+  .forma-rule-clause label {
     display: grid;
     gap: 0.3rem;
     font-size: 0.75rem;
     font-weight: 700;
   }
 
-  .ef-rule-builder__summary {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+  .forma-rule-builder__summary {
+    --forma-color-text-secondary: var(--forma-color-text-on-secondary-surface, #303030);
+    --forma-color-text-muted: var(--forma-color-text-on-secondary-surface, #303030);
+    --forma-surface-accent-text-color: var(--forma-color-text-primary, #161616);
     margin: 0;
-    padding: var(--ef-primitive-spacing-3, 0.75rem) var(--ef-primitive-spacing-4, 1rem);
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
-    color: var(--ef-color-text-on-secondary-surface, #3a403c);
+    padding: var(--forma-primitive-spacing-3, 0.75rem) var(--forma-primitive-spacing-4, 1rem);
+    border-block-start: 1px solid var(--forma-color-border-subtle, #d8d8d8);
+    background: var(--forma-color-surface-secondary, #eeeeee);
+    color: var(--forma-color-text-on-secondary-surface, #303030);
     font-size: 0.8125rem;
   }
 
   /* Ordo obligation panel ---------------------------------------------- */
-  .ef-obligation-panel {
+  .forma-obligation-panel {
     min-inline-size: 0;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    background: var(--forma-color-surface-primary, #fafafa);
   }
 
-  .ef-obligation-panel__header {
+  .forma-obligation-panel__header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 1rem;
-    padding: var(--ef-primitive-spacing-4, 1rem);
-    border-block-end: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    padding: var(--forma-primitive-spacing-4, 1rem);
+    border-block-end: 1px solid var(--forma-color-border-subtle, #d8d8d8);
   }
 
-  .ef-obligation-panel__header h2,
-  .ef-obligation-panel__header p { margin: 0; }
+  .forma-obligation-panel__header h2,
+  .forma-obligation-panel__header p { margin: 0; }
 
-  .ef-obligation-panel__header h2 {
-    font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
+  .forma-obligation-panel__header h2 {
+    font-family: var(--forma-primitive-font-family-sans, system-ui, sans-serif);
     font-size: 1rem;
     letter-spacing: 0;
   }
 
-  .ef-obligation-panel__header p {
+  .forma-obligation-panel__header p {
     margin-block-start: 0.25rem;
     font-size: 0.8125rem;
   }
 
-  .ef-obligation-panel__count {
+  .forma-obligation-panel__count {
     min-inline-size: 2rem;
     block-size: 2rem;
     display: grid;
     place-items: center;
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    background: var(--forma-color-surface-inverse, #232323);
+    color: var(--forma-color-text-inverse, #fafafa);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.75rem;
     font-weight: 800;
   }
 
-  .ef-obligation-list {
+  .forma-obligation-list {
     display: grid;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .ef-obligation {
+  .forma-obligation {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: start;
-    gap: var(--ef-primitive-spacing-3, 0.75rem);
-    padding: var(--ef-primitive-spacing-4, 1rem);
-    border-inline-start: 4px solid var(--ef-color-border-functional, #3a403c);
+    gap: var(--forma-primitive-spacing-3, 0.75rem);
+    padding: var(--forma-primitive-spacing-4, 1rem);
+    border-inline-start: 4px solid var(--forma-color-border-functional, #555555);
   }
 
-  .ef-obligation + .ef-obligation {
-    border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+  .forma-obligation + .forma-obligation {
+    border-block-start: 1px solid var(--forma-color-border-subtle, #d8d8d8);
   }
 
-  .ef-obligation[data-ef-severity="blocking"] { border-inline-start-color: var(--ef-color-accent-primary, #905831); }
-  .ef-obligation[data-ef-severity="warning"] { border-inline-start-style: double; }
-  .ef-obligation[data-ef-severity="information"] { border-inline-start-color: var(--ef-color-accent-secondary, #47756b); }
+  .forma-obligation[data-forma-severity="blocking"] { border-inline-start-color: var(--forma-color-accent-primary, #2b5ea8); }
+  .forma-obligation[data-forma-severity="warning"] { border-inline-start-style: double; }
+  .forma-obligation[data-forma-severity="information"] { border-inline-start-color: var(--forma-color-accent-secondary, #1d6b66); }
 
-  .ef-obligation__status {
+  .forma-obligation__status {
     min-inline-size: 5.5rem;
     padding: 0.2rem 0.4rem;
     border: 1px solid currentColor;
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.625rem;
     font-weight: 800;
     letter-spacing: 0.06em;
@@ -619,14 +619,14 @@
     text-transform: uppercase;
   }
 
-  .ef-obligation p {
+  .forma-obligation p {
     margin: 0.25rem 0 0;
     font-size: 0.8125rem;
   }
 
 
   /* Selector completeness ---------------------------------------------- */
-  .ef-sr-only {
+  .forma-sr-only {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
@@ -639,110 +639,110 @@
     border: 0;
   }
 
-  .ef-binary-choice,
-  .ef-semantic-differential,
-  .ef-symbol-rating,
-  .ef-range-entry,
-  .ef-matrix,
-  .ef-best-worst,
-  .ef-hierarchy {
+  .forma-binary-choice,
+  .forma-semantic-differential,
+  .forma-symbol-rating,
+  .forma-range-entry,
+  .forma-matrix,
+  .forma-best-worst,
+  .forma-hierarchy {
     min-inline-size: 0;
     margin: 0;
     padding: 0;
     border: 0;
   }
 
-  .ef-binary-choice__legend,
-  .ef-semantic-differential__legend,
-  .ef-symbol-rating__legend,
-  .ef-range-entry__legend,
-  .ef-matrix__legend,
-  .ef-best-worst__legend,
-  .ef-hierarchy__legend {
-    margin-block-end: var(--ef-primitive-spacing-3, 0.75rem);
+  .forma-binary-choice__legend,
+  .forma-semantic-differential__legend,
+  .forma-symbol-rating__legend,
+  .forma-range-entry__legend,
+  .forma-matrix__legend,
+  .forma-best-worst__legend,
+  .forma-hierarchy__legend {
+    margin-block-end: var(--forma-primitive-spacing-3, 0.75rem);
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.4;
   }
 
-  .ef-binary-choice__options {
+  .forma-binary-choice__options {
     max-inline-size: 100%;
     display: inline-grid;
     grid-auto-flow: column;
     grid-auto-columns: minmax(6rem, 1fr);
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--forma-color-border-functional, #555555);
   }
 
-  .ef-binary-option {
+  .forma-binary-option {
     position: relative;
     min-block-size: 2.75rem;
     display: grid;
     place-items: center;
     padding: 0.55rem 1rem;
     cursor: pointer;
-    background: var(--ef-color-surface-primary, #f2efe7);
+    background: var(--forma-color-surface-primary, #fafafa);
   }
 
-  .ef-binary-option + .ef-binary-option { border-inline-start: 1px solid var(--ef-color-border-functional, #3a403c); }
-  .ef-binary-option input,
-  .ef-symbol-rating__option input,
-  .ef-semantic-differential__scale input {
+  .forma-binary-option + .forma-binary-option { border-inline-start: 1px solid var(--forma-color-border-functional, #555555); }
+  .forma-binary-option input,
+  .forma-symbol-rating__option input,
+  .forma-semantic-differential__scale input {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
     opacity: 0;
   }
 
-  .ef-binary-option:has(input:checked),
-  .ef-symbol-rating__option:has(input:checked),
-  .ef-semantic-differential__scale label:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+  .forma-binary-option:has(input:checked),
+  .forma-symbol-rating__option:has(input:checked),
+  .forma-semantic-differential__scale label:has(input:checked) {
+    background: var(--forma-color-surface-inverse, #232323);
+    color: var(--forma-color-text-inverse, #fafafa);
   }
 
-  .ef-binary-option:has(input:focus-visible),
-  .ef-symbol-rating__option:has(input:focus-visible),
-  .ef-semantic-differential__scale label:has(input:focus-visible) {
+  .forma-binary-option:has(input:focus-visible),
+  .forma-symbol-rating__option:has(input:focus-visible),
+  .forma-semantic-differential__scale label:has(input:focus-visible) {
     z-index: 1;
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+    outline: 3px solid var(--forma-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--forma-color-focus-ring, #161616);
   }
 
-  .ef-semantic-differential__endpoints {
+  .forma-semantic-differential__endpoints {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 1rem;
     margin-block-end: 0.4rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--forma-color-text-secondary, #555555);
     font-size: 0.8125rem;
     font-weight: 650;
   }
 
-  .ef-semantic-differential__endpoints--mobile { display: none; }
+  .forma-semantic-differential__endpoints--mobile { display: none; }
 
-  .ef-semantic-differential__scale {
+  .forma-semantic-differential__scale {
     max-inline-size: 100%;
     display: grid;
     grid-template-columns: repeat(7, minmax(2.75rem, 1fr));
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--forma-color-border-functional, #555555);
   }
 
-  .ef-semantic-differential__scale label {
+  .forma-semantic-differential__scale label {
     position: relative;
     min-block-size: 3rem;
     display: grid;
     place-items: center;
     cursor: pointer;
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-weight: 750;
   }
 
-  .ef-semantic-differential__scale label + label { border-inline-start: 1px solid var(--ef-color-border-subtle, #e3e0d7); }
-  .ef-semantic-differential__scale label > span[aria-hidden="true"] { pointer-events: none; }
+  .forma-semantic-differential__scale label + label { border-inline-start: 1px solid var(--forma-color-border-subtle, #d8d8d8); }
+  .forma-semantic-differential__scale label > span[aria-hidden="true"] { pointer-events: none; }
 
-  .ef-semantic-differential__scale input {
+  .forma-semantic-differential__scale input {
     inset: 0;
     z-index: 1;
     inline-size: 100%;
@@ -751,113 +751,113 @@
     cursor: pointer;
   }
 
-  .ef-symbol-rating__options {
+  .forma-symbol-rating__options {
     max-inline-size: 100%;
     display: inline-flex;
     flex-wrap: wrap;
     gap: 0.25rem;
   }
 
-  .ef-symbol-rating__option {
+  .forma-symbol-rating__option {
     position: relative;
     min-inline-size: 2.75rem;
     min-block-size: 2.75rem;
     display: grid;
     place-items: center;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--forma-color-border-functional, #555555);
     cursor: pointer;
   }
 
-  .ef-symbol-rating__symbol {
+  .forma-symbol-rating__symbol {
     font-size: 1.35rem;
     line-height: 1;
   }
 
-  .ef-numeric-stepper {
+  .forma-numeric-stepper {
     display: grid;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
   }
 
-  .ef-numeric-stepper__label { font-weight: 700; }
-  .ef-numeric-stepper input { max-inline-size: 10rem; font-variant-numeric: tabular-nums; }
+  .forma-numeric-stepper__label { font-weight: 700; }
+  .forma-numeric-stepper input { max-inline-size: 10rem; font-variant-numeric: tabular-nums; }
 
-  .ef-range-entry__inputs {
+  .forma-range-entry__inputs {
     display: grid;
     grid-template-columns: minmax(7rem, 1fr) auto minmax(7rem, 1fr);
     align-items: end;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
     max-inline-size: 30rem;
   }
 
-  .ef-range-entry__inputs label {
+  .forma-range-entry__inputs label {
     display: grid;
     gap: 0.3rem;
     font-size: 0.8125rem;
     font-weight: 700;
   }
 
-  .ef-range-entry__separator { padding-block-end: 0.65rem; color: var(--ef-color-text-secondary, #686d68); }
+  .forma-range-entry__separator { padding-block-end: 0.65rem; color: var(--forma-color-text-secondary, #555555); }
 
-  .ef-range-entry__status,
-  .ef-selection-status,
-  .ef-best-worst__status {
+  .forma-range-entry__status,
+  .forma-selection-status,
+  .forma-best-worst__status {
     margin: 0.5rem 0 0;
     font-size: 0.8125rem;
     font-weight: 650;
   }
 
-  .ef-selection-guidance {
-    margin: 0 0 var(--ef-primitive-spacing-2, 0.5rem);
-    color: var(--ef-color-text-secondary, #686d68);
+  .forma-selection-guidance {
+    margin: 0 0 var(--forma-primitive-spacing-2, 0.5rem);
+    color: var(--forma-color-text-secondary, #555555);
     font-size: 0.8125rem;
   }
 
-  .ef-choice--exclusive {
+  .forma-choice--exclusive {
     border-style: dashed;
   }
 
-  .ef-choice--media {
+  .forma-choice--media {
     grid-template-columns: minmax(5rem, 8rem) minmax(0, 1fr);
     padding-inline-start: 1rem;
   }
 
-  .ef-choice--media::before { display: none; }
+  .forma-choice--media::before { display: none; }
 
-  .ef-choice__media {
-    --ef-color-text-secondary: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-color-text-muted: var(--ef-color-text-on-secondary-surface, #3a403c);
-    --ef-surface-accent-text-color: var(--ef-color-text-primary, #171a18);
+  .forma-choice__media {
+    --forma-color-text-secondary: var(--forma-color-text-on-secondary-surface, #303030);
+    --forma-color-text-muted: var(--forma-color-text-on-secondary-surface, #303030);
+    --forma-surface-accent-text-color: var(--forma-color-text-primary, #161616);
     display: grid;
     place-items: center;
     overflow: hidden;
-    border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
-    background: var(--ef-color-surface-secondary, #e3e0d7);
+    border: 1px solid var(--forma-color-border-subtle, #d8d8d8);
+    background: var(--forma-color-surface-secondary, #eeeeee);
     aspect-ratio: 4 / 3;
   }
 
-  .ef-choice__media img {
+  .forma-choice__media img {
     max-inline-size: 100%;
     max-block-size: 100%;
     object-fit: cover;
   }
 
-  .ef-matrix__rows {
+  .forma-matrix__rows {
     display: grid;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
-    margin-block-start: var(--ef-primitive-spacing-3, 0.75rem);
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
+    margin-block-start: var(--forma-primitive-spacing-3, 0.75rem);
   }
 
-  .ef-matrix__row {
+  .forma-matrix__row {
     display: grid;
     grid-template-columns: minmax(10rem, 1.1fr) minmax(0, 3fr);
-    gap: var(--ef-primitive-spacing-3, 0.75rem);
+    gap: var(--forma-primitive-spacing-3, 0.75rem);
     align-items: stretch;
     margin: 0;
     padding: 0.6rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--forma-color-border-functional, #555555);
   }
 
-  .ef-matrix__row > legend {
+  .forma-matrix__row > legend {
     float: inline-start;
     inline-size: auto;
     margin: 0;
@@ -865,161 +865,161 @@
     font-weight: 700;
   }
 
-  .ef-matrix__choices {
+  .forma-matrix__choices {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: minmax(5rem, 1fr);
     gap: 0.25rem;
   }
 
-  .ef-matrix__choices label {
+  .forma-matrix__choices label {
     position: relative;
     min-block-size: 2.75rem;
     display: grid;
     place-items: center;
     padding: 0.4rem;
-    border: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+    border: 1px solid var(--forma-color-border-subtle, #d8d8d8);
     text-align: center;
     cursor: pointer;
     font-size: 0.75rem;
   }
 
-  .ef-matrix__choices input {
+  .forma-matrix__choices input {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
     opacity: 0;
   }
 
-  .ef-matrix__choices label:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+  .forma-matrix__choices label:has(input:checked) {
+    background: var(--forma-color-surface-inverse, #232323);
+    color: var(--forma-color-text-inverse, #fafafa);
   }
 
-  .ef-matrix__choices label:has(input:focus-visible) {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+  .forma-matrix__choices label:has(input:focus-visible) {
+    outline: 3px solid var(--forma-color-focus-gap, #fafafa);
     outline-offset: 1px;
-    box-shadow: 0 0 0 4px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 4px var(--forma-color-focus-ring, #161616);
   }
 
-  .ef-best-worst__header,
-  .ef-best-worst__row {
+  .forma-best-worst__header,
+  .forma-best-worst__row {
     display: grid;
     grid-template-columns: minmax(10rem, 1fr) 4.5rem 4.5rem;
     align-items: center;
     gap: 0.25rem;
   }
 
-  .ef-best-worst__header {
+  .forma-best-worst__header {
     padding: 0.35rem 0.6rem;
-    color: var(--ef-color-text-secondary, #686d68);
+    color: var(--forma-color-text-secondary, #555555);
     font-size: 0.75rem;
     font-weight: 700;
     text-align: center;
   }
 
-  .ef-best-worst__header > :first-child { text-align: start; }
+  .forma-best-worst__header > :first-child { text-align: start; }
 
-  .ef-best-worst__row {
+  .forma-best-worst__row {
     min-block-size: 3rem;
     padding: 0.5rem 0.6rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
+    border: 1px solid var(--forma-color-border-functional, #555555);
   }
 
-  .ef-best-worst__row + .ef-best-worst__row { border-block-start: 0; }
+  .forma-best-worst__row + .forma-best-worst__row { border-block-start: 0; }
   /* A long unbroken option (a product code, a compound word) wraps inside
      its track instead of scrolling the page sideways (ULI-L05). */
-  .ef-best-worst__row > :first-child { min-inline-size: 0; overflow-wrap: anywhere; }
-  .ef-best-worst__row label { display: grid; place-items: center; min-block-size: 2.75rem; }
-  .ef-best-worst__row input { inline-size: 1.25rem; block-size: 1.25rem; accent-color: var(--ef-color-accent-primary, #905831); }
+  .forma-best-worst__row > :first-child { min-inline-size: 0; overflow-wrap: anywhere; }
+  .forma-best-worst__row label { display: grid; place-items: center; min-block-size: 2.75rem; }
+  .forma-best-worst__row input { inline-size: 1.25rem; block-size: 1.25rem; accent-color: var(--forma-color-accent-primary, #2b5ea8); }
 
-  .ef-pairwise {
+  .forma-pairwise {
     min-inline-size: 0;
     margin: 0;
     padding: 0;
     border: 0;
   }
 
-  .ef-pairwise__legend {
-    margin-block-end: var(--ef-primitive-spacing-3, 0.75rem);
+  .forma-pairwise__legend {
+    margin-block-end: var(--forma-primitive-spacing-3, 0.75rem);
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.4;
   }
 
-  .ef-pairwise__options {
+  .forma-pairwise__options {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: stretch;
-    gap: var(--ef-primitive-spacing-2, 0.5rem);
+    gap: var(--forma-primitive-spacing-2, 0.5rem);
   }
 
-  .ef-pairwise__option {
+  .forma-pairwise__option {
     position: relative;
     min-block-size: 5rem;
     display: grid;
     align-content: center;
     gap: 0.2rem;
     padding: 0.85rem 1rem;
-    border: 1px solid var(--ef-color-border-functional, #3a403c);
-    background: var(--ef-color-surface-primary, #f2efe7);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    background: var(--forma-color-surface-primary, #fafafa);
     cursor: pointer;
   }
 
-  .ef-pairwise__option input {
+  .forma-pairwise__option input {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
     opacity: 0;
   }
 
-  .ef-pairwise__option:has(input:checked) {
-    background: var(--ef-color-surface-inverse, #202421);
-    color: var(--ef-color-text-inverse, #f2efe7);
+  .forma-pairwise__option:has(input:checked) {
+    background: var(--forma-color-surface-inverse, #232323);
+    color: var(--forma-color-text-inverse, #fafafa);
   }
 
-  .ef-pairwise__option:has(input:focus-visible) {
-    outline: 3px solid var(--ef-color-focus-gap, #f2efe7);
+  .forma-pairwise__option:has(input:focus-visible) {
+    outline: 3px solid var(--forma-color-focus-gap, #fafafa);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #171a18);
+    box-shadow: 0 0 0 5px var(--forma-color-focus-ring, #161616);
   }
 
-  .ef-pairwise__eyebrow {
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+  .forma-pairwise__eyebrow {
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-size: 0.6875rem;
     font-weight: 800;
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
-  .ef-pairwise__option > span:last-child { font-size: 0.8125rem; }
-  .ef-pairwise__versus { align-self: center; color: var(--ef-color-text-secondary, #686d68); font-size: 0.8125rem; }
+  .forma-pairwise__option > span:last-child { font-size: 0.8125rem; }
+  .forma-pairwise__versus { align-self: center; color: var(--forma-color-text-secondary, #555555); font-size: 0.8125rem; }
 
-  .ef-hierarchy__tree,
-  .ef-hierarchy__tree ul {
+  .forma-hierarchy__tree,
+  .forma-hierarchy__tree ul {
     margin: 0;
     padding-inline-start: 1.25rem;
     list-style: none;
   }
 
-  .ef-hierarchy__tree { padding-inline-start: 0; }
-  .ef-hierarchy details { border-inline-start: 2px solid var(--ef-color-border-subtle, #e3e0d7); padding-inline-start: 0.75rem; }
-  .ef-hierarchy summary { min-block-size: 2.75rem; display: flex; align-items: center; cursor: pointer; font-weight: 700; }
-  .ef-hierarchy label { min-block-size: 2.75rem; display: flex; align-items: center; gap: 0.5rem; }
+  .forma-hierarchy__tree { padding-inline-start: 0; }
+  .forma-hierarchy details { border-inline-start: 2px solid var(--forma-color-border-subtle, #d8d8d8); padding-inline-start: 0.75rem; }
+  .forma-hierarchy summary { min-block-size: 2.75rem; display: flex; align-items: center; cursor: pointer; font-weight: 700; }
+  .forma-hierarchy label { min-block-size: 2.75rem; display: flex; align-items: center; gap: 0.5rem; }
 
   @media (max-width: 44rem) {
-    .ef-ordinal-scale__options,
-    .ef-ordinal-scale--3 .ef-ordinal-scale__options,
-    .ef-ordinal-scale--4 .ef-ordinal-scale__options,
-    .ef-ordinal-scale--5 .ef-ordinal-scale__options,
-    .ef-ordinal-scale--6 .ef-ordinal-scale__options,
-    .ef-ordinal-scale--7 .ef-ordinal-scale__options,
-    .ef-ordinal-scale--10 .ef-ordinal-scale__options,
-    .ef-ordinal-scale--11 .ef-ordinal-scale__options {
+    .forma-ordinal-scale__options,
+    .forma-ordinal-scale--3 .forma-ordinal-scale__options,
+    .forma-ordinal-scale--4 .forma-ordinal-scale__options,
+    .forma-ordinal-scale--5 .forma-ordinal-scale__options,
+    .forma-ordinal-scale--6 .forma-ordinal-scale__options,
+    .forma-ordinal-scale--7 .forma-ordinal-scale__options,
+    .forma-ordinal-scale--10 .forma-ordinal-scale__options,
+    .forma-ordinal-scale--11 .forma-ordinal-scale__options {
       grid-template-columns: 1fr;
     }
 
-    .ef-ordinal-option {
+    .forma-ordinal-option {
       min-block-size: 3.25rem;
       grid-template-columns: auto minmax(0, 1fr);
       grid-template-rows: auto;
@@ -1030,124 +1030,124 @@
 
     /* Desktop labels align at the top of their own row. In the horizontal
        mobile layout that override must not defeat marker/text centering. */
-    .ef-ordinal-option__label { align-self: center; }
+    .forma-ordinal-option__label { align-self: center; }
 
-    .ef-ordinal-option + .ef-ordinal-option {
+    .forma-ordinal-option + .forma-ordinal-option {
       border-inline-start: 0;
-      border-block-start: 1px solid var(--ef-color-border-subtle, #e3e0d7);
+      border-block-start: 1px solid var(--forma-color-border-subtle, #d8d8d8);
     }
 
-    .ef-rule-builder__header,
-    .ef-obligation-panel__header {
+    .forma-rule-builder__header,
+    .forma-obligation-panel__header {
       align-items: stretch;
       flex-direction: column;
     }
 
-    .ef-rule-clause { grid-template-columns: 1fr; }
-    .ef-obligation { grid-template-columns: minmax(0, 1fr); }
-    .ef-obligation__status { justify-self: start; }
+    .forma-rule-clause { grid-template-columns: 1fr; }
+    .forma-obligation { grid-template-columns: minmax(0, 1fr); }
+    .forma-obligation__status { justify-self: start; }
 
-    .ef-ranking__item {
+    .forma-ranking__item {
       grid-template-columns: auto minmax(0, 1fr);
       align-items: start;
     }
 
-    .ef-ranking__actions {
+    .forma-ranking__actions {
       grid-column: 1 / -1;
       inline-size: 100%;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .ef-ranking__actions button {
+    .forma-ranking__actions button {
       min-inline-size: 0;
       inline-size: 100%;
     }
 
-    .ef-allocation__item {
+    .forma-allocation__item {
       grid-template-columns: 1fr;
       align-items: stretch;
     }
 
-    .ef-binary-choice__options {
+    .forma-binary-choice__options {
       inline-size: 100%;
       grid-auto-flow: row;
       grid-template-columns: 1fr;
       grid-auto-columns: auto;
     }
 
-    .ef-binary-option + .ef-binary-option {
+    .forma-binary-option + .forma-binary-option {
       border-inline-start: 0;
-      border-block-start: 1px solid var(--ef-color-border-functional, #3a403c);
+      border-block-start: 1px solid var(--forma-color-border-functional, #555555);
     }
 
-    .ef-semantic-differential__endpoints:not(.ef-semantic-differential__endpoints--mobile) { display: none; }
-    .ef-semantic-differential__endpoints--mobile { display: flex; }
-    .ef-semantic-differential__scale {
+    .forma-semantic-differential__endpoints:not(.forma-semantic-differential__endpoints--mobile) { display: none; }
+    .forma-semantic-differential__endpoints--mobile { display: flex; }
+    .forma-semantic-differential__scale {
       grid-template-columns: repeat(7, minmax(2.75rem, 1fr));
       overflow-x: auto;
       overscroll-behavior-inline: contain;
       scrollbar-gutter: stable;
     }
-    .ef-range-entry__inputs { grid-template-columns: 1fr; }
-    .ef-range-entry__separator { padding: 0; }
-    .ef-choice--media { grid-template-columns: 1fr; }
-    .ef-matrix__row { grid-template-columns: 1fr; }
-    .ef-matrix__choices { grid-auto-flow: row; grid-template-columns: 1fr; }
-    .ef-matrix__choices label { grid-template-columns: auto 1fr; justify-items: start; text-align: start; }
-    .ef-best-worst__header { display: none; }
-    .ef-best-worst__row {
+    .forma-range-entry__inputs { grid-template-columns: 1fr; }
+    .forma-range-entry__separator { padding: 0; }
+    .forma-choice--media { grid-template-columns: 1fr; }
+    .forma-matrix__row { grid-template-columns: 1fr; }
+    .forma-matrix__choices { grid-auto-flow: row; grid-template-columns: 1fr; }
+    .forma-matrix__choices label { grid-template-columns: auto 1fr; justify-items: start; text-align: start; }
+    .forma-best-worst__header { display: none; }
+    .forma-best-worst__row {
       grid-template-columns: minmax(0, 1fr) minmax(2.75rem, auto) minmax(2.75rem, auto);
       padding-inline: 0.4rem;
     }
 
-    .ef-pairwise__options { grid-template-columns: 1fr; }
-    .ef-pairwise__versus { justify-self: center; }
+    .forma-pairwise__options { grid-template-columns: 1fr; }
+    .forma-pairwise__versus { justify-self: center; }
 
-    .ef-hierarchy__tree ul {
+    .forma-hierarchy__tree ul {
       padding-inline-start: 0.75rem;
     }
 
-    .ef-hierarchy details {
+    .forma-hierarchy details {
       padding-inline-start: 0.5rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ef-ordinal-option__marker {
+    .forma-ordinal-option__marker {
       transition-duration: 0.01ms;
     }
 
     /* Remove spatial press compression; selection styling is unchanged. */
-    .ef-ordinal-option:has(input:active:not(:disabled)) .ef-ordinal-option__marker { scale: none; }
+    .forma-ordinal-option:has(input:active:not(:disabled)) .forma-ordinal-option__marker { scale: none; }
   }
 
   @media (forced-colors: active) {
-    .ef-ordinal-scale__options,
-    .ef-ordinal-option,
-    .ef-special-choice,
-    .ef-choice,
-    .ef-validation-summary,
-    .ef-ranking__item,
-    .ef-rule-builder,
-    .ef-obligation-panel,
-    .ef-binary-choice__options,
-    .ef-semantic-differential__scale,
-    .ef-symbol-rating__option,
-    .ef-matrix__row,
-    .ef-best-worst__row,
-    .ef-pairwise__option {
+    .forma-ordinal-scale__options,
+    .forma-ordinal-option,
+    .forma-special-choice,
+    .forma-choice,
+    .forma-validation-summary,
+    .forma-ranking__item,
+    .forma-rule-builder,
+    .forma-obligation-panel,
+    .forma-binary-choice__options,
+    .forma-semantic-differential__scale,
+    .forma-symbol-rating__option,
+    .forma-matrix__row,
+    .forma-best-worst__row,
+    .forma-pairwise__option {
       border-color: CanvasText;
     }
 
-    .ef-ordinal-option:has(input:checked),
-    .ef-special-choice:has(input:checked),
-    .ef-choice:has(input:checked),
-    .ef-binary-option:has(input:checked),
-    .ef-symbol-rating__option:has(input:checked),
-    .ef-semantic-differential__scale label:has(input:checked),
-    .ef-matrix__choices label:has(input:checked),
-    .ef-pairwise__option:has(input:checked) {
+    .forma-ordinal-option:has(input:checked),
+    .forma-special-choice:has(input:checked),
+    .forma-choice:has(input:checked),
+    .forma-binary-option:has(input:checked),
+    .forma-symbol-rating__option:has(input:checked),
+    .forma-semantic-differential__scale label:has(input:checked),
+    .forma-matrix__choices label:has(input:checked),
+    .forma-pairwise__option:has(input:checked) {
       /* Firefox otherwise forces Highlight back to Canvas; system colors
          keep the selection legible in every contrast theme. */
       forced-color-adjust: none;
@@ -1158,31 +1158,31 @@
 
     /* forced-color-adjust is inherited, so every author color painted
        inside a selected option is restated as a system color. */
-    :is(.ef-ordinal-option, .ef-special-choice, .ef-choice, .ef-binary-option, .ef-symbol-rating__option, .ef-semantic-differential__scale label, .ef-matrix__choices label, .ef-pairwise__option):has(input:checked):has(input:focus-visible) {
+    :is(.forma-ordinal-option, .forma-special-choice, .forma-choice, .forma-binary-option, .forma-symbol-rating__option, .forma-semantic-differential__scale label, .forma-matrix__choices label, .forma-pairwise__option):has(input:checked):has(input:focus-visible) {
       outline-color: CanvasText;
       box-shadow: none;
     }
 
-    .ef-choice:has(input:checked) .ef-choice__content > span { color: inherit; }
+    .forma-choice:has(input:checked) .forma-choice__content > span { color: inherit; }
 
-    .ef-choice:has(input:checked)::before {
+    .forma-choice:has(input:checked)::before {
       background: radial-gradient(circle, HighlightText 0 42%, transparent 44%);
       border-color: HighlightText;
     }
 
-    .ef-choice:has(input[type="checkbox"]:checked)::before {
+    .forma-choice:has(input[type="checkbox"]:checked)::before {
       background: HighlightText;
       box-shadow: inset 0 0 0 3px Highlight;
     }
 
-    .ef-ordinal-option:has(input:checked) .ef-ordinal-option__marker {
+    .forma-ordinal-option:has(input:checked) .forma-ordinal-option__marker {
       forced-color-adjust: none;
       background: Highlight;
       color: HighlightText;
       border-color: HighlightText;
     }
 
-    .ef-obligation {
+    .forma-obligation {
       border-inline-start-color: CanvasText;
     }
   }

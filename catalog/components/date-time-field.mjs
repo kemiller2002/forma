@@ -2,9 +2,9 @@ export default {
   name: "Date and time field",
   category: "forms",
   behavior: "Native HTML",
-  summary: "Native date, time and datetime-local inputs in the .ef-field structure, keeping the platform picker and direct typed entry.",
+  summary: "Native date, time and datetime-local inputs in the .forma-field structure, keeping the platform picker and direct typed entry.",
   purpose: {
-    description: "A date and time field collects a calendar date, a time of day, or both, using native `input type=\"date\"`, `type=\"time\"` or `type=\"datetime-local\"` inside the shared `.ef-field` structure (see [[text-field]]). The browser supplies the segmented typed entry, the picker, locale-appropriate display and `min`/`max`/`step` validation, while the submitted value is always the locale-independent ISO form (`2026-10-14`, `09:30`, `2026-10-14T09:30`). Forma styles the box; it does not draw its own calendar.",
+    description: "A date and time field collects a calendar date, a time of day, or both, using native `input type=\"date\"`, `type=\"time\"` or `type=\"datetime-local\"` inside the shared `.forma-field` structure (see [[text-field]]). The browser supplies the segmented typed entry, the picker, locale-appropriate display and `min`/`max`/`step` validation, while the submitted value is always the locale-independent ISO form (`2026-10-14`, `09:30`, `2026-10-14T09:30`). Forma styles the box; it does not draw its own calendar.",
     useWhen: [
       "The user enters one date, one time of day, or one local date and time.",
       "The allowed values have simple bounds (earliest or latest date, business hours, 15-minute slots) that `min`, `max` and `step` can express.",
@@ -33,48 +33,48 @@ export default {
       ],
       title: "Appointment date and time",
       description: "Separate date and time inputs for a support call. The date cannot be before today's booking window and the time is limited to 09:00–17:00 in 15-minute steps (step is in seconds).",
-      html: `<ef-date-time-field class="ef-component-tag">
-  <div class="ef-form-row">
-    <div class="ef-field">
-      <label class="ef-field__label" for="date-time-field-appointment-date">Call date</label>
-      <span class="ef-field__description" id="date-time-field-appointment-date-description">Between 1 October and 31 December 2026.</span>
+      html: `<forma-date-time-field class="forma-component-tag">
+  <div class="forma-form-row">
+    <div class="forma-field">
+      <label class="forma-field__label" for="date-time-field-appointment-date">Call date</label>
+      <span class="forma-field__description" id="date-time-field-appointment-date-description">Between 1 October and 31 December 2026.</span>
       <input id="date-time-field-appointment-date" name="call-date" type="date" min="2026-10-01" max="2026-12-31" required aria-describedby="date-time-field-appointment-date-description">
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="date-time-field-appointment-time">Start time (London time)</label>
-      <span class="ef-field__description" id="date-time-field-appointment-time-description">09:00 to 17:00, on the quarter hour.</span>
+    <div class="forma-field">
+      <label class="forma-field__label" for="date-time-field-appointment-time">Start time (London time)</label>
+      <span class="forma-field__description" id="date-time-field-appointment-time-description">09:00 to 17:00, on the quarter hour.</span>
       <input id="date-time-field-appointment-time" name="call-time" type="time" min="09:00" max="17:00" step="900" required aria-describedby="date-time-field-appointment-time-description">
     </div>
   </div>
-</ef-date-time-field>`
+</forma-date-time-field>`
     },
     {
       id: "maintenance-window",
       title: "Scheduled maintenance start",
       description: "A single datetime-local value with a lower bound and an initial value. The time zone is named in the label because datetime-local submits a zone-less local time.",
-      html: `<ef-date-time-field class="ef-component-tag">
-  <div class="ef-field">
-    <label class="ef-field__label" for="date-time-field-maintenance-start">Maintenance starts (UTC)</label>
-    <span class="ef-field__description" id="date-time-field-maintenance-start-description">Customers are notified 48 hours before this time.</span>
+      html: `<forma-date-time-field class="forma-component-tag">
+  <div class="forma-field">
+    <label class="forma-field__label" for="date-time-field-maintenance-start">Maintenance starts (UTC)</label>
+    <span class="forma-field__description" id="date-time-field-maintenance-start-description">Customers are notified 48 hours before this time.</span>
     <input id="date-time-field-maintenance-start" name="maintenance-start" type="datetime-local" min="2026-10-02T00:00" value="2026-10-04T02:00" aria-describedby="date-time-field-maintenance-start-description">
   </div>
-</ef-date-time-field>`
+</forma-date-time-field>`
     },
     {
       id: "date-out-of-range",
       title: "Date outside the allowed range",
       description: "The application rejected a contract end date earlier than the start. aria-invalid and a linked validation message explain the fix; the typed value is kept.",
-      html: `<ef-date-time-field class="ef-component-tag">
-  <div class="ef-field">
-    <label class="ef-field__label" for="date-time-field-contract-end">Contract end date</label>
-    <span class="ef-field__description" id="date-time-field-contract-end-description">Contract starts on 1 November 2026.</span>
+      html: `<forma-date-time-field class="forma-component-tag">
+  <div class="forma-field">
+    <label class="forma-field__label" for="date-time-field-contract-end">Contract end date</label>
+    <span class="forma-field__description" id="date-time-field-contract-end-description">Contract starts on 1 November 2026.</span>
     <input id="date-time-field-contract-end" name="contract-end" type="date" min="2026-11-01" value="2026-10-15" aria-invalid="true" aria-describedby="date-time-field-contract-end-description date-time-field-contract-end-error">
-    <p class="ef-validation-message" id="date-time-field-contract-end-error">
-      <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+    <p class="forma-validation-message" id="date-time-field-contract-end-error">
+      <span class="forma-validation-message__mark" aria-hidden="true">!</span>
       Choose a date on or after 1 November 2026.
     </p>
   </div>
-</ef-date-time-field>`
+</forma-date-time-field>`
     },
     {
       id: "mobile-delivery-window",
@@ -96,25 +96,25 @@ export default {
           "Orientation changes only reflow the grid."
         ]
       },
-      html: `<ef-date-time-field class="ef-component-tag">
-  <div class="ef-form-row">
-    <div class="ef-field">
-      <label class="ef-field__label" for="date-time-field-mobile-date">Delivery date</label>
+      html: `<forma-date-time-field class="forma-component-tag">
+  <div class="forma-form-row">
+    <div class="forma-field">
+      <label class="forma-field__label" for="date-time-field-mobile-date">Delivery date</label>
       <input id="date-time-field-mobile-date" name="delivery-date" type="date" min="2026-10-01">
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="date-time-field-mobile-time">Earliest arrival</label>
-      <span class="ef-field__description" id="date-time-field-mobile-time-description">Hourly slots from 08:00.</span>
+    <div class="forma-field">
+      <label class="forma-field__label" for="date-time-field-mobile-time">Earliest arrival</label>
+      <span class="forma-field__description" id="date-time-field-mobile-time-description">Hourly slots from 08:00.</span>
       <input id="date-time-field-mobile-time" name="delivery-time" type="time" min="08:00" max="18:00" step="3600" aria-describedby="date-time-field-mobile-time-description">
     </div>
   </div>
-</ef-date-time-field>`
+</forma-date-time-field>`
     }
   ],
   api: {
     attributes: [
       { name: "type", on: "input", values: "date | time | datetime-local", default: "—", description: "Selects the native control and its value format (YYYY-MM-DD, HH:MM[:SS], YYYY-MM-DDTHH:MM)." },
-      { name: "for", on: "label.ef-field__label", values: "id of the input", default: "—", description: "Associates the visible label." },
+      { name: "for", on: "label.forma-field__label", values: "id of the input", default: "—", description: "Associates the visible label." },
       { name: "name", on: "input", values: "string", default: "—", description: "Form field name; the submitted value is always in ISO form." },
       { name: "value", on: "input", values: "ISO date/time string", default: "empty", description: "Initial value in the machine format for the type, not a localized string." },
       { name: "min", on: "input", values: "ISO date/time string", default: "—", description: "Earliest allowed value. Pickers typically grey out earlier values; typed earlier values fail validation." },
@@ -140,7 +140,7 @@ export default {
     { name: "Empty", how: "no value", description: "The browser shows its localized placeholder segments (for example dd/mm/yyyy)." },
     { name: "Filled", how: "value", description: "Displayed in the user's locale." },
     { name: "Focus", how: ":focus-visible", description: "Foundation two-tone focus ring around the whole input." },
-    { name: "Invalid", how: "aria-invalid=\"true\" plus a linked .ef-validation-message", description: "Error text with a non-color mark below the input. Native :invalid from min/max/step is not restyled by Forma." },
+    { name: "Invalid", how: "aria-invalid=\"true\" plus a linked .forma-validation-message", description: "Error text with a non-color mark below the input. Native :invalid from min/max/step is not restyled by Forma." },
     { name: "Disabled", how: "disabled attribute", description: "Skipped by focus and not submitted; explain why in the description." }
   ],
   accessibility: {
@@ -176,7 +176,7 @@ export default {
   },
   related: [
     { slug: "date-range", note: "Two linked dates (from and to) with preset shortcuts." },
-    { slug: "text-field", note: "Documents the shared .ef-field structure for single-line values." },
+    { slug: "text-field", note: "Documents the shared .forma-field structure for single-line values." },
     { slug: "numeric-stepper", note: "For durations or counts rather than calendar values." }
   ]
 };

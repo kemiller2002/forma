@@ -8,53 +8,53 @@ export default {
     "The [[command-palette]] opens as a modal dialog: focus moves inside, Escape closes it and focus returns to the opening button. Filtering and arrow-key movement between commands are application (Limen) behavior and are not simulated here.",
     "Every focusable element shows the same two-tone focus ring, visible on light and dark surfaces and in forced colors."
   ],
-  html: `<div class="ef-stack">
-  <ef-segmented-control class="ef-component-tag">
-    <fieldset class="ef-field">
-      <legend class="ef-field__label">Density</legend>
-      <div class="ef-segmented">
-        <label class="ef-segment"><input type="radio" name="keyboard-density" value="comfortable" checked><span>Comfortable</span></label>
-        <label class="ef-segment"><input type="radio" name="keyboard-density" value="compact"><span>Compact</span></label>
-        <label class="ef-segment"><input type="radio" name="keyboard-density" value="dense"><span>Dense</span></label>
+  html: `<div class="forma-stack">
+  <forma-segmented-control class="forma-component-tag">
+    <fieldset class="forma-field">
+      <legend class="forma-field__label">Density</legend>
+      <div class="forma-segmented">
+        <label class="forma-segment"><input type="radio" name="keyboard-density" value="comfortable" checked><span>Comfortable</span></label>
+        <label class="forma-segment"><input type="radio" name="keyboard-density" value="compact"><span>Compact</span></label>
+        <label class="forma-segment"><input type="radio" name="keyboard-density" value="dense"><span>Dense</span></label>
       </div>
     </fieldset>
-  </ef-segmented-control>
+  </forma-segmented-control>
 
-  <ef-disclosure class="ef-component-tag">
-    <details class="ef-disclosure">
+  <forma-disclosure class="forma-component-tag">
+    <details class="forma-disclosure">
       <summary>Keyboard shortcuts</summary>
-      <div class="ef-disclosure__content">
-        <dl class="ef-key-value-list">
+      <div class="forma-disclosure__content">
+        <dl class="forma-key-value-list">
           <div><dt><kbd>Ctrl</kbd> + <kbd>K</kbd></dt><dd>Open the command palette (application shortcut)</dd></div>
           <div><dt><kbd>Esc</kbd></dt><dd>Close the open dialog or popover</dd></div>
         </dl>
       </div>
     </details>
-  </ef-disclosure>
+  </forma-disclosure>
 
-  <ef-command-palette class="ef-component-tag">
+  <forma-command-palette class="forma-component-tag">
     <button type="button" commandfor="keyboard-palette" command="show-modal">Open command palette</button>
-    <dialog class="ef-command-palette" id="keyboard-palette" aria-labelledby="keyboard-palette-title">
-      <header class="ef-command-palette__header">
+    <dialog class="forma-command-palette" id="keyboard-palette" aria-labelledby="keyboard-palette-title">
+      <header class="forma-command-palette__header">
         <h3 id="keyboard-palette-title">Commands</h3>
         <kbd>Esc</kbd>
       </header>
-      <label class="ef-visually-hidden" for="keyboard-palette-search">Find a command</label>
+      <label class="forma-visually-hidden" for="keyboard-palette-search">Find a command</label>
       <input id="keyboard-palette-search" type="search" placeholder="Type a command">
-      <div class="ef-command-palette__group">
+      <div class="forma-command-palette__group">
         <h4>Suggested</h4>
         <button type="button"><span>Create project</span></button>
         <button type="button"><span>Invite teammate</span></button>
         <button type="button" disabled><span>Publish report</span><small>Unavailable until validation passes</small></button>
       </div>
     </dialog>
-  </ef-command-palette>
+  </forma-command-palette>
 
-  <ef-button class="ef-component-tag">
-    <div class="ef-actions">
+  <forma-button class="forma-component-tag">
+    <div class="forma-actions">
       <button type="submit">Save preferences</button>
-      <a class="ef-button" href="#keyboard-help">Keyboard help</a>
+      <a class="forma-button" href="#keyboard-help">Keyboard help</a>
     </div>
-  </ef-button>
+  </forma-button>
 </div>`
 };

@@ -11,7 +11,7 @@
 //
 // The application layer now mirrors the marketing layer's surface tone: every
 // rule that paints surface.secondary rebinds secondary/muted text to
-// text.on-secondary-surface and sets --ef-surface-accent-text-color to text.primary.
+// text.on-secondary-surface and sets --forma-surface-accent-text-color to text.primary.
 // This test fails when a rule paints the secondary surface without that
 // pairing, and when any documented pair falls below its minimum in any
 // compiled theme or brand.
@@ -26,12 +26,12 @@ const read = (file) => fs.readFileSync(file, "utf8");
 // --- Secondary-surface pairing ----------------------------------------------
 
 const SOURCES = ["src/styles/foundations.css", "src/styles/components.css", "src/styles/assessment.css"];
-const SECONDARY_BACKGROUND = /^var\(--ef-color-surface-secondary\b/;
+const SECONDARY_BACKGROUND = /^var\(--forma-color-surface-secondary\b/;
 
 const PAIRING = {
-  "--ef-color-text-secondary": /^var\(--ef-color-text-on-secondary-surface\b/,
-  "--ef-color-text-muted": /^var\(--ef-color-text-on-secondary-surface\b/,
-  "--ef-surface-accent-text-color": /^var\(--ef-color-text-primary\b/
+  "--forma-color-text-secondary": /^var\(--forma-color-text-on-secondary-surface\b/,
+  "--forma-color-text-muted": /^var\(--forma-color-text-on-secondary-surface\b/,
+  "--forma-surface-accent-text-color": /^var\(--forma-color-text-primary\b/
 };
 
 const rules = SOURCES.flatMap((file) => parseCss(read(file)).rules.map((rule) => ({ ...rule, file })));
@@ -40,14 +40,14 @@ test("links resolve through the secondary-surface accent-text hook", () => {
   const link = rules.find((rule) => rule.file === "src/styles/foundations.css" && rule.selector === ":where(a)");
   assert.ok(link, "foundations must style :where(a)");
   const color = Object.fromEntries(declarations(link.body)).color ?? "";
-  assert.match(color, /^var\(--ef-surface-accent-text-color, var\(--ef-color-accent-primary\b/);
+  assert.match(color, /^var\(--forma-surface-accent-text-color, var\(--forma-color-accent-primary\b/);
 });
 
 test("accent-colored text routes through the secondary-surface hook", () => {
   const direct = rules.flatMap((rule) => declarations(rule.body)
-    .filter(([property, value]) => property === "color" && /^var\(--ef-color-accent-/.test(value))
+    .filter(([property, value]) => property === "color" && /^var\(--forma-color-accent-/.test(value))
     .map(() => `${rule.file}:${rule.line} ${rule.selector}`));
-  assert.deepEqual(direct, [], `accent text must use var(--ef-surface-accent-text-color, var(--ef-color-accent-*)) so it re-pairs on the secondary surface:\n  ${direct.join("\n  ")}`);
+  assert.deepEqual(direct, [], `accent text must use var(--forma-surface-accent-text-color, var(--forma-color-accent-*)) so it re-pairs on the secondary surface:\n  ${direct.join("\n  ")}`);
 });
 
 test("every rule that paints the secondary surface re-pairs its foreground roles", () => {
@@ -59,7 +59,7 @@ test("every rule that paints the secondary surface re-pairs its foreground roles
     const missing = Object.entries(PAIRING).filter(([property, expected]) => !expected.test(values[property] ?? "")).map(([property]) => property);
     return missing.length ? [`${rule.file}:${rule.line} ${rule.selector} (missing ${missing.join(", ")})`] : [];
   });
-  assert.deepEqual(unpaired, [], `rules paint --ef-color-surface-secondary without re-pairing their text:\n  ${unpaired.join("\n  ")}`);
+  assert.deepEqual(unpaired, [], `rules paint --forma-color-surface-secondary without re-pairing their text:\n  ${unpaired.join("\n  ")}`);
 });
 
 // --- Token-pair contrast -------------------------------------------------------
@@ -93,27 +93,26 @@ const PAIRS = [
 function themeContexts(file) {
   return parseCss(read(file)).rules.flatMap((rule) => {
     const colors = Object.fromEntries(declarations(rule.body)
-      .filter(([property, value]) => property.startsWith("--ef-color-") && /^#[0-9a-f]{6}$/i.test(value))
-      .map(([property, value]) => [property.slice("--ef-color-".length), value.toLowerCase()]));
+      .filter(([property, value]) => property.startsWith("--forma-color-") && /^#[0-9a-f]{6}$/i.test(value))
+      .map(([property, value]) => [property.slice("--forma-color-".length), value.toLowerCase()]));
     return colors["surface-primary"] && colors["surface-secondary"] ? [{ id: `${file} ${rule.selector}`, colors }] : [];
   });
 }
 
 const compiled = [
   "dist/tokens.css",
-  ...fs.readdirSync("dist/brands").filter((file) => file.endsWith(".css")).map((file) => path.join("dist/brands", file)),
-  "dist/marketing/forma-marketing-theme-echelon.css"
+  ...fs.readdirSync("dist/brands").filter((file) => file.endsWith(".css")).map((file) => path.join("dist/brands", file))
 ];
 
 test("compiled themes and brands expose complete color contexts", () => {
   const contexts = compiled.flatMap(themeContexts);
   const publicStatus = ["status-success", "status-warning", "status-danger", "status-info"];
-  const themes = Object.keys(JSON.parse(read("tokens/echelon.tokens.json")).semantic);
+  const themes = Object.keys(JSON.parse(read("tokens/forma.tokens.json")).semantic);
   for (const theme of themes.filter((id) => id !== "light")) {
-    assert.ok(contexts.some((context) => context.id.includes(`[data-ef-theme="${theme}"]`)), `no compiled context for theme ${theme}`);
+    assert.ok(contexts.some((context) => context.id.includes(`[data-forma-theme="${theme}"]`)), `no compiled context for theme ${theme}`);
   }
   for (const brand of JSON.parse(read("dist/brands/index.json")).brands) {
-    assert.ok(contexts.some((context) => context.id.includes(`[data-ef-brand="${brand.id}"]`)), `no compiled context for brand ${brand.id}`);
+    assert.ok(contexts.some((context) => context.id.includes(`[data-forma-brand="${brand.id}"]`)), `no compiled context for brand ${brand.id}`);
   }
   for (const context of contexts) {
     for (const role of publicStatus) assert.ok(context.colors[role], `${context.id} omits public ${role}`);

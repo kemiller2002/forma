@@ -9,7 +9,7 @@ Validate the supported DTCG token subset, resolve aliases, enforce Echelon seman
 - State, including presentation state: none
 - Transitions / commands / messages: compiler pipeline in `Program.fs`
 - Invariants and guards: alias resolution, cycle detection, type rendering, theme variable parity
-- Capabilities / authority: generation only; token values remain owned by `tokens/echelon.tokens.json`
+- Capabilities / authority: generation only; token values remain owned by `tokens/forma.tokens.json`
 - Important effects and effect contracts: writes a caller-specified CSS output file
 
 ## Interfaces

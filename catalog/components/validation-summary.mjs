@@ -33,64 +33,64 @@ export default {
       },
       title: "One off-screen error",
       description: "A summary with a single item for a form where the problem may be below the fold. The heading uses the singular and the link targets the input's id.",
-      html: `<ef-validation-summary class="ef-component-tag">
-  <div class="ef-stack">
-    <div class="ef-validation-summary" role="alert" tabindex="-1" aria-labelledby="validation-summary-single-error-title">
-      <div class="ef-validation-summary__icon" aria-hidden="true">!</div>
+      html: `<forma-validation-summary class="forma-component-tag">
+  <div class="forma-stack">
+    <div class="forma-validation-summary" role="alert" tabindex="-1" aria-labelledby="validation-summary-single-error-title">
+      <div class="forma-validation-summary__icon" aria-hidden="true">!</div>
       <div>
-        <h2 class="ef-validation-summary__title" id="validation-summary-single-error-title">There is 1 problem to fix</h2>
-        <ul class="ef-validation-summary__list">
+        <h2 class="forma-validation-summary__title" id="validation-summary-single-error-title">There is 1 problem to fix</h2>
+        <ul class="forma-validation-summary__list">
           <li><a href="#validation-summary-single-error-date">Enter the contract start date.</a></li>
         </ul>
       </div>
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="validation-summary-single-error-date">Contract start date</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="validation-summary-single-error-date">Contract start date</label>
       <input id="validation-summary-single-error-date" name="contract-start" type="date" required aria-invalid="true" aria-describedby="validation-summary-single-error-message">
-      <p class="ef-validation-message" id="validation-summary-single-error-message">
-        <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+      <p class="forma-validation-message" id="validation-summary-single-error-message">
+        <span class="forma-validation-message__mark" aria-hidden="true">!</span>
         Enter the contract start date.
       </p>
     </div>
   </div>
-</ef-validation-summary>`
+</forma-validation-summary>`
     },
     {
       id: "form-with-field-errors",
       interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Summary above field-level messages",
       description: "The full composition after a failed submit: the summary at the top of the form, and a matching [[validation-message]] at each field. Link text matches the field message so users recognize it when they arrive.",
-      html: `<ef-validation-summary class="ef-component-tag">
-  <form class="ef-stack" action="#validation-summary-form-with-field-errors-title" novalidate>
-    <div class="ef-validation-summary" role="alert" tabindex="-1" aria-labelledby="validation-summary-form-with-field-errors-title">
-      <div class="ef-validation-summary__icon" aria-hidden="true">!</div>
+      html: `<forma-validation-summary class="forma-component-tag">
+  <form class="forma-stack" action="#validation-summary-form-with-field-errors-title" novalidate>
+    <div class="forma-validation-summary" role="alert" tabindex="-1" aria-labelledby="validation-summary-form-with-field-errors-title">
+      <div class="forma-validation-summary__icon" aria-hidden="true">!</div>
       <div>
-        <h2 class="ef-validation-summary__title" id="validation-summary-form-with-field-errors-title">There are 2 problems to fix</h2>
-        <ul class="ef-validation-summary__list">
+        <h2 class="forma-validation-summary__title" id="validation-summary-form-with-field-errors-title">There are 2 problems to fix</h2>
+        <ul class="forma-validation-summary__list">
           <li><a href="#validation-summary-form-with-field-errors-name">Enter the vendor's legal name.</a></li>
           <li><a href="#validation-summary-form-with-field-errors-tax">Enter a tax ID with 9 digits.</a></li>
         </ul>
       </div>
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="validation-summary-form-with-field-errors-name">Legal name</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="validation-summary-form-with-field-errors-name">Legal name</label>
       <input id="validation-summary-form-with-field-errors-name" name="legal-name" type="text" autocomplete="organization" required aria-invalid="true" aria-describedby="validation-summary-form-with-field-errors-name-error">
-      <p class="ef-validation-message" id="validation-summary-form-with-field-errors-name-error">
-        <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+      <p class="forma-validation-message" id="validation-summary-form-with-field-errors-name-error">
+        <span class="forma-validation-message__mark" aria-hidden="true">!</span>
         Enter the vendor's legal name.
       </p>
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="validation-summary-form-with-field-errors-tax">Tax ID</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="validation-summary-form-with-field-errors-tax">Tax ID</label>
       <input id="validation-summary-form-with-field-errors-tax" name="tax-id" type="text" inputmode="numeric" value="12-34567" aria-invalid="true" aria-describedby="validation-summary-form-with-field-errors-tax-error">
-      <p class="ef-validation-message" id="validation-summary-form-with-field-errors-tax-error">
-        <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+      <p class="forma-validation-message" id="validation-summary-form-with-field-errors-tax-error">
+        <span class="forma-validation-message__mark" aria-hidden="true">!</span>
         Enter a tax ID with 9 digits.
       </p>
     </div>
     <button type="submit">Save vendor</button>
   </form>
-</ef-validation-summary>`
+</forma-validation-summary>`
     },
     {
       id: "mobile-survey-page",
@@ -113,34 +113,34 @@ export default {
           "When the application focuses the summary, the browser scrolls it into view at the top of the phone screen."
         ]
       },
-      html: `<ef-validation-summary class="ef-component-tag">
-  <div class="ef-validation-summary" role="alert" tabindex="-1" aria-labelledby="validation-summary-mobile-survey-page-title">
-    <div class="ef-validation-summary__icon" aria-hidden="true">!</div>
+      html: `<forma-validation-summary class="forma-component-tag">
+  <div class="forma-validation-summary" role="alert" tabindex="-1" aria-labelledby="validation-summary-mobile-survey-page-title">
+    <div class="forma-validation-summary__icon" aria-hidden="true">!</div>
     <div>
-      <h2 class="ef-validation-summary__title" id="validation-summary-mobile-survey-page-title">There are 3 responses to review</h2>
-      <ul class="ef-validation-summary__list">
+      <h2 class="forma-validation-summary__title" id="validation-summary-mobile-survey-page-title">There are 3 responses to review</h2>
+      <ul class="forma-validation-summary__list">
         <li><a href="#validation-summary-mobile-survey-page-title">Question 2: choose how often access reviews happen.</a></li>
         <li><a href="#validation-summary-mobile-survey-page-title">Question 5: the allocation must total exactly 100 points.</a></li>
         <li><a href="#validation-summary-mobile-survey-page-title">Question 9: describe the exception process in at least 20 characters.</a></li>
       </ul>
     </div>
   </div>
-</ef-validation-summary>`
+</forma-validation-summary>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: "div.ef-validation-summary", values: "alert", default: "—", description: "Announces the summary when the application inserts it. A summary present at page load is not announced." },
-      { name: "tabindex", on: "div.ef-validation-summary", values: "-1", default: "—", description: "Allows the application to move focus to the summary programmatically without adding it to the Tab order." },
-      { name: "aria-labelledby", on: "div.ef-validation-summary", values: "id of .ef-validation-summary__title", default: "—", description: "Names the summary by its heading, so focusing it announces the count." },
+      { name: "role", on: "div.forma-validation-summary", values: "alert", default: "—", description: "Announces the summary when the application inserts it. A summary present at page load is not announced." },
+      { name: "tabindex", on: "div.forma-validation-summary", values: "-1", default: "—", description: "Allows the application to move focus to the summary programmatically without adding it to the Tab order." },
+      { name: "aria-labelledby", on: "div.forma-validation-summary", values: "id of .forma-validation-summary__title", default: "—", description: "Names the summary by its heading, so focusing it announces the count." },
       { name: "href", on: "a", values: "#id of the affected control or group", default: "—", description: "Takes the user to the problem. Point at the input's id, or the fieldset's id for a group." },
-      { name: "aria-hidden", on: ".ef-validation-summary__icon", values: "true", default: "—", description: "Hides the decorative mark." }
+      { name: "aria-hidden", on: ".forma-validation-summary__icon", values: "true", default: "—", description: "Hides the decorative mark." }
     ],
     hooks: {
-      "ef-validation-summary": "Root grid with a mark column and a content column, a 2px accent border and a secondary surface.",
-      "ef-validation-summary__icon": "Bordered circular mark shared in style with the validation message mark. Decorative.",
-      "ef-validation-summary__title": "Heading that states the number of problems; sans-serif at 1rem regardless of heading level.",
-      "ef-validation-summary__list": "Bulleted list of links, one per problem."
+      "forma-validation-summary": "Root grid with a mark column and a content column, a 2px accent border and a secondary surface.",
+      "forma-validation-summary__icon": "Bordered circular mark shared in style with the validation message mark. Decorative.",
+      "forma-validation-summary__title": "Heading that states the number of problems; sans-serif at 1rem regardless of heading level.",
+      "forma-validation-summary__list": "Bulleted list of links, one per problem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the links. The summary container is reachable only by programmatic focus." },

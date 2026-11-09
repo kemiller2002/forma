@@ -6,7 +6,7 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 
 const project = "tools/TokenCompiler/TokenCompiler.fsproj";
-const canonicalPath = path.resolve("tokens/echelon.tokens.json");
+const canonicalPath = path.resolve("tokens/forma.tokens.json");
 
 function runCompiler(source, output) {
   return spawnSync(
@@ -17,7 +17,7 @@ function runCompiler(source, output) {
 }
 
 test("canonical token source compiles deterministically", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-tokens-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-tokens-"));
   const first = path.join(dir, "first.css");
   const second = path.join(dir, "second.css");
 
@@ -29,14 +29,14 @@ test("canonical token source compiles deterministically", () => {
   const one = fs.readFileSync(first, "utf8");
   const two = fs.readFileSync(second, "utf8");
   assert.equal(one, two);
-  assert.match(one, /--ef-color-accent-primary: #905831/);
-  assert.match(one, /--ef-color-text-on-secondary-surface: #3a403c/);
-  assert.match(one, /--ef-color-status-danger: #a13a2c/);
-  assert.match(one, /--ef-primitive-motion-duration-standard: 180ms/);
+  assert.match(one, /--forma-color-accent-primary: #2b5ea8/);
+  assert.match(one, /--forma-color-text-on-secondary-surface: #303030/);
+  assert.match(one, /--forma-color-status-danger: #b0302a/);
+  assert.match(one, /--forma-primitive-motion-duration-standard: 180ms/);
 });
 
 test("unsafe status pairing is rejected", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-tokens-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-tokens-"));
   const source = path.join(dir, "unsafe-status.json");
   const output = path.join(dir, "unsafe-status.css");
   const data = JSON.parse(fs.readFileSync(canonicalPath, "utf8"));
@@ -50,12 +50,12 @@ test("unsafe status pairing is rejected", () => {
 });
 
 test("unsafe dark accent pairing is rejected", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-tokens-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-tokens-"));
   const source = path.join(dir, "unsafe.json");
   const output = path.join(dir, "unsafe.css");
   const data = JSON.parse(fs.readFileSync(canonicalPath, "utf8"));
 
-  data.semantic.dark.color.accent.primary.$value = "{primitive.color.oxide-bronze}";
+  data.semantic.dark.color.accent.primary.$value = "{primitive.color.blue-600}";
   fs.writeFileSync(source, JSON.stringify(data, null, 2));
 
   const result = runCompiler(source, output);
@@ -64,7 +64,7 @@ test("unsafe dark accent pairing is rejected", () => {
 });
 
 test("circular aliases are rejected", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-tokens-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-tokens-"));
   const source = path.join(dir, "cycle.json");
   const output = path.join(dir, "cycle.css");
   const data = JSON.parse(fs.readFileSync(canonicalPath, "utf8"));

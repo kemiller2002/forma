@@ -17,7 +17,7 @@ export function installEchelonRuntimeRegistrar(target = globalThis) {
   const installed = target[REGISTER_KEY];
   if (typeof installed === "function" && installed.echelonRuntimeSchemaVersion === SCHEMA_VERSION) return installed;
   if (installed !== undefined) {
-    diagnostic(target, "warn", "Echelon Runtime registrar conflict: an incompatible global registrar is already installed.");
+    diagnostic(target, "warn", "Runtime registry: registrar conflict: an incompatible global registrar is already installed.");
     return undefined;
   }
 
@@ -26,13 +26,13 @@ export function installEchelonRuntimeRegistrar(target = globalThis) {
     registry = { schemaVersion: SCHEMA_VERSION, libraries: {} };
     target[REGISTRY_KEY] = registry;
   } else if (registry === null || typeof registry !== "object" || registry.schemaVersion !== SCHEMA_VERSION || registry.libraries === null || typeof registry.libraries !== "object") {
-    diagnostic(target, "warn", "Echelon Runtime registry conflict: schemaVersion 1 is required; the existing registry was left unchanged.");
+    diagnostic(target, "warn", "Runtime registry conflict: schemaVersion 1 is required; the existing registry was left unchanged.");
     return undefined;
   }
 
   const register = (name, metadata) => {
-    if (typeof name !== "string" || !/^[a-z][a-z0-9-]*$/.test(name)) throw new TypeError("Echelon runtime library names must be lowercase identifiers.");
-    if (metadata === null || typeof metadata !== "object" || typeof metadata.version !== "string" || metadata.version.length === 0) throw new TypeError("Echelon runtime metadata requires a version string.");
+    if (typeof name !== "string" || !/^[a-z][a-z0-9-]*$/.test(name)) throw new TypeError("Runtime registry library names must be lowercase identifiers.");
+    if (metadata === null || typeof metadata !== "object" || typeof metadata.version !== "string" || metadata.version.length === 0) throw new TypeError("Runtime registry metadata requires a version string.");
 
     const candidate = { version: metadata.version };
     if (typeof metadata.commit === "string" && metadata.commit.length > 0) candidate.commit = metadata.commit;
@@ -41,12 +41,12 @@ export function installEchelonRuntimeRegistrar(target = globalThis) {
     const current = registry.libraries[name];
     if (current !== undefined) {
       if (current.version === candidate.version) return current;
-      diagnostic(target, "warn", \`Echelon Runtime conflict: \${libraryLabel(name)} v\${current.version} is already registered; ignored v\${candidate.version}.\`);
+      diagnostic(target, "warn", \`Runtime registry conflict: \${libraryLabel(name)} v\${current.version} is already registered; ignored v\${candidate.version}.\`);
       return current;
     }
 
     registry.libraries[name] = candidate;
-    diagnostic(target, "info", \`Echelon Runtime · \${libraryLabel(name)} v\${candidate.version}\`);
+    diagnostic(target, "info", \`Runtime registry · \${libraryLabel(name)} v\${candidate.version}\`);
     return candidate;
   };
 

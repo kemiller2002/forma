@@ -115,12 +115,12 @@ const exampleRules = (catalog, component) => {
       [/^(example|demo|sample)\s*\d*$/i.test(example.title ?? ""), `${where}: use a scenario title, not "${example.title}"`],
       [!nonEmptyText(example.description), `${where}: description is required`],
       [!nonEmptyText(html), `${where}: html is required`],
-      [!new RegExp(`<ef-${slug}\\s+class="ef-component-tag"`).test(html), `${where}: must render the real component inside <ef-${slug} class="ef-component-tag">`],
+      [!new RegExp(`<forma-${slug}\\s+class="forma-component-tag"`).test(html), `${where}: must render the real component inside <forma-${slug} class="forma-component-tag">`],
       ...unsafeMarkup(html).map(pattern => [true, `${where}: forbidden executable markup ${pattern}`]),
-      ...tags.filter(tag => !slugs.has(tag.slice(3))).map(tag => [true, `${where}: <${tag}> is not a catalog component`]),
+      ...tags.filter(tag => !slugs.has(tag.slice("forma-".length))).map(tag => [true, `${where}: <${tag}> is not a catalog component`]),
       ...markupClasses(html).filter(name => !knownClass(name))
         .map(name => [true, `${where}: class "${name}" is neither in Forma CSS nor in a canonical pattern`]),
-      ...markupAttributes(html).filter(name => name.startsWith("data-ef-") && !catalog.hookIndex.attributeNames.has(name) && !patternAttributes.has(name))
+      ...markupAttributes(html).filter(name => name.startsWith("data-forma-") && !catalog.hookIndex.attributeNames.has(name) && !patternAttributes.has(name))
         .map(name => [true, `${where}: attribute "${name}" is neither styled by Forma CSS nor used by a canonical pattern`]),
       [Boolean(example.mobile) && !nonEmptyList(example.mobile.notes), `${where}: mobile.notes must explain what changes at narrow widths`],
       ...interactionProblems(example.interaction, html).map(message => [true, `${where}: ${message}`]),
@@ -208,7 +208,7 @@ const compositionRules = catalog => {
       !nonEmptyText(html) && "html is required",
       tags.length < 3 && "a composition should combine at least three catalog components",
       ...unsafeMarkup(html).map(pattern => `forbidden executable markup ${pattern}`),
-      ...tags.filter(tag => !slugs.has(tag.slice(3))).map(tag => `<${tag}> is not a catalog component`),
+      ...tags.filter(tag => !slugs.has(tag.slice("forma-".length))).map(tag => `<${tag}> is not a catalog component`),
       ...markupClasses(html).filter(name => !knownClassIn(catalog)(name)).map(name => `class "${name}" is neither in Forma CSS nor in a canonical pattern`)
     ].filter(Boolean).map(message => problem(`composition:${composition.slug}`, message));
   });

@@ -36,9 +36,9 @@ test("sidebar recomposes to one column without CSS ordering", async ({ page }) =
   await page.setContent(documentFor(source));
 
   const result = await page.evaluate(() => {
-    const shell = document.querySelector(".ef-sidebar");
-    const side = document.querySelector(".ef-sidebar__side");
-    const content = document.querySelector(".ef-sidebar__content");
+    const shell = document.querySelector(".forma-sidebar");
+    const side = document.querySelector(".forma-sidebar__side");
+    const content = document.querySelector(".forma-sidebar__content");
     const style = getComputedStyle(shell);
     return {
       columns: style.gridTemplateColumns,

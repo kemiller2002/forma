@@ -20,7 +20,7 @@ export default {
       "The tab list scrolls horizontally inside itself when tabs overflow; tabs never wrap or shrink.",
       "Each tab is at least 44px tall.",
       "Selection is shown by position cue (a 3px underline) and a surface change, not color alone.",
-      "The motion scope defaults to the light preset; the pattern states it explicitly with `data-ef-motion-weight=\"light\"`."
+      "The motion scope defaults to the light preset; the pattern states it explicitly with `data-forma-motion-weight=\"light\"`."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior"] },
@@ -29,38 +29,38 @@ export default {
       id: "history-selected",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Second tab selected with roving focus",
-      description: "History is selected. The application has applied roving tabindex (only the selected tab is in the tab order), hidden the other panels, and marked the visible panel with data-ef-motion-entry so it fades in when shown.",
-      html: `<ef-tabs class="ef-component-tag">
-  <section class="ef-tabs" data-ef-motion-weight="light" aria-labelledby="tabs-history-heading">
+      description: "History is selected. The application has applied roving tabindex (only the selected tab is in the tab order), hidden the other panels, and marked the visible panel with data-forma-motion-entry so it fades in when shown.",
+      html: `<forma-tabs class="forma-component-tag">
+  <section class="forma-tabs" data-forma-motion-weight="light" aria-labelledby="tabs-history-heading">
     <h2 id="tabs-history-heading">Invoice 1042</h2>
-    <div class="ef-tabs__list" role="tablist" aria-label="Invoice sections">
+    <div class="forma-tabs__list" role="tablist" aria-label="Invoice sections">
       <button type="button" role="tab" id="tabs-history-tab-overview" aria-selected="false" aria-controls="tabs-history-panel-overview" tabindex="-1">Overview</button>
       <button type="button" role="tab" id="tabs-history-tab-history" aria-selected="true" aria-controls="tabs-history-panel-history">History</button>
       <button type="button" role="tab" id="tabs-history-tab-payments" aria-selected="false" aria-controls="tabs-history-panel-payments" tabindex="-1">Payments</button>
     </div>
-    <section class="ef-tabs__panel" id="tabs-history-panel-overview" role="tabpanel" aria-labelledby="tabs-history-tab-overview" hidden>
+    <section class="forma-tabs__panel" id="tabs-history-panel-overview" role="tabpanel" aria-labelledby="tabs-history-tab-overview" hidden>
       <h3>Overview</h3>
       <p>Issued 3 June to Northwind Ltd. Due 3 July.</p>
     </section>
-    <section class="ef-tabs__panel" id="tabs-history-panel-history" role="tabpanel" aria-labelledby="tabs-history-tab-history" data-ef-motion-entry>
+    <section class="forma-tabs__panel" id="tabs-history-panel-history" role="tabpanel" aria-labelledby="tabs-history-tab-history" data-forma-motion-entry>
       <h3>History</h3>
       <p>Sent 3 June, viewed 4 June, reminder sent 1 July.</p>
     </section>
-    <section class="ef-tabs__panel" id="tabs-history-panel-payments" role="tabpanel" aria-labelledby="tabs-history-tab-payments" hidden>
+    <section class="forma-tabs__panel" id="tabs-history-panel-payments" role="tabpanel" aria-labelledby="tabs-history-tab-payments" hidden>
       <h3>Payments</h3>
       <p>No payments recorded.</p>
     </section>
   </section>
-</ef-tabs>`
+</forma-tabs>`
     },
     {
       id: "overflowing-tabs",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Many tabs overflowing the list",
       description: "Seven tabs in a narrow container. The list scrolls horizontally inside its own bounds with a thin scrollbar rather than wrapping; the page itself does not scroll sideways.",
-      html: `<ef-tabs class="ef-component-tag">
-  <section class="ef-tabs" style="max-inline-size: 24rem;">
-    <div class="ef-tabs__list" role="tablist" aria-label="Service details">
+      html: `<forma-tabs class="forma-component-tag">
+  <section class="forma-tabs" style="max-inline-size: 24rem;">
+    <div class="forma-tabs__list" role="tablist" aria-label="Service details">
       <button type="button" role="tab" id="tabs-overflow-tab-summary" aria-selected="true" aria-controls="tabs-overflow-panel-summary">Summary</button>
       <button type="button" role="tab" id="tabs-overflow-tab-deployments" aria-selected="false" aria-controls="tabs-overflow-panel-deployments" tabindex="-1">Deployments</button>
       <button type="button" role="tab" id="tabs-overflow-tab-alerts" aria-selected="false" aria-controls="tabs-overflow-panel-alerts" tabindex="-1">Alerts</button>
@@ -69,15 +69,15 @@ export default {
       <button type="button" role="tab" id="tabs-overflow-tab-costs" aria-selected="false" aria-controls="tabs-overflow-panel-costs" tabindex="-1">Costs</button>
       <button type="button" role="tab" id="tabs-overflow-tab-audit" aria-selected="false" aria-controls="tabs-overflow-panel-audit" tabindex="-1">Audit log</button>
     </div>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-summary" role="tabpanel" aria-labelledby="tabs-overflow-tab-summary"><p>Checkout service, tier 1, healthy.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-deployments" role="tabpanel" aria-labelledby="tabs-overflow-tab-deployments" hidden><p>Last deployed 2 hours ago.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-alerts" role="tabpanel" aria-labelledby="tabs-overflow-tab-alerts" hidden><p>No open alerts.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-dependencies" role="tabpanel" aria-labelledby="tabs-overflow-tab-dependencies" hidden><p>Depends on payments and inventory.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-owners" role="tabpanel" aria-labelledby="tabs-overflow-tab-owners" hidden><p>Owned by the Commerce team.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-costs" role="tabpanel" aria-labelledby="tabs-overflow-tab-costs" hidden><p>Within budget this month.</p></section>
-    <section class="ef-tabs__panel" id="tabs-overflow-panel-audit" role="tabpanel" aria-labelledby="tabs-overflow-tab-audit" hidden><p>14 changes this week.</p></section>
+    <section class="forma-tabs__panel" id="tabs-overflow-panel-summary" role="tabpanel" aria-labelledby="tabs-overflow-tab-summary"><p>Checkout service, tier 1, healthy.</p></section>
+    <section class="forma-tabs__panel" id="tabs-overflow-panel-deployments" role="tabpanel" aria-labelledby="tabs-overflow-tab-deployments" hidden><p>Last deployed 2 hours ago.</p></section>
+    <section class="forma-tabs__panel" id="tabs-overflow-panel-alerts" role="tabpanel" aria-labelledby="tabs-overflow-tab-alerts" hidden><p>No open alerts.</p></section>
+    <section class="forma-tabs__panel" id="tabs-overflow-panel-dependencies" role="tabpanel" aria-labelledby="tabs-overflow-tab-dependencies" hidden><p>Depends on payments and inventory.</p></section>
+    <section class="forma-tabs__panel" id="tabs-overflow-panel-owners" role="tabpanel" aria-labelledby="tabs-overflow-tab-owners" hidden><p>Owned by the Commerce team.</p></section>
+    <section class="forma-tabs__panel" id="tabs-overflow-panel-costs" role="tabpanel" aria-labelledby="tabs-overflow-tab-costs" hidden><p>Within budget this month.</p></section>
+    <section class="forma-tabs__panel" id="tabs-overflow-panel-audit" role="tabpanel" aria-labelledby="tabs-overflow-tab-audit" hidden><p>14 changes this week.</p></section>
   </section>
-</ef-tabs>`
+</forma-tabs>`
     },
     {
       id: "mobile-scrolling-list",
@@ -87,26 +87,26 @@ export default {
       mobile: {
         height: 300,
         notes: [
-          "Tabs never wrap onto a second row; `.ef-tabs__list` scrolls horizontally inside its own bounds when they overflow.",
+          "Tabs never wrap onto a second row; `.forma-tabs__list` scrolls horizontally inside its own bounds when they overflow.",
           "Tabs keep their natural width (`flex: 0 0 auto`), so labels are never truncated or squeezed.",
           "Each tab is at least 44px tall; swipe scrolls the list and a tap selects.",
           "The application should scroll the selected tab into view on load and after keyboard navigation so it is not hidden off-edge."
         ]
       },
-      html: `<ef-tabs class="ef-component-tag">
-  <section class="ef-tabs">
-    <div class="ef-tabs__list" role="tablist" aria-label="Order sections">
+      html: `<forma-tabs class="forma-component-tag">
+  <section class="forma-tabs">
+    <div class="forma-tabs__list" role="tablist" aria-label="Order sections">
       <button type="button" role="tab" id="tabs-mobile-tab-items" aria-selected="true" aria-controls="tabs-mobile-panel-items">Items</button>
       <button type="button" role="tab" id="tabs-mobile-tab-shipping" aria-selected="false" aria-controls="tabs-mobile-panel-shipping" tabindex="-1">Shipping</button>
       <button type="button" role="tab" id="tabs-mobile-tab-returns" aria-selected="false" aria-controls="tabs-mobile-panel-returns" tabindex="-1">Returns</button>
       <button type="button" role="tab" id="tabs-mobile-tab-messages" aria-selected="false" aria-controls="tabs-mobile-panel-messages" tabindex="-1">Customer messages</button>
     </div>
-    <section class="ef-tabs__panel" id="tabs-mobile-panel-items" role="tabpanel" aria-labelledby="tabs-mobile-tab-items"><p>3 items, total 84.00.</p></section>
-    <section class="ef-tabs__panel" id="tabs-mobile-panel-shipping" role="tabpanel" aria-labelledby="tabs-mobile-tab-shipping" hidden><p>Ships from the Leeds warehouse.</p></section>
-    <section class="ef-tabs__panel" id="tabs-mobile-panel-returns" role="tabpanel" aria-labelledby="tabs-mobile-tab-returns" hidden><p>No returns requested.</p></section>
-    <section class="ef-tabs__panel" id="tabs-mobile-panel-messages" role="tabpanel" aria-labelledby="tabs-mobile-tab-messages" hidden><p>No messages.</p></section>
+    <section class="forma-tabs__panel" id="tabs-mobile-panel-items" role="tabpanel" aria-labelledby="tabs-mobile-tab-items"><p>3 items, total 84.00.</p></section>
+    <section class="forma-tabs__panel" id="tabs-mobile-panel-shipping" role="tabpanel" aria-labelledby="tabs-mobile-tab-shipping" hidden><p>Ships from the Leeds warehouse.</p></section>
+    <section class="forma-tabs__panel" id="tabs-mobile-panel-returns" role="tabpanel" aria-labelledby="tabs-mobile-tab-returns" hidden><p>No returns requested.</p></section>
+    <section class="forma-tabs__panel" id="tabs-mobile-panel-messages" role="tabpanel" aria-labelledby="tabs-mobile-tab-messages" hidden><p>No messages.</p></section>
   </section>
-</ef-tabs>`
+</forma-tabs>`
     }
   ],
   api: {
@@ -121,11 +121,11 @@ export default {
       { name: "type", on: "tab", values: "button", default: "—", description: "Prevents tabs inside a form from submitting it." }
     ],
     hooks: {
-      "ef-tabs": "Root section and motion scope.",
-      "ef-tabs__list": "The tablist: a flex row with a bottom rule that scrolls horizontally when tabs overflow.",
-      "ef-tabs__panel": "A tab panel with vertical padding.",
-      "data-ef-motion-weight": "Presentation-only perceived mass for the underline and tab settle: light (default here), standard or heavy. Never encodes importance.",
-      "data-ef-motion-entry": "Presence attribute on `.ef-tabs__panel`. When the panel is inserted or un-hidden it starts at zero opacity and 0.25rem lower, then settles into place."
+      "forma-tabs": "Root section and motion scope.",
+      "forma-tabs__list": "The tablist: a flex row with a bottom rule that scrolls horizontally when tabs overflow.",
+      "forma-tabs__panel": "A tab panel with vertical padding.",
+      "data-forma-motion-weight": "Presentation-only perceived mass for the underline and tab settle: light (default here), standard or heavy. Never encodes importance.",
+      "data-forma-motion-entry": "Presence attribute on `.forma-tabs__panel`. When the panel is inserted or un-hidden it starts at zero opacity and 0.25rem lower, then settles into place."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Native: moves focus to and from the tab list. With application roving tabindex, only the selected tab is a stop; then Tab moves into the panel." },
@@ -141,7 +141,7 @@ export default {
     { name: "Unselected", how: "aria-selected=\"false\"", description: "Transparent tab, nudged 0.08rem down, underline scaled to zero." },
     { name: "Selected", how: "aria-selected=\"true\"", description: "Secondary surface, settled position and a 3px accent underline." },
     { name: "Focus", how: ":focus-visible", description: "Foundation two-tone focus ring on the tab." },
-    { name: "Panel shown", how: "hidden removed, optional data-ef-motion-entry", description: "Panel visible; with the entry hook it fades and rises into place." },
+    { name: "Panel shown", how: "hidden removed, optional data-forma-motion-entry", description: "Panel visible; with the entry hook it fades and rises into place." },
     { name: "Overflowing", how: "tabs wider than the list", description: "The list scrolls horizontally inside itself." }
   ],
   accessibility: {
@@ -165,7 +165,7 @@ export default {
   motion: [
     "The underline grows from zero width and the selected tab rises 0.08rem into place using the inertial spring timing of the light preset, so the change reads as a quick, light cue.",
     "Tab surface color uses the shared perceptual interpolation.",
-    "A panel with `data-ef-motion-entry` fades in and rises 0.25rem when it appears.",
+    "A panel with `data-forma-motion-entry` fades in and rises 0.25rem when it appears.",
     "Selection state is set immediately by the application; motion only follows it.",
     "Under `prefers-reduced-motion: reduce` these transitions are effectively instant."
   ],

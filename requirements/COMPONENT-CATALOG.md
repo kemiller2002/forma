@@ -8,17 +8,17 @@ An entry may be:
 - a **visual contract** whose behavior is supplied by Limen/application code;
 - native HTML styled by the foundation layer.
 
-Every implemented pattern also exposes a public authoring wrapper named `<ef-{slug}>`, for example `<ef-switch>`, `<ef-dialog>`, and `<ef-data-grid>`.
+Every implemented pattern also exposes a public authoring wrapper named `<forma-{slug}>`, for example `<forma-switch>`, `<forma-dialog>`, and `<forma-data-grid>`.
 
-These `ef-*` tags are intentionally **inert custom HTML wrappers**, not registered Custom Elements:
+These `forma-*` tags are intentionally **inert custom HTML wrappers**, not registered Custom Elements:
 
 - Forma does not call `customElements.define()`;
-- the wrapper uses `class="ef-component-tag"` and `display: contents` so it does not become a competing layout box;
+- the wrapper uses `class="forma-component-tag"` and `display: contents` so it does not become a competing layout box;
 - native HTML inside the wrapper remains the semantic, form, keyboard, focus, dialog, popover, and accessibility authority;
 - Limen/application code still owns non-native behavior;
 - the wrapper exists to provide a stable, readable component authoring surface and consistent documentation syntax.
 
-The existing `.ef-*` classes remain the styling/pattern contract used by the canonical inner markup.
+The existing `.forma-*` classes remain the styling/pattern contract used by the canonical inner markup.
 
 Inclusion here does not mean every entry must ship in the first release.
 
@@ -74,7 +74,7 @@ These are primarily CSS and semantic HTML, not custom elements.
 ## 2. Form and selection components
 
 ### P0: Checkbox
-Pattern: `.ef-checkbox`
+Pattern: `.forma-checkbox`
 
 Requirements:
 
@@ -85,10 +85,10 @@ Requirements:
 - optional physics-derived light/standard/heavy presentation weight;
 - motion never delays the checked state;
 - reduced motion preserves the checked cue without perceptible spatial travel;
-- assessment choice cards continue to use `.ef-choice` when the answer presentation needs richer assessment context.
+- assessment choice cards continue to use `.forma-choice` when the answer presentation needs richer assessment context.
 
 ### P0: Switch / toggle
-Pattern: `.ef-switch`
+Pattern: `.forma-switch`
 
 Requirements:
 
@@ -109,7 +109,7 @@ Requirements:
 - controlled and uncontrolled presentation modes without inventing domain authority.
 
 ### P0: Slider
-Pattern: `.ef-slider`
+Pattern: `.forma-slider`
 
 Requirements:
 
@@ -133,7 +133,7 @@ Requirements:
 - form participation and validity.
 
 ### P1: Multi-range slider
-Visual contract: `.ef-range-slider` (Limen behavior required)
+Visual contract: `.forma-range-slider` (Limen behavior required)
 
 Requirements:
 
@@ -147,7 +147,7 @@ Requirements:
 - collision behavior without inaccessible tiny targets.
 
 ### P0: Segmented control
-Pattern: `.ef-segmented` using native radios
+Pattern: `.forma-segmented` using native radios
 
 Requirements:
 
@@ -160,7 +160,7 @@ Requirements:
 - overflow strategy instead of shrinking targets below usable size.
 
 ### P0: Select / listbox
-Pattern: `.ef-select` around a native `select`
+Pattern: `.forma-select` around a native `select`
 
 Native select shall remain available and preferred for ordinary selection.
 
@@ -177,7 +177,7 @@ Requirements:
 A custom select is justified only where searchable, rich, or multi-select behavior is needed.
 
 ### P1: Combobox / autocomplete
-Visual contract: `.ef-combobox` (Limen behavior required)
+Visual contract: `.forma-combobox` (Limen behavior required)
 
 Requirements:
 
@@ -192,7 +192,7 @@ Requirements:
 - safe cancellation of obsolete async requests.
 
 ### P1: Multiselect
-Visual contract: `.ef-multiselect` (Limen behavior required)
+Visual contract: `.forma-multiselect` (Limen behavior required)
 
 Requirements:
 
@@ -204,7 +204,7 @@ Requirements:
 - accessible summary of current selections.
 
 ### P1: Date picker and date-range picker
-Visual contracts: `.ef-date-picker`, `.ef-date-range` (Limen behavior required)
+Visual contracts: `.forma-date-picker`, `.forma-date-range` (Limen behavior required)
 
 Requirements:
 
@@ -220,12 +220,12 @@ Requirements:
 - clear errors for invalid or ambiguous input.
 
 ### P1: Time and date-time
-Visual contracts: `.ef-time-picker`, `.ef-date-time` (Limen behavior required where native inputs are insufficient)
+Visual contracts: `.forma-time-picker`, `.forma-date-time` (Limen behavior required where native inputs are insufficient)
 
 Support 12/24 hour presentation, timezone labeling where relevant, explicit ambiguity handling, and keyboard text entry.
 
 ### P1: Search
-Visual contract: `.ef-search` (Limen behavior required for suggestions/async search)
+Visual contract: `.forma-search` (Limen behavior required for suggestions/async search)
 
 Support debounce as an integration option, clear button, recent/query suggestions supplied by the application, keyboard shortcut affordance, pending state, and result count announcement.
 
@@ -248,7 +248,7 @@ Support:
 
 ### P0: Natural-language composer
 
-Pattern: `.ef-composer`
+Pattern: `.forma-composer`
 
 Support a large plain-language input surface with visible context/help, native textarea semantics, application-supplied attach/dictate affordances, a primary continuation action, and an accessible status region.
 
@@ -256,23 +256,23 @@ Forma owns presentation only. Interpretation, agent invocation, speech recogniti
 
 ### P1: Conversation
 
-Pattern: `.ef-conversation` / `.ef-turn`
+Pattern: `.forma-conversation` / `.forma-turn`
 
 Render an ordered history of explicitly labeled user/application turns. Support structured content and application-supplied actions inside a turn without forcing consumer-chat bubbles. Speaker styling must not imply truth, authority, confidence, or approval.
 
 ### P1: Understanding review
 
-Pattern: `.ef-understanding`
+Pattern: `.forma-understanding`
 
 Present the application's proposed interpretation of user input before a consequential operation. Support explicit textual states including understood/accepted, unknown, conflicting, and unresolved; concise summaries; and source, answer, or correction actions supplied by the application. Ordo/application state is authoritative for every state and whether any item blocks a transition.
 
 ### P2: Tag / token input
-Visual contract: `.ef-token-input` (Limen behavior required)
+Visual contract: `.forma-token-input` (Limen behavior required)
 
 Support freeform or constrained tokens, keyboard editing, paste of multiple values, duplicate policy, validation, and accessible token removal.
 
 ### P2: Color picker
-Visual contract: `.ef-color-picker` (Limen behavior required unless native color input suffices)
+Visual contract: `.forma-color-picker` (Limen behavior required unless native color input suffices)
 
 Only if product requirements justify it.
 
@@ -283,7 +283,7 @@ Support text values, swatches, alpha policy, contrast preview where relevant, ke
 These patterns were derived from Echelon Signal requirements but are intentionally application-independent.
 
 ### P0: Question shell
-Pattern: `.ef-question`
+Pattern: `.forma-question`
 
 Requirements:
 
@@ -297,7 +297,7 @@ Requirements:
 - no scoring or applicability logic inside the design system.
 
 ### P0: Ordinal / Likert scale
-Pattern: `.ef-ordinal-scale`
+Pattern: `.forma-ordinal-scale`
 
 One pattern shall support discrete ordered scales such as:
 
@@ -330,7 +330,7 @@ Requirements:
 Separate `Likert5`, `Agreement5`, `Frequency5`, and similar components shall not be created. They are application/presentation presets over the same ordinal pattern.
 
 ### P0: Choice group
-Pattern: `.ef-choice-group` / `.ef-choice`
+Pattern: `.forma-choice-group` / `.forma-choice`
 
 Support:
 
@@ -344,7 +344,7 @@ Support:
 - no hidden score/meaning attached to visual order.
 
 ### P0: Special answer choices
-Pattern: `.ef-special-choices` / `.ef-special-choice`
+Pattern: `.forma-special-choices` / `.forma-special-choice`
 
 Use for semantic states that must not be confused with the primary answer scale, including:
 
@@ -355,7 +355,7 @@ Use for semantic states that must not be confused with the primary answer scale,
 The pattern must visually and structurally separate these from an ordinal scale while preserving the same native radio group when they are mutually exclusive with scale values.
 
 ### P0: Validation message and summary
-Patterns: `.ef-validation-message`, `.ef-validation-summary`
+Patterns: `.forma-validation-message`, `.forma-validation-summary`
 
 Requirements:
 
@@ -369,7 +369,7 @@ Requirements:
 - no raw exception text as primary user communication.
 
 ### P0: Survey/task progress
-Pattern: `.ef-survey-progress`
+Pattern: `.forma-survey-progress`
 
 Requirements:
 
@@ -382,7 +382,7 @@ Requirements:
 - progress must not infer domain completion.
 
 ### P1: Ranking
-Visual contract: `.ef-ranking` (Limen behavior required)
+Visual contract: `.forma-ranking` (Limen behavior required)
 
 Requirements:
 
@@ -397,7 +397,7 @@ Requirements:
 - application/Ordo owns uniqueness and ranking validation.
 
 ### P1: Allocation
-Visual contract: `.ef-allocation` (Limen behavior required for aggregate validation)
+Visual contract: `.forma-allocation` (Limen behavior required for aggregate validation)
 
 Requirements:
 
@@ -410,7 +410,7 @@ Requirements:
 - application/Ordo owns total constraints and scoring.
 
 ### P1: Rule builder
-Visual contract: `.ef-rule-builder` (Limen behavior required)
+Visual contract: `.forma-rule-builder` (Limen behavior required)
 
 Requirements:
 
@@ -425,7 +425,7 @@ Requirements:
 - design system shall not embed Signal-specific AST or rule meaning.
 
 ### P0: Obligation panel
-Pattern/visual contract: `.ef-obligation-panel`
+Pattern/visual contract: `.forma-obligation-panel`
 
 Requirements:
 
@@ -442,17 +442,17 @@ Requirements:
 
 The Signal SCS completeness pass establishes these additional reusable contracts:
 
-- **Binary choice**: `.ef-binary-choice`, radio-backed so Unanswered remains distinct from No/False.
-- **Semantic differential**: `.ef-semantic-differential`, textual bipolar endpoints with an ordinal radio scale.
-- **Symbol rating**: `.ef-symbol-rating`, covering star/icon rating as ordinal presentation with non-icon accessible text.
-- **Numeric stepper**: `.ef-numeric-stepper`, based on native number input.
-- **Range entry**: `.ef-range-entry`, paired direct endpoint inputs; a graphical dual-thumb control is Limen enhancement only.
-- **Image choice**: `.ef-choice--media`, reusing single/multi choice semantics with visible text.
-- **Multi-choice guidance**: `.ef-selection-guidance`, `.ef-selection-status`, and `.ef-choice--exclusive` for exact/min/max/between and exclusive-option communication.
-- **Matrix/repeated scale**: `.ef-matrix`, retaining row primitive semantics and decomposing to per-row controls on mobile.
-- **Pairwise**: `.ef-pairwise`, a two-option choice presentation.
-- **Best-Worst**: `.ef-best-worst`, a visual contract requiring Limen to enforce different Best/Worst selections.
-- **Hierarchical choice**: `.ef-hierarchy`, native disclosure/choice baseline with application-owned parent/descendant semantics.
+- **Binary choice**: `.forma-binary-choice`, radio-backed so Unanswered remains distinct from No/False.
+- **Semantic differential**: `.forma-semantic-differential`, textual bipolar endpoints with an ordinal radio scale.
+- **Symbol rating**: `.forma-symbol-rating`, covering star/icon rating as ordinal presentation with non-icon accessible text.
+- **Numeric stepper**: `.forma-numeric-stepper`, based on native number input.
+- **Range entry**: `.forma-range-entry`, paired direct endpoint inputs; a graphical dual-thumb control is Limen enhancement only.
+- **Image choice**: `.forma-choice--media`, reusing single/multi choice semantics with visible text.
+- **Multi-choice guidance**: `.forma-selection-guidance`, `.forma-selection-status`, and `.forma-choice--exclusive` for exact/min/max/between and exclusive-option communication.
+- **Matrix/repeated scale**: `.forma-matrix`, retaining row primitive semantics and decomposing to per-row controls on mobile.
+- **Pairwise**: `.forma-pairwise`, a two-option choice presentation.
+- **Best-Worst**: `.forma-best-worst`, a visual contract requiring Limen to enforce different Best/Worst selections.
+- **Hierarchical choice**: `.forma-hierarchy`, native disclosure/choice baseline with application-owned parent/descendant semantics.
 
 Ordinal scale cardinality shall include ordinary 3/4/5/6/7/10/11-point presentations. NPS, Likert, Agreement, Frequency, Satisfaction, Confidence, Maturity, and similar names remain presets/configuration, not duplicated components.
 
@@ -461,7 +461,7 @@ A checkbox-backed switch shall not be used for an assessment binary response whe
 ## 4. Navigation and command components
 
 ### P0: Tabs
-Visual contract: `.ef-tabs` (Limen behavior required)
+Visual contract: `.forma-tabs` (Limen behavior required)
 
 Support manual and automatic activation modes, overflow, deep-link integration hooks, keyboard navigation, and reduced-motion panel transitions.
 
@@ -474,22 +474,22 @@ Prefer semantic nav/list markup with system styling. A component is optional for
 Support page navigation, unknown total count, cursor-style next/previous variants, compact mobile representation, and clear current-page semantics.
 
 ### P0: Application shell
-Pattern: `.ef-app-shell`
+Pattern: `.forma-app-shell`
 
 Provide stable regions for header, navigation, main, contextual rail, footer, alerts, and transient overlays without owning application routing.
 
 ### P1: Side navigation
-Pattern/visual contract: `.ef-side-nav`
+Pattern/visual contract: `.forma-side-nav`
 
 Support nested groups, compact mode, responsive drawer mode, keyboard navigation, current-location semantics, and persistent versus transient behavior.
 
 ### P1: Toolbar
-Pattern/visual contract: `.ef-toolbar`
+Pattern/visual contract: `.forma-toolbar`
 
 Support roving keyboard focus when appropriate, overflow, separator semantics, contextual actions, and adaptive collapse.
 
 ### P1: Command palette
-Visual contract: `.ef-command-palette` (Limen behavior required)
+Visual contract: `.forma-command-palette` (Limen behavior required)
 
 Requirements:
 
@@ -506,21 +506,21 @@ Requirements:
 - mobile full-screen mode.
 
 ### P2: Tree navigation
-Visual contract: `.ef-tree` (Limen behavior required)
+Visual contract: `.forma-tree` (Limen behavior required)
 
 Support expand/collapse, selection policy, keyboard tree interaction, async children, loading/error nodes, and large-tree performance.
 
 ## 5. Overlay and transient surfaces
 
 ### P0: Dialog
-Pattern: `.ef-dialog` using native `dialog`
+Pattern: `.forma-dialog` using native `dialog`
 
 Use native dialog behavior where it satisfies requirements. Provide consistent focus management, labelled structure, destructive variants, scroll containment, responsive full-screen mode, and return-focus behavior.
 
 Modal dialog motion uses the heavy physics preset by default, with a shorter derived exit. Native `[open]`, focus, Escape, inertness, and return focus remain authoritative.
 
 ### P0: Popover
-Pattern: `.ef-popover` using native Popover HTML
+Pattern: `.forma-popover` using native Popover HTML
 
 Prefer the platform Popover API and CSS anchor positioning when available.
 
@@ -535,7 +535,7 @@ Tooltips are supplemental only. Required information and essential actions shall
 
 Support hover and keyboard focus, delayed open/close, pointer-safe hover travel, and reduced motion.
 
-Implemented as `.ef-tooltip` (`patterns/tooltip.html`, FORMA-MOT-004):
+Implemented as `.forma-tooltip` (`patterns/tooltip.html`, FORMA-MOT-004):
 
 - **Opening.** The native button opens the `popover` surface with `popovertarget`, by click, tap, Enter or Space. Escape and outside presses close it. No path depends on hover.
 - **Hover and focus.** Where interest invokers exist, `interestfor` on the same button also opens it on hover or focus. The browser owns the delay and pointer-safe hover travel.
@@ -544,26 +544,26 @@ Implemented as `.ef-tooltip` (`patterns/tooltip.html`, FORMA-MOT-004):
 - **Boundaries.** Focus, dismissal, timeout and accessible-description policy beyond the native popover remain application/Limen concerns.
 
 ### P0: Menu and menu button
-Pattern: `.ef-menu` for ordinary action lists using native Popover HTML; full ARIA menu behavior remains a Limen visual/behavior contract.
+Pattern: `.forma-menu` for ordinary action lists using native Popover HTML; full ARIA menu behavior remains a Limen visual/behavior contract.
 
 The declarative baseline supports ordinary buttons/links, native Popover open/close, responsive mobile presentation, and the light physics preset.
 
 When menu semantics require checkable items, radio groups, typeahead, roving focus, nested submenus, or the ARIA `menu` keyboard model, Limen/application behavior owns those semantics.
 
 ### P1: Context menu
-Visual contract: `.ef-context-menu` (Limen behavior required)
+Visual contract: `.forma-context-menu` (Limen behavior required)
 
 Must always have a non-context-menu path to essential actions.
 
 ### P0: Flyout
-Pattern: `.ef-flyout` using native `dialog` for modal flyouts
+Pattern: `.forma-flyout` using native `dialog` for modal flyouts
 
 Support left and right edge placement, native modal focus/inertness/Escape behavior, labelled header/body/action regions, scroll containment, safe-area-aware mobile sizing, physics-derived entry/exit, and reduced motion.
 
-The left and right variants are one component contract selected with `data-ef-side="left|right"`, not separate components. Native modal behavior remains browser-owned. Optional swipe-to-close, drag tracking, resizing, or persistent nonmodal state belongs to Limen/application behavior.
+The left and right variants are one component contract selected with `data-forma-side="left|right"`, not separate components. Native modal behavior remains browser-owned. Optional swipe-to-close, drag tracking, resizing, or persistent nonmodal state belongs to Limen/application behavior.
 
 ### P1: Drawer / sheet
-Pattern: `.ef-flyout` using native `dialog` for the modal left/right baseline; Limen/application behavior is required for nonmodal or gesture-enhanced variants.
+Pattern: `.forma-flyout` using native `dialog` for the modal left/right baseline; Limen/application behavior is required for nonmodal or gesture-enhanced variants.
 
 The existing flyout contract is Forma's canonical modal drawer/side-sheet implementation. Support left and right placement, responsive adaptation, native focus/inertness/Escape behavior, and reduced-motion entry/exit.
 
@@ -575,7 +575,7 @@ Declarative popover pattern where sufficient
 For interactive explanatory content that is too important or interactive for a tooltip.
 
 ### P1: Coachmark / guided tour
-Visual contract: `.ef-coachmark` (Limen behavior required)
+Visual contract: `.forma-coachmark` (Limen behavior required)
 
 Support:
 
@@ -595,29 +595,29 @@ Tours shall never block access to the underlying feature merely because onboardi
 ## 6. Feedback and status
 
 ### P0
-- ef-alert
-- ef-inline-message
-- ef-toast
-- ef-progress-bar
-- ef-progress-circle
-- ef-spinner
-- ef-skeleton
-- ef-empty-state
-- ef-error-summary
+- forma-alert
+- forma-inline-message
+- forma-toast
+- forma-progress-bar
+- forma-progress-circle
+- forma-spinner
+- forma-skeleton
+- forma-empty-state
+- forma-error-summary
 
 Requirements include semantic live-region policy, duplicate-announcement prevention, determinate/indeterminate distinction, pause/dismiss policy, and unknown outcome support.
 
 Implemented loading/progress contracts (FORMA-MOT-005, MOT-016/MOT-017):
 
-- `.ef-spinner` (`patterns/spinner.html`): a visible label in a `role="status"` region plus a decorative indicator rotating at the named cadence `--ef-motion-cadence-rotation-period`; `data-ef-state="idle"` stops it; static under reduced motion.
-- `.ef-progress` (`patterns/progress-bar.html`): native `progress` projected directly from the authoritative value with no transition, so it never shows more than the application reports; the indeterminate variant keeps explicit text.
-- `.ef-skeleton` shimmers at `--ef-motion-cadence-period` only while `aria-busy="true"`.
+- `.forma-spinner` (`patterns/spinner.html`): a visible label in a `role="status"` region plus a decorative indicator rotating at the named cadence `--forma-motion-cadence-rotation-period`; `data-forma-state="idle"` stops it; static under reduced motion.
+- `.forma-progress` (`patterns/progress-bar.html`): native `progress` projected directly from the authoritative value with no transition, so it never shows more than the application reports; the indeterminate variant keeps explicit text.
+- `.forma-skeleton` shimmers at `--forma-motion-cadence-period` only while `aria-busy="true"`.
 
 Alert and toast motion requirements:
 
-- `.ef-alert[data-ef-motion-entry]` may use a standard-weight entry cue when newly inserted;
+- `.forma-alert[data-forma-motion-entry]` may use a standard-weight entry cue when newly inserted;
 - persistent alerts do not repeatedly animate by default;
-- `.ef-toast` may use the native Popover API as a zero-runtime show/hide baseline;
+- `.forma-toast` may use the native Popover API as a zero-runtime show/hide baseline;
 - toast dismissal uses the shorter derived exit duration;
 - notification motion never replaces visible status text or live-region semantics;
 - reduced motion removes spatial travel.
@@ -638,7 +638,7 @@ Support a bounded undo window without requiring the user to act before reading t
 Static and lightly interactive tables shall remain semantic HTML.
 
 ### P1: Data grid
-Visual contract: `.ef-data-grid` (Limen behavior required for interactive grid)
+Visual contract: `.forma-data-grid` (Limen behavior required for interactive grid)
 
 Requirements:
 
@@ -674,17 +674,17 @@ Add:
 This component has meaningful internal state and should receive an explicit Ordo-style state model.
 
 ### P2: Tree grid
-Visual contract: `.ef-tree` (Limen behavior required)-grid
+Visual contract: `.forma-tree` (Limen behavior required)-grid
 
 Combine hierarchy and tabular data only after the keyboard and screen-reader model is proven against WAI-ARIA expectations.
 
 ### P1: List and virtual list
-Static list pattern; `.ef-virtual-list` requires Limen behavior
+Static list pattern; `.forma-virtual-list` requires Limen behavior
 
 Virtualization is optional and must never become the default for small lists.
 
 ### P1: Filter builder
-Visual contract: `.ef-filter-builder` (Limen behavior required)
+Visual contract: `.forma-filter-builder` (Limen behavior required)
 
 Support composable field/operator/value clauses, nested groups where justified, keyboard editing, validation, removable clauses, and application-owned expression serialization.
 
@@ -717,12 +717,12 @@ Support text/structured differences, additions/removals/changes, keyboard naviga
 - sticky action region.
 
 ### P1: Resizable split pane
-Visual contract: `.ef-split-pane` (Limen behavior required)
+Visual contract: `.forma-split-pane` (Limen behavior required)
 
 Implemented presentation (FORMA-MOT-006):
 
-- `patterns/resizable-split-pane.html`: `data-ef-resizable`, an application-supplied `--ef-split-size` clamped to legal bounds in CSS, a focusable `role="separator"` with value semantics, and direct tracking while `data-ef-manipulation="resizing"`.
-- Damped settling on release or keyboard step; `data-ef-collapsed`.
+- `patterns/resizable-split-pane.html`: `data-forma-resizable`, an application-supplied `--forma-split-size` clamped to legal bounds in CSS, a focusable `role="separator"` with value semantics, and direct tracking while `data-forma-manipulation="resizing"`.
+- Damped settling on release or keyboard step; `data-forma-collapsed`.
 - Stacked without the separator at narrow widths.
 - Pointer and keyboard behavior remain Limen/application code.
 
@@ -754,9 +754,9 @@ Only if multiple applications demonstrate need. Docking must not become a genera
 - icon button pattern;
 - card/tile;
 - accordion/disclosure (FORMA-MOT-007: intrinsic-height settling via `interpolate-size` and `::details-content` where supported, instant elsewhere);
-- scroll progress: `.ef-scroll-progress` (FORMA-MOT-007), a decorative direct projection of the scroll timeline;
+- scroll progress: `.forma-scroll-progress` (FORMA-MOT-007), a decorative direct projection of the scroll timeline;
 - key-value list;
-- stat/metric (FORMA-MOT-011: `data-ef-value-change` marks an application-published update with a neutral perceptual tint; values are never counted through);
+- stat/metric (FORMA-MOT-011: `data-forma-value-change` marks an application-published update with a neutral perceptual tint; values are never counted through);
 - code block with copy action;
 - keyboard shortcut display;
 - separator.
@@ -800,12 +800,12 @@ The design system shall not become a full charting framework unless application 
 ## 11. Specialized interaction patterns
 
 ### P1: Reorderable list
-Visual contract: `.ef-reorder-list` (Limen behavior required)
+Visual contract: `.forma-reorder-list` (Limen behavior required)
 
 Support drag, keyboard move up/down or position controls, live announcement of movement, auto-scroll, drop indicators, and cancel/revert.
 
 ### P2: Transfer list
-Visual contract: `.ef-transfer-list` (Limen behavior required)
+Visual contract: `.forma-transfer-list` (Limen behavior required)
 
 Support moving items between sets without requiring drag-and-drop.
 
@@ -813,7 +813,7 @@ Support moving items between sets without requiring drag-and-drop.
 For metadata, tags, environment variables, and configuration where pair editing is common.
 
 ### P1: Step-by-step wizard shell
-Visual contract: `.ef-wizard` (Limen/Ordo behavior required)
+Visual contract: `.forma-wizard` (Limen/Ordo behavior required)
 
 Supports:
 
@@ -854,57 +854,57 @@ Those may be added only after concrete application evidence.
 These contracts are promoted by repeated requirements across Chrona/time-tracking, Signal, Summa, Sales & Marketing, HelixNote, and Research Publisher. See `requirements/CROSS-APPLICATION-COMPONENT-WAVE.md`.
 
 ### P0/P1: Collection toolbar
-Pattern: `.ef-collection-toolbar`
+Pattern: `.forma-collection-toolbar`
 
 Compose search, filter entry, sort, result count, saved view, and optional view mode. On mobile, search remains prominent and secondary controls recompose without hiding active state.
 
 ### P1: Conflict review
-Pattern: `.ef-conflict-review`
+Pattern: `.forma-conflict-review`
 
 Compose version/current-state comparison, changed facts, explanatory consequence, and application-supplied recovery actions. Domain merge legality remains application/Ordo owned.
 
 ### P0: Metric card and dashboard grid
-Patterns: `.ef-metric-card`, `.ef-dashboard-grid`
+Patterns: `.forma-metric-card`, `.forma-dashboard-grid`
 
 Provide responsive operational summaries without assigning analytical meaning. Dashboard content order remains application supplied.
 
 ### P0/P1: Work queue
-Pattern: `.ef-work-queue`
+Pattern: `.forma-work-queue`
 
 Present attention-required work with reason, context, status, age/due information, and application-supplied legal actions. This generalizes the obligation presentation without making Forma authoritative over obligations.
 
 ### P0/P1: Operation status
-Pattern: `.ef-operation-status`
+Pattern: `.forma-operation-status`
 
 Present pending, confirmed, failed, conflict, unknown, reconciling, stale, blocked, unavailable, and insufficient-data states with explicit text and non-color cues.
 
 ### P1: Readiness checklist
-Pattern: `.ef-readiness-checklist`
+Pattern: `.forma-readiness-checklist`
 
 Present complete, incomplete, warning, and blocking prerequisites before an application-owned transition. Forma does not calculate readiness.
 
 ### P0: Record header
-Pattern: `.ef-record-header`
+Pattern: `.forma-record-header`
 
 Provide stable record identity, type, status, context, breadcrumbs, and action region. Secondary actions may collapse on mobile; critical actions remain reachable.
 
 ### P1: Master/detail workspace
-Pattern: `.ef-master-detail`
+Pattern: `.forma-master-detail`
 
 Provide responsive list/detail composition. The application owns selection, routing, browser history, and focus restoration.
 
 ### P1: Provenance trail
-Pattern: `.ef-provenance-trail`
+Pattern: `.forma-provenance-trail`
 
 Present a trace through source, aggregate, analysis, derivation, and presentation stages using application-supplied facts.
 
 ### P1: Preview surface
-Pattern: `.ef-preview-surface`
+Pattern: `.forma-preview-surface`
 
 Provide a bounded review surface for consequential content before publish/issue/send/commit operations. Preview presentation never implies authorization.
 
 ### P0/P1: Mobile action bar
-Pattern: `.ef-mobile-action-bar`
+Pattern: `.forma-mobile-action-bar`
 
 Provide a safe-area-aware contextual action region for narrow screens. It must not cover focused content or become the only path to essential actions on wider layouts.
 
@@ -921,16 +921,16 @@ A component is not complete until its 320px presentation is documented and teste
 
 Canonical patterns:
 
-- `.ef-fault` / `fault`: common safe fault shell;
-- `.ef-fault--inline` / `fault-inline`: Aegis Inline intent;
-- `.ef-fault-notification` / `fault-notification`: Aegis Notification intent;
-- `.ef-fault-banner` / `fault-banner`: Aegis Banner intent;
-- `.ef-fault-blocking` / `fault-blocking`: Aegis Blocking intent;
-- `.ef-fault-summary` / `fault-summary`: grouped unresolved fault presentation;
-- `.ef-recovery-actions` / `recovery-actions`: application-supplied Aegis recovery capabilities;
-- `.ef-fault-reference` / `fault-reference`: quotable Aegis reference;
-- `.ef-diagnostic-status` / `diagnostic-status`: Aegis persistence/synchronization state;
-- `.ef-fault-details` / `fault-details`: explicitly sanitized diagnostic disclosure.
+- `.forma-fault` / `fault`: common safe fault shell;
+- `.forma-fault--inline` / `fault-inline`: Aegis Inline intent;
+- `.forma-fault-notification` / `fault-notification`: Aegis Notification intent;
+- `.forma-fault-banner` / `fault-banner`: Aegis Banner intent;
+- `.forma-fault-blocking` / `fault-blocking`: Aegis Blocking intent;
+- `.forma-fault-summary` / `fault-summary`: grouped unresolved fault presentation;
+- `.forma-recovery-actions` / `recovery-actions`: application-supplied Aegis recovery capabilities;
+- `.forma-fault-reference` / `fault-reference`: quotable Aegis reference;
+- `.forma-diagnostic-status` / `diagnostic-status`: Aegis persistence/synchronization state;
+- `.forma-fault-details` / `fault-details`: explicitly sanitized diagnostic disclosure.
 
 Requirements:
 
@@ -953,10 +953,10 @@ See `requirements/AEGIS-FAULT-PRESENTATION.md`.
 
 Canonical patterns:
 
-- `.ef-character-grid` / `character-grid`: fixed rows × columns grid with cell-coordinate runs, contained narrow-screen viewport, subgrid groups, positioned tables;
+- `.forma-character-grid` / `character-grid`: fixed rows × columns grid with cell-coordinate runs, contained narrow-screen viewport, subgrid groups, positioned tables;
 - `character-grid-field`: protected text and native editable fields;
 - `character-grid-keys`: Enter, Clear, Reset, PF1–PF24, and named action affordances;
-- `character-grid-status`: message and system-status live regions; optional device status rows after the application rows (`data-ef-status-rows`, CG-18);
+- `character-grid-status`: message and system-status live regions; optional device status rows after the application rows (`data-forma-status-rows`, CG-18);
 - `character-grid-selection`: per-row selection fields in positioned repeated rows (5250-style option column);
 - `character-grid-reveal`: optional SequentialReveal presentation;
 - `character-grid-3270`: IBM 3270 reference profile (24 × 80 plus an OIA status row, verified at 32 × 80);
@@ -989,8 +989,8 @@ Implemented patterns for Echelon marketing and public sites:
 Requirements:
 
 - generic and brand-neutral; the Echelon look comes from the Echelon Marketing Theme's tokens;
-- marketing foundations apply only inside `.ef-site`;
-- surface tones (`data-ef-tone`) carry contrast-safe text, link, label, and rule colors;
+- marketing foundations apply only inside `.forma-site`;
+- surface tones (`data-forma-tone`) carry contrast-safe text, link, label, and rule colors;
 - one primary action per hero, section, or CTA;
 - the navigation wraps instead of hiding destinations;
 - 44 px targets; no CSS reordering;
@@ -1022,15 +1022,15 @@ Requirements:
 
 Candidate patterns/visual contracts:
 
-- `.ef-diagram`;
-- `.ef-diagram-node`;
-- `.ef-diagram-connector`;
-- `.ef-diagram-connector-label`;
-- `.ef-diagram-group` / boundary;
-- `.ef-diagram-lane`;
-- `.ef-diagram-phase`;
-- `.ef-diagram-legend`;
-- `.ef-diagram-metadata`.
+- `.forma-diagram`;
+- `.forma-diagram-node`;
+- `.forma-diagram-connector`;
+- `.forma-diagram-connector-label`;
+- `.forma-diagram-group` / boundary;
+- `.forma-diagram-lane`;
+- `.forma-diagram-phase`;
+- `.forma-diagram-legend`;
+- `.forma-diagram-metadata`.
 
 These names are architecture candidates until the first implementation slice proves the smallest stable public surface.
 
@@ -1078,7 +1078,7 @@ The underlying metadata remains authoritative. Forma decorations are projections
 
 ### P1: Tooltip / contextual hint
 
-Visual contract: `.ef-tooltip` or the final canonical slug selected during implementation. Native/application behavior is required unless the chosen browser primitive supplies the complete interaction contract.
+Visual contract: `.forma-tooltip` or the final canonical slug selected during implementation. Native/application behavior is required unless the chosen browser primitive supplies the complete interaction contract.
 
 Requirements:
 

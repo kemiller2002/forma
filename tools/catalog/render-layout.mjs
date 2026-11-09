@@ -68,7 +68,7 @@ export const page = ({ title, rootPath, body, description = "Forma, the zero-com
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,650&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${rootPath}assets/forma.css">
-  <link rel="stylesheet" href="${rootPath}assets/brands/echelon.css">
+  <link rel="stylesheet" href="${rootPath}assets/brands/example-orchard.css">
   <link rel="stylesheet" href="${rootPath}assets/brands/example-harbor.css">
   <link rel="stylesheet" href="${rootPath}assets/site.css">${head}
   <script type="module" src="${rootPath}assets/runtime.js"></script>
@@ -106,7 +106,7 @@ export const frameDocument = ({ title, rootPath, source, interaction = null }) =
 const categoryLinks = (context, current) => join(context.catalog.categories, category => {
   const isCurrent = current?.category === category.id;
   return `<details class="catalog-nav__group"${isCurrent ? " open" : ""}>
-    <summary><span>${escapeHtml(category.name)}</span> <span class="catalog-nav__count">${category.components.length}</span>${isCurrent ? '<span class="ef-visually-hidden"> (current category)</span>' : ""}</summary>
+    <summary><span>${escapeHtml(category.name)}</span> <span class="catalog-nav__count">${category.components.length}</span>${isCurrent ? '<span class="forma-visually-hidden"> (current category)</span>' : ""}</summary>
     <ul>
       <li><a class="catalog-nav__overview" href="${categoryHref(context.rootPath, category.id)}"${current?.categoryPage === category.id ? ' aria-current="page"' : ""}>${escapeHtml(category.name)} overview</a></li>
       ${join(category.components, component => `<li><a href="${componentHref(context.rootPath, component.slug)}"${current?.slug === component.slug ? ' aria-current="page"' : ""}>${escapeHtml(component.name)}</a></li>`)}
@@ -135,12 +135,12 @@ export const catalogNav = (context, current = {}) => `<nav class="component-nav 
 // Code viewer built on Forma's own code-sample primitive. Copying needs no
 // script: one click or tap selects the whole block (user-select: all), and the
 // raw link opens the exact source as plain text.
-export const codeViewer = ({ id, label, source, rawHref }) => `<figure class="ef-code-figure code-viewer">
+export const codeViewer = ({ id, label, source, rawHref }) => `<figure class="forma-code-figure code-viewer">
   <figcaption class="code-viewer__bar">
     <span class="code-viewer__label" id="${id}-label">${escapeHtml(label)}</span>
-    ${when(rawHref, () => `<a class="code-viewer__raw" href="${rawHref}" type="text/plain">Raw HTML<span class="ef-visually-hidden"> for ${escapeHtml(label)}</span></a>`)}
+    ${when(rawHref, () => `<a class="code-viewer__raw" href="${rawHref}" type="text/plain">Raw HTML<span class="forma-visually-hidden"> for ${escapeHtml(label)}</span></a>`)}
   </figcaption>
-  <pre class="ef-code code-viewer__code" tabindex="0" aria-labelledby="${id}-label"><code>${escapeHtml(source.trim())}</code></pre>
+  <pre class="forma-code code-viewer__code" tabindex="0" aria-labelledby="${id}-label"><code>${escapeHtml(source.trim())}</code></pre>
   <p class="code-viewer__hint">Click or tap the code once to select all of it, then copy.</p>
 </figure>`;
 
@@ -174,10 +174,10 @@ export const exampleBlock = ({ id, kicker, title, description, live, source, raw
 // A real narrow viewport: the snippet renders in its own document inside an
 // iframe whose width the reader chooses with a radio-backed segmented control.
 export const viewportDemo = ({ id, title, src, height = 480 }) => `<div class="viewport-demo">
-  <fieldset class="ef-field viewport-demo__control">
-    <legend class="ef-field__label">Viewport width</legend>
-    <div class="ef-segmented">
-      ${join(VIEWPORTS, (viewport, index) => `<label class="ef-segment"><input type="radio" name="${id}-viewport" value="${viewport.width}"${index === 0 ? " checked" : ""}><span>${viewport.label}</span></label>`)}
+  <fieldset class="forma-field viewport-demo__control">
+    <legend class="forma-field__label">Viewport width</legend>
+    <div class="forma-segmented">
+      ${join(VIEWPORTS, (viewport, index) => `<label class="forma-segment"><input type="radio" name="${id}-viewport" value="${viewport.width}"${index === 0 ? " checked" : ""}><span>${viewport.label}</span></label>`)}
     </div>
   </fieldset>
   <div class="example-canvas example-canvas--mobile">
@@ -200,7 +200,7 @@ export const mobileExampleBlock = ({ id, title, description, notes, src, height,
   ${codeViewer({ id: `${id}-code`, label: `HTML · ${title}`, source, rawHref })}
 </section>`;
 
-export const table = ({ caption, headers, rows, label }) => rows.length ? `<div class="ef-bounded-overflow doc-table" role="region" aria-label="${escapeHtml(label ?? caption)}" tabindex="0">
+export const table = ({ caption, headers, rows, label }) => rows.length ? `<div class="forma-bounded-overflow doc-table" role="region" aria-label="${escapeHtml(label ?? caption)}" tabindex="0">
   <table role="table">
     <caption>${escapeHtml(caption)}</caption>
     <thead role="rowgroup"><tr role="row">${join(headers, header => `<th role="columnheader" scope="col">${escapeHtml(header)}</th>`)}</tr></thead>

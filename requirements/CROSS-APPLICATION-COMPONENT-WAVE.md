@@ -76,7 +76,7 @@ The existing P0/P1 entries for tabs, pagination, search, command palette, data g
 
 ### Collection toolbar
 
-`.ef-collection-toolbar` combines:
+`.forma-collection-toolbar` combines:
 
 - search;
 - simple filters;
@@ -90,7 +90,7 @@ It must collapse secondary controls on narrow screens without hiding current fil
 
 ### Work queue
 
-`.ef-work-queue` presents application-supplied work requiring human attention.
+`.forma-work-queue` presents application-supplied work requiring human attention.
 
 A queue item may show:
 
@@ -106,7 +106,7 @@ Forma must never infer whether work is blocking, legally available, resolved, or
 
 ### Conflict review
 
-`.ef-conflict-review` composes:
+`.forma-conflict-review` composes:
 
 - expected/prior state;
 - current state;
@@ -114,11 +114,11 @@ Forma must never infer whether work is blocking, legally available, resolved, or
 - consequence/explanation;
 - application-supplied recovery actions.
 
-It may compose `.ef-diff-viewer` but cannot decide merge semantics.
+It may compose `.forma-diff-viewer` but cannot decide merge semantics.
 
 ### Operational status
 
-`.ef-operation-status` supports explicit states such as:
+`.forma-operation-status` supports explicit states such as:
 
 - pending;
 - saved/confirmed;

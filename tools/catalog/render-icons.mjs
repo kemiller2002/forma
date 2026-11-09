@@ -20,11 +20,11 @@ const introducedIn06 = new Set(Object.keys(applicationIconDocs));
 // role on the parent decides the ink; the label text stays a text role so it
 // keeps its contrast in every context.
 const COLOUR_CONTEXTS = Object.freeze([
-  { id: "primary", name: "Primary text", ink: "var(--ef-color-text-primary)", surface: "var(--ef-color-surface-primary)", text: "var(--ef-color-text-primary)", role: "--ef-color-text-primary" },
-  { id: "secondary", name: "Secondary text", ink: "var(--ef-color-text-secondary)", surface: "var(--ef-color-surface-primary)", text: "var(--ef-color-text-primary)", role: "--ef-color-text-secondary" },
-  { id: "accent", name: "Accent", ink: "var(--ef-color-accent-primary)", surface: "var(--ef-color-surface-primary)", text: "var(--ef-color-text-primary)", role: "--ef-color-accent-primary" },
-  { id: "secondary-surface", name: "Secondary surface", ink: "var(--ef-color-text-on-secondary-surface)", surface: "var(--ef-color-surface-secondary)", text: "var(--ef-color-text-on-secondary-surface)", role: "--ef-color-text-on-secondary-surface" },
-  { id: "inverse", name: "Inverse surface", ink: "var(--ef-color-text-inverse)", surface: "var(--ef-color-surface-inverse)", text: "var(--ef-color-text-inverse)", role: "--ef-color-text-inverse" }
+  { id: "primary", name: "Primary text", ink: "var(--forma-color-text-primary)", surface: "var(--forma-color-surface-primary)", text: "var(--forma-color-text-primary)", role: "--forma-color-text-primary" },
+  { id: "secondary", name: "Secondary text", ink: "var(--forma-color-text-secondary)", surface: "var(--forma-color-surface-primary)", text: "var(--forma-color-text-primary)", role: "--forma-color-text-secondary" },
+  { id: "accent", name: "Accent", ink: "var(--forma-color-accent-primary)", surface: "var(--forma-color-surface-primary)", text: "var(--forma-color-text-primary)", role: "--forma-color-accent-primary" },
+  { id: "secondary-surface", name: "Secondary surface", ink: "var(--forma-color-text-on-secondary-surface)", surface: "var(--forma-color-surface-secondary)", text: "var(--forma-color-text-on-secondary-surface)", role: "--forma-color-text-on-secondary-surface" },
+  { id: "inverse", name: "Inverse surface", ink: "var(--forma-color-text-inverse)", surface: "var(--forma-color-surface-inverse)", text: "var(--forma-color-text-inverse)", role: "--forma-color-text-inverse" }
 ]);
 
 const titleCase = value => value.replaceAll("-", " ").replace(/^\w/, first => first.toUpperCase());
@@ -77,7 +77,7 @@ export const loadIconCatalog = ({ registry = readJson("../../icons/registry.json
 };
 
 // The decorative snippet with a size override on its presentation span.
-const sized = (icon, size) => icon.htmlSource.trim().replace('<span class="ef-icon"', `<span class="ef-icon" style="--ef-icon-size:${size}px"`);
+const sized = (icon, size) => icon.htmlSource.trim().replace('<span class="forma-icon"', `<span class="forma-icon" style="--forma-icon-size:${size}px"`);
 
 // Shape children of the compiled SVG, for the construction view.
 const innerGeometry = icon => icon.svgSource.replace(/^[\s\S]*?<svg\b[^>]*>/, "").replace(/<\/svg>\s*$/, "");
@@ -135,14 +135,14 @@ export const iconConfigurations = icon => {
     {
       id: "custom-size",
       title: "Custom size",
-      description: "Set --ef-icon-size on the presentation span or any ancestor. Keep icons at 16px or larger.",
-      live: `<p style="--ef-icon-size:2rem">${snippet} 2rem icon</p>`
+      description: "Set --forma-icon-size on the presentation span or any ancestor. Keep icons at 16px or larger.",
+      live: `<p style="--forma-icon-size:2rem">${snippet} 2rem icon</p>`
     },
     {
       id: "custom-colour",
       title: "Custom colour",
       description: "The stroke is currentColor, so the parent’s colour role decides the ink. Never rewrite the SVG geometry or stroke to recolour it.",
-      live: `<p style="color:var(--ef-color-accent-primary)">${snippet} <span style="color:var(--ef-color-text-primary)">Accent ink, primary text</span></p>`
+      live: `<p style="color:var(--forma-color-accent-primary)">${snippet} <span style="color:var(--forma-color-text-primary)">Accent ink, primary text</span></p>`
     },
     {
       id: "meaningful-image",
@@ -219,24 +219,24 @@ const ICON_STYLES = `<style>
   .icon-doc__hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.5rem; align-items: start; }
   .icon-doc__figure { margin: 0; }
   .icon-doc__figure figcaption { font-size: .85rem; margin-block-start: .5rem; }
-  .icon-keyline { inline-size: min(100%, 18rem); block-size: auto; aspect-ratio: 1; display: block; color: var(--ef-color-text-primary); background: var(--ef-color-surface-primary); border: 1px solid var(--ef-color-border-subtle); }
-  .icon-keyline__grid { stroke: var(--ef-color-border-subtle); stroke-width: .04; }
-  .icon-keyline__safe { fill: none; stroke: var(--ef-color-accent-primary); stroke-width: .06; stroke-dasharray: .3 .2; }
+  .icon-keyline { inline-size: min(100%, 18rem); block-size: auto; aspect-ratio: 1; display: block; color: var(--forma-color-text-primary); background: var(--forma-color-surface-primary); border: 1px solid var(--forma-color-border-subtle); }
+  .icon-keyline__grid { stroke: var(--forma-color-border-subtle); stroke-width: .04; }
+  .icon-keyline__safe { fill: none; stroke: var(--forma-color-accent-primary); stroke-width: .06; stroke-dasharray: .3 .2; }
   .icon-facts { display: grid; gap: .5rem; margin: 1rem 0; }
   .icon-facts div { display: flex; flex-wrap: wrap; gap: .25rem .75rem; }
   .icon-facts dt { flex: 0 0 9rem; max-inline-size: 100%; }
   .icon-facts dt { font-weight: 600; }
   .icon-facts dd { flex: 1 1 12rem; margin: 0; min-inline-size: 0; }
   .icon-sizes, .icon-colours { list-style: none; padding: 0; margin: 1rem 0; display: flex; flex-wrap: wrap; gap: 1rem; }
-  .icon-sizes__item { display: grid; justify-items: center; gap: .4rem; min-inline-size: 4rem; padding: .75rem; border: 1px solid var(--ef-color-border-subtle); }
-  .icon-sizes__glyph { display: grid; place-items: center; min-block-size: 3rem; color: var(--ef-color-text-primary); }
-  .icon-colours__item { display: grid; justify-items: start; gap: .35rem; min-inline-size: min(100%, 11rem); flex: 1 1 11rem; padding: 1rem; border: 1px solid var(--ef-color-border-subtle); }
+  .icon-sizes__item { display: grid; justify-items: center; gap: .4rem; min-inline-size: 4rem; padding: .75rem; border: 1px solid var(--forma-color-border-subtle); }
+  .icon-sizes__glyph { display: grid; place-items: center; min-block-size: 3rem; color: var(--forma-color-text-primary); }
+  .icon-colours__item { display: grid; justify-items: start; gap: .35rem; min-inline-size: min(100%, 11rem); flex: 1 1 11rem; padding: 1rem; border: 1px solid var(--forma-color-border-subtle); }
   .icon-colours__role { font-size: .75rem; overflow-wrap: anywhere; color: inherit; background: none; }
   .icon-doc .example-canvas button { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .4rem; inline-size: auto; max-inline-size: 100%; justify-self: start; overflow-wrap: anywhere; }
   .icon-doc .code-viewer + .code-viewer { margin-block-start: 1.5rem; }
   .icon-gallery__grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1rem; }
-  .icon-gallery__card { min-inline-size: 0; padding: 1rem; border: 1px solid var(--ef-color-border-functional, #444); background: var(--ef-color-surface-primary, white); }
-  .icon-gallery__preview { display: flex; align-items: center; min-block-size: 3rem; color: var(--ef-color-text-primary, #171a18); }
+  .icon-gallery__card { min-inline-size: 0; padding: 1rem; border: 1px solid var(--forma-color-border-functional, #444); background: var(--forma-color-surface-primary, white); }
+  .icon-gallery__preview { display: flex; align-items: center; min-block-size: 3rem; color: var(--forma-color-text-primary, #161616); }
   .icon-gallery__card h3 { font-size: 1rem; margin: .5rem 0 .2rem; }
   .icon-gallery__card h3 a { display: inline-flex; align-items: center; min-block-size: 2.75rem; }
   .icon-gallery__card p { margin: .2rem 0 .7rem; }
@@ -310,7 +310,7 @@ export function renderIconGallery(rootPath = "../", catalog = loadIconCatalog())
   const cards = join(groups, ([category, icons]) => `<section class="icon-gallery__section" aria-labelledby="icon-cat-${category}">
   <h2 id="icon-cat-${category}">${escapeHtml(titleCase(category))}</h2>
   <ul class="icon-gallery__grid">${join(icons, icon => `<li class="icon-gallery__card">
-      <div class="icon-gallery__preview" style="--ef-icon-size:32px">${icon.htmlSource.trim()}</div>
+      <div class="icon-gallery__preview" style="--forma-icon-size:32px">${icon.htmlSource.trim()}</div>
       <h3><a href="${iconHref(rootPath, icon.name)}">${escapeHtml(icon.label)}</a></h3>
       <p><code>${escapeHtml(icon.name)}</code></p>
       <p>${escapeHtml(icon.docs.meaning)}</p>
@@ -354,7 +354,7 @@ export function renderNewIconIndex(rootPath = "../../", catalog = loadIconCatalo
       ${join(categories, category => `<section class="icon-gallery__section" aria-labelledby="recent-${category}">
         <h2 id="recent-${category}">${escapeHtml(titleCase(category))}</h2>
         <ul class="icon-gallery__grid">${join(latest.filter(icon => icon.category === category), icon => `<li class="icon-gallery__card" data-new-icon="${icon.name}">
-          <div class="icon-gallery__preview" style="--ef-icon-size:32px">${icon.htmlSource.trim()}</div>
+          <div class="icon-gallery__preview" style="--forma-icon-size:32px">${icon.htmlSource.trim()}</div>
           <h3><a href="${iconHref(rootPath, icon.name)}">${escapeHtml(icon.label)}</a></h3>
           <p><code>${escapeHtml(icon.name)}</code></p>
           <p>${escapeHtml(icon.docs.meaning)}</p>

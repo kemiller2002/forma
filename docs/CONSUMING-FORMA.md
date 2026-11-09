@@ -1,10 +1,133 @@
 # Consuming Forma
 
-Forma is the zero-component-runtime Echelon Foundry presentation package.
+Forma is a zero-component-runtime, brand-neutral presentation package. An
+organization's identity comes from its own brand or theme package, loaded after
+Forma (see "Migrating to Forma 1.0.0" for Echelon applications).
+
+## Migrating to Forma 1.0.0
+
+Forma 1.0.0 is one major release with two breaking changes, so an application
+migrates once:
+
+1. **Brand neutrality (EDS-ADR-002).** Forma ships no organization identity.
+   The default `:root` palette is a neutral Forma palette, and the Echelon
+   brand, marketing theme and assets moved to the
+   `@echelon-foundry/echelon-theme` package
+   (`kemiller2002/echelon-design-system`).
+2. **Namespace rename (FORMA-NS-001).** Every Forma name moved from the `ef-`
+   namespace to `forma-`:
+
+   | 0.x | 1.0.0 |
+   | --- | --- |
+   | `.ef-*` classes | `.forma-*` |
+   | `--ef-*` custom properties | `--forma-*` |
+   | `data-ef-*` attributes | `data-forma-*` |
+   | `<ef-*>` authoring tags | `<forma-*>` |
+   | `ef-component-tag` | `forma-component-tag` |
+   | `element.dataset.efX` | `element.dataset.formaX` |
+   | `@layer echelon.*` | `@layer forma.*` |
+
+The CHANGELOG (1.0.0) lists every breaking change.
+
+### Step 1: run the codemod
+
+The F# codemod ships in the package (`tools/NamespaceMigrator`, .NET 10 SDK,
+no package references). It rewrites `.html .htm .css .scss .sass .less .js
+.mjs .cjs .jsx .ts .mts .cts .tsx .vue .svelte .razor .cshtml .fs .fsi .fsx
+.json .md`, keeps each file's encoding (UTF-8 with or without a byte-order
+mark) and line endings, and changes only Forma names:
+
+- classes, element names, ids and class strings (`ef-x` -> `forma-x`,
+  `</ef-x>`, a regular-expression literal such as `/^\.ef-x/`);
+- custom properties (`--ef-x`) and attributes (`data-ef-x`);
+- the DOM dataset: `el.dataset.efX`, `el.dataset["efX"]` and destructuring
+  `const { efTone } = el.dataset`, which becomes
+  `const { formaTone: efTone } = el.dataset` so the local name is kept.
+
+Words (`ref-`, `chef-`, `--ref-`, `beef-`) and locations are never touched:
+URLs and host names (`https://ef-cdn.example.org/...`), paths
+(`/assets/ef-logo.svg`), file names (`ef-page.html`), CSS `url(...)` and
+`@import` targets, URL-valued HTML attributes (`src`, `href`, `srcset`, ...),
+Markdown link targets, module specifiers (`import ... from "..."`,
+`require("...")`) and scoped packages (`@ef-labs/widget`).
+
+It always skips `node_modules`, `.git`, `bin` and `obj`, and by default also
+`vendor`, `bower_components`, `jspm_packages`, `dist` and `wwwroot/lib`
+(third-party copies and build output); `--include-vendored` includes them.
+
+```bash
+M=node_modules/@echelon-foundry/design-system/tools/NamespaceMigrator/NamespaceMigrator.fsproj
+dotnet run --project "$M" -- --check src wwwroot     # report; exit 3 when anything needs attention
+dotnet run --project "$M" -- --dry-run src wwwroot   # every changed line, before and after
+dotnet run --project "$M" -- src wwwroot             # rewrite in place
+dotnet run --project "$M" -- --check src wwwroot     # exit 0: nothing left
+```
+
+`--check` never gives a false all-clear: a text file of another kind (a
+`.txt`, a template, a `.yml`) that contains Forma names is listed as
+`review: ...` and keeps the exit status at 3 until you fix it by hand or
+exclude it. `--exclude TEXT` (repeatable) skips paths that contain `TEXT`, for
+example a changelog that must keep the old names. Review the diff and commit
+it as one change.
+
+Fix by hand what no text rewrite can see:
+
+- a name assembled from pieces (`"e" + "f-" + slug`, `` `${prefix}-card` ``);
+- a dataset key computed at run time (`el.dataset[key]` where `key` holds
+  `"efTone"`);
+- Forma names inside a location you own (a `/ef-icons/` asset folder you
+  serve yourself): rename the folder and its references together;
+- files in skipped directories or of kinds listed for review.
+
+`TokenValidator` reports a remaining `--ef-*` reference as a `namespace`
+finding with the `--forma-*` suggestion.
+
+Then upgrade the pin to `1.0.0`.
+
+### Step 2: Echelon applications add the Echelon theme
+
+Forma no longer contains `dist/brands/echelon.css`, the Echelon marketing
+theme or Echelon logo paths. An Echelon application:
+
+1. adds `@echelon-foundry/echelon-theme` (from
+   `kemiller2002/echelon-design-system`, theme 1.0.0 or later, built against
+   Forma 1.0.0) at an exact version;
+2. loads the theme's `dist/echelon.css` **after** Forma's CSS:
+
+   ```html
+   <link rel="stylesheet" href="/assets/forma/all.css">
+   <link rel="stylesheet" href="/assets/echelon-theme/echelon.css">
+   ```
+
+3. sets `data-forma-brand="echelon"` on `<html>` (or on the branded subtree);
+4. serves logo assets from the theme package's files (listed in its
+   `dist/asset-manifest.json`) at deployed URLs. Application marks stay owned
+   by the application.
+
+Without step 2 an application renders with the neutral Forma palette; nothing
+breaks, but it no longer looks like Echelon.
+
+### Step 3: marketing sites
+
+`forma-echelon-marketing.css` and `forma-marketing-theme-echelon.css` are no
+longer release assets. A marketing site pins `forma-marketing.css` in
+`forma.lock` and loads the theme's `dist/echelon-marketing.css` after it:
+
+```html
+<link rel="stylesheet" href="assets/forma/forma-marketing.css">
+<link rel="stylesheet" href="assets/echelon-theme/echelon-marketing.css">
+```
+
+### Other organizations
+
+Any organization compiles its own brand manifest
+(`schemas/brand-manifest.schema.json`, schema 1.0, unchanged) with the packaged
+compiler and loads the result after Forma; see `docs/BRANDING.md`. The packaged
+compiler's output is byte-identical to Forma's own build.
 
 ## Canonical version
 
-The current application baseline is **Forma 0.10.0**.
+The current application baseline is **Forma 1.0.0**.
 
 Applications must pin a concrete Forma version. Do not copy CSS files into an
 application and do not depend on the moving repository branch.
@@ -30,8 +153,8 @@ baseline.
 
 Marketing sites do not need npm. They pin flat release assets with
 `forma.lock` and install them with `actions/install-presentation`. The most
-common asset is `forma-echelon-marketing.css`. See `docs/MARKETING-SITES.md`
-and ADR-0003.
+common asset is `forma-marketing.css`, followed by the organization's own
+marketing theme. See `docs/MARKETING-SITES.md` and ADR-0003.
 
 ## CSS
 
@@ -49,7 +172,7 @@ More selective imports are available:
 - `@echelon-foundry/design-system/assessment.css`
 - `@echelon-foundry/design-system/skins.css`
 - `@echelon-foundry/design-system/marketing.css` (brand-neutral marketing layer, also included in `all.css`)
-- `@echelon-foundry/design-system/marketing/*` (versioned marketing release artifacts, including the Echelon theme)
+- `@echelon-foundry/design-system/marketing/*` (versioned, brand-neutral marketing release artifacts)
 - `@echelon-foundry/design-system/brands/<brand-id>.css`
 
 Canonical HTML patterns are exported under `patterns/*` and documented at
@@ -80,7 +203,7 @@ from the exact package version the application pins:
 npx forma-color validate src/**/*.css
 ```
 
-The validator rejects unknown `--ef-color-*` names and reserved internal color
+The validator rejects unknown `--forma-color-*` names and reserved internal color
 variables even when they include literal fallbacks, and ignores
 application-owned custom properties. See `docs/COLOR.md`
 for supported pairings, forced-colors behavior, data-visualization boundaries,
@@ -104,18 +227,18 @@ rules.
 
 ## Component authoring tags
 
-Consumer markup should use the documented inert `<ef-*>` wrapper around the
-canonical pattern. The tag is `ef-` plus the pattern slug.
+Consumer markup should use the documented inert `<forma-*>` wrapper around the
+canonical pattern. The tag is `forma-` plus the pattern slug.
 
 ```html
-<ef-dialog class="ef-component-tag">
+<forma-dialog class="forma-component-tag">
   <button type="button" commandfor="confirm-dialog" command="show-modal">Open</button>
-  <dialog class="ef-dialog" id="confirm-dialog" aria-labelledby="confirm-title">
-    <div class="ef-dialog__body">
+  <dialog class="forma-dialog" id="confirm-dialog" aria-labelledby="confirm-title">
+    <div class="forma-dialog__body">
       <h2 id="confirm-title">Confirm action</h2>
     </div>
   </dialog>
-</ef-dialog>
+</forma-dialog>
 ```
 
 The wrapper has no runtime registration or lifecycle. Do not call
@@ -127,10 +250,10 @@ the browser-native baseline.
 
 White-label identity is supplied through a versioned Brand Manifest and compiled
 to static scoped CSS. Load a generated brand stylesheet after Forma and apply
-`data-ef-brand="<brand-id>"` at the document root or on a subtree.
+`data-forma-brand="<brand-id>"` at the document root or on a subtree.
 
-Presentation-only skins use `data-ef-skin="compact"`,
-`data-ef-skin="comfortable"`, or `data-ef-skin="square"`.
+Presentation-only skins use `data-forma-skin="compact"`,
+`data-forma-skin="comfortable"`, or `data-forma-skin="square"`.
 
 Do not copy or fork Forma CSS for customer branding. See
 `docs/BRANDING.md` for the manifest, scoping, theme, accessibility, and Limen
@@ -138,32 +261,32 @@ boundary contracts.
 
 ## Typography roles
 
-Forma has four typography roles. Select one with `data-ef-type` on any
+Forma has four typography roles. Select one with `data-forma-type` on any
 element, usually `<html>` or `<body>`; the nearest role wins, so a region can
 use another role than its page. Marketing is the default and needs no
 attribute.
 
 | Role | Attribute | h1 / h2 / h3 / h4 | Body | Leading (body) | Heading measure |
 |---|---|---|---|---|---|
-| Marketing | none (or `data-ef-type="marketing"` at the root) | fluid display-1 / display-2 / lg / md | md | the theme's | 14ch / 18ch |
-| Application | `data-ef-type="application"` | 2xl / xl / lg / md | md | normal | none |
-| Dense administrative | `data-ef-type="dense"` | xl / lg / md / sm | sm | snug | none |
-| Accessible large text | `data-ef-type="accessible"` | 3xl / 2xl / xl / lg | lg | relaxed | none |
+| Marketing | none (or `data-forma-type="marketing"` at the root) | fluid display-1 / display-2 / lg / md | md | the theme's | 14ch / 18ch |
+| Application | `data-forma-type="application"` | 2xl / xl / lg / md | md | normal | none |
+| Dense administrative | `data-forma-type="dense"` | xl / lg / md / sm | sm | snug | none |
+| Accessible large text | `data-forma-type="accessible"` | 3xl / 2xl / xl / lg | lg | relaxed | none |
 
-Every value is an existing `--ef-primitive-font-size-*` or
-`--ef-primitive-line-height-*` token. A role restates the type role tokens
-(`--ef-type-size-*`, `--ef-type-leading-*`, `--ef-type-measure-h1/h2`), so it
-works both inside the `.ef-site` shell and on the application layer alone
+Every value is an existing `--forma-primitive-font-size-*` or
+`--forma-primitive-line-height-*` token. A role restates the type role tokens
+(`--forma-type-size-*`, `--forma-type-leading-*`, `--forma-type-measure-h1/h2`), so it
+works both inside the `.forma-site` shell and on the application layer alone
 (`tokens.css` + `foundations.css` + `components.css`), where it also gives
 headings and body text their sizes. Component headings keep their own sizes.
 Body text takes the role on `<body>` (or the role element), never on `<html>`,
 so `rem` keeps meaning the reader's text size. Roles are defined in
 `foundations.css`, which every bundle includes; there is nothing extra to load.
 
-Nesting `data-ef-type="marketing"` inside another role is not supported: the
+Nesting `data-forma-type="marketing"` inside another role is not supported: the
 marketing values come from the page root and its theme.
 
-**Why.** An application screen built on the `.ef-site` shell used to inherit
+**Why.** An application screen built on the `.forma-site` shell used to inherit
 the marketing display scale: h1 up to 7.25rem at 1280px and wider, capped at
 14ch, so "Connect a data repository" wrapped to three lines on a phone. On the
 application layer alone, wrapped h1/h2 lines used a line-height of 1.02, so at
@@ -177,9 +300,9 @@ long unbroken content and 200% text at 320-1280px.
 its local heading overrides. For the R5 rehearsal this would be (described
 only; R5 is not changed by this release):
 
-1. `src/kernel/index.html`: `<body class="ef-site causa" data-ef-type="application" ...>`.
+1. `src/kernel/index.html`: `<body class="forma-site causa" data-forma-type="application" ...>`.
 2. `src/kernel/causa.css`: delete the "Application type scale (UI-014)" block
-   (lines 342-353: the `--ef-type-size-h1/h2/h3` restatement, the
+   (lines 342-353: the `--forma-type-size-h1/h2/h3` restatement, the
    `max-inline-size: none` / `line-height: 1.2` rule and the three
    `font-size` rules). The role gives h1/h2 the snug leading (1.25).
 3. Keep `tests/browser/identity.spec.js` (h1 = 2 x root, one line, two at
@@ -204,22 +327,28 @@ package `@echelon-foundry/forma-workflow`. See `docs/workflow/`.
 
 ## Design-token validation
 
-Forma 0.13.0 ships an F# validator for every `--ef-*` reference, not only colors. Run it in application CI against the exact package the application pins (requires the .NET 10 SDK):
+Forma 0.13.0 ships an F# validator for every `--forma-*` reference, not only colors. Run it in application CI against the exact package the application pins (requires the .NET 10 SDK):
 
 ```bash
 dotnet run --project node_modules/@echelon-foundry/design-system/tools/TokenValidator/TokenValidator.fsproj -- \
   --forma node_modules/@echelon-foundry/design-system  src/styles/   # files or directories; --json for machine output
 ```
 
-It exits 1 on any error. The installed package is the source of truth: its token JSON, its built `dist/` CSS, and `contracts/color-contract.json`. A name is valid when that Forma version defines it, or reads it with a fallback as a documented input (for example `--ef-stack-gap`). The validator reports:
+It exits 1 on any error. The installed package is the source of truth: its token JSON, its built `dist/` CSS, and `contracts/color-contract.json`. A name is valid when that Forma version defines it, or reads it with a fallback as a documented input (for example `--forma-stack-gap`). The validator reports:
 
-- unknown and deprecated tokens. A fallback such as `var(--ef-nonexistent, white)` does not make an unknown token valid.
-- wrong namespaces: `--forma-*`, `--ef_*`, or a dropped segment such as `--ef-spacing-4` for `--ef-primitive-spacing-4`.
-- new names an application declares in the `--ef-` namespace.
+- unknown and deprecated tokens. A fallback such as `var(--forma-nonexistent, white)` does not make an unknown token valid.
+- wrong namespaces: `--forma-*`, `--ef_*`, or a dropped segment such as `--forma-spacing-4` for `--forma-primitive-spacing-4`.
+- new names an application declares in the `--forma-` namespace.
 - reads of internal implementation variables.
 - custom properties that refer to each other in a cycle.
 
 Application-owned properties such as `--causa-*` are never reported. Keep `forma-color` for color-role pairing rules; the two validators agree on the color namespace.
+
+## 1.0.0
+
+Brand-neutral, and the `ef-` namespace is now `forma-`. Follow "Migrating to
+Forma 1.0.0" above. The sections below describe earlier releases in the
+names they used (`ef-`).
 
 ## 0.14.0
 

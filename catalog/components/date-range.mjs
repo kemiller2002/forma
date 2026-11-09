@@ -29,41 +29,41 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Report period with limits",
       description: "A billing report limited to the last year of retained data. Both dates are required and bounded with min and max; the description states the limit. Presets are grouped with role=group so their accessible name is exposed.",
-      html: `<ef-date-range class="ef-component-tag">
-  <fieldset class="ef-date-range" aria-describedby="date-range-bounded-description">
+      html: `<forma-date-range class="forma-component-tag">
+  <fieldset class="forma-date-range" aria-describedby="date-range-bounded-description">
     <legend>Billing period</legend>
-    <p class="ef-field__description" id="date-range-bounded-description">Data is kept for 12 months: 1 October 2025 to 30 September 2026.</p>
-    <div class="ef-date-range__fields">
+    <p class="forma-field__description" id="date-range-bounded-description">Data is kept for 12 months: 1 October 2025 to 30 September 2026.</p>
+    <div class="forma-date-range__fields">
       <label>From <input type="date" name="billing-from" min="2025-10-01" max="2026-09-30" value="2026-09-01" required></label>
-      <span class="ef-date-range__separator" aria-hidden="true">→</span>
+      <span class="forma-date-range__separator" aria-hidden="true">→</span>
       <label>To <input type="date" name="billing-to" min="2025-10-01" max="2026-09-30" value="2026-09-30" required></label>
     </div>
-    <div class="ef-date-range__presets" role="group" aria-label="Billing period presets">
+    <div class="forma-date-range__presets" role="group" aria-label="Billing period presets">
       <button type="button">Last month</button>
       <button type="button">Last quarter</button>
       <button type="button">Last 12 months</button>
     </div>
   </fieldset>
-</ef-date-range>`
+</forma-date-range>`
     },
     {
       id: "end-before-start",
       title: "End date before start date",
       description: "The application found the To date earlier than From. The To input is marked invalid and linked to a validation message that states the fix; both typed dates are kept.",
-      html: `<ef-date-range class="ef-component-tag">
-  <fieldset class="ef-date-range">
+      html: `<forma-date-range class="forma-component-tag">
+  <fieldset class="forma-date-range">
     <legend>Leave dates</legend>
-    <div class="ef-date-range__fields">
+    <div class="forma-date-range__fields">
       <label>First day <input type="date" name="leave-from" value="2026-12-21"></label>
-      <span class="ef-date-range__separator" aria-hidden="true">→</span>
+      <span class="forma-date-range__separator" aria-hidden="true">→</span>
       <label>Last day <input type="date" name="leave-to" value="2026-12-12" aria-invalid="true" aria-describedby="date-range-end-before-start-error"></label>
     </div>
-    <p class="ef-validation-message" id="date-range-end-before-start-error">
-      <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+    <p class="forma-validation-message" id="date-range-end-before-start-error">
+      <span class="forma-validation-message__mark" aria-hidden="true">!</span>
       The last day must be on or after 21 December 2026.
     </p>
   </fieldset>
-</ef-date-range>`
+</forma-date-range>`
     },
     {
       id: "mobile-activity-filter",
@@ -79,22 +79,22 @@ export default {
           "In landscape on larger phones the dates may return to side by side if the width exceeds 40rem."
         ]
       },
-      html: `<ef-date-range class="ef-component-tag">
-  <fieldset class="ef-date-range">
+      html: `<forma-date-range class="forma-component-tag">
+  <fieldset class="forma-date-range">
     <legend>Activity between</legend>
-    <div class="ef-date-range__fields">
+    <div class="forma-date-range__fields">
       <label>From <input type="date" name="activity-from" value="2026-09-01"></label>
-      <span class="ef-date-range__separator" aria-hidden="true">→</span>
+      <span class="forma-date-range__separator" aria-hidden="true">→</span>
       <label>To <input type="date" name="activity-to" value="2026-09-30"></label>
     </div>
-    <div class="ef-date-range__presets" role="group" aria-label="Activity period presets">
+    <div class="forma-date-range__presets" role="group" aria-label="Activity period presets">
       <button type="button">Today</button>
       <button type="button">Last 7 days</button>
       <button type="button">Last 30 days</button>
       <button type="button">This year</button>
     </div>
   </fieldset>
-</ef-date-range>`
+</forma-date-range>`
     }
   ],
   api: {
@@ -105,17 +105,17 @@ export default {
       { name: "min", on: "input", values: "YYYY-MM-DD", default: "—", description: "Earliest allowed date for that input." },
       { name: "max", on: "input", values: "YYYY-MM-DD", default: "—", description: "Latest allowed date for that input. Native constraints do not relate From to To." },
       { name: "required", on: "input", values: "boolean", default: "absent", description: "Blocks submission while that date is empty." },
-      { name: "role", on: ".ef-date-range__presets", values: "group", default: "—", description: "Gives the preset container a role so its aria-label is exposed." },
-      { name: "aria-label", on: ".ef-date-range__presets", values: "string", default: "—", description: "Names the preset group." },
-      { name: "aria-hidden", on: ".ef-date-range__separator", values: "true", default: "—", description: "The arrow is decorative." },
+      { name: "role", on: ".forma-date-range__presets", values: "group", default: "—", description: "Gives the preset container a role so its aria-label is exposed." },
+      { name: "aria-label", on: ".forma-date-range__presets", values: "string", default: "—", description: "Names the preset group." },
+      { name: "aria-hidden", on: ".forma-date-range__separator", values: "true", default: "—", description: "The arrow is decorative." },
       { name: "aria-describedby", on: "fieldset / input", values: "id", default: "—", description: "Links range limits to the fieldset, or an error message to the input that needs correcting." },
       { name: "aria-invalid", on: "input", values: "true", default: "absent", description: "Set by the application on the date that needs correcting." }
     ],
     hooks: {
-      "ef-date-range": "Root fieldset grid (0.5rem gap), full width, margin removed. Its legend gets the compact field-label style.",
-      "ef-date-range__fields": "Three-column grid (From, separator, To) with bottom alignment; one column at 40rem and below. Labels inside become small grids and date inputs shrink to fit.",
-      "ef-date-range__separator": "Decorative arrow between the dates; hidden at 40rem and below.",
-      "ef-date-range__presets": "Wrapping flex row of preset buttons with a 0.5rem gap."
+      "forma-date-range": "Root fieldset grid (0.5rem gap), full width, margin removed. Its legend gets the compact field-label style.",
+      "forma-date-range__fields": "Three-column grid (From, separator, To) with bottom alignment; one column at 40rem and below. Labels inside become small grids and date inputs shrink to fit.",
+      "forma-date-range__separator": "Decorative arrow between the dates; hidden at 40rem and below.",
+      "forma-date-range__presets": "Wrapping flex row of preset buttons with a 0.5rem gap."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through From, To and each preset button in source order (and through date segments in most browsers)." },
@@ -130,7 +130,7 @@ export default {
   states: [
     { name: "Empty", how: "no values", description: "Both inputs show the browser's localized placeholder segments." },
     { name: "Filled", how: "value on both inputs", description: "Dates display in the user's locale." },
-    { name: "Invalid", how: "aria-invalid on an input plus a linked .ef-validation-message", description: "Error text with a non-color mark below the fields." },
+    { name: "Invalid", how: "aria-invalid on an input plus a linked .forma-validation-message", description: "Error text with a non-color mark below the fields." },
     { name: "Focus", how: ":focus-visible", description: "Foundation focus ring on the focused input or preset." }
   ],
   accessibility: {

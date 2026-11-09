@@ -30,54 +30,54 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior", "form-handling"] },
       title: "Assistance unavailable",
       description: "The interpretation service is down. The composer still works as a plain note field: dictation is not offered, attaching still is, and the status line says in words what will happen to the text.",
-      html: `<ef-composer class="ef-component-tag">
-  <form class="ef-composer" aria-labelledby="composer-no-assistance-title">
-    <div class="ef-composer__context">
-      <span class="ef-component-kicker">Shift handover</span>
+      html: `<forma-composer class="forma-component-tag">
+  <form class="forma-composer" aria-labelledby="composer-no-assistance-title">
+    <div class="forma-composer__context">
+      <span class="forma-component-kicker">Shift handover</span>
       <h2 id="composer-no-assistance-title">Note for the next shift</h2>
       <p id="composer-no-assistance-help">Automatic summarizing is unavailable right now. Your note will be saved exactly as written.</p>
     </div>
-    <label class="ef-composer__field">
-      <span class="ef-sr-only">Handover note</span>
+    <label class="forma-composer__field">
+      <span class="forma-sr-only">Handover note</span>
       <textarea name="handover-note" rows="4" aria-describedby="composer-no-assistance-help"></textarea>
     </label>
-    <div class="ef-composer__actions">
-      <div class="ef-composer__input-actions" role="group" aria-label="Additional input methods">
+    <div class="forma-composer__actions">
+      <div class="forma-composer__input-actions" role="group" aria-label="Additional input methods">
         <button type="button">Attach</button>
       </div>
-      <button type="submit" class="ef-composer__submit">Save note</button>
+      <button type="submit" class="forma-composer__submit">Save note</button>
     </div>
-    <p class="ef-composer__status" role="status">Assisted summarizing unavailable. Nothing is saved until you choose Save note.</p>
+    <p class="forma-composer__status" role="status">Assisted summarizing unavailable. Nothing is saved until you choose Save note.</p>
   </form>
-</ef-composer>`
+</forma-composer>`
     },
     {
       id: "dictating-with-attachment",
       interaction: { kind: "static", reasons: ["application-behavior", "form-handling"] },
       title: "Dictating with an attachment",
       description: "Dictation is in progress, shown by the pressed state and label of the Dictate button, and one file is attached. The status reports both as text. Recording and upload are application behavior.",
-      html: `<ef-composer class="ef-component-tag">
-  <form class="ef-composer" aria-labelledby="composer-dictating-title">
-    <div class="ef-composer__context">
-      <span class="ef-component-kicker">Incident report</span>
+      html: `<forma-composer class="forma-component-tag">
+  <form class="forma-composer" aria-labelledby="composer-dictating-title">
+    <div class="forma-composer__context">
+      <span class="forma-component-kicker">Incident report</span>
       <h2 id="composer-dictating-title">What happened on site?</h2>
       <p id="composer-dictating-help">Describe the incident in your own words. You will review the extracted details before the report is filed.</p>
     </div>
-    <label class="ef-composer__field">
-      <span class="ef-sr-only">Incident description</span>
+    <label class="forma-composer__field">
+      <span class="forma-sr-only">Incident description</span>
       <textarea name="incident" rows="4" aria-describedby="composer-dictating-help composer-dictating-files">At about 10:15 a forklift clipped the rack in aisle 7. Nobody was hurt, but two pallets</textarea>
     </label>
     <p id="composer-dictating-files">Attached: aisle-7-rack.jpg (2.4 MB)</p>
-    <div class="ef-composer__actions">
-      <div class="ef-composer__input-actions" role="group" aria-label="Additional input methods">
+    <div class="forma-composer__actions">
+      <div class="forma-composer__input-actions" role="group" aria-label="Additional input methods">
         <button type="button">Attach</button>
         <button type="button" aria-pressed="true">Stop dictation</button>
       </div>
-      <button type="submit" class="ef-composer__submit">Review report</button>
+      <button type="submit" class="forma-composer__submit">Review report</button>
     </div>
-    <p class="ef-composer__status" role="status">Listening… 1 photo attached. Nothing is filed until you confirm the report.</p>
+    <p class="forma-composer__status" role="status">Listening… 1 photo attached. Nothing is filed until you confirm the report.</p>
   </form>
-</ef-composer>`
+</forma-composer>`
     },
     {
       id: "mobile-capture",
@@ -93,27 +93,27 @@ export default {
           "When the on-screen keyboard opens, the textarea and status remain in normal flow; nothing is fixed to the viewport, so the page can scroll the submit button into view."
         ]
       },
-      html: `<ef-composer class="ef-component-tag">
-  <form class="ef-composer" aria-labelledby="composer-mobile-title">
-    <div class="ef-composer__context">
-      <span class="ef-component-kicker">Care log</span>
+      html: `<forma-composer class="forma-component-tag">
+  <form class="forma-composer" aria-labelledby="composer-mobile-title">
+    <div class="forma-composer__context">
+      <span class="forma-component-kicker">Care log</span>
       <h2 id="composer-mobile-title">How is Dad today?</h2>
       <p id="composer-mobile-help">Type, dictate or attach a photo. You will confirm anything before it is added to his record.</p>
     </div>
-    <label class="ef-composer__field">
-      <span class="ef-sr-only">Care update</span>
+    <label class="forma-composer__field">
+      <span class="forma-sr-only">Care update</span>
       <textarea name="care-update" rows="4" aria-describedby="composer-mobile-help" placeholder="Tell me what happened…"></textarea>
     </label>
-    <div class="ef-composer__actions">
-      <div class="ef-composer__input-actions" role="group" aria-label="Additional input methods">
+    <div class="forma-composer__actions">
+      <div class="forma-composer__input-actions" role="group" aria-label="Additional input methods">
         <button type="button">Attach</button>
         <button type="button" aria-pressed="false">Dictate</button>
       </div>
-      <button type="submit" class="ef-composer__submit">Continue</button>
+      <button type="submit" class="forma-composer__submit">Continue</button>
     </div>
-    <p class="ef-composer__status" role="status">Nothing is added to the record until you confirm.</p>
+    <p class="forma-composer__status" role="status">Nothing is added to the record until you confirm.</p>
   </form>
-</ef-composer>`
+</forma-composer>`
     }
   ],
   api: {
@@ -129,13 +129,13 @@ export default {
       { name: "type", on: "buttons", values: "submit | button", default: "submit inside a form", description: "Only the continuation action submits; input-method buttons must be type=\"button\"." }
     ],
     hooks: {
-      "ef-composer": "Root bordered surface. Use a `form` when the composer submits natively.",
-      "ef-composer__context": "Kicker, heading and help text block.",
-      "ef-composer__field": "The label that wraps the textarea; the textarea is full width, 8rem minimum and vertically resizable.",
-      "ef-composer__actions": "Row with input methods on one side and submit on the other; stacks at 40rem and below.",
-      "ef-composer__input-actions": "Wrapping group of secondary input-method buttons; a two-column grid at 40rem and below.",
-      "ef-composer__submit": "The single continuation action, drawn on the inverse surface; full width at 40rem and below.",
-      "ef-composer__status": "Small secondary-color status line, usually a `role=\"status\"` region."
+      "forma-composer": "Root bordered surface. Use a `form` when the composer submits natively.",
+      "forma-composer__context": "Kicker, heading and help text block.",
+      "forma-composer__field": "The label that wraps the textarea; the textarea is full width, 8rem minimum and vertically resizable.",
+      "forma-composer__actions": "Row with input methods on one side and submit on the other; stacks at 40rem and below.",
+      "forma-composer__input-actions": "Wrapping group of secondary input-method buttons; a two-column grid at 40rem and below.",
+      "forma-composer__submit": "The single continuation action, drawn on the inverse surface; full width at 40rem and below.",
+      "forma-composer__status": "Small secondary-color status line, usually a `role=\"status\"` region."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves from the textarea to input-method buttons and the submit button." },
@@ -163,7 +163,7 @@ export default {
       "Separates the single continuation action from input methods by position and surface, not only color."
     ],
     consumer: [
-      "Give the textarea an accessible label (visually hidden with `.ef-sr-only` if the heading already says it) and link help with aria-describedby.",
+      "Give the textarea an accessible label (visually hidden with `.forma-sr-only` if the heading already says it) and link help with aria-describedby.",
       "Write status in text: listening, uploading, unavailable, and that nothing is committed until confirmed.",
       "Offer dictation and attachment only when available, and never as the only way to enter information.",
       "Use a form (or handle submission) so the submit button does something; a submit button outside a form is inert.",

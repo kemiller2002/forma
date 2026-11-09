@@ -86,9 +86,9 @@ test("focus.unclipped: a clipping ancestor that cuts the ring fails; the viewpor
   const ring = { left: 95, top: 95, right: 205, bottom: 145 };
   assert.equal(evaluateFocusVisibility({ name: "Save", indicator: true, ring, clips: [], viewport }).status, STATUS.PASS);
   assert.equal(evaluateFocusVisibility({ name: "Save", indicator: false, ring, clips: [], viewport }).status, STATUS.FAIL);
-  const clipped = evaluateFocusVisibility({ name: "Save", indicator: true, ring, clips: [{ label: "div.ef-surface", left: 100, top: 0, right: 300, bottom: 900 }], viewport });
+  const clipped = evaluateFocusVisibility({ name: "Save", indicator: true, ring, clips: [{ label: "div.forma-surface", left: 100, top: 0, right: 300, bottom: 900 }], viewport });
   assert.equal(clipped.status, STATUS.FAIL);
-  assert.deepEqual(clipped.cutBy, [{ label: "div.ef-surface", excess: 5 }]);
+  assert.deepEqual(clipped.cutBy, [{ label: "div.forma-surface", excess: 5 }]);
   // An element taller than its scroller only needs a visible part on that axis.
   const tall = { left: 95, top: -300, right: 205, bottom: 1300 };
   assert.equal(evaluateFocusVisibility({ name: "Long", indicator: true, ring: tall, clips: [{ label: "div.clip", left: 40, top: 40, right: 280, bottom: 860 }], viewport }).status, STATUS.PASS);

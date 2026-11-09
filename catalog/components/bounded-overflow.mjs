@@ -27,9 +27,9 @@ export default {
       id: "wide-ledger",
       title: "Wide ledger table",
       description: "A seven-column ledger in a focusable, named scroll region. On narrow screens the table scrolls horizontally inside the region while the page stays put; the caption and row headers keep the data understandable while scrolled.",
-      html: `<ef-bounded-overflow class="ef-component-tag">
-  <div class="ef-bounded-overflow" role="region" aria-labelledby="bounded-overflow-wide-ledger-caption" tabindex="0">
-    <table class="ef-dense-ledger">
+      html: `<forma-bounded-overflow class="forma-component-tag">
+  <div class="forma-bounded-overflow" role="region" aria-labelledby="bounded-overflow-wide-ledger-caption" tabindex="0">
+    <table class="forma-dense-ledger">
       <caption id="bounded-overflow-wide-ledger-caption">Open invoices, September 2026</caption>
       <thead><tr><th scope="col">Invoice</th><th scope="col">Customer</th><th scope="col">Issued</th><th scope="col">Due</th><th scope="col">Amount</th><th scope="col">Paid</th><th scope="col">Status</th></tr></thead>
       <tbody>
@@ -39,16 +39,16 @@ export default {
       </tbody>
     </table>
   </div>
-</ef-bounded-overflow>`
+</forma-bounded-overflow>`
     },
     {
       id: "bounded-log",
       title: "Bounded deployment log",
       description: "Unwrapped log lines in a region capped at 10rem tall with an inline `max-block-size`. The region scrolls in both directions; the dashboard around it keeps its height and width.",
-      html: `<ef-bounded-overflow class="ef-component-tag">
-  <section class="ef-surface ef-stack" data-density="compact" aria-labelledby="bounded-overflow-bounded-log-title">
+      html: `<forma-bounded-overflow class="forma-component-tag">
+  <section class="forma-surface forma-stack" data-density="compact" aria-labelledby="bounded-overflow-bounded-log-title">
     <h2 id="bounded-overflow-bounded-log-title">Deployment 7.3.2 log</h2>
-    <div class="ef-bounded-overflow" style="max-block-size: 10rem" role="region" aria-label="Deployment 7.3.2 log output" tabindex="0">
+    <div class="forma-bounded-overflow" style="max-block-size: 10rem" role="region" aria-label="Deployment 7.3.2 log output" tabindex="0">
       <pre><code>09:40:02 build   payments-api@7.3.2 compiled in 84.1s (cache hit ratio 0.92)
 09:40:15 push    registry.example.com/payments/payments-api:7.3.2-4f2a91c pushed
 09:40:31 deploy  rolling update started: 0/12 pods ready, maxUnavailable=1, maxSurge=2
@@ -59,7 +59,7 @@ export default {
 09:42:06 done    deployment 7.3.2 completed</code></pre>
     </div>
   </section>
-</ef-bounded-overflow>`
+</forma-bounded-overflow>`
     },
     {
       id: "mobile-table-scroll",
@@ -74,9 +74,9 @@ export default {
           "In landscape the table may fit and the scrollbar disappears; the reserved gutter prevents a layout jump."
         ]
       },
-      html: `<ef-bounded-overflow class="ef-component-tag">
-  <div class="ef-bounded-overflow" role="region" aria-labelledby="bounded-overflow-mobile-table-scroll-caption" tabindex="0">
-    <table class="ef-dense-ledger">
+      html: `<forma-bounded-overflow class="forma-component-tag">
+  <div class="forma-bounded-overflow" role="region" aria-labelledby="bounded-overflow-mobile-table-scroll-caption" tabindex="0">
+    <table class="forma-dense-ledger">
       <caption id="bounded-overflow-mobile-table-scroll-caption">On-call schedule, week 40</caption>
       <thead><tr><th scope="col">Engineer</th><th scope="col">Primary shift</th><th scope="col">Secondary shift</th><th scope="col">Escalation contact</th></tr></thead>
       <tbody>
@@ -85,20 +85,20 @@ export default {
       </tbody>
     </table>
   </div>
-</ef-bounded-overflow>`
+</forma-bounded-overflow>`
     }
   ],
   api: {
     attributes: [
-      { name: "tabindex", on: ".ef-bounded-overflow", values: "0", default: "—", description: "Makes the scroll region focusable so keyboard users can scroll it. Required when the content has no focusable elements." },
-      { name: "role", on: ".ef-bounded-overflow", values: "region", default: "—", description: "Exposes the focusable scroll region as a named region, so focus lands on something with a role and name." },
-      { name: "aria-label", on: ".ef-bounded-overflow", values: "string", default: "—", description: "Names the region when there is no caption to reference." },
-      { name: "aria-labelledby", on: ".ef-bounded-overflow", values: "id of the table caption", default: "—", description: "Names the region from the table caption." },
-      { name: "style", on: ".ef-bounded-overflow", values: "max-block-size: <length>", default: "—", description: "Caps the height to make the region scroll vertically as well." },
+      { name: "tabindex", on: ".forma-bounded-overflow", values: "0", default: "—", description: "Makes the scroll region focusable so keyboard users can scroll it. Required when the content has no focusable elements." },
+      { name: "role", on: ".forma-bounded-overflow", values: "region", default: "—", description: "Exposes the focusable scroll region as a named region, so focus lands on something with a role and name." },
+      { name: "aria-label", on: ".forma-bounded-overflow", values: "string", default: "—", description: "Names the region when there is no caption to reference." },
+      { name: "aria-labelledby", on: ".forma-bounded-overflow", values: "id of the table caption", default: "—", description: "Names the region from the table caption." },
+      { name: "style", on: ".forma-bounded-overflow", values: "max-block-size: <length>", default: "—", description: "Caps the height to make the region scroll vertically as well." },
       { name: "scope", on: "th", values: "col | row", default: "—", description: "Associates header cells with their column or row so scrolled cells stay understandable." }
     ],
     hooks: {
-      "ef-bounded-overflow": "Scroll container: `max-inline-size: 100%`, `overflow: auto`, `overscroll-behavior: contain`, `scrollbar-gutter: stable`. Draws no border or background."
+      "forma-bounded-overflow": "Scroll container: `max-inline-size: 100%`, `overflow: auto`, `overscroll-behavior: contain`, `scrollbar-gutter: stable`. Draws no border or background."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus to the region (when tabindex=\"0\") and then into any focusable content." },

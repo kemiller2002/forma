@@ -50,11 +50,11 @@ test("reciprocal motion shares the inertia calculation including clamp boundarie
 
 test("static CSS fallbacks equal the standard preset derivation", () => {
   assert.deepEqual(staticFallbacks(), {
-    "--ef-motion-inertia-duration": 214,
-    "--ef-motion-gravity-duration": 255,
-    "--ef-motion-state-duration": 154,
-    "--ef-motion-press-duration": 107,
-    "--ef-motion-exit-duration": 214
+    "--forma-motion-inertia-duration": 214,
+    "--forma-motion-gravity-duration": 255,
+    "--forma-motion-state-duration": 154,
+    "--forma-motion-press-duration": 107,
+    "--forma-motion-exit-duration": 214
   });
 });
 
@@ -85,16 +85,16 @@ test("CSS reader keeps at-rule context, ignores braces in strings and comments, 
 
 test("transition and animation layers separate property, timing, easing and iteration", () => {
   assert.deepEqual(splitTopLevel("a 1s cubic-bezier(0, 0, 1, 1), b 2s"), ["a 1s cubic-bezier(0, 0, 1, 1)", "b 2s"]);
-  assert.deepEqual(transitionLayer("translate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing)"), {
+  assert.deepEqual(transitionLayer("translate var(--forma-motion-inertia-duration) var(--forma-motion-spring-easing)"), {
     property: "translate",
-    duration: "var(--ef-motion-inertia-duration)",
+    duration: "var(--forma-motion-inertia-duration)",
     delay: null,
-    easing: "var(--ef-motion-spring-easing)"
+    easing: "var(--forma-motion-spring-easing)"
   });
   assert.deepEqual(transitionLayer("display var(--x-duration) allow-discrete"), { property: "display", duration: "var(--x-duration)", delay: null, easing: null });
-  assert.deepEqual(animationLayer("pulse var(--ef-motion-cadence-period) linear infinite"), {
+  assert.deepEqual(animationLayer("pulse var(--forma-motion-cadence-period) linear infinite"), {
     name: "pulse",
-    duration: "var(--ef-motion-cadence-period)",
+    duration: "var(--forma-motion-cadence-period)",
     delay: null,
     easing: "linear",
     iteration: "infinite"
@@ -107,15 +107,15 @@ test("transition and animation layers separate property, timing, easing and iter
 const MODELS = {
   sources: {},
   models: {
-    inertial: { durationTokens: ["--ef-motion-inertia-duration", "--ef-motion-exit-duration"], easingTokens: ["--ef-motion-spring-easing", "--ef-motion-damped-easing"], literalEasings: [] },
-    gravity: { durationTokens: ["--ef-motion-gravity-duration"], easingTokens: ["--ef-motion-damped-easing"], literalEasings: [] },
-    cadence: { durationTokens: ["--ef-motion-cadence-period"], easingTokens: ["--ef-motion-cadence-easing"], literalEasings: ["linear", "steps()"] },
-    direct: { durationTokens: ["--ef-motion-direct-duration"], easingTokens: ["--ef-motion-direct-easing"], literalEasings: ["linear"] },
-    perceptual: { durationTokens: ["--ef-motion-perceptual-duration"], easingTokens: ["--ef-motion-perceptual-easing"], literalEasings: [] }
+    inertial: { durationTokens: ["--forma-motion-inertia-duration", "--forma-motion-exit-duration"], easingTokens: ["--forma-motion-spring-easing", "--forma-motion-damped-easing"], literalEasings: [] },
+    gravity: { durationTokens: ["--forma-motion-gravity-duration"], easingTokens: ["--forma-motion-damped-easing"], literalEasings: [] },
+    cadence: { durationTokens: ["--forma-motion-cadence-period"], easingTokens: ["--forma-motion-cadence-easing"], literalEasings: ["linear", "steps()"] },
+    direct: { durationTokens: ["--forma-motion-direct-duration"], easingTokens: ["--forma-motion-direct-easing"], literalEasings: ["linear"] },
+    perceptual: { durationTokens: ["--forma-motion-perceptual-duration"], easingTokens: ["--forma-motion-perceptual-easing"], literalEasings: [] }
   },
-  parameters: { "--ef-motion-mass": "m" },
-  legacyTokens: { "--ef-motion-state-duration": { replacement: "--ef-motion-perceptual-duration", reason: "legacy" } },
-  genericTokens: ["--ef-primitive-motion-duration-fast", "--ef-primitive-motion-easing-standard"],
+  parameters: { "--forma-motion-mass": "m" },
+  legacyTokens: { "--forma-motion-state-duration": { replacement: "--forma-motion-perceptual-duration", reason: "legacy" } },
+  genericTokens: ["--forma-primitive-motion-duration-fast", "--forma-primitive-motion-easing-standard"],
   spatialProperties: ["translate", "scale", "transform"],
   discreteCarriers: ["display", "overlay"],
   reducedMotionCollapse: ["0.01ms", "0ms"],
@@ -123,18 +123,18 @@ const MODELS = {
 };
 
 const VOCABULARY = `:where(:root) {
-  --ef-motion-perceptual-duration: var(--ef-primitive-motion-duration-fast, 120ms);
-  --ef-motion-perceptual-easing: var(--ef-primitive-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
-  --ef-motion-cadence-period: 1600ms;
-  --ef-motion-cadence-easing: linear;
-  --ef-motion-direct-duration: 0ms;
-  --ef-motion-direct-easing: linear;
-  --ef-motion-inertia-duration: 214ms;
-  --ef-motion-spring-easing: linear(0, 1);
-  --ef-motion-damped-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --forma-motion-perceptual-duration: var(--forma-primitive-motion-duration-fast, 120ms);
+  --forma-motion-perceptual-easing: var(--forma-primitive-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+  --forma-motion-cadence-period: 1600ms;
+  --forma-motion-cadence-easing: linear;
+  --forma-motion-direct-duration: 0ms;
+  --forma-motion-direct-easing: linear;
+  --forma-motion-inertia-duration: 214ms;
+  --forma-motion-spring-easing: linear(0, 1);
+  --forma-motion-damped-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
 }`;
 
-const PRIMITIVES = { "--ef-primitive-motion-duration-fast": "120ms", "--ef-primitive-motion-easing-standard": "cubic-bezier(0.2, 0, 0, 1)" };
+const PRIMITIVES = { "--forma-primitive-motion-duration-fast": "120ms", "--forma-primitive-motion-easing-standard": "cubic-bezier(0.2, 0, 0, 1)" };
 
 const audit = (css, entries = [], group = "core", extraSources = []) =>
   auditSources({
@@ -147,10 +147,10 @@ const audit = (css, entries = [], group = "core", extraSources = []) =>
 const codes = (result, code) => result.findings.filter((item) => !code || item.code === code);
 
 test("every animated selector must be classified", () => {
-  const result = audit(".x { transition: opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing); }");
+  const result = audit(".x { transition: opacity var(--forma-motion-perceptual-duration) var(--forma-motion-perceptual-easing); }");
   assert.equal(codes(result, "unclassified-track").length, 1);
   const classified = audit(
-    ".x { transition: opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing); }",
+    ".x { transition: opacity var(--forma-motion-perceptual-duration) var(--forma-motion-perceptual-easing); }",
     [{ selector: ".x", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } }]
   );
   assert.deepEqual(codes(classified), []);
@@ -169,28 +169,28 @@ test("unexplained literal durations, easings and implicit easing are reported", 
 });
 
 test("var() fallbacks are approved only when they restate the token value", () => {
-  const approved = audit(".x { transition: opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing); }", [
+  const approved = audit(".x { transition: opacity var(--forma-motion-perceptual-duration) var(--forma-motion-perceptual-easing); }", [
     { selector: ".x", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } }
   ]);
   assert.deepEqual(codes(approved), []);
-  const generic = audit(".x { transition: opacity var(--ef-primitive-motion-duration-fast, 120ms) var(--ef-primitive-motion-easing-standard, ease); }", [
+  const generic = audit(".x { transition: opacity var(--forma-primitive-motion-duration-fast, 120ms) var(--forma-primitive-motion-easing-standard, ease); }", [
     { selector: ".x", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } }
   ]);
   assert.deepEqual(codes(generic).map((item) => item.code).sort(), ["generic-token", "generic-token", "mismatched-fallback"]);
-  assert.equal(codes(generic, "mismatched-fallback")[0].value, "--ef-primitive-motion-easing-standard, ease");
+  assert.equal(codes(generic, "mismatched-fallback")[0].value, "--forma-primitive-motion-easing-standard, ease");
 });
 
 test("a track must use variables of its own model", () => {
-  const result = audit(".x { transition: opacity var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing); }", [
+  const result = audit(".x { transition: opacity var(--forma-motion-inertia-duration) var(--forma-motion-damped-easing); }", [
     { selector: ".x", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } }
   ]);
   assert.deepEqual(codes(result).map((item) => item.code), ["model-token-mismatch", "model-token-mismatch"]);
 });
 
 test("linear is legal for cadence and direct tracks but not for perceptual tracks", () => {
-  const css = `.spin { animation: turn var(--ef-motion-cadence-period) linear infinite; }
-    .drag { transition: translate var(--ef-motion-direct-duration) linear; }
-    .fade { transition: opacity var(--ef-motion-perceptual-duration) linear; }
+  const css = `.spin { animation: turn var(--forma-motion-cadence-period) linear infinite; }
+    .drag { transition: translate var(--forma-motion-direct-duration) linear; }
+    .fade { transition: opacity var(--forma-motion-perceptual-duration) linear; }
     @keyframes turn { to { rotate: 1turn; } }
     @media (prefers-reduced-motion: reduce) { .spin { animation: none; } }`;
   const result = audit(css, [
@@ -202,31 +202,31 @@ test("linear is legal for cadence and direct tracks but not for perceptual track
 });
 
 test("spatial motion needs a verified reduced-motion substitution", () => {
-  const missing = audit(".x { transition: translate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing); }", [
+  const missing = audit(".x { transition: translate var(--forma-motion-inertia-duration) var(--forma-motion-spring-easing); }", [
     { selector: ".x", tracks: { translate: "inertial" } }
   ]);
   assert.deepEqual(codes(missing).map((item) => item.code), ["reduced-motion-missing"]);
 
-  const claimed = audit(".x { transition: translate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing); }", [
+  const claimed = audit(".x { transition: translate var(--forma-motion-inertia-duration) var(--forma-motion-spring-easing); }", [
     { selector: ".x", tracks: { translate: "inertial" }, reducedMotion: { strategy: "explicit" } }
   ]);
   assert.deepEqual(codes(claimed).map((item) => item.code), ["reduced-motion-unverified"]);
 
-  const verified = audit(`.x { transition: translate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing); }
+  const verified = audit(`.x { transition: translate var(--forma-motion-inertia-duration) var(--forma-motion-spring-easing); }
     @media (prefers-reduced-motion: reduce) { .x { translate: none; transition-duration: 0.01ms; } }`, [
     { selector: ".x", tracks: { translate: "inertial" }, reducedMotion: { strategy: "explicit" } }
   ]);
   assert.deepEqual(codes(verified), []);
 
-  const preserved = audit(".x { transition: translate var(--ef-motion-inertia-duration) var(--ef-motion-spring-easing); }", [
+  const preserved = audit(".x { transition: translate var(--forma-motion-inertia-duration) var(--forma-motion-spring-easing); }", [
     { selector: ".x", tracks: { translate: "inertial" }, reducedMotion: { strategy: "preserve" } }
   ]);
   assert.ok(codes(preserved).some((item) => item.code === "reduced-motion-invalid"), "only direct tracks may preserve motion");
 });
 
 test("scope-token reduced motion is verified against the collapsed scope", () => {
-  const css = `.box { transition: scale var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing); }
-    @media (prefers-reduced-motion: reduce) { :where(.box-scope) { --ef-motion-inertia-duration: 0.01ms; } }`;
+  const css = `.box { transition: scale var(--forma-motion-inertia-duration) var(--forma-motion-damped-easing); }
+    @media (prefers-reduced-motion: reduce) { :where(.box-scope) { --forma-motion-inertia-duration: 0.01ms; } }`;
   const verified = audit(css, [{ selector: ".box", tracks: { scale: "inertial" }, reducedMotion: { strategy: "scope-tokens", scope: ".box-scope" } }]);
   assert.deepEqual(codes(verified), []);
   const wrong = audit(css, [{ selector: ".box", tracks: { scale: "inertial" }, reducedMotion: { strategy: "scope-tokens", scope: ".elsewhere" } }]);
@@ -234,7 +234,7 @@ test("scope-token reduced motion is verified against the collapsed scope", () =>
 });
 
 test("repeated motion must stop under reduced motion", () => {
-  const css = `.pulse { animation: glow var(--ef-motion-cadence-period) linear infinite; }
+  const css = `.pulse { animation: glow var(--forma-motion-cadence-period) linear infinite; }
     @keyframes glow { to { opacity: 0.5; } }`;
   const result = audit(css, [{ selector: ".pulse", tracks: { "animation:glow": "cadence" }, reducedMotion: { strategy: "explicit" } }]);
   assert.ok(codes(result).some((item) => item.code === "repeated-without-stop"));
@@ -245,7 +245,7 @@ test("keyframes, starting styles and progressive features must be classified", (
   const css = `@keyframes orphan { to { opacity: 0; } }
     @starting-style { .enter { opacity: 0; } }
     .page { view-transition-name: page; }
-    ::view-transition-old(page) { animation-duration: var(--ef-motion-perceptual-duration); }`;
+    ::view-transition-old(page) { animation-duration: var(--forma-motion-perceptual-duration); }`;
   const result = audit(css);
   assert.deepEqual(new Set(codes(result).map((item) => item.code)), new Set([
     "unclassified-keyframes",
@@ -257,7 +257,7 @@ test("keyframes, starting styles and progressive features must be classified", (
 });
 
 test("reduced-motion collapse constants are legal only inside reduced-motion rules", () => {
-  const css = `.x { transition: opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing); }
+  const css = `.x { transition: opacity var(--forma-motion-perceptual-duration) var(--forma-motion-perceptual-easing); }
     @media (prefers-reduced-motion: reduce) { .x { transition-duration: 0.01ms; } }
     .y { transition-duration: 0.01ms; }`;
   const result = audit(css, [{ selector: ".x", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } }]);
@@ -265,7 +265,7 @@ test("reduced-motion collapse constants are legal only inside reduced-motion rul
 });
 
 test("approved literals require an explicit reason on the classification entry", () => {
-  const css = `.run { animation-name: reveal; animation-duration: calc(var(--ef-motion-cadence-period) * 1ms); animation-timing-function: steps(4); }
+  const css = `.run { animation-name: reveal; animation-duration: calc(var(--forma-motion-cadence-period) * 1ms); animation-timing-function: steps(4); }
     @keyframes reveal { to { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) { .run { animation: none; } }`;
   const unapproved = audit(css, [{ selector: ".run", tracks: { "animation:reveal": "cadence" }, reducedMotion: { strategy: "stop" } }]);
@@ -280,18 +280,18 @@ test("approved literals require an explicit reason on the classification entry",
 });
 
 test("a standalone bundle must define every canonical variable it uses", () => {
-  const css = ".m { transition: color var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing); }";
+  const css = ".m { transition: color var(--forma-motion-perceptual-duration) var(--forma-motion-perceptual-easing); }";
   const result = audit(css, [{ selector: ".m", tracks: { color: "perceptual" }, reducedMotion: { strategy: "brief" } }], "marketing");
   assert.deepEqual(codes(result).map((item) => item.code), ["canonical-undefined", "canonical-undefined"]);
 });
 
 test("model-independent variables must have one definition everywhere", () => {
-  const result = audit(":root { --ef-motion-cadence-period: 900ms; }");
+  const result = audit(":root { --forma-motion-cadence-period: 900ms; }");
   assert.deepEqual(codes(result).map((item) => item.code), ["canonical-definition-conflict"]);
 });
 
 test("animated transform shorthand is reported so concurrent effects compose", () => {
-  const css = `.x { transition: transform var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing), translate var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing); }
+  const css = `.x { transition: transform var(--forma-motion-inertia-duration) var(--forma-motion-damped-easing), translate var(--forma-motion-inertia-duration) var(--forma-motion-damped-easing); }
     @media (prefers-reduced-motion: reduce) { .x { transition-duration: 0.01ms; } }`;
   const result = audit(css, [{ selector: ".x", tracks: { transform: "inertial", translate: "inertial" }, reducedMotion: { strategy: "explicit" } }]);
   assert.deepEqual(codes(result).map((item) => `${item.code}:${item.property}`), ["transform-shorthand-motion:transform"]);

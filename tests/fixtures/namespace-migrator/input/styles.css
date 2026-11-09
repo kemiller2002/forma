@@ -1,0 +1,11 @@
+/* Forma namespace tokens: every one is rewritten. */
+.ef-button, .ef-card__title:hover { color: var(--ef-color-text-primary, var(--ef-color-text-secondary)); }
+[data-ef-brand="harbor"] .ef-site--wide { --ef-site-backdrop: none; }
+ef-card, .ef-component-tag { display: block; }
+/* Adversarial: none of these is a Forma token. */
+.chef-special, .beef-jerky, .ref-link { --ref-color: red; --chef-x: 1; margin: var(--xef-y); }
+.x--ef-mod {} .self-ef-x {} [data-xef-a] {} .effect-ef {} .efc-x {} .ef_x {} .ef {}
+@layer forma.tokens { :root { --forma-color-accent-primary: #2b5ea8; } }
+/* Locations are untouched: */
+@import url("https://fonts.example.com/ef-sans.css"); @import "../ef-base.css";
+.ef-hero { background: url(/img/ef-bg.png); }

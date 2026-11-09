@@ -5,10 +5,10 @@ import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 
-const forma = "dist/marketing/forma-echelon-marketing.css";
+const forma = "dist/marketing/forma-marketing.css";
 
 function check(css) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-policy-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-policy-"));
   const file = path.join(dir, "site.css");
   fs.writeFileSync(file, css);
   const result = spawnSync("dotnet", ["run", "--project", "tools/SiteCssPolicy/SiteCssPolicy.fsproj", "--", "--forma", forma, file], { encoding: "utf8" });
@@ -21,7 +21,7 @@ test("site-specific content styling is allowed", () => {
 });
 
 test("restyling a Forma component is a violation", () => {
-  const result = check(".ef-card { padding: 3rem; }\n");
+  const result = check(".forma-card { padding: 3rem; }\n");
   assert.equal(result.status, 1);
   assert.match(result.output, /FORMA-COMPONENT/);
 });
@@ -35,34 +35,34 @@ test("redefining global typography, reset, or navigation is a violation", () => 
 });
 
 test("overriding Forma tokens is a violation outside the identity allowlist", () => {
-  const result = check(":root { --ef-layout-gutter: 2rem; }");
+  const result = check(":root { --forma-layout-gutter: 2rem; }");
   assert.equal(result.status, 1);
   assert.match(result.output, /TOKEN-OVERRIDE/);
 });
 
 test("identity tokens may be retargeted only to other Forma tokens", () => {
-  assert.equal(check(":root { --ef-color-accent-primary: var(--ef-color-accent-secondary); }").status, 0);
-  assert.equal(check('[data-ef-layout="product"] { --ef-color-accent-primary: var(--ef-color-accent-secondary); --ef-color-accent-hover: var(--ef-color-text-primary); }').status, 0);
-  const literal = check(":root { --ef-color-accent-primary: #336699; }");
+  assert.equal(check(":root { --forma-color-accent-primary: var(--forma-color-accent-secondary); }").status, 0);
+  assert.equal(check('[data-forma-layout="product"] { --forma-color-accent-primary: var(--forma-color-accent-secondary); --forma-color-accent-hover: var(--forma-color-text-primary); }').status, 0);
+  const literal = check(":root { --forma-color-accent-primary: #336699; }");
   assert.equal(literal.status, 1);
   assert.match(literal.output, /IDENTITY-VALUE/);
 });
 
 test("copying Forma palette values instead of using tokens is a violation", () => {
-  const result = check(".dk-panel { background: #F2EFE7; }");
+  const result = check(".dk-panel { background: #FAFAFA; }");
   assert.equal(result.status, 1);
   assert.match(result.output, /PALETTE-COPY/);
 });
 
 test("a documented forma-exception exempts a rule and is counted", () => {
-  const result = check("/* forma-exception: GAP-MKT-06 data tables pending in Forma */\n.ef-card table { inline-size: 100%; }\n");
+  const result = check("/* forma-exception: GAP-MKT-06 data tables pending in Forma */\n.forma-card table { inline-size: 100%; }\n");
   assert.equal(result.status, 0, result.output);
   assert.match(result.output, /1 documented exception/);
 });
 
-test("the current Echelon Foundry stylesheet pattern is detected as duplicate presentation", () => {
-  const legacy = `:root { --ef-parchment: #f2efe7; --ef-text-primary: var(--ef-carbon); }
-body { margin: 0; background: var(--ef-surface-primary); }
+test("a legacy hand-rolled site stylesheet pattern is detected as duplicate presentation", () => {
+  const legacy = `:root { --forma-paper: #fafafa; --forma-text-primary: var(--forma-ink); }
+body { margin: 0; background: var(--forma-surface-primary); }
 h1, h2 { font-family: var(--display); }
 .site-header { position: sticky; }
 nav a { padding: .55rem .7rem; }

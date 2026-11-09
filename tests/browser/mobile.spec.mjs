@@ -144,8 +144,8 @@ test("date range bounding box stays inside a constrained parent", async ({ page 
 
   const bounds = await page.evaluate(() => {
     const parent = document.querySelector("#date-range-boundary").getBoundingClientRect();
-    const fieldset = document.querySelector(".ef-date-range").getBoundingClientRect();
-    const inputs = [...document.querySelectorAll('.ef-date-range input[type="date"]')]
+    const fieldset = document.querySelector(".forma-date-range").getBoundingClientRect();
+    const inputs = [...document.querySelectorAll('.forma-date-range input[type="date"]')]
       .map(input => input.getBoundingClientRect());
 
     return {

@@ -1,15 +1,18 @@
-# Echelon Design System
+# Forma
 
-Shared design-system infrastructure for Echelon Foundry applications.
+Forma is a zero-component-runtime, brand-neutral design system: semantic HTML
+patterns, CSS, design tokens and accessibility contracts. An organization's
+identity (colors, typography, logos) comes from a brand manifest or theme
+package that the application loads after Forma; Forma ships none.
 
-This repository is governed by the Echelon engineering capability stack:
+This repository is governed by its publisher's engineering capability stack:
 
 - State-Directed Engineering / Ordo
 - Repository Operating System (ROS)
 - Visual Engineering
 - Communication Engineering
 
-The design system will provide shared visual foundations, reusable browser-native components, application patterns, accessibility contracts, behavioral state models where warranted, and integration points for Echelon applications.
+The design system will provide shared visual foundations, reusable browser-native components, application patterns, accessibility contracts, behavioral state models where warranted, and integration points for consuming applications.
 
 Repository requirements and implementation work should be captured through ROS and shaped by Ordo rather than treating the component catalog as the source of domain truth.
 
@@ -23,7 +26,7 @@ Current capability baseline:
 
 ## Forma
 
-**Forma** is the product name for this Echelon Foundry design system. The package identifier is `@echelon-foundry/design-system`. Forma 0.1.0 is the first application-consumption baseline.
+**Forma** is the product name for this design system. The package identifier is `@echelon-foundry/design-system`. Forma 0.1.0 was the first application-consumption baseline; Forma 1.0.0 is brand-neutral and uses the `forma-` namespace (see `CHANGELOG.md`).
 
 Forma is intentionally zero-runtime. Semantic HTML, CSS, design tokens,
 accessibility contracts, and visual patterns live here. Behavior beyond
@@ -49,19 +52,19 @@ inventory, planned components and known issues.
 Agent usage rules are in [docs/AGENT-USAGE.md](docs/AGENT-USAGE.md).
 
 
-Public component examples use readable inert `<ef-*>` authoring tags around
+Public component examples use readable inert `<forma-*>` authoring tags around
 the canonical native HTML:
 
 ```html
-<ef-switch class="ef-component-tag">
-  <label class="ef-switch">
-    <input class="ef-switch__input" type="checkbox" role="switch">
-    <span class="ef-switch__track" aria-hidden="true"></span>
-    <span class="ef-switch__text">
-      <span class="ef-switch__label">Notifications</span>
+<forma-switch class="forma-component-tag">
+  <label class="forma-switch">
+    <input class="forma-switch__input" type="checkbox" role="switch">
+    <span class="forma-switch__track" aria-hidden="true"></span>
+    <span class="forma-switch__text">
+      <span class="forma-switch__label">Notifications</span>
     </span>
   </label>
-</ef-switch>
+</forma-switch>
 ```
 
 The wrapper is not registered with `customElements.define()`; Forma remains
@@ -82,16 +85,15 @@ contract.
 
 ## Marketing sites
 
-Forma is the shared presentation system for every Echelon marketing website.
-The Echelon Foundry site is the visual reference, and each site consumes the
-same pinned artifacts:
+Forma is a shared presentation system for marketing websites. Each site
+consumes the same pinned artifacts:
 
 - the MarketingShell;
 - the brand-neutral marketing components and layouts;
-- the Echelon Marketing Theme.
+- optionally, its organization's marketing theme, which ships outside Forma.
 
 Start with `docs/MARKETING-SITES.md` and the reference fixture in
-`examples/echelon-marketing-site`.
+`examples/marketing-site` (a fictional organization).
 
 ## Branding and skins
 
@@ -147,7 +149,7 @@ The design-system package stays zero-runtime. The editor ships separately; see
 
 Forma treats Figma as a design and developer-consumption surface, not as a
 second source of truth. Canonical tokens remain in
-`tokens/echelon.tokens.json`, canonical component anatomy remains in
+`tokens/forma.tokens.json`, canonical component anatomy remains in
 `patterns/*.html`, and `figma/component-contracts.json` provides complete,
 machine-readable coverage for the Figma library.
 

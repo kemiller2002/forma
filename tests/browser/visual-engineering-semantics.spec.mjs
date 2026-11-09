@@ -36,7 +36,7 @@ test("state survivability exposes distinct state words in text", async ({ page }
   for (const state of ["Unknown", "Stale", "Partial", "Unavailable"]) {
     await expect(page.getByText(state, { exact: true })).toBeVisible();
   }
-  const descriptions = await page.locator(".ef-state-survivability__state p").allTextContents();
+  const descriptions = await page.locator(".forma-state-survivability__state p").allTextContents();
   expect(descriptions.join(" ")).toMatch(/not been confirmed/i);
   expect(descriptions.join(" ")).toMatch(/older than/i);
   expect(descriptions.join(" ")).toMatch(/scope/i);

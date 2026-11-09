@@ -29,31 +29,31 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Record details with status and links",
       description: "A deployment's properties. Values mix plain text, an [[identifier]], a link, a machine-readable time and a [[status-lozenge]]; the list itself stays a plain description list.",
-      html: `<ef-key-value-list class="ef-component-tag">
+      html: `<forma-key-value-list class="forma-component-tag">
   <section aria-labelledby="key-value-list-record-details-title">
     <h3 id="key-value-list-record-details-title">Deployment details</h3>
-    <dl class="ef-key-value-list">
-      <div><dt>Release</dt><dd><span class="ef-identifier">rel-2026.09.29-3f8c21</span></dd></div>
+    <dl class="forma-key-value-list">
+      <div><dt>Release</dt><dd><span class="forma-identifier">rel-2026.09.29-3f8c21</span></dd></div>
       <div><dt>Environment</dt><dd>Production, EU West</dd></div>
-      <div><dt>Status</dt><dd><span class="ef-status-lozenge" data-state="ok">Healthy</span></dd></div>
+      <div><dt>Status</dt><dd><span class="forma-status-lozenge" data-state="ok">Healthy</span></dd></div>
       <div><dt>Started</dt><dd><time datetime="2026-09-29T07:42:00Z">29 Sep 2026, 07:42 UTC</time></dd></div>
       <div><dt>Owner</dt><dd><a href="#key-value-list-record-details-owner">Platform team</a></dd></div>
     </dl>
   </section>
-</ef-key-value-list>`
+</forma-key-value-list>`
     },
     {
       id: "long-labels-missing-values",
       title: "Long labels and missing values",
       description: "German labels (marked with `lang=\"de\"`) that are longer than the 7rem minimum label column wrap within it, and values that are not set are written out rather than left blank so an empty `dd` is never mistaken for a loading value.",
-      html: `<ef-key-value-list class="ef-component-tag">
-  <dl class="ef-key-value-list" lang="de">
+      html: `<forma-key-value-list class="forma-component-tag">
+  <dl class="forma-key-value-list" lang="de">
     <div><dt>Verantwortliche Abteilung für Rechnungsprüfung</dt><dd>Finanzbuchhaltung Mitteleuropa</dd></div>
     <div><dt>Kostenstelle</dt><dd>Nicht festgelegt</dd></div>
-    <div><dt>Umsatzsteuer-Identifikationsnummer</dt><dd><span class="ef-identifier">DE 812 345 678</span></dd></div>
+    <div><dt>Umsatzsteuer-Identifikationsnummer</dt><dd><span class="forma-identifier">DE 812 345 678</span></dd></div>
     <div><dt>Letzte Prüfung</dt><dd>Unbekannt: Prüfprotokoll nicht verfügbar</dd></div>
   </dl>
-</ef-key-value-list>`
+</forma-key-value-list>`
     },
     {
       id: "mobile-account-summary",
@@ -70,14 +70,14 @@ export default {
           "Orientation changes only switch between the stacked and two-column rows at the 30rem breakpoint."
         ]
       },
-      html: `<ef-key-value-list class="ef-component-tag">
-  <dl class="ef-key-value-list">
+      html: `<forma-key-value-list class="forma-component-tag">
+  <dl class="forma-key-value-list">
     <div><dt>Account</dt><dd>Northwind Logistics International</dd></div>
     <div><dt>Plan</dt><dd>Business, billed monthly</dd></div>
     <div><dt>Seats</dt><dd>48 of 50 in use</dd></div>
     <div><dt>Billing contact</dt><dd><a href="#key-value-list-mobile-account-summary-contact">accounts-payable@northwind.example</a></dd></div>
   </dl>
-</ef-key-value-list>`
+</forma-key-value-list>`
     }
   ],
   api: {
@@ -86,7 +86,7 @@ export default {
       { name: "aria-labelledby", on: "wrapping section", values: "id of a heading", default: "—", description: "Names the section that contains the list when the list has a visible heading." }
     ],
     hooks: {
-      "ef-key-value-list": "The native `dl`. Each direct `div` child is a label/value row laid out as a two-column grid with a subtle bottom rule."
+      "forma-key-value-list": "The native `dl`. Each direct `div` child is a label/value row laid out as a two-column grid with a subtle bottom rule."
     },
     keyboard: [
       { keys: "Tab", action: "Only interactive content inside values (links, buttons) is focusable; the list itself is not." }

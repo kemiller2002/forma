@@ -28,31 +28,31 @@ export default {
       id: "page-based",
       title: "Page-based progress after branching",
       description: "Progress measured in pages. An earlier answer removed a section, so the application recalculated the total from 6 to 5 pages and says so in the context line.",
-      html: `<ef-survey-progress class="ef-component-tag">
-  <div class="ef-survey-progress">
-    <div class="ef-survey-progress__header">
-      <span class="ef-survey-progress__label" id="survey-page-label">Assessment progress</span>
-      <span class="ef-survey-progress__value">Page 2 of 5</span>
+      html: `<forma-survey-progress class="forma-component-tag">
+  <div class="forma-survey-progress">
+    <div class="forma-survey-progress__header">
+      <span class="forma-survey-progress__label" id="survey-page-label">Assessment progress</span>
+      <span class="forma-survey-progress__value">Page 2 of 5</span>
     </div>
-    <progress class="ef-survey-progress__bar" value="2" max="5" aria-labelledby="survey-page-label">40%</progress>
-    <p class="ef-survey-progress__context">Security section skipped based on your earlier answer.</p>
+    <progress class="forma-survey-progress__bar" value="2" max="5" aria-labelledby="survey-page-label">40%</progress>
+    <p class="forma-survey-progress__context">Security section skipped based on your earlier answer.</p>
   </div>
-</ef-survey-progress>`
+</forma-survey-progress>`
     },
     {
       id: "all-answered",
       title: "All questions answered",
       description: "The final question is answered and the bar is full. The text tells the respondent what happens next; a full bar alone does not mean the application has accepted the submission.",
-      html: `<ef-survey-progress class="ef-component-tag">
-  <div class="ef-survey-progress">
-    <div class="ef-survey-progress__header">
-      <span class="ef-survey-progress__label" id="survey-done-label">Survey progress</span>
-      <span class="ef-survey-progress__value">12 of 12 answered</span>
+      html: `<forma-survey-progress class="forma-component-tag">
+  <div class="forma-survey-progress">
+    <div class="forma-survey-progress__header">
+      <span class="forma-survey-progress__label" id="survey-done-label">Survey progress</span>
+      <span class="forma-survey-progress__value">12 of 12 answered</span>
     </div>
-    <progress class="ef-survey-progress__bar" value="12" max="12" aria-labelledby="survey-done-label">100%</progress>
-    <p class="ef-survey-progress__context">Review your answers, then submit.</p>
+    <progress class="forma-survey-progress__bar" value="12" max="12" aria-labelledby="survey-done-label">100%</progress>
+    <p class="forma-survey-progress__context">Review your answers, then submit.</p>
   </div>
-</ef-survey-progress>`
+</forma-survey-progress>`
     },
     {
       id: "mobile-wrapping-header",
@@ -67,31 +67,31 @@ export default {
           "No horizontal overflow at 320px in either orientation."
         ]
       },
-      html: `<ef-survey-progress class="ef-component-tag">
-  <div class="ef-survey-progress">
-    <div class="ef-survey-progress__header">
-      <span class="ef-survey-progress__label" id="survey-mobile-label">Operational readiness assessment</span>
-      <span class="ef-survey-progress__value">Question 17 of 40</span>
+      html: `<forma-survey-progress class="forma-component-tag">
+  <div class="forma-survey-progress">
+    <div class="forma-survey-progress__header">
+      <span class="forma-survey-progress__label" id="survey-mobile-label">Operational readiness assessment</span>
+      <span class="forma-survey-progress__value">Question 17 of 40</span>
     </div>
-    <progress class="ef-survey-progress__bar" value="17" max="40" aria-labelledby="survey-mobile-label">43%</progress>
-    <p class="ef-survey-progress__context">Section 3 of 6 · Incident response and communication</p>
+    <progress class="forma-survey-progress__bar" value="17" max="40" aria-labelledby="survey-mobile-label">43%</progress>
+    <p class="forma-survey-progress__context">Section 3 of 6 · Incident response and communication</p>
   </div>
-</ef-survey-progress>`
+</forma-survey-progress>`
     }
   ],
   api: {
     attributes: [
       { name: "value", on: "progress", values: "number", default: "—", description: "Current position supplied by the application." },
       { name: "max", on: "progress", values: "number", default: "1", description: "Total supplied by the application; update it when branching changes the total." },
-      { name: "aria-labelledby", on: "progress", values: "id of .ef-survey-progress__label", default: "—", description: "Gives the bar its accessible name." }
+      { name: "aria-labelledby", on: "progress", values: "id of .forma-survey-progress__label", default: "—", description: "Gives the bar its accessible name." }
     ],
     hooks: {
-      "ef-survey-progress": "Root grid stacking header, bar and context.",
-      "ef-survey-progress__header": "Wrapping flex row with label and value at opposite ends.",
-      "ef-survey-progress__label": "Bold visible label; reference it from the bar.",
-      "ef-survey-progress__value": "Explicit current/total text in small monospace.",
-      "ef-survey-progress__bar": "The native progress element: full width, 0.65rem tall, accent color from the theme.",
-      "ef-survey-progress__context": "Optional section or status text under the bar."
+      "forma-survey-progress": "Root grid stacking header, bar and context.",
+      "forma-survey-progress__header": "Wrapping flex row with label and value at opposite ends.",
+      "forma-survey-progress__label": "Bold visible label; reference it from the bar.",
+      "forma-survey-progress__value": "Explicit current/total text in small monospace.",
+      "forma-survey-progress__bar": "The native progress element: full width, 0.65rem tall, accent color from the theme.",
+      "forma-survey-progress__context": "Optional section or status text under the bar."
     },
     keyboard: [
       { keys: "None", action: "Not interactive and not focusable." }

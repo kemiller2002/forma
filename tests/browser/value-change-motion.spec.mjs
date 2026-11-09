@@ -30,10 +30,10 @@ const probeDuration = (page, token) => page.evaluate((name) => {
 // Replace the value element the way an application publishes an update, then
 // sample every frame of the presentation.
 const publish = (page, next) => page.evaluate(async (text) => {
-  const current = document.querySelector(".ef-metric-card__value");
+  const current = document.querySelector(".forma-metric-card__value");
   const replacement = current.cloneNode(false);
   replacement.textContent = text;
-  replacement.setAttribute("data-ef-value-change", "");
+  replacement.setAttribute("data-forma-value-change", "");
   current.replaceWith(replacement);
   const frames = [];
   const luminance = (rgb) => {
@@ -90,7 +90,7 @@ test("a published value is authoritative and legible from the first frame; no co
 
 test("the emphasis is perceptual and identical for increases, decreases and status changes", async ({ page }) => {
   await page.setContent(html(metric), { waitUntil: "load" });
-  const emphasis = await probeDuration(page, "--ef-motion-perceptual-emphasis-duration");
+  const emphasis = await probeDuration(page, "--forma-motion-perceptual-emphasis-duration");
   const up = await publish(page, "$51,000");
   const down = await publish(page, "$12,400");
   const same = await publish(page, "$12,400");
@@ -115,7 +115,7 @@ test("reduced motion and forced colors show the new value immediately with no em
 test("status state stays legible without color: the glyph and text change immediately", async ({ page }) => {
   await page.emulateMedia({ forcedColors: "active" });
   await page.setContent(html(metric), { waitUntil: "load" });
-  const lozenge = page.locator(".ef-status-lozenge");
+  const lozenge = page.locator(".forma-status-lozenge");
   await lozenge.evaluate((element) => { element.dataset.state = "ok"; element.textContent = "Paid in full"; });
   const glyph = await lozenge.evaluate((element) => getComputedStyle(element, "::before").content);
   expect(glyph).toBe('"✓"');
@@ -124,10 +124,10 @@ test("status state stays legible without color: the glyph and text change immedi
 
 test("overlay opacity and backdrop dimming use perceptual interpolation, not mass-derived timing", async ({ page }) => {
   await page.setContent(html(`
-    <div class="ef-popover" popover id="pop">Popover</div>
-    <div class="ef-toast" popover="manual" id="toast">Saved</div>
-    <dialog class="ef-dialog" id="dialog"><p>Dialog</p></dialog>`), { waitUntil: "load" });
-  const perceptual = await probeDuration(page, "--ef-motion-perceptual-duration");
+    <div class="forma-popover" popover id="pop">Popover</div>
+    <div class="forma-toast" popover="manual" id="toast">Saved</div>
+    <dialog class="forma-dialog" id="dialog"><p>Dialog</p></dialog>`), { waitUntil: "load" });
+  const perceptual = await probeDuration(page, "--forma-motion-perceptual-duration");
   const timings = await page.evaluate(() => {
     const byProperty = (element, pseudo) => {
       const style = getComputedStyle(element, pseudo);
@@ -158,7 +158,7 @@ test("overlay opacity and backdrop dimming use perceptual interpolation, not mas
 test("a theme change introduces no spatial motion", async ({ page }) => {
   await page.setContent(html(`${metric}${fs.readFileSync("patterns/switch.html", "utf8")}${fs.readFileSync("patterns/segmented-control.html", "utf8")}`), { waitUntil: "load" });
   const spatial = await page.evaluate(async (names) => {
-    document.documentElement.setAttribute("data-ef-theme", "dark");
+    document.documentElement.setAttribute("data-forma-theme", "dark");
     await new Promise((done) => requestAnimationFrame(() => requestAnimationFrame(done)));
     return document.getAnimations()
       .map((animation) => animation.transitionProperty)

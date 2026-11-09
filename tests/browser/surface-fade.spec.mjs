@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { expect, test } from "@playwright/test";
 
-for (const [slug, selector] of [["popover", ".ef-popover"], ["menu", ".ef-menu"], ["tooltip", ".ef-tooltip__surface"]]) {
+for (const [slug, selector] of [["popover", ".forma-popover"], ["menu", ".forma-menu"], ["tooltip", ".forma-tooltip__surface"]]) {
   test(`${slug}: reciprocal opacity follows a quick slow-fast-slow curve`, async ({ page }) => {
     await page.goto("/tests/browser/fixture/overlay-motion.html");
     await page.locator("main").evaluate((element, html) => { element.innerHTML = html; }, fs.readFileSync(`patterns/${slug}.html`, "utf8"));
@@ -76,7 +76,7 @@ for (const [slug, selector] of [["popover", ".ef-popover"], ["menu", ".ef-menu"]
 
 // Measure actual CSS transitions, including a containing boundary like the
 // documentation preview. No synthetic keyframes may stand in for dismissal.
-for (const [slug, selector] of [["popover", ".ef-popover"], ["menu", ".ef-menu"], ["tooltip", ".ef-tooltip__surface"]]) {
+for (const [slug, selector] of [["popover", ".forma-popover"], ["menu", ".forma-menu"], ["tooltip", ".forma-tooltip__surface"]]) {
   test.describe(`${slug} stationary dismissal`, () => {
   for (const width of [320, 1000]) {
     test.describe(`${width}px`, () => {

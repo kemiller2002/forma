@@ -40,42 +40,42 @@ export default {
       },
       title: "Notification preferences",
       description: "Independent settings stacked in a fieldset. Each switch carries a label and a description linked with aria-describedby, and one starts checked.",
-      html: `<ef-switch class="ef-component-tag">
-  <fieldset class="ef-stack" data-density="compact">
+      html: `<forma-switch class="forma-component-tag">
+  <fieldset class="forma-stack" data-density="compact">
     <legend>Notifications</legend>
-    <label class="ef-switch">
-      <input class="ef-switch__input" type="checkbox" role="switch" name="notify-deploys" value="on" checked aria-describedby="notify-deploys-description">
-      <span class="ef-switch__track" aria-hidden="true"></span>
-      <span class="ef-switch__text">
-        <span class="ef-switch__label">Deployment results</span>
-        <span class="ef-switch__description" id="notify-deploys-description">Email me when a deployment I started finishes or fails.</span>
+    <label class="forma-switch">
+      <input class="forma-switch__input" type="checkbox" role="switch" name="notify-deploys" value="on" checked aria-describedby="notify-deploys-description">
+      <span class="forma-switch__track" aria-hidden="true"></span>
+      <span class="forma-switch__text">
+        <span class="forma-switch__label">Deployment results</span>
+        <span class="forma-switch__description" id="notify-deploys-description">Email me when a deployment I started finishes or fails.</span>
       </span>
     </label>
-    <label class="ef-switch">
-      <input class="ef-switch__input" type="checkbox" role="switch" name="notify-digest" value="on" aria-describedby="notify-digest-description">
-      <span class="ef-switch__track" aria-hidden="true"></span>
-      <span class="ef-switch__text">
-        <span class="ef-switch__label">Weekly digest</span>
-        <span class="ef-switch__description" id="notify-digest-description">A Monday summary of activity across all projects.</span>
+    <label class="forma-switch">
+      <input class="forma-switch__input" type="checkbox" role="switch" name="notify-digest" value="on" aria-describedby="notify-digest-description">
+      <span class="forma-switch__track" aria-hidden="true"></span>
+      <span class="forma-switch__text">
+        <span class="forma-switch__label">Weekly digest</span>
+        <span class="forma-switch__description" id="notify-digest-description">A Monday summary of activity across all projects.</span>
       </span>
     </label>
   </fieldset>
-</ef-switch>`
+</forma-switch>`
     },
     {
       id: "disabled-by-policy",
       title: "Disabled by policy",
       description: "A setting the organization has locked. The input is natively disabled, so it is skipped by keyboard focus and excluded from form submission; the description states why, because a dimmed control alone does not explain itself.",
-      html: `<ef-switch class="ef-component-tag">
-  <label class="ef-switch">
-    <input class="ef-switch__input" type="checkbox" role="switch" name="policy-mfa" value="on" checked disabled aria-describedby="policy-mfa-description">
-    <span class="ef-switch__track" aria-hidden="true"></span>
-    <span class="ef-switch__text">
-      <span class="ef-switch__label">Require two-step sign-in</span>
-      <span class="ef-switch__description" id="policy-mfa-description">Locked on by your organization's security policy. Contact an administrator to change it.</span>
+      html: `<forma-switch class="forma-component-tag">
+  <label class="forma-switch">
+    <input class="forma-switch__input" type="checkbox" role="switch" name="policy-mfa" value="on" checked disabled aria-describedby="policy-mfa-description">
+    <span class="forma-switch__track" aria-hidden="true"></span>
+    <span class="forma-switch__text">
+      <span class="forma-switch__label">Require two-step sign-in</span>
+      <span class="forma-switch__description" id="policy-mfa-description">Locked on by your organization's security policy. Contact an administrator to change it.</span>
     </span>
   </label>
-</ef-switch>`
+</forma-switch>`
     },
     {
       id: "motion-weight-and-long-label",
@@ -87,15 +87,15 @@ export default {
       },
       title: "Heavy motion weight with a long label",
       description: "A heavy presentation weight gives the thumb a slower, more settled travel. The long translated label wraps beside the track instead of widening the page. Weight is presentation only and says nothing about importance.",
-      html: `<ef-switch class="ef-component-tag">
-  <label class="ef-switch" data-ef-motion-weight="heavy">
-    <input class="ef-switch__input" type="checkbox" role="switch" name="archive-sync" value="on">
-    <span class="ef-switch__track" aria-hidden="true"></span>
-    <span class="ef-switch__text">
-      <span class="ef-switch__label">Synchronisation automatique des archives de projets partagés entre tous les espaces de travail</span>
+      html: `<forma-switch class="forma-component-tag">
+  <label class="forma-switch" data-forma-motion-weight="heavy">
+    <input class="forma-switch__input" type="checkbox" role="switch" name="archive-sync" value="on">
+    <span class="forma-switch__track" aria-hidden="true"></span>
+    <span class="forma-switch__text">
+      <span class="forma-switch__label">Synchronisation automatique des archives de projets partagés entre tous les espaces de travail</span>
     </span>
   </label>
-</ef-switch>`
+</forma-switch>`
     },
     {
       id: "mobile-settings-list",
@@ -118,29 +118,29 @@ export default {
           "Orientation changes only reflow the text column. The control order and semantics do not change."
         ]
       },
-      html: `<ef-switch class="ef-component-tag">
-  <fieldset class="ef-stack">
+      html: `<forma-switch class="forma-component-tag">
+  <fieldset class="forma-stack">
     <legend>Privacy</legend>
-    <label class="ef-switch">
-      <input class="ef-switch__input" type="checkbox" role="switch" name="mobile-location" value="on" checked>
-      <span class="ef-switch__track" aria-hidden="true"></span>
-      <span class="ef-switch__text"><span class="ef-switch__label">Share location with my team</span></span>
+    <label class="forma-switch">
+      <input class="forma-switch__input" type="checkbox" role="switch" name="mobile-location" value="on" checked>
+      <span class="forma-switch__track" aria-hidden="true"></span>
+      <span class="forma-switch__text"><span class="forma-switch__label">Share location with my team</span></span>
     </label>
-    <label class="ef-switch">
-      <input class="ef-switch__input" type="checkbox" role="switch" name="mobile-presence" value="on">
-      <span class="ef-switch__track" aria-hidden="true"></span>
-      <span class="ef-switch__text">
-        <span class="ef-switch__label">Show when I'm active</span>
-        <span class="ef-switch__description">Colleagues see a presence dot next to your name.</span>
+    <label class="forma-switch">
+      <input class="forma-switch__input" type="checkbox" role="switch" name="mobile-presence" value="on">
+      <span class="forma-switch__track" aria-hidden="true"></span>
+      <span class="forma-switch__text">
+        <span class="forma-switch__label">Show when I'm active</span>
+        <span class="forma-switch__description">Colleagues see a presence dot next to your name.</span>
       </span>
     </label>
-    <label class="ef-switch">
-      <input class="ef-switch__input" type="checkbox" role="switch" name="mobile-analytics" value="on">
-      <span class="ef-switch__track" aria-hidden="true"></span>
-      <span class="ef-switch__text"><span class="ef-switch__label">Send anonymous usage analytics</span></span>
+    <label class="forma-switch">
+      <input class="forma-switch__input" type="checkbox" role="switch" name="mobile-analytics" value="on">
+      <span class="forma-switch__track" aria-hidden="true"></span>
+      <span class="forma-switch__text"><span class="forma-switch__label">Send anonymous usage analytics</span></span>
     </label>
   </fieldset>
-</ef-switch>`
+</forma-switch>`
     }
   ],
   api: {
@@ -151,20 +151,20 @@ export default {
       { name: "disabled", on: "input", values: "boolean", default: "absent", description: "Removes the switch from focus order and form submission and dims the row." },
       { name: "name", on: "input", values: "string", default: "—", description: "Form field name. Only submitted while the switch is on." },
       { name: "value", on: "input", values: "string", default: "\"on\"", description: "Submitted value when on." },
-      { name: "aria-describedby", on: "input", values: "id of .ef-switch__description", default: "—", description: "Links the supporting description so it is announced after the label." }
+      { name: "aria-describedby", on: "input", values: "id of .forma-switch__description", default: "—", description: "Links the supporting description so it is announced after the label." }
     ],
     hooks: {
-      "ef-switch": "Root label element. It is the grid that places track and text and makes the whole row the hit target.",
-      "ef-switch__input": "The native checkbox, visually transparent and stretched over the row.",
-      "ef-switch__track": "Decorative track; its ::after pseudo-element is the thumb. Mark it aria-hidden=\"true\".",
-      "ef-switch__text": "Wrapper for label and description; it is the column that shrinks and wraps.",
-      "ef-switch__label": "Visible accessible name.",
-      "ef-switch__description": "Optional supporting text referenced by aria-describedby.",
-      "data-ef-motion-weight": "Presentation-only perceived mass for thumb travel: light, standard (default) or heavy. Never encodes importance or risk.",
-      "--ef-switch-width": "Track width. Default 2.75rem.",
-      "--ef-switch-height": "Track height. Default 1.5rem.",
-      "--ef-switch-thumb": "Thumb diameter. Default 1.125rem.",
-      "--ef-switch-gap": "Inset between track edge and thumb. Default 0.1875rem."
+      "forma-switch": "Root label element. It is the grid that places track and text and makes the whole row the hit target.",
+      "forma-switch__input": "The native checkbox, visually transparent and stretched over the row.",
+      "forma-switch__track": "Decorative track; its ::after pseudo-element is the thumb. Mark it aria-hidden=\"true\".",
+      "forma-switch__text": "Wrapper for label and description; it is the column that shrinks and wraps.",
+      "forma-switch__label": "Visible accessible name.",
+      "forma-switch__description": "Optional supporting text referenced by aria-describedby.",
+      "data-forma-motion-weight": "Presentation-only perceived mass for thumb travel: light, standard (default) or heavy. Never encodes importance or risk.",
+      "--forma-switch-width": "Track width. Default 2.75rem.",
+      "--forma-switch-height": "Track height. Default 1.5rem.",
+      "--forma-switch-thumb": "Thumb diameter. Default 1.125rem.",
+      "--forma-switch-gap": "Inset between track edge and thumb. Default 0.1875rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus to and from the switch (skipped when disabled)." },
@@ -204,7 +204,7 @@ export default {
   ],
   motion: [
     "The thumb travels with the shared inertial (spring) model: a short acceleration and a light settle at the end position, communicating that the setting physically changed.",
-    "`data-ef-motion-weight` changes perceived mass (light is quicker, heavy is slower and more damped). The checked state itself is immediate.",
+    "`data-forma-motion-weight` changes perceived mass (light is quicker, heavy is slower and more damped). The checked state itself is immediate.",
     "The track color is a perceptual interpolation that is independent of mass.",
     "Interrupting a toggle mid-travel re-targets from the current position; the native state is always authoritative.",
     "Under `prefers-reduced-motion: reduce` travel is effectively instant and position still shows the state."

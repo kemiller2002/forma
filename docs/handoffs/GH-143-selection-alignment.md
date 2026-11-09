@@ -8,7 +8,7 @@ from 1280px to 320px left choice cards at 76.375px while their wrapped content
 needed 97.171875px including padding. The marker was 10.3984375px above the
 content center. Waiting for two animation frames did not repair the geometry.
 
-Use a column flex layout for `.ef-choice-group`, retaining its gap, native
+Use a column flex layout for `.forma-choice-group`, retaining its gap, native
 fieldset/legend semantics and full-width cards. The cards now size from their
 wrapped content. Keep the one-pixel alignment tolerance and additionally test
 that text fits both top and bottom padding at 100% and 200% text size.

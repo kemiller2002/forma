@@ -12,9 +12,9 @@ export default {
   category: "utilities",
   behavior: "Static presentation",
   summary: "Brand-neutral, zero-runtime inline SVG icons compiled from Forma's reviewed registry, with explicit decorative and accessible use.",
-  owns: ["ef-icon"],
+  owns: ["forma-icon"],
   purpose: {
-    description: "Forma emits deterministic inline SVG geometry at build time from its icon registry. The inert <ef-icon> authoring tag is not a registered custom element. Each default inline icon is decorative and aria-hidden; the native button, heading or adjacent words carry human-facing meaning and an accessible name. Semantic status and application state remain outside icons.",
+    description: "Forma emits deterministic inline SVG geometry at build time from its icon registry. The inert <forma-icon> authoring tag is not a registered custom element. Each default inline icon is decorative and aria-hidden; the native button, heading or adjacent words carry human-facing meaning and an accessible name. Semantic status and application state remain outside icons.",
     useWhen: [
       "Use a small visual cue beside a text label in a toolbar, menu, workflow or record.",
       "Use a version-pinned icon for print or offline exports that must render without a network request.",
@@ -27,7 +27,7 @@ export default {
     ],
     characteristics: [
       "The library supplies eighty original 24×24, round-stroke outline icons, including email and messaging actions, navigation, documents, diagnostics and status.",
-      "Color inherits currentColor; size uses --ef-icon-size, default 1.25em.",
+      "Color inherits currentColor; size uses --forma-icon-size, default 1.25em.",
       "Compiled inline SVG needs no runtime JavaScript, external sprites, fonts or CDN."
     ]
   },
@@ -37,17 +37,17 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Search command with visible label",
       description: "Decorative search icon inside a native, visibly named button. Both pointer activation and Playwright role/name lookup belong to the button, never to the icon.",
-      html: `<ef-icon class="ef-component-tag">
+      html: `<forma-icon class="forma-component-tag">
   <button type="button">${icon("search")} Search</button>
-</ef-icon>`
+</forma-icon>`
     },
     {
       id: "explicit-warning",
       title: "Warning accompanied by text",
       description: "A warning indicator remains meaningful in grayscale and forced colors because the words, not the SVG color, communicate the state.",
-      html: `<ef-icon class="ef-component-tag">
+      html: `<forma-icon class="forma-component-tag">
   <p>${icon("warning")} Warning: review incomplete.</p>
-</ef-icon>`
+</forma-icon>`
     },
     {
       id: "mobile-icon-action",
@@ -63,24 +63,24 @@ export default {
           "The icon does not determine whether editing is allowed or complete."
         ]
       },
-      html: `<ef-icon class="ef-component-tag">
-  <div class="ef-cluster" role="group" aria-label="Document actions">
+      html: `<forma-icon class="forma-component-tag">
+  <div class="forma-cluster" role="group" aria-label="Document actions">
     <button type="button" aria-label="Edit document">${icon("edit")}</button>
     <button type="button" aria-label="Close document">${icon("close")}</button>
   </div>
-</ef-icon>`
+</forma-icon>`
     }
   ],
   api: {
     attributes: [
-      { name: "data-ef-icon", on: "span.ef-icon", values: "registered name", default: "source icon ID", description: "Stable metadata used for inspection and tooling, not an executable icon-loading mechanism." },
-      { name: "aria-hidden", on: "svg.ef-icon__svg", values: "true", default: "true in pre-rendered HTML", description: "The generated inline SVG is decorative; consumers supply the accessible label on a containing control or via nearby text." }
+      { name: "data-forma-icon", on: "span.forma-icon", values: "registered name", default: "source icon ID", description: "Stable metadata used for inspection and tooling, not an executable icon-loading mechanism." },
+      { name: "aria-hidden", on: "svg.forma-icon__svg", values: "true", default: "true in pre-rendered HTML", description: "The generated inline SVG is decorative; consumers supply the accessible label on a containing control or via nearby text." }
     ],
     hooks: {
-      "ef-icon": "Presentational inline-flex container; semantic <ef-icon> authoring tags remain inert.",
-      "ef-icon__svg": "Inline 24-unit SVG geometry that scales with the .ef-icon container.",
-      "data-ef-icon": "Stable registered icon identifier, distinct from application state.",
-      "--ef-icon-size": "CSS custom property controlling inline icon size."
+      "forma-icon": "Presentational inline-flex container; semantic <forma-icon> authoring tags remain inert.",
+      "forma-icon__svg": "Inline 24-unit SVG geometry that scales with the .forma-icon container.",
+      "data-forma-icon": "Stable registered icon identifier, distinct from application state.",
+      "--forma-icon-size": "CSS custom property controlling inline icon size."
     },
     keyboard: [{ keys: "None", action: "An icon is inert; keyboard operation belongs to a native button, link or other named host control." }],
     events: [{ name: "None", description: "The icon has no events or state transitions." }],
@@ -89,7 +89,7 @@ export default {
   states: [
     { name: "Decorative", how: "Generated SVG has aria-hidden=true and focusable=false", description: "The application uses text and semantic markup to supply meaning." },
     { name: "Themed", how: "Set text color on the ancestor or a standard Forma brand scope", description: "SVG stroke follows currentColor without changing icon identity." },
-    { name: "Resized", how: "Override --ef-icon-size", description: "Geometry scales from a fixed 24×24 viewBox without loading new artwork." }
+    { name: "Resized", how: "Override --forma-icon-size", description: "Geometry scales from a fixed 24×24 viewBox without loading new artwork." }
   ],
   accessibility: {
     forma: [
@@ -106,7 +106,7 @@ export default {
   responsive: [
     "Icons scale with inline text and never require an independent touch target.",
     "Surrounding native controls keep 44px target sizing and can wrap to 320px.",
-    "Changing --ef-icon-size does not override container or application breakpoints."
+    "Changing --forma-icon-size does not override container or application breakpoints."
   ],
   motion: ["No animation is applied to icon geometry. If a consuming application animates a state transition, it must obey reduced-motion and publish an authoritative completion signal."],
   guidance: {

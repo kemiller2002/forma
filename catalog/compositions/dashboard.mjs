@@ -7,67 +7,67 @@ export default {
     "The deploy table scrolls inside a labelled [[bounded-overflow]] region at narrow widths, so the page never scrolls sideways.",
     "[[status-lozenge]] states (Confirmed, Needs attention, Unknown) remain distinguishable in grayscale and forced colors."
   ],
-  html: `<div class="ef-stack">
-  <ef-record-header class="ef-component-tag">
-    <header class="ef-record-header">
-      <div class="ef-record-header__main">
+  html: `<div class="forma-stack">
+  <forma-record-header class="forma-component-tag">
+    <header class="forma-record-header">
+      <div class="forma-record-header__main">
         <nav aria-label="Breadcrumb"><a href="#dashboard-services">Services</a> <span aria-hidden="true">/</span> <a href="#dashboard-checkout">Checkout</a></nav>
-        <div class="ef-record-header__title">
-          <div><span class="ef-record-header__type">Service</span><h2>Checkout API</h2></div>
-          <span class="ef-status-lozenge" data-state="attention">Degraded</span>
+        <div class="forma-record-header__title">
+          <div><span class="forma-record-header__type">Service</span><h2>Checkout API</h2></div>
+          <span class="forma-status-lozenge" data-state="attention">Degraded</span>
         </div>
         <p>Owned by Payments · Europe West</p>
       </div>
-      <div class="ef-record-header__actions">
+      <div class="forma-record-header__actions">
         <button type="button">Open runbook</button>
         <details>
           <summary>More</summary>
-          <div class="ef-record-header__menu"><button type="button">Silence alerts</button><button type="button">View history</button></div>
+          <div class="forma-record-header__menu"><button type="button">Silence alerts</button><button type="button">View history</button></div>
         </details>
       </div>
     </header>
-  </ef-record-header>
+  </forma-record-header>
 
-  <ef-alert class="ef-component-tag">
-    <aside class="ef-alert" role="status" data-tone="attention">
-      <div class="ef-alert__icon" aria-hidden="true">!</div>
+  <forma-alert class="forma-component-tag">
+    <aside class="forma-alert" role="status" data-tone="attention">
+      <div class="forma-alert__icon" aria-hidden="true">!</div>
       <div>
-        <h3 class="ef-alert__title">Error rate above objective</h3>
+        <h3 class="forma-alert__title">Error rate above objective</h3>
         <p>2.4% of requests failed in the last 15 minutes. The objective is 1%.</p>
       </div>
       <button type="button">Investigate</button>
     </aside>
-  </ef-alert>
+  </forma-alert>
 
-  <ef-dashboard-grid class="ef-component-tag">
-    <section class="ef-dashboard-grid" aria-label="Checkout API health">
-      <ef-metric-card class="ef-component-tag">
-        <article class="ef-metric-card">
-          <div class="ef-metric-card__label">Requests per minute</div>
-          <div class="ef-metric-card__value">18,240</div>
-          <div class="ef-metric-card__context"><span class="ef-status-lozenge" data-state="ok">Confirmed</span></div>
+  <forma-dashboard-grid class="forma-component-tag">
+    <section class="forma-dashboard-grid" aria-label="Checkout API health">
+      <forma-metric-card class="forma-component-tag">
+        <article class="forma-metric-card">
+          <div class="forma-metric-card__label">Requests per minute</div>
+          <div class="forma-metric-card__value">18,240</div>
+          <div class="forma-metric-card__context"><span class="forma-status-lozenge" data-state="ok">Confirmed</span></div>
         </article>
-      </ef-metric-card>
-      <ef-metric-card class="ef-component-tag">
-        <article class="ef-metric-card">
-          <div class="ef-metric-card__label">Error rate</div>
-          <div class="ef-metric-card__value">2.4%</div>
-          <div class="ef-metric-card__context"><span class="ef-status-lozenge" data-state="attention">Needs attention</span></div>
+      </forma-metric-card>
+      <forma-metric-card class="forma-component-tag">
+        <article class="forma-metric-card">
+          <div class="forma-metric-card__label">Error rate</div>
+          <div class="forma-metric-card__value">2.4%</div>
+          <div class="forma-metric-card__context"><span class="forma-status-lozenge" data-state="attention">Needs attention</span></div>
         </article>
-      </ef-metric-card>
-      <ef-metric-card class="ef-component-tag">
-        <article class="ef-metric-card">
-          <div class="ef-metric-card__label">Queue depth</div>
-          <div class="ef-metric-card__value">—</div>
-          <div class="ef-metric-card__context"><span class="ef-status-lozenge" data-state="unknown">Unknown</span></div>
+      </forma-metric-card>
+      <forma-metric-card class="forma-component-tag">
+        <article class="forma-metric-card">
+          <div class="forma-metric-card__label">Queue depth</div>
+          <div class="forma-metric-card__value">—</div>
+          <div class="forma-metric-card__context"><span class="forma-status-lozenge" data-state="unknown">Unknown</span></div>
           <a href="#dashboard-queue">Why is this unknown?</a>
         </article>
-      </ef-metric-card>
+      </forma-metric-card>
     </section>
-  </ef-dashboard-grid>
+  </forma-dashboard-grid>
 
-  <ef-bounded-overflow class="ef-component-tag">
-    <div class="ef-bounded-overflow" role="region" aria-label="Recent deployments" tabindex="0">
+  <forma-bounded-overflow class="forma-component-tag">
+    <div class="forma-bounded-overflow" role="region" aria-label="Recent deployments" tabindex="0">
       <table>
         <caption>Recent deployments</caption>
         <thead><tr><th scope="col">Version</th><th scope="col">Started</th><th scope="col">Author</th><th scope="col">Result</th></tr></thead>
@@ -77,6 +77,6 @@ export default {
         </tbody>
       </table>
     </div>
-  </ef-bounded-overflow>
+  </forma-bounded-overflow>
 </div>`
 };

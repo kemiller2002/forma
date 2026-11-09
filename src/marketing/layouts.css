@@ -2,7 +2,7 @@
   Forma marketing layouts.
 
   Page-level structure for public/marketing sites. The MarketingShell
-  (.ef-site) owns the frame: skip link, header, main, footer, and common
+  (.forma-site) owns the frame: skip link, header, main, footer, and common
   behavior. Page layouts (Marketing, Product, Documentation) are compositions
   of the same components inside that frame; only the documentation layout
   needs structure of its own.
@@ -18,168 +18,168 @@
     the fold.
   All other recomposition is content-driven (flex-wrap / auto-fit minimums).
 */
-@layer echelon.marketing.layouts {
+@layer forma.marketing.layouts {
   @media (min-width: 40rem) and (min-height: 36rem) {
-    .ef-site-header { position: sticky; inset-block-start: 0; }
+    .forma-site-header { position: sticky; inset-block-start: 0; }
   }
 
-  .ef-site__main {
+  .forma-site__main {
     flex: 1 0 auto;
-    inline-size: min(100%, var(--ef-layout-width-max));
+    inline-size: min(100%, var(--forma-layout-width-max));
     margin-inline: auto;
-    padding-inline: var(--ef-layout-gutter);
-    padding-block-end: var(--ef-layout-section-space);
+    padding-inline: var(--forma-layout-gutter);
+    padding-block-end: var(--forma-layout-section-space);
   }
 
-  .ef-site__main:focus { outline: none; }
+  .forma-site__main:focus { outline: none; }
 
   /* Containers constrain a region inside the page width. */
-  .ef-container {
-    inline-size: min(100%, var(--ef-container-width, var(--ef-layout-width-standard)));
+  .forma-container {
+    inline-size: min(100%, var(--forma-container-width, var(--forma-layout-width-standard)));
     margin-inline: auto;
   }
 
-  .ef-container[data-ef-width="narrow"] { --ef-container-width: var(--ef-layout-width-narrow); }
-  .ef-container[data-ef-width="wide"] { --ef-container-width: var(--ef-layout-width-wide); }
-  .ef-container[data-ef-width="max"] { --ef-container-width: var(--ef-layout-width-max); }
+  .forma-container[data-forma-width="narrow"] { --forma-container-width: var(--forma-layout-width-narrow); }
+  .forma-container[data-forma-width="wide"] { --forma-container-width: var(--forma-layout-width-wide); }
+  .forma-container[data-forma-width="max"] { --forma-container-width: var(--forma-layout-width-max); }
 
   /* Sections: consistent vertical rhythm between page regions. */
-  .ef-site .ef-section {
-    padding-block: calc(var(--ef-layout-section-space) / 2);
+  .forma-site .forma-section {
+    padding-block: calc(var(--forma-layout-section-space) / 2);
   }
 
-  .ef-site .ef-section[data-ef-tone]:not([data-ef-tone="page"]) {
-    margin-block: calc(var(--ef-layout-section-space) / 2);
-    padding: calc(var(--ef-layout-block-space) * 2);
+  .forma-site .forma-section[data-forma-tone]:not([data-forma-tone="page"]) {
+    margin-block: calc(var(--forma-layout-section-space) / 2);
+    padding: calc(var(--forma-layout-block-space) * 2);
     /* The block-space token is rem-based; at enlarged text on a phone it
        would leave a few characters of line length (96px content at 320px
        and 200% text). Cap only the inline padding by viewport width; this
        changes nothing at the default text size (ULI-L05). */
-    padding-inline: min(calc(var(--ef-layout-block-space) * 2), 12.5vw);
+    padding-inline: min(calc(var(--forma-layout-block-space) * 2), 12.5vw);
   }
 
-  .ef-section > * + * { margin-block-start: var(--ef-layout-stack-space); }
-  .ef-section > .ef-section-heading + * { margin-block-start: 0; }
+  .forma-section > * + * { margin-block-start: var(--forma-layout-stack-space); }
+  .forma-section > .forma-section-heading + * { margin-block-start: 0; }
 
   /* Split: primary content with a supporting column that wraps below it. */
-  .ef-split {
+  .forma-split {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: calc(var(--ef-layout-section-space) / 2);
+    gap: calc(var(--forma-layout-section-space) / 2);
   }
 
-  .ef-split > :first-child { flex: 999 1 0; min-inline-size: min(100%, 55%); }
-  .ef-split > :last-child:not(:first-child) { flex: 1 1 clamp(18rem, 32%, 30rem); min-inline-size: 0; }
+  .forma-split > :first-child { flex: 999 1 0; min-inline-size: min(100%, 55%); }
+  .forma-split > :last-child:not(:first-child) { flex: 1 1 clamp(18rem, 32%, 30rem); min-inline-size: 0; }
 
   /* Hero: the page's first region and its one primary recognition path. */
-  .ef-hero {
+  .forma-hero {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
-    gap: calc(var(--ef-layout-section-space) / 2);
-    padding-block: var(--ef-layout-section-space) calc(var(--ef-layout-block-space) * 2);
-    border-block-end: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
+    gap: calc(var(--forma-layout-section-space) / 2);
+    padding-block: var(--forma-layout-section-space) calc(var(--forma-layout-block-space) * 2);
+    border-block-end: var(--forma-shape-border-width) solid var(--forma-tone-rule-strong);
   }
 
-  .ef-hero__content { flex: 999 1 0; min-inline-size: min(100%, 55%); }
-  .ef-hero__aside { flex: 1 1 clamp(18rem, 32%, 30rem); min-inline-size: 0; }
-  .ef-hero__content > * + *,
-  .ef-hero__aside > * + * { margin-block-start: var(--ef-layout-stack-space); }
-  .ef-hero__title { margin-block: var(--ef-space-2) var(--ef-space-6); }
-  .ef-hero__content > .ef-eyebrow + .ef-hero__title { margin-block-start: 0; }
+  .forma-hero__content { flex: 999 1 0; min-inline-size: min(100%, 55%); }
+  .forma-hero__aside { flex: 1 1 clamp(18rem, 32%, 30rem); min-inline-size: 0; }
+  .forma-hero__content > * + *,
+  .forma-hero__aside > * + * { margin-block-start: var(--forma-layout-stack-space); }
+  .forma-hero__title { margin-block: var(--forma-space-2) var(--forma-space-6); }
+  .forma-hero__content > .forma-eyebrow + .forma-hero__title { margin-block-start: 0; }
 
   /* Documentation page: navigation, article, optional page outline.
      Three regions with different roles cannot share one minimum size, so
      the grid regroups by the width of the main region (a container):
      one column, then navigation + article (outline follows the article),
      then all three. Source order and reading order never change. */
-  .ef-site__main { container: ef-main / inline-size; }
+  .forma-site__main { container: forma-main / inline-size; }
 
-  .ef-doc {
-    container: ef-doc / inline-size;
+  .forma-doc {
+    container: forma-doc / inline-size;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--ef-layout-block-space) calc(var(--ef-layout-section-space) / 2);
+    gap: var(--forma-layout-block-space) calc(var(--forma-layout-section-space) / 2);
     align-items: start;
-    padding-block: calc(var(--ef-layout-section-space) / 2);
+    padding-block: calc(var(--forma-layout-section-space) / 2);
   }
 
-  .ef-doc__nav,
-  .ef-doc__content,
-  .ef-doc__aside { min-inline-size: 0; }
+  .forma-doc__nav,
+  .forma-doc__content,
+  .forma-doc__aside { min-inline-size: 0; }
 
-  .ef-doc__content { --ef-type-size-h1: var(--ef-type-size-h2); }
+  .forma-doc__content { --forma-type-size-h1: var(--forma-type-size-h2); }
 
-  @container ef-main (inline-size >= 48rem) {
-    .ef-doc { grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr); }
-    .ef-doc__aside { grid-column: 2; }
+  @container forma-main (inline-size >= 48rem) {
+    .forma-doc { grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr); }
+    .forma-doc__aside { grid-column: 2; }
   }
 
-  @container ef-main (inline-size >= 72rem) {
-    .ef-doc { grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr) minmax(10rem, 14rem); }
-    .ef-doc__aside { grid-column: 3; }
+  @container forma-main (inline-size >= 72rem) {
+    .forma-doc { grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr) minmax(10rem, 14rem); }
+    .forma-doc__aside { grid-column: 3; }
   }
 
-  .ef-doc__nav :where(ul),
-  .ef-doc__aside :where(ul) {
+  .forma-doc__nav :where(ul),
+  .forma-doc__aside :where(ul) {
     margin: 0;
     padding: 0;
-    border-inline-start: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+    border-inline-start: var(--forma-shape-border-width) solid var(--forma-tone-rule);
     list-style: none;
   }
 
-  .ef-doc__nav :where(li + li),
-  .ef-doc__aside :where(li + li) { margin-block-start: 0; }
+  .forma-doc__nav :where(li + li),
+  .forma-doc__aside :where(li + li) { margin-block-start: 0; }
 
-  .ef-doc__nav :where(a),
-  .ef-doc__aside :where(a) {
+  .forma-doc__nav :where(a),
+  .forma-doc__aside :where(a) {
     display: flex;
     align-items: center;
-    min-block-size: var(--ef-layout-target-min);
-    margin-inline-start: calc(var(--ef-shape-border-width) * -1);
-    padding-inline: var(--ef-space-4);
-    border-inline-start: calc(var(--ef-shape-border-width) * 2) solid transparent;
-    color: var(--ef-tone-text);
-    font-size: var(--ef-type-size-small);
+    min-block-size: var(--forma-layout-target-min);
+    margin-inline-start: calc(var(--forma-shape-border-width) * -1);
+    padding-inline: var(--forma-space-4);
+    border-inline-start: calc(var(--forma-shape-border-width) * 2) solid transparent;
+    color: var(--forma-tone-text);
+    font-size: var(--forma-type-size-small);
     text-decoration: none;
   }
 
-  .ef-doc__nav :where(a:hover),
-  .ef-doc__aside :where(a:hover) { border-inline-start-color: var(--ef-color-accent-primary); }
+  .forma-doc__nav :where(a:hover),
+  .forma-doc__aside :where(a:hover) { border-inline-start-color: var(--forma-color-accent-primary); }
 
-  .ef-doc__nav :where(a[aria-current]) {
-    border-inline-start-color: var(--ef-tone-rule-strong);
-    font-weight: var(--ef-type-weight-strong);
+  .forma-doc__nav :where(a[aria-current]) {
+    border-inline-start-color: var(--forma-tone-rule-strong);
+    font-weight: var(--forma-type-weight-strong);
   }
 
-  .ef-doc__heading { margin-block-end: var(--ef-space-2); }
+  .forma-doc__heading { margin-block-end: var(--forma-space-2); }
 
   @media (min-width: 64rem) and (min-height: 36rem) {
-    .ef-doc__nav,
-    .ef-doc__aside {
+    .forma-doc__nav,
+    .forma-doc__aside {
       position: sticky;
-      inset-block-start: var(--ef-layout-header-offset);
-      max-block-size: calc(100vh - var(--ef-layout-header-offset) - 1rem);
+      inset-block-start: var(--forma-layout-header-offset);
+      max-block-size: calc(100vh - var(--forma-layout-header-offset) - 1rem);
       overflow: auto;
     }
   }
 
-  @container ef-doc (inline-size < 48rem) {
-    .ef-doc__nav :where(ul) {
+  @container forma-doc (inline-size < 48rem) {
+    .forma-doc__nav :where(ul) {
       display: flex;
       flex-wrap: wrap;
-      gap: 0 var(--ef-space-1);
+      gap: 0 var(--forma-space-1);
       border-inline-start: 0;
-      border-block-end: var(--ef-shape-border-width) solid var(--ef-tone-rule);
+      border-block-end: var(--forma-shape-border-width) solid var(--forma-tone-rule);
     }
 
-    .ef-doc__nav :where(a) {
+    .forma-doc__nav :where(a) {
       margin-inline-start: 0;
       border-inline-start: 0;
-      border-block-end: calc(var(--ef-shape-border-width) * 2) solid transparent;
+      border-block-end: calc(var(--forma-shape-border-width) * 2) solid transparent;
     }
 
-    .ef-doc__nav :where(a[aria-current]) { border-block-end-color: var(--ef-tone-rule-strong); }
+    .forma-doc__nav :where(a[aria-current]) { border-block-end-color: var(--forma-tone-rule-strong); }
   }
 }

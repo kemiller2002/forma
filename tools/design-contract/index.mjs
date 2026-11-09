@@ -163,28 +163,28 @@ const requiredLabel = field => `${field.label}${field.control.required && !/\bre
 const renderNativeControl = field => {
   const kind = field.control.kind;
   if (kind === "textarea") return `<textarea ${inputAttributes(field)} rows="${field.control.rows ?? 4}">${escapeHtml(field.control.value ?? "")}</textarea>`;
-  if (kind === "select") return `<span class="ef-select"><select class="ef-select__input" ${inputAttributes(field)}>${array(field.control.options).map(option => `<option ${attrs([["value", option.value], ["selected", option.selected], ["disabled", option.disabled]])}>${escapeHtml(option.label)}</option>`).join("")}</select><span class="ef-select__indicator" aria-hidden="true"></span></span>`;
+  if (kind === "select") return `<span class="forma-select"><select class="forma-select__input" ${inputAttributes(field)}>${array(field.control.options).map(option => `<option ${attrs([["value", option.value], ["selected", option.selected], ["disabled", option.disabled]])}>${escapeHtml(option.label)}</option>`).join("")}</select><span class="forma-select__indicator" aria-hidden="true"></span></span>`;
   return `<input ${attrs([["type", kind], ["id", field.id], ["name", field.name], ["required", field.control.required], ["readonly", field.control.readonly], ["disabled", field.control.disabled], ["autocomplete", field.control.autocomplete], ["inputmode", field.control.inputmode], ["value", field.control.value], ["aria-describedby", fieldDescriptionIds(field) || undefined]])}>`;
 };
 
 const renderField = field => {
-  const description = field.description ? `<span class="ef-field__description" id="${escapeHtml(field.id)}-description">${escapeHtml(field.description)}</span>\n` : "";
-  const validation = field.validation ? `\n<p class="ef-validation-message ef-validation-message--when-invalid" id="${escapeHtml(field.id)}-error"><span class="ef-validation-message__mark" aria-hidden="true">!</span>${escapeHtml(field.validation.message)}</p>` : "";
+  const description = field.description ? `<span class="forma-field__description" id="${escapeHtml(field.id)}-description">${escapeHtml(field.description)}</span>\n` : "";
+  const validation = field.validation ? `\n<p class="forma-validation-message forma-validation-message--when-invalid" id="${escapeHtml(field.id)}-error"><span class="forma-validation-message__mark" aria-hidden="true">!</span>${escapeHtml(field.validation.message)}</p>` : "";
   if (field.control.kind === "checkbox" || field.control.kind === "toggle") {
     const root = field.control.kind === "toggle" ? "switch" : "checkbox";
     const role = field.control.kind === "toggle" ? " role=\"switch\"" : "";
     const visual = field.control.kind === "toggle" ? "track" : "box";
-    return `<div class="ef-field">${description}<label class="ef-${root}"><input class="ef-${root}__input" type="checkbox"${role} ${attrs([["id", field.id], ["name", field.name], ["value", field.control.value ?? "on"], ["checked", field.control.checked], ["required", field.control.required], ["disabled", field.control.disabled], ["aria-describedby", fieldDescriptionIds(field) || undefined]])}><span class="ef-${root}__${visual}" aria-hidden="true"></span><span class="ef-${root}__text"><span class="ef-${root}__label">${escapeHtml(requiredLabel(field))}</span></span></label>${validation}</div>`;
+    return `<div class="forma-field">${description}<label class="forma-${root}"><input class="forma-${root}__input" type="checkbox"${role} ${attrs([["id", field.id], ["name", field.name], ["value", field.control.value ?? "on"], ["checked", field.control.checked], ["required", field.control.required], ["disabled", field.control.disabled], ["aria-describedby", fieldDescriptionIds(field) || undefined]])}><span class="forma-${root}__${visual}" aria-hidden="true"></span><span class="forma-${root}__text"><span class="forma-${root}__label">${escapeHtml(requiredLabel(field))}</span></span></label>${validation}</div>`;
   }
   if (field.control.kind === "radio-group") {
-    return `<div class="ef-field">${description}<fieldset class="ef-choice-group"${fieldDescriptionIds(field) ? ` aria-describedby="${escapeHtml(fieldDescriptionIds(field))}"` : ""}><legend class="ef-choice-group__legend">${escapeHtml(requiredLabel(field))}</legend>${array(field.control.options).map(option => `<label class="ef-choice"><input type="radio" ${attrs([["name", field.name], ["value", option.value], ["checked", option.selected], ["disabled", option.disabled], ["required", field.control.required]])}><span class="ef-choice__content"><strong>${escapeHtml(option.label)}</strong></span></label>`).join("")}</fieldset>${validation}</div>`;
+    return `<div class="forma-field">${description}<fieldset class="forma-choice-group"${fieldDescriptionIds(field) ? ` aria-describedby="${escapeHtml(fieldDescriptionIds(field))}"` : ""}><legend class="forma-choice-group__legend">${escapeHtml(requiredLabel(field))}</legend>${array(field.control.options).map(option => `<label class="forma-choice"><input type="radio" ${attrs([["name", field.name], ["value", option.value], ["checked", option.selected], ["disabled", option.disabled], ["required", field.control.required]])}><span class="forma-choice__content"><strong>${escapeHtml(option.label)}</strong></span></label>`).join("")}</fieldset>${validation}</div>`;
   }
-  return `<div class="ef-field">\n<label class="ef-field__label" for="${escapeHtml(field.id)}">${escapeHtml(requiredLabel(field))}</label>\n${description}${renderNativeControl(field)}${validation}\n</div>`;
+  return `<div class="forma-field">\n<label class="forma-field__label" for="${escapeHtml(field.id)}">${escapeHtml(requiredLabel(field))}</label>\n${description}${renderNativeControl(field)}${validation}\n</div>`;
 };
 
-const renderLayout = layout => `<div class="${layout.model === "grid" ? "ef-form-row" : "ef-stack"}" data-ef-form-layout="${layout.model}">\n${array(layout.children).map(renderField).map(value => indent(value)).join("\n")}\n</div>`;
-const renderActions = group => `<div class="ef-actions">${array(group.children).map(action => `<button type="${action.type}">${escapeHtml(action.label)}</button>`).join("")}</div>`;
-const renderFeedback = item => `<p class="ef-form__outcome" id="${escapeHtml(item.id)}" role="status" aria-label="${escapeHtml(item.label)}">${escapeHtml(item.message)}</p>`;
+const renderLayout = layout => `<div class="${layout.model === "grid" ? "forma-form-row" : "forma-stack"}" data-forma-form-layout="${layout.model}">\n${array(layout.children).map(renderField).map(value => indent(value)).join("\n")}\n</div>`;
+const renderActions = group => `<div class="forma-actions">${array(group.children).map(action => `<button type="${action.type}">${escapeHtml(action.label)}</button>`).join("")}</div>`;
+const renderFeedback = item => `<p class="forma-form__outcome" id="${escapeHtml(item.id)}" role="status" aria-label="${escapeHtml(item.label)}">${escapeHtml(item.message)}</p>`;
 
 export const renderDesignContract = document => {
   const findings = validateDesignContract(document);
@@ -196,7 +196,7 @@ export const renderDesignContract = document => {
   const root = document.root;
   const heading = `${root.id}-title`;
   const children = root.children.map(child => child.kind === "layout" ? renderLayout(child) : child.kind === "actions" ? renderActions(child) : renderFeedback(child));
-  return `<form class="ef-form" id="${escapeHtml(root.id)}" method="${root.method}" action="${escapeHtml(root.action)}" aria-labelledby="${heading}">\n<h2 id="${heading}">${escapeHtml(root.title)}</h2>\n${children.join("\n")}\n</form>\n`;
+  return `<form class="forma-form" id="${escapeHtml(root.id)}" method="${root.method}" action="${escapeHtml(root.action)}" aria-labelledby="${heading}">\n<h2 id="${heading}">${escapeHtml(root.title)}</h2>\n${children.join("\n")}\n</form>\n`;
 };
 
 export const DESIGN_CONTRACT = Object.freeze({ format: FORMAT, version: VERSION });

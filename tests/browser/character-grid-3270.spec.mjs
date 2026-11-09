@@ -4,8 +4,8 @@ import { gridDocument, measureGrid, pattern } from "./character-grid-helpers.mjs
 
 const source = pattern("character-grid-3270");
 const to32x80 = html => html
-  .replace('data-ef-rows="24"', 'data-ef-rows="32"')
-  .replace(/data-ef-row="(\d+)"/g, (match, row) => (Number(row) >= 21 ? `data-ef-row="${Number(row) + 8}"` : match));
+  .replace('data-forma-rows="24"', 'data-forma-rows="32"')
+  .replace(/data-forma-row="(\d+)"/g, (match, row) => (Number(row) >= 21 ? `data-forma-row="${Number(row) + 8}"` : match));
 
 // At touch pitch a field shorter than five cells widens to 2.75rem by design
 // (CG-13 reserves blank cells for it), so only its origin is compared there.
@@ -35,7 +35,7 @@ test("32x80 integrity: the same screen with reserved rows at 29-32 and status at
   expect([grid.applicationRows, grid.statusRows, grid.rowCount, grid.columnCount]).toEqual([32, 1, 33, 80]);
   expectAligned(grid);
   const status = await page.getByRole("status").filter({ hasText: "READY" }).boundingBox();
-  const surface = await page.locator(".ef-character-grid__surface").boundingBox();
+  const surface = await page.locator(".forma-character-grid__surface").boundingBox();
   expect(status.y + status.height).toBeGreaterThan(surface.y + surface.height * 0.9);
 });
 
@@ -45,19 +45,19 @@ test("the OIA status row renders after the application rows, aligned to the same
   const [grid] = await measureGrid(page);
   const status = page.getByRole("status").filter({ hasText: "READY" });
   const statusBox = await status.boundingBox();
-  const lastKeyBox = await page.locator('.ef-character-grid__key[data-ef-row="23"]').boundingBox();
+  const lastKeyBox = await page.locator('.forma-character-grid__key[data-forma-row="23"]').boundingBox();
   expect(statusBox.y).toBeGreaterThanOrEqual(lastKeyBox.y + grid.rowPitch - 1);
   const statusRun = grid.runs.find(run => run.id === "p:25:2");
   expect(Math.abs(statusRun.dx), "status starts on column 2 of the shared tracks").toBeLessThanOrEqual(1);
   expect(Math.abs(statusRun.dy), "status sits on row 25").toBeLessThanOrEqual(1);
   // Device status is presentation of state, never a focus stop.
   await page.locator("#character-grid-3270-option").focus();
-  const stops = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__status, .ef-character-grid__status *")]
+  const stops = await page.evaluate(() => [...document.querySelectorAll(".forma-character-grid__status, .forma-character-grid__status *")]
     .filter(element => element.tabIndex >= 0).length);
   expect(stops).toBe(0);
   // The profile's rule over the row is a cue added to the visible READY word.
   expect(await status.evaluate(element => getComputedStyle(element).boxShadow)).not.toBe("none");
-  await page.setContent(gridDocument(source.replace(' data-ef-profile="ibm-3270"', "")));
+  await page.setContent(gridDocument(source.replace(' data-forma-profile="ibm-3270"', "")));
   expect(await page.getByRole("status").filter({ hasText: "READY" }).evaluate(element => getComputedStyle(element).boxShadow)).toBe("none");
 });
 
@@ -65,9 +65,9 @@ test("the device status row is reserved: no layout shift while status is empty o
   await page.setViewportSize({ width: 1280, height: 900 });
   const surfaceHeight = async html => {
     await page.setContent(gridDocument(html));
-    return page.locator(".ef-character-grid__surface").evaluate(element => element.getBoundingClientRect().height);
+    return page.locator(".forma-character-grid__surface").evaluate(element => element.getBoundingClientRect().height);
   };
-  const statusRun = /<p class="ef-character-grid__status"[^>]*>.*?<\/p>/s;
+  const statusRun = /<p class="forma-character-grid__status"[^>]*>.*?<\/p>/s;
   const withStatus = await surfaceHeight(source);
   const emptyStatus = await surfaceHeight(source.replace(statusRun, match => match.replace(/>.*<\/p>$/s, "></p>")));
   const noStatus = await surfaceHeight(source.replace(statusRun, ""));
@@ -78,7 +78,7 @@ test("the device status row is reserved: no layout shift while status is empty o
 test("the profile changes presentation only: geometry is identical with and without it", async ({ page }) => {
   await page.setContent(gridDocument(source));
   const [profiled] = await measureGrid(page);
-  await page.setContent(gridDocument(source.replace(' data-ef-profile="ibm-3270"', "")));
+  await page.setContent(gridDocument(source.replace(' data-forma-profile="ibm-3270"', "")));
   const [plain] = await measureGrid(page);
   expect(profiled.columnWidth).toBeCloseTo(plain.columnWidth, 3);
   expect(profiled.rowPitch).toBeCloseTo(plain.rowPitch, 3);
@@ -90,15 +90,15 @@ test("the profile evokes a 3270: dark screen, protected and unprotected colors d
   const colors = await page.evaluate(() => {
     const style = selector => getComputedStyle(document.querySelector(selector));
     return {
-      background: style(".ef-character-grid__viewport").backgroundColor,
-      protectedText: style(".ef-character-grid__text").color,
-      field: style(".ef-character-grid__field").color,
-      font: style(".ef-character-grid__surface").fontFamily
+      background: style(".forma-character-grid__viewport").backgroundColor,
+      protectedText: style(".forma-character-grid__text").color,
+      field: style(".forma-character-grid__field").color,
+      font: style(".forma-character-grid__surface").fontFamily
     };
   });
   expect(colors.background).toBe("rgb(0, 0, 0)");
   // Regression: foundation rules for p/h*/label must not leak color or measure into runs.
-  const paragraph = await page.locator("p.ef-character-grid__text").evaluate(element => {
+  const paragraph = await page.locator("p.forma-character-grid__text").evaluate(element => {
     const style = getComputedStyle(element);
     return { color: style.color, maxWidth: style.maxInlineSize };
   });

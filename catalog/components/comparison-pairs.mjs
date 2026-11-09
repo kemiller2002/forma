@@ -17,7 +17,7 @@ export default {
       "The user must choose between conflicting versions: use [[conflict-review]]."
     ],
     characteristics: [
-      "Each `.ef-comparison-pairs__item` is a three-column grid: `minmax(8rem, 0.8fr)` for the label and two equal value columns.",
+      "Each `.forma-comparison-pairs__item` is a three-column grid: `minmax(8rem, 0.8fr)` for the label and two equal value columns.",
       "Each value shows its `data-label` as a small block caption above it at every width, so values are never unlabeled.",
       "`data-side=\"before\"` and `data-side=\"after\"` are what enable the caption; both sides are styled identically, so neither looks preferred.",
       "At 30rem and below each item becomes a single column: label, first value, second value."
@@ -28,46 +28,46 @@ export default {
       id: "access-change",
       title: "Access change awaiting approval",
       description: "Current and proposed permissions for a service account. The captions say Current and Proposed; an unchanged attribute is still listed so the reviewer sees the full scope of the account.",
-      html: `<ef-comparison-pairs class="ef-component-tag">
-  <section class="ef-comparison-pairs" aria-labelledby="comparison-pairs-access-change-title">
+      html: `<forma-comparison-pairs class="forma-component-tag">
+  <section class="forma-comparison-pairs" aria-labelledby="comparison-pairs-access-change-title">
     <h3 id="comparison-pairs-access-change-title">svc-export: requested access change</h3>
-    <div class="ef-comparison-pairs__item">
-      <div class="ef-comparison-pairs__label">Customer data</div>
-      <div class="ef-comparison-pairs__value" data-side="before" data-label="Current">Read, EU West only</div>
-      <div class="ef-comparison-pairs__value" data-side="after" data-label="Proposed">Read, all regions</div>
+    <div class="forma-comparison-pairs__item">
+      <div class="forma-comparison-pairs__label">Customer data</div>
+      <div class="forma-comparison-pairs__value" data-side="before" data-label="Current">Read, EU West only</div>
+      <div class="forma-comparison-pairs__value" data-side="after" data-label="Proposed">Read, all regions</div>
     </div>
-    <div class="ef-comparison-pairs__item">
-      <div class="ef-comparison-pairs__label">Exports</div>
-      <div class="ef-comparison-pairs__value" data-side="before" data-label="Current">Up to 10,000 rows</div>
-      <div class="ef-comparison-pairs__value" data-side="after" data-label="Proposed">Unlimited</div>
+    <div class="forma-comparison-pairs__item">
+      <div class="forma-comparison-pairs__label">Exports</div>
+      <div class="forma-comparison-pairs__value" data-side="before" data-label="Current">Up to 10,000 rows</div>
+      <div class="forma-comparison-pairs__value" data-side="after" data-label="Proposed">Unlimited</div>
     </div>
-    <div class="ef-comparison-pairs__item">
-      <div class="ef-comparison-pairs__label">Expiry</div>
-      <div class="ef-comparison-pairs__value" data-side="before" data-label="Current"><time datetime="2027-01-31">31 Jan 2027</time></div>
-      <div class="ef-comparison-pairs__value" data-side="after" data-label="Proposed">Unchanged</div>
+    <div class="forma-comparison-pairs__item">
+      <div class="forma-comparison-pairs__label">Expiry</div>
+      <div class="forma-comparison-pairs__value" data-side="before" data-label="Current"><time datetime="2027-01-31">31 Jan 2027</time></div>
+      <div class="forma-comparison-pairs__value" data-side="after" data-label="Proposed">Unchanged</div>
     </div>
   </section>
-</ef-comparison-pairs>`
+</forma-comparison-pairs>`
     },
     {
       id: "peer-regions",
       title: "Two regions compared, with an unknown value",
       description: "A peer comparison of two data regions. The captions are the region names, and a value the application cannot supply is written as Unknown rather than left blank. `data-side` here only selects the first and second position.",
-      html: `<ef-comparison-pairs class="ef-component-tag">
-  <section class="ef-comparison-pairs" aria-labelledby="comparison-pairs-peer-regions-title">
+      html: `<forma-comparison-pairs class="forma-component-tag">
+  <section class="forma-comparison-pairs" aria-labelledby="comparison-pairs-peer-regions-title">
     <h3 id="comparison-pairs-peer-regions-title">EU West compared with US East</h3>
-    <div class="ef-comparison-pairs__item">
-      <div class="ef-comparison-pairs__label">Median latency</div>
-      <div class="ef-comparison-pairs__value" data-side="before" data-label="EU West">38 ms</div>
-      <div class="ef-comparison-pairs__value" data-side="after" data-label="US East">41 ms</div>
+    <div class="forma-comparison-pairs__item">
+      <div class="forma-comparison-pairs__label">Median latency</div>
+      <div class="forma-comparison-pairs__value" data-side="before" data-label="EU West">38 ms</div>
+      <div class="forma-comparison-pairs__value" data-side="after" data-label="US East">41 ms</div>
     </div>
-    <div class="ef-comparison-pairs__item">
-      <div class="ef-comparison-pairs__label">Last failover test</div>
-      <div class="ef-comparison-pairs__value" data-side="before" data-label="EU West"><time datetime="2026-09-12">12 Sep 2026</time></div>
-      <div class="ef-comparison-pairs__value" data-side="after" data-label="US East">Unknown: no test recorded</div>
+    <div class="forma-comparison-pairs__item">
+      <div class="forma-comparison-pairs__label">Last failover test</div>
+      <div class="forma-comparison-pairs__value" data-side="before" data-label="EU West"><time datetime="2026-09-12">12 Sep 2026</time></div>
+      <div class="forma-comparison-pairs__value" data-side="after" data-label="US East">Unknown: no test recorded</div>
     </div>
   </section>
-</ef-comparison-pairs>`
+</forma-comparison-pairs>`
     },
     {
       id: "mobile-plan-change",
@@ -82,35 +82,35 @@ export default {
           "The component has no interactive parts; put confirm or cancel actions after it at full width."
         ]
       },
-      html: `<ef-comparison-pairs class="ef-component-tag">
-  <section class="ef-comparison-pairs" aria-labelledby="comparison-pairs-mobile-plan-change-title">
+      html: `<forma-comparison-pairs class="forma-component-tag">
+  <section class="forma-comparison-pairs" aria-labelledby="comparison-pairs-mobile-plan-change-title">
     <h3 id="comparison-pairs-mobile-plan-change-title">Review plan change</h3>
-    <div class="ef-comparison-pairs__item">
-      <div class="ef-comparison-pairs__label">Plan</div>
-      <div class="ef-comparison-pairs__value" data-side="before" data-label="Before">Team</div>
-      <div class="ef-comparison-pairs__value" data-side="after" data-label="After">Business</div>
+    <div class="forma-comparison-pairs__item">
+      <div class="forma-comparison-pairs__label">Plan</div>
+      <div class="forma-comparison-pairs__value" data-side="before" data-label="Before">Team</div>
+      <div class="forma-comparison-pairs__value" data-side="after" data-label="After">Business</div>
     </div>
-    <div class="ef-comparison-pairs__item">
-      <div class="ef-comparison-pairs__label">Monthly price</div>
-      <div class="ef-comparison-pairs__value" data-side="before" data-label="Before">$480.00</div>
-      <div class="ef-comparison-pairs__value" data-side="after" data-label="After">$1,150.00</div>
+    <div class="forma-comparison-pairs__item">
+      <div class="forma-comparison-pairs__label">Monthly price</div>
+      <div class="forma-comparison-pairs__value" data-side="before" data-label="Before">$480.00</div>
+      <div class="forma-comparison-pairs__value" data-side="after" data-label="After">$1,150.00</div>
     </div>
   </section>
-</ef-comparison-pairs>`
+</forma-comparison-pairs>`
     }
   ],
   api: {
     attributes: [
-      { name: "data-side", on: ".ef-comparison-pairs__value", values: "before | after", default: "—", description: "Position of the value in the pair. Required for the caption to render; both values look the same." },
-      { name: "data-label", on: ".ef-comparison-pairs__value", values: "string", default: "—", description: "Caption printed above the value (Before, After, Current, Proposed or a peer name). Keep it identical for every value in the same position." },
-      { name: "aria-labelledby", on: "section.ef-comparison-pairs", values: "id of the heading", default: "—", description: "Names the comparison." },
+      { name: "data-side", on: ".forma-comparison-pairs__value", values: "before | after", default: "—", description: "Position of the value in the pair. Required for the caption to render; both values look the same." },
+      { name: "data-label", on: ".forma-comparison-pairs__value", values: "string", default: "—", description: "Caption printed above the value (Before, After, Current, Proposed or a peer name). Keep it identical for every value in the same position." },
+      { name: "aria-labelledby", on: "section.forma-comparison-pairs", values: "id of the heading", default: "—", description: "Names the comparison." },
       { name: "datetime", on: "time", values: "ISO date", default: "—", description: "Machine-readable form of date values." }
     ],
     hooks: {
-      "ef-comparison-pairs": "Root grid of comparison items with 1rem gaps.",
-      "ef-comparison-pairs__item": "One attribute row: label plus two value columns; single column at 30rem and below.",
-      "ef-comparison-pairs__label": "Attribute name in bold.",
-      "ef-comparison-pairs__value": "One value. Shrinkable, wraps anywhere, and prints its `data-label` caption above itself.",
+      "forma-comparison-pairs": "Root grid of comparison items with 1rem gaps.",
+      "forma-comparison-pairs__item": "One attribute row: label plus two value columns; single column at 30rem and below.",
+      "forma-comparison-pairs__label": "Attribute name in bold.",
+      "forma-comparison-pairs__value": "One value. Shrinkable, wraps anywhere, and prints its `data-label` caption above itself.",
       "data-side": "`before` or `after` on a value enables the `data-label` caption via `::before`."
     },
     keyboard: [

@@ -4,7 +4,7 @@ export default {
   behavior: "Site content",
   summary: "Labels a page section with an eyebrow, heading, framing sentence, and optional aside that wraps on narrow screens.",
   purpose: {
-    description: "A section heading is the `header` of a marketing page section. `.ef-section-heading__text` carries an optional eyebrow, the section's `h2` and an optional framing sentence; `.ef-section-heading__aside` holds a secondary link, button or short note. A strong rule under the heading separates it from the section's content. It is presentation only; the heading level and the section's accessible name come from the markup.",
+    description: "A section heading is the `header` of a marketing page section. `.forma-section-heading__text` carries an optional eyebrow, the section's `h2` and an optional framing sentence; `.forma-section-heading__aside` holds a secondary link, button or short note. A strong rule under the heading separates it from the section's content. It is presentation only; the heading level and the section's accessible name come from the markup.",
     useWhen: [
       "Introducing a section of a marketing or product page (services, capabilities, method, proof).",
       "The section needs a short framing sentence or a secondary action beside its title.",
@@ -18,7 +18,7 @@ export default {
     characteristics: [
       "The text group grows first (basis 32rem, minimum 20rem or full width); the aside flexes around 14rem and is capped at 28rem.",
       "Heading and aside align to their bottom edges when side by side.",
-      "Inside `.ef-section`, content directly after the heading starts without extra stack spacing because the heading already ends in a rule and margin."
+      "Inside `.forma-section`, content directly after the heading starts without extra stack spacing because the heading already ends in a rule and margin."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
@@ -26,43 +26,43 @@ export default {
     {
       id: "with-note",
       title: "Heading with an update note",
-      description: "The aside carries a short mono note (`.ef-section-heading__note`) instead of an action, for example when the section's content was last reviewed. The note is text, not a link.",
-      html: `<ef-section-heading class="ef-component-tag">
-  <div class="ef-site">
-    <section class="ef-section" aria-labelledby="section-heading-with-note-title">
-      <header class="ef-section-heading">
-        <div class="ef-section-heading__text">
-          <p class="ef-eyebrow">Published work</p>
+      description: "The aside carries a short mono note (`.forma-section-heading__note`) instead of an action, for example when the section's content was last reviewed. The note is text, not a link.",
+      html: `<forma-section-heading class="forma-component-tag">
+  <div class="forma-site">
+    <section class="forma-section" aria-labelledby="section-heading-with-note-title">
+      <header class="forma-section-heading">
+        <div class="forma-section-heading__text">
+          <p class="forma-eyebrow">Published work</p>
           <h2 id="section-heading-with-note-title">Research the practice depends on</h2>
           <p>Each paper states its question, method and limits before its conclusion.</p>
         </div>
-        <div class="ef-section-heading__aside"><p class="ef-section-heading__note">Updated September 2026</p></div>
+        <div class="forma-section-heading__aside"><p class="forma-section-heading__note">Updated September 2026</p></div>
       </header>
       <p>Twelve papers across four research areas.</p>
     </section>
   </div>
-</ef-section-heading>`
+</forma-section-heading>`
     },
     {
       id: "title-only",
       title: "Title only, followed by cards",
       description: "The smallest useful heading: eyebrow and title with no framing sentence or aside, directly followed by a card grid. The grid starts right after the heading rule.",
-      html: `<ef-section-heading class="ef-component-tag">
-  <div class="ef-site">
-    <section class="ef-section" aria-labelledby="section-heading-title-only-title">
-      <header class="ef-section-heading">
-        <div class="ef-section-heading__text">
-          <p class="ef-eyebrow">Capabilities</p>
+      html: `<forma-section-heading class="forma-component-tag">
+  <div class="forma-site">
+    <section class="forma-section" aria-labelledby="section-heading-title-only-title">
+      <header class="forma-section-heading">
+        <div class="forma-section-heading__text">
+          <p class="forma-eyebrow">Capabilities</p>
           <h2 id="section-heading-title-only-title">What the product does</h2>
         </div>
       </header>
-      <ul class="ef-card-grid" data-ef-columns="2" aria-label="Capabilities">
-        <li><article class="ef-card"><h3 class="ef-card__title">Record quality over time</h3><p>Each change adds evidence.</p></article></li>
-        <li><article class="ef-card"><h3 class="ef-card__title">Explain regressions</h3><p>Every movement links to its cause.</p></article></li>
+      <ul class="forma-card-grid" data-forma-columns="2" aria-label="Capabilities">
+        <li><article class="forma-card"><h3 class="forma-card__title">Record quality over time</h3><p>Each change adds evidence.</p></article></li>
+        <li><article class="forma-card"><h3 class="forma-card__title">Explain regressions</h3><p>Every movement links to its cause.</p></article></li>
       </ul>
     </section>
   </div>
-</ef-section-heading>`
+</forma-section-heading>`
     },
     {
       id: "mobile-long-title",
@@ -83,32 +83,32 @@ export default {
           "Rotation only changes whether text and aside share a row; source order is unchanged."
         ]
       },
-      html: `<ef-section-heading class="ef-component-tag">
-  <div class="ef-site">
-    <section class="ef-section" aria-labelledby="section-heading-mobile-long-title-title">
-      <header class="ef-section-heading">
-        <div class="ef-section-heading__text">
-          <p class="ef-eyebrow">Service lines</p>
+      html: `<forma-section-heading class="forma-component-tag">
+  <div class="forma-site">
+    <section class="forma-section" aria-labelledby="section-heading-mobile-long-title-title">
+      <header class="forma-section-heading">
+        <div class="forma-section-heading__text">
+          <p class="forma-eyebrow">Service lines</p>
           <h2 id="section-heading-mobile-long-title-title">Diagnosis, constraint modelling and verification for consequential systems</h2>
           <p>Three engagements that can run alone or in sequence.</p>
         </div>
-        <div class="ef-section-heading__aside"><a class="ef-button" href="#section-heading-mobile-long-title-title">Compare the engagements</a></div>
+        <div class="forma-section-heading__aside"><a class="forma-button" href="#section-heading-mobile-long-title-title">Compare the engagements</a></div>
       </header>
     </section>
   </div>
-</ef-section-heading>`
+</forma-section-heading>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-section", values: "id of the h2", default: "—", description: "Names the section by its visible heading." },
+      { name: "aria-labelledby", on: "section.forma-section", values: "id of the h2", default: "—", description: "Names the section by its visible heading." },
       { name: "id", on: "h2", values: "string", default: "—", description: "Referenced by the section's aria-labelledby." }
     ],
     hooks: {
-      "ef-section-heading": "Root, normally a `header` inside a section. Wrapping flex row with a strong bottom rule and bottom spacing.",
-      "ef-section-heading__text": "Eyebrow, heading and framing sentence. Grows first with a 32rem basis and a 20rem (or 100%) minimum.",
-      "ef-section-heading__aside": "Optional secondary action or note. Flex basis 14rem, capped at 28rem.",
-      "ef-section-heading__note": "Short muted note in the mono label size, for dates or counts shown in the aside."
+      "forma-section-heading": "Root, normally a `header` inside a section. Wrapping flex row with a strong bottom rule and bottom spacing.",
+      "forma-section-heading__text": "Eyebrow, heading and framing sentence. Grows first with a 32rem basis and a 20rem (or 100%) minimum.",
+      "forma-section-heading__aside": "Optional secondary action or note. Flex basis 14rem, capped at 28rem.",
+      "forma-section-heading__note": "Short muted note in the mono label size, for dates or counts shown in the aside."
     },
     keyboard: [
       { keys: "Tab", action: "Reaches any link or button in the aside in source order, after the heading text." }
@@ -118,7 +118,7 @@ export default {
   states: [
     { name: "Side by side", how: "enough inline space", description: "Text and aside share one row, aligned to the bottom." },
     { name: "Wrapped", how: "flex-wrap", description: "The aside moves below the text on narrow widths." },
-    { name: "Text only", how: "omit .ef-section-heading__aside", description: "The text group takes the full width." }
+    { name: "Text only", how: "omit .forma-section-heading__aside", description: "The text group takes the full width." }
   ],
   accessibility: {
     forma: [

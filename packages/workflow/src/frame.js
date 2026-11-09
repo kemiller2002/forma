@@ -17,7 +17,7 @@ if (formaBase) {
     document.head.prepend(link);
   }
 }
-if (params.get("brand")) document.documentElement.dataset.efBrand = params.get("brand");
+if (params.get("brand")) document.documentElement.dataset.formaBrand = params.get("brand");
 
 const post = (message) => {
   if (parentOrigin) window.parent.postMessage({ protocol: PROTOCOL, ...message }, parentOrigin);

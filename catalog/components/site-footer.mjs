@@ -4,7 +4,7 @@ export default {
   behavior: "Site content",
   summary: "Closing identity, actions, secondary navigation, and legal note on a surface tone.",
   purpose: {
-    description: "The site footer closes every page of a marketing site. Inside `.ef-site-footer__inner` it can hold a main row (identity sentence and an optional action group), a secondary `nav` of links such as privacy and source, and a legal note line. The footer normally carries `data-ef-tone=\"inverse\"` (or another tone), which sets its background and all text, link and rule colors. In the shell it is pushed to the bottom of short pages.",
+    description: "The site footer closes every page of a marketing site. Inside `.forma-site-footer__inner` it can hold a main row (identity sentence and an optional action group), a secondary `nav` of links such as privacy and source, and a legal note line. The footer normally carries `data-forma-tone=\"inverse\"` (or another tone), which sets its background and all text, link and rule colors. In the shell it is pushed to the bottom of short pages.",
     useWhen: [
       "Closing every page of a site built on [[marketing-shell]].",
       "Placing secondary destinations (privacy, source, release notes) that do not belong in the header.",
@@ -36,33 +36,33 @@ export default {
       },
       title: "Surface footer for a product site",
       description: "A product footer on the surface tone with an identity sentence, product links and a legal line. Links on the surface tone use primary text, which is validated for that background.",
-      html: `<ef-site-footer class="ef-component-tag">
-  <div class="ef-site">
-    <footer class="ef-site-footer" data-ef-tone="surface">
-      <div class="ef-site-footer__inner">
-        <div class="ef-site-footer__main">
-          <div><p class="ef-eyebrow">Echelon / Dokimos</p><p>Longitudinal quality evidence for every change.</p></div>
+      html: `<forma-site-footer class="forma-component-tag">
+  <div class="forma-site">
+    <footer class="forma-site-footer" data-forma-tone="surface">
+      <div class="forma-site-footer__inner">
+        <div class="forma-site-footer__main">
+          <div><p class="forma-eyebrow">Harbor / Dokimos</p><p>Longitudinal quality evidence for every change.</p></div>
         </div>
-        <nav class="ef-site-footer__nav" aria-label="Dokimos footer"><ul><li><a href="#site-footer-surface-product-footer-note">Documentation</a></li><li><a href="#site-footer-surface-product-footer-note">Release notes</a></li><li><a href="#site-footer-surface-product-footer-note">Source</a></li><li><a href="#site-footer-surface-product-footer-note">Privacy</a></li></ul></nav>
-        <p class="ef-site-footer__note" id="site-footer-surface-product-footer-note"><span>&copy; 2026 Echelon Foundry</span><span>Version 1.4.0</span></p>
+        <nav class="forma-site-footer__nav" aria-label="Dokimos footer"><ul><li><a href="#site-footer-surface-product-footer-note">Documentation</a></li><li><a href="#site-footer-surface-product-footer-note">Release notes</a></li><li><a href="#site-footer-surface-product-footer-note">Source</a></li><li><a href="#site-footer-surface-product-footer-note">Privacy</a></li></ul></nav>
+        <p class="forma-site-footer__note" id="site-footer-surface-product-footer-note"><span>&copy; 2026 Example Harbor</span><span>Version 1.4.0</span></p>
       </div>
     </footer>
   </div>
-</ef-site-footer>`
+</forma-site-footer>`
     },
     {
       id: "legal-only",
       title: "Minimal legal footer",
       description: "A single-offer page footer with only the note line on the inverse tone. The note's rule and spacing still separate it from the page.",
-      html: `<ef-site-footer class="ef-component-tag">
-  <div class="ef-site">
-    <footer class="ef-site-footer" data-ef-tone="inverse">
-      <div class="ef-site-footer__inner">
-        <p class="ef-site-footer__note"><span>&copy; 2026 Echelon Foundry</span><span>Indianapolis, Indiana</span><span>Built with Forma</span></p>
+      html: `<forma-site-footer class="forma-component-tag">
+  <div class="forma-site">
+    <footer class="forma-site-footer" data-forma-tone="inverse">
+      <div class="forma-site-footer__inner">
+        <p class="forma-site-footer__note"><span>&copy; 2026 Example Harbor</span><span>Indianapolis, Indiana</span><span>Built with Forma</span></p>
       </div>
     </footer>
   </div>
-</ef-site-footer>`
+</forma-site-footer>`
     },
     {
       id: "mobile-full-footer",
@@ -87,33 +87,33 @@ export default {
           "Gutters are fluid, so nothing scrolls horizontally at 320px in either orientation."
         ]
       },
-      html: `<ef-site-footer class="ef-component-tag">
-  <div class="ef-site">
-    <footer class="ef-site-footer" data-ef-tone="inverse">
-      <div class="ef-site-footer__inner">
-        <div class="ef-site-footer__main">
-          <div><p class="ef-eyebrow">Echelon Foundry</p><p>Strategy, architecture and delivery for consequential systems.</p></div>
-          <div class="ef-actions"><a class="ef-button" href="#site-footer-mobile-full-footer-note">Schedule a working session</a></div>
+      html: `<forma-site-footer class="forma-component-tag">
+  <div class="forma-site">
+    <footer class="forma-site-footer" data-forma-tone="inverse">
+      <div class="forma-site-footer__inner">
+        <div class="forma-site-footer__main">
+          <div><p class="forma-eyebrow">Example Harbor</p><p>Strategy, architecture and delivery for consequential systems.</p></div>
+          <div class="forma-actions"><a class="forma-button" href="#site-footer-mobile-full-footer-note">Schedule a working session</a></div>
         </div>
-        <nav class="ef-site-footer__nav" aria-label="Echelon Foundry footer"><ul><li><a href="#site-footer-mobile-full-footer-note">Research</a></li><li><a href="#site-footer-mobile-full-footer-note">Products</a></li><li><a href="#site-footer-mobile-full-footer-note">Privacy</a></li><li><a href="#site-footer-mobile-full-footer-note">Source</a></li></ul></nav>
-        <p class="ef-site-footer__note" id="site-footer-mobile-full-footer-note"><span>&copy; 2026 Echelon Foundry</span><span>Indianapolis, Indiana</span></p>
+        <nav class="forma-site-footer__nav" aria-label="Example Harbor footer"><ul><li><a href="#site-footer-mobile-full-footer-note">Research</a></li><li><a href="#site-footer-mobile-full-footer-note">Products</a></li><li><a href="#site-footer-mobile-full-footer-note">Privacy</a></li><li><a href="#site-footer-mobile-full-footer-note">Source</a></li></ul></nav>
+        <p class="forma-site-footer__note" id="site-footer-mobile-full-footer-note"><span>&copy; 2026 Example Harbor</span><span>Indianapolis, Indiana</span></p>
       </div>
     </footer>
   </div>
-</ef-site-footer>`
+</forma-site-footer>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-label", on: "nav.ef-site-footer__nav", values: "string", default: "—", description: "Names the footer navigation differently from the primary navigation." }
+      { name: "aria-label", on: "nav.forma-site-footer__nav", values: "string", default: "—", description: "Names the footer navigation differently from the primary navigation." }
     ],
     hooks: {
-      "ef-site-footer": "Footer root. Takes `margin-block-start: auto` so it sits at the bottom of the shell on short pages.",
-      "data-ef-tone": "Surface tone of the footer: normally `inverse`; `surface` and `elevated` also work. Sets background and all text, link and rule colors.",
-      "ef-site-footer__inner": "Centers content to the maximum layout width with fluid gutters and generous block padding.",
-      "ef-site-footer__main": "Wrapping row for the identity block and optional action group; items flex around 18rem, actions do not grow.",
-      "ef-site-footer__nav": "Secondary navigation; its `ul` becomes a wrapping, unstyled row of links with a 24px minimum height.",
-      "ef-site-footer__note": "Legal or location line in the mono label size, separated by a rule; its `span` parts wrap and spread apart."
+      "forma-site-footer": "Footer root. Takes `margin-block-start: auto` so it sits at the bottom of the shell on short pages.",
+      "data-forma-tone": "Surface tone of the footer: normally `inverse`; `surface` and `elevated` also work. Sets background and all text, link and rule colors.",
+      "forma-site-footer__inner": "Centers content to the maximum layout width with fluid gutters and generous block padding.",
+      "forma-site-footer__main": "Wrapping row for the identity block and optional action group; items flex around 18rem, actions do not grow.",
+      "forma-site-footer__nav": "Secondary navigation; its `ul` becomes a wrapping, unstyled row of links with a 24px minimum height.",
+      "forma-site-footer__note": "Legal or location line in the mono label size, separated by a rule; its `span` parts wrap and spread apart."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the footer action and links in source order." },
@@ -122,8 +122,8 @@ export default {
     events: []
   },
   states: [
-    { name: "Inverse", how: "data-ef-tone=\"inverse\"", description: "Inverse surface; buttons invert their action colors." },
-    { name: "Surface", how: "data-ef-tone=\"surface\"", description: "Secondary surface; links use primary text." },
+    { name: "Inverse", how: "data-forma-tone=\"inverse\"", description: "Inverse surface; buttons invert their action colors." },
+    { name: "Surface", how: "data-forma-tone=\"surface\"", description: "Secondary surface; links use primary text." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "The toned footer gets a CanvasText border so it stays delineated." },
     { name: "Print", how: "@media print", description: "Footer actions are hidden and the background is removed." }
   ],
@@ -141,7 +141,7 @@ export default {
   },
   responsive: [
     "Main row, navigation list and note are wrapping flex rows; no breakpoints.",
-    "Inner width is capped at `--ef-layout-width-max` with fluid gutters.",
+    "Inner width is capped at `--forma-layout-width-max` with fluid gutters.",
     "Main row items have an 18rem basis and shrink, so they never force overflow."
   ],
   motion: [

@@ -36,11 +36,11 @@ no-script fallback:
 ```html
 <forma-workflow mode="view">
   <script type="application/json" class="forma-workflow-source">{ "format": "forma-workflow", … }</script>
-  <figure class="ef-diagram">…static rendering…</figure>
+  <figure class="forma-diagram">…static rendering…</figure>
 </forma-workflow>
 ```
 
-The element inherits Forma tokens, brands (`data-ef-brand` on any ancestor),
+The element inherits Forma tokens, brands (`data-forma-brand` on any ancestor),
 themes, forced colours, reduced motion and responsive behaviour from the host
 page.
 
@@ -120,7 +120,7 @@ portable document over the same `forma-workflow-host/1` contract, through
 `postMessage`:
 
 ```html
-<iframe src="/assets/forma-workflow/frame.html?parent=https://app.example.org&forma=https://app.example.org/assets/forma/&brand=echelon"></iframe>
+<iframe src="/assets/forma-workflow/frame.html?parent=https://app.example.org&forma=https://app.example.org/assets/forma/&brand=example-harbor"></iframe>
 ```
 
 | From the parent | Fields |

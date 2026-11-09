@@ -2,99 +2,99 @@
   Forma marketing role contract: brand-neutral defaults.
 
   Marketing foundations, components, and layouts consume only these role
-  tokens and Forma's core semantic tokens. A theme (for example the compiled
-  Echelon Marketing Theme) restates the roles at :root with higher
+  tokens and Forma's core semantic tokens. A theme (an organization's
+  compiled marketing theme, shipped outside Forma) restates the roles at :root with higher
   specificity, so these :where() defaults apply only when no theme does.
 
   Defaults are declared on every theme/brand scope as well as :root so that
-  derived values recompute inside a nested data-ef-theme or data-ef-brand
+  derived values recompute inside a nested data-forma-theme or data-forma-brand
   subtree instead of inheriting the root's resolved value.
 */
-@layer echelon.tokens {
-  :where(:root, [data-ef-theme], [data-ef-brand]) {
+@layer forma.tokens {
+  :where(:root, [data-forma-theme], [data-forma-brand]) {
     /* Extended color roles, derived from core semantics. */
-    --ef-color-surface-elevated: var(--ef-color-surface-primary);
-    --ef-color-text-muted: var(--ef-color-text-secondary);
-    --ef-color-accent-hover: var(--ef-color-accent-primary);
+    --forma-color-surface-elevated: var(--forma-color-surface-primary);
+    --forma-color-text-muted: var(--forma-color-text-secondary);
+    --forma-color-accent-hover: var(--forma-color-accent-primary);
     /* Status defaults are deliberately hue-free: meaning is carried by text. */
-    --ef-color-status-success: var(--ef-color-text-primary);
-    --ef-color-status-warning: var(--ef-color-text-primary);
-    --ef-color-status-danger: var(--ef-color-text-primary);
-    --ef-color-status-info: var(--ef-color-text-primary);
+    --forma-color-status-success: var(--forma-color-text-primary);
+    --forma-color-status-warning: var(--forma-color-text-primary);
+    --forma-color-status-danger: var(--forma-color-text-primary);
+    --forma-color-status-info: var(--forma-color-text-primary);
   }
 
   :where(:root) {
     /* Relational spacing scale (rem). Component gaps and padding use only
        these steps; section and block rhythm use the fluid layout roles. */
-    --ef-space-1: var(--ef-primitive-space-1);
-    --ef-space-2: var(--ef-primitive-space-2);
-    --ef-space-3: var(--ef-primitive-space-3);
-    --ef-space-4: var(--ef-primitive-space-4);
-    --ef-space-5: var(--ef-primitive-space-5);
-    --ef-space-6: var(--ef-primitive-space-6);
-    --ef-space-7: var(--ef-primitive-space-7);
-    --ef-space-8: var(--ef-primitive-space-8);
+    --forma-space-1: var(--forma-primitive-space-1);
+    --forma-space-2: var(--forma-primitive-space-2);
+    --forma-space-3: var(--forma-primitive-space-3);
+    --forma-space-4: var(--forma-primitive-space-4);
+    --forma-space-5: var(--forma-primitive-space-5);
+    --forma-space-6: var(--forma-primitive-space-6);
+    --forma-space-7: var(--forma-primitive-space-7);
+    --forma-space-8: var(--forma-primitive-space-8);
 
-    --ef-type-family-body: var(--ef-primitive-font-family-sans);
-    --ef-type-family-display: var(--ef-primitive-font-family-display);
-    --ef-type-family-mono: var(--ef-primitive-font-family-mono);
-    --ef-type-size-label: var(--ef-primitive-font-size-xs);
-    --ef-type-size-small: var(--ef-primitive-font-size-sm);
-    --ef-type-size-body: var(--ef-primitive-font-size-md);
-    --ef-type-size-lead: var(--ef-primitive-font-size-fluid-lead);
-    --ef-type-size-h1: var(--ef-primitive-font-size-fluid-display-1);
-    --ef-type-size-h2: var(--ef-primitive-font-size-fluid-display-2);
-    --ef-type-size-h3: var(--ef-primitive-font-size-lg);
-    --ef-type-size-h4: var(--ef-primitive-font-size-md);
-    --ef-type-size-statement: var(--ef-primitive-font-size-fluid-display-3);
-    /* Display heading measures. A typography role (data-ef-type, see
+    --forma-type-family-body: var(--forma-primitive-font-family-sans);
+    --forma-type-family-display: var(--forma-primitive-font-family-display);
+    --forma-type-family-mono: var(--forma-primitive-font-family-mono);
+    --forma-type-size-label: var(--forma-primitive-font-size-xs);
+    --forma-type-size-small: var(--forma-primitive-font-size-sm);
+    --forma-type-size-body: var(--forma-primitive-font-size-md);
+    --forma-type-size-lead: var(--forma-primitive-font-size-fluid-lead);
+    --forma-type-size-h1: var(--forma-primitive-font-size-fluid-display-1);
+    --forma-type-size-h2: var(--forma-primitive-font-size-fluid-display-2);
+    --forma-type-size-h3: var(--forma-primitive-font-size-lg);
+    --forma-type-size-h4: var(--forma-primitive-font-size-md);
+    --forma-type-size-statement: var(--forma-primitive-font-size-fluid-display-3);
+    /* Display heading measures. A typography role (data-forma-type, see
        src/styles/foundations.css) lifts them for application screens. */
-    --ef-type-measure-h1: 14ch;
-    --ef-type-measure-h2: 18ch;
-    --ef-type-leading-body: var(--ef-primitive-line-height-normal);
-    --ef-type-leading-lead: var(--ef-primitive-line-height-normal);
-    --ef-type-leading-heading: var(--ef-primitive-line-height-snug);
-    --ef-type-leading-snug: var(--ef-primitive-line-height-snug);
-    --ef-type-weight-body: var(--ef-primitive-font-weight-regular);
-    --ef-type-weight-strong: var(--ef-primitive-font-weight-bold);
-    --ef-type-weight-heading: var(--ef-primitive-font-weight-semibold);
-    --ef-type-weight-label: var(--ef-primitive-font-weight-medium);
-    --ef-type-weight-nav: var(--ef-primitive-font-weight-semibold);
-    --ef-type-tracking-display: var(--ef-primitive-letter-spacing-normal);
-    --ef-type-tracking-label: var(--ef-primitive-letter-spacing-wide);
-    --ef-type-tracking-body: var(--ef-primitive-letter-spacing-normal);
+    --forma-type-measure-h1: 14ch;
+    --forma-type-measure-h2: 18ch;
+    --forma-type-leading-body: var(--forma-primitive-line-height-normal);
+    --forma-type-leading-lead: var(--forma-primitive-line-height-normal);
+    --forma-type-leading-heading: var(--forma-primitive-line-height-snug);
+    --forma-type-leading-snug: var(--forma-primitive-line-height-snug);
+    --forma-type-weight-body: var(--forma-primitive-font-weight-regular);
+    --forma-type-weight-strong: var(--forma-primitive-font-weight-bold);
+    --forma-type-weight-heading: var(--forma-primitive-font-weight-semibold);
+    --forma-type-weight-label: var(--forma-primitive-font-weight-medium);
+    --forma-type-weight-nav: var(--forma-primitive-font-weight-semibold);
+    --forma-type-tracking-display: var(--forma-primitive-letter-spacing-normal);
+    --forma-type-tracking-label: var(--forma-primitive-letter-spacing-wide);
+    --forma-type-tracking-body: var(--forma-primitive-letter-spacing-normal);
 
-    --ef-layout-measure: var(--ef-primitive-size-measure);
-    --ef-layout-measure-narrow: var(--ef-primitive-size-measure-narrow);
-    --ef-layout-width-narrow: var(--ef-primitive-size-container-narrow);
-    --ef-layout-width-standard: var(--ef-primitive-size-container-standard);
-    --ef-layout-width-wide: var(--ef-primitive-size-container-wide);
-    --ef-layout-width-max: var(--ef-primitive-size-container-max);
-    --ef-layout-gutter: var(--ef-primitive-size-fluid-gutter);
-    --ef-layout-section-space: var(--ef-primitive-size-fluid-section-space);
-    --ef-layout-block-space: var(--ef-primitive-size-fluid-block-space);
-    --ef-layout-grid-gap: var(--ef-primitive-space-6);
-    --ef-layout-stack-space: var(--ef-primitive-space-6);
-    --ef-layout-target-min: var(--ef-primitive-size-target-min);
+    --forma-layout-measure: var(--forma-primitive-size-measure);
+    --forma-layout-measure-narrow: var(--forma-primitive-size-measure-narrow);
+    --forma-layout-width-narrow: var(--forma-primitive-size-container-narrow);
+    --forma-layout-width-standard: var(--forma-primitive-size-container-standard);
+    --forma-layout-width-wide: var(--forma-primitive-size-container-wide);
+    --forma-layout-width-max: var(--forma-primitive-size-container-max);
+    --forma-layout-gutter: var(--forma-primitive-size-fluid-gutter);
+    --forma-layout-section-space: var(--forma-primitive-size-fluid-section-space);
+    --forma-layout-block-space: var(--forma-primitive-size-fluid-block-space);
+    --forma-layout-grid-gap: var(--forma-primitive-space-6);
+    --forma-layout-stack-space: var(--forma-primitive-space-6);
+    --forma-layout-target-min: var(--forma-primitive-size-target-min);
     /* Clearance kept below a sticky header for anchors and sticky rails. */
-    --ef-layout-header-offset: 6rem;
+    --forma-layout-header-offset: 6rem;
     /* Card and fact minimums decide when grids drop a column (content-driven). */
-    --ef-layout-card-min: 15rem;
-    --ef-layout-fact-min: 11rem;
+    --forma-layout-card-min: 15rem;
+    --forma-layout-fact-min: 11rem;
 
-    --ef-shape-radius: var(--ef-primitive-radius-small);
-    --ef-shape-border-width: var(--ef-primitive-border-width-thin);
-    --ef-shape-border-width-accent: var(--ef-primitive-border-width-accent);
+    --forma-shape-radius: var(--forma-primitive-radius-small);
+    --forma-shape-border-width: var(--forma-primitive-border-width-thin);
+    --forma-shape-border-width-accent: var(--forma-primitive-border-width-accent);
 
-    --ef-effect-shadow-raised: var(--ef-primitive-shadow-raised);
+    --forma-effect-shadow-raised: var(--forma-primitive-shadow-raised);
     /* Marketing state changes are perceptual interpolation (non-spatial).
        The fallbacks restate Forma's shared perceptual vocabulary for pages
        that load the marketing bundle without components.css. */
-    --ef-effect-transition-duration: var(--ef-motion-perceptual-duration, 120ms);
-    --ef-effect-transition-easing: var(--ef-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
+    --forma-effect-transition-duration: var(--forma-motion-perceptual-duration, 120ms);
+    --forma-effect-transition-easing: var(--forma-motion-perceptual-easing, cubic-bezier(0.2, 0, 0, 1));
 
-    --ef-focus-ring-width: var(--ef-primitive-focus-ring-width);
-    --ef-focus-ring-offset: var(--ef-primitive-focus-ring-offset);
-    --ef-focus-halo-width: var(--ef-primitive-focus-halo-width);
+    --forma-focus-ring-width: var(--forma-primitive-focus-ring-width);
+    --forma-focus-ring-offset: var(--forma-primitive-focus-ring-offset);
+    --forma-focus-halo-width: var(--forma-primitive-focus-halo-width);
   }
 }

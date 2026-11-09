@@ -3,8 +3,8 @@
 // guards hand-written sources; this test guards every file the build emits,
 // including the F#-generated token and brand layers and every concatenated
 // bundle, against the defect that shipped in Forma 0.3.0: a literal "\n"
-// before `.ef-surface :where(...)` turned the selector into
-// `n .ef-surface :where(...)`, a valid rule for a nonexistent <n> element
+// before `.forma-surface :where(...)` turned the selector into
+// `n .forma-surface :where(...)`, a valid rule for a nonexistent <n> element
 // that never matched anything.
 //
 // Three properties are asserted for every emitted stylesheet:
@@ -49,7 +49,7 @@ function compositions() {
   map.set("dist/marketing.css", marketing);
   map.set("dist/all.css", ["dist/tokens.css", "src/styles/foundations.css", "src/styles/components.css", "src/styles/assessment.css", ...marketing]);
 
-  const bundle = JSON.parse(read("bundles/echelon-marketing.bundle.json"));
+  const bundle = JSON.parse(read("bundles/forma-marketing.bundle.json"));
   for (const artifact of bundle.artifacts) {
     map.set(path.join(bundle.outputDirectory, artifact.file), artifact.sources.map((source) =>
       source.startsWith("artifact:") ? path.join(bundle.outputDirectory, source.slice("artifact:".length)) : source));
@@ -105,10 +105,10 @@ test("every composed output contains exactly its sources' selectors, in order", 
 });
 
 test("the tokenizer rejects the 0.3.0 defect and accepts legitimate escapes", () => {
-  const defect = ".ef-surface { color: red; }\\n  .ef-surface :where(p) { color: inherit; }";
+  const defect = ".forma-surface { color: red; }\\n  .forma-surface :where(p) { color: inherit; }";
   assert.match(parseCss(defect).errors.join("\n"), /stray escape sequence "\\n"/);
   assert.deepEqual(typeSelectors(normalize(parseCss(defect).rules[1].selector)).filter((name) => !knownType(name)), ["\\n"]);
   assert.deepEqual(parseCss(".a::before { content: \"\\2014\\n\"; } .sm\\:p-2 { margin: 0; } .b\\31 { margin: 0; }").errors, []);
-  assert.deepEqual(typeSelectors(":where(h1, h2) > p:nth-child(2n + 1 of .x):not(input[type=\"x y\"]) ef-widget"), ["h1", "h2", "p", "input", "ef-widget"]);
+  assert.deepEqual(typeSelectors(":where(h1, h2) > p:nth-child(2n + 1 of .x):not(input[type=\"x y\"]) forma-widget"), ["h1", "h2", "p", "input", "forma-widget"]);
   assert.match(parseCss(".a { color: red; ").errors.join(), /unclosed/);
 });

@@ -30,12 +30,12 @@ type Finding =
 
 // Identity tokens a product may retarget, only to other Forma tokens.
 let identityTokens =
-    set [ "--ef-color-accent-primary"
-          "--ef-color-accent-hover"
-          "--ef-color-accent-secondary"
-          "--ef-site-backdrop"
-          "--ef-site-backdrop-size"
-          "--ef-site-backdrop-opacity" ]
+    set [ "--forma-color-accent-primary"
+          "--forma-color-accent-hover"
+          "--forma-color-accent-secondary"
+          "--forma-site-backdrop"
+          "--forma-site-backdrop-size"
+          "--forma-site-backdrop-opacity" ]
 
 let lineAt (text: string) (index: int) =
     text.AsSpan(0, index).Count('\n') + 1
@@ -129,11 +129,11 @@ let declarations (block: string) =
     |> List.ofArray
 
 let tokenReferenceOnly (value: string) =
-    let stripped = Regex.Replace(value, @"var\(\s*--ef-[a-z0-9-]+\s*\)", "").Trim()
-    stripped = "" && value.Contains("var(--ef-")
+    let stripped = Regex.Replace(value, @"var\(\s*--forma-[a-z0-9-]+\s*\)", "").Trim()
+    stripped = "" && value.Contains("var(--forma-")
 
 let paletteOf (formaCss: string) =
-    Regex.Matches(formaCss, @"--ef-[a-z0-9-]*color[a-z0-9-]*:\s*(#[0-9a-fA-F]{6})\b")
+    Regex.Matches(formaCss, @"--forma-[a-z0-9-]*color[a-z0-9-]*:\s*(#[0-9a-fA-F]{6})\b")
     |> Seq.map (fun m -> m.Groups[1].Value.ToLowerInvariant())
     |> Set.ofSeq
 
@@ -154,7 +154,7 @@ let check (palette: Set<string>) (file: string) (rules: Rule list) : Finding lis
           let selectors = rule.Selector.Split(',') |> Array.map (fun s -> s.Trim()) |> List.ofArray
           let formaClass =
               selectors
-              |> List.tryFind (fun s -> Regex.IsMatch(s, @"\.ef-[a-zA-Z0-9_-]"))
+              |> List.tryFind (fun s -> Regex.IsMatch(s, @"\.forma-[a-zA-Z0-9_-]"))
               |> Option.map (fun s ->
                   finding rule "FORMA-COMPONENT" $"'{s}' restyles a Forma class; compose Forma components or record a Forma capability gap")
           let globalFindings =
@@ -165,18 +165,18 @@ let check (palette: Set<string>) (file: string) (rules: Rule list) : Finding lis
           let tokens =
               declarations rule.Declarations
               |> List.choose (fun (property, value) ->
-                  if not (property.StartsWith("--ef-", StringComparison.Ordinal)) then None
+                  if not (property.StartsWith("--forma-", StringComparison.Ordinal)) then None
                   elif not (identityTokens.Contains property) then
                       Some(finding rule "TOKEN-OVERRIDE" $"'{property}' is a Forma token; only identity tokens may be retargeted locally")
                   elif not (tokenReferenceOnly value) then
-                      Some(finding rule "IDENTITY-VALUE" $"'{property}' must reference Forma tokens (var(--ef-...)), not literal values, so contrast stays validated")
+                      Some(finding rule "IDENTITY-VALUE" $"'{property}' must reference Forma tokens (var(--forma-...)), not literal values, so contrast stays validated")
                   else None)
           let copiedPalette =
               Regex.Matches(rule.Declarations, @"#[0-9a-fA-F]{6}\b")
               |> Seq.map (fun m -> m.Value.ToLowerInvariant())
               |> Seq.filter palette.Contains
               |> Seq.distinct
-              |> Seq.map (fun hex -> finding rule "PALETTE-COPY" $"{hex} copies a Forma palette value; use the corresponding --ef-color-* role token")
+              |> Seq.map (fun hex -> finding rule "PALETTE-COPY" $"{hex} copies a Forma palette value; use the corresponding --forma-color-* role token")
               |> List.ofSeq
           (Option.toList formaClass) @ globalFindings @ tokens @ copiedPalette
 

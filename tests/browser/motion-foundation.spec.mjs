@@ -33,7 +33,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("fault notification and banner use the standard preset; blocking faults use heavy", async ({ page }) => {
-  const inertia = async (testId) => milliseconds(await variable(page, testId, "--ef-motion-inertia-duration"));
+  const inertia = async (testId) => milliseconds(await variable(page, testId, "--forma-motion-inertia-duration"));
   const [alert, toast, notification, banner, blocking, dialog, popover] = await Promise.all(
     ["alert", "toast", "fault-notification", "fault-banner", "fault-blocking", "dialog", "popover"].map(inertia)
   );
@@ -46,16 +46,16 @@ test("fault notification and banner use the standard preset; blocking faults use
   expect(notification).toBeLessThan(blocking);
 
   for (const testId of ["fault-notification", "fault-banner"]) {
-    expect(await variable(page, testId, "--ef-motion-mass")).toBe("1");
+    expect(await variable(page, testId, "--forma-motion-mass")).toBe("1");
   }
-  expect(await variable(page, "fault-blocking", "--ef-motion-mass")).toBe("1.8");
+  expect(await variable(page, "fault-blocking", "--forma-motion-mass")).toBe("1.8");
 });
 
 test("weight overrides order inertial timing while gravity timing stays mass independent", async ({ page }) => {
   const read = async (testId, name) => milliseconds(await variable(page, testId, name));
-  const inertia = await Promise.all(["weight-light", "weight-standard", "weight-heavy"].map((id) => read(id, "--ef-motion-inertia-duration")));
-  const exit = await Promise.all(["weight-light", "weight-standard", "weight-heavy"].map((id) => read(id, "--ef-motion-exit-duration")));
-  const gravity = await Promise.all(["weight-light", "weight-standard", "weight-heavy"].map((id) => read(id, "--ef-motion-gravity-duration")));
+  const inertia = await Promise.all(["weight-light", "weight-standard", "weight-heavy"].map((id) => read(id, "--forma-motion-inertia-duration")));
+  const exit = await Promise.all(["weight-light", "weight-standard", "weight-heavy"].map((id) => read(id, "--forma-motion-exit-duration")));
+  const gravity = await Promise.all(["weight-light", "weight-standard", "weight-heavy"].map((id) => read(id, "--forma-motion-gravity-duration")));
 
   expect(inertia[0]).toBeLessThan(inertia[1]);
   expect(inertia[1]).toBeLessThan(inertia[2]);
@@ -64,21 +64,21 @@ test("weight overrides order inertial timing while gravity timing stays mass ind
 });
 
 test("model-independent vocabulary resolves from shared design tokens", async ({ page }) => {
-  expect(milliseconds(await rootVariable(page, "--ef-motion-perceptual-duration"))).toBe(
-    milliseconds(await rootVariable(page, "--ef-primitive-motion-duration-fast"))
+  expect(milliseconds(await rootVariable(page, "--forma-motion-perceptual-duration"))).toBe(
+    milliseconds(await rootVariable(page, "--forma-primitive-motion-duration-fast"))
   );
-  expect(milliseconds(await rootVariable(page, "--ef-motion-perceptual-emphasis-duration"))).toBe(
-    milliseconds(await rootVariable(page, "--ef-primitive-motion-duration-standard"))
+  expect(milliseconds(await rootVariable(page, "--forma-motion-perceptual-emphasis-duration"))).toBe(
+    milliseconds(await rootVariable(page, "--forma-primitive-motion-duration-standard"))
   );
-  expect(await rootVariable(page, "--ef-motion-perceptual-easing")).toBe(await rootVariable(page, "--ef-primitive-motion-easing-standard"));
-  expect(milliseconds(await rootVariable(page, "--ef-motion-cadence-period"))).toBe(1600);
-  expect(await rootVariable(page, "--ef-motion-cadence-easing")).toBe("linear");
-  expect(milliseconds(await rootVariable(page, "--ef-motion-direct-duration"))).toBe(0);
-  expect(await rootVariable(page, "--ef-motion-direct-easing")).toBe("linear");
+  expect(await rootVariable(page, "--forma-motion-perceptual-easing")).toBe(await rootVariable(page, "--forma-primitive-motion-easing-standard"));
+  expect(milliseconds(await rootVariable(page, "--forma-motion-cadence-period"))).toBe(1600);
+  expect(await rootVariable(page, "--forma-motion-cadence-easing")).toBe("linear");
+  expect(milliseconds(await rootVariable(page, "--forma-motion-direct-duration"))).toBe(0);
+  expect(await rootVariable(page, "--forma-motion-direct-easing")).toBe("linear");
 
   // Perceptual timing is mass-free: heavy and light scopes see the same value.
-  expect(await variable(page, "weight-heavy", "--ef-motion-perceptual-duration")).toBe(
-    await variable(page, "weight-light", "--ef-motion-perceptual-duration")
+  expect(await variable(page, "weight-heavy", "--forma-motion-perceptual-duration")).toBe(
+    await variable(page, "weight-light", "--forma-motion-perceptual-duration")
   );
 });
 
@@ -87,7 +87,7 @@ test("reduced motion collapses inertial and gravity timing for every weight scop
   await page.reload();
 
   for (const testId of ["fault-notification", "fault-banner", "fault-blocking", "toast", "weight-heavy"]) {
-    for (const name of ["--ef-motion-inertia-duration", "--ef-motion-gravity-duration", "--ef-motion-exit-duration", "--ef-motion-press-duration"]) {
+    for (const name of ["--forma-motion-inertia-duration", "--forma-motion-gravity-duration", "--forma-motion-exit-duration", "--forma-motion-press-duration"]) {
       expect(milliseconds(await variable(page, testId, name))).toBeLessThan(0.1);
     }
   }

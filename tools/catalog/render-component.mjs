@@ -19,7 +19,7 @@ export const SECTIONS = [
   ["verification", "Verification specimens"]
 ];
 
-const MOTION_WEIGHT = "data-ef-motion-weight";
+const MOTION_WEIGHT = "data-forma-motion-weight";
 const WEIGHTS = ["light", "standard", "heavy"];
 
 // Roots whose CSS accepts a perceived-mass preset (derived from the stylesheet).
@@ -68,7 +68,7 @@ const stressSource = (source, id) => id !== "content-stress"
   : source
     .replace(/(<(?:h[1-6]|p|dt|dd|label|button|summary)\b[^>]*>)([^<]{2,})(<\/)/i, (_, open, value, close) =>
       `${open}${value.trim()} · Extended localized content for verification and layout resilience${close}`)
-    .replace(/(<(?:section|article|div)\b[^>]*>)/i, `$1<p class="ef-identifier">${LONG_IDENTIFIER}</p>`);
+    .replace(/(<(?:section|article|div)\b[^>]*>)/i, `$1<p class="forma-identifier">${LONG_IDENTIFIER}</p>`);
 
 // Stress specimens are visual engineering screens (one deliberately lowers
 // contrast), so they are inert and hidden from assistive technology.
@@ -80,9 +80,9 @@ const stressSpecimens = component => `<div class="ve-stress-grid" data-ve-verifi
 </div>`;
 
 const hookKind = name =>
-  name.startsWith("--") ? "Custom property" : name.includes("--") ? "Modifier class" : name.includes("__") ? "Element class" : name.startsWith("ef-") ? "Block class" : "Attribute hook";
+  name.startsWith("--") ? "Custom property" : name.includes("--") ? "Modifier class" : name.includes("__") ? "Element class" : name.startsWith("forma-") ? "Block class" : "Attribute hook";
 
-const hookName = name => (name.startsWith("ef-") ? `.${name}` : name.startsWith("--") ? name : `[${name}]`);
+const hookName = name => (name.startsWith("forma-") ? `.${name}` : name.startsWith("--") ? name : `[${name}]`);
 
 // API rows derived from the stylesheet for owned roots, plus any extra hooks
 // the entry documents (for family pages that reuse another block's hooks).
@@ -101,7 +101,7 @@ const hookRows = (context, component) => {
     `<code>${escapeHtml(hookName(row.name))}</code>`,
     hookKind(row.name),
     row.detail ? `<code>${escapeHtml(row.detail)}</code>` : "—",
-    descriptions[row.name] ? inline(descriptions[row.name], context) : row.name.includes("__") ? "Structural element; see the Basic example for placement." : row.name === row.name.split("__")[0] && row.name.startsWith("ef-") ? "Block class applied to the component root." : "—"
+    descriptions[row.name] ? inline(descriptions[row.name], context) : row.name.includes("__") ? "Structural element; see the Basic example for placement." : row.name === row.name.split("__")[0] && row.name.startsWith("forma-") ? "Block class applied to the component root." : "—"
   ]);
 };
 
@@ -264,7 +264,7 @@ export const renderComponentPage = (context, component) => {
       <ul class="related-list">
         ${join(component.related ?? [], item => {
           const target = context.bySlug.get(item.slug);
-          return `<li><a href="${componentHref(context.rootPath, item.slug)}">${escapeHtml(target?.name ?? item.slug)}</a> <code>&lt;ef-${item.slug}&gt;</code><p>${inline(item.note, context)}</p></li>`;
+          return `<li><a href="${componentHref(context.rootPath, item.slug)}">${escapeHtml(target?.name ?? item.slug)}</a> <code>&lt;forma-${item.slug}&gt;</code><p>${inline(item.note, context)}</p></li>`;
         })}
       </ul>
     </section>

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0",
+  "id": "example-orchard",
+  "identity": {
+    "name": "Example Orchard Cooperative",
+    "shortName": "Orchard"
+  },
+  "presentation": {
+    "fontFamily": {
+      "display": ["Palatino Linotype", "Book Antiqua", "serif"],
+      "sans": ["Trebuchet MS", "sans-serif"],
+      "mono": ["Consolas", "monospace"]
+    },
+    "radius": {
+      "small": "2px",
+      "medium": "4px",
+      "pill": "999px"
+    }
+  },
+  "themes": {
+    "light": {
+      "color": {
+        "text": {"primary":"#1d1a22","heading":"#1d1a22","secondary":"#4d4757","on-secondary-surface":"#2c2733","inverse":"#fbf9f6"},
+        "surface": {"primary":"#fbf9f6","secondary":"#ece6ef","inverse":"#2c2238","inverse-secondary":"#46385a"},
+        "accent": {"primary":"#6a2f7a","secondary":"#2f6a2c"},
+        "status": {"success":"#2b6a33","warning":"#835000","danger":"#a3312c","info":"#2d5c94"},
+        "border": {"subtle":"#d3c9da","functional":"#4d4757"},
+        "focus": {"ring":"#1d1a22","gap":"#fbf9f6"},
+        "control": {"track":"#6d6578","thumb":"#fbf9f6","active":"#6a2f7a"}
+      }
+    },
+    "dark": {
+      "color": {
+        "text": {"primary":"#f5f1f8","heading":"#f5f1f8","secondary":"#ddd3e6","on-secondary-surface":"#f5f1f8","inverse":"#17131c"},
+        "surface": {"primary":"#17131c","secondary":"#2a2232","inverse":"#f5f1f8","inverse-secondary":"#ddd3e6"},
+        "accent": {"primary":"#d3a6e0","secondary":"#9fd49a"},
+        "status": {"success":"#93d39b","warning":"#e7b766","danger":"#f3a39a","info":"#a1c3ef"},
+        "border": {"subtle":"#3e3348","functional":"#ddd3e6"},
+        "focus": {"ring":"#f5f1f8","gap":"#17131c"},
+        "control": {"track":"#857c90","thumb":"#17131c","active":"#d3a6e0"}
+      }
+    }
+  },
+  "terms": {
+    "organization": "Cooperative",
+    "user": "Grower",
+    "project": "Harvest"
+  }
+}

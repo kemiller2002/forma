@@ -1,49 +1,49 @@
-<main class="ef-stack" aria-labelledby="color-fixture-title">
+<main class="forma-stack" aria-labelledby="color-fixture-title">
   <h1 id="color-fixture-title">Mission review color contract</h1>
 
-  <ef-navigation-shell class="ef-component-tag">
-    <nav class="ef-navigation-shell__persistent" aria-label="Mission review">
+  <forma-navigation-shell class="forma-component-tag">
+    <nav class="forma-navigation-shell__persistent" aria-label="Mission review">
       <a href="#overview" aria-current="page">Overview</a>
       <a id="keyboard-focus-target" href="#telemetry">Telemetry</a>
       <a href="#decisions">Decisions</a>
     </nav>
-  </ef-navigation-shell>
+  </forma-navigation-shell>
 
-  <section id="overview" class="ef-stack" aria-labelledby="state-title">
+  <section id="overview" class="forma-stack" aria-labelledby="state-title">
     <h2 id="state-title">Review states</h2>
-    <div class="ef-status-lozenge-set" aria-label="Mission review states">
-      <span class="ef-status-lozenge" data-state="ok">Verified</span>
-      <span class="ef-status-lozenge" data-state="attention">Review required</span>
-      <span class="ef-status-lozenge" data-state="blocked">Blocked</span>
-      <span class="ef-status-lozenge" data-state="unknown">Telemetry unknown</span>
+    <div class="forma-status-lozenge-set" aria-label="Mission review states">
+      <span class="forma-status-lozenge" data-state="ok">Verified</span>
+      <span class="forma-status-lozenge" data-state="attention">Review required</span>
+      <span class="forma-status-lozenge" data-state="blocked">Blocked</span>
+      <span class="forma-status-lozenge" data-state="unknown">Telemetry unknown</span>
     </div>
-    <aside class="ef-callout" data-ef-callout="caution" aria-labelledby="notice-title">
-      <strong class="ef-callout__label" id="notice-title">Warning</strong>
+    <aside class="forma-callout" data-forma-callout="caution" aria-labelledby="notice-title">
+      <strong class="forma-callout__label" id="notice-title">Warning</strong>
       <p>Confirm the unresolved telemetry channel before approval.</p>
     </aside>
   </section>
 
-  <ef-form class="ef-component-tag">
-    <form class="ef-form" aria-labelledby="error-title">
+  <forma-form class="forma-component-tag">
+    <form class="forma-form" aria-labelledby="error-title">
       <h2 id="error-title">Recovery action</h2>
-      <div class="ef-field">
-        <label class="ef-field__label" for="evidence-reference">Evidence reference</label>
+      <div class="forma-field">
+        <label class="forma-field__label" for="evidence-reference">Evidence reference</label>
         <input id="evidence-reference" aria-invalid="true" aria-describedby="evidence-reference-error" value="unknown">
-        <p class="ef-validation-message" id="evidence-reference-error"><span class="ef-validation-message__mark" aria-hidden="true">!</span>Replace the unknown reference with a verified evidence ID.</p>
+        <p class="forma-validation-message" id="evidence-reference-error"><span class="forma-validation-message__mark" aria-hidden="true">!</span>Replace the unknown reference with a verified evidence ID.</p>
       </div>
     </form>
-  </ef-form>
+  </forma-form>
 
-  <ef-data-grid class="ef-component-tag">
-    <div class="ef-table-scroll" tabindex="0" role="region" aria-label="Mission review decisions">
-      <table class="ef-data-grid">
+  <forma-data-grid class="forma-component-tag">
+    <div class="forma-table-scroll" tabindex="0" role="region" aria-label="Mission review decisions">
+      <table class="forma-data-grid">
         <thead><tr><th scope="col">Decision</th><th scope="col">State</th><th scope="col">Action</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Thermal review</th><td><span class="ef-status-lozenge" data-state="unknown">Outcome unknown</span></td><td><button disabled>Approve</button></td></tr>
+          <tr><th scope="row">Thermal review</th><td><span class="forma-status-lozenge" data-state="unknown">Outcome unknown</span></td><td><button disabled>Approve</button></td></tr>
         </tbody>
       </table>
     </div>
-  </ef-data-grid>
+  </forma-data-grid>
 
   <figure class="color-contract-chart" data-color-role="categorical-data-visualization" aria-labelledby="chart-title chart-description">
     <figcaption id="chart-title">Example mission verification by system</figcaption>
@@ -64,8 +64,8 @@
 </main>
 
 <style>
-  .color-contract-chart { padding: 1rem; border: 1px solid var(--ef-color-border-functional); background: var(--ef-color-surface-primary); color: var(--ef-color-text-primary); }
-  .color-contract-chart svg { display: block; inline-size: min(100%, 36rem); color: var(--ef-color-text-primary); }
+  .color-contract-chart { padding: 1rem; border: 1px solid var(--forma-color-border-functional); background: var(--forma-color-surface-primary); color: var(--forma-color-text-primary); }
+  .color-contract-chart svg { display: block; inline-size: min(100%, 36rem); color: var(--forma-color-text-primary); }
   .color-contract-chart rect { stroke: currentColor; stroke-width: 2; }
   .color-contract-chart [data-series="navigation"] rect { fill: var(--summa-series-navigation, url(#diagonal-lines)); }
   .color-contract-chart [data-series="thermal"] rect { fill: var(--summa-series-thermal, url(#cross-lines)); }

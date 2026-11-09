@@ -30,43 +30,43 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Blocked case with restricted actions",
       description: "A case that is blocked on another team. Status is text with a symbol, the context line explains why, and the application renders only the actions that are legal now; there is no More menu because there are no secondary actions.",
-      html: `<ef-record-header class="ef-component-tag">
-  <header class="ef-record-header">
-    <div class="ef-record-header__main">
+      html: `<forma-record-header class="forma-component-tag">
+  <header class="forma-record-header">
+    <div class="forma-record-header__main">
       <nav aria-label="Case breadcrumb"><a href="#record-header-blocked-case-home">Support</a> <span aria-hidden="true">/</span> <a href="#record-header-blocked-case-cases">Cases</a></nav>
-      <div class="ef-record-header__title">
-        <div><span class="ef-record-header__type">Case</span><h2>CASE-4407</h2></div>
-        <span class="ef-status-lozenge" data-state="blocked">Blocked</span>
+      <div class="forma-record-header__title">
+        <div><span class="forma-record-header__type">Case</span><h2>CASE-4407</h2></div>
+        <span class="forma-status-lozenge" data-state="blocked">Blocked</span>
       </div>
       <p>Refund not received · Waiting on Payments team since 28 September</p>
     </div>
-    <div class="ef-record-header__actions">
+    <div class="forma-record-header__actions">
       <button type="button">Add note</button>
     </div>
   </header>
-</ef-record-header>`
+</forma-record-header>`
     },
     {
       id: "long-identity",
       interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Long identifier and several secondary actions",
       description: "Content stress: a long supplier name and a long reference number wrap in the identity column while the action column keeps its natural width. Four secondary actions are collapsed into the More disclosure.",
-      html: `<ef-record-header class="ef-component-tag">
-  <header class="ef-record-header">
-    <div class="ef-record-header__main">
+      html: `<forma-record-header class="forma-component-tag">
+  <header class="forma-record-header">
+    <div class="forma-record-header__main">
       <nav aria-label="Purchase order breadcrumb"><a href="#record-header-long-identity-home">Procurement</a> <span aria-hidden="true">/</span> <a href="#record-header-long-identity-orders">Purchase orders</a></nav>
-      <div class="ef-record-header__title">
-        <div><span class="ef-record-header__type">Purchase order</span><h2 style="overflow-wrap: anywhere">PO-2026-EMEA-00041872-REV3</h2></div>
-        <span class="ef-status-lozenge" data-state="attention">Awaiting approval</span>
+      <div class="forma-record-header__title">
+        <div><span class="forma-record-header__type">Purchase order</span><h2 style="overflow-wrap: anywhere">PO-2026-EMEA-00041872-REV3</h2></div>
+        <span class="forma-status-lozenge" data-state="attention">Awaiting approval</span>
       </div>
       <p>Hanseatische Maschinenbau- und Anlagentechnik GmbH · €48,200.00 · Requested by Lena Vogt</p>
     </div>
-    <div class="ef-record-header__actions">
+    <div class="forma-record-header__actions">
       <button type="button">Approve</button>
       <button type="button">Request changes</button>
       <details>
         <summary>More</summary>
-        <div class="ef-record-header__menu">
+        <div class="forma-record-header__menu">
           <button type="button">Duplicate</button>
           <button type="button">Export PDF</button>
           <button type="button">View history</button>
@@ -75,7 +75,7 @@ export default {
       </details>
     </div>
   </header>
-</ef-record-header>`
+</forma-record-header>`
     },
     {
       id: "mobile-actions",
@@ -91,40 +91,40 @@ export default {
           "Breadcrumbs wrap at 0.75rem; keep them short or show only the parent on phones."
         ]
       },
-      html: `<ef-record-header class="ef-component-tag">
-  <header class="ef-record-header">
-    <div class="ef-record-header__main">
+      html: `<forma-record-header class="forma-component-tag">
+  <header class="forma-record-header">
+    <div class="forma-record-header__main">
       <nav aria-label="Visit breadcrumb"><a href="#record-header-mobile-visits">Visits</a></nav>
-      <div class="ef-record-header__title">
-        <div><span class="ef-record-header__type">Inspection</span><h2>Visit 12</h2></div>
-        <span class="ef-status-lozenge" data-state="ok">Complete</span>
+      <div class="forma-record-header__title">
+        <div><span class="forma-record-header__type">Inspection</span><h2>Visit 12</h2></div>
+        <span class="forma-status-lozenge" data-state="ok">Complete</span>
       </div>
       <p>Pump station 4 · 2 October</p>
     </div>
-    <div class="ef-record-header__actions">
+    <div class="forma-record-header__actions">
       <button type="button">Share report</button>
       <details>
         <summary>More</summary>
-        <div class="ef-record-header__menu"><button type="button">Reopen</button><button type="button">Download photos</button></div>
+        <div class="forma-record-header__menu"><button type="button">Reopen</button><button type="button">Download photos</button></div>
       </details>
     </div>
   </header>
-</ef-record-header>`
+</forma-record-header>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-label", on: "breadcrumb nav", values: "string", default: "—", description: "Names the breadcrumb navigation, for example \"Breadcrumb\"; keep it unique on the page." },
       { name: "aria-hidden", on: "breadcrumb separators", values: "true", default: "—", description: "Hides the decorative slash separators from assistive technology." },
-      { name: "data-state", on: ".ef-status-lozenge", values: "ok | attention | blocked | unknown", default: "absent", description: "Adds the status symbol to the lozenge; the text remains the status." }
+      { name: "data-state", on: ".forma-status-lozenge", values: "ok | attention | blocked | unknown", default: "absent", description: "Adds the status symbol to the lozenge; the text remains the status." }
     ],
     hooks: {
-      "ef-record-header": "Root two-column grid with a border; identity on the start side, actions on the end.",
-      "ef-record-header__main": "Identity column: breadcrumb `nav`, title row and a context paragraph.",
-      "ef-record-header__title": "Wrapping flex row holding the type and identifier block and the status.",
-      "ef-record-header__type": "Small mono uppercase record type label shown above the identifier.",
-      "ef-record-header__actions": "Wrapping row of actions; a `details` inside it becomes the More disclosure.",
-      "ef-record-header__menu": "The secondary actions panel inside `details`; absolutely positioned at the inline end with full-width buttons."
+      "forma-record-header": "Root two-column grid with a border; identity on the start side, actions on the end.",
+      "forma-record-header__main": "Identity column: breadcrumb `nav`, title row and a context paragraph.",
+      "forma-record-header__title": "Wrapping flex row holding the type and identifier block and the status.",
+      "forma-record-header__type": "Small mono uppercase record type label shown above the identifier.",
+      "forma-record-header__actions": "Wrapping row of actions; a `details` inside it becomes the More disclosure.",
+      "forma-record-header__menu": "The secondary actions panel inside `details`; absolutely positioned at the inline end with full-width buttons."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through breadcrumb links, actions and the More summary in source order." },
@@ -138,7 +138,7 @@ export default {
     form: "Not a form control."
   },
   states: [
-    { name: "Status", how: ".ef-status-lozenge with data-state", description: "Text status with a symbol for ok, attention, blocked or unknown." },
+    { name: "Status", how: ".forma-status-lozenge with data-state", description: "Text status with a symbol for ok, attention, blocked or unknown." },
     { name: "Secondary actions open", how: "details[open]", description: "The panel is shown below the More summary at the inline end." },
     { name: "Stacked", how: "@media (max-width: 40rem)", description: "One column; every action is full width." }
   ],
@@ -158,7 +158,7 @@ export default {
   },
   responsive: [
     "Wide: `minmax(0, 1fr) auto`; the identity column wraps long names while actions keep their natural width.",
-    "At 40rem and below: one column, and every direct child of `.ef-record-header__actions` is 100% wide.",
+    "At 40rem and below: one column, and every direct child of `.forma-record-header__actions` is 100% wide.",
     "The title row wraps, so a long status moves under the identifier instead of overflowing.",
     "Long unbroken identifiers need `overflow-wrap: anywhere` or a shorter display form; the header does not truncate."
   ],

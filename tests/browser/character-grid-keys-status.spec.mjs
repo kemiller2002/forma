@@ -64,7 +64,7 @@ test("Tab reaches the field, then keys in row-major order, skipping disabled key
   const order = [];
   for (let step = 0; step < 9; step += 1) {
     await page.keyboard.press("Tab");
-    order.push(await page.evaluate(() => document.activeElement.dataset.efAction ?? document.activeElement.id));
+    order.push(await page.evaluate(() => document.activeElement.dataset.formaAction ?? document.activeElement.id));
   }
   expect(order).toEqual(["character-grid-keys-record", "enter", "clear", "reset", "pf1", "pf3", "pf12", "pf8", "export"]);
 });
@@ -72,7 +72,7 @@ test("Tab reaches the field, then keys in row-major order, skipping disabled key
 test("keys meet the 44px target guideline at 320px and stay on their cells", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 900 });
   await page.setContent(gridDocument(keys));
-  const sizes = await page.locator(".ef-character-grid__key").evaluateAll(buttons =>
+  const sizes = await page.locator(".forma-character-grid__key").evaluateAll(buttons =>
     buttons.map(button => ({ width: button.getBoundingClientRect().width, height: button.getBoundingClientRect().height })));
   for (const size of sizes) {
     expect(size.width).toBeGreaterThanOrEqual(43.5);
@@ -92,8 +92,8 @@ test("messages and system status are live regions with visible severity words", 
 test("severity cues do not rely on color and survive forced colors", async ({ page }) => {
   const severities = ["information", "success", "warning", "validation", "error"];
   const cue = async severity => {
-    await page.setContent(gridDocument(status.replace('data-ef-severity="error"', `data-ef-severity="${severity}"`)));
-    return page.locator(".ef-character-grid__severity").evaluate(element => {
+    await page.setContent(gridDocument(status.replace('data-forma-severity="error"', `data-forma-severity="${severity}"`)));
+    return page.locator(".forma-character-grid__severity").evaluate(element => {
       const style = getComputedStyle(element);
       return [style.textDecorationLine, style.textDecorationStyle, style.outlineStyle, style.fontWeight].join("|");
     });
@@ -104,7 +104,7 @@ test("severity cues do not rely on color and survive forced colors", async ({ pa
   await page.emulateMedia({ forcedColors: "active" });
   const errorForced = await cue("error");
   expect(errorForced).toContain("solid");
-  const indicator = await page.locator(".ef-character-grid__indicator").evaluate(element => getComputedStyle(element).outlineStyle);
+  const indicator = await page.locator(".forma-character-grid__indicator").evaluate(element => getComputedStyle(element).outlineStyle);
   expect(indicator).toBe("solid");
 });
 

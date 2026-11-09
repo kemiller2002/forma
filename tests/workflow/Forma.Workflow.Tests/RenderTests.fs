@@ -48,7 +48,7 @@ let all =
       test "Static output uses only public Forma classes and no Studio or editor-only classes" (fun () ->
           for (id, _) in fixtureIds do
               for c in classes (fragmentOf (fixture id)) do
-                  expect (c.StartsWith "ef-") $"{id}: non-Forma class {c}"
+                  expect (c.StartsWith "forma-") $"{id}: non-Forma class {c}"
                   expect (not (c.Contains "studio") && not (c.Contains "editor")) $"{id}: editor class {c}"
                   expect (Regex.IsMatch(publicCss.Value, "\\." + Regex.Escape c + "(?![a-zA-Z0-9_-])")) $"{id}: {c} is not in the public Forma CSS")
 
@@ -65,7 +65,7 @@ let all =
           for (id, _) in fixtureIds do
               let w = fixture id
               let html = fragmentOf w
-              let items = Regex.Matches(html, "<ol class=\"ef-diagram__relations\"[^>]*>([\\s\\S]*?)</ol>")
+              let items = Regex.Matches(html, "<ol class=\"forma-diagram__relations\"[^>]*>([\\s\\S]*?)</ol>")
               let count = if items.Count = 0 then 0 else Regex.Matches(items[0].Value, "<li>").Count
               equal w.Edges.Length count $"{id}: relationship items"
               for g in w.Groups do
@@ -77,7 +77,7 @@ let all =
           for n in w.Nodes do
               expect (html.Contains(Markup.escapeText n.Label)) $"label {n.Id}"
           expect (Regex.IsMatch(html, "<dt>Status</dt>\\s*<dd>In progress</dd>")) "status text"
-          expect (html.Contains "data-ef-status=\"active\"") "secondary status cue")
+          expect (html.Contains "data-forma-status=\"active\"") "secondary status cue")
 
       test "Untrusted text is escaped everywhere it is rendered" (fun () ->
           let payload = "<script>alert(1)</script><img src=x onerror=alert(2)>\"'&"
@@ -125,10 +125,10 @@ let all =
           let w = fixture "static-export"
           let fragment = WorkflowDocument.fragment DocumentOptions.defaults w
           expect (fragment.Html.StartsWith "<!-- Requires @echelon-foundry/design-system@0.4.0/tokens.css") fragment.Html
-          let doc = WorkflowDocument.document { DocumentOptions.defaults with FormaBase = "/assets/forma/"; Brand = Some "echelon" } w
-          for css in [ "tokens.css"; "foundations.css"; "components.css"; "brands/echelon.css" ] do
+          let doc = WorkflowDocument.document { DocumentOptions.defaults with FormaBase = "/assets/forma/"; Brand = Some "example-harbor" } w
+          for css in [ "tokens.css"; "foundations.css"; "components.css"; "brands/example-harbor.css" ] do
               expect (doc.Html.Contains $"<link rel=\"stylesheet\" href=\"/assets/forma/{css}\">") css
-          expect (doc.Html.Contains "data-ef-brand=\"echelon\"") "brand applied"
+          expect (doc.Html.Contains "data-forma-brand=\"example-harbor\"") "brand applied"
           equal 4 doc.Dependencies.Length "dependencies")
 
       test "A complete document is valid HTML structure with doctype, language, charset, viewport and title" (fun () ->
@@ -142,14 +142,14 @@ let all =
           let doc = WorkflowDocument.document (interactiveOptions ViewMode) w
           expect (doc.Html.Contains "<script type=\"module\" src=\"node_modules/@echelon-foundry/forma-workflow/dist/forma-workflow.js\"></script>") "module"
           expect (doc.Html.Contains "<forma-workflow mode=\"view\" workflow=\"interactive-export\">") "element"
-          expect (doc.Html.Contains "<figure class=\"ef-diagram\"") "static fallback"
+          expect (doc.Html.Contains "<figure class=\"forma-diagram\"") "static fallback"
           expect (doc.Dependencies |> List.exists (function RuntimeModule(p, _, _) -> p = "@echelon-foundry/forma-workflow" | _ -> false)) "declared"
           expect (not (doc.Html.Contains "studio")) "no Studio")
 
       test "Brand and theme values are restricted to safe identifiers" (fun () ->
           let doc = WorkflowDocument.document { DocumentOptions.defaults with Brand = Some "\"><script>"; Theme = Some "neon" } (fixture "minimal")
-          expect (not (doc.Html.Contains "data-ef-brand")) "brand rejected"
-          expect (not (doc.Html.Contains "data-ef-theme")) "theme rejected")
+          expect (not (doc.Html.Contains "data-forma-brand")) "brand rejected"
+          expect (not (doc.Html.Contains "data-forma-theme")) "theme rejected")
 
       test "Golden output: static fragment, static document and interactive document" (fun () ->
           let w = fixture "static-export"

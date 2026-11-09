@@ -1,15 +1,16 @@
-# Building an Echelon marketing site with Forma
+# Building a marketing site with Forma
 
-This guide is for agents and engineers who create or migrate an Echelon
-marketing site, for example Dokimos, Ordo, Praxis, Limen, Vigila, Tutoris, or
-the main Echelon Foundry site.
+This guide is for agents and engineers who create or migrate a marketing site
+on Forma. Forma is brand-neutral: it ships the generic marketing layer, and an
+organization's marketing theme (its colors, typography and backdrop) ships in
+that organization's own theme package and loads after Forma.
 
 - Rules: [`requirements/MARKETING-PRESENTATION.md`](../requirements/MARKETING-PRESENTATION.md)
 - Distribution decision: [ADR-0003](decisions/ADR-0003-marketing-presentation-distribution.md)
-- Working reference: [`examples/echelon-marketing-site`](../examples/echelon-marketing-site)
+- Working reference: [`examples/marketing-site`](../examples/marketing-site) (a fictional organization)
 - Migrating an existing site: [`docs/marketing/MIGRATION-CONTRACT.md`](marketing/MIGRATION-CONTRACT.md)
 
-## 1. How do I make a new Echelon marketing site?
+## 1. How do I make a new marketing site?
 
 1. Create `forma.lock` (see question 2) and install the pinned assets.
 2. Start every page from the MarketingShell (`patterns/marketing-shell.html`).
@@ -45,52 +46,51 @@ my-site/
 forma 0.3.0
 repository kemiller2002/forma
 destination assets/forma
-asset forma-echelon-marketing.css sha256:<filled in by install.sh --update>
+asset forma-marketing.css sha256:<filled in by install.sh --update>
 ```
 
 `index.html`:
 
 ```html
 <!doctype html>
-<html lang="en" data-ef-theme="light">
+<html lang="en" data-forma-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product | Echelon Foundry</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500&display=swap">
-  <link rel="stylesheet" href="/assets/forma/forma-echelon-marketing.css">
+  <title>Product | Example Organization</title>
+  <link rel="stylesheet" href="/assets/forma/forma-marketing.css">
+  <!-- Optional: the organization's marketing theme, after Forma. -->
+  <link rel="stylesheet" href="/assets/theme/marketing-theme.css">
 </head>
-<body class="ef-site" data-ef-layout="product">
-  <a class="ef-skip-link" href="#main-content">Skip to main content</a>
-  <header class="ef-site-header">
-    <div class="ef-site-header__inner">
-      <div class="ef-site-header__identity">
-        <a class="ef-site-header__brand" href="/"><span class="ef-site-header__mark" aria-hidden="true">PX</span><span class="ef-site-header__name">Echelon / Product</span></a>
+<body class="forma-site" data-forma-layout="product">
+  <a class="forma-skip-link" href="#main-content">Skip to main content</a>
+  <header class="forma-site-header">
+    <div class="forma-site-header__inner">
+      <div class="forma-site-header__identity">
+        <a class="forma-site-header__brand" href="/"><span class="forma-site-header__mark" aria-hidden="true">PX</span><span class="forma-site-header__name">Example / Product</span></a>
       </div>
-      <nav class="ef-site-nav" aria-label="Primary">
-        <ul class="ef-site-nav__list">
-          <li><a class="ef-site-nav__link" href="/" aria-current="page">Overview</a></li>
-          <li><a class="ef-site-nav__link" href="/docs/">Documentation</a></li>
-          <li><a class="ef-site-nav__link" data-ef-variant="action" href="/start/">Get started</a></li>
+      <nav class="forma-site-nav" aria-label="Primary">
+        <ul class="forma-site-nav__list">
+          <li><a class="forma-site-nav__link" href="/" aria-current="page">Overview</a></li>
+          <li><a class="forma-site-nav__link" href="/docs/">Documentation</a></li>
+          <li><a class="forma-site-nav__link" data-forma-variant="action" href="/start/">Get started</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  <main class="ef-site__main" id="main-content" tabindex="-1">
-    <section class="ef-hero" aria-labelledby="hero-title">
-      <div class="ef-hero__content">
-        <p class="ef-eyebrow">Product</p>
-        <h1 class="ef-hero__title" id="hero-title">One clear promise</h1>
-        <p class="ef-lead">What it does and for whom.</p>
-        <div class="ef-actions"><a class="ef-button" data-ef-variant="primary" href="/start/">Get started</a></div>
+  <main class="forma-site__main" id="main-content" tabindex="-1">
+    <section class="forma-hero" aria-labelledby="hero-title">
+      <div class="forma-hero__content">
+        <p class="forma-eyebrow">Product</p>
+        <h1 class="forma-hero__title" id="hero-title">One clear promise</h1>
+        <p class="forma-lead">What it does and for whom.</p>
+        <div class="forma-actions"><a class="forma-button" data-forma-variant="primary" href="/start/">Get started</a></div>
       </div>
     </section>
   </main>
-  <footer class="ef-site-footer" data-ef-tone="inverse">
-    <div class="ef-site-footer__inner">
-      <p class="ef-site-footer__note"><span>&copy; 2026 Echelon Foundry</span></p>
+  <footer class="forma-site-footer" data-forma-tone="inverse">
+    <div class="forma-site-footer__inner">
+      <p class="forma-site-footer__note"><span>&copy; 2026 Example Organization</span></p>
     </div>
   </footer>
 </body>
@@ -99,16 +99,16 @@ asset forma-echelon-marketing.css sha256:<filled in by install.sh --update>
 
 ### Callouts in long-form content
 
-Most prose needs no callout. Use `.ef-callout` (`patterns/callout.html`) only when a reader must notice one of four kinds of supporting material:
+Most prose needs no callout. Use `.forma-callout` (`patterns/callout.html`) only when a reader must notice one of four kinds of supporting material:
 
-| `data-ef-callout` | Use for | Element |
+| `data-forma-callout` | Use for | Element |
 |---|---|---|
 | `note` | Context the reader can skip without losing the argument | `aside` |
 | `caution` | A consequence to weigh before acting on the surrounding text | `aside` |
 | `evidence` | Quoted or cited source material, with its source | `figure` holding a `blockquote` and a `figcaption` |
 | `decision` | A settled outcome that later sections refer to | `aside` |
 
-Every callout starts with a visible `.ef-callout__label` naming its kind, and the container is named by that label (`aria-labelledby`). The label is the primary cue. Each kind also has its own rule pattern, so kinds stay distinct in grayscale, forced colors and print. Do not use a callout for decoration, pull quotes or ordinary emphasis: use `<strong>`, a `blockquote` or a heading instead. Callouts have no runtime and no state. Static Markdown pipelines can emit the markup directly.
+Every callout starts with a visible `.forma-callout__label` naming its kind, and the container is named by that label (`aria-labelledby`). The label is the primary cue. Each kind also has its own rule pattern, so kinds stay distinct in grayscale, forced colors and print. Do not use a callout for decoration, pull quotes or ordinary emphasis: use `<strong>`, a `blockquote` or a heading instead. Callouts have no runtime and no state. Static Markdown pipelines can emit the markup directly.
 
 ## 2. How do I consume Forma?
 
@@ -135,7 +135,7 @@ need Node, npm, or .NET.
 
 Sites that already use npm may instead depend on
 `@echelon-foundry/design-system` at an exact version and copy
-`node_modules/@echelon-foundry/design-system/dist/marketing/forma-echelon-marketing.css`
+`node_modules/@echelon-foundry/design-system/dist/marketing/forma-marketing.css`
 at build time. The lock file is still the recommended record, because it
 carries the checksum.
 
@@ -143,18 +143,18 @@ Available assets for each release:
 
 | Asset | Use |
 |---|---|
-| `forma-echelon-marketing.css` | Default for Echelon sites: generic layer plus Echelon theme |
-| `forma-marketing.css` + `forma-marketing-theme-echelon.css` | The same content split in two, for sites that load the theme separately |
+| `forma-marketing.css` | The brand-neutral marketing layer. An organization theme, if any, loads after it |
 | `forma-all.css` | Adds Forma application patterns (data grid, dense ledger, status lozenge, provenance trail); load it instead of `forma-marketing.css` when needed |
 | `forma-marketing.manifest.json`, `forma-marketing.sha256` | Version, sizes, sources, checksums |
 
-## 3. How do I select the Echelon Marketing Theme?
+## 3. How do I apply an organization's marketing theme?
 
-Load `forma-echelon-marketing.css`; it already contains the theme. On `<html>`:
+Load `forma-marketing.css`, then the organization's theme stylesheet from its
+own pinned package (Forma ships none). Without a theme, the neutral Forma
+defaults apply. On `<html>`:
 
-- Set `data-ef-theme="light"` to match the reference site, which is light
-  only.
-- Set `data-ef-theme="dark"` for the validated dark map.
+- Set `data-forma-theme="light"` for a light-only site.
+- Set `data-forma-theme="dark"` for the validated dark map.
 - Omit the attribute to follow the operating-system preference.
 
 For product identity, retarget only the identity tokens, and only to other
@@ -163,48 +163,48 @@ Forma tokens:
 ```css
 /* site.css */
 :root {
-  --ef-color-accent-primary: var(--ef-color-accent-secondary);
-  --ef-color-accent-hover: var(--ef-color-text-primary);
+  --forma-color-accent-primary: var(--forma-color-accent-secondary);
+  --forma-color-accent-hover: var(--forma-color-text-primary);
 }
 ```
 
 A product that needs its own validated palette gets a brand manifest in Forma
 (`brands/<product>.brand.json`), including the optional extended roles.
-Apply it with `data-ef-brand="<product>"`. The BrandCompiler rejects any role
+Apply it with `data-forma-brand="<product>"`. The BrandCompiler rejects any role
 pair below its contrast floor.
 
 ## 4. How do I use the Marketing Shell?
 
-`.ef-site` on `<body>` is the shell. Its structure is fixed and appears in
+`.forma-site` on `<body>` is the shell. Its structure is fixed and appears in
 this order:
 
-1. `.ef-skip-link`: first element in `<body>`, targeting `#main-content`.
-2. `header.ef-site-header` > `.ef-site-header__inner`, containing:
-   - `.ef-site-header__identity`: brand link with `__mark` (`aria-hidden`)
+1. `.forma-skip-link`: first element in `<body>`, targeting `#main-content`.
+2. `header.forma-site-header` > `.forma-site-header__inner`, containing:
+   - `.forma-site-header__identity`: brand link with `__mark` (`aria-hidden`)
      and `__name`, plus an optional `__tagline`;
-   - `nav.ef-site-nav[aria-label="Primary"]` > `ul.ef-site-nav__list` >
-     `a.ef-site-nav__link`. Mark exactly one link `aria-current="page"`. At
-     most one link uses `data-ef-variant="action"`.
-3. `main.ef-site__main#main-content[tabindex="-1"]`, which holds:
-   - `section.ef-hero` first;
-   - `section.ef-section` regions;
-   - `.ef-cta`.
-4. `footer.ef-site-footer[data-ef-tone="inverse"]` > `.ef-site-footer__inner`.
+   - `nav.forma-site-nav[aria-label="Primary"]` > `ul.forma-site-nav__list` >
+     `a.forma-site-nav__link`. Mark exactly one link `aria-current="page"`. At
+     most one link uses `data-forma-variant="action"`.
+3. `main.forma-site__main#main-content[tabindex="-1"]`, which holds:
+   - `section.forma-hero` first;
+   - `section.forma-section` regions;
+   - `.forma-cta`.
+4. `footer.forma-site-footer[data-forma-tone="inverse"]` > `.forma-site-footer__inner`.
 
 Page layouts compose inside `main`:
 
 - **Marketing page**: hero → sections → CTA. Specimen: `index.html`.
 - **Product page**: hero with status badges and facts → capability card grid
   → install steps with a code sample → CTA. Specimen: `product.html`.
-- **Documentation page**: `.ef-doc` with `__nav`, `__content` (with
-  `.ef-prose`), and optional `__aside`. Specimen: `docs.html`.
+- **Documentation page**: `.forma-doc` with `__nav`, `__content` (with
+  `.forma-prose`), and optional `__aside`. Specimen: `docs.html`.
 
-Set `data-ef-layout="marketing|product|documentation"` on `.ef-site` to
+Set `data-forma-layout="marketing|product|documentation"` on `.forma-site` to
 declare the page type.
 
-Surfaces use `data-ef-tone="surface|elevated|inverse"`. Text, link, label,
+Surfaces use `data-forma-tone="surface|elevated|inverse"`. Text, link, label,
 and rule colors adapt to the tone automatically. Use one
-`data-ef-variant="primary"` action per hero, section, or CTA.
+`data-forma-variant="primary"` action per hero, section, or CTA.
 
 ## 5. What belongs in local CSS?
 
@@ -217,12 +217,12 @@ Only the following:
 - experiments pending promotion, each preceded by
   `/* forma-exception: GAP-MKT-xx or issue URL */`.
 
-Keep local class names out of the `ef-` namespace. Use a site prefix such as
+Keep local class names out of the `forma-` namespace. Use a site prefix such as
 `dk-` or `site-`.
 
 ## 6. What must go back into Forma?
 
-Anything another Echelon site could use, and anything that would otherwise
+Anything another site could use, and anything that would otherwise
 redefine:
 
 - global typography, containers, or the spacing scale;
@@ -253,7 +253,7 @@ Run these checks in CI:
 - **Install:** `bash install.sh`. It fails on any drift.
 - **Local-CSS policy:** use `kemiller2002/forma/actions/check-site-css@v<version>`
   with `files: site.css`, or run
-  `dotnet run --project <forma>/tools/SiteCssPolicy/SiteCssPolicy.fsproj -- --forma assets/forma/forma-echelon-marketing.css site.css`.
+  `dotnet run --project <forma>/tools/SiteCssPolicy/SiteCssPolicy.fsproj -- --forma assets/forma/forma-marketing.css site.css`.
 - **Structure:** at least the checks in Forma's
   `tests/marketing-structure.test.mjs`:
   - skip link first;

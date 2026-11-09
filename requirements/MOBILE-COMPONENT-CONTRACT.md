@@ -80,7 +80,7 @@ Multi-pane layouts become list-then-detail or stacked navigation while preservin
 
 ### Mobile actions
 
-Critical actions may use `.ef-mobile-action-bar`. The bar must not cover focused controls or page content and must respect safe-area insets.
+Critical actions may use `.forma-mobile-action-bar`. The bar must not cover focused controls or page content and must respect safe-area insets.
 
 ## Documentation requirement
 

@@ -10,7 +10,7 @@ const textSpacing = `* {
 p { margin-block-end: 2em !important; }`;
 
 const runBoxes = page => page.evaluate(() =>
-  [...document.querySelectorAll(".ef-character-grid__surface [data-ef-row]")].map(run => {
+  [...document.querySelectorAll(".forma-character-grid__surface [data-forma-row]")].map(run => {
     const box = run.getBoundingClientRect();
     const range = document.createRange();
     range.selectNodeContents(run);
@@ -30,8 +30,8 @@ const intersects = (a, b) => a.left < b.right - 0.5 && b.left < a.right - 0.5 &&
 // Painted boxes of every leaf run: its text (a visually hidden caption is
 // excluded) and any native control it is or contains.
 const inkBoxes = page => page.evaluate(() =>
-  [...document.querySelectorAll(".ef-character-grid__surface [data-ef-row]")]
-    .filter(run => !run.classList.contains("ef-character-grid__group"))
+  [...document.querySelectorAll(".forma-character-grid__surface [data-forma-row]")]
+    .filter(run => !run.classList.contains("forma-character-grid__group"))
     .map(run => {
       const range = document.createRange();
       range.selectNodeContents(run);
@@ -41,9 +41,9 @@ const inkBoxes = page => page.evaluate(() =>
       const rects = [...range.getClientRects(), ...controls.map(control => control.getBoundingClientRect())]
         .filter(rect => rect.width > 0.5 && rect.height > 0.5)
         .map(({ left, right, top, bottom }) => ({ left, right, top, bottom }));
-      const grids = [...document.querySelectorAll(".ef-character-grid__surface")];
-      const grid = grids.indexOf(run.closest(".ef-character-grid__surface"));
-      return { id: run.id || run.textContent.trim().slice(0, 16), grid, col: Number(run.dataset.efCol), left: run.getBoundingClientRect().left, rects };
+      const grids = [...document.querySelectorAll(".forma-character-grid__surface")];
+      const grid = grids.indexOf(run.closest(".forma-character-grid__surface"));
+      return { id: run.id || run.textContent.trim().slice(0, 16), grid, col: Number(run.dataset.formaCol), left: run.getBoundingClientRect().left, rects };
     }));
 
 const overlaps = runs => runs.flatMap((a, i) => runs.slice(i + 1)
@@ -82,7 +82,7 @@ for (const name of spacedPatterns) {
 
 test("text-spacing overrides: table columns grow so cells never overlap and stay aligned", async ({ page }) => {
   await page.setContent(gridDocument(pattern("character-grid-workflow"), { extraCss: textSpacing }));
-  const tables = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__table table")].map(table =>
+  const tables = await page.evaluate(() => [...document.querySelectorAll(".forma-character-grid__table table")].map(table =>
     [...table.rows].map(row => [...row.cells].map(cell => {
       const range = document.createRange();
       range.selectNodeContents(cell);
@@ -106,9 +106,9 @@ test("text-spacing overrides: a full-length field value stays visible, or scroll
   await page.setContent(gridDocument(pattern("character-grid-workflow"), { extraCss: textSpacing }));
   const fields = await page.evaluate(() => ({
     fieldSizing: CSS.supports("field-sizing", "content"),
-    full: [...document.querySelectorAll(".ef-character-grid__field")]
+    full: [...document.querySelectorAll(".forma-character-grid__field")]
       .filter(field => field.value.length === field.maxLength)
-      .map(field => ({ id: field.id, hidden: field.scrollWidth - field.clientWidth, width: field.getBoundingClientRect().width, cells: field.getBoundingClientRect().width / Number(field.dataset.efLen) }))
+      .map(field => ({ id: field.id, hidden: field.scrollWidth - field.clientWidth, width: field.getBoundingClientRect().width, cells: field.getBoundingClientRect().width / Number(field.dataset.formaLen) }))
   }));
   expect(fields.full.length, "the workflow has full-length values").toBeGreaterThan(0);
   for (const field of fields.full) {
@@ -125,12 +125,12 @@ test("a runtime message longer than its reserved rows grows its region instead o
   await page.setContent(gridDocument(pattern("character-grid-workflow").replace("TRNH000I 37 transactions from 2026-08-01 to 2026-09-27.", `TRNH000I ${long}`)));
   const result = await page.evaluate(() => {
     const message = document.getElementById("character-grid-workflow-trnh-message");
-    const surface = message.closest(".ef-character-grid__surface");
+    const surface = message.closest(".forma-character-grid__surface");
     const range = document.createRange();
     range.selectNodeContents(message);
     const text = range.getBoundingClientRect();
-    const row = Number(message.dataset.efRow) + Number(message.dataset.efHeight ?? 1);
-    const below = [...surface.querySelectorAll("[data-ef-row]")].filter(run => Number(run.dataset.efRow) >= row);
+    const row = Number(message.dataset.formaRow) + Number(message.dataset.formaHeight ?? 1);
+    const below = [...surface.querySelectorAll("[data-forma-row]")].filter(run => Number(run.dataset.formaRow) >= row);
     return {
       overflow: getComputedStyle(message).overflow,
       clip: getComputedStyle(message).clipPath,
@@ -152,7 +152,7 @@ test("without overrides every column and row track is exactly one cell", async (
   for (const [width, rootFontSize] of [[1280, "100%"], [1280, "200%"], [390, "100%"], [320, "100%"], [320, "200%"]]) {
     await page.setViewportSize({ width, height: 900 });
     await page.setContent(gridDocument(spacedPatterns.map(pattern).join(""), { rootFontSize }));
-    const uneven = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__surface")].flatMap((surface, index) => {
+    const uneven = await page.evaluate(() => [...document.querySelectorAll(".forma-character-grid__surface")].flatMap((surface, index) => {
       const style = getComputedStyle(surface);
       return [style.gridTemplateColumns, style.gridTemplateRows]
         .map(tracks => tracks.split(" "))
@@ -165,9 +165,9 @@ test("without overrides every column and row track is exactly one cell", async (
 
 test("fields and keys fill exactly one row pitch: foundation target minimums do not leak into runs", async ({ page }) => {
   await page.setContent(gridDocument(["character-grid-field", "character-grid-keys", "character-grid-workflow"].map(pattern).join("")));
-  const heights = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__surface > :is(input, button), .ef-character-grid__group > :is(input, button)")].map(control => {
-    const pitch = Number.parseFloat(getComputedStyle(control.closest(".ef-character-grid__surface")).gridTemplateRows);
-    return { id: control.id || control.dataset.efAction, delta: control.getBoundingClientRect().height - pitch };
+  const heights = await page.evaluate(() => [...document.querySelectorAll(".forma-character-grid__surface > :is(input, button), .forma-character-grid__group > :is(input, button)")].map(control => {
+    const pitch = Number.parseFloat(getComputedStyle(control.closest(".forma-character-grid__surface")).gridTemplateRows);
+    return { id: control.id || control.dataset.formaAction, delta: control.getBoundingClientRect().height - pitch };
   }));
   expect(heights.length).toBeGreaterThan(0);
   for (const { id, delta } of heights) expect(Math.abs(delta), `${id} height`).toBeLessThanOrEqual(1);
@@ -175,7 +175,7 @@ test("fields and keys fill exactly one row pitch: foundation target minimums do 
 
 test("a table run stays inside its declared rows", async ({ page }) => {
   await page.setContent(gridDocument(pattern("character-grid-workflow")));
-  const tables = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__table")].map(run => {
+  const tables = await page.evaluate(() => [...document.querySelectorAll(".forma-character-grid__table")].map(run => {
     const outer = run.getBoundingClientRect();
     const table = run.querySelector("table").getBoundingClientRect();
     return { top: table.top - outer.top, bottom: table.bottom - outer.bottom };
@@ -189,7 +189,7 @@ test("a table run stays inside its declared rows", async ({ page }) => {
 
 test("text-spacing overrides: reflow keeps every run readable without overlap or horizontal scrolling", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 900 });
-  const reflow = pattern("character-grid-field").replace('data-ef-narrow="contained"', 'data-ef-narrow="reflow"');
+  const reflow = pattern("character-grid-field").replace('data-forma-narrow="contained"', 'data-forma-narrow="reflow"');
   await page.setContent(gridDocument(reflow, { extraCss: textSpacing }));
   const runs = await runBoxes(page);
   for (let i = 0; i < runs.length; i += 1) {
@@ -197,23 +197,23 @@ test("text-spacing overrides: reflow keeps every run readable without overlap or
       expect(intersects(runs[i].box, runs[j].box), `${runs[i].id} overlaps ${runs[j].id}`).toBeFalsy();
     }
   }
-  const viewport = await page.locator(".ef-character-grid__viewport").evaluate(element => element.scrollWidth - element.clientWidth);
+  const viewport = await page.locator(".forma-character-grid__viewport").evaluate(element => element.scrollWidth - element.clientWidth);
   expect(viewport).toBeLessThanOrEqual(1);
 });
 
 test("focus is never hidden by the contained scroller (WCAG 2.4.11)", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 900 });
   await page.setContent(gridDocument(pattern("character-grid-3270")));
-  const viewport = page.locator(".ef-character-grid__viewport");
+  const viewport = page.locator(".forma-character-grid__viewport");
   await viewport.focus();
-  const tabbable = await page.locator(".ef-character-grid__viewport :is(input, button):not([disabled])").count();
+  const tabbable = await page.locator(".forma-character-grid__viewport :is(input, button):not([disabled])").count();
   for (let step = 0; step < tabbable; step += 1) {
     await page.keyboard.press("Tab");
     const visible = await page.evaluate(() => {
       const focused = document.activeElement.getBoundingClientRect();
-      const port = document.activeElement.closest(".ef-character-grid__viewport").getBoundingClientRect();
+      const port = document.activeElement.closest(".forma-character-grid__viewport").getBoundingClientRect();
       const width = Math.min(focused.right, port.right) - Math.max(focused.left, port.left);
-      return { id: document.activeElement.id || document.activeElement.dataset.efAction, width };
+      return { id: document.activeElement.id || document.activeElement.dataset.formaAction, width };
     });
     expect(visible.width, `${visible.id} is at least partly visible`).toBeGreaterThan(0);
   }
@@ -221,8 +221,8 @@ test("focus is never hidden by the contained scroller (WCAG 2.4.11)", async ({ p
 
 test("collisions are not resolved by CSS: both runs render, which is why conformance rejects them", async ({ page }) => {
   const collided = pattern("character-grid").replace(
-    '<p class="ef-character-grid__text" data-ef-row="3"',
-    '<span class="ef-character-grid__text" id="intruder" data-ef-row="3" data-ef-col="4" data-ef-len="4">XXXX</span><p class="ef-character-grid__text" data-ef-row="3"'
+    '<p class="forma-character-grid__text" data-forma-row="3"',
+    '<span class="forma-character-grid__text" id="intruder" data-forma-row="3" data-forma-col="4" data-forma-len="4">XXXX</span><p class="forma-character-grid__text" data-forma-row="3"'
   );
   await page.setContent(gridDocument(collided));
   const runs = await runBoxes(page);

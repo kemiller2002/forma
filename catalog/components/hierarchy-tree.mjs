@@ -30,8 +30,8 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Current page deep in the tree",
       description: "Only the branches on the path to the current page are open; sibling branches are collapsed so the tree stays short. The application sets open on the ancestors of the current page.",
-      html: `<ef-hierarchy-tree class="ef-component-tag">
-  <nav class="ef-hierarchy-tree" aria-label="Documentation sections">
+      html: `<forma-hierarchy-tree class="forma-component-tag">
+  <nav class="forma-hierarchy-tree" aria-label="Documentation sections">
     <ul>
       <li><details><summary>Getting started</summary><ul>
         <li><a href="#tree-collapsed-install">Installation</a></li>
@@ -49,15 +49,15 @@ export default {
       <li><a href="#tree-collapsed-changelog">Changelog</a></li>
     </ul>
   </nav>
-</ef-hierarchy-tree>`
+</forma-hierarchy-tree>`
     },
     {
       id: "branch-overview-links",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Branches that are also destinations",
       description: "When a branch has its own page, the summary stays a plain toggle and the branch page is the first child link. Putting a link inside the summary would create a nested interactive control.",
-      html: `<ef-hierarchy-tree class="ef-component-tag">
-  <nav class="ef-hierarchy-tree" aria-label="Organisation">
+      html: `<forma-hierarchy-tree class="forma-component-tag">
+  <nav class="forma-hierarchy-tree" aria-label="Organisation">
     <ul>
       <li><details open><summary>Engineering</summary><ul>
         <li><a href="#tree-overview-engineering" aria-current="page">Engineering overview</a></li>
@@ -72,7 +72,7 @@ export default {
       </ul></details></li>
     </ul>
   </nav>
-</ef-hierarchy-tree>`
+</forma-hierarchy-tree>`
     },
     {
       id: "mobile-reduced-indent",
@@ -88,8 +88,8 @@ export default {
           "Depth is still conveyed by list nesting for assistive technology even though the visual indent is smaller."
         ]
       },
-      html: `<ef-hierarchy-tree class="ef-component-tag">
-  <nav class="ef-hierarchy-tree" aria-label="Repository">
+      html: `<forma-hierarchy-tree class="forma-component-tag">
+  <nav class="forma-hierarchy-tree" aria-label="Repository">
     <ul>
       <li><details open><summary>services</summary><ul>
         <li><details open><summary>checkout</summary><ul>
@@ -102,7 +102,7 @@ export default {
       </ul></details></li>
     </ul>
   </nav>
-</ef-hierarchy-tree>`
+</forma-hierarchy-tree>`
     }
   ],
   api: {
@@ -113,7 +113,7 @@ export default {
       { name: "href", on: "links", values: "URL", default: "—", description: "Destination for each leaf or branch overview." }
     ],
     hooks: {
-      "ef-hierarchy-tree": "Root nav. Nested lists lose bullets and indent 1rem per level (0.5rem below 30rem); summaries and links become 44px flex rows; [aria-current=\"page\"] is bold."
+      "forma-hierarchy-tree": "Root nav. Nested lists lose bullets and indent 1rem per level (0.5rem below 30rem); summaries and links become 44px flex rows; [aria-current=\"page\"] is bold."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through visible summaries and links in document order; content inside collapsed branches is skipped." },

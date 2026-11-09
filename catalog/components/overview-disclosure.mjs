@@ -4,7 +4,7 @@ export default {
   behavior: "Application content",
   summary: "Keeps consequential state, scope, uncertainty, and unresolved work visible while secondary evidence uses native disclosure.",
   purpose: {
-    description: "Overview disclosure splits a result into two parts: an always-visible overview that states what the user must know to act (the state, its scope, how certain it is, what is still unresolved, and whether more verification is needed), and one or more [[disclosure]] sections below it for supporting evidence. It is a labelled `section` (`ef-overview-disclosure`) whose first child is `ef-overview-disclosure__overview`, marked with a thick inline-start rule, followed by native `details class=\"ef-disclosure\"` elements. Forma provides the structure and spacing. Deciding what is consequential, and writing the state text, is the application's job; the pattern never infers state, freshness or legality.",
+    description: "Overview disclosure splits a result into two parts: an always-visible overview that states what the user must know to act (the state, its scope, how certain it is, what is still unresolved, and whether more verification is needed), and one or more [[disclosure]] sections below it for supporting evidence. It is a labelled `section` (`forma-overview-disclosure`) whose first child is `forma-overview-disclosure__overview`, marked with a thick inline-start rule, followed by native `details class=\"forma-disclosure\"` elements. Forma provides the structure and spacing. Deciding what is consequential, and writing the state text, is the application's job; the pattern never infers state, freshness or legality.",
     useWhen: [
       "A verification, reconciliation or review result has supporting evidence that most users do not need to read every time.",
       "Hiding the wrong detail could lead someone to act on stale, partial or unknown information.",
@@ -41,16 +41,16 @@ export default {
       },
       title: "Reconciliation with an unknown source",
       description: "One source has not answered, so the result is explicitly Unknown, not Failed. The overview states the state as text with a [[status-lozenge]], the scope (3 of 4 sources), and what remains. Two evidence sections hold the per-source detail and the raw timestamps.",
-      html: `<ef-overview-disclosure class="ef-component-tag">
-  <section class="ef-overview-disclosure" aria-labelledby="overview-disclosure-reconciliation-unknown-title">
-    <div class="ef-overview-disclosure__overview">
+      html: `<forma-overview-disclosure class="forma-component-tag">
+  <section class="forma-overview-disclosure" aria-labelledby="overview-disclosure-reconciliation-unknown-title">
+    <div class="forma-overview-disclosure__overview">
       <h3 id="overview-disclosure-reconciliation-unknown-title">Ledger reconciliation incomplete</h3>
-      <p><span class="ef-status-lozenge" data-state="unknown">Unknown</span> 3 of 4 sources reconciled. Source D (card processor) has not responded since 09:40.</p>
+      <p><span class="forma-status-lozenge" data-state="unknown">Unknown</span> 3 of 4 sources reconciled. Source D (card processor) has not responded since 09:40.</p>
       <p><strong>Unresolved:</strong> 1 source. Do not close the period until it reconciles or is excluded by an approver.</p>
     </div>
-    <details class="ef-disclosure" data-ef-motion-weight="light">
+    <details class="forma-disclosure" data-forma-motion-weight="light">
       <summary>Per-source results</summary>
-      <div class="ef-disclosure__content">
+      <div class="forma-disclosure__content">
         <ul>
           <li>Source A (bank): matched, 1,204 entries</li>
           <li>Source B (payroll): matched, 86 entries</li>
@@ -59,14 +59,14 @@ export default {
         </ul>
       </div>
     </details>
-    <details class="ef-disclosure" data-ef-motion-weight="light">
+    <details class="forma-disclosure" data-forma-motion-weight="light">
       <summary>Request timestamps</summary>
-      <div class="ef-disclosure__content">
+      <div class="forma-disclosure__content">
         <p>Last request to Source D at 09:40 UTC; two retries at 09:45 and 09:55 without a response.</p>
       </div>
     </details>
   </section>
-</ef-overview-disclosure>`
+</forma-overview-disclosure>`
     },
     {
       id: "verified-nothing-outstanding",
@@ -78,21 +78,21 @@ export default {
       },
       title: "Verified with nothing outstanding",
       description: "A complete result still keeps its scope and freshness in the overview, including the explicit statement that nothing is unresolved, so the absence of work is stated rather than implied by missing content.",
-      html: `<ef-overview-disclosure class="ef-component-tag">
-  <section class="ef-overview-disclosure" aria-labelledby="overview-disclosure-verified-nothing-outstanding-title">
-    <div class="ef-overview-disclosure__overview">
+      html: `<forma-overview-disclosure class="forma-component-tag">
+  <section class="forma-overview-disclosure" aria-labelledby="overview-disclosure-verified-nothing-outstanding-title">
+    <div class="forma-overview-disclosure__overview">
       <h3 id="overview-disclosure-verified-nothing-outstanding-title">Access review complete</h3>
-      <p><span class="ef-status-lozenge" data-state="ok">Confirmed</span> All 58 accounts in the Finance group reviewed. Verified <time datetime="2026-09-30T08:15Z">today at 08:15 UTC</time>.</p>
+      <p><span class="forma-status-lozenge" data-state="ok">Confirmed</span> All 58 accounts in the Finance group reviewed. Verified <time datetime="2026-09-30T08:15Z">today at 08:15 UTC</time>.</p>
       <p><strong>Unresolved:</strong> none.</p>
     </div>
-    <details class="ef-disclosure" data-ef-motion-weight="light">
+    <details class="forma-disclosure" data-forma-motion-weight="light">
       <summary>Reviewer decisions</summary>
-      <div class="ef-disclosure__content">
+      <div class="forma-disclosure__content">
         <p>54 accounts kept, 4 removed. Decisions recorded by R. Osei and M. Laine.</p>
       </div>
     </details>
   </section>
-</ef-overview-disclosure>`
+</forma-overview-disclosure>`
     },
     {
       id: "mobile-stale-evidence",
@@ -113,31 +113,31 @@ export default {
           "There are no breakpoints: recomposition never moves consequential state into a collapsed section."
         ]
       },
-      html: `<ef-overview-disclosure class="ef-component-tag">
-  <section class="ef-overview-disclosure" aria-labelledby="overview-disclosure-mobile-stale-evidence-title">
-    <div class="ef-overview-disclosure__overview">
+      html: `<forma-overview-disclosure class="forma-component-tag">
+  <section class="forma-overview-disclosure" aria-labelledby="overview-disclosure-mobile-stale-evidence-title">
+    <div class="forma-overview-disclosure__overview">
       <h3 id="overview-disclosure-mobile-stale-evidence-title">Certificate check is stale</h3>
-      <p><span class="ef-status-lozenge" data-state="attention">Needs attention</span> Last checked 26 hours ago; checks are expected every 6 hours. Current expiry status is not known.</p>
+      <p><span class="forma-status-lozenge" data-state="attention">Needs attention</span> Last checked 26 hours ago; checks are expected every 6 hours. Current expiry status is not known.</p>
     </div>
-    <details class="ef-disclosure" data-ef-motion-weight="light">
+    <details class="forma-disclosure" data-forma-motion-weight="light">
       <summary>Last known result</summary>
-      <div class="ef-disclosure__content">
+      <div class="forma-disclosure__content">
         <p>api.example.net: valid until 14 January 2027, issued by the internal CA.</p>
       </div>
     </details>
   </section>
-</ef-overview-disclosure>`
+</forma-overview-disclosure>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-overview-disclosure", values: "id of the overview heading", default: "—", description: "Names the section from its overview heading so it is exposed as a named region." },
-      { name: "data-ef-motion-weight", on: "details.ef-disclosure", values: "light | standard | heavy", default: "light", description: "Motion weight of each evidence disclosure; see [[disclosure]]." },
+      { name: "aria-labelledby", on: "section.forma-overview-disclosure", values: "id of the overview heading", default: "—", description: "Names the section from its overview heading so it is exposed as a named region." },
+      { name: "data-forma-motion-weight", on: "details.forma-disclosure", values: "light | standard | heavy", default: "light", description: "Motion weight of each evidence disclosure; see [[disclosure]]." },
       { name: "datetime", on: "time", values: "ISO 8601", default: "—", description: "Machine-readable freshness when the overview states when something was verified." }
     ],
     hooks: {
-      "ef-overview-disclosure": "Section grid that stacks the overview above the evidence disclosures with a 0.75rem gap.",
-      "ef-overview-disclosure__overview": "Always-visible overview: padded grid with a 0.25rem inline-start rule in the current text color; first and last children lose their block margins."
+      "forma-overview-disclosure": "Section grid that stacks the overview above the evidence disclosures with a 0.75rem gap.",
+      "forma-overview-disclosure__overview": "Always-visible overview: padded grid with a 0.25rem inline-start rule in the current text color; first and last children lose their block margins."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves to each evidence summary (and any links in the overview)." },

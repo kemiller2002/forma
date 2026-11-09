@@ -23,8 +23,8 @@ const html = () => `<!doctype html>
 <section data-pattern="states">${fs.readFileSync("patterns/reorder-states.html", "utf8")}</section>
 </div></body></html>`;
 
-const item = (page) => page.locator("[data-pattern=ranking] .ef-ranking__item").first();
-const pane = (page) => page.locator("[data-pattern=split] .ef-split-pane");
+const item = (page) => page.locator("[data-pattern=ranking] .forma-ranking__item").first();
+const pane = (page) => page.locator("[data-pattern=split] .forma-split-pane");
 
 // Sample a value every animation frame for a number of frames.
 const sampleFrames = (locator, reader, frames) =>
@@ -49,10 +49,10 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("the dragged item tracks the application-supplied offset with no lag", async ({ page }) => {
-  await item(page).evaluate((element) => { element.dataset.efManipulation = "dragging"; });
+  await item(page).evaluate((element) => { element.dataset.formaManipulation = "dragging"; });
   for (const offset of [12, 40, 97, 3]) {
     const observed = await item(page).evaluate((element, value) => {
-      element.style.setProperty("--ef-drag-y", `${value}px`);
+      element.style.setProperty("--forma-drag-y", `${value}px`);
       return { translate: getComputedStyle(element).translate, running: element.getAnimations().length };
     }, offset);
     expect(observed.translate).toBe(`0px ${offset}px`);
@@ -62,14 +62,14 @@ test("the dragged item tracks the application-supplied offset with no lag", asyn
 
 test("post-release settling is damped and never overshoots the authoritative position", async ({ page }) => {
   await item(page).evaluate((element) => {
-    element.dataset.efManipulation = "dragging";
-    element.style.setProperty("--ef-drag-y", "80px");
+    element.dataset.formaManipulation = "dragging";
+    element.style.setProperty("--forma-drag-y", "80px");
     // The drag has rendered before release, as it would in a real gesture.
     return getComputedStyle(element).translate;
   });
   await item(page).evaluate((element) => {
-    element.dataset.efManipulation = "settling";
-    element.style.setProperty("--ef-drag-y", "0px");
+    element.dataset.formaManipulation = "settling";
+    element.style.setProperty("--forma-drag-y", "0px");
   });
   const samples = await sampleFrames(item(page), (element) => Number.parseFloat(getComputedStyle(element).translate.split(" ")[1] ?? "0") || 0, 40);
   expect(Math.min(...samples)).toBeGreaterThanOrEqual(-0.5);
@@ -78,18 +78,18 @@ test("post-release settling is damped and never overshoots the authoritative pos
 });
 
 test("a rejected drop returns to its authoritative position with a non-color cue and no success", async ({ page }) => {
-  const rejected = page.locator("[data-pattern=states] [data-ef-drop=rejected]");
+  const rejected = page.locator("[data-pattern=states] [data-forma-drop=rejected]");
   const style = await rejected.evaluate((element) => ({ outline: getComputedStyle(element).outlineStyle, translate: getComputedStyle(element).translate }));
   expect(style.outline).toBe("dashed");
   expect(["none", "0px", "0px 0px"]).toContain(style.translate);
-  await expect(page.locator("[data-pattern=states] .ef-ranking__announcement")).toContainText("Order unchanged");
-  await expect(page.locator("[data-ef-drop=accepted]")).toHaveCount(0);
+  await expect(page.locator("[data-pattern=states] .forma-ranking__announcement")).toContainText("Order unchanged");
+  await expect(page.locator("[data-forma-drop=accepted]")).toHaveCount(0);
 });
 
 test("drop candidate, accepted and rejected are distinguishable without color", async ({ page }) => {
   const styles = await page.evaluate(() => ["candidate", "accepted", "rejected"].map((state) => {
     const element = document.createElement("div");
-    element.dataset.efDrop = state;
+    element.dataset.formaDrop = state;
     document.body.append(element);
     const style = getComputedStyle(element);
     const value = `${style.outlineStyle}|${style.backgroundColor}`;
@@ -102,26 +102,26 @@ test("drop candidate, accepted and rejected are distinguishable without color", 
 });
 
 test("split-pane resizing tracks directly and never leaves legal bounds, even when settling", async ({ page }) => {
-  const width = () => pane(page).evaluate((element) => element.querySelector(".ef-split-pane__primary").getBoundingClientRect().width);
+  const width = () => pane(page).evaluate((element) => element.querySelector(".forma-split-pane__primary").getBoundingClientRect().width);
   const bounds = await pane(page).evaluate((element) => {
     const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
     return { min: 16 * rem, max: element.clientWidth - 16 * rem };
   });
-  await pane(page).evaluate((element) => { element.dataset.efManipulation = "resizing"; element.style.setProperty("--ef-split-size", "50%"); });
+  await pane(page).evaluate((element) => { element.dataset.formaManipulation = "resizing"; element.style.setProperty("--forma-split-size", "50%"); });
   const direct = await width();
   const expected = await pane(page).evaluate((element) => element.clientWidth * 0.5);
   expect(Math.abs(direct - expected)).toBeLessThan(1);
 
   // Release far beyond the maximum: settling must stay clamped every frame.
-  await pane(page).evaluate((element) => { delete element.dataset.efManipulation; element.style.setProperty("--ef-split-size", "99%"); });
-  const settling = await sampleFrames(pane(page), (element) => element.querySelector(".ef-split-pane__primary").getBoundingClientRect().width, 30);
+  await pane(page).evaluate((element) => { delete element.dataset.formaManipulation; element.style.setProperty("--forma-split-size", "99%"); });
+  const settling = await sampleFrames(pane(page), (element) => element.querySelector(".forma-split-pane__primary").getBoundingClientRect().width, 30);
   settling.forEach((value) => {
     expect(value).toBeLessThanOrEqual(bounds.max + 0.5);
     expect(value).toBeGreaterThanOrEqual(bounds.min - 0.5);
   });
   expect(settling.at(-1)).toBeCloseTo(bounds.max, 0);
 
-  await pane(page).evaluate((element) => { element.style.setProperty("--ef-split-size", "1%"); });
+  await pane(page).evaluate((element) => { element.style.setProperty("--forma-split-size", "1%"); });
   await pane(page).evaluate((element) => Promise.all(element.getAnimations().map((animation) => animation.finished)));
   expect(await width()).toBeCloseTo(bounds.min, 0);
 });
@@ -129,15 +129,15 @@ test("split-pane resizing tracks directly and never leaves legal bounds, even wh
 test("keyboard-driven and pointer-driven resizing end in the same state", async ({ page }) => {
   const settleTo = async (manipulation) => {
     await pane(page).evaluate((element, mode) => {
-      element.style.setProperty("--ef-split-size", "62%");
-      if (mode) element.dataset.efManipulation = mode; else delete element.dataset.efManipulation;
+      element.style.setProperty("--forma-split-size", "62%");
+      if (mode) element.dataset.formaManipulation = mode; else delete element.dataset.formaManipulation;
     }, manipulation);
     await pane(page).evaluate((element, mode) => {
-      element.style.setProperty("--ef-split-size", "45%");
-      if (mode) delete element.dataset.efManipulation;
+      element.style.setProperty("--forma-split-size", "45%");
+      if (mode) delete element.dataset.formaManipulation;
       return Promise.all(element.getAnimations().map((animation) => animation.finished));
     }, manipulation);
-    return pane(page).evaluate((element) => element.querySelector(".ef-split-pane__primary").getBoundingClientRect().width);
+    return pane(page).evaluate((element) => element.querySelector(".forma-split-pane__primary").getBoundingClientRect().width);
   };
   const pointer = await settleTo("resizing");
   const keyboard = await settleTo(null);
@@ -150,9 +150,9 @@ test("keyboard-driven and pointer-driven resizing end in the same state", async 
 });
 
 test("a collapsed pane snaps to its minimum and keeps focus available", async ({ page }) => {
-  await pane(page).evaluate((element) => { element.toggleAttribute("data-ef-collapsed", true); return Promise.all(element.getAnimations().map((animation) => animation.finished)); });
+  await pane(page).evaluate((element) => { element.toggleAttribute("data-forma-collapsed", true); return Promise.all(element.getAnimations().map((animation) => animation.finished)); });
   const minimum = await pane(page).evaluate(() => 16 * Number.parseFloat(getComputedStyle(document.documentElement).fontSize));
-  const width = await pane(page).evaluate((element) => element.querySelector(".ef-split-pane__primary").getBoundingClientRect().width);
+  const width = await pane(page).evaluate((element) => element.querySelector(".forma-split-pane__primary").getBoundingClientRect().width);
   expect(width).toBeCloseTo(minimum, 0);
   await page.getByRole("separator", { name: "Resize working surface" }).focus();
   await expect(page.getByRole("separator", { name: "Resize working surface" })).toBeFocused();
@@ -161,8 +161,8 @@ test("a collapsed pane snaps to its minimum and keeps focus available", async ({
 test("reduced motion places items and panes directly at their final position", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   const durations = await page.evaluate(() => [
-    getComputedStyle(document.querySelector("[data-pattern=states] [data-ef-manipulation=settling]")).transitionDuration,
-    getComputedStyle(document.querySelector("[data-pattern=split] .ef-split-pane")).transitionDuration
+    getComputedStyle(document.querySelector("[data-pattern=states] [data-forma-manipulation=settling]")).transitionDuration,
+    getComputedStyle(document.querySelector("[data-pattern=split] .forma-split-pane")).transitionDuration
   ]);
   durations.flatMap((value) => value.split(",")).forEach((value) => expect(Number.parseFloat(value)).toBeLessThan(0.01));
 });

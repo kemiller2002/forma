@@ -33,7 +33,7 @@ test("every canonical HTML pattern has exactly one Figma contract entry", () => 
 
 test("Figma contract points to canonical Forma token source", () => {
   const contract = readJson("figma/component-contracts.json");
-  assert.equal(contract.sourceOfTruth.tokens, "tokens/echelon.tokens.json");
+  assert.equal(contract.sourceOfTruth.tokens, "tokens/forma.tokens.json");
   assert.ok(fs.existsSync(contract.sourceOfTruth.tokens));
   assert.deepEqual(contract.figma.modes, ["Light", "Dark"]);
 });
@@ -41,8 +41,8 @@ test("Figma contract points to canonical Forma token source", () => {
 test("npm exposes canonical design metadata for external tooling", () => {
   const pkg = readJson("package.json");
 
-  assert.equal(pkg.exports["./tokens.json"], "./tokens/echelon.tokens.json");
+  assert.equal(pkg.exports["./tokens.json"], "./tokens/forma.tokens.json");
   assert.equal(pkg.exports["./figma/components.json"], "./figma/component-contracts.json");
-  assert.ok(pkg.files.includes("tokens/echelon.tokens.json"));
+  assert.ok(pkg.files.includes("tokens/forma.tokens.json"));
   assert.ok(pkg.files.includes("figma/component-contracts.json"));
 });

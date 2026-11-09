@@ -26,45 +26,45 @@ export default {
       id: "import-scope",
       title: "Import with scoped completeness",
       description: "The result of a data import where different parts ended in different states. Confirmed, partial and pending stay separate, so a reader cannot conclude the whole import succeeded.",
-      html: `<ef-state-survivability class="ef-component-tag">
-  <section class="ef-state-survivability" aria-labelledby="state-survivability-import-scope-title">
+      html: `<forma-state-survivability class="forma-component-tag">
+  <section class="forma-state-survivability" aria-labelledby="state-survivability-import-scope-title">
     <h3 id="state-survivability-import-scope-title">Customer import, 30 September</h3>
-    <div class="ef-state-survivability__state">
-      <span class="ef-status-lozenge" data-state="ok">Confirmed</span>
+    <div class="forma-state-survivability__state">
+      <span class="forma-status-lozenge" data-state="ok">Confirmed</span>
       <p>8,000 customer records were written and verified.</p>
     </div>
-    <div class="ef-state-survivability__state">
-      <span class="ef-status-lozenge" data-state="attention">Partial</span>
+    <div class="forma-state-survivability__state">
+      <span class="forma-status-lozenge" data-state="attention">Partial</span>
       <p>Contacts were imported for 7,640 customers. 360 customers have no contacts yet; they are listed in the import report.</p>
     </div>
-    <div class="ef-state-survivability__state">
-      <span class="ef-status-lozenge" data-state="attention">Pending</span>
+    <div class="forma-state-survivability__state">
+      <span class="forma-status-lozenge" data-state="attention">Pending</span>
       <p>Credit limits are queued for approval and are not yet in effect.</p>
     </div>
   </section>
-</ef-state-survivability>`
+</forma-state-survivability>`
     },
     {
       id: "control-verification",
       title: "Control verification with insufficient data",
       description: "A verification view for one security control. Insufficient data and not applicable are shown as their own states rather than being counted as passes or failures.",
-      html: `<ef-state-survivability class="ef-component-tag">
-  <section class="ef-state-survivability" aria-labelledby="state-survivability-control-verification-title">
+      html: `<forma-state-survivability class="forma-component-tag">
+  <section class="forma-state-survivability" aria-labelledby="state-survivability-control-verification-title">
     <h3 id="state-survivability-control-verification-title">Access review control</h3>
-    <div class="ef-state-survivability__state">
-      <span class="ef-status-lozenge" data-state="ok">Passed</span>
+    <div class="forma-state-survivability__state">
+      <span class="forma-status-lozenge" data-state="ok">Passed</span>
       <p>Quarterly reviews were completed for all production systems.</p>
     </div>
-    <div class="ef-state-survivability__state">
-      <span class="ef-status-lozenge" data-state="unknown">Insufficient data</span>
+    <div class="forma-state-survivability__state">
+      <span class="forma-status-lozenge" data-state="unknown">Insufficient data</span>
       <p>Only 2 of 5 required review records were supplied for the finance systems. No conclusion is drawn.</p>
     </div>
-    <div class="ef-state-survivability__state">
-      <span class="ef-status-lozenge">Not applicable</span>
+    <div class="forma-state-survivability__state">
+      <span class="forma-status-lozenge">Not applicable</span>
       <p>The legacy HR system was retired before this review period.</p>
     </div>
   </section>
-</ef-state-survivability>`
+</forma-state-survivability>`
     },
     {
       id: "mobile-sync-states",
@@ -79,33 +79,33 @@ export default {
           "There are no touch targets in the rows; if a state needs action, pair the list with [[recovery-actions]] or a button below it."
         ]
       },
-      html: `<ef-state-survivability class="ef-component-tag">
-  <section class="ef-state-survivability" aria-labelledby="state-survivability-mobile-sync-states-title">
+      html: `<forma-state-survivability class="forma-component-tag">
+  <section class="forma-state-survivability" aria-labelledby="state-survivability-mobile-sync-states-title">
     <h3 id="state-survivability-mobile-sync-states-title">Field tablet sync</h3>
-    <div class="ef-state-survivability__state">
-      <span class="ef-status-lozenge" data-state="unknown">Unknown</span>
+    <div class="forma-state-survivability__state">
+      <span class="forma-status-lozenge" data-state="unknown">Unknown</span>
       <p>The last upload from tablet 14 has not been acknowledged by the server.</p>
     </div>
-    <div class="ef-state-survivability__state">
-      <span class="ef-status-lozenge" data-state="attention">Stale</span>
+    <div class="forma-state-survivability__state">
+      <span class="forma-status-lozenge" data-state="attention">Stale</span>
       <p>Tablet 9 last synced 3 days ago; its inspections are not in today's report.</p>
     </div>
-    <div class="ef-state-survivability__state">
-      <span class="ef-status-lozenge" data-state="blocked">Unavailable</span>
+    <div class="forma-state-survivability__state">
+      <span class="forma-status-lozenge" data-state="blocked">Unavailable</span>
       <p>Tablet 2 is locked by device management and cannot sync.</p>
     </div>
   </section>
-</ef-state-survivability>`
+</forma-state-survivability>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-state-survivability", values: "id of the heading", default: "—", description: "Names the region from its heading." },
-      { name: "data-state", on: ".ef-status-lozenge", values: "ok | attention | unknown | blocked", default: "absent (neutral)", description: "Glyph for each state's lozenge. The lozenge text must name the exact state." }
+      { name: "aria-labelledby", on: "section.forma-state-survivability", values: "id of the heading", default: "—", description: "Names the region from its heading." },
+      { name: "data-state", on: ".forma-status-lozenge", values: "ok | attention | unknown | blocked", default: "absent (neutral)", description: "Glyph for each state's lozenge. The lozenge text must name the exact state." }
     ],
     hooks: {
-      "ef-state-survivability": "Root grid stacking the heading and state rows with a consistent gap.",
-      "ef-state-survivability__state": "One state row: a two-column grid (lozenge, explanation) with a bottom rule. Single column below 30rem."
+      "forma-state-survivability": "Root grid stacking the heading and state rows with a consistent gap.",
+      "forma-state-survivability__state": "One state row: a two-column grid (lozenge, explanation) with a bottom rule. Single column below 30rem."
     },
     keyboard: [
       { keys: "—", action: "No interactive content by default. Any links inside explanations follow native link behavior." }

@@ -36,5 +36,5 @@
     }
   },
   "expect": "fail",
-  "disposition": "Open limitation: .ef-alert stacks its action by viewport media query, not container width, so a 160px column at 125% text overflows. Recorded as a Forma work item."
+  "disposition": "Open limitation: .forma-alert stacks its action by viewport media query, not container width, so a 160px column at 125% text overflows. Recorded as a Forma work item."
 }

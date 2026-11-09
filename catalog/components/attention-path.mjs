@@ -29,23 +29,23 @@ export default {
       id: "payment-release",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Blocked payment release",
-      description: "A treasury screen where the primary step is a blocked payment that needs a second approver. Evidence and context are supporting steps. Status is text, and the critical amount uses `.ef-critical-value` for deliberate reading.",
-      html: `<ef-attention-path class="ef-component-tag">
-  <section class="ef-attention-path" aria-labelledby="attention-path-payment-release-title">
+      description: "A treasury screen where the primary step is a blocked payment that needs a second approver. Evidence and context are supporting steps. Status is text, and the critical amount uses `.forma-critical-value` for deliberate reading.",
+      html: `<forma-attention-path class="forma-component-tag">
+  <section class="forma-attention-path" aria-labelledby="attention-path-payment-release-title">
     <header>
-      <p class="ef-component-kicker">Treasury · payment run 118</p>
+      <p class="forma-component-kicker">Treasury · payment run 118</p>
       <h2 id="attention-path-payment-release-title">One payment needs a second approver</h2>
     </header>
-    <section class="ef-attention-path__primary" data-attention-step="1" aria-labelledby="attention-path-payment-release-primary">
-      <span class="ef-status-lozenge" data-state="blocked">Blocked: second approval required</span>
+    <section class="forma-attention-path__primary" data-attention-step="1" aria-labelledby="attention-path-payment-release-primary">
+      <span class="forma-status-lozenge" data-state="blocked">Blocked: second approval required</span>
       <h3 id="attention-path-payment-release-primary">Approve payment to Hanseatische Maschinenbau GmbH</h3>
-      <p>Amount <span class="ef-critical-value">€148,200.00</span> exceeds the single-approver limit of €100,000.00.</p>
-      <div class="ef-cluster">
+      <p>Amount <span class="forma-critical-value">€148,200.00</span> exceeds the single-approver limit of €100,000.00.</p>
+      <div class="forma-cluster">
         <button type="button">Request second approval</button>
         <button type="button">View invoice</button>
       </div>
     </section>
-    <div class="ef-attention-path__support">
+    <div class="forma-attention-path__support">
       <section data-attention-step="2" aria-labelledby="attention-path-payment-release-evidence">
         <h3 id="attention-path-payment-release-evidence">Evidence</h3>
         <p>Invoice matched to purchase order PO-7782 and goods receipt GR-5521.</p>
@@ -56,26 +56,26 @@ export default {
       </section>
     </div>
   </section>
-</ef-attention-path>`
+</forma-attention-path>`
     },
     {
       id: "reconciling-state",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Reconciling state with long localized text",
       description: "The primary issue is an application-reported reconciling state, shown as its own state rather than collapsed into failure. Long German text wraps inside every region, and a supporting region without a declared step simply has no priority label.",
-      html: `<ef-attention-path class="ef-component-tag">
-  <section class="ef-attention-path" aria-labelledby="attention-path-reconciling-title" lang="de">
+      html: `<forma-attention-path class="forma-component-tag">
+  <section class="forma-attention-path" aria-labelledby="attention-path-reconciling-title" lang="de">
     <header>
-      <p class="ef-component-kicker">Lagerbestand</p>
+      <p class="forma-component-kicker">Lagerbestand</p>
       <h2 id="attention-path-reconciling-title">Bestandsabgleich läuft</h2>
     </header>
-    <section class="ef-attention-path__primary" data-attention-step="1" aria-labelledby="attention-path-reconciling-primary">
-      <span class="ef-status-lozenge" data-state="unknown">Abgleich läuft – Ergebnis noch nicht bekannt</span>
+    <section class="forma-attention-path__primary" data-attention-step="1" aria-labelledby="attention-path-reconciling-primary">
+      <span class="forma-status-lozenge" data-state="unknown">Abgleich läuft – Ergebnis noch nicht bekannt</span>
       <h3 id="attention-path-reconciling-primary">Keine Umbuchungen bis zum Abschluss der Inventurdifferenzprüfung</h3>
       <p>Das Lagerverwaltungssystem hat den Abgleich um 09:40 gestartet und noch kein Ergebnis gemeldet.</p>
-      <div class="ef-cluster"><button type="button">Status aktualisieren</button></div>
+      <div class="forma-cluster"><button type="button">Status aktualisieren</button></div>
     </section>
-    <div class="ef-attention-path__support">
+    <div class="forma-attention-path__support">
       <section data-attention-step="2" aria-labelledby="attention-path-reconciling-scope">
         <h3 id="attention-path-reconciling-scope">Umfang</h3>
         <p>Betroffen sind 3 Lagerorte und 1.284 Artikelpositionen.</p>
@@ -86,7 +86,7 @@ export default {
       </section>
     </div>
   </section>
-</ef-attention-path>`
+</forma-attention-path>`
     },
     {
       id: "mobile-review",
@@ -102,38 +102,38 @@ export default {
           "The Priority labels stay visible in portrait and landscape; the order never changes with orientation."
         ]
       },
-      html: `<ef-attention-path class="ef-component-tag">
-  <section class="ef-attention-path" aria-labelledby="attention-path-mobile-title">
+      html: `<forma-attention-path class="forma-component-tag">
+  <section class="forma-attention-path" aria-labelledby="attention-path-mobile-title">
     <header>
-      <p class="ef-component-kicker">Access review</p>
+      <p class="forma-component-kicker">Access review</p>
       <h2 id="attention-path-mobile-title">Contractor access expires today</h2>
     </header>
-    <section class="ef-attention-path__primary" data-attention-step="1" aria-labelledby="attention-path-mobile-primary">
-      <span class="ef-status-lozenge" data-state="attention">Expires at 18:00</span>
+    <section class="forma-attention-path__primary" data-attention-step="1" aria-labelledby="attention-path-mobile-primary">
+      <span class="forma-status-lozenge" data-state="attention">Expires at 18:00</span>
       <h3 id="attention-path-mobile-primary">Extend or remove access for M. Chen</h3>
-      <div class="ef-cluster"><button type="button">Extend 30 days</button><button type="button">Remove access</button></div>
+      <div class="forma-cluster"><button type="button">Extend 30 days</button><button type="button">Remove access</button></div>
     </section>
-    <div class="ef-attention-path__support">
+    <div class="forma-attention-path__support">
       <section data-attention-step="2" aria-labelledby="attention-path-mobile-usage">
         <h3 id="attention-path-mobile-usage">Recent use</h3>
         <p>Last sign-in 2 hours ago from the office network.</p>
       </section>
     </div>
   </section>
-</ef-attention-path>`
+</forma-attention-path>`
     }
   ],
   api: {
     attributes: [
       { name: "data-attention-step", on: "primary and supporting regions", values: "positive integer", default: "absent", description: "Declares the region's place in the intended attention path and renders a visible \"Priority N\" label. Must follow source order; descriptive only, never severity or authority." },
       { name: "aria-labelledby", on: "root and each region", values: "id of the region heading", default: "—", description: "Names each region by its heading so the path is navigable by headings and regions." },
-      { name: "data-state", on: ".ef-status-lozenge", values: "ok | attention | blocked | unknown", default: "absent", description: "Adds a status symbol to the text status in the primary region." },
+      { name: "data-state", on: ".forma-status-lozenge", values: "ok | attention | blocked | unknown", default: "absent", description: "Adds a status symbol to the text status in the primary region." },
       { name: "lang", on: "root or regions", values: "BCP 47 tag", default: "inherited", description: "Declare the language of localized content so wrapping and pronunciation are correct." }
     ],
     hooks: {
-      "ef-attention-path": "Root grid of header, primary region and support grid. In an application page this is often `main`; nested, use a labelled `section`.",
-      "ef-attention-path__primary": "The single first-glance region: 2px border, surface background, padding. Its action cluster stacks full width at 30rem and below.",
-      "ef-attention-path__support": "Auto-fit grid of supporting regions (minimum 15rem each), each with a thin top rule.",
+      "forma-attention-path": "Root grid of header, primary region and support grid. In an application page this is often `main`; nested, use a labelled `section`.",
+      "forma-attention-path__primary": "The single first-glance region: 2px border, surface background, padding. Its action cluster stacks full width at 30rem and below.",
+      "forma-attention-path__support": "Auto-fit grid of supporting regions (minimum 15rem each), each with a thin top rule.",
       "data-attention-step": "Presentation hook that prints \"Priority N\" before any region inside the path."
     },
     keyboard: [
@@ -143,9 +143,9 @@ export default {
     form: "Not a form control."
   },
   states: [
-    { name: "Primary", how: ".ef-attention-path__primary", description: "Strong frame and background; recognized first." },
+    { name: "Primary", how: ".forma-attention-path__primary", description: "Strong frame and background; recognized first." },
     { name: "Declared step", how: "data-attention-step=\"N\"", description: "Visible \"Priority N\" label before the region." },
-    { name: "Supporting", how: "children of .ef-attention-path__support", description: "Thin top rule, auto-fit columns." },
+    { name: "Supporting", how: "children of .forma-attention-path__support", description: "Thin top rule, auto-fit columns." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Primary border and supporting rules use CanvasText; the Priority labels and text remain." }
   ],
   accessibility: {
@@ -164,7 +164,7 @@ export default {
   responsive: [
     "Root and every region set `min-inline-size: 0` and `max-inline-size: 100%`.",
     "Support grid: `repeat(auto-fit, minmax(min(100%, 15rem), 1fr))`, which becomes one column when there is room for less than two 15rem regions.",
-    "At 30rem and below: the primary region's `.ef-cluster` becomes a single column of full-width, wrapping buttons.",
+    "At 30rem and below: the primary region's `.forma-cluster` becomes a single column of full-width, wrapping buttons.",
     "Status lozenges inside the path wrap at 30rem and below instead of forcing width."
   ],
   motion: [

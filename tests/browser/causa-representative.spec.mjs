@@ -15,8 +15,8 @@ const VIEWPORTS = [
 ];
 
 // Known limitation, reported rather than hidden (docs/reliability/
-// indy-init-compatibility.md): .ef-dashboard-grid (three fixed columns),
-// .ef-split-pane (a 16rem secondary minimum) and .ef-operation-status (an auto
+// indy-init-compatibility.md): .forma-dashboard-grid (three fixed columns),
+// .forma-split-pane (a 16rem secondary minimum) and .forma-operation-status (an auto
 // actions column) collapse only at a viewport media
 // query, so page-level 200% text at iPad portrait width leaves them wider than
 // their region. The same class as the alert component's viewport-based stacking (known issue). These

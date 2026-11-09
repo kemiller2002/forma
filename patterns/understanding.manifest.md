@@ -22,5 +22,5 @@ Every state must remain textual and non-color dependent. Source and correction p
 
 ## Maintenance
 
-- Owner: Echelon Foundry design system
+- Owner: Forma design system
 - Introduced: 2026-09-23

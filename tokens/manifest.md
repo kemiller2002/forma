@@ -6,7 +6,7 @@ Own the canonical cross-application visual vocabulary. The JSON token source is 
 
 ## Ownership
 
-- State, including presentation state: `tokens/echelon.tokens.json`
+- State, including presentation state: `tokens/forma.tokens.json`
 - Transitions / commands / messages: none — token data is declarative
 - Invariants and guards: DTCG type/reference validity; semantic contrast constraints
 - Capabilities / authority: token paths and theme mappings

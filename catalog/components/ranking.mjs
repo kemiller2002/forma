@@ -30,77 +30,77 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "After moving an item up",
       description: "Delivery speed has just been moved to first place with its Move up button. The application renumbered the list, disabled the impossible moves at the ends and wrote the announcement.",
-      html: `<ef-ranking class="ef-component-tag">
-  <fieldset class="ef-ranking">
-    <legend class="ef-ranking__legend">Rank these goals for the next release.</legend>
-    <ol class="ef-ranking__list">
-      <li class="ef-ranking__item" data-ef-rank="1">
-        <span class="ef-ranking__position" aria-hidden="true">1</span>
-        <span class="ef-ranking__label">Delivery speed</span>
-        <span class="ef-ranking__actions">
+      html: `<forma-ranking class="forma-component-tag">
+  <fieldset class="forma-ranking">
+    <legend class="forma-ranking__legend">Rank these goals for the next release.</legend>
+    <ol class="forma-ranking__list">
+      <li class="forma-ranking__item" data-forma-rank="1">
+        <span class="forma-ranking__position" aria-hidden="true">1</span>
+        <span class="forma-ranking__label">Delivery speed</span>
+        <span class="forma-ranking__actions">
           <button type="button" disabled aria-label="Move Delivery speed up">↑</button>
           <button type="button" aria-label="Move Delivery speed down">↓</button>
         </span>
       </li>
-      <li class="ef-ranking__item" data-ef-rank="2">
-        <span class="ef-ranking__position" aria-hidden="true">2</span>
-        <span class="ef-ranking__label">Reliability</span>
-        <span class="ef-ranking__actions">
+      <li class="forma-ranking__item" data-forma-rank="2">
+        <span class="forma-ranking__position" aria-hidden="true">2</span>
+        <span class="forma-ranking__label">Reliability</span>
+        <span class="forma-ranking__actions">
           <button type="button" aria-label="Move Reliability up">↑</button>
           <button type="button" aria-label="Move Reliability down">↓</button>
         </span>
       </li>
-      <li class="ef-ranking__item" data-ef-rank="3">
-        <span class="ef-ranking__position" aria-hidden="true">3</span>
-        <span class="ef-ranking__label">Accessibility fixes</span>
-        <span class="ef-ranking__actions">
+      <li class="forma-ranking__item" data-forma-rank="3">
+        <span class="forma-ranking__position" aria-hidden="true">3</span>
+        <span class="forma-ranking__label">Accessibility fixes</span>
+        <span class="forma-ranking__actions">
           <button type="button" aria-label="Move Accessibility fixes up">↑</button>
           <button type="button" aria-label="Move Accessibility fixes down">↓</button>
         </span>
       </li>
-      <li class="ef-ranking__item" data-ef-rank="4">
-        <span class="ef-ranking__position" aria-hidden="true">4</span>
-        <span class="ef-ranking__label">Cost efficiency</span>
-        <span class="ef-ranking__actions">
+      <li class="forma-ranking__item" data-forma-rank="4">
+        <span class="forma-ranking__position" aria-hidden="true">4</span>
+        <span class="forma-ranking__label">Cost efficiency</span>
+        <span class="forma-ranking__actions">
           <button type="button" aria-label="Move Cost efficiency up">↑</button>
           <button type="button" disabled aria-label="Move Cost efficiency down">↓</button>
         </span>
       </li>
     </ol>
-    <p class="ef-ranking__announcement" aria-live="polite" aria-atomic="true">Delivery speed moved to position 1 of 4.</p>
+    <p class="forma-ranking__announcement" aria-live="polite" aria-atomic="true">Delivery speed moved to position 1 of 4.</p>
   </fieldset>
-</ef-ranking>`
+</forma-ranking>`
     },
     {
       id: "long-labels-heavy",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Long item labels with heavy motion weight",
       description: "Items with sentence-length labels that wrap within the middle column. Heavy motion weight gives any application-driven settle (via the reorder hooks) a slower, more damped feel; it does not change the order logic.",
-      html: `<ef-ranking class="ef-component-tag">
-  <fieldset class="ef-ranking" data-ef-motion-weight="heavy" aria-describedby="ranking-long-help">
-    <legend class="ef-ranking__legend">Order the risks from most to least urgent.</legend>
-    <p class="ef-field__description" id="ranking-long-help">Use the arrow buttons to move a risk. The top item is the most urgent.</p>
-    <ol class="ef-ranking__list">
-      <li class="ef-ranking__item" data-ef-rank="1">
-        <span class="ef-ranking__position" aria-hidden="true">1</span>
-        <span class="ef-ranking__label">Customer data exports are not encrypted when written to the shared archive bucket</span>
-        <span class="ef-ranking__actions">
+      html: `<forma-ranking class="forma-component-tag">
+  <fieldset class="forma-ranking" data-forma-motion-weight="heavy" aria-describedby="ranking-long-help">
+    <legend class="forma-ranking__legend">Order the risks from most to least urgent.</legend>
+    <p class="forma-field__description" id="ranking-long-help">Use the arrow buttons to move a risk. The top item is the most urgent.</p>
+    <ol class="forma-ranking__list">
+      <li class="forma-ranking__item" data-forma-rank="1">
+        <span class="forma-ranking__position" aria-hidden="true">1</span>
+        <span class="forma-ranking__label">Customer data exports are not encrypted when written to the shared archive bucket</span>
+        <span class="forma-ranking__actions">
           <button type="button" disabled aria-label="Move unencrypted exports up">↑</button>
           <button type="button" aria-label="Move unencrypted exports down">↓</button>
         </span>
       </li>
-      <li class="ef-ranking__item" data-ef-rank="2">
-        <span class="ef-ranking__position" aria-hidden="true">2</span>
-        <span class="ef-ranking__label">The primary database has no tested failover to the secondary region</span>
-        <span class="ef-ranking__actions">
+      <li class="forma-ranking__item" data-forma-rank="2">
+        <span class="forma-ranking__position" aria-hidden="true">2</span>
+        <span class="forma-ranking__label">The primary database has no tested failover to the secondary region</span>
+        <span class="forma-ranking__actions">
           <button type="button" aria-label="Move untested failover up">↑</button>
           <button type="button" disabled aria-label="Move untested failover down">↓</button>
         </span>
       </li>
     </ol>
-    <p class="ef-ranking__announcement" aria-live="polite" aria-atomic="true"></p>
+    <p class="forma-ranking__announcement" aria-live="polite" aria-atomic="true"></p>
   </fieldset>
-</ef-ranking>`
+</forma-ranking>`
     },
     {
       id: "mobile-full-width-controls",
@@ -116,38 +116,38 @@ export default {
           "Reordering remains button-driven; any drag enhancement must not be the only path on touch devices."
         ]
       },
-      html: `<ef-ranking class="ef-component-tag">
-  <fieldset class="ef-ranking">
-    <legend class="ef-ranking__legend">Rank your preferred working hours.</legend>
-    <ol class="ef-ranking__list">
-      <li class="ef-ranking__item" data-ef-rank="1">
-        <span class="ef-ranking__position" aria-hidden="true">1</span>
-        <span class="ef-ranking__label">Early (7:00 to 15:00)</span>
-        <span class="ef-ranking__actions">
+      html: `<forma-ranking class="forma-component-tag">
+  <fieldset class="forma-ranking">
+    <legend class="forma-ranking__legend">Rank your preferred working hours.</legend>
+    <ol class="forma-ranking__list">
+      <li class="forma-ranking__item" data-forma-rank="1">
+        <span class="forma-ranking__position" aria-hidden="true">1</span>
+        <span class="forma-ranking__label">Early (7:00 to 15:00)</span>
+        <span class="forma-ranking__actions">
           <button type="button" disabled aria-label="Move Early up">↑</button>
           <button type="button" aria-label="Move Early down">↓</button>
         </span>
       </li>
-      <li class="ef-ranking__item" data-ef-rank="2">
-        <span class="ef-ranking__position" aria-hidden="true">2</span>
-        <span class="ef-ranking__label">Standard (9:00 to 17:00)</span>
-        <span class="ef-ranking__actions">
+      <li class="forma-ranking__item" data-forma-rank="2">
+        <span class="forma-ranking__position" aria-hidden="true">2</span>
+        <span class="forma-ranking__label">Standard (9:00 to 17:00)</span>
+        <span class="forma-ranking__actions">
           <button type="button" aria-label="Move Standard up">↑</button>
           <button type="button" aria-label="Move Standard down">↓</button>
         </span>
       </li>
-      <li class="ef-ranking__item" data-ef-rank="3">
-        <span class="ef-ranking__position" aria-hidden="true">3</span>
-        <span class="ef-ranking__label">Late (11:00 to 19:00)</span>
-        <span class="ef-ranking__actions">
+      <li class="forma-ranking__item" data-forma-rank="3">
+        <span class="forma-ranking__position" aria-hidden="true">3</span>
+        <span class="forma-ranking__label">Late (11:00 to 19:00)</span>
+        <span class="forma-ranking__actions">
           <button type="button" aria-label="Move Late up">↑</button>
           <button type="button" disabled aria-label="Move Late down">↓</button>
         </span>
       </li>
     </ol>
-    <p class="ef-ranking__announcement" aria-live="polite" aria-atomic="true"></p>
+    <p class="forma-ranking__announcement" aria-live="polite" aria-atomic="true"></p>
   </fieldset>
-</ef-ranking>`
+</forma-ranking>`
     }
   ],
   api: {
@@ -155,22 +155,22 @@ export default {
       { name: "type", on: "button", values: "button", default: "—", description: "Required so move buttons never submit the surrounding form." },
       { name: "aria-label", on: "button", values: "\"Move <item> up\" / \"Move <item> down\"", default: "—", description: "Required. The arrow glyph is not a name; the label states item and direction." },
       { name: "disabled", on: "button", values: "boolean", default: "absent", description: "Set by the application on Move up for the first item and Move down for the last." },
-      { name: "aria-hidden", on: ".ef-ranking__position", values: "true", default: "—", description: "The badge is visual; list semantics and announcements carry position." },
-      { name: "aria-live", on: ".ef-ranking__announcement", values: "polite", default: "—", description: "Announces the application's movement messages." },
-      { name: "aria-atomic", on: ".ef-ranking__announcement", values: "true", default: "—", description: "Reads the whole message each time it changes." },
-      { name: "data-ef-rank", on: ".ef-ranking__item", values: "integer", default: "—", description: "Authoritative position written by the application for its own use. Forma does not style it." },
+      { name: "aria-hidden", on: ".forma-ranking__position", values: "true", default: "—", description: "The badge is visual; list semantics and announcements carry position." },
+      { name: "aria-live", on: ".forma-ranking__announcement", values: "polite", default: "—", description: "Announces the application's movement messages." },
+      { name: "aria-atomic", on: ".forma-ranking__announcement", values: "true", default: "—", description: "Reads the whole message each time it changes." },
+      { name: "data-forma-rank", on: ".forma-ranking__item", values: "integer", default: "—", description: "Authoritative position written by the application for its own use. Forma does not style it." },
       { name: "aria-describedby", on: "fieldset", values: "id list", default: "—", description: "Associates instructions with the ranking." }
     ],
     hooks: {
-      "ef-ranking": "Root fieldset with browser border and padding removed; also a motion scope for reorder settling.",
-      "ef-ranking__legend": "Question text.",
-      "ef-ranking__list": "Unstyled ordered list stacking the items with a small gap.",
-      "ef-ranking__item": "Bordered row: position, label and actions. At least 3.25rem tall.",
-      "ef-ranking__position": "Inverse square badge showing the current position number.",
-      "ef-ranking__label": "Item text; wraps anywhere.",
-      "ef-ranking__actions": "Container for the move buttons; each button is at least 44 by 44px.",
-      "ef-ranking__announcement": "Visually hidden live region for movement messages.",
-      "data-ef-motion-weight": "Presentation-only perceived mass (light, standard, heavy) for application-driven settle transitions such as `data-ef-manipulation` on items. Never encodes importance."
+      "forma-ranking": "Root fieldset with browser border and padding removed; also a motion scope for reorder settling.",
+      "forma-ranking__legend": "Question text.",
+      "forma-ranking__list": "Unstyled ordered list stacking the items with a small gap.",
+      "forma-ranking__item": "Bordered row: position, label and actions. At least 3.25rem tall.",
+      "forma-ranking__position": "Inverse square badge showing the current position number.",
+      "forma-ranking__label": "Item text; wraps anywhere.",
+      "forma-ranking__actions": "Container for the move buttons; each button is at least 44 by 44px.",
+      "forma-ranking__announcement": "Visually hidden live region for movement messages.",
+      "data-forma-motion-weight": "Presentation-only perceived mass (light, standard, heavy) for application-driven settle transitions such as `data-forma-manipulation` on items. Never encodes importance."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the enabled move buttons in order; disabled buttons are skipped." },
@@ -182,10 +182,10 @@ export default {
     form: "The list does not submit anything natively. The application serialises the order, for example into hidden inputs, or sends it directly."
   },
   states: [
-    { name: "Ordered", how: "DOM order plus data-ef-rank", description: "Position badges show 1 to n in list order." },
+    { name: "Ordered", how: "DOM order plus data-forma-rank", description: "Position badges show 1 to n in list order." },
     { name: "End of list", how: "disabled on the first Move up and last Move down", description: "Impossible moves are disabled and skipped by focus." },
-    { name: "Announced", how: "text in .ef-ranking__announcement", description: "Screen readers hear the movement result." },
-    { name: "Dragging / drop feedback", how: "data-ef-manipulation and data-ef-drop on items (application-set)", description: "Optional direct-manipulation presentation documented in [[reorder-states]]." }
+    { name: "Announced", how: "text in .forma-ranking__announcement", description: "Screen readers hear the movement result." },
+    { name: "Dragging / drop feedback", how: "data-forma-manipulation and data-forma-drop on items (application-set)", description: "Optional direct-manipulation presentation documented in [[reorder-states]]." }
   ],
   accessibility: {
     forma: [
@@ -195,7 +195,7 @@ export default {
       "Draws item borders in CanvasText under forced colors."
     ],
     consumer: [
-      "Implement the move, renumber badges and data-ef-rank, and disable moves at the ends.",
+      "Implement the move, renumber badges and data-forma-rank, and disable moves at the ends.",
       "Keep focus on the moved item's button after a move, and write an announcement such as \"Reliability moved to position 2 of 4.\"",
       "Label every button with item and direction.",
       "Never make drag the only way to reorder."
@@ -207,7 +207,7 @@ export default {
     "Labels wrap anywhere; no horizontal overflow."
   ],
   motion: [
-    "Items do not animate on their own. When the application sets `data-ef-manipulation` on an item, its translate follows the pointer with no lag while dragging and settles with a damped, non-overshooting transition afterwards; `data-ef-motion-weight` on the ranking sets that settle duration.",
+    "Items do not animate on their own. When the application sets `data-forma-manipulation` on an item, its translate follows the pointer with no lag while dragging and settles with a damped, non-overshooting transition afterwards; `data-forma-motion-weight` on the ranking sets that settle duration.",
     "Button hover and press use the foundation's perceptual background interpolation.",
     "Under `prefers-reduced-motion: reduce` settle transitions are effectively instant and items appear at their final position."
   ],

@@ -29,49 +29,49 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Settings with section navigation",
       description: "Account settings: a local navigation list in the sidebar and a form in the content region. On a wide screen they sit side by side; in a narrow pane the navigation wraps above the form.",
-      html: `<ef-sidebar class="ef-component-tag">
-  <div class="ef-sidebar">
-    <nav class="ef-sidebar__side" aria-label="Settings sections">
-      <ul class="ef-stack" data-density="compact">
+      html: `<forma-sidebar class="forma-component-tag">
+  <div class="forma-sidebar">
+    <nav class="forma-sidebar__side" aria-label="Settings sections">
+      <ul class="forma-stack" data-density="compact">
         <li><a href="#sidebar-settings-navigation-profile" aria-current="page">Profile</a></li>
         <li><a href="#sidebar-settings-navigation-security">Security</a></li>
         <li><a href="#sidebar-settings-navigation-billing">Billing</a></li>
       </ul>
     </nav>
-    <section class="ef-sidebar__content ef-stack" aria-labelledby="sidebar-settings-navigation-profile">
+    <section class="forma-sidebar__content forma-stack" aria-labelledby="sidebar-settings-navigation-profile">
       <h2 id="sidebar-settings-navigation-profile">Profile</h2>
-      <div class="ef-field">
-        <label class="ef-field__label" for="sidebar-settings-navigation-name">Display name</label>
+      <div class="forma-field">
+        <label class="forma-field__label" for="sidebar-settings-navigation-name">Display name</label>
         <input id="sidebar-settings-navigation-name" name="display-name" type="text" autocomplete="name">
       </div>
-      <div class="ef-field">
-        <label class="ef-field__label" for="sidebar-settings-navigation-email">Email</label>
+      <div class="forma-field">
+        <label class="forma-field__label" for="sidebar-settings-navigation-email">Email</label>
         <input id="sidebar-settings-navigation-email" name="email" type="email" autocomplete="email">
       </div>
-      <div class="ef-cluster"><button type="submit">Save profile</button></div>
+      <div class="forma-cluster"><button type="submit">Save profile</button></div>
     </section>
   </div>
-</ef-sidebar>`
+</forma-sidebar>`
     },
     {
       id: "article-end-sidebar",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Article with related links after it",
-      description: "The article comes first in the source and the related links second, so the sidebar sits at the inline end on wide screens and below the article when stacked. The sidebar width is narrowed with `--ef-sidebar-width`.",
-      html: `<ef-sidebar class="ef-component-tag">
-  <div class="ef-sidebar" style="--ef-sidebar-width: 14rem">
-    <article class="ef-sidebar__content ef-stack" aria-labelledby="sidebar-article-end-sidebar-title">
+      description: "The article comes first in the source and the related links second, so the sidebar sits at the inline end on wide screens and below the article when stacked. The sidebar width is narrowed with `--forma-sidebar-width`.",
+      html: `<forma-sidebar class="forma-component-tag">
+  <div class="forma-sidebar" style="--forma-sidebar-width: 14rem">
+    <article class="forma-sidebar__content forma-stack" aria-labelledby="sidebar-article-end-sidebar-title">
       <h2 id="sidebar-article-end-sidebar-title">Rotating API keys without downtime</h2>
       <p>Issue the new key, deploy it alongside the old one, confirm traffic has moved, then revoke the old key. Each step can be rolled back independently.</p>
       <p>Keys issued before March 2026 cannot be rotated in place and must be replaced.</p>
     </article>
-    <aside class="ef-sidebar__side ef-stack" data-density="compact" aria-labelledby="sidebar-article-end-sidebar-related">
+    <aside class="forma-sidebar__side forma-stack" data-density="compact" aria-labelledby="sidebar-article-end-sidebar-related">
       <h3 id="sidebar-article-end-sidebar-related">Related</h3>
       <a href="#key-scopes">Key scopes and permissions</a>
       <a href="#audit-log">Reading the audit log</a>
     </aside>
   </div>
-</ef-sidebar>`
+</forma-sidebar>`
     },
     {
       id: "mobile-filters",
@@ -87,42 +87,42 @@ export default {
           "Nothing scrolls horizontally; long filter labels wrap inside the full-width region."
         ]
       },
-      html: `<ef-sidebar class="ef-component-tag">
-  <div class="ef-sidebar">
-    <form class="ef-sidebar__side ef-stack" data-density="compact" aria-label="Filter orders">
-      <div class="ef-field">
-        <label class="ef-field__label" for="sidebar-mobile-filters-status">Status</label>
+      html: `<forma-sidebar class="forma-component-tag">
+  <div class="forma-sidebar">
+    <form class="forma-sidebar__side forma-stack" data-density="compact" aria-label="Filter orders">
+      <div class="forma-field">
+        <label class="forma-field__label" for="sidebar-mobile-filters-status">Status</label>
         <select id="sidebar-mobile-filters-status" name="status">
           <option>Any status</option>
           <option>Awaiting payment</option>
           <option>Shipped</option>
         </select>
       </div>
-      <div class="ef-cluster"><button type="submit">Apply filters</button></div>
+      <div class="forma-cluster"><button type="submit">Apply filters</button></div>
     </form>
-    <section class="ef-sidebar__content ef-stack" aria-labelledby="sidebar-mobile-filters-results">
+    <section class="forma-sidebar__content forma-stack" aria-labelledby="sidebar-mobile-filters-results">
       <h2 id="sidebar-mobile-filters-results">24 orders</h2>
       <p>Showing orders from the last 30 days.</p>
     </section>
   </div>
-</ef-sidebar>`
+</forma-sidebar>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-label", on: ".ef-sidebar__side / region", values: "string", default: "—", description: "Names a nav, aside or form in the sidebar so its landmark is distinguishable." },
+      { name: "aria-label", on: ".forma-sidebar__side / region", values: "string", default: "—", description: "Names a nav, aside or form in the sidebar so its landmark is distinguishable." },
       { name: "aria-labelledby", on: "regions", values: "id of the region heading", default: "—", description: "Names a region by its visible heading." },
       { name: "aria-current", on: "navigation link", values: "page", default: "—", description: "Marks the current section in sidebar navigation." },
-      { name: "style", on: ".ef-sidebar", values: "--ef-sidebar-width / --ef-sidebar-content-min / --ef-sidebar-space", default: "—", description: "Per-instance override of the sidebar's preferred width, content minimum or gap." },
-      { name: "data-density", on: "nested .ef-stack", values: "compact", default: "—", description: "Used on stacks inside the regions; it does not affect the sidebar itself." }
+      { name: "style", on: ".forma-sidebar", values: "--forma-sidebar-width / --forma-sidebar-content-min / --forma-sidebar-space", default: "—", description: "Per-instance override of the sidebar's preferred width, content minimum or gap." },
+      { name: "data-density", on: "nested .forma-stack", values: "compact", default: "—", description: "Used on stacks inside the regions; it does not affect the sidebar itself." }
     ],
     hooks: {
-      "ef-sidebar": "Wrapping flex container for the two regions.",
-      "ef-sidebar__side": "Supporting region. Grows from `--ef-sidebar-width` but yields to the content region.",
-      "ef-sidebar__content": "Primary region. Absorbs remaining space and wraps below or above the side when it would be narrower than `--ef-sidebar-content-min`.",
-      "--ef-sidebar-width": "Preferred width of the side region. Default 18rem.",
-      "--ef-sidebar-content-min": "Minimum share of the row the content region keeps before the pair stacks. Default 60%.",
-      "--ef-sidebar-space": "Gap between the regions, in both directions. Default `--ef-primitive-spacing-5` (1.5rem)."
+      "forma-sidebar": "Wrapping flex container for the two regions.",
+      "forma-sidebar__side": "Supporting region. Grows from `--forma-sidebar-width` but yields to the content region.",
+      "forma-sidebar__content": "Primary region. Absorbs remaining space and wraps below or above the side when it would be narrower than `--forma-sidebar-content-min`.",
+      "--forma-sidebar-width": "Preferred width of the side region. Default 18rem.",
+      "--forma-sidebar-content-min": "Minimum share of the row the content region keeps before the pair stacks. Default 60%.",
+      "--forma-sidebar-space": "Gap between the regions, in both directions. Default `--forma-primitive-spacing-5` (1.5rem)."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the side region and then the content region, or the reverse, following source order." }
@@ -131,7 +131,7 @@ export default {
     form: "Not a form control. A form may be either region."
   },
   states: [
-    { name: "Side by side", how: "content region can keep at least --ef-sidebar-content-min", description: "Side region at its preferred width, content region fills the rest." },
+    { name: "Side by side", how: "content region can keep at least --forma-sidebar-content-min", description: "Side region at its preferred width, content region fills the rest." },
     { name: "Stacked (intrinsic)", how: "content would fall below the minimum", description: "Regions wrap onto separate rows in source order; each takes the full row." },
     { name: "Stacked (viewport)", how: "viewport at or below 30rem", description: "One-column grid with both regions at full width." }
   ],

@@ -1,7 +1,7 @@
 // FORMA-A11Y-001: hand-written CSS must not contain literal escape sequences
 // outside strings. A literal "\n" between two rules makes the following rule
 // invalid, so the browser silently drops it (this dropped
-// `.ef-surface :where(h1, ..., p) { color: inherit; }` and caused a contrast
+// `.forma-surface :where(h1, ..., p) { color: inherit; }` and caused a contrast
 // failure).
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -29,7 +29,7 @@ test("CSS sources contain no literal \\n or \\t escapes outside strings", () => 
 
 test("native dialog display retention requires top-layer overlay retention", () => {
   const { rules } = flattenCss(parseCss(fs.readFileSync("src/styles/components.css", "utf8")));
-  const overlays = rules.filter(rule => [".ef-dialog", ".ef-flyout", ":where(.ef-dialog, .ef-flyout)::backdrop"].includes(rule.selector));
+  const overlays = rules.filter(rule => [".forma-dialog", ".forma-flyout", ":where(.forma-dialog, .forma-flyout)::backdrop"].includes(rule.selector));
   let retained = 0;
   for (const rule of overlays) {
     for (const declaration of rule.declarations.filter(item => item.property === "transition")) {
@@ -45,7 +45,7 @@ test("native dialog display retention requires top-layer overlay retention", () 
 
 test("mobile ordinal labels override desktop top alignment", () => {
   const { rules } = flattenCss(parseCss(fs.readFileSync("src/styles/assessment.css", "utf8")));
-  const labels = rules.filter(rule => rule.selector === ".ef-ordinal-option__label");
+  const labels = rules.filter(rule => rule.selector === ".forma-ordinal-option__label");
   const desktop = labels.find(rule => !rule.context.some(item => item.name === "media"));
   const mobile = labels.find(rule => rule.context.some(item => item.name === "media" && /44rem/.test(item.prelude)));
   assert.equal(desktop.declarations.find(item => item.property === "align-self").value, "start");

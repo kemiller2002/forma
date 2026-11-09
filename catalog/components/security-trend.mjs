@@ -27,8 +27,8 @@ export default {
       id: "unchanged",
       title: "Nothing changed since the last release",
       description: "A comparison where every tracked measure is unchanged. Each measure is still listed with its value, so \"no change\" is an explicit statement rather than an empty list.",
-      html: `<ef-security-trend class="ef-component-tag">
-  <section class="ef-security-trend" aria-labelledby="security-trend-unchanged-title">
+      html: `<forma-security-trend class="forma-component-tag">
+  <section class="forma-security-trend" aria-labelledby="security-trend-unchanged-title">
     <h2 id="security-trend-unchanged-title">Security trend</h2>
     <p>Compared with release 4.11.0, assessed <time datetime="2026-09-12">12 Sep 2026</time>.</p>
     <ul>
@@ -37,14 +37,14 @@ export default {
       <li data-direction="unchanged"><strong>Unchanged</strong><span>Active exceptions stayed at 2.</span></li>
     </ul>
   </section>
-</ef-security-trend>`
+</forma-security-trend>`
     },
     {
       id: "first-assessment",
       title: "First assessment with no baseline",
       description: "There is no previous artifact, so every entry is No measurement. The component does not present current values as improvements or regressions.",
-      html: `<ef-security-trend class="ef-component-tag">
-  <section class="ef-security-trend" aria-labelledby="security-trend-first-assessment-title">
+      html: `<forma-security-trend class="forma-component-tag">
+  <section class="forma-security-trend" aria-labelledby="security-trend-first-assessment-title">
     <h2 id="security-trend-first-assessment-title">Security trend</h2>
     <p>No previous assessed artifact exists for this service.</p>
     <ul>
@@ -52,7 +52,7 @@ export default {
       <li data-direction="unknown"><strong>No measurement</strong><span>Unknown security effects: 3 now, no baseline.</span></li>
     </ul>
   </section>
-</ef-security-trend>`
+</forma-security-trend>`
     },
     {
       id: "mobile",
@@ -67,8 +67,8 @@ export default {
           "Portrait and landscape show the same order; only line breaks change."
         ]
       },
-      html: `<ef-security-trend class="ef-component-tag">
-  <section class="ef-security-trend" aria-labelledby="security-trend-mobile-title">
+      html: `<forma-security-trend class="forma-component-tag">
+  <section class="forma-security-trend" aria-labelledby="security-trend-mobile-title">
     <h2 id="security-trend-mobile-title">Security trend</h2>
     <p>Compared with the previous assessed artifact.</p>
     <ul>
@@ -77,17 +77,17 @@ export default {
       <li data-direction="unknown"><strong>No measurement</strong><span>Exception aging was not measured for the previous artifact.</span></li>
     </ul>
   </section>
-</ef-security-trend>`
+</forma-security-trend>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-security-trend", values: "id of the heading", default: "—", description: "Names the region by its heading." },
+      { name: "aria-labelledby", on: "section.forma-security-trend", values: "id of the heading", default: "—", description: "Names the region by its heading." },
       { name: "data-direction", on: "li", values: "regression | improvement | unchanged | unknown", default: "—", description: "Machine direction supplied by Tutela. Not styled by Forma CSS; the bold direction word is the visible cue." },
       { name: "datetime", on: "time", values: "ISO 8601 date", default: "—", description: "Machine-readable baseline date." }
     ],
     hooks: {
-      "ef-security-trend": "Root section: bordered, padded primary surface. Its list is an unstyled single-column grid; each entry is a grid with a 0.3rem start border in the current text color and a secondary surface, and its span wraps anywhere."
+      "forma-security-trend": "Root section: bordered, padded primary surface. Its list is an unstyled single-column grid; each entry is a grid with a 0.3rem start border in the current text color and a secondary surface, and its span wraps anywhere."
     },
     keyboard: [
       { keys: "—", action: "Not interactive unless the application adds links in entry text." }

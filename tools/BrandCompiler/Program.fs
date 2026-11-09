@@ -135,7 +135,7 @@ let optionalSemanticPaths =
       "color.status.danger", [ "color"; "status"; "danger" ]
       "color.status.info", [ "color"; "status"; "info" ] ]
 
-let cssName (path: string) = "--ef-" + path.Replace(".", "-")
+let cssName (path: string) = "--forma-" + path.Replace(".", "-")
 
 let hasPath (root: JsonObject) (segments: string list) =
     segments
@@ -162,21 +162,21 @@ let valueByCssName (name: string) (values: (string * string) list) =
 
 let validateTheme (themeName: string) (values: (string * string) list) =
     let value name = valueByCssName name values
-    let surface = value "--ef-color-surface-primary"
-    ensureContrast $"{themeName} primary text" (value "--ef-color-text-primary") surface 4.5
-    ensureContrast $"{themeName} secondary text" (value "--ef-color-text-secondary") surface 4.5
-    ensureContrast $"{themeName} secondary-surface text" (value "--ef-color-text-on-secondary-surface") (value "--ef-color-surface-secondary") 4.5
-    ensureContrast $"{themeName} primary accent" (value "--ef-color-accent-primary") surface 4.5
-    ensureContrast $"{themeName} secondary accent" (value "--ef-color-accent-secondary") surface 4.5
-    ensureContrast $"{themeName} inverse text" (value "--ef-color-text-inverse") (value "--ef-color-surface-inverse") 4.5
-    ensureContrast $"{themeName} focus ring" (value "--ef-color-focus-ring") surface 3.0
-    [ "muted text", "--ef-color-text-muted", "--ef-color-surface-primary"
-      "accent hover", "--ef-color-accent-hover", "--ef-color-surface-primary"
-      "elevated-surface text", "--ef-color-text-primary", "--ef-color-surface-elevated"
-      "success status", "--ef-color-status-success", "--ef-color-surface-primary"
-      "warning status", "--ef-color-status-warning", "--ef-color-surface-primary"
-      "danger status", "--ef-color-status-danger", "--ef-color-surface-primary"
-      "info status", "--ef-color-status-info", "--ef-color-surface-primary" ]
+    let surface = value "--forma-color-surface-primary"
+    ensureContrast $"{themeName} primary text" (value "--forma-color-text-primary") surface 4.5
+    ensureContrast $"{themeName} secondary text" (value "--forma-color-text-secondary") surface 4.5
+    ensureContrast $"{themeName} secondary-surface text" (value "--forma-color-text-on-secondary-surface") (value "--forma-color-surface-secondary") 4.5
+    ensureContrast $"{themeName} primary accent" (value "--forma-color-accent-primary") surface 4.5
+    ensureContrast $"{themeName} secondary accent" (value "--forma-color-accent-secondary") surface 4.5
+    ensureContrast $"{themeName} inverse text" (value "--forma-color-text-inverse") (value "--forma-color-surface-inverse") 4.5
+    ensureContrast $"{themeName} focus ring" (value "--forma-color-focus-ring") surface 3.0
+    [ "muted text", "--forma-color-text-muted", "--forma-color-surface-primary"
+      "accent hover", "--forma-color-accent-hover", "--forma-color-surface-primary"
+      "elevated-surface text", "--forma-color-text-primary", "--forma-color-surface-elevated"
+      "success status", "--forma-color-status-success", "--forma-color-surface-primary"
+      "warning status", "--forma-color-status-warning", "--forma-color-surface-primary"
+      "danger status", "--forma-color-status-danger", "--forma-color-surface-primary"
+      "info status", "--forma-color-status-info", "--forma-color-surface-primary" ]
     |> List.filter (fun (_, foreground, background) ->
         [ foreground; background ] |> List.forall (fun n -> values |> List.exists (fst >> (=) n)))
     |> List.iter (fun (name, foreground, background) ->
@@ -191,7 +191,7 @@ let optionalPresentation (root: JsonObject) =
         | Some fonts ->
             for name in [ "display"; "sans"; "mono" ] do
                 match tryNode fonts name with
-                | Some node -> values.Add(($"--ef-primitive-font-family-{name}", renderFont node))
+                | Some node -> values.Add(($"--forma-primitive-font-family-{name}", renderFont node))
                 | None -> ()
         | None -> ()
         match tryObject presentation "radius" with
@@ -200,7 +200,7 @@ let optionalPresentation (root: JsonObject) =
                 match tryNode radius name with
                 | Some node ->
                     let raw = node.GetValue<string>()
-                    values.Add(($"--ef-primitive-radius-{name}", safeDimension $"presentation.radius.{name}" raw))
+                    values.Add(($"--forma-primitive-radius-{name}", safeDimension $"presentation.radius.{name}" raw))
                 | None -> ()
         | None -> ()
         values |> Seq.toList
@@ -236,12 +236,12 @@ let compileBrand (outputDir: string) (sourcePath: string) =
 
     let css = StringBuilder()
     css.AppendLine($"/* Generated from {Path.GetFileName sourcePath}. Do not edit directly. */") |> ignore
-    css.AppendLine("@layer echelon.brand {") |> ignore
-    writeBlock css $"  [data-ef-brand=\"{id}\"]" (presentation @ light)
-    writeBlock css $"  [data-ef-theme=\"light\"] [data-ef-brand=\"{id}\"], [data-ef-brand=\"{id}\"][data-ef-theme=\"light\"]" light
-    writeBlock css $"  [data-ef-theme=\"dark\"] [data-ef-brand=\"{id}\"], [data-ef-brand=\"{id}\"][data-ef-theme=\"dark\"]" dark
+    css.AppendLine("@layer forma.brand {") |> ignore
+    writeBlock css $"  [data-forma-brand=\"{id}\"]" (presentation @ light)
+    writeBlock css $"  [data-forma-theme=\"light\"] [data-forma-brand=\"{id}\"], [data-forma-brand=\"{id}\"][data-forma-theme=\"light\"]" light
+    writeBlock css $"  [data-forma-theme=\"dark\"] [data-forma-brand=\"{id}\"], [data-forma-brand=\"{id}\"][data-forma-theme=\"dark\"]" dark
     css.AppendLine("  @media (prefers-color-scheme: dark) {") |> ignore
-    writeBlock css $"    :root:not([data-ef-theme]) [data-ef-brand=\"{id}\"]:not([data-ef-theme]), :root[data-ef-brand=\"{id}\"]:not([data-ef-theme])" dark
+    writeBlock css $"    :root:not([data-forma-theme]) [data-forma-brand=\"{id}\"]:not([data-forma-theme]), :root[data-forma-brand=\"{id}\"]:not([data-forma-theme])" dark
     css.AppendLine("  }") |> ignore
     css.AppendLine("}") |> ignore
 

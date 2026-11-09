@@ -141,7 +141,7 @@ The reference must never be replaced by a stack trace, exception type, repositor
 
 The canonical DOM annotation is:
 
-`data-ef-aegis-capability="<CapabilityCaseName>"`
+`data-forma-aegis-capability="<CapabilityCaseName>"`
 
 This attribute communicates intent to application code. It is not authority.
 

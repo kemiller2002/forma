@@ -18,9 +18,9 @@ export default {
       "You need to show developer diagnostics such as stack traces or exception details: they never belong in a Forma fault surface."
     ],
     characteristics: [
-      "Severity is always written as text in `ef-fault__severity` and repeated structurally by the start border style: dotted for diagnostic, dashed for warning, solid for error, and a wider border plus outline for critical.",
+      "Severity is always written as text in `forma-fault__severity` and repeated structurally by the start border style: dotted for diagnostic, dashed for warning, solid for error, and a wider border plus outline for critical.",
       "The marker is decorative (`aria-hidden`) and uses a glyph and a ring shape, never color alone.",
-      "Recovery buttons are plain native buttons annotated with `data-ef-aegis-capability`. The attribute describes intent; it is not authorization.",
+      "Recovery buttons are plain native buttons annotated with `data-forma-aegis-capability`. The attribute describes intent; it is not authorization.",
       "The shell never announces itself, steals focus or animates. Those behaviors belong to the intent-specific patterns and the application."
     ]
   },
@@ -31,57 +31,57 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Session expired with two recovery paths",
       description: "A warning-severity fault in a record panel. Aegis supplied two capabilities, so two native buttons are rendered in the order given. The dashed start border repeats the Warning label structurally.",
-      html: `<ef-fault class="ef-component-tag">
-  <section class="ef-fault" data-ef-intent="inline" data-ef-severity="warning" aria-labelledby="fault-warning-two-actions-title" aria-describedby="fault-warning-two-actions-message">
-    <div class="ef-fault__marker" aria-hidden="true">!</div>
-    <div class="ef-fault__body">
-      <p class="ef-fault__severity">Warning</p>
-      <h3 class="ef-fault__title" id="fault-warning-two-actions-title">Your session has expired</h3>
-      <p class="ef-fault__message" id="fault-warning-two-actions-message">Sign in again to keep editing, or open the record read-only. Unsaved changes are kept on this device.</p>
-      <p class="ef-fault-reference">Reference <code>AG-3JH71</code></p>
+      html: `<forma-fault class="forma-component-tag">
+  <section class="forma-fault" data-forma-intent="inline" data-forma-severity="warning" aria-labelledby="fault-warning-two-actions-title" aria-describedby="fault-warning-two-actions-message">
+    <div class="forma-fault__marker" aria-hidden="true">!</div>
+    <div class="forma-fault__body">
+      <p class="forma-fault__severity">Warning</p>
+      <h3 class="forma-fault__title" id="fault-warning-two-actions-title">Your session has expired</h3>
+      <p class="forma-fault__message" id="fault-warning-two-actions-message">Sign in again to keep editing, or open the record read-only. Unsaved changes are kept on this device.</p>
+      <p class="forma-fault-reference">Reference <code>AG-3JH71</code></p>
     </div>
-    <div class="ef-recovery-actions" role="group" aria-label="Recovery actions">
-      <button type="button" data-ef-aegis-capability="CanReauthenticate">Sign in</button>
-      <button type="button" data-ef-aegis-capability="CanOpenReadOnly">Open read-only</button>
+    <div class="forma-recovery-actions" role="group" aria-label="Recovery actions">
+      <button type="button" data-forma-aegis-capability="CanReauthenticate">Sign in</button>
+      <button type="button" data-forma-aegis-capability="CanOpenReadOnly">Open read-only</button>
     </div>
   </section>
-</ef-fault>`
+</forma-fault>`
     },
     {
       id: "critical-reload",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Critical fault in a side panel",
       description: "Critical severity widens the start border and adds an outline so the level stays distinguishable in grayscale and forced colors. Visual weight is not a substitute for the Critical text label, which remains first in the body.",
-      html: `<ef-fault class="ef-component-tag">
-  <section class="ef-fault" data-ef-intent="inline" data-ef-severity="critical" aria-labelledby="fault-critical-reload-title" aria-describedby="fault-critical-reload-message">
-    <div class="ef-fault__marker" aria-hidden="true">!!</div>
-    <div class="ef-fault__body">
-      <p class="ef-fault__severity">Critical</p>
-      <h3 class="ef-fault__title" id="fault-critical-reload-title">Workspace data is out of date</h3>
-      <p class="ef-fault__message" id="fault-critical-reload-message">This panel can no longer confirm the latest ledger totals. Reload to fetch a verified copy.</p>
-      <p class="ef-fault-reference">Reference <code>AG-9QX4L</code></p>
+      html: `<forma-fault class="forma-component-tag">
+  <section class="forma-fault" data-forma-intent="inline" data-forma-severity="critical" aria-labelledby="fault-critical-reload-title" aria-describedby="fault-critical-reload-message">
+    <div class="forma-fault__marker" aria-hidden="true">!!</div>
+    <div class="forma-fault__body">
+      <p class="forma-fault__severity">Critical</p>
+      <h3 class="forma-fault__title" id="fault-critical-reload-title">Workspace data is out of date</h3>
+      <p class="forma-fault__message" id="fault-critical-reload-message">This panel can no longer confirm the latest ledger totals. Reload to fetch a verified copy.</p>
+      <p class="forma-fault-reference">Reference <code>AG-9QX4L</code></p>
     </div>
-    <div class="ef-recovery-actions" role="group" aria-label="Recovery actions">
-      <button type="button" data-ef-aegis-capability="CanReload">Reload</button>
+    <div class="forma-recovery-actions" role="group" aria-label="Recovery actions">
+      <button type="button" data-forma-aegis-capability="CanReload">Reload</button>
     </div>
   </section>
-</ef-fault>`
+</forma-fault>`
     },
     {
       id: "diagnostic-no-actions",
       title: "Diagnostic notice without recovery",
       description: "Aegis supplied no recovery capability, so the recovery region is omitted entirely instead of showing a disabled or invented action. The dotted start border marks the Diagnostic level.",
-      html: `<ef-fault class="ef-component-tag">
-  <section class="ef-fault" data-ef-intent="inline" data-ef-severity="diagnostic" aria-labelledby="fault-diagnostic-no-actions-title" aria-describedby="fault-diagnostic-no-actions-message">
-    <div class="ef-fault__marker" aria-hidden="true">i</div>
-    <div class="ef-fault__body">
-      <p class="ef-fault__severity">Diagnostic</p>
-      <h3 class="ef-fault__title" id="fault-diagnostic-no-actions-title">Preview thumbnails were skipped</h3>
-      <p class="ef-fault__message" id="fault-diagnostic-no-actions-message">Two attachments are shown without previews. The files themselves are unaffected.</p>
-      <p class="ef-fault-reference">Reference <code>AG-0M5TR</code></p>
+      html: `<forma-fault class="forma-component-tag">
+  <section class="forma-fault" data-forma-intent="inline" data-forma-severity="diagnostic" aria-labelledby="fault-diagnostic-no-actions-title" aria-describedby="fault-diagnostic-no-actions-message">
+    <div class="forma-fault__marker" aria-hidden="true">i</div>
+    <div class="forma-fault__body">
+      <p class="forma-fault__severity">Diagnostic</p>
+      <h3 class="forma-fault__title" id="fault-diagnostic-no-actions-title">Preview thumbnails were skipped</h3>
+      <p class="forma-fault__message" id="fault-diagnostic-no-actions-message">Two attachments are shown without previews. The files themselves are unaffected.</p>
+      <p class="forma-fault-reference">Reference <code>AG-0M5TR</code></p>
     </div>
   </section>
-</ef-fault>`
+</forma-fault>`
     },
     {
       id: "mobile-long-content",
@@ -97,60 +97,60 @@ export default {
           "Orientation changes only reflow the body text; the marker, severity label and action order do not change."
         ]
       },
-      html: `<ef-fault class="ef-component-tag">
-  <section class="ef-fault" data-ef-intent="inline" data-ef-severity="error" aria-labelledby="fault-mobile-long-content-title" aria-describedby="fault-mobile-long-content-message">
-    <div class="ef-fault__marker" aria-hidden="true">!</div>
-    <div class="ef-fault__body">
-      <p class="ef-fault__severity">Error</p>
-      <h3 class="ef-fault__title" id="fault-mobile-long-content-title">Die Änderungen an den Rechnungsempfängern konnten nicht gespeichert werden</h3>
-      <p class="ef-fault__message" id="fault-mobile-long-content-message">Ihre Eingaben sind weiterhin verfügbar.</p>
-      <p class="ef-fault-reference">Reference <code>AG-4F82C-BILLING-RECIPIENTS-2026</code></p>
+      html: `<forma-fault class="forma-component-tag">
+  <section class="forma-fault" data-forma-intent="inline" data-forma-severity="error" aria-labelledby="fault-mobile-long-content-title" aria-describedby="fault-mobile-long-content-message">
+    <div class="forma-fault__marker" aria-hidden="true">!</div>
+    <div class="forma-fault__body">
+      <p class="forma-fault__severity">Error</p>
+      <h3 class="forma-fault__title" id="fault-mobile-long-content-title">Die Änderungen an den Rechnungsempfängern konnten nicht gespeichert werden</h3>
+      <p class="forma-fault__message" id="fault-mobile-long-content-message">Ihre Eingaben sind weiterhin verfügbar.</p>
+      <p class="forma-fault-reference">Reference <code>AG-4F82C-BILLING-RECIPIENTS-2026</code></p>
     </div>
-    <div class="ef-recovery-actions" role="group" aria-label="Recovery actions">
-      <button type="button" data-ef-aegis-capability="CanRetry">Erneut versuchen</button>
-      <button type="button" data-ef-aegis-capability="CanReload">Neu laden</button>
+    <div class="forma-recovery-actions" role="group" aria-label="Recovery actions">
+      <button type="button" data-forma-aegis-capability="CanRetry">Erneut versuchen</button>
+      <button type="button" data-forma-aegis-capability="CanReload">Neu laden</button>
     </div>
   </section>
-</ef-fault>`
+</forma-fault>`
     }
   ],
   api: {
     attributes: [
-      { name: "data-ef-severity", on: ".ef-fault", values: "diagnostic | warning | error | critical", default: "absent (solid error-style border)", description: "The Aegis severity, lowercased. Changes the start-border style; it must always be paired with the visible severity text." },
-      { name: "data-ef-intent", on: ".ef-fault", values: "inline | notification | banner | blocking", default: "—", description: "Records the Aegis intent the application mapped. Descriptive only; Forma CSS does not style it." },
-      { name: "aria-labelledby", on: ".ef-fault", values: "id of .ef-fault__title", default: "—", description: "Names the fault region by its title." },
-      { name: "aria-describedby", on: ".ef-fault", values: "id of .ef-fault__message", default: "—", description: "Associates the safe user-facing message as the region's description." },
-      { name: "aria-hidden", on: ".ef-fault__marker", values: "true", default: "—", description: "Required. The marker glyph repeats the severity visually and must not be read aloud." },
-      { name: "role", on: ".ef-recovery-actions", values: "group", default: "—", description: "Groups the recovery buttons so assistive technology announces them together." },
-      { name: "aria-label", on: ".ef-recovery-actions", values: "string", default: "—", description: "Names the recovery group, for example \"Recovery actions\"." },
+      { name: "data-forma-severity", on: ".forma-fault", values: "diagnostic | warning | error | critical", default: "absent (solid error-style border)", description: "The Aegis severity, lowercased. Changes the start-border style; it must always be paired with the visible severity text." },
+      { name: "data-forma-intent", on: ".forma-fault", values: "inline | notification | banner | blocking", default: "—", description: "Records the Aegis intent the application mapped. Descriptive only; Forma CSS does not style it." },
+      { name: "aria-labelledby", on: ".forma-fault", values: "id of .forma-fault__title", default: "—", description: "Names the fault region by its title." },
+      { name: "aria-describedby", on: ".forma-fault", values: "id of .forma-fault__message", default: "—", description: "Associates the safe user-facing message as the region's description." },
+      { name: "aria-hidden", on: ".forma-fault__marker", values: "true", default: "—", description: "Required. The marker glyph repeats the severity visually and must not be read aloud." },
+      { name: "role", on: ".forma-recovery-actions", values: "group", default: "—", description: "Groups the recovery buttons so assistive technology announces them together." },
+      { name: "aria-label", on: ".forma-recovery-actions", values: "string", default: "—", description: "Names the recovery group, for example \"Recovery actions\"." },
       { name: "type", on: "button", values: "button", default: "—", description: "Required on every recovery button so it never submits an enclosing form." },
-      { name: "data-ef-aegis-capability", on: "button", values: "Aegis capability case name, e.g. CanRetry", default: "—", description: "The exact Aegis capability the button represents. Describes intent to application code; it is not authority and must be revalidated on activation." }
+      { name: "data-forma-aegis-capability", on: "button", values: "Aegis capability case name, e.g. CanRetry", default: "—", description: "The exact Aegis capability the button represents. Describes intent to application code; it is not authority and must be revalidated on activation." }
     ],
     hooks: {
-      "ef-fault": "Root. A three-column grid (marker, body, recovery actions) with a thick start border and a primary surface.",
-      "ef-fault--inline": "Operation-local variant used by [[fault-inline]]: tighter padding and the secondary surface so it reads as part of the affected region.",
-      "ef-fault__marker": "Decorative round marker holding a short glyph such as ! or !!. Shape and glyph, not color, carry the cue.",
-      "ef-fault__body": "Text column for severity, title, message and reference. It shrinks to zero minimum width so long content wraps.",
-      "ef-fault__severity": "Visible severity label in small uppercase monospace. Always present.",
-      "ef-fault__title": "The Aegis title. Use a heading or a paragraph with strong text depending on the surrounding outline.",
-      "ef-fault__message": "The safe user-facing message from Aegis.",
-      "data-ef-severity": "diagnostic gives a dotted start border, warning dashed, critical a wider border plus an offset outline; error (or absent) keeps the solid default."
+      "forma-fault": "Root. A three-column grid (marker, body, recovery actions) with a thick start border and a primary surface.",
+      "forma-fault--inline": "Operation-local variant used by [[fault-inline]]: tighter padding and the secondary surface so it reads as part of the affected region.",
+      "forma-fault__marker": "Decorative round marker holding a short glyph such as ! or !!. Shape and glyph, not color, carry the cue.",
+      "forma-fault__body": "Text column for severity, title, message and reference. It shrinks to zero minimum width so long content wraps.",
+      "forma-fault__severity": "Visible severity label in small uppercase monospace. Always present.",
+      "forma-fault__title": "The Aegis title. Use a heading or a paragraph with strong text depending on the surrounding outline.",
+      "forma-fault__message": "The safe user-facing message from Aegis.",
+      "data-forma-severity": "diagnostic gives a dotted start border, warning dashed, critical a wider border plus an offset outline; error (or absent) keeps the solid default."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between recovery buttons. The fault region itself is not focusable and never takes focus when it appears." },
       { keys: "Enter / Space", action: "Activates the focused recovery button (native button behavior)." }
     ],
     events: [
-      { name: "click", description: "Native click on a recovery button. Application or Limen code reads `data-ef-aegis-capability`, revalidates the capability and application state, then issues a typed recovery request." }
+      { name: "click", description: "Native click on a recovery button. Application or Limen code reads `data-forma-aegis-capability`, revalidates the capability and application state, then issues a typed recovery request." }
     ],
     form: "Not a form control. Recovery buttons use type=\"button\" and never submit or reset an enclosing form."
   },
   states: [
-    { name: "Diagnostic", how: "data-ef-severity=\"diagnostic\" plus the text Diagnostic", description: "Dotted start border. Lowest severity; often no recovery actions." },
-    { name: "Warning", how: "data-ef-severity=\"warning\" plus the text Warning", description: "Dashed start border." },
-    { name: "Error", how: "data-ef-severity=\"error\" plus the text Error", description: "Solid 0.35rem start border (the default)." },
-    { name: "Critical", how: "data-ef-severity=\"critical\" plus the text Critical", description: "Solid 0.55rem start border and a 1px outline offset by 2px." },
-    { name: "No recovery available", how: "omit the .ef-recovery-actions group", description: "The grid keeps its layout; nothing is shown in the action column. Do not render disabled placeholder actions." }
+    { name: "Diagnostic", how: "data-forma-severity=\"diagnostic\" plus the text Diagnostic", description: "Dotted start border. Lowest severity; often no recovery actions." },
+    { name: "Warning", how: "data-forma-severity=\"warning\" plus the text Warning", description: "Dashed start border." },
+    { name: "Error", how: "data-forma-severity=\"error\" plus the text Error", description: "Solid 0.35rem start border (the default)." },
+    { name: "Critical", how: "data-forma-severity=\"critical\" plus the text Critical", description: "Solid 0.55rem start border and a 1px outline offset by 2px." },
+    { name: "No recovery available", how: "omit the .forma-recovery-actions group", description: "The grid keeps its layout; nothing is shown in the action column. Do not render disabled placeholder actions." }
   ],
   accessibility: {
     forma: [

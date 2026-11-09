@@ -23,16 +23,16 @@ test("decorative icons remain hidden from a11y while a native icon button keeps 
 });
 
 test("canonical geometry survives brand-independent coloring, forced colors, and small or large sizes", async ({ page }) => {
-  await page.setContent(doc(`<p style="color:rgb(8,80,120)">Small <span style="--ef-icon-size:16px">${snippet("workflow")}</span></p><p style="--ef-icon-size:32px">Large ${snippet("agent")}</p>`));
-  const before = await page.locator(".ef-icon__svg").evaluateAll(nodes => nodes.map(el=>({
+  await page.setContent(doc(`<p style="color:rgb(8,80,120)">Small <span style="--forma-icon-size:16px">${snippet("workflow")}</span></p><p style="--forma-icon-size:32px">Large ${snippet("agent")}</p>`));
+  const before = await page.locator(".forma-icon__svg").evaluateAll(nodes => nodes.map(el=>({
     box:el.getBoundingClientRect().toJSON(),viewBox:el.getAttribute("viewBox"),stroke:getComputedStyle(el).stroke
   })));
   expect(before.map(x=>Math.round(x.box.width))).toEqual([16,32]);
   expect(before.every(x=>x.viewBox==="0 0 24 24")).toBe(true);
   expect(before[0].stroke).toBe("rgb(8, 80, 120)");
   await page.emulateMedia({forcedColors:"active", reducedMotion:"reduce"});
-  await expect(page.locator(".ef-icon__svg")).toHaveCount(2);
-  await expect(page.locator(".ef-icon__svg").first()).toHaveAttribute("aria-hidden","true");
+  await expect(page.locator(".forma-icon__svg")).toHaveCount(2);
+  await expect(page.locator(".forma-icon__svg").first()).toHaveAttribute("aria-hidden","true");
 });
 
 test("all names in the public registry resolve to safe offline inline SVG snippets", async ({ page }) => {
@@ -40,9 +40,9 @@ test("all names in the public registry resolve to safe offline inline SVG snippe
   await page.route("**/*", async route => route.abort("failed"));
   const html = registry.icons.map(icon => snippet(icon.name)).join("");
   await page.setContent(doc(html));
-  await expect(page.locator(".ef-icon__svg")).toHaveCount(registry.icons.length);
+  await expect(page.locator(".forma-icon__svg")).toHaveCount(registry.icons.length);
   await expect(page.locator("foreignObject, script, iframe")).toHaveCount(0);
-  await expect(page.locator(".ef-icon__svg").first()).toHaveAttribute("viewBox","0 0 24 24");
+  await expect(page.locator(".forma-icon__svg").first()).toHaveAttribute("viewBox","0 0 24 24");
 });
 
 // Optical review guard: stroked geometry (1.8 units, so 0.9 either side of the
@@ -55,12 +55,12 @@ const MIN_LIVE_AREA = 10;
 
 for (const size of [16, 20, 24, 32]) {
   test(`every registry icon renders at ${size}px with stroked geometry inside the safe area`, async ({ page }) => {
-    await page.setContent(doc(`<p style="--ef-icon-size:${size}px">${registry.icons.map(icon => snippet(icon.name)).join(" ")}</p>`));
-    const rendered = await page.locator(".ef-icon").evaluateAll(nodes => nodes.map(node => {
+    await page.setContent(doc(`<p style="--forma-icon-size:${size}px">${registry.icons.map(icon => snippet(icon.name)).join(" ")}</p>`));
+    const rendered = await page.locator(".forma-icon").evaluateAll(nodes => nodes.map(node => {
       const svg = node.querySelector("svg");
       const box = svg.getBBox();
       const rect = svg.getBoundingClientRect();
-      return { name: node.dataset.efIcon, x: box.x, y: box.y, width: box.width, height: box.height, px: [rect.width, rect.height] };
+      return { name: node.dataset.formaIcon, x: box.x, y: box.y, width: box.width, height: box.height, px: [rect.width, rect.height] };
     }));
     expect(rendered.map(icon => icon.name)).toEqual(registry.icons.map(icon => icon.name));
     for (const icon of rendered) {
@@ -78,7 +78,7 @@ test("icons print as visible ink in grayscale without backgrounds and keep text 
   await page.setContent(doc(`<p style="color:rgb(160,40,30)">${snippet("warning")} Warning: review incomplete.</p>`));
   await page.emulateMedia({ media: "print" });
   await page.addStyleTag({ content: "html { filter: grayscale(1); }" });
-  const printed = await page.locator(".ef-icon__svg").evaluate(svg => {
+  const printed = await page.locator(".forma-icon__svg").evaluate(svg => {
     const style = getComputedStyle(svg);
     return { display: style.display, visibility: style.visibility, stroke: style.stroke, fill: style.fill, width: svg.getBoundingClientRect().width };
   });
@@ -122,7 +122,7 @@ test("communication icons are accessible through native named actions on a 320px
   }
   await expect(page.getByRole("img")).toHaveCount(0);
   await expect(page.getByText("Delivery failed. Try again.")).toBeVisible();
-  expect(await page.locator("[data-ef-icon]").evaluateAll(items => items.map(item => item.getAttribute("data-ef-icon")))).toEqual(
+  expect(await page.locator("[data-forma-icon]").evaluateAll(items => items.map(item => item.getAttribute("data-forma-icon")))).toEqual(
     ["email","reply","forward","error"]
   );
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1)).toBe(true);
@@ -132,7 +132,7 @@ test("all eighty static icons can be embedded in offline content without executa
   expect(registry.icons).toHaveLength(80);
   const html = registry.icons.map(icon => snippet(icon.name)).join("");
   await page.setContent(doc(html));
-  await expect(page.locator(".ef-icon__svg")).toHaveCount(80);
+  await expect(page.locator(".forma-icon__svg")).toHaveCount(80);
   await expect(page.locator("script, foreignObject, iframe, object, embed")).toHaveCount(0);
   await expect(page.getByRole("img")).toHaveCount(0);
 });

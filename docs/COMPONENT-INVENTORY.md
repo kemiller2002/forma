@@ -5,7 +5,7 @@ This is the durable inventory of every public Forma component, generated from
 the component catalog (`catalog/components/*.mjs`), the canonical patterns
 (`patterns/*.html`), the built stylesheet and the test suite. The catalog
 checker (`npm run catalog:check`) fails when a canonical pattern or a public
-`.ef-*` block class is missing from this list.
+`.forma-*` block class is missing from this list.
 
 - Public components: **170** in **18** families
 - Rendered examples on the documentation site: **738** (each component: canonical Basic + scenario examples + mobile examples)
@@ -26,176 +26,176 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 
 | Component | Tag | Category | Implementation | Documentation | Examples | Mobile | HTML shown | Accessibility | API | Dedicated tests | Related |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Button | `<ef-button>` | Actions | implemented | complete | 5 | 1 | yes | yes | yes | marketing.spec.mjs | command-group, overflow-command-disclosure, menu, mobile-action-bar, cta |
-| Command group | `<ef-command-group>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, overflow-command-disclosure, menu, collection-toolbar, command-palette |
-| Mobile action bar | `<ef-mobile-action-bar>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, command-group, overflow-command-disclosure, flyout |
-| Overflow command disclosure | `<ef-overflow-command-disclosure>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | command-group, menu, disclosure, mobile-action-bar |
-| Checkbox | `<ef-checkbox>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, physics-motion.spec.mjs, selection-alignment.spec.mjs | switch, multi-choice, binary-choice, choice-group |
-| Combobox | `<ef-combobox>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | select, search, text-field, command-palette |
-| Date and time field | `<ef-date-time-field>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | date-range, text-field, numeric-stepper |
-| Date range | `<ef-date-range>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | mobile.spec.mjs | date-time-field, range-entry, segmented-control |
-| File upload queue | `<ef-file-upload>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | status-lozenge, progress-bar, operation-status, composer |
-| Form | `<ef-form>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | design-contract.test.mjs, type-roles.spec.mjs | form-row, validation-message, validation-summary, button |
-| Numeric stepper | `<ef-numeric-stepper>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | slider, range-entry, text-field, allocation |
-| Range entry | `<ef-range-entry>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | date-range, numeric-stepper, slider |
-| Rule builder | `<ef-rule-builder>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, active-filter-summary, select, validation-message |
-| Search | `<ef-search>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, combobox, command-palette, active-filter-summary |
-| Select | `<ef-select>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | physics-motion.spec.mjs, selection-alignment.spec.mjs | combobox, choice-group, segmented-control, multi-choice |
-| Slider | `<ef-slider>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | core-controls-motion.spec.mjs | numeric-stepper, range-entry, ordinal-scale, allocation |
-| Switch | `<ef-switch>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, physics-motion.spec.mjs, progressive-motion.spec.mjs, selection-alignment.spec.mjs, switch.spec.mjs, value-change-motion.spec.mjs | checkbox, binary-choice, segmented-control, multi-choice |
-| Text field | `<ef-text-field>` | Form inputs | implemented | complete | 5 | 1 | yes | yes | yes | pattern-contrast.spec.mjs, type-roles.spec.mjs | textarea, date-time-field, numeric-stepper, search, validation-message |
-| Textarea | `<ef-textarea>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | text-field, composer, validation-message |
-| Choice group | `<ef-choice-group>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs, selection-alignment.spec.mjs | multi-choice, image-choice, segmented-control, ordinal-scale, binary-choice |
-| Hierarchical choice | `<ef-hierarchical-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchical-multi-choice, hierarchy-tree, choice-group, disclosure |
-| Hierarchical multi-choice | `<ef-hierarchical-multi-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchical-choice, multi-choice, checkbox, hierarchy-tree |
-| Image choice | `<ef-image-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | choice-group, multi-choice, segmented-control, select |
-| Multi-choice | `<ef-multi-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | choice-group, checkbox, hierarchical-multi-choice, image-choice, special-choice |
-| Segmented control | `<ef-segmented-control>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, value-change-motion.spec.mjs | choice-group, tabs, select, switch, multi-choice |
-| Allocation | `<ef-allocation>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment.spec.mjs | ranking, numeric-stepper, validation-message |
-| Best–Worst | `<ef-best-worst>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | selector-completeness.spec.mjs | pairwise-choice, ranking, matrix-single |
-| Binary choice | `<ef-binary-choice>` | Assessment and survey | implemented | complete | 4 | 1 | yes | yes | yes | assessment-motion.spec.mjs | switch, special-choice, ordinal-scale, pairwise-choice |
-| Ordinal scale | `<ef-ordinal-scale>` | Assessment and survey | implemented | complete | 4 | 1 | yes | yes | yes | css-source.test.mjs, assessment-motion.spec.mjs, assessment.spec.mjs, selection-alignment.spec.mjs | special-choice, semantic-differential, matrix-single, symbol-rating, slider |
-| Pairwise choice | `<ef-pairwise-choice>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | generic only | binary-choice, best-worst, choice-group |
-| Question shell | `<ef-question>` | Assessment and survey | implemented | complete | 4 | 1 | yes | yes | yes | generic only | ordinal-scale, validation-message, survey-progress, text-field |
-| Ranking | `<ef-ranking>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment.spec.mjs, direct-manipulation.spec.mjs | reorder-states, best-worst, allocation |
-| Semantic differential | `<ef-semantic-differential>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs | ordinal-scale, slider, symbol-rating |
-| Single-choice matrix | `<ef-matrix-single>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | selector-completeness.spec.mjs | ordinal-scale, comparison-grid, question |
-| Special choice | `<ef-special-choice>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs, assessment.spec.mjs | ordinal-scale, multi-choice, choice-group |
-| Survey progress | `<ef-survey-progress>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | generic only | progress-bar, wizard, question |
-| Symbol rating | `<ef-symbol-rating>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs | ordinal-scale, image-choice, semantic-differential |
-| Hierarchy tree | `<ef-hierarchy-tree>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | scope-trail, hierarchical-choice, disclosure, navigation-shell |
-| Navigation shell | `<ef-navigation-shell>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | workspace-shell, sidebar, flyout, skip-link |
-| Pagination | `<ef-pagination>` | Navigation | implemented | complete | 4 | 1 | yes | yes | yes | generic only | collection-toolbar, data-grid, wizard |
-| Scope trail | `<ef-scope-trail>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchy-tree, spatial-canvas, provenance-trail, pagination |
-| Skip link | `<ef-skip-link>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | marketing-shell, site-header, visually-hidden |
-| Tabs | `<ef-tabs>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | segmented-control, navigation-shell, wizard, disclosure |
-| Wizard | `<ef-wizard>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | survey-progress, steps, readiness-checklist, tabs |
-| Alert | `<ef-alert>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | toast, callout, operation-status, fault-banner |
-| Conflict review | `<ef-conflict-review>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, operation-status, recovery-actions |
-| Empty state | `<ef-empty-state>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skeleton, alert, collection-toolbar, active-filter-summary |
-| Freshness | `<ef-freshness>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | security-evidence-age, state-survivability, provenance-trail, status-lozenge |
-| Obligation panel | `<ef-obligation-panel>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | readiness-checklist, work-queue, operation-status, validation-summary |
-| Operation status | `<ef-operation-status>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | causa-representative.spec.mjs | alert, conflict-review, state-survivability, recovery-actions |
-| Progress bar | `<ef-progress-bar>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | spinner, measure, survey-progress, steps |
-| Readiness checklist | `<ef-readiness-checklist>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | obligation-panel, wizard, state-survivability |
-| Scroll progress | `<ef-scroll-progress>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | progressive-motion.spec.mjs | progress-bar, entry-index, documentation-layout |
-| Skeleton | `<ef-skeleton>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | loading-progress.spec.mjs | spinner, empty-state, progress-bar |
-| Spinner | `<ef-spinner>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | ais-001.spec.mjs, loading-progress.spec.mjs | progress-bar, skeleton, operation-status |
-| Start-up screen | `<ef-startup>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | brand-neutrality.test.mjs, ais-001.spec.mjs | app-identity, spinner, fault-blocking, skeleton |
-| State survivability | `<ef-state-survivability>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | visual-engineering-semantics.spec.mjs | operation-status, status-lozenge, freshness, security-state-matrix |
-| Status lozenge | `<ef-status-lozenge>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | color-contract.spec.mjs, forced-colors-projection.spec.mjs, layout-reliability.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
-| Toast | `<ef-toast>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, popover, fault-notification, dialog |
-| Validation message | `<ef-validation-message>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | validation-summary, text-field, question, alert |
-| Validation summary | `<ef-validation-summary>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | validation-message, alert, obligation-panel |
-| Diagnostic status | `<ef-diagnostic-status>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | generic only | operation-status, freshness, fault-banner |
-| Fault | `<ef-fault>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | generic only | fault-inline, fault-notification, fault-banner, fault-blocking, recovery-actions, alert |
-| Fault banner | `<ef-fault-banner>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, fault-notification, fault-blocking, diagnostic-status |
-| Fault blocking | `<ef-fault-blocking>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | dialog, fault-banner, recovery-actions, fault-details |
-| Fault details | `<ef-fault-details>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | disclosure, key-value-list, fault-reference |
-| Fault inline | `<ef-fault-inline>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | pattern-contrast.spec.mjs | fault, validation-message, fault-summary, fault-notification |
-| Fault notification | `<ef-fault-notification>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | aegis-faults.spec.mjs | toast, fault-banner, fault-inline, fault |
-| Fault reference | `<ef-fault-reference>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | identifier, fault-details, fault |
-| Fault summary | `<ef-fault-summary>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | aegis-faults.spec.mjs | validation-summary, fault-inline, fault |
-| Recovery actions | `<ef-recovery-actions>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, command-group, fault, fault-blocking |
-| Action menu | `<ef-menu>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | surface-fade.spec.mjs | popover, overflow-command-disclosure, command-group, command-palette, select |
-| Dialog | `<ef-dialog>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | css-source.test.mjs, overlay-motion.spec.mjs | flyout, popover, fault-blocking, button, toast |
-| Disclosure | `<ef-disclosure>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | progressive-motion.spec.mjs | overview-disclosure, overflow-command-disclosure, tabs, popover |
-| Flyout | `<ef-flyout>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | css-source.test.mjs, flyout-containment.spec.mjs, overlay-motion.spec.mjs | dialog, sidebar, split-pane, popover, mobile-action-bar |
-| Overview disclosure | `<ef-overview-disclosure>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | generic only | disclosure, verification-frame, state-survivability, status-lozenge, freshness |
-| Popover | `<ef-popover>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | surface-fade.spec.mjs | tooltip, menu, dialog, disclosure |
-| Tooltip / contextual hint | `<ef-tooltip>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | surface-fade.spec.mjs, tooltip.spec.mjs | popover, text-field, visually-hidden, callout |
-| Bounded overflow | `<ef-bounded-overflow>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | dense-ledger, comparison-grid, data-grid, code-sample |
-| Cluster | `<ef-cluster>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | stack, command-group, status-lozenge, switcher |
-| Container | `<ef-container>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | measure, section, marketing-shell, prose |
-| Form row | `<ef-form-row>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | text-field, date-time-field, grid, stack, validation-message |
-| Frame | `<ef-frame>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | workflow-package.test.mjs | grid, diagram, image-choice |
-| Grid | `<ef-grid>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | responsive-grid, mosaic, dashboard-grid, card-grid, character-grid |
-| Landmark region | `<ef-landmark-region>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | workspace-shell, navigation-shell, site-header, alert |
-| Measure | `<ef-measure>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | prose, container, stack |
-| Mosaic | `<ef-mosaic>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | responsive-grid, grid, card-grid |
-| Priority stack | `<ef-priority-stack>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | focus-stage, responsive-grid, switcher, stack |
-| Rail | `<ef-rail>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | sidebar, focus-stage, switcher, workspace-shell |
-| Responsive grid | `<ef-responsive-grid>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | grid, mosaic, priority-stack, dashboard-grid |
-| Section | `<ef-section>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | section-heading, container, hero, surface |
-| Sidebar | `<ef-sidebar>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | composition.spec.mjs | rail, switcher, split-pane, workspace-shell |
-| Split | `<ef-split>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | switcher, hero, split-pane, container |
-| Stack | `<ef-stack>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | cluster, grid, surface, prose |
-| Surface | `<ef-surface>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | conformance-package.test.mjs, css-source.test.mjs, dist-css.test.mjs, forced-colors-projection.spec.mjs, pattern-contrast.spec.mjs, type-roles.spec.mjs, word-integrity.spec.mjs | card-grid, callout, preview-surface, stack |
-| Switcher | `<ef-switcher>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | sidebar, rail, split, cluster |
-| Application identity | `<ef-app-identity>` | Workspaces and shells | implemented | complete | 5 | 1 | yes | yes | yes | brand-neutrality.test.mjs, ais-001.spec.mjs | startup, navigation-shell, site-header |
-| Dashboard grid | `<ef-dashboard-grid>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | causa-representative.spec.mjs | metric-card, responsive-grid, mosaic, work-queue |
-| Focus stage | `<ef-focus-stage>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | split-pane, rail, workspace-shell, preview-surface |
-| Master/detail workspace | `<ef-master-detail>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | data-grid, work-queue, split-pane, record-header |
-| Preview surface | `<ef-preview-surface>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, readiness-checklist, verification-frame, focus-stage |
-| Record header | `<ef-record-header>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | layout-reliability.spec.mjs | section-heading, menu, mobile-action-bar, master-detail, status-lozenge |
-| Resizable split pane | `<ef-resizable-split-pane>` | Workspaces and shells | implemented | complete | 4 | 1 | yes | yes | yes | direct-manipulation.spec.mjs | split-pane, reorder-states, workspace-shell, flyout |
-| Split pane | `<ef-split-pane>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | causa-representative.spec.mjs, direct-manipulation.spec.mjs | resizable-split-pane, sidebar, switcher, focus-stage, workspace-shell |
-| Workspace shell | `<ef-workspace-shell>` | Workspaces and shells | implemented | complete | 4 | 1 | yes | yes | yes | generic only | navigation-shell, master-detail, split-pane, focus-stage, landmark-region |
-| Active filter summary | `<ef-active-filter-summary>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, scope-trail, empty-state, status-lozenge |
-| Collection toolbar | `<ef-collection-toolbar>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | active-filter-summary, search, data-grid, flyout, pagination |
-| Comparison grid | `<ef-comparison-grid>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | comparison-pairs, dense-ledger, bounded-overflow, data-grid |
-| Comparison pairs | `<ef-comparison-pairs>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, comparison-grid, conflict-review, verification-frame |
-| Data grid | `<ef-data-grid>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | operational-mobile.spec.mjs | dense-ledger, collection-toolbar, comparison-grid, pagination, bounded-overflow |
-| Dense ledger | `<ef-dense-ledger>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | generic only | data-grid, bounded-overflow, comparison-grid, key-value-list |
-| Diff viewer | `<ef-diff-viewer>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | comparison-pairs, conflict-review, timeline, key-value-list |
-| Evidence relationship | `<ef-evidence-relationship>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | provenance-trail, relationship-index, security-evidence-chain, freshness |
-| Feed item | `<ef-feed-item>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | generic only | timeline, work-queue, toast, status-lozenge |
-| Identifier & critical value | `<ef-identifier>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | visual-engineering-verification.spec.mjs | verification-frame, key-value-list, code-sample, text-roles |
-| Key-value list | `<ef-key-value-list>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | facts, relationship-index, comparison-pairs, data-grid, record-header |
-| Metric card | `<ef-metric-card>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | value-change-motion.spec.mjs | metric-value-change, dashboard-grid, freshness, key-value-list, progress-bar |
-| Metric value change | `<ef-metric-value-change>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | metric-card, progress-bar, operation-status, freshness |
-| Path summary | `<ef-path-summary>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | relationship-index, provenance-trail, evidence-relationship, diagram |
-| Provenance trail | `<ef-provenance-trail>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-evidence-chain, metric-card, evidence-relationship, timeline |
-| Relationship index | `<ef-relationship-index>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | path-summary, diagram, key-value-list, hierarchy-tree |
-| Reorder states | `<ef-reorder-states>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | direct-manipulation.spec.mjs, machine-operability.spec.mjs | ranking, lane-board, resizable-split-pane, allocation |
-| Timeline | `<ef-timeline>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | feed-item, provenance-trail, steps, diff-viewer |
-| Work queue | `<ef-work-queue>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | feed-item, obligation-panel, readiness-checklist, operation-status |
-| Diagram | `<ef-diagram>` | Workflow and diagrams | implemented | complete | 6 | 1 | yes | yes | yes | diagram-m2.spec.mjs, diagram-nontext-contrast.spec.mjs, diagram.spec.mjs, workflow-embed.spec.mjs, workflow-static.spec.mjs | lane-board, spatial-canvas, provenance-trail, relationship-index |
-| Lane board | `<ef-lane-board>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | generic only | work-queue, ranking, reorder-states, diagram |
-| Spatial canvas | `<ef-spatial-canvas>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | machine-operability.spec.mjs | diagram, scope-trail, relationship-index, bounded-overflow |
-| Character grid | `<ef-character-grid>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | character-grid-3270.spec.mjs, character-grid-field.spec.mjs, character-grid-helpers.mjs, character-grid-keys-status.spec.mjs, character-grid-reveal.spec.mjs, character-grid-selection.spec.mjs, character-grid-verification.spec.mjs, character-grid-workflow.spec.mjs, character-grid.spec.mjs | character-grid-field, character-grid-keys, character-grid-status, character-grid-3270, data-grid |
-| Character grid 3270 profile | `<ef-character-grid-3270>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | generic only | character-grid, character-grid-workflow, character-grid-status |
-| Character grid field | `<ef-character-grid-field>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | generic only | character-grid, character-grid-selection, character-grid-status, text-field |
-| Character grid keys | `<ef-character-grid-keys>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | generic only | character-grid, character-grid-status, command-group, command-palette |
-| Character grid reveal | `<ef-character-grid-reveal>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | generic only | character-grid, character-grid-workflow, skeleton |
-| Character grid selection | `<ef-character-grid-selection>` | Command and keyboard-first | implemented | complete | 3 | 1 | yes | yes | yes | generic only | character-grid-field, character-grid, data-grid |
-| Character grid status | `<ef-character-grid-status>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | generic only | character-grid, character-grid-field, character-grid-keys, alert |
-| Character grid workflow | `<ef-character-grid-workflow>` | Command and keyboard-first | implemented | complete | 3 | 1 | yes | yes | yes | generic only | character-grid-3270, character-grid-keys, character-grid-status, wizard |
-| Command palette | `<ef-command-palette>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | operational-mobile.spec.mjs | dialog, menu, combobox, search |
-| Composer | `<ef-composer>` | Human–agent interaction | implemented | complete | 3 | 1 | yes | yes | yes | generic only | conversation, understanding, textarea, file-upload |
-| Conversation | `<ef-conversation>` | Human–agent interaction | implemented | complete | 3 | 1 | yes | yes | yes | generic only | composer, understanding, handoff-summary, timeline |
-| Handoff summary | `<ef-handoff-summary>` | Human–agent interaction | implemented | complete | 3 | 1 | yes | yes | yes | generic only | understanding, verification-frame, conversation, facts |
-| Understanding review | `<ef-understanding>` | Human–agent interaction | implemented | complete | 3 | 1 | yes | yes | yes | generic only | composer, conflict-review, readiness-checklist, handoff-summary |
-| Attention path | `<ef-attention-path>` | Attention and verification | implemented | complete | 3 | 1 | yes | yes | yes | generic only | emphasis-budget, verification-frame, overview-disclosure, priority-stack |
-| Emphasis budget | `<ef-emphasis-budget>` | Attention and verification | implemented | complete | 3 | 1 | yes | yes | yes | emphasis-budget.spec.mjs | attention-path, verification-frame, priority-stack, callout |
-| Verification frame | `<ef-verification-frame>` | Attention and verification | implemented | complete | 3 | 1 | yes | yes | yes | visual-engineering-verification.spec.mjs | identifier, attention-path, readiness-checklist, understanding |
-| Security blockers | `<ef-security-blockers>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-posture, security-unknown, security-invariant-result, obligation-panel |
-| Security evidence age | `<ef-security-evidence-age>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | freshness, security-evidence-chain, security-state-matrix |
-| Security evidence chain | `<ef-security-evidence-chain>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | provenance-trail, evidence-relationship, security-invariant-result |
-| Security exception | `<ef-security-exception>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-blockers, security-invariant-result, security-unknown |
-| Security invariant result | `<ef-security-invariant-result>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-evidence-chain, security-state-matrix, security-exception, security-unknown |
-| Security posture | `<ef-security-posture>` | Security posture | implemented | complete | 4 | 1 | yes | yes | yes | generic only | security-blockers, security-state-matrix, security-unknown, status-lozenge |
-| Security state matrix | `<ef-security-state-matrix>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-posture, data-grid, metric-card, security-trend |
-| Security trend | `<ef-security-trend>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-state-matrix, metric-value-change, security-evidence-age |
-| Security unknown | `<ef-security-unknown>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-blockers, security-invariant-result, obligation-panel, operation-status |
-| Badge | `<ef-badge>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing.spec.mjs | status-lozenge, facts, hero |
-| Call to action | `<ef-cta>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing-containment.spec.mjs | hero, button, section |
-| Callout | `<ef-callout>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | callout.spec.mjs | prose, alert, cta |
-| Card grid | `<ef-card-grid>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, site-css-policy.test.mjs, marketing-containment.spec.mjs, marketing.spec.mjs | facts, entry-index, metric-card, surface |
-| Code sample | `<ef-code-sample>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | prose, steps, diff-viewer, identifier |
-| Documentation layout | `<ef-documentation-layout>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | prose, marketing-shell, sidebar, rail |
-| Entry index | `<ef-entry-index>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | card-grid, steps, relationship-index |
-| Facts | `<ef-facts>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | card-grid, key-value-list, metric-card, hero |
-| Hero | `<ef-hero>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | section-heading, facts, text-roles, split |
-| Marketing shell | `<ef-marketing-shell>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing.spec.mjs, type-roles.spec.mjs | site-header, site-footer, skip-link, documentation-layout, workspace-shell |
-| Prose | `<ef-prose>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | callout, code-sample, documentation-layout, measure |
-| Section heading | `<ef-section-heading>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hero, section, text-roles |
-| Site footer | `<ef-site-footer>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | site-header, marketing-shell, cta |
-| Site header | `<ef-site-header>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | marketing-shell, site-footer, navigation-shell, skip-link |
-| Steps | `<ef-steps>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-containment.spec.mjs | wizard, timeline, entry-index, code-sample |
-| Icon | `<ef-icon>` | Utilities | implemented | complete | 3 | 1 | yes | yes | yes | icons.test.mjs, icons.spec.mjs | button, status-lozenge, visually-hidden |
-| Text roles | `<ef-text-roles>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | section-heading, hero, prose, callout |
-| Visually hidden | `<ef-visually-hidden>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skip-link, tooltip, text-roles |
+| Button | `<forma-button>` | Actions | implemented | complete | 5 | 1 | yes | yes | yes | namespace-guard.test.mjs, namespace-migrator.test.mjs, brand-isolation.spec.mjs, marketing.spec.mjs | command-group, overflow-command-disclosure, menu, mobile-action-bar, cta |
+| Command group | `<forma-command-group>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, overflow-command-disclosure, menu, collection-toolbar, command-palette |
+| Mobile action bar | `<forma-mobile-action-bar>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, command-group, overflow-command-disclosure, flyout |
+| Overflow command disclosure | `<forma-overflow-command-disclosure>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | command-group, menu, disclosure, mobile-action-bar |
+| Checkbox | `<forma-checkbox>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, physics-motion.spec.mjs, selection-alignment.spec.mjs | switch, multi-choice, binary-choice, choice-group |
+| Combobox | `<forma-combobox>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | select, search, text-field, command-palette |
+| Date and time field | `<forma-date-time-field>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | date-range, text-field, numeric-stepper |
+| Date range | `<forma-date-range>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | mobile.spec.mjs | date-time-field, range-entry, segmented-control |
+| File upload queue | `<forma-file-upload>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | status-lozenge, progress-bar, operation-status, composer |
+| Form | `<forma-form>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | design-contract.test.mjs, type-roles.spec.mjs | form-row, validation-message, validation-summary, button |
+| Numeric stepper | `<forma-numeric-stepper>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | slider, range-entry, text-field, allocation |
+| Range entry | `<forma-range-entry>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | date-range, numeric-stepper, slider |
+| Rule builder | `<forma-rule-builder>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, active-filter-summary, select, validation-message |
+| Search | `<forma-search>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, combobox, command-palette, active-filter-summary |
+| Select | `<forma-select>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | physics-motion.spec.mjs, selection-alignment.spec.mjs | combobox, choice-group, segmented-control, multi-choice |
+| Slider | `<forma-slider>` | Form inputs | implemented | complete | 3 | 1 | yes | yes | yes | core-controls-motion.spec.mjs | numeric-stepper, range-entry, ordinal-scale, allocation |
+| Switch | `<forma-switch>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, physics-motion.spec.mjs, progressive-motion.spec.mjs, selection-alignment.spec.mjs, switch.spec.mjs, value-change-motion.spec.mjs | checkbox, binary-choice, segmented-control, multi-choice |
+| Text field | `<forma-text-field>` | Form inputs | implemented | complete | 5 | 1 | yes | yes | yes | pattern-contrast.spec.mjs, type-roles.spec.mjs | textarea, date-time-field, numeric-stepper, search, validation-message |
+| Textarea | `<forma-textarea>` | Form inputs | implemented | complete | 4 | 1 | yes | yes | yes | generic only | text-field, composer, validation-message |
+| Choice group | `<forma-choice-group>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs, selection-alignment.spec.mjs | multi-choice, image-choice, segmented-control, ordinal-scale, binary-choice |
+| Hierarchical choice | `<forma-hierarchical-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchical-multi-choice, hierarchy-tree, choice-group, disclosure |
+| Hierarchical multi-choice | `<forma-hierarchical-multi-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchical-choice, multi-choice, checkbox, hierarchy-tree |
+| Image choice | `<forma-image-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | choice-group, multi-choice, segmented-control, select |
+| Multi-choice | `<forma-multi-choice>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | generic only | choice-group, checkbox, hierarchical-multi-choice, image-choice, special-choice |
+| Segmented control | `<forma-segmented-control>` | Selection and choice | implemented | complete | 3 | 1 | yes | yes | yes | core-controls-motion.spec.mjs, value-change-motion.spec.mjs | choice-group, tabs, select, switch, multi-choice |
+| Allocation | `<forma-allocation>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment.spec.mjs | ranking, numeric-stepper, validation-message |
+| Best–Worst | `<forma-best-worst>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | selector-completeness.spec.mjs | pairwise-choice, ranking, matrix-single |
+| Binary choice | `<forma-binary-choice>` | Assessment and survey | implemented | complete | 4 | 1 | yes | yes | yes | assessment-motion.spec.mjs | switch, special-choice, ordinal-scale, pairwise-choice |
+| Ordinal scale | `<forma-ordinal-scale>` | Assessment and survey | implemented | complete | 4 | 1 | yes | yes | yes | css-source.test.mjs, assessment-motion.spec.mjs, assessment.spec.mjs, selection-alignment.spec.mjs | special-choice, semantic-differential, matrix-single, symbol-rating, slider |
+| Pairwise choice | `<forma-pairwise-choice>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | generic only | binary-choice, best-worst, choice-group |
+| Question shell | `<forma-question>` | Assessment and survey | implemented | complete | 4 | 1 | yes | yes | yes | generic only | ordinal-scale, validation-message, survey-progress, text-field |
+| Ranking | `<forma-ranking>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment.spec.mjs, direct-manipulation.spec.mjs | reorder-states, best-worst, allocation |
+| Semantic differential | `<forma-semantic-differential>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs | ordinal-scale, slider, symbol-rating |
+| Single-choice matrix | `<forma-matrix-single>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | selector-completeness.spec.mjs | ordinal-scale, comparison-grid, question |
+| Special choice | `<forma-special-choice>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs, assessment.spec.mjs | ordinal-scale, multi-choice, choice-group |
+| Survey progress | `<forma-survey-progress>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | generic only | progress-bar, wizard, question |
+| Symbol rating | `<forma-symbol-rating>` | Assessment and survey | implemented | complete | 3 | 1 | yes | yes | yes | assessment-motion.spec.mjs | ordinal-scale, image-choice, semantic-differential |
+| Hierarchy tree | `<forma-hierarchy-tree>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | scope-trail, hierarchical-choice, disclosure, navigation-shell |
+| Navigation shell | `<forma-navigation-shell>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | workspace-shell, sidebar, flyout, skip-link |
+| Pagination | `<forma-pagination>` | Navigation | implemented | complete | 4 | 1 | yes | yes | yes | generic only | collection-toolbar, data-grid, wizard |
+| Scope trail | `<forma-scope-trail>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hierarchy-tree, spatial-canvas, provenance-trail, pagination |
+| Skip link | `<forma-skip-link>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | marketing-shell, site-header, visually-hidden |
+| Tabs | `<forma-tabs>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | segmented-control, navigation-shell, wizard, disclosure |
+| Wizard | `<forma-wizard>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | survey-progress, steps, readiness-checklist, tabs |
+| Alert | `<forma-alert>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | toast, callout, operation-status, fault-banner |
+| Conflict review | `<forma-conflict-review>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, operation-status, recovery-actions |
+| Empty state | `<forma-empty-state>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skeleton, alert, collection-toolbar, active-filter-summary |
+| Freshness | `<forma-freshness>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | security-evidence-age, state-survivability, provenance-trail, status-lozenge |
+| Obligation panel | `<forma-obligation-panel>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | readiness-checklist, work-queue, operation-status, validation-summary |
+| Operation status | `<forma-operation-status>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | causa-representative.spec.mjs | alert, conflict-review, state-survivability, recovery-actions |
+| Progress bar | `<forma-progress-bar>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | spinner, measure, survey-progress, steps |
+| Readiness checklist | `<forma-readiness-checklist>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | obligation-panel, wizard, state-survivability |
+| Scroll progress | `<forma-scroll-progress>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | progressive-motion.spec.mjs | progress-bar, entry-index, documentation-layout |
+| Skeleton | `<forma-skeleton>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | loading-progress.spec.mjs | spinner, empty-state, progress-bar |
+| Spinner | `<forma-spinner>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | ais-001.spec.mjs, loading-progress.spec.mjs | progress-bar, skeleton, operation-status |
+| Start-up screen | `<forma-startup>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | ais-001.spec.mjs | app-identity, spinner, fault-blocking, skeleton |
+| State survivability | `<forma-state-survivability>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | visual-engineering-semantics.spec.mjs | operation-status, status-lozenge, freshness, security-state-matrix |
+| Status lozenge | `<forma-status-lozenge>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | color-contract.spec.mjs, forced-colors-projection.spec.mjs, layout-reliability.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
+| Toast | `<forma-toast>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, popover, fault-notification, dialog |
+| Validation message | `<forma-validation-message>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | validation-summary, text-field, question, alert |
+| Validation summary | `<forma-validation-summary>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | validation-message, alert, obligation-panel |
+| Diagnostic status | `<forma-diagnostic-status>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | generic only | operation-status, freshness, fault-banner |
+| Fault | `<forma-fault>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | generic only | fault-inline, fault-notification, fault-banner, fault-blocking, recovery-actions, alert |
+| Fault banner | `<forma-fault-banner>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, fault-notification, fault-blocking, diagnostic-status |
+| Fault blocking | `<forma-fault-blocking>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | dialog, fault-banner, recovery-actions, fault-details |
+| Fault details | `<forma-fault-details>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | disclosure, key-value-list, fault-reference |
+| Fault inline | `<forma-fault-inline>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | pattern-contrast.spec.mjs | fault, validation-message, fault-summary, fault-notification |
+| Fault notification | `<forma-fault-notification>` | Faults and recovery | implemented | complete | 4 | 1 | yes | yes | yes | aegis-faults.spec.mjs | toast, fault-banner, fault-inline, fault |
+| Fault reference | `<forma-fault-reference>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | identifier, fault-details, fault |
+| Fault summary | `<forma-fault-summary>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | aegis-faults.spec.mjs | validation-summary, fault-inline, fault |
+| Recovery actions | `<forma-recovery-actions>` | Faults and recovery | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, command-group, fault, fault-blocking |
+| Action menu | `<forma-menu>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | surface-fade.spec.mjs | popover, overflow-command-disclosure, command-group, command-palette, select |
+| Dialog | `<forma-dialog>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | css-source.test.mjs, overlay-motion.spec.mjs | flyout, popover, fault-blocking, button, toast |
+| Disclosure | `<forma-disclosure>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | progressive-motion.spec.mjs | overview-disclosure, overflow-command-disclosure, tabs, popover |
+| Flyout | `<forma-flyout>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | css-source.test.mjs, flyout-containment.spec.mjs, overlay-motion.spec.mjs | dialog, sidebar, split-pane, popover, mobile-action-bar |
+| Overview disclosure | `<forma-overview-disclosure>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | generic only | disclosure, verification-frame, state-survivability, status-lozenge, freshness |
+| Popover | `<forma-popover>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | surface-fade.spec.mjs | tooltip, menu, dialog, disclosure |
+| Tooltip / contextual hint | `<forma-tooltip>` | Overlays and disclosure | implemented | complete | 3 | 1 | yes | yes | yes | surface-fade.spec.mjs, tooltip.spec.mjs | popover, text-field, visually-hidden, callout |
+| Bounded overflow | `<forma-bounded-overflow>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | dense-ledger, comparison-grid, data-grid, code-sample |
+| Cluster | `<forma-cluster>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | stack, command-group, status-lozenge, switcher |
+| Container | `<forma-container>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | measure, section, marketing-shell, prose |
+| Form row | `<forma-form-row>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | text-field, date-time-field, grid, stack, validation-message |
+| Frame | `<forma-frame>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | workflow-package.test.mjs | grid, diagram, image-choice |
+| Grid | `<forma-grid>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | responsive-grid, mosaic, dashboard-grid, card-grid, character-grid |
+| Landmark region | `<forma-landmark-region>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | workspace-shell, navigation-shell, site-header, alert |
+| Measure | `<forma-measure>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | prose, container, stack |
+| Mosaic | `<forma-mosaic>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | responsive-grid, grid, card-grid |
+| Priority stack | `<forma-priority-stack>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | focus-stage, responsive-grid, switcher, stack |
+| Rail | `<forma-rail>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | sidebar, focus-stage, switcher, workspace-shell |
+| Responsive grid | `<forma-responsive-grid>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | grid, mosaic, priority-stack, dashboard-grid |
+| Section | `<forma-section>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | section-heading, container, hero, surface |
+| Sidebar | `<forma-sidebar>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | composition.spec.mjs | rail, switcher, split-pane, workspace-shell |
+| Split | `<forma-split>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | switcher, hero, split-pane, container |
+| Stack | `<forma-stack>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | cluster, grid, surface, prose |
+| Surface | `<forma-surface>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | conformance-package.test.mjs, css-source.test.mjs, dist-css.test.mjs, forced-colors-projection.spec.mjs, pattern-contrast.spec.mjs, type-roles.spec.mjs, word-integrity.spec.mjs | card-grid, callout, preview-surface, stack |
+| Switcher | `<forma-switcher>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | sidebar, rail, split, cluster |
+| Application identity | `<forma-app-identity>` | Workspaces and shells | implemented | complete | 5 | 1 | yes | yes | yes | ais-001.spec.mjs | startup, navigation-shell, site-header |
+| Dashboard grid | `<forma-dashboard-grid>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | causa-representative.spec.mjs | metric-card, responsive-grid, mosaic, work-queue |
+| Focus stage | `<forma-focus-stage>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | split-pane, rail, workspace-shell, preview-surface |
+| Master/detail workspace | `<forma-master-detail>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | data-grid, work-queue, split-pane, record-header |
+| Preview surface | `<forma-preview-surface>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, readiness-checklist, verification-frame, focus-stage |
+| Record header | `<forma-record-header>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | layout-reliability.spec.mjs | section-heading, menu, mobile-action-bar, master-detail, status-lozenge |
+| Resizable split pane | `<forma-resizable-split-pane>` | Workspaces and shells | implemented | complete | 4 | 1 | yes | yes | yes | direct-manipulation.spec.mjs | split-pane, reorder-states, workspace-shell, flyout |
+| Split pane | `<forma-split-pane>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | causa-representative.spec.mjs, direct-manipulation.spec.mjs | resizable-split-pane, sidebar, switcher, focus-stage, workspace-shell |
+| Workspace shell | `<forma-workspace-shell>` | Workspaces and shells | implemented | complete | 4 | 1 | yes | yes | yes | generic only | navigation-shell, master-detail, split-pane, focus-stage, landmark-region |
+| Active filter summary | `<forma-active-filter-summary>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | collection-toolbar, scope-trail, empty-state, status-lozenge |
+| Collection toolbar | `<forma-collection-toolbar>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | active-filter-summary, search, data-grid, flyout, pagination |
+| Comparison grid | `<forma-comparison-grid>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | comparison-pairs, dense-ledger, bounded-overflow, data-grid |
+| Comparison pairs | `<forma-comparison-pairs>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, comparison-grid, conflict-review, verification-frame |
+| Data grid | `<forma-data-grid>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | operational-mobile.spec.mjs | dense-ledger, collection-toolbar, comparison-grid, pagination, bounded-overflow |
+| Dense ledger | `<forma-dense-ledger>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | generic only | data-grid, bounded-overflow, comparison-grid, key-value-list |
+| Diff viewer | `<forma-diff-viewer>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | comparison-pairs, conflict-review, timeline, key-value-list |
+| Evidence relationship | `<forma-evidence-relationship>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | provenance-trail, relationship-index, security-evidence-chain, freshness |
+| Feed item | `<forma-feed-item>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | generic only | timeline, work-queue, toast, status-lozenge |
+| Identifier & critical value | `<forma-identifier>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | visual-engineering-verification.spec.mjs | verification-frame, key-value-list, code-sample, text-roles |
+| Key-value list | `<forma-key-value-list>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | facts, relationship-index, comparison-pairs, data-grid, record-header |
+| Metric card | `<forma-metric-card>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | value-change-motion.spec.mjs | metric-value-change, dashboard-grid, freshness, key-value-list, progress-bar |
+| Metric value change | `<forma-metric-value-change>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | metric-card, progress-bar, operation-status, freshness |
+| Path summary | `<forma-path-summary>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | relationship-index, provenance-trail, evidence-relationship, diagram |
+| Provenance trail | `<forma-provenance-trail>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-evidence-chain, metric-card, evidence-relationship, timeline |
+| Relationship index | `<forma-relationship-index>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | path-summary, diagram, key-value-list, hierarchy-tree |
+| Reorder states | `<forma-reorder-states>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | direct-manipulation.spec.mjs, machine-operability.spec.mjs | ranking, lane-board, resizable-split-pane, allocation |
+| Timeline | `<forma-timeline>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | feed-item, provenance-trail, steps, diff-viewer |
+| Work queue | `<forma-work-queue>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | feed-item, obligation-panel, readiness-checklist, operation-status |
+| Diagram | `<forma-diagram>` | Workflow and diagrams | implemented | complete | 6 | 1 | yes | yes | yes | diagram-m2.spec.mjs, diagram-nontext-contrast.spec.mjs, diagram.spec.mjs, workflow-embed.spec.mjs, workflow-static.spec.mjs | lane-board, spatial-canvas, provenance-trail, relationship-index |
+| Lane board | `<forma-lane-board>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | generic only | work-queue, ranking, reorder-states, diagram |
+| Spatial canvas | `<forma-spatial-canvas>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | machine-operability.spec.mjs | diagram, scope-trail, relationship-index, bounded-overflow |
+| Character grid | `<forma-character-grid>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | character-grid-3270.spec.mjs, character-grid-field.spec.mjs, character-grid-helpers.mjs, character-grid-keys-status.spec.mjs, character-grid-reveal.spec.mjs, character-grid-selection.spec.mjs, character-grid-verification.spec.mjs, character-grid-workflow.spec.mjs, character-grid.spec.mjs | character-grid-field, character-grid-keys, character-grid-status, character-grid-3270, data-grid |
+| Character grid 3270 profile | `<forma-character-grid-3270>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | generic only | character-grid, character-grid-workflow, character-grid-status |
+| Character grid field | `<forma-character-grid-field>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | generic only | character-grid, character-grid-selection, character-grid-status, text-field |
+| Character grid keys | `<forma-character-grid-keys>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | generic only | character-grid, character-grid-status, command-group, command-palette |
+| Character grid reveal | `<forma-character-grid-reveal>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | generic only | character-grid, character-grid-workflow, skeleton |
+| Character grid selection | `<forma-character-grid-selection>` | Command and keyboard-first | implemented | complete | 3 | 1 | yes | yes | yes | generic only | character-grid-field, character-grid, data-grid |
+| Character grid status | `<forma-character-grid-status>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | generic only | character-grid, character-grid-field, character-grid-keys, alert |
+| Character grid workflow | `<forma-character-grid-workflow>` | Command and keyboard-first | implemented | complete | 3 | 1 | yes | yes | yes | generic only | character-grid-3270, character-grid-keys, character-grid-status, wizard |
+| Command palette | `<forma-command-palette>` | Command and keyboard-first | implemented | complete | 4 | 1 | yes | yes | yes | operational-mobile.spec.mjs | dialog, menu, combobox, search |
+| Composer | `<forma-composer>` | Human–agent interaction | implemented | complete | 3 | 1 | yes | yes | yes | generic only | conversation, understanding, textarea, file-upload |
+| Conversation | `<forma-conversation>` | Human–agent interaction | implemented | complete | 3 | 1 | yes | yes | yes | generic only | composer, understanding, handoff-summary, timeline |
+| Handoff summary | `<forma-handoff-summary>` | Human–agent interaction | implemented | complete | 3 | 1 | yes | yes | yes | generic only | understanding, verification-frame, conversation, facts |
+| Understanding review | `<forma-understanding>` | Human–agent interaction | implemented | complete | 3 | 1 | yes | yes | yes | generic only | composer, conflict-review, readiness-checklist, handoff-summary |
+| Attention path | `<forma-attention-path>` | Attention and verification | implemented | complete | 3 | 1 | yes | yes | yes | generic only | emphasis-budget, verification-frame, overview-disclosure, priority-stack |
+| Emphasis budget | `<forma-emphasis-budget>` | Attention and verification | implemented | complete | 3 | 1 | yes | yes | yes | emphasis-budget.spec.mjs | attention-path, verification-frame, priority-stack, callout |
+| Verification frame | `<forma-verification-frame>` | Attention and verification | implemented | complete | 3 | 1 | yes | yes | yes | visual-engineering-verification.spec.mjs | identifier, attention-path, readiness-checklist, understanding |
+| Security blockers | `<forma-security-blockers>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-posture, security-unknown, security-invariant-result, obligation-panel |
+| Security evidence age | `<forma-security-evidence-age>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | freshness, security-evidence-chain, security-state-matrix |
+| Security evidence chain | `<forma-security-evidence-chain>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | provenance-trail, evidence-relationship, security-invariant-result |
+| Security exception | `<forma-security-exception>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-blockers, security-invariant-result, security-unknown |
+| Security invariant result | `<forma-security-invariant-result>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-evidence-chain, security-state-matrix, security-exception, security-unknown |
+| Security posture | `<forma-security-posture>` | Security posture | implemented | complete | 4 | 1 | yes | yes | yes | generic only | security-blockers, security-state-matrix, security-unknown, status-lozenge |
+| Security state matrix | `<forma-security-state-matrix>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-posture, data-grid, metric-card, security-trend |
+| Security trend | `<forma-security-trend>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-state-matrix, metric-value-change, security-evidence-age |
+| Security unknown | `<forma-security-unknown>` | Security posture | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-blockers, security-invariant-result, obligation-panel, operation-status |
+| Badge | `<forma-badge>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing.spec.mjs | status-lozenge, facts, hero |
+| Call to action | `<forma-cta>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing-containment.spec.mjs | hero, button, section |
+| Callout | `<forma-callout>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | callout.spec.mjs | prose, alert, cta |
+| Card grid | `<forma-card-grid>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, namespace-migrator.test.mjs, site-css-policy.test.mjs, marketing-containment.spec.mjs, marketing.spec.mjs | facts, entry-index, metric-card, surface |
+| Code sample | `<forma-code-sample>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | prose, steps, diff-viewer, identifier |
+| Documentation layout | `<forma-documentation-layout>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | prose, marketing-shell, sidebar, rail |
+| Entry index | `<forma-entry-index>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | card-grid, steps, relationship-index |
+| Facts | `<forma-facts>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | card-grid, key-value-list, metric-card, hero |
+| Hero | `<forma-hero>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | section-heading, facts, text-roles, split |
+| Marketing shell | `<forma-marketing-shell>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing.spec.mjs, type-roles.spec.mjs | site-header, site-footer, skip-link, documentation-layout, workspace-shell |
+| Prose | `<forma-prose>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | callout, code-sample, documentation-layout, measure |
+| Section heading | `<forma-section-heading>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hero, section, text-roles |
+| Site footer | `<forma-site-footer>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | site-header, marketing-shell, cta |
+| Site header | `<forma-site-header>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | marketing-shell, site-footer, navigation-shell, skip-link |
+| Steps | `<forma-steps>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-containment.spec.mjs | wizard, timeline, entry-index, code-sample |
+| Icon | `<forma-icon>` | Utilities | implemented | complete | 3 | 1 | yes | yes | yes | icons.test.mjs, icons.spec.mjs | button, status-lozenge, visually-hidden |
+| Text roles | `<forma-text-roles>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | section-heading, hero, prose, callout |
+| Visually hidden | `<forma-visually-hidden>` | Utilities | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skip-link, tooltip, text-roles |
 
 ## Categories
 
@@ -225,24 +225,24 @@ These appear in requirements but have no markup contract yet, so they have no ca
 | Component | Family | Priority | Requirement | Note |
 | --- | --- | --- | --- | --- |
 | Breadcrumbs | Navigation | P0 | requirements/COMPONENT-CATALOG.md §4 Breadcrumbs | Record header and scope trail carry breadcrumb-like navigation today; no standalone styled pattern. |
-| Application shell | Workspaces and shells | P0 | requirements/COMPONENT-CATALOG.md §4 Application shell (.ef-app-shell) | workspace-shell and navigation-shell cover the regions; .ef-app-shell is not implemented. |
+| Application shell | Workspaces and shells | P0 | requirements/COMPONENT-CATALOG.md §4 Application shell (.forma-app-shell) | workspace-shell and navigation-shell cover the regions; .forma-app-shell is not implemented. |
 | Data table styling | Data display | P0 | requirements/COMPONENT-CATALOG.md §7 Data table styling | Plain <table> has no Forma styling outside dense-ledger, data-grid and character-grid. |
 | Tag / chip | Selection and choice | P0 | requirements/COMPONENT-CATALOG.md §9 Content and utility | badge and status-lozenge cover static labels; no removable or selectable chip. |
 | Avatar | Data display | P0 | requirements/COMPONENT-CATALOG.md §9 Content and utility | — |
 | Icon and icon button | Actions | P0 | requirements/COMPONENT-CATALOG.md §9 Content and utility | Icon-only buttons are composed from button + visually-hidden text today. |
-| Button variants (primary, destructive) and async action button | Actions | P0/P1 | requirements/COMPONENT-CATALOG.md §6 Async action button pattern | Application-layer buttons have one visual style; data-ef-variant="primary" exists only inside the marketing .ef-site scope. |
+| Button variants (primary, destructive) and async action button | Actions | P0/P1 | requirements/COMPONENT-CATALOG.md §6 Async action button pattern | Application-layer buttons have one visual style; data-forma-variant="primary" exists only inside the marketing .forma-site scope. |
 | Keyboard shortcut display | Command and keyboard-first | P0 | requirements/COMPONENT-CATALOG.md §9 Content and utility | <kbd> is unstyled outside command-palette. |
 | Separator / divider | Layout primitives | P0 | requirements/COMPONENT-CATALOG.md §1, §8, §9 | — |
-| Inline message | Feedback and status | P0 | requirements/COMPONENT-CATALOG.md §6 Feedback and status (ef-inline-message) | validation-message and alert cover most uses. |
-| Progress circle | Feedback and status | P0 | requirements/COMPONENT-CATALOG.md §6 Feedback and status (ef-progress-circle) | — |
+| Inline message | Feedback and status | P0 | requirements/COMPONENT-CATALOG.md §6 Feedback and status (forma-inline-message) | validation-message and alert cover most uses. |
+| Progress circle | Feedback and status | P0 | requirements/COMPONENT-CATALOG.md §6 Feedback and status (forma-progress-circle) | — |
 | Field invalid, disabled and read-only styling | Form inputs | P0 | requirements/COMPONENT-CATALOG.md §1 Native text inputs | Native inputs, textareas and selects have no Forma styling for :disabled, :read-only, [aria-invalid] or :user-invalid (src/styles/foundations.css). Found while documenting text-field. |
 | Settings list row | Layout primitives | candidate | catalog/compositions/mobile-settings.mjs | The Mobile settings composition uses plain links for navigation rows. Evidence for a reusable row primitive; not yet a requirement. |
-| Multi-range slider | Form inputs | P1 | requirements/COMPONENT-CATALOG.md §2 Multi-range slider (.ef-range-slider) | range-entry provides direct endpoint entry. |
-| Multiselect | Selection and choice | P1 | requirements/COMPONENT-CATALOG.md §2 Multiselect (.ef-multiselect) | — |
+| Multi-range slider | Form inputs | P1 | requirements/COMPONENT-CATALOG.md §2 Multi-range slider (.forma-range-slider) | range-entry provides direct endpoint entry. |
+| Multiselect | Selection and choice | P1 | requirements/COMPONENT-CATALOG.md §2 Multiselect (.forma-multiselect) | — |
 | Date picker and time picker | Form inputs | P1 | requirements/COMPONENT-CATALOG.md §2 Date picker, Time and date-time | date-time-field and date-range use native inputs and pickers. |
-| Side navigation | Navigation | P1 | requirements/COMPONENT-CATALOG.md §4 Side navigation (.ef-side-nav) | — |
-| Toolbar | Actions | P1 | requirements/COMPONENT-CATALOG.md §4 Toolbar (.ef-toolbar) | command-group and collection-toolbar cover grouped commands. |
-| Context menu | Overlays and disclosure | P1 | requirements/COMPONENT-CATALOG.md §5 Context menu (.ef-context-menu) | — |
+| Side navigation | Navigation | P1 | requirements/COMPONENT-CATALOG.md §4 Side navigation (.forma-side-nav) | — |
+| Toolbar | Actions | P1 | requirements/COMPONENT-CATALOG.md §4 Toolbar (.forma-toolbar) | command-group and collection-toolbar cover grouped commands. |
+| Context menu | Overlays and disclosure | P1 | requirements/COMPONENT-CATALOG.md §5 Context menu (.forma-context-menu) | — |
 | Drawer / sheet (nonmodal, bottom) | Overlays and disclosure | P1 | requirements/COMPONENT-CATALOG.md §5 Drawer / sheet | flyout is the modal left/right baseline. |
 | Toggletip | Overlays and disclosure | P1 | requirements/COMPONENT-CATALOG.md §5 Toggletip | tooltip opens on click/tap/keyboard today. |
 | Coachmark / guided tour | Overlays and disclosure | P1 | requirements/COMPONENT-CATALOG.md §5 Coachmark | — |
@@ -250,7 +250,7 @@ These appear in requirements but have no markup contract yet, so they have no ca
 | Filter, sort and query builders; bulk action bar; list and virtual list | Data display | P1/P2 | requirements/COMPONENT-CATALOG.md §7 | — |
 | Meter, copyable field, expandable text, relative time | Data display | P1 | requirements/COMPONENT-CATALOG.md §9 P1 | — |
 | Tag / token input and color picker | Form inputs | P2 | requirements/COMPONENT-CATALOG.md §2 | — |
-| Tree navigation and tree grid | Navigation | P2 | requirements/COMPONENT-CATALOG.md §4, §7 (.ef-tree) | hierarchy-tree uses native nesting and disclosure. |
+| Tree navigation and tree grid | Navigation | P2 | requirements/COMPONENT-CATALOG.md §4, §7 (.forma-tree) | hierarchy-tree uses native nesting and disclosure. |
 | Editable data grid, transfer list, editable key/value collection, dockable panels | Data display | P2 | requirements/COMPONENT-CATALOG.md §7, §8, §11 | — |
 | Visualization primitives and chart accessibility contract | Data display | P1/P2 | requirements/COMPONENT-CATALOG.md §10 | — |
 
@@ -258,19 +258,19 @@ These appear in requirements but have no markup contract yet, so they have no ca
 
 Classes used by canonical patterns that no Forma CSS rule styles. They are part of the published markup and are accepted in examples, but they carry no presentation:
 
-- `.ef-collection-toolbar__sort`
-- `.ef-collection-toolbar__view`
-- `.ef-fault-banner__marker`
-- `.ef-feed-item__source`
-- `.ef-freshness__state`
-- `.ef-landmark-region__status`
-- `.ef-metric-card__context`
-- `.ef-mobile-action-bar__secondary`
-- `.ef-pagination__control`
-- `.ef-spinner__label`
-- `.ef-split-pane__primary`
-- `.ef-split-pane__secondary`
-- `.ef-tooltip-context`
+- `.forma-collection-toolbar__sort`
+- `.forma-collection-toolbar__view`
+- `.forma-fault-banner__marker`
+- `.forma-feed-item__source`
+- `.forma-freshness__state`
+- `.forma-landmark-region__status`
+- `.forma-metric-card__context`
+- `.forma-mobile-action-bar__secondary`
+- `.forma-pagination__control`
+- `.forma-spinner__label`
+- `.forma-split-pane__primary`
+- `.forma-split-pane__secondary`
+- `.forma-tooltip-context`
 
 ## Known issues found while documenting
 
@@ -278,46 +278,45 @@ Recorded from reading every pattern and its CSS during the catalog upgrade (WI-0
 
 | Component | Issue | Location |
 | --- | --- | --- |
-| tokens (choice cards, fault, file-upload, conversation, master-detail, surface, security-evidence-age) | --ef-color-text-secondary (#686d68) on --ef-color-surface-secondary (#e3e0d7) is 4.0:1 and --ef-color-accent-primary (#905831) on the same surface is 4.38:1, both below WCAG AA 4.5:1. Components that put secondary text or links on the secondary surface inherit the failure. Reproduced with dist/all.css alone. | tokens/echelon.tokens.json; src/styles/components.css; src/styles/assessment.css |
 | alert, fault-banner, fault-notification, toast | aside elements carry role="status" or role="alert", which ARIA in HTML does not allow on aside (axe aria-allowed-role). | patterns/alert.html, patterns/fault-banner.html, patterns/fault-notification.html, patterns/toast.html |
 | text-field, textarea, date-time-field, select | Native inputs have no Forma styling for :disabled, :read-only, [aria-invalid] or :user-invalid; author colors also override the browser's disabled look, so a disabled field looks enabled. | src/styles/foundations.css (input/textarea/select rule) |
-| button | Application-layer disabled buttons look enabled apart from losing hover; a.ef-button stays inline so its 44px min-block-size does not apply; primary/destructive variants exist only inside .ef-site; .ef-actions ships only in the marketing stylesheet. | src/styles/foundations.css:59-90; src/marketing/components.css:191 |
-| popover, menu, tooltip | Surfaces have margin: 0 and no anchor positioning fallback, so without CSS anchor positioning they open at the viewport's top-left corner. | src/styles/components.css (.ef-popover, .ef-menu, .ef-tooltip__surface) |
-| overflow-command-disclosure, hierarchical-choice, hierarchy-tree, navigation-shell, fault-details | summary elements use display: flex, which removes the native disclosure marker; collapsed and expanded look the same. | src/styles/components.css (.ef-overflow-commands > summary, .ef-hierarchy-tree, .ef-navigation-shell__compact, .ef-fault-details > summary); src/styles/assessment.css (.ef-hierarchy summary) |
-| stack | Spacing is doubled: the foundation gap and the component-layer margin-block-start both apply (32px by default, 24px with data-density=compact). | src/styles/foundations.css (.ef-stack); src/styles/components.css (.ef-stack > * + *) |
-| cluster, switcher | --ef-cluster-gap is overridden by the component layer's --ef-cluster-space; --ef-switcher-threshold is declared but never used. | src/styles/components.css (.ef-cluster, .ef-switcher) |
-| surface | Links inside .ef-surface use the primary accent on the secondary surface at about 4.38:1, below 4.5:1. | src/styles/foundations.css (.ef-surface) |
-| section | .ef-section > * + * child rhythm is not scoped to .ef-site, so application pages loading all.css get marketing spacing. | src/marketing/layouts.css:56 |
-| container | .ef-breakout does not break out of a narrower container; it is min(100%, 90rem) of its parent. | src/styles/foundations.css (.ef-breakout) |
+| button | Application-layer disabled buttons look enabled apart from losing hover; a.forma-button stays inline so its 44px min-block-size does not apply; primary/destructive variants exist only inside .forma-site; .forma-actions ships only in the marketing stylesheet. | src/styles/foundations.css:59-90; src/marketing/components.css:191 |
+| popover, menu, tooltip | Surfaces have margin: 0 and no anchor positioning fallback, so without CSS anchor positioning they open at the viewport's top-left corner. | src/styles/components.css (.forma-popover, .forma-menu, .forma-tooltip__surface) |
+| overflow-command-disclosure, hierarchical-choice, hierarchy-tree, navigation-shell, fault-details | summary elements use display: flex, which removes the native disclosure marker; collapsed and expanded look the same. | src/styles/components.css (.forma-overflow-commands > summary, .forma-hierarchy-tree, .forma-navigation-shell__compact, .forma-fault-details > summary); src/styles/assessment.css (.forma-hierarchy summary) |
+| stack | Spacing is doubled: the foundation gap and the component-layer margin-block-start both apply (32px by default, 24px with data-density=compact). | src/styles/foundations.css (.forma-stack); src/styles/components.css (.forma-stack > * + *) |
+| cluster, switcher | --forma-cluster-gap is overridden by the component layer's --forma-cluster-space; --forma-switcher-threshold is declared but never used. | src/styles/components.css (.forma-cluster, .forma-switcher) |
+| surface | Links inside .forma-surface use the primary accent on the secondary surface at about 4.38:1, below 4.5:1. | src/styles/foundations.css (.forma-surface) |
+| section | .forma-section > * + * child rhythm is not scoped to .forma-site, so application pages loading all.css get marketing spacing. | src/marketing/layouts.css:56 |
+| container | .forma-breakout does not break out of a narrower container; it is min(100%, 90rem) of its parent. | src/styles/foundations.css (.forma-breakout) |
 | sidebar, rail, priority-stack, focus-stage | Canonical patterns place <main> inside <section>. | patterns/sidebar.html, patterns/rail.html, patterns/priority-stack.html, patterns/focus-stage.html |
-| key-value-list, diff-viewer | dd keeps the browser's 40px inline-start margin, indenting values even when stacked on phones. | src/styles/components.css (.ef-key-value-list, .ef-diff-viewer) |
-| data-grid | thead is hidden at 30rem and below, which also hides the sort buttons on phones. | src/styles/components.css (.ef-data-grid narrow rule) |
-| fault-notification, toast | Fixed bottom-right placement with physical offsets (not mirrored in RTL) and no stacking; several open notifications overlap. The documentation site contains them per example with contain: layout. | src/styles/components.css (.ef-toast, .ef-fault-notification) |
+| key-value-list, diff-viewer | dd keeps the browser's 40px inline-start margin, indenting values even when stacked on phones. | src/styles/components.css (.forma-key-value-list, .forma-diff-viewer) |
+| data-grid | thead is hidden at 30rem and below, which also hides the sort buttons on phones. | src/styles/components.css (.forma-data-grid narrow rule) |
+| fault-notification, toast | Fixed bottom-right placement with physical offsets (not mirrored in RTL) and no stacking; several open notifications overlap. The documentation site contains them per example with contain: layout. | src/styles/components.css (.forma-toast, .forma-fault-notification) |
 | fault-notification | Dismiss button shows "Close" but is named "Dismiss notification" (WCAG 2.5.3 Label in Name). | patterns/fault-notification.html |
 | fault-inline, status-lozenge, date-range, rule-builder, question, security-posture | aria-label, aria-labelledby or aria-describedby on an element with no role, which ARIA does not reliably expose. | patterns/fault-inline.html, patterns/status-lozenge.html, patterns/date-range.html, patterns/rule-builder.html, patterns/question.html, patterns/security-posture.html |
 | numeric-stepper, slider, combobox | Help text sits inside the wrapping label (becoming part of the accessible name) or is not linked with aria-describedby. | patterns/numeric-stepper.html, patterns/slider.html, patterns/combobox.html |
-| combobox | The indicator glyph overlaps long typed text; no padding is reserved for it. | src/styles/components.css (.ef-combobox__indicator) |
-| file-upload | The visually hidden file input gives no visible focus on its label.ef-button; .ef-file-upload__drop is not position: relative. | src/styles/components.css (.ef-file-upload__drop) |
-| image-choice | The selected media card differs only by border and background color (the indicator is removed). | src/styles/assessment.css (.ef-choice--media::before) |
+| combobox | The indicator glyph overlaps long typed text; no padding is reserved for it. | src/styles/components.css (.forma-combobox__indicator) |
+| file-upload | The visually hidden file input gives no visible focus on its label.forma-button; .forma-file-upload__drop is not position: relative. | src/styles/components.css (.forma-file-upload__drop) |
+| image-choice | The selected media card differs only by border and background color (the indicator is removed). | src/styles/assessment.css (.forma-choice--media::before) |
 | image-choice | The canonical pattern referenced nonexistent /path/to/*.png images. Fixed in WI-0011 with inline SVG data URIs. | patterns/image-choice.html |
-| alert, feed-item, security-posture, readiness-checklist, best-worst, selection status, range-entry, rule-builder | State attributes used by patterns are not styled: data-tone on alert, data-state="warning"/"danger" on status lozenges, readiness incomplete/warning, data-ef-state on best-worst, selection status and range-entry status, data-ef-operator on rule groups. | patterns/*.html; src/styles/*.css |
-| status-lozenge, entry-index | white-space: nowrap can overflow at 320px with long labels. | src/styles/components.css (.ef-status-lozenge); src/marketing/components.css (.ef-index__link) |
-| badge, entry-index, site-footer, navigation-shell | Link targets are about 24–34px tall rather than approximately 44px. | src/marketing/components.css (a.ef-badge, .ef-index__link, .ef-site-footer__nav a); src/styles/components.css (.ef-navigation-shell__compact) |
+| alert, feed-item, security-posture, readiness-checklist, best-worst, selection status, range-entry, rule-builder | State attributes used by patterns are not styled: data-tone on alert, data-state="warning"/"danger" on status lozenges, readiness incomplete/warning, data-forma-state on best-worst, selection status and range-entry status, data-forma-operator on rule groups. | patterns/*.html; src/styles/*.css |
+| status-lozenge, entry-index | white-space: nowrap can overflow at 320px with long labels. | src/styles/components.css (.forma-status-lozenge); src/marketing/components.css (.forma-index__link) |
+| badge, entry-index, site-footer, navigation-shell | Link targets are about 24–34px tall rather than approximately 44px. | src/marketing/components.css (a.forma-badge, .forma-index__link, .forma-site-footer__nav a); src/styles/components.css (.forma-navigation-shell__compact) |
 | navigation-shell, path-summary | aria-current (page/step) has no visual styling. | src/styles/components.css |
-| tabs | The canonical pattern's aria-controls point at panels that do not exist; unselected tabs get no hover or press feedback. | patterns/tabs.html; src/styles/components.css (.ef-tabs) |
-| wizard | The completed-step check glyph overlaps the step number; the step rail is hard-coded to four columns; the header progress has no accent color. | src/styles/components.css (.ef-wizard) |
+| tabs | The canonical pattern's aria-controls point at panels that do not exist; unselected tabs get no hover or press feedback. | patterns/tabs.html; src/styles/components.css (.forma-tabs) |
+| wizard | The completed-step check glyph overlaps the step number; the step rail is hard-coded to four columns; the header progress has no accent color. | src/styles/components.css (.forma-wizard) |
 | semantic-differential | Hard-coded to seven columns. | src/styles/assessment.css |
-| flyout | Logical inset but physical translate, so the slide direction is wrong in right-to-left pages. | src/styles/components.css (.ef-flyout) |
+| flyout | Logical inset but physical translate, so the slide direction is wrong in right-to-left pages. | src/styles/components.css (.forma-flyout) |
 | mobile-action-bar | The primary action is indistinguishable in forced colors; the pattern wraps actions in a nav landmark. | src/styles/components.css; patterns/mobile-action-bar.html |
 | command-palette | The canonical pattern is a non-modal open dialog that shows an Esc hint, but Escape only closes modal dialogs; headings are styled only as h3/h4. | patterns/command-palette.html; src/styles/components.css |
 | character-grid-selection | A validation-severity message uses role=status; requirements/CHARACTER-GRID.md says validation and error use role=alert. | patterns/character-grid-selection.html |
 | code-sample | The pre is named with aria-labelledby but has no role. | patterns/code-sample.html |
-| card-grid | A linked card's stretched ::after covers the card, so a second link or control inside it is unreachable by pointer. | src/marketing/components.css (.ef-card__link) |
-| visually-hidden | Two near-duplicate utilities (.ef-visually-hidden and .ef-sr-only) with different clipping; neither reveals on focus. | src/styles/components.css; src/styles/assessment.css |
+| card-grid | A linked card's stretched ::after covers the card, so a second link or control inside it is unreachable by pointer. | src/marketing/components.css (.forma-card__link) |
+| visually-hidden | Two near-duplicate utilities (.forma-visually-hidden and .forma-sr-only) with different clipping; neither reveals on focus. | src/styles/components.css; src/styles/assessment.css |
 | security-evidence-chain, security-posture | Default figure margin is not reset (about 40px inset at 320px); the posture blockers list has a border but no padding. | src/styles/components.css |
-| security family | requirements/TUTELA-SECURITY-RESULTS.md names classes that do not exist (ef-unknown-result, ef-exception-status, ef-evidence-chain, ef-boundary-map). | requirements/TUTELA-SECURITY-RESULTS.md |
+| security family | requirements/TUTELA-SECURITY-RESULTS.md names classes that do not exist (forma-unknown-result, forma-exception-status, forma-evidence-chain, forma-boundary-map). | requirements/TUTELA-SECURITY-RESULTS.md |
 | marketing family | requirements/MARKETING-PRESENTATION.md mentions a hover lift that the CSS does not implement (the text looks stale). | requirements/MARKETING-PRESENTATION.md |
-| workspace-shell | The inspector column and its gap are always reserved, leaving an empty column when a shell has no inspector. | src/styles/components.css (.ef-workspace-shell) |
+| workspace-shell | The inspector column and its gap are always reserved, leaving an empty column when a shell has no inspector. | src/styles/components.css (.forma-workspace-shell) |
 | lane-board | The board scrolls sideways and has a :focus-visible style, but the canonical pattern has no tabindex, so keyboard users cannot focus it to scroll. | patterns/lane-board.html |
-| key-value-list | Reflows only at a viewport breakpoint, so in a narrow column on a wide screen it can overflow by a few pixels. | src/styles/components.css (.ef-key-value-list) |
+| key-value-list | Reflows only at a viewport breakpoint, so in a narrow column on a wide screen it can overflow by a few pixels. | src/styles/components.css (.forma-key-value-list) |
 | composer, spatial-canvas, emphasis-budget | composer's submit button has no form; aria-label on role-less divs in composer and spatial-canvas; emphasis-budget pattern contains literal \n text nodes. | patterns/composer.html, patterns/spatial-canvas.html, patterns/emphasis-budget.html |

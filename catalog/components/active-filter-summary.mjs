@@ -29,32 +29,32 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Fixed scope with removable filters",
       description: "The workspace scope is shown but has no remove button because it is set by the page, not by the user's query. The date range and status filters can be removed individually.",
-      html: `<ef-active-filter-summary class="ef-component-tag">
-  <section class="ef-active-filter-summary" aria-labelledby="active-filter-summary-fixed-scope-title">
-    <div class="ef-active-filter-summary__heading">
+      html: `<forma-active-filter-summary class="forma-component-tag">
+  <section class="forma-active-filter-summary" aria-labelledby="active-filter-summary-fixed-scope-title">
+    <div class="forma-active-filter-summary__heading">
       <h2 id="active-filter-summary-fixed-scope-title">Showing invoices matching</h2>
       <button type="button">Clear filters</button>
     </div>
-    <ul class="ef-active-filter-summary__items">
+    <ul class="forma-active-filter-summary__items">
       <li><span>Workspace: Finance EU (fixed)</span></li>
       <li><span>Due: 1–30 Sep 2026</span><button type="button" aria-label="Remove Due: 1–30 Sep 2026 filter">Remove</button></li>
       <li><span>Status: Overdue</span><button type="button" aria-label="Remove Status: Overdue filter">Remove</button></li>
     </ul>
   </section>
-</ef-active-filter-summary>`
+</forma-active-filter-summary>`
     },
     {
       id: "no-active-filters",
       title: "No filters applied",
       description: "After Clear all, the summary stays in place and says that no filters are applied, rather than disappearing and shifting the results up. The Clear all button is not rendered because there is nothing to clear.",
-      html: `<ef-active-filter-summary class="ef-component-tag">
-  <section class="ef-active-filter-summary" aria-labelledby="active-filter-summary-no-active-filters-title">
-    <div class="ef-active-filter-summary__heading">
+      html: `<forma-active-filter-summary class="forma-component-tag">
+  <section class="forma-active-filter-summary" aria-labelledby="active-filter-summary-no-active-filters-title">
+    <div class="forma-active-filter-summary__heading">
       <h2 id="active-filter-summary-no-active-filters-title">Active filters</h2>
     </div>
     <p>No filters applied. Showing all 1,284 records.</p>
   </section>
-</ef-active-filter-summary>`
+</forma-active-filter-summary>`
     },
     {
       id: "mobile-many-filters",
@@ -70,13 +70,13 @@ export default {
           "Remove buttons keep Forma's base button sizing (at least 2.75rem tall with 1rem inline padding), so each is a comfortable touch target."
         ]
       },
-      html: `<ef-active-filter-summary class="ef-component-tag">
-  <section class="ef-active-filter-summary" aria-labelledby="active-filter-summary-mobile-many-filters-title">
-    <div class="ef-active-filter-summary__heading">
+      html: `<forma-active-filter-summary class="forma-component-tag">
+  <section class="forma-active-filter-summary" aria-labelledby="active-filter-summary-mobile-many-filters-title">
+    <div class="forma-active-filter-summary__heading">
       <h2 id="active-filter-summary-mobile-many-filters-title">Active filters</h2>
       <button type="button">Clear all</button>
     </div>
-    <ul class="ef-active-filter-summary__items">
+    <ul class="forma-active-filter-summary__items">
       <li><span>Status: Awaiting reply</span><button type="button" aria-label="Remove Status: Awaiting reply filter">Remove</button></li>
       <li><span>Owner: Me</span><button type="button" aria-label="Remove Owner: Me filter">Remove</button></li>
       <li><span>Product: Reporting and analytics exports</span><button type="button" aria-label="Remove Product: Reporting and analytics exports filter">Remove</button></li>
@@ -84,19 +84,19 @@ export default {
       <li><span>Updated: Last 7 days</span><button type="button" aria-label="Remove Updated: Last 7 days filter">Remove</button></li>
     </ul>
   </section>
-</ef-active-filter-summary>`
+</forma-active-filter-summary>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-active-filter-summary", values: "id of the heading", default: "—", description: "Names the summary region." },
+      { name: "aria-labelledby", on: "section.forma-active-filter-summary", values: "id of the heading", default: "—", description: "Names the summary region." },
       { name: "aria-label", on: "remove button", values: "\"Remove <filter> filter\"", default: "—", description: "Identifies which filter a Remove button removes; the visible label alone is ambiguous." },
       { name: "type", on: "button", values: "button", default: "—", description: "Remove and Clear all are native buttons handled by the application." }
     ],
     hooks: {
-      "ef-active-filter-summary": "Root section; a grid with 0.5rem gaps.",
-      "ef-active-filter-summary__heading": "Wrapping flex row with the heading (margin removed from its `h2`) and the Clear all action spaced apart.",
-      "ef-active-filter-summary__items": "Unstyled list laid out as a wrapping flex row; each `li` is a flex pair of filter text and remove button, allowed to wrap at 30rem and below."
+      "forma-active-filter-summary": "Root section; a grid with 0.5rem gaps.",
+      "forma-active-filter-summary__heading": "Wrapping flex row with the heading (margin removed from its `h2`) and the Clear all action spaced apart.",
+      "forma-active-filter-summary__items": "Unstyled list laid out as a wrapping flex row; each `li` is a flex pair of filter text and remove button, allowed to wrap at 30rem and below."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through Clear all and each remove button in order." },
@@ -108,7 +108,7 @@ export default {
     form: "Not a form control. The filter values live in the application's query state."
   },
   states: [
-    { name: "Filters applied", how: "li items in .ef-active-filter-summary__items", description: "One item per refinement, each with a remove button when removable." },
+    { name: "Filters applied", how: "li items in .forma-active-filter-summary__items", description: "One item per refinement, each with a remove button when removable." },
     { name: "Fixed scope", how: "li without a remove button", description: "Visible but not removable here; say so in the text." },
     { name: "No filters", how: "application replaces the list with text", description: "The summary states that no filters are applied." }
   ],

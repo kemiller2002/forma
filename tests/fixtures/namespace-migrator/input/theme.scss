@@ -1,0 +1,2 @@
+$accent: var(--ef-color-accent-primary);
+.ef-card { &__title { color: $accent; } }

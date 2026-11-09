@@ -82,7 +82,7 @@ When Ordo/application state must affect presentation, the application may render
 
 - native attributes such as `disabled`, `checked`, `selected`, `open`;
 - semantic ARIA attributes when appropriate;
-- documented `data-ef-state` values when no native state represents the concept.
+- documented `data-forma-state` values when no native state represents the concept.
 
 CSS may render those states but shall not infer their legality.
 
@@ -215,7 +215,7 @@ The consuming application maps Aegis presentation intent to Forma markup:
 
 ### AEGIS-LIMEN-003 Recovery capability identity
 
-Recovery controls may expose exact Aegis capability identity in `data-ef-aegis-capability`. Limen may observe native click events and translate them into typed recovery requests.
+Recovery controls may expose exact Aegis capability identity in `data-forma-aegis-capability`. Limen may observe native click events and translate them into typed recovery requests.
 
 The presence of the attribute is not authorization. Aegis/Ordo/application state is revalidated before any recovery effect.
 
@@ -232,7 +232,7 @@ See `requirements/AEGIS-FAULT-PRESENTATION.md` and `docs/AEGIS-INTEGRATION.md`.
 ## CharacterGrid integration
 
 ### GRID-LIMEN-001 Action keys
-Forma presents `.ef-character-grid__key` buttons with `data-ef-action`. Limen may map physical keys (F1–F24, Escape, …) to those buttons and add `aria-keyshortcuts` for mappings it installs. Submitting keys report their action through the native `SubmitEvent.submitter`.
+Forma presents `.forma-character-grid__key` buttons with `data-forma-action`. Limen may map physical keys (F1–F24, Escape, …) to those buttons and add `aria-keyshortcuts` for mappings it installs. Submitting keys report their action through the native `SubmitEvent.submitter`.
 
 ### GRID-LIMEN-002 Enter, Clear, Reset
 Enter, PF, PA, and named keys are application requests. Clear's local erase and/or host notification is application behavior. Reset is local recovery (`type="button"`) and sends nothing. Forma never uses `type="reset"` for either.
@@ -241,6 +241,6 @@ Enter, PF, PA, and named keys are application requests. Clear's local erase and/
 Screen transitions, initial focus, input inhibition, and optional wraparound Tab are Limen/application behavior. Whether a transition is legal is Ordo/application-domain state.
 
 ### GRID-LIMEN-004 SequentialReveal
-Limen starts a reveal only for new content, completes it (`data-ef-reveal="complete"`) on any input without consuming that input, and replays it only on explicit request. Reduced motion is enforced by Forma CSS and must not be overridden.
+Limen starts a reveal only for new content, completes it (`data-forma-reveal="complete"`) on any input without consuming that input, and replays it only on explicit request. Reduced motion is enforced by Forma CSS and must not be overridden.
 
 See `requirements/CHARACTER-GRID.md` and `docs/CHARACTER-GRID-AUTHORING.md`.

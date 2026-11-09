@@ -35,68 +35,68 @@ export default {
       },
       title: "Settings panel",
       description: "A stack arranges a heading, two switches and a save action inside a surface. The stack owns the vertical relationship; each switch keeps its own internal layout.",
-      html: `<ef-stack class="ef-component-tag">
-  <section class="ef-surface ef-stack" aria-labelledby="stack-settings-panel-title">
+      html: `<forma-stack class="forma-component-tag">
+  <section class="forma-surface forma-stack" aria-labelledby="stack-settings-panel-title">
     <h2 id="stack-settings-panel-title">Workspace notifications</h2>
     <p>Choose which events send you an email. Changes apply to this workspace only.</p>
-    <label class="ef-switch">
-      <input class="ef-switch__input" type="checkbox" role="switch" name="stack-settings-panel-builds" value="on" checked>
-      <span class="ef-switch__track" aria-hidden="true"></span>
-      <span class="ef-switch__text"><span class="ef-switch__label">Failed builds</span></span>
+    <label class="forma-switch">
+      <input class="forma-switch__input" type="checkbox" role="switch" name="stack-settings-panel-builds" value="on" checked>
+      <span class="forma-switch__track" aria-hidden="true"></span>
+      <span class="forma-switch__text"><span class="forma-switch__label">Failed builds</span></span>
     </label>
-    <label class="ef-switch">
-      <input class="ef-switch__input" type="checkbox" role="switch" name="stack-settings-panel-mentions" value="on">
-      <span class="ef-switch__track" aria-hidden="true"></span>
-      <span class="ef-switch__text"><span class="ef-switch__label">Mentions in review comments</span></span>
+    <label class="forma-switch">
+      <input class="forma-switch__input" type="checkbox" role="switch" name="stack-settings-panel-mentions" value="on">
+      <span class="forma-switch__track" aria-hidden="true"></span>
+      <span class="forma-switch__text"><span class="forma-switch__label">Mentions in review comments</span></span>
     </label>
   </section>
-</ef-stack>`
+</forma-stack>`
     },
     {
       id: "compact-density",
       interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Compact density for an expert form",
       description: "The same kind of content under `data-density=\"compact\"`. The posture reduces the stack gap so more fields fit on screen for repeated data entry; field order, labels and target sizes do not change.",
-      html: `<ef-stack class="ef-component-tag">
-  <form class="ef-stack" data-density="compact" aria-labelledby="stack-compact-density-title">
+      html: `<forma-stack class="forma-component-tag">
+  <form class="forma-stack" data-density="compact" aria-labelledby="stack-compact-density-title">
     <h2 id="stack-compact-density-title">Shipment details</h2>
-    <div class="ef-field">
-      <label class="ef-field__label" for="stack-compact-density-reference">Reference</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="stack-compact-density-reference">Reference</label>
       <input id="stack-compact-density-reference" name="reference" type="text" autocomplete="off">
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="stack-compact-density-carrier">Carrier</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="stack-compact-density-carrier">Carrier</label>
       <input id="stack-compact-density-carrier" name="carrier" type="text">
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="stack-compact-density-weight">Weight (kg)</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="stack-compact-density-weight">Weight (kg)</label>
       <input id="stack-compact-density-weight" name="weight" type="number" inputmode="decimal" min="0" step="0.1">
     </div>
-    <div class="ef-cluster">
+    <div class="forma-cluster">
       <button type="submit">Save shipment</button>
       <button type="reset">Clear</button>
     </div>
   </form>
-</ef-stack>`
+</forma-stack>`
     },
     {
       id: "nested-grouping",
       title: "Nested groups with relaxed outer rhythm",
       description: "An outer relaxed stack separates two groups; each group is its own tighter stack. Proximity, not borders, tells the reader which heading owns which list.",
-      html: `<ef-stack class="ef-component-tag">
-  <article class="ef-stack" data-density="relaxed" aria-labelledby="stack-nested-grouping-title">
+      html: `<forma-stack class="forma-component-tag">
+  <article class="forma-stack" data-density="relaxed" aria-labelledby="stack-nested-grouping-title">
     <h2 id="stack-nested-grouping-title">Release 4.2 checklist</h2>
-    <section class="ef-stack" data-density="compact" aria-labelledby="stack-nested-grouping-before">
+    <section class="forma-stack" data-density="compact" aria-labelledby="stack-nested-grouping-before">
       <h3 id="stack-nested-grouping-before">Before the release</h3>
       <p>Freeze the main branch and confirm the migration plan with the database owner.</p>
       <p>Run the full regression suite against staging.</p>
     </section>
-    <section class="ef-stack" data-density="compact" aria-labelledby="stack-nested-grouping-after">
+    <section class="forma-stack" data-density="compact" aria-labelledby="stack-nested-grouping-after">
       <h3 id="stack-nested-grouping-after">After the release</h3>
       <p>Watch error rates for one hour and post the summary in the release channel.</p>
     </section>
   </article>
-</ef-stack>`
+</forma-stack>`
     },
     {
       id: "mobile-account-summary",
@@ -117,10 +117,10 @@ export default {
           "Rotating to landscape only widens the children; order and spacing stay the same."
         ]
       },
-      html: `<ef-stack class="ef-component-tag">
-  <section class="ef-stack" aria-labelledby="stack-mobile-account-summary-title">
+      html: `<forma-stack class="forma-component-tag">
+  <section class="forma-stack" aria-labelledby="stack-mobile-account-summary-title">
     <h2 id="stack-mobile-account-summary-title">Account</h2>
-    <dl class="ef-key-value-list">
+    <dl class="forma-key-value-list">
       <div><dt>Owner</dt><dd>Priya Raman</dd></div>
       <div><dt>Billing email</dt><dd>accounts-payable.northwind-logistics@example.com</dd></div>
       <div><dt>Plan</dt><dd>Team, billed annually</dd></div>
@@ -128,19 +128,19 @@ export default {
     <p>Invoices are issued on the first business day of each month.</p>
     <a href="#stack-mobile-account-summary-title">Manage billing</a>
   </section>
-</ef-stack>`
+</forma-stack>`
     }
   ],
   api: {
     attributes: [
-      { name: "data-density", on: ".ef-stack", values: "relaxed | standard | compact | analytical", default: "absent (1rem gap)", description: "Contextual density posture. Sets the stack gap to 1.5rem (relaxed), 1rem (standard) or 0.5rem (compact, analytical). It is not a data-ef-* hook and never changes semantics, order or target size." },
+      { name: "data-density", on: ".forma-stack", values: "relaxed | standard | compact | analytical", default: "absent (1rem gap)", description: "Contextual density posture. Sets the stack gap to 1.5rem (relaxed), 1rem (standard) or 0.5rem (compact, analytical). It is not a data-forma-* hook and never changes semantics, order or target size." },
       { name: "aria-labelledby", on: "section / article / form", values: "id of the group heading", default: "—", description: "Names a stacked region when the element is a landmark or a named group. The stack itself adds no role." }
     ],
     hooks: {
-      "ef-stack": "Vertical flex column. Removes block margins from direct children and spaces them with a gap plus a leading margin on every child after the first.",
+      "forma-stack": "Vertical flex column. Removes block margins from direct children and spaces them with a gap plus a leading margin on every child after the first.",
       "data-density": "Density posture on the stack element. relaxed = 1.5rem, standard = 1rem, compact and analytical = 0.5rem gap (spacing primitives, so skins rescale them).",
-      "--ef-stack-gap": "Foundation-layer gap between children. Default `--ef-primitive-spacing-4` (1rem). Ignored when `data-density` is set.",
-      "--ef-stack-space": "Component-layer margin inserted before each child after the first. Default `--ef-primitive-spacing-4` (1rem). It adds to the gap, so the visible space between children is gap plus this value."
+      "--forma-stack-gap": "Foundation-layer gap between children. Default `--forma-primitive-spacing-4` (1rem). Ignored when `data-density` is set.",
+      "--forma-stack-space": "Component-layer margin inserted before each child after the first. Default `--forma-primitive-spacing-4` (1rem). It adds to the gap, so the visible space between children is gap plus this value."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through focusable children in source order, which is also the visual order." }
@@ -149,7 +149,7 @@ export default {
     form: "Not a form control. A form or fieldset may itself be the stack; submission is unaffected."
   },
   states: [
-    { name: "Default rhythm", how: "no data-density", description: "Gap from `--ef-stack-gap` plus the leading margin from `--ef-stack-space`." },
+    { name: "Default rhythm", how: "no data-density", description: "Gap from `--forma-stack-gap` plus the leading margin from `--forma-stack-space`." },
     { name: "Density posture", how: "data-density=\"relaxed | standard | compact | analytical\"", description: "Replaces the gap with the posture's spacing. The leading margin still applies." }
   ],
   accessibility: {
@@ -175,7 +175,7 @@ export default {
   ],
   guidance: {
     do: [
-      "Make the semantic container the stack (for example `section class=\"ef-stack\"`) instead of adding a wrapper div.",
+      "Make the semantic container the stack (for example `section class=\"forma-stack\"`) instead of adding a wrapper div.",
       "Use nested stacks with a tighter posture to express sub-groups by proximity."
     ],
     avoid: [

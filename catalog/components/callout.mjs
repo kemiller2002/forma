@@ -4,7 +4,7 @@ export default {
   behavior: "Site content",
   summary: "Labelled note, caution, evidence, or decision inside prose; a visible label and rule pattern carry the kind without relying on color.",
   purpose: {
-    description: "A callout marks supporting material inside long-form content that a reader must notice: a note, a caution, cited evidence or a recorded decision. Each callout starts with a visible `.ef-callout__label` naming its kind and is named by that label through `aria-labelledby`. `data-ef-callout` selects the kind; each kind has its own rule pattern (solid, heavy frame, dashed, double) so kinds stay distinct in grayscale, forced colors and print. Notes, cautions and decisions are `aside` elements; evidence is a `figure` holding a `blockquote` and a `figcaption`. Callouts have no state and no runtime.",
+    description: "A callout marks supporting material inside long-form content that a reader must notice: a note, a caution, cited evidence or a recorded decision. Each callout starts with a visible `.forma-callout__label` naming its kind and is named by that label through `aria-labelledby`. `data-forma-callout` selects the kind; each kind has its own rule pattern (solid, heavy frame, dashed, double) so kinds stay distinct in grayscale, forced colors and print. Notes, cautions and decisions are `aside` elements; evidence is a `figure` holding a `blockquote` and a `figcaption`. Callouts have no state and no runtime.",
     useWhen: [
       "A reader could skip useful context and should see it is optional (note).",
       "A consequence must be weighed before acting on the surrounding text (caution).",
@@ -18,7 +18,7 @@ export default {
     ],
     characteristics: [
       "The visible label is the primary cue; the rule pattern is the second, non-color cue; color is only a third.",
-      "Note (or no `data-ef-callout`) is a solid accent-width inline-start rule; caution adds a heavy block-start rule and a strong frame; evidence has a dashed frame; decision has a double inline-start rule.",
+      "Note (or no `data-forma-callout`) is a solid accent-width inline-start rule; caution adds a heavy block-start rule and a strong frame; evidence has a dashed frame; decision has a double inline-start rule.",
       "Callouts keep the reading measure and read in source order; nothing is floated or moved."
     ]
   },
@@ -27,41 +27,41 @@ export default {
       id: "caution-before-upgrade",
       title: "Caution before an upgrade step",
       description: "An upgrade guide where one step has a consequence. The caution sits directly after the paragraph it qualifies, with a list inside.",
-      html: `<ef-callout class="ef-component-tag">
-  <div class="ef-site">
-    <article class="ef-prose">
+      html: `<forma-callout class="forma-component-tag">
+  <div class="forma-site">
+    <article class="forma-prose">
       <h3>Upgrade to 0.4.0</h3>
       <p>Edit <code>forma.lock</code> to the new version, then run the installer with <code>--update</code>.</p>
-      <aside class="ef-callout" data-ef-callout="caution" aria-labelledby="callout-caution-before-upgrade-label">
-        <p class="ef-callout__label" id="callout-caution-before-upgrade-label">Caution</p>
+      <aside class="forma-callout" data-forma-callout="caution" aria-labelledby="callout-caution-before-upgrade-label">
+        <p class="forma-callout__label" id="callout-caution-before-upgrade-label">Caution</p>
         <p>This release renames two classes. Before deploying:</p>
         <ul><li>search the site for the old class names;</li><li>run the local-CSS policy check.</li></ul>
       </aside>
       <p>Commit the lock and any markup changes as one reviewable change.</p>
     </article>
   </div>
-</ef-callout>`
+</forma-callout>`
     },
     {
       id: "evidence-and-decision",
       title: "Evidence followed by a decision",
       description: "A design record: measured evidence as a figure with its source, then the decision it supports. Later sections can refer to the decision by its label.",
-      html: `<ef-callout class="ef-component-tag">
-  <div class="ef-site">
-    <article class="ef-prose">
+      html: `<forma-callout class="forma-component-tag">
+  <div class="forma-site">
+    <article class="forma-prose">
       <h3>Why the header is not sticky on phones</h3>
-      <figure class="ef-callout" data-ef-callout="evidence" aria-labelledby="callout-evidence-and-decision-evidence">
-        <p class="ef-callout__label" id="callout-evidence-and-decision-evidence">Evidence</p>
+      <figure class="forma-callout" data-forma-callout="evidence" aria-labelledby="callout-evidence-and-decision-evidence">
+        <p class="forma-callout__label" id="callout-evidence-and-decision-evidence">Evidence</p>
         <blockquote><p>At 390 by 844 pixels a sticky two-line header covered 14% of the viewport and hid focused links in 3 of 12 keyboard sweeps.</p></blockquote>
         <figcaption>Source: focus-sweep test, September 2026</figcaption>
       </figure>
-      <aside class="ef-callout" data-ef-callout="decision" aria-labelledby="callout-evidence-and-decision-decision">
-        <p class="ef-callout__label" id="callout-evidence-and-decision-decision">Decision</p>
+      <aside class="forma-callout" data-forma-callout="decision" aria-labelledby="callout-evidence-and-decision-decision">
+        <p class="forma-callout__label" id="callout-evidence-and-decision-decision">Decision</p>
         <p>The header sticks only at 40rem wide and 36rem tall or more.</p>
       </aside>
     </article>
   </div>
-</ef-callout>`
+</forma-callout>`
     },
     {
       id: "mobile-note",
@@ -76,29 +76,29 @@ export default {
           "There are no fixed heights, so 200% text and text-spacing overrides grow the callout instead of clipping it."
         ]
       },
-      html: `<ef-callout class="ef-component-tag">
-  <div class="ef-site">
-    <article class="ef-prose">
+      html: `<forma-callout class="forma-component-tag">
+  <div class="forma-site">
+    <article class="forma-prose">
       <p>Sites load the theme's webfonts themselves.</p>
-      <aside class="ef-callout" data-ef-callout="note" aria-labelledby="callout-mobile-note-label">
-        <p class="ef-callout__label" id="callout-mobile-note-label">Note</p>
-        <p>Fallback stacks are defined, so pages stay readable if <code>fonts.googleapis.com/css2?family=IBM+Plex+Mono</code> fails to load.</p>
+      <aside class="forma-callout" data-forma-callout="note" aria-labelledby="callout-mobile-note-label">
+        <p class="forma-callout__label" id="callout-mobile-note-label">Note</p>
+        <p>Fallback stacks are defined, so pages stay readable if <code>fonts.example.com/css2?family=Example+Mono</code> fails to load.</p>
       </aside>
     </article>
   </div>
-</ef-callout>`
+</forma-callout>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: ".ef-callout", values: "id of .ef-callout__label", default: "—", description: "Required. Names the aside or figure by its visible label, so it is announced as, for example, a \"Caution\" complementary region." },
-      { name: "id", on: ".ef-callout__label", values: "string", default: "—", description: "Referenced by the callout's aria-labelledby." }
+      { name: "aria-labelledby", on: ".forma-callout", values: "id of .forma-callout__label", default: "—", description: "Required. Names the aside or figure by its visible label, so it is announced as, for example, a \"Caution\" complementary region." },
+      { name: "id", on: ".forma-callout__label", values: "string", default: "—", description: "Referenced by the callout's aria-labelledby." }
     ],
     hooks: {
-      "ef-callout": "Root (`aside`, or `figure` for evidence). Bordered block with an accent-width inline-start rule, kept to the reading measure.",
-      "ef-callout__label": "Visible kind label in mono uppercase label type. Always the first child.",
-      "data-ef-callout": "Kind: `note` (default styling), `caution` (heavy block-start rule and strong frame), `evidence` (dashed frame) or `decision` (double inline-start rule).",
-      "--ef-callout-rule": "Color of the inline-start rule. Defaults to the tone's strong rule; caution uses the warning status color, evidence the info status color and decision the primary accent."
+      "forma-callout": "Root (`aside`, or `figure` for evidence). Bordered block with an accent-width inline-start rule, kept to the reading measure.",
+      "forma-callout__label": "Visible kind label in mono uppercase label type. Always the first child.",
+      "data-forma-callout": "Kind: `note` (default styling), `caution` (heavy block-start rule and strong frame), `evidence` (dashed frame) or `decision` (double inline-start rule).",
+      "--forma-callout-rule": "Color of the inline-start rule. Defaults to the tone's strong rule; caution uses the warning status color, evidence the info status color and decision the primary accent."
     },
     keyboard: [
       { keys: "—", action: "Not interactive. Links inside follow native link behavior." }
@@ -106,10 +106,10 @@ export default {
     events: []
   },
   states: [
-    { name: "Note", how: "data-ef-callout=\"note\" or absent", description: "Solid inline-start rule on a hairline frame." },
-    { name: "Caution", how: "data-ef-callout=\"caution\"", description: "Heavy block-start rule and full-strength frame." },
-    { name: "Evidence", how: "data-ef-callout=\"evidence\" on a figure", description: "Dashed frame with a solid inline-start rule; the quotation reads as body text with a muted source caption." },
-    { name: "Decision", how: "data-ef-callout=\"decision\"", description: "Double inline-start rule at twice the accent width." },
+    { name: "Note", how: "data-forma-callout=\"note\" or absent", description: "Solid inline-start rule on a hairline frame." },
+    { name: "Caution", how: "data-forma-callout=\"caution\"", description: "Heavy block-start rule and full-strength frame." },
+    { name: "Evidence", how: "data-forma-callout=\"evidence\" on a figure", description: "Dashed frame with a solid inline-start rule; the quotation reads as body text with a muted source caption." },
+    { name: "Decision", how: "data-forma-callout=\"decision\"", description: "Double inline-start rule at twice the accent width." },
     { name: "Forced colors and print", how: "@media (forced-colors: active), print", description: "Borders become CanvasText; in print the callout is not split across pages." }
   ],
   accessibility: {
@@ -125,7 +125,7 @@ export default {
     ]
   },
   responsive: [
-    "Capped at `--ef-layout-measure`; shrinks with its column. No breakpoints.",
+    "Capped at `--forma-layout-measure`; shrinks with its column. No breakpoints.",
     "Content wraps; there are no fixed heights."
   ],
   motion: [

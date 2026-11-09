@@ -94,15 +94,15 @@ module Validation =
 
     let private blank (s: string) = String.IsNullOrWhiteSpace s
 
-    /// Forma's light surface-primary (--ef-color-surface-primary, the
+    /// Forma's light surface-primary (--forma-color-surface-primary, the
     /// components.css fallback): the effective fill of a node without an
     /// authored fill, and the canvas behind groups and edges.
-    let defaultSurface = HexColor.create "#f2efe7"
+    let defaultSurface = HexColor.create "#fafafa"
 
     /// The default diagram surfaces a literal colour may land on: the compiled
     /// light theme and the dark theme (prefers-color-scheme: dark and
-    /// data-ef-theme="dark"), both --ef-color-surface-primary in dist/tokens.css.
-    let defaultSurfaces = [ "light", defaultSurface; "dark", HexColor.create "#171a18" ]
+    /// data-forma-theme="dark"), both --forma-color-surface-primary in dist/tokens.css.
+    let defaultSurfaces = [ "light", defaultSurface; "dark", HexColor.create "#161616" ]
 
     /// The default surfaces a document is judged against for a host theme: the
     /// pinned theme's surface only, or light and dark when the host follows
@@ -200,7 +200,7 @@ module Validation =
                 let shown = ratio.ToString("0.00", Globalization.CultureInfo.InvariantCulture)
                 [ finding "A11Y-CONTRAST" Severity.Error FindingCategory.Accessibility (ptr + "/color") subject
                       $"Text colour {fg.Value} on fill {fill.Value} has contrast {shown}:1; at least 4.5:1 is required." ]
-            | None, Some fill when HexColor.contrast (HexColor.create "#171a18") fill < 4.5 && HexColor.contrast (HexColor.create "#ffffff") fill < 4.5 ->
+            | None, Some fill when HexColor.contrast (HexColor.create "#161616") fill < 4.5 && HexColor.contrast (HexColor.create "#ffffff") fill < 4.5 ->
                 [ finding "A11Y-CONTRAST" Severity.Warning FindingCategory.Accessibility (ptr + "/color") subject
                       $"Fill {fill.Value} has low contrast with both dark and light text; set an explicit foreground." ]
             | _ -> []

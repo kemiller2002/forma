@@ -4,7 +4,7 @@ export default {
   behavior: "Site content",
   summary: "Closing call to action with one primary action, optionally on an inverse surface tone.",
   purpose: {
-    description: "The call to action closes a page or a major section with a heading, a sentence of motivation and a group of actions, one of them primary. `.ef-cta__text` holds the eyebrow, `h2` and sentence; an `.ef-actions` group follows it. On the page tone a strong rule sits above the block; with a non-page `data-ef-tone` the block becomes a padded panel without the rule. Actions are ordinary links or buttons: where they lead is the site's decision.",
+    description: "The call to action closes a page or a major section with a heading, a sentence of motivation and a group of actions, one of them primary. `.forma-cta__text` holds the eyebrow, `h2` and sentence; an `.forma-actions` group follows it. On the page tone a strong rule sits above the block; with a non-page `data-forma-tone` the block becomes a padded panel without the rule. Actions are ordinary links or buttons: where they lead is the site's decision.",
     useWhen: [
       "Ending a marketing or product page with the next step most readers should take.",
       "Closing a long section with a clear action before the page continues.",
@@ -34,19 +34,19 @@ export default {
       },
       title: "Page-tone closing action",
       description: "Without a tone the CTA sits on the page background with a strong rule above it. One primary action and one secondary action.",
-      html: `<ef-cta class="ef-component-tag">
-  <div class="ef-site">
-    <section class="ef-section" aria-labelledby="cta-page-tone-title">
-      <div class="ef-cta">
-        <div class="ef-cta__text">
+      html: `<forma-cta class="forma-component-tag">
+  <div class="forma-site">
+    <section class="forma-section" aria-labelledby="cta-page-tone-title">
+      <div class="forma-cta">
+        <div class="forma-cta__text">
           <h2 id="cta-page-tone-title">Start with a pinned Forma release</h2>
           <p>Every site consumes the same versioned presentation layer.</p>
         </div>
-        <div class="ef-actions"><a class="ef-button" data-ef-variant="primary" href="#cta-page-tone-title">Install</a><a class="ef-button" href="#cta-page-tone-title">Read the upgrade guide</a></div>
+        <div class="forma-actions"><a class="forma-button" data-forma-variant="primary" href="#cta-page-tone-title">Install</a><a class="forma-button" href="#cta-page-tone-title">Read the upgrade guide</a></div>
       </div>
     </section>
   </div>
-</ef-cta>`
+</forma-cta>`
     },
     {
       id: "surface-single-action",
@@ -58,21 +58,21 @@ export default {
         ]
       },
       title: "Surface panel with a single action",
-      description: "`data-ef-tone=\"surface\"` turns the CTA into a padded panel on the secondary surface. Links and labels switch to text colors validated for that surface.",
-      html: `<ef-cta class="ef-component-tag">
-  <div class="ef-site">
-    <section class="ef-section" aria-labelledby="cta-surface-single-action-title">
-      <div class="ef-cta" data-ef-tone="surface">
-        <div class="ef-cta__text">
-          <p class="ef-eyebrow">Research digest</p>
+      description: "`data-forma-tone=\"surface\"` turns the CTA into a padded panel on the secondary surface. Links and labels switch to text colors validated for that surface.",
+      html: `<forma-cta class="forma-component-tag">
+  <div class="forma-site">
+    <section class="forma-section" aria-labelledby="cta-surface-single-action-title">
+      <div class="forma-cta" data-forma-tone="surface">
+        <div class="forma-cta__text">
+          <p class="forma-eyebrow">Research digest</p>
           <h2 id="cta-surface-single-action-title">Get new papers when they are published</h2>
           <p>One email per paper. No tracking. <a href="#cta-surface-single-action-title">Read past issues</a>.</p>
         </div>
-        <div class="ef-actions"><a class="ef-button" data-ef-variant="primary" href="#cta-surface-single-action-title">Subscribe</a></div>
+        <div class="forma-actions"><a class="forma-button" data-forma-variant="primary" href="#cta-surface-single-action-title">Subscribe</a></div>
       </div>
     </section>
   </div>
-</ef-cta>`
+</forma-cta>`
     },
     {
       id: "mobile-inverse",
@@ -94,20 +94,20 @@ export default {
           "The heading wraps and balances its lines; nothing scrolls horizontally at 320px."
         ]
       },
-      html: `<ef-cta class="ef-component-tag">
-  <div class="ef-site">
-    <section class="ef-section" aria-labelledby="cta-mobile-inverse-title">
-      <div class="ef-cta" data-ef-tone="inverse">
-        <div class="ef-cta__text">
-          <p class="ef-eyebrow">Start here</p>
+      html: `<forma-cta class="forma-component-tag">
+  <div class="forma-site">
+    <section class="forma-section" aria-labelledby="cta-mobile-inverse-title">
+      <div class="forma-cta" data-forma-tone="inverse">
+        <div class="forma-cta__text">
+          <p class="forma-eyebrow">Start here</p>
           <h2 id="cta-mobile-inverse-title">Bring the problem that matters</h2>
           <p>A first conversation costs nothing and ends with a clear next step.</p>
         </div>
-        <div class="ef-actions"><a class="ef-button" data-ef-variant="primary" href="#cta-mobile-inverse-title">Start a diagnostic</a><a class="ef-button" href="#cta-mobile-inverse-title">Meet the team</a></div>
+        <div class="forma-actions"><a class="forma-button" data-forma-variant="primary" href="#cta-mobile-inverse-title">Start a diagnostic</a><a class="forma-button" href="#cta-mobile-inverse-title">Meet the team</a></div>
       </div>
     </section>
   </div>
-</ef-cta>`
+</forma-cta>`
     }
   ],
   api: {
@@ -115,9 +115,9 @@ export default {
       { name: "aria-labelledby", on: "section", values: "id of the CTA heading", default: "—", description: "Names the section that contains the CTA." }
     ],
     hooks: {
-      "ef-cta": "Root: a wrapping flex row of text and actions, with a strong top rule on the page tone.",
-      "ef-cta__text": "Eyebrow, heading and sentence. Grows first with a 32rem basis and a 20rem (or 100%) minimum.",
-      "data-ef-tone": "`surface`, `elevated` or `inverse` on `.ef-cta` sets that surface, pads the block on all sides and removes the top rule. `page` or no tone keeps the rule."
+      "forma-cta": "Root: a wrapping flex row of text and actions, with a strong top rule on the page tone.",
+      "forma-cta__text": "Eyebrow, heading and sentence. Grows first with a 32rem basis and a 20rem (or 100%) minimum.",
+      "data-forma-tone": "`surface`, `elevated` or `inverse` on `.forma-cta` sets that surface, pads the block on all sides and removes the top rule. `page` or no tone keeps the rule."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through any links in the text, then the actions, in source order." },
@@ -126,8 +126,8 @@ export default {
     events: []
   },
   states: [
-    { name: "Page tone", how: "no data-ef-tone", description: "Strong top rule on the page background." },
-    { name: "Toned panel", how: "data-ef-tone=\"surface|elevated|inverse\"", description: "Padded panel on that surface; primary action colors invert on inverse." },
+    { name: "Page tone", how: "no data-forma-tone", description: "Strong top rule on the page background." },
+    { name: "Toned panel", how: "data-forma-tone=\"surface|elevated|inverse\"", description: "Padded panel on that surface; primary action colors invert on inverse." },
     { name: "Wrapped", how: "flex-wrap", description: "Actions move below the text." }
   ],
   accessibility: {
@@ -137,7 +137,7 @@ export default {
       "Borders toned panels in forced colors so they stay delineated."
     ],
     consumer: [
-      "Use one `data-ef-variant=\"primary\"` action per CTA.",
+      "Use one `data-forma-variant=\"primary\"` action per CTA.",
       "Write action labels that name the outcome (\"Start a diagnostic\"), not \"Click here\".",
       "Give the CTA a real heading at the right level."
     ]

@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Three padded parts separated by rules: recognize (header), verify (facts grid) and act (footer).",
       "Facts are a `dl` in an auto-fit grid of columns at least 12rem wide, each fact separated by a thin rule.",
-      "Designed to pair with `.ef-identifier` and `.ef-critical-value` for low-context values.",
+      "Designed to pair with `.forma-identifier` and `.forma-critical-value` for low-context values.",
       "At 30rem and below the act area is a one-column grid of full-width, wrapping buttons."
     ]
   },
@@ -30,58 +30,58 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Production release with stale evidence",
       description: "The application reports that one piece of evidence is stale. The frame shows it as stale, not as failed or passed, and the act area offers refreshing the evidence first. The target environment and commit are low-context values marked for deliberate reading.",
-      html: `<ef-verification-frame class="ef-component-tag">
-  <section class="ef-verification-frame" aria-labelledby="verification-frame-production-release-title">
-    <header class="ef-verification-frame__recognize">
-      <span class="ef-component-kicker">Recognition</span>
+      html: `<forma-verification-frame class="forma-component-tag">
+  <section class="forma-verification-frame" aria-labelledby="verification-frame-production-release-title">
+    <header class="forma-verification-frame__recognize">
+      <span class="forma-component-kicker">Recognition</span>
       <h2 id="verification-frame-production-release-title">Release 4.2.0 to production</h2>
-      <p><span class="ef-status-lozenge" data-state="unknown">Evidence stale</span> Verify the facts below before releasing.</p>
+      <p><span class="forma-status-lozenge" data-state="unknown">Evidence stale</span> Verify the facts below before releasing.</p>
     </header>
-    <section class="ef-verification-frame__verify" aria-labelledby="verification-frame-production-release-verify">
+    <section class="forma-verification-frame__verify" aria-labelledby="verification-frame-production-release-verify">
       <h3 id="verification-frame-production-release-verify">Verify</h3>
-      <dl class="ef-verification-frame__facts">
-        <div><dt>Environment</dt><dd><span class="ef-critical-value" data-ef-verify="true">prod-eu-west-1</span></dd></div>
-        <div><dt>Commit</dt><dd><span class="ef-identifier">9f3c1a7e0b</span></dd></div>
+      <dl class="forma-verification-frame__facts">
+        <div><dt>Environment</dt><dd><span class="forma-critical-value" data-forma-verify="true">prod-eu-west-1</span></dd></div>
+        <div><dt>Commit</dt><dd><span class="forma-identifier">9f3c1a7e0b</span></dd></div>
         <div><dt>Integration tests</dt><dd>Passed · 148 of 148</dd></div>
         <div><dt>Security scan</dt><dd>Last run 26 hours ago (stale)</dd></div>
       </dl>
       <p><strong>Unresolved work:</strong> the security scan is older than the 24-hour release policy.</p>
     </section>
-    <footer class="ef-verification-frame__act">
+    <footer class="forma-verification-frame__act">
       <p>Release is available after a current security scan.</p>
       <button type="button">Run security scan</button>
     </footer>
   </section>
-</ef-verification-frame>`
+</forma-verification-frame>`
     },
     {
       id: "payment-approval",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Payment approval with long identifiers",
       description: "Content stress: a long IBAN and a long payee name wrap inside their fact cells. The critical amount carries the deliberate-verification cue, and both a review action and the approval come from the application's current capabilities.",
-      html: `<ef-verification-frame class="ef-component-tag">
-  <section class="ef-verification-frame" aria-labelledby="verification-frame-payment-approval-title">
-    <header class="ef-verification-frame__recognize">
-      <span class="ef-component-kicker">Recognition</span>
+      html: `<forma-verification-frame class="forma-component-tag">
+  <section class="forma-verification-frame" aria-labelledby="verification-frame-payment-approval-title">
+    <header class="forma-verification-frame__recognize">
+      <span class="forma-component-kicker">Recognition</span>
       <h2 id="verification-frame-payment-approval-title">Approve outgoing payment</h2>
       <p>The payee's bank details changed 3 days ago. Check them against the supplier record before approving.</p>
     </header>
-    <section class="ef-verification-frame__verify" aria-labelledby="verification-frame-payment-approval-verify">
+    <section class="forma-verification-frame__verify" aria-labelledby="verification-frame-payment-approval-verify">
       <h3 id="verification-frame-payment-approval-verify">Verify</h3>
-      <dl class="ef-verification-frame__facts">
+      <dl class="forma-verification-frame__facts">
         <div><dt>Payee</dt><dd>Hanseatische Maschinenbau- und Anlagentechnik GmbH</dd></div>
-        <div><dt>IBAN</dt><dd><span class="ef-identifier">DE89370400440532013000</span></dd></div>
-        <div><dt>Amount</dt><dd><span class="ef-critical-value" data-ef-verify="true">€148,200.00</span></dd></div>
+        <div><dt>IBAN</dt><dd><span class="forma-identifier">DE89370400440532013000</span></dd></div>
+        <div><dt>Amount</dt><dd><span class="forma-critical-value" data-forma-verify="true">€148,200.00</span></dd></div>
         <div><dt>Bank details changed</dt><dd><time datetime="2026-09-27">27 September 2026</time> by M. Chen</dd></div>
       </dl>
     </section>
-    <footer class="ef-verification-frame__act">
+    <footer class="forma-verification-frame__act">
       <p>You are the second approver for this payment.</p>
       <button type="button">Open supplier record</button>
       <button type="button">Approve payment</button>
     </footer>
   </section>
-</ef-verification-frame>`
+</forma-verification-frame>`
     },
     {
       id: "mobile-case-closure",
@@ -97,40 +97,40 @@ export default {
           "Actions stay after the facts in portrait and landscape, so users meet the facts before the buttons."
         ]
       },
-      html: `<ef-verification-frame class="ef-component-tag">
-  <section class="ef-verification-frame" aria-labelledby="verification-frame-mobile-title">
-    <header class="ef-verification-frame__recognize">
-      <span class="ef-component-kicker">Recognition</span>
+      html: `<forma-verification-frame class="forma-component-tag">
+  <section class="forma-verification-frame" aria-labelledby="verification-frame-mobile-title">
+    <header class="forma-verification-frame__recognize">
+      <span class="forma-component-kicker">Recognition</span>
       <h2 id="verification-frame-mobile-title">Close case CASE-4407</h2>
       <p>The customer confirmed the refund arrived.</p>
     </header>
-    <section class="ef-verification-frame__verify" aria-labelledby="verification-frame-mobile-verify">
+    <section class="forma-verification-frame__verify" aria-labelledby="verification-frame-mobile-verify">
       <h3 id="verification-frame-mobile-verify">Verify</h3>
-      <dl class="ef-verification-frame__facts">
-        <div><dt>Refund</dt><dd><span class="ef-critical-value">$84.00</span></dd></div>
+      <dl class="forma-verification-frame__facts">
+        <div><dt>Refund</dt><dd><span class="forma-critical-value">$84.00</span></dd></div>
         <div><dt>Confirmed</dt><dd>Today, 10:14</dd></div>
       </dl>
     </section>
-    <footer class="ef-verification-frame__act">
+    <footer class="forma-verification-frame__act">
       <button type="button">Close case and notify customer</button>
     </footer>
   </section>
-</ef-verification-frame>`
+</forma-verification-frame>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-labelledby", on: "root and verify section", values: "id of a heading", default: "—", description: "Names the frame by its recognition heading and the verify region by its heading." },
-      { name: "data-ef-verify", on: ".ef-critical-value", values: "true", default: "absent", description: "Adds a double underline to a value that must be read deliberately. Descriptive presentation only; it does not assert that the value was verified." },
-      { name: "data-state", on: ".ef-status-lozenge", values: "ok | attention | blocked | unknown", default: "absent", description: "Adds a symbol to an application-reported state shown in the recognize part." },
+      { name: "data-forma-verify", on: ".forma-critical-value", values: "true", default: "absent", description: "Adds a double underline to a value that must be read deliberately. Descriptive presentation only; it does not assert that the value was verified." },
+      { name: "data-state", on: ".forma-status-lozenge", values: "ok | attention | blocked | unknown", default: "absent", description: "Adds a symbol to an application-reported state shown in the recognize part." },
       { name: "datetime", on: "time", values: "ISO date or date-time", default: "—", description: "Machine-readable timestamp for freshness facts." }
     ],
     hooks: {
-      "ef-verification-frame": "Root bordered grid of the three parts.",
-      "ef-verification-frame__recognize": "Header part with a bottom rule: kicker, heading and the application-reported state.",
-      "ef-verification-frame__verify": "The part to read deliberately: heading, facts and unresolved work.",
-      "ef-verification-frame__facts": "A `dl` laid out as an auto-fit grid of fact cells at least 12rem wide, each with a bottom rule and a small secondary-color `dt`.",
-      "ef-verification-frame__act": "Footer part with a top rule. A wrapping flex row; a leading `p` takes the remaining width. One full-width column at 30rem and below."
+      "forma-verification-frame": "Root bordered grid of the three parts.",
+      "forma-verification-frame__recognize": "Header part with a bottom rule: kicker, heading and the application-reported state.",
+      "forma-verification-frame__verify": "The part to read deliberately: heading, facts and unresolved work.",
+      "forma-verification-frame__facts": "A `dl` laid out as an auto-fit grid of fact cells at least 12rem wide, each with a bottom rule and a small secondary-color `dt`.",
+      "forma-verification-frame__act": "Footer part with a top rule. A wrapping flex row; a leading `p` takes the remaining width. One full-width column at 30rem and below."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Reaches the actions only after the facts in source order. No added keyboard behavior." },
@@ -142,8 +142,8 @@ export default {
     form: "Not a form control. Act buttons may submit an application form that wraps the frame."
   },
   states: [
-    { name: "Reported state", how: "text (and optional .ef-status-lozenge) in the recognize part", description: "Whatever the application reports, such as ready, stale, unknown or reconciling, shown without strengthening it." },
-    { name: "Deliberate value", how: ".ef-critical-value[data-ef-verify=\"true\"]", description: "Bold mono value with a double underline." },
+    { name: "Reported state", how: "text (and optional .forma-status-lozenge) in the recognize part", description: "Whatever the application reports, such as ready, stale, unknown or reconciling, shown without strengthening it." },
+    { name: "Deliberate value", how: ".forma-critical-value[data-forma-verify=\"true\"]", description: "Bold mono value with a double underline." },
     { name: "Stacked actions", how: "@media (max-width: 30rem)", description: "Act area becomes one column of full-width buttons." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Frame border and verified-value underline use CanvasText." }
   ],
@@ -157,7 +157,7 @@ export default {
       "Render only actions the application or Ordo currently allows, and re-check legality when an action is taken.",
       "Report unknown, stale, partial and reconciling states as themselves; never show them as success or failure.",
       "Label every fact and include units and freshness where they matter.",
-      "Use `.ef-identifier` and `.ef-critical-value` for codes, amounts and targets that are easy to misread.",
+      "Use `.forma-identifier` and `.forma-critical-value` for codes, amounts and targets that are easy to misread.",
       "Announce the outcome of the action in text after it completes."
     ]
   },

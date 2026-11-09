@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Bordered section with an `h3` title and an unstyled ordered list.",
       "Each stage is a small grid (kind, name, reference) with a rotated-square marker; a vertical line connects all but the last stage.",
-      "`.ef-provenance-trail__kind` and `small` share small monospace secondary text.",
+      "`.forma-provenance-trail__kind` and `small` share small monospace secondary text.",
       "Markers are identical for every stage; stage kind is text."
     ]
   },
@@ -28,32 +28,32 @@ export default {
       id: "stale-source",
       title: "Trail with a stale source",
       description: "The source stage is older than its expected refresh. The trail says so in words on that stage, so the reader can see that the analysis and presentation are correct for stale input rather than wrong.",
-      html: `<ef-provenance-trail class="ef-component-tag">
-  <section class="ef-provenance-trail" aria-labelledby="provenance-trail-stale-source-title">
+      html: `<forma-provenance-trail class="forma-component-tag">
+  <section class="forma-provenance-trail" aria-labelledby="provenance-trail-stale-source-title">
     <h3 id="provenance-trail-stale-source-title">How “Customer satisfaction 4.2” was produced</h3>
     <ol>
-      <li><span class="ef-provenance-trail__kind">Source</span><strong>318 survey responses</strong><small>Imported 22 Sep 2026 · Stale: daily import has not run for 7 days</small></li>
-      <li><span class="ef-provenance-trail__kind">Aggregate</span><strong>Responses by region</strong><small>Grouping rule v2</small></li>
-      <li><span class="ef-provenance-trail__kind">Analysis</span><strong>Weighted mean, 1–5 scale</strong><small>Analysis expression v3</small></li>
-      <li><span class="ef-provenance-trail__kind">Presentation</span><strong>Executive summary card</strong><small>Report definition v6</small></li>
+      <li><span class="forma-provenance-trail__kind">Source</span><strong>318 survey responses</strong><small>Imported 22 Sep 2026 · Stale: daily import has not run for 7 days</small></li>
+      <li><span class="forma-provenance-trail__kind">Aggregate</span><strong>Responses by region</strong><small>Grouping rule v2</small></li>
+      <li><span class="forma-provenance-trail__kind">Analysis</span><strong>Weighted mean, 1–5 scale</strong><small>Analysis expression v3</small></li>
+      <li><span class="forma-provenance-trail__kind">Presentation</span><strong>Executive summary card</strong><small>Report definition v6</small></li>
     </ol>
   </section>
-</ef-provenance-trail>`
+</forma-provenance-trail>`
     },
     {
       id: "unknown-stage",
       title: "Derivation with an unknown step",
       description: "An imported figure whose transformation step was not recorded. The stage is still listed, with Unknown stated, so the chain does not appear complete when it is not.",
-      html: `<ef-provenance-trail class="ef-component-tag">
-  <section class="ef-provenance-trail" aria-labelledby="provenance-trail-unknown-stage-title">
+      html: `<forma-provenance-trail class="forma-component-tag">
+  <section class="forma-provenance-trail" aria-labelledby="provenance-trail-unknown-stage-title">
     <h3 id="provenance-trail-unknown-stage-title">Provenance of “Carbon intensity 212 g/kWh”</h3>
     <ol>
-      <li><span class="ef-provenance-trail__kind">Source</span><strong>Grid operator hourly feed</strong><small>Feed hash <span class="ef-identifier">4be1…90cf</span></small></li>
-      <li><span class="ef-provenance-trail__kind">Derivation</span><strong>Unknown</strong><small>Transformation not recorded by the importer</small></li>
-      <li><span class="ef-provenance-trail__kind">Presentation</span><strong>Sustainability dashboard</strong><small>Report definition v2</small></li>
+      <li><span class="forma-provenance-trail__kind">Source</span><strong>Grid operator hourly feed</strong><small>Feed hash <span class="forma-identifier">4be1…90cf</span></small></li>
+      <li><span class="forma-provenance-trail__kind">Derivation</span><strong>Unknown</strong><small>Transformation not recorded by the importer</small></li>
+      <li><span class="forma-provenance-trail__kind">Presentation</span><strong>Sustainability dashboard</strong><small>Report definition v2</small></li>
     </ol>
   </section>
-</ef-provenance-trail>`
+</forma-provenance-trail>`
     },
     {
       id: "mobile-provenance",
@@ -68,26 +68,26 @@ export default {
           "The trail is not interactive; any links to stage details keep their own touch targets."
         ]
       },
-      html: `<ef-provenance-trail class="ef-component-tag">
-  <section class="ef-provenance-trail" aria-labelledby="provenance-trail-mobile-provenance-title">
+      html: `<forma-provenance-trail class="forma-component-tag">
+  <section class="forma-provenance-trail" aria-labelledby="provenance-trail-mobile-provenance-title">
     <h3 id="provenance-trail-mobile-provenance-title">How this score was produced</h3>
     <ol>
-      <li><span class="ef-provenance-trail__kind">Source</span><strong>42 accepted assessments</strong><small>Result set <span class="ef-identifier">9D2F4C1A7E0B83F5</span></small></li>
-      <li><span class="ef-provenance-trail__kind">Aggregate</span><strong>Governance section</strong><small>Scoring model v3</small></li>
-      <li><span class="ef-provenance-trail__kind">Analysis</span><strong>Weighted mean</strong><small>Analysis expression v1</small></li>
-      <li><span class="ef-provenance-trail__kind">Presentation</span><strong>Metric card</strong><small>Report definition v4</small></li>
+      <li><span class="forma-provenance-trail__kind">Source</span><strong>42 accepted assessments</strong><small>Result set <span class="forma-identifier">9D2F4C1A7E0B83F5</span></small></li>
+      <li><span class="forma-provenance-trail__kind">Aggregate</span><strong>Governance section</strong><small>Scoring model v3</small></li>
+      <li><span class="forma-provenance-trail__kind">Analysis</span><strong>Weighted mean</strong><small>Analysis expression v1</small></li>
+      <li><span class="forma-provenance-trail__kind">Presentation</span><strong>Metric card</strong><small>Report definition v4</small></li>
     </ol>
   </section>
-</ef-provenance-trail>`
+</forma-provenance-trail>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-provenance-trail", values: "id of the h3", default: "—", description: "Names the trail after the value it explains." }
+      { name: "aria-labelledby", on: "section.forma-provenance-trail", values: "id of the h3", default: "—", description: "Names the trail after the value it explains." }
     ],
     hooks: {
-      "ef-provenance-trail": "Bordered, padded section. Styles its `h3`, its unstyled `ol`, each `li` stage (grid with a diamond marker and connector) and `small` references.",
-      "ef-provenance-trail__kind": "Stage kind label (Source, Aggregate, Analysis, Presentation) in small monospace secondary text."
+      "forma-provenance-trail": "Bordered, padded section. Styles its `h3`, its unstyled `ol`, each `li` stage (grid with a diamond marker and connector) and `small` references.",
+      "forma-provenance-trail__kind": "Stage kind label (Source, Aggregate, Analysis, Presentation) in small monospace secondary text."
     },
     keyboard: [
       { keys: "None", action: "Static content; links inside stages are reached with Tab as usual." }

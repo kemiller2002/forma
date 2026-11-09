@@ -19,7 +19,7 @@ Assessment consumers should load:
 
 ## Question shell
 
-Use `.ef-question` to compose:
+Use `.forma-question` to compose:
 
 - question number or identifier;
 - prompt;
@@ -33,7 +33,7 @@ Do not hide a required question using CSS as a substitute for application branch
 
 ## Ordinal scale
 
-Use `.ef-ordinal-scale` for ordered discrete choices.
+Use `.forma-ordinal-scale` for ordered discrete choices.
 
 Examples:
 
@@ -45,9 +45,9 @@ Examples:
 
 Cardinality classes:
 
-- `.ef-ordinal-scale--3`;
-- `.ef-ordinal-scale--5`;
-- `.ef-ordinal-scale--7`.
+- `.forma-ordinal-scale--3`;
+- `.forma-ordinal-scale--5`;
+- `.forma-ordinal-scale--7`.
 
 The canonical control is a native radio group.
 
@@ -75,11 +75,11 @@ The application explicitly maps response values to meaning.
 
 Unknown/Don't Know and Not Applicable are not extra ordinal positions.
 
-Render them in `.ef-special-choices` outside the visual scale. They may share the same radio name when mutually exclusive with ordinal values.
+Render them in `.forma-special-choices` outside the visual scale. They may share the same radio name when mutually exclusive with ordinal values.
 
 ## Choice group
 
-Use `.ef-choice-group` for:
+Use `.forma-choice-group` for:
 
 - single select;
 - multi-select;
@@ -92,9 +92,9 @@ The design system does not attach score or business meaning to option order.
 
 ## Validation
 
-Use `.ef-validation-message` for a local control/question error.
+Use `.forma-validation-message` for a local control/question error.
 
-Use `.ef-validation-summary` for page, section, or workflow-level blocking issues.
+Use `.forma-validation-summary` for page, section, or workflow-level blocking issues.
 
 When a summary appears after an attempted transition, Limen should move focus to the summary when that improves recovery. The design system only provides the focusable structure.
 
@@ -102,7 +102,7 @@ Do not display raw exception text as the primary message.
 
 ## Survey/task progress
 
-Use `.ef-survey-progress` for determinate progress.
+Use `.forma-survey-progress` for determinate progress.
 
 The application supplies:
 
@@ -116,7 +116,7 @@ A design-system progress bar never decides whether work is complete.
 
 ## Ranking
 
-`.ef-ranking` is a visual contract requiring Limen behavior.
+`.forma-ranking` is a visual contract requiring Limen behavior.
 
 Required application behavior:
 
@@ -131,7 +131,7 @@ Drag-and-drop may be added as an enhancement but must never be the only way to r
 
 ## Allocation
 
-`.ef-allocation` provides direct numeric entry and aggregate-total presentation.
+`.forma-allocation` provides direct numeric entry and aggregate-total presentation.
 
 The application owns:
 
@@ -146,7 +146,7 @@ Do not require sliders or drag interaction for allocation.
 
 ## Rule builder
 
-`.ef-rule-builder` is a visual contract for structured expressions.
+`.forma-rule-builder` is a visual contract for structured expressions.
 
 The design system owns:
 
@@ -171,7 +171,7 @@ A plain-language meaning preview is strongly recommended.
 
 ## Obligation panel
 
-Use `.ef-obligation-panel` for unresolved work such as:
+Use `.forma-obligation-panel` for unresolved work such as:
 
 - reconciliation;
 - missing evidence;

@@ -29,8 +29,8 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Project context band",
       description: "A named section with the project name, local navigation and a live status message. The section is a region landmark because it has an accessible name; the nav is a second, separately named landmark.",
-      html: `<ef-landmark-region class="ef-component-tag">
-  <section class="ef-landmark-region" aria-labelledby="landmark-region-project-context-title">
+      html: `<forma-landmark-region class="forma-component-tag">
+  <section class="forma-landmark-region" aria-labelledby="landmark-region-project-context-title">
     <h2 id="landmark-region-project-context-title">Payments API</h2>
     <nav aria-label="Project sections">
       <a href="#landmark-region-project-context-title" aria-current="page">Overview</a>
@@ -39,19 +39,19 @@ export default {
     </nav>
     <p role="status">All checks passing</p>
   </section>
-</ef-landmark-region>`
+</forma-landmark-region>`
     },
     {
       id: "review-status",
       title: "Review status aside",
-      description: "A complementary landmark summarising a document review: who owns it, the due date and a status message. It uses `--ef-landmark-space` for a tighter band in a dense workspace.",
-      html: `<ef-landmark-region class="ef-component-tag">
-  <aside class="ef-landmark-region" style="--ef-landmark-space: 0.5rem" aria-label="Review status">
+      description: "A complementary landmark summarising a document review: who owns it, the due date and a status message. It uses `--forma-landmark-space` for a tighter band in a dense workspace.",
+      html: `<forma-landmark-region class="forma-component-tag">
+  <aside class="forma-landmark-region" style="--forma-landmark-space: 0.5rem" aria-label="Review status">
     <p>Owner: Legal operations</p>
     <p>Due <time datetime="2026-10-03">3 Oct 2026</time></p>
-    <p role="status"><span class="ef-status-lozenge" data-state="attention">2 comments unresolved</span></p>
+    <p role="status"><span class="forma-status-lozenge" data-state="attention">2 comments unresolved</span></p>
   </aside>
-</ef-landmark-region>`
+</forma-landmark-region>`
     },
     {
       id: "mobile-wrapped-band",
@@ -67,8 +67,8 @@ export default {
           "In landscape on a tablet wider than 48rem the band becomes sticky again."
         ]
       },
-      html: `<ef-landmark-region class="ef-component-tag">
-  <section class="ef-landmark-region" aria-labelledby="landmark-region-mobile-wrapped-band-title">
+      html: `<forma-landmark-region class="forma-component-tag">
+  <section class="forma-landmark-region" aria-labelledby="landmark-region-mobile-wrapped-band-title">
     <h2 id="landmark-region-mobile-wrapped-band-title">Payments API</h2>
     <nav aria-label="Project sections on mobile">
       <a href="#landmark-region-mobile-wrapped-band-title" aria-current="page">Overview</a>
@@ -78,7 +78,7 @@ export default {
     </nav>
     <p role="status">Deploy in progress</p>
   </section>
-</ef-landmark-region>`
+</forma-landmark-region>`
     }
   ],
   api: {
@@ -87,11 +87,11 @@ export default {
       { name: "aria-labelledby", on: "section", values: "id of the band heading", default: "—", description: "Names the region from its visible heading." },
       { name: "aria-current", on: "nav link", values: "page", default: "—", description: "Marks the current location in the band's navigation." },
       { name: "role", on: "status element", values: "status", default: "—", description: "Makes status text a polite live region, so application updates are announced without moving focus." },
-      { name: "style", on: ".ef-landmark-region", values: "--ef-landmark-space: <length>", default: "—", description: "Per-instance spacing override." }
+      { name: "style", on: ".forma-landmark-region", values: "--forma-landmark-space: <length>", default: "—", description: "Per-instance spacing override." }
     ],
     hooks: {
-      "ef-landmark-region": "Sticky (above 48rem), wrapping flex band with space-between distribution, block padding and an opaque surface background. Nested nav elements become wrapping rows.",
-      "--ef-landmark-space": "Gap between items, gap between nav links, and block padding. Default `--ef-primitive-spacing-3` (0.75rem)."
+      "forma-landmark-region": "Sticky (above 48rem), wrapping flex band with space-between distribution, block padding and an opaque surface background. Nested nav elements become wrapping rows.",
+      "--forma-landmark-space": "Gap between items, gap between nav links, and block padding. Default `--forma-primitive-spacing-3` (0.75rem)."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through links and controls in the band in source order." },
@@ -133,7 +133,7 @@ export default {
     ],
     avoid: [
       "Putting long forms or primary actions in a sticky band.",
-      "Relying on the `ef-landmark-region__status` class from the canonical pattern for styling; it has no CSS. Use `role=\"status\"` for semantics."
+      "Relying on the `forma-landmark-region__status` class from the canonical pattern for styling; it has no CSS. Use `role=\"status\"` for semantics."
     ]
   },
   related: [

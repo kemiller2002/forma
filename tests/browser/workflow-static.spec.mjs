@@ -28,33 +28,33 @@ for (const file of documents) {
     await open(page, file, 320);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(0);
-    await expect(page.locator(".ef-diagram__viewport")).toHaveAttribute("tabindex", "0");
-    await expect(page.locator(".ef-diagram__relations li").first()).toBeVisible();
+    await expect(page.locator(".forma-diagram__viewport")).toHaveAttribute("tabindex", "0");
+    await expect(page.locator(".forma-diagram__relations li").first()).toBeVisible();
   });
 }
 
 test("static export has no script and every connector has a relationship sentence", async ({ page }) => {
   await open(page, "swimlanes.document.html");
   expect(await page.locator("script").count()).toBe(0);
-  const connectors = await page.locator("path.ef-diagram-connector").count();
-  await expect(page.locator(".ef-diagram__relations li")).toHaveCount(connectors);
-  await expect(page.locator(".ef-diagram__membership dt")).toHaveCount(4);
+  const connectors = await page.locator("path.forma-diagram-connector").count();
+  await expect(page.locator(".forma-diagram__relations li")).toHaveCount(connectors);
+  await expect(page.locator(".forma-diagram__membership dt")).toHaveCount(4);
 });
 
 test("nodes keep visible boundaries and text in forced colours", async ({ page }) => {
   await page.emulateMedia({ forcedColors: "active" });
   await open(page, "swimlanes.document.html");
-  const node = page.locator(".ef-diagram-node").first();
+  const node = page.locator(".forma-diagram-node").first();
   const style = await node.evaluate((el) => getComputedStyle(el).borderTopStyle);
   expect(style).not.toBe("none");
-  await expect(node.locator(".ef-diagram-node__label")).toBeVisible();
+  await expect(node.locator(".forma-diagram-node__label")).toBeVisible();
 });
 
 test("branded export restyles token palette slots through the brand", async ({ page }) => {
   await open(page, "branded.document.html");
-  await expect(page.locator("html")).toHaveAttribute("data-ef-brand", "example-harbor");
-  const accent = await page.locator(".ef-diagram-node").nth(1).evaluate((el) => getComputedStyle(el).borderInlineStartColor);
-  const token = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--ef-color-accent-primary").trim());
+  await expect(page.locator("html")).toHaveAttribute("data-forma-brand", "example-harbor");
+  const accent = await page.locator(".forma-diagram-node").nth(1).evaluate((el) => getComputedStyle(el).borderInlineStartColor);
+  const token = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--forma-color-accent-primary").trim());
   expect(token).not.toBe("");
   expect(accent).not.toBe("rgba(0, 0, 0, 0)");
 });

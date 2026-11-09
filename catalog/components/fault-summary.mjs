@@ -37,68 +37,68 @@ export default {
       },
       title: "After a failed submit",
       description: "A summary above a short form after submission failed. Each link targets the affected field in the same page; the critical entry is bold as well as labelled Critical. The application focuses the summary once after the failed submit.",
-      html: `<ef-fault-summary class="ef-component-tag">
-  <section class="ef-fault-summary" tabindex="-1" aria-labelledby="fault-summary-failed-submit-title">
-    <div class="ef-fault-summary__heading">
-      <div class="ef-fault-summary__marker" aria-hidden="true">!!</div>
+      html: `<forma-fault-summary class="forma-component-tag">
+  <section class="forma-fault-summary" tabindex="-1" aria-labelledby="fault-summary-failed-submit-title">
+    <div class="forma-fault-summary__heading">
+      <div class="forma-fault-summary__marker" aria-hidden="true">!!</div>
       <div>
-        <p class="ef-fault__severity">3 unresolved faults</p>
+        <p class="forma-fault__severity">3 unresolved faults</p>
         <h2 id="fault-summary-failed-submit-title">The claim was not submitted</h2>
       </div>
     </div>
-    <ol class="ef-fault-summary__list">
-      <li data-ef-severity="critical">
+    <ol class="forma-fault-summary__list">
+      <li data-forma-severity="critical">
         <a href="#fault-summary-failed-submit-payee">Payee account could not be verified</a>
-        <span class="ef-fault-summary__meta">Critical · AG-5ZE7K</span>
+        <span class="forma-fault-summary__meta">Critical · AG-5ZE7K</span>
       </li>
-      <li data-ef-severity="error">
+      <li data-forma-severity="error">
         <a href="#fault-summary-failed-submit-receipt">Receipt upload failed</a>
-        <span class="ef-fault-summary__meta">Error · AG-5CN0V · occurred 2 times</span>
+        <span class="forma-fault-summary__meta">Error · AG-5CN0V · occurred 2 times</span>
       </li>
-      <li data-ef-severity="warning">
+      <li data-forma-severity="warning">
         <a href="#fault-summary-failed-submit-rate">Exchange rate is from yesterday</a>
-        <span class="ef-fault-summary__meta">Warning · AG-40RQN</span>
+        <span class="forma-fault-summary__meta">Warning · AG-40RQN</span>
       </li>
     </ol>
   </section>
-  <div class="ef-stack" data-density="compact">
-    <div class="ef-field">
-      <label class="ef-field__label" for="fault-summary-failed-submit-payee">Payee account</label>
+  <div class="forma-stack" data-density="compact">
+    <div class="forma-field">
+      <label class="forma-field__label" for="fault-summary-failed-submit-payee">Payee account</label>
       <input id="fault-summary-failed-submit-payee" name="payee" type="text" value="Northwind Supplies Ltd">
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="fault-summary-failed-submit-receipt">Receipt</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="fault-summary-failed-submit-receipt">Receipt</label>
       <input id="fault-summary-failed-submit-receipt" name="receipt" type="file">
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="fault-summary-failed-submit-rate">Exchange rate</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="fault-summary-failed-submit-rate">Exchange rate</label>
       <input id="fault-summary-failed-submit-rate" name="rate" type="text" inputmode="decimal" value="1.1642">
     </div>
   </div>
-</ef-fault-summary>`
+</forma-fault-summary>`
     },
     {
       id: "grouped-repeats",
       title: "One grouped fault with many occurrences",
       description: "Aegis grouped fourteen identical failures into one entry. The summary shows the count supplied upstream; Forma does not compute it. The entry has no affected region, so it is plain text instead of a link.",
-      html: `<ef-fault-summary class="ef-component-tag">
-  <section class="ef-fault-summary" tabindex="-1" aria-labelledby="fault-summary-grouped-repeats-title">
-    <div class="ef-fault-summary__heading">
-      <div class="ef-fault-summary__marker" aria-hidden="true">!</div>
+      html: `<forma-fault-summary class="forma-component-tag">
+  <section class="forma-fault-summary" tabindex="-1" aria-labelledby="fault-summary-grouped-repeats-title">
+    <div class="forma-fault-summary__heading">
+      <div class="forma-fault-summary__marker" aria-hidden="true">!</div>
       <div>
-        <p class="ef-fault__severity">1 unresolved fault</p>
+        <p class="forma-fault__severity">1 unresolved fault</p>
         <h2 id="fault-summary-grouped-repeats-title">Nightly export needs attention</h2>
         <p>Repeated occurrences are grouped by the application before rendering.</p>
       </div>
     </div>
-    <ol class="ef-fault-summary__list">
-      <li data-ef-severity="error">
+    <ol class="forma-fault-summary__list">
+      <li data-forma-severity="error">
         <strong>Export to the reporting warehouse timed out</strong>
-        <span class="ef-fault-summary__meta">Error · AG-2RT9M · occurred 14 times since 02:00 UTC</span>
+        <span class="forma-fault-summary__meta">Error · AG-2RT9M · occurred 14 times since 02:00 UTC</span>
       </li>
     </ol>
   </section>
-</ef-fault-summary>`
+</forma-fault-summary>`
     },
     {
       id: "mobile-summary",
@@ -120,43 +120,43 @@ export default {
           "Orientation changes only reflow text; list order and numbering stay the same."
         ]
       },
-      html: `<ef-fault-summary class="ef-component-tag">
-  <section class="ef-fault-summary" tabindex="-1" aria-labelledby="fault-summary-mobile-summary-title">
-    <div class="ef-fault-summary__heading">
-      <div class="ef-fault-summary__marker" aria-hidden="true">!</div>
+      html: `<forma-fault-summary class="forma-component-tag">
+  <section class="forma-fault-summary" tabindex="-1" aria-labelledby="fault-summary-mobile-summary-title">
+    <div class="forma-fault-summary__heading">
+      <div class="forma-fault-summary__marker" aria-hidden="true">!</div>
       <div>
-        <p class="ef-fault__severity">2 unresolved faults</p>
+        <p class="forma-fault__severity">2 unresolved faults</p>
         <h2 id="fault-summary-mobile-summary-title">Some changes were not saved</h2>
       </div>
     </div>
-    <ol class="ef-fault-summary__list">
-      <li data-ef-severity="error">
+    <ol class="forma-fault-summary__list">
+      <li data-forma-severity="error">
         <a href="#fault-summary-mobile-summary-title">Delivery instructions for the north warehouse loading dock could not be saved</a>
-        <span class="ef-fault-summary__meta">Error · AG-4F82C-DELIVERY-NORTH · occurred 3 times</span>
+        <span class="forma-fault-summary__meta">Error · AG-4F82C-DELIVERY-NORTH · occurred 3 times</span>
       </li>
-      <li data-ef-severity="warning">
+      <li data-forma-severity="warning">
         <a href="#fault-summary-mobile-summary-title">Synchronization is waiting for the carrier service</a>
-        <span class="ef-fault-summary__meta">Warning · AG-91B7Q</span>
+        <span class="forma-fault-summary__meta">Warning · AG-91B7Q</span>
       </li>
     </ol>
   </section>
-</ef-fault-summary>`
+</forma-fault-summary>`
     }
   ],
   api: {
     attributes: [
-      { name: "tabindex", on: "section.ef-fault-summary", values: "-1", default: "—", description: "Required. Lets the application move focus to the summary after a failed operation without adding a tab stop." },
-      { name: "aria-labelledby", on: "section.ef-fault-summary", values: "id of the heading", default: "—", description: "Names the region so focus lands on a named landmark." },
-      { name: "data-ef-severity", on: "li", values: "diagnostic | warning | error | critical", default: "—", description: "Records each entry's Aegis severity. critical makes the entry bold; the severity must also be written in the metadata line." },
+      { name: "tabindex", on: "section.forma-fault-summary", values: "-1", default: "—", description: "Required. Lets the application move focus to the summary after a failed operation without adding a tab stop." },
+      { name: "aria-labelledby", on: "section.forma-fault-summary", values: "id of the heading", default: "—", description: "Names the region so focus lands on a named landmark." },
+      { name: "data-forma-severity", on: "li", values: "diagnostic | warning | error | critical", default: "—", description: "Records each entry's Aegis severity. critical makes the entry bold; the severity must also be written in the metadata line." },
       { name: "href", on: "a", values: "#id of the affected region", default: "—", description: "Links an entry to the field or region it concerns. Omit the link when there is no affected region." },
-      { name: "aria-hidden", on: ".ef-fault-summary__marker", values: "true", default: "—", description: "Hides the decorative marker glyph." }
+      { name: "aria-hidden", on: ".forma-fault-summary__marker", values: "true", default: "—", description: "Hides the decorative marker glyph." }
     ],
     hooks: {
-      "ef-fault-summary": "Root section: a bordered grid with a strong 3px focus-visible outline and ring so programmatic focus is visible.",
-      "ef-fault-summary__heading": "Two-column grid placing the marker beside the count, heading and optional note.",
-      "ef-fault-summary__marker": "Decorative round marker glyph.",
-      "ef-fault-summary__list": "Ordered list of grouped entries with a 0.65rem gap and visible numbering.",
-      "ef-fault-summary__meta": "Monospace metadata line for severity, reference and occurrence count; breaks anywhere."
+      "forma-fault-summary": "Root section: a bordered grid with a strong 3px focus-visible outline and ring so programmatic focus is visible.",
+      "forma-fault-summary__heading": "Two-column grid placing the marker beside the count, heading and optional note.",
+      "forma-fault-summary__marker": "Decorative round marker glyph.",
+      "forma-fault-summary__list": "Ordered list of grouped entries with a 0.65rem gap and visible numbering.",
+      "forma-fault-summary__meta": "Monospace metadata line for severity, reference and occurrence count; breaks anywhere."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between entry links. The summary itself is not in the tab order (tabindex=-1)." },
@@ -170,7 +170,7 @@ export default {
   states: [
     { name: "Unfocused", how: "default", description: "A bordered region listing the grouped faults." },
     { name: "Focused", how: ":focus-visible after application focus()", description: "3px outline with an outer focus ring; the region is announced by its name." },
-    { name: "Critical entry", how: "li data-ef-severity=\"critical\" plus text", description: "Entry text is bold in addition to the Critical label." },
+    { name: "Critical entry", how: "li data-forma-severity=\"critical\" plus text", description: "Entry text is bold in addition to the Critical label." },
     { name: "Grouped entry", how: "occurrence text supplied by the application", description: "The meta line states how many times the grouped fault occurred." }
   ],
   accessibility: {

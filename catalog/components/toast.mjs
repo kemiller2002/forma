@@ -35,21 +35,21 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Undo after archiving",
       description: "A confirmation with a recovery action. The Undo button is a normal button the application wires up; the Close button is a native hide invoker. Both sit in the header row beside the text.",
-      html: `<ef-toast class="ef-component-tag">
+      html: `<forma-toast class="forma-component-tag">
   <button type="button" popovertarget="toast-undo-archive-notice" popovertargetaction="show">Archive 3 threads</button>
-  <aside class="ef-toast" id="toast-undo-archive-notice" popover="manual" role="status" aria-labelledby="toast-undo-archive-title">
-    <div class="ef-toast__header">
+  <aside class="forma-toast" id="toast-undo-archive-notice" popover="manual" role="status" aria-labelledby="toast-undo-archive-title">
+    <div class="forma-toast__header">
       <div>
-        <h3 class="ef-toast__title" id="toast-undo-archive-title">3 threads archived</h3>
+        <h3 class="forma-toast__title" id="toast-undo-archive-title">3 threads archived</h3>
         <p>They are still searchable under Archive.</p>
       </div>
-      <div class="ef-cluster">
+      <div class="forma-cluster">
         <button type="button">Undo</button>
         <button type="button" popovertarget="toast-undo-archive-notice" popovertargetaction="hide" aria-label="Dismiss archive notification">Close</button>
       </div>
     </div>
   </aside>
-</ef-toast>`
+</forma-toast>`
     },
     {
       id: "export-ready",
@@ -63,18 +63,18 @@ export default {
       },
       title: "Export ready with a link",
       description: "A toggle invoker (no `popovertargetaction`) that shows and hides the same toast, and a download link inside the notification. The link is the useful content; the toast only draws attention to it.",
-      html: `<ef-toast class="ef-component-tag">
+      html: `<forma-toast class="forma-component-tag">
   <button type="button" popovertarget="toast-export-ready-notice">Toggle export notice</button>
-  <aside class="ef-toast" id="toast-export-ready-notice" popover="manual" role="status" aria-labelledby="toast-export-ready-title">
-    <div class="ef-toast__header">
+  <aside class="forma-toast" id="toast-export-ready-notice" popover="manual" role="status" aria-labelledby="toast-export-ready-title">
+    <div class="forma-toast__header">
       <div>
-        <h3 class="ef-toast__title" id="toast-export-ready-title">Audit export is ready</h3>
+        <h3 class="forma-toast__title" id="toast-export-ready-title">Audit export is ready</h3>
         <p><a href="#toast-export-ready-notice">audit-2026-09.csv</a> (1,000 records)</p>
       </div>
       <button type="button" popovertarget="toast-export-ready-notice" popovertargetaction="hide" aria-label="Dismiss export notification">Close</button>
     </div>
   </aside>
-</ef-toast>`
+</forma-toast>`
     },
     {
       id: "light-copy-confirmation",
@@ -87,15 +87,15 @@ export default {
       },
       title: "Lightweight copy confirmation",
       description: "A single-line confirmation with no body paragraph, using the light weight for a quicker, less settled entry. Weight is presentation only and says nothing about importance.",
-      html: `<ef-toast class="ef-component-tag">
+      html: `<forma-toast class="forma-component-tag">
   <button type="button" popovertarget="toast-light-copy-notice" popovertargetaction="show">Copy share link</button>
-  <aside class="ef-toast" id="toast-light-copy-notice" popover="manual" role="status" data-ef-motion-weight="light" aria-labelledby="toast-light-copy-title">
-    <div class="ef-toast__header">
-      <h3 class="ef-toast__title" id="toast-light-copy-title">Link copied</h3>
+  <aside class="forma-toast" id="toast-light-copy-notice" popover="manual" role="status" data-forma-motion-weight="light" aria-labelledby="toast-light-copy-title">
+    <div class="forma-toast__header">
+      <h3 class="forma-toast__title" id="toast-light-copy-title">Link copied</h3>
       <button type="button" popovertarget="toast-light-copy-notice" popovertargetaction="hide" aria-label="Dismiss copy notification">Close</button>
     </div>
   </aside>
-</ef-toast>`
+</forma-toast>`
     },
     {
       id: "mobile-saved-draft",
@@ -117,35 +117,35 @@ export default {
           "It is fixed to the viewport, so it stays in place while the page scrolls and when the device rotates; it can cover content near the bottom edge until dismissed."
         ]
       },
-      html: `<ef-toast class="ef-component-tag">
+      html: `<forma-toast class="forma-component-tag">
   <button type="button" popovertarget="toast-mobile-saved-notice" popovertargetaction="show">Save draft</button>
-  <aside class="ef-toast" id="toast-mobile-saved-notice" popover="manual" role="status" aria-labelledby="toast-mobile-saved-title">
-    <div class="ef-toast__header">
+  <aside class="forma-toast" id="toast-mobile-saved-notice" popover="manual" role="status" aria-labelledby="toast-mobile-saved-title">
+    <div class="forma-toast__header">
       <div>
-        <h3 class="ef-toast__title" id="toast-mobile-saved-title">Draft saved to this device and your account</h3>
+        <h3 class="forma-toast__title" id="toast-mobile-saved-title">Draft saved to this device and your account</h3>
         <p>You can continue on another device.</p>
       </div>
       <button type="button" popovertarget="toast-mobile-saved-notice" popovertargetaction="hide" aria-label="Dismiss save notification">Close</button>
     </div>
   </aside>
-</ef-toast>`
+</forma-toast>`
     }
   ],
   api: {
     attributes: [
-      { name: "popover", on: "aside.ef-toast", values: "manual", default: "—", description: "Required. Makes the toast a native manual popover: hidden by default, shown in the top layer, and never light-dismissed." },
-      { name: "id", on: "aside.ef-toast", values: "unique id", default: "—", description: "Target for invoker buttons." },
+      { name: "popover", on: "aside.forma-toast", values: "manual", default: "—", description: "Required. Makes the toast a native manual popover: hidden by default, shown in the top layer, and never light-dismissed." },
+      { name: "id", on: "aside.forma-toast", values: "unique id", default: "—", description: "Target for invoker buttons." },
       { name: "popovertarget", on: "button", values: "id of the toast", default: "—", description: "Native invoker. Shows, hides or toggles the toast without script." },
       { name: "popovertargetaction", on: "button", values: "show | hide | toggle", default: "toggle", description: "What the invoker does. Use hide on the Close button inside the toast." },
-      { name: "role", on: "aside.ef-toast", values: "status", default: "—", description: "Polite live-region semantics for the notification text." },
-      { name: "aria-labelledby", on: "aside.ef-toast", values: "id of .ef-toast__title", default: "—", description: "Names the notification by its title." },
+      { name: "role", on: "aside.forma-toast", values: "status", default: "—", description: "Polite live-region semantics for the notification text." },
+      { name: "aria-labelledby", on: "aside.forma-toast", values: "id of .forma-toast__title", default: "—", description: "Names the notification by its title." },
       { name: "aria-label", on: "close button", values: "string", default: "—", description: "Gives the Close button a name that says what it dismisses." }
     ],
     hooks: {
-      "ef-toast": "The popover surface: fixed to the inline-end/block-end corner, bordered, shadowed, with an accent inline-start border.",
-      "ef-toast__header": "Flex row that places the text block and the dismiss control side by side.",
-      "ef-toast__title": "Notification title with margins removed.",
-      "data-ef-motion-weight": "Presentation-only perceived mass for entry and exit: light, standard (default) or heavy. Never encodes severity or importance."
+      "forma-toast": "The popover surface: fixed to the inline-end/block-end corner, bordered, shadowed, with an accent inline-start border.",
+      "forma-toast__header": "Flex row that places the text block and the dismiss control side by side.",
+      "forma-toast__title": "Notification title with margins removed.",
+      "data-forma-motion-weight": "Presentation-only perceived mass for entry and exit: light, standard (default) or heavy. Never encodes severity or importance."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Reaches the invoker and, while the toast is open, the controls inside it. Browsers place an open popover's contents after its invoker in sequential focus order." },
@@ -186,7 +186,7 @@ export default {
     "Entry uses the standard weight by default: opacity fades by perceptual interpolation (about 120ms) while position and scale settle over the inertia duration (about 215ms).",
     "Exit shares the entry response (about 214ms at standard), including its damped easing.",
     "`display` and `overlay` transition with `allow-discrete`, so the toast stays in the top layer until its exit completes; the popover state itself changes immediately.",
-    "`data-ef-motion-weight` light shortens and heavy lengthens the spatial motion. Opacity timing is independent of weight.",
+    "`data-forma-motion-weight` light shortens and heavy lengthens the spatial motion. Opacity timing is independent of weight.",
     "Under `prefers-reduced-motion: reduce` every transition is effectively instant; the toast appears and disappears in place."
   ],
   guidance: {

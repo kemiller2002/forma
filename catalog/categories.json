@@ -21,6 +21,6 @@
     { "id": "utilities", "name": "Utilities", "summary": "Small structural helpers: visually hidden text, text roles and other composition aids." }
   ],
   "unownedRoots": {
-    "ef-component-tag": "The inert <ef-*> authoring wrapper class. It appears on every component page and is described in the site's 'Reading a component page' guide."
+    "forma-component-tag": "The inert <forma-*> authoring wrapper class. It appears on every component page and is described in the site's 'Reading a component page' guide."
   }
 }

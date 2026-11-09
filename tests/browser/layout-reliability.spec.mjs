@@ -83,7 +83,7 @@ test("short labels are not wrapped by the containment rules", async ({ page }) =
     range.selectNodeContents(element);
     return new Set([...range.getClientRects()].filter(rect => rect.width > 0).map(rect => Math.round(rect.top))).size;
   });
-  for (const selector of ["[data-lr-row] button >> nth=0", "[data-lr-fixture='enlarged-text'] .ef-status-lozenge >> nth=0", "[data-lr-fixture='navigation'] nav a >> nth=0"]) {
+  for (const selector of ["[data-lr-row] button >> nth=0", "[data-lr-fixture='enlarged-text'] .forma-status-lozenge >> nth=0", "[data-lr-fixture='navigation'] nav a >> nth=0"]) {
     expect(await lines(page.locator(selector)), selector).toBe(1);
   }
 });
@@ -190,7 +190,7 @@ test("keyboard focus stays visible and unclipped across every fixture", async ({
 });
 
 test("containment holds in the dark theme and with the compact and square skins", async ({ page }) => {
-  for (const attributes of [{ "data-ef-theme": "dark" }, { "data-ef-skin": "compact" }, { "data-ef-skin": "square" }]) {
+  for (const attributes of [{ "data-forma-theme": "dark" }, { "data-forma-skin": "compact" }, { "data-forma-skin": "square" }]) {
     await open(page, { width: 375 });
     await page.evaluate(entries => entries.forEach(([name, value]) => document.documentElement.setAttribute(name, value)), Object.entries(attributes));
     const failures = await containmentFailures(page);
@@ -203,8 +203,8 @@ test("containment holds in the dark theme and with the compact and square skins"
 // Containment cannot see this, since both boxes stay inside the header, so
 // the reading order of the two is measured directly: the label ends at or
 // above the line where the title starts, at every width and at 200% text.
-const typeToTitleGap = page => page.locator("[data-lr-fixture] .ef-record-header__title").first().evaluate(title => {
-  const type = title.querySelector(".ef-record-header__type").getBoundingClientRect();
+const typeToTitleGap = page => page.locator("[data-lr-fixture] .forma-record-header__title").first().evaluate(title => {
+  const type = title.querySelector(".forma-record-header__type").getBoundingClientRect();
   const heading = title.querySelector(":is(h1, h2, h3, h4)").getBoundingClientRect();
   return { gap: heading.top - type.bottom, typeHeight: type.height, headingHeight: heading.height };
 });

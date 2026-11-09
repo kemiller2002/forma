@@ -3,7 +3,7 @@ export default {
   category: "assessment",
   behavior: "Native HTML",
   summary: "A focused two-alternative comparison using ordinary choice semantics.",
-  owns: ["ef-pairwise"],
+  owns: ["forma-pairwise"],
   purpose: {
     description: "A pairwise choice asks the user to pick one of two described alternatives, shown side by side as large cards with an \"or\" between them. It is a native radio group: both cards are labels with visually hidden radios, so the browser owns selection, keyboard movement and required validation. The \"Option A / Option B\" eyebrow and the \"or\" separator are presentation; the application decides how many pairs to show, in which order, and what a preference means.",
     useWhen: [
@@ -29,55 +29,55 @@ export default {
       id: "option-b-selected",
       title: "Second option chosen",
       description: "Comparison 4 of 10 in a prioritisation exercise with Option B selected. The selected card takes the inverse surface.",
-      html: `<ef-pairwise-choice class="ef-component-tag">
-  <fieldset class="ef-pairwise" aria-describedby="pairwise-selected-position">
-    <legend class="ef-pairwise__legend">Which should the platform team invest in next quarter?</legend>
-    <p class="ef-field__description" id="pairwise-selected-position">Comparison 4 of 10</p>
-    <div class="ef-pairwise__options">
-      <label class="ef-pairwise__option">
+      html: `<forma-pairwise-choice class="forma-component-tag">
+  <fieldset class="forma-pairwise" aria-describedby="pairwise-selected-position">
+    <legend class="forma-pairwise__legend">Which should the platform team invest in next quarter?</legend>
+    <p class="forma-field__description" id="pairwise-selected-position">Comparison 4 of 10</p>
+    <div class="forma-pairwise__options">
+      <label class="forma-pairwise__option">
         <input type="radio" name="pairwise-selected-investment" value="observability" required>
-        <span class="ef-pairwise__eyebrow">Option A</span>
+        <span class="forma-pairwise__eyebrow">Option A</span>
         <strong>Observability</strong>
         <span>Unified tracing and log search across all services.</span>
       </label>
-      <span class="ef-pairwise__versus" aria-hidden="true">or</span>
-      <label class="ef-pairwise__option">
+      <span class="forma-pairwise__versus" aria-hidden="true">or</span>
+      <label class="forma-pairwise__option">
         <input type="radio" name="pairwise-selected-investment" value="self-service" checked>
-        <span class="ef-pairwise__eyebrow">Option B</span>
+        <span class="forma-pairwise__eyebrow">Option B</span>
         <strong>Self-service environments</strong>
         <span>Teams create preview environments without a ticket.</span>
       </label>
     </div>
   </fieldset>
-</ef-pairwise-choice>`
+</forma-pairwise-choice>`
     },
     {
       id: "no-preference",
       title: "Comparison with a No preference answer",
       description: "When a tie is a legitimate answer, it is offered as a special choice sharing the radio name, below the two cards rather than as a third card between them.",
-      html: `<ef-pairwise-choice class="ef-component-tag">
-  <fieldset class="ef-pairwise">
-    <legend class="ef-pairwise__legend">Which matters more for this service?</legend>
-    <div class="ef-pairwise__options">
-      <label class="ef-pairwise__option">
+      html: `<forma-pairwise-choice class="forma-component-tag">
+  <fieldset class="forma-pairwise">
+    <legend class="forma-pairwise__legend">Which matters more for this service?</legend>
+    <div class="forma-pairwise__options">
+      <label class="forma-pairwise__option">
         <input type="radio" name="pairwise-tie-priority" value="latency" required>
-        <span class="ef-pairwise__eyebrow">Option A</span>
+        <span class="forma-pairwise__eyebrow">Option A</span>
         <strong>Low latency</strong>
         <span>Responses under 100ms at the 99th percentile.</span>
       </label>
-      <span class="ef-pairwise__versus" aria-hidden="true">or</span>
-      <label class="ef-pairwise__option">
+      <span class="forma-pairwise__versus" aria-hidden="true">or</span>
+      <label class="forma-pairwise__option">
         <input type="radio" name="pairwise-tie-priority" value="cost">
-        <span class="ef-pairwise__eyebrow">Option B</span>
+        <span class="forma-pairwise__eyebrow">Option B</span>
         <strong>Low running cost</strong>
         <span>Stay within the current infrastructure budget.</span>
       </label>
     </div>
-    <div class="ef-special-choices" aria-label="Other responses">
-      <label class="ef-special-choice"><input type="radio" name="pairwise-tie-priority" value="no-preference"><span>No preference</span></label>
+    <div class="forma-special-choices" aria-label="Other responses">
+      <label class="forma-special-choice"><input type="radio" name="pairwise-tie-priority" value="no-preference"><span>No preference</span></label>
     </div>
   </fieldset>
-</ef-pairwise-choice>`
+</forma-pairwise-choice>`
     },
     {
       id: "mobile-stacked",
@@ -92,26 +92,26 @@ export default {
           "Nothing scrolls horizontally at 320px, in portrait or landscape."
         ]
       },
-      html: `<ef-pairwise-choice class="ef-component-tag">
-  <fieldset class="ef-pairwise">
-    <legend class="ef-pairwise__legend">Which would you rather have?</legend>
-    <div class="ef-pairwise__options">
-      <label class="ef-pairwise__option">
+      html: `<forma-pairwise-choice class="forma-component-tag">
+  <fieldset class="forma-pairwise">
+    <legend class="forma-pairwise__legend">Which would you rather have?</legend>
+    <div class="forma-pairwise__options">
+      <label class="forma-pairwise__option">
         <input type="radio" name="pairwise-mobile-tradeoff" value="fewer-meetings" required>
-        <span class="ef-pairwise__eyebrow">Option A</span>
+        <span class="forma-pairwise__eyebrow">Option A</span>
         <strong>Fewer meetings</strong>
         <span>Two meeting-free days each week.</span>
       </label>
-      <span class="ef-pairwise__versus" aria-hidden="true">or</span>
-      <label class="ef-pairwise__option">
+      <span class="forma-pairwise__versus" aria-hidden="true">or</span>
+      <label class="forma-pairwise__option">
         <input type="radio" name="pairwise-mobile-tradeoff" value="faster-reviews">
-        <span class="ef-pairwise__eyebrow">Option B</span>
+        <span class="forma-pairwise__eyebrow">Option B</span>
         <strong>Faster reviews</strong>
         <span>Code reviews answered within four working hours.</span>
       </label>
     </div>
   </fieldset>
-</ef-pairwise-choice>`
+</forma-pairwise-choice>`
     }
   ],
   api: {
@@ -121,16 +121,16 @@ export default {
       { name: "value", on: "input", values: "string", default: "—", description: "Submitted choice. The application derives preferences; Forma attaches no meaning to A or B." },
       { name: "required", on: "first input", values: "boolean", default: "absent", description: "Native required-group validation." },
       { name: "checked", on: "input", values: "boolean", default: "absent", description: "Restores a saved choice." },
-      { name: "aria-hidden", on: ".ef-pairwise__versus", values: "true", default: "—", description: "Keeps the decorative \"or\" out of the accessibility tree." },
+      { name: "aria-hidden", on: ".forma-pairwise__versus", values: "true", default: "—", description: "Keeps the decorative \"or\" out of the accessibility tree." },
       { name: "aria-describedby", on: "fieldset", values: "id list", default: "—", description: "Associates help text such as the comparison position." }
     ],
     hooks: {
-      "ef-pairwise": "Root fieldset with browser border and padding removed.",
-      "ef-pairwise__legend": "Comparison question.",
-      "ef-pairwise__options": "Three-column grid: option, separator, option. One column below 44rem.",
-      "ef-pairwise__option": "Bordered card label with a visually hidden radio; at least 5rem tall.",
-      "ef-pairwise__eyebrow": "Small uppercase monospace label such as Option A.",
-      "ef-pairwise__versus": "The decorative \"or\" separator."
+      "forma-pairwise": "Root fieldset with browser border and padding removed.",
+      "forma-pairwise__legend": "Comparison question.",
+      "forma-pairwise__options": "Three-column grid: option, separator, option. One column below 44rem.",
+      "forma-pairwise__option": "Bordered card label with a visually hidden radio; at least 5rem tall.",
+      "forma-pairwise__eyebrow": "Small uppercase monospace label such as Option A.",
+      "forma-pairwise__versus": "The decorative \"or\" separator."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus into and out of the comparison." },

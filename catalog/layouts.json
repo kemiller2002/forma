@@ -1955,7 +1955,7 @@
         "LAW-COMP-005",
         "LAW-COMP-006",
         "HY-BEAUTY-002",
-        "examples/echelon-marketing-site/index.html",
+        "examples/marketing-site/index.html",
         "tests/browser/marketing.spec.mjs"
       ],
       "gaps": [
@@ -2007,7 +2007,7 @@
         "LAW-COMP-005",
         "LAW-COMP-006",
         "HY-BEAUTY-002",
-        "examples/echelon-marketing-site/product.html"
+        "examples/marketing-site/product.html"
       ],
       "gaps": []
     },
@@ -2046,7 +2046,7 @@
         "LAW-COMP-002",
         "LAW-COMP-005",
         "LAW-COMP-007",
-        "examples/echelon-marketing-site/docs.html"
+        "examples/marketing-site/docs.html"
       ],
       "gaps": []
     }

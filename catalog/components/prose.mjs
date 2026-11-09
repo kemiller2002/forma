@@ -4,7 +4,7 @@ export default {
   behavior: "Site content",
   summary: "Long-form content constrained to the reading measure with underlined links and consistent heading rhythm.",
   purpose: {
-    description: "Prose is the container for long-form writing on marketing and documentation pages: articles, guides and release notes rendered from Markdown or written by hand. `.ef-prose` caps the region at the reading measure, spaces its direct headings, reduces `h2` to the statement size so section headings do not compete with the page title, and keeps paragraphs and list items at primary text contrast. Plain HTML inside inherits the `.ef-site` foundations: underlined links, inline code, blockquotes and rules.",
+    description: "Prose is the container for long-form writing on marketing and documentation pages: articles, guides and release notes rendered from Markdown or written by hand. `.forma-prose` caps the region at the reading measure, spaces its direct headings, reduces `h2` to the statement size so section headings do not compete with the page title, and keeps paragraphs and list items at primary text contrast. Plain HTML inside inherits the `.forma-site` foundations: underlined links, inline code, blockquotes and rules.",
     useWhen: [
       "Rendering an article, guide or policy page made of headings, paragraphs and lists.",
       "Markdown output needs Forma styling without adding classes to each element.",
@@ -12,11 +12,11 @@ export default {
     ],
     avoidWhen: [
       "Short marketing sections with a heading and a sentence: use [[section-heading]] and components.",
-      "Application help text or form descriptions: use the application patterns, which are not scoped to `.ef-site`.",
+      "Application help text or form descriptions: use the application patterns, which are not scoped to `.forma-site`.",
       "Constraining line length in application UI: use [[measure]]."
     ],
     characteristics: [
-      "Maximum width is `--ef-layout-measure`; lists and paragraphs share it.",
+      "Maximum width is `--forma-layout-measure`; lists and paragraphs share it.",
       "Direct `h1`, `h2` and `h3` children get fixed rhythm; a heading that is the first child has no top margin.",
       "Direct figures, code samples and `pre` elements get block margins.",
       "Links are underlined and thicken on hover; in print, external links show their URL after the text."
@@ -34,32 +34,32 @@ export default {
       },
       title: "Guide with a code sample and callout",
       description: "A short guide composing a [[code-sample]] and a [[callout]] inside prose. The figure takes the prose block margins and the callout keeps the measure.",
-      html: `<ef-prose class="ef-component-tag">
-  <div class="ef-site">
-    <article class="ef-prose">
+      html: `<forma-prose class="forma-component-tag">
+  <div class="forma-site">
+    <article class="forma-prose">
       <h2>Pin a release</h2>
       <p>Record the version and checksum of every asset in <code>forma.lock</code>, then install exactly what it pins.</p>
-      <figure class="ef-code-figure">
+      <figure class="forma-code-figure">
         <figcaption id="prose-guide-with-code-caption">Install what the lock pins</figcaption>
-        <pre class="ef-code" tabindex="0" aria-labelledby="prose-guide-with-code-caption"><code>bash install.sh</code></pre>
+        <pre class="forma-code" tabindex="0" aria-labelledby="prose-guide-with-code-caption"><code>bash install.sh</code></pre>
       </figure>
-      <aside class="ef-callout" data-ef-callout="note" aria-labelledby="prose-guide-with-code-note">
-        <p class="ef-callout__label" id="prose-guide-with-code-note">Note</p>
+      <aside class="forma-callout" data-forma-callout="note" aria-labelledby="prose-guide-with-code-note">
+        <p class="forma-callout__label" id="prose-guide-with-code-note">Note</p>
         <p>The installer needs only bash, curl and a sha256 tool.</p>
       </aside>
       <h3>Upgrading</h3>
       <p>Change the version, run <code>bash install.sh --update</code>, and review <a href="#prose-guide-with-code-caption">the release notes</a>.</p>
     </article>
   </div>
-</ef-prose>`
+</forma-prose>`
     },
     {
       id: "release-notes",
       title: "Release notes with nested lists",
       description: "Markdown-style release notes: headings, a nested list, strong text and a horizontal rule. No element carries a class.",
-      html: `<ef-prose class="ef-component-tag">
-  <div class="ef-site">
-    <article class="ef-prose">
+      html: `<forma-prose class="forma-component-tag">
+  <div class="forma-site">
+    <article class="forma-prose">
       <h2>0.3.0</h2>
       <p><strong>Breaking:</strong> the landing layout is removed.</p>
       <h3>Added</h3>
@@ -74,7 +74,7 @@ export default {
       <ol><li>Header no longer sticks on short viewports.</li><li>Card focus ring is drawn inside the card edge.</li></ol>
     </article>
   </div>
-</ef-prose>`
+</forma-prose>`
     },
     {
       id: "mobile-article",
@@ -95,23 +95,23 @@ export default {
           "Inline links are only as large as their text, so write them as whole phrases to give touch users a usable target; they keep their underline and the shell's focus ring."
         ]
       },
-      html: `<ef-prose class="ef-component-tag">
-  <div class="ef-site">
-    <article class="ef-prose">
+      html: `<forma-prose class="forma-component-tag">
+  <div class="forma-site">
+    <article class="forma-prose">
       <h2>Why tones, not colors</h2>
-      <p>On the surface tone, links and labels read <code>var(--ef-color-text-on-secondary-surface)</code> instead of the accent, so a region can change its background without restyling what is inside.</p>
+      <p>On the surface tone, links and labels read <code>var(--forma-color-text-on-secondary-surface)</code> instead of the accent, so a region can change its background without restyling what is inside.</p>
       <blockquote><p>Links on the secondary surface fall back to primary text, because the accent is below 4.5:1 there.</p></blockquote>
       <p>See <a href="#prose-mobile-article-end">the token contract</a> for every validated pair.</p>
       <p id="prose-mobile-article-end">Tones are presentation only.</p>
     </article>
   </div>
-</ef-prose>`
+</forma-prose>`
     }
   ],
   api: {
     attributes: [],
     hooks: {
-      "ef-prose": "Long-form container. Caps width at the reading measure, redefines `--ef-type-size-h2` to the statement size, spaces direct headings, keeps paragraph and list text at primary color, and gives direct figures and code blocks block margins."
+      "forma-prose": "Long-form container. Caps width at the reading measure, redefines `--forma-type-size-h2` to the statement size, spaces direct headings, keeps paragraph and list text at primary color, and gives direct figures and code blocks block margins."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through links and focusable code blocks in source order." }
@@ -136,16 +136,16 @@ export default {
     ]
   },
   responsive: [
-    "Capped at `--ef-layout-measure`; below that it takes the column width. No breakpoints.",
+    "Capped at `--forma-layout-measure`; below that it takes the column width. No breakpoints.",
     "Inline code wraps anywhere; code blocks scroll inside themselves.",
-    "Images and media inside `.ef-site` are limited to 100% of their container."
+    "Images and media inside `.forma-site` are limited to 100% of their container."
   ],
   motion: [
     "No animation: link hover changes the underline thickness and color instantly."
   ],
   guidance: {
     do: [
-      "Emit plain semantic HTML from Markdown and wrap it in `.ef-prose`.",
+      "Emit plain semantic HTML from Markdown and wrap it in `.forma-prose`.",
       "Use [[callout]] sparingly for material a reader must notice."
     ],
     avoid: [

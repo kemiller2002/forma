@@ -28,43 +28,43 @@ export default {
       interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Form with help text",
       description: "A payment details form with a help panel. The form is the primary region; the help panel sits beside it on wide screens and below it when the pane narrows.",
-      html: `<ef-switcher class="ef-component-tag">
-  <div class="ef-switcher">
-    <form class="ef-switcher__primary ef-stack" aria-labelledby="switcher-form-with-help-title">
+      html: `<forma-switcher class="forma-component-tag">
+  <div class="forma-switcher">
+    <form class="forma-switcher__primary forma-stack" aria-labelledby="switcher-form-with-help-title">
       <h2 id="switcher-form-with-help-title">Bank account</h2>
-      <div class="ef-field">
-        <label class="ef-field__label" for="switcher-form-with-help-holder">Account holder</label>
+      <div class="forma-field">
+        <label class="forma-field__label" for="switcher-form-with-help-holder">Account holder</label>
         <input id="switcher-form-with-help-holder" name="holder" type="text" autocomplete="name">
       </div>
-      <div class="ef-field">
-        <label class="ef-field__label" for="switcher-form-with-help-iban">IBAN</label>
+      <div class="forma-field">
+        <label class="forma-field__label" for="switcher-form-with-help-iban">IBAN</label>
         <input id="switcher-form-with-help-iban" name="iban" type="text" autocomplete="off" spellcheck="false">
       </div>
-      <div class="ef-cluster"><button type="submit">Save account</button></div>
+      <div class="forma-cluster"><button type="submit">Save account</button></div>
     </form>
-    <aside class="ef-switcher__secondary ef-surface" aria-labelledby="switcher-form-with-help-help">
+    <aside class="forma-switcher__secondary forma-surface" aria-labelledby="switcher-form-with-help-help">
       <h3 id="switcher-form-with-help-help">Where to find your IBAN</h3>
       <p>It is printed on your bank statement and shown in your banking app under account details.</p>
     </aside>
   </div>
-</ef-switcher>`
+</forma-switcher>`
     },
     {
       id: "comparison-before-after",
       title: "Before and after comparison",
-      description: "A change summary with the current configuration as the primary region and the proposed change as the secondary. A narrower gap is set with `--ef-switcher-space`.",
-      html: `<ef-switcher class="ef-component-tag">
-  <section class="ef-switcher" style="--ef-switcher-space: 1rem" aria-label="Retention policy change">
-    <article class="ef-switcher__primary ef-surface" aria-labelledby="switcher-comparison-before-after-current">
+      description: "A change summary with the current configuration as the primary region and the proposed change as the secondary. A narrower gap is set with `--forma-switcher-space`.",
+      html: `<forma-switcher class="forma-component-tag">
+  <section class="forma-switcher" style="--forma-switcher-space: 1rem" aria-label="Retention policy change">
+    <article class="forma-switcher__primary forma-surface" aria-labelledby="switcher-comparison-before-after-current">
       <h2 id="switcher-comparison-before-after-current">Current policy</h2>
       <p>Audit logs are kept for 90 days and then deleted. Exports are available for the full period.</p>
     </article>
-    <article class="ef-switcher__secondary ef-surface" aria-labelledby="switcher-comparison-before-after-proposed">
+    <article class="forma-switcher__secondary forma-surface" aria-labelledby="switcher-comparison-before-after-proposed">
       <h2 id="switcher-comparison-before-after-proposed">Proposed policy</h2>
       <p>Keep audit logs for 400 days.</p>
     </article>
   </section>
-</ef-switcher>`
+</forma-switcher>`
     },
     {
       id: "mobile-stacked",
@@ -80,32 +80,32 @@ export default {
           "In landscape on a large phone the regions may fit side by side again; the markup is unchanged."
         ]
       },
-      html: `<ef-switcher class="ef-component-tag">
-  <div class="ef-switcher">
-    <article class="ef-switcher__primary ef-stack" aria-labelledby="switcher-mobile-stacked-title">
+      html: `<forma-switcher class="forma-component-tag">
+  <div class="forma-switcher">
+    <article class="forma-switcher__primary forma-stack" aria-labelledby="switcher-mobile-stacked-title">
       <h2 id="switcher-mobile-stacked-title">Version 5.1</h2>
       <p>Offline mode now syncs drafts automatically when the connection returns.</p>
     </article>
-    <aside class="ef-switcher__secondary" aria-labelledby="switcher-mobile-stacked-download">
+    <aside class="forma-switcher__secondary" aria-labelledby="switcher-mobile-stacked-download">
       <h3 id="switcher-mobile-stacked-download">Download</h3>
       <p><a href="#release-5-1">Release notes and installers</a></p>
     </aside>
   </div>
-</ef-switcher>`
+</forma-switcher>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-labelledby", on: "regions", values: "id of the region heading", default: "—", description: "Names each region by its visible heading." },
-      { name: "aria-label", on: ".ef-switcher", values: "string", default: "—", description: "Names the pair when the switcher element is a section." },
-      { name: "style", on: ".ef-switcher", values: "--ef-switcher-space: <length>", default: "—", description: "Per-instance gap override." }
+      { name: "aria-label", on: ".forma-switcher", values: "string", default: "—", description: "Names the pair when the switcher element is a section." },
+      { name: "style", on: ".forma-switcher", values: "--forma-switcher-space: <length>", default: "—", description: "Per-instance gap override." }
     ],
     hooks: {
-      "ef-switcher": "Wrapping flex container with start-aligned regions.",
-      "ef-switcher__primary": "Primary region: flex basis 28rem, grows strongly, minimum `min(100%, 20rem)`.",
-      "ef-switcher__secondary": "Secondary region: flex basis 16rem, minimum `min(100%, 16rem)`.",
-      "--ef-switcher-space": "Gap between the regions in both directions. Default `--ef-primitive-spacing-5` (1.5rem).",
-      "--ef-switcher-threshold": "Declared with a default of 42rem but not read by any rule; setting it currently has no effect. The switch point comes from the region flex bases."
+      "forma-switcher": "Wrapping flex container with start-aligned regions.",
+      "forma-switcher__primary": "Primary region: flex basis 28rem, grows strongly, minimum `min(100%, 20rem)`.",
+      "forma-switcher__secondary": "Secondary region: flex basis 16rem, minimum `min(100%, 16rem)`.",
+      "--forma-switcher-space": "Gap between the regions in both directions. Default `--forma-primitive-spacing-5` (1.5rem).",
+      "--forma-switcher-threshold": "Declared with a default of 42rem but not read by any rule; setting it currently has no effect. The switch point comes from the region flex bases."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the primary region, then the secondary, in source order." }
@@ -144,7 +144,7 @@ export default {
       "Keep secondary content short enough to read comfortably at 16rem."
     ],
     avoid: [
-      "Relying on `--ef-switcher-threshold` to control the switch point; it is not wired to any rule.",
+      "Relying on `--forma-switcher-threshold` to control the switch point; it is not wired to any rule.",
       "Putting a third child in the switcher; only the primary and secondary element classes are sized."
     ]
   },

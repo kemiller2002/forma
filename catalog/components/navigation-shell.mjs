@@ -17,7 +17,7 @@ export default {
       "Destinations are deeply nested: use [[hierarchy-tree]] inside the navigation."
     ],
     characteristics: [
-      "Grid of `var(--ef-navigation-width)` (default `minmax(11rem, 16rem)`) and a `minmax(0, 1fr)` content column.",
+      "Grid of `var(--forma-navigation-width)` (default `minmax(11rem, 16rem)`) and a `minmax(0, 1fr)` content column.",
       "Mode switch at a 48rem viewport width via a media query; there is no script.",
       "The compact summary is at least 44px tall and the disclosure uses native open/close behavior. The summary is a flex row, so the browser's disclosure triangle is not drawn; its text must say what it opens.",
       "Forma does not style `aria-current`; any visual current-location cue comes from the application's link styling."
@@ -30,38 +30,38 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Project settings area",
       description: "Five destinations with Access as the current page. Both lists carry the same aria-current. The content region is shown as a labelled section here; in an application it is the page's main element.",
-      html: `<ef-navigation-shell class="ef-component-tag">
-  <div class="ef-navigation-shell">
-    <details class="ef-navigation-shell__compact">
+      html: `<forma-navigation-shell class="forma-component-tag">
+  <div class="forma-navigation-shell">
+    <details class="forma-navigation-shell__compact">
       <summary>Settings navigation</summary>
       <nav aria-label="Project settings"><a href="#navshell-settings-general">General</a><a href="#navshell-settings-access" aria-current="page">Access</a><a href="#navshell-settings-billing">Billing</a><a href="#navshell-settings-webhooks">Webhooks</a><a href="#navshell-settings-danger">Danger zone</a></nav>
     </details>
-    <nav class="ef-navigation-shell__persistent" aria-label="Project settings"><a href="#navshell-settings-general">General</a><a href="#navshell-settings-access" aria-current="page">Access</a><a href="#navshell-settings-billing">Billing</a><a href="#navshell-settings-webhooks">Webhooks</a><a href="#navshell-settings-danger">Danger zone</a></nav>
-    <section class="ef-navigation-shell__content" id="navshell-settings-access" aria-labelledby="navshell-settings-title">
+    <nav class="forma-navigation-shell__persistent" aria-label="Project settings"><a href="#navshell-settings-general">General</a><a href="#navshell-settings-access" aria-current="page">Access</a><a href="#navshell-settings-billing">Billing</a><a href="#navshell-settings-webhooks">Webhooks</a><a href="#navshell-settings-danger">Danger zone</a></nav>
+    <section class="forma-navigation-shell__content" id="navshell-settings-access" aria-labelledby="navshell-settings-title">
       <h2 id="navshell-settings-title">Access</h2>
       <p>Three people and one service account can change this project.</p>
     </section>
   </div>
-</ef-navigation-shell>`
+</forma-navigation-shell>`
     },
     {
       id: "narrow-rail",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Narrower navigation column",
-      description: "The application narrows the navigation column with the --ef-navigation-width custom property and tightens the gap with --ef-navigation-space. Long destination names wrap within the column.",
-      html: `<ef-navigation-shell class="ef-component-tag">
-  <div class="ef-navigation-shell" style="--ef-navigation-width: minmax(8rem, 10rem); --ef-navigation-space: 0.5rem;">
-    <details class="ef-navigation-shell__compact">
+      description: "The application narrows the navigation column with the --forma-navigation-width custom property and tightens the gap with --forma-navigation-space. Long destination names wrap within the column.",
+      html: `<forma-navigation-shell class="forma-component-tag">
+  <div class="forma-navigation-shell" style="--forma-navigation-width: minmax(8rem, 10rem); --forma-navigation-space: 0.5rem;">
+    <details class="forma-navigation-shell__compact">
       <summary>Reports navigation</summary>
       <nav aria-label="Reports"><a href="#navshell-narrow-summary" aria-current="page">Summary</a><a href="#navshell-narrow-quarterly">Quarterly incident retrospectives</a><a href="#navshell-narrow-exports">Exports</a></nav>
     </details>
-    <nav class="ef-navigation-shell__persistent" aria-label="Reports"><a href="#navshell-narrow-summary" aria-current="page">Summary</a><a href="#navshell-narrow-quarterly">Quarterly incident retrospectives</a><a href="#navshell-narrow-exports">Exports</a></nav>
-    <section class="ef-navigation-shell__content" id="navshell-narrow-summary" aria-labelledby="navshell-narrow-title">
+    <nav class="forma-navigation-shell__persistent" aria-label="Reports"><a href="#navshell-narrow-summary" aria-current="page">Summary</a><a href="#navshell-narrow-quarterly">Quarterly incident retrospectives</a><a href="#navshell-narrow-exports">Exports</a></nav>
+    <section class="forma-navigation-shell__content" id="navshell-narrow-summary" aria-labelledby="navshell-narrow-title">
       <h2 id="navshell-narrow-title">Summary</h2>
       <p>Twelve reports were generated this month.</p>
     </section>
   </div>
-</ef-navigation-shell>`
+</forma-navigation-shell>`
     },
     {
       id: "mobile-compact-open",
@@ -77,34 +77,34 @@ export default {
           "The disclosure stays open after a same-page link is followed; closing it on navigation is application behavior."
         ]
       },
-      html: `<ef-navigation-shell class="ef-component-tag">
-  <div class="ef-navigation-shell">
-    <details class="ef-navigation-shell__compact" open>
+      html: `<forma-navigation-shell class="forma-component-tag">
+  <div class="forma-navigation-shell">
+    <details class="forma-navigation-shell__compact" open>
       <summary>Account navigation</summary>
       <nav aria-label="Account"><a href="#navshell-mobile-profile" aria-current="page">Profile</a><a href="#navshell-mobile-security">Security</a><a href="#navshell-mobile-notifications">Notifications</a></nav>
     </details>
-    <nav class="ef-navigation-shell__persistent" aria-label="Account"><a href="#navshell-mobile-profile" aria-current="page">Profile</a><a href="#navshell-mobile-security">Security</a><a href="#navshell-mobile-notifications">Notifications</a></nav>
-    <section class="ef-navigation-shell__content" id="navshell-mobile-profile" aria-labelledby="navshell-mobile-title">
+    <nav class="forma-navigation-shell__persistent" aria-label="Account"><a href="#navshell-mobile-profile" aria-current="page">Profile</a><a href="#navshell-mobile-security">Security</a><a href="#navshell-mobile-notifications">Notifications</a></nav>
+    <section class="forma-navigation-shell__content" id="navshell-mobile-profile" aria-labelledby="navshell-mobile-title">
       <h2 id="navshell-mobile-title">Profile</h2>
       <p>Your name and photo are visible to your organization.</p>
     </section>
   </div>
-</ef-navigation-shell>`
+</forma-navigation-shell>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-label", on: "both nav elements", values: "the same string", default: "—", description: "Names the navigation landmark. Use the same label on both, because only one is displayed at a time." },
       { name: "aria-current", on: "link", values: "page", default: "absent", description: "Marks the current destination. Set it identically in both lists." },
-      { name: "open", on: "details.ef-navigation-shell__compact", values: "boolean", default: "absent (closed)", description: "Native disclosure state in compact mode. The browser toggles it; the application may close it after navigation." }
+      { name: "open", on: "details.forma-navigation-shell__compact", values: "boolean", default: "absent (closed)", description: "Native disclosure state in compact mode. The browser toggles it; the application may close it after navigation." }
     ],
     hooks: {
-      "ef-navigation-shell": "Root grid: navigation column and content column above 48rem; a single column at or below it.",
-      "ef-navigation-shell__persistent": "Side-column nav shown above 48rem as a vertical list of links.",
-      "ef-navigation-shell__compact": "Native details disclosure shown at or below 48rem; its summary is a 44px row.",
-      "ef-navigation-shell__content": "The content region (normally the page's main element). It can shrink to avoid overflow.",
-      "--ef-navigation-width": "Width track of the navigation column. Default `minmax(11rem, 16rem)`.",
-      "--ef-navigation-space": "Gap between navigation and content. Default 1rem."
+      "forma-navigation-shell": "Root grid: navigation column and content column above 48rem; a single column at or below it.",
+      "forma-navigation-shell__persistent": "Side-column nav shown above 48rem as a vertical list of links.",
+      "forma-navigation-shell__compact": "Native details disclosure shown at or below 48rem; its summary is a 44px row.",
+      "forma-navigation-shell__content": "The content region (normally the page's main element). It can shrink to avoid overflow.",
+      "--forma-navigation-width": "Width track of the navigation column. Default `minmax(11rem, 16rem)`.",
+      "--forma-navigation-space": "Gap between navigation and content. Default 1rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the visible navigation links, then into the content." },
@@ -136,7 +136,7 @@ export default {
     ]
   },
   responsive: [
-    "Above 48rem: two columns, navigation width set by `--ef-navigation-width`.",
+    "Above 48rem: two columns, navigation width set by `--forma-navigation-width`.",
     "At 48rem and below: one column; the compact disclosure sits above the content.",
     "The content column is `minmax(0, 1fr)` with `min-inline-size: 0`, so wide content cannot push the page sideways.",
     "The switch is viewport-based, not container-based; a narrow shell inside a wide page stays in persistent mode."

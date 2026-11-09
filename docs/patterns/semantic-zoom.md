@@ -17,7 +17,7 @@ Semantic zoom changes representation as scale or scope changes. Forma provides p
 
 ## Suggested composition
 
-Use `.ef-spatial-canvas` for bounded spatial exploration, `.ef-scope-trail` for explicit ancestry/scope, `.ef-relationship-index` for non-spatial relationships, and ordinary landmarks/headings for the current representation.
+Use `.forma-spatial-canvas` for bounded spatial exploration, `.forma-scope-trail` for explicit ancestry/scope, `.forma-relationship-index` for non-spatial relationships, and ordinary landmarks/headings for the current representation.
 
 The application may expose level controls such as Overview, Region, Entity, and Detail. Forma does not prescribe those levels.
 

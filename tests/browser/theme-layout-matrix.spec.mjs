@@ -11,7 +11,7 @@ function specimen(id) {
   return fs.readFileSync(path.join(root, "catalog", "specimens", id + ".html"), "utf8");
 }
 function doc(body, theme, extra = "") {
-  const attr = theme.selector ? ` data-ef-theme="${theme.selector}"` : "";
+  const attr = theme.selector ? ` data-forma-theme="${theme.selector}"` : "";
   return `<!doctype html><html lang="en"${attr}><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Theme layout conformance</title><style>${css}</style><style>html,body{margin:0}body{padding:1rem}${extra}</style></head><body>${body}</body></html>`;
 }
 async function contained(page) {
@@ -54,13 +54,13 @@ test("implemented themes resolve complete semantic color contracts", async ({ pa
     const values = await page.locator("html").evaluate(el => {
       const style = getComputedStyle(el);
       return [
-        "--ef-color-surface-primary",
-        "--ef-color-surface-secondary",
-        "--ef-color-text-primary",
-        "--ef-color-text-secondary",
-        "--ef-color-accent-primary",
-        "--ef-color-accent-secondary",
-        "--ef-color-focus-ring"
+        "--forma-color-surface-primary",
+        "--forma-color-surface-secondary",
+        "--forma-color-text-primary",
+        "--forma-color-text-secondary",
+        "--forma-color-accent-primary",
+        "--forma-color-accent-secondary",
+        "--forma-color-focus-ring"
       ].map(name => style.getPropertyValue(name).trim());
     });
     expect(values, theme.id + " has an unresolved semantic color token").not.toContain("");

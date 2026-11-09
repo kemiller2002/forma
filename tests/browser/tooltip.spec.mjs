@@ -69,7 +69,7 @@ test("stationary tooltip fade uses perceptual opacity and reciprocal response", 
     const open = read();
     const translate = getComputedStyle(element).translate;
     element.hidePopover();
-    const mass = getComputedStyle(element.closest(".ef-tooltip")).getPropertyValue("--ef-motion-mass").trim();
+    const mass = getComputedStyle(element.closest(".forma-tooltip")).getPropertyValue("--forma-motion-mass").trim();
     return { closed, open, translate, mass };
   });
   expect(timing.mass).toBe("0.65");
@@ -86,7 +86,7 @@ test("the hint stays inside a 320px viewport", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 });
   for (const name of ["About the retention period", "How maintenance windows are applied", "About error budget"]) {
     await page.getByRole("button", { name }).click();
-    const open = page.locator(".ef-tooltip__surface:popover-open");
+    const open = page.locator(".forma-tooltip__surface:popover-open");
     await open.evaluate((element) => Promise.all(element.getAnimations().map((animation) => animation.finished.catch(() => null))));
     const box = await open.boundingBox();
     expect(box.x).toBeGreaterThanOrEqual(0);

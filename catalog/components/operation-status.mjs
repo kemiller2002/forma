@@ -29,58 +29,58 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Payment declined",
       description: "A confirmed failure. The lozenge says Failed, the text states that no money moved, and the only actions offered are the ones the application allows: update the card or choose another method.",
-      html: `<ef-operation-status class="ef-component-tag">
-  <section class="ef-operation-status" aria-labelledby="operation-status-payment-failed-title">
-    <div class="ef-operation-status__symbol" aria-hidden="true">×</div>
+      html: `<forma-operation-status class="forma-component-tag">
+  <section class="forma-operation-status" aria-labelledby="operation-status-payment-failed-title">
+    <div class="forma-operation-status__symbol" aria-hidden="true">×</div>
     <div>
-      <span class="ef-status-lozenge" data-state="blocked">Failed</span>
+      <span class="forma-status-lozenge" data-state="blocked">Failed</span>
       <h3 id="operation-status-payment-failed-title">The card was declined</h3>
       <p>No payment was taken. Invoice INV-2291 remains open with 1,240.00 due.</p>
     </div>
-    <div class="ef-operation-status__actions">
+    <div class="forma-operation-status__actions">
       <button type="button">Update card</button>
       <button type="button">Pay another way</button>
     </div>
   </section>
-</ef-operation-status>`
+</forma-operation-status>`
     },
     {
       id: "reconciling",
       title: "Reconciling after a timeout",
       description: "The application is checking whether a timed-out transfer completed. A [[spinner]] in the text column shows the check is running; there are no actions because retrying is not safe until reconciliation finishes.",
-      html: `<ef-operation-status class="ef-component-tag">
-  <section class="ef-operation-status" aria-labelledby="operation-status-reconciling-title">
-    <div class="ef-operation-status__symbol" aria-hidden="true">↻</div>
+      html: `<forma-operation-status class="forma-component-tag">
+  <section class="forma-operation-status" aria-labelledby="operation-status-reconciling-title">
+    <div class="forma-operation-status__symbol" aria-hidden="true">↻</div>
     <div>
-      <span class="ef-status-lozenge" data-state="unknown">Reconciling</span>
+      <span class="forma-status-lozenge" data-state="unknown">Reconciling</span>
       <h3 id="operation-status-reconciling-title">Checking whether the transfer went through</h3>
       <p>The bank did not respond in time. We are confirming the outcome before allowing another attempt.</p>
-      <p class="ef-spinner" role="status">
-        <span class="ef-spinner__indicator" aria-hidden="true"></span>
+      <p class="forma-spinner" role="status">
+        <span class="forma-spinner__indicator" aria-hidden="true"></span>
         <span>Contacting the bank</span>
       </p>
     </div>
   </section>
-</ef-operation-status>`
+</forma-operation-status>`
     },
     {
       id: "blocked-by-permission",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Blocked by a missing approval",
       description: "The operation was not attempted because a prerequisite is missing. The lozenge says Blocked and the single action takes the user to request the approval.",
-      html: `<ef-operation-status class="ef-component-tag">
-  <section class="ef-operation-status" aria-labelledby="operation-status-blocked-by-permission-title">
-    <div class="ef-operation-status__symbol" aria-hidden="true">!</div>
+      html: `<forma-operation-status class="forma-component-tag">
+  <section class="forma-operation-status" aria-labelledby="operation-status-blocked-by-permission-title">
+    <div class="forma-operation-status__symbol" aria-hidden="true">!</div>
     <div>
-      <span class="ef-status-lozenge" data-state="blocked">Blocked</span>
+      <span class="forma-status-lozenge" data-state="blocked">Blocked</span>
       <h3 id="operation-status-blocked-by-permission-title">Publishing needs a second approver</h3>
       <p>Policies above risk level 3 require approval from someone other than the author. Nothing has been published.</p>
     </div>
-    <div class="ef-operation-status__actions">
+    <div class="forma-operation-status__actions">
       <button type="button">Request approval</button>
     </div>
   </section>
-</ef-operation-status>`
+</forma-operation-status>`
     },
     {
       id: "mobile-unknown-save",
@@ -96,33 +96,33 @@ export default {
           "The lozenge stays on its own line above the heading in both orientations."
         ]
       },
-      html: `<ef-operation-status class="ef-component-tag">
-  <section class="ef-operation-status" aria-labelledby="operation-status-mobile-unknown-save-title">
-    <div class="ef-operation-status__symbol" aria-hidden="true">?</div>
+      html: `<forma-operation-status class="forma-component-tag">
+  <section class="forma-operation-status" aria-labelledby="operation-status-mobile-unknown-save-title">
+    <div class="forma-operation-status__symbol" aria-hidden="true">?</div>
     <div>
-      <span class="ef-status-lozenge" data-state="unknown">Unknown outcome</span>
+      <span class="forma-status-lozenge" data-state="unknown">Unknown outcome</span>
       <h3 id="operation-status-mobile-unknown-save-title">We cannot confirm the timesheet was submitted</h3>
       <p>The connection dropped during submission. Check the submission log before submitting again.</p>
     </div>
-    <div class="ef-operation-status__actions">
+    <div class="forma-operation-status__actions">
       <button type="button">Check submission log</button>
       <button type="button">View details</button>
     </div>
   </section>
-</ef-operation-status>`
+</forma-operation-status>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-operation-status", values: "id of the heading", default: "—", description: "Names the region by its heading." },
-      { name: "aria-hidden", on: ".ef-operation-status__symbol", values: "true", default: "—", description: "Hides the decorative symbol; the lozenge and heading carry the state." },
-      { name: "data-state", on: ".ef-status-lozenge", values: "ok | attention | unknown | blocked", default: "—", description: "Glyph for the lozenge that names the outcome. See [[status-lozenge]]." },
+      { name: "aria-labelledby", on: "section.forma-operation-status", values: "id of the heading", default: "—", description: "Names the region by its heading." },
+      { name: "aria-hidden", on: ".forma-operation-status__symbol", values: "true", default: "—", description: "Hides the decorative symbol; the lozenge and heading carry the state." },
+      { name: "data-state", on: ".forma-status-lozenge", values: "ok | attention | unknown | blocked", default: "—", description: "Glyph for the lozenge that names the outcome. See [[status-lozenge]]." },
       { name: "role", on: "an inner status element", values: "status", default: "—", description: "Optional. Use a status region (for example a [[spinner]]) for text that changes while the operation is reconciling." }
     ],
     hooks: {
-      "ef-operation-status": "Root grid: symbol column, text column and action column, bordered with a thick inline-start border.",
-      "ef-operation-status__symbol": "Bordered 2rem square holding a text glyph. Decorative.",
-      "ef-operation-status__actions": "Wrapping flex row of application-supplied recovery actions. Buttons become full width below 40rem."
+      "forma-operation-status": "Root grid: symbol column, text column and action column, bordered with a thick inline-start border.",
+      "forma-operation-status__symbol": "Bordered 2rem square holding a text glyph. Decorative.",
+      "forma-operation-status__actions": "Wrapping flex row of application-supplied recovery actions. Buttons become full width below 40rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the recovery actions. The region is not focusable." },

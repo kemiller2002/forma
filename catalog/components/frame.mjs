@@ -16,7 +16,7 @@ export default {
       "The image is a selectable option: use [[image-choice]]."
     ],
     characteristics: [
-      "Default ratio is 16 / 9; any ratio is set with `--ef-frame-ratio`.",
+      "Default ratio is 16 / 9; any ratio is set with `--forma-frame-ratio`.",
       "Media is cropped from the center; nothing overflows the frame.",
       "The figure has no margin, so it sits flush in stacks and grids."
     ]
@@ -26,36 +26,36 @@ export default {
       id: "square-thumbnails",
       title: "Square product thumbnails",
       description: "Product photos of different source proportions shown as 1 / 1 frames in a grid. Every thumbnail lines up; each image keeps meaningful alt text and the caption names the product.",
-      html: `<ef-frame class="ef-component-tag">
-  <ul class="ef-grid" role="list" aria-label="Recently viewed" style="--ef-grid-min: 9rem">
+      html: `<forma-frame class="forma-component-tag">
+  <ul class="forma-grid" role="list" aria-label="Recently viewed" style="--forma-grid-min: 9rem">
     <li>
-      <figure class="ef-frame" style="--ef-frame-ratio: 1 / 1">
-        <div class="ef-frame__media"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='100%25' height='100%25' fill='%23c9c4b8'/%3E%3C/svg%3E" alt="Oak desk with two drawers, front view"></div>
+      <figure class="forma-frame" style="--forma-frame-ratio: 1 / 1">
+        <div class="forma-frame__media"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='100%25' height='100%25' fill='%23c9c4b8'/%3E%3C/svg%3E" alt="Oak desk with two drawers, front view"></div>
         <figcaption>Oak desk</figcaption>
       </figure>
     </li>
     <li>
-      <figure class="ef-frame" style="--ef-frame-ratio: 1 / 1">
-        <div class="ef-frame__media"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='500'%3E%3Crect width='100%25' height='100%25' fill='%23b5b0a4'/%3E%3C/svg%3E" alt="Tall bookcase with five shelves"></div>
+      <figure class="forma-frame" style="--forma-frame-ratio: 1 / 1">
+        <div class="forma-frame__media"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='500'%3E%3Crect width='100%25' height='100%25' fill='%23b5b0a4'/%3E%3C/svg%3E" alt="Tall bookcase with five shelves"></div>
         <figcaption>Bookcase</figcaption>
       </figure>
     </li>
     <li>
-      <figure class="ef-frame" style="--ef-frame-ratio: 1 / 1">
-        <div class="ef-frame__media"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect width='100%25' height='100%25' fill='%23ddd8cc'/%3E%3C/svg%3E" alt="Grey fabric desk chair"></div>
+      <figure class="forma-frame" style="--forma-frame-ratio: 1 / 1">
+        <div class="forma-frame__media"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect width='100%25' height='100%25' fill='%23ddd8cc'/%3E%3C/svg%3E" alt="Grey fabric desk chair"></div>
         <figcaption>Desk chair</figcaption>
       </figure>
     </li>
   </ul>
-</ef-frame>`
+</forma-frame>`
     },
     {
       id: "inline-svg-banner",
       title: "Wide banner with inline SVG",
       description: "A 21 / 9 frame holding an inline SVG illustration. The SVG has role=\"img\" and a title, so it is announced as one image with a name, and it draws with currentColor so it follows the theme and forced colors.",
-      html: `<ef-frame class="ef-component-tag">
-  <figure class="ef-frame" style="--ef-frame-ratio: 21 / 9">
-    <div class="ef-frame__media">
+      html: `<forma-frame class="forma-component-tag">
+  <figure class="forma-frame" style="--forma-frame-ratio: 21 / 9">
+    <div class="forma-frame__media">
       <svg viewBox="0 0 210 90" role="img" aria-labelledby="frame-inline-svg-banner-title" preserveAspectRatio="xMidYMid slice">
         <title id="frame-inline-svg-banner-title">Three connected servers representing a replicated database</title>
         <rect x="20" y="30" width="40" height="30" fill="currentColor"/>
@@ -66,7 +66,7 @@ export default {
     </div>
     <figcaption>Replication keeps three copies of every write across availability zones.</figcaption>
   </figure>
-</ef-frame>`
+</forma-frame>`
     },
     {
       id: "mobile-article-image",
@@ -81,33 +81,33 @@ export default {
           "In landscape the frame widens and grows taller in proportion; cropping stays centered."
         ]
       },
-      html: `<ef-frame class="ef-component-tag">
-  <figure class="ef-frame" style="--ef-frame-ratio: 4 / 3">
-    <div class="ef-frame__media"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='%23c9c4b8'/%3E%3C/svg%3E" alt="Warehouse floor with packing stations along the wall"></div>
+      html: `<forma-frame class="forma-component-tag">
+  <figure class="forma-frame" style="--forma-frame-ratio: 4 / 3">
+    <div class="forma-frame__media"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='%23c9c4b8'/%3E%3C/svg%3E" alt="Warehouse floor with packing stations along the wall"></div>
     <figcaption>The new packing line in the Rotterdam warehouse handles 4,000 orders a day.</figcaption>
   </figure>
-</ef-frame>`
+</forma-frame>`
     }
   ],
   api: {
     attributes: [
-      { name: "style", on: ".ef-frame", values: "--ef-frame-ratio: <ratio>", default: "16 / 9", description: "Per-instance aspect ratio, for example 1 / 1 or 4 / 3." },
+      { name: "style", on: ".forma-frame", values: "--forma-frame-ratio: <ratio>", default: "16 / 9", description: "Per-instance aspect ratio, for example 1 / 1 or 4 / 3." },
       { name: "alt", on: "img", values: "string", default: "—", description: "Required on images. Describe the content; use alt=\"\" only when the image is decorative and the caption carries the meaning." },
       { name: "role", on: "svg", values: "img", default: "—", description: "Makes an inline SVG a single named image." },
       { name: "aria-labelledby", on: "svg", values: "id of the SVG title", default: "—", description: "Names the SVG image from its title element." },
       { name: "aria-label", on: "list wrapper", values: "string", default: "—", description: "Names a grid of framed images." }
     ],
     hooks: {
-      "ef-frame": "Figure wrapper with zero margin. Declares the ratio variable.",
-      "ef-frame__media": "Box with `aspect-ratio: var(--ef-frame-ratio)` and hidden overflow.",
-      "--ef-frame-ratio": "Aspect ratio of the media box. Default 16 / 9."
+      "forma-frame": "Figure wrapper with zero margin. Declares the ratio variable.",
+      "forma-frame__media": "Box with `aspect-ratio: var(--forma-frame-ratio)` and hidden overflow.",
+      "--forma-frame-ratio": "Aspect ratio of the media box. Default 16 / 9."
     },
     keyboard: [],
     events: [],
     form: "Not a form control."
   },
   states: [
-    { name: "Framed", how: "img, video, iframe or svg as a direct child of .ef-frame__media", description: "Media fills the box and is cropped with object-fit: cover." }
+    { name: "Framed", how: "img, video, iframe or svg as a direct child of .forma-frame__media", description: "Media fills the box and is cropped with object-fit: cover." }
   ],
   accessibility: {
     forma: [
@@ -123,7 +123,7 @@ export default {
   },
   responsive: [
     "Fluid width: the frame fills its parent and height follows the ratio.",
-    "No breakpoints; change the ratio per context with `--ef-frame-ratio` if a different proportion suits narrow screens.",
+    "No breakpoints; change the ratio per context with `--forma-frame-ratio` if a different proportion suits narrow screens.",
     "Media cannot overflow the frame, so large images never cause horizontal scrolling."
   ],
   motion: [
@@ -136,7 +136,7 @@ export default {
     ],
     avoid: [
       "Framing screenshots or charts that contain text near the edges.",
-      "Putting the media inside extra wrappers; only direct children of `.ef-frame__media` are sized."
+      "Putting the media inside extra wrappers; only direct children of `.forma-frame__media` are sized."
     ]
   },
   related: [

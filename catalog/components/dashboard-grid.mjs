@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Three equal `minmax(0, 1fr)` columns with a 1rem gap; blocks never force the page wider.",
       "One column at 40rem and below, in source order.",
-      "Children can use the `ef-span-2` and `ef-span-full` utilities to span columns; they return to full width on narrow screens."
+      "Children can use the `forma-span-2` and `forma-span-full` utilities to span columns; they return to full width on narrow screens."
     ]
   },
   examples: [
@@ -27,53 +27,53 @@ export default {
       id: "attention-first",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Attention-first operations overview",
-      description: "The blocks that need action come first in source order and carry text status with a symbol, not only color. A full-width summary spans the grid with `ef-span-full`.",
-      html: `<ef-dashboard-grid class="ef-component-tag">
-  <section class="ef-dashboard-grid" aria-labelledby="dashboard-grid-attention-first-title">
-    <h2 class="ef-span-full" id="dashboard-grid-attention-first-title">Accounts receivable · October</h2>
-    <article class="ef-metric-card" aria-labelledby="dashboard-grid-attention-first-overdue">
-      <div class="ef-metric-card__label" id="dashboard-grid-attention-first-overdue">Overdue invoices</div>
-      <div class="ef-metric-card__value">12</div>
-      <p><span class="ef-status-lozenge" data-state="attention">Needs action</span></p>
+      description: "The blocks that need action come first in source order and carry text status with a symbol, not only color. A full-width summary spans the grid with `forma-span-full`.",
+      html: `<forma-dashboard-grid class="forma-component-tag">
+  <section class="forma-dashboard-grid" aria-labelledby="dashboard-grid-attention-first-title">
+    <h2 class="forma-span-full" id="dashboard-grid-attention-first-title">Accounts receivable · October</h2>
+    <article class="forma-metric-card" aria-labelledby="dashboard-grid-attention-first-overdue">
+      <div class="forma-metric-card__label" id="dashboard-grid-attention-first-overdue">Overdue invoices</div>
+      <div class="forma-metric-card__value">12</div>
+      <p><span class="forma-status-lozenge" data-state="attention">Needs action</span></p>
       <a href="#dashboard-grid-attention-first-overdue-list">Review overdue invoices</a>
     </article>
-    <article class="ef-metric-card" aria-labelledby="dashboard-grid-attention-first-disputed">
-      <div class="ef-metric-card__label" id="dashboard-grid-attention-first-disputed">Disputed</div>
-      <div class="ef-metric-card__value">3</div>
-      <p><span class="ef-status-lozenge" data-state="blocked">Awaiting customer</span></p>
+    <article class="forma-metric-card" aria-labelledby="dashboard-grid-attention-first-disputed">
+      <div class="forma-metric-card__label" id="dashboard-grid-attention-first-disputed">Disputed</div>
+      <div class="forma-metric-card__value">3</div>
+      <p><span class="forma-status-lozenge" data-state="blocked">Awaiting customer</span></p>
       <a href="#dashboard-grid-attention-first-disputed-list">Open disputes</a>
     </article>
-    <article class="ef-metric-card" aria-labelledby="dashboard-grid-attention-first-collected">
-      <div class="ef-metric-card__label" id="dashboard-grid-attention-first-collected">Collected this month</div>
-      <div class="ef-metric-card__value">$184,200</div>
-      <p><span class="ef-status-lozenge" data-state="ok">On track</span></p>
+    <article class="forma-metric-card" aria-labelledby="dashboard-grid-attention-first-collected">
+      <div class="forma-metric-card__label" id="dashboard-grid-attention-first-collected">Collected this month</div>
+      <div class="forma-metric-card__value">$184,200</div>
+      <p><span class="forma-status-lozenge" data-state="ok">On track</span></p>
     </article>
   </section>
-</ef-dashboard-grid>`
+</forma-dashboard-grid>`
     },
     {
       id: "unknown-and-stale",
       title: "Unavailable and stale values",
-      description: "When a source is unavailable the block keeps its place and says so, instead of showing zero. A wider block uses `ef-span-2` for a short explanation of the stale data.",
-      html: `<ef-dashboard-grid class="ef-component-tag">
-  <section class="ef-dashboard-grid" aria-label="Warehouse status">
-    <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Orders picked today</div>
-      <div class="ef-metric-card__value">1,284</div>
+      description: "When a source is unavailable the block keeps its place and says so, instead of showing zero. A wider block uses `forma-span-2` for a short explanation of the stale data.",
+      html: `<forma-dashboard-grid class="forma-component-tag">
+  <section class="forma-dashboard-grid" aria-label="Warehouse status">
+    <article class="forma-metric-card">
+      <div class="forma-metric-card__label">Orders picked today</div>
+      <div class="forma-metric-card__value">1,284</div>
       <p>Updated 2 minutes ago.</p>
     </article>
-    <article class="ef-metric-card ef-span-2">
-      <div class="ef-metric-card__label">Inventory on hand</div>
-      <div class="ef-metric-card__value">—</div>
-      <p><span class="ef-status-lozenge" data-state="unknown">Unavailable</span> The inventory service has not responded since 09:40. Figures will return when it reconnects.</p>
+    <article class="forma-metric-card forma-span-2">
+      <div class="forma-metric-card__label">Inventory on hand</div>
+      <div class="forma-metric-card__value">—</div>
+      <p><span class="forma-status-lozenge" data-state="unknown">Unavailable</span> The inventory service has not responded since 09:40. Figures will return when it reconnects.</p>
     </article>
-    <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Late shipments</div>
-      <div class="ef-metric-card__value">7</div>
-      <p><span class="ef-status-lozenge" data-state="unknown">Stale</span> Last refreshed 3 hours ago.</p>
+    <article class="forma-metric-card">
+      <div class="forma-metric-card__label">Late shipments</div>
+      <div class="forma-metric-card__value">7</div>
+      <p><span class="forma-status-lozenge" data-state="unknown">Stale</span> Last refreshed 3 hours ago.</p>
     </article>
   </section>
-</ef-dashboard-grid>`
+</forma-dashboard-grid>`
     },
     {
       id: "mobile-single-column",
@@ -82,29 +82,29 @@ export default {
       mobile: {
         height: 600,
         notes: [
-          "At 40rem and below the grid is one `1fr` column; `ef-span-2` and `ef-span-full` children simply fill that column.",
+          "At 40rem and below the grid is one `1fr` column; `forma-span-2` and `forma-span-full` children simply fill that column.",
           "Order is the source order. Nothing is reordered by importance, so write attention blocks first.",
           "Large values such as currency amounts wrap rather than overflow because every block can shrink to the viewport.",
           "Links inside metric cards are ordinary inline links; give them a comfortable touch height in application CSS or make the whole label a single, clearly named link."
         ]
       },
-      html: `<ef-dashboard-grid class="ef-component-tag">
-  <section class="ef-dashboard-grid" aria-label="On-call summary">
-    <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Open incidents</div>
-      <div class="ef-metric-card__value">2</div>
-      <p><span class="ef-status-lozenge" data-state="attention">1 unacknowledged</span></p>
+      html: `<forma-dashboard-grid class="forma-component-tag">
+  <section class="forma-dashboard-grid" aria-label="On-call summary">
+    <article class="forma-metric-card">
+      <div class="forma-metric-card__label">Open incidents</div>
+      <div class="forma-metric-card__value">2</div>
+      <p><span class="forma-status-lozenge" data-state="attention">1 unacknowledged</span></p>
     </article>
-    <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Pages this week</div>
-      <div class="ef-metric-card__value">9</div>
+    <article class="forma-metric-card">
+      <div class="forma-metric-card__label">Pages this week</div>
+      <div class="forma-metric-card__value">9</div>
     </article>
-    <article class="ef-metric-card">
-      <div class="ef-metric-card__label">Mean time to acknowledge</div>
-      <div class="ef-metric-card__value">4 min</div>
+    <article class="forma-metric-card">
+      <div class="forma-metric-card__label">Mean time to acknowledge</div>
+      <div class="forma-metric-card__value">4 min</div>
     </article>
   </section>
-</ef-dashboard-grid>`
+</forma-dashboard-grid>`
     }
   ],
   api: {
@@ -113,7 +113,7 @@ export default {
       { name: "aria-labelledby", on: "root section, metric article", values: "id of a visible heading or label", default: "—", description: "Names the region or an individual block by its visible text." }
     ],
     hooks: {
-      "ef-dashboard-grid": "Root grid: three equal columns with a 1rem gap; one column at 40rem and below."
+      "forma-dashboard-grid": "Root grid: three equal columns with a 1rem gap; one column at 40rem and below."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through links in the blocks in source order. The grid adds no keyboard behavior." }

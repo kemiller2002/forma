@@ -30,33 +30,33 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Database migration proposal",
       description: "An agent proposes a schema migration. The summary names the agent, the exact migration identifier, the evidence and its scope, the uncertainty that remains, and who must approve. The decision actions follow the facts.",
-      html: `<ef-handoff-summary class="ef-component-tag">
-  <section class="ef-handoff-summary" aria-labelledby="handoff-summary-database-migration-title">
+      html: `<forma-handoff-summary class="forma-component-tag">
+  <section class="forma-handoff-summary" aria-labelledby="handoff-summary-database-migration-title">
     <header>
-      <p class="ef-component-kicker">Agent proposal</p>
+      <p class="forma-component-kicker">Agent proposal</p>
       <h2 id="handoff-summary-database-migration-title">Apply migration to production</h2>
       <p>Agent: Schema maintenance agent (run 7715)</p>
     </header>
     <dl>
-      <div><dt>Proposed consequence</dt><dd>Apply <span class="ef-identifier">2026_09_30_add_invoice_currency</span> to prod-billing</dd></div>
+      <div><dt>Proposed consequence</dt><dd>Apply <span class="forma-identifier">2026_09_30_add_invoice_currency</span> to prod-billing</dd></div>
       <div><dt>Evidence</dt><dd>Migration applied cleanly to staging; 312 integration tests passed</dd></div>
       <div><dt>Evidence scope</dt><dd>Staging holds 4% of production row volume</dd></div>
       <div><dt>Uncertainty</dt><dd>Lock duration on the 38-million-row invoices table was not measured</dd></div>
       <div><dt>Human authority</dt><dd>A database owner must approve; the agent cannot apply it</dd></div>
     </dl>
-    <div class="ef-cluster"><button type="button">Approve migration</button><button type="button">Reject</button><button type="button">Request lock-time test</button></div>
+    <div class="forma-cluster"><button type="button">Approve migration</button><button type="button">Reject</button><button type="button">Request lock-time test</button></div>
   </section>
-</ef-handoff-summary>`
+</forma-handoff-summary>`
     },
     {
       id: "review-only",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Reviewer without approval authority",
       description: "The current user can review but does not hold the authority to approve. The summary says so in text and the application renders only the actions this user may take; there is no disabled Approve button pretending to be available.",
-      html: `<ef-handoff-summary class="ef-component-tag">
-  <section class="ef-handoff-summary" aria-labelledby="handoff-summary-review-only-title">
+      html: `<forma-handoff-summary class="forma-component-tag">
+  <section class="forma-handoff-summary" aria-labelledby="handoff-summary-review-only-title">
     <header>
-      <p class="ef-component-kicker">Agent proposal</p>
+      <p class="forma-component-kicker">Agent proposal</p>
       <h2 id="handoff-summary-review-only-title">Send 1,240 renewal reminders</h2>
       <p>Agent: Customer communications agent</p>
     </header>
@@ -66,9 +66,9 @@ export default {
       <div><dt>Uncertainty</dt><dd>Unknown: 17 addresses bounced last month and were not re-verified</dd></div>
       <div><dt>Human authority</dt><dd>Marketing lead approval required. You can comment or forward.</dd></div>
     </dl>
-    <div class="ef-cluster"><button type="button">Forward to marketing lead</button><button type="button">Add comment</button></div>
+    <div class="forma-cluster"><button type="button">Forward to marketing lead</button><button type="button">Add comment</button></div>
   </section>
-</ef-handoff-summary>`
+</forma-handoff-summary>`
     },
     {
       id: "mobile-approval",
@@ -79,15 +79,15 @@ export default {
         height: 560,
         notes: [
           "At 30rem and below each fact row becomes one column with a small gap: label, then value.",
-          "Values wrap within the viewport; long identifiers inside `.ef-identifier` wrap anywhere, so nothing scrolls sideways at 320px.",
-          "Actions in an `.ef-cluster` wrap onto new lines and keep the 2.75rem base height; they always come after the facts.",
+          "Values wrap within the viewport; long identifiers inside `.forma-identifier` wrap anywhere, so nothing scrolls sideways at 320px.",
+          "Actions in an `.forma-cluster` wrap onto new lines and keep the 2.75rem base height; they always come after the facts.",
           "The order of facts is fixed in the source, so uncertainty and authority are never pushed off-screen by rotation."
         ]
       },
-      html: `<ef-handoff-summary class="ef-component-tag">
-  <section class="ef-handoff-summary" aria-labelledby="handoff-summary-mobile-title">
+      html: `<forma-handoff-summary class="forma-component-tag">
+  <section class="forma-handoff-summary" aria-labelledby="handoff-summary-mobile-title">
     <header>
-      <p class="ef-component-kicker">Agent proposal</p>
+      <p class="forma-component-kicker">Agent proposal</p>
       <h2 id="handoff-summary-mobile-title">Merge dependency update</h2>
       <p>Agent: Dependency update agent</p>
     </header>
@@ -96,9 +96,9 @@ export default {
       <div><dt>Uncertainty</dt><dd>End-to-end tests were skipped on Safari</dd></div>
       <div><dt>Human authority</dt><dd>Your approval required</dd></div>
     </dl>
-    <div class="ef-cluster"><button type="button">Approve merge</button><button type="button">Reject</button></div>
+    <div class="forma-cluster"><button type="button">Approve merge</button><button type="button">Reject</button></div>
   </section>
-</ef-handoff-summary>`
+</forma-handoff-summary>`
     }
   ],
   api: {
@@ -106,7 +106,7 @@ export default {
       { name: "aria-labelledby", on: "root section", values: "id of the proposal heading", default: "—", description: "Names the handoff region by the proposed consequence." }
     ],
     hooks: {
-      "ef-handoff-summary": "Root grid with a 1rem gap. Styles a `dl` inside it as rows of label and value (`minmax(9rem, 12rem) minmax(0, 1fr)`), with semibold labels; rows stack at 30rem and below."
+      "forma-handoff-summary": "Root grid with a 1rem gap. Styles a `dl` inside it as rows of label and value (`minmax(9rem, 12rem) minmax(0, 1fr)`), with semibold labels; rows stack at 30rem and below."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves to the decision actions after the facts. No added keyboard behavior." },

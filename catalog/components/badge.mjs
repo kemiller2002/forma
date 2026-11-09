@@ -3,9 +3,9 @@ export default {
   category: "site",
   behavior: "Site content",
   summary: "Compact labels and metadata; status badges carry meaning in text with a redundant colored edge.",
-  owns: ["ef-badge", "ef-badge-list"],
+  owns: ["forma-badge", "forma-badge-list"],
   purpose: {
-    description: "Badges are small mono-face labels for metadata on public pages: language, version, runtime, release status or topic. A badge is a `span` (or an `a` when it links somewhere) inside an unstyled `ul.ef-badge-list`, which wraps. `data-ef-status` adds a thicker inline-start edge in a status color; the badge text always states the status, so the edge is a redundant cue. The brand-neutral defaults make every status edge the primary text color; a theme or brand may give statuses distinct hues.",
+    description: "Badges are small mono-face labels for metadata on public pages: language, version, runtime, release status or topic. A badge is a `span` (or an `a` when it links somewhere) inside an unstyled `ul.forma-badge-list`, which wraps. `data-forma-status` adds a thicker inline-start edge in a status color; the badge text always states the status, so the edge is a redundant cue. The brand-neutral defaults make every status edge the primary text color; a theme or brand may give statuses distinct hues.",
     useWhen: [
       "Showing release status and version facts in a product hero.",
       "Listing technologies, standards or topics that describe a product or article.",
@@ -28,31 +28,31 @@ export default {
       id: "release-status",
       title: "Release status in a hero",
       description: "A product's release facts: a success status plus plain metadata badges, next to the hero actions.",
-      html: `<ef-badge class="ef-component-tag">
-  <div class="ef-site">
-    <ul class="ef-badge-list" aria-label="Release facts">
-      <li><span class="ef-badge" data-ef-status="success">Stable</span></li>
-      <li><span class="ef-badge">Version 1.4.0</span></li>
-      <li><span class="ef-badge">.NET 8</span></li>
-      <li><span class="ef-badge">MIT licence</span></li>
+      html: `<forma-badge class="forma-component-tag">
+  <div class="forma-site">
+    <ul class="forma-badge-list" aria-label="Release facts">
+      <li><span class="forma-badge" data-forma-status="success">Stable</span></li>
+      <li><span class="forma-badge">Version 1.4.0</span></li>
+      <li><span class="forma-badge">.NET 8</span></li>
+      <li><span class="forma-badge">MIT licence</span></li>
     </ul>
   </div>
-</ef-badge>`
+</forma-badge>`
     },
     {
       id: "lifecycle-statuses",
       title: "Lifecycle statuses",
       description: "All four status values on a component inventory. Each badge's text states the status; the edge color repeats it and depends on the theme.",
-      html: `<ef-badge class="ef-component-tag">
-  <div class="ef-site">
-    <ul class="ef-badge-list" aria-label="Pattern lifecycle">
-      <li><span class="ef-badge" data-ef-status="success">Stable: Site header</span></li>
-      <li><span class="ef-badge" data-ef-status="info">New: Callout</span></li>
-      <li><span class="ef-badge" data-ef-status="warning">Preview: Media hero</span></li>
-      <li><span class="ef-badge" data-ef-status="danger">Deprecated: Landing layout</span></li>
+      html: `<forma-badge class="forma-component-tag">
+  <div class="forma-site">
+    <ul class="forma-badge-list" aria-label="Pattern lifecycle">
+      <li><span class="forma-badge" data-forma-status="success">Stable: Site header</span></li>
+      <li><span class="forma-badge" data-forma-status="info">New: Callout</span></li>
+      <li><span class="forma-badge" data-forma-status="warning">Preview: Media hero</span></li>
+      <li><span class="forma-badge" data-forma-status="danger">Deprecated: Landing layout</span></li>
     </ul>
   </div>
-</ef-badge>`
+</forma-badge>`
     },
     {
       id: "mobile-topic-links",
@@ -77,28 +77,28 @@ export default {
           "Orientation changes only change how many badges fit per line."
         ]
       },
-      html: `<ef-badge class="ef-component-tag">
-  <div class="ef-site">
-    <ul class="ef-badge-list" aria-label="Topics">
-      <li><a class="ef-badge" href="#badge-mobile-topic-links-end">Accessibility</a></li>
-      <li><a class="ef-badge" href="#badge-mobile-topic-links-end">Design tokens</a></li>
-      <li><a class="ef-badge" href="#badge-mobile-topic-links-end">Forced colors</a></li>
-      <li><a class="ef-badge" href="#badge-mobile-topic-links-end">Release engineering</a></li>
-      <li id="badge-mobile-topic-links-end"><a class="ef-badge" href="#badge-mobile-topic-links-end">Typography</a></li>
+      html: `<forma-badge class="forma-component-tag">
+  <div class="forma-site">
+    <ul class="forma-badge-list" aria-label="Topics">
+      <li><a class="forma-badge" href="#badge-mobile-topic-links-end">Accessibility</a></li>
+      <li><a class="forma-badge" href="#badge-mobile-topic-links-end">Design tokens</a></li>
+      <li><a class="forma-badge" href="#badge-mobile-topic-links-end">Forced colors</a></li>
+      <li><a class="forma-badge" href="#badge-mobile-topic-links-end">Release engineering</a></li>
+      <li id="badge-mobile-topic-links-end"><a class="forma-badge" href="#badge-mobile-topic-links-end">Typography</a></li>
     </ul>
   </div>
-</ef-badge>`
+</forma-badge>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-label", on: "ul.ef-badge-list", values: "string", default: "—", description: "Names the list (\"Release facts\", \"Topics\")." },
-      { name: "href", on: "a.ef-badge", values: "URL", default: "—", description: "Makes a badge a link. Use an `a`, never a clickable `span`." }
+      { name: "aria-label", on: "ul.forma-badge-list", values: "string", default: "—", description: "Names the list (\"Release facts\", \"Topics\")." },
+      { name: "href", on: "a.forma-badge", values: "URL", default: "—", description: "Makes a badge a link. Use an `a`, never a clickable `span`." }
     ],
     hooks: {
-      "ef-badge-list": "Unstyled `ul` that wraps its badges with a small gap and vertical margin.",
-      "ef-badge": "The badge: bordered mono label on the surrounding tone. On an `a` it gets a 24px minimum height and a stronger border on hover.",
-      "data-ef-status": "`success`, `warning`, `danger` or `info`. Thickens the inline-start edge and colors it with `--ef-color-status-*`. The text must state the same status."
+      "forma-badge-list": "Unstyled `ul` that wraps its badges with a small gap and vertical margin.",
+      "forma-badge": "The badge: bordered mono label on the surrounding tone. On an `a` it gets a 24px minimum height and a stronger border on hover.",
+      "data-forma-status": "`success`, `warning`, `danger` or `info`. Thickens the inline-start edge and colors it with `--forma-color-status-*`. The text must state the same status."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between linked badges; span badges are not focusable." },
@@ -107,10 +107,10 @@ export default {
     events: []
   },
   states: [
-    { name: "Plain", how: "span.ef-badge", description: "Neutral bordered label." },
-    { name: "Status", how: "data-ef-status", description: "Accent-width inline-start edge in the status color; text states the status." },
-    { name: "Link hover", how: "a.ef-badge:hover", description: "The border strengthens to the tone's strong rule." },
-    { name: "Focus", how: ":focus-visible on a.ef-badge", description: "The shell's outline and halo." }
+    { name: "Plain", how: "span.forma-badge", description: "Neutral bordered label." },
+    { name: "Status", how: "data-forma-status", description: "Accent-width inline-start edge in the status color; text states the status." },
+    { name: "Link hover", how: "a.forma-badge:hover", description: "The border strengthens to the tone's strong rule." },
+    { name: "Focus", how: ":focus-visible on a.forma-badge", description: "The shell's outline and halo." }
   ],
   accessibility: {
     forma: [
@@ -119,7 +119,7 @@ export default {
       "Keeps linked badges at a 24px minimum height with visible focus."
     ],
     consumer: [
-      "Write the status in the badge text (\"Stable\", \"Deprecated\"), not only in `data-ef-status`.",
+      "Write the status in the badge text (\"Stable\", \"Deprecated\"), not only in `data-forma-status`.",
       "Put badges in a labelled list.",
       "Use `a` for badges that navigate; do not make spans interactive with script."
     ]

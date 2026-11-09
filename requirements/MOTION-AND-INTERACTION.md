@@ -62,13 +62,13 @@ Forma may use a deterministic physics-derived model when motion needs to convey 
 
 The canonical normalized variables are:
 
-- `--ef-motion-mass` (`m`): inertial mass;
-- `--ef-motion-stiffness` (`k`): spring/restoring stiffness;
-- `--ef-motion-damping` (`ζ`): normalized damping ratio in the supported underdamped preset range;
-- `--ef-motion-distance` (`s`): normalized travel distance for gravity-derived movement;
-- `--ef-motion-gravity` (`g`): normalized gravitational acceleration;
-- `--ef-motion-base-duration`: the dimensional scale factor that maps the normalized model to UI time;
-- `--ef-motion-exit-duration`: a compatibility dismissal token equal to inertial entry.
+- `--forma-motion-mass` (`m`): inertial mass;
+- `--forma-motion-stiffness` (`k`): spring/restoring stiffness;
+- `--forma-motion-damping` (`ζ`): normalized damping ratio in the supported underdamped preset range;
+- `--forma-motion-distance` (`s`): normalized travel distance for gravity-derived movement;
+- `--forma-motion-gravity` (`g`): normalized gravitational acceleration;
+- `--forma-motion-base-duration`: the dimensional scale factor that maps the normalized model to UI time;
+- `--forma-motion-exit-duration`: a compatibility dismissal token equal to inertial entry.
 
 For spring/inertial settling, Forma uses the second-order-system scaling relationship:
 
@@ -235,7 +235,7 @@ Popover/menu motion should visually connect to its invoker.
 
 Centered modal dialogs shall use a restrained vertical/scale response. Modal flyouts shall travel from the edge they occupy: negative inline travel for the left edge and positive inline travel for the right edge.
 
-Dialog, flyout, popover, and menu spatial entry shall use the shared physics-derived inertia model. `data-ef-motion-weight="light|standard|heavy"` may tune perceived mass, but it must never imply domain importance, severity, permission, risk, or destructive intent.
+Dialog, flyout, popover, and menu spatial entry shall use the shared physics-derived inertia model. `data-forma-motion-weight="light|standard|heavy"` may tune perceived mass, but it must never imply domain importance, severity, permission, risk, or destructive intent.
 
 ### Exit
 Entry and exit use the same duration and easing. Direction comes from the target position, including mirrored left/right origins.
@@ -251,7 +251,7 @@ Forma may provide an ordinary action-list menu surface using the Popover API wit
 If an application requires roving focus, typeahead, checkable menu items, radio menu items, nested submenus, or other full ARIA-menu behavior, Limen/application code owns that interaction model.
 
 ### Flyout / modal drawer boundary
-The native-dialog `.ef-flyout` pattern is Forma's canonical left/right modal drawer or side-sheet baseline. It preserves native modal focus, inertness, Escape, and return-focus behavior while presenting the surface from its occupied edge.
+The native-dialog `.forma-flyout` pattern is Forma's canonical left/right modal drawer or side-sheet baseline. It preserves native modal focus, inertness, Escape, and return-focus behavior while presenting the surface from its occupied edge.
 
 Swipe tracking, velocity-based release, resize gestures, bottom sheets, persistent nonmodal drawers, and other direct manipulation belong to Limen/application code.
 
@@ -342,7 +342,7 @@ Aegis presentation intent determines the surface family; motion does not determi
 - Fault notifications use the standard perceived-weight preset by default.
 - Fault banners use the standard perceived-weight preset only for initial insertion and do not repeatedly animate while persistent.
 - Blocking faults use the heavy perceived-weight preset because they are modal surfaces with greater spatial/attentional commitment.
-- `data-ef-motion-weight` remains a presentation override only and may not encode Diagnostic/Warning/Error/Critical.
+- `data-forma-motion-weight` remains a presentation override only and may not encode Diagnostic/Warning/Error/Critical.
 - Aegis lifecycle state changes immediately. Animation never delays acknowledgement, recovery, resolution, focus, or application state.
 - Reduced motion removes notification/banner travel and modal scale/travel while preserving the final visible state.
 
@@ -708,7 +708,7 @@ Supersedes the shorter-exit guidance in MOT-008, MOT-009 and MOT-020. Verify pre
 
 ## MOT-031 — Quick surface fades
 
-Popover, action-menu and tooltip opacity SHALL use the shared perceptual fast duration (120ms default) and `--ef-motion-fade-easing` (`cubic-bezier(0.65, 0, 0.35, 1)`). The monotonic, symmetric curve starts gently, accelerates through the middle and settles gently without overshoot. Entry and exit SHALL use the same curve and duration. Native state and input eligibility change immediately, independently of the fade. Use stationary geometry (MOT-032), CSS-only starting styles and discrete top-layer exit handling; browsers without exit retention may dismiss immediately. Reduced motion SHALL remain immediate. This is a perceptual interpolation profile, not a combustion simulation or a new physical motion model.
+Popover, action-menu and tooltip opacity SHALL use the shared perceptual fast duration (120ms default) and `--forma-motion-fade-easing` (`cubic-bezier(0.65, 0, 0.35, 1)`). The monotonic, symmetric curve starts gently, accelerates through the middle and settles gently without overshoot. Entry and exit SHALL use the same curve and duration. Native state and input eligibility change immediately, independently of the fade. Use stationary geometry (MOT-032), CSS-only starting styles and discrete top-layer exit handling; browsers without exit retention may dismiss immediately. Reduced motion SHALL remain immediate. This is a perceptual interpolation profile, not a combustion simulation or a new physical motion model.
 
 
 ## MOT-032 — Fade before surface removal

@@ -61,16 +61,16 @@ export const sourceList = (models) =>
 export const readSources = (models, root = ".") =>
   sourceList(models).map(({ group, file }) => ({ group, file, text: fs.readFileSync(path.join(root, file), "utf8") }));
 
-// Flat design-token primitives from tokens/echelon.tokens.json, used to verify
+// Flat design-token primitives from tokens/forma.tokens.json, used to verify
 // that var() fallbacks restate the token they stand in for.
 export const primitiveMotionValues = (tokens) => {
   const primitive = tokens.primitive ?? {};
   const durations = Object.entries(primitive["motion-duration"] ?? {})
     .filter(([key]) => !key.startsWith("$"))
-    .map(([key, token]) => [`--ef-primitive-motion-duration-${key}`, `${token.$value.value}${token.$value.unit}`]);
+    .map(([key, token]) => [`--forma-primitive-motion-duration-${key}`, `${token.$value.value}${token.$value.unit}`]);
   const easings = Object.entries(primitive["motion-easing"] ?? {})
     .filter(([key]) => !key.startsWith("$"))
-    .map(([key, token]) => [`--ef-primitive-motion-easing-${key}`, `cubic-bezier(${token.$value.join(", ")})`]);
+    .map(([key, token]) => [`--forma-primitive-motion-easing-${key}`, `cubic-bezier(${token.$value.join(", ")})`]);
   return Object.fromEntries([...durations, ...easings]);
 };
 
@@ -175,7 +175,7 @@ const reducedMotionVerified = (entry, env) => {
     case "scope-tokens":
       return rules.some((rule) =>
         rule.selectors.some((candidate) => candidate.includes(entry.reducedMotion.scope)) &&
-        declares(rule, "--ef-motion-inertia-duration", collapses(env))
+        declares(rule, "--forma-motion-inertia-duration", collapses(env))
       );
     case "global":
       return rules.some((rule) =>
@@ -234,8 +234,8 @@ const compositionFindings = (tracks) =>
 const physicsFindings = (parsed) => {
   const components = parsed.find((source) => source.file === "src/styles/components.css");
   if (!components) return [];
-  const scope = components.rules.find((rule) => rule.context.length <= 1 && rule.declarations.some((declaration) => declaration.property === "--ef-motion-base-duration"));
-  if (!scope) return [{ code: "physics-scope-missing", source: components.file, selector: "*", property: "--ef-motion-base-duration", line: null }];
+  const scope = components.rules.find((rule) => rule.context.length <= 1 && rule.declarations.some((declaration) => declaration.property === "--forma-motion-base-duration"));
+  if (!scope) return [{ code: "physics-scope-missing", source: components.file, selector: "*", property: "--forma-motion-base-duration", line: null }];
   const expected = staticFallbacks();
   const fallbackDrift = Object.entries(expected).flatMap(([name, ms]) => {
     const declaration = scope.declarations.find((item) => item.property === name);
@@ -245,9 +245,9 @@ const physicsFindings = (parsed) => {
       : [{ code: "static-fallback-drift", source: components.file, selector: scope.selector, property: name, line: declaration?.line ?? scope.line, value: declaration?.value ?? "missing", detail: `model gives ${ms}ms` }];
   });
   const presetDrift = Object.entries(PRESETS).flatMap(([weight, preset]) => {
-    const rule = components.rules.find((item) => item.selector.includes(`[data-ef-motion-weight="${weight}"]`) && item.declarations.some((declaration) => declaration.property === "--ef-motion-mass"));
-    if (!rule) return [{ code: "preset-missing", source: components.file, selector: weight, property: "--ef-motion-mass", line: null }];
-    return [["--ef-motion-mass", preset.mass], ["--ef-motion-stiffness", preset.stiffness], ["--ef-motion-damping", preset.damping]]
+    const rule = components.rules.find((item) => item.selector.includes(`[data-forma-motion-weight="${weight}"]`) && item.declarations.some((declaration) => declaration.property === "--forma-motion-mass"));
+    if (!rule) return [{ code: "preset-missing", source: components.file, selector: weight, property: "--forma-motion-mass", line: null }];
+    return [["--forma-motion-mass", preset.mass], ["--forma-motion-stiffness", preset.stiffness], ["--forma-motion-damping", preset.damping]]
       .filter(([name, value]) => Number((rule.declarations.find((declaration) => declaration.property === name) ?? {}).value) !== value)
       .map(([name, value]) => ({ code: "preset-drift", source: components.file, selector: rule.selector, property: name, line: rule.line, value: String(value) }));
   });
@@ -317,7 +317,7 @@ const definitionFindings = (tracks, definitions, env) => {
   const invariant = new Set(
     ["perceptual", "cadence", "direct"]
       .flatMap((model) => [...env.models.models[model].durationTokens, ...env.models.models[model].easingTokens])
-      .filter((token) => token.startsWith("--ef-motion-"))
+      .filter((token) => token.startsWith("--forma-motion-"))
   );
   const conflicts = [...invariant].flatMap((token) => {
     const values = [...new Set(definitions.filter((definition) => definition.name === token && !definition.reduced).map((definition) => definition.value.replace(/\s+/g, " ")))];
@@ -400,7 +400,7 @@ export const summarize = (tracks, models) =>
 
 export const runAudit = (root = ".") => {
   const catalog = loadCatalog(root);
-  const tokens = readJson(root, "tokens/echelon.tokens.json");
+  const tokens = readJson(root, "tokens/forma.tokens.json");
   const result = auditSources({
     models: catalog.models,
     classification: catalog.classification,

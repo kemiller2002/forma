@@ -1,7 +1,7 @@
 /* Legitimate use: Forma tokens, Forma inputs, overrides and application-owned properties. */
-:root { --causa-ink: var(--ef-color-text-primary); }
-.panel { color: var(--causa-ink, black); padding: var(--ef-primitive-spacing-4); }
-.stack { --ef-stack-gap: var(--ef-primitive-spacing-2); }
-[data-causa-theme="night"] { --ef-color-accent-primary: #c9a07f; }
+:root { --causa-ink: var(--forma-color-text-primary); }
+.panel { color: var(--causa-ink, black); padding: var(--forma-primitive-spacing-4); }
+.stack { --forma-stack-gap: var(--forma-primitive-spacing-2); }
+[data-causa-theme="night"] { --forma-color-accent-primary: #c9a07f; }
 .chain { --app-a: var(--app-b); --app-b: 1rem; }
-.grid { --ef-grid-min: 12rem; }
+.grid { --forma-grid-min: 12rem; }

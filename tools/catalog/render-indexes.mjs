@@ -19,20 +19,20 @@ export const renderHome = context => {
   const { catalog } = context;
   const quickStart = `<link rel="stylesheet" href="/path/to/forma/dist/all.css">
 
-<ef-switch class="ef-component-tag">
-  <label class="ef-switch">
-    <input class="ef-switch__input" type="checkbox" role="switch" name="notifications">
-    <span class="ef-switch__track" aria-hidden="true"></span>
-    <span class="ef-switch__text"><span class="ef-switch__label">Notifications</span></span>
+<forma-switch class="forma-component-tag">
+  <label class="forma-switch">
+    <input class="forma-switch__input" type="checkbox" role="switch" name="notifications">
+    <span class="forma-switch__track" aria-hidden="true"></span>
+    <span class="forma-switch__text"><span class="forma-switch__label">Notifications</span></span>
   </label>
-</ef-switch>`;
+</forma-switch>`;
   const body = `<main id="main">
 <section class="hero">
   <div>
     <span class="eyebrow">Echelon Foundry / Interface system</span>
     <h1>Forma</h1>
-    <p class="lead">A lightweight, zero-runtime component system. Each component is semantic HTML plus Forma CSS, published under a readable <code>&lt;ef-*&gt;</code> tag that is never registered as a Custom Element. The browser owns native behavior; your application owns everything else.</p>
-    <p class="hero-actions"><a class="ef-button" href="components/">Browse all ${catalog.components.length} components</a> <a class="ef-button" href="compositions/">See composed examples</a></p>
+    <p class="lead">A lightweight, zero-runtime component system. Each component is semantic HTML plus Forma CSS, published under a readable <code>&lt;forma-*&gt;</code> tag that is never registered as a Custom Element. The browser owns native behavior; your application owns everything else.</p>
+    <p class="hero-actions"><a class="forma-button" href="components/">Browse all ${catalog.components.length} components</a> <a class="forma-button" href="compositions/">See composed examples</a></p>
   </div>
   <dl class="hero-stats" aria-label="Current Forma facts">
     <div class="hero-stat"><dt class="metric-label">Documented components</dt><dd><strong>${catalog.components.length}</strong></dd></div>
@@ -48,10 +48,10 @@ export const renderHome = context => {
     <p>Link the built stylesheet and write the component's canonical HTML inside its tag. There is nothing to register or initialize.</p>
   </div>
   <div class="quick-start">
-    <div class="example-canvas"><!--live-->${wrapTag("switch", `<label class="ef-switch">
-    <input class="ef-switch__input" type="checkbox" role="switch" name="home-notifications">
-    <span class="ef-switch__track" aria-hidden="true"></span>
-    <span class="ef-switch__text"><span class="ef-switch__label">Notifications</span></span>
+    <div class="example-canvas"><!--live-->${wrapTag("switch", `<label class="forma-switch">
+    <input class="forma-switch__input" type="checkbox" role="switch" name="home-notifications">
+    <span class="forma-switch__track" aria-hidden="true"></span>
+    <span class="forma-switch__text"><span class="forma-switch__label">Notifications</span></span>
   </label>`)}<!--/live--></div>
     ${codeViewer({ id: "quick-start-code", label: "HTML · Quick start", source: quickStart })}
   </div>
@@ -136,14 +136,14 @@ export const renderAllComponents = context => {
       <h1>All components</h1>
       <p class="lead">Every public Forma component: ${catalog.components.length} components in ${catalog.categories.length} families. Filter by family, jump by letter, or use your browser's find (Ctrl+F / ⌘F) to search names, tags and descriptions on this page.</p>
     </header>
-    <label class="ef-select-field catalog-filter">
-      <span class="ef-field__label">Show family</span>
-      <span class="ef-select">
-        <select class="ef-select__input" name="catalog-filter" id="catalog-family">
+    <label class="forma-select-field catalog-filter">
+      <span class="forma-field__label">Show family</span>
+      <span class="forma-select">
+        <select class="forma-select__input" name="catalog-filter" id="catalog-family">
           <option id="filter-all" value="all" selected>All families</option>
           ${join(catalog.categories, category => `<option id="filter-${category.id}" value="${category.id}">${escapeHtml(category.name)}</option>`)}
         </select>
-        <span class="ef-select__indicator" aria-hidden="true"></span>
+        <span class="forma-select__indicator" aria-hidden="true"></span>
       </span>
     </label>
     <nav class="letter-nav" aria-label="Jump to letter"><ul>${join(letters, letter => `<li><a href="#letter-${letter}">${letter}</a></li>`)}</ul></nav>
@@ -202,7 +202,7 @@ export const renderMobileIndex = context => {
 };
 
 export const compositionComponents = (context, composition) =>
-  markupTags(composition.html).map(tag => context.bySlug.get(tag.slice(3))).filter(Boolean);
+  markupTags(composition.html).map(tag => context.bySlug.get(tag.slice("forma-".length))).filter(Boolean);
 
 export const renderCompositionsIndex = context => {
   const body = `<main id="main" class="content-section">

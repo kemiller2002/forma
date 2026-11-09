@@ -3,7 +3,7 @@
   "product": "Forma",
   "sourceOfTruth": {
     "components": "patterns/*.html",
-    "tokens": "tokens/echelon.tokens.json"
+    "tokens": "tokens/forma.tokens.json"
   },
   "figma": {
     "libraryName": "Forma",
