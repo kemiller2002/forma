@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 46,
+  "nextSeq": 47,
   "items": [
     {
       "id": "WI-0001",
@@ -1176,6 +1176,32 @@
       "attachments": [],
       "createdAt": "2026-11-09T10:39:09.000Z",
       "updatedAt": "2026-11-09T11:16:57.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0046",
+      "title": "Forma 1.0.0: brand neutrality (BNR-001, EDS-ADR-002) and ef- to forma- namespace rename (FORMA-NS-001)",
+      "description": "Sources: .praxis/inbox/documents/2026-11-09-BNR-001-brand-neutral-forma.md and .praxis/inbox/documents/2026-11-09-FORMA-NS-001-namespace-rename.md",
+      "tags": [
+        "forma",
+        "branding",
+        "breaking-change",
+        "namespace"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-11-09T14:31:14.000Z",
+      "updatedAt": "2026-11-09T14:31:17.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
