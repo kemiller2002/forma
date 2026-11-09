@@ -223,7 +223,7 @@ Application-owned properties such as `--causa-*` are never reported. Keep `forma
 
 ## 0.14.0
 
-Additive minor release. No class, token or component was removed or renamed, and nothing that already exists changes appearance.
+Additive minor release. No class, token or component was removed or renamed. A button that already carries `aria-busy="true"` now shows the pending ring.
 
 - **Application identity:** render your application's mark and name with `.ef-app-identity` (`patterns/app-identity.html`). Prefer an inline SVG mark drawn with `currentColor`: it needs no request and survives a strict Content-Security-Policy. For an external mark, use an `<object>` with a `.ef-app-identity__monogram` inside it as the fallback, serve it same-origin and script-free, and allow it in `object-src`; under `object-src 'none'` the monogram shows. If you have light and dark external marks, give each the class `ef-app-identity__variant` and `data-ef-scheme="light"` or `"dark"`.
 - **Pre-runtime start-up:** put `.ef-startup` (`patterns/startup.html`) in the initial HTML of the page your WebAssembly or script mounts into. Your loader sets `data-ef-state` to `slow`, `failed` or `timed-out`, and removes the screen or sets `hidden` once the application has mounted.
