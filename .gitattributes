@@ -3,3 +3,5 @@
 *.cmd text eol=crlf
 praxis.cmd text eol=crlf
 ros.cmd text eol=crlf
+# The codemod fixture must keep its CRLF line endings and byte-order mark.
+tests/fixtures/namespace-migrator/**/bom-crlf.css -text
