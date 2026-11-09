@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 48,
+  "nextSeq": 49,
   "items": [
     {
       "id": "WI-0001",
@@ -1228,6 +1228,31 @@
       "attachments": [],
       "createdAt": "2026-11-09T17:22:10.000Z",
       "updatedAt": "2026-11-09T17:50:49.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0048",
+      "title": "Forma 1.0.1: NamespaceMigrator false negatives (context-aware location skips, class selectors, typed destructuring, non-UTF-8 review)",
+      "description": "Source: .praxis/inbox/documents/2026-11-09-FORMA-1.0.1-CODEMOD.md",
+      "tags": [
+        "forma",
+        "namespace",
+        "codemod"
+      ],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-09T19:23:38.000Z",
+      "updatedAt": "2026-11-09T19:32:01.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
