@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 47,
+  "nextSeq": 48,
   "items": [
     {
       "id": "WI-0001",
@@ -1202,6 +1202,32 @@
       "attachments": [],
       "createdAt": "2026-11-09T14:31:14.000Z",
       "updatedAt": "2026-11-09T16:26:46.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0047",
+      "title": "Forma 1.0.0 review fixes (PR #182): switch contrast, codemod contexts and coverage, neutral fonts, runtime text, release race",
+      "description": "Source: .praxis/inbox/documents/2026-11-09-FORMA-1.0.0-REVIEW-01.md; follows WI-0046",
+      "tags": [
+        "forma",
+        "branding",
+        "namespace",
+        "review"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-09T17:22:10.000Z",
+      "updatedAt": "2026-11-09T17:50:49.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",

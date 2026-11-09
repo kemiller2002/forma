@@ -102,3 +102,4 @@
 | WI-0044 | GH-179: record header type label overlaps the title below 24em (0.13.0 regression) | complete |  | medium |
 | WI-0045 | AIS-001: application identity, pre-WASM startup, pending actions and brand-neutrality guard | complete | forma, branding, loading | high |
 | WI-0046 | Forma 1.0.0: brand neutrality (BNR-001, EDS-ADR-002) and ef- to forma- namespace rename (FORMA-NS-001) | complete | forma, branding, breaking-change, namespace | high |
+| WI-0047 | Forma 1.0.0 review fixes (PR #182): switch contrast, codemod contexts and coverage, neutral fonts, runtime text, release race | complete | forma, branding, namespace, review | high |
