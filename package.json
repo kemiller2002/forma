@@ -1,6 +1,6 @@
 {
   "name": "@echelon-foundry/design-system",
-  "version": "0.14.0",
+  "version": "1.0.0",
   "private": false,
   "type": "module",
   "description": "Zero-component-runtime, brand-neutral HTML and CSS design system.",
@@ -53,6 +53,8 @@
     "tools/BrandCompiler/BrandCompiler.fsproj",
     "tools/TokenCompiler/*.fs",
     "tools/TokenCompiler/TokenCompiler.fsproj",
+    "tools/NamespaceMigrator/*.fs",
+    "tools/NamespaceMigrator/NamespaceMigrator.fsproj",
     "contracts/color-contract.json",
     "docs/COLOR.md",
     "figma/component-contracts.json",
@@ -86,7 +88,7 @@
     "test:color": "node --test tests/color-contract.test.mjs",
     "motion:audit": "node tools/motion-audit.mjs",
     "test:motion": "node --test tests/motion-audit.test.mjs tests/motion-gate.test.mjs && node tools/motion-audit.mjs --strict",
-    "check": "npm run build && npm run icons:check && npm run tokens:validate && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:design && npm run test:color && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:figma && npm run test:css && npm run test:package && npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:browser",
+    "check": "npm run build && npm run icons:check && npm run tokens:validate && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:design && npm run test:color && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:figma && npm run test:css && npm run test:namespace && npm run test:package && npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:browser",
     "site:build": "npm run build && node tools/build-site.mjs",
     "site:test": "node --test tests/site-build.test.mjs tests/catalog-coverage.test.mjs tests/icon-docs.test.mjs tests/catalog-interaction.test.mjs",
     "site:check": "npm run site:build && npm run catalog:check && npm run site:test && npm run site:mobile",
@@ -103,7 +105,7 @@
     "test:marketing": "node --test tests/marketing-tokens.test.mjs tests/marketing-distribution.test.mjs tests/marketing-structure.test.mjs tests/site-css-policy.test.mjs",
     "example:install": "mkdir -p build/example && cp examples/marketing-site/forma.lock build/example/forma.lock && bash actions/install-presentation/install.sh --lock build/example/forma.lock --source dist/marketing --update --output examples/marketing-site/assets/forma",
     "policy:check": "dotnet run --project tools/SiteCssPolicy/SiteCssPolicy.fsproj --",
-    "release:check": "npm run build && npm run icons:check && npm run tokens:validate && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:design && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:css && npm run test:package && npm run test:machine && playwright test tests/browser/marketing.spec.mjs && npm run site:check",
+    "release:check": "npm run build && npm run icons:check && npm run tokens:validate && npm run test:tokens && npm run test:brands && npm run test:runtime && npm run test:design && npm run test:motion && npm run test:marketing && npm run test:character-grid && npm run test:css && npm run test:namespace && npm run test:package && npm run test:machine && playwright test tests/browser/marketing.spec.mjs && npm run site:check",
     "test:figma": "node --test tests/figma-contract.test.mjs",
     "catalog:check": "node tools/catalog/validate.mjs && node tools/catalog/inventory.mjs --check",
     "catalog:inventory": "node tools/catalog/inventory.mjs",
@@ -118,7 +120,9 @@
     "workflow:check": "npm run workflow:test && npm run workflow:build && npm run test:workflow-package && npm run test:workflow-browser",
     "test:machine": "playwright test tests/browser/machine-operability.spec.mjs",
     "ui:conformance": "npm run site:build && npm run catalog:check && npm run test:package && playwright test --config=playwright.conformance.config.mjs",
-    "icons:check": "node --test tests/icons.test.mjs"
+    "icons:check": "node --test tests/icons.test.mjs",
+    "test:namespace": "node --test tests/namespace-migrator.test.mjs tests/namespace-guard.test.mjs",
+    "namespace:check": "dotnet run --project tools/NamespaceMigrator/NamespaceMigrator.fsproj -- --check --exclude tests/fixtures/namespace-migrator --exclude tests/namespace-migrator.test.mjs --exclude tests/namespace-guard.test.mjs --exclude tests/fixtures/token-validation/app-invalid.css --exclude tests/token-validator.test.mjs --exclude tools/NamespaceMigrator --exclude tools/namespace-guard.mjs --exclude CHANGELOG.md --exclude docs/CONSUMING-FORMA.md src patterns catalog site contracts schemas figma tokens packages/workflow/src packages/conformance/src brands bundles"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

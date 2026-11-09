@@ -57,9 +57,9 @@ test.describe("ULI-L02 equivalent single-line controls share one intrinsic heigh
 
 test("ULI-L01 a stretched field keeps its control directly under its label (Summa)", async ({ page }) => {
   await render(page, `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
-    <div class="ef-field"><label class="ef-field__label" for="a">Reference</label><input id="a"></div>
-    <div class="ef-field"><label class="ef-field__label" for="b">Carrier</label>
-      <span class="ef-field__description">The company that collects the parcel. Shown on the label and in tracking emails sent to the customer.</span><input id="b"></div>
+    <div class="forma-field"><label class="forma-field__label" for="a">Reference</label><input id="a"></div>
+    <div class="forma-field"><label class="forma-field__label" for="b">Carrier</label>
+      <span class="forma-field__description">The company that collects the parcel. Shown on the label and in tracking emails sent to the customer.</span><input id="b"></div>
   </div>`, { width: 640 });
   const gap = await page.evaluate(() => {
     const label = document.querySelector('label[for="a"]').getBoundingClientRect();
@@ -73,7 +73,7 @@ test("ULI-L01 a stretched field keeps its control directly under its label (Summ
 test("ULI-L05 action labels in table cells never split mid-word at 768px (Summa)", async ({ page }) => {
   await render(page, `<table><thead><tr><th>Request</th><th>Requested by</th><th>Status</th><th>Actions</th></tr></thead><tbody>
     ${["Quarterly infrastructure capacity review", "Vendor security questionnaire renewal"].map(name => `<tr><td>${name}</td><td>Priya Raman, Platform Engineering</td><td>Waiting for second approver since Monday</td>
-      <td><div class="ef-cluster"><button type="button">Approve request</button><button type="button">Reassign</button></div></td></tr>`).join("")}
+      <td><div class="forma-cluster"><button type="button">Approve request</button><button type="button">Reassign</button></div></td></tr>`).join("")}
   </tbody></table>`, { width: 768 });
   const splitWords = await page.locator("td button").evaluateAll(buttons => buttons.flatMap(button => {
     const text = button.firstChild;
@@ -110,21 +110,21 @@ test.describe("ULI-L05 no horizontal overflow at 320 and 390px with 200% text", 
 
   for (const width of NARROW) {
     test(`fieldset form with a long select option at ${width}px (HelixNote)`, async ({ page }) => {
-      await render(page, `<form class="ef-stack"><fieldset class="ef-stack"><legend>Delivery preferences for this order</legend>
-        <div class="ef-field"><label class="ef-field__label" for="d">Delivery option</label>
+      await render(page, `<form class="forma-stack"><fieldset class="forma-stack"><legend>Delivery preferences for this order</legend>
+        <div class="forma-field"><label class="forma-field__label" for="d">Delivery option</label>
           <select id="d"><option>Next working day before 12:00 with a signature on delivery and photo confirmation</option></select></div>
-        <div class="ef-field"><label class="ef-field__label" for="w">Preferred date</label><input id="w" type="date"></div>
+        <div class="forma-field"><label class="forma-field__label" for="w">Preferred date</label><input id="w" type="date"></div>
       </fieldset></form>`, { width, scale: 2 });
       await expectNoOverflow(page);
     });
 
     for (const scale of [1, 2]) {
       test(`best-worst option with a long unbroken word at ${width}px, ${scale * 100}% text (Signal)`, async ({ page }) => {
-        await render(page, `<fieldset class="ef-best-worst"><legend>Which matters most and least?</legend>
-          <div class="ef-best-worst__header" aria-hidden="true"><span>Option</span><span>Best</span><span>Worst</span></div>
-          <div class="ef-best-worst__row"><span id="o1">Ultraschallreinigungsgerätewartungsvertrag</span>
+        await render(page, `<fieldset class="forma-best-worst"><legend>Which matters most and least?</legend>
+          <div class="forma-best-worst__header" aria-hidden="true"><span>Option</span><span>Best</span><span>Worst</span></div>
+          <div class="forma-best-worst__row"><span id="o1">Ultraschallreinigungsgerätewartungsvertrag</span>
             <label><input type="radio" name="best" aria-labelledby="o1"></label><label><input type="radio" name="worst" aria-labelledby="o1"></label></div>
-          <div class="ef-best-worst__row"><span id="o2">Delivery speed</span>
+          <div class="forma-best-worst__row"><span id="o2">Delivery speed</span>
             <label><input type="radio" name="best" aria-labelledby="o2"></label><label><input type="radio" name="worst" aria-labelledby="o2"></label></div>
         </fieldset>`, { width, scale });
         await expectNoOverflow(page);
@@ -141,7 +141,7 @@ test.describe("ULI-L01/L07 record header status is centred on the title row (Hel
         ruleId: "ULI-L07",
         id: "record-title-and-status",
         edge: "center",
-        scope: page.locator("header.ef-record-header"),
+        scope: page.locator("header.forma-record-header"),
         peers: [{ role: "heading", name: "INV-1042" }, { role: "text", name: "Overdue" }]
       });
       expect(report.status, formatReport(report)).toBe(STATUS.PASS);

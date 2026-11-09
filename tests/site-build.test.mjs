@@ -34,26 +34,26 @@ test("every component page renders at least three examples", () => {
   }
 });
 
-test("every component page documents and renders its ef custom authoring tag", () => {
+test("every component page documents and renders its forma custom authoring tag", () => {
   for (const slug of patterns) {
     const html = fs.readFileSync(path.join(output, "components", slug, "index.html"), "utf8");
     const mobile = fs.readFileSync(path.join(output, "components", slug, "mobile.html"), "utf8");
-    const escapedTag = `&lt;ef-${slug}&gt;`;
-    const openingTag = new RegExp(`<ef-${slug}\\b[^>]*class="[^"]*ef-component-tag[^"]*"`);
+    const escapedTag = `&lt;forma-${slug}&gt;`;
+    const openingTag = new RegExp(`<forma-${slug}\\b[^>]*class="[^"]*forma-component-tag[^"]*"`);
 
     assert.match(html, new RegExp(escapedTag), `${slug} does not publish its authoring tag label`);
-    assert.match(html, openingTag, `${slug} examples do not render the ef custom authoring tag`);
-    assert.match(mobile, openingTag, `${slug} mobile example does not render the ef custom authoring tag`);
+    assert.match(html, openingTag, `${slug} examples do not render the forma custom authoring tag`);
+    assert.match(mobile, openingTag, `${slug} mobile example does not render the forma custom authoring tag`);
   }
 });
 
-test("ef authoring tags remain inert and zero-runtime", () => {
+test("forma authoring tags remain inert and zero-runtime", () => {
   const css = fs.readFileSync(path.join(output, "assets", "forma.css"), "utf8");
-  assert.match(css, /\.ef-component-tag\s*\{[^}]*display:\s*contents/s);
+  assert.match(css, /\.forma-component-tag\s*\{[^}]*display:\s*contents/s);
 
   for (const slug of patterns) {
     const html = fs.readFileSync(path.join(output, "components", slug, "index.html"), "utf8");
-    assert.equal(/customElements\.define\s*\(/.test(html), false, `${slug} attempts to register an ef tag`);
+    assert.equal(/customElements\.define\s*\(/.test(html), false, `${slug} attempts to register a forma tag`);
     assertNoBehaviorScript(html, `${slug} added a component behavior script`);
   }
 });
@@ -177,13 +177,13 @@ test("brand laboratory proves scoped brands and skins without runtime script", (
   assert.ok(fs.existsSync(brandPage), "missing Brand Laboratory page");
 
   const html = fs.readFileSync(brandPage, "utf8");
-  assert.match(html, /data-ef-brand="example-orchard"/);
-  assert.doesNotMatch(html, /data-ef-brand="echelon"/);
-  assert.match(html, /data-ef-brand="example-harbor"/);
-  assert.match(html, /data-ef-theme="dark"/);
-  assert.match(html, /data-ef-skin="compact"/);
-  assert.match(html, /data-ef-skin="comfortable"/);
-  assert.match(html, /data-ef-skin="square"/);
+  assert.match(html, /data-forma-brand="example-orchard"/);
+  assert.doesNotMatch(html, /data-forma-brand="echelon"/);
+  assert.match(html, /data-forma-brand="example-harbor"/);
+  assert.match(html, /data-forma-theme="dark"/);
+  assert.match(html, /data-forma-skin="compact"/);
+  assert.match(html, /data-forma-skin="comfortable"/);
+  assert.match(html, /data-forma-skin="square"/);
   assertNoBehaviorScript(html, "branding page added a component behavior script");
 
   for (const file of ["example-harbor.css", "example-orchard.css", "index.json"]) {
@@ -209,12 +209,12 @@ test("Aegis fault pages publish safe presentation contracts", () => {
     "fault-details"
   ]) {
     const html = fs.readFileSync(path.join(output, "components", slug, "index.html"), "utf8");
-    assert.match(html, new RegExp(`&lt;ef-${slug}&gt;`));
+    assert.match(html, new RegExp(`&lt;forma-${slug}&gt;`));
     assert.equal(/TechnicalDetails|StackTrace|ExceptionDetail/.test(html), false, `${slug} leaks developer-only Aegis fields`);
   }
 
   const actions = fs.readFileSync(path.join(output, "components", "recovery-actions", "index.html"), "utf8");
-  assert.match(actions, /data-ef-aegis-capability/);
+  assert.match(actions, /data-forma-aegis-capability/);
 });
 
 
@@ -235,7 +235,7 @@ test("Visual Engineering stress screens remain zero-runtime and preserve custom 
     const html = fs.readFileSync(path.join(output, "components", slug, "index.html"), "utf8");
     assertNoBehaviorScript(html, `${slug} added a component behavior script`);
     const stress = html.split('<div class="ve-stress-grid"')[1]?.split('<nav class="pager"')[0] ?? "";
-    assert.match(stress, new RegExp(`<ef-${slug}\\b`), `${slug} stress specimens lost the public authoring tag`);
+    assert.match(stress, new RegExp(`<forma-${slug}\\b`), `${slug} stress specimens lost the public authoring tag`);
   }
 });
 
@@ -245,7 +245,7 @@ test("gallery exposes every registry icon as static, named, copyable HTML", () =
   const html = fs.readFileSync(path.join(output, "icons/index.html"), "utf8");
   assert.equal((html.match(/class="icon-gallery__card"/g) ?? []).length, registry.icons.length);
   for (const icon of registry.icons) {
-    assert.ok(html.includes(`data-ef-icon="${icon.name}"`), `missing preview for ${icon.name}`);
+    assert.ok(html.includes(`data-forma-icon="${icon.name}"`), `missing preview for ${icon.name}`);
     assert.ok(html.includes(`<code>${icon.name}</code>`), `missing named documentation for ${icon.name}`);
   }
   assertNoBehaviorScript(html, "component catalog added a component behavior script");

@@ -3,7 +3,7 @@ export default {
   category: "feedback",
   behavior: "Native HTML",
   summary: "Native determinate progress projected directly from the authoritative value (never overshoots), plus a browser-owned indeterminate variant with explicit text.",
-  owns: ["ef-progress"],
+  owns: ["forma-progress"],
   purpose: {
     description: "A progress bar shows how far a task has got, using the native `progress` element. Forma adds a header with a label and a textual value, and sizes the bar. The application supplies `value` and `max` as it receives them; the bar renders that value immediately with no transition, so it never shows more progress than the application reported. When the total is unknown, omitting `value` gives the browser's indeterminate bar and the header text says so.",
     useWhen: [
@@ -27,60 +27,60 @@ export default {
       id: "upload-complete",
       title: "Completed upload",
       description: "A determinate bar at its maximum. The header value states completion in words, so the finished state does not depend on the bar being full.",
-      html: `<ef-progress-bar class="ef-component-tag">
-  <div class="ef-progress">
-    <div class="ef-progress__header">
-      <span class="ef-progress__label" id="progress-bar-upload-complete-label">Uploading contracts.zip</span>
-      <span class="ef-progress__value">Complete: 24.6 of 24.6 MB</span>
+      html: `<forma-progress-bar class="forma-component-tag">
+  <div class="forma-progress">
+    <div class="forma-progress__header">
+      <span class="forma-progress__label" id="progress-bar-upload-complete-label">Uploading contracts.zip</span>
+      <span class="forma-progress__value">Complete: 24.6 of 24.6 MB</span>
     </div>
-    <progress class="ef-progress__bar" value="24.6" max="24.6" aria-labelledby="progress-bar-upload-complete-label">100%</progress>
+    <progress class="forma-progress__bar" value="24.6" max="24.6" aria-labelledby="progress-bar-upload-complete-label">100%</progress>
   </div>
-</ef-progress-bar>`
+</forma-progress-bar>`
     },
     {
       id: "import-stages",
       title: "Multi-stage import",
       description: "Three bars for the stages of an import in a [[stack]]: a finished stage, one in progress, and one waiting. The waiting stage has `value=\"0\"`, which is determinate and empty, not indeterminate.",
-      html: `<ef-progress-bar class="ef-component-tag">
-  <section class="ef-stack" aria-labelledby="progress-bar-import-stages-title">
+      html: `<forma-progress-bar class="forma-component-tag">
+  <section class="forma-stack" aria-labelledby="progress-bar-import-stages-title">
     <h3 id="progress-bar-import-stages-title">Importing customer records</h3>
-    <div class="ef-progress">
-      <div class="ef-progress__header">
-        <span class="ef-progress__label" id="progress-bar-import-stages-validate">Validate file</span>
-        <span class="ef-progress__value">Done</span>
+    <div class="forma-progress">
+      <div class="forma-progress__header">
+        <span class="forma-progress__label" id="progress-bar-import-stages-validate">Validate file</span>
+        <span class="forma-progress__value">Done</span>
       </div>
-      <progress class="ef-progress__bar" value="1" max="1" aria-labelledby="progress-bar-import-stages-validate">Done</progress>
+      <progress class="forma-progress__bar" value="1" max="1" aria-labelledby="progress-bar-import-stages-validate">Done</progress>
     </div>
-    <div class="ef-progress">
-      <div class="ef-progress__header">
-        <span class="ef-progress__label" id="progress-bar-import-stages-write">Write records</span>
-        <span class="ef-progress__value">3,120 of 8,000</span>
+    <div class="forma-progress">
+      <div class="forma-progress__header">
+        <span class="forma-progress__label" id="progress-bar-import-stages-write">Write records</span>
+        <span class="forma-progress__value">3,120 of 8,000</span>
       </div>
-      <progress class="ef-progress__bar" value="3120" max="8000" aria-labelledby="progress-bar-import-stages-write">39%</progress>
+      <progress class="forma-progress__bar" value="3120" max="8000" aria-labelledby="progress-bar-import-stages-write">39%</progress>
     </div>
-    <div class="ef-progress">
-      <div class="ef-progress__header">
-        <span class="ef-progress__label" id="progress-bar-import-stages-index">Rebuild search index</span>
-        <span class="ef-progress__value">Waiting</span>
+    <div class="forma-progress">
+      <div class="forma-progress__header">
+        <span class="forma-progress__label" id="progress-bar-import-stages-index">Rebuild search index</span>
+        <span class="forma-progress__value">Waiting</span>
       </div>
-      <progress class="ef-progress__bar" value="0" max="1" aria-labelledby="progress-bar-import-stages-index">Waiting</progress>
+      <progress class="forma-progress__bar" value="0" max="1" aria-labelledby="progress-bar-import-stages-index">Waiting</progress>
     </div>
   </section>
-</ef-progress-bar>`
+</forma-progress-bar>`
     },
     {
       id: "reconciled-decrease",
       title: "Progress revised downward",
       description: "After a retry, the application reports fewer confirmed records than before. The bar is set to the lower authoritative value and the header explains why, instead of holding the earlier, higher figure.",
-      html: `<ef-progress-bar class="ef-component-tag">
-  <div class="ef-progress">
-    <div class="ef-progress__header">
-      <span class="ef-progress__label" id="progress-bar-reconciled-decrease-label">Sending statements</span>
-      <span class="ef-progress__value">610 of 1,000 confirmed (40 re-queued after timeout)</span>
+      html: `<forma-progress-bar class="forma-component-tag">
+  <div class="forma-progress">
+    <div class="forma-progress__header">
+      <span class="forma-progress__label" id="progress-bar-reconciled-decrease-label">Sending statements</span>
+      <span class="forma-progress__value">610 of 1,000 confirmed (40 re-queued after timeout)</span>
     </div>
-    <progress class="ef-progress__bar" value="610" max="1000" aria-labelledby="progress-bar-reconciled-decrease-label">61%</progress>
+    <progress class="forma-progress__bar" value="610" max="1000" aria-labelledby="progress-bar-reconciled-decrease-label">61%</progress>
   </div>
-</ef-progress-bar>`
+</forma-progress-bar>`
     },
     {
       id: "mobile-backup",
@@ -95,30 +95,30 @@ export default {
           "The bar has no touch interaction; any Pause or Cancel control is a separate button."
         ]
       },
-      html: `<ef-progress-bar class="ef-component-tag">
-  <div class="ef-progress">
-    <div class="ef-progress__header">
-      <span class="ef-progress__label" id="progress-bar-mobile-backup-label">Backing up the shared finance workspace</span>
-      <span class="ef-progress__value">1.2 of 3.8 GB</span>
+      html: `<forma-progress-bar class="forma-component-tag">
+  <div class="forma-progress">
+    <div class="forma-progress__header">
+      <span class="forma-progress__label" id="progress-bar-mobile-backup-label">Backing up the shared finance workspace</span>
+      <span class="forma-progress__value">1.2 of 3.8 GB</span>
     </div>
-    <progress class="ef-progress__bar" value="1.2" max="3.8" aria-labelledby="progress-bar-mobile-backup-label">32%</progress>
+    <progress class="forma-progress__bar" value="1.2" max="3.8" aria-labelledby="progress-bar-mobile-backup-label">32%</progress>
   </div>
-</ef-progress-bar>`
+</forma-progress-bar>`
     }
   ],
   api: {
     attributes: [
       { name: "value", on: "progress", values: "number from 0 to max", default: "absent (indeterminate)", description: "The authoritative amount done. Omit it for the indeterminate state." },
       { name: "max", on: "progress", values: "positive number", default: "1", description: "The total. Use the real unit (records, bytes) so value and header text agree." },
-      { name: "aria-labelledby", on: "progress", values: "id of .ef-progress__label", default: "—", description: "Names the progressbar from the visible label." },
-      { name: "id", on: ".ef-progress__label", values: "unique id", default: "—", description: "Target for aria-labelledby." }
+      { name: "aria-labelledby", on: "progress", values: "id of .forma-progress__label", default: "—", description: "Names the progressbar from the visible label." },
+      { name: "id", on: ".forma-progress__label", values: "unique id", default: "—", description: "Target for aria-labelledby." }
     ],
     hooks: {
-      "ef-progress": "Root grid stacking the header above the bar.",
-      "ef-progress__header": "Wrapping flex row with the label at the start and the value at the end.",
-      "ef-progress__label": "Bold label naming the task. Referenced by the bar's aria-labelledby.",
-      "ef-progress__value": "Secondary, monospace text stating the amount in words or numbers.",
-      "ef-progress__bar": "The native progress element: full width, 0.65rem tall, with the accent color."
+      "forma-progress": "Root grid stacking the header above the bar.",
+      "forma-progress__header": "Wrapping flex row with the label at the start and the value at the end.",
+      "forma-progress__label": "Bold label naming the task. Referenced by the bar's aria-labelledby.",
+      "forma-progress__value": "Secondary, monospace text stating the amount in words or numbers.",
+      "forma-progress__bar": "The native progress element: full width, 0.65rem tall, with the accent color."
     },
     keyboard: [
       { keys: "—", action: "Not focusable and not interactive. Screen readers expose it as a progressbar with its value." }

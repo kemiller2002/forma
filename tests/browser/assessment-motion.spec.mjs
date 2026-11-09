@@ -7,12 +7,12 @@ import { expect, test } from "@playwright/test";
 const PATTERNS = ["ordinal-scale", "choice-group", "special-choice", "binary-choice", "symbol-rating", "semantic-differential", "matrix-single", "pairwise-choice", "best-worst"];
 
 const OPTION_SELECTORS = [
-  ".ef-ordinal-option",
-  ".ef-choice",
-  ".ef-special-choice",
-  ".ef-binary-option",
-  ".ef-symbol-rating__option",
-  ".ef-semantic-differential__scale label"
+  ".forma-ordinal-option",
+  ".forma-choice",
+  ".forma-special-choice",
+  ".forma-binary-option",
+  ".forma-symbol-rating__option",
+  ".forma-semantic-differential__scale label"
 ];
 
 const page_ = () => `<!doctype html>
@@ -41,7 +41,7 @@ test.beforeEach(async ({ page }) => {
 test("every assessment option family shares one perceptual selection response", async ({ page }) => {
   const perceptual = await page.evaluate(() => {
     const probe = document.createElement("span");
-    probe.style.animationDelay = "var(--ef-motion-perceptual-duration)";
+    probe.style.animationDelay = "var(--forma-motion-perceptual-duration)";
     document.body.append(probe);
     const value = getComputedStyle(probe).animationDelay;
     probe.remove();
@@ -62,8 +62,8 @@ test("every assessment option family shares one perceptual selection response", 
 });
 
 test("motion never varies by value: every ordinal option has identical timing", async ({ page }) => {
-  const signatures = await page.locator(".ef-ordinal-option").evaluateAll((options) => options.map((option) => {
-    const marker = option.querySelector(".ef-ordinal-option__marker");
+  const signatures = await page.locator(".forma-ordinal-option").evaluateAll((options) => options.map((option) => {
+    const marker = option.querySelector(".forma-ordinal-option__marker");
     const read = (element) => { const s = getComputedStyle(element); return `${s.transitionProperty}|${s.transitionDuration}|${s.transitionTimingFunction}`; };
     return `${read(option)}#${read(marker)}`;
   }));
@@ -72,7 +72,7 @@ test("motion never varies by value: every ordinal option has identical timing", 
 });
 
 test("ordinal press compresses the marker, never the option hit target", async ({ page }) => {
-  const option = page.locator(".ef-ordinal-option").nth(2);
+  const option = page.locator(".forma-ordinal-option").nth(2);
   const before = await option.boundingBox();
   await page.mouse.move(before.x + before.width / 2, before.y + before.height - 6);
   await page.mouse.down();
@@ -80,7 +80,7 @@ test("ordinal press compresses the marker, never the option hit target", async (
   const state = await option.evaluate((element) => ({
     optionScale: getComputedStyle(element).scale,
     optionTransform: getComputedStyle(element).transform,
-    markerScale: getComputedStyle(element.querySelector(".ef-ordinal-option__marker")).scale,
+    markerScale: getComputedStyle(element.querySelector(".forma-ordinal-option__marker")).scale,
     inputActive: element.querySelector("input").matches(":active"),
     inputTopmost: (() => {
       const input = element.querySelector("input");
@@ -101,7 +101,7 @@ test("ordinal press compresses the marker, never the option hit target", async (
 });
 
 test("rapid keyboard selection is immediate and does not queue motion", async ({ page }) => {
-  const radios = page.locator(".ef-ordinal-option input");
+  const radios = page.locator(".forma-ordinal-option input");
   await radios.first().focus();
   await page.keyboard.press("Space");
   for (let index = 1; index < 5; index += 1) {
@@ -123,10 +123,10 @@ test("selection stays identifiable without motion and without color", async ({ p
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.addStyleTag({ content: "*, *::before, *::after { animation: none !important; transition: none !important; } html { filter: grayscale(1); }" });
   const checks = [
-    [".ef-ordinal-option", 1],
-    [".ef-binary-option", 0],
-    [".ef-symbol-rating__option", 2],
-    [".ef-semantic-differential__scale label", 3]
+    [".forma-ordinal-option", 1],
+    [".forma-binary-option", 0],
+    [".forma-symbol-rating__option", 2],
+    [".forma-semantic-differential__scale label", 3]
   ];
   for (const [selector, index] of checks) {
     const option = page.locator(selector).nth(index);
@@ -151,11 +151,11 @@ test("selection stays identifiable without motion and without color", async ({ p
 
 test("reduced motion removes press compression and keeps selection", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  const option = page.locator(".ef-ordinal-option").nth(3);
+  const option = page.locator(".forma-ordinal-option").nth(3);
   const box = await option.boundingBox();
   await page.mouse.move(box.x + box.width / 2, box.y + box.height - 6);
   await page.mouse.down();
-  const marker = await option.locator(".ef-ordinal-option__marker").evaluate((element) => ({ scale: getComputedStyle(element).scale, duration: getComputedStyle(element).transitionDuration }));
+  const marker = await option.locator(".forma-ordinal-option__marker").evaluate((element) => ({ scale: getComputedStyle(element).scale, duration: getComputedStyle(element).transitionDuration }));
   await page.mouse.up();
   expect(marker.scale).toBe("none");
   seconds(marker.duration).forEach((value) => expect(value).toBeLessThan(0.01));
@@ -164,11 +164,11 @@ test("reduced motion removes press compression and keeps selection", async ({ pa
 
 test("forced colors keeps assessment selection distinguishable", async ({ page }) => {
   await page.emulateMedia({ forcedColors: "active" });
-  const option = page.locator(".ef-ordinal-option").nth(1);
+  const option = page.locator(".forma-ordinal-option").nth(1);
   await option.locator("input").check({ force: true });
   // Selection colors change by perceptual interpolation, so the settled
   // presentation is polled rather than read at the first frame.
-  await expect.poll(() => page.locator(".ef-ordinal-option").evaluateAll((options) => {
+  await expect.poll(() => page.locator(".forma-ordinal-option").evaluateAll((options) => {
     const pick = options.find((element) => element.querySelector("input:checked"));
     const peer = options.find((element) => !element.querySelector("input:checked"));
     const describe = (element) => ["background-color", "color", "outline-style", "border-top-color"].map((name) => getComputedStyle(element).getPropertyValue(name)).join("|");

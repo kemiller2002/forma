@@ -29,8 +29,8 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Unknown with an assigned obligation",
       description: "An unknown that blocks release, with the obligation to obtain the missing evidence linked by ID. The owner and due date come from the application's obligation record.",
-      html: `<ef-security-unknown class="ef-component-tag">
-  <article class="ef-security-unknown" id="security-unknown-with-obligation-SEC-UNK-004" aria-labelledby="security-unknown-with-obligation-title">
+      html: `<forma-security-unknown class="forma-component-tag">
+  <article class="forma-security-unknown" id="security-unknown-with-obligation-SEC-UNK-004" aria-labelledby="security-unknown-with-obligation-title">
     <header><p>Unknown security effect</p><h3 id="security-unknown-with-obligation-title">SEC-UNK-004</h3></header>
     <p>The DNS resolution path used by the release artifact has not been observed.</p>
     <dl>
@@ -39,14 +39,14 @@ export default {
       <div><dt>Obligation</dt><dd><a href="#OBL-118">OBL-118</a>, platform team, due <time datetime="2026-10-03">3 Oct 2026</time></dd></div>
     </dl>
   </article>
-</ef-security-unknown>`
+</forma-security-unknown>`
     },
     {
       id: "non-blocking",
       title: "Unknown outside the release scope",
       description: "An unknown that Tutela reports as not blocking this release scope. It is still recorded and visible; the consequence states the limit explicitly, and no obligation exists yet.",
-      html: `<ef-security-unknown class="ef-component-tag">
-  <article class="ef-security-unknown" id="security-unknown-non-blocking-SEC-UNK-009" aria-labelledby="security-unknown-non-blocking-title">
+      html: `<forma-security-unknown class="forma-component-tag">
+  <article class="forma-security-unknown" id="security-unknown-non-blocking-SEC-UNK-009" aria-labelledby="security-unknown-non-blocking-title">
     <header><p>Unknown security effect</p><h3 id="security-unknown-non-blocking-title">SEC-UNK-009</h3></header>
     <p>Behavior of the offline export feature on shared devices has not been established.</p>
     <dl>
@@ -55,7 +55,7 @@ export default {
       <div><dt>Obligation</dt><dd>None assigned</dd></div>
     </dl>
   </article>
-</ef-security-unknown>`
+</forma-security-unknown>`
     },
     {
       id: "mobile",
@@ -70,8 +70,8 @@ export default {
           "Links in values are inline text; keep one per value so tap targets stay distinct."
         ]
       },
-      html: `<ef-security-unknown class="ef-component-tag">
-  <article class="ef-security-unknown" id="security-unknown-mobile-SEC-UNK-003" aria-labelledby="security-unknown-mobile-title">
+      html: `<forma-security-unknown class="forma-component-tag">
+  <article class="forma-security-unknown" id="security-unknown-mobile-SEC-UNK-003" aria-labelledby="security-unknown-mobile-title">
     <header><p>Unknown security effect</p><h3 id="security-unknown-mobile-title">SEC-UNK-003</h3></header>
     <p>Runtime egress behavior has not been established.</p>
     <dl>
@@ -79,7 +79,7 @@ export default {
       <div><dt>Evidence needed</dt><dd>Observed egress policy test against the release artifact.</dd></div>
     </dl>
   </article>
-</ef-security-unknown>`
+</forma-security-unknown>`
     }
   ],
   api: {
@@ -90,7 +90,7 @@ export default {
       { name: "datetime", on: "time", values: "ISO 8601 date", default: "—", description: "Machine-readable obligation due date." }
     ],
     hooks: {
-      "ef-security-unknown": "Root article: bordered, padded primary surface. The header's paragraph is a small uppercase eyebrow; the description list is an auto-fit grid of at least 12rem columns with secondary-colored bold terms and values that wrap anywhere."
+      "forma-security-unknown": "Root article: bordered, padded primary surface. The header's paragraph is a small uppercase eyebrow; the description list is an auto-fit grid of at least 12rem columns with secondary-colored bold terms and values that wrap anywhere."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between links in the record." },

@@ -44,8 +44,8 @@ const DOCUMENTED_EXCEPTIONS = new Map();
 function themeContexts(file) {
   return parseCss(read(file)).rules.flatMap((rule) => {
     const colors = Object.fromEntries(declarations(rule.body)
-      .filter(([property, value]) => property.startsWith("--ef-color-") && /^#[0-9a-f]{6}$/i.test(value))
-      .map(([property, value]) => [property.slice("--ef-color-".length), value.toLowerCase()]));
+      .filter(([property, value]) => property.startsWith("--forma-color-") && /^#[0-9a-f]{6}$/i.test(value))
+      .map(([property, value]) => [property.slice("--forma-color-".length), value.toLowerCase()]));
     return colors["surface-primary"] && colors["surface-secondary"] ? [{ id: `${file} ${rule.selector}`, colors }] : [];
   });
 }
@@ -59,10 +59,10 @@ const contexts = compiled.flatMap(themeContexts);
 test("the token-level check covers every shipped theme and brand", () => {
   const themes = Object.keys(JSON.parse(read("tokens/forma.tokens.json")).semantic);
   for (const theme of themes.filter((id) => id !== "light")) {
-    assert.ok(contexts.some((context) => context.id.includes(`[data-ef-theme="${theme}"]`)), `no compiled context for theme ${theme}`);
+    assert.ok(contexts.some((context) => context.id.includes(`[data-forma-theme="${theme}"]`)), `no compiled context for theme ${theme}`);
   }
   for (const brand of JSON.parse(read("dist/brands/index.json")).brands) {
-    assert.ok(contexts.some((context) => context.id.includes(`[data-ef-brand="${brand.id}"]`)), `no compiled context for brand ${brand.id}`);
+    assert.ok(contexts.some((context) => context.id.includes(`[data-forma-brand="${brand.id}"]`)), `no compiled context for brand ${brand.id}`);
   }
   const missing = contexts.flatMap((context) =>
     INDICATORS.filter((role) => !context.colors[role]).map((role) => `${context.id} omits ${role}`));
@@ -97,7 +97,7 @@ test("every documented exception still names a real failing pair", () => {
 test("the Rehearsal 6 outline is below 3:1 and the light status-warning token is not", () => {
   // Causa's identity amber on its ivory fill: the failure that motivated the rule.
   assert.ok(contrast("#e9a23b", "#f5f3ed") < NON_TEXT_MINIMUM);
-  const light = contexts.find((context) => context.id.includes('[data-ef-theme="light"]'));
+  const light = contexts.find((context) => context.id.includes('[data-forma-theme="light"]'));
   assert.ok(light, "no light theme context");
   assert.ok(contrast(light.colors["status-warning"], light.colors["surface-primary"]) >= NON_TEXT_MINIMUM);
 });

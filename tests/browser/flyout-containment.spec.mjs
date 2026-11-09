@@ -28,7 +28,7 @@ for (const width of [320, 390]) {
           const bounds = await input.evaluate(element => {
             const rect = element.getBoundingClientRect();
             const field = element.parentElement.getBoundingClientRect();
-            const body = element.closest(".ef-flyout__body");
+            const body = element.closest(".forma-flyout__body");
             const bodyRect = body.getBoundingClientRect();
             const style = getComputedStyle(body);
             return { left: rect.left, right: rect.right, fieldLeft: field.left, fieldRight: field.right,

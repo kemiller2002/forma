@@ -17,7 +17,7 @@ export default {
       "Data has rows and columns that must be compared cell by cell: use a table in [[bounded-overflow]] or [[data-grid]]."
     ],
     characteristics: [
-      "Columns come from `repeat(auto-fit, minmax(min(100%, var(--ef-grid-min)), 1fr))`, so a track is never wider than the container.",
+      "Columns come from `repeat(auto-fit, minmax(min(100%, var(--forma-grid-min)), 1fr))`, so a track is never wider than the container.",
       "Items fill rows in source order; the grid never reorders them.",
       "The grid draws nothing; pair it with [[surface]] items when each cell needs a boundary."
     ]
@@ -27,51 +27,51 @@ export default {
       id: "plan-comparison",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Plan comparison",
-      description: "Three plan panels with a wider minimum track (`--ef-grid-min: 18rem`) so each panel keeps a readable measure. The panels sit in three columns on a wide screen and drop to fewer columns as the container narrows.",
-      html: `<ef-grid class="ef-component-tag">
-  <ul class="ef-grid" role="list" aria-label="Plans" style="--ef-grid-min: 18rem">
-    <li class="ef-surface ef-stack" data-density="compact">
+      description: "Three plan panels with a wider minimum track (`--forma-grid-min: 18rem`) so each panel keeps a readable measure. The panels sit in three columns on a wide screen and drop to fewer columns as the container narrows.",
+      html: `<forma-grid class="forma-component-tag">
+  <ul class="forma-grid" role="list" aria-label="Plans" style="--forma-grid-min: 18rem">
+    <li class="forma-surface forma-stack" data-density="compact">
       <h2>Starter</h2>
       <p>Up to 5 people, community support, 10 GB storage.</p>
       <button type="button">Choose Starter</button>
     </li>
-    <li class="ef-surface ef-stack" data-density="compact">
+    <li class="forma-surface forma-stack" data-density="compact">
       <h2>Team</h2>
       <p>Up to 50 people, business-hours support, 1 TB storage and audit log export.</p>
       <button type="button">Choose Team</button>
     </li>
-    <li class="ef-surface ef-stack" data-density="compact">
+    <li class="forma-surface forma-stack" data-density="compact">
       <h2>Enterprise</h2>
       <p>Unlimited people, single sign-on, dedicated support and data residency options.</p>
       <button type="button">Talk to sales</button>
     </li>
   </ul>
-</ef-grid>`
+</forma-grid>`
     },
     {
       id: "analytical-density",
       title: "Analytical monitoring tiles",
       description: "Six service tiles under `data-density=\"analytical\"` with a narrow minimum track. The tighter gap keeps more tiles in view for monitoring; each tile still states its status in text.",
-      html: `<ef-grid class="ef-component-tag">
-  <ul class="ef-grid" role="list" aria-label="Service health" data-density="analytical" style="--ef-grid-min: 11rem">
-    <li class="ef-surface"><h2>API gateway</h2><p><span class="ef-status-lozenge" data-state="ok">Healthy</span></p></li>
-    <li class="ef-surface"><h2>Auth</h2><p><span class="ef-status-lozenge" data-state="ok">Healthy</span></p></li>
-    <li class="ef-surface"><h2>Billing</h2><p><span class="ef-status-lozenge" data-state="attention">Degraded</span></p></li>
-    <li class="ef-surface"><h2>Search</h2><p><span class="ef-status-lozenge" data-state="ok">Healthy</span></p></li>
-    <li class="ef-surface"><h2>Exports</h2><p><span class="ef-status-lozenge" data-state="unknown">No data</span></p></li>
-    <li class="ef-surface"><h2>Webhooks</h2><p><span class="ef-status-lozenge" data-state="blocked">Paused</span></p></li>
+      html: `<forma-grid class="forma-component-tag">
+  <ul class="forma-grid" role="list" aria-label="Service health" data-density="analytical" style="--forma-grid-min: 11rem">
+    <li class="forma-surface"><h2>API gateway</h2><p><span class="forma-status-lozenge" data-state="ok">Healthy</span></p></li>
+    <li class="forma-surface"><h2>Auth</h2><p><span class="forma-status-lozenge" data-state="ok">Healthy</span></p></li>
+    <li class="forma-surface"><h2>Billing</h2><p><span class="forma-status-lozenge" data-state="attention">Degraded</span></p></li>
+    <li class="forma-surface"><h2>Search</h2><p><span class="forma-status-lozenge" data-state="ok">Healthy</span></p></li>
+    <li class="forma-surface"><h2>Exports</h2><p><span class="forma-status-lozenge" data-state="unknown">No data</span></p></li>
+    <li class="forma-surface"><h2>Webhooks</h2><p><span class="forma-status-lozenge" data-state="blocked">Paused</span></p></li>
   </ul>
-</ef-grid>`
+</forma-grid>`
     },
     {
       id: "single-item",
       title: "Single result",
       description: "A grid holding one item. auto-fit collapses the empty tracks, so the lone item stretches across the row instead of sitting in a narrow first column.",
-      html: `<ef-grid class="ef-component-tag">
-  <ul class="ef-grid" role="list" aria-label="Matching environments">
-    <li class="ef-surface"><h2>Production (eu-west)</h2><p>Only one environment matches the filter "eu".</p></li>
+      html: `<forma-grid class="forma-component-tag">
+  <ul class="forma-grid" role="list" aria-label="Matching environments">
+    <li class="forma-surface"><h2>Production (eu-west)</h2><p>Only one environment matches the filter "eu".</p></li>
   </ul>
-</ef-grid>`
+</forma-grid>`
     },
     {
       id: "mobile-environments",
@@ -81,33 +81,33 @@ export default {
         height: 520,
         notes: [
           "With the default 16rem minimum, 320px and 390px screens fit only one track, so items stack in source order.",
-          "`min(100%, var(--ef-grid-min))` keeps a track from ever exceeding the container, so there is no horizontal scroll even when the minimum is wider than the screen.",
+          "`min(100%, var(--forma-grid-min))` keeps a track from ever exceeding the container, so there is no horizontal scroll even when the minimum is wider than the screen.",
           "In landscape on a phone two columns may fit; the change is driven by available width, not device type.",
           "Each item is full width, so links and buttons inside keep generous touch areas."
         ]
       },
-      html: `<ef-grid class="ef-component-tag">
-  <ul class="ef-grid" role="list" aria-label="Environments on this account">
-    <li class="ef-surface"><h2>Production</h2><p>12 services, all reporting.</p></li>
-    <li class="ef-surface"><h2>Staging</h2><p>12 services, 1 deploying.</p></li>
-    <li class="ef-surface"><h2>Preview</h2><p>4 short-lived environments from open pull requests.</p></li>
-    <li class="ef-surface"><h2>Development</h2><p>9 services, 3 idle.</p></li>
+      html: `<forma-grid class="forma-component-tag">
+  <ul class="forma-grid" role="list" aria-label="Environments on this account">
+    <li class="forma-surface"><h2>Production</h2><p>12 services, all reporting.</p></li>
+    <li class="forma-surface"><h2>Staging</h2><p>12 services, 1 deploying.</p></li>
+    <li class="forma-surface"><h2>Preview</h2><p>4 short-lived environments from open pull requests.</p></li>
+    <li class="forma-surface"><h2>Development</h2><p>9 services, 3 idle.</p></li>
   </ul>
-</ef-grid>`
+</forma-grid>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: "ul.ef-grid", values: "list", default: "—", description: "Restores list semantics that some browsers drop when list styling is removed. Keep it when the grid is a ul or ol." },
-      { name: "aria-label", on: ".ef-grid", values: "string", default: "—", description: "Names the collection so screen-reader users know what the list contains." },
-      { name: "data-density", on: ".ef-grid", values: "relaxed | standard | compact | analytical", default: "absent (1rem gap)", description: "Contextual density posture. Sets the gap to 1.5rem, 1rem, or 0.5rem (compact and analytical). Not a data-ef-* hook; it changes spacing only." },
-      { name: "style", on: ".ef-grid", values: "--ef-grid-min / --ef-grid-gap", default: "—", description: "Per-instance override of the minimum track width or the gap." }
+      { name: "role", on: "ul.forma-grid", values: "list", default: "—", description: "Restores list semantics that some browsers drop when list styling is removed. Keep it when the grid is a ul or ol." },
+      { name: "aria-label", on: ".forma-grid", values: "string", default: "—", description: "Names the collection so screen-reader users know what the list contains." },
+      { name: "data-density", on: ".forma-grid", values: "relaxed | standard | compact | analytical", default: "absent (1rem gap)", description: "Contextual density posture. Sets the gap to 1.5rem, 1rem, or 0.5rem (compact and analytical). Not a data-forma-* hook; it changes spacing only." },
+      { name: "style", on: ".forma-grid", values: "--forma-grid-min / --forma-grid-gap", default: "—", description: "Per-instance override of the minimum track width or the gap." }
     ],
     hooks: {
-      "ef-grid": "Auto-fit grid of equal columns sized by a minimum track width.",
-      "data-density": "Density posture on the grid. relaxed = 1.5rem, standard = 1rem, compact and analytical = 0.5rem gap. Overrides `--ef-grid-gap`.",
-      "--ef-grid-min": "Minimum track width before a column is dropped. Default 16rem. Clamped to 100% of the container.",
-      "--ef-grid-gap": "Gap between rows and columns. Default `--ef-primitive-spacing-4` (1rem)."
+      "forma-grid": "Auto-fit grid of equal columns sized by a minimum track width.",
+      "data-density": "Density posture on the grid. relaxed = 1.5rem, standard = 1rem, compact and analytical = 0.5rem gap. Overrides `--forma-grid-gap`.",
+      "--forma-grid-min": "Minimum track width before a column is dropped. Default 16rem. Clamped to 100% of the container.",
+      "--forma-grid-gap": "Gap between rows and columns. Default `--forma-primitive-spacing-4` (1rem)."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through focusable content row by row in source order. The grid is not an ARIA grid and has no arrow-key navigation." }
@@ -118,13 +118,13 @@ export default {
   states: [
     { name: "Multi-column", how: "container wider than two minimum tracks", description: "Items fill as many equal columns as fit." },
     { name: "Single column", how: "container narrower than two minimum tracks", description: "Items stack at full width in source order." },
-    { name: "Density posture", how: "data-density attribute", description: "Gap follows the posture instead of `--ef-grid-gap`." }
+    { name: "Density posture", how: "data-density attribute", description: "Gap follows the posture instead of `--forma-grid-gap`." }
   ],
   accessibility: {
     forma: [
       "Placement follows source order, so reading and focus order match the visual rows.",
       "Tracks never exceed the container, so the grid itself does not cause horizontal scrolling at 320px or 400% zoom.",
-      "Adds no role; `.ef-grid` on a list keeps list semantics when role=\"list\" is present."
+      "Adds no role; `.forma-grid` on a list keeps list semantics when role=\"list\" is present."
     ],
     consumer: [
       "Use a list (ul or ol with role=\"list\") when the items are a collection, and name it with aria-label.",
@@ -143,7 +143,7 @@ export default {
   ],
   guidance: {
     do: [
-      "Set `--ef-grid-min` from the content: the narrowest width at which one item is still readable.",
+      "Set `--forma-grid-min` from the content: the narrowest width at which one item is still readable.",
       "Use `data-density` rather than a custom gap when the whole region's posture changes."
     ],
     avoid: [
@@ -156,6 +156,6 @@ export default {
     { slug: "mosaic", note: "Fixed four-column editorial rhythm with deliberate spans." },
     { slug: "dashboard-grid", note: "Operational dashboard summaries with their own layout conventions." },
     { slug: "card-grid", note: "Marketing card collections inside the site shell." },
-    { slug: "character-grid", note: "Terminal-style character cell layout; unrelated despite the shared `--ef-grid-` prefix." }
+    { slug: "character-grid", note: "Terminal-style character cell layout; unrelated despite the shared `--forma-grid-` prefix." }
   ]
 };

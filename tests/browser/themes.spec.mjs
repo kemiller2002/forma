@@ -3,14 +3,14 @@ import { openFixture } from "./helpers.mjs";
 
 test("explicit dark theme resolves accessible derived accent tokens", async ({ page }) => {
   await openFixture(page);
-  await page.locator("html").evaluate(element => element.setAttribute("data-ef-theme", "dark"));
+  await page.locator("html").evaluate(element => element.setAttribute("data-forma-theme", "dark"));
 
   const values = await page.locator("html").evaluate(element => {
     const style = getComputedStyle(element);
     return {
-      primary: style.getPropertyValue("--ef-color-accent-primary").trim(),
-      secondary: style.getPropertyValue("--ef-color-accent-secondary").trim(),
-      surface: style.getPropertyValue("--ef-color-surface-primary").trim()
+      primary: style.getPropertyValue("--forma-color-accent-primary").trim(),
+      secondary: style.getPropertyValue("--forma-color-accent-secondary").trim(),
+      surface: style.getPropertyValue("--forma-color-surface-primary").trim()
     };
   });
 
@@ -24,7 +24,7 @@ test("explicit dark theme resolves accessible derived accent tokens", async ({ p
 test("light secondary surface uses its dedicated safe text token", async ({ page }) => {
   await openFixture(page);
   const value = await page.locator("html").evaluate(element =>
-    getComputedStyle(element).getPropertyValue("--ef-color-text-on-secondary-surface").trim()
+    getComputedStyle(element).getPropertyValue("--forma-color-text-on-secondary-surface").trim()
   );
   expect(value).toBe("#303030");
 });

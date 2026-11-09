@@ -2,12 +2,12 @@
 // catalog API tables are projections of the implementation rather than a
 // second, hand-maintained description of it.
 //
-// A "root" is a block class such as `ef-switch`. Its hooks are:
-//   - elements   `ef-switch__track`
-//   - modifiers  `ef-switch--compact`
+// A "root" is a block class such as `forma-switch`. Its hooks are:
+//   - elements   `forma-switch__track`
+//   - modifiers  `forma-switch--compact`
 //   - attributes selectors that appear in the same compound selector as one
-//                of the root's classes, e.g. `.ef-switch[data-ef-motion-weight="heavy"]`
-//   - custom properties named `--ef-switch-*`
+//                of the root's classes, e.g. `.forma-switch[data-forma-motion-weight="heavy"]`
+//   - custom properties named `--forma-switch-*`
 import fs from "node:fs";
 
 const stripComments = css => css.replace(/\/\*[\s\S]*?\*\//g, "");
@@ -49,7 +49,7 @@ const selectorsOf = prelude => splitTopLevel(prelude, char => char === ",");
 const compoundsOf = selector =>
   splitTopLevel(selector, char => char === " " || char === ">" || char === "+" || char === "~");
 
-const classPattern = /\.(ef-[a-z0-9]+(?:-[a-z0-9]+)*)((?:__[a-z0-9]+(?:-[a-z0-9]+)*)?)((?:--[a-z0-9]+(?:-[a-z0-9]+)*)?)/g;
+const classPattern = /\.(forma-[a-z0-9]+(?:-[a-z0-9]+)*)((?:__[a-z0-9]+(?:-[a-z0-9]+)*)?)((?:--[a-z0-9]+(?:-[a-z0-9]+)*)?)/g;
 const attributePattern = /\[\s*([a-z][a-z0-9-]*)\s*(?:[~|^$*]?=\s*(?:"([^"]*)"|'([^']*)'|([^\]\s]+)))?\s*(?:[is]\s*)?\]/g;
 
 export const rootOf = className => className.split("__")[0].split("--")[0];
@@ -75,7 +75,7 @@ const hookRecords = css =>
     });
 
 const customPropertyRecords = css =>
-  [...stripComments(css).matchAll(/(--ef-[a-z0-9-]+)\s*:\s*([^;{}]+);/g)]
+  [...stripComments(css).matchAll(/(--forma-[a-z0-9-]+)\s*:\s*([^;{}]+);/g)]
     .map(match => ({ name: match[1], value: match[2].trim() }));
 
 // Custom properties mentioned (declared or consumed) inside rules for each root.
@@ -84,13 +84,13 @@ const propertiesByRoot = css =>
     .filter(match => !match[1].trim().startsWith("@"))
     .reduce((index, match) => {
       const roots = [...new Set(classesIn(match[1]).map(rootOf))];
-      const properties = [...match[2].matchAll(/(--ef-[a-z0-9-]+)/g)].map(item => item[1]);
+      const properties = [...match[2].matchAll(/(--forma-[a-z0-9-]+)/g)].map(item => item[1]);
       roots.forEach(root => index.set(root, new Set([...(index.get(root) ?? []), ...properties])));
       return index;
     }, new Map());
 
 const consumedCustomProperties = css =>
-  [...new Set([...stripComments(css).matchAll(/var\(\s*(--ef-[a-z0-9-]+)/g)].map(match => match[1]))];
+  [...new Set([...stripComments(css).matchAll(/var\(\s*(--forma-[a-z0-9-]+)/g)].map(match => match[1]))];
 
 const sortedUnique = values => [...new Set(values)].sort();
 
@@ -117,7 +117,7 @@ export const buildHookIndex = css => {
       .sort((a, b) => a.name.localeCompare(b.name));
     const prefix = `--${root}-`;
     // A property belongs to a root when it carries the root's name and the
-    // root's own rules use it (so --ef-split-pane-* never lands on ef-split).
+    // root's own rules use it (so --forma-split-pane-* never lands on forma-split).
     const customProperties = propertyNames
       .filter(name => name.startsWith(prefix) && (mentioned.get(root)?.has(name) ?? false))
       .map(name => ({ name, default: declared.find(item => item.name === name)?.value ?? null }));

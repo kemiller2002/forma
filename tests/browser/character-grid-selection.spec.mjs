@@ -5,7 +5,7 @@ import { gridDocument, measureGrid, pattern } from "./character-grid-helpers.mjs
 // Per-row selection fields (GAP-TCG-10): a 5250-style option column in a
 // positioned table, built only from public CharacterGrid contracts.
 const source = pattern("character-grid-selection");
-const focusedId = page => page.evaluate(() => document.activeElement?.id || document.activeElement?.dataset.efAction || document.activeElement?.className || "");
+const focusedId = page => page.evaluate(() => document.activeElement?.id || document.activeElement?.dataset.formaAction || document.activeElement?.className || "");
 
 test("each selection field is a native textbox named by its column and row headers and described by the legend", async ({ page }) => {
   await page.setContent(gridDocument(source));
@@ -29,7 +29,7 @@ test("the table keeps row and column header semantics around the fields", async 
 test("Tab and Shift+Tab visit selection fields row by row, then the keys, skipping the disabled row", async ({ page }) => {
   await page.setContent(gridDocument(source));
   await page.keyboard.press("Tab");
-  expect(await focusedId(page)).toContain("ef-character-grid__viewport");
+  expect(await focusedId(page)).toContain("forma-character-grid__viewport");
   const forward = [];
   for (let step = 0; step < 8; step += 1) {
     await page.keyboard.press("Tab");
@@ -56,9 +56,9 @@ test("Tab and Shift+Tab visit selection fields row by row, then the keys, skippi
 test("a selection field is exactly its declared cells and one row pitch, and native capacity matches", async ({ page }) => {
   await page.setContent(gridDocument(source));
   const [grid] = await measureGrid(page);
-  const fields = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__table .ef-character-grid__field")].map(field => {
+  const fields = await page.evaluate(() => [...document.querySelectorAll(".forma-character-grid__table .forma-character-grid__field")].map(field => {
     const box = field.getBoundingClientRect();
-    return { id: field.id, width: box.width, height: box.height, len: Number(field.dataset.efLen), maxLength: field.maxLength };
+    return { id: field.id, width: box.width, height: box.height, len: Number(field.dataset.formaLen), maxLength: field.maxLength };
   }));
   expect(fields).toHaveLength(5);
   for (const field of fields) {
@@ -73,7 +73,7 @@ for (const width of [390, 320]) {
   test(`at ${width}px selection fields meet the 44px target inside their column and gutter, and the page never overflows`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.setContent(gridDocument(source));
-    const rows = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__table tbody tr")].map(row => {
+    const rows = await page.evaluate(() => [...document.querySelectorAll(".forma-character-grid__table tbody tr")].map(row => {
       const field = row.querySelector("input").getBoundingClientRect();
       const range = document.createRange();
       range.selectNodeContents(row.querySelector("th"));
@@ -92,7 +92,7 @@ for (const width of [390, 320]) {
 test("field state cues survive forced colors", async ({ page }) => {
   await page.emulateMedia({ forcedColors: "active" });
   await page.setContent(gridDocument(source));
-  const styles = await page.evaluate(() => [...document.querySelectorAll(".ef-character-grid__table .ef-character-grid__field")].map(field => {
+  const styles = await page.evaluate(() => [...document.querySelectorAll(".forma-character-grid__table .forma-character-grid__field")].map(field => {
     const style = getComputedStyle(field);
     return { id: field.id, invalid: field.getAttribute("aria-invalid") === "true", bottom: style.borderBottomStyle, top: style.borderTopStyle };
   }));

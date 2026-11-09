@@ -16,7 +16,7 @@ export default {
       "The content is tabular or a dashboard; a character measure would squeeze it. Use [[grid]] or [[bounded-overflow]]."
     ],
     characteristics: [
-      "Width is `min(100%, var(--ef-measure))`, so the element never overflows its parent.",
+      "Width is `min(100%, var(--forma-measure))`, so the element never overflows its parent.",
       "The `ch` unit scales with font size, so the measure stays proportional under text zoom.",
       "The element stays at the inline start; wrap it in a centered container if centering is wanted."
     ]
@@ -26,26 +26,26 @@ export default {
       id: "settings-help",
       title: "Help text in a wide settings page",
       description: "A description paragraph and a field constrained to a readable measure inside a full-width page section. The heading and the field share the same line length, so the eye does not travel across the whole screen.",
-      html: `<ef-measure class="ef-component-tag">
-  <section class="ef-measure ef-stack" aria-labelledby="measure-settings-help-title">
+      html: `<forma-measure class="forma-component-tag">
+  <section class="forma-measure forma-stack" aria-labelledby="measure-settings-help-title">
     <h2 id="measure-settings-help-title">Data retention</h2>
     <p>Choose how long we keep deleted projects before they are permanently removed. During this period an administrator can restore a project with all of its history, members and integrations.</p>
-    <div class="ef-field">
-      <label class="ef-field__label" for="measure-settings-help-days">Days before permanent deletion</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="measure-settings-help-days">Days before permanent deletion</label>
       <input id="measure-settings-help-days" name="retention-days" type="number" min="1" max="365" value="30">
     </div>
   </section>
-</ef-measure>`
+</forma-measure>`
     },
     {
       id: "narrow-measure",
       title: "Short measure for a confirmation note",
-      description: "A tighter measure (`--ef-measure: 45ch`) for a short confirmation note in a card. Short lines make a brief message easier to take in at a glance.",
-      html: `<ef-measure class="ef-component-tag">
-  <div class="ef-surface">
-    <p class="ef-measure" style="--ef-measure: 45ch">Your export is being prepared. We will email a download link to the address on your account when it is ready, usually within ten minutes.</p>
+      description: "A tighter measure (`--forma-measure: 45ch`) for a short confirmation note in a card. Short lines make a brief message easier to take in at a glance.",
+      html: `<forma-measure class="forma-component-tag">
+  <div class="forma-surface">
+    <p class="forma-measure" style="--forma-measure: 45ch">Your export is being prepared. We will email a download link to the address on your account when it is ready, usually within ten minutes.</p>
   </div>
-</ef-measure>`
+</forma-measure>`
     },
     {
       id: "mobile-measure",
@@ -60,30 +60,30 @@ export default {
           "Rotating to landscape lets the measure take effect again once the width exceeds 65ch."
         ]
       },
-      html: `<ef-measure class="ef-component-tag">
-  <article class="ef-measure ef-stack" aria-labelledby="measure-mobile-measure-title">
+      html: `<forma-measure class="forma-component-tag">
+  <article class="forma-measure forma-stack" aria-labelledby="measure-mobile-measure-title">
     <h2 id="measure-mobile-measure-title">Why we ask for your phone number</h2>
     <p>We only use it to send sign-in codes when you turn on two-step verification. It is never shown to other members of your workspace.</p>
   </article>
-</ef-measure>`
+</forma-measure>`
     }
   ],
   api: {
     attributes: [
-      { name: "style", on: ".ef-measure", values: "--ef-measure: <length>", default: "—", description: "Per-instance line length, for example 45ch for short notes." },
+      { name: "style", on: ".forma-measure", values: "--forma-measure: <length>", default: "—", description: "Per-instance line length, for example 45ch for short notes." },
       { name: "aria-labelledby", on: "section / article", values: "id of the heading", default: "—", description: "Names the constrained region by its heading." }
     ],
     hooks: {
-      "ef-measure": "Sets `inline-size: min(100%, var(--ef-measure))`. No other styling.",
-      "--ef-measure": "Maximum line length. Default 65ch."
+      "forma-measure": "Sets `inline-size: min(100%, var(--forma-measure))`. No other styling.",
+      "--forma-measure": "Maximum line length. Default 65ch."
     },
     keyboard: [],
     events: [],
     form: "Not a form control. A form or field group can be the measured element."
   },
   states: [
-    { name: "Constrained", how: "parent wider than --ef-measure", description: "The element stops at the measure; remaining space stays empty at the inline end." },
-    { name: "Fluid", how: "parent narrower than --ef-measure", description: "The element takes 100% of the parent." }
+    { name: "Constrained", how: "parent wider than --forma-measure", description: "The element stops at the measure; remaining space stays empty at the inline end." },
+    { name: "Fluid", how: "parent narrower than --forma-measure", description: "The element takes 100% of the parent." }
   ],
   accessibility: {
     forma: [
@@ -111,7 +111,7 @@ export default {
     ],
     avoid: [
       "Expecting measure to center content; it only limits width.",
-      "Using px values for `--ef-measure`; they do not follow text zoom."
+      "Using px values for `--forma-measure`; they do not follow text zoom."
     ]
   },
   related: [

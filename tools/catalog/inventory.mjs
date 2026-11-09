@@ -54,7 +54,7 @@ This is the durable inventory of every public Forma component, generated from
 the component catalog (\`catalog/components/*.mjs\`), the canonical patterns
 (\`patterns/*.html\`), the built stylesheet and the test suite. The catalog
 checker (\`npm run catalog:check\`) fails when a canonical pattern or a public
-\`.ef-*\` block class is missing from this list.
+\`.forma-*\` block class is missing from this list.
 
 - Public components: **${catalog.components.length}** in **${catalog.categories.length}** families
 - Rendered examples on the documentation site: **${catalog.components.reduce((total, component) => total + component.examples.length + 1, 0)}** (each component: canonical Basic + scenario examples + mobile examples)

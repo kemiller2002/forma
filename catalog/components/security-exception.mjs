@@ -29,8 +29,8 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Expired exception",
       description: "An exception whose expiry has passed. Status says Expired in text, and the record links the invariant it deviated from so the reviewer can see what is now unprotected.",
-      html: `<ef-security-exception class="ef-component-tag">
-  <article class="ef-security-exception" id="security-exception-expired-SEC-EXC-001" aria-labelledby="security-exception-expired-title">
+      html: `<forma-security-exception class="forma-component-tag">
+  <article class="forma-security-exception" id="security-exception-expired-SEC-EXC-001" aria-labelledby="security-exception-expired-title">
     <header><p>Security exception</p><h3 id="security-exception-expired-title">SEC-EXC-001</h3></header>
     <dl>
       <div><dt>Status</dt><dd>Expired</dd></div>
@@ -41,15 +41,15 @@ export default {
       <div><dt>Compensating control</dt><dd>Endpoint limited to internal network; weekly access review.</dd></div>
     </dl>
   </article>
-</ef-security-exception>`
+</forma-security-exception>`
     },
     {
       id: "requested",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Requested, not yet approved",
       description: "A requested exception. The approver field states that approval is pending instead of being left blank, and the record does not imply the exception already applies.",
-      html: `<ef-security-exception class="ef-component-tag">
-  <article class="ef-security-exception" id="security-exception-requested-SEC-EXC-004" aria-labelledby="security-exception-requested-title">
+      html: `<forma-security-exception class="forma-component-tag">
+  <article class="forma-security-exception" id="security-exception-requested-SEC-EXC-004" aria-labelledby="security-exception-requested-title">
     <header><p>Security exception</p><h3 id="security-exception-requested-title">SEC-EXC-004</h3></header>
     <dl>
       <div><dt>Status</dt><dd>Requested</dd></div>
@@ -60,7 +60,7 @@ export default {
       <div><dt>Evidence</dt><dd><a href="#SEC-EVD-042">SEC-EVD-042</a></dd></div>
     </dl>
   </article>
-</ef-security-exception>`
+</forma-security-exception>`
     },
     {
       id: "mobile",
@@ -75,8 +75,8 @@ export default {
           "Links inside values are inline text; keep one link per value so tap targets do not crowd."
         ]
       },
-      html: `<ef-security-exception class="ef-component-tag">
-  <article class="ef-security-exception" id="security-exception-mobile-SEC-EXC-002" aria-labelledby="security-exception-mobile-title">
+      html: `<forma-security-exception class="forma-component-tag">
+  <article class="forma-security-exception" id="security-exception-mobile-SEC-EXC-002" aria-labelledby="security-exception-mobile-title">
     <header><p>Security exception</p><h3 id="security-exception-mobile-title">SEC-EXC-002</h3></header>
     <dl>
       <div><dt>Status</dt><dd>Active</dd></div>
@@ -86,7 +86,7 @@ export default {
       <div><dt>Compensating control</dt><dd>Export restricted to administrators, with enhanced audit logging reviewed daily by the security on-call engineer.</dd></div>
     </dl>
   </article>
-</ef-security-exception>`
+</forma-security-exception>`
     }
   ],
   api: {
@@ -97,7 +97,7 @@ export default {
       { name: "href", on: "a", values: "stable record URL or #ID", default: "—", description: "Links to the governing invariant and evidence." }
     ],
     hooks: {
-      "ef-security-exception": "Root article: bordered, padded primary surface. The header's paragraph is a small uppercase eyebrow; the description list is an auto-fit grid of at least 12rem columns with secondary-colored bold terms and values that wrap anywhere."
+      "forma-security-exception": "Root article: bordered, padded primary surface. The header's paragraph is a small uppercase eyebrow; the description list is an auto-fit grid of at least 12rem columns with secondary-colored bold terms and values that wrap anywhere."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between links in the record." },

@@ -3,7 +3,7 @@ export default {
   category: "security",
   behavior: "Aegis / application",
   summary: "Reports invariant evaluation outcomes with explicit state rather than color-only pass/fail cues.",
-  owns: ["ef-invariant-result"],
+  owns: ["forma-invariant-result"],
   purpose: {
     description: "An invariant result presents one security invariant as Tutela evaluated it: its stable ID, its state written as a word (Verified, Violated, Unknown, Stale or N/A), the invariant statement, and the related threats, evidence and verification requirements as links and terms. It keeps the outcome explicit and traceable instead of a green or red dot. Tutela evaluates the invariant; Forma displays the supplied state and never recalculates it.",
     useWhen: [
@@ -30,8 +30,8 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Verified invariant",
       description: "An invariant Tutela reports as Verified, with its current evidence and independent verification recorded.",
-      html: `<ef-security-invariant-result class="ef-component-tag">
-  <article class="ef-invariant-result" id="security-invariant-result-verified-SEC-INV-003" data-state="verified" aria-labelledby="security-invariant-result-verified-title">
+      html: `<forma-security-invariant-result class="forma-component-tag">
+  <article class="forma-invariant-result" id="security-invariant-result-verified-SEC-INV-003" data-state="verified" aria-labelledby="security-invariant-result-verified-title">
     <header><p>Security invariant</p><h3 id="security-invariant-result-verified-title">SEC-INV-003</h3><strong>Verified</strong></header>
     <p>Session tokens are bound to the device that created them.</p>
     <dl>
@@ -40,15 +40,15 @@ export default {
       <div><dt>Independent verification</dt><dd>Completed <time datetime="2026-09-27">27 Sep 2026</time></dd></div>
     </dl>
   </article>
-</ef-security-invariant-result>`
+</forma-security-invariant-result>`
     },
     {
       id: "unknown",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Unknown because evidence is missing",
       description: "An invariant that cannot be evaluated. The Unknown state is written out and the missing evidence is listed as its own term, so it is not mistaken for a pass or a violation.",
-      html: `<ef-security-invariant-result class="ef-component-tag">
-  <article class="ef-invariant-result" id="security-invariant-result-unknown-SEC-INV-021" data-state="unknown" aria-labelledby="security-invariant-result-unknown-title">
+      html: `<forma-security-invariant-result class="forma-component-tag">
+  <article class="forma-invariant-result" id="security-invariant-result-unknown-SEC-INV-021" data-state="unknown" aria-labelledby="security-invariant-result-unknown-title">
     <header><p>Security invariant</p><h3 id="security-invariant-result-unknown-title">SEC-INV-021</h3><strong>Unknown</strong></header>
     <p>Outbound network traffic is limited to approved destinations.</p>
     <dl>
@@ -58,7 +58,7 @@ export default {
       <div><dt>Independent verification</dt><dd>Required</dd></div>
     </dl>
   </article>
-</ef-security-invariant-result>`
+</forma-security-invariant-result>`
     },
     {
       id: "mobile",
@@ -74,8 +74,8 @@ export default {
           "Reading order is identical in portrait and landscape."
         ]
       },
-      html: `<ef-security-invariant-result class="ef-component-tag">
-  <article class="ef-invariant-result" id="security-invariant-result-mobile-SEC-INV-014" data-state="violated" aria-labelledby="security-invariant-result-mobile-title">
+      html: `<forma-security-invariant-result class="forma-component-tag">
+  <article class="forma-invariant-result" id="security-invariant-result-mobile-SEC-INV-014" data-state="violated" aria-labelledby="security-invariant-result-mobile-title">
     <header><p>Security invariant</p><h3 id="security-invariant-result-mobile-title">SEC-INV-014</h3><strong>Violated</strong></header>
     <p>Privileged actions require explicit authorization at the effect boundary, including actions started by agent tools on behalf of a user.</p>
     <dl>
@@ -84,7 +84,7 @@ export default {
       <div><dt>Independent verification</dt><dd>Required</dd></div>
     </dl>
   </article>
-</ef-security-invariant-result>`
+</forma-security-invariant-result>`
     }
   ],
   api: {
@@ -96,7 +96,7 @@ export default {
       { name: "datetime", on: "time", values: "ISO 8601 date", default: "—", description: "Machine-readable verification date." }
     ],
     hooks: {
-      "ef-invariant-result": "Root article: bordered, padded primary surface. The header is a wrapping flex row whose first paragraph is a full-width uppercase eyebrow; the description list is an auto-fit grid of at least 10rem columns with secondary-colored bold terms and values that wrap anywhere."
+      "forma-invariant-result": "Root article: bordered, padded primary surface. The header is a wrapping flex row whose first paragraph is a full-width uppercase eyebrow; the description list is an auto-fit grid of at least 10rem columns with secondary-colored bold terms and values that wrap anywhere."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between related-record links." },

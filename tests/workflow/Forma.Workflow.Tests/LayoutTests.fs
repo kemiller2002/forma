@@ -184,5 +184,5 @@ let all =
 
       test "Render: diagram geometry is in rem, so it scales with enlarged text" (fun () ->
           let html = Markup.toHtml (Render.figure RenderOptions.defaults (doc "right" [ "a", "task", "A", None, None, None ] []))
-          expect (html.Contains "--ef-diagram-x: 1.5rem") "node x in rem"
-          expect (not (html.Contains "--ef-diagram-w: 200px")) "no px geometry") ]
+          expect (html.Contains "--forma-diagram-x: 1.5rem") "node x in rem"
+          expect (not (html.Contains "--forma-diagram-w: 200px")) "no px geometry") ]

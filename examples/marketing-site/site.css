@@ -10,14 +10,14 @@
 
 /* Unique content: the founder's signature line on the About page. */
 .site-signature {
-  font-family: var(--ef-type-family-display);
-  font-size: var(--ef-type-size-lead);
+  font-family: var(--forma-type-family-display);
+  font-size: var(--forma-type-size-lead);
   font-style: italic;
 }
 
 /* Product identity: product pages retarget the accent to the validated
    secondary accent role. Identity tokens may only reference other Forma tokens. */
-[data-ef-layout="product"] {
-  --ef-color-accent-primary: var(--ef-color-accent-secondary);
-  --ef-color-accent-hover: var(--ef-color-text-primary);
+[data-forma-layout="product"] {
+  --forma-color-accent-primary: var(--forma-color-accent-secondary);
+  --forma-color-accent-hover: var(--forma-color-text-primary);
 }

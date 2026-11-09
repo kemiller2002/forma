@@ -30,9 +30,9 @@ const readPattern = (dir, slug) => {
   return fs.existsSync(file) ? fs.readFileSync(file, "utf8").trim() : null;
 };
 
-export const tagName = slug => `ef-${slug}`;
+export const tagName = slug => `forma-${slug}`;
 
-// The owned CSS roots default to `ef-<slug>` when that block class exists.
+// The owned CSS roots default to `forma-<slug>` when that block class exists.
 const resolveOwns = (doc, hookIndex) =>
   doc.owns ?? (hookIndex.byRoot.has(tagName(doc.slug)) ? [tagName(doc.slug)] : []);
 
@@ -80,9 +80,9 @@ export const ownedHooks = (catalog, component) =>
     .filter(Boolean);
 
 // Tags and classes referenced by markup.
-export const markupTags = html => [...new Set([...html.matchAll(/<(ef-[a-z0-9-]+)\b/g)].map(match => match[1]))];
+export const markupTags = html => [...new Set([...html.matchAll(/<(forma-[a-z0-9-]+)\b/g)].map(match => match[1]))];
 export const markupClasses = html =>
-  [...new Set([...html.matchAll(/\bclass="([^"]*)"/g)].flatMap(match => match[1].split(/\s+/)).filter(name => name.startsWith("ef-")))];
+  [...new Set([...html.matchAll(/\bclass="([^"]*)"/g)].flatMap(match => match[1].split(/\s+/)).filter(name => name.startsWith("forma-")))];
 export const markupAttributes = html =>
   [...new Set([...html.matchAll(/<[a-z][a-z0-9-]*\b([^>]*)>/g)]
     .flatMap(match => [...match[1].replace(/"[^"]*"|'[^']*'/g, "").matchAll(/([a-z][a-z0-9:-]*)/g)].map(attribute => attribute[1])))];

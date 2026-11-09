@@ -222,7 +222,7 @@ let main argv =
             |> List.choose (fun token ->
                 match token.Path with
                 | "semantic" :: actualTheme :: rest when actualTheme = theme && not rest.IsEmpty ->
-                    Some("--ef-" + cssName rest, resolveCss [] token)
+                    Some("--forma-" + cssName rest, resolveCss [] token)
                 | _ -> None)
             |> List.sortBy fst
 
@@ -285,7 +285,7 @@ let main argv =
             |> List.choose (fun token ->
                 match token.Path with
                 | "semantic" :: _ -> None
-                | path -> Some("--ef-" + cssName path, resolveCss [] token))
+                | path -> Some("--forma-" + cssName path, resolveCss [] token))
             |> List.sortBy fst
 
         let writeBlock (builder: StringBuilder) selector values =
@@ -298,13 +298,13 @@ let main argv =
         css.AppendLine($"/* Generated from {Path.GetFileName sourcePath}. Do not edit directly. */") |> ignore
         css.AppendLine("@layer forma.tokens {") |> ignore
         writeBlock css "  :root" neutral
-        writeBlock css "  :root, [data-ef-theme=\"light\"]" (semantic "light")
+        writeBlock css "  :root, [data-forma-theme=\"light\"]" (semantic "light")
         css.AppendLine("  @media (prefers-color-scheme: dark) {") |> ignore
-        writeBlock css "    :root:not([data-ef-theme])" (semantic "dark")
+        writeBlock css "    :root:not([data-forma-theme])" (semantic "dark")
         css.AppendLine("  }") |> ignore
         for theme, values in themeValues do
             if theme <> "light" then
-                writeBlock css $"  [data-ef-theme=\"{theme}\"]" values
+                writeBlock css $"  [data-forma-theme=\"{theme}\"]" values
         css.AppendLine("}") |> ignore
 
         Directory.CreateDirectory(Path.GetDirectoryName outputPath) |> ignore

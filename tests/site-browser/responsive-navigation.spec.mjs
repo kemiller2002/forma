@@ -20,10 +20,10 @@ for (const width of widths) {
         rect: link.getBoundingClientRect().toJSON()
       }));
       const pickerRects = [...document.querySelectorAll(
-        ".example-canvas .ef-field > input:is([type=date], [type=time], [type=datetime-local])"
+        ".example-canvas .forma-field > input:is([type=date], [type=time], [type=datetime-local])"
       )].map(input => {
         const rect = input.getBoundingClientRect();
-        const field = input.closest(".ef-field").getBoundingClientRect();
+        const field = input.closest(".forma-field").getBoundingClientRect();
         const canvas = input.closest(".example-canvas").getBoundingClientRect();
         return { id: input.id, input: rect.toJSON(), field: field.toJSON(), canvas: canvas.toJSON() };
       });
@@ -85,7 +85,7 @@ test("large text does not split primary navigation words or obscure the native d
     const navBox = nav.getBoundingClientRect();
     const input = document.querySelector("#date-time-field-due");
     const inputBox = input.getBoundingClientRect();
-    const fieldBox = input.closest(".ef-field").getBoundingClientRect();
+    const fieldBox = input.closest(".forma-field").getBoundingClientRect();
     return {
       documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
       viewport: document.documentElement.clientWidth,

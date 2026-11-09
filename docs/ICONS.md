@@ -13,7 +13,7 @@ npm pack --dry-run
 The documentation site publishes the complete categorized, copyable gallery at `/icons/`, a release-specific index for the forty new icons at `/icons/new/`, and one page per icon at `/icons/<name>/`. Every new icon page identifies its 0.6.0 provenance and links back to the new-icons index. The release collection derives from `catalog/icons/applications.mjs`, never a duplicate name list. Each icon page shows the construction on the 24-unit grid, the meaning and when to use or avoid it, the reviewed sizes (16, 20, 24, 32 and 48px), the icon in every colour role including the inverse surface, forced-colour and print behaviour, seven copyable configurations (button with text, icon-only button, inline text, custom size, custom colour, meaningful image, decorative image), the package paths, the downloadable SVG, the release version and digest, an accessibility checklist and related icons. Page guidance lives in `catalog/icons.mjs`; geometry always comes from the compiled registry. The normal Forma build generates:
 
 - `dist/icons/<name>.svg`: static SVG for `<img>`, CSS or print use
-- `dist/icons/html/<name>.html`: pre-rendered decorative inline SVG with inert `<ef-icon>` authoring tag and `.ef-icon` presentation span
+- `dist/icons/html/<name>.html`: pre-rendered decorative inline SVG with inert `<forma-icon>` authoring tag and `.forma-icon` presentation span
 - `dist/icons/registry.json`: metadata for static galleries, consumers and tools, stamped with `formaVersion` (the producing package release) and each icon's `svgSha256` so a consumer can verify that bundled geometry matches its pinned release
 
 The icon assets are part of the versioned `@echelon-foundry/design-system` tarball; the wildcard export path is `@echelon-foundry/design-system/icons/<name>.svg` and `.../icons/html/<name>.html`. Nothing fetches a CDN and no runtime JavaScript is required.
@@ -36,7 +36,7 @@ Static image alternative, when the icon conveys meaning by itself:
 
 Use `alt=""` on an image that is purely decorative. The generated *inline HTML* SVG is intentionally `aria-hidden="true"`; never depend on it to label a button or convey status. A meaningful standalone inline SVG requires an explicit application-authored `role="img"` and a correct accessible name. Icon names are not translated accessible labels.
 
-Default size is `1.25em`. Set `--ef-icon-size: 1rem` or `2rem` on an icon's presentation span or ancestor. Icons inherit text color through `currentColor`; brands and skins must not rewrite the geometry. Avoid assigning only color or icons to communicate success, failure or warning.
+Default size is `1.25em`. Set `--forma-icon-size: 1rem` or `2rem` on an icon's presentation span or ancestor. Icons inherit text color through `currentColor`; brands and skins must not rewrite the geometry. Avoid assigning only color or icons to communicate success, failure or warning.
 
 ## Contribution rules
 

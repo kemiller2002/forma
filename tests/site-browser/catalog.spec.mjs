@@ -85,7 +85,7 @@ test("every mobile example renders inside a 320px and a 390px viewport without p
       await page.goto(url);
       const result = await overflow(page);
       expect(result.scroll, `${url} overflows at ${width}px: ${JSON.stringify(result.offenders)}`).toBeLessThanOrEqual(result.width + 1);
-      const components = await page.locator(".ef-component-tag").count();
+      const components = await page.locator(".forma-component-tag").count();
       expect(components, `${url} does not render a Forma component`).toBeGreaterThan(0);
     }
   }
@@ -128,7 +128,7 @@ test(`the viewport switcher resizes the real mobile frame using ${interaction}`,
     // The radio is transparent and one pixel wide. Use the visible label or
     // native arrow-key navigation instead of forcing a click on its hit box.
     if (interaction === "visible label") {
-      await demo.locator("label.ef-segment").filter({ has: page.locator(`input[value="${width}"]`) }).locator("span").click();
+      await demo.locator("label.forma-segment").filter({ has: page.locator(`input[value="${width}"]`) }).locator("span").click();
     } else {
       await page.keyboard.press("ArrowRight");
       await expect(radio).toBeFocused();
@@ -182,7 +182,7 @@ test("documentation chrome landmarks have unique accessible names", async ({ pag
   }
 });
 
-// Entry motion (for example data-ef-motion-entry) fades content in from
+// Entry motion (for example data-forma-motion-entry) fades content in from
 // opacity 0, so axe must sample the settled state, not a mid-transition frame.
 // Only running animations with a finite end are awaited (spinners, progress
 // and paused or scroll-driven timelines never finish), and the wait is capped.
@@ -315,7 +315,7 @@ test("icon pages expose named controls, a named image and visible glyphs in forc
   }
   await page.emulateMedia({ forcedColors: "active" });
   await page.goto(`/site-dist/${manifest.icons[0].docsUrl}index.html`);
-  const strokes = await page.locator("#sizes .ef-icon__svg").evaluateAll(nodes => nodes.map(node => getComputedStyle(node).stroke));
+  const strokes = await page.locator("#sizes .forma-icon__svg").evaluateAll(nodes => nodes.map(node => getComputedStyle(node).stroke));
   expect(strokes.length).toBe(5);
   for (const stroke of strokes) expect(stroke).not.toBe("none");
 });

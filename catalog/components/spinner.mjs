@@ -4,7 +4,7 @@ export default {
   behavior: "Application state",
   summary: "Indeterminate activity with a visible label: constant-velocity cadence that stops when the application marks the activity idle, static under reduced motion.",
   purpose: {
-    description: "A spinner says that something specific is happening and that its duration is not known. Forma renders a `role=\"status\"` element containing a decorative rotating ring and a visible text label; the label is the real indicator and the ring is supporting presentation. The application owns the activity: it renders the spinner while work runs, updates the label, and sets `data-ef-state=\"idle\"` (or removes the spinner) when the work stops.",
+    description: "A spinner says that something specific is happening and that its duration is not known. Forma renders a `role=\"status\"` element containing a decorative rotating ring and a visible text label; the label is the real indicator and the ring is supporting presentation. The application owns the activity: it renders the spinner while work runs, updates the label, and sets `data-forma-state=\"idle\"` (or removes the spinner) when the work stops.",
     useWhen: [
       "An operation is running and neither its total nor its progress is known.",
       "A region is waiting for a response and the wait is expected to be short.",
@@ -16,8 +16,8 @@ export default {
       "The operation's outcome is uncertain or it needs reconciliation after a timeout: use [[operation-status]]."
     ],
     characteristics: [
-      "The ring rotates at one named cadence (`--ef-motion-cadence-rotation-period`, 1000ms) with linear timing; speed never encodes importance or expected completion time.",
-      "The rotation stops when `data-ef-state=\"idle\"` is set, and the ring closes to a full circle.",
+      "The ring rotates at one named cadence (`--forma-motion-cadence-rotation-period`, 1000ms) with linear timing; speed never encodes importance or expected completion time.",
+      "The rotation stops when `data-forma-state=\"idle\"` is set, and the ring closes to a full circle.",
       "The label is always visible text; the ring is `aria-hidden`."
     ]
   },
@@ -26,40 +26,40 @@ export default {
       id: "activity-finished",
       title: "Activity finished",
       description: "The same spinner after the application marks the activity idle. The ring stops and closes into a full circle, and the label is rewritten to report the result. Because the element stays in place, the status region announces the new text.",
-      html: `<ef-spinner class="ef-component-tag">
-  <p class="ef-spinner" role="status" data-ef-state="idle">
-    <span class="ef-spinner__indicator" aria-hidden="true"></span>
+      html: `<forma-spinner class="forma-component-tag">
+  <p class="forma-spinner" role="status" data-forma-state="idle">
+    <span class="forma-spinner__indicator" aria-hidden="true"></span>
     <span>Deployment history loaded (42 entries)</span>
   </p>
-</ef-spinner>`
+</forma-spinner>`
     },
     {
       id: "busy-region",
       title: "Busy table region",
       description: "A results region marked `aria-busy=\"true\"` while a new page loads, with the spinner as its visible status. The existing heading remains so users know which region is waiting.",
-      html: `<ef-spinner class="ef-component-tag">
-  <section class="ef-stack" aria-labelledby="spinner-busy-region-title" aria-busy="true">
+      html: `<forma-spinner class="forma-component-tag">
+  <section class="forma-stack" aria-labelledby="spinner-busy-region-title" aria-busy="true">
     <h3 id="spinner-busy-region-title">Payments</h3>
-    <p class="ef-spinner" role="status">
-      <span class="ef-spinner__indicator" aria-hidden="true"></span>
+    <p class="forma-spinner" role="status">
+      <span class="forma-spinner__indicator" aria-hidden="true"></span>
       <span>Loading page 3 of payments</span>
     </p>
   </section>
-</ef-spinner>`
+</forma-spinner>`
     },
     {
       id: "inline-with-action",
       title: "Beside the action that started it",
       description: "A spinner placed next to the button that started a check. The button is natively disabled while the check runs so it cannot be triggered twice; the spinner label names the check.",
-      html: `<ef-spinner class="ef-component-tag">
-  <div class="ef-cluster">
+      html: `<forma-spinner class="forma-component-tag">
+  <div class="forma-cluster">
     <button type="button" disabled>Run connection test</button>
-    <p class="ef-spinner" role="status">
-      <span class="ef-spinner__indicator" aria-hidden="true"></span>
+    <p class="forma-spinner" role="status">
+      <span class="forma-spinner__indicator" aria-hidden="true"></span>
       <span>Testing connection to the warehouse</span>
     </p>
   </div>
-</ef-spinner>`
+</forma-spinner>`
     },
     {
       id: "mobile-long-label",
@@ -74,37 +74,37 @@ export default {
           "The spinner has no touch target of its own; place any Cancel action as a separate button."
         ]
       },
-      html: `<ef-spinner class="ef-component-tag">
-  <p class="ef-spinner" role="status">
-    <span class="ef-spinner__indicator" aria-hidden="true"></span>
+      html: `<forma-spinner class="forma-component-tag">
+  <p class="forma-spinner" role="status">
+    <span class="forma-spinner__indicator" aria-hidden="true"></span>
     <span>Recalculating allocations for all 14 cost centers in the September close</span>
   </p>
-</ef-spinner>`
+</forma-spinner>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: "p.ef-spinner", values: "status", default: "—", description: "Polite live region. Changes to the label are announced." },
-      { name: "aria-hidden", on: ".ef-spinner__indicator", values: "true", default: "—", description: "Hides the decorative ring." },
+      { name: "role", on: "p.forma-spinner", values: "status", default: "—", description: "Polite live region. Changes to the label are announced." },
+      { name: "aria-hidden", on: ".forma-spinner__indicator", values: "true", default: "—", description: "Hides the decorative ring." },
       { name: "aria-busy", on: "the region being updated", values: "true | false", default: "—", description: "Optional. Marks the container whose content is being replaced while the spinner runs." },
       { name: "disabled", on: "button", values: "boolean", default: "—", description: "Optional. Prevents re-triggering the action that started the activity." }
     ],
     hooks: {
-      "ef-spinner": "Root inline-flex row of ring and label. The label is a plain text span after the ring; it needs no class.",
-      "ef-spinner__indicator": "Decorative 1.25rem ring with an open top edge that rotates while active.",
-      "data-ef-state": "Set to idle to stop the rotation and close the ring. Any other value, or no attribute, means active."
+      "forma-spinner": "Root inline-flex row of ring and label. The label is a plain text span after the ring; it needs no class.",
+      "forma-spinner__indicator": "Decorative 1.25rem ring with an open top edge that rotates while active.",
+      "data-forma-state": "Set to idle to stop the rotation and close the ring. Any other value, or no attribute, means active."
     },
     keyboard: [
       { keys: "—", action: "The spinner is not focusable and has no keyboard interaction. Any Cancel or Retry control is a separate native button." }
     ],
     events: [
-      { name: "—", description: "None. The application changes the label and `data-ef-state` when the activity changes." }
+      { name: "—", description: "None. The application changes the label and `data-forma-state` when the activity changes." }
     ],
     form: "Not a form control."
   },
   states: [
-    { name: "Active", how: "no data-ef-state, or any value other than idle", description: "The ring rotates once per 1000ms at constant speed." },
-    { name: "Idle", how: "data-ef-state=\"idle\"", description: "Rotation stops and the ring becomes a closed circle. Update the label to say what happened." },
+    { name: "Active", how: "no data-forma-state, or any value other than idle", description: "The ring rotates once per 1000ms at constant speed." },
+    { name: "Idle", how: "data-forma-state=\"idle\"", description: "Rotation stops and the ring becomes a closed circle. Update the label to say what happened." },
     { name: "Reduced motion", how: "prefers-reduced-motion: reduce", description: "The ring is static with its open segment; the label and status role still identify the activity." }
   ],
   accessibility: {
@@ -126,8 +126,8 @@ export default {
     "Use a [[cluster]] to place it beside a related action so the pair wraps together."
   ],
   motion: [
-    "The ring rotates with `--ef-motion-cadence-rotation-period` (1000ms) and linear easing, infinitely: constant-velocity cadence with no spring or bounce on each cycle.",
-    "Rotation runs only while the spinner is not idle. Setting `data-ef-state=\"idle\"` stops it immediately.",
+    "The ring rotates with `--forma-motion-cadence-rotation-period` (1000ms) and linear easing, infinitely: constant-velocity cadence with no spring or bounce on each cycle.",
+    "Rotation runs only while the spinner is not idle. Setting `data-forma-state=\"idle\"` stops it immediately.",
     "Changing the label text does not restart the cycle, because the same element keeps running its animation.",
     "Under `prefers-reduced-motion: reduce` the animation is removed and the ring is static."
   ],

@@ -28,20 +28,20 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "All prerequisites met",
       description: "Every item is complete. The header lozenge switches to the ok glyph and the transition button is available below the list, supplied by the application.",
-      html: `<ef-readiness-checklist class="ef-component-tag">
-  <section class="ef-readiness-checklist" aria-labelledby="readiness-checklist-ready-to-publish-title">
+      html: `<forma-readiness-checklist class="forma-component-tag">
+  <section class="forma-readiness-checklist" aria-labelledby="readiness-checklist-ready-to-publish-title">
     <header>
-      <span class="ef-status-lozenge" data-state="ok">3 of 3 complete</span>
+      <span class="forma-status-lozenge" data-state="ok">3 of 3 complete</span>
       <h3 id="readiness-checklist-ready-to-publish-title">Ready to publish release 4.2</h3>
     </header>
-    <ul class="ef-readiness-checklist__items">
-      <li data-state="complete"><span aria-hidden="true">✓</span><span>Release notes approved</span><span class="ef-visually-hidden">Complete</span></li>
-      <li data-state="complete"><span aria-hidden="true">✓</span><span>Migration tested on staging</span><span class="ef-visually-hidden">Complete</span></li>
-      <li data-state="complete"><span aria-hidden="true">✓</span><span>Rollback plan recorded</span><span class="ef-visually-hidden">Complete</span></li>
+    <ul class="forma-readiness-checklist__items">
+      <li data-state="complete"><span aria-hidden="true">✓</span><span>Release notes approved</span><span class="forma-visually-hidden">Complete</span></li>
+      <li data-state="complete"><span aria-hidden="true">✓</span><span>Migration tested on staging</span><span class="forma-visually-hidden">Complete</span></li>
+      <li data-state="complete"><span aria-hidden="true">✓</span><span>Rollback plan recorded</span><span class="forma-visually-hidden">Complete</span></li>
     </ul>
   </section>
   <button type="button">Publish release</button>
-</ef-readiness-checklist>`
+</forma-readiness-checklist>`
     },
     {
       id: "blocked-submission",
@@ -53,20 +53,20 @@ export default {
       },
       title: "Several blocking items",
       description: "A grant application with two blocking prerequisites and one incomplete item. Blocking items say \"Blocking\" in text and link to where they are resolved; the header counts what is complete.",
-      html: `<ef-readiness-checklist class="ef-component-tag">
-  <section class="ef-readiness-checklist" aria-labelledby="readiness-checklist-blocked-submission-title">
+      html: `<forma-readiness-checklist class="forma-component-tag">
+  <section class="forma-readiness-checklist" aria-labelledby="readiness-checklist-blocked-submission-title">
     <header>
-      <span class="ef-status-lozenge" data-state="blocked">1 of 4 complete, 2 blocking</span>
+      <span class="forma-status-lozenge" data-state="blocked">1 of 4 complete, 2 blocking</span>
       <h3 id="readiness-checklist-blocked-submission-title">Before you submit the grant application</h3>
     </header>
-    <ul class="ef-readiness-checklist__items">
-      <li data-state="complete"><span aria-hidden="true">✓</span><span>Budget totals match the narrative</span><span class="ef-visually-hidden">Complete</span></li>
+    <ul class="forma-readiness-checklist__items">
+      <li data-state="complete"><span aria-hidden="true">✓</span><span>Budget totals match the narrative</span><span class="forma-visually-hidden">Complete</span></li>
       <li data-state="blocked"><span aria-hidden="true">!</span><span>Signed letter of support from the partner institution</span><span>Blocking</span></li>
       <li data-state="blocked"><span aria-hidden="true">!</span><span>Principal investigator's conflict-of-interest form</span><span>Blocking</span></li>
       <li data-state="incomplete"><span aria-hidden="true">○</span><span>Optional data-sharing plan</span><a href="#readiness-checklist-blocked-submission-title">Add</a></li>
     </ul>
   </section>
-</ef-readiness-checklist>`
+</forma-readiness-checklist>`
     },
     {
       id: "mobile-month-close",
@@ -82,31 +82,31 @@ export default {
           "The header lozenge and heading stack naturally; in landscape the heading has more room and wraps less."
         ]
       },
-      html: `<ef-readiness-checklist class="ef-component-tag">
-  <section class="ef-readiness-checklist" aria-labelledby="readiness-checklist-mobile-month-close-title">
+      html: `<forma-readiness-checklist class="forma-component-tag">
+  <section class="forma-readiness-checklist" aria-labelledby="readiness-checklist-mobile-month-close-title">
     <header>
-      <span class="ef-status-lozenge" data-state="attention">2 of 4 complete</span>
+      <span class="forma-status-lozenge" data-state="attention">2 of 4 complete</span>
       <h3 id="readiness-checklist-mobile-month-close-title">Close September books</h3>
     </header>
-    <ul class="ef-readiness-checklist__items">
-      <li data-state="complete"><span aria-hidden="true">✓</span><span>All invoices posted</span><span class="ef-visually-hidden">Complete</span></li>
-      <li data-state="complete"><span aria-hidden="true">✓</span><span>Payments allocated</span><span class="ef-visually-hidden">Complete</span></li>
+    <ul class="forma-readiness-checklist__items">
+      <li data-state="complete"><span aria-hidden="true">✓</span><span>All invoices posted</span><span class="forma-visually-hidden">Complete</span></li>
+      <li data-state="complete"><span aria-hidden="true">✓</span><span>Payments allocated</span><span class="forma-visually-hidden">Complete</span></li>
       <li data-state="incomplete"><span aria-hidden="true">○</span><span>Reconcile the operating account at First National</span><button type="button">Review</button></li>
       <li data-state="blocked"><span aria-hidden="true">!</span><span>External accountant adjustment review</span><span>Blocking</span></li>
     </ul>
   </section>
-</ef-readiness-checklist>`
+</forma-readiness-checklist>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-readiness-checklist", values: "id of the header heading", default: "—", description: "Names the checklist from its heading." },
+      { name: "aria-labelledby", on: "section.forma-readiness-checklist", values: "id of the header heading", default: "—", description: "Names the checklist from its heading." },
       { name: "data-state", on: "li", values: "complete | incomplete | blocked", default: "—", description: "Item state supplied by the application. `complete` bolds the glyph; `blocked` adds a thick inline-start border. `incomplete` has no special styling." },
       { name: "aria-hidden", on: "glyph span", values: "true", default: "—", description: "Hides the ✓ / ○ / ! glyph; state must also be available as text." }
     ],
     hooks: {
-      "ef-readiness-checklist": "Root section with a functional border. Its direct `header` child is padded and separated by a rule.",
-      "ef-readiness-checklist__items": "Unstyled list. Each `li` is a grid of a 2rem glyph column, a flexible label column and an auto column for an action or state word.",
+      "forma-readiness-checklist": "Root section with a functional border. Its direct `header` child is padded and separated by a rule.",
+      "forma-readiness-checklist__items": "Unstyled list. Each `li` is a grid of a 2rem glyph column, a flexible label column and an auto column for an action or state word.",
       "data-state": "On each `li`: complete makes the first child (glyph) bold; blocked adds a 0.35rem accent inline-start border."
     },
     keyboard: [

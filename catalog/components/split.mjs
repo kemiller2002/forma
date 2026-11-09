@@ -4,7 +4,7 @@ export default {
   behavior: "Native CSS",
   summary: "Marketing-layer two-part layout: a dominant primary region and a supporting region that wraps below when space runs out.",
   purpose: {
-    description: "A split puts a dominant primary region beside a supporting region on site pages: install steps beside requirements, a product explanation beside a code sample, a narrative beside a quote. The first child keeps at least 55% of the row and absorbs extra space; the last child prefers about a third of the row, between 18rem and 30rem. When both cannot fit, the supporting region wraps below the primary one. The switch is content-driven with no breakpoint, and the gap uses the site's fluid section spacing, so place it inside `.ef-site`.",
+    description: "A split puts a dominant primary region beside a supporting region on site pages: install steps beside requirements, a product explanation beside a code sample, a narrative beside a quote. The first child keeps at least 55% of the row and absorbs extra space; the last child prefers about a third of the row, between 18rem and 30rem. When both cannot fit, the supporting region wraps below the primary one. The switch is content-driven with no breakpoint, and the gap uses the site's fluid section spacing, so place it inside `.forma-site`.",
     useWhen: [
       "A marketing or documentation page region has one main message and one supporting block.",
       "The supporting block (requirements, a code sample, a quote, a form) should sit beside the main text on wide screens and below it on narrow ones.",
@@ -27,43 +27,43 @@ export default {
       id: "product-code-sample",
       title: "Product explanation with a code sample",
       description: "Primary text explains the configuration; the supporting region is a code sample. On a wide page they sit side by side; as the page narrows the code wraps below the explanation.",
-      html: `<ef-split class="ef-component-tag">
-  <div class="ef-site">
-    <div class="ef-split">
+      html: `<forma-split class="forma-component-tag">
+  <div class="forma-site">
+    <div class="forma-split">
       <div>
         <h2>Pin one version per site</h2>
         <p>Each site records the exact Forma release it uses in a lock file. Upgrades are explicit, reviewed and reversible.</p>
       </div>
-      <figure class="ef-code-figure">
+      <figure class="forma-code-figure">
         <figcaption id="split-product-code-sample-caption">forma.lock</figcaption>
-        <pre class="ef-code" tabindex="0" aria-labelledby="split-product-code-sample-caption"><code>forma 0.3.0
+        <pre class="forma-code" tabindex="0" aria-labelledby="split-product-code-sample-caption"><code>forma 0.3.0
 destination assets/forma</code></pre>
       </figure>
     </div>
   </div>
-</ef-split>`
+</forma-split>`
     },
     {
       id: "narrative-with-facts",
       title: "Narrative with key facts",
       description: "A customer story with a facts list as the supporting region. The facts keep a readable width between 18rem and 30rem while the story absorbs the remaining space.",
-      html: `<ef-split class="ef-component-tag">
-  <div class="ef-site">
-    <div class="ef-split">
+      html: `<forma-split class="forma-component-tag">
+  <div class="forma-site">
+    <div class="forma-split">
       <article aria-labelledby="split-narrative-with-facts-title">
         <h2 id="split-narrative-with-facts-title">How Fabrikam moved 40 sites in a weekend</h2>
         <p>The team migrated every regional site to the shared design system without changing a single URL, then retired four separate stylesheets.</p>
       </article>
       <aside aria-labelledby="split-narrative-with-facts-facts">
         <h3 id="split-narrative-with-facts-facts">At a glance</h3>
-        <dl class="ef-facts">
-          <div class="ef-facts__item"><dt>40 sites</dt><dd>Migrated in two days</dd></div>
-          <div class="ef-facts__item"><dt>4 stylesheets</dt><dd>Retired after launch</dd></div>
+        <dl class="forma-facts">
+          <div class="forma-facts__item"><dt>40 sites</dt><dd>Migrated in two days</dd></div>
+          <div class="forma-facts__item"><dt>4 stylesheets</dt><dd>Retired after launch</dd></div>
         </dl>
       </aside>
     </div>
   </div>
-</ef-split>`
+</forma-split>`
     },
     {
       id: "mobile-wrapped",
@@ -78,9 +78,9 @@ destination assets/forma</code></pre>
           "Order does not change on rotation; landscape tablets usually show both regions side by side."
         ]
       },
-      html: `<ef-split class="ef-component-tag">
-  <div class="ef-site">
-    <div class="ef-split">
+      html: `<forma-split class="forma-component-tag">
+  <div class="forma-site">
+    <div class="forma-split">
       <div>
         <h2>Install</h2>
         <p>Run the installer once per site. It verifies every download against the release checksums.</p>
@@ -91,16 +91,16 @@ destination assets/forma</code></pre>
       </aside>
     </div>
   </div>
-</ef-split>`
+</forma-split>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-labelledby", on: "article / aside", values: "id of the region heading", default: "—", description: "Names each region by its heading." },
-      { name: "tabindex", on: "pre.ef-code", values: "0", default: "—", description: "Makes a scrollable code block keyboard-scrollable in the code sample example." }
+      { name: "tabindex", on: "pre.forma-code", values: "0", default: "—", description: "Makes a scrollable code block keyboard-scrollable in the code sample example." }
     ],
     hooks: {
-      "ef-split": "Wrapping flex row. First child: `flex: 999 1 0` with minimum `min(100%, 55%)`. Last child: basis `clamp(18rem, 32%, 30rem)`. Gap is half the fluid section space."
+      "forma-split": "Wrapping flex row. First child: `flex: 999 1 0` with minimum `min(100%, 55%)`. Last child: basis `clamp(18rem, 32%, 30rem)`. Gap is half the fluid section space."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the primary region and then the supporting region, in source order." }
@@ -126,8 +126,8 @@ destination assets/forma</code></pre>
   },
   responsive: [
     "Content-driven wrap with no media queries; the switch depends on the split's own width.",
-    "Gap uses `--ef-layout-section-space`, a fluid token, so spacing scales with the viewport.",
-    "Place it inside `.ef-site`: its gap and the surrounding typography and tone come from the marketing role tokens."
+    "Gap uses `--forma-layout-section-space`, a fluid token, so spacing scales with the viewport.",
+    "Place it inside `.forma-site`: its gap and the surrounding typography and tone come from the marketing role tokens."
   ],
   motion: [
     "No animation: regions wrap instantly."
@@ -145,7 +145,7 @@ destination assets/forma</code></pre>
   related: [
     { slug: "switcher", note: "Application-layer primary/secondary pair with application spacing." },
     { slug: "hero", note: "Opening page region with the same content-and-aside rhythm." },
-    { slug: "split-pane", note: "Fixed two-pane application layout; shares the `--ef-split-` variable prefix but is unrelated." },
+    { slug: "split-pane", note: "Fixed two-pane application layout; shares the `--forma-split-` variable prefix but is unrelated." },
     { slug: "container", note: "Constrains the width a split sits in." }
   ]
 };

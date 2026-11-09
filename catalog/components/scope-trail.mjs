@@ -30,8 +30,8 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Deeply nested record with long names",
       description: "Five levels with long names. The row wraps between items; every ancestor stays a real link and the current scope is plain text.",
-      html: `<ef-scope-trail class="ef-component-tag">
-  <nav class="ef-scope-trail" aria-label="Current scope">
+      html: `<forma-scope-trail class="forma-component-tag">
+  <nav class="forma-scope-trail" aria-label="Current scope">
     <ol>
       <li><a href="#scope-deep-org">Northwind Holdings</a></li>
       <li><a href="#scope-deep-region">Europe, Middle East and Africa</a></li>
@@ -40,15 +40,15 @@ export default {
       <li aria-current="page">Amendment 3: data processing terms</li>
     </ol>
   </nav>
-</ef-scope-trail>`
+</forma-scope-trail>`
     },
     {
       id: "zoomed-diagram",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Scope of a zoomed diagram",
       description: "In a zoomable architecture diagram the trail states the current zoom scope in text, followed by a heading for the current representation. Selecting an ancestor zooms back out.",
-      html: `<ef-scope-trail class="ef-component-tag">
-  <nav class="ef-scope-trail" aria-label="Diagram scope">
+      html: `<forma-scope-trail class="forma-component-tag">
+  <nav class="forma-scope-trail" aria-label="Diagram scope">
     <ol>
       <li><a href="#scope-zoom-system">All systems</a></li>
       <li><a href="#scope-zoom-checkout">Checkout</a></li>
@@ -57,7 +57,7 @@ export default {
   </nav>
   <h2>Payment gateway components</h2>
   <p>Showing 6 components inside Payment gateway. Zoom out to see how Checkout connects to Inventory.</p>
-</ef-scope-trail>`
+</forma-scope-trail>`
     },
     {
       id: "mobile-wrapping-trail",
@@ -73,8 +73,8 @@ export default {
           "Links keep their inline text size; on touch-heavy pages give them extra padding in application styling, since Forma does not enforce 44px targets here."
         ]
       },
-      html: `<ef-scope-trail class="ef-component-tag">
-  <nav class="ef-scope-trail" aria-label="Folder scope">
+      html: `<forma-scope-trail class="forma-component-tag">
+  <nav class="forma-scope-trail" aria-label="Folder scope">
     <ol>
       <li><a href="#scope-mobile-drive">Shared drive</a></li>
       <li><a href="#scope-mobile-finance">Finance</a></li>
@@ -82,7 +82,7 @@ export default {
       <li aria-current="page">Reconciliations</li>
     </ol>
   </nav>
-</ef-scope-trail>`
+</forma-scope-trail>`
     }
   ],
   api: {
@@ -92,7 +92,7 @@ export default {
       { name: "href", on: "ancestor links", values: "URL", default: "—", description: "Real URLs for each ancestor scope, supplied by the application." }
     ],
     hooks: {
-      "ef-scope-trail": "Root nav. Its ordered list becomes a wrapping flex row with small gaps and a CSS-generated slash before every item after the first."
+      "forma-scope-trail": "Root nav. Its ordered list becomes a wrapping flex row with small gaps and a CSS-generated slash before every item after the first."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the ancestor links; the current scope is text and is not focusable." },

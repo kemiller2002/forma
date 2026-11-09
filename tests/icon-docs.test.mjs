@@ -57,7 +57,7 @@ test("each page documents meaning, sizes, colour contexts and every configuratio
   for (const icon of catalog.icons) {
     const html = pages.get(icon.name);
     for (const id of SECTIONS) assert.ok(html.includes(`id="section-${id}-title"`), `${icon.name}: section ${id} missing`);
-    for (const size of ICON_SIZES) assert.ok(html.includes(`--ef-icon-size:${size}px`), `${icon.name}: ${size}px preview missing`);
+    for (const size of ICON_SIZES) assert.ok(html.includes(`--forma-icon-size:${size}px`), `${icon.name}: ${size}px preview missing`);
     for (const context of ["primary", "secondary", "accent", "secondary-surface", "inverse"]) {
       assert.ok(html.includes(`data-colour-context="${context}"`), `${icon.name}: ${context} colour context missing`);
     }
@@ -75,7 +75,7 @@ test("configurations are wired for assistive technology", () => {
   for (const icon of catalog.icons) {
     const byId = Object.fromEntries(iconConfigurations(icon).map(config => [config.id, config.live]));
     assert.match(byId["icon-only"], new RegExp(`^<button type="button" aria-label="${icon.docs.actionLabel}"`));
-    assert.match(byId["with-text"], new RegExp(`</ef-icon> ${icon.docs.actionLabel}</button>$`));
+    assert.match(byId["with-text"], new RegExp(`</forma-icon> ${icon.docs.actionLabel}</button>$`));
     assert.match(byId["meaningful-image"], new RegExp(`alt="${icon.label}"`));
     assert.match(byId["decorative-image"], /alt=""/);
     // Every inline SVG on the page is decorative and unfocusable.

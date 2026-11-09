@@ -49,7 +49,7 @@ type CompatibilityClass =
 
 /// What the host tells validation about where the workflow is shown.
 type ValidationOptions =
-    { /// The theme the host pins ("light" or "dark", as data-ef-theme). None:
+    { /// The theme the host pins ("light" or "dark", as data-forma-theme). None:
       /// the host follows prefers-color-scheme, so both default surfaces apply.
       Theme: string option }
 

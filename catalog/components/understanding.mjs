@@ -30,65 +30,65 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Conflict with the existing record",
       description: "The application found that a new statement contradicts what is recorded. The conflict item states both values in text and offers resolution; the header summarizes how many items need attention.",
-      html: `<ef-understanding class="ef-component-tag">
-  <section class="ef-understanding" aria-labelledby="understanding-conflict-title">
-    <header class="ef-understanding__header">
+      html: `<forma-understanding class="forma-component-tag">
+  <section class="forma-understanding" aria-labelledby="understanding-conflict-title">
+    <header class="forma-understanding__header">
       <div>
-        <span class="ef-component-kicker">Understanding</span>
+        <span class="forma-component-kicker">Understanding</span>
         <h2 id="understanding-conflict-title">I found 3 things</h2>
         <p>One item conflicts with the current record. Nothing is saved until it is resolved.</p>
       </div>
-      <span class="ef-status-lozenge" data-state="attention">1 conflict</span>
+      <span class="forma-status-lozenge" data-state="attention">1 conflict</span>
     </header>
-    <ol class="ef-understanding__items">
-      <li class="ef-understanding__item" data-ef-state="conflict">
-        <span class="ef-understanding__state">Conflict</span>
+    <ol class="forma-understanding__items">
+      <li class="forma-understanding__item" data-forma-state="conflict">
+        <span class="forma-understanding__state">Conflict</span>
         <div><strong>Allergy</strong><p>You said "no known allergies"; the record lists penicillin (added 2024).</p></div>
         <button type="button">Resolve</button>
       </li>
-      <li class="ef-understanding__item" data-ef-state="accepted">
-        <span class="ef-understanding__state">Understood</span>
+      <li class="forma-understanding__item" data-forma-state="accepted">
+        <span class="forma-understanding__state">Understood</span>
         <div><strong>Appointment</strong><p>Follow-up with Dr. Smith on 14 October at 09:30.</p></div>
         <button type="button">Source</button>
       </li>
-      <li class="ef-understanding__item" data-ef-state="accepted">
-        <span class="ef-understanding__state">Understood</span>
+      <li class="forma-understanding__item" data-forma-state="accepted">
+        <span class="forma-understanding__state">Understood</span>
         <div><strong>Weight</strong><p>82 kg, measured today.</p></div>
         <button type="button">Source</button>
       </li>
     </ol>
   </section>
-</ef-understanding>`
+</forma-understanding>`
     },
     {
       id: "all-understood",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Everything understood",
       description: "Every item is understood. The header states this in text with an ok lozenge, and each item still links to its source so the user can check before the application moves on.",
-      html: `<ef-understanding class="ef-component-tag">
-  <section class="ef-understanding" aria-labelledby="understanding-all-understood-title">
-    <header class="ef-understanding__header">
+      html: `<forma-understanding class="forma-component-tag">
+  <section class="forma-understanding" aria-labelledby="understanding-all-understood-title">
+    <header class="forma-understanding__header">
       <div>
-        <span class="ef-component-kicker">Understanding</span>
+        <span class="forma-component-kicker">Understanding</span>
         <h2 id="understanding-all-understood-title">Expense details from your receipt</h2>
         <p>Check these before the claim is submitted.</p>
       </div>
-      <span class="ef-status-lozenge" data-state="ok">No questions</span>
+      <span class="forma-status-lozenge" data-state="ok">No questions</span>
     </header>
-    <ol class="ef-understanding__items">
-      <li class="ef-understanding__item" data-ef-state="accepted">
-        <span class="ef-understanding__state">Understood</span>
+    <ol class="forma-understanding__items">
+      <li class="forma-understanding__item" data-forma-state="accepted">
+        <span class="forma-understanding__state">Understood</span>
         <div><strong>Merchant</strong><p>Lisbon Airport Taxi Cooperative</p></div>
         <button type="button">Source</button>
       </li>
-      <li class="ef-understanding__item" data-ef-state="accepted">
-        <span class="ef-understanding__state">Understood</span>
-        <div><strong>Amount</strong><p><span class="ef-critical-value">€42.60</span> on 29 September</p></div>
+      <li class="forma-understanding__item" data-forma-state="accepted">
+        <span class="forma-understanding__state">Understood</span>
+        <div><strong>Amount</strong><p><span class="forma-critical-value">€42.60</span> on 29 September</p></div>
         <button type="button">Source</button>
       </li>
     </ol>
   </section>
-</ef-understanding>`
+</forma-understanding>`
     },
     {
       id: "mobile-review",
@@ -104,44 +104,44 @@ export default {
           "Long summaries wrap within the item; no horizontal scrolling at 320px in either orientation."
         ]
       },
-      html: `<ef-understanding class="ef-component-tag">
-  <section class="ef-understanding" aria-labelledby="understanding-mobile-title">
-    <header class="ef-understanding__header">
+      html: `<forma-understanding class="forma-component-tag">
+  <section class="forma-understanding" aria-labelledby="understanding-mobile-title">
+    <header class="forma-understanding__header">
       <div>
-        <span class="ef-component-kicker">Understanding</span>
+        <span class="forma-component-kicker">Understanding</span>
         <h2 id="understanding-mobile-title">I found 2 things</h2>
       </div>
-      <span class="ef-status-lozenge" data-state="attention">1 question</span>
+      <span class="forma-status-lozenge" data-state="attention">1 question</span>
     </header>
-    <ol class="ef-understanding__items">
-      <li class="ef-understanding__item" data-ef-state="accepted">
-        <span class="ef-understanding__state">Understood</span>
+    <ol class="forma-understanding__items">
+      <li class="forma-understanding__item" data-forma-state="accepted">
+        <span class="forma-understanding__state">Understood</span>
         <div><strong>Symptom</strong><p>Ankle swelling returned.</p></div>
         <button type="button">Source</button>
       </li>
-      <li class="ef-understanding__item" data-ef-state="unknown">
-        <span class="ef-understanding__state">Unknown</span>
+      <li class="forma-understanding__item" data-forma-state="unknown">
+        <span class="forma-understanding__state">Unknown</span>
         <div><strong>Since when</strong><p>The start date of the swelling was not given.</p></div>
         <button type="button">Answer</button>
       </li>
     </ol>
   </section>
-</ef-understanding>`
+</forma-understanding>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-labelledby", on: "root section", values: "id of the header heading", default: "—", description: "Names the review region." },
-      { name: "data-ef-state", on: ".ef-understanding__item", values: "accepted | unknown | conflict", default: "absent", description: "Presentation of an application-supplied state: adds the state symbol, and for unknown and conflict the side bar. The text in `.ef-understanding__state` must say the same thing." },
-      { name: "data-state", on: ".ef-status-lozenge", values: "ok | attention | blocked | unknown", default: "absent", description: "Adds a symbol to the header summary status." }
+      { name: "data-forma-state", on: ".forma-understanding__item", values: "accepted | unknown | conflict", default: "absent", description: "Presentation of an application-supplied state: adds the state symbol, and for unknown and conflict the side bar. The text in `.forma-understanding__state` must say the same thing." },
+      { name: "data-state", on: ".forma-status-lozenge", values: "ok | attention | blocked | unknown", default: "absent", description: "Adds a symbol to the header summary status." }
     ],
     hooks: {
-      "ef-understanding": "Root bordered region.",
-      "ef-understanding__header": "Flex row of heading block and summary status, with a bottom rule; stacks at 40rem and below.",
-      "ef-understanding__items": "Unstyled ordered list of items.",
-      "ef-understanding__item": "One item: grid of state, content and action with a bottom rule; one column at 40rem and below.",
-      "ef-understanding__state": "Visible state text in small mono uppercase; receives a CSS symbol for known states.",
-      "data-ef-state": "Item state hook: `accepted` (✓), `unknown` (? and side bar), `conflict` (! and side bar). Presentation only; Ordo or the application owns the state."
+      "forma-understanding": "Root bordered region.",
+      "forma-understanding__header": "Flex row of heading block and summary status, with a bottom rule; stacks at 40rem and below.",
+      "forma-understanding__items": "Unstyled ordered list of items.",
+      "forma-understanding__item": "One item: grid of state, content and action with a bottom rule; one column at 40rem and below.",
+      "forma-understanding__state": "Visible state text in small mono uppercase; receives a CSS symbol for known states.",
+      "data-forma-state": "Item state hook: `accepted` (✓), `unknown` (? and side bar), `conflict` (! and side bar). Presentation only; Ordo or the application owns the state."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the item actions in list order. No added keyboard behavior." },
@@ -153,10 +153,10 @@ export default {
     form: "Not a form control. Answers are collected by application UI such as a [[dialog]] or inline fields."
   },
   states: [
-    { name: "Understood", how: "data-ef-state=\"accepted\" plus state text", description: "✓ symbol before the state label." },
-    { name: "Unknown", how: "data-ef-state=\"unknown\" plus state text", description: "? symbol and a 0.3rem inline-start bar." },
-    { name: "Conflict", how: "data-ef-state=\"conflict\" plus state text", description: "! symbol and a 0.3rem inline-start bar." },
-    { name: "Other application states", how: "state text without data-ef-state", description: "States such as Unresolved render as text only; add them as text rather than inventing hook values." },
+    { name: "Understood", how: "data-forma-state=\"accepted\" plus state text", description: "✓ symbol before the state label." },
+    { name: "Unknown", how: "data-forma-state=\"unknown\" plus state text", description: "? symbol and a 0.3rem inline-start bar." },
+    { name: "Conflict", how: "data-forma-state=\"conflict\" plus state text", description: "! symbol and a 0.3rem inline-start bar." },
+    { name: "Other application states", how: "state text without data-forma-state", description: "States such as Unresolved render as text only; add them as text rather than inventing hook values." },
     { name: "Stacked", how: "@media (max-width: 40rem)", description: "Header and items stack; item actions are full width." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Root border and the side bars use CanvasText." }
   ],
@@ -167,7 +167,7 @@ export default {
       "Keeps source and answer actions reachable as full-width buttons on phones."
     ],
     consumer: [
-      "Write the state text for every item and keep `data-ef-state` consistent with it.",
+      "Write the state text for every item and keep `data-forma-state` consistent with it.",
       "Give action buttons specific names when several appear together, for example with visually hidden text (\"Source for Allergy\").",
       "Summarize in the header how many items need attention and whether anything will be saved yet.",
       "Decide in Ordo or application state whether unknown or conflicting items block the transition, and say so in text."

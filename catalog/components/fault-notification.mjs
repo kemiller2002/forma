@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Persistent, dismissible notification surface for Aegis Notification intent; lifecycle remains application-owned.",
   purpose: {
-    description: "A fault notification presents an Aegis presentation whose intent is `Notification`: something failed that the user should know about even though they are not looking at the affected region, such as a background synchronization. It composes the toast surface (`ef-toast`) with the fault vocabulary: marker, visible severity, title, message, reference, Aegis-supplied recovery actions and an optional dismiss button. Forma runs no timers and owns no lifecycle. The application inserts the notification, decides whether it is dismissible, handles the dismiss click, throttles repeats and removes it when Aegis reports the fault resolved.",
+    description: "A fault notification presents an Aegis presentation whose intent is `Notification`: something failed that the user should know about even though they are not looking at the affected region, such as a background synchronization. It composes the toast surface (`forma-toast`) with the fault vocabulary: marker, visible severity, title, message, reference, Aegis-supplied recovery actions and an optional dismiss button. Forma runs no timers and owns no lifecycle. The application inserts the notification, decides whether it is dismissible, handles the dismiss click, throttles repeats and removes it when Aegis reports the fault resolved.",
     useWhen: [
       "Aegis reports intent `Notification` for a failure outside the user's current focus, such as a background save, sync or export.",
       "The user can continue working, but should be able to recover or quote the reference.",
@@ -31,59 +31,59 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Background sync needs sign-in",
       description: "An error raised by a background synchronization. Aegis supplied the Sign in capability. The dismiss button's accessible name starts with its visible label, so speech users can say \"Dismiss\".",
-      html: `<ef-fault-notification class="ef-component-tag">
-  <aside class="ef-toast ef-fault-notification" role="status" data-ef-intent="notification" data-ef-severity="error" data-ef-motion-weight="standard" data-ef-motion-entry aria-labelledby="fault-notification-reauthenticate-title">
-    <div class="ef-fault-notification__marker" aria-hidden="true">!</div>
-    <div class="ef-fault-notification__body">
-      <p class="ef-fault__severity">Error</p>
-      <h3 class="ef-toast__title" id="fault-notification-reauthenticate-title">Calendar sync stopped</h3>
+      html: `<forma-fault-notification class="forma-component-tag">
+  <aside class="forma-toast forma-fault-notification" role="status" data-forma-intent="notification" data-forma-severity="error" data-forma-motion-weight="standard" data-forma-motion-entry aria-labelledby="fault-notification-reauthenticate-title">
+    <div class="forma-fault-notification__marker" aria-hidden="true">!</div>
+    <div class="forma-fault-notification__body">
+      <p class="forma-fault__severity">Error</p>
+      <h3 class="forma-toast__title" id="fault-notification-reauthenticate-title">Calendar sync stopped</h3>
       <p>Your sign-in to the calendar service expired. Events created since 09:40 are stored on this device.</p>
-      <p class="ef-fault-reference">Reference <code>AG-8LM3E</code></p>
-      <div class="ef-recovery-actions" role="group" aria-label="Recovery actions">
-        <button type="button" data-ef-aegis-capability="CanReauthenticate">Sign in</button>
+      <p class="forma-fault-reference">Reference <code>AG-8LM3E</code></p>
+      <div class="forma-recovery-actions" role="group" aria-label="Recovery actions">
+        <button type="button" data-forma-aegis-capability="CanReauthenticate">Sign in</button>
       </div>
     </div>
-    <button type="button" class="ef-fault-notification__dismiss" data-ef-action="dismiss" aria-label="Dismiss calendar sync notification">Dismiss</button>
+    <button type="button" class="forma-fault-notification__dismiss" data-forma-action="dismiss" aria-label="Dismiss calendar sync notification">Dismiss</button>
   </aside>
-</ef-fault-notification>`
+</forma-fault-notification>`
     },
     {
       id: "informational-rerender",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Restored notification without re-announcement",
-      description: "A diagnostic notification re-rendered after navigation. It has no role=status because it was already announced when first inserted, no recovery actions because Aegis supplied none, and no data-ef-motion-entry so it does not animate again.",
-      html: `<ef-fault-notification class="ef-component-tag">
-  <aside class="ef-toast ef-fault-notification" data-ef-intent="notification" data-ef-severity="diagnostic" aria-labelledby="fault-notification-informational-rerender-title">
-    <div class="ef-fault-notification__marker" aria-hidden="true">i</div>
-    <div class="ef-fault-notification__body">
-      <p class="ef-fault__severity">Diagnostic</p>
-      <h3 class="ef-toast__title" id="fault-notification-informational-rerender-title">Search index is rebuilding</h3>
+      description: "A diagnostic notification re-rendered after navigation. It has no role=status because it was already announced when first inserted, no recovery actions because Aegis supplied none, and no data-forma-motion-entry so it does not animate again.",
+      html: `<forma-fault-notification class="forma-component-tag">
+  <aside class="forma-toast forma-fault-notification" data-forma-intent="notification" data-forma-severity="diagnostic" aria-labelledby="fault-notification-informational-rerender-title">
+    <div class="forma-fault-notification__marker" aria-hidden="true">i</div>
+    <div class="forma-fault-notification__body">
+      <p class="forma-fault__severity">Diagnostic</p>
+      <h3 class="forma-toast__title" id="fault-notification-informational-rerender-title">Search index is rebuilding</h3>
       <p>Results may miss documents added in the last few minutes.</p>
-      <p class="ef-fault-reference">Reference <code>AG-1B9SW</code></p>
+      <p class="forma-fault-reference">Reference <code>AG-1B9SW</code></p>
     </div>
-    <button type="button" class="ef-fault-notification__dismiss" data-ef-action="dismiss" aria-label="Dismiss search index notification">Dismiss</button>
+    <button type="button" class="forma-fault-notification__dismiss" data-forma-action="dismiss" aria-label="Dismiss search index notification">Dismiss</button>
   </aside>
-</ef-fault-notification>`
+</forma-fault-notification>`
     },
     {
       id: "not-dismissible",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Critical notification that cannot be dismissed",
       description: "Current application policy does not allow dismissal while diagnostics are disconnected, so no dismiss button is rendered. The only way forward is the Aegis-supplied recovery action or resolution upstream.",
-      html: `<ef-fault-notification class="ef-component-tag">
-  <aside class="ef-toast ef-fault-notification" role="status" data-ef-intent="notification" data-ef-severity="critical" data-ef-motion-entry aria-labelledby="fault-notification-not-dismissible-title">
-    <div class="ef-fault-notification__marker" aria-hidden="true">!!</div>
-    <div class="ef-fault-notification__body">
-      <p class="ef-fault__severity">Critical</p>
-      <h3 class="ef-toast__title" id="fault-notification-not-dismissible-title">Diagnostics are disconnected</h3>
+      html: `<forma-fault-notification class="forma-component-tag">
+  <aside class="forma-toast forma-fault-notification" role="status" data-forma-intent="notification" data-forma-severity="critical" data-forma-motion-entry aria-labelledby="fault-notification-not-dismissible-title">
+    <div class="forma-fault-notification__marker" aria-hidden="true">!!</div>
+    <div class="forma-fault-notification__body">
+      <p class="forma-fault__severity">Critical</p>
+      <h3 class="forma-toast__title" id="fault-notification-not-dismissible-title">Diagnostics are disconnected</h3>
       <p>New reports are held on this device until the diagnostics service is reachable.</p>
-      <p class="ef-fault-reference">Reference <code>AG-22K8M</code></p>
-      <div class="ef-recovery-actions" role="group" aria-label="Recovery actions">
-        <button type="button" data-ef-aegis-capability="CanRestoreSink">Reconnect diagnostics</button>
+      <p class="forma-fault-reference">Reference <code>AG-22K8M</code></p>
+      <div class="forma-recovery-actions" role="group" aria-label="Recovery actions">
+        <button type="button" data-forma-aegis-capability="CanRestoreSink">Reconnect diagnostics</button>
       </div>
     </div>
   </aside>
-</ef-fault-notification>`
+</forma-fault-notification>`
     },
     {
       id: "mobile-sync",
@@ -99,44 +99,44 @@ export default {
           "Because the surface is fixed, it can cover page content at the bottom of short landscape viewports; the application should keep the notification count low and leave content scrollable beneath it."
         ]
       },
-      html: `<ef-fault-notification class="ef-component-tag">
-  <aside class="ef-toast ef-fault-notification" role="status" data-ef-intent="notification" data-ef-severity="warning" data-ef-motion-entry aria-labelledby="fault-notification-mobile-sync-title">
-    <div class="ef-fault-notification__marker" aria-hidden="true">!</div>
-    <div class="ef-fault-notification__body">
-      <p class="ef-fault__severity">Warning</p>
-      <h3 class="ef-toast__title" id="fault-notification-mobile-sync-title">Photos are waiting to upload</h3>
+      html: `<forma-fault-notification class="forma-component-tag">
+  <aside class="forma-toast forma-fault-notification" role="status" data-forma-intent="notification" data-forma-severity="warning" data-forma-motion-entry aria-labelledby="fault-notification-mobile-sync-title">
+    <div class="forma-fault-notification__marker" aria-hidden="true">!</div>
+    <div class="forma-fault-notification__body">
+      <p class="forma-fault__severity">Warning</p>
+      <h3 class="forma-toast__title" id="fault-notification-mobile-sync-title">Photos are waiting to upload</h3>
       <p>12 photos from the site visit are stored on this phone.</p>
-      <p class="ef-fault-reference">Reference <code>AG-91B7Q</code></p>
-      <div class="ef-recovery-actions" role="group" aria-label="Recovery actions">
-        <button type="button" data-ef-aegis-capability="CanRetry">Try again</button>
+      <p class="forma-fault-reference">Reference <code>AG-91B7Q</code></p>
+      <div class="forma-recovery-actions" role="group" aria-label="Recovery actions">
+        <button type="button" data-forma-aegis-capability="CanRetry">Try again</button>
       </div>
     </div>
-    <button type="button" class="ef-fault-notification__dismiss" data-ef-action="dismiss" aria-label="Dismiss photo upload notification">Dismiss</button>
+    <button type="button" class="forma-fault-notification__dismiss" data-forma-action="dismiss" aria-label="Dismiss photo upload notification">Dismiss</button>
   </aside>
-</ef-fault-notification>`
+</forma-fault-notification>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: "aside.ef-fault-notification", values: "status", default: "absent", description: "Use only when the application inserts a genuinely new notification. Omit it when re-rendering an existing notification so it is not announced twice." },
-      { name: "aria-labelledby", on: "aside.ef-fault-notification", values: "id of the title", default: "—", description: "Names the complementary region by the notification title." },
-      { name: "data-ef-severity", on: "aside.ef-fault-notification", values: "diagnostic | warning | error | critical", default: "—", description: "Records the Aegis severity. The notification surface does not restyle by severity; the visible severity text is the cue." },
-      { name: "data-ef-intent", on: "aside.ef-fault-notification", values: "notification", default: "—", description: "Records the Aegis intent. Descriptive only." },
-      { name: "data-ef-motion-weight", on: "aside.ef-fault-notification", values: "light | standard | heavy", default: "standard", description: "Presentation-only perceived mass for the entry settle. Keep the standard default; never map it to severity." },
-      { name: "data-ef-motion-entry", on: "aside.ef-fault-notification", values: "boolean", default: "absent", description: "Opts into the entry fade and settle when the element is first rendered. Omit it when re-rendering an existing notification." },
-      { name: "data-ef-action", on: ".ef-fault-notification__dismiss", values: "dismiss", default: "—", description: "Marks the dismiss button for application code. Forma attaches no behavior to it." },
-      { name: "aria-label", on: ".ef-fault-notification__dismiss / .ef-recovery-actions", values: "string", default: "—", description: "On the dismiss button, start with the visible label and add which notification it dismisses. On the recovery group, name the group." },
-      { name: "aria-hidden", on: ".ef-fault-notification__marker", values: "true", default: "—", description: "Hides the decorative marker glyph." },
+      { name: "role", on: "aside.forma-fault-notification", values: "status", default: "absent", description: "Use only when the application inserts a genuinely new notification. Omit it when re-rendering an existing notification so it is not announced twice." },
+      { name: "aria-labelledby", on: "aside.forma-fault-notification", values: "id of the title", default: "—", description: "Names the complementary region by the notification title." },
+      { name: "data-forma-severity", on: "aside.forma-fault-notification", values: "diagnostic | warning | error | critical", default: "—", description: "Records the Aegis severity. The notification surface does not restyle by severity; the visible severity text is the cue." },
+      { name: "data-forma-intent", on: "aside.forma-fault-notification", values: "notification", default: "—", description: "Records the Aegis intent. Descriptive only." },
+      { name: "data-forma-motion-weight", on: "aside.forma-fault-notification", values: "light | standard | heavy", default: "standard", description: "Presentation-only perceived mass for the entry settle. Keep the standard default; never map it to severity." },
+      { name: "data-forma-motion-entry", on: "aside.forma-fault-notification", values: "boolean", default: "absent", description: "Opts into the entry fade and settle when the element is first rendered. Omit it when re-rendering an existing notification." },
+      { name: "data-forma-action", on: ".forma-fault-notification__dismiss", values: "dismiss", default: "—", description: "Marks the dismiss button for application code. Forma attaches no behavior to it." },
+      { name: "aria-label", on: ".forma-fault-notification__dismiss / .forma-recovery-actions", values: "string", default: "—", description: "On the dismiss button, start with the visible label and add which notification it dismisses. On the recovery group, name the group." },
+      { name: "aria-hidden", on: ".forma-fault-notification__marker", values: "true", default: "—", description: "Hides the decorative marker glyph." },
       { name: "type", on: "button", values: "button", default: "—", description: "Required on dismiss and recovery buttons." },
-      { name: "data-ef-aegis-capability", on: "recovery button", values: "Aegis capability name", default: "—", description: "Exact Aegis capability identity; revalidated by the application on click." }
+      { name: "data-forma-aegis-capability", on: "recovery button", values: "Aegis capability name", default: "—", description: "Exact Aegis capability identity; revalidated by the application on click." }
     ],
     hooks: {
-      "ef-fault-notification": "Root, applied together with `ef-toast`. A marker/body/dismiss grid, 32rem wide at most, with a thick start border and shadow. It is always visible (it does not depend on :popover-open) and inherits the toast's fixed bottom inline-end placement.",
-      "ef-fault-notification__marker": "Decorative round marker glyph.",
-      "ef-fault-notification__body": "Text column for severity, title, message, reference and recovery actions.",
-      "ef-fault-notification__dismiss": "Native dismiss button in the end column; full-width row below 36rem.",
-      "data-ef-motion-entry": "Enables the insertion transition: opacity from 0 and a 0.45rem downward settle, driven by @starting-style.",
-      "data-ef-motion-weight": "Selects the light, standard (default) or heavy physics preset for the settle duration. Presentation only."
+      "forma-fault-notification": "Root, applied together with `forma-toast`. A marker/body/dismiss grid, 32rem wide at most, with a thick start border and shadow. It is always visible (it does not depend on :popover-open) and inherits the toast's fixed bottom inline-end placement.",
+      "forma-fault-notification__marker": "Decorative round marker glyph.",
+      "forma-fault-notification__body": "Text column for severity, title, message, reference and recovery actions.",
+      "forma-fault-notification__dismiss": "Native dismiss button in the end column; full-width row below 36rem.",
+      "data-forma-motion-entry": "Enables the insertion transition: opacity from 0 and a 0.45rem downward settle, driven by @starting-style.",
+      "data-forma-motion-weight": "Selects the light, standard (default) or heavy physics preset for the settle duration. Presentation only."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Reaches recovery buttons and then the dismiss button in source order. Focus is not moved into the notification when it appears." },
@@ -149,11 +149,11 @@ export default {
     form: "Not a form control. Buttons are type=\"button\"."
   },
   states: [
-    { name: "Newly inserted", how: "role=\"status\" + data-ef-motion-entry on first render", description: "Announced politely once and fades in with a small settle." },
-    { name: "Re-rendered", how: "no role and no data-ef-motion-entry", description: "Same visual surface without a second announcement or animation." },
-    { name: "Dismissible", how: ".ef-fault-notification__dismiss present", description: "A native dismiss button in the end column; the application removes the element on click." },
+    { name: "Newly inserted", how: "role=\"status\" + data-forma-motion-entry on first render", description: "Announced politely once and fades in with a small settle." },
+    { name: "Re-rendered", how: "no role and no data-forma-motion-entry", description: "Same visual surface without a second announcement or animation." },
+    { name: "Dismissible", how: ".forma-fault-notification__dismiss present", description: "A native dismiss button in the end column; the application removes the element on click." },
     { name: "Not dismissible", how: "dismiss button omitted", description: "Persists until the application removes it after resolution." },
-    { name: "Severity", how: "data-ef-severity plus visible text", description: "Severity is read from the text label; the notification surface itself does not change border style." }
+    { name: "Severity", how: "data-forma-severity plus visible text", description: "Severity is read from the text label; the notification surface itself does not change border style." }
   ],
   accessibility: {
     forma: [
@@ -172,13 +172,13 @@ export default {
   },
   responsive: [
     "Width is `min(32rem, 100vw - 2rem)` and the toast base limits it further to `min(26rem, 100vw - 2rem)`, so it always fits the viewport.",
-    "Placement comes from `ef-toast`: fixed to the bottom inline-end corner with a 1rem inset that respects safe-area insets.",
+    "Placement comes from `forma-toast`: fixed to the bottom inline-end corner with a 1rem inset that respects safe-area insets.",
     "Below a 36rem viewport the grid becomes two columns, the dismiss button stretches across its own row and recovery buttons become full width.",
     "Text and reference codes wrap within the body column."
   ],
   motion: [
-    "With `data-ef-motion-entry`, the notification fades in (perceptual duration, independent of mass) and settles 0.45rem downward into place with the damped inertial easing.",
-    "The default perceived weight is standard. `data-ef-motion-weight` changes only the settle duration; it never expresses severity.",
+    "With `data-forma-motion-entry`, the notification fades in (perceptual duration, independent of mass) and settles 0.45rem downward into place with the damped inertial easing.",
+    "The default perceived weight is standard. `data-forma-motion-weight` changes only the settle duration; it never expresses severity.",
     "Motion runs only on first render through @starting-style; re-rendered notifications without the attribute appear in place.",
     "There is no exit animation from Forma: removal is immediate when the application removes the element.",
     "Under `prefers-reduced-motion: reduce` all durations collapse to 0.01ms; the notification appears in its final position immediately."

@@ -15,7 +15,7 @@ Provide a polished binary on/off control using semantic HTML and CSS only while 
 ## Interfaces
 
 - Inbound: standard checkbox attributes plus required Echelon class structure
-- Motion input: optional `data-ef-motion-weight="light|standard|heavy"`; standard is the canonical default
+- Motion input: optional `data-forma-motion-weight="light|standard|heavy"`; standard is the canonical default
 - Outbound: native input/change events and native form value
 
 ## Motion

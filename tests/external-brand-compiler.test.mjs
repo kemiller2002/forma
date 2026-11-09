@@ -42,7 +42,7 @@ test("an external manifest compiled with the packed BrandCompiler is byte-identi
   run("tools/BrandCompiler/BrandCompiler.fsproj", [external, fromForma]);
   sameBytes(fromPackage, fromForma);
   const css = fs.readFileSync(path.join(fromPackage, "example-external.css"), "utf8");
-  assert.match(css, /\[data-ef-brand="example-external"\]/);
+  assert.match(css, /\[data-forma-brand="example-external"\]/);
 });
 
 test("the packed BrandCompiler reproduces Forma's shipped brand CSS byte for byte", () => {

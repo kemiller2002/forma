@@ -14,7 +14,7 @@ export default {
       "The control is a setting that takes effect immediately: use [[switch]].",
       "The user answers a yes/no question that can also be unanswered: use [[binary-choice]].",
       "Only one option in a set may be chosen: use [[choice-group]] or [[segmented-control]].",
-      "The options are rich assessment answers with extra context: use [[multi-choice]], which uses the `.ef-choice` card presentation."
+      "The options are rich assessment answers with extra context: use [[multi-choice]], which uses the `.forma-choice` card presentation."
     ],
     characteristics: [
       "The whole row, including the label and description, toggles the checkbox.",
@@ -28,61 +28,61 @@ export default {
       interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Required consent",
       description: "A required agreement before creating an account. The native required constraint blocks submission while unchecked; the label names what is being agreed to and links the document.",
-      html: `<ef-checkbox class="ef-component-tag">
-  <form class="ef-stack" action="/signup" method="post">
-    <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="accept-terms" value="yes" required aria-describedby="checkbox-terms-consent-description">
-      <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text">
-        <span class="ef-checkbox__label">I agree to the data processing terms (required)</span>
-        <span class="ef-checkbox__description" id="checkbox-terms-consent-description">You can read the terms at example.com/dpa before continuing.</span>
+      html: `<forma-checkbox class="forma-component-tag">
+  <form class="forma-stack" action="/signup" method="post">
+    <label class="forma-checkbox">
+      <input class="forma-checkbox__input" type="checkbox" name="accept-terms" value="yes" required aria-describedby="checkbox-terms-consent-description">
+      <span class="forma-checkbox__box" aria-hidden="true"></span>
+      <span class="forma-checkbox__text">
+        <span class="forma-checkbox__label">I agree to the data processing terms (required)</span>
+        <span class="forma-checkbox__description" id="checkbox-terms-consent-description">You can read the terms at example.com/dpa before continuing.</span>
       </span>
     </label>
     <button type="submit">Create account</button>
   </form>
-</ef-checkbox>`
+</forma-checkbox>`
     },
     {
       id: "export-options",
       title: "Export options",
       description: "Independent options grouped in a fieldset with a legend. One starts checked, and one is disabled with the reason in its description.",
-      html: `<ef-checkbox class="ef-component-tag">
-  <fieldset class="ef-stack" data-density="compact">
+      html: `<forma-checkbox class="forma-component-tag">
+  <fieldset class="forma-stack" data-density="compact">
     <legend>Include in export</legend>
-    <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="export-include" value="comments" checked>
-      <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Comments</span></span>
+    <label class="forma-checkbox">
+      <input class="forma-checkbox__input" type="checkbox" name="export-include" value="comments" checked>
+      <span class="forma-checkbox__box" aria-hidden="true"></span>
+      <span class="forma-checkbox__text"><span class="forma-checkbox__label">Comments</span></span>
     </label>
-    <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="export-include" value="attachments">
-      <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Attachments</span></span>
+    <label class="forma-checkbox">
+      <input class="forma-checkbox__input" type="checkbox" name="export-include" value="attachments">
+      <span class="forma-checkbox__box" aria-hidden="true"></span>
+      <span class="forma-checkbox__text"><span class="forma-checkbox__label">Attachments</span></span>
     </label>
-    <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="export-include" value="audit" disabled aria-describedby="checkbox-export-audit-description">
-      <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text">
-        <span class="ef-checkbox__label">Audit history</span>
-        <span class="ef-checkbox__description" id="checkbox-export-audit-description">Only workspace owners can export audit history.</span>
+    <label class="forma-checkbox">
+      <input class="forma-checkbox__input" type="checkbox" name="export-include" value="audit" disabled aria-describedby="checkbox-export-audit-description">
+      <span class="forma-checkbox__box" aria-hidden="true"></span>
+      <span class="forma-checkbox__text">
+        <span class="forma-checkbox__label">Audit history</span>
+        <span class="forma-checkbox__description" id="checkbox-export-audit-description">Only workspace owners can export audit history.</span>
       </span>
     </label>
   </fieldset>
-</ef-checkbox>`
+</forma-checkbox>`
     },
     {
       id: "light-weight-long-label",
       title: "Light motion weight with a long label",
       description: "A light presentation weight gives the check mark a quicker settle. The long translated label wraps beside the box; the box stays aligned to the row.",
-      html: `<ef-checkbox class="ef-component-tag">
-  <label class="ef-checkbox" data-ef-motion-weight="light">
-    <input class="ef-checkbox__input" type="checkbox" name="notify-subscribers" value="yes">
-    <span class="ef-checkbox__box" aria-hidden="true"></span>
-    <span class="ef-checkbox__text">
-      <span class="ef-checkbox__label">Benachrichtigen Sie alle Abonnenten dieses Projekts per E-Mail, wenn sich der Veröffentlichungsstatus ändert</span>
+      html: `<forma-checkbox class="forma-component-tag">
+  <label class="forma-checkbox" data-forma-motion-weight="light">
+    <input class="forma-checkbox__input" type="checkbox" name="notify-subscribers" value="yes">
+    <span class="forma-checkbox__box" aria-hidden="true"></span>
+    <span class="forma-checkbox__text">
+      <span class="forma-checkbox__label">Benachrichtigen Sie alle Abonnenten dieses Projekts per E-Mail, wenn sich der Veröffentlichungsstatus ändert</span>
     </span>
   </label>
-</ef-checkbox>`
+</forma-checkbox>`
     },
     {
       id: "mobile-filter-list",
@@ -97,26 +97,26 @@ export default {
           "Orientation changes only reflow the text column."
         ]
       },
-      html: `<ef-checkbox class="ef-component-tag">
-  <fieldset class="ef-stack" data-density="compact">
+      html: `<forma-checkbox class="forma-component-tag">
+  <fieldset class="forma-stack" data-density="compact">
     <legend>Status</legend>
-    <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="mobile-status" value="open" checked>
-      <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Open</span></span>
+    <label class="forma-checkbox">
+      <input class="forma-checkbox__input" type="checkbox" name="mobile-status" value="open" checked>
+      <span class="forma-checkbox__box" aria-hidden="true"></span>
+      <span class="forma-checkbox__text"><span class="forma-checkbox__label">Open</span></span>
     </label>
-    <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="mobile-status" value="waiting">
-      <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Waiting on customer response</span></span>
+    <label class="forma-checkbox">
+      <input class="forma-checkbox__input" type="checkbox" name="mobile-status" value="waiting">
+      <span class="forma-checkbox__box" aria-hidden="true"></span>
+      <span class="forma-checkbox__text"><span class="forma-checkbox__label">Waiting on customer response</span></span>
     </label>
-    <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="mobile-status" value="resolved">
-      <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Resolved in the last 7 days</span></span>
+    <label class="forma-checkbox">
+      <input class="forma-checkbox__input" type="checkbox" name="mobile-status" value="resolved">
+      <span class="forma-checkbox__box" aria-hidden="true"></span>
+      <span class="forma-checkbox__text"><span class="forma-checkbox__label">Resolved in the last 7 days</span></span>
     </label>
   </fieldset>
-</ef-checkbox>`
+</forma-checkbox>`
     }
   ],
   api: {
@@ -127,16 +127,16 @@ export default {
       { name: "checked", on: "input", values: "boolean", default: "absent", description: "Initial checked state. The live state is the browser-owned checked property." },
       { name: "required", on: "input", values: "boolean", default: "absent", description: "The form will not submit until this checkbox is checked. Say \"required\" in the label." },
       { name: "disabled", on: "input", values: "boolean", default: "absent", description: "Removes the checkbox from focus and submission and dims the whole row." },
-      { name: "aria-describedby", on: "input", values: "id of .ef-checkbox__description", default: "—", description: "Links the supporting description." }
+      { name: "aria-describedby", on: "input", values: "id of .forma-checkbox__description", default: "—", description: "Links the supporting description." }
     ],
     hooks: {
-      "ef-checkbox": "Root label element: an inline grid of box and text that makes the whole row the hit target, at least 44px tall.",
-      "ef-checkbox__input": "The native checkbox, transparent and stretched over the row.",
-      "ef-checkbox__box": "Decorative 1.25rem box; its ::after draws the check mark. Mark it aria-hidden=\"true\".",
-      "ef-checkbox__text": "Label and description column that shrinks and wraps.",
-      "ef-checkbox__label": "Visible accessible name.",
-      "ef-checkbox__description": "Optional supporting text referenced by aria-describedby.",
-      "data-ef-motion-weight": "Presentation-only perceived mass for the check-mark settle: light, standard (default) or heavy. Never encodes importance or risk."
+      "forma-checkbox": "Root label element: an inline grid of box and text that makes the whole row the hit target, at least 44px tall.",
+      "forma-checkbox__input": "The native checkbox, transparent and stretched over the row.",
+      "forma-checkbox__box": "Decorative 1.25rem box; its ::after draws the check mark. Mark it aria-hidden=\"true\".",
+      "forma-checkbox__text": "Label and description column that shrinks and wraps.",
+      "forma-checkbox__label": "Visible accessible name.",
+      "forma-checkbox__description": "Optional supporting text referenced by aria-describedby.",
+      "data-forma-motion-weight": "Presentation-only perceived mass for the check-mark settle: light, standard (default) or heavy. Never encodes importance or risk."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus to and from the checkbox (skipped when disabled)." },
@@ -176,7 +176,7 @@ export default {
     "The check mark fades in and settles with the shared inertial spring (scale and a small rotation), so checking reads as a physical mark being placed.",
     "The box fill and border change with perceptual interpolation, independent of mass.",
     "Pressing compresses the box briefly with a damped press response; the checked value changes immediately and is never delayed by motion.",
-    "`data-ef-motion-weight` light, standard or heavy changes only perceived mass of the mark's settle.",
+    "`data-forma-motion-weight` light, standard or heavy changes only perceived mass of the mark's settle.",
     "Under `prefers-reduced-motion: reduce` durations become effectively zero, press compression is removed, and the mark still appears."
   ],
   guidance: {

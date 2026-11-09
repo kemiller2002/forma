@@ -10,7 +10,7 @@ test("form fields align on wide containers and stack without overflow when narro
     await page.setViewportSize({ width, height: 900 });
     await page.goto(isolatedForm);
     await expectNoOverflow(page);
-    const controls = page.locator(".ef-form-row input");
+    const controls = page.locator(".forma-form-row input");
     await expect(controls).toHaveCount(2);
     const boxes = await controls.evaluateAll(elements => elements.map(element => {
       const box = element.getBoundingClientRect();
@@ -43,7 +43,7 @@ test("native validation refuses bad email and successful submit exposes feedback
   await example.getByRole("button", { name: "Save contact", exact: true }).click();
   expect(page.url()).toBe(before);
   await expect.poll(() => email.evaluate(element => element.validity.valid)).toBe(false);
-  await expect(example.locator(".ef-validation-message--when-invalid")).toBeVisible();
+  await expect(example.locator(".forma-validation-message--when-invalid")).toBeVisible();
 
   await email.fill("gateway-ops@nasa.gov");
   await example.getByRole("button", { name: "Save contact", exact: true }).click();

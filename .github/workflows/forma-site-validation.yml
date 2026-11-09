@@ -25,7 +25,7 @@ on:
       - "packages/conformance/**"
       - "tests/conformance/**"
       - "playwright.conformance.config.mjs"
-      - "examples/echelon-marketing-site/**"
+      - "examples/marketing-site/**"
       - "src/marketing/**"
   push:
     branches:
@@ -51,7 +51,7 @@ on:
       - "packages/conformance/**"
       - "tests/conformance/**"
       - "playwright.conformance.config.mjs"
-      - "examples/echelon-marketing-site/**"
+      - "examples/marketing-site/**"
       - "src/marketing/**"
   workflow_dispatch:
 

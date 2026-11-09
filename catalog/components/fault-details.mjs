@@ -40,50 +40,50 @@ export default {
       },
       title: "Support view, open by default",
       description: "A support agent's view where the application opens the disclosure initially with the open attribute. Every row comes from an approved safe view model; the dependency name is the user-visible service name, not an internal host.",
-      html: `<ef-fault-details class="ef-component-tag">
-  <details class="ef-fault-details" open>
+      html: `<forma-fault-details class="forma-component-tag">
+  <details class="forma-fault-details" open>
     <summary>Safe diagnostic details</summary>
-    <div class="ef-fault-details__content">
-      <dl class="ef-fault-details__list">
+    <div class="forma-fault-details__content">
+      <dl class="forma-fault-details__list">
         <div><dt>Reference</dt><dd><code>AG-8LM3E</code></dd></div>
         <div><dt>Application</dt><dd>Chrona</dd></div>
         <div><dt>Affected service</dt><dd>Calendar sync</dd></div>
         <div><dt>Recovery state</dt><dd>Waiting for sign-in</dd></div>
         <div><dt>First seen</dt><dd><time datetime="2026-09-30T09:40:00Z">30 Sep 2026, 09:40 UTC</time></dd></div>
       </dl>
-      <p class="ef-fault-details__boundary">Only explicitly approved, already-sanitized diagnostic values are shown here.</p>
+      <p class="forma-fault-details__boundary">Only explicitly approved, already-sanitized diagnostic values are shown here.</p>
     </div>
   </details>
-</ef-fault-details>`
+</forma-fault-details>`
     },
     {
       id: "inside-inline-fault",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Collapsed details under an inline fault",
       description: "The disclosure composed inside the body of an inline fault, after the reference. The fault's message and recovery action remain visible whether or not the details are expanded.",
-      html: `<ef-fault-details class="ef-component-tag">
-  <div class="ef-fault ef-fault--inline" role="group" data-ef-intent="inline" data-ef-severity="error" aria-labelledby="fault-details-inside-inline-fault-title">
-    <div class="ef-fault__marker" aria-hidden="true">!</div>
-    <div class="ef-fault__body">
-      <p class="ef-fault__severity">Error</p>
-      <p class="ef-fault__title" id="fault-details-inside-inline-fault-title"><strong>Report export failed.</strong></p>
-      <p class="ef-fault__message">Your report settings are saved. Try the export again.</p>
-      <p class="ef-fault-reference">Reference <code>AG-2RT9M</code></p>
-      <details class="ef-fault-details">
+      html: `<forma-fault-details class="forma-component-tag">
+  <div class="forma-fault forma-fault--inline" role="group" data-forma-intent="inline" data-forma-severity="error" aria-labelledby="fault-details-inside-inline-fault-title">
+    <div class="forma-fault__marker" aria-hidden="true">!</div>
+    <div class="forma-fault__body">
+      <p class="forma-fault__severity">Error</p>
+      <p class="forma-fault__title" id="fault-details-inside-inline-fault-title"><strong>Report export failed.</strong></p>
+      <p class="forma-fault__message">Your report settings are saved. Try the export again.</p>
+      <p class="forma-fault-reference">Reference <code>AG-2RT9M</code></p>
+      <details class="forma-fault-details">
         <summary>Safe diagnostic details</summary>
-        <div class="ef-fault-details__content">
-          <dl class="ef-fault-details__list">
+        <div class="forma-fault-details__content">
+          <dl class="forma-fault-details__list">
             <div><dt>Export format</dt><dd>PDF</dd></div>
             <div><dt>Recovery state</dt><dd>Retry available</dd></div>
           </dl>
         </div>
       </details>
     </div>
-    <div class="ef-recovery-actions" role="group" aria-label="Recovery actions">
-      <button type="button" data-ef-aegis-capability="CanRetry">Try again</button>
+    <div class="forma-recovery-actions" role="group" aria-label="Recovery actions">
+      <button type="button" data-forma-aegis-capability="CanRetry">Try again</button>
     </div>
   </div>
-</ef-fault-details>`
+</forma-fault-details>`
     },
     {
       id: "mobile-stacked-values",
@@ -104,18 +104,18 @@ export default {
           "Orientation changes only reflow the rows; the order of terms does not change."
         ]
       },
-      html: `<ef-fault-details class="ef-component-tag">
-  <details class="ef-fault-details" open>
+      html: `<forma-fault-details class="forma-component-tag">
+  <details class="forma-fault-details" open>
     <summary>Safe diagnostic details</summary>
-    <div class="ef-fault-details__content">
-      <dl class="ef-fault-details__list">
+    <div class="forma-fault-details__content">
+      <dl class="forma-fault-details__list">
         <div><dt>Reference</dt><dd><code>AG-4F82C-BILLING-RECIPIENTS-2026-09-30</code></dd></div>
         <div><dt>Affected service</dt><dd>Customer billing recipients directory</dd></div>
         <div><dt>Recovery state</dt><dd>Retry available after sign-in</dd></div>
       </dl>
     </div>
   </details>
-</ef-fault-details>`
+</forma-fault-details>`
     }
   ],
   api: {
@@ -123,10 +123,10 @@ export default {
       { name: "open", on: "details", values: "boolean", default: "absent (collapsed)", description: "Initial expanded state. The live state is owned by the browser; the user can always toggle it." }
     ],
     hooks: {
-      "ef-fault-details": "Root native details element with top and bottom borders.",
-      "ef-fault-details__content": "Wrapper for the expanded content with bottom padding.",
-      "ef-fault-details__list": "Description list of approved term/value pairs; each pair is a div laid out as a two-column grid (terms at least 7rem) that stacks below 36rem.",
-      "ef-fault-details__boundary": "Optional small note stating that only approved, sanitized values appear."
+      "forma-fault-details": "Root native details element with top and bottom borders.",
+      "forma-fault-details__content": "Wrapper for the expanded content with bottom padding.",
+      "forma-fault-details__list": "Description list of approved term/value pairs; each pair is a div laid out as a two-column grid (terms at least 7rem) that stacks below 36rem.",
+      "forma-fault-details__boundary": "Optional small note stating that only approved, sanitized values appear."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus to and from the summary." },

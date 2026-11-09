@@ -30,65 +30,65 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Advance blocked by validation",
       description: "The user pressed Continue on step 1 with a missing field. Ordo refused the transition; the application rendered a focusable validation summary in the body and marked the field invalid. The rail and position are unchanged.",
-      html: `<ef-wizard class="ef-component-tag">
-  <section class="ef-wizard" aria-labelledby="wizard-blocked-title">
-    <header class="ef-wizard__header">
-      <div><span class="ef-wizard__position">Step 1 of 4</span><h3 id="wizard-blocked-title">Service details</h3></div>
+      html: `<forma-wizard class="forma-component-tag">
+  <section class="forma-wizard" aria-labelledby="wizard-blocked-title">
+    <header class="forma-wizard__header">
+      <div><span class="forma-wizard__position">Step 1 of 4</span><h3 id="wizard-blocked-title">Service details</h3></div>
       <progress value="1" max="4" aria-label="Workflow progress">1 of 4</progress>
     </header>
-    <ol class="ef-wizard__steps" aria-label="Workflow steps">
+    <ol class="forma-wizard__steps" aria-label="Workflow steps">
       <li data-state="current" aria-current="step"><span>1</span>Details</li>
       <li><span>2</span>Review</li>
       <li><span>3</span>Validate</li>
       <li><span>4</span>Publish</li>
     </ol>
-    <div class="ef-wizard__body">
-      <div class="ef-validation-summary" role="alert" tabindex="-1" aria-labelledby="wizard-blocked-summary-title">
-        <div class="ef-validation-summary__icon" aria-hidden="true">!</div>
+    <div class="forma-wizard__body">
+      <div class="forma-validation-summary" role="alert" tabindex="-1" aria-labelledby="wizard-blocked-summary-title">
+        <div class="forma-validation-summary__icon" aria-hidden="true">!</div>
         <div>
-          <h4 class="ef-validation-summary__title" id="wizard-blocked-summary-title">Fix 1 problem to continue</h4>
-          <ul class="ef-validation-summary__list"><li><a href="#wizard-blocked-owner">Enter an owning team.</a></li></ul>
+          <h4 class="forma-validation-summary__title" id="wizard-blocked-summary-title">Fix 1 problem to continue</h4>
+          <ul class="forma-validation-summary__list"><li><a href="#wizard-blocked-owner">Enter an owning team.</a></li></ul>
         </div>
       </div>
-      <div class="ef-field">
-        <label class="ef-field__label" for="wizard-blocked-owner">Owning team</label>
+      <div class="forma-field">
+        <label class="forma-field__label" for="wizard-blocked-owner">Owning team</label>
         <input id="wizard-blocked-owner" name="wizard-blocked-owner" type="text" required aria-invalid="true">
       </div>
     </div>
-    <footer class="ef-wizard__actions">
+    <footer class="forma-wizard__actions">
       <button type="button">Save and exit</button>
       <button type="button">Continue</button>
     </footer>
   </section>
-</ef-wizard>`
+</forma-wizard>`
     },
     {
       id: "resumed-final-step",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Resumed at the final step",
       description: "A draft resumed from a saved session. Three steps are complete and Publish is current; the footer offers Back, Save and exit, and the final action.",
-      html: `<ef-wizard class="ef-component-tag">
-  <section class="ef-wizard" aria-labelledby="wizard-resume-title">
-    <header class="ef-wizard__header">
-      <div><span class="ef-wizard__position">Step 4 of 4</span><h3 id="wizard-resume-title">Publish release 2.8</h3></div>
+      html: `<forma-wizard class="forma-component-tag">
+  <section class="forma-wizard" aria-labelledby="wizard-resume-title">
+    <header class="forma-wizard__header">
+      <div><span class="forma-wizard__position">Step 4 of 4</span><h3 id="wizard-resume-title">Publish release 2.8</h3></div>
       <progress value="4" max="4" aria-label="Workflow progress">4 of 4</progress>
     </header>
-    <ol class="ef-wizard__steps" aria-label="Workflow steps">
+    <ol class="forma-wizard__steps" aria-label="Workflow steps">
       <li data-state="complete"><span>1</span>Details</li>
       <li data-state="complete"><span>2</span>Review</li>
       <li data-state="complete"><span>3</span>Validate</li>
       <li data-state="current" aria-current="step"><span>4</span>Publish</li>
     </ol>
-    <div class="ef-wizard__body">
+    <div class="forma-wizard__body">
       <p>Resumed from your draft saved yesterday at 17:42. All checks passed. Publishing makes release 2.8 available to every customer.</p>
     </div>
-    <footer class="ef-wizard__actions">
+    <footer class="forma-wizard__actions">
       <button type="button">Back</button>
       <button type="button">Save and exit</button>
       <button type="button">Publish release</button>
     </footer>
   </section>
-</ef-wizard>`
+</forma-wizard>`
     },
     {
       id: "mobile-current-step",
@@ -104,46 +104,46 @@ export default {
           "Footer actions are a wrapping flex row with space-between; buttons keep their 44px height and wrap onto a new line when there are three."
         ]
       },
-      html: `<ef-wizard class="ef-component-tag">
-  <section class="ef-wizard" aria-labelledby="wizard-mobile-title">
-    <header class="ef-wizard__header">
-      <div><span class="ef-wizard__position">Step 3 of 4</span><h3 id="wizard-mobile-title">Validate configuration</h3></div>
+      html: `<forma-wizard class="forma-component-tag">
+  <section class="forma-wizard" aria-labelledby="wizard-mobile-title">
+    <header class="forma-wizard__header">
+      <div><span class="forma-wizard__position">Step 3 of 4</span><h3 id="wizard-mobile-title">Validate configuration</h3></div>
       <progress value="3" max="4" aria-label="Workflow progress">3 of 4</progress>
     </header>
-    <ol class="ef-wizard__steps" aria-label="Workflow steps">
+    <ol class="forma-wizard__steps" aria-label="Workflow steps">
       <li data-state="complete"><span>1</span>Details</li>
       <li data-state="complete"><span>2</span>Review</li>
       <li data-state="current" aria-current="step"><span>3</span>Validate</li>
       <li><span>4</span>Publish</li>
     </ol>
-    <div class="ef-wizard__body">
+    <div class="forma-wizard__body">
       <p>Checking 14 settings against the production policy.</p>
     </div>
-    <footer class="ef-wizard__actions">
+    <footer class="forma-wizard__actions">
       <button type="button">Back</button>
       <button type="button">Continue</button>
     </footer>
   </section>
-</ef-wizard>`
+</forma-wizard>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-wizard", values: "id of the step heading", default: "—", description: "Names the wizard region by the current step title." },
+      { name: "aria-labelledby", on: "section.forma-wizard", values: "id of the step heading", default: "—", description: "Names the wizard region by the current step title." },
       { name: "value", on: "progress", values: "number", default: "—", description: "Current step number, supplied by the application." },
       { name: "max", on: "progress", values: "number", default: "—", description: "Total number of steps; update it when branching changes the total." },
-      { name: "aria-label", on: "progress and ol.ef-wizard__steps", values: "string", default: "—", description: "Names the progress bar (Workflow progress) and the step list (Workflow steps)." },
+      { name: "aria-label", on: "progress and ol.forma-wizard__steps", values: "string", default: "—", description: "Names the progress bar (Workflow progress) and the step list (Workflow steps)." },
       { name: "data-state", on: "step li", values: "complete | current", default: "absent (upcoming)", description: "Visual step state written by the application. current also bolds the step and inverts its marker; complete adds a check glyph." },
       { name: "aria-current", on: "current step li", values: "step", default: "absent", description: "Programmatic current step. Always pair it with data-state=\"current\"." },
       { name: "type", on: "action buttons", values: "button (or submit)", default: "—", description: "Use type=\"button\" when the application handles the transition; type=\"submit\" when the step is a native form submission." }
     ],
     hooks: {
-      "ef-wizard": "Bordered root section.",
-      "ef-wizard__header": "Grid of position/title and a progress column (at least 10rem); stacks below 40rem.",
-      "ef-wizard__position": "Small monospace \"Step n of m\" text.",
-      "ef-wizard__steps": "Four-column step rail with a bottom rule. Each item has a circular number marker. Below 40rem only the current item is shown.",
-      "ef-wizard__body": "Padded region for the current step's content.",
-      "ef-wizard__actions": "Footer flex row with actions at opposite ends; wraps when needed.",
+      "forma-wizard": "Bordered root section.",
+      "forma-wizard__header": "Grid of position/title and a progress column (at least 10rem); stacks below 40rem.",
+      "forma-wizard__position": "Small monospace \"Step n of m\" text.",
+      "forma-wizard__steps": "Four-column step rail with a bottom rule. Each item has a circular number marker. Below 40rem only the current item is shown.",
+      "forma-wizard__body": "Padded region for the current step's content.",
+      "forma-wizard__actions": "Footer flex row with actions at opposite ends; wraps when needed.",
       "data-state": "On step items: `current` or `complete`. Presentation only; the workflow state lives in Limen/Ordo."
     },
     keyboard: [

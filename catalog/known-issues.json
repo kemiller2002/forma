@@ -13,43 +13,43 @@
     },
     {
       "component": "button",
-      "issue": "Application-layer disabled buttons look enabled apart from losing hover; a.ef-button stays inline so its 44px min-block-size does not apply; primary/destructive variants exist only inside .ef-site; .ef-actions ships only in the marketing stylesheet.",
+      "issue": "Application-layer disabled buttons look enabled apart from losing hover; a.forma-button stays inline so its 44px min-block-size does not apply; primary/destructive variants exist only inside .forma-site; .forma-actions ships only in the marketing stylesheet.",
       "location": "src/styles/foundations.css:59-90; src/marketing/components.css:191"
     },
     {
       "component": "popover, menu, tooltip",
       "issue": "Surfaces have margin: 0 and no anchor positioning fallback, so without CSS anchor positioning they open at the viewport's top-left corner.",
-      "location": "src/styles/components.css (.ef-popover, .ef-menu, .ef-tooltip__surface)"
+      "location": "src/styles/components.css (.forma-popover, .forma-menu, .forma-tooltip__surface)"
     },
     {
       "component": "overflow-command-disclosure, hierarchical-choice, hierarchy-tree, navigation-shell, fault-details",
       "issue": "summary elements use display: flex, which removes the native disclosure marker; collapsed and expanded look the same.",
-      "location": "src/styles/components.css (.ef-overflow-commands > summary, .ef-hierarchy-tree, .ef-navigation-shell__compact, .ef-fault-details > summary); src/styles/assessment.css (.ef-hierarchy summary)"
+      "location": "src/styles/components.css (.forma-overflow-commands > summary, .forma-hierarchy-tree, .forma-navigation-shell__compact, .forma-fault-details > summary); src/styles/assessment.css (.forma-hierarchy summary)"
     },
     {
       "component": "stack",
       "issue": "Spacing is doubled: the foundation gap and the component-layer margin-block-start both apply (32px by default, 24px with data-density=compact).",
-      "location": "src/styles/foundations.css (.ef-stack); src/styles/components.css (.ef-stack > * + *)"
+      "location": "src/styles/foundations.css (.forma-stack); src/styles/components.css (.forma-stack > * + *)"
     },
     {
       "component": "cluster, switcher",
-      "issue": "--ef-cluster-gap is overridden by the component layer's --ef-cluster-space; --ef-switcher-threshold is declared but never used.",
-      "location": "src/styles/components.css (.ef-cluster, .ef-switcher)"
+      "issue": "--forma-cluster-gap is overridden by the component layer's --forma-cluster-space; --forma-switcher-threshold is declared but never used.",
+      "location": "src/styles/components.css (.forma-cluster, .forma-switcher)"
     },
     {
       "component": "surface",
-      "issue": "Links inside .ef-surface use the primary accent on the secondary surface at about 4.38:1, below 4.5:1.",
-      "location": "src/styles/foundations.css (.ef-surface)"
+      "issue": "Links inside .forma-surface use the primary accent on the secondary surface at about 4.38:1, below 4.5:1.",
+      "location": "src/styles/foundations.css (.forma-surface)"
     },
     {
       "component": "section",
-      "issue": ".ef-section > * + * child rhythm is not scoped to .ef-site, so application pages loading all.css get marketing spacing.",
+      "issue": ".forma-section > * + * child rhythm is not scoped to .forma-site, so application pages loading all.css get marketing spacing.",
       "location": "src/marketing/layouts.css:56"
     },
     {
       "component": "container",
-      "issue": ".ef-breakout does not break out of a narrower container; it is min(100%, 90rem) of its parent.",
-      "location": "src/styles/foundations.css (.ef-breakout)"
+      "issue": ".forma-breakout does not break out of a narrower container; it is min(100%, 90rem) of its parent.",
+      "location": "src/styles/foundations.css (.forma-breakout)"
     },
     {
       "component": "sidebar, rail, priority-stack, focus-stage",
@@ -59,17 +59,17 @@
     {
       "component": "key-value-list, diff-viewer",
       "issue": "dd keeps the browser's 40px inline-start margin, indenting values even when stacked on phones.",
-      "location": "src/styles/components.css (.ef-key-value-list, .ef-diff-viewer)"
+      "location": "src/styles/components.css (.forma-key-value-list, .forma-diff-viewer)"
     },
     {
       "component": "data-grid",
       "issue": "thead is hidden at 30rem and below, which also hides the sort buttons on phones.",
-      "location": "src/styles/components.css (.ef-data-grid narrow rule)"
+      "location": "src/styles/components.css (.forma-data-grid narrow rule)"
     },
     {
       "component": "fault-notification, toast",
       "issue": "Fixed bottom-right placement with physical offsets (not mirrored in RTL) and no stacking; several open notifications overlap. The documentation site contains them per example with contain: layout.",
-      "location": "src/styles/components.css (.ef-toast, .ef-fault-notification)"
+      "location": "src/styles/components.css (.forma-toast, .forma-fault-notification)"
     },
     {
       "component": "fault-notification",
@@ -89,17 +89,17 @@
     {
       "component": "combobox",
       "issue": "The indicator glyph overlaps long typed text; no padding is reserved for it.",
-      "location": "src/styles/components.css (.ef-combobox__indicator)"
+      "location": "src/styles/components.css (.forma-combobox__indicator)"
     },
     {
       "component": "file-upload",
-      "issue": "The visually hidden file input gives no visible focus on its label.ef-button; .ef-file-upload__drop is not position: relative.",
-      "location": "src/styles/components.css (.ef-file-upload__drop)"
+      "issue": "The visually hidden file input gives no visible focus on its label.forma-button; .forma-file-upload__drop is not position: relative.",
+      "location": "src/styles/components.css (.forma-file-upload__drop)"
     },
     {
       "component": "image-choice",
       "issue": "The selected media card differs only by border and background color (the indicator is removed).",
-      "location": "src/styles/assessment.css (.ef-choice--media::before)"
+      "location": "src/styles/assessment.css (.forma-choice--media::before)"
     },
     {
       "component": "image-choice",
@@ -108,18 +108,18 @@
     },
     {
       "component": "alert, feed-item, security-posture, readiness-checklist, best-worst, selection status, range-entry, rule-builder",
-      "issue": "State attributes used by patterns are not styled: data-tone on alert, data-state=\"warning\"/\"danger\" on status lozenges, readiness incomplete/warning, data-ef-state on best-worst, selection status and range-entry status, data-ef-operator on rule groups.",
+      "issue": "State attributes used by patterns are not styled: data-tone on alert, data-state=\"warning\"/\"danger\" on status lozenges, readiness incomplete/warning, data-forma-state on best-worst, selection status and range-entry status, data-forma-operator on rule groups.",
       "location": "patterns/*.html; src/styles/*.css"
     },
     {
       "component": "status-lozenge, entry-index",
       "issue": "white-space: nowrap can overflow at 320px with long labels.",
-      "location": "src/styles/components.css (.ef-status-lozenge); src/marketing/components.css (.ef-index__link)"
+      "location": "src/styles/components.css (.forma-status-lozenge); src/marketing/components.css (.forma-index__link)"
     },
     {
       "component": "badge, entry-index, site-footer, navigation-shell",
       "issue": "Link targets are about 24–34px tall rather than approximately 44px.",
-      "location": "src/marketing/components.css (a.ef-badge, .ef-index__link, .ef-site-footer__nav a); src/styles/components.css (.ef-navigation-shell__compact)"
+      "location": "src/marketing/components.css (a.forma-badge, .forma-index__link, .forma-site-footer__nav a); src/styles/components.css (.forma-navigation-shell__compact)"
     },
     {
       "component": "navigation-shell, path-summary",
@@ -129,12 +129,12 @@
     {
       "component": "tabs",
       "issue": "The canonical pattern's aria-controls point at panels that do not exist; unselected tabs get no hover or press feedback.",
-      "location": "patterns/tabs.html; src/styles/components.css (.ef-tabs)"
+      "location": "patterns/tabs.html; src/styles/components.css (.forma-tabs)"
     },
     {
       "component": "wizard",
       "issue": "The completed-step check glyph overlaps the step number; the step rail is hard-coded to four columns; the header progress has no accent color.",
-      "location": "src/styles/components.css (.ef-wizard)"
+      "location": "src/styles/components.css (.forma-wizard)"
     },
     {
       "component": "semantic-differential",
@@ -144,7 +144,7 @@
     {
       "component": "flyout",
       "issue": "Logical inset but physical translate, so the slide direction is wrong in right-to-left pages.",
-      "location": "src/styles/components.css (.ef-flyout)"
+      "location": "src/styles/components.css (.forma-flyout)"
     },
     {
       "component": "mobile-action-bar",
@@ -169,11 +169,11 @@
     {
       "component": "card-grid",
       "issue": "A linked card's stretched ::after covers the card, so a second link or control inside it is unreachable by pointer.",
-      "location": "src/marketing/components.css (.ef-card__link)"
+      "location": "src/marketing/components.css (.forma-card__link)"
     },
     {
       "component": "visually-hidden",
-      "issue": "Two near-duplicate utilities (.ef-visually-hidden and .ef-sr-only) with different clipping; neither reveals on focus.",
+      "issue": "Two near-duplicate utilities (.forma-visually-hidden and .forma-sr-only) with different clipping; neither reveals on focus.",
       "location": "src/styles/components.css; src/styles/assessment.css"
     },
     {
@@ -183,7 +183,7 @@
     },
     {
       "component": "security family",
-      "issue": "requirements/TUTELA-SECURITY-RESULTS.md names classes that do not exist (ef-unknown-result, ef-exception-status, ef-evidence-chain, ef-boundary-map).",
+      "issue": "requirements/TUTELA-SECURITY-RESULTS.md names classes that do not exist (forma-unknown-result, forma-exception-status, forma-evidence-chain, forma-boundary-map).",
       "location": "requirements/TUTELA-SECURITY-RESULTS.md"
     },
     {
@@ -194,7 +194,7 @@
     {
       "component": "workspace-shell",
       "issue": "The inspector column and its gap are always reserved, leaving an empty column when a shell has no inspector.",
-      "location": "src/styles/components.css (.ef-workspace-shell)"
+      "location": "src/styles/components.css (.forma-workspace-shell)"
     },
     {
       "component": "lane-board",
@@ -204,7 +204,7 @@
     {
       "component": "key-value-list",
       "issue": "Reflows only at a viewport breakpoint, so in a narrow column on a wide screen it can overflow by a few pixels.",
-      "location": "src/styles/components.css (.ef-key-value-list)"
+      "location": "src/styles/components.css (.forma-key-value-list)"
     },
     {
       "component": "composer, spatial-canvas, emphasis-budget",

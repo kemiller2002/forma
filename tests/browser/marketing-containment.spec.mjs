@@ -4,8 +4,8 @@ import { STATUS, measureContainment, measureOverflow } from "../../packages/conf
 // MKT-CONTAIN (WI-0043): marketing components keep list-item, span and div
 // content inside their boxes, and a toned CTA keeps a usable line length, at
 // phone to desktop widths with default and 200% text. Before the fix, at 320px
-// and 200% text, list words escaped .ef-card by up to 18px and .ef-steps rows
-// in a toned .ef-cta had a 96px content box. Fixture:
+// and 200% text, list words escaped .forma-card by up to 18px and .forma-steps rows
+// in a toned .forma-cta had a 96px content box. Fixture:
 // tests/browser/fixture/marketing-containment.html.
 const FIXTURE = "/tests/browser/fixture/marketing-containment.html";
 const WIDTHS = [320, 375, 768, 1280];
@@ -42,7 +42,7 @@ for (const width of WIDTHS) {
 
 test("a toned CTA keeps a usable line length at 320px and 200% text", async ({ page }) => {
   await open(page, 320, ENLARGED);
-  const steps = page.locator("[data-mc-case='cta-toned'] .ef-steps > li").first();
+  const steps = page.locator("[data-mc-case='cta-toned'] .forma-steps > li").first();
   const width = await steps.evaluate(element => element.clientWidth);
   // The toned section already caps its inline padding at 12.5vw for this case
   // (ULI-L05); the CTA must leave at least as much room for its content.

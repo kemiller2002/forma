@@ -21,7 +21,7 @@ function measure(scriptProbes) {
   const sx = window.scrollX, sy = window.scrollY;
   const box = (r) => ({ x: r.left + sx, y: r.top + sy, w: r.width, h: r.height });
   const sides = (cs, prop) => ["top", "right", "bottom", "left"].map((s) => parseFloat(cs.getPropertyValue(prop.replace("*", s))) || 0);
-  const hidden = (el) => el.closest(".ef-visually-hidden, [hidden], script, style, .lc-case__id") !== null;
+  const hidden = (el) => el.closest(".forma-visually-hidden, [hidden], script, style, .lc-case__id") !== null;
 
   const textFragments = (root) => {
     const out = [];
@@ -38,7 +38,7 @@ function measure(scriptProbes) {
 
   const subject = (el, role) => {
     const cs = getComputedStyle(el);
-    const before = role === "node" && el.dataset.efShape === "diamond" ? getComputedStyle(el, "::before") : null;
+    const before = role === "node" && el.dataset.formaShape === "diamond" ? getComputedStyle(el, "::before") : null;
     const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize);
     const styleVar = (name) => {
       const v = el.style.getPropertyValue(name).trim();
@@ -47,7 +47,7 @@ function measure(scriptProbes) {
     return {
       role,
       name: el.dataset.lcSubject || el.dataset.lcHost || el.id || el.className,
-      shape: el.dataset.efShape || null,
+      shape: el.dataset.formaShape || null,
       rect: box(el.getBoundingClientRect()),
       radii: ["top-left", "top-right", "bottom-right", "bottom-left"].map((c) => cs.getPropertyValue(`border-${c}-radius`)),
       border: sides(cs, "border-*-width"),
@@ -55,7 +55,7 @@ function measure(scriptProbes) {
       overflow: [cs.overflowX, cs.overflowY],
       font: { size: parseFloat(cs.fontSize), lineHeight: cs.lineHeight, letterSpacing: cs.letterSpacing, family: cs.fontFamily, weight: cs.fontWeight },
       direction: cs.direction,
-      allocation: styleVar("--ef-diagram-w") ? ["--ef-diagram-x", "--ef-diagram-y", "--ef-diagram-w", "--ef-diagram-h"].map((v) => parseFloat(styleVar(v))) : null,
+      allocation: styleVar("--forma-diagram-w") ? ["--forma-diagram-x", "--forma-diagram-y", "--forma-diagram-w", "--forma-diagram-h"].map((v) => parseFloat(styleVar(v))) : null,
       diamond: before ? { inset: before.getPropertyValue("top"), border: sides(before, "border-*-width") } : null,
       scroll: [el.scrollWidth, el.clientWidth, el.scrollHeight, el.clientHeight],
       text: role === "label" || role === "node" || role === "component" || role === "probe" ? textFragments(el) : []
@@ -66,9 +66,9 @@ function measure(scriptProbes) {
     const subjects = [];
     for (const el of section.querySelectorAll("[data-lc-host]")) subjects.push(subject(el, "host"));
     for (const el of section.querySelectorAll("[data-lc-subject]")) subjects.push(subject(el, el.dataset.lcSubject === "probe" ? "probe" : "component"));
-    for (const el of section.querySelectorAll(".ef-diagram-node")) subjects.push(subject(el, "node"));
-    for (const el of section.querySelectorAll(".ef-diagram-connector__label")) subjects.push(subject(el, "label"));
-    const connectors = [...section.querySelectorAll("path.ef-diagram-connector")].map((p) => {
+    for (const el of section.querySelectorAll(".forma-diagram-node")) subjects.push(subject(el, "node"));
+    for (const el of section.querySelectorAll(".forma-diagram-connector__label")) subjects.push(subject(el, "label"));
+    const connectors = [...section.querySelectorAll("path.forma-diagram-connector")].map((p) => {
       const m = p.getScreenCTM();
       const pts = (p.getAttribute("d").match(/-?[\d.]+\s+-?[\d.]+/g) || []).map((pair) => {
         const [x, y] = pair.trim().split(/\s+/).map(Number);
@@ -76,14 +76,14 @@ function measure(scriptProbes) {
       });
       return { id: p.id, points: pts };
     });
-    const canvas = section.querySelector(".ef-diagram__canvas");
+    const canvas = section.querySelector(".forma-diagram__canvas");
     const zoomed = section.querySelector("[data-lc-diagram]");
     return {
       id: section.dataset.lcCase,
       subjects,
       connectors,
       canvas: canvas ? box(canvas.getBoundingClientRect()) : null,
-      zoom: zoomed ? parseFloat(getComputedStyle(zoomed.querySelector(".ef-diagram__canvas")).zoom) || 1 : 1,
+      zoom: zoomed ? parseFloat(getComputedStyle(zoomed.querySelector(".forma-diagram__canvas")).zoom) || 1 : 1,
       invalid: section.querySelector("[data-lc-invalid]")?.textContent ?? null
     };
   });

@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("assessment stylesheet is distributed and applied", async ({ page }) => {
-  const display = await page.locator(".ef-ordinal-scale__options").evaluate(element => getComputedStyle(element).display);
+  const display = await page.locator(".forma-ordinal-scale__options").evaluate(element => getComputedStyle(element).display);
   expect(display).toBe("grid");
 });
 
@@ -36,8 +36,8 @@ test("special answer states remain distinct choices outside the ordinal scale", 
   expect(data.likert).toBe("unknown");
 
   const relation = await page.evaluate(() => {
-    const scale = document.querySelector(".ef-ordinal-scale__options");
-    const special = document.querySelector(".ef-special-choices");
+    const scale = document.querySelector(".forma-ordinal-scale__options");
+    const special = document.querySelector(".forma-special-choices");
     return scale.compareDocumentPosition(special) & Node.DOCUMENT_POSITION_FOLLOWING;
   });
   expect(Boolean(relation)).toBe(true);
@@ -62,8 +62,8 @@ test("assessment reset restores native unanswered state", async ({ page }) => {
 test("ordinal scale stacks vertically on narrow screens", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
 
-  const first = await page.locator(".ef-ordinal-option").nth(0).boundingBox();
-  const second = await page.locator(".ef-ordinal-option").nth(1).boundingBox();
+  const first = await page.locator(".forma-ordinal-option").nth(0).boundingBox();
+  const second = await page.locator(".forma-ordinal-option").nth(1).boundingBox();
 
   expect(first).not.toBeNull();
   expect(second).not.toBeNull();
@@ -82,14 +82,14 @@ test("ranking exposes keyboard-operable move commands for Limen", async ({ page 
   await expect(page.getByRole("button", { name: "Move Reliability up" })).toBeDisabled();
   await expect(page.getByRole("button", { name: "Move Reliability down" })).toBeEnabled();
   await expect(page.getByRole("button", { name: "Move Delivery speed up" })).toBeEnabled();
-  await expect(page.locator(".ef-ranking__announcement")).toHaveAttribute("aria-live", "polite");
+  await expect(page.locator(".forma-ranking__announcement")).toHaveAttribute("aria-live", "polite");
 });
 
 test("allocation keeps direct numeric entry as the non-drag path", async ({ page }) => {
   await expect(page.getByRole("spinbutton", { name: "Reliability" })).toHaveValue("4");
   await expect(page.getByRole("spinbutton", { name: "Delivery speed" })).toHaveValue("6");
   await expect(page.getByText("10 / 10", { exact: true })).toBeVisible();
-  await expect(page.locator(".ef-allocation__total")).toHaveAttribute("aria-live", "polite");
+  await expect(page.locator(".forma-allocation__total")).toHaveAttribute("aria-live", "polite");
 });
 
 test("rule builder has labelled structured form controls", async ({ page }) => {

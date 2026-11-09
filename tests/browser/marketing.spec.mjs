@@ -38,7 +38,7 @@ for (const file of pages) {
       expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
     }
     await open(page, file, widths.wide);
-    await page.evaluate(() => document.documentElement.setAttribute("data-ef-theme", "dark"));
+    await page.evaluate(() => document.documentElement.setAttribute("data-forma-theme", "dark"));
     // Buttons transition color; measure contrast on settled colors, not a
     // mid-transition frame (WebKit sampled one in CI).
     await page.evaluate(() => Promise.all(document.getAnimations().map(animation => animation.finished)));
@@ -49,21 +49,21 @@ for (const file of pages) {
 
 test("card grids honor their column cap and degrade to one column by content", async ({ page }) => {
   await open(page, "index.html", widths.wide);
-  expect(await columns(page, '#services .ef-card-grid')).toBe(2);
-  expect(await columns(page, '.ef-card-grid[data-ef-columns="5"]')).toBe(5);
+  expect(await columns(page, '#services .forma-card-grid')).toBe(2);
+  expect(await columns(page, '.forma-card-grid[data-forma-columns="5"]')).toBe(5);
   await open(page, "index.html", widths.tablet);
-  expect(await columns(page, '#services .ef-card-grid')).toBe(2);
-  expect(await columns(page, '.ef-card-grid[data-ef-columns="5"]')).toBeLessThan(5);
+  expect(await columns(page, '#services .forma-card-grid')).toBe(2);
+  expect(await columns(page, '.forma-card-grid[data-forma-columns="5"]')).toBeLessThan(5);
   await open(page, "index.html", widths.narrow);
-  expect(await columns(page, '#services .ef-card-grid')).toBe(1);
-  expect(await columns(page, '.ef-card-grid[data-ef-columns="5"]')).toBe(1);
+  expect(await columns(page, '#services .forma-card-grid')).toBe(1);
+  expect(await columns(page, '.forma-card-grid[data-forma-columns="5"]')).toBe(1);
 });
 
 test("hero keeps supporting context beside the promise when wide and below it, in source order, when narrow", async ({ page }) => {
   for (const [width, beside] of [[widths.wide, true], [widths.phone, false]]) {
     await open(page, "index.html", width);
-    const content = await page.locator(".ef-hero__content").boundingBox();
-    const aside = await page.locator(".ef-hero__aside").boundingBox();
+    const content = await page.locator(".forma-hero__content").boundingBox();
+    const aside = await page.locator(".forma-hero__aside").boundingBox();
     if (beside) expect(aside.x).toBeGreaterThan(content.x + content.width - 1);
     else expect(aside.y).toBeGreaterThanOrEqual(content.y + content.height - 1);
   }
@@ -72,7 +72,7 @@ test("hero keeps supporting context beside the promise when wide and below it, i
 test("navigation wraps instead of hiding destinations and keeps 44px targets", async ({ page }) => {
   for (const width of [widths.phone, widths.narrow]) {
     await open(page, "index.html", width);
-    const links = page.locator(".ef-site-nav__link, .ef-site .ef-button, .ef-site-header__brand");
+    const links = page.locator(".forma-site-nav__link, .forma-site .forma-button, .forma-site-header__brand");
     const count = await links.count();
     expect(count).toBeGreaterThan(5);
     for (let i = 0; i < count; i += 1) {
@@ -82,14 +82,14 @@ test("navigation wraps instead of hiding destinations and keeps 44px targets", a
       expect(box.height, `${await link.textContent()} is shorter than 44px`).toBeGreaterThanOrEqual(43.5);
       expect(box.width).toBeGreaterThanOrEqual(24);
     }
-    await expect(page.locator(".ef-site-header__name")).toBeVisible();
+    await expect(page.locator(".forma-site-header__name")).toBeVisible();
   }
 });
 
 test("the skip link is the first stop, becomes visible, and moves focus to main", async ({ page }) => {
   await open(page, "index.html", widths.wide);
   await page.keyboard.press("Tab");
-  const skip = page.locator(".ef-skip-link");
+  const skip = page.locator(".forma-skip-link");
   await expect(skip).toBeFocused();
   const box = await skip.boundingBox();
   expect(box.y).toBeGreaterThanOrEqual(0);
@@ -102,22 +102,22 @@ test("the skip link is the first stop, becomes visible, and moves focus to main"
 
 test("keyboard focus is visible on every interactive component and is not obscured by the header", async ({ page }) => {
   await open(page, "index.html", widths.wide);
-  const header = await page.locator(".ef-site-header").boundingBox();
+  const header = await page.locator(".forma-site-header").boundingBox();
   let checked = 0;
   for (let i = 0; i < 30; i += 1) {
     await page.keyboard.press("Tab");
     const state = await page.evaluate(() => {
       const el = document.activeElement;
       const style = getComputedStyle(el);
-      const card = el.closest(".ef-card");
-      const cardStyle = card && el.matches(".ef-card__link") ? getComputedStyle(card) : null;
+      const card = el.closest(".forma-card");
+      const cardStyle = card && el.matches(".forma-card__link") ? getComputedStyle(card) : null;
       const rect = el.getBoundingClientRect();
       return {
         outline: (cardStyle ?? style).outlineStyle,
         width: parseFloat((cardStyle ?? style).outlineWidth),
         top: rect.top,
-        inHeader: el.closest(".ef-site-header") !== null,
-        skip: el.matches(".ef-skip-link"),
+        inHeader: el.closest(".forma-site-header") !== null,
+        skip: el.matches(".forma-skip-link"),
         wrapped: el === document.body
       };
     });
@@ -133,17 +133,17 @@ test("keyboard focus is visible on every interactive component and is not obscur
 
 test("the header is sticky only where it cannot swallow the viewport", async ({ page }) => {
   await open(page, "index.html", widths.wide, 900);
-  expect(await page.locator(".ef-site-header").evaluate(el => getComputedStyle(el).position)).toBe("sticky");
+  expect(await page.locator(".forma-site-header").evaluate(el => getComputedStyle(el).position)).toBe("sticky");
   await open(page, "index.html", widths.phone, 800);
-  expect(await page.locator(".ef-site-header").evaluate(el => getComputedStyle(el).position)).not.toBe("sticky");
+  expect(await page.locator(".forma-site-header").evaluate(el => getComputedStyle(el).position)).not.toBe("sticky");
   await open(page, "index.html", widths.wide, 500);
-  expect(await page.locator(".ef-site-header").evaluate(el => getComputedStyle(el).position)).not.toBe("sticky");
+  expect(await page.locator(".forma-site-header").evaluate(el => getComputedStyle(el).position)).not.toBe("sticky");
 });
 
 test("reduced motion removes transitions and hover movement", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await open(page, "index.html", widths.wide);
-  const button = page.locator('.ef-hero .ef-button[data-ef-variant="primary"]');
+  const button = page.locator('.forma-hero .forma-button[data-forma-variant="primary"]');
   await button.hover();
   const style = await button.evaluate(el => ({ duration: getComputedStyle(el).transitionDuration, transform: getComputedStyle(el).transform }));
   // Core Forma foundations clamp durations to 0.01ms (an earlier-layer !important).
@@ -157,14 +157,14 @@ test("marketing buttons and cards use perceptual interpolation without spatial h
   await open(page, "index.html", widths.wide);
   const perceptual = await page.evaluate(() => {
     const probe = document.createElement("span");
-    probe.style.animationDelay = "var(--ef-effect-transition-duration)";
-    document.querySelector(".ef-site").append(probe);
+    probe.style.animationDelay = "var(--forma-effect-transition-duration)";
+    document.querySelector(".forma-site").append(probe);
     const value = getComputedStyle(probe).animationDelay;
     probe.remove();
     return value;
   });
   expect(Number.parseFloat(perceptual) * (perceptual.endsWith("ms") ? 1 : 1000)).toBeCloseTo(120, 0);
-  const button = page.locator('.ef-hero .ef-button[data-ef-variant="primary"]');
+  const button = page.locator('.forma-hero .forma-button[data-forma-variant="primary"]');
   const timing = await button.evaluate(el => ({ properties: getComputedStyle(el).transitionProperty, easing: getComputedStyle(el).transitionTimingFunction }));
   expect(timing.properties).toBe("background-color, color");
   expect(timing.easing).toBe("cubic-bezier(0.2, 0, 0, 1), cubic-bezier(0.2, 0, 0, 1)");
@@ -192,7 +192,7 @@ test("text resized to 200% and WCAG 1.4.12 text spacing do not cause horizontal 
 test("forced colors keep buttons, badges, and surfaces delineated", async ({ page }) => {
   await page.emulateMedia({ forcedColors: "active" });
   await open(page, "index.html", widths.wide);
-  for (const selector of ['.ef-hero .ef-button[data-ef-variant="primary"]', ".ef-badge", ".ef-site-footer"]) {
+  for (const selector of ['.forma-hero .forma-button[data-forma-variant="primary"]', ".forma-badge", ".forma-site-footer"]) {
     const border = await page.locator(selector).first().evaluate(el => getComputedStyle(el).borderTopStyle);
     expect(border, `${selector} loses its boundary in forced colors`).toBe("solid");
   }
@@ -201,7 +201,7 @@ test("forced colors keep buttons, badges, and surfaces delineated", async ({ pag
 test("print output drops navigation and the decorative backdrop", async ({ page }) => {
   await page.emulateMedia({ media: "print" });
   await open(page, "index.html", widths.wide);
-  expect(await page.locator(".ef-site-nav").evaluate(el => getComputedStyle(el).display)).toBe("none");
+  expect(await page.locator(".forma-site-nav").evaluate(el => getComputedStyle(el).display)).toBe("none");
   expect(await page.evaluate(() => getComputedStyle(document.body, "::before").display)).toBe("none");
 });
 
@@ -209,14 +209,14 @@ test("the neutral Forma default applies through tokens and the product page reta
   await open(page, "index.html", widths.wide);
   const home = await page.evaluate(() => ({
     background: getComputedStyle(document.body).backgroundColor,
-    accent: getComputedStyle(document.body).getPropertyValue("--ef-color-accent-primary").trim()
+    accent: getComputedStyle(document.body).getPropertyValue("--forma-color-accent-primary").trim()
   }));
   expect(home.background).toBe("rgb(250, 250, 250)");
   expect(home.accent).toBe("#2b5ea8");
   await open(page, "product.html", widths.wide);
   const product = await page.evaluate(() => ({
     background: getComputedStyle(document.body).backgroundColor,
-    accent: getComputedStyle(document.body).getPropertyValue("--ef-color-accent-primary").trim()
+    accent: getComputedStyle(document.body).getPropertyValue("--forma-color-accent-primary").trim()
   }));
   expect(product.background).toBe(home.background);
   expect(product.accent).toBe("#1d6b66");
@@ -224,16 +224,16 @@ test("the neutral Forma default applies through tokens and the product page reta
 
 test("documentation layout regroups by available width without reordering", async ({ page }) => {
   await open(page, "docs.html", widths.wide);
-  const nav = await page.locator(".ef-doc__nav").boundingBox();
-  const content = await page.locator(".ef-doc__content").boundingBox();
-  const aside = await page.locator(".ef-doc__aside").boundingBox();
+  const nav = await page.locator(".forma-doc__nav").boundingBox();
+  const content = await page.locator(".forma-doc__content").boundingBox();
+  const aside = await page.locator(".forma-doc__aside").boundingBox();
   expect(content.x).toBeGreaterThan(nav.x + nav.width - 1);
   expect(aside.x).toBeGreaterThan(content.x + content.width - 1);
 
   await open(page, "docs.html", widths.phone);
-  const narrowNav = await page.locator(".ef-doc__nav").boundingBox();
-  const narrowContent = await page.locator(".ef-doc__content").boundingBox();
+  const narrowNav = await page.locator(".forma-doc__nav").boundingBox();
+  const narrowContent = await page.locator(".forma-doc__content").boundingBox();
   expect(narrowContent.y).toBeGreaterThan(narrowNav.y);
-  expect(await page.locator(".ef-doc__nav ul").evaluate(el => getComputedStyle(el).display)).toBe("flex");
+  expect(await page.locator(".forma-doc__nav ul").evaluate(el => getComputedStyle(el).display)).toBe("flex");
   expect(narrowNav.height, "compact documentation navigation stays short").toBeLessThan(200);
 });

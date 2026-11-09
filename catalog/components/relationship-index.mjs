@@ -30,33 +30,33 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Incoming and outgoing relationships",
       description: "Both directions for the Billing service. Outgoing (Depends on) and incoming (Depended on by) are distinct relationship names, and several targets share a row as a comma-separated list of links. A relationship with no targets says None recorded.",
-      html: `<ef-relationship-index class="ef-component-tag">
-  <section class="ef-relationship-index" aria-labelledby="relationship-index-incoming-and-outgoing-title">
+      html: `<forma-relationship-index class="forma-component-tag">
+  <section class="forma-relationship-index" aria-labelledby="relationship-index-incoming-and-outgoing-title">
     <header><h2 id="relationship-index-incoming-and-outgoing-title">Relationships of Billing</h2><p>Direction is stated from Billing's point of view.</p></header>
-    <dl class="ef-relationship-index__list">
+    <dl class="forma-relationship-index__list">
       <div><dt>Depends on</dt><dd><a href="#relationship-index-incoming-and-outgoing-chrona">Chrona</a>, <a href="#relationship-index-incoming-and-outgoing-ledger">Ledger</a></dd></div>
       <div><dt>Depended on by</dt><dd><a href="#relationship-index-incoming-and-outgoing-summa">Summa</a>, <a href="#relationship-index-incoming-and-outgoing-portal">Customer portal</a>, <a href="#relationship-index-incoming-and-outgoing-reports">Finance reports</a></dd></div>
       <div><dt>Publishes to</dt><dd><a href="#relationship-index-incoming-and-outgoing-events">invoice.events topic</a></dd></div>
       <div><dt>Replaces</dt><dd>None recorded</dd></div>
     </dl>
   </section>
-</ef-relationship-index>`
+</forma-relationship-index>`
     },
     {
       id: "diagram-equivalent",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Text equivalent of a diagram selection",
       description: "The index sits under a system map and updates with the selected node. The header names the selection and states that the list mirrors the diagram's connections, including one the diagram marks as unverified.",
-      html: `<ef-relationship-index class="ef-component-tag">
-  <section class="ef-relationship-index" aria-labelledby="relationship-index-diagram-equivalent-title">
+      html: `<forma-relationship-index class="forma-component-tag">
+  <section class="forma-relationship-index" aria-labelledby="relationship-index-diagram-equivalent-title">
     <header><h2 id="relationship-index-diagram-equivalent-title">Connections of the selected node</h2><p>Selected: Payments gateway. Lists every connector drawn in the system map.</p></header>
-    <dl class="ef-relationship-index__list">
+    <dl class="forma-relationship-index__list">
       <div><dt>Sends requests to</dt><dd><a href="#relationship-index-diagram-equivalent-bank">Bank connector</a></dd></div>
       <div><dt>Receives from</dt><dd><a href="#relationship-index-diagram-equivalent-checkout">Checkout</a></dd></div>
       <div><dt>Reports to</dt><dd><a href="#relationship-index-diagram-equivalent-monitoring">Monitoring</a> (unverified: last seen 3 days ago)</dd></div>
     </dl>
   </section>
-</ef-relationship-index>`
+</forma-relationship-index>`
     },
     {
       id: "mobile-relationships",
@@ -72,25 +72,25 @@ export default {
           "Order and wording are the same at every width."
         ]
       },
-      html: `<ef-relationship-index class="ef-component-tag">
-  <section class="ef-relationship-index" aria-labelledby="relationship-index-mobile-relationships-title">
+      html: `<forma-relationship-index class="forma-component-tag">
+  <section class="forma-relationship-index" aria-labelledby="relationship-index-mobile-relationships-title">
     <header><h2 id="relationship-index-mobile-relationships-title">Relationships</h2><p>Selected entity: Customer record</p></header>
-    <dl class="ef-relationship-index__list">
+    <dl class="forma-relationship-index__list">
       <div><dt>Owned by</dt><dd><a href="#relationship-index-mobile-relationships-sales">Sales domain</a></dd></div>
       <div><dt>Referenced by</dt><dd><a href="#relationship-index-mobile-relationships-invoices">Invoices</a>, <a href="#relationship-index-mobile-relationships-tickets">Support tickets</a></dd></div>
     </dl>
   </section>
-</ef-relationship-index>`
+</forma-relationship-index>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-relationship-index", values: "id of the header heading", default: "—", description: "Names the index, ideally including the selected entity." },
+      { name: "aria-labelledby", on: "section.forma-relationship-index", values: "id of the header heading", default: "—", description: "Names the index, ideally including the selected entity." },
       { name: "href", on: "a", values: "URL or fragment", default: "—", description: "Each related entity links to its own view or to its node." }
     ],
     hooks: {
-      "ef-relationship-index": "Root section; a grid with 0.75rem gaps. Removes the trailing margin of the header's last child.",
-      "ef-relationship-index__list": "The `dl`. Each `div` row is a two-column grid (`minmax(7rem, 10rem)` type, flexible targets); `dt` is semibold and `dd` has no margin. Rows stack at 30rem and below."
+      "forma-relationship-index": "Root section; a grid with 0.75rem gaps. Removes the trailing margin of the header's last child.",
+      "forma-relationship-index__list": "The `dl`. Each `div` row is a two-column grid (`minmax(7rem, 10rem)` type, flexible targets); `dt` is semibold and `dd` has no margin. Rows stack at 30rem and below."
     },
     keyboard: [
       { keys: "Tab", action: "Moves through the links to related entities." },

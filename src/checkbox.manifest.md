@@ -14,7 +14,7 @@ Provide a reusable native checkbox presentation with a visible non-color checked
 
 ## Interfaces
 
-- Inbound: native checkbox attributes, Forma class structure, optional `data-ef-motion-weight="light|standard|heavy"`
+- Inbound: native checkbox attributes, Forma class structure, optional `data-forma-motion-weight="light|standard|heavy"`
 - Outbound: native checkbox value and events
 
 ## Motion
@@ -31,7 +31,7 @@ Provide a reusable native checkbox presentation with a visible non-color checked
 ## Modification boundaries
 
 - Keep the native input.
-- Assessment choice cards remain `.ef-choice`; this primitive does not replace assessment semantics.
+- Assessment choice cards remain `.forma-choice`; this primitive does not replace assessment semantics.
 - Application/Ordo owns domain legality.
 
 ## Maintenance

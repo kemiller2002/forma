@@ -28,8 +28,8 @@ export default {
       id: "not-included-and-unknown",
       title: "Not included and unknown values",
       description: "Three support tiers. Missing capabilities say Not included, and a value the vendor has not published says Unknown, so an empty cell never has to be interpreted.",
-      html: `<ef-comparison-grid class="ef-component-tag">
-  <div class="ef-comparison-grid" role="region" aria-label="Support tier comparison" tabindex="0">
+      html: `<forma-comparison-grid class="forma-component-tag">
+  <div class="forma-comparison-grid" role="region" aria-label="Support tier comparison" tabindex="0">
     <table>
       <caption>Support tier comparison</caption>
       <thead><tr><th scope="col">Capability</th><th scope="col">Basic</th><th scope="col">Business</th><th scope="col">Enterprise</th></tr></thead>
@@ -41,14 +41,14 @@ export default {
       </tbody>
     </table>
   </div>
-</ef-comparison-grid>`
+</forma-comparison-grid>`
     },
     {
       id: "wide-vendor-comparison",
       title: "Wide vendor comparison",
       description: "Five vendors across four attributes is wider than most containers. The table keeps every column at its content width and the region scrolls sideways within its own bounds instead of widening the page. The row headers stay first in each row so every value can be traced to its attribute.",
-      html: `<ef-comparison-grid class="ef-component-tag">
-  <div class="ef-comparison-grid" role="region" aria-label="Freight vendor comparison" tabindex="0">
+      html: `<forma-comparison-grid class="forma-component-tag">
+  <div class="forma-comparison-grid" role="region" aria-label="Freight vendor comparison" tabindex="0">
     <table>
       <caption>Freight vendor comparison, Q4 quotes</caption>
       <thead>
@@ -62,7 +62,7 @@ export default {
       </tbody>
     </table>
   </div>
-</ef-comparison-grid>`
+</forma-comparison-grid>`
     },
     {
       id: "mobile-release-comparison",
@@ -78,8 +78,8 @@ export default {
           "Landscape orientation fits more columns and reduces scrolling; nothing else changes."
         ]
       },
-      html: `<ef-comparison-grid class="ef-component-tag">
-  <div class="ef-comparison-grid" role="region" aria-label="Release comparison" tabindex="0">
+      html: `<forma-comparison-grid class="forma-component-tag">
+  <div class="forma-comparison-grid" role="region" aria-label="Release comparison" tabindex="0">
     <table>
       <caption>Release comparison</caption>
       <thead><tr><th scope="col">Check</th><th scope="col">2026.08</th><th scope="col">2026.09</th><th scope="col">2026.10 candidate</th></tr></thead>
@@ -89,18 +89,18 @@ export default {
       </tbody>
     </table>
   </div>
-</ef-comparison-grid>`
+</forma-comparison-grid>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: ".ef-comparison-grid", values: "region", default: "—", description: "Makes the scroll container a named landmark." },
-      { name: "aria-label", on: ".ef-comparison-grid", values: "string", default: "—", description: "Names the region, usually the same as the table caption." },
-      { name: "tabindex", on: ".ef-comparison-grid", values: "0", default: "—", description: "Lets keyboard users focus and scroll the region." },
+      { name: "role", on: ".forma-comparison-grid", values: "region", default: "—", description: "Makes the scroll container a named landmark." },
+      { name: "aria-label", on: ".forma-comparison-grid", values: "string", default: "—", description: "Names the region, usually the same as the table caption." },
+      { name: "tabindex", on: ".forma-comparison-grid", values: "0", default: "—", description: "Lets keyboard users focus and scroll the region." },
       { name: "scope", on: "th", values: "col | row", default: "—", description: "`col` on item headers, `row` on attribute headers, so each cell is announced with both." }
     ],
     hooks: {
-      "ef-comparison-grid": "The bounded scroll region around the native table: horizontal overflow, inline overscroll containment and a focus outline. The inner `table` is sized to `max-content` and its cells are padded, start-aligned and top-aligned."
+      "forma-comparison-grid": "The bounded scroll region around the native table: horizontal overflow, inline overscroll containment and a focus outline. The inner `table` is sized to `max-content` and its cells are padded, start-aligned and top-aligned."
     },
     keyboard: [
       { keys: "Tab", action: "Focuses the region." },

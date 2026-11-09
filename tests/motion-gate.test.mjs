@@ -16,7 +16,7 @@ const sourceFiles = Object.values(models.sources).flat();
 
 // A pristine copy of everything the audit reads.
 const fixture = () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-motion-gate-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-motion-gate-"));
   ["catalog/motion/models.json", "catalog/motion/classification.json", "catalog/motion/debt.json", "tokens/forma.tokens.json", ...sourceFiles]
     .forEach((file) => {
       fs.mkdirSync(path.dirname(path.join(dir, file)), { recursive: true });
@@ -68,14 +68,14 @@ test("the canonical validation paths run the strict gate", () => {
 
 test("a new animated selector without a model classification fails", () => {
   const dir = fixture();
-  append(dir, components, ".ef-gate-probe { transition: opacity var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing); }");
+  append(dir, components, ".forma-gate-probe { transition: opacity var(--forma-motion-perceptual-duration) var(--forma-motion-perceptual-easing); }");
   expectRejected(dir, "unclassified-track");
 });
 
 test("an unexplained literal duration or implicit easing fails even when classified", () => {
   const dir = fixture();
-  append(dir, components, ".ef-gate-probe { transition: opacity 250ms; }");
-  classify(dir, { source: components, family: "gate-probe", selector: ".ef-gate-probe", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } });
+  append(dir, components, ".forma-gate-probe { transition: opacity 250ms; }");
+  classify(dir, { source: components, family: "gate-probe", selector: ".forma-gate-probe", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } });
   const result = gate(dir);
   assert.equal(result.status, 1, result.output);
   assert.match(result.output, /unexplained-duration/);
@@ -84,36 +84,36 @@ test("an unexplained literal duration or implicit easing fails even when classif
 
 test("a token from the wrong model fails (no mass on non-spatial change)", () => {
   const dir = fixture();
-  append(dir, components, ".ef-gate-probe { transition: opacity var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing); }");
-  classify(dir, { source: components, family: "gate-probe", selector: ".ef-gate-probe", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } });
+  append(dir, components, ".forma-gate-probe { transition: opacity var(--forma-motion-inertia-duration) var(--forma-motion-damped-easing); }");
+  classify(dir, { source: components, family: "gate-probe", selector: ".forma-gate-probe", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } });
   expectRejected(dir, "model-token-mismatch");
 });
 
 test("spatial motion without a reduced-motion substitution fails", () => {
   const dir = fixture();
-  append(dir, components, ".ef-gate-probe { transition: translate var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing); }");
-  classify(dir, { source: components, family: "gate-probe", selector: ".ef-gate-probe", tracks: { translate: "inertial" } });
+  append(dir, components, ".forma-gate-probe { transition: translate var(--forma-motion-inertia-duration) var(--forma-motion-damped-easing); }");
+  classify(dir, { source: components, family: "gate-probe", selector: ".forma-gate-probe", tracks: { translate: "inertial" } });
   expectRejected(dir, "reduced-motion-missing");
 });
 
 test("a declared reduced-motion substitution must exist in the stylesheet", () => {
   const dir = fixture();
-  append(dir, components, ".ef-gate-probe { transition: translate var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing); }");
-  classify(dir, { source: components, family: "gate-probe", selector: ".ef-gate-probe", tracks: { translate: "inertial" }, reducedMotion: { strategy: "explicit" } });
+  append(dir, components, ".forma-gate-probe { transition: translate var(--forma-motion-inertia-duration) var(--forma-motion-damped-easing); }");
+  classify(dir, { source: components, family: "gate-probe", selector: ".forma-gate-probe", tracks: { translate: "inertial" }, reducedMotion: { strategy: "explicit" } });
   expectRejected(dir, "reduced-motion-unverified");
 });
 
 test("repeated cadence motion that never stops under reduced motion fails", () => {
   const dir = fixture();
-  append(dir, components, "@keyframes ef-gate-spin { to { rotate: 1turn; } }\n.ef-gate-probe { animation: ef-gate-spin var(--ef-motion-cadence-rotation-period) var(--ef-motion-cadence-easing) infinite; }");
-  classify(dir, { source: components, family: "gate-probe", selector: ".ef-gate-probe", tracks: { "ef-gate-spin": "cadence" }, reducedMotion: { strategy: "explicit" } });
+  append(dir, components, "@keyframes forma-gate-spin { to { rotate: 1turn; } }\n.forma-gate-probe { animation: forma-gate-spin var(--forma-motion-cadence-rotation-period) var(--forma-motion-cadence-easing) infinite; }");
+  classify(dir, { source: components, family: "gate-probe", selector: ".forma-gate-probe", tracks: { "forma-gate-spin": "cadence" }, reducedMotion: { strategy: "explicit" } });
   expectRejected(dir, "repeated-without-stop");
 });
 
 test("the transform shorthand is rejected because it clobbers concurrent effects", () => {
   const dir = fixture();
-  append(dir, components, ".ef-gate-probe { transition: transform var(--ef-motion-inertia-duration) var(--ef-motion-damped-easing); }\n@media (prefers-reduced-motion: reduce) { .ef-gate-probe { transition: none; } }");
-  classify(dir, { source: components, family: "gate-probe", selector: ".ef-gate-probe", tracks: { transform: "inertial" }, reducedMotion: { strategy: "explicit" } });
+  append(dir, components, ".forma-gate-probe { transition: transform var(--forma-motion-inertia-duration) var(--forma-motion-damped-easing); }\n@media (prefers-reduced-motion: reduce) { .forma-gate-probe { transition: none; } }");
+  classify(dir, { source: components, family: "gate-probe", selector: ".forma-gate-probe", tracks: { transform: "inertial" }, reducedMotion: { strategy: "explicit" } });
   expectRejected(dir, "transform-shorthand-motion");
 });
 
@@ -121,15 +121,15 @@ test("assessment, marketing and documentation-site CSS are gated too", () => {
   for (const file of ["src/styles/assessment.css", "src/marketing/components.css", "site/site.css"]) {
     assert.ok(sourceFiles.includes(file), `${file} is an audited source`);
     const dir = fixture();
-    append(dir, file, ".ef-gate-probe { transition: color .2s ease; }");
+    append(dir, file, ".forma-gate-probe { transition: color .2s ease; }");
     expectRejected(dir, "unclassified-track");
   }
 });
 
 test("re-opening the debt ledger fails the strict gate", () => {
   const dir = fixture();
-  append(dir, components, ".ef-gate-probe { transition: opacity 250ms linear; }");
-  classify(dir, { source: components, family: "gate-probe", selector: ".ef-gate-probe", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } });
+  append(dir, components, ".forma-gate-probe { transition: opacity 250ms linear; }");
+  classify(dir, { source: components, family: "gate-probe", selector: ".forma-gate-probe", tracks: { opacity: "perceptual" }, reducedMotion: { strategy: "brief" } });
   // Recording the new findings as debt would pass the non-strict ratchet...
   const report = spawnSync(process.execPath, [audit, "--json"], { cwd: dir, encoding: "utf8" });
   const { unrecorded } = JSON.parse(report.stdout);

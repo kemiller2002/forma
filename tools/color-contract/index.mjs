@@ -30,14 +30,14 @@ const resolveDtcg = (root, token, stack = []) => {
 };
 
 const flattenTheme = (document, theme) => Object.fromEntries(
-  walkLeaves(document.semantic?.[theme]?.color).map(([role, token]) => [`--ef-color-${role.replaceAll(".", "-")}`, resolveDtcg(document, token)])
+  walkLeaves(document.semantic?.[theme]?.color).map(([role, token]) => [`--forma-color-${role.replaceAll(".", "-")}`, resolveDtcg(document, token)])
 );
 
 const flattenBrandTheme = theme => {
   const output = {};
   const visit = (value, prefix = []) => {
     for (const [key, child] of Object.entries(value ?? {})) {
-      if (typeof child === "string") output[`--ef-color-${[...prefix, key].join("-")}`] = child.toLowerCase();
+      if (typeof child === "string") output[`--forma-color-${[...prefix, key].join("-")}`] = child.toLowerCase();
       else visit(child, [...prefix, key]);
     }
   };
@@ -46,13 +46,13 @@ const flattenBrandTheme = theme => {
 };
 
 const rolePairings = [
-  { role: "primary-action", classification: "supported-primitive", foreground: "--ef-color-text-inverse", background: "--ef-color-surface-inverse", minimumContrast: 4.5, nonColorCue: "visible action label and native button semantics" },
-  { role: "secondary-action", classification: "supported-primitive", foreground: "--ef-color-text-primary", background: "--ef-color-surface-primary", boundary: "--ef-color-border-functional", minimumContrast: 4.5, nonColorCue: "visible action label and functional border" },
-  { role: "link", classification: "supported-primitive", foreground: "--ef-color-accent-primary", background: "--ef-color-surface-primary", minimumContrast: 4.5, nonColorCue: "underline or link context; secondary surfaces re-pair through Forma's surface hook" },
-  { role: "selection", classification: "supported-primitive", foreground: "--ef-color-text-inverse", background: "--ef-color-surface-inverse", minimumContrast: 4.5, nonColorCue: "native selected, checked, or aria-current state" },
-  ...[["notice", "info"], ["pending-or-unknown", "info"], ["warning", "warning"], ["danger", "danger"], ["success", "success"]].map(([role, token]) => ({ role, classification: "supported-primitive", foreground: `--ef-color-status-${token}`, background: "--ef-color-surface-primary", minimumContrast: 4.5, nonColorCue: "state text plus glyph, border, or accessible name" })),
-  { role: "disabled", classification: "supported-primitive", foreground: "--ef-color-text-primary", background: "--ef-color-surface-secondary", boundary: "--ef-color-border-functional", minimumContrast: 4.5, nonColorCue: "native disabled state, dashed boundary, and not-allowed cursor; opacity is supplemental" },
-  { role: "focus", classification: "supported-primitive", foreground: "--ef-color-focus-ring", background: "--ef-color-surface-primary", minimumContrast: 3, nonColorCue: "two-part outline geometry shown by keyboard focus" },
+  { role: "primary-action", classification: "supported-primitive", foreground: "--forma-color-text-inverse", background: "--forma-color-surface-inverse", minimumContrast: 4.5, nonColorCue: "visible action label and native button semantics" },
+  { role: "secondary-action", classification: "supported-primitive", foreground: "--forma-color-text-primary", background: "--forma-color-surface-primary", boundary: "--forma-color-border-functional", minimumContrast: 4.5, nonColorCue: "visible action label and functional border" },
+  { role: "link", classification: "supported-primitive", foreground: "--forma-color-accent-primary", background: "--forma-color-surface-primary", minimumContrast: 4.5, nonColorCue: "underline or link context; secondary surfaces re-pair through Forma's surface hook" },
+  { role: "selection", classification: "supported-primitive", foreground: "--forma-color-text-inverse", background: "--forma-color-surface-inverse", minimumContrast: 4.5, nonColorCue: "native selected, checked, or aria-current state" },
+  ...[["notice", "info"], ["pending-or-unknown", "info"], ["warning", "warning"], ["danger", "danger"], ["success", "success"]].map(([role, token]) => ({ role, classification: "supported-primitive", foreground: `--forma-color-status-${token}`, background: "--forma-color-surface-primary", minimumContrast: 4.5, nonColorCue: "state text plus glyph, border, or accessible name" })),
+  { role: "disabled", classification: "supported-primitive", foreground: "--forma-color-text-primary", background: "--forma-color-surface-secondary", boundary: "--forma-color-border-functional", minimumContrast: 4.5, nonColorCue: "native disabled state, dashed boundary, and not-allowed cursor; opacity is supplemental" },
+  { role: "focus", classification: "supported-primitive", foreground: "--forma-color-focus-ring", background: "--forma-color-surface-primary", minimumContrast: 3, nonColorCue: "two-part outline geometry shown by keyboard focus" },
   { role: "categorical-data-visualization", classification: "application-extension", minimumContrast: 3, nonColorCue: "direct labels, shapes, patterns, or a text/table alternative", note: "Forma does not certify a universal categorical palette." },
   { role: "ordinal-data-visualization", classification: "application-extension", minimumContrast: 3, nonColorCue: "ordered position plus labels, patterns, or a text/table alternative", note: "Applications must validate the complete rendered scale in context." }
 ];
@@ -62,13 +62,13 @@ export const createColorContract = ({ tokenDocument, brands, formaVersion }) => 
   const themes = themeIds.map(id => ({
     kind: "theme",
     id,
-    selector: id === "light" ? ":root, [data-ef-theme=\"light\"]" : `[data-ef-theme=\"${id}\"]`,
+    selector: id === "light" ? ":root, [data-forma-theme=\"light\"]" : `[data-forma-theme=\"${id}\"]`,
     source: "tokens/forma.tokens.json",
     values: flattenTheme(tokenDocument, id)
   }));
   const baseline = themes.find(context => context.id === "light")?.values ?? {};
   const publicNames = Object.keys(baseline).sort();
-  const rolesByName = new Map(walkLeaves(tokenDocument.semantic.light.color).map(([role]) => [`--ef-color-${role.replaceAll(".", "-")}`, role]));
+  const rolesByName = new Map(walkLeaves(tokenDocument.semantic.light.color).map(([role]) => [`--forma-color-${role.replaceAll(".", "-")}`, role]));
   for (const context of themes) {
     const missing = publicNames.filter(name => !context.values[name]);
     if (missing.length) throw new Error(`theme ${context.id} omits public colors: ${missing.join(", ")}`);
@@ -77,12 +77,12 @@ export const createColorContract = ({ tokenDocument, brands, formaVersion }) => 
     const values = { ...flattenTheme(tokenDocument, theme), ...flattenBrandTheme(document.themes?.[theme]) };
     const missing = publicNames.filter(name => !values[name]);
     if (missing.length) throw new Error(`brand ${document.id}/${theme} omits public colors: ${missing.join(", ")}`);
-    return { kind: "brand", id: `${document.id}/${theme}`, selector: `[data-ef-brand=\"${document.id}\"][data-ef-theme=\"${theme}\"]`, source: file, values };
+    return { kind: "brand", id: `${document.id}/${theme}`, selector: `[data-forma-brand=\"${document.id}\"][data-forma-theme=\"${theme}\"]`, source: file, values };
   }));
   return {
     format: COLOR_CONTRACT_FORMAT,
     formaVersion,
-    validationScope: "CSS var() references to --ef-color-* plus reserved internal color-related prefixes; other Forma APIs are governed by their own contracts.",
+    validationScope: "CSS var() references to --forma-color-* plus reserved internal color-related prefixes; other Forma APIs are governed by their own contracts.",
     compatibility: { policy: "Validate with the contract shipped by the pinned Forma package version.", additiveWithinMajor: true },
     fallbackPolicy: {
       unknownFormaToken: "refused-even-with-fallback",
@@ -101,14 +101,14 @@ export const createColorContract = ({ tokenDocument, brands, formaVersion }) => 
     })),
     internalVariables: {
       public: false,
-      prefixes: ["--ef-tone-", "--ef-surface-", "--ef-field-", "--ef-grid-", "--ef-effect-"],
+      prefixes: ["--forma-tone-", "--forma-surface-", "--forma-field-", "--forma-grid-", "--forma-effect-"],
       policy: "Implementation variables are not a consumer compatibility contract."
     },
     unsupportedNames: [
-      { name: "--ef-color-action-primary", use: "--ef-color-surface-inverse", pairWith: "--ef-color-text-inverse" },
-      { name: "--ef-color-text-link", use: "--ef-color-accent-primary", pairWith: "--ef-color-surface-primary" },
-      { name: "--ef-color-focus", use: "--ef-color-focus-ring", pairWith: "--ef-color-focus-gap" },
-      { name: "--ef-color-text-danger", use: "--ef-color-status-danger", pairWith: "--ef-color-surface-primary" }
+      { name: "--forma-color-action-primary", use: "--forma-color-surface-inverse", pairWith: "--forma-color-text-inverse" },
+      { name: "--forma-color-text-link", use: "--forma-color-accent-primary", pairWith: "--forma-color-surface-primary" },
+      { name: "--forma-color-focus", use: "--forma-color-focus-ring", pairWith: "--forma-color-focus-gap" },
+      { name: "--forma-color-text-danger", use: "--forma-color-status-danger", pairWith: "--forma-color-surface-primary" }
     ],
     rolePairings,
     forcedColors: { foreground: "CanvasText", surface: "Canvas", selection: "Highlight/HighlightText", authorAdjust: "auto" },
@@ -147,13 +147,13 @@ export const validateCssColorReferences = (source, { contract = loadColorContrac
   const pattern = /var\(\s*(--[a-z0-9_-]+)/gi;
   for (const match of source.matchAll(pattern)) {
     const name = match[1];
-    if (!name.startsWith("--ef-")) continue;
+    if (!name.startsWith("--forma-")) continue;
     const where = location(source, match.index + match[0].indexOf(name));
     if (internalPrefixes.some(prefix => name.startsWith(prefix))) {
-      findings.push({ code: "COLOR_INTERNAL_FORMA_VARIABLE", file, ...where, token: name, suggestion: "use a public --ef-color-* role", message: `${name} is an internal implementation variable; use a public semantic color role` });
+      findings.push({ code: "COLOR_INTERNAL_FORMA_VARIABLE", file, ...where, token: name, suggestion: "use a public --forma-color-* role", message: `${name} is an internal implementation variable; use a public semantic color role` });
       continue;
     }
-    if (!name.startsWith("--ef-color-")) continue;
+    if (!name.startsWith("--forma-color-")) continue;
     if (!known.has(name)) {
       const suggestion = replacements.get(name) ?? [...known].sort((a, b) => editDistance(name, a) - editDistance(name, b) || a.localeCompare(b))[0];
       findings.push({ code: "COLOR_UNKNOWN_FORMA_TOKEN", file, ...where, token: name, suggestion, message: `unsupported Forma token ${name}; use ${suggestion}` });

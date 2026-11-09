@@ -39,11 +39,11 @@ const rgb = (css) => {
 
 // The painted outline and fill of a node: a diamond paints both on ::before.
 const measureNode = (page, id) => page.locator(`#${id}`).evaluate((element) => {
-  const diamond = element.dataset.efShape === "diamond";
+  const diamond = element.dataset.formaShape === "diamond";
   const style = getComputedStyle(element, diamond ? "::before" : null);
   return { diamond, top: style.borderTopColor, start: style.borderLeftColor, background: style.backgroundColor };
 });
-const canvasColor = (page) => page.locator(".ef-diagram__viewport").evaluate((element) => getComputedStyle(element).backgroundColor);
+const canvasColor = (page) => page.locator(".forma-diagram__viewport").evaluate((element) => getComputedStyle(element).backgroundColor);
 
 for (const { name, media, canvas: expectedCanvas } of MODES) {
   test(`status-token outlines rendered by Forma.Workflow reach 3:1 (${name})`, async ({ page, browserName }) => {
@@ -60,7 +60,7 @@ for (const { name, media, canvas: expectedCanvas } of MODES) {
     }
     const canvas = await canvasColor(page);
     if (expectedCanvas) expect(rgb(canvas), `${name} surface`).toEqual(expectedCanvas);
-    const edge = await page.locator("path.ef-diagram-connector").first().evaluate((element) => getComputedStyle(element).stroke);
+    const edge = await page.locator("path.forma-diagram-connector").first().evaluate((element) => getComputedStyle(element).stroke);
     const ratio = contrast(rgb(edge), rgb(canvas));
     expect(ratio, `edge ${edge} on ${canvas} = ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(3);
   });

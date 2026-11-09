@@ -4,7 +4,7 @@ export default {
   behavior: "Native HTML",
   summary: "Top-layer supplemental content built on the Popover API, opened by a native button with no script.",
   purpose: {
-    description: "A popover shows supplemental content above the page without blocking it: extra detail, a short explanation, a small set of controls. It is an element with the `popover` attribute and `class=\"ef-popover\"`, opened and closed by buttons with `popovertarget`. The browser owns the top layer, open state (`:popover-open`), light dismiss (outside click and Escape for `popover=\"auto\"`), and keyboard order from the invoker into the popover. Forma provides the bordered, shadowed surface, viewport-bounded size with internal scrolling, and light perceived-weight entry and exit. Forma does not position the popover next to its invoker: without application anchor positioning it opens at the block-start, inline-start corner of the viewport.",
+    description: "A popover shows supplemental content above the page without blocking it: extra detail, a short explanation, a small set of controls. It is an element with the `popover` attribute and `class=\"forma-popover\"`, opened and closed by buttons with `popovertarget`. The browser owns the top layer, open state (`:popover-open`), light dismiss (outside click and Escape for `popover=\"auto\"`), and keyboard order from the invoker into the popover. Forma provides the bordered, shadowed surface, viewport-bounded size with internal scrolling, and light perceived-weight entry and exit. Forma does not position the popover next to its invoker: without application anchor positioning it opens at the block-start, inline-start corner of the viewport.",
     useWhen: [
       "The user asks for more detail or a few extra controls and should be able to keep working with the page.",
       "Content is too long or too interactive for a [[tooltip]] but does not need a modal decision.",
@@ -43,18 +43,18 @@ export default {
       },
       title: "Keyboard shortcuts panel that stays open",
       description: "A reference the user keeps open while working. `popover=\"manual\"` disables light dismiss, so clicking the page or pressing Escape does not close it; the Close button and the invoker (which toggles) do. The popover is named by its heading through aria-labelledby.",
-      html: `<ef-popover class="ef-component-tag">
+      html: `<forma-popover class="forma-component-tag">
   <button type="button" popovertarget="popover-manual-reference-panel">Keyboard shortcuts</button>
-  <div class="ef-popover" id="popover-manual-reference-panel" popover="manual" aria-labelledby="popover-manual-reference-panel-title">
+  <div class="forma-popover" id="popover-manual-reference-panel" popover="manual" aria-labelledby="popover-manual-reference-panel-title">
     <h2 id="popover-manual-reference-panel-title">Keyboard shortcuts</h2>
-    <dl class="ef-key-value-list">
+    <dl class="forma-key-value-list">
       <div><dt><kbd>N</kbd></dt><dd>New work item</dd></div>
       <div><dt><kbd>/</kbd></dt><dd>Focus search</dd></div>
       <div><dt><kbd>G</kbd> then <kbd>B</kbd></dt><dd>Go to board</dd></div>
     </dl>
     <button type="button" popovertarget="popover-manual-reference-panel" popovertargetaction="hide">Close shortcuts</button>
   </div>
-</ef-popover>`
+</forma-popover>`
     },
     {
       id: "long-change-history",
@@ -66,10 +66,10 @@ export default {
         ]
       },
       title: "Long change history that scrolls",
-      description: "An auto popover with more content than fits. The surface stops at `min(80dvh, 100dvh - 2rem)` and scrolls internally without scrolling the page. `data-ef-motion-weight=\"standard\"` gives the larger surface a slightly slower settle than the light default.",
-      html: `<ef-popover class="ef-component-tag">
+      description: "An auto popover with more content than fits. The surface stops at `min(80dvh, 100dvh - 2rem)` and scrolls internally without scrolling the page. `data-forma-motion-weight=\"standard\"` gives the larger surface a slightly slower settle than the light default.",
+      html: `<forma-popover class="forma-component-tag">
   <button type="button" popovertarget="popover-long-change-history">Change history (12)</button>
-  <div class="ef-popover" id="popover-long-change-history" popover data-ef-motion-weight="standard" aria-labelledby="popover-long-change-history-title">
+  <div class="forma-popover" id="popover-long-change-history" popover data-forma-motion-weight="standard" aria-labelledby="popover-long-change-history-title">
     <h2 id="popover-long-change-history-title">Change history</h2>
     <ol>
       <li>30 Sep 14:02 — Priority changed from Medium to High by Dana.</li>
@@ -83,7 +83,7 @@ export default {
     </ol>
     <button type="button" popovertarget="popover-long-change-history" popovertargetaction="hide">Close history</button>
   </div>
-</ef-popover>`
+</forma-popover>`
     },
     {
       id: "mobile-field-help",
@@ -105,19 +105,19 @@ export default {
           "The surface still opens at the viewport's top-start corner rather than beside the field; on phones this keeps it fully visible, but the application should position it if proximity matters."
         ]
       },
-      html: `<ef-popover class="ef-component-tag">
-  <div class="ef-field">
-    <label class="ef-field__label" for="popover-mobile-field-help-iban">IBAN</label>
+      html: `<forma-popover class="forma-component-tag">
+  <div class="forma-field">
+    <label class="forma-field__label" for="popover-mobile-field-help-iban">IBAN</label>
     <input id="popover-mobile-field-help-iban" name="iban" type="text" autocomplete="off" aria-describedby="popover-mobile-field-help-hint">
-    <p class="ef-field__description" id="popover-mobile-field-help-hint">Up to 34 letters and numbers, starting with a country code.</p>
+    <p class="forma-field__description" id="popover-mobile-field-help-hint">Up to 34 letters and numbers, starting with a country code.</p>
     <button type="button" popovertarget="popover-mobile-field-help">Where do I find my IBAN?</button>
   </div>
-  <div class="ef-popover" id="popover-mobile-field-help" popover aria-labelledby="popover-mobile-field-help-title">
+  <div class="forma-popover" id="popover-mobile-field-help" popover aria-labelledby="popover-mobile-field-help-title">
     <h2 id="popover-mobile-field-help-title">Finding your IBAN</h2>
     <p>It is printed on your bank statement and shown in your banking app under account details. It starts with two letters for the country, for example DE or NL.</p>
     <button type="button" popovertarget="popover-mobile-field-help" popovertargetaction="hide">Close help</button>
   </div>
-</ef-popover>`
+</forma-popover>`
     }
   ],
   api: {
@@ -126,11 +126,11 @@ export default {
       { name: "popovertarget", on: "button", values: "id of the popover", default: "—", description: "Connects an invoker button to the popover." },
       { name: "popovertargetaction", on: "button", values: "toggle | show | hide", default: "toggle", description: "What the button does to the popover. Use `hide` on an in-popover Close button." },
       { name: "aria-labelledby", on: "the surface", values: "id of a heading inside", default: "—", description: "Names the popover content from its heading." },
-      { name: "data-ef-motion-weight", on: "the surface", values: "light | standard | heavy", default: "light", description: "Presentation-only perceived mass for entry and exit." }
+      { name: "data-forma-motion-weight", on: "the surface", values: "light | standard | heavy", default: "light", description: "Presentation-only perceived mass for entry and exit." }
     ],
     hooks: {
-      "ef-popover": "The popover surface: border, primary surface, shadow, 1rem padding, viewport-bounded size, internal scrolling with contained overscroll, and the entry/exit transition. Sets `margin: 0` and no anchor, so it sits at the viewport's block-start, inline-start corner.",
-      "data-ef-motion-weight": "Presentation-only perceived mass: light (default for popovers), standard or heavy."
+      "forma-popover": "The popover surface: border, primary surface, shadow, 1rem padding, viewport-bounded size, internal scrolling with contained overscroll, and the entry/exit transition. Sets `margin: 0` and no anchor, so it sits at the viewport's block-start, inline-start corner.",
+      "data-forma-motion-weight": "Presentation-only perceived mass: light (default for popovers), standard or heavy."
     },
     keyboard: [
       { keys: "Enter / Space on the invoker", action: "Toggles the popover. Focus stays on the invoker." },
@@ -167,12 +167,12 @@ export default {
     "Above 44rem: at most `min(30rem, 100vw - 2rem)` wide and `min(80dvh, 100dvh - 2rem)` tall.",
     "At 44rem and below: at most `100vw - 1rem` wide and `100dvh - 1rem` tall.",
     "Text wraps; content beyond the height limit scrolls inside with contained overscroll.",
-    "No collision handling or placement fallback is provided for `.ef-popover`."
+    "No collision handling or placement fallback is provided for `.forma-popover`."
   ],
   motion: [
     "Entry and exit: opacity alone follows the shared 120ms slow-fast-slow curve, at unchanged position and size.",
     "Exit cleanup: display and top-layer placement are retained until opacity is zero where overlay retention is supported; otherwise native dismissal is immediate.",
-    "`data-ef-motion-weight` does not affect these perceptual fades. The native `:popover-open` state is authoritative and is never delayed.",
+    "`data-forma-motion-weight` does not affect these perceptual fades. The native `:popover-open` state is authoritative and is never delayed.",
     "Under `prefers-reduced-motion: reduce` the stationary fade reaches its endpoint effectively immediately.",
   ],
   guidance: {

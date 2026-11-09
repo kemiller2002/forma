@@ -79,12 +79,12 @@ test("the layout reliability fixtures split only words wider than their box", as
 // to one character, so an auto-sized flex item gives its width away and a
 // short word that fits splits. Forma now inherits break-word, which keeps
 // word minimums; the injected rule proves the detector sees the regression.
-const flexRow = `<div class="ef-surface"><div style="display:flex"><span>Deployment identifier for the release candidate build</span><span>Production</span></div></div>`;
+const flexRow = `<div class="forma-surface"><div style="display:flex"><span>Deployment identifier for the release candidate build</span><span>Production</span></div></div>`;
 
 test("short words in an ordinary flex row inside a Forma container stay whole", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 900 });
   await page.setContent(documentFor(flexRow));
   expect(await splitWordsThatFit(page)).toEqual([]);
-  await page.setContent(documentFor(flexRow, ".ef-surface { overflow-wrap: anywhere; }"));
+  await page.setContent(documentFor(flexRow, ".forma-surface { overflow-wrap: anywhere; }"));
   expect((await splitWordsThatFit(page)).some(entry => entry.startsWith('"Production"')), "the detector reports the anywhere regression").toBe(true);
 });

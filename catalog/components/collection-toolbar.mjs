@@ -35,16 +35,16 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Search term with active filters",
       description: "A search term and two applied filters. The filter panel is closed, but its summary text states \"2 active\", so the state stays visible. On wide screens the panel, when opened, is positioned over the content below the toolbar.",
-      html: `<ef-collection-toolbar class="ef-component-tag">
-  <section class="ef-collection-toolbar" aria-label="Invoice list controls">
-    <form class="ef-search ef-collection-toolbar__search" role="search">
-      <label class="ef-search__label" for="collection-toolbar-active-filters-search">Search invoices</label>
+      html: `<forma-collection-toolbar class="forma-component-tag">
+  <section class="forma-collection-toolbar" aria-label="Invoice list controls">
+    <form class="forma-search forma-collection-toolbar__search" role="search">
+      <label class="forma-search__label" for="collection-toolbar-active-filters-search">Search invoices</label>
       <input id="collection-toolbar-active-filters-search" name="q" type="search" value="acme">
     </form>
-    <div class="ef-collection-toolbar__controls">
-      <details class="ef-collection-toolbar__filters">
-        <summary>Filters <span class="ef-status-lozenge">2 active</span></summary>
-        <div class="ef-collection-toolbar__filter-panel">
+    <div class="forma-collection-toolbar__controls">
+      <details class="forma-collection-toolbar__filters">
+        <summary>Filters <span class="forma-status-lozenge">2 active</span></summary>
+        <div class="forma-collection-toolbar__filter-panel">
           <label>Status <select name="status"><option>Any status</option><option selected>Overdue</option><option>Paid</option></select></label>
           <label>Owner <select name="owner"><option>Anyone</option><option selected>Me</option></select></label>
           <button type="button">Clear filters</button>
@@ -52,9 +52,9 @@ export default {
       </details>
       <label>Sort <select name="sort"><option>Due date, soonest</option><option>Amount, highest</option></select></label>
     </div>
-    <p class="ef-collection-toolbar__count" role="status">3 invoices</p>
+    <p class="forma-collection-toolbar__count" role="status">3 invoices</p>
   </section>
-</ef-collection-toolbar>`
+</forma-collection-toolbar>`
     },
     {
       id: "no-results",
@@ -66,24 +66,24 @@ export default {
       },
       title: "Search with no results",
       description: "A search that matches nothing. The count states 0 results in the status region; the filters summary shows none are active, so the user knows the search term alone caused the empty result.",
-      html: `<ef-collection-toolbar class="ef-component-tag">
-  <section class="ef-collection-toolbar" aria-label="Customer list controls">
-    <form class="ef-search ef-collection-toolbar__search" role="search">
-      <label class="ef-search__label" for="collection-toolbar-no-results-search">Search customers</label>
+      html: `<forma-collection-toolbar class="forma-component-tag">
+  <section class="forma-collection-toolbar" aria-label="Customer list controls">
+    <form class="forma-search forma-collection-toolbar__search" role="search">
+      <label class="forma-search__label" for="collection-toolbar-no-results-search">Search customers</label>
       <input id="collection-toolbar-no-results-search" name="q" type="search" value="northwnd">
     </form>
-    <div class="ef-collection-toolbar__controls">
-      <details class="ef-collection-toolbar__filters">
-        <summary>Filters <span class="ef-status-lozenge">None active</span></summary>
-        <div class="ef-collection-toolbar__filter-panel">
+    <div class="forma-collection-toolbar__controls">
+      <details class="forma-collection-toolbar__filters">
+        <summary>Filters <span class="forma-status-lozenge">None active</span></summary>
+        <div class="forma-collection-toolbar__filter-panel">
           <label>Region <select name="region"><option>All regions</option><option>Europe</option><option>North America</option></select></label>
         </div>
       </details>
       <label>Saved view <select name="view"><option>All customers</option><option>Key accounts</option></select></label>
     </div>
-    <p class="ef-collection-toolbar__count" role="status">0 customers</p>
+    <p class="forma-collection-toolbar__count" role="status">0 customers</p>
   </section>
-</ef-collection-toolbar>`
+</forma-collection-toolbar>`
     },
     {
       id: "mobile-toolbar",
@@ -105,44 +105,44 @@ export default {
           "Search stays first and the count stays visible at every width; no control is hover-only."
         ]
       },
-      html: `<ef-collection-toolbar class="ef-component-tag">
-  <section class="ef-collection-toolbar" aria-label="Ticket list controls">
-    <form class="ef-search ef-collection-toolbar__search" role="search">
-      <label class="ef-search__label" for="collection-toolbar-mobile-toolbar-search">Search tickets</label>
+      html: `<forma-collection-toolbar class="forma-component-tag">
+  <section class="forma-collection-toolbar" aria-label="Ticket list controls">
+    <form class="forma-search forma-collection-toolbar__search" role="search">
+      <label class="forma-search__label" for="collection-toolbar-mobile-toolbar-search">Search tickets</label>
       <input id="collection-toolbar-mobile-toolbar-search" name="q" type="search" placeholder="Subject or ticket number">
     </form>
-    <div class="ef-collection-toolbar__controls">
-      <details class="ef-collection-toolbar__filters" open>
-        <summary>Filters <span class="ef-status-lozenge">1 active</span></summary>
-        <div class="ef-collection-toolbar__filter-panel">
+    <div class="forma-collection-toolbar__controls">
+      <details class="forma-collection-toolbar__filters" open>
+        <summary>Filters <span class="forma-status-lozenge">1 active</span></summary>
+        <div class="forma-collection-toolbar__filter-panel">
           <label>Status <select name="ticket-status"><option>Any status</option><option selected>Awaiting reply</option></select></label>
         </div>
       </details>
       <label>Sort <select name="ticket-sort"><option>Newest</option><option>Oldest</option></select></label>
       <label>Saved view <select name="ticket-view"><option>My tickets</option><option>Team queue</option></select></label>
     </div>
-    <p class="ef-collection-toolbar__count" role="status">12 tickets</p>
+    <p class="forma-collection-toolbar__count" role="status">12 tickets</p>
   </section>
-</ef-collection-toolbar>`
+</forma-collection-toolbar>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-label", on: "section.ef-collection-toolbar", values: "string", default: "—", description: "Names the toolbar region after the collection it controls." },
-      { name: "role", on: "form / .ef-collection-toolbar__count", values: "search / status", default: "—", description: "`search` makes the form a search landmark; `status` makes the count a polite live region so result changes are announced." },
-      { name: "for", on: "label.ef-search__label", values: "id of the search input", default: "—", description: "Associates the visible label with the search input." },
+      { name: "aria-label", on: "section.forma-collection-toolbar", values: "string", default: "—", description: "Names the toolbar region after the collection it controls." },
+      { name: "role", on: "form / .forma-collection-toolbar__count", values: "search / status", default: "—", description: "`search` makes the form a search landmark; `status` makes the count a polite live region so result changes are announced." },
+      { name: "for", on: "label.forma-search__label", values: "id of the search input", default: "—", description: "Associates the visible label with the search input." },
       { name: "type", on: "input", values: "search", default: "—", description: "Native search field with platform clear affordances." },
-      { name: "open", on: "details.ef-collection-toolbar__filters", values: "boolean", default: "absent (closed)", description: "Native disclosure state of the filter panel; the browser toggles it." },
+      { name: "open", on: "details.forma-collection-toolbar__filters", values: "boolean", default: "absent (closed)", description: "Native disclosure state of the filter panel; the browser toggles it." },
       { name: "name", on: "input / select", values: "string", default: "—", description: "Field names used when the application serializes the query, for example into the URL." },
       { name: "selected", on: "option", values: "boolean", default: "—", description: "Initial selected filter, sort or view." }
     ],
     hooks: {
-      "ef-collection-toolbar": "Root grid of search, controls and count; recomposes at 40rem and below.",
-      "ef-collection-toolbar__search": "The search form area; spans the full row on phones.",
-      "ef-collection-toolbar__controls": "Wrapping flex row of filters, sort and view controls; labels inside get a 9rem minimum width.",
-      "ef-collection-toolbar__filters": "The native `details` holding filters. Its `summary` is a bordered, 2.75rem-tall button-like row.",
-      "ef-collection-toolbar__filter-panel": "The filter fields. Absolutely positioned with a shadow on wide screens; static and full width at 40rem and below.",
-      "ef-collection-toolbar__count": "Result count in small monospace text, no wrapping. Pair with `role=\"status\"`."
+      "forma-collection-toolbar": "Root grid of search, controls and count; recomposes at 40rem and below.",
+      "forma-collection-toolbar__search": "The search form area; spans the full row on phones.",
+      "forma-collection-toolbar__controls": "Wrapping flex row of filters, sort and view controls; labels inside get a 9rem minimum width.",
+      "forma-collection-toolbar__filters": "The native `details` holding filters. Its `summary` is a bordered, 2.75rem-tall button-like row.",
+      "forma-collection-toolbar__filter-panel": "The filter fields. Absolutely positioned with a shadow on wide screens; static and full width at 40rem and below.",
+      "forma-collection-toolbar__count": "Result count in small monospace text, no wrapping. Pair with `role=\"status\"`."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through search, the filters summary, each select and any buttons in order." },
@@ -161,7 +161,7 @@ export default {
     { name: "Filters closed", how: "details without open", description: "Only the summary with its active-count text is visible." },
     { name: "Filters open", how: "details[open]", description: "Filter panel shown over the content (desktop) or inline (phone)." },
     { name: "Active filters", how: "text in the summary, for example a [[status-lozenge]] reading \"2 active\"", description: "Written by the application; Forma does not count filters." },
-    { name: "Result count", how: "text in .ef-collection-toolbar__count", description: "Announced through `role=\"status\"` when the application changes it." },
+    { name: "Result count", how: "text in .forma-collection-toolbar__count", description: "Announced through `role=\"status\"` when the application changes it." },
     { name: "Stacked", how: "viewport ≤ 40rem", description: "Search full width; controls wrap; panel inline." }
   ],
   accessibility: {

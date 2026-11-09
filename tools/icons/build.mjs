@@ -73,7 +73,7 @@ function drawShape(shape) {
 export function renderSvg(icon, grammar, decorative = false) {
   const attrs = [
     'xmlns="http://www.w3.org/2000/svg"',
-    'class="ef-icon__svg"',
+    'class="forma-icon__svg"',
     'viewBox="0 0 24 24"',
     'fill="none"',
     'stroke="currentColor"',
@@ -98,7 +98,7 @@ export function compileIcons(registry, {formaVersion} = {}) {
     const svg = renderSvg(icon, registry) + "\n";
     files.set(`${icon.name}.svg`, svg);
     files.set(`html/${icon.name}.html`,
-      `<ef-icon class="ef-component-tag"><span class="ef-icon" data-ef-icon="${icon.name}">${renderSvg(icon, registry, true)}</span></ef-icon>\n`);
+      `<forma-icon class="forma-component-tag"><span class="forma-icon" data-forma-icon="${icon.name}">${renderSvg(icon, registry, true)}</span></forma-icon>\n`);
     metadata.push({
       name: icon.name, category: icon.category, label: icon.label,
       keywords: [...icon.keywords], origin: icon.origin,

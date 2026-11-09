@@ -6,14 +6,14 @@ const source = pattern("character-grid-reveal");
 const seconds = value => Number.parseFloat(value) * (value.endsWith("ms") ? 1 : 1000);
 
 const timings = page => page.evaluate(() =>
-  [...document.querySelectorAll(".ef-character-grid [data-ef-row]")].map(run => {
+  [...document.querySelectorAll(".forma-character-grid [data-forma-row]")].map(run => {
     const style = getComputedStyle(run);
     return {
       id: run.id || run.textContent.trim().slice(0, 12),
-      row: Number(run.dataset.efRow),
-      col: Number(run.dataset.efCol),
-      len: Number(run.dataset.efLen),
-      staged: run.hasAttribute("data-ef-reveal-run"),
+      row: Number(run.dataset.formaRow),
+      col: Number(run.dataset.formaCol),
+      len: Number(run.dataset.formaLen),
+      staged: run.hasAttribute("data-forma-reveal-run"),
       name: style.animationName,
       delay: style.animationDelay,
       duration: style.animationDuration,
@@ -21,8 +21,8 @@ const timings = page => page.evaluate(() =>
     };
   }));
 
-test("static is the default: without data-ef-reveal nothing animates", async ({ page }) => {
-  await page.setContent(gridDocument(source.replace(' data-ef-reveal="sequential"', "")));
+test("static is the default: without data-forma-reveal nothing animates", async ({ page }) => {
+  await page.setContent(gridDocument(source.replace(' data-forma-reveal="sequential"', "")));
   for (const run of await timings(page)) expect(run.name, run.id).toBe("none");
 });
 
@@ -33,7 +33,7 @@ test("staged runs reveal left to right in row-major order, derived from their ce
   // 60 columns x 12ms + 40ms line = 760ms per row; 3 rows = 2280ms > 1500ms cap.
   const scale = 1500 / (3 * 760);
   for (const run of staged) {
-    expect(run.name).toBe("ef-character-grid-reveal");
+    expect(run.name).toBe("forma-character-grid-reveal");
     expect(run.timing).toContain(`steps(${run.len}`);
     const expectedDelay = ((run.row - 1) * 760 + (run.col - 1) * 12) * scale;
     expect(Math.abs(seconds(run.delay) - expectedDelay), `${run.id} delay`).toBeLessThan(1);
@@ -47,7 +47,7 @@ test("staged runs reveal left to right in row-major order, derived from their ce
 
 test("timing tokens are configurable and the cap still holds", async ({ page }) => {
   await page.setContent(gridDocument(source, {
-    extraCss: ".ef-character-grid { --ef-reveal-char-ms: 40; --ef-reveal-line-ms: 200; --ef-reveal-max-ms: 900; }"
+    extraCss: ".forma-character-grid { --forma-reveal-char-ms: 40; --forma-reveal-line-ms: 200; --forma-reveal-max-ms: 900; }"
   }));
   const staged = (await timings(page)).filter(run => run.staged);
   const ends = staged.map(run => seconds(run.delay) + seconds(run.duration));
@@ -74,10 +74,10 @@ test("staged text is fully available to assistive technology before the reveal r
   const clipped = await page.locator("#character-grid-reveal-title").evaluate(element => getComputedStyle(element).clipPath);
   expect(clipped).toContain("inset");
   await expect(page.getByRole("heading", { name: "EXAMPLE SYSTEMS" })).toBeAttached();
-  const snapshot = await page.locator(".ef-character-grid__surface").ariaSnapshot();
+  const snapshot = await page.locator(".forma-character-grid__surface").ariaSnapshot();
   expect(snapshot).toContain("OPERATIONS NETWORK");
   expect(snapshot).toContain("Authorized use only.");
-  const live = await page.locator("[data-ef-reveal-run]").evaluateAll(runs =>
+  const live = await page.locator("[data-forma-reveal-run]").evaluateAll(runs =>
     runs.filter(run => run.closest("[aria-live], [role=status], [role=alert]")).length);
   expect(live, "staged text is not inside a live region").toBe(0);
 });
@@ -90,8 +90,8 @@ test("prefers-reduced-motion presents everything immediately", async ({ page }) 
   expect(clip).toBe("none");
 });
 
-test("data-ef-reveal=complete is the static state an application sets to interrupt", async ({ page }) => {
-  await page.setContent(gridDocument(source.replace('data-ef-reveal="sequential"', 'data-ef-reveal="complete"')));
+test("data-forma-reveal=complete is the static state an application sets to interrupt", async ({ page }) => {
+  await page.setContent(gridDocument(source.replace('data-forma-reveal="sequential"', 'data-forma-reveal="complete"')));
   for (const run of await timings(page)) expect(run.name, run.id).toBe("none");
 });
 

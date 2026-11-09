@@ -4,14 +4,14 @@ export default {
   behavior: "Native HTML",
   summary: "Protected text and native editable fields placed on a character grid with explicit capacity, preceding labels, and shape-based required, invalid, disabled, and read-only cues.",
   purpose: {
-    description: "Character grid fields are the editable parts of a [[character-grid]] screen. Each field is a native `input` positioned on its cells, preceded by a `label for` run, with `maxlength` equal to its `data-ef-len` so the visible capacity and the real capacity agree. Everything that is not editable stays protected text. The browser owns typing, Tab order, `maxlength`, `required` and form submission; the application owns validation policy, `aria-invalid`, messages and initial focus.",
+    description: "Character grid fields are the editable parts of a [[character-grid]] screen. Each field is a native `input` positioned on its cells, preceded by a `label for` run, with `maxlength` equal to its `data-forma-len` so the visible capacity and the real capacity agree. Everything that is not editable stays protected text. The browser owns typing, Tab order, `maxlength`, `required` and form submission; the application owns validation policy, `aria-invalid`, messages and initial focus.",
     useWhen: [
       "A character-grid screen needs data entry: sign-on, inquiry criteria, record maintenance.",
       "The field width must show its exact capacity in cells, as on a host screen.",
       "Required, invalid, disabled and read-only states must stay distinguishable in grayscale and forced colors."
     ],
     avoidWhen: [
-      "Showing a value the user cannot change: use protected `ef-character-grid__value` text, not a readonly input (CG-9).",
+      "Showing a value the user cannot change: use protected `forma-character-grid__value` text, not a readonly input (CG-9).",
       "Ordinary application forms outside a grid: use [[text-field]], [[select]] and [[textarea]].",
       "A per-row option column in a list: use [[character-grid-selection]], which names each field by its column and row headers."
     ],
@@ -28,81 +28,81 @@ export default {
       interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Sign-on with required fields",
       description: "Two required fields and one optional field. Password fields keep their native type and autocomplete tokens; each requirement is stated in a visible hint as well as by the double underline.",
-      html: `<ef-character-grid-field class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="8" data-ef-columns="50" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-field-sign-on-title" tabindex="0">
-      <form class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-field-sign-on-title" data-ef-row="1" data-ef-col="19" data-ef-len="14" data-ef-emphasis="intensified">SYSTEM SIGN ON</h2>
-        <label class="ef-character-grid__label" for="character-grid-field-sign-on-user" data-ef-row="3" data-ef-col="2" data-ef-len="16">User ID<span class="ef-character-grid__leader" aria-hidden="true"> . . . :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-sign-on-user" name="user" type="text" maxlength="8" required autocomplete="username" aria-describedby="character-grid-field-sign-on-user-hint" data-ef-row="3" data-ef-col="20" data-ef-len="8">
-        <span class="ef-character-grid__text" id="character-grid-field-sign-on-user-hint" data-ef-row="3" data-ef-col="31" data-ef-len="10" data-ef-emphasis="muted">(required)</span>
-        <label class="ef-character-grid__label" for="character-grid-field-sign-on-password" data-ef-row="4" data-ef-col="2" data-ef-len="16">Password<span class="ef-character-grid__leader" aria-hidden="true">  . . :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-sign-on-password" name="password" type="password" maxlength="8" required autocomplete="current-password" aria-describedby="character-grid-field-sign-on-password-hint" data-ef-row="4" data-ef-col="20" data-ef-len="8">
-        <span class="ef-character-grid__text" id="character-grid-field-sign-on-password-hint" data-ef-row="4" data-ef-col="31" data-ef-len="10" data-ef-emphasis="muted">(required)</span>
-        <label class="ef-character-grid__label" for="character-grid-field-sign-on-new" data-ef-row="5" data-ef-col="2" data-ef-len="16">New password<span class="ef-character-grid__leader" aria-hidden="true"> :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-sign-on-new" name="new-password" type="password" maxlength="8" autocomplete="new-password" aria-describedby="character-grid-field-sign-on-new-hint" data-ef-row="5" data-ef-col="20" data-ef-len="8">
-        <span class="ef-character-grid__text" id="character-grid-field-sign-on-new-hint" data-ef-row="5" data-ef-col="31" data-ef-len="17" data-ef-emphasis="muted">(optional, 8 max)</span>
-        <p class="ef-character-grid__text" data-ef-row="7" data-ef-col="2" data-ef-len="29">Passwords are case sensitive.</p>
-        <div class="ef-character-grid__group" role="group" aria-label="Function keys">
-          <button class="ef-character-grid__key" type="submit" name="action" value="enter" data-ef-action="enter" data-ef-row="8" data-ef-col="2" data-ef-len="13"><kbd>Enter</kbd>=Sign on</button>
-          <button class="ef-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-ef-action="pf3" data-ef-row="8" data-ef-col="17" data-ef-len="8"><kbd>PF3</kbd>=Exit</button>
+      html: `<forma-character-grid-field class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="8" data-forma-columns="50" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-field-sign-on-title" tabindex="0">
+      <form class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-field-sign-on-title" data-forma-row="1" data-forma-col="19" data-forma-len="14" data-forma-emphasis="intensified">SYSTEM SIGN ON</h2>
+        <label class="forma-character-grid__label" for="character-grid-field-sign-on-user" data-forma-row="3" data-forma-col="2" data-forma-len="16">User ID<span class="forma-character-grid__leader" aria-hidden="true"> . . . :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-sign-on-user" name="user" type="text" maxlength="8" required autocomplete="username" aria-describedby="character-grid-field-sign-on-user-hint" data-forma-row="3" data-forma-col="20" data-forma-len="8">
+        <span class="forma-character-grid__text" id="character-grid-field-sign-on-user-hint" data-forma-row="3" data-forma-col="31" data-forma-len="10" data-forma-emphasis="muted">(required)</span>
+        <label class="forma-character-grid__label" for="character-grid-field-sign-on-password" data-forma-row="4" data-forma-col="2" data-forma-len="16">Password<span class="forma-character-grid__leader" aria-hidden="true">  . . :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-sign-on-password" name="password" type="password" maxlength="8" required autocomplete="current-password" aria-describedby="character-grid-field-sign-on-password-hint" data-forma-row="4" data-forma-col="20" data-forma-len="8">
+        <span class="forma-character-grid__text" id="character-grid-field-sign-on-password-hint" data-forma-row="4" data-forma-col="31" data-forma-len="10" data-forma-emphasis="muted">(required)</span>
+        <label class="forma-character-grid__label" for="character-grid-field-sign-on-new" data-forma-row="5" data-forma-col="2" data-forma-len="16">New password<span class="forma-character-grid__leader" aria-hidden="true"> :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-sign-on-new" name="new-password" type="password" maxlength="8" autocomplete="new-password" aria-describedby="character-grid-field-sign-on-new-hint" data-forma-row="5" data-forma-col="20" data-forma-len="8">
+        <span class="forma-character-grid__text" id="character-grid-field-sign-on-new-hint" data-forma-row="5" data-forma-col="31" data-forma-len="17" data-forma-emphasis="muted">(optional, 8 max)</span>
+        <p class="forma-character-grid__text" data-forma-row="7" data-forma-col="2" data-forma-len="29">Passwords are case sensitive.</p>
+        <div class="forma-character-grid__group" role="group" aria-label="Function keys">
+          <button class="forma-character-grid__key" type="submit" name="action" value="enter" data-forma-action="enter" data-forma-row="8" data-forma-col="2" data-forma-len="13"><kbd>Enter</kbd>=Sign on</button>
+          <button class="forma-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-forma-action="pf3" data-forma-row="8" data-forma-col="17" data-forma-len="8"><kbd>PF3</kbd>=Exit</button>
         </div>
       </form>
     </div>
   </div>
-</ef-character-grid-field>`
+</forma-character-grid-field>`
     },
     {
       id: "address-validation",
       interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Validation error after Enter",
-      description: "The application rejected two values. Each invalid field has `aria-invalid=\"true\"` and lists both its format hint and the shared message in `aria-describedby`. The message reserves two rows with `data-ef-height` because its length varies.",
-      html: `<ef-character-grid-field class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="10" data-ef-columns="60" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-field-address-validation-title" tabindex="0">
-      <form class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-field-address-validation-title" data-ef-row="1" data-ef-col="22" data-ef-len="17" data-ef-emphasis="intensified">CHANGE OF ADDRESS</h2>
-        <span class="ef-character-grid__text" data-ef-row="3" data-ef-col="2" data-ef-len="16">Account<span class="ef-character-grid__leader" aria-hidden="true"> . . . :</span></span>
-        <span class="ef-character-grid__value" data-ef-row="3" data-ef-col="20" data-ef-len="13">00417-2231-09</span>
-        <label class="ef-character-grid__label" for="character-grid-field-address-validation-street" data-ef-row="4" data-ef-col="2" data-ef-len="16">Street<span class="ef-character-grid__leader" aria-hidden="true">  . . . :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-address-validation-street" name="street" type="text" maxlength="30" required value="1200 HARBOR VIEW DR" autocomplete="off" data-ef-row="4" data-ef-col="20" data-ef-len="30">
-        <label class="ef-character-grid__label" for="character-grid-field-address-validation-postal" data-ef-row="5" data-ef-col="2" data-ef-len="16">Postal code<span class="ef-character-grid__leader" aria-hidden="true"> . :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-address-validation-postal" name="postal" type="text" maxlength="10" required value="9720" aria-invalid="true" aria-describedby="character-grid-field-address-validation-postal-hint character-grid-field-address-validation-message" autocomplete="off" data-ef-row="5" data-ef-col="20" data-ef-len="10">
-        <span class="ef-character-grid__text" id="character-grid-field-address-validation-postal-hint" data-ef-row="5" data-ef-col="32" data-ef-len="12" data-ef-emphasis="muted">(99999-9999)</span>
-        <label class="ef-character-grid__label" for="character-grid-field-address-validation-date" data-ef-row="6" data-ef-col="2" data-ef-len="16">Move date<span class="ef-character-grid__leader" aria-hidden="true">  . . :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-address-validation-date" name="move-date" type="text" maxlength="10" value="2026-02-30" aria-invalid="true" aria-describedby="character-grid-field-address-validation-date-hint character-grid-field-address-validation-message" autocomplete="off" data-ef-row="6" data-ef-col="20" data-ef-len="10">
-        <span class="ef-character-grid__text" id="character-grid-field-address-validation-date-hint" data-ef-row="6" data-ef-col="32" data-ef-len="12" data-ef-emphasis="muted">(YYYY-MM-DD)</span>
-        <p class="ef-character-grid__message" id="character-grid-field-address-validation-message" role="alert" data-ef-severity="validation" data-ef-row="8" data-ef-col="2" data-ef-len="58" data-ef-height="2"><span class="ef-character-grid__severity"><span>CHECK</span></span> Postal code needs 5 or 9 digits. Move date is not a real date.</p>
-        <div class="ef-character-grid__group" role="group" aria-label="Function keys">
-          <button class="ef-character-grid__key" type="submit" name="action" value="enter" data-ef-action="enter" data-ef-row="10" data-ef-col="2" data-ef-len="12"><kbd>Enter</kbd>=Update</button>
-          <button class="ef-character-grid__key" type="submit" name="action" value="pf12" formnovalidate data-ef-action="pf12" data-ef-row="10" data-ef-col="16" data-ef-len="11"><kbd>PF12</kbd>=Cancel</button>
+      description: "The application rejected two values. Each invalid field has `aria-invalid=\"true\"` and lists both its format hint and the shared message in `aria-describedby`. The message reserves two rows with `data-forma-height` because its length varies.",
+      html: `<forma-character-grid-field class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="10" data-forma-columns="60" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-field-address-validation-title" tabindex="0">
+      <form class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-field-address-validation-title" data-forma-row="1" data-forma-col="22" data-forma-len="17" data-forma-emphasis="intensified">CHANGE OF ADDRESS</h2>
+        <span class="forma-character-grid__text" data-forma-row="3" data-forma-col="2" data-forma-len="16">Account<span class="forma-character-grid__leader" aria-hidden="true"> . . . :</span></span>
+        <span class="forma-character-grid__value" data-forma-row="3" data-forma-col="20" data-forma-len="13">00417-2231-09</span>
+        <label class="forma-character-grid__label" for="character-grid-field-address-validation-street" data-forma-row="4" data-forma-col="2" data-forma-len="16">Street<span class="forma-character-grid__leader" aria-hidden="true">  . . . :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-address-validation-street" name="street" type="text" maxlength="30" required value="1200 HARBOR VIEW DR" autocomplete="off" data-forma-row="4" data-forma-col="20" data-forma-len="30">
+        <label class="forma-character-grid__label" for="character-grid-field-address-validation-postal" data-forma-row="5" data-forma-col="2" data-forma-len="16">Postal code<span class="forma-character-grid__leader" aria-hidden="true"> . :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-address-validation-postal" name="postal" type="text" maxlength="10" required value="9720" aria-invalid="true" aria-describedby="character-grid-field-address-validation-postal-hint character-grid-field-address-validation-message" autocomplete="off" data-forma-row="5" data-forma-col="20" data-forma-len="10">
+        <span class="forma-character-grid__text" id="character-grid-field-address-validation-postal-hint" data-forma-row="5" data-forma-col="32" data-forma-len="12" data-forma-emphasis="muted">(99999-9999)</span>
+        <label class="forma-character-grid__label" for="character-grid-field-address-validation-date" data-forma-row="6" data-forma-col="2" data-forma-len="16">Move date<span class="forma-character-grid__leader" aria-hidden="true">  . . :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-address-validation-date" name="move-date" type="text" maxlength="10" value="2026-02-30" aria-invalid="true" aria-describedby="character-grid-field-address-validation-date-hint character-grid-field-address-validation-message" autocomplete="off" data-forma-row="6" data-forma-col="20" data-forma-len="10">
+        <span class="forma-character-grid__text" id="character-grid-field-address-validation-date-hint" data-forma-row="6" data-forma-col="32" data-forma-len="12" data-forma-emphasis="muted">(YYYY-MM-DD)</span>
+        <p class="forma-character-grid__message" id="character-grid-field-address-validation-message" role="alert" data-forma-severity="validation" data-forma-row="8" data-forma-col="2" data-forma-len="58" data-forma-height="2"><span class="forma-character-grid__severity"><span>CHECK</span></span> Postal code needs 5 or 9 digits. Move date is not a real date.</p>
+        <div class="forma-character-grid__group" role="group" aria-label="Function keys">
+          <button class="forma-character-grid__key" type="submit" name="action" value="enter" data-forma-action="enter" data-forma-row="10" data-forma-col="2" data-forma-len="12"><kbd>Enter</kbd>=Update</button>
+          <button class="forma-character-grid__key" type="submit" name="action" value="pf12" formnovalidate data-forma-action="pf12" data-forma-row="10" data-forma-col="16" data-forma-len="11"><kbd>PF12</kbd>=Cancel</button>
         </div>
       </form>
     </div>
   </div>
-</ef-character-grid-field>`
+</forma-character-grid-field>`
     },
     {
       id: "short-codes",
       title: "Short codes and touch spacing",
       description: "One- and two-cell code fields. Each is followed by at least five blank cells before its hint (CG-13), so the 2.75rem touch minimum on phones paints into empty cells instead of covering the hint.",
-      html: `<ef-character-grid-field class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="6" data-ef-columns="60" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-field-short-codes-title" tabindex="0">
-      <form class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-field-short-codes-title" data-ef-row="1" data-ef-col="22" data-ef-len="17" data-ef-emphasis="intensified">TRANSACTION ENTRY</h2>
-        <label class="ef-character-grid__label" for="character-grid-field-short-codes-action" data-ef-row="3" data-ef-col="2" data-ef-len="16">Action code<span class="ef-character-grid__leader" aria-hidden="true"> . :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-short-codes-action" name="action-code" type="text" maxlength="1" required pattern="[ACD]" aria-describedby="character-grid-field-short-codes-action-hint" autocomplete="off" data-ef-row="3" data-ef-col="20" data-ef-len="1">
-        <span class="ef-character-grid__text" id="character-grid-field-short-codes-action-hint" data-ef-row="3" data-ef-col="26" data-ef-len="25" data-ef-emphasis="muted">(A=Add C=Change D=Delete)</span>
-        <label class="ef-character-grid__label" for="character-grid-field-short-codes-region" data-ef-row="4" data-ef-col="2" data-ef-len="16">Region<span class="ef-character-grid__leader" aria-hidden="true">  . . . :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-short-codes-region" name="region" type="text" maxlength="2" value="NE" aria-describedby="character-grid-field-short-codes-region-hint" autocomplete="off" data-ef-row="4" data-ef-col="20" data-ef-len="2">
-        <span class="ef-character-grid__text" id="character-grid-field-short-codes-region-hint" data-ef-row="4" data-ef-col="26" data-ef-len="13" data-ef-emphasis="muted">(two letters)</span>
-        <label class="ef-character-grid__label" for="character-grid-field-short-codes-amount" data-ef-row="5" data-ef-col="2" data-ef-len="16">Amount<span class="ef-character-grid__leader" aria-hidden="true">  . . . :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-short-codes-amount" name="amount" type="text" inputmode="decimal" maxlength="12" autocomplete="off" data-ef-row="5" data-ef-col="20" data-ef-len="12">
+      html: `<forma-character-grid-field class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="6" data-forma-columns="60" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-field-short-codes-title" tabindex="0">
+      <form class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-field-short-codes-title" data-forma-row="1" data-forma-col="22" data-forma-len="17" data-forma-emphasis="intensified">TRANSACTION ENTRY</h2>
+        <label class="forma-character-grid__label" for="character-grid-field-short-codes-action" data-forma-row="3" data-forma-col="2" data-forma-len="16">Action code<span class="forma-character-grid__leader" aria-hidden="true"> . :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-short-codes-action" name="action-code" type="text" maxlength="1" required pattern="[ACD]" aria-describedby="character-grid-field-short-codes-action-hint" autocomplete="off" data-forma-row="3" data-forma-col="20" data-forma-len="1">
+        <span class="forma-character-grid__text" id="character-grid-field-short-codes-action-hint" data-forma-row="3" data-forma-col="26" data-forma-len="25" data-forma-emphasis="muted">(A=Add C=Change D=Delete)</span>
+        <label class="forma-character-grid__label" for="character-grid-field-short-codes-region" data-forma-row="4" data-forma-col="2" data-forma-len="16">Region<span class="forma-character-grid__leader" aria-hidden="true">  . . . :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-short-codes-region" name="region" type="text" maxlength="2" value="NE" aria-describedby="character-grid-field-short-codes-region-hint" autocomplete="off" data-forma-row="4" data-forma-col="20" data-forma-len="2">
+        <span class="forma-character-grid__text" id="character-grid-field-short-codes-region-hint" data-forma-row="4" data-forma-col="26" data-forma-len="13" data-forma-emphasis="muted">(two letters)</span>
+        <label class="forma-character-grid__label" for="character-grid-field-short-codes-amount" data-forma-row="5" data-forma-col="2" data-forma-len="16">Amount<span class="forma-character-grid__leader" aria-hidden="true">  . . . :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-short-codes-amount" name="amount" type="text" inputmode="decimal" maxlength="12" autocomplete="off" data-forma-row="5" data-forma-col="20" data-forma-len="12">
       </form>
     </div>
   </div>
-</ef-character-grid-field>`
+</forma-character-grid-field>`
     },
     {
       id: "payment-mobile",
@@ -118,30 +118,30 @@ export default {
           "`inputmode=\"decimal\"` brings up a numeric keyboard; the visible capacity still matches `maxlength`."
         ]
       },
-      html: `<ef-character-grid-field class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="6" data-ef-columns="40" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-field-payment-mobile-title" tabindex="0">
-      <form class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-field-payment-mobile-title" data-ef-row="1" data-ef-col="14" data-ef-len="13" data-ef-emphasis="intensified">PAYMENT ENTRY</h2>
-        <label class="ef-character-grid__label" for="character-grid-field-payment-mobile-amount" data-ef-row="3" data-ef-col="2" data-ef-len="12">Amount<span class="ef-character-grid__leader" aria-hidden="true"> . . :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-payment-mobile-amount" name="amount" type="text" inputmode="decimal" maxlength="10" required autocomplete="off" data-ef-row="3" data-ef-col="15" data-ef-len="10">
-        <label class="ef-character-grid__label" for="character-grid-field-payment-mobile-reference" data-ef-row="4" data-ef-col="2" data-ef-len="12">Reference<span class="ef-character-grid__leader" aria-hidden="true"> :</span></label>
-        <input class="ef-character-grid__field" id="character-grid-field-payment-mobile-reference" name="reference" type="text" maxlength="12" value="INV-1042" autocomplete="off" data-ef-row="4" data-ef-col="15" data-ef-len="12">
-        <div class="ef-character-grid__group" role="group" aria-label="Function keys">
-          <button class="ef-character-grid__key" type="submit" name="action" value="enter" data-ef-action="enter" data-ef-row="6" data-ef-col="2" data-ef-len="10"><kbd>Enter</kbd>=Pay</button>
-          <button class="ef-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-ef-action="pf3" data-ef-row="6" data-ef-col="14" data-ef-len="8"><kbd>PF3</kbd>=Exit</button>
+      html: `<forma-character-grid-field class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="6" data-forma-columns="40" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-field-payment-mobile-title" tabindex="0">
+      <form class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-field-payment-mobile-title" data-forma-row="1" data-forma-col="14" data-forma-len="13" data-forma-emphasis="intensified">PAYMENT ENTRY</h2>
+        <label class="forma-character-grid__label" for="character-grid-field-payment-mobile-amount" data-forma-row="3" data-forma-col="2" data-forma-len="12">Amount<span class="forma-character-grid__leader" aria-hidden="true"> . . :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-payment-mobile-amount" name="amount" type="text" inputmode="decimal" maxlength="10" required autocomplete="off" data-forma-row="3" data-forma-col="15" data-forma-len="10">
+        <label class="forma-character-grid__label" for="character-grid-field-payment-mobile-reference" data-forma-row="4" data-forma-col="2" data-forma-len="12">Reference<span class="forma-character-grid__leader" aria-hidden="true"> :</span></label>
+        <input class="forma-character-grid__field" id="character-grid-field-payment-mobile-reference" name="reference" type="text" maxlength="12" value="INV-1042" autocomplete="off" data-forma-row="4" data-forma-col="15" data-forma-len="12">
+        <div class="forma-character-grid__group" role="group" aria-label="Function keys">
+          <button class="forma-character-grid__key" type="submit" name="action" value="enter" data-forma-action="enter" data-forma-row="6" data-forma-col="2" data-forma-len="10"><kbd>Enter</kbd>=Pay</button>
+          <button class="forma-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-forma-action="pf3" data-forma-row="6" data-forma-col="14" data-forma-len="8"><kbd>PF3</kbd>=Exit</button>
         </div>
       </form>
     </div>
   </div>
-</ef-character-grid-field>`
+</forma-character-grid-field>`
     }
   ],
   api: {
     attributes: [
-      { name: "for", on: "label.ef-character-grid__label", values: "id of the field", default: "—", description: "Required (CG-8). The label run must precede its field in source order." },
+      { name: "for", on: "label.forma-character-grid__label", values: "id of the field", default: "—", description: "Required (CG-8). The label run must precede its field in source order." },
       { name: "type", on: "input", values: "text | password", default: "text", description: "Native input type. Keep `password` for secrets so the browser masks and protects the value." },
-      { name: "maxlength", on: "input", values: "integer", default: "—", description: "Required. Must equal `data-ef-len`, so visible capacity and real capacity agree (CG-8)." },
+      { name: "maxlength", on: "input", values: "integer", default: "—", description: "Required. Must equal `data-forma-len`, so visible capacity and real capacity agree (CG-8)." },
       { name: "name", on: "input", values: "string", default: "—", description: "Form field name submitted with the screen." },
       { name: "value", on: "input", values: "string", default: "empty", description: "Initial value rendered by the application." },
       { name: "required", on: "input", values: "boolean", default: "absent", description: "Native requirement; draws a double underline. Also say \"required\" in the label or hint." },
@@ -154,18 +154,18 @@ export default {
       { name: "autocomplete", on: "input", values: "token", default: "—", description: "Use real tokens (`username`, `current-password`) or `off` for host codes." }
     ],
     hooks: {
-      "ef-character-grid__label": "Protected label run for a field. Keeps protected text color and a default cursor.",
-      "ef-character-grid__leader": "Decorative leader characters inside the label, muted and `aria-hidden=\"true\"`.",
-      "ef-character-grid__field": "The native input run: field surface, bottom boundary, no radius, exactly its cells wide. Where `field-sizing: content` is supported it widens under text-spacing overrides.",
-      "ef-character-grid__text": "Protected hint or prose run, commonly referenced by `aria-describedby`.",
-      "ef-character-grid__value": "Protected value. Use this, not a readonly input, for data the user cannot change.",
-      "data-ef-len": "Field width in cells; must equal `maxlength`.",
-      "aria-invalid": "`true` draws the invalid cue: dashed rules above and below in `--ef-grid-validation`.",
-      "--ef-grid-field": "Field text color.",
-      "--ef-grid-field-surface": "Field background. Disabled and read-only fields are transparent.",
-      "--ef-grid-boundary": "Field underline color.",
-      "--ef-grid-validation": "Color of the invalid rules and validation messages.",
-      "--ef-grid-focus": "Focus outline color."
+      "forma-character-grid__label": "Protected label run for a field. Keeps protected text color and a default cursor.",
+      "forma-character-grid__leader": "Decorative leader characters inside the label, muted and `aria-hidden=\"true\"`.",
+      "forma-character-grid__field": "The native input run: field surface, bottom boundary, no radius, exactly its cells wide. Where `field-sizing: content` is supported it widens under text-spacing overrides.",
+      "forma-character-grid__text": "Protected hint or prose run, commonly referenced by `aria-describedby`.",
+      "forma-character-grid__value": "Protected value. Use this, not a readonly input, for data the user cannot change.",
+      "data-forma-len": "Field width in cells; must equal `maxlength`.",
+      "aria-invalid": "`true` draws the invalid cue: dashed rules above and below in `--forma-grid-validation`.",
+      "--forma-grid-field": "Field text color.",
+      "--forma-grid-field-surface": "Field background. Disabled and read-only fields are transparent.",
+      "--forma-grid-boundary": "Field underline color.",
+      "--forma-grid-validation": "Color of the invalid rules and validation messages.",
+      "--forma-grid-focus": "Focus outline color."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between fields in row-major order, skipping disabled fields natively." },
@@ -179,12 +179,12 @@ export default {
     form: "Fields are native form controls: named values submit with the surface form, `required` blocks a submit key without `formnovalidate`, disabled fields do not submit, and readonly fields do."
   },
   states: [
-    { name: "Editable", how: "input.ef-character-grid__field", description: "Field surface with a solid 2px bottom boundary." },
+    { name: "Editable", how: "input.forma-character-grid__field", description: "Field surface with a solid 2px bottom boundary." },
     { name: "Required", how: "required / :required", description: "Double 4px bottom boundary. The label or hint also says required." },
     { name: "Invalid", how: "aria-invalid=\"true\"", description: "Dashed rules above and below, with no inline border, so the field stays exactly its cells." },
     { name: "Disabled", how: "disabled / :disabled", description: "Dotted bottom boundary, transparent surface, muted text, not-allowed cursor; skipped by Tab." },
     { name: "Read-only", how: "readonly / :read-only", description: "Thin 1px bottom boundary and no surface." },
-    { name: "Focus", how: ":focus-visible", description: "2px outline in `--ef-grid-focus`; Highlight in forced colors. Profiles may add a caret treatment but not remove the outline." }
+    { name: "Focus", how: ":focus-visible", description: "2px outline in `--forma-grid-focus`; Highlight in forced colors. Profiles may add a caret treatment but not remove the outline." }
   ],
   accessibility: {
     forma: [
@@ -194,7 +194,7 @@ export default {
       "Rows are at least 24px; on narrow or coarse-pointer screens fields are at least 44px tall and 2.75rem wide."
     ],
     consumer: [
-      "Precede every field with a `label for` run and keep `maxlength` equal to `data-ef-len`.",
+      "Precede every field with a `label for` run and keep `maxlength` equal to `data-forma-len`.",
       "After validation set `aria-invalid=\"true\"` and add the message ID to `aria-describedby`; clear both when the value is fixed.",
       "State requirements and formats in visible text, not only through the underline.",
       "Choose initial focus when the screen appears, typically the first invalid field, otherwise the first field.",
@@ -202,7 +202,7 @@ export default {
     ]
   },
   responsive: [
-    "Fields are exactly `data-ef-len` cells wide and one row pitch tall at every width.",
+    "Fields are exactly `data-forma-len` cells wide and one row pitch tall at every width.",
     "Below 40rem or on a coarse pointer, fields and rows reach 44px; short fields paint into the blank cells after them without widening the tracks.",
     "Under text-spacing overrides, supporting browsers widen the field to its value (`field-sizing: content`); others scroll the value inside the field.",
     "Narrow-screen containment or reflow is set on the grid; see [[character-grid]]."
@@ -223,7 +223,7 @@ export default {
     ]
   },
   related: [
-    { slug: "character-grid", note: "The grid that places fields; owns geometry and every data-ef-* hook." },
+    { slug: "character-grid", note: "The grid that places fields; owns geometry and every data-forma-* hook." },
     { slug: "character-grid-selection", note: "Option fields in each row of a positioned list, named by column and row headers." },
     { slug: "character-grid-status", note: "The message a field references when it is invalid." },
     { slug: "text-field", note: "Use for ordinary forms outside a character grid." }

@@ -17,7 +17,7 @@ export default {
     ],
     characteristics: [
       "Each option is a square target at least 44 by 44px with a border.",
-      "The accessible name comes from `.ef-sr-only` text, never from the glyph.",
+      "The accessible name comes from `.forma-sr-only` text, never from the glyph.",
       "The row wraps onto more lines when it does not fit.",
       "Selection is shown on the chosen symbol only, as an inverse surface."
     ]
@@ -27,34 +27,34 @@ export default {
       id: "saved-four-stars",
       title: "Saved four-star rating",
       description: "A response restored with the fourth option checked. Only that option is inverted; the text meaning is \"4 of 5, satisfied\".",
-      html: `<ef-symbol-rating class="ef-component-tag">
-  <fieldset class="ef-symbol-rating">
-    <legend class="ef-symbol-rating__legend">How satisfied are you with the new onboarding guide?</legend>
-    <div class="ef-symbol-rating__options">
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-saved-onboarding" value="1" required><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">1 of 5, very dissatisfied</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-saved-onboarding" value="2"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">2 of 5, dissatisfied</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-saved-onboarding" value="3"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">3 of 5, neutral</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-saved-onboarding" value="4" checked><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">4 of 5, satisfied</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-saved-onboarding" value="5"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">5 of 5, very satisfied</span></label>
+      html: `<forma-symbol-rating class="forma-component-tag">
+  <fieldset class="forma-symbol-rating">
+    <legend class="forma-symbol-rating__legend">How satisfied are you with the new onboarding guide?</legend>
+    <div class="forma-symbol-rating__options">
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-saved-onboarding" value="1" required><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">1 of 5, very dissatisfied</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-saved-onboarding" value="2"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">2 of 5, dissatisfied</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-saved-onboarding" value="3"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">3 of 5, neutral</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-saved-onboarding" value="4" checked><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">4 of 5, satisfied</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-saved-onboarding" value="5"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">5 of 5, very satisfied</span></label>
     </div>
   </fieldset>
-</ef-symbol-rating>`
+</forma-symbol-rating>`
     },
     {
       id: "effort-icons",
       title: "Three-level effort rating with a visible key",
       description: "Non-star glyphs for a three-level effort question. A visible description spells out the key for sighted users, because distinct glyphs are not self-explanatory.",
-      html: `<ef-symbol-rating class="ef-component-tag">
-  <fieldset class="ef-symbol-rating" aria-describedby="symbol-effort-key">
-    <legend class="ef-symbol-rating__legend">How much effort did the migration take?</legend>
-    <p class="ef-field__description" id="symbol-effort-key">● low, ●● moderate, ●●● high</p>
-    <div class="ef-symbol-rating__options">
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-effort-migration" value="low" required><span class="ef-symbol-rating__symbol" aria-hidden="true">●</span><span class="ef-sr-only">Low effort</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-effort-migration" value="moderate"><span class="ef-symbol-rating__symbol" aria-hidden="true">●●</span><span class="ef-sr-only">Moderate effort</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-effort-migration" value="high"><span class="ef-symbol-rating__symbol" aria-hidden="true">●●●</span><span class="ef-sr-only">High effort</span></label>
+      html: `<forma-symbol-rating class="forma-component-tag">
+  <fieldset class="forma-symbol-rating" aria-describedby="symbol-effort-key">
+    <legend class="forma-symbol-rating__legend">How much effort did the migration take?</legend>
+    <p class="forma-field__description" id="symbol-effort-key">● low, ●● moderate, ●●● high</p>
+    <div class="forma-symbol-rating__options">
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-effort-migration" value="low" required><span class="forma-symbol-rating__symbol" aria-hidden="true">●</span><span class="forma-sr-only">Low effort</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-effort-migration" value="moderate"><span class="forma-symbol-rating__symbol" aria-hidden="true">●●</span><span class="forma-sr-only">Moderate effort</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-effort-migration" value="high"><span class="forma-symbol-rating__symbol" aria-hidden="true">●●●</span><span class="forma-sr-only">High effort</span></label>
     </div>
   </fieldset>
-</ef-symbol-rating>`
+</forma-symbol-rating>`
     },
     {
       id: "mobile-ten-point",
@@ -69,23 +69,23 @@ export default {
           "No horizontal scrolling at any width."
         ]
       },
-      html: `<ef-symbol-rating class="ef-component-tag">
-  <fieldset class="ef-symbol-rating">
-    <legend class="ef-symbol-rating__legend">Rate the clarity of the incident report.</legend>
-    <div class="ef-symbol-rating__options">
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="1" required><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">1 of 10, very unclear</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="2"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">2 of 10</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="3"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">3 of 10</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="4"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">4 of 10</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="5"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">5 of 10</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="6"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">6 of 10</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="7"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">7 of 10</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="8"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">8 of 10</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="9"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">9 of 10</span></label>
-      <label class="ef-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="10"><span class="ef-symbol-rating__symbol" aria-hidden="true">★</span><span class="ef-sr-only">10 of 10, very clear</span></label>
+      html: `<forma-symbol-rating class="forma-component-tag">
+  <fieldset class="forma-symbol-rating">
+    <legend class="forma-symbol-rating__legend">Rate the clarity of the incident report.</legend>
+    <div class="forma-symbol-rating__options">
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="1" required><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">1 of 10, very unclear</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="2"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">2 of 10</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="3"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">3 of 10</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="4"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">4 of 10</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="5"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">5 of 10</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="6"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">6 of 10</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="7"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">7 of 10</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="8"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">8 of 10</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="9"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">9 of 10</span></label>
+      <label class="forma-symbol-rating__option"><input type="radio" name="symbol-mobile-clarity" value="10"><span class="forma-symbol-rating__symbol" aria-hidden="true">★</span><span class="forma-sr-only">10 of 10, very clear</span></label>
     </div>
   </fieldset>
-</ef-symbol-rating>`
+</forma-symbol-rating>`
     }
   ],
   api: {
@@ -95,16 +95,16 @@ export default {
       { name: "value", on: "input", values: "string", default: "—", description: "Submitted rating. Meaning and scoring stay in the application." },
       { name: "required", on: "first input", values: "boolean", default: "absent", description: "Native required-group validation." },
       { name: "checked", on: "input", values: "boolean", default: "absent", description: "Restores a saved rating." },
-      { name: "aria-hidden", on: ".ef-symbol-rating__symbol", values: "true", default: "—", description: "Required. The glyph is decorative and must not be the accessible name." },
+      { name: "aria-hidden", on: ".forma-symbol-rating__symbol", values: "true", default: "—", description: "Required. The glyph is decorative and must not be the accessible name." },
       { name: "aria-describedby", on: "fieldset", values: "id list", default: "—", description: "Associates a key or help text with the rating." }
     ],
     hooks: {
-      "ef-symbol-rating": "Root fieldset with browser border and padding removed.",
-      "ef-symbol-rating__legend": "Question text.",
-      "ef-symbol-rating__options": "Wrapping inline flex row of options with a 0.25rem gap.",
-      "ef-symbol-rating__option": "Bordered square label, at least 44px each way. The radio inside is visually hidden.",
-      "ef-symbol-rating__symbol": "The decorative glyph at 1.35rem.",
-      "ef-sr-only": "Visually hidden text that gives each option its accessible name, such as \"3 of 5, neutral\"."
+      "forma-symbol-rating": "Root fieldset with browser border and padding removed.",
+      "forma-symbol-rating__legend": "Question text.",
+      "forma-symbol-rating__options": "Wrapping inline flex row of options with a 0.25rem gap.",
+      "forma-symbol-rating__option": "Bordered square label, at least 44px each way. The radio inside is visually hidden.",
+      "forma-symbol-rating__symbol": "The decorative glyph at 1.35rem.",
+      "forma-sr-only": "Visually hidden text that gives each option its accessible name, such as \"3 of 5, neutral\"."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus into and out of the group." },

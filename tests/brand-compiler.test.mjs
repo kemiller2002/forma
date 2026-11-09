@@ -18,9 +18,9 @@ function copyRepositoryBrands(dir) {
 }
 
 test("repository brand manifests compile deterministically and remain scoped", () => {
-  const source = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-src-"));
-  const first = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-out-"));
-  const second = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-out-"));
+  const source = fs.mkdtempSync(path.join(os.tmpdir(), "forma-brands-src-"));
+  const first = fs.mkdtempSync(path.join(os.tmpdir(), "forma-brands-out-"));
+  const second = fs.mkdtempSync(path.join(os.tmpdir(), "forma-brands-out-"));
   copyRepositoryBrands(source);
 
   const a = runCompiler(source, first);
@@ -37,19 +37,19 @@ test("repository brand manifests compile deterministically and remain scoped", (
   }
 
   const css = fs.readFileSync(path.join(first, "example-harbor.css"), "utf8");
-  assert.match(css, /\[data-ef-brand="example-harbor"\]/);
-  assert.match(css, /\[data-ef-theme="dark"\] \[data-ef-brand="example-harbor"\]/);
-  assert.match(css, /--ef-color-accent-primary: #7a4a00/);
-  assert.match(css, /--ef-color-status-danger: #a8342a/);
-  assert.match(css, /--ef-primitive-radius-medium: 12px/);
+  assert.match(css, /\[data-forma-brand="example-harbor"\]/);
+  assert.match(css, /\[data-forma-theme="dark"\] \[data-forma-brand="example-harbor"\]/);
+  assert.match(css, /--forma-color-accent-primary: #7a4a00/);
+  assert.match(css, /--forma-color-status-danger: #a8342a/);
+  assert.match(css, /--forma-primitive-radius-medium: 12px/);
 
   const index = JSON.parse(fs.readFileSync(path.join(first, "index.json"), "utf8"));
   assert.deepEqual(index.brands.map(item => item.id), ["example-harbor", "example-orchard"]);
 });
 
 test("unsafe brand contrast is rejected", () => {
-  const source = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-src-"));
-  const output = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-out-"));
+  const source = fs.mkdtempSync(path.join(os.tmpdir(), "forma-brands-src-"));
+  const output = fs.mkdtempSync(path.join(os.tmpdir(), "forma-brands-out-"));
   const data = JSON.parse(fs.readFileSync("brands/example-harbor.brand.json", "utf8"));
   data.themes.light.color.accent.primary = "#ffffff";
   fs.writeFileSync(path.join(source, "unsafe.brand.json"), JSON.stringify(data, null, 2));
@@ -60,8 +60,8 @@ test("unsafe brand contrast is rejected", () => {
 });
 
 test("unsafe font-family injection is rejected", () => {
-  const source = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-src-"));
-  const output = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-out-"));
+  const source = fs.mkdtempSync(path.join(os.tmpdir(), "forma-brands-src-"));
+  const output = fs.mkdtempSync(path.join(os.tmpdir(), "forma-brands-out-"));
   const data = JSON.parse(fs.readFileSync("brands/example-harbor.brand.json", "utf8"));
   data.presentation.fontFamily.sans = ["Arial; color: red"];
   fs.writeFileSync(path.join(source, "unsafe-font.brand.json"), JSON.stringify(data, null, 2));
@@ -72,8 +72,8 @@ test("unsafe font-family injection is rejected", () => {
 });
 
 test("extended brand roles are emitted and contrast-gated", () => {
-  const source = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-src-"));
-  const output = fs.mkdtempSync(path.join(os.tmpdir(), "ef-brands-out-"));
+  const source = fs.mkdtempSync(path.join(os.tmpdir(), "forma-brands-src-"));
+  const output = fs.mkdtempSync(path.join(os.tmpdir(), "forma-brands-out-"));
   const data = JSON.parse(fs.readFileSync("brands/example-orchard.brand.json", "utf8"));
   data.id = "product-identity";
   Object.assign(data.themes.light.color.accent, { primary: "#2f6a2c", hover: "#2c2733" });
@@ -83,8 +83,8 @@ test("extended brand roles are emitted and contrast-gated", () => {
   const ok = runCompiler(source, output);
   assert.equal(ok.status, 0, ok.stderr);
   const css = fs.readFileSync(path.join(output, "product-identity.css"), "utf8");
-  assert.match(css, /--ef-color-accent-hover: #2c2733/);
-  assert.match(css, /--ef-color-status-danger: #a3312c/);
+  assert.match(css, /--forma-color-accent-hover: #2c2733/);
+  assert.match(css, /--forma-color-status-danger: #a3312c/);
 
   data.themes.light.color.status.warning = "#e7b766";
   fs.writeFileSync(path.join(source, "product-identity.brand.json"), JSON.stringify(data, null, 2));

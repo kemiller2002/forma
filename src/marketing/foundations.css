@@ -1,124 +1,124 @@
 /*
   Forma marketing foundations.
 
-  Everything here is scoped to the MarketingShell root (.ef-site) so that
+  Everything here is scoped to the MarketingShell root (.forma-site) so that
   loading the marketing layer never restyles an application that also uses
   Forma. Values come only from role tokens (src/marketing/roles.css) and core
   semantic tokens; no brand values live in this file.
 
   Surface tones: every region that changes background declares a tone with
-  data-ef-tone. A tone sets a small, contrast-safe set of context variables
-  (--ef-tone-*) that components read, so text, links, labels, and rules stay
+  data-forma-tone. A tone sets a small, contrast-safe set of context variables
+  (--forma-tone-*) that components read, so text, links, labels, and rules stay
   legible on every surface without per-component color overrides.
 */
 @layer forma.marketing.foundations {
-  :where(:root, [data-ef-theme], [data-ef-brand]),
-  .ef-site,
-  [data-ef-tone="page"] {
-    --ef-tone-background: var(--ef-color-surface-primary);
-    --ef-tone-text: var(--ef-color-text-primary);
-    --ef-tone-heading: var(--ef-color-text-heading);
-    --ef-tone-muted: var(--ef-color-text-muted);
-    --ef-tone-label: var(--ef-color-accent-secondary);
-    --ef-tone-link: var(--ef-color-accent-primary);
-    --ef-tone-link-hover: var(--ef-color-accent-hover);
-    --ef-tone-rule: var(--ef-color-border-subtle);
-    --ef-tone-rule-strong: var(--ef-color-border-functional);
-    --ef-tone-action-background: var(--ef-color-surface-inverse);
-    --ef-tone-action-text: var(--ef-color-text-inverse);
-    --ef-tone-action-hover: var(--ef-color-surface-inverse-secondary);
-    --ef-tone-hover: var(--ef-color-surface-secondary);
+  :where(:root, [data-forma-theme], [data-forma-brand]),
+  .forma-site,
+  [data-forma-tone="page"] {
+    --forma-tone-background: var(--forma-color-surface-primary);
+    --forma-tone-text: var(--forma-color-text-primary);
+    --forma-tone-heading: var(--forma-color-text-heading);
+    --forma-tone-muted: var(--forma-color-text-muted);
+    --forma-tone-label: var(--forma-color-accent-secondary);
+    --forma-tone-link: var(--forma-color-accent-primary);
+    --forma-tone-link-hover: var(--forma-color-accent-hover);
+    --forma-tone-rule: var(--forma-color-border-subtle);
+    --forma-tone-rule-strong: var(--forma-color-border-functional);
+    --forma-tone-action-background: var(--forma-color-surface-inverse);
+    --forma-tone-action-text: var(--forma-color-text-inverse);
+    --forma-tone-action-hover: var(--forma-color-surface-inverse-secondary);
+    --forma-tone-hover: var(--forma-color-surface-secondary);
   }
 
   /* Accent colors are not validated against the secondary surface, so links
      and labels on it fall back to text roles that are. Cards default to
      this tone. */
-  [data-ef-tone="surface"],
-  :where(.ef-card:not([data-ef-tone])) {
-    --ef-tone-background: var(--ef-color-surface-secondary);
-    --ef-tone-text: var(--ef-color-text-primary);
-    --ef-tone-heading: var(--ef-color-text-heading);
-    --ef-tone-muted: var(--ef-color-text-on-secondary-surface);
-    --ef-tone-label: var(--ef-color-text-on-secondary-surface);
-    --ef-tone-link: var(--ef-color-text-primary);
-    --ef-tone-link-hover: var(--ef-color-text-primary);
-    --ef-tone-rule: var(--ef-color-border-subtle);
-    --ef-tone-rule-strong: var(--ef-color-border-functional);
-    --ef-tone-hover: var(--ef-color-surface-primary);
+  [data-forma-tone="surface"],
+  :where(.forma-card:not([data-forma-tone])) {
+    --forma-tone-background: var(--forma-color-surface-secondary);
+    --forma-tone-text: var(--forma-color-text-primary);
+    --forma-tone-heading: var(--forma-color-text-heading);
+    --forma-tone-muted: var(--forma-color-text-on-secondary-surface);
+    --forma-tone-label: var(--forma-color-text-on-secondary-surface);
+    --forma-tone-link: var(--forma-color-text-primary);
+    --forma-tone-link-hover: var(--forma-color-text-primary);
+    --forma-tone-rule: var(--forma-color-border-subtle);
+    --forma-tone-rule-strong: var(--forma-color-border-functional);
+    --forma-tone-hover: var(--forma-color-surface-primary);
   }
 
-  [data-ef-tone="elevated"] {
-    --ef-tone-background: var(--ef-color-surface-elevated);
-    --ef-tone-text: var(--ef-color-text-primary);
-    --ef-tone-heading: var(--ef-color-text-heading);
-    --ef-tone-muted: var(--ef-color-text-primary);
-    --ef-tone-label: var(--ef-color-text-primary);
-    --ef-tone-link: var(--ef-color-text-primary);
-    --ef-tone-link-hover: var(--ef-color-text-primary);
-    --ef-tone-rule: var(--ef-color-border-subtle);
-    --ef-tone-rule-strong: var(--ef-color-border-functional);
-    --ef-tone-hover: var(--ef-color-surface-primary);
+  [data-forma-tone="elevated"] {
+    --forma-tone-background: var(--forma-color-surface-elevated);
+    --forma-tone-text: var(--forma-color-text-primary);
+    --forma-tone-heading: var(--forma-color-text-heading);
+    --forma-tone-muted: var(--forma-color-text-primary);
+    --forma-tone-label: var(--forma-color-text-primary);
+    --forma-tone-link: var(--forma-color-text-primary);
+    --forma-tone-link-hover: var(--forma-color-text-primary);
+    --forma-tone-rule: var(--forma-color-border-subtle);
+    --forma-tone-rule-strong: var(--forma-color-border-functional);
+    --forma-tone-hover: var(--forma-color-surface-primary);
   }
 
-  [data-ef-tone="inverse"] {
-    --ef-tone-background: var(--ef-color-surface-inverse);
-    --ef-tone-text: var(--ef-color-text-inverse);
-    --ef-tone-heading: var(--ef-color-text-inverse);
-    --ef-tone-muted: var(--ef-color-text-inverse);
-    --ef-tone-label: var(--ef-color-text-inverse);
-    --ef-tone-link: var(--ef-color-text-inverse);
-    --ef-tone-link-hover: var(--ef-color-text-inverse);
-    --ef-tone-rule: var(--ef-color-surface-inverse-secondary);
-    --ef-tone-rule-strong: var(--ef-color-text-inverse);
-    --ef-tone-action-background: var(--ef-color-surface-primary);
-    --ef-tone-action-text: var(--ef-color-text-primary);
-    --ef-tone-action-hover: var(--ef-color-surface-secondary);
-    --ef-tone-hover: var(--ef-color-surface-inverse-secondary);
+  [data-forma-tone="inverse"] {
+    --forma-tone-background: var(--forma-color-surface-inverse);
+    --forma-tone-text: var(--forma-color-text-inverse);
+    --forma-tone-heading: var(--forma-color-text-inverse);
+    --forma-tone-muted: var(--forma-color-text-inverse);
+    --forma-tone-label: var(--forma-color-text-inverse);
+    --forma-tone-link: var(--forma-color-text-inverse);
+    --forma-tone-link-hover: var(--forma-color-text-inverse);
+    --forma-tone-rule: var(--forma-color-surface-inverse-secondary);
+    --forma-tone-rule-strong: var(--forma-color-text-inverse);
+    --forma-tone-action-background: var(--forma-color-surface-primary);
+    --forma-tone-action-text: var(--forma-color-text-primary);
+    --forma-tone-action-hover: var(--forma-color-surface-secondary);
+    --forma-tone-hover: var(--forma-color-surface-inverse-secondary);
   }
 
-  [data-ef-tone],
-  :where(.ef-card:not([data-ef-tone])) {
-    background: var(--ef-tone-background);
-    color: var(--ef-tone-text);
+  [data-forma-tone],
+  :where(.forma-card:not([data-forma-tone])) {
+    background: var(--forma-tone-background);
+    color: var(--forma-tone-text);
   }
 
-  :where(html):has(> body.ef-site) {
-    background: var(--ef-color-surface-primary);
+  :where(html):has(> body.forma-site) {
+    background: var(--forma-color-surface-primary);
   }
 
-  .ef-site {
+  .forma-site {
     /* Stacking context keeps an optional theme backdrop behind content even
        when the shell is not the body element. */
     isolation: isolate;
     display: flex;
     flex-direction: column;
     margin: 0;
-    background: var(--ef-color-surface-primary);
-    color: var(--ef-tone-text);
-    font-family: var(--ef-type-family-body);
-    font-size: var(--ef-type-size-body);
-    font-weight: var(--ef-type-weight-body);
-    letter-spacing: var(--ef-type-tracking-body);
-    line-height: var(--ef-type-leading-body);
+    background: var(--forma-color-surface-primary);
+    color: var(--forma-tone-text);
+    font-family: var(--forma-type-family-body);
+    font-size: var(--forma-type-size-body);
+    font-weight: var(--forma-type-weight-body);
+    letter-spacing: var(--forma-type-tracking-body);
+    line-height: var(--forma-type-leading-body);
     text-rendering: optimizeLegibility;
   }
 
   /* The shell fills the viewport only when it is the document body. */
-  body.ef-site {
+  body.forma-site {
     min-block-size: 100vh;
     min-block-size: 100dvh;
   }
 
   /* Optional brand backdrop supplied by a theme; absent means none. */
-  .ef-site::before {
+  .forma-site::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background-image: var(--ef-site-backdrop, none);
-    background-size: var(--ef-site-backdrop-size, auto);
-    opacity: var(--ef-site-backdrop-opacity, 1);
+    background-image: var(--forma-site-backdrop, none);
+    background-size: var(--forma-site-backdrop-size, auto);
+    opacity: var(--forma-site-backdrop-opacity, 1);
   }
 
   /*
@@ -127,60 +127,60 @@
    * paragraph margin made nodes outgrow their layout. revert-layer hands these
    * elements back to the earlier layers.
    */
-  .ef-site .ef-diagram :where(h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, svg, dl, dt, dd, strong, b) { all: revert-layer; }
+  .forma-site .forma-diagram :where(h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, svg, dl, dt, dd, strong, b) { all: revert-layer; }
 
-  .ef-site :where(h1, h2, h3, h4, h5, h6) {
+  .forma-site :where(h1, h2, h3, h4, h5, h6) {
     margin-block: 0;
-    color: var(--ef-tone-heading);
+    color: var(--forma-tone-heading);
     text-wrap: balance;
   }
 
-  .ef-site :where(h1, h2) {
-    font-family: var(--ef-type-family-display);
-    font-weight: var(--ef-type-weight-heading);
-    letter-spacing: var(--ef-type-tracking-display);
-    line-height: var(--ef-type-leading-heading);
+  .forma-site :where(h1, h2) {
+    font-family: var(--forma-type-family-display);
+    font-weight: var(--forma-type-weight-heading);
+    letter-spacing: var(--forma-type-tracking-display);
+    line-height: var(--forma-type-leading-heading);
   }
 
-  .ef-site :where(h1) { font-size: var(--ef-type-size-h1); max-inline-size: var(--ef-type-measure-h1); }
-  .ef-site :where(h2) { font-size: var(--ef-type-size-h2); max-inline-size: var(--ef-type-measure-h2); }
-  .ef-site :where(h3) { font-size: var(--ef-type-size-h3); line-height: var(--ef-type-leading-snug); }
-  .ef-site :where(h4, h5, h6) { font-size: var(--ef-type-size-h4); line-height: var(--ef-type-leading-snug); }
+  .forma-site :where(h1) { font-size: var(--forma-type-size-h1); max-inline-size: var(--forma-type-measure-h1); }
+  .forma-site :where(h2) { font-size: var(--forma-type-size-h2); max-inline-size: var(--forma-type-measure-h2); }
+  .forma-site :where(h3) { font-size: var(--forma-type-size-h3); line-height: var(--forma-type-leading-snug); }
+  .forma-site :where(h4, h5, h6) { font-size: var(--forma-type-size-h4); line-height: var(--forma-type-leading-snug); }
 
-  .ef-site :where(p) {
-    margin-block: 0 var(--ef-space-4);
-    max-inline-size: var(--ef-layout-measure);
-    color: var(--ef-tone-muted);
+  .forma-site :where(p) {
+    margin-block: 0 var(--forma-space-4);
+    max-inline-size: var(--forma-layout-measure);
+    color: var(--forma-tone-muted);
   }
 
-  .ef-site :where(p:last-child) { margin-block-end: 0; }
+  .forma-site :where(p:last-child) { margin-block-end: 0; }
 
   /* Links stay underlined everywhere except where a component gives them
      another non-color cue (navigation, buttons, cards). */
-  .ef-site :where(a) {
-    color: var(--ef-tone-link);
+  .forma-site :where(a) {
+    color: var(--forma-tone-link);
     text-decoration-line: underline;
-    text-decoration-thickness: var(--ef-shape-border-width);
+    text-decoration-thickness: var(--forma-shape-border-width);
     text-underline-offset: 0.2em;
   }
 
-  .ef-site :where(a:hover) {
-    color: var(--ef-tone-link-hover);
-    text-decoration-thickness: calc(var(--ef-shape-border-width) * 2);
+  .forma-site :where(a:hover) {
+    color: var(--forma-tone-link-hover);
+    text-decoration-thickness: calc(var(--forma-shape-border-width) * 2);
   }
 
-  .ef-site :where(ul, ol) { margin-block: 0 var(--ef-space-4); padding-inline-start: var(--ef-space-5); }
-  .ef-site :where(li + li) { margin-block-start: 0.45em; }
+  .forma-site :where(ul, ol) { margin-block: 0 var(--forma-space-4); padding-inline-start: var(--forma-space-5); }
+  .forma-site :where(li + li) { margin-block-start: 0.45em; }
   /* Only prose lists take the reading measure; classed lists are structure. */
-  .ef-site :where(ul:not([class]), ol:not([class])) > li { max-inline-size: var(--ef-layout-measure); }
-  .ef-site :where(strong, b) { font-weight: var(--ef-type-weight-strong); }
-  .ef-site :where(img, svg, video, canvas, picture) { max-inline-size: 100%; block-size: auto; }
-  .ef-site :where(code, kbd, samp, pre) { font-family: var(--ef-type-family-mono); font-size: 0.9em; }
+  .forma-site :where(ul:not([class]), ol:not([class])) > li { max-inline-size: var(--forma-layout-measure); }
+  .forma-site :where(strong, b) { font-weight: var(--forma-type-weight-strong); }
+  .forma-site :where(img, svg, video, canvas, picture) { max-inline-size: 100%; block-size: auto; }
+  .forma-site :where(code, kbd, samp, pre) { font-family: var(--forma-type-family-mono); font-size: 0.9em; }
 
-  .ef-site :where(:not(pre) > code) {
+  .forma-site :where(:not(pre) > code) {
     padding: 0.1em 0.3em;
-    background: var(--ef-tone-hover);
-    color: var(--ef-tone-text);
+    background: var(--forma-tone-hover);
+    color: var(--forma-tone-text);
     overflow-wrap: anywhere;
   }
 
@@ -194,44 +194,44 @@
    * inheritance. Found by the EDF site at 320px: list words escaped a card at
    * 200% text and a release URL in a span escaped it at every width.
    */
-  .ef-site :where(
-    .ef-hero, .ef-section-heading, .ef-card, .ef-facts, .ef-index, .ef-callout,
-    .ef-cta, .ef-split, .ef-doc, .ef-prose, .ef-statement, .ef-site-footer
+  .forma-site :where(
+    .forma-hero, .forma-section-heading, .forma-card, .forma-facts, .forma-index, .forma-callout,
+    .forma-cta, .forma-split, .forma-doc, .forma-prose, .forma-statement, .forma-site-footer
   ) {
     overflow-wrap: break-word;
   }
 
-  .ef-site :where(hr) {
-    margin-block: var(--ef-layout-section-space);
+  .forma-site :where(hr) {
+    margin-block: var(--forma-layout-section-space);
     border: 0;
-    border-block-start: var(--ef-shape-border-width) solid var(--ef-tone-rule-strong);
+    border-block-start: var(--forma-shape-border-width) solid var(--forma-tone-rule-strong);
   }
 
-  .ef-site :where(blockquote) {
-    margin: var(--ef-layout-block-space) 0;
-    padding-inline-start: var(--ef-layout-block-space);
-    border-inline-start: var(--ef-shape-border-width-accent) solid var(--ef-color-accent-primary);
-    font-family: var(--ef-type-family-display);
-    font-size: var(--ef-type-size-lead);
-    line-height: var(--ef-type-leading-lead);
+  .forma-site :where(blockquote) {
+    margin: var(--forma-layout-block-space) 0;
+    padding-inline-start: var(--forma-layout-block-space);
+    border-inline-start: var(--forma-shape-border-width-accent) solid var(--forma-color-accent-primary);
+    font-family: var(--forma-type-family-display);
+    font-size: var(--forma-type-size-lead);
+    line-height: var(--forma-type-leading-lead);
   }
 
-  .ef-site :where(blockquote p) { color: var(--ef-tone-text); }
+  .forma-site :where(blockquote p) { color: var(--forma-tone-text); }
 
   /* One focus treatment for the whole shell: a gap-colored outline inside a
      ring-colored halo remains visible on every tone. */
-  .ef-site :where(:focus-visible) {
-    outline: var(--ef-focus-ring-width) solid var(--ef-color-focus-gap);
-    outline-offset: var(--ef-focus-ring-offset);
-    box-shadow: 0 0 0 var(--ef-focus-halo-width) var(--ef-color-focus-ring);
+  .forma-site :where(:focus-visible) {
+    outline: var(--forma-focus-ring-width) solid var(--forma-color-focus-gap);
+    outline-offset: var(--forma-focus-ring-offset);
+    box-shadow: 0 0 0 var(--forma-focus-halo-width) var(--forma-color-focus-ring);
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    :where(html):has(.ef-site) { scroll-behavior: smooth; }
+    :where(html):has(.forma-site) { scroll-behavior: smooth; }
   }
 
   /* Anchored targets must land below a sticky header (see layouts.css). */
   @media (min-width: 40rem) and (min-height: 36rem) {
-    :where(html):has(.ef-site-header) { scroll-padding-block-start: var(--ef-layout-header-offset); }
+    :where(html):has(.forma-site-header) { scroll-padding-block-start: var(--forma-layout-header-offset); }
   }
 }

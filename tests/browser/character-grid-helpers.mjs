@@ -20,20 +20,20 @@ export const gridDocument = (source, { rootFontSize = "100%", extraCss = "" } = 
 // Compares every run's rendered box with the cell its attributes declare.
 export const measureGrid = page => page.evaluate(() => {
   const px = value => Number.parseFloat(value);
-  return [...document.querySelectorAll(".ef-character-grid")].map(grid => {
-    const surface = grid.querySelector(".ef-character-grid__surface");
+  return [...document.querySelectorAll(".forma-character-grid")].map(grid => {
+    const surface = grid.querySelector(".forma-character-grid__surface");
     const style = getComputedStyle(surface);
     const columns = style.gridTemplateColumns.split(" ").map(px);
     const rows = style.gridTemplateRows.split(" ").map(px);
     const box = surface.getBoundingClientRect();
     const originX = box.left + px(style.paddingLeft) + px(style.borderLeftWidth);
     const originY = box.top + px(style.paddingTop) + px(style.borderTopWidth);
-    const runs = [...surface.querySelectorAll("[data-ef-row]")].map(run => {
+    const runs = [...surface.querySelectorAll("[data-forma-row]")].map(run => {
       const rect = run.getBoundingClientRect();
-      const row = Number(run.dataset.efRow);
-      const col = Number(run.dataset.efCol);
-      const len = Number(run.dataset.efLen);
-      const height = Number(run.dataset.efHeight ?? 1);
+      const row = Number(run.dataset.formaRow);
+      const col = Number(run.dataset.formaCol);
+      const len = Number(run.dataset.formaLen);
+      const height = Number(run.dataset.formaHeight ?? 1);
       return {
         id: run.id || `${run.tagName.toLowerCase()}:${row}:${col}`,
         dx: rect.left - (originX + (col - 1) * columns[0]),
@@ -43,12 +43,12 @@ export const measureGrid = page => page.evaluate(() => {
         scrollOverflow: run.scrollWidth - run.clientWidth
       };
     });
-    const viewport = grid.querySelector(".ef-character-grid__viewport");
+    const viewport = grid.querySelector(".forma-character-grid__viewport");
     return {
       columnCount: columns.length,
       rowCount: rows.length,
-      applicationRows: Number(grid.dataset.efRows),
-      statusRows: Number(grid.dataset.efStatusRows ?? 0),
+      applicationRows: Number(grid.dataset.formaRows),
+      statusRows: Number(grid.dataset.formaStatusRows ?? 0),
       columnWidth: columns[0],
       rowPitch: rows[0],
       uniformColumns: columns.every(width => Math.abs(width - columns[0]) < 0.01),

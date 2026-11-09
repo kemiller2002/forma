@@ -57,29 +57,29 @@ const innerMarkup = (html, element) => {
 
 export const splitGrids = (html) => {
   const elements = parseElements(html);
-  const starts = elements.filter((element) => element.classes.includes("ef-character-grid"));
+  const starts = elements.filter((element) => element.classes.includes("forma-character-grid"));
   return starts.map((grid, index) => {
     const end = starts[index + 1]?.index ?? Infinity;
     const members = elements.filter((element) => element.index > grid.index && element.index < end);
     return {
       attributes: grid.attributes,
-      rows: integer(grid.attributes["data-ef-rows"]),
-      columns: integer(grid.attributes["data-ef-columns"]),
-      statusRows: integer(grid.attributes["data-ef-status-rows"] ?? "0"),
-      narrow: grid.attributes["data-ef-narrow"] ?? "contained",
-      label: members.find((element) => element.classes.includes("ef-character-grid__viewport"))?.attributes["aria-labelledby"] ?? "",
+      rows: integer(grid.attributes["data-forma-rows"]),
+      columns: integer(grid.attributes["data-forma-columns"]),
+      statusRows: integer(grid.attributes["data-forma-status-rows"] ?? "0"),
+      narrow: grid.attributes["data-forma-narrow"] ?? "contained",
+      label: members.find((element) => element.classes.includes("forma-character-grid__viewport"))?.attributes["aria-labelledby"] ?? "",
       elements: members,
       runs: members
-        .filter((element) => element.attributes["data-ef-row"] !== undefined)
+        .filter((element) => element.attributes["data-forma-row"] !== undefined)
         .map((element) => ({
           ...element,
           hasKbd: innerMarkup(html, element).includes("<kbd"),
-          hasSeverityWord: innerMarkup(html, element).includes("ef-character-grid__severity"),
+          hasSeverityWord: innerMarkup(html, element).includes("forma-character-grid__severity"),
           id: element.attributes.id ?? `${element.tag}@${element.index}`,
-          row: integer(element.attributes["data-ef-row"]),
-          col: integer(element.attributes["data-ef-col"]),
-          len: integer(element.attributes["data-ef-len"]),
-          height: integer(element.attributes["data-ef-height"] ?? "1")
+          row: integer(element.attributes["data-forma-row"]),
+          col: integer(element.attributes["data-forma-col"]),
+          len: integer(element.attributes["data-forma-len"]),
+          height: integer(element.attributes["data-forma-height"] ?? "1")
         }))
     };
   });
@@ -93,31 +93,31 @@ const cellsOf = (run) =>
   ).flat();
 
 const TEXT_CLASSES = [
-  "ef-character-grid__text",
-  "ef-character-grid__value",
-  "ef-character-grid__label",
-  "ef-character-grid__key",
-  "ef-character-grid__message",
-  "ef-character-grid__status"
+  "forma-character-grid__text",
+  "forma-character-grid__value",
+  "forma-character-grid__label",
+  "forma-character-grid__key",
+  "forma-character-grid__message",
+  "forma-character-grid__status"
 ];
 
 // CG-1 geometry
 export const geometryErrors = (grid) => [
   ...(Number.isInteger(grid.rows) && grid.rows >= 1 && grid.rows <= LIMITS.rows
     ? []
-    : [`CG-1 data-ef-rows must be an integer 1..${LIMITS.rows}`]),
+    : [`CG-1 data-forma-rows must be an integer 1..${LIMITS.rows}`]),
   ...(Number.isInteger(grid.columns) && grid.columns >= 1 && grid.columns <= LIMITS.columns
     ? []
-    : [`CG-1 data-ef-columns must be an integer 1..${LIMITS.columns}`]),
+    : [`CG-1 data-forma-columns must be an integer 1..${LIMITS.columns}`]),
   ...(Number.isInteger(grid.statusRows) && grid.statusRows >= 0 && grid.statusRows <= LIMITS.statusRows &&
-  grid.attributes?.["data-ef-status-rows"] !== "0"
+  grid.attributes?.["data-forma-status-rows"] !== "0"
     ? []
-    : [`CG-1 data-ef-status-rows must be an integer 1..${LIMITS.statusRows} (omit it for none)`]),
-  ...(["contained", "reflow"].includes(grid.narrow) ? [] : ["CG-1 data-ef-narrow must be contained or reflow"]),
+    : [`CG-1 data-forma-status-rows must be an integer 1..${LIMITS.statusRows} (omit it for none)`]),
+  ...(["contained", "reflow"].includes(grid.narrow) ? [] : ["CG-1 data-forma-narrow must be contained or reflow"]),
   ...(grid.label ? [] : ["CG-1 the viewport must be named with aria-labelledby"])
 ];
 
-const isStatus = (run) => run.classes.includes("ef-character-grid__status");
+const isStatus = (run) => run.classes.includes("forma-character-grid__status");
 
 // Status runs may also use the device status rows (CG-18).
 const lastRowFor = (grid, run) => (isStatus(run) ? grid.rows + (grid.statusRows || 0) : grid.rows);
@@ -127,7 +127,7 @@ export const boundsErrors = (grid) =>
   grid.runs.flatMap((run) => [
     ...([run.row, run.col, run.len, run.height].every(Number.isInteger)
       ? []
-      : [`CG-2 ${run.id} needs integer data-ef-row, data-ef-col, and data-ef-len`]),
+      : [`CG-2 ${run.id} needs integer data-forma-row, data-forma-col, and data-forma-len`]),
     ...(run.row >= 1 && run.row + run.height - 1 <= lastRowFor(grid, run)
       ? []
       : [`CG-3 ${run.id} is outside rows 1..${lastRowFor(grid, run)}${isStatus(run) ? "" : grid.statusRows ? " (rows after them are device status rows, CG-18)" : ""}`]),
@@ -160,7 +160,7 @@ export const orderErrors = (grid) =>
 export const overflowErrors = (grid) =>
   grid.runs
     .filter((run) => run.classes.some((name) => TEXT_CLASSES.includes(name)))
-    .filter((run) => run.classes.includes("ef-character-grid__message")
+    .filter((run) => run.classes.includes("forma-character-grid__message")
       ? [...run.text.trim()].length > run.len * run.height
       : [...run.text.replace(/\s+$/, "")].length > run.len)
     .map((run) => `CG-7 ${run.id} text of ${[...run.text.trim()].length} cells exceeds its ${run.len}-cell run`);
@@ -173,7 +173,7 @@ export const fieldErrors = (grid) => {
     .filter((run) => ["input", "select", "textarea"].includes(run.tag))
     .flatMap((run) => [
       ...(run.tag === "input" && run.attributes.maxlength !== String(run.len) && !["date", "number"].includes(run.attributes.type)
-        ? [`CG-8 ${run.id} maxlength must equal data-ef-len (${run.len})`]
+        ? [`CG-8 ${run.id} maxlength must equal data-forma-len (${run.len})`]
         : []),
       ...(run.attributes.id && labelFor.includes(run.attributes.id) ? [] : [`CG-8 ${run.id} has no <label for>`]),
       ...(run.attributes.id &&
@@ -196,7 +196,7 @@ export const fieldErrors = (grid) => {
 // CG-9 protected runs are not controls; CG-10 no inline style; CG-11 no positive tabindex
 export const semanticErrors = (grid) => [
   ...grid.runs
-    .filter((run) => run.classes.some((name) => ["ef-character-grid__text", "ef-character-grid__value"].includes(name)))
+    .filter((run) => run.classes.some((name) => ["forma-character-grid__text", "forma-character-grid__value"].includes(name)))
     .filter((run) => ["input", "select", "textarea", "button"].includes(run.tag))
     .map((run) => `CG-9 protected run ${run.id} must not be a form control`),
   ...grid.elements
@@ -210,17 +210,17 @@ export const semanticErrors = (grid) => [
 // CG-12 table columns declare lengths and fit the table run
 export const tableErrors = (grid) =>
   grid.runs
-    .filter((run) => run.classes.includes("ef-character-grid__table"))
+    .filter((run) => run.classes.includes("forma-character-grid__table"))
     .flatMap((run) => {
       const table = grid.elements.find((element) => element.tag === "table" && element.index > run.index);
       const headers = grid.elements.filter(
-        (element) => element.tag === "th" && element.index > run.index && element.attributes["data-ef-len"] !== undefined
+        (element) => element.tag === "th" && element.index > run.index && element.attributes["data-forma-len"] !== undefined
       );
-      const gutter = integer(table?.attributes["data-ef-gutter"] ?? "1");
-      const width = headers.reduce((sum, header) => sum + integer(header.attributes["data-ef-len"]), 0) +
+      const gutter = integer(table?.attributes["data-forma-gutter"] ?? "1");
+      const width = headers.reduce((sum, header) => sum + integer(header.attributes["data-forma-len"]), 0) +
         gutter * Math.max(headers.length - 1, 0);
       return [
-        ...(headers.length > 0 ? [] : [`CG-12 ${run.id} table needs th[data-ef-len] column widths`]),
+        ...(headers.length > 0 ? [] : [`CG-12 ${run.id} table needs th[data-forma-len] column widths`]),
         ...(width <= run.len ? [] : [`CG-12 ${run.id} columns need ${width} cells but the run has ${run.len}`])
       ];
     });
@@ -242,9 +242,9 @@ export const touchErrors = (grid) => {
 
 // CG-14 action keys are native buttons that present, not implement, actions.
 export const keyErrors = (grid) => {
-  const keys = grid.runs.filter((run) => run.classes.includes("ef-character-grid__key"));
+  const keys = grid.runs.filter((run) => run.classes.includes("forma-character-grid__key"));
   const submits = keys.filter((key) => key.attributes.type === "submit");
-  const enter = keys.find((key) => key.attributes["data-ef-action"] === "enter");
+  const enter = keys.find((key) => key.attributes["data-forma-action"] === "enter");
   return [
     ...keys
       .filter((key) => key.tag !== "button")
@@ -253,8 +253,8 @@ export const keyErrors = (grid) => {
       .filter((key) => !["submit", "button"].includes(key.attributes.type))
       .map((key) => `CG-14 ${key.id} needs an explicit type of submit or button (never reset)`),
     ...keys
-      .filter((key) => !key.attributes["data-ef-action"])
-      .map((key) => `CG-14 ${key.id} needs data-ef-action naming the action`),
+      .filter((key) => !key.attributes["data-forma-action"])
+      .map((key) => `CG-14 ${key.id} needs data-forma-action naming the action`),
     ...keys
       .filter((key) => !key.hasKbd)
       .map((key) => `CG-14 ${key.id} must show its key name in <kbd>`),
@@ -268,16 +268,16 @@ export const keyErrors = (grid) => {
 export const SEVERITIES = Object.freeze(["information", "success", "warning", "validation", "error"]);
 export const messageErrors = (grid) => [
   ...grid.runs
-    .filter((run) => run.classes.includes("ef-character-grid__message"))
+    .filter((run) => run.classes.includes("forma-character-grid__message"))
     .flatMap((run) => [
       ...(["status", "alert"].includes(run.attributes.role) ? [] : [`CG-15 ${run.id} needs role status or alert`]),
-      ...(SEVERITIES.includes(run.attributes["data-ef-severity"])
+      ...(SEVERITIES.includes(run.attributes["data-forma-severity"])
         ? []
-        : [`CG-15 ${run.id} data-ef-severity must be one of ${SEVERITIES.join(", ")}`]),
-      ...(run.hasSeverityWord ? [] : [`CG-15 ${run.id} needs a visible .ef-character-grid__severity word`])
+        : [`CG-15 ${run.id} data-forma-severity must be one of ${SEVERITIES.join(", ")}`]),
+      ...(run.hasSeverityWord ? [] : [`CG-15 ${run.id} needs a visible .forma-character-grid__severity word`])
     ]),
   ...grid.runs
-    .filter((run) => run.classes.includes("ef-character-grid__status"))
+    .filter((run) => run.classes.includes("forma-character-grid__status"))
     .filter((run) => run.attributes.role !== "status")
     .map((run) => `CG-15 ${run.id} system status needs role status`)
 ];
@@ -285,20 +285,20 @@ export const messageErrors = (grid) => [
 // CG-16 SequentialReveal is opt-in, bounded, and only stages protected text.
 export const REVEAL_STATES = Object.freeze(["sequential", "complete", "static"]);
 export const revealErrors = (grid) => {
-  const state = grid.attributes?.["data-ef-reveal"];
-  const rows = grid.attributes?.["data-ef-reveal-rows"];
-  const staged = grid.runs.filter((run) => run.attributes["data-ef-reveal-run"] !== undefined);
+  const state = grid.attributes?.["data-forma-reveal"];
+  const rows = grid.attributes?.["data-forma-reveal-rows"];
+  const staged = grid.runs.filter((run) => run.attributes["data-forma-reveal-run"] !== undefined);
   return [
     ...(state === undefined || REVEAL_STATES.includes(state)
       ? []
-      : [`CG-16 data-ef-reveal must be one of ${REVEAL_STATES.join(", ")}`]),
+      : [`CG-16 data-forma-reveal must be one of ${REVEAL_STATES.join(", ")}`]),
     ...(rows === undefined || (Number.isInteger(Number(rows)) && Number(rows) >= 1 && Number(rows) <= grid.rows)
       ? []
-      : [`CG-16 data-ef-reveal-rows must be an integer 1..${grid.rows}`]),
+      : [`CG-16 data-forma-reveal-rows must be an integer 1..${grid.rows}`]),
     ...staged
-      .filter((run) => !run.classes.includes("ef-character-grid__text"))
+      .filter((run) => !run.classes.includes("forma-character-grid__text"))
       .map((run) => `CG-16 ${run.id} may not be staged: only protected text runs can reveal`),
-    ...(staged.length > 0 && state === undefined ? ["CG-16 staged runs need data-ef-reveal on the grid"] : [])
+    ...(staged.length > 0 && state === undefined ? ["CG-16 staged runs need data-forma-reveal on the grid"] : [])
   ];
 };
 
@@ -308,28 +308,28 @@ export const revealErrors = (grid) => {
 // column plus its gutter.
 export const selectionErrors = (grid) =>
   grid.runs
-    .filter((run) => run.classes.includes("ef-character-grid__table"))
+    .filter((run) => run.classes.includes("forma-character-grid__table"))
     .flatMap((run) => {
       const table = grid.elements.find((element) => element.tag === "table" && element.index > run.index);
       const inside = table ? grid.elements.filter((element) => element.index > table.index && element.index < table.end) : [];
-      const gutter = integer(table?.attributes["data-ef-gutter"] ?? "1");
+      const gutter = integer(table?.attributes["data-forma-gutter"] ?? "1");
       const ids = grid.elements.map((element) => element.attributes.id).filter(Boolean);
       const header = (scope) => (id) => inside.find((element) => element.tag === "th" && element.attributes.scope === scope && element.attributes.id === id);
       return inside
         .filter((element) => ["input", "select", "textarea", "button"].includes(element.tag))
         .flatMap((field) => {
           const id = field.attributes.id ?? `${field.tag}@${field.index}`;
-          const len = integer(field.attributes["data-ef-len"]);
+          const len = integer(field.attributes["data-forma-len"]);
           const names = (field.attributes["aria-labelledby"] ?? "").split(/\s+/).filter(Boolean);
           const column = names.map(header("col")).find(Boolean);
-          const columnLen = integer(column?.attributes["data-ef-len"]);
+          const columnLen = integer(column?.attributes["data-forma-len"]);
           return [
-            ...(field.tag === "input" && field.classes.includes("ef-character-grid__field") && ["text", undefined].includes(field.attributes.type)
+            ...(field.tag === "input" && field.classes.includes("forma-character-grid__field") && ["text", undefined].includes(field.attributes.type)
               ? []
-              : [`CG-17 ${id} in a table must be a native text input.ef-character-grid__field`]),
+              : [`CG-17 ${id} in a table must be a native text input.forma-character-grid__field`]),
             ...(Number.isInteger(len) && field.attributes.maxlength === String(len)
               ? []
-              : [`CG-17 ${id} needs data-ef-len equal to maxlength`]),
+              : [`CG-17 ${id} needs data-forma-len equal to maxlength`]),
             ...(column ? [] : [`CG-17 ${id} must be named by its th[scope=col] through aria-labelledby`]),
             ...(names.some(header("row")) ? [] : [`CG-17 ${id} must be named by its row's th[scope=row] through aria-labelledby`]),
             ...(column && !(len <= columnLen) ? [`CG-17 ${id} is ${len} cells but its column is ${columnLen}`] : []),

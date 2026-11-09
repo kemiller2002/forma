@@ -3,9 +3,9 @@ export default {
   category: "forms",
   behavior: "Native HTML",
   summary: "An ordinary native select with platform picker behavior and physics-derived CSS affordance motion.",
-  owns: ["ef-select", "ef-select-field"],
+  owns: ["forma-select", "forma-select-field"],
   purpose: {
-    description: "A select picks one value from a fixed list. Forma wraps a native `select` so the browser remains the authority for the value, options, keyboard, type-ahead, picker, validity and form submission. `.ef-select-field` is the labelled field (a `label` element containing label text, control and description); `.ef-select` draws a chevron indicator that rotates while the picker is open in browsers that support the `:open` pseudo-class.",
+    description: "A select picks one value from a fixed list. Forma wraps a native `select` so the browser remains the authority for the value, options, keyboard, type-ahead, picker, validity and form submission. `.forma-select-field` is the labelled field (a `label` element containing label text, control and description); `.forma-select` draws a chevron indicator that rotates while the picker is open in browsers that support the `:open` pseudo-class.",
     useWhen: [
       "The user chooses exactly one value from a known list of roughly five or more options.",
       "The list is stable and the options are short text.",
@@ -14,7 +14,7 @@ export default {
     avoidWhen: [
       "There are two to five options and comparing them matters: use [[choice-group]] or [[segmented-control]] so all options are visible.",
       "The list is long enough that users need to type to filter, or values may be new: use [[combobox]].",
-      "Several values may be chosen: use [[multi-choice]] or a set of [[checkbox]] controls; `multiple` is not styled by `.ef-select`.",
+      "Several values may be chosen: use [[multi-choice]] or a set of [[checkbox]] controls; `multiple` is not styled by `.forma-select`.",
       "Options need secondary text, icons or grouping beyond `optgroup`: this needs an application-owned custom listbox."
     ],
     characteristics: [
@@ -28,11 +28,11 @@ export default {
       id: "grouped-required",
       title: "Required choice with grouped options",
       description: "Time zones grouped with optgroup. An empty first option makes the unselected state explicit so the native required constraint can catch a missing choice.",
-      html: `<ef-select class="ef-component-tag">
-  <label class="ef-select-field">
-    <span class="ef-field__label">Reporting time zone (required)</span>
-    <span class="ef-select" data-ef-motion-weight="standard">
-      <select class="ef-select__input" name="report-timezone" required aria-describedby="select-grouped-timezone-description">
+      html: `<forma-select class="forma-component-tag">
+  <label class="forma-select-field">
+    <span class="forma-field__label">Reporting time zone (required)</span>
+    <span class="forma-select" data-forma-motion-weight="standard">
+      <select class="forma-select__input" name="report-timezone" required aria-describedby="select-grouped-timezone-description">
         <option value="">Choose a time zone</option>
         <optgroup label="Americas">
           <option value="America/New_York">New York (UTC−05:00)</option>
@@ -43,48 +43,48 @@ export default {
           <option value="Europe/Berlin">Berlin (UTC+01:00)</option>
         </optgroup>
       </select>
-      <span class="ef-select__indicator" aria-hidden="true"></span>
+      <span class="forma-select__indicator" aria-hidden="true"></span>
     </span>
-    <span class="ef-field__description" id="select-grouped-timezone-description">Daily reports close at midnight in this time zone.</span>
+    <span class="forma-field__description" id="select-grouped-timezone-description">Daily reports close at midnight in this time zone.</span>
   </label>
-</ef-select>`
+</forma-select>`
     },
     {
       id: "locked-by-plan",
       title: "Locked by plan",
       description: "A retention period the current plan does not allow changing. The select is natively disabled and dimmed; the description explains why.",
-      html: `<ef-select class="ef-component-tag">
-  <label class="ef-select-field">
-    <span class="ef-field__label">Log retention</span>
-    <span class="ef-select">
-      <select class="ef-select__input" name="log-retention" disabled aria-describedby="select-locked-retention-description">
+      html: `<forma-select class="forma-component-tag">
+  <label class="forma-select-field">
+    <span class="forma-field__label">Log retention</span>
+    <span class="forma-select">
+      <select class="forma-select__input" name="log-retention" disabled aria-describedby="select-locked-retention-description">
         <option value="30" selected>30 days</option>
         <option value="90">90 days</option>
         <option value="365">1 year</option>
       </select>
-      <span class="ef-select__indicator" aria-hidden="true"></span>
+      <span class="forma-select__indicator" aria-hidden="true"></span>
     </span>
-    <span class="ef-field__description" id="select-locked-retention-description">Longer retention is available on the Business plan.</span>
+    <span class="forma-field__description" id="select-locked-retention-description">Longer retention is available on the Business plan.</span>
   </label>
-</ef-select>`
+</forma-select>`
     },
     {
       id: "heavy-weight-long-options",
       title: "Heavy indicator weight with long option text",
       description: "A heavy presentation weight gives the indicator a slower, more settled rotation. Long option labels are truncated by the platform in the closed control but shown in full in the picker.",
-      html: `<ef-select class="ef-component-tag">
-  <label class="ef-select-field">
-    <span class="ef-field__label">Escalation policy</span>
-    <span class="ef-select" data-ef-motion-weight="heavy">
-      <select class="ef-select__input" name="escalation-policy">
+      html: `<forma-select class="forma-component-tag">
+  <label class="forma-select-field">
+    <span class="forma-field__label">Escalation policy</span>
+    <span class="forma-select" data-forma-motion-weight="heavy">
+      <select class="forma-select__input" name="escalation-policy">
         <option value="primary">Page the primary on-call engineer, then the secondary after 10 minutes</option>
         <option value="team">Notify the whole platform team channel immediately</option>
         <option value="manager">Page the primary on-call engineer and the duty manager at the same time</option>
       </select>
-      <span class="ef-select__indicator" aria-hidden="true"></span>
+      <span class="forma-select__indicator" aria-hidden="true"></span>
     </span>
   </label>
-</ef-select>`
+</forma-select>`
     },
     {
       id: "mobile-country",
@@ -99,21 +99,21 @@ export default {
           "Orientation changes only change the width. Long option labels stay within the available width even at 200% text size."
         ]
       },
-      html: `<ef-select class="ef-component-tag">
-  <label class="ef-select-field">
-    <span class="ef-field__label">Country or region</span>
-    <span class="ef-select">
-      <select class="ef-select__input" name="country" autocomplete="country" aria-describedby="select-mobile-country-description">
+      html: `<forma-select class="forma-component-tag">
+  <label class="forma-select-field">
+    <span class="forma-field__label">Country or region</span>
+    <span class="forma-select">
+      <select class="forma-select__input" name="country" autocomplete="country" aria-describedby="select-mobile-country-description">
         <option value="GB">United Kingdom</option>
         <option value="IE">Ireland</option>
         <option value="US">United States</option>
         <option value="AE">United Arab Emirates</option>
       </select>
-      <span class="ef-select__indicator" aria-hidden="true"></span>
+      <span class="forma-select__indicator" aria-hidden="true"></span>
     </span>
-    <span class="ef-field__description" id="select-mobile-country-description">Used for tax calculation on invoices.</span>
+    <span class="forma-field__description" id="select-mobile-country-description">Used for tax calculation on invoices.</span>
   </label>
-</ef-select>`
+</forma-select>`
     }
   ],
   api: {
@@ -124,15 +124,15 @@ export default {
       { name: "selected", on: "option", values: "boolean", default: "first option", description: "Initial selection." },
       { name: "label", on: "optgroup", values: "string", default: "—", description: "Visible, announced group heading for a set of options." },
       { name: "autocomplete", on: "select", values: "country | …", default: "browser heuristic", description: "Lets the browser autofill a known value." },
-      { name: "aria-describedby", on: "select", values: "id of the description", default: "—", description: "Links the `.ef-field__description` guidance." },
-      { name: "aria-hidden", on: ".ef-select__indicator", values: "true", default: "—", description: "Required on the indicator so the decorative chevron is not announced." }
+      { name: "aria-describedby", on: "select", values: "id of the description", default: "—", description: "Links the `.forma-field__description` guidance." },
+      { name: "aria-hidden", on: ".forma-select__indicator", values: "true", default: "—", description: "Required on the indicator so the decorative chevron is not announced." }
     ],
     hooks: {
-      "ef-select-field": "Root `label` grid holding label text, the select wrapper and the description with a 0.5rem gap. Wrapping makes the label text name the select.",
-      "ef-select": "Positioning wrapper for the native select and the indicator. Carries the motion scope.",
-      "ef-select__input": "The native select: full width with shrinkable intrinsic sizing for narrow containers and enlarged text, 44px minimum height, `appearance: none`, inline-end padding for the indicator, dimmed with a not-allowed cursor when disabled.",
-      "ef-select__indicator": "Decorative chevron drawn with borders. Rotates when the select is `:open`.",
-      "data-ef-motion-weight": "Presentation-only perceived mass for the indicator rotation: light, standard (default) or heavy. Gravity-derived vertical travel is independent of mass."
+      "forma-select-field": "Root `label` grid holding label text, the select wrapper and the description with a 0.5rem gap. Wrapping makes the label text name the select.",
+      "forma-select": "Positioning wrapper for the native select and the indicator. Carries the motion scope.",
+      "forma-select__input": "The native select: full width with shrinkable intrinsic sizing for narrow containers and enlarged text, 44px minimum height, `appearance: none`, inline-end padding for the indicator, dimmed with a not-allowed cursor when disabled.",
+      "forma-select__indicator": "Decorative chevron drawn with borders. Rotates when the select is `:open`.",
+      "data-forma-motion-weight": "Presentation-only perceived mass for the indicator rotation: light, standard (default) or heavy. Gravity-derived vertical travel is independent of mass."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus to and from the select." },
@@ -173,7 +173,7 @@ export default {
   ],
   motion: [
     "When the picker opens, the chevron rotates 180 degrees with the shared inertial spring and drops slightly with gravity-derived timing; it reverses on close.",
-    "`data-ef-motion-weight` changes the rotation's perceived mass only; vertical gravity timing does not depend on mass.",
+    "`data-forma-motion-weight` changes the rotation's perceived mass only; vertical gravity timing does not depend on mass.",
     "The select's background and border use perceptual interpolation when they change.",
     "The value changes immediately; the indicator motion never gates the picker.",
     "Under `prefers-reduced-motion: reduce` durations become effectively zero and the vertical shift is removed; the rotation still shows the open state."

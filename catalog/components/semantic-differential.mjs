@@ -28,56 +28,56 @@ export default {
       id: "saved-response",
       title: "Previously saved response",
       description: "A draft reopened with position 5 checked. The checked cell takes the inverse surface; the endpoint row reads Slow to Fast.",
-      html: `<ef-semantic-differential class="ef-component-tag">
-  <fieldset class="ef-semantic-differential">
-    <legend class="ef-semantic-differential__legend">How would you describe code review turnaround?</legend>
-    <div class="ef-semantic-differential__endpoints" aria-hidden="true">
+      html: `<forma-semantic-differential class="forma-component-tag">
+  <fieldset class="forma-semantic-differential">
+    <legend class="forma-semantic-differential__legend">How would you describe code review turnaround?</legend>
+    <div class="forma-semantic-differential__endpoints" aria-hidden="true">
       <span>Slow</span>
       <span>Fast</span>
     </div>
-    <div class="ef-semantic-differential__scale">
-      <label><input type="radio" name="differential-saved-review" value="1" required><span aria-hidden="true">1</span><span class="ef-sr-only">Slow, position 1 of 7</span></label>
-      <label><input type="radio" name="differential-saved-review" value="2"><span aria-hidden="true">2</span><span class="ef-sr-only">Position 2 of 7</span></label>
-      <label><input type="radio" name="differential-saved-review" value="3"><span aria-hidden="true">3</span><span class="ef-sr-only">Position 3 of 7</span></label>
-      <label><input type="radio" name="differential-saved-review" value="4"><span aria-hidden="true">4</span><span class="ef-sr-only">Position 4 of 7</span></label>
-      <label><input type="radio" name="differential-saved-review" value="5" checked><span aria-hidden="true">5</span><span class="ef-sr-only">Position 5 of 7</span></label>
-      <label><input type="radio" name="differential-saved-review" value="6"><span aria-hidden="true">6</span><span class="ef-sr-only">Position 6 of 7</span></label>
-      <label><input type="radio" name="differential-saved-review" value="7"><span aria-hidden="true">7</span><span class="ef-sr-only">Fast, position 7 of 7</span></label>
+    <div class="forma-semantic-differential__scale">
+      <label><input type="radio" name="differential-saved-review" value="1" required><span aria-hidden="true">1</span><span class="forma-sr-only">Slow, position 1 of 7</span></label>
+      <label><input type="radio" name="differential-saved-review" value="2"><span aria-hidden="true">2</span><span class="forma-sr-only">Position 2 of 7</span></label>
+      <label><input type="radio" name="differential-saved-review" value="3"><span aria-hidden="true">3</span><span class="forma-sr-only">Position 3 of 7</span></label>
+      <label><input type="radio" name="differential-saved-review" value="4"><span aria-hidden="true">4</span><span class="forma-sr-only">Position 4 of 7</span></label>
+      <label><input type="radio" name="differential-saved-review" value="5" checked><span aria-hidden="true">5</span><span class="forma-sr-only">Position 5 of 7</span></label>
+      <label><input type="radio" name="differential-saved-review" value="6"><span aria-hidden="true">6</span><span class="forma-sr-only">Position 6 of 7</span></label>
+      <label><input type="radio" name="differential-saved-review" value="7"><span aria-hidden="true">7</span><span class="forma-sr-only">Fast, position 7 of 7</span></label>
     </div>
-    <div class="ef-semantic-differential__endpoints ef-semantic-differential__endpoints--mobile">
+    <div class="forma-semantic-differential__endpoints forma-semantic-differential__endpoints--mobile">
       <span>1 = Slow</span>
       <span>7 = Fast</span>
     </div>
   </fieldset>
-</ef-semantic-differential>`
+</forma-semantic-differential>`
     },
     {
       id: "long-endpoints",
       title: "Long endpoint descriptions with help text",
       description: "Endpoints that are phrases rather than single adjectives. They sit at opposite ends of a flex row and wrap independently; help text is associated with the group.",
-      html: `<ef-semantic-differential class="ef-component-tag">
-  <fieldset class="ef-semantic-differential" aria-describedby="differential-long-help">
-    <legend class="ef-semantic-differential__legend">Where does decision-making sit in your organization?</legend>
-    <p class="ef-field__description" id="differential-long-help">Answer for architecture decisions made in the last year.</p>
-    <div class="ef-semantic-differential__endpoints" aria-hidden="true">
+      html: `<forma-semantic-differential class="forma-component-tag">
+  <fieldset class="forma-semantic-differential" aria-describedby="differential-long-help">
+    <legend class="forma-semantic-differential__legend">Where does decision-making sit in your organization?</legend>
+    <p class="forma-field__description" id="differential-long-help">Answer for architecture decisions made in the last year.</p>
+    <div class="forma-semantic-differential__endpoints" aria-hidden="true">
       <span>Made centrally by a platform or architecture group</span>
       <span>Made independently by each delivery team</span>
     </div>
-    <div class="ef-semantic-differential__scale">
-      <label><input type="radio" name="differential-long-decisions" value="1" required><span aria-hidden="true">1</span><span class="ef-sr-only">Made centrally by a platform or architecture group, position 1 of 7</span></label>
-      <label><input type="radio" name="differential-long-decisions" value="2"><span aria-hidden="true">2</span><span class="ef-sr-only">Position 2 of 7</span></label>
-      <label><input type="radio" name="differential-long-decisions" value="3"><span aria-hidden="true">3</span><span class="ef-sr-only">Position 3 of 7</span></label>
-      <label><input type="radio" name="differential-long-decisions" value="4"><span aria-hidden="true">4</span><span class="ef-sr-only">Position 4 of 7</span></label>
-      <label><input type="radio" name="differential-long-decisions" value="5"><span aria-hidden="true">5</span><span class="ef-sr-only">Position 5 of 7</span></label>
-      <label><input type="radio" name="differential-long-decisions" value="6"><span aria-hidden="true">6</span><span class="ef-sr-only">Position 6 of 7</span></label>
-      <label><input type="radio" name="differential-long-decisions" value="7"><span aria-hidden="true">7</span><span class="ef-sr-only">Made independently by each delivery team, position 7 of 7</span></label>
+    <div class="forma-semantic-differential__scale">
+      <label><input type="radio" name="differential-long-decisions" value="1" required><span aria-hidden="true">1</span><span class="forma-sr-only">Made centrally by a platform or architecture group, position 1 of 7</span></label>
+      <label><input type="radio" name="differential-long-decisions" value="2"><span aria-hidden="true">2</span><span class="forma-sr-only">Position 2 of 7</span></label>
+      <label><input type="radio" name="differential-long-decisions" value="3"><span aria-hidden="true">3</span><span class="forma-sr-only">Position 3 of 7</span></label>
+      <label><input type="radio" name="differential-long-decisions" value="4"><span aria-hidden="true">4</span><span class="forma-sr-only">Position 4 of 7</span></label>
+      <label><input type="radio" name="differential-long-decisions" value="5"><span aria-hidden="true">5</span><span class="forma-sr-only">Position 5 of 7</span></label>
+      <label><input type="radio" name="differential-long-decisions" value="6"><span aria-hidden="true">6</span><span class="forma-sr-only">Position 6 of 7</span></label>
+      <label><input type="radio" name="differential-long-decisions" value="7"><span aria-hidden="true">7</span><span class="forma-sr-only">Made independently by each delivery team, position 7 of 7</span></label>
     </div>
-    <div class="ef-semantic-differential__endpoints ef-semantic-differential__endpoints--mobile">
+    <div class="forma-semantic-differential__endpoints forma-semantic-differential__endpoints--mobile">
       <span>1 = Central group</span>
       <span>7 = Each team</span>
     </div>
   </fieldset>
-</ef-semantic-differential>`
+</forma-semantic-differential>`
     },
     {
       id: "mobile-endpoint-key",
@@ -92,28 +92,28 @@ export default {
           "Cells are 48px tall and the whole cell is the tap target."
         ]
       },
-      html: `<ef-semantic-differential class="ef-component-tag">
-  <fieldset class="ef-semantic-differential">
-    <legend class="ef-semantic-differential__legend">How predictable is your release schedule?</legend>
-    <div class="ef-semantic-differential__endpoints" aria-hidden="true">
+      html: `<forma-semantic-differential class="forma-component-tag">
+  <fieldset class="forma-semantic-differential">
+    <legend class="forma-semantic-differential__legend">How predictable is your release schedule?</legend>
+    <div class="forma-semantic-differential__endpoints" aria-hidden="true">
       <span>Unpredictable</span>
       <span>Predictable</span>
     </div>
-    <div class="ef-semantic-differential__scale">
-      <label><input type="radio" name="differential-mobile-release" value="1" required><span aria-hidden="true">1</span><span class="ef-sr-only">Unpredictable, position 1 of 7</span></label>
-      <label><input type="radio" name="differential-mobile-release" value="2"><span aria-hidden="true">2</span><span class="ef-sr-only">Position 2 of 7</span></label>
-      <label><input type="radio" name="differential-mobile-release" value="3"><span aria-hidden="true">3</span><span class="ef-sr-only">Position 3 of 7</span></label>
-      <label><input type="radio" name="differential-mobile-release" value="4"><span aria-hidden="true">4</span><span class="ef-sr-only">Position 4 of 7</span></label>
-      <label><input type="radio" name="differential-mobile-release" value="5"><span aria-hidden="true">5</span><span class="ef-sr-only">Position 5 of 7</span></label>
-      <label><input type="radio" name="differential-mobile-release" value="6"><span aria-hidden="true">6</span><span class="ef-sr-only">Position 6 of 7</span></label>
-      <label><input type="radio" name="differential-mobile-release" value="7"><span aria-hidden="true">7</span><span class="ef-sr-only">Predictable, position 7 of 7</span></label>
+    <div class="forma-semantic-differential__scale">
+      <label><input type="radio" name="differential-mobile-release" value="1" required><span aria-hidden="true">1</span><span class="forma-sr-only">Unpredictable, position 1 of 7</span></label>
+      <label><input type="radio" name="differential-mobile-release" value="2"><span aria-hidden="true">2</span><span class="forma-sr-only">Position 2 of 7</span></label>
+      <label><input type="radio" name="differential-mobile-release" value="3"><span aria-hidden="true">3</span><span class="forma-sr-only">Position 3 of 7</span></label>
+      <label><input type="radio" name="differential-mobile-release" value="4"><span aria-hidden="true">4</span><span class="forma-sr-only">Position 4 of 7</span></label>
+      <label><input type="radio" name="differential-mobile-release" value="5"><span aria-hidden="true">5</span><span class="forma-sr-only">Position 5 of 7</span></label>
+      <label><input type="radio" name="differential-mobile-release" value="6"><span aria-hidden="true">6</span><span class="forma-sr-only">Position 6 of 7</span></label>
+      <label><input type="radio" name="differential-mobile-release" value="7"><span aria-hidden="true">7</span><span class="forma-sr-only">Predictable, position 7 of 7</span></label>
     </div>
-    <div class="ef-semantic-differential__endpoints ef-semantic-differential__endpoints--mobile">
+    <div class="forma-semantic-differential__endpoints forma-semantic-differential__endpoints--mobile">
       <span>1 = Unpredictable</span>
       <span>7 = Predictable</span>
     </div>
   </fieldset>
-</ef-semantic-differential>`
+</forma-semantic-differential>`
     }
   ],
   api: {
@@ -123,16 +123,16 @@ export default {
       { name: "value", on: "input", values: "string", default: "—", description: "Submitted position. The application decides direction and scoring." },
       { name: "required", on: "first input", values: "boolean", default: "absent", description: "Native required-group validation." },
       { name: "checked", on: "input", values: "boolean", default: "absent", description: "Restores a saved position." },
-      { name: "aria-hidden", on: "desktop endpoints row and number spans", values: "true", default: "—", description: "Hides the visual-only endpoint row and the decorative numbers; meaning is carried by the .ef-sr-only text in each label." },
+      { name: "aria-hidden", on: "desktop endpoints row and number spans", values: "true", default: "—", description: "Hides the visual-only endpoint row and the decorative numbers; meaning is carried by the .forma-sr-only text in each label." },
       { name: "aria-describedby", on: "fieldset", values: "id list", default: "—", description: "Associates help or error text with the scale." }
     ],
     hooks: {
-      "ef-semantic-differential": "Root fieldset with browser border and padding removed.",
-      "ef-semantic-differential__legend": "Question text.",
-      "ef-semantic-differential__endpoints": "Flex row placing the two endpoint descriptions at opposite ends. The desktop row is aria-hidden and is hidden below 44rem.",
-      "ef-semantic-differential__endpoints--mobile": "Explicit number key (1 = …, 7 = …). Hidden on wide screens and shown below 44rem.",
-      "ef-semantic-differential__scale": "Bordered seven-column grid of cells, each at least 2.75rem wide. Scrolls inline within itself on very narrow containers.",
-      "ef-sr-only": "Visually hidden text inside each label that names the position and, at the ends, the endpoint meaning."
+      "forma-semantic-differential": "Root fieldset with browser border and padding removed.",
+      "forma-semantic-differential__legend": "Question text.",
+      "forma-semantic-differential__endpoints": "Flex row placing the two endpoint descriptions at opposite ends. The desktop row is aria-hidden and is hidden below 44rem.",
+      "forma-semantic-differential__endpoints--mobile": "Explicit number key (1 = …, 7 = …). Hidden on wide screens and shown below 44rem.",
+      "forma-semantic-differential__scale": "Bordered seven-column grid of cells, each at least 2.75rem wide. Scrolls inline within itself on very narrow containers.",
+      "forma-sr-only": "Visually hidden text inside each label that names the position and, at the ends, the endpoint meaning."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus into and out of the group." },

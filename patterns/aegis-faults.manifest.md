@@ -20,12 +20,12 @@ The full Aegis `Fault` record is not a Forma input contract.
 ## Intent mapping
 
 - `Silent`: render no visible fault surface.
-- `Inline`: `.ef-fault--inline` / `<ef-fault-inline>`.
-- `Notification`: `.ef-fault-notification` / `<ef-fault-notification>`.
-- `Banner`: `.ef-fault-banner` / `<ef-fault-banner>`.
-- `Blocking`: `.ef-fault-blocking` / `<ef-fault-blocking>`.
+- `Inline`: `.forma-fault--inline` / `<forma-fault-inline>`.
+- `Notification`: `.forma-fault-notification` / `<forma-fault-notification>`.
+- `Banner`: `.forma-fault-banner` / `<forma-fault-banner>`.
+- `Blocking`: `.forma-fault-blocking` / `<forma-fault-blocking>`.
 
-`<ef-fault>` is the common visual shell. The intent-specific patterns are preferred when the Aegis intent is already known.
+`<forma-fault>` is the common visual shell. The intent-specific patterns are preferred when the Aegis intent is already known.
 
 ## Ownership
 
@@ -42,7 +42,7 @@ Do not pass the raw Aegis `Fault`, `TechnicalDetails`, `ExceptionDetail`, stack 
 
 ## Recovery action contract
 
-Buttons use `data-ef-aegis-capability` with the exact Aegis capability name. The attribute is descriptive, not authoritative. The consuming application must re-check current capability/state at activation time.
+Buttons use `data-forma-aegis-capability` with the exact Aegis capability name. The attribute is descriptive, not authoritative. The consuming application must re-check current capability/state at activation time.
 
 Canonical labels mirror Aegis:
 

@@ -3,9 +3,9 @@ export default {
   category: "site",
   behavior: "Site content",
   summary: "Technical sample in a captioned, keyboard-scrollable region that never widens the page.",
-  owns: ["ef-code", "ef-code-figure"],
+  owns: ["forma-code", "forma-code-figure"],
   purpose: {
-    description: "A code sample shows a command, configuration file or snippet on a public page. The canonical form is a `figure.ef-code-figure` with a `figcaption` and a `pre.ef-code` holding `code`. The `pre` is a bounded scroll container on the inverse surface: long lines scroll inside it instead of widening the page, and `tabindex=\"0\"` lets keyboard users focus it and scroll with the arrow keys. There is no copy button and no syntax highlighting; those would need application script and validated token roles (GAP-MKT-09).",
+    description: "A code sample shows a command, configuration file or snippet on a public page. The canonical form is a `figure.forma-code-figure` with a `figcaption` and a `pre.forma-code` holding `code`. The `pre` is a bounded scroll container on the inverse surface: long lines scroll inside it instead of widening the page, and `tabindex=\"0\"` lets keyboard users focus it and scroll with the arrow keys. There is no copy button and no syntax highlighting; those would need application script and validated token roles (GAP-MKT-09).",
     useWhen: [
       "Showing install commands, lock files or configuration on a product or documentation page.",
       "The sample must be copied exactly, so lines must not wrap.",
@@ -27,27 +27,27 @@ export default {
       id: "long-command",
       title: "Long command line",
       description: "A single command longer than the column. The line does not wrap; the block scrolls horizontally and can be scrolled from the keyboard once focused.",
-      html: `<ef-code-sample class="ef-component-tag">
-  <div class="ef-site">
-    <figure class="ef-code-figure">
+      html: `<forma-code-sample class="forma-component-tag">
+  <div class="forma-site">
+    <figure class="forma-code-figure">
       <figcaption id="code-sample-long-command-caption">Download the pinned installer</figcaption>
-      <pre class="ef-code" tabindex="0" aria-labelledby="code-sample-long-command-caption"><code>curl -fsSLO https://raw.githubusercontent.com/kemiller2002/forma/v0.3.0/actions/install-presentation/install.sh</code></pre>
+      <pre class="forma-code" tabindex="0" aria-labelledby="code-sample-long-command-caption"><code>curl -fsSLO https://raw.githubusercontent.com/kemiller2002/forma/v0.3.0/actions/install-presentation/install.sh</code></pre>
     </figure>
   </div>
-</ef-code-sample>`
+</forma-code-sample>`
     },
     {
       id: "workflow-file",
       title: "Deployment workflow file",
       description: "A multi-line YAML file inside a prose article. Indentation is preserved and the block takes the prose region's block margins.",
-      html: `<ef-code-sample class="ef-component-tag">
-  <div class="ef-site">
-    <article class="ef-prose">
+      html: `<forma-code-sample class="forma-component-tag">
+  <div class="forma-site">
+    <article class="forma-prose">
       <h3>Deploy with pinned assets</h3>
       <p>The workflow installs exactly what the lock pins before the site build.</p>
-      <figure class="ef-code-figure">
+      <figure class="forma-code-figure">
         <figcaption id="code-sample-workflow-file-caption">.github/workflows/deploy-pages.yml</figcaption>
-        <pre class="ef-code" tabindex="0" aria-labelledby="code-sample-workflow-file-caption"><code>jobs:
+        <pre class="forma-code" tabindex="0" aria-labelledby="code-sample-workflow-file-caption"><code>jobs:
   build:
     runs-on: ubuntu-latest
     steps:
@@ -59,7 +59,7 @@ export default {
       </figure>
     </article>
   </div>
-</ef-code-sample>`
+</forma-code-sample>`
     },
     {
       id: "mobile-lock-file",
@@ -74,28 +74,28 @@ export default {
           "The caption wraps above the block; landscape orientation shows more of each line without changing layout."
         ]
       },
-      html: `<ef-code-sample class="ef-component-tag">
-  <div class="ef-site">
-    <figure class="ef-code-figure">
+      html: `<forma-code-sample class="forma-component-tag">
+  <div class="forma-site">
+    <figure class="forma-code-figure">
       <figcaption id="code-sample-mobile-lock-file-caption">forma.lock</figcaption>
-      <pre class="ef-code" tabindex="0" aria-labelledby="code-sample-mobile-lock-file-caption"><code>forma 0.3.0
+      <pre class="forma-code" tabindex="0" aria-labelledby="code-sample-mobile-lock-file-caption"><code>forma 0.3.0
 repository kemiller2002/forma
 destination assets/forma
 asset forma-marketing.css sha256:9f2c4e1a7b3d5c8e0f6a2b4d6e8f0a1c3e5b7d9f1a3c5e7b9d1f3a5c7e9b1d3f</code></pre>
     </figure>
   </div>
-</ef-code-sample>`
+</forma-code-sample>`
     }
   ],
   api: {
     attributes: [
-      { name: "tabindex", on: "pre.ef-code", values: "0", default: "—", description: "Makes the scroll region focusable so keyboard users can scroll overflowing lines." },
-      { name: "aria-labelledby", on: "pre.ef-code", values: "id of the figcaption", default: "—", description: "Gives the focusable region the caption as its name, so focus does not land on an unnamed stop." },
+      { name: "tabindex", on: "pre.forma-code", values: "0", default: "—", description: "Makes the scroll region focusable so keyboard users can scroll overflowing lines." },
+      { name: "aria-labelledby", on: "pre.forma-code", values: "id of the figcaption", default: "—", description: "Gives the focusable region the caption as its name, so focus does not land on an unnamed stop." },
       { name: "id", on: "figcaption", values: "string", default: "—", description: "Referenced by the pre's aria-labelledby." }
     ],
     hooks: {
-      "ef-code-figure": "The `figure` wrapper. Removes the default figure margin; its `figcaption` becomes a muted mono label above the block.",
-      "ef-code": "The `pre`: bounded (`max-inline-size: 100%`), scrolls on overflow, inverse surface and text, mono small type, `tab-size: 2`. A `code` inside inherits its color and size and does not wrap."
+      "forma-code-figure": "The `figure` wrapper. Removes the default figure margin; its `figcaption` becomes a muted mono label above the block.",
+      "forma-code": "The `pre`: bounded (`max-inline-size: 100%`), scrolls on overflow, inverse surface and text, mono small type, `tab-size: 2`. A `code` inside inherits its color and size and does not wrap."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Focuses the code block (tabindex=0); the shell's focus ring surrounds it." },

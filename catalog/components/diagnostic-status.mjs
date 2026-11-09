@@ -4,7 +4,7 @@ export default {
   behavior: "Aegis / Application",
   summary: "Text-first presentation of synchronized, queued, unavailable, or failed diagnostic persistence state.",
   purpose: {
-    description: "Diagnostic status shows the Aegis persistence state: whether diagnostic reports are synchronized, queued locally (with a count), unavailable, or whether the last synchronization failed (with a safe reason). It is operational state, not a fault severity, so it has no severity label and never replaces a fault surface. The state is always written as text; the marker glyph and the heavier border for unavailable and failed states are secondary cues. The application maps Aegis `PersistenceState` to `data-ef-state` and supplies the wording.",
+    description: "Diagnostic status shows the Aegis persistence state: whether diagnostic reports are synchronized, queued locally (with a count), unavailable, or whether the last synchronization failed (with a safe reason). It is operational state, not a fault severity, so it has no severity label and never replaces a fault surface. The state is always written as text; the marker glyph and the heavier border for unavailable and failed states are secondary cues. The application maps Aegis `PersistenceState` to `data-forma-state` and supplies the wording.",
     useWhen: [
       "The application explicitly chooses to show whether diagnostics are reaching their destination, for example in a status bar, settings page or support panel.",
       "Aegis intent is Silent for a fault, but the user or an operator still benefits from seeing that reports are queued.",
@@ -27,49 +27,49 @@ export default {
       id: "synchronized",
       title: "All diagnostics delivered",
       description: "The normal state in a support panel. No role is needed here because this status is rendered once with the panel and does not change while the user reads it.",
-      html: `<ef-diagnostic-status class="ef-component-tag">
-  <div class="ef-diagnostic-status" data-ef-state="synchronized">
-    <span class="ef-diagnostic-status__marker" aria-hidden="true">✓</span>
-    <span class="ef-diagnostic-status__body">
+      html: `<forma-diagnostic-status class="forma-component-tag">
+  <div class="forma-diagnostic-status" data-forma-state="synchronized">
+    <span class="forma-diagnostic-status__marker" aria-hidden="true">✓</span>
+    <span class="forma-diagnostic-status__body">
       <strong>Diagnostics synchronized</strong>
       <span>Last report delivered at <time datetime="2026-09-30T08:14:00Z">08:14 UTC</time>.</span>
     </span>
   </div>
-</ef-diagnostic-status>`
+</forma-diagnostic-status>`
     },
     {
       id: "last-sync-failed",
       title: "Last synchronization failed",
       description: "The failed state with a safe, user-facing reason supplied by the application. The heavier 2px border repeats the text cue. The reason is not an exception message.",
-      html: `<ef-diagnostic-status class="ef-component-tag">
-  <div class="ef-diagnostic-status" data-ef-state="last-synchronization-failed" role="status">
-    <span class="ef-diagnostic-status__marker" aria-hidden="true">!</span>
-    <span class="ef-diagnostic-status__body">
+      html: `<forma-diagnostic-status class="forma-component-tag">
+  <div class="forma-diagnostic-status" data-forma-state="last-synchronization-failed" role="status">
+    <span class="forma-diagnostic-status__marker" aria-hidden="true">!</span>
+    <span class="forma-diagnostic-status__body">
       <strong>Last synchronization failed</strong>
       <span>The diagnostics service rejected the upload. 5 reports are kept on this device.</span>
     </span>
   </div>
-</ef-diagnostic-status>`
+</forma-diagnostic-status>`
     },
     {
       id: "unavailable-with-recovery",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Diagnostics unavailable with a recovery action",
       description: "The unavailable state next to the Reconnect diagnostics capability that Aegis supplied. The status and the recovery group are siblings; the status stays text-first and the button is an ordinary recovery action.",
-      html: `<ef-diagnostic-status class="ef-component-tag">
-  <div class="ef-cluster">
-    <div class="ef-diagnostic-status" data-ef-state="unavailable" role="status">
-      <span class="ef-diagnostic-status__marker" aria-hidden="true">×</span>
-      <span class="ef-diagnostic-status__body">
+      html: `<forma-diagnostic-status class="forma-component-tag">
+  <div class="forma-cluster">
+    <div class="forma-diagnostic-status" data-forma-state="unavailable" role="status">
+      <span class="forma-diagnostic-status__marker" aria-hidden="true">×</span>
+      <span class="forma-diagnostic-status__body">
         <strong>Diagnostics unavailable</strong>
         <span>Reports cannot be stored or sent right now.</span>
       </span>
     </div>
-    <div class="ef-recovery-actions" role="group" aria-label="Diagnostics recovery">
-      <button type="button" data-ef-aegis-capability="CanRestoreSink">Reconnect diagnostics</button>
+    <div class="forma-recovery-actions" role="group" aria-label="Diagnostics recovery">
+      <button type="button" data-forma-aegis-capability="CanRestoreSink">Reconnect diagnostics</button>
     </div>
   </div>
-</ef-diagnostic-status>`
+</forma-diagnostic-status>`
     },
     {
       id: "mobile-queued",
@@ -84,42 +84,42 @@ export default {
           "Orientation changes only reflow the text."
         ]
       },
-      html: `<ef-diagnostic-status class="ef-component-tag">
-  <div class="ef-diagnostic-status" data-ef-state="queued" role="status">
-    <span class="ef-diagnostic-status__marker" aria-hidden="true">↥</span>
-    <span class="ef-diagnostic-status__body">
+      html: `<forma-diagnostic-status class="forma-component-tag">
+  <div class="forma-diagnostic-status" data-forma-state="queued" role="status">
+    <span class="forma-diagnostic-status__marker" aria-hidden="true">↥</span>
+    <span class="forma-diagnostic-status__body">
       <strong>Diagnostics queued</strong>
       <span>12 reports are waiting and will be sent automatically when this phone is back online.</span>
     </span>
   </div>
-</ef-diagnostic-status>`
+</forma-diagnostic-status>`
     }
   ],
   api: {
     attributes: [
-      { name: "data-ef-state", on: ".ef-diagnostic-status", values: "synchronized | queued | unavailable | last-synchronization-failed", default: "—", description: "The Aegis persistence state. unavailable and last-synchronization-failed get a 2px border; the text must still state the state." },
-      { name: "role", on: ".ef-diagnostic-status", values: "status", default: "absent", description: "Use when the application updates the status in place so changes are announced politely. Omit for a static one-time render." },
-      { name: "aria-hidden", on: ".ef-diagnostic-status__marker", values: "true", default: "—", description: "Hides the decorative glyph." }
+      { name: "data-forma-state", on: ".forma-diagnostic-status", values: "synchronized | queued | unavailable | last-synchronization-failed", default: "—", description: "The Aegis persistence state. unavailable and last-synchronization-failed get a 2px border; the text must still state the state." },
+      { name: "role", on: ".forma-diagnostic-status", values: "status", default: "absent", description: "Use when the application updates the status in place so changes are announced politely. Omit for a static one-time render." },
+      { name: "aria-hidden", on: ".forma-diagnostic-status__marker", values: "true", default: "—", description: "Hides the decorative glyph." }
     ],
     hooks: {
-      "ef-diagnostic-status": "Root: an inline-flex row with a 1px border on the secondary surface, limited to its container's width.",
-      "ef-diagnostic-status__marker": "Decorative glyph column, 1.5rem minimum width, monospace and bold.",
-      "ef-diagnostic-status__body": "Grid holding the state (strong text) and the supporting detail line.",
-      "data-ef-state": "The values unavailable and last-synchronization-failed increase the border to 2px; synchronized and queued keep 1px."
+      "forma-diagnostic-status": "Root: an inline-flex row with a 1px border on the secondary surface, limited to its container's width.",
+      "forma-diagnostic-status__marker": "Decorative glyph column, 1.5rem minimum width, monospace and bold.",
+      "forma-diagnostic-status__body": "Grid holding the state (strong text) and the supporting detail line.",
+      "data-forma-state": "The values unavailable and last-synchronization-failed increase the border to 2px; synchronized and queued keep 1px."
     },
     keyboard: [
       { keys: "—", action: "Not interactive. It is never focusable; any related recovery button is a separate native button." }
     ],
     events: [
-      { name: "—", description: "No events. The application updates the text and data-ef-state when Aegis persistence state changes." }
+      { name: "—", description: "No events. The application updates the text and data-forma-state when Aegis persistence state changes." }
     ],
     form: "Not a form control."
   },
   states: [
-    { name: "Synchronized", how: "data-ef-state=\"synchronized\"", description: "Reports are delivered. 1px border." },
-    { name: "Queued", how: "data-ef-state=\"queued\" with a count in text", description: "Reports are held locally and waiting. 1px border." },
-    { name: "Unavailable", how: "data-ef-state=\"unavailable\"", description: "Diagnostics cannot be stored or sent. 2px border." },
-    { name: "Last synchronization failed", how: "data-ef-state=\"last-synchronization-failed\" with a safe reason", description: "The most recent attempt failed. 2px border." }
+    { name: "Synchronized", how: "data-forma-state=\"synchronized\"", description: "Reports are delivered. 1px border." },
+    { name: "Queued", how: "data-forma-state=\"queued\" with a count in text", description: "Reports are held locally and waiting. 1px border." },
+    { name: "Unavailable", how: "data-forma-state=\"unavailable\"", description: "Diagnostics cannot be stored or sent. 2px border." },
+    { name: "Last synchronization failed", how: "data-forma-state=\"last-synchronization-failed\" with a safe reason", description: "The most recent attempt failed. 2px border." }
   ],
   accessibility: {
     forma: [

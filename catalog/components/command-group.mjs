@@ -11,7 +11,7 @@ export default {
       "A record or document screen needs grouped actions that must stay visible and wrap on narrow screens."
     ],
     avoidWhen: [
-      "There are only one to three obvious actions with no need for a heading: use [[button]] inside `ef-actions`.",
+      "There are only one to three obvious actions with no need for a heading: use [[button]] inside `forma-actions`.",
       "The commands are secondary and should be tucked away: use [[overflow-command-disclosure]] or a [[menu]].",
       "The group is really a set of mutually exclusive options such as a view mode: use [[segmented-control]].",
       "Users search a large command set by name: use [[command-palette]]."
@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "The visible heading is the group's accessible name through `aria-labelledby`.",
       "Commands wrap onto new lines instead of shrinking; each keeps the 44px native button target.",
-      "One custom property, `--ef-command-space`, sets the gap between the label, the rows and the commands.",
+      "One custom property, `--forma-command-space`, sets the gap between the label, the rows and the commands.",
       "The group expresses no priority, legality or permission; it only arranges what the application renders."
     ]
   },
@@ -30,42 +30,42 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Document toolbar with two groups",
       description: "Two labelled groups side by side in a [[cluster]]. Each section is named by its own heading, so the two sets of commands stay distinguishable in the landmark and heading lists even though both sit in one toolbar row.",
-      html: `<ef-command-group class="ef-component-tag">
-  <div class="ef-cluster">
-    <section class="ef-command-group" aria-labelledby="command-group-document-toolbar-format">
-      <h2 class="ef-command-group__label" id="command-group-document-toolbar-format">Format</h2>
-      <div class="ef-command-group__commands">
+      html: `<forma-command-group class="forma-component-tag">
+  <div class="forma-cluster">
+    <section class="forma-command-group" aria-labelledby="command-group-document-toolbar-format">
+      <h2 class="forma-command-group__label" id="command-group-document-toolbar-format">Format</h2>
+      <div class="forma-command-group__commands">
         <button type="button">Bold</button>
         <button type="button">Italic</button>
         <button type="button">Insert link</button>
       </div>
     </section>
-    <section class="ef-command-group" aria-labelledby="command-group-document-toolbar-share">
-      <h2 class="ef-command-group__label" id="command-group-document-toolbar-share">Share</h2>
-      <div class="ef-command-group__commands">
+    <section class="forma-command-group" aria-labelledby="command-group-document-toolbar-share">
+      <h2 class="forma-command-group__label" id="command-group-document-toolbar-share">Share</h2>
+      <div class="forma-command-group__commands">
         <button type="button">Copy link</button>
         <button type="button">Invite people</button>
       </div>
     </section>
   </div>
-</ef-command-group>`
+</forma-command-group>`
     },
     {
       id: "unavailable-command",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Command unavailable with a visible reason",
       description: "The application has decided Merge is not currently legal. The button is natively disabled, and a sentence inside the group states why, because the application-layer disabled button looks almost identical to an enabled one. Forma does not decide legality; it only renders the state it is given.",
-      html: `<ef-command-group class="ef-component-tag">
-  <section class="ef-command-group" aria-labelledby="command-group-unavailable-command-label">
-    <h2 class="ef-command-group__label" id="command-group-unavailable-command-label">Pull request</h2>
-    <div class="ef-command-group__commands">
+      html: `<forma-command-group class="forma-component-tag">
+  <section class="forma-command-group" aria-labelledby="command-group-unavailable-command-label">
+    <h2 class="forma-command-group__label" id="command-group-unavailable-command-label">Pull request</h2>
+    <div class="forma-command-group__commands">
       <button type="button">Request review</button>
       <button type="button" disabled>Merge</button>
       <button type="button">Close pull request</button>
     </div>
-    <p class="ef-field__description">Merge is unavailable: 2 required checks are still running.</p>
+    <p class="forma-field__description">Merge is unavailable: 2 required checks are still running.</p>
   </section>
-</ef-command-group>`
+</forma-command-group>`
     },
     {
       id: "mobile-record-commands",
@@ -75,16 +75,16 @@ export default {
       mobile: {
         height: 340,
         notes: [
-          "`ef-command-group__commands` is a wrapping flex row, so commands move to new lines in source order instead of shrinking below 44px.",
+          "`forma-command-group__commands` is a wrapping flex row, so commands move to new lines in source order instead of shrinking below 44px.",
           "The label stays above the commands at every width; the group never becomes a horizontal scroller.",
           "Long labels wrap inside their button. If the group grows too tall on phones, move rarely used commands into [[overflow-command-disclosure]] rather than hiding them.",
           "Orientation changes only reflow the rows; the order and grouping of commands are unchanged."
         ]
       },
-      html: `<ef-command-group class="ef-component-tag">
-  <section class="ef-command-group" aria-labelledby="command-group-mobile-record-commands-label">
-    <h2 class="ef-command-group__label" id="command-group-mobile-record-commands-label">Invoice INV-20931</h2>
-    <div class="ef-command-group__commands">
+      html: `<forma-command-group class="forma-component-tag">
+  <section class="forma-command-group" aria-labelledby="command-group-mobile-record-commands-label">
+    <h2 class="forma-command-group__label" id="command-group-mobile-record-commands-label">Invoice INV-20931</h2>
+    <div class="forma-command-group__commands">
       <button type="button">Send reminder</button>
       <button type="button">Record payment</button>
       <button type="button">Download PDF</button>
@@ -92,21 +92,21 @@ export default {
       <button type="button">Void invoice</button>
     </div>
   </section>
-</ef-command-group>`
+</forma-command-group>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-command-group", values: "id of .ef-command-group__label", default: "—", description: "Required. Names the group from its visible heading so the region and its commands are announced with their task context." },
-      { name: "id", on: ".ef-command-group__label", values: "unique id", default: "—", description: "Target of aria-labelledby. Must be unique on the page." },
+      { name: "aria-labelledby", on: "section.forma-command-group", values: "id of .forma-command-group__label", default: "—", description: "Required. Names the group from its visible heading so the region and its commands are announced with their task context." },
+      { name: "id", on: ".forma-command-group__label", values: "unique id", default: "—", description: "Target of aria-labelledby. Must be unique on the page." },
       { name: "type", on: "button", values: "button", default: "—", description: "Commands are ordinary buttons; set type=\"button\" so they never submit an enclosing form." },
       { name: "disabled", on: "button", values: "boolean", default: "absent", description: "Renders an application-decided unavailable command. Pair it with visible text explaining why." }
     ],
     hooks: {
-      "ef-command-group": "Root grid (usually a `section`) that stacks the label above the commands.",
-      "ef-command-group__label": "The visible task label. Use a heading at the right level for the page outline; margins are reset and the size is reduced to a label size.",
-      "ef-command-group__commands": "Wrapping flex row that holds the command buttons.",
-      "--ef-command-space": "Gap between the label and the commands and between commands. Defaults to the spacing-2 token (0.5rem). [[overflow-command-disclosure]] panels nested in the group inherit it."
+      "forma-command-group": "Root grid (usually a `section`) that stacks the label above the commands.",
+      "forma-command-group__label": "The visible task label. Use a heading at the right level for the page outline; margins are reset and the size is reduced to a label size.",
+      "forma-command-group__commands": "Wrapping flex row that holds the command buttons.",
+      "--forma-command-space": "Gap between the label and the commands and between commands. Defaults to the spacing-2 token (0.5rem). [[overflow-command-disclosure]] panels nested in the group inherit it."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the commands one by one in source order. Forma adds no arrow-key toolbar navigation; an ARIA toolbar with roving focus is application/Limen behavior." },
@@ -157,7 +157,7 @@ export default {
     ]
   },
   related: [
-    { slug: "button", note: "Use a plain `ef-actions` row when the actions need no group label." },
+    { slug: "button", note: "Use a plain `forma-actions` row when the actions need no group label." },
     { slug: "overflow-command-disclosure", note: "Use to move secondary commands behind a native More disclosure, often inside a command group." },
     { slug: "menu", note: "Use for a popover list of actions opened from a single trigger." },
     { slug: "collection-toolbar", note: "Use for search, filter and sort controls above a collection rather than record commands." },

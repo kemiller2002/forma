@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Native-dialog surface for Aegis Blocking intent with only application-supplied recovery actions.",
   purpose: {
-    description: "A blocking fault presents an Aegis presentation whose intent is `Blocking`: the application cannot continue safely until one of the supplied recovery actions succeeds. It is a native `dialog` styled with `ef-dialog` and `ef-fault-blocking`, so a modal open gives the platform's focus containment, inert background and accessible dialog semantics. Forma cannot enforce a blocking policy with CSS. The application or Limen opens the dialog modally, chooses initial focus, decides whether a cancel request (Escape) is currently legal, revalidates every recovery action, and closes the dialog only after a legal transition changes the authoritative state.",
+    description: "A blocking fault presents an Aegis presentation whose intent is `Blocking`: the application cannot continue safely until one of the supplied recovery actions succeeds. It is a native `dialog` styled with `forma-dialog` and `forma-fault-blocking`, so a modal open gives the platform's focus containment, inert background and accessible dialog semantics. Forma cannot enforce a blocking policy with CSS. The application or Limen opens the dialog modally, chooses initial focus, decides whether a cancel request (Escape) is currently legal, revalidates every recovery action, and closes the dialog only after a legal transition changes the authoritative state.",
     useWhen: [
       "Aegis reports intent `Blocking`, for example when state cannot be verified or a session cannot be restored.",
       "Continuing would risk data loss or an unsafe action, and only specific recovery capabilities are legal.",
@@ -30,61 +30,61 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Sign-in required to continue",
       description: "An error-severity blocking fault with a single Aegis capability. The invoker uses the native command attributes to open the dialog modally for this preview; in an application Limen opens it when the Aegis intent is Blocking.",
-      html: `<ef-fault-blocking class="ef-component-tag">
+      html: `<forma-fault-blocking class="forma-component-tag">
   <button type="button" commandfor="fault-blocking-sign-in-required-dialog" command="show-modal">Preview sign-in fault</button>
-  <dialog class="ef-dialog ef-fault-blocking" id="fault-blocking-sign-in-required-dialog" data-ef-intent="blocking" data-ef-severity="error" aria-labelledby="fault-blocking-sign-in-required-title" aria-describedby="fault-blocking-sign-in-required-message">
-    <div class="ef-dialog__body">
-      <div class="ef-fault-blocking__heading">
-        <div class="ef-fault-blocking__marker" aria-hidden="true">!</div>
+  <dialog class="forma-dialog forma-fault-blocking" id="fault-blocking-sign-in-required-dialog" data-forma-intent="blocking" data-forma-severity="error" aria-labelledby="fault-blocking-sign-in-required-title" aria-describedby="fault-blocking-sign-in-required-message">
+    <div class="forma-dialog__body">
+      <div class="forma-fault-blocking__heading">
+        <div class="forma-fault-blocking__marker" aria-hidden="true">!</div>
         <div>
-          <p class="ef-fault__severity">Error</p>
+          <p class="forma-fault__severity">Error</p>
           <h2 id="fault-blocking-sign-in-required-title">Your session ended</h2>
         </div>
       </div>
       <p id="fault-blocking-sign-in-required-message">Sign in again to continue. The form you were completing is kept on this device.</p>
-      <p class="ef-fault-reference">Reference <code>AG-3JH71</code></p>
+      <p class="forma-fault-reference">Reference <code>AG-3JH71</code></p>
     </div>
-    <div class="ef-dialog__actions ef-recovery-actions" role="group" aria-label="Recovery actions">
-      <button type="button" data-ef-aegis-capability="CanReauthenticate">Sign in</button>
+    <div class="forma-dialog__actions forma-recovery-actions" role="group" aria-label="Recovery actions">
+      <button type="button" data-forma-aegis-capability="CanReauthenticate">Sign in</button>
     </div>
   </dialog>
-</ef-fault-blocking>`
+</forma-fault-blocking>`
     },
     {
       id: "corrupt-local-copy",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Unverifiable local copy with safe details",
       description: "A critical blocking fault offering three Aegis capabilities. Approved, already-sanitized details sit in a collapsed disclosure inside the dialog body; nothing developer-only is rendered.",
-      html: `<ef-fault-blocking class="ef-component-tag">
+      html: `<forma-fault-blocking class="forma-component-tag">
   <button type="button" commandfor="fault-blocking-corrupt-local-copy-dialog" command="show-modal">Preview local copy fault</button>
-  <dialog class="ef-dialog ef-fault-blocking" id="fault-blocking-corrupt-local-copy-dialog" data-ef-intent="blocking" data-ef-severity="critical" data-ef-motion-weight="heavy" aria-labelledby="fault-blocking-corrupt-local-copy-title" aria-describedby="fault-blocking-corrupt-local-copy-message">
-    <div class="ef-dialog__body">
-      <div class="ef-fault-blocking__heading">
-        <div class="ef-fault-blocking__marker" aria-hidden="true">!!</div>
+  <dialog class="forma-dialog forma-fault-blocking" id="fault-blocking-corrupt-local-copy-dialog" data-forma-intent="blocking" data-forma-severity="critical" data-forma-motion-weight="heavy" aria-labelledby="fault-blocking-corrupt-local-copy-title" aria-describedby="fault-blocking-corrupt-local-copy-message">
+    <div class="forma-dialog__body">
+      <div class="forma-fault-blocking__heading">
+        <div class="forma-fault-blocking__marker" aria-hidden="true">!!</div>
         <div>
-          <p class="ef-fault__severity">Critical</p>
+          <p class="forma-fault__severity">Critical</p>
           <h2 id="fault-blocking-corrupt-local-copy-title">This project cannot be opened for editing</h2>
         </div>
       </div>
       <p id="fault-blocking-corrupt-local-copy-message">The copy stored on this device does not match the last verified version. Open it read-only, set it aside, or reload the verified version.</p>
-      <p class="ef-fault-reference">Reference <code>AG-7P2DX</code></p>
-      <details class="ef-fault-details">
+      <p class="forma-fault-reference">Reference <code>AG-7P2DX</code></p>
+      <details class="forma-fault-details">
         <summary>Safe diagnostic details</summary>
-        <div class="ef-fault-details__content">
-          <dl class="ef-fault-details__list">
+        <div class="forma-fault-details__content">
+          <dl class="forma-fault-details__list">
             <div><dt>Project</dt><dd>Harbor renovation</dd></div>
             <div><dt>Last verified</dt><dd><time datetime="2026-09-29T16:12:00Z">29 Sep 2026, 16:12 UTC</time></dd></div>
           </dl>
         </div>
       </details>
     </div>
-    <div class="ef-dialog__actions ef-recovery-actions" role="group" aria-label="Recovery actions">
-      <button type="button" data-ef-aegis-capability="CanOpenReadOnly">Open read-only</button>
-      <button type="button" data-ef-aegis-capability="CanQuarantine">Set aside</button>
-      <button type="button" data-ef-aegis-capability="CanReload">Reload</button>
+    <div class="forma-dialog__actions forma-recovery-actions" role="group" aria-label="Recovery actions">
+      <button type="button" data-forma-aegis-capability="CanOpenReadOnly">Open read-only</button>
+      <button type="button" data-forma-aegis-capability="CanQuarantine">Set aside</button>
+      <button type="button" data-forma-aegis-capability="CanReload">Reload</button>
     </div>
   </dialog>
-</ef-fault-blocking>`
+</forma-fault-blocking>`
     },
     {
       id: "mobile-reload",
@@ -100,26 +100,26 @@ export default {
           "In landscape the height limit shrinks the dialog and the body scrolls; no content moves off screen horizontally."
         ]
       },
-      html: `<ef-fault-blocking class="ef-component-tag">
+      html: `<forma-fault-blocking class="forma-component-tag">
   <button type="button" commandfor="fault-blocking-mobile-reload-dialog" command="show-modal">Preview blocking fault</button>
-  <dialog class="ef-dialog ef-fault-blocking" id="fault-blocking-mobile-reload-dialog" data-ef-intent="blocking" data-ef-severity="critical" aria-labelledby="fault-blocking-mobile-reload-title" aria-describedby="fault-blocking-mobile-reload-message">
-    <div class="ef-dialog__body">
-      <div class="ef-fault-blocking__heading">
-        <div class="ef-fault-blocking__marker" aria-hidden="true">!!</div>
+  <dialog class="forma-dialog forma-fault-blocking" id="fault-blocking-mobile-reload-dialog" data-forma-intent="blocking" data-forma-severity="critical" aria-labelledby="fault-blocking-mobile-reload-title" aria-describedby="fault-blocking-mobile-reload-message">
+    <div class="forma-dialog__body">
+      <div class="forma-fault-blocking__heading">
+        <div class="forma-fault-blocking__marker" aria-hidden="true">!!</div>
         <div>
-          <p class="ef-fault__severity">Critical</p>
+          <p class="forma-fault__severity">Critical</p>
           <h2 id="fault-blocking-mobile-reload-title">This inspection cannot continue safely</h2>
         </div>
       </div>
       <p id="fault-blocking-mobile-reload-message">The checklist version on this phone is out of date. Reload to get the current version, or open your answers read-only.</p>
-      <p class="ef-fault-reference">Reference <code>AG-8C1WF</code></p>
+      <p class="forma-fault-reference">Reference <code>AG-8C1WF</code></p>
     </div>
-    <div class="ef-dialog__actions ef-recovery-actions" role="group" aria-label="Recovery actions">
-      <button type="button" data-ef-aegis-capability="CanReload">Reload</button>
-      <button type="button" data-ef-aegis-capability="CanOpenReadOnly">Open read-only</button>
+    <div class="forma-dialog__actions forma-recovery-actions" role="group" aria-label="Recovery actions">
+      <button type="button" data-forma-aegis-capability="CanReload">Reload</button>
+      <button type="button" data-forma-aegis-capability="CanOpenReadOnly">Open read-only</button>
     </div>
   </dialog>
-</ef-fault-blocking>`
+</forma-fault-blocking>`
     }
   ],
   api: {
@@ -129,20 +129,20 @@ export default {
       { name: "command", on: "invoker button", values: "show-modal", default: "—", description: "Opens the dialog modally without script. Never use a non-modal open for a blocking fault." },
       { name: "aria-labelledby", on: "dialog", values: "id of the heading", default: "—", description: "Required. Gives the dialog its accessible name." },
       { name: "aria-describedby", on: "dialog", values: "id of the message", default: "—", description: "Announces the safe message when the dialog opens." },
-      { name: "data-ef-severity", on: "dialog", values: "diagnostic | warning | error | critical", default: "—", description: "Records the Aegis severity. The dialog surface is not restyled by it; the visible severity text carries the level." },
-      { name: "data-ef-intent", on: "dialog", values: "blocking", default: "—", description: "Records the Aegis intent. Descriptive only." },
-      { name: "data-ef-motion-weight", on: "dialog", values: "light | standard | heavy", default: "heavy", description: "Presentation-only perceived mass for the open transition. Heavy is the default for this surface; never map it to severity." },
-      { name: "aria-hidden", on: ".ef-fault-blocking__marker", values: "true", default: "—", description: "Hides the decorative marker glyph." },
-      { name: "role", on: ".ef-recovery-actions", values: "group", default: "—", description: "Groups the recovery buttons in the dialog footer." },
-      { name: "aria-label", on: ".ef-recovery-actions", values: "string", default: "—", description: "Names the recovery group." },
+      { name: "data-forma-severity", on: "dialog", values: "diagnostic | warning | error | critical", default: "—", description: "Records the Aegis severity. The dialog surface is not restyled by it; the visible severity text carries the level." },
+      { name: "data-forma-intent", on: "dialog", values: "blocking", default: "—", description: "Records the Aegis intent. Descriptive only." },
+      { name: "data-forma-motion-weight", on: "dialog", values: "light | standard | heavy", default: "heavy", description: "Presentation-only perceived mass for the open transition. Heavy is the default for this surface; never map it to severity." },
+      { name: "aria-hidden", on: ".forma-fault-blocking__marker", values: "true", default: "—", description: "Hides the decorative marker glyph." },
+      { name: "role", on: ".forma-recovery-actions", values: "group", default: "—", description: "Groups the recovery buttons in the dialog footer." },
+      { name: "aria-label", on: ".forma-recovery-actions", values: "string", default: "—", description: "Names the recovery group." },
       { name: "type", on: "button", values: "button", default: "—", description: "Required on every button." },
-      { name: "data-ef-aegis-capability", on: "recovery button", values: "Aegis capability name", default: "—", description: "Exact Aegis capability identity; revalidated on activation." }
+      { name: "data-forma-aegis-capability", on: "recovery button", values: "Aegis capability name", default: "—", description: "Exact Aegis capability identity; revalidated on activation." }
     ],
     hooks: {
-      "ef-fault-blocking": "Applied with `ef-dialog` on the native dialog. Widens the dialog to `min(42rem, 100vw - 2rem)` and limits its height to `min(90dvh, 100dvh - 2rem)`.",
-      "ef-fault-blocking__heading": "Two-column grid placing the marker beside the severity label and heading.",
-      "ef-fault-blocking__marker": "Decorative round marker glyph (for example !!).",
-      "data-ef-motion-weight": "Selects the light, standard or heavy physics preset; heavy is the default when the attribute is absent."
+      "forma-fault-blocking": "Applied with `forma-dialog` on the native dialog. Widens the dialog to `min(42rem, 100vw - 2rem)` and limits its height to `min(90dvh, 100dvh - 2rem)`.",
+      "forma-fault-blocking__heading": "Two-column grid placing the marker beside the severity label and heading.",
+      "forma-fault-blocking__marker": "Decorative round marker glyph (for example !!).",
+      "data-forma-motion-weight": "Selects the light, standard or heavy physics preset; heavy is the default when the attribute is absent."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "While open modally, focus cycles among the recovery buttons (and any disclosure) inside the dialog; the page behind is inert." },

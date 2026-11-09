@@ -20,9 +20,9 @@ for (const width of [320, 390, 700]) {
     await page.setViewportSize({ width, height: 900 });
     for (const fontSize of ["100%", "200%"]) {
       await page.locator("html").evaluate((element, size) => { element.style.fontSize = size; }, fontSize);
-      const differences = await page.locator(".ef-ordinal-option").evaluateAll(options => options.map(option => {
-        const marker = option.querySelector(".ef-ordinal-option__marker").getBoundingClientRect();
-        const label = option.querySelector(".ef-ordinal-option__label").getBoundingClientRect();
+      const differences = await page.locator(".forma-ordinal-option").evaluateAll(options => options.map(option => {
+        const marker = option.querySelector(".forma-ordinal-option__marker").getBoundingClientRect();
+        const label = option.querySelector(".forma-ordinal-option__label").getBoundingClientRect();
         return Math.abs(marker.y + marker.height / 2 - label.y - label.height / 2);
       }));
       differences.forEach(difference => expect(difference).toBeLessThanOrEqual(1));
@@ -32,7 +32,7 @@ for (const width of [320, 390, 700]) {
 
 test("desktop ordinal labels retain their separate top-aligned row", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
-  const labels = await page.locator(".ef-ordinal-option__label").evaluateAll(elements => elements.map(element => ({
+  const labels = await page.locator(".forma-ordinal-option__label").evaluateAll(elements => elements.map(element => ({
     alignment: getComputedStyle(element).alignSelf,
     top: element.getBoundingClientRect().top,
     markerBottom: element.previousElementSibling.getBoundingClientRect().bottom
@@ -48,9 +48,9 @@ for (const width of [320, 390, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     for (const fontSize of ["100%", "200%"]) {
       await page.locator("html").evaluate((element, size) => { element.style.fontSize = size; }, fontSize);
-      const centers = await page.locator(".ef-choice").evaluateAll(elements => elements.map(element => {
+      const centers = await page.locator(".forma-choice").evaluateAll(elements => elements.map(element => {
         const box = element.getBoundingClientRect();
-        const content = element.querySelector(".ef-choice__content").getBoundingClientRect();
+        const content = element.querySelector(".forma-choice__content").getBoundingClientRect();
         const style = getComputedStyle(element);
         const marker = getComputedStyle(element, "::before");
         const shift = new DOMMatrixReadOnly(marker.transform).m42;
@@ -68,9 +68,9 @@ for (const width of [320, 390, 1280]) {
         expect(bottomClearance, `${text}: text fits bottom padding at ${fontSize}`).toBeGreaterThanOrEqual(-1);
       }
       for (const [container, marker, text] of [
-        [".ef-checkbox", ".ef-checkbox__box", ".ef-checkbox__text"],
-        [".ef-switch", ".ef-switch__track", ".ef-switch__text"],
-        [".ef-select", ".ef-select__indicator", ".ef-select__input"]
+        [".forma-checkbox", ".forma-checkbox__box", ".forma-checkbox__text"],
+        [".forma-switch", ".forma-switch__track", ".forma-switch__text"],
+        [".forma-select", ".forma-select__indicator", ".forma-select__input"]
       ]) {
         const difference = await page.locator(container).first().evaluate((element, selectors) => {
           const marker = element.querySelector(selectors[0]).getBoundingClientRect();
@@ -78,7 +78,7 @@ for (const width of [320, 390, 1280]) {
           return Math.abs(marker.y + marker.height / 2 - text.y - text.height / 2);
         }, [marker, text]);
         // Select's rotated chevron has a small intentional directional offset.
-        expect(difference).toBeLessThanOrEqual(container === ".ef-select" ? 4 : 1);
+        expect(difference).toBeLessThanOrEqual(container === ".forma-select" ? 4 : 1);
       }
     }
   });

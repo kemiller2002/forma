@@ -95,7 +95,7 @@ let all =
           let sessions, reply = EmbedHost.dispatch RenderOptions.defaults msg EmbedHost.empty
           let r = parse reply
           equal (Some(Json.String Embed.protocol)) (Json.field "protocol" r) "protocol"
-          expect (match Json.field "html" r with Some(Json.String h) -> h.Contains "ef-workflow-editor" | _ -> false) "html"
+          expect (match Json.field "html" r with Some(Json.String h) -> h.Contains "forma-workflow-editor" | _ -> false) "html"
           let cmd = Json.compact (Json.Object [ "protocol", Json.String Embed.protocol; "instance", Json.String "a1"; "type", Json.String "command"; "command", Json.Object [ "name", Json.String "addNode"; "label", Json.String "Added by host" ] ])
           let sessions, reply = EmbedHost.dispatch RenderOptions.defaults cmd sessions
           expect (reply.Contains "\"type\":\"change\"") "change event"

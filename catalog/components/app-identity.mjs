@@ -18,9 +18,9 @@ export default {
     ],
     characteristics: [
       "One accessible name: the visible name text. The mark and monogram are hidden from assistive technology.",
-      "Four sizes, 16, 24, 32 and 64 pixels, set with data-ef-size.",
-      "An inline SVG mark drawn with currentColor takes --ef-color-accent-primary, so one mark adapts to every theme and brand.",
-      "External mark variants for light and dark themes (.ef-app-identity__variant with data-ef-scheme) follow the active data-ef-theme or, with no explicit theme, the operating-system preference.",
+      "Four sizes, 16, 24, 32 and 64 pixels, set with data-forma-size.",
+      "An inline SVG mark drawn with currentColor takes --forma-color-accent-primary, so one mark adapts to every theme and brand.",
+      "External mark variants for light and dark themes (.forma-app-identity__variant with data-forma-scheme) follow the active data-forma-theme or, with no explicit theme, the operating-system preference.",
       "The monogram tile uses the theme's accent and inverse text tokens and becomes a bordered system-color tile in forced colors."
     ]
   },
@@ -30,77 +30,77 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Application header with a context line",
       description: "The identity is the home link at the start of an application header. The context line names the parent organization in smaller secondary text, inside the link, so the link has one accessible name made of the visible text.",
-      html: `<ef-app-identity class="ef-component-tag">
-  <a class="ef-app-identity" href="#app-identity-header-with-context">
-    <span class="ef-app-identity__mark">
+      html: `<forma-app-identity class="forma-component-tag">
+  <a class="forma-app-identity" href="#app-identity-header-with-context">
+    <span class="forma-app-identity__mark">
       <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg>
     </span>
-    <span class="ef-app-identity__name">Northwind Ledger <span class="ef-app-identity__context">Northwind Trading Company</span></span>
+    <span class="forma-app-identity__name">Northwind Ledger <span class="forma-app-identity__context">Northwind Trading Company</span></span>
   </a>
-</ef-app-identity>`
+</forma-app-identity>`
     },
     {
       id: "missing-asset",
       title: "External mark that fails to load",
       description: "The mark URL does not resolve. The browser renders the object element's fallback content, so the application shows its text monogram on an accent tile instead of a broken-image icon or an empty box. No script is involved. The same fallback appears when the page's Content-Security-Policy blocks object elements (`object-src 'none'`); that is why an inline SVG mark is preferred.",
-      html: `<ef-app-identity class="ef-component-tag">
-  <span class="ef-app-identity">
-    <span class="ef-app-identity__mark">
+      html: `<forma-app-identity class="forma-component-tag">
+  <span class="forma-app-identity">
+    <span class="forma-app-identity__mark">
       <object type="image/svg+xml" data="/assets/does-not-exist/northwind-mark.svg" aria-hidden="true" tabindex="-1">
-        <span class="ef-app-identity__monogram" aria-hidden="true">N</span>
+        <span class="forma-app-identity__monogram" aria-hidden="true">N</span>
       </object>
     </span>
-    <span class="ef-app-identity__name">Northwind Ledger</span>
+    <span class="forma-app-identity__name">Northwind Ledger</span>
   </span>
-</ef-app-identity>`
+</forma-app-identity>`
     },
     {
       id: "light-and-dark-marks",
       title: "Separate light and dark marks",
-      description: "Two external mark variants are siblings with the class `ef-app-identity__variant`, marked `data-ef-scheme=\"light\"` and `data-ef-scheme=\"dark\"`. Forma shows the one that matches the active theme: the operating-system preference when no theme is set, an explicit `data-ef-theme` otherwise. This page sets no explicit theme, so the documentation theme or your operating-system preference decides which variant both copies show.",
-      html: `<ef-app-identity class="ef-component-tag">
-  <div class="ef-cluster">
-    <div class="ef-surface">
-      <span class="ef-app-identity">
-        <span class="ef-app-identity__mark">
-          <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23234'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1" class="ef-app-identity__variant" data-ef-scheme="light">
-        <span class="ef-app-identity__monogram" aria-hidden="true">N</span>
+      description: "Two external mark variants are siblings with the class `forma-app-identity__variant`, marked `data-forma-scheme=\"light\"` and `data-forma-scheme=\"dark\"`. Forma shows the one that matches the active theme: the operating-system preference when no theme is set, an explicit `data-forma-theme` otherwise. This page sets no explicit theme, so the documentation theme or your operating-system preference decides which variant both copies show.",
+      html: `<forma-app-identity class="forma-component-tag">
+  <div class="forma-cluster">
+    <div class="forma-surface">
+      <span class="forma-app-identity">
+        <span class="forma-app-identity__mark">
+          <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23234'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1" class="forma-app-identity__variant" data-forma-scheme="light">
+        <span class="forma-app-identity__monogram" aria-hidden="true">N</span>
       </object>
-          <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23e8eef2'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23123' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1" class="ef-app-identity__variant" data-ef-scheme="dark">
-        <span class="ef-app-identity__monogram" aria-hidden="true">N</span>
+          <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23e8eef2'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23123' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1" class="forma-app-identity__variant" data-forma-scheme="dark">
+        <span class="forma-app-identity__monogram" aria-hidden="true">N</span>
       </object>
         </span>
-        <span class="ef-app-identity__name">Northwind Ledger</span>
+        <span class="forma-app-identity__name">Northwind Ledger</span>
       </span>
     </div>
-    <div class="ef-surface">
-      <span class="ef-app-identity">
-        <span class="ef-app-identity__mark">
-          <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23234'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1" class="ef-app-identity__variant" data-ef-scheme="light">
-        <span class="ef-app-identity__monogram" aria-hidden="true">N</span>
+    <div class="forma-surface">
+      <span class="forma-app-identity">
+        <span class="forma-app-identity__mark">
+          <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23234'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1" class="forma-app-identity__variant" data-forma-scheme="light">
+        <span class="forma-app-identity__monogram" aria-hidden="true">N</span>
       </object>
-          <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23e8eef2'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23123' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1" class="ef-app-identity__variant" data-ef-scheme="dark">
-        <span class="ef-app-identity__monogram" aria-hidden="true">N</span>
+          <object type="image/svg+xml" data="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23e8eef2'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23123' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" aria-hidden="true" tabindex="-1" class="forma-app-identity__variant" data-forma-scheme="dark">
+        <span class="forma-app-identity__monogram" aria-hidden="true">N</span>
       </object>
         </span>
-        <span class="ef-app-identity__name">Northwind Ledger</span>
+        <span class="forma-app-identity__name">Northwind Ledger</span>
       </span>
     </div>
   </div>
-</ef-app-identity>`
+</forma-app-identity>`
     },
     {
       id: "sizes",
       title: "Small-size legibility (16, 24, 32 and 64 pixels)",
       description: "The same mark at each supported size. Check a new mark at 16 pixels before approving it: detail that disappears there disappears in a browser tab and a compact header.",
-      html: `<ef-app-identity class="ef-component-tag">
-  <div class="ef-stack">
-    <span class="ef-app-identity" data-ef-size="16"><span class="ef-app-identity__mark"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg></span><span class="ef-app-identity__name">16 pixels</span></span>
-    <span class="ef-app-identity" data-ef-size="24"><span class="ef-app-identity__mark"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg></span><span class="ef-app-identity__name">24 pixels</span></span>
-    <span class="ef-app-identity" data-ef-size="32"><span class="ef-app-identity__mark"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg></span><span class="ef-app-identity__name">32 pixels</span></span>
-    <span class="ef-app-identity" data-ef-size="64"><span class="ef-app-identity__mark"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg></span><span class="ef-app-identity__name">64 pixels</span></span>
+      html: `<forma-app-identity class="forma-component-tag">
+  <div class="forma-stack">
+    <span class="forma-app-identity" data-forma-size="16"><span class="forma-app-identity__mark"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg></span><span class="forma-app-identity__name">16 pixels</span></span>
+    <span class="forma-app-identity" data-forma-size="24"><span class="forma-app-identity__mark"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg></span><span class="forma-app-identity__name">24 pixels</span></span>
+    <span class="forma-app-identity" data-forma-size="32"><span class="forma-app-identity__mark"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg></span><span class="forma-app-identity__name">32 pixels</span></span>
+    <span class="forma-app-identity" data-forma-size="64"><span class="forma-app-identity__mark"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg></span><span class="forma-app-identity__name">64 pixels</span></span>
   </div>
-</ef-app-identity>`
+</forma-app-identity>`
     },
     {
       id: "mobile-compact-header",
@@ -111,37 +111,37 @@ export default {
         height: 160,
         notes: ["The link keeps a 44 pixel minimum height, so the mark is a full-size touch target even at 24 pixels.","The visually hidden name remains the accessible name; the mark itself is hidden from assistive technology.","A long name wraps inside the identity rather than pushing the header past 320 pixels."]
       },
-      html: `<ef-app-identity class="ef-component-tag">
-  <a class="ef-app-identity" data-ef-size="24" href="#app-identity-mobile-compact-header">
-    <span class="ef-app-identity__mark">
+      html: `<forma-app-identity class="forma-component-tag">
+  <a class="forma-app-identity" data-forma-size="24" href="#app-identity-mobile-compact-header">
+    <span class="forma-app-identity__mark">
       <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M6 0h20a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Zm10 8-8 14h16Z"/></svg>
     </span>
-    <span class="ef-app-identity__name ef-visually-hidden">Northwind Ledger home</span>
+    <span class="forma-app-identity__name forma-visually-hidden">Northwind Ledger home</span>
   </a>
-</ef-app-identity>`
+</forma-app-identity>`
     }
   ],
   api: {
     attributes: [
-      { name: "href", on: "a.ef-app-identity", values: "URL", default: "—", description: "Makes the identity the home link. Use a span when it is not a link, such as on a start-up screen." },
-      { name: "data-ef-size", on: ".ef-app-identity", values: "16 | 24 | 32 | 64", default: "32", description: "Mark size in CSS pixels. 64 also enlarges the name, for start-up and about surfaces." },
+      { name: "href", on: "a.forma-app-identity", values: "URL", default: "—", description: "Makes the identity the home link. Use a span when it is not a link, such as on a start-up screen." },
+      { name: "data-forma-size", on: ".forma-app-identity", values: "16 | 24 | 32 | 64", default: "32", description: "Mark size in CSS pixels. 64 also enlarges the name, for start-up and about surfaces." },
       { name: "focusable", on: "svg (inline mark)", values: "false", default: "—", description: "Preferred mark: an inline SVG drawn with fill=\"currentColor\", with aria-hidden=\"true\" and focusable=\"false\" so it is neither announced nor focused. It takes the theme accent and needs no request." },
       { name: "type", on: "object", values: "image/svg+xml | image/png | image/webp", default: "—", description: "The mark asset's media type. Serve a trusted, same-origin, script-free asset: an object element renders SVG as a document." },
       { name: "data", on: "object", values: "URL", default: "—", description: "The mark asset. When it cannot be loaded the browser renders the object's content, the monogram." },
-      { name: "aria-hidden", on: "object and .ef-app-identity__monogram", values: "true", default: "—", description: "Hides the mark; the name is the accessible name." },
+      { name: "aria-hidden", on: "object and .forma-app-identity__monogram", values: "true", default: "—", description: "Hides the mark; the name is the accessible name." },
       { name: "tabindex", on: "object", values: "-1", default: "—", description: "Keeps the embedded mark out of the tab order." },
-      { name: "data-ef-scheme", on: ".ef-app-identity__variant", values: "light | dark", default: "absent (shown in every theme)", description: "Marks a variant for one color scheme. Forma shows the variant that matches the active theme." }
+      { name: "data-forma-scheme", on: ".forma-app-identity__variant", values: "light | dark", default: "absent (shown in every theme)", description: "Marks a variant for one color scheme. Forma shows the variant that matches the active theme." }
     ],
     hooks: {
-      "ef-app-identity": "Root: an inline row of mark and name. A link root gets a 44 pixel minimum height.",
-      "ef-app-identity__mark": "Square slot sized by --ef-app-identity-size that holds the mark (inline svg, object or img); its color is the theme accent, which an inline currentColor mark takes.",
-      "ef-app-identity__variant": "A light or dark variant of an external mark, selected by data-ef-scheme and the active theme.",
-      "ef-app-identity__monogram": "Fallback content of the mark object: one or two letters on an accent tile.",
-      "ef-app-identity__name": "The application name, and the accessible name of a link root.",
-      "ef-app-identity__context": "Optional smaller secondary line inside the name, for the parent organization or environment.",
-      "--ef-app-identity-size": "The mark's edge length. Set it through data-ef-size; override it only for a size the four steps do not cover.",
-      "data-ef-size": "Selects --ef-app-identity-size: 1rem, 1.5rem, 2rem or 4rem.",
-      "data-ef-scheme": "Variant selector on .ef-app-identity__variant."
+      "forma-app-identity": "Root: an inline row of mark and name. A link root gets a 44 pixel minimum height.",
+      "forma-app-identity__mark": "Square slot sized by --forma-app-identity-size that holds the mark (inline svg, object or img); its color is the theme accent, which an inline currentColor mark takes.",
+      "forma-app-identity__variant": "A light or dark variant of an external mark, selected by data-forma-scheme and the active theme.",
+      "forma-app-identity__monogram": "Fallback content of the mark object: one or two letters on an accent tile.",
+      "forma-app-identity__name": "The application name, and the accessible name of a link root.",
+      "forma-app-identity__context": "Optional smaller secondary line inside the name, for the parent organization or environment.",
+      "--forma-app-identity-size": "The mark's edge length. Set it through data-forma-size; override it only for a size the four steps do not cover.",
+      "data-forma-size": "Selects --forma-app-identity-size: 1rem, 1.5rem, 2rem or 4rem.",
+      "data-forma-scheme": "Variant selector on .forma-app-identity__variant."
     },
     keyboard: [
       { keys: "Tab", action: "Reaches the link root once; the embedded mark is not focusable." },
@@ -153,10 +153,10 @@ export default {
     form: "Not a form control."
   },
   states: [
-    { name: "Inline mark", how: "an inline svg in .ef-app-identity__mark", description: "Always shown; drawn in the theme accent when it uses currentColor." },
+    { name: "Inline mark", how: "an inline svg in .forma-app-identity__mark", description: "Always shown; drawn in the theme accent when it uses currentColor." },
     { name: "Mark loaded", how: "an object's data resolves", description: "The application's external mark is shown at the selected size." },
     { name: "Mark unavailable", how: "an object's data fails or is blocked, including by object-src 'none'", description: "The browser renders the monogram tile instead; the name is unchanged." },
-    { name: "Dark theme", how: "data-ef-theme=\"dark\" (or dark-restrained, dark-technical) on an ancestor, or a dark operating-system preference with no explicit theme", description: "A dark-scheme mark variant replaces the light one." },
+    { name: "Dark theme", how: "data-forma-theme=\"dark\" (or dark-restrained, dark-technical) on an ancestor, or a dark operating-system preference with no explicit theme", description: "A dark-scheme mark variant replaces the light one." },
     { name: "Hover", how: ":hover on a link root", description: "The name is underlined; the mark does not move." },
     { name: "Forced colors", how: "forced-colors: active", description: "The monogram tile becomes a bordered Canvas tile with CanvasText letters." }
   ],

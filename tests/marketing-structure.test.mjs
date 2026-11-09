@@ -53,9 +53,9 @@ test("every reference page has the MarketingShell landmarks in semantic order", 
     assert.match(source, /<html lang="en"/);
     const body = source.slice(source.indexOf("<body"));
     const firstElement = body.slice(body.indexOf(">") + 1).trim();
-    assert.match(firstElement, /^<a class="ef-skip-link" href="#main-content">/, `${file} skip link must be the first focusable element`);
-    assert.match(source, /<main class="ef-site__main" id="main-content" tabindex="-1">/);
-    const order = ["ef-skip-link", "<header class=\"ef-site-header\"", "<nav class=\"ef-site-nav\" aria-label=\"Primary\"", "<main", "<footer class=\"ef-site-footer\""]
+    assert.match(firstElement, /^<a class="forma-skip-link" href="#main-content">/, `${file} skip link must be the first focusable element`);
+    assert.match(source, /<main class="forma-site__main" id="main-content" tabindex="-1">/);
+    const order = ["forma-skip-link", "<header class=\"forma-site-header\"", "<nav class=\"forma-site-nav\" aria-label=\"Primary\"", "<main", "<footer class=\"forma-site-footer\""]
       .map(marker => source.indexOf(marker));
     assert.ok(order.every(i => i >= 0), `${file} is missing a shell region`);
     assert.deepEqual([...order].sort((a, b) => a - b), order, `${file} shell regions are out of order`);
@@ -77,10 +77,10 @@ test("reference pages keep one h1 and do not skip heading levels", () => {
 
 test("each hero, section, and call to action offers at most one primary action (VE one primary path)", () => {
   for (const file of pages) {
-    const regions = html(file).split(/<(?:section|header class="ef-site-header")\b/).slice(1);
+    const regions = html(file).split(/<(?:section|header class="forma-site-header")\b/).slice(1);
     for (const region of regions) {
       const body = region.slice(0, region.search(/<\/section>|<\/header>/));
-      const primaries = (body.match(/data-ef-variant="primary"/g) ?? []).length;
+      const primaries = (body.match(/data-forma-variant="primary"/g) ?? []).length;
       assert.ok(primaries <= 1, `${file} has a region with ${primaries} primary actions`);
     }
   }
@@ -88,7 +88,7 @@ test("each hero, section, and call to action offers at most one primary action (
 
 test("scrollable technical regions are keyboard reachable and named", () => {
   for (const source of [...pages.map(html), pattern("code-sample")]) {
-    for (const [pre] of source.matchAll(/<pre class="ef-code"[^>]*>/g)) {
+    for (const [pre] of source.matchAll(/<pre class="forma-code"[^>]*>/g)) {
       assert.match(pre, /tabindex="0"/);
       assert.match(pre, /aria-label(ledby)?="/);
     }
@@ -100,7 +100,7 @@ test("marketing patterns are documented, self-describing, and use only public Fo
   for (const slug of marketingPatterns) {
     const source = pattern(slug);
     assert.ok(fs.existsSync(`catalog/components/${slug}.mjs`), `${slug} has no catalog entry`);
-    assert.match(source, /class="ef-site"/, `${slug} must be shown inside the MarketingShell context`);
+    assert.match(source, /class="forma-site"/, `${slug} must be shown inside the MarketingShell context`);
     for (const name of classesIn(source)) assert.ok(forma.has(name), `${slug} uses undefined class .${name}`);
     assert.doesNotMatch(source, /echelon/i, `${slug} embeds a brand name in a generic pattern`);
   }
@@ -109,13 +109,13 @@ test("marketing patterns are documented, self-describing, and use only public Fo
 test("navigation patterns name their landmarks and keep list semantics", () => {
   for (const slug of ["site-header", "marketing-shell"]) {
     const source = pattern(slug);
-    assert.match(source, /<nav class="ef-site-nav" aria-label="Primary">\s*<ul class="ef-site-nav__list">/);
+    assert.match(source, /<nav class="forma-site-nav" aria-label="Primary">\s*<ul class="forma-site-nav__list">/);
     assert.match(source, /aria-current="page"/);
   }
-  assert.match(pattern("documentation-layout"), /<nav class="ef-doc__nav" aria-label="Documentation">/);
-  assert.match(pattern("steps"), /<ol class="ef-steps" role="list"/, "list-style:none lists keep list semantics in WebKit");
-  assert.match(pattern("facts"), /<dl class="ef-facts">[\s\S]*<dt>[\s\S]*<dd>/);
-  assert.match(pattern("card-grid"), /<ul class="ef-card-grid"[^>]*aria-label=/);
+  assert.match(pattern("documentation-layout"), /<nav class="forma-doc__nav" aria-label="Documentation">/);
+  assert.match(pattern("steps"), /<ol class="forma-steps" role="list"/, "list-style:none lists keep list semantics in WebKit");
+  assert.match(pattern("facts"), /<dl class="forma-facts">[\s\S]*<dt>[\s\S]*<dd>/);
+  assert.match(pattern("card-grid"), /<ul class="forma-card-grid"[^>]*aria-label=/);
 });
 
 test("the example lock pins the current Forma version", () => {

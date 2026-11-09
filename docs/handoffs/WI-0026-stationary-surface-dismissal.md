@@ -14,7 +14,7 @@ native and immediate. No runtime JavaScript was added. Modals/flyouts keep their
 separate spatial motion contract.
 
 Added MOT-032 and updated MOT-031, motion classification/conformance, manifests
-and component catalog documentation. `--ef-tooltip-offset` was removed from the
+and component catalog documentation. `--forma-tooltip-offset` was removed from the
 catalog because tooltip fades no longer have displacement. Tests measure real
 CSS exit tracks with paused intermediate frames, bounding rectangles and native
 closed state in 320px/1000px containing contexts. They cover subsequent reopening,

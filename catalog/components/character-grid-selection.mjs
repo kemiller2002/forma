@@ -17,7 +17,7 @@ export default {
     ],
     characteristics: [
       "Fields keep native semantics inside native table semantics; row headers identify each record.",
-      "Each field is exactly `data-ef-len` cells wide; its column may be wider (\"Opt\" is three cells for a one-cell field).",
+      "Each field is exactly `data-forma-len` cells wide; its column may be wider (\"Opt\" is three cells for a one-cell field).",
       "Tab moves down the option column in row-major order; disabled rows are skipped natively.",
       "The same required, invalid, disabled and focus cues as other grid fields."
     ]
@@ -29,65 +29,65 @@ export default {
       interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Options typed before Enter",
       description: "A \"Work with jobs\" list where the operator has typed options on two rows but not yet pressed Enter. The legend uses a different vocabulary; only the codes and labels change.",
-      html: `<ef-character-grid-selection class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="11" data-ef-columns="60" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-selection-work-with-jobs-title" tabindex="0">
-      <form class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-selection-work-with-jobs-title" data-ef-row="1" data-ef-col="23" data-ef-len="14" data-ef-emphasis="intensified">WORK WITH JOBS</h2>
-        <p class="ef-character-grid__text" data-ef-row="3" data-ef-col="2" data-ef-len="26">Type options, press Enter.</p>
-        <p class="ef-character-grid__text" id="character-grid-selection-work-with-jobs-legend" data-ef-row="4" data-ef-col="4" data-ef-len="30">2=Hold  3=Release  4=End</p>
-        <div class="ef-character-grid__table" data-ef-row="6" data-ef-col="2" data-ef-len="45" data-ef-height="4">
-          <table data-ef-gutter="2">
+      html: `<forma-character-grid-selection class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="11" data-forma-columns="60" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-selection-work-with-jobs-title" tabindex="0">
+      <form class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-selection-work-with-jobs-title" data-forma-row="1" data-forma-col="23" data-forma-len="14" data-forma-emphasis="intensified">WORK WITH JOBS</h2>
+        <p class="forma-character-grid__text" data-forma-row="3" data-forma-col="2" data-forma-len="26">Type options, press Enter.</p>
+        <p class="forma-character-grid__text" id="character-grid-selection-work-with-jobs-legend" data-forma-row="4" data-forma-col="4" data-forma-len="30">2=Hold  3=Release  4=End</p>
+        <div class="forma-character-grid__table" data-forma-row="6" data-forma-col="2" data-forma-len="45" data-forma-height="4">
+          <table data-forma-gutter="2">
             <caption>Active jobs, with a selection option per row</caption>
-            <thead><tr><th scope="col" id="character-grid-selection-work-with-jobs-opt" data-ef-len="3">Opt</th><th scope="col" data-ef-len="10">Job</th><th scope="col" data-ef-len="10">User</th><th scope="col" data-ef-len="14">Status</th></tr></thead>
+            <thead><tr><th scope="col" id="character-grid-selection-work-with-jobs-opt" data-forma-len="3">Opt</th><th scope="col" data-forma-len="10">Job</th><th scope="col" data-forma-len="10">User</th><th scope="col" data-forma-len="14">Status</th></tr></thead>
             <tbody>
-            <tr><td><input class="ef-character-grid__field" id="character-grid-selection-work-with-jobs-opt-1" name="opt-QPADEV0012" type="text" inputmode="numeric" pattern="[234]" maxlength="1" autocomplete="off" value="2" aria-labelledby="character-grid-selection-work-with-jobs-opt character-grid-selection-work-with-jobs-row-1" aria-describedby="character-grid-selection-work-with-jobs-legend" data-ef-len="1"></td><th scope="row" id="character-grid-selection-work-with-jobs-row-1">QPADEV0012</th><td>OKAFOR</td><td>RUNNING</td></tr>
-            <tr><td><input class="ef-character-grid__field" id="character-grid-selection-work-with-jobs-opt-2" name="opt-NIGHTLYGL" type="text" inputmode="numeric" pattern="[234]" maxlength="1" autocomplete="off" aria-labelledby="character-grid-selection-work-with-jobs-opt character-grid-selection-work-with-jobs-row-2" aria-describedby="character-grid-selection-work-with-jobs-legend" data-ef-len="1"></td><th scope="row" id="character-grid-selection-work-with-jobs-row-2">NIGHTLYGL</th><td>BATCHSYS</td><td>WAITING</td></tr>
-            <tr><td><input class="ef-character-grid__field" id="character-grid-selection-work-with-jobs-opt-3" name="opt-RPTAGING" type="text" inputmode="numeric" pattern="[234]" maxlength="1" autocomplete="off" value="4" aria-labelledby="character-grid-selection-work-with-jobs-opt character-grid-selection-work-with-jobs-row-3" aria-describedby="character-grid-selection-work-with-jobs-legend" data-ef-len="1"></td><th scope="row" id="character-grid-selection-work-with-jobs-row-3">RPTAGING</th><td>RIVERA</td><td>HELD</td></tr>
+            <tr><td><input class="forma-character-grid__field" id="character-grid-selection-work-with-jobs-opt-1" name="opt-QPADEV0012" type="text" inputmode="numeric" pattern="[234]" maxlength="1" autocomplete="off" value="2" aria-labelledby="character-grid-selection-work-with-jobs-opt character-grid-selection-work-with-jobs-row-1" aria-describedby="character-grid-selection-work-with-jobs-legend" data-forma-len="1"></td><th scope="row" id="character-grid-selection-work-with-jobs-row-1">QPADEV0012</th><td>OKAFOR</td><td>RUNNING</td></tr>
+            <tr><td><input class="forma-character-grid__field" id="character-grid-selection-work-with-jobs-opt-2" name="opt-NIGHTLYGL" type="text" inputmode="numeric" pattern="[234]" maxlength="1" autocomplete="off" aria-labelledby="character-grid-selection-work-with-jobs-opt character-grid-selection-work-with-jobs-row-2" aria-describedby="character-grid-selection-work-with-jobs-legend" data-forma-len="1"></td><th scope="row" id="character-grid-selection-work-with-jobs-row-2">NIGHTLYGL</th><td>BATCHSYS</td><td>WAITING</td></tr>
+            <tr><td><input class="forma-character-grid__field" id="character-grid-selection-work-with-jobs-opt-3" name="opt-RPTAGING" type="text" inputmode="numeric" pattern="[234]" maxlength="1" autocomplete="off" value="4" aria-labelledby="character-grid-selection-work-with-jobs-opt character-grid-selection-work-with-jobs-row-3" aria-describedby="character-grid-selection-work-with-jobs-legend" data-forma-len="1"></td><th scope="row" id="character-grid-selection-work-with-jobs-row-3">RPTAGING</th><td>RIVERA</td><td>HELD</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="ef-character-grid__message" id="character-grid-selection-work-with-jobs-message" role="status" data-ef-severity="information" data-ef-row="10" data-ef-col="2" data-ef-len="58"><span class="ef-character-grid__severity"><span>INFO</span></span> Press Enter to process the options you typed.</p>
-        <div class="ef-character-grid__group" role="group" aria-label="Function keys">
-          <button class="ef-character-grid__key" type="submit" name="action" value="enter" data-ef-action="enter" data-ef-row="11" data-ef-col="2" data-ef-len="13"><kbd>Enter</kbd>=Process</button>
-          <button class="ef-character-grid__key" type="submit" name="action" value="f3" formnovalidate data-ef-action="f3" data-ef-row="11" data-ef-col="17" data-ef-len="7"><kbd>F3</kbd>=Exit</button>
-          <button class="ef-character-grid__key" type="submit" name="action" value="f5" formnovalidate data-ef-action="f5" data-ef-row="11" data-ef-col="26" data-ef-len="10"><kbd>F5</kbd>=Refresh</button>
+        <p class="forma-character-grid__message" id="character-grid-selection-work-with-jobs-message" role="status" data-forma-severity="information" data-forma-row="10" data-forma-col="2" data-forma-len="58"><span class="forma-character-grid__severity"><span>INFO</span></span> Press Enter to process the options you typed.</p>
+        <div class="forma-character-grid__group" role="group" aria-label="Function keys">
+          <button class="forma-character-grid__key" type="submit" name="action" value="enter" data-forma-action="enter" data-forma-row="11" data-forma-col="2" data-forma-len="13"><kbd>Enter</kbd>=Process</button>
+          <button class="forma-character-grid__key" type="submit" name="action" value="f3" formnovalidate data-forma-action="f3" data-forma-row="11" data-forma-col="17" data-forma-len="7"><kbd>F3</kbd>=Exit</button>
+          <button class="forma-character-grid__key" type="submit" name="action" value="f5" formnovalidate data-forma-action="f5" data-forma-row="11" data-forma-col="26" data-forma-len="10"><kbd>F5</kbd>=Refresh</button>
         </div>
       </form>
     </div>
   </div>
-</ef-character-grid-selection>`
+</forma-character-grid-selection>`
     },
     {
       id: "empty-list",
       interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Empty result",
       description: "No records match the filter, so there are no option fields. The table states the empty result in a full-width row instead of leaving blank lines, and the legend is omitted because no option can be typed.",
-      html: `<ef-character-grid-selection class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="9" data-ef-columns="60" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-selection-empty-list-title" tabindex="0">
-      <form class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-selection-empty-list-title" data-ef-row="1" data-ef-col="21" data-ef-len="18" data-ef-emphasis="intensified">WORK WITH ACCOUNTS</h2>
-        <span class="ef-character-grid__text" data-ef-row="3" data-ef-col="2" data-ef-len="11">Branch<span class="ef-character-grid__leader" aria-hidden="true">  . :</span></span>
-        <span class="ef-character-grid__value" data-ef-row="3" data-ef-col="14" data-ef-len="10">SOUTH-WEST</span>
-        <div class="ef-character-grid__table" data-ef-row="5" data-ef-col="2" data-ef-len="45" data-ef-height="2">
-          <table data-ef-gutter="2">
+      html: `<forma-character-grid-selection class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="9" data-forma-columns="60" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-selection-empty-list-title" tabindex="0">
+      <form class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-selection-empty-list-title" data-forma-row="1" data-forma-col="21" data-forma-len="18" data-forma-emphasis="intensified">WORK WITH ACCOUNTS</h2>
+        <span class="forma-character-grid__text" data-forma-row="3" data-forma-col="2" data-forma-len="11">Branch<span class="forma-character-grid__leader" aria-hidden="true">  . :</span></span>
+        <span class="forma-character-grid__value" data-forma-row="3" data-forma-col="14" data-forma-len="10">SOUTH-WEST</span>
+        <div class="forma-character-grid__table" data-forma-row="5" data-forma-col="2" data-forma-len="45" data-forma-height="2">
+          <table data-forma-gutter="2">
             <caption>Accounts in branch SOUTH-WEST</caption>
-            <thead><tr><th scope="col" data-ef-len="3">Opt</th><th scope="col" data-ef-len="14">Account</th><th scope="col" data-ef-len="24">Name</th></tr></thead>
+            <thead><tr><th scope="col" data-forma-len="3">Opt</th><th scope="col" data-forma-len="14">Account</th><th scope="col" data-forma-len="24">Name</th></tr></thead>
             <tbody>
             <tr><td colspan="3">(No accounts match. Change the branch.)</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="ef-character-grid__message" role="status" data-ef-severity="information" data-ef-row="8" data-ef-col="2" data-ef-len="58"><span class="ef-character-grid__severity"><span>INFO</span></span> WWA010I 0 accounts in branch SOUTH-WEST.</p>
-        <div class="ef-character-grid__group" role="group" aria-label="Function keys">
-          <button class="ef-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-ef-action="pf3" data-ef-row="9" data-ef-col="2" data-ef-len="8"><kbd>PF3</kbd>=Exit</button>
-          <button class="ef-character-grid__key" type="submit" name="action" value="pf12" formnovalidate data-ef-action="pf12" data-ef-row="9" data-ef-col="12" data-ef-len="11"><kbd>PF12</kbd>=Cancel</button>
+        <p class="forma-character-grid__message" role="status" data-forma-severity="information" data-forma-row="8" data-forma-col="2" data-forma-len="58"><span class="forma-character-grid__severity"><span>INFO</span></span> WWA010I 0 accounts in branch SOUTH-WEST.</p>
+        <div class="forma-character-grid__group" role="group" aria-label="Function keys">
+          <button class="forma-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-forma-action="pf3" data-forma-row="9" data-forma-col="2" data-forma-len="8"><kbd>PF3</kbd>=Exit</button>
+          <button class="forma-character-grid__key" type="submit" name="action" value="pf12" formnovalidate data-forma-action="pf12" data-forma-row="9" data-forma-col="12" data-forma-len="11"><kbd>PF12</kbd>=Cancel</button>
         </div>
       </form>
     </div>
   </div>
-</ef-character-grid-selection>`
+</forma-character-grid-selection>`
     },
     {
       id: "selection-mobile",
@@ -103,37 +103,37 @@ export default {
           "`inputmode=\"numeric\"` brings up a number pad for option codes."
         ]
       },
-      html: `<ef-character-grid-selection class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="8" data-ef-columns="40" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="character-grid-selection-selection-mobile-title" tabindex="0">
-      <form class="ef-character-grid__surface">
-        <h2 class="ef-character-grid__text" id="character-grid-selection-selection-mobile-title" data-ef-row="1" data-ef-col="12" data-ef-len="16" data-ef-emphasis="intensified">WORK WITH ORDERS</h2>
-        <p class="ef-character-grid__text" id="character-grid-selection-selection-mobile-legend" data-ef-row="2" data-ef-col="2" data-ef-len="22">4=Cancel  5=Display</p>
-        <div class="ef-character-grid__table" data-ef-row="4" data-ef-col="2" data-ef-len="30" data-ef-height="3">
-          <table data-ef-gutter="2">
+      html: `<forma-character-grid-selection class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="8" data-forma-columns="40" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="character-grid-selection-selection-mobile-title" tabindex="0">
+      <form class="forma-character-grid__surface">
+        <h2 class="forma-character-grid__text" id="character-grid-selection-selection-mobile-title" data-forma-row="1" data-forma-col="12" data-forma-len="16" data-forma-emphasis="intensified">WORK WITH ORDERS</h2>
+        <p class="forma-character-grid__text" id="character-grid-selection-selection-mobile-legend" data-forma-row="2" data-forma-col="2" data-forma-len="22">4=Cancel  5=Display</p>
+        <div class="forma-character-grid__table" data-forma-row="4" data-forma-col="2" data-forma-len="30" data-forma-height="3">
+          <table data-forma-gutter="2">
             <caption>Open orders, with a selection option per row</caption>
-            <thead><tr><th scope="col" id="character-grid-selection-selection-mobile-opt" data-ef-len="3">Opt</th><th scope="col" data-ef-len="8">Order</th><th scope="col" data-ef-len="10">Status</th></tr></thead>
+            <thead><tr><th scope="col" id="character-grid-selection-selection-mobile-opt" data-forma-len="3">Opt</th><th scope="col" data-forma-len="8">Order</th><th scope="col" data-forma-len="10">Status</th></tr></thead>
             <tbody>
-            <tr><td><input class="ef-character-grid__field" id="character-grid-selection-selection-mobile-opt-1" name="opt-SO-88412" type="text" inputmode="numeric" pattern="[45]" maxlength="1" autocomplete="off" aria-labelledby="character-grid-selection-selection-mobile-opt character-grid-selection-selection-mobile-row-1" aria-describedby="character-grid-selection-selection-mobile-legend" data-ef-len="1"></td><th scope="row" id="character-grid-selection-selection-mobile-row-1">SO-88412</th><td>PICKING</td></tr>
-            <tr><td><input class="ef-character-grid__field" id="character-grid-selection-selection-mobile-opt-2" name="opt-SO-88419" type="text" inputmode="numeric" pattern="[45]" maxlength="1" autocomplete="off" aria-labelledby="character-grid-selection-selection-mobile-opt character-grid-selection-selection-mobile-row-2" aria-describedby="character-grid-selection-selection-mobile-legend" data-ef-len="1"></td><th scope="row" id="character-grid-selection-selection-mobile-row-2">SO-88419</th><td>OPEN</td></tr>
+            <tr><td><input class="forma-character-grid__field" id="character-grid-selection-selection-mobile-opt-1" name="opt-SO-88412" type="text" inputmode="numeric" pattern="[45]" maxlength="1" autocomplete="off" aria-labelledby="character-grid-selection-selection-mobile-opt character-grid-selection-selection-mobile-row-1" aria-describedby="character-grid-selection-selection-mobile-legend" data-forma-len="1"></td><th scope="row" id="character-grid-selection-selection-mobile-row-1">SO-88412</th><td>PICKING</td></tr>
+            <tr><td><input class="forma-character-grid__field" id="character-grid-selection-selection-mobile-opt-2" name="opt-SO-88419" type="text" inputmode="numeric" pattern="[45]" maxlength="1" autocomplete="off" aria-labelledby="character-grid-selection-selection-mobile-opt character-grid-selection-selection-mobile-row-2" aria-describedby="character-grid-selection-selection-mobile-legend" data-forma-len="1"></td><th scope="row" id="character-grid-selection-selection-mobile-row-2">SO-88419</th><td>OPEN</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="ef-character-grid__group" role="group" aria-label="Function keys">
-          <button class="ef-character-grid__key" type="submit" name="action" value="enter" data-ef-action="enter" data-ef-row="8" data-ef-col="2" data-ef-len="13"><kbd>Enter</kbd>=Process</button>
-          <button class="ef-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-ef-action="pf3" data-ef-row="8" data-ef-col="17" data-ef-len="8"><kbd>PF3</kbd>=Exit</button>
+        <div class="forma-character-grid__group" role="group" aria-label="Function keys">
+          <button class="forma-character-grid__key" type="submit" name="action" value="enter" data-forma-action="enter" data-forma-row="8" data-forma-col="2" data-forma-len="13"><kbd>Enter</kbd>=Process</button>
+          <button class="forma-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-forma-action="pf3" data-forma-row="8" data-forma-col="17" data-forma-len="8"><kbd>PF3</kbd>=Exit</button>
         </div>
       </form>
     </div>
   </div>
-</ef-character-grid-selection>`
+</forma-character-grid-selection>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-labelledby", on: "option input", values: "column th id, then row th id", default: "—", description: "Required (CG-17). Names the field by its column and row headers, for example \"Opt 00417-2231-09\"." },
       { name: "aria-describedby", on: "option input", values: "legend id, plus message id when invalid", default: "—", description: "The option legend describes every field; an invalid field also references the message." },
-      { name: "maxlength", on: "option input", values: "integer", default: "—", description: "Required. Equals the field's `data-ef-len`, which must fit its column." },
+      { name: "maxlength", on: "option input", values: "integer", default: "—", description: "Required. Equals the field's `data-forma-len`, which must fit its column." },
       { name: "scope", on: "th", values: "col | row", default: "—", description: "Column headers name the option column; each row header names its record." },
       { name: "pattern", on: "option input", values: "e.g. [245]", default: "—", description: "Optional native expression of the valid codes. Which codes are valid is application policy." },
       { name: "aria-invalid", on: "option input", values: "true", default: "absent", description: "Set by the application on rows it rejected after Enter." },
@@ -141,12 +141,12 @@ export default {
       { name: "colspan", on: "td", values: "integer", default: "—", description: "Lets an explicit empty-result row span the table; it wraps normally." }
     ],
     hooks: {
-      "ef-character-grid__table": "The positioned run holding the table. Its caption is visually hidden.",
-      "ef-character-grid__field": "In a table cell the field is `display: block` and exactly `data-ef-len` cells wide; on narrow screens its touch minimum extends into the gutter.",
-      "data-ef-len": "On `th[scope=col]`: column width in cells. On the field: its width, equal to `maxlength`.",
-      "data-ef-gutter": "On the `table`: cells between columns (0-4). The option column plus gutter must be at least five cells for a field shorter than five.",
-      "data-ef-height": "Rows the table run occupies, header included.",
-      "data-ef-align": "`end` on a column header or cell for amounts.",
+      "forma-character-grid__table": "The positioned run holding the table. Its caption is visually hidden.",
+      "forma-character-grid__field": "In a table cell the field is `display: block` and exactly `data-forma-len` cells wide; on narrow screens its touch minimum extends into the gutter.",
+      "data-forma-len": "On `th[scope=col]`: column width in cells. On the field: its width, equal to `maxlength`.",
+      "data-forma-gutter": "On the `table`: cells between columns (0-4). The option column plus gutter must be at least five cells for a field shorter than five.",
+      "data-forma-height": "Rows the table run occupies, header included.",
+      "data-forma-align": "`end` on a column header or cell for amounts.",
       "aria-invalid": "`true` draws the dashed invalid cue on a rejected row's field."
     },
     keyboard: [
@@ -182,7 +182,7 @@ export default {
   responsive: [
     "The table run keeps its columns at every width; the viewport scrolls horizontally when needed.",
     "On narrow or coarse-pointer screens, fields shorter than five cells extend into the column and gutter to reach 2.75rem (CG-17).",
-    "Automatic table layout makes `th[data-ef-len]` widths minimums, so text-spacing overrides widen a column instead of overlapping the next."
+    "Automatic table layout makes `th[data-forma-len]` widths minimums, so text-spacing overrides widen a column instead of overlapping the next."
   ],
   motion: [
     "No animation: fields, states and rows change immediately."
@@ -199,7 +199,7 @@ export default {
   },
   related: [
     { slug: "character-grid-field", note: "Positioned fields outside a table, with labels and hints." },
-    { slug: "character-grid", note: "Owns the table run, gutter and every data-ef-* hook." },
+    { slug: "character-grid", note: "Owns the table run, gutter and every data-forma-* hook." },
     { slug: "data-grid", note: "Use for interactive record lists outside a character grid." }
   ]
 };

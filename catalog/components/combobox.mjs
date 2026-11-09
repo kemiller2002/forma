@@ -4,7 +4,7 @@ export default {
   behavior: "Native baseline / Limen enhancement",
   summary: "Searchable selection baseline that preserves direct text entry and native semantics.",
   purpose: {
-    description: "A combobox is a text input with suggestions: the user can type to narrow a list or enter a value directly. Forma's baseline is a native `input` linked to a `datalist` with the `list` attribute, so the browser supplies suggestion matching, the suggestion popup and keyboard selection with no script. `.ef-combobox` lays out the label, control, a decorative indicator and help text. Asynchronous suggestions, loading/no-result/error states, rich options and full WAI-ARIA combobox keyboard behavior are Limen/application enhancements layered on the same visual contract.",
+    description: "A combobox is a text input with suggestions: the user can type to narrow a list or enter a value directly. Forma's baseline is a native `input` linked to a `datalist` with the `list` attribute, so the browser supplies suggestion matching, the suggestion popup and keyboard selection with no script. `.forma-combobox` lays out the label, control, a decorative indicator and help text. Asynchronous suggestions, loading/no-result/error states, rich options and full WAI-ARIA combobox keyboard behavior are Limen/application enhancements layered on the same visual contract.",
     useWhen: [
       "The list of values is long enough that typing to filter is faster than scrolling a [[select]].",
       "Users may need to enter a value that is not in the list, such as a new tag or a free-form project name.",
@@ -27,12 +27,12 @@ export default {
       id: "free-entry-labels",
       title: "Label with new values allowed",
       description: "Existing labels are suggested, but a new label can be typed and submitted as is. The help text says so and is linked with aria-describedby.",
-      html: `<ef-combobox class="ef-component-tag">
-  <div class="ef-combobox">
+      html: `<forma-combobox class="forma-component-tag">
+  <div class="forma-combobox">
     <label for="combobox-free-entry-label">Label</label>
-    <div class="ef-combobox__control">
+    <div class="forma-combobox__control">
       <input id="combobox-free-entry-label" name="label" list="combobox-free-entry-options" autocomplete="off" aria-describedby="combobox-free-entry-help">
-      <span class="ef-combobox__indicator" aria-hidden="true">⌄</span>
+      <span class="forma-combobox__indicator" aria-hidden="true">⌄</span>
     </div>
     <datalist id="combobox-free-entry-options">
       <option value="bug"></option>
@@ -40,20 +40,20 @@ export default {
       <option value="needs-design"></option>
       <option value="performance"></option>
     </datalist>
-    <p class="ef-combobox__help" id="combobox-free-entry-help">Choose an existing label or type a new one.</p>
+    <p class="forma-combobox__help" id="combobox-free-entry-help">Choose an existing label or type a new one.</p>
   </div>
-</ef-combobox>`
+</forma-combobox>`
     },
     {
       id: "unrecognized-value",
       title: "Unrecognized value",
       description: "Only listed cost centers are accepted. The application checked the typed value on submit, marked the input with aria-invalid and linked a validation message after the help text; the typed text is kept for correction.",
-      html: `<ef-combobox class="ef-component-tag">
-  <div class="ef-combobox">
+      html: `<forma-combobox class="forma-component-tag">
+  <div class="forma-combobox">
     <label for="combobox-unrecognized-cost-center">Cost center</label>
-    <div class="ef-combobox__control">
+    <div class="forma-combobox__control">
       <input id="combobox-unrecognized-cost-center" name="cost-center" list="combobox-unrecognized-options" autocomplete="off" value="Marketting" required aria-invalid="true" aria-describedby="combobox-unrecognized-help combobox-unrecognized-error">
-      <span class="ef-combobox__indicator" aria-hidden="true">⌄</span>
+      <span class="forma-combobox__indicator" aria-hidden="true">⌄</span>
     </div>
     <datalist id="combobox-unrecognized-options">
       <option value="Engineering"></option>
@@ -61,13 +61,13 @@ export default {
       <option value="Marketing"></option>
       <option value="Operations"></option>
     </datalist>
-    <p class="ef-combobox__help" id="combobox-unrecognized-help">Type to filter cost centers.</p>
-    <p class="ef-validation-message" id="combobox-unrecognized-error">
-      <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+    <p class="forma-combobox__help" id="combobox-unrecognized-help">Type to filter cost centers.</p>
+    <p class="forma-validation-message" id="combobox-unrecognized-error">
+      <span class="forma-validation-message__mark" aria-hidden="true">!</span>
       No cost center called "Marketting". Choose one from the list.
     </p>
   </div>
-</ef-combobox>`
+</forma-combobox>`
     },
     {
       id: "mobile-assignee",
@@ -82,21 +82,21 @@ export default {
           "Help text wraps below the control; nothing scrolls horizontally."
         ]
       },
-      html: `<ef-combobox class="ef-component-tag">
-  <div class="ef-combobox">
+      html: `<forma-combobox class="forma-component-tag">
+  <div class="forma-combobox">
     <label for="combobox-mobile-assignee">Assign to</label>
-    <div class="ef-combobox__control">
+    <div class="forma-combobox__control">
       <input id="combobox-mobile-assignee" name="assignee" list="combobox-mobile-assignee-options" autocomplete="off" aria-describedby="combobox-mobile-assignee-help">
-      <span class="ef-combobox__indicator" aria-hidden="true">⌄</span>
+      <span class="forma-combobox__indicator" aria-hidden="true">⌄</span>
     </div>
     <datalist id="combobox-mobile-assignee-options">
       <option value="Amara Okafor"></option>
       <option value="Jonas Lindqvist"></option>
       <option value="Priya Raman"></option>
     </datalist>
-    <p class="ef-combobox__help" id="combobox-mobile-assignee-help">Type a name. Leave empty to keep the item unassigned.</p>
+    <p class="forma-combobox__help" id="combobox-mobile-assignee-help">Type a name. Leave empty to keep the item unassigned.</p>
   </div>
-</ef-combobox>`
+</forma-combobox>`
     }
   ],
   api: {
@@ -112,10 +112,10 @@ export default {
       { name: "aria-invalid", on: "input", values: "true", default: "absent", description: "Set by the application when the typed value is not accepted." }
     ],
     hooks: {
-      "ef-combobox": "Root grid (0.5rem gap). A direct child `label` gets the compact field-label style.",
-      "ef-combobox__control": "Positioning wrapper around the input and indicator.",
-      "ef-combobox__indicator": "Decorative glyph pinned to the inline end and vertically centered; pointer-transparent. Mark it aria-hidden=\"true\".",
-      "ef-combobox__help": "Help text in secondary color at 0.75rem. Link it with aria-describedby."
+      "forma-combobox": "Root grid (0.5rem gap). A direct child `label` gets the compact field-label style.",
+      "forma-combobox__control": "Positioning wrapper around the input and indicator.",
+      "forma-combobox__indicator": "Decorative glyph pinned to the inline end and vertically centered; pointer-transparent. Mark it aria-hidden=\"true\".",
+      "forma-combobox__help": "Help text in secondary color at 0.75rem. Link it with aria-describedby."
     },
     keyboard: [
       { keys: "Typing", action: "Filters the native suggestion list (matching rules are browser-owned)." },
@@ -133,7 +133,7 @@ export default {
     { name: "Empty", how: "no value", description: "Label, input and help text; optional placeholder." },
     { name: "Suggesting", how: "browser datalist popup", description: "Browser-rendered list of matching suggestions; not styled by Forma." },
     { name: "Focus", how: ":focus-visible", description: "Foundation two-tone focus ring on the input." },
-    { name: "Invalid", how: "aria-invalid=\"true\" plus a linked .ef-validation-message", description: "Error text with a non-color mark below the help text." },
+    { name: "Invalid", how: "aria-invalid=\"true\" plus a linked .forma-validation-message", description: "Error text with a non-color mark below the help text." },
     { name: "Loading / no results / error", how: "application-supplied help or status text", description: "Only exists with a Limen enhancement for asynchronous suggestions; express it as text, not only as a spinner." }
   ],
   accessibility: {

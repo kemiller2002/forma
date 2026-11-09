@@ -32,10 +32,10 @@ test("native modal and both flyout sides open and close without a runtime behavi
 });
 
 test("left and right flyouts preserve opposite physical origins", async ({ page }) => {
-  const origins = await page.locator(".ef-flyout").evaluateAll(elements =>
+  const origins = await page.locator(".forma-flyout").evaluateAll(elements =>
     elements.map(element => ({
-      side: element.dataset.efSide,
-      closedX: getComputedStyle(element).getPropertyValue("--ef-flyout-closed-x").trim()
+      side: element.dataset.formaSide,
+      closedX: getComputedStyle(element).getPropertyValue("--forma-flyout-closed-x").trim()
     }))
   );
 
@@ -70,7 +70,7 @@ test("reduced motion removes modal and flyout spatial travel", async ({ page }) 
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.reload();
 
-  const states = await page.locator(".ef-dialog, .ef-flyout").evaluateAll(elements =>
+  const states = await page.locator(".forma-dialog, .forma-flyout").evaluateAll(elements =>
     elements.map(element => {
       const style = getComputedStyle(element);
       return {
@@ -120,7 +120,7 @@ test("interrupted flyout reversal preserves position or uses native static fallb
       element.close();
       const after = getComputedStyle(element).translate;
       return { before, after, open: element.open, display: getComputedStyle(element).display,
-        closedX: getComputedStyle(element).getPropertyValue("--ef-flyout-closed-x").trim(),
+        closedX: getComputedStyle(element).getPropertyValue("--forma-flyout-closed-x").trim(),
         translateTransitions: element.getAnimations().filter(animation => animation.transitionProperty === "translate").length };
     });
     expect(sample.open).toBe(false);

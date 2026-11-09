@@ -3,7 +3,7 @@ export default {
   category: "site",
   behavior: "Site content",
   summary: "Ordered linked entries (research areas, products) that regroup from four columns to one by container width.",
-  owns: ["ef-index"],
+  owns: ["forma-index"],
   purpose: {
     description: "An entry index is an ordered list of destinations, such as research areas or products, where each row shows a marker, a heading with eyebrow, a one-sentence summary and a visible link. On wide containers the rows share four aligned columns through subgrid, so markers, titles, summaries and links line up down the page. Because four columns of different kinds cannot degrade by a minimum item size, the list regroups by its own width with container queries.",
     useWhen: [
@@ -37,60 +37,60 @@ export default {
       },
       title: "Product family index",
       description: "Four products in order. On a wide container marker, heading, summary and link line up in four columns across every row.",
-      html: `<ef-entry-index class="ef-component-tag">
-  <div class="ef-site">
-    <ol class="ef-index" aria-label="Products">
-      <li class="ef-index__item">
-        <p class="ef-index__marker">P / 01</p>
-        <div class="ef-index__heading"><p class="ef-eyebrow">Domain state</p><h3 class="ef-index__title" id="entry-index-product-family-ordo">Ordo</h3></div>
-        <p class="ef-index__summary">Legal transitions, obligations and capabilities as executable rules.</p>
-        <a class="ef-index__link" href="#entry-index-product-family-ordo">Visit Ordo</a>
+      html: `<forma-entry-index class="forma-component-tag">
+  <div class="forma-site">
+    <ol class="forma-index" aria-label="Products">
+      <li class="forma-index__item">
+        <p class="forma-index__marker">P / 01</p>
+        <div class="forma-index__heading"><p class="forma-eyebrow">Domain state</p><h3 class="forma-index__title" id="entry-index-product-family-ordo">Ordo</h3></div>
+        <p class="forma-index__summary">Legal transitions, obligations and capabilities as executable rules.</p>
+        <a class="forma-index__link" href="#entry-index-product-family-ordo">Visit Ordo</a>
       </li>
-      <li class="ef-index__item">
-        <p class="ef-index__marker">P / 02</p>
-        <div class="ef-index__heading"><p class="ef-eyebrow">Interface behavior</p><h3 class="ef-index__title" id="entry-index-product-family-limen">Limen</h3></div>
-        <p class="ef-index__summary">Behavior at the boundary between presentation and domain.</p>
-        <a class="ef-index__link" href="#entry-index-product-family-limen">Visit Limen</a>
+      <li class="forma-index__item">
+        <p class="forma-index__marker">P / 02</p>
+        <div class="forma-index__heading"><p class="forma-eyebrow">Interface behavior</p><h3 class="forma-index__title" id="entry-index-product-family-limen">Limen</h3></div>
+        <p class="forma-index__summary">Behavior at the boundary between presentation and domain.</p>
+        <a class="forma-index__link" href="#entry-index-product-family-limen">Visit Limen</a>
       </li>
-      <li class="ef-index__item">
-        <p class="ef-index__marker">P / 03</p>
-        <div class="ef-index__heading"><p class="ef-eyebrow">Quality evidence</p><h3 class="ef-index__title" id="entry-index-product-family-dokimos">Dokimos</h3></div>
-        <p class="ef-index__summary">Longitudinal code-health evidence across every change.</p>
-        <a class="ef-index__link" href="#entry-index-product-family-dokimos">Visit Dokimos</a>
+      <li class="forma-index__item">
+        <p class="forma-index__marker">P / 03</p>
+        <div class="forma-index__heading"><p class="forma-eyebrow">Quality evidence</p><h3 class="forma-index__title" id="entry-index-product-family-dokimos">Dokimos</h3></div>
+        <p class="forma-index__summary">Longitudinal code-health evidence across every change.</p>
+        <a class="forma-index__link" href="#entry-index-product-family-dokimos">Visit Dokimos</a>
       </li>
-      <li class="ef-index__item">
-        <p class="ef-index__marker">P / 04</p>
-        <div class="ef-index__heading"><p class="ef-eyebrow">Presentation</p><h3 class="ef-index__title" id="entry-index-product-family-forma">Forma</h3></div>
-        <p class="ef-index__summary">Zero-runtime HTML and CSS contracts for every interface.</p>
-        <a class="ef-index__link" href="#entry-index-product-family-forma">Visit Forma</a>
+      <li class="forma-index__item">
+        <p class="forma-index__marker">P / 04</p>
+        <div class="forma-index__heading"><p class="forma-eyebrow">Presentation</p><h3 class="forma-index__title" id="entry-index-product-family-forma">Forma</h3></div>
+        <p class="forma-index__summary">Zero-runtime HTML and CSS contracts for every interface.</p>
+        <a class="forma-index__link" href="#entry-index-product-family-forma">Visit Forma</a>
       </li>
     </ol>
   </div>
-</ef-entry-index>`
+</forma-entry-index>`
     },
     {
       id: "long-titles",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Long titles and summaries",
       description: "Entries with long titles and two-sentence summaries and no eyebrow. Titles and summaries wrap within their columns; the link text stays on one line while it fits and wraps between words rather than overflowing at large text sizes.",
-      html: `<ef-entry-index class="ef-component-tag">
-  <div class="ef-site">
-    <ol class="ef-index" aria-label="Research programmes">
-      <li class="ef-index__item">
-        <p class="ef-index__marker">R / 01</p>
-        <div class="ef-index__heading"><h3 class="ef-index__title">Human oversight of automated decisions</h3></div>
-        <p class="ef-index__summary">How review, escalation and accountability survive automation. Includes field studies from regulated industries.</p>
-        <a class="ef-index__link" href="#entry-index-long-titles-oversight">Read the programme<span class="ef-visually-hidden">: Human oversight of automated decisions</span></a>
+      html: `<forma-entry-index class="forma-component-tag">
+  <div class="forma-site">
+    <ol class="forma-index" aria-label="Research programmes">
+      <li class="forma-index__item">
+        <p class="forma-index__marker">R / 01</p>
+        <div class="forma-index__heading"><h3 class="forma-index__title">Human oversight of automated decisions</h3></div>
+        <p class="forma-index__summary">How review, escalation and accountability survive automation. Includes field studies from regulated industries.</p>
+        <a class="forma-index__link" href="#entry-index-long-titles-oversight">Read the programme<span class="forma-visually-hidden">: Human oversight of automated decisions</span></a>
       </li>
-      <li class="ef-index__item">
-        <p class="ef-index__marker">R / 02</p>
-        <div class="ef-index__heading"><h3 class="ef-index__title">Evidence-led visual hierarchy</h3></div>
-        <p class="ef-index__summary">Measured effects of type, color and composition on comprehension. Findings feed Forma's tokens.</p>
-        <a class="ef-index__link" href="#entry-index-long-titles-hierarchy">Read the programme<span class="ef-visually-hidden">: Evidence-led visual hierarchy</span></a>
+      <li class="forma-index__item">
+        <p class="forma-index__marker">R / 02</p>
+        <div class="forma-index__heading"><h3 class="forma-index__title">Evidence-led visual hierarchy</h3></div>
+        <p class="forma-index__summary">Measured effects of type, color and composition on comprehension. Findings feed Forma's tokens.</p>
+        <a class="forma-index__link" href="#entry-index-long-titles-hierarchy">Read the programme<span class="forma-visually-hidden">: Evidence-led visual hierarchy</span></a>
       </li>
     </ol>
   </div>
-</ef-entry-index>`
+</forma-entry-index>`
     },
     {
       id: "mobile-single-column",
@@ -112,39 +112,39 @@ export default {
           "The link is at least 24px tall and sits alone on its own line, so it is easy to tap without catching neighbours."
         ]
       },
-      html: `<ef-entry-index class="ef-component-tag">
-  <div class="ef-site">
-    <ol class="ef-index" aria-label="Research areas">
-      <li class="ef-index__item">
-        <p class="ef-index__marker">R / 01</p>
-        <div class="ef-index__heading"><p class="ef-eyebrow">Intelligent systems</p><h3 class="ef-index__title">AI Engineering</h3></div>
-        <p class="ef-index__summary">Dependable practice, evaluation and human oversight.</p>
-        <a class="ef-index__link" href="#entry-index-mobile-single-column-visual">Visit AI Engineering</a>
+      html: `<forma-entry-index class="forma-component-tag">
+  <div class="forma-site">
+    <ol class="forma-index" aria-label="Research areas">
+      <li class="forma-index__item">
+        <p class="forma-index__marker">R / 01</p>
+        <div class="forma-index__heading"><p class="forma-eyebrow">Intelligent systems</p><h3 class="forma-index__title">AI Engineering</h3></div>
+        <p class="forma-index__summary">Dependable practice, evaluation and human oversight.</p>
+        <a class="forma-index__link" href="#entry-index-mobile-single-column-visual">Visit AI Engineering</a>
       </li>
-      <li class="ef-index__item" id="entry-index-mobile-single-column-visual">
-        <p class="ef-index__marker">R / 02</p>
-        <div class="ef-index__heading"><p class="ef-eyebrow">Perception</p><h3 class="ef-index__title">Visual Engineering</h3></div>
-        <p class="ef-index__summary">Evidence-led hierarchy, typography and composition.</p>
-        <a class="ef-index__link" href="#entry-index-mobile-single-column-visual">Visit Visual Engineering</a>
+      <li class="forma-index__item" id="entry-index-mobile-single-column-visual">
+        <p class="forma-index__marker">R / 02</p>
+        <div class="forma-index__heading"><p class="forma-eyebrow">Perception</p><h3 class="forma-index__title">Visual Engineering</h3></div>
+        <p class="forma-index__summary">Evidence-led hierarchy, typography and composition.</p>
+        <a class="forma-index__link" href="#entry-index-mobile-single-column-visual">Visit Visual Engineering</a>
       </li>
     </ol>
   </div>
-</ef-entry-index>`
+</forma-entry-index>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-label", on: "ol.ef-index", values: "string", default: "—", description: "Names the list when no visible heading introduces it." },
-      { name: "href", on: "a.ef-index__link", values: "URL", default: "—", description: "Destination of the entry." }
+      { name: "aria-label", on: "ol.forma-index", values: "string", default: "—", description: "Names the list when no visible heading introduces it." },
+      { name: "href", on: "a.forma-index__link", values: "URL", default: "—", description: "Destination of the entry." }
     ],
     hooks: {
-      "ef-index": "The `ol`. A four-column grid (5rem marker, heading, summary, link) with a strong top rule; also the `ef-index` size container for regrouping.",
-      "ef-index__item": "One entry. Spans all columns and uses subgrid so rows align; separated by a bottom rule.",
-      "ef-index__marker": "Visible entry marker text in the mono label face, such as R / 01.",
-      "ef-index__heading": "Wraps the optional eyebrow and the title.",
-      "ef-index__title": "Entry title in the display face at the statement size, whatever its heading level.",
-      "ef-index__summary": "One-sentence description of the entry.",
-      "ef-index__link": "Visible link to the entry's page: small strong text, 24px minimum height, no wrapping."
+      "forma-index": "The `ol`. A four-column grid (5rem marker, heading, summary, link) with a strong top rule; also the `forma-index` size container for regrouping.",
+      "forma-index__item": "One entry. Spans all columns and uses subgrid so rows align; separated by a bottom rule.",
+      "forma-index__marker": "Visible entry marker text in the mono label face, such as R / 01.",
+      "forma-index__heading": "Wraps the optional eyebrow and the title.",
+      "forma-index__title": "Entry title in the display face at the statement size, whatever its heading level.",
+      "forma-index__summary": "One-sentence description of the entry.",
+      "forma-index__link": "Visible link to the entry's page: small strong text, 24px minimum height, no wrapping."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between entry links in list order." },
@@ -154,8 +154,8 @@ export default {
   },
   states: [
     { name: "Four columns", how: "list at least 56rem wide", description: "Marker, heading, summary and link align across rows." },
-    { name: "Marker and content", how: "@container ef-index (inline-size < 56rem)", description: "Two columns: marker, then everything else stacked." },
-    { name: "Single column", how: "@container ef-index (inline-size < 28rem)", description: "Every part stacks in source order." }
+    { name: "Marker and content", how: "@container forma-index (inline-size < 56rem)", description: "Two columns: marker, then everything else stacked." },
+    { name: "Single column", how: "@container forma-index (inline-size < 28rem)", description: "Every part stacks in source order." }
   ],
   accessibility: {
     forma: [
@@ -170,9 +170,9 @@ export default {
     ]
   },
   responsive: [
-    "Container queries on the list itself (`ef-index`) regroup rows at 56rem and 28rem; they respond to the space the list gets, not the viewport.",
+    "Container queries on the list itself (`forma-index`) regroup rows at 56rem and 28rem; they respond to the space the list gets, not the viewport.",
     "Columns are `minmax(0, …)`, so titles and summaries wrap instead of widening the page.",
-    "`.ef-index__link` keeps its text on one line while it fits and wraps between words at narrow widths or large text sizes instead of overflowing."
+    "`.forma-index__link` keeps its text on one line while it fits and wraps between words at narrow widths or large text sizes instead of overflowing."
   ],
   motion: [
     "No animation: regrouping is immediate and links change only their underline thickness on hover."

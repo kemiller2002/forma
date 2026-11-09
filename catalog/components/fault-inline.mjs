@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Operation-local Aegis fault presentation with reference and legal recovery actions.",
   purpose: {
-    description: "An inline fault presents an Aegis presentation whose intent is `Inline`: the failure belongs to one operation, field or region and is shown right next to it. It uses the [[fault]] shell with the `ef-fault--inline` modifier, which tightens padding and uses the secondary surface so the fault reads as part of the affected area. It never announces itself globally or steals focus; instead the affected control or region points at it with `aria-describedby`, so the fault is read when the user reaches that control. The application renders it, supplies the recovery actions Aegis derived, and removes it when the fault resolves.",
+    description: "An inline fault presents an Aegis presentation whose intent is `Inline`: the failure belongs to one operation, field or region and is shown right next to it. It uses the [[fault]] shell with the `forma-fault--inline` modifier, which tightens padding and uses the secondary surface so the fault reads as part of the affected area. It never announces itself globally or steals focus; instead the affected control or region points at it with `aria-describedby`, so the fault is read when the user reaches that control. The application renders it, supplies the recovery actions Aegis derived, and removes it when the fault resolves.",
     useWhen: [
       "Aegis reports intent `Inline` for a failure tied to one save, upload, row or form section.",
       "The user can recover in place, for example by retrying the operation next to the control that failed.",
@@ -21,7 +21,7 @@ export default {
       "Placed in source order immediately after, or inside, the affected region so reading order matches visual proximity.",
       "Never focuses itself and carries no live-region role; the affected control's `aria-describedby` makes it discoverable.",
       "Severity is visible text plus the start-border style; the marker is decorative.",
-      "Recovery actions are only the ones Aegis supplied, as native buttons with `data-ef-aegis-capability`."
+      "Recovery actions are only the ones Aegis supplied, as native buttons with `data-forma-aegis-capability`."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior"] },
@@ -31,66 +31,66 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Field that failed to save",
       description: "An autosaved field whose last save failed. The input lists the fault in aria-describedby after its own help text, so a screen reader announces the failure when the field is focused, without any global announcement.",
-      html: `<ef-fault-inline class="ef-component-tag">
-  <div class="ef-field">
-    <label class="ef-field__label" for="fault-inline-field-save-input">Billing contact</label>
-    <span class="ef-field__description" id="fault-inline-field-save-help">Receives invoices and payment reminders.</span>
+      html: `<forma-fault-inline class="forma-component-tag">
+  <div class="forma-field">
+    <label class="forma-field__label" for="fault-inline-field-save-input">Billing contact</label>
+    <span class="forma-field__description" id="fault-inline-field-save-help">Receives invoices and payment reminders.</span>
     <input id="fault-inline-field-save-input" name="billing-contact" type="email" value="finance@example.com" aria-describedby="fault-inline-field-save-help fault-inline-field-save-fault">
   </div>
-  <div class="ef-fault ef-fault--inline" role="group" id="fault-inline-field-save-fault" data-ef-intent="inline" data-ef-severity="error" aria-labelledby="fault-inline-field-save-title">
-    <div class="ef-fault__marker" aria-hidden="true">!</div>
-    <div class="ef-fault__body">
-      <p class="ef-fault__severity">Error</p>
-      <p class="ef-fault__title" id="fault-inline-field-save-title"><strong>Billing contact was not saved.</strong></p>
-      <p class="ef-fault__message">Your value is still in the field. Try again when you are back online.</p>
-      <p class="ef-fault-reference">Reference <code>AG-7TT2Q</code></p>
+  <div class="forma-fault forma-fault--inline" role="group" id="fault-inline-field-save-fault" data-forma-intent="inline" data-forma-severity="error" aria-labelledby="fault-inline-field-save-title">
+    <div class="forma-fault__marker" aria-hidden="true">!</div>
+    <div class="forma-fault__body">
+      <p class="forma-fault__severity">Error</p>
+      <p class="forma-fault__title" id="fault-inline-field-save-title"><strong>Billing contact was not saved.</strong></p>
+      <p class="forma-fault__message">Your value is still in the field. Try again when you are back online.</p>
+      <p class="forma-fault-reference">Reference <code>AG-7TT2Q</code></p>
     </div>
-    <div class="ef-recovery-actions" role="group" aria-label="Recovery actions for billing contact">
-      <button type="button" data-ef-aegis-capability="CanRetry">Try again</button>
+    <div class="forma-recovery-actions" role="group" aria-label="Recovery actions for billing contact">
+      <button type="button" data-forma-aegis-capability="CanRetry">Try again</button>
     </div>
   </div>
-</ef-fault-inline>`
+</forma-fault-inline>`
     },
     {
       id: "import-row",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Import batch that could not be processed",
       description: "A warning inside a batch detail region. Aegis supplied two capabilities, Process again and Set aside, which are rendered with their default labels. The region's aria-describedby points at the fault.",
-      html: `<ef-fault-inline class="ef-component-tag">
+      html: `<forma-fault-inline class="forma-component-tag">
   <section aria-labelledby="fault-inline-import-row-heading" aria-describedby="fault-inline-import-row-fault">
     <h3 id="fault-inline-import-row-heading">Batch 2026-09-29-B</h3>
     <p>412 invoices received from the supplier feed.</p>
-    <div class="ef-fault ef-fault--inline" role="group" id="fault-inline-import-row-fault" data-ef-intent="inline" data-ef-severity="warning" aria-labelledby="fault-inline-import-row-title">
-      <div class="ef-fault__marker" aria-hidden="true">!</div>
-      <div class="ef-fault__body">
-        <p class="ef-fault__severity">Warning</p>
-        <p class="ef-fault__title" id="fault-inline-import-row-title"><strong>7 invoices could not be read.</strong></p>
-        <p class="ef-fault__message">The rest of the batch was imported. You can process the 7 again or set them aside for review.</p>
-        <p class="ef-fault-reference">Reference <code>AG-61KDA</code></p>
+    <div class="forma-fault forma-fault--inline" role="group" id="fault-inline-import-row-fault" data-forma-intent="inline" data-forma-severity="warning" aria-labelledby="fault-inline-import-row-title">
+      <div class="forma-fault__marker" aria-hidden="true">!</div>
+      <div class="forma-fault__body">
+        <p class="forma-fault__severity">Warning</p>
+        <p class="forma-fault__title" id="fault-inline-import-row-title"><strong>7 invoices could not be read.</strong></p>
+        <p class="forma-fault__message">The rest of the batch was imported. You can process the 7 again or set them aside for review.</p>
+        <p class="forma-fault-reference">Reference <code>AG-61KDA</code></p>
       </div>
-      <div class="ef-recovery-actions" role="group" aria-label="Recovery actions for batch 2026-09-29-B">
-        <button type="button" data-ef-aegis-capability="CanReprocess">Process again</button>
-        <button type="button" data-ef-aegis-capability="CanQuarantine">Set aside</button>
+      <div class="forma-recovery-actions" role="group" aria-label="Recovery actions for batch 2026-09-29-B">
+        <button type="button" data-forma-aegis-capability="CanReprocess">Process again</button>
+        <button type="button" data-forma-aegis-capability="CanQuarantine">Set aside</button>
       </div>
     </div>
   </section>
-</ef-fault-inline>`
+</forma-fault-inline>`
     },
     {
       id: "no-recovery",
       title: "Failure with no legal recovery",
       description: "Aegis supplied no recovery capability for this operation, so the recovery group is omitted. The message tells the user what remains true instead of offering an action that would be refused.",
-      html: `<ef-fault-inline class="ef-component-tag">
-  <div class="ef-fault ef-fault--inline" role="group" data-ef-intent="inline" data-ef-severity="error" aria-labelledby="fault-inline-no-recovery-title">
-    <div class="ef-fault__marker" aria-hidden="true">!</div>
-    <div class="ef-fault__body">
-      <p class="ef-fault__severity">Error</p>
-      <p class="ef-fault__title" id="fault-inline-no-recovery-title"><strong>Signature request was not sent.</strong></p>
-      <p class="ef-fault__message">The document is unchanged. An administrator has been notified.</p>
-      <p class="ef-fault-reference">Reference <code>AG-2WPZ8</code></p>
+      html: `<forma-fault-inline class="forma-component-tag">
+  <div class="forma-fault forma-fault--inline" role="group" data-forma-intent="inline" data-forma-severity="error" aria-labelledby="fault-inline-no-recovery-title">
+    <div class="forma-fault__marker" aria-hidden="true">!</div>
+    <div class="forma-fault__body">
+      <p class="forma-fault__severity">Error</p>
+      <p class="forma-fault__title" id="fault-inline-no-recovery-title"><strong>Signature request was not sent.</strong></p>
+      <p class="forma-fault__message">The document is unchanged. An administrator has been notified.</p>
+      <p class="forma-fault-reference">Reference <code>AG-2WPZ8</code></p>
     </div>
   </div>
-</ef-fault-inline>`
+</forma-fault-inline>`
     },
     {
       id: "mobile-upload",
@@ -106,45 +106,45 @@ export default {
           "The fault stays directly after the affected region in both orientations; it is never moved to a separate mobile-only location."
         ]
       },
-      html: `<ef-fault-inline class="ef-component-tag">
-  <div class="ef-fault ef-fault--inline" role="group" data-ef-intent="inline" data-ef-severity="error" aria-labelledby="fault-inline-mobile-upload-title">
-    <div class="ef-fault__marker" aria-hidden="true">!</div>
-    <div class="ef-fault__body">
-      <p class="ef-fault__severity">Error</p>
-      <p class="ef-fault__title" id="fault-inline-mobile-upload-title"><strong>receipt-scan-september.pdf did not upload.</strong></p>
-      <p class="ef-fault__message">Your sign-in expired during the upload.</p>
-      <p class="ef-fault-reference">Reference <code>AG-5CN0V</code></p>
+      html: `<forma-fault-inline class="forma-component-tag">
+  <div class="forma-fault forma-fault--inline" role="group" data-forma-intent="inline" data-forma-severity="error" aria-labelledby="fault-inline-mobile-upload-title">
+    <div class="forma-fault__marker" aria-hidden="true">!</div>
+    <div class="forma-fault__body">
+      <p class="forma-fault__severity">Error</p>
+      <p class="forma-fault__title" id="fault-inline-mobile-upload-title"><strong>receipt-scan-september.pdf did not upload.</strong></p>
+      <p class="forma-fault__message">Your sign-in expired during the upload.</p>
+      <p class="forma-fault-reference">Reference <code>AG-5CN0V</code></p>
     </div>
-    <div class="ef-recovery-actions" role="group" aria-label="Recovery actions for receipt upload">
-      <button type="button" data-ef-aegis-capability="CanRetry">Try again</button>
-      <button type="button" data-ef-aegis-capability="CanReauthenticate">Sign in</button>
+    <div class="forma-recovery-actions" role="group" aria-label="Recovery actions for receipt upload">
+      <button type="button" data-forma-aegis-capability="CanRetry">Try again</button>
+      <button type="button" data-forma-aegis-capability="CanReauthenticate">Sign in</button>
     </div>
   </div>
-</ef-fault-inline>`
+</forma-fault-inline>`
     }
   ],
   api: {
     attributes: [
-      { name: "id", on: ".ef-fault", values: "unique id", default: "—", description: "Lets the affected control or region reference the fault with aria-describedby." },
-      { name: "aria-describedby", on: "affected control or region", values: "id of the .ef-fault", default: "—", description: "Associates the fault with the control it is about. Append it after any existing help-text id." },
-      { name: "role", on: ".ef-fault / .ef-recovery-actions", values: "group", default: "—", description: "A group role makes the fault container nameable with aria-labelledby; the recovery container is also a group." },
-      { name: "aria-labelledby", on: ".ef-fault", values: "id of .ef-fault__title", default: "—", description: "Names the fault group by its title." },
-      { name: "data-ef-severity", on: ".ef-fault", values: "diagnostic | warning | error | critical", default: "absent (error style)", description: "Aegis severity; selects the start-border style. Always paired with visible text." },
-      { name: "data-ef-intent", on: ".ef-fault", values: "inline", default: "—", description: "Records that Aegis chose the Inline intent. Descriptive only." },
-      { name: "aria-hidden", on: ".ef-fault__marker", values: "true", default: "—", description: "Hides the decorative marker glyph from assistive technology." },
-      { name: "aria-label", on: ".ef-recovery-actions", values: "string", default: "—", description: "Names the recovery group; include the affected object when several inline faults are on one page." },
+      { name: "id", on: ".forma-fault", values: "unique id", default: "—", description: "Lets the affected control or region reference the fault with aria-describedby." },
+      { name: "aria-describedby", on: "affected control or region", values: "id of the .forma-fault", default: "—", description: "Associates the fault with the control it is about. Append it after any existing help-text id." },
+      { name: "role", on: ".forma-fault / .forma-recovery-actions", values: "group", default: "—", description: "A group role makes the fault container nameable with aria-labelledby; the recovery container is also a group." },
+      { name: "aria-labelledby", on: ".forma-fault", values: "id of .forma-fault__title", default: "—", description: "Names the fault group by its title." },
+      { name: "data-forma-severity", on: ".forma-fault", values: "diagnostic | warning | error | critical", default: "absent (error style)", description: "Aegis severity; selects the start-border style. Always paired with visible text." },
+      { name: "data-forma-intent", on: ".forma-fault", values: "inline", default: "—", description: "Records that Aegis chose the Inline intent. Descriptive only." },
+      { name: "aria-hidden", on: ".forma-fault__marker", values: "true", default: "—", description: "Hides the decorative marker glyph from assistive technology." },
+      { name: "aria-label", on: ".forma-recovery-actions", values: "string", default: "—", description: "Names the recovery group; include the affected object when several inline faults are on one page." },
       { name: "type", on: "button", values: "button", default: "—", description: "Required so recovery buttons inside a form never submit it." },
-      { name: "data-ef-aegis-capability", on: "button", values: "Aegis capability name", default: "—", description: "Exact Aegis capability identity. Not authorization; revalidate on click." }
+      { name: "data-forma-aegis-capability", on: "button", values: "Aegis capability name", default: "—", description: "Exact Aegis capability identity. Not authorization; revalidate on click." }
     ],
     hooks: {
-      "ef-fault--inline": "Applied with `ef-fault`. Tighter 0.75rem padding and the secondary surface so the fault sits inside the affected region.",
-      "ef-fault": "The shared fault grid: marker, body and recovery columns with a severity-styled start border. See [[fault]].",
-      "ef-fault__marker": "Decorative marker glyph in a ring.",
-      "ef-fault__body": "Text column that wraps long content.",
-      "ef-fault__severity": "Visible severity label.",
-      "ef-fault__title": "The Aegis title; in inline use a paragraph with strong text is typical so the page outline is not disturbed.",
-      "ef-fault__message": "Safe user-facing message.",
-      "data-ef-severity": "Selects dotted (diagnostic), dashed (warning), solid (error) or wide-plus-outline (critical) start border."
+      "forma-fault--inline": "Applied with `forma-fault`. Tighter 0.75rem padding and the secondary surface so the fault sits inside the affected region.",
+      "forma-fault": "The shared fault grid: marker, body and recovery columns with a severity-styled start border. See [[fault]].",
+      "forma-fault__marker": "Decorative marker glyph in a ring.",
+      "forma-fault__body": "Text column that wraps long content.",
+      "forma-fault__severity": "Visible severity label.",
+      "forma-fault__title": "The Aegis title; in inline use a paragraph with strong text is typical so the page outline is not disturbed.",
+      "forma-fault__message": "Safe user-facing message.",
+      "data-forma-severity": "Selects dotted (diagnostic), dashed (warning), solid (error) or wide-plus-outline (critical) start border."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the affected control and then the recovery buttons in source order. The fault never receives focus by itself." },
@@ -157,8 +157,8 @@ export default {
   },
   states: [
     { name: "Present", how: "rendered by the application", description: "The fault is in the DOM next to the affected region, described by it, and silent until reached." },
-    { name: "Severity", how: "data-ef-severity plus visible text", description: "Diagnostic, Warning, Error or Critical, each with its own start-border style." },
-    { name: "No recovery", how: "omit .ef-recovery-actions", description: "Only the message and reference are shown." },
+    { name: "Severity", how: "data-forma-severity plus visible text", description: "Diagnostic, Warning, Error or Critical, each with its own start-border style." },
+    { name: "No recovery", how: "omit .forma-recovery-actions", description: "Only the message and reference are shown." },
     { name: "Resolved", how: "removed by the application", description: "When Aegis reports the fault resolved, the application removes the fault and the aria-describedby reference together." }
   ],
   accessibility: {

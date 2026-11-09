@@ -3,9 +3,9 @@ export default {
   category: "assisted",
   behavior: "Application / Limen",
   summary: "Inspectable user/application turns with explicit speakers and no consumer-chat authority assumptions.",
-  owns: ["ef-conversation","ef-turn"],
+  owns: ["forma-conversation","forma-turn"],
   purpose: {
-    description: "A conversation renders an ordered history of turns between people and an application or agent. It is an `ol` of `.ef-turn` items, each with a visible speaker label, content that can hold any structured HTML, and optional application-supplied actions. It deliberately avoids chat-bubble conventions: turns are full-width rows with the speaker in a label column, so position, alignment or color never suggest who is right, trusted or in charge. Application turns get a tinted background only to separate them; the speaker text is the real cue. Sending, streaming, retrying and what the turns mean are application or Limen behavior.",
+    description: "A conversation renders an ordered history of turns between people and an application or agent. It is an `ol` of `.forma-turn` items, each with a visible speaker label, content that can hold any structured HTML, and optional application-supplied actions. It deliberately avoids chat-bubble conventions: turns are full-width rows with the speaker in a label column, so position, alignment or color never suggest who is right, trusted or in charge. Application turns get a tinted background only to separate them; the speaker text is the real cue. Sending, streaming, retrying and what the turns mean are application or Limen behavior.",
     useWhen: [
       "Users exchange messages with an assistant or application and need to inspect what each party said.",
       "Turns contain structured content (lists, facts, links) and actions such as reviewing a proposal.",
@@ -20,7 +20,7 @@ export default {
     characteristics: [
       "Each turn is a two-column grid: speaker label (`minmax(6rem, 0.22fr)`) and content; actions align under the content.",
       "The speaker label is mono uppercase text on every turn, including the user's.",
-      "`data-ef-speaker=\"assistant\"` tints the turn background; any other value is unstyled.",
+      "`data-forma-speaker=\"assistant\"` tints the turn background; any other value is unstyled.",
       "At 40rem and below each turn is one column and turn actions are full width."
     ]
   },
@@ -31,63 +31,63 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Multi-party care conversation",
       description: "Two people and an application in one history. Every turn names its speaker; the application turn contains a structured list and an action to review its proposal. Nothing about layout or color says whose statement is correct.",
-      html: `<ef-conversation class="ef-component-tag">
-  <section class="ef-conversation" aria-labelledby="conversation-multi-party-title">
-    <header class="ef-conversation__header">
-      <span class="ef-component-kicker">Care team</span>
+      html: `<forma-conversation class="forma-component-tag">
+  <section class="forma-conversation" aria-labelledby="conversation-multi-party-title">
+    <header class="forma-conversation__header">
+      <span class="forma-component-kicker">Care team</span>
       <h2 id="conversation-multi-party-title">Medication follow-up</h2>
     </header>
-    <ol class="ef-conversation__turns">
-      <li class="ef-turn" data-ef-speaker="user">
-        <p class="ef-turn__speaker">Maria (daughter)</p>
-        <div class="ef-turn__content"><p>The pharmacy gave Dad 20 mg tablets, but the doctor said 40 mg.</p></div>
+    <ol class="forma-conversation__turns">
+      <li class="forma-turn" data-forma-speaker="user">
+        <p class="forma-turn__speaker">Maria (daughter)</p>
+        <div class="forma-turn__content"><p>The pharmacy gave Dad 20 mg tablets, but the doctor said 40 mg.</p></div>
       </li>
-      <li class="ef-turn" data-ef-speaker="user">
-        <p class="ef-turn__speaker">Nurse Kim</p>
-        <div class="ef-turn__content"><p>Two 20 mg tablets once a day is correct until the new prescription arrives.</p></div>
+      <li class="forma-turn" data-forma-speaker="user">
+        <p class="forma-turn__speaker">Nurse Kim</p>
+        <div class="forma-turn__content"><p>Two 20 mg tablets once a day is correct until the new prescription arrives.</p></div>
       </li>
-      <li class="ef-turn" data-ef-speaker="assistant">
-        <p class="ef-turn__speaker">Care record assistant</p>
-        <div class="ef-turn__content">
+      <li class="forma-turn" data-forma-speaker="assistant">
+        <p class="forma-turn__speaker">Care record assistant</p>
+        <div class="forma-turn__content">
           <p>I can propose these record updates:</p>
           <ul>
             <li>Dose: 40 mg once daily, taken as 2 × 20 mg</li>
             <li>Note: new prescription pending</li>
           </ul>
         </div>
-        <div class="ef-turn__actions"><button type="button">Review proposed updates</button></div>
+        <div class="forma-turn__actions"><button type="button">Review proposed updates</button></div>
       </li>
     </ol>
   </section>
-</ef-conversation>`
+</forma-conversation>`
     },
     {
       id: "failed-turn",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Application turn that could not complete",
       description: "The application could not finish a request. Its turn says so in text with a status lozenge and offers a retry, and the user's original message stays visible so nothing they wrote is lost.",
-      html: `<ef-conversation class="ef-component-tag">
-  <section class="ef-conversation" aria-labelledby="conversation-failed-turn-title">
-    <header class="ef-conversation__header">
-      <span class="ef-component-kicker">Conversation</span>
+      html: `<forma-conversation class="forma-component-tag">
+  <section class="forma-conversation" aria-labelledby="conversation-failed-turn-title">
+    <header class="forma-conversation__header">
+      <span class="forma-component-kicker">Conversation</span>
       <h2 id="conversation-failed-turn-title">Travel booking</h2>
     </header>
-    <ol class="ef-conversation__turns">
-      <li class="ef-turn" data-ef-speaker="user">
-        <p class="ef-turn__speaker">You</p>
-        <div class="ef-turn__content"><p>Move my Lisbon flight to Friday morning and keep the aisle seat.</p></div>
+    <ol class="forma-conversation__turns">
+      <li class="forma-turn" data-forma-speaker="user">
+        <p class="forma-turn__speaker">You</p>
+        <div class="forma-turn__content"><p>Move my Lisbon flight to Friday morning and keep the aisle seat.</p></div>
       </li>
-      <li class="ef-turn" data-ef-speaker="assistant">
-        <p class="ef-turn__speaker">Booking assistant</p>
-        <div class="ef-turn__content">
-          <p><span class="ef-status-lozenge" data-state="unknown">Not completed</span></p>
+      <li class="forma-turn" data-forma-speaker="assistant">
+        <p class="forma-turn__speaker">Booking assistant</p>
+        <div class="forma-turn__content">
+          <p><span class="forma-status-lozenge" data-state="unknown">Not completed</span></p>
           <p>The airline did not respond, so I don't know whether Friday seats are available. Your current booking is unchanged.</p>
         </div>
-        <div class="ef-turn__actions"><button type="button">Try again</button><button type="button">Contact an agent</button></div>
+        <div class="forma-turn__actions"><button type="button">Try again</button><button type="button">Contact an agent</button></div>
       </li>
     </ol>
   </section>
-</ef-conversation>`
+</forma-conversation>`
     },
     {
       id: "mobile-history",
@@ -103,42 +103,42 @@ export default {
           "Order is the document order of the list; the application decides whether to scroll to the newest turn after rotation or a new message."
         ]
       },
-      html: `<ef-conversation class="ef-component-tag">
-  <section class="ef-conversation" aria-labelledby="conversation-mobile-title">
-    <header class="ef-conversation__header">
-      <span class="ef-component-kicker">Conversation</span>
+      html: `<forma-conversation class="forma-component-tag">
+  <section class="forma-conversation" aria-labelledby="conversation-mobile-title">
+    <header class="forma-conversation__header">
+      <span class="forma-component-kicker">Conversation</span>
       <h2 id="conversation-mobile-title">Expense help</h2>
     </header>
-    <ol class="ef-conversation__turns">
-      <li class="ef-turn" data-ef-speaker="user">
-        <p class="ef-turn__speaker">You</p>
-        <div class="ef-turn__content"><p>Can I claim the taxi from the airport?</p></div>
+    <ol class="forma-conversation__turns">
+      <li class="forma-turn" data-forma-speaker="user">
+        <p class="forma-turn__speaker">You</p>
+        <div class="forma-turn__content"><p>Can I claim the taxi from the airport?</p></div>
       </li>
-      <li class="ef-turn" data-ef-speaker="assistant">
-        <p class="ef-turn__speaker">Expense assistant</p>
-        <div class="ef-turn__content"><p>Airport taxis are claimable up to $80 with a receipt.</p></div>
-        <div class="ef-turn__actions"><button type="button">Start a taxi claim</button></div>
+      <li class="forma-turn" data-forma-speaker="assistant">
+        <p class="forma-turn__speaker">Expense assistant</p>
+        <div class="forma-turn__content"><p>Airport taxis are claimable up to $80 with a receipt.</p></div>
+        <div class="forma-turn__actions"><button type="button">Start a taxi claim</button></div>
       </li>
     </ol>
   </section>
-</ef-conversation>`
+</forma-conversation>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-labelledby", on: "root section", values: "id of the conversation heading", default: "—", description: "Names the conversation region." },
-      { name: "data-ef-speaker", on: ".ef-turn", values: "assistant | user", default: "absent", description: "Speaker category for presentation. `assistant` tints the turn; `user` (or absent) is untinted. The visible speaker label is the authoritative cue." },
-      { name: "data-state", on: ".ef-status-lozenge", values: "ok | attention | blocked | unknown", default: "absent", description: "Adds a symbol to a text status inside a turn." }
+      { name: "data-forma-speaker", on: ".forma-turn", values: "assistant | user", default: "absent", description: "Speaker category for presentation. `assistant` tints the turn; `user` (or absent) is untinted. The visible speaker label is the authoritative cue." },
+      { name: "data-state", on: ".forma-status-lozenge", values: "ok | attention | blocked | unknown", default: "absent", description: "Adds a symbol to a text status inside a turn." }
     ],
     hooks: {
-      "ef-conversation": "Root bordered region.",
-      "ef-conversation__header": "Padded header with a bottom rule for kicker and heading.",
-      "ef-conversation__turns": "The ordered list of turns, unstyled and gapless; turns are separated by their own rules.",
-      "ef-turn": "One turn: a two-column grid of speaker label and content with a bottom rule.",
-      "ef-turn__speaker": "Visible speaker name in small mono uppercase. Required on every turn.",
-      "ef-turn__content": "Flow content of the turn; any structured HTML, allowed to shrink.",
-      "ef-turn__actions": "Wrapping row of application-supplied actions under the content; full-width buttons at 40rem and below.",
-      "data-ef-speaker": "Presentation hook. `assistant` gives the turn the secondary surface background so application turns are distinguishable at a glance; it implies nothing about correctness or authority."
+      "forma-conversation": "Root bordered region.",
+      "forma-conversation__header": "Padded header with a bottom rule for kicker and heading.",
+      "forma-conversation__turns": "The ordered list of turns, unstyled and gapless; turns are separated by their own rules.",
+      "forma-turn": "One turn: a two-column grid of speaker label and content with a bottom rule.",
+      "forma-turn__speaker": "Visible speaker name in small mono uppercase. Required on every turn.",
+      "forma-turn__content": "Flow content of the turn; any structured HTML, allowed to shrink.",
+      "forma-turn__actions": "Wrapping row of application-supplied actions under the content; full-width buttons at 40rem and below.",
+      "data-forma-speaker": "Presentation hook. `assistant` gives the turn the secondary surface background so application turns are distinguishable at a glance; it implies nothing about correctness or authority."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through links and action buttons in turn order. No added keyboard behavior." }
@@ -149,9 +149,9 @@ export default {
     form: "Not a form control. Pair with a [[composer]] form for new input."
   },
   states: [
-    { name: "User or person turn", how: "data-ef-speaker=\"user\" or absent", description: "Untinted row with a speaker label." },
-    { name: "Application turn", how: "data-ef-speaker=\"assistant\"", description: "Secondary surface background; speaker label still required." },
-    { name: "Turn outcome", how: "text and optional .ef-status-lozenge in the content", description: "Application-reported outcomes such as not completed or pending, written as text." },
+    { name: "User or person turn", how: "data-forma-speaker=\"user\" or absent", description: "Untinted row with a speaker label." },
+    { name: "Application turn", how: "data-forma-speaker=\"assistant\"", description: "Secondary surface background; speaker label still required." },
+    { name: "Turn outcome", how: "text and optional .forma-status-lozenge in the content", description: "Application-reported outcomes such as not completed or pending, written as text." },
     { name: "Stacked turns", how: "@media (max-width: 40rem)", description: "One column per turn; actions full width." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Root border uses CanvasText; the tint disappears and speaker labels carry the distinction." }
   ],

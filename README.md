@@ -52,19 +52,19 @@ inventory, planned components and known issues.
 Agent usage rules are in [docs/AGENT-USAGE.md](docs/AGENT-USAGE.md).
 
 
-Public component examples use readable inert `<ef-*>` authoring tags around
+Public component examples use readable inert `<forma-*>` authoring tags around
 the canonical native HTML:
 
 ```html
-<ef-switch class="ef-component-tag">
-  <label class="ef-switch">
-    <input class="ef-switch__input" type="checkbox" role="switch">
-    <span class="ef-switch__track" aria-hidden="true"></span>
-    <span class="ef-switch__text">
-      <span class="ef-switch__label">Notifications</span>
+<forma-switch class="forma-component-tag">
+  <label class="forma-switch">
+    <input class="forma-switch__input" type="checkbox" role="switch">
+    <span class="forma-switch__track" aria-hidden="true"></span>
+    <span class="forma-switch__text">
+      <span class="forma-switch__label">Notifications</span>
     </span>
   </label>
-</ef-switch>
+</forma-switch>
 ```
 
 The wrapper is not registered with `customElements.define()`; Forma remains

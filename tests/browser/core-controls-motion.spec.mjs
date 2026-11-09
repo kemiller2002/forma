@@ -15,7 +15,7 @@ const seconds = (value) => value.split(",").map((part) => {
 const indicatorState = (control) =>
   control.evaluate((element) => {
     const style = getComputedStyle(element, "::before");
-    const checked = element.querySelector(".ef-segment:has(input:checked)");
+    const checked = element.querySelector(".forma-segment:has(input:checked)");
     const segment = getComputedStyle(checked);
     return {
       display: style.display,
@@ -39,7 +39,7 @@ const indicatorState = (control) =>
     };
   });
 
-const anchorSupported = (page) => page.evaluate(() => CSS.supports("anchor-name: --ef-segment") && CSS.supports("anchor-scope: all"));
+const anchorSupported = (page) => page.evaluate(() => CSS.supports("anchor-name: --forma-segment") && CSS.supports("anchor-scope: all"));
 
 // Without anchor positioning the checked segment's own background is the
 // complete selection presentation (progressive enhancement).
@@ -47,7 +47,7 @@ const anchorSupported = (page) => page.evaluate(() => CSS.supports("anchor-name:
 // polled rather than read at an arbitrary frame of the interpolation.
 const expectFallbackSelection = async (control) => {
   await expect.poll(() => control.evaluate((element) => {
-    const [a, b] = [".ef-segment:has(input:checked)", ".ef-segment:not(:has(input:checked))"]
+    const [a, b] = [".forma-segment:has(input:checked)", ".forma-segment:not(:has(input:checked))"]
       .map((selector) => getComputedStyle(element.querySelector(selector)).backgroundColor);
     return a !== b && a !== "rgba(0, 0, 0, 0)" ? "distinct" : `${a} vs ${b}`;
   }), { timeout: 2000 }).toBe("distinct");
@@ -60,10 +60,10 @@ const expectFallbackSelection = async (control) => {
 // focus decoration is hidden for the capture only.
 const renderedIndicatorEdges = async (control) => {
   // Focus decoration (outline plus dark ring) is hidden for the capture only.
-  const image = (await control.screenshot({ style: ".ef-segment { outline: none !important; box-shadow: none !important; }" })).toString("base64");
+  const image = (await control.screenshot({ style: ".forma-segment { outline: none !important; box-shadow: none !important; }" })).toString("base64");
   return control.evaluate(async (element, png) => {
     const box = element.getBoundingClientRect();
-    const target = element.querySelector(".ef-segment:has(input:checked)").getBoundingClientRect();
+    const target = element.querySelector(".forma-segment:has(input:checked)").getBoundingClientRect();
     const picture = new Image();
     picture.src = `data:image/png;base64,${png}`;
     await picture.decode();
@@ -169,10 +169,10 @@ test("keyboard and pointer activation end in the same semantic state", async ({ 
 
 test("press feedback never moves or resizes the hit target", async ({ page }) => {
   const targets = [
-    page.getByTestId("density").locator(".ef-segment").nth(2),
+    page.getByTestId("density").locator(".forma-segment").nth(2),
     page.getByTestId("save"),
-    page.locator(".ef-checkbox"),
-    page.locator(".ef-switch")
+    page.locator(".forma-checkbox"),
+    page.locator(".forma-switch")
   ];
   for (const target of targets) {
     const before = await target.boundingBox();
@@ -181,7 +181,7 @@ test("press feedback never moves or resizes the hit target", async ({ page }) =>
     await page.mouse.down();
     await page.waitForTimeout(250);
     const pressed = await target.boundingBox();
-    const hit = await page.evaluate(({ x, y }) => document.elementFromPoint(x, y)?.closest(".ef-segment, button, .ef-checkbox, .ef-switch") !== null, center);
+    const hit = await page.evaluate(({ x, y }) => document.elementFromPoint(x, y)?.closest(".forma-segment, button, .forma-checkbox, .forma-switch") !== null, center);
     await page.mouse.up();
     expect(pressed).toEqual(before);
     expect(hit).toBe(true);
@@ -221,17 +221,17 @@ test("slider keeps native direct manipulation: only hover emphasis is transition
 test("color and background changes use the shared perceptual timing", async ({ page }) => {
   const expected = await page.evaluate(() => {
     const probe = document.createElement("span");
-    probe.style.animationDelay = "var(--ef-motion-perceptual-duration)";
+    probe.style.animationDelay = "var(--forma-motion-perceptual-duration)";
     document.body.append(probe);
     const value = getComputedStyle(probe).animationDelay;
     probe.remove();
     return value;
   });
   const checks = [
-    [".ef-switch__track", "background-color"],
-    [".ef-checkbox__box", "background-color"],
-    [".ef-segment", "background-color"],
-    [".ef-slider__input", "filter"],
+    [".forma-switch__track", "background-color"],
+    [".forma-checkbox__box", "background-color"],
+    [".forma-segment", "background-color"],
+    [".forma-slider__input", "filter"],
     ["[data-testid=save]", "background-color"]
   ];
   for (const [selector, property] of checks) {
@@ -251,11 +251,11 @@ test("reduced motion removes indicator travel and press compression but keeps se
   const control = page.getByTestId("density");
   const durations = await control.evaluate((element) => ({
     indicator: getComputedStyle(element, "::before").transitionDuration,
-    label: getComputedStyle(element.querySelector(".ef-segment > span")).transitionDuration
+    label: getComputedStyle(element.querySelector(".forma-segment > span")).transitionDuration
   }));
   for (const value of [...seconds(durations.indicator), ...seconds(durations.label)]) expect(value).toBeLessThan(0.01);
 
-  const segment = control.locator(".ef-segment").nth(1);
+  const segment = control.locator(".forma-segment").nth(1);
   const box = await segment.boundingBox();
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
   await page.mouse.down();
@@ -272,7 +272,7 @@ test("reduced motion removes indicator travel and press compression but keeps se
 
 test("pointer selection places the indicator exactly on the chosen option", async ({ page }) => {
   const control = page.getByTestId("density");
-  const segment = control.locator(".ef-segment").nth(2);
+  const segment = control.locator(".forma-segment").nth(2);
   const box = await segment.boundingBox();
   await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
   await page.mouse.move(0, 0);
@@ -283,7 +283,7 @@ test("pointer selection places the indicator exactly on the chosen option", asyn
 test("without anchor positioning the checked segment itself carries the selection", async ({ page }) => {
   await page.route("**/dist/components.css", async (route) => {
     const response = await route.fetch();
-    const css = (await response.text()).replace("@supports (anchor-name: --ef-segment) and (anchor-scope: all)", "@supports (not-a-feature: 1)");
+    const css = (await response.text()).replace("@supports (anchor-name: --forma-segment) and (anchor-scope: all)", "@supports (not-a-feature: 1)");
     await route.fulfill({ response, body: css });
   });
   await page.reload();
@@ -305,7 +305,7 @@ test("forced colors hides the decorative indicator and uses system selection col
 });
 
 test("the native radio stays topmost while its label text is press-compressed", async ({ page }) => {
-  const segment = page.getByTestId("density").locator(".ef-segment").nth(1);
+  const segment = page.getByTestId("density").locator(".forma-segment").nth(1);
   const box = await segment.boundingBox();
   await page.mouse.move(box.x + 4, box.y + 4);
   await page.mouse.down();

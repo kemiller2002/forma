@@ -6,7 +6,7 @@ Provide reusable semantic markup and CSS for assessment, decision, validation, a
 
 ## Ownership
 
-- State, including presentation state: native radio/checkbox/number/progress state plus application-rendered `data-ef-*` state
+- State, including presentation state: native radio/checkbox/number/progress state plus application-rendered `data-forma-*` state
 - Transitions / commands / messages: native HTML events only for declarative controls; ranking/allocation/rule-builder behavior belongs to Limen/application code
 - Invariants and guards: semantic form grouping, accessible names, non-color state cues, special answer separation, zero-runtime boundary
 - Capabilities / authority: none — Signal/Ordo/application owns applicability, scoring, validation, capabilities, obligations, and completion
@@ -16,30 +16,30 @@ Provide reusable semantic markup and CSS for assessment, decision, validation, a
 
 ### Declarative patterns
 
-- `.ef-question`
-- `.ef-ordinal-scale`
-- `.ef-choice-group`
-- `.ef-special-choices`
-- `.ef-validation-message`
-- `.ef-validation-summary`
-- `.ef-survey-progress`
-- `.ef-obligation-panel`
-- `.ef-binary-choice`
-- `.ef-semantic-differential`
-- `.ef-symbol-rating`
-- `.ef-numeric-stepper`
-- `.ef-range-entry`
-- `.ef-choice--media`
-- `.ef-matrix`
-- `.ef-pairwise`
-- `.ef-best-worst`
-- `.ef-hierarchy`
+- `.forma-question`
+- `.forma-ordinal-scale`
+- `.forma-choice-group`
+- `.forma-special-choices`
+- `.forma-validation-message`
+- `.forma-validation-summary`
+- `.forma-survey-progress`
+- `.forma-obligation-panel`
+- `.forma-binary-choice`
+- `.forma-semantic-differential`
+- `.forma-symbol-rating`
+- `.forma-numeric-stepper`
+- `.forma-range-entry`
+- `.forma-choice--media`
+- `.forma-matrix`
+- `.forma-pairwise`
+- `.forma-best-worst`
+- `.forma-hierarchy`
 
 ### Behavior-required visual contracts
 
-- `.ef-ranking`
-- `.ef-allocation` aggregate validation
-- `.ef-rule-builder`
+- `.forma-ranking`
+- `.forma-allocation` aggregate validation
+- `.forma-rule-builder`
 - graphical dual-thumb range interaction
 - best/worst cross-column exclusion
 - multi-choice cardinality/exclusive-option enforcement

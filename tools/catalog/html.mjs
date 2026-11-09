@@ -37,9 +37,9 @@ export const namespaceSnippet = (source, prefix) =>
     .replace(/\bhref="#([^"]+)"/g, (_, value) => `href="#${prefix}${value}"`)
     .replace(/\bname="([^"]+)"/g, (_, value) => `name="${prefix}${value}"`);
 
-export const wrapTag = (slug, source) => `<ef-${slug} class="ef-component-tag">
+export const wrapTag = (slug, source) => `<forma-${slug} class="forma-component-tag">
 ${source}
-</ef-${slug}>`;
+</forma-${slug}>`;
 
 // Compact list of attribute values: numeric runs become a range.
 export const describeValues = values => {

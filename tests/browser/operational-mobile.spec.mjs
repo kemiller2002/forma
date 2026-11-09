@@ -66,8 +66,8 @@ for (const slug of operationalPatterns) {
 test("mobile data grid recomposes into labeled record rows", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 900 });
   await page.setContent(fixture("data-grid"));
-  await expect(page.locator(".ef-data-grid thead")).toBeHidden();
-  const cell = page.locator('.ef-data-grid td[data-label="Invoice"]').first();
+  await expect(page.locator(".forma-data-grid thead")).toBeHidden();
+  const cell = page.locator('.forma-data-grid td[data-label="Invoice"]').first();
   await expect(cell).toBeVisible();
   expect(await cell.evaluate(el => getComputedStyle(el).display)).toBe("grid");
 });
@@ -75,21 +75,21 @@ test("mobile data grid recomposes into labeled record rows", async ({ page }) =>
 test("mobile diff stacks comparison panels", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 900 });
   await page.setContent(fixture("diff-viewer"));
-  const columns = await page.locator(".ef-diff-viewer__grid").evaluate(el => getComputedStyle(el).gridTemplateColumns);
+  const columns = await page.locator(".forma-diff-viewer__grid").evaluate(el => getComputedStyle(el).gridTemplateColumns);
   expect(columns.trim().split(/\s+/)).toHaveLength(1);
 });
 
 test("mobile wizard reduces the full step rail to the current step", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 900 });
   await page.setContent(fixture("wizard"));
-  await expect(page.locator('.ef-wizard__steps [data-state="current"]')).toBeVisible();
-  await expect(page.locator('.ef-wizard__steps li:not([data-state="current"])').first()).toBeHidden();
+  await expect(page.locator('.forma-wizard__steps [data-state="current"]')).toBeVisible();
+  await expect(page.locator('.forma-wizard__steps li:not([data-state="current"])').first()).toBeHidden();
 });
 
 test("mobile command palette fits the viewport", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 });
   await page.setContent(fixture("command-palette"));
-  const box = await page.locator(".ef-command-palette").boundingBox();
+  const box = await page.locator(".forma-command-palette").boundingBox();
   expect(box).not.toBeNull();
   expect(box.width).toBeLessThanOrEqual(320);
   expect(box.height).toBeLessThanOrEqual(640);
@@ -98,7 +98,7 @@ test("mobile command palette fits the viewport", async ({ page }) => {
 test("mobile master/detail becomes a single-column workspace", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 900 });
   await page.setContent(fixture("master-detail"));
-  const columns = await page.locator(".ef-master-detail").evaluate(el => getComputedStyle(el).gridTemplateColumns);
+  const columns = await page.locator(".forma-master-detail").evaluate(el => getComputedStyle(el).gridTemplateColumns);
   expect(columns.trim().split(/\s+/)).toHaveLength(1);
 });
 

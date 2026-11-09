@@ -22,36 +22,36 @@ and never simulate a control with a `div` when a native element exists.
 ## 1. The grid
 
 ```html
-<ef-character-grid class="ef-component-tag">
-  <div class="ef-character-grid" data-ef-rows="24" data-ef-columns="80" data-ef-narrow="contained">
-    <div class="ef-character-grid__viewport" role="region" aria-labelledby="cinq-title" tabindex="0">
-      <form class="ef-character-grid__surface">
-        <h1 class="ef-character-grid__text" id="cinq-title" data-ef-row="1" data-ef-col="33" data-ef-len="16">CUSTOMER INQUIRY</h1>
+<forma-character-grid class="forma-component-tag">
+  <div class="forma-character-grid" data-forma-rows="24" data-forma-columns="80" data-forma-narrow="contained">
+    <div class="forma-character-grid__viewport" role="region" aria-labelledby="cinq-title" tabindex="0">
+      <form class="forma-character-grid__surface">
+        <h1 class="forma-character-grid__text" id="cinq-title" data-forma-row="1" data-forma-col="33" data-forma-len="16">CUSTOMER INQUIRY</h1>
         <!-- every other run, in row-major order -->
       </form>
     </div>
   </div>
-</ef-character-grid>
+</forma-character-grid>
 ```
 
 Rules of thumb:
 
-- Coordinates are 1-based `data-ef-row`, `data-ef-col`, `data-ef-len`
-  (and `data-ef-height`). No inline `style`.
+- Coordinates are 1-based `data-forma-row`, `data-forma-col`, `data-forma-len`
+  (and `data-forma-height`). No inline `style`.
 - **Write runs in row-major order.** That single rule makes reading order,
   focus order, and visual order agree. Never use positive `tabindex`.
 - Use `<form>` as the surface when the screen has fields.
 - Wrap semantic groups (`dl`, `role="group"`) in
-  `.ef-character-grid__group`; their children keep absolute coordinates.
+  `.forma-character-grid__group`; their children keep absolute coordinates.
 - Check markup with `node tools/character-grid-conformance.mjs <file>`.
 
 ## 2. Protected text and values
 
 ```html
-<span class="ef-character-grid__text" data-ef-row="10" data-ef-col="2" data-ef-len="17">Account number<span class="ef-character-grid__leader" aria-hidden="true">  :</span></span>
-<span class="ef-character-grid__value" data-ef-row="10" data-ef-col="20" data-ef-len="14">00417-2231-09</span>
-<span class="ef-character-grid__value" data-ef-row="15" data-ef-col="20" data-ef-len="15" data-ef-align="end">12,480.55</span>
-<span class="ef-character-grid__value" data-ef-row="7" data-ef-col="20" data-ef-len="14" data-ef-state="missing">not on file</span>
+<span class="forma-character-grid__text" data-forma-row="10" data-forma-col="2" data-forma-len="17">Account number<span class="forma-character-grid__leader" aria-hidden="true">  :</span></span>
+<span class="forma-character-grid__value" data-forma-row="10" data-forma-col="20" data-forma-len="14">00417-2231-09</span>
+<span class="forma-character-grid__value" data-forma-row="15" data-forma-col="20" data-forma-len="15" data-forma-align="end">12,480.55</span>
+<span class="forma-character-grid__value" data-forma-row="7" data-forma-col="20" data-forma-len="14" data-forma-state="missing">not on file</span>
 ```
 
 Protected values are text. Do not render them as `readonly` inputs. Render
@@ -60,13 +60,13 @@ missing data as explicit words, never as blanks.
 ## 3. Editable fields
 
 ```html
-<label class="ef-character-grid__label" for="dob" data-ef-row="9" data-ef-col="2" data-ef-len="23">Date of birth<span class="ef-character-grid__leader" aria-hidden="true"> . . . . .</span></label>
-<input class="ef-character-grid__field" id="dob" name="dob" type="text" maxlength="10" autocomplete="bday"
-       aria-describedby="dob-hint" data-ef-row="9" data-ef-col="26" data-ef-len="10">
-<span class="ef-character-grid__text" id="dob-hint" data-ef-row="9" data-ef-col="38" data-ef-len="12">(YYYY-MM-DD)</span>
+<label class="forma-character-grid__label" for="dob" data-forma-row="9" data-forma-col="2" data-forma-len="23">Date of birth<span class="forma-character-grid__leader" aria-hidden="true"> . . . . .</span></label>
+<input class="forma-character-grid__field" id="dob" name="dob" type="text" maxlength="10" autocomplete="bday"
+       aria-describedby="dob-hint" data-forma-row="9" data-forma-col="26" data-forma-len="10">
+<span class="forma-character-grid__text" id="dob-hint" data-forma-row="9" data-forma-col="38" data-forma-len="12">(YYYY-MM-DD)</span>
 ```
 
-- `maxlength` equals `data-ef-len`.
+- `maxlength` equals `data-forma-len`.
 - The application sets `aria-invalid="true"` and adds the message ID to
   `aria-describedby` after validation: `aria-describedby="dob-hint cinq-message"`.
 - Use native `required`, `disabled`, and `readonly`; also say "required" in the
@@ -78,11 +78,11 @@ For a list where each row takes an option (5250 "Work with" screens), put a
 native field in a table cell and name it by its column and row headers:
 
 ```html
-<p class="ef-character-grid__text" id="legend" data-ef-row="4" data-ef-col="4" data-ef-len="28">2=Change  4=Close  5=Display</p>
+<p class="forma-character-grid__text" id="legend" data-forma-row="4" data-forma-col="4" data-forma-len="28">2=Change  4=Close  5=Display</p>
 ...
-<th scope="col" id="opt" data-ef-len="3">Opt</th>
+<th scope="col" id="opt" data-forma-len="3">Opt</th>
 ...
-<tr><td><input class="ef-character-grid__field" id="opt-1" name="opt-00417-2231-09" type="text" maxlength="1" data-ef-len="1"
+<tr><td><input class="forma-character-grid__field" id="opt-1" name="opt-00417-2231-09" type="text" maxlength="1" data-forma-len="1"
                aria-labelledby="opt row-1" aria-describedby="legend"></td>
     <th scope="row" id="row-1">00417-2231-09</th>...</tr>
 ```
@@ -94,15 +94,15 @@ rejects. See `patterns/character-grid-selection.html` and rule CG-17.
 ## 4. Status and messages
 
 ```html
-<p class="ef-character-grid__message" id="cinq-message" role="status" data-ef-severity="information"
-   data-ef-row="21" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__severity"><span>INFO</span></span> CINQ000I Type search criteria and press Enter.</p>
-<!-- the grid declares data-ef-rows="24" data-ef-status-rows="1" -->
-<p class="ef-character-grid__status" role="status" data-ef-row="25" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__indicator"><span>READY</span></span></p>
+<p class="forma-character-grid__message" id="cinq-message" role="status" data-forma-severity="information"
+   data-forma-row="21" data-forma-col="2" data-forma-len="78"><span class="forma-character-grid__severity"><span>INFO</span></span> CINQ000I Type search criteria and press Enter.</p>
+<!-- the grid declares data-forma-rows="24" data-forma-status-rows="1" -->
+<p class="forma-character-grid__status" role="status" data-forma-row="25" data-forma-col="2" data-forma-len="78"><span class="forma-character-grid__indicator"><span>READY</span></span></p>
 ```
 
-`data-ef-rows` counts only the rows your application writes. If the
+`data-forma-rows` counts only the rows your application writes. If the
 terminal you model has a device status line outside those rows, such as the
-3270 Operator Information Area, add `data-ef-status-rows="1"` to the grid
+3270 Operator Information Area, add `data-forma-status-rows="1"` to the grid
 and put the status on row `rows + 1`. Only status may go there (CG-18). If
 your application draws its own status, as DOS and most TUI programs do,
 omit the attribute and put the status on one of your own bottom rows.
@@ -114,11 +114,11 @@ Always include a visible severity word.
 ## 5. Action keys
 
 ```html
-<div class="ef-character-grid__group" role="group" aria-label="Function keys">
-  <button class="ef-character-grid__key" type="submit" name="action" value="enter" data-ef-action="enter" data-ef-row="22" data-ef-col="2" data-ef-len="12"><kbd>Enter</kbd>=Search</button>
-  <button class="ef-character-grid__key" type="submit" name="action" value="clear" formnovalidate data-ef-action="clear" data-ef-row="22" data-ef-col="16" data-ef-len="11"><kbd>Clear</kbd>=Erase</button>
-  <button class="ef-character-grid__key" type="button" data-ef-action="reset" data-ef-row="22" data-ef-col="29" data-ef-len="12"><kbd>Reset</kbd>=Unlock</button>
-  <button class="ef-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-ef-action="pf3" data-ef-row="22" data-ef-col="53" data-ef-len="8"><kbd>PF3</kbd>=Exit</button>
+<div class="forma-character-grid__group" role="group" aria-label="Function keys">
+  <button class="forma-character-grid__key" type="submit" name="action" value="enter" data-forma-action="enter" data-forma-row="22" data-forma-col="2" data-forma-len="12"><kbd>Enter</kbd>=Search</button>
+  <button class="forma-character-grid__key" type="submit" name="action" value="clear" formnovalidate data-forma-action="clear" data-forma-row="22" data-forma-col="16" data-forma-len="11"><kbd>Clear</kbd>=Erase</button>
+  <button class="forma-character-grid__key" type="button" data-forma-action="reset" data-forma-row="22" data-forma-col="29" data-forma-len="12"><kbd>Reset</kbd>=Unlock</button>
+  <button class="forma-character-grid__key" type="submit" name="action" value="pf3" formnovalidate data-forma-action="pf3" data-forma-row="22" data-forma-col="53" data-forma-len="8"><kbd>PF3</kbd>=Exit</button>
 </div>
 ```
 
@@ -138,20 +138,20 @@ region straight to its keys. Tab can always leave the grid.
 
 ## 7. The 3270 profile
 
-Add `data-ef-profile="ibm-3270"` to the grid. Nothing else changes: the same
+Add `data-forma-profile="ibm-3270"` to the grid. Nothing else changes: the same
 markup renders in Forma's default presentation without the attribute. See
 `patterns/character-grid-3270.html` (24 × 80) and
 `patterns/character-grid-workflow.html` (three screens). For 32 × 80 set
-`data-ef-rows="32"`, place the reserved application rows at 29–32, and move
+`data-forma-rows="32"`, place the reserved application rows at 29–32, and move
 the status to row 33.
 
 ## 8. SequentialReveal
 
 ```html
-<div class="ef-character-grid" data-ef-rows="24" data-ef-columns="80"
-     data-ef-reveal="sequential" data-ef-reveal-rows="1">
+<div class="forma-character-grid" data-forma-rows="24" data-forma-columns="80"
+     data-forma-reveal="sequential" data-forma-reveal-rows="1">
   …
-  <h1 class="ef-character-grid__text" id="cinq-title" data-ef-reveal-run …>CUSTOMER INQUIRY</h1>
+  <h1 class="forma-character-grid__text" id="cinq-title" data-forma-reveal-run …>CUSTOMER INQUIRY</h1>
 ```
 
 Only protected text can reveal. Reduced motion is always static. Use it for a
@@ -171,11 +171,11 @@ const keyToAction = key =>
   /^F([1-9]|1[0-9]|2[0-4])$/.test(key) ? `pf${key.slice(1)}` : key === "Escape" ? "reset" : null;
 
 const presentedKey = (grid, action) =>
-  grid.querySelector(`.ef-character-grid__key[data-ef-action="${action}"]:not(:disabled)`);
+  grid.querySelector(`.forma-character-grid__key[data-forma-action="${action}"]:not(:disabled)`);
 
 export const installKeyMapping = grid => {
-  grid.querySelectorAll(".ef-character-grid__key[data-ef-action^='pf']")
-    .forEach(button => button.setAttribute("aria-keyshortcuts", `F${button.dataset.efAction.slice(2)}`));
+  grid.querySelectorAll(".forma-character-grid__key[data-forma-action^='pf']")
+    .forEach(button => button.setAttribute("aria-keyshortcuts", `F${button.dataset.formaAction.slice(2)}`));
   grid.addEventListener("keydown", event => {
     const button = keyToAction(event.key) && presentedKey(grid, keyToAction(event.key));
     if (!button) return;
@@ -192,7 +192,7 @@ installs. Do not bind bare printable characters (WCAG 2.1.4).
 
 ```js
 // Application / Limen. Forma reports which key was used; the application decides.
-const actionOf = event => event.submitter?.dataset.efAction ?? "enter";
+const actionOf = event => event.submitter?.dataset.formaAction ?? "enter";
 
 export const onSubmit = ({ decide, render }) => event => {
   event.preventDefault();
@@ -215,7 +215,7 @@ export const onSubmit = ({ decide, render }) => event => {
 ### Input inhibition
 
 While a request is outstanding the application may set the status indicator
-(`data-ef-state="inhibited"`, "X SYSTEM") and disable keys other than Reset.
+(`data-forma-state="inhibited"`, "X SYSTEM") and disable keys other than Reset.
 Forma presents those states; it never inhibits input on its own.
 
 ### Screen transitions
@@ -232,13 +232,13 @@ the grid.
 ```js
 // Application / Limen. Completes a reveal on any input without consuming it.
 export const orchestrateReveal = grid => {
-  const complete = () => grid.setAttribute("data-ef-reveal", "complete");
+  const complete = () => grid.setAttribute("data-forma-reveal", "complete");
   ["keydown", "pointerdown", "focusin"].forEach(type =>
     grid.ownerDocument.addEventListener(type, complete, { capture: true, once: true, passive: true }));
   return {
     replay: () => {
-      grid.setAttribute("data-ef-reveal", "static");
-      requestAnimationFrame(() => grid.setAttribute("data-ef-reveal", "sequential"));
+      grid.setAttribute("data-forma-reveal", "static");
+      requestAnimationFrame(() => grid.setAttribute("data-forma-reveal", "sequential"));
     }
   };
 };
@@ -256,13 +256,13 @@ export const orchestrateReveal = grid => {
 The markup, rules, and tests are the same for every style; only geometry, key
 vocabulary, content, and (optionally) a profile change.
 
-| Style | Geometry | Status rows | Keys (data-ef-action) | Profile | Notes |
+| Style | Geometry | Status rows | Keys (data-forma-action) | Profile | Notes |
 | --- | --- | --- | --- | --- | --- |
 | IBM 3270 | 24 × 80, 32 × 80, 43 × 80, 27 × 132 | `1` (OIA; x3270 evidence) | `enter`, `clear`, `reset`, `pf1`–`pf24`, `pa1`–`pa3` | `ibm-3270` | Reference profile. |
 | IBM 5250 | 24 × 80, 27 × 132 | not verified; author's choice | `enter`, `f1`–`f24`, `help`, `roll-up`, `roll-down`, `field-exit`, `reset` | default, or a custom token set | `<kbd>F3</kbd>=Exit`, `<kbd>F12</kbd>=Cancel`. Field Exit is a named action; its behavior is application-owned. "Work with" lists use per-row selection fields (`character-grid-selection`). |
 | DOS / text mode, TUI | e.g. 25 × 80 | none (the application draws status) | `f1`–`f10`, named actions | default or custom tokens | Menus are `dl`/`role="group"` groups; the F-key bar is the key group on the last row. |
 | BBS-style | e.g. 24 × 80 | not verified; author's choice | named actions | default or custom tokens | Single-letter commands must be buttons or a command field, not global letter shortcuts (WCAG 2.1.4). |
-| Modern character grid | any R × C ≤ 50 × 132 | usually none | named actions, e.g. `<kbd>Ctrl+S</kbd> Save` | default (follows light/dark) | Use `data-ef-narrow="reflow"` when positions carry no meaning. |
+| Modern character grid | any R × C ≤ 50 × 132 | usually none | named actions, e.g. `<kbd>Ctrl+S</kbd> Save` | default (follows light/dark) | Use `data-forma-narrow="reflow"` when positions carry no meaning. |
 
 Forma ships only the `ibm-3270` profile. 5250, DOS, and BBS characteristics
 beyond geometry and keys were not verified by Visual Engineering, so no

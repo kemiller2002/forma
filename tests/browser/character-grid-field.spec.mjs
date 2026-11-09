@@ -26,7 +26,7 @@ test("required, invalid, disabled, and read-only states are native and exposed",
 test("protected values are text, not controls, and are never focusable", async ({ page }) => {
   await page.setContent(gridDocument(source));
   const protectedFocusable = await page.evaluate(() =>
-    [...document.querySelectorAll(".ef-character-grid__text, .ef-character-grid__value")]
+    [...document.querySelectorAll(".forma-character-grid__text, .forma-character-grid__value")]
       .filter(element => element.matches("input, select, textarea, button, [tabindex]")).length);
   expect(protectedFocusable).toBe(0);
   await expect(page.getByText("2014-03-11")).toBeVisible();
@@ -37,7 +37,7 @@ test("Tab and Shift+Tab follow row-major order and skip disabled fields", async 
   await page.setContent(gridDocument(source));
   const forward = [];
   await page.keyboard.press("Tab");
-  expect(await focusedId(page)).toContain("ef-character-grid__viewport");
+  expect(await focusedId(page)).toContain("forma-character-grid__viewport");
   for (let step = 0; step < 4; step += 1) {
     await page.keyboard.press("Tab");
     forward.push(await focusedId(page));
@@ -94,7 +94,7 @@ test("at 320px fields meet the 44px target guideline without moving their cells"
   await page.setViewportSize({ width: 320, height: 900 });
   await page.setContent(gridDocument(source));
   const sizes = await page.evaluate(() =>
-    [...document.querySelectorAll(".ef-character-grid__field")].map(field => {
+    [...document.querySelectorAll(".forma-character-grid__field")].map(field => {
       const rect = field.getBoundingClientRect();
       return { id: field.id, width: rect.width, height: rect.height };
     }));

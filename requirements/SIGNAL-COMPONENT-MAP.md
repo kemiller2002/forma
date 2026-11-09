@@ -20,28 +20,28 @@ The mapping was derived from Signal requirements including:
 
 | Signal concept | Design-system pattern | Boundary |
 |---|---|---|
-| Question prompt/help/number | `.ef-question` | HTML/CSS |
-| Ordinal(3/5/7) | `.ef-ordinal-scale` | HTML/CSS |
-| Likert3/5/7 | `.ef-ordinal-scale` preset labels | Signal supplies labels |
-| Agreement5 | `.ef-ordinal-scale` preset labels | Signal supplies labels |
-| Frequency5 | `.ef-ordinal-scale` preset labels | Signal supplies labels |
-| Quality5 | `.ef-ordinal-scale` preset labels | Signal supplies labels |
-| Confidence5 | `.ef-ordinal-scale` preset labels | Signal supplies labels |
-| Satisfaction5 | `.ef-ordinal-scale` preset labels | Signal supplies labels |
-| Maturity5 | `.ef-ordinal-scale` preset labels | Signal supplies labels |
-| Numeric discrete rating | `.ef-ordinal-scale` with numeric labels | Signal supplies bounds/meaning |
-| Continuous/bounded numeric control | existing `.ef-slider` or native number input | Signal supplies validation |
-| Single select | `.ef-choice-group` using radios | HTML/CSS |
-| Multi-select | `.ef-choice-group` using checkboxes | HTML/CSS |
-| Forced choice | `.ef-choice-group` | HTML/CSS |
-| Pairwise comparison | `.ef-choice-group` | HTML/CSS |
-| Don't Know / Unknown | `.ef-special-choice` | domain meaning remains Signal |
-| Not Applicable | `.ef-special-choice` | domain meaning remains Signal |
-| Validation message | `.ef-validation-message` | Signal evaluates validity |
-| Validation summary | `.ef-validation-summary` | Limen routes focus |
-| Survey/page/section progress | `.ef-survey-progress` | Signal supplies current progress |
-| Ranking | `.ef-ranking` | Limen behavior + Ordo validation |
-| Allocation | `.ef-allocation` | Limen aggregate calculation + Ordo validation |
+| Question prompt/help/number | `.forma-question` | HTML/CSS |
+| Ordinal(3/5/7) | `.forma-ordinal-scale` | HTML/CSS |
+| Likert3/5/7 | `.forma-ordinal-scale` preset labels | Signal supplies labels |
+| Agreement5 | `.forma-ordinal-scale` preset labels | Signal supplies labels |
+| Frequency5 | `.forma-ordinal-scale` preset labels | Signal supplies labels |
+| Quality5 | `.forma-ordinal-scale` preset labels | Signal supplies labels |
+| Confidence5 | `.forma-ordinal-scale` preset labels | Signal supplies labels |
+| Satisfaction5 | `.forma-ordinal-scale` preset labels | Signal supplies labels |
+| Maturity5 | `.forma-ordinal-scale` preset labels | Signal supplies labels |
+| Numeric discrete rating | `.forma-ordinal-scale` with numeric labels | Signal supplies bounds/meaning |
+| Continuous/bounded numeric control | existing `.forma-slider` or native number input | Signal supplies validation |
+| Single select | `.forma-choice-group` using radios | HTML/CSS |
+| Multi-select | `.forma-choice-group` using checkboxes | HTML/CSS |
+| Forced choice | `.forma-choice-group` | HTML/CSS |
+| Pairwise comparison | `.forma-choice-group` | HTML/CSS |
+| Don't Know / Unknown | `.forma-special-choice` | domain meaning remains Signal |
+| Not Applicable | `.forma-special-choice` | domain meaning remains Signal |
+| Validation message | `.forma-validation-message` | Signal evaluates validity |
+| Validation summary | `.forma-validation-summary` | Limen routes focus |
+| Survey/page/section progress | `.forma-survey-progress` | Signal supplies current progress |
+| Ranking | `.forma-ranking` | Limen behavior + Ordo validation |
+| Allocation | `.forma-allocation` | Limen aggregate calculation + Ordo validation |
 
 ## Authoring mapping
 
@@ -49,14 +49,14 @@ The mapping was derived from Signal requirements including:
 |---|---|---|
 | Section/question editing | native forms + cards/panels | application composition |
 | Selector preset authoring | choice/select patterns | application data |
-| Reorder questions/sections | existing `.ef-reorder-list` | Limen |
-| Flow/validation/derived fact rules | `.ef-rule-builder` | Limen + typed application expression model |
-| Completion rules | `.ef-rule-builder` | Limen + Ordo |
-| Recommendation rules | `.ef-rule-builder` | Limen + Signal semantics |
+| Reorder questions/sections | existing `.forma-reorder-list` | Limen |
+| Flow/validation/derived fact rules | `.forma-rule-builder` | Limen + typed application expression model |
+| Completion rules | `.forma-rule-builder` | Limen + Ordo |
+| Recommendation rules | `.forma-rule-builder` | Limen + Signal semantics |
 | Respondent preview | app shell/split workspace | Limen |
 | Scoring preview | metric/stat patterns | application values |
 | Rule trace preview | timeline/trace visual composition | application values |
-| Publication blockers | `.ef-obligation-panel` | Ordo authority |
+| Publication blockers | `.forma-obligation-panel` | Ordo authority |
 | Validation/test fixture failures | validation/status patterns | application values |
 | Definition differences | diff viewer | Limen/data supplied by application |
 
@@ -135,34 +135,34 @@ Signal's SCS completeness pass adds the following shared design-system contracts
 
 | Signal selector family | Design-system contract | Boundary |
 |---|---|---|
-| YesNo / TrueFalse / three-way | `.ef-binary-choice` | native radios, HTML/CSS |
-| BinaryToggle with Unanswered | `.ef-binary-choice` styled binary presentation | do **not** use checkbox switch when Unanswered matters |
-| Likert 3/4/5/6/7/10/11 | `.ef-ordinal-scale` cardinality variants | HTML/CSS |
-| NPS 0–10 | `.ef-ordinal-scale--11` numeric preset | Signal owns NPS meaning/scoring |
-| Semantic differential | `.ef-semantic-differential` | HTML/CSS |
+| YesNo / TrueFalse / three-way | `.forma-binary-choice` | native radios, HTML/CSS |
+| BinaryToggle with Unanswered | `.forma-binary-choice` styled binary presentation | do **not** use checkbox switch when Unanswered matters |
+| Likert 3/4/5/6/7/10/11 | `.forma-ordinal-scale` cardinality variants | HTML/CSS |
+| NPS 0–10 | `.forma-ordinal-scale--11` numeric preset | Signal owns NPS meaning/scoring |
+| Semantic differential | `.forma-semantic-differential` | HTML/CSS |
 | Numeric rating | ordinal scale or native number input | depends on discrete vs numeric semantics |
-| Star/Icon rating | `.ef-symbol-rating` | HTML/CSS; symbol is decorative, text alternative required |
-| Slider | existing `.ef-slider` | native range |
-| Range slider / BoundedRange | `.ef-range-entry` + optional graphical Limen enhancement | direct paired numeric entry always retained |
-| Numeric stepper | `.ef-numeric-stepper` | native number input |
+| Star/Icon rating | `.forma-symbol-rating` | HTML/CSS; symbol is decorative, text alternative required |
+| Slider | existing `.forma-slider` | native range |
+| Range slider / BoundedRange | `.forma-range-entry` + optional graphical Limen enhancement | direct paired numeric entry always retained |
+| Numeric stepper | `.forma-numeric-stepper` | native number input |
 | Radio/buttons/cards | existing choice patterns | HTML/CSS |
-| Image single/multi choice | `.ef-choice--media` | image decorative or redundantly described; visible text required |
-| Multi-select count guidance | `.ef-selection-guidance`, `.ef-selection-status` | Limen validates exact/min/max/between |
-| Exclusive None/N/A option | `.ef-choice--exclusive` | Limen clears/rejects incompatible selections |
-| Matrix single/Likert/numeric | `.ef-matrix` | repeated primitive answers; responsive row decomposition |
-| Matrix dropdown/multi/side-by-side | `.ef-matrix` visual family | Limen/application supplies row selector behavior/state |
-| Pairwise comparison | `.ef-pairwise` | native radio pair |
-| Best-Worst | `.ef-best-worst` | Limen enforces different Best/Worst options |
-| Hierarchical single | `.ef-hierarchy` with radios | native disclosure + application hierarchy semantics |
-| Hierarchical multi | `.ef-hierarchy` with checkboxes | parent/descendant policy belongs to application |
+| Image single/multi choice | `.forma-choice--media` | image decorative or redundantly described; visible text required |
+| Multi-select count guidance | `.forma-selection-guidance`, `.forma-selection-status` | Limen validates exact/min/max/between |
+| Exclusive None/N/A option | `.forma-choice--exclusive` | Limen clears/rejects incompatible selections |
+| Matrix single/Likert/numeric | `.forma-matrix` | repeated primitive answers; responsive row decomposition |
+| Matrix dropdown/multi/side-by-side | `.forma-matrix` visual family | Limen/application supplies row selector behavior/state |
+| Pairwise comparison | `.forma-pairwise` | native radio pair |
+| Best-Worst | `.forma-best-worst` | Limen enforces different Best/Worst options |
+| Hierarchical single | `.forma-hierarchy` with radios | native disclosure + application hierarchy semantics |
+| Hierarchical multi | `.forma-hierarchy` with checkboxes | parent/descendant policy belongs to application |
 
 ### Binary toggle rule
 
-The existing `.ef-switch` is correct for a setting that already has an authoritative boolean value.
+The existing `.forma-switch` is correct for a setting that already has an authoritative boolean value.
 
 It is **not** correct for a survey answer where untouched/Unanswered must remain different from No/False, because an unchecked checkbox cannot distinguish those states without application behavior.
 
-For Signal-style binary questions, use a radio-backed `.ef-binary-choice` presentation so the initial state can remain unanswered.
+For Signal-style binary questions, use a radio-backed `.forma-binary-choice` presentation so the initial state can remain unanswered.
 
 ### Matrix rule
 

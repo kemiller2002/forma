@@ -11,10 +11,10 @@ export const workflowSource = () =>
 const P = "character-grid-workflow";
 
 const message = (screen, severity, role, word, text) =>
-  `<p class="ef-character-grid__message" id="${P}-${screen}-message" role="${role}" data-ef-severity="${severity}" data-ef-row="21" data-ef-col="2" data-ef-len="78"><span class="ef-character-grid__severity"><span>${word}</span></span> ${text}</p>`;
+  `<p class="forma-character-grid__message" id="${P}-${screen}-message" role="${role}" data-forma-severity="${severity}" data-forma-row="21" data-forma-col="2" data-forma-len="78"><span class="forma-character-grid__severity"><span>${word}</span></span> ${text}</p>`;
 
 const replaceMessage = (html, screen, replacement) =>
-  html.replace(new RegExp(`<p class="ef-character-grid__message" id="${P}-${screen}-message"[^]*?</p>`), replacement);
+  html.replace(new RegExp(`<p class="forma-character-grid__message" id="${P}-${screen}-message"[^]*?</p>`), replacement);
 
 const replaceRows = (html, rowsHtml) => html.replace(/<tbody>[^]*?<\/tbody>/, `<tbody>\n${rowsHtml}\n          </tbody>`);
 
@@ -44,8 +44,8 @@ export const states = {
       replaceRows(html, '          <tr><td colspan="5">Transaction history is unavailable.</td></tr>')
         .replace(">Rows 1-12 of 37<", ">Rows unknown  <")
         .replace(">More: +<", ">More: -<")
-        .replace(/(id="character-grid-workflow-trnh-title"[^]*?)<span class="ef-character-grid__indicator"><span>READY<\/span><\/span>/,
-          '$1<span class="ef-character-grid__indicator" data-ef-state="inhibited"><span>X SYSTEM</span></span>'),
+        .replace(/(id="character-grid-workflow-trnh-title"[^]*?)<span class="forma-character-grid__indicator"><span>READY<\/span><\/span>/,
+          '$1<span class="forma-character-grid__indicator" data-forma-state="inhibited"><span>X SYSTEM</span></span>'),
       "trnh",
       message("trnh", "error", "alert", "ERROR", "TRNH009E Transaction service did not respond. Press Reset, then Enter.")
     )

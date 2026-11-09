@@ -45,11 +45,11 @@ export const exitDuration = inertiaDuration;
 // sqrt()/calc() multiplication: the standard preset, rounded to whole ms.
 export const staticFallbacks = (preset = PRESETS.standard) =>
   Object.freeze({
-    "--ef-motion-inertia-duration": Math.round(inertiaDuration(preset)),
-    "--ef-motion-gravity-duration": Math.round(gravityDuration()),
-    "--ef-motion-state-duration": Math.round(stateDuration(preset)),
-    "--ef-motion-press-duration": Math.round(pressDuration(preset)),
-    "--ef-motion-exit-duration": Math.round(exitDuration(preset))
+    "--forma-motion-inertia-duration": Math.round(inertiaDuration(preset)),
+    "--forma-motion-gravity-duration": Math.round(gravityDuration()),
+    "--forma-motion-state-duration": Math.round(stateDuration(preset)),
+    "--forma-motion-press-duration": Math.round(pressDuration(preset)),
+    "--forma-motion-exit-duration": Math.round(exitDuration(preset))
   });
 
 export const presetOrder = ["light", "standard", "heavy"];

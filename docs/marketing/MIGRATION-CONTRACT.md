@@ -28,8 +28,8 @@ repository (step 0).
 |---|---|---|
 | 0 | **Baseline and revise requirements.** Screenshot the current site at 1280, 768, 390, and 320 px. List the site's presentation requirements. Mark each as kept, superseded by Forma, or a Forma gap. | A revision note is committed in the site repository |
 | 1 | **Pin the Forma presentation version.** Add `forma.lock` (`forma X.Y.Z`, `destination`, `asset forma-echelon-marketing.css`). Run `install.sh --update`. Add the destination to `.gitignore`. | The lock is committed and `install.sh` passes |
-| 2 | **Adopt the Echelon Marketing Theme.** Load the installed `forma-echelon-marketing.css` first, before any site CSS. Pin `data-ef-theme="light"` unless dark mode is intended. | Pages render with Forma tokens |
-| 3 | **Adopt the MarketingShell.** Replace the header, navigation, main wrapper, and footer templates with the shell structure. Add the skip link and `aria-current`. Set `data-ef-layout`. | The structure checks pass (question 8 of the guide) |
+| 2 | **Adopt the Echelon Marketing Theme.** Load the installed `forma-echelon-marketing.css` first, before any site CSS. Pin `data-forma-theme="light"` unless dark mode is intended. | Pages render with Forma tokens |
+| 3 | **Adopt the MarketingShell.** Replace the header, navigation, main wrapper, and footer templates with the shell structure. Add the skip link and `aria-current`. Set `data-forma-layout`. | The structure checks pass (question 8 of the guide) |
 | 4 | **Replace local global styles with Forma foundations.** Delete the site's palette, reset, typography, links, focus rules, containers, spacing, and responsive rules. | The policy reports no `GLOBAL-ELEMENT` or `TOKEN-OVERRIDE` findings |
 | 5 | **Replace duplicated components.** Map site classes to Forma components using the inventory's mapping. Change the markup, not the CSS. | No local rule restyles hero, cards, buttons, badges, CTA, section headings, code, or prose |
 | 6 | **Keep only legitimate site-specific CSS.** Prefix the remaining rules with the site prefix. Annotate each pending-gap rule with `/* forma-exception: GAP-MKT-xx */`. Open a Forma issue for any gap not yet listed. | `SiteCssPolicy` exits 0 |
@@ -42,7 +42,7 @@ repository (step 0).
 
 - Never copy Forma CSS or patterns into the site.
 - Never edit installed files under `assets/forma/`.
-- Do not add `ef-` classes of your own. Do not restyle `ef-` classes locally.
+- Do not add `forma-` classes of your own. Do not restyle `forma-` classes locally.
 - If Forma cannot express something generally useful, follow the gap process
   in MKT-LOCAL-4. Do not build a local look-alike.
 - Content, copy, and information architecture are out of scope unless the
@@ -62,7 +62,7 @@ and `requirements/REQUIREMENTS.md`:
    and type system. This is superseded by consuming
    `forma-echelon-marketing.css`. The verdigris accent becomes an
    identity-token retarget. The graph-paper backdrop becomes a
-   `--ef-site-backdrop` value.
+   `--forma-site-backdrop` value.
 3. **W7 "palette contrast"** and `site/test/contrast.test.mjs` read a local
    `:root`. Palette contrast becomes Forma's responsibility. Keep local
    contrast tests only for Dokimos-specific tones.

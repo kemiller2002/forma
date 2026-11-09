@@ -4,7 +4,7 @@ export default {
   behavior: "Native HTML / Limen",
   summary: "Native file selection plus a reusable upload queue for progress, success, cancellation, failure, and unknown outcomes.",
   purpose: {
-    description: "A file upload has two parts. The drop area holds a heading, guidance and a `label.ef-button` wrapping a native `input type=\"file\"`, so choosing files works with keyboard, pointer and touch without script. The queue is a list with one row per file: name and size, a native `progress` element, and either a [[status-lozenge]] outcome or a per-file action (Cancel, Retry). Uploading, progress updates, cancellation, retry, drag-and-drop and duplicate detection are Limen/application behavior; Forma renders each state the application reports.",
+    description: "A file upload has two parts. The drop area holds a heading, guidance and a `label.forma-button` wrapping a native `input type=\"file\"`, so choosing files works with keyboard, pointer and touch without script. The queue is a list with one row per file: name and size, a native `progress` element, and either a [[status-lozenge]] outcome or a per-file action (Cancel, Retry). Uploading, progress updates, cancellation, retry, drag-and-drop and duplicate detection are Limen/application behavior; Forma renders each state the application reports.",
     useWhen: [
       "Users attach one or more files to a record, submission or evidence set.",
       "Uploads take long enough that per-file progress and outcomes matter.",
@@ -28,18 +28,18 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Failed, unknown and waiting files",
       description: "A queue after a network interruption: one file was rejected for size (Failed lozenge with the reason), one lost its connection mid-transfer so the outcome is unknown and offers Check status, one is waiting (an indeterminate progress element with no value), and one failed on the server and offers Retry.",
-      html: `<ef-file-upload class="ef-component-tag">
-  <section class="ef-file-upload" aria-labelledby="file-upload-mixed-title">
-    <div class="ef-file-upload__drop">
+      html: `<forma-file-upload class="forma-component-tag">
+  <section class="forma-file-upload" aria-labelledby="file-upload-mixed-title">
+    <div class="forma-file-upload__drop">
       <h3 id="file-upload-mixed-title">Attach contract documents</h3>
       <p>PDF or DOCX, up to 25 MB each.</p>
-      <label class="ef-button">Choose files <input type="file" name="contract-documents" multiple accept=".pdf,.docx"></label>
+      <label class="forma-button">Choose files <input type="file" name="contract-documents" multiple accept=".pdf,.docx"></label>
     </div>
-    <ul class="ef-file-upload__queue">
+    <ul class="forma-file-upload__queue">
       <li>
         <div><strong>master-agreement.pdf</strong><small>Failed: the file is larger than 25 MB (31.4 MB).</small></div>
         <progress value="0" max="100" aria-label="master-agreement.pdf upload progress">0%</progress>
-        <span class="ef-status-lozenge" data-state="blocked">Failed</span>
+        <span class="forma-status-lozenge" data-state="blocked">Failed</span>
       </li>
       <li>
         <div><strong>schedule-b.docx</strong><small>Connection lost at 82%. We could not confirm whether the file was saved.</small></div>
@@ -58,28 +58,28 @@ export default {
       </li>
     </ul>
   </section>
-</ef-file-upload>`
+</forma-file-upload>`
     },
     {
       id: "single-image",
       title: "Single profile photo",
       description: "Single-file mode: no multiple attribute and an image-only accept filter. The queue shows the one uploaded file with a Replace path through the same chooser.",
-      html: `<ef-file-upload class="ef-component-tag">
-  <section class="ef-file-upload" aria-labelledby="file-upload-single-title">
-    <div class="ef-file-upload__drop">
+      html: `<forma-file-upload class="forma-component-tag">
+  <section class="forma-file-upload" aria-labelledby="file-upload-single-title">
+    <div class="forma-file-upload__drop">
       <h3 id="file-upload-single-title">Profile photo</h3>
       <p>A square PNG or JPEG works best. Choosing a new file replaces the current one.</p>
-      <label class="ef-button">Choose photo <input type="file" name="profile-photo" accept="image/png,image/jpeg"></label>
+      <label class="forma-button">Choose photo <input type="file" name="profile-photo" accept="image/png,image/jpeg"></label>
     </div>
-    <ul class="ef-file-upload__queue">
+    <ul class="forma-file-upload__queue">
       <li>
         <div><strong>headshot-2026.jpg</strong><small>640 KB</small></div>
         <progress value="100" max="100" aria-label="headshot-2026.jpg upload progress">100%</progress>
-        <span class="ef-status-lozenge" data-state="ok">Uploaded</span>
+        <span class="forma-status-lozenge" data-state="ok">Uploaded</span>
       </li>
     </ul>
   </section>
-</ef-file-upload>`
+</forma-file-upload>`
     },
     {
       id: "mobile-evidence",
@@ -95,18 +95,18 @@ export default {
           "The drop area has no drag requirement, so touch users lose nothing."
         ]
       },
-      html: `<ef-file-upload class="ef-component-tag">
-  <section class="ef-file-upload" aria-labelledby="file-upload-mobile-title">
-    <div class="ef-file-upload__drop">
+      html: `<forma-file-upload class="forma-component-tag">
+  <section class="forma-file-upload" aria-labelledby="file-upload-mobile-title">
+    <div class="forma-file-upload__drop">
       <h3 id="file-upload-mobile-title">Add site photos</h3>
       <p>Photos of the installed equipment and serial plates.</p>
-      <label class="ef-button">Choose files <input type="file" name="site-photos" multiple accept="image/*"></label>
+      <label class="forma-button">Choose files <input type="file" name="site-photos" multiple accept="image/*"></label>
     </div>
-    <ul class="ef-file-upload__queue">
+    <ul class="forma-file-upload__queue">
       <li>
         <div><strong>rack-07-front-panel-serial-plate.jpg</strong><small>3.1 MB</small></div>
         <progress value="100" max="100" aria-label="rack-07-front-panel-serial-plate.jpg upload progress">100%</progress>
-        <span class="ef-status-lozenge" data-state="ok">Uploaded</span>
+        <span class="forma-status-lozenge" data-state="ok">Uploaded</span>
       </li>
       <li>
         <div><strong>rack-07-cabling.jpg</strong><small>2.4 MB</small></div>
@@ -115,7 +115,7 @@ export default {
       </li>
     </ul>
   </section>
-</ef-file-upload>`
+</forma-file-upload>`
     }
   ],
   api: {
@@ -124,16 +124,16 @@ export default {
       { name: "multiple", on: "input[type=file]", values: "boolean", default: "absent", description: "Allows selecting several files at once." },
       { name: "accept", on: "input[type=file]", values: "extensions or MIME types", default: "any", description: "Filters the chooser. It is a hint, not enforcement: the application must still validate type and size." },
       { name: "name", on: "input[type=file]", values: "string", default: "—", description: "Field name when the files are submitted with a form." },
-      { name: "aria-labelledby", on: "section.ef-file-upload", values: "id of the heading", default: "—", description: "Names the upload region with its visible heading." },
+      { name: "aria-labelledby", on: "section.forma-file-upload", values: "id of the heading", default: "—", description: "Names the upload region with its visible heading." },
       { name: "value", on: "progress", values: "number", default: "absent (indeterminate)", description: "Current progress. Omit it for waiting or unknown-size transfers." },
       { name: "max", on: "progress", values: "number", default: "1", description: "Scale of the progress value." },
       { name: "aria-label", on: "progress", values: "string", default: "—", description: "Names each progress bar with its file so rows are distinguishable." },
-      { name: "data-state", on: ".ef-status-lozenge", values: "ok | attention | unknown | blocked", default: "—", description: "Outcome glyph for the file's status lozenge; always paired with text." }
+      { name: "data-state", on: ".forma-status-lozenge", values: "ok | attention | unknown | blocked", default: "—", description: "Outcome glyph for the file's status lozenge; always paired with text." }
     ],
     hooks: {
-      "ef-file-upload": "Root grid (1rem gap) around the drop area and queue.",
-      "ef-file-upload__drop": "Dashed-border selection area on the secondary surface. A `.ef-button` inside is the visible chooser; a nested `input[type=file]` is visually hidden but remains in the accessibility tree.",
-      "ef-file-upload__queue": "Unstyled list of files. Each `li` is a three-column grid (name and size, progress, status or action) that stacks at 40rem and below; `small` holds secondary text."
+      "forma-file-upload": "Root grid (1rem gap) around the drop area and queue.",
+      "forma-file-upload__drop": "Dashed-border selection area on the secondary surface. A `.forma-button` inside is the visible chooser; a nested `input[type=file]` is visually hidden but remains in the accessibility tree.",
+      "forma-file-upload__queue": "Unstyled list of files. Each `li` is a three-column grid (name and size, progress, status or action) that stacks at 40rem and below; `small` holds secondary text."
     },
     keyboard: [
       { keys: "Tab", action: "Moves to the file input inside the Choose files label, then through queue action buttons in order." },
@@ -147,8 +147,8 @@ export default {
   states: [
     { name: "Waiting", how: "progress without value", description: "Indeterminate progress bar and \"Waiting\" text; a Remove action is usual." },
     { name: "Uploading", how: "progress value < max", description: "Determinate bar with a Cancel action." },
-    { name: "Uploaded", how: "progress value = max; .ef-status-lozenge data-state=\"ok\"", description: "Full bar and a ✓ Uploaded lozenge." },
-    { name: "Failed", how: ".ef-status-lozenge data-state=\"blocked\" or a Retry button, plus a reason in small", description: "The reason is text; retry is offered when the failure is recoverable." },
+    { name: "Uploaded", how: "progress value = max; .forma-status-lozenge data-state=\"ok\"", description: "Full bar and a ✓ Uploaded lozenge." },
+    { name: "Failed", how: ".forma-status-lozenge data-state=\"blocked\" or a Retry button, plus a reason in small", description: "The reason is text; retry is offered when the failure is recoverable." },
     { name: "Unknown outcome", how: "application text plus a Check status action or data-state=\"unknown\" lozenge", description: "Kept distinct from failure because the file may have been saved." }
   ],
   accessibility: {

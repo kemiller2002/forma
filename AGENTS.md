@@ -42,6 +42,16 @@ provenance:
         model: unknown
         runtime: codex
       reason: "Adopt the 30-minute elapsed-time upstream synchronization rule and safe integration boundaries"
+    EXE-20261109T143119107Z-8ddfe859:
+      operations: [modified]
+      at: 2026-11-09T15:35:32.444Z
+      actor:
+        kind: agent
+        id: anthropic/claude-code
+        provider: anthropic
+        model: unknown
+        runtime: claude-code
+      reason: "Forma 1.0.0: forma- namespace in the Forma component usage section and the Echelon theme note (FORMA-NS-001, EDS-ADR-002)"
 ---
 
 # Agent Startup Guide
@@ -87,8 +97,10 @@ presentation vocabulary.
 
 1. Read `docs/AGENT-USAGE.md` before producing UI markup.
 2. Reuse a canonical `patterns/*.html` contract before inventing a new control.
-3. Use semantic/native HTML first and preserve the documented `ef-*` class
-   structure and accessible-name relationships.
+3. Use semantic/native HTML first and preserve the documented `forma-*` class
+   structure and accessible-name relationships. Forma 1.0.0 renamed the old
+   `ef-` namespace and is brand-neutral: Echelon applications load
+   `@echelon-foundry/echelon-theme` after Forma (`docs/CONSUMING-FORMA.md`).
 4. Do not add JavaScript, WebAssembly, custom-element registration, hidden
    behavior, scoring, or domain transition authority to Forma.
 5. Browser-native state may live in markup. Behavior beyond native HTML belongs
@@ -106,7 +118,7 @@ presentation vocabulary.
    change; it includes generated-site mobile regression coverage.
 9. Every public component has a catalog entry in
    `catalog/components/<slug>.mjs` that generates its documentation page.
-   Adding or changing a pattern or a public `.ef-*` block means updating that
+   Adding or changing a pattern or a public `.forma-*` block means updating that
    entry; follow `docs/CATALOG-AUTHORING.md`. `npm run catalog:check` fails
    until coverage is complete.
 

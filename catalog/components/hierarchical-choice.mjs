@@ -3,9 +3,9 @@ export default {
   category: "selection",
   behavior: "Native baseline / application semantics",
   summary: "Nested native disclosure and radio structure for choosing one item from a hierarchy, without assigning parent-child domain meaning.",
-  owns: ["ef-hierarchy"],
+  owns: ["forma-hierarchy"],
   purpose: {
-    description: "Hierarchical choice presents options grouped under collapsible categories and lets the user pick exactly one. It is a `fieldset` (`ef-hierarchy`) with a legend and a nested list (`ef-hierarchy__tree`); each category is a native `details`/`summary`, and each option is a native radio inside a label, all sharing one `name`. The browser owns expand/collapse, selection, submission and reset. Forma provides indentation, a guide line per branch and 44px rows. What the hierarchy means is application data: whether a category itself can be chosen, whether branches start open, and how options are identified are decided by the application, and any tree keyboard model (arrow-key tree navigation, typeahead, lazy loading) is Limen behavior.",
+    description: "Hierarchical choice presents options grouped under collapsible categories and lets the user pick exactly one. It is a `fieldset` (`forma-hierarchy`) with a legend and a nested list (`forma-hierarchy__tree`); each category is a native `details`/`summary`, and each option is a native radio inside a label, all sharing one `name`. The browser owns expand/collapse, selection, submission and reset. Forma provides indentation, a guide line per branch and 44px rows. What the hierarchy means is application data: whether a category itself can be chosen, whether branches start open, and how options are identified are decided by the application, and any tree keyboard model (arrow-key tree navigation, typeahead, lazy loading) is Limen behavior.",
     useWhen: [
       "One item is chosen from a set that is naturally grouped (services by platform, locations by region, categories by department).",
       "The full list is long enough that grouping helps, but short enough to render in the page.",
@@ -43,10 +43,10 @@ export default {
       },
       title: "Category-level option",
       description: "The application allows choosing a whole category, so it renders an explicit \"Any Data service\" option as the first child of the branch. Making the category selectable is expressed as an ordinary option with its own value, never by clicking the summary.",
-      html: `<ef-hierarchical-choice class="ef-component-tag">
-  <fieldset class="ef-hierarchy">
-    <legend class="ef-hierarchy__legend">Where did the problem occur?</legend>
-    <ul class="ef-hierarchy__tree">
+      html: `<forma-hierarchical-choice class="forma-component-tag">
+  <fieldset class="forma-hierarchy">
+    <legend class="forma-hierarchy__legend">Where did the problem occur?</legend>
+    <ul class="forma-hierarchy__tree">
       <li>
         <details open>
           <summary>Data</summary>
@@ -68,7 +68,7 @@ export default {
       </li>
     </ul>
   </fieldset>
-</ef-hierarchical-choice>`
+</forma-hierarchical-choice>`
     },
     {
       id: "restored-deep-selection",
@@ -83,10 +83,10 @@ export default {
       },
       title: "Restored selection three levels deep",
       description: "A saved answer is restored. The application opens every branch on the path to the checked option and repeats the selection as text after the tree, so the answer is visible even if the user collapses the branch.",
-      html: `<ef-hierarchical-choice class="ef-component-tag">
-  <fieldset class="ef-hierarchy">
-    <legend class="ef-hierarchy__legend">Primary office</legend>
-    <ul class="ef-hierarchy__tree">
+      html: `<forma-hierarchical-choice class="forma-component-tag">
+  <fieldset class="forma-hierarchy">
+    <legend class="forma-hierarchy__legend">Primary office</legend>
+    <ul class="forma-hierarchy__tree">
       <li>
         <details open>
           <summary>Europe</summary>
@@ -121,9 +121,9 @@ export default {
         </details>
       </li>
     </ul>
-    <p class="ef-selection-status" aria-live="polite">Selected: Europe › Germany › Berlin</p>
+    <p class="forma-selection-status" aria-live="polite">Selected: Europe › Germany › Berlin</p>
   </fieldset>
-</ef-hierarchical-choice>`
+</forma-hierarchical-choice>`
     },
     {
       id: "mobile-nested-tree",
@@ -145,10 +145,10 @@ export default {
           "Expanding a branch pushes the rest of the tree down in flow; there is no overlay or fixed height to clip it."
         ]
       },
-      html: `<ef-hierarchical-choice class="ef-component-tag">
-  <fieldset class="ef-hierarchy">
-    <legend class="ef-hierarchy__legend">Which product area is this feedback about?</legend>
-    <ul class="ef-hierarchy__tree">
+      html: `<forma-hierarchical-choice class="forma-component-tag">
+  <fieldset class="forma-hierarchy">
+    <legend class="forma-hierarchy__legend">Which product area is this feedback about?</legend>
+    <ul class="forma-hierarchy__tree">
       <li>
         <details open>
           <summary>Reporting and analytics workspace</summary>
@@ -168,7 +168,7 @@ export default {
       </li>
     </ul>
   </fieldset>
-</ef-hierarchical-choice>`
+</forma-hierarchical-choice>`
     }
   ],
   api: {
@@ -178,12 +178,12 @@ export default {
       { name: "value", on: "input", values: "string", default: "\"on\"", description: "The application's immutable option identity, submitted for the chosen option." },
       { name: "checked", on: "input", values: "boolean", default: "absent", description: "Initial or restored selection. Open the branches that contain it." },
       { name: "open", on: "details", values: "boolean", default: "absent (collapsed)", description: "Initial expanded state of a branch. The browser toggles it afterwards." },
-      { name: "aria-live", on: ".ef-selection-status", values: "polite", default: "—", description: "Optional. Announces an application-written summary of the current selection." }
+      { name: "aria-live", on: ".forma-selection-status", values: "polite", default: "—", description: "Optional. Announces an application-written summary of the current selection." }
     ],
     hooks: {
-      "ef-hierarchy": "The fieldset: border and padding reset. Branch `details` get an inline-start guide line and padding; `summary` and `label` rows are 44px flex rows.",
-      "ef-hierarchy__legend": "The question, in bold above the tree.",
-      "ef-hierarchy__tree": "Root list with markers removed and no indentation; nested lists indent by 1.25rem (0.75rem at 44rem and below)."
+      "forma-hierarchy": "The fieldset: border and padding reset. Branch `details` get an inline-start guide line and padding; `summary` and `label` rows are 44px flex rows.",
+      "forma-hierarchy__legend": "The question, in bold above the tree.",
+      "forma-hierarchy__tree": "Root list with markers removed and no indentation; nested lists indent by 1.25rem (0.75rem at 44rem and below)."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between summaries and into the radio group (to the checked radio, or the first rendered one)." },

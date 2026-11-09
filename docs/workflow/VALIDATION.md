@@ -97,7 +97,7 @@ nodes, groups, legend swatches and edges against the 3:1 minimum of WCAG 1.4.11:
 
 - **No authored fill.** The shape is drawn on the default surface, so its
   stroke and accent are judged against both default surfaces: light `#fafafa`
-  and dark `#161616` (`--ef-color-surface-primary` in the compiled light theme
+  and dark `#161616` (`--forma-color-surface-primary` in the compiled light theme
   and in the dark theme, including `prefers-color-scheme: dark`). The weaker
   theme is reported and named. Legend swatches and edge strokes are judged the
   same way.
@@ -131,9 +131,9 @@ byte. After an intended change to the renderer or the rule, regenerate them
 with `FORMA_UPDATE_GOLDEN=1 dotnet run --project tests/workflow/Forma.Workflow.Tests -c Release`.
 
 **CSS custom properties bypass validation.** Colours an application sets
-directly through `--ef-diagram-stroke`, `--ef-diagram-accent`,
-`--ef-diagram-fill`, `--ef-diagram-connector-stroke` or
-`--ef-diagram-foreground` never pass through the document, so no finding is
+directly through `--forma-diagram-stroke`, `--forma-diagram-accent`,
+`--forma-diagram-fill`, `--forma-diagram-connector-stroke` or
+`--forma-diagram-foreground` never pass through the document, so no finding is
 produced; `contracts/diagram-presentation.json` marks them
 `"contrast": "consumer"`. An application that colours diagrams that way must
 measure the result in its own browser tests (computed border colour against

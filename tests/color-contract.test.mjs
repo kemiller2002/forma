@@ -17,7 +17,7 @@ test("generated public contract is deterministic and covers every released conte
   assert.equal(contract.contexts.filter(item => item.kind === "theme").length, 18);
   assert.equal(contract.contexts.filter(item => item.kind === "brand").length, 4);
   const names = contract.publicTokens.map(token => token.name);
-  for (const name of ["--ef-color-status-success", "--ef-color-status-warning", "--ef-color-status-danger", "--ef-color-status-info"]) assert.ok(names.includes(name));
+  for (const name of ["--forma-color-status-success", "--forma-color-status-warning", "--forma-color-status-danger", "--forma-color-status-info"]) assert.ok(names.includes(name));
   for (const context of contract.contexts) assert.deepEqual(Object.keys(context.values).sort(), names, `${context.kind} ${context.id} must implement the public contract exactly`);
   assert.ok(contract.publicTokens.every(token => token.source.file && token.source.path && token.provenance.kind === "generated" && Array.isArray(token.deprecatedAliases)));
   assert.ok(contract.internalVariables.public === false);
@@ -36,9 +36,9 @@ test("role table declares supported primitives and application extension boundar
 test("Forma 0.6.1 refuses the four unsupported Summa spellings with actionable locations", () => {
   const contract = loadColorContract("tests/fixtures/color-contract/forma-0.6.1.json");
   const findings = validateCssColorReferences(read("tests/fixtures/color-contract/invalid.css"), { contract, file: "summa.css" });
-  assert.deepEqual(findings.map(item => item.token), ["--ef-color-action-primary", "--ef-color-text-link", "--ef-color-focus", "--ef-color-text-danger"]);
+  assert.deepEqual(findings.map(item => item.token), ["--forma-color-action-primary", "--forma-color-text-link", "--forma-color-focus", "--forma-color-text-danger"]);
   assert.deepEqual(findings.map(item => item.line), [1, 2, 3, 4]);
-  assert.deepEqual(findings.map(item => item.suggestion), ["--ef-color-surface-inverse", "--ef-color-accent-primary", "--ef-color-focus-ring", "--ef-color-status-danger"]);
+  assert.deepEqual(findings.map(item => item.suggestion), ["--forma-color-surface-inverse", "--forma-color-accent-primary", "--forma-color-focus-ring", "--forma-color-status-danger"]);
 });
 
 test("supported current references pass and application-owned variables are ignored", () => {
@@ -47,16 +47,16 @@ test("supported current references pass and application-owned variables are igno
 });
 
 test("internal Forma variables are separated from the public color contract", () => {
-  const [finding] = validateCssColorReferences("color: var(--ef-tone-text)", { contract: current(), file: "consumer.css" });
+  const [finding] = validateCssColorReferences("color: var(--forma-tone-text)", { contract: current(), file: "consumer.css" });
   assert.equal(finding.code, "COLOR_INTERNAL_FORMA_VARIABLE");
   assert.match(finding.message, /internal implementation variable/);
 });
 
 test("unknown names fail closed despite a fallback and known literal fallbacks cannot invent a palette", () => {
   const contract = current();
-  assert.equal(validateCssColorReferences("color: var(--ef-color-made-up, #ffffff)", { contract })[0].code, "COLOR_UNKNOWN_FORMA_TOKEN");
-  assert.equal(validateCssColorReferences("color: var(--ef-color-text-primary, #000000)", { contract })[0].code, "COLOR_LITERAL_FALLBACK_MISMATCH");
-  assert.deepEqual(validateCssColorReferences("color: var(--ef-color-text-primary, #161616)", { contract }), []);
+  assert.equal(validateCssColorReferences("color: var(--forma-color-made-up, #ffffff)", { contract })[0].code, "COLOR_UNKNOWN_FORMA_TOKEN");
+  assert.equal(validateCssColorReferences("color: var(--forma-color-text-primary, #000000)", { contract })[0].code, "COLOR_LITERAL_FALLBACK_MISMATCH");
+  assert.deepEqual(validateCssColorReferences("color: var(--forma-color-text-primary, #161616)", { contract }), []);
 });
 
 test("CLI validates without loading or copying Forma component CSS", () => {

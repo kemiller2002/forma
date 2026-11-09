@@ -30,7 +30,7 @@ test("every bundle artifact exists, is versioned, and matches its manifest and c
 });
 
 test("the bundler is deterministic", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-bundle-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-bundle-"));
   const outputs = ["a", "b"].map(run => {
     const definition = path.join(dir, `${run}.json`);
     fs.writeFileSync(definition, JSON.stringify({ ...bundle, outputDirectory: path.relative(process.cwd(), path.join(dir, run)) }));
@@ -50,7 +50,7 @@ test("artifacts contain the expected foundations, components, layouts, and theme
   for (const layer of ["forma.tokens", "forma.foundations", "forma.marketing.foundations", "forma.marketing.components", "forma.marketing.layouts"]) {
     assert.match(generic, new RegExp(`@layer ${layer.replace(/\./g, "\\.")} \\{`), `forma-marketing.css lacks ${layer}`);
   }
-  for (const component of [".ef-site-header", ".ef-site-nav__link", ".ef-hero", ".ef-card-grid", ".ef-cta", ".ef-site-footer", ".ef-skip-link", ".ef-doc"]) {
+  for (const component of [".forma-site-header", ".forma-site-nav__link", ".forma-hero", ".forma-card-grid", ".forma-cta", ".forma-site-footer", ".forma-skip-link", ".forma-doc"]) {
     assert.ok(generic.includes(component), `forma-marketing.css lacks ${component}`);
   }
   assert.doesNotMatch(generic, /@layer [a-z-]+\.theme\b/, "the generic layer must not carry an organization theme");
@@ -69,7 +69,7 @@ test("artifacts are self-contained and runtime-free", () => {
 });
 
 test("the bundler rejects a source that would make an artifact depend on other files", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-bundle-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-bundle-"));
   const bad = path.join(dir, "bad.css");
   fs.writeFileSync(bad, '@import "elsewhere.css";\n');
   const definition = path.join(dir, "bad.json");
@@ -83,7 +83,7 @@ test("the bundler rejects a source that would make an artifact depend on other f
 });
 
 function site(lockBody) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ef-site-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-site-"));
   fs.writeFileSync(path.join(dir, "forma.lock"), lockBody);
   return dir;
 }

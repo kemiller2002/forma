@@ -53,12 +53,12 @@ Forma's presentation contracts SHOULD be able to display consumer-supplied field
 ## 3. Metadata serialization and DOM safety
 
 - **FMD-META-040 MUST** NOT require hidden DOM attributes as the canonical store for arbitrary application metadata.
-- **FMD-META-041 MAY** expose small documented `data-ef-*` presentation hooks only when they control Forma presentation rather than store private domain data.
+- **FMD-META-041 MAY** expose small documented `data-forma-*` presentation hooks only when they control Forma presentation rather than store private domain data.
 - **FMD-META-042 MUST** NOT encourage secrets, credentials, tokens, sensitive personal data, or suppressed application values to be embedded in data attributes, CSS generated content, comments, or visually hidden metadata.
 - **FMD-META-043 MUST** treat consumer-supplied metadata text/URLs as untrusted content and rely on safe semantic HTML/URL handling by the consuming application.
 - **FMD-META-044 MUST** keep CSS selectors from depending on arbitrary metadata values as a source of semantic truth.
 - **FMD-META-045 SHOULD** allow stable application object IDs to be exposed through a documented integration hook for inspection/testing when privacy permits, but visual styling MUST NOT depend on the ID value.
-- **FMD-META-046 MUST** keep metadata presentation useful if Forma's inert `<ef-*>` wrapper is not upgraded because Forma has no runtime upgrade requirement.
+- **FMD-META-046 MUST** keep metadata presentation useful if Forma's inert `<forma-*>` wrapper is not upgraded because Forma has no runtime upgrade requirement.
 
 ## 4. Metadata presentation patterns
 
@@ -190,7 +190,7 @@ Workflow and diagram objects MUST be colorable.
 
 The first implementation SHOULD remain smaller than the complete architecture.
 
-Status: implemented for GH-52 in `src/styles/components.css` (`.ef-diagram*`), `patterns/diagram.html` and `tests/browser/diagram.spec.mjs`. The ownership boundary is recorded in [ADR-0004](../docs/decisions/ADR-0004-diagram-presentation-boundary.md). M2 (#88) adds ellipse and diamond shapes, groups, lanes and phases, metadata value-state tags (FMD-SCHEMA-006), print that keeps authored strokes, and the machine-readable capability manifest `contracts/diagram-presentation.json` (FMD-STUDIO-001..004, FMD-EDIT-002, FMD-RESOLVE-004), tested by `tests/browser/diagram-m2.spec.mjs` and `tests/diagram-contract.test.mjs`. Contract 2.1.0 (forma#93) adds ports (`.ef-diagram-port`), node status cues (`data-ef-status`), node descriptions and the membership list (`.ef-diagram__membership`) for the portable workflow capability. Pattern fills remain deferred.
+Status: implemented for GH-52 in `src/styles/components.css` (`.forma-diagram*`), `patterns/diagram.html` and `tests/browser/diagram.spec.mjs`. The ownership boundary is recorded in [ADR-0004](../docs/decisions/ADR-0004-diagram-presentation-boundary.md). M2 (#88) adds ellipse and diamond shapes, groups, lanes and phases, metadata value-state tags (FMD-SCHEMA-006), print that keeps authored strokes, and the machine-readable capability manifest `contracts/diagram-presentation.json` (FMD-STUDIO-001..004, FMD-EDIT-002, FMD-RESOLVE-004), tested by `tests/browser/diagram-m2.spec.mjs` and `tests/diagram-contract.test.mjs`. Contract 2.1.0 (forma#93) adds ports (`.forma-diagram-port`), node status cues (`data-forma-status`), node descriptions and the membership list (`.forma-diagram__membership`) for the portable workflow capability. Pattern fills remain deferred.
 
 - **FMD-M1-001 MUST** first define stable node/object, connector, metadata-summary, and color presentation contracts.
 - **FMD-M1-002 MUST** prove token/palette color plus an explicit authored override.

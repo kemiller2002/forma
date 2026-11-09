@@ -13,7 +13,7 @@ const patterns = fs.readdirSync("patterns").filter((file) => file.endsWith(".htm
 const echelonRgb = [...ECHELON_PALETTE].map((hex) => [1, 3, 5].map((i) => Number.parseInt(hex.slice(i, i + 2), 16)).join(", "));
 
 const page = (brand, theme) => `<!doctype html>
-<html lang="en"${brand ? ` data-ef-brand="${brand}"` : ""}${theme ? ` data-ef-theme="${theme}"` : ""}>
+<html lang="en"${brand ? ` data-forma-brand="${brand}"` : ""}${theme ? ` data-forma-theme="${theme}"` : ""}>
 <head>
   <meta charset="utf-8">
   <title>Third-party isolation</title>
@@ -46,7 +46,7 @@ const scan = (rgb) => {
   }
   const root = getComputedStyle(document.documentElement);
   const custom = [...document.styleSheets].flatMap((sheet) => [...sheet.cssRules].map((rule) => rule.cssText))
-    .join("\n").match(/--ef-[a-z0-9-]+/g) ?? [];
+    .join("\n").match(/--forma-[a-z0-9-]+/g) ?? [];
   return { leaks, elements: document.querySelectorAll("*").length, customValues: [...new Set(custom)].map((name) => root.getPropertyValue(name).trim()) };
 };
 
@@ -64,7 +64,7 @@ for (const [brand, theme] of [["example-orchard", "light"], ["example-orchard", 
 
 test("the isolation scan detects a planted Echelon color", async ({ page: browser }) => {
   await browser.route("**/isolation.html", (route) => route.fulfill({ contentType: "text/html",
-    body: page("example-orchard", "light").replace("</head>", "<style>.ef-button { border-color: #905831; }</style></head>") }));
+    body: page("example-orchard", "light").replace("</head>", "<style>.forma-button { border-color: #905831; }</style></head>") }));
   await browser.goto("/isolation.html");
   const result = await browser.evaluate(scan, echelonRgb);
   expect(result.leaks.some((leak) => leak.includes("border-top-color"))).toBe(true);

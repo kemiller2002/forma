@@ -62,7 +62,7 @@ test("matrix rows remain independent native radio groups", async ({ page }) => {
 
 test("matrix decomposes vertically on narrow layouts", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  const flow = await page.locator(".ef-matrix__choices").first().evaluate(element => getComputedStyle(element).gridAutoFlow);
+  const flow = await page.locator(".forma-matrix__choices").first().evaluate(element => getComputedStyle(element).gridAutoFlow);
   expect(flow).toBe("row");
 });
 
@@ -77,7 +77,7 @@ test("pairwise comparison remains a native two-option radio group", async ({ pag
 test("best-worst exposes distinct labelled best and worst groups", async ({ page }) => {
   await expect(page.getByRole("radio", { name: "Reliability, Best" })).toBeVisible();
   await expect(page.getByRole("radio", { name: "Reliability, Worst" })).toBeVisible();
-  await expect(page.locator(".ef-best-worst__status")).toHaveAttribute("aria-live", "polite");
+  await expect(page.locator(".forma-best-worst__status")).toHaveAttribute("aria-live", "polite");
 });
 
 test("hierarchical selector uses native disclosure and choice semantics", async ({ page }) => {
@@ -89,9 +89,9 @@ test("hierarchical selector uses native disclosure and choice semantics", async 
 test("ordinal system supports an 11-position NPS-style presentation without a separate component", async ({ page }) => {
   const tracks = await page.evaluate(() => {
     const root = document.createElement("div");
-    root.className = "ef-ordinal-scale ef-ordinal-scale--11";
+    root.className = "forma-ordinal-scale forma-ordinal-scale--11";
     const options = document.createElement("div");
-    options.className = "ef-ordinal-scale__options";
+    options.className = "forma-ordinal-scale__options";
     for (let i = 0; i < 11; i++) options.append(document.createElement("span"));
     root.append(options);
     document.body.append(root);

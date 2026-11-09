@@ -16,7 +16,7 @@ export default {
   category: "forms",
   behavior: "Native HTML",
   summary: "A semantic, responsive native form contract with aligned fields, explicit submit/reset commands, native validation and observable script-free feedback.",
-  owns: ["ef-form"],
+  owns: ["forma-form"],
   purpose: {
     description: "Form is the end-to-end composition for collecting and submitting related data. It combines [[form-row]], [[text-field]], [[select]], [[textarea]], [[checkbox]], [[choice-group]], [[switch]], [[date-time-field]], [[validation-message]] and [[button]] without replacing their native semantics. The optional Forma design contract validates this structure before rendering; hand-authored HTML remains equally supported.",
     useWhen: [
@@ -31,8 +31,8 @@ export default {
     ],
     characteristics: [
       "The form is a min-width-zero grid with semantic spacing and an optional maximum measure.",
-      "`.ef-form-row` aligns label, description, control and validation tracks and wraps by container width.",
-      "A successful GET submit can target `.ef-form__outcome`; invalid native controls refuse submission first.",
+      "`.forma-form-row` aligns label, description, control and validation tracks and wraps by container width.",
+      "A successful GET submit can target `.forma-form__outcome`; invalid native controls refuse submission first.",
       "No form interaction requires Forma JavaScript."
     ]
   },
@@ -61,65 +61,65 @@ export default {
           { role: "textbox", name: "Handoff date (required)" }
         ] }
       ],
-      html: `<ef-form class="ef-component-tag">
-  <form class="ef-form" method="get" action="#orion-handoff-saved" aria-labelledby="orion-handoff-title">
+      html: `<forma-form class="forma-component-tag">
+  <form class="forma-form" method="get" action="#orion-handoff-saved" aria-labelledby="orion-handoff-title">
     <h2 id="orion-handoff-title">Orion communications handoff</h2>
-    <div class="ef-form-row">
-      <div class="ef-field">
-        <label class="ef-field__label" for="orion-network">Network complex (required)</label>
-        <span class="ef-field__description" id="orion-network-description">Choose the Deep Space Network complex leading the handoff.</span>
-        <span class="ef-select">
-          <select class="ef-select__input" id="orion-network" name="network" required aria-describedby="orion-network-description">
+    <div class="forma-form-row">
+      <div class="forma-field">
+        <label class="forma-field__label" for="orion-network">Network complex (required)</label>
+        <span class="forma-field__description" id="orion-network-description">Choose the Deep Space Network complex leading the handoff.</span>
+        <span class="forma-select">
+          <select class="forma-select__input" id="orion-network" name="network" required aria-describedby="orion-network-description">
             <option value="goldstone">Goldstone · California</option>
             <option value="madrid">Madrid · Spain</option>
             <option value="canberra">Canberra · Australia</option>
           </select>
-          <span class="ef-select__indicator" aria-hidden="true"></span>
+          <span class="forma-select__indicator" aria-hidden="true"></span>
         </span>
       </div>
-      <div class="ef-field">
-        <label class="ef-field__label" for="orion-handoff-date">Handoff date (required)</label>
-        <span class="ef-field__description" id="orion-handoff-date-description">Use the UTC mission-planning date.</span>
+      <div class="forma-field">
+        <label class="forma-field__label" for="orion-handoff-date">Handoff date (required)</label>
+        <span class="forma-field__description" id="orion-handoff-date-description">Use the UTC mission-planning date.</span>
         <input id="orion-handoff-date" name="handoff-date" type="date" value="2026-04-01" required aria-describedby="orion-handoff-date-description">
       </div>
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="orion-handoff-note">Handoff note</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="orion-handoff-note">Handoff note</label>
       <textarea id="orion-handoff-note" name="handoff-note" rows="3">Confirm Deep Space Network coverage before launch.</textarea>
     </div>
-    <label class="ef-checkbox">
-      <input class="ef-checkbox__input" type="checkbox" name="flight-director-reviewed" value="yes" required checked>
-      <span class="ef-checkbox__box" aria-hidden="true"></span>
-      <span class="ef-checkbox__text"><span class="ef-checkbox__label">Flight director review complete (required)</span></span>
+    <label class="forma-checkbox">
+      <input class="forma-checkbox__input" type="checkbox" name="flight-director-reviewed" value="yes" required checked>
+      <span class="forma-checkbox__box" aria-hidden="true"></span>
+      <span class="forma-checkbox__text"><span class="forma-checkbox__label">Flight director review complete (required)</span></span>
     </label>
-    <div class="ef-actions">
+    <div class="forma-actions">
       <button type="submit">Save handoff</button>
       <button type="reset">Reset handoff</button>
     </div>
-    <p class="ef-form__outcome" id="orion-handoff-saved" role="status" aria-label="Handoff save status">Orion communications handoff saved.</p>
+    <p class="forma-form__outcome" id="orion-handoff-saved" role="status" aria-label="Handoff save status">Orion communications handoff saved.</p>
   </form>
-</ef-form>`
+</forma-form>`
     },
     {
       id: "pending-submission",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Submission pending",
       description: "After a valid submit the application marks the form `aria-busy=\"true\"`, wraps its fields in `<fieldset disabled>` so the browser refuses edits and a second submission, and marks the submit button pending. A status message names the work. When the save completes or fails, the application removes all three and reports the outcome.",
-      html: `<ef-form class="ef-component-tag">
-  <form class="ef-form" action="#" method="post" aria-busy="true" aria-describedby="form-pending-status">
+      html: `<forma-form class="forma-component-tag">
+  <form class="forma-form" action="#" method="post" aria-busy="true" aria-describedby="form-pending-status">
     <fieldset disabled>
       <legend>Crew contact</legend>
-      <div class="ef-field">
-        <label class="ef-field__label" for="form-pending-name">Contact name</label>
+      <div class="forma-field">
+        <label class="forma-field__label" for="form-pending-name">Contact name</label>
         <input id="form-pending-name" name="contact" type="text" value="Mae Jemison" autocomplete="name">
       </div>
-      <div class="ef-actions">
+      <div class="forma-actions">
         <button type="submit" aria-busy="true" aria-disabled="true">Saving contact</button>
       </div>
     </fieldset>
     <p id="form-pending-status" role="status">Saving the crew contact.</p>
   </form>
-</ef-form>`
+</forma-form>`
     },
     {
       id: "customer-email-validation",
@@ -129,22 +129,22 @@ export default {
         fieldName: "Customer email (required)", changed: "changed@nasa.gov", initial: "gateway@nasa.gov",
         save: "Save contact", reset: "Reset contact", target: "gateway-contact-saved"
       }),
-      html: `<ef-form class="ef-component-tag">
-  <form class="ef-form" method="get" action="#gateway-contact-saved" aria-labelledby="gateway-contact-title">
+      html: `<forma-form class="forma-component-tag">
+  <form class="forma-form" method="get" action="#gateway-contact-saved" aria-labelledby="gateway-contact-title">
     <h2 id="gateway-contact-title">Gateway logistics contact</h2>
-    <div class="ef-field">
-      <label class="ef-field__label" for="gateway-contact-email">Customer email (required)</label>
-      <span class="ef-field__description" id="gateway-contact-email-description">Receives lunar logistics schedule changes.</span>
+    <div class="forma-field">
+      <label class="forma-field__label" for="gateway-contact-email">Customer email (required)</label>
+      <span class="forma-field__description" id="gateway-contact-email-description">Receives lunar logistics schedule changes.</span>
       <input id="gateway-contact-email" name="email" type="email" value="gateway@nasa.gov" autocomplete="email" required aria-describedby="gateway-contact-email-description gateway-contact-email-error">
-      <p class="ef-validation-message ef-validation-message--when-invalid" id="gateway-contact-email-error"><span class="ef-validation-message__mark" aria-hidden="true">!</span>Enter an email address such as name@nasa.gov.</p>
+      <p class="forma-validation-message forma-validation-message--when-invalid" id="gateway-contact-email-error"><span class="forma-validation-message__mark" aria-hidden="true">!</span>Enter an email address such as name@nasa.gov.</p>
     </div>
-    <div class="ef-actions">
+    <div class="forma-actions">
       <button type="submit">Save contact</button>
       <button type="reset">Reset contact</button>
     </div>
-    <p class="ef-form__outcome" id="gateway-contact-saved" role="status" aria-label="Contact save status">Gateway logistics contact saved.</p>
+    <p class="forma-form__outcome" id="gateway-contact-saved" role="status" aria-label="Contact save status">Gateway logistics contact saved.</p>
   </form>
-</ef-form>`
+</forma-form>`
     },
     {
       id: "mobile-mission-customer",
@@ -169,45 +169,45 @@ export default {
           { role: "textbox", name: "Mission customer email (required)" }
         ] }
       ],
-      html: `<ef-form class="ef-component-tag">
-  <form class="ef-form" method="get" action="#mobile-mission-customer-saved" aria-labelledby="mobile-mission-customer-title">
+      html: `<forma-form class="forma-component-tag">
+  <form class="forma-form" method="get" action="#mobile-mission-customer-saved" aria-labelledby="mobile-mission-customer-title">
     <h2 id="mobile-mission-customer-title">Mission customer</h2>
-    <div class="ef-form-row">
-      <div class="ef-field">
-        <label class="ef-field__label" for="mobile-mission-customer-name">Mission customer name (required)</label>
+    <div class="forma-form-row">
+      <div class="forma-field">
+        <label class="forma-field__label" for="mobile-mission-customer-name">Mission customer name (required)</label>
         <input id="mobile-mission-customer-name" name="name" type="text" value="Artemis II" autocomplete="organization" required>
       </div>
-      <div class="ef-field">
-        <label class="ef-field__label" for="mobile-mission-customer-email">Mission customer email (required)</label>
-        <span class="ef-field__description" id="mobile-mission-customer-email-description">Monitored during launch-window operations.</span>
+      <div class="forma-field">
+        <label class="forma-field__label" for="mobile-mission-customer-email">Mission customer email (required)</label>
+        <span class="forma-field__description" id="mobile-mission-customer-email-description">Monitored during launch-window operations.</span>
         <input id="mobile-mission-customer-email" name="email" type="email" value="artemis-ii@nasa.gov" autocomplete="email" required aria-describedby="mobile-mission-customer-email-description">
       </div>
     </div>
-    <div class="ef-actions">
+    <div class="forma-actions">
       <button type="submit">Save mobile customer</button>
       <button type="reset">Reset mobile form</button>
     </div>
-    <p class="ef-form__outcome" id="mobile-mission-customer-saved" role="status" aria-label="Mobile save status">Mission customer saved.</p>
+    <p class="forma-form__outcome" id="mobile-mission-customer-saved" role="status" aria-label="Mobile save status">Mission customer saved.</p>
   </form>
-</ef-form>`
+</forma-form>`
     }
   ],
   api: {
     attributes: [
-      { name: "method", on: "form.ef-form", values: "get | post", default: "get", description: "Native form submission method. Static documentation uses GET so its result is observable in the URL." },
-      { name: "action", on: "form.ef-form", values: "URL or #feedback-id", default: "current URL", description: "Real submission destination. A local fragment may expose `.ef-form__outcome`; production persistence belongs to the application endpoint." },
+      { name: "method", on: "form.forma-form", values: "get | post", default: "get", description: "Native form submission method. Static documentation uses GET so its result is observable in the URL." },
+      { name: "action", on: "form.forma-form", values: "URL or #feedback-id", default: "current URL", description: "Real submission destination. A local fragment may expose `.forma-form__outcome`; production persistence belongs to the application endpoint." },
       { name: "type", on: "button", values: "submit | reset | button", default: "submit", description: "Write the native command explicitly. Design-contract standard mode binds submit and reset only." },
       { name: "required", on: "native form control", values: "boolean", default: "absent", description: "Participates in native constraint validation. Also state required status in visible text." },
       { name: "aria-describedby", on: "native form control", values: "description and validation ids", default: "—", description: "Associates guidance and recovery text in reading order." },
-      { name: "role", on: ".ef-form__outcome", values: "status", default: "—", description: "Announces newly navigated save feedback without moving focus." },
-      { name: "aria-busy", on: "form.ef-form", values: "true", default: "absent", description: "Marks a submission in flight: progress cursor on the form. Pair it with `<fieldset disabled>` around the fields (the browser then refuses edits and resubmission) and a pending submit button; the application removes all three when the work finishes." }
+      { name: "role", on: ".forma-form__outcome", values: "status", default: "—", description: "Announces newly navigated save feedback without moving focus." },
+      { name: "aria-busy", on: "form.forma-form", values: "true", default: "absent", description: "Marks a submission in flight: progress cursor on the form. Pair it with `<fieldset disabled>` around the fields (the browser then refuses edits and resubmission) and a pending submit button; the application removes all three when the work finishes." }
     ],
     hooks: {
-      "aria-busy": "Pending selector: `.ef-form[aria-busy=\"true\"]` sets the progress cursor; the disabled fieldset does the rest natively.",
-      "ef-form": "Form root: a min-width-zero grid with semantic vertical spacing, container context and an optional maximum measure.",
-      "ef-form__outcome": "Native fragment-targeted status. Hidden until it is the current URL target, then shown with a non-colour border cue.",
-      "--ef-form-gap": "Space between heading, field layouts, action group and feedback.",
-      "--ef-form-max": "Maximum inline measure of the form; defaults to 64rem."
+      "aria-busy": "Pending selector: `.forma-form[aria-busy=\"true\"]` sets the progress cursor; the disabled fieldset does the rest natively.",
+      "forma-form": "Form root: a min-width-zero grid with semantic vertical spacing, container context and an optional maximum measure.",
+      "forma-form__outcome": "Native fragment-targeted status. Hidden until it is the current URL target, then shown with a non-colour border cue.",
+      "--forma-form-gap": "Space between heading, field layouts, action group and feedback.",
+      "--forma-form-max": "Maximum inline measure of the form; defaults to 64rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through native controls and actions in DOM order." },
@@ -223,8 +223,8 @@ export default {
   },
   states: [
     { name: "Ready", how: "valid native controls", description: "Save can submit; Reset restores declared initial values." },
-    { name: "Invalid", how: ":user-invalid plus linked .ef-validation-message--when-invalid", description: "Submission is refused; a thicker danger-side border and text recovery message identify the field without colour alone." },
-    { name: "Saved", how: ".ef-form__outcome:target", description: "A successful native GET reaches the declared URL fragment and exposes status feedback." },
+    { name: "Invalid", how: ":user-invalid plus linked .forma-validation-message--when-invalid", description: "Submission is refused; a thicker danger-side border and text recovery message identify the field without colour alone." },
+    { name: "Saved", how: ".forma-form__outcome:target", description: "A successful native GET reaches the declared URL fragment and exposes status feedback." },
     { name: "Pending", how: "aria-busy=\"true\" on the form, fields inside <fieldset disabled>, pending submit button", description: "The browser refuses edits and resubmission through the disabled fieldset; the form shows a progress cursor and its status message names the work. The application restores the form and reports success or failure." },
     { name: "Disabled or read-only field", how: "disabled or readonly native attribute", description: "Disabled controls are dashed, dimmed and omitted from submission; read-only text controls are dashed and remain focusable, selectable and submitted." }
   ],
@@ -244,7 +244,7 @@ export default {
   },
   responsive: [
     "The form and every field have min-inline-size: 0 and max-inline-size constraints, preventing intrinsic controls from widening the page.",
-    "`.ef-form-row` uses auto-fit minmax columns; it stacks at narrow container widths without media-query device guesses.",
+    "`.forma-form-row` uses auto-fit minmax columns; it stacks at narrow container widths without media-query device guesses.",
     "Labels, descriptions, messages and actions wrap; native select display text may ellipsize inside its bounded control while the full option remains available.",
     "At 320px all controls and actions stay reachable with no page-level horizontal overflow."
   ],
@@ -254,7 +254,7 @@ export default {
   ],
   guidance: {
     do: [
-      "Use one clear heading, group peer fields in `.ef-form-row`, and keep DOM order equal to reading and keyboard order.",
+      "Use one clear heading, group peer fields in `.forma-form-row`, and keep DOM order equal to reading and keyboard order.",
       "Use explicit native button types and make every enabled action produce its declared result.",
       "Validate with the versioned design contract when UI is generated by agents or authoring tools."
     ],

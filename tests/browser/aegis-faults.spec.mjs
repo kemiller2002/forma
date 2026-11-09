@@ -18,13 +18,13 @@ test("Aegis fault presentation exposes readable severity, reference, and legal r
   await expect(page.getByText("AG-4F82C", { exact: true }).first()).toBeVisible();
 
   const retry = page.getByRole("button", { name: "Try again" });
-  await expect(retry).toHaveAttribute("data-ef-aegis-capability", "CanRetry");
+  await expect(retry).toHaveAttribute("data-forma-aegis-capability", "CanRetry");
 
   const restore = page.getByRole("button", { name: "Reconnect diagnostics" });
-  await expect(restore).toHaveAttribute("data-ef-aegis-capability", "CanRestoreSink");
+  await expect(restore).toHaveAttribute("data-forma-aegis-capability", "CanRestoreSink");
 
   const readOnly = page.getByRole("button", { name: "Open read-only" });
-  await expect(readOnly).toHaveAttribute("data-ef-aegis-capability", "CanOpenReadOnly");
+  await expect(readOnly).toHaveAttribute("data-forma-aegis-capability", "CanOpenReadOnly");
 });
 
 test("blocking fault exposes an accessible dialog name and no synthetic continue action", async ({ page }) => {
@@ -37,7 +37,7 @@ test("blocking fault exposes an accessible dialog name and no synthetic continue
 test("fault summary provides a focusable navigation region", async ({ page }) => {
   await page.goto(fixture);
 
-  const summary = page.locator(".ef-fault-summary");
+  const summary = page.locator(".forma-fault-summary");
   await expect(summary).toHaveAttribute("tabindex", "-1");
   await expect(summary.getByRole("link", { name: "Save failed" })).toHaveAttribute("href", "#fixture-target");
 });
@@ -60,8 +60,8 @@ test("Aegis fault motion honors reduced-motion variables", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(fixture);
 
-  const duration = await page.locator(".ef-fault-notification").evaluate(el =>
-    getComputedStyle(el).getPropertyValue("--ef-motion-inertia-duration").trim()
+  const duration = await page.locator(".forma-fault-notification").evaluate(el =>
+    getComputedStyle(el).getPropertyValue("--forma-motion-inertia-duration").trim()
   );
 
   expect(duration).toBe("0.01ms");

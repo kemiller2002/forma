@@ -9,7 +9,7 @@ alphabetical index, navigation, the home-page counts and the machine-readable
 | --- | --- |
 | `patterns/<slug>.html` | The canonical, smallest correct markup. Rendered as the **Basic** example and published in the package. |
 | `catalog/components/<slug>.mjs` | Explanation, scenario examples, mobile example, native-attribute API, states, accessibility, responsive behavior, motion, guidance and related components. |
-| `dist/all.css` (built from `src/styles`, `src/marketing`) | The CSS hook surface. Elements, modifiers, attribute hooks and `--ef-<root>-*` custom properties are **derived** from it by `tools/catalog/css-hooks.mjs`. They are not typed by hand. |
+| `dist/all.css` (built from `src/styles`, `src/marketing`) | The CSS hook surface. Elements, modifiers, attribute hooks and `--forma-<root>-*` custom properties are **derived** from it by `tools/catalog/css-hooks.mjs`. They are not typed by hand. |
 | `catalog/categories.json` | The component families, their order and summaries. |
 
 Composed, multi-component showcases live in `catalog/compositions/<slug>.mjs`.
@@ -26,7 +26,7 @@ Composed, multi-component showcases live in `catalog/compositions/<slug>.mjs`.
 5. Run `npm run site:check` and look at the generated page at 320px, 390px and
    desktop width.
 
-CI fails when a pattern has no catalog entry, when a public `.ef-*` block
+CI fails when a pattern has no catalog entry, when a public `.forma-*` block
 class is not owned by any entry, or when any entry falls short of the rules.
 
 ## Entry shape
@@ -37,7 +37,7 @@ export default {
   category: "forms",                 // an id from catalog/categories.json
   behavior: "Native HTML",           // who owns behavior (Native HTML, Application / Limen, …)
   summary: "One sentence used on cards and in the index.",
-  owns: ["ef-switch"],               // optional; defaults to ["ef-<slug>"] when that class exists
+  owns: ["forma-switch"],               // optional; defaults to ["forma-<slug>"] when that class exists
   purpose: { description, useWhen: [], avoidWhen: [], characteristics: [] },
   examples: [ { id, title, description, html }, …, { id, title, description, html, mobile: { notes: [], height } } ],
   api: { attributes: [], hooks: {}, keyboard: [], events: [], form: "" },
@@ -50,7 +50,7 @@ export default {
 };
 ```
 
-The slug is the file name. The public tag is always `<ef-<slug>>`.
+The slug is the file name. The public tag is always `<forma-<slug>>`.
 
 ### Prose
 
@@ -71,11 +71,11 @@ consequences; skip filler and restating the name.
 - Each example demonstrates a real difference: state, configuration, density,
   content stress, disabled/error/loading, composition.
 - Every example's `html` is wrapped in the inert public tag
-  `<ef-<slug> class="ef-component-tag"> … </ef-<slug>>`.
+  `<forma-<slug> class="forma-component-tag"> … </forma-<slug>>`.
 - The same string is rendered live and shown as copyable source, so it must be
   complete, valid, copy-pasteable markup. No `<script>`, no `on*=` handlers, no
   `javascript:` URLs.
-- Every `ef-*` class must exist in Forma CSS and every `<ef-*>` tag must be a
+- Every `forma-*` class must exist in Forma CSS and every `<forma-*>` tag must be a
   catalog component; the checker rejects anything else.
 - IDs and radio `name` values must be unique across the whole page (the Basic
   pattern, every example, and the generated specimens). Prefix them with the
@@ -88,9 +88,9 @@ consequences; skip filler and restating the name.
 ### API
 
 - `api.hooks` describes CSS hooks. The checker requires a description for every
-  modifier class, attribute hook and `--ef-<root>-*` custom property that the
+  modifier class, attribute hook and `--forma-<root>-*` custom property that the
   CSS defines for the component's owned roots, and rejects descriptions of hooks
-  that do not exist. Element classes (`ef-x__y`) may be described too.
+  that do not exist. Element classes (`forma-x__y`) may be described too.
 - `api.attributes` lists native and ARIA attributes the author writes
   (`type`, `role`, `open`, `popovertarget`, `aria-describedby`, …). Each must
   appear in the pattern or an example.
@@ -100,7 +100,7 @@ consequences; skip filler and restating the name.
 ### States, accessibility, responsive, motion
 
 - `states`: only states that apply, with how each is expressed (native attribute,
-  pseudo-class, `data-ef-*`).
+  pseudo-class, `data-forma-*`).
 - `accessibility.forma`: what Forma's markup and CSS guarantee.
   `accessibility.consumer`: what the application must still supply.
 - `responsive`: intrinsic sizing, wrapping, overflow, breakpoints/container

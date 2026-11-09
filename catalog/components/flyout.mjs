@@ -4,7 +4,7 @@ export default {
   behavior: "Native HTML",
   summary: "Left/right edge modal surface built on native dialog semantics with reciprocal physics-derived motion.",
   purpose: {
-    description: "A flyout is a full-height modal panel attached to the left or right edge of the viewport, for filters, navigation, record detail or a bounded task that relates to the page underneath. It is a native `dialog` with `class=\"ef-flyout\"` and `data-ef-side=\"left|right\"`, opened with an invoker button (`commandfor` plus `command=\"show-modal\"`). The browser owns the modal behavior: top layer, inert page, focus placement, Escape and focus return. Forma lays out a pinned header with a title and close button, a scrolling body, and a pinned action footer, respects safe-area insets, and slides the panel in from its edge with heavy perceived weight. Swipe-to-close, drag, resizing, bottom sheets and persistent non-modal drawers are application or Limen behavior.",
+    description: "A flyout is a full-height modal panel attached to the left or right edge of the viewport, for filters, navigation, record detail or a bounded task that relates to the page underneath. It is a native `dialog` with `class=\"forma-flyout\"` and `data-forma-side=\"left|right\"`, opened with an invoker button (`commandfor` plus `command=\"show-modal\"`). The browser owns the modal behavior: top layer, inert page, focus placement, Escape and focus return. Forma lays out a pinned header with a title and close button, a scrolling body, and a pinned action footer, respects safe-area insets, and slides the panel in from its edge with heavy perceived weight. Swipe-to-close, drag, resizing, bottom sheets and persistent non-modal drawers are application or Limen behavior.",
     useWhen: [
       "Users refine a list with filters and want to return to the same list.",
       "Users inspect or edit a record's detail without leaving the collection they came from.",
@@ -17,7 +17,7 @@ export default {
       "The navigation should always be visible on wide screens: use [[sidebar]] or [[navigation-shell]]."
     ],
     characteristics: [
-      "One component, two sides: `data-ef-side=\"left\"` or `\"right\"`.",
+      "One component, two sides: `data-forma-side=\"left\"` or `\"right\"`.",
       "Full dynamic-viewport height, `min(28rem, 90vw)` wide, so a strip of the page remains visible as context.",
       "Header and footer stay in place while only the body scrolls, with contained overscroll.",
       "Safe-area insets pad the header top and footer bottom."
@@ -52,53 +52,53 @@ export default {
       },
       title: "Filters with a long, scrolling body",
       description: "A left flyout holding more filters than fit on screen. The body scrolls on its own while the header (title and close) and the footer (Clear and Show results) stay pinned. The form uses `method=\"dialog\"` so either footer button closes the flyout and the application reads which one was used.",
-      html: `<ef-flyout class="ef-component-tag">
+      html: `<forma-flyout class="forma-component-tag">
   <button type="button" commandfor="flyout-filters-with-pinned-actions" command="show-modal">Filters</button>
-  <dialog class="ef-flyout" id="flyout-filters-with-pinned-actions" data-ef-side="left" aria-labelledby="flyout-filters-with-pinned-actions-title">
-    <form class="ef-flyout__surface" method="dialog">
-      <header class="ef-flyout__header">
+  <dialog class="forma-flyout" id="flyout-filters-with-pinned-actions" data-forma-side="left" aria-labelledby="flyout-filters-with-pinned-actions-title">
+    <form class="forma-flyout__surface" method="dialog">
+      <header class="forma-flyout__header">
         <h2 id="flyout-filters-with-pinned-actions-title">Filter work items</h2>
-        <button class="ef-flyout__close" type="button" commandfor="flyout-filters-with-pinned-actions" command="close" aria-label="Close filters">Close</button>
+        <button class="forma-flyout__close" type="button" commandfor="flyout-filters-with-pinned-actions" command="close" aria-label="Close filters">Close</button>
       </header>
-      <div class="ef-flyout__body ef-stack">
-        <fieldset class="ef-stack" data-density="compact">
+      <div class="forma-flyout__body forma-stack">
+        <fieldset class="forma-stack" data-density="compact">
           <legend>Status</legend>
-          <label class="ef-checkbox">
-            <input class="ef-checkbox__input" type="checkbox" name="flyout-filters-status" value="open" checked>
-            <span class="ef-checkbox__box" aria-hidden="true"></span>
-            <span class="ef-checkbox__text"><span class="ef-checkbox__label">Open</span></span>
+          <label class="forma-checkbox">
+            <input class="forma-checkbox__input" type="checkbox" name="flyout-filters-status" value="open" checked>
+            <span class="forma-checkbox__box" aria-hidden="true"></span>
+            <span class="forma-checkbox__text"><span class="forma-checkbox__label">Open</span></span>
           </label>
-          <label class="ef-checkbox">
-            <input class="ef-checkbox__input" type="checkbox" name="flyout-filters-status" value="blocked">
-            <span class="ef-checkbox__box" aria-hidden="true"></span>
-            <span class="ef-checkbox__text"><span class="ef-checkbox__label">Blocked</span></span>
+          <label class="forma-checkbox">
+            <input class="forma-checkbox__input" type="checkbox" name="flyout-filters-status" value="blocked">
+            <span class="forma-checkbox__box" aria-hidden="true"></span>
+            <span class="forma-checkbox__text"><span class="forma-checkbox__label">Blocked</span></span>
           </label>
-          <label class="ef-checkbox">
-            <input class="ef-checkbox__input" type="checkbox" name="flyout-filters-status" value="done">
-            <span class="ef-checkbox__box" aria-hidden="true"></span>
-            <span class="ef-checkbox__text"><span class="ef-checkbox__label">Done</span></span>
+          <label class="forma-checkbox">
+            <input class="forma-checkbox__input" type="checkbox" name="flyout-filters-status" value="done">
+            <span class="forma-checkbox__box" aria-hidden="true"></span>
+            <span class="forma-checkbox__text"><span class="forma-checkbox__label">Done</span></span>
           </label>
         </fieldset>
-        <div class="ef-field">
-          <label class="ef-field__label" for="flyout-filters-with-pinned-actions-owner">Owner</label>
+        <div class="forma-field">
+          <label class="forma-field__label" for="flyout-filters-with-pinned-actions-owner">Owner</label>
           <input id="flyout-filters-with-pinned-actions-owner" name="owner" type="text" autocomplete="off">
         </div>
-        <div class="ef-field">
-          <label class="ef-field__label" for="flyout-filters-with-pinned-actions-updated">Updated after</label>
+        <div class="forma-field">
+          <label class="forma-field__label" for="flyout-filters-with-pinned-actions-updated">Updated after</label>
           <input id="flyout-filters-with-pinned-actions-updated" name="updated-after" type="date">
         </div>
-        <div class="ef-field">
-          <label class="ef-field__label" for="flyout-filters-with-pinned-actions-text">Contains text</label>
+        <div class="forma-field">
+          <label class="forma-field__label" for="flyout-filters-with-pinned-actions-text">Contains text</label>
           <textarea id="flyout-filters-with-pinned-actions-text" name="text" rows="4"></textarea>
         </div>
       </div>
-      <footer class="ef-flyout__actions">
+      <footer class="forma-flyout__actions">
         <button type="submit" value="clear">Clear all</button>
         <button type="submit" value="apply">Show results</button>
       </footer>
     </form>
   </dialog>
-</ef-flyout>`
+</forma-flyout>`
     },
     {
       id: "quick-view-light-dismiss",
@@ -111,18 +111,18 @@ export default {
       },
       title: "Quick view that closes on outside click",
       description: "A right flyout for glancing at recent activity. `closedby=\"any\"` lets a click on the visible strip of page (the backdrop) close it where supported, and the standard motion weight makes it feel lighter than the heavy default. It has no footer, so the body fills the remaining height.",
-      html: `<ef-flyout class="ef-component-tag">
+      html: `<forma-flyout class="forma-component-tag">
   <button type="button" commandfor="flyout-quick-view-light-dismiss" command="show-modal">Recent activity</button>
-  <dialog class="ef-flyout" id="flyout-quick-view-light-dismiss" data-ef-side="right" data-ef-motion-weight="standard" closedby="any" aria-labelledby="flyout-quick-view-light-dismiss-title">
-    <div class="ef-flyout__surface">
-      <header class="ef-flyout__header">
+  <dialog class="forma-flyout" id="flyout-quick-view-light-dismiss" data-forma-side="right" data-forma-motion-weight="standard" closedby="any" aria-labelledby="flyout-quick-view-light-dismiss-title">
+    <div class="forma-flyout__surface">
+      <header class="forma-flyout__header">
         <div>
-          <p class="ef-component-kicker">Last 24 hours</p>
+          <p class="forma-component-kicker">Last 24 hours</p>
           <h2 id="flyout-quick-view-light-dismiss-title">Recent activity</h2>
         </div>
-        <button class="ef-flyout__close" type="button" commandfor="flyout-quick-view-light-dismiss" command="close" aria-label="Close recent activity">Close</button>
+        <button class="forma-flyout__close" type="button" commandfor="flyout-quick-view-light-dismiss" command="close" aria-label="Close recent activity">Close</button>
       </header>
-      <div class="ef-flyout__body">
+      <div class="forma-flyout__body">
         <ul>
           <li>Dana moved “Invoice export” to Done.</li>
           <li>Sam commented on “Rate limit alerts”.</li>
@@ -131,7 +131,7 @@ export default {
       </div>
     </div>
   </dialog>
-</ef-flyout>`
+</forma-flyout>`
     },
     {
       id: "mobile-record-detail",
@@ -156,54 +156,54 @@ export default {
           "There is no swipe-to-close; Close, Escape and the footer actions are the close paths."
         ]
       },
-      html: `<ef-flyout class="ef-component-tag">
+      html: `<forma-flyout class="forma-component-tag">
   <button type="button" commandfor="flyout-mobile-record-detail" command="show-modal">View order 58213</button>
-  <dialog class="ef-flyout" id="flyout-mobile-record-detail" data-ef-side="right" aria-labelledby="flyout-mobile-record-detail-title" aria-describedby="flyout-mobile-record-detail-summary">
-    <div class="ef-flyout__surface">
-      <header class="ef-flyout__header">
+  <dialog class="forma-flyout" id="flyout-mobile-record-detail" data-forma-side="right" aria-labelledby="flyout-mobile-record-detail-title" aria-describedby="flyout-mobile-record-detail-summary">
+    <div class="forma-flyout__surface">
+      <header class="forma-flyout__header">
         <h2 id="flyout-mobile-record-detail-title">Order 58213</h2>
-        <button class="ef-flyout__close" type="button" commandfor="flyout-mobile-record-detail" command="close" aria-label="Close order 58213">Close</button>
+        <button class="forma-flyout__close" type="button" commandfor="flyout-mobile-record-detail" command="close" aria-label="Close order 58213">Close</button>
       </header>
-      <div class="ef-flyout__body ef-stack">
+      <div class="forma-flyout__body forma-stack">
         <p id="flyout-mobile-record-detail-summary">Shipped on 28 September. Delivery expected by 2 October.</p>
-        <dl class="ef-key-value-list">
+        <dl class="forma-key-value-list">
           <div><dt>Customer</dt><dd>Harbour Street Cafe</dd></div>
           <div><dt>Items</dt><dd>6</dd></div>
           <div><dt>Total</dt><dd>€418.20</dd></div>
           <div><dt>Carrier</dt><dd>Parcelnet, tracking 00340434161094042557</dd></div>
         </dl>
       </div>
-      <footer class="ef-flyout__actions">
+      <footer class="forma-flyout__actions">
         <button type="button" commandfor="flyout-mobile-record-detail" command="close">Done</button>
       </footer>
     </div>
   </dialog>
-</ef-flyout>`
+</forma-flyout>`
     }
   ],
   api: {
     attributes: [
       { name: "commandfor", on: "invoker and close buttons", values: "id of the flyout dialog", default: "—", description: "Connects a button to the flyout." },
       { name: "command", on: "invoker and close buttons", values: "show-modal | close", default: "—", description: "Always open with `show-modal`; a non-modal `show()` is not a supported flyout state." },
-      { name: "data-ef-side", on: "dialog", values: "left | right", default: "—", description: "Required. Which viewport edge the panel attaches to and enters from. Without it the panel is not attached to an edge (the browser centers it horizontally) but still slides in from the right." },
+      { name: "data-forma-side", on: "dialog", values: "left | right", default: "—", description: "Required. Which viewport edge the panel attaches to and enters from. Without it the panel is not attached to an edge (the browser centers it horizontally) but still slides in from the right." },
       { name: "aria-labelledby", on: "dialog", values: "id of the header title", default: "—", description: "Required. Names the flyout." },
       { name: "aria-describedby", on: "dialog", values: "id", default: "—", description: "Optional short summary announced on open." },
-      { name: "aria-label", on: ".ef-flyout__close", values: "string", default: "—", description: "Names the close button with its object (\"Close filters\") so several flyouts are distinguishable." },
+      { name: "aria-label", on: ".forma-flyout__close", values: "string", default: "—", description: "Names the close button with its object (\"Close filters\") so several flyouts are distinguishable." },
       { name: "closedby", on: "dialog", values: "any | closerequest | none", default: "closerequest", description: "`any` adds light dismiss on backdrop click where supported." },
-      { name: "method", on: "form.ef-flyout__surface", values: "dialog", default: "—", description: "Lets footer submit buttons close the flyout and report their value." },
-      { name: "data-ef-motion-weight", on: "dialog", values: "light | standard | heavy", default: "heavy", description: "Presentation-only perceived mass for the slide." }
+      { name: "method", on: "form.forma-flyout__surface", values: "dialog", default: "—", description: "Lets footer submit buttons close the flyout and report their value." },
+      { name: "data-forma-motion-weight", on: "dialog", values: "light | standard | heavy", default: "heavy", description: "Presentation-only perceived mass for the slide." }
     ],
     hooks: {
-      "ef-flyout": "The panel dialog: fixed, full dynamic-viewport height, `min(28rem, 90vw)` wide, bordered, shadowed, with contained overscroll and the edge slide transition. Also styles the backdrop.",
-      "ef-flyout__surface": "Three-row grid (header, flexible body, footer) filling the panel. May be a `div` or a `form method=\"dialog\"`.",
-      "ef-flyout__header": "Pinned top row: title block and close button, spaced apart, with safe-area top padding and a bottom rule.",
-      "ef-flyout__close": "Close button kept at least 44 by 44px and never shrunk by a long title.",
-      "ef-flyout__body": "The only scrolling region, with contained overscroll and 1rem padding.",
-      "ef-flyout__actions": "Pinned footer: wrapping action row aligned to the inline end, with safe-area bottom padding and a top rule.",
-      "data-ef-side": "`left` attaches the panel to the inline-start edge and enters from the left (`--ef-flyout-closed-x: -100%`); `right` attaches to the inline-end edge and enters from the right. The attach edge is logical but the travel is physical, so in right-to-left pages the two do not match.",
+      "forma-flyout": "The panel dialog: fixed, full dynamic-viewport height, `min(28rem, 90vw)` wide, bordered, shadowed, with contained overscroll and the edge slide transition. Also styles the backdrop.",
+      "forma-flyout__surface": "Three-row grid (header, flexible body, footer) filling the panel. May be a `div` or a `form method=\"dialog\"`.",
+      "forma-flyout__header": "Pinned top row: title block and close button, spaced apart, with safe-area top padding and a bottom rule.",
+      "forma-flyout__close": "Close button kept at least 44 by 44px and never shrunk by a long title.",
+      "forma-flyout__body": "The only scrolling region, with contained overscroll and 1rem padding.",
+      "forma-flyout__actions": "Pinned footer: wrapping action row aligned to the inline end, with safe-area bottom padding and a top rule.",
+      "data-forma-side": "`left` attaches the panel to the inline-start edge and enters from the left (`--forma-flyout-closed-x: -100%`); `right` attaches to the inline-end edge and enters from the right. The attach edge is logical but the travel is physical, so in right-to-left pages the two do not match.",
       "open": "Native open state. `[open]` translates the panel to rest and dims and blurs the backdrop; it also selects spring entry timing.",
-      "data-ef-motion-weight": "Presentation-only perceived mass: heavy (default for flyouts), standard or light.",
-      "--ef-flyout-closed-x": "Horizontal offset of the panel while closed and at the start of entry. Set by `data-ef-side` (-100% left, 100% right)."
+      "data-forma-motion-weight": "Presentation-only perceived mass: heavy (default for flyouts), standard or light.",
+      "--forma-flyout-closed-x": "Horizontal offset of the panel while closed and at the start of entry. Set by `data-forma-side` (-100% left, 100% right)."
     },
     keyboard: [
       { keys: "Enter / Space on the invoker", action: "Opens the flyout; focus moves to the first focusable element (normally Close) or an autofocus element." },
@@ -217,9 +217,9 @@ export default {
     form: "Controls inside a flyout belong to whatever form contains them. With `form method=\"dialog\"` as the surface, submitting closes the flyout without a request and sets `returnValue`; the application reads the field values."
   },
   states: [
-    { name: "Closed", how: "no open attribute", description: "Translated off its edge by `--ef-flyout-closed-x` and not displayed once the exit completes." },
+    { name: "Closed", how: "no open attribute", description: "Translated off its edge by `--forma-flyout-closed-x` and not displayed once the exit completes." },
     { name: "Open", how: "[open] via show-modal", description: "At rest against its edge over a dimmed, blurred backdrop; the page is inert." },
-    { name: "Left / right", how: "data-ef-side", description: "Chooses the attach edge and the direction of travel." },
+    { name: "Left / right", how: "data-forma-side", description: "Chooses the attach edge and the direction of travel." },
     { name: "Body scrolling", how: "content taller than the body row", description: "Only the body scrolls; header and footer stay pinned." }
   ],
   accessibility: {
@@ -232,7 +232,7 @@ export default {
     consumer: [
       "Name the flyout with a visible heading and aria-labelledby.",
       "Give the close button an accessible name that includes what it closes.",
-      "Use `data-ef-side` consistently: the same kind of content should always come from the same edge.",
+      "Use `data-forma-side` consistently: the same kind of content should always come from the same edge.",
       "For right-to-left pages, verify the side and travel direction; the travel is physical.",
       "Implement any swipe, drag or resize behavior in Limen/application code, and never make it the only way to close."
     ]
@@ -244,9 +244,9 @@ export default {
     "Bottom sheets, full-width phone flyouts and persistent side drawers are not provided."
   ],
   motion: [
-    "Entry: the panel slides from its edge (`--ef-flyout-closed-x`) to rest over the heavy inertial duration with spring easing. The backdrop dims and blurs by perceptual interpolation, independent of mass.",
+    "Entry: the panel slides from its edge (`--forma-flyout-closed-x`) to rest over the heavy inertial duration with spring easing. The backdrop dims and blurs by perceptual interpolation, independent of mass.",
     "Exit: where overlay retention is supported, the panel slides back over the same inertial duration and spring easing as entry without changing its viewport geometry. Otherwise native closing is immediate, avoiding retraction into a containing example or application element.",
-    "`data-ef-motion-weight` changes perceived mass; heavy is the default. The native open state is authoritative and focus moves immediately.",
+    "`data-forma-motion-weight` changes perceived mass; heavy is the default. The native open state is authoritative and focus moves immediately.",
     "Under `prefers-reduced-motion: reduce` the edge translation is removed, the backdrop blur is dropped, and the state change is effectively instant."
   ],
   guidance: {

@@ -17,7 +17,7 @@ Identifiers, codes, unfamiliar names, hashes, monetary values, dates, times, mea
 
 Forma requires selectable text, tabular numerals where useful, strong glyph differentiation, wrapping, visible semantic labels, and an optional deliberate-verification cue. Typography must not be the only carrier of state, validity, or authority.
 
-Canonical classes: .ef-identifier and .ef-critical-value. data-ef-verify="true" is descriptive presentation only.
+Canonical classes: .forma-identifier and .forma-critical-value. data-forma-verify="true" is descriptive presentation only.
 
 ## Semantic state preservation
 Forma must present without strengthening or collapsing application-supplied pending, confirmed, failed, conflict, unknown, reconciling, stale, blocked, unavailable, insufficient, partial, and scoped-completeness states.

@@ -5,7 +5,7 @@
     {
       "source": "src/styles/foundations.css",
       "family": "button",
-      "selector": ":where(button, .ef-button)",
+      "selector": ":where(button, .forma-button)",
       "tracks": {
         "background-color": "perceptual",
         "border-color": "perceptual"
@@ -18,7 +18,7 @@
     {
       "source": "src/styles/components.css",
       "family": "switch",
-      "selector": ".ef-switch__track",
+      "selector": ".forma-switch__track",
       "tracks": {
         "background": "perceptual",
         "border-color": "perceptual"
@@ -30,7 +30,7 @@
     {
       "source": "src/styles/components.css",
       "family": "switch",
-      "selector": ".ef-switch__track::after",
+      "selector": ".forma-switch__track::after",
       "tracks": {
         "translate": "inertial",
         "scale": "inertial",
@@ -43,7 +43,7 @@
     {
       "source": "src/styles/components.css",
       "family": "checkbox",
-      "selector": ".ef-checkbox__box",
+      "selector": ".forma-checkbox__box",
       "tracks": {
         "background": "perceptual",
         "border-color": "perceptual",
@@ -51,13 +51,13 @@
       },
       "reducedMotion": {
         "strategy": "scope-tokens",
-        "scope": ".ef-checkbox"
+        "scope": ".forma-checkbox"
       }
     },
     {
       "source": "src/styles/components.css",
       "family": "checkbox",
-      "selector": ".ef-checkbox__box::after",
+      "selector": ".forma-checkbox__box::after",
       "tracks": {
         "opacity": "perceptual",
         "rotate": "inertial",
@@ -65,13 +65,13 @@
       },
       "reducedMotion": {
         "strategy": "scope-tokens",
-        "scope": ".ef-checkbox"
+        "scope": ".forma-checkbox"
       }
     },
     {
       "source": "src/styles/components.css",
       "family": "select",
-      "selector": ".ef-select__input",
+      "selector": ".forma-select__input",
       "tracks": {
         "background": "perceptual",
         "border-color": "perceptual"
@@ -83,7 +83,7 @@
     {
       "source": "src/styles/components.css",
       "family": "select",
-      "selector": ".ef-select__indicator",
+      "selector": ".forma-select__indicator",
       "tracks": {
         "rotate": "inertial",
         "translate": "gravity"
@@ -95,7 +95,7 @@
     {
       "source": "src/styles/components.css",
       "family": "slider",
-      "selector": ".ef-slider__input",
+      "selector": ".forma-slider__input",
       "tracks": {
         "filter": "perceptual",
         "opacity": "perceptual"
@@ -108,7 +108,7 @@
     {
       "source": "src/styles/components.css",
       "family": "segmented",
-      "selector": ".ef-segment",
+      "selector": ".forma-segment",
       "tracks": {
         "background": "perceptual",
         "color": "perceptual"
@@ -120,7 +120,7 @@
     {
       "source": "src/styles/components.css",
       "family": "segmented",
-      "selector": ".ef-segment > :not(input)",
+      "selector": ".forma-segment > :not(input)",
       "tracks": {
         "scale": "inertial"
       },
@@ -132,7 +132,7 @@
     {
       "source": "src/styles/components.css",
       "family": "segmented",
-      "selector": ".ef-segmented::before",
+      "selector": ".forma-segmented::before",
       "tracks": {
         "top": "inertial",
         "right": "inertial",
@@ -147,7 +147,7 @@
     {
       "source": "src/styles/components.css",
       "family": "disclosure",
-      "selector": ".ef-disclosure > summary::after",
+      "selector": ".forma-disclosure > summary::after",
       "tracks": {
         "rotate": "inertial",
         "scale": "inertial"
@@ -159,13 +159,13 @@
     {
       "source": "src/styles/components.css",
       "family": "disclosure",
-      "selector": ".ef-disclosure__content",
+      "selector": ".forma-disclosure__content",
       "tracks": {
         "opacity": "perceptual",
         "translate": "inertial"
       },
       "entrySelectors": [
-        ".ef-disclosure[open] .ef-disclosure__content"
+        ".forma-disclosure[open] .forma-disclosure__content"
       ],
       "reducedMotion": {
         "strategy": "explicit"
@@ -174,13 +174,13 @@
     {
       "source": "src/styles/components.css",
       "family": "popover-menu",
-      "selector": ".ef-popover, .ef-menu",
+      "selector": ".forma-popover, .forma-menu",
       "tracks": {
         "opacity": "perceptual"
       },
       "entrySelectors": [
-        ".ef-popover:popover-open",
-        ".ef-menu:popover-open"
+        ".forma-popover:popover-open",
+        ".forma-menu:popover-open"
       ],
       "reducedMotion": {
         "strategy": "explicit"
@@ -190,13 +190,13 @@
     {
       "source": "src/styles/components.css",
       "family": "modal-backdrop",
-      "selector": ":where(.ef-dialog, .ef-flyout)::backdrop",
+      "selector": ":where(.forma-dialog, .forma-flyout)::backdrop",
       "tracks": {
         "background": "perceptual",
         "backdrop-filter": "perceptual"
       },
       "entrySelectors": [
-        ":where(.ef-dialog, .ef-flyout)[open]::backdrop"
+        ":where(.forma-dialog, .forma-flyout)[open]::backdrop"
       ],
       "reducedMotion": {
         "strategy": "brief"
@@ -205,13 +205,13 @@
     {
       "source": "src/styles/components.css",
       "family": "dialog",
-      "selector": ".ef-dialog",
+      "selector": ".forma-dialog",
       "tracks": {
         "translate": "inertial",
         "scale": "inertial"
       },
       "entrySelectors": [
-        ".ef-dialog[open]"
+        ".forma-dialog[open]"
       ],
       "reducedMotion": {
         "strategy": "explicit"
@@ -220,12 +220,12 @@
     {
       "source": "src/styles/components.css",
       "family": "flyout",
-      "selector": ".ef-flyout",
+      "selector": ".forma-flyout",
       "tracks": {
         "translate": "inertial"
       },
       "entrySelectors": [
-        ".ef-flyout[open]"
+        ".forma-flyout[open]"
       ],
       "reducedMotion": {
         "strategy": "explicit"
@@ -234,7 +234,7 @@
     {
       "source": "src/styles/components.css",
       "family": "tabs",
-      "selector": ".ef-tabs__list [role=\"tab\"]",
+      "selector": ".forma-tabs__list [role=\"tab\"]",
       "tracks": {
         "background": "perceptual",
         "translate": "inertial"
@@ -246,7 +246,7 @@
     {
       "source": "src/styles/components.css",
       "family": "tabs",
-      "selector": ".ef-tabs__list [role=\"tab\"]::after",
+      "selector": ".forma-tabs__list [role=\"tab\"]::after",
       "tracks": {
         "scale": "inertial"
       },
@@ -258,7 +258,7 @@
     {
       "source": "src/styles/components.css",
       "family": "tabs",
-      "selector": ".ef-tabs__panel[data-ef-motion-entry]",
+      "selector": ".forma-tabs__panel[data-forma-motion-entry]",
       "tracks": {
         "opacity": "perceptual",
         "translate": "inertial"
@@ -270,7 +270,7 @@
     {
       "source": "src/styles/components.css",
       "family": "alert",
-      "selector": ".ef-alert[data-ef-motion-entry]",
+      "selector": ".forma-alert[data-forma-motion-entry]",
       "tracks": {
         "translate": "inertial"
       },
@@ -281,14 +281,14 @@
     {
       "source": "src/styles/components.css",
       "family": "toast",
-      "selector": ".ef-toast",
+      "selector": ".forma-toast",
       "tracks": {
         "opacity": "perceptual",
         "translate": "inertial",
         "scale": "inertial"
       },
       "entrySelectors": [
-        ".ef-toast:popover-open"
+        ".forma-toast:popover-open"
       ],
       "reducedMotion": {
         "strategy": "explicit"
@@ -297,14 +297,14 @@
     {
       "source": "src/styles/components.css",
       "family": "command-palette",
-      "selector": ".ef-command-palette",
+      "selector": ".forma-command-palette",
       "tracks": {
         "opacity": "perceptual",
         "translate": "inertial",
         "scale": "inertial"
       },
       "entrySelectors": [
-        ".ef-command-palette[open]"
+        ".forma-command-palette[open]"
       ],
       "reducedMotion": {
         "strategy": "explicit"
@@ -313,35 +313,35 @@
     {
       "source": "src/styles/components.css",
       "family": "fault-notification",
-      "selector": ".ef-fault-notification[data-ef-motion-entry]",
+      "selector": ".forma-fault-notification[data-forma-motion-entry]",
       "tracks": {
         "opacity": "perceptual",
         "translate": "inertial"
       },
       "reducedMotion": {
         "strategy": "scope-tokens",
-        "scope": ".ef-fault-notification"
+        "scope": ".forma-fault-notification"
       }
     },
     {
       "source": "src/styles/components.css",
       "family": "fault-banner",
-      "selector": ".ef-fault-banner[data-ef-motion-entry]",
+      "selector": ".forma-fault-banner[data-forma-motion-entry]",
       "tracks": {
         "opacity": "perceptual",
         "translate": "inertial"
       },
       "reducedMotion": {
         "strategy": "scope-tokens",
-        "scope": ".ef-fault-banner"
+        "scope": ".forma-fault-banner"
       }
     },
     {
       "source": "src/styles/components.css",
       "family": "character-grid-reveal",
-      "selector": ".ef-character-grid[data-ef-reveal=\"sequential\"] :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__text[data-ef-reveal-run]",
+      "selector": ".forma-character-grid[data-forma-reveal=\"sequential\"] :is(.forma-character-grid__surface, .forma-character-grid__group) > .forma-character-grid__text[data-forma-reveal-run]",
       "tracks": {
-        "animation:ef-character-grid-reveal": "cadence"
+        "animation:forma-character-grid-reveal": "cadence"
       },
       "reducedMotion": {
         "strategy": "stop"
@@ -357,20 +357,20 @@
     {
       "source": "src/styles/components.css",
       "family": "character-grid-reveal",
-      "selector": ".ef-character-grid[data-ef-reveal=\"sequential\"] :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__text[data-ef-reveal-run]:dir(rtl)",
+      "selector": ".forma-character-grid[data-forma-reveal=\"sequential\"] :is(.forma-character-grid__surface, .forma-character-grid__group) > .forma-character-grid__text[data-forma-reveal-run]:dir(rtl)",
       "tracks": {
-        "animation:ef-character-grid-reveal-rtl": "cadence"
+        "animation:forma-character-grid-reveal-rtl": "cadence"
       },
       "reducedMotion": {
         "strategy": "stop",
-        "selector": ".ef-character-grid[data-ef-reveal=\"sequential\"] :is(.ef-character-grid__surface, .ef-character-grid__group) > .ef-character-grid__text[data-ef-reveal-run]"
+        "selector": ".forma-character-grid[data-forma-reveal=\"sequential\"] :is(.forma-character-grid__surface, .forma-character-grid__group) > .forma-character-grid__text[data-forma-reveal-run]"
       },
       "note": "Right-to-left variant; the base selector's reduced-motion rule also matches these runs."
     },
     {
       "source": "src/marketing/components.css",
       "family": "marketing-button",
-      "selector": ".ef-site .ef-button",
+      "selector": ".forma-site .forma-button",
       "tracks": {
         "background-color": "perceptual",
         "color": "perceptual"
@@ -383,7 +383,7 @@
     {
       "source": "src/marketing/components.css",
       "family": "marketing-card",
-      "selector": ".ef-card:has(.ef-card__link)",
+      "selector": ".forma-card:has(.forma-card__link)",
       "tracks": {
         "background-color": "perceptual"
       },
@@ -394,7 +394,7 @@
     {
       "source": "site/site.css",
       "family": "site-button",
-      "selector": ".ef-button:not(.example-canvas *, .catalog-card__preview *)",
+      "selector": ".forma-button:not(.example-canvas *, .catalog-card__preview *)",
       "tracks": {
         "background": "perceptual",
         "color": "perceptual"
@@ -407,7 +407,7 @@
     {
       "source": "src/styles/assessment.css",
       "family": "assessment-selection",
-      "selector": ":where(.ef-ordinal-option, .ef-choice, .ef-special-choice, .ef-binary-option, .ef-symbol-rating__option, .ef-semantic-differential__scale label)",
+      "selector": ":where(.forma-ordinal-option, .forma-choice, .forma-special-choice, .forma-binary-option, .forma-symbol-rating__option, .forma-semantic-differential__scale label)",
       "tracks": {
         "background-color": "perceptual",
         "border-color": "perceptual",
@@ -421,7 +421,7 @@
     {
       "source": "src/styles/assessment.css",
       "family": "ordinal-option",
-      "selector": ".ef-ordinal-option__marker",
+      "selector": ".forma-ordinal-option__marker",
       "tracks": {
         "scale": "inertial",
         "background-color": "perceptual",
@@ -436,9 +436,9 @@
     {
       "source": "src/styles/components.css",
       "family": "skeleton",
-      "selector": ".ef-skeleton[aria-busy=\"true\"] .ef-skeleton__line",
+      "selector": ".forma-skeleton[aria-busy=\"true\"] .forma-skeleton__line",
       "tracks": {
-        "animation:ef-skeleton-shift": "cadence"
+        "animation:forma-skeleton-shift": "cadence"
       },
       "reducedMotion": {
         "strategy": "stop"
@@ -448,24 +448,24 @@
     {
       "source": "src/styles/components.css",
       "family": "spinner",
-      "selector": ".ef-spinner:not([data-ef-state=\"idle\"]) .ef-spinner__indicator",
+      "selector": ".forma-spinner:not([data-forma-state=\"idle\"]) .forma-spinner__indicator",
       "tracks": {
-        "animation:ef-spinner-rotate": "cadence"
+        "animation:forma-spinner-rotate": "cadence"
       },
       "reducedMotion": {
         "strategy": "stop"
       },
-      "note": "Indeterminate spinner: constant angular velocity (one turn per --ef-motion-cadence-rotation-period); stops when the application marks the activity idle; the visible label is the primary activity cue (MOT-016)."
+      "note": "Indeterminate spinner: constant angular velocity (one turn per --forma-motion-cadence-rotation-period); stops when the application marks the activity idle; the visible label is the primary activity cue (MOT-016)."
     },
     {
       "source": "src/styles/components.css",
       "family": "tooltip",
-      "selector": ".ef-tooltip__surface",
+      "selector": ".forma-tooltip__surface",
       "tracks": {
         "opacity": "perceptual"
       },
       "entrySelectors": [
-        ".ef-tooltip__surface:popover-open"
+        ".forma-tooltip__surface:popover-open"
       ],
       "reducedMotion": {
         "strategy": "explicit"
@@ -475,19 +475,19 @@
     {
       "source": "src/styles/components.css",
       "family": "reorder",
-      "selector": "[data-ef-manipulation]",
+      "selector": "[data-forma-manipulation]",
       "tracks": {
         "translate": "inertial"
       },
       "reducedMotion": {
         "strategy": "explicit"
       },
-      "note": "Post-release settling and sibling displacement: damped inertial, no overshoot. The direct phase (dragging/resizing) overrides the duration with --ef-motion-direct-duration, so the visual tracks the application-supplied offset without lag (MOT-019)."
+      "note": "Post-release settling and sibling displacement: damped inertial, no overshoot. The direct phase (dragging/resizing) overrides the duration with --forma-motion-direct-duration, so the visual tracks the application-supplied offset without lag (MOT-019)."
     },
     {
       "source": "src/styles/components.css",
       "family": "split-pane",
-      "selector": ".ef-split-pane[data-ef-resizable]",
+      "selector": ".forma-split-pane[data-forma-resizable]",
       "tracks": {
         "grid-template-columns": "inertial"
       },
@@ -499,20 +499,20 @@
     {
       "source": "src/styles/components.css",
       "family": "disclosure",
-      "selector": ".ef-disclosure",
+      "selector": ".forma-disclosure",
       "tracks": {
         "interpolate-size": "inertial"
       },
       "reducedMotion": {
         "strategy": "explicit",
-        "selector": ".ef-disclosure::details-content"
+        "selector": ".forma-disclosure::details-content"
       },
       "note": "Enables intrinsic-size interpolation for the disclosure panel below (MOT-021); progressive enhancement only."
     },
     {
       "source": "src/styles/components.css",
       "family": "disclosure",
-      "selector": ".ef-disclosure::details-content",
+      "selector": ".forma-disclosure::details-content",
       "tracks": {
         "block-size": "inertial"
       },
@@ -524,7 +524,7 @@
     {
       "source": "src/styles/components.css",
       "family": "view-transition",
-      "selector": ":root[data-ef-view-transitions]::view-transition-old(*), :root[data-ef-view-transitions]::view-transition-new(*)",
+      "selector": ":root[data-forma-view-transitions]::view-transition-old(*), :root[data-forma-view-transitions]::view-transition-new(*)",
       "tracks": {
         "::view-transition": "perceptual"
       },
@@ -536,7 +536,7 @@
     {
       "source": "src/styles/components.css",
       "family": "view-transition",
-      "selector": ":root[data-ef-view-transitions]::view-transition-group(*)",
+      "selector": ":root[data-forma-view-transitions]::view-transition-group(*)",
       "tracks": {
         "::view-transition": "inertial"
       },
@@ -548,9 +548,9 @@
     {
       "source": "src/styles/components.css",
       "family": "scroll-progress",
-      "selector": ".ef-scroll-progress",
+      "selector": ".forma-scroll-progress",
       "tracks": {
-        "animation:ef-scroll-progress": "direct",
+        "animation:forma-scroll-progress": "direct",
         "animation-timeline": "direct"
       },
       "reducedMotion": {
@@ -561,12 +561,12 @@
     {
       "source": "src/styles/components.css",
       "family": "value-change",
-      "selector": ":where([data-ef-value-change])",
+      "selector": ":where([data-forma-value-change])",
       "tracks": {
         "background-color": "perceptual"
       },
       "entrySelectors": [
-        ":where([data-ef-value-change])"
+        ":where([data-forma-value-change])"
       ],
       "reducedMotion": {
         "strategy": "explicit"
@@ -576,7 +576,7 @@
     {
       "source": "src/styles/components.css",
       "family": "stationary-surface-fade",
-      "selector": ".ef-popover, .ef-menu, .ef-tooltip__surface",
+      "selector": ".forma-popover, .forma-menu, .forma-tooltip__surface",
       "tracks": {
         "opacity": "perceptual"
       },
@@ -588,18 +588,18 @@
     {
       "source": "src/styles/components.css",
       "family": "startup",
-      "selector": ".ef-startup__slow",
+      "selector": ".forma-startup__slow",
       "tracks": {
-        "animation:ef-startup-reveal": "cadence"
+        "animation:forma-startup-reveal": "cadence"
       },
       "reducedMotion": {
         "strategy": "explicit"
       },
-      "note": "Bounded discrete sequence of one step: the slow-start note becomes visible once, after --ef-startup-slow-after (AIS-001.2).",
+      "note": "Bounded discrete sequence of one step: the slow-start note becomes visible once, after --forma-startup-slow-after (AIS-001.2).",
       "approvedLiterals": [
         {
           "value": "0s",
-          "reason": "A discrete reveal: a zero-length animation filled forwards after --ef-startup-slow-after; it has no interpolated frame (AIS-001.2)."
+          "reason": "A discrete reveal: a zero-length animation filled forwards after --forma-startup-slow-after; it has no interpolated frame (AIS-001.2)."
         },
         {
           "value": "linear",
@@ -610,9 +610,9 @@
     {
       "source": "src/styles/components.css",
       "family": "button",
-      "selector": ":where(button, .ef-button)[aria-busy=\"true\"]::before",
+      "selector": ":where(button, .forma-button)[aria-busy=\"true\"]::before",
       "tracks": {
-        "animation:ef-spinner-rotate": "cadence"
+        "animation:forma-spinner-rotate": "cadence"
       },
       "reducedMotion": {
         "strategy": "stop"

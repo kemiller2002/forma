@@ -26,41 +26,41 @@ export default {
       id: "stale-balance",
       title: "Stale balance",
       description: "A balance whose last sync is older than the application's policy allows. The state is shown as an attention [[status-lozenge]] so it stands out in grayscale as well as color.",
-      html: `<ef-freshness class="ef-component-tag">
-  <p class="ef-freshness">
-    <span class="ef-freshness__label">Balance last synced</span>
+      html: `<forma-freshness class="forma-component-tag">
+  <p class="forma-freshness">
+    <span class="forma-freshness__label">Balance last synced</span>
     <time datetime="2026-09-28T14:05:00Z">28 Sep, 14:05 UTC</time>
-    <span class="ef-status-lozenge" data-state="attention">Stale: older than 24 hours</span>
+    <span class="forma-status-lozenge" data-state="attention">Stale: older than 24 hours</span>
   </p>
-</ef-freshness>`
+</forma-freshness>`
     },
     {
       id: "never-verified",
       title: "Never verified",
       description: "Evidence that has never been checked. There is no time to show, so the line says so explicitly with an unknown lozenge rather than leaving the time blank.",
-      html: `<ef-freshness class="ef-component-tag">
-  <p class="ef-freshness">
-    <span class="ef-freshness__label">Backup restore test</span>
-    <span class="ef-status-lozenge" data-state="unknown">Never verified</span>
+      html: `<forma-freshness class="forma-component-tag">
+  <p class="forma-freshness">
+    <span class="forma-freshness__label">Backup restore test</span>
+    <span class="forma-status-lozenge" data-state="unknown">Never verified</span>
   </p>
-</ef-freshness>`
+</forma-freshness>`
     },
     {
       id: "record-facts",
       title: "Freshness per value",
       description: "Several values in a [[key-value-list]], each with its own freshness line, because values refreshed at different times must not share one timestamp.",
-      html: `<ef-freshness class="ef-component-tag">
-  <dl class="ef-key-value-list">
+      html: `<forma-freshness class="forma-component-tag">
+  <dl class="forma-key-value-list">
     <div>
       <dt>Credit limit</dt>
-      <dd>25,000.00 <span class="ef-freshness"><span class="ef-freshness__label">Verified</span> <time datetime="2026-09-30T08:00:00Z">today, 08:00 UTC</time> <span class="ef-status-lozenge" data-state="ok">Current</span></span></dd>
+      <dd>25,000.00 <span class="forma-freshness"><span class="forma-freshness__label">Verified</span> <time datetime="2026-09-30T08:00:00Z">today, 08:00 UTC</time> <span class="forma-status-lozenge" data-state="ok">Current</span></span></dd>
     </div>
     <div>
       <dt>Credit score</dt>
-      <dd>712 <span class="ef-freshness"><span class="ef-freshness__label">Verified</span> <time datetime="2026-06-02T10:30:00Z">2 Jun 2026</time> <span class="ef-status-lozenge" data-state="attention">Stale</span></span></dd>
+      <dd>712 <span class="forma-freshness"><span class="forma-freshness__label">Verified</span> <time datetime="2026-06-02T10:30:00Z">2 Jun 2026</time> <span class="forma-status-lozenge" data-state="attention">Stale</span></span></dd>
     </div>
   </dl>
-</ef-freshness>`
+</forma-freshness>`
     },
     {
       id: "mobile-scan-age",
@@ -75,23 +75,23 @@ export default {
           "There are no touch targets; any Refresh action should be a separate button next to the line."
         ]
       },
-      html: `<ef-freshness class="ef-component-tag">
-  <p class="ef-freshness">
-    <span class="ef-freshness__label">Vulnerability scan of production containers</span>
+      html: `<forma-freshness class="forma-component-tag">
+  <p class="forma-freshness">
+    <span class="forma-freshness__label">Vulnerability scan of production containers</span>
     <time datetime="2026-09-30T03:15:00Z">today, 03:15 UTC</time>
-    <span class="ef-status-lozenge" data-state="ok">Current</span>
+    <span class="forma-status-lozenge" data-state="ok">Current</span>
   </p>
-</ef-freshness>`
+</forma-freshness>`
     }
   ],
   api: {
     attributes: [
       { name: "datetime", on: "time", values: "ISO 8601 date or date-time", default: "—", description: "The exact time the evidence was verified. Include a timezone offset or Z." },
-      { name: "data-state", on: ".ef-status-lozenge", values: "ok | attention | unknown | blocked", default: "—", description: "Glyph for the lozenge that names the freshness state." }
+      { name: "data-state", on: ".forma-status-lozenge", values: "ok | attention | unknown | blocked", default: "—", description: "Glyph for the lozenge that names the freshness state." }
     ],
     hooks: {
-      "ef-freshness": "Root wrapping flex row with baseline alignment and small gaps. It may be a paragraph or a span; either way it lays out as a block-level flex row.",
-      "ef-freshness__label": "Semibold label describing what the time refers to."
+      "forma-freshness": "Root wrapping flex row with baseline alignment and small gaps. It may be a paragraph or a span; either way it lays out as a block-level flex row.",
+      "forma-freshness__label": "Semibold label describing what the time refers to."
     },
     keyboard: [
       { keys: "—", action: "Not focusable or interactive." }
@@ -115,7 +115,7 @@ export default {
       "Always state the time zone or use relative wording that cannot be misread.",
       "Say the state in words; do not rely on formatting to mark stale data.",
       "Update the line when the value is refreshed, including the state.",
-      "The canonical pattern's `ef-freshness__state` span is not styled by Forma; use a [[status-lozenge]] or plain text for the state."
+      "The canonical pattern's `forma-freshness__state` span is not styled by Forma; use a [[status-lozenge]] or plain text for the state."
     ]
   },
   responsive: [

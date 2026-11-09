@@ -30,68 +30,68 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Opened from a toolbar button",
       description: "The palette opened as a modal with a native invoker (`commandfor` and `command=\"show-modal\"`), so the browser handles focus, Escape and returning focus to the button. A Close button gives touch users an explicit way out.",
-      html: `<ef-command-palette class="ef-component-tag">
+      html: `<forma-command-palette class="forma-component-tag">
   <button type="button" commandfor="command-palette-toolbar-invoker-dialog" command="show-modal">Open commands</button>
-  <dialog class="ef-command-palette" id="command-palette-toolbar-invoker-dialog" aria-labelledby="command-palette-toolbar-invoker-title">
-    <header class="ef-command-palette__header">
+  <dialog class="forma-command-palette" id="command-palette-toolbar-invoker-dialog" aria-labelledby="command-palette-toolbar-invoker-title">
+    <header class="forma-command-palette__header">
       <h3 id="command-palette-toolbar-invoker-title">Commands</h3>
       <button type="button" commandfor="command-palette-toolbar-invoker-dialog" command="close">Close</button>
     </header>
-    <label class="ef-visually-hidden" for="command-palette-toolbar-invoker-search">Find a command</label>
+    <label class="forma-visually-hidden" for="command-palette-toolbar-invoker-search">Find a command</label>
     <input id="command-palette-toolbar-invoker-search" type="search" placeholder="Type a command or record" autocomplete="off">
-    <div class="ef-command-palette__group">
+    <div class="forma-command-palette__group">
       <h4>Recent</h4>
       <button type="button"><span>Open invoice INV-1042</span></button>
       <button type="button"><span>Show overdue accounts</span></button>
     </div>
-    <div class="ef-command-palette__group">
+    <div class="forma-command-palette__group">
       <h4>Create</h4>
       <button type="button"><span>New invoice</span><kbd>Ctrl I</kbd></button>
       <button type="button"><span>New customer</span><kbd>Ctrl Shift C</kbd></button>
     </div>
   </dialog>
-</ef-command-palette>`
+</forma-command-palette>`
     },
     {
       id: "no-results",
       title: "No matching commands",
       description: "The query matched nothing. The palette keeps its structure and reports the empty result in a status message the application updates, with a suggestion instead of a blank panel.",
-      html: `<ef-command-palette class="ef-component-tag">
-  <dialog class="ef-command-palette" open aria-labelledby="command-palette-no-results-title">
-    <header class="ef-command-palette__header">
+      html: `<forma-command-palette class="forma-component-tag">
+  <dialog class="forma-command-palette" open aria-labelledby="command-palette-no-results-title">
+    <header class="forma-command-palette__header">
       <h3 id="command-palette-no-results-title">Commands</h3>
       <kbd>Esc</kbd>
     </header>
-    <label class="ef-visually-hidden" for="command-palette-no-results-search">Find a command</label>
+    <label class="forma-visually-hidden" for="command-palette-no-results-search">Find a command</label>
     <input id="command-palette-no-results-search" type="search" value="exprot ledger" autocomplete="off" aria-describedby="command-palette-no-results-status">
-    <div class="ef-command-palette__group">
+    <div class="forma-command-palette__group">
       <h4>Results</h4>
       <p id="command-palette-no-results-status" role="status">No commands match "exprot ledger". Check the spelling or search for a record number.</p>
     </div>
   </dialog>
-</ef-command-palette>`
+</forma-command-palette>`
     },
     {
       id: "unavailable-commands",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Unavailable commands with reasons",
       description: "Commands the user may run but that are blocked right now stay listed as disabled buttons, each with a reason inside the button so it is part of the accessible name. Commands the user is not authorized to run are not rendered at all.",
-      html: `<ef-command-palette class="ef-component-tag">
-  <dialog class="ef-command-palette" open aria-labelledby="command-palette-unavailable-commands-title" data-ef-motion-weight="standard">
-    <header class="ef-command-palette__header">
+      html: `<forma-command-palette class="forma-component-tag">
+  <dialog class="forma-command-palette" open aria-labelledby="command-palette-unavailable-commands-title" data-forma-motion-weight="standard">
+    <header class="forma-command-palette__header">
       <h3 id="command-palette-unavailable-commands-title">Report actions</h3>
       <kbd>Esc</kbd>
     </header>
-    <label class="ef-visually-hidden" for="command-palette-unavailable-commands-search">Find a report action</label>
+    <label class="forma-visually-hidden" for="command-palette-unavailable-commands-search">Find a report action</label>
     <input id="command-palette-unavailable-commands-search" type="search" value="publish" autocomplete="off">
-    <div class="ef-command-palette__group">
+    <div class="forma-command-palette__group">
       <h4>Publishing</h4>
       <button type="button"><span>Preview report</span><kbd>Ctrl P</kbd></button>
       <button type="button" disabled><span>Publish report</span><small>Unavailable until validation passes</small></button>
       <button type="button" disabled><span>Schedule publication</span><small>Unavailable while another schedule is pending</small></button>
     </div>
   </dialog>
-</ef-command-palette>`
+</forma-command-palette>`
     },
     {
       id: "mobile-full-screen",
@@ -107,22 +107,22 @@ export default {
           "Uses `dvh`, so the surface follows the visible viewport when browser toolbars show or hide in either orientation."
         ]
       },
-      html: `<ef-command-palette class="ef-component-tag">
-  <dialog class="ef-command-palette" open aria-labelledby="command-palette-mobile-full-screen-title">
-    <header class="ef-command-palette__header">
+      html: `<forma-command-palette class="forma-component-tag">
+  <dialog class="forma-command-palette" open aria-labelledby="command-palette-mobile-full-screen-title">
+    <header class="forma-command-palette__header">
       <h3 id="command-palette-mobile-full-screen-title">Go to</h3>
       <kbd>Esc</kbd>
     </header>
-    <label class="ef-visually-hidden" for="command-palette-mobile-full-screen-search">Find a page or record</label>
+    <label class="forma-visually-hidden" for="command-palette-mobile-full-screen-search">Find a page or record</label>
     <input id="command-palette-mobile-full-screen-search" type="search" placeholder="Search pages and records" autocomplete="off">
-    <div class="ef-command-palette__group">
+    <div class="forma-command-palette__group">
       <h4>Suggested</h4>
       <button type="button"><span>Items needing attention in the Northern Europe distribution region</span></button>
       <button type="button"><span>Open invoice INV-1042</span></button>
       <button type="button"><span>Account settings</span></button>
     </div>
   </dialog>
-</ef-command-palette>`
+</forma-command-palette>`
     }
   ],
   api: {
@@ -135,14 +135,14 @@ export default {
       { name: "type", on: "input / button", values: "search / button", default: "—", description: "Use a search input and `type=\"button\"` commands so nothing submits a form by accident." },
       { name: "disabled", on: "command button", values: "boolean", default: "absent", description: "Command is known but blocked now; put the reason in a `small` inside the button." },
       { name: "role", on: "result message", values: "status", default: "—", description: "Announces result counts and empty results without moving focus." },
-      { name: "data-ef-motion-weight", on: "dialog", values: "light | standard | heavy", default: "heavy (by CSS default)", description: "Presentation-only mass for the entry and exit motion. See hooks." }
+      { name: "data-forma-motion-weight", on: "dialog", values: "light | standard | heavy", default: "heavy (by CSS default)", description: "Presentation-only mass for the entry and exit motion. See hooks." }
     ],
     hooks: {
-      "ef-command-palette": "The `dialog` surface: at most 42rem wide and 40rem tall with a 1rem margin from the viewport, primary surface, functional border.",
-      "ef-command-palette__header": "Flex row with the title and a key hint or Close button, separated by a subtle rule.",
-      "ef-command-palette__group": "A padded group of commands with an `h4` heading. Buttons inside are full-width rows with the label at the start and a shortcut at the end.",
+      "forma-command-palette": "The `dialog` surface: at most 42rem wide and 40rem tall with a 1rem margin from the viewport, primary surface, functional border.",
+      "forma-command-palette__header": "Flex row with the title and a key hint or Close button, separated by a subtle rule.",
+      "forma-command-palette__group": "A padded group of commands with an `h4` heading. Buttons inside are full-width rows with the label at the start and a shortcut at the end.",
       "open": "Styles the open state: full opacity, no offset and scale 1. The closed state is transparent, 0.75rem lower and slightly smaller so opening and closing animate.",
-      "data-ef-motion-weight": "Perceived mass for opening and closing: `light`, `standard` or `heavy`. Without the attribute the palette uses heavy. Presentation only; never encodes importance."
+      "data-forma-motion-weight": "Perceived mass for opening and closing: `light`, `standard` or `heavy`. Without the attribute the palette uses heavy. Presentation only; never encodes importance."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between the search input, the Close button and each enabled command button; disabled commands are skipped natively." },
@@ -187,7 +187,7 @@ export default {
   ],
   motion: [
     "Opening fades in (perceptual duration) while the surface rises 0.75rem and scales from 0.985 to 1 with the inertial duration, starting from `@starting-style`.",
-    "The default heavy mass makes the entry slower and more settled than a menu, matching the palette's larger attentional commitment; `data-ef-motion-weight` can lighten it.",
+    "The default heavy mass makes the entry slower and more settled than a menu, matching the palette's larger attentional commitment; `data-forma-motion-weight` can lighten it.",
     "Closing uses the same duration and easing as entry, and `display` and `overlay` transition discretely so the exit is visible before the dialog leaves the top layer.",
     "The native open state is authoritative; interrupting mid-transition simply retargets.",
     "Under `prefers-reduced-motion: reduce` the transition duration is 0.01ms, so the palette appears and disappears immediately."

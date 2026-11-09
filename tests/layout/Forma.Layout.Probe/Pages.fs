@@ -38,44 +38,44 @@ module Pages =
           yield $"{selector} > p {{ margin: 0; }}" ]
         |> String.concat "\n"
 
-    let private siteRadius (selector: string) (radius: string) = $"{selector} {{ --ef-shape-radius: {radius}; }}"
+    let private siteRadius (selector: string) (radius: string) = $"{selector} {{ --forma-shape-radius: {radius}; }}"
 
     let private componentMarkup (c: Case) (comp: Component) (body: string) =
         let subject = [ "data-lc-subject", Cases.componentName comp ]
         let content = if body = "" then [] else [ text body ]
         match comp with
-        | Card -> el "article" ([ "class", "ef-card" ] @ subject) [ el "h3" [ "class", "ef-card__title" ] content; el "p" [] content ]
-        | Badge -> el "span" ([ "class", "ef-badge" ] @ subject) content
-        | Button -> el "a" ([ "class", "ef-button"; "href", "#" + c.Id ] @ subject) content
+        | Card -> el "article" ([ "class", "forma-card" ] @ subject) [ el "h3" [ "class", "forma-card__title" ] content; el "p" [] content ]
+        | Badge -> el "span" ([ "class", "forma-badge" ] @ subject) content
+        | Button -> el "a" ([ "class", "forma-button"; "href", "#" + c.Id ] @ subject) content
         | Alert ->
             el
                 "aside"
-                ([ "class", "ef-alert"; "role", "status"; "data-tone", "attention" ] @ subject)
-                [ el "div" [ "class", "ef-alert__icon"; "aria-hidden", "true" ] [ text "!" ]
-                  el "div" [] [ el "h3" [ "class", "ef-alert__title" ] content; el "p" [] content ]
+                ([ "class", "forma-alert"; "role", "status"; "data-tone", "attention" ] @ subject)
+                [ el "div" [ "class", "forma-alert__icon"; "aria-hidden", "true" ] [ text "!" ]
+                  el "div" [] [ el "h3" [ "class", "forma-alert__title" ] content; el "p" [] content ]
                   el "button" [ "type", "button" ] [ text "Review" ] ]
         | MetricCard ->
             el
                 "article"
-                ([ "class", "ef-metric-card" ] @ subject)
-                [ el "div" [ "class", "ef-metric-card__label" ] content
-                  el "div" [ "class", "ef-metric-card__value" ] [ text "$42,500" ]
-                  el "div" [ "class", "ef-metric-card__context" ] content ]
+                ([ "class", "forma-metric-card" ] @ subject)
+                [ el "div" [ "class", "forma-metric-card__label" ] content
+                  el "div" [ "class", "forma-metric-card__value" ] [ text "$42,500" ]
+                  el "div" [ "class", "forma-metric-card__context" ] content ]
         | Callout ->
             el
                 "aside"
-                ([ "class", "ef-callout"; "data-ef-callout", "note"; "aria-label", "Note" ] @ subject)
-                [ el "p" [ "class", "ef-callout__label" ] [ text "Note" ]; el "p" [] content ]
+                ([ "class", "forma-callout"; "data-forma-callout", "note"; "aria-label", "Note" ] @ subject)
+                [ el "p" [ "class", "forma-callout__label" ] [ text "Note" ]; el "p" [] content ]
         | WizardStep ->
             el
                 "section"
-                [ "class", "ef-wizard"; "aria-label", "Steps" ]
-                [ el "ol" [ "class", "ef-wizard__steps"; "aria-label", "Workflow steps" ] [ el "li" [ "data-state", "current"; "aria-current", "step" ] [ el "span" subject content; text "Review" ] ] ]
+                [ "class", "forma-wizard"; "aria-label", "Steps" ]
+                [ el "ol" [ "class", "forma-wizard__steps"; "aria-label", "Workflow steps" ] [ el "li" [ "data-state", "current"; "aria-current", "step" ] [ el "span" subject content; text "Review" ] ] ]
         | TooltipTrigger ->
             el
                 "span"
-                [ "class", "ef-tooltip" ]
-                [ el "button" ([ "class", "ef-tooltip__trigger"; "type", "button" ] @ subject) [ el "span" [ "aria-hidden", "true" ] content; el "span" [ "class", "ef-visually-hidden" ] [ text "Help" ] ] ]
+                [ "class", "forma-tooltip" ]
+                [ el "button" ([ "class", "forma-tooltip__trigger"; "type", "button" ] @ subject) [ el "span" [ "aria-hidden", "true" ] content; el "span" [ "class", "forma-visually-hidden" ] [ text "Help" ] ] ]
 
     let private isMarketing comp = match comp with Card | Badge | Button | Callout -> true | _ -> false
 
@@ -84,9 +84,9 @@ module Pages =
         match s with
         | ComponentCase(comp, body, radius, hostWidth) ->
             let host = cls c (slot + "host")
-            let classes = if isMarketing comp then $"ef-site {host}" else host
+            let classes = if isMarketing comp then $"forma-site {host}" else host
             el "div" [ "class", classes ] [ componentMarkup c comp body ],
-            [ $".{host} {{ inline-size: {css hostWidth}; max-inline-size: 100%%; }}"; siteRadius $".{host}.ef-site" radius ]
+            [ $".{host} {{ inline-size: {css hostWidth}; max-inline-size: 100%%; }}"; siteRadius $".{host}.forma-site" radius ]
         | ProbeCase p ->
             let k = cls c (slot + "probe")
             el "div" [ "class", k; "data-lc-subject", "probe" ] [ el "p" [] [ text p.Text ] ], [ probeRule $".{k}" p ]
@@ -95,16 +95,16 @@ module Pages =
             | Ok w ->
                 let zoom = cls c (slot + "zoom")
                 let figure = Render.figure { RenderOptions.defaults with IdPrefix = Some(cls c slot) } w
-                el "div" [ "class", $"ef-workflow-editor__canvas {zoom}"; "data-lc-diagram", "true" ] [ figure ],
-                [ $".{zoom} {{ --ef-workflow-zoom: {d.Zoom}; }}" ]
+                el "div" [ "class", $"forma-workflow-editor__canvas {zoom}"; "data-lc-diagram", "true" ] [ figure ],
+                [ $".{zoom} {{ --forma-workflow-zoom: {d.Zoom}; }}" ]
             | Error e -> el "p" [ "data-lc-invalid", "true" ] [ text e ], []
         | Nested(host, inner) ->
             let innerMarkup, innerRules = subjectParts c (slot + "in") inner
             match host with
             | CardHost radius ->
                 let k = cls c (slot + "card")
-                el "div" [ "class", $"ef-site {k}" ] [ el "article" [ "class", "ef-card"; "data-lc-host", "card" ] [ innerMarkup ] ],
-                [ $".{k} {{ inline-size: 360px; max-inline-size: 100%%; }}"; siteRadius $".{k}.ef-site" radius ] @ innerRules
+                el "div" [ "class", $"forma-site {k}" ] [ el "article" [ "class", "forma-card"; "data-lc-host", "card" ] [ innerMarkup ] ],
+                [ $".{k} {{ inline-size: 360px; max-inline-size: 100%%; }}"; siteRadius $".{k}.forma-site" radius ] @ innerRules
             | ProbeHost p ->
                 let k = cls c (slot + "outer")
                 el "div" [ "class", k; "data-lc-host", "probe" ] [ innerMarkup ], [ probeRule $".{k}" { p with Height = None } ] @ innerRules

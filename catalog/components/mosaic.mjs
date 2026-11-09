@@ -26,41 +26,41 @@ export default {
       id: "quarterly-report",
       title: "Quarterly report overview",
       description: "A featured summary takes two of four columns, two supporting items fill the row, and a full-width methodology note closes the section. Reading order is summary, revenue, retention, methodology.",
-      html: `<ef-mosaic class="ef-component-tag">
-  <section class="ef-mosaic" aria-label="Q3 report overview">
-    <article class="ef-surface ef-stack" data-span="2" aria-labelledby="mosaic-quarterly-report-summary">
+      html: `<forma-mosaic class="forma-component-tag">
+  <section class="forma-mosaic" aria-label="Q3 report overview">
+    <article class="forma-surface forma-stack" data-span="2" aria-labelledby="mosaic-quarterly-report-summary">
       <h2 id="mosaic-quarterly-report-summary">Q3 in summary</h2>
       <p>Revenue grew 14% on the previous quarter, driven by the Team plan. Support response times improved for the third quarter running.</p>
     </article>
-    <article class="ef-surface" aria-labelledby="mosaic-quarterly-report-revenue">
+    <article class="forma-surface" aria-labelledby="mosaic-quarterly-report-revenue">
       <h2 id="mosaic-quarterly-report-revenue">Revenue</h2>
       <p>$2.1M, up 14%.</p>
     </article>
-    <article class="ef-surface" aria-labelledby="mosaic-quarterly-report-retention">
+    <article class="forma-surface" aria-labelledby="mosaic-quarterly-report-retention">
       <h2 id="mosaic-quarterly-report-retention">Retention</h2>
       <p>94% of accounts renewed.</p>
     </article>
-    <article class="ef-surface" data-span="full" aria-labelledby="mosaic-quarterly-report-method">
+    <article class="forma-surface" data-span="full" aria-labelledby="mosaic-quarterly-report-method">
       <h2 id="mosaic-quarterly-report-method">Methodology</h2>
       <p>Figures are unaudited and exclude one-off professional services revenue.</p>
     </article>
   </section>
-</ef-mosaic>`
+</forma-mosaic>`
     },
     {
       id: "two-features",
       title: "Two featured stories",
-      description: "Two items each span two columns to form a balanced first row, followed by four single-column items. A tighter gap is set with `--ef-mosaic-space`.",
-      html: `<ef-mosaic class="ef-component-tag">
-  <section class="ef-mosaic" style="--ef-mosaic-space: 0.75rem" aria-label="Engineering blog">
-    <article class="ef-surface" data-span="2"><h2>How we cut build times in half</h2><p>Remote caching and smaller test shards.</p></article>
-    <article class="ef-surface" data-span="2"><h2>Designing for 200% zoom</h2><p>Lessons from auditing every settings page.</p></article>
-    <article class="ef-surface"><h3>Release 5.1</h3><p>Offline drafts.</p></article>
-    <article class="ef-surface"><h3>Status page changes</h3><p>Clearer incident timelines.</p></article>
-    <article class="ef-surface"><h3>Hiring</h3><p>Two platform roles open.</p></article>
-    <article class="ef-surface"><h3>Office hours</h3><p>Every second Thursday.</p></article>
+      description: "Two items each span two columns to form a balanced first row, followed by four single-column items. A tighter gap is set with `--forma-mosaic-space`.",
+      html: `<forma-mosaic class="forma-component-tag">
+  <section class="forma-mosaic" style="--forma-mosaic-space: 0.75rem" aria-label="Engineering blog">
+    <article class="forma-surface" data-span="2"><h2>How we cut build times in half</h2><p>Remote caching and smaller test shards.</p></article>
+    <article class="forma-surface" data-span="2"><h2>Designing for 200% zoom</h2><p>Lessons from auditing every settings page.</p></article>
+    <article class="forma-surface"><h3>Release 5.1</h3><p>Offline drafts.</p></article>
+    <article class="forma-surface"><h3>Status page changes</h3><p>Clearer incident timelines.</p></article>
+    <article class="forma-surface"><h3>Hiring</h3><p>Two platform roles open.</p></article>
+    <article class="forma-surface"><h3>Office hours</h3><p>Every second Thursday.</p></article>
   </section>
-</ef-mosaic>`
+</forma-mosaic>`
     },
     {
       id: "mobile-single-column",
@@ -75,35 +75,35 @@ export default {
           "All items are full width at 320px, so nothing scrolls horizontally and links inside keep full-width targets."
         ]
       },
-      html: `<ef-mosaic class="ef-component-tag">
-  <section class="ef-mosaic" aria-label="Report on the go">
-    <article class="ef-surface" data-span="2" aria-labelledby="mosaic-mobile-single-column-summary">
+      html: `<forma-mosaic class="forma-component-tag">
+  <section class="forma-mosaic" aria-label="Report on the go">
+    <article class="forma-surface" data-span="2" aria-labelledby="mosaic-mobile-single-column-summary">
       <h2 id="mosaic-mobile-single-column-summary">Q3 in summary</h2>
       <p>Revenue up 14% on the previous quarter.</p>
     </article>
-    <article class="ef-surface" aria-labelledby="mosaic-mobile-single-column-retention">
+    <article class="forma-surface" aria-labelledby="mosaic-mobile-single-column-retention">
       <h2 id="mosaic-mobile-single-column-retention">Retention</h2>
       <p>94% renewed.</p>
     </article>
-    <article class="ef-surface" data-span="full" aria-labelledby="mosaic-mobile-single-column-method">
+    <article class="forma-surface" data-span="full" aria-labelledby="mosaic-mobile-single-column-method">
       <h2 id="mosaic-mobile-single-column-method">Methodology</h2>
       <p>Unaudited figures.</p>
     </article>
   </section>
-</ef-mosaic>`
+</forma-mosaic>`
     }
   ],
   api: {
     attributes: [
-      { name: "data-span", on: "direct child of .ef-mosaic", values: "2 | full", default: "absent (one column)", description: "Visual width of an item. Not a data-ef-* hook; it is presentation only." },
-      { name: "aria-label", on: ".ef-mosaic", values: "string", default: "—", description: "Names the composed section." },
+      { name: "data-span", on: "direct child of .forma-mosaic", values: "2 | full", default: "absent (one column)", description: "Visual width of an item. Not a data-forma-* hook; it is presentation only." },
+      { name: "aria-label", on: ".forma-mosaic", values: "string", default: "—", description: "Names the composed section." },
       { name: "aria-labelledby", on: "items", values: "id of the item heading", default: "—", description: "Names each article by its heading." },
-      { name: "style", on: ".ef-mosaic", values: "--ef-mosaic-space: <length>", default: "—", description: "Per-instance gap override." }
+      { name: "style", on: ".forma-mosaic", values: "--forma-mosaic-space: <length>", default: "—", description: "Per-instance gap override." }
     ],
     hooks: {
-      "ef-mosaic": "Four-column grid (two at 48rem and below, one at 30rem and below); children get `min-inline-size: 0`.",
+      "forma-mosaic": "Four-column grid (two at 48rem and below, one at 30rem and below); children get `min-inline-size: 0`.",
       "data-span": "On a direct child: `2` spans two columns, `full` spans all columns. Reset to auto at one column.",
-      "--ef-mosaic-space": "Gap between items. Default `--ef-primitive-spacing-4` (1rem)."
+      "--forma-mosaic-space": "Gap between items. Default `--forma-primitive-spacing-4` (1rem)."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through items in source order; spans never change focus order." }

@@ -3,7 +3,7 @@ export default {
   category: "feedback",
   behavior: "Application state",
   summary: "Compact textual state label with a shape glyph and border, so state never depends on color.",
-  owns: ["ef-status-lozenge", "ef-status-lozenge-set"],
+  owns: ["forma-status-lozenge", "forma-status-lozenge-set"],
   purpose: {
     description: "A status lozenge is a short, bordered label that names the state of something: Confirmed, Needs attention, Unknown, Blocked. Forma renders the text in a compact monospace box and adds a glyph before it from `data-state` (check, exclamation, question mark, cross, or a bullet when no state is set). The application chooses the wording and the `data-state` value; the text is the authority and the glyph is a redundant structural cue. A lozenge set lays several out in a wrapping row.",
     useWhen: [
@@ -27,26 +27,26 @@ export default {
       id: "environment-table",
       title: "Deployment environments",
       description: "Lozenges inside a [[key-value-list]] describing three environments. Each state is named in words; the glyphs repeat the distinction in shape.",
-      html: `<ef-status-lozenge class="ef-component-tag">
-  <dl class="ef-key-value-list">
-    <div><dt>Production</dt><dd><span class="ef-status-lozenge" data-state="ok">Healthy</span></dd></div>
-    <div><dt>Staging</dt><dd><span class="ef-status-lozenge" data-state="attention">Deploy pending approval</span></dd></div>
-    <div><dt>Disaster recovery</dt><dd><span class="ef-status-lozenge" data-state="unknown">Not reporting</span></dd></div>
+      html: `<forma-status-lozenge class="forma-component-tag">
+  <dl class="forma-key-value-list">
+    <div><dt>Production</dt><dd><span class="forma-status-lozenge" data-state="ok">Healthy</span></dd></div>
+    <div><dt>Staging</dt><dd><span class="forma-status-lozenge" data-state="attention">Deploy pending approval</span></dd></div>
+    <div><dt>Disaster recovery</dt><dd><span class="forma-status-lozenge" data-state="unknown">Not reporting</span></dd></div>
   </dl>
-</ef-status-lozenge>`
+</forma-status-lozenge>`
     },
     {
       id: "neutral-states",
       title: "Neutral workflow states",
       description: "States that are neither good nor bad, such as Draft or Scheduled, omit `data-state` and get the neutral bullet. The set is a labelled group so its purpose is announced.",
-      html: `<ef-status-lozenge class="ef-component-tag">
-  <div class="ef-status-lozenge-set" role="group" aria-label="Invoice workflow states">
-    <span class="ef-status-lozenge">Draft</span>
-    <span class="ef-status-lozenge">Scheduled</span>
-    <span class="ef-status-lozenge" data-state="ok">Paid</span>
-    <span class="ef-status-lozenge" data-state="blocked">Voided</span>
+      html: `<forma-status-lozenge class="forma-component-tag">
+  <div class="forma-status-lozenge-set" role="group" aria-label="Invoice workflow states">
+    <span class="forma-status-lozenge">Draft</span>
+    <span class="forma-status-lozenge">Scheduled</span>
+    <span class="forma-status-lozenge" data-state="ok">Paid</span>
+    <span class="forma-status-lozenge" data-state="blocked">Voided</span>
   </div>
-</ef-status-lozenge>`
+</forma-status-lozenge>`
     },
     {
       id: "mobile-status-set",
@@ -61,25 +61,25 @@ export default {
           "Orientation changes let the set return to a wrapping row once the width exceeds 30rem."
         ]
       },
-      html: `<ef-status-lozenge class="ef-component-tag">
-  <div class="ef-status-lozenge-set" role="group" aria-label="Payment run status">
-    <span class="ef-status-lozenge" data-state="ok">112 sent</span>
-    <span class="ef-status-lozenge" data-state="attention">6 held</span>
-    <span class="ef-status-lozenge" data-state="unknown">2 unconfirmed</span>
-    <span class="ef-status-lozenge" data-state="blocked">1 rejected</span>
+      html: `<forma-status-lozenge class="forma-component-tag">
+  <div class="forma-status-lozenge-set" role="group" aria-label="Payment run status">
+    <span class="forma-status-lozenge" data-state="ok">112 sent</span>
+    <span class="forma-status-lozenge" data-state="attention">6 held</span>
+    <span class="forma-status-lozenge" data-state="unknown">2 unconfirmed</span>
+    <span class="forma-status-lozenge" data-state="blocked">1 rejected</span>
   </div>
-</ef-status-lozenge>`
+</forma-status-lozenge>`
     }
   ],
   api: {
     attributes: [
-      { name: "data-state", on: "span.ef-status-lozenge", values: "ok | attention | unknown | blocked", default: "absent (neutral bullet)", description: "Selects the leading glyph. Presentation only; the text must name the state." },
-      { name: "role", on: "div.ef-status-lozenge-set", values: "group", default: "—", description: "Optional. Lets a set carry an accessible name when its purpose is not clear from surrounding headings." },
-      { name: "aria-label", on: "div.ef-status-lozenge-set", values: "string", default: "—", description: "Names the set. Use it together with a role such as group; a label on a plain div is ignored by many screen readers." }
+      { name: "data-state", on: "span.forma-status-lozenge", values: "ok | attention | unknown | blocked", default: "absent (neutral bullet)", description: "Selects the leading glyph. Presentation only; the text must name the state." },
+      { name: "role", on: "div.forma-status-lozenge-set", values: "group", default: "—", description: "Optional. Lets a set carry an accessible name when its purpose is not clear from surrounding headings." },
+      { name: "aria-label", on: "div.forma-status-lozenge-set", values: "string", default: "—", description: "Names the set. Use it together with a role such as group; a label on a plain div is ignored by many screen readers." }
     ],
     hooks: {
-      "ef-status-lozenge": "Inline-flex bordered label with monospace 0.6875rem text, a 1.75rem minimum height and a generated leading glyph.",
-      "ef-status-lozenge-set": "Wrapping flex row for several lozenges. Below 30rem each lozenge takes the full row.",
+      "forma-status-lozenge": "Inline-flex bordered label with monospace 0.6875rem text, a 1.75rem minimum height and a generated leading glyph.",
+      "forma-status-lozenge-set": "Wrapping flex row for several lozenges. Below 30rem each lozenge takes the full row.",
       "data-state": "Chooses the glyph: ok ✓, attention !, unknown ?, blocked ×. Any other value or none shows •."
     },
     keyboard: [

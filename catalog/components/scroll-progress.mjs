@@ -25,9 +25,9 @@ export default {
       id: "documentation-article",
       title: "Documentation article",
       description: "The bar placed as the first child of an article so it sticks to the top of the viewport while the article is on screen. In this catalog page it reflects the scroll position of the whole page, not of this example.",
-      html: `<ef-scroll-progress class="ef-component-tag">
-  <article class="ef-stack" aria-labelledby="scroll-progress-documentation-article-title">
-    <div class="ef-scroll-progress" aria-hidden="true"></div>
+      html: `<forma-scroll-progress class="forma-component-tag">
+  <article class="forma-stack" aria-labelledby="scroll-progress-documentation-article-title">
+    <div class="forma-scroll-progress" aria-hidden="true"></div>
     <h2 id="scroll-progress-documentation-article-title">Data retention policy</h2>
     <p>This policy describes how long each class of record is kept and who may approve an exception.</p>
     <h3>Scope</h3>
@@ -35,19 +35,19 @@ export default {
     <h3>Retention periods</h3>
     <p>Financial records are kept for seven years. Support conversations are kept for two years after the case closes.</p>
   </article>
-</ef-scroll-progress>`
+</forma-scroll-progress>`
     },
     {
       id: "right-to-left",
       title: "Right-to-left document",
       description: "In a right-to-left context the bar fills from the right edge. The transform origin follows `:dir(rtl)`, so no extra attribute is needed on the bar itself.",
-      html: `<ef-scroll-progress class="ef-component-tag">
-  <article class="ef-stack" dir="rtl" lang="ar" aria-labelledby="scroll-progress-right-to-left-title">
-    <div class="ef-scroll-progress" aria-hidden="true"></div>
+      html: `<forma-scroll-progress class="forma-component-tag">
+  <article class="forma-stack" dir="rtl" lang="ar" aria-labelledby="scroll-progress-right-to-left-title">
+    <div class="forma-scroll-progress" aria-hidden="true"></div>
     <h2 id="scroll-progress-right-to-left-title">ملاحظات الإصدار</h2>
     <p>يعرض شريط التقدم موضع القراءة في الصفحة فقط ولا يغني عن العناوين.</p>
   </article>
-</ef-scroll-progress>`
+</forma-scroll-progress>`
     },
     {
       id: "mobile-release-notes",
@@ -62,25 +62,25 @@ export default {
           "Rotation changes the scrollable length; the fill recalculates directly from the new scroll position without lag."
         ]
       },
-      html: `<ef-scroll-progress class="ef-component-tag">
-  <article class="ef-stack" aria-labelledby="scroll-progress-mobile-release-notes-title">
-    <div class="ef-scroll-progress" aria-hidden="true"></div>
+      html: `<forma-scroll-progress class="forma-component-tag">
+  <article class="forma-stack" aria-labelledby="scroll-progress-mobile-release-notes-title">
+    <div class="forma-scroll-progress" aria-hidden="true"></div>
     <h2 id="scroll-progress-mobile-release-notes-title">Release 4.2</h2>
     <p>Bank feeds now import pending transactions separately from posted ones.</p>
     <p>Approval rules can require two approvers above a configurable amount.</p>
     <p>Exports include the approver of each payment and the time of approval.</p>
     <p>The mobile app shows the last verified time on every balance.</p>
   </article>
-</ef-scroll-progress>`
+</forma-scroll-progress>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-hidden", on: "div.ef-scroll-progress", values: "true", default: "—", description: "Required. The bar is decorative and must not be exposed to assistive technology." },
+      { name: "aria-hidden", on: "div.forma-scroll-progress", values: "true", default: "—", description: "Required. The bar is decorative and must not be exposed to assistive technology." },
       { name: "dir", on: "an ancestor", values: "rtl | ltr", default: "inherited", description: "In right-to-left contexts the bar fills from the right." }
     ],
     hooks: {
-      "ef-scroll-progress": "The bar: sticky at the top of its container, 3px tall, accent colored, scaled horizontally by the root scroll timeline. Not displayed without scroll-timeline support or under reduced motion."
+      "forma-scroll-progress": "The bar: sticky at the top of its container, 3px tall, accent colored, scaled horizontally by the root scroll timeline. Not displayed without scroll-timeline support or under reduced motion."
     },
     keyboard: [
       { keys: "—", action: "Not focusable. Keyboard scrolling (Space, Page Down, arrow keys) moves the page and the bar follows." }

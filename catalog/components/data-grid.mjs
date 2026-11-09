@@ -32,17 +32,17 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Sorted by due date, newest first",
       description: "The application has sorted by Due in descending order, so only that header carries `aria-sort=\"descending\"` and shows a down arrow. Row actions name their record so a list of Open buttons is not ambiguous out of context.",
-      html: `<ef-data-grid class="ef-component-tag">
-  <div class="ef-data-grid" role="region" tabindex="0" aria-label="Invoices by due date">
+      html: `<forma-data-grid class="forma-component-tag">
+  <div class="forma-data-grid" role="region" tabindex="0" aria-label="Invoices by due date">
     <table>
-      <caption class="ef-visually-hidden">Invoices sorted by due date, newest first</caption>
+      <caption class="forma-visually-hidden">Invoices sorted by due date, newest first</caption>
       <thead>
         <tr>
           <th scope="col"><button type="button">Invoice</button></th>
           <th scope="col"><button type="button">Customer</button></th>
           <th scope="col" aria-sort="descending"><button type="button">Due</button></th>
           <th scope="col"><button type="button">Status</button></th>
-          <th scope="col"><span class="ef-visually-hidden">Actions</span></th>
+          <th scope="col"><span class="forma-visually-hidden">Actions</span></th>
         </tr>
       </thead>
       <tbody>
@@ -50,38 +50,38 @@ export default {
           <td data-label="Invoice">INV-1051</td>
           <td data-label="Customer">Harbor Freight Partners</td>
           <td data-label="Due"><time datetime="2026-11-02">Nov 2, 2026</time></td>
-          <td data-label="Status"><span class="ef-status-lozenge">Draft</span></td>
+          <td data-label="Status"><span class="forma-status-lozenge">Draft</span></td>
           <td data-label="Actions"><button type="button" aria-label="Open INV-1051">Open</button></td>
         </tr>
         <tr>
           <td data-label="Invoice">INV-1047</td>
           <td data-label="Customer">Northstar Labs</td>
           <td data-label="Due"><time datetime="2026-10-18">Oct 18, 2026</time></td>
-          <td data-label="Status"><span class="ef-status-lozenge" data-state="unknown">Payment unconfirmed</span></td>
+          <td data-label="Status"><span class="forma-status-lozenge" data-state="unknown">Payment unconfirmed</span></td>
           <td data-label="Actions"><button type="button" aria-label="Open INV-1047">Open</button></td>
         </tr>
         <tr>
           <td data-label="Invoice">INV-1042</td>
           <td data-label="Customer">Acme Manufacturing</td>
           <td data-label="Due"><time datetime="2026-10-04">Oct 4, 2026</time></td>
-          <td data-label="Status"><span class="ef-status-lozenge" data-state="attention">Overdue</span></td>
+          <td data-label="Status"><span class="forma-status-lozenge" data-state="attention">Overdue</span></td>
           <td data-label="Actions"><button type="button" aria-label="Open INV-1042">Open</button></td>
         </tr>
       </tbody>
     </table>
   </div>
-</ef-data-grid>`
+</forma-data-grid>`
     },
     {
       id: "empty-result",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Empty result",
       description: "The query returned no records. The header row stays so the columns still explain what would appear, and an [[empty-state]] after the region says why the table is empty and how to recover. Forma does not decide between empty, loading and failed; the application renders the right one.",
-      html: `<ef-data-grid class="ef-component-tag">
-  <div class="ef-stack" data-density="compact">
-    <div class="ef-data-grid" role="region" tabindex="0" aria-label="Overdue invoices">
+      html: `<forma-data-grid class="forma-component-tag">
+  <div class="forma-stack" data-density="compact">
+    <div class="forma-data-grid" role="region" tabindex="0" aria-label="Overdue invoices">
       <table>
-        <caption class="ef-visually-hidden">Overdue invoices</caption>
+        <caption class="forma-visually-hidden">Overdue invoices</caption>
         <thead>
           <tr>
             <th scope="col"><button type="button">Invoice</button></th>
@@ -93,24 +93,24 @@ export default {
         <tbody></tbody>
       </table>
     </div>
-    <section class="ef-empty-state" aria-labelledby="data-grid-empty-result-title">
-      <div class="ef-empty-state__symbol" aria-hidden="true">□</div>
+    <section class="forma-empty-state" aria-labelledby="data-grid-empty-result-title">
+      <div class="forma-empty-state__symbol" aria-hidden="true">□</div>
       <h3 id="data-grid-empty-result-title">No overdue invoices</h3>
       <p>Every invoice due before today has been paid or written off.</p>
       <button type="button">Show all invoices</button>
     </section>
   </div>
-</ef-data-grid>`
+</forma-data-grid>`
     },
     {
       id: "wide-record-set",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Many columns and long values",
       description: "Seven columns exceed a tablet-width container, so the table scrolls inside the labelled region rather than widening the page. The region is focusable, so keyboard users can scroll it with the arrow keys. Long customer names wrap inside their cells.",
-      html: `<ef-data-grid class="ef-component-tag">
-  <div class="ef-data-grid" role="region" tabindex="0" aria-label="Shipment records">
+      html: `<forma-data-grid class="forma-component-tag">
+  <div class="forma-data-grid" role="region" tabindex="0" aria-label="Shipment records">
     <table>
-      <caption class="ef-visually-hidden">Shipment records</caption>
+      <caption class="forma-visually-hidden">Shipment records</caption>
       <thead>
         <tr>
           <th scope="col" aria-sort="ascending"><button type="button">Shipment</button></th>
@@ -119,32 +119,32 @@ export default {
           <th scope="col"><button type="button">Destination</button></th>
           <th scope="col"><button type="button">Weight</button></th>
           <th scope="col"><button type="button">Status</button></th>
-          <th scope="col"><span class="ef-visually-hidden">Actions</span></th>
+          <th scope="col"><span class="forma-visually-hidden">Actions</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td data-label="Shipment"><span class="ef-identifier">SHP-2026-000418</span></td>
+          <td data-label="Shipment"><span class="forma-identifier">SHP-2026-000418</span></td>
           <td data-label="Consignee">Rheinland Präzisionswerkzeuge und Industriebedarf GmbH</td>
           <td data-label="Origin">Rotterdam, NL</td>
           <td data-label="Destination">Duisburg, DE</td>
           <td data-label="Weight">12,480 kg</td>
-          <td data-label="Status"><span class="ef-status-lozenge" data-state="ok">Delivered</span></td>
+          <td data-label="Status"><span class="forma-status-lozenge" data-state="ok">Delivered</span></td>
           <td data-label="Actions"><button type="button" aria-label="Open SHP-2026-000418">Open</button></td>
         </tr>
         <tr>
-          <td data-label="Shipment"><span class="ef-identifier">SHP-2026-000419</span></td>
+          <td data-label="Shipment"><span class="forma-identifier">SHP-2026-000419</span></td>
           <td data-label="Consignee">Coastal Grain Cooperative</td>
           <td data-label="Origin">Antwerp, BE</td>
           <td data-label="Destination">Lyon, FR</td>
           <td data-label="Weight">—</td>
-          <td data-label="Status"><span class="ef-status-lozenge" data-state="blocked">Held at customs</span></td>
+          <td data-label="Status"><span class="forma-status-lozenge" data-state="blocked">Held at customs</span></td>
           <td data-label="Actions"><button type="button" aria-label="Open SHP-2026-000419">Open</button></td>
         </tr>
       </tbody>
     </table>
   </div>
-</ef-data-grid>`
+</forma-data-grid>`
     },
     {
       id: "mobile-record-projection",
@@ -161,42 +161,42 @@ export default {
           "Rotating to landscape above 30rem restores the table layout inside the scrolling region."
         ]
       },
-      html: `<ef-data-grid class="ef-component-tag">
-  <div class="ef-data-grid" role="region" tabindex="0" aria-label="Open support tickets">
+      html: `<forma-data-grid class="forma-component-tag">
+  <div class="forma-data-grid" role="region" tabindex="0" aria-label="Open support tickets">
     <table>
-      <caption class="ef-visually-hidden">Open support tickets</caption>
+      <caption class="forma-visually-hidden">Open support tickets</caption>
       <thead>
         <tr>
           <th scope="col" aria-sort="ascending"><button type="button">Ticket</button></th>
           <th scope="col"><button type="button">Subject</button></th>
           <th scope="col"><button type="button">Status</button></th>
-          <th scope="col"><span class="ef-visually-hidden">Actions</span></th>
+          <th scope="col"><span class="forma-visually-hidden">Actions</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td data-label="Ticket">SUP-3120</td>
           <td data-label="Subject">Cannot export the quarterly usage report as CSV</td>
-          <td data-label="Status"><span class="ef-status-lozenge" data-state="attention">Awaiting reply</span></td>
+          <td data-label="Status"><span class="forma-status-lozenge" data-state="attention">Awaiting reply</span></td>
           <td data-label="Actions"><button type="button" aria-label="Open SUP-3120">Open</button></td>
         </tr>
         <tr>
           <td data-label="Ticket">SUP-3124</td>
           <td data-label="Subject">Single sign-on loop after password change</td>
-          <td data-label="Status"><span class="ef-status-lozenge">New</span></td>
+          <td data-label="Status"><span class="forma-status-lozenge">New</span></td>
           <td data-label="Actions"><button type="button" aria-label="Open SUP-3124">Open</button></td>
         </tr>
       </tbody>
     </table>
   </div>
-</ef-data-grid>`
+</forma-data-grid>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: ".ef-data-grid", values: "region", default: "—", description: "Makes the scroll container a named landmark so keyboard and screen-reader users can find and scroll it." },
-      { name: "tabindex", on: ".ef-data-grid", values: "0", default: "—", description: "Lets keyboard users focus the region and scroll overflowing columns with the arrow keys." },
-      { name: "aria-label", on: ".ef-data-grid", values: "string", default: "—", description: "Names the region. Use a distinct name per grid on the page." },
+      { name: "role", on: ".forma-data-grid", values: "region", default: "—", description: "Makes the scroll container a named landmark so keyboard and screen-reader users can find and scroll it." },
+      { name: "tabindex", on: ".forma-data-grid", values: "0", default: "—", description: "Lets keyboard users focus the region and scroll overflowing columns with the arrow keys." },
+      { name: "aria-label", on: ".forma-data-grid", values: "string", default: "—", description: "Names the region. Use a distinct name per grid on the page." },
       { name: "scope", on: "th", values: "col", default: "—", description: "Associates each header with its column on wide layouts." },
       { name: "aria-sort", on: "th", values: "ascending | descending", default: "absent (unsorted)", description: "Written by the application on the one sorted column. Forma appends ↑ or ↓ to the header button from this value." },
       { name: "data-label", on: "td", values: "column name", default: "—", description: "Required on every cell. Printed as the cell's label at 30rem and below, when the header row is hidden. `Actions` also stretches the cell's children to full width." },
@@ -205,7 +205,7 @@ export default {
       { name: "datetime", on: "time", values: "ISO date", default: "—", description: "Machine-readable date for date cells; the visible text stays human-formatted." }
     ],
     hooks: {
-      "ef-data-grid": "Root scroll region around the native table. Bordered, horizontally scrollable, and recomposed into labelled records at 30rem and below."
+      "forma-data-grid": "Root scroll region around the native table. Bordered, horizontally scrollable, and recomposed into labelled records at 30rem and below."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the region, the header sort buttons and row actions in document order." },
@@ -242,7 +242,7 @@ export default {
     ]
   },
   responsive: [
-    "Above 30rem the table keeps a 42rem minimum inline size and the `.ef-data-grid` region scrolls horizontally, so the page never overflows.",
+    "Above 30rem the table keeps a 42rem minimum inline size and the `.forma-data-grid` region scrolls horizontally, so the page never overflows.",
     "At 30rem and below the grid recomposes into stacked records: `thead` hidden, every cell a `minmax(6.5rem, 0.4fr) minmax(0, 1fr)` label/value grid.",
     "Long text wraps inside cells; identifiers can use [[identifier]] so long codes break safely.",
     "The application decides which columns are essential. For very wide data on phones, prefer fewer columns or a detail view over many labelled lines per record.",

@@ -15,7 +15,7 @@ const recordSubmissions = page => page.evaluate(() => {
   window.submitted = [];
   document.querySelectorAll("form").forEach(form => form.addEventListener("submit", event => {
     event.preventDefault();
-    window.submitted.push(`${form.closest(".ef-character-grid__viewport").getAttribute("aria-labelledby")}:${event.submitter.value}`);
+    window.submitted.push(`${form.closest(".forma-character-grid__viewport").getAttribute("aria-labelledby")}:${event.submitter.value}`);
   }));
 });
 
@@ -24,7 +24,7 @@ const tabSequence = async (page, start, count) => {
   const order = [];
   for (let step = 0; step < count; step += 1) {
     await page.keyboard.press("Tab");
-    order.push(await page.evaluate(() => document.activeElement.id || document.activeElement.dataset.efAction));
+    order.push(await page.evaluate(() => document.activeElement.id || document.activeElement.dataset.formaAction));
   }
   return order;
 };
@@ -53,7 +53,7 @@ test("Customer Inquiry: deterministic Tab and Shift+Tab through six fields, then
   ]);
   await page.keyboard.press("Shift+Tab");
   await page.keyboard.press("Shift+Tab");
-  expect(await page.evaluate(() => document.activeElement.dataset.efAction)).toBe("reset");
+  expect(await page.evaluate(() => document.activeElement.dataset.formaAction)).toBe("reset");
 });
 
 test("Account Detail: protected data only, so Tab goes from the region straight to its keys", async ({ page }) => {
@@ -114,7 +114,7 @@ test("empty and error states are explicit text, never a blank table", async ({ p
 
 test("SequentialReveal is used only for the inquiry title and is static under reduced motion", async ({ page }) => {
   await page.setContent(gridDocument(render("default")));
-  const staged = await page.locator("[data-ef-reveal-run]").evaluateAll(runs => runs.map(run => run.id));
+  const staged = await page.locator("[data-forma-reveal-run]").evaluateAll(runs => runs.map(run => run.id));
   expect(staged).toEqual([`${P}-cinq-title`]);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setContent(gridDocument(render("default")));

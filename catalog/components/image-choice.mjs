@@ -4,7 +4,7 @@ export default {
   behavior: "Native HTML",
   summary: "Choice cards that pair media with visible text while keeping the native radio or checkbox as the input.",
   purpose: {
-    description: "Image choice is the [[choice-group]] card with a picture. Adding `ef-choice--media` to an `ef-choice` label turns it into a two-column card: an `ef-choice__media` frame with a 4:3 aspect ratio beside the usual bold label and supporting text. The input stays a native radio (single choice) or checkbox (several choices), so selection, keyboard behavior and form submission are unchanged. The image supports recognition; the visible text is the accessible name and must carry the whole meaning, because images never replace text.",
+    description: "Image choice is the [[choice-group]] card with a picture. Adding `forma-choice--media` to an `forma-choice` label turns it into a two-column card: an `forma-choice__media` frame with a 4:3 aspect ratio beside the usual bold label and supporting text. The input stays a native radio (single choice) or checkbox (several choices), so selection, keyboard behavior and form submission are unchanged. The image supports recognition; the visible text is the accessible name and must carry the whole meaning, because images never replace text.",
     useWhen: [
       "Options are visual (layouts, themes, chart types, product variants) and a preview helps people recognise them.",
       "Each option still has a clear text name that works without the image.",
@@ -27,63 +27,63 @@ export default {
       id: "chart-type-checkboxes",
       title: "Chart types, several allowed",
       description: "Checkbox-backed media cards for a dashboard builder, with two chosen. The previews are inline SVG marked aria-hidden, so each option is announced only by its visible name and description.",
-      html: `<ef-image-choice class="ef-component-tag">
-  <fieldset class="ef-choice-group">
-    <legend class="ef-choice-group__legend">Which charts should the dashboard include?</legend>
-    <label class="ef-choice ef-choice--media">
+      html: `<forma-image-choice class="forma-component-tag">
+  <fieldset class="forma-choice-group">
+    <legend class="forma-choice-group__legend">Which charts should the dashboard include?</legend>
+    <label class="forma-choice forma-choice--media">
       <input type="checkbox" name="image-choice-chart-type-checkboxes" value="line" checked>
-      <span class="ef-choice__media">
+      <span class="forma-choice__media">
         <svg viewBox="0 0 120 90" width="120" height="90" aria-hidden="true" focusable="false"><polyline points="10,70 40,45 65,55 110,20" fill="none" stroke="currentColor" stroke-width="4"/></svg>
       </span>
-      <span class="ef-choice__content"><strong>Line chart</strong><span>Change over time for one or two measures.</span></span>
+      <span class="forma-choice__content"><strong>Line chart</strong><span>Change over time for one or two measures.</span></span>
     </label>
-    <label class="ef-choice ef-choice--media">
+    <label class="forma-choice forma-choice--media">
       <input type="checkbox" name="image-choice-chart-type-checkboxes" value="bar" checked>
-      <span class="ef-choice__media">
+      <span class="forma-choice__media">
         <svg viewBox="0 0 120 90" width="120" height="90" aria-hidden="true" focusable="false"><rect x="15" y="40" width="18" height="40" fill="currentColor"/><rect x="45" y="20" width="18" height="60" fill="currentColor"/><rect x="75" y="50" width="18" height="30" fill="currentColor"/></svg>
       </span>
-      <span class="ef-choice__content"><strong>Bar chart</strong><span>Compare totals across categories.</span></span>
+      <span class="forma-choice__content"><strong>Bar chart</strong><span>Compare totals across categories.</span></span>
     </label>
-    <label class="ef-choice ef-choice--media">
+    <label class="forma-choice forma-choice--media">
       <input type="checkbox" name="image-choice-chart-type-checkboxes" value="table">
-      <span class="ef-choice__media">
+      <span class="forma-choice__media">
         <svg viewBox="0 0 120 90" width="120" height="90" aria-hidden="true" focusable="false"><rect x="10" y="15" width="100" height="60" fill="none" stroke="currentColor" stroke-width="3"/><line x1="10" y1="35" x2="110" y2="35" stroke="currentColor" stroke-width="3"/><line x1="10" y1="55" x2="110" y2="55" stroke="currentColor" stroke-width="3"/><line x1="50" y1="15" x2="50" y2="75" stroke="currentColor" stroke-width="3"/></svg>
       </span>
-      <span class="ef-choice__content"><strong>Table</strong><span>Exact values with sorting.</span></span>
+      <span class="forma-choice__content"><strong>Table</strong><span>Exact values with sorting.</span></span>
     </label>
   </fieldset>
-</ef-image-choice>`
+</forma-image-choice>`
     },
     {
       id: "theme-preselected",
       title: "Preselected theme with an unavailable option",
       description: "A single-choice radio set with the current theme checked and one option natively disabled by the application. Because the media variant has no drawn indicator, the visible text (\"Current theme\") also states which option is active.",
-      html: `<ef-image-choice class="ef-component-tag">
-  <fieldset class="ef-choice-group">
-    <legend class="ef-choice-group__legend">Workspace theme</legend>
-    <label class="ef-choice ef-choice--media">
+      html: `<forma-image-choice class="forma-component-tag">
+  <fieldset class="forma-choice-group">
+    <legend class="forma-choice-group__legend">Workspace theme</legend>
+    <label class="forma-choice forma-choice--media">
       <input type="radio" name="image-choice-theme-preselected" value="light" checked>
-      <span class="ef-choice__media">
+      <span class="forma-choice__media">
         <svg viewBox="0 0 120 90" width="120" height="90" aria-hidden="true" focusable="false"><rect x="8" y="8" width="104" height="74" fill="none" stroke="currentColor" stroke-width="3"/><rect x="8" y="8" width="30" height="74" fill="currentColor" opacity="0.2"/></svg>
       </span>
-      <span class="ef-choice__content"><strong>Light</strong><span>Current theme. Dark text on a pale surface.</span></span>
+      <span class="forma-choice__content"><strong>Light</strong><span>Current theme. Dark text on a pale surface.</span></span>
     </label>
-    <label class="ef-choice ef-choice--media">
+    <label class="forma-choice forma-choice--media">
       <input type="radio" name="image-choice-theme-preselected" value="dark">
-      <span class="ef-choice__media">
+      <span class="forma-choice__media">
         <svg viewBox="0 0 120 90" width="120" height="90" aria-hidden="true" focusable="false"><rect x="8" y="8" width="104" height="74" fill="currentColor"/></svg>
       </span>
-      <span class="ef-choice__content"><strong>Dark</strong><span>Pale text on a dark surface.</span></span>
+      <span class="forma-choice__content"><strong>Dark</strong><span>Pale text on a dark surface.</span></span>
     </label>
-    <label class="ef-choice ef-choice--media">
+    <label class="forma-choice forma-choice--media">
       <input type="radio" name="image-choice-theme-preselected" value="brand" disabled>
-      <span class="ef-choice__media">
+      <span class="forma-choice__media">
         <svg viewBox="0 0 120 90" width="120" height="90" aria-hidden="true" focusable="false"><circle cx="60" cy="45" r="28" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="6 6"/></svg>
       </span>
-      <span class="ef-choice__content"><strong>Organization brand</strong><span>Unavailable: your administrator has not published a brand yet.</span></span>
+      <span class="forma-choice__content"><strong>Organization brand</strong><span>Unavailable: your administrator has not published a brand yet.</span></span>
     </label>
   </fieldset>
-</ef-image-choice>`
+</forma-image-choice>`
     },
     {
       id: "mobile-stacked-media",
@@ -92,31 +92,31 @@ export default {
       mobile: {
         height: 520,
         notes: [
-          "At 44rem and below `ef-choice--media` switches to one column: the 4:3 media frame spans the card width above the label and description.",
+          "At 44rem and below `forma-choice--media` switches to one column: the 4:3 media frame spans the card width above the label and description.",
           "The whole card, image included, is the tap target for the radio.",
           "Images scale to the frame (`max-inline-size: 100%`, `object-fit: cover`), so large source images cannot cause horizontal overflow at 320px.",
           "Cards become taller in portrait; plan for the list to scroll vertically rather than shrinking previews."
         ]
       },
-      html: `<ef-image-choice class="ef-component-tag">
-  <fieldset class="ef-choice-group">
-    <legend class="ef-choice-group__legend">Which layout is easiest to scan?</legend>
-    <label class="ef-choice ef-choice--media">
+      html: `<forma-image-choice class="forma-component-tag">
+  <fieldset class="forma-choice-group">
+    <legend class="forma-choice-group__legend">Which layout is easiest to scan?</legend>
+    <label class="forma-choice forma-choice--media">
       <input type="radio" name="image-choice-mobile-stacked-media" value="list" required>
-      <span class="ef-choice__media">
+      <span class="forma-choice__media">
         <svg viewBox="0 0 120 90" width="120" height="90" aria-hidden="true" focusable="false"><rect x="10" y="12" width="100" height="14" fill="currentColor"/><rect x="10" y="38" width="100" height="14" fill="currentColor"/><rect x="10" y="64" width="100" height="14" fill="currentColor"/></svg>
       </span>
-      <span class="ef-choice__content"><strong>List</strong><span>One item per row with the most detail.</span></span>
+      <span class="forma-choice__content"><strong>List</strong><span>One item per row with the most detail.</span></span>
     </label>
-    <label class="ef-choice ef-choice--media">
+    <label class="forma-choice forma-choice--media">
       <input type="radio" name="image-choice-mobile-stacked-media" value="grid">
-      <span class="ef-choice__media">
+      <span class="forma-choice__media">
         <svg viewBox="0 0 120 90" width="120" height="90" aria-hidden="true" focusable="false"><rect x="10" y="10" width="45" height="32" fill="currentColor"/><rect x="65" y="10" width="45" height="32" fill="currentColor"/><rect x="10" y="50" width="45" height="32" fill="currentColor"/><rect x="65" y="50" width="45" height="32" fill="currentColor"/></svg>
       </span>
-      <span class="ef-choice__content"><strong>Grid</strong><span>Cards with a thumbnail and title.</span></span>
+      <span class="forma-choice__content"><strong>Grid</strong><span>Cards with a thumbnail and title.</span></span>
     </label>
   </fieldset>
-</ef-image-choice>`
+</forma-image-choice>`
     }
   ],
   api: {
@@ -131,9 +131,9 @@ export default {
       { name: "aria-hidden", on: "inline svg", values: "true", default: "—", description: "Hides decorative inline SVG previews from assistive technology." }
     ],
     hooks: {
-      "ef-choice--media": "Owned by [[choice-group]]. Turns an `ef-choice` card into the media layout: two columns, inline-start padding reduced, drawn indicator hidden. One column at 44rem and below.",
-      "ef-choice__media": "The media frame: 4:3 aspect ratio, subtle border, secondary surface, content centred and clipped. A child `img` is scaled to fit with `object-fit: cover`.",
-      "ef-choice__content": "The bold option name and supporting text, as in every choice card."
+      "forma-choice--media": "Owned by [[choice-group]]. Turns an `forma-choice` card into the media layout: two columns, inline-start padding reduced, drawn indicator hidden. One column at 44rem and below.",
+      "forma-choice__media": "The media frame: 4:3 aspect ratio, subtle border, secondary surface, content centred and clipped. A child `img` is scaled to fit with `object-fit: cover`.",
+      "forma-choice__content": "The bold option name and supporting text, as in every choice card."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Radios: the group is one tab stop. Checkboxes: each option is a tab stop." },
@@ -187,7 +187,7 @@ export default {
     ]
   },
   related: [
-    { slug: "choice-group", note: "Plain single-choice cards without media, and the owner of the `ef-choice--media` hook." },
+    { slug: "choice-group", note: "Plain single-choice cards without media, and the owner of the `forma-choice--media` hook." },
     { slug: "multi-choice", note: "Adds guidance and status text for several selections; combine it with media cards." },
     { slug: "segmented-control", note: "Use for a few short text options side by side." },
     { slug: "select", note: "Use for long lists of options where previews do not help." }

@@ -1,5 +1,5 @@
 .summary {
-  color: var(--ef-color-text-primary, #161616);
-  background: var(--ef-color-surface-primary);
+  color: var(--forma-color-text-primary, #161616);
+  background: var(--forma-color-surface-primary);
   border-color: var(--summa-boundary-color, currentColor);
 }

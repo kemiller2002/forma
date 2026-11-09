@@ -16,7 +16,7 @@ the site's repository, performed under
 
 | Site | Repository / path | Build and deploy | Domain | Site CSS lines | Copies EF palette | Estimated duplicate lines | Difficulty | Order |
 |---|---|---|---|---|---|---|---|---|
-| **Dokimos** | `dokimos` `site/` | Node ESM `build.mjs` → Pages | dokimos.echelonfoundry.com | 449 | Yes (`--ef-*` verbatim) | ~190 | Medium | **1 (early target)** |
+| **Dokimos** | `dokimos` `site/` | Node ESM `build.mjs` → Pages | dokimos.echelonfoundry.com | 449 | Yes (`--forma-*` verbatim) | ~190 | Medium | **1 (early target)** |
 | Echelon Foundry | `echelon-foundry` | Node `build.js` → Pages | echelonfoundry.com | 190 | Is the reference | ~175 | Low | 2 |
 | Ordo | `ordo` `site/` + `src/Ordo.Site` (F#) | .NET F# generator → Pages | ordo.echelonfoundry.com | 727 | Yes | ~430 | Medium | 3 |
 | Limen | `limen` `site/` | F# WASM + TS build → Pages | kemiller2002.github.io/limen | 398 | Yes ("adapted from" EF) | ~190 | Medium | 4 |
@@ -80,7 +80,7 @@ about 2,400 lines of duplicated presentation CSS. None consumes Forma today.
     them;
   - pipeline, lifecycle, and drill-down figures;
   - brand mark;
-  - graph-paper backdrop value through `--ef-site-backdrop`.
+  - graph-paper backdrop value through `--forma-site-backdrop`.
 - **Obsolete after migration:** the palette copy, reset, typography, header,
   navigation, footer, hero, buttons, section heading, prose, code, and generic
   responsive rules.
@@ -96,19 +96,19 @@ about 2,400 lines of duplicated presentation CSS. None consumes Forma today.
 
   | Existing class | Forma replacement |
   |---|---|
-  | `.site-header` / `.nav-shell` / `.brand*` | `.ef-site-header*` |
-  | `nav a` / `.pill-link` | `.ef-site-nav__link[data-ef-variant="action"]` |
-  | `.hero*` | `.ef-hero*` |
-  | `.section-heading` | `.ef-section-heading` |
-  | `.grid`, `.columns`, `.pillars` | `.ef-card-grid[data-ef-columns]` |
-  | `.card` / `.card-link` | `.ef-card` / `.ef-card__link` |
-  | `.stat-blocks` | `.ef-facts` |
-  | `.research-row` | `.ef-index__item` |
-  | `.method-band` | inverse `.ef-section` + `.ef-split` + `.ef-steps` |
-  | `.chip`, `.tag`, `.list-inline` | `.ef-badge`, `.ef-badge-list` |
-  | `.signal` | `.ef-statement` |
-  | `.site-footer` | `.ef-site-footer` |
-  | `.case-body` | `.ef-prose` |
+  | `.site-header` / `.nav-shell` / `.brand*` | `.forma-site-header*` |
+  | `nav a` / `.pill-link` | `.forma-site-nav__link[data-forma-variant="action"]` |
+  | `.hero*` | `.forma-hero*` |
+  | `.section-heading` | `.forma-section-heading` |
+  | `.grid`, `.columns`, `.pillars` | `.forma-card-grid[data-forma-columns]` |
+  | `.card` / `.card-link` | `.forma-card` / `.forma-card__link` |
+  | `.stat-blocks` | `.forma-facts` |
+  | `.research-row` | `.forma-index__item` |
+  | `.method-band` | inverse `.forma-section` + `.forma-split` + `.forma-steps` |
+  | `.chip`, `.tag`, `.list-inline` | `.forma-badge`, `.forma-badge-list` |
+  | `.signal` | `.forma-statement` |
+  | `.site-footer` | `.forma-site-footer` |
+  | `.case-body` | `.forma-prose` |
 
 - **Remaining gaps:** GAP-MKT-02 (fonts stay site-loaded). The contact form
   uses core Forma form foundations.
@@ -191,7 +191,7 @@ about 2,400 lines of duplicated presentation CSS. None consumes Forma today.
 - **Remaining gaps:**
   - coexistence with Tailwind preflight (load Forma after preflight, or drop
     Tailwind);
-  - pull quotes (`.ef-statement` may suffice);
+  - pull quotes (`.forma-statement` may suffice);
   - the state-flow figure (GAP-MKT-06).
 - **Stays local:** service tickets, engagement and credibility ledgers,
   speaker and workshop grids.

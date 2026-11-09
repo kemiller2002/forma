@@ -26,45 +26,45 @@ export default {
       id: "price-band",
       title: "Price filter",
       description: "A price band for filtering products, with the currency in the legend and whole-currency steps. Both endpoints are optional, and the status restates what will be applied.",
-      html: `<ef-range-entry class="ef-component-tag">
-  <fieldset class="ef-range-entry">
-    <legend class="ef-range-entry__legend">Price (USD)</legend>
-    <div class="ef-range-entry__inputs">
+      html: `<forma-range-entry class="forma-component-tag">
+  <fieldset class="forma-range-entry">
+    <legend class="forma-range-entry__legend">Price (USD)</legend>
+    <div class="forma-range-entry__inputs">
       <label>
         <span>Lowest</span>
         <input type="number" name="price-min" min="0" max="10000" step="1" value="50" inputmode="numeric">
       </label>
-      <span class="ef-range-entry__separator" aria-hidden="true">to</span>
+      <span class="forma-range-entry__separator" aria-hidden="true">to</span>
       <label>
         <span>Highest</span>
         <input type="number" name="price-max" min="0" max="10000" step="1" inputmode="numeric">
       </label>
     </div>
-    <p class="ef-range-entry__status" data-ef-state="valid" aria-live="polite">$50 and above</p>
+    <p class="forma-range-entry__status" data-forma-state="valid" aria-live="polite">$50 and above</p>
   </fieldset>
-</ef-range-entry>`
+</forma-range-entry>`
     },
     {
       id: "reversed-endpoints",
       title: "Minimum above maximum",
-      description: "The application found the minimum larger than the maximum. The maximum input is marked invalid and the status line switches to an error that names the fix, with the invalid state recorded in data-ef-state for the application.",
-      html: `<ef-range-entry class="ef-component-tag">
-  <fieldset class="ef-range-entry">
-    <legend class="ef-range-entry__legend">Acceptable latency (milliseconds)</legend>
-    <div class="ef-range-entry__inputs">
+      description: "The application found the minimum larger than the maximum. The maximum input is marked invalid and the status line switches to an error that names the fix, with the invalid state recorded in data-forma-state for the application.",
+      html: `<forma-range-entry class="forma-component-tag">
+  <fieldset class="forma-range-entry">
+    <legend class="forma-range-entry__legend">Acceptable latency (milliseconds)</legend>
+    <div class="forma-range-entry__inputs">
       <label>
         <span>Minimum</span>
         <input type="number" name="latency-min" min="0" max="5000" step="50" value="1200" inputmode="numeric">
       </label>
-      <span class="ef-range-entry__separator" aria-hidden="true">to</span>
+      <span class="forma-range-entry__separator" aria-hidden="true">to</span>
       <label>
         <span>Maximum</span>
         <input type="number" name="latency-max" min="0" max="5000" step="50" value="800" inputmode="numeric" aria-invalid="true" aria-describedby="range-entry-reversed-status">
       </label>
     </div>
-    <p class="ef-range-entry__status" id="range-entry-reversed-status" data-ef-state="invalid" aria-live="polite">The maximum (800) must be at least the minimum (1200).</p>
+    <p class="forma-range-entry__status" id="range-entry-reversed-status" data-forma-state="invalid" aria-live="polite">The maximum (800) must be at least the minimum (1200).</p>
   </fieldset>
-</ef-range-entry>`
+</forma-range-entry>`
     },
     {
       id: "mobile-age-range",
@@ -79,23 +79,23 @@ export default {
           "The status line wraps under the inputs; nothing scrolls horizontally."
         ]
       },
-      html: `<ef-range-entry class="ef-component-tag">
-  <fieldset class="ef-range-entry">
-    <legend class="ef-range-entry__legend">Audience age</legend>
-    <div class="ef-range-entry__inputs">
+      html: `<forma-range-entry class="forma-component-tag">
+  <fieldset class="forma-range-entry">
+    <legend class="forma-range-entry__legend">Audience age</legend>
+    <div class="forma-range-entry__inputs">
       <label>
         <span>From age</span>
         <input type="number" name="age-min" min="13" max="100" step="1" value="18" inputmode="numeric">
       </label>
-      <span class="ef-range-entry__separator" aria-hidden="true">to</span>
+      <span class="forma-range-entry__separator" aria-hidden="true">to</span>
       <label>
         <span>To age</span>
         <input type="number" name="age-max" min="13" max="100" step="1" value="34" inputmode="numeric">
       </label>
     </div>
-    <p class="ef-range-entry__status" data-ef-state="valid" aria-live="polite">Ages 18 to 34</p>
+    <p class="forma-range-entry__status" data-forma-state="valid" aria-live="polite">Ages 18 to 34</p>
   </fieldset>
-</ef-range-entry>`
+</forma-range-entry>`
     }
   ],
   api: {
@@ -107,18 +107,18 @@ export default {
       { name: "value", on: "input", values: "number", default: "empty", description: "Initial endpoint value." },
       { name: "name", on: "input", values: "string", default: "—", description: "Separate field names for the lower and upper bound." },
       { name: "inputmode", on: "input", values: "numeric | decimal", default: "from type", description: "Keypad hint for touch devices." },
-      { name: "aria-live", on: ".ef-range-entry__status", values: "polite", default: "—", description: "Announces the application's updated range or error text." },
-      { name: "aria-hidden", on: ".ef-range-entry__separator", values: "true", default: "—", description: "The visual \"to\" is not read; each input has its own label." },
+      { name: "aria-live", on: ".forma-range-entry__status", values: "polite", default: "—", description: "Announces the application's updated range or error text." },
+      { name: "aria-hidden", on: ".forma-range-entry__separator", values: "true", default: "—", description: "The visual \"to\" is not read; each input has its own label." },
       { name: "aria-invalid", on: "input", values: "true", default: "absent", description: "Set by the application on the endpoint that needs correcting." },
       { name: "aria-describedby", on: "input", values: "id of the status", default: "—", description: "Links the error text in the status line to the invalid endpoint." }
     ],
     hooks: {
-      "ef-range-entry": "Root fieldset with margin, padding and border removed.",
-      "ef-range-entry__legend": "Legend naming the range (1rem, bold).",
-      "ef-range-entry__inputs": "Three-column grid (endpoint, separator, endpoint) up to 30rem wide; one column at 44rem and below.",
-      "ef-range-entry__separator": "Visual separator word, bottom-aligned with the inputs.",
-      "ef-range-entry__status": "Status line restating the range or reporting an error (0.8125rem, weight 650).",
-      "data-ef-state": "Application-owned marker on the status line (the pattern uses valid; examples use invalid). Forma does not currently style it, so the status text itself must carry the meaning."
+      "forma-range-entry": "Root fieldset with margin, padding and border removed.",
+      "forma-range-entry__legend": "Legend naming the range (1rem, bold).",
+      "forma-range-entry__inputs": "Three-column grid (endpoint, separator, endpoint) up to 30rem wide; one column at 44rem and below.",
+      "forma-range-entry__separator": "Visual separator word, bottom-aligned with the inputs.",
+      "forma-range-entry__status": "Status line restating the range or reporting an error (0.8125rem, weight 650).",
+      "data-forma-state": "Application-owned marker on the status line (the pattern uses valid; examples use invalid). Forma does not currently style it, so the status text itself must carry the meaning."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between the minimum and maximum inputs." },
@@ -130,9 +130,9 @@ export default {
     form: "Each endpoint submits separately under its own name and validates its own min, max and step. The relationship between endpoints is not enforced natively."
   },
   states: [
-    { name: "Valid", how: "application status text; data-ef-state=\"valid\"", description: "Status restates the interpreted range." },
+    { name: "Valid", how: "application status text; data-forma-state=\"valid\"", description: "Status restates the interpreted range." },
     { name: "Open-ended", how: "one endpoint empty", description: "Status explains the open bound, for example \"$50 and above\"." },
-    { name: "Invalid", how: "aria-invalid on an endpoint plus error text in the status; data-ef-state=\"invalid\"", description: "Status names the fix. Forma does not restyle the status or input, so the text carries the error." },
+    { name: "Invalid", how: "aria-invalid on an endpoint plus error text in the status; data-forma-state=\"invalid\"", description: "Status names the fix. Forma does not restyle the status or input, so the text carries the error." },
     { name: "Focus", how: ":focus-visible", description: "Foundation focus ring on the focused endpoint." }
   ],
   accessibility: {

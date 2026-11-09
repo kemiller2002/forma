@@ -7,8 +7,8 @@ The current package identifier is `@echelon-foundry/design-system`.
 
 Forma is not a JavaScript component framework. It is a zero-runtime collection
 of semantic HTML contracts, CSS, design tokens, accessibility rules, and visual
-patterns. Public examples use inert `<ef-*>` authoring wrappers, while
-`.ef-*` classes style the canonical inner pattern. The tags are not registered
+patterns. Public examples use inert `<forma-*>` authoring wrappers, while
+`.forma-*` classes style the canonical inner pattern. The tags are not registered
 Custom Elements and own no hidden behavior.
 
 ## Required decision order
@@ -120,7 +120,7 @@ Prefer the most semantic existing primitive.
 - Ordinary on/off preference: `switch`.
 - Disclosure of optional content: native `details` via `disclosure`.
 - Modal confirmation: native `dialog` via the `dialog` pattern.
-- Edge-attached modal navigation, filters, details, or bounded work: `flyout` with `data-ef-side="left|right"`.
+- Edge-attached modal navigation, filters, details, or bounded work: `flyout` with `data-forma-side="left|right"`.
 - Simple single/multi selection: `choice-group` / `multi-choice`.
 - Complex ranking or rule construction: use the Forma visual contract and put
   behavior in Limen/application code.
@@ -132,13 +132,13 @@ Before changing application CSS for customer identity or presentation, read
 `requirements/WHITE-LABEL-AND-SKINNING.md`.
 
 - Express customer/product identity through a versioned Brand Manifest.
-- Use documented `data-ef-skin` presets for presentation-only density or shape changes.
-- Use `data-ef-type="application|dense|accessible"` for an application, dense administrative or large-text heading and body scale (see `docs/CONSUMING-FORMA.md`, "Typography roles"). Do not restate `--ef-type-size-*` or heading `max-inline-size` in application CSS.
+- Use documented `data-forma-skin` presets for presentation-only density or shape changes.
+- Use `data-forma-type="application|dense|accessible"` for an application, dense administrative or large-text heading and body scale (see `docs/CONSUMING-FORMA.md`, "Typography roles"). Do not restate `--forma-type-size-*` or heading `max-inline-size` in application CSS.
 - Do not fork canonical component CSS, depend on internal selectors, or accept arbitrary customer CSS as the normal white-label path.
 - Runtime brand/theme/skin selection, persistence, remote loading, and interactive preview behavior belong to the consuming application, normally through Limen.
 - Brand terminology and asset references are application/build inputs; they are not hidden CSS content.
 - Brand or skin changes must never alter legal actions, permissions, validation, scoring, obligations, or domain transitions.
-- Do not restate semantic colors under `@media (forced-colors: active)` in a theme, brand or skin: Forma projects every `--ef-color-*` token to system colors there, and component state rules own `Highlight` usage.
+- Do not restate semantic colors under `@media (forced-colors: active)` in a theme, brand or skin: Forma projects every `--forma-color-*` token to system colors there, and component state rules own `Highlight` usage.
 
 ### Color pairs
 
@@ -155,12 +155,12 @@ checks against every compiled theme and brand:
 
 `text-secondary`, `text-muted` and the accent roles are **not** validated on
 `surface-secondary` (graphite on stone is 4.0:1). Forma therefore re-pairs
-them in every rule that paints `--ef-color-surface-secondary`
-(`.ef-surface`, `.ef-fault--inline`, assistant turns, drop zones, table
+them in every rule that paints `--forma-color-surface-secondary`
+(`.forma-surface`, `.forma-fault--inline`, assistant turns, drop zones, table
 headers and the rest): secondary and muted text resolve to
-`text-on-secondary-surface`, and `--ef-surface-accent-text-color` makes links
+`text-on-secondary-surface`, and `--forma-surface-accent-text-color` makes links
 and accent labels (kickers, record types) `text-primary`. Accent-colored text
-must read `var(--ef-surface-accent-text-color, var(--ef-color-accent-*))`.
+must read `var(--forma-surface-accent-text-color, var(--forma-color-accent-*))`.
 A new rule that paints the secondary surface must declare the
 same three properties; the test fails until it does. Do not work
 around the pairing with consumer CSS such as `p { color: inherit }`.
@@ -171,24 +171,24 @@ forced colors.
 The generated public vocabulary, semantic pairings, fallback rules, validator,
 data-visualization boundary, and Summa migration map are documented in
 [`COLOR.md`](COLOR.md). Validate against the contract shipped by the pinned
-Forma release; a plausible `--ef-color-*` spelling is not a token.
+Forma release; a plausible `--forma-color-*` spelling is not a token.
 
 ## Public component tags
 
 Use Forma's public inert authoring tag around the canonical semantic pattern:
 
 ```html
-<ef-switch class="ef-component-tag">
-  <label class="ef-switch">
+<forma-switch class="forma-component-tag">
+  <label class="forma-switch">
     <!-- canonical native switch markup -->
   </label>
-</ef-switch>
+</forma-switch>
 ```
 
 Rules:
 
-- the tag name is `ef-` plus the canonical pattern slug;
-- keep `class="ef-component-tag"` on the wrapper;
+- the tag name is `forma-` plus the canonical pattern slug;
+- keep `class="forma-component-tag"` on the wrapper;
 - never register these wrappers with `customElements.define()`;
 - do not move native semantics onto the wrapper;
 - forms, labels, `dialog`, Popover, `details`, ARIA relationships, and application state stay inside the wrapper;
@@ -217,13 +217,13 @@ Every animation represents one of five phenomena (MOT-010). Choose the model fir
 
 | Model | Use for | Timing variables |
 | --- | --- | --- |
-| inertial / spring | an object with perceived mass settling after activation or release (switch thumb, selection indicator, surface entry, press) | `--ef-motion-inertia-duration`, `--ef-motion-exit-duration`, `--ef-motion-press-duration`; `--ef-motion-spring-easing`, `--ef-motion-damped-easing` |
-| gravity-derived | a small vertical directional cue; timing ignores mass | `--ef-motion-gravity-duration`; `--ef-motion-damped-easing` |
-| constant-velocity / cadence | repeated activity or a bounded discrete sequence | `--ef-motion-cadence-period`; `--ef-motion-cadence-easing` (`linear`) |
-| direct manipulation / authoritative value | drag, resize, scroll-linked, native range and determinate progress | `--ef-motion-direct-duration` (`0ms`); `--ef-motion-direct-easing` |
-| perceptual interpolation | opacity, color, background, border, shadow, backdrop; never assigned mass | `--ef-motion-perceptual-duration`, `--ef-motion-perceptual-emphasis-duration`; `--ef-motion-perceptual-easing` |
+| inertial / spring | an object with perceived mass settling after activation or release (switch thumb, selection indicator, surface entry, press) | `--forma-motion-inertia-duration`, `--forma-motion-exit-duration`, `--forma-motion-press-duration`; `--forma-motion-spring-easing`, `--forma-motion-damped-easing` |
+| gravity-derived | a small vertical directional cue; timing ignores mass | `--forma-motion-gravity-duration`; `--forma-motion-damped-easing` |
+| constant-velocity / cadence | repeated activity or a bounded discrete sequence | `--forma-motion-cadence-period`; `--forma-motion-cadence-easing` (`linear`) |
+| direct manipulation / authoritative value | drag, resize, scroll-linked, native range and determinate progress | `--forma-motion-direct-duration` (`0ms`); `--forma-motion-direct-easing` |
+| perceptual interpolation | opacity, color, background, border, shadow, backdrop; never assigned mass | `--forma-motion-perceptual-duration`, `--forma-motion-perceptual-emphasis-duration`; `--forma-motion-perceptual-easing` |
 
-`--ef-motion-state-duration` is a legacy compatibility variable: it derives from inertial mass, so shipped selectors must not use it for non-spatial change.
+`--forma-motion-state-duration` is a legacy compatibility variable: it derives from inertial mass, so shipped selectors must not use it for non-spatial change.
 
 ### Adding or changing an animation legally
 
@@ -254,7 +254,7 @@ Read `requirements/MOBILE-COMPONENT-CONTRACT.md` before adding or modifying a co
 Before claiming consequential UI complete, apply `requirements/VISUAL-ENGINEERING-VERIFICATION.md`.
 
 - Separate first-glance recognition from deliberate verification.
-- Use `.ef-identifier` and `.ef-critical-value` for low-context values when appropriate.
+- Use `.forma-identifier` and `.forma-critical-value` for low-context values when appropriate.
 - Use `verification-frame` when the task explicitly requires recognize -> verify -> act.
 - Preserve unknown, partial, stale, reconciling, unavailable, and other application states without strengthening them.
 - Exercise semantic-channel dropout, content stress, text spacing, grayscale/CVD screening, low-brightness/glare screening, zoom/reflow, forced colors, and reduced motion as applicable.
@@ -319,18 +319,18 @@ terminal component:
 1. read `requirements/CHARACTER-GRID.md` and `docs/CHARACTER-GRID-AUTHORING.md`;
 2. start from `patterns/character-grid*.html`; the three-screen reference is
    `patterns/character-grid-workflow.html`;
-3. declare geometry and `data-ef-row/col/len` per run, and write runs in
+3. declare geometry and `data-forma-row/col/len` per run, and write runs in
    row-major order — never use positive `tabindex` or inline `style`;
-   `data-ef-rows` is the application's rows; a device status line outside
-   them (the 3270 OIA) is `data-ef-status-rows="1"` and holds status only;
-4. fields are native inputs with `maxlength` = `data-ef-len` and a preceding
+   `data-forma-rows` is the application's rows; a device status line outside
+   them (the 3270 OIA) is `data-forma-status-rows="1"` and holds status only;
+4. fields are native inputs with `maxlength` = `data-forma-len` and a preceding
    `<label for>`; protected values are text, never `readonly` inputs;
-5. keys are native buttons (`data-ef-action`, `<kbd>`), Enter first, Reset
+5. keys are native buttons (`data-forma-action`, `<kbd>`), Enter first, Reset
    `type="button"`, never `type="reset"`;
 6. key mapping, Enter/Clear/Reset/PF processing, transitions, input
    inhibition, and reveal orchestration are Limen/application behavior;
    legality is Ordo;
-7. profiles (`data-ef-profile="ibm-3270"`) change presentation only;
+7. profiles (`data-forma-profile="ibm-3270"`) change presentation only;
    SequentialReveal is optional, protected-text-only, and static under
    reduced motion;
 8. run `node tools/character-grid-conformance.mjs` on your markup, plus
@@ -343,7 +343,7 @@ When presenting a fault produced by Aegis:
 1. map the safe `Aegis.Presentation.T` view into Forma; do not bind the raw `Fault`;
 2. map `Silent` to no visible fault surface;
 3. map `Inline`, `Notification`, `Banner`, and `Blocking` to `fault-inline`, `fault-notification`, `fault-banner`, and `fault-blocking`;
-4. render exact Aegis recovery capability identity through `data-ef-aegis-capability`;
+4. render exact Aegis recovery capability identity through `data-forma-aegis-capability`;
 5. treat that DOM attribute as descriptive only and revalidate current capability/Ordo state at activation;
 6. keep `TechnicalDetails`, exception chains, stack traces, raw context, breadcrumbs, snapshots, and secrets out of normal presentation;
 7. use `fault-details` only with an explicitly approved and already-sanitized view model;
@@ -384,11 +384,11 @@ Read `requirements/OBJECT-METADATA-AND-DIAGRAM-PRESENTATION.md` before adding me
 - Never infer workflow meaning from color. A metadata-to-color rule must be explicit application/profile data.
 - Verify dark/light, forced colors, grayscale, and backgrounds-disabled output when diagram color matters.
 - Graph topology, routing, drag/drop, commands, workflow execution, and legal transitions remain outside Forma.
-- Render diagrams with the public `.ef-diagram*` family (`patterns/diagram.html`); pass resolved geometry and colors only through the documented custom properties. [ADR-0004](decisions/ADR-0004-diagram-presentation-boundary.md) lists what Forma owns, what stays Studio editor chrome, and the deferred gaps. Report a missing visual as a Forma issue instead of adding private diagram CSS.
-- Give every connector a matching item in `.ef-diagram__relations`, and give every node visible kind text.
+- Render diagrams with the public `.forma-diagram*` family (`patterns/diagram.html`); pass resolved geometry and colors only through the documented custom properties. [ADR-0004](decisions/ADR-0004-diagram-presentation-boundary.md) lists what Forma owns, what stays Studio editor chrome, and the deferred gaps. Report a missing visual as a Forma issue instead of adding private diagram CSS.
+- Give every connector a matching item in `.forma-diagram__relations`, and give every node visible kind text.
 - Read `contracts/diagram-presentation.json` (package export `./contracts/diagram-presentation.json`) for the machine-readable list of shapes, group variants, line styles, value states, appearance and geometry custom properties, token references, and fallbacks. Do not scrape the CSS.
-- Put `.ef-diagram-group` boundaries (group, lane, phase) first in the canvas and state membership in text; overlap never implies membership.
-- Mark metadata values the author did not write with `.ef-diagram-value-state` text (default, derived, source-bound, unknown, unavailable, invalid).
+- Put `.forma-diagram-group` boundaries (group, lane, phase) first in the canvas and state membership in text; overlap never implies membership.
+- Mark metadata values the author did not write with `.forma-diagram-value-state` text (default, derived, source-bound, unknown, unavailable, invalid).
 
 
 ## Portable workflows

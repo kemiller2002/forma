@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Multi-selection across a hierarchy with application-owned propagation and selection rules.",
   purpose: {
-    description: "Hierarchical multi-choice lets people check several items grouped under collapsible categories. It uses the same `ef-hierarchy` fieldset, `ef-hierarchy__tree` nested list and native `details`/`summary` branches as [[hierarchical-choice]], with native checkboxes instead of radios, and usually an `ef-selection-status` line reporting the count. Forma deliberately does not decide what a parent means: whether checking a category includes its children, whether a partly checked branch shows a mixed state (the `indeterminate` property can only be set by script), and how selections cascade or are validated are application or Limen rules. The native baseline is independent checkboxes that submit exactly what is checked.",
+    description: "Hierarchical multi-choice lets people check several items grouped under collapsible categories. It uses the same `forma-hierarchy` fieldset, `forma-hierarchy__tree` nested list and native `details`/`summary` branches as [[hierarchical-choice]], with native checkboxes instead of radios, and usually an `forma-selection-status` line reporting the count. Forma deliberately does not decide what a parent means: whether checking a category includes its children, whether a partly checked branch shows a mixed state (the `indeterminate` property can only be set by script), and how selections cascade or are validated are application or Limen rules. The native baseline is independent checkboxes that submit exactly what is checked.",
     useWhen: [
       "Several items can be chosen from a grouped set (affected services, notification categories, permissions by area).",
       "Users benefit from collapsing groups they do not need.",
@@ -41,11 +41,11 @@ export default {
       },
       title: "Category option that includes its children",
       description: "The application's rule is that \"All Platform services\" covers current and future Platform services. It is rendered as an explicit option whose description states the rule; the application, not Forma, keeps the child checkboxes consistent with it.",
-      html: `<ef-hierarchical-multi-choice class="ef-component-tag">
-  <fieldset class="ef-hierarchy" aria-describedby="hierarchical-multi-choice-category-includes-children-rule">
-    <legend class="ef-hierarchy__legend">Send alerts for these services</legend>
-    <p class="ef-selection-guidance" id="hierarchical-multi-choice-category-includes-children-rule">Choosing an “All” option also covers services added to that area later.</p>
-    <ul class="ef-hierarchy__tree">
+      html: `<forma-hierarchical-multi-choice class="forma-component-tag">
+  <fieldset class="forma-hierarchy" aria-describedby="hierarchical-multi-choice-category-includes-children-rule">
+    <legend class="forma-hierarchy__legend">Send alerts for these services</legend>
+    <p class="forma-selection-guidance" id="hierarchical-multi-choice-category-includes-children-rule">Choosing an “All” option also covers services added to that area later.</p>
+    <ul class="forma-hierarchy__tree">
       <li>
         <details open>
           <summary>Platform</summary>
@@ -66,9 +66,9 @@ export default {
         </details>
       </li>
     </ul>
-    <p class="ef-selection-status" data-ef-state="valid" aria-live="polite">All Platform services selected</p>
+    <p class="forma-selection-status" data-forma-state="valid" aria-live="polite">All Platform services selected</p>
   </fieldset>
-</ef-hierarchical-multi-choice>`
+</forma-hierarchical-multi-choice>`
     },
     {
       id: "partial-branch-in-text",
@@ -81,10 +81,10 @@ export default {
       },
       title: "Partial selection stated in the summary",
       description: "Items are independent. The application writes each branch's count into its summary, so a collapsed branch still tells the user that something inside it is checked. This replaces a mixed-state checkbox, which would need script.",
-      html: `<ef-hierarchical-multi-choice class="ef-component-tag">
-  <fieldset class="ef-hierarchy">
-    <legend class="ef-hierarchy__legend">Which datasets should the export include?</legend>
-    <ul class="ef-hierarchy__tree">
+      html: `<forma-hierarchical-multi-choice class="forma-component-tag">
+  <fieldset class="forma-hierarchy">
+    <legend class="forma-hierarchy__legend">Which datasets should the export include?</legend>
+    <ul class="forma-hierarchy__tree">
       <li>
         <details>
           <summary>Sales (1 of 3 selected)</summary>
@@ -105,9 +105,9 @@ export default {
         </details>
       </li>
     </ul>
-    <p class="ef-selection-status" data-ef-state="valid" aria-live="polite">1 dataset selected</p>
+    <p class="forma-selection-status" data-forma-state="valid" aria-live="polite">1 dataset selected</p>
   </fieldset>
-</ef-hierarchical-multi-choice>`
+</forma-hierarchical-multi-choice>`
     },
     {
       id: "mobile-notification-areas",
@@ -129,10 +129,10 @@ export default {
           "The status line follows the tree in source order, so after scrolling to the end the user sees the count next to the last options."
         ]
       },
-      html: `<ef-hierarchical-multi-choice class="ef-component-tag">
-  <fieldset class="ef-hierarchy">
-    <legend class="ef-hierarchy__legend">Notify me about</legend>
-    <ul class="ef-hierarchy__tree">
+      html: `<forma-hierarchical-multi-choice class="forma-component-tag">
+  <fieldset class="forma-hierarchy">
+    <legend class="forma-hierarchy__legend">Notify me about</legend>
+    <ul class="forma-hierarchy__tree">
       <li>
         <details open>
           <summary>Projects I own</summary>
@@ -151,9 +151,9 @@ export default {
         </details>
       </li>
     </ul>
-    <p class="ef-selection-status" data-ef-state="valid" aria-live="polite">2 notification types selected</p>
+    <p class="forma-selection-status" data-forma-state="valid" aria-live="polite">2 notification types selected</p>
   </fieldset>
-</ef-hierarchical-multi-choice>`
+</forma-hierarchical-multi-choice>`
     }
   ],
   api: {
@@ -165,15 +165,15 @@ export default {
       { name: "disabled", on: "input", values: "boolean", default: "absent", description: "Used by the application for items that are implied by a parent choice or unavailable; disabled items are not submitted." },
       { name: "open", on: "details", values: "boolean", default: "absent", description: "Initial expanded state of a branch." },
       { name: "aria-describedby", on: "fieldset", values: "id", default: "—", description: "Links the application's selection rule to the group." },
-      { name: "aria-live", on: ".ef-selection-status", values: "polite", default: "—", description: "Announces the application's updated count." },
-      { name: "data-ef-state", on: ".ef-selection-status", values: "application vocabulary (for example valid, incomplete)", default: "—", description: "Unstyled marker of the application's selection state; the text carries the meaning." }
+      { name: "aria-live", on: ".forma-selection-status", values: "polite", default: "—", description: "Announces the application's updated count." },
+      { name: "data-forma-state", on: ".forma-selection-status", values: "application vocabulary (for example valid, incomplete)", default: "—", description: "Unstyled marker of the application's selection state; the text carries the meaning." }
     ],
     hooks: {
-      "ef-hierarchy": "Owned by [[hierarchical-choice]]. Fieldset reset plus branch guide lines and 44px summary and label rows.",
-      "ef-hierarchy__legend": "The question above the tree.",
-      "ef-hierarchy__tree": "Root list with no markers; nested lists are indented.",
-      "ef-selection-status": "Owned by [[multi-choice]]. Small semi-bold count line after the tree.",
-      "ef-selection-guidance": "Owned by [[multi-choice]]. States the application's selection rule before the tree."
+      "forma-hierarchy": "Owned by [[hierarchical-choice]]. Fieldset reset plus branch guide lines and 44px summary and label rows.",
+      "forma-hierarchy__legend": "The question above the tree.",
+      "forma-hierarchy__tree": "Root list with no markers; nested lists are indented.",
+      "forma-selection-status": "Owned by [[multi-choice]]. Small semi-bold count line after the tree.",
+      "forma-selection-guidance": "Owned by [[multi-choice]]. States the application's selection rule before the tree."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through summaries and each rendered checkbox in document order. Items in collapsed branches are skipped until opened." },
@@ -227,7 +227,7 @@ export default {
     ]
   },
   related: [
-    { slug: "hierarchical-choice", note: "Single-choice version of the same tree, and the owner of the `ef-hierarchy` hooks." },
+    { slug: "hierarchical-choice", note: "Single-choice version of the same tree, and the owner of the `forma-hierarchy` hooks." },
     { slug: "multi-choice", note: "Flat multi-selection with guidance and status text." },
     { slug: "checkbox", note: "Styled single checkbox for independent options outside a hierarchy." },
     { slug: "hierarchy-tree", note: "Use for navigation through a hierarchy." }

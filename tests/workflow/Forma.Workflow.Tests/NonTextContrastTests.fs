@@ -56,10 +56,10 @@ let private single label (findings: Finding list) =
     | other -> fail (sprintf "%s: expected one A11Y-NONTEXT-CONTRAST finding, got %A" label (other |> List.map (fun f -> f.Pointer, f.Message)))
 
 let private statusTokens =
-    [ "token:status-warning", StatusWarning, "var(--ef-color-status-warning)"
-      "token:status-danger", StatusDanger, "var(--ef-color-status-danger)"
-      "token:status-success", StatusSuccess, "var(--ef-color-status-success)"
-      "token:status-info", StatusInfo, "var(--ef-color-status-info)" ]
+    [ "token:status-warning", StatusWarning, "var(--forma-color-status-warning)"
+      "token:status-danger", StatusDanger, "var(--forma-color-status-danger)"
+      "token:status-success", StatusSuccess, "var(--forma-color-status-success)"
+      "token:status-info", StatusInfo, "var(--forma-color-status-info)" ]
 
 // -- the real pipeline, shared with tests/browser/diagram-nontext-contrast.spec.mjs --
 
@@ -188,22 +188,22 @@ let all =
               equal (Some w) again.Workflow $"{text}: round trip"
               expect ((Codec.serialize w).Contains("\"" + text + "\"")) $"{text}: serialized"
               let html = (WorkflowDocument.fragment DocumentOptions.defaults w).Html
-              expect (html.Contains("--ef-diagram-stroke:" + css) || html.Contains("--ef-diagram-stroke: " + css)) $"{text}: node stroke not rendered as {css}"
-              expect (html.Contains("--ef-diagram-connector-stroke:" + css) || html.Contains("--ef-diagram-connector-stroke: " + css)) $"{text}: edge stroke not rendered as {css}")
+              expect (html.Contains("--forma-diagram-stroke:" + css) || html.Contains("--forma-diagram-stroke: " + css)) $"{text}: node stroke not rendered as {css}"
+              expect (html.Contains("--forma-diagram-connector-stroke:" + css) || html.Contains("--forma-diagram-connector-stroke: " + css)) $"{text}: edge stroke not rendered as {css}")
 
       test "The schema, the diagram presentation contract and the codec agree on the token vocabulary" (fun () ->
           let schema = readText [ "schemas"; "workflow"; "1.0"; "forma-workflow.schema.json" ]
           let contract = readText [ "contracts"; "diagram-presentation.json" ]
           for text, _ in Codec.tokens do
               expect (schema.Contains("\"" + text + "\"")) $"schema omits {text}"
-              let property = "--ef-color-" + text.Substring("token:".Length)
+              let property = "--forma-color-" + text.Substring("token:".Length)
               expect (contract.Contains("\"" + property + "\"")) $"diagram-presentation.json omits {property}")
 
       test "Browser pipeline fixtures: the validator and renderer outputs the browser test measures are current" (fun () ->
           let report, html = pipeline "status-outlines"
           expect (Validation.isValid report) (sprintf "status-outlines: %A" report.Findings)
           equal [] (nonText report) "status-outlines findings"
-          expect (html.Contains "var(--ef-color-status-warning)" && html.Contains "data-ef-shape=\"diamond\"") "status-outlines render"
+          expect (html.Contains "var(--forma-color-status-warning)" && html.Contains "data-forma-shape=\"diamond\"") "status-outlines render"
           pipelineGolden "status-outlines.document.html" html
           let regression, regressionHtml = pipeline "r6-regression"
           let findings = nonText regression

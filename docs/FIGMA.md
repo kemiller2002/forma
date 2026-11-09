@@ -14,7 +14,7 @@ the implementation source of truth.
 | `figma/component-contracts.json` | Coverage and stable naming inventory |
 | `figma/code-connect/*.figma.ts` | Published Dev Mode code mappings |
 
-Names beginning with `ef-` are HTML/CSS pattern contracts. Forma does not ship
+Names beginning with `forma-` are HTML/CSS pattern contracts. Forma does not ship
 Custom Elements or a JavaScript component runtime.
 
 ## Token workflow

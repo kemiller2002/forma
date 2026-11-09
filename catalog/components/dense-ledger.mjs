@@ -4,7 +4,7 @@ export default {
   behavior: "Application content",
   summary: "Compact expert-work table with bounded overflow, stable relationships, and explicit text state.",
   purpose: {
-    description: "A dense ledger is a native `table` with tight cell padding, tabular numerals and ruled rows, meant for expert users who read many rows and compare values down columns. It keeps its table shape at every width: when the columns do not fit, the table scrolls inside an `.ef-bounded-overflow` region instead of recomposing into cards, so column relationships stay intact. Forma styles the table only; the rows, their order and the meaning of each state are application content.",
+    description: "A dense ledger is a native `table` with tight cell padding, tabular numerals and ruled rows, meant for expert users who read many rows and compare values down columns. It keeps its table shape at every width: when the columns do not fit, the table scrolls inside an `.forma-bounded-overflow` region instead of recomposing into cards, so column relationships stay intact. Forma styles the table only; the rows, their order and the meaning of each state are application content.",
     useWhen: [
       "Operators or analysts scan many rows and compare values vertically, such as ledgers, audit entries or reconciliation lists.",
       "Row and column relationships must survive on narrow screens, and horizontal scrolling inside a labelled region is acceptable.",
@@ -19,8 +19,8 @@ export default {
     characteristics: [
       "Tabular, lining numerals (`font-variant-numeric: tabular-nums`) keep digits aligned down a column.",
       "Every cell is start-aligned and top-aligned, so multi-line cells stay readable without extra alignment rules.",
-      "Cell padding is one custom property, `--ef-ledger-cell-space`, so density can tighten without forking CSS.",
-      "It has no responsive recomposition; the surrounding `.ef-bounded-overflow` region provides containment."
+      "Cell padding is one custom property, `--forma-ledger-cell-space`, so density can tighten without forking CSS.",
+      "It has no responsive recomposition; the surrounding `.forma-bounded-overflow` region provides containment."
     ]
   },
   examples: [
@@ -28,28 +28,28 @@ export default {
       id: "explicit-unknowns",
       title: "Unknown and missing values",
       description: "Reconciliation rows where some values are not yet known. Each gap is written as text (Unknown, Not recorded) instead of an empty cell or a dash, so an unknown amount is never read as zero.",
-      html: `<ef-dense-ledger class="ef-component-tag">
-  <div class="ef-bounded-overflow" role="region" aria-label="Payment reconciliation" tabindex="0">
-    <table class="ef-dense-ledger">
+      html: `<forma-dense-ledger class="forma-component-tag">
+  <div class="forma-bounded-overflow" role="region" aria-label="Payment reconciliation" tabindex="0">
+    <table class="forma-dense-ledger">
       <caption>Payment reconciliation, 29 September</caption>
       <thead><tr><th scope="col">Reference</th><th scope="col">Bank amount</th><th scope="col">Ledger amount</th><th scope="col">Status</th></tr></thead>
       <tbody>
-        <tr><th scope="row"><span class="ef-identifier">PAY-88120</span></th><td>$1,250.00</td><td>$1,250.00</td><td>Matched</td></tr>
-        <tr><th scope="row"><span class="ef-identifier">PAY-88121</span></th><td>$980.40</td><td>$908.40</td><td>Mismatch: review</td></tr>
-        <tr><th scope="row"><span class="ef-identifier">PAY-88122</span></th><td>Unknown</td><td>$4,000.00</td><td>Bank file pending</td></tr>
-        <tr><th scope="row"><span class="ef-identifier">PAY-88123</span></th><td>$75.00</td><td>Not recorded</td><td>Missing ledger entry</td></tr>
+        <tr><th scope="row"><span class="forma-identifier">PAY-88120</span></th><td>$1,250.00</td><td>$1,250.00</td><td>Matched</td></tr>
+        <tr><th scope="row"><span class="forma-identifier">PAY-88121</span></th><td>$980.40</td><td>$908.40</td><td>Mismatch: review</td></tr>
+        <tr><th scope="row"><span class="forma-identifier">PAY-88122</span></th><td>Unknown</td><td>$4,000.00</td><td>Bank file pending</td></tr>
+        <tr><th scope="row"><span class="forma-identifier">PAY-88123</span></th><td>$75.00</td><td>Not recorded</td><td>Missing ledger entry</td></tr>
       </tbody>
     </table>
   </div>
-</ef-dense-ledger>`
+</forma-dense-ledger>`
     },
     {
       id: "wide-audit-ledger",
       title: "Wide audit ledger",
-      description: "Seven columns of audit entries. The table keeps its full width and the `.ef-bounded-overflow` region scrolls horizontally inside itself, so the page layout is not pushed wider. The region is focusable for keyboard scrolling.",
-      html: `<ef-dense-ledger class="ef-component-tag">
-  <div class="ef-bounded-overflow" role="region" aria-label="Access audit entries" tabindex="0">
-    <table class="ef-dense-ledger">
+      description: "Seven columns of audit entries. The table keeps its full width and the `.forma-bounded-overflow` region scrolls horizontally inside itself, so the page layout is not pushed wider. The region is focusable for keyboard scrolling.",
+      html: `<forma-dense-ledger class="forma-component-tag">
+  <div class="forma-bounded-overflow" role="region" aria-label="Access audit entries" tabindex="0">
+    <table class="forma-dense-ledger">
       <caption>Access audit entries</caption>
       <thead>
         <tr><th scope="col">Entry</th><th scope="col">Time (UTC)</th><th scope="col">Actor</th><th scope="col">Action</th><th scope="col">Resource</th><th scope="col">Source address</th><th scope="col">Outcome</th></tr>
@@ -61,15 +61,15 @@ export default {
       </tbody>
     </table>
   </div>
-</ef-dense-ledger>`
+</forma-dense-ledger>`
     },
     {
       id: "tighter-cells",
       title: "Tighter cells for a side panel",
-      description: "A ledger in a narrow side panel sets `--ef-ledger-cell-space` to a smaller spacing token on the table. Density changes only padding; text size and numerals are unchanged.",
-      html: `<ef-dense-ledger class="ef-component-tag">
-  <div class="ef-bounded-overflow" role="region" aria-label="Recent adjustments" tabindex="0">
-    <table class="ef-dense-ledger" style="--ef-ledger-cell-space: var(--ef-primitive-spacing-1, 0.25rem)">
+      description: "A ledger in a narrow side panel sets `--forma-ledger-cell-space` to a smaller spacing token on the table. Density changes only padding; text size and numerals are unchanged.",
+      html: `<forma-dense-ledger class="forma-component-tag">
+  <div class="forma-bounded-overflow" role="region" aria-label="Recent adjustments" tabindex="0">
+    <table class="forma-dense-ledger" style="--forma-ledger-cell-space: var(--forma-primitive-spacing-1, 0.25rem)">
       <caption>Recent adjustments</caption>
       <thead><tr><th scope="col">Reference</th><th scope="col">Amount</th><th scope="col">By</th></tr></thead>
       <tbody>
@@ -79,7 +79,7 @@ export default {
       </tbody>
     </table>
   </div>
-</ef-dense-ledger>`
+</forma-dense-ledger>`
     },
     {
       id: "mobile-bounded-ledger",
@@ -88,16 +88,16 @@ export default {
       mobile: {
         height: 320,
         notes: [
-          "The ledger never recomposes. Below its natural width the `.ef-bounded-overflow` region scrolls horizontally, so the page itself has no horizontal overflow at 320px.",
+          "The ledger never recomposes. Below its natural width the `.forma-bounded-overflow` region scrolls horizontally, so the page itself has no horizontal overflow at 320px.",
           "`overscroll-behavior: contain` stops a sideways swipe inside the ledger from scrolling the page or triggering browser back gestures.",
           "`scrollbar-gutter: stable` reserves the scrollbar space so content does not jump when the scrollbar appears.",
           "The row header column (`th scope=\"row\"`) scrolls with the rest; keep the reference column first so each row stays identifiable when scrolling starts.",
           "In landscape, more columns fit and the scroll distance shrinks; nothing else changes."
         ]
       },
-      html: `<ef-dense-ledger class="ef-component-tag">
-  <div class="ef-bounded-overflow" role="region" aria-label="Inventory movements" tabindex="0">
-    <table class="ef-dense-ledger">
+      html: `<forma-dense-ledger class="forma-component-tag">
+  <div class="forma-bounded-overflow" role="region" aria-label="Inventory movements" tabindex="0">
+    <table class="forma-dense-ledger">
       <caption>Inventory movements</caption>
       <thead><tr><th scope="col">Movement</th><th scope="col">SKU</th><th scope="col">Quantity</th><th scope="col">Location</th><th scope="col">Status</th></tr></thead>
       <tbody>
@@ -106,21 +106,21 @@ export default {
       </tbody>
     </table>
   </div>
-</ef-dense-ledger>`
+</forma-dense-ledger>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: ".ef-bounded-overflow", values: "region", default: "—", description: "Names the scroll container as a landmark so it can be found and scrolled." },
-      { name: "aria-label", on: ".ef-bounded-overflow", values: "string", default: "—", description: "Accessible name of the scroll region; usually the table's caption." },
-      { name: "tabindex", on: ".ef-bounded-overflow", values: "0", default: "—", description: "Makes the region keyboard-focusable so overflowing columns can be scrolled with arrow keys." },
+      { name: "role", on: ".forma-bounded-overflow", values: "region", default: "—", description: "Names the scroll container as a landmark so it can be found and scrolled." },
+      { name: "aria-label", on: ".forma-bounded-overflow", values: "string", default: "—", description: "Accessible name of the scroll region; usually the table's caption." },
+      { name: "tabindex", on: ".forma-bounded-overflow", values: "0", default: "—", description: "Makes the region keyboard-focusable so overflowing columns can be scrolled with arrow keys." },
       { name: "scope", on: "th", values: "col | row", default: "—", description: "`col` on header cells, `row` on the reference cell that identifies each row." },
       { name: "datetime", on: "time", values: "ISO date-time", default: "—", description: "Machine-readable timestamp for time columns." },
-      { name: "style", on: "table.ef-dense-ledger", values: "--ef-ledger-cell-space", default: "—", description: "Optional inline override of cell padding, or set the property from application CSS." }
+      { name: "style", on: "table.forma-dense-ledger", values: "--forma-ledger-cell-space", default: "—", description: "Optional inline override of cell padding, or set the property from application CSS." }
     ],
     hooks: {
-      "ef-dense-ledger": "The native table. Full width, collapsed borders, tabular numerals and ruled rows.",
-      "--ef-ledger-cell-space": "Padding of every `th` and `td`. Default `var(--ef-primitive-spacing-2)` (0.5rem)."
+      "forma-dense-ledger": "The native table. Full width, collapsed borders, tabular numerals and ruled rows.",
+      "--forma-ledger-cell-space": "Padding of every `th` and `td`. Default `var(--forma-primitive-spacing-2)` (0.5rem)."
     },
     keyboard: [
       { keys: "Tab", action: "Focuses the scroll region (and any links or buttons inside cells)." },
@@ -131,7 +131,7 @@ export default {
   },
   states: [
     { name: "Fits", how: "table width ≤ region width", description: "No scrollbar; the table fills the container." },
-    { name: "Overflowing", how: "table wider than .ef-bounded-overflow", description: "The region scrolls horizontally inside itself; the page does not widen." },
+    { name: "Overflowing", how: "table wider than .forma-bounded-overflow", description: "The region scrolls horizontally inside itself; the page does not widen." },
     { name: "Unknown or missing value", how: "application text in the cell", description: "Written as words such as Unknown or Not recorded; Forma adds no styling that could be mistaken for a value." }
   ],
   accessibility: {
@@ -141,7 +141,7 @@ export default {
       "Uses start-aligned, tabular numerals so values can be compared without relying on color."
     ],
     consumer: [
-      "Wrap the table in `.ef-bounded-overflow` with `role=\"region\"`, `aria-label` and `tabindex=\"0\"` whenever it can overflow.",
+      "Wrap the table in `.forma-bounded-overflow` with `role=\"region\"`, `aria-label` and `tabindex=\"0\"` whenever it can overflow.",
       "Provide a `caption` and mark the identifying column with `th scope=\"row\"`.",
       "Write state as explicit text; distinguish unknown, missing, zero and not applicable.",
       "Keep units in the header or the value, not only in color or position."
@@ -149,7 +149,7 @@ export default {
   },
   responsive: [
     "No breakpoints: the table keeps its structure at every width.",
-    "Containment comes from `.ef-bounded-overflow`: `overflow: auto`, `overscroll-behavior: contain` and a stable scrollbar gutter.",
+    "Containment comes from `.forma-bounded-overflow`: `overflow: auto`, `overscroll-behavior: contain` and a stable scrollbar gutter.",
     "Cells wrap long words (`overflow-wrap: anywhere` on `td` and `th`) before forcing extra width.",
     "On phones, prefer fewer columns chosen by the application over many narrow ones."
   ],

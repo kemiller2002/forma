@@ -3,24 +3,24 @@ export default {
   category: "utilities",
   behavior: "Native CSS",
   summary: "Eyebrow, lead, statement and component kicker text roles that express hierarchy through type, not new semantics.",
-  owns: ["ef-eyebrow","ef-lead","ef-statement","ef-component-kicker"],
+  owns: ["forma-eyebrow","forma-lead","forma-statement","forma-component-kicker"],
   purpose: {
-    description: "Text roles are typographic treatments for text that frames other content. They change size, family, case and color only; the element you put them on keeps its own meaning. Three belong to the marketing layer and are used inside a MarketingShell (`.ef-site`): the eyebrow (a small uppercase label above a heading), the lead (the larger introductory paragraph under a heading) and the statement (a display-size pull statement with an accent rule). The fourth, the component kicker, belongs to the application layer: a small monospaced uppercase label that names the kind of panel or workflow above its heading.",
+    description: "Text roles are typographic treatments for text that frames other content. They change size, family, case and color only; the element you put them on keeps its own meaning. Three belong to the marketing layer and are used inside a MarketingShell (`.forma-site`): the eyebrow (a small uppercase label above a heading), the lead (the larger introductory paragraph under a heading) and the statement (a display-size pull statement with an accent rule). The fourth, the component kicker, belongs to the application layer: a small monospaced uppercase label that names the kind of panel or workflow above its heading.",
     useWhen: [
-      "A marketing or documentation section needs a category label above its heading: `ef-eyebrow`.",
-      "The first paragraph of a section summarizes it and should read first: `ef-lead`.",
-      "One sentence of a page deserves display-size emphasis as a pull statement: `ef-statement`.",
-      "An application panel needs a small label naming its kind or context above the heading: `ef-component-kicker`."
+      "A marketing or documentation section needs a category label above its heading: `forma-eyebrow`.",
+      "The first paragraph of a section summarizes it and should read first: `forma-lead`.",
+      "One sentence of a page deserves display-size emphasis as a pull statement: `forma-statement`.",
+      "An application panel needs a small label naming its kind or context above the heading: `forma-component-kicker`."
     ],
     avoidWhen: [
       "Headings: use real `h1`-`h6` elements; an eyebrow or kicker is never the heading.",
       "Status or severity: use [[status-lozenge]] or [[badge]]; text roles carry no state.",
-      "Quotations with a source that must be cited: use [[callout]] with `data-ef-callout=\"evidence\"`.",
+      "Quotations with a source that must be cited: use [[callout]] with `data-forma-callout=\"evidence\"`.",
       "Long-form body text: use [[prose]]."
     ],
     characteristics: [
       "Roles never add semantics: an eyebrow is a `p`, a statement is whatever element you choose (often `blockquote`), a kicker is a `p` or `span`.",
-      "Eyebrow, lead and statement read marketing role tokens (`--ef-type-size-*`, `--ef-tone-*`), so they follow the surface tone they sit on.",
+      "Eyebrow, lead and statement read marketing role tokens (`--forma-type-size-*`, `--forma-tone-*`), so they follow the surface tone they sit on.",
       "Lead and statement sizes are fluid `clamp()` values that grow with viewport width.",
       "The component kicker uses core semantic tokens and needs no marketing shell."
     ]
@@ -30,42 +30,42 @@ export default {
       id: "section-introduction",
       title: "Section introduction",
       description: "An eyebrow names the section's category, the `h2` states the point and a lead paragraph summarizes it. Reading order is eyebrow, heading, lead; the heading remains the section's accessible name.",
-      html: `<ef-text-roles class="ef-component-tag">
-  <div class="ef-site">
-    <section class="ef-section" aria-labelledby="text-roles-section-introduction-title">
-      <p class="ef-eyebrow">Security</p>
+      html: `<forma-text-roles class="forma-component-tag">
+  <div class="forma-site">
+    <section class="forma-section" aria-labelledby="text-roles-section-introduction-title">
+      <p class="forma-eyebrow">Security</p>
       <h2 id="text-roles-section-introduction-title">Evidence you can hand to an auditor</h2>
-      <p class="ef-lead">Every release records who approved it, which checks ran and what changed, so compliance reviews take hours instead of weeks.</p>
+      <p class="forma-lead">Every release records who approved it, which checks ran and what changed, so compliance reviews take hours instead of weeks.</p>
     </section>
   </div>
-</ef-text-roles>`
+</forma-text-roles>`
     },
     {
       id: "pull-statement",
       title: "Pull statement in an article",
       description: "A statement set between ordinary paragraphs. It is a `blockquote` because it repeats a line from the article; the accent rule above it and the display face set it apart without a new heading level.",
-      html: `<ef-text-roles class="ef-component-tag">
-  <div class="ef-site">
+      html: `<forma-text-roles class="forma-component-tag">
+  <div class="forma-site">
     <article aria-labelledby="text-roles-pull-statement-title">
       <h2 id="text-roles-pull-statement-title">Why we moved validation to the edge</h2>
       <p>Most of our support tickets came from forms that accepted values the back office later rejected. Moving the same rules into the page removed the delay between a mistake and its explanation.</p>
-      <blockquote class="ef-statement"><p>A rule that fails late is a rule the user never learns.</p></blockquote>
+      <blockquote class="forma-statement"><p>A rule that fails late is a rule the user never learns.</p></blockquote>
       <p>The rules still run on the server; the page only reports them sooner.</p>
     </article>
   </div>
-</ef-text-roles>`
+</forma-text-roles>`
     },
     {
       id: "application-kicker",
       title: "Kicker on an application panel",
       description: "In an application layout the component kicker names the kind of panel above its heading. It works without the marketing shell and does not replace the heading.",
-      html: `<ef-text-roles class="ef-component-tag">
-  <section class="ef-stack" data-density="compact" aria-labelledby="text-roles-application-kicker-title">
-    <p class="ef-component-kicker">Change review</p>
+      html: `<forma-text-roles class="forma-component-tag">
+  <section class="forma-stack" data-density="compact" aria-labelledby="text-roles-application-kicker-title">
+    <p class="forma-component-kicker">Change review</p>
     <h2 id="text-roles-application-kicker-title">Rotate the payments signing key</h2>
     <p>Scheduled for Friday 18:00 UTC. Two approvals are recorded and one is still required.</p>
   </section>
-</ef-text-roles>`
+</forma-text-roles>`
     },
     {
       id: "mobile-hero-introduction",
@@ -80,15 +80,15 @@ export default {
           "Nothing overflows horizontally; statements also use a fluid size (1.5rem minimum) and wrap."
         ]
       },
-      html: `<ef-text-roles class="ef-component-tag">
-  <div class="ef-site">
-    <section class="ef-section" aria-labelledby="text-roles-mobile-hero-introduction-title">
-      <p class="ef-eyebrow">Field service</p>
+      html: `<forma-text-roles class="forma-component-tag">
+  <div class="forma-site">
+    <section class="forma-section" aria-labelledby="text-roles-mobile-hero-introduction-title">
+      <p class="forma-eyebrow">Field service</p>
       <h2 id="text-roles-mobile-hero-introduction-title">Every visit, planned before the van leaves</h2>
-      <p class="ef-lead">Technicians see parts, access notes and the customer's history on one screen, even without a signal.</p>
+      <p class="forma-lead">Technicians see parts, access notes and the customer's history on one screen, even without a signal.</p>
     </section>
   </div>
-</ef-text-roles>`
+</forma-text-roles>`
     }
   ],
   api: {
@@ -96,10 +96,10 @@ export default {
       { name: "aria-labelledby", on: "section / article", values: "id of the heading", default: "—", description: "Names the region by its heading, not by the eyebrow or kicker." }
     ],
     hooks: {
-      "ef-eyebrow": "Marketing layer. Small (`--ef-type-size-label`) uppercase monospaced label in `--ef-tone-label`, with label weight and tracking and a bottom margin. Use inside `.ef-site`.",
-      "ef-lead": "Marketing layer. Introductory paragraph at `--ef-type-size-lead` (fluid, 1.125-1.5rem) with lead line height, limited to the narrow measure (62ch), in `--ef-tone-text`.",
-      "ef-statement": "Marketing layer. Display-face pull statement at `--ef-type-size-statement` (fluid, 1.5-2.4rem) with an accent rule above; nested paragraphs inherit its color and drop the measure limit.",
-      "ef-component-kicker": "Application layer. 0.6875rem monospaced uppercase label with 0.08em tracking in the secondary accent color."
+      "forma-eyebrow": "Marketing layer. Small (`--forma-type-size-label`) uppercase monospaced label in `--forma-tone-label`, with label weight and tracking and a bottom margin. Use inside `.forma-site`.",
+      "forma-lead": "Marketing layer. Introductory paragraph at `--forma-type-size-lead` (fluid, 1.125-1.5rem) with lead line height, limited to the narrow measure (62ch), in `--forma-tone-text`.",
+      "forma-statement": "Marketing layer. Display-face pull statement at `--forma-type-size-statement` (fluid, 1.5-2.4rem) with an accent rule above; nested paragraphs inherit its color and drop the measure limit.",
+      "forma-component-kicker": "Application layer. 0.6875rem monospaced uppercase label with 0.08em tracking in the secondary accent color."
     },
     keyboard: [
       { keys: "None", action: "Text roles are not interactive and add no keyboard behavior." }
@@ -109,7 +109,7 @@ export default {
   },
   states: [
     { name: "Default", how: "class on a text element", description: "The role's typography; no interactive states." },
-    { name: "Surface tone", how: "ancestor data-ef-tone (surface, elevated, inverse)", description: "Eyebrow, lead and statement read `--ef-tone-*`, so their colors stay legible on each marketing tone." },
+    { name: "Surface tone", how: "ancestor data-forma-tone (surface, elevated, inverse)", description: "Eyebrow, lead and statement read `--forma-tone-*`, so their colors stay legible on each marketing tone." },
     { name: "Forced colors", how: "forced-colors: active", description: "The statement's accent rule becomes CanvasText; text uses system colors." }
   ],
   accessibility: {

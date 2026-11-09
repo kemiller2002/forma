@@ -4,7 +4,7 @@ Forma 0.9.0 publishes its machine-readable color vocabulary at
 `contracts/color-contract.json`. The file is generated from the token source,
 shipped brand manifests, and `package.json`; consumers must use the contract
 from the exact Forma version they pin. The manifest separates public
-`--ef-color-*` properties from internal component variables, records every
+`--forma-color-*` properties from internal component variables, records every
 theme and shipped brand value, and declares supported semantic pairings.
 
 Validate application CSS without copying Forma CSS:
@@ -16,14 +16,14 @@ npx forma-color validate src/**/*.css
 The programmatic API is exported as
 `@echelon-foundry/design-system/color-contract`. `validateCssColorReferences`
 reports the source file, line, column, unsupported name, and supported role.
-Public `--ef-color-*` references and reserved internal color-related prefixes
+Public `--forma-color-*` references and reserved internal color-related prefixes
 are governed; other Forma APIs keep their own contracts. Application variables
 such as `--summa-*` are deliberately ignored. Internal variables reported by
 the validator are not consumer APIs even when they appear in compiled CSS.
 
 ## Fallback policy
 
-An unknown `--ef-*` name is invalid even when `var()` supplies a literal
+An unknown `--forma-*` name is invalid even when `var()` supplies a literal
 fallback. For a known public color token, a six-digit literal fallback is
 allowed only when it exactly repeats that release's light-theme value. This
 narrow exception supports loading a standalone Forma layer; it is not a way to
@@ -67,10 +67,10 @@ remain refused, including against the 0.6.1 compatibility fixture:
 
 | Unsupported name | Supported role | Required pairing |
 | --- | --- | --- |
-| `--ef-color-action-primary` | `--ef-color-surface-inverse` | `--ef-color-text-inverse` |
-| `--ef-color-text-link` | `--ef-color-accent-primary` | `--ef-color-surface-primary` or Forma's secondary-surface link hook |
-| `--ef-color-focus` | `--ef-color-focus-ring` | `--ef-color-focus-gap` on the effective surface |
-| `--ef-color-text-danger` | `--ef-color-status-danger` | `--ef-color-surface-primary` plus explicit error text |
+| `--forma-color-action-primary` | `--forma-color-surface-inverse` | `--forma-color-text-inverse` |
+| `--forma-color-text-link` | `--forma-color-accent-primary` | `--forma-color-surface-primary` or Forma's secondary-surface link hook |
+| `--forma-color-focus` | `--forma-color-focus-ring` | `--forma-color-focus-gap` on the effective surface |
+| `--forma-color-text-danger` | `--forma-color-status-danger` | `--forma-color-surface-primary` plus explicit error text |
 
 A valid token reference proves compatibility only. It does not prove that the
 role is the right product-level palette, emphasis, hierarchy, or cultural

@@ -30,50 +30,50 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Scoped view with a scope trail",
       description: "A facilities map zoomed into one floor. A [[scope-trail]] shows ancestry, the orientation line states zoom and region in words, the view controls are grouped and named, and the index is open so every desk in view is one link away.",
-      html: `<ef-spatial-canvas class="ef-component-tag">
-  <section class="ef-spatial-canvas" aria-labelledby="spatial-canvas-floor-plan-scope-title">
-    <header class="ef-spatial-canvas__header">
+      html: `<forma-spatial-canvas class="forma-component-tag">
+  <section class="forma-spatial-canvas" aria-labelledby="spatial-canvas-floor-plan-scope-title">
+    <header class="forma-spatial-canvas__header">
       <div>
-        <nav class="ef-scope-trail" aria-label="Map scope"><ol><li><a href="#spatial-canvas-floor-plan-scope-campus">Campus</a></li><li><a href="#spatial-canvas-floor-plan-scope-building">Building C</a></li><li aria-current="page">Floor 3</li></ol></nav>
+        <nav class="forma-scope-trail" aria-label="Map scope"><ol><li><a href="#spatial-canvas-floor-plan-scope-campus">Campus</a></li><li><a href="#spatial-canvas-floor-plan-scope-building">Building C</a></li><li aria-current="page">Floor 3</li></ol></nav>
         <h2 id="spatial-canvas-floor-plan-scope-title">Floor 3 desks</h2>
-        <p class="ef-spatial-canvas__orientation">Zoom: floor level · showing east wing</p>
+        <p class="forma-spatial-canvas__orientation">Zoom: floor level · showing east wing</p>
       </div>
-      <div class="ef-cluster" role="group" aria-label="Map view controls"><button type="button">Zoom out to building</button><button type="button">Reset view</button></div>
+      <div class="forma-cluster" role="group" aria-label="Map view controls"><button type="button">Zoom out to building</button><button type="button">Reset view</button></div>
     </header>
-    <div class="ef-spatial-canvas__viewport" tabindex="0" role="group" aria-label="Floor 3 map, scrollable">
-      <div class="ef-spatial-canvas__surface">
-        <article class="ef-surface" id="spatial-canvas-floor-plan-scope-c301"><h3>C-301</h3><p>Available</p></article>
-        <article class="ef-surface" id="spatial-canvas-floor-plan-scope-c302"><h3>C-302</h3><p>Booked · Priya Raman</p></article>
-        <article class="ef-surface" id="spatial-canvas-floor-plan-scope-c303"><h3>C-303</h3><p>Out of service</p></article>
+    <div class="forma-spatial-canvas__viewport" tabindex="0" role="group" aria-label="Floor 3 map, scrollable">
+      <div class="forma-spatial-canvas__surface">
+        <article class="forma-surface" id="spatial-canvas-floor-plan-scope-c301"><h3>C-301</h3><p>Available</p></article>
+        <article class="forma-surface" id="spatial-canvas-floor-plan-scope-c302"><h3>C-302</h3><p>Booked · Priya Raman</p></article>
+        <article class="forma-surface" id="spatial-canvas-floor-plan-scope-c303"><h3>C-303</h3><p>Out of service</p></article>
       </div>
     </div>
-    <details class="ef-spatial-canvas__index" open>
+    <details class="forma-spatial-canvas__index" open>
       <summary>Desks in this view (3)</summary>
       <nav aria-label="Desks in view"><a href="#spatial-canvas-floor-plan-scope-c301">C-301</a><a href="#spatial-canvas-floor-plan-scope-c302">C-302</a><a href="#spatial-canvas-floor-plan-scope-c303">C-303</a></nav>
     </details>
   </section>
-</ef-spatial-canvas>`
+</forma-spatial-canvas>`
     },
     {
       id: "empty-region",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Empty region",
       description: "The user has panned to an area with no objects. The orientation line says so in text and offers a way back, so the empty surface is not mistaken for a loading failure; the index states that nothing is in view.",
-      html: `<ef-spatial-canvas class="ef-component-tag">
-  <section class="ef-spatial-canvas" aria-labelledby="spatial-canvas-empty-region-title">
-    <header class="ef-spatial-canvas__header">
-      <div><h2 id="spatial-canvas-empty-region-title">Service map</h2><p class="ef-spatial-canvas__orientation">Viewport: north-west edge · no services in view</p></div>
-      <div class="ef-cluster" role="group" aria-label="Service map controls"><button type="button">Reset view</button></div>
+      html: `<forma-spatial-canvas class="forma-component-tag">
+  <section class="forma-spatial-canvas" aria-labelledby="spatial-canvas-empty-region-title">
+    <header class="forma-spatial-canvas__header">
+      <div><h2 id="spatial-canvas-empty-region-title">Service map</h2><p class="forma-spatial-canvas__orientation">Viewport: north-west edge · no services in view</p></div>
+      <div class="forma-cluster" role="group" aria-label="Service map controls"><button type="button">Reset view</button></div>
     </header>
-    <div class="ef-spatial-canvas__viewport" tabindex="0" role="group" aria-label="Service map, scrollable">
-      <div class="ef-spatial-canvas__surface"></div>
+    <div class="forma-spatial-canvas__viewport" tabindex="0" role="group" aria-label="Service map, scrollable">
+      <div class="forma-spatial-canvas__surface"></div>
     </div>
-    <details class="ef-spatial-canvas__index">
+    <details class="forma-spatial-canvas__index">
       <summary>Objects in this view (0)</summary>
       <p>Nothing here. Use Reset view to return to the billing cluster.</p>
     </details>
   </section>
-</ef-spatial-canvas>`
+</forma-spatial-canvas>`
     },
     {
       id: "mobile-index-first",
@@ -83,48 +83,48 @@ export default {
       mobile: {
         height: 640,
         notes: [
-          "The surface keeps its 48rem minimum width and scrolls inside `.ef-spatial-canvas__viewport`; the page does not scroll sideways at 320px.",
+          "The surface keeps its 48rem minimum width and scrolls inside `.forma-spatial-canvas__viewport`; the page does not scroll sideways at 320px.",
           "The header wraps: title and orientation above, controls below, each button at the 2.75rem base height.",
           "The object index summary is a 2.75rem touch target and its links wrap, so every object is reachable without panning.",
           "Panning with touch scrolls the viewport; there is no pinch-zoom behavior unless the application provides it, so offer zoom as buttons."
         ]
       },
-      html: `<ef-spatial-canvas class="ef-component-tag">
-  <section class="ef-spatial-canvas" aria-labelledby="spatial-canvas-mobile-title">
-    <header class="ef-spatial-canvas__header">
-      <div><h2 id="spatial-canvas-mobile-title">Warehouse zones</h2><p class="ef-spatial-canvas__orientation">Viewport: dock side</p></div>
-      <div class="ef-cluster" role="group" aria-label="Zone map controls"><button type="button">Zoom out</button><button type="button">Zoom in</button></div>
+      html: `<forma-spatial-canvas class="forma-component-tag">
+  <section class="forma-spatial-canvas" aria-labelledby="spatial-canvas-mobile-title">
+    <header class="forma-spatial-canvas__header">
+      <div><h2 id="spatial-canvas-mobile-title">Warehouse zones</h2><p class="forma-spatial-canvas__orientation">Viewport: dock side</p></div>
+      <div class="forma-cluster" role="group" aria-label="Zone map controls"><button type="button">Zoom out</button><button type="button">Zoom in</button></div>
     </header>
-    <div class="ef-spatial-canvas__viewport" tabindex="0" role="group" aria-label="Warehouse zone map, scrollable">
-      <div class="ef-spatial-canvas__surface">
-        <article class="ef-surface" id="spatial-canvas-mobile-dock"><h3>Dock A</h3><p>2 trucks unloading</p></article>
-        <article class="ef-surface" id="spatial-canvas-mobile-cold"><h3>Cold store</h3><p>At capacity</p></article>
+    <div class="forma-spatial-canvas__viewport" tabindex="0" role="group" aria-label="Warehouse zone map, scrollable">
+      <div class="forma-spatial-canvas__surface">
+        <article class="forma-surface" id="spatial-canvas-mobile-dock"><h3>Dock A</h3><p>2 trucks unloading</p></article>
+        <article class="forma-surface" id="spatial-canvas-mobile-cold"><h3>Cold store</h3><p>At capacity</p></article>
       </div>
     </div>
-    <details class="ef-spatial-canvas__index">
+    <details class="forma-spatial-canvas__index">
       <summary>Zones in this view</summary>
       <nav aria-label="Zones in view"><a href="#spatial-canvas-mobile-dock">Dock A</a><a href="#spatial-canvas-mobile-cold">Cold store</a></nav>
     </details>
   </section>
-</ef-spatial-canvas>`
+</forma-spatial-canvas>`
     }
   ],
   api: {
     attributes: [
-      { name: "tabindex", on: ".ef-spatial-canvas__viewport", values: "0", default: "—", description: "Makes the scroll region focusable so it can be scrolled from the keyboard." },
+      { name: "tabindex", on: ".forma-spatial-canvas__viewport", values: "0", default: "—", description: "Makes the scroll region focusable so it can be scrolled from the keyboard." },
       { name: "role", on: "viewport, control cluster", values: "group", default: "—", description: "Gives the viewport and the control area a role so their accessible names are announced." },
       { name: "aria-label", on: "viewport, controls, index nav", values: "string", default: "—", description: "Names the scroll region (say that it scrolls), the view controls and the object index." },
       { name: "aria-labelledby", on: "root section", values: "id of the canvas heading", default: "—", description: "Names the whole canvas region." },
-      { name: "open", on: "details.ef-spatial-canvas__index", values: "boolean", default: "absent", description: "Initial open state of the object index. The browser owns it afterwards." },
+      { name: "open", on: "details.forma-spatial-canvas__index", values: "boolean", default: "absent", description: "Initial open state of the object index. The browser owns it afterwards." },
       { name: "aria-current", on: "scope trail item", values: "page", default: "—", description: "Marks the current scope when a [[scope-trail]] is composed in the header." }
     ],
     hooks: {
-      "ef-spatial-canvas": "Root grid: header, viewport, index, with a small gap. Shrinks to its container.",
-      "ef-spatial-canvas__header": "Wrapping flex row with the title and orientation on one side and view controls on the other.",
-      "ef-spatial-canvas__orientation": "Text line stating current scope, zoom or region.",
-      "ef-spatial-canvas__viewport": "Bordered, focusable scroll region with an 18rem minimum height and a 2px focus outline.",
-      "ef-spatial-canvas__surface": "The large surface: at least 48rem by 28rem, a three-column grid of objects with generous gaps.",
-      "ef-spatial-canvas__index": "A native `details` listing the objects in view; its summary is a 2.75rem target and its `nav` links wrap."
+      "forma-spatial-canvas": "Root grid: header, viewport, index, with a small gap. Shrinks to its container.",
+      "forma-spatial-canvas__header": "Wrapping flex row with the title and orientation on one side and view controls on the other.",
+      "forma-spatial-canvas__orientation": "Text line stating current scope, zoom or region.",
+      "forma-spatial-canvas__viewport": "Bordered, focusable scroll region with an 18rem minimum height and a 2px focus outline.",
+      "forma-spatial-canvas__surface": "The large surface: at least 48rem by 28rem, a three-column grid of objects with generous gaps.",
+      "forma-spatial-canvas__index": "A native `details` listing the objects in view; its summary is a 2.75rem target and its `nav` links wrap."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through view controls, the viewport, links or controls inside objects, then the index summary and links." },
@@ -139,7 +139,7 @@ export default {
     form: "Not a form control."
   },
   states: [
-    { name: "Scope", how: "text in .ef-spatial-canvas__orientation", description: "Application-written description of what is in view." },
+    { name: "Scope", how: "text in .forma-spatial-canvas__orientation", description: "Application-written description of what is in view." },
     { name: "Viewport focus", how: ":focus-visible on the viewport", description: "2px outline in the current text color, offset from the border." },
     { name: "Index open", how: "details[open]", description: "The list of objects in view is shown below the viewport." },
     { name: "Empty view", how: "no objects on the surface", description: "The application states in text that nothing is in view and how to return." }

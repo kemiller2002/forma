@@ -30,49 +30,49 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Stale data warning",
       description: "A persistent alert rendered with the page, so it has no entry cue. It explains that figures are out of date and offers the recovery action beside the explanation. `role=\"status\"` is kept because the message is informative, not urgent.",
-      html: `<ef-alert class="ef-component-tag">
-  <aside class="ef-alert" role="status" aria-labelledby="alert-stale-data-warning-title">
-    <div class="ef-alert__icon" aria-hidden="true">!</div>
+      html: `<forma-alert class="forma-component-tag">
+  <aside class="forma-alert" role="status" aria-labelledby="alert-stale-data-warning-title">
+    <div class="forma-alert__icon" aria-hidden="true">!</div>
     <div>
-      <h3 class="ef-alert__title" id="alert-stale-data-warning-title">Figures last refreshed 3 hours ago</h3>
+      <h3 class="forma-alert__title" id="alert-stale-data-warning-title">Figures last refreshed 3 hours ago</h3>
       <p>The ledger sync has not completed since 09:12. Totals below may not include recent postings.</p>
     </div>
     <button type="button">Refresh now</button>
   </aside>
-</ef-alert>`
+</forma-alert>`
     },
     {
       id: "confirmed-save",
       title: "Confirmed outcome without an action",
-      description: "A newly inserted confirmation that opts into the entry cue with `data-ef-motion-entry`. With no action button the trailing grid column collapses and the text uses the full width.",
-      html: `<ef-alert class="ef-component-tag">
-  <aside class="ef-alert" role="status" data-ef-motion-entry aria-labelledby="alert-confirmed-save-title">
-    <div class="ef-alert__icon" aria-hidden="true">✓</div>
+      description: "A newly inserted confirmation that opts into the entry cue with `data-forma-motion-entry`. With no action button the trailing grid column collapses and the text uses the full width.",
+      html: `<forma-alert class="forma-component-tag">
+  <aside class="forma-alert" role="status" data-forma-motion-entry aria-labelledby="alert-confirmed-save-title">
+    <div class="forma-alert__icon" aria-hidden="true">✓</div>
     <div>
-      <h3 class="ef-alert__title" id="alert-confirmed-save-title">Policy published</h3>
+      <h3 class="forma-alert__title" id="alert-confirmed-save-title">Policy published</h3>
       <p>Version 14 of the retention policy is now in effect for all workspaces.</p>
     </div>
   </aside>
-</ef-alert>`
+</forma-alert>`
     },
     {
       id: "urgent-session-expiry",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Urgent interruption",
       description: "A time-sensitive warning inserted by the application with `role=\"alert\"`, so assistive technology announces it immediately. Two actions sit in a [[cluster]] in the trailing column. Reserve `role=\"alert\"` for messages that must interrupt.",
-      html: `<ef-alert class="ef-component-tag">
-  <aside class="ef-alert" role="alert" data-ef-motion-entry data-ef-motion-weight="standard" aria-labelledby="alert-urgent-session-expiry-title">
-    <div class="ef-alert__icon" aria-hidden="true">⏱</div>
+      html: `<forma-alert class="forma-component-tag">
+  <aside class="forma-alert" role="alert" data-forma-motion-entry data-forma-motion-weight="standard" aria-labelledby="alert-urgent-session-expiry-title">
+    <div class="forma-alert__icon" aria-hidden="true">⏱</div>
     <div>
-      <h3 class="ef-alert__title" id="alert-urgent-session-expiry-title">Your session ends in 2 minutes</h3>
+      <h3 class="forma-alert__title" id="alert-urgent-session-expiry-title">Your session ends in 2 minutes</h3>
       <p>Unsaved changes to this assessment will be lost when the session ends.</p>
     </div>
-    <div class="ef-cluster">
+    <div class="forma-cluster">
       <button type="button">Stay signed in</button>
       <button type="button">Save and sign out</button>
     </div>
   </aside>
-</ef-alert>`
+</forma-alert>`
     },
     {
       id: "mobile-review-alert",
@@ -88,32 +88,32 @@ export default {
           "The inline-start border stays, so the alert still reads as a distinct block in portrait and landscape."
         ]
       },
-      html: `<ef-alert class="ef-component-tag">
-  <aside class="ef-alert" role="status" aria-labelledby="alert-mobile-review-alert-title">
-    <div class="ef-alert__icon" aria-hidden="true">!</div>
+      html: `<forma-alert class="forma-component-tag">
+  <aside class="forma-alert" role="status" aria-labelledby="alert-mobile-review-alert-title">
+    <div class="forma-alert__icon" aria-hidden="true">!</div>
     <div>
-      <h3 class="ef-alert__title" id="alert-mobile-review-alert-title">Two values changed since you opened this record</h3>
+      <h3 class="forma-alert__title" id="alert-mobile-review-alert-title">Two values changed since you opened this record</h3>
       <p>Another reviewer updated the credit limit and the review date. Nothing you entered has been saved yet.</p>
     </div>
     <button type="button">Review changes</button>
   </aside>
-</ef-alert>`
+</forma-alert>`
     }
   ],
   api: {
     attributes: [
-      { name: "role", on: "aside.ef-alert", values: "status | alert", default: "—", description: "Live-region semantics chosen by the application. `status` is polite; `alert` interrupts and should be rare. Either role replaces the aside's complementary landmark role." },
-      { name: "aria-labelledby", on: "aside.ef-alert", values: "id of .ef-alert__title", default: "—", description: "Names the region by its heading." },
-      { name: "aria-hidden", on: ".ef-alert__icon", values: "true", default: "—", description: "Hides the decorative glyph so it is not read before the heading." },
-      { name: "data-tone", on: "aside.ef-alert", values: "application-defined", default: "—", description: "Used by the canonical pattern as an application data hook. Forma CSS does not style it; the alert looks the same for every value." },
+      { name: "role", on: "aside.forma-alert", values: "status | alert", default: "—", description: "Live-region semantics chosen by the application. `status` is polite; `alert` interrupts and should be rare. Either role replaces the aside's complementary landmark role." },
+      { name: "aria-labelledby", on: "aside.forma-alert", values: "id of .forma-alert__title", default: "—", description: "Names the region by its heading." },
+      { name: "aria-hidden", on: ".forma-alert__icon", values: "true", default: "—", description: "Hides the decorative glyph so it is not read before the heading." },
+      { name: "data-tone", on: "aside.forma-alert", values: "application-defined", default: "—", description: "Used by the canonical pattern as an application data hook. Forma CSS does not style it; the alert looks the same for every value." },
       { name: "type", on: "button", values: "button", default: "—", description: "Keeps actions from submitting a surrounding form." }
     ],
     hooks: {
-      "ef-alert": "Root grid: icon column, flexible text column and an optional trailing action column, with a thick inline-start border.",
-      "ef-alert__icon": "Bordered 2rem square holding a short text glyph. Decorative; mark it aria-hidden.",
-      "ef-alert__title": "Heading for the message, with its top margin removed.",
-      "data-ef-motion-entry": "Opts a newly inserted alert into a short downward settle into place. Omit it on alerts rendered with the page.",
-      "data-ef-motion-weight": "Presentation-only perceived mass for the entry cue: light, standard (default) or heavy. Never encodes severity."
+      "forma-alert": "Root grid: icon column, flexible text column and an optional trailing action column, with a thick inline-start border.",
+      "forma-alert__icon": "Bordered 2rem square holding a short text glyph. Decorative; mark it aria-hidden.",
+      "forma-alert__title": "Heading for the message, with its top margin removed.",
+      "data-forma-motion-entry": "Opts a newly inserted alert into a short downward settle into place. Omit it on alerts rendered with the page.",
+      "data-forma-motion-weight": "Presentation-only perceived mass for the entry cue: light, standard (default) or heavy. Never encodes severity."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the alert's buttons or links. The alert itself is not focusable." },
@@ -125,8 +125,8 @@ export default {
     form: "Not a form control. A button inside an alert that sits within a form must keep `type=\"button\"` to avoid submitting it."
   },
   states: [
-    { name: "Persistent", how: "rendered without data-ef-motion-entry", description: "Appears in place with no movement. Use for alerts that exist when the view loads or that survive rerenders." },
-    { name: "Newly inserted", how: "data-ef-motion-entry on an element added after load", description: "Settles down 0.5rem into place once, from @starting-style. It does not animate again while the element stays in the DOM." },
+    { name: "Persistent", how: "rendered without data-forma-motion-entry", description: "Appears in place with no movement. Use for alerts that exist when the view loads or that survive rerenders." },
+    { name: "Newly inserted", how: "data-forma-motion-entry on an element added after load", description: "Settles down 0.5rem into place once, from @starting-style. It does not animate again while the element stays in the DOM." },
     { name: "Polite status", how: "role=\"status\"", description: "Announced when content changes, without interrupting the user." },
     { name: "Urgent", how: "role=\"alert\"", description: "Announced immediately on insertion. Visual presentation is identical; urgency is carried by words and role, not styling." }
   ],
@@ -150,9 +150,9 @@ export default {
     "The alert has no maximum width; it fills its container."
   ],
   motion: [
-    "With `data-ef-motion-entry`, a newly inserted alert moves from 0.5rem above to its resting position using the shared spring easing and inertia duration (about 215ms at the standard weight). Only position animates; the text is legible from the first frame.",
+    "With `data-forma-motion-entry`, a newly inserted alert moves from 0.5rem above to its resting position using the shared spring easing and inertia duration (about 215ms at the standard weight). Only position animates; the text is legible from the first frame.",
     "The cue runs once per insertion via `@starting-style`. Rerendering text inside an existing alert does not replay it.",
-    "`data-ef-motion-weight` changes perceived mass only: light is quicker, heavy slower and more damped.",
+    "`data-forma-motion-weight` changes perceived mass only: light is quicker, heavy slower and more damped.",
     "Under `prefers-reduced-motion: reduce` the transition duration is effectively zero and the alert appears in place."
   ],
   guidance: {

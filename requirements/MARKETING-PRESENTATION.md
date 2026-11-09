@@ -28,19 +28,19 @@ becomes one consumer among the others.
 | Forma layouts | MarketingShell frame, containers, section rhythm, split, hero, documentation layout | `src/marketing/layouts.css` | Content |
 | Role contract | Brand-neutral defaults for every role token | `src/marketing/roles.css` | Literal colors |
 | Echelon Marketing Theme | Echelon values for every role (light and dark), backdrop hook | `themes/echelon/marketing.tokens.json`, `themes/echelon/marketing.css` | Component rules, raw hex (aliases only) |
-| MarketingShell | Common frame and behavior | `.ef-site` and the `marketing-shell` pattern | Site content |
+| MarketingShell | Common frame and behavior | `.forma-site` and the `marketing-shell` pattern | Site content |
 | Site | Content, imagery, font delivery, identity retargets, unique presentation | Site repository | Anything listed above |
 
 - **MKT-OWN-1.** Generic foundations, components, and layouts read only role
   tokens and core semantic tokens. Tested: no literal colors in `roles.css`;
   patterns contain no brand names.
-- **MKT-OWN-2.** Marketing foundations apply only inside `.ef-site`, so an
+- **MKT-OWN-2.** Marketing foundations apply only inside `.forma-site`, so an
   application loading `all.css` is not restyled.
 - **MKT-OWN-3.** A product may differ from Echelon through:
   - content and imagery;
   - the identity allowlist (MKT-LOCAL-2);
   - a Forma brand manifest (`brands/*.brand.json`, scoped with
-    `data-ef-brand`), when it needs a validated palette of its own.
+    `data-forma-brand`), when it needs a validated palette of its own.
 
   It must not do so through a separate component stylesheet.
 
@@ -69,22 +69,22 @@ JSON by `tools/TokenCompiler` (F#).
 
 | Requirement term | Token | Contrast gate (compiler) |
 |---|---|---|
-| Page background | `--ef-color-surface-primary` | — |
-| Surface | `--ef-color-surface-secondary` | text on secondary surface ≥ 4.5 |
-| Elevated surface | `--ef-color-surface-elevated` | primary text ≥ 4.5 |
-| Primary text | `--ef-color-text-primary` | ≥ 4.5 on page |
-| Secondary text | `--ef-color-text-secondary` | ≥ 4.5 on page |
-| Muted text | `--ef-color-text-muted` | ≥ 4.5 on page (never lowered below AA) |
-| Accent | `--ef-color-accent-primary`, `--ef-color-accent-secondary` | ≥ 4.5 on page |
-| Accent hover | `--ef-color-accent-hover` | ≥ 4.5 on page |
-| Border | `--ef-color-border-subtle` | Decorative; never the only boundary cue |
-| Strong border | `--ef-color-border-functional` | — |
-| Success, warning, danger, informational | `--ef-color-status-{success,warning,danger,info}` | ≥ 4.5 on page; always paired with text |
-| Focus | `--ef-color-focus-ring`, `--ef-color-focus-gap` | ring ≥ 3 on page |
-| Inverse | `--ef-color-surface-inverse`, `--ef-color-text-inverse` | ≥ 4.5 |
+| Page background | `--forma-color-surface-primary` | — |
+| Surface | `--forma-color-surface-secondary` | text on secondary surface ≥ 4.5 |
+| Elevated surface | `--forma-color-surface-elevated` | primary text ≥ 4.5 |
+| Primary text | `--forma-color-text-primary` | ≥ 4.5 on page |
+| Secondary text | `--forma-color-text-secondary` | ≥ 4.5 on page |
+| Muted text | `--forma-color-text-muted` | ≥ 4.5 on page (never lowered below AA) |
+| Accent | `--forma-color-accent-primary`, `--forma-color-accent-secondary` | ≥ 4.5 on page |
+| Accent hover | `--forma-color-accent-hover` | ≥ 4.5 on page |
+| Border | `--forma-color-border-subtle` | Decorative; never the only boundary cue |
+| Strong border | `--forma-color-border-functional` | — |
+| Success, warning, danger, informational | `--forma-color-status-{success,warning,danger,info}` | ≥ 4.5 on page; always paired with text |
+| Focus | `--forma-color-focus-ring`, `--forma-color-focus-gap` | ring ≥ 3 on page |
+| Inverse | `--forma-color-surface-inverse`, `--forma-color-text-inverse` | ≥ 4.5 |
 
-Surface tones (`data-ef-tone="page|surface|elevated|inverse"`) map these to
-`--ef-tone-*` context variables. They use only validated pairs; for example,
+Surface tones (`data-forma-tone="page|surface|elevated|inverse"`) map these to
+`--forma-tone-*` context variables. They use only validated pairs; for example,
 links on the secondary surface fall back to primary text, because bronze on
 stone is below 4.5:1.
 
@@ -92,15 +92,15 @@ stone is below 4.5:1.
 
 | Family | Tokens |
 |---|---|
-| Families | `--ef-type-family-{body,display,mono}` |
-| Sizes | `--ef-type-size-{label,small,body,lead,h1,h2,h3,h4,statement}` |
-| Line heights | `--ef-type-leading-{body,lead,heading,snug}` |
-| Weights | `--ef-type-weight-{body,strong,heading,label,nav}` |
-| Letter spacing | `--ef-type-tracking-{display,label,body}` |
-| Layout | `--ef-layout-{measure,measure-narrow,width-narrow,width-standard,width-wide,width-max,gutter,section-space,block-space,grid-gap,stack-space,target-min,header-offset,card-min,fact-min}` |
-| Shape | `--ef-shape-{radius,border-width,border-width-accent}` |
-| Effects | `--ef-effect-{shadow-raised,transition-duration,transition-easing}` |
-| Focus | `--ef-focus-{ring-width,ring-offset,halo-width}` |
+| Families | `--forma-type-family-{body,display,mono}` |
+| Sizes | `--forma-type-size-{label,small,body,lead,h1,h2,h3,h4,statement}` |
+| Line heights | `--forma-type-leading-{body,lead,heading,snug}` |
+| Weights | `--forma-type-weight-{body,strong,heading,label,nav}` |
+| Letter spacing | `--forma-type-tracking-{display,label,body}` |
+| Layout | `--forma-layout-{measure,measure-narrow,width-narrow,width-standard,width-wide,width-max,gutter,section-space,block-space,grid-gap,stack-space,target-min,header-offset,card-min,fact-min}` |
+| Shape | `--forma-shape-{radius,border-width,border-width-accent}` |
+| Effects | `--forma-effect-{shadow-raised,transition-duration,transition-easing}` |
+| Focus | `--forma-focus-{ring-width,ring-offset,halo-width}` |
 
 The core primitive scales behind them live in `tokens/forma.tokens.json`:
 
@@ -140,19 +140,19 @@ See ADR-0003.
 
   | Code | Meaning |
   |---|---|
-  | `FORMA-COMPONENT` | A selector restyles an `ef-*` class |
+  | `FORMA-COMPONENT` | A selector restyles an `forma-*` class |
   | `GLOBAL-ELEMENT` | A selector restyles unqualified elements such as `body`, headings, `p`, `a`, `nav`, or `*` |
-  | `TOKEN-OVERRIDE` | A declaration redefines an `--ef-*` token outside the identity allowlist |
+  | `TOKEN-OVERRIDE` | A declaration redefines an `--forma-*` token outside the identity allowlist |
   | `IDENTITY-VALUE` | An identity token is set to a literal instead of a Forma token |
   | `PALETTE-COPY` | A literal color equals a Forma palette value |
 
 - **MKT-LOCAL-2.** Identity allowlist:
-  - `--ef-color-accent-primary`, `--ef-color-accent-hover`, `--ef-color-accent-secondary`
-  - `--ef-site-backdrop`, `--ef-site-backdrop-size`, `--ef-site-backdrop-opacity`
+  - `--forma-color-accent-primary`, `--forma-color-accent-hover`, `--forma-color-accent-secondary`
+  - `--forma-site-backdrop`, `--forma-site-backdrop-size`, `--forma-site-backdrop-opacity`
 
   Values must reference Forma tokens, so contrast stays validated. A rule that
   contains only allowlisted retargets may use any selector, such as `:root` or
-  `[data-ef-layout="product"]`.
+  `[data-forma-layout="product"]`.
 - **MKT-LOCAL-3.** Allowed local CSS:
   - identity-specific imagery;
   - content presentation unique to the site (charts, diagrams, demos);
@@ -178,12 +178,12 @@ See ADR-0003.
 
 | Requirement | Implementation | Test |
 |---|---|---|
-| Keyboard navigation and skip link | `.ef-skip-link` first in the shell; `main` has `tabindex="-1"` | `marketing.spec.mjs` skip-link test |
+| Keyboard navigation and skip link | `.forma-skip-link` first in the shell; `main` has `tabindex="-1"` | `marketing.spec.mjs` skip-link test |
 | Visible, unobscured focus | Tokenized ring and halo on every tone; card focus drawn on the card; sticky header gated | Focus-sweep test (outline ≥ 2px, never under the header) |
 | Semantic content order | No CSS reordering; source-order specimens | Layout catalog order test; hero order test |
 | Contrast-compatible themes | Compiler gates; tone pairs | axe WCAG 2.2 A/AA in light, dark, wide, and phone |
 | Responsive text | rem sizes; fluid values with a rem term | Compiler test; 200% text test |
-| Touch targets | Nav, brand, and buttons ≥ `--ef-layout-target-min` (2.75rem) | 44px target test at 390 and 320 |
+| Touch targets | Nav, brand, and buttons ≥ `--forma-layout-target-min` (2.75rem) | 44px target test at 390 and 320 |
 | Reduced motion | Hover lift only under `no-preference`; transitions removed | Reduced-motion test |
 | High zoom | No overflow at 320px (≈ 400% of 1280) or with 200% text | Containment and zoom tests |
 | Narrow screens | Navigation wraps, brand name never hidden, documentation navigation compacts | Navigation and documentation tests |
@@ -201,18 +201,18 @@ breakpoint that remains is listed here with its reason:
 |---|---|---|
 | `min-width: 40rem and min-height: 36rem` (media) | Sticky header, scroll padding | A sticky header on short or narrow viewports, or at high zoom, consumes reading space and can obscure focus (WCAG 2.4.11) |
 | `min-width: 64rem and min-height: 36rem` (media) | Sticky documentation rails | Rails only stick where two columns exist and there is room |
-| Container `ef-site-header < 56rem` | Hides the supplementary tagline | Keeps navigation to at most two lines; the brand name itself never hides |
-| Container `ef-index < 56rem`, `< 28rem` | Entry index regrouping | Four disparate columns cannot degrade by a minimum item size |
-| Container `ef-main ≥ 48rem`, `≥ 72rem`; `ef-doc < 48rem` | Documentation layout | Three regions with different roles regroup by the main region's width; compact navigation below 48rem |
+| Container `forma-site-header < 56rem` | Hides the supplementary tagline | Keeps navigation to at most two lines; the brand name itself never hides |
+| Container `forma-index < 56rem`, `< 28rem` | Entry index regrouping | Four disparate columns cannot degrade by a minimum item size |
+| Container `forma-main ≥ 48rem`, `≥ 72rem`; `forma-doc < 48rem` | Documentation layout | Three regions with different roles regroup by the main region's width; compact navigation below 48rem |
 
 ## MKT-API: Component API philosophy
 
 Components use:
 
 - small primitives;
-- semantic variants: `data-ef-variant="primary|action"`,
-  `data-ef-tone`, `data-ef-status`, `data-ef-columns="2–5"`,
-  `data-ef-width`;
+- semantic variants: `data-forma-variant="primary|action"`,
+  `data-forma-tone`, `data-forma-status`, `data-forma-columns="2–5"`,
+  `data-forma-width`;
 - composition, never switch collections.
 
 There are no site names in class names, no per-product component variants,
@@ -251,13 +251,13 @@ Each maps to a token, component, layout rule, or test listed above.
 |---|---|---|
 | GAP-MKT-01 | Partially closed. Brand manifests now accept optional extended roles (`surface.elevated`, `text.muted`, `accent.hover`, `status.*`), which the BrandCompiler contrast-gates. Compiled brand CSS still ships only in the npm package (`dist/brands/*`), not as a flat release asset | Add brand stylesheets to the release bundle when the first product needs a full palette of its own |
 | GAP-MKT-02 | Webfont files are not packaged. Sites load Newsreader, Manrope, and IBM Plex Mono themselves; fallbacks are defined | Decide self-hosting and licensing; add an optional font artifact |
-| GAP-MKT-03 | No scrim or media-hero primitive. Text over imagery cannot be contrast-verified by token pairs (VE REP-VE-COL-001) | Add `ef-hero` media variant with a mandatory scrim when a site needs it |
+| GAP-MKT-03 | No scrim or media-hero primitive. Text over imagery cannot be contrast-verified by token pairs (VE REP-VE-COL-001) | Add `forma-hero` media variant with a mandatory scrim when a site needs it |
 | GAP-MKT-04 | Emphasis budget and first-glance hierarchy are enforced only by the fixture's structural test, not for sites | Offer the one-primary check as a reusable site test |
-| GAP-MKT-05 | Marketing-tone data and comparison tables (Dokimos, Ordo, Limen) | Verify `dense-ledger` and `data-grid` inside `.ef-site` tones, or add a marketing table |
-| GAP-MKT-06 | Build-time chart or diagram figure with a data-table companion (Dokimos, Ordo, Praxis) | New `ef-figure` contract |
+| GAP-MKT-05 | Marketing-tone data and comparison tables (Dokimos, Ordo, Limen) | Verify `dense-ledger` and `data-grid` inside `.forma-site` tones, or add a marketing table |
+| GAP-MKT-06 | Build-time chart or diagram figure with a data-table companion (Dokimos, Ordo, Praxis) | New `forma-figure` contract |
 | GAP-MKT-07 | Provenance and citation labels for public pages (Dokimos, Ordo) | Adapt `provenance-trail` to marketing tones |
-| GAP-MKT-08 | Status tones with glyphs. `ef-badge[data-ef-status]` has a colored edge only | Add optional glyph slot |
-| GAP-MKT-09 | Syntax-highlight token colors for `.ef-code` (Limen) | Add validated code token roles |
+| GAP-MKT-08 | Status tones with glyphs. `forma-badge[data-forma-status]` has a colored edge only | Add optional glyph slot |
+| GAP-MKT-09 | Syntax-highlight token colors for `.forma-code` (Limen) | Add validated code token roles |
 | GAP-MKT-10 | Navigation with more than about 7 destinations. Wrapping becomes three or more lines | Native `<details>` compact-navigation variant |
 | GAP-MKT-11 | Five research sites use the external `research-publisher` generator with its own CSS | Migrate `research-publisher` to emit Forma classes |
 | GAP-MKT-12 | `catalog/themes.json` lacks an acceptance-context field (marketing vs application), per VE theme protocol | Add `acceptedContexts` |

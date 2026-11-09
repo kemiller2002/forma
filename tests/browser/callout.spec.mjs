@@ -7,7 +7,7 @@ const wcag = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
 const kinds = ["note", "caution", "evidence", "decision"];
 
 const html = (theme = "", extraCss = "") => `<!doctype html>
-<html lang="en"${theme ? ` data-ef-theme="${theme}"` : ""}>
+<html lang="en"${theme ? ` data-forma-theme="${theme}"` : ""}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,7 @@ const open = async (page, width, options = {}) => {
 const overflow = (page) =>
   page.evaluate(() => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - document.documentElement.clientWidth);
 
-const callout = (page, kind) => page.locator(`.ef-callout[data-ef-callout="${kind}"]`);
+const callout = (page, kind) => page.locator(`.forma-callout[data-forma-callout="${kind}"]`);
 
 // The rule pattern of each kind: the second, non-color cue after the label.
 const pattern = (page, kind) =>
@@ -53,7 +53,7 @@ test("kinds stay distinguishable without color", async ({ page }) => {
   const patterns = await Promise.all(kinds.map((kind) => pattern(page, kind)));
   expect(new Set(patterns).size, patterns.join(" | ")).toBe(kinds.length);
   for (const kind of kinds) {
-    await expect(callout(page, kind).locator(".ef-callout__label")).toHaveText(new RegExp(kind, "i"));
+    await expect(callout(page, kind).locator(".forma-callout__label")).toHaveText(new RegExp(kind, "i"));
   }
 });
 
@@ -104,7 +104,7 @@ test("print keeps callouts whole with a visible frame", async ({ page }) => {
 test("reduced motion: the callout is static and declares no motion", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await open(page, 1280);
-  const motion = await page.locator(".ef-callout, .ef-callout *").evaluateAll((elements) =>
+  const motion = await page.locator(".forma-callout, .forma-callout *").evaluateAll((elements) =>
     elements.flatMap((element) => {
       const style = getComputedStyle(element);
       return [style.animationName, style.transitionProperty === "all" && style.transitionDuration !== "0s" ? style.transitionDuration : "none"];
@@ -112,7 +112,7 @@ test("reduced motion: the callout is static and declares no motion", async ({ pa
   expect(motion).toEqual([]);
   // The fixture loads other controls before replacing its content. Their
   // outgoing transitions are not motion owned by the static callout.
-  expect(await page.locator(".ef-callout").evaluateAll(elements =>
+  expect(await page.locator(".forma-callout").evaluateAll(elements =>
     elements.reduce((count, element) => count + element.getAnimations({ subtree: true }).length, 0)
   )).toBe(0);
 });

@@ -29,27 +29,27 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "First page of results",
       description: "On page 1 there is nowhere to go back to, so the application omits Previous rather than rendering a dead control.",
-      html: `<ef-pagination class="ef-component-tag">
-  <nav class="ef-pagination" aria-label="Audit log pages">
-    <ol class="ef-pagination__pages">
+      html: `<forma-pagination class="forma-component-tag">
+  <nav class="forma-pagination" aria-label="Audit log pages">
+    <ol class="forma-pagination__pages">
       <li><a href="?page=1" aria-current="page">1</a></li>
       <li><a href="?page=2">2</a></li>
       <li><a href="?page=3">3</a></li>
     </ol>
     <a href="?page=2" rel="next">Next</a>
-    <span class="ef-pagination__summary">Page 1 of 3</span>
+    <span class="forma-pagination__summary">Page 1 of 3</span>
   </nav>
-</ef-pagination>`
+</forma-pagination>`
     },
     {
       id: "gapped-range",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Long result set with gaps",
       description: "Forty pages with the current page in the middle. The application shows the first and last pages and a window around the current one; the gaps are plain list items with an ellipsis.",
-      html: `<ef-pagination class="ef-component-tag">
-  <nav class="ef-pagination" aria-label="Search result pages">
+      html: `<forma-pagination class="forma-component-tag">
+  <nav class="forma-pagination" aria-label="Search result pages">
     <a href="?page=17" rel="prev">Previous</a>
-    <ol class="ef-pagination__pages">
+    <ol class="forma-pagination__pages">
       <li><a href="?page=1">1</a></li>
       <li aria-hidden="true">…</li>
       <li><a href="?page=17">17</a></li>
@@ -59,22 +59,22 @@ export default {
       <li><a href="?page=40">40</a></li>
     </ol>
     <a href="?page=19" rel="next">Next</a>
-    <span class="ef-pagination__summary">Page 18 of 40 · 1,984 results</span>
+    <span class="forma-pagination__summary">Page 18 of 40 · 1,984 results</span>
   </nav>
-</ef-pagination>`
+</forma-pagination>`
     },
     {
       id: "cursor-unknown-total",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Cursor-based paging with an unknown total",
       description: "The API returns cursors, not page numbers, and does not know the total. Only Previous and Next are rendered and the summary describes the visible range.",
-      html: `<ef-pagination class="ef-component-tag">
-  <nav class="ef-pagination" aria-label="Event pages">
+      html: `<forma-pagination class="forma-component-tag">
+  <nav class="forma-pagination" aria-label="Event pages">
     <a href="?before=evt_5120" rel="prev">Newer events</a>
     <a href="?after=evt_5071" rel="next">Older events</a>
-    <span class="ef-pagination__summary">Showing 50 events</span>
+    <span class="forma-pagination__summary">Showing 50 events</span>
   </nav>
-</ef-pagination>`
+</forma-pagination>`
     },
     {
       id: "mobile-compact",
@@ -90,10 +90,10 @@ export default {
           "Hidden page numbers are removed from the accessibility tree too; the summary and Previous/Next remain the navigation path."
         ]
       },
-      html: `<ef-pagination class="ef-component-tag">
-  <nav class="ef-pagination" aria-label="Invoice pages">
+      html: `<forma-pagination class="forma-component-tag">
+  <nav class="forma-pagination" aria-label="Invoice pages">
     <a href="?page=4" rel="prev">Previous</a>
-    <ol class="ef-pagination__pages">
+    <ol class="forma-pagination__pages">
       <li><a href="?page=3">3</a></li>
       <li><a href="?page=4">4</a></li>
       <li><a href="?page=5" aria-current="page">5</a></li>
@@ -101,9 +101,9 @@ export default {
       <li><a href="?page=7">7</a></li>
     </ol>
     <a href="?page=6" rel="next">Next</a>
-    <span class="ef-pagination__summary">Page 5 of 9</span>
+    <span class="forma-pagination__summary">Page 5 of 9</span>
   </nav>
-</ef-pagination>`
+</forma-pagination>`
     }
   ],
   api: {
@@ -115,9 +115,9 @@ export default {
       { name: "aria-hidden", on: "ellipsis list item", values: "true", default: "—", description: "Hides decorative gap markers from assistive technology." }
     ],
     hooks: {
-      "ef-pagination": "Root nav: a wrapping flex row of controls and summary.",
-      "ef-pagination__pages": "Unstyled ordered list of page links in a row.",
-      "ef-pagination__summary": "Small secondary text stating the position, such as Page 3 of 12. Full-width and centred below 40rem."
+      "forma-pagination": "Root nav: a wrapping flex row of controls and summary.",
+      "forma-pagination__pages": "Unstyled ordered list of page links in a row.",
+      "forma-pagination__summary": "Small secondary text stating the position, such as Page 3 of 12. Full-width and centred below 40rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through Previous, the page links and Next in source order." },

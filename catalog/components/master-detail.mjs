@@ -29,36 +29,36 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "No record selected",
       description: "The first visit to the list before any record is chosen. No row carries aria-current, and the detail region says what to do instead of showing stale data from a previous record.",
-      html: `<ef-master-detail class="ef-component-tag">
-  <section class="ef-master-detail" aria-label="Open support cases">
-    <nav class="ef-master-detail__master" aria-label="Cases">
+      html: `<forma-master-detail class="forma-component-tag">
+  <section class="forma-master-detail" aria-label="Open support cases">
+    <nav class="forma-master-detail__master" aria-label="Cases">
       <a href="#master-detail-nothing-selected-4410"><strong>CASE-4410</strong><span>Login loop after SSO change</span></a>
       <a href="#master-detail-nothing-selected-4407"><strong>CASE-4407</strong><span>Refund not received</span></a>
       <a href="#master-detail-nothing-selected-4399"><strong>CASE-4399</strong><span>Export missing columns</span></a>
     </nav>
-    <section class="ef-master-detail__detail" aria-labelledby="master-detail-nothing-selected-title">
+    <section class="forma-master-detail__detail" aria-labelledby="master-detail-nothing-selected-title">
       <h3 id="master-detail-nothing-selected-title">No case selected</h3>
       <p>Choose a case from the list to see the customer, history and next steps.</p>
     </section>
   </section>
-</ef-master-detail>`
+</forma-master-detail>`
     },
     {
       id: "blocked-record",
       interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Blocked record with long names",
       description: "A selected record in a blocked state, with long customer names wrapping inside the list rows. Status is a text lozenge with a symbol, and the only legal action shown is the one the application allows.",
-      html: `<ef-master-detail class="ef-component-tag">
-  <section class="ef-master-detail" aria-label="Purchase orders">
-    <nav class="ef-master-detail__master" aria-label="Purchase orders list">
+      html: `<forma-master-detail class="forma-component-tag">
+  <section class="forma-master-detail" aria-label="Purchase orders">
+    <nav class="forma-master-detail__master" aria-label="Purchase orders list">
       <a href="#master-detail-blocked-record-7781"><strong>PO-7781</strong><span>Consolidated Freight &amp; Warehousing Partners (EMEA)</span></a>
       <a href="#master-detail-blocked-record-7782" aria-current="page"><strong>PO-7782</strong><span>Hanseatische Maschinenbau- und Anlagentechnik GmbH</span></a>
       <a href="#master-detail-blocked-record-7790"><strong>PO-7790</strong><span>Blue Harbor Co.</span></a>
     </nav>
-    <article class="ef-master-detail__detail" id="master-detail-blocked-record-7782" aria-labelledby="master-detail-blocked-record-title">
-      <span class="ef-status-lozenge" data-state="blocked">Blocked</span>
+    <article class="forma-master-detail__detail" id="master-detail-blocked-record-7782" aria-labelledby="master-detail-blocked-record-title">
+      <span class="forma-status-lozenge" data-state="blocked">Blocked</span>
       <h3 id="master-detail-blocked-record-title">PO-7782</h3>
-      <dl class="ef-key-value-list">
+      <dl class="forma-key-value-list">
         <div><dt>Supplier</dt><dd>Hanseatische Maschinenbau- und Anlagentechnik GmbH</dd></div>
         <div><dt>Blocked by</dt><dd>Missing tax certificate</dd></div>
         <div><dt>Amount</dt><dd>€48,200.00</dd></div>
@@ -66,7 +66,7 @@ export default {
       <p><button type="button">Request certificate</button></p>
     </article>
   </section>
-</ef-master-detail>`
+</forma-master-detail>`
     },
     {
       id: "mobile-record-switcher",
@@ -82,23 +82,23 @@ export default {
           "Long lists are awkward to scroll horizontally. For more than a handful of records, navigate to a separate list page on phones and use Back to return."
         ]
       },
-      html: `<ef-master-detail class="ef-component-tag">
-  <section class="ef-master-detail" aria-label="Field visits">
-    <nav class="ef-master-detail__master" aria-label="Visits">
+      html: `<forma-master-detail class="forma-component-tag">
+  <section class="forma-master-detail" aria-label="Field visits">
+    <nav class="forma-master-detail__master" aria-label="Visits">
       <a href="#master-detail-mobile-v12" aria-current="page"><strong>Visit 12</strong><span>Pump station 4</span></a>
       <a href="#master-detail-mobile-v13"><strong>Visit 13</strong><span>North reservoir</span></a>
       <a href="#master-detail-mobile-v14"><strong>Visit 14</strong><span>Valve house B</span></a>
     </nav>
-    <article class="ef-master-detail__detail" id="master-detail-mobile-v12" aria-labelledby="master-detail-mobile-title">
-      <span class="ef-status-lozenge" data-state="ok">Complete</span>
+    <article class="forma-master-detail__detail" id="master-detail-mobile-v12" aria-labelledby="master-detail-mobile-title">
+      <span class="forma-status-lozenge" data-state="ok">Complete</span>
       <h3 id="master-detail-mobile-title">Visit 12</h3>
-      <dl class="ef-key-value-list">
+      <dl class="forma-key-value-list">
         <div><dt>Site</dt><dd>Pump station 4</dd></div>
         <div><dt>Inspector</dt><dd>Daniel Okafor</dd></div>
       </dl>
     </article>
   </section>
-</ef-master-detail>`
+</forma-master-detail>`
     }
   ],
   api: {
@@ -110,9 +110,9 @@ export default {
       { name: "aria-labelledby", on: "detail", values: "id of the detail heading", default: "—", description: "Names the detail region by its record heading." }
     ],
     hooks: {
-      "ef-master-detail": "Root two-column grid with a border and a 22rem minimum height.",
-      "ef-master-detail__master": "The record list, normally a `nav` of links. Each direct link is a row; a `span` inside it is the secondary line.",
-      "ef-master-detail__detail": "The selected record region. Padded and allowed to shrink."
+      "forma-master-detail": "Root two-column grid with a border and a 22rem minimum height.",
+      "forma-master-detail__master": "The record list, normally a `nav` of links. Each direct link is a row; a `span` inside it is the secondary line.",
+      "forma-master-detail__detail": "The selected record region. Padded and allowed to shrink."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the record links, then into the detail. Native link behavior." },

@@ -22,13 +22,13 @@ The design system owns reusable HTML/CSS structures. Signal/Limen/Ordo owns:
 
 ### Binary choice
 
-Use `.ef-binary-choice` for Yes/No, True/False, Agree/Disagree, and bounded three-way variants.
+Use `.forma-binary-choice` for Yes/No, True/False, Agree/Disagree, and bounded three-way variants.
 
 It uses radios, not a checkbox switch, when Unanswered must remain representable.
 
 ### Ordinal scales
 
-`.ef-ordinal-scale` supports 3, 4, 5, 6, 7, 10, and 11 positions.
+`.forma-ordinal-scale` supports 3, 4, 5, 6, 7, 10, and 11 positions.
 
 Semantic names such as Likert, Agreement, Frequency, Importance, Satisfaction, Confidence, Quality, Difficulty, Effort, Likelihood, Maturity, Severity, Priority, Probability, and Familiarity are application presets over the same structure.
 
@@ -36,21 +36,21 @@ Even-point scales do not imply a midpoint.
 
 ### Semantic differential
 
-`.ef-semantic-differential` provides textual bipolar endpoints and a finite ordered radio scale.
+`.forma-semantic-differential` provides textual bipolar endpoints and a finite ordered radio scale.
 
 Endpoint meaning must be available to assistive technology and cannot depend on visual position alone.
 
 ### Symbol rating
 
-`.ef-symbol-rating` covers star and icon rating.
+`.forma-symbol-rating` covers star and icon rating.
 
 Icons are decorative reinforcement. Each input must have textual ordinal/semantic meaning.
 
 ### Numeric selectors
 
-- native number input / `.ef-numeric-stepper` for bounded integer/decimal;
-- existing native `.ef-slider` for one bounded discrete value;
-- `.ef-range-entry` as the required direct-entry baseline for bounded lower/upper ranges.
+- native number input / `.forma-numeric-stepper` for bounded integer/decimal;
+- existing native `.forma-slider` for one bounded discrete value;
+- `.forma-range-entry` as the required direct-entry baseline for bounded lower/upper ranges.
 
 A dual-thumb graphical range slider requires Limen behavior and must not remove direct numeric endpoint entry.
 
@@ -64,22 +64,22 @@ Variants include:
 - checkboxes;
 - cards;
 - buttons/segmented presentation;
-- image/media choices through `.ef-choice--media`;
+- image/media choices through `.forma-choice--media`;
 - searchable/custom selection as Limen contracts.
 
 Images never replace visible/accessibility text.
 
 ### Multi-choice constraints
 
-`.ef-selection-guidance` and `.ef-selection-status` communicate exact/min/max/between selection rules.
+`.forma-selection-guidance` and `.forma-selection-status` communicate exact/min/max/between selection rules.
 
-`.ef-choice--exclusive` marks an exclusive None/N/A-style option.
+`.forma-choice--exclusive` marks an exclusive None/N/A-style option.
 
 Limen/application code enforces cardinality and deterministic clear/reject behavior.
 
 ### Matrix/repeated scale
 
-`.ef-matrix` composes repeated primitive controls by row.
+`.forma-matrix` composes repeated primitive controls by row.
 
 Requirements:
 
@@ -91,17 +91,17 @@ Requirements:
 
 ### Pairwise
 
-`.ef-pairwise` is a two-option comparison presentation using native radio semantics.
+`.forma-pairwise` is a two-option comparison presentation using native radio semantics.
 
 ### Best-Worst
 
-`.ef-best-worst` exposes Best and Worst choices with explicit text labels.
+`.forma-best-worst` exposes Best and Worst choices with explicit text labels.
 
 Limen enforces that the same option cannot occupy both roles when the application requires distinct selection.
 
 ### Hierarchical choice
 
-`.ef-hierarchy` supplies a native disclosure/tree-like baseline for single or multi choice.
+`.forma-hierarchy` supplies a native disclosure/tree-like baseline for single or multi choice.
 
 The application owns:
 

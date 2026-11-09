@@ -48,7 +48,7 @@ Forma shall preserve four visual layers: primitive tokens, semantic tokens, comp
 Components shall consume semantic or documented component tokens for identity-sensitive presentation. Components shall not depend directly on customer brand names.
 
 ### BRAND-TOKEN-003 Brand output
-Brand compilation shall map supported manifest values to the existing public `--ef-*` token contract rather than creating a parallel component API.
+Brand compilation shall map supported manifest values to the existing public `--forma-*` token contract rather than creating a parallel component API.
 
 ### BRAND-TOKEN-004 Theme parity
 Every compiled brand shall provide the same semantic color token surface for light and dark themes.
@@ -65,7 +65,7 @@ Interactive component state colors should be derived from or validated against s
 ## 4. Theme and scope
 
 ### BRAND-SCOPE-001 Root scope
-A brand may be applied at the document root with `data-ef-brand="<id>"`.
+A brand may be applied at the document root with `data-forma-brand="<id>"`.
 
 ### BRAND-SCOPE-002 Nested scope
 A brand may be applied to a subtree. CSS custom-property inheritance shall allow multiple independently branded examples or embedded surfaces in the same document.
@@ -74,7 +74,7 @@ A brand may be applied to a subtree. CSS custom-property inheritance shall allow
 Brand scopes shall support explicit light and dark themes and operating-system dark preference when no explicit theme is supplied.
 
 ### BRAND-SCOPE-004 Nested theme
-A scoped brand shall respect an explicit `data-ef-theme` on the same element or a containing application theme scope.
+A scoped brand shall respect an explicit `data-forma-theme` on the same element or a containing application theme scope.
 
 ### BRAND-SCOPE-005 Cheap theme switching
 Changing theme or brand shall not require replacing canonical component DOM. The presentation contract is custom-property based.

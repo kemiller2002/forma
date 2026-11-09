@@ -4,7 +4,7 @@ export default {
   behavior: "Application state",
   summary: "A metric whose authoritative value updates immediately; a neutral perceptual tint marks the update without counting through invented numbers or implying direction.",
   purpose: {
-    description: "When the application publishes a new value for a metric, it replaces the value element and marks the new element with `data-ef-value-change`. The new text is fully legible from the first frame; Forma only fades a neutral surface tint from behind it. The tint is the same for increases, decreases and status changes, so motion never implies direction, success or severity. What changed, and by how much, is stated in text and announced by an application-owned polite live region.",
+    description: "When the application publishes a new value for a metric, it replaces the value element and marks the new element with `data-forma-value-change`. The new text is fully legible from the first frame; Forma only fades a neutral surface tint from behind it. The tint is the same for increases, decreases and status changes, so motion never implies direction, success or severity. What changed, and by how much, is stated in text and announced by an application-owned polite live region.",
     useWhen: [
       "A metric or status value on screen is replaced while the user is looking at it, for example after polling or a push update.",
       "Users should notice that a value changed without the change being dramatized.",
@@ -18,8 +18,8 @@ export default {
     ],
     characteristics: [
       "No count-through: the element only ever contains the final value, so no invented intermediate numbers appear.",
-      "The tint starts at `--ef-color-surface-secondary` via `@starting-style` and fades to transparent; text contrast is unaffected at every frame.",
-      "Works on any element: the selector is `:where([data-ef-value-change])`, with zero specificity so component styles still win.",
+      "The tint starts at `--forma-color-surface-secondary` via `@starting-style` and fades to transparent; text contrast is unaffected at every frame.",
+      "Works on any element: the selector is `:where([data-forma-value-change])`, with zero specificity so component styles still win.",
       "Under reduced motion and in forced-colors mode there is no transition; the new value simply appears."
     ]
   },
@@ -29,30 +29,30 @@ export default {
       id: "status-change",
       title: "Status value changed",
       description: "A non-numeric metric changes from Degraded to Operational. The replaced value receives the same neutral tint a number would, and the live region states the old and new values in words.",
-      html: `<ef-metric-value-change class="ef-component-tag">
-  <article class="ef-metric-card" aria-labelledby="metric-value-change-status-change-label">
-    <div class="ef-metric-card__label" id="metric-value-change-status-change-label">Payment gateway</div>
-    <div class="ef-metric-card__value" data-ef-value-change>Operational</div>
-    <p><span class="ef-status-lozenge" data-state="ok">All regions responding</span></p>
-    <p class="ef-visually-hidden" aria-live="polite">Payment gateway changed from Degraded to Operational.</p>
+      html: `<forma-metric-value-change class="forma-component-tag">
+  <article class="forma-metric-card" aria-labelledby="metric-value-change-status-change-label">
+    <div class="forma-metric-card__label" id="metric-value-change-status-change-label">Payment gateway</div>
+    <div class="forma-metric-card__value" data-forma-value-change>Operational</div>
+    <p><span class="forma-status-lozenge" data-state="ok">All regions responding</span></p>
+    <p class="forma-visually-hidden" aria-live="polite">Payment gateway changed from Degraded to Operational.</p>
   </article>
-</ef-metric-value-change>`
+</forma-metric-value-change>`
     },
     {
       id: "detail-value-update",
       title: "Updated value in a detail list",
       description: "The attribute is not limited to metric cards. Here one value in a [[key-value-list]] was replaced after a sync; only that `dd` is marked, and the other rows stay still.",
-      html: `<ef-metric-value-change class="ef-component-tag">
+      html: `<forma-metric-value-change class="forma-component-tag">
   <section aria-labelledby="metric-value-change-detail-value-update-title">
     <h3 id="metric-value-change-detail-value-update-title">Warehouse stock</h3>
-    <dl class="ef-key-value-list">
-      <div><dt>SKU</dt><dd><span class="ef-identifier">BRK-2210</span></dd></div>
-      <div><dt>On hand</dt><dd data-ef-value-change>186 units</dd></div>
+    <dl class="forma-key-value-list">
+      <div><dt>SKU</dt><dd><span class="forma-identifier">BRK-2210</span></dd></div>
+      <div><dt>On hand</dt><dd data-forma-value-change>186 units</dd></div>
       <div><dt>Reserved</dt><dd>40 units</dd></div>
     </dl>
-    <p class="ef-visually-hidden" aria-live="polite">On hand updated to 186 units, down from 240.</p>
+    <p class="forma-visually-hidden" aria-live="polite">On hand updated to 186 units, down from 240.</p>
   </section>
-</ef-metric-value-change>`
+</forma-metric-value-change>`
     },
     {
       id: "mobile-updated-metric",
@@ -68,28 +68,28 @@ export default {
           "Orientation changes do not re-trigger the tint; it only runs when the application inserts a new marked element."
         ]
       },
-      html: `<ef-metric-value-change class="ef-component-tag">
-  <article class="ef-metric-card" aria-labelledby="metric-value-change-mobile-updated-metric-label">
-    <div class="ef-metric-card__label" id="metric-value-change-mobile-updated-metric-label">Open incidents</div>
-    <div class="ef-metric-card__value" data-ef-value-change>5</div>
+      html: `<forma-metric-value-change class="forma-component-tag">
+  <article class="forma-metric-card" aria-labelledby="metric-value-change-mobile-updated-metric-label">
+    <div class="forma-metric-card__label" id="metric-value-change-mobile-updated-metric-label">Open incidents</div>
+    <div class="forma-metric-card__value" data-forma-value-change>5</div>
     <p>Was 6 at 09:10 UTC.</p>
-    <p class="ef-visually-hidden" aria-live="polite">Open incidents updated to 5, down from 6.</p>
+    <p class="forma-visually-hidden" aria-live="polite">Open incidents updated to 5, down from 6.</p>
     <a href="#metric-value-change-mobile-updated-metric-incidents">View incidents</a>
   </article>
-</ef-metric-value-change>`
+</forma-metric-value-change>`
     }
   ],
   api: {
     attributes: [
-      { name: "data-ef-value-change", on: "the replaced value element", values: "present (no value)", default: "absent", description: "Marks a freshly inserted value element as an update. Add it only to the new element the application inserts, never on first render." },
+      { name: "data-forma-value-change", on: "the replaced value element", values: "present (no value)", default: "absent", description: "Marks a freshly inserted value element as an update. Add it only to the new element the application inserts, never on first render." },
       { name: "aria-live", on: "a visually hidden paragraph", values: "polite", default: "—", description: "Application-owned announcement stating the new value and, where useful, the previous one." },
-      { name: "aria-labelledby", on: "article.ef-metric-card", values: "id of the label", default: "—", description: "Names the card so the announcement and value are associated with a metric." }
+      { name: "aria-labelledby", on: "article.forma-metric-card", values: "id of the label", default: "—", description: "Names the card so the announcement and value are associated with a metric." }
     ],
     hooks: {
-      "data-ef-value-change": "Presence starts a neutral background tint (`--ef-color-surface-secondary`) that fades to transparent over `--ef-motion-perceptual-emphasis-duration`. Zero specificity; applies to any element.",
-      "ef-metric-card__value": "Typical host of the attribute; see [[metric-card]].",
-      "--ef-motion-perceptual-emphasis-duration": "Duration of the fade. Default 180ms (the standard primitive duration).",
-      "--ef-motion-perceptual-easing": "Easing of the fade. Default `cubic-bezier(0.2, 0, 0, 1)`."
+      "data-forma-value-change": "Presence starts a neutral background tint (`--forma-color-surface-secondary`) that fades to transparent over `--forma-motion-perceptual-emphasis-duration`. Zero specificity; applies to any element.",
+      "forma-metric-card__value": "Typical host of the attribute; see [[metric-card]].",
+      "--forma-motion-perceptual-emphasis-duration": "Duration of the fade. Default 180ms (the standard primitive duration).",
+      "--forma-motion-perceptual-easing": "Easing of the fade. Default `cubic-bezier(0.2, 0, 0, 1)`."
     },
     keyboard: [
       { keys: "None", action: "The update is not interactive and does not move focus." }
@@ -98,8 +98,8 @@ export default {
     form: "Not a form control."
   },
   states: [
-    { name: "Settled", how: "no data-ef-value-change, or the fade has finished", description: "Value on a transparent background." },
-    { name: "Just updated", how: "newly inserted element with data-ef-value-change", description: "The value appears at once on a neutral tint that fades away." },
+    { name: "Settled", how: "no data-forma-value-change, or the fade has finished", description: "Value on a transparent background." },
+    { name: "Just updated", how: "newly inserted element with data-forma-value-change", description: "The value appears at once on a neutral tint that fades away." },
     { name: "Reduced motion or forced colors", how: "prefers-reduced-motion: reduce or forced-colors: active", description: "Transition removed; the new value appears with no emphasis motion." }
   ],
   accessibility: {
@@ -109,7 +109,7 @@ export default {
       "Removes the transition under `prefers-reduced-motion: reduce` and in forced-colors mode."
     ],
     consumer: [
-      "Replace the value element (or insert a new one) and add `data-ef-value-change` to the new element; toggling the attribute on an existing element does not replay `@starting-style`.",
+      "Replace the value element (or insert a new one) and add `data-forma-value-change` to the new element; toggling the attribute on an existing element does not replay `@starting-style`.",
       "Announce meaningful changes in a polite live region, including direction and previous value in words.",
       "Throttle announcements for values that update frequently so the live region does not chatter.",
       "Keep any status text (for example a [[status-lozenge]]) in sync with the value in the same update."
@@ -120,7 +120,7 @@ export default {
     "Behaves the same at every width and orientation; the host component (for example [[metric-card]]) owns sizing."
   ],
   motion: [
-    "Perceptual interpolation of `background-color` only: from `--ef-color-surface-secondary` (via `@starting-style`) to transparent over `--ef-motion-perceptual-emphasis-duration` (180ms) with `--ef-motion-perceptual-easing`.",
+    "Perceptual interpolation of `background-color` only: from `--forma-color-surface-secondary` (via `@starting-style`) to transparent over `--forma-motion-perceptual-emphasis-duration` (180ms) with `--forma-motion-perceptual-easing`.",
     "No spatial motion and no mass: the value does not slide, scale, fade in or count through intermediate numbers.",
     "The same fade is used for increases, decreases, unchanged republishes and status changes.",
     "A second update replaces the element again and restarts the fade from the new element; nothing queues.",

@@ -28,23 +28,23 @@ export default {
       id: "text-only",
       title: "Reference without a copy action",
       description: "The minimum form inside a support note. The reference is plain selectable text; no button is rendered because this application does not implement copying.",
-      html: `<ef-fault-reference class="ef-component-tag">
+      html: `<forma-fault-reference class="forma-component-tag">
   <p>If this keeps happening, contact support and quote the reference below.</p>
-  <p class="ef-fault-reference">Reference <code>AG-91B7Q</code></p>
-</ef-fault-reference>`
+  <p class="forma-fault-reference">Reference <code>AG-91B7Q</code></p>
+</forma-fault-reference>`
     },
     {
       id: "localized-with-copy",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Localized label with copy action",
       description: "A Spanish label and copy button. The copy button's accessible name contains its visible text and the reference, so it is unambiguous when several references are on a page. Clipboard behavior is supplied by the application.",
-      html: `<ef-fault-reference class="ef-component-tag">
-  <p class="ef-fault-reference" lang="es">
+      html: `<forma-fault-reference class="forma-component-tag">
+  <p class="forma-fault-reference" lang="es">
     <span>Referencia</span>
     <code>AG-6YH2D</code>
-    <button type="button" data-ef-action="copy-reference" aria-label="Copiar referencia AG-6YH2D">Copiar</button>
+    <button type="button" data-forma-action="copy-reference" aria-label="Copiar referencia AG-6YH2D">Copiar</button>
   </p>
-</ef-fault-reference>`
+</forma-fault-reference>`
     },
     {
       id: "mobile-long-reference",
@@ -60,24 +60,24 @@ export default {
           "Long-press text selection on the code still works on touch devices, so the reference can be copied even without the button."
         ]
       },
-      html: `<ef-fault-reference class="ef-component-tag">
-  <p class="ef-fault-reference">
+      html: `<forma-fault-reference class="forma-component-tag">
+  <p class="forma-fault-reference">
     <span>Reference</span>
     <code>AG-4F82C-BILLING-RECIPIENTS-2026-09-30</code>
-    <button type="button" data-ef-action="copy-reference" aria-label="Copy fault reference AG-4F82C-BILLING-RECIPIENTS-2026-09-30">Copy</button>
+    <button type="button" data-forma-action="copy-reference" aria-label="Copy fault reference AG-4F82C-BILLING-RECIPIENTS-2026-09-30">Copy</button>
   </p>
-</ef-fault-reference>`
+</forma-fault-reference>`
     }
   ],
   api: {
     attributes: [
-      { name: "data-ef-action", on: "button", values: "copy-reference", default: "—", description: "Marks the copy button for application code. Forma attaches no clipboard behavior." },
+      { name: "data-forma-action", on: "button", values: "copy-reference", default: "—", description: "Marks the copy button for application code. Forma attaches no clipboard behavior." },
       { name: "aria-label", on: "button", values: "string", default: "—", description: "Start with the visible label and include the reference, for example \"Copy fault reference AG-4F82C\"." },
       { name: "type", on: "button", values: "button", default: "—", description: "Required so the copy button never submits a form." },
-      { name: "lang", on: ".ef-fault-reference", values: "BCP 47 tag", default: "inherited", description: "Set when the label is localized differently from the page." }
+      { name: "lang", on: ".forma-fault-reference", values: "BCP 47 tag", default: "inherited", description: "Set when the label is localized differently from the page." }
     ],
     hooks: {
-      "ef-fault-reference": "Root paragraph: a wrapping flex row in small secondary text. Its code child is bold primary text that breaks anywhere; a direct button child gets a 44 by 44px minimum size."
+      "forma-fault-reference": "Root paragraph: a wrapping flex row in small secondary text. Its code child is bold primary text that breaks anywhere; a direct button child gets a 44 by 44px minimum size."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Reaches the copy button when present. The reference text itself is not focusable." },
@@ -90,7 +90,7 @@ export default {
   },
   states: [
     { name: "Text only", how: "no button", description: "Label and code only; users select the text to copy it." },
-    { name: "With copy action", how: "button data-ef-action=\"copy-reference\"", description: "A native button beside the code; behavior supplied by the application." },
+    { name: "With copy action", how: "button data-forma-action=\"copy-reference\"", description: "A native button beside the code; behavior supplied by the application." },
     { name: "Long reference", how: "content", description: "The code wraps anywhere inside the row." }
   ],
   accessibility: {

@@ -262,13 +262,13 @@ let runPinned (args: string list) =
                 "\n"
                 [ "<!doctype html>"; "<html lang=\"en\">"; "<head>"; "<meta charset=\"utf-8\">"; "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
                   "<title>LCE-001 pinned</title>"; css; "<link rel=\"stylesheet\" href=\"../fw/package/dist/forma-workflow.css\">"
-                  "<style>html { font-size: " + string c.Page.Typography.RootPercent + "%; } body { margin: 16px; } .ef-workflow-editor__canvas { --ef-workflow-zoom: " + string spec.Zoom + "; }</style>"
+                  "<style>html { font-size: " + string c.Page.Typography.RootPercent + "%; } body { margin: 16px; } .forma-workflow-editor__canvas { --forma-workflow-zoom: " + string spec.Zoom + "; }</style>"
                   "<script type=\"module\" src=\"../fw/package/dist/forma-workflow.js\"></script>"; "</head>"; "<body>"
                   "<section data-lc-case=\"" + c.Id + "\"><forma-workflow mode=\"view\"><script type=\"application/json\" class=\"forma-workflow-source\">" + source + "</script></forma-workflow></section>"
                   "</body>"; "</html>"; "" ]
         let file = Path.Combine(work, c.Id + ".html")
         File.WriteAllText(file, html)
-        { Measure.File = file; Measure.Setup = c.Page; Measure.Repeat = false; Measure.WaitFor = Some ".ef-workflow-host .ef-diagram__canvas" }
+        { Measure.File = file; Measure.Setup = c.Page; Measure.Repeat = false; Measure.WaitFor = Some ".forma-workflow-host .forma-diagram__canvas" }
     let (pages, browser), ms = timed (fun () -> Measure.runServed root (Directory.CreateDirectory(out).FullName) (Some packages) (cases |> List.map page))
     let byId = cases |> List.map (fun c -> c.Id, c) |> Map.ofList
     let evaluated =

@@ -9,11 +9,17 @@ open System.Text.Json.Nodes
 open Forma.TokenValidator.Css
 
 /// The Forma-owned custom property namespace.
-let FormaPrefix = "--ef-"
+let FormaPrefix = "--forma-"
+
+/// The pre-1.0 Forma namespace (FORMA-NS-001). Spelled in two parts so the
+/// namespace guard, which forbids the old namespace in shipped files, does
+/// not read this definition as a use of it.
+let LegacyPrefix = String.Concat("--e", "f-")
 
 /// Prefixes that look like an attempt at a Forma token but are not the
-/// namespace (`--forma-text`, `--ef_color`, `--EF-color`).
-let private lookalikePrefixes = [ "--forma-"; "--ef_"; "--ef--"; "--efc-" ]
+/// namespace: the pre-1.0 namespace (run tools/NamespaceMigrator) and slips
+/// such as `--forma_text`, `--forma--text`, `--FORMA-text`.
+let private lookalikePrefixes = [ LegacyPrefix; "--ef_"; "--efc-"; "--forma_"; "--forma--" ]
 
 type Severity =
     | Blocking
@@ -38,11 +44,11 @@ type TokenEntry =
 /// What a Forma installation exports.
 type Registry =
     { Tokens: TokenEntry list
-      /// Every --ef-* custom property Forma defines: token sources plus
+      /// Every --forma-* custom property Forma defines: token sources plus
       /// declarations in its shipped CSS.
       Defined: Set<string>
-      /// --ef-* properties Forma reads with a fallback but never declares:
-      /// documented inputs such as --ef-stack-gap. Consumers may set them.
+      /// --forma-* properties Forma reads with a fallback but never declares:
+      /// documented inputs such as --forma-stack-gap. Consumers may set them.
       Hooks: Set<string>
       Deprecated: Map<string, string>
       /// Prefixes Forma's color contract marks as implementation variables
@@ -190,8 +196,8 @@ let private finding code file line name message =
     { Code = code; Severity = Blocking; File = file; Line = line; Name = name; Message = message }
 
 /// A known name this one would be if a namespace segment had not been
-/// dropped (--ef-spacing-4 for --ef-primitive-spacing-4, --ef-text-primary
-/// for --ef-color-text-primary).
+/// dropped (--forma-spacing-4 for --forma-primitive-spacing-4, --forma-text-primary
+/// for --forma-color-text-primary).
 let namespaceSlip (known: Set<string>) (name: string) =
     let tail = name.Substring(FormaPrefix.Length)
     known
@@ -203,7 +209,7 @@ let namespaceSlip (known: Set<string>) (name: string) =
 
 let private lookalike (name: string) =
     lookalikePrefixes |> List.tryFind (fun prefix -> name.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
-    |> Option.orElse (if name.StartsWith("--ef-", StringComparison.OrdinalIgnoreCase) && not (isForma name) then Some "--EF-" else None)
+    |> Option.orElse (if name.StartsWith("--forma-", StringComparison.OrdinalIgnoreCase) && not (isForma name) then Some "--FORMA-" else None)
 
 /// Levenshtein distance, for "did you mean" on misspelt token names.
 let editDistance (a: string) (b: string) =
@@ -238,13 +244,19 @@ let private suggestion (registry: Registry) (name: string) =
             else None)
         |> Option.orElse (if lowered.StartsWith(FormaPrefix) && known.Contains lowered then Some lowered else None)
 
+/// Forma 1.0.0 renamed the namespace; the codemod rewrites the old one.
+let private migrationNote (prefix: string) =
+    if prefix = LegacyPrefix then
+        $" Forma 1.0.0 renamed {LegacyPrefix}* to {FormaPrefix}*; run tools/NamespaceMigrator (see docs/CONSUMING-FORMA.md)."
+    else ""
+
 let private hint registry name =
     match suggestion registry name with
     | Some known -> $" Did you mean {known}?"
     | None -> ""
 
 /// One var() reference in application or Forma CSS. A fallback never makes
-/// an unknown Forma token valid: var(--ef-nonexistent, white) is reported.
+/// an unknown Forma token valid: var(--forma-nonexistent, white) is reported.
 let checkReference (registry: Registry) (declaration: Declaration) (reference: VarReference) : Finding list =
     let name = reference.Name
     let at code message = [ finding code declaration.File declaration.Line name message ]
@@ -263,7 +275,7 @@ let checkReference (registry: Registry) (declaration: Declaration) (reference: V
             | None -> at "unknown-token" $"{name} is not exported by this Forma version.{fallbackNote}{hint registry name}"
     else
         match lookalike name with
-        | Some prefix -> at "namespace" $"{name} uses '{prefix}', which is not the Forma namespace '{FormaPrefix}'.{hint registry name}"
+        | Some prefix -> at "namespace" $"{name} uses '{prefix}', which is not the Forma namespace '{FormaPrefix}'.{migrationNote prefix}{hint registry name}"
         | None -> [] // application-owned custom property
 
 /// A custom property declared by application CSS. Applications may set
@@ -281,7 +293,7 @@ let checkDeclaration (registry: Registry) (declaration: Declaration) : Finding l
         match lookalike name with
         | Some prefix ->
             [ finding "namespace" declaration.File declaration.Line name
-                  $"{name} uses '{prefix}', which is not the Forma namespace '{FormaPrefix}'.{hint registry name}" ]
+                  $"{name} uses '{prefix}', which is not the Forma namespace '{FormaPrefix}'.{migrationNote prefix}{hint registry name}" ]
         | None -> []
 
 /// Custom properties that refer to each other in a cycle within one rule are
@@ -372,7 +384,7 @@ let validateBrand (file: string) : Finding list =
         | _ -> []
     | _ -> []
 
-/// Forma's own CSS: every --ef-* reference without a fallback must be
+/// Forma's own CSS: every --forma-* reference without a fallback must be
 /// defined (a missing required definition), every reference must be in the
 /// namespace, and no rule may hold a custom property cycle.
 let validateFormaCss (registry: Registry) : Finding list =

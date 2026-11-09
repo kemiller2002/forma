@@ -36,11 +36,11 @@ no-script fallback:
 ```html
 <forma-workflow mode="view">
   <script type="application/json" class="forma-workflow-source">{ "format": "forma-workflow", … }</script>
-  <figure class="ef-diagram">…static rendering…</figure>
+  <figure class="forma-diagram">…static rendering…</figure>
 </forma-workflow>
 ```
 
-The element inherits Forma tokens, brands (`data-ef-brand` on any ancestor),
+The element inherits Forma tokens, brands (`data-forma-brand` on any ancestor),
 themes, forced colours, reduced motion and responsive behaviour from the host
 page.
 

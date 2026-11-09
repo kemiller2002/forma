@@ -20,12 +20,12 @@ const simulations = {
 const simulate = (color, matrix) => matrix.map(row => Math.max(0, Math.min(255, row.reduce((sum, weight, index) => sum + weight * color[index], 0))));
 
 for (const context of [
-  { id: "light", attributes: "data-ef-theme=\"light\"" },
-  { id: "dark", attributes: "data-ef-theme=\"dark\"" }
+  { id: "light", attributes: "data-forma-theme=\"light\"" },
+  { id: "dark", attributes: "data-forma-theme=\"dark\"" }
 ]) {
   test(`${context.id}: rendered semantic states use public pairs and retain non-hue meaning`, async ({ page }) => {
     await page.setContent(documentFor(context.attributes));
-    const samples = await page.locator(".ef-status-lozenge[data-state]").evaluateAll(elements => elements.map(element => {
+    const samples = await page.locator(".forma-status-lozenge[data-state]").evaluateAll(elements => elements.map(element => {
       const style = getComputedStyle(element);
       const before = getComputedStyle(element, "::before");
       return { label: element.textContent.trim(), color: style.color, background: style.backgroundColor, glyph: before.content, border: style.borderInlineStartWidth };
@@ -53,7 +53,7 @@ for (const context of [
 }
 
 test("keyboard focus remains observable on the effective surface", async ({ page }) => {
-  await page.setContent(documentFor("data-ef-theme=\"dark\""));
+  await page.setContent(documentFor("data-forma-theme=\"dark\""));
   await page.locator("#keyboard-focus-target").focus();
   const style = await page.locator("#keyboard-focus-target").evaluate(element => ({ outline: getComputedStyle(element).outlineStyle, shadow: getComputedStyle(element).boxShadow }));
   expect(style.outline).not.toBe("none");
@@ -63,16 +63,16 @@ test("keyboard focus remains observable on the effective surface", async ({ page
 test("forced colors project status and surfaces to system colors", async ({ page, browserName }) => {
   test.skip(browserName !== "chromium", "forced-colors emulation is a Chromium capability");
   await page.emulateMedia({ forcedColors: "active" });
-  await page.setContent(documentFor("data-ef-theme=\"dark\""));
-  const values = await page.locator(".ef-status-lozenge[data-state=blocked]").evaluate(element => {
+  await page.setContent(documentFor("data-forma-theme=\"dark\""));
+  const values = await page.locator(".forma-status-lozenge[data-state=blocked]").evaluate(element => {
     const style = getComputedStyle(element);
-    return { status: style.getPropertyValue("--ef-color-status-danger").trim().toLowerCase(), surface: style.getPropertyValue("--ef-color-surface-primary").trim().toLowerCase() };
+    return { status: style.getPropertyValue("--forma-color-status-danger").trim().toLowerCase(), surface: style.getPropertyValue("--forma-color-surface-primary").trim().toLowerCase() };
   });
   expect(values).toEqual({ status: "canvastext", surface: "canvas" });
 });
 
 test("a dark-theme foreground/surface mismatch is detectable", async ({ page }) => {
-  await page.setContent(documentFor("data-ef-theme=\"dark\"", `<p id="correct" style="color:var(--ef-color-text-primary);background:var(--ef-color-surface-primary)">Correct pair</p><p id="mismatch" style="color:var(--ef-color-text-inverse);background:var(--ef-color-surface-primary)">Wrong pair</p>`));
+  await page.setContent(documentFor("data-forma-theme=\"dark\"", `<p id="correct" style="color:var(--forma-color-text-primary);background:var(--forma-color-surface-primary)">Correct pair</p><p id="mismatch" style="color:var(--forma-color-text-inverse);background:var(--forma-color-surface-primary)">Wrong pair</p>`));
   const pair = async selector => page.locator(selector).evaluate(element => ({ color: getComputedStyle(element).color, background: getComputedStyle(element).backgroundColor }));
   const correct = await pair("#correct");
   const mismatch = await pair("#mismatch");

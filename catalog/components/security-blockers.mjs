@@ -29,8 +29,8 @@ export default {
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Every kind of release blocker",
       description: "One entry for each kind Tutela reports. The kind is written as the first words of each explanation so it does not depend on data-kind, color or position.",
-      html: `<ef-security-blockers class="ef-component-tag">
-  <section class="ef-security-blockers" aria-labelledby="security-blockers-four-kinds-title">
+      html: `<forma-security-blockers class="forma-component-tag">
+  <section class="forma-security-blockers" aria-labelledby="security-blockers-four-kinds-title">
     <h2 id="security-blockers-four-kinds-title">4 release blockers</h2>
     <ul>
       <li data-kind="violation"><a href="#SEC-INV-014">SEC-INV-014</a><span>Violated invariant: privileged actions are not authorized at the effect boundary.</span></li>
@@ -39,18 +39,18 @@ export default {
       <li data-kind="expired-exception"><a href="#SEC-EXC-001">SEC-EXC-001</a><span>Expired exception: ended <time datetime="2026-09-15">15 Sep 2026</time> and has not been renewed.</span></li>
     </ul>
   </section>
-</ef-security-blockers>`
+</forma-security-blockers>`
     },
     {
       id: "none",
       title: "No blockers for this scope",
       description: "When Tutela reports no blockers, the section stays in place with an explicit statement, so a missing list is never mistaken for a rendering failure or for unknown state.",
-      html: `<ef-security-blockers class="ef-component-tag">
-  <section class="ef-security-blockers" aria-labelledby="security-blockers-none-title">
+      html: `<forma-security-blockers class="forma-component-tag">
+  <section class="forma-security-blockers" aria-labelledby="security-blockers-none-title">
     <h2 id="security-blockers-none-title">Release blockers</h2>
     <p>Tutela reports no blockers for the assessed scope of artifact <code>7f3c9a21b4e05d88</code>.</p>
   </section>
-</ef-security-blockers>`
+</forma-security-blockers>`
     },
     {
       id: "mobile-long",
@@ -66,26 +66,26 @@ export default {
           "Orientation changes only reflow text; order stays as supplied by Tutela."
         ]
       },
-      html: `<ef-security-blockers class="ef-component-tag">
-  <section class="ef-security-blockers" aria-labelledby="security-blockers-mobile-long-title">
+      html: `<forma-security-blockers class="forma-component-tag">
+  <section class="forma-security-blockers" aria-labelledby="security-blockers-mobile-long-title">
     <h2 id="security-blockers-mobile-long-title">Release blockers</h2>
     <ul>
       <li data-kind="violation"><a href="#SEC-INV-014">SEC-INV-014</a><span>Violated invariant: tenant isolation is not enforced for imported organizations during background synchronization.</span></li>
       <li data-kind="unknown"><a href="#SEC-UNK-003">SEC-UNK-003</a><span>Unknown effect: runtime egress behavior has not been established.</span></li>
     </ul>
   </section>
-</ef-security-blockers>`
+</forma-security-blockers>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-security-blockers", values: "id of the heading", default: "—", description: "Names the region by its heading." },
+      { name: "aria-labelledby", on: "section.forma-security-blockers", values: "id of the heading", default: "—", description: "Names the region by its heading." },
       { name: "data-kind", on: "li", values: "violation | unknown | stale | expired-exception", default: "—", description: "The Tutela blocker kind as machine state. Not styled by Forma CSS; write the kind in the entry text as well." },
       { name: "href", on: "a", values: "stable record URL or #ID", default: "—", description: "Deep link to the blocking record." },
       { name: "datetime", on: "time", values: "ISO 8601 date", default: "—", description: "Machine-readable date, for example when an exception expired." }
     ],
     hooks: {
-      "ef-security-blockers": "Root section: bordered and padded, with a 0.35rem start border in the current text color (CanvasText in forced colors). Its list is a grid with a 0.75rem gap and each entry's span is displayed as a block."
+      "forma-security-blockers": "Root section: bordered and padded, with a 0.35rem start border in the current text color (CanvasText in forced colors). Its list is a grid with a 0.75rem gap and each entry's span is displayed as a block."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between blocker links." },

@@ -28,50 +28,50 @@ export default {
       id: "release-board",
       title: "Release board with an empty lane",
       description: "Three stages with counts. The empty Blocked lane keeps its heading and says it is empty, so users can tell \"nothing blocked\" from \"lane missing\". The board is focusable because it can scroll.",
-      html: `<ef-lane-board class="ef-component-tag">
-  <section class="ef-lane-board" aria-label="Release 4.2 board" tabindex="0">
-    <section class="ef-lane-board__lane" aria-labelledby="lane-board-release-board-todo">
-      <header class="ef-lane-board__header"><h2 id="lane-board-release-board-todo">To do</h2><span>2 items</span></header>
-      <ol class="ef-lane-board__items">
-        <li><article class="ef-surface"><h3>Update migration guide</h3><p>Owner: Docs</p></article></li>
-        <li><article class="ef-surface"><h3>Rotate signing key</h3><p>Owner: Platform</p></article></li>
+      html: `<forma-lane-board class="forma-component-tag">
+  <section class="forma-lane-board" aria-label="Release 4.2 board" tabindex="0">
+    <section class="forma-lane-board__lane" aria-labelledby="lane-board-release-board-todo">
+      <header class="forma-lane-board__header"><h2 id="lane-board-release-board-todo">To do</h2><span>2 items</span></header>
+      <ol class="forma-lane-board__items">
+        <li><article class="forma-surface"><h3>Update migration guide</h3><p>Owner: Docs</p></article></li>
+        <li><article class="forma-surface"><h3>Rotate signing key</h3><p>Owner: Platform</p></article></li>
       </ol>
     </section>
-    <section class="ef-lane-board__lane" aria-labelledby="lane-board-release-board-doing">
-      <header class="ef-lane-board__header"><h2 id="lane-board-release-board-doing">In progress</h2><span>1 item</span></header>
-      <ol class="ef-lane-board__items">
-        <li><article class="ef-surface"><h3>Bulk export to Parquet</h3><p>Owner: Data</p><p><span class="ef-status-lozenge" data-state="attention">Due tomorrow</span></p></article></li>
+    <section class="forma-lane-board__lane" aria-labelledby="lane-board-release-board-doing">
+      <header class="forma-lane-board__header"><h2 id="lane-board-release-board-doing">In progress</h2><span>1 item</span></header>
+      <ol class="forma-lane-board__items">
+        <li><article class="forma-surface"><h3>Bulk export to Parquet</h3><p>Owner: Data</p><p><span class="forma-status-lozenge" data-state="attention">Due tomorrow</span></p></article></li>
       </ol>
     </section>
-    <section class="ef-lane-board__lane" aria-labelledby="lane-board-release-board-blocked">
-      <header class="ef-lane-board__header"><h2 id="lane-board-release-board-blocked">Blocked</h2><span>0 items</span></header>
+    <section class="forma-lane-board__lane" aria-labelledby="lane-board-release-board-blocked">
+      <header class="forma-lane-board__header"><h2 id="lane-board-release-board-blocked">Blocked</h2><span>0 items</span></header>
       <p>Nothing is blocked.</p>
     </section>
   </section>
-</ef-lane-board>`
+</forma-lane-board>`
     },
     {
       id: "move-without-drag",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Moving an item without dragging",
-      description: "Each item has a native button that moves it to the next lane, the non-drag path the application must provide. The target lane shows the shared `data-ef-drop=\"candidate\"` cue (a dashed outline, not only color) and a live message reports the outcome in text. A light motion weight keeps any settle of moved cards quick.",
-      html: `<ef-lane-board class="ef-component-tag">
-  <section class="ef-lane-board" aria-label="Hiring pipeline" tabindex="0" data-ef-motion-weight="light">
-    <section class="ef-lane-board__lane" aria-labelledby="lane-board-move-without-drag-screen">
-      <header class="ef-lane-board__header"><h2 id="lane-board-move-without-drag-screen">Screening</h2><span>1 candidate</span></header>
-      <ol class="ef-lane-board__items">
-        <li><article class="ef-surface"><h3>Amara Okafor</h3><p>Backend engineer</p><button type="button">Move Amara Okafor to Interview</button></article></li>
+      description: "Each item has a native button that moves it to the next lane, the non-drag path the application must provide. The target lane shows the shared `data-forma-drop=\"candidate\"` cue (a dashed outline, not only color) and a live message reports the outcome in text. A light motion weight keeps any settle of moved cards quick.",
+      html: `<forma-lane-board class="forma-component-tag">
+  <section class="forma-lane-board" aria-label="Hiring pipeline" tabindex="0" data-forma-motion-weight="light">
+    <section class="forma-lane-board__lane" aria-labelledby="lane-board-move-without-drag-screen">
+      <header class="forma-lane-board__header"><h2 id="lane-board-move-without-drag-screen">Screening</h2><span>1 candidate</span></header>
+      <ol class="forma-lane-board__items">
+        <li><article class="forma-surface"><h3>Amara Okafor</h3><p>Backend engineer</p><button type="button">Move Amara Okafor to Interview</button></article></li>
       </ol>
     </section>
-    <section class="ef-lane-board__lane" aria-labelledby="lane-board-move-without-drag-interview" data-ef-drop="candidate">
-      <header class="ef-lane-board__header"><h2 id="lane-board-move-without-drag-interview">Interview</h2><span>1 candidate</span></header>
-      <ol class="ef-lane-board__items">
-        <li><article class="ef-surface"><h3>Luis Ferreira</h3><p>Backend engineer</p><button type="button">Move Luis Ferreira to Offer</button></article></li>
+    <section class="forma-lane-board__lane" aria-labelledby="lane-board-move-without-drag-interview" data-forma-drop="candidate">
+      <header class="forma-lane-board__header"><h2 id="lane-board-move-without-drag-interview">Interview</h2><span>1 candidate</span></header>
+      <ol class="forma-lane-board__items">
+        <li><article class="forma-surface"><h3>Luis Ferreira</h3><p>Backend engineer</p><button type="button">Move Luis Ferreira to Offer</button></article></li>
       </ol>
     </section>
   </section>
   <p role="status">Luis Ferreira moved from Screening to Interview.</p>
-</ef-lane-board>`
+</forma-lane-board>`
     },
     {
       id: "mobile-scrolling-lanes",
@@ -86,22 +86,22 @@ export default {
           "Portrait shows about one lane at a time; landscape shows more. Consider offering a lane filter or a list view for boards with many lanes."
         ]
       },
-      html: `<ef-lane-board class="ef-component-tag">
-  <section class="ef-lane-board" aria-label="Support board" tabindex="0">
-    <section class="ef-lane-board__lane" aria-labelledby="lane-board-mobile-new">
-      <header class="ef-lane-board__header"><h2 id="lane-board-mobile-new">New</h2><span>1 ticket</span></header>
-      <ol class="ef-lane-board__items"><li><article class="ef-surface"><h3>SUP-2291</h3><p>Invoice PDF missing line items</p></article></li></ol>
+      html: `<forma-lane-board class="forma-component-tag">
+  <section class="forma-lane-board" aria-label="Support board" tabindex="0">
+    <section class="forma-lane-board__lane" aria-labelledby="lane-board-mobile-new">
+      <header class="forma-lane-board__header"><h2 id="lane-board-mobile-new">New</h2><span>1 ticket</span></header>
+      <ol class="forma-lane-board__items"><li><article class="forma-surface"><h3>SUP-2291</h3><p>Invoice PDF missing line items</p></article></li></ol>
     </section>
-    <section class="ef-lane-board__lane" aria-labelledby="lane-board-mobile-waiting">
-      <header class="ef-lane-board__header"><h2 id="lane-board-mobile-waiting">Waiting on customer</h2><span>1 ticket</span></header>
-      <ol class="ef-lane-board__items"><li><article class="ef-surface"><h3>SUP-2280</h3><p>Export stuck at 90%</p></article></li></ol>
+    <section class="forma-lane-board__lane" aria-labelledby="lane-board-mobile-waiting">
+      <header class="forma-lane-board__header"><h2 id="lane-board-mobile-waiting">Waiting on customer</h2><span>1 ticket</span></header>
+      <ol class="forma-lane-board__items"><li><article class="forma-surface"><h3>SUP-2280</h3><p>Export stuck at 90%</p></article></li></ol>
     </section>
-    <section class="ef-lane-board__lane" aria-labelledby="lane-board-mobile-done">
-      <header class="ef-lane-board__header"><h2 id="lane-board-mobile-done">Resolved</h2><span>0 tickets</span></header>
+    <section class="forma-lane-board__lane" aria-labelledby="lane-board-mobile-done">
+      <header class="forma-lane-board__header"><h2 id="lane-board-mobile-done">Resolved</h2><span>0 tickets</span></header>
       <p>No resolved tickets today.</p>
     </section>
   </section>
-</ef-lane-board>`
+</forma-lane-board>`
     }
   ],
   api: {
@@ -109,15 +109,15 @@ export default {
       { name: "aria-label", on: "root section", values: "string", default: "—", description: "Names the board." },
       { name: "tabindex", on: "root section", values: "0", default: "—", description: "Makes the horizontally scrolling board focusable so keyboard users can scroll it; Forma draws a focus outline for it." },
       { name: "aria-labelledby", on: "lane section", values: "id of the lane heading", default: "—", description: "Names each lane by its heading, which is what makes lane membership announced." },
-      { name: "data-ef-drop", on: "lane or item", values: "candidate | accepted | rejected", default: "absent", description: "Shared drop presentation written by the application during a move: dashed, solid or dashed-with-fill outline. See [[reorder-states]]." },
-      { name: "data-ef-motion-weight", on: "root", values: "light | standard | heavy", default: "standard", description: "Presentation-only mass for settling of items the application is moving inside the board." }
+      { name: "data-forma-drop", on: "lane or item", values: "candidate | accepted | rejected", default: "absent", description: "Shared drop presentation written by the application during a move: dashed, solid or dashed-with-fill outline. See [[reorder-states]]." },
+      { name: "data-forma-motion-weight", on: "root", values: "light | standard | heavy", default: "standard", description: "Presentation-only mass for settling of items the application is moving inside the board." }
     ],
     hooks: {
-      "ef-lane-board": "Root: a column-flow grid of lanes that scrolls horizontally inside itself.",
-      "ef-lane-board__lane": "One lane: a vertical grid of header and items that can shrink.",
-      "ef-lane-board__header": "Lane heading and count on one baseline, spaced apart.",
-      "ef-lane-board__items": "Unstyled list of items with a small gap.",
-      "data-ef-motion-weight": "Light, standard or heavy mass for the shared direct-manipulation settle of items inside the board (items carrying `data-ef-manipulation`). The board itself does not animate. Never encodes importance."
+      "forma-lane-board": "Root: a column-flow grid of lanes that scrolls horizontally inside itself.",
+      "forma-lane-board__lane": "One lane: a vertical grid of header and items that can shrink.",
+      "forma-lane-board__header": "Lane heading and count on one baseline, spaced apart.",
+      "forma-lane-board__items": "Unstyled list of items with a small gap.",
+      "data-forma-motion-weight": "Light, standard or heavy mass for the shared direct-manipulation settle of items inside the board (items carrying `data-forma-manipulation`). The board itself does not animate. Never encodes importance."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves to the board, then through links and buttons inside items, lane by lane in source order." },
@@ -131,8 +131,8 @@ export default {
     { name: "Overflowing", how: "more lanes than fit", description: "The board scrolls horizontally inside itself; lanes keep their minimum width." },
     { name: "Board focus", how: ":focus-visible on the board", description: "2px outline in the current text color." },
     { name: "Empty lane", how: "no items in the lane", description: "Application writes a zero count and a sentence in place of the list." },
-    { name: "Drop target", how: "data-ef-drop on a lane", description: "Candidate is a dashed outline, accepted solid, rejected dashed with a fill." },
-    { name: "Item moving", how: "data-ef-manipulation on an item", description: "Application-written shared hook: dragging tracks directly, settling returns with damped motion." }
+    { name: "Drop target", how: "data-forma-drop on a lane", description: "Candidate is a dashed outline, accepted solid, rejected dashed with a fill." },
+    { name: "Item moving", how: "data-forma-manipulation on an item", description: "Application-written shared hook: dragging tracks directly, settling returns with damped motion." }
   ],
   accessibility: {
     forma: [
@@ -157,7 +157,7 @@ export default {
   motion: [
     "The board and lanes do not animate.",
     "Items the application is moving use the shared direct-manipulation hooks: `dragging` tracks with no transition, `settling` returns with the damped inertial model and never overshoots.",
-    "`data-ef-motion-weight` on the board sets the mass those settles inherit.",
+    "`data-forma-motion-weight` on the board sets the mass those settles inherit.",
     "Under `prefers-reduced-motion: reduce` the settle duration becomes effectively instant and items appear at their final position."
   ],
   guidance: {

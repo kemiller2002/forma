@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { measureOverflow, settleFontsAndFrames } from "../../packages/conformance/src/index.mjs";
 
-// EII-F typography roles. data-ef-type selects a role on any element:
+// EII-F typography roles. data-forma-type selects a role on any element:
 // marketing (the default, unchanged), application, dense, accessible.
 // Expected values are named token steps, read back from the compiled tokens,
 // so the tests never restate a raw size.
@@ -23,7 +23,7 @@ async function open(page, fixture, { width, role, on = "html", scale = 1 }) {
   await page.setViewportSize({ width, height: 900 });
   await page.goto(FIXTURES[fixture]);
   await page.evaluate(({ role, on }) => {
-    if (role) document.querySelector(on).setAttribute("data-ef-type", role);
+    if (role) document.querySelector(on).setAttribute("data-forma-type", role);
   }, { role, on });
   // 200% text: the user's text size, not page zoom (WCAG 1.4.4).
   if (scale !== 1) await page.addStyleTag({ content: `html { font-size: ${scale * 100}% !important; }` });
@@ -39,11 +39,11 @@ function tokenPx(page, name) {
     const px = parseFloat(getComputedStyle(probe).fontSize);
     probe.remove();
     return px;
-  }, `--ef-primitive-font-size-${name}`);
+  }, `--forma-primitive-font-size-${name}`);
 }
 
 function tokenNumber(page, name) {
-  return page.evaluate(token => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(token)), `--ef-primitive-line-height-${name}`);
+  return page.evaluate(token => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(token)), `--forma-primitive-line-height-${name}`);
 }
 
 function typeOf(page, selector) {
@@ -124,7 +124,7 @@ function layoutFindings(page, { wordBreaks = true } = {}) {
     }
 
     // Flow siblings never overlap (element overlap).
-    for (const parent of document.querySelectorAll("[data-role-sample], [data-role-sample] .ef-surface, [data-role-sample] .ef-form, [data-role-sample] .ef-field")) {
+    for (const parent of document.querySelectorAll("[data-role-sample], [data-role-sample] .forma-surface, [data-role-sample] .forma-form, [data-role-sample] .forma-field")) {
       const children = [...parent.children].filter(visible);
       for (let i = 1; i < children.length; i += 1) {
         const previous = children[i - 1].getBoundingClientRect();
@@ -192,7 +192,7 @@ async function keyboardFindings(page) {
 }
 
 // --- Reproduction of the R5 defect -----------------------------------------
-// An application screen on the .ef-site shell inherits the marketing display
+// An application screen on the .forma-site shell inherits the marketing display
 // scale (h1 up to 7.25rem, capped at 14ch). R5 asserted h1 = 2 x root on one
 // line (two at 320px) and had to override Forma locally (f207cd4).
 for (const width of [1440, 1180, 820, 320]) {
@@ -242,7 +242,7 @@ test("dense is smaller and tighter than application; accessible is larger and lo
 });
 
 // --- Marketing stays the default ------------------------------------------
-test("without a role, and with data-ef-type=marketing, the site shell keeps the marketing display scale", async ({ page }) => {
+test("without a role, and with data-forma-type=marketing, the site shell keeps the marketing display scale", async ({ page }) => {
   await open(page, "site", { width: 1280 });
   const unset = await typeOf(page, "#title");
   // The 14ch/18ch measure caps (computed to pixels) stay in place.
@@ -255,7 +255,7 @@ test("without a role, and with data-ef-type=marketing, the site shell keeps the 
 
 test("the nearest role wins: a dense region inside an application screen", async ({ page }) => {
   await open(page, "site", { width: 1280, role: "application", on: "html" });
-  await page.evaluate(() => document.querySelector("[data-role-sample]").setAttribute("data-ef-type", "dense"));
+  await page.evaluate(() => document.querySelector("[data-role-sample]").setAttribute("data-forma-type", "dense"));
   expect((await typeOf(page, "#title")).fontSize).toBeCloseTo(await tokenPx(page, ROLES.dense.h1), 1);
   expect((await typeOf(page, "#lede")).fontSize).toBeCloseTo(await tokenPx(page, ROLES.dense.body), 1);
 });

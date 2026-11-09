@@ -28,41 +28,41 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Case record with context rail",
       description: "A support case: a start rail with customer context and the conversation as primary content. The rail is first in the source, so it is read first and shown first when stacked.",
-      html: `<ef-rail class="ef-component-tag">
-  <div class="ef-rail">
-    <aside class="ef-surface ef-stack" data-density="compact" aria-labelledby="rail-case-context-rail-customer">
+      html: `<forma-rail class="forma-component-tag">
+  <div class="forma-rail">
+    <aside class="forma-surface forma-stack" data-density="compact" aria-labelledby="rail-case-context-rail-customer">
       <h2 id="rail-case-context-rail-customer">Customer</h2>
-      <dl class="ef-key-value-list">
+      <dl class="forma-key-value-list">
         <div><dt>Account</dt><dd>Contoso Pharmacy</dd></div>
         <div><dt>Plan</dt><dd>Enterprise</dd></div>
         <div><dt>Open cases</dt><dd>2</dd></div>
       </dl>
     </aside>
-    <article class="ef-stack" aria-labelledby="rail-case-context-rail-title">
+    <article class="forma-stack" aria-labelledby="rail-case-context-rail-title">
       <h2 id="rail-case-context-rail-title">Case 48213: Label printer offline</h2>
       <p>The store reports that the label printer stopped responding after the overnight update. A remote restart did not help.</p>
-      <div class="ef-cluster"><button type="button">Reply</button><button type="button">Escalate</button></div>
+      <div class="forma-cluster"><button type="button">Reply</button><button type="button">Escalate</button></div>
     </article>
   </div>
-</ef-rail>`
+</forma-rail>`
     },
     {
       id: "end-rail-evidence",
       title: "End rail with evidence",
       description: "`data-side=\"end\"` places the rail at the inline end. The finding is written first in the source so it occupies the primary track; the evidence follows in both reading order and position.",
-      html: `<ef-rail class="ef-component-tag">
-  <div class="ef-rail" data-side="end">
-    <article class="ef-stack" aria-labelledby="rail-end-rail-evidence-title">
+      html: `<forma-rail class="forma-component-tag">
+  <div class="forma-rail" data-side="end">
+    <article class="forma-stack" aria-labelledby="rail-end-rail-evidence-title">
       <h2 id="rail-end-rail-evidence-title">Finding: expired TLS certificate</h2>
       <p>The certificate for api.example.com expired on 28 September. Clients that pin the chain will fail until it is replaced.</p>
     </article>
-    <aside class="ef-surface ef-stack" data-density="compact" aria-labelledby="rail-end-rail-evidence-sources">
+    <aside class="forma-surface forma-stack" data-density="compact" aria-labelledby="rail-end-rail-evidence-sources">
       <h3 id="rail-end-rail-evidence-sources">Evidence</h3>
       <p>Scanner run 2026-09-29 04:00 UTC</p>
       <p>Certificate serial 0x4f2a…91</p>
     </aside>
   </div>
-</ef-rail>`
+</forma-rail>`
     },
     {
       id: "mobile-collapsed-rail",
@@ -77,32 +77,32 @@ export default {
           "Tablets in portrait (up to 768px) are also single column; landscape tablets usually show both tracks."
         ]
       },
-      html: `<ef-rail class="ef-component-tag">
-  <div class="ef-rail">
-    <aside class="ef-surface" aria-labelledby="rail-mobile-collapsed-rail-customer">
+      html: `<forma-rail class="forma-component-tag">
+  <div class="forma-rail">
+    <aside class="forma-surface" aria-labelledby="rail-mobile-collapsed-rail-customer">
       <h2 id="rail-mobile-collapsed-rail-customer">Customer</h2>
       <p>Contoso Pharmacy · Enterprise</p>
     </aside>
-    <article class="ef-stack" aria-labelledby="rail-mobile-collapsed-rail-title">
+    <article class="forma-stack" aria-labelledby="rail-mobile-collapsed-rail-title">
       <h2 id="rail-mobile-collapsed-rail-title">Case 48213</h2>
       <p>Label printer offline after the overnight update.</p>
     </article>
   </div>
-</ef-rail>`
+</forma-rail>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-labelledby", on: "rail and primary regions", values: "id of the region heading", default: "—", description: "Names aside and article regions by their visible headings." },
-      { name: "data-side", on: ".ef-rail", values: "end", default: "absent (start)", description: "Moves the rail track to the inline end. Author the primary content first in the source when using it." },
-      { name: "data-density", on: "nested .ef-stack", values: "compact", default: "—", description: "Used on stacks inside the rail; it does not affect the rail grid." }
+      { name: "data-side", on: ".forma-rail", values: "end", default: "absent (start)", description: "Moves the rail track to the inline end. Author the primary content first in the source when using it." },
+      { name: "data-density", on: "nested .forma-stack", values: "compact", default: "—", description: "Used on stacks inside the rail; it does not affect the rail grid." }
     ],
     hooks: {
-      "ef-rail": "Two-column grid of a bounded rail track and a flexible primary track.",
+      "forma-rail": "Two-column grid of a bounded rail track and a flexible primary track.",
       "data-side": "`end` swaps the track order to primary then rail. It changes track sizes only; items are still placed in source order.",
-      "--ef-rail-measure": "Rail track size. Default `minmax(12rem, 18rem)`.",
-      "--ef-rail-content-min": "Minimum of the primary track. Default 50%.",
-      "--ef-rail-space": "Gap between the tracks. Default `--ef-primitive-spacing-5` (1.5rem)."
+      "--forma-rail-measure": "Rail track size. Default `minmax(12rem, 18rem)`.",
+      "--forma-rail-content-min": "Minimum of the primary track. Default 50%.",
+      "--forma-rail-space": "Gap between the tracks. Default `--forma-primitive-spacing-5` (1.5rem)."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Follows source order, which is also the visual order for correctly authored start and end rails." }

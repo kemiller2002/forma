@@ -4,7 +4,7 @@ export default {
   behavior: "Application content",
   summary: "Pairs related regions while preserving their semantic ownership and narrow-screen order.",
   purpose: {
-    description: "A split pane places two related regions side by side: a primary working region that takes most of the width and a secondary region, such as an inspector, preview or reference, beside it. Each child keeps its own semantics (article, aside, section), and the layout is a plain two-track grid that stacks in source order on narrow screens. The same root also carries the presentation hooks for the [[resizable-split-pane]], which are documented here because they live on `.ef-split-pane`; the fixed split has no behavior at all.",
+    description: "A split pane places two related regions side by side: a primary working region that takes most of the width and a secondary region, such as an inspector, preview or reference, beside it. Each child keeps its own semantics (article, aside, section), and the layout is a plain two-track grid that stacks in source order on narrow screens. The same root also carries the presentation hooks for the [[resizable-split-pane]], which are documented here because they live on `.forma-split-pane`; the fixed split has no behavior at all.",
     useWhen: [
       "Two regions belong to the same task and benefit from being read side by side, such as a form beside its live summary or a document beside its comments.",
       "The primary region should get roughly two thirds of the width and the secondary region has a useful minimum width.",
@@ -28,15 +28,15 @@ export default {
       interaction: { kind: "static", reasons: ["form-handling"] },
       title: "Form beside its order summary",
       description: "A checkout form as the primary region and a live order summary as the secondary aside. Both columns start at the top, and the summary keeps its 16rem minimum.",
-      html: `<ef-split-pane class="ef-component-tag">
-  <section class="ef-split-pane" aria-label="Checkout">
+      html: `<forma-split-pane class="forma-component-tag">
+  <section class="forma-split-pane" aria-label="Checkout">
     <form aria-labelledby="split-pane-form-with-summary-title">
       <h2 id="split-pane-form-with-summary-title">Shipping address</h2>
-      <p class="ef-stack">
+      <p class="forma-stack">
         <label for="split-pane-form-with-summary-name">Full name</label>
         <input id="split-pane-form-with-summary-name" name="full-name" autocomplete="name">
       </p>
-      <p class="ef-stack">
+      <p class="forma-stack">
         <label for="split-pane-form-with-summary-street">Street address</label>
         <input id="split-pane-form-with-summary-street" name="street" autocomplete="street-address">
       </p>
@@ -44,21 +44,21 @@ export default {
     </form>
     <aside aria-labelledby="split-pane-form-with-summary-summary">
       <h3 id="split-pane-form-with-summary-summary">Order summary</h3>
-      <dl class="ef-key-value-list">
+      <dl class="forma-key-value-list">
         <div><dt>Items</dt><dd>3</dd></div>
         <div><dt>Subtotal</dt><dd>$184.00</dd></div>
         <div><dt>Shipping</dt><dd>Calculated next</dd></div>
       </dl>
     </aside>
   </section>
-</ef-split-pane>`
+</forma-split-pane>`
     },
     {
       id: "equal-comparison",
       title: "Equal-width comparison",
       description: "Both tracks overridden to equal flexible widths through the custom properties, for reading an original and a proposed revision side by side. The secondary minimum is lowered so the halves stay equal.",
-      html: `<ef-split-pane class="ef-component-tag">
-  <section class="ef-split-pane" aria-label="Policy revision" style="--ef-split-primary: minmax(0, 1fr); --ef-split-secondary: minmax(0, 1fr)">
+      html: `<forma-split-pane class="forma-component-tag">
+  <section class="forma-split-pane" aria-label="Policy revision" style="--forma-split-primary: minmax(0, 1fr); --forma-split-secondary: minmax(0, 1fr)">
     <article aria-labelledby="split-pane-equal-comparison-current">
       <h3 id="split-pane-equal-comparison-current">Current policy</h3>
       <p>Refunds are available within 14 days of purchase for unused items.</p>
@@ -68,7 +68,7 @@ export default {
       <p>Refunds are available within 30 days of purchase for unused items, and within 14 days for opened items with a restocking fee.</p>
     </article>
   </section>
-</ef-split-pane>`
+</forma-split-pane>`
     },
     {
       id: "mobile-stacked",
@@ -83,8 +83,8 @@ export default {
           "Rotating to landscape on a large phone may cross 48rem and restore the side-by-side layout without changing semantics or focus order."
         ]
       },
-      html: `<ef-split-pane class="ef-component-tag">
-  <section class="ef-split-pane" aria-label="Incident write-up">
+      html: `<forma-split-pane class="forma-component-tag">
+  <section class="forma-split-pane" aria-label="Incident write-up">
     <article aria-labelledby="split-pane-mobile-title">
       <h3 id="split-pane-mobile-title">Timeline</h3>
       <p>09:12 Alert fired for elevated error rate. 09:20 Rollback started. 09:31 Error rate normal.</p>
@@ -94,28 +94,28 @@ export default {
       <p>Roll back first, investigate second. Page the owning team if the rollback fails.</p>
     </aside>
   </section>
-</ef-split-pane>`
+</forma-split-pane>`
     }
   ],
   api: {
     attributes: [
       { name: "aria-label", on: "root section, aside", values: "string", default: "—", description: "Names the split region and the secondary landmark when there is no visible heading to reference." },
       { name: "aria-labelledby", on: "child regions", values: "id of the region heading", default: "—", description: "Names each region by its visible heading." },
-      { name: "style", on: "root", values: "custom property declarations", default: "—", description: "Where an application sets `--ef-split-primary`, `--ef-split-secondary` or `--ef-split-space` for one instance." }
+      { name: "style", on: "root", values: "custom property declarations", default: "—", description: "Where an application sets `--forma-split-primary`, `--forma-split-secondary` or `--forma-split-space` for one instance." }
     ],
     hooks: {
-      "ef-split-pane": "Root two-track grid. Direct children are the regions; each is allowed to shrink.",
-      "ef-split-pane__separator": "Resize handle used only with `data-ef-resizable`; see [[resizable-split-pane]]. Hidden at 48rem and below.",
-      "data-ef-resizable": "Switches the root to a three-track resizable layout (primary, separator, secondary) sized by `--ef-split-size`. Presentation only; see [[resizable-split-pane]].",
-      "data-ef-manipulation": "Written by application code during a resize. `resizing` makes the size track `--ef-split-size` immediately with no transition. Other values (such as `settling`) keep the damped settle. Presentation only.",
-      "data-ef-collapsed": "On a resizable pane, pins the primary track to `--ef-split-min`, overriding any inline size. The application toggles it and keeps separator values in sync.",
-      "data-ef-motion-weight": "Presentation-only perceived mass for resize settling: light, standard (default) or heavy. Has no effect on a fixed split, which does not animate.",
-      "--ef-split-primary": "Primary track. Default `minmax(0, 2fr)`.",
-      "--ef-split-secondary": "Secondary track. Default `minmax(16rem, 1fr)`.",
-      "--ef-split-space": "Gap between regions. Default the 1.5rem spacing token.",
-      "--ef-split-size": "Resizable only: the application's authoritative primary size. Default `60%`.",
-      "--ef-split-min": "Resizable only: smallest legal primary size. Default `16rem`.",
-      "--ef-split-max": "Resizable only: largest legal primary size. Default `calc(100% - 16rem)`."
+      "forma-split-pane": "Root two-track grid. Direct children are the regions; each is allowed to shrink.",
+      "forma-split-pane__separator": "Resize handle used only with `data-forma-resizable`; see [[resizable-split-pane]]. Hidden at 48rem and below.",
+      "data-forma-resizable": "Switches the root to a three-track resizable layout (primary, separator, secondary) sized by `--forma-split-size`. Presentation only; see [[resizable-split-pane]].",
+      "data-forma-manipulation": "Written by application code during a resize. `resizing` makes the size track `--forma-split-size` immediately with no transition. Other values (such as `settling`) keep the damped settle. Presentation only.",
+      "data-forma-collapsed": "On a resizable pane, pins the primary track to `--forma-split-min`, overriding any inline size. The application toggles it and keeps separator values in sync.",
+      "data-forma-motion-weight": "Presentation-only perceived mass for resize settling: light, standard (default) or heavy. Has no effect on a fixed split, which does not animate.",
+      "--forma-split-primary": "Primary track. Default `minmax(0, 2fr)`.",
+      "--forma-split-secondary": "Secondary track. Default `minmax(16rem, 1fr)`.",
+      "--forma-split-space": "Gap between regions. Default the 1.5rem spacing token.",
+      "--forma-split-size": "Resizable only: the application's authoritative primary size. Default `60%`.",
+      "--forma-split-min": "Resizable only: smallest legal primary size. Default `16rem`.",
+      "--forma-split-max": "Resizable only: largest legal primary size. Default `calc(100% - 16rem)`."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through focusable content in source order, primary region first. A fixed split adds no keyboard behavior." }
@@ -126,7 +126,7 @@ export default {
   states: [
     { name: "Side by side", how: "viewport wider than 48rem", description: "Primary and secondary tracks with a 1.5rem gap, aligned to the top." },
     { name: "Stacked", how: "@media (max-width: 48rem)", description: "One column, source order." },
-    { name: "Resizable", how: "data-ef-resizable", description: "Three-track layout driven by `--ef-split-size`; documented on [[resizable-split-pane]]." }
+    { name: "Resizable", how: "data-forma-resizable", description: "Three-track layout driven by `--forma-split-size`; documented on [[resizable-split-pane]]." }
   ],
   accessibility: {
     forma: [
@@ -140,14 +140,14 @@ export default {
     ]
   },
   responsive: [
-    "Wide: `var(--ef-split-primary) var(--ef-split-secondary)`; the secondary region never drops below 16rem until the breakpoint.",
+    "Wide: `var(--forma-split-primary) var(--forma-split-secondary)`; the secondary region never drops below 16rem until the breakpoint.",
     "At 48rem and below: `grid-template-columns: minmax(0, 1fr)` stacks both regions.",
     "Direct children set `min-inline-size: 0`; wide tables or code inside a region need their own [[bounded-overflow]] container.",
     "The breakpoint is viewport-based. A split nested in a narrow column on a wide screen stays side by side, so choose [[switcher]] for container-driven reflow."
   ],
   motion: [
     "No animation for a fixed split: the columns change instantly at the breakpoint.",
-    "With `data-ef-resizable` the track list settles with the damped inertial model after release or a keyboard step, and tracks directly while `data-ef-manipulation=\"resizing\"`; see [[resizable-split-pane]]."
+    "With `data-forma-resizable` the track list settles with the damped inertial model after release or a keyboard step, and tracks directly while `data-forma-manipulation=\"resizing\"`; see [[resizable-split-pane]]."
   ],
   guidance: {
     do: [

@@ -2,7 +2,7 @@
 
 User requested a brief fade with gentle start, rapid middle and gentle finish,
 while preserving reciprocal CSS-only motion. Popover, menu and tooltip opacity
-now use `--ef-motion-fade-easing: cubic-bezier(0.65, 0, 0.35, 1)` with the existing
+now use `--forma-motion-fade-easing: cubic-bezier(0.65, 0, 0.35, 1)` with the existing
 120ms perceptual duration. Spatial settling and native semantics remain intact.
 This is a perceptual profile rather than a combustion simulation. Browser exit
 retention remains a progressive enhancement; unsupported exits close immediately.

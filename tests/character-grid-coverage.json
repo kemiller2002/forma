@@ -28,7 +28,7 @@
     "table containment": [["tests/browser/character-grid-verification.spec.mjs", "a table run stays inside its declared rows"]],
     "forced colors": [["tests/browser/character-grid-field.spec.mjs", "survive forced colors"], ["tests/browser/character-grid-keys-status.spec.mjs", "survive forced colors"], ["tests/browser/character-grid-3270.spec.mjs", "forced colors replace the profile palette"]],
     "reduced motion": [["tests/browser/character-grid-reveal.spec.mjs", "prefers-reduced-motion presents everything immediately"]],
-    "SequentialReveal static fallback": [["tests/browser/character-grid-reveal.spec.mjs", "static is the default"], ["tests/browser/character-grid-reveal.spec.mjs", "data-ef-reveal=complete"]],
+    "SequentialReveal static fallback": [["tests/browser/character-grid-reveal.spec.mjs", "static is the default"], ["tests/browser/character-grid-reveal.spec.mjs", "data-forma-reveal=complete"]],
     "focus not obscured": [["tests/browser/character-grid-verification.spec.mjs", "focus is never hidden by the contained scroller"]],
     "target size": [["tests/browser/character-grid-field.spec.mjs", "meet the 44px target guideline"], ["tests/browser/character-grid-keys-status.spec.mjs", "keys meet the 44px target guideline"]],
     "per-row selection fields": [["tests/character-grid.test.mjs", "CG-17 rejects selection fields"], ["tests/browser/character-grid-selection.spec.mjs", "named by its column and row headers"], ["tests/browser/character-grid-selection.spec.mjs", "visit selection fields row by row"]],

@@ -1,6 +1,6 @@
 // Generates the CharacterGrid coordinate rules in src/styles/components.css.
 //
-// Forma places character-grid runs with data-ef-* attributes rather than
+// Forma places character-grid runs with data-forma-* attributes rather than
 // inline style so consuming applications can keep a strict style-src CSP.
 // Each attribute value maps to a registered custom property; the layout
 // rules in components.css read only those properties.
@@ -28,10 +28,10 @@ export const END = "/* END generated: character-grid coordinates */";
 const range = (from, to) => Array.from({ length: to - from + 1 }, (_, index) => from + index);
 
 const mapping = (attribute, property, values) =>
-  values.map(value => `  :where(.ef-character-grid) [data-ef-${attribute}="${value}"] { --ef-${property}: ${value}; }`);
+  values.map(value => `  :where(.forma-character-grid) [data-forma-${attribute}="${value}"] { --forma-${property}: ${value}; }`);
 
 const geometry = (attribute, property, values) =>
-  values.map(value => `  .ef-character-grid[data-ef-${attribute}="${value}"] { --ef-${property}: ${value}; }`);
+  values.map(value => `  .forma-character-grid[data-forma-${attribute}="${value}"] { --forma-${property}: ${value}; }`);
 
 export const generateCoordinateRules = () => [
   BEGIN,

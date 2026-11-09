@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Safe-area-aware mobile action region that keeps one to three critical contextual actions reachable at the bottom of a narrow screen.",
   purpose: {
-    description: "The mobile action bar is a bordered row of native buttons that share the width equally. At 40rem and below it becomes `position: sticky` at the bottom of its scroll container, so the actions stay reachable while a long form or record scrolls, and its bottom padding grows to respect the device safe-area inset. One button can be marked `ef-mobile-action-bar__primary` for an inverse (filled) surface. Forma provides presentation only: which actions appear, whether they are legal, keeping the bar from covering a focused field, and any show/hide behavior are application or Limen concerns.",
+    description: "The mobile action bar is a bordered row of native buttons that share the width equally. At 40rem and below it becomes `position: sticky` at the bottom of its scroll container, so the actions stay reachable while a long form or record scrolls, and its bottom padding grows to respect the device safe-area inset. One button can be marked `forma-mobile-action-bar__primary` for an inverse (filled) surface. Forma provides presentation only: which actions appear, whether they are legal, keeping the bar from covering a focused field, and any show/hide behavior are application or Limen concerns.",
     useWhen: [
       "A phone screen has one to three actions that complete or leave the current task (Save, Submit, Cancel) and the content above them is long.",
       "The same actions exist elsewhere on wider layouts, and the bar is the narrow-screen recomposition of them.",
@@ -30,24 +30,24 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Single submit action",
       description: "One primary action that fills the bar. The accessible name of the landmark says which task the action belongs to.",
-      html: `<ef-mobile-action-bar class="ef-component-tag">
-  <nav class="ef-mobile-action-bar" aria-label="Expense claim actions">
-    <button type="button" class="ef-mobile-action-bar__primary">Submit claim</button>
+      html: `<forma-mobile-action-bar class="forma-component-tag">
+  <nav class="forma-mobile-action-bar" aria-label="Expense claim actions">
+    <button type="button" class="forma-mobile-action-bar__primary">Submit claim</button>
   </nav>
-</ef-mobile-action-bar>`
+</forma-mobile-action-bar>`
     },
     {
       id: "three-actions",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Three actions with long labels",
       description: "Three equal-width actions: two secondary and one primary. Long labels wrap inside their buttons instead of widening the bar, and every button keeps the 44px minimum height. Order in source is the order users hear and tab through; here the primary comes last.",
-      html: `<ef-mobile-action-bar class="ef-component-tag">
-  <nav class="ef-mobile-action-bar" aria-label="Incident report actions">
+      html: `<forma-mobile-action-bar class="forma-component-tag">
+  <nav class="forma-mobile-action-bar" aria-label="Incident report actions">
     <button type="button">Discard</button>
     <button type="button">Save as draft</button>
-    <button type="button" class="ef-mobile-action-bar__primary">Submit for review</button>
+    <button type="button" class="forma-mobile-action-bar__primary">Submit for review</button>
   </nav>
-</ef-mobile-action-bar>`
+</forma-mobile-action-bar>`
     },
     {
       id: "mobile-sticky-form",
@@ -63,36 +63,36 @@ export default {
           "A sticky bar can cover the field that has focus near the bottom of the viewport. Add bottom scroll padding or margin to the scroll container in the application so focused fields scroll clear of the bar."
         ]
       },
-      html: `<ef-mobile-action-bar class="ef-component-tag">
-  <form class="ef-stack" action="#" method="post">
-    <div class="ef-field">
-      <label class="ef-field__label" for="mobile-action-bar-mobile-sticky-form-name">Full name</label>
+      html: `<forma-mobile-action-bar class="forma-component-tag">
+  <form class="forma-stack" action="#" method="post">
+    <div class="forma-field">
+      <label class="forma-field__label" for="mobile-action-bar-mobile-sticky-form-name">Full name</label>
       <input id="mobile-action-bar-mobile-sticky-form-name" name="name" type="text" autocomplete="name">
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="mobile-action-bar-mobile-sticky-form-email">Email</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="mobile-action-bar-mobile-sticky-form-email">Email</label>
       <input id="mobile-action-bar-mobile-sticky-form-email" name="email" type="email" autocomplete="email">
     </div>
-    <div class="ef-field">
-      <label class="ef-field__label" for="mobile-action-bar-mobile-sticky-form-notes">Notes for the reviewer</label>
+    <div class="forma-field">
+      <label class="forma-field__label" for="mobile-action-bar-mobile-sticky-form-notes">Notes for the reviewer</label>
       <textarea id="mobile-action-bar-mobile-sticky-form-notes" name="notes" rows="6"></textarea>
     </div>
-    <nav class="ef-mobile-action-bar" aria-label="Profile form actions">
+    <nav class="forma-mobile-action-bar" aria-label="Profile form actions">
       <button type="reset">Reset</button>
-      <button type="submit" class="ef-mobile-action-bar__primary">Save profile</button>
+      <button type="submit" class="forma-mobile-action-bar__primary">Save profile</button>
     </nav>
   </form>
-</ef-mobile-action-bar>`
+</forma-mobile-action-bar>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-label", on: "nav.ef-mobile-action-bar", values: "string", default: "—", description: "Names the region after the task (\"Record actions\"), so it is distinguishable from the site navigation landmark." },
+      { name: "aria-label", on: "nav.forma-mobile-action-bar", values: "string", default: "—", description: "Names the region after the task (\"Record actions\"), so it is distinguishable from the site navigation landmark." },
       { name: "type", on: "button", values: "button | submit | reset", default: "—", description: "Use submit when the bar is the form's action row, button otherwise." }
     ],
     hooks: {
-      "ef-mobile-action-bar": "The bar: a flex row with padding, a functional border, a translucent primary surface and a backdrop blur. Sticky at the bottom at 40rem and below.",
-      "ef-mobile-action-bar__primary": "Marks the single most important action with the inverse (filled) surface and inverse text. Other actions need no class; the canonical pattern's `ef-mobile-action-bar__secondary` has no CSS of its own."
+      "forma-mobile-action-bar": "The bar: a flex row with padding, a functional border, a translucent primary surface and a backdrop blur. Sticky at the bottom at 40rem and below.",
+      "forma-mobile-action-bar__primary": "Marks the single most important action with the inverse (filled) surface and inverse text. Other actions need no class; the canonical pattern's `forma-mobile-action-bar__secondary` has no CSS of its own."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the bar's buttons in source order. Sticky positioning does not change focus order." },
@@ -106,7 +106,7 @@ export default {
   states: [
     { name: "In flow", how: "viewport wider than 40rem", description: "An ordinary bordered row wherever it appears in the source." },
     { name: "Sticky", how: "@media (max-width: 40rem)", description: "Sticks to the bottom edge of the scroll container while its parent is in view." },
-    { name: "Primary action", how: "class ef-mobile-action-bar__primary", description: "Filled inverse surface for the most important action. In forced-colors mode surface tokens become Canvas, so the primary is not visually distinct there; its label must carry the meaning." },
+    { name: "Primary action", how: "class forma-mobile-action-bar__primary", description: "Filled inverse surface for the most important action. In forced-colors mode surface tokens become Canvas, so the primary is not visually distinct there; its label must carry the meaning." },
     { name: "Disabled action", how: "disabled attribute on a button", description: "Native disabled button; the application should say why nearby." }
   ],
   accessibility: {
@@ -144,7 +144,7 @@ export default {
     ]
   },
   related: [
-    { slug: "button", note: "Use a plain `ef-actions` row when actions do not need to stay pinned on phones." },
+    { slug: "button", note: "Use a plain `forma-actions` row when actions do not need to stay pinned on phones." },
     { slug: "command-group", note: "Use for labelled groups of commands in a toolbar or header." },
     { slug: "overflow-command-disclosure", note: "Use for the secondary commands that do not belong in the bar." },
     { slug: "flyout", note: "Use the flyout's own action footer for actions inside a modal side surface." }

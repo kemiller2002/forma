@@ -15,24 +15,24 @@
     --site-gray-200: #eeeeee;
 
     /* The documentation site pins the light theme. */
-    --ef-color-text-primary: var(--site-ink);
-    --ef-color-text-heading: var(--site-gray-900);
-    --ef-color-text-secondary: var(--site-gray-600);
-    --ef-color-text-on-secondary-surface: var(--site-gray-800);
-    --ef-color-text-inverse: var(--site-paper);
-    --ef-color-surface-primary: var(--site-paper);
-    --ef-color-surface-secondary: var(--site-gray-200);
-    --ef-color-surface-inverse: var(--site-gray-900);
-    --ef-color-surface-inverse-secondary: var(--site-gray-800);
-    --ef-color-accent-primary: var(--site-accent);
-    --ef-color-accent-secondary: var(--site-accent-secondary);
-    --ef-color-border-subtle: var(--site-gray-200);
-    --ef-color-border-functional: var(--site-gray-800);
-    --ef-color-focus-gap: var(--site-paper);
-    --ef-color-focus-ring: var(--site-ink);
-    --ef-color-control-track: var(--site-gray-600);
-    --ef-color-control-thumb: var(--site-paper);
-    --ef-color-control-active: var(--site-accent);
+    --forma-color-text-primary: var(--site-ink);
+    --forma-color-text-heading: var(--site-gray-900);
+    --forma-color-text-secondary: var(--site-gray-600);
+    --forma-color-text-on-secondary-surface: var(--site-gray-800);
+    --forma-color-text-inverse: var(--site-paper);
+    --forma-color-surface-primary: var(--site-paper);
+    --forma-color-surface-secondary: var(--site-gray-200);
+    --forma-color-surface-inverse: var(--site-gray-900);
+    --forma-color-surface-inverse-secondary: var(--site-gray-800);
+    --forma-color-accent-primary: var(--site-accent);
+    --forma-color-accent-secondary: var(--site-accent-secondary);
+    --forma-color-border-subtle: var(--site-gray-200);
+    --forma-color-border-functional: var(--site-gray-800);
+    --forma-color-focus-gap: var(--site-paper);
+    --forma-color-focus-ring: var(--site-ink);
+    --forma-color-control-track: var(--site-gray-600);
+    --forma-color-control-thumb: var(--site-paper);
+    --forma-color-control-active: var(--site-accent);
 
     --site-max: 1440px;
     --site-gutter: clamp(1rem, 4vw, 4.5rem);
@@ -371,9 +371,9 @@
     margin-block-start: 4rem;
   }
 
-  /* The site's own action links reuse the .ef-button name; keep the site
+  /* The site's own action links reuse the .forma-button name; keep the site
      treatment off the Forma buttons inside live examples. */
-  .ef-button:not(.example-canvas *, .catalog-card__preview *) {
+  .forma-button:not(.example-canvas *, .catalog-card__preview *) {
     display: inline-flex;
     min-block-size: 3.2rem;
     align-items: center;
@@ -390,11 +390,11 @@
        press are perceptual surface emphasis, and the hit target never moves
        under the pointer (MOT-014). */
     transition:
-      background var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing),
-      color var(--ef-motion-perceptual-duration) var(--ef-motion-perceptual-easing);
+      background var(--forma-motion-perceptual-duration) var(--forma-motion-perceptual-easing),
+      color var(--forma-motion-perceptual-duration) var(--forma-motion-perceptual-easing);
   }
 
-  .ef-button:not(.example-canvas *, .catalog-card__preview *):hover {
+  .forma-button:not(.example-canvas *, .catalog-card__preview *):hover {
     background: var(--site-gray-200);
   }
 
@@ -663,7 +663,7 @@
     align-content: start;
   }
 
-  .motion-weight-demo > :where(button, .ef-button) {
+  .motion-weight-demo > :where(button, .forma-button) {
     justify-self: start;
   }
 
@@ -983,7 +983,7 @@
     contain: layout;
   }
 
-  /* Code viewer: Forma's .ef-code-figure/.ef-code with site framing. The
+  /* Code viewer: Forma's .forma-code-figure/.forma-code with site framing. The
      block keeps its authored line breaks and scrolls inside itself. */
   .code-viewer {
     min-inline-size: 0;
@@ -1671,7 +1671,7 @@
   .brand-demo-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--ef-primitive-spacing-4, 1rem);
+    gap: var(--forma-primitive-spacing-4, 1rem);
   }
 
   .brand-demo-wrap {
@@ -1685,22 +1685,22 @@
   .brand-demo {
     min-inline-size: 0;
     block-size: 100%;
-    padding: var(--ef-primitive-spacing-5, 1.5rem);
-    border: 1px solid var(--ef-color-border-functional, #555555);
-    border-radius: var(--ef-primitive-radius-medium, 8px);
-    background: var(--ef-color-surface-primary, #fafafa);
-    color: var(--ef-color-text-primary, #161616);
-    font-family: var(--ef-primitive-font-family-sans, system-ui, sans-serif);
+    padding: var(--forma-primitive-spacing-5, 1.5rem);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    border-radius: var(--forma-primitive-radius-medium, 8px);
+    background: var(--forma-color-surface-primary, #fafafa);
+    color: var(--forma-color-text-primary, #161616);
+    font-family: var(--forma-primitive-font-family-sans, system-ui, sans-serif);
   }
 
   .brand-demo__content {
     display: grid;
-    gap: var(--ef-primitive-spacing-4, 1rem);
+    gap: var(--forma-primitive-spacing-4, 1rem);
   }
 
   .brand-demo__eyebrow {
-    color: var(--ef-color-accent-secondary, #1d6b66);
-    font-family: var(--ef-primitive-font-family-mono, ui-monospace, monospace);
+    color: var(--forma-color-accent-secondary, #1d6b66);
+    font-family: var(--forma-primitive-font-family-mono, ui-monospace, monospace);
     font-size: .72rem;
     font-weight: 600;
     letter-spacing: .08em;
@@ -1709,46 +1709,46 @@
 
   .brand-demo h2 {
     margin: 0;
-    color: var(--ef-color-text-heading, #161616);
-    font-family: var(--ef-primitive-font-family-display, Georgia, serif);
+    color: var(--forma-color-text-heading, #161616);
+    font-family: var(--forma-primitive-font-family-display, Georgia, serif);
     font-size: clamp(1.8rem, 3vw, 2.6rem);
     line-height: 1;
   }
 
   .brand-demo p,
   .brand-demo span {
-    color: var(--ef-color-text-secondary, #555555);
+    color: var(--forma-color-text-secondary, #555555);
   }
 
   .brand-demo__accent {
     display: grid;
-    gap: var(--ef-primitive-spacing-2, .5rem);
-    padding: var(--ef-primitive-spacing-4, 1rem);
-    border-inline-start: .35rem solid var(--ef-color-accent-primary, #2b5ea8);
-    background: var(--ef-color-surface-secondary, #eeeeee);
-    color: var(--ef-color-text-on-secondary-surface, #303030);
+    gap: var(--forma-primitive-spacing-2, .5rem);
+    padding: var(--forma-primitive-spacing-4, 1rem);
+    border-inline-start: .35rem solid var(--forma-color-accent-primary, #2b5ea8);
+    background: var(--forma-color-surface-secondary, #eeeeee);
+    color: var(--forma-color-text-on-secondary-surface, #303030);
   }
 
   .brand-demo__accent strong,
   .brand-demo__accent span {
-    color: var(--ef-color-text-on-secondary-surface, #303030);
+    color: var(--forma-color-text-on-secondary-surface, #303030);
   }
 
   .brand-demo button {
     min-block-size: 2.75rem;
     justify-self: start;
-    padding-inline: var(--ef-primitive-spacing-4, 1rem);
-    border: 1px solid var(--ef-color-border-functional, #555555);
-    border-radius: var(--ef-primitive-radius-small, 4px);
-    background: var(--ef-color-surface-inverse, #232323);
-    color: var(--ef-color-text-inverse, #fafafa);
+    padding-inline: var(--forma-primitive-spacing-4, 1rem);
+    border: 1px solid var(--forma-color-border-functional, #555555);
+    border-radius: var(--forma-primitive-radius-small, 4px);
+    background: var(--forma-color-surface-inverse, #232323);
+    color: var(--forma-color-text-inverse, #fafafa);
     font: inherit;
     font-weight: 700;
   }
 
   .brand-demo button:focus-visible {
-    outline: 3px solid var(--ef-color-focus-gap, #fafafa);
-    box-shadow: 0 0 0 5px var(--ef-color-focus-ring, #161616);
+    outline: 3px solid var(--forma-color-focus-gap, #fafafa);
+    box-shadow: 0 0 0 5px var(--forma-color-focus-ring, #161616);
   }
 
   .brand-boundary {
@@ -1778,7 +1778,7 @@
     }
 
     .brand-demo {
-      padding: var(--ef-primitive-spacing-4, 1rem);
+      padding: var(--forma-primitive-spacing-4, 1rem);
     }
   }
 
@@ -1800,7 +1800,7 @@
 .ve-stress {
   min-inline-size: 0;
   padding: 1rem;
-  border: 1px solid var(--ef-color-border-subtle, #d8d8d8);
+  border: 1px solid var(--forma-color-border-subtle, #d8d8d8);
   overflow-wrap: anywhere;
 }
 .ve-stress__demo { min-inline-size: 0; margin-block-start: 0.75rem; }

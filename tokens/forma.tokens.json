@@ -1411,7 +1411,7 @@
     },
     "space": {
       "$type": "dimension",
-      "$description": "Relational spacing scale in rem so spacing grows with user font size (VE LAW-COMP-031). Marketing components use it through --ef-space-* roles.",
+      "$description": "Relational spacing scale in rem so spacing grows with user font size (VE LAW-COMP-031). Marketing components use it through --forma-space-* roles.",
       "1": {
         "$value": {
           "value": 0.25,

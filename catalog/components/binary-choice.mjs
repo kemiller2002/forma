@@ -3,7 +3,7 @@ export default {
   category: "assessment",
   behavior: "Native HTML",
   summary: "A two-option radio-backed answer that preserves Unanswered as distinct from false.",
-  owns: ["ef-binary-choice", "ef-binary-option"],
+  owns: ["forma-binary-choice", "forma-binary-option"],
   purpose: {
     description: "Binary choice answers a yes/no, true/false or agree/disagree question with two native radios in one group. Because no radio starts checked, an untouched question stays Unanswered and submits nothing, which is different from an explicit No. The options render as a joined segmented bar; the checked option takes the inverse surface. The browser owns selection, arrow-key movement, required validation and reset.",
     useWhen: [
@@ -29,48 +29,48 @@ export default {
       id: "true-false-with-unknown",
       title: "True/false with a Don't know answer",
       description: "A knowledge check where Don't know is a legitimate answer. It shares the radio name so it is mutually exclusive, but sits in the separate special-choices row so it is not read as a third point on the true/false axis.",
-      html: `<ef-binary-choice class="ef-component-tag">
-  <fieldset class="ef-binary-choice">
-    <legend class="ef-binary-choice__legend">Backups are encrypted at rest in every region.</legend>
-    <div class="ef-binary-choice__options">
-      <label class="ef-binary-option"><input type="radio" name="binary-unknown-encryption" value="true" required><span>True</span></label>
-      <label class="ef-binary-option"><input type="radio" name="binary-unknown-encryption" value="false"><span>False</span></label>
+      html: `<forma-binary-choice class="forma-component-tag">
+  <fieldset class="forma-binary-choice">
+    <legend class="forma-binary-choice__legend">Backups are encrypted at rest in every region.</legend>
+    <div class="forma-binary-choice__options">
+      <label class="forma-binary-option"><input type="radio" name="binary-unknown-encryption" value="true" required><span>True</span></label>
+      <label class="forma-binary-option"><input type="radio" name="binary-unknown-encryption" value="false"><span>False</span></label>
     </div>
-    <div class="ef-special-choices" aria-label="Other responses">
-      <label class="ef-special-choice"><input type="radio" name="binary-unknown-encryption" value="unknown"><span>Don't know</span></label>
+    <div class="forma-special-choices" aria-label="Other responses">
+      <label class="forma-special-choice"><input type="radio" name="binary-unknown-encryption" value="unknown"><span>Don't know</span></label>
     </div>
   </fieldset>
-</ef-binary-choice>`
+</forma-binary-choice>`
     },
     {
       id: "answered-with-error-cleared",
       title: "Answered No after a validation error",
       description: "The question was submitted empty, then answered. No is checked; the application has removed aria-invalid and the error. An explicit No is a real answer, unlike the untouched state.",
-      html: `<ef-binary-choice class="ef-component-tag">
-  <fieldset class="ef-binary-choice">
-    <legend class="ef-binary-choice__legend">Is multi-factor authentication enforced for administrators?</legend>
-    <p class="ef-field__description" id="binary-answered-help">Answer for the production environment only.</p>
-    <div class="ef-binary-choice__options">
-      <label class="ef-binary-option"><input type="radio" name="binary-answered-mfa" value="yes" required aria-describedby="binary-answered-help"><span>Yes</span></label>
-      <label class="ef-binary-option"><input type="radio" name="binary-answered-mfa" value="no" checked aria-describedby="binary-answered-help"><span>No</span></label>
+      html: `<forma-binary-choice class="forma-component-tag">
+  <fieldset class="forma-binary-choice">
+    <legend class="forma-binary-choice__legend">Is multi-factor authentication enforced for administrators?</legend>
+    <p class="forma-field__description" id="binary-answered-help">Answer for the production environment only.</p>
+    <div class="forma-binary-choice__options">
+      <label class="forma-binary-option"><input type="radio" name="binary-answered-mfa" value="yes" required aria-describedby="binary-answered-help"><span>Yes</span></label>
+      <label class="forma-binary-option"><input type="radio" name="binary-answered-mfa" value="no" checked aria-describedby="binary-answered-help"><span>No</span></label>
     </div>
   </fieldset>
-</ef-binary-choice>`
+</forma-binary-choice>`
     },
     {
       id: "locked-answer",
       title: "Answer locked after sign-off",
       description: "A response recorded in a previous, signed-off review. Both radios are disabled, so the answer is shown but excluded from focus and submission; the description explains why it cannot change.",
-      html: `<ef-binary-choice class="ef-component-tag">
-  <fieldset class="ef-binary-choice" disabled aria-describedby="binary-locked-help">
-    <legend class="ef-binary-choice__legend">Was the incident disclosed to affected customers?</legend>
-    <p class="ef-field__description" id="binary-locked-help">Locked: this review was signed off on 12 March. Reopen the review to change the answer.</p>
-    <div class="ef-binary-choice__options">
-      <label class="ef-binary-option"><input type="radio" name="binary-locked-disclosed" value="yes" checked><span>Yes</span></label>
-      <label class="ef-binary-option"><input type="radio" name="binary-locked-disclosed" value="no"><span>No</span></label>
+      html: `<forma-binary-choice class="forma-component-tag">
+  <fieldset class="forma-binary-choice" disabled aria-describedby="binary-locked-help">
+    <legend class="forma-binary-choice__legend">Was the incident disclosed to affected customers?</legend>
+    <p class="forma-field__description" id="binary-locked-help">Locked: this review was signed off on 12 March. Reopen the review to change the answer.</p>
+    <div class="forma-binary-choice__options">
+      <label class="forma-binary-option"><input type="radio" name="binary-locked-disclosed" value="yes" checked><span>Yes</span></label>
+      <label class="forma-binary-option"><input type="radio" name="binary-locked-disclosed" value="no"><span>No</span></label>
     </div>
   </fieldset>
-</ef-binary-choice>`
+</forma-binary-choice>`
     },
     {
       id: "mobile-agree-disagree",
@@ -85,15 +85,15 @@ export default {
           "Long legends wrap; nothing scrolls horizontally at 320px."
         ]
       },
-      html: `<ef-binary-choice class="ef-component-tag">
-  <fieldset class="ef-binary-choice">
-    <legend class="ef-binary-choice__legend">On-call engineers have the access they need during an incident.</legend>
-    <div class="ef-binary-choice__options">
-      <label class="ef-binary-option"><input type="radio" name="binary-mobile-access" value="agree" required><span>Agree</span></label>
-      <label class="ef-binary-option"><input type="radio" name="binary-mobile-access" value="disagree"><span>Disagree</span></label>
+      html: `<forma-binary-choice class="forma-component-tag">
+  <fieldset class="forma-binary-choice">
+    <legend class="forma-binary-choice__legend">On-call engineers have the access they need during an incident.</legend>
+    <div class="forma-binary-choice__options">
+      <label class="forma-binary-option"><input type="radio" name="binary-mobile-access" value="agree" required><span>Agree</span></label>
+      <label class="forma-binary-option"><input type="radio" name="binary-mobile-access" value="disagree"><span>Disagree</span></label>
     </div>
   </fieldset>
-</ef-binary-choice>`
+</forma-binary-choice>`
     }
   ],
   api: {
@@ -107,10 +107,10 @@ export default {
       { name: "aria-describedby", on: "fieldset or input", values: "id list", default: "—", description: "Associates help or error text with the question." }
     ],
     hooks: {
-      "ef-binary-choice": "Root fieldset with browser border and padding removed.",
-      "ef-binary-choice__legend": "Question text, rendered bold above the options.",
-      "ef-binary-choice__options": "Bordered inline grid that joins the options into one bar; stacks below 44rem.",
-      "ef-binary-option": "Label wrapping one radio and its text. At least 44px tall; the radio is visually hidden but remains the focus and hit target."
+      "forma-binary-choice": "Root fieldset with browser border and padding removed.",
+      "forma-binary-choice__legend": "Question text, rendered bold above the options.",
+      "forma-binary-choice__options": "Bordered inline grid that joins the options into one bar; stacks below 44rem.",
+      "forma-binary-option": "Label wrapping one radio and its text. At least 44px tall; the radio is visually hidden but remains the focus and hit target."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus into the group (to the checked radio, or the first radio when Unanswered) and out of it." },

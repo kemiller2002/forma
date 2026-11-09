@@ -3,9 +3,9 @@ export default {
   category: "selection",
   behavior: "Native HTML",
   summary: "Radio-backed compact selection with visible selected and focus states; where supported, one light-inertial selection indicator travels between segments without delaying native selection.",
-  owns: ["ef-segmented", "ef-segment"],
+  owns: ["forma-segmented", "forma-segment"],
   purpose: {
-    description: "A segmented control shows two to five short, mutually exclusive options side by side, with the chosen one filled. It is a native radio group: each `ef-segment` is a `label` wrapping a visually hidden `input type=\"radio\"`, and all radios share one `name`. The browser owns selection, arrow-key movement, form submission and reset. Forma draws the bordered track, the filled selected segment and the focus ring, and in browsers with CSS anchor positioning one indicator travels to the newly selected segment. The selection itself is always immediate.",
+    description: "A segmented control shows two to five short, mutually exclusive options side by side, with the chosen one filled. It is a native radio group: each `forma-segment` is a `label` wrapping a visually hidden `input type=\"radio\"`, and all radios share one `name`. The browser owns selection, arrow-key movement, form submission and reset. Forma draws the bordered track, the filled selected segment and the focus ring, and in browsers with CSS anchor positioning one indicator travels to the newly selected segment. The selection itself is always immediate.",
     useWhen: [
       "Users switch between a few short, mutually exclusive modes or views: density, units, list/board, day/week/month.",
       "All options should be visible at once and fit on one or two lines.",
@@ -30,32 +30,32 @@ export default {
       id: "calendar-range",
       title: "Calendar range picker",
       description: "Four short options with Week preselected. The fieldset legend names the choice, so screen readers announce \"Show, radio group\" and each option as \"Week, radio button, 2 of 4, checked\".",
-      html: `<ef-segmented-control class="ef-component-tag">
-  <fieldset class="ef-field">
-    <legend class="ef-field__label">Show</legend>
-    <div class="ef-segmented">
-      <label class="ef-segment"><input type="radio" name="segmented-control-calendar-range" value="day"><span>Day</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-calendar-range" value="week" checked><span>Week</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-calendar-range" value="month"><span>Month</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-calendar-range" value="year"><span>Year</span></label>
+      html: `<forma-segmented-control class="forma-component-tag">
+  <fieldset class="forma-field">
+    <legend class="forma-field__label">Show</legend>
+    <div class="forma-segmented">
+      <label class="forma-segment"><input type="radio" name="segmented-control-calendar-range" value="day"><span>Day</span></label>
+      <label class="forma-segment"><input type="radio" name="segmented-control-calendar-range" value="week" checked><span>Week</span></label>
+      <label class="forma-segment"><input type="radio" name="segmented-control-calendar-range" value="month"><span>Month</span></label>
+      <label class="forma-segment"><input type="radio" name="segmented-control-calendar-range" value="year"><span>Year</span></label>
     </div>
   </fieldset>
-</ef-segmented-control>`
+</forma-segmented-control>`
     },
     {
       id: "no-default-heavy",
       title: "No default selection, heavier indicator",
-      description: "A required choice with nothing preselected, so the user must decide. With no checked radio there is no indicator and no filled segment. `data-ef-motion-weight=\"heavy\"` gives the indicator a slower, more settled travel once a choice is made; weight is presentation only and says nothing about the options.",
-      html: `<ef-segmented-control class="ef-component-tag">
-  <fieldset class="ef-field">
-    <legend class="ef-field__label">Billing cycle</legend>
-    <p class="ef-field__description" id="segmented-control-no-default-heavy-help">Required. You can change this before your first invoice.</p>
-    <div class="ef-segmented" data-ef-motion-weight="heavy">
-      <label class="ef-segment"><input type="radio" name="segmented-control-no-default-heavy" value="monthly" required aria-describedby="segmented-control-no-default-heavy-help"><span>Monthly</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-no-default-heavy" value="annual" aria-describedby="segmented-control-no-default-heavy-help"><span>Annual</span></label>
+      description: "A required choice with nothing preselected, so the user must decide. With no checked radio there is no indicator and no filled segment. `data-forma-motion-weight=\"heavy\"` gives the indicator a slower, more settled travel once a choice is made; weight is presentation only and says nothing about the options.",
+      html: `<forma-segmented-control class="forma-component-tag">
+  <fieldset class="forma-field">
+    <legend class="forma-field__label">Billing cycle</legend>
+    <p class="forma-field__description" id="segmented-control-no-default-heavy-help">Required. You can change this before your first invoice.</p>
+    <div class="forma-segmented" data-forma-motion-weight="heavy">
+      <label class="forma-segment"><input type="radio" name="segmented-control-no-default-heavy" value="monthly" required aria-describedby="segmented-control-no-default-heavy-help"><span>Monthly</span></label>
+      <label class="forma-segment"><input type="radio" name="segmented-control-no-default-heavy" value="annual" aria-describedby="segmented-control-no-default-heavy-help"><span>Annual</span></label>
     </div>
   </fieldset>
-</ef-segmented-control>`
+</forma-segmented-control>`
     },
     {
       id: "mobile-wrapping-segments",
@@ -64,24 +64,24 @@ export default {
       mobile: {
         height: 260,
         notes: [
-          "At 44rem and below `ef-segmented` takes the full inline size and each segment flexes from a `min(10rem, 100%)` basis, so segments share the width evenly.",
+          "At 44rem and below `forma-segmented` takes the full inline size and each segment flexes from a `min(10rem, 100%)` basis, so segments share the width evenly.",
           "When the options do not fit on one row they wrap to further rows; nothing scrolls horizontally at 320px.",
           "Every segment keeps its 44px minimum height, and the whole segment label is the tap target.",
           "Wrapping changes only the visual rows. Arrow-key order and the radio group's order stay in source order."
         ]
       },
-      html: `<ef-segmented-control class="ef-component-tag">
-  <fieldset class="ef-field">
-    <legend class="ef-field__label">Distance unit</legend>
-    <div class="ef-segmented">
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="m" checked><span>Metres</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="km"><span>Kilometres</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="ft"><span>Feet</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="mi"><span>Miles</span></label>
-      <label class="ef-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="nmi"><span>Nautical miles</span></label>
+      html: `<forma-segmented-control class="forma-component-tag">
+  <fieldset class="forma-field">
+    <legend class="forma-field__label">Distance unit</legend>
+    <div class="forma-segmented">
+      <label class="forma-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="m" checked><span>Metres</span></label>
+      <label class="forma-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="km"><span>Kilometres</span></label>
+      <label class="forma-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="ft"><span>Feet</span></label>
+      <label class="forma-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="mi"><span>Miles</span></label>
+      <label class="forma-segment"><input type="radio" name="segmented-control-mobile-wrapping-segments" value="nmi"><span>Nautical miles</span></label>
     </div>
   </fieldset>
-</ef-segmented-control>`
+</forma-segmented-control>`
     }
   ],
   api: {
@@ -92,12 +92,12 @@ export default {
       { name: "checked", on: "input", values: "boolean", default: "absent", description: "Initial selection. Omit on all radios when the user must make an active choice." },
       { name: "required", on: "input", values: "boolean", default: "absent", description: "Native constraint: the form cannot submit until one segment is selected. Put it on one radio of the group." },
       { name: "aria-describedby", on: "input", values: "id", default: "—", description: "Links help text to the options." },
-      { name: "data-ef-motion-weight", on: ".ef-segmented", values: "light | standard | heavy", default: "light", description: "Perceived mass of the travelling indicator." }
+      { name: "data-forma-motion-weight", on: ".forma-segmented", values: "light | standard | heavy", default: "light", description: "Perceived mass of the travelling indicator." }
     ],
     hooks: {
-      "ef-segmented": "The track: an inline flex row with a functional border, secondary surface and a 2px inner gap. Also the anchor scope and host of the travelling indicator (`::before`).",
-      "ef-segment": "One option: a label containing the radio and a text span. At least 44px tall; filled with the inverse surface when its radio is checked.",
-      "data-ef-motion-weight": "Presentation-only perceived mass for the selection indicator: light (default for this control), standard or heavy. Never encodes importance or preference."
+      "forma-segmented": "The track: an inline flex row with a functional border, secondary surface and a 2px inner gap. Also the anchor scope and host of the travelling indicator (`::before`).",
+      "forma-segment": "One option: a label containing the radio and a text span. At least 44px tall; filled with the inverse surface when its radio is checked.",
+      "data-forma-motion-weight": "Presentation-only perceived mass for the selection indicator: light (default for this control), standard or heavy. Never encodes importance or preference."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves focus into the group (to the checked segment, or the first when none is checked) and out of it. The group is one tab stop." },
@@ -139,7 +139,7 @@ export default {
   ],
   motion: [
     "Where CSS anchor positioning with `anchor-scope` is supported, one indicator (`::before`) travels to the selected segment using the light inertial duration and damped easing (no overshoot), so it never implies a neighbouring option.",
-    "`data-ef-motion-weight` changes the indicator's perceived mass; light is the default for this control.",
+    "`data-forma-motion-weight` changes the indicator's perceived mass; light is the default for this control.",
     "Segment background and text color change by perceptual interpolation; pressing compresses only the label text layer, never the hit target.",
     "Native selection is immediate. The indicator is presentation that follows the checked state and can be interrupted by the next selection.",
     "Without anchor positioning, under `prefers-reduced-motion: reduce`, and in forced-colors mode the indicator is removed and the checked segment's own fill is the complete presentation; press compression is also removed under reduced motion."

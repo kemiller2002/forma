@@ -28,61 +28,61 @@ export default {
       id: "conflict",
       title: "Same item chosen as Best and Worst",
       description: "The user has chosen Cost efficiency for both roles. The application marks the Worst group invalid and explains the rule in the live status line; Forma supplies no automatic correction.",
-      html: `<ef-best-worst class="ef-component-tag">
-  <fieldset class="ef-best-worst" aria-describedby="bestworst-conflict-help">
-    <legend class="ef-best-worst__legend">Which is most and least important when choosing a vendor?</legend>
-    <p class="ef-field__description" id="bestworst-conflict-help">Choose one Best and a different Worst.</p>
-    <div class="ef-best-worst__header" aria-hidden="true"><span>Option</span><span>Best</span><span>Worst</span></div>
-    <div class="ef-best-worst__row">
+      html: `<forma-best-worst class="forma-component-tag">
+  <fieldset class="forma-best-worst" aria-describedby="bestworst-conflict-help">
+    <legend class="forma-best-worst__legend">Which is most and least important when choosing a vendor?</legend>
+    <p class="forma-field__description" id="bestworst-conflict-help">Choose one Best and a different Worst.</p>
+    <div class="forma-best-worst__header" aria-hidden="true"><span>Option</span><span>Best</span><span>Worst</span></div>
+    <div class="forma-best-worst__row">
       <span>Support quality</span>
       <label><input type="radio" name="bestworst-conflict-best" value="support" aria-label="Support quality, Best"></label>
       <label><input type="radio" name="bestworst-conflict-worst" value="support" aria-label="Support quality, Worst" aria-invalid="true"></label>
     </div>
-    <div class="ef-best-worst__row">
+    <div class="forma-best-worst__row">
       <span>Security certifications</span>
       <label><input type="radio" name="bestworst-conflict-best" value="security" aria-label="Security certifications, Best"></label>
       <label><input type="radio" name="bestworst-conflict-worst" value="security" aria-label="Security certifications, Worst" aria-invalid="true"></label>
     </div>
-    <div class="ef-best-worst__row">
+    <div class="forma-best-worst__row">
       <span>Cost efficiency</span>
       <label><input type="radio" name="bestworst-conflict-best" value="cost" checked aria-label="Cost efficiency, Best"></label>
       <label><input type="radio" name="bestworst-conflict-worst" value="cost" checked aria-label="Cost efficiency, Worst" aria-invalid="true"></label>
     </div>
-    <div class="ef-best-worst__row">
+    <div class="forma-best-worst__row">
       <span>Integration options</span>
       <label><input type="radio" name="bestworst-conflict-best" value="integrations" aria-label="Integration options, Best"></label>
       <label><input type="radio" name="bestworst-conflict-worst" value="integrations" aria-label="Integration options, Worst" aria-invalid="true"></label>
     </div>
-    <p class="ef-best-worst__status" data-ef-state="invalid" aria-live="polite">Cost efficiency cannot be both Best and Worst. Choose a different Worst.</p>
+    <p class="forma-best-worst__status" data-forma-state="invalid" aria-live="polite">Cost efficiency cannot be both Best and Worst. Choose a different Worst.</p>
   </fieldset>
-</ef-best-worst>`
+</forma-best-worst>`
     },
     {
       id: "complete",
       title: "Completed set with long item names",
       description: "Distinct Best and Worst chosen; the application has written a completion status. Long item names wrap in the first column while the radio columns keep their width.",
-      html: `<ef-best-worst class="ef-component-tag">
-  <fieldset class="ef-best-worst">
-    <legend class="ef-best-worst__legend">Which change would help your on-call week most and least?</legend>
-    <div class="ef-best-worst__header" aria-hidden="true"><span>Option</span><span>Best</span><span>Worst</span></div>
-    <div class="ef-best-worst__row">
+      html: `<forma-best-worst class="forma-component-tag">
+  <fieldset class="forma-best-worst">
+    <legend class="forma-best-worst__legend">Which change would help your on-call week most and least?</legend>
+    <div class="forma-best-worst__header" aria-hidden="true"><span>Option</span><span>Best</span><span>Worst</span></div>
+    <div class="forma-best-worst__row">
       <span>Alerts routed to the owning team instead of a shared rotation</span>
       <label><input type="radio" name="bestworst-complete-best" value="routing" checked aria-label="Alerts routed to the owning team, Best"></label>
       <label><input type="radio" name="bestworst-complete-worst" value="routing" aria-label="Alerts routed to the owning team, Worst"></label>
     </div>
-    <div class="ef-best-worst__row">
+    <div class="forma-best-worst__row">
       <span>Runbooks linked from every alert</span>
       <label><input type="radio" name="bestworst-complete-best" value="runbooks" aria-label="Runbooks linked from every alert, Best"></label>
       <label><input type="radio" name="bestworst-complete-worst" value="runbooks" aria-label="Runbooks linked from every alert, Worst"></label>
     </div>
-    <div class="ef-best-worst__row">
+    <div class="forma-best-worst__row">
       <span>Compensatory time off after night pages</span>
       <label><input type="radio" name="bestworst-complete-best" value="time-off" aria-label="Compensatory time off after night pages, Best"></label>
       <label><input type="radio" name="bestworst-complete-worst" value="time-off" checked aria-label="Compensatory time off after night pages, Worst"></label>
     </div>
-    <p class="ef-best-worst__status" data-ef-state="complete" aria-live="polite">Best and Worst chosen.</p>
+    <p class="forma-best-worst__status" data-forma-state="complete" aria-live="polite">Best and Worst chosen.</p>
   </fieldset>
-</ef-best-worst>`
+</forma-best-worst>`
     },
     {
       id: "mobile-compact-columns",
@@ -97,29 +97,29 @@ export default {
           "Item names wrap within the first column; there is no horizontal scroll at 320px."
         ]
       },
-      html: `<ef-best-worst class="ef-component-tag">
-  <fieldset class="ef-best-worst" aria-describedby="bestworst-mobile-help">
-    <legend class="ef-best-worst__legend">Most and least useful meeting?</legend>
-    <p class="ef-field__description" id="bestworst-mobile-help">In each row, the first circle is Best and the second is Worst.</p>
-    <div class="ef-best-worst__header" aria-hidden="true"><span>Option</span><span>Best</span><span>Worst</span></div>
-    <div class="ef-best-worst__row">
+      html: `<forma-best-worst class="forma-component-tag">
+  <fieldset class="forma-best-worst" aria-describedby="bestworst-mobile-help">
+    <legend class="forma-best-worst__legend">Most and least useful meeting?</legend>
+    <p class="forma-field__description" id="bestworst-mobile-help">In each row, the first circle is Best and the second is Worst.</p>
+    <div class="forma-best-worst__header" aria-hidden="true"><span>Option</span><span>Best</span><span>Worst</span></div>
+    <div class="forma-best-worst__row">
       <span>Daily stand-up</span>
       <label><input type="radio" name="bestworst-mobile-best" value="standup" aria-label="Daily stand-up, Best"></label>
       <label><input type="radio" name="bestworst-mobile-worst" value="standup" aria-label="Daily stand-up, Worst"></label>
     </div>
-    <div class="ef-best-worst__row">
+    <div class="forma-best-worst__row">
       <span>Sprint planning</span>
       <label><input type="radio" name="bestworst-mobile-best" value="planning" aria-label="Sprint planning, Best"></label>
       <label><input type="radio" name="bestworst-mobile-worst" value="planning" aria-label="Sprint planning, Worst"></label>
     </div>
-    <div class="ef-best-worst__row">
+    <div class="forma-best-worst__row">
       <span>Retrospective</span>
       <label><input type="radio" name="bestworst-mobile-best" value="retro" aria-label="Retrospective, Best"></label>
       <label><input type="radio" name="bestworst-mobile-worst" value="retro" aria-label="Retrospective, Worst"></label>
     </div>
-    <p class="ef-best-worst__status" data-ef-state="incomplete" aria-live="polite">Choose one Best and one Worst.</p>
+    <p class="forma-best-worst__status" data-forma-state="incomplete" aria-live="polite">Choose one Best and one Worst.</p>
   </fieldset>
-</ef-best-worst>`
+</forma-best-worst>`
     }
   ],
   api: {
@@ -131,16 +131,16 @@ export default {
       { name: "aria-label", on: "input", values: "\"<item>, Best\" or \"<item>, Worst\"", default: "—", description: "Required. The radios have no visible text of their own, so each needs a name that combines item and role. aria-labelledby pointing at the item text and a role label is equivalent." },
       { name: "aria-labelledby", on: "input", values: "ids of item text and role label", default: "—", description: "Alternative to aria-label used by the canonical pattern." },
       { name: "aria-invalid", on: "inputs", values: "true", default: "absent", description: "Set by the application when the same item holds both roles or a role is missing on submit." },
-      { name: "aria-live", on: ".ef-best-worst__status", values: "polite", default: "—", description: "Announces the application's status text when it changes." },
-      { name: "data-ef-state", on: ".ef-best-worst__status", values: "incomplete | invalid | complete (application-defined)", default: "—", description: "Application state marker for the status line. Forma currently applies no styling for it; the text carries the meaning." },
+      { name: "aria-live", on: ".forma-best-worst__status", values: "polite", default: "—", description: "Announces the application's status text when it changes." },
+      { name: "data-forma-state", on: ".forma-best-worst__status", values: "incomplete | invalid | complete (application-defined)", default: "—", description: "Application state marker for the status line. Forma currently applies no styling for it; the text carries the meaning." },
       { name: "aria-describedby", on: "fieldset", values: "id list", default: "—", description: "Associates the rule or column explanation with the group." }
     ],
     hooks: {
-      "ef-best-worst": "Root fieldset with browser border and padding removed.",
-      "ef-best-worst__legend": "Question text.",
-      "ef-best-worst__header": "Visual column headings. Mark aria-hidden; hidden below 44rem.",
-      "ef-best-worst__row": "Bordered three-column grid row: item text, Best radio, Worst radio. Consecutive rows share borders.",
-      "ef-best-worst__status": "Status line written by the application; place it in a polite live region."
+      "forma-best-worst": "Root fieldset with browser border and padding removed.",
+      "forma-best-worst__legend": "Question text.",
+      "forma-best-worst__header": "Visual column headings. Mark aria-hidden; hidden below 44rem.",
+      "forma-best-worst__row": "Bordered three-column grid row: item text, Best radio, Worst radio. Consecutive rows share borders.",
+      "forma-best-worst__status": "Status line written by the application; place it in a polite live region."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Visits the Best group, then the Worst group (each is one tab stop), in source order." },

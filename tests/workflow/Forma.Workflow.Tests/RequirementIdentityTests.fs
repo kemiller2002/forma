@@ -11,12 +11,12 @@ let private text = Markup.text
 
 /// A Forma field: wrapper, label and the control (the public field pattern).
 let private field (id: string) (label: string) (control: Markup) =
-    el "div" [ "class", "ef-field" ] [ el "label" [ "class", "ef-field__label"; "for", id ] [ text label ]; control ]
+    el "div" [ "class", "forma-field" ] [ el "label" [ "class", "forma-field__label"; "for", id ] [ text label ]; control ]
 
 let private statement =
-    field "statement" "Problem statement" (el "textarea" [ "id", "statement"; "name", "statement"; "class", "ef-input" ] [])
+    field "statement" "Problem statement" (el "textarea" [ "id", "statement"; "name", "statement"; "class", "forma-input" ] [])
 
-let private title = field "title" "Title" (el "input" [ "id", "title"; "name", "title"; "type", "text"; "class", "ef-input" ] [])
+let private title = field "title" "Title" (el "input" [ "id", "title"; "name", "title"; "type", "text"; "class", "forma-input" ] [])
 
 let private ok (r: Result<Markup, RequirementIdentityError>) =
     match r with
@@ -33,10 +33,10 @@ let fixtureBody () =
     [ el "h1" [] [ text "Requirement identity fixture" ]
       ok (RequirementIdentity.identify TextArea "INV-001" statement)
       ok (RequirementIdentity.identify TextInput "INV-002" title)
-      el "button" [ "type", "button"; "class", "ef-button"; RequirementIdentity.Attribute, "INV-004" ] [ text "Start investigation" ]
-      el "ul" [] [ for key in [ "H1"; "H2" ] -> el "li" [] [ ok (RequirementIdentity.identifyInstance Button "INV-009" (Some key) (el "button" [ "type", "button"; "class", "ef-button" ] [ text $"Edit hypothesis {key}" ])) ] ]
+      el "button" [ "type", "button"; "class", "forma-button"; RequirementIdentity.Attribute, "INV-004" ] [ text "Start investigation" ]
+      el "ul" [] [ for key in [ "H1"; "H2" ] -> el "li" [] [ ok (RequirementIdentity.identifyInstance Button "INV-009" (Some key) (el "button" [ "type", "button"; "class", "forma-button" ] [ text $"Edit hypothesis {key}" ])) ] ]
       el "p" [ "hidden", "" ] [ ok (RequirementIdentity.identify Display "INV-090" (el "span" [] [ text "hidden display" ])) ]
-      ok (RequirementIdentity.identify Button "INV-091" (el "button" [ "type", "button"; "class", "ef-button"; "disabled", "" ] [ text "Disabled action" ])) ]
+      ok (RequirementIdentity.identify Button "INV-091" (el "button" [ "type", "button"; "class", "forma-button"; "disabled", "" ] [ text "Disabled action" ])) ]
 
 let private fixtureDocument () =
     let head =
@@ -59,9 +59,9 @@ let private fixtureDocument () =
 let all =
     [ test "requirement identity goes on the control inside a field wrapper, not on the wrapper or the label" (fun () ->
           let html = Markup.toCompactHtml (ok (RequirementIdentity.identify TextArea "INV-001" statement))
-          expect (html.Contains "<textarea id=\"statement\" name=\"statement\" class=\"ef-input\" data-requirement-id=\"INV-001\">") html
-          expect (not (html.Contains "<div class=\"ef-field\" data-requirement-id")) "the wrapper must not carry the ID"
-          expect (not (html.Contains "<label class=\"ef-field__label\" for=\"statement\" data-requirement-id")) "the label must not carry the ID")
+          expect (html.Contains "<textarea id=\"statement\" name=\"statement\" class=\"forma-input\" data-requirement-id=\"INV-001\">") html
+          expect (not (html.Contains "<div class=\"forma-field\" data-requirement-id")) "the wrapper must not carry the ID"
+          expect (not (html.Contains "<label class=\"forma-field__label\" for=\"statement\" data-requirement-id")) "the label must not carry the ID")
       test "identity leaves every existing attribute, the label association and the role untouched" (fun () ->
           let before = Markup.toCompactHtml title
           let after = Markup.toCompactHtml (ok (RequirementIdentity.identify TextInput "INV-002" title))

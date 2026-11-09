@@ -1,0 +1,1 @@
+{ "owns": ["ef-icon"], "tag": "ef-component-tag", "hook": "--ef-icon-size", "attr": "data-ef-size", "keep": ["ref-link", "chef-x", "--ref-y", "beef-z"] }

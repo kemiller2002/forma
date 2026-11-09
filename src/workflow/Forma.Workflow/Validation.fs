@@ -94,14 +94,14 @@ module Validation =
 
     let private blank (s: string) = String.IsNullOrWhiteSpace s
 
-    /// Forma's light surface-primary (--ef-color-surface-primary, the
+    /// Forma's light surface-primary (--forma-color-surface-primary, the
     /// components.css fallback): the effective fill of a node without an
     /// authored fill, and the canvas behind groups and edges.
     let defaultSurface = HexColor.create "#fafafa"
 
     /// The default diagram surfaces a literal colour may land on: the compiled
     /// light theme and the dark theme (prefers-color-scheme: dark and
-    /// data-ef-theme="dark"), both --ef-color-surface-primary in dist/tokens.css.
+    /// data-forma-theme="dark"), both --forma-color-surface-primary in dist/tokens.css.
     let defaultSurfaces = [ "light", defaultSurface; "dark", HexColor.create "#161616" ]
 
     /// The default surfaces a document is judged against for a host theme: the

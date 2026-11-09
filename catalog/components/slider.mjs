@@ -4,7 +4,7 @@ export default {
   behavior: "Native HTML",
   summary: "Single-value range input with accessible bounds and direct keyboard/pointer control.",
   purpose: {
-    description: "A slider sets one value on a bounded scale by position. Forma uses the native `input type=\"range\"`, so the browser supplies dragging, click-to-position, keyboard stepping, `min`/`max`/`step` snapping, the accessible value and form submission. `.ef-slider` adds a header for the label, a full-width 44px-tall track area colored with `accent-color`, visible minimum and maximum labels, and room for a description.",
+    description: "A slider sets one value on a bounded scale by position. Forma uses the native `input type=\"range\"`, so the browser supplies dragging, click-to-position, keyboard stepping, `min`/`max`/`step` snapping, the accessible value and form submission. `.forma-slider` adds a header for the label, a full-width 44px-tall track area colored with `accent-color`, visible minimum and maximum labels, and room for a description.",
     useWhen: [
       "An approximate value on a continuous or finely stepped scale is acceptable, such as volume, opacity or a threshold.",
       "Seeing the position relative to the bounds helps the user decide.",
@@ -27,13 +27,13 @@ export default {
       id: "named-stops",
       title: "Alert sensitivity with tick marks",
       description: "A stepped threshold with a datalist connected by list, which shows tick marks in browsers that support it. The bounds use words instead of numbers.",
-      html: `<ef-slider class="ef-component-tag">
-  <label class="ef-slider">
-    <span class="ef-slider__header">
-      <span class="ef-slider__label">Alert sensitivity</span>
+      html: `<forma-slider class="forma-component-tag">
+  <label class="forma-slider">
+    <span class="forma-slider__header">
+      <span class="forma-slider__label">Alert sensitivity</span>
     </span>
-    <input class="ef-slider__input" type="range" name="alert-sensitivity" min="1" max="5" step="1" value="3" list="slider-named-stops-ticks">
-    <span class="ef-slider__bounds" aria-hidden="true">
+    <input class="forma-slider__input" type="range" name="alert-sensitivity" min="1" max="5" step="1" value="3" list="slider-named-stops-ticks">
+    <span class="forma-slider__bounds" aria-hidden="true">
       <span>Fewer alerts</span>
       <span>More alerts</span>
     </span>
@@ -45,25 +45,25 @@ export default {
     <option value="4"></option>
     <option value="5"></option>
   </datalist>
-</ef-slider>`
+</forma-slider>`
     },
     {
       id: "disabled-by-policy",
       title: "Disabled by policy",
       description: "A session-timeout slider locked by an administrator. The root is a wrapper with a for/id label so the explanation is linked as a description rather than folded into the accessible name. The input is natively disabled and dimmed.",
-      html: `<ef-slider class="ef-component-tag">
-  <div class="ef-slider">
-    <span class="ef-slider__header">
-      <label class="ef-slider__label" for="slider-disabled-timeout">Session timeout (minutes)</label>
+      html: `<forma-slider class="forma-component-tag">
+  <div class="forma-slider">
+    <span class="forma-slider__header">
+      <label class="forma-slider__label" for="slider-disabled-timeout">Session timeout (minutes)</label>
     </span>
-    <input class="ef-slider__input" id="slider-disabled-timeout" type="range" name="session-timeout" min="5" max="120" step="5" value="30" disabled aria-describedby="slider-disabled-timeout-description">
-    <span class="ef-slider__bounds" aria-hidden="true">
+    <input class="forma-slider__input" id="slider-disabled-timeout" type="range" name="session-timeout" min="5" max="120" step="5" value="30" disabled aria-describedby="slider-disabled-timeout-description">
+    <span class="forma-slider__bounds" aria-hidden="true">
       <span>5</span>
       <span>120</span>
     </span>
-    <span class="ef-field__description" id="slider-disabled-timeout-description">Set to 30 minutes by your organization's security policy.</span>
+    <span class="forma-field__description" id="slider-disabled-timeout-description">Set to 30 minutes by your organization's security policy.</span>
   </div>
-</ef-slider>`
+</forma-slider>`
     },
     {
       id: "mobile-brightness",
@@ -78,18 +78,18 @@ export default {
           "Rotating to landscape lengthens the track, which gives finer control."
         ]
       },
-      html: `<ef-slider class="ef-component-tag">
-  <label class="ef-slider">
-    <span class="ef-slider__header">
-      <span class="ef-slider__label">Screen brightness</span>
+      html: `<forma-slider class="forma-component-tag">
+  <label class="forma-slider">
+    <span class="forma-slider__header">
+      <span class="forma-slider__label">Screen brightness</span>
     </span>
-    <input class="ef-slider__input" type="range" name="brightness" min="0" max="100" step="1" value="70">
-    <span class="ef-slider__bounds" aria-hidden="true">
+    <input class="forma-slider__input" type="range" name="brightness" min="0" max="100" step="1" value="70">
+    <span class="forma-slider__bounds" aria-hidden="true">
       <span>0%</span>
       <span>100%</span>
     </span>
   </label>
-</ef-slider>`
+</forma-slider>`
     }
   ],
   api: {
@@ -102,16 +102,16 @@ export default {
       { name: "name", on: "input", values: "string", default: "—", description: "Form field name." },
       { name: "list", on: "input", values: "id of a datalist", default: "—", description: "Optional suggested values; many browsers draw tick marks for them." },
       { name: "disabled", on: "input", values: "boolean", default: "absent", description: "Removes the slider from focus and submission and dims it." },
-      { name: "for", on: "label.ef-slider__label", values: "id of the input", default: "—", description: "Use with a wrapper root so a description can be linked with aria-describedby instead of joining the accessible name." },
+      { name: "for", on: "label.forma-slider__label", values: "id of the input", default: "—", description: "Use with a wrapper root so a description can be linked with aria-describedby instead of joining the accessible name." },
       { name: "aria-describedby", on: "input", values: "id of the description", default: "—", description: "Links explanatory text." },
-      { name: "aria-hidden", on: ".ef-slider__bounds", values: "true", default: "—", description: "Hides the visual bound labels; the input already exposes its min and max." }
+      { name: "aria-hidden", on: ".forma-slider__bounds", values: "true", default: "—", description: "Hides the visual bound labels; the input already exposes its min and max." }
     ],
     hooks: {
-      "ef-slider": "Root grid (label element or wrapper) stacking header, input, bounds and description with a 0.5rem gap.",
-      "ef-slider__header": "Wrapping flex row for the label; space-between leaves room for an application-maintained value readout.",
-      "ef-slider__label": "Visible label text (0.9375rem, weight 650).",
-      "ef-slider__input": "The native range input: full width, 44px minimum height, `accent-color` from the active control token, dimmed when disabled, with the shared focus ring.",
-      "ef-slider__bounds": "Wrapping flex row of minimum and maximum labels in small monospace text."
+      "forma-slider": "Root grid (label element or wrapper) stacking header, input, bounds and description with a 0.5rem gap.",
+      "forma-slider__header": "Wrapping flex row for the label; space-between leaves room for an application-maintained value readout.",
+      "forma-slider__label": "Visible label text (0.9375rem, weight 650).",
+      "forma-slider__input": "The native range input: full width, 44px minimum height, `accent-color` from the active control token, dimmed when disabled, with the shared focus ring.",
+      "forma-slider__bounds": "Wrapping flex row of minimum and maximum labels in small monospace text."
     },
     keyboard: [
       { keys: "ArrowLeft / ArrowDown", action: "Decreases by one step (native)." },

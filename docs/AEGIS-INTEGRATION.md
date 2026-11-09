@@ -58,7 +58,7 @@ The generic `fault` shell is useful for adapters and nonstandard compositions, b
 
 ## Severity
 
-Render the Aegis severity into `data-ef-severity` using:
+Render the Aegis severity into `data-forma-severity` using:
 
 - `diagnostic`
 - `warning`
@@ -72,7 +72,7 @@ The visible markup must also include a textual severity label. CSS color is supp
 Each action is an ordinary native button with the exact Aegis capability identity:
 
 ```html
-<button type="button" data-ef-aegis-capability="CanRetry">
+<button type="button" data-forma-aegis-capability="CanRetry">
   Try again
 </button>
 ```
@@ -98,23 +98,23 @@ Applications may localize labels while preserving capability identity.
 ## Example: inline presentation
 
 ```html
-<ef-fault-inline class="ef-component-tag">
-  <div class="ef-fault ef-fault--inline"
-       data-ef-intent="inline"
-       data-ef-severity="error"
+<forma-fault-inline class="forma-component-tag">
+  <div class="forma-fault forma-fault--inline"
+       data-forma-intent="inline"
+       data-forma-severity="error"
        aria-labelledby="save-fault-title">
-    <div class="ef-fault__marker" aria-hidden="true">!</div>
-    <div class="ef-fault__body">
-      <p class="ef-fault__severity">Error</p>
-      <p class="ef-fault__title" id="save-fault-title"><strong>Could not save changes</strong></p>
-      <p class="ef-fault__message">The update did not complete.</p>
-      <p class="ef-fault-reference">Reference <code>AG-4F82C</code></p>
+    <div class="forma-fault__marker" aria-hidden="true">!</div>
+    <div class="forma-fault__body">
+      <p class="forma-fault__severity">Error</p>
+      <p class="forma-fault__title" id="save-fault-title"><strong>Could not save changes</strong></p>
+      <p class="forma-fault__message">The update did not complete.</p>
+      <p class="forma-fault-reference">Reference <code>AG-4F82C</code></p>
     </div>
-    <div class="ef-recovery-actions" role="group" aria-label="Recovery actions">
-      <button type="button" data-ef-aegis-capability="CanRetry">Try again</button>
+    <div class="forma-recovery-actions" role="group" aria-label="Recovery actions">
+      <button type="button" data-forma-aegis-capability="CanRetry">Try again</button>
     </div>
   </div>
-</ef-fault-inline>
+</forma-fault-inline>
 ```
 
 Limen observes the native button click and translates it to the application's typed recovery message.
@@ -172,7 +172,7 @@ It should not automatically contain stack traces, raw context, secrets, internal
 
 Map Aegis `PersistenceState` to `diagnostic-status`:
 
-| Aegis state | `data-ef-state` |
+| Aegis state | `data-forma-state` |
 | --- | --- |
 | Synchronized | `synchronized` |
 | Queued n | `queued` |

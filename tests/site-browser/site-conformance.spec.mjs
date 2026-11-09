@@ -28,7 +28,7 @@ const PAGES = [
 // other than a space, hyphen, dash or slash (ULI-L06).
 // Site chrome only: catalog specimens inside example canvases are covered by
 // their own catalog checks.
-const splitNavigationWords = page => page.locator("header a, header button, nav a, .ef-actions a, .ef-actions button").evaluateAll(elements =>
+const splitNavigationWords = page => page.locator("header a, header button, nav a, .forma-actions a, .forma-actions button").evaluateAll(elements =>
   elements.filter(element => element.checkVisibility() && !element.closest(".example-canvas, .catalog-card__preview, [data-ve-verification]")).flatMap(element => {
     const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
     const texts = [];
@@ -63,7 +63,7 @@ for (const url of PAGES) {
         const split = await splitNavigationWords(page);
         if (split.length) findings.push(`${width}px: navigation words split mid-word: ${split.join(", ")}`);
         const title = await page.evaluate(() => {
-          const header = document.querySelector("body > header, .ef-site-header, .site-header");
+          const header = document.querySelector("body > header, .forma-site-header, .site-header");
           const h1 = document.querySelector("h1");
           return header && h1 ? { overlap: header.getBoundingClientRect().bottom - h1.getBoundingClientRect().top } : null;
         });
@@ -121,7 +121,7 @@ test("ULI-L05 marketing header links land their destinations clear of the sticky
     for (const width of [768, 1280]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(`/examples/marketing-site/${file}`);
-      const header = page.locator(".ef-site-header");
+      const header = page.locator(".forma-site-header");
       const links = await header.locator("a[href^='#']").evaluateAll(anchors =>
         anchors.filter(anchor => anchor.checkVisibility()).map(anchor => ({ href: anchor.getAttribute("href"), name: anchor.textContent.replace(/\s+/g, " ").trim() })));
       for (const link of links.filter(item => item.href.length > 1)) {

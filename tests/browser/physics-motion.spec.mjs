@@ -11,7 +11,7 @@ async function pseudoDurations(locator, pseudo = null) {
   return locator.evaluateAll((elements, pseudoValue) =>
     elements.map(element =>
       getComputedStyle(
-        pseudoValue ? element : element.querySelector(".ef-select__indicator"),
+        pseudoValue ? element : element.querySelector(".forma-select__indicator"),
         pseudoValue || undefined
       ).transitionDuration.split(",").map(value => value.trim())
     ),
@@ -23,17 +23,17 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("physics weight orders inertial duration while gravity duration is mass independent", async ({ page }) => {
-  const switchDurations = await pseudoDurations(page.locator(".ef-switch__track"), "::after");
+  const switchDurations = await pseudoDurations(page.locator(".forma-switch__track"), "::after");
   const switchInertia = switchDurations.map(values => seconds(values[0]));
   expect(switchInertia[0]).toBeLessThan(switchInertia[1]);
   expect(switchInertia[1]).toBeLessThan(switchInertia[2]);
 
-  const checkboxDurations = await pseudoDurations(page.locator(".ef-checkbox__box"), "::after");
+  const checkboxDurations = await pseudoDurations(page.locator(".forma-checkbox__box"), "::after");
   const checkboxInertia = checkboxDurations.slice(0, 3).map(values => seconds(values[1]));
   expect(checkboxInertia[0]).toBeLessThan(checkboxInertia[1]);
   expect(checkboxInertia[1]).toBeLessThan(checkboxInertia[2]);
 
-  const selectDurations = await pseudoDurations(page.locator(".ef-select"));
+  const selectDurations = await pseudoDurations(page.locator(".forma-select"));
   const selectInertia = selectDurations.slice(0, 3).map(values => seconds(values[0]));
   const selectGravity = selectDurations.slice(0, 3).map(values => seconds(values[1]));
 
@@ -98,9 +98,9 @@ test("reduced motion collapses spatial timing across the physics controls", asyn
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.reload();
 
-  const switchDurations = await pseudoDurations(page.locator(".ef-switch__track"), "::after");
-  const checkboxDurations = await pseudoDurations(page.locator(".ef-checkbox__box"), "::after");
-  const selectDurations = await pseudoDurations(page.locator(".ef-select"));
+  const switchDurations = await pseudoDurations(page.locator(".forma-switch__track"), "::after");
+  const checkboxDurations = await pseudoDurations(page.locator(".forma-checkbox__box"), "::after");
+  const selectDurations = await pseudoDurations(page.locator(".forma-select"));
 
   for (const values of [...switchDurations, ...checkboxDurations, ...selectDurations]) {
     for (const value of values) expect(seconds(value)).toBeLessThan(0.01);

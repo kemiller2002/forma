@@ -54,13 +54,13 @@ test("the contained viewport is a named, keyboard-reachable region", async ({ pa
 
 test("reflow is opt-in and linearizes runs in source order without horizontal scrolling", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 900 });
-  const reflow = pattern("character-grid").replace('data-ef-narrow="contained"', 'data-ef-narrow="reflow"');
+  const reflow = pattern("character-grid").replace('data-forma-narrow="contained"', 'data-forma-narrow="reflow"');
   await page.setContent(gridDocument(reflow));
   const [grid] = await measureGrid(page);
   expect(grid.display).toBe("flex");
   expect(grid.viewportScrolls).toBeFalsy();
   const order = await page.evaluate(() => {
-    const runs = [...document.querySelectorAll(".ef-character-grid__surface [data-ef-row]")];
+    const runs = [...document.querySelectorAll(".forma-character-grid__surface [data-forma-row]")];
     const tops = runs.map(run => run.getBoundingClientRect().top);
     return tops.every((top, index) => index === 0 || top >= tops[index - 1] - 0.5);
   });
@@ -76,7 +76,7 @@ test("the base pattern has no automatically detectable accessibility violations"
 test("the dl group keeps description-list semantics while children keep absolute cells", async ({ page }) => {
   await page.setContent(gridDocument(pattern("character-grid")));
   const semantics = await page.evaluate(() => {
-    const list = document.querySelector("dl.ef-character-grid__group");
+    const list = document.querySelector("dl.forma-character-grid__group");
     return { display: getComputedStyle(list).display, terms: list.querySelectorAll("dt").length };
   });
   expect(semantics).toEqual({ display: "grid", terms: 3 });

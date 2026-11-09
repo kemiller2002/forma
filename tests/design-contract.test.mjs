@@ -14,7 +14,7 @@ test("the supported design contract validates and renders deterministic native H
   assert.deepEqual(validateDesignContract(valid), []);
   const html = renderDesignContract(valid);
   assert.equal(html, fs.readFileSync("patterns/form.html", "utf8"));
-  assert.match(html, /<form class="ef-form"/);
+  assert.match(html, /<form class="forma-form"/);
   assert.match(html, /<label[^>]+for="nasa-mission-contact-email"/);
   assert.match(html, /<input type="email"[^>]+required/);
   assert.match(html, /<button type="submit">Save customer<\/button>/);

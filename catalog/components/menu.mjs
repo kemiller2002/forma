@@ -4,7 +4,7 @@ export default {
   behavior: "Native HTML",
   summary: "A Popover-backed ordinary action list with light physics-derived motion; full ARIA menu behavior remains application-owned.",
   purpose: {
-    description: "An action menu reveals a short list of actions from one trigger button, such as the More actions button on a record. It is a `popover` element with `class=\"ef-menu\"` holding an `ef-menu__list` of ordinary buttons and links, opened by a button with `popovertarget`. The browser owns opening, light dismiss (outside click, Escape) and tab order from the trigger into the list. Forma provides the surface, full-width 44px rows with hover feedback, viewport-bounded sizing and light entry and exit motion. This is deliberately not an ARIA `role=\"menu\"`: items are reached with Tab, not arrow keys. Arrow-key roving focus, typeahead, checkable items, submenus and closing after an action are application or Limen behavior.",
+    description: "An action menu reveals a short list of actions from one trigger button, such as the More actions button on a record. It is a `popover` element with `class=\"forma-menu\"` holding an `forma-menu__list` of ordinary buttons and links, opened by a button with `popovertarget`. The browser owns opening, light dismiss (outside click, Escape) and tab order from the trigger into the list. Forma provides the surface, full-width 44px rows with hover feedback, viewport-bounded sizing and light entry and exit motion. This is deliberately not an ARIA `role=\"menu\"`: items are reached with Tab, not arrow keys. Arrow-key roving focus, typeahead, checkable items, submenus and closing after an action are application or Limen behavior.",
     useWhen: [
       "A record, row or card has several secondary actions that would crowd the layout if shown as buttons.",
       "The actions are a mix of commands (buttons) and destinations (links).",
@@ -32,33 +32,33 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
       title: "Row actions mixing links and commands",
       description: "Actions for one invoice in a table row. View and Download are links (navigation, so the page change closes the menu); Duplicate and Void are buttons whose effects, and closing the menu afterwards, belong to the application. The trigger names its object so several row menus are distinguishable.",
-      html: `<ef-menu class="ef-component-tag">
+      html: `<forma-menu class="forma-component-tag">
   <button type="button" popovertarget="menu-row-actions-mixed">Actions for INV-20931</button>
-  <div class="ef-menu" id="menu-row-actions-mixed" popover>
-    <ul class="ef-menu__list" aria-label="Actions for INV-20931">
+  <div class="forma-menu" id="menu-row-actions-mixed" popover>
+    <ul class="forma-menu__list" aria-label="Actions for INV-20931">
       <li><a href="#menu-row-actions-mixed-view">View invoice</a></li>
       <li><a href="#menu-row-actions-mixed-pdf">Download PDF</a></li>
       <li><button type="button">Duplicate invoice</button></li>
       <li><button type="button">Void invoice</button></li>
     </ul>
   </div>
-</ef-menu>`
+</forma-menu>`
     },
     {
       id: "unavailable-and-long-labels",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Unavailable action and long labels",
       description: "A standard-weight menu with one natively disabled action and long, translated labels. Labels wrap inside their rows rather than widening the menu past its 30rem limit. The disabled item is skipped by Tab; its label says why it is unavailable because Forma adds no disabled styling to menu items.",
-      html: `<ef-menu class="ef-component-tag">
+      html: `<forma-menu class="forma-component-tag">
   <button type="button" lang="de" popovertarget="menu-unavailable-and-long-labels">Weitere Aktionen</button>
-  <div class="ef-menu" id="menu-unavailable-and-long-labels" lang="de" popover data-ef-motion-weight="standard">
-    <ul class="ef-menu__list" aria-label="Weitere Aktionen">
+  <div class="forma-menu" id="menu-unavailable-and-long-labels" lang="de" popover data-forma-motion-weight="standard">
+    <ul class="forma-menu__list" aria-label="Weitere Aktionen">
       <li><button type="button">Projekt in einen anderen Arbeitsbereich verschieben</button></li>
       <li><button type="button">Alle Mitglieder über Änderungen benachrichtigen</button></li>
       <li><button type="button" disabled>Projekt archivieren (nur für Eigentümer)</button></li>
     </ul>
   </div>
-</ef-menu>`
+</forma-menu>`
     },
     {
       id: "mobile-record-menu",
@@ -75,10 +75,10 @@ export default {
           "Without application positioning the menu sits at the top-start corner of the viewport, which keeps it fully on screen at 320px."
         ]
       },
-      html: `<ef-menu class="ef-component-tag">
+      html: `<forma-menu class="forma-component-tag">
   <button type="button" popovertarget="menu-mobile-record-menu">More actions</button>
-  <div class="ef-menu" id="menu-mobile-record-menu" popover>
-    <ul class="ef-menu__list" aria-label="More actions">
+  <div class="forma-menu" id="menu-mobile-record-menu" popover>
+    <ul class="forma-menu__list" aria-label="More actions">
       <li><button type="button">Edit details</button></li>
       <li><button type="button">Change owner</button></li>
       <li><button type="button">Copy link</button></li>
@@ -86,21 +86,21 @@ export default {
       <li><button type="button">Delete record</button></li>
     </ul>
   </div>
-</ef-menu>`
+</forma-menu>`
     }
   ],
   api: {
     attributes: [
-      { name: "popover", on: ".ef-menu", values: "auto (empty) | manual", default: "auto", description: "Makes the menu a popover. Keep auto so outside click and Escape close it." },
+      { name: "popover", on: ".forma-menu", values: "auto (empty) | manual", default: "auto", description: "Makes the menu a popover. Keep auto so outside click and Escape close it." },
       { name: "popovertarget", on: "trigger button", values: "id of the menu", default: "—", description: "Connects the trigger to the menu; toggles it." },
-      { name: "aria-label", on: ".ef-menu__list", values: "string", default: "—", description: "Optional name for the list, usually the trigger's label." },
+      { name: "aria-label", on: ".forma-menu__list", values: "string", default: "—", description: "Optional name for the list, usually the trigger's label." },
       { name: "disabled", on: "item button", values: "boolean", default: "absent", description: "Native disabled command: skipped by Tab and not activatable. No additional styling is applied." },
-      { name: "data-ef-motion-weight", on: ".ef-menu", values: "light | standard | heavy", default: "light", description: "Presentation-only perceived mass for entry and exit." }
+      { name: "data-forma-motion-weight", on: ".forma-menu", values: "light | standard | heavy", default: "light", description: "Presentation-only perceived mass for entry and exit." }
     ],
     hooks: {
-      "ef-menu": "The popover surface for an action list: shares the [[popover]] surface, entry/exit transition and viewport bounds, with a 14rem minimum width and tighter 0.4rem padding.",
-      "ef-menu__list": "Unstyled list (no markers or padding) in a grid with a small gap. Its buttons and links become full-width, 44px, borderless, start-aligned rows with a secondary-surface hover.",
-      "data-ef-motion-weight": "Presentation-only perceived mass: light (default for menus), standard or heavy."
+      "forma-menu": "The popover surface for an action list: shares the [[popover]] surface, entry/exit transition and viewport bounds, with a 14rem minimum width and tighter 0.4rem padding.",
+      "forma-menu__list": "Unstyled list (no markers or padding) in a grid with a small gap. Its buttons and links become full-width, 44px, borderless, start-aligned rows with a secondary-surface hover.",
+      "data-forma-motion-weight": "Presentation-only perceived mass: light (default for menus), standard or heavy."
     },
     keyboard: [
       { keys: "Enter / Space on the trigger", action: "Opens or closes the menu. Focus stays on the trigger." },
@@ -145,7 +145,7 @@ export default {
     "Entry and exit: opacity alone follows the shared 120ms slow-fast-slow curve, at unchanged position and size.",
     "Display and top-layer placement remain until opacity is zero where retention is supported; otherwise dismissal is immediate.",
     "Item hover is an instant background change (no transition).",
-    "`data-ef-motion-weight` remains available for other spatial tracks; it does not affect these perceptual fades. The native open state is authoritative.",
+    "`data-forma-motion-weight` remains available for other spatial tracks; it does not affect these perceptual fades. The native open state is authoritative.",
     "Under `prefers-reduced-motion: reduce` the stationary fade reaches its endpoint effectively immediately.",
   ],
   guidance: {

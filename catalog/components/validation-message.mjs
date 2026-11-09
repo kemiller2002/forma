@@ -26,54 +26,54 @@ export default {
       id: "email-format",
       title: "Email format error",
       description: "A text field whose value was rejected. The input carries `aria-invalid=\"true\"` and lists both the help text and the message in `aria-describedby`, so screen readers read the recovery guidance when the field is focused.",
-      html: `<ef-validation-message class="ef-component-tag">
-  <div class="ef-field">
-    <label class="ef-field__label" for="validation-message-email-format-input">Billing contact email</label>
-    <span class="ef-field__description" id="validation-message-email-format-help">Invoices are sent to this address.</span>
+      html: `<forma-validation-message class="forma-component-tag">
+  <div class="forma-field">
+    <label class="forma-field__label" for="validation-message-email-format-input">Billing contact email</label>
+    <span class="forma-field__description" id="validation-message-email-format-help">Invoices are sent to this address.</span>
     <input id="validation-message-email-format-input" name="billing-email" type="email" autocomplete="email" value="accounts@example" aria-invalid="true" aria-describedby="validation-message-email-format-help validation-message-email-format-error">
-    <p class="ef-validation-message" id="validation-message-email-format-error">
-      <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+    <p class="forma-validation-message" id="validation-message-email-format-error">
+      <span class="forma-validation-message__mark" aria-hidden="true">!</span>
       Enter a full email address, such as accounts@example.com.
     </p>
   </div>
-</ef-validation-message>`
+</forma-validation-message>`
     },
     {
       id: "required-choice",
       title: "Required choice not answered",
       description: "A radio group left unanswered. The message follows the fieldset and is referenced from the fieldset with `aria-describedby`, so it is announced when focus enters the group.",
-      html: `<ef-validation-message class="ef-component-tag">
-  <fieldset class="ef-choice-group" aria-describedby="validation-message-required-choice-error">
-    <legend class="ef-choice-group__legend">Where is customer data stored?</legend>
-    <label class="ef-choice">
+      html: `<forma-validation-message class="forma-component-tag">
+  <fieldset class="forma-choice-group" aria-describedby="validation-message-required-choice-error">
+    <legend class="forma-choice-group__legend">Where is customer data stored?</legend>
+    <label class="forma-choice">
       <input type="radio" name="validation-message-required-choice-storage" value="region" required>
-      <span class="ef-choice__content"><strong>In one region</strong></span>
+      <span class="forma-choice__content"><strong>In one region</strong></span>
     </label>
-    <label class="ef-choice">
+    <label class="forma-choice">
       <input type="radio" name="validation-message-required-choice-storage" value="multi-region">
-      <span class="ef-choice__content"><strong>Across several regions</strong></span>
+      <span class="forma-choice__content"><strong>Across several regions</strong></span>
     </label>
   </fieldset>
-  <p class="ef-validation-message" id="validation-message-required-choice-error">
-    <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+  <p class="forma-validation-message" id="validation-message-required-choice-error">
+    <span class="forma-validation-message__mark" aria-hidden="true">!</span>
     Choose where customer data is stored before continuing.
   </p>
-</ef-validation-message>`
+</forma-validation-message>`
     },
     {
       id: "range-guidance",
       title: "Out-of-range number",
       description: "A numeric value outside the allowed range. The message states the limits and the current value, so the user does not have to guess the rule.",
-      html: `<ef-validation-message class="ef-component-tag">
-  <div class="ef-field">
-    <label class="ef-field__label" for="validation-message-range-guidance-input">Retention period (days)</label>
+      html: `<forma-validation-message class="forma-component-tag">
+  <div class="forma-field">
+    <label class="forma-field__label" for="validation-message-range-guidance-input">Retention period (days)</label>
     <input id="validation-message-range-guidance-input" name="retention-days" type="number" inputmode="numeric" value="4000" min="30" max="3650" aria-invalid="true" aria-describedby="validation-message-range-guidance-error">
-    <p class="ef-validation-message" id="validation-message-range-guidance-error">
-      <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+    <p class="forma-validation-message" id="validation-message-range-guidance-error">
+      <span class="forma-validation-message__mark" aria-hidden="true">!</span>
       Enter a value from 30 to 3,650 days. 4,000 is above the maximum.
     </p>
   </div>
-</ef-validation-message>`
+</forma-validation-message>`
     },
     {
       id: "mobile-long-message",
@@ -88,29 +88,29 @@ export default {
           "Orientation changes only reflow the text; the message stays directly under its control."
         ]
       },
-      html: `<ef-validation-message class="ef-component-tag">
-  <div class="ef-field">
-    <label class="ef-field__label" for="validation-message-mobile-long-input">New passphrase</label>
+      html: `<forma-validation-message class="forma-component-tag">
+  <div class="forma-field">
+    <label class="forma-field__label" for="validation-message-mobile-long-input">New passphrase</label>
     <input id="validation-message-mobile-long-input" name="new-passphrase" type="password" autocomplete="new-password" aria-invalid="true" aria-describedby="validation-message-mobile-long-error">
-    <p class="ef-validation-message" id="validation-message-mobile-long-error">
-      <span class="ef-validation-message__mark" aria-hidden="true">!</span>
+    <p class="forma-validation-message" id="validation-message-mobile-long-error">
+      <span class="forma-validation-message__mark" aria-hidden="true">!</span>
       Use at least 12 characters. This passphrase also appears in a list of commonly used passwords, so choose something less predictable.
     </p>
   </div>
-</ef-validation-message>`
+</forma-validation-message>`
     }
   ],
   api: {
     attributes: [
-      { name: "id", on: "p.ef-validation-message", values: "unique id", default: "—", description: "Required so the control can reference the message." },
+      { name: "id", on: "p.forma-validation-message", values: "unique id", default: "—", description: "Required so the control can reference the message." },
       { name: "aria-describedby", on: "input, select, textarea or fieldset", values: "id list including the message id", default: "—", description: "Associates the message with the control so it is read when the control is focused. Keep any existing help text id in the list." },
       { name: "aria-invalid", on: "input, select or textarea", values: "true", default: "absent", description: "Set by the application while the value is invalid; remove it when the value is fixed." },
-      { name: "aria-hidden", on: ".ef-validation-message__mark", values: "true", default: "—", description: "Hides the decorative glyph from assistive technology." }
+      { name: "aria-hidden", on: ".forma-validation-message__mark", values: "true", default: "—", description: "Hides the decorative glyph from assistive technology." }
     ],
     hooks: {
-      "ef-validation-message": "Paragraph root: a flex row of mark and text with bold, small primary-colored text.",
-      "ef-validation-message__mark": "Bordered circular mark holding a short glyph such as !. Decorative.",
-      "ef-validation-message--when-invalid": "Optional native-validation modifier: hidden until a sibling control reaches :user-invalid after an attempted submission."
+      "forma-validation-message": "Paragraph root: a flex row of mark and text with bold, small primary-colored text.",
+      "forma-validation-message__mark": "Bordered circular mark holding a short glyph such as !. Decorative.",
+      "forma-validation-message--when-invalid": "Optional native-validation modifier: hidden until a sibling control reaches :user-invalid after an attempted submission."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "The message is not focusable. It is read as the description of the control it is linked to when that control receives focus." }

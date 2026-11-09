@@ -17,7 +17,7 @@ export default {
     ],
     characteristics: [
       "Bars carry no information; the region's label is the only content.",
-      "The shimmer uses the shared cadence `--ef-motion-cadence-period` (1600ms), linear, identical for every line.",
+      "The shimmer uses the shared cadence `--forma-motion-cadence-period` (1600ms), linear, identical for every line.",
       "Setting `aria-busy=\"false\"` stops the shimmer, and a static skeleton remains a valid presentation."
     ]
   },
@@ -26,52 +26,52 @@ export default {
       id: "labelled-panel",
       title: "Panel with a known heading",
       description: "The panel heading is already known, so it is rendered as real text and names the busy region with `aria-labelledby`. Only the body is a placeholder, and the visually hidden text says what is loading.",
-      html: `<ef-skeleton class="ef-component-tag">
-  <section class="ef-skeleton" aria-busy="true" aria-labelledby="skeleton-labelled-panel-title">
+      html: `<forma-skeleton class="forma-component-tag">
+  <section class="forma-skeleton" aria-busy="true" aria-labelledby="skeleton-labelled-panel-title">
     <h3 id="skeleton-labelled-panel-title">Recent activity</h3>
-    <span class="ef-visually-hidden">Loading recent activity</span>
-    <div class="ef-skeleton__line"></div>
-    <div class="ef-skeleton__line ef-skeleton__line--short"></div>
-    <div class="ef-skeleton__line"></div>
-    <div class="ef-skeleton__line ef-skeleton__line--short"></div>
+    <span class="forma-visually-hidden">Loading recent activity</span>
+    <div class="forma-skeleton__line"></div>
+    <div class="forma-skeleton__line forma-skeleton__line--short"></div>
+    <div class="forma-skeleton__line"></div>
+    <div class="forma-skeleton__line forma-skeleton__line--short"></div>
   </section>
-</ef-skeleton>`
+</forma-skeleton>`
     },
     {
       id: "card-grid",
       title: "Card grid loading",
       description: "Three skeleton cards in a responsive [[grid]] while a dashboard loads. Each card is its own busy region, so the application can replace them one by one as data arrives.",
-      html: `<ef-skeleton class="ef-component-tag">
-  <div class="ef-grid">
-    <section class="ef-skeleton" aria-busy="true" aria-label="Loading revenue">
-      <div class="ef-skeleton__line ef-skeleton__line--title"></div>
-      <div class="ef-skeleton__line ef-skeleton__line--short"></div>
+      html: `<forma-skeleton class="forma-component-tag">
+  <div class="forma-grid">
+    <section class="forma-skeleton" aria-busy="true" aria-label="Loading revenue">
+      <div class="forma-skeleton__line forma-skeleton__line--title"></div>
+      <div class="forma-skeleton__line forma-skeleton__line--short"></div>
     </section>
-    <section class="ef-skeleton" aria-busy="true" aria-label="Loading open invoices">
-      <div class="ef-skeleton__line ef-skeleton__line--title"></div>
-      <div class="ef-skeleton__line ef-skeleton__line--short"></div>
+    <section class="forma-skeleton" aria-busy="true" aria-label="Loading open invoices">
+      <div class="forma-skeleton__line forma-skeleton__line--title"></div>
+      <div class="forma-skeleton__line forma-skeleton__line--short"></div>
     </section>
-    <section class="ef-skeleton" aria-busy="true" aria-label="Loading overdue balance">
-      <div class="ef-skeleton__line ef-skeleton__line--title"></div>
-      <div class="ef-skeleton__line ef-skeleton__line--short"></div>
+    <section class="forma-skeleton" aria-busy="true" aria-label="Loading overdue balance">
+      <div class="forma-skeleton__line forma-skeleton__line--title"></div>
+      <div class="forma-skeleton__line forma-skeleton__line--short"></div>
     </section>
   </div>
-</ef-skeleton>`
+</forma-skeleton>`
     },
     {
       id: "stalled-load",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Stalled load with explanation",
       description: "Loading is taking longer than expected. The application sets `aria-busy=\"false\"` so the shimmer stops, and shows a plain text note with a retry action instead of letting the placeholder shimmer indefinitely.",
-      html: `<ef-skeleton class="ef-component-tag">
-  <section class="ef-skeleton" aria-busy="false" aria-labelledby="skeleton-stalled-load-title">
+      html: `<forma-skeleton class="forma-component-tag">
+  <section class="forma-skeleton" aria-busy="false" aria-labelledby="skeleton-stalled-load-title">
     <h3 id="skeleton-stalled-load-title">Customer history</h3>
-    <div class="ef-skeleton__line"></div>
-    <div class="ef-skeleton__line ef-skeleton__line--short"></div>
+    <div class="forma-skeleton__line"></div>
+    <div class="forma-skeleton__line forma-skeleton__line--short"></div>
     <p>This is taking longer than usual. The request is still open.</p>
     <button type="button">Try again</button>
   </section>
-</ef-skeleton>`
+</forma-skeleton>`
     },
     {
       id: "mobile-message-list",
@@ -86,31 +86,31 @@ export default {
           "There are no touch targets inside a skeleton; any action is added only when loading stalls or fails."
         ]
       },
-      html: `<ef-skeleton class="ef-component-tag">
-  <section class="ef-skeleton" aria-busy="true" aria-label="Loading messages">
-    <span class="ef-visually-hidden">Loading messages</span>
-    <div class="ef-skeleton__line ef-skeleton__line--title"></div>
-    <div class="ef-skeleton__line"></div>
-    <div class="ef-skeleton__line ef-skeleton__line--short"></div>
-    <div class="ef-skeleton__line ef-skeleton__line--title"></div>
-    <div class="ef-skeleton__line"></div>
-    <div class="ef-skeleton__line ef-skeleton__line--short"></div>
+      html: `<forma-skeleton class="forma-component-tag">
+  <section class="forma-skeleton" aria-busy="true" aria-label="Loading messages">
+    <span class="forma-visually-hidden">Loading messages</span>
+    <div class="forma-skeleton__line forma-skeleton__line--title"></div>
+    <div class="forma-skeleton__line"></div>
+    <div class="forma-skeleton__line forma-skeleton__line--short"></div>
+    <div class="forma-skeleton__line forma-skeleton__line--title"></div>
+    <div class="forma-skeleton__line"></div>
+    <div class="forma-skeleton__line forma-skeleton__line--short"></div>
   </section>
-</ef-skeleton>`
+</forma-skeleton>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-busy", on: "section.ef-skeleton", values: "true | false", default: "—", description: "Marks the region as loading. The shimmer runs only while it is true." },
-      { name: "aria-label", on: "section.ef-skeleton", values: "string", default: "—", description: "Names the busy region when no visible heading exists (\"Loading content\")." },
-      { name: "aria-labelledby", on: "section.ef-skeleton", values: "id of a visible heading", default: "—", description: "Names the region from a real heading when the heading is already known." }
+      { name: "aria-busy", on: "section.forma-skeleton", values: "true | false", default: "—", description: "Marks the region as loading. The shimmer runs only while it is true." },
+      { name: "aria-label", on: "section.forma-skeleton", values: "string", default: "—", description: "Names the busy region when no visible heading exists (\"Loading content\")." },
+      { name: "aria-labelledby", on: "section.forma-skeleton", values: "id of a visible heading", default: "—", description: "Names the region from a real heading when the heading is already known." }
     ],
     hooks: {
-      "ef-skeleton": "Root region: a bordered grid of placeholder lines.",
-      "ef-skeleton__line": "A full-width 0.9rem neutral bar with a shimmer gradient.",
-      "ef-skeleton__line--title": "Taller (1.4rem) and 55% wide, standing in for a heading.",
-      "ef-skeleton__line--short": "72% wide, standing in for the last line of a paragraph.",
-      "aria-busy": "The shimmer selector: `.ef-skeleton[aria-busy=\"true\"]` animates its lines; any other value leaves them static."
+      "forma-skeleton": "Root region: a bordered grid of placeholder lines.",
+      "forma-skeleton__line": "A full-width 0.9rem neutral bar with a shimmer gradient.",
+      "forma-skeleton__line--title": "Taller (1.4rem) and 55% wide, standing in for a heading.",
+      "forma-skeleton__line--short": "72% wide, standing in for the last line of a paragraph.",
+      "aria-busy": "The shimmer selector: `.forma-skeleton[aria-busy=\"true\"]` animates its lines; any other value leaves them static."
     },
     keyboard: [
       { keys: "—", action: "A skeleton has no focusable content. Do not put interactive placeholders inside it." }
@@ -143,7 +143,7 @@ export default {
     "Match the expected content height roughly to limit layout shift when content arrives."
   ],
   motion: [
-    "While `aria-busy=\"true\"`, each line's gradient moves across it once per `--ef-motion-cadence-period` (1600ms), linear and infinite: constant-velocity cadence with no bounce.",
+    "While `aria-busy=\"true\"`, each line's gradient moves across it once per `--forma-motion-cadence-period` (1600ms), linear and infinite: constant-velocity cadence with no bounce.",
     "Every line shares the same period, so no part of the placeholder appears faster or more important.",
     "The shimmer stops as soon as `aria-busy` is no longer true.",
     "Under `prefers-reduced-motion: reduce` the animation is removed and the lines are static."

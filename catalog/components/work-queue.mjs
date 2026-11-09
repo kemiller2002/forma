@@ -30,46 +30,46 @@ export default {
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Overdue, unknown and blocked work",
       description: "Three items with different application states, each written as text with a [[status-lozenge]]. The unknown write outcome asks for reconciliation rather than a retry, and the blocked item's action is to view the blocker because nothing else is legal.",
-      html: `<ef-work-queue class="ef-component-tag">
-  <section class="ef-work-queue" aria-labelledby="work-queue-mixed-states-title">
-    <header class="ef-work-queue__header">
-      <div><span class="ef-component-kicker">Finance operations</span><h3 id="work-queue-mixed-states-title">Needs your attention</h3></div>
-      <span class="ef-status-lozenge">3 items</span>
+      html: `<forma-work-queue class="forma-component-tag">
+  <section class="forma-work-queue" aria-labelledby="work-queue-mixed-states-title">
+    <header class="forma-work-queue__header">
+      <div><span class="forma-component-kicker">Finance operations</span><h3 id="work-queue-mixed-states-title">Needs your attention</h3></div>
+      <span class="forma-status-lozenge">3 items</span>
     </header>
-    <ol class="ef-work-queue__list">
-      <li class="ef-work-queue__item">
-        <div><strong>Invoice INV-1042 is 32 days overdue</strong><p><span class="ef-status-lozenge" data-state="attention">Overdue</span> Due 28 Aug · Customer follow-up is available.</p></div>
+    <ol class="forma-work-queue__list">
+      <li class="forma-work-queue__item">
+        <div><strong>Invoice INV-1042 is 32 days overdue</strong><p><span class="forma-status-lozenge" data-state="attention">Overdue</span> Due 28 Aug · Customer follow-up is available.</p></div>
         <button type="button" aria-label="Review INV-1042">Review</button>
       </li>
-      <li class="ef-work-queue__item">
-        <div><strong>Payment PAY-88122 outcome is unknown</strong><p><span class="ef-status-lozenge" data-state="unknown">Unknown</span> The bank accepted the request but has not confirmed. Reconcile before retrying.</p></div>
+      <li class="forma-work-queue__item">
+        <div><strong>Payment PAY-88122 outcome is unknown</strong><p><span class="forma-status-lozenge" data-state="unknown">Unknown</span> The bank accepted the request but has not confirmed. Reconcile before retrying.</p></div>
         <button type="button" aria-label="Reconcile PAY-88122">Reconcile</button>
       </li>
-      <li class="ef-work-queue__item">
-        <div><strong>Quarter close cannot start</strong><p><span class="ef-status-lozenge" data-state="blocked">Blocked</span> Waiting on 2 unreconciled accounts owned by Treasury.</p></div>
+      <li class="forma-work-queue__item">
+        <div><strong>Quarter close cannot start</strong><p><span class="forma-status-lozenge" data-state="blocked">Blocked</span> Waiting on 2 unreconciled accounts owned by Treasury.</p></div>
         <button type="button" aria-label="View blockers for quarter close">View blockers</button>
       </li>
     </ol>
   </section>
-</ef-work-queue>`
+</forma-work-queue>`
     },
     {
       id: "empty-queue",
       title: "Queue cleared",
       description: "Nothing needs attention. The section stays in place with a 0 count and an explanation, instead of disappearing, so users can tell an empty queue from one that failed to load.",
-      html: `<ef-work-queue class="ef-component-tag">
-  <section class="ef-work-queue" aria-labelledby="work-queue-empty-queue-title">
-    <header class="ef-work-queue__header">
+      html: `<forma-work-queue class="forma-component-tag">
+  <section class="forma-work-queue" aria-labelledby="work-queue-empty-queue-title">
+    <header class="forma-work-queue__header">
       <div><h3 id="work-queue-empty-queue-title">Needs your attention</h3></div>
-      <span class="ef-status-lozenge" data-state="ok">0 items</span>
+      <span class="forma-status-lozenge" data-state="ok">0 items</span>
     </header>
-    <ol class="ef-work-queue__list">
-      <li class="ef-work-queue__item">
+    <ol class="forma-work-queue__list">
+      <li class="forma-work-queue__item">
         <div><strong>Nothing needs your attention</strong><p>Checked at 09:40 UTC. New items appear here when they are assigned to you.</p></div>
       </li>
     </ol>
   </section>
-</ef-work-queue>`
+</forma-work-queue>`
     },
     {
       id: "mobile-queue",
@@ -85,37 +85,37 @@ export default {
           "Long reasons and context wrap within the item; nothing scrolls horizontally at 320px."
         ]
       },
-      html: `<ef-work-queue class="ef-component-tag">
-  <section class="ef-work-queue" aria-labelledby="work-queue-mobile-queue-title">
-    <header class="ef-work-queue__header">
-      <div><span class="ef-component-kicker">Releases</span><h3 id="work-queue-mobile-queue-title">Awaiting your review</h3></div>
-      <span class="ef-status-lozenge">2 items</span>
+      html: `<forma-work-queue class="forma-component-tag">
+  <section class="forma-work-queue" aria-labelledby="work-queue-mobile-queue-title">
+    <header class="forma-work-queue__header">
+      <div><span class="forma-component-kicker">Releases</span><h3 id="work-queue-mobile-queue-title">Awaiting your review</h3></div>
+      <span class="forma-status-lozenge">2 items</span>
     </header>
-    <ol class="ef-work-queue__list">
-      <li class="ef-work-queue__item">
+    <ol class="forma-work-queue__list">
+      <li class="forma-work-queue__item">
         <div><strong>rel-2026.09.29 needs production approval</strong><p>Requested 3 hours ago by the release manager.</p></div>
         <button type="button" aria-label="Review rel-2026.09.29">Review</button>
       </li>
-      <li class="ef-work-queue__item">
+      <li class="forma-work-queue__item">
         <div><strong>Publication validation has warnings</strong><p>2 warnings must be acknowledged before publishing.</p></div>
         <button type="button" aria-label="Inspect publication warnings">Inspect</button>
       </li>
     </ol>
   </section>
-</ef-work-queue>`
+</forma-work-queue>`
     }
   ],
   api: {
     attributes: [
-      { name: "aria-labelledby", on: "section.ef-work-queue", values: "id of the header heading", default: "—", description: "Names the queue region." },
+      { name: "aria-labelledby", on: "section.forma-work-queue", values: "id of the header heading", default: "—", description: "Names the queue region." },
       { name: "aria-label", on: "item button", values: "string", default: "—", description: "Names the item an action applies to when the visible verb repeats across items." },
       { name: "type", on: "button", values: "button", default: "—", description: "Actions are native buttons handled by the application." }
     ],
     hooks: {
-      "ef-work-queue": "Bordered root section.",
-      "ef-work-queue__header": "Padded, ruled header row with title and count spaced apart; a grid at 30rem and below.",
-      "ef-work-queue__list": "The unstyled ordered list of items.",
-      "ef-work-queue__item": "One item: reason/context and action in a two-column grid, stacking at 40rem and below with a full-width button."
+      "forma-work-queue": "Bordered root section.",
+      "forma-work-queue__header": "Padded, ruled header row with title and count spaced apart; a grid at 30rem and below.",
+      "forma-work-queue__list": "The unstyled ordered list of items.",
+      "forma-work-queue__item": "One item: reason/context and action in a two-column grid, stacking at 40rem and below with a full-width button."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through each item's action button in queue order." },
@@ -127,7 +127,7 @@ export default {
     form: "Not a form control."
   },
   states: [
-    { name: "Item needing action", how: "li.ef-work-queue__item with a button", description: "Reason, context and the legal next action." },
+    { name: "Item needing action", how: "li.forma-work-queue__item with a button", description: "Reason, context and the legal next action." },
     { name: "Item state", how: "[[status-lozenge]] or text in the item", description: "Overdue, Unknown, Blocked and so on, supplied by the application." },
     { name: "Empty", how: "application-rendered message", description: "The queue explains that nothing needs attention and when it was checked." },
     { name: "Stacked", how: "viewport ≤ 40rem", description: "Items single column with full-width actions; header stacks at 30rem." }
