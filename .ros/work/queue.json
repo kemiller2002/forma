@@ -1198,10 +1198,10 @@
         "namespace"
       ],
       "priority": "high",
-      "status": "ready",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-11-09T14:31:14.000Z",
-      "updatedAt": "2026-11-09T14:31:17.000Z",
+      "updatedAt": "2026-11-09T16:26:46.000Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
