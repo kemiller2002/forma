@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 61,
+  "nextSeq": 62,
   "items": [
     {
       "id": "WI-0001",
@@ -1550,6 +1550,29 @@
       },
       "source": "inbox",
       "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-10.md"
+    },
+    {
+      "id": "WI-0061",
+      "title": "Forma 1.0.2 publish: build the codemod once for its tests (concurrent build race)",
+      "description": "npm publish of 1.0.2 failed: three test files build the migrator concurrently into a shared obj/. Build once via a locked shared helper.",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T20:01:05.906Z",
+      "updatedAt": "2026-11-10T21:04:15.034Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-PUBLISH-RACE.md"
     }
   ]
 }

@@ -116,3 +116,4 @@
 | WI-0058 | Forma 1.0.2 re-review 8: comments only in JSX tags, whole-extent token gate, spread tokens | complete | forma-1.0.2 | high |
 | WI-0059 | Forma 1.0.2 re-review 9: linear tag-run check, extent only for the tag's own attributes | complete | forma-1.0.2 | high |
 | WI-0060 | Forma 1.0.2 re-review 10: markup extent not cut by < in the tag's own values | complete | forma-1.0.2 | high |
+| WI-0061 | Forma 1.0.2 publish: build the codemod once for its tests (concurrent build race) | complete | forma-1.0.2 | high |
