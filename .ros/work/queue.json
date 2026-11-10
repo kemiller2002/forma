@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 58,
+  "nextSeq": 59,
   "items": [
     {
       "id": "WI-0001",
@@ -1481,6 +1481,29 @@
       },
       "source": "inbox",
       "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-07.md"
+    },
+    {
+      "id": "WI-0058",
+      "title": "Forma 1.0.2 re-review 8: comments only in JSX tags, whole-extent token gate, spread tokens",
+      "description": "Fix the findings of the re-review of PR #184 at c2271b3 (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T12:03:12.977Z",
+      "updatedAt": "2026-11-10T13:04:38.547Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-08.md"
     }
   ]
 }
