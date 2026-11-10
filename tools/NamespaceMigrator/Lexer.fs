@@ -147,6 +147,9 @@ let private isTypeParameters (text: string) (start: int) (after: int) =
 let lex (syntax: Syntax) (text: string) =
     let ends = Collections.Generic.Dictionary<int, int>()
     let markup = Collections.Generic.HashSet<int>()
+    // The `<` of every real JSX element: only there may comments stand
+    // between attributes.
+    let jsxTags = Collections.Generic.HashSet<int>()
     // Where the lexer had to guess (an unclosed string, a `/` that could be
     // division or a regular expression holding a brace or quote): a `{...}`
     // group that spans one of these may end at the wrong brace.
@@ -224,6 +227,7 @@ let lex (syntax: Syntax) (text: string) =
                         match jsxName text (pos + 1) with
                         | Some after when not (isTypeParameters text (pos + 1) after) ->
                             markup.Add pos |> ignore
+                            jsxTags.Add pos |> ignore
                             stack.Push(Frame.JsxTag pos)
                             pos <- after
                         | _ ->
@@ -285,12 +289,13 @@ let lex (syntax: Syntax) (text: string) =
             | Frame.JsxTag start ->
                 let next = if pos + 1 < text.Length then text[pos + 1] else '\000'
                 match c with
-                // Comments between JSX attributes (`// it's the link`).
-                | '/' when next = '/' ->
+                // Comments between JSX attributes (`// it's the link`), at an
+                // attribute boundary only (after whitespace).
+                | '/' when next = '/' && pos > 0 && Char.IsWhiteSpace text[pos - 1] ->
                     let after = lineEnd text pos
                     markRange pos after
                     pos <- after
-                | '/' when next = '*' ->
+                | '/' when next = '*' && pos > 0 && Char.IsWhiteSpace text[pos - 1] ->
                     let close = text.IndexOf("*/", pos + 2, StringComparison.Ordinal)
                     let after = if close < 0 then text.Length else close + 2
                     markRange pos after
@@ -329,6 +334,7 @@ let lex (syntax: Syntax) (text: string) =
                 | '<' when Char.IsLetter next ->
                     match jsxName text (pos + 1) with
                     | Some after ->
+                        jsxTags.Add pos |> ignore
                         stack.Push(Frame.JsxTag pos)
                         pos <- after
                     | None -> pos <- pos + 1
@@ -345,7 +351,7 @@ let lex (syntax: Syntax) (text: string) =
         | Frame.Template start
         | Frame.JsxChildren start -> uncertainFrom <- min uncertainFrom start
         | _ -> ()
-    ends, markup, guesses.ToArray(), uncertainFrom
+    ends, markup, jsxTags, guesses.ToArray(), uncertainFrom
 
 /// Where every `{` ends by brace depth alone, ignoring strings: the fallback
 /// for a `{` the lexer skipped (inside a script string or comment, such as

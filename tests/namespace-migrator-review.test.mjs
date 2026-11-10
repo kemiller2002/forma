@@ -148,3 +148,73 @@ test("the reviewer's fuzz failures keep every href (f3fail fixtures)", () => {
     assert.equal(output.includes("\r\n"), text.includes("\r\n"), `${file}: line endings changed`);
   }
 });
+
+// Forma 1.0.2 re-review 8 (WI-0058): comments only at JSX attribute
+// boundaries, the token gate over the tag's whole unread extent, and a URL in
+// a spread.
+const pad = (n) => "x".repeat(n);
+const U8 = 'onClick={() => { if (ok) /{/.test(s); }}';
+
+test("// inside an unquoted value of a tag in a string or template is not a comment (b17)", () => {
+  probe([
+    ["ts string unquoted url", "el.innerHTML = '<a data-u=http://x.com href=\"ef-r1\">';", "ts", ['"ef-r1"']],
+    ["fs string unquoted url", 'let s = "<a data-u=http://x.com href=\'ef-r2\'>"', "fs", ["'ef-r2'"]],
+    ["lit template unquoted url", 'html`<a data-u=//cdn.x.com/y href="ef-r3">x</a>`;', "js", ['"ef-r3"']],
+    ["template protocol-relative", 'const t = `<img data-src=//cdn.x/a.png src="ef-r4">`;', "ts", ['"ef-r4"']],
+    ["unquoted url, href on the next line", "el.innerHTML = `<a data-u=http://x.com\n href=\"ef-r5\">`;", "js", ['"ef-r5"']],
+    ["html unquoted url", '<a data-u=http://x.com href="ef-r6">x</a>', "html", ['"ef-r6"']],
+    ["vue unquoted url", '<template><a data-u=http://x.com href="ef-r7">x</a></template>', "vue", ['"ef-r7"']],
+    ["jsx /* in a quoted attribute", '<a title="/* x" onClick={go} href="ef-r8"/>', "tsx", ['"ef-r8"']],
+    ["jsx // inside an expression", '<a onClick={() => go("http://x")} href="ef-r9"/>', "tsx", ['"ef-r9"']],
+    ["string tag with /*", "el.innerHTML = '<a data-x=a/*b href=\"ef-r10\">';", "js", ['"ef-r10"']]
+  ]);
+});
+
+test("an uncertain tag is gated and masked over its whole unread extent, not 4 KiB (b16)", () => {
+  const cases = [
+    ["href just inside 4 KiB", `<a ${U8} data-p="${pad(3900)}" href="ef-w1">x</a>`, "jsx", '"ef-w1"'],
+    ["href beyond 4 KiB", `<a ${U8} data-p="${pad(5000)}" href="ef-w2">x</a>`, "jsx", '"ef-w2"'],
+    ["href beyond 4 KiB, many attributes", `<a ${U8} ${Array.from({ length: 300 }, (_, i) => `a${i}="v"`).join(" ")} href="ef-w3">x</a>`, "jsx", '"ef-w3"'],
+    ["uncertain group over 4 KiB", `<a onClick={() => { if (ok) /{/.test(s); ${"go();".repeat(1000)} }} href="ef-w4">x</a>`, "jsx", '"ef-w4"'],
+    ["unclosed { then href beyond 4 KiB", `<a x={ data-p="${pad(5000)}" href="ef-w5">`, "jsx", '"ef-w5"'],
+    ["big value before the uncertain group", `<a data-p="${pad(5000)}" ${U8} href="ef-w6">x</a>`, "jsx", '"ef-w6"'],
+    ["html unclosed quote then href far", `<a title="oops ${pad(5000)} href="ef-w7">`, "html", '"ef-w7"'],
+    ["comment tag with fallback braces, href far", `/* <a x={f("}")} data-p="${pad(5000)}" href="ef-w8"> */`, "js", '"ef-w8"']
+  ];
+  for (const [label, text, extension, value] of cases) {
+    assert.ok(migrateText(text, extension).includes(value), `${label}: lost ${value}`);
+    const result = checkOne(text, extension);
+    assert.equal(result.status, 3, `${label}\n${result.stdout}`);
+    assert.ok(tagReview(result.stdout).length >= 1, `${label}: no review line`);
+  }
+});
+
+test("re-review 8 probes: built tokens, comments and postfix forms, spreads (b16)", () => {
+  probe([
+    ["split concat", `<a ${U8} href={"e" + "f-s1"}>x</a>`, "jsx", ['"e" + "f-s1"']],
+    ["template build", `<a ${U8} href={\`ef-\${s}\`}>x</a>`, "jsx", ["`ef-${s}`"]],
+    ["escaped", `<a ${U8} href="\\x65f-s2">x</a>`, "jsx", ['"\\x65f-s2"']],
+    ["entity", '<a x={ href="&#101;f-s3">', "html", ['"&#101;f-s3"']],
+    ["token after uncertain on the next line", `<a\n  ${U8}\n  href="ef-s4"\n>x</a>`, "jsx", ['"ef-s4"']],
+    ["possible tag with a URL in a spread", 'const r = x <a {...{href: "ef-s5"}} href="q">;', "jsx", ['"ef-s5"']],
+    ["comment with backtick in tag", '<a\n  // see `ref`\n  onClick={go}\n  href="ef-k1"\n/>', "tsx", ['"ef-k1"']],
+    ["comment with /> in tag", '<a\n  // closes with />\n  onClick={go}\n  href="ef-k2"\n/>', "tsx", ['"ef-k2"']],
+    ["comment with > in tag", '<a\n  /* a > b */\n  onClick={go}\n  href="ef-k3"\n/>', "tsx", ['"ef-k3"']],
+    ["url with // in attribute", '<a title="http://x.com" onClick={go} href="ef-k4"/>', "tsx", ['"ef-k4"']],
+    ["unquoted url in html", '<a data-u=http://x.com/y href="ef-k5" class="ef-kc">x</a>', "html", ['"ef-k5"'], ['"ef-kc"']],
+    ["unquoted // in a js string", "el.innerHTML = '<a data-u=http://x.com href=\"ef-k6\">';", "js", ['"ef-k6"']],
+    ["html value with //", '<a onclick=go()//x href="ef-k7">x</a>', "html", ['"ef-k7"']],
+    ["tsx unquoted //", '<a data-u=http://x.com href="ef-k8"/>', "tsx", ['"ef-k8"']],
+    ["non-null then regex", 'const ok = x!; const r = /\'/.test(s);\nfunction A(){ return <a onClick={go} href="ef-p1"/>; }', "tsx", ['"ef-p1"']],
+    ["a!==b then regex", '<a onClick={() => a!==b && /\'/.test(s)} href="ef-p2"/>', "tsx", ['"ef-p2"']],
+    ["logical not regex", '<a onClick={() => !/\'/.test(s)} href="ef-p3"/>', "tsx", ['"ef-p3"']],
+    ["x++ then a regex on the next line", 'function A(){ i++\n/\'/.test(s); return <a onClick={go} href="ef-p4"/>; }', "tsx", ['"ef-p4"']],
+    ["<const T,>", 'const f = <const T,>(x: T) => x;\nexport const A = () => <a onClick={() => f("}")} href="ef-q1"/>;', "tsx", ['"ef-q1"']],
+    ["<Foo extends=...>", '<Foo extends="x" onClick={() => f("}")} href="ef-q2"/>', "tsx", ['"ef-q2"']],
+    ["<T = Foo>", '<T = Foo>(x: T) => x;\nconst A = () => <a onClick={() => f("}")} href="ef-q3"/>;', "tsx", ['"ef-q3"']],
+    ["JSX element named const", '<const onClick={go} href="ef-q4"/>', "tsx", ['"ef-q4"']]
+  ]);
+  const spread = checkOne('const r = x <a {...{href: "ef-s5"}} href="q">;', "jsx");
+  assert.equal(spread.status, 3, spread.stdout);
+  assert.match(spread.stdout, /a <name here may be a tag/);
+});

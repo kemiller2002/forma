@@ -102,9 +102,11 @@ How tags are read, and its limits:
   string or comment, `'<a x={f("}")} href="...">'`), or opens inside a JSX
   element or template literal that never closes, or an attribute quote in
   it never closes; or when the tag is longer than 1 MiB. These lines appear
-  only when a Forma name is at stake: a tag with none after it is not
-  reported, so a codebase without Forma names checks clean. A URL attribute value in the next 4 KiB that is followed by the
-  rest of an attribute list is left unrewritten too, and each one that holds
+  only when a Forma name is at stake: a tag with no Forma name in its unread
+  extent (up to 1 MiB after it, since its `>` cannot be found) is not
+  reported, so a codebase without Forma names checks clean. A URL attribute
+  value in that extent that is followed by the rest of an attribute list is
+  left unrewritten too, and each one that holds
   a Forma name is listed at its own line (`a src/href value here holds a
   Forma name and was left unrewritten`), also by `--dry-run`. The lexer is not
   a full parser, so a misreading it does not notice could still go
@@ -119,8 +121,14 @@ M=node_modules/@echelon-foundry/design-system/tools/NamespaceMigrator/NamespaceM
 dotnet run --project "$M" -- --check src wwwroot     # report; exit 3 when anything needs attention
 dotnet run --project "$M" -- --dry-run src wwwroot   # every changed line, before and after
 dotnet run --project "$M" -- src wwwroot             # rewrite in place
-dotnet run --project "$M" -- --check src wwwroot     # exit 0: nothing left
+dotnet run --project "$M" -- --check src wwwroot     # exit 0 once nothing is left
 ```
+
+The second `--check` exits 0 only after you have acted on every `review:`
+line of the first: the write leaves reviewed strings, tags and values
+unrewritten, so `--check` keeps exiting 3 until you rewrite them by hand,
+confirm them as locations and `--exclude` the file, or change the code so it
+reads unambiguously.
 
 `--check` never gives a false all-clear: a text file of another kind (a
 `.txt`, a template, a `.yml`), or a supported file that is not UTF-8 (for

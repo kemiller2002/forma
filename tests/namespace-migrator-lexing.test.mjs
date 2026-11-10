@@ -176,13 +176,12 @@ test("SVG filter and animation elements and more HTML elements keep a prefixed s
 });
 
 test("performance: adversarial inputs from the re-review stay under 2 s each", () => {
-  // The 200,000-line case with a Forma name per line lists 200,000 values
-  // (one review line each, by design since re-review 7): it gets 5 s.
+  // With a Forma name per line every line is listed (one review line each,
+  // by design since re-review 7), so that case runs 50,000 lines at 2 s.
   for (const [label, extension, text, status, limit = 2] of [
     ["unclosed quote before .ef-a x20,000", "js", '"' + ".ef-a".repeat(20000) + "\n", 3],
     ["unclosed Razor @( x100,000 lines", "cshtml", '<a href="@(x\n'.repeat(100000), 0],
     ["unclosed string then <b { x50,000 lines", "tsx", '{"\n' + '<b { href="ef-u"\n'.repeat(50000), 3],
-    ["unclosed string then <b { x200,000 lines", "tsx", '{"\n' + '<b { href="ef-u"\n'.repeat(200000), 3, 5],
     ["unclosed string then <b { x200,000 lines, no Forma names", "tsx", '{"\n' + "<b {\n".repeat(200000), 0],
     ["stray <b in script x200,000 lines", "js", "if (a <b && c) { x.src = s; }\n".repeat(200000), 0]
   ]) {

@@ -121,8 +121,8 @@ let private tagLocations (comments: bool) (braces: Braces) (text: string) (start
             match text[pos] with
             | '>' | '<' -> acc, false
             // In script, comments may stand between JSX attributes.
-            | '/' when comments && next = '/' -> loop (lineEnd text pos) acc
-            | '/' when comments && next = '*' ->
+            | '/' when comments && next = '/' && pos > start && Char.IsWhiteSpace text[pos - 1] -> loop (lineEnd text pos) acc
+            | '/' when comments && next = '*' && pos > start && Char.IsWhiteSpace text[pos - 1] ->
                 let close = text.IndexOf("*/", pos + 2, StringComparison.Ordinal)
                 if close < 0 then acc, true else loop (close + 2) acc
             | '"' | '\'' as quote ->
@@ -149,8 +149,10 @@ let private isAttributeStart (c: char) =
 let private isAttributeChar (c: char) =
     Char.IsLetterOrDigit c || c = '_' || c = ':' || c = '.' || c = '-' || c = '@' || c = '[' || c = ']' || c = '(' || c = ')' || c = '#'
 
-/// How far after an uncertain tag URL-attribute values are left unrewritten.
-let private uncertainRegion = 4096
+/// How far after an uncertain tag URL-attribute values are left unrewritten:
+/// the tag's unread extent, whose `>` cannot be found reliably, so up to the
+/// same 1 MiB bound at which a tag is anyway unread.
+let private uncertainRegion = tagScanLimit
 
 /// Whether the text from `pos` reads as the rest of a tag's attribute list up
 /// to its `>` or `/>` (more attributes, quoted, unquoted or `{...}` values,
@@ -167,8 +169,8 @@ let private endsLikeTag (braces: Braces) (text: string) (limit: int) (pos: int) 
             let next = if pos + 1 < limit then text[pos + 1] else '\000'
             match text[pos] with
             | '>' | '<' -> true
-            | '/' when next = '/' -> loop (lineEnd text pos)
-            | '/' when next = '*' ->
+            | '/' when next = '/' && Char.IsWhiteSpace text[pos - 1] -> loop (lineEnd text pos)
+            | '/' when next = '*' && Char.IsWhiteSpace text[pos - 1] ->
                 let close = text.IndexOf("*/", pos + 2, StringComparison.Ordinal)
                 close < 0 || loop (close + 2)
             | '/' -> next = '>'
@@ -232,7 +234,9 @@ let private possibleTagLocations (cursor: int ref) (multiline: bool) (braces: Br
                 // as attributes up to a `>` are masked.
                 let finish, uncertain = uncertainGroup braces text next
                 if uncertain then looseValues cursor braces text next (min text.Length (next + uncertainRegion)) @ acc
-                else loop (min finish limit) acc
+                // The spread itself may carry a URL (`{...{href: "ef-x"}}`):
+                // it is masked with the rest and reported if it holds a name.
+                else loop (min finish limit) ((next, min finish limit) :: acc)
             elif next < limit && isAttributeStart text[next] then
                 let m = urlAttribute.Match(text, next)
                 if m.Success && m.Index + m.Length <= limit then
@@ -291,7 +295,7 @@ let markupScan (syntax: Syntax) (tokens: Lazy<int[]>) (text: string) =
     let starts = tagStart.Matches text
     if starts.Count = 0 then { Spans = []; Uncertain = []; PossibleTags = []; Suppressed = [] }
     else
-        let ends, markup, guesses, uncertainFrom = lex syntax text
+        let ends, markup, jsxTags, guesses, uncertainFrom = lex syntax text
         let braces = { Lexed = ends; Plain = lazy (plainBraceEnds text); Guesses = guesses; UncertainFrom = uncertainFrom }
         let possibleCursor = ref 0
         let results =
@@ -302,7 +306,8 @@ let markupScan (syntax: Syntax) (tokens: Lazy<int[]>) (text: string) =
                       let spans = possibleTagLocations possibleCursor jsx braces text after
                       yield m.Index, spans, false, spans |> List.exists (fun (a, b) -> hasToken a b), false
                   | _ ->
-                      let spans, uncertain = tagLocations (match syntax with Script _ -> true | MarkupText -> false) braces text after
+                      // Comments between attributes only in a real JSX element.
+                      let spans, uncertain = tagLocations (jsxTags.Contains m.Index) braces text after
                       let uncertain = uncertain && hasToken m.Index (min text.Length (m.Index + uncertainRegion))
                       yield m.Index, spans, uncertain, false, true ]
         // An uncertain tag cannot be trusted to show where its `href` is, so a
