@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 56,
+  "nextSeq": 57,
   "items": [
     {
       "id": "WI-0001",
@@ -1435,6 +1435,29 @@
       },
       "source": "inbox",
       "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-05.md"
+    },
+    {
+      "id": "WI-0056",
+      "title": "Forma 1.0.2 re-review 6: uncertain fallback braces, per-value suppression review, spread",
+      "description": "Fix the three findings of the re-review of PR #184 at 1815830 (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T05:50:37.750Z",
+      "updatedAt": "2026-11-10T06:08:57.953Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-06.md"
     }
   ]
 }

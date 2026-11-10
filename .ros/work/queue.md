@@ -111,3 +111,4 @@
 | WI-0053 | Split NamespaceMigrator tag scanner to clear SDE-STRUCT-001 (Forma 1.0.2) | complete | forma-1.0.2 | high |
 | WI-0054 | Forma 1.0.2 re-review 4: brace lexer, script tag starts, linear scans | complete | forma-1.0.2 | high |
 | WI-0055 | Forma 1.0.2 re-review 5: lexer-state tag starts, review unsure tags, bounded scans | complete | forma-1.0.2 | high |
+| WI-0056 | Forma 1.0.2 re-review 6: uncertain fallback braces, per-value suppression review, spread | complete | forma-1.0.2 | high |
