@@ -108,3 +108,4 @@
 | WI-0050 | Forma 1.0.2 review fixes (PR #184): ambiguous dotfile selectors to review, bounded tag scan, linear reporting, attribute escapes, dot-directories | complete | forma, namespace, codemod, review | medium |
 | WI-0051 | Forma 1.0.2 re-review fixes (PR #184): keep tag spans on early stop, protect selector attribute values, word-prefixed file names | complete | forma, namespace, codemod, review | medium |
 | WI-0052 | Forma 1.0.2 re-review fixes (PR #184): drop script stop characters, ambiguous prefixes, nested selector quotes | complete | forma, namespace, codemod, review | medium |
+| WI-0053 | Split NamespaceMigrator tag scanner to clear SDE-STRUCT-001 (Forma 1.0.2) | complete | forma-1.0.2 | high |

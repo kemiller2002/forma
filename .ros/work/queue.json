@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 53,
+  "nextSeq": 54,
   "items": [
     {
       "id": "WI-0001",
@@ -1366,6 +1366,29 @@
       },
       "source": "manual",
       "sourceReference": null
+    },
+    {
+      "id": "WI-0053",
+      "title": "Split NamespaceMigrator tag scanner to clear SDE-STRUCT-001 (Forma 1.0.2)",
+      "description": "CI Design system validation failed on b8c615e: sde verify --strict SDE-STRUCT-001, Migration.fs 509 physical lines. Move the markup tag scanner into Markup.fs; no behaviour change.",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T00:20:59.517Z",
+      "updatedAt": "2026-11-10T00:21:16.144Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "ci",
+      "sourceReference": "https://github.com/kemiller2002/forma/actions/runs/42721981244"
     }
   ]
 }
