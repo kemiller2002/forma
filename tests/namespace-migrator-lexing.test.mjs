@@ -48,10 +48,18 @@ const checkOne = (text, extension) => {
   return spawnSync("dotnet", [dll, "--check", file], { encoding: "utf8", maxBuffer: 1 << 28 });
 };
 
+// Timings leave out .NET start-up (measured once on an empty file), so the
+// 2 s limits measure the scan itself and keep their headroom on slower CI.
+let startup;
 const timed = (text, extension) => {
+  if (startup === undefined) {
+    const started = process.hrtime.bigint();
+    checkOne("", extension);
+    startup = Number(process.hrtime.bigint() - started) / 1e9;
+  }
   const started = process.hrtime.bigint();
   const result = checkOne(text, extension);
-  return { result, seconds: Number(process.hrtime.bigint() - started) / 1e9 };
+  return { result, seconds: Math.max(0, Number(process.hrtime.bigint() - started) / 1e9 - startup) };
 };
 
 test("a quote in a comment, regex literal or JSX text inside braces does not hide the closing brace", () => {
@@ -300,4 +308,95 @@ test("performance: long lines of [href= and unclosed /[ stay under 2 s each", ()
     assert.ok(result.status === 0 || result.status === 3, `${label}: ${result.stderr}`);
     assert.ok(seconds < 2, `${label}: took ${seconds.toFixed(2)} s; expected under 2 s`);
   }
+});
+
+// Forma 1.0.2 re-review 6 (WI-0056): a brace resolved without the lexer's
+// certainty is reviewed, every suppressed value gets its own line, and the
+// possible-tag check reads past a spread.
+test("braces resolved by the plain fallback or inside a lost JSX element are reviewed, never rewritten (b10)", () => {
+  probe([
+    ["generic arrow then template with {", 'const f = <T extends unknown>(x: T) => x;\nconst u = `x ${y} {`;\n<p>see <a onClick={() => f("}")} href="ef-z1">x</a></p>', "tsx", ['"ef-z1"']],
+    ["generic + styled", 'const identity = <T extends unknown>(x: T) => x;\nconst Box = styled.div`\n  &:hover { color: red; }\n`;\nexport const A = () => <a onClick={() => f("}")} href="ef-z2">x</a>;\n', "tsx", ['"ef-z2"']],
+    ["generic + tpl with { in fn", 'const identity = <T extends unknown>(x: T) => x;\nfunction g() { return `{${a}}`; }\nexport const A = () => <a onClick={() => f("}")} href="ef-z3">x</a>;\n', "tsx", ['"ef-z3"']],
+    ["generic + json tpl", 'const identity = <T extends unknown>(x: T) => x;\nconst body = { q: `{"a":${a}` };\nexport const A = () => <a onClick={() => f("}")} href="ef-z4">x</a>;\n', "tsx", ['"ef-z4"']],
+    ["no generic, tpl unclosed {", 'const u = `x ${y} {`;\nexport const A = () => <a onClick={() => f("}")} href="ef-z5">x</a>;\n', "tsx", ['"ef-z5"']],
+    ["generic + string brace", 'const identity = <T extends unknown>(x: T) => x;\nconst s = { a: "{" };\nexport const A = () => <a onClick={() => f("}")} href="ef-z6">x</a>;\n', "tsx", ['"ef-z6"']],
+    ["generic + comment brace", 'const identity = <T extends unknown>(x: T) => x;\nconst s = { a: 1 }; // {\nexport const A = () => <a onClick={() => f("}")} href="ef-z7">x</a>;\n', "tsx", ['"ef-z7"']],
+    ["generic + regex brace", 'const identity = <T extends unknown>(x: T) => x;\nconst s = { a: /{/ };\nexport const A = () => <a onClick={() => f("}")} href="ef-z8">x</a>;\n', "tsx", ['"ef-z8"']],
+    ["plain fallback in string tag", "const h = '<a onclick=\"f(\\'}\\')\" data-x={a} href=\"ef-z9\">';", "js", ['"ef-z9"']],
+    ["plain fallback tpl tag", 'const h = `<a onclick="${"}"}" data-x={a} href="ef-z10">`;', "js", ['"ef-z10"']],
+    ["comment tag with braces", '/* <a x={f("}")} href="ef-z11"> */', "js", ['"ef-z11"']],
+    ["string tag with braces", 'const s = \'<a x={f("}")} href="ef-z12">\';', "ts", ['"ef-z12"']]
+  ]);
+  for (const [text, extension] of [
+    ['/* <a x={f("}")} href="ef-z11"> */', "js"],
+    ['const s = \'<a x={f("}")} href="ef-z12">\';', "ts"]
+  ]) {
+    const result = checkOne(text, extension);
+    assert.equal(result.status, 3, `${text}\n${result.stdout}`);
+    assert.match(result.stdout, /could not be read with certainty/);
+  }
+});
+
+test("the re-review's mixed cases keep URL values and migrate names (b9)", () => {
+  probe([
+    ["tpl ${jsx}", 'const s = `a ${<a onClick={go} href="ef-n1">x</a>} b`;', "jsx", ['"ef-n1"']],
+    ["tpl nested tpl+jsx", 'const s = `a ${`b ${<a title={`t${1}`} href="ef-n2">x</a>}`} c`;', "jsx", ['"ef-n2"']],
+    ["jsx in ${} with quote", 'const s = `${ok ? <p>Don\'t <a href="ef-n3">x</a></p> : ""}`;', "jsx", ['"ef-n3"']],
+    ["tpl html with ${} then href", 'el.innerHTML = `<a data-x="${y}" href="ef-n4">x</a>`;', "ts", ['"ef-n4"']],
+    ["tpl html ${} containing }", 'el.innerHTML = `<a data-x="${"}"}" href="ef-n5">x</a>`;', "ts", ['"ef-n5"']],
+    ["div after )", 'const w = (a + b) / 2; const A = () => <a onClick={go} href="ef-n6">x</a>;', "jsx", ['"ef-n6"']],
+    ["div after ] with quote later", 'const r = xs[0] / 2; const s = "\'"; const A = () => <a onClick={() => f("}")} href="ef-n7">x</a>;', "jsx", ['"ef-n7"']],
+    ["regex after return", 'function f(s){ return /[{"]/.test(s) }\nconst A = () => <a onClick={() => f("}")} href="ef-n8">x</a>;', "jsx", ['"ef-n8"']],
+    ["regex after typeof", 'const t = typeof /{/;\nconst A = () => <a onClick={go} href="ef-n9">x</a>;', "jsx", ['"ef-n9"']],
+    ["div after ident with {", 'const q = total / count; const o = { a: 1 };\nconst A = () => <a onClick={() => { go(); }} href="ef-n10">x</a>;', "jsx", ['"ef-n10"']],
+    ["regex in handler after )", '<a onClick={() => (s) /x/} href="ef-n11">x</a>', "jsx", ['"ef-n11"']],
+    ["div in handler w/ quote", '<a onClick={() => setW(a / b + "\'" + c / d)} href="ef-n12">x</a>', "jsx", ['"ef-n12"']],
+    ["regex with ) in class", '<a onClick={() => /[)]/.test(s)} href="ef-n13">x</a>', "jsx", ['"ef-n13"']],
+    ["regex with escaped /", '<a onClick={() => /a\\/b\'/.test(s)} href="ef-n14">x</a>', "jsx", ['"ef-n14"']],
+    ["regex with nested group", '<a onClick={() => /((a)|(b\'))/.test(s)} href="ef-n15">x</a>', "jsx", ['"ef-n15"']],
+    ["regex flags d/g/v", '<a onClick={() => /\'/dgv.test(s)} href="ef-n16">x</a>', "jsx", ['"ef-n16"']],
+    ["ternary jsx both", 'const A = ({ok}) => ok ? <a href="ef-n17">y</a> : <a href="ef-n18">n</a>;', "tsx", ['"ef-n17"', '"ef-n18"']],
+    ["ternary paren", 'return ok\n  ? (<a href="ef-n19">y</a>)\n  : null;', "jsx", ['"ef-n19"']],
+    ["arrow body block", 'const A = () => { const x = 1; return <a href="ef-n20">x</a>; };', "jsx", ['"ef-n20"']],
+    ["arrow returning jsx after )", 'const A = (p) => (\n  <a {...p} href="ef-n21">x</a>\n);', "jsx", ['"ef-n21"']],
+    ["jsx after comparison-like", 'const A = () => n > 0 && <a href="ef-n22">x</a>;', "jsx", ['"ef-n22"']],
+    ["jsx spread then href", '<a {...props} href="ef-n23">x</a>', "jsx", ['"ef-n23"']],
+    ["string with backtick", 'const s = "`"; const A = () => <a onClick={() => f("}")} href="ef-n24">x</a>;', "jsx", ['"ef-n24"']],
+    ["string with backtick in handler", '<a onClick={() => f("`")} href="ef-n25">x</a>', "jsx", ['"ef-n25"']],
+    ["single-quoted backtick", "const s = '`{'; const A = () => <a onClick={go} href=\"ef-n26\">x</a>;", "jsx", ['"ef-n26"']],
+    ["comment with backtick", '// use `x\nconst A = () => <a onClick={() => f("}")} href="ef-n27">x</a>;', "jsx", ['"ef-n27"']],
+    ["html comment a href", '<!-- <a href="ef-n28">old</a> -->\n<p class="ef-p">x</p>', "html", ['"ef-n28"'], ['"ef-p"']],
+    ["html comment in js string", 'const s = "<!-- <a href=\'ef-n29\'> -->";', "js", ["'ef-n29'"]],
+    ["jsx comment with tag", '<div>{/* <a href="ef-n30"> */}</div>', "jsx", ['"ef-n30"']],
+    ["html script block", '<script>if (a <b && c) { x = "y"; }\nconst h = \'<a href="ef-n31">\';</script>\n<a href="ef-n32">x</a>', "html", ['"ef-n31"', '"ef-n32"']],
+    ["html style block", '<style>.ef-a > a[href^="ef-n33"] { color: red }</style><a href="ef-n34">', "html", ['"ef-n33"', '"ef-n34"'], [".ef-a"]],
+    ["html script with }", '<script>const o = "}"; function f(){ return "{"; }</script>\n<a onclick="f()" href="ef-n35">x</a>', "html", ['"ef-n35"']],
+    ["html script name assign", '<script>if (n <max) el.className = "ef-q";</script>', "html", [], ['"ef-q"']],
+    ["vue sfc", '<template>\n  <a :class="{ on: x }" href="ef-n36" class="ef-v">x</a>\n</template>\n<script>\nexport default { data() { return { u: "it\'s" } } }\n</script>\n<style>.ef-v { color: red }</style>', "vue", ['"ef-n36"'], ['class="ef-v"', ".ef-v {"]],
+    ["vue script with jsx-like", '<script setup lang="ts">\nconst a = b <c;\nconst n = "ef-name";\n</script>\n<template><a href="ef-n37">x</a></template>', "vue", ['"ef-n37"'], ['"ef-name"']],
+    ["svelte sfc", '<script>\n  let s = "it\'s";\n  const re = /}/;\n</script>\n{#if ok}<a on:click={() => go("}")} href="ef-n38">x</a>{/if}', "svelte", ['"ef-n38"']],
+    ["possible tag with spread", 'const r = x <a {...p} href="ef-n39">;', "jsx", ['"ef-n39"']],
+    ["comparison then data name", 'if (a <b) data = "ef-nm1";', "js", [], ['"ef-nm1"']],
+    ["comparison with attr-like then name", 'let ok = a <b c=d; data = "ef-nm2";', "js", [], ['"ef-nm2"']]
+  ]);
+  const spread = checkOne('const r = x <a {...p} href="ef-n39">;', "jsx");
+  assert.equal(spread.status, 3, spread.stdout);
+  assert.match(spread.stdout, /a <name here may be a tag/);
+});
+
+test("a value left unrewritten after an uncertain tag gets its own review line; script after it is migrated (b11)", () => {
+  probe([
+    ["data name after uncertain", 'const A = () => <a onClick={() => { if (ok) /{/.test(s); }} href="ef-u1">x</a>;\nel.data = 1; let data = "ef-card"; const c = "ef-cls";\n', "jsx", ['"ef-u1"'], ['"ef-card"', '"ef-cls"']],
+    ["background name after uncertain", 'const A = () => <a x={ href="ef-u2">\n el.style; background = "ef-bg";', "jsx", ['"ef-u2"'], ['"ef-bg"']],
+    ["beyond 4 KiB", 'const A = () => <a x={ href="ef-u3">\n' + "//".padEnd(5000, "x") + '\n data = "ef-far";', "jsx", [], ['"ef-far"']]
+  ]);
+  const text = 'const A = () => <a onClick={() => { if (ok) /{/.test(s); }}\n  title="t"\n  href="ef-s1">x</a>;\n';
+  assert.ok(migrateText(text, "jsx").includes('href="ef-s1"'));
+  const result = checkOne(text, "jsx");
+  assert.equal(result.status, 3, result.stdout);
+  assert.match(result.stdout, /sample\.jsx:1 a tag here could not be read with certainty/);
+  assert.match(result.stdout, /sample\.jsx:3 a src\/href value here holds a Forma name and was left unrewritten/);
+  const dry = run("--dry-run", (() => { const d = fs.mkdtempSync(path.join(os.tmpdir(), "forma-nsm-dry-")); const f = path.join(d, "s.jsx"); fs.writeFileSync(f, text); return f; })());
+  assert.match(dry.stdout, /s\.jsx:3 a src\/href value here holds a Forma name and was left unrewritten/);
 });

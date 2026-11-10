@@ -413,15 +413,27 @@ let ambiguous (text: string) =
     |> List.filter (fun (_, _, _, isAmbiguous) -> isAmbiguous)
     |> List.map (fun (index, _, value, _) -> lineOf index + 1, value)
 
-/// Tags to review (1-based lines): `Uncertain`, a tag whose `{...}`
-/// expression is never closed or that is over 1 MiB (an `href`/`src` after
-/// that point is not protected); `PossibleTags`, a `<name` in script code
-/// that may or may not be a tag, with a URL attribute after it that was left
-/// unrewritten.
+/// What to review about tags (1-based lines). `Uncertain`: a tag whose
+/// `{...}` expression is never closed, is resolved without the lexer's
+/// certainty, or that is over 1 MiB. `Possible`: a `<name` in script code that
+/// may be a tag, with a URL attribute after it left unrewritten. `Suppressed`:
+/// a value after an uncertain tag that holds a Forma name and was left
+/// unrewritten, each at its own line.
+type TagReview =
+    { Uncertain: int list
+      Possible: int list
+      /// (line of the value, line of the uncertain tag before it)
+      Suppressed: (int * int) list }
+
 let tagReview (kind: Kind) (text: string) =
     let lineOf = lineIndex (lines text)
     let scan = scanMarkup kind text
-    scan.Uncertain |> List.map (fun index -> lineOf index + 1), scan.PossibleTags |> List.map (fun index -> lineOf index + 1)
+    { Uncertain = scan.Uncertain |> List.map (fun index -> lineOf index + 1)
+      Possible = scan.PossibleTags |> List.map (fun index -> lineOf index + 1)
+      Suppressed =
+        scan.Suppressed
+        |> List.filter (fun (start, finish, _) -> token.IsMatch(text.Substring(start, finish - start)))
+        |> List.map (fun (start, _, tag) -> lineOf start + 1, lineOf tag + 1) }
 
 /// Whether a text still holds a namespace token (for files of a kind the
 /// migrator does not rewrite: they are reported, never silently passed).

@@ -19,12 +19,12 @@ type Syntax =
 type private Frame =
     /// Script inside `{` at `start` (-1: a script file's top level).
     | Code of start: int
-    /// Template-literal text.
-    | Template
-    /// A JSX opening tag's attributes.
-    | JsxTag
-    /// A JSX element's children (text, not script).
-    | JsxChildren
+    /// Template-literal text, opened at `start`.
+    | Template of start: int
+    /// A JSX opening tag's attributes; the element opened at `start`.
+    | JsxTag of start: int
+    /// A JSX element's children (text, not script); the element opened at `start`.
+    | JsxChildren of start: int
 
 let isIdentifier (c: char) = Char.IsLetterOrDigit c || c = '_' || c = '$'
 
@@ -103,6 +103,16 @@ let jsxName (text: string) (pos: int) =
         j <- j + 1
     if j < text.Length && (Char.IsWhiteSpace text[j] || text[j] = '/' || text[j] = '>') then Some j else None
 
+/// Whether a JSX-looking `<T` whose name ends at `after` opens TSX type
+/// parameters instead (`<T extends U>(…)`, `<T = string>(…)`): JSX attributes
+/// never start with `extends`, `=` or `,`.
+let private isTypeParameters (text: string) (after: int) =
+    let mutable j = after
+    while j < text.Length && (text[j] = ' ' || text[j] = '\t') do j <- j + 1
+    j < text.Length
+    && (text[j] = '=' || text[j] = ','
+        || (String.CompareOrdinal(text, j, "extends", 0, 7) = 0 && j + 7 < text.Length && not (isIdentifier text[j + 7])))
+
 /// Where every `{...}` group ends, from one pass over the text. Inside braces
 /// (and throughout a script file) the text is lexed as script: strings,
 /// template literals, `//` and `/* */` comments and regular-expression
@@ -161,7 +171,7 @@ let lex (syntax: Syntax) (text: string) =
                     pos <- after
                     expression <- false
                 | '`' ->
-                    stack.Push Frame.Template
+                    stack.Push(Frame.Template pos)
                     pos <- pos + 1
                 | '/' when next = '/' ->
                     let after = lineEnd text pos
@@ -184,16 +194,19 @@ let lex (syntax: Syntax) (text: string) =
                         guesses.Add pos
                         pos <- pos + 1
                 | '<' when jsx && expression && (next = '>' || Char.IsLetter next) ->
-                    markup.Add pos |> ignore
                     if next = '>' then
-                        stack.Push Frame.JsxChildren
+                        markup.Add pos |> ignore
+                        stack.Push(Frame.JsxChildren pos)
                         pos <- pos + 2
                     else
                         match jsxName text (pos + 1) with
-                        | Some after ->
-                            stack.Push Frame.JsxTag
+                        | Some after when not (isTypeParameters text after) ->
+                            markup.Add pos |> ignore
+                            stack.Push(Frame.JsxTag pos)
                             pos <- after
-                        | None ->
+                        | _ ->
+                            // A comparison or TSX type parameters
+                            // (`<T extends U>(…)`, `<T = string>(…)`): script.
                             pos <- pos + 1
                             expression <- true
                 | '{' -> openBrace ()
@@ -229,7 +242,7 @@ let lex (syntax: Syntax) (text: string) =
                 | _ ->
                     pos <- pos + 1
                     expression <- true
-            | Frame.Template ->
+            | Frame.Template _ ->
                 match c with
                 | '<' ->
                     markup.Add pos |> ignore
@@ -243,7 +256,7 @@ let lex (syntax: Syntax) (text: string) =
                     pos <- pos + 1
                     openBrace ()
                 | _ -> pos <- pos + 1
-            | Frame.JsxTag ->
+            | Frame.JsxTag start ->
                 match c with
                 | '"' | '\'' ->
                     let close = text.IndexOf(c, pos + 1)
@@ -260,10 +273,10 @@ let lex (syntax: Syntax) (text: string) =
                     expression <- true
                 | '>' ->
                     stack.Pop() |> ignore
-                    stack.Push Frame.JsxChildren
+                    stack.Push(Frame.JsxChildren start)
                     pos <- pos + 1
                 | _ -> pos <- pos + 1
-            | Frame.JsxChildren ->
+            | Frame.JsxChildren _ ->
                 let next = if pos + 1 < text.Length then text[pos + 1] else '\000'
                 if c = '<' then markup.Add pos |> ignore
                 match c with
@@ -274,20 +287,28 @@ let lex (syntax: Syntax) (text: string) =
                     pos <- if close < 0 then text.Length else close + 1
                     expression <- true
                 | '<' when next = '>' ->
-                    stack.Push Frame.JsxChildren
+                    stack.Push(Frame.JsxChildren pos)
                     pos <- pos + 2
                 | '<' when Char.IsLetter next ->
                     match jsxName text (pos + 1) with
                     | Some after ->
-                        stack.Push Frame.JsxTag
+                        stack.Push(Frame.JsxTag pos)
                         pos <- after
                     | None -> pos <- pos + 1
                 | _ -> pos <- pos + 1
+    // A JSX element or template literal still open at the end of the text
+    // means the lexer lost its place: every `{...}` group opened after its
+    // start is uncertain.
+    let mutable uncertainFrom = Int32.MaxValue
     for frame in stack do
         match frame with
         | Frame.Code start when start >= 0 -> ends[start] <- unclosed text
+        // (A JSX tag cut off at the end, `<a … onClick={go}`, keeps its own
+        // groups: they were lexed as attributes.)
+        | Frame.Template start
+        | Frame.JsxChildren start -> uncertainFrom <- min uncertainFrom start
         | _ -> ()
-    ends, markup, guesses.ToArray()
+    ends, markup, guesses.ToArray(), uncertainFrom
 
 /// Where every `{` ends by brace depth alone, ignoring strings: the fallback
 /// for a `{` the lexer skipped (inside a script string or comment, such as

@@ -87,19 +87,26 @@ How tags are read, and its limits:
   attribute and leaves it.
 - A `<name` in script code after an operand is a comparison or a type
   argument (`if (a <b && c) data = "ef-card"` is migrated). If attribute
-  syntax and a URL attribute follow it (`n <a href="ef-x">`), the tool cannot
+  syntax (also past a spread, `{...p}`) and a URL attribute follow it
+  (`n <a href="ef-x">`), the tool cannot
   tell: the value is left unrewritten and listed as `review: FILE:LINE a
   <name here may be a tag`, and `--check` exits 3.
 - `{...}` expressions are lexed as script (strings, template literals,
-  comments, regular expressions and JSX text are skipped). A tag whose `{`
-  never closes, that spans a place where the lexer had to guess (an
-  unclosed string, a `/` that reads both as division and as a regular
-  expression holding a brace or quote, such as `if (ok) /{/.test(s)`), or
-  that is longer than 1 MiB, is listed as `review: FILE:LINE a tag here could
-  not be read with certainty`; URL attribute values in the next 4 KiB are
-  left unrewritten and `--check` exits 3. The lexer is not a full parser, so
-  a misreading it does not notice could still go unreported: read the
-  `--dry-run` diff of files with complex JSX.
+  comments, regular expressions and JSX text are skipped; TSX type
+  parameters such as `<T extends U>(...)` are script). A tag is listed as
+  `review: FILE:LINE a tag here could not be read with certainty`, and
+  `--check` exits 3, when a `{...}` group in it never closes, spans a place
+  where the lexer had to guess (an unclosed string, a `/` that reads both as
+  division and as a regular expression holding a brace or quote, such as
+  `if (ok) /{/.test(s)`), was matched without the lexer (a tag inside a
+  string or comment, `'<a x={f("}")} href="...">'`), or opens inside a JSX
+  element or template literal that never closes; or when the tag is longer
+  than 1 MiB. A URL attribute value in the next 4 KiB that is followed by the
+  rest of an attribute list is left unrewritten too, and each one that holds
+  a Forma name is listed at its own line (`a src/href value here holds a
+  Forma name and was left unrewritten`), also by `--dry-run`. The lexer is not
+  a full parser, so a misreading it does not notice could still go
+  unreported: read the `--dry-run` diff of files with complex JSX.
 
 It always skips `node_modules`, `.git`, `bin` and `obj`, and by default also
 `vendor`, `bower_components`, `jspm_packages`, `dist` and `wwwroot/lib`

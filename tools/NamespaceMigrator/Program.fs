@@ -131,8 +131,7 @@ type private Outcome =
       Changes: Change list
       Migrated: string
       Ambiguous: (int * string) list
-      Uncertain: int list
-      Possible: int list }
+      Tags: TagReview }
 
 let private examine (file: string) (source: Source) =
     let kind = kindOf file
@@ -142,8 +141,7 @@ let private examine (file: string) (source: Source) =
       Changes = if migrated = source.Text then [] else changes kind source.Text
       Migrated = migrated
       Ambiguous = ambiguous source.Text
-      Uncertain = fst (tagReview kind source.Text)
-      Possible = snd (tagReview kind source.Text) }
+      Tags = tagReview kind source.Text }
 
 /// Report lines go through one buffered writer (flushed at exit): a review
 /// list can be long, and `printfn` per line is slow.
@@ -161,19 +159,23 @@ let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
         | Check
         | Write -> say $"{outcome.File}: {outcome.Changes.Length} line(s)"
     let ambiguousCount = outcomes |> List.sumBy (fun o -> o.Ambiguous.Length)
-    let uncertainCount = outcomes |> List.sumBy (fun o -> o.Uncertain.Length + o.Possible.Length)
+    let uncertainCount = outcomes |> List.sumBy (fun o -> o.Tags.Uncertain.Length + o.Tags.Possible.Length)
+    let suppressedCount = outcomes |> List.sumBy (fun o -> o.Tags.Suppressed.Length)
     for outcome in outcomes do
         for line, value in outcome.Ambiguous do
             say $"review: {outcome.File}:{line} \"{value}\" is either a class selector or a file name and was left unrewritten; rewrite it by hand if it is a selector"
         // Each uncertain tag is counted; the first 20 per file are listed.
-        for line in List.truncate 20 outcome.Uncertain do
+        for line in List.truncate 20 outcome.Tags.Uncertain do
             say $"review: {outcome.File}:{line} a tag here could not be read with certainty (an unclosed or ambiguous {{...}} expression, or over 1 MiB); src/href values in the next 4 KiB were left unrewritten; check them by hand"
-        if outcome.Uncertain.Length > 20 then
-            say $"review: {outcome.File}: {outcome.Uncertain.Length - 20} more tag(s) could not be read with certainty"
-        for line in List.truncate 20 outcome.Possible do
+        if outcome.Tags.Uncertain.Length > 20 then
+            say $"review: {outcome.File}: {outcome.Tags.Uncertain.Length - 20} more tag(s) could not be read with certainty"
+        for line in List.truncate 20 outcome.Tags.Possible do
             say $"review: {outcome.File}:{line} a <name here may be a tag; its src/href value was left unrewritten; check it by hand"
-        if outcome.Possible.Length > 20 then
-            say $"review: {outcome.File}: {outcome.Possible.Length - 20} more possible tag(s) with src/href values left unrewritten"
+        if outcome.Tags.Possible.Length > 20 then
+            say $"review: {outcome.File}: {outcome.Tags.Possible.Length - 20} more possible tag(s) with src/href values left unrewritten"
+        // Every value left unrewritten after an uncertain tag is listed at its own line.
+        for line, tag in outcome.Tags.Suppressed do
+            say $"review: {outcome.File}:{line} a src/href value here holds a Forma name and was left unrewritten (it may belong to the uncertain tag on line {tag}); check it by hand"
     for file in review do
         say $"review: {file} contains namespace tokens this tool does not rewrite (another file kind, or not UTF-8); fix it by hand or --exclude it"
     let lineCount = changed |> List.sumBy (fun o -> o.Changes.Length)
@@ -182,8 +184,8 @@ let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
         | Write -> "rewrote"
         | Check
         | DryRun -> "would rewrite"
-    printfn "namespace migration: %s %d line(s) in %d of %d file(s); %d other file(s) to review; %d ambiguous string(s) to review; %d uncertain tag(s) to review" verb lineCount changed.Length outcomes.Length review.Length ambiguousCount uncertainCount
-    changed, ambiguousCount + uncertainCount
+    printfn "namespace migration: %s %d line(s) in %d of %d file(s); %d other file(s) to review; %d ambiguous string(s) to review; %d uncertain tag(s) to review; %d suppressed value(s) to review" verb lineCount changed.Length outcomes.Length review.Length ambiguousCount uncertainCount suppressedCount
+    changed, ambiguousCount + uncertainCount + suppressedCount
 
 let private run (argv: string[]) =
     match parse { Mode = Write; Excludes = []; IncludeVendored = false; Paths = [] } (List.ofArray argv) with
