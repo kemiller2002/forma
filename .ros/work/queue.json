@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 54,
+  "nextSeq": 55,
   "items": [
     {
       "id": "WI-0001",
@@ -1389,6 +1389,29 @@
       },
       "source": "ci",
       "sourceReference": "https://github.com/kemiller2002/forma/actions/runs/42721981244"
+    },
+    {
+      "id": "WI-0054",
+      "title": "Forma 1.0.2 re-review 4: brace lexer, script tag starts, linear scans",
+      "description": "Fix the four findings of the re-review of PR #184 at 80a6317 (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T02:16:53.009Z",
+      "updatedAt": "2026-11-10T02:41:00.093Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-09-FORMA-1.0.2-REVIEW-04.md"
     }
   ]
 }
