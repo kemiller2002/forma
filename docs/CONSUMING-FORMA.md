@@ -56,20 +56,41 @@ mark) and line endings, and changes only Forma names:
   A plain word prefix that is not an HTML or SVG element (`"logo.ef-x.png"`)
   makes it a file name, left alone; an element-like prefix (`"path.ef-icon.svg"`,
   `"my-widget.ef-x.md"`, `"ef-tabs.ef-active.md"`) keeps it listed for review.
-  In a selector argument, a URL attribute value (`img[src=ef-a.png]`,
-  `a[href='ef-c']`) is a location too.
+  A URL attribute selector value (`img[src=ef-a.png]`, `a[href='ef-c']`,
+  `a[HREF="ef-x"]`) is a location wherever it appears: in a selector argument,
+  in a selector held in a variable, or in CSS (`a[href^="ef-"]`).
 
 Words (`ref-`, `chef-`, `--ref-`, `beef-`) and locations are never touched:
 URLs and host names (`https://ef-cdn.example.org/...`), paths
 (`/assets/ef-logo.svg`), file names (`ef-page.html`), CSS `url(...)` and
 `@import` targets, URL-valued attributes (`src`, `href`, `srcset`, ...) inside
-an HTML, Razor, Vue or JSX tag (including JSX `{...}` and Razor `@...(...)`
-values), Markdown link targets and reference definitions (`[d]: /ef-doc`) in
+an HTML, Razor, Vue or JSX tag, in any letter case (`HREF`, React `srcSet`,
+`formAction`, `xlinkHref`) and as Vue or Angular bindings (`:href`,
+`v-bind:href`, `[href]`), including JSX `{...}` and Razor `@...(...)`
+values, Markdown link targets and reference definitions (`[d]: /ef-doc`) in
 Markdown files, dotfile and dot-directory paths (`"/.ef-rc.json"`,
 `"assets/.ef-cache/x"`), module
 specifiers (`import ... from "..."`, `require("...")`) and scoped packages
 (`@ef-labs/widget`). A script variable named `src`, `data` or `href` is not a
 location: `const src = "ef-button"` is migrated.
+
+How tags are read, and its limits:
+
+- In JS, TS and F# files a `<name` starts a tag only where one can stand: at
+  the start of a line, after an operator, opening bracket, quote, `return`,
+  `>` or `}`, or in JSX text (`<p>See <a href="...">`). After an operand it is
+  a comparison or a type argument (`if (a <b && c) data = "ef-card"` is
+  migrated). In HTML, Razor, Vue, Svelte, Markdown, CSS and JSON every
+  `<name` starts a tag, so prose such as `a <b and data = ef-x` in Markdown
+  reads `data = ef-x` as an attribute and leaves it.
+- `{...}` expressions are lexed as script (strings, template literals,
+  comments, regular expressions and JSX text are skipped). A tag whose `{`
+  never closes, or that is longer than 1 MiB, is listed as
+  `review: FILE:LINE a tag here could not be read to its end` and `--check`
+  exits 3. The lexer is not a full parser: unusual script (a regular
+  expression right after `)`, a TSX generic arrow `<T extends U>(...)`) can
+  still be misread without a review line, so read the `--dry-run` diff of
+  files with complex JSX.
 
 It always skips `node_modules`, `.git`, `bin` and `obj`, and by default also
 `vendor`, `bower_components`, `jspm_packages`, `dist` and `wwwroot/lib`
@@ -373,7 +394,9 @@ quoted value that contains `>` as locations, leaves dotfile paths and Markdown
 reference definitions alone, lists strings that could be a selector or a file
 name (`".ef-icon.svg"` outside `querySelector`) for review instead of guessing, keeps Razor `@Url.Action("...")` values and URL attributes after `&`, `(`, `)` or `;` in a tag intact,
 and its `--check`/`--dry-run` reports match write mode for tags that span
-lines. If you ran 1.0.1's codemod on JSX, Razor or Markdown, review its diff
+lines. It lexes `{...}` expressions as script, lists a tag whose `{` never
+closes for review, no longer reads a `<` after an operand in script as a tag,
+and stays linear on adversarial input. If you ran 1.0.1's codemod on JSX, Razor or Markdown, review its diff
 for those cases. No CSS, class or token changed.
 
 ## 1.0.1

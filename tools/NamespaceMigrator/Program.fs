@@ -130,7 +130,8 @@ type private Outcome =
       Source: Source
       Changes: Change list
       Migrated: string
-      Ambiguous: (int * string) list }
+      Ambiguous: (int * string) list
+      Uncertain: int list }
 
 let private examine (file: string) (source: Source) =
     let kind = kindOf file
@@ -139,7 +140,12 @@ let private examine (file: string) (source: Source) =
       Source = source
       Changes = if migrated = source.Text then [] else changes kind source.Text
       Migrated = migrated
-      Ambiguous = ambiguous source.Text }
+      Ambiguous = ambiguous source.Text
+      Uncertain = uncertainTags kind source.Text }
+
+/// Report lines go through one buffered writer (flushed at exit): a review
+/// list can be long, and `printfn` per line is slow.
+let private say (line: string) = Console.Out.WriteLine line
 
 let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
     let changed = outcomes |> List.filter (fun o -> o.Migrated <> o.Source.Text)
@@ -147,28 +153,33 @@ let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
         match mode with
         | DryRun ->
             for change in outcome.Changes do
-                printfn "%s:%d [%s]" outcome.File change.Line change.Rule
-                printfn "  - %s" (change.Before.Trim())
-                printfn "  + %s" (change.After.Trim())
+                say $"{outcome.File}:{change.Line} [{change.Rule}]"
+                say $"  - {change.Before.Trim()}"
+                say $"  + {change.After.Trim()}"
         | Check
-        | Write -> printfn "%s: %d line(s)" outcome.File outcome.Changes.Length
+        | Write -> say $"{outcome.File}: {outcome.Changes.Length} line(s)"
     let ambiguousCount = outcomes |> List.sumBy (fun o -> o.Ambiguous.Length)
+    let uncertainCount = outcomes |> List.sumBy (fun o -> o.Uncertain.Length)
     for outcome in outcomes do
         for line, value in outcome.Ambiguous do
-            printfn "review: %s:%d \"%s\" is either a class selector or a file name and was left unrewritten; rewrite it by hand if it is a selector" outcome.File line value
+            say $"review: {outcome.File}:{line} \"{value}\" is either a class selector or a file name and was left unrewritten; rewrite it by hand if it is a selector"
+        // Each uncertain tag is counted; the first 20 per file are listed.
+        for line in List.truncate 20 outcome.Uncertain do
+            say $"review: {outcome.File}:{line} a tag here could not be read to its end (an unclosed {{...}} expression, or over 1 MiB); check its src/href values by hand"
+        if outcome.Uncertain.Length > 20 then
+            say $"review: {outcome.File}: {outcome.Uncertain.Length - 20} more tag(s) could not be read to their end"
     for file in review do
-        printfn "review: %s contains namespace tokens this tool does not rewrite (another file kind, or not UTF-8); fix it by hand or --exclude it" file
+        say $"review: {file} contains namespace tokens this tool does not rewrite (another file kind, or not UTF-8); fix it by hand or --exclude it"
     let lineCount = changed |> List.sumBy (fun o -> o.Changes.Length)
     let verb =
         match mode with
         | Write -> "rewrote"
         | Check
         | DryRun -> "would rewrite"
-    printfn "namespace migration: %s %d line(s) in %d of %d file(s); %d other file(s) to review; %d ambiguous string(s) to review" verb lineCount changed.Length outcomes.Length review.Length ambiguousCount
-    changed, ambiguousCount
+    printfn "namespace migration: %s %d line(s) in %d of %d file(s); %d other file(s) to review; %d ambiguous string(s) to review; %d uncertain tag(s) to review" verb lineCount changed.Length outcomes.Length review.Length ambiguousCount uncertainCount
+    changed, ambiguousCount + uncertainCount
 
-[<EntryPoint>]
-let main argv =
+let private run (argv: string[]) =
     match parse { Mode = Write; Excludes = []; IncludeVendored = false; Paths = [] } (List.ofArray argv) with
     | Error message ->
         if message <> "" then eprintfn "error: %s" message
@@ -213,3 +224,9 @@ let main argv =
         with ex ->
             eprintfn "error: %s" ex.Message
             2
+
+[<EntryPoint>]
+let main argv =
+    let out = new StreamWriter(Console.OpenStandardOutput(), UTF8Encoding(false), 65536)
+    Console.SetOut out
+    try run argv finally out.Flush()

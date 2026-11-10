@@ -42,26 +42,39 @@ let private boundary =
     @"(?:(?<![A-Za-z0-9_$\-/@])|(?<=</)|(?<=\\b)|(?<=(?:^|[\s(,=:\[!&|?{};])/))"
 
 /// What kind of text is rewritten: Markdown link targets are locations only in
-/// Markdown.
+/// Markdown; in script (JS and TS with or without JSX, F#) a `<name` starts a
+/// tag only where a tag can stand (see Markup.mayStartTag).
 type Kind =
     | Markdown
     | Other
+    | JsxScript
+    | PlainScript
 
 /// The kind of a file, by extension.
 let kindOf (path: string) =
     match IO.Path.GetExtension(path).ToLowerInvariant() with
     | ".md"
     | ".markdown" -> Markdown
+    | ".js" | ".mjs" | ".cjs" | ".jsx" | ".tsx" -> JsxScript
+    | ".ts" | ".mts" | ".cts" | ".fs" | ".fsi" | ".fsx" -> PlainScript
     | _ -> Other
+
+let private syntaxOf (kind: Kind) =
+    match kind with
+    | JsxScript -> Script true
+    | PlainScript -> Script false
+    | Markdown
+    | Other -> MarkupText
 
 /// File extensions that make a name a file name.
 let private fileExtensions =
     @"(?:html?|css|s[ac]ss|less|[cm]?js|jsx|[cm]?ts|tsx|json|md|svg|png|jpe?g|gif|webp|avif|ico|woff2?|ttf|otf|eot|map|txt|xml|pdf|zip|razor|cshtml|vue|svelte|ya?ml|toml)"
 
 /// A file or host name continues the token: `ef-page.html`, `ef-cdn.example.org`.
+/// A host name is read up to 8 labels, so the look-ahead is bounded.
 let private notLocation =
     @"(?![A-Za-z0-9_\-]*\." + fileExtensions + @"(?![A-Za-z0-9_\-]))"
-    + @"(?![A-Za-z0-9_\-]*\.(?:[a-z0-9\-]+\.)*(?:com|org|net|io|dev|app|co|edu|gov|cloud|example|test|local|localhost)(?![A-Za-z0-9_\-]))"
+    + @"(?![A-Za-z0-9_\-]*\.(?:[a-z0-9\-]+\.){0,8}(?:com|org|net|io|dev|app|co|edu|gov|cloud|example|test|local|localhost)(?![A-Za-z0-9_\-]))"
 
 /// The rule names, reported by --dry-run.
 let ruleNames = [ "custom-property"; "attribute"; "dataset"; "dataset-index"; "name" ]
@@ -81,7 +94,9 @@ let private token =
         // Not a dotfile path after `/` (`"/.ef-rc.json"`). A whole quoted string
         // that could be either a selector or a file name (`".ef-icon.svg"`) is
         // ambiguous: it is masked and reported for review (see `ambiguous`).
-        + @"|(?<classname>(?<=(?<![A-Za-z0-9_$\-/])(?:\.[A-Za-z_][A-Za-z0-9_\-]*)*\.)ef-)"
+        // The look-behind reads at most 8 classes back, so a long `.ef-a.ef-a…`
+        // chain costs linear time; a longer compound falls to the `name` rule.
+        + @"|(?<classname>(?<=(?<![A-Za-z0-9_$\-/])(?:\.[A-Za-z_][A-Za-z0-9_\-]*){0,8}\.)ef-)"
         // `/.ef-` inside a path is a dot-directory or dotfile (`assets/.ef-cache/x`).
         + $"|(?<name>(?<!/\.){boundary}ef-{notLocation})"
     )
@@ -120,24 +135,48 @@ let private markdownReference = regex @"^[ ]{0,3}\[[^\]\n]+\]:[ \t]*(?<target>\S
 // querySelector, querySelectorAll, closest, matches or webkitMatchesSelector
 // it is a selector and is migrated.
 
-let private ambiguousString =
-    regex (
-        @"(?<![A-Za-z0-9_$])(?<q>[""'`])(?<value>(?<prefix>[A-Za-z][A-Za-z0-9_\-]*)?(?:\.[A-Za-z_][A-Za-z0-9_\-]*)*?\.ef-[A-Za-z0-9_\-]*(?:\.[A-Za-z0-9_\-]+)*?\."
-        + fileExtensions
-        + @")\k<q>"
-    )
+/// A whole quoted run of name characters and dots. The run is atomic and its
+/// structure is checked in code (`ambiguousValue`), so an unclosed quote
+/// before a long `.ef-a.ef-a…` chain costs linear time, not backtracking.
+let private quotedDottedRun =
+    regex @"(?<![A-Za-z0-9_$])(?<q>[""'`])(?<value>(?>[A-Za-z0-9_\-.]+))(?=\k<q>)"
+
+let private fileExtension = Regex(@"\A" + fileExtensions + @"\z", RegexOptions.CultureInvariant)
+let private prefixWord = Regex(@"\A[A-Za-z][A-Za-z0-9_\-]*\z", RegexOptions.CultureInvariant)
+let private classWord = Regex(@"\A[A-Za-z_][A-Za-z0-9_\-]*\z", RegexOptions.CultureInvariant)
+
+/// Whether a dotted run reads both as a selector and as a file name: an
+/// optional element-or-word prefix, class names, a `.ef-` class that is not
+/// last, and a file extension last (`.ef-icon.svg`, `div.ef-card.md`).
+/// Returns the prefix ("" when none).
+let private ambiguousValue (value: string) =
+    let parts = value.Split('.')
+    let n = parts.Length
+    if n < 3 || not (parts[0] = "" || prefixWord.IsMatch parts[0]) then None
+    elif parts |> Array.skip 1 |> Array.exists (fun part -> part = "") then None
+    elif not (fileExtension.IsMatch parts[n - 1]) then None
+    else
+        // The first `ef-` part before the extension, with class names before it.
+        let rec find i =
+            if i > n - 2 then None
+            elif parts[i].StartsWith "ef-" then Some parts[0]
+            elif classWord.IsMatch parts[i] then find (i + 1)
+            else None
+        find 1
 
 let private selectorApi = regex @"\b(?:querySelector(?:All)?|closest|matches|webkitMatchesSelector)\s*\(\s*$"
 
 /// A selector API argument: unambiguously a selector, so every Forma class in
 /// it is migrated, whatever suffix follows (`"div.ef-card.md"`).
 let private selectorArgument =
-    regex @"\b(?:querySelector(?:All)?|closest|matches|webkitMatchesSelector)\s*\(\s*(?<q>[""'`])(?<value>(?:(?!\k<q>)[^\n])*)\k<q>"
+    regex @"\b(?:querySelector(?:All)?|closest|matches|webkitMatchesSelector)\s*\(\s*(?<q>[""'`])(?<value>(?:\\.|(?!\k<q>)[^\n\\])*)\k<q>"
 let private selectorToken = regex @"(?<customproperty>(?<![A-Za-z0-9_$\-])--ef-)|(?<attribute>(?<![A-Za-z0-9_$\-])data-ef-)|(?<name>(?<![A-Za-z0-9_$\-])ef-)"
 
-/// URL-valued attribute selectors keep their value: `img[src=ef-a.png]`.
+/// URL-valued attribute selectors keep their value: `img[src=ef-a.png]`, in
+/// any letter case (`a[HREF="ef-x"]`), in a selector argument or anywhere else
+/// (`const sel = 'a[href="ef-x"]'`, CSS `a[href^="ef-"]`).
 let private selectorLocation =
-    regex @"\[\s*(?:src|href|srcset|action|formaction|poster|data|cite|background|xlink:href|manifest|ping)\s*[~|^$*]?=\s*(?<value>[^\]]*)\]"
+    Regex(@"\[\s*(?:src|href|srcset|action|formaction|poster|data|cite|background|xlink:href|manifest|ping)\s*[~|^$*]?=\s*(?<value>[^\]\n]*)\]", RegexOptions.CultureInvariant ||| RegexOptions.IgnoreCase)
 
 let private selectorProtected (value: string) =
     [ for m in selectorLocation.Matches value -> m.Groups["value"].Index, m.Groups["value"].Index + m.Groups["value"].Length ]
@@ -180,14 +219,18 @@ let private htmlElements =
           "summary"; "sup"; "svg"; "table"; "tbody"; "td"; "template"; "textarea"; "tfoot"; "th"; "thead"; "time"; "tr"
           "u"; "ul"; "video"; "link"; "script"; "style"; "slot"; "area"; "br"; "head"; "title"; "kbd"; "var"; "del"
           "ins"; "colgroup"; "map"; "noscript"; "ruby"; "samp"; "search"; "wbr"; "cite"; "data"; "dfn"; "bdi"; "bdo"; "embed"
-          "track"; "base"; "meta" ]
+          "track"; "base"; "meta"; "datalist"; "hgroup"; "rp"; "rt" ]
 
 /// SVG element names: "path.ef-icon.svg" may be a selector for an SVG element.
 let private svgElements =
     set
         [ "svg"; "g"; "path"; "use"; "symbol"; "circle"; "rect"; "line"; "polyline"; "polygon"; "ellipse"; "text"; "tspan"
           "defs"; "clippath"; "mask"; "pattern"; "image"; "marker"; "lineargradient"; "radialgradient"; "stop"; "filter"
-          "foreignobject"; "textpath"; "desc"; "title"; "view"; "switch" ]
+          "foreignobject"; "textpath"; "desc"; "title"; "view"; "switch"; "animate"; "animatemotion"; "animatetransform"
+          "set"; "mpath"; "metadata"; "feblend"; "fecolormatrix"; "fecomponenttransfer"; "fecomposite"
+          "feconvolvematrix"; "fediffuselighting"; "fedisplacementmap"; "fedistantlight"; "fedropshadow"; "feflood"
+          "fefunca"; "fefuncb"; "fefuncg"; "fefuncr"; "fegaussianblur"; "feimage"; "femerge"; "femergenode"
+          "femorphology"; "feoffset"; "fepointlight"; "fespecularlighting"; "fespotlight"; "fetile"; "feturbulence" ]
 
 /// A prefix that may name an element: HTML or SVG, a custom element (it has a
 /// `-`, such as `my-widget`) or a Forma element (`ef-tabs`).
@@ -199,12 +242,27 @@ let private mayBeElement (prefix: string) =
 /// selector API: (index, length, value, ambiguous). A string whose prefix is
 /// not an HTML element name is a file name: masked, not reported.
 let private ambiguousStrings (text: string) =
-    [ for m in ambiguousString.Matches text do
-          let before = text.Substring(max 0 (m.Index - 64), min 64 m.Index)
-          if not (selectorApi.IsMatch before) then
-              let prefix = m.Groups["prefix"]
-              let isFileName = prefix.Success && not (mayBeElement prefix.Value)
-              yield m.Index, m.Length, m.Groups["value"].Value, not isFileName ]
+    [ for m in quotedDottedRun.Matches text do
+          let value = m.Groups["value"].Value
+          match ambiguousValue value with
+          | Some prefix ->
+              let before = text.Substring(max 0 (m.Index - 64), min 64 m.Index)
+              if not (selectorApi.IsMatch before) then
+                  let isFileName = prefix <> "" && not (mayBeElement prefix)
+                  yield m.Index, value.Length + 2, value, not isFileName
+          | None -> () ]
+
+/// The markup scan of the last text, reused: a file's rewrite, report and
+/// review list all scan the same text.
+let mutable private lastScan : (Kind * string * ((int * int) list * int list)) option = None
+
+let private scanMarkup (kind: Kind) (text: string) =
+    match lastScan with
+    | Some(k, t, result) when k = kind && Object.ReferenceEquals(t, text) -> result
+    | _ ->
+        let result = markupScan (syntaxOf kind) text
+        lastScan <- Some(kind, text, result)
+        result
 
 let private maskedSpans (kind: Kind) (text: string) =
     let links =
@@ -212,9 +270,10 @@ let private maskedSpans (kind: Kind) (text: string) =
         | Markdown ->
             [ for pattern in [ markdownLink; markdownReference ] do
                   for m in pattern.Matches text -> m.Groups["target"].Index, m.Groups["target"].Index + m.Groups["target"].Length ]
-        | Other -> []
+        | Other | JsxScript | PlainScript -> []
     links
-    @ markupLocations text
+    @ fst (scanMarkup kind text)
+    @ [ for m in selectorLocation.Matches text -> m.Groups["value"].Index, m.Groups["value"].Index + m.Groups["value"].Length ]
     @ [ for index, length, _, _ in ambiguousStrings text -> index, index + length ]
     // Selector API arguments are rewritten separately (rewriteSelectorArguments).
     @ [ for m in selectorArgument.Matches text -> m.Groups["value"].Index, m.Groups["value"].Index + m.Groups["value"].Length ]
@@ -351,6 +410,13 @@ let ambiguous (text: string) =
     ambiguousStrings text
     |> List.filter (fun (_, _, _, isAmbiguous) -> isAmbiguous)
     |> List.map (fun (index, _, value, _) -> lineOf index + 1, value)
+
+/// Tags whose `{...}` expression is never closed, or that the text ends
+/// inside: an `href`/`src` after that point is not protected, so the tag is
+/// reported for review (1-based lines).
+let uncertainTags (kind: Kind) (text: string) =
+    let lineOf = lineIndex (lines text)
+    snd (scanMarkup kind text) |> List.map (fun index -> lineOf index + 1)
 
 /// Whether a text still holds a namespace token (for files of a kind the
 /// migrator does not rewrite: they are reported, never silently passed).

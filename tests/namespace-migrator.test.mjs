@@ -384,7 +384,10 @@ test("performance: unbalanced braces after a stray < stay bounded", () => {
   const started = process.hrtime.bigint();
   const result = run("--check", dir);
   const seconds = Number(process.hrtime.bigint() - started) / 1e9;
-  assert.equal(result.status, 0, result.stdout + result.stderr);
+  // 1.0.2 re-review 4: a tag whose `{` is never closed is listed for review.
+  assert.equal(result.status, 3, result.stderr);
+  assert.match(result.stdout, /unbalanced\.mjs:20001 a tag here could not be read to its end/);
+  assert.match(result.stdout, /; 2000 uncertain tag\(s\) to review/);
   assert.ok(seconds < 2, `took ${seconds.toFixed(2)} s; expected under 2 s`);
 });
 
@@ -449,4 +452,5 @@ test("the re-review 3 rewrites are idempotent", () => {
     assert.equal(migrateText(once, extension), once, text);
   }
 });
+
 
