@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 55,
+  "nextSeq": 56,
   "items": [
     {
       "id": "WI-0001",
@@ -1412,6 +1412,29 @@
       },
       "source": "inbox",
       "sourceReference": ".praxis/inbox/documents/2026-11-09-FORMA-1.0.2-REVIEW-04.md"
+    },
+    {
+      "id": "WI-0055",
+      "title": "Forma 1.0.2 re-review 5: lexer-state tag starts, review unsure tags, bounded scans",
+      "description": "Fix the three findings of the re-review of PR #184 at 8806e97 (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T04:02:21.746Z",
+      "updatedAt": "2026-11-10T04:33:53.170Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-05.md"
     }
   ]
 }
