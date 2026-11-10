@@ -1,0 +1,34 @@
+label: for (;;) { break label; }
+const css = styled.div`
+  &:hover { color: red; }
+`;
+const g = <T,>(x: T) => x;
+const C108_0 = ok ? <a
+  onClick={() => (x as Array<string>).map(f)}
+  {...rest}
+  href="ef-T108_0"
+  className="ef-C108_0"
+>x</a> : null;
+const g2 = new Map<string, { a: number }>();
+declare module 'x' { }
+@Component({ selector: 'x', styles: ['a { color: red }'] })
+class Cmp {}
+el.innerHTML = `<a data-x="${y}" href="ef-T108_1" class="ef-C108_1">x</a>`;
+// don't { }
+if (a <b && c) { go(); }
+/* it's } { */
+export const A108_2 = () => <a onClick={`${a}}`} href="ef-T108_2" className="ef-C108_2" />;
+const nn = x! / 2;
+const g2 = new Map<string, { a: number }>();
+const nn = x! / 2;
+@decorate()
+class E108_3 { render() { return <a onClick={(e: Event<{ a: 1 }>) => go(e)} href="ef-T108_3" className="ef-C108_3">x</a>; } }
+const k = a?.b / c?.d;
+const sat = { a: '}' } satisfies Rec;
+const nn = x! / 2;
+const S108_4 = `<a data-x="${y}" href="ef-T108_4" class="ef-C108_4">x</a>`;
+const o = { a: 1 } as const;
+type C<T> = T extends string ? { a: '}' } : never;
+const m = s.replace(/'/g, "");
+@decorate()
+class E108_5 { render() { return <Foo.Bar render={() => n! / 2} src={"ef-T108_5"} className="ef-C108_5"/>; } }

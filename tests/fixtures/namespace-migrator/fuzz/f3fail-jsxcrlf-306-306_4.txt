@@ -1,0 +1,49 @@
+const h = html`<p>${x}</p>`;
+const nn = x! / 2;
+@Component({ selector: 'x', styles: ['a { color: red }'] })
+class Cmp {}
+function B306_0() {
+  return (
+    <div>
+      <p>Read: see (the) <a onClick={(e: Event<{ a: 1 }>) => go(e)} href="ef-T306_0" className="ef-C306_0" /></p>
+    </div>
+  );
+}
+label: for (;;) { break label; }
+declare module 'x' { }
+const css = styled.div`
+  &:hover { color: red; }
+`;
+function B306_1() {
+  return (
+    <div>
+      <p>Read: see (the) <svg:a onClick={go} xlink:href="ef-T306_1" className="ef-C306_1"/></p>
+    </div>
+  );
+}
+const s = "it's {";
+x = y
+/re/g.test(z);
+const nn = x! / 2;
+export const A306_2 = () => <svg:a onClick={() => /[{]/.test(s)} xlink:href="ef-T306_2" className="ef-C306_2"/>;
+type C<T> = T extends string ? { a: '}' } : never;
+// don't { }
+x = y
+/re/g.test(z);
+function B306_3() {
+  return (
+    <div>
+      <p>Read: see (the) <Foo.Bar render={go} src={"ef-T306_3"} className="ef-C306_3"/></p>
+    </div>
+  );
+}
+const df = <T = string,>(x: T) => x;
+const d = (a + b) / 2;
+const g1 = f<string>(x);
+@decorate()
+class E306_4 { render() { return <a onClick={() => n! / 2} href="ef-T306_4" className="ef-C306_4" />; } }
+const nn = x! / 2;
+const d = (a + b) / 2;
+const k = a?.b / c?.d;
+@decorate()
+class E306_5 { render() { return <a onClick={`${a}}`} href="ef-T306_5" className="ef-C306_5">x</a>; } }

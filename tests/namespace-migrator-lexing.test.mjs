@@ -53,9 +53,13 @@ const checkOne = (text, extension) => {
 let startup;
 const timed = (text, extension) => {
   if (startup === undefined) {
-    const started = process.hrtime.bigint();
-    checkOne("", extension);
-    startup = Number(process.hrtime.bigint() - started) / 1e9;
+    // The median of three runs, so one cold start does not skew it.
+    const runs = [0, 1, 2].map(() => {
+      const started = process.hrtime.bigint();
+      checkOne("", extension);
+      return Number(process.hrtime.bigint() - started) / 1e9;
+    }).sort((a, b) => a - b);
+    startup = runs[1];
   }
   const started = process.hrtime.bigint();
   const result = checkOne(text, extension);
@@ -172,16 +176,19 @@ test("SVG filter and animation elements and more HTML elements keep a prefixed s
 });
 
 test("performance: adversarial inputs from the re-review stay under 2 s each", () => {
-  for (const [label, extension, text, status] of [
+  // The 200,000-line case with a Forma name per line lists 200,000 values
+  // (one review line each, by design since re-review 7): it gets 5 s.
+  for (const [label, extension, text, status, limit = 2] of [
     ["unclosed quote before .ef-a x20,000", "js", '"' + ".ef-a".repeat(20000) + "\n", 3],
     ["unclosed Razor @( x100,000 lines", "cshtml", '<a href="@(x\n'.repeat(100000), 0],
-    ["unclosed string then <b { x50,000 lines", "tsx", '{"\n' + "<b {\n".repeat(50000), 3],
-    ["unclosed string then <b { x200,000 lines", "tsx", '{"\n' + "<b {\n".repeat(200000), 3],
+    ["unclosed string then <b { x50,000 lines", "tsx", '{"\n' + '<b { href="ef-u"\n'.repeat(50000), 3],
+    ["unclosed string then <b { x200,000 lines", "tsx", '{"\n' + '<b { href="ef-u"\n'.repeat(200000), 3, 5],
+    ["unclosed string then <b { x200,000 lines, no Forma names", "tsx", '{"\n' + "<b {\n".repeat(200000), 0],
     ["stray <b in script x200,000 lines", "js", "if (a <b && c) { x.src = s; }\n".repeat(200000), 0]
   ]) {
     const { result, seconds } = timed(text, extension);
     assert.equal(result.status, status, `${label}: ${result.stderr}`);
-    assert.ok(seconds < 2, `${label}: took ${seconds.toFixed(2)} s; expected under 2 s`);
+    assert.ok(seconds < limit, `${label}: took ${seconds.toFixed(2)} s; expected under ${limit} s`);
   }
 });
 
@@ -276,7 +283,8 @@ test("braces the lexer cannot be sure of are reviewed, and their href is never r
 test("a <name in script code with a URL attribute after it is reviewed and left unrewritten", () => {
   for (const [text, extension, value] of [
     ['const r = n <a href="ef-p1" data-x="1">;', "js", '"ef-p1"'],
-    ['const r = n <a title="t" src="ef-p2.png">;', "ts", '"ef-p2.png"'],
+    // (A file name such as "ef-p2.png" is a location, never rewritten, so it is not at stake.)
+    ['const r = n <a title="t" src="ef-p2">;', "ts", '"ef-p2"'],
     ['let r = n <a href="ef-p3" />', "fs", '"ef-p3"']
   ]) {
     assert.ok(migrateText(text, extension).includes(value), text);

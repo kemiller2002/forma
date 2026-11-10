@@ -1,0 +1,47 @@
+const n = s.split(/[/]/);
+const big = {
+ a: 1,
+ b: '}',
+};
+@Component({ selector: 'x', styles: ['a { color: red }'] })
+class Cmp {}
+el.innerHTML = `<a data-x="${y}" href="ef-T125_0" class="ef-C125_0">x</a>`;
+const asy = async <T,>(x: T) => x;
+const v = i++ / 2;
+const sat = { a: '}' } satisfies Rec;
+@decorate()
+class E125_1 { render() { return <a
+  onClick={() => /[{]/.test(s)}
+  {...rest}
+  href="ef-T125_1"
+  className="ef-C125_1"
+>x</a>; } }
+x = y
+/re/g.test(z);
+const k = a?.b / c?.d;
+const t = 'a "}" b';
+const C125_2 = ok ? <a
+  onClick={() => /[{]/.test(s)}
+  {...rest}
+  href="ef-T125_2"
+  className="ef-C125_2"
+>x</a> : null;
+enum E { A = '}', B = "{" }
+const w = `${`${'}'}`}`;
+const u = `x ${y} {`;
+function B125_3() {
+  return (
+    <div>
+      <p>Read: see (the) <a onClick={() => go()} href="ef-T125_3" className="ef-C125_3">x</a></p>
+    </div>
+  );
+}
+const v = i++ / 2;
+const k = a?.b / c?.d;
+const d = (a + b) / 2;
+el.innerHTML = html`<a @click=${() => go("}")} href="ef-T125_4" class="ef-C125_4">`;
+const o = { a: 1 } as const;
+const g2 = new Map<string, { a: number }>();
+const w = `${`${'}'}`}`;
+@decorate()
+class E125_5 { render() { return <Foo.Bar render={() => n! / 2} src={"ef-T125_5"} className="ef-C125_5"/>; } }

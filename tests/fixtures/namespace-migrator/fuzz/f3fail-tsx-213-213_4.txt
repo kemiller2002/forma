@@ -1,0 +1,33 @@
+type C<T> = T extends string ? { a: '}' } : never;
+const g2 = new Map<string, { a: number }>();
+x = y
+/re/g.test(z);
+el.innerHTML = html`<a @click=${() => go("}")} href="ef-T213_0" class="ef-C213_0">`;
+x = y
+/re/g.test(z);
+const asy = async <T,>(x: T) => x;
+// don't { }
+export const A213_1 = () => <a onClick={go} href="ef-T213_1" className="ef-C213_1" />;
+const w = `${`${'}'}`}`;
+x = y
+/re/g.test(z);
+const css = styled.div`
+  &:hover { color: red; }
+`;
+export const A213_2 = () => <a onClick={`${a}}`} href="ef-T213_2" className="ef-C213_2" />;
+const s = "it's {";
+const n = s.split(/[/]/);
+const w = `${`${'}'}`}`;
+@decorate()
+class E213_3 { render() { return <a onClick={(e: Event<{ a: 1 }>) => go(e)} href="ef-T213_3" className="ef-C213_3">x</a>; } }
+const css = styled.div`
+  &:hover { color: red; }
+`;
+export abstract class B<T extends { a: string }> { }
+const f = <T extends unknown>(x: T) => x;
+@decorate()
+class E213_4 { render() { return <Foo.Bar render={() => n! / 2} src={"ef-T213_4"} className="ef-C213_4"/>; } }
+const v = i++ / 2;
+const ent = <p>&lt;a&gt; &#123; {'}'}</p>;
+const o = { a: 1 } as const;
+el.innerHTML = html`<a @click=${() => go("}")} href="ef-T213_5" class="ef-C213_5">`;

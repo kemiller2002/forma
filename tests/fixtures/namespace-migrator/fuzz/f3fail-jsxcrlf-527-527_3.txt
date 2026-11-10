@@ -1,0 +1,52 @@
+const s = "it's {";
+const w = `${`${'}'}`}`;
+@Component({ selector: 'x', styles: ['a { color: red }'] })
+class Cmp {}
+const D527_0 = [<svg:a onClick={go} xlink:href="ef-T527_0" className="ef-C527_0"/>];
+if (a <b && c) { go(); }
+const kf = <K extends keyof X>(k: K) => k;
+const k = a?.b / c?.d;
+el.innerHTML = html`<a @click=${() => go("}")} href="ef-T527_1" class="ef-C527_1">`;
+x = y
+/re/g.test(z);
+const n = s.split(/[/]/);
+const h = html`<p>${x}</p>`;
+function B527_2() {
+  return (
+    <div>
+      <p>Read: see (the) <a
+  onClick={() => go()}
+  {...rest}
+  href="ef-T527_2"
+  className="ef-C527_2"
+>x</a></p>
+    </div>
+  );
+}
+const k = a?.b / c?.d;
+// don't { }
+enum E { A = '}', B = "{" }
+@decorate()
+class E527_3 { render() { return <Foo.Bar render={() => n! / 2} src={"ef-T527_3"} className="ef-C527_3"/>; } }
+const ent = <p>&lt;a&gt; &#123; {'}'}</p>;
+const s = "it's {";
+const v = i++ / 2;
+const C527_4 = ok ? <a onClick={() => setW((a + b) / 2)} href="ef-T527_4" className="ef-C527_4">x</a> : null;
+const asy = async <T,>(x: T) => x;
+const g = <T,>(x: T) => x;
+const big = {
+ a: 1,
+ b: '}',
+};
+function B527_5() {
+  return (
+    <div>
+      <p>Read: see (the) <a
+  onClick={() => { /* don't */ go(); }}
+  {...rest}
+  href="ef-T527_5"
+  className="ef-C527_5"
+>x</a></p>
+    </div>
+  );
+}

@@ -262,7 +262,8 @@ let private scanMarkup (kind: Kind) (text: string) =
     match lastScan with
     | Some(k, t, result) when k = kind && Object.ReferenceEquals(t, text) -> result
     | _ ->
-        let result = markupScan (syntaxOf kind) text
+        let tokenStarts = lazy [| for m in token.Matches text -> m.Index |]
+        let result = markupScan (syntaxOf kind) tokenStarts text
         lastScan <- Some(kind, text, result)
         result
 
@@ -432,8 +433,11 @@ let tagReview (kind: Kind) (text: string) =
       Possible = scan.PossibleTags |> List.map (fun index -> lineOf index + 1)
       Suppressed =
         scan.Suppressed
+        |> List.distinctBy (fun (start, _, _) -> start)
         |> List.filter (fun (start, finish, _) -> token.IsMatch(text.Substring(start, finish - start)))
-        |> List.map (fun (start, _, tag) -> lineOf start + 1, lineOf tag + 1) }
+        |> List.map (fun (start, _, tag) -> lineOf start + 1, lineOf tag + 1)
+        // A value on its tag's own line is covered by that tag's line.
+        |> List.filter (fun (line, tag) -> line <> tag) }
 
 /// Whether a text still holds a namespace token (for files of a kind the
 /// migrator does not rewrite: they are reported, never silently passed).

@@ -121,8 +121,8 @@
     "test:machine": "playwright test tests/browser/machine-operability.spec.mjs",
     "ui:conformance": "npm run site:build && npm run catalog:check && npm run test:package && playwright test --config=playwright.conformance.config.mjs",
     "icons:check": "node --test tests/icons.test.mjs",
-    "test:namespace": "node --test tests/namespace-migrator.test.mjs tests/namespace-migrator-lexing.test.mjs tests/namespace-guard.test.mjs",
-    "namespace:check": "dotnet run --project tools/NamespaceMigrator/NamespaceMigrator.fsproj -- --check --exclude tests/fixtures/namespace-migrator --exclude tests/namespace-migrator.test.mjs --exclude tests/namespace-migrator-lexing.test.mjs --exclude tests/namespace-guard.test.mjs --exclude tests/fixtures/token-validation/app-invalid.css --exclude tests/token-validator.test.mjs --exclude tools/NamespaceMigrator --exclude tools/namespace-guard.mjs --exclude CHANGELOG.md --exclude docs/CONSUMING-FORMA.md src patterns catalog site contracts schemas figma tokens packages/workflow/src packages/conformance/src brands bundles"
+    "test:namespace": "node --test tests/namespace-migrator.test.mjs tests/namespace-migrator-lexing.test.mjs tests/namespace-migrator-review.test.mjs tests/namespace-guard.test.mjs",
+    "namespace:check": "dotnet run --project tools/NamespaceMigrator/NamespaceMigrator.fsproj -- --check --exclude tests/fixtures/namespace-migrator --exclude tests/namespace-migrator.test.mjs --exclude tests/namespace-migrator-lexing.test.mjs --exclude tests/namespace-migrator-review.test.mjs --exclude tests/namespace-guard.test.mjs --exclude tests/fixtures/token-validation/app-invalid.css --exclude tests/token-validator.test.mjs --exclude tools/NamespaceMigrator --exclude tools/namespace-guard.mjs --exclude CHANGELOG.md --exclude docs/CONSUMING-FORMA.md src patterns catalog site contracts schemas figma tokens packages/workflow/src packages/conformance/src brands bundles"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

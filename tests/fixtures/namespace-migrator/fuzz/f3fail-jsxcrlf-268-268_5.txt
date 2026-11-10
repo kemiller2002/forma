@@ -1,0 +1,54 @@
+const v = i++ / 2;
+const css = styled.div`
+  &:hover { color: red; }
+`;
+const s = "it's {";
+const D268_0 = [<Foo.Bar render={() => (x as Array<string>).map(f)} src={"ef-T268_0"} className="ef-C268_0"/>];
+const n = s.split(/[/]/);
+const v = i++ / 2;
+const o = { a: 1 } as const;
+const D268_1 = [<a
+  onClick={go}
+  {...rest}
+  href="ef-T268_1"
+  className="ef-C268_1"
+>x</a>];
+const df = <T = string,>(x: T) => x;
+const s = "it's {";
+const big = {
+ a: 1,
+ b: '}',
+};
+function B268_2() {
+  return (
+    <div>
+      <p>Read: see (the) <a
+  onClick={() => f("}")}
+  {...rest}
+  href="ef-T268_2"
+  className="ef-C268_2"
+>x</a></p>
+    </div>
+  );
+}
+x = y
+/re/g.test(z);
+@Component({ selector: 'x', styles: ['a { color: red }'] })
+class Cmp {}
+const df = <T = string,>(x: T) => x;
+function B268_3() {
+  return (
+    <div>
+      <p>Read: see (the) <a onClick={`${a}}`} href="ef-T268_3" className="ef-C268_3">x</a></p>
+    </div>
+  );
+}
+const kf = <K extends keyof X>(k: K) => k;
+const h = html`<p>${x}</p>`;
+const f = <T extends unknown>(x: T) => x;
+const S268_4 = '<a onclick="go()" href="ef-T268_4" class="ef-C268_4">x</a>';
+const asy = async <T,>(x: T) => x;
+const g1 = f<string>(x);
+const d = (a + b) / 2;
+@decorate()
+class E268_5 { render() { return <Foo.Bar render={() => n! / 2} src={"ef-T268_5"} className="ef-C268_5"/>; } }

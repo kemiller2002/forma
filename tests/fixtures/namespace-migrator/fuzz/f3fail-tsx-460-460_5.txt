@@ -1,0 +1,63 @@
+enum E { A = '}', B = "{" }
+function q() { return /{/.test(z); }
+const v = i++ / 2;
+function B460_0() {
+  return (
+    <div>
+      <p>Read: see (the) <Foo.Bar render={() => (x as Array<string>).map(f)} src={"ef-T460_0"} className="ef-C460_0"/></p>
+    </div>
+  );
+}
+const g = <T,>(x: T) => x;
+label: for (;;) { break label; }
+const asy = async <T,>(x: T) => x;
+function B460_1() {
+  return (
+    <div>
+      <p>Read: see (the) <a
+  onClick={() => { /* don't */ go(); }}
+  {...rest}
+  href="ef-T460_1"
+  className="ef-C460_1"
+>x</a></p>
+    </div>
+  );
+}
+x = y
+/re/g.test(z);
+const big = {
+ a: 1,
+ b: '}',
+};
+const o = { a: 1 } as const;
+el.innerHTML = html`<a @click=${() => go("}")} href="ef-T460_2" class="ef-C460_2">`;
+const ent = <p>&lt;a&gt; &#123; {'}'}</p>;
+const big = {
+ a: 1,
+ b: '}',
+};
+enum E { A = '}', B = "{" }
+function B460_3() {
+  return (
+    <div>
+      <p>Read: see (the) <a
+  onClick={() => { /* don't */ go(); }}
+  {...rest}
+  href="ef-T460_3"
+  className="ef-C460_3"
+>x</a></p>
+    </div>
+  );
+}
+if (a <b && c) { go(); }
+const big = {
+ a: 1,
+ b: '}',
+};
+if (a <b && c) { go(); }
+const D460_4 = [<a onClick={() => setW((a + b) / 2)} href="ef-T460_4" className="ef-C460_4">x</a>];
+const w = `${`${'}'}`}`;
+const g2 = new Map<string, { a: number }>();
+// don't { }
+@decorate()
+class E460_5 { render() { return <Foo.Bar render={() => n! / 2} src={"ef-T460_5"} className="ef-C460_5"/>; } }

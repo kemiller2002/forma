@@ -164,18 +164,14 @@ let private report (mode: Mode) (outcomes: Outcome list) (review: string list) =
     for outcome in outcomes do
         for line, value in outcome.Ambiguous do
             say $"review: {outcome.File}:{line} \"{value}\" is either a class selector or a file name and was left unrewritten; rewrite it by hand if it is a selector"
-        // Each uncertain tag is counted; the first 20 per file are listed.
-        for line in List.truncate 20 outcome.Tags.Uncertain do
-            say $"review: {outcome.File}:{line} a tag here could not be read with certainty (an unclosed or ambiguous {{...}} expression, or over 1 MiB); src/href values in the next 4 KiB were left unrewritten; check them by hand"
-        if outcome.Tags.Uncertain.Length > 20 then
-            say $"review: {outcome.File}: {outcome.Tags.Uncertain.Length - 20} more tag(s) could not be read with certainty"
-        for line in List.truncate 20 outcome.Tags.Possible do
+        // Every uncertain or possible tag is listed: each one may hide a value.
+        for line in outcome.Tags.Uncertain do
+            say $"review: {outcome.File}:{line} a tag here could not be read with certainty (an unclosed or ambiguous {{...}} expression or quote, or over 1 MiB); src/href values after it that read as its attributes were left unrewritten and are listed; check them by hand"
+        for line in outcome.Tags.Possible do
             say $"review: {outcome.File}:{line} a <name here may be a tag; its src/href value was left unrewritten; check it by hand"
-        if outcome.Tags.Possible.Length > 20 then
-            say $"review: {outcome.File}: {outcome.Tags.Possible.Length - 20} more possible tag(s) with src/href values left unrewritten"
         // Every value left unrewritten after an uncertain tag is listed at its own line.
         for line, tag in outcome.Tags.Suppressed do
-            say $"review: {outcome.File}:{line} a src/href value here holds a Forma name and was left unrewritten (it may belong to the uncertain tag on line {tag}); check it by hand"
+            say $"review: {outcome.File}:{line} a src/href value here holds a Forma name and was left unrewritten (it may belong to the uncertain or possible tag on line {tag}); check it by hand"
     for file in review do
         say $"review: {file} contains namespace tokens this tool does not rewrite (another file kind, or not UTF-8); fix it by hand or --exclude it"
     let lineCount = changed |> List.sumBy (fun o -> o.Changes.Length)

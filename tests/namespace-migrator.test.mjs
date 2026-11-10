@@ -380,14 +380,18 @@ test("a word-prefixed name with a file extension is a file name, not ambiguous",
 
 test("performance: unbalanced braces after a stray < stay bounded", () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-nsm-perf2-"));
-  fs.writeFileSync(path.join(dir, "unbalanced.mjs"), "if (a <b && c) {\n".repeat(20000) + "<b x={\n".repeat(2000));
+  fs.writeFileSync(path.join(dir, "unbalanced.mjs"), "if (a <b && c) {\n".repeat(20000) + '<b x={ href="ef-u"\n'.repeat(2000));
+  // (Since re-review 7 a tag is reviewed only when a Forma name is at stake, so each line holds one.)
   const started = process.hrtime.bigint();
   const result = run("--check", dir);
   const seconds = Number(process.hrtime.bigint() - started) / 1e9;
   // 1.0.2 re-review 4: a tag whose `{` is never closed is listed for review.
   assert.equal(result.status, 3, result.stderr);
   assert.match(result.stdout, /unbalanced\.mjs:20001 a tag here could not be read with certainty/);
-  assert.match(result.stdout, /; 2000 uncertain tag\(s\) to review/);
+  // Every one of the 2,000 lines is pointed at by a review line (re-review 7).
+  const listed = new Set([...result.stdout.matchAll(/unbalanced\.mjs:(\d+) /g)].map((m) => +m[1]));
+  for (let line = 20001; line <= 22000; line++) assert.ok(listed.has(line), `line ${line} not listed`);
+  assert.match(result.stdout, /would rewrite 0 line\(s\)/);
   assert.ok(seconds < 2, `took ${seconds.toFixed(2)} s; expected under 2 s`);
 });
 

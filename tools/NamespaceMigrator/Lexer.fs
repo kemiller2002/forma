@@ -106,12 +106,31 @@ let jsxName (text: string) (pos: int) =
 /// Whether a JSX-looking `<T` whose name ends at `after` opens TSX type
 /// parameters instead (`<T extends U>(…)`, `<T = string>(…)`): JSX attributes
 /// never start with `extends`, `=` or `,`.
-let private isTypeParameters (text: string) (after: int) =
-    let mutable j = after
-    while j < text.Length && (text[j] = ' ' || text[j] = '\t') do j <- j + 1
-    j < text.Length
-    && (text[j] = '=' || text[j] = ','
-        || (String.CompareOrdinal(text, j, "extends", 0, 7) = 0 && j + 7 < text.Length && not (isIdentifier text[j + 7])))
+let private isTypeParameters (text: string) (start: int) (after: int) =
+    let skipSpaces j =
+        let mutable j = j
+        while j < text.Length && (text[j] = ' ' || text[j] = '\t') do j <- j + 1
+        j
+    let j = skipSpaces after
+    let isWord (word: string) (j: int) =
+        String.CompareOrdinal(text, j, word, 0, word.Length) = 0
+        && j + word.Length < text.Length && not (isIdentifier text[j + word.Length])
+    // `<const T,>` / `<const T extends …>`: a const type parameter.
+    if after - start = 5 && String.CompareOrdinal(text, start, "const", 0, 5) = 0 then true
+    elif j >= text.Length then false
+    elif text[j] = ',' then true
+    // `<T = string>` (a default) but not `<input = …` followed by attributes:
+    // a default is a type, then `>` or `,`.
+    elif text[j] = '=' then
+        let mutable k = skipSpaces (j + 1)
+        while k < text.Length && (isIdentifier text[k] || text[k] = '.' || text[k] = '[' || text[k] = ']') do k <- k + 1
+        k <- skipSpaces k
+        k < text.Length && (text[k] = '>' || text[k] = ',')
+    // `<T extends U>` but not a JSX attribute named `extends` (`extends="x"`).
+    elif isWord "extends" j then
+        let k = skipSpaces (j + 7)
+        k < text.Length && text[k] <> '='
+    else false
 
 /// Where every `{...}` group ends, from one pass over the text. Inside braces
 /// (and throughout a script file) the text is lexed as script: strings,
@@ -187,6 +206,9 @@ let lex (syntax: Syntax) (text: string) =
                     | Ok after ->
                         // A regular expression may match markup: its `<` count too.
                         markRange pos after
+                        // Read as a regular expression; one holding a brace or
+                        // quote could be a misread division (`w! / 2} href="…" /`).
+                        if text.IndexOfAny([| '{'; '}'; '\''; '"'; '`' |], pos + 1, after - pos - 1) >= 0 then guesses.Add pos
                         pos <- after
                         expression <- false
                     | Error reason ->
@@ -200,7 +222,7 @@ let lex (syntax: Syntax) (text: string) =
                         pos <- pos + 2
                     else
                         match jsxName text (pos + 1) with
-                        | Some after when not (isTypeParameters text after) ->
+                        | Some after when not (isTypeParameters text (pos + 1) after) ->
                             markup.Add pos |> ignore
                             stack.Push(Frame.JsxTag pos)
                             pos <- after
@@ -221,6 +243,10 @@ let lex (syntax: Syntax) (text: string) =
                 | ')' | ']' ->
                     pos <- pos + 1
                     expression <- false
+                // Postfix operators keep an operand: `w! / 2`, `n++ / 2`.
+                | '!' when not expression && next <> '=' -> pos <- pos + 1
+                | '+' | '-' when not expression && next = c ->
+                    pos <- pos + 2
                 | c when isIdentifier c ->
                     let first = pos
                     while pos < text.Length && isIdentifier text[pos] do pos <- pos + 1
@@ -257,7 +283,18 @@ let lex (syntax: Syntax) (text: string) =
                     openBrace ()
                 | _ -> pos <- pos + 1
             | Frame.JsxTag start ->
+                let next = if pos + 1 < text.Length then text[pos + 1] else '\000'
                 match c with
+                // Comments between JSX attributes (`// it's the link`).
+                | '/' when next = '/' ->
+                    let after = lineEnd text pos
+                    markRange pos after
+                    pos <- after
+                | '/' when next = '*' ->
+                    let close = text.IndexOf("*/", pos + 2, StringComparison.Ordinal)
+                    let after = if close < 0 then text.Length else close + 2
+                    markRange pos after
+                    pos <- after
                 | '"' | '\'' ->
                     let close = text.IndexOf(c, pos + 1)
                     if close < 0 then guesses.Add pos

@@ -100,8 +100,10 @@ How tags are read, and its limits:
   division and as a regular expression holding a brace or quote, such as
   `if (ok) /{/.test(s)`), was matched without the lexer (a tag inside a
   string or comment, `'<a x={f("}")} href="...">'`), or opens inside a JSX
-  element or template literal that never closes; or when the tag is longer
-  than 1 MiB. A URL attribute value in the next 4 KiB that is followed by the
+  element or template literal that never closes, or an attribute quote in
+  it never closes; or when the tag is longer than 1 MiB. These lines appear
+  only when a Forma name is at stake: a tag with none after it is not
+  reported, so a codebase without Forma names checks clean. A URL attribute value in the next 4 KiB that is followed by the
   rest of an attribute list is left unrewritten too, and each one that holds
   a Forma name is listed at its own line (`a src/href value here holds a
   Forma name and was left unrewritten`), also by `--dry-run`. The lexer is not
