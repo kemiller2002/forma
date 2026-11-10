@@ -114,3 +114,4 @@
 | WI-0056 | Forma 1.0.2 re-review 6: uncertain fallback braces, per-value suppression review, spread | complete | forma-1.0.2 | high |
 | WI-0057 | Forma 1.0.2 re-review 7: comments in JSX tags, regex after !, token-gated review noise | complete | forma-1.0.2 | high |
 | WI-0058 | Forma 1.0.2 re-review 8: comments only in JSX tags, whole-extent token gate, spread tokens | complete | forma-1.0.2 | high |
+| WI-0059 | Forma 1.0.2 re-review 9: linear tag-run check, extent only for the tag's own attributes | complete | forma-1.0.2 | high |

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 59,
+  "nextSeq": 60,
   "items": [
     {
       "id": "WI-0001",
@@ -1504,6 +1504,29 @@
       },
       "source": "inbox",
       "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-08.md"
+    },
+    {
+      "id": "WI-0059",
+      "title": "Forma 1.0.2 re-review 9: linear tag-run check, extent only for the tag's own attributes",
+      "description": "Fix the findings of the re-review of PR #184 at 710f72d (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T14:05:24.805Z",
+      "updatedAt": "2026-11-10T14:29:35.097Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-09.md"
     }
   ]
 }
