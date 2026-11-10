@@ -8,6 +8,7 @@
     <NuGetAudit>false</NuGetAudit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Markup.fs" />
     <Compile Include="Migration.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
