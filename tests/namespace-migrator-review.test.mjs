@@ -218,3 +218,81 @@ test("re-review 8 probes: built tokens, comments and postfix forms, spreads (b16
   assert.equal(spread.status, 3, spread.stdout);
   assert.match(spread.stdout, /a <name here may be a tag/);
 });
+
+// Forma 1.0.2 re-review 9 (WI-0059): the attribute-run check is read once per
+// run, an uncertain tag holds back only its own attribute list, and comments
+// may follow a `}`, a quote or the tag name.
+let startup;
+const timed = (text, extension) => {
+  if (startup === undefined) {
+    const runs = [0, 1, 2].map(() => {
+      const started = process.hrtime.bigint();
+      checkOne("", extension);
+      return Number(process.hrtime.bigint() - started) / 1e9;
+    }).sort((a, b) => a - b);
+    startup = runs[1];
+  }
+  const started = process.hrtime.bigint();
+  const result = checkOne(text, extension);
+  return { result, seconds: Math.max(0, Number(process.hrtime.bigint() - started) / 1e9 - startup) };
+};
+
+test("JSX element starts, comments without a space before them and a=x //y (b18)", () => {
+  probe([
+    ["template in JSX expression with tag and url", '<div title={`<a data-u=http://x.com href="ef-x1">`}><a\n  // it\'s\n  href="ef-x2"\n/></div>', "tsx", ['"ef-x1"', '"ef-x2"']],
+    ["JSX inside ${}", 'const s = `${<a\n  // it\'s here\n  onClick={go}\n  href="ef-x3"\n/>}`;', "tsx", ['"ef-x3"']],
+    ["JSX after return on the line above", 'function A() {\n  return (\n    <a\n      // don\'t\n      href="ef-x4"\n    />\n  );\n}', "jsx", ['"ef-x4"']],
+    ["JSX after => on the line above", 'const A = () =>\n  <a\n    /* it\'s */\n    href="ef-x5"\n  />;', "jsx", ['"ef-x5"']],
+    ["comment right after <Tag", 'const A = () => <a/* it\'s */ href="ef-x6"/>;', "tsx", ['"ef-x6"']],
+    ["// right after <Tag", 'const A = () => (<a// it\'s\n href="ef-x7"/>);', "tsx", ['"ef-x7"']],
+    ["comment after a quoted value", 'const A = () => <a title="t"/* it\'s */ href="ef-x8"/>;', "tsx", ['"ef-x8"']],
+    ["comment after {}", 'const A = () => <a onClick={go}// it\'s\n href="ef-x9"/>;', "tsx", ['"ef-x9"']],
+    ["nested JSX in a prop with a comment", '<Card footer={<a\n  // it\'s\n  href="ef-x10"\n/>} />', "tsx", ['"ef-x10"']],
+    ["JSX in children with a comment", '<div>\n  <a\n    // it\'s\n    href="ef-x11"\n  />\n</div>', "jsx", ['"ef-x11"']],
+    ["string tag in a jsx file with //url", "const s = '<a data-u=//cdn.x href=\"ef-x12\">';", "jsx", ['"ef-x12"']],
+    ["template tag in a jsx file with //url", 'const s = `<a data-u=//cdn.x href="ef-x13">`;', "jsx", ['"ef-x13"']],
+    ["comment tag with //url", '/* <a data-u=//cdn.x href="ef-x14"> */', "js", ['"ef-x14"']],
+    ["html string a=x //y", "el.innerHTML = '<a data-x=x //y href=\"ef-y1\">';", "js", ['"ef-y1"']],
+    ["jsx a=x //y", '<a data-x=x //y\n href="ef-y2"/>', "jsx", ['"ef-y2"']],
+    ["html a=x //y", '<a data-x=x //y href="ef-y3">', "html", ['"ef-y3"']],
+    ["jsx quoted value then //", '<a title="x" // c\n href="ef-y4"/>', "jsx", ['"ef-y4"']],
+    ["jsx // with a url and quote in the comment", '<a\n  // see https://x.com/a"b\n  href="ef-y5"\n/>', "jsx", ['"ef-y5"']]
+  ]);
+  for (const [text, extension] of [['const A = () => <a/* it\'s */ href="ef-x6"/>;', "tsx"], ['const A = () => <a onClick={go}// it\'s\n href="ef-x9"/>;', "jsx"]]) {
+    const result = checkOne(text, extension);
+    assert.equal(tagReview(result.stdout).length, 0, `${text}\n${result.stdout}`);
+  }
+});
+
+test("an uncertain tag holds back its own attribute list, not script after it (semicolon-free code)", () => {
+  const blocks = ['export const Top = () => <a onClick={() => { if (ok) /{/.test(s) }} href="ef-top">x</a>\n'];
+  for (let i = 0; i < 4000; i++) {
+    blocks.push(`export function Card${i}({ items, label }) {\n  const tone = items.length > 3 ? "ef-tone-wide" : "ef-tone-narrow"\n  // Prettier semi:false style\n  const data = "ef-n${i}"\n  return (\n    <div className="ef-card-${i}" data-ef-state="open">\n      <span className="ef-label-${i}">{label} and some descriptive text here</span>\n      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>\n    </div>\n  )\n}\n`);
+  }
+  const text = blocks.join("\n");
+  const result = checkOne(text, "jsx");
+  const rewritten = +result.stdout.match(/would rewrite (\d+) line\(s\)/)[1];
+  const suppressed = +result.stdout.match(/(\d+) suppressed value\(s\)/)[1];
+  assert.ok(rewritten >= 15900, `only ${rewritten} of 16,000 lines rewritten`);
+  assert.ok(suppressed <= 50, `${suppressed} values held back`);
+  // The uncertain tag's own href stays and is reported.
+  assert.ok(migrateText(blocks[0], "jsx").includes('"ef-top"'));
+  assert.equal(result.status, 3);
+});
+
+test("performance: long attribute runs after an uncertain tag are read once (perf8)", () => {
+  for (const [label, extension, text] of [
+    ["<a x={ then href=\"ef-u\" t=a x100,000", "html", "<a x={ " + ' href="ef-u" t=a'.repeat(100000)],
+    ["uncertain handler then 50,000 attribute lines", "jsx", '<a onClick={() => { if (ok) /{/.test(s); }}\n' + ' href="ef-u" data-t="a"\n'.repeat(50000) + ">x</a>"],
+    ["50,000 uncertain tags", "jsx", '<a x={ href="ef-u">\n'.repeat(50000)],
+    ["uncertain tag then 50,000 attribute lines", "jsx", '<a x={ href="ef-u">\n' + " data-a=b c=d\n".repeat(50000) + 'href="ef-v"'],
+    ["40,000 JSX tags with comments", "jsx", "const A = () => (<div>\n" + '<a\n  // it\'s\n  /* x */ onClick={go}\n  href="ef-k"\n/>\n'.repeat(40000) + "</div>);"]
+  ]) {
+    const { result, seconds } = timed(text, extension);
+    assert.ok(result.status === 0 || result.status === 3, `${label}: ${result.stderr}`);
+    assert.ok(seconds < 2, `${label}: took ${seconds.toFixed(2)} s; expected under 2 s`);
+  }
+  // The values in the long runs are kept, not rewritten.
+  const kept = migrateText("<a x={ " + ' href="ef-u" t=a'.repeat(1000), "html");
+  assert.ok(!kept.includes("forma-u"));
+});

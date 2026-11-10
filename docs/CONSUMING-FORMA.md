@@ -103,7 +103,8 @@ How tags are read, and its limits:
   element or template literal that never closes, or an attribute quote in
   it never closes; or when the tag is longer than 1 MiB. These lines appear
   only when a Forma name is at stake: a tag with no Forma name in its unread
-  extent (up to 1 MiB after it, since its `>` cannot be found) is not
+  extent (its own attribute list, whose `>` cannot be found: up to the next
+  tag that certainly starts, at least 4 KiB and at most 1 MiB) is not
   reported, so a codebase without Forma names checks clean. A URL attribute
   value in that extent that is followed by the rest of an attribute list is
   left unrewritten too, and each one that holds
@@ -124,11 +125,16 @@ dotnet run --project "$M" -- src wwwroot             # rewrite in place
 dotnet run --project "$M" -- --check src wwwroot     # exit 0 once nothing is left
 ```
 
-The second `--check` exits 0 only after you have acted on every `review:`
-line of the first: the write leaves reviewed strings, tags and values
-unrewritten, so `--check` keeps exiting 3 until you rewrite them by hand,
-confirm them as locations and `--exclude` the file, or change the code so it
-reads unambiguously.
+Act on every `review:` line of the first `--check`, then check again. The
+write leaves reviewed strings and values unrewritten, and a later `--check`
+lists them again (exit 3) until you rewrite them by hand, confirm them as
+locations and `--exclude` the file, or change the code so it reads
+unambiguously. A review line can also disappear after the write without your
+acting on it: an uncertain tag is listed because it holds a Forma name, and
+when that name was a class the write migrated (`className="ef-cls"` on a tag
+whose `href` holds no Forma name), nothing is left to list. So keep the first
+`--check` output and go through it, rather than relying on the second exit
+code alone.
 
 `--check` never gives a false all-clear: a text file of another kind (a
 `.txt`, a template, a `.yml`), or a supported file that is not UTF-8 (for

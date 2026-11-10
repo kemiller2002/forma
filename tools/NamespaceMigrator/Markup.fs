@@ -121,8 +121,8 @@ let private tagLocations (comments: bool) (braces: Braces) (text: string) (start
             match text[pos] with
             | '>' | '<' -> acc, false
             // In script, comments may stand between JSX attributes.
-            | '/' when comments && next = '/' && pos > start && Char.IsWhiteSpace text[pos - 1] -> loop (lineEnd text pos) acc
-            | '/' when comments && next = '*' && pos > start && Char.IsWhiteSpace text[pos - 1] ->
+            | '/' when comments && next = '/' && commentBoundary text pos -> loop (lineEnd text pos) acc
+            | '/' when comments && next = '*' && commentBoundary text pos ->
                 let close = text.IndexOf("*/", pos + 2, StringComparison.Ordinal)
                 if close < 0 then acc, true else loop (close + 2) acc
             | '"' | '\'' as quote ->
@@ -154,30 +154,44 @@ let private isAttributeChar (c: char) =
 /// same 1 MiB bound at which a tag is anyway unread.
 let private uncertainRegion = tagScanLimit
 
+/// The extent an uncertain tag always gets, even when a certain tag starts
+/// inside it.
+let private shortRegion = 4096
+
 /// Whether the text from `pos` reads as the rest of a tag's attribute list up
 /// to its `>` or `/>` (more attributes, quoted, unquoted or `{...}` values,
 /// comments) or that runs on to the end of the region or into another `<`
 /// without closing: a value before it may belong to the tag. Script right
 /// after it (`;`, `)`, `,`) means no; inside an unquoted attribute value they are
 /// allowed (`style=color:red;`, `onclick=go()`, `data-y=@(Model.Y)`).
-let private endsLikeTag (braces: Braces) (text: string) (limit: int) (pos: int) =
+/// The last attribute run endsLikeTag read: a later call that starts inside
+/// it (at a boundary that scan passed) has the same answer, so a long run of
+/// URL-shaped values is read once, not once per value.
+type private RunMemo = { mutable From: int; mutable Until: int; mutable Limit: int; mutable Result: bool }
+
+let private newMemo () = { From = -1; Until = -1; Limit = -1; Result = false }
+
+let private endsLikeTag (memo: RunMemo) (braces: Braces) (text: string) (limit: int) (pos: int) =
+    if memo.Limit = limit && pos > memo.From && pos <= memo.Until then memo.Result
+    else
+    // Returns the answer and where the run ended.
     let rec loop pos =
         // Attribute syntax that runs to the end of the region or the text, or
         // into another `<` (a tag never closed), cannot be told from a tag.
-        if pos >= limit then true
+        if pos >= limit then true, limit
         else
             let next = if pos + 1 < limit then text[pos + 1] else '\000'
             match text[pos] with
-            | '>' | '<' -> true
-            | '/' when next = '/' && Char.IsWhiteSpace text[pos - 1] -> loop (lineEnd text pos)
-            | '/' when next = '*' && Char.IsWhiteSpace text[pos - 1] ->
+            | '>' | '<' -> true, pos
+            | '/' when next = '/' && commentBoundary text pos -> loop (lineEnd text pos)
+            | '/' when next = '*' && commentBoundary text pos ->
                 let close = text.IndexOf("*/", pos + 2, StringComparison.Ordinal)
-                close < 0 || loop (close + 2)
-            | '/' -> next = '>'
+                if close < 0 then true, limit else loop (close + 2)
+            | '/' -> next = '>', pos
             | c when Char.IsWhiteSpace c -> loop (pos + 1)
             | '{' ->
                 let finish, _ = skipBraces braces pos
-                finish > text.Length || loop finish
+                if finish > text.Length then true, limit else loop finish
             | c when isAttributeStart c ->
                 let mutable j = pos
                 while j < limit && isAttributeChar text[j] do j <- j + 1
@@ -186,19 +200,25 @@ let private endsLikeTag (braces: Braces) (text: string) (limit: int) (pos: int) 
                     if k < limit && (text[k] = '"' || text[k] = '\'') then loop (skipQuoted text limit false text[k] (k + 1))
                     elif k < limit && text[k] = '{' then
                         let finish, _ = skipBraces braces k
-                        finish > text.Length || loop finish
+                        if finish > text.Length then true, limit else loop finish
                     else
                         let mutable e = k
                         while e < limit && not (Char.IsWhiteSpace text[e]) && text[e] <> '>' do e <- e + 1
                         loop e
                 else loop j
-            | _ -> false
-    loop pos
+            | _ -> false, pos
+    let result, until = loop pos
+    memo.From <- pos
+    memo.Until <- until
+    memo.Limit <- limit
+    memo.Result <- result
+    result
 
 /// URL attribute values between `first` and `last` that are followed by the
 /// rest of an attribute list (see endsLikeTag). `cursor` marks text already
 /// scanned, so overlapping regions cost linear time in total.
 let private looseValues (cursor: int ref) (braces: Braces) (text: string) (first: int) (last: int) =
+    let memo = newMemo ()
     [ let mutable pos = max cursor.Value first
       cursor.Value <- max cursor.Value last
       while pos < last do
@@ -207,7 +227,7 @@ let private looseValues (cursor: int ref) (braces: Braces) (text: string) (first
               if m.Success && m.Index + m.Length <= last then
                   let valueStart = m.Index + m.Length
                   let _, after, _ = attributeValue braces text last valueStart
-                  if endsLikeTag braces text last after then yield valueStart, after
+                  if endsLikeTag memo braces text last after then yield valueStart, after
                   pos <- max (pos + 1) after
               else pos <- pos + 1
           else pos <- pos + 1 ]
@@ -221,7 +241,7 @@ let private looseValues (cursor: int ref) (braces: Braces) (text: string) (first
 /// (no JSX) markup in code can only be a misread string, which is one line,
 /// so there the attributes end at the line end (`if a <b then` / `let data =
 /// "ef-fs"` on the next line is script).
-let private possibleTagLocations (cursor: int ref) (multiline: bool) (braces: Braces) (text: string) (start: int) =
+let private possibleTagLocations (cursor: int ref) (extentEnd: int -> int) (multiline: bool) (braces: Braces) (text: string) (start: int) =
     let limit = min text.Length (start + tagScanLimit)
     let rec loop pos acc =
         if pos >= limit then acc
@@ -233,7 +253,7 @@ let private possibleTagLocations (cursor: int ref) (multiline: bool) (braces: Br
                 // never closes hides the rest: URL values after it that read
                 // as attributes up to a `>` are masked.
                 let finish, uncertain = uncertainGroup braces text next
-                if uncertain then looseValues cursor braces text next (min text.Length (next + uncertainRegion)) @ acc
+                if uncertain then looseValues cursor braces text next (extentEnd next) @ acc
                 // The spread itself may carry a URL (`{...{href: "ef-x"}}`):
                 // it is masked with the rest and reported if it holds a name.
                 else loop (min finish limit) ((next, min finish limit) :: acc)
@@ -253,7 +273,7 @@ let private possibleTagLocations (cursor: int ref) (multiline: bool) (braces: Br
                         if k < limit && (text[k] = '"' || text[k] = '\'' || text[k] = '{') then
                             let _, after, unclosedValue = attributeValue braces text limit k
                             // A value that never closes hides the rest, as a spread does.
-                            if unclosedValue then looseValues cursor braces text k (min text.Length (k + uncertainRegion)) @ acc
+                            if unclosedValue then looseValues cursor braces text k (extentEnd k) @ acc
                             else loop after acc
                         else
                             // An unquoted value; script punctuation (`c=d;`) means script.
@@ -297,18 +317,35 @@ let markupScan (syntax: Syntax) (tokens: Lazy<int[]>) (text: string) =
     else
         let ends, markup, jsxTags, guesses, uncertainFrom = lex syntax text
         let braces = { Lexed = ends; Plain = lazy (plainBraceEnds text); Guesses = guesses; UncertainFrom = uncertainFrom }
+        // Where tags certainly start: every tag in markup text, real JSX
+        // elements in script. A value after the next such start cannot belong
+        // to an earlier uncertain tag's attribute list.
+        let definite =
+            [| for m in starts do
+                   match syntax with
+                   | Script _ -> if jsxTags.Contains m.Index then yield m.Index
+                   | MarkupText -> yield m.Index |]
+        // An uncertain tag's unread extent: its own attribute list, which
+        // cannot be read, so up to the next certain tag start (at least 4 KiB,
+        // since a JSX value such as `footer={<b/>}` may hold one), and never
+        // past the 1 MiB bound. Script after it is not held back for 1 MiB.
+        let extentEnd (index: int) =
+            let i = Array.BinarySearch(definite, index + 1)
+            let i = if i < 0 then ~~~i else i
+            let next = if i < definite.Length then definite[i] else Int32.MaxValue
+            min text.Length (min (index + uncertainRegion) (max (index + shortRegion) next))
         let possibleCursor = ref 0
         let results =
             [ for m in starts do
                   let after = m.Index + m.Length
                   match syntax with
                   | Script jsx when not (markup.Contains m.Index) ->
-                      let spans = possibleTagLocations possibleCursor jsx braces text after
+                      let spans = possibleTagLocations possibleCursor extentEnd jsx braces text after
                       yield m.Index, spans, false, spans |> List.exists (fun (a, b) -> hasToken a b), false
                   | _ ->
                       // Comments between attributes only in a real JSX element.
                       let spans, uncertain = tagLocations (jsxTags.Contains m.Index) braces text after
-                      let uncertain = uncertain && hasToken m.Index (min text.Length (m.Index + uncertainRegion))
+                      let uncertain = uncertain && hasToken m.Index (extentEnd m.Index)
                       yield m.Index, spans, uncertain, false, true ]
         // An uncertain tag cannot be trusted to show where its `href` is, so a
         // URL attribute value in the next 4 KiB that is followed by the rest
@@ -316,10 +353,11 @@ let markupScan (syntax: Syntax) (tokens: Lazy<int[]>) (text: string) =
         // own line; script such as `data = "x";` is not. A cursor keeps the
         // total linear.
         let mutable cursor = 0
+        let memo = newMemo ()
         let loose =
             [ for index, _, uncertain, _, _ in results do
                   if uncertain then
-                      let regionEnd = min text.Length (index + uncertainRegion)
+                      let regionEnd = extentEnd index
                       let mutable pos = max cursor index
                       while pos < regionEnd do
                           if Char.IsWhiteSpace text[pos] then
@@ -331,7 +369,7 @@ let markupScan (syntax: Syntax) (tokens: Lazy<int[]>) (text: string) =
                                       else
                                           let _, after, _ = attributeValue braces text regionEnd valueStart
                                           after
-                                  if endsLikeTag braces text regionEnd finish then yield valueStart, finish, index
+                                  if endsLikeTag memo braces text regionEnd finish then yield valueStart, finish, index
                                   pos <- max (pos + 1) finish
                               else pos <- pos + 1
                           else pos <- pos + 1

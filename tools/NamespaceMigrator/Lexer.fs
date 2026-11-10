@@ -103,6 +103,21 @@ let jsxName (text: string) (pos: int) =
         j <- j + 1
     if j < text.Length && (Char.IsWhiteSpace text[j] || text[j] = '/' || text[j] = '>') then Some j else None
 
+/// Whether a comment at `pos` inside a JSX tag stands at an attribute
+/// boundary: after whitespace, a closing `}` or quote, or right after the tag
+/// name (`<a/* c */ …`). Never inside an unquoted value (`data-u=http://x`).
+let commentBoundary (text: string) (pos: int) =
+    if pos <= 0 then false
+    else
+        match text[pos - 1] with
+        | c when Char.IsWhiteSpace c -> true
+        | '}' | '"' | '\'' -> true
+        | _ ->
+            let mutable j = pos - 1
+            while j >= 0 && pos - j <= 64 && (Char.IsLetterOrDigit text[j] || text[j] = ':' || text[j] = '.' || text[j] = '_' || text[j] = '-') do
+                j <- j - 1
+            j >= 0 && j < pos - 1 && text[j] = '<'
+
 /// Whether a JSX-looking `<T` whose name ends at `after` opens TSX type
 /// parameters instead (`<T extends U>(…)`, `<T = string>(…)`): JSX attributes
 /// never start with `extends`, `=` or `,`.
@@ -290,12 +305,12 @@ let lex (syntax: Syntax) (text: string) =
                 let next = if pos + 1 < text.Length then text[pos + 1] else '\000'
                 match c with
                 // Comments between JSX attributes (`// it's the link`), at an
-                // attribute boundary only (after whitespace).
-                | '/' when next = '/' && pos > 0 && Char.IsWhiteSpace text[pos - 1] ->
+                // attribute boundary only (see commentBoundary).
+                | '/' when next = '/' && commentBoundary text pos ->
                     let after = lineEnd text pos
                     markRange pos after
                     pos <- after
-                | '/' when next = '*' && pos > 0 && Char.IsWhiteSpace text[pos - 1] ->
+                | '/' when next = '*' && commentBoundary text pos ->
                     let close = text.IndexOf("*/", pos + 2, StringComparison.Ordinal)
                     let after = if close < 0 then text.Length else close + 2
                     markRange pos after
