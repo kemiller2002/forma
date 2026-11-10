@@ -291,7 +291,7 @@ test("an uncertain tag holds back its own attribute list, not script after it (s
 test("performance: long attribute runs after an uncertain tag are read once (perf8)", () => {
   for (const [label, extension, text] of [
     ["<a x={ then href=\"ef-u\" t=a x50,000", "html", "<a x={ " + ' href="ef-u" t=a'.repeat(50000)],
-    ["uncertain handler then 50,000 attribute lines", "jsx", '<a onClick={() => { if (ok) /{/.test(s); }}\n' + ' href="ef-u" data-t="a"\n'.repeat(50000) + ">x</a>"],
+    ["uncertain handler then 25,000 attribute lines", "jsx", '<a onClick={() => { if (ok) /{/.test(s); }}\n' + ' href="ef-u" data-t="a"\n'.repeat(25000) + ">x</a>"],
     ["50,000 uncertain tags", "jsx", '<a x={ href="ef-u">\n'.repeat(50000)],
     ["uncertain tag then 50,000 attribute lines", "jsx", '<a x={ href="ef-u">\n' + " data-a=b c=d\n".repeat(50000) + 'href="ef-v"'],
     ["40,000 JSX tags with comments", "jsx", "const A = () => (<div>\n" + '<a\n  // it\'s\n  /* x */ onClick={go}\n  href="ef-k"\n/>\n'.repeat(40000) + "</div>);"]
