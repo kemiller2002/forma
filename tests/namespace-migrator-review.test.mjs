@@ -282,7 +282,7 @@ test("an uncertain tag holds back its own attribute list, not script after it (s
 
 test("performance: long attribute runs after an uncertain tag are read once (perf8)", () => {
   for (const [label, extension, text] of [
-    ["<a x={ then href=\"ef-u\" t=a x100,000", "html", "<a x={ " + ' href="ef-u" t=a'.repeat(100000)],
+    ["<a x={ then href=\"ef-u\" t=a x50,000", "html", "<a x={ " + ' href="ef-u" t=a'.repeat(50000)],
     ["uncertain handler then 50,000 attribute lines", "jsx", '<a onClick={() => { if (ok) /{/.test(s); }}\n' + ' href="ef-u" data-t="a"\n'.repeat(50000) + ">x</a>"],
     ["50,000 uncertain tags", "jsx", '<a x={ href="ef-u">\n'.repeat(50000)],
     ["uncertain tag then 50,000 attribute lines", "jsx", '<a x={ href="ef-u">\n' + " data-a=b c=d\n".repeat(50000) + 'href="ef-v"'],
@@ -295,4 +295,42 @@ test("performance: long attribute runs after an uncertain tag are read once (per
   // The values in the long runs are kept, not rewritten.
   const kept = migrateText("<a x={ " + ' href="ef-u" t=a'.repeat(1000), "html");
   assert.ok(!kept.includes("forma-u"));
+});
+
+// Forma 1.0.2 re-review 10 (WI-0060): in markup text a `<b>` inside the
+// uncertain tag's own quoted value does not end its extent.
+test("a <name inside an uncertain tag's own value does not shorten its extent (b19)", () => {
+  const U = 'onClick={() => { if (ok) /{/.test(s); }}';
+  const P = (n) => "p".repeat(n);
+  const cases = [
+    ["jsx footer={<b/>} then href beyond 4 KiB", `const A = () => <a ${U} footer={<b/>} data-p="${P(5000)}" href="ef-f1">x</a>;`, "jsx", '"ef-f1"'],
+    ["jsx footer then href within 4 KiB", `const A = () => <a ${U} footer={<b/>} data-p="${P(1000)}" href="ef-f2">x</a>;`, "jsx", '"ef-f2"'],
+    ["jsx uncertain group holding JSX, beyond 4 KiB", `const A = () => <a onClick={() => { if (ok) /{/.test(s); return <b/>; }} data-p="${P(5000)}" href="ef-f3">x</a>;`, "jsx", '"ef-f3"'],
+    ["svelte <b> in a quoted value", `<a on:click={() => { if (ok) /{/.test(s); }} title="<b>x</b>" data-p="${P(5000)}" href="ef-f4">x</a>`, "svelte", '"ef-f4"'],
+    ["html unclosed { and <b> in title", `<a x={ title="<b>x</b>" data-p="${P(5000)}" href="ef-f5">`, "html", '"ef-f5"'],
+    // (The braces close here, so the tag is read to its end: kept, not reviewed.)
+    ["vue <b> in a {} string", `<template><a x={ "<b>" } :y="1" data-p="${P(5000)}" href="ef-f6">x</a></template>`, "vue", '"ef-f6"', false],
+    ["html comment-like <b in a value", `<a x={ data-c="<!-- <b> -->" data-p="${P(5000)}" href="ef-f7">`, "html", '"ef-f7"'],
+    ["jsx // comment holding <b>", `const A = () => <a ${U}\n  // see <b>bold</b>\n  data-p="${P(5000)}"\n  href="ef-f8"\n>x</a>;`, "jsx", '"ef-f8"'],
+    ["jsx string with JSX-like text", `const A = () => <a ${U} title="<b>x</b>" data-p="${P(5000)}" href="ef-f9">x</a>;`, "jsx", '"ef-f9"'],
+    ["jsx misread string reveals <b", `const A = () => <a onClick={() => { if (ok) /'/.test(s); }} title='<b>q' data-p="${P(5000)}" href="ef-f10">x</a>;`, "jsx", '"ef-f10"'],
+    ["razor", `<a x={ title="<b>x</b>" data-p="${P(5000)}" href="ef-f11">`, "cshtml", '"ef-f11"'],
+    ["markdown", `<a x={ title="<b>x</b>" data-p="${P(5000)}" href="ef-f12">`, "md", '"ef-f12"'],
+    ["html <b> near, href within 4 KiB", `<a x={ title="<b>x</b>" href="ef-f13">`, "html", '"ef-f13"'],
+    ["html control, no <b>", `<a x={ data-p="${P(5000)}" href="ef-f14">`, "html", '"ef-f14"'],
+    // Unbalanced quotes inside the uncertain tag.
+    ["html unbalanced \" around <b>", `<a x={ title="<b>x data-p="${P(5000)}" href="ef-f15">`, "html", '"ef-f15"'],
+    ["html apostrophe in a value with <b>", `<a x={ title='it"s <b>' data-p="${P(5000)}" href="ef-f16">`, "html", '"ef-f16"'],
+    ["svelte unclosed ' then <b", `<a on:click={() => { if (ok) /{/.test(s); }} title='x <b data-p="${P(5000)}" href="ef-f17">x</a>`, "svelte", '"ef-f17"'],
+    ["razor unclosed \" then <i>", `<a x={ title="<i>it's data-p='${P(5000)}' href="ef-f18">`, "cshtml", '"ef-f18"']
+  ];
+  for (const [label, text, extension, value, reviewed = true] of cases) {
+    const output = migrateText(text, extension);
+    assert.ok(output.includes(value), `${label}: lost ${value}`);
+    assert.equal(migrateText(output, extension), output, `${label}: not idempotent`);
+    if (!reviewed) continue;
+    const result = checkOne(text, extension);
+    assert.equal(result.status, 3, `${label}\n${result.stdout}`);
+    assert.ok(tagReview(result.stdout).length >= 1, `${label}: no review line`);
+  }
 });

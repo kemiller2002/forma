@@ -1,0 +1,61 @@
+const k = a?.b / c?.d;
+// don't { }
+enum E { A = '}', B = "{" }
+@decorate()
+class E159_0 { render() { return <Foo.Bar render={() => n! / 2} src={"ef-T159_0"} className="ef-C159_0"/>; } }
+const ent = <p>&lt;a&gt; &#123; {'}'}</p>;
+const s = "it's {";
+const v = i++ / 2;
+const C159_1 = ok ? <a
+  // it's the link, see `ref` />
+  onClick={() => go()}
+  /* a > b, "q */
+  href="ef-T159_1"
+  className="ef-C159_1"
+/> : null;
+const asy = async <T,>(x: T) => x;
+const g = <T,>(x: T) => x;
+const big = {
+ a: 1,
+ b: '}',
+};
+function B159_2() {
+  return (
+    <div>
+      <p>Read: see (the) <a
+  onClick={() => !/"/.test(s)}
+  {...rest}
+  href="ef-T159_2"
+  className="ef-C159_2"
+>x</a></p>
+    </div>
+  );
+}
+declare module 'x' { }
+const d = (a + b) / 2;
+function q() { return /{/.test(z); }
+function B159_3() {
+  return (
+    <div>
+      <p>Read: see (the) <a onClick={() => a / b + "'"} data-p="pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp" href="ef-T159_3" className="ef-C159_3">x</a></p>
+    </div>
+  );
+}
+type C<T> = T extends string ? { a: '}' } : never;
+const big = {
+ a: 1,
+ b: '}',
+};
+const o = { a: 1 } as const;
+function B159_4() {
+  return (
+    <div>
+      <p>Read: see (the) <a onClick={() => n! / 2} data-p="pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp" href="ef-T159_4" className="ef-C159_4">x</a></p>
+    </div>
+  );
+}
+@Component({ selector: 'x', styles: ['a { color: red }'] })
+class Cmp {}
+const f = <T extends unknown>(x: T) => x;
+const n = s.split(/[/]/);
+const S159_5 = '<a onclick="go()" href="ef-T159_5" class="ef-C159_5">x</a>';

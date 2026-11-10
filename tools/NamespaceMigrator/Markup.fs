@@ -164,18 +164,23 @@ let private shortRegion = 4096
 /// without closing: a value before it may belong to the tag. Script right
 /// after it (`;`, `)`, `,`) means no; inside an unquoted attribute value they are
 /// allowed (`style=color:red;`, `onclick=go()`, `data-y=@(Model.Y)`).
-/// The last attribute run endsLikeTag read: a later call that starts inside
-/// it (at a boundary that scan passed) has the same answer, so a long run of
-/// URL-shaped values is read once, not once per value.
-type private RunMemo = { mutable From: int; mutable Until: int; mutable Limit: int; mutable Result: bool }
+/// Answers endsLikeTag already worked out: every attribute boundary a scan
+/// passed through has the scan's answer (for the same limit), so a later call
+/// that starts at one of them is answered at once and a long run of URL-shaped
+/// values is read once, not once per value. Only boundaries the scan itself
+/// reached are recorded, so a call from any other position scans afresh.
+type private RunMemo = { Answers: Collections.Generic.Dictionary<int, struct (int * bool)> }
 
-let private newMemo () = { From = -1; Until = -1; Limit = -1; Result = false }
+let private newMemo () = { Answers = Collections.Generic.Dictionary<int, struct (int * bool)>() }
 
 let private endsLikeTag (memo: RunMemo) (braces: Braces) (text: string) (limit: int) (pos: int) =
-    if memo.Limit = limit && pos > memo.From && pos <= memo.Until then memo.Result
-    else
+    match memo.Answers.TryGetValue pos with
+    | true, struct (l, answer) when l = limit -> answer
+    | _ ->
+    let visited = Collections.Generic.List<int>()
     // Returns the answer and where the run ended.
     let rec loop pos =
+        visited.Add pos
         // Attribute syntax that runs to the end of the region or the text, or
         // into another `<` (a tag never closed), cannot be told from a tag.
         if pos >= limit then true, limit
@@ -207,11 +212,8 @@ let private endsLikeTag (memo: RunMemo) (braces: Braces) (text: string) (limit: 
                         loop e
                 else loop j
             | _ -> false, pos
-    let result, until = loop pos
-    memo.From <- pos
-    memo.Until <- until
-    memo.Limit <- limit
-    memo.Result <- result
+    let result, _ = loop pos
+    for p in visited do memo.Answers[p] <- struct (limit, result)
     result
 
 /// URL attribute values between `first` and `last` that are followed by the
@@ -224,11 +226,14 @@ let private looseValues (cursor: int ref) (braces: Braces) (text: string) (first
       while pos < last do
           if Char.IsWhiteSpace text[pos] then
               let m = urlAttribute.Match(text, pos + 1)
-              if m.Success && m.Index + m.Length <= last then
+              // A value that starts in the region is read whole, even past
+              // its end, so the next region's cursor never skips it.
+              if m.Success && m.Index < last then
                   let valueStart = m.Index + m.Length
-                  let _, after, _ = attributeValue braces text last valueStart
-                  if endsLikeTag memo braces text last after then yield valueStart, after
+                  let _, after, _ = attributeValue braces text text.Length valueStart
+                  if endsLikeTag memo braces text (max last after) after then yield valueStart, after
                   pos <- max (pos + 1) after
+                  cursor.Value <- max cursor.Value after
               else pos <- pos + 1
           else pos <- pos + 1 ]
 
@@ -317,14 +322,17 @@ let markupScan (syntax: Syntax) (tokens: Lazy<int[]>) (text: string) =
     else
         let ends, markup, jsxTags, guesses, uncertainFrom = lex syntax text
         let braces = { Lexed = ends; Plain = lazy (plainBraceEnds text); Guesses = guesses; UncertainFrom = uncertainFrom }
-        // Where tags certainly start: every tag in markup text, real JSX
-        // elements in script. A value after the next such start cannot belong
-        // to an earlier uncertain tag's attribute list.
+        // Where tags certainly start, in script: real JSX elements the lexer
+        // saw. A value after the next such start cannot belong to an earlier
+        // uncertain tag's attribute list. In markup text no start counts: a
+        // `<b>` may sit inside the uncertain tag's own quoted value
+        // (`title="<b>x</b>"`, possibly with a quote that never closes), so
+        // the extent there keeps the full 1 MiB bound.
         let definite =
             [| for m in starts do
                    match syntax with
                    | Script _ -> if jsxTags.Contains m.Index then yield m.Index
-                   | MarkupText -> yield m.Index |]
+                   | MarkupText -> () |]
         // An uncertain tag's unread extent: its own attribute list, which
         // cannot be read, so up to the next certain tag start (at least 4 KiB,
         // since a JSX value such as `footer={<b/>}` may hold one), and never
@@ -362,18 +370,21 @@ let markupScan (syntax: Syntax) (tokens: Lazy<int[]>) (text: string) =
                       while pos < regionEnd do
                           if Char.IsWhiteSpace text[pos] then
                               let m = urlAttribute.Match(text, pos + 1)
-                              if m.Success && m.Index + m.Length <= regionEnd then
+                              // A value that starts in the region is read whole,
+                              // even past its end, so the next region's cursor
+                              // never skips it.
+                              if m.Success && m.Index < regionEnd then
                                   let valueStart = m.Index + m.Length
                                   let finish =
-                                      if valueStart < regionEnd && text[valueStart] = '{' then min regionEnd (fst (skipBraces braces valueStart))
+                                      if valueStart < text.Length && text[valueStart] = '{' then min text.Length (fst (skipBraces braces valueStart))
                                       else
-                                          let _, after, _ = attributeValue braces text regionEnd valueStart
+                                          let _, after, _ = attributeValue braces text text.Length valueStart
                                           after
-                                  if endsLikeTag memo braces text regionEnd finish then yield valueStart, finish, index
+                                  if endsLikeTag memo braces text (max regionEnd finish) finish then yield valueStart, finish, index
                                   pos <- max (pos + 1) finish
                               else pos <- pos + 1
                           else pos <- pos + 1
-                      cursor <- max cursor regionEnd ]
+                      cursor <- max cursor pos ]
         // Values a definite tag scan found are locations; every other masked
         // value (after an uncertain tag, or after a possible tag) is listed.
         let found = Collections.Generic.HashSet<int>([ for _, spans, _, _, definite in results do if definite then for start, _ in spans -> start ])
