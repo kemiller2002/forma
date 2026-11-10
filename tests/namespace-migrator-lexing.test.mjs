@@ -94,7 +94,7 @@ test("a quote in a comment, regex literal or JSX text inside braces does not hid
 test("a tag whose { is never closed is listed for review, and --check exits 3", () => {
   const result = checkOne('const A = () => <a onClick={() => { go(); href="ef-u1">x</a>;\n', "tsx");
   assert.equal(result.status, 3, result.stdout);
-  assert.match(result.stdout, /sample\.tsx:1 a tag here could not be read to its end/);
+  assert.match(result.stdout, /sample\.tsx:1 a tag here could not be read with certainty/);
   assert.match(result.stdout, /; 1 uncertain tag\(s\) to review/);
   const closed = checkOne('const A = () => <a onClick={() => { go(); }} href="ef-u2">x</a>;\n', "tsx");
   assert.match(closed.stdout, /; 0 uncertain tag\(s\) to review/);
@@ -173,6 +173,131 @@ test("performance: adversarial inputs from the re-review stay under 2 s each", (
   ]) {
     const { result, seconds } = timed(text, extension);
     assert.equal(result.status, status, `${label}: ${result.stderr}`);
+    assert.ok(seconds < 2, `${label}: took ${seconds.toFixed(2)} s; expected under 2 s`);
+  }
+});
+
+// Forma 1.0.2 re-review 5 (WI-0055): the lexer's own state decides where markup
+// stands; when the tool cannot tell, it reports and leaves the value alone.
+const reviewLines = (stdout) => stdout.split("\n").filter((line) => /^review: .*(could not be read with certainty|may be a tag)/.test(line));
+
+test("tags where JSX, strings, template literals and comments hold markup keep their URL values (b7)", () => {
+  const long = "word ".repeat(60);
+  probe([
+    ["after =>", 'const A = () => <a href="ef-j1">x</a>;', "jsx", ['"ef-j1"']],
+    ["after => newline", 'const A = () =>\n  <a href="ef-j2">x</a>;', "jsx", ['"ef-j2"']],
+    ["after :", 'const r = ok ? <b>y</b> : <a href="ef-j3">x</a>;', "tsx", ['"ef-j3"']],
+    ["object value", 'const m = { link: <a href="ef-j4">x</a> };', "tsx", ['"ef-j4"']],
+    ["array literal", 'const xs = [<a key="1" href="ef-j5">x</a>, <a key="2" href="ef-j6">y</a>];', "tsx", ['"ef-j5"', '"ef-j6"']],
+    ["export default", 'export default <a href="ef-j7">x</a>;', "jsx", ['"ef-j7"']],
+    ["after JSX comment", '<div>{/* note */}<a href="ef-j8">x</a></div>', "tsx", ['"ef-j8"']],
+    ["prop value", '<Card footer={<a href="ef-j9">x</a>} />', "tsx", ['"ef-j9"']],
+    ["as cast", 'const el = (<a href="ef-j10">x</a>) as unknown as JSX.Element;', "tsx", ['"ef-j10"']],
+    ["satisfies", 'const el = <a href="ef-j11">x</a> satisfies ReactNode;', "tsx", ['"ef-j11"']],
+    ["return(", 'function A(){return(<a href="ef-j12">x</a>)}', "jsx", ['"ef-j12"']],
+    ["&&", '{ok && <a href="ef-j13">x</a>}', "jsx", ['"ef-j13"']],
+    ["map", '{items.map(i => <a key={i} href="ef-j14">x</a>)}', "jsx", ['"ef-j14"']],
+    ["children after text with :", '<p>Note: see <a href="ef-j15">docs</a></p>', "jsx", ['"ef-j15"']],
+    ["children after paren text", '<p>Read the guide (see <a href="ef-j16">here</a>).</p>', "jsx", ['"ef-j16"']],
+    ["children after em dash", '<p>Pricing — see <a href="ef-j17">plans</a></p>', "jsx", ['"ef-j17"']],
+    ["children after &amp;", '<p>Terms &amp; see <a href="ef-j18">x</a></p>', "jsx", ['"ef-j18"']],
+    ["children after long text", `<p>${long}see <a href="ef-j19">x</a></p>`, "jsx", ['"ef-j19"']],
+    ["children multi-line", '<p>\n  Read the\n  <a href="ef-j20">docs</a>\n</p>', "jsx", ['"ef-j20"']],
+    ["children multi-line word", '<p>\n  Read the <a href="ef-j21">docs</a>\n</p>', "jsx", ['"ef-j21"']],
+    ["children after digits", '<p>Step 2 <a href="ef-j22">x</a></p>', "jsx", ['"ef-j22"']],
+    ["children after expr", '<p>{n} items, see <a href="ef-j23">x</a></p>', "jsx", ['"ef-j23"']],
+    ["children after /", '<p>Yes/no see <a href="ef-j24">x</a></p>', "jsx", ['"ef-j24"']],
+    ["innerHTML string", "el.innerHTML = 'Click <a href=\"ef-j25\">here</a>';", "js", ['"ef-j25"']],
+    ["innerHTML string ts", "el.innerHTML = 'Click <a href=\"ef-j26\">here</a>';", "ts", ['"ef-j26"']],
+    ["i18n string", 'export default { help: "See our <a href=\'ef-j27\'>docs</a>." };', "js", ["'ef-j27'"]],
+    ["lit ts multiline", 'html`<p>\n  Read the <a href="ef-j28">docs</a>\n</p>`;', "ts", ['"ef-j28"']],
+    ["lit js multiline", 'html`<p>\n  Read the <a href="ef-j29">docs</a>\n</p>`;', "js", ['"ef-j29"']],
+    ["template html string text", 'const t = `Hello ${name}, see <a href="ef-j30">x</a>`;', "ts", ['"ef-j30"']],
+    ["fsharp html string", 'let s = "Read the <a href=\\"ef-j31\\">docs</a>"', "fs", ["ef-j31"]],
+    ["fsharp triple", 'let s = """Read <a href="ef-j32">docs</a>"""', "fs", ['"ef-j32"']],
+    ["yield/else", 'if (x) y(); else <a href="ef-j33"/>;', "jsx", ['"ef-j33"']],
+    ["after ??", 'const z = q ?? <a href="ef-j34"/>;', "jsx", ['"ef-j34"']],
+    ["after ...", '<A {...p} href="ef-j35"/>', "jsx", ['"ef-j35"']],
+    ["after ) in jsx children", '<p>(x) <a href="ef-j36">y</a></p>', "jsx", ['"ef-j36"']],
+    ["after ! text", '<p>Hi! <a href="ef-j37">y</a></p>', "jsx", ['"ef-j37"']],
+    ["after * text", '<p>* <a href="ef-j38">y</a></p>', "jsx", ['"ef-j38"']],
+    ["after number punct", '<p>Price: $5. See <a href="ef-j39">y</a></p>', "jsx", ['"ef-j39"']],
+    ["vue in js render string", "template: '<div>Go to <a href=\"ef-j40\">x</a></div>'", "js", ['"ef-j40"']],
+    ["comment with markup", '// see <a href="ef-j41">x</a>\nconst y = "ef-j42";', "ts", ['"ef-j41"'], ['"ef-j42"']]
+  ]);
+});
+
+test("braces the lexer cannot be sure of are reviewed, and their href is never rewritten (b8)", () => {
+  probe([
+    ["regex after ) {", 'function A() {\n  return <a onClick={() => { if (ok) /{/.test(s); }} href="ef-l1">x</a>;\n}\n', "jsx", ['"ef-l1"']],
+    ["regex after ) quote", 'function A() {\n  return <a onClick={() => { if (ok) /\'/.test(s); }} href="ef-l2">x</a>;\n}\n', "jsx", ['"ef-l2"']],
+    ["regex after ) quote, more code", 'function A() {\n  return <a onClick={() => { if (ok) /\'/.test(s); }} href="ef-l3">x</a>;\n}\nfunction B() { return \'y\'; }\n', "jsx", ['"ef-l3"']],
+    ["generic arrow then apostrophe comment", 'const id = <T extends unknown>(x: T) => x;\n// it\'s {\nexport const A = () => <a onClick={() => go()} href="ef-l4">x</a>;\nfunction B() { }\n', "tsx", ['"ef-l4"']],
+    ["generic arrow then jsx", 'const id = <T extends unknown>(x: T): T => { return x; };\nexport const A = () => <a onClick={() => { /* don\'t */ go(); }} href="ef-l5">x</a>;\n', "tsx", ['"ef-l5"']],
+    ["generic arrow then string brace", 'const id = <T extends unknown>(x: T) => x;\nconst o = "{";\nexport const A = () => <a onClick={() => go()} href="ef-l6">x</a>;\nfunction B() { }\n', "tsx", ['"ef-l6"']],
+    ["generic arrow, closing tag later", 'const id = <T extends unknown>(x: T) => x;\nconst s = "{";\nexport const A = () => <div><a onClick={() => go("}")} href="ef-l7">x</a></div>;\n', "tsx", ['"ef-l7"']],
+    ["division after )", '<a onClick={() => setW((a + b) / 2)} title={`x`} href="ef-l8">x</a>', "jsx", ['"ef-l8"']],
+    ["regex after }", '<a onClick={() => { if (x) {} /}/.test(s) }} href="ef-l9">x</a>', "jsx", ['"ef-l9"']],
+    ["< comparison in handler", '<a onClick={() => a <b && go()} href="ef-l10">x</a>', "jsx", ['"ef-l10"']],
+    ["< comparison prop paren", '<a disabled={(n)<max} href="ef-l11">x</a>', "jsx", ['"ef-l11"']],
+    ["comparison <Name in handler", '<a onClick={() => i <Max ? 1 : 2} href="ef-l12">x</a>', "jsx", ['"ef-l12"']],
+    ["type arg in tsx handler", '<a onClick={() => useRef<HTMLElement | null>(null)} href="ef-l13">x</a>', "tsx", ['"ef-l13"']],
+    ["as generic in tsx", '<a onClick={() => (x as Array<string>).map(f)} href="ef-l14">x</a>', "tsx", ['"ef-l14"']],
+    ["return type <", '<a onClick={(): Promise<void> => go()} href="ef-l15">x</a>', "tsx", ['"ef-l15"']],
+    ["object type literal", 'type P = { a: string };\nexport const A = (p: P) => <a onClick={() => go()} href="ef-l16">x</a>;', "tsx", ['"ef-l16"']],
+    ["arrow generic with default", 'const f = <T = string>(x: T) => x;\nexport const A = () => <a onClick={() => { /* it\'s */ }} href="ef-l17">x</a>;\n', "tsx", ['"ef-l17"']],
+    ["jsx text with > and {", '<p>a > b {"{"}</p><a onClick={go} href="ef-l18">x</a>', "jsx", ['"ef-l18"']],
+    ["jsx attr string with {", '<a title="{" onClick={go} href="ef-l19">x</a>', "jsx", ['"ef-l19"']],
+    ["ternary : <", 'x ? 1 : <a onClick={go} href="ef-l20"/>', "jsx", ['"ef-l20"']],
+    ["closing with member", '<Foo.Bar onClick={go}><a href="ef-l21">x</a></Foo.Bar>', "jsx", ['"ef-l21"']],
+    ["svelte {#if}", '{#if x}<a on:click={go} href="ef-l22">x</a>{/if}', "svelte", ['"ef-l22"']],
+    ["css url // in svelte style", '<style>a { background: url(//cdn.x.com/a.png) }</style>\n<a on:click={go} href="ef-l23">x</a>', "svelte", ['"ef-l23"']],
+    ["vue file closes at EOF", '<a :x="1" href="ef-l24">y</a>\n<script>export default {}</script>', "vue", ['"ef-l24"']]
+  ]);
+  // The regex-after-`)` cases are a real ambiguity: listed for review.
+  const result = checkOne('function A() {\n  return <a onClick={() => { if (ok) /{/.test(s); }} href="ef-l1" className="ef-c">x</a>;\n}\n', "jsx");
+  assert.equal(result.status, 3, result.stdout);
+  assert.equal(reviewLines(result.stdout).length, 1, result.stdout);
+  // Plain JSX handlers are not.
+  for (const [text, extension] of [['<a onClick={() => setW((a + b) / 2)} title={`x`} href="ef-l8">x</a>', "jsx"], ['<a onClick={() => { a = b / c; }} href="ef-k24">x</a>', "tsx"], ['} }\n<a onClick={go} href="ef-k17">x</a>', "tsx"]]) {
+    const clean = checkOne(text, extension);
+    assert.equal(reviewLines(clean.stdout).length, 0, `${text}\n${clean.stdout}`);
+  }
+});
+
+test("a <name in script code with a URL attribute after it is reviewed and left unrewritten", () => {
+  for (const [text, extension, value] of [
+    ['const r = n <a href="ef-p1" data-x="1">;', "js", '"ef-p1"'],
+    ['const r = n <a title="t" src="ef-p2.png">;', "ts", '"ef-p2.png"'],
+    ['let r = n <a href="ef-p3" />', "fs", '"ef-p3"']
+  ]) {
+    assert.ok(migrateText(text, extension).includes(value), text);
+    const result = checkOne(text, extension);
+    assert.equal(result.status, 3, `${text}\n${result.stdout}`);
+    assert.match(result.stdout, /sample\.\w+:1 a <name here may be a tag; its src\/href value was left unrewritten/);
+  }
+  // A comparison followed by script, not attributes, is not reviewed.
+  const clean = checkOne('if (a <b && c) data = "ef-card";\nlet ok = a <b && c\n', "js");
+  assert.equal(reviewLines(clean.stdout).length, 0, clean.stdout);
+});
+
+test("a {...} group that closes on the last character of the file is closed", () => {
+  for (const [text, extension] of [['x = <a href="ef-e1" onClick={go}', "jsx"], ['<a href="ef-e2" on:click={go}', "svelte"]]) {
+    const result = checkOne(text, extension);
+    assert.equal(reviewLines(result.stdout).length, 0, `${text}\n${result.stdout}`);
+    assert.ok(migrateText(text, extension).includes('"ef-e'), text);
+  }
+});
+
+test("performance: long lines of [href= and unclosed /[ stay under 2 s each", () => {
+  for (const [label, extension, text] of [
+    ["[href= x100,000 on one line", "css", "[href=".repeat(100000)],
+    ["[data= x50,000 on one line in script", "js", "x[data=".repeat(50000)],
+    ["{ then x=/[ x100,000 in HTML", "html", '<a href="ef-x">\n{' + "x=/[".repeat(100000)],
+    ["x=/[ x100,000 in script", "js", '<a href="ef-x">\n' + "x=/[".repeat(100000)]
+  ]) {
+    const { result, seconds } = timed(text, extension);
+    assert.ok(result.status === 0 || result.status === 3, `${label}: ${result.stderr}`);
     assert.ok(seconds < 2, `${label}: took ${seconds.toFixed(2)} s; expected under 2 s`);
   }
 });

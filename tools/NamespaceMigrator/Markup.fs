@@ -5,6 +5,7 @@ module Forma.NamespaceMigrator.Markup
 
 open System
 open System.Text.RegularExpressions
+open Forma.NamespaceMigrator.Lexer
 
 let private regex pattern = Regex(pattern, RegexOptions.CultureInvariant ||| RegexOptions.Compiled ||| RegexOptions.Multiline)
 
@@ -39,221 +40,20 @@ let rec private skipQuoted (text: string) (limit: int) (escapes: bool) (quote: c
     elif text[pos] = quote then pos + 1
     else skipQuoted text limit escapes quote (pos + 1)
 
-/// How a file's text outside markup tags reads: markup text (HTML, Razor,
-/// Vue, Svelte, Markdown, CSS, JSON), where every `<name` starts a tag and
-/// only `{...}` holds script; or script (JS, TS, F#), lexed throughout, with
-/// JSX elements only where `jsx` is set (JS, JSX, TSX).
-type Syntax =
-    | MarkupText
-    | Script of jsx: bool
-
-/// One level of the brace lexer's context.
-[<RequireQualifiedAccess>]
-type private Frame =
-    /// Script inside `{` at `start` (-1: a script file's top level).
-    | Code of start: int
-    /// Template-literal text.
-    | Template
-    /// A JSX opening tag's attributes.
-    | JsxTag
-    /// A JSX element's children (text, not script).
-    | JsxChildren
-
-let private isIdentifier (c: char) = Char.IsLetterOrDigit c || c = '_' || c = '$'
-
-/// Words after which `/` opens a regular expression and `<` a JSX element.
-let private operatorWords =
-    Collections.Generic.HashSet<string>(
-        [ "return"; "typeof"; "case"; "do"; "else"; "in"; "of"; "new"; "delete"; "void"; "throw"; "yield"; "await"; "default" ]
-    )
-
-/// The index of the line end at or after `pos`, or the end of the text.
-let private lineEnd (text: string) (pos: int) =
-    let i = text.IndexOf('\n', pos)
-    if i < 0 then text.Length else i
-
-/// A script string: a backslash escapes, and it ends at its quote or, unclosed,
-/// at the line end (a JS string cannot span lines), so a stray quote never
-/// swallows more than its line.
-let private skipScriptString (text: string) (quote: char) (pos: int) =
-    let rec loop i =
-        if i >= text.Length || text[i] = '\n' then i
-        elif text[i] = '\\' then loop (i + 2)
-        elif text[i] = quote then i + 1
-        else loop (i + 1)
-    loop pos
-
-/// A regular-expression literal whose `/` is at `pos`: the index after its
-/// flags, or None when no closing `/` comes before the line end.
-let private skipRegex (text: string) (pos: int) =
-    let rec loop i inClass =
-        if i >= text.Length || text[i] = '\n' then None
-        else
-            match text[i] with
-            | '\\' -> loop (i + 2) inClass
-            | '[' -> loop (i + 1) true
-            | ']' -> loop (i + 1) false
-            | '/' when not inClass ->
-                let mutable j = i + 1
-                while j < text.Length && Char.IsLetter text[j] do j <- j + 1
-                Some j
-            | _ -> loop (i + 1) inClass
-    loop (pos + 1) false
-
-/// The end of a JSX tag name that starts at `pos` (a letter), when it is
-/// followed by whitespace, `/` or `>` as a tag name must be.
-let private jsxName (text: string) (pos: int) =
-    let mutable j = pos
-    while j < text.Length && (Char.IsLetterOrDigit text[j] || text[j] = ':' || text[j] = '.' || text[j] = '_' || text[j] = '-') do
-        j <- j + 1
-    if j < text.Length && (Char.IsWhiteSpace text[j] || text[j] = '/' || text[j] = '>') then Some j else None
-
-/// Where every `{...}` group ends, from one pass over the text. Inside braces
-/// (and throughout a script file) the text is lexed as script: strings,
-/// template literals, `//` and `/* */` comments and regular-expression
-/// literals are skipped, and in JS, JSX and TSX a JSX element's children are
-/// text, so a quote in `/* don't */`, `/'/g` or `<p>It's</p>` never hides a
-/// closing brace. An unclosed `{` ends at the end of the text. The pass is
-/// linear, and the tag scan looks groups up here.
-let private braceEnds (syntax: Syntax) (text: string) =
-    let ends = Collections.Generic.Dictionary<int, int>()
-    let jsx = match syntax with Script jsx -> jsx | MarkupText -> false
-    let stack = Collections.Generic.Stack<Frame>()
-    match syntax with
-    | Script _ -> stack.Push(Frame.Code -1)
-    | MarkupText -> ()
-    let mutable pos = 0
-    // Whether the next script token starts an expression (so `/` opens a
-    // regular expression and `<` a JSX element).
-    let mutable expression = true
-    let openBrace () =
-        stack.Push(Frame.Code pos)
-        pos <- pos + 1
-        expression <- true
-    while pos < text.Length do
-        let c = text[pos]
-        if stack.Count = 0 then
-            (if c = '{' then openBrace () else pos <- pos + 1)
-        else
-            match stack.Peek() with
-            | Frame.Code start ->
-                let next = if pos + 1 < text.Length then text[pos + 1] else '\000'
-                match c with
-                | '"' | '\'' ->
-                    pos <- skipScriptString text c (pos + 1)
-                    expression <- false
-                | '`' ->
-                    stack.Push Frame.Template
-                    pos <- pos + 1
-                | '/' when next = '/' -> pos <- lineEnd text pos
-                | '/' when next = '*' ->
-                    let close = text.IndexOf("*/", pos + 2, StringComparison.Ordinal)
-                    pos <- if close < 0 then text.Length else close + 2
-                | '/' when expression ->
-                    match skipRegex text pos with
-                    | Some after ->
-                        pos <- after
-                        expression <- false
-                    | None -> pos <- pos + 1
-                | '<' when jsx && expression && (next = '>' || Char.IsLetter next) ->
-                    if next = '>' then
-                        stack.Push Frame.JsxChildren
-                        pos <- pos + 2
-                    else
-                        match jsxName text (pos + 1) with
-                        | Some after ->
-                            stack.Push Frame.JsxTag
-                            pos <- after
-                        | None ->
-                            pos <- pos + 1
-                            expression <- true
-                | '{' -> openBrace ()
-                | '}' ->
-                    if start >= 0 then
-                        ends[start] <- pos + 1
-                        stack.Pop() |> ignore
-                    pos <- pos + 1
-                    expression <- false
-                | ')' | ']' ->
-                    pos <- pos + 1
-                    expression <- false
-                | c when isIdentifier c ->
-                    let first = pos
-                    while pos < text.Length && isIdentifier text[pos] do pos <- pos + 1
-                    // Operator words are 2 to 6 letters: skip the lookup for others.
-                    let length = pos - first
-                    expression <- length >= 2 && length <= 6 && operatorWords.Contains(text.Substring(first, length))
-                | c when Char.IsWhiteSpace c -> pos <- pos + 1
-                | _ ->
-                    pos <- pos + 1
-                    expression <- true
-            | Frame.Template ->
-                match c with
-                | '\\' -> pos <- pos + 2
-                | '`' ->
-                    stack.Pop() |> ignore
-                    pos <- pos + 1
-                    expression <- false
-                | '$' when pos + 1 < text.Length && text[pos + 1] = '{' ->
-                    pos <- pos + 1
-                    openBrace ()
-                | _ -> pos <- pos + 1
-            | Frame.JsxTag ->
-                match c with
-                | '"' | '\'' ->
-                    let close = text.IndexOf(c, pos + 1)
-                    pos <- if close < 0 then text.Length else close + 1
-                | '{' -> openBrace ()
-                | '/' when pos + 1 < text.Length && text[pos + 1] = '>' ->
-                    stack.Pop() |> ignore
-                    pos <- pos + 2
-                    expression <- false
-                | '>' ->
-                    stack.Pop() |> ignore
-                    stack.Push Frame.JsxChildren
-                    pos <- pos + 1
-                | _ -> pos <- pos + 1
-            | Frame.JsxChildren ->
-                let next = if pos + 1 < text.Length then text[pos + 1] else '\000'
-                match c with
-                | '{' -> openBrace ()
-                | '<' when next = '/' ->
-                    let close = text.IndexOf('>', pos)
-                    stack.Pop() |> ignore
-                    pos <- if close < 0 then text.Length else close + 1
-                    expression <- false
-                | '<' when next = '>' ->
-                    stack.Push Frame.JsxChildren
-                    pos <- pos + 2
-                | '<' when Char.IsLetter next ->
-                    match jsxName text (pos + 1) with
-                    | Some after ->
-                        stack.Push Frame.JsxTag
-                        pos <- after
-                    | None -> pos <- pos + 1
-                | _ -> pos <- pos + 1
-    for frame in stack do
-        match frame with
-        | Frame.Code start when start >= 0 -> ends[start] <- text.Length
-        | _ -> ()
-    ends
-
-/// Where every `{` ends by brace depth alone, ignoring strings: the fallback
-/// for a `{` the lexer skipped (inside a script string or comment, such as
-/// `'<a onclick="{x}" href="…">'`). Built once, on first use; linear.
-let private plainBraceEnds (text: string) =
-    let ends = Collections.Generic.Dictionary<int, int>()
-    let opens = Collections.Generic.Stack<int>()
-    for i in 0 .. text.Length - 1 do
-        match text[i] with
-        | '{' -> opens.Push i
-        | '}' when opens.Count > 0 -> ends[opens.Pop()] <- i + 1
-        | _ -> ()
-    for start in opens do ends[start] <- text.Length
-    ends
-
 /// Brace-group ends: the lexer's table, then the plain fallback.
-type private Braces = { Lexed: Collections.Generic.Dictionary<int, int>; Plain: Lazy<Collections.Generic.Dictionary<int, int>> }
+type private Braces =
+    { Lexed: Collections.Generic.Dictionary<int, int>
+      Plain: Lazy<Collections.Generic.Dictionary<int, int>>
+      Guesses: int[] }
+
+/// Whether a `{...}` group from `start` to `finish` is uncertain: never
+/// closed, or spanning a place where the lexer guessed.
+let private uncertainGroup (braces: Braces) (text: string) (start: int) (finish: int) =
+    if finish > text.Length then true
+    else
+        let i = Array.BinarySearch(braces.Guesses, start)
+        let i = if i < 0 then ~~~i else i
+        i < braces.Guesses.Length && braces.Guesses[i] < finish
 
 let private skipBraces (braces: Braces) (start: int) =
     match braces.Lexed.TryGetValue start with
@@ -268,7 +68,7 @@ let private attributeValue (braces: Braces) (text: string) (limit: int) (pos: in
         match text[pos] with
         | '{' ->
             let finish = skipBraces braces pos
-            (pos, min finish limit), finish, finish >= text.Length
+            (pos, min finish limit), min finish text.Length, uncertainGroup braces text pos finish
         | '"' | '\'' as quote ->
             // Razor: "@Url.Action("ef-index")" holds C# strings inside
             // parentheses. A Razor expression ends at its line end at most, so
@@ -310,7 +110,7 @@ let private tagLocations (braces: Braces) (text: string) (start: int) =
             | '"' | '\'' as quote -> loop (skipQuoted text limit false quote (pos + 1)) acc
             | '{' ->
                 let finish = skipBraces braces pos
-                if finish >= text.Length then acc, true else loop finish acc
+                if uncertainGroup braces text pos finish then acc, true else loop finish acc
             | c when Char.IsWhiteSpace c ->
                 let m = urlAttribute.Match(text, pos + 1)
                 if m.Success && m.Index + m.Length <= limit then
@@ -320,53 +120,113 @@ let private tagLocations (braces: Braces) (text: string) (start: int) =
             | _ -> loop (pos + 1) acc
     loop start []
 
-/// Characters that may come before a tag in script: an operator or opening
-/// punctuation (`= <a`, `(<a`, `&& <a`, `? <a :`), a closing `>` or `}` (JSX
-/// children) or a quote (markup in a string, `'<a href="…">'`).
-let private beforeTag = "(=,?:{[&|!;>}'\"`+"
+/// Whether `c` may start an attribute name, including framework forms
+/// (`:href`, `@click`, `[src]`, `(click)`, `#ref`, `{...spread}` aside).
+let private isAttributeStart (c: char) =
+    Char.IsLetter c || c = '_' || c = ':' || c = '@' || c = '[' || c = '(' || c = '#'
 
-/// Characters of prose, walked back over to find what a word before a tag follows.
-let private isProse (c: char) =
-    Char.IsLetterOrDigit c || c = ' ' || c = '\t' || c = '.' || c = ',' || c = '!' || c = '?' || c = '\'' || c = '"' || c = '-'
+let private isAttributeChar (c: char) =
+    Char.IsLetterOrDigit c || c = '_' || c = ':' || c = '.' || c = '-' || c = '@' || c = '[' || c = ']' || c = '(' || c = ')' || c = '#'
 
-/// Whether `<name` at `index` may start a tag. In markup text, always. In
-/// script, `<` after an operand (`a <b && c`, `i <n )`, `Array<Foo | Bar`) is
-/// a comparison or a type argument, not a tag, so the text after it is not
-/// read as attributes: a tag must start its line or follow an operator,
-/// opening punctuation, `return`-like word, quote, `>` or `}`. A word before it
-/// is JSX text only when prose leads back to a `>` or `}` (`<p>See <a …>`);
-/// in TS and F# (no JSX) that walk stops at the line start. The walk reads at
-/// most 256 characters, so the check is constant time.
-let private mayStartTag (syntax: Syntax) (text: string) (index: int) =
-    match syntax with
-    | MarkupText -> true
-    | Script jsx ->
-        let mutable j = index - 1
-        while j >= 0 && (text[j] = ' ' || text[j] = '\t' || text[j] = '\r') do j <- j - 1
-        if j < 0 || text[j] = '\n' || beforeTag.IndexOf text[j] >= 0 then true
-        elif isIdentifier text[j] then
-            let wordEnd = j + 1
-            while j >= 0 && isIdentifier text[j] do j <- j - 1
-            if operatorWords.Contains(text.Substring(j + 1, wordEnd - j - 1)) then true
-            else
-                let bound = max 0 (index - 256)
-                while j >= bound && (isProse text[j] || (jsx && (text[j] = '\n' || text[j] = '\r'))) do j <- j - 1
-                j >= bound && (text[j] = '>' || text[j] = '}')
-        else false
+/// For a `<name` the lexer did not place where markup stands (script code
+/// after an operand): the URL attribute values that follow it through
+/// attribute syntax only (`name`, `name=value`, `name="…"`, `name={…}`). Any
+/// other character (`&&`, `)`, `;`, `|`) ends it, so `if (a <b && c) data =
+/// "ef-card"` yields none. A value found here is masked and the tag reported,
+/// never rewritten: the tool cannot tell whether this is a tag. In TS and F#
+/// (no JSX) markup in code can only be a misread string, which is one line,
+/// so there the attributes end at the line end (`if a <b then` / `let data =
+/// "ef-fs"` on the next line is script).
+let private possibleTagLocations (multiline: bool) (braces: Braces) (text: string) (start: int) =
+    let limit = min text.Length (start + tagScanLimit)
+    let rec loop pos acc =
+        if pos >= limit then acc
+        elif text[pos] = '\n' && not multiline then acc
+        elif Char.IsWhiteSpace text[pos] then
+            let next = pos + 1
+            if next < limit && isAttributeStart text[next] then
+                let m = urlAttribute.Match(text, next)
+                if m.Success && m.Index + m.Length <= limit then
+                    let span, after, unclosedValue = attributeValue braces text limit (m.Index + m.Length)
+                    if unclosedValue then span :: acc else loop after (span :: acc)
+                else
+                    let mutable j = next
+                    while j < limit && isAttributeChar text[j] do j <- j + 1
+                    let mutable k = j
+                    while k < limit && (text[k] = ' ' || text[k] = '\t') do k <- k + 1
+                    if k < limit && text[k] = '=' then
+                        k <- k + 1
+                        while k < limit && Char.IsWhiteSpace text[k] do k <- k + 1
+                        if k < limit && (text[k] = '"' || text[k] = '\'' || text[k] = '{') then
+                            let _, after, unclosedValue = attributeValue braces text limit k
+                            if unclosedValue then acc else loop after acc
+                        else
+                            while k < limit && not (Char.IsWhiteSpace text[k]) && text[k] <> '>' && text[k] <> '<' do k <- k + 1
+                            loop k acc
+                    else loop j acc
+            else loop next acc
+        else acc
+    loop start []
 
-/// The (start, end) spans of URL-valued attribute values inside markup tags,
-/// and the indices of tags that could not be read to their end.
+/// How far after an uncertain tag URL-attribute values are left unrewritten.
+let private uncertainRegion = 4096
+
+/// What the markup scan found: URL value spans to mask, tags that could not be
+/// read to their end, and `<name`s that may be tags (outside a place where
+/// markup stands) with a URL attribute after them. The last two are reported
+/// for review; their values are masked, never rewritten.
+type MarkupScan =
+    { Spans: (int * int) list
+      Uncertain: int list
+      PossibleTags: int list }
+
+/// Scan every `<name` in the text. In markup text each one is a tag. In script,
+/// the lexer's own state decides: a JSX element, JSX children, a string, a
+/// template literal or a comment holds markup; a `<` in script code after an
+/// operand does not, and is only checked for a URL attribute after it.
 let markupScan (syntax: Syntax) (text: string) =
     let starts = tagStart.Matches text
-    if starts.Count = 0 then [], []
+    if starts.Count = 0 then { Spans = []; Uncertain = []; PossibleTags = [] }
     else
-        let braces = { Lexed = braceEnds syntax text; Plain = lazy (plainBraceEnds text) }
+        let ends, markup, guesses = lex syntax text
+        let braces = { Lexed = ends; Plain = lazy (plainBraceEnds text); Guesses = guesses }
         let results =
             [ for m in starts do
-                  if mayStartTag syntax text m.Index then
-                      let spans, uncertain = tagLocations braces text (m.Index + m.Length)
-                      yield m.Index, spans, uncertain ]
-        [ for _, spans, _ in results do yield! spans ], [ for index, _, uncertain in results do if uncertain then yield index ]
+                  let after = m.Index + m.Length
+                  match syntax with
+                  | Script jsx when not (markup.Contains m.Index) ->
+                      let spans = possibleTagLocations jsx braces text after
+                      yield m.Index, spans, false, not spans.IsEmpty
+                  | _ ->
+                      let spans, uncertain = tagLocations braces text after
+                      yield m.Index, spans, uncertain, false ]
+        // An uncertain tag cannot be trusted to show where its `href` is, so
+        // every URL-attribute-shaped value in the next 4 KiB is masked too
+        // (a cursor keeps the total linear).
+        let mutable cursor = 0
+        let loose =
+            [ for index, _, uncertain, _ in results do
+                  if uncertain then
+                      let regionEnd = min text.Length (index + uncertainRegion)
+                      let mutable pos = max cursor index
+                      while pos < regionEnd do
+                          if Char.IsWhiteSpace text[pos] then
+                              let m = urlAttribute.Match(text, pos + 1)
+                              if m.Success && m.Index + m.Length <= regionEnd then
+                                  let valueStart = m.Index + m.Length
+                                  let finish =
+                                      if valueStart < regionEnd && text[valueStart] = '{' then min regionEnd (skipBraces braces valueStart)
+                                      else
+                                          let _, after, _ = attributeValue braces text regionEnd valueStart
+                                          after
+                                  yield valueStart, finish
+                                  pos <- max (pos + 1) finish
+                              else pos <- pos + 1
+                          else pos <- pos + 1
+                      cursor <- max cursor regionEnd ]
+        { Spans = loose @ [ for _, spans, _, _ in results do yield! spans ]
+          Uncertain = [ for index, _, uncertain, _ in results do if uncertain then yield index ]
+          PossibleTags = [ for index, _, _, possible in results do if possible then yield index ] }
 
 /// The (start, end) spans of URL-valued attribute values inside markup tags.
-let markupLocations (syntax: Syntax) (text: string) = fst (markupScan syntax text)
+let markupLocations (syntax: Syntax) (text: string) = (markupScan syntax text).Spans

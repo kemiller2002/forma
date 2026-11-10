@@ -76,21 +76,30 @@ location: `const src = "ef-button"` is migrated.
 
 How tags are read, and its limits:
 
-- In JS, TS and F# files a `<name` starts a tag only where one can stand: at
-  the start of a line, after an operator, opening bracket, quote, `return`,
-  `>` or `}`, or in JSX text (`<p>See <a href="...">`). After an operand it is
-  a comparison or a type argument (`if (a <b && c) data = "ef-card"` is
-  migrated). In HTML, Razor, Vue, Svelte, Markdown, CSS and JSON every
-  `<name` starts a tag, so prose such as `a <b and data = ef-x` in Markdown
-  reads `data = ef-x` as an attribute and leaves it.
+- In JS, TS and F# files the lexer decides where markup stands: a JSX
+  element (after `=`, `(`, `=>`, `return`, `:`, `?`, `&&` and the like), JSX
+  children of any length and wording (`<p>Price: $5. See <a href="...">`),
+  strings (`el.innerHTML = 'Click <a href="...">'`, F# strings including
+  triple-quoted ones), template literals (multi-line Lit ``html`...` `` templates),
+  regular expressions and comments. There every `<name` is a tag. In HTML,
+  Razor, Vue, Svelte, Markdown, CSS and JSON every `<name` is a tag, so prose
+  such as `a <b and data = ef-x` in Markdown reads `data = ef-x` as an
+  attribute and leaves it.
+- A `<name` in script code after an operand is a comparison or a type
+  argument (`if (a <b && c) data = "ef-card"` is migrated). If attribute
+  syntax and a URL attribute follow it (`n <a href="ef-x">`), the tool cannot
+  tell: the value is left unrewritten and listed as `review: FILE:LINE a
+  <name here may be a tag`, and `--check` exits 3.
 - `{...}` expressions are lexed as script (strings, template literals,
   comments, regular expressions and JSX text are skipped). A tag whose `{`
-  never closes, or that is longer than 1 MiB, is listed as
-  `review: FILE:LINE a tag here could not be read to its end` and `--check`
-  exits 3. The lexer is not a full parser: unusual script (a regular
-  expression right after `)`, a TSX generic arrow `<T extends U>(...)`) can
-  still be misread without a review line, so read the `--dry-run` diff of
-  files with complex JSX.
+  never closes, that spans a place where the lexer had to guess (an
+  unclosed string, a `/` that reads both as division and as a regular
+  expression holding a brace or quote, such as `if (ok) /{/.test(s)`), or
+  that is longer than 1 MiB, is listed as `review: FILE:LINE a tag here could
+  not be read with certainty`; URL attribute values in the next 4 KiB are
+  left unrewritten and `--check` exits 3. The lexer is not a full parser, so
+  a misreading it does not notice could still go unreported: read the
+  `--dry-run` diff of files with complex JSX.
 
 It always skips `node_modules`, `.git`, `bin` and `obj`, and by default also
 `vendor`, `bower_components`, `jspm_packages`, `dist` and `wwwroot/lib`

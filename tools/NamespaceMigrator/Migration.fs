@@ -30,6 +30,7 @@ module Forma.NamespaceMigrator.Migration
 
 open System
 open System.Text.RegularExpressions
+open Forma.NamespaceMigrator.Lexer
 open Forma.NamespaceMigrator.Markup
 
 let private options = RegexOptions.CultureInvariant ||| RegexOptions.Compiled ||| RegexOptions.Multiline
@@ -174,9 +175,10 @@ let private selectorToken = regex @"(?<customproperty>(?<![A-Za-z0-9_$\-])--ef-)
 
 /// URL-valued attribute selectors keep their value: `img[src=ef-a.png]`, in
 /// any letter case (`a[HREF="ef-x"]`), in a selector argument or anywhere else
-/// (`const sel = 'a[href="ef-x"]'`, CSS `a[href^="ef-"]`).
+/// (`const sel = 'a[href="ef-x"]'`, CSS `a[href^="ef-"]`). A value is read up
+/// to 512 characters, so a long line of unclosed `[href=` costs linear time.
 let private selectorLocation =
-    Regex(@"\[\s*(?:src|href|srcset|action|formaction|poster|data|cite|background|xlink:href|manifest|ping)\s*[~|^$*]?=\s*(?<value>[^\]\n]*)\]", RegexOptions.CultureInvariant ||| RegexOptions.IgnoreCase)
+    Regex(@"\[\s*(?:src|href|srcset|action|formaction|poster|data|cite|background|xlink:href|manifest|ping)\s*[~|^$*]?=\s*(?<value>[^\]\n]{0,512})\]", RegexOptions.CultureInvariant ||| RegexOptions.IgnoreCase)
 
 let private selectorProtected (value: string) =
     [ for m in selectorLocation.Matches value -> m.Groups["value"].Index, m.Groups["value"].Index + m.Groups["value"].Length ]
@@ -254,7 +256,7 @@ let private ambiguousStrings (text: string) =
 
 /// The markup scan of the last text, reused: a file's rewrite, report and
 /// review list all scan the same text.
-let mutable private lastScan : (Kind * string * ((int * int) list * int list)) option = None
+let mutable private lastScan : (Kind * string * MarkupScan) option = None
 
 let private scanMarkup (kind: Kind) (text: string) =
     match lastScan with
@@ -272,7 +274,7 @@ let private maskedSpans (kind: Kind) (text: string) =
                   for m in pattern.Matches text -> m.Groups["target"].Index, m.Groups["target"].Index + m.Groups["target"].Length ]
         | Other | JsxScript | PlainScript -> []
     links
-    @ fst (scanMarkup kind text)
+    @ (scanMarkup kind text).Spans
     @ [ for m in selectorLocation.Matches text -> m.Groups["value"].Index, m.Groups["value"].Index + m.Groups["value"].Length ]
     @ [ for index, length, _, _ in ambiguousStrings text -> index, index + length ]
     // Selector API arguments are rewritten separately (rewriteSelectorArguments).
@@ -411,12 +413,15 @@ let ambiguous (text: string) =
     |> List.filter (fun (_, _, _, isAmbiguous) -> isAmbiguous)
     |> List.map (fun (index, _, value, _) -> lineOf index + 1, value)
 
-/// Tags whose `{...}` expression is never closed, or that the text ends
-/// inside: an `href`/`src` after that point is not protected, so the tag is
-/// reported for review (1-based lines).
-let uncertainTags (kind: Kind) (text: string) =
+/// Tags to review (1-based lines): `Uncertain`, a tag whose `{...}`
+/// expression is never closed or that is over 1 MiB (an `href`/`src` after
+/// that point is not protected); `PossibleTags`, a `<name` in script code
+/// that may or may not be a tag, with a URL attribute after it that was left
+/// unrewritten.
+let tagReview (kind: Kind) (text: string) =
     let lineOf = lineIndex (lines text)
-    snd (scanMarkup kind text) |> List.map (fun index -> lineOf index + 1)
+    let scan = scanMarkup kind text
+    scan.Uncertain |> List.map (fun index -> lineOf index + 1), scan.PossibleTags |> List.map (fun index -> lineOf index + 1)
 
 /// Whether a text still holds a namespace token (for files of a kind the
 /// migrator does not rewrite: they are reported, never silently passed).
