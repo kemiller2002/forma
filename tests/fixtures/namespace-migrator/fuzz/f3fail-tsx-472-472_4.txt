@@ -1,0 +1,26 @@
+label: for (;;) { break label; }
+const s = "it's {";
+const n = s.split(/[/]/);
+const S472_0 = '<a onclick="go()" href="ef-T472_0" class="ef-C472_0">x</a>';
+function q() { return /{/.test(z); }
+type C<T> = T extends string ? { a: '}' } : never;
+const df = <T = string,>(x: T) => x;
+export const A472_1 = () => <a onClick={() => s.replace(/"/g, "")} href="ef-T472_1" className="ef-C472_1" />;
+const t = 'a "}" b';
+@Component({ selector: 'x', styles: ['a { color: red }'] })
+class Cmp {}
+const of = 4; const y1 = of / 2;
+const D472_2 = [<a onClick={go} href="ef-T472_2" className="ef-C472_2">x</a>];
+const kf = <K extends keyof X>(k: K) => k;
+label: for (;;) { break label; }
+const asy = async <T,>(x: T) => x;
+const S472_3 = `<a data-x="${y}" href="ef-T472_3" class="ef-C472_3">x</a>`;
+const asy = async <T,>(x: T) => x;
+const t = 'a "}" b';
+const k = a?.b / c?.d;
+@decorate()
+class E472_4 { render() { return <svg:a onClick={() => n! / 2} xlink:href="ef-T472_4" className="ef-C472_4"/>; } }
+class K { #p = '{'; static s = /}/; @dec() m() { return '}'; } }
+const ent = <p>&lt;a&gt; &#123; {'}'}</p>;
+// don't { }
+el.innerHTML = '<a onclick="go()" href="ef-T472_5" class="ef-C472_5">x</a>';

@@ -104,3 +104,15 @@
 | WI-0046 | Forma 1.0.0: brand neutrality (BNR-001, EDS-ADR-002) and ef- to forma- namespace rename (FORMA-NS-001) | complete | forma, branding, breaking-change, namespace | high |
 | WI-0047 | Forma 1.0.0 review fixes (PR #182): switch contrast, codemod contexts and coverage, neutral fonts, runtime text, release race | complete | forma, branding, namespace, review | high |
 | WI-0048 | Forma 1.0.1: NamespaceMigrator false negatives (context-aware location skips, class selectors, typed destructuring, non-UTF-8 review) | complete | forma, namespace, codemod | medium |
+| WI-0049 | Forma 1.0.2: NamespaceMigrator re-review fixes (JSX tag scanning, dotfiles, whole-file reporting, Markdown reference links, Razor, inventory) | complete | forma, namespace, codemod | medium |
+| WI-0050 | Forma 1.0.2 review fixes (PR #184): ambiguous dotfile selectors to review, bounded tag scan, linear reporting, attribute escapes, dot-directories | complete | forma, namespace, codemod, review | medium |
+| WI-0051 | Forma 1.0.2 re-review fixes (PR #184): keep tag spans on early stop, protect selector attribute values, word-prefixed file names | complete | forma, namespace, codemod, review | medium |
+| WI-0052 | Forma 1.0.2 re-review fixes (PR #184): drop script stop characters, ambiguous prefixes, nested selector quotes | complete | forma, namespace, codemod, review | medium |
+| WI-0053 | Split NamespaceMigrator tag scanner to clear SDE-STRUCT-001 (Forma 1.0.2) | complete | forma-1.0.2 | high |
+| WI-0054 | Forma 1.0.2 re-review 4: brace lexer, script tag starts, linear scans | complete | forma-1.0.2 | high |
+| WI-0055 | Forma 1.0.2 re-review 5: lexer-state tag starts, review unsure tags, bounded scans | complete | forma-1.0.2 | high |
+| WI-0056 | Forma 1.0.2 re-review 6: uncertain fallback braces, per-value suppression review, spread | complete | forma-1.0.2 | high |
+| WI-0057 | Forma 1.0.2 re-review 7: comments in JSX tags, regex after !, token-gated review noise | complete | forma-1.0.2 | high |
+| WI-0058 | Forma 1.0.2 re-review 8: comments only in JSX tags, whole-extent token gate, spread tokens | complete | forma-1.0.2 | high |
+| WI-0059 | Forma 1.0.2 re-review 9: linear tag-run check, extent only for the tag's own attributes | complete | forma-1.0.2 | high |
+| WI-0060 | Forma 1.0.2 re-review 10: markup extent not cut by < in the tag's own values | complete | forma-1.0.2 | high |

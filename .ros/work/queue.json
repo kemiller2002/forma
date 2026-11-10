@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 49,
+  "nextSeq": 61,
   "items": [
     {
       "id": "WI-0001",
@@ -1263,6 +1263,293 @@
       },
       "source": "manual",
       "sourceReference": null
+    },
+    {
+      "id": "WI-0049",
+      "title": "Forma 1.0.2: NamespaceMigrator re-review fixes (JSX tag scanning, dotfiles, whole-file reporting, Markdown reference links, Razor, inventory)",
+      "description": "Source: .praxis/inbox/documents/2026-11-09-FORMA-1.0.2-CODEMOD.md",
+      "tags": [
+        "forma",
+        "namespace",
+        "codemod"
+      ],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-09T20:24:17.000Z",
+      "updatedAt": "2026-11-09T20:30:50.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0050",
+      "title": "Forma 1.0.2 review fixes (PR #184): ambiguous dotfile selectors to review, bounded tag scan, linear reporting, attribute escapes, dot-directories",
+      "description": "Source: .praxis/inbox/documents/2026-11-09-FORMA-1.0.2-REVIEW-01.md; follows WI-0049",
+      "tags": [
+        "forma",
+        "namespace",
+        "codemod",
+        "review"
+      ],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-09T21:38:25.000Z",
+      "updatedAt": "2026-11-09T21:46:10.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0051",
+      "title": "Forma 1.0.2 re-review fixes (PR #184): keep tag spans on early stop, protect selector attribute values, word-prefixed file names",
+      "description": "Source: .praxis/inbox/documents/2026-11-09-FORMA-1.0.2-REVIEW-02.md; follows WI-0050",
+      "tags": [
+        "forma",
+        "namespace",
+        "codemod",
+        "review"
+      ],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-09T22:29:44.000Z",
+      "updatedAt": "2026-11-09T22:40:21.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0052",
+      "title": "Forma 1.0.2 re-review fixes (PR #184): drop script stop characters, ambiguous prefixes, nested selector quotes",
+      "description": "Source: .praxis/inbox/documents/2026-11-09-FORMA-1.0.2-REVIEW-03.md; follows WI-0051",
+      "tags": [
+        "forma",
+        "namespace",
+        "codemod",
+        "review"
+      ],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-09T23:29:14.000Z",
+      "updatedAt": "2026-11-09T23:37:23.253Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0053",
+      "title": "Split NamespaceMigrator tag scanner to clear SDE-STRUCT-001 (Forma 1.0.2)",
+      "description": "CI Design system validation failed on b8c615e: sde verify --strict SDE-STRUCT-001, Migration.fs 509 physical lines. Move the markup tag scanner into Markup.fs; no behaviour change.",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T00:20:59.517Z",
+      "updatedAt": "2026-11-10T00:21:16.144Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "ci",
+      "sourceReference": "https://github.com/kemiller2002/forma/actions/runs/42721981244"
+    },
+    {
+      "id": "WI-0054",
+      "title": "Forma 1.0.2 re-review 4: brace lexer, script tag starts, linear scans",
+      "description": "Fix the four findings of the re-review of PR #184 at 80a6317 (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T02:16:53.009Z",
+      "updatedAt": "2026-11-10T02:41:00.093Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-09-FORMA-1.0.2-REVIEW-04.md"
+    },
+    {
+      "id": "WI-0055",
+      "title": "Forma 1.0.2 re-review 5: lexer-state tag starts, review unsure tags, bounded scans",
+      "description": "Fix the three findings of the re-review of PR #184 at 8806e97 (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T04:02:21.746Z",
+      "updatedAt": "2026-11-10T04:33:53.170Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-05.md"
+    },
+    {
+      "id": "WI-0056",
+      "title": "Forma 1.0.2 re-review 6: uncertain fallback braces, per-value suppression review, spread",
+      "description": "Fix the three findings of the re-review of PR #184 at 1815830 (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T05:50:37.750Z",
+      "updatedAt": "2026-11-10T06:08:57.953Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-06.md"
+    },
+    {
+      "id": "WI-0057",
+      "title": "Forma 1.0.2 re-review 7: comments in JSX tags, regex after !, token-gated review noise",
+      "description": "Fix the findings of the re-review of PR #184 at 4ee88c1 (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T07:18:36.576Z",
+      "updatedAt": "2026-11-10T10:50:48.244Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-07.md"
+    },
+    {
+      "id": "WI-0058",
+      "title": "Forma 1.0.2 re-review 8: comments only in JSX tags, whole-extent token gate, spread tokens",
+      "description": "Fix the findings of the re-review of PR #184 at c2271b3 (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T12:03:12.977Z",
+      "updatedAt": "2026-11-10T13:04:38.547Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-08.md"
+    },
+    {
+      "id": "WI-0059",
+      "title": "Forma 1.0.2 re-review 9: linear tag-run check, extent only for the tag's own attributes",
+      "description": "Fix the findings of the re-review of PR #184 at 710f72d (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T14:05:24.805Z",
+      "updatedAt": "2026-11-10T14:29:35.097Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-09.md"
+    },
+    {
+      "id": "WI-0060",
+      "title": "Forma 1.0.2 re-review 10: markup extent not cut by < in the tag's own values",
+      "description": "Fix the findings of the re-review of PR #184 at 770ffbf (see inbox document).",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T15:28:36.444Z",
+      "updatedAt": "2026-11-10T18:30:13.951Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-10.md"
     }
   ]
 }

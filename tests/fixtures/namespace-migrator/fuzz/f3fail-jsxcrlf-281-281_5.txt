@@ -1,0 +1,48 @@
+if (a <b && c) { go(); }
+@Component({ selector: 'x', styles: ['a { color: red }'] })
+class Cmp {}
+const g1 = f<string>(x);
+el.innerHTML = html`<a @click=${() => go("}")} href="ef-T281_0" class="ef-C281_0">`;
+const n = s.split(/[/]/);
+x = y
+/re/g.test(z);
+const nn = x! / 2;
+export const A281_1 = () => <a
+  onClick={() => f("}")}
+  {...rest}
+  href="ef-T281_1"
+  className="ef-C281_1"
+>x</a>;
+export abstract class B<T extends { a: string }> { }
+const t = 'a "}" b';
+const o = { a: 1 } as const;
+function B281_2() {
+  return (
+    <div>
+      <p>Read: see (the) <a
+  onClick={() => /[{]/.test(s)}
+  {...rest}
+  href="ef-T281_2"
+  className="ef-C281_2"
+>x</a></p>
+    </div>
+  );
+}
+if (a <b && c) { go(); }
+class K { #p = '{'; static s = /}/; @dec() m() { return '}'; } }
+export abstract class B<T extends { a: string }> { }
+const C281_3 = ok ? <Foo.Bar render={() => f("}")} src={"ef-T281_3"} className="ef-C281_3"/> : null;
+const n = s.split(/[/]/);
+export abstract class B<T extends { a: string }> { }
+const kf = <K extends keyof X>(k: K) => k;
+const C281_4 = ok ? <a
+  onClick={() => go()}
+  {...rest}
+  href="ef-T281_4"
+  className="ef-C281_4"
+>x</a> : null;
+if (a <b && c) { go(); }
+const m = s.replace(/'/g, "");
+const f = <T extends unknown>(x: T) => x;
+@decorate()
+class E281_5 { render() { return <svg:a onClick={() => n! / 2} xlink:href="ef-T281_5" className="ef-C281_5"/>; } }

@@ -6,3 +6,4 @@ ros.cmd text eol=crlf
 # The codemod fixture must keep its CRLF line endings and byte-order mark.
 tests/fixtures/namespace-migrator/**/bom-crlf.css -text
 tests/fixtures/namespace-migrator/**/latin1.css -text
+tests/fixtures/namespace-migrator/fuzz/*.txt -text

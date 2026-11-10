@@ -1,0 +1,33 @@
+function q() { return /{/.test(z); }
+const w = `${`${'}'}`}`;
+const w = `${`${'}'}`}`;
+el.innerHTML = '<a onclick="go()" href="ef-T388_0" class="ef-C388_0">x</a>';
+@Component({ selector: 'x', styles: ['a { color: red }'] })
+class Cmp {}
+const m = s.replace(/'/g, "");
+const of = 4; const y1 = of / 2;
+function B388_1() {
+  return (
+    <div>
+      <p>Read: see (the) <a onClick={go} href="ef-T388_1" className="ef-C388_1">x</a></p>
+    </div>
+  );
+}
+/* it's } { */
+enum E { A = '}', B = "{" }
+const g1 = f<string>(x);
+const C388_2 = ok ? <Foo.Bar render={() => go()} src={"ef-T388_2"} className="ef-C388_2"/> : null;
+const sat = { a: '}' } satisfies Rec;
+const g2 = new Map<string, { a: number }>();
+type C<T> = T extends string ? { a: '}' } : never;
+el.innerHTML = `<a data-x="${y}" href="ef-T388_3" class="ef-C388_3">x</a>`;
+const kf = <K extends keyof X>(k: K) => k;
+const k = a?.b / c?.d;
+const m = s.replace(/'/g, "");
+@decorate()
+class E388_4 { render() { return <a onClick={() => f("}")} href="ef-T388_4" className="ef-C388_4">x</a>; } }
+label: for (;;) { break label; }
+const v = i++ / 2;
+const m = s.replace(/'/g, "");
+@decorate()
+class E388_5 { render() { return <Foo.Bar render={() => n! / 2} src={"ef-T388_5"} className="ef-C388_5"/>; } }

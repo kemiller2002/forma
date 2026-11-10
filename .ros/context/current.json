@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-11-09T19:32:01.000Z",
+  "updatedAt": "2026-11-10T18:30:13.951Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -3222,6 +3222,485 @@
       },
       "completedAt": "2026-11-09T19:32:01.000Z",
       "conclusion": "Forma 1.0.1 codemod false negatives fixed; PR for coordinator review"
+    },
+    {
+      "id": "WI-0049",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Migration.fs"
+        },
+        {
+          "type": "implementation",
+          "path": "tools/catalog/inventory.mjs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-09T20:30:50.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261109T202419715Z-5b6c6646"
+      ],
+      "latestCheckpoint": {
+        "id": "589735e795f70bbeeec5f82e",
+        "recordedAt": "2026-11-09T20:30:47.000Z",
+        "executionId": "EXE-20261109T202419715Z-5b6c6646",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-1.0.2-codemod-fixes",
+        "commit": "14cc9de191784df987473bcfe2db80d85a345cf3",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/forma-1.0.2-codemod-fixes",
+        "remoteCommit": "14cc9de191784df987473bcfe2db80d85a345cf3",
+        "summary": "1.0.2 codemod fixes pushed at 14cc9de",
+        "nextAction": "Open PR, observe CI",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-09T20:30:50.000Z",
+      "conclusion": "Forma 1.0.2 codemod re-review fixes; PR for coordinator review"
+    },
+    {
+      "id": "WI-0050",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Migration.fs"
+        },
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Program.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-09T21:46:10.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261109T213831411Z-5b1bec53"
+      ],
+      "latestCheckpoint": {
+        "id": "f4a94282c0e40b583ef35f0f",
+        "recordedAt": "2026-11-09T21:46:08.000Z",
+        "executionId": "EXE-20261109T213831411Z-5b1bec53",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-1.0.2-codemod-fixes",
+        "commit": "2666a319ed8aba2848a4dd74a621fcfd83b26014",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/forma-1.0.2-codemod-fixes",
+        "remoteCommit": "2666a319ed8aba2848a4dd74a621fcfd83b26014",
+        "summary": "Review fixes pushed",
+        "nextAction": "Complete WI-0050; observe CI on PR #184",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-09T21:46:10.000Z",
+      "conclusion": "PR #184 review findings 1-5 resolved"
+    },
+    {
+      "id": "WI-0051",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Migration.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-09T22:40:21.000Z",
+      "telemetryExecutionIds": [
+        "EXE-20261109T222949586Z-db72efe6"
+      ],
+      "latestCheckpoint": {
+        "id": "a6cba2bbd59f1c2ee2c65bf5",
+        "recordedAt": "2026-11-09T22:40:19.000Z",
+        "executionId": "EXE-20261109T222949586Z-db72efe6",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-1.0.2-codemod-fixes",
+        "commit": "687a08fdc91e5b0f325bf13077015896aaf6856e",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/forma-1.0.2-codemod-fixes",
+        "remoteCommit": "687a08fdc91e5b0f325bf13077015896aaf6856e",
+        "summary": "Re-review fixes pushed",
+        "nextAction": "Complete WI-0051; observe CI on PR #184",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-09T22:40:21.000Z",
+      "conclusion": "PR #184 re-review findings A, B, C resolved"
+    },
+    {
+      "id": "WI-0052",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Migration.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-09T23:37:23.253Z",
+      "telemetryExecutionIds": [
+        "EXE-20261109T232931524Z-f66078bf"
+      ],
+      "completedAt": "2026-11-09T23:37:23.253Z",
+      "conclusion": "Re-review 3 findings 1-4 fixed in c62f46e; 35/35 namespace-migrator tests pass locally; fixtures byte-identical; namespace:check 0 of 491; CI pending"
+    },
+    {
+      "id": "WI-0053",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Markup.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-10T00:21:16.144Z",
+      "telemetryExecutionIds": [
+        "EXE-20261110T002111012Z-5e4f5a8e"
+      ],
+      "completedAt": "2026-11-10T00:21:16.144Z",
+      "conclusion": "Markup.fs split in 808d7fc73e35b2ae75596ce7123c32fb6a61b512; 35/35 migrator tests and sde verify --strict pass locally; CI pending"
+    },
+    {
+      "id": "WI-0054",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Markup.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator-lexing.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-10T02:41:00.093Z",
+      "telemetryExecutionIds": [
+        "EXE-20261110T021657971Z-9f57a059"
+      ],
+      "latestCheckpoint": {
+        "id": "4893e296da538f06eea7bd9b",
+        "recordedAt": "2026-11-10T02:40:52.065Z",
+        "executionId": "EXE-20261110T021657971Z-9f57a059",
+        "stepId": "STEP-REREVIEW4-102",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-1.0.2-codemod-fixes",
+        "commit": "2693d205b00840e0ee653fa924f9cc22a73f4caa",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/forma-1.0.2-codemod-fixes",
+        "remoteCommit": "2693d205b00840e0ee653fa924f9cc22a73f4caa",
+        "summary": "Pushed 2693d20: brace lexer, script tag starts, linear scans, LOW fixes; 41 migrator tests pass locally",
+        "nextAction": "Complete WI-0054, push .ros, wait for CI on PR #184",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-10T02:41:00.093Z",
+      "conclusion": "Re-review 4 findings 1-4 fixed in 2693d20; 41/41 migrator tests, fixtures byte-identical, namespace:check 0 of 491, sde verify --strict clean (local); CI pending"
+    },
+    {
+      "id": "WI-0055",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Lexer.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator-lexing.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-10T04:33:53.170Z",
+      "telemetryExecutionIds": [
+        "EXE-20261110T040223074Z-55be9f17"
+      ],
+      "latestCheckpoint": {
+        "id": "660ee025266d254a054227ee",
+        "recordedAt": "2026-11-10T04:33:44.480Z",
+        "executionId": "EXE-20261110T040223074Z-55be9f17",
+        "stepId": "STEP-REREVIEW5-102",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-1.0.2-codemod-fixes",
+        "commit": "5f6eabc4ca1427a59f85b6dd3cae28066d3e6480",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/forma-1.0.2-codemod-fixes",
+        "remoteCommit": "5f6eabc4ca1427a59f85b6dd3cae28066d3e6480",
+        "summary": "Pushed 5f6eabc4ca1427a59f85b6dd3cae28066d3e6480: lexer-state tag starts, review when unsure, bounded scans, EOF brace fix; 46 migrator tests pass locally",
+        "nextAction": "Complete WI-0055, push .ros, wait for CI on PR #184",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-10T04:33:53.170Z",
+      "conclusion": "Re-review 5 findings 1-3 fixed in 5f6eabc; 46/46 migrator tests, probes b1-b8, fixtures byte-identical, namespace:check 0 of 491, sde verify --strict clean (local); CI pending"
+    },
+    {
+      "id": "WI-0056",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Markup.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator-lexing.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-10T06:08:57.953Z",
+      "telemetryExecutionIds": [
+        "EXE-20261110T055039200Z-ce635fe1"
+      ],
+      "latestCheckpoint": {
+        "id": "3d2a7ebc2fbcd0a7ce169b70",
+        "recordedAt": "2026-11-10T06:08:49.672Z",
+        "executionId": "EXE-20261110T055039200Z-ce635fe1",
+        "stepId": "STEP-REREVIEW6-102",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-1.0.2-codemod-fixes",
+        "commit": "74e3fe3120ba3235ebaafc900b8a99463f6a36c4",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/forma-1.0.2-codemod-fixes",
+        "remoteCommit": "74e3fe3120ba3235ebaafc900b8a99463f6a36c4",
+        "summary": "Pushed 74e3fe3120ba3235ebaafc900b8a99463f6a36c4: fallback/lost-JSX braces uncertain, per-value suppression review, spread; 49 migrator tests, fuzz 2,000 files 0 silent (local)",
+        "nextAction": "Complete WI-0056, push .ros, wait for CI on PR #184",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-10T06:08:57.953Z",
+      "conclusion": "Re-review 6 findings 1-3 fixed in 74e3fe3; 49/49 migrator tests, probes b1-b11, reviewer fuzzer 1,000 tsx + 1,000 jsx with 0 silent rewrites, fixtures byte-identical, namespace:check 0 of 491, sde verify --strict clean (local); CI pending"
+    },
+    {
+      "id": "WI-0057",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Markup.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator-review.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-10T10:50:48.244Z",
+      "telemetryExecutionIds": [
+        "EXE-20261110T071837877Z-fcee9292"
+      ],
+      "latestCheckpoint": {
+        "id": "17bb66609c3fab268b5b1dc3",
+        "recordedAt": "2026-11-10T10:50:39.438Z",
+        "executionId": "EXE-20261110T071837877Z-fcee9292",
+        "stepId": "STEP-REREVIEW7-102",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-1.0.2-codemod-fixes",
+        "commit": "3f524a986b3901c7c7c4d84f76fc67c371a56fd1",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/forma-1.0.2-codemod-fixes",
+        "remoteCommit": "3f524a986b3901c7c7c4d84f76fc67c371a56fd1",
+        "summary": "Pushed 3f524a986b3901c7c7c4d84f76fc67c371a56fd1: comments in JSX tags, postfix division, token-gated review, mask to >; 54 migrator tests; fuzz 4,500 files 0 silent; rw repos exit 0 (local)",
+        "nextAction": "Complete WI-0057, push .ros, wait for CI on PR #184",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-10T10:50:48.244Z",
+      "conclusion": "Re-review 7 findings 1-5 fixed in 3f524a9; 54/54 migrator tests, probes b1-b15, f3fail fixtures kept, fuzz3 4,500 files (tsx/jsx/ts/js, CRLF) 0 silent, shadcn-ui/excalidraw/docs/realworld --check exit 0, fixtures byte-identical, namespace:check 0 of 491, sde verify --strict clean (local); CI pending"
+    },
+    {
+      "id": "WI-0058",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Markup.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator-review.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-10T13:04:38.547Z",
+      "telemetryExecutionIds": [
+        "EXE-20261110T120314374Z-d86b35d7"
+      ],
+      "latestCheckpoint": {
+        "id": "6825fdd0a67d792141eca38a",
+        "recordedAt": "2026-11-10T13:04:30.168Z",
+        "executionId": "EXE-20261110T120314374Z-d86b35d7",
+        "stepId": "STEP-REREVIEW8-102",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-1.0.2-codemod-fixes",
+        "commit": "b0c1c6d847a3214e508bc212b1154c25c7e5e392",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/forma-1.0.2-codemod-fixes",
+        "remoteCommit": "b0c1c6d847a3214e508bc212b1154c25c7e5e392",
+        "summary": "Pushed b0c1c6d847a3214e508bc212b1154c25c7e5e392: comments only at JSX attribute boundaries, whole-extent gate, spread URL; 57 migrator tests; fuzz 5,000 files 0 silent; rw repos exit 0 (local)",
+        "nextAction": "Complete WI-0058, push .ros, wait for CI on PR #184",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-10T13:04:38.547Z",
+      "conclusion": "Re-review 8 findings 1-4 fixed in b0c1c6d; 57/57 migrator tests, probes b1-b17, fuzz4b 5,000 files (tsx/jsx with CRLF, ts, js; unquoted-URL on) 0 silent, four real repos exit 0 with 0 reviews, fixtures byte-identical, namespace:check 0 of 491, sde verify --strict clean (local); CI pending"
+    },
+    {
+      "id": "WI-0059",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Markup.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator-review.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-10T14:29:35.097Z",
+      "telemetryExecutionIds": [
+        "EXE-20261110T140526048Z-f1e67eb3"
+      ],
+      "latestCheckpoint": {
+        "id": "4adf6b49348c914f21a4c9f8",
+        "recordedAt": "2026-11-10T14:29:32.374Z",
+        "executionId": "EXE-20261110T140526048Z-f1e67eb3",
+        "stepId": "STEP-REREVIEW9-102",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-1.0.2-codemod-fixes",
+        "commit": "8584b47814034f8e1f9d317d13eb28a6eb9f2670",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/forma-1.0.2-codemod-fixes",
+        "remoteCommit": "8584b47814034f8e1f9d317d13eb28a6eb9f2670",
+        "summary": "Pushed 8584b47814034f8e1f9d317d13eb28a6eb9f2670: memoised attribute-run check, own-attribute extent, comment boundary; 60 migrator tests; fuzz 5,000 files 0 silent; rw repos exit 0 (local)",
+        "nextAction": "Complete WI-0059, push .ros, wait for CI on PR #184",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-10T14:29:35.097Z",
+      "conclusion": "Re-review 9 findings 1-4 fixed in 8584b47814034f8e1f9d317d13eb28a6eb9f2670; 60/60 migrator tests, probes b1-b18, perf8 linear, semicolon-free file 15,991/16,000 lines, fuzz 5,000 files 0 silent, four real repos exit 0 with 0 reviews, fixtures byte-identical (local); CI pending"
+    },
+    {
+      "id": "WI-0060",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/NamespaceMigrator/Markup.fs"
+        },
+        {
+          "type": "tests",
+          "path": "tests/namespace-migrator-review.test.mjs"
+        }
+      ],
+      "updatedAt": "2026-11-10T18:30:13.951Z",
+      "telemetryExecutionIds": [
+        "EXE-20261110T152839159Z-0f745769"
+      ],
+      "latestCheckpoint": {
+        "id": "504482bf3ab287b00e01fd07",
+        "recordedAt": "2026-11-10T18:30:10.008Z",
+        "executionId": "EXE-20261110T152839159Z-0f745769",
+        "stepId": "STEP-REREVIEW10-102",
+        "repository": "echelon-design-system",
+        "branch": "claude/forma-1.0.2-codemod-fixes",
+        "commit": "ed2e65e76e0f9a6460250d36ade8f90f88e43803",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/forma-1.0.2-codemod-fixes",
+        "remoteCommit": "ed2e65e76e0f9a6460250d36ade8f90f88e43803",
+        "summary": "Pushed ed2e65e76e0f9a6460250d36ade8f90f88e43803: full extent in markup text, straddling values read whole, exact memo; 61 migrator tests; fuzz 6,500 files 0 silent and 0 reviewed losses; rw repos exit 0 (local)",
+        "nextAction": "Complete WI-0060, push .ros, wait for CI on PR #184",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-10T18:30:13.951Z",
+      "conclusion": "Re-review 10 fixed in ed2e65e76e0f9a6460250d36ade8f90f88e43803; 61/61 migrator tests, probes b1-b19, perf8/perf9 linear, big1/std16/standard keep round-9 results, fuzz 6,500 files 0 silent and 0 reviewed losses, four real repos exit 0 with 0 reviews, fixtures byte-identical (local); CI pending"
     }
   ]
 }

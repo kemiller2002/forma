@@ -22,7 +22,7 @@ const testSources = root => [
 // Tests that name the component's pattern, slug or owned CSS block.
 export const dedicatedTests = (sources, component) =>
   sources
-    .filter(({ file, text }) => !/catalog-coverage|site-build|figma-contract|zero-runtime|package-contract/.test(file))
+    .filter(({ file, text }) => !/catalog-coverage|site-build|figma-contract|zero-runtime|package-contract|namespace-migrator|namespace-guard|brand-neutrality|brand-isolation/.test(file))
     .filter(({ text }) =>
       text.includes(`patterns/${component.slug}.html`) ||
       // `(?<!html)` keeps compiled icon assets such as `icons/html/search.html`

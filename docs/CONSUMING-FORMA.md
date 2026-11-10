@@ -44,17 +44,74 @@ mark) and line endings, and changes only Forma names:
   `const { efTone } = el.dataset` (also with a type annotation such as
   `: DOMStringMap`), which becomes `const { formaTone: efTone } = el.dataset`
   so the local name is kept.
-- `.ef-x` is always a class selector, even when a file- or host-like suffix
-  follows (`.ef-icon.svg`, `.ef-shell.app`).
+- `.ef-x` is a class selector, even when a file- or host-like suffix follows
+  (`.ef-icon.svg`, `.ef-shell.app` in CSS), but not after `/` in a path
+  (`"/.ef-rc.json"`, `"assets/.ef-cache/x"`).
+- A whole quoted string that could be a selector or a file name
+  (`".ef-icon.svg"`, `".ef-config.json"`, `"div.ef-card.md"`) is migrated as
+  the argument of `querySelector`, `querySelectorAll`, `closest` or `matches`.
+  Anywhere else it is left unchanged and listed as `review:` with its line, and
+  `--check` exits 3 until you decide: rewrite it by hand if it is a selector,
+  or `--exclude` the file if it is a file name.
+  A plain word prefix that is not an HTML or SVG element (`"logo.ef-x.png"`)
+  makes it a file name, left alone; an element-like prefix (`"path.ef-icon.svg"`,
+  `"my-widget.ef-x.md"`, `"ef-tabs.ef-active.md"`) keeps it listed for review.
+  A URL attribute selector value (`img[src=ef-a.png]`, `a[href='ef-c']`,
+  `a[HREF="ef-x"]`) is a location wherever it appears: in a selector argument,
+  in a selector held in a variable, or in CSS (`a[href^="ef-"]`).
 
 Words (`ref-`, `chef-`, `--ref-`, `beef-`) and locations are never touched:
 URLs and host names (`https://ef-cdn.example.org/...`), paths
 (`/assets/ef-logo.svg`), file names (`ef-page.html`), CSS `url(...)` and
 `@import` targets, URL-valued attributes (`src`, `href`, `srcset`, ...) inside
-an HTML, Razor, Vue or JSX tag, Markdown link targets in Markdown files, module
+an HTML, Razor, Vue or JSX tag, in any letter case (`HREF`, React `srcSet`,
+`formAction`, `xlinkHref`) and as Vue or Angular bindings (`:href`,
+`v-bind:href`, `[href]`), including JSX `{...}` and Razor `@...(...)`
+values, Markdown link targets and reference definitions (`[d]: /ef-doc`) in
+Markdown files, dotfile and dot-directory paths (`"/.ef-rc.json"`,
+`"assets/.ef-cache/x"`), module
 specifiers (`import ... from "..."`, `require("...")`) and scoped packages
 (`@ef-labs/widget`). A script variable named `src`, `data` or `href` is not a
 location: `const src = "ef-button"` is migrated.
+
+How tags are read, and its limits:
+
+- In JS, TS and F# files the lexer decides where markup stands: a JSX
+  element (after `=`, `(`, `=>`, `return`, `:`, `?`, `&&` and the like), JSX
+  children of any length and wording (`<p>Price: $5. See <a href="...">`),
+  strings (`el.innerHTML = 'Click <a href="...">'`, F# strings including
+  triple-quoted ones), template literals (multi-line Lit ``html`...` `` templates),
+  regular expressions and comments. There every `<name` is a tag. In HTML,
+  Razor, Vue, Svelte, Markdown, CSS and JSON every `<name` is a tag, so prose
+  such as `a <b and data = ef-x` in Markdown reads `data = ef-x` as an
+  attribute and leaves it.
+- A `<name` in script code after an operand is a comparison or a type
+  argument (`if (a <b && c) data = "ef-card"` is migrated). If attribute
+  syntax (also past a spread, `{...p}`) and a URL attribute follow it
+  (`n <a href="ef-x">`), the tool cannot
+  tell: the value is left unrewritten and listed as `review: FILE:LINE a
+  <name here may be a tag`, and `--check` exits 3.
+- `{...}` expressions are lexed as script (strings, template literals,
+  comments, regular expressions and JSX text are skipped; TSX type
+  parameters such as `<T extends U>(...)` are script). A tag is listed as
+  `review: FILE:LINE a tag here could not be read with certainty`, and
+  `--check` exits 3, when a `{...}` group in it never closes, spans a place
+  where the lexer had to guess (an unclosed string, a `/` that reads both as
+  division and as a regular expression holding a brace or quote, such as
+  `if (ok) /{/.test(s)`), was matched without the lexer (a tag inside a
+  string or comment, `'<a x={f("}")} href="...">'`), or opens inside a JSX
+  element or template literal that never closes, or an attribute quote in
+  it never closes; or when the tag is longer than 1 MiB. These lines appear
+  only when a Forma name is at stake: a tag with no Forma name in its unread
+  extent (its own attribute list, whose `>` cannot be found: up to the next
+  tag that certainly starts, at least 4 KiB and at most 1 MiB) is not
+  reported, so a codebase without Forma names checks clean. A URL attribute
+  value in that extent that is followed by the rest of an attribute list is
+  left unrewritten too, and each one that holds
+  a Forma name is listed at its own line (`a src/href value here holds a
+  Forma name and was left unrewritten`), also by `--dry-run`. The lexer is not
+  a full parser, so a misreading it does not notice could still go
+  unreported: read the `--dry-run` diff of files with complex JSX.
 
 It always skips `node_modules`, `.git`, `bin` and `obj`, and by default also
 `vendor`, `bower_components`, `jspm_packages`, `dist` and `wwwroot/lib`
@@ -65,8 +122,19 @@ M=node_modules/@echelon-foundry/design-system/tools/NamespaceMigrator/NamespaceM
 dotnet run --project "$M" -- --check src wwwroot     # report; exit 3 when anything needs attention
 dotnet run --project "$M" -- --dry-run src wwwroot   # every changed line, before and after
 dotnet run --project "$M" -- src wwwroot             # rewrite in place
-dotnet run --project "$M" -- --check src wwwroot     # exit 0: nothing left
+dotnet run --project "$M" -- --check src wwwroot     # exit 0 once nothing is left
 ```
+
+Act on every `review:` line of the first `--check`, then check again. The
+write leaves reviewed strings and values unrewritten, and a later `--check`
+lists them again (exit 3) until you rewrite them by hand, confirm them as
+locations and `--exclude` the file, or change the code so it reads
+unambiguously. A review line can also disappear after the write without your
+acting on it: an uncertain tag is listed because it holds a Forma name, and
+when that name was a class the write migrated (`className="ef-cls"` on a tag
+whose `href` holds no Forma name), nothing is left to list. So keep the first
+`--check` output and go through it, rather than relying on the second exit
+code alone.
 
 `--check` never gives a false all-clear: a text file of another kind (a
 `.txt`, a template, a `.yml`), or a supported file that is not UTF-8 (for
@@ -350,6 +418,18 @@ It exits 1 on any error. The installed package is the source of truth: its token
 - custom properties that refer to each other in a cycle.
 
 Application-owned properties such as `--causa-*` are never reported. Keep `forma-color` for color-role pairing rules; the two validators agree on the color namespace.
+
+## 1.0.2
+
+Patch: the namespace codemod keeps URL attributes after a JSX expression or a
+quoted value that contains `>` as locations, leaves dotfile paths and Markdown
+reference definitions alone, lists strings that could be a selector or a file
+name (`".ef-icon.svg"` outside `querySelector`) for review instead of guessing, keeps Razor `@Url.Action("...")` values and URL attributes after `&`, `(`, `)` or `;` in a tag intact,
+and its `--check`/`--dry-run` reports match write mode for tags that span
+lines. It lexes `{...}` expressions as script, lists a tag whose `{` never
+closes for review, no longer reads a `<` after an operand in script as a tag,
+and stays linear on adversarial input. If you ran 1.0.1's codemod on JSX, Razor or Markdown, review its diff
+for those cases. No CSS, class or token changed.
 
 ## 1.0.1
 
