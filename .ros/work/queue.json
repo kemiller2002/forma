@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 61,
+  "nextSeq": 64,
   "items": [
     {
       "id": "WI-0001",
@@ -1550,6 +1550,75 @@
       },
       "source": "inbox",
       "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-REVIEW-10.md"
+    },
+    {
+      "id": "WI-0061",
+      "title": "Forma 1.0.2 publish: build the codemod once for its tests (concurrent build race)",
+      "description": "npm publish of 1.0.2 failed: three test files build the migrator concurrently into a shared obj/. Build once via a locked shared helper.",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T20:01:05.906Z",
+      "updatedAt": "2026-11-10T21:04:15.034Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "inbox",
+      "sourceReference": ".praxis/inbox/documents/2026-11-10-FORMA-1.0.2-PUBLISH-RACE.md"
+    },
+    {
+      "id": "WI-0062",
+      "title": "Forma 1.0.2 publish: perf8 handler case at 25,000 lines (2 s headroom on 2 cores)",
+      "description": "Reviewer on #185: the perf8 case 'uncertain handler then 50,000 attribute lines' runs 1.4-1.6 s of its 2 s limit on 2 cores and failed 14 of 15 times under contention even with the retry. Drop it to 25,000 lines, keep the 2 s limit; change nothing else.",
+      "tags": [
+        "forma-1.0.2"
+      ],
+      "priority": "high",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-10T23:28:06.550Z",
+      "updatedAt": "2026-11-10T23:37:34.162Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "coordinator",
+      "sourceReference": "PR #185 review"
+    },
+    {
+      "id": "WI-0063",
+      "title": "Codemod test build helper: stale-lock edge cases",
+      "description": "tests/support/migrator.mjs: a lock left by a killed run stalls later runs for up to 10 minutes; a build folder without its DLL fails forever with ENOTEMPTY on rename (remove it and rebuild); two waiters can both remove a stale lock. Does not affect CI (fresh runners). Recorded from the #185 review.",
+      "tags": [
+        "forma-tooling"
+      ],
+      "priority": "low",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-11-10T23:28:06.884Z",
+      "updatedAt": "2026-11-10T23:28:06.884Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "coordinator",
+      "sourceReference": "PR #185 review"
     }
   ]
 }

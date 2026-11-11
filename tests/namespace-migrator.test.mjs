@@ -8,11 +8,11 @@ import { execFileSync, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { migratorDll } from "./support/migrator.mjs";
 
 const fixtures = "tests/fixtures/namespace-migrator";
-const build = fs.mkdtempSync(path.join(os.tmpdir(), "forma-nsm-"));
-execFileSync("dotnet", ["build", "tools/NamespaceMigrator/NamespaceMigrator.fsproj", "-c", "Release", "-o", build], { stdio: "pipe" });
-const dll = path.join(build, "forma-namespace-migrator.dll");
+// One shared build for all codemod test files (they run concurrently).
+const dll = migratorDll();
 const run = (...args) => spawnSync("dotnet", [dll, ...args], { encoding: "utf8" });
 
 const copyInput = () => {
