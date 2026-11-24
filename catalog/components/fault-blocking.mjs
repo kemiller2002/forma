@@ -94,7 +94,7 @@ export default {
       mobile: {
         height: 560,
         notes: [
-          "Below 36rem the dialog is the viewport width minus 1rem and at most the dynamic viewport height minus 1rem, so it never extends under browser toolbars.",
+          "Below 48rem the dialog is the viewport width minus 1rem and at most the dynamic viewport height minus 1rem, so it never extends under browser toolbars.",
           "The dialog body scrolls internally when the message and details exceed the height; the page behind stays inert.",
           "Recovery buttons stack as full-width rows with a 44px minimum height, in the order Aegis supplied them.",
           "In landscape the height limit shrinks the dialog and the body scrolls; no content moves off screen horizontally."
@@ -179,8 +179,8 @@ export default {
   },
   responsive: [
     "Width is `min(42rem, 100vw - 2rem)`; height is capped at `min(90dvh, 100dvh - 2rem)` and the dialog scrolls when content is taller.",
-    "Below 36rem the dialog becomes the viewport width minus 1rem and at most `100dvh - 1rem`, centered with auto margins.",
-    "Recovery buttons in the footer wrap on wide screens and stack as full-width rows below 36rem.",
+    "Below 48rem the dialog becomes the viewport width minus 1rem and at most `100dvh - 1rem`, centered with auto margins.",
+    "Recovery buttons in the footer wrap on wide screens and stack as full-width rows below 48rem.",
     "Headings, messages and references wrap; the marker column keeps its intrinsic width."
   ],
   motion: [

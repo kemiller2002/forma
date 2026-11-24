@@ -20,7 +20,7 @@ export default {
       "Each item is a three-column grid: state label, label and summary, action.",
       "State labels are mono uppercase text with a symbol from CSS: ✓ for accepted, ? for unknown, ! for conflict.",
       "Unknown and conflict items have a 0.3rem inline-start bar, a shape cue in addition to the text.",
-      "At 40rem and below items and the header stack, and item actions become full width."
+      "Below 48rem items and the header stack, and item actions become full width."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior"] },
@@ -98,7 +98,7 @@ export default {
       mobile: {
         height: 600,
         notes: [
-          "At 40rem and below the header stacks its text above the status lozenge, stretched to the full width.",
+          "Below 48rem the header stacks its text above the status lozenge, stretched to the full width.",
           "Each item becomes one column: state label, then label and summary, then a full-width action button at the 2.75rem base height.",
           "The unknown item keeps its inline-start bar when stacked, so it remains distinguishable while scrolling.",
           "Long summaries wrap within the item; no horizontal scrolling at 320px in either orientation."
@@ -137,9 +137,9 @@ export default {
     ],
     hooks: {
       "forma-understanding": "Root bordered region.",
-      "forma-understanding__header": "Flex row of heading block and summary status, with a bottom rule; stacks at 40rem and below.",
+      "forma-understanding__header": "Flex row of heading block and summary status, with a bottom rule; stacks below 48rem.",
       "forma-understanding__items": "Unstyled ordered list of items.",
-      "forma-understanding__item": "One item: grid of state, content and action with a bottom rule; one column at 40rem and below.",
+      "forma-understanding__item": "One item: grid of state, content and action with a bottom rule; one column below 48rem.",
       "forma-understanding__state": "Visible state text in small mono uppercase; receives a CSS symbol for known states.",
       "data-forma-state": "Item state hook: `accepted` (✓), `unknown` (? and side bar), `conflict` (! and side bar). Presentation only; Ordo or the application owns the state."
     },
@@ -157,7 +157,7 @@ export default {
     { name: "Unknown", how: "data-forma-state=\"unknown\" plus state text", description: "? symbol and a 0.3rem inline-start bar." },
     { name: "Conflict", how: "data-forma-state=\"conflict\" plus state text", description: "! symbol and a 0.3rem inline-start bar." },
     { name: "Other application states", how: "state text without data-forma-state", description: "States such as Unresolved render as text only; add them as text rather than inventing hook values." },
-    { name: "Stacked", how: "@media (max-width: 40rem)", description: "Header and items stack; item actions are full width." },
+    { name: "Stacked", how: "@media (width < 48rem)", description: "Header and items stack; item actions are full width." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Root border and the side bars use CanvasText." }
   ],
   accessibility: {
@@ -175,7 +175,7 @@ export default {
   },
   responsive: [
     "Wide: item grid `minmax(6rem, auto) minmax(0, 1fr) auto`, centered vertically.",
-    "At 40rem and below: header becomes a stretched column; items become one column with stretched, full-width buttons.",
+    "Below 48rem: header becomes a stretched column; items become one column with stretched, full-width buttons.",
     "Summaries wrap within the content column; there are no fixed widths beyond the state column minimum."
   ],
   motion: [

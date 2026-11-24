@@ -18,8 +18,8 @@ export default {
       "Several options are compared across many attributes: use [[comparison-grid]]."
     ],
     characteristics: [
-      "Two equal columns (`repeat(2, minmax(0, 1fr))`) separated by a subtle rule; one column at 40rem and below.",
-      "Each field row is a label/value grid (`minmax(7rem, 0.4fr) minmax(0, 1fr)`), stacking label over value at 30rem and below.",
+      "Two equal columns (`repeat(2, minmax(0, 1fr))`) separated by a subtle rule; one column below 48rem.",
+      "Each field row is a label/value grid (`minmax(7rem, 0.4fr) minmax(0, 1fr)`), stacking label over value below 30rem.",
       "Changed rows get a 0.3rem accent bar on the inline start; in forced-colors mode it becomes a CanvasText bar, so the cue is structural as well as colored.",
       "Only `changed` is styled. Added and removed values are expressed in text by the application."
     ]
@@ -94,8 +94,8 @@ export default {
       mobile: {
         height: 520,
         notes: [
-          "At 40rem (640px) and below the grid becomes one column; the second side gets a top rule instead of a side rule.",
-          "At 30rem (480px) and below each `.forma-diff-row` stacks its label above its value.",
+          "Below 48rem (768px) the grid becomes one column; the second side gets a top rule instead of a side rule.",
+          "Below 30rem (480px) each `.forma-diff-row` stacks its label above its value.",
           "Because the sides stack, the Before and After headings are what keep the comparison understandable; never omit them.",
           "The changed-row bar remains on the inline start in both layouts.",
           "Nothing scrolls horizontally at 320px; long values wrap."
@@ -136,9 +136,9 @@ export default {
     hooks: {
       "forma-diff-viewer": "Bordered root section containing the header and the two sides.",
       "forma-diff-viewer__header": "Padded header with the comparison title and a change count; ruled below.",
-      "forma-diff-viewer__grid": "Two equal columns; one column at 40rem and below.",
+      "forma-diff-viewer__grid": "Two equal columns; one column below 48rem.",
       "forma-diff-viewer__side": "One version. Padded; the second side is separated by a rule (inline on wide screens, block on narrow).",
-      "forma-diff-row": "A field row inside a side's `dl`: label/value grid with a subtle bottom rule; stacks at 30rem and below.",
+      "forma-diff-row": "A field row inside a side's `dl`: label/value grid with a subtle bottom rule; stacks below 30rem.",
       "data-change": "`changed` on `.forma-diff-row` adds a 0.3rem accent bar on the inline start and matching inline padding."
     },
     keyboard: [
@@ -151,7 +151,7 @@ export default {
     { name: "Unchanged row", how: ".forma-diff-row without data-change", description: "Label and value with a subtle bottom rule." },
     { name: "Changed row", how: "data-change=\"changed\"", description: "Inline-start accent bar; CanvasText bar in forced colors." },
     { name: "Added or removed value", how: "application text such as Not set, plus data-change=\"changed\"", description: "No separate styling; the wording states which side lacks the value." },
-    { name: "Stacked", how: "viewport ≤ 40rem", description: "Before and After sections stack; rows stack label over value at 30rem and below." }
+    { name: "Stacked", how: "viewport < 48rem", description: "Before and After sections stack; rows stack label over value below 30rem." }
   ],
   accessibility: {
     forma: [
@@ -168,7 +168,7 @@ export default {
     ]
   },
   responsive: [
-    "Side by side above 40rem; stacked at 40rem and below with a block rule between sides.",
+    "Side by side at 48rem and wider; stacked below 48rem with a block rule between sides.",
     "Field rows are two-column above 30rem and stacked below it.",
     "Values wrap (`minmax(0, 1fr)`); rows on opposite sides do not align in height when values differ in length."
   ],

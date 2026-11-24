@@ -78,7 +78,7 @@ for (const file of outputs) {
   test(`${file} parses without stray escapes or unbalanced blocks`, () => {
     const { errors, rules } = parseCss(read(file));
     assert.deepEqual(errors, [], `${file}:\n  ${errors.join("\n  ")}`);
-    assert.ok(rules.length > 0 || /tokens|brands/.test(file), `${file} contains no style rules`);
+    assert.ok(rules.length > 0 || /tokens|brands|custom-media/.test(file), `${file} contains no style rules`);
   });
 
   test(`${file} selectors name only real element types`, () => {

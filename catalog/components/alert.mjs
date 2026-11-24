@@ -82,7 +82,7 @@ export default {
       mobile: {
         height: 320,
         notes: [
-          "Below 40rem the grid becomes a single column: icon, then text, then the action.",
+          "Below 48rem the grid becomes a single column: icon, then text, then the action.",
           "The trailing button stretches to the full width of the alert, giving a large touch target.",
           "The heading and body wrap freely inside the text column; nothing scrolls horizontally at 320px.",
           "The inline-start border stays, so the alert still reads as a distinct block in portrait and landscape."
@@ -145,7 +145,7 @@ export default {
   },
   responsive: [
     "The root is a three-column grid (`auto minmax(0, 1fr) auto`), so long text wraps within the middle column rather than pushing the action off-screen.",
-    "Below 40rem the grid collapses to one column and a direct-child action button becomes full width.",
+    "Below 48rem the grid collapses to one column and a direct-child action button becomes full width.",
     "Multiple actions should be grouped in a [[cluster]], which wraps when space runs out.",
     "The alert has no maximum width; it fills its container."
   ],

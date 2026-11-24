@@ -149,7 +149,7 @@ export default {
     { name: "Collapsed", how: "data-forma-collapsed", description: "Primary pinned to `--forma-split-min`, regardless of the inline size." },
     { name: "Clamped", how: "--forma-split-size outside min/max", description: "Drawn at the nearest legal bound; the application should also clamp its stored value and aria-valuenow." },
     { name: "Separator focus", how: ":focus-visible on .forma-split-pane__separator", description: "Two-tone inset ring on the handle." },
-    { name: "Stacked", how: "@media (max-width: 48rem)", description: "Single column; the separator is hidden." }
+    { name: "Stacked", how: "@media (width < 48rem)", description: "Single column; the separator is hidden." }
   ],
   accessibility: {
     forma: [

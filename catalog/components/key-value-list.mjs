@@ -20,7 +20,7 @@ export default {
     characteristics: [
       "Label column is `minmax(7rem, 0.35fr)`; the value column takes the remaining width and can shrink to zero, so long values wrap instead of overflowing.",
       "Each row has a subtle bottom rule, so pairs stay visually grouped when values wrap onto several lines.",
-      "At 30rem and below each row becomes a single column with the label directly above its value."
+      "Below 30rem each row becomes a single column with the label directly above its value."
     ]
   },
   examples: [
@@ -63,7 +63,7 @@ export default {
       mobile: {
         height: 360,
         notes: [
-          "At 30rem (480px) and below each row switches to `grid-template-columns: 1fr` with a 0.25rem gap: the label sits directly above its value.",
+          "Below 30rem (480px) each row switches to `grid-template-columns: 1fr` with a 0.25rem gap: the label sits directly above its value.",
           "The row rule stays, so pairs remain grouped even when a value wraps across several lines.",
           "Long unbroken values should use [[identifier]] (which allows breaking anywhere) so they wrap at 320px instead of overflowing.",
           "Links inside values are ordinary inline links; give them enough text to be comfortable tap targets or place them on their own line.",
@@ -96,7 +96,7 @@ export default {
   },
   states: [
     { name: "Two-column rows", how: "viewport > 30rem", description: "Label column `minmax(7rem, 0.35fr)` beside a flexible value column." },
-    { name: "Stacked rows", how: "viewport ≤ 30rem", description: "Label above value in a single column." },
+    { name: "Stacked rows", how: "viewport < 30rem", description: "Label above value in a single column." },
     { name: "Missing or unknown value", how: "application text in the dd", description: "Written as words (Not set, Unknown); Forma adds no special styling." }
   ],
   accessibility: {
@@ -114,7 +114,7 @@ export default {
   },
   responsive: [
     "Two columns above 30rem: `minmax(7rem, 0.35fr) minmax(0, 1fr)` with a 1rem gap.",
-    "At 30rem and below each row stacks into one column with a 0.25rem gap.",
+    "Below 30rem each row stacks into one column with a 0.25rem gap.",
     "Long labels wrap within the label column; long values wrap within the value column.",
     "The value `dd` keeps the browser's default inline-start margin, so values are indented by the user agent's default at every width."
   ],

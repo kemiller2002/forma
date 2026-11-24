@@ -7,11 +7,11 @@ the component catalog (`catalog/components/*.mjs`), the canonical patterns
 checker (`npm run catalog:check`) fails when a canonical pattern or a public
 `.forma-*` block class is missing from this list.
 
-- Public components: **170** in **18** families
-- Rendered examples on the documentation site: **738** (each component: canonical Basic + scenario examples + mobile examples)
-- Example interaction (UI-LAYOUT-INTERACTION@1.0.0 ULI-A03/A09): **91** live demos with **234** declared, outcome-tested actions; **316** static specimens (rendered inert and labelled); **331** examples render no action control
+- Public components: **174** in **18** families
+- Rendered examples on the documentation site: **756** (each component: canonical Basic + scenario examples + mobile examples)
+- Example interaction (UI-LAYOUT-INTERACTION@1.0.0 ULI-A03/A09): **91** live demos with **234** declared, outcome-tested actions; **325** static specimens (rendered inert and labelled); **340** examples render no action control
 - Compositions: **5** (Operations dashboard, Form with validation, Keyboard and focus, Mobile settings, Overlay interaction)
-- Requirement-defined components not yet implemented: **29**
+- Requirement-defined components not yet implemented: **28**
 
 ## How the inventory was established
 
@@ -26,7 +26,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 
 | Component | Tag | Category | Implementation | Documentation | Examples | Mobile | HTML shown | Accessibility | API | Dedicated tests | Related |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Button | `<forma-button>` | Actions | implemented | complete | 5 | 1 | yes | yes | yes | marketing.spec.mjs | command-group, overflow-command-disclosure, menu, mobile-action-bar, cta |
+| Button | `<forma-button>` | Actions | implemented | complete | 6 | 1 | yes | yes | yes | marketing.spec.mjs | command-group, overflow-command-disclosure, menu, mobile-action-bar, cta |
 | Command group | `<forma-command-group>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, overflow-command-disclosure, menu, collection-toolbar, command-palette |
 | Mobile action bar | `<forma-mobile-action-bar>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, command-group, overflow-command-disclosure, flyout |
 | Overflow command disclosure | `<forma-overflow-command-disclosure>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | command-group, menu, disclosure, mobile-action-bar |
@@ -71,6 +71,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Tabs | `<forma-tabs>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | segmented-control, navigation-shell, wizard, disclosure |
 | Wizard | `<forma-wizard>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | survey-progress, steps, readiness-checklist, tabs |
 | Alert | `<forma-alert>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | toast, callout, operation-status, fault-banner |
+| Batch outcome | `<forma-batch-outcome>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | operation-status, progress-bar, approval-quorum |
 | Conflict review | `<forma-conflict-review>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, operation-status, recovery-actions |
 | Empty state | `<forma-empty-state>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skeleton, alert, collection-toolbar, active-filter-summary |
 | Freshness | `<forma-freshness>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | security-evidence-age, state-survivability, provenance-trail, status-lozenge |
@@ -83,7 +84,8 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Spinner | `<forma-spinner>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | ais-001.spec.mjs, loading-progress.spec.mjs | progress-bar, skeleton, operation-status |
 | Start-up screen | `<forma-startup>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | ais-001.spec.mjs | app-identity, spinner, fault-blocking, skeleton |
 | State survivability | `<forma-state-survivability>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | visual-engineering-semantics.spec.mjs | operation-status, status-lozenge, freshness, security-state-matrix |
-| Status lozenge | `<forma-status-lozenge>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | color-contract.spec.mjs, forced-colors-projection.spec.mjs, layout-reliability.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
+| Status lozenge | `<forma-status-lozenge>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | color-contract.spec.mjs, forced-colors-projection.spec.mjs, layout-reliability.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
+| Task list | `<forma-task-list>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | work-queue, readiness-checklist, alert, status-lozenge |
 | Toast | `<forma-toast>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, popover, fault-notification, dialog |
 | Validation message | `<forma-validation-message>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | validation-summary, text-field, question, alert |
 | Validation summary | `<forma-validation-summary>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | validation-message, alert, obligation-panel |
@@ -145,11 +147,13 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Metric card | `<forma-metric-card>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | value-change-motion.spec.mjs | metric-value-change, dashboard-grid, freshness, key-value-list, progress-bar |
 | Metric value change | `<forma-metric-value-change>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | metric-card, progress-bar, operation-status, freshness |
 | Path summary | `<forma-path-summary>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | relationship-index, provenance-trail, evidence-relationship, diagram |
+| Period context | `<forma-period-context>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | freshness, date-range, scope-trail, status-lozenge |
 | Provenance trail | `<forma-provenance-trail>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-evidence-chain, metric-card, evidence-relationship, timeline |
 | Relationship index | `<forma-relationship-index>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | path-summary, diagram, key-value-list, hierarchy-tree |
 | Reorder states | `<forma-reorder-states>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | direct-manipulation.spec.mjs, machine-operability.spec.mjs | ranking, lane-board, resizable-split-pane, allocation |
 | Timeline | `<forma-timeline>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | feed-item, provenance-trail, steps, diff-viewer |
 | Work queue | `<forma-work-queue>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | feed-item, obligation-panel, readiness-checklist, operation-status |
+| Approval quorum | `<forma-approval-quorum>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | generic only | readiness-checklist, provenance-trail, batch-outcome |
 | Diagram | `<forma-diagram>` | Workflow and diagrams | implemented | complete | 6 | 1 | yes | yes | yes | diagram-m2.spec.mjs, diagram-nontext-contrast.spec.mjs, diagram.spec.mjs, workflow-embed.spec.mjs, workflow-static.spec.mjs | lane-board, spatial-canvas, provenance-trail, relationship-index |
 | Lane board | `<forma-lane-board>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | generic only | work-queue, ranking, reorder-states, diagram |
 | Spatial canvas | `<forma-spatial-canvas>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | machine-operability.spec.mjs | diagram, scope-trail, relationship-index, bounded-overflow |
@@ -204,13 +208,13 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 - **Selection and choice** (`/components/selection/`, 6): Radio- and checkbox-backed choice structures: segmented controls, choice cards, multi-select guidance and hierarchical selection.
 - **Assessment and survey** (`/components/assessment/`, 12): Question shells and response scales that keep Unanswered distinct, keep radio semantics per row, and never compute scores.
 - **Navigation** (`/components/navigation/`, 7): Where am I and where can I go: shells, tabs, pagination, scope trails, trees, wizards and skip links.
-- **Feedback and status** (`/components/feedback/`, 17): Alerts, notifications, validation, loading and progress, and explicit operation states that never collapse unknown into failure.
+- **Feedback and status** (`/components/feedback/`, 19): Alerts, notifications, validation, loading and progress, and explicit operation states that never collapse unknown into failure.
 - **Faults and recovery** (`/components/faults/`, 10): The Aegis fault presentation family: safe inline, notification, banner and blocking faults with application-authorized recovery.
 - **Overlays and disclosure** (`/components/overlays/`, 7): Native dialog, Popover API and details/summary surfaces: modal dialogs, edge flyouts, popovers, tooltips, menus and disclosure.
 - **Layout primitives** (`/components/layout/`, 18): Intrinsic, container-aware composition primitives that recompose by available space without reordering source.
 - **Workspaces and shells** (`/components/workspaces/`, 9): Multi-region application compositions: workspace shells, master/detail, split panes, dashboards and record headers.
-- **Data display** (`/components/data/`, 19): Tables, ledgers, key-value lists, metrics, timelines, diffs, collections and relationship displays.
-- **Workflow and diagrams** (`/components/workflow/`, 3): Presentation-only building blocks for boards, diagrams and spatial canvases; geometry, routing and editing stay in the application.
+- **Data display** (`/components/data/`, 20): Tables, ledgers, key-value lists, metrics, timelines, diffs, collections and relationship displays.
+- **Workflow and diagrams** (`/components/workflow/`, 4): Presentation-only building blocks for boards, diagrams and spatial canvases; geometry, routing and editing stay in the application.
 - **Command and keyboard-first** (`/components/keyboard/`, 9): Command palette and the CharacterGrid terminal family for keyboard-driven, fixed-cell interfaces.
 - **Human–agent interaction** (`/components/assisted/`, 4): Composer, conversation, understanding review and handoff surfaces that keep agent proposals inspectable and human authority explicit.
 - **Attention and verification** (`/components/verification/`, 3): Visual Engineering contracts for first-glance priority, bounded emphasis, and recognize-verify-act flows.
@@ -230,7 +234,6 @@ These appear in requirements but have no markup contract yet, so they have no ca
 | Tag / chip | Selection and choice | P0 | requirements/COMPONENT-CATALOG.md §9 Content and utility | badge and status-lozenge cover static labels; no removable or selectable chip. |
 | Avatar | Data display | P0 | requirements/COMPONENT-CATALOG.md §9 Content and utility | — |
 | Icon and icon button | Actions | P0 | requirements/COMPONENT-CATALOG.md §9 Content and utility | Icon-only buttons are composed from button + visually-hidden text today. |
-| Button variants (primary, destructive) and async action button | Actions | P0/P1 | requirements/COMPONENT-CATALOG.md §6 Async action button pattern | Application-layer buttons have one visual style; data-forma-variant="primary" exists only inside the marketing .forma-site scope. |
 | Keyboard shortcut display | Command and keyboard-first | P0 | requirements/COMPONENT-CATALOG.md §9 Content and utility | <kbd> is unstyled outside command-palette. |
 | Separator / divider | Layout primitives | P0 | requirements/COMPONENT-CATALOG.md §1, §8, §9 | — |
 | Inline message | Feedback and status | P0 | requirements/COMPONENT-CATALOG.md §6 Feedback and status (forma-inline-message) | validation-message and alert cover most uses. |
@@ -280,7 +283,7 @@ Recorded from reading every pattern and its CSS during the catalog upgrade (WI-0
 | --- | --- | --- |
 | alert, fault-banner, fault-notification, toast | aside elements carry role="status" or role="alert", which ARIA in HTML does not allow on aside (axe aria-allowed-role). | patterns/alert.html, patterns/fault-banner.html, patterns/fault-notification.html, patterns/toast.html |
 | text-field, textarea, date-time-field, select | Native inputs have no Forma styling for :disabled, :read-only, [aria-invalid] or :user-invalid; author colors also override the browser's disabled look, so a disabled field looks enabled. | src/styles/foundations.css (input/textarea/select rule) |
-| button | Application-layer disabled buttons look enabled apart from losing hover; a.forma-button stays inline so its 44px min-block-size does not apply; primary/destructive variants exist only inside .forma-site; .forma-actions ships only in the marketing stylesheet. | src/styles/foundations.css:59-90; src/marketing/components.css:191 |
+| button | Application-layer disabled buttons look enabled apart from losing hover; a.forma-button stays inline so its 44px min-block-size does not apply; .forma-actions ships only in the marketing stylesheet. | src/styles/foundations.css:59-90; src/marketing/components.css:191 |
 | popover, menu, tooltip | Surfaces have margin: 0 and no anchor positioning fallback, so without CSS anchor positioning they open at the viewport's top-left corner. | src/styles/components.css (.forma-popover, .forma-menu, .forma-tooltip__surface) |
 | overflow-command-disclosure, hierarchical-choice, hierarchy-tree, navigation-shell, fault-details | summary elements use display: flex, which removes the native disclosure marker; collapsed and expanded look the same. | src/styles/components.css (.forma-overflow-commands > summary, .forma-hierarchy-tree, .forma-navigation-shell__compact, .forma-fault-details > summary); src/styles/assessment.css (.forma-hierarchy summary) |
 | stack | Spacing is doubled: the foundation gap and the component-layer margin-block-start both apply (32px by default, 24px with data-density=compact). | src/styles/foundations.css (.forma-stack); src/styles/components.css (.forma-stack > * + *) |

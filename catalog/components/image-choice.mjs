@@ -16,7 +16,7 @@ export default {
       "There are many options that users filter or search: use [[select]] or [[combobox]]."
     ],
     characteristics: [
-      "Media frame and text sit side by side above 44rem and stack (media on top) at 44rem and below.",
+      "Media frame and text sit side by side at 48rem and wider and stack (media on top) below 48rem.",
       "The drawn round/square indicator of the plain choice card is hidden in the media variant.",
       "The selected card is shown by an accent border and a secondary surface; forced-colors mode fills it with Highlight.",
       "Images are cropped to the frame with `object-fit: cover` and never widen the card."
@@ -92,7 +92,7 @@ export default {
       mobile: {
         height: 520,
         notes: [
-          "At 44rem and below `forma-choice--media` switches to one column: the 4:3 media frame spans the card width above the label and description.",
+          "Below 48rem `forma-choice--media` switches to one column: the 4:3 media frame spans the card width above the label and description.",
           "The whole card, image included, is the tap target for the radio.",
           "Images scale to the frame (`max-inline-size: 100%`, `object-fit: cover`), so large source images cannot cause horizontal overflow at 320px.",
           "Cards become taller in portrait; plan for the list to scroll vertically rather than shrinking previews."
@@ -131,7 +131,7 @@ export default {
       { name: "aria-hidden", on: "inline svg", values: "true", default: "—", description: "Hides decorative inline SVG previews from assistive technology." }
     ],
     hooks: {
-      "forma-choice--media": "Owned by [[choice-group]]. Turns an `forma-choice` card into the media layout: two columns, inline-start padding reduced, drawn indicator hidden. One column at 44rem and below.",
+      "forma-choice--media": "Owned by [[choice-group]]. Turns an `forma-choice` card into the media layout: two columns, inline-start padding reduced, drawn indicator hidden. One column below 48rem.",
       "forma-choice__media": "The media frame: 4:3 aspect ratio, subtle border, secondary surface, content centred and clipped. A child `img` is scaled to fit with `object-fit: cover`.",
       "forma-choice__content": "The bold option name and supporting text, as in every choice card."
     },
@@ -166,8 +166,8 @@ export default {
     ]
   },
   responsive: [
-    "Above 44rem the card is a two-column grid: a `minmax(5rem, 8rem)` media column and a flexible text column.",
-    "At 44rem and below the card is one column with the media on top.",
+    "From 48rem the card is a two-column grid: a `minmax(5rem, 8rem)` media column and a flexible text column.",
+    "Below 48rem the card is one column with the media on top.",
     "The media frame keeps a 4:3 aspect ratio and clips overflow; images scale down to fit.",
     "Text wraps in its column; no horizontal overflow at 320px."
   ],

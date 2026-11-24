@@ -8,7 +8,7 @@
   needs structure of its own.
 
   Breakpoints, and why each exists:
-  - Sticky header needs min-width 40rem and min-height 36rem. A sticky header
+  - Sticky header needs width >= 48rem (the tablet breakpoint) and min-height 36rem. A sticky header
     on a short or narrow viewport (or at 200-400% zoom) permanently consumes
     reading space and can obscure focused content (WCAG 2.4.11).
   - The documentation layout regroups at 48rem and 72rem of main-region
@@ -19,7 +19,7 @@
   All other recomposition is content-driven (flex-wrap / auto-fit minimums).
 */
 @layer forma.marketing.layouts {
-  @media (min-width: 40rem) and (min-height: 36rem) {
+  @media (width >= 48rem) and (min-height: 36rem) {
     .forma-site-header { position: sticky; inset-block-start: 0; }
   }
 
@@ -155,7 +155,7 @@
 
   .forma-doc__heading { margin-block-end: var(--forma-space-2); }
 
-  @media (min-width: 64rem) and (min-height: 36rem) {
+  @media (width >= 64rem) and (min-height: 36rem) {
     .forma-doc__nav,
     .forma-doc__aside {
       position: sticky;

@@ -74,7 +74,7 @@ export default {
         height: 420,
         notes: [
           "The value size follows `clamp(2rem, 8vw, 3.5rem)`: about 2rem at 320px and 390px, reaching 3.5rem only at wide viewports.",
-          "Inside [[dashboard-grid]] the cards collapse to one column at 40rem and below, keeping the application's order.",
+          "Inside [[dashboard-grid]] the cards collapse to one column below 48rem, keeping the application's order.",
           "Long labels and context text wrap; the card has `min-inline-size: 0` so it never forces horizontal scrolling.",
           "The trailing link is an ordinary inline link; keep its text descriptive so it is a usable tap target on its own line.",
           "Rotation only changes the value's viewport-relative size between the clamp bounds."
@@ -136,7 +136,7 @@ export default {
   responsive: [
     "Intrinsic width: the card shrinks to its container (`min-inline-size: 0`).",
     "The value scales with the viewport between 2rem and 3.5rem.",
-    "Arrange several cards with [[dashboard-grid]] (three columns, one at 40rem and below) or [[responsive-grid]].",
+    "Arrange several cards with [[dashboard-grid]] (three columns, one below 48rem) or [[responsive-grid]].",
     "Very long unbroken values can still exceed a narrow card; keep values short or format them with separators."
   ],
   motion: [

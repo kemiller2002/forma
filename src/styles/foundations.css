@@ -340,8 +340,43 @@
   [data-density="standard"] { --forma-density-space: var(--forma-primitive-spacing-4, 1rem); }
   [data-density="compact"], [data-density="analytical"] { --forma-density-space: var(--forma-primitive-spacing-2, 0.5rem); }
   :where(.forma-stack, .forma-grid, .forma-responsive-grid, .forma-priority-stack)[data-density] { gap: var(--forma-density-space); }
-  @media (max-width: 48rem) { .forma-rail, .forma-rail[data-side="end"], .forma-focus-stage { grid-template-columns: minmax(0, 1fr); } .forma-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .forma-span-2 { grid-column: 1 / -1; } }
-  @media (max-width: 30rem) { .forma-mosaic { grid-template-columns: minmax(0, 1fr); } .forma-mosaic > [data-span="2"], .forma-mosaic > [data-span="full"] { grid-column: auto; } .forma-responsive-grid { --forma-responsive-grid-min: 100%; } .forma-priority-stack { --forma-priority-min: 100%; } }
+
+  /*
+   * Data density (forma#199). data-forma-density on any ancestor switches the
+   * row height, cell padding and in-row target size of data components
+   * (data-grid, dense-ledger, work-queue, task-list):
+   *   comfortable  consumer surfaces: rows >= 44px, 44px targets;
+   *   compact      expert queues and ledgers: rows >= 36px, 24px targets
+   *                (WCAG 2.5.8 minimum), except on a coarse pointer, where
+   *                rows and targets stay 44px.
+   * Without the attribute each component keeps its own spacing. data-density
+   * (above) spaces layout primitives; this attribute sizes data rows.
+   */
+  [data-forma-density="comfortable"] {
+    --forma-density-row-min: var(--forma-primitive-size-row-comfortable, 2.75rem);
+    --forma-density-target-min: var(--forma-primitive-size-target-min, 2.75rem);
+    --forma-density-cell-block: var(--forma-primitive-space-3, 0.75rem);
+    --forma-density-cell-inline: var(--forma-primitive-space-3, 0.75rem);
+  }
+  [data-forma-density="compact"] {
+    --forma-density-row-min: var(--forma-primitive-size-row-compact, 2.25rem);
+    --forma-density-target-min: var(--forma-primitive-size-target-compact, 1.5rem);
+    --forma-density-cell-block: var(--forma-primitive-space-1, 0.25rem);
+    --forma-density-cell-inline: var(--forma-primitive-space-2, 0.5rem);
+  }
+  @media (pointer: coarse) {
+    [data-forma-density="compact"] {
+      --forma-density-row-min: var(--forma-primitive-size-row-comfortable, 2.75rem);
+      --forma-density-target-min: var(--forma-primitive-size-target-min, 2.75rem);
+    }
+  }
+  [data-forma-density] .forma-dense-ledger :is(th, td) {
+    block-size: var(--forma-density-row-min);
+    padding: var(--forma-density-cell-block) var(--forma-density-cell-inline);
+    vertical-align: middle;
+  }
+  @media (width < 48rem) { .forma-rail, .forma-rail[data-side="end"], .forma-focus-stage { grid-template-columns: minmax(0, 1fr); } .forma-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .forma-span-2 { grid-column: 1 / -1; } }
+  @media (width < 30rem) { .forma-mosaic { grid-template-columns: minmax(0, 1fr); } .forma-mosaic > [data-span="2"], .forma-mosaic > [data-span="full"] { grid-column: auto; } .forma-responsive-grid { --forma-responsive-grid-min: 100%; } .forma-priority-stack { --forma-priority-min: 100%; } }
 
   /*
    * Typography roles (EII-F). data-forma-type selects a role on any element,

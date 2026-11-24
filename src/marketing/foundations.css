@@ -231,7 +231,7 @@
   }
 
   /* Anchored targets must land below a sticky header (see layouts.css). */
-  @media (min-width: 40rem) and (min-height: 36rem) {
+  @media (width >= 48rem) and (min-height: 36rem) {
     :where(html):has(.forma-site-header) { scroll-padding-block-start: var(--forma-layout-header-offset); }
   }
 }

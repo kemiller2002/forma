@@ -97,7 +97,7 @@ export default {
         height: 640,
         notes: [
           "The supporting grid uses `minmax(min(100%, 15rem), 1fr)`, so below about 31rem it is a single column in step order.",
-          "At 30rem and below the action cluster inside the primary region becomes a one-column grid of full-width buttons at least 2.75rem tall, and button text wraps instead of overflowing.",
+          "Below 30rem the action cluster inside the primary region becomes a one-column grid of full-width buttons at least 2.75rem tall, and button text wraps instead of overflowing.",
           "Status lozenges and headings wrap anywhere, so long identifiers or 200% text do not cause horizontal scrolling at 320px.",
           "The Priority labels stay visible in portrait and landscape; the order never changes with orientation."
         ]
@@ -132,7 +132,7 @@ export default {
     ],
     hooks: {
       "forma-attention-path": "Root grid of header, primary region and support grid. In an application page this is often `main`; nested, use a labelled `section`.",
-      "forma-attention-path__primary": "The single first-glance region: 2px border, surface background, padding. Its action cluster stacks full width at 30rem and below.",
+      "forma-attention-path__primary": "The single first-glance region: 2px border, surface background, padding. Its action cluster stacks full width below 30rem.",
       "forma-attention-path__support": "Auto-fit grid of supporting regions (minimum 15rem each), each with a thin top rule.",
       "data-attention-step": "Presentation hook that prints \"Priority N\" before any region inside the path."
     },
@@ -164,8 +164,8 @@ export default {
   responsive: [
     "Root and every region set `min-inline-size: 0` and `max-inline-size: 100%`.",
     "Support grid: `repeat(auto-fit, minmax(min(100%, 15rem), 1fr))`, which becomes one column when there is room for less than two 15rem regions.",
-    "At 30rem and below: the primary region's `.forma-cluster` becomes a single column of full-width, wrapping buttons.",
-    "Status lozenges inside the path wrap at 30rem and below instead of forcing width."
+    "Below 30rem: the primary region's `.forma-cluster` becomes a single column of full-width, wrapping buttons.",
+    "Status lozenges inside the path wrap below 30rem instead of forcing width."
   ],
   motion: [
     "No animation: the path is static and nothing moves or pulses to attract attention. Attention comes from structure and text, which is why it survives reduced motion unchanged."

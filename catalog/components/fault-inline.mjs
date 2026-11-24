@@ -100,7 +100,7 @@ export default {
       mobile: {
         height: 440,
         notes: [
-          "Below 36rem the marker and body share the first row and the recovery group moves to a full-width row underneath.",
+          "Below 48rem the marker and body share the first row and the recovery group moves to a full-width row underneath.",
           "Each recovery button fills the width and keeps a 44px minimum height, so Try again and Sign in are separate, comfortable touch targets.",
           "Title, message and reference wrap inside the body column; the reference code breaks anywhere instead of overflowing.",
           "The fault stays directly after the affected region in both orientations; it is never moved to a separate mobile-only location."
@@ -179,7 +179,7 @@ export default {
   },
   responsive: [
     "Uses the [[fault]] grid: marker, flexible body (`minmax(0, 1fr)`) and actions on wide viewports.",
-    "Below a 36rem viewport the recovery group moves to its own full-width row and every button becomes full width.",
+    "Below a 48rem viewport the recovery group moves to its own full-width row and every button becomes full width.",
     "Text and reference codes wrap; nothing forces horizontal page overflow at 320px.",
     "The breakpoint follows the viewport, not the container, so a fault in a narrow column on a wide screen keeps its side-by-side actions; keep such columns wide enough for the button labels."
   ],

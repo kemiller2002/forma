@@ -77,3 +77,36 @@ test("circular aliases are rejected", () => {
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /circular token reference/i);
 });
+
+// forma#200: breakpoints are tokens and are emitted as @custom-media.
+test("breakpoint tokens compile to custom properties and @custom-media ranges", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-tokens-"));
+  const output = path.join(dir, "tokens.css");
+  const media = path.join(dir, "custom-media.css");
+  const result = spawnSync("dotnet", ["run", "--project", project, "--", canonicalPath, output, "--custom-media", media], { encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  const css = fs.readFileSync(output, "utf8");
+  assert.match(css, /--forma-primitive-breakpoint-compact: 30rem;/);
+  assert.match(css, /--forma-primitive-breakpoint-tablet: 48rem;/);
+  assert.match(css, /--forma-primitive-breakpoint-desktop: 64rem;/);
+  const rules = fs.readFileSync(media, "utf8").split("\n").filter((line) => line.startsWith("@custom-media"));
+  assert.deepEqual(rules, [
+    "@custom-media --forma-below-compact (width < 30rem);",
+    "@custom-media --forma-from-compact (width >= 30rem);",
+    "@custom-media --forma-below-tablet (width < 48rem);",
+    "@custom-media --forma-from-tablet (width >= 48rem);",
+    "@custom-media --forma-below-desktop (width < 64rem);",
+    "@custom-media --forma-from-desktop (width >= 64rem);"
+  ]);
+});
+
+test("--custom-media fails when the source declares no breakpoints", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-tokens-"));
+  const source = path.join(dir, "no-breakpoints.json");
+  const data = JSON.parse(fs.readFileSync(canonicalPath, "utf8"));
+  delete data.primitive.breakpoint;
+  fs.writeFileSync(source, JSON.stringify(data, null, 2));
+  const result = spawnSync("dotnet", ["run", "--project", project, "--", source, path.join(dir, "t.css"), "--custom-media", path.join(dir, "m.css")], { encoding: "utf8" });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /requires primitive\.breakpoint tokens/);
+});

@@ -119,7 +119,7 @@ export default {
       "forma-choice__content": "Grid holding the bold primary label and the optional supporting text.",
       "forma-choice__media": "Media frame used by the `forma-choice--media` variant; see [[image-choice]].",
       "forma-choice--exclusive": "Dashed card border marking an exclusive option such as \"None of these\" in a checkbox set; see [[multi-choice]]. The application enforces exclusivity.",
-      "forma-choice--media": "Two-column card with a 4:3 media frame beside the text, and no drawn indicator; stacks at 44rem and below. See [[image-choice]]."
+      "forma-choice--media": "Two-column card with a 4:3 media frame beside the text, and no drawn indicator; stacks below 48rem. See [[image-choice]]."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves into the group (to the checked option, or the first) and out of it; the group is one tab stop." },
@@ -157,7 +157,7 @@ export default {
   responsive: [
     "The group is a single-column grid at every width; cards fill the available width.",
     "Primary and supporting text wrap inside the card; cards grow in height and never force horizontal overflow.",
-    "No breakpoints for plain cards. The `forma-choice--media` variant collapses from two columns to one at 44rem and below."
+    "No breakpoints for plain cards. The `forma-choice--media` variant collapses from two columns to one below 48rem."
   ],
   motion: [
     "Card background, border and text color change by perceptual interpolation (`--forma-motion-perceptual-duration`, about 120ms). Nothing moves, and the selected state is applied immediately.",

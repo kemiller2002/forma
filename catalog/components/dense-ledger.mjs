@@ -148,6 +148,7 @@ export default {
     ]
   },
   responsive: [
+    "Density: `data-forma-density=\"comfortable\"` on an ancestor gives rows of at least 44px with 44px in-row targets; `data-forma-density=\"compact\"` gives rows of at least 36px with 24px in-row targets (44px on a coarse pointer). Without the attribute the component keeps its own spacing.",
     "No breakpoints: the table keeps its structure at every width.",
     "Containment comes from `.forma-bounded-overflow`: `overflow: auto`, `overscroll-behavior: contain` and a stable scrollbar gutter.",
     "Cells wrap long words (`overflow-wrap: anywhere` on `td` and `th`) before forcing extra width.",

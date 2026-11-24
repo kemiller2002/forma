@@ -21,7 +21,7 @@ export default {
       "Each turn is a two-column grid: speaker label (`minmax(6rem, 0.22fr)`) and content; actions align under the content.",
       "The speaker label is mono uppercase text on every turn, including the user's.",
       "`data-forma-speaker=\"assistant\"` tints the turn background; any other value is unstyled.",
-      "At 40rem and below each turn is one column and turn actions are full width."
+      "Below 48rem each turn is one column and turn actions are full width."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior"] },
@@ -97,7 +97,7 @@ export default {
       mobile: {
         height: 520,
         notes: [
-          "At 40rem and below each turn is a single column: speaker label, then content, then actions.",
+          "Below 48rem each turn is a single column: speaker label, then content, then actions.",
           "Turn action buttons become full width and keep the 2.75rem base height for touch.",
           "Turns are full-width rows, not side-aligned bubbles, so nothing is squeezed into a narrow column at 320px and long words wrap within the content.",
           "Order is the document order of the list; the application decides whether to scroll to the newest turn after rotation or a new message."
@@ -137,7 +137,7 @@ export default {
       "forma-turn": "One turn: a two-column grid of speaker label and content with a bottom rule.",
       "forma-turn__speaker": "Visible speaker name in small mono uppercase. Required on every turn.",
       "forma-turn__content": "Flow content of the turn; any structured HTML, allowed to shrink.",
-      "forma-turn__actions": "Wrapping row of application-supplied actions under the content; full-width buttons at 40rem and below.",
+      "forma-turn__actions": "Wrapping row of application-supplied actions under the content; full-width buttons below 48rem.",
       "data-forma-speaker": "Presentation hook. `assistant` gives the turn the secondary surface background so application turns are distinguishable at a glance; it implies nothing about correctness or authority."
     },
     keyboard: [
@@ -152,7 +152,7 @@ export default {
     { name: "User or person turn", how: "data-forma-speaker=\"user\" or absent", description: "Untinted row with a speaker label." },
     { name: "Application turn", how: "data-forma-speaker=\"assistant\"", description: "Secondary surface background; speaker label still required." },
     { name: "Turn outcome", how: "text and optional .forma-status-lozenge in the content", description: "Application-reported outcomes such as not completed or pending, written as text." },
-    { name: "Stacked turns", how: "@media (max-width: 40rem)", description: "One column per turn; actions full width." },
+    { name: "Stacked turns", how: "@media (width < 48rem)", description: "One column per turn; actions full width." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Root border uses CanvasText; the tint disappears and speaker labels carry the distinction." }
   ],
   accessibility: {
@@ -170,7 +170,7 @@ export default {
   },
   responsive: [
     "Wide: turn grid `minmax(6rem, 0.22fr) minmax(0, 1fr)`; content can shrink.",
-    "At 40rem and below: `grid-template-columns: 1fr`, actions move to the single column and buttons become full width.",
+    "Below 48rem: `grid-template-columns: 1fr`, actions move to the single column and buttons become full width.",
     "Long content wraps inside the content column; wide tables or code in a turn need a [[bounded-overflow]] container."
   ],
   motion: [

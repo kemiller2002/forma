@@ -5,7 +5,7 @@ export default {
   summary: "Compact textual state label with a shape glyph and border, so state never depends on color.",
   owns: ["forma-status-lozenge", "forma-status-lozenge-set"],
   purpose: {
-    description: "A status lozenge is a short, bordered label that names the state of something: Confirmed, Needs attention, Unknown, Blocked. Forma renders the text in a compact monospace box and adds a glyph before it from `data-state` (check, exclamation, question mark, cross, or a bullet when no state is set). The application chooses the wording and the `data-state` value; the text is the authority and the glyph is a redundant structural cue. A lozenge set lays several out in a wrapping row.",
+    description: "A status lozenge is a short, bordered label that names the state of something: Confirmed, Needs attention, Unknown, Blocked. Forma renders the text in a compact monospace box and adds a glyph before it from `data-state` (check, exclamation, question mark, cross, or a bullet when no state is set). The application chooses the wording and the `data-state` value; the text is the authority and the glyph is a redundant structural cue. A lozenge set lays several out in a wrapping row. On consumer surfaces, where the status is often the most important fact on a record, `data-forma-variant=\"sentence\"` renders the same lozenge in sentence case in the body face at 13px semibold with a 1px border in the state colour.",
     useWhen: [
       "A record, row or card needs a one- to three-word state label.",
       "Several independent states are shown together and should stay distinguishable in grayscale.",
@@ -19,7 +19,8 @@ export default {
     characteristics: [
       "Five glyph shapes: ✓ for ok, ! for attention, ? for unknown, × for blocked, and • when `data-state` is absent or unrecognized.",
       "All lozenges share one border, surface and text color; the difference is in words and glyph, not hue.",
-      "Text does not wrap (`white-space: nowrap`), so keep labels short."
+      "Text does not wrap (`white-space: nowrap`), so keep labels short.",
+      "The sentence variant keeps the glyph and the `data-state` mapping; only the type, border and shape change."
     ]
   },
   examples: [
@@ -49,6 +50,20 @@ export default {
 </forma-status-lozenge>`
     },
     {
+      id: "sentence-record-status",
+      title: "Record status on a consumer screen",
+      description: "The sentence variant on a list of requests. The status reads as part of the record, at least as legible as the body text around it, and the glyph still distinguishes states without colour.",
+      html: `<forma-status-lozenge class="forma-component-tag">
+  <dl class="forma-key-value-list">
+    <div><dt>Request to City Library Fund</dt><dd><span class="forma-status-lozenge" data-forma-variant="sentence" data-state="attention">On hold</span></dd></div>
+    <div><dt>Request to Riverside Food Bank</dt><dd><span class="forma-status-lozenge" data-forma-variant="sentence" data-state="blocked">Payment returned</span></dd></div>
+    <div><dt>Request to Hillcrest School Trust</dt><dd><span class="forma-status-lozenge" data-forma-variant="sentence" data-state="ok">Paid</span></dd></div>
+    <div><dt>Request to Harbour Arts Centre</dt><dd><span class="forma-status-lozenge" data-forma-variant="sentence" data-state="unknown">Waiting for confirmation</span></dd></div>
+    <div><dt>Request to Northside Clinic</dt><dd><span class="forma-status-lozenge" data-forma-variant="sentence">Draft</span></dd></div>
+  </dl>
+</forma-status-lozenge>`
+    },
+    {
       id: "mobile-status-set",
       title: "Mobile status set",
       description: "A lozenge set at phone width.",
@@ -74,12 +89,14 @@ export default {
   api: {
     attributes: [
       { name: "data-state", on: "span.forma-status-lozenge", values: "ok | attention | unknown | blocked", default: "absent (neutral bullet)", description: "Selects the leading glyph. Presentation only; the text must name the state." },
+      { name: "data-forma-variant", on: "span.forma-status-lozenge", values: "sentence", default: "absent (compact monospace)", description: "Sentence-case body-face variant for consumer surfaces: 13px semibold, 1px border in the state colour, rounded ends. Author the text in sentence case; Forma never transforms it." },
       { name: "role", on: "div.forma-status-lozenge-set", values: "group", default: "—", description: "Optional. Lets a set carry an accessible name when its purpose is not clear from surrounding headings." },
       { name: "aria-label", on: "div.forma-status-lozenge-set", values: "string", default: "—", description: "Names the set. Use it together with a role such as group; a label on a plain div is ignored by many screen readers." }
     ],
     hooks: {
       "forma-status-lozenge": "Inline-flex bordered label with monospace 0.6875rem text, a 1.75rem minimum height and a generated leading glyph.",
       "forma-status-lozenge-set": "Wrapping flex row for several lozenges. Below 30rem each lozenge takes the full row.",
+      "data-forma-variant": "`sentence`: body face (`--forma-primitive-font-family-sans`), at least 0.8125rem semibold, no text transform, 1px `currentColor` border and pill radius. The glyph and state colours are unchanged.",
       "data-state": "Chooses the glyph: ok ✓, attention !, unknown ?, blocked ×. Any other value or none shows •."
     },
     keyboard: [
@@ -95,7 +112,8 @@ export default {
     { name: "Attention", how: "data-state=\"attention\"", description: "Exclamation glyph. Use for pending, stale, partial, needs review." },
     { name: "Unknown", how: "data-state=\"unknown\"", description: "Question-mark glyph. Use when the state has not been established; unknown is not failure." },
     { name: "Blocked", how: "data-state=\"blocked\"", description: "Cross glyph. Use for blocked, rejected, unavailable." },
-    { name: "Neutral", how: "no data-state", description: "Bullet glyph for states with no attention implication." }
+    { name: "Neutral", how: "no data-state", description: "Bullet glyph for states with no attention implication." },
+    { name: "Sentence", how: "data-forma-variant=\"sentence\"", description: "Any of the states above in the consumer presentation: sentence case, body face, 13px semibold, 1px border in the state colour." }
   ],
   accessibility: {
     forma: [
@@ -119,7 +137,8 @@ export default {
   guidance: {
     do: [
       "Use consistent vocabulary across the product (\"Unknown\" always means the state has not been established).",
-      "Map domain states to `data-state` deliberately and document the mapping in the application."
+      "Map domain states to `data-state` deliberately and document the mapping in the application.",
+      "Use the sentence variant on consumer-facing records, and the default compact lozenge in dense staff tools."
     ],
     avoid: [
       "Encoding state only through `data-state` with generic text such as \"Status\".",

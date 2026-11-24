@@ -139,7 +139,7 @@ export default {
       mobile: {
         height: 420,
         notes: [
-          "At 44rem and below nested lists indent by 0.75rem and branches by 0.5rem (instead of 1.25rem and 0.75rem), so three levels still fit at 320px.",
+          "Below 48rem nested lists indent by 0.75rem and branches by 0.5rem (instead of 1.25rem and 0.75rem), so three levels still fit at 320px.",
           "Summaries and option rows stay at least 44px tall; the whole label row is the tap target for its radio.",
           "Long category and option names wrap within the row; nothing scrolls horizontally.",
           "Expanding a branch pushes the rest of the tree down in flow; there is no overlay or fixed height to clip it."
@@ -183,7 +183,7 @@ export default {
     hooks: {
       "forma-hierarchy": "The fieldset: border and padding reset. Branch `details` get an inline-start guide line and padding; `summary` and `label` rows are 44px flex rows.",
       "forma-hierarchy__legend": "The question, in bold above the tree.",
-      "forma-hierarchy__tree": "Root list with markers removed and no indentation; nested lists indent by 1.25rem (0.75rem at 44rem and below)."
+      "forma-hierarchy__tree": "Root list with markers removed and no indentation; nested lists indent by 1.25rem (0.75rem below 48rem)."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between summaries and into the radio group (to the checked radio, or the first rendered one)." },
@@ -219,7 +219,7 @@ export default {
   },
   responsive: [
     "Rows wrap long text; the tree never forces horizontal overflow.",
-    "At 44rem and below nested indentation and branch padding shrink so deep levels keep usable text width.",
+    "Below 48rem nested indentation and branch padding shrink so deep levels keep usable text width.",
     "Expanded branches are in flow; the page grows vertically.",
     "Very deep hierarchies still lose width per level; beyond three levels consider a stepwise selection instead."
   ],

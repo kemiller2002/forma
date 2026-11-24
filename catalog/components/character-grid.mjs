@@ -110,7 +110,7 @@ export default {
         height: 420,
         notes: [
           "The grid keeps its 60 columns; the viewport scrolls horizontally inside its border and the page itself never scrolls sideways.",
-          "Below 40rem, or on a coarse pointer, the row pitch grows to 2.75rem (44px) so rows are comfortable touch targets. Columns stay one `ch` wide, so positions are preserved.",
+          "Below 48rem, or on a coarse pointer, the row pitch grows to 2.75rem (44px) so rows are comfortable touch targets. Columns stay one `ch` wide, so positions are preserved.",
           "The viewport has `tabindex=\"0\"` and a name, so keyboard users can focus it and scroll with the arrow keys; touch users swipe inside it.",
           "Rotating to landscape shows more columns before scrolling is needed; no run moves."
         ]
@@ -206,7 +206,7 @@ export default {
   states: [
     { name: "Contained", how: "data-forma-narrow=\"contained\" (default)", description: "Geometry is preserved at every width; the viewport scrolls horizontally when narrower than the grid." },
     { name: "Reflowed", how: "data-forma-narrow=\"reflow\" and a container narrower than 82 cells", description: "Runs stack in source order and wrap; positions are not preserved. Table runs keep their own contained scroll." },
-    { name: "Touch pitch", how: "viewport narrower than 40rem or pointer: coarse", description: "Row pitch grows to 2.75rem; fields and keys get a 2.75rem minimum width that paints into blank cells." },
+    { name: "Touch pitch", how: "viewport narrower than 48rem or pointer: coarse", description: "Row pitch grows to 2.75rem; fields and keys get a 2.75rem minimum width that paints into blank cells." },
     { name: "Viewport focus", how: ":focus-visible on the viewport", description: "A 2px focus outline with offset around the region." },
     { name: "Missing value", how: "data-forma-state=\"missing\" on a value", description: "Missing data is stated in words and italicized, never left blank." },
     { name: "Profiled", how: "data-forma-profile=\"ibm-3270\"", description: "Presentation tokens change; geometry, order and semantics do not." }
@@ -232,7 +232,7 @@ export default {
     "The grid sizes in character cells: `inline-size: max-content` of `columns` tracks of `minmax(1ch, min-content)` plus the inset. It scales with text size, not viewport width.",
     "Contained (default): the viewport has `overflow-x: auto` and `overscroll-behavior-inline: contain`, so the page never scrolls horizontally.",
     "Reflow (opt-in): an `@container` query stacks runs when the grid's container is narrower than 82ch; wider geometries still use the contained scroller between 82 cells and their full width.",
-    "Below 40rem or on a coarse pointer the row pitch grows to 2.75rem; columns stay one `ch` so positions do not change.",
+    "Below 48rem or on a coarse pointer the row pitch grows to 2.75rem; columns stay one `ch` so positions do not change.",
     "Overlong content widens intrinsic tracks rather than clipping; the conformance check reports it as an authoring error."
   ],
   motion: [

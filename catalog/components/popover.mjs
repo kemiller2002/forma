@@ -99,7 +99,7 @@ export default {
       mobile: {
         height: 360,
         notes: [
-          "At 44rem and below the surface is at most `100vw - 1rem` wide and `100dvh - 1rem` tall, so it never causes horizontal scrolling at 320px.",
+          "Below 48rem the surface is at most `100vw - 1rem` wide and `100dvh - 1rem` tall, so it never causes horizontal scrolling at 320px.",
           "Content that does not fit scrolls inside the popover with contained overscroll; the page behind does not scroll.",
           "Tapping outside or pressing the Close button dismisses an auto popover; there is no hover path to depend on.",
           "The surface still opens at the viewport's top-start corner rather than beside the field; on phones this keeps it fully visible, but the application should position it if proximity matters."
@@ -164,8 +164,8 @@ export default {
     ]
   },
   responsive: [
-    "Above 44rem: at most `min(30rem, 100vw - 2rem)` wide and `min(80dvh, 100dvh - 2rem)` tall.",
-    "At 44rem and below: at most `100vw - 1rem` wide and `100dvh - 1rem` tall.",
+    "From 48rem: at most `min(30rem, 100vw - 2rem)` wide and `min(80dvh, 100dvh - 2rem)` tall.",
+    "Below 48rem: at most `100vw - 1rem` wide and `100dvh - 1rem` tall.",
     "Text wraps; content beyond the height limit scrolls inside with contained overscroll.",
     "No collision handling or placement fallback is provided for `.forma-popover`."
   ],

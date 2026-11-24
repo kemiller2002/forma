@@ -20,7 +20,7 @@ export default {
       "Two columns: identity (`minmax(0, 1fr)`) and actions (`auto`), aligned to the bottom edge.",
       "The type label is small mono uppercase text above the identifier heading; status sits beside the title and wraps under it when space runs out.",
       "Secondary actions live in a native `details`/`summary` with an absolutely positioned panel.",
-      "At 40rem and below the header is one column and every action becomes full width."
+      "Below 48rem the header is one column and every action becomes full width."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
@@ -85,7 +85,7 @@ export default {
       mobile: {
         height: 520,
         notes: [
-          "At 40rem and below the header is one column: breadcrumbs, type, identifier, status and context first, then actions.",
+          "Below 48rem the header is one column: breadcrumbs, type, identifier, status and context first, then actions.",
           "Every direct child of the actions area, including the More `details`, becomes full width, so each button and the summary are at least 2.75rem tall full-width touch targets.",
           "The secondary action panel opens below the summary and is still absolutely positioned; place the header where the panel will not be clipped by an overflow container.",
           "Breadcrumbs wrap at 0.75rem; keep them short or show only the parent on phones."
@@ -140,7 +140,7 @@ export default {
   states: [
     { name: "Status", how: ".forma-status-lozenge with data-state", description: "Text status with a symbol for ok, attention, blocked or unknown." },
     { name: "Secondary actions open", how: "details[open]", description: "The panel is shown below the More summary at the inline end." },
-    { name: "Stacked", how: "@media (max-width: 40rem)", description: "One column; every action is full width." }
+    { name: "Stacked", how: "@media (width < 48rem)", description: "One column; every action is full width." }
   ],
   accessibility: {
     forma: [
@@ -158,7 +158,7 @@ export default {
   },
   responsive: [
     "Wide: `minmax(0, 1fr) auto`; the identity column wraps long names while actions keep their natural width.",
-    "At 40rem and below: one column, and every direct child of `.forma-record-header__actions` is 100% wide.",
+    "Below 48rem: one column, and every direct child of `.forma-record-header__actions` is 100% wide.",
     "The title row wraps, so a long status moves under the identifier instead of overflowing.",
     "Long unbroken identifiers need `overflow-wrap: anywhere` or a shorter display form; the header does not truncate."
   ],

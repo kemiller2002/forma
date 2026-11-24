@@ -20,7 +20,7 @@ export default {
       "Bordered surface with responsive padding and a context block (kicker, heading, help text).",
       "The textarea is at least 8rem tall, full width and vertically resizable.",
       "The submit action uses the inverse surface so it is the single strongest control.",
-      "At 40rem and below input methods become a two-column grid of 2.75rem buttons and the submit button is full width."
+      "Below 48rem input methods become a two-column grid of 2.75rem buttons and the submit button is full width."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior"] },
@@ -87,7 +87,7 @@ export default {
       mobile: {
         height: 560,
         notes: [
-          "At 40rem and below the actions row becomes a stretched column: input methods as a two-column grid of equal buttons, then a full-width submit button.",
+          "Below 48rem the actions row becomes a stretched column: input methods as a two-column grid of equal buttons, then a full-width submit button.",
           "Every button in the actions area gets a 2.75rem minimum height for touch.",
           "Padding shrinks with `clamp(1rem, 3vw, 1.5rem)`, and the textarea keeps its 8rem minimum height and full width, so text entry never overflows at 320px.",
           "When the on-screen keyboard opens, the textarea and status remain in normal flow; nothing is fixed to the viewport, so the page can scroll the submit button into view."
@@ -132,9 +132,9 @@ export default {
       "forma-composer": "Root bordered surface. Use a `form` when the composer submits natively.",
       "forma-composer__context": "Kicker, heading and help text block.",
       "forma-composer__field": "The label that wraps the textarea; the textarea is full width, 8rem minimum and vertically resizable.",
-      "forma-composer__actions": "Row with input methods on one side and submit on the other; stacks at 40rem and below.",
-      "forma-composer__input-actions": "Wrapping group of secondary input-method buttons; a two-column grid at 40rem and below.",
-      "forma-composer__submit": "The single continuation action, drawn on the inverse surface; full width at 40rem and below.",
+      "forma-composer__actions": "Row with input methods on one side and submit on the other; stacks below 48rem.",
+      "forma-composer__input-actions": "Wrapping group of secondary input-method buttons; a two-column grid below 48rem.",
+      "forma-composer__submit": "The single continuation action, drawn on the inverse surface; full width below 48rem.",
       "forma-composer__status": "Small secondary-color status line, usually a `role=\"status\"` region."
     },
     keyboard: [
@@ -153,7 +153,7 @@ export default {
     { name: "Empty", how: "empty textarea", description: "Optional placeholder shown; help text stays visible." },
     { name: "Dictating", how: "aria-pressed=\"true\" on the Dictate button plus status text", description: "Application-owned recording state." },
     { name: "Assistance unavailable", how: "status and help text written by the application", description: "The composer remains a plain text field." },
-    { name: "Stacked actions", how: "@media (max-width: 40rem)", description: "Input methods in a two-column grid, full-width submit." },
+    { name: "Stacked actions", how: "@media (width < 48rem)", description: "Input methods in a two-column grid, full-width submit." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Root border uses CanvasText." }
   ],
   accessibility: {
@@ -173,7 +173,7 @@ export default {
   responsive: [
     "Root is a grid with `min-inline-size: 0` and `clamp(1rem, 3vw, 1.5rem)` padding.",
     "Textarea: `inline-size: 100%`, `min-block-size: 8rem`, `resize: vertical`.",
-    "At 40rem and below: actions stack with `align-items: stretch`; input methods become `repeat(2, minmax(0, 1fr))`; submit is full width.",
+    "Below 48rem: actions stack with `align-items: stretch`; input methods become `repeat(2, minmax(0, 1fr))`; submit is full width.",
     "Long help text wraps; the composer never needs horizontal scrolling."
   ],
   motion: [

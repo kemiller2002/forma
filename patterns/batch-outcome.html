@@ -1,0 +1,31 @@
+<section class="forma-batch-outcome" aria-labelledby="batch-outcome-title">
+  <h3 id="batch-outcome-title">Batch approval finished</h3>
+  <p class="forma-batch-outcome__summary" role="status">6 requests processed: 3 approved, 1 in review, 1 not approved, 1 outcome unknown.</p>
+  <ul class="forma-batch-outcome__groups">
+    <li class="forma-batch-outcome__group" data-outcome="unknown">
+      <h4 class="forma-batch-outcome__heading"><span class="forma-status-lozenge" data-forma-variant="sentence" data-state="unknown">Outcome unknown</span><span class="forma-batch-outcome__count">1 request</span></h4>
+      <p>We could not confirm whether this request was approved. Check its status before acting on it again.</p>
+      <ul class="forma-batch-outcome__items"><li><a href="#batch-outcome-title">Request 2041</a></li></ul>
+      <div class="forma-batch-outcome__actions"><button type="button">Check status</button></div>
+    </li>
+    <li class="forma-batch-outcome__group" data-outcome="failed">
+      <h4 class="forma-batch-outcome__heading"><span class="forma-status-lozenge" data-forma-variant="sentence" data-state="blocked">Not approved</span><span class="forma-batch-outcome__count">1 request</span></h4>
+      <p>The recipient's details could not be verified.</p>
+      <ul class="forma-batch-outcome__items"><li><a href="#batch-outcome-title">Request 2038</a></li></ul>
+      <div class="forma-batch-outcome__actions"><button type="button">Review request 2038</button></div>
+    </li>
+    <li class="forma-batch-outcome__group" data-outcome="pending">
+      <h4 class="forma-batch-outcome__heading"><span class="forma-status-lozenge" data-forma-variant="sentence" data-state="attention">In review</span><span class="forma-batch-outcome__count">1 request</span></h4>
+      <p>A second reviewer must confirm this request. Nothing is needed from you now.</p>
+      <ul class="forma-batch-outcome__items"><li><a href="#batch-outcome-title">Request 2040</a></li></ul>
+    </li>
+    <li class="forma-batch-outcome__group" data-outcome="succeeded">
+      <h4 class="forma-batch-outcome__heading"><span class="forma-status-lozenge" data-forma-variant="sentence" data-state="ok">Approved</span><span class="forma-batch-outcome__count">3 requests</span></h4>
+      <ul class="forma-batch-outcome__items">
+        <li><a href="#batch-outcome-title">Request 2036</a></li>
+        <li><a href="#batch-outcome-title">Request 2037</a></li>
+        <li><a href="#batch-outcome-title">Request 2039</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>

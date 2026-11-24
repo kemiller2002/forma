@@ -172,7 +172,7 @@ export default {
     { name: "Three columns", how: "@container forma-main (inline-size >= 72rem)", description: "Navigation, article and outline side by side." },
     { name: "Compact navigation", how: "@container forma-doc (inline-size < 48rem)", description: "Navigation lists wrap horizontally; the current link gets a bottom rule." },
     { name: "Current page", how: "aria-current on a navigation link", description: "Strong rule and bold text." },
-    { name: "Sticky rails", how: "@media (min-width: 64rem) and (min-height: 36rem)", description: "Navigation and outline stick below the header and scroll within the viewport height." }
+    { name: "Sticky rails", how: "@media (width >= 64rem) and (min-height: 36rem)", description: "Navigation and outline stick below the header and scroll within the viewport height." }
   ],
   accessibility: {
     forma: [
@@ -191,7 +191,7 @@ export default {
     "Regroups by the main region's width (`forma-main` container at 48rem and 72rem), not the viewport, so it adapts correctly inside narrower frames.",
     "Below a 48rem layout width (`forma-doc` container) the navigation compacts into a wrapping row.",
     "All columns have `min-inline-size: 0`; long words and code in the article wrap or scroll inside their own blocks.",
-    "Rails stick only at `min-width: 64rem` and `min-height: 36rem`, with a maximum height of the viewport minus the header offset."
+    "Rails stick only at `width >= 64rem` and `min-height: 36rem`, with a maximum height of the viewport minus the header offset."
   ],
   motion: [
     "No animation: regrouping is immediate. Outline and navigation jumps scroll smoothly only under `prefers-reduced-motion: no-preference` (a shell rule) and instantly otherwise."

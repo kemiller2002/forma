@@ -73,7 +73,7 @@ export default {
       mobile: {
         height: 360,
         notes: [
-          "At 44rem (704px) and below the inputs grid becomes one column: Minimum, the separator word, then Maximum.",
+          "Below 48rem (768px) the inputs grid becomes one column: Minimum, the separator word, then Maximum.",
           "Above that width the two inputs sit side by side (each at least 7rem) within a 30rem maximum width.",
           "Each input keeps a 44px minimum height and inputmode=numeric shows a digit keypad.",
           "The status line wraps under the inputs; nothing scrolls horizontally."
@@ -115,7 +115,7 @@ export default {
     hooks: {
       "forma-range-entry": "Root fieldset with margin, padding and border removed.",
       "forma-range-entry__legend": "Legend naming the range (1rem, bold).",
-      "forma-range-entry__inputs": "Three-column grid (endpoint, separator, endpoint) up to 30rem wide; one column at 44rem and below.",
+      "forma-range-entry__inputs": "Three-column grid (endpoint, separator, endpoint) up to 30rem wide; one column below 48rem.",
       "forma-range-entry__separator": "Visual separator word, bottom-aligned with the inputs.",
       "forma-range-entry__status": "Status line restating the range or reporting an error (0.8125rem, weight 650).",
       "data-forma-state": "Application-owned marker on the status line (the pattern uses valid; examples use invalid). Forma does not currently style it, so the status text itself must carry the meaning."
@@ -149,7 +149,7 @@ export default {
   },
   responsive: [
     "Side by side, each endpoint column is at least 7rem and the group is at most 30rem wide.",
-    "At 44rem (704px) and below the endpoints stack in one column and the separator loses its padding.",
+    "Below 48rem (768px) the endpoints stack in one column and the separator loses its padding.",
     "Labels and status text wrap; the component never forces horizontal scrolling."
   ],
   motion: [

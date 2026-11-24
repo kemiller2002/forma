@@ -81,7 +81,7 @@ export default {
       mobile: {
         height: 520,
         notes: [
-          "At 30rem and below the sidebar switches to a one-column grid and both regions take the full width.",
+          "Below 30rem the sidebar switches to a one-column grid and both regions take the full width.",
           "Above that, stacking still happens intrinsically whenever the content region would drop below 60% of the row.",
           "Filters come first because they are first in the source; move them after the results in the markup if results should lead on phones.",
           "Nothing scrolls horizontally; long filter labels wrap inside the full-width region."

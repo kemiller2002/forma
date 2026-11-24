@@ -154,24 +154,46 @@ let contrast a b =
     let x, y = luminance a, luminance b
     (max x y + 0.05) / (min x y + 0.05)
 
+/// Viewport breakpoints (forma#200) as @custom-media rules. Custom
+/// properties cannot appear in media queries, so each
+/// primitive.breakpoint.<name> token becomes two named queries:
+/// --forma-below-<name> is (width < value) and --forma-from-<name> is
+/// (width >= value). Ranges are half-open, so a viewport exactly at a
+/// breakpoint belongs to the wider range. Pure: the caller writes the file.
+let renderCustomMedia (sourceName: string) (breakpoints: (string * string) list) =
+    let lines =
+        breakpoints
+        |> List.collect (fun (name, value) ->
+            [ $"@custom-media --forma-below-{name} (width < {value});"
+              $"@custom-media --forma-from-{name} (width >= {value});" ])
+    let header =
+        [ $"/* Generated from {sourceName}. Do not edit directly. */"
+          "/* Viewport ranges shared by Forma components and applications. Requires a"
+          "   build step that understands @custom-media (for example postcss-custom-media"
+          "   or Lightning CSS); the same values are primitive.breakpoint.* in the token"
+          "   source and --forma-primitive-breakpoint-* custom properties. */" ]
+    String.concat "\n" (header @ lines) + "\n"
+
 [<EntryPoint>]
 let main argv =
     try
-        // usage: TokenCompiler <tokens.json> <output.css> [--reference <tokens.json>]...
+        // usage: TokenCompiler <tokens.json> <output.css> [--reference <tokens.json>]... [--custom-media <output.css>]
         // Reference sources resolve aliases (for example a theme aliasing core
         // primitives) but are never emitted, so a theme cannot silently
         // redefine the core scale it builds on.
-        let positional, references =
-            let rec parse args positional references =
+        let positional, references, customMedia =
+            let rec parse args positional references customMedia =
                 match args with
-                | [] -> List.rev positional, List.rev references
-                | "--reference" :: path :: rest -> parse rest positional (path :: references)
+                | [] -> List.rev positional, List.rev references, customMedia
+                | "--reference" :: path :: rest -> parse rest positional (path :: references) customMedia
                 | "--reference" :: [] -> fail "--reference requires a path"
-                | value :: rest -> parse rest (value :: positional) references
-            parse (List.ofArray argv) [] []
+                | "--custom-media" :: path :: rest -> parse rest positional references (Some path)
+                | "--custom-media" :: [] -> fail "--custom-media requires a path"
+                | value :: rest -> parse rest (value :: positional) references customMedia
+            parse (List.ofArray argv) [] [] None
 
         if positional.Length <> 2 then
-            fail "usage: TokenCompiler <tokens.json> <output.css> [--reference <tokens.json>]..."
+            fail "usage: TokenCompiler <tokens.json> <output.css> [--reference <tokens.json>]... [--custom-media <output.css>]"
 
         let sourcePath = Path.GetFullPath positional[0]
         let outputPath = Path.GetFullPath positional[1]
@@ -309,6 +331,22 @@ let main argv =
 
         Directory.CreateDirectory(Path.GetDirectoryName outputPath) |> ignore
         File.WriteAllText(outputPath, css.ToString().Replace("\r\n", "\n"))
+
+        match customMedia with
+        | None -> ()
+        | Some path ->
+            let breakpoints =
+                tokens
+                |> List.choose (fun token ->
+                    match token.Path with
+                    | [ "primitive"; "breakpoint"; name ] -> Some(cssName [ name ], resolveCss [] token)
+                    | _ -> None)
+            if breakpoints.IsEmpty then fail "--custom-media requires primitive.breakpoint tokens"
+            let mediaPath = Path.GetFullPath path
+            match Path.GetDirectoryName mediaPath with
+            | null -> ()
+            | directory -> Directory.CreateDirectory directory |> ignore
+            File.WriteAllText(mediaPath, renderCustomMedia (Path.GetFileName sourcePath) breakpoints)
 
         printfn "token compilation passed: %d tokens, %d semantic variables across %d themes" tokens.Length baselineNames.Count themes.Length
         0

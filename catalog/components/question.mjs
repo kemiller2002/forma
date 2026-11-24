@@ -120,7 +120,7 @@ export default {
         notes: [
           "The header grid keeps the number in an auto column and gives the prompt the remaining width, so long prompts wrap instead of overflowing.",
           "The prompt font size is fluid (clamped between 1rem and 1.2rem), so it shrinks slightly on phones without dropping below body size.",
-          "The selector in the body reflows on its own: the ordinal scale stacks its options into full-width 52px rows below 44rem.",
+          "The selector in the body reflows on its own: the ordinal scale stacks its options into full-width 52px rows below 48rem.",
           "No part of the shell scrolls horizontally at 320px; portrait and landscape only change line breaks."
         ]
       },

@@ -68,7 +68,7 @@ export default {
       mobile: {
         height: 400,
         notes: [
-          "At 44rem and below the menu may grow to `100vw - 1rem` wide and `100dvh - 1rem` tall; its minimum width stays `min(14rem, 100vw - 2rem)`.",
+          "Below 48rem the menu may grow to `100vw - 1rem` wide and `100dvh - 1rem` tall; its minimum width stays `min(14rem, 100vw - 2rem)`.",
           "Each item spans the menu width and is at least 44px tall, so rows are easy to tap.",
           "If the list is taller than the viewport it scrolls inside the menu with contained overscroll.",
           "Tapping outside the menu or pressing Escape closes it; there is no hover-only path.",
@@ -136,8 +136,8 @@ export default {
     ]
   },
   responsive: [
-    "Above 44rem: width between `min(14rem, 100vw - 2rem)` and `min(30rem, 100vw - 2rem)`, height at most `min(80dvh, 100dvh - 2rem)`.",
-    "At 44rem and below: may grow to `100vw - 1rem` wide and `100dvh - 1rem` tall.",
+    "From 48rem: width between `min(14rem, 100vw - 2rem)` and `min(30rem, 100vw - 2rem)`, height at most `min(80dvh, 100dvh - 2rem)`.",
+    "Below 48rem: may grow to `100vw - 1rem` wide and `100dvh - 1rem` tall.",
     "Item labels wrap inside the row; extra items scroll inside the menu.",
     "No anchor placement, collision handling or bottom-sheet presentation is provided."
   ],

@@ -21,7 +21,7 @@ export default {
     characteristics: [
       "Cardinality modifiers (`--3`, `--4`, `--5`, `--6`, `--7`, `--10`, `--11`) set the column count; the default is five.",
       "Special answers live in `.forma-special-choices` below a dashed rule and may share the radio name.",
-      "Options become a vertical list of full-width rows below 44rem, so labels never have to shrink to fit.",
+      "Options become a vertical list of full-width rows below 48rem, so labels never have to shrink to fit.",
       "In the narrow layout, each label block is vertically centered beside its numbered marker, including wrapped labels.",
       "Even-point scales have no implied midpoint; visual order does not imply score."
     ]
@@ -89,7 +89,7 @@ export default {
       mobile: {
         height: 640,
         notes: [
-          "Below 44rem every cardinality collapses to one column; each option becomes a 52px-tall row with the marker at the start and the label beside it.",
+          "Below 48rem every cardinality collapses to one column; each option becomes a 52px-tall row with the marker at the start and the label beside it.",
           "Dividers switch from vertical to horizontal between rows, preserving the order top to bottom.",
           "Long labels wrap within the row instead of being squeezed into narrow columns.",
           "The special-choices row wraps its pills onto new lines if needed; each keeps a 44px minimum height."
@@ -176,7 +176,7 @@ export default {
   },
   responsive: [
     "Wide: equal `minmax(0, 1fr)` columns set by the cardinality modifier; labels wrap anywhere inside each column.",
-    "Below 44rem: one column for every cardinality; options become horizontal rows with a 3.25rem minimum height.",
+    "Below 48rem: one column for every cardinality; options become horizontal rows with a 3.25rem minimum height.",
     "Special choices wrap as a flex row with a 0.5rem gap.",
     "Ten and eleven point scales are tight on medium widths; prefer short or visually hidden labels for middle positions."
   ],

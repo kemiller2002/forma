@@ -20,7 +20,7 @@ export default {
       "Grid of `minmax(0, 1fr) auto`: identity on the start side, meta (status and time) on the end side.",
       "`.forma-feed-item__summary` and `.forma-feed-item__actions` span both columns.",
       "Margins are removed from the primary heading and paragraph and from the summary, so items stay compact.",
-      "At 30rem and below the grid becomes one column and the meta row aligns to the start."
+      "Below 30rem the grid becomes one column and the meta row aligns to the start."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior"] },
@@ -105,7 +105,7 @@ export default {
       mobile: {
         height: 340,
         notes: [
-          "At 30rem (480px) and below the grid becomes a single `minmax(0, 1fr)` column and `.forma-feed-item__meta` aligns to the start under the title.",
+          "Below 30rem (480px) the grid becomes a single `minmax(0, 1fr)` column and `.forma-feed-item__meta` aligns to the start under the title.",
           "Status and time wrap onto separate lines if they do not fit side by side.",
           "Actions keep their natural width; the application can give a single primary action full width if the item is the main target.",
           "Reading order is identical at every width because only grid placement changes."
@@ -135,7 +135,7 @@ export default {
       { name: "type", on: "button", values: "button", default: "—", description: "Actions are native buttons that the application wires to its own handlers." }
     ],
     hooks: {
-      "forma-feed-item": "The item root, usually an `article`. Two-column grid; one column at 30rem and below.",
+      "forma-feed-item": "The item root, usually an `article`. Two-column grid; one column below 30rem.",
       "forma-feed-item__primary": "Start column: source line and title. Margins on its `h2` and `p` are removed.",
       "forma-feed-item__meta": "End column: status and time in a wrapping row, end-aligned (start-aligned on phones).",
       "forma-feed-item__summary": "Optional one-line summary spanning the full width.",
@@ -154,7 +154,7 @@ export default {
     { name: "With actions", how: ".forma-feed-item__actions present", description: "Actions row below the summary." },
     { name: "No actions", how: "actions element omitted", description: "The item ends after its summary or meta." },
     { name: "Item state", how: "[[status-lozenge]] text in .forma-feed-item__meta", description: "Unread, Resolved, Blocked and so on are stated in words by the application." },
-    { name: "Stacked", how: "viewport ≤ 30rem", description: "Single column with meta aligned to the start." }
+    { name: "Stacked", how: "viewport < 30rem", description: "Single column with meta aligned to the start." }
   ],
   accessibility: {
     forma: [
@@ -171,7 +171,7 @@ export default {
   },
   responsive: [
     "Above 30rem: identity and meta side by side; summary and actions full width.",
-    "At 30rem and below: one column, meta start-aligned under the title.",
+    "Below 30rem: one column, meta start-aligned under the title.",
     "Long titles wrap within the start column; the meta column keeps its natural width on wide layouts."
   ],
   motion: [

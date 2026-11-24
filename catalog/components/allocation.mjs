@@ -69,7 +69,7 @@ export default {
     {
       id: "mobile-stacked-fields",
       title: "Allocation on a phone",
-      description: "Below 44rem each item's label sits above a full-width number field, which is easier to tap and type into.",
+      description: "Below 48rem each item's label sits above a full-width number field, which is easier to tap and type into.",
       mobile: {
         height: 460,
         notes: [
@@ -111,7 +111,7 @@ export default {
       "forma-allocation": "Root fieldset with browser border and padding removed.",
       "forma-allocation__legend": "Instruction stating the budget.",
       "forma-allocation__items": "Grid stacking the items.",
-      "forma-allocation__item": "Label wrapping item text and its number input; a two-column row on wide screens, stacked below 44rem.",
+      "forma-allocation__item": "Label wrapping item text and its number input; a two-column row on wide screens, stacked below 48rem.",
       "forma-allocation__total": "Total row above a rule, holding an output element in tabular numerals.",
       "data-forma-state": "Set by the application on `.forma-allocation__total`. `invalid` thickens the rule and switches to the accent color; other values (such as `valid`) use the default presentation."
     },
@@ -145,7 +145,7 @@ export default {
   },
   responsive: [
     "Wide: item rows are `minmax(0, 1fr) minmax(5rem, 7rem)` so numbers align in one column.",
-    "Below 44rem: each item stacks label over a full-width input.",
+    "Below 48rem: each item stacks label over a full-width input.",
     "The total row is a wrapping flex row."
   ],
   motion: [

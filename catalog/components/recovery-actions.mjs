@@ -65,7 +65,7 @@ export default {
       mobile: {
         height: 280,
         notes: [
-          "Below 36rem the group takes the full width and each button becomes a full-width row (flex-basis 100%).",
+          "Below 48rem the group takes the full width and each button becomes a full-width row (flex-basis 100%).",
           "Every button keeps a 2.75rem (44px) minimum height, so adjacent actions are separate touch targets with a 0.5rem gap.",
           "Long or localized labels wrap inside the button instead of widening the page.",
           "Order is preserved when stacking: the first capability Aegis supplied is still first."
@@ -89,7 +89,7 @@ export default {
       { name: "lang", on: ".forma-recovery-actions or button", values: "BCP 47 tag", default: "inherited", description: "Set when labels are in a different language from the page so they are pronounced correctly." }
     ],
     hooks: {
-      "forma-recovery-actions": "Wrapping flex row with a 0.5rem gap. Direct child buttons get a 44px minimum height; below a 36rem viewport the row fills the width and each button becomes full width."
+      "forma-recovery-actions": "Wrapping flex row with a 0.5rem gap. Direct child buttons get a 44px minimum height; below a 48rem viewport the row fills the width and each button becomes full width."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves between recovery buttons in source order." },
@@ -121,7 +121,7 @@ export default {
   },
   responsive: [
     "A wrapping flex row: buttons flow onto new lines as space runs out; the group itself can shrink to zero minimum width.",
-    "Below a 36rem viewport the group is full width and every button is a full-width row.",
+    "Below a 48rem viewport the group is full width and every button is a full-width row.",
     "Labels wrap inside buttons; nothing forces horizontal overflow at 320px."
   ],
   motion: [

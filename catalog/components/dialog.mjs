@@ -108,7 +108,7 @@ export default {
       mobile: {
         height: 420,
         notes: [
-          "At 44rem and below the dialog is `100vw - 1rem` wide and at most `100dvh - 1rem` tall, so it fits phones in portrait and landscape and follows the dynamic viewport as browser toolbars appear.",
+          "Below 48rem the dialog is `100vw - 1rem` wide and at most `100dvh - 1rem` tall, so it fits phones in portrait and landscape and follows the dynamic viewport as browser toolbars appear.",
           "Body padding reduces to 1rem and each action button becomes a full-width row, keeping 44px targets and room for long labels.",
           "Content taller than the viewport scrolls inside the dialog with `overscroll-behavior: contain`, so the page behind does not scroll.",
           "The on-screen keyboard may cover the lower part of the dialog; keep fields near the top and actions immediately after them."
@@ -147,8 +147,8 @@ export default {
     ],
     hooks: {
       "forma-dialog": "The dialog surface: border, primary surface, shadow, width `min(38rem, 100vw - 2rem)`, viewport-capped height and contained overscroll. Also styles the backdrop.",
-      "forma-dialog__body": "Padded content region (1.5rem, 1rem at 44rem and below).",
-      "forma-dialog__actions": "Wrapping action row aligned to the inline end with a top rule; at 44rem and below its buttons stretch to full width.",
+      "forma-dialog__body": "Padded content region (1.5rem, 1rem below 48rem).",
+      "forma-dialog__actions": "Wrapping action row aligned to the inline end with a top rule; below 48rem its buttons stretch to full width.",
       "open": "Native open state, set by the browser. `[open]` switches the surface to its resting position and the backdrop to its dimmed, blurred state, while preserving the shared spring timing in both directions.",
       "data-forma-motion-weight": "Presentation-only perceived mass: heavy (default for dialogs), standard or light. Never encodes severity or destructiveness."
     },
@@ -169,7 +169,7 @@ export default {
     { name: "Closed", how: "no open attribute", description: "Not rendered. While closing, the surface travels down slightly and the backdrop fades before display is removed." },
     { name: "Open (modal)", how: "[open] via show-modal", description: "Centered in the top layer over a dimmed, blurred backdrop; the rest of the page is inert." },
     { name: "Scrolling content", how: "content taller than max-block-size", description: "The dialog scrolls internally with contained overscroll. Actions scroll with the content; they are not pinned." },
-    { name: "Phone layout", how: "@media (max-width: 44rem)", description: "Near full-width surface, reduced padding and full-width action buttons." }
+    { name: "Phone layout", how: "@media (width < 48rem)", description: "Near full-width surface, reduced padding and full-width action buttons." }
   ],
   accessibility: {
     forma: [
@@ -186,8 +186,8 @@ export default {
     ]
   },
   responsive: [
-    "Above 44rem: `min(38rem, 100vw - 2rem)` wide, at most `100dvh - 2rem` tall, centered by the browser.",
-    "At 44rem and below: `100vw - 1rem` wide, `100dvh - 1rem` tall at most, 1rem body padding, full-width action buttons.",
+    "From 48rem: `min(38rem, 100vw - 2rem)` wide, at most `100dvh - 2rem` tall, centered by the browser.",
+    "Below 48rem: `100vw - 1rem` wide, `100dvh - 1rem` tall at most, 1rem body padding, full-width action buttons.",
     "Long content scrolls inside the dialog; long titles and labels wrap.",
     "A true full-screen mobile mode and pinned (sticky) action rows are not provided."
   ],

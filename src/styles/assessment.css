@@ -1007,7 +1007,7 @@
   .forma-hierarchy summary { min-block-size: 2.75rem; display: flex; align-items: center; cursor: pointer; font-weight: 700; }
   .forma-hierarchy label { min-block-size: 2.75rem; display: flex; align-items: center; gap: 0.5rem; }
 
-  @media (max-width: 44rem) {
+  @media (width < 48rem) {
     .forma-ordinal-scale__options,
     .forma-ordinal-scale--3 .forma-ordinal-scale__options,
     .forma-ordinal-scale--4 .forma-ordinal-scale__options,

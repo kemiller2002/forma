@@ -1248,6 +1248,27 @@
           "value": 2.75,
           "unit": "rem"
         }
+      },
+      "target-compact": {
+        "$description": "Minimum target in compact density (forma#199): 24px, the WCAG 2.5.8 minimum. Coarse pointers keep target-min.",
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        }
+      },
+      "row-comfortable": {
+        "$description": "Minimum data row height in comfortable density (forma#199).",
+        "$value": {
+          "value": 2.75,
+          "unit": "rem"
+        }
+      },
+      "row-compact": {
+        "$description": "Minimum data row height in compact density (forma#199).",
+        "$value": {
+          "value": 2.25,
+          "unit": "rem"
+        }
       }
     },
     "size-fluid": {
@@ -1354,6 +1375,28 @@
         "$value": {
           "value": 5,
           "unit": "px"
+        }
+      }
+    },
+    "breakpoint": {
+      "$type": "dimension",
+      "$description": "Viewport ranges shared by Forma components and applications (forma#200): compact phone < compact <= phone < tablet <= tablet < desktop <= desktop. Custom properties cannot be used in media queries, so the token compiler also emits them as @custom-media (dist/custom-media.css): --forma-below-<name> is (width < value) and --forma-from-<name> is (width >= value). Verification viewports: 320 and 390 (phone), 768 (tablet), 1024 and 1280 (desktop).",
+      "compact": {
+        "$value": {
+          "value": 30,
+          "unit": "rem"
+        }
+      },
+      "tablet": {
+        "$value": {
+          "value": 48,
+          "unit": "rem"
+        }
+      },
+      "desktop": {
+        "$value": {
+          "value": 64,
+          "unit": "rem"
         }
       }
     },

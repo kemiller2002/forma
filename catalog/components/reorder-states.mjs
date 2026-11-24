@@ -100,7 +100,7 @@ export default {
       mobile: {
         height: 460,
         notes: [
-          "At 44rem and below each ranking item stacks: position and label on the first row, move buttons in a full-width two-column row below, so the non-drag path keeps 2.75rem touch targets.",
+          "Below 48rem each ranking item stacks: position and label on the first row, move buttons in a full-width two-column row below, so the non-drag path keeps 2.75rem touch targets.",
           "The drag offset is whatever the application writes to `--forma-drag-y`; Forma adds no lag, so the item stays under the finger. Auto-scrolling the page during a drag is application behavior.",
           "The candidate outline is 2px dashed and offset 2px outside the item, so it remains visible next to the lifted item.",
           "Orientation changes do not alter any hook; the application should cancel or recompute an in-progress drag if the layout reflows."
@@ -186,7 +186,7 @@ export default {
     ]
   },
   responsive: [
-    "The hooks themselves have no breakpoints; layout comes from the host component (for example [[ranking]] stacks its move buttons at 44rem and below).",
+    "The hooks themselves have no breakpoints; layout comes from the host component (for example [[ranking]] stacks its move buttons below 48rem).",
     "Offsets are lengths supplied by the application; recompute them if the host layout changes during a drag.",
     "The lifted shadow and outlines sit outside the item box and do not change layout, so nothing reflows during a drag."
   ],

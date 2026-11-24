@@ -168,7 +168,7 @@ export default {
       mobile: {
         height: 640,
         notes: [
-          "The header is sticky only at 40rem wide and 36rem tall or more; on phones it scrolls away so it never covers focused content or reading space.",
+          "The header is sticky only at 48rem wide and 36rem tall or more; on phones it scrolls away so it never covers focused content or reading space.",
           "The header tagline hides below a 56rem header width; the brand name stays visible and wraps instead of truncating.",
           "Navigation links wrap onto a second line rather than hiding behind a menu, and every link, the brand and every button keep a 44px minimum height.",
           "Gutters come from the fluid `--forma-layout-gutter` token, so nothing scrolls horizontally at 320px or at 200% text size.",
@@ -240,7 +240,7 @@ export default {
     { name: "Skip link focused", how: ":focus on .forma-skip-link", description: "The skip link slides into view at the top-left corner; otherwise it sits above the viewport." },
     { name: "Main focused", how: ":focus on .forma-site__main (tabindex=-1)", description: "No outline is drawn on the region itself; the next Tab reaches its first interactive element." },
     { name: "Current page", how: "aria-current on one navigation link", description: "A persistent under-rule marks the current destination, not color alone." },
-    { name: "Sticky header", how: "@media (min-width: 40rem) and (min-height: 36rem)", description: "The header sticks to the top and anchor targets get scroll padding so they land below it." },
+    { name: "Sticky header", how: "@media (width >= 48rem) and (min-height: 36rem)", description: "The header sticks to the top and anchor targets get scroll padding so they land below it." },
     { name: "Print", how: "@media print", description: "Skip link, navigation, footer actions and backdrop are removed; tones flatten to CanvasText on no background." }
   ],
   accessibility: {
@@ -261,7 +261,7 @@ export default {
   },
   responsive: [
     "All recomposition is content-driven: header, hero, section heading, CTA and footer are wrapping flex rows; cards and facts are auto-fit grids with minimum sizes.",
-    "The header becomes sticky only at `min-width: 40rem` and `min-height: 36rem`, which also excludes high zoom and short landscape phones.",
+    "The header becomes sticky only at `width >= 48rem` and `min-height: 36rem`, which also excludes high zoom and short landscape phones.",
     "`.forma-site__main` is capped at `--forma-layout-width-max` and uses the fluid `--forma-layout-gutter`; there is no horizontal scrolling at 320px or with 200% text.",
     "`.forma-site__main` is an `forma-main` size container; the documentation layout regroups against it at 48rem and 72rem."
   ],

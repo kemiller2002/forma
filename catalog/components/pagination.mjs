@@ -18,7 +18,7 @@ export default {
     characteristics: [
       "Every control is an anchor with a real href; the current page is marked with `aria-current=\"page\"` and an inverse surface.",
       "Each link is at least 44 by 44px.",
-      "Below 40rem only the current page number stays visible, Previous and Next move to the edges and the summary takes its own line.",
+      "Below 48rem only the current page number stays visible, Previous and Next move to the edges and the summary takes its own line.",
       "The summary text states position explicitly, so the current page does not depend on the highlighted box."
     ]
   },
@@ -80,11 +80,11 @@ export default {
       id: "mobile-compact",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Compact pagination on a phone",
-      description: "Below 40rem the page list collapses to the current page, Previous and Next sit at the edges and the summary moves to its own centred line.",
+      description: "Below 48rem the page list collapses to the current page, Previous and Next sit at the edges and the summary moves to its own centred line.",
       mobile: {
         height: 200,
         notes: [
-          "Page links other than the current one are hidden below 40rem; the current page stays as the anchor between Previous and Next.",
+          "Page links other than the current one are hidden below 48rem; the current page stays as the anchor between Previous and Next.",
           "The row uses space-between, so Previous and Next land at opposite edges with large 44px targets.",
           "The summary is reordered to the end, takes the full width and is centred, so position is still stated in text.",
           "Hidden page numbers are removed from the accessibility tree too; the summary and Previous/Next remain the navigation path."
@@ -117,7 +117,7 @@ export default {
     hooks: {
       "forma-pagination": "Root nav: a wrapping flex row of controls and summary.",
       "forma-pagination__pages": "Unstyled ordered list of page links in a row.",
-      "forma-pagination__summary": "Small secondary text stating the position, such as Page 3 of 12. Full-width and centred below 40rem."
+      "forma-pagination__summary": "Small secondary text stating the position, such as Page 3 of 12. Full-width and centred below 48rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through Previous, the page links and Next in source order." },
@@ -130,7 +130,7 @@ export default {
     { name: "Current page", how: "aria-current=\"page\"", description: "Inverse surface and text color." },
     { name: "Focus", how: ":focus-visible on a link", description: "Foundation two-tone focus ring." },
     { name: "At first or last page", how: "application omits Previous or Next", description: "No disabled styling exists; do not render a control that goes nowhere." },
-    { name: "Compact", how: "viewport below 40rem", description: "Only the current page number remains between Previous and Next; summary on its own line." }
+    { name: "Compact", how: "viewport below 48rem", description: "Only the current page number remains between Previous and Next; summary on its own line." }
   ],
   accessibility: {
     forma: [
@@ -146,7 +146,7 @@ export default {
   },
   responsive: [
     "Wide: a wrapping flex row; page links sit in their own list.",
-    "Below 40rem: non-current page numbers are hidden, controls spread to the edges and the summary moves to a centred line at the end.",
+    "Below 48rem: non-current page numbers are hidden, controls spread to the edges and the summary moves to a centred line at the end.",
     "Long link text such as Older events wraps with the row rather than overflowing."
   ],
   motion: [

@@ -125,7 +125,7 @@ export default {
   },
   states: [
     { name: "Side by side", how: "viewport wider than 48rem", description: "Primary and secondary tracks with a 1.5rem gap, aligned to the top." },
-    { name: "Stacked", how: "@media (max-width: 48rem)", description: "One column, source order." },
+    { name: "Stacked", how: "@media (width < 48rem)", description: "One column, source order." },
     { name: "Resizable", how: "data-forma-resizable", description: "Three-track layout driven by `--forma-split-size`; documented on [[resizable-split-pane]]." }
   ],
   accessibility: {

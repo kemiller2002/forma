@@ -20,7 +20,7 @@ export default {
       "Three padded parts separated by rules: recognize (header), verify (facts grid) and act (footer).",
       "Facts are a `dl` in an auto-fit grid of columns at least 12rem wide, each fact separated by a thin rule.",
       "Designed to pair with `.forma-identifier` and `.forma-critical-value` for low-context values.",
-      "At 30rem and below the act area is a one-column grid of full-width, wrapping buttons."
+      "Below 30rem the act area is a one-column grid of full-width, wrapping buttons."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior"] },
@@ -92,7 +92,7 @@ export default {
         height: 640,
         notes: [
           "The facts grid uses `minmax(min(100%, 12rem), 1fr)`, so at 320px each fact takes a full row.",
-          "At 30rem and below the act area becomes a one-column grid; each button is full width, wraps long labels and keeps a 2.75rem minimum height.",
+          "Below 30rem the act area becomes a one-column grid; each button is full width, wraps long labels and keeps a 2.75rem minimum height.",
           "Headings, facts and buttons wrap anywhere, so long identifiers never cause horizontal scrolling, even at 200% text.",
           "Actions stay after the facts in portrait and landscape, so users meet the facts before the buttons."
         ]
@@ -130,7 +130,7 @@ export default {
       "forma-verification-frame__recognize": "Header part with a bottom rule: kicker, heading and the application-reported state.",
       "forma-verification-frame__verify": "The part to read deliberately: heading, facts and unresolved work.",
       "forma-verification-frame__facts": "A `dl` laid out as an auto-fit grid of fact cells at least 12rem wide, each with a bottom rule and a small secondary-color `dt`.",
-      "forma-verification-frame__act": "Footer part with a top rule. A wrapping flex row; a leading `p` takes the remaining width. One full-width column at 30rem and below."
+      "forma-verification-frame__act": "Footer part with a top rule. A wrapping flex row; a leading `p` takes the remaining width. One full-width column below 30rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Reaches the actions only after the facts in source order. No added keyboard behavior." },
@@ -144,7 +144,7 @@ export default {
   states: [
     { name: "Reported state", how: "text (and optional .forma-status-lozenge) in the recognize part", description: "Whatever the application reports, such as ready, stale, unknown or reconciling, shown without strengthening it." },
     { name: "Deliberate value", how: ".forma-critical-value[data-forma-verify=\"true\"]", description: "Bold mono value with a double underline." },
-    { name: "Stacked actions", how: "@media (max-width: 30rem)", description: "Act area becomes one column of full-width buttons." },
+    { name: "Stacked actions", how: "@media (width < 30rem)", description: "Act area becomes one column of full-width buttons." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Frame border and verified-value underline use CanvasText." }
   ],
   accessibility: {
@@ -164,7 +164,7 @@ export default {
   responsive: [
     "Root and parts set `min-inline-size: 0` and `max-inline-size: 100%`; headings, paragraphs, facts and buttons wrap anywhere.",
     "Facts: `repeat(auto-fit, minmax(min(100%, 12rem), 1fr))`, one fact per row on phones.",
-    "Act area: wrapping flex row with a flexible leading paragraph; at 30rem and below a single-column grid of full-width, wrapping buttons."
+    "Act area: wrapping flex row with a flexible leading paragraph; below 30rem a single-column grid of full-width, wrapping buttons."
   ],
   motion: [
     "No animation: the frame is static. Deliberate verification is supported by structure and a pause in the flow, not by motion. Buttons keep only the base perceptual hover and press color change."

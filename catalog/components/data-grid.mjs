@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Semantic tabular records with sortable-column affordances, contained horizontal overflow and a labeled record projection on phones.",
   purpose: {
-    description: "A data grid presents a set of records as a native `table` inside a focusable, labelled scroll region. Forma styles the header, cells, sort indicators and the narrow-screen recomposition: at 30rem and below the header row is hidden and every cell prints its own `data-label`, so each row reads as a labelled record. Forma does not sort, filter, select, paginate or navigate cells. Header buttons are plain native buttons; the application (normally through Limen) decides what activating them does and writes the resulting `aria-sort`.",
+    description: "A data grid presents a set of records as a native `table` inside a focusable, labelled scroll region. Forma styles the header, cells, sort indicators and the narrow-screen recomposition: below 30rem the header row is hidden and every cell prints its own `data-label`, so each row reads as a labelled record. Forma does not sort, filter, select, paginate or navigate cells. Header buttons are plain native buttons; the application (normally through Limen) decides what activating them does and writes the resulting `aria-sort`.",
     useWhen: [
       "Users scan, compare and act on many records that share the same fields, such as invoices, tickets or deployments.",
       "Columns can be sorted by the application and the current sort must be visible and announced.",
@@ -20,7 +20,7 @@ export default {
     ],
     characteristics: [
       "The table keeps a 42rem minimum width, so on tablets the region scrolls horizontally inside its own border instead of squeezing columns.",
-      "At 30rem and below each row becomes a bordered record and each cell a two-column label/value grid driven by `data-label`.",
+      "Below 30rem each row becomes a bordered record and each cell a two-column label/value grid driven by `data-label`.",
       "The sort direction is shown by an arrow appended to the header button from `aria-sort`, so the visual and the accessibility tree share one source.",
       "Status is expected to be text (for example a [[status-lozenge]]), never cell color alone."
     ]
@@ -154,7 +154,7 @@ export default {
       mobile: {
         height: 560,
         notes: [
-          "At 30rem (480px) and below the table, rows and cells switch to block display; `thead` is hidden and every `td` shows its `data-label` in a 6.5rem label column beside the value.",
+          "Below 30rem (480px) the table, rows and cells switch to block display; `thead` is hidden and every `td` shows its `data-label` in a 6.5rem label column beside the value.",
           "The region drops its border and horizontal scrolling; each record gets its own border and bottom margin instead, so nothing scrolls sideways at 320px.",
           "Children of the `td[data-label=\"Actions\"]` cell stretch to 100% width, giving a full-width touch target per record.",
           "Header sort buttons are hidden with `thead`, so sorting is not reachable on phones from the grid itself. Offer sort in a [[collection-toolbar]] or equivalent control.",
@@ -199,13 +199,13 @@ export default {
       { name: "aria-label", on: ".forma-data-grid", values: "string", default: "—", description: "Names the region. Use a distinct name per grid on the page." },
       { name: "scope", on: "th", values: "col", default: "—", description: "Associates each header with its column on wide layouts." },
       { name: "aria-sort", on: "th", values: "ascending | descending", default: "absent (unsorted)", description: "Written by the application on the one sorted column. Forma appends ↑ or ↓ to the header button from this value." },
-      { name: "data-label", on: "td", values: "column name", default: "—", description: "Required on every cell. Printed as the cell's label at 30rem and below, when the header row is hidden. `Actions` also stretches the cell's children to full width." },
+      { name: "data-label", on: "td", values: "column name", default: "—", description: "Required on every cell. Printed as the cell's label below 30rem, when the header row is hidden. `Actions` also stretches the cell's children to full width." },
       { name: "type", on: "button", values: "button", default: "—", description: "Header sort buttons and row actions are native buttons; `type=\"button\"` prevents accidental form submission." },
       { name: "aria-label", on: "row action button", values: "string", default: "—", description: "Names the record a repeated action applies to, such as \"Open INV-1042\"." },
       { name: "datetime", on: "time", values: "ISO date", default: "—", description: "Machine-readable date for date cells; the visible text stays human-formatted." }
     ],
     hooks: {
-      "forma-data-grid": "Root scroll region around the native table. Bordered, horizontally scrollable, and recomposed into labelled records at 30rem and below."
+      "forma-data-grid": "Root scroll region around the native table. Bordered, horizontally scrollable, and recomposed into labelled records below 30rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the region, the header sort buttons and row actions in document order." },
@@ -222,7 +222,7 @@ export default {
     { name: "Sorted ascending", how: "aria-sort=\"ascending\" on th", description: "The header button shows an up arrow after its label; assistive technology announces the sort." },
     { name: "Sorted descending", how: "aria-sort=\"descending\" on th", description: "The header button shows a down arrow after its label." },
     { name: "Overflowing", how: "table wider than the region", description: "The region scrolls horizontally inside its border because the table keeps a 42rem minimum width." },
-    { name: "Record projection", how: "viewport ≤ 30rem", description: "Header hidden; rows are bordered records; cells show their `data-label`." },
+    { name: "Record projection", how: "viewport < 30rem", description: "Header hidden; rows are bordered records; cells show their `data-label`." },
     { name: "Empty", how: "empty tbody plus an application-rendered [[empty-state]]", description: "Forma has no built-in empty row; the application explains the absence of records." }
   ],
   accessibility: {
@@ -242,8 +242,9 @@ export default {
     ]
   },
   responsive: [
+    "Density: `data-forma-density=\"comfortable\"` on an ancestor gives rows of at least 44px with 44px in-row targets; `data-forma-density=\"compact\"` gives rows of at least 36px with 24px in-row targets (44px on a coarse pointer). Without the attribute the component keeps its own spacing.",
     "Above 30rem the table keeps a 42rem minimum inline size and the `.forma-data-grid` region scrolls horizontally, so the page never overflows.",
-    "At 30rem and below the grid recomposes into stacked records: `thead` hidden, every cell a `minmax(6.5rem, 0.4fr) minmax(0, 1fr)` label/value grid.",
+    "Below 30rem the grid recomposes into stacked records: `thead` hidden, every cell a `minmax(6.5rem, 0.4fr) minmax(0, 1fr)` label/value grid.",
     "Long text wraps inside cells; identifiers can use [[identifier]] so long codes break safely.",
     "The application decides which columns are essential. For very wide data on phones, prefer fewer columns or a detail view over many labelled lines per record.",
     "Sort controls disappear with the header on phones; supply an equivalent sort control outside the grid."

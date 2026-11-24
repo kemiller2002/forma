@@ -5,7 +5,7 @@ export default {
   summary: "Native button (or a link styled as one) with a 44px minimum target and perceptual hover/press feedback; .forma-actions groups actions that wrap.",
   owns: ["forma-button", "forma-actions"],
   purpose: {
-    description: "Forma styles every native `button` element directly, so an ordinary `<button type=\"button\">` or `<button type=\"submit\">` is already a Forma button. The `forma-button` class gives the same treatment to a link (`<a href>`) when the action is navigation that should look like an action. `forma-actions` is a wrapping flex row for a set of related actions. In the application layer there is exactly one visual style: a bordered, full-weight button. A filled primary style (`data-forma-variant=\"primary\"`) and a dashed unavailable style exist only inside a marketing `.forma-site` shell. The browser owns activation, focus, form submission and disabled state; the application decides what the action does and whether it is currently allowed.",
+    description: "Forma styles every native `button` element directly, so an ordinary `<button type=\"button\">` or `<button type=\"submit\">` is already a Forma button. The `forma-button` class gives the same treatment to a link (`<a href>`) when the action is navigation that should look like an action. `forma-actions` is a wrapping flex row for a set of related actions. The default is a bordered, full-weight button. `data-forma-variant=\"primary\"` fills the one most important action in a view with the accent colour, and `data-forma-variant=\"destructive\"` gives an action that removes, revokes or voids something a 2px danger outline; both work in the application layer and inside a marketing `.forma-site` shell, which keeps its own filled primary treatment and dashed unavailable style. The browser owns activation, focus, form submission and disabled state; the application decides what the action does and whether it is currently allowed.",
     useWhen: [
       "The user starts an action: save, submit, cancel, open a dialog, run a command.",
       "A link navigates somewhere but must read as a call to action in a row of actions; use `<a class=\"forma-button\" href>`.",
@@ -15,13 +15,14 @@ export default {
       "The control sets an on/off preference: use [[switch]]. It selects one of several options: use [[segmented-control]] or [[choice-group]].",
       "The action leads to another page and appears in running text: use an ordinary link, not a button-styled one.",
       "Commands need a visible task label or a named group: use [[command-group]]; secondary commands that do not fit belong in [[overflow-command-disclosure]] or a [[menu]].",
-      "You need a filled primary, destructive, icon-only or loading variant in an application screen: Forma does not provide those in the application layer. Express priority through order and wording, and report the gap rather than adding local CSS."
+      "You need an icon-only variant: Forma has none. Keep a visible label, or a visually hidden one as in the example below, and report the gap rather than adding local CSS."
     ],
     characteristics: [
       "Every `button` and `.forma-button` has a 2.75rem (44px) minimum block size, a functional border and bold label text.",
       "Hover and press change only the surface color; the hit target never moves or shrinks.",
       "Press feedback starts immediately on pointer or key down and never delays activation.",
-      "`forma-actions` wraps its children onto new lines instead of shrinking or overflowing them."
+      "`forma-actions` wraps its children onto new lines instead of shrinking or overflowing them.",
+      "`data-forma-variant=\"primary\"` is the only filled button; `data-forma-variant=\"destructive\"` is the only button with a 2px outline, so neither depends on colour alone."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior", "placeholder-navigation"] },
@@ -75,10 +76,29 @@ export default {
 </forma-button>`
     },
     {
+      id: "primary-and-destructive",
+      interaction: { kind: "static", reasons: ["application-behavior"] },
+      title: "One primary action and a destructive action",
+      description: "An application form with one filled primary action, an ordinary Cancel and a destructive action that names what it removes. The destructive label states the verb and the object; the application confirms it in a [[dialog]] that repeats the same words. Both variants keep their colours while pending or disabled.",
+      html: `<forma-button class="forma-component-tag">
+  <form class="forma-stack" action="#" method="post">
+    <div class="forma-actions">
+      <button type="submit" data-forma-variant="primary">Submit request</button>
+      <button type="button">Cancel</button>
+      <button type="button" data-forma-variant="destructive">Revoke access for this member</button>
+    </div>
+    <div class="forma-actions">
+      <button type="button" data-forma-variant="primary" aria-busy="true" aria-disabled="true">Submitting request</button>
+      <button type="button" data-forma-variant="destructive" disabled>Void payment</button>
+    </div>
+  </form>
+</forma-button>`
+    },
+    {
       id: "marketing-primary",
       interaction: { kind: "static", reasons: ["placeholder-navigation"] },
       title: "Marketing call to action",
-      description: "Inside a marketing `.forma-site` shell, `data-forma-variant=\"primary\"` fills a link-button with the action tone, and `aria-disabled=\"true\"` gives a dashed, not-allowed treatment. Both hooks only work inside `.forma-site`. An aria-disabled button is still focusable and still fires click, so the application must ignore activation; the reason is linked with aria-describedby because the button stays in the focus order.",
+      description: "Inside a marketing `.forma-site` shell, `data-forma-variant=\"primary\"` fills a link-button with the marketing action tone instead of the application accent, and `aria-disabled=\"true\"` gives a dashed, not-allowed treatment that only works inside `.forma-site`. An aria-disabled button is still focusable and still fires click, so the application must ignore activation; the reason is linked with aria-describedby because the button stays in the focus order.",
       html: `<forma-button class="forma-component-tag">
   <div class="forma-site">
     <div class="forma-actions">
@@ -121,14 +141,14 @@ export default {
       { name: "aria-disabled", on: "button or a.forma-button inside .forma-site", values: "true", default: "absent", description: "Marks an unavailable action that must stay focusable (for example to expose its reason). It does not block activation; the application must ignore it." },
       { name: "aria-busy", on: "button or a.forma-button", values: "true", default: "absent", description: "Marks an action whose work is in flight. Forma draws a busy ring before the label (static under reduced motion) and removes hover and press feedback. Pair it with `aria-disabled=\"true\"` and ignore repeated activation in the application; Forma cannot block a keyboard submission." },
       { name: "aria-describedby", on: "button", values: "id", default: "—", description: "Links a visible explanation, such as why an aria-disabled action is unavailable." },
-      { name: "data-forma-variant", on: "a.forma-button or button.forma-button inside .forma-site", values: "primary", default: "absent (outlined)", description: "Marketing-only filled primary treatment. Has no effect outside a `.forma-site` shell." },
+      { name: "data-forma-variant", on: "button or a.forma-button", values: "primary | destructive", default: "absent (outlined)", description: "`primary` fills the button with accent.primary and surface.primary text; use it for at most one action per view. `destructive` draws a 2px status.danger outline and label; hover adds an inner rule. Inside `.forma-site` the marketing primary treatment applies instead; the destructive variant is an application-layer treatment." },
       { name: "aria-hidden", on: "decorative glyph span", values: "true", default: "—", description: "Hides a decorative icon or glyph so the visually hidden text is the whole accessible name." }
     ],
     hooks: {
       "aria-busy": "Pending selector: `:where(button, .forma-button)[aria-busy=\"true\"]` draws the busy ring (::before) and removes hover and press feedback.",
       "forma-button": "Applies the native button treatment to a non-button element, normally a link. Inside `.forma-site` it becomes the marketing button (inline-flex, tone-aware colors, brand radius).",
       "forma-actions": "Wrapping flex row for related actions with a consistent gap. Global (not limited to `.forma-site`), although it ships in the marketing stylesheet.",
-      "data-forma-variant": "Marketing only (`.forma-site .forma-button[data-forma-variant=\"primary\"]`): filled with the action tone background and text, with its own hover tone.",
+      "data-forma-variant": "`:where(button, .forma-button)[data-forma-variant=\"primary\"]` fills with accent.primary (accent.hover on hover, with an inner rule) and surface.primary text; `[data-forma-variant=\"destructive\"]` has a 2px status.danger outline and label on surface.primary; hover adds a 1px inner rule and keeps the pair. Both keep their colours with `aria-busy` and `disabled`, and use a 3px solid or double ButtonText border in forced colours. Inside `.forma-site` the marketing primary (action tone) wins.",
       "aria-disabled": "Marketing only (`.forma-site .forma-button[aria-disabled=\"true\"]`, also `:disabled`): dashed border, secondary surface and a not-allowed cursor."
     },
     keyboard: [
@@ -149,6 +169,8 @@ export default {
     { name: "Focus", how: ":focus-visible", description: "Two-tone focus ring (gap outline plus ring shadow) visible on light and dark surfaces." },
     { name: "Disabled", how: "disabled attribute", description: "Not focusable or activatable. In the application layer the only visual change is the absence of hover and press feedback; inside `.forma-site` the button becomes dashed with a not-allowed cursor." },
     { name: "Pending", how: "aria-busy=\"true\" (with aria-disabled=\"true\")", description: "A busy ring before the unchanged-position label, progress cursor, no hover or press feedback. Under reduced motion the ring is static and dotted. The application owns the label text, duplicate-activation refusal and the completion or failure message." },
+    { name: "Primary", how: "data-forma-variant=\"primary\"", description: "Filled accent button with surface-coloured text for the single most important action in a view. Hover darkens to accent.hover and adds an inner rule." },
+    { name: "Destructive", how: "data-forma-variant=\"destructive\"", description: "2px danger outline and danger label on the page surface; hover thickens the outline with an inner rule. The label names the destructive verb and object." },
     { name: "Marketing primary", how: "data-forma-variant=\"primary\" inside .forma-site", description: "Filled action-tone button for the single most important marketing action." },
     { name: "Marketing unavailable", how: "aria-disabled=\"true\" inside .forma-site", description: "Dashed border and not-allowed cursor while remaining focusable." }
   ],
@@ -157,10 +179,12 @@ export default {
       "Styles the native element, so role, name, focusability and Enter/Space activation come from the platform.",
       "Guarantees a 44px minimum block size for every button and `.forma-button`.",
       "Provides a visible two-tone focus indicator that does not rely on hover styling.",
-      "In forced-colors mode buttons keep a CanvasText border (ButtonText for marketing buttons), so the target outline stays visible."
+      "In forced-colors mode buttons keep a CanvasText border (ButtonText for marketing buttons), so the target outline stays visible; primary gets a 3px solid and destructive a 3px double ButtonText border, so emphasis survives the loss of fill colour.",
+      "The primary fill and label (accent.primary / surface.primary) and the destructive outline and label (status.danger / surface.primary) are pairs the token and brand compilers hold at 4.5:1 or more in every theme and brand."
     ],
     consumer: [
-      "Write a label that names the action and, where it helps, its object (\"Delete draft\", not \"OK\").",
+      "Write a label that names the action and, where it helps, its object (\"Delete draft\", not \"OK\"). For a destructive action the verb and object are required (\"Revoke access for this member\"), and the confirmation dialog repeats them.",
+      "Mark at most one action per view as primary.",
       "Always set `type`; do not rely on the submit default.",
       "Explain why an action is unavailable in visible text. A disabled application-layer button is visually almost identical to an enabled one.",
       "For icon-only buttons, supply the accessible name in `forma-visually-hidden` text and hide the glyph with aria-hidden.",
@@ -171,7 +195,7 @@ export default {
   responsive: [
     "Buttons size to their label with a 44px minimum height; long labels wrap inside the button and never force page overflow (`max-inline-size: 100%`).",
     "`forma-actions` wraps onto multiple lines at any width and keeps source order.",
-    "There are no button breakpoints. Inside a [[dialog]] at 44rem and below, action buttons stretch to full width; inside [[verification-frame]] act regions they do the same.",
+    "There are no button breakpoints. Inside a [[dialog]] below 48rem, action buttons stretch to full width; inside [[verification-frame]] act regions they do the same.",
     "The app-layer `a.forma-button` is not given a block display, so its minimum height does not apply as it would to a real button; prefer `button` for standalone touch targets."
   ],
   motion: [
@@ -181,12 +205,14 @@ export default {
   ],
   guidance: {
     do: [
-      "Put the most likely action first in `forma-actions`; order is the only priority cue in the application layer.",
+      "Put the most likely action first in `forma-actions` and mark it `data-forma-variant=\"primary\"` when it is the one action the view exists for.",
+      "Mark actions that remove, revoke or void something `data-forma-variant=\"destructive\"` and confirm them in a [[dialog]] that names the action.",
       "Keep labels short and specific, and use the same verb as the dialog or page it leads to."
     ],
     avoid: [
-      "Adding local CSS for primary, destructive or loading buttons; report the missing variant instead.",
-      "Using `data-forma-variant` or aria-disabled styling outside `.forma-site` and expecting it to render.",
+      "Adding local CSS for primary, destructive or loading buttons; use the variants and `aria-busy`.",
+      "More than one primary action per view, or a destructive variant on an action that is not destructive.",
+      "Using aria-disabled styling outside `.forma-site` and expecting it to render.",
       "Relying on a disabled button alone to explain that an action is unavailable.",
       "Styling a `div` or `span` as a button; it loses keyboard activation and role."
     ]
