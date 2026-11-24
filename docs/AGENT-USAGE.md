@@ -122,6 +122,12 @@ Prefer the most semantic existing primitive.
 - Modal confirmation: native `dialog` via the `dialog` pattern.
 - Edge-attached modal navigation, filters, details, or bounded work: `flyout` with `data-forma-side="left|right"`.
 - Simple single/multi selection: `choice-group` / `multi-choice`.
+- The one most important action in a view: `data-forma-variant="primary"` on its button; an action that removes, revokes or voids: `data-forma-variant="destructive"` with a label naming the verb and object.
+- A consumer's few outstanding tasks, one action each: `task-list` (not `work-queue`, which is a staff queue).
+- The accounting period figures belong to: `period-context`.
+- Required approvers and an independence rule: `approval-quorum`.
+- Mixed per-item results of a batch, Unknown distinct: `batch-outcome`.
+- Status as the main fact on a consumer record: `status-lozenge` with `data-forma-variant="sentence"`.
 - Complex ranking or rule construction: use the Forma visual contract and put
   behavior in Limen/application code.
 
@@ -132,7 +138,9 @@ Before changing application CSS for customer identity or presentation, read
 `requirements/WHITE-LABEL-AND-SKINNING.md`.
 
 - Express customer/product identity through a versioned Brand Manifest.
-- Use documented `data-forma-skin` presets for presentation-only density or shape changes.
+- Use documented `data-forma-skin` presets for presentation-only density or shape changes, and `data-forma-density="comfortable|compact"` for the row height and in-row targets of data components.
+- Use `.forma-surface[data-forma-surface="raised|sunken|chrome"]` for application surfaces; do not derive surfaces with `color-mix()` in application CSS, because nothing checks the contrast of text on them.
+- Align application layouts with the breakpoint tokens (`custom-media.css`: phone below 48rem, tablet 48 to 64rem, desktop from 64rem) instead of copying numbers.
 - Use `data-forma-type="application|dense|accessible"` for an application, dense administrative or large-text heading and body scale (see `docs/CONSUMING-FORMA.md`, "Typography roles"). Do not restate `--forma-type-size-*` or heading `max-inline-size` in application CSS.
 - Do not fork canonical component CSS, depend on internal selectors, or accept arbitrary customer CSS as the normal white-label path.
 - Runtime brand/theme/skin selection, persistence, remote loading, and interactive preview behavior belong to the consuming application, normally through Limen.

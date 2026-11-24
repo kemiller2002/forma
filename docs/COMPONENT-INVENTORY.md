@@ -8,8 +8,8 @@ checker (`npm run catalog:check`) fails when a canonical pattern or a public
 `.forma-*` block class is missing from this list.
 
 - Public components: **174** in **18** families
-- Rendered examples on the documentation site: **756** (each component: canonical Basic + scenario examples + mobile examples)
-- Example interaction (UI-LAYOUT-INTERACTION@1.0.0 ULI-A03/A09): **91** live demos with **234** declared, outcome-tested actions; **325** static specimens (rendered inert and labelled); **340** examples render no action control
+- Rendered examples on the documentation site: **757** (each component: canonical Basic + scenario examples + mobile examples)
+- Example interaction (UI-LAYOUT-INTERACTION@1.0.0 ULI-A03/A09): **91** live demos with **234** declared, outcome-tested actions; **326** static specimens (rendered inert and labelled); **340** examples render no action control
 - Compositions: **5** (Operations dashboard, Form with validation, Keyboard and focus, Mobile settings, Overlay interaction)
 - Requirement-defined components not yet implemented: **28**
 
@@ -71,7 +71,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Tabs | `<forma-tabs>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | generic only | segmented-control, navigation-shell, wizard, disclosure |
 | Wizard | `<forma-wizard>` | Navigation | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | survey-progress, steps, readiness-checklist, tabs |
 | Alert | `<forma-alert>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | toast, callout, operation-status, fault-banner |
-| Batch outcome | `<forma-batch-outcome>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | operation-status, progress-bar, approval-quorum |
+| Batch outcome | `<forma-batch-outcome>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | application-ui.spec.mjs | operation-status, progress-bar, approval-quorum |
 | Conflict review | `<forma-conflict-review>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, operation-status, recovery-actions |
 | Empty state | `<forma-empty-state>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | skeleton, alert, collection-toolbar, active-filter-summary |
 | Freshness | `<forma-freshness>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | security-evidence-age, state-survivability, provenance-trail, status-lozenge |
@@ -84,8 +84,8 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Spinner | `<forma-spinner>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | ais-001.spec.mjs, loading-progress.spec.mjs | progress-bar, skeleton, operation-status |
 | Start-up screen | `<forma-startup>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | ais-001.spec.mjs | app-identity, spinner, fault-blocking, skeleton |
 | State survivability | `<forma-state-survivability>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | visual-engineering-semantics.spec.mjs | operation-status, status-lozenge, freshness, security-state-matrix |
-| Status lozenge | `<forma-status-lozenge>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | color-contract.spec.mjs, forced-colors-projection.spec.mjs, layout-reliability.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
-| Task list | `<forma-task-list>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | work-queue, readiness-checklist, alert, status-lozenge |
+| Status lozenge | `<forma-status-lozenge>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | application-ui.spec.mjs, color-contract.spec.mjs, forced-colors-projection.spec.mjs, layout-reliability.spec.mjs, value-change-motion.spec.mjs | badge, operation-status, state-survivability, diagnostic-status |
+| Task list | `<forma-task-list>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | application-ui.spec.mjs | work-queue, readiness-checklist, alert, status-lozenge |
 | Toast | `<forma-toast>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | alert, popover, fault-notification, dialog |
 | Validation message | `<forma-validation-message>` | Feedback and status | implemented | complete | 4 | 1 | yes | yes | yes | generic only | validation-summary, text-field, question, alert |
 | Validation summary | `<forma-validation-summary>` | Feedback and status | implemented | complete | 3 | 1 | yes | yes | yes | generic only | validation-message, alert, obligation-panel |
@@ -122,7 +122,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Sidebar | `<forma-sidebar>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | composition.spec.mjs | rail, switcher, split-pane, workspace-shell |
 | Split | `<forma-split>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | switcher, hero, split-pane, container |
 | Stack | `<forma-stack>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | generic only | cluster, grid, surface, prose |
-| Surface | `<forma-surface>` | Layout primitives | implemented | complete | 4 | 1 | yes | yes | yes | conformance-package.test.mjs, css-source.test.mjs, dist-css.test.mjs, forced-colors-projection.spec.mjs, pattern-contrast.spec.mjs, type-roles.spec.mjs, word-integrity.spec.mjs | card-grid, callout, preview-surface, stack |
+| Surface | `<forma-surface>` | Layout primitives | implemented | complete | 5 | 1 | yes | yes | yes | conformance-package.test.mjs, css-source.test.mjs, dist-css.test.mjs, forced-colors-projection.spec.mjs, pattern-contrast.spec.mjs, type-roles.spec.mjs, word-integrity.spec.mjs | card-grid, callout, preview-surface, stack |
 | Switcher | `<forma-switcher>` | Layout primitives | implemented | complete | 3 | 1 | yes | yes | yes | generic only | sidebar, rail, split, cluster |
 | Application identity | `<forma-app-identity>` | Workspaces and shells | implemented | complete | 5 | 1 | yes | yes | yes | ais-001.spec.mjs | startup, navigation-shell, site-header |
 | Dashboard grid | `<forma-dashboard-grid>` | Workspaces and shells | implemented | complete | 3 | 1 | yes | yes | yes | causa-representative.spec.mjs | metric-card, responsive-grid, mosaic, work-queue |
@@ -137,8 +137,8 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Collection toolbar | `<forma-collection-toolbar>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | active-filter-summary, search, data-grid, flyout, pagination |
 | Comparison grid | `<forma-comparison-grid>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | comparison-pairs, dense-ledger, bounded-overflow, data-grid |
 | Comparison pairs | `<forma-comparison-pairs>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | diff-viewer, comparison-grid, conflict-review, verification-frame |
-| Data grid | `<forma-data-grid>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | operational-mobile.spec.mjs | dense-ledger, collection-toolbar, comparison-grid, pagination, bounded-overflow |
-| Dense ledger | `<forma-dense-ledger>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | generic only | data-grid, bounded-overflow, comparison-grid, key-value-list |
+| Data grid | `<forma-data-grid>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | application-ui.spec.mjs, operational-mobile.spec.mjs | dense-ledger, collection-toolbar, comparison-grid, pagination, bounded-overflow |
+| Dense ledger | `<forma-dense-ledger>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | application-ui.spec.mjs | data-grid, bounded-overflow, comparison-grid, key-value-list |
 | Diff viewer | `<forma-diff-viewer>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | operational-mobile.spec.mjs | comparison-pairs, conflict-review, timeline, key-value-list |
 | Evidence relationship | `<forma-evidence-relationship>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | provenance-trail, relationship-index, security-evidence-chain, freshness |
 | Feed item | `<forma-feed-item>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | generic only | timeline, work-queue, toast, status-lozenge |
@@ -147,13 +147,13 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Metric card | `<forma-metric-card>` | Data display | implemented | complete | 4 | 1 | yes | yes | yes | value-change-motion.spec.mjs | metric-value-change, dashboard-grid, freshness, key-value-list, progress-bar |
 | Metric value change | `<forma-metric-value-change>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | metric-card, progress-bar, operation-status, freshness |
 | Path summary | `<forma-path-summary>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | relationship-index, provenance-trail, evidence-relationship, diagram |
-| Period context | `<forma-period-context>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | freshness, date-range, scope-trail, status-lozenge |
+| Period context | `<forma-period-context>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | application-ui.spec.mjs | freshness, date-range, scope-trail, status-lozenge |
 | Provenance trail | `<forma-provenance-trail>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | security-evidence-chain, metric-card, evidence-relationship, timeline |
 | Relationship index | `<forma-relationship-index>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | path-summary, diagram, key-value-list, hierarchy-tree |
 | Reorder states | `<forma-reorder-states>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | direct-manipulation.spec.mjs, machine-operability.spec.mjs | ranking, lane-board, resizable-split-pane, allocation |
 | Timeline | `<forma-timeline>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | feed-item, provenance-trail, steps, diff-viewer |
-| Work queue | `<forma-work-queue>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | generic only | feed-item, obligation-panel, readiness-checklist, operation-status |
-| Approval quorum | `<forma-approval-quorum>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | generic only | readiness-checklist, provenance-trail, batch-outcome |
+| Work queue | `<forma-work-queue>` | Data display | implemented | complete | 3 | 1 | yes | yes | yes | application-ui.spec.mjs | feed-item, obligation-panel, readiness-checklist, operation-status |
+| Approval quorum | `<forma-approval-quorum>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | application-ui.spec.mjs | readiness-checklist, provenance-trail, batch-outcome |
 | Diagram | `<forma-diagram>` | Workflow and diagrams | implemented | complete | 6 | 1 | yes | yes | yes | diagram-m2.spec.mjs, diagram-nontext-contrast.spec.mjs, diagram.spec.mjs, workflow-embed.spec.mjs, workflow-static.spec.mjs | lane-board, spatial-canvas, provenance-trail, relationship-index |
 | Lane board | `<forma-lane-board>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | generic only | work-queue, ranking, reorder-states, diagram |
 | Spatial canvas | `<forma-spatial-canvas>` | Workflow and diagrams | implemented | complete | 3 | 1 | yes | yes | yes | machine-operability.spec.mjs | diagram, scope-trail, relationship-index, bounded-overflow |
@@ -191,7 +191,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 | Entry index | `<forma-entry-index>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | card-grid, steps, relationship-index |
 | Facts | `<forma-facts>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | card-grid, key-value-list, metric-card, hero |
 | Hero | `<forma-hero>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | section-heading, facts, text-roles, split |
-| Marketing shell | `<forma-marketing-shell>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing.spec.mjs, type-roles.spec.mjs | site-header, site-footer, skip-link, documentation-layout, workspace-shell |
+| Marketing shell | `<forma-marketing-shell>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | application-ui.spec.mjs, marketing.spec.mjs, type-roles.spec.mjs | site-header, site-footer, skip-link, documentation-layout, workspace-shell |
 | Prose | `<forma-prose>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | callout, code-sample, documentation-layout, measure |
 | Section heading | `<forma-section-heading>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | generic only | hero, section, text-roles |
 | Site footer | `<forma-site-footer>` | Site and editorial | implemented | complete | 3 | 1 | yes | yes | yes | marketing-distribution.test.mjs, marketing.spec.mjs | site-header, marketing-shell, cta |

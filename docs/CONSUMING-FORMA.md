@@ -419,6 +419,67 @@ It exits 1 on any error. The installed package is the source of truth: its token
 
 Application-owned properties such as `--causa-*` are never reported. Keep `forma-color` for color-role pairing rules; the two validators agree on the color namespace.
 
+## 1.1.0
+
+Minor release: application UI additions requested by a consumer audit of
+application prototypes. Nothing is removed; check the behaviour changes below.
+
+**Button variants (forma#186).** `data-forma-variant="primary"` now works on
+any `button` or `.forma-button`, not only inside `.forma-site`: a filled
+accent button with surface-coloured text for the one most important action in
+a view. `data-forma-variant="destructive"` is new: a 2px danger outline and
+label for actions that remove, revoke or void something; name the verb and
+object in the label and confirm in a `dialog`. Both keep their colours with
+`aria-busy` and `disabled` and use heavier ButtonText borders in forced colours.
+Delete any local primary-button CSS.
+
+**Breakpoints (forma#200).** Viewport ranges are tokens: compact phone
+`< 30rem`, phone `< 48rem`, tablet `48rem` to `< 64rem`, desktop `>= 64rem`
+(`primitive.breakpoint.compact|tablet|desktop`). Custom properties cannot be
+used in media queries, so the package exports
+`@echelon-foundry/design-system/custom-media.css` with
+`@custom-media --forma-below-<name>` (`width < value`) and
+`--forma-from-<name>` (`width >= value`) for a build step that understands
+`@custom-media` (postcss-custom-media, Lightning CSS); the values are also in
+`tokens.json`. Verify phone at 320 and 390px, tablet at 768px and desktop at
+1024 and 1280px. **Behaviour change:** Forma's own viewport queries now use
+these values as half-open ranges. Components that stacked at 36, 40 or 44rem
+now stack below 48rem, and a viewport exactly at 48rem (768px) or 30rem (480px)
+belongs to the wider range. Between 576 and 767px some components (toolbars,
+dialogs actions, faults, binary choices, character-grid touch pitch) now use
+their narrow layout.
+
+**Density (forma#199).** `data-forma-density="comfortable"` (rows at least
+44px, 44px in-row targets) or `"compact"` (rows at least 36px, 24px targets; 44px
+on a coarse pointer) on any ancestor sizes the rows of `data-grid`,
+`dense-ledger`, `work-queue` and `task-list`. Without the attribute nothing
+changes. The application type scale is the existing
+`data-forma-type="application"` role (fixed h1 2rem / h2 1.5rem / h3 1.25rem,
+no heading measure; see "Typography roles"); 1.1.0 does not change it.
+
+**Surface roles (forma#201).** Every theme and brand now compiles
+`--forma-color-surface-raised`, `-sunken`, `-chrome`, `--forma-color-text-on-chrome`
+and `--forma-elevation-1`/`-2`, with contrast checks on explicit text pairs
+(`docs/BRANDING.md`, "Application surfaces and elevation"). Brand manifests may
+declare them; 1.0 manifests that do not still compile and get derived values.
+Use them through `.forma-surface[data-forma-surface="raised|sunken|chrome"]`
+(and `data-forma-elevation="2"`), not through `color-mix()` in application CSS.
+
+**Status lozenge (forma#202).** `data-forma-variant="sentence"` renders a
+lozenge in sentence case in the body face at 13px semibold with a 1px border in
+the state colour, for consumer surfaces. The default lozenge is unchanged.
+
+**New components.** `task-list` (forma#203: "Needs your attention" with one
+action per item), `period-context` (forma#206: accounting period, state,
+cutoff, as-of and known-at), `approval-quorum` (forma#205: required approvals
+and the independence rule) and `batch-outcome` (forma#207: per-item batch
+results with Unknown kept distinct). Each has a canonical pattern and a catalog
+page.
+
+**Icons (forma#204).** `gift`, `bank`, `building`, `receipt`, `certificate`
+and `hand-coins`. Independent visual review of the artwork is still open
+(`docs/ICONS.md`).
+
 ## 1.0.2
 
 Patch: the namespace codemod keeps URL attributes after a JSX expression or a
