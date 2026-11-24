@@ -327,3 +327,56 @@ test("batch outcome: unknown is its own group with Check status and never Retry"
     }
   }
 });
+
+// --- forma#201: raised, sunken and chrome surfaces per theme and brand ------
+
+const brandCss = ["example-harbor", "example-orchard"].map((id) => fs.readFileSync(path.join(root, "dist", "brands", `${id}.css`), "utf8")).join("\n");
+const SURFACES = `<header class="forma-surface" id="chrome" data-forma-surface="chrome"><p><strong>Accounts</strong> · <a href="#raised">Overview</a></p></header>
+<section class="forma-surface" id="raised" data-forma-surface="raised" aria-labelledby="raised-title"><h2 id="raised-title">Balance</h2><p id="raised-secondary">Updated this morning.</p>
+  <div class="forma-surface" id="sunken" data-forma-surface="sunken"><p id="sunken-text">Pending transfers</p></div></section>
+<section class="forma-surface" id="floating" data-forma-surface="raised" data-forma-elevation="2"><p>Floating panel</p></section>`;
+
+for (const [label, attrs, theme] of [
+  ["light theme", "", "light"], ["dark theme", "", "dark"], ["dark-technical theme", "", "dark-technical"], ["paper-ink theme", "", "paper-ink"],
+  ["derived brand roles (example-harbor, dark)", 'data-forma-brand="example-harbor"', "dark"],
+  ["declared brand roles (example-orchard, light)", 'data-forma-brand="example-orchard"', "light"]
+]) {
+  test(`surface roles keep text contrast and elevation: ${label}`, async ({ page: p }) => {
+    await p.setContent(page(`<style>${brandCss}</style>${SURFACES}`, { theme, attrs }).replace(`<main ${attrs}>`, `<main ${attrs} data-forma-theme="${theme}">`));
+    const token = (name) => p.locator("main").evaluate((el, n) => getComputedStyle(el).getPropertyValue(n).trim(), name);
+    const bg = (id) => p.locator(`#${id}`).evaluate((el) => getComputedStyle(el).backgroundColor);
+    const hexToRgb = (hex) => `rgb(${[1, 3, 5].map((i) => Number.parseInt(hex.slice(i, i + 2), 16)).join(", ")})`;
+    expect(await bg("raised")).toBe(hexToRgb(await token("--forma-color-surface-raised")));
+    expect(await bg("sunken")).toBe(hexToRgb(await token("--forma-color-surface-sunken")));
+    expect(await bg("chrome")).toBe(hexToRgb(await token("--forma-color-surface-chrome")));
+    for (const selector of ["#raised-title", "#raised-secondary", "#sunken-text", "#chrome p", "#chrome a"]) {
+      const ratio = await p.evaluate((sel) => {
+        const parse = (v) => v.match(/[\d.]+/g).slice(0, 3).map(Number);
+        const lum = (rgb) => rgb.map((c) => { c /= 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; }).reduce((s, c, i) => s + c * [0.2126, 0.7152, 0.0722][i], 0);
+        const el = document.querySelector(sel);
+        let bgEl = el;
+        while (bgEl && getComputedStyle(bgEl).backgroundColor === "rgba(0, 0, 0, 0)") bgEl = bgEl.parentElement;
+        const [a, b] = [lum(parse(getComputedStyle(el).color)), lum(parse(getComputedStyle(bgEl).backgroundColor))].sort((x, y) => y - x);
+        return (a + 0.05) / (b + 0.05);
+      }, selector);
+      expect(ratio, `${selector} text contrast`).toBeGreaterThanOrEqual(4.5);
+    }
+    const shadows = await p.evaluate(() => ["#raised", "#floating"].map((sel) => getComputedStyle(document.querySelector(sel)).boxShadow));
+    expect(shadows[0]).toBe(await token("--forma-elevation-1").then((value) => p.evaluate((v) => { const d = document.createElement("div"); d.style.boxShadow = v; document.body.append(d); const out = getComputedStyle(d).boxShadow; d.remove(); return out; }, value)));
+    expect(shadows[1]).not.toBe(shadows[0]);
+    await axe(p);
+  });
+}
+
+test("surface roles resolve to system colours and drop shadows in forced colours", async ({ page: p }) => {
+  await p.emulateMedia({ forcedColors: "active" });
+  await p.setContent(page(SURFACES));
+  const values = await p.evaluate(() => ["#raised", "#chrome"].map((sel) => {
+    const s = getComputedStyle(document.querySelector(sel));
+    return { shadow: s.boxShadow, border: s.borderTopStyle };
+  }));
+  for (const value of values) {
+    expect(value.shadow).toBe("none");
+    expect(value.border).not.toBe("none");
+  }
+});

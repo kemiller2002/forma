@@ -110,3 +110,30 @@ test("--custom-media fails when the source declares no breakpoints", () => {
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /requires primitive\.breakpoint tokens/);
 });
+
+// forma#201: the application surface roles are contrast-gated per theme.
+for (const [label, mutate, message] of [
+  ["raised", (d) => { d.semantic.light.color.surface.raised.$value = "{primitive.color.neutral-650}"; }, /light raised-surface primary text contrast/],
+  ["sunken", (d) => { d.semantic.dark.color.surface.sunken.$value = "{primitive.color.neutral-50}"; }, /dark sunken-surface primary text contrast/],
+  ["chrome", (d) => { d.semantic.light.color.surface.chrome.$value = "{primitive.color.neutral-50}"; }, /light chrome text contrast/]
+]) {
+  test(`unsafe ${label} surface pairing is rejected`, () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "forma-tokens-"));
+    const source = path.join(dir, `${label}.json`);
+    const data = JSON.parse(fs.readFileSync(canonicalPath, "utf8"));
+    mutate(data);
+    fs.writeFileSync(source, JSON.stringify(data, null, 2));
+    const result = runCompiler(source, path.join(dir, `${label}.css`));
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, message);
+  });
+}
+
+test("every theme compiles raised, sunken and chrome roles and two elevation levels", () => {
+  const css = fs.readFileSync("dist/tokens.css", "utf8");
+  const themes = Object.keys(JSON.parse(fs.readFileSync(canonicalPath, "utf8")).semantic);
+  for (const name of ["--forma-color-surface-raised", "--forma-color-surface-sunken", "--forma-color-surface-chrome", "--forma-color-text-on-chrome", "--forma-elevation-1", "--forma-elevation-2"]) {
+    // light (:root), the prefers-dark block and one block per other theme.
+    assert.equal(css.split(`${name}:`).length - 1, themes.length + 1, `${name} must be declared for every theme`);
+  }
+});

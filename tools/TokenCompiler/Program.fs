@@ -294,7 +294,19 @@ let main argv =
                   "warning status", key "status.warning", key "surface.primary", 4.5
                   "danger status", key "status.danger", key "surface.primary", 4.5
                   "info status", key "status.info", key "surface.primary", 4.5
-                  "inverse text", key "text.inverse", key "surface.inverse", 4.5 ]
+                  "inverse text", key "text.inverse", key "surface.inverse", 4.5
+                  // Application surface roles (forma#201). Pairings are
+                  // explicit: secondary text is valid on raised; on sunken
+                  // (a secondary-family surface) secondary text re-pairs to
+                  // text.on-secondary-surface; chrome carries text.on-chrome.
+                  "raised-surface primary text", key "text.primary", key "surface.raised", 4.5
+                  "raised-surface heading", key "text.heading", key "surface.raised", 4.5
+                  "raised-surface secondary text", key "text.secondary", key "surface.raised", 4.5
+                  "raised-surface focus ring", key "focus.ring", key "surface.raised", 3.0
+                  "sunken-surface primary text", key "text.primary", key "surface.sunken", 4.5
+                  "sunken-surface heading", key "text.heading", key "surface.sunken", 4.5
+                  "sunken-surface secondary text", key "text.on-secondary-surface", key "surface.sunken", 4.5
+                  "chrome text", key "text.on-chrome", key "surface.chrome", 4.5 ]
                 |> List.filter (fun (_, foreground, background, _) ->
                     byPath.ContainsKey foreground && byPath.ContainsKey background)
             for name, foreground, background, minimum in checks @ optionalChecks do
@@ -346,7 +358,7 @@ let main argv =
             match Path.GetDirectoryName mediaPath with
             | null -> ()
             | directory -> Directory.CreateDirectory directory |> ignore
-            File.WriteAllText(mediaPath, renderCustomMedia (Path.GetFileName sourcePath) breakpoints)
+            File.WriteAllText(mediaPath, renderCustomMedia (string (Path.GetFileName sourcePath)) breakpoints)
 
         printfn "token compilation passed: %d tokens, %d semantic variables across %d themes" tokens.Length baselineNames.Count themes.Length
         0

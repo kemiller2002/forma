@@ -67,6 +67,11 @@
   },
   "$defs": {
     "hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+    "shadow": {
+      "type": "string",
+      "description": "\"none\" or a box-shadow layer list: [inset] <x> <y> [<blur> [<spread>]] in px, then a hex or rgb(r g b / a) colour; layers separated by \", \".",
+      "pattern": "^(?:none|(?:inset )?-?[0-9]+(?:\\.[0-9]+)?px(?: -?[0-9]+(?:\\.[0-9]+)?px){1,3} (?:#[0-9A-Fa-f]{6}|rgb\\([0-9]{1,3} [0-9]{1,3} [0-9]{1,3} / (?:0|1|0?\\.[0-9]+)\\))(?:, (?:inset )?-?[0-9]+(?:\\.[0-9]+)?px(?: -?[0-9]+(?:\\.[0-9]+)?px){1,3} (?:#[0-9A-Fa-f]{6}|rgb\\([0-9]{1,3} [0-9]{1,3} [0-9]{1,3} / (?:0|1|0?\\.[0-9]+)\\)))*)$"
+    },
     "dimension": { "type": "string", "pattern": "^(0|[0-9]+(?:\\.[0-9]+)?(?:px|rem|em))$" },
     "fontFamily": {
       "oneOf": [
@@ -79,6 +84,15 @@
       "additionalProperties": false,
       "required": ["color"],
       "properties": {
+        "elevation": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Elevation shadows (forma#201), compiled to --forma-elevation-1 and -2. Omitted levels default to Forma's light or dark shadows by the theme's polarity.",
+          "properties": {
+            "1": { "$ref": "#/$defs/shadow" },
+            "2": { "$ref": "#/$defs/shadow" }
+          }
+        },
         "color": {
           "type": "object",
           "additionalProperties": false,
@@ -94,7 +108,8 @@
                 "secondary": { "$ref": "#/$defs/hex" },
                 "on-secondary-surface": { "$ref": "#/$defs/hex" },
                 "inverse": { "$ref": "#/$defs/hex" },
-                "muted": { "$ref": "#/$defs/hex" }
+                "muted": { "$ref": "#/$defs/hex" },
+                "on-chrome": { "$ref": "#/$defs/hex", "description": "Text and icons on surface.chrome (forma#201). Defaults to text.inverse; declared values must reach 4.5:1 on surface.chrome." }
               }
             },
             "surface": {
@@ -106,7 +121,10 @@
                 "secondary": { "$ref": "#/$defs/hex" },
                 "inverse": { "$ref": "#/$defs/hex" },
                 "inverse-secondary": { "$ref": "#/$defs/hex" },
-                "elevated": { "$ref": "#/$defs/hex" }
+                "elevated": { "$ref": "#/$defs/hex" },
+                "raised": { "$ref": "#/$defs/hex", "description": "A panel raised above the canvas (forma#201). Defaults to surface.primary moved toward white (light) or surface.secondary (dark). Declared values must give text.primary, text.heading and text.secondary 4.5:1 and the focus ring 3:1." },
+                "sunken": { "$ref": "#/$defs/hex", "description": "A well below the canvas: inputs, skeletons (forma#201). Defaults to surface.secondary. Declared values must give text.primary, text.heading and text.on-secondary-surface 4.5:1; text.secondary is not a pair on it." },
+                "chrome": { "$ref": "#/$defs/hex", "description": "App-bar and navigation chrome (forma#201). Defaults to surface.inverse; pairs with text.on-chrome." }
               }
             },
             "accent": {

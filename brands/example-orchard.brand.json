@@ -20,24 +20,32 @@
   "themes": {
     "light": {
       "color": {
-        "text": {"primary":"#1d1a22","heading":"#1d1a22","secondary":"#4d4757","on-secondary-surface":"#2c2733","inverse":"#fbf9f6"},
-        "surface": {"primary":"#fbf9f6","secondary":"#ece6ef","inverse":"#2c2238","inverse-secondary":"#46385a"},
+        "text": {"primary":"#1d1a22","heading":"#1d1a22","secondary":"#4d4757","on-secondary-surface":"#2c2733","inverse":"#fbf9f6","on-chrome":"#fbf9f6"},
+        "surface": {"primary":"#fbf9f6","secondary":"#ece6ef","inverse":"#2c2238","inverse-secondary":"#46385a","raised":"#ffffff","sunken":"#f3eff5","chrome":"#2c2238"},
         "accent": {"primary":"#6a2f7a","secondary":"#2f6a2c"},
         "status": {"success":"#2b6a33","warning":"#835000","danger":"#a3312c","info":"#2d5c94"},
         "border": {"subtle":"#d3c9da","functional":"#4d4757"},
         "focus": {"ring":"#1d1a22","gap":"#fbf9f6"},
         "control": {"track":"#6d6578","thumb":"#fbf9f6","active":"#6a2f7a"}
+      },
+      "elevation": {
+        "1": "0px 1px 2px 0px rgb(44 34 56 / 0.1), 0px 6px 18px -8px rgb(44 34 56 / 0.2)",
+        "2": "0px 2px 4px 0px rgb(44 34 56 / 0.1), 0px 16px 40px -12px rgb(44 34 56 / 0.28)"
       }
     },
     "dark": {
       "color": {
-        "text": {"primary":"#f5f1f8","heading":"#f5f1f8","secondary":"#ddd3e6","on-secondary-surface":"#f5f1f8","inverse":"#17131c"},
-        "surface": {"primary":"#17131c","secondary":"#2a2232","inverse":"#f5f1f8","inverse-secondary":"#ddd3e6"},
+        "text": {"primary":"#f5f1f8","heading":"#f5f1f8","secondary":"#ddd3e6","on-secondary-surface":"#f5f1f8","inverse":"#17131c","on-chrome":"#f5f1f8"},
+        "surface": {"primary":"#17131c","secondary":"#2a2232","inverse":"#f5f1f8","inverse-secondary":"#ddd3e6","raised":"#211a28","sunken":"#120f16","chrome":"#2a2232"},
         "accent": {"primary":"#d3a6e0","secondary":"#9fd49a"},
         "status": {"success":"#93d39b","warning":"#e7b766","danger":"#f3a39a","info":"#a1c3ef"},
         "border": {"subtle":"#3e3348","functional":"#ddd3e6"},
         "focus": {"ring":"#f5f1f8","gap":"#17131c"},
         "control": {"track":"#857c90","thumb":"#17131c","active":"#d3a6e0"}
+      },
+      "elevation": {
+        "1": "none",
+        "2": "0px 16px 40px -12px rgb(0 0 0 / 0.6)"
       }
     }
   },
