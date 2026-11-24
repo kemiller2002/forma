@@ -26,7 +26,7 @@ export default {
       "The content is a large illustration or brand logo rather than a standard visual affordance."
     ],
     characteristics: [
-      "The library supplies eighty original 24×24, round-stroke outline icons, including email and messaging actions, navigation, documents, diagnostics and status.",
+      "The library supplies eighty-six original 24×24, round-stroke outline icons, including email and messaging actions, navigation, documents, diagnostics and status.",
       "Color inherits currentColor; size uses --forma-icon-size, default 1.25em.",
       "Compiled inline SVG needs no runtime JavaScript, external sprites, fonts or CDN."
     ]

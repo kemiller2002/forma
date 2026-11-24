@@ -14,9 +14,16 @@ const reject = (mutate, description) => {
   assert.throws(() => validateRegistry(registry), /Icon registry:/, description);
 };
 
-test("eighty original icons retain the original foundation identifiers", () => {
+test("eighty-six original icons retain the original foundation identifiers", () => {
   validateRegistry(source);
-  assert.equal(source.icons.length, 80);
+  // 80 through Forma 1.0.2, plus six finance and organization glyphs (forma#204).
+  assert.equal(source.icons.length, 86);
+  for (const name of ["gift", "bank", "building", "receipt", "certificate", "hand-coins"]) {
+    const icon = source.icons.find(candidate => candidate.name === name);
+    assert.ok(icon, `missing forma#204 icon: ${name}`);
+    assert.equal(icon.origin, "original");
+    assert.ok(icon.keywords.length >= 3, `${name} needs keywords`);
+  }
   for (const name of ["add", "agent", "close", "edit", "search", "success", "warning", "workflow"]) {
     assert.ok(source.icons.some(icon => icon.name === name), `missing foundation icon: ${name}`);
   }
@@ -69,7 +76,7 @@ test("build writes only the expected deterministic static assets", () => {
     assert.deepEqual([...repeat], [...files]);
     assert.deepEqual(first, [...repeat]);
     assert.deepEqual(fs.readdirSync(path.join(root, "dist/icons")).filter(name => name.endsWith(".js")), []);
-    assert.equal(JSON.parse(fs.readFileSync(path.join(root, "dist/icons/registry.json"))).icons.length, 80);
+    assert.equal(JSON.parse(fs.readFileSync(path.join(root, "dist/icons/registry.json"))).icons.length, source.icons.length);
   } finally {
     fs.rmSync(root, {recursive: true, force: true});
   }
@@ -141,7 +148,30 @@ test("the forty application icons extend, rather than replace, the original publ
   ];
   assert.equal(originalNames.length, 40);
   for (const name of [...originalNames, ...newNames]) assert.ok(names.has(name), "missing registered icon: " + name);
-  assert.deepEqual([...names].sort(), [...newNames, ...originalNames].sort());
+  // forma#204 (1.1.0) adds six finance and organization glyphs; nothing else.
+  const financeNames = ["bank", "building", "certificate", "gift", "hand-coins", "receipt"];
+  assert.deepEqual([...names].sort(), [...newNames, ...originalNames, ...financeNames].sort());
+});
+
+test("the finance glyphs are distinct, documented and use only the registry grid", async () => {
+  const { iconDocs } = await import("../catalog/icons.mjs");
+  const compiled = compileIcons(source);
+  const geometry = new Set();
+  for (const name of ["gift", "bank", "building", "receipt", "certificate", "hand-coins"]) {
+    const svg = compiled.get(name + ".svg");
+    assert.match(svg, /viewBox="0 0 24 24"/);
+    assert.match(svg, /stroke-width="1.8"/);
+    assert.match(svg, /stroke-linecap="round"/);
+    const shapes = svg.replace(/^[\s\S]*?<svg[^>]*>/, "");
+    assert.ok(!geometry.has(shapes), `${name} duplicates another glyph`);
+    geometry.add(shapes);
+    for (const value of [...svg.matchAll(/(?:d|cx|cy|r|x|y|width|height)="([^"]+)"/g)].flatMap(([, v]) => v.match(/-?\d+(?:\.\d+)?/g) ?? [])) {
+      assert.ok(Number(value) >= 0 && Number(value) <= 24, `${name}: coordinate ${value} is off the 24-unit grid`);
+    }
+    const docs = iconDocs[name];
+    assert.ok(docs && docs.meaning && docs.useFor.length && docs.avoid.length, `${name} needs guidance`);
+    for (const related of docs.related) assert.ok(source.icons.some(icon => icon.name === related), `${name}: unknown related icon ${related}`);
+  }
 });
 
 test("mail, reply, reply all and forward have distinct static geometries and appropriate metadata", () => {

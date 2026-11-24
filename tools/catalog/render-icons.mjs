@@ -6,6 +6,7 @@ import fs from "node:fs";
 import { compileIcons } from "../icons/build.mjs";
 import { iconDocs } from "../../catalog/icons.mjs";
 import { applicationIconDocs } from "../../catalog/icons/applications.mjs";
+import { financeIconDocs } from "../../catalog/icons/finance.mjs";
 import { breadcrumbs, codeViewer, page, table } from "./render-layout.mjs";
 import { escapeHtml, join } from "./html.mjs";
 
@@ -15,6 +16,8 @@ const readJson = relative => JSON.parse(fs.readFileSync(new URL(relative, import
 export const ICON_SIZES = Object.freeze([16, 20, 24, 32, 48]);
 export const NEW_ICON_RELEASE = "0.6.0";
 const introducedIn06 = new Set(Object.keys(applicationIconDocs));
+// Icons added after the 0.6.0 cohort record the release that introduced them.
+const introducedLater = new Map(Object.keys(financeIconDocs).map(name => [name, "1.1.0"]));
 
 // Colour contexts use Forma roles only. The icon follows currentColor, so the
 // role on the parent decides the ink; the label text stays a text role so it
@@ -63,7 +66,7 @@ export const loadIconCatalog = ({ registry = readJson("../../icons/registry.json
       ...icon,
       ...metadata.get(icon.name),
       docs: docs[icon.name],
-      introducedIn: introducedIn06.has(icon.name) ? NEW_ICON_RELEASE : "0.5.0",
+      introducedIn: introducedIn06.has(icon.name) ? NEW_ICON_RELEASE : introducedLater.get(icon.name) ?? "0.5.0",
       svgSource: compiled.get(`${icon.name}.svg`),
       htmlSource: compiled.get(`html/${icon.name}.html`)
     }));
