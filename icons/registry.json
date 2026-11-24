@@ -132,6 +132,27 @@
       ]
     },
     {
+      "name": "bank",
+      "category": "agents",
+      "label": "Bank",
+      "keywords": [
+        "financial institution",
+        "account",
+        "treasury"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M3 9L12 4L21 9Z"
+        },
+        {
+          "element": "path",
+          "d": "M5.5 12V17M10 12V17M14 12V17M18.5 12V17M4 17H20M3 20H21"
+        }
+      ]
+    },
+    {
       "name": "bell",
       "category": "status",
       "label": "Notifications",
@@ -181,6 +202,32 @@
       ]
     },
     {
+      "name": "building",
+      "category": "agents",
+      "label": "Building",
+      "keywords": [
+        "organization",
+        "office",
+        "company",
+        "institution"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "rect",
+          "x": 4,
+          "y": 3,
+          "width": 11,
+          "height": 18,
+          "rx": 1
+        },
+        {
+          "element": "path",
+          "d": "M15 9H19Q20 9 20 10V21M2 21H22M7.5 7H11.5M7.5 11H11.5M7.5 15H11.5M8.5 21V18H10.5V21"
+        }
+      ]
+    },
+    {
       "name": "calendar",
       "category": "documents",
       "label": "Calendar",
@@ -224,6 +271,34 @@
           "cx": 12,
           "cy": 14,
           "r": 3
+        }
+      ]
+    },
+    {
+      "name": "certificate",
+      "category": "documents",
+      "label": "Certificate",
+      "keywords": [
+        "credential",
+        "award",
+        "acknowledgement",
+        "attestation"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M12.5 16H4Q3 16 3 15V5Q3 4 4 4H20Q21 4 21 5V15Q21 16 20 16H19.5M7 8H17M7 11.5H11"
+        },
+        {
+          "element": "circle",
+          "cx": 16,
+          "cy": 15,
+          "r": 2.8
+        },
+        {
+          "element": "path",
+          "d": "M14.4 17.4L13.8 21L16 19.8L18.2 21L17.6 17.4"
         }
       ]
     },
@@ -736,6 +811,36 @@
       ]
     },
     {
+      "name": "gift",
+      "category": "actions",
+      "label": "Gift",
+      "keywords": [
+        "present",
+        "grant",
+        "donation",
+        "contribution"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "rect",
+          "x": 3,
+          "y": 8,
+          "width": 18,
+          "height": 5,
+          "rx": 1
+        },
+        {
+          "element": "path",
+          "d": "M5 13V21H19V13M12 8V21"
+        },
+        {
+          "element": "path",
+          "d": "M12 8Q8.5 8 7.8 5.8Q7.5 3.6 9.6 3.6Q11.6 3.9 12 8Q12.4 3.9 14.4 3.6Q16.5 3.6 16.2 5.8Q15.5 8 12 8Z"
+        }
+      ]
+    },
+    {
       "name": "globe",
       "category": "navigation",
       "label": "Globe",
@@ -755,6 +860,34 @@
         {
           "element": "path",
           "d": "M3 12H21M12 3Q5 12 12 21M12 3Q19 12 12 21M6 7H18M6 17H18"
+        }
+      ]
+    },
+    {
+      "name": "hand-coins",
+      "category": "actions",
+      "label": "Hand with coins",
+      "keywords": [
+        "contribution",
+        "deposit",
+        "give money",
+        "payment"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "circle",
+          "cx": 16,
+          "cy": 6,
+          "r": 3
+        },
+        {
+          "element": "path",
+          "d": "M3 14H6V21H3Z"
+        },
+        {
+          "element": "path",
+          "d": "M6 15H9Q10 14 11.5 14H14Q15.5 14 15.5 15.5Q15.5 17 14 17H10.5M6 20H15L20.5 16Q21.6 14.6 20.2 14L15.4 16.2"
         }
       ]
     },
@@ -1175,6 +1308,28 @@
           "cx": 18,
           "cy": 12,
           "r": 0.7
+        }
+      ]
+    },
+    {
+      "name": "receipt",
+      "category": "documents",
+      "label": "Receipt",
+      "keywords": [
+        "payment proof",
+        "transaction",
+        "purchase",
+        "invoice"
+      ],
+      "origin": "original",
+      "shapes": [
+        {
+          "element": "path",
+          "d": "M6 3H18V21L16 19.5L14 21L12 19.5L10 21L8 19.5L6 21Z"
+        },
+        {
+          "element": "path",
+          "d": "M9 8H15M9 12H15M9 16H13"
         }
       ]
     },

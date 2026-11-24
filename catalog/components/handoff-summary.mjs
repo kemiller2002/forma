@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Fact rows are a two-column grid: a label column of 9rem to 12rem and a flexible value column.",
       "Labels are semibold `dt` text; values are plain `dd` text, so every fact is readable without styling.",
-      "At 30rem and below each row stacks its label above its value.",
+      "Below 30rem each row stacks its label above its value.",
       "No border or background of its own: place it in a [[surface]] or another frame when it needs separation."
     ]
   },
@@ -78,7 +78,7 @@ export default {
       mobile: {
         height: 560,
         notes: [
-          "At 30rem and below each fact row becomes one column with a small gap: label, then value.",
+          "Below 30rem each fact row becomes one column with a small gap: label, then value.",
           "Values wrap within the viewport; long identifiers inside `.forma-identifier` wrap anywhere, so nothing scrolls sideways at 320px.",
           "Actions in an `.forma-cluster` wrap onto new lines and keep the 2.75rem base height; they always come after the facts.",
           "The order of facts is fixed in the source, so uncertainty and authority are never pushed off-screen by rotation."
@@ -106,7 +106,7 @@ export default {
       { name: "aria-labelledby", on: "root section", values: "id of the proposal heading", default: "—", description: "Names the handoff region by the proposed consequence." }
     ],
     hooks: {
-      "forma-handoff-summary": "Root grid with a 1rem gap. Styles a `dl` inside it as rows of label and value (`minmax(9rem, 12rem) minmax(0, 1fr)`), with semibold labels; rows stack at 30rem and below."
+      "forma-handoff-summary": "Root grid with a 1rem gap. Styles a `dl` inside it as rows of label and value (`minmax(9rem, 12rem) minmax(0, 1fr)`), with semibold labels; rows stack below 30rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves to the decision actions after the facts. No added keyboard behavior." },
@@ -120,7 +120,7 @@ export default {
   states: [
     { name: "Awaiting decision", how: "facts plus the actions the application renders", description: "The actions shown are exactly those the current user may take." },
     { name: "Review only", how: "authority text and a reduced action set", description: "The user cannot approve; the text says who can." },
-    { name: "Stacked facts", how: "@media (max-width: 30rem)", description: "Each label sits above its value." }
+    { name: "Stacked facts", how: "@media (width < 30rem)", description: "Each label sits above its value." }
   ],
   accessibility: {
     forma: [
@@ -137,7 +137,7 @@ export default {
   },
   responsive: [
     "Fact rows: `minmax(9rem, 12rem) minmax(0, 1fr)`; values wrap in the flexible column.",
-    "At 30rem and below: rows become `minmax(0, 1fr)` with a 0.25rem gap.",
+    "Below 30rem: rows become `minmax(0, 1fr)` with a 0.25rem gap.",
     "Actions composed with [[cluster]] wrap as needed."
   ],
   motion: [

@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Each list row is a link at least 3.5rem tall with a bold identifier and a secondary line.",
       "The selected row gets a thick inline-start bar and a filled background, so the cue is shape plus color, not color alone.",
-      "At 40rem and below the list becomes a horizontally scrolling row of 12rem cards above the detail; the detail stays in the page flow."
+      "Below 48rem the list becomes a horizontally scrolling row of 12rem cards above the detail; the detail stays in the page flow."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
@@ -76,7 +76,7 @@ export default {
       mobile: {
         height: 560,
         notes: [
-          "At 40rem and below the grid becomes one column; the list turns into a horizontal row of 12rem-wide links that scrolls inside itself, so the page never scrolls sideways at 320px.",
+          "Below 48rem the grid becomes one column; the list turns into a horizontal row of 12rem-wide links that scrolls inside itself, so the page never scrolls sideways at 320px.",
           "Rows keep their 3.5rem minimum block size, which exceeds the 44px touch target, and the selected row keeps its thick bar.",
           "Only part of the list is visible at once; the application should scroll the selected link into view and keep the URL as the source of truth so rotation or reload restores the same record.",
           "Long lists are awkward to scroll horizontally. For more than a handful of records, navigate to a separate list page on phones and use Back to return."
@@ -124,8 +124,8 @@ export default {
   states: [
     { name: "Selected record", how: "aria-current=\"page\" on the list link", description: "Thick inline-start accent bar and filled row background." },
     { name: "Nothing selected", how: "no link with aria-current", description: "All rows neutral; the detail region should explain what to do." },
-    { name: "Two columns", how: "viewport wider than 40rem", description: "List column `minmax(12rem, 0.4fr)` beside the detail." },
-    { name: "Stacked switcher", how: "@media (max-width: 40rem)", description: "List becomes a horizontal scrolling row above the detail." }
+    { name: "Two columns", how: "viewport 48rem or wider", description: "List column `minmax(12rem, 0.4fr)` beside the detail." },
+    { name: "Stacked switcher", how: "@media (width < 48rem)", description: "List becomes a horizontal scrolling row above the detail." }
   ],
   accessibility: {
     forma: [
@@ -142,7 +142,7 @@ export default {
   },
   responsive: [
     "Wide: list column `minmax(12rem, 0.4fr)` and a `minmax(0, 1fr)` detail column.",
-    "At 40rem and below: a single column; the list becomes a flex row of 12rem links with `overflow-x: auto` inside its own box, bordered below instead of beside.",
+    "Below 48rem: a single column; the list becomes a flex row of 12rem links with `overflow-x: auto` inside its own box, bordered below instead of beside.",
     "Detail content shrinks with `min-inline-size: 0`; long values wrap in [[key-value-list]].",
     "The root keeps a 22rem minimum height so an empty detail does not collapse the workspace."
   ],

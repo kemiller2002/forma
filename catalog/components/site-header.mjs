@@ -115,7 +115,7 @@ export default {
           "Below a 56rem header width the tagline is hidden (a container query on the header), keeping navigation to about two lines.",
           "The navigation list wraps and stays right-aligned; no destination is hidden behind a menu button.",
           "Each link, the action link and the brand are at least 44px tall; links are padded horizontally so short labels stay comfortable to tap.",
-          "The header is not sticky below 40rem width or 36rem height, so it scrolls away instead of permanently consuming screen space in either orientation."
+          "The header is not sticky below 48rem width or 36rem height, so it scrolls away instead of permanently consuming screen space in either orientation."
         ]
       },
       html: `<forma-site-header class="forma-component-tag">
@@ -149,7 +149,7 @@ export default {
       { name: "href", on: "a", values: "URL", default: "—", description: "Ordinary navigation links; the site owns routing." }
     ],
     hooks: {
-      "forma-site-header": "Banner root. Draws the bottom rule and a translucent, blurred page background, and is the `forma-site-header` size container. Sticky at 40rem wide and 36rem tall or more.",
+      "forma-site-header": "Banner root. Draws the bottom rule and a translucent, blurred page background, and is the `forma-site-header` size container. Sticky at 48rem wide and 36rem tall or more.",
       "forma-site-header__inner": "Wrapping flex row, capped at the maximum layout width with fluid gutters, that places identity and navigation at opposite ends.",
       "forma-site-header__identity": "Groups the brand link and optional tagline; wraps internally.",
       "forma-site-header__brand": "Brand link with a 44px minimum height; underlines on hover.",
@@ -174,7 +174,7 @@ export default {
     { name: "Current", how: "aria-current=\"page\" or \"true\"", description: "A persistent strong under-rule marks the current destination." },
     { name: "Focus", how: ":focus-visible", description: "The shell's outline and halo ring surround the focused link." },
     { name: "Action", how: "data-forma-variant=\"action\"", description: "Filled link that reads as the primary conversion; bordered in forced colors." },
-    { name: "Sticky", how: "@media (min-width: 40rem) and (min-height: 36rem)", description: "The header sticks to the top of the viewport; anchor targets get scroll padding below it." }
+    { name: "Sticky", how: "@media (width >= 48rem) and (min-height: 36rem)", description: "The header sticks to the top of the viewport; anchor targets get scroll padding below it." }
   ],
   accessibility: {
     forma: [
@@ -195,7 +195,7 @@ export default {
     "The inner row is a wrapping flex container: navigation moves below the identity when both do not fit.",
     "The navigation list wraps onto additional lines and stays aligned to the inline end.",
     "A container query hides the tagline below a 56rem header width; the brand name wraps with `overflow-wrap: anywhere` and never hides.",
-    "Sticky positioning applies only at `min-width: 40rem` and `min-height: 36rem`."
+    "Sticky positioning applies only at `width >= 48rem` and `min-height: 36rem`."
   ],
   motion: [
     "No animation: hover and current states change the under-rule and colors instantly.",

@@ -17,10 +17,10 @@ export default {
       "Prerequisites must all be met before one transition: use [[readiness-checklist]]."
     ],
     characteristics: [
-      "Header row: title (with an optional kicker) at the start, count at the end; stacks at 30rem and below.",
+      "Header row: title (with an optional kicker) at the start, count at the end; stacks below 30rem.",
       "Each item is a `minmax(0, 1fr) auto` grid: reason and context on the start side, the action on the end side.",
       "Items are separated by subtle rules; the last item has none.",
-      "At 40rem and below each item becomes one column and its button stretches to full width."
+      "Below 48rem each item becomes one column and its button stretches to full width."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior"] },
@@ -79,8 +79,8 @@ export default {
       mobile: {
         height: 460,
         notes: [
-          "At 40rem (640px) and below each item becomes a single column and its button stretches to 100% width, giving a full-width touch target.",
-          "At 30rem (480px) and below the header becomes a grid, so the count sits under the title instead of competing for width.",
+          "Below 48rem (768px) each item becomes a single column and its button stretches to 100% width, giving a full-width touch target.",
+          "Below 30rem (480px) the header becomes a grid, so the count sits under the title instead of competing for width.",
           "The application's order is kept exactly; nothing is reordered for mobile.",
           "Long reasons and context wrap within the item; nothing scrolls horizontally at 320px."
         ]
@@ -113,9 +113,9 @@ export default {
     ],
     hooks: {
       "forma-work-queue": "Bordered root section.",
-      "forma-work-queue__header": "Padded, ruled header row with title and count spaced apart; a grid at 30rem and below.",
+      "forma-work-queue__header": "Padded, ruled header row with title and count spaced apart; a grid below 30rem.",
       "forma-work-queue__list": "The unstyled ordered list of items.",
-      "forma-work-queue__item": "One item: reason/context and action in a two-column grid, stacking at 40rem and below with a full-width button."
+      "forma-work-queue__item": "One item: reason/context and action in a two-column grid, stacking below 48rem with a full-width button."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through each item's action button in queue order." },
@@ -130,7 +130,7 @@ export default {
     { name: "Item needing action", how: "li.forma-work-queue__item with a button", description: "Reason, context and the legal next action." },
     { name: "Item state", how: "[[status-lozenge]] or text in the item", description: "Overdue, Unknown, Blocked and so on, supplied by the application." },
     { name: "Empty", how: "application-rendered message", description: "The queue explains that nothing needs attention and when it was checked." },
-    { name: "Stacked", how: "viewport ≤ 40rem", description: "Items single column with full-width actions; header stacks at 30rem." }
+    { name: "Stacked", how: "viewport < 48rem", description: "Items single column with full-width actions; header stacks at 30rem." }
   ],
   accessibility: {
     forma: [
@@ -147,9 +147,10 @@ export default {
     ]
   },
   responsive: [
-    "Above 40rem: reason and action side by side.",
-    "At 40rem and below: items stack and buttons fill the width.",
-    "At 30rem and below: the header stacks title and count.",
+    "Density: `data-forma-density=\"comfortable\"` on an ancestor gives rows of at least 44px with 44px in-row targets; `data-forma-density=\"compact\"` gives rows of at least 36px with 24px in-row targets (44px on a coarse pointer). Without the attribute the component keeps its own spacing.",
+    "From 48rem: reason and action side by side.",
+    "Below 48rem: items stack and buttons fill the width.",
+    "Below 30rem: the header stacks title and count.",
     "Text wraps inside items; the start column is `minmax(0, 1fr)`."
   ],
   motion: [

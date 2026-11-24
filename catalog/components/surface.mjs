@@ -17,12 +17,32 @@ export default {
       "The panel previews consequential content before an action: use [[preview-surface]]."
     ],
     characteristics: [
-      "Tone, border and padding only; no radius, shadow or elevation.",
+      "Tone, border and padding by default; `data-forma-surface=\"raised\"` adds the raised role and elevation, `sunken` a well, `chrome` the app-bar surface. Each role and its text pairs are compiled per theme and brand.",
       "`min-inline-size: 0`, so a surface can shrink inside grid and flex tracks and its content wraps.",
       "In forced-colors mode the border becomes CanvasText, so the enclosure stays visible when backgrounds are removed."
     ]
   },
   examples: [
+    {
+      id: "application-roles",
+      interaction: { kind: "static", reasons: ["placeholder-navigation"] },
+      title: "Application chrome, raised panel and sunken well",
+      description: "An app bar on the chrome surface, a raised account panel at elevation 2 and a sunken well holding a pending figure. Every colour comes from the active theme or brand, so a white-labelled product restyles all three.",
+      html: `<forma-surface class="forma-component-tag">
+  <div class="forma-stack">
+    <header class="forma-surface" data-forma-surface="chrome">
+      <p><strong>Northwind Accounts</strong> · <a href="#surface-application-roles-panel">Account overview</a></p>
+    </header>
+    <section class="forma-surface" data-forma-surface="raised" data-forma-elevation="2" id="surface-application-roles-panel" aria-labelledby="surface-application-roles-title">
+      <h2 id="surface-application-roles-title">Available balance</h2>
+      <p>Updated 24 Nov 2026, 06:15 UTC. Pending items are shown below.</p>
+      <div class="forma-surface" data-forma-surface="sunken">
+        <p>Pending: 1,250.00 from two transfers</p>
+      </div>
+    </section>
+  </div>
+</forma-surface>`
+    },
     {
       id: "billing-summary",
       interaction: { kind: "static", reasons: ["application-behavior"] },
@@ -90,6 +110,8 @@ export default {
   ],
   api: {
     attributes: [
+      { name: "data-forma-surface", on: ".forma-surface", values: "raised | sunken | chrome", default: "absent (secondary tone)", description: "Selects an application surface role compiled per theme and brand: raised (a panel above the canvas with elevation 1, keeping text.secondary), sunken (a well, with text.on-secondary-surface for secondary text) or chrome (app bar or navigation, every text role becomes text.on-chrome)." },
+      { name: "data-forma-elevation", on: ".forma-surface[data-forma-surface=\"raised\"]", values: "2", default: "absent (elevation 1)", description: "Lifts a raised surface to elevation 2 for floating panels." },
       { name: "aria-labelledby", on: "section / article", values: "id of the panel heading", default: "—", description: "Names a surface that is a landmark or named region." },
       { name: "aria-label", on: "list", values: "string", default: "—", description: "Names a list of surfaces." },
       { name: "style", on: ".forma-surface", values: "--forma-surface-space: <length>", default: "—", description: "Per-instance padding override." },
@@ -97,6 +119,8 @@ export default {
     ],
     hooks: {
       "forma-surface": "Panel with secondary surface background, on-secondary text color, subtle 1px border and padding. Headings and paragraphs inside inherit its color.",
+      "data-forma-surface": "`raised`: `--forma-color-surface-raised` with `--forma-elevation-1`, primary text and the theme's own secondary text; `sunken`: `--forma-color-surface-sunken`; `chrome`: `--forma-color-surface-chrome` with every text role, links included, set to `--forma-color-text-on-chrome`. Forced colours resolve each role to Canvas and drop the shadows.",
+      "data-forma-elevation": "`2` on a raised surface uses `--forma-elevation-2`.",
       "--forma-surface-space": "Padding on all sides. Default `--forma-primitive-spacing-5` (1.5rem).",
       "--forma-surface-accent-text-color": "Color of links and accent labels inside a secondary surface. Every rule that paints the secondary surface sets it to `--forma-color-text-primary` and rebinds secondary and muted text to `--forma-color-text-on-secondary-surface`, because accent and secondary text are not AA-validated on that surface. Outside one, they use their accent role."
     },
@@ -106,6 +130,9 @@ export default {
   },
   states: [
     { name: "Default", how: ".forma-surface", description: "Secondary tone, subtle border, 1.5rem padding." },
+    { name: "Raised", how: "data-forma-surface=\"raised\" (optionally data-forma-elevation=\"2\")", description: "Raised role and elevation shadow; text.primary, text.heading and text.secondary are compiler-validated on it." },
+    { name: "Sunken", how: "data-forma-surface=\"sunken\"", description: "Well below the canvas; secondary text uses text.on-secondary-surface." },
+    { name: "Chrome", how: "data-forma-surface=\"chrome\"", description: "App-bar and navigation surface with text.on-chrome." },
     { name: "Forced colors", how: "@media (forced-colors: active)", description: "Border becomes CanvasText and the background resolves to Canvas, so the boundary stays visible." }
   ],
   accessibility: {

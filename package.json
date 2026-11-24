@@ -1,6 +1,6 @@
 {
   "name": "@echelon-foundry/design-system",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "private": false,
   "type": "module",
   "description": "Zero-component-runtime, brand-neutral HTML and CSS design system.",
@@ -14,6 +14,7 @@
   "exports": {
     "./runtime": "./dist/runtime.js",
     "./tokens.css": "./dist/tokens.css",
+    "./custom-media.css": "./dist/custom-media.css",
     "./foundations.css": "./dist/foundations.css",
     "./components.css": "./dist/components.css",
     "./all.css": "./dist/all.css",
@@ -75,7 +76,7 @@
   ],
   "scripts": {
     "clean": "node tools/clean.mjs",
-    "tokens:build": "dotnet run --project tools/TokenCompiler/TokenCompiler.fsproj -- tokens/forma.tokens.json dist/tokens.css",
+    "tokens:build": "dotnet run --project tools/TokenCompiler/TokenCompiler.fsproj -- tokens/forma.tokens.json dist/tokens.css --custom-media dist/custom-media.css",
     "assets:build": "node tools/build-assets.mjs",
     "build": "npm run clean && npm run tokens:build && npm run brands:build && npm run color:build && npm run runtime:build && npm run assets:build && npm run marketing:build && npm run example:install",
     "runtime:build": "node tools/build-runtime.mjs",
@@ -95,7 +96,7 @@
     "site:mobile": "playwright test --config=playwright.site.config.mjs",
     "pack:verify": "npm run build && npm pack --dry-run",
     "test:package": "node --test tests/package-contract.test.mjs tests/conformance-package.test.mjs",
-    "test:css": "node --test tests/brand-neutrality.test.mjs tests/css-source.test.mjs tests/dist-css.test.mjs tests/contrast-pairs.test.mjs tests/nontext-contrast.test.mjs tests/diagram-contract.test.mjs",
+    "test:css": "node --test tests/brand-neutrality.test.mjs tests/breakpoints.test.mjs tests/css-source.test.mjs tests/dist-css.test.mjs tests/contrast-pairs.test.mjs tests/nontext-contrast.test.mjs tests/diagram-contract.test.mjs",
     "test:contrast": "node --test tests/contrast-pairs.test.mjs && playwright test tests/browser/pattern-contrast.spec.mjs --project=chromium",
     "brands:build": "dotnet run --project tools/BrandCompiler/BrandCompiler.fsproj -- brands dist/brands",
     "color:build": "node tools/color-contract/build.mjs",

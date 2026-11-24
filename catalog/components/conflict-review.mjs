@@ -90,7 +90,7 @@ export default {
       mobile: {
         height: 540,
         notes: [
-          "Below 40rem the diff viewer's two sides stack: the version you reviewed above the current version.",
+          "Below 48rem the diff viewer's two sides stack: the version you reviewed above the current version.",
           "Below 30rem each diff row stacks its label above its value, so long values wrap without truncation.",
           "Footer actions wrap onto separate lines and stay aligned to the end; each keeps a 44px-tall touch target.",
           "The header text wraps; nothing scrolls horizontally at 320px in either orientation."
@@ -163,7 +163,7 @@ export default {
     ]
   },
   responsive: [
-    "The comparison is two columns on wide screens and stacks below 40rem.",
+    "The comparison is two columns on wide screens and stacks below 48rem.",
     "Diff rows stack label above value below 30rem.",
     "The action footer wraps and keeps actions at the inline end.",
     "Long values and names wrap inside their columns."

@@ -21,7 +21,7 @@ export default {
       "One `name` per row; rows never share a radio group.",
       "Each row's legend is floated into the first grid column so the row reads as prompt then choices.",
       "Choice labels are repeated in every row, so no column header is needed for assistive technology.",
-      "Below 44rem each row becomes a vertical list of full-width choices."
+      "Below 48rem each row becomes a vertical list of full-width choices."
     ]
   },
   examples: [
@@ -105,7 +105,7 @@ export default {
       mobile: {
         height: 620,
         notes: [
-          "Below 44rem the row grid becomes one column: the row prompt sits above its choices.",
+          "Below 48rem the row grid becomes one column: the row prompt sits above its choices.",
           "Choices switch from columns to a single vertical list; each choice is a full-width 44px-tall row with left-aligned text.",
           "Rows stay separate bordered groups, so it remains clear which choices belong to which item.",
           "There is no horizontal scroll at 320px; adding columns lengthens the list instead."
@@ -185,7 +185,7 @@ export default {
   responsive: [
     "Wide: each row is a grid of `minmax(10rem, 1.1fr)` for the prompt and `minmax(0, 3fr)` for the choices.",
     "Choice columns are at least 5rem; many choices on a medium width can crowd, so keep scales short.",
-    "Below 44rem the row becomes one column and the choices become a vertical list of full-width cells.",
+    "Below 48rem the row becomes one column and the choices become a vertical list of full-width cells.",
     "Row prompts and choice text wrap; there is no horizontal scrolling path."
   ],
   motion: [

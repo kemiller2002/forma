@@ -91,8 +91,8 @@ export default {
         height: 600,
         notes: [
           "The support grid uses `minmax(min(100%, 15rem), 1fr)`, so supporting regions stack into one column on phones.",
-          "At 30rem and below a button directly inside the primary region wraps its text and grows in height while keeping a 2.75rem minimum.",
-          "Status lozenges inside the budget wrap at 30rem and below instead of widening the page.",
+          "Below 30rem a button directly inside the primary region wraps its text and grows in height while keeping a 2.75rem minimum.",
+          "Status lozenges inside the budget wrap below 30rem instead of widening the page.",
           "Every region and label wraps with `overflow-wrap: anywhere`, so long identifiers and 200% text stay within 320px in any orientation."
         ]
       },
@@ -158,7 +158,7 @@ export default {
   responsive: [
     "Root, regions and support grid set `min-inline-size: 0` and `max-inline-size: 100%`; every `[data-emphasis]` region wraps anywhere.",
     "Support grid: `repeat(auto-fit, minmax(min(100%, 15rem), 1fr))`, one column on phones.",
-    "At 30rem and below: status lozenges wrap, and a button directly inside the primary region wraps and grows in height."
+    "Below 30rem: status lozenges wrap, and a button directly inside the primary region wraps and grows in height."
   ],
   motion: [
     "No animation: emphasis is expressed only through static structure and text. Nothing pulses, moves or fades to claim attention."

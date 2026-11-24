@@ -112,7 +112,7 @@ export default {
       mobile: {
         height: 400,
         notes: [
-          "Below 40rem the row pitch becomes 2.75rem, so each field is a 44px-tall target; field widths stay tied to their cells.",
+          "Below 48rem the row pitch becomes 2.75rem, so each field is a 44px-tall target; field widths stay tied to their cells.",
           "Fields shorter than 2.75rem get a minimum width that extends into the blank cells after them, never over the next run.",
           "The 40-column grid fits most phones in portrait; wider grids scroll inside the viewport and the page does not scroll sideways.",
           "`inputmode=\"decimal\"` brings up a numeric keyboard; the visible capacity still matches `maxlength`."
@@ -203,7 +203,7 @@ export default {
   },
   responsive: [
     "Fields are exactly `data-forma-len` cells wide and one row pitch tall at every width.",
-    "Below 40rem or on a coarse pointer, fields and rows reach 44px; short fields paint into the blank cells after them without widening the tracks.",
+    "Below 48rem or on a coarse pointer, fields and rows reach 44px; short fields paint into the blank cells after them without widening the tracks.",
     "Under text-spacing overrides, supporting browsers widen the field to its value (`field-sizing: content`); others scroll the value inside the field.",
     "Narrow-screen containment or reflow is set on the grid; see [[character-grid]]."
   ],

@@ -4,7 +4,7 @@ export default {
   behavior: "Application / Limen",
   summary: "Safe-area-aware mobile action region that keeps one to three critical contextual actions reachable at the bottom of a narrow screen.",
   purpose: {
-    description: "The mobile action bar is a bordered row of native buttons that share the width equally. At 40rem and below it becomes `position: sticky` at the bottom of its scroll container, so the actions stay reachable while a long form or record scrolls, and its bottom padding grows to respect the device safe-area inset. One button can be marked `forma-mobile-action-bar__primary` for an inverse (filled) surface. Forma provides presentation only: which actions appear, whether they are legal, keeping the bar from covering a focused field, and any show/hide behavior are application or Limen concerns.",
+    description: "The mobile action bar is a bordered row of native buttons that share the width equally. Below 48rem it becomes `position: sticky` at the bottom of its scroll container, so the actions stay reachable while a long form or record scrolls, and its bottom padding grows to respect the device safe-area inset. One button can be marked `forma-mobile-action-bar__primary` for an inverse (filled) surface. Forma provides presentation only: which actions appear, whether they are legal, keeping the bar from covering a focused field, and any show/hide behavior are application or Limen concerns.",
     useWhen: [
       "A phone screen has one to three actions that complete or leave the current task (Save, Submit, Cancel) and the content above them is long.",
       "The same actions exist elsewhere on wider layouts, and the bar is the narrow-screen recomposition of them.",
@@ -18,7 +18,7 @@ export default {
     ],
     characteristics: [
       "Children share the row equally (`flex: 1 1 0`), giving large, even targets.",
-      "Sticky at the bottom of the scroll container only at 40rem and below; at wider widths it is an ordinary in-flow row.",
+      "Sticky at the bottom of the scroll container only below 48rem; at wider widths it is an ordinary in-flow row.",
       "Bottom padding is `max(0.75rem, env(safe-area-inset-bottom))`, so buttons clear a phone's home indicator.",
       "A translucent surface with a backdrop blur separates the bar from content scrolling underneath."
     ]
@@ -57,7 +57,7 @@ export default {
       mobile: {
         height: 420,
         notes: [
-          "At 40rem (640px) and below the bar is `position: sticky; inset-block-end: 0` with a z-index above the content, so it stays visible while its container scrolls.",
+          "Below 48rem (768px) the bar is `position: sticky; inset-block-end: 0` with a z-index above the content, so it stays visible while its container scrolls.",
           "Bottom padding expands to the safe-area inset on devices with a home indicator or rounded corners, in portrait and landscape.",
           "Buttons share the width equally and wrap their labels; there is no horizontal scrolling at 320px.",
           "A sticky bar can cover the field that has focus near the bottom of the viewport. Add bottom scroll padding or margin to the scroll container in the application so focused fields scroll clear of the bar."
@@ -91,7 +91,7 @@ export default {
       { name: "type", on: "button", values: "button | submit | reset", default: "—", description: "Use submit when the bar is the form's action row, button otherwise." }
     ],
     hooks: {
-      "forma-mobile-action-bar": "The bar: a flex row with padding, a functional border, a translucent primary surface and a backdrop blur. Sticky at the bottom at 40rem and below.",
+      "forma-mobile-action-bar": "The bar: a flex row with padding, a functional border, a translucent primary surface and a backdrop blur. Sticky at the bottom below 48rem.",
       "forma-mobile-action-bar__primary": "Marks the single most important action with the inverse (filled) surface and inverse text. Other actions need no class; the canonical pattern's `forma-mobile-action-bar__secondary` has no CSS of its own."
     },
     keyboard: [
@@ -104,8 +104,8 @@ export default {
     form: "When the bar sits inside a form, its submit and reset buttons act on that form natively. The bar itself submits nothing."
   },
   states: [
-    { name: "In flow", how: "viewport wider than 40rem", description: "An ordinary bordered row wherever it appears in the source." },
-    { name: "Sticky", how: "@media (max-width: 40rem)", description: "Sticks to the bottom edge of the scroll container while its parent is in view." },
+    { name: "In flow", how: "viewport 48rem or wider", description: "An ordinary bordered row wherever it appears in the source." },
+    { name: "Sticky", how: "@media (width < 48rem)", description: "Sticks to the bottom edge of the scroll container while its parent is in view." },
     { name: "Primary action", how: "class forma-mobile-action-bar__primary", description: "Filled inverse surface for the most important action. In forced-colors mode surface tokens become Canvas, so the primary is not visually distinct there; its label must carry the meaning." },
     { name: "Disabled action", how: "disabled attribute on a button", description: "Native disabled button; the application should say why nearby." }
   ],
@@ -124,7 +124,7 @@ export default {
     ]
   },
   responsive: [
-    "Above 40rem the bar is static and sits in normal flow; at 40rem and below it becomes sticky at the bottom with z-index 8.",
+    "From 48rem the bar is static and sits in normal flow; below 48rem it becomes sticky at the bottom with z-index 8.",
     "Sticky positioning is relative to the nearest scroll container and stops at the end of the bar's parent, so place the bar as the last child of the content it serves.",
     "Buttons use `flex: 1 1 0`, so each gets an equal share of the width and long labels wrap inside the button.",
     "The bottom padding uses `env(safe-area-inset-bottom)` in both orientations; it has no effect on devices without an inset."

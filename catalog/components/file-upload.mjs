@@ -89,7 +89,7 @@ export default {
       mobile: {
         height: 520,
         notes: [
-          "At 40rem (640px) and below each queue row becomes one column: file name and size, then the progress bar, then the status or a full-width action button.",
+          "Below 48rem (768px) each queue row becomes one column: file name and size, then the progress bar, then the status or a full-width action button.",
           "The Choose files button keeps a 44px minimum height; on phones it opens the platform chooser, which may offer the camera or photo library.",
           "Long file names wrap within the row instead of widening the queue.",
           "The drop area has no drag requirement, so touch users lose nothing."
@@ -133,7 +133,7 @@ export default {
     hooks: {
       "forma-file-upload": "Root grid (1rem gap) around the drop area and queue.",
       "forma-file-upload__drop": "Dashed-border selection area on the secondary surface. A `.forma-button` inside is the visible chooser; a nested `input[type=file]` is visually hidden but remains in the accessibility tree.",
-      "forma-file-upload__queue": "Unstyled list of files. Each `li` is a three-column grid (name and size, progress, status or action) that stacks at 40rem and below; `small` holds secondary text."
+      "forma-file-upload__queue": "Unstyled list of files. Each `li` is a three-column grid (name and size, progress, status or action) that stacks below 48rem; `small` holds secondary text."
     },
     keyboard: [
       { keys: "Tab", action: "Moves to the file input inside the Choose files label, then through queue action buttons in order." },
@@ -166,8 +166,8 @@ export default {
     ]
   },
   responsive: [
-    "Above 40rem each row is `minmax(0, 1fr) minmax(8rem, 0.5fr) auto`: the name column shrinks first and the progress bar keeps at least 8rem.",
-    "At 40rem (640px) and below rows become one column and queue buttons fill the width.",
+    "From 48rem each row is `minmax(0, 1fr) minmax(8rem, 0.5fr) auto`: the name column shrinks first and the progress bar keeps at least 8rem.",
+    "Below 48rem (768px) rows become one column and queue buttons fill the width.",
     "File names and reasons wrap inside the first column; the queue never scrolls horizontally."
   ],
   motion: [

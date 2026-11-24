@@ -107,7 +107,7 @@ export default {
       mobile: {
         height: 620,
         notes: [
-          "Below 44rem the header stacks: heading and explanation first, then the count.",
+          "Below 48rem the header stacks: heading and explanation first, then the count.",
           "Each obligation becomes a single column: status label, then title and description, then the action link.",
           "The status label stays left-aligned at its own width instead of stretching.",
           "Severity borders stay on the inline-start edge at every width; nothing scrolls horizontally at 320px."
@@ -160,10 +160,10 @@ export default {
     ],
     hooks: {
       "forma-obligation-panel": "Root panel with a functional border and primary surface.",
-      "forma-obligation-panel__header": "Flex header: heading and explanation at the start, count at the end. Stacks below 44rem.",
+      "forma-obligation-panel__header": "Flex header: heading and explanation at the start, count at the end. Stacks below 48rem.",
       "forma-obligation-panel__count": "Inverse-surface square showing the number of obligations. Decorative duplicate of the heading.",
       "forma-obligation-list": "Unstyled list of obligations.",
-      "forma-obligation": "One obligation: grid of status label, content and action, with a 4px inline-start border. Single column below 44rem.",
+      "forma-obligation": "One obligation: grid of status label, content and action, with a 4px inline-start border. Single column below 48rem.",
       "forma-obligation__status": "Bordered uppercase monospace label naming the obligation's severity or type.",
       "data-forma-severity": "blocking uses the primary accent border; warning a double border; information the secondary accent. Absent keeps the neutral functional border."
     },
@@ -196,8 +196,8 @@ export default {
     ]
   },
   responsive: [
-    "Obligations are `auto minmax(0, 1fr) auto` grids on wide screens; below 44rem they become one column.",
-    "The header is a flex row on wide screens and a column below 44rem.",
+    "Obligations are `auto minmax(0, 1fr) auto` grids on wide screens; below 48rem they become one column.",
+    "The header is a flex row on wide screens and a column below 48rem.",
     "Titles and descriptions wrap; the status label has a 5.5rem minimum width."
   ],
   motion: [

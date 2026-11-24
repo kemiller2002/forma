@@ -90,7 +90,7 @@ export default {
       mobile: {
         height: 420,
         notes: [
-          "Below 40rem the three-column grid becomes one column: symbol, text, then actions.",
+          "Below 48rem the three-column grid becomes one column: symbol, text, then actions.",
           "Each action button becomes full width, giving large touch targets and preventing side-by-side mis-taps.",
           "The heading and explanation wrap freely; nothing scrolls horizontally at 320px.",
           "The lozenge stays on its own line above the heading in both orientations."
@@ -122,7 +122,7 @@ export default {
     hooks: {
       "forma-operation-status": "Root grid: symbol column, text column and action column, bordered with a thick inline-start border.",
       "forma-operation-status__symbol": "Bordered 2rem square holding a text glyph. Decorative.",
-      "forma-operation-status__actions": "Wrapping flex row of application-supplied recovery actions. Buttons become full width below 40rem."
+      "forma-operation-status__actions": "Wrapping flex row of application-supplied recovery actions. Buttons become full width below 48rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the recovery actions. The region is not focusable." },
@@ -156,7 +156,7 @@ export default {
   },
   responsive: [
     "Grid of `auto minmax(0, 1fr) auto`; the text column absorbs remaining width and wraps.",
-    "Below 40rem the grid is one column and every action button is full width.",
+    "Below 48rem the grid is one column and every action button is full width.",
     "The action row wraps before that breakpoint when actions are long."
   ],
   motion: [

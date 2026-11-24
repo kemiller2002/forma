@@ -117,7 +117,7 @@ export default {
   },
   states: [
     { name: "Staged", how: "viewport wider than 48rem", description: "Primary surface fills available space; support column stays between its minimum and maximum." },
-    { name: "Stacked", how: "@media (max-width: 48rem)", description: "One column, primary first." }
+    { name: "Stacked", how: "@media (width < 48rem)", description: "One column, primary first." }
   ],
   accessibility: {
     forma: [

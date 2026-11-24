@@ -90,7 +90,7 @@ export default {
       mobile: {
         height: 420,
         notes: [
-          "Below 36rem the three-column grid (icon, body, actions) becomes two columns; the recovery group moves to its own full-width row beneath the body without changing reading order.",
+          "Below 48rem the three-column grid (icon, body, actions) becomes two columns; the recovery group moves to its own full-width row beneath the body without changing reading order.",
           "The recovery button becomes full width with a 44px minimum height.",
           "The banner stays in page flow at 100% width, so it scrolls away with content rather than covering it.",
           "Long titles and references wrap; there is no horizontal scrolling at 320px in either orientation."
@@ -164,7 +164,7 @@ export default {
   },
   responsive: [
     "The banner is `inline-size: 100%` in page flow; it never overlays content.",
-    "The grid is icon, flexible body and actions; below a 36rem viewport the actions move to a full-width row under the body.",
+    "The grid is icon, flexible body and actions; below a 48rem viewport the actions move to a full-width row under the body.",
     "Recovery buttons become full width at the same breakpoint; each keeps a 44px minimum height.",
     "Titles, messages and reference codes wrap without horizontal overflow at 320px."
   ],

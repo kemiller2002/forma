@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 64,
+  "nextSeq": 65,
   "items": [
     {
       "id": "WI-0001",
@@ -1619,6 +1619,27 @@
       },
       "source": "coordinator",
       "sourceReference": "PR #185 review"
+    },
+    {
+      "id": "WI-0064",
+      "title": "Application UI gaps from consumer audit: button variants (#186), breakpoints (#200), app type/density (#199), surface roles (#201), status lozenge sentence variant (#202), task list (#203), icons (#204), approval quorum (#205), period context bar (#206), batch outcome summary (#207)",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-24T00:53:05.645Z",
+      "updatedAt": "2026-11-24T02:19:07.000Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
     }
   ]
 }

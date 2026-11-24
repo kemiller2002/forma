@@ -47,7 +47,7 @@ test("mobile ordinal labels override desktop top alignment", () => {
   const { rules } = flattenCss(parseCss(fs.readFileSync("src/styles/assessment.css", "utf8")));
   const labels = rules.filter(rule => rule.selector === ".forma-ordinal-option__label");
   const desktop = labels.find(rule => !rule.context.some(item => item.name === "media"));
-  const mobile = labels.find(rule => rule.context.some(item => item.name === "media" && /44rem/.test(item.prelude)));
+  const mobile = labels.find(rule => rule.context.some(item => item.name === "media" && /width < 48rem/.test(item.prelude)));
   assert.equal(desktop.declarations.find(item => item.property === "align-self").value, "start");
   assert.equal(mobile.declarations.find(item => item.property === "align-self").value, "center");
   assert.ok(rules.indexOf(mobile) > rules.indexOf(desktop));

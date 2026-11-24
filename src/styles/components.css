@@ -1248,6 +1248,32 @@
   .forma-status-lozenge[data-state="unknown"]::before { content: "?"; }
   .forma-status-lozenge[data-state="blocked"]::before { content: "×"; }
 
+  /*
+   * Sentence variant (forma#202): for consumer surfaces where the status is
+   * the most important fact on a record. Sentence case in the body face at
+   * 13px semibold (rem, so it follows the reader's text size), with a 1px
+   * border in the state colour. The state glyph, the data-state mapping and
+   * forced-colours behaviour are unchanged; the text is never transformed,
+   * so author it in sentence case ("On hold", "Payment returned").
+   */
+  .forma-status-lozenge[data-forma-variant="sentence"] {
+    gap: 0.3rem;
+    padding: 0.125rem 0.5rem 0.125rem 0.375rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font-family: var(--forma-primitive-font-family-sans, system-ui, sans-serif);
+    font-size: max(0.8125rem, var(--forma-type-size-small, 0.875rem) - 0.0625rem);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  .forma-status-lozenge[data-forma-variant="sentence"]::before {
+    font-size: 1em;
+    line-height: 1;
+  }
+
   /* Search and collection controls -------------------------------------- */
   .forma-search {
     display: grid;
@@ -1670,6 +1696,21 @@
 
   .forma-work-queue__item:last-child { border-block-end: 0; }
   .forma-work-queue__item p { margin: 0.25rem 0 0; }
+
+  /* Data density (forma#199; variables in foundations.css). */
+  [data-forma-density] .forma-data-grid :is(th, td) {
+    block-size: var(--forma-density-row-min);
+    padding: var(--forma-density-cell-block) var(--forma-density-cell-inline);
+  }
+  [data-forma-density] .forma-work-queue__item {
+    min-block-size: var(--forma-density-row-min);
+    padding: var(--forma-density-cell-block) var(--forma-density-cell-inline);
+  }
+  [data-forma-density] :is(.forma-data-grid td, .forma-dense-ledger td, .forma-work-queue__item) :where(button, .forma-button) {
+    min-block-size: var(--forma-density-target-min);
+    padding-block: 0;
+  }
+  [data-forma-density] .forma-data-grid th button { min-block-size: var(--forma-density-target-min); }
 
   /* Feedback ------------------------------------------------------------ */
   .forma-alert,
@@ -2349,7 +2390,7 @@
   }
 
   /* Mobile recomposition ------------------------------------------------ */
-  @media (max-width: 40rem) {
+  @media (width < 48rem) {
     .forma-collection-toolbar {
       grid-template-columns: 1fr auto;
       align-items: start;
@@ -2445,7 +2486,7 @@
     }
   }
 
-  @media (max-width: 30rem) {
+  @media (width < 30rem) {
     .forma-data-grid { overflow: visible; border: 0; }
     .forma-data-grid table,
     .forma-data-grid tbody,
@@ -2488,7 +2529,7 @@
     .forma-status-lozenge-set .forma-status-lozenge { flex: 1 1 100%; justify-content: center; }
   }
 
-  @media (max-width: 44rem) {
+  @media (width < 48rem) {
     .forma-segmented {
       inline-size: 100%;
     }
@@ -2716,7 +2757,7 @@
   .forma-understanding__item[data-forma-state="conflict"] .forma-understanding__state::before { content: "! "; }
   .forma-understanding__item p { margin: 0.2rem 0 0; color: var(--forma-color-text-secondary, #555555); }
 
-  @media (max-width: 40rem) {
+  @media (width < 48rem) {
     .forma-composer__actions,
     .forma-understanding__header { align-items: stretch; flex-direction: column; }
 
@@ -3077,7 +3118,7 @@
     font-size: 0.8125rem;
   }
 
-  @media (max-width: 36rem) {
+  @media (width < 48rem) {
     .forma-fault,
     .forma-fault--inline,
     .forma-fault-notification,
@@ -3171,7 +3212,7 @@
   .forma-security-evidence-chain ol { display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.5rem; padding:0; list-style:none; }
   .forma-security-evidence-chain li { padding:.75rem; border:1px solid var(--forma-color-border-functional,#555555); overflow-wrap:anywhere; }
   .forma-security-evidence-chain li strong,.forma-security-evidence-chain li span,.forma-security-evidence-chain li a { display:block; }
-  @media (max-width:30rem) { .forma-security-posture__header { display:grid; } .forma-security-evidence-chain ol { grid-template-columns:1fr; } }
+  @media (width < 30rem) { .forma-security-posture__header { display:grid; } .forma-security-evidence-chain ol { grid-template-columns:1fr; } }
   @media (forced-colors:active) { :where(.forma-security-posture__blockers,.forma-security-blockers,.forma-security-state-matrix__grid div) { border-color:CanvasText; } }
 
   :where(.forma-invariant-result,.forma-evidence-age,.forma-security-trend) { min-inline-size:0; border:1px solid var(--forma-color-border-functional,#555555); padding:var(--forma-primitive-spacing-4,1rem); background:var(--forma-color-surface-primary,#fafafa); }
@@ -3239,7 +3280,7 @@
     inline-size: min(100%, var(--forma-measure));
   }
 
-  @media (max-width: 30rem) {
+  @media (width < 30rem) {
     .forma-sidebar {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -3389,7 +3430,7 @@
     box-shadow: inset 0 0 0 5px var(--forma-color-focus-ring, #161616);
   }
 
-  @media (max-width: 48rem) {
+  @media (width < 48rem) {
     /* Includes the collapsed state, whose track list would otherwise keep
        three columns on a phone and squeeze the secondary pane (ULI-L05). */
     .forma-split-pane[data-forma-resizable],
@@ -3425,7 +3466,7 @@
     vertical-align: top;
   }
 
-  @media (max-width: 48rem) {
+  @media (width < 48rem) {
     .forma-split-pane { grid-template-columns: minmax(0, 1fr); }
     .forma-landmark-region { position: static; }
   }
@@ -3489,7 +3530,7 @@
   .forma-navigation-shell__compact { display: none; }
   .forma-navigation-shell__content { min-inline-size: 0; }
 
-  @media (max-width: 48rem) {
+  @media (width < 48rem) {
     .forma-workspace-shell {
       grid-template:
         "landmark" auto
@@ -3529,7 +3570,7 @@
   .forma-spatial-canvas__surface { min-inline-size:48rem; min-block-size:28rem; display:grid; grid-template-columns:repeat(3,minmax(12rem,1fr)); gap:var(--forma-primitive-spacing-6,2rem); padding:var(--forma-primitive-spacing-5,1.5rem); align-content:start; }
   .forma-spatial-canvas__index nav { display:flex; flex-wrap:wrap; gap:var(--forma-primitive-spacing-3,.75rem); padding-block-start:var(--forma-primitive-spacing-2,.5rem); }
 
-  @media (max-width:30rem) {
+  @media (width < 30rem) {
     .forma-feed-item { grid-template-columns:minmax(0,1fr); }
     .forma-feed-item__meta { justify-content:start; }
   }
@@ -3549,7 +3590,7 @@
   .forma-handoff-summary dl > div { display:grid; grid-template-columns:minmax(9rem,12rem) minmax(0,1fr); gap:var(--forma-primitive-spacing-3,.75rem); }
   .forma-handoff-summary dt { font-weight:600; }
   .forma-handoff-summary dd { margin:0; }
-  @media (max-width:30rem) { .forma-handoff-summary dl > div { grid-template-columns:minmax(0,1fr); gap:var(--forma-primitive-spacing-1,.25rem); } }
+  @media (width < 30rem) { .forma-handoff-summary dl > div { grid-template-columns:minmax(0,1fr); gap:var(--forma-primitive-spacing-1,.25rem); } }
 
 
 
@@ -3621,7 +3662,7 @@
     border-block-start: 1px solid var(--forma-color-border-subtle, #d8d8d8);
   }
   .forma-verification-frame__act > p { flex: 1 1 18rem; }
-  @media (max-width: 30rem) {
+  @media (width < 30rem) {
     .forma-verification-frame__act { align-items: stretch; }
     .forma-verification-frame__act > :is(button, .forma-button) { inline-size: 100%; }
   }
@@ -3647,7 +3688,7 @@
   .forma-hierarchy-tree summary,.forma-hierarchy-tree a { min-block-size:2.75rem; display:flex; align-items:center; }
   .forma-hierarchy-tree [aria-current="page"] { font-weight:700; }
 
-  @media (max-width:30rem) {
+  @media (width < 30rem) {
     .forma-relationship-index__list > div { grid-template-columns:minmax(0,1fr); gap:var(--forma-primitive-spacing-1,.25rem); }
     .forma-hierarchy-tree ul { padding-inline-start:var(--forma-primitive-spacing-2,.5rem); }
   }
@@ -3658,7 +3699,7 @@
   .forma-lane-board:focus-visible,.forma-comparison-grid:focus-visible,.forma-spatial-canvas__viewport:focus-visible { outline:2px solid currentColor; outline-offset:2px; }
   .forma-search,.forma-search__control,.forma-active-filter-summary,.forma-active-filter-summary__items,.forma-active-filter-summary__items li { min-inline-size:0; }
   .forma-search input { min-inline-size:0; max-inline-size:100%; }
-  @media (max-width:30rem) {
+  @media (width < 30rem) {
     .forma-search__control { display:grid; grid-template-columns:minmax(0,1fr); }
     .forma-active-filter-summary__items li { flex-wrap:wrap; }
   }
@@ -3680,7 +3721,7 @@
     max-inline-size:100%;
   }
   .forma-verification-frame :is(h2,h3,p,dt,dd,button) { overflow-wrap:anywhere; }
-  @media (max-width:30rem) {
+  @media (width < 30rem) {
     .forma-verification-frame__act {
       display:grid;
       grid-template-columns:minmax(0,1fr);
@@ -3750,7 +3791,7 @@
   }
   .forma-state-survivability__state p { margin: 0; }
 
-  @media (max-width: 30rem) {
+  @media (width < 30rem) {
     .forma-comparison-pairs__item,
     .forma-state-survivability__state {
       grid-template-columns: minmax(0, 1fr);
@@ -3818,7 +3859,7 @@
     max-inline-size:100%;
   }
   .forma-attention-path :is(h2,h3,p,button,.forma-status-lozenge) { overflow-wrap:anywhere; }
-  @media (max-width:30rem) {
+  @media (width < 30rem) {
     .forma-attention-path__primary .forma-cluster {
       display:grid;
       grid-template-columns:minmax(0,1fr);
@@ -3837,7 +3878,7 @@
     min-inline-size:0;
     max-inline-size:100%;
   }
-  @media (max-width:30rem) {
+  @media (width < 30rem) {
     .forma-attention-path .forma-status-lozenge {
       white-space:normal;
       inline-size:fit-content;
@@ -3904,7 +3945,7 @@
     min-inline-size:0;
     max-inline-size:100%;
   }
-  @media (max-width:30rem) {
+  @media (width < 30rem) {
     .forma-emphasis-budget .forma-status-lozenge {
       white-space:normal;
       inline-size:fit-content;
@@ -4451,7 +4492,7 @@
    * Touch pitch: on narrow or coarse-pointer screens rows grow to a 44px
    * minimum so fields and keys remain usable targets. Columns stay 1ch.
    */
-  @media (max-width: 40rem), (pointer: coarse) {
+  @media (width < 48rem), (pointer: coarse) {
     .forma-character-grid {
       --forma-grid-row-pitch: max(calc(var(--forma-grid-line-height) * 1em), 2.75rem);
     }
@@ -4880,7 +4921,7 @@
   .forma-diagram__membership { display: grid; grid-template-columns: minmax(0, max-content) minmax(0, 1fr); gap: var(--forma-primitive-spacing-1, 0.25rem) var(--forma-primitive-spacing-3, 0.75rem); margin: 0; }
   .forma-diagram__membership :where(dt) { font-weight: 700; overflow-wrap: anywhere; }
   .forma-diagram__membership :where(dd) { margin: 0; overflow-wrap: anywhere; }
-  @media (max-width: 30rem) {
+  @media (width < 30rem) {
     .forma-diagram__membership { grid-template-columns: minmax(0, 1fr); }
   }
   @media (forced-colors: active) {
@@ -5786,5 +5827,376 @@
       border-block-start-color: currentColor;
       border-style: dotted;
     }
+  }
+}
+
+@layer forma.components {
+  /* Application button variants (forma#186) ----------------------------- */
+  /*
+   * data-forma-variant="primary" marks the one most important action in a
+   * view; data-forma-variant="destructive" marks an action that removes,
+   * revokes or voids something. Both work on any button or .forma-button, in
+   * the application layer and outside the marketing .forma-site shell (whose
+   * own primary treatment still wins inside it).
+   *
+   * Colour pairs are ones the token and brand compilers already guarantee:
+   * the primary fill is accent.primary with surface.primary text (>= 4.5:1
+   * both ways, so the label is AA and the boundary is >= 3:1 against the
+   * page); the destructive outline and text are status.danger on
+   * surface.primary (>= 4.5:1), kept on hover (an inner rule thickens it).
+   * Neither variant relies on colour alone: primary is the only filled
+   * button, destructive has a 2px outline and a label that names the
+   * destructive verb and object (docs and catalog guidance).
+   */
+  :where(button, .forma-button)[data-forma-variant="primary"] {
+    border-color: var(--forma-color-accent-primary);
+    background: var(--forma-color-accent-primary);
+    color: var(--forma-color-surface-primary);
+  }
+
+  :where(button, .forma-button)[data-forma-variant="primary"]:where(:not(:disabled, [aria-busy="true"])):is(:hover, :active) {
+    border-color: var(--forma-color-accent-hover, var(--forma-color-accent-primary));
+    background: var(--forma-color-accent-hover, var(--forma-color-accent-primary));
+    color: var(--forma-color-surface-primary);
+    /* An inner rule in the label colour marks hover without moving the target. */
+    box-shadow: inset 0 0 0 2px var(--forma-color-surface-primary);
+  }
+
+  :where(button, .forma-button)[data-forma-variant="destructive"] {
+    border: 2px solid var(--forma-color-status-danger);
+    /* Padding absorbs the thicker border so the button keeps its size. */
+    padding: calc(0.65rem - 1px) calc(1rem - 1px);
+    background: var(--forma-color-surface-primary);
+    color: var(--forma-color-status-danger);
+  }
+
+  :where(button, .forma-button)[data-forma-variant="destructive"]:where(:not(:disabled, [aria-busy="true"])):is(:hover, :active) {
+    background: var(--forma-color-surface-primary);
+    color: var(--forma-color-status-danger);
+    /* A third pixel of outline marks hover; the colour pair never changes. */
+    box-shadow: inset 0 0 0 1px var(--forma-color-status-danger);
+  }
+
+  /* Pending and disabled keep the variant's colours (the busy rule above
+     would otherwise paint surface.primary behind surface.primary text). */
+  :where(button, .forma-button)[data-forma-variant="primary"][aria-busy="true"]:is(:hover, :active) {
+    background: var(--forma-color-accent-primary);
+  }
+
+  :where(button, .forma-button)[data-forma-variant]:disabled { border-style: dashed; }
+
+  :where(button, .forma-button)[data-forma-variant="destructive"][aria-busy="true"]:is(:hover, :active) {
+    background: var(--forma-color-surface-primary);
+  }
+
+  @media (forced-colors: active) {
+    /* System colours flatten the fill, so emphasis moves to the border. */
+    :where(button, .forma-button)[data-forma-variant="primary"] { border: 3px solid ButtonText; }
+    :where(button, .forma-button)[data-forma-variant="destructive"] { border: 3px double ButtonText; }
+  }
+}
+
+@layer forma.components {
+  /* Task list (forma#203) ------------------------------------------------ */
+  /*
+   * A short list of things the user must do, each with an icon in a
+   * state-coloured ring, a title naming the subject, one sentence of reason
+   * and consequence, a status in words and exactly one primary action. The
+   * application removes an item only when its task is resolved, never on
+   * dismissal; information-only notices belong in alert or callout.
+   */
+  .forma-task-list {
+    container: forma-task-list / inline-size;
+    display: grid;
+    gap: var(--forma-primitive-space-3, 0.75rem);
+    min-inline-size: 0;
+  }
+
+  .forma-task-list > :where(h2, h3, h4) { margin: 0; }
+
+  .forma-task-list__items {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .forma-task-list__item {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    grid-template-areas:
+      "icon title"
+      "icon status"
+      "icon reason"
+      "icon action";
+    gap: var(--forma-primitive-space-1, 0.25rem) var(--forma-primitive-space-3, 0.75rem);
+    align-items: start;
+    padding-block: var(--forma-primitive-space-4, 1rem);
+    border-block-start: 1px solid var(--forma-color-border-subtle);
+  }
+
+  .forma-task-list__item:first-child { border-block-start: 0; }
+
+  .forma-task-list__icon {
+    grid-area: icon;
+    display: grid;
+    place-items: center;
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    color: var(--forma-color-text-primary);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .forma-task-list__icon svg { inline-size: 1.15rem; block-size: 1.15rem; }
+
+  .forma-task-list__item[data-state="blocked"] .forma-task-list__icon { color: var(--forma-color-status-danger); border-width: 3px; }
+  .forma-task-list__item[data-state="attention"] .forma-task-list__icon { color: var(--forma-color-status-warning); }
+
+  .forma-task-list__title {
+    grid-area: title;
+    margin: 0;
+    color: var(--forma-color-text-heading);
+    font-size: 1rem;
+    font-weight: 650;
+    line-height: 1.35;
+    overflow-wrap: break-word;
+  }
+
+  .forma-task-list__status { grid-area: status; justify-self: start; }
+
+  .forma-task-list__reason {
+    grid-area: reason;
+    margin: 0;
+    max-inline-size: 68ch;
+  }
+
+  .forma-task-list__action {
+    grid-area: action;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--forma-primitive-space-2, 0.5rem);
+    margin-block-start: var(--forma-primitive-space-2, 0.5rem);
+  }
+
+  .forma-task-list__empty { margin: 0; }
+
+  /* Wide containers put the action at the end of the row. */
+  @container forma-task-list (inline-size >= 40rem) {
+    .forma-task-list__item {
+      grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+      grid-template-areas:
+        "icon title action"
+        "icon status action"
+        "icon reason action";
+      align-items: center;
+    }
+    .forma-task-list__action { margin-block-start: 0; justify-content: end; }
+  }
+
+  .forma-task-list[data-forma-density] .forma-task-list__item,
+  [data-forma-density] .forma-task-list__item {
+    min-block-size: var(--forma-density-row-min);
+    padding-block: var(--forma-density-cell-block);
+  }
+
+  /* Period context (forma#206) ------------------------------------------ */
+  /*
+   * A persistent context bar naming the accounting period every figure on
+   * the page belongs to: the period, its state in words, the cutoff and the
+   * snapshot's as-of and known-at timestamps (in <time> elements). Plain
+   * selectable text, so the context can be copied with the figures.
+   */
+  .forma-period-context {
+    min-inline-size: 0;
+    padding: var(--forma-primitive-space-3, 0.75rem) var(--forma-primitive-space-4, 1rem);
+    border: 1px solid var(--forma-color-border-functional);
+    border-inline-start-width: 0.25rem;
+    background: var(--forma-color-surface-primary);
+    color: var(--forma-color-text-primary);
+    user-select: text;
+  }
+
+  .forma-period-context__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--forma-primitive-space-2, 0.5rem) var(--forma-primitive-space-5, 1.5rem);
+    align-items: baseline;
+    margin: 0;
+  }
+
+  .forma-period-context__facts > div {
+    display: grid;
+    gap: 0.125rem;
+    min-inline-size: 0;
+  }
+
+  .forma-period-context__facts dt {
+    color: var(--forma-color-text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .forma-period-context__facts dd {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+  }
+
+  .forma-period-context__period dd {
+    color: var(--forma-color-text-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .forma-period-context[data-forma-state="closing"] { border-inline-start-style: double; border-inline-start-width: 0.375rem; }
+  .forma-period-context[data-forma-state="certified"] { border-inline-start-width: 0.5rem; }
+
+  /* Compact phone form: label and value share a line, period and state lead. */
+  @media (width < 48rem) {
+    .forma-period-context { padding: var(--forma-primitive-space-2, 0.5rem) var(--forma-primitive-space-3, 0.75rem); }
+    .forma-period-context__facts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.125rem; }
+    .forma-period-context__facts > div { grid-template-columns: minmax(0, 35%) minmax(0, 1fr); gap: var(--forma-primitive-space-2, 0.5rem); align-items: baseline; }
+    .forma-period-context__facts dd { min-inline-size: 0; }
+    .forma-period-context__period dd { font-size: 1rem; }
+  }
+
+  /* Approval quorum (forma#205) ----------------------------------------- */
+  /*
+   * The approvals an action requires, each with approver, status and time,
+   * the independence rule in words, and how many are still missing. The
+   * summary is a polite live region (role="status"). Forma does not decide
+   * who may approve: the application renders approve controls only for an
+   * eligible viewer.
+   */
+  .forma-approval-quorum {
+    display: grid;
+    gap: var(--forma-primitive-space-3, 0.75rem);
+    min-inline-size: 0;
+    padding: var(--forma-primitive-space-4, 1rem);
+    border: 1px solid var(--forma-color-border-functional);
+    background: var(--forma-color-surface-primary);
+  }
+
+  .forma-approval-quorum > header { display: grid; gap: var(--forma-primitive-space-1, 0.25rem); }
+  .forma-approval-quorum > header > :where(h2, h3, h4) { margin: 0; }
+
+  .forma-approval-quorum__summary { margin: 0; color: var(--forma-color-text-primary); font-weight: 650; }
+
+  .forma-approval-quorum__rule {
+    margin: 0;
+    padding-inline-start: var(--forma-primitive-space-3, 0.75rem);
+    border-inline-start: 0.25rem solid var(--forma-color-border-functional);
+  }
+
+  .forma-approval-quorum__list {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .forma-approval-quorum__entry {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--forma-primitive-space-1, 0.25rem) var(--forma-primitive-space-3, 0.75rem);
+    align-items: center;
+    padding-block: var(--forma-primitive-space-3, 0.75rem);
+    border-block-start: 1px solid var(--forma-color-border-subtle);
+  }
+
+  .forma-approval-quorum__entry > * { min-inline-size: 0; }
+  .forma-approval-quorum__role { color: var(--forma-color-text-secondary); font-size: 0.8125rem; font-weight: 600; }
+  .forma-approval-quorum__person { display: grid; gap: 0.125rem; overflow-wrap: anywhere; }
+  .forma-approval-quorum__person > strong { color: var(--forma-color-text-heading); }
+  .forma-approval-quorum__entry time { color: var(--forma-color-text-secondary); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+  .forma-approval-quorum__entry[data-state="pending"] { border-block-start-style: dashed; }
+
+  .forma-approval-quorum__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--forma-primitive-space-2, 0.5rem);
+  }
+
+  @media (width < 30rem) {
+    .forma-approval-quorum__entry { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  /* Batch outcome (forma#207) ------------------------------------------- */
+  /*
+   * The result of a batch whose items commit in their own transactions,
+   * grouped by outcome with counts, item links and one next action per
+   * group. Unknown is its own group (dashed rule, ? glyph, "Check status"),
+   * never merged with success or failure. The application inserts the
+   * summary into its role="status" region once, after the batch settles.
+   */
+  .forma-batch-outcome {
+    display: grid;
+    gap: var(--forma-primitive-space-3, 0.75rem);
+    min-inline-size: 0;
+  }
+
+  .forma-batch-outcome > :where(h2, h3, h4) { margin: 0; }
+  .forma-batch-outcome__summary { margin: 0; color: var(--forma-color-text-primary); font-weight: 650; }
+
+  .forma-batch-outcome__groups {
+    display: grid;
+    gap: var(--forma-primitive-space-3, 0.75rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .forma-batch-outcome__group {
+    display: grid;
+    gap: var(--forma-primitive-space-2, 0.5rem);
+    min-inline-size: 0;
+    padding: var(--forma-primitive-space-3, 0.75rem) var(--forma-primitive-space-4, 1rem);
+    border: 1px solid var(--forma-color-border-subtle);
+    border-inline-start: 0.25rem solid var(--forma-color-border-functional);
+    background: var(--forma-color-surface-primary);
+  }
+
+  .forma-batch-outcome__group[data-outcome="succeeded"] { border-inline-start-color: var(--forma-color-status-success); }
+  .forma-batch-outcome__group[data-outcome="pending"] { border-inline-start-color: var(--forma-color-status-warning); }
+  .forma-batch-outcome__group[data-outcome="failed"] { border-inline-start-color: var(--forma-color-status-danger); border-inline-start-width: 0.5rem; }
+  .forma-batch-outcome__group[data-outcome="unknown"] { border-inline-start: 0.25rem dashed var(--forma-color-status-info); border-style: dashed; }
+
+  .forma-batch-outcome__heading {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--forma-primitive-space-2, 0.5rem);
+    align-items: center;
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .forma-batch-outcome__count { font-variant-numeric: tabular-nums; font-weight: 700; }
+  .forma-batch-outcome__group > p { margin: 0; }
+
+  .forma-batch-outcome__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--forma-primitive-space-1, 0.25rem) var(--forma-primitive-space-3, 0.75rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .forma-batch-outcome__items a { display: inline-block; padding-block: 0.25rem; overflow-wrap: anywhere; }
+
+  .forma-batch-outcome__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--forma-primitive-space-2, 0.5rem);
+  }
+
+  @media (forced-colors: active) {
+    .forma-task-list__icon,
+    .forma-period-context,
+    .forma-approval-quorum,
+    .forma-batch-outcome__group { border-color: CanvasText; }
   }
 }

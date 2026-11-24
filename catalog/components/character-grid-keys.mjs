@@ -105,7 +105,7 @@ export default {
         height: 360,
         notes: [
           "Phones have no F-keys, so the presented buttons are the only way to trigger PF actions there; keep every action on screen.",
-          "Below 40rem the row pitch grows to 2.75rem and each key has at least a 2.75rem width, meeting the 44px target size.",
+          "Below 48rem the row pitch grows to 2.75rem and each key has at least a 2.75rem width, meeting the 44px target size.",
           "Keys never wrap to new rows by themselves; place them on explicit rows so the 40-column grid fits in portrait.",
           "In landscape the same grid simply has spare width; key positions do not change."
         ]
@@ -182,7 +182,7 @@ export default {
   },
   responsive: [
     "Keys are exactly their cells wide at every width and never wrap onto another row; authors place them on explicit rows.",
-    "Below 40rem or on a coarse pointer, keys get a 44px row pitch and a 2.75rem minimum width that paints into following blank cells.",
+    "Below 48rem or on a coarse pointer, keys get a 44px row pitch and a 2.75rem minimum width that paints into following blank cells.",
     "On phones without function keys the buttons are the only way to trigger each action, so every key stays visible."
   ],
   motion: [

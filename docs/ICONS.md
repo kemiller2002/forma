@@ -1,6 +1,6 @@
 # Forma icons (foundation preview)
 
-The icon registry is in `icons/registry.json`, validated by `schemas/icon-registry.schema.json` and compiled by `tools/icons/build.mjs`. It now contains eighty first-party outline icons, including email, opened email, inbox, send, reply, reply-all, forward and attachment, plus the original eight foundation icons: add, agent, close, edit, search, success, warning and workflow. The compiler and public catalog are implemented, but Forma Studio/Folio consumer integration and independent visual review remain open.
+The icon registry is in `icons/registry.json`, validated by `schemas/icon-registry.schema.json` and compiled by `tools/icons/build.mjs`. It now contains eighty-six first-party outline icons, including gift, bank, building, receipt, certificate and hand-coins (1.1.0), email, opened email, inbox, send, reply, reply-all, forward and attachment, plus the original eight foundation icons: add, agent, close, edit, search, success, warning and workflow. The compiler and public catalog are implemented, but Forma Studio/Folio consumer integration and independent visual review remain open.
 
 ## Build and validate
 
@@ -56,3 +56,7 @@ See `requirements/ICON-SYSTEM.md` and `docs/decisions/ADR-2026-10-07-icon-founda
 Forty new symbols cover communication, common actions, documents and media, location/navigation, and system status. Each has an individual generated documentation page. Use `email` for mail messages, `email-open` for opened mail, `inbox` for incoming messages, `send` for sending newly composed messages, `reply` and `reply-all` for different recipient scope, `forward` for an existing message, and `attachment` for attached files. The consuming application still supplies labelled controls, actual recipient lists, state and status text.
 
 Applications pinned to 0.5.0 retain that release until an explicit upgrade to the published 0.6.0 package. No CDN, runtime registration or icon font is required.
+
+## Finance and organization symbols (1.1.0)
+
+Six original glyphs (forma#204) cover giving and finance screens without borrowing unrelated symbols: `gift` (a gift, grant or donation), `hand-coins` (contributing, depositing or adding funds), `bank` (a financial institution or linked account), `building` (an organization: company, charity, school), `receipt` (proof of a completed payment) and `certificate` (a formal credential or acknowledgement). They are drawn on the same 24-unit grid with 1.8-unit round strokes, carry `origin: original` and keywords, and have guidance in `catalog/icons/finance.mjs`; their pages say "Introduced in Forma 1.1.0". `tests/icons.test.mjs` checks the grid, stroke, distinct geometry and guidance. Independent visual review at 16, 20, 24, 32 and 48px, in forced colours and in print (contribution rule 6) has not been done yet; treat the artwork as provisional until a reviewer records it.

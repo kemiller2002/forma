@@ -18,7 +18,7 @@ export default {
     ],
     characteristics: [
       "The canvas uses the secondary surface color and responsive padding; an `article` inside it is a centered page up to 42rem wide.",
-      "Header and footer are flex rows that stack their parts at 40rem and below.",
+      "Header and footer are flex rows that stack their parts below 48rem.",
       "The footer is the place for the commit status in words and the next legal action supplied by the application."
     ]
   },
@@ -82,7 +82,7 @@ export default {
       mobile: {
         height: 560,
         notes: [
-          "At 40rem and below the header and footer switch to a stretched column, so the title, controls, status and action each take the full width.",
+          "Below 48rem the header and footer switch to a stretched column, so the title, controls, status and action each take the full width.",
           "Canvas and article padding use `clamp()` with `4vw`, shrinking to 1rem each at 320px so the previewed content keeps most of the width.",
           "Footer buttons keep the 2.75rem base height; stacked, they become full-width touch targets.",
           "Very wide previewed content (tables, images) still needs its own [[bounded-overflow]] region inside the article."
@@ -116,10 +116,10 @@ export default {
     ],
     hooks: {
       "forma-preview-surface": "Root bordered region.",
-      "forma-preview-surface__header": "Title row with optional controls; a flex row that stacks at 40rem and below.",
+      "forma-preview-surface__header": "Title row with optional controls; a flex row that stacks below 48rem.",
       "forma-preview-surface__controls": "Wrapping group of view controls in the header.",
       "forma-preview-surface__canvas": "Tinted, padded area that holds the previewed material. A direct `article` child is drawn as a centered page up to 42rem wide.",
-      "forma-preview-surface__footer": "Commit status and next action; wraps and stacks at 40rem and below."
+      "forma-preview-surface__footer": "Commit status and next action; wraps and stacks below 48rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through header controls, any links inside the previewed content, then footer actions." },
@@ -134,7 +134,7 @@ export default {
     { name: "Uncommitted", how: "footer text", description: "The footer states that the content has not yet been sent, published or issued." },
     { name: "Blocked", how: "status text and the actions the application renders", description: "The application explains the problem and offers only legal next steps." },
     { name: "View mode", how: "aria-pressed on header controls", description: "Which presentation the preview is showing; application-owned." },
-    { name: "Stacked chrome", how: "@media (max-width: 40rem)", description: "Header and footer items stack and stretch." }
+    { name: "Stacked chrome", how: "@media (width < 48rem)", description: "Header and footer items stack and stretch." }
   ],
   accessibility: {
     forma: [
@@ -149,7 +149,7 @@ export default {
     ]
   },
   responsive: [
-    "Header and footer are wrapping flex rows with space between; at 40rem and below they stack with `align-items: stretch`.",
+    "Header and footer are wrapping flex rows with space between; below 48rem they stack with `align-items: stretch`.",
     "Canvas padding is `clamp(1rem, 4vw, 3rem)` and the article's padding `clamp(1rem, 4vw, 2.5rem)`.",
     "The previewed article is capped at 42rem and centered, approximating a document page.",
     "Simulating a mobile width (the Mobile control) is application behavior; Forma does not resize the canvas."

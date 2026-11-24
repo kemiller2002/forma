@@ -18,7 +18,7 @@ export default {
     ],
     characteristics: [
       "Three equal `minmax(0, 1fr)` columns with a 1rem gap; blocks never force the page wider.",
-      "One column at 40rem and below, in source order.",
+      "One column below 48rem, in source order.",
       "Children can use the `forma-span-2` and `forma-span-full` utilities to span columns; they return to full width on narrow screens."
     ]
   },
@@ -82,7 +82,7 @@ export default {
       mobile: {
         height: 600,
         notes: [
-          "At 40rem and below the grid is one `1fr` column; `forma-span-2` and `forma-span-full` children simply fill that column.",
+          "Below 48rem the grid is one `1fr` column; `forma-span-2` and `forma-span-full` children simply fill that column.",
           "Order is the source order. Nothing is reordered by importance, so write attention blocks first.",
           "Large values such as currency amounts wrap rather than overflow because every block can shrink to the viewport.",
           "Links inside metric cards are ordinary inline links; give them a comfortable touch height in application CSS or make the whole label a single, clearly named link."
@@ -113,7 +113,7 @@ export default {
       { name: "aria-labelledby", on: "root section, metric article", values: "id of a visible heading or label", default: "—", description: "Names the region or an individual block by its visible text." }
     ],
     hooks: {
-      "forma-dashboard-grid": "Root grid: three equal columns with a 1rem gap; one column at 40rem and below."
+      "forma-dashboard-grid": "Root grid: three equal columns with a 1rem gap; one column below 48rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through links in the blocks in source order. The grid adds no keyboard behavior." }
@@ -122,8 +122,8 @@ export default {
     form: "Not a form control."
   },
   states: [
-    { name: "Three columns", how: "viewport wider than 40rem", description: "Equal columns; blocks flow row by row in source order." },
-    { name: "One column", how: "@media (max-width: 40rem)", description: "Full-width blocks stacked in source order." }
+    { name: "Three columns", how: "viewport 48rem or wider", description: "Equal columns; blocks flow row by row in source order." },
+    { name: "One column", how: "@media (width < 48rem)", description: "Full-width blocks stacked in source order." }
   ],
   accessibility: {
     forma: [
@@ -138,9 +138,9 @@ export default {
     ]
   },
   responsive: [
-    "Above 40rem: `repeat(3, minmax(0, 1fr))`. Between about 40rem and 60rem each column is narrow, so keep labels and values short or use [[responsive-grid]] instead.",
-    "At 40rem and below: a single column.",
-    "The column count is fixed and viewport-based; a dashboard inside a narrow container still gets three columns above 40rem viewport width."
+    "From 48rem: `repeat(3, minmax(0, 1fr))`. Between about 40rem and 60rem each column is narrow, so keep labels and values short or use [[responsive-grid]] instead.",
+    "Below 48rem: a single column.",
+    "The column count is fixed and viewport-based; a dashboard inside a narrow container still gets three columns at 48rem viewport width and wider."
   ],
   motion: [
     "No animation: blocks reflow instantly at the breakpoint. Value changes inside blocks are the concern of components such as [[metric-value-change]]."

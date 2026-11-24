@@ -65,7 +65,7 @@ export default {
         height: 420,
         notes: [
           "Filters wrap onto as many rows as needed; the list never scrolls horizontally at 320px.",
-          "At 30rem (480px) and below each item may wrap its own text and remove button, so a long value moves the button onto the next line instead of overflowing.",
+          "Below 30rem (480px) each item may wrap its own text and remove button, so a long value moves the button onto the next line instead of overflowing.",
           "The heading row wraps: Clear all moves below the heading when both do not fit.",
           "Remove buttons keep Forma's base button sizing (at least 2.75rem tall with 1rem inline padding), so each is a comfortable touch target."
         ]
@@ -96,7 +96,7 @@ export default {
     hooks: {
       "forma-active-filter-summary": "Root section; a grid with 0.5rem gaps.",
       "forma-active-filter-summary__heading": "Wrapping flex row with the heading (margin removed from its `h2`) and the Clear all action spaced apart.",
-      "forma-active-filter-summary__items": "Unstyled list laid out as a wrapping flex row; each `li` is a flex pair of filter text and remove button, allowed to wrap at 30rem and below."
+      "forma-active-filter-summary__items": "Unstyled list laid out as a wrapping flex row; each `li` is a flex pair of filter text and remove button, allowed to wrap below 30rem."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through Clear all and each remove button in order." },
@@ -127,7 +127,7 @@ export default {
   },
   responsive: [
     "Filters wrap into rows at every width; the component never scrolls horizontally.",
-    "At 30rem and below individual items can wrap their text and button onto separate lines.",
+    "Below 30rem individual items can wrap their text and button onto separate lines.",
     "The heading row wraps Clear all under the heading when space runs out."
   ],
   motion: [

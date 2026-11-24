@@ -91,7 +91,7 @@ export default {
       mobile: {
         height: 460,
         notes: [
-          "Below 36rem the three-column grid becomes two columns (marker and body); the recovery region moves to its own full-width row underneath, keeping source reading order.",
+          "Below 48rem the three-column grid becomes two columns (marker and body); the recovery region moves to its own full-width row underneath, keeping source reading order.",
           "Each recovery button stretches to the full width and keeps its 2.75rem (44px) minimum height, so actions are easy to hit with a thumb.",
           "The title wraps and the reference code breaks anywhere, so neither causes horizontal page scrolling at 320px.",
           "Orientation changes only reflow the body text; the marker, severity label and action order do not change."
@@ -169,7 +169,7 @@ export default {
   },
   responsive: [
     "The root is a grid of `auto minmax(0, 1fr) auto`; the body column absorbs remaining width and long text wraps inside it.",
-    "Below a 36rem viewport the grid becomes two columns and the recovery group moves to a full-width row beneath the body, preserving source order.",
+    "Below a 48rem viewport the grid becomes two columns and the recovery group moves to a full-width row beneath the body, preserving source order.",
     "At the same breakpoint the recovery group takes the full width and each button becomes full width with a 44px minimum height.",
     "Reference codes break anywhere, so long references never force horizontal scrolling at 320px.",
     "The breakpoint is a viewport media query, not a container query: a fault inside a narrow sidebar on a wide screen keeps the three-column layout."

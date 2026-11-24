@@ -20,7 +20,7 @@ export default {
       "Section grid with a header (title and selected entity) and a description list.",
       "Each row is a `div` with the relationship type as a bold `dt` (`minmax(7rem, 10rem)`) and targets in a `dd` with no indent.",
       "Direction is carried by the relationship wording, not by arrows or position.",
-      "At 30rem and below each row stacks the type above its targets."
+      "Below 30rem each row stacks the type above its targets."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["placeholder-navigation"] },
@@ -66,7 +66,7 @@ export default {
       mobile: {
         height: 400,
         notes: [
-          "At 30rem (480px) and below each row becomes one column with a 0.25rem gap: relationship type, then targets.",
+          "Below 30rem (480px) each row becomes one column with a 0.25rem gap: relationship type, then targets.",
           "Several targets in one `dd` wrap as inline links; keep link text meaningful so each is a usable tap target.",
           "Because the index is text, it is often the primary way to explore connections on a phone where a diagram would need panning.",
           "Order and wording are the same at every width."
@@ -90,7 +90,7 @@ export default {
     ],
     hooks: {
       "forma-relationship-index": "Root section; a grid with 0.75rem gaps. Removes the trailing margin of the header's last child.",
-      "forma-relationship-index__list": "The `dl`. Each `div` row is a two-column grid (`minmax(7rem, 10rem)` type, flexible targets); `dt` is semibold and `dd` has no margin. Rows stack at 30rem and below."
+      "forma-relationship-index__list": "The `dl`. Each `div` row is a two-column grid (`minmax(7rem, 10rem)` type, flexible targets); `dt` is semibold and `dd` has no margin. Rows stack below 30rem."
     },
     keyboard: [
       { keys: "Tab", action: "Moves through the links to related entities." },
@@ -102,7 +102,7 @@ export default {
   states: [
     { name: "Relationship with targets", how: "dt plus dd containing links", description: "Type and linked entities." },
     { name: "No targets", how: "application text such as None recorded", description: "Stated in words so absence is explicit." },
-    { name: "Stacked", how: "viewport ≤ 30rem", description: "Type above targets." }
+    { name: "Stacked", how: "viewport < 30rem", description: "Type above targets." }
   ],
   accessibility: {
     forma: [
@@ -118,7 +118,7 @@ export default {
     ]
   },
   responsive: [
-    "Two columns above 30rem; stacked at 30rem and below.",
+    "Two columns above 30rem; stacked below 30rem.",
     "Targets wrap inside the flexible column; the type column is capped at 10rem."
   ],
   motion: [

@@ -106,7 +106,7 @@ export default {
       id: "mobile-full-width-controls",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Ranking on a phone",
-      description: "Below 44rem the move buttons drop under the item text and split the row width, giving large touch targets.",
+      description: "Below 48rem the move buttons drop under the item text and split the row width, giving large touch targets.",
       mobile: {
         height: 520,
         notes: [
@@ -203,7 +203,7 @@ export default {
   },
   responsive: [
     "Wide: `auto minmax(0, 1fr) auto` columns for position, label and actions.",
-    "Below 44rem: actions move to a full-width second line and split into two equal buttons.",
+    "Below 48rem: actions move to a full-width second line and split into two equal buttons.",
     "Labels wrap anywhere; no horizontal overflow."
   ],
   motion: [

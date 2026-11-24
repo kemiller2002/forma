@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Two independent radio groups across the same rows (Best and Worst).",
       "Each radio has an explicit accessible name combining the item and the role, such as \"Reliability, Best\".",
-      "The column header row is visual only (`aria-hidden`) and disappears below 44rem.",
+      "The column header row is visual only (`aria-hidden`) and disappears below 48rem.",
       "A polite live status line reports incomplete, conflicting or complete state as written by the application."
     ]
   },
@@ -87,11 +87,11 @@ export default {
     {
       id: "mobile-compact-columns",
       title: "Best–Worst on a phone",
-      description: "Below 44rem the column header is hidden and the radio columns shrink to 44px. The accessible names already state Best or Worst, but the visible description repeats which column is which.",
+      description: "Below 48rem the column header is hidden and the radio columns shrink to 44px. The accessible names already state Best or Worst, but the visible description repeats which column is which.",
       mobile: {
         height: 380,
         notes: [
-          "The header row (Option, Best, Worst) is hidden below 44rem, so the description must state the column order in text.",
+          "The header row (Option, Best, Worst) is hidden below 48rem, so the description must state the column order in text.",
           "Radio columns change from a fixed 4.5rem to `minmax(2.75rem, auto)`, giving the item name more room.",
           "Each radio label keeps a 44px minimum height as its tap target; the native radio itself is 1.25rem.",
           "Item names wrap within the first column; there is no horizontal scroll at 320px."
@@ -138,7 +138,7 @@ export default {
     hooks: {
       "forma-best-worst": "Root fieldset with browser border and padding removed.",
       "forma-best-worst__legend": "Question text.",
-      "forma-best-worst__header": "Visual column headings. Mark aria-hidden; hidden below 44rem.",
+      "forma-best-worst__header": "Visual column headings. Mark aria-hidden; hidden below 48rem.",
       "forma-best-worst__row": "Bordered three-column grid row: item text, Best radio, Worst radio. Consecutive rows share borders.",
       "forma-best-worst__status": "Status line written by the application; place it in a polite live region."
     },
@@ -173,7 +173,7 @@ export default {
   },
   responsive: [
     "Wide: `minmax(10rem, 1fr) 4.5rem 4.5rem` columns for item, Best and Worst.",
-    "Below 44rem: header hidden, radio columns shrink to `minmax(2.75rem, auto)` and row padding tightens.",
+    "Below 48rem: header hidden, radio columns shrink to `minmax(2.75rem, auto)` and row padding tightens.",
     "Item text wraps; the grid never forces horizontal scroll."
   ],
   motion: [

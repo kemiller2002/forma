@@ -176,7 +176,7 @@ export default {
   },
   states: [
     { name: "Wide", how: "viewport wider than 48rem", description: "Three columns under a full-width landmark row: navigation, primary, inspector." },
-    { name: "Stacked", how: "@media (max-width: 48rem)", description: "One column in landmark, navigation, primary, inspector order." },
+    { name: "Stacked", how: "@media (width < 48rem)", description: "One column in landmark, navigation, primary, inspector order." },
     { name: "Current section", how: "aria-current=\"page\" on a navigation link", description: "Application-owned. The shell does not add a visual treatment; use link styling or compose a navigation component if one is needed." },
     { name: "Status", how: "text in the role=\"status\" element", description: "Application-owned text such as Saved, Syncing or Offline. Never color-only." }
   ],

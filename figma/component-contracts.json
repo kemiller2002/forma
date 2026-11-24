@@ -71,6 +71,16 @@
       }
     },
     {
+      "id": "approval-quorum",
+      "figmaName": "Forma / Approval Quorum",
+      "source": "patterns/approval-quorum.html",
+      "codeConnect": {
+        "id": "Forma/approval-quorum",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "attention-path",
       "figmaName": "Forma / Attention Path",
       "source": "patterns/attention-path.html",
@@ -86,6 +96,16 @@
       "source": "patterns/badge.html",
       "codeConnect": {
         "id": "Forma/badge",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "batch-outcome",
+      "figmaName": "Forma / Batch Outcome",
+      "source": "patterns/batch-outcome.html",
+      "codeConnect": {
+        "id": "Forma/batch-outcome",
         "nodeUrl": null,
         "status": "requires-published-figma-component"
       }
@@ -1021,6 +1041,16 @@
       }
     },
     {
+      "id": "period-context",
+      "figmaName": "Forma / Period Context",
+      "source": "patterns/period-context.html",
+      "codeConnect": {
+        "id": "Forma/period-context",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
       "id": "popover",
       "figmaName": "Forma / Popover",
       "source": "patterns/popover.html",
@@ -1586,6 +1616,16 @@
       "source": "patterns/tabs.html",
       "codeConnect": {
         "id": "Forma/tabs",
+        "nodeUrl": null,
+        "status": "requires-published-figma-component"
+      }
+    },
+    {
+      "id": "task-list",
+      "figmaName": "Forma / Task List",
+      "source": "patterns/task-list.html",
+      "codeConnect": {
+        "id": "Forma/task-list",
         "nodeUrl": null,
         "status": "requires-published-figma-component"
       }

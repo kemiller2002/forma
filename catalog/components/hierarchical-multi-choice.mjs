@@ -123,7 +123,7 @@ export default {
       mobile: {
         height: 480,
         notes: [
-          "At 44rem and below nested indentation shrinks to 0.75rem and branch padding to 0.5rem so item text keeps most of the width.",
+          "Below 48rem nested indentation shrinks to 0.75rem and branch padding to 0.5rem so item text keeps most of the width.",
           "Each checkbox row is at least 44px tall and the whole label row toggles the checkbox.",
           "Long names wrap within their row; there is no horizontal scrolling at 320px.",
           "The status line follows the tree in source order, so after scrolling to the end the user sees the count next to the last options."
@@ -208,7 +208,7 @@ export default {
     ]
   },
   responsive: [
-    "Same as [[hierarchical-choice]]: rows wrap, indentation tightens at 44rem and below, and expanded branches grow the page vertically.",
+    "Same as [[hierarchical-choice]]: rows wrap, indentation tightens below 48rem, and expanded branches grow the page vertically.",
     "The status line stays after the tree in source order at every width.",
     "No horizontal overflow at 320px for three levels of nesting with ordinary labels."
   ],

@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Built on a native `dialog`; opening modally gives focus containment, inert background, Escape to close and focus restoration for free.",
       "Uses the heavy motion preset by default, because it is a large surface that takes over attention.",
-      "Below 40rem wide it fills the viewport edge to edge.",
+      "Below 48rem wide it fills the viewport edge to edge.",
       "Unavailable commands stay visible as disabled buttons with a reason, instead of disappearing."
     ]
   },
@@ -101,7 +101,7 @@ export default {
       mobile: {
         height: 560,
         notes: [
-          "Below 40rem the dialog becomes 100vw by 100dvh with no border, so the on-screen keyboard and the results share the full screen.",
+          "Below 48rem the dialog becomes 100vw by 100dvh with no border, so the on-screen keyboard and the results share the full screen.",
           "Command buttons are full width, so each row is a large touch target; long names wrap inside the button.",
           "Keyboard shortcut hints are irrelevant on most phones; keep them short or omit them so names have room.",
           "Uses `dvh`, so the surface follows the visible viewport when browser toolbars show or hide in either orientation."
@@ -162,7 +162,7 @@ export default {
     { name: "Open", how: "open attribute / showModal()", description: "Fully opaque at its resting position. Modal opening adds the native backdrop and inert page." },
     { name: "Unavailable command", how: "disabled on the button", description: "Dimmed native disabled button with a visible reason; skipped by Tab." },
     { name: "No results", how: "application-rendered status message", description: "An empty group with a `role=\"status\"` message explaining what to try." },
-    { name: "Full screen", how: "viewport narrower than 40rem", description: "100vw by 100dvh without a border." }
+    { name: "Full screen", how: "viewport narrower than 48rem", description: "100vw by 100dvh without a border." }
   ],
   accessibility: {
     forma: [
@@ -181,7 +181,7 @@ export default {
   },
   responsive: [
     "Inline size is `min(42rem, 100vw − 2rem)` and block size at most `min(40rem, 100dvh − 2rem)`, centered with `margin: auto`.",
-    "Below 40rem the palette becomes a full-screen surface: 100vw by 100dvh and no border.",
+    "Below 48rem the palette becomes a full-screen surface: 100vw by 100dvh and no border.",
     "Command rows are full width; labels wrap and shortcuts stay at the inline end.",
     "Long result lists are the application's to page or virtualize; keep groups short."
   ],

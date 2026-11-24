@@ -76,7 +76,7 @@ export default {
       mobile: {
         height: 460,
         notes: [
-          "At 30rem and below `--forma-priority-min` becomes 100%, so each region takes its own full-width row.",
+          "Below 30rem `--forma-priority-min` becomes 100%, so each region takes its own full-width row.",
           "Above that, regions wrap as soon as the row cannot hold every region at 18rem plus the gap.",
           "Stacked order is source order; `data-priority` never moves a region to the top.",
           "Checkbox rows in the supporting region keep their full target size at 320px."

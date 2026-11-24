@@ -86,7 +86,7 @@ export default {
       mobile: {
         height: 280,
         notes: [
-          "Below 44rem the aria-hidden endpoint row is hidden and the `--mobile` key, which states which number means what, is shown under the scale.",
+          "Below 48rem the aria-hidden endpoint row is hidden and the `--mobile` key, which states which number means what, is shown under the scale.",
           "The seven cells keep a 2.75rem minimum width each; where the container is narrower than about 19.25rem the scale scrolls horizontally inside its own border instead of shrinking targets.",
           "Scrolling is contained to the scale (`overscroll-behavior-inline: contain`) with a stable scrollbar gutter, so the page itself does not scroll sideways.",
           "Cells are 48px tall and the whole cell is the tap target."
@@ -129,8 +129,8 @@ export default {
     hooks: {
       "forma-semantic-differential": "Root fieldset with browser border and padding removed.",
       "forma-semantic-differential__legend": "Question text.",
-      "forma-semantic-differential__endpoints": "Flex row placing the two endpoint descriptions at opposite ends. The desktop row is aria-hidden and is hidden below 44rem.",
-      "forma-semantic-differential__endpoints--mobile": "Explicit number key (1 = …, 7 = …). Hidden on wide screens and shown below 44rem.",
+      "forma-semantic-differential__endpoints": "Flex row placing the two endpoint descriptions at opposite ends. The desktop row is aria-hidden and is hidden below 48rem.",
+      "forma-semantic-differential__endpoints--mobile": "Explicit number key (1 = …, 7 = …). Hidden on wide screens and shown below 48rem.",
       "forma-semantic-differential__scale": "Bordered seven-column grid of cells, each at least 2.75rem wide. Scrolls inline within itself on very narrow containers.",
       "forma-sr-only": "Visually hidden text inside each label that names the position and, at the ends, the endpoint meaning."
     },
@@ -148,7 +148,7 @@ export default {
     { name: "Unanswered", how: "no checked radio", description: "All cells neutral." },
     { name: "Selected", how: ":checked", description: "The chosen cell takes the inverse surface." },
     { name: "Focus", how: ":focus-visible on the radio", description: "Two-tone focus ring around the cell." },
-    { name: "Narrow", how: "viewport below 44rem", description: "Desktop endpoints hidden; the mobile key is shown and the scale may scroll inline." }
+    { name: "Narrow", how: "viewport below 48rem", description: "Desktop endpoints hidden; the mobile key is shown and the scale may scroll inline." }
   ],
   accessibility: {
     forma: [
@@ -164,7 +164,7 @@ export default {
   },
   responsive: [
     "Wide: seven equal columns (`minmax(2.75rem, 1fr)`) under a two-ended endpoint row.",
-    "Below 44rem: the endpoint row swaps for the explicit key, and the scale gets `overflow-x: auto` with contained overscroll and a stable gutter.",
+    "Below 48rem: the endpoint row swaps for the explicit key, and the scale gets `overflow-x: auto` with contained overscroll and a stable gutter.",
     "Long endpoint descriptions wrap within their half of the row."
   ],
   motion: [

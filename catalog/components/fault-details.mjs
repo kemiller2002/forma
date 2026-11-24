@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Native `details`/`summary`: the browser owns open state, keyboard toggling and the expanded state exposed to assistive technology.",
       "The summary row has a 44px minimum height so it is a comfortable touch target.",
-      "Terms and values sit in two columns on wide screens and stack below 36rem; values break anywhere.",
+      "Terms and values sit in two columns on wide screens and stack below 48rem; values break anywhere.",
       "An optional boundary note reminds readers that only approved values appear."
     ]
   },
@@ -98,7 +98,7 @@ export default {
       mobile: {
         height: 400,
         notes: [
-          "Below 36rem each term/value pair stacks into one column with the value directly under its term.",
+          "Below 48rem each term/value pair stacks into one column with the value directly under its term.",
           "Values use `overflow-wrap: anywhere`, so long references and service names wrap instead of widening the page.",
           "The summary row keeps a 44px minimum height and the whole row toggles the disclosure on tap.",
           "Orientation changes only reflow the rows; the order of terms does not change."
@@ -125,7 +125,7 @@ export default {
     hooks: {
       "forma-fault-details": "Root native details element with top and bottom borders.",
       "forma-fault-details__content": "Wrapper for the expanded content with bottom padding.",
-      "forma-fault-details__list": "Description list of approved term/value pairs; each pair is a div laid out as a two-column grid (terms at least 7rem) that stacks below 36rem.",
+      "forma-fault-details__list": "Description list of approved term/value pairs; each pair is a div laid out as a two-column grid (terms at least 7rem) that stacks below 48rem.",
       "forma-fault-details__boundary": "Optional small note stating that only approved, sanitized values appear."
     },
     keyboard: [
@@ -158,7 +158,7 @@ export default {
   },
   responsive: [
     "Rows are a two-column grid (`minmax(7rem, auto) minmax(0, 1fr)`) on wide viewports.",
-    "Below a 36rem viewport each row stacks into one column with a small gap.",
+    "Below a 48rem viewport each row stacks into one column with a small gap.",
     "Values break anywhere, so long references and names never overflow at 320px."
   ],
   motion: [

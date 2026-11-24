@@ -129,7 +129,7 @@ export default {
       mobile: {
         height: 640,
         notes: [
-          "At 44rem (704px) and below each clause becomes one column: Field, Operator, Value and Remove stack in source order.",
+          "Below 48rem (768px) each clause becomes one column: Field, Operator, Value and Remove stack in source order.",
           "The header stacks too, so Add condition moves below the title and stretches to the panel width.",
           "Every select and button keeps a 44px minimum height for touch.",
           "The summary wraps inside its bar; nothing scrolls horizontally."
@@ -188,11 +188,11 @@ export default {
     ],
     hooks: {
       "forma-rule-builder": "Root panel with a functional border on the primary surface.",
-      "forma-rule-builder__header": "Header row with title and description on one side and actions on the other; stacks at 44rem and below.",
+      "forma-rule-builder__header": "Header row with title and description on one side and actions on the other; stacks below 48rem.",
       "forma-rule-builder__summary": "Plain-language meaning bar on the secondary surface at the bottom of the panel.",
       "forma-rule-group": "Padded grid of an operator badge and its clauses or nested groups.",
       "forma-rule-group__operator": "Monospace uppercase badge naming the group logic (AND, OR).",
-      "forma-rule-clause": "Four-column grid (field, operator, value, remove) with bottom-aligned controls; one column at 44rem and below. Direct labels become small label-over-control grids."
+      "forma-rule-clause": "Four-column grid (field, operator, value, remove) with bottom-aligned controls; one column below 48rem. Direct labels become small label-over-control grids."
     },
     keyboard: [
       { keys: "Tab / Shift+Tab", action: "Moves through the header action, each clause's controls and Remove buttons in source order." },
@@ -224,8 +224,8 @@ export default {
     ]
   },
   responsive: [
-    "Above 44rem clause columns are `minmax(8rem, …)`, so very narrow containers may need the stacked layout sooner than the breakpoint.",
-    "At 44rem (704px) and below the header and clauses become single columns.",
+    "From 48rem clause columns are `minmax(8rem, …)`, so very narrow containers may need the stacked layout sooner than the breakpoint.",
+    "Below 48rem (768px) the header and clauses become single columns.",
     "The root has `min-inline-size: 0`, so it shrinks inside grid and flex parents; the summary wraps."
   ],
   motion: [

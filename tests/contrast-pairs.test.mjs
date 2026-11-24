@@ -86,6 +86,18 @@ const PAIRS = [
   ...["text-primary", "text-heading", "text-on-secondary-surface"].map((foreground) => [foreground, "surface-secondary", 4.5]),
   ["text-primary", "surface-elevated", 4.5],
   ["text-inverse", "surface-inverse", 4.5],
+  // Application surface roles (forma#201). Pairings are explicit: secondary
+  // text is a pair on raised only; on sunken it re-pairs to
+  // text-on-secondary-surface; chrome carries text-on-chrome.
+  ...["text-primary", "text-heading", "text-secondary"].map((foreground) => [foreground, "surface-raised", 4.5]),
+  ["focus-ring", "surface-raised", 3],
+  ...["text-primary", "text-heading", "text-on-secondary-surface"].map((foreground) => [foreground, "surface-sunken", 4.5]),
+  ["text-on-chrome", "surface-chrome", 4.5],
+  // Button variants (forma#186): the primary label is surface-primary on
+  // accent-primary; the destructive outline and label are status-danger on
+  // surface-primary. Listed explicitly so a change to either role is caught.
+  ["surface-primary", "accent-primary", 4.5],
+  ["status-danger", "surface-primary", 4.5],
   ["focus-ring", "surface-primary", 3],
   ["focus-ring", "surface-secondary", 3]
 ];
@@ -116,6 +128,9 @@ test("compiled themes and brands expose complete color contexts", () => {
   }
   for (const context of contexts) {
     for (const role of publicStatus) assert.ok(context.colors[role], `${context.id} omits public ${role}`);
+    for (const role of ["surface-raised", "surface-sunken", "surface-chrome", "text-on-chrome"]) {
+      assert.ok(context.colors[role], `${context.id} omits application surface role ${role}`);
+    }
   }
 });
 

@@ -1248,6 +1248,27 @@
           "value": 2.75,
           "unit": "rem"
         }
+      },
+      "target-compact": {
+        "$description": "Minimum target in compact density (forma#199): 24px, the WCAG 2.5.8 minimum. Coarse pointers keep target-min.",
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        }
+      },
+      "row-comfortable": {
+        "$description": "Minimum data row height in comfortable density (forma#199).",
+        "$value": {
+          "value": 2.75,
+          "unit": "rem"
+        }
+      },
+      "row-compact": {
+        "$description": "Minimum data row height in compact density (forma#199).",
+        "$value": {
+          "value": 2.25,
+          "unit": "rem"
+        }
       }
     },
     "size-fluid": {
@@ -1357,6 +1378,28 @@
         }
       }
     },
+    "breakpoint": {
+      "$type": "dimension",
+      "$description": "Viewport ranges shared by Forma components and applications (forma#200): compact phone < compact <= phone < tablet <= tablet < desktop <= desktop. Custom properties cannot be used in media queries, so the token compiler also emits them as @custom-media (dist/custom-media.css): --forma-below-<name> is (width < value) and --forma-from-<name> is (width >= value). Verification viewports: 320 and 390 (phone), 768 (tablet), 1024 and 1280 (desktop).",
+      "compact": {
+        "$value": {
+          "value": 30,
+          "unit": "rem"
+        }
+      },
+      "tablet": {
+        "$value": {
+          "value": 48,
+          "unit": "rem"
+        }
+      },
+      "desktop": {
+        "$value": {
+          "value": 64,
+          "unit": "rem"
+        }
+      }
+    },
     "shadow": {
       "$type": "shadow",
       "raised": {
@@ -1412,6 +1455,183 @@
             },
             "spread": {
               "value": -8,
+              "unit": "px"
+            }
+          }
+        ]
+      },
+      "overlay": {
+        "$description": "Elevation 2 on light surfaces (forma#201): menus, popovers and floating panels.",
+        "$value": [
+          {
+            "color": {
+              "colorSpace": "srgb",
+              "components": [
+                0.086275,
+                0.086275,
+                0.086275
+              ],
+              "alpha": 0.08
+            },
+            "offsetX": {
+              "value": 0,
+              "unit": "px"
+            },
+            "offsetY": {
+              "value": 2,
+              "unit": "px"
+            },
+            "blur": {
+              "value": 4,
+              "unit": "px"
+            },
+            "spread": {
+              "value": 0,
+              "unit": "px"
+            }
+          },
+          {
+            "color": {
+              "colorSpace": "srgb",
+              "components": [
+                0.086275,
+                0.086275,
+                0.086275
+              ],
+              "alpha": 0.18
+            },
+            "offsetX": {
+              "value": 0,
+              "unit": "px"
+            },
+            "offsetY": {
+              "value": 16,
+              "unit": "px"
+            },
+            "blur": {
+              "value": 40,
+              "unit": "px"
+            },
+            "spread": {
+              "value": -12,
+              "unit": "px"
+            }
+          }
+        ]
+      },
+      "raised-dark": {
+        "$description": "Elevation 1 on dark surfaces (forma#201). Dark themes also lighten the raised surface.",
+        "$value": [
+          {
+            "color": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.4
+            },
+            "offsetX": {
+              "value": 0,
+              "unit": "px"
+            },
+            "offsetY": {
+              "value": 1,
+              "unit": "px"
+            },
+            "blur": {
+              "value": 2,
+              "unit": "px"
+            },
+            "spread": {
+              "value": 0,
+              "unit": "px"
+            }
+          },
+          {
+            "color": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.32
+            },
+            "offsetX": {
+              "value": 0,
+              "unit": "px"
+            },
+            "offsetY": {
+              "value": 8,
+              "unit": "px"
+            },
+            "blur": {
+              "value": 24,
+              "unit": "px"
+            },
+            "spread": {
+              "value": -8,
+              "unit": "px"
+            }
+          }
+        ]
+      },
+      "overlay-dark": {
+        "$description": "Elevation 2 on dark surfaces (forma#201).",
+        "$value": [
+          {
+            "color": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.45
+            },
+            "offsetX": {
+              "value": 0,
+              "unit": "px"
+            },
+            "offsetY": {
+              "value": 2,
+              "unit": "px"
+            },
+            "blur": {
+              "value": 4,
+              "unit": "px"
+            },
+            "spread": {
+              "value": 0,
+              "unit": "px"
+            }
+          },
+          {
+            "color": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.5
+            },
+            "offsetX": {
+              "value": 0,
+              "unit": "px"
+            },
+            "offsetY": {
+              "value": 16,
+              "unit": "px"
+            },
+            "blur": {
+              "value": 40,
+              "unit": "px"
+            },
+            "spread": {
+              "value": -12,
               "unit": "px"
             }
           }
@@ -1489,6 +1709,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.neutral-50}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.neutral-50}"
           }
         },
         "surface": {
@@ -1503,6 +1726,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.neutral-100}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.neutral-900}"
           }
         },
         "accent": {
@@ -1554,6 +1786,14 @@
             "$value": "{primitive.color.blue-600}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "dark": {
@@ -1573,6 +1813,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.neutral-950}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "surface": {
@@ -1587,6 +1830,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-200}"
+          },
+          "raised": {
+            "$value": "{primitive.color.neutral-900}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.neutral-900}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.neutral-100}"
           }
         },
         "accent": {
@@ -1638,6 +1890,14 @@
             "$value": "{primitive.color.blue-300}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised-dark}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay-dark}"
+        }
       }
     },
     "high-contrast": {
@@ -1657,6 +1917,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.white}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.white}"
           }
         },
         "surface": {
@@ -1671,6 +1934,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.neutral-100}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.black}"
           }
         },
         "accent": {
@@ -1722,6 +1994,14 @@
             "$value": "{primitive.color.black}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "muted-professional": {
@@ -1741,6 +2021,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.white}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.white}"
           }
         },
         "surface": {
@@ -1755,6 +2038,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.neutral-200}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "accent": {
@@ -1806,6 +2098,14 @@
             "$value": "{primitive.color.muted-plum}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "accent-neutral": {
@@ -1825,6 +2125,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.white}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.white}"
           }
         },
         "surface": {
@@ -1839,6 +2142,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.neutral-100}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "accent": {
@@ -1890,6 +2202,14 @@
             "$value": "{primitive.color.signal-blue}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "operations-salience": {
@@ -1909,6 +2229,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.white}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.white}"
           }
         },
         "surface": {
@@ -1923,6 +2246,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.neutral-100}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "accent": {
@@ -1974,6 +2306,14 @@
             "$value": "{primitive.color.ops-red}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "paper-ink": {
@@ -1993,6 +2333,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.paper}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.paper}"
           }
         },
         "surface": {
@@ -2007,6 +2350,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.paper-muted}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.ink}"
           }
         },
         "accent": {
@@ -2058,6 +2410,14 @@
             "$value": "{primitive.color.split-rust}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "clinical-light": {
@@ -2077,6 +2437,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.clinical}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.clinical}"
           }
         },
         "surface": {
@@ -2091,6 +2454,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.clinical-secondary}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.clinical-text}"
           }
         },
         "accent": {
@@ -2142,6 +2514,14 @@
             "$value": "{primitive.color.signal-blue}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "dark-restrained": {
@@ -2161,6 +2541,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.deep-slate}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.deep-slate}"
           }
         },
         "surface": {
@@ -2175,6 +2558,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-200}"
+          },
+          "raised": {
+            "$value": "{primitive.color.slate-surface}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.slate-surface}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.ice}"
           }
         },
         "accent": {
@@ -2226,6 +2618,14 @@
             "$value": "{primitive.color.amber-light}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised-dark}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay-dark}"
+        }
       }
     },
     "complementary-energy": {
@@ -2245,6 +2645,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.white}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.white}"
           }
         },
         "surface": {
@@ -2259,6 +2662,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.neutral-100}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "accent": {
@@ -2310,6 +2722,14 @@
             "$value": "{primitive.color.comp-blue}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "analogous-cohesive": {
@@ -2329,6 +2749,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.white}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.white}"
           }
         },
         "surface": {
@@ -2343,6 +2766,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.neutral-100}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "accent": {
@@ -2394,6 +2826,14 @@
             "$value": "{primitive.color.analog-blue}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "split-complementary": {
@@ -2413,6 +2853,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.white}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.white}"
           }
         },
         "surface": {
@@ -2427,6 +2870,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.neutral-100}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "accent": {
@@ -2478,6 +2930,14 @@
             "$value": "{primitive.color.split-blue}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "mono-semantic": {
@@ -2497,6 +2957,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.white}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.white}"
           }
         },
         "surface": {
@@ -2511,6 +2974,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.neutral-100}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "accent": {
@@ -2562,6 +3034,14 @@
             "$value": "{primitive.color.mono-accent}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "neutral-editorial": {
@@ -2581,6 +3061,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.editorial-bg}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.editorial-bg}"
           }
         },
         "surface": {
@@ -2595,6 +3078,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.editorial-surface}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.neutral-950}"
           }
         },
         "accent": {
@@ -2646,6 +3138,14 @@
             "$value": "{primitive.color.navy}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "warm-earth": {
@@ -2665,6 +3165,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.earth-bg}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.earth-bg}"
           }
         },
         "surface": {
@@ -2679,6 +3182,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.earth-surface}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.earth-text}"
           }
         },
         "accent": {
@@ -2730,6 +3242,14 @@
             "$value": "{primitive.color.comp-rust}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "cool-institutional": {
@@ -2749,6 +3269,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.institutional-bg}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.institutional-bg}"
           }
         },
         "surface": {
@@ -2763,6 +3286,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.institutional-surface}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.institutional-text}"
           }
         },
         "accent": {
@@ -2814,6 +3346,14 @@
             "$value": "{primitive.color.institutional-blue}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "nature-derived": {
@@ -2833,6 +3373,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.nature-bg}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.nature-bg}"
           }
         },
         "surface": {
@@ -2847,6 +3390,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-800}"
+          },
+          "raised": {
+            "$value": "{primitive.color.white}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.nature-surface}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.nature-text}"
           }
         },
         "accent": {
@@ -2898,6 +3450,14 @@
             "$value": "{primitive.color.nature-green}"
           }
         }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay}"
+        }
       }
     },
     "dark-technical": {
@@ -2917,6 +3477,9 @@
           },
           "inverse": {
             "$value": "{primitive.color.tech-bg}"
+          },
+          "on-chrome": {
+            "$value": "{primitive.color.tech-bg}"
           }
         },
         "surface": {
@@ -2931,6 +3494,15 @@
           },
           "inverse-secondary": {
             "$value": "{primitive.color.neutral-200}"
+          },
+          "raised": {
+            "$value": "{primitive.color.tech-surface}"
+          },
+          "sunken": {
+            "$value": "{primitive.color.tech-surface}"
+          },
+          "chrome": {
+            "$value": "{primitive.color.tech-text}"
           }
         },
         "accent": {
@@ -2981,6 +3553,14 @@
           "active": {
             "$value": "{primitive.color.tech-cyan}"
           }
+        }
+      },
+      "elevation": {
+        "1": {
+          "$value": "{primitive.shadow.raised-dark}"
+        },
+        "2": {
+          "$value": "{primitive.shadow.overlay-dark}"
         }
       }
     }

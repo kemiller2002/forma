@@ -20,7 +20,7 @@ export default {
       "Each `.forma-comparison-pairs__item` is a three-column grid: `minmax(8rem, 0.8fr)` for the label and two equal value columns.",
       "Each value shows its `data-label` as a small block caption above it at every width, so values are never unlabeled.",
       "`data-side=\"before\"` and `data-side=\"after\"` are what enable the caption; both sides are styled identically, so neither looks preferred.",
-      "At 30rem and below each item becomes a single column: label, first value, second value."
+      "Below 30rem each item becomes a single column: label, first value, second value."
     ]
   },
   examples: [
@@ -76,7 +76,7 @@ export default {
       mobile: {
         height: 420,
         notes: [
-          "At 30rem (480px) and below each item switches to a single column: label, first value, second value, in DOM order.",
+          "Below 30rem (480px) each item switches to a single column: label, first value, second value, in DOM order.",
           "The `data-label` captions are what keep the pairs understandable once the columns are gone; they appear at every width.",
           "Values wrap anywhere (`overflow-wrap: anywhere`), so long identifiers or addresses do not overflow at 320px.",
           "The component has no interactive parts; put confirm or cancel actions after it at full width."
@@ -108,7 +108,7 @@ export default {
     ],
     hooks: {
       "forma-comparison-pairs": "Root grid of comparison items with 1rem gaps.",
-      "forma-comparison-pairs__item": "One attribute row: label plus two value columns; single column at 30rem and below.",
+      "forma-comparison-pairs__item": "One attribute row: label plus two value columns; single column below 30rem.",
       "forma-comparison-pairs__label": "Attribute name in bold.",
       "forma-comparison-pairs__value": "One value. Shrinkable, wraps anywhere, and prints its `data-label` caption above itself.",
       "data-side": "`before` or `after` on a value enables the `data-label` caption via `::before`."
@@ -121,7 +121,7 @@ export default {
   },
   states: [
     { name: "Three columns", how: "viewport > 30rem", description: "Label beside the two values." },
-    { name: "Stacked", how: "viewport ≤ 30rem", description: "Label, first value, second value in one column, each value with its caption." },
+    { name: "Stacked", how: "viewport < 30rem", description: "Label, first value, second value in one column, each value with its caption." },
     { name: "Unchanged or unknown", how: "application text in the value", description: "Written as words (Unchanged, Unknown); no special styling." }
   ],
   accessibility: {
@@ -138,7 +138,7 @@ export default {
     ]
   },
   responsive: [
-    "Three columns above 30rem; one column at 30rem and below.",
+    "Three columns above 30rem; one column below 30rem.",
     "Values have `min-inline-size: 0` and `overflow-wrap: anywhere`, so they never force horizontal scrolling.",
     "The label column has an 8rem minimum on wide layouts; long attribute names wrap within it."
   ],

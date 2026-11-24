@@ -18,6 +18,40 @@ terminology.
 The manifest is data. Do not place CSS, script, credentials, or executable
 configuration in it.
 
+## Application surfaces and elevation (1.1.0)
+
+Application screens need more surfaces than primary, secondary and inverse
+(forma#201). Each theme of a manifest may declare, under `color`:
+
+| Role | Use | Text pairs the compiler checks |
+| --- | --- | --- |
+| `surface.raised` | A panel above the canvas | `text.primary`, `text.heading`, `text.secondary` at 4.5:1; `focus.ring` at 3:1 |
+| `surface.sunken` | A well: inputs, skeletons, pending figures | `text.primary`, `text.heading`, `text.on-secondary-surface` at 4.5:1 (secondary text re-pairs, as on `surface.secondary`) |
+| `surface.chrome` | App bars and navigation | `text.on-chrome` at 4.5:1 |
+| `text.on-chrome` | Text and icons on chrome | |
+
+and, beside `color`, an `elevation` object with levels `"1"` and `"2"`, each
+`"none"` or a box-shadow layer list in px with a hex or `rgb(r g b / a)` colour.
+They compile to `--forma-color-surface-raised`, `-sunken`, `-chrome`,
+`--forma-color-text-on-chrome`, `--forma-elevation-1` and `--forma-elevation-2`
+in every light and dark block, and `.forma-surface[data-forma-surface="raised|sunken|chrome"]`
+uses them.
+
+All of them are optional, so every 1.0 manifest still compiles unchanged. When
+a role is absent the compiler derives it from the manifest's own core roles,
+never from another brand: raised moves `surface.primary` toward white on a light
+theme or toward `surface.secondary` on a dark one, sunken moves toward
+`surface.secondary`, each taking the strongest step whose pairs above pass (at
+worst `surface.primary` itself, whose text pairs are already validated); chrome
+is `surface.inverse` with `text.inverse`; elevation uses Forma's light or dark
+shadows by the theme's polarity. Declared roles are checked against every pair
+in the table and a failure stops the build. `text.secondary` fails on some
+stone-family secondary surfaces, which is why the pairs are explicit: do not
+put secondary text on sunken or chrome surfaces.
+
+`brands/example-orchard.brand.json` declares every role; `example-harbor`
+shows the derived defaults.
+
 ## Forma is brand-neutral
 
 Forma ships no organization's brand (EDS-ADR-002). The default `:root` light
@@ -151,8 +185,9 @@ Ordo / domain
 
 The brand compiler validates the relationships that are most likely to make a
 branded interface unreadable: primary and secondary text, text on secondary
-surfaces, inverse text, primary/secondary accents, focus rings, and every
-declared status role. Shipped brands override success, warning, danger, and
+surfaces, inverse text, primary/secondary accents, focus rings, every
+declared status role and the raised, sunken and chrome surface pairs (see
+"Application surfaces and elevation"). Shipped brands override success, warning, danger, and
 info; a third-party 1.0 manifest may omit them and inherit the active core
 theme, preserving schema compatibility.
 

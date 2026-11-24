@@ -63,7 +63,7 @@ export default {
       mobile: {
         height: 260,
         notes: [
-          "At 30rem (480px) and below the control becomes one column: the input takes the full width and the Clear button sits beneath it.",
+          "Below 30rem (480px) the control becomes one column: the input takes the full width and the Clear button sits beneath it.",
           "The input and button each keep a 44px minimum height for touch.",
           "type=search shows the search keyboard, whose action key submits the form.",
           "Long result-count messages wrap under the control; nothing scrolls horizontally."
@@ -96,7 +96,7 @@ export default {
     hooks: {
       "forma-search": "Root grid (the form) stacking label, control and status.",
       "forma-search__label": "Compact visible label (0.8125rem, weight 650).",
-      "forma-search__control": "Two-column grid: flexible input and auto-width Clear button, joined without a gap. One column at 30rem and below.",
+      "forma-search__control": "Two-column grid: flexible input and auto-width Clear button, joined without a gap. One column below 30rem.",
       "forma-search__clear": "The Clear button, at least 4.5rem wide. Its action is application behavior.",
       "forma-search__status": "Result count or state text in secondary color at 0.75rem."
     },
@@ -133,7 +133,7 @@ export default {
   },
   responsive: [
     "The control is `minmax(0, 1fr) auto`, so the input shrinks before the Clear button and never overflows.",
-    "At 30rem (480px) and below the control becomes a single column with the Clear button under the input.",
+    "Below 30rem (480px) the control becomes a single column with the Clear button under the input.",
     "The root and control have `min-inline-size: 0`, so the component shrinks inside grid and flex parents."
   ],
   motion: [

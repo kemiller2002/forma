@@ -71,7 +71,7 @@ export default {
         height: 560,
         notes: [
           "At 48rem and below `forma-span-2` becomes `grid-column: 1 / -1`, so the primary region never forces a second track.",
-          "At 30rem and below the minimum track is 100%, giving one column regardless of the configured minimum.",
+          "Below 30rem the minimum track is 100%, giving one column regardless of the configured minimum.",
           "Regions stack in DOM order: the primary region is first because it is first in the source, not because of any reordering.",
           "Long incident text wraps inside its region because grid children have `min-inline-size: 0`."
         ]

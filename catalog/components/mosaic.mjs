@@ -4,7 +4,7 @@ export default {
   behavior: "Application content",
   summary: "Asymmetric editorial composition using explicit spans and deterministic narrow-screen reflow.",
   purpose: {
-    description: "A mosaic is a four-column editorial grid in which the author gives some items more width with `data-span=\"2\"` or `data-span=\"full\"`. It suits landing pages, report overviews and collections where one feature item leads and others support it. The rhythm is deliberate rather than content-driven: four columns on wide screens, two at 48rem and below, one at 30rem and below. Emphasis comes only from span; the source order is always the reading order. The application decides which items are featured.",
+    description: "A mosaic is a four-column editorial grid in which the author gives some items more width with `data-span=\"2\"` or `data-span=\"full\"`. It suits landing pages, report overviews and collections where one feature item leads and others support it. The rhythm is deliberate rather than content-driven: four columns on wide screens, two at 48rem and below, one below 30rem. Emphasis comes only from span; the source order is always the reading order. The application decides which items are featured.",
     useWhen: [
       "An overview needs a featured item and several smaller supporting items with a designed rhythm.",
       "Editorial or report content should look composed rather than a uniform grid.",
@@ -65,11 +65,11 @@ export default {
     {
       id: "mobile-single-column",
       title: "Mobile single column",
-      description: "The report overview at phone width. At 30rem and below the mosaic is one column and every span resets, so items stack in source order at full width.",
+      description: "The report overview at phone width. Below 30rem the mosaic is one column and every span resets, so items stack in source order at full width.",
       mobile: {
         height: 560,
         notes: [
-          "At 30rem and below the grid has one column and `data-span` items are reset to `grid-column: auto`.",
+          "Below 30rem the grid has one column and `data-span` items are reset to `grid-column: auto`.",
           "Between 30rem and 48rem there are two columns: `data-span=\"2\"` then fills the whole row, the same as full.",
           "The featured item stays first only because it is first in the source.",
           "All items are full width at 320px, so nothing scrolls horizontally and links inside keep full-width targets."
@@ -101,7 +101,7 @@ export default {
       { name: "style", on: ".forma-mosaic", values: "--forma-mosaic-space: <length>", default: "—", description: "Per-instance gap override." }
     ],
     hooks: {
-      "forma-mosaic": "Four-column grid (two at 48rem and below, one at 30rem and below); children get `min-inline-size: 0`.",
+      "forma-mosaic": "Four-column grid (two at 48rem and below, one below 30rem); children get `min-inline-size: 0`.",
       "data-span": "On a direct child: `2` spans two columns, `full` spans all columns. Reset to auto at one column.",
       "--forma-mosaic-space": "Gap between items. Default `--forma-primitive-spacing-4` (1rem)."
     },

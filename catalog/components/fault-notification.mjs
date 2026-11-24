@@ -94,7 +94,7 @@ export default {
         height: 520,
         notes: [
           "The surface is fixed to the bottom inline-end corner with a 1rem inset (respecting the safe-area inset) and is at most the viewport width minus 2rem, so it never causes horizontal scrolling.",
-          "Below 36rem the dismiss button moves from the side column to its own full-width row at the end, and the recovery buttons become full width; each keeps a 44px minimum height.",
+          "Below 48rem the dismiss button moves from the side column to its own full-width row at the end, and the recovery buttons become full width; each keeps a 44px minimum height.",
           "Long titles and reference codes wrap inside the body column.",
           "Because the surface is fixed, it can cover page content at the bottom of short landscape viewports; the application should keep the notification count low and leave content scrollable beneath it."
         ]
@@ -134,7 +134,7 @@ export default {
       "forma-fault-notification": "Root, applied together with `forma-toast`. A marker/body/dismiss grid, 32rem wide at most, with a thick start border and shadow. It is always visible (it does not depend on :popover-open) and inherits the toast's fixed bottom inline-end placement.",
       "forma-fault-notification__marker": "Decorative round marker glyph.",
       "forma-fault-notification__body": "Text column for severity, title, message, reference and recovery actions.",
-      "forma-fault-notification__dismiss": "Native dismiss button in the end column; full-width row below 36rem.",
+      "forma-fault-notification__dismiss": "Native dismiss button in the end column; full-width row below 48rem.",
       "data-forma-motion-entry": "Enables the insertion transition: opacity from 0 and a 0.45rem downward settle, driven by @starting-style.",
       "data-forma-motion-weight": "Selects the light, standard (default) or heavy physics preset for the settle duration. Presentation only."
     },
@@ -173,7 +173,7 @@ export default {
   responsive: [
     "Width is `min(32rem, 100vw - 2rem)` and the toast base limits it further to `min(26rem, 100vw - 2rem)`, so it always fits the viewport.",
     "Placement comes from `forma-toast`: fixed to the bottom inline-end corner with a 1rem inset that respects safe-area insets.",
-    "Below a 36rem viewport the grid becomes two columns, the dismiss button stretches across its own row and recovery buttons become full width.",
+    "Below a 48rem viewport the grid becomes two columns, the dismiss button stretches across its own row and recovery buttons become full width.",
     "Text and reference codes wrap within the body column."
   ],
   motion: [

@@ -36,7 +36,7 @@ test("canonical geometry survives brand-independent coloring, forced colors, and
 });
 
 test("all names in the public registry resolve to safe offline inline SVG snippets", async ({ page }) => {
-  expect(registry.icons).toHaveLength(80);
+  expect(registry.icons).toHaveLength(86);
   await page.route("**/*", async route => route.abort("failed"));
   const html = registry.icons.map(icon => snippet(icon.name)).join("");
   await page.setContent(doc(html));
@@ -128,11 +128,11 @@ test("communication icons are accessible through native named actions on a 320px
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1)).toBe(true);
 });
 
-test("all eighty static icons can be embedded in offline content without executable elements", async ({page}) => {
-  expect(registry.icons).toHaveLength(80);
+test("all eighty-six static icons can be embedded in offline content without executable elements", async ({page}) => {
+  expect(registry.icons).toHaveLength(86);
   const html = registry.icons.map(icon => snippet(icon.name)).join("");
   await page.setContent(doc(html));
-  await expect(page.locator(".forma-icon__svg")).toHaveCount(80);
+  await expect(page.locator(".forma-icon__svg")).toHaveCount(86);
   await expect(page.locator("script, foreignObject, iframe, object, embed")).toHaveCount(0);
   await expect(page.getByRole("img")).toHaveCount(0);
 });

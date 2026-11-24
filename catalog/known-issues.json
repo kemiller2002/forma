@@ -13,7 +13,7 @@
     },
     {
       "component": "button",
-      "issue": "Application-layer disabled buttons look enabled apart from losing hover; a.forma-button stays inline so its 44px min-block-size does not apply; primary/destructive variants exist only inside .forma-site; .forma-actions ships only in the marketing stylesheet.",
+      "issue": "Application-layer disabled buttons look enabled apart from losing hover; a.forma-button stays inline so its 44px min-block-size does not apply; .forma-actions ships only in the marketing stylesheet.",
       "location": "src/styles/foundations.css:59-90; src/marketing/components.css:191"
     },
     {

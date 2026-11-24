@@ -20,7 +20,7 @@ export default {
     characteristics: [
       "Two native radios sharing a `name`; the group is announced by the fieldset legend.",
       "Unanswered is the absence of a checked radio, not a third value.",
-      "Options sit side by side on wide screens and stack into full-width rows below 44rem.",
+      "Options sit side by side on wide screens and stack into full-width rows below 48rem.",
       "Selection is shown by an inverse surface and, in forced colors, system Highlight."
     ]
   },
@@ -75,7 +75,7 @@ export default {
     {
       id: "mobile-agree-disagree",
       title: "Agree or disagree on a phone",
-      description: "Below 44rem the bar becomes two full-width stacked rows, each at least 44px tall.",
+      description: "Below 48rem the bar becomes two full-width stacked rows, each at least 44px tall.",
       mobile: {
         height: 300,
         notes: [
@@ -109,7 +109,7 @@ export default {
     hooks: {
       "forma-binary-choice": "Root fieldset with browser border and padding removed.",
       "forma-binary-choice__legend": "Question text, rendered bold above the options.",
-      "forma-binary-choice__options": "Bordered inline grid that joins the options into one bar; stacks below 44rem.",
+      "forma-binary-choice__options": "Bordered inline grid that joins the options into one bar; stacks below 48rem.",
       "forma-binary-option": "Label wrapping one radio and its text. At least 44px tall; the radio is visually hidden but remains the focus and hit target."
     },
     keyboard: [
@@ -144,7 +144,7 @@ export default {
   },
   responsive: [
     "Wide: an inline grid with columns of at least 6rem each, capped at 100% width.",
-    "Below 44rem: a single column that fills the width; the divider becomes horizontal.",
+    "Below 48rem: a single column that fills the width; the divider becomes horizontal.",
     "Labels wrap inside each option; the bar never forces horizontal overflow."
   ],
   motion: [

@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "Step state is written with `data-state=\"complete\"` and `data-state=\"current\"` plus `aria-current=\"step\"` on the current item.",
       "Position is stated three ways: \"Step 2 of 4\" text, the progress bar and the rail.",
-      "The rail is a four-column grid; below 40rem only the current step is shown, labelled Current step.",
+      "The rail is a four-column grid; below 48rem only the current step is shown, labelled Current step.",
       "Actions sit at opposite ends of the footer and wrap on narrow screens."
     ]
   },
@@ -94,7 +94,7 @@ export default {
       id: "mobile-current-step",
       interaction: { kind: "static", reasons: ["application-behavior"] },
       title: "Wizard on a phone",
-      description: "Below 40rem the header stacks, the rail shows only the current step with a Current step note, and actions wrap if they do not fit.",
+      description: "Below 48rem the header stacks, the rail shows only the current step with a Current step note, and actions wrap if they do not fit.",
       mobile: {
         height: 460,
         notes: [
@@ -139,9 +139,9 @@ export default {
     ],
     hooks: {
       "forma-wizard": "Bordered root section.",
-      "forma-wizard__header": "Grid of position/title and a progress column (at least 10rem); stacks below 40rem.",
+      "forma-wizard__header": "Grid of position/title and a progress column (at least 10rem); stacks below 48rem.",
       "forma-wizard__position": "Small monospace \"Step n of m\" text.",
-      "forma-wizard__steps": "Four-column step rail with a bottom rule. Each item has a circular number marker. Below 40rem only the current item is shown.",
+      "forma-wizard__steps": "Four-column step rail with a bottom rule. Each item has a circular number marker. Below 48rem only the current item is shown.",
       "forma-wizard__body": "Padded region for the current step's content.",
       "forma-wizard__actions": "Footer flex row with actions at opposite ends; wraps when needed.",
       "data-state": "On step items: `current` or `complete`. Presentation only; the workflow state lives in Limen/Ordo."
@@ -157,7 +157,7 @@ export default {
   },
   states: [
     { name: "Upcoming step", how: "li without data-state", description: "Secondary text and an outlined marker." },
-    { name: "Current step", how: "data-state=\"current\" + aria-current=\"step\"", description: "Primary bold text and an inverse marker; the only step shown below 40rem, with a Current step note." },
+    { name: "Current step", how: "data-state=\"current\" + aria-current=\"step\"", description: "Primary bold text and an inverse marker; the only step shown below 48rem, with a Current step note." },
     { name: "Complete step", how: "data-state=\"complete\"", description: "A check glyph is generated on the marker." },
     { name: "Blocked", how: "application renders a validation summary and aria-invalid fields", description: "Position and rail stay on the current step; Forma adds no rail error state." },
     { name: "Resumed", how: "application renders saved state", description: "Identical to any other state; resume messaging is body content." }
@@ -177,7 +177,7 @@ export default {
   },
   responsive: [
     "Wide: header in two columns; the rail is a four-column grid, so it is designed for four steps (additional steps wrap onto a new row).",
-    "Below 40rem: header stacks, rail reduces to the current step, actions wrap.",
+    "Below 48rem: header stacks, rail reduces to the current step, actions wrap.",
     "The body is ordinary flow content and wraps normally."
   ],
   motion: [

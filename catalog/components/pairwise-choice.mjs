@@ -21,7 +21,7 @@ export default {
       "Two equal-width cards with an auto-width separator column.",
       "The whole card is the click and touch target (minimum 5rem tall).",
       "The separator is `aria-hidden`; the radio group semantics communicate that only one can be chosen.",
-      "Cards stack vertically below 44rem with the separator centred between them."
+      "Cards stack vertically below 48rem with the separator centred between them."
     ]
   },
   examples: [
@@ -82,7 +82,7 @@ export default {
     {
       id: "mobile-stacked",
       title: "Stacked comparison on a phone",
-      description: "Below 44rem the cards stack full width with the separator centred between them.",
+      description: "Below 48rem the cards stack full width with the separator centred between them.",
       mobile: {
         height: 420,
         notes: [
@@ -127,7 +127,7 @@ export default {
     hooks: {
       "forma-pairwise": "Root fieldset with browser border and padding removed.",
       "forma-pairwise__legend": "Comparison question.",
-      "forma-pairwise__options": "Three-column grid: option, separator, option. One column below 44rem.",
+      "forma-pairwise__options": "Three-column grid: option, separator, option. One column below 48rem.",
       "forma-pairwise__option": "Bordered card label with a visually hidden radio; at least 5rem tall.",
       "forma-pairwise__eyebrow": "Small uppercase monospace label such as Option A.",
       "forma-pairwise__versus": "The decorative \"or\" separator."
@@ -161,7 +161,7 @@ export default {
   },
   responsive: [
     "Wide: `minmax(0, 1fr) auto minmax(0, 1fr)` keeps the two cards equal regardless of text length.",
-    "Below 44rem: one column with the separator centred.",
+    "Below 48rem: one column with the separator centred.",
     "Card text wraps; there is no horizontal overflow."
   ],
   motion: [

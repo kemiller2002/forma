@@ -57,7 +57,7 @@ export default {
       </figure>
       <aside class="forma-callout" data-forma-callout="decision" aria-labelledby="callout-evidence-and-decision-decision">
         <p class="forma-callout__label" id="callout-evidence-and-decision-decision">Decision</p>
-        <p>The header sticks only at 40rem wide and 36rem tall or more.</p>
+        <p>The header sticks only at 48rem wide and 36rem tall or more.</p>
       </aside>
     </article>
   </div>

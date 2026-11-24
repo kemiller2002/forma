@@ -7,6 +7,26 @@ published as GitHub release tarballs
 and to npm. Earlier releases are described in `docs/CONSUMING-FORMA.md` and
 `HANDOFF.md`.
 
+## 1.1.0
+
+Minor release (QD-004: new classes, attributes, tokens and package exports; no removals). Application UI additions from a consumer audit (forma#186, #199 to #207; work item WI-0064).
+
+### Added
+- **Button variants outside `.forma-site` (forma#186).** `:where(button, .forma-button)[data-forma-variant="primary"]` (accent.primary fill, surface.primary label) and `[data-forma-variant="destructive"]` (2px status.danger outline and label, inner rule on hover). Both keep their colours with `aria-busy` and `disabled` (dashed when disabled) and use 3px solid / double ButtonText borders in forced colours. The marketing primary inside `.forma-site` is unchanged.
+- **Breakpoint tokens (forma#200).** `primitive.breakpoint.compact` (30rem), `.tablet` (48rem), `.desktop` (64rem), emitted as `--forma-primitive-breakpoint-*` and, with the new `TokenCompiler --custom-media` option, as `dist/custom-media.css` (`@custom-media --forma-below-<name>` / `--forma-from-<name>`), exported as `./custom-media.css`.
+- **Data density (forma#199).** `data-forma-density="comfortable|compact"` sizes rows and in-row targets of `data-grid`, `dense-ledger`, `work-queue` and `task-list`. Tokens `primitive.size.row-comfortable` (2.75rem), `row-compact` (2.25rem), `target-compact` (1.5rem).
+- **Surface roles and elevation (forma#201).** Semantic `color.surface.raised|sunken|chrome`, `color.text.on-chrome` and `elevation.1|2` in all 18 themes (primitive shadows `overlay`, `raised-dark`, `overlay-dark`); optional in brand manifests (schema 1.0 stays compatible) with derived defaults; TokenCompiler and BrandCompiler check explicit text pairs on each surface. `.forma-surface[data-forma-surface="raised|sunken|chrome"]`, `[data-forma-elevation="2"]`. Forced colours project the new roles to Canvas/CanvasText and drop elevation.
+- **Sentence status lozenge (forma#202).** `.forma-status-lozenge[data-forma-variant="sentence"]`.
+- **Components:** `task-list` (forma#203), `period-context` (forma#206), `approval-quorum` (forma#205), `batch-outcome` (forma#207), each with a canonical pattern, catalog page and Figma contract entry.
+- **Icons (forma#204):** `gift`, `bank`, `building`, `receipt`, `certificate`, `hand-coins` (original artwork; independent visual review open).
+
+### Changed
+- Every viewport media query in Forma CSS uses the breakpoint tokens as half-open ranges (`width < 48rem`, `width >= 64rem`, ...). Thresholds of 36, 40 and 44rem move to 48rem, so those components use their narrow layout up to 767px; a viewport exactly at 30rem or 48rem now belongs to the wider range. Catalog text updated to match.
+
+### Tests
+- `tests/browser/application-ui.spec.mjs` (37 tests per browser): every new component and example at 320 and 1280px (containment, axe WCAG 2.2 AA), dark theme, forced colours, keyboard focus, button contrast and non-text contrast in four themes, hover/pending/disabled variants, sentence lozenge metrics, the 48rem switch, density row and target sizes, task-list, period-context, approval-quorum and batch-outcome behaviour contracts, and surface roles in four themes and two brands.
+- `tests/breakpoints.test.mjs`, token-compiler (`@custom-media`, surface pair rejection), brand-compiler (derived and declared roles, rejections, shadow validation), contrast pairs for the new roles and button variants, icon registry, icon browser and site-build tests (86 icons, finance glyphs, 1.1.0 provenance).
+
 ## 1.0.2
 
 Patch release: re-review fixes to the namespace codemod (`tools/NamespaceMigrator`) in 1.0.1 (WI-0049, source `.praxis/inbox/documents/2026-11-09-FORMA-1.0.2-CODEMOD.md`), and the independent reviews of this patch (WI-0050 to WI-0057, `.praxis/inbox/documents/2026-11-09-FORMA-1.0.2-REVIEW-01.md` to `-REVIEW-04.md` and `2026-11-10-FORMA-1.0.2-REVIEW-05.md` to `-REVIEW-07.md`). No class, token, element, attribute or CSS output changed (QD-004 patch). Forma's own tree needed no change.

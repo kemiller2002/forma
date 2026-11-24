@@ -19,7 +19,7 @@ export default {
     characteristics: [
       "From and To are independent native date inputs, each with its own label.",
       "Preset buttons are ordinary buttons; they do nothing without application code.",
-      "Below 40rem the two dates stack and the arrow separator is hidden."
+      "Below 48rem the two dates stack and the arrow separator is hidden."
     ]
   },
   basicInteraction: { kind: "static", reasons: ["application-behavior"] },
@@ -73,10 +73,10 @@ export default {
       mobile: {
         height: 400,
         notes: [
-          "At 40rem (640px) and below the fields grid becomes one column and the → separator is hidden, so each date input gets the full width.",
+          "Below 48rem (768px) the fields grid becomes one column and the → separator is hidden, so each date input gets the full width.",
           "Preset buttons wrap onto as many rows as needed and keep their 44px minimum height.",
           "Tapping a date opens the platform picker; typed entry remains available where the platform supports it.",
-          "In landscape on larger phones the dates may return to side by side if the width exceeds 40rem."
+          "In landscape on larger phones the dates may return to side by side if the width reaches 48rem."
         ]
       },
       html: `<forma-date-range class="forma-component-tag">
@@ -113,8 +113,8 @@ export default {
     ],
     hooks: {
       "forma-date-range": "Root fieldset grid (0.5rem gap), full width, margin removed. Its legend gets the compact field-label style.",
-      "forma-date-range__fields": "Three-column grid (From, separator, To) with bottom alignment; one column at 40rem and below. Labels inside become small grids and date inputs shrink to fit.",
-      "forma-date-range__separator": "Decorative arrow between the dates; hidden at 40rem and below.",
+      "forma-date-range__fields": "Three-column grid (From, separator, To) with bottom alignment; one column below 48rem. Labels inside become small grids and date inputs shrink to fit.",
+      "forma-date-range__separator": "Decorative arrow between the dates; hidden below 48rem.",
       "forma-date-range__presets": "Wrapping flex row of preset buttons with a 0.5rem gap."
     },
     keyboard: [
@@ -147,8 +147,8 @@ export default {
     ]
   },
   responsive: [
-    "Above 40rem the two dates share a row with a centered arrow; each date column is `minmax(0, 1fr)` so localized formats shrink rather than overflow.",
-    "At 40rem (640px) and below the dates stack and the arrow is hidden.",
+    "From 48rem the two dates share a row with a centered arrow; each date column is `minmax(0, 1fr)` so localized formats shrink rather than overflow.",
+    "Below 48rem (768px) the dates stack and the arrow is hidden.",
     "Preset buttons wrap into additional rows at any width."
   ],
   motion: [

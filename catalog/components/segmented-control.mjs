@@ -22,7 +22,7 @@ export default {
       "Selection is native radio state; `:checked` drives the filled segment.",
       "Each segment is at least 44px tall and the whole label is the hit target.",
       "The selected segment is shown by an inverse fill, not by color hue alone, and by system Highlight in forced-colors mode.",
-      "On narrow screens (44rem and below) the control fills the width and segments wrap instead of shrinking."
+      "On narrow screens (below 48rem) the control fills the width and segments wrap instead of shrinking."
     ]
   },
   examples: [
@@ -64,7 +64,7 @@ export default {
       mobile: {
         height: 260,
         notes: [
-          "At 44rem and below `forma-segmented` takes the full inline size and each segment flexes from a `min(10rem, 100%)` basis, so segments share the width evenly.",
+          "Below 48rem `forma-segmented` takes the full inline size and each segment flexes from a `min(10rem, 100%)` basis, so segments share the width evenly.",
           "When the options do not fit on one row they wrap to further rows; nothing scrolls horizontally at 320px.",
           "Every segment keeps its 44px minimum height, and the whole segment label is the tap target.",
           "Wrapping changes only the visual rows. Arrow-key order and the radio group's order stay in source order."
@@ -132,8 +132,8 @@ export default {
     ]
   },
   responsive: [
-    "Above 44rem the control is inline-sized to its content (`display: inline-flex`, `max-inline-size: 100%`) and wraps if the container is narrower.",
-    "At 44rem and below it takes the full width and segments flex evenly from a `min(10rem, 100%)` basis, wrapping into additional rows.",
+    "From 48rem the control is inline-sized to its content (`display: inline-flex`, `max-inline-size: 100%`) and wraps if the container is narrower.",
+    "Below 48rem it takes the full width and segments flex evenly from a `min(10rem, 100%)` basis, wrapping into additional rows.",
     "Segments never shrink below their 44px height and labels wrap instead of being truncated.",
     "Equal-width versus content-sized modes, icon segments and a horizontal-overflow strategy are not provided."
   ],

@@ -209,6 +209,41 @@
   .forma-section { padding-block: var(--forma-section-space, var(--forma-primitive-spacing-7, 3rem)); }
   .forma-surface { --forma-color-text-secondary: var(--forma-color-text-on-secondary-surface, #303030); --forma-color-text-muted: var(--forma-color-text-on-secondary-surface, #303030); --forma-surface-accent-text-color: var(--forma-color-text-primary, #161616); min-inline-size: 0; padding: var(--forma-surface-space, var(--forma-primitive-spacing-5, 1.5rem)); background: var(--forma-color-surface-secondary, #eeeeee); color: var(--forma-color-text-on-secondary-surface, #303030); border: 1px solid var(--forma-color-border-subtle, #d8d8d8); }
   .forma-surface :where(h1, h2, h3, h4, h5, h6, p) { color: inherit; }
+  /*
+   * Application surface roles (forma#201), compiled per theme and brand:
+   * raised  a panel above the canvas, with elevation 1; secondary text keeps
+   *         text.secondary (a validated pair on raised);
+   *   data-forma-elevation="2" lifts it to elevation 2 (menus, floating panels);
+   * sunken  a well (inputs, skeletons); secondary text re-pairs to
+   *         text.on-secondary-surface as on surface.secondary;
+   * chrome  app bars and navigation; every text role becomes text.on-chrome.
+   * The fallbacks keep a pre-1.1 tokens.css working.
+   */
+  .forma-surface[data-forma-surface="raised"] {
+    /* inherit restores the theme's own text.secondary (a validated pair on
+       raised) over the secondary-surface re-pairing of .forma-surface. */
+    --forma-color-text-secondary: inherit;
+    --forma-color-text-muted: var(--forma-color-text-secondary, #555555);
+    --forma-surface-accent-text-color: var(--forma-color-text-primary, #161616);
+    background: var(--forma-color-surface-raised, var(--forma-color-surface-primary, #fafafa));
+    color: var(--forma-color-text-primary, #161616);
+    box-shadow: var(--forma-elevation-1, none);
+  }
+  .forma-surface[data-forma-surface="raised"][data-forma-elevation="2"] { box-shadow: var(--forma-elevation-2, none); }
+  .forma-surface[data-forma-surface="sunken"] {
+    background: var(--forma-color-surface-sunken, var(--forma-color-surface-secondary, #eeeeee));
+    color: var(--forma-color-text-primary, #161616);
+  }
+  .forma-surface[data-forma-surface="chrome"] {
+    --forma-color-text-primary: var(--forma-color-text-on-chrome, var(--forma-color-text-inverse, #fafafa));
+    --forma-color-text-heading: var(--forma-color-text-on-chrome, var(--forma-color-text-inverse, #fafafa));
+    --forma-color-text-secondary: var(--forma-color-text-on-chrome, var(--forma-color-text-inverse, #fafafa));
+    --forma-color-text-muted: var(--forma-color-text-on-chrome, var(--forma-color-text-inverse, #fafafa));
+    --forma-surface-accent-text-color: var(--forma-color-text-on-chrome, var(--forma-color-text-inverse, #fafafa));
+    background: var(--forma-color-surface-chrome, var(--forma-color-surface-inverse, #232323));
+    color: var(--forma-color-text-on-chrome, var(--forma-color-text-inverse, #fafafa));
+    border-color: var(--forma-color-surface-chrome, var(--forma-color-surface-inverse, #232323));
+  }
 
   :where(h1, h2, h3, h4, h5, h6, p, a, label, legend, td, th, dt, dd, caption, figcaption) {
     overflow-wrap: anywhere;
@@ -306,6 +341,12 @@
       --forma-color-surface-elevated: Canvas !important;
       --forma-color-surface-inverse: Canvas !important;
       --forma-color-surface-inverse-secondary: Canvas !important;
+      --forma-color-surface-raised: Canvas !important;
+      --forma-color-surface-sunken: Canvas !important;
+      --forma-color-surface-chrome: Canvas !important;
+      --forma-color-text-on-chrome: CanvasText !important;
+      --forma-elevation-1: none !important;
+      --forma-elevation-2: none !important;
       color: CanvasText;
       background-color: Canvas;
     }
@@ -340,8 +381,43 @@
   [data-density="standard"] { --forma-density-space: var(--forma-primitive-spacing-4, 1rem); }
   [data-density="compact"], [data-density="analytical"] { --forma-density-space: var(--forma-primitive-spacing-2, 0.5rem); }
   :where(.forma-stack, .forma-grid, .forma-responsive-grid, .forma-priority-stack)[data-density] { gap: var(--forma-density-space); }
-  @media (max-width: 48rem) { .forma-rail, .forma-rail[data-side="end"], .forma-focus-stage { grid-template-columns: minmax(0, 1fr); } .forma-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .forma-span-2 { grid-column: 1 / -1; } }
-  @media (max-width: 30rem) { .forma-mosaic { grid-template-columns: minmax(0, 1fr); } .forma-mosaic > [data-span="2"], .forma-mosaic > [data-span="full"] { grid-column: auto; } .forma-responsive-grid { --forma-responsive-grid-min: 100%; } .forma-priority-stack { --forma-priority-min: 100%; } }
+
+  /*
+   * Data density (forma#199). data-forma-density on any ancestor switches the
+   * row height, cell padding and in-row target size of data components
+   * (data-grid, dense-ledger, work-queue, task-list):
+   *   comfortable  consumer surfaces: rows >= 44px, 44px targets;
+   *   compact      expert queues and ledgers: rows >= 36px, 24px targets
+   *                (WCAG 2.5.8 minimum), except on a coarse pointer, where
+   *                rows and targets stay 44px.
+   * Without the attribute each component keeps its own spacing. data-density
+   * (above) spaces layout primitives; this attribute sizes data rows.
+   */
+  [data-forma-density="comfortable"] {
+    --forma-density-row-min: var(--forma-primitive-size-row-comfortable, 2.75rem);
+    --forma-density-target-min: var(--forma-primitive-size-target-min, 2.75rem);
+    --forma-density-cell-block: var(--forma-primitive-space-3, 0.75rem);
+    --forma-density-cell-inline: var(--forma-primitive-space-3, 0.75rem);
+  }
+  [data-forma-density="compact"] {
+    --forma-density-row-min: var(--forma-primitive-size-row-compact, 2.25rem);
+    --forma-density-target-min: var(--forma-primitive-size-target-compact, 1.5rem);
+    --forma-density-cell-block: var(--forma-primitive-space-1, 0.25rem);
+    --forma-density-cell-inline: var(--forma-primitive-space-2, 0.5rem);
+  }
+  @media (pointer: coarse) {
+    [data-forma-density="compact"] {
+      --forma-density-row-min: var(--forma-primitive-size-row-comfortable, 2.75rem);
+      --forma-density-target-min: var(--forma-primitive-size-target-min, 2.75rem);
+    }
+  }
+  [data-forma-density] .forma-dense-ledger :is(th, td) {
+    block-size: var(--forma-density-row-min);
+    padding: var(--forma-density-cell-block) var(--forma-density-cell-inline);
+    vertical-align: middle;
+  }
+  @media (width < 48rem) { .forma-rail, .forma-rail[data-side="end"], .forma-focus-stage { grid-template-columns: minmax(0, 1fr); } .forma-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .forma-span-2 { grid-column: 1 / -1; } }
+  @media (width < 30rem) { .forma-mosaic { grid-template-columns: minmax(0, 1fr); } .forma-mosaic > [data-span="2"], .forma-mosaic > [data-span="full"] { grid-column: auto; } .forma-responsive-grid { --forma-responsive-grid-min: 100%; } .forma-priority-stack { --forma-priority-min: 100%; } }
 
   /*
    * Typography roles (EII-F). data-forma-type selects a role on any element,

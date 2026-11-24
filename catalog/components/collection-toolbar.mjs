@@ -98,7 +98,7 @@ export default {
       mobile: {
         height: 560,
         notes: [
-          "At 40rem (640px) and below the grid becomes `1fr auto`: search and the controls each span the full width, and the count sits beside the remaining space.",
+          "Below 48rem (768px) the grid becomes `1fr auto`: search and the controls each span the full width, and the count sits beside the remaining space.",
           "Each control flexes at `1 1 9rem`, so sort and saved view share a row when they fit and wrap one per row at 320px.",
           "The filter panel switches from absolute positioning to static, full width, with no shadow, so it pushes the list down instead of covering it.",
           "The filter summary is at least 2.75rem tall, giving a comfortable touch target; the native selects open the platform picker on phones.",
@@ -137,11 +137,11 @@ export default {
       { name: "selected", on: "option", values: "boolean", default: "—", description: "Initial selected filter, sort or view." }
     ],
     hooks: {
-      "forma-collection-toolbar": "Root grid of search, controls and count; recomposes at 40rem and below.",
+      "forma-collection-toolbar": "Root grid of search, controls and count; recomposes below 48rem.",
       "forma-collection-toolbar__search": "The search form area; spans the full row on phones.",
       "forma-collection-toolbar__controls": "Wrapping flex row of filters, sort and view controls; labels inside get a 9rem minimum width.",
       "forma-collection-toolbar__filters": "The native `details` holding filters. Its `summary` is a bordered, 2.75rem-tall button-like row.",
-      "forma-collection-toolbar__filter-panel": "The filter fields. Absolutely positioned with a shadow on wide screens; static and full width at 40rem and below.",
+      "forma-collection-toolbar__filter-panel": "The filter fields. Absolutely positioned with a shadow on wide screens; static and full width below 48rem.",
       "forma-collection-toolbar__count": "Result count in small monospace text, no wrapping. Pair with `role=\"status\"`."
     },
     keyboard: [
@@ -162,7 +162,7 @@ export default {
     { name: "Filters open", how: "details[open]", description: "Filter panel shown over the content (desktop) or inline (phone)." },
     { name: "Active filters", how: "text in the summary, for example a [[status-lozenge]] reading \"2 active\"", description: "Written by the application; Forma does not count filters." },
     { name: "Result count", how: "text in .forma-collection-toolbar__count", description: "Announced through `role=\"status\"` when the application changes it." },
-    { name: "Stacked", how: "viewport ≤ 40rem", description: "Search full width; controls wrap; panel inline." }
+    { name: "Stacked", how: "viewport < 48rem", description: "Search full width; controls wrap; panel inline." }
   ],
   accessibility: {
     forma: [
@@ -180,8 +180,8 @@ export default {
     ]
   },
   responsive: [
-    "Above 40rem: three areas on one row, bottom-aligned.",
-    "At 40rem and below: search full width, controls full width and wrapping, count beside the leftover space; the filter panel becomes static.",
+    "From 48rem: three areas on one row, bottom-aligned.",
+    "Below 48rem: search full width, controls full width and wrapping, count beside the leftover space; the filter panel becomes static.",
     "Controls flex at `1 1 9rem`, so they wrap before becoming unusably narrow.",
     "The desktop panel width is `min(20rem, calc(100vw - 2rem))`, so it never exceeds the viewport."
   ],
