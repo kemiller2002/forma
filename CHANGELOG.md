@@ -24,8 +24,8 @@ Minor release (QD-004: new classes, attributes, tokens and package exports; no r
 - Every viewport media query in Forma CSS uses the breakpoint tokens as half-open ranges (`width < 48rem`, `width >= 64rem`, ...). Thresholds of 36, 40 and 44rem move to 48rem, so those components use their narrow layout up to 767px; a viewport exactly at 30rem or 48rem now belongs to the wider range. Catalog text updated to match.
 
 ### Tests
-- `tests/browser/application-ui.spec.mjs` (49 tests, Chromium): every new component and example at 320 and 1280px (containment, axe WCAG 2.2 AA), dark theme, forced colours, keyboard focus, button contrast and non-text contrast in four themes, hover/pending/disabled variants, sentence lozenge metrics, the 48rem switch, density row and target sizes, task-list, period-context, approval-quorum and batch-outcome behaviour contracts, and surface roles in four themes and two brands.
-- `tests/breakpoints.test.mjs`, token-compiler (`@custom-media`, surface pair rejection), brand-compiler (derived and declared roles, rejections, shadow validation), contrast pairs for the new roles and button variants, icon registry (86 icons, finance glyphs).
+- `tests/browser/application-ui.spec.mjs` (37 tests per browser): every new component and example at 320 and 1280px (containment, axe WCAG 2.2 AA), dark theme, forced colours, keyboard focus, button contrast and non-text contrast in four themes, hover/pending/disabled variants, sentence lozenge metrics, the 48rem switch, density row and target sizes, task-list, period-context, approval-quorum and batch-outcome behaviour contracts, and surface roles in four themes and two brands.
+- `tests/breakpoints.test.mjs`, token-compiler (`@custom-media`, surface pair rejection), brand-compiler (derived and declared roles, rejections, shadow validation), contrast pairs for the new roles and button variants, icon registry, icon browser and site-build tests (86 icons, finance glyphs, 1.1.0 provenance).
 
 ## 1.0.2
 

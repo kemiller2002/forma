@@ -6058,7 +6058,8 @@
   @media (width < 48rem) {
     .forma-period-context { padding: var(--forma-primitive-space-2, 0.5rem) var(--forma-primitive-space-3, 0.75rem); }
     .forma-period-context__facts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.125rem; }
-    .forma-period-context__facts > div { grid-template-columns: minmax(6rem, auto) minmax(0, 1fr); gap: var(--forma-primitive-space-2, 0.5rem); align-items: baseline; }
+    .forma-period-context__facts > div { grid-template-columns: minmax(0, 35%) minmax(0, 1fr); gap: var(--forma-primitive-space-2, 0.5rem); align-items: baseline; }
+    .forma-period-context__facts dd { min-inline-size: 0; }
     .forma-period-context__period dd { font-size: 1rem; }
   }
 

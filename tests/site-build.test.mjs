@@ -283,7 +283,13 @@ test("Forma 0.6.0 publishes a dedicated, complete and machine-navigable page for
   const gallery = fs.readFileSync(path.join(output, "icons", "index.html"), "utf8");
   const recent = fs.readFileSync(path.join(output, "icons", "new", "index.html"), "utf8");
   assert.equal(names.length, 40, "the 0.6.0 additions should contain exactly 40 named glyphs");
-  assert.equal(source.icons.length, 80, "legacy icons must be retained");
+  // 80 through 1.0.2 plus the six 1.1.0 finance glyphs (forma#204).
+  assert.equal(source.icons.length, 86, "legacy icons must be retained");
+  for (const name of ["gift", "bank", "building", "receipt", "certificate", "hand-coins"]) {
+    const record = manifest.icons.find(icon => icon.name === name);
+    assert.equal(record?.introducedIn, "1.1.0", name + ": missing 1.1.0 release metadata");
+    assert.ok(fs.existsSync(path.join(output, "icons", name, "index.html")), name + ": no icon page");
+  }
   assert.equal(manifest.newIconGalleryUrl, "icons/new/");
   assert.equal(manifest.iconRelease, "0.6.0");
   assert.ok(gallery.includes('href="../icons/new/"'), "main gallery must link to the new collection");
@@ -310,7 +316,7 @@ test("Forma 0.6.0 publishes a dedicated, complete and machine-navigable page for
       assert.ok(fs.existsSync(path.join(dir, raw + ".txt")), name + ": " + raw + " copyable source missing");
     }
   }
-  const legacy = manifest.icons.filter(icon => !names.includes(icon.name));
+  const legacy = manifest.icons.filter(icon => !names.includes(icon.name) && icon.introducedIn !== "1.1.0");
   assert.equal(legacy.length, 40, "original forty were changed or lost");
   assert.ok(legacy.every(icon => icon.introducedIn === "0.5.0"), "original icons keep correct version provenance");
 });
