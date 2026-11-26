@@ -15,7 +15,15 @@ on:
       - "tokens/**"
       - "brands/**"
       - "patterns/**"
-      - "schemas/**"
+      # Only the schemas the package ships (package.json "files"). schemas/ also
+      # holds Praxis-managed governance schemas (praxis-*, work-protocol,
+      # execution-telemetry, ...) that a Praxis upgrade rewrites; watching them made
+      # the immutable-tag guard fail on releases whose package contents had not
+      # changed (run 45687286761, WI-0067).
+      - "schemas/brand-manifest.schema.json"
+      - "schemas/icon-registry.schema.json"
+      - "schemas/design/**"
+      - "schemas/workflow/**"
       - "contracts/**"
       - "examples/design/**"
       - "tools/design-contract/**"

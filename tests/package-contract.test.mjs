@@ -178,9 +178,22 @@ test("release workflow watches versioned icon and site assets without weakening 
     "examples/marketing-site/forma.lock",
     "examples/design/**", "tools/design-contract/**", "tools/color-contract/**", "tools/TokenValidator/**",
     "docs/ICONS.md", "docs/COLOR.md", "tests/icon-docs.test.mjs", "tests/color-contract.test.mjs",
+    "schemas/brand-manifest.schema.json", "schemas/icon-registry.schema.json",
+    "schemas/design/**", "schemas/workflow/**",
     ".github/workflows/release-forma.yml"
   ]) {
     assert.ok(watched.includes(path), "release trigger dropped " + path);
+  }
+  // Every schema the package ships must trigger a release; Praxis governance
+  // schemas under schemas/ must not (WI-0067).
+  const shippedSchemas = JSON.parse(fs.readFileSync("package.json", "utf8")).files
+    .filter(entry => entry.startsWith("schemas/"));
+  const covers = (pattern, file) => pattern.endsWith("/**") ? file.startsWith(pattern.slice(0, -2)) : pattern === file;
+  for (const schema of shippedSchemas) {
+    assert.ok(watched.some(pattern => covers(pattern, schema)), "release trigger does not watch shipped " + schema);
+  }
+  for (const governance of ["schemas/praxis-completion-readiness.schema.json", "schemas/work-protocol.schema.json"]) {
+    assert.ok(!watched.some(pattern => covers(pattern, governance) || pattern === "schemas/**"), "release trigger watches Praxis-managed " + governance);
   }
   assert.ok(workflow.includes('git show-ref --verify --quiet "refs/tags/$release_tag"'),
     "a stable tag must be checked before publishing");
