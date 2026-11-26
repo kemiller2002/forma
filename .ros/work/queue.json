@@ -1710,10 +1710,10 @@
       "description": null,
       "tags": [],
       "priority": "medium",
-      "status": "ready",
+      "status": "complete",
       "attachments": [],
       "createdAt": "2026-11-26T12:27:17.764Z",
-      "updatedAt": "2026-11-26T12:27:21Z",
+      "updatedAt": "2026-11-26T12:34:51Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
