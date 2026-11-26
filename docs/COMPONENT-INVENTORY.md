@@ -26,7 +26,7 @@ Columns: *Examples* counts the canonical Basic example plus scenario examples; *
 
 | Component | Tag | Category | Implementation | Documentation | Examples | Mobile | HTML shown | Accessibility | API | Dedicated tests | Related |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Button | `<forma-button>` | Actions | implemented | complete | 6 | 1 | yes | yes | yes | marketing.spec.mjs | command-group, overflow-command-disclosure, menu, mobile-action-bar, cta |
+| Button | `<forma-button>` | Actions | implemented | complete | 6 | 1 | yes | yes | yes | release-guard.test.mjs, marketing.spec.mjs | command-group, overflow-command-disclosure, menu, mobile-action-bar, cta |
 | Command group | `<forma-command-group>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, overflow-command-disclosure, menu, collection-toolbar, command-palette |
 | Mobile action bar | `<forma-mobile-action-bar>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | button, command-group, overflow-command-disclosure, flyout |
 | Overflow command disclosure | `<forma-overflow-command-disclosure>` | Actions | implemented | complete | 3 | 1 | yes | yes | yes | generic only | command-group, menu, disclosure, mobile-action-bar |
