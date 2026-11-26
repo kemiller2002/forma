@@ -1,14 +1,14 @@
 {
   "schemaVersion": 4,
   "project": "forma",
-  "manifestSha256": "0d0e25695dcfadbe9ab916518867263337197ec607cbe62d3a64e7aa6da28a0c",
+  "manifestSha256": "ed9ada206cd283de3858b2ce645f2135f8eeb0c13ac4858eb3b72607e658871f",
   "manifest": {
     "schemaVersion": 1,
     "name": "forma",
     "registryAuthority": {
       "kind": "resolved-release-set",
       "path": ".conditor/authority/resolved-release-set.json",
-      "sha256": "6be3bc97fbdd314abc4c712c2b1b47c1a18487995d9e1b9db445b4d141a8ee8a"
+      "sha256": "4851c24d52cf3a7ef6dd2ccec26ef7a97c769dd06076b51dfede387c5a8cf8c9"
     },
     "components": [
       {
@@ -18,7 +18,7 @@
       },
       {
         "id": "praxis",
-        "version": "3.25.0",
+        "version": "3.26.0",
         "required": true
       },
       {
@@ -44,12 +44,12 @@
     },
     {
       "id": "praxis",
-      "version": "3.25.0",
+      "version": "3.26.0",
       "distribution": "host-tool",
       "package": "praxis",
-      "descriptorSha256": "a6a854d426d865133e7d1440e2ca80245dbf425aecdf1aafdb7ffddf5bd4487a",
+      "descriptorSha256": "5cb1f058f06dde4ff975e0c559b74a564abda5a78aadac1d4d3fd8f6e3eaefa7",
       "authority": "embedded-component-descriptor",
-      "sourceReference": "host:praxis@3.25.0"
+      "sourceReference": "host:praxis@3.26.0"
     },
     {
       "id": "visual-engineering",
