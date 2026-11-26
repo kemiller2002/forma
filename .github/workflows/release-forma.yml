@@ -50,6 +50,7 @@ on:
       - "tests/color-contract.test.mjs"
       - "tests/site-build.test.mjs"
       - "tests/package-contract.test.mjs"
+      - "tools/release-guard.mjs"
       - ".github/workflows/release-forma.yml"
   workflow_dispatch:
 
@@ -100,19 +101,21 @@ jobs:
       - name: Resolve release identity
         shell: bash
         run: |
+          # Identity only. Whether this version may be released is decided by
+          # package CONTENT after packing (tools/release-guard.mjs, WI-0068), not
+          # by which commit the tag points to: an edit that leaves the packed
+          # package identical (workflow, tests, docs) must not fail the release.
           package_version="$(node -p "require('./package.json').version")"
           release_tag="v$package_version"
           git fetch --force --tags origin
 
+          tag_commit=""
           if git show-ref --verify --quiet "refs/tags/$release_tag"; then
             tag_commit="$(git rev-list -n 1 "$release_tag")"
-            if [[ "$tag_commit" != "$GITHUB_SHA" ]]; then
-              echo "::error title=Forma version already released::$release_tag points to $tag_commit, not $GITHUB_SHA. Bump package.json before releasing new package contents."
-              exit 1
-            fi
           fi
 
           echo "RELEASE_TAG=$release_tag" >> "$GITHUB_ENV"
+          echo "TAG_COMMIT=$tag_commit" >> "$GITHUB_ENV"
 
       - name: Repair legacy v0.1.0 release asset
         env:
@@ -151,6 +154,45 @@ jobs:
           npm pack --pack-destination release
           archive="$(ls release/*.tgz)"
           echo "ARCHIVE=$archive" >> "$GITHUB_ENV"
+
+      - name: Compare with published release
+        id: guard
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          # Outcomes (docs/RELEASING.md, WI-0068):
+          #   create       no release for this version          -> create it below
+          #   noop         released with identical package files -> succeed, change nothing
+          #   differs      released with different package files -> fail: bump package.json
+          #   unverifiable released/tagged but nothing to compare  -> fail, never overwrite
+          guard_dir="$RUNNER_TEMP/release-guard"
+          mkdir -p "$guard_dir/published"
+          asset_name="$(basename "$ARCHIVE")"
+          release_json=""
+
+          if gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" > "$guard_dir/release.json" 2> "$guard_dir/release.err"; then
+            release_json="$guard_dir/release.json"
+            if jq -e --arg name "$asset_name" 'any(.assets[]; .name == $name)' "$release_json" >/dev/null; then
+              gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --pattern "$asset_name" --dir "$guard_dir/published"
+            fi
+          elif grep -q "HTTP 404" "$guard_dir/release.err"; then
+            echo "No GitHub release exists for $RELEASE_TAG."
+          else
+            # Any other lookup failure must not be mistaken for "not released".
+            cat "$guard_dir/release.err"
+            echo "::error title=Forma release guard::could not look up release $RELEASE_TAG"
+            exit 1
+          fi
+
+          node tools/release-guard.mjs \
+            --packed "$ARCHIVE" \
+            --asset-name "$asset_name" \
+            --tag "$RELEASE_TAG" \
+            --sha "$GITHUB_SHA" \
+            --tag-commit "$TAG_COMMIT" \
+            --release-json "$release_json" \
+            --published "$guard_dir/published/$asset_name"
 
       - name: Verify release contents
         shell: bash
@@ -247,21 +289,32 @@ jobs:
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
+          GUARD_OUTCOME: ${{ steps.guard.outputs.outcome }}
         shell: bash
         run: |
           # Marketing assets are flat, individually downloadable files so a
           # site can pin them without npm (see docs/MARKETING-SITES.md). The
-          # tag check above keeps a released version's contents immutable.
+          # content guard above keeps a released version's contents immutable.
           marketing=(dist/marketing/*.css dist/marketing/forma-marketing.manifest.json dist/marketing/forma-marketing.sha256)
-          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            # Stable release assets are immutable. The git tag/head identity was
-            # checked above; an existing release must never be overwritten.
-            echo "GitHub release $RELEASE_TAG already exists at this commit; not modifying its assets."
-          else
-            gh release create "$RELEASE_TAG" "$ARCHIVE" "${marketing[@]}" --target "$GITHUB_SHA" \
-              --title "$RELEASE_TAG" \
-              --notes "Forma ${RELEASE_TAG#v}: zero-runtime, brand-neutral design system. Marketing sites pin forma-marketing.css through forma.lock and load an organization theme after it; see docs/MARKETING-SITES.md."
-          fi
+          case "$GUARD_OUTCOME" in
+            noop)
+              echo "$RELEASE_TAG is already released with identical package content; nothing to do."
+              ;;
+            create)
+              if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+                # Stable release assets are immutable; never overwrite one.
+                echo "::error title=Forma release appeared concurrently::$RELEASE_TAG was created after the content check; not modifying it."
+                exit 1
+              fi
+              gh release create "$RELEASE_TAG" "$ARCHIVE" "${marketing[@]}" --target "$GITHUB_SHA" \
+                --title "$RELEASE_TAG" \
+                --notes "Forma ${RELEASE_TAG#v}: zero-runtime, brand-neutral design system. Marketing sites pin forma-marketing.css through forma.lock and load an organization theme after it; see docs/MARKETING-SITES.md."
+              ;;
+            *)
+              echo "::error title=Forma release guard::unexpected outcome '$GUARD_OUTCOME'"
+              exit 1
+              ;;
+          esac
 
       # npm is owned by publish.yml (one publisher per registry, so a merge
       # cannot fail on a double publish): it publishes a new package.json
