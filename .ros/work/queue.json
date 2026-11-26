@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "echelon-design-system",
-  "nextSeq": 67,
+  "nextSeq": 68,
   "items": [
     {
       "id": "WI-0001",
@@ -1672,6 +1672,27 @@
       "attachments": [],
       "createdAt": "2026-11-26T00:44:09.611Z",
       "updatedAt": "2026-11-26T01:09:52Z",
+      "createdBy": "unknown",
+      "createdByActor": {
+        "kind": "agent",
+        "id": "anthropic/claude-code",
+        "provider": "anthropic",
+        "model": "unknown",
+        "runtime": "claude-code"
+      },
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0067",
+      "title": "Release trigger: watch only shipped schemas so Praxis governance schema updates stop failing Release Forma package",
+      "description": null,
+      "tags": [],
+      "priority": "medium",
+      "status": "complete",
+      "attachments": [],
+      "createdAt": "2026-11-26T03:16:14.406Z",
+      "updatedAt": "2026-11-26T03:17:20Z",
       "createdBy": "unknown",
       "createdByActor": {
         "kind": "agent",
