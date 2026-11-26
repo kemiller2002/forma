@@ -124,3 +124,4 @@
 | WI-0066 | Upgrade to echelon-current 1.43.0 (Praxis 3.26.0) | complete |  | medium |
 | WI-0067 | Release trigger: watch only shipped schemas so Praxis governance schema updates stop failing Release Forma package | complete |  | medium |
 | WI-0068 | Release guard: compare packed content with the published vX.Y.Z asset instead of commits, so identical packages are a no-op | complete |  | medium |
+| WI-0069 | Regenerate the component inventory after the release guard tests landed | ready |  | medium |
