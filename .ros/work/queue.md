@@ -122,4 +122,4 @@
 | WI-0064 | Application UI gaps from consumer audit: button variants (#186), breakpoints (#200), app type/density (#199), surface roles (#201), status lozenge sentence variant (#202), task list (#203), icons (#204), approval quorum (#205), period context bar (#206), batch outcome summary (#207) | complete |  | medium |
 | WI-0065 | Upgrade to echelon-current 1.42.0 (praxis 3.7.2 -> 3.25.0, ordo 1.5.0 -> 1.20.0) | complete |  | medium |
 | WI-0066 | Upgrade to echelon-current 1.43.0 (Praxis 3.26.0) | complete |  | medium |
-| WI-0067 | Release trigger: watch only shipped schemas so Praxis governance schema updates stop failing Release Forma package | ready |  | medium |
+| WI-0067 | Release trigger: watch only shipped schemas so Praxis governance schema updates stop failing Release Forma package | complete |  | medium |
