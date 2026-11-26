@@ -2,6 +2,9 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { execFileSync } from "node:child_process";
 import test from "node:test";
+// The release guard's tests run with the package contract (npm run test:package);
+// wiring them here keeps package.json, which the package ships, unchanged.
+import "./release-guard.test.mjs";
 
 // The package version is the single source of truth; every release must be
 // documented for consumers under the same version before it can ship.
@@ -196,8 +199,10 @@ test("release workflow watches versioned icon and site assets without weakening 
     assert.ok(!watched.some(pattern => covers(pattern, governance) || pattern === "schemas/**"), "release trigger watches Praxis-managed " + governance);
   }
   assert.ok(workflow.includes('git show-ref --verify --quiet "refs/tags/$release_tag"'),
-    "a stable tag must be checked before publishing");
-  assert.ok(workflow.includes('if [[ "$tag_commit" != "$GITHUB_SHA" ]]'),
+    "a stable tag must be resolved before publishing");
+  // WI-0068: releasing different CONTENTS at one version must fail; an identical
+  // package at a later commit is a no-op (tests/release-guard.test.mjs).
+  assert.ok(workflow.includes("node tools/release-guard.mjs"),
     "releasing different contents at one version must fail");
   assert.ok(!workflow.includes('gh release upload "$RELEASE_TAG" "$ARCHIVE"'),
     "a published stable release must never be overwritten");

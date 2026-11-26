@@ -4,7 +4,7 @@
   "repository": "echelon-design-system",
   "actor": "openai/codex",
   "startedAt": "2026-09-22T05:56:29.390Z",
-  "updatedAt": "2026-11-26T03:17:20Z",
+  "updatedAt": "2026-11-26T12:34:51Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -3952,6 +3952,55 @@
         }
       },
       "completedAt": "2026-11-26T03:17:20Z"
+    },
+    {
+      "id": "WI-0068",
+      "type": "task",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "implementation",
+          "path": "tools/release-guard.mjs"
+        },
+        {
+          "type": "implementation",
+          "path": ".github/workflows/release-forma.yml"
+        },
+        {
+          "type": "tests",
+          "path": "tests/release-guard.test.mjs"
+        },
+        {
+          "type": "documentation",
+          "path": "docs/RELEASING.md"
+        }
+      ],
+      "updatedAt": "2026-11-26T12:34:51Z",
+      "telemetryExecutionIds": [
+        "EXE-20261126T122722488Z-bea7b67b"
+      ],
+      "latestCheckpoint": {
+        "id": "edade76d6db5fb3ee2ae48bf",
+        "recordedAt": "2026-11-26T12:34:50Z",
+        "executionId": "EXE-20261126T122722488Z-bea7b67b",
+        "repository": "echelon-design-system",
+        "branch": "claude/vigila-implementation-jdeps1",
+        "commit": "93504cc23088eaed1a4ade2a574580083c492dd7",
+        "remote": {
+          "name": "origin",
+          "url": "https://github.com/kemiller2002/forma"
+        },
+        "remoteBranch": "claude/vigila-implementation-jdeps1",
+        "remoteCommit": "93504cc23088eaed1a4ade2a574580083c492dd7",
+        "summary": "Content-based release guard implemented (tools/release-guard.mjs, release-forma.yml), 13 unit tests, docs/RELEASING.md; verified locally that main packs identically to the published v1.1.0 tarball (noop)",
+        "nextAction": "Complete WI-0068, open draft PR, watch CI",
+        "verification": {
+          "status": "verified",
+          "mechanism": "git-remote-observation"
+        }
+      },
+      "completedAt": "2026-11-26T12:34:51Z"
     }
   ]
 }

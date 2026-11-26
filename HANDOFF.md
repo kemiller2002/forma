@@ -423,3 +423,13 @@ pattern, `icons/*` package exports, and a generated `/icons/` gallery.
 `release-forma.yml` creates `v0.5.0` and the tarball, and `publish.yml`
 publishes to npm. After that, pin 0.5.0 in Studio and Folio through Conditor
 and close their draft PRs' pin gates.
+
+## Content-based release guard, 2026-11-26 (WI-0068)
+
+`release-forma.yml` no longer fails because `main` moved past the `vX.Y.Z`
+tag. After packing, `tools/release-guard.mjs` compares the packed files
+(path and sha256 of each) with the tarball already published for that
+version: no release creates it, identical content is a no-op, different
+content fails with "bump package.json", and a release without a comparable
+asset fails without being modified. See `docs/RELEASING.md`. The path filter
+from WI-0067 remains as a trigger filter only.
